@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71d8a69a_6efd221a",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-11T08:12:56Z",
+      "side": 1,
+      "message": "Do you really care mouse reporting? This is for Chrome OS right?",
+      "revId": "12e6aa2ec0a4c4e3ecf85424d010b7f447becaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
