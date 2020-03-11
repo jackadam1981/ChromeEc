@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfb65650_20e77596",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-11T23:21:35Z",
+      "side": 1,
+      "message": "minor nit: while you are here, change to a size_t?",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 4
+      },
+      "revId": "649a805dec43fc71132ec94506c73c71c35b52c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ad0970_ca64c716",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-11T23:21:35Z",
+      "side": 1,
+      "message": "minor nit: delete the empty line below now too that you\u0027ve moved the declaraition",
+      "revId": "649a805dec43fc71132ec94506c73c71c35b52c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99a20c54_aab6960d",
+        "filename": "include/mag_cal.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-11T23:21:35Z",
+      "side": 1,
+      "message": "minor nit, I think the typical style is to align these parameters",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "649a805dec43fc71132ec94506c73c71c35b52c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a921f23_40b09c1d",
+        "filename": "test/online_calibration.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-11T23:21:35Z",
+      "side": 1,
+      "message": "minor nit: spaces inside of { } here for Linux style",
+      "range": {
+        "startLine": 229,
+        "startChar": 22,
+        "endLine": 229,
+        "endChar": 35
+      },
+      "revId": "649a805dec43fc71132ec94506c73c71c35b52c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
