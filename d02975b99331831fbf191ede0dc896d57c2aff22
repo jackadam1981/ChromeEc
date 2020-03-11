@@ -87,6 +87,24 @@
       "revId": "d02975b99331831fbf191ede0dc896d57c2aff22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d612b6a_99883b99",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-11T19:52:08Z",
+      "side": 1,
+      "message": "I believe CBI requires I2C.  That would be the reason for th HOOK_PRIO_INIT_I2C+1.  I would guess most sensors are going to require I2C as well.  cbi_init is not required to run before fw_config gets used.  This is just the first time it is typically called but if someone else calls to get the fw_config information, after I2C is initialized, the call will work fine and that will be the call that is cached instead of the one from cbi_init.  I don\u0027t think there is an issue in this path",
+      "parentUuid": "ac688ff1_633759fb",
+      "revId": "d02975b99331831fbf191ede0dc896d57c2aff22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
