@@ -32,6 +32,7 @@
 #include "vpd_api.h"
 #include "version.h"
 
+#ifdef CONFIG_USB_PD_REV30
 #define RCH_SET_FLAG(port, flag) atomic_or(&rch[port].flags, (flag))
 #define RCH_CLR_FLAG(port, flag) atomic_clear(&rch[port].flags, (flag))
 #define RCH_CHK_FLAG(port, flag) (rch[port].flags & (flag))
@@ -39,6 +40,7 @@
 #define TCH_SET_FLAG(port, flag) atomic_or(&tch[port].flags, (flag))
 #define TCH_CLR_FLAG(port, flag) atomic_clear(&tch[port].flags, (flag))
 #define TCH_CHK_FLAG(port, flag) (tch[port].flags & (flag))
+#endif /* CONFIG_USB_PD_REV30 */
 
 #define PRL_TX_SET_FLAG(port, flag) atomic_or(&prl_tx[port].flags, (flag))
 #define PRL_TX_CLR_FLAG(port, flag) atomic_clear(&prl_tx[port].flags, (flag))
@@ -92,10 +94,12 @@ enum usb_prl_tx_state {
 	PRL_TX_WAIT_FOR_MESSAGE_REQUEST,
 	PRL_TX_LAYER_RESET_FOR_TRANSMIT,
 	PRL_TX_WAIT_FOR_PHY_RESPONSE,
+#ifdef CONFIG_USB_PD_REV30
 	PRL_TX_SRC_SOURCE_TX,
 	PRL_TX_SNK_START_AMS,
 	PRL_TX_SRC_PENDING,
 	PRL_TX_SNK_PENDING,
+#endif /* CONFIG_USB_PD_REV30 */
 	PRL_TX_DISCARD_MESSAGE,
 };
 
@@ -107,6 +111,7 @@ enum usb_prl_hr_state {
 	PRL_HR_WAIT_FOR_PE_HARD_RESET_COMPLETE,
 };
 
+#ifdef CONFIG_USB_PD_REV30
 /* Chunked Rx states (Section 6.11.2.1.2) */
 enum usb_rch_state {
 	RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER,
@@ -128,10 +133,13 @@ enum usb_tch_state {
 	TCH_MESSAGE_SENT,
 	TCH_REPORT_ERROR,
 };
+#endif /* CONFIG_USB_PD_REV30 */
 
 /* Forward declare full list of states. Index by above enums. */
 static const struct usb_state prl_tx_states[];
 static const struct usb_state prl_hr_states[];
+
+#ifdef CONFIG_USB_PD_REV30
 static const struct usb_state rch_states[];
 static const struct usb_state tch_states[];
 
@@ -156,6 +164,7 @@ static struct tx_chunked {
 	/* error to report when moving to tch_report_error state */
 	enum pe_error error;
 } tch[CONFIG_USB_PD_PORT_MAX_COUNT];
+#endif /* CONFIG_USB_PD_REV30 */
 
 /* Message Reception State Machine Object */
 static struct protocol_layer_rx {
@@ -201,8 +210,10 @@ static struct pd_message {
 	enum tcpm_transmit_type xmit_type;
 	/* type of message */
 	uint8_t msg_type;
+#ifdef CONFIG_USB_PD_REV30
 	/* extended message */
 	uint8_t ext;
+#endif /* CONFIG_USB_PD_REV30 */
 	/* PD revision */
 	enum pd_rev_type rev[NUM_SOP_STAR_TYPES];
 	/* Number of 32-bit objects in chk_buf */
@@ -210,10 +221,12 @@ static struct pd_message {
 	/* temp chunk buffer */
 	uint32_t tx_chk_buf[7];
 	uint32_t rx_chk_buf[7];
-	uint32_t chunk_number_expected;
 	uint32_t num_bytes_received;
+#ifdef CONFIG_USB_PD_REV30
+	uint32_t chunk_number_expected;
 	uint32_t chunk_number_to_send;
 	uint32_t send_offset;
+#endif /* !CONFIG_USB_PD_REV30 */
 } pdmsg[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 struct extended_msg rx_emsg[CONFIG_USB_PD_PORT_MAX_COUNT];
@@ -222,6 +235,7 @@ struct extended_msg tx_emsg[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Common Protocol Layer Message Transmission */
 static void prl_tx_construct_message(int port);
 static void prl_rx_wait_for_phy_message(const int port, int evt);
+static void prl_copy_msg_to_buffer(int port);
 
 /* Set the protocol transmit statemachine to a new state. */
 static void set_state_prl_tx(const int port,
@@ -230,11 +244,13 @@ static void set_state_prl_tx(const int port,
 	set_state(port, &prl_tx[port].ctx, &prl_tx_states[new_state]);
 }
 
+#ifdef CONFIG_USB_PD_REV30
 /* Get the protocol transmit statemachine's current state. */
 test_export_static enum usb_prl_tx_state prl_tx_get_state(const int port)
 {
 	return prl_tx[port].ctx.current - &prl_tx_states[0];
 }
+#endif /* CONFIG_USB_PD_REV30 */
 
 /* Set the hard reset statemachine to a new state. */
 static void set_state_prl_hr(const int port,
@@ -251,6 +267,7 @@ enum usb_prl_hr_state prl_hr_get_state(const int port)
 }
 #endif
 
+#ifdef CONFIG_USB_PD_REV30
 /* Set the chunked Rx statemachine to a new state. */
 static void set_state_rch(const int port, const enum usb_rch_state new_state)
 {
@@ -274,6 +291,7 @@ test_export_static enum usb_tch_state tch_get_state(const int port)
 {
 	return tch[port].ctx.current - &tch_states[0];
 }
+#endif /* CONFIG_USB_PD_REV30 */
 
 void pd_transmit_complete(int port, int status)
 {
@@ -316,8 +334,10 @@ static void prl_init(int port)
 	prl_tx[port].last_xmit_type = TCPC_TX_SOP;
 	prl_tx[port].xmit_status = TCPC_TX_UNSET;
 
+#ifdef CONFIG_USB_PD_REV30
 	tch[port].flags = 0;
 	rch[port].flags = 0;
+#endif /* CONFIG_USB_PD_REV30 */
 
 	/*
 	 * Initialize to highest revision supported. If the port or cable
@@ -342,11 +362,13 @@ static void prl_init(int port)
 	prl_tx[port].ctx = cleared;
 	set_state_prl_tx(port, PRL_TX_PHY_LAYER_RESET);
 
+#ifdef CONFIG_USB_PD_REV30
 	rch[port].ctx = cleared;
 	set_state_rch(port, RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER);
 
 	tch[port].ctx = cleared;
 	set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
+#endif /* CONFIG_USB_PD_REV30 */
 
 	prl_hr[port].ctx = cleared;
 	set_state_prl_hr(port, PRL_HR_WAIT_FOR_REQUEST);
@@ -374,10 +396,14 @@ void prl_send_ctrl_msg(int port,
 {
 	pdmsg[port].xmit_type = type;
 	pdmsg[port].msg_type = msg;
+#ifdef CONFIG_USB_PD_REV30
 	pdmsg[port].ext = 0;
 	tx_emsg[port].len = 0;
-
 	TCH_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
+#else
+	pdmsg[port].data_objs = 0;
+	PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
+#endif /* CONFIG_USB_PD_REV30 */
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
 
@@ -387,12 +413,18 @@ void prl_send_data_msg(int port,
 {
 	pdmsg[port].xmit_type = type;
 	pdmsg[port].msg_type = msg;
+#ifdef CONFIG_USB_PD_REV30
 	pdmsg[port].ext = 0;
 
 	TCH_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
+#else
+	prl_copy_msg_to_buffer(port);
+	PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
+#endif /* CONFIG_USB_PD_REV30 */
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
 
+#ifdef CONFIG_USB_PD_REV30
 void prl_send_ext_data_msg(int port,
 			  enum tcpm_transmit_type type,
 			  enum pd_ext_msg_type msg)
@@ -404,6 +436,7 @@ void prl_send_ext_data_msg(int port,
 	TCH_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
+#endif /* CONFIG_USB_PD_REV30 */
 
 void prl_reset(int port)
 {
@@ -437,12 +470,13 @@ void prl_run(int port, int evt, int en)
 		/* Run Protocol Layer Message Reception */
 		prl_rx_wait_for_phy_message(port, evt);
 
+#ifdef CONFIG_USB_PD_REV30
 		/* Run RX Chunked state machine */
 		run_state(port, &rch[port].ctx);
 
 		/* Run TX Chunked state machine */
 		run_state(port, &tch[port].ctx);
-
+#endif /* CONFIG_USB_PD_REV30 */
 		/* Run Protocol Layer Message Transmission state machine */
 		run_state(port, &prl_tx[port].ctx);
 
@@ -460,6 +494,24 @@ void prl_set_rev(int port, enum tcpm_transmit_type type,
 enum pd_rev_type prl_get_rev(int port, enum tcpm_transmit_type type)
 {
 	return pdmsg[port].rev[type];
+}
+
+static void prl_copy_msg_to_buffer(int port)
+{
+	/* Copy message to chunked buffer */
+	memset((uint8_t *)pdmsg[port].tx_chk_buf,
+		0, BUFFER_SIZE);
+	memcpy((uint8_t *)pdmsg[port].tx_chk_buf,
+		(uint8_t *)tx_emsg[port].buf,
+		tx_emsg[port].len);
+	/*
+	 * Pad length to 4-byte boundary and
+	 * convert to number of 32-bit objects.
+	 * Since the value is shifted right by 2,
+	 * no need to explicitly clear the lower
+	 * 2-bits.
+	 */
+	pdmsg[port].data_objs = (tx_emsg[port].len + 3) >> 2;
 }
 
 /* Common Protocol Layer Message Transmission */
@@ -487,6 +539,7 @@ static void prl_tx_wait_for_message_request_entry(const int port)
 
 static void prl_tx_wait_for_message_request_run(const int port)
 {
+#ifdef CONFIG_USB_PD_REV30
 	if ((prl_get_rev(port, pdmsg[port].xmit_type) == PD_REV30) &&
 			PRL_TX_CHK_FLAG(port,
 				(PRL_FLAGS_START_AMS | PRL_FLAGS_END_AMS))) {
@@ -535,10 +588,12 @@ static void prl_tx_wait_for_message_request_run(const int port)
 				/* PRL_FLAGS_END AMS is cleared here */
 				prl_tx[port].flags = 0;
 			}
-
 		}
-	} else if (PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT)) {
+	} else
+#endif /* CONFIG_USB_PD_REV30 */
+	if (PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT)) {
 		PRL_TX_CLR_FLAG(port, PRL_FLAGS_MSG_XMIT);
+
 		/*
 		 * Soft Reset Message Message pending
 		 */
@@ -580,6 +635,7 @@ static void prl_tx_discard_message_entry(const int port)
 	set_state_prl_tx(port, PRL_TX_PHY_LAYER_RESET);
 }
 
+#ifdef CONFIG_USB_PD_REV30
 /*
  * PrlTxSrcSourceTx
  */
@@ -610,6 +666,7 @@ static void prl_tx_snk_start_ams_run(const int port)
 		set_state_prl_tx(port, PRL_TX_SNK_PENDING);
 	}
 }
+#endif /* CONFIG_USB_PD_REV30 */
 
 /*
  * PrlTxLayerResetForTransmit
@@ -644,7 +701,12 @@ static uint32_t get_sop_star_header(const int port)
 		prl_tx[port].msg_id_counter[pdmsg[port].xmit_type],
 		pdmsg[port].data_objs,
 		pdmsg[port].rev[pdmsg[port].xmit_type],
-		pdmsg[port].ext);
+#ifdef CONFIG_USB_PD_REV30
+		pdmsg[port].ext
+#else
+		0
+#endif /* CONFIG_USB_PD_REV30 */
+	);
 }
 
 static void prl_tx_construct_message(const int port)
@@ -700,11 +762,14 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 		/*
 		 * (RetryCounter > nRetryCount) | Large Extended Message
 		 */
+#ifdef CONFIG_USB_PD_REV30
 		if (prl_tx[port].retry_counter > N_RETRY_COUNT ||
 					(pdmsg[port].ext &&
 					PD_EXT_HEADER_DATA_SIZE(GET_EXT_HEADER(
 					pdmsg[port].tx_chk_buf[0]) > 26))) {
-
+#else
+		if (prl_tx[port].retry_counter > N_RETRY_COUNT) {
+#endif /* CONFIG_USB_PD_REV30 */
 			/*
 			 * NOTE: PRL_Tx_Transmission_Error State embedded
 			 * here.
@@ -732,8 +797,12 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 
 		/* Increment messageId counter */
 		increment_msgid_counter(port);
+#ifdef CONFIG_USB_PD_REV30
 		/* Inform Policy Engine Message was sent */
 		PDMSG_SET_FLAG(port, PRL_FLAGS_TX_COMPLETE);
+#else
+		pe_message_sent(port);
+#endif /* CONFIG_USB_PD_REV30 */
 		/*
 		 * This event reduces the time of informing the policy engine of
 		 * the transmission by one state machine cycle
@@ -749,6 +818,7 @@ static void prl_tx_wait_for_phy_response_exit(const int port)
 }
 
 /* Source Protocol Layer Message Transmission */
+#ifdef CONFIG_USB_PD_REV30
 /*
  * PrlTxSrcPending
  */
@@ -810,6 +880,7 @@ static void prl_tx_snk_pending_run(const int port)
 		return;
 	}
 }
+#endif /* CONFIG_USB_PD_REV30 */
 
 /* Hard Reset Operation */
 
@@ -841,8 +912,10 @@ static void prl_hr_reset_layer_entry(const int port)
 	 */
 	set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
 
+#ifdef CONFIG_USB_PD_REV30
 	tch[port].flags = 0;
 	rch[port].flags = 0;
+#endif /* CONFIG_USB_PD_REV30 */
 	pdmsg[port].flags = 0;
 
 	/* Reset message ids */
@@ -928,8 +1001,10 @@ static void prl_hr_wait_for_pe_hard_reset_complete_exit(const int port)
 	/* Exit from Hard Reset */
 
 	set_state_prl_tx(port, PRL_TX_PHY_LAYER_RESET);
+#ifdef CONFIG_USB_PD_REV30
 	set_state_rch(port, RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER);
 	set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
+#endif /* !CONFIG_USB_PD_REV30 */
 }
 
 static void copy_chunk_to_ext(int port)
@@ -946,6 +1021,7 @@ static void copy_chunk_to_ext(int port)
 	rx_emsg[port].len = pdmsg[port].num_bytes_received;
 }
 
+#ifdef CONFIG_USB_PD_REV30
 /*
  * Chunked Rx State Machine
  */
@@ -1297,21 +1373,7 @@ static void tch_wait_for_message_request_from_pe_run(const int port)
 				}
 
 				/* NOTE: TCH_Pass_Down_Message embedded here */
-				/* Copy message to chunked buffer */
-				memset((uint8_t *)pdmsg[port].tx_chk_buf,
-					0, BUFFER_SIZE);
-				memcpy((uint8_t *)pdmsg[port].tx_chk_buf,
-					(uint8_t *)tx_emsg[port].buf,
-					tx_emsg[port].len);
-				/*
-				 * Pad length to 4-byte boundary and
-				 * convert to number of 32-bit objects.
-				 * Since the value is shifted right by 2,
-				 * no need to explicitly clear the lower
-				 * 2-bits.
-				 */
-				pdmsg[port].data_objs =
-						(tx_emsg[port].len + 3) >> 2;
+				prl_copy_msg_to_buffer(port);
 				/* Pass Message to Protocol Layer */
 				PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 				set_state_tch(port,
@@ -1525,6 +1587,7 @@ static void tch_report_error_entry(const int port)
 	pe_report_error(port, tch[port].error);
 	set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
 }
+#endif /* CONFIG_USB_PD_REV30 */
 
 /*
  * Protocol Layer Message Reception State Machine
@@ -1573,8 +1636,10 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 
 		/* Soft Reset occurred */
 		set_state_prl_tx(port, PRL_TX_PHY_LAYER_RESET);
+#ifdef CONFIG_USB_PD_REV30
 		set_state_rch(port, RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER);
 		set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
+#endif /* CONFIG_USB_PD_REV30 */
 	}
 
 	/*
@@ -1587,16 +1652,21 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	 * Discard any pending tx message if this is
 	 * not a ping message
 	 */
+#ifdef CONFIG_USB_PD_REV30
 	if (prl_get_rev(port, pdmsg[port].xmit_type) == PD_REV30 &&
-	   (cnt == 0) && type != PD_CTRL_PING) {
+	((cnt == 0) && type != PD_CTRL_PING)) {
 		if (prl_tx_get_state(port) == PRL_TX_SRC_PENDING ||
 		    prl_tx_get_state(port) == PRL_TX_SNK_PENDING)
-			set_state_prl_tx(port, PRL_TX_DISCARD_MESSAGE);
+#else
+	if ((cnt == 0) && type != PD_CTRL_PING) {
+#endif /* CONFIG_USB_PD_REV30 */
+		set_state_prl_tx(port, PRL_TX_DISCARD_MESSAGE);
 	}
 
 	/* Store Message Id */
 	prl_rx[port].msg_id[sop] = msid;
 
+#ifdef CONFIG_USB_PD_REV30
 	/* RTR Chunked Message Router States. */
 	/*
 	 * Received Ping from Protocol Layer
@@ -1632,7 +1702,13 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		 */
 		RCH_SET_FLAG(port, PRL_FLAGS_MSG_RECEIVED);
 	}
+#else
+	/* Copy chunk to extended buffer */
+	copy_chunk_to_ext(port);
+	/* Send message to Policy Engine */
+	pe_message_received(port);
 
+#endif /* CONFIG_USB_PD_REV30 */
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
 
@@ -1655,6 +1731,7 @@ static const struct usb_state prl_tx_states[] = {
 		.run    = prl_tx_wait_for_phy_response_run,
 		.exit   = prl_tx_wait_for_phy_response_exit,
 	},
+#ifdef CONFIG_USB_PD_REV30
 	[PRL_TX_SRC_SOURCE_TX] = {
 		.entry  = prl_tx_src_source_tx_entry,
 		.run    = prl_tx_src_source_tx_run,
@@ -1669,6 +1746,7 @@ static const struct usb_state prl_tx_states[] = {
 	[PRL_TX_SNK_PENDING] = {
 		.run    = prl_tx_snk_pending_run,
 	},
+#endif /* CONFIG_USB_PD_REV30 */
 	[PRL_TX_DISCARD_MESSAGE] = {
 		.entry  = prl_tx_discard_message_entry,
 	},
@@ -1694,6 +1772,7 @@ static const struct usb_state prl_hr_states[] = {
 	},
 };
 
+#ifdef CONFIG_USB_PD_REV30
 /* All necessary Chunked Rx states (Section 6.11.2.1.2) */
 static const struct usb_state rch_states[] = {
 	[RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER] = {
@@ -1751,6 +1830,7 @@ static const struct usb_state tch_states[] = {
 		.entry  = tch_report_error_entry,
 	},
 };
+#endif /* CONFIG_USB_PD_REV30 */
 
 #ifdef TEST_BUILD
 
@@ -1759,10 +1839,12 @@ static const char * const prl_tx_state_names[] = {
 	[PRL_TX_WAIT_FOR_MESSAGE_REQUEST] = "PRL_TX_WAIT_FOR_MESSAGE_REQUEST",
 	[PRL_TX_LAYER_RESET_FOR_TRANSMIT] = "PRL_TX_LAYER_RESET_FOR_TRANSMIT",
 	[PRL_TX_WAIT_FOR_PHY_RESPONSE] = "PRL_TX_WAIT_FOR_PHY_RESPONSE",
+#ifdef CONFIG_USB_PD_REV30
 	[PRL_TX_SRC_SOURCE_TX] = "PRL_TX_SRC_SOURCE_TX",
 	[PRL_TX_SNK_START_AMS] = "PRL_TX_SNK_START_AMS",
 	[PRL_TX_SRC_PENDING] = "PRL_TX_SRC_PENDING",
 	[PRL_TX_SNK_PENDING] = "PRL_TX_SNK_PENDING",
+#endif /* CONFIG_USB_PD_REV30 */
 	[PRL_TX_DISCARD_MESSAGE] = "PRL_TX_DISCARD_MESSAGE",
 };
 
@@ -1775,6 +1857,7 @@ static const char * const prl_hr_state_names[] = {
 		= "PRL_HR_WAIT_FOR_PE_HARD_RESET_COMPLETE",
 };
 
+#ifdef CONFIG_USB_PD_REV30
 static const char * const rch_state_names[] = {
 	[RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER]
 		= "RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER",
@@ -1797,6 +1880,7 @@ static const char * const tch_state_names[] = {
 	[TCH_MESSAGE_SENT] = "TCH_MESSAGE_SENT",
 	[TCH_REPORT_ERROR] = "TCH_REPORT_ERROR",
 };
+#endif /* CONFIG_USB_PD_REV30 */
 
 const struct test_sm_data test_prl_sm_data[] = {
 	{
@@ -1811,6 +1895,7 @@ const struct test_sm_data test_prl_sm_data[] = {
 		.names = prl_hr_state_names,
 		.names_size = ARRAY_SIZE(prl_hr_state_names),
 	},
+#ifdef CONFIG_USB_PD_REV30
 	{
 		.base = rch_states,
 		.size = ARRAY_SIZE(rch_states),
@@ -1823,11 +1908,14 @@ const struct test_sm_data test_prl_sm_data[] = {
 		.names = tch_state_names,
 		.names_size = ARRAY_SIZE(tch_state_names),
 	},
+#endif /* CONFIG_USB_PD_REV30 */
 };
 BUILD_ASSERT(ARRAY_SIZE(prl_tx_states) == ARRAY_SIZE(prl_tx_state_names));
 BUILD_ASSERT(ARRAY_SIZE(prl_hr_states) == ARRAY_SIZE(prl_hr_state_names));
+#ifdef CONFIG_USB_PD_REV30
 BUILD_ASSERT(ARRAY_SIZE(rch_states) == ARRAY_SIZE(rch_state_names));
 BUILD_ASSERT(ARRAY_SIZE(tch_states) == ARRAY_SIZE(tch_state_names));
+#endif /* CONFIG_USB_PD_REV30 */
 const int test_prl_sm_data_size = ARRAY_SIZE(test_prl_sm_data);
 #endif
 
