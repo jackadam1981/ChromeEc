@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "485bc93d_e4d51a7c",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-11T20:50:27Z",
+      "side": 1,
+      "message": "CHIP_VCMP0?",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 522,
+        "endChar": 12
+      },
+      "revId": "c40d1f34aad2dcc4fcb6464ecf65fb018af18dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15ce51cc_83b5aea6",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-11T20:50:27Z",
+      "side": 1,
+      "message": "Could this be VCMP_COUNT instead since we\u0027re only enabling up to VCMP_COUNT in the first place?",
+      "range": {
+        "startLine": 522,
+        "startChar": 18,
+        "endLine": 522,
+        "endChar": 32
+      },
+      "revId": "c40d1f34aad2dcc4fcb6464ecf65fb018af18dca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
