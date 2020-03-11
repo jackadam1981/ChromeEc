@@ -93,6 +93,30 @@
       "revId": "e75466fa506d32e85cbd51d68b1bf93712e112b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a41871e_8635875f",
+        "filename": "common/button.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1378026
+      },
+      "writtenOn": "2020-03-11T10:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b695ea28_6be11dc7",
+      "range": {
+        "startLine": 84,
+        "startChar": 43,
+        "endLine": 84,
+        "endChar": 82
+      },
+      "revId": "e75466fa506d32e85cbd51d68b1bf93712e112b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
