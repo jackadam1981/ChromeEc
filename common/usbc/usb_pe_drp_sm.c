@@ -110,6 +110,8 @@
 #define PE_FLAGS_LOCALLY_INITIATED_AMS       BIT(26)
 /* Flag to note the first message sent in PE_SRC_READY and PE_SNK_READY */
 #define PE_FLAGS_FIRST_MSG                   BIT(27)
+/* Flag to continue port discovery if it was interrupted */
+#define PE_FLAGS_DISCOVER_PORT_CONTINUE      BIT(28)
 
 /* 6.7.3 Hard Reset Counter */
 #define N_HARD_RESET_COUNT 2
@@ -889,6 +891,22 @@ static bool common_src_snk_dpm_requests(int port)
 					DPM_REQUEST_SOFT_RESET_SEND);
 		set_state_pe(port, PE_SEND_SOFT_RESET);
 		return true;
+	} else if (PE_CHK_DPM_REQUEST(port,
+					DPM_REQUEST_PORT_DISCOVERY)) {
+		PE_CLR_DPM_REQUEST(port,
+					DPM_REQUEST_PORT_DISCOVERY);
+		if (!PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION)) {
+			/*
+			 * Clear counters and reset timer to trigger a
+			 * port discovery.
+			 */
+			PE_CLR_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
+			pe[port].dr_swap_attempt_counter = 0;
+			pe[port].discover_port_identity_counter = 0;
+			pe[port].discover_port_identity_timer = get_time().val +
+						PD_T_PORT_DISCOVERY_DELAY;
+		}
+		return true;
 	}
 
 	return false;
@@ -927,7 +945,7 @@ static void send_source_cap(int port)
 	}
 
 	emsg[port].len = src_pdo_cnt * 4;
-	memcpy(emsg[port].buf, (uint8_t *)src_pdo, emsg[port].len);
+	memcpy(emsg[port].tx_buf, (uint8_t *)src_pdo, emsg[port].len);
 
 	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_SOURCE_CAP);
 }
@@ -956,7 +974,7 @@ static void pe_send_request_msg(int port)
 
 	emsg[port].len = 4;
 
-	memcpy(emsg[port].buf, (uint8_t *)&rdo, emsg[port].len);
+	memcpy(emsg[port].tx_buf, (uint8_t *)&rdo, emsg[port].len);
 	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_REQUEST);
 }
 
@@ -1428,7 +1446,7 @@ static void pe_src_negotiate_capability_entry(int port)
 	print_current_state(port);
 
 	/* Get message payload */
-	payload = *(uint32_t *)(&emsg[port].buf);
+	payload = *(uint32_t *)(&emsg[port].rx_buf);
 
 	/*
 	 * Evaluate the Request from the Attached Sink
@@ -1661,7 +1679,7 @@ static void pe_src_ready_run(int port)
 		type = PD_HEADER_TYPE(emsg[port].header);
 		cnt = PD_HEADER_CNT(emsg[port].header);
 		ext = PD_HEADER_EXT(emsg[port].header);
-		payload = *(uint32_t *)emsg[port].buf;
+		payload = *(uint32_t *)emsg[port].rx_buf;
 
 		/* Extended Message Requests */
 		if (ext > 0) {
@@ -1741,6 +1759,9 @@ static void pe_src_ready_run(int port)
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
 		}
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE);
+		set_state_pe(port, PE_VDM_REQUEST);
 	}
 }
 
@@ -2032,7 +2053,7 @@ static void pe_snk_wait_for_capabilities_run(int port)
  */
 static void pe_snk_evaluate_capability_entry(int port)
 {
-	uint32_t *pdo = (uint32_t *)emsg[port].buf;
+	uint32_t *pdo = (uint32_t *)emsg[port].rx_buf;
 	uint32_t num = emsg[port].len >> 2;
 	int i;
 
@@ -2399,7 +2420,7 @@ static void pe_snk_ready_run(int port)
 		type = PD_HEADER_TYPE(emsg[port].header);
 		cnt = PD_HEADER_CNT(emsg[port].header);
 		ext = PD_HEADER_EXT(emsg[port].header);
-		payload = *(uint32_t *)emsg[port].buf;
+		payload = *(uint32_t *)emsg[port].rx_buf;
 
 		/* Extended Message Request */
 		if (ext > 0) {
@@ -2480,6 +2501,9 @@ static void pe_snk_ready_run(int port)
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
 		}
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE);
+		set_state_pe(port, PE_VDM_REQUEST);
 	}
 }
 
@@ -2749,8 +2773,8 @@ static void pe_src_ping_run(int port)
  */
 static void pe_give_battery_cap_entry(int port)
 {
-	uint32_t payload = *(uint32_t *)(&emsg[port].buf);
-	uint16_t *msg = (uint16_t *)emsg[port].buf;
+	uint32_t payload = *(uint32_t *)(&emsg[port].rx_buf);
+	uint16_t *msg = (uint16_t *)emsg[port].tx_buf;
 
 	if (!IS_ENABLED(CONFIG_BATTERY))
 		return;
@@ -2843,8 +2867,8 @@ static void pe_give_battery_cap_run(int port)
  */
 static void pe_give_battery_status_entry(int port)
 {
-	uint32_t payload = *(uint32_t *)(&emsg[port].buf);
-	uint32_t *msg = (uint32_t *)emsg[port].buf;
+	uint32_t payload = *(uint32_t *)(&emsg[port].rx_buf);
+	uint32_t *msg = (uint32_t *)emsg[port].tx_buf;
 
 	if (!IS_ENABLED(CONFIG_BATTERY))
 		return;
@@ -3577,7 +3601,7 @@ static void pe_prs_frs_shared_exit(int port)
  */
 static void pe_bist_tx_entry(int port)
 {
-	uint32_t *payload = (uint32_t *)emsg[port].buf;
+	uint32_t *payload = (uint32_t *)emsg[port].rx_buf;
 	uint8_t mode = BIST_MODE(payload[0]);
 
 	print_current_state(port);
@@ -3635,7 +3659,7 @@ static void pe_bist_rx_entry(int port)
 	print_current_state(port);
 
 	emsg[port].len = sizeof(bdo);
-	memcpy(emsg[port].buf, (uint8_t *)&bdo, emsg[port].len);
+	memcpy(emsg[port].tx_buf, (uint8_t *)&bdo, emsg[port].len);
 	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_BIST);
 
 	/* Delay at least enough for partner to finish BIST */
@@ -3663,7 +3687,7 @@ static void pe_snk_give_sink_cap_entry(int port)
 
 	/* Send a Sink_Capabilities Message */
 	emsg[port].len = pd_snk_pdo_cnt * 4;
-	memcpy(emsg[port].buf, (uint8_t *)pd_snk_pdo, emsg[port].len);
+	memcpy(emsg[port].tx_buf, (uint8_t *)pd_snk_pdo, emsg[port].len);
 	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_SINK_CAP);
 }
 
@@ -3698,7 +3722,7 @@ static void pe_wait_for_error_recovery_run(int port)
 static void pe_handle_custom_vdm_request_entry(int port)
 {
 	/* Get the message */
-	uint32_t *payload = (uint32_t *)emsg[port].buf;
+	uint32_t *payload = (uint32_t *)emsg[port].rx_buf;
 	int cnt = PD_HEADER_CNT(emsg[port].header);
 	int sop = PD_HEADER_GET_SOP(emsg[port].header);
 	int rlen = 0;
@@ -3712,7 +3736,7 @@ static void pe_handle_custom_vdm_request_entry(int port)
 	rlen = pd_custom_vdm(port, cnt, payload, &rdata);
 	if (rlen > 0) {
 		emsg[port].len = rlen * 4;
-		memcpy(emsg[port].buf, (uint8_t *)rdata, emsg[port].len);
+		memcpy(emsg[port].tx_buf, (uint8_t *)rdata, emsg[port].len);
 		prl_send_data_msg(port, sop, PD_DATA_VENDOR_DEF);
 	}
 }
@@ -3767,7 +3791,7 @@ static void pe_do_port_discovery_entry(int port)
 static void pe_do_port_discovery_run(int port)
 {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-	uint32_t *payload = (uint32_t *)emsg[port].buf;
+	uint32_t *payload = (uint32_t *)emsg[port].rx_buf;
 	struct svdm_amode_data *modep =
 				pd_get_amode_data(port, PD_VDO_VID(payload[0]));
 	int ret = 0;
@@ -3906,7 +3930,7 @@ static void pe_vdm_send_request_exit(int port)
  */
 static void pe_vdm_identity_request_cbl_entry(int port)
 {
-	uint32_t *msg = (uint32_t *)emsg[port].buf;
+	uint32_t *msg = (uint32_t *)emsg[port].tx_buf;
 
 	print_current_state(port);
 
@@ -3932,7 +3956,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/* Retrieve the message information */
-		payload = (uint32_t *)emsg[port].buf;
+		payload = (uint32_t *)emsg[port].rx_buf;
 		sop = PD_HEADER_GET_SOP(emsg[port].header);
 		type = PD_HEADER_TYPE(emsg[port].header);
 		cnt = PD_HEADER_CNT(emsg[port].header);
@@ -4077,7 +4101,7 @@ static void pe_vdm_request_entry(int port)
 	/* Copy Vendor Data Objects (VDOs) into message buffer */
 	if (pe[port].vdm_cnt > 0) {
 		/* Copy data after header */
-		memcpy(&emsg[port].buf,
+		memcpy(&emsg[port].tx_buf,
 			(uint8_t *)pe[port].vdm_data,
 			pe[port].vdm_cnt * 4);
 		/* Update len with the number of VDO bytes */
@@ -4112,7 +4136,7 @@ static void pe_vdm_request_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/* Get the message */
-		payload = (uint32_t *)emsg[port].buf;
+		payload = (uint32_t *)emsg[port].rx_buf;
 		sop = PD_HEADER_GET_SOP(emsg[port].header);
 		type = PD_HEADER_TYPE(emsg[port].header);
 		cnt = PD_HEADER_CNT(emsg[port].header);
@@ -4142,8 +4166,11 @@ static void pe_vdm_request_run(int port)
 			 */
 			PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
-			/* Port Disc. was interrupted. So don't try again. */
-			PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
+			/*
+			 * Continue port discovery after the unexpected message
+			 * is handled
+			 */
+			PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_CONTINUE);
 
 			if (pe[port].power_role == PD_ROLE_SOURCE)
 				set_state_pe(port, PE_SRC_READY);
@@ -4199,7 +4226,7 @@ static void pe_vdm_acked_entry(int port)
 	print_current_state(port);
 
 	/* Get the message */
-	payload = (uint32_t *)emsg[port].buf;
+	payload = (uint32_t *)emsg[port].rx_buf;
 	vdo_cmd = PD_VDO_CMD(payload[0]);
 	sop = PD_HEADER_GET_SOP(emsg[port].header);
 
@@ -4284,7 +4311,7 @@ static void pe_vdm_response_entry(int port)
 	PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 
 	/* Get the message */
-	payload = (uint32_t *)emsg[port].buf;
+	payload = (uint32_t *)emsg[port].rx_buf;
 	vdo_cmd = PD_VDO_CMD(payload[0]);
 	cmd_type = PD_VDO_CMDT(payload[0]);
 	payload[0] &= ~VDO_CMDT_MASK;
@@ -4765,7 +4792,7 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 		type = PD_HEADER_TYPE(emsg[port].header);
 		cnt = PD_HEADER_CNT(emsg[port].header);
 		ext = PD_HEADER_EXT(emsg[port].header);
-		payload = *(uint32_t *)emsg[port].buf;
+		payload = *(uint32_t *)emsg[port].rx_buf;
 
 		if ((ext == 0) && (cnt == 0)) {
 			if (type == PD_CTRL_ACCEPT) {

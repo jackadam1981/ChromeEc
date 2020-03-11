@@ -208,7 +208,8 @@ static struct pd_message {
 	/* Number of 32-bit objects in chk_buf */
 	uint16_t data_objs;
 	/* temp chunk buffer */
-	uint32_t chk_buf[7];
+	uint32_t tx_chk_buf[7];
+	uint32_t rx_chk_buf[7];
 	uint32_t chunk_number_expected;
 	uint32_t num_bytes_received;
 	uint32_t chunk_number_to_send;
@@ -664,7 +665,7 @@ static void prl_tx_construct_message(const int port)
 
 	/* Pass message to PHY Layer */
 	tcpm_transmit(port, pdmsg[port].xmit_type, header,
-						pdmsg[port].chk_buf);
+						pdmsg[port].tx_chk_buf);
 }
 
 /*
@@ -701,7 +702,7 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 		if (prl_tx[port].retry_counter > N_RETRY_COUNT ||
 					(pdmsg[port].ext &&
 					PD_EXT_HEADER_DATA_SIZE(GET_EXT_HEADER(
-					pdmsg[port].chk_buf[0]) > 26))) {
+					pdmsg[port].tx_chk_buf[0]) > 26))) {
 
 			/*
 			 * NOTE: PRL_Tx_Transmission_Error State embedded
@@ -936,7 +937,7 @@ static void copy_chunk_to_ext(int port)
 	pdmsg[port].num_bytes_received = (PD_HEADER_CNT(emsg[port].header) * 4);
 
 	/* Copy chunk into extended message */
-	memcpy((uint8_t *)emsg[port].buf, (uint8_t *)pdmsg[port].chk_buf,
+	memcpy((uint8_t *)emsg[port].rx_buf, (uint8_t *)pdmsg[port].rx_chk_buf,
 		pdmsg[port].num_bytes_received);
 
 	/* Set extended message length */
@@ -968,7 +969,8 @@ static void rch_wait_for_message_from_protocol_layer_run(const int port)
 		 */
 		if (prl_get_rev(port, pdmsg[port].xmit_type) == PD_REV30 &&
 					PD_HEADER_EXT(emsg[port].header)) {
-			uint16_t exhdr = GET_EXT_HEADER(*pdmsg[port].chk_buf);
+			uint16_t exhdr =
+					GET_EXT_HEADER(*pdmsg[port].rx_chk_buf);
 			uint8_t chunked = PD_EXT_HEADER_CHUNKED(exhdr);
 
 			/*
@@ -1043,7 +1045,7 @@ static void rch_pass_up_message_entry(const int port)
  */
 static void rch_processing_extended_message_run(const int port)
 {
-	uint16_t exhdr = GET_EXT_HEADER(pdmsg[port].chk_buf[0]);
+	uint16_t exhdr = GET_EXT_HEADER(pdmsg[port].rx_chk_buf[0]);
 	uint8_t chunk_num = PD_EXT_HEADER_CHUNK_NUM(exhdr);
 	uint32_t data_size = PD_EXT_HEADER_DATA_SIZE(exhdr);
 	uint32_t byte_num;
@@ -1075,9 +1077,10 @@ static void rch_processing_extended_message_run(const int port)
 
 		/* Append data */
 		/* Add 2 to chk_buf to skip over extended message header */
-		memcpy(((uint8_t *)emsg[port].buf +
+		memcpy(((uint8_t *)emsg[port].rx_buf +
 				pdmsg[port].num_bytes_received),
-				(uint8_t *)pdmsg[port].chk_buf + 2, byte_num);
+				(uint8_t *)pdmsg[port].rx_chk_buf + 2,
+				byte_num);
 		/* increment chunk number expected */
 		pdmsg[port].chunk_number_expected++;
 		/* adjust num bytes received */
@@ -1111,7 +1114,7 @@ static void rch_requesting_chunk_entry(const int port)
 	 * Send Chunk Request to Protocol Layer
 	 * with chunk number = Chunk_Number_Expected
 	 */
-	pdmsg[port].chk_buf[0] = PD_EXT_HEADER(
+	pdmsg[port].tx_chk_buf[0] = PD_EXT_HEADER(
 				pdmsg[port].chunk_number_expected,
 				1, /* Request Chunk */
 				0 /* Data Size */
@@ -1168,7 +1171,8 @@ static void rch_waiting_chunk_run(const int port)
 		 */
 
 		if (PD_HEADER_EXT(emsg[port].header)) {
-			uint16_t exhdr = GET_EXT_HEADER(pdmsg[port].chk_buf[0]);
+			uint16_t exhdr =
+				GET_EXT_HEADER(pdmsg[port].rx_chk_buf[0]);
 			/*
 			 * Other Message Received from Protocol Layer
 			 */
@@ -1292,10 +1296,10 @@ static void tch_wait_for_message_request_from_pe_run(const int port)
 
 				/* NOTE: TCH_Pass_Down_Message embedded here */
 				/* Copy message to chunked buffer */
-				memset((uint8_t *)pdmsg[port].chk_buf,
+				memset((uint8_t *)pdmsg[port].tx_chk_buf,
 					0, BUFFER_SIZE);
-				memcpy((uint8_t *)pdmsg[port].chk_buf,
-					(uint8_t *)emsg[port].buf,
+				memcpy((uint8_t *)pdmsg[port].tx_chk_buf,
+					(uint8_t *)emsg[port].tx_buf,
 					emsg[port].len);
 				/*
 				 * Pad length to 4-byte boundery and
@@ -1357,8 +1361,8 @@ static void tch_construct_chunked_message_entry(const int port)
 
 	/* Prepare to copy chunk into chk_buf */
 
-	ext_hdr = (uint16_t *)pdmsg[port].chk_buf;
-	data = ((uint8_t *)pdmsg[port].chk_buf + 2);
+	ext_hdr = (uint16_t *)pdmsg[port].tx_chk_buf;
+	data = ((uint8_t *)pdmsg[port].tx_chk_buf + 2);
 	num = emsg[port].len - pdmsg[port].send_offset;
 
 	if (num > 26)
@@ -1371,7 +1375,7 @@ static void tch_construct_chunked_message_entry(const int port)
 
 	/* Copy the message chunk into chk_buf */
 	memset(data, 0, 28);
-	memcpy(data, emsg[port].buf + pdmsg[port].send_offset, num);
+	memcpy(data, emsg[port].tx_buf + pdmsg[port].send_offset, num);
 	pdmsg[port].send_offset += num;
 
 	/*
@@ -1450,7 +1454,7 @@ static void tch_wait_chunk_request_run(const int port)
 		if (PD_HEADER_EXT(emsg[port].header)) {
 			uint16_t exthdr;
 
-			exthdr = GET_EXT_HEADER(pdmsg[port].chk_buf[0]);
+			exthdr = GET_EXT_HEADER(pdmsg[port].rx_chk_buf[0]);
 			if (PD_EXT_HEADER_REQ_CHUNK(exthdr)) {
 				/*
 				 * Chunk Request Received &
@@ -1534,7 +1538,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 
 	/* If we don't have any message, just stop processing now. */
 	if (!tcpm_has_pending_message(port) ||
-	    tcpm_dequeue_message(port, pdmsg[port].chk_buf, &header))
+	    tcpm_dequeue_message(port, pdmsg[port].rx_chk_buf, &header))
 		return;
 
 	emsg[port].header = header;
