@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eae17b2_eaec033c",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-11T18:27:10Z",
+      "side": 1,
+      "message": "for clarity:\nvoid *type_specific_data \u003d NULL;\n\nif (s-\u003eonline_calib_data) {\n  s-\u003eonline_calib_data-\u003elast_temperature \u003d -1;\n  type_specific_data \u003d s-\u003eonline_calib_data-\u003etype_specific_data;\n}",
+      "revId": "8e7cab0eebc25ce56c703b8e57b085eb9ccfa5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aa5f17c_2a2be13a",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-03-11T18:27:10Z",
+      "side": 1,
+      "message": "add line.",
+      "revId": "8e7cab0eebc25ce56c703b8e57b085eb9ccfa5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
