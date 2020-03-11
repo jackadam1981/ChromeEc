@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e660eedf_972315d4",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-11T20:37:24Z",
+      "side": 1,
+      "message": "To be honest, I don\u0027t know enough about the battery charging process to say if there are times when we definitely want to use something under the battery\u0027s normal voltage if the battery requested it.\n\nI\u0027m also surprised other platforms haven\u0027t hit this before?  There are a lot of boards using CONFIG_CHARGER_NARROW_VDC.  Is ours just more picky?  Or are we using a bad voltage request for the case where the battery isn\u0027t there?  Should the calling code for charge_request be the one changing here for the no-battery case?",
+      "range": {
+        "startLine": 1216,
+        "startChar": 1,
+        "endLine": 1216,
+        "endChar": 60
+      },
+      "revId": "c36d91ecaa9e9253198919305c8dedb4effb6a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
