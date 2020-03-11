@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f02f39ae_4772f87c",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-11T19:49:15Z",
+      "side": 1,
+      "message": "since keyscan_config isn\u0027t a const, can you make palkia board init change this field instead of editting the baseboard code here",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "3d927ba8e25ff87edf6254af531d1378065ba5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
