@@ -38,4 +38,23 @@ struct touchpad_event {
 	} __packed finger[I2C_HID_TOUCHPAD_MAX_FINGERS];
 } __packed;
 
+/* Initialize the I2C HID touchpad */
+void i2c_hid_touchpad_init(void);
+/**
+ * Process an I2C-HID command from host.
+ *
+ * @param len		>= 0 - Input data length in bytes
+ * @param buffer	Shared input/output buffer
+ * @param send_response	Function to send the response to host
+ * @param data		Extracted request content if there is any.
+ *
+ * @return the HID command identified.	< 0 - error/unsupported
+ *					LSB - I2C HID command as defined in
+ *					      include/i2c-hid.h
+ *					OBs - I2C HID register as defined in
+ *					      common/i2c_hid_touchpad.c
+ */
+int i2c_hid_touchpad_process(int len, uint8_t *buffer,
+			     void (*send_response)(int len), uint8_t *data);
+
 #endif /* __CROS_EC_I2C_HID_TOUCHPAD_H */
