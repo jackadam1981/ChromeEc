@@ -22,6 +22,30 @@
       "revId": "1dec56faef6828ac9188d8063679cbaa5ec3cd27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acfe4d88_68a3c9ad",
+        "filename": "common/ec_comm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-11T17:52:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7c9527e_e935a2cd",
+      "range": {
+        "startLine": 338,
+        "startChar": 9,
+        "endLine": 338,
+        "endChar": 24
+      },
+      "revId": "1dec56faef6828ac9188d8063679cbaa5ec3cd27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
