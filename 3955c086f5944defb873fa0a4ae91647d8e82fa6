@@ -22,6 +22,30 @@
       "revId": "3955c086f5944defb873fa0a4ae91647d8e82fa6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f611142_4d0a32b6",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-11T21:09:24Z",
+      "side": 1,
+      "message": "Yes, my initial implementation had me calling charge_manager_update_charge() followed by calling charge_manager_refresh() (the cleaner method in my opinion), but the board dies before charge manager gets to select the new charge port. Therefore, I have this hack/shortcut here.",
+      "parentUuid": "bfe31818_9476407d",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 37
+      },
+      "revId": "3955c086f5944defb873fa0a4ae91647d8e82fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
