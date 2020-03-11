@@ -22,6 +22,30 @@
       "revId": "12d8e825b11ccd7b2dae0ac23e7befa5164f7a33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe3b1ce_7f7b6090",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-11T20:15:15Z",
+      "side": 1,
+      "message": "Sure.\nDidn\u0027t add [TOC}, since Github markdown doesn\u0027t support it, but it isn\u0027t that distracting on Github anyways.\nhttps://github.com/coreboot/chrome-ec/blob/master/docs/ec-3po-design.md",
+      "parentUuid": "c95a763a_ecbf3b10",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 0
+      },
+      "revId": "12d8e825b11ccd7b2dae0ac23e7befa5164f7a33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
