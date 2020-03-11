@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec6a6b91_e573ac37",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-11T21:58:29Z",
+      "side": 1,
+      "message": "I guess ASSERT is what we want. It makes me a bit nervous that ASSERT can be disabled: https://chromium.googlesource.com/chromiumos/platform/ec/+/e99a90eadd9e22069c7764ed7ca98a312373a5aa/include/config.h#1443.\n\nI suppose we could add something like this in the file:\n\n  #if !defined(CONFIG_DEBUG_ASSERT) || !defined(CONFIG_DEBUG_ASSERT_REBOOT)\n  #error \"Expected assertions to be enabled\"\n  #endif",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a791634_254e0b85",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-11T21:58:29Z",
+      "side": 1,
+      "message": "nit: prefer early exit\n\ngo/tott/455\n\n  if (!enabled) {\n    ...\n    return\n  }\n  \n  // enabled case",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 2
+      },
+      "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ef07812_35169de1",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-11T21:58:29Z",
+      "side": 1,
+      "message": "Not strictly necessary since compiler can deduce the size: https://en.cppreference.com/w/c/language/array#Arrays_of_constant_known_size",
+      "range": {
+        "startLine": 275,
+        "startChar": 37,
+        "endLine": 275,
+        "endChar": 56
+      },
+      "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
