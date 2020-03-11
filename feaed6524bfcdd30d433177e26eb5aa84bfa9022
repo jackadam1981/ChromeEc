@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f6dd794_02357f28",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-11T01:39:48Z",
+      "side": 1,
+      "message": "how about putting these variables in a structure and then declare and use an array of UART_COUNT structures?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "feaed6524bfcdd30d433177e26eb5aa84bfa9022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf5de7c_8f1804e0",
+        "filename": "test/ec_comm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-11T01:39:48Z",
+      "side": 1,
+      "message": "I was under impression that this test was capturing the Cr50 console output, but this code implies that it is capturing the EC console. I\u0027m curious: who sends data on behalf of the EC in this case and hoe does it make into the EC console UART channel?",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 32
+      },
+      "revId": "feaed6524bfcdd30d433177e26eb5aa84bfa9022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
