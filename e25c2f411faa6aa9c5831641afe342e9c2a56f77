@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf69135c_1135864a",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-11T16:23:29Z",
+      "side": 1,
+      "message": "We don\u0027t usually do this, but I don\u0027t really have a problem with it.\nIt just can\u0027t go here, because I2C_PORT_GPU will not necessarily be defined here.\nIt would require that board.h is always #include\u0027d before this file, otherwise the #define won\u0027t be visible here and compilation will fail.  If you want to leave this section in, I would move it to the .c file in this commit.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "e25c2f411faa6aa9c5831641afe342e9c2a56f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
