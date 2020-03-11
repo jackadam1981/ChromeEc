@@ -114,7 +114,7 @@ static void ec_efs_init_(void)
 
 	ec_efs_refresh();
 }
-DECLARE_HOOK(HOOK_INIT, ec_efs_init_, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, ec_efs_init_, HOOK_PRIO_DEFAULT + 1);
 
 /**
  * TPM vendor command handler to respond with EC Boot Mode.
