@@ -25,6 +25,11 @@
 /* BMA253 accelerometer in base */
 #define CONFIG_ACCEL_BMA255
 
+/* BMI260 accel/gyro in base */
+#define CONFIG_ACCELGYRO_BMI260
+#define CONFIG_ACCELGYRO_BMI260_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+
 /* TCS3400 ALS */
 #define CONFIG_ALS
 #define ALS_COUNT		1
@@ -97,6 +102,8 @@ enum battery_type {
 
 enum sensor_id {
 	LID_ACCEL = 0,
+	BASE_ACCEL,
+	BASE_GYRO,
 	CLEAR_ALS,
 	RGB_ALS,
 	VSYNC,
