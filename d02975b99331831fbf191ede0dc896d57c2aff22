@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fc08d9ad_e9a84a02",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-11T18:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa890245_3251bbc8",
+      "revId": "d02975b99331831fbf191ede0dc896d57c2aff22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bcb0257_d5ddd0b2",
         "filename": "board/morphius/board.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "d02975b99331831fbf191ede0dc896d57c2aff22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74448f9c_46c5ba76",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-11T18:27:55Z",
+      "side": 1,
+      "message": "cbi_init is called at DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);\nThis is the same hook type, but the priority on cbi_init is 3 versus 5000 for setup_mux.\n\nIf I am reading this correctly, I believe this is fine\n\nI set my FW_CONFIG in cbi and this definitely came up after cbi_init was called.",
+      "parentUuid": "7bcb0257_d5ddd0b2",
+      "revId": "d02975b99331831fbf191ede0dc896d57c2aff22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
