@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b07bdc16_a7f956d2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-11T05:34:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2adb4a41_6fa7c95b",
+      "range": {
+        "startLine": 299,
+        "startChar": 5,
+        "endLine": 299,
+        "endChar": 16
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e9a17b9_12583855",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 13
@@ -45,6 +69,30 @@
       "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945df900_a5c3fffe",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-11T05:34:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e9a17b9_12583855",
+      "range": {
+        "startLine": 489,
+        "startChar": 10,
+        "endLine": 489,
+        "endChar": 23
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fcf50c15_15259c1d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4378,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-11T05:34:07Z",
+      "side": 1,
+      "message": "The only other variable to initialize is the wait_retry_counter and it should not be set here because this state could be entered several times due to a resend condition.",
+      "parentUuid": "c2dcfc8d_03c10684",
+      "range": {
+        "startLine": 4378,
+        "startChar": 12,
+        "endLine": 4378,
+        "endChar": 37
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74f8dabf_7da3f9cb",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 13
@@ -91,6 +163,30 @@
       "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd56398e_0a1626b9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4413,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-11T05:34:07Z",
+      "side": 1,
+      "message": "good point. I\u0027ve added a check for a protocol error.",
+      "parentUuid": "74f8dabf_7da3f9cb",
+      "range": {
+        "startLine": 4413,
+        "startChar": 5,
+        "endLine": 4413,
+        "endChar": 43
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "e6e79580_45f7a88b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4447,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-11T05:34:07Z",
+      "side": 1,
+      "message": "See Figure 8-104 in PD3 Rev1.2 spec. PE_PRS_SRC_SNK_Send_Swap transition to PE_SRC_Ready if Reject/Wait message is received or on Sender Response Timeout.",
+      "parentUuid": "7ba18682_497af65b",
+      "range": {
+        "startLine": 4446,
+        "startChar": 3,
+        "endLine": 4447,
+        "endChar": 36
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "231dda9d_009be4d0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 13
@@ -137,6 +257,30 @@
       "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d88a6395_da1385cb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4480,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-11T05:34:07Z",
+      "side": 1,
+      "message": "No assumptions. Again see figure 8-104. PE_PRS_SRC_SNK_Send_Swap transitions to PE_PRS_SRC_SNK_Transition_to_off when Accept message is received.",
+      "parentUuid": "231dda9d_009be4d0",
+      "range": {
+        "startLine": 4480,
+        "startChar": 4,
+        "endLine": 4480,
+        "endChar": 36
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "3f30d380_37c644b3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4503,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-11T05:34:07Z",
+      "side": 1,
+      "message": "See Figure 8-104",
+      "parentUuid": "07a544d6_4e9d1753",
+      "range": {
+        "startLine": 4502,
+        "startChar": 5,
+        "endLine": 4503,
+        "endChar": 38
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebd5bae0_943fbc6d",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 13
@@ -183,6 +351,30 @@
       "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dccda20d_d74efd87",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4831,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-11T05:34:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebd5bae0_943fbc6d",
+      "range": {
+        "startLine": 4831,
+        "startChar": 5,
+        "endLine": 4831,
+        "endChar": 16
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
