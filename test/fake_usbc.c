@@ -139,7 +139,6 @@ __overridable void pd_dev_get_rw_hash(int port, uint16_t *dev_id,
 		uint8_t *rw_hash, uint32_t *current_image)
 {
 }
-
 __overridable int pd_comm_is_enabled(int port)
 {
 	return 0;
