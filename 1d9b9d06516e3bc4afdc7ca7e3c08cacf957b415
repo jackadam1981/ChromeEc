@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "135366be_b3f993bc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2353,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-11T23:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb4b06ad_26d201f6",
+      "range": {
+        "startLine": 2353,
+        "startChar": 3,
+        "endLine": 2353,
+        "endChar": 28
+      },
+      "revId": "1d9b9d06516e3bc4afdc7ca7e3c08cacf957b415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5ddec10_c6b44d35",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -48,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "fd644fd2_73d72f3f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-11T23:11:18Z",
+      "side": 1,
+      "message": "pd_send_vdm already exists",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 71
+      },
+      "revId": "1d9b9d06516e3bc4afdc7ca7e3c08cacf957b415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14e13206_5ab608e3",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -59,6 +106,24 @@
       "writtenOn": "2020-03-11T22:49:31Z",
       "side": 1,
       "message": "how about naming exit_supported_alt_mode",
+      "revId": "1d9b9d06516e3bc4afdc7ca7e3c08cacf957b415",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54afcd04_89d0302a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2583,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-11T23:11:18Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t get this",
+      "parentUuid": "14e13206_5ab608e3",
       "revId": "1d9b9d06516e3bc4afdc7ca7e3c08cacf957b415",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
