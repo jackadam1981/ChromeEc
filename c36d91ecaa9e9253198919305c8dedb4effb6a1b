@@ -70,6 +70,30 @@
       "revId": "c36d91ecaa9e9253198919305c8dedb4effb6a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa42df8b_6e980b4d",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-11T22:22:27Z",
+      "side": 1,
+      "message": "Yeah, most other platforms have ACOK GPIO. On the charger side, there\u0027s the ACOK bit in the information2 register. We might be able to combine that with the operation mode field to determine whether we\u0027re running the buck/boost in reverse or not. This will be needed since we only have one VBUS path.",
+      "parentUuid": "c925d265_01d37e93",
+      "range": {
+        "startLine": 1216,
+        "startChar": 1,
+        "endLine": 1216,
+        "endChar": 60
+      },
+      "revId": "c36d91ecaa9e9253198919305c8dedb4effb6a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
