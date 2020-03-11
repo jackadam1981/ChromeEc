@@ -22,6 +22,30 @@
       "revId": "72e857d210e84d7b99e8ecccc3554ed3ba142a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04fc72f0_5bb9c1d3",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-11T21:15:18Z",
+      "side": 1,
+      "message": "That should have been caught in chip_config.h, but I can add file level checks too. That would ensure that future devs see the check and don\u0027t add add more complicated checks with #else statements (which I really want to avoid).\n\nCheckout the latest PS. Too verbose?",
+      "parentUuid": "20b851f4_e0f39b56",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "72e857d210e84d7b99e8ecccc3554ed3ba142a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
