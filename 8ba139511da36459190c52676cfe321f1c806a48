@@ -272,6 +272,23 @@
       "revId": "8ba139511da36459190c52676cfe321f1c806a48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a01639bf_30447464",
+        "filename": "include/i2c_hid_touchpad.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-11T23:14:20Z",
+      "side": 1,
+      "message": "Nit: since you\u0027re using Doxygen for the functions declared in the next CL in the series, please use it for this struct and its members.",
+      "revId": "8ba139511da36459190c52676cfe321f1c806a48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
