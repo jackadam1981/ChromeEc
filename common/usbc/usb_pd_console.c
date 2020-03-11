@@ -73,8 +73,6 @@ test_export_static int command_pd(int argc, char **argv)
 			return EC_SUCCESS;
 		} else if (!strcasecmp(argv[2], "hard")) {
 			pe_dpm_request(port, DPM_REQUEST_HARD_RESET_SEND);
-		} else if (!strcasecmp(argv[2], "info")) {
-			tc_print_dev_info(port);
 		} else if (!strcasecmp(argv[2], "soft")) {
 			pe_dpm_request(port, DPM_REQUEST_SOFT_RESET_SEND);
 		} else if (!strcasecmp(argv[2], "swap")) {
@@ -90,8 +88,6 @@ test_export_static int command_pd(int argc, char **argv)
 				pe_dpm_request(port, DPM_REQUEST_VCONN_SWAP);
 			else
 				return EC_ERROR_PARAM3;
-		} else if (!strcasecmp(argv[2], "ping")) {
-			pe_dpm_request(port, DPM_REQUEST_SEND_PING);
 		} else if (!strcasecmp(argv[2], "dualrole")) {
 			if (argc < 4) {
 				ccprintf("dual-role toggling: ");
@@ -156,14 +152,10 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 #ifdef CONFIG_USB_PD_TRY_SRC
 	"trysrc [0|1|2]"
 #endif
-
-#ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
-	"|rwhashtable"
-#endif
 	"\n\t<port> state"
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	"|tx|charger|dev"
-	"\n\t<port> disable|enable|soft|info|hard|ping"
+	"\n\t<port> disable|enable|soft|hard"
 	"\n\t<port> dualrole [on|off|freeze|sink|source]"
 	"\n\t<port> swap [power|data|vconn]"
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
