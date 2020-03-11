@@ -135,13 +135,8 @@ enum pd_dual_role_states pd_get_dual_role(int port)
 	return PD_DRP_TOGGLE_ON;
 }
 
-int pd_comm_is_enabled(int port)
-{
-	return 0;
-}
-
-void pd_dev_get_rw_hash(int port, uint16_t *dev_id, uint8_t *rw_hash,
-			uint32_t *current_image)
+__overridable void pd_dev_get_rw_hash(int port, uint16_t *dev_id,
+		uint8_t *rw_hash, uint32_t *current_image)
 {
 }
 
