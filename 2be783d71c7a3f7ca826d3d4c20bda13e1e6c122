@@ -16,6 +16,24 @@
       "revId": "2be783d71c7a3f7ca826d3d4c20bda13e1e6c122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8707a3fa_d6214880",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-03-11T16:42:49Z",
+      "side": 1,
+      "message": "Thanks for catching that, I made a few other changes since this also made me realize that not all sensors are required to have online_calib_data.",
+      "parentUuid": "3c94bcf1_bf520dd9",
+      "revId": "2be783d71c7a3f7ca826d3d4c20bda13e1e6c122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
