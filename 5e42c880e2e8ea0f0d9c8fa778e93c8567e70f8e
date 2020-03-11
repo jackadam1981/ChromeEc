@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "bd54ab9b_82170755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T00:16:19Z",
+      "side": 1,
+      "message": "add exit mode for all supported alternate modes",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3283b4_265991fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-11T00:16:19Z",
+      "side": 1,
+      "message": "here you can add moved to common code to support all alt mode exit.\nPlease check if its applicable to V2 also then only move to common code else retain in same file",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "5e42c880e2e8ea0f0d9c8fa778e93c8567e70f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e470c433_4cb361e9",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 3
