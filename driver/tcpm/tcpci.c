@@ -288,6 +288,7 @@ void tcpci_tcpc_discharge_vbus(int port, int enable)
  */
 void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
 {
+	ccprints("p%d AUTO_DISCHARGE->%d", port, enable);
 	tcpc_update8(port,
 		     TCPC_REG_POWER_CTRL,
 		     TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT,
