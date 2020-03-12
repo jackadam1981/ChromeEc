@@ -86,8 +86,6 @@ static void reset_rx_fifo(void)
 	IT83XX_SPI_TXRXFAR = 0x00;
 	/* Rx FIFO reset and count monitor reset */
 	IT83XX_SPI_FCR = IT83XX_SPI_RXFR | IT83XX_SPI_RXFCMR;
-	/* Enable Rx FIFO full interrupt */
-	IT83XX_SPI_IMR &= ~IT83XX_SPI_RFFIM;
 }
 
 /* This routine handles spi received unexcepted data */
@@ -241,8 +239,30 @@ void spi_event(enum gpio_signal signal)
 
 void spi_slv_int_handler(void)
 {
-	/* Interrupt status register */
-	int spi_status = IT83XX_SPI_ISR;
+	/*
+	 * The status of SPI end detection interrupt bit is set,
+	 * the AP ended the transaction data.
+	 */
+	if (IT83XX_SPI_ISR & IT83XX_SPI_ENDDETECTINT) {
+#ifndef IT83XX_SPI_AUTO_RESET_RX_FIFO
+		/* Reset fifo and prepare to receive next transaction */
+		reset_rx_fifo();
+#endif
+#ifndef IT83XX_SPI_RX_VALID_INT
+		/* Enable Rx FIFO full interrupt */
+		IT83XX_SPI_IMR &= ~IT83XX_SPI_RFFIM;
+#endif
+		/* Ready to receive */
+		spi_set_state(SPI_STATE_READY_TO_RECV);
+		/*
+		 * Once there is no SPI active, enable idle task deep
+		 * sleep bit of SPI in S3 or lower.
+		 */
+		enable_sleep(SLEEP_MASK_SPI);
+
+		/* CS# is deasserted, so write clear all slave status */
+		IT83XX_SPI_ISR = 0xff;
+	}
 
 	/*
 	 * The status of Rx FIFO full interrupt bit is set,
@@ -254,31 +274,26 @@ void spi_slv_int_handler(void)
 	 * generate clock that is not the bytes sent from
 	 * the host.
 	 */
-	if (spi_status & IT83XX_SPI_RXFIFOFULL &&
-		spi_slv_state == SPI_STATE_RECEIVING) {
+	if (IT83XX_SPI_ISR & IT83XX_SPI_RXFIFOFULL) {
 		/* Disable Rx FIFO full interrupt */
 		IT83XX_SPI_IMR |= IT83XX_SPI_RFFIM;
+		/* write clear slave status */
+		IT83XX_SPI_ISR = IT83XX_SPI_RXFIFOFULL;
+#ifndef IT83XX_SPI_RX_VALID_INT
 		/* Parse header for version of spi-protocol */
 		spi_parse_header();
-	}
-	/*
-	 * The status of SPI end detection interrupt bit is set,
-	 * the AP ended the transaction data.
-	 */
-	if (spi_status & IT83XX_SPI_ENDDETECTINT) {
-		/* Reset fifo and prepare to receive next transaction */
-		reset_rx_fifo();
-		/* Ready to receive */
-		spi_set_state(SPI_STATE_READY_TO_RECV);
-		/*
-		 * Once there is no SPI active, enable idle task deep
-		 * sleep bit of SPI in S3 or lower.
-		 */
-		enable_sleep(SLEEP_MASK_SPI);
+#endif
 	}
 
-	/* Write clear the slave status */
-	IT83XX_SPI_ISR = spi_status;
+	if (IT83XX_SPI_RX_VLISR & IT83XX_SPI_RVLI) {
+		/* write clear slave status */
+		IT83XX_SPI_RX_VLISR = IT83XX_SPI_RVLI;
+#ifdef IT83XX_SPI_RX_VALID_INT
+		/* Parse header for version of spi-protocol */
+		spi_parse_header();
+#endif
+	}
+
 	/* Clear the interrupt status */
 	task_clear_pending_irq(IT83XX_IRQ_SPI_SLAVE);
 }
@@ -298,7 +313,11 @@ static void spi_chipset_startup(void)
 	 * bit7 : Rx FIFO full interrupt mask
 	 * bit2 : SPI end detection interrupt mask
 	 */
-	IT83XX_SPI_IMR &= ~(IT83XX_SPI_RFFIM | IT83XX_SPI_EDIM);
+	IT83XX_SPI_IMR &= ~IT83XX_SPI_EDIM;
+#ifndef IT83XX_SPI_RX_VALID_INT
+	/* Enable Rx FIFO full interrupt */
+	IT83XX_SPI_IMR &= ~IT83XX_SPI_RFFIM;
+#endif
 	/* Enable SPI chip select pin interrupt */
 	gpio_clear_pending_interrupt(GPIO_SPI0_CS);
 	gpio_enable_interrupt(GPIO_SPI0_CS);
@@ -334,10 +353,31 @@ static void spi_init(void)
 	/* Set dummy blcoked byte */
 	IT83XX_SPI_HPR2 = 0x00;
 	/* Set FIFO data target count */
+#ifdef IT83XX_SPI_RX_VALID_INT
+	IT83XX_SPI_FTCB1R = 0;
+	IT83XX_SPI_FTCB0R = 16;
+#else
 	IT83XX_SPI_FTCB1R = SPI_RX_MAX_FIFO_SIZE >> 8;
 	IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE;
+#endif
 	/* SPI slave controller enable */
 	IT83XX_SPI_SPISGCR = IT83XX_SPI_SPISCEN;
+
+#ifdef IT83XX_SPI_RX_VALID_INT
+	/* Rx valid length interrupt enabled */
+	IT83XX_SPI_RX_VLISMR &= ~IT83XX_SPI_RVLIM;
+#endif
+
+#ifdef IT83XX_SPI_AUTO_RESET_RX_FIFO
+	/*
+	 * General control register2
+	 * bit4 : Rx FIFO2 will not be overwrited once it's full.
+	 * bit3 : Rx FIFO1 will not be overwrited once it's full.
+	 * bit0 : Rx FIFO1/FIFO2 will reset after each CS_N goes high.
+	 */
+	IT83XX_SPI_GCR2 = IT83XX_SPI_RXF2OC | IT83XX_SPI_RXF1OC
+				| IT83XX_SPI_RXFAR;
+#endif
 
 	if (system_jumped_to_this_image() &&
 	    chipset_in_state(CHIPSET_STATE_ON)) {
