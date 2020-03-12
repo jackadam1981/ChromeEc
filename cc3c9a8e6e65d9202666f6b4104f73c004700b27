@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "988161b2_dfcdce58",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 4765,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-12T23:25:10Z",
+      "side": 1,
+      "message": "This does immediately jump out to me as well. I read thru the thread in the other patchset, and it makes sense. But, what\u0027s the reason that the SNK-\u003eSRC PR_SWAP can\u0027t use this as well? I wonder if it would be clearer if there was just one place where all the swap requests were handled.",
+      "range": {
+        "startLine": 4763,
+        "startChar": 0,
+        "endLine": 4765,
+        "endChar": 0
+      },
+      "revId": "cc3c9a8e6e65d9202666f6b4104f73c004700b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
