@@ -19,9 +19,7 @@
 struct consumer const blob_consumer;
 struct usb_stream_config const usb_blob;
 
-static struct queue const blob_to_usb = QUEUE_DIRECT(64, uint8_t,
-						     null_producer,
-						     usb_blob.consumer);
+QUEUE_USB_TX_CONFIG(blob_to_usb, 64, null_producer, usb_blob.consumer);
 static struct queue const usb_to_blob = QUEUE_DIRECT(64, uint8_t,
 						     usb_blob.producer,
 						     blob_consumer);
