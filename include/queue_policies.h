@@ -10,6 +10,7 @@
 #include "queue.h"
 #include "consumer.h"
 #include "producer.h"
+#include "usb_descriptor.h"
 
 /*
  * The direct notification policy manages a 1-to-1 producer consumer model.
@@ -39,6 +40,12 @@ void queue_remove_direct(struct queue_policy const *policy, size_t count);
 
 #define QUEUE_DIRECT(SIZE, TYPE, PRODUCER, CONSUMER)			\
 	QUEUE(SIZE, TYPE, QUEUE_POLICY_DIRECT(PRODUCER, CONSUMER).policy)
+
+#define QUEUE_USB_TX_CONFIG(NAME, SIZE, PRODUCER, CONSUMER)		\
+	USB_EP_TX_BUF(CONCAT2(NAME, _buf_tx_), SIZE);			\
+	static struct queue const NAME =				\
+		MAKE_QUEUE(CONCAT2(NAME, _buf_tx_), SIZE,		\
+		     QUEUE_POLICY_DIRECT(PRODUCER, CONSUMER).policy)
 
 /*
  * The null_producer and null_consumer are useful when constructing a queue
