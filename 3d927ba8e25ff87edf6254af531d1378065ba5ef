@@ -46,6 +46,30 @@
       "revId": "3d927ba8e25ff87edf6254af531d1378065ba5ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fb1b418_7b3afe73",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-12T20:19:14Z",
+      "side": 1,
+      "message": "SGTM. I think the extra space is worth the abstraction of layers. Thanks!",
+      "parentUuid": "52ddeee1_0c4a46f2",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "3d927ba8e25ff87edf6254af531d1378065ba5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
