@@ -536,6 +536,8 @@ enum nvmem_users {
 
 #define CONFIG_CCD_ITE_PROGRAMMING
 
+#define CONFIG_ENABLE_H1_GLOBALSEC_USB
+
 /*
  * Increase sizes of USB over I2C read and write queues. Sizes are are such
  * that when appropriate overheads are included, total buffer sizes are powers

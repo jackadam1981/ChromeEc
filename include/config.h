@@ -1502,6 +1502,12 @@
  */
 #undef CONFIG_ENABLE_H1_ALERTS_CONSOLE
 
+/*
+ * Enable to configure GLOBALSEC_DDMA_REGION and GLOBALSEC_DUSB_REGION
+ * registers.
+ */
+#undef CONFIG_ENABLE_H1_GLOBALSEC_USB
+
 /*****************************************************************************/
 /*
  * Debugging config
