@@ -34,6 +34,7 @@
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "regulator.h"
 #include "spi.h"
 #include "switch.h"
 #include "tablet_mode.h"
@@ -524,6 +525,26 @@ void board_enable_sd_card(void)
 	ldo_write(0x09, 0xd0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_enable_sd_card, HOOK_PRIO_DEFAULT);
+
+int board_regulator_set_enable(uint32_t index, uint8_t enabled)
+{
+	return EC_SUCCESS;
+}
+
+int board_regulator_is_enabled(uint32_t index)
+{
+	return 1;
+}
+
+int board_regulator_set_voltage(uint32_t index, uint32_t selector)
+{
+	return EC_SUCCESS;
+}
+
+int board_regulator_get_voltage(uint32_t index)
+{
+	return 0;
+}
 
 /* Lid */
 #ifndef TEST_BUILD

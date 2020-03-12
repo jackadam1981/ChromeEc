@@ -3063,6 +3063,10 @@
 #undef CONFIG_RAM_SIZE
 #undef CONFIG_ROM_SIZE
 
+/* Support voltage regulator host command */
+#undef CONFIG_REGULATOR
+#undef CONFIG_REGULATOR_COUNT
+
 /* Support IR357x Link voltage regulator debugging / reprogramming */
 #undef CONFIG_REGULATOR_IR357X
 
