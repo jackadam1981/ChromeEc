@@ -1270,6 +1270,61 @@ static void usb_softreset(void)
 #endif
 }
 
+#define CTRL_READ_EN	(GC_GLOBALSEC_DDMA0_REGION0_CTRL_RD_EN_MASK |	\
+			 GC_GLOBALSEC_DDMA0_REGION0_CTRL_EN_MASK)
+#define CTRL_WRITE_EN	(GC_GLOBALSEC_DDMA0_REGION0_CTRL_WR_EN_MASK |	\
+			 GC_GLOBALSEC_DDMA0_REGION0_CTRL_EN_MASK)
+#define CTRL_RDWR_EN	(CTRL_READ_EN | CTRL_WRITE_EN)
+
+static void usb_globalsec_config(void)
+{
+	/*
+	 * If GLOBALSEC CTRL register program is disabled, then
+	 * it means the registers are locked by the earlier call
+	 * to this function. Let's return.
+	 */
+	if (!GREG32(GLOBALSEC, DDMA0_REGION0_CTRL_CFG_EN))
+		return;
+
+	/* DDMA0_REGION CONFIG */
+	/* Configure DDMA0_REGION0 for USB TX buffer. */
+	GREG32(GLOBALSEC, DDMA0_REGION0_BASE_ADDR) = (uint32_t)__usb_dma_tx_buf;
+	GREG32(GLOBALSEC, DDMA0_REGION0_SIZE) = USB_DMA_TX_BUF_SIZE;
+	GREG32(GLOBALSEC, DDMA0_REGION0_CTRL) = CTRL_READ_EN;
+
+	/* Set up DDMA0_REGION0 for USB RX buffer. */
+	GREG32(GLOBALSEC, DDMA0_REGION1_BASE_ADDR) = (uint32_t)__usb_dma_rx_buf;
+	GREG32(GLOBALSEC, DDMA0_REGION1_SIZE) = USB_DMA_RX_BUF_SIZE;
+	GREG32(GLOBALSEC, DDMA0_REGION1_CTRL) = CTRL_WRITE_EN;
+
+	/* Disable the rest of DDMA0_REGION. */
+	GREG32(GLOBALSEC, DDMA0_REGION2_CTRL) = 0;
+	GREG32(GLOBALSEC, DDMA0_REGION3_CTRL) = 0;
+
+	/* Lock the configuration program.*/
+	GREG32(GLOBALSEC, DDMA0_REGION0_CTRL_CFG_EN) = 0;
+	GREG32(GLOBALSEC, DDMA0_REGION1_CTRL_CFG_EN) = 0;
+	GREG32(GLOBALSEC, DDMA0_REGION2_CTRL_CFG_EN) = 0;
+	GREG32(GLOBALSEC, DDMA0_REGION3_CTRL_CFG_EN) = 0;
+
+	/* DUSB0_REGION CONFIG */
+	/* Configure DUSB0_REGION0 for USB TX buffer. */
+	GREG32(GLOBALSEC, DUSB0_REGION0_BASE_ADDR) = (uint32_t)__usb_dma_data;
+	GREG32(GLOBALSEC, DUSB0_REGION0_SIZE) = USB_DMA_DATA_SIZE;
+	GREG32(GLOBALSEC, DUSB0_REGION0_CTRL) = CTRL_RDWR_EN;
+
+	/* Disable the rest of DDMA0_REGION. */
+	GREG32(GLOBALSEC, DUSB0_REGION1_CTRL) = 0;
+	GREG32(GLOBALSEC, DUSB0_REGION2_CTRL) = 0;
+	GREG32(GLOBALSEC, DUSB0_REGION3_CTRL) = 0;
+
+	/* Lock the configuration program.*/
+	GREG32(GLOBALSEC, DUSB0_REGION0_CTRL_CFG_EN) = 0;
+	GREG32(GLOBALSEC, DUSB0_REGION1_CTRL_CFG_EN) = 0;
+	GREG32(GLOBALSEC, DUSB0_REGION2_CTRL_CFG_EN) = 0;
+	GREG32(GLOBALSEC, DUSB0_REGION3_CTRL_CFG_EN) = 0;
+}
+
 void usb_connect(void)
 {
 	print_later("usb_connect()", 0, 0, 0, 0, 0);
@@ -1337,16 +1392,7 @@ void usb_init(void)
 	resume = ((system_get_reset_flags() & EC_RESET_FLAG_USB_RESUME) &&
 		   (GR_USB_GINTSTS & GC_USB_GINTSTS_WKUPINT_MASK));
 
-	/* TODO(crosbug.com/p/46813): Clean this up. Do only what's needed, and
-	 * use meaningful constants instead of magic numbers. */
-	GREG32(GLOBALSEC, DDMA0_REGION0_CTRL) = 0xffffffff;
-	GREG32(GLOBALSEC, DDMA0_REGION1_CTRL) = 0xffffffff;
-	GREG32(GLOBALSEC, DDMA0_REGION2_CTRL) = 0xffffffff;
-	GREG32(GLOBALSEC, DDMA0_REGION3_CTRL) = 0xffffffff;
-	GREG32(GLOBALSEC, DUSB0_REGION0_CTRL) = 0xffffffff;
-	GREG32(GLOBALSEC, DUSB0_REGION1_CTRL) = 0xffffffff;
-	GREG32(GLOBALSEC, DUSB0_REGION2_CTRL) = 0xffffffff;
-	GREG32(GLOBALSEC, DUSB0_REGION3_CTRL) = 0xffffffff;
+	usb_globalsec_config();
 
 	/* Enable clocks */
 	clock_enable_module(MODULE_USB, 1);
