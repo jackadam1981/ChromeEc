@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c95b33fc_764919cf",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-03-12T13:30:43Z",
+      "side": 1,
+      "message": "Overall LGTM, just one more thing: revert everything below this line",
+      "revId": "ea69982c9e62c420f7bcd04caf673c0554369db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
