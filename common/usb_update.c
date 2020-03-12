@@ -51,6 +51,7 @@ struct usb_stream_config const usb_update;
 static struct queue const update_to_usb = QUEUE_DIRECT(64, uint8_t,
 						     null_producer,
 						     usb_update.consumer);
+
 static struct queue const usb_to_update = QUEUE_DIRECT(64, uint8_t,
 						     usb_update.producer,
 						     update_consumer);
