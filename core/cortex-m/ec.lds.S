@@ -319,6 +319,14 @@ SECTIONS
 			*(.bss.Tpm2_common)
 		__bss_libtpm2_end = .;
 
+		/*
+		 * Group struct g_usb_desc data so it can be guarded as in a
+		 * GLOBALSEC_DUSB0_REGION.
+		 */
+		__usb_ep_xfer_desc = .;
+		*(.bss.usb_ep_xfer_desc)
+		__usb_ep_xfer_desc_end = .;
+
 		*(.bss)
 
 		/*
