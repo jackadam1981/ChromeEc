@@ -34,6 +34,7 @@
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "regulator.h"
 #include "spi.h"
 #include "switch.h"
 #include "tablet_mode.h"
@@ -503,27 +504,201 @@ __override uint8_t board_get_usb_pd_port_count(void)
 		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
 }
 
-void ldo_write(uint8_t offset, uint8_t value) {
+/*
+ * TODO(pihsun): Should these functions be here or mt6360.c?
+ */
+static int ldo_write8(int reg, int val)
+{
 	/*
-	 * TODO(pihsun): This is correct because the length == 1 -> the high 3
-	 * bits of the offset byte is 0. Consider having a general function
-	 * that can handle 1~4 bytes of data?
+	 * TODO(pihsun): The checksum from I2C_FLAG_PEC happens to be correct
+	 * because the length == 1 -> the high 3 bits of the offset byte is 0.
+	 * Consider moving the checksum to here for a general function that can
+	 * handle 1~4 bytes of data?
 	 */
-	i2c_write8(0, 0x64 | I2C_FLAG_PEC, offset, value);
+	return i2c_write8(0, MT6360_LDO_SLAVE_ADDR_FLAGS | I2C_FLAG_PEC, reg,
+			  val);
+}
+
+static int ldo_read8(int reg, int *val)
+{
+	/* TODO(pihsun): Verify CRC */
+	return i2c_read8(0, MT6360_LDO_SLAVE_ADDR_FLAGS, reg, val);
+}
+
+static int ldo_update_bits(int reg, int mask, int val)
+{
+	int rv;
+	int reg_val = 0;
+
+	rv = ldo_read8(reg, &reg_val);
+	if (rv)
+		return rv;
+	reg_val &= ~mask;
+	reg_val |= (mask & val);
+	rv = ldo_write8(reg, reg_val);
+	return rv;
+}
+
+static inline int ldo_set_bit(int reg, int mask)
+{
+	return ldo_update_bits(reg, mask, mask);
+}
+
+static inline int ldo_clr_bit(int reg, int mask)
+{
+	return ldo_update_bits(reg, mask, 0x00);
 }
 
 /* SD Card */
 void board_enable_sd_card(void)
 {
 	/* Enable power to SD Card (LOD5, LDO3) */
-	ldo_write(0x0b, 0xc0);
-	ldo_write(0x05, 0xc0);
+	ldo_write8(MT6360_REG_LDO5_EN_CTRL2, MT6360_MASK_LDO5_SW_OP_EN | MT6360_MASK_LDO5_SW_EN);
+	ldo_write8(MT6360_REG_LDO3_EN_CTRL2, MT6360_MASK_LDO3_SW_OP_EN | MT6360_MASK_LDO3_SW_EN);
 
 	/* Set LOD5, LDO3 to 3.3V */
-	ldo_write(0x0f, 0x55);
-	ldo_write(0x09, 0xd0);
+	/*
+	 * TODO(pihsun): Code was originally writing 0x55 to 0x0F, which is
+	 * 3.35V according to data sheet, is it intended?
+	 */
+	ldo_write8(MT6360_REG_LDO5_CTRL3, MT6360_MASK_LDO5_VOSEL_3_3V);
+	ldo_write8(MT6360_REG_LDO3_CTRL3, MT6360_MASK_LDO3_VOSEL_3_3V);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_enable_sd_card, HOOK_PRIO_DEFAULT);
+
+int board_regulator_set_enable(uint32_t index, uint8_t enabled)
+{
+	switch (index) {
+	case REGULATOR_LDO3:
+		if (enabled)
+			return ldo_set_bit(MT6360_REG_LDO3_EN_CTRL2,
+					   MT6360_MASK_LDO3_SW_EN);
+		else
+			return ldo_clr_bit(MT6360_REG_LDO3_EN_CTRL2,
+					   MT6360_MASK_LDO3_SW_EN);
+	case REGULATOR_LDO5:
+		if (enabled)
+			return ldo_set_bit(MT6360_REG_LDO5_EN_CTRL2,
+					   MT6360_MASK_LDO5_SW_EN);
+		else
+			return ldo_clr_bit(MT6360_REG_LDO5_EN_CTRL2,
+					   MT6360_MASK_LDO5_SW_EN);
+	default:
+		return EC_ERROR_INVAL;
+	}
+}
+
+int board_regulator_is_enabled(uint32_t index, uint8_t *enabled)
+{
+	int data;
+	int rv;
+
+	switch (index) {
+	case REGULATOR_LDO3:
+		rv = ldo_read8(MT6360_REG_LDO3_EN_CTRL2, &data);
+		if (rv) {
+			CPRINTS("Error reading LDO3 enabled: %d", rv);
+			return rv;
+		}
+		*enabled = !!(data & MT6360_MASK_LDO3_SW_EN);
+		return EC_SUCCESS;
+	case REGULATOR_LDO5:
+		rv = ldo_read8(MT6360_REG_LDO5_EN_CTRL2, &data);
+		if (rv) {
+			CPRINTS("Error reading LDO5 enabled: %d", rv);
+			return rv;
+		}
+		*enabled = !!(data & MT6360_MASK_LDO5_SW_EN);
+		return EC_SUCCESS;
+	default:
+		CPRINTS("Unknown regulator index %d", index);
+		return EC_ERROR_INVAL;
+	}
+}
+
+int board_regulator_set_voltage(uint32_t index, uint32_t selector)
+{
+	switch (index) {
+	case REGULATOR_LDO3:
+		switch (selector) {
+		case 0:
+			return ldo_update_bits(MT6360_REG_LDO3_CTRL3,
+					       MT6360_MASK_LDO3_VOSEL,
+					       MT6360_MASK_LDO3_VOSEL_1_8V);
+		case 1:
+			return ldo_update_bits(MT6360_REG_LDO3_CTRL3,
+					       MT6360_MASK_LDO3_VOSEL,
+					       MT6360_MASK_LDO3_VOSEL_3_3V);
+		default:
+			CPRINTS("Unknown LDO3 selector value: %d", selector);
+			return EC_ERROR_INVAL;
+		}
+	case REGULATOR_LDO5:
+		switch (selector) {
+		case 0:
+			return ldo_update_bits(MT6360_REG_LDO5_CTRL3,
+					       MT6360_MASK_LDO5_VOSEL,
+					       MT6360_MASK_LDO5_VOSEL_3_3V);
+		default:
+			CPRINTS("Unknown LDO5 selector value: %d", selector);
+			return EC_ERROR_INVAL;
+		}
+	default:
+		CPRINTS("Unknown regulator index %d", index);
+		return EC_ERROR_INVAL;
+	}
+}
+
+int board_regulator_get_voltage(uint32_t index, uint32_t *selector)
+{
+	int data;
+	int rv;
+
+	switch (index) {
+	case REGULATOR_LDO3:
+		rv = ldo_read8(MT6360_REG_LDO3_CTRL3, &data);
+		if (rv) {
+			CPRINTS("Error reading LDO3 ctrl3: %d", rv);
+			return rv;
+		}
+		switch (data & MT6360_MASK_LDO3_VOSEL) {
+		case MT6360_MASK_LDO3_VOSEL_1_8V:
+			*selector = 0;
+			return EC_SUCCESS;
+		case MT6360_MASK_LDO3_VOSEL_3_3V:
+			*selector = 1;
+			return EC_SUCCESS;
+		default:
+			/*
+			 * TODO(pihsun): Do we need to support / put in all
+			 * possible voltage values here?
+			 */
+			CPRINTS("Unknown LDO3 voltage value: %d", data);
+			return EC_ERROR_INVAL;
+		}
+	case REGULATOR_LDO5:
+		rv = ldo_read8(MT6360_REG_LDO5_CTRL3, &data);
+		if (rv) {
+			CPRINTS("Error reading LDO5 ctrl3: %d", rv);
+			return rv;
+		}
+		switch (data & MT6360_MASK_LDO5_VOSEL) {
+		case MT6360_MASK_LDO5_VOSEL_3_3V:
+			*selector = 0;
+			return EC_SUCCESS;
+		default:
+			/*
+			 * TODO(pihsun): Do we need to support / put in all
+			 * possible voltage values here?
+			 */
+			CPRINTS("Unknown LDO5 voltage value: %d", data);
+			return EC_ERROR_INVAL;
+		}
+	default:
+		CPRINTS("Unknown regulator index %d", index);
+		return EC_ERROR_INVAL;
+	}
+}
 
 /* Lid */
 #ifndef TEST_BUILD
