@@ -141,6 +141,30 @@
       "revId": "b61ea7804a7821a80611a71053c5490b19bae5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14b10103_24084954",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2020-03-12T02:25:25Z",
+      "side": 1,
+      "message": "It is tested by Devin Lu from Quanta:\nTEST\u003dManually testing as following:\nAttached C to hdmi dongle that works as expected.\nAttached charger, make sure DUT can be charged as expected.\nAttached with HP USB-C/A Universal Dock G2, make sure\nDUT can be charged and can\u0027t see tcpc timeout.",
+      "parentUuid": "9ffad93e_60a909b6",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "b61ea7804a7821a80611a71053c5490b19bae5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
