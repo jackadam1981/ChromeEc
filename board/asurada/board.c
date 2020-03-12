@@ -34,6 +34,7 @@
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "regulator.h"
 #include "spi.h"
 #include "switch.h"
 #include "tablet_mode.h"
@@ -550,14 +551,51 @@ void ldo_write(uint8_t offset, uint8_t value) {
 void board_enable_sd_card(void)
 {
 	/* Enable power to SD Card (LOD5, LDO3) */
-	ldo_write(0x0b, 0xc0);
-	ldo_write(0x05, 0xc0);
+	mt6360_ldo_enable(MT6360_LDO5, 1);
+	mt6360_ldo_enable(MT6360_LDO3, 1);
 
 	/* Set LOD5, LDO3 to 3.3V */
-	ldo_write(0x0f, 0x55);
-	ldo_write(0x09, 0xd0);
+	mt6360_ldo_set_voltage(MT6360_LDO5, 3300, 3300);
+	mt6360_ldo_set_voltage(MT6360_LDO3, 3300, 3300);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_enable_sd_card, HOOK_PRIO_DEFAULT);
+
+int board_regulator_get_info(uint32_t index, char *name,
+			     uint16_t *num_voltages, uint16_t *voltages_mv)
+{
+	enum mt6360_ldo_id ldo_id = index;
+
+	return mt6360_ldo_get_info(ldo_id, name, num_voltages, voltages_mv);
+}
+
+int board_regulator_enable(uint32_t index, uint8_t enable)
+{
+	enum mt6360_ldo_id ldo_id = index;
+
+	return mt6360_ldo_enable(ldo_id, enable);
+}
+
+int board_regulator_is_enabled(uint32_t index, uint8_t *enabled)
+{
+	enum mt6360_ldo_id ldo_id = index;
+
+	return mt6360_ldo_is_enabled(ldo_id, enabled);
+}
+
+int board_regulator_set_voltage(uint32_t index, uint32_t min_mv,
+				uint32_t max_mv)
+{
+	enum mt6360_ldo_id ldo_id = index;
+
+	return mt6360_ldo_set_voltage(ldo_id, min_mv, max_mv);
+}
+
+int board_regulator_get_voltage(uint32_t index, uint32_t *voltage_mv)
+{
+	enum mt6360_ldo_id ldo_id = index;
+
+	return mt6360_ldo_get_voltage(ldo_id, voltage_mv);
+}
 
 /* Sensor */
 static struct mutex g_base_mutex;
