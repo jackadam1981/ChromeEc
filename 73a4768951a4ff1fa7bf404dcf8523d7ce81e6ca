@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d975d2b8_3c8425b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-12T07:26:00Z",
+      "side": 1,
+      "message": "what is DFET?",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "73a4768951a4ff1fa7bf404dcf8523d7ce81e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e77996_6667feb9",
+        "filename": "include/battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-12T07:26:00Z",
+      "side": 1,
+      "message": "We already have battery_is_present here.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 6
+      },
+      "revId": "73a4768951a4ff1fa7bf404dcf8523d7ce81e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce58f9e_4b798b1b",
+        "filename": "include/battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-12T07:26:00Z",
+      "side": 1,
+      "message": "I agree with Ting that we should not put these two functions here, because:\n\n1. I can\u0027t tell the difference from their naming. They are too similar.\n2. We handle battery_is_present at above. If you are going to make it __override_proto, you have to also mark all the symbols as __override for all the existing battery_is_present.\n3. We have some other ways to fix this gracefully. e.g. keep battery_is_present as is, and declare __override_proto for battery_check_present_status (renames to board_battery_is_present might be a good idea) in baseboard or battery_smart level.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 0
+      },
+      "revId": "73a4768951a4ff1fa7bf404dcf8523d7ce81e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
