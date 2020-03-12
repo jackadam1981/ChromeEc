@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "41401f28_7396fa7a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4447,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-12T22:28:52Z",
+      "side": 1,
+      "message": "If this code knows we are a SNK, then why does the above code handle both SNK and SRC path?\n\nMaybe this should be the path for both PRS SRC and SNK and the FRS path becomes it own path now.",
+      "parentUuid": "85ef00db_9a292ebc",
+      "range": {
+        "startLine": 4446,
+        "startChar": 3,
+        "endLine": 4447,
+        "endChar": 36
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "231dda9d_009be4d0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 13
