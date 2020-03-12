@@ -30,8 +30,8 @@ enum gpio_signal {
 };
 BUILD_ASSERT(GPIO_COUNT < GPIO_LIMIT);
 
-#define IOEX(name, expin, flags) IOEX_##name,
-#define IOEX_INT(name, expin, flags, signal) IOEX_##name,
+#define IOEX(name, expin, group, flags) IOEX_##name##_GRP_##group,
+#define IOEX_INT(name, expin, group, flags, signal) IOEX_##name##_GRP_##group,
 
 enum ioex_signal {
 	/* The first valid IOEX signal is 0x1000 */

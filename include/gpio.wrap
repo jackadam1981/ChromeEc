@@ -126,7 +126,7 @@
  * The name is used to populate enum ioex_signal by prepending "IOEX_".
  */
 #ifndef IOEX
-#define IOEX(name, expin, flags)
+#define IOEX(name, expin, group, flags)
 #endif
 
 /**
@@ -137,7 +137,7 @@
  * array.
  */
 #ifndef IOEX_INT
-#define IOEX_INT(name, expin, flags, handler)
+#define IOEX_INT(name, expin, group, flags, handler)
 #endif
 
 /*

@@ -14,13 +14,13 @@
 
 static void usba_retimer_on(void)
 {
-	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 1);
+	ioex_set_level(IOEX_USB_A1_RETIMER_EN_GRP_0, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, usba_retimer_on, HOOK_PRIO_DEFAULT);
 
 static void usba_retimer_off(void)
 {
-	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
+	ioex_set_level(IOEX_USB_A1_RETIMER_EN_GRP_0, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usba_retimer_off, HOOK_PRIO_DEFAULT);
 
@@ -32,9 +32,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usba_retimer_off, HOOK_PRIO_DEFAULT);
 static int fsusb42umx_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
-		ioex_set_level(IOEX_USB_C0_SBU_FLIP, 1);
+		ioex_set_level(IOEX_USB_C0_SBU_FLIP_GRP_0, 1);
 	else
-		ioex_set_level(IOEX_USB_C0_SBU_FLIP, 0);
+		ioex_set_level(IOEX_USB_C0_SBU_FLIP_GRP_0, 0);
 
 	return EC_SUCCESS;
 }
@@ -62,10 +62,10 @@ static int usbc1_hpd_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	if (mux_state & USB_PD_MUX_DP_ENABLED)
 		/* Enable IN_HPD on the DB */
-		ioex_set_level(IOEX_USB_C1_HPD_IN_DB, 1);
+		ioex_set_level(IOEX_USB_C1_HPD_IN_DB_GRP_0, 1);
 	else
 		/* Disable IN_HPD on the DB */
-		ioex_set_level(IOEX_USB_C1_HPD_IN_DB, 0);
+		ioex_set_level(IOEX_USB_C1_HPD_IN_DB_GRP_0, 0);
 
 	return EC_SUCCESS;
 }

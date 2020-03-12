@@ -18,6 +18,9 @@ struct ioex_info {
 	/* IO port number in IO expander */
 	uint16_t port;
 
+	/* Alternate group of the same name pin */
+	uint16_t group;
+
 	/* Bitmask on that port (1 << N) */
 	uint32_t mask;
 

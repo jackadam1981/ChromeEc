@@ -311,9 +311,9 @@ void baseboard_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
 
 	/* Enable HPD interrupts */
-	ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB);
+	ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB_GRP_0);
 #ifdef VARIANT_ZORK_TREMBYLE
-	ioex_enable_interrupt(IOEX_MST_HPD_OUT);
+	ioex_enable_interrupt(IOEX_MST_HPD_OUT_GRP_0);
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
@@ -329,7 +329,7 @@ int board_aoz1380_set_vbus_source_current_limit(int port,
 	int rv;
 
 	/* Use the TCPC to set the current limit */
-	rv = ioex_set_level(IOEX_USB_C0_PPC_ILIM_3A_EN,
+	rv = ioex_set_level(IOEX_USB_C0_PPC_ILIM_3A_EN_GRP_0,
 			    (rp == TYPEC_RP_3A0) ? 1 : 0);
 
 	return rv;
@@ -341,10 +341,10 @@ int board_tcpc_fast_role_swap_enable(int port, int enable)
 
 	/* Use the TCPC to enable fast switch when FRS included */
 	if (port == USBC_PORT_C0) {
-		rv = ioex_set_level(IOEX_USB_C0_TCPC_FASTSW_CTL_EN,
+		rv = ioex_set_level(IOEX_USB_C0_TCPC_FASTSW_CTL_EN_GRP_0,
 				    !!enable);
 	} else {
-		rv = ioex_set_level(IOEX_USB_C1_TCPC_FASTSW_CTL_EN,
+		rv = ioex_set_level(IOEX_USB_C1_TCPC_FASTSW_CTL_EN_GRP_0,
 				    !!enable);
 	}
 
@@ -445,15 +445,15 @@ BUILD_ASSERT(ARRAY_SIZE(ioex_config) == USBC_PORT_COUNT);
 BUILD_ASSERT(CONFIG_IO_EXPANDER_PORT_COUNT == USBC_PORT_COUNT);
 
 const int usb_port_enable[USB_PORT_COUNT] = {
-	IOEX_EN_USB_A0_5V,
-	IOEX_EN_USB_A1_5V_DB,
+	IOEX_EN_USB_A0_5V_GRP_0,
+	IOEX_EN_USB_A1_5V_DB_GRP_0,
 };
 
 static void baseboard_chipset_suspend(void)
 {
 	/* Disable display and keyboard backlights. */
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 1);
-	ioex_set_level(IOEX_KB_BL_EN, 0);
+	ioex_set_level(IOEX_KB_BL_EN_GRP_0, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, baseboard_chipset_suspend,
 	     HOOK_PRIO_DEFAULT);
@@ -462,7 +462,7 @@ static void baseboard_chipset_resume(void)
 {
 	/* Enable display and keyboard backlights. */
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 0);
-	ioex_set_level(IOEX_KB_BL_EN, 1);
+	ioex_set_level(IOEX_KB_BL_EN_GRP_0, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -637,11 +637,11 @@ void board_overcurrent_event(int port, int is_overcurrented)
 {
 	switch (port) {
 	case USBC_PORT_C0:
-		ioex_set_level(IOEX_USB_C0_FAULT_ODL, !is_overcurrented);
+		ioex_set_level(IOEX_USB_C0_FAULT_ODL_GRP_0, !is_overcurrented);
 		break;
 
 	case USBC_PORT_C1:
-		ioex_set_level(IOEX_USB_C1_FAULT_ODL, !is_overcurrented);
+		ioex_set_level(IOEX_USB_C1_FAULT_ODL_GRP_0, !is_overcurrented);
 		break;
 
 	default:
@@ -673,7 +673,7 @@ static void hdmi_hpd_handler(void)
 	int hpd = 0;
 
 	/* Pass HPD through from DB OPT1 HDMI connector to AP's DP1. */
-	ioex_get_level(IOEX_HDMI_CONN_HPD_3V3_DB, &hpd);
+	ioex_get_level(IOEX_HDMI_CONN_HPD_3V3_DB_GRP_0, &hpd);
 	gpio_set_level(GPIO_DP1_HPD, hpd);
 	ccprints("HDMI HPD %d", hpd);
 }
