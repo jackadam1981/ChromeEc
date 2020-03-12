@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "97bea6cb_8ed7f232",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-12T07:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4563048f_c3bc4bec",
+      "revId": "12e6aa2ec0a4c4e3ecf85424d010b7f447becaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "476740d9_213b943a",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "adcee24f_febf46a4",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-12T07:57:37Z",
+      "side": 1,
+      "message": "Even better, we can just assign it!",
+      "parentUuid": "476740d9_213b943a",
+      "revId": "12e6aa2ec0a4c4e3ecf85424d010b7f447becaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71d8a69a_6efd221a",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2020-03-11T08:12:56Z",
       "side": 1,
       "message": "Do you really care mouse reporting? This is for Chrome OS right?",
+      "revId": "12e6aa2ec0a4c4e3ecf85424d010b7f447becaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4419f1f6_42d28061",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-12T07:57:37Z",
+      "side": 1,
+      "message": "Ah, I am just trying to be protocol compliant here. HID multitouch requires the device to prepare 2 input modes: multi-touch and mouse. The kernel driver would then select the the multi-touch input report mode via \"SET_FEATURE\" HID command at the end of handshaking.\n\nI have to admit that I have never seen the mouse mode being used on ChromeOS though. However, keep in mind the code is on device, and it is hard to predict what the host OS would be. For example, we had to support Windows before. And I am unsure how Android would use it.",
+      "parentUuid": "71d8a69a_6efd221a",
       "revId": "12e6aa2ec0a4c4e3ecf85424d010b7f447becaf9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
