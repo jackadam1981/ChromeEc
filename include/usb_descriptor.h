@@ -334,6 +334,12 @@ extern struct usb_string_desc *usb_serialno_desc;
 #define USB_EP_DESC(i, num) USB_CONF_DESC(CONCAT4(iface, i, _2ep, num))
 #define USB_DMA_DESC(name)	static struct g_usb_desc name		\
 				__attribute__((section(".bss.usb_dma_desc")))
+#define USB_DMA_TX_BUF(name, size)					\
+	static uint8_t name[size] __aligned(4)				\
+		__attribute__((section(".bss.usb_dma_tx_buf")))
+#define USB_DMA_RX_BUF(name, size)					\
+	static uint8_t name[size] __aligned(4)				\
+		__attribute__((section(".bss.usb_dma_rx_buf")))
 
 /* USB Linker data */
 #define USB_MEM_SIZE(name)	((name ## _end) - (name))
@@ -345,6 +351,14 @@ extern const uint8_t __usb_desc_end[];
 extern const uint8_t __usb_dma_data[];
 extern const uint8_t __usb_dma_data_end[];
 #define USB_DMA_DATA_SIZE	USB_MEM_SIZE(__usb_dma_data)
+
+extern const uint8_t __usb_dma_tx_buf[];
+extern const uint8_t __usb_dma_tx_buf_end[];
+#define USB_DMA_TX_BUF_SIZE	USB_MEM_SIZE(__usb_dma_tx_buf)
+
+extern const uint8_t __usb_dma_rx_buf[];
+extern const uint8_t __usb_dma_rx_buf_end[];
+#define USB_DMA_RX_BUF_SIZE	USB_MEM_SIZE(__usb_dma_rx_buf)
 
 /* These descriptors defined in board code */
 extern const void * const usb_strings[];
