@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5350394a_eb61885a",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-12T18:43:47Z",
+      "side": 1,
+      "message": "Can we have this auto defined in include/config.h?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a43442_67ad7e1e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-12T18:43:47Z",
+      "side": 1,
+      "message": "How do you feel about CHARGER_NAME instead? (here and elsewhere)",
+      "range": {
+        "startLine": 137,
+        "startChar": 11,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49036cf3_15940e4e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-12T18:43:47Z",
+      "side": 1,
+      "message": "Maybe put a comment stating there\u0027s nothing to do since the charger is always powered.",
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3facb0af_1a516bea",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-12T18:43:47Z",
+      "side": 1,
+      "message": "Let\u0027s maybe use the throttle_ap() API instead. This should cover any polarity differences as well.",
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd3ef619_d0c60985",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-12T18:43:47Z",
+      "side": 1,
+      "message": "Is this just a VBUS presence register? Does it take into account if *we\u0027re* the ones sourcing VBUS?",
+      "range": {
+        "startLine": 166,
+        "startChar": 26,
+        "endLine": 166,
+        "endChar": 52
+      },
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "937d889e_5eb3e8f4",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-12T18:43:47Z",
+      "side": 1,
+      "message": "just out of curiosity, does this come from the Smart Battery spec? I\u0027m having trouble finding it.",
+      "range": {
+        "startLine": 193,
+        "startChar": 43,
+        "endLine": 193,
+        "endChar": 61
+      },
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7af85e83_953f74f8",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-12T18:43:47Z",
+      "side": 1,
+      "message": "nit: try to keep in alphabetical order",
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
