@@ -8,10 +8,12 @@
 #include "button.h"
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/ioexpander/pcal6408.h"
 #include "extpower.h"
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -126,6 +128,31 @@ struct motion_sensor_t motion_sensors[] = {
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 #endif /* HAS_TASK_MOTIONSENSE */
+
+/* These IO expander GPIOs vary with DB option. */
+enum gpio_signal IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT1;
+enum gpio_signal IOEX_EN_USB_A1_5V_DB = IOEX_EN_USB_A1_5V_DB_OPT1;
+enum gpio_signal IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT1;
+
+static void setup_usb_a1_db(void)
+{
+	if (ec_config_get_usb_db() == DALBOZ_DB_D_OPT2_USBA_HDMI) {
+
+		ioex_config[HDMI_DB].i2c_slave_addr = PCAL6408_I2C_ADDR0;
+		ioex_config[HDMI_DB].drv = &pcal6408_ioexpander_drv;
+
+		/*
+		 * TODO: need to ensure ioex_init_default() only uses the right
+		 * driver and sets the right default / initial values.
+		 */
+
+		IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT2;
+		IOEX_EN_USB_A1_5V_DB = IOEX_EN_USB_A1_5V_DB_OPT2;
+		IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT2;
+
+	}
+}
+DECLARE_HOOK(HOOK_INIT, setup_usb_a1_db, HOOK_PRIO_DEFAULT);
 
 void board_update_sensor_config_from_sku(void)
 {

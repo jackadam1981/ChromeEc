@@ -167,6 +167,8 @@
 	#define CONFIG_USBC_RETIMER_PS8818
 #elif defined(VARIANT_ZORK_DALBOZ)
 	#define CONFIG_USB_MUX_PS8740
+	#define HDMI_DB USBC_PORT_C1
+	#define CONFIG_IO_EXPANDER_PCAL6408
 #endif
 
 /* USB-A config */

@@ -446,7 +446,7 @@ BUILD_ASSERT(CONFIG_IO_EXPANDER_PORT_COUNT == USBC_PORT_COUNT);
 
 const int usb_port_enable[USB_PORT_COUNT] = {
 	IOEX_EN_USB_A0_5V,
-	IOEX_EN_USB_A1_5V_DB,
+	IOEX_EN_USB_A1_5V_DB_OPT1, /* TODO: figure out how to make this FW_CONFIG compatible */
 };
 
 static void baseboard_chipset_suspend(void)
