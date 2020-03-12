@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "4563048f_c3bc4bec",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-12T00:16:51Z",
+      "side": 1,
+      "message": "These comments are really helpful!",
+      "revId": "12e6aa2ec0a4c4e3ecf85424d010b7f447becaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "476740d9_213b943a",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-03-12T00:16:51Z",
+      "side": 1,
+      "message": "Nit: could we use `memcpy` then set `confidence` and `id`? That way we don\u0027t have to remember to keep this list of fields updated if something gets added to `struct touch_report`.",
+      "revId": "12e6aa2ec0a4c4e3ecf85424d010b7f447becaf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71d8a69a_6efd221a",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 3
