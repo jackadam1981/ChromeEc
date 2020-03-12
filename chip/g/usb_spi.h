@@ -194,9 +194,10 @@ extern struct consumer_ops const usb_spi_consumer_ops;
 		},							\
 		.tx_queue = &CONCAT2(NAME, _to_usb_),			\
 	};								\
-	static struct queue const CONCAT2(NAME, _to_usb_) =		\
-		QUEUE_DIRECT(USB_MAX_PACKET_SIZE, uint8_t,		\
-		null_producer, CONCAT2(NAME, _usb_).consumer);		\
+	QUEUE_USB_TX_CONFIG(CONCAT2(NAME, _to_usb_),			\
+			    USB_MAX_PACKET_SIZE,			\
+			    null_producer,				\
+			    CONCAT2(NAME, _usb_).consumer);		\
 	static struct queue const CONCAT3(usb_to_, NAME, _) =		\
 		QUEUE_DIRECT(USB_MAX_PACKET_SIZE, uint8_t,		\
 		CONCAT2(NAME, _usb_).producer, NAME.consumer);		\
