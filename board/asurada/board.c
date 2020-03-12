@@ -34,6 +34,7 @@
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "regulator.h"
 #include "spi.h"
 #include "switch.h"
 #include "tablet_mode.h"
@@ -512,6 +513,20 @@ void ldo_write(uint8_t offset, uint8_t value) {
 	i2c_write8(0, 0x64 | I2C_FLAG_PEC, offset, value);
 }
 
+int ldo_read(uint8_t offset) {
+	int data;
+	int rv;
+
+	/* TODO(pihsun): Verify CRC */
+	rv = i2c_read8(0, 0x64, offset, &data);
+	if (rv) {
+		CPRINTS("LDO read offset = %x ERROR %d", offset, rv);
+		return 0;
+	}
+
+	return data;
+}
+
 /* SD Card */
 void board_enable_sd_card(void)
 {
@@ -520,10 +535,74 @@ void board_enable_sd_card(void)
 	ldo_write(0x05, 0xc0);
 
 	/* Set LOD5, LDO3 to 3.3V */
-	ldo_write(0x0f, 0x55);
+	/* TODO(pihsun): Code was originally writing 0x55, which is 3.35V
+	 * according to data sheet, is it intended? */
+	ldo_write(0x0f, 0x50);
 	ldo_write(0x09, 0xd0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_enable_sd_card, HOOK_PRIO_DEFAULT);
+
+int board_regulator_set_enable(uint32_t index, uint8_t enabled)
+{
+	assert(index <= 1);
+
+	if (index == 0)
+		ldo_write(0x05, 0x80 | (enabled << 6));
+	else
+		ldo_write(0x0b, 0x80 | (enabled << 6));
+
+	return EC_SUCCESS;
+}
+
+int board_regulator_is_enabled(uint32_t index)
+{
+	assert(index <= 1);
+
+	if (index == 0)
+		return (ldo_read(0x05) & 0x40) >> 6;
+	else
+		return (ldo_read(0x0b) & 0x40) >> 6;
+}
+
+int board_regulator_set_voltage(uint32_t index, uint32_t selector)
+{
+	assert(index <= 1);
+
+	if (index == 0) {
+		if (selector > 1)
+			return EC_ERROR_INVAL;
+		ldo_write(0x09, selector == 0 ? 0x40 : 0xd0);
+	} else {
+		if (selector > 0)
+			return EC_ERROR_INVAL;
+		ldo_write(0x0f, 0x50);
+	}
+	return EC_SUCCESS;
+}
+
+int board_regulator_get_voltage(uint32_t index)
+{
+	int data;
+
+	assert(index <= 1);
+
+	if (index == 0) {
+		data = ldo_read(0x09);
+		if (data == 0x40) {
+			return 0;
+		} else if (data == 0xd0) {
+			return 1;
+		} else {
+			CPRINTS("Got unexpected LDO3 setting %x", data);
+			return 0;
+		}
+	} else {
+		data = ldo_read(0x0f);
+		if (data != 0x50)
+			CPRINTS("Got unexpected LDO5 setting %x", data);
+		return 0;
+	}
+}
 
 /* Lid */
 #ifndef TEST_BUILD
