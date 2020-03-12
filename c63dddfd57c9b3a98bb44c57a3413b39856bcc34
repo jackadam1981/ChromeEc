@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02ffe320_00ea9e02",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2342,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-12T00:31:33Z",
+      "side": 1,
+      "message": "you can move this also to common file in another CL.",
+      "range": {
+        "startLine": 2342,
+        "startChar": 12,
+        "endLine": 2342,
+        "endChar": 34
+      },
+      "revId": "c63dddfd57c9b3a98bb44c57a3413b39856bcc34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29951739_99bbee01",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2582,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-12T00:31:33Z",
+      "side": 1,
+      "message": "nit",
+      "revId": "c63dddfd57c9b3a98bb44c57a3413b39856bcc34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
