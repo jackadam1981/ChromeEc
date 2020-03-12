@@ -19,6 +19,7 @@
 #include "driver/accelgyro_bmi160.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl9241.h"
+#include "driver/ioexpander/pcal6408.h"
 #include "driver/ppc/aoz1380.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/nct38xx.h"
@@ -310,9 +311,9 @@ void baseboard_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
 
+#ifdef VARIANT_ZORK_TREMBYLE
 	/* Enable HPD interrupts */
 	ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB);
-#ifdef VARIANT_ZORK_TREMBYLE
 	ioex_enable_interrupt(IOEX_MST_HPD_OUT);
 #endif
 }
@@ -439,14 +440,20 @@ struct ioexpander_config_t ioex_config[] = {
 		.i2c_host_port = I2C_PORT_TCPC1,
 		.i2c_slave_addr = NCT38XX_I2C_ADDR1_1_FLAGS,
 		.drv = &nct38xx_ioexpander_drv,
+		.flags = IOEX_FLAGS_DISABLED,
+	},
+	[HDMI_DB] = {
+		.i2c_host_port = I2C_PORT_TCPC1,
+		.i2c_slave_addr = PCAL6408_I2C_ADDR0,
+		.drv = &pcal6408_ioexpander_drv,
+		.flags = IOEX_FLAGS_DISABLED,
 	},
 };
-BUILD_ASSERT(ARRAY_SIZE(ioex_config) == USBC_PORT_COUNT);
-BUILD_ASSERT(CONFIG_IO_EXPANDER_PORT_COUNT == USBC_PORT_COUNT);
+BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 
-const int usb_port_enable[USB_PORT_COUNT] = {
+int usb_port_enable[USB_PORT_COUNT] = {
 	IOEX_EN_USB_A0_5V,
-	IOEX_EN_USB_A1_5V_DB,
+	IOEX_EN_USB_A1_5V_DB_OPT1,
 };
 
 static void baseboard_chipset_suspend(void)

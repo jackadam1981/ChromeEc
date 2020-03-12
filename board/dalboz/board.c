@@ -8,10 +8,12 @@
 #include "button.h"
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/ioexpander/pcal6408.h"
 #include "extpower.h"
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -126,6 +128,29 @@ struct motion_sensor_t motion_sensors[] = {
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 #endif /* HAS_TASK_MOTIONSENSE */
+
+/* These IO expander GPIOs vary with DB option. */
+enum gpio_signal IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT1;
+enum gpio_signal IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT1;
+extern int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT];
+
+static void setup_usb_a1_db(void)
+{
+	if (ec_config_get_usb_db() == DALBOZ_DB_D_OPT2_USBA_HDMI) {
+		ccprints("ioex_init HDMI_DB");
+		ioex_config[HDMI_DB].flags = 0;
+		ioex_init(HDMI_DB);
+		IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT2;
+		IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT2;
+		usb_port_enable[1] = IOEX_EN_USB_A1_5V_DB_OPT2;
+		ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB);
+	} else {
+		ccprints("ioex_init USBC_PORT_C1");
+		ioex_config[USBC_PORT_C1].flags = 0;
+		ioex_init(USBC_PORT_C1);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, setup_usb_a1_db, HOOK_PRIO_INIT_I2C + 2);
 
 void board_update_sensor_config_from_sku(void)
 {

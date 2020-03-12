@@ -45,6 +45,8 @@ struct ioexpander_drv {
 	int (*enable_interrupt)(int ioex, int port, int mask, int enable);
 };
 
+#define IOEX_FLAGS_DISABLED	BIT(0)
+
 struct ioexpander_config_t {
 	/* Physical I2C port connects to the IO expander chip. */
 	int i2c_host_port;
@@ -55,6 +57,7 @@ struct ioexpander_config_t {
 	 * the struct ioexpander_drv.
 	 */
 	const struct ioexpander_drv *drv;
+	uint32_t flags;
 };
 
 extern struct ioexpander_config_t ioex_config[];

@@ -54,6 +54,11 @@ static int ioex_is_valid_interrupt_signal(enum ioex_signal signal)
 	if (signal - IOEX_SIGNAL_START >= ioex_ih_count)
 		return EC_ERROR_PARAM1;
 
+	if (ioex_config[g->ioex].flags & IOEX_FLAGS_DISABLED) {
+		ccprints("ioex %d disabled, skip %s interrupt en/dis", g->ioex, g->name);
+		return EC_ERROR_BUSY;
+	}
+
 	drv = ioex_config[g->ioex].drv;
 	/*
 	 * Not every IOEX chip can support interrupt, check it before enabling
@@ -94,21 +99,14 @@ int ioex_disable_interrupt(enum ioex_signal signal)
 	return drv->enable_interrupt(g->ioex, g->port, g->mask, 0);
 }
 
-int ioex_get_flags_by_mask(int ioex, int port, int mask, int *flags)
-{
-	return ioex_config[ioex].drv->get_flags_by_mask(ioex, port, mask,
-							flags);
-}
-
-int ioex_set_flags_by_mask(int ioex, int port, int mask, int flags)
-{
-	return ioex_config[ioex].drv->set_flags_by_mask(ioex, port, mask,
-							flags);
-}
-
 int ioex_get_flags(enum ioex_signal signal, int *flags)
 {
 	const struct ioex_info *g = ioex_get_signal_info(signal);
+
+	if (ioex_config[g->ioex].flags & IOEX_FLAGS_DISABLED) {
+		ccprints("ioex %d disabled, skip %s get_flags_by_mask", g->ioex, g->name);
+		return EC_ERROR_BUSY;
+	}
 
 	return ioex_config[g->ioex].drv->get_flags_by_mask(g->ioex,
 						g->port, g->mask, flags);
@@ -118,6 +116,11 @@ int ioex_set_flags(enum ioex_signal signal, int flags)
 {
 	const struct ioex_info *g = ioex_get_signal_info(signal);
 
+	if (ioex_config[g->ioex].flags & IOEX_FLAGS_DISABLED) {
+		ccprints("ioex %d disabled, skip %s set_flags_by_mask", g->ioex, g->name);
+		return EC_ERROR_BUSY;
+	}
+
 	return ioex_config[g->ioex].drv->set_flags_by_mask(g->ioex,
 						g->port, g->mask, flags);
 }
@@ -125,6 +128,11 @@ int ioex_set_flags(enum ioex_signal signal, int flags)
 int ioex_get_level(enum ioex_signal signal, int *val)
 {
 	const struct ioex_info *g = ioex_get_signal_info(signal);
+
+	if (ioex_config[g->ioex].flags & IOEX_FLAGS_DISABLED) {
+		ccprints("ioex %d disabled, skip %s get_level", g->ioex, g->name);
+		return EC_ERROR_BUSY;
+	}
 
 	return ioex_config[g->ioex].drv->get_level(g->ioex, g->port,
 							g->mask, val);
@@ -134,38 +142,56 @@ int ioex_set_level(enum ioex_signal signal, int value)
 {
 	const struct ioex_info *g = ioex_get_signal_info(signal);
 
+	if (ioex_config[g->ioex].flags & IOEX_FLAGS_DISABLED) {
+		ccprints("ioex %d disabled, skip %s set_level", g->ioex, g->name);
+		return EC_ERROR_BUSY;
+	}
+
 	return ioex_config[g->ioex].drv->set_level(g->ioex, g->port,
 							g->mask, value);
 }
 
 int ioex_init(int ioex)
 {
+	const struct ioex_info *g = ioex_list;
 	const struct ioexpander_drv *drv = ioex_config[ioex].drv;
+	int rv;
+	int i;
+
+	if (ioex_config[ioex].flags & IOEX_FLAGS_DISABLED) {
+		ccprints("ioex %d disabled, skip init", ioex);
+		return EC_ERROR_BUSY;
+	}
 
 	if (drv->init == NULL)
 		return EC_SUCCESS;
 
-	return  drv->init(ioex);
-}
+	rv = drv->init(ioex);
+	if (rv != EC_SUCCESS)
+		return rv;
 
-static void ioex_init_default(void)
-{
-	const struct ioex_info *g = ioex_list;
-	int i;
-
-	for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; i++)
-		ioex_init(i);
 	/*
 	 * Set all IO expander GPIOs to default flags according to the setting
 	 * in gpio.inc
 	 */
 	for (i = 0; i < IOEX_COUNT; i++, g++) {
-		if (g->mask && !(g->flags & GPIO_DEFAULT)) {
-			ioex_set_flags_by_mask(g->ioex, g->port,
-						g->mask, g->flags);
+		if (g->ioex == ioex && g->mask && !(g->flags & GPIO_DEFAULT)) {
+			rv = drv->set_flags_by_mask(g->ioex, g->port,
+						    g->mask, g->flags);
+			if (rv != EC_SUCCESS)
+				return rv;
 		}
 	}
 
+	return rv;
+}
+
+static void ioex_init_default(void)
+{
+	int i;
+
+	for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; i++)
+		ioex_init(i);
 }
 DECLARE_HOOK(HOOK_INIT, ioex_init_default, HOOK_PRIO_INIT_I2C + 1);
 
