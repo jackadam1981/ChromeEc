@@ -84,7 +84,7 @@ static const uint8_t report_desc[] = {
 	0x00        /* Padding */
 };
 
-static uint8_t hid_ep_buf[HID_REPORT_SIZE];
+USB_EP_RX_BUF(hid_ep_buf, HID_REPORT_SIZE);
 USB_DMA_DESC(hid_ep_desc);
 
 void set_keyboard_report(uint64_t rpt)

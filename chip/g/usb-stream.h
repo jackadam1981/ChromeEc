@@ -124,7 +124,7 @@ extern struct producer_ops const usb_stream_producer_ops;
 									\
 	USB_DMA_DESC(CONCAT2(NAME, _out_desc_));			\
 	USB_DMA_DESC(CONCAT2(NAME, _in_desc_)[MAX_IN_DESC]);		\
-	static uint8_t CONCAT2(NAME, _buf_rx_)[RX_SIZE];		\
+	USB_EP_RX_BUF(CONCAT2(NAME, _buf_rx_), RX_SIZE);		\
 	static uint8_t CONCAT2(NAME, _tx_in_progress_);			\
 	static uint8_t CONCAT2(NAME, _kicker_running_);			\
 	static uint8_t CONCAT2(NAME, _is_reset_);			\
