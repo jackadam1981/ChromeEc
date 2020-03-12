@@ -332,11 +332,20 @@ extern struct usb_string_desc *usb_serialno_desc;
 	USB_CONF_DESC_VAR(CONCAT4(iface, i, _1, name), varname)
 #define USB_CUSTOM_DESC(i, name) USB_CONF_DESC(CONCAT4(iface, i, _1, name))
 #define USB_EP_DESC(i, num) USB_CONF_DESC(CONCAT4(iface, i, _2ep, num))
+#define USB_EP_XFER_DESC(name)						\
+	static struct g_usb_desc name					\
+		__attribute__((section(".bss.usb_ep_xfer_desc")))
 
 /* USB Linker data */
+#define USB_MEM_SIZE(name)	(name - (name ## _end))
+
 extern const uint8_t __usb_desc[];
 extern const uint8_t __usb_desc_end[];
-#define USB_DESC_SIZE (__usb_desc_end - __usb_desc)
+#define USB_DESC_SIZE	USB_MEM_SIZE(__usb_desc)
+
+extern const uint8_t __usb_ep_xfer_desc[];
+extern const uint8_t __usb_ep_xfer_desc_end[];
+#define USB_EP_XFER_DESC_SIZE	USB_MEM_SIZE(__usb_ep_xfer_desc)
 
 /* These descriptors defined in board code */
 extern const void * const usb_strings[];

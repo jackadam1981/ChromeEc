@@ -85,7 +85,7 @@ static const uint8_t report_desc[] = {
 };
 
 static uint8_t hid_ep_buf[HID_REPORT_SIZE];
-static struct g_usb_desc hid_ep_desc;
+USB_EP_XFER_DESC(hid_ep_desc);
 
 void set_keyboard_report(uint64_t rpt)
 {

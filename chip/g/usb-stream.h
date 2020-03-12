@@ -122,8 +122,8 @@ extern struct producer_ops const usb_stream_producer_ops;
 			       RX_QUEUE,				\
 			       TX_QUEUE)				\
 									\
-	static struct g_usb_desc CONCAT2(NAME, _out_desc_);		\
-	static struct g_usb_desc CONCAT2(NAME, _in_desc_)[MAX_IN_DESC];	\
+	USB_EP_XFER_DESC(CONCAT2(NAME, _out_desc_));			\
+	USB_EP_XFER_DESC(CONCAT2(NAME, _in_desc_)[MAX_IN_DESC]);	\
 	static uint8_t CONCAT2(NAME, _buf_rx_)[RX_SIZE];		\
 	static uint8_t CONCAT2(NAME, _tx_in_progress_);			\
 	static uint8_t CONCAT2(NAME, _kicker_running_);			\
