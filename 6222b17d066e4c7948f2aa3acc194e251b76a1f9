@@ -22,6 +22,30 @@
       "revId": "6222b17d066e4c7948f2aa3acc194e251b76a1f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f943d5c_12b38794",
+        "filename": "chip/stm32/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-12T18:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c63a966_e9d31679",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 24
+      },
+      "revId": "6222b17d066e4c7948f2aa3acc194e251b76a1f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
