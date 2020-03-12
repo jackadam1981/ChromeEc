@@ -627,11 +627,24 @@ static const struct fan_step fan_table3[] = {
 	{.on = 82, .off = 76, .rpm = 5100},
 	{.on = 92, .off = 85, .rpm = 5400},
 };
+static const struct fan_step fan_table4[] = {
+	{.on =   0, .off =  22, .rpm = 0},
+	{.on =  36, .off =  22, .rpm = 2500},
+	{.on =  86, .off =  76, .rpm = 3200},
+	{.on =  92, .off =  85, .rpm = 5400},
+	{.on =  92, .off =  85, .rpm = 5400},
+	{.on =  92, .off =  85, .rpm = 5400},
+	{.on =  92, .off =  85, .rpm = 5400},
+	{.on =  92, .off =  85, .rpm = 5400},
+};
 /* All fan tables must have the same number of levels */
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
 BUILD_ASSERT(ARRAY_SIZE(fan_table1) == NUM_FAN_LEVELS);
 BUILD_ASSERT(ARRAY_SIZE(fan_table2) == NUM_FAN_LEVELS);
 BUILD_ASSERT(ARRAY_SIZE(fan_table3) == NUM_FAN_LEVELS);
+BUILD_ASSERT(ARRAY_SIZE(fan_table4) == NUM_FAN_LEVELS);
+
+static int fan_tb_change;
 
 static void setup_fan(void)
 {
@@ -662,6 +675,18 @@ static void setup_fan(void)
 		fan_table = fan_table3;
 		break;
 	}
+
+	if (fan_tb_change)
+		fan_table = fan_table4;
+}
+
+void board_change_fan_table(int fan_tb)
+{
+	fan_tb_change = fan_tb;
+
+	setup_fan();
+	CPRINTS("Setup fan_table to %s table",
+		fan_tb ? "run-in" : "normal");
 }
 
 static void cbi_init(void)

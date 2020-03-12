@@ -453,6 +453,17 @@ DECLARE_HOST_COMMAND(EC_CMD_THERMAL_AUTO_FAN_CTRL,
 		     hc_thermal_auto_fan_ctrl,
 		     EC_VER_MASK(0)|EC_VER_MASK(1));
 
+static enum ec_status
+hc_thermal_change_fan_table(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_change_fan_table_v1 *p_v1 = args->params;
+
+	board_change_fan_table(p_v1->fan_tb_now);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_THERMAL_CHANGE_FAN_TABLE,
+		     hc_thermal_change_fan_table,
+		     EC_VER_MASK(0)|EC_VER_MASK(1));
 
 /*****************************************************************************/
 /* Hooks */
@@ -596,6 +607,7 @@ static void pwm_fan_stop(void)
 	 * Thermal control may be already disabled if DPTF is used.
 	 */
 	pwm_fan_control(0); /* crosbug.com/p/8097 */
+	board_change_fan_table(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pwm_fan_stop, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pwm_fan_stop, HOOK_PRIO_DEFAULT);
@@ -609,6 +621,7 @@ static void pwm_fan_start(void)
 	 */
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON))
 		pwm_fan_control(1);
+	board_change_fan_table(0);
 }
 /* On Fizz, CHIPSET_RESUME isn't triggered when AP warm resets.
  * So we hook CHIPSET_RESET instead.
