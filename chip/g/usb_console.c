@@ -71,8 +71,8 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_CONSOLE, 1) =
 
 static uint8_t ep_buf_tx[USB_MAX_PACKET_SIZE];
 static uint8_t ep_buf_rx[USB_MAX_PACKET_SIZE];
-static struct g_usb_desc ep_out_desc;
-static struct g_usb_desc ep_in_desc;
+USB_DMA_DESC(ep_out_desc);
+USB_DMA_DESC(ep_in_desc);
 
 static struct queue const tx_q = QUEUE_NULL(4096, uint8_t);
 static struct queue const rx_q = QUEUE_NULL(USB_MAX_PACKET_SIZE, uint8_t);

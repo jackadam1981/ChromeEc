@@ -319,6 +319,16 @@ SECTIONS
 			*(.bss.Tpm2_common)
 		__bss_libtpm2_end = .;
 
+		/*
+		 * Group USB DMA related data, so they can be covered in a
+		 * GLOBALSEC_DUSB0_REGION.
+		 */
+		__usb_dma_data = .;
+
+		*(.bss.usb_dma_desc)
+
+		__usb_dma_data_end = .;
+
 		*(.bss)
 
 		/*
