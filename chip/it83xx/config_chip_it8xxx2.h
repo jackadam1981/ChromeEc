@@ -97,6 +97,8 @@
 #define IT83XX_GPIO_INT_FLEXIBLE
 /* Enable detect type-c plug in interrupt. */
 #define IT83XX_INTC_PLUG_IN_SUPPORT
+/* Allowing wakeup CPU without interrupt enabled if interrupt pending. */
+#define IT83XX_RISCV_WAKEUP_CPU_WITHOUT_INT_ENABLED
 /*TDOD: Please add comment here. */
 #undef IT83XX_SPI_RX_VALID_INT
 #define IT83XX_SPI_AUTO_RESET_RX_FIFO

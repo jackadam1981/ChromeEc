@@ -7,8 +7,8 @@
 
 # the IC is ITE IT8390/IT8320
 CHIP:=it83xx
-CHIP_FAMILY:=it8320
-CHIP_VARIANT:=it8320dx
+CHIP_FAMILY:=it8xxx2
+CHIP_VARIANT:=it81202ax_1024
 
 board-y=board.o
 board-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o

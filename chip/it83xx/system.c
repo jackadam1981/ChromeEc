@@ -123,6 +123,10 @@ void chip_pre_init(void)
 	if (IS_ENABLED(IT83XX_ETWD_HW_RESET_SUPPORT))
 		/* System triggers a soft reset by default (command: reboot). */
 		IT83XX_GCTRL_ETWDUARTCR &= ~ETWD_HW_RST_EN;
+
+#ifdef IT83XX_RISCV_WAKEUP_CPU_WITHOUT_INT_ENABLED
+		IT83XX_GCTRL_WMCR |= BIT(7);
+#endif
 }
 
 #define BRAM_VALID_MAGIC        0x4252414D  /* "BRAM" */
