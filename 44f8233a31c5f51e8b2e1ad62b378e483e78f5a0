@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beab4312_9679d749",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-12T01:05:39Z",
+      "side": 1,
+      "message": "The same bug exists(resumes and booting up both look like CHIPSET_STATE_ON); you need to go deeper (pd_chipset_startup).",
+      "range": {
+        "startLine": 1260,
+        "startChar": 0,
+        "endLine": 1265,
+        "endChar": 0
+      },
+      "revId": "44f8233a31c5f51e8b2e1ad62b378e483e78f5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
