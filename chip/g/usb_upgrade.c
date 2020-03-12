@@ -40,9 +40,8 @@
 struct consumer const upgrade_consumer;
 struct usb_stream_config const usb_upgrade;
 
-static struct queue const upgrade_to_usb = QUEUE_DIRECT(64, uint8_t,
-						     null_producer,
-						     usb_upgrade.consumer);
+QUEUE_USB_TX_CONFIG(upgrade_to_usb, 64, null_producer, usb_upgrade.consumer);
+
 static struct queue const usb_to_upgrade = QUEUE_DIRECT(64, uint8_t,
 						     usb_upgrade.producer,
 						     upgrade_consumer);
