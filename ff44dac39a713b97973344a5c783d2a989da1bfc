@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "121e1a45_e3e6bb0e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-12T22:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5350394a_eb61885a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59a43442_67ad7e1e",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4818c4d8_0a77ddea",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-12T22:02:01Z",
+      "side": 1,
+      "message": "Should be useful if we ever end up mixing chargers on a board",
+      "parentUuid": "59a43442_67ad7e1e",
+      "range": {
+        "startLine": 137,
+        "startChar": 11,
+        "endLine": 137,
+        "endChar": 14
+      },
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49036cf3_15940e4e",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 4
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "5cd11e50_4cacc616",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-12T22:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49036cf3_15940e4e",
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3facb0af_1a516bea",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 4
@@ -79,6 +145,24 @@
       "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ebbee8b_2df7543c",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-12T22:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3facb0af_1a516bea",
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "4c31670d_180be47c",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-12T22:02:01Z",
+      "side": 1,
+      "message": "No, it\u0027s a general ADC interrupt.  Though with the current code we can\u0027t be sourcing so I\u0027ll add a TODO to cover that in one of the CLs further up the stack where we actually implement that functionality.  \n\nI did apparently check the wrong ADC though.  Whoops.",
+      "parentUuid": "fd3ef619_d0c60985",
+      "range": {
+        "startLine": 166,
+        "startChar": 26,
+        "endLine": 166,
+        "endChar": 52
+      },
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "937d889e_5eb3e8f4",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 4
@@ -125,6 +233,30 @@
       "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a5b547e_94e53b8d",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-12T22:02:01Z",
+      "side": 1,
+      "message": "Smart charger spec.  I looked it up because it bothered me I couldn\u0027t find a reference to what it meant in the code.\n\nhttp://sbs-forum.org/specs/sbc110.pdf",
+      "parentUuid": "937d889e_5eb3e8f4",
+      "range": {
+        "startLine": 193,
+        "startChar": 43,
+        "endLine": 193,
+        "endChar": 61
+      },
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
