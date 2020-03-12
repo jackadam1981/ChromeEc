@@ -46,6 +46,30 @@
       "revId": "e25c2f411faa6aa9c5831641afe342e9c2a56f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "951bf9df_f39e6861",
+        "filename": "driver/temp_sensor/amd_r19me4070.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-12T03:42:27Z",
+      "side": 1,
+      "message": "Done.\nI delete define .\nThis patch compile success because I2C_PORT_GPU have been define in board.h.",
+      "parentUuid": "50db3d06_68ccdf08",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "e25c2f411faa6aa9c5831641afe342e9c2a56f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
