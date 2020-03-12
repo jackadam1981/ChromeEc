@@ -325,6 +325,22 @@ SECTIONS
 		 */
 		__usb_dma_data = .;
 
+		/*
+		 * Group USB TX data buffers so it can be guarded as in a DDMA0
+		 * read-only region.
+		 */
+		__usb_dma_tx_buf = .;
+		KEEP(*(.bss.usb_dma_tx_buf))
+		__usb_dma_tx_buf_end = .;
+
+		/*
+		 * Group USB RX data buffers so it can be guarded as in a DDMA0
+		 * write-only region.
+		 */
+		__usb_dma_rx_buf = .;
+		KEEP(*(.bss.usb_dma_rx_buf))
+		__usb_dma_rx_buf_end = .;
+
 		*(.bss.usb_dma_desc)
 
 		__usb_dma_data_end = .;
