@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "433f40da_f2b14620",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa283ffa_dd13fc73",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 0
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "529b2797_8289729b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f55a4001_c42d16a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "529b2797_8289729b",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "49b7c697_2e029d7f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f076cf_efc308cf",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f2662a3_fe5aee1a",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b311731a_b776399a",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "5f2662a3_fe5aee1a",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ef63a321_9d0e4d70",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf31490e_186cc876",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc8ebbf2_0e0214a0",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 5
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "8d550327_2898c239",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc8ebbf2_0e0214a0",
+      "range": {
+        "startLine": 721,
+        "startChar": 13,
+        "endLine": 721,
+        "endChar": 35
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58b173c4_59287c75",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 5
@@ -157,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "c13dc95d_c9afe26a",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58b173c4_59287c75",
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4fefa14_b363e933",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 5
@@ -171,6 +333,24 @@
       "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62464b43_fb5347c5",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1584,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4fefa14_b363e933",
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "c6453ed8_4c7c6540",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1875,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dbf80b0_4efdbda8",
+      "range": {
+        "startLine": 1874,
+        "startChar": 0,
+        "endLine": 1875,
+        "endChar": 19
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e67fc92d_4d0efcb1",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 5
@@ -211,6 +415,24 @@
       "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e9f98f_a3a7d3dd",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2038,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67fc92d_4d0efcb1",
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -237,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "43d5020d_32b95ce6",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d86767da_e1f634ed",
+      "range": {
+        "startLine": 2056,
+        "startChar": 0,
+        "endLine": 2066,
+        "endChar": 36
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe680271_29728fdb",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 5
@@ -257,6 +503,30 @@
       "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56806a4e_fb96e71c",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2077,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Configuration should be done only once on BMI260 no matter the sensor type. We choose the accelerometer(because it is initialized first) for this initial config.",
+      "parentUuid": "fe680271_29728fdb",
+      "range": {
+        "startLine": 2077,
+        "startChar": 6,
+        "endLine": 2077,
+        "endChar": 17
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -283,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "cee65334_f7843172",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8170ffc9_65465508",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "280c42ef_f3590def",
         "filename": "driver/accelgyro_bmi260.h",
         "patchSetId": 5
@@ -303,6 +597,30 @@
       "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb3d54a_164f3e2e",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "280c42ef_f3590def",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -329,6 +647,30 @@
     },
     {
       "key": {
+        "uuid": "ef3e02b0_dc03ee06",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85420809_d4c26b21",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 0
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75856475_65903e64",
         "filename": "driver/accelgyro_bmi260.h",
         "patchSetId": 5
@@ -349,6 +691,30 @@
       "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0e0965f_8bb5ad8e",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75856475_65903e64",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 44
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -375,6 +741,30 @@
     },
     {
       "key": {
+        "uuid": "24648aa8_ab29334a",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9df82edc_7235405c",
+      "range": {
+        "startLine": 256,
+        "startChar": 3,
+        "endLine": 256,
+        "endChar": 38
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e939142_d4ea0a23",
         "filename": "driver/accelgyro_bmi260.h",
         "patchSetId": 5
@@ -395,6 +785,30 @@
       "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10df372_9dde173a",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-12T02:17:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e939142_d4ea0a23",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 2
+      },
+      "revId": "86cb0135122a3fcef9782c5902a5ad082fdc9ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
