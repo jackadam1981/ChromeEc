@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "85ef00db_9a292ebc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4447,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-12T21:14:44Z",
+      "side": 1,
+      "message": "Again no assumptions here, the power role is SRC when this code runs. See line 3060. Also see patch set 15, where I renamed the macro to make this more clear.\n\nThis state handles DR swap, VCONN swap, and PR swap from SRC to SNK.\nThe PR swap from SNK to SRC is handled separately because it includes some FRS code.",
+      "parentUuid": "aae7caf3_f4414c06",
+      "range": {
+        "startLine": 4446,
+        "startChar": 3,
+        "endLine": 4447,
+        "endChar": 36
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "231dda9d_009be4d0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 13
