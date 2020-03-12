@@ -335,6 +335,13 @@ extern struct usb_string_desc *usb_serialno_desc;
 #define USB_EP_XFER_DESC(name)						\
 	static struct g_usb_desc name					\
 		__attribute__((section(".bss.usb_ep_xfer_desc")))
+#define USB_EP_TX_BUF(name, size)					\
+	static uint8_t name[size] __aligned(4)				\
+		__attribute__((section(".bss.usb_ep_tx_buf")))
+
+#define USB_EP_RX_BUF(name, size)					\
+	static uint8_t name[size] __aligned(4)				\
+		__attribute__((section(".bss.usb_ep_rx_buf")))
 
 /* USB Linker data */
 #define USB_MEM_SIZE(name)	(name - (name ## _end))
@@ -346,6 +353,14 @@ extern const uint8_t __usb_desc_end[];
 extern const uint8_t __usb_ep_xfer_desc[];
 extern const uint8_t __usb_ep_xfer_desc_end[];
 #define USB_EP_XFER_DESC_SIZE	USB_MEM_SIZE(__usb_ep_xfer_desc)
+
+extern const uint8_t __usb_ep_tx_buf[];
+extern const uint8_t __usb_ep_tx_buf_end[];
+#define USB_EP_TX_BUF_SIZE	USB_MEM_SIZE(__usb_ep_tx_buf)
+
+extern const uint8_t __usb_ep_rx_buf[];
+extern const uint8_t __usb_ep_rx_buf_end[];
+#define USB_EP_RX_BUF_SIZE	USB_MEM_SIZE(__usb_ep_rx_buf)
 
 /* These descriptors defined in board code */
 extern const void * const usb_strings[];

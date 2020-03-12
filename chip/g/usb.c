@@ -303,7 +303,7 @@ static enum table_case decode_table_10_7(uint32_t doepint)
 
 /* For STATUS/OUT: Use two DMA descriptors, each with one-packet buffers */
 #define NUM_OUT_BUFFERS 2
-static uint8_t ep0_out_buf[NUM_OUT_BUFFERS][USB_MAX_PACKET_SIZE];
+USB_EP_RX_BUF(ep0_out_buf[NUM_OUT_BUFFERS], USB_MAX_PACKET_SIZE);
 USB_EP_XFER_DESC(ep0_out_desc[NUM_OUT_BUFFERS]);
 static int cur_out_idx;				/* latest with xfercompl=1 */
 static const struct g_usb_desc *cur_out_desc;
@@ -315,7 +315,7 @@ static int processed_update_counter;
  * we can return the configuration descriptor as one big blob. */
 #define NUM_IN_PACKETS_AT_ONCE 4
 #define IN_BUF_SIZE (NUM_IN_PACKETS_AT_ONCE * USB_MAX_PACKET_SIZE)
-static uint8_t ep0_in_buf[IN_BUF_SIZE];
+USB_EP_TX_BUF(ep0_in_buf, IN_BUF_SIZE);
 USB_EP_XFER_DESC(ep0_in_desc[NUM_IN_PACKETS_AT_ONCE]);
 static struct g_usb_desc *cur_in_desc;
 

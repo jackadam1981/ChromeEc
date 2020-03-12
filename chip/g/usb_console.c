@@ -69,8 +69,8 @@ const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_CONSOLE, 1) =
 	.bInterval          = 0
 };
 
-static uint8_t ep_buf_tx[USB_MAX_PACKET_SIZE];
-static uint8_t ep_buf_rx[USB_MAX_PACKET_SIZE];
+USB_EP_TX_BUF(ep_buf_tx, USB_MAX_PACKET_SIZE);
+USB_EP_RX_BUF(ep_buf_rx, USB_MAX_PACKET_SIZE);
 USB_EP_XFER_DESC(ep_out_desc);
 USB_EP_XFER_DESC(ep_in_desc);
 

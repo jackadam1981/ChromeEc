@@ -95,6 +95,16 @@ struct queue {
 		.buffer       = (uint8_t *) &((TYPE[SIZE]){}),	\
 	})
 
+#define QUEUE_USB_TX(SIZE, BUF, POLICY)				\
+	((struct queue) {					\
+		.state        = &((struct queue_state){}),	\
+		.policy       = &POLICY,			\
+		.buffer_units = BUILD_CHECK_INLINE(SIZE, POWER_OF_TWO(SIZE)), \
+		.buffer_units_mask = SIZE - 1,			\
+		.unit_bytes   = sizeof(BUF[0]),			\
+		.buffer       = BUF,				\
+	})
+
 /* Initialize the queue to empty state. */
 void queue_init(struct queue const *q);
 
