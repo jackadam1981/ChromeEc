@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a6f9faa0_26755074",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-03-12T09:37:00Z",
+      "side": 1,
+      "message": "I\u0027m guessing we need to change this to make them mutually exclusive",
+      "revId": "7f0fcb085072f9668d26de3f8973c0539aeeedaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d26169c5_b4c69ea6",
         "filename": "common/u2f.c",
         "patchSetId": 2
@@ -19,6 +36,40 @@
         "endLine": 116,
         "endChar": 60
       },
+      "revId": "7f0fcb085072f9668d26de3f8973c0539aeeedaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ccb99c_b6277c55",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-03-12T09:37:00Z",
+      "side": 1,
+      "message": "I believe that if we don\u0027t have presence, we *must* enforce FP (and/or enforce that UP was not asserted in the thing we are signing)",
+      "revId": "7f0fcb085072f9668d26de3f8973c0539aeeedaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42310ae_80567ee8",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-03-12T09:37:00Z",
+      "side": 1,
+      "message": "What about PIN-verified requests?",
       "revId": "7f0fcb085072f9668d26de3f8973c0539aeeedaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
