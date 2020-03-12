@@ -105,7 +105,8 @@ static void battery_thermal_control(struct charge_state_data *curr)
 
 	skip_reset = 0;
 
-	if (thermal_wait_until.val == 0)
+	if (thermal_wait_until.val == 0 ||
+		charge_manager_get_supplier() == CHARGE_SUPPLIER_NONE)
 		goto thermal_exit;
 
 	if (get_time().val < thermal_wait_until.val)
