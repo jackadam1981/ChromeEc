@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb847aa6_da61d7c3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 2360,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-12T00:36:28Z",
+      "side": 1,
+      "message": "you can make if(true statement) so that this can be removed",
+      "range": {
+        "startLine": 2360,
+        "startChar": 4,
+        "endLine": 2360,
+        "endChar": 12
+      },
+      "revId": "5e1a85174970f9453e34264f45df132ce00c53de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
