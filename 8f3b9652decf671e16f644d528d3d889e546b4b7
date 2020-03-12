@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68e796a9_93d6710c",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-03-12T09:01:23Z",
+      "side": 1,
+      "message": "Hi Eric.\n\nHere may need to combine the current of PDO to set the input current of the charger．Sink kodama DUT would set the input current as PD_MAX_CURRENT_MA, and will reproduce b:147852834. BTW, Kodama has no PPC chip.",
+      "revId": "8f3b9652decf671e16f644d528d3d889e546b4b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
