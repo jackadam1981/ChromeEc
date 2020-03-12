@@ -34,6 +34,7 @@
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "regulator.h"
 #include "spi.h"
 #include "switch.h"
 #include "tablet_mode.h"
@@ -512,6 +513,20 @@ void ldo_write(uint8_t offset, uint8_t value) {
 	i2c_write8(0, 0x64 | I2C_FLAG_PEC, offset, value);
 }
 
+int ldo_read(uint8_t offset) {
+	int data;
+	int rv;
+
+	/* TODO(pihsun): Verify CRC */
+	rv = i2c_read8(0, 0x64, offset, &data);
+	if (rv) {
+		CPRINTS("LDO read offset = %d ERROR %d", offset, rv);
+		return 0;
+	}
+
+	return data;
+}
+
 /* SD Card */
 void board_enable_sd_card(void)
 {
@@ -524,6 +539,40 @@ void board_enable_sd_card(void)
 	ldo_write(0x09, 0xd0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_enable_sd_card, HOOK_PRIO_DEFAULT);
+
+int board_regulator_set_enable(uint32_t index, uint8_t enabled)
+{
+	assert(index == 0);
+
+	ldo_write(0x05, 0x80 | (enabled << 6));
+	return EC_SUCCESS;
+}
+
+int board_regulator_is_enabled(uint32_t index)
+{
+	assert(index == 0);
+
+	return (ldo_read(0x05) & 0x40) >> 6;
+}
+
+int board_regulator_set_voltage(uint32_t index, uint32_t selector)
+{
+	assert(index == 0);
+
+	ldo_write(0x09, selector == 0 ? 0x40 : 0xd0);
+	return EC_SUCCESS;
+}
+
+int board_regulator_get_voltage(uint32_t index)
+{
+	int data;
+
+	assert(index == 0);
+
+	data = ldo_read(0x09);
+	CPRINTS("data = %d\n", data);
+	return data == 0x40 ? 0 : 1;
+}
 
 /* Lid */
 #ifndef TEST_BUILD
