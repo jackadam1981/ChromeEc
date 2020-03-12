@@ -22,6 +22,30 @@
       "revId": "3d927ba8e25ff87edf6254af531d1378065ba5ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ddeee1_0c4a46f2",
+        "filename": "baseboard/hatch/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-03-12T02:17:08Z",
+      "side": 1,
+      "message": "Good suggestion, Thanks! We can override it but the board_init is too late. So, i enabled CONFIG_BOARD_PRE_INIT for overriding the keyboard mask. BTW, this change will increase KEYBOARD_COLS_MAX bytes because of an extra array but i think it is acceptable.",
+      "parentUuid": "f02f39ae_4772f87c",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "3d927ba8e25ff87edf6254af531d1378065ba5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
