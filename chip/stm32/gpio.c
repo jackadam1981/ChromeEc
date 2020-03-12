@@ -144,7 +144,7 @@ int gpio_clear_pending_interrupt(enum gpio_signal signal)
 	if (!g->mask || signal >= GPIO_IH_COUNT)
 		return EC_ERROR_INVAL;
 
-	STM32_EXTI_PR |= g->mask;
+	STM32_EXTI_PR = g->mask;
 
 	return EC_SUCCESS;
 }
