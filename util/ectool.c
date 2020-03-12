@@ -124,6 +124,8 @@ const char help_str[] =
 	"      Set the maximum external power limit\n"
 	"  fanduty <percent>\n"
 	"      Forces the fan PWM to a constant duty cycle\n"
+	"  fantbchange <type>\n"
+	"      Change fan table to specific table\n"
 	"  flasherase <offset> <size>\n"
 	"      Erases EC flash\n"
 	"  flasheraseasync <offset> <size>\n"
@@ -3095,6 +3097,33 @@ int cmd_thermal_auto_fan_ctrl(int argc, char *argv[])
 		return rv;
 
 	printf("Automatic fan control is now on for fan %d\n", p_v1.fan_idx);
+
+	return 0;
+}
+
+int cmd_thermal_change_fan_table(int argc, char *argv[])
+{
+	int rv;
+	char *e;
+	struct ec_params_change_fan_table_v1 p_v1;
+
+	if (argc > 2 || !strcmp(argv[1], "help")) {
+		printf("Usage: %s [idx]\n", argv[0]);
+		return -1;
+	}
+
+	p_v1.fan_tb_now = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad fan fable select.\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_THERMAL_CHANGE_FAN_TABLE, 0,
+			&p_v1, sizeof(p_v1), NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	printf("Change fan table to %d\n", p_v1.fan_tb_now);
 
 	return 0;
 }
@@ -9449,6 +9478,7 @@ const struct command commands[] = {
 	{"eventsetwakemask", cmd_host_event_set_wake_mask},
 	{"extpwrlimit", cmd_ext_power_limit},
 	{"fanduty", cmd_fanduty},
+	{"fantbchange", cmd_thermal_change_fan_table},
 	{"flasherase", cmd_flash_erase},
 	{"flasheraseasync", cmd_flash_erase},
 	{"flashprotect", cmd_flash_protect},

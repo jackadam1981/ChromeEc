@@ -3381,6 +3381,13 @@ struct ec_response_tmp006_get_raw {
 	int32_t v;  /* In nV */
 } __ec_align4;
 
+/* Change to specific fan table */
+#define EC_CMD_THERMAL_CHANGE_FAN_TABLE 0x0056
+
+struct ec_params_change_fan_table_v1 {
+	int fan_tb_now;
+} __ec_align1;
+
 /*****************************************************************************/
 /* MKBP - Matrix KeyBoard Protocol */
 

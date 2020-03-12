@@ -126,4 +126,6 @@ void fan_set_count(int count);
 
 int is_thermal_control_enabled(int idx);
 
+void board_change_fan_table(int fan_tb) __attribute__((weak));
+
 #endif  /* __CROS_EC_FAN_H */
