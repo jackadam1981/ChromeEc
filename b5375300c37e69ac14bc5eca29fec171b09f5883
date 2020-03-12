@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d000330_08df9630",
+        "filename": "docs/ide-support.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-12T22:15:03Z",
+      "side": 1,
+      "message": "I might call out that this should only be for c, like\n\n \"[c]\": {\n        \"editor.tabSize\": 8,\n    },\n\n\nI actually have my default set to 8, but then other languages override it to 2 (like go and protobuf). Might be worth calling out that these editor preference are probably worth putting under \"[c]\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 22
+      },
+      "revId": "b5375300c37e69ac14bc5eca29fec171b09f5883",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
