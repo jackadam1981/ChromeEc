@@ -98,6 +98,9 @@
 
 #define PD_OPERATING_POWER_MW 15000
 
+/* Voltage regulator control */
+#define CONFIG_REGULATOR
+
 #ifndef __ASSEMBLER__
 
 enum adc_channel {

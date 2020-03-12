@@ -3113,6 +3113,9 @@
 /* Enable rbox wakeup */
 #undef CONFIG_RBOX_WAKEUP
 
+/* Support voltage regulator host command */
+#undef CONFIG_REGULATOR
+
 /* Support IR357x Link voltage regulator debugging / reprogramming */
 #undef CONFIG_REGULATOR_IR357X
 

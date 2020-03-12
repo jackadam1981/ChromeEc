@@ -5976,6 +5976,53 @@ struct ec_response_get_pd_port_caps {
 } __ec_align1;
 
 /*****************************************************************************/
+/* voltage regulator controls TODO */
+/*
+ * Enable / disable the regulator ... TODO
+ */
+#define EC_CMD_REGULATOR_SET_ENABLE 0x0129
+
+struct ec_params_regulator_set_enable {
+	uint32_t index;
+	uint8_t enabled;
+} __ec_align4;
+/*
+ * Query if the regulator is enabled ... TODO
+ */
+#define EC_CMD_REGULATOR_IS_ENABLED 0x012A
+
+struct ec_params_regulator_is_enabled {
+	uint32_t index;
+} __ec_align4;
+
+struct ec_response_regulator_is_enabled {
+	uint8_t enabled;
+} __ec_align1;
+
+/*
+ * Set voltages by selector ... TODO
+ */
+#define EC_CMD_REGULATOR_SET_VOLTAGE 0x012B
+
+struct ec_params_regulator_set_voltage {
+	uint32_t index;
+	uint32_t selector;
+} __ec_align4;
+
+/*
+ * Get voltages by selector ... TODO
+ */
+#define EC_CMD_REGULATOR_GET_VOLTAGE 0x012C
+
+struct ec_params_regulator_get_voltage {
+	uint32_t index;
+} __ec_align4;
+
+struct ec_response_regulator_get_voltage {
+	uint32_t selector;
+} __ec_align4;
+
+/*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
 /*****************************************************************************/
