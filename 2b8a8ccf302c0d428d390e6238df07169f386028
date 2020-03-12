@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "36005ef4_952245ad",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 4447,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-12T22:47:08Z",
+      "side": 1,
+      "message": "The code above embodies states PE_DRS_UFP_DFP_Send_Swap (Figure 8-103) and PE_VCS_Send_Swap (Figure 8-114). If a reject/wait message or sender response timer timeout, transitions to PE_SRC_Ready or PE_SNK_Ready.\n\nThe PE_PRS_SRC_SNK_Send_Swap (Figure 8-104) transitions to PE_SRC_Ready if reject/wait message or sender response timer timeout. This is the code path we are discussing.\n\nThe PE_PRS_SNK_SRC_Send_Swap (Figure 8-105) is not handled in this portion of the code. It has it\u0027s own state that includes some FRS code. But it returns to PE_SNK_Ready if reject/wait message or sender response timer timeout.",
+      "parentUuid": "41401f28_7396fa7a",
+      "range": {
+        "startLine": 4446,
+        "startChar": 3,
+        "endLine": 4447,
+        "endChar": 36
+      },
+      "revId": "2b8a8ccf302c0d428d390e6238df07169f386028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "231dda9d_009be4d0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 13
