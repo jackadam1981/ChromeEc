@@ -22,6 +22,30 @@
       "revId": "28b7b96c8ef876eeb55ba17bb731c018ae079d5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b54374fb_3ce3afbb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2347,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-12T00:23:16Z",
+      "side": 1,
+      "message": "Done\n\nSince we wait till the state_machine is ready for sending the VDM through, pd_vdm_send_state_machine(port). We don\u0027t need queuing for TCPMv1",
+      "parentUuid": "1d46b6c2_cedd5882",
+      "range": {
+        "startLine": 2347,
+        "startChar": 0,
+        "endLine": 2347,
+        "endChar": 48
+      },
+      "revId": "28b7b96c8ef876eeb55ba17bb731c018ae079d5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
