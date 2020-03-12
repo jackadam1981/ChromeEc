@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0c08346_063b438b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2333,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-12T19:42:11Z",
+      "side": 1,
+      "message": "Since Diana doesn\u0027t think this will get moved to common code, this guard could be removed by added __maybe_unused to the declaration.",
+      "range": {
+        "startLine": 2333,
+        "startChar": 0,
+        "endLine": 2333,
+        "endChar": 71
+      },
+      "revId": "efb763baebb3f764798f679f4ba8036c873664e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b278409_d5a19f6b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2336,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-12T19:42:11Z",
+      "side": 1,
+      "message": "Nit - replace with if !(IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP) return guard.",
+      "range": {
+        "startLine": 2336,
+        "startChar": 7,
+        "endLine": 2336,
+        "endChar": 33
+      },
+      "revId": "efb763baebb3f764798f679f4ba8036c873664e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47999c74_c3b0d4ec",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 2337,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-12T19:42:11Z",
+      "side": 1,
+      "message": "Nit - declaring \u0027i\u0027 here requires c99 support, which we haven\u0027t enabled.  So declare i explicitly. If any statements are added before the for loop, this will break the compile.",
+      "range": {
+        "startLine": 2337,
+        "startChar": 6,
+        "endLine": 2337,
+        "endChar": 11
+      },
+      "revId": "efb763baebb3f764798f679f4ba8036c873664e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
