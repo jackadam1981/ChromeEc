@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "518c2508_5422a72f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-03-12T09:40:06Z",
+      "side": 1,
+      "message": "Discharge MOSFET",
+      "parentUuid": "d975d2b8_3c8425b0",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "73a4768951a4ff1fa7bf404dcf8523d7ce81e6ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8e77996_6667feb9",
         "filename": "include/battery.h",
         "patchSetId": 2
