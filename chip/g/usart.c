@@ -60,16 +60,14 @@ struct signer_config const sig;
 static struct queue const ap_uart_output =
 	QUEUE_DIRECT(QUEUE_SIZE_SIG_IN, uint8_t, ap_uart.producer,
 		     sig.consumer);
-static struct queue const sig_to_usb =
-	QUEUE_DIRECT(QUEUE_SIZE_USB_IN, uint8_t, sig.producer,
-		     ap_usb.consumer);
+QUEUE_USB_TX_CONFIG(sig_to_usb, QUEUE_SIZE_USB_IN, sig.producer,
+		    ap_usb.consumer);
 
 SIGNER_CONFIG(sig, stream_uart, sig_to_usb, ap_uart_output);
 
 #else  /* Not CONFIG_STREAM_SIGNATURE */
-static struct queue const ap_uart_output =
-	QUEUE_DIRECT(QUEUE_SIZE_UART_RX, uint8_t,
-		     ap_uart.producer, ap_usb.consumer);
+QUEUE_USB_TX_CONFIG(ap_uart_output, QUEUE_SIZE_UART_RX, ap_uart.producer,
+		    ap_usb.consumer);
 #endif
 
 static struct queue const ap_usb_to_uart =
@@ -111,9 +109,8 @@ USB_STREAM_CONFIG(ap_usb,
 struct usb_stream_config const ec_usb;
 struct usart_config const ec_uart;
 
-static struct queue const ec_uart_to_usb =
-	QUEUE_DIRECT(QUEUE_SIZE_UART_RX, uint8_t,
-		     ec_uart.producer, ec_usb.consumer);
+QUEUE_USB_TX_CONFIG(ec_uart_to_usb, QUEUE_SIZE_UART_RX, ec_uart.producer,
+		    ec_usb.consumer);
 static struct queue const ec_usb_to_uart =
 	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ec_usb.producer, ec_uart.consumer);
 

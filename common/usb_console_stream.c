@@ -10,6 +10,7 @@
 #include "link_defs.h"
 #include "printf.h"
 #include "queue.h"
+#include "queue_policies.h"
 #include "task.h"
 #include "timer.h"
 #include "usb-stream.h"
@@ -56,7 +57,7 @@ static struct queue_policy const usb_console_policy = {
 	.remove = uart_console_rd,
 };
 
-static struct queue const tx_q = QUEUE_NULL(QUEUE_SIZE_USB_TX, uint8_t);
+QUEUE_USB_TX_CONFIG(tx_q, QUEUE_SIZE_USB_TX, null_producer, null_consumer);
 static struct queue const rx_q = QUEUE(QUEUE_SIZE_USB_RX, uint8_t,
 				       usb_console_policy);
 
