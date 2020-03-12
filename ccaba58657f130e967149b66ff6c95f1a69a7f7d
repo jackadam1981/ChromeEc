@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05b332cf_d17c4f48",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "not used. Remove it",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cadb738_b68504da",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "No file uses it. I think we can remove it.",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40c314ac_a82e1dda",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "We use it in accelgyro_bmi260.h. Move it to header file",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca90b650_bf6800f1",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "not used. Remove it.",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8582e943_5aab5a1b",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "This can be moved to accelgyro_bmi_common.h",
+      "range": {
+        "startLine": 724,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 2
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "740bd0bb_c1786d7a",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "comment says 2ms but the following data is 45ms?",
+      "range": {
+        "startLine": 749,
+        "startChar": 54,
+        "endLine": 749,
+        "endChar": 57
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4387567b_72b887da",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "there are a lot of functions are the same as bmi160.\nCan we move it to accelgyro_bmi_common.c?",
+      "range": {
+        "startLine": 756,
+        "startChar": 0,
+        "endLine": 767,
+        "endChar": 1
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "578bdaee_e78445be",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "This also can be move to accelgyro_bmi_common.c\nYou can define BMI_ACC_X_L_G as BMI260_ACC_X_L_G in bmi260.h.\nAnd define BMI_ACC_X_L_G as BMI160_ACC_X_L_G in bmi160.h.",
+      "range": {
+        "startLine": 769,
+        "startChar": 0,
+        "endLine": 781,
+        "endChar": 1
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a3429f_a0d486b0",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "ditto. move to bmi_common.c.\nsame as raw_read* and raw_write*",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 820,
+        "endChar": 1
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a253f60_fdcc64bf",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "move to bmi_common.c",
+      "range": {
+        "startLine": 1333,
+        "startChar": 0,
+        "endLine": 1346,
+        "endChar": 0
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b258e3_5d9903e0",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "No file uses it. I think we can remove it.",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "963a9e18_c74801a5",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "Add an empty line to have consistency with AUX. Or remove line 48",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 7
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "696e8299_ce2f473f",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "BMI260_FH_EMPTY. same as others to have the same prefix as register",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 13
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cddd18ca_0eba6015",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-12T10:13:56Z",
+      "side": 1,
+      "message": "not used. remove it",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 6
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
