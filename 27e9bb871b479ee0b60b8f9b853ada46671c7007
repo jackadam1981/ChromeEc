@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "217ff684_ef077fc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-03-12T00:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c5c6249_c5a8e751",
+      "range": {
+        "startLine": 15,
+        "startChar": 20,
+        "endLine": 15,
+        "endChar": 26
+      },
+      "revId": "27e9bb871b479ee0b60b8f9b853ada46671c7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7f50138_b3c0a831",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "27e9bb871b479ee0b60b8f9b853ada46671c7007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de104cf_07aa33dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-03-12T00:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7f50138_b3c0a831",
+      "range": {
+        "startLine": 29,
+        "startChar": 51,
+        "endLine": 29,
+        "endChar": 53
+      },
+      "revId": "27e9bb871b479ee0b60b8f9b853ada46671c7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c7a9aea1_fd743a1a",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-03-12T00:53:00Z",
+      "side": 1,
+      "message": "No, moved it to the board.h.",
+      "parentUuid": "70a4da1b_be73f01d",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 69
+      },
+      "revId": "27e9bb871b479ee0b60b8f9b853ada46671c7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6964d8b_a9481851",
         "filename": "baseboard/trogdor/baseboard.h",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0594c33c_04b379ba",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-03-12T00:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6964d8b_a9481851",
+      "range": {
+        "startLine": 161,
+        "startChar": 23,
+        "endLine": 161,
+        "endChar": 30
+      },
+      "revId": "27e9bb871b479ee0b60b8f9b853ada46671c7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ab845f4_1265dbb6",
         "filename": "baseboard/trogdor/usb_pd_policy.c",
         "patchSetId": 2
@@ -108,6 +204,24 @@
       "revId": "27e9bb871b479ee0b60b8f9b853ada46671c7007",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3765db22_87a94029",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-03-12T00:53:00Z",
+      "side": 1,
+      "message": "I think fewer functions need to be defined; and only define the ones to override the default if needed.",
+      "parentUuid": "3ab845f4_1265dbb6",
+      "revId": "27e9bb871b479ee0b60b8f9b853ada46671c7007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

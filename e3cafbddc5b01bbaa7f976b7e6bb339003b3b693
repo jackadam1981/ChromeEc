@@ -22,6 +22,30 @@
       "revId": "e3cafbddc5b01bbaa7f976b7e6bb339003b3b693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6982aa74_9f9421b8",
+        "filename": "board/trogdor/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-03-12T00:53:00Z",
+      "side": 0,
+      "message": "I moved the FIFO and the below CMD definition to baseboard.",
+      "parentUuid": "24a18ee0_77b3b029",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 0
+      },
+      "revId": "e3cafbddc5b01bbaa7f976b7e6bb339003b3b693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
