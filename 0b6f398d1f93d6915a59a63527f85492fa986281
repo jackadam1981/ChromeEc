@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5d750ea3_25aab7d0",
+        "filename": "chip/g/usb_hid_keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-13T19:01:52Z",
+      "side": 1,
+      "message": "Undoing the change on this file. http://crrev.com/c/2103045 removes this file in different patch.",
+      "parentUuid": "16d8cda3_41a3d61e",
+      "revId": "0b6f398d1f93d6915a59a63527f85492fa986281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3454bec_c98bb2cd",
         "filename": "include/usb_descriptor.h",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "0b6f398d1f93d6915a59a63527f85492fa986281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "775ff1ab_cc2afe94",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-13T19:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3454bec_c98bb2cd",
+      "range": {
+        "startLine": 339,
+        "startChar": 8,
+        "endLine": 339,
+        "endChar": 20
+      },
+      "revId": "0b6f398d1f93d6915a59a63527f85492fa986281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
