@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6112cdfc_7de5bf36",
+        "filename": "chip/g/usb_hid_keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-13T19:03:36Z",
+      "side": 1,
+      "message": "Undoing this change. http://crrev.com/c/2103045 will remove this file instead.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 44
+      },
+      "revId": "fbe067f79ef658253d68faa15e5a183e12c87bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bda6020_0a65e0c9",
+        "filename": "common/usb_update.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-13T19:03:36Z",
+      "side": 1,
+      "message": "Undoing this change. Instead http://crrev.com/c/2099753 will remove this file.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "fbe067f79ef658253d68faa15e5a183e12c87bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
