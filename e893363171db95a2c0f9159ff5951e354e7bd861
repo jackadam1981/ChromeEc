@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86e312a6_cfb7b446",
+        "filename": "include/usb_emsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-13T18:59:18Z",
+      "side": 1,
+      "message": "Separate lengths are needed as well.  See b/150637227",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "e893363171db95a2c0f9159ff5951e354e7bd861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
