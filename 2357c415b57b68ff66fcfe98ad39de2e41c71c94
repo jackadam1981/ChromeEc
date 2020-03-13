@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aff1bb5_7da02877",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-13T16:38:06Z",
+      "side": 1,
+      "message": "dumb question: why is this guarded for PD3.0? Does this code not apply for PD 2.0?",
+      "revId": "2357c415b57b68ff66fcfe98ad39de2e41c71c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
