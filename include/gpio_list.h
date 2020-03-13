@@ -69,17 +69,18 @@ const int gpio_ih_count = ARRAY_SIZE(gpio_irq_handlers);
 #include "gpio.wrap"
 
 #include "ioexpander.h"
-#define IOEX_EXPIN(ioex, port, index) (ioex), (port), BIT(index)
+#define IOEX_EXPIN(ioex, port, index, altgrp) (ioex), (port), BIT(index), (altgrp)
 
 /*
  *  Define the IO expander IO in gpio.inc by the format:
- *    IOEX(name, EXPIN(ioex_port, port, offset), flags)
+ *    IOEX(name, EXPIN(ioex_port, port, offset, altgrp), flags)
  *      - name: the name of this IO pin
- *      - EXPIN(ioex, port, offset)
+ *      - EXPIN(ioex, port, offset, altgrp)
  *         - ioex: the IO expander port (defined in board.c) this IO
  *                 pin belongs to.
  *         - port: the port number in the IO expander chip.
  *         - offset: the bit offset in the port above.
+ *         - altgrp: alternate group of the same name pin.
  *      - flags: the same as the flags of GPIO.
  *
  */
@@ -87,13 +88,14 @@ const int gpio_ih_count = ARRAY_SIZE(gpio_irq_handlers);
 /*
  *  Define the IO expander IO which supports interrupt in gpio.inc by
  *  the format:
- *    IOEX_INT(name, EXPIN(ioex_port, port, offset), flags, handler)
+ *    IOEX_INT(name, EXPIN(ioex_port, port, offset, altgrp), flags, handler)
  *      - name: the name of this IO pin
- *      - EXPIN(ioex, port, offset)
+ *      - EXPIN(ioex, port, offset, altgrp)
  *         - ioex: the IO expander port (defined in board.c) this IO
  *                 pin belongs to.
  *         - port: the port number in the IO expander chip.
  *         - offset: the bit offset in the port above.
+ *         - altgrp: alternate group of the same name pin.
  *      - flags: the same as the flags of GPIO.
  *      - handler: the IOEX IO's interrupt handler.
  */
@@ -128,8 +130,8 @@ const int ioex_ih_count = ARRAY_SIZE(ioex_irq_handlers);
  * number declared is greater or equal to CONFIG_IO_EXPANDER_PORT_COUNT.
  * The linker ignores anything that gets by.
  */
-#define EXPIN(a, b, c...) \
-	static const int _expin_ ## a ## _ ## b ## _ ## c \
+#define EXPIN(a, b, c, d...) \
+	static const int _expin_ ## a ## _ ## b ## _ ## c ## _ ## d \
 	__attribute__((unused, section(".unused"))) = __LINE__; \
 	BUILD_ASSERT(a < CONFIG_IO_EXPANDER_PORT_COUNT);
 

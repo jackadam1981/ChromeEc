@@ -22,7 +22,7 @@
 #define USB_HOOK_VERSION 1
 
 static uint8_t charge_mode[USB_PORT_COUNT];
-extern const int usb_port_enable[USB_PORT_COUNT];
+extern int usb_port_enable[USB_PORT_COUNT];
 
 static void usb_port_set_enabled(int port_id, int en)
 {
