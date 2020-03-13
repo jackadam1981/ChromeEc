@@ -16,6 +16,24 @@
       "revId": "2357c415b57b68ff66fcfe98ad39de2e41c71c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "965edae9_58a46431",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-13T17:04:06Z",
+      "side": 1,
+      "message": "I don\u0027t think it needs the guard but it\u0027s defined that way in usb_pd.h\n\n#ifdef CONFIG_USB_PD_REV30\n/**\n * Get current PD Revision\n *\n * @param port USB-C port number\n * @return 0 for PD_REV1.0, 1 for PD_REV2.0, 2 for PD_REV3.0\n */\nint pd_get_rev(int port);\n\n/**\n * Get current PD VDO Version\n *\n * @param port USB-C port number\n * @return 0 for PD_REV1.0, 1 for PD_REV2.0\n */\nint pd_get_vdo_ver(int port);\n#else\n#define pd_get_rev(n)     PD_REV20\n#define pd_get_vdo_ver(n) VDM_VER10\n#endif",
+      "parentUuid": "0aff1bb5_7da02877",
+      "revId": "2357c415b57b68ff66fcfe98ad39de2e41c71c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
