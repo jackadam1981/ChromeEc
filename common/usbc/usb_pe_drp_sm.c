@@ -1581,78 +1581,6 @@ static void pe_src_ready_run(int port)
 		return;
 	}
 
-	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
-		get_time().val > pe[port].wait_and_add_jitter_timer) {
-
-		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
-		pe[port].wait_and_add_jitter_timer = TIMER_DISABLED;
-
-		if (pe[port].cable.discovery == PD_DISC_NEEDED &&
-		    get_time().val > pe[port].discover_port_identity_timer &&
-		    pe_can_send_sop_prime(port)) {
-			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
-			return;
-		}
-
-		/*
-		 * Start Port Discovery when:
-		 *   1) The DiscoverIdentityTimer times out.
-		 */
-		if (get_time().val > pe[port].discover_port_identity_timer) {
-			pe_start_port_discovery(port);
-			return;
-		}
-
-		/*
-		 * Handle Device Policy Manager Requests
-		 */
-
-		/*
-		 * Ignore sink specific request:
-		 *   DPM_REQUEST_NEW_POWER_LEVEL
-		 *   DPM_REQUEST_SOURCE_CAP
-		 */
-
-		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_NEW_POWER_LEVEL |
-					DPM_REQUEST_SOURCE_CAP);
-
-		if (pe[port].dpm_request) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-
-			if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP)) {
-				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP);
-				if (PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION))
-					set_state_pe(port, PE_SRC_HARD_RESET);
-				else
-					set_state_pe(port, PE_DRS_SEND_SWAP);
-			} else if (PE_CHK_DPM_REQUEST(port,
-						DPM_REQUEST_PR_SWAP)) {
-				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
-				set_state_pe(port, PE_PRS_SRC_SNK_SEND_SWAP);
-			} else if (PE_CHK_DPM_REQUEST(port,
-							DPM_REQUEST_GOTO_MIN)) {
-				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_GOTO_MIN);
-				set_state_pe(port, PE_SRC_TRANSITION_SUPPLY);
-			} else if (PE_CHK_DPM_REQUEST(port,
-						DPM_REQUEST_SRC_CAP_CHANGE)) {
-				PE_CLR_DPM_REQUEST(port,
-						DPM_REQUEST_SRC_CAP_CHANGE);
-				set_state_pe(port, PE_SRC_SEND_CAPABILITIES);
-			} else if (PE_CHK_DPM_REQUEST(port,
-						DPM_REQUEST_SEND_PING)) {
-				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_SEND_PING);
-				set_state_pe(port, PE_SRC_PING);
-			}  else if (!common_src_snk_dpm_requests(port)) {
-				CPRINTF("Unhandled DPM Request %x received\n",
-					pe[port].dpm_request);
-				PE_CLR_FLAG(port,
-					PE_FLAGS_LOCALLY_INITIATED_AMS);
-			}
-
-			return;
-		}
-	}
-
 	/*
 	 * Handle Source Requests
 	 */
@@ -1741,6 +1669,78 @@ static void pe_src_ready_run(int port)
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
+		}
+	}
+
+	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
+		get_time().val > pe[port].wait_and_add_jitter_timer) {
+
+		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
+		pe[port].wait_and_add_jitter_timer = TIMER_DISABLED;
+
+		if (pe[port].cable.discovery == PD_DISC_NEEDED &&
+		    get_time().val > pe[port].discover_port_identity_timer &&
+		    pe_can_send_sop_prime(port)) {
+			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
+			return;
+		}
+
+		/*
+		 * Start Port Discovery when:
+		 *   1) The DiscoverIdentityTimer times out.
+		 */
+		if (get_time().val > pe[port].discover_port_identity_timer) {
+			pe_start_port_discovery(port);
+			return;
+		}
+
+		/*
+		 * Handle Device Policy Manager Requests
+		 */
+
+		/*
+		 * Ignore sink specific request:
+		 *   DPM_REQUEST_NEW_POWER_LEVEL
+		 *   DPM_REQUEST_SOURCE_CAP
+		 */
+
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_NEW_POWER_LEVEL |
+					DPM_REQUEST_SOURCE_CAP);
+
+		if (pe[port].dpm_request) {
+			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+
+			if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP)) {
+				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP);
+				if (PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION))
+					set_state_pe(port, PE_SRC_HARD_RESET);
+				else
+					set_state_pe(port, PE_DRS_SEND_SWAP);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_PR_SWAP)) {
+				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
+				set_state_pe(port, PE_PRS_SRC_SNK_SEND_SWAP);
+			} else if (PE_CHK_DPM_REQUEST(port,
+							DPM_REQUEST_GOTO_MIN)) {
+				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_GOTO_MIN);
+				set_state_pe(port, PE_SRC_TRANSITION_SUPPLY);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_SRC_CAP_CHANGE)) {
+				PE_CLR_DPM_REQUEST(port,
+						DPM_REQUEST_SRC_CAP_CHANGE);
+				set_state_pe(port, PE_SRC_SEND_CAPABILITIES);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_SEND_PING)) {
+				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_SEND_PING);
+				set_state_pe(port, PE_SRC_PING);
+			}  else if (!common_src_snk_dpm_requests(port)) {
+				CPRINTF("Unhandled DPM Request %x received\n",
+					pe[port].dpm_request);
+				PE_CLR_FLAG(port,
+					PE_FLAGS_LOCALLY_INITIATED_AMS);
+			}
+
+			return;
 		}
 	}
 }
@@ -2314,84 +2314,6 @@ static void pe_snk_ready_run(int port)
 		return;
 	}
 
-	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
-		get_time().val > pe[port].wait_and_add_jitter_timer) {
-		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
-		pe[port].wait_and_add_jitter_timer = TIMER_DISABLED;
-
-		if (get_time().val > pe[port].sink_request_timer) {
-			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
-			return;
-		}
-
-		if (pe[port].cable.discovery == PD_DISC_NEEDED &&
-		    get_time().val > pe[port].discover_port_identity_timer &&
-		    pe_can_send_sop_prime(port)) {
-			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
-			return;
-		}
-
-		/*
-		 * Start Port Discovery when:
-		 *   1) The PortDiscoverIdentityTimer times out.
-		 */
-		if (get_time().val > pe[port].discover_port_identity_timer) {
-			pe_start_port_discovery(port);
-			return;
-		}
-
-		/*
-		 * Handle Device Policy Manager Requests
-		 */
-		/*
-		 * Ignore source specific requests:
-		 *   DPM_REQUEST_GOTO_MIN
-		 *   DPM_REQUEST_SRC_CAP_CHANGE,
-		 *   DPM_REQUEST_SEND_PING
-		 */
-		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_GOTO_MIN |
-					DPM_REQUEST_SRC_CAP_CHANGE |
-					DPM_REQUEST_SEND_PING);
-
-		if (pe[port].dpm_request) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-
-			if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP)) {
-				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP);
-				if (PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION))
-					set_state_pe(port, PE_SNK_HARD_RESET);
-				else
-					set_state_pe(port, PE_DRS_SEND_SWAP);
-			} else if (PE_CHK_DPM_REQUEST(port,
-							DPM_REQUEST_PR_SWAP)) {
-				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
-				set_state_pe(port, PE_PRS_SNK_SRC_SEND_SWAP);
-			} else if (PE_CHK_DPM_REQUEST(port,
-						DPM_REQUEST_SOURCE_CAP)) {
-				PE_CLR_DPM_REQUEST(port,
-							DPM_REQUEST_SOURCE_CAP);
-				set_state_pe(port, PE_SNK_GET_SOURCE_CAP);
-			} else if (PE_CHK_DPM_REQUEST(port,
-					DPM_REQUEST_NEW_POWER_LEVEL)) {
-				PE_CLR_DPM_REQUEST(port,
-						DPM_REQUEST_NEW_POWER_LEVEL);
-				set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
-			} else if (PE_CHK_DPM_REQUEST(port,
-					      DPM_REQUEST_GET_SNK_CAPS)) {
-				PE_CLR_DPM_REQUEST(port,
-						DPM_REQUEST_GET_SNK_CAPS);
-				set_state_pe(port, PE_DR_SNK_GET_SINK_CAP);
-			} else if (!common_src_snk_dpm_requests(port)) {
-				CPRINTF("Unhandled DPM Request %x received\n",
-					pe[port].dpm_request);
-				PE_CLR_FLAG(port,
-					PE_FLAGS_LOCALLY_INITIATED_AMS);
-			}
-
-			return;
-		}
-	}
-
 	/*
 	 * Handle Source Requests
 	 */
@@ -2481,6 +2403,84 @@ static void pe_snk_ready_run(int port)
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
+		}
+	}
+
+	if (pe[port].wait_and_add_jitter_timer == TIMER_DISABLED ||
+		get_time().val > pe[port].wait_and_add_jitter_timer) {
+		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
+		pe[port].wait_and_add_jitter_timer = TIMER_DISABLED;
+
+		if (get_time().val > pe[port].sink_request_timer) {
+			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+			return;
+		}
+
+		if (pe[port].cable.discovery == PD_DISC_NEEDED &&
+		    get_time().val > pe[port].discover_port_identity_timer &&
+		    pe_can_send_sop_prime(port)) {
+			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
+			return;
+		}
+
+		/*
+		 * Start Port Discovery when:
+		 *   1) The PortDiscoverIdentityTimer times out.
+		 */
+		if (get_time().val > pe[port].discover_port_identity_timer) {
+			pe_start_port_discovery(port);
+			return;
+		}
+
+		/*
+		 * Handle Device Policy Manager Requests
+		 */
+		/*
+		 * Ignore source specific requests:
+		 *   DPM_REQUEST_GOTO_MIN
+		 *   DPM_REQUEST_SRC_CAP_CHANGE,
+		 *   DPM_REQUEST_SEND_PING
+		 */
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_GOTO_MIN |
+					DPM_REQUEST_SRC_CAP_CHANGE |
+					DPM_REQUEST_SEND_PING);
+
+		if (pe[port].dpm_request) {
+			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+
+			if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP)) {
+				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_DR_SWAP);
+				if (PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION))
+					set_state_pe(port, PE_SNK_HARD_RESET);
+				else
+					set_state_pe(port, PE_DRS_SEND_SWAP);
+			} else if (PE_CHK_DPM_REQUEST(port,
+							DPM_REQUEST_PR_SWAP)) {
+				PE_CLR_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
+				set_state_pe(port, PE_PRS_SNK_SRC_SEND_SWAP);
+			} else if (PE_CHK_DPM_REQUEST(port,
+						DPM_REQUEST_SOURCE_CAP)) {
+				PE_CLR_DPM_REQUEST(port,
+							DPM_REQUEST_SOURCE_CAP);
+				set_state_pe(port, PE_SNK_GET_SOURCE_CAP);
+			} else if (PE_CHK_DPM_REQUEST(port,
+					DPM_REQUEST_NEW_POWER_LEVEL)) {
+				PE_CLR_DPM_REQUEST(port,
+						DPM_REQUEST_NEW_POWER_LEVEL);
+				set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+			} else if (PE_CHK_DPM_REQUEST(port,
+					      DPM_REQUEST_GET_SNK_CAPS)) {
+				PE_CLR_DPM_REQUEST(port,
+						DPM_REQUEST_GET_SNK_CAPS);
+				set_state_pe(port, PE_DR_SNK_GET_SINK_CAP);
+			} else if (!common_src_snk_dpm_requests(port)) {
+				CPRINTF("Unhandled DPM Request %x received\n",
+					pe[port].dpm_request);
+				PE_CLR_FLAG(port,
+					PE_FLAGS_LOCALLY_INITIATED_AMS);
+			}
+
+			return;
 		}
 	}
 }
