@@ -113,6 +113,17 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 	CPRINTS("p%d %s", port, __func__);
 }
 
+__override uint8_t board_get_src_dts_polarity(int port)
+{
+	/*
+	 * If the port in SRC DTS, the polarity is determined by the board,
+	 * i.e. what Rp impedance the CC lines are pulled. If this function
+	 * is not overridden, assume CC1 is primary.
+	 */
+	//return POLARITY_CC1_DTS;
+	return POLARITY_CC2_DTS;
+}
+
 /*
  * PWM channels. Must be in the exactly same order as in enum pwm_channel.
  * There total three 16 bits clock prescaler registers for all pwm channels,

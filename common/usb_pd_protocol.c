@@ -3382,6 +3382,8 @@ void pd_task(void *u)
 			/* UFP is attached */
 			if (new_cc_state == PD_CC_UFP_ATTACHED ||
 			    new_cc_state == PD_CC_UFP_DEBUG_ACC) {
+				if (new_cc_state == PD_CC_UFP_DEBUG_ACC)
+					ccprints("p%d Debug accessory", port);
 #ifdef CONFIG_USBC_PPC
 				/* Inform PPC that a sink is connected. */
 				ppc_sink_is_connected(port, 1);

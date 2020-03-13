@@ -344,6 +344,17 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	cprints(CC_USBPD, "p%d: overcurrent!", port);
 }
 
+__override uint8_t board_get_src_dts_polarity(int port)
+{
+	/*
+	 * If the port in SRC DTS, the polarity is determined by the board,
+	 * i.e. what Rp impedance the CC lines are pulled. If this function
+	 * is not overridden, assume CC1 is primary.
+	 */
+	//return POLARITY_CC1_DTS;
+	return POLARITY_CC2_DTS;
+}
+
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
 void lid_angle_peripheral_enable(int enable)
