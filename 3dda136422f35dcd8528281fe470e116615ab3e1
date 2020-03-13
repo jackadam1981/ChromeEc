@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e28508b3_5ff69c1a",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-13T03:01:56Z",
+      "side": 1,
+      "message": "Is this remaining just in case the logic in config.h gets removed at some point?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "3dda136422f35dcd8528281fe470e116615ab3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0253cd4_615cef7e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-13T03:01:56Z",
+      "side": 1,
+      "message": "Not needed as it looks like all the bits are marked \"clear on read\"?",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "3dda136422f35dcd8528281fe470e116615ab3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
