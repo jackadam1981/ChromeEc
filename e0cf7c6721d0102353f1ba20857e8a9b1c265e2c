@@ -22,6 +22,30 @@
       "revId": "e0cf7c6721d0102353f1ba20857e8a9b1c265e2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62010993_542be569",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1318,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-13T17:49:15Z",
+      "side": 1,
+      "message": "In my trial and error, yes it turned out that it reads/writes descriptors and buffers. Without it, USB didn\u0027t work.",
+      "parentUuid": "4f5fc723_ee7f2165",
+      "range": {
+        "startLine": 1315,
+        "startChar": 0,
+        "endLine": 1318,
+        "endChar": 0
+      },
+      "revId": "e0cf7c6721d0102353f1ba20857e8a9b1c265e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
