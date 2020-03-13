@@ -16,6 +16,24 @@
       "revId": "8f3b9652decf671e16f644d528d3d889e546b4b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7053ba80_798c5c58",
+        "filename": "baseboard/kukui/charger_mt6370.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-13T02:13:21Z",
+      "side": 1,
+      "message": "Thanks for the pointing out. You are right. I will figure out a way to fix this.",
+      "parentUuid": "68e796a9_93d6710c",
+      "revId": "8f3b9652decf671e16f644d528d3d889e546b4b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
