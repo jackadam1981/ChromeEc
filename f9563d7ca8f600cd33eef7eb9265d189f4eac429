@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "495d26bb_0d07f763",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-13T01:24:38Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c002452c_81e8c959",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "f9563d7ca8f600cd33eef7eb9265d189f4eac429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec8512a8_eeccf02f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-12T19:36:11Z",
       "side": 1,
       "message": "Please put spaces in between sentences.",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "f9563d7ca8f600cd33eef7eb9265d189f4eac429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83714bad_442d4790",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-03-13T01:24:38Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ec8512a8_eeccf02f",
       "range": {
         "startLine": 11,
         "startChar": 8,
