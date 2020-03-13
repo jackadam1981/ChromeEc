@@ -136,10 +136,19 @@ static void battery_thermal_control(struct charge_state_data *curr)
 	 * PID algorithm (https://en.wikipedia.org/wiki/PID_controller),
 	 * and operates on only P value.
 	 */
-	throttled_ma =
-		MIN(PD_MAX_CURRENT_MA,
-		    input_current + k_p * (thermal_bound.target - jc_temp));
-	board_set_charge_limit_throttle(throttled_ma, prev_charge_mv);
+	throttled_ma = MIN(
+		PD_MAX_CURRENT_MA,
+		/*
+		 * Should not pass the previously set input current by
+		 * charger manager.  This value might be related the charger's
+		 * capability.
+		 */
+		MIN(prev_charge_ma,
+		    input_current + k_p * (thermal_bound.target - jc_temp)));
+
+	/* If the input current doesn't change, just skip. */
+	if (throttled_ma != input_current)
+		board_set_charge_limit_throttle(throttled_ma, prev_charge_mv);
 
 thermal_exit:
 	thermal_wait_until.val = get_time().val + (3 * SECOND);
