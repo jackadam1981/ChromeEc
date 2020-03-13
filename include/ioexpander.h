@@ -21,6 +21,9 @@ struct ioex_info {
 	/* Bitmask on that port (1 << N) */
 	uint32_t mask;
 
+	/* Alternate group of ioex pin */
+	uint16_t altgrp;
+
 	/* Flags - the same as the GPIO flags */
 	uint32_t flags;
 };
@@ -156,5 +159,16 @@ const char *ioex_get_name(enum ioex_signal signal);
  * @return		1 if signal is IOEX else return 0
  */
 int signal_is_ioex(int signal);
+
+/*
+ * Some board may have alternate (daughter) board with differenct
+ * io expander chip. This function return alternate group index
+ * which is actively used.
+ *
+ * @param port		IOEX port to get its altgrp
+ * @param alt_grp	Pointer to keep the altgrp read back
+ * @return		EC_SUCCESS if successful, non-zero if error.
+ */
+int board_get_ioex_altgrp(int port, uint8_t *alt_grp);
 
 #endif /* __CROS_EC_IOEXPANDER_H */

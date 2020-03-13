@@ -167,6 +167,7 @@
 	#define CONFIG_USBC_RETIMER_PS8818
 #elif defined(VARIANT_ZORK_DALBOZ)
 	#define CONFIG_USB_MUX_PS8740
+	#define CONFIG_IO_EXPANDER_PCAL6408
 #endif
 
 /* USB-A config */
@@ -176,7 +177,6 @@
 #define CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE USB_CHARGE_MODE_CDP
 #define CONFIG_USB_PORT_POWER_SMART_INVERTED
 #define GPIO_USB1_ILIM_SEL IOEX_USB_A0_CHARGE_EN_L
-#define GPIO_USB2_ILIM_SEL IOEX_USB_A1_CHARGE_EN_DB_L
 
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
@@ -330,6 +330,7 @@ void mst_hpd_interrupt(enum ioex_signal signal);
 
 int board_is_convertible(void);
 void board_update_sensor_config_from_sku(void);
+void board_update_ioex_config(void);
 
 #ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
 int board_tcpc_fast_role_swap_enable(int port, int enable);
