@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "6c01378b_c6f37123",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-13T03:03:28Z",
+      "side": 1,
+      "message": "Also, thanks for this!",
+      "parentUuid": "7a5b547e_94e53b8d",
+      "range": {
+        "startLine": 193,
+        "startChar": 43,
+        "endLine": 193,
+        "endChar": 61
+      },
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7af85e83_953f74f8",
         "filename": "include/config.h",
         "patchSetId": 4
