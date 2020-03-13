@@ -33,7 +33,7 @@ struct charge_mode_t {
 static struct charge_mode_t charge_mode[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT];
 
 /* GPIOs to enable/disable USB ports. Board specific. */
-extern const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT];
+extern int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT];
 
 #ifdef CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY
 /*
