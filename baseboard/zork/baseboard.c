@@ -311,7 +311,7 @@ void baseboard_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
 
 	/* Enable HPD interrupts */
-	ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB);
+	ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB_OPT1);
 #ifdef VARIANT_ZORK_TREMBYLE
 	ioex_enable_interrupt(IOEX_MST_HPD_OUT);
 #endif
@@ -590,6 +590,11 @@ uint32_t system_get_sku_id(void)
 	return sku_id;
 }
 
+__attribute__((weak)) void board_update_ioex_config(void)
+{
+	return;
+}
+
 static void cbi_init(void)
 {
 	uint32_t board_version = 0;
@@ -609,6 +614,8 @@ static void cbi_init(void)
 		ccprints("FW Config: not set in cbi");
 	else
 		ccprints("FW Config: %d (0x%x)", val, val);
+
+	board_update_ioex_config();
 
 #ifdef HAS_TASK_MOTIONSENSE
 	board_update_sensor_config_from_sku();
@@ -666,7 +673,7 @@ static void hdmi_hpd_handler(void)
 	int hpd = 0;
 
 	/* Pass HPD through from DB OPT1 HDMI connector to AP's DP1. */
-	ioex_get_level(IOEX_HDMI_CONN_HPD_3V3_DB, &hpd);
+	ioex_get_level(IOEX_HDMI_CONN_HPD_3V3_DB_OPT1, &hpd);
 	gpio_set_level(GPIO_DP1_HPD, hpd);
 	ccprints("HDMI HPD %d", hpd);
 }

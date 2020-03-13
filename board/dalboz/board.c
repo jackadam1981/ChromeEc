@@ -8,9 +8,11 @@
 #include "button.h"
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/ioexpander/pcal6408.h"
 #include "extpower.h"
 #include "fan.h"
 #include "fan_chip.h"
+#include "ioexpander.h"
 #include "gpio.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -141,3 +143,23 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+#define ALTERNATE_IOEX_USBC 0
+#define ALTERNATE_IOEX_HDMI 1
+int board_get_ioex_altgrp(void)
+{
+	if (ec_config_has_usbc1())
+		return ALTERNATE_IOEX_USBC;
+	else
+		return ALTERNATE_IOEX_HDMI;
+}
+
+void board_udpate_ioex_config(void)
+{
+	if (!ec_config_has_usbc1()) {
+		ioex_config[USBC_PORT_C1].i2c_slave_addr = PCAL6408_I2C_ADDR0;
+		ioex_config[USBC_PORT_C1].drv = &pcal6408_ioexpander_drv;
+	}
+
+	return;
+}

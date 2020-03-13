@@ -330,6 +330,7 @@ void mst_hpd_interrupt(enum ioex_signal signal);
 
 int board_is_convertible(void);
 void board_update_sensor_config_from_sku(void);
+void board_udpate_ioex_config(void);
 
 #ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
 int board_tcpc_fast_role_swap_enable(int port, int enable);
