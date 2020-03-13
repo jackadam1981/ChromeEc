@@ -3,7 +3,7 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
-# Usage: ./util/ide-config vscode all all:RO | tee .vscode/c_cpp_properties.json
+# Usage: ./util/ide-config.sh vscode all all:RO | tee .vscode/c_cpp_properties.json
 # This tool needs to be run from the base ec directory.
 #
 # Future works should be put towards adding new IDE generators and adding
@@ -279,11 +279,11 @@ main() {
 	for cfg; do
 		# We parse both board and image to pre-sanatize the input
 		if ! board=$(parse-cfg-board "$cfg"); then
-			echo "Failed to parse board from cfg '$cfg'"
+			echo "Failed to parse board from cfg '$cfg'" >&2
 			exit 1
 		fi
 		if ! image=$(parse-cfg-image "$cfg"); then
-			echo "Failed to parse image from cfg '$cfg'"
+			echo "Failed to parse image from cfg '$cfg'" >&2
 			exit 1
 		fi
 		# Note "all:*" could be specified multiple times for RO and RW
@@ -319,11 +319,11 @@ main() {
 		local -i jobs=0
 		for cfg in "${cfgs[@]}"; do
 			if ! board="$(parse-cfg-board "$cfg")"; then
-				echo "Failed to parse board from cfg '$cfg'"
+				echo "Failed to parse board from cfg '$cfg'" >&2
 				exit 1
 			fi
 			if ! image="$(parse-cfg-image "$cfg")"; then
-				echo "Failed to parse image from cfg '$cfg'"
+				echo "Failed to parse image from cfg '$cfg'" >&2
 				exit 1
 			fi
 			make-defines "$board" "$image" >/dev/null &
