@@ -14,7 +14,8 @@
 struct extended_msg {
 	uint32_t header;
 	uint32_t len;
-	uint8_t buf[EXTENDED_BUFFER_SIZE];
+	uint8_t tx_buf[EXTENDED_BUFFER_SIZE];
+	uint8_t rx_buf[EXTENDED_BUFFER_SIZE];
 };
 
 /* Defined in usb_prl_sm.c */

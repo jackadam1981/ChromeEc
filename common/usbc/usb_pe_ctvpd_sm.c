@@ -115,9 +115,9 @@ void pe_message_sent(int port)
 
 static void pe_request_run(const int port)
 {
-	uint32_t *payload = (uint32_t *)emsg[port].buf;
+	uint32_t *payload = (uint32_t *)emsg[port].tx_buf;
 	uint32_t header = emsg[port].header;
-	uint32_t vdo = payload[0];
+	uint32_t vdo = *(uint32_t *)emsg[port].rx_buf;
 
 	if (pe[port].flags & PE_FLAGS_MSG_RECEIVED) {
 		pe[port].flags &= ~PE_FLAGS_MSG_RECEIVED;
