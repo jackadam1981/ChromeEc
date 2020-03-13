@@ -8,9 +8,12 @@
 #include "button.h"
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/ioexpander/pcal6408.h"
 #include "extpower.h"
 #include "fan.h"
 #include "fan_chip.h"
+#include "hooks.h"
+#include "ioexpander.h"
 #include "gpio.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -21,6 +24,7 @@
 #include "system.h"
 #include "task.h"
 #include "usb_charge.h"
+#include "usb_pd.h"
 
 #include "gpio_list.h"
 
@@ -141,3 +145,85 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+#define ALTERNATE_IOEX_USBC 0
+#define ALTERNATE_IOEX_HDMI 1
+
+__override int board_get_ioex_altgrp(int port, uint8_t *alt_grp)
+{
+	if (port == USBC_PORT_C0) {
+		*alt_grp = ALTERNATE_IOEX_USBC;
+		return EC_SUCCESS;
+	} else {
+		if (ec_config_get_usb_db() == DALBOZ_DB_D_OPT2_USBA_HDMI)
+			*alt_grp =  ALTERNATE_IOEX_HDMI;
+		else
+			*alt_grp = ALTERNATE_IOEX_USBC;
+	}
+
+	return EC_SUCCESS;
+}
+
+/* These IO expander GPIOs vary with DB option. */
+enum gpio_signal IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT1;
+enum gpio_signal IOEX_EN_USB_A1_5V_DB = IOEX_EN_USB_A1_5V_DB_OPT1;
+enum gpio_signal IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT1;
+enum gpio_signal GPIO_USB2_ILIM_SEL = IOEX_USB_A1_CHARGE_EN_DB_L_OPT1;
+
+extern int usb_port_enable[USB_PORT_COUNT];
+
+void board_update_ioex_config(void)
+{
+	ccprints("ec_config_get_usb_db is %d", ec_config_get_usb_db());
+	if (ec_config_get_usb_db() == DALBOZ_DB_D_OPT2_USBA_HDMI) {
+		ioex_config[USBC_PORT_C1].i2c_slave_addr = PCAL6408_I2C_ADDR0;
+		ioex_config[USBC_PORT_C1].drv = &pcal6408_ioexpander_drv;
+
+		IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT2;
+		IOEX_EN_USB_A1_5V_DB = IOEX_EN_USB_A1_5V_DB_OPT2;
+		IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT2;
+
+		usb_port_enable[1] = IOEX_EN_USB_A1_5V_DB_OPT2;
+		GPIO_USB2_ILIM_SEL = IOEX_USB_A1_CHARGE_EN_DB_L_OPT2;
+	}
+
+	return;
+}
+
+static void pcal6408_ioex_int_handler(void)
+{
+	pcal6408_ioex_event_handler(1);
+}
+DECLARE_DEFERRED(pcal6408_ioex_int_handler);
+
+void tcpc_alert_event(enum gpio_signal signal)
+{
+	int port = -1;
+
+	switch (signal) {
+	case GPIO_USB_C0_TCPC_INT_ODL:
+		port = 0;
+		break;
+	case GPIO_USB_C1_TCPC_INT_ODL:
+		port = 1;
+		break;
+	default:
+		return;
+	}
+
+	if (ec_config_get_usb_db() == DALBOZ_DB_D_OPT2_USBA_HDMI) {
+		if (port == 0)
+			schedule_deferred_pd_interrupt(port);
+		else if (port == 1)
+			hook_call_deferred(&pcal6408_ioex_int_handler_data, 0);
+	} else
+		schedule_deferred_pd_interrupt(port);
+}
+
+static void board_hdmi_enable_interrupt(void)
+{
+	/* Enable HPD interrupts */
+	if (ec_config_get_usb_db() == DALBOZ_DB_D_OPT2_USBA_HDMI)
+		ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB_OPT2);
+}
+DECLARE_HOOK(HOOK_INIT, board_hdmi_enable_interrupt, HOOK_PRIO_INIT_I2C + 2);
