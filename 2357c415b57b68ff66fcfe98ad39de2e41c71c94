@@ -34,6 +34,24 @@
       "revId": "2357c415b57b68ff66fcfe98ad39de2e41c71c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f3d4f53_8909ab67",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-13T17:19:00Z",
+      "side": 1,
+      "message": "I guess for PD 2.0 we will always send Rev 1 and it\u0027s a space saving thing?",
+      "parentUuid": "965edae9_58a46431",
+      "revId": "2357c415b57b68ff66fcfe98ad39de2e41c71c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
