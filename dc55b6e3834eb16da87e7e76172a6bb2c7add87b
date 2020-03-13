@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b1c5193_19ae3295",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-13T16:46:28Z",
+      "side": 1,
+      "message": "why buffers area require KEEP() and descriptor area does not?",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 7
+      },
+      "revId": "dc55b6e3834eb16da87e7e76172a6bb2c7add87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
