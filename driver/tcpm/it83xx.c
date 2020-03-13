@@ -388,10 +388,13 @@ static void it83xx_select_polarity(enum usbpd_port port,
 					enum usbpd_cc_pin cc_pin)
 {
 	/* cc1/cc2 selection */
-	if (cc_pin == USBPD_CC_PIN_1)
+	if (cc_pin == USBPD_CC_PIN_1) {
 		SET_MASK(IT83XX_USBPD_CCGCR(port), BIT(0));
-	else
+		ccprints("p%d set cc1", port);
+	} else {
 		CLEAR_MASK(IT83XX_USBPD_CCGCR(port), BIT(0));
+		ccprints("p%d set cc2", port);
+	}
 }
 
 static int it83xx_set_cc(enum usbpd_port port, int pull)
