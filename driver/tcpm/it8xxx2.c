@@ -12,6 +12,7 @@
 #include "registers.h"
 #include "system.h"
 #include "task.h"
+#include "tcpci.h"
 #include "timer.h"
 #include "util.h"
 #include "usb_pd.h"
@@ -411,6 +412,9 @@ static int it83xx_tcpm_select_rp_value(int port, int rp_sel)
 {
 	uint8_t rp;
 
+	/* Keep track of current RP value */
+	tcpci_set_cached_rp(port, rp_sel);
+
 	/*
 	 * Bit[3-1]: CC output current (effective when Rp assert in 05h Bit[1])
 	 *       111: reserved
@@ -437,6 +441,9 @@ static int it83xx_tcpm_select_rp_value(int port, int rp_sel)
 
 static int it83xx_tcpm_set_cc(int port, int pull)
 {
+	/* Keep track of current CC pull value */
+	tcpci_set_cached_pull(port, pull);
+
 	return it83xx_set_cc(port, pull);
 }
 
@@ -641,6 +648,9 @@ static void it83xx_init(enum usbpd_port port, int role)
 
 static int it83xx_tcpm_init(int port)
 {
+	/* Start with an unknown connection */
+	tcpci_set_cached_pull(port, TYPEC_CC_OPEN);
+
 	/* Initialize physical layer */
 	it83xx_init(port, PD_ROLE_DEFAULT(port));
 
