@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16d8cda3_41a3d61e",
+        "filename": "chip/g/usb_hid_keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-13T16:46:12Z",
+      "side": 1,
+      "message": "hmm, I never knew this file existed, and it is not being used by any of the h1 boards, could it be just dropped (in a different patch)?",
+      "revId": "0b6f398d1f93d6915a59a63527f85492fa986281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3454bec_c98bb2cd",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-13T16:46:12Z",
+      "side": 1,
+      "message": "this macro definition should be above the comment in line 338\n\nAlso, it has nothing to do with USB, something like MEM_SECTION_SIZE or similar would make more sense.",
+      "range": {
+        "startLine": 339,
+        "startChar": 8,
+        "endLine": 339,
+        "endChar": 20
+      },
+      "revId": "0b6f398d1f93d6915a59a63527f85492fa986281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
