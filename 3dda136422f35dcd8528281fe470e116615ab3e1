@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bd3c64c4_95478371",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-13T17:24:15Z",
+      "side": 1,
+      "message": "Basically.  It seems like a low-cost check to run.  I believe the other narrow VDC drivers also include an error like this just in case.",
+      "parentUuid": "e28508b3_5ff69c1a",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "3dda136422f35dcd8528281fe470e116615ab3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0253cd4_615cef7e",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "3dda136422f35dcd8528281fe470e116615ab3e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "effe82ad_901b3340",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-13T17:24:15Z",
+      "side": 1,
+      "message": "Good catch, will fix here.",
+      "parentUuid": "f0253cd4_615cef7e",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "3dda136422f35dcd8528281fe470e116615ab3e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

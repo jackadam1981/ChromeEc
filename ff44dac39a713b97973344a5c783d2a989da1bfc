@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "4f5cdf08_4809476a",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-13T17:24:15Z",
+      "side": 1,
+      "message": "No problem.  I hate setting an enum value I don\u0027t understand.",
+      "parentUuid": "6c01378b_c6f37123",
+      "range": {
+        "startLine": 193,
+        "startChar": 43,
+        "endLine": 193,
+        "endChar": 61
+      },
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7af85e83_953f74f8",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -298,6 +322,24 @@
       "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5798de9_f13d0916",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-13T17:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7af85e83_953f74f8",
+      "revId": "ff44dac39a713b97973344a5c783d2a989da1bfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
