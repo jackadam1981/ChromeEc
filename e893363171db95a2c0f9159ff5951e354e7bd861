@@ -22,6 +22,30 @@
       "revId": "e893363171db95a2c0f9159ff5951e354e7bd861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76574aef_c04637c1",
+        "filename": "include/usb_emsg.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-14T21:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86e312a6_cfb7b446",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "e893363171db95a2c0f9159ff5951e354e7bd861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
