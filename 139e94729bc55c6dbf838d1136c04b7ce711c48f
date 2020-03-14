@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beaacecb_19c5e92f",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-03-14T03:33:40Z",
+      "side": 0,
+      "message": "While checking ToT, I noticed (UnorientedDebugAccessory.SRC) was unhandled.\nThis individual line seems to have been dropped since crrev/c/2022914 ?\n\nSee b/151487379 for context RE: ServoV4 detection on Waddledoo.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "139e94729bc55c6dbf838d1136c04b7ce711c48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
