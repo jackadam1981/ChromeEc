@@ -57,13 +57,17 @@ enum voltage_scale {
 };
 
 enum freq {
-	FREQ_32KHZ  = 32  * 1000,
-	FREQ_64MHZ  = 64  * 1000000,
-	FREQ_140MHZ = 140 * 1000000,
-	FREQ_200MHZ = 200 * 1000000,
-	FREQ_280MHZ = 280 * 1000000,
-	FREQ_400MHZ = 400 * 1000000,
-	FREQ_480MHZ = 480 * 1000000,
+	FREQ_1KHZ   = 1000,
+	FREQ_32KHZ  = 32  * FREQ_1KHZ,
+	FREQ_1MHZ   = 1000000,
+	FREQ_2MHZ   = 2   * FREQ_1MHZ,
+	FREQ_16MHZ  = 16  * FREQ_1MHZ,
+	FREQ_64MHZ  = 64  * FREQ_1MHZ,
+	FREQ_140MHZ = 140 * FREQ_1MHZ,
+	FREQ_200MHZ = 200 * FREQ_1MHZ,
+	FREQ_280MHZ = 280 * FREQ_1MHZ,
+	FREQ_400MHZ = 400 * FREQ_1MHZ,
+	FREQ_480MHZ = 480 * FREQ_1MHZ,
 };
 
 /* High-speed oscillator default is 64 MHz */
@@ -132,12 +136,20 @@ static void clock_flash_latency(enum freq axi_freq, enum voltage_scale vos)
 		;
 }
 
-static void clock_pll1_configure(enum freq freq) {
+/**
+ * @brief Configure PLL1 to output the specified frequency.
+ *
+ * The input frequency to PLL1 is assumed to be the HSI, which
+ * is 64MHz.
+ *
+ * @param output_freq The target output frequency.
+ */
+static void clock_pll1_configure(enum freq output_freq) {
 	uint32_t divm = 4; // Input prescaler (16MHz max for PLL -- 64/4 ==> 16)
 	uint32_t divn;     // Pll multiplier
 	uint32_t divp;     // Output 1 prescaler
 
-	switch (freq)
+	switch (output_freq)
 	{
 	case FREQ_400MHZ:
 		/*
@@ -174,7 +186,18 @@ static void clock_pll1_configure(enum freq freq) {
 		return;
 	}
 
-	ASSERT((STM32_HSI_CLOCK / divm * divn / divp) == freq);
+	/*
+	 * Using VCO wide-range setting, STM32_RCC_PLLCFG_PLL1VCOSEL_WIDE,
+	 * requires input frequency to be between 2MHz and 16MHz.
+	 * If using low-range mode, the input must be between 1MHz to 2MHz.
+	 */
+	ASSERT(FREQ_2MHZ <= (STM32_HSI_CLOCK/divm));
+	ASSERT((STM32_HSI_CLOCK/divm) <= FREQ_16MHZ);
+
+	/*
+	 * Ensure that we actually reach the target frequency.
+	 */
+	ASSERT((STM32_HSI_CLOCK / divm * divn / divp) == output_freq);
 
 	/* Configure PLL1 using 64 Mhz HSI as input */
 	STM32_RCC_PLLCKSELR = STM32_RCC_PLLCKSEL_PLLSRC_HSI
