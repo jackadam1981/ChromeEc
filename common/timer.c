@@ -299,6 +299,7 @@ static int command_wait(int argc, char **argv)
 	if (*e)
 		return EC_ERROR_PARAM1;
 
+	watchdog_reload();
 	/*
 	 * Waiting for too long (e.g. 3s) will cause the EC to reset due to a
 	 * watchdog timeout. This is intended behaviour and is in fact used by
