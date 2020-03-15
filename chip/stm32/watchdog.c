@@ -21,7 +21,11 @@
  * value large enough that we reload before the worst-case watchdog delay
  * (fastest LSI clock).
  */
-#define LSI_CLOCK 56000
+#ifdef STM32_LSI_CLOCK
+#	define LSI_CLOCK STM32_LSI_CLOCK
+#else
+#	define LSI_CLOCK FREQ_56KHZ
+#endif
 
 /*
  * Use largest prescaler divider = /256.  This gives a worst-case watchdog
