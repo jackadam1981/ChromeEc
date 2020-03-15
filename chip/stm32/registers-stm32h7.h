@@ -18,6 +18,13 @@
 #error "This header file should not be included directly."
 #endif
 
+#include "hwtypes.h"
+
+/* High-speed oscillator default is 64 MHz */
+#define STM32_HSI_CLOCK FREQ_64MHZ
+/* Low-speed oscillator is 32-Khz */
+#define STM32_LSI_CLOCK FREQ_32KHZ
+
 /* --- IRQ numbers --- */
 #define STM32_IRQ_WWDG             0
 #define STM32_IRQ_PVD              1
