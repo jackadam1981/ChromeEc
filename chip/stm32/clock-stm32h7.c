@@ -23,6 +23,7 @@
 #include "cpu.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "hwtypes.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -40,40 +41,6 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
 #define CPRINTF(format, args...) cprintf(CC_CLOCK, format, ## args)
-
-enum clock_osc {
-	OSC_HSI = 0,	/* High-speed internal oscillator */
-	OSC_CSI,	/* Multi-speed internal oscillator: NOT IMPLEMENTED */
-	OSC_HSE,	/* High-speed external oscillator: NOT IMPLEMENTED */
-	OSC_PLL,	/* PLL */
-};
-
-enum voltage_scale {
-	VOLTAGE_SCALE0 = 0,
-	VOLTAGE_SCALE1,
-	VOLTAGE_SCALE2,
-	VOLTAGE_SCALE3,
-	VOLTAGE_SCALE_COUNT,
-};
-
-enum freq {
-	FREQ_1KHZ   = 1000,
-	FREQ_32KHZ  = 32  * FREQ_1KHZ,
-	FREQ_1MHZ   = 1000000,
-	FREQ_2MHZ   = 2   * FREQ_1MHZ,
-	FREQ_16MHZ  = 16  * FREQ_1MHZ,
-	FREQ_64MHZ  = 64  * FREQ_1MHZ,
-	FREQ_140MHZ = 140 * FREQ_1MHZ,
-	FREQ_200MHZ = 200 * FREQ_1MHZ,
-	FREQ_280MHZ = 280 * FREQ_1MHZ,
-	FREQ_400MHZ = 400 * FREQ_1MHZ,
-	FREQ_480MHZ = 480 * FREQ_1MHZ,
-};
-
-/* High-speed oscillator default is 64 MHz */
-#define STM32_HSI_CLOCK FREQ_64MHZ
-/* Low-speed oscillator is 32-Khz */
-#define STM32_LSI_CLOCK FREQ_32KHZ
 
 /*
  * LPTIM is a 16-bit counter clocked by LSI
