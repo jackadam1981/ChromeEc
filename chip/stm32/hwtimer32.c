@@ -130,50 +130,6 @@ defined(CHIP_FAMILY_STM32H7)
 		*reg &= ~mask;
 }
 
-#if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32L4) || \
-	defined(CHIP_FAMILY_STM32H7)
-/* for families using a variable clock feeding the timer */
-static void update_prescaler(void)
-{
-	uint32_t t;
-	/*
-	 * Pre-scaler value :
-	 * the timer is incrementing every microsecond
-	 */
-	STM32_TIM_PSC(TIM_CLOCK32) = (clock_get_timer_freq() / SECOND) - 1;
-	/*
-	 * Forcing reloading the pre-scaler,
-	 * but try to maintain a sensible time-keeping while triggering
-	 * the update event.
-	 */
-	interrupt_disable();
-	/* Ignore the next update */
-	STM32_TIM_DIER(TIM_CLOCK32) &= ~0x0001;
-	/*
-	 * prepare to reload the counter with the current value
-	 * to avoid rolling backward the microsecond counter.
-	 */
-	t = STM32_TIM32_CNT(TIM_CLOCK32) + 1;
-	/* issue an update event, reloads the pre-scaler and the counter */
-	STM32_TIM_EGR(TIM_CLOCK32) = 0x0001;
-	/* clear the 'spurious' update unless we were going to roll-over */
-	if (t)
-		STM32_TIM_SR(TIM_CLOCK32) = ~1;
-	/* restore a sensible time value */
-	STM32_TIM32_CNT(TIM_CLOCK32) = t;
-	/* restore roll-over events */
-	STM32_TIM_DIER(TIM_CLOCK32) |= 0x0001;
-	interrupt_enable();
-
-#ifdef CONFIG_WATCHDOG_HELP
-	/* Watchdog timer runs at 1KHz */
-	STM32_TIM_PSC(TIM_WATCHDOG) =
-		(clock_get_timer_freq()  / SECOND * MSEC)- 1;
-#endif  /* CONFIG_WATCHDOG_HELP */
-}
-DECLARE_HOOK(HOOK_FREQ_CHANGE, update_prescaler, HOOK_PRIO_DEFAULT);
-#endif /* CHIP_FAMILY_STM32L || CHIP_FAMILY_STM32L4 || CHIP_FAMILY_STM32H7 */
-
 int __hw_clock_source_init(uint32_t start_t)
 {
 	/* Enable TIM peripheral block clocks */
@@ -241,9 +197,24 @@ void IRQ_HANDLER(IRQ_WD)(void)
 }
 const struct irq_priority __keep IRQ_PRIORITY(IRQ_WD)
 	__attribute__((section(".rodata.irqprio")))
-		= {IRQ_WD, 0}; /* put the watchdog at the highest
-					    priority */
+		= {IRQ_WD, 0}; /* put the watchdog at the highest  priority */
 
+/**
+ * @brief Update the watchdog helper timer prescaler.
+ *
+ * This recalibrates the timer's prescaler based on system timer frequency.
+ * This is necessary when the system/timer clock source changes frequency.
+ */
+static void hwtimer_update_watchdog(void)
+{
+	/* Update prescaler: watchdog timer runs at 1KHz (ms period) */
+	STM32_TIM_PSC(TIM_WATCHDOG) =
+		(clock_get_timer_freq() / SECOND * MSEC) - 1;
+}
+
+/**
+ * @brief Setup the watchdog helper timer.
+ */
 void hwtimer_setup_watchdog(void)
 {
 	/* Enable clock */
@@ -260,12 +231,11 @@ void hwtimer_setup_watchdog(void)
 	STM32_TIM_CR2(TIM_WATCHDOG) = 0x0000;
 	STM32_TIM_SMCR(TIM_WATCHDOG) = 0x0000;
 
-	/* AUto-reload value */
+	/* Auto-reload value */
 	STM32_TIM_ARR(TIM_WATCHDOG) = CONFIG_AUX_TIMER_PERIOD_MS;
 
-	/* Update prescaler: watchdog timer runs at 1KHz */
-	STM32_TIM_PSC(TIM_WATCHDOG) =
-		(clock_get_timer_freq() / SECOND * MSEC) - 1;
+	/* Update prescaler */
+	hwtimer_update_watchdog();
 
 	/* Reload the pre-scaler */
 	STM32_TIM_EGR(TIM_WATCHDOG) = 0x0001;
@@ -281,9 +251,54 @@ void hwtimer_setup_watchdog(void)
 	task_enable_irq(IRQ_WD);
 }
 
+/**
+ * @brief Reload the watchdog helper timer.
+ */
 void hwtimer_reset_watchdog(void)
 {
 	STM32_TIM_CNT(TIM_WATCHDOG) = 0x0000;
 }
 
 #endif  /* CONFIG_WATCHDOG_HELP */
+
+#if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32L4) || \
+	defined(CHIP_FAMILY_STM32H7)
+/* for families using a variable clock feeding the timer */
+static void update_prescaler(void)
+{
+	uint32_t t;
+	/*
+	 * Pre-scaler value :
+	 * the timer is incrementing every microsecond
+	 */
+	STM32_TIM_PSC(TIM_CLOCK32) = (clock_get_timer_freq() / SECOND) - 1;
+	/*
+	 * Forcing reloading the pre-scaler,
+	 * but try to maintain a sensible time-keeping while triggering
+	 * the update event.
+	 */
+	interrupt_disable();
+	/* Ignore the next update */
+	STM32_TIM_DIER(TIM_CLOCK32) &= ~0x0001;
+	/*
+	 * prepare to reload the counter with the current value
+	 * to avoid rolling backward the microsecond counter.
+	 */
+	t = STM32_TIM32_CNT(TIM_CLOCK32) + 1;
+	/* issue an update event, reloads the pre-scaler and the counter */
+	STM32_TIM_EGR(TIM_CLOCK32) = 0x0001;
+	/* clear the 'spurious' update unless we were going to roll-over */
+	if (t)
+		STM32_TIM_SR(TIM_CLOCK32) = ~1;
+	/* restore a sensible time value */
+	STM32_TIM32_CNT(TIM_CLOCK32) = t;
+	/* restore roll-over events */
+	STM32_TIM_DIER(TIM_CLOCK32) |= 0x0001;
+	interrupt_enable();
+
+#ifdef CONFIG_WATCHDOG_HELP
+	hwtimer_update_watchdog();
+#endif  /* CONFIG_WATCHDOG_HELP */
+}
+DECLARE_HOOK(HOOK_FREQ_CHANGE, update_prescaler, HOOK_PRIO_DEFAULT);
+#endif /* CHIP_FAMILY_STM32L || CHIP_FAMILY_STM32L4 || CHIP_FAMILY_STM32H7 */
