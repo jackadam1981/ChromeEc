@@ -29,6 +29,7 @@ enum voltage_scale {
 enum freq {
 	FREQ_1KHZ   = 1000,
 	FREQ_32KHZ  = 32  * FREQ_1KHZ,
+	FREQ_56KHZ  = 56  * FREQ_1KHZ,
 	FREQ_1MHZ   = 1000000,
 	FREQ_2MHZ   = 2   * FREQ_1MHZ,
 	FREQ_16MHZ  = 16  * FREQ_1MHZ,
