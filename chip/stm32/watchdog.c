@@ -9,6 +9,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "hwtypes.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -21,7 +22,11 @@
  * value large enough that we reload before the worst-case watchdog delay
  * (fastest LSI clock).
  */
-#define LSI_CLOCK 56000
+#ifdef STM32_LSI_CLOCK
+static const enum freq lsi_freq = STM32_LSI_CLOCK;
+#else
+static const enum freq lsi_freq = FREQ_56KHZ;
+#endif
 
 /*
  * Use largest prescaler divider = /256.  This gives a worst-case watchdog
@@ -52,7 +57,7 @@ int watchdog_init(void)
 
 	/* Set the reload value of the watchdog counter */
 	STM32_IWDG_RLR = MIN(STM32_IWDG_RLR_MAX, CONFIG_WATCHDOG_PERIOD_MS *
-			     (LSI_CLOCK / IWDG_PRESCALER_DIV) / 1000);
+			     (lsi_freq / IWDG_PRESCALER_DIV) / 1000);
 
 	/* Start the watchdog (and re-lock registers) */
 	STM32_IWDG_KR = STM32_IWDG_KR_START;
