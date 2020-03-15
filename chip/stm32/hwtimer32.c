@@ -207,9 +207,20 @@ const struct irq_priority __keep IRQ_PRIORITY(IRQ_WD)
  */
 static void hwtimer_update_watchdog(void)
 {
-	/* Update prescaler: watchdog timer runs at 1KHz (ms period) */
-	STM32_TIM_PSC(TIM_WATCHDOG) =
+	/*
+	 * Update prescaler: watchdog timer runs at 1KHz (ms period)
+	 *
+	 * Due to the maths/truncation here, any timer frequency that is 66MHz
+	 * or larger will overflow this prescaler. Furthermore, any
+	 * fractional MHz value is truncated, and thus not accounted for in
+	 * the prescaler.
+	 */
+	const int prescaler =
 		(clock_get_timer_freq() / SECOND * MSEC) - 1;
+
+	/* Ensure that prescaler is not larger than 16bits wide */
+	ASSERT((uint16_t)prescaler == prescaler);
+	STM32_TIM_PSC(TIM_WATCHDOG) = (uint16_t)prescaler;
 }
 
 /**
