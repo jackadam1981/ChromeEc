@@ -156,7 +156,6 @@ static void clock_pll1_configure(enum freq output_freq) {
 	/*
 	 * Using VCO wide-range setting, STM32_RCC_PLLCFG_PLL1VCOSEL_WIDE,
 	 * requires input frequency to be between 2MHz and 16MHz.
-	 * If using low-range mode, the input must be between 1MHz to 2MHz.
 	 */
 	ASSERT(FREQ_2MHZ <= (STM32_HSI_CLOCK/divm));
 	ASSERT((STM32_HSI_CLOCK/divm) <= FREQ_16MHZ);
