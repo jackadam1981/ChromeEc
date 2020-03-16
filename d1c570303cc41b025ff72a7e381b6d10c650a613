@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0ff2b5b0_d9a19a6d",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-16T22:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e619234_e8627ea5",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a53dd5b7_7b562c33",
         "filename": "baseboard/dedede/baseboard.c",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2020-03-05T18:22:02Z",
       "side": 1,
       "message": "Am I to understand from the comment above that this ordering optimizes overall boot latency?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b5dbb45_479e4b01",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-16T22:09:36Z",
+      "side": 1,
+      "message": "For both arrays, the ordering specifies the sequence which the common icelake power code will either assert or deassert the respective signals.  The boot latency will include the sum of all latencies used in this table.  I\u0027ll think about whether it makes sense to allow these signals to be asserted in parallel using deferred calls.\nThe deassert path (used when exiting S0) doesn\u0027t have any delays, but the structure is flexible to add delays if needed.",
+      "parentUuid": "a53dd5b7_7b562c33",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -104,6 +152,30 @@
         "id": 1305927
       },
       "writtenOn": "2020-03-12T18:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f96ef763_e22c82aa",
+      "range": {
+        "startLine": 181,
+        "startChar": 61,
+        "endLine": 181,
+        "endChar": 68
+      },
+      "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3a70dee_427fbc50",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-16T22:09:36Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "f96ef763_e22c82aa",
@@ -166,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "56c7dcc1_c212b80d",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-16T22:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "110b6341_b4459ec7",
+      "range": {
+        "startLine": 203,
+        "startChar": 14,
+        "endLine": 203,
+        "endChar": 16
+      },
+      "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "085fbced_3b518989",
         "filename": "board/volteer/gpio.inc",
         "patchSetId": 2
@@ -177,6 +273,24 @@
       "writtenOn": "2020-03-05T18:22:02Z",
       "side": 1,
       "message": "Didn\u0027t you do this in https://crrev.com/c/2001684?",
+      "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11e316e8_dd7389e7",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-16T22:09:36Z",
+      "side": 1,
+      "message": "Yes, this CL makes the CL:2001684 obsolete.  However, because this CL needs to wait on some testing on Japer Lake, CL:2001684 will likely merge and I\u0027ll have to rebase this one.",
+      "parentUuid": "085fbced_3b518989",
       "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -230,6 +344,30 @@
     },
     {
       "key": {
+        "uuid": "7d0e8b92_8e5d92e1",
+        "filename": "power/icelake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-16T22:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51f47759_d0711cc9",
+      "range": {
+        "startLine": 184,
+        "startChar": 43,
+        "endLine": 184,
+        "endChar": 51
+      },
+      "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e19e23ce_5bab5e3e",
         "filename": "power/icelake.c",
         "patchSetId": 2
@@ -241,6 +379,24 @@
       "writtenOn": "2020-03-11T16:05:36Z",
       "side": 1,
       "message": "does this make all of your msleep\u0027s cumulative?",
+      "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28961dd_d31f7241",
+        "filename": "power/icelake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-16T22:09:36Z",
+      "side": 1,
+      "message": "Yes. I\u0027m considering switching this to a deferred action, so then the signals could be asserted in parallel if desired. The delays then would always be specified from the assertion of ALL_SYS_PWRGD_IN.",
+      "parentUuid": "e19e23ce_5bab5e3e",
       "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -279,6 +435,30 @@
         "id": 1305927
       },
       "writtenOn": "2020-03-12T18:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e68f3fa_a29a5784",
+      "range": {
+        "startLine": 52,
+        "startChar": 23,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73ed74f7_cf85caad",
+        "filename": "power/icelake.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-16T22:09:36Z",
       "side": 1,
       "message": "Done",
       "parentUuid": "0e68f3fa_a29a5784",
