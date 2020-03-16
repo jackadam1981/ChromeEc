@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35ab82b9_8ba74915",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-16T10:17:09Z",
+      "side": 1,
+      "message": "Stimim - I\u0027m not that familiar with usb_updater2 code, but what are the exit conditions for these two loops?  The outer one looks like it never exits, and the inner one looks like it could get in a bad state if hammerd (or some bad actor) sends CONSOLE_READ_INIT but never CONSOLE_READ_NEXT.",
+      "range": {
+        "startLine": 1023,
+        "startChar": 0,
+        "endLine": 1023,
+        "endChar": 13
+      },
+      "revId": "6e853562c94698916c7f582df064a154b154f3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
