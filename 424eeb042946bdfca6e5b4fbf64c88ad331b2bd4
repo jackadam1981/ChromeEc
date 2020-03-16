@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "779469d6_58d6a928",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-16T23:43:43Z",
+      "side": 1,
+      "message": "You can merge a lot of these tests with\n\n#if !defined(...) || !defined(...)\n\n#endif",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62f58450_cdcf1be7",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-16T23:43:43Z",
+      "side": 1,
+      "message": "This fits on one line",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b933dfb8_5db57a48",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-16T23:43:43Z",
+      "side": 1,
+      "message": "Not needed",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 13
+      },
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a13b721_f1aa80a7",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-16T23:43:43Z",
+      "side": 1,
+      "message": "You only use this once,\n\nmaybe just\n\n#define MAX_LENGTH MAX(sizeof(struct ...), sizeof(struct ...))",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d13abb4a_adb9f2f0",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-16T23:43:43Z",
+      "side": 1,
+      "message": "What\u0027s this?",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2000d8_320a2415",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-16T23:43:43Z",
+      "side": 1,
+      "message": "Not needed",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
