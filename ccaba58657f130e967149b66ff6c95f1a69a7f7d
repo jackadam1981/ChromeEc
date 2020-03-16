@@ -232,6 +232,213 @@
     },
     {
       "key": {
+        "uuid": "f1babb9d_9376a776",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-16T08:14:02Z",
+      "side": 1,
+      "message": "accel and missing last_ts",
+      "range": {
+        "startLine": 1501,
+        "startChar": 4,
+        "endLine": 1501,
+        "endChar": 5
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8566d38_fd0ac139",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1559,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-16T08:14:02Z",
+      "side": 1,
+      "message": "add |last_ts| comment",
+      "range": {
+        "startLine": 1559,
+        "startChar": 5,
+        "endLine": 1559,
+        "endChar": 6
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d496d48_b065e882",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-16T08:14:02Z",
+      "side": 1,
+      "message": "do we need this?\n#else\n\t/* configure int2 as an interrupt. */\n\tret \u003d raw_write8(s-\u003eport, s-\u003ei2c_spi_addr_flags,\n\t\t\t BMI260_INT2_IO_CTRL,\n\t\t\t BMI260_INT2_OUTPUT_EN);\n#endif",
+      "range": {
+        "startLine": 1770,
+        "startChar": 0,
+        "endLine": 1770,
+        "endChar": 6
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a687f0e_a07c67ed",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1897,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-16T08:14:02Z",
+      "side": 1,
+      "message": "since there are multiple lines in if clause, please add bracket",
+      "range": {
+        "startLine": 1896,
+        "startChar": 3,
+        "endLine": 1897,
+        "endChar": 38
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c5d6a6f_2e00e7e4",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1902,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-16T08:14:02Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1901,
+        "startChar": 0,
+        "endLine": 1902,
+        "endChar": 38
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f73d06cd_a0931e76",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1922,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-16T08:14:02Z",
+      "side": 1,
+      "message": "maybe also move to bmi_common.c?",
+      "range": {
+        "startLine": 1922,
+        "startChar": 11,
+        "endLine": 1922,
+        "endChar": 15
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b4ee248_71bfea3e",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-16T08:14:02Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1955,
+        "startChar": 11,
+        "endLine": 1955,
+        "endChar": 20
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4af8c080_f7dbae66",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-16T08:14:02Z",
+      "side": 1,
+      "message": "Can this number be bigger? please add a comment to say why we choose 256",
+      "range": {
+        "startLine": 1964,
+        "startChar": 29,
+        "endLine": 1964,
+        "endChar": 32
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb21941_6200db86",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1980,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-16T08:14:02Z",
+      "side": 1,
+      "message": "If error happens, do we need to set register to end configuration?",
+      "range": {
+        "startLine": 1980,
+        "startChar": 6,
+        "endLine": 1980,
+        "endChar": 9
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07b258e3_5d9903e0",
         "filename": "driver/accelgyro_bmi260.h",
         "patchSetId": 9
@@ -317,6 +524,29 @@
         "startChar": 0,
         "endLine": 425,
         "endChar": 6
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8809ae6_e2320685",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-16T08:14:02Z",
+      "side": 1,
+      "message": "I\u0027m thinking to use the same define for BMI160 and BMI260 since one board won\u0027t have these two sensors at the same time.\n\nHow about CONFIG_ACCELGYRO_BMI_INT2_OUTPUT? same as others",
+      "range": {
+        "startLine": 198,
+        "startChar": 7,
+        "endLine": 198,
+        "endChar": 42
       },
       "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
