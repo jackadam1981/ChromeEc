@@ -5,6 +5,7 @@
 
 #include <stdint.h>
 #include <stdio.h>
+
 #include "ec_panicinfo.h"
 
 static void print_panic_reg(int regnum, const uint32_t *regs, int index)
