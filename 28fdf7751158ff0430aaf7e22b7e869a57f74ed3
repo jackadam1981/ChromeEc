@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "602c96ad_60bb1508",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-16T19:51:06Z",
+      "side": 1,
+      "message": "Feel free to add b:150637227 as well.  I confirmed this fix works with my dock which was seeing message corruption.",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "28fdf7751158ff0430aaf7e22b7e869a57f74ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d898c0e9_424941a4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4400,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-16T19:51:06Z",
+      "side": 1,
+      "message": "Looks like this will set the RX buffer?",
+      "range": {
+        "startLine": 4400,
+        "startChar": 2,
+        "endLine": 4400,
+        "endChar": 19
+      },
+      "revId": "28fdf7751158ff0430aaf7e22b7e869a57f74ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
