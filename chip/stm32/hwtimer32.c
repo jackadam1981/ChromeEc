@@ -210,13 +210,12 @@ static void hwtimer_update_watchdog(void)
 	/*
 	 * Update prescaler: watchdog timer runs at 1KHz (ms period)
 	 *
-	 * Due to the maths/truncation here, any timer frequency that is 66MHz
-	 * or larger will overflow this prescaler. Furthermore, any
-	 * fractional MHz value is truncated, and thus not accounted for in
-	 * the prescaler.
+	 * Due to the maths/truncation here, any timer frequency that is
+	 * 65.537MHz or larger will overflow this prescaler. Sub-1kHz
+	 * fractional parts are truncated.
 	 */
 	const int prescaler =
-		(clock_get_timer_freq() / SECOND * MSEC) - 1;
+		(clock_get_timer_freq() / (SECOND / MSEC)) - 1;
 
 	/* Ensure that prescaler is not larger than 16bits wide */
 	ASSERT((uint16_t)prescaler == prescaler);
