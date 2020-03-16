@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5dc61c6d_bb2db5dd",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-03-16T19:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f516ba2_524effe3",
+      "range": {
+        "startLine": 39,
+        "startChar": 19,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "02599d039293e11813246e25ad74028ffd0b3023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d75b1604_88c34d04",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "84743919_6cc4c69a",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-03-16T19:44:54Z",
+      "side": 1,
+      "message": "\u003e CONFIG\n\nDone",
+      "parentUuid": "d75b1604_88c34d04",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "02599d039293e11813246e25ad74028ffd0b3023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9525b00c_30dc6075",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-16T19:01:15Z",
       "side": 1,
       "message": "For the rest of the keys i.e. num_top_row_keys -\u003e MAX_VIVALDI_KEYS, do you need to disable the key_mask?",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "02599d039293e11813246e25ad74028ffd0b3023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0423cf31_4c5b3df2",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-03-16T19:44:54Z",
+      "side": 1,
+      "message": "\u003e For the rest of the keys i.e. num_top_row_keys -\u003e MAX_VIVALDI_KEYS, do you need to disable the key_mask?\n\nI don\u0027t want to (but can do it if you insist). The reason is some earlier keyboards may have some other keys at the same location where vivaldi has keys now. E.g. in some keyboard search key was on the top row. Essentially, would like to avoid unless you want me to.",
+      "parentUuid": "9525b00c_30dc6075",
       "range": {
         "startLine": 49,
         "startChar": 22,
@@ -91,6 +163,30 @@
       "revId": "02599d039293e11813246e25ad74028ffd0b3023",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "414520a5_69381b85",
+        "filename": "include/keyboard_vivaldi.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-03-16T19:44:54Z",
+      "side": 1,
+      "message": "\u003e Why are these re-defined here? I see some of these are already present in keyboard_8042_sharedlib.h. Can the missing ones be added to the same file?\n\nDone",
+      "parentUuid": "d49e2606_66106093",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "02599d039293e11813246e25ad74028ffd0b3023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
