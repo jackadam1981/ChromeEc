@@ -22,6 +22,30 @@
       "revId": "edfeea58660d06a2f0f4e03b093ad3ef2cb590a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3a73ffe_f9d97f50",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-16T07:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "287e1435_42d54a44",
+      "range": {
+        "startLine": 759,
+        "startChar": 43,
+        "endLine": 760,
+        "endChar": 13
+      },
+      "revId": "edfeea58660d06a2f0f4e03b093ad3ef2cb590a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
