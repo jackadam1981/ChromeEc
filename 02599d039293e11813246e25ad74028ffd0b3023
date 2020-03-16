@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f516ba2_524effe3",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-16T17:08:51Z",
+      "side": 1,
+      "message": "Since this is an enum, you may be better off using \u0027int\u0027 here for \u0027key\u0027 (by default, they take up a machine word, int, of space).",
+      "range": {
+        "startLine": 39,
+        "startChar": 19,
+        "endLine": 39,
+        "endChar": 22
+      },
+      "revId": "02599d039293e11813246e25ad74028ffd0b3023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75b1604_88c34d04",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-16T17:08:51Z",
+      "side": 1,
+      "message": "CONFIG",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 23
+      },
+      "revId": "02599d039293e11813246e25ad74028ffd0b3023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
