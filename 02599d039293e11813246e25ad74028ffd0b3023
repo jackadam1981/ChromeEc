@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "e776e0de_9b6ca626",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-03-16T21:37:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d53ff422_13845485",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "02599d039293e11813246e25ad74028ffd0b3023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d49e2606_66106093",
         "filename": "include/keyboard_vivaldi.h",
         "patchSetId": 10
