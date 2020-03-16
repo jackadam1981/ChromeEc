@@ -45,6 +45,52 @@
       "revId": "02599d039293e11813246e25ad74028ffd0b3023",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9525b00c_30dc6075",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-16T19:01:15Z",
+      "side": 1,
+      "message": "For the rest of the keys i.e. num_top_row_keys -\u003e MAX_VIVALDI_KEYS, do you need to disable the key_mask?",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "02599d039293e11813246e25ad74028ffd0b3023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d49e2606_66106093",
+        "filename": "include/keyboard_vivaldi.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-16T19:01:15Z",
+      "side": 1,
+      "message": "Why are these re-defined here? I see some of these are already present in keyboard_8042_sharedlib.h. Can the missing ones be added to the same file?",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "02599d039293e11813246e25ad74028ffd0b3023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
