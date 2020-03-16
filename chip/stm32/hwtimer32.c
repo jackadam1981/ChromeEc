@@ -207,15 +207,11 @@ const struct irq_priority __keep IRQ_PRIORITY(IRQ_WD)
  */
 static void hwtimer_update_watchdog(void)
 {
-	/*
-	 * Update prescaler: watchdog timer runs at 1KHz (ms period)
-	 *
-	 * Due to the maths/truncation here, any timer frequency that is
-	 * 65.537MHz or larger will overflow this prescaler. Sub-1kHz
-	 * fractional parts are truncated.
-	 */
-	const int prescaler =
-		(clock_get_timer_freq() / (SECOND / MSEC)) - 1;
+	/* Timer frequency is expected to be a mutiple of 1MHz */
+	ASSERT(clock_get_timer_freq() % SECOND == 0);
+
+	/* Set prescaller to output 1MHz (micro-second counts) */
+	const int prescaler = (clock_get_timer_freq() / SECOND) - 1;
 
 	/* Ensure that prescaler is not larger than 16bits wide */
 	ASSERT((uint16_t)prescaler == prescaler);
@@ -242,7 +238,7 @@ void hwtimer_setup_watchdog(void)
 	STM32_TIM_SMCR(TIM_WATCHDOG) = 0x0000;
 
 	/* Auto-reload value */
-	STM32_TIM_ARR(TIM_WATCHDOG) = CONFIG_AUX_TIMER_PERIOD_MS;
+	STM32_TIM32_ARR(TIM_WATCHDOG) = CONFIG_AUX_TIMER_PERIOD_MS * MSEC;
 
 	/* Update prescaler */
 	hwtimer_update_watchdog();

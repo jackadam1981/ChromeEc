@@ -178,7 +178,7 @@
 
 /* Timer selection */
 #define TIM_CLOCK32 2
-#define TIM_WATCHDOG 16
+#define TIM_WATCHDOG 5
 
 #include "gpio_signal.h"
 
