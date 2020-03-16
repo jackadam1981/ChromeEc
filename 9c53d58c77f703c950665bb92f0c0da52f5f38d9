@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "053b4949_07f2039b",
+        "filename": "board/nightfury/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "342ff124_95ab0866",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f2ddb7f_149f4c6e",
         "filename": "board/nightfury/board.c",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "7f2ddb7f_149f4c6e",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37da12ff_c792223a",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "346bc77e_7d9649e4",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "ee679c69_a81db218",
+        "filename": "board/nightfury/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9fc57bc_4c65df28",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa439413_f4215110",
         "filename": "board/nightfury/build.mk",
         "patchSetId": 3
@@ -178,6 +250,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "fa439413_f4215110",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "787b7f52_b26bf39e",
+        "filename": "board/nightfury/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79d0c22b_ac511c82",
       "range": {
         "startLine": 2,
         "startChar": 12,
@@ -237,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "68a9c176_318dd15a",
+        "filename": "board/nightfury/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2507ac4_5de8301c",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b76588e8_b748efe7",
         "filename": "board/nightfury/gpio.inc",
         "patchSetId": 3
@@ -272,6 +392,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "b76588e8_b748efe7",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f2a2e03_b8b53eab",
+        "filename": "board/nightfury/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d63f8987_eeeeac4c",
       "range": {
         "startLine": 3,
         "startChar": 13,
@@ -331,6 +475,30 @@
     },
     {
       "key": {
+        "uuid": "6fa0a167_463ae3fd",
+        "filename": "board/nightfury/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ef05065_bf4905c7",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da24c59b_b8e0ebce",
         "filename": "board/nightfury/thermal.c",
         "patchSetId": 3
@@ -366,6 +534,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "da24c59b_b8e0ebce",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "9c53d58c77f703c950665bb92f0c0da52f5f38d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b10ee116_db778aa7",
+        "filename": "board/nightfury/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37e26a06_e462d82e",
       "range": {
         "startLine": 1,
         "startChar": 13,

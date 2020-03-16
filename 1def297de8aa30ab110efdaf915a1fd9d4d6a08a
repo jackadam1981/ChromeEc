@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc2848b3_24cd7774",
+        "filename": "board/nightfury/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "928fbfc9_d7c4a1aa",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "1def297de8aa30ab110efdaf915a1fd9d4d6a08a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5dbf7c0_c0f0d9fa",
         "filename": "board/nightfury/board.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-05T19:19:30Z",
       "side": 1,
       "message": "Do we have tcs3400?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "1def297de8aa30ab110efdaf915a1fd9d4d6a08a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26b7a32e_fcc90c74",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Just translation of Samsung comments.\n\nTCS3400 is color ALS(sensor) for OLED panel.\nIt will be used on Nightfury from DV2.\nSo it will not be available on Proto and DV1 schematics.",
+      "parentUuid": "e5dbf7c0_c0f0d9fa",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "09b9d87d_7e0d26da",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Just translation of Samsung comments.\n\nTCS3400 is color ALS(sensor) for OLED panel.\nIt will be used on Nightfury from DV2.\nSo it will not be available on Proto and DV1 schematics.",
+      "parentUuid": "0f870b73_9bd8572f",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 2
+      },
+      "revId": "1def297de8aa30ab110efdaf915a1fd9d4d6a08a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6a60461_f534cfd3",
         "filename": "board/nightfury/board.c",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f3a1fbfa_1a4b1bdb",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Just translation of Samsung comments.\n\nTCS3400 is color ALS(sensor) for OLED panel.\nIt will be used on Nightfury from DV2.\nSo it will not be available on Proto and DV1 schematics.",
+      "parentUuid": "c6a60461_f534cfd3",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 3
+      },
+      "revId": "1def297de8aa30ab110efdaf915a1fd9d4d6a08a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e47745b6_fbb89cc5",
         "filename": "board/nightfury/board.c",
         "patchSetId": 5
@@ -105,6 +201,30 @@
       "writtenOn": "2020-03-05T19:19:30Z",
       "side": 1,
       "message": "Do we have tcs3400?",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 45
+      },
+      "revId": "1def297de8aa30ab110efdaf915a1fd9d4d6a08a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad50c30b_27ac0de5",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-03-16T03:02:12Z",
+      "side": 1,
+      "message": "Just translation of Samsung comments.\n\nTCS3400 is color ALS(sensor) for OLED panel.\nIt will be used on Nightfury from DV2.\nSo it will not be available on Proto and DV1 schematics.",
+      "parentUuid": "e47745b6_fbb89cc5",
       "range": {
         "startLine": 469,
         "startChar": 0,
