@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "d53ff422_13845485",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-16T20:03:08Z",
+      "side": 1,
+      "message": "But, do you envision this being used by older keyboards as well? I was under the impression that CONFIG_VIVALDI wouldn\u0027t be set by any older boards.",
+      "parentUuid": "0423cf31_4c5b3df2",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 45
+      },
+      "revId": "02599d039293e11813246e25ad74028ffd0b3023",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d49e2606_66106093",
         "filename": "include/keyboard_vivaldi.h",
         "patchSetId": 10
