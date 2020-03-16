@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bd34ea57_d460c762",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-16T17:45:53Z",
+      "side": 1,
+      "message": "Right, but I don\u0027t think having this check during runtime is that beneficial. I updated this PS to more explicitly do nothing if an invalid config is selected. This is definitely not perfect, but provides more consistent behavior. Perfect might look more like rolling back already applied clock changes when an error occurs.\n\n---\n\nThis is an odd area to detect an issue, since this is a critical part of the boot and runtime + the code paths are quite static and should be exercised in basic chip testing. This was a conscious decision to use ASSERT and only catch improper code paths when testing(although fp has asserts always enabled).",
+      "parentUuid": "ec6a6b91_e573ac37",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 8
+      },
+      "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a791634_254e0b85",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-11T21:58:29Z",
       "side": 1,
       "message": "nit: prefer early exit\n\ngo/tott/455\n\n  if (!enabled) {\n    ...\n    return\n  }\n  \n  // enabled case",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 2
+      },
+      "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9393980_727880cb",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-16T17:45:53Z",
+      "side": 1,
+      "message": "Ahhhhh, yeah. I guess that first case is pretty confusing.",
+      "parentUuid": "3a791634_254e0b85",
       "range": {
         "startLine": 231,
         "startChar": 1,
@@ -68,6 +116,30 @@
       "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7766d5f0_9d07dae1",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-16T17:45:53Z",
+      "side": 1,
+      "message": "I\u0027m using it as more of an annotation that the index to that array is an \"enum voltage_scale\".\n\nI could do a BUILD_ASSERT, but I thought this was cleaner.",
+      "parentUuid": "2ef07812_35169de1",
+      "range": {
+        "startLine": 275,
+        "startChar": 37,
+        "endLine": 275,
+        "endChar": 56
+      },
+      "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

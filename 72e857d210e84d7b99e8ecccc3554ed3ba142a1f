@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2ea3bf63_a8668424",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-16T17:45:53Z",
+      "side": 1,
+      "message": "Sure. The next change adds the second variant support. I\u0027ll reintroduce then.",
+      "parentUuid": "3b999e1d_11986329",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "72e857d210e84d7b99e8ecccc3554ed3ba142a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b2cfa68_61d073e2",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 5
@@ -108,6 +132,30 @@
       "writtenOn": "2020-03-11T21:58:29Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 177,
+        "startChar": 44,
+        "endLine": 177,
+        "endChar": 55
+      },
+      "revId": "72e857d210e84d7b99e8ecccc3554ed3ba142a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78cf2f14_5bbbe097",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-16T17:45:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b2cfa68_61d073e2",
       "range": {
         "startLine": 177,
         "startChar": 44,
