@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BASEBOARD_H
 #define __CROS_EC_BASEBOARD_H
 
+#define CONFIG_BRINGUP
+
 #if (defined(VARIANT_ZORK_TREMBYLE) \
 	+ defined(VARIANT_ZORK_DALBOZ)) != 1
 #error Must choose VARIANT_ZORK_TREMBYLE or VARIANT_ZORK_DALBOZ
@@ -121,15 +123,21 @@
 #define CONFIG_USB_PID 0x5040
 
 /* Enable the TCPMv2 PD stack */
-#define CONFIG_USB_PE_SM
-#define CONFIG_USB_PRL_SM
 #define CONFIG_USB_PD_TCPMV2
-#define CONFIG_USB_PD_DECODE_SOP
-#define CONFIG_USB_TYPEC_SM
-#define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
 
- /* Enable TCPMv2 Fast Role Swap */
-#define CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+#ifndef CONFIG_USB_PD_TCPMV2
+	#define CONFIG_USB_PD_TCPMV1
+#else
+	#define CONFIG_USB_PE_SM
+	#define CONFIG_USB_PRL_SM
+	#define CONFIG_USB_PD_DECODE_SOP
+	#define CONFIG_USB_TYPEC_SM
+	#define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
+
+	 /* Enable TCPMv2 Fast Role Swap */
+	 /* Turn off until FRSwap is working */
+	#undef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
+#endif
 
 #define CONFIG_CMD_PD_CONTROL
 #define CONFIG_USB_CHARGER
@@ -137,6 +145,7 @@
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_COMM_LOCKED
+/* Should not need this, TCPC AutoDischargeDisconnect should be enough */
 #define CONFIG_USB_PD_DISCHARGE_PPC
 #define CONFIG_USB_PD_DP_HPD_GPIO
 #define CONFIG_USB_PD_DUAL_ROLE
