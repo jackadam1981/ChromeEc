@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d200dd3a_f6d6491e",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T08:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "779469d6_58d6a928",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62f58450_cdcf1be7",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b65348f5_8a2656cc",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T08:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62f58450_cdcf1be7",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "ed2b5536_174f600a",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T08:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b933dfb8_5db57a48",
+      "range": {
+        "startLine": 374,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 13
+      },
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a13b721_f1aa80a7",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d09335d_883e8422",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T08:04:49Z",
+      "side": 1,
+      "message": "I tried this but it would result in:\n\ninclude/util.h:28:2: error: braced-group within expression allowed only inside a function\n  ({      \\\n  ^\ncommon/i2c_hid_touchpad.c:405:20: note: in expansion of macro \u0027MAX\u0027\n #define MAX_LENGTH MAX(sizeof(struct touch_report), sizeof(struct mouse_report))\n                    ^~~\ncommon/i2c_hid_touchpad.c:413:43: note: in expansion of macro \u0027MAX_LENGTH\u0027\n  .wMaxInputLength \u003d I2C_HID_HEADER_SIZE + MAX_LENGTH,\n                                           ^~~~~~~~~~\ncc1: error: unrecognized command line option \u0027-Wno-address-of-packed-member\u0027 [-Werror]\n\nSeems like we just can\u0027t use MAX anyway :(",
+      "parentUuid": "9a13b721_f1aa80a7",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "f858669f_4698413d",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T08:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d13abb4a_adb9f2f0",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a2000d8_320a2415",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 3
@@ -107,6 +203,24 @@
       "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac9eafdf_7cf04ed7",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T08:04:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a2000d8_320a2415",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
