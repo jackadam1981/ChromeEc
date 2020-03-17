@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#undef DEBUG_TCPCI
+
 /* Type-C port manager */
 
 #include "atomic.h"
@@ -35,12 +37,133 @@ static int cached_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 static enum tcpc_cc_pull cached_pull[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+void dbg(int port, char *op, int reg, int val)
+{
+#ifdef DEBUG_TCPCI
+	char *reg_name = "";
+
+	ccprintf("p%d: %s ", port, op);
+	switch (reg) {
+	case 0x00:
+		reg_name = "VENDOR_ID";
+		break;
+	case 0x02:
+		reg_name = "PRODUCT_ID";
+		break;
+	case 0x04:
+		reg_name = "DEVICE_ID";
+		break;
+	case 0x06:
+		reg_name = "TCPC_REV";
+		break;
+	case 0x08:
+		reg_name = "PD_REV";
+		break;
+	case 0x0A:
+		reg_name = "PD_IF_REV";
+		break;
+	case 0x10:
+		reg_name = "ALERT";
+		break;
+	case 0x12:
+		reg_name = "ALERT_MSK";
+		break;
+	case 0x14:
+		reg_name = "POWER_STS_MSK";
+		break;
+	case 0x15:
+		reg_name = "FAULT_STS_MSK";
+		break;
+	case 0x16:
+		reg_name = "EXT_STS_MSK";
+		break;
+	case 0x17:
+		reg_name = "ALERT_EXT_MSK";
+		break;
+	case 0x18:
+		reg_name = "CNFG_STD_OUT";
+		break;
+	case 0x19:
+		reg_name = "TCPC_CTRL";
+		break;
+	case 0x1A:
+		reg_name = "ROLE_CTRL";
+		break;
+	case 0x1B:
+		reg_name = "FAULT_CTRL";
+		break;
+	case 0x1C:
+		reg_name = "POWER_CTRL";
+		break;
+	case 0x1D:
+		reg_name = "CC_STS";
+		break;
+	case 0x1E:
+		reg_name = "POWER_STS";
+		break;
+	case 0x1F:
+		reg_name = "FAULT_STS";
+		break;
+	case 0x20:
+		reg_name = "EXT_STS";
+		break;
+	case 0x21:
+		reg_name = "ALERT_EXT";
+		break;
+	case 0x23:
+		reg_name = "COMMAND";
+		break;
+	case 0x24:
+		reg_name = "DEV_CAP1";
+		break;
+	case 0x26:
+		reg_name = "DEV_CAP2";
+		break;
+	case 0x28:
+		reg_name = "STDIN_CAP";
+		break;
+	case 0x29:
+		reg_name = "STDOUT_CAP";
+		break;
+	case 0x2A:
+		reg_name = "CNFG_EXT1";
+		break;
+	case 0x2C:
+		reg_name = "TIMER";
+		break;
+	case 0x2E:
+		reg_name = "MSG_HEADER";
+		break;
+	case 0x2F:
+		reg_name = "RxDETECT";
+		break;
+	case 0x30:
+		reg_name = "RxBUFFER";
+		break;
+	case 0x50:
+		reg_name = "Tx";
+		break;
+	case 0x51:
+		reg_name = "TxBUFFER";
+		break;
+	default:
+		reg_name = "UNKNOWN";
+		break;
+	}
+	ccprintf("x%X(%s) x%X\n", reg, reg_name, val);
+#if 0
+	cflush();
+	msleep(10);
+#endif
+#endif
+}
 int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
 {
 	int rv;
 
 	pd_wait_exit_low_power(port);
 
+	dbg(port, "W", reg, val);
 	rv = i2c_write8(tcpc_config[port].i2c_info.port,
 			i2c_addr, reg, val);
 
@@ -54,6 +177,7 @@ int tcpc_write16(int port, int reg, int val)
 
 	pd_wait_exit_low_power(port);
 
+	dbg(port, "W16", reg, val);
 	rv = i2c_write16(tcpc_config[port].i2c_info.port,
 			 tcpc_config[port].i2c_info.addr_flags,
 			 reg, val);
@@ -70,6 +194,7 @@ int tcpc_addr_read(int port, int i2c_addr, int reg, int *val)
 
 	rv = i2c_read8(tcpc_config[port].i2c_info.port,
 		       i2c_addr, reg, val);
+	dbg(port, "R", reg, *val);
 
 	pd_device_accessed(port);
 	return rv;
@@ -84,6 +209,7 @@ int tcpc_read16(int port, int reg, int *val)
 	rv = i2c_read16(tcpc_config[port].i2c_info.port,
 			tcpc_config[port].i2c_info.addr_flags,
 			reg, val);
+	dbg(port, "R16", reg, *val);
 
 	pd_device_accessed(port);
 	return rv;
@@ -98,6 +224,7 @@ int tcpc_read_block(int port, int reg, uint8_t *in, int size)
 	rv = i2c_read_block(tcpc_config[port].i2c_info.port,
 			    tcpc_config[port].i2c_info.addr_flags,
 			    reg, in, size);
+	dbg(port, "RBLK", reg, size);
 
 	pd_device_accessed(port);
 	return rv;
@@ -109,6 +236,7 @@ int tcpc_write_block(int port, int reg, const uint8_t *out, int size)
 
 	pd_wait_exit_low_power(port);
 
+	dbg(port, "WBLK", reg, size);
 	rv = i2c_write_block(tcpc_config[port].i2c_info.port,
 			     tcpc_config[port].i2c_info.addr_flags,
 			     reg, out, size);
@@ -136,6 +264,7 @@ int tcpc_xfer_unlocked(int port, const uint8_t *out, int out_size,
 
 	pd_wait_exit_low_power(port);
 
+	dbg(port, "XFR", in_size, out_size);
 	rv = i2c_xfer_unlocked(tcpc_config[port].i2c_info.port,
 			       tcpc_config[port].i2c_info.addr_flags,
 			       out, out_size, in, in_size, flags);
@@ -152,6 +281,7 @@ int tcpc_update8(int port, int reg,
 
 	pd_wait_exit_low_power(port);
 
+	dbg(port, (action == MASK_CLR) ? "UCLR" : "USET", reg, mask);
 	rv = i2c_update8(tcpc_config[port].i2c_info.port,
 			 tcpc_config[port].i2c_info.addr_flags,
 			 reg, mask, action);
@@ -168,6 +298,7 @@ int tcpc_update16(int port, int reg,
 
 	pd_wait_exit_low_power(port);
 
+	dbg(port, (action == MASK_CLR) ? "U16CLR" : "U16SET", reg, mask);
 	rv = i2c_update16(tcpc_config[port].i2c_info.port,
 			  tcpc_config[port].i2c_info.addr_flags,
 			  reg, mask, action);
@@ -288,6 +419,9 @@ void tcpci_tcpc_discharge_vbus(int port, int enable)
  */
 void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
 {
+	ccprintf("P%d: AutoDisDisc %sabled\n", port,
+		 (enable) ? "en" : "dis");
+
 	tcpc_update8(port,
 		     TCPC_REG_POWER_CTRL,
 		     TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT,
@@ -387,6 +521,112 @@ int tcpci_tcpc_drp_toggle(int port)
 			 TCPC_REG_COMMAND_LOOK4CONNECTION);
 
 	return rv;
+}
+
+int tcpci_tcpc_set_connection(int port,
+			      enum tcpc_cc_pull pull,
+			      int connect)
+{
+	int rv;
+	int role;
+
+	if (!connect) {
+		tcpci_set_role_ctrl(port, 1, TYPEC_RP_USB, pull);
+		return EC_SUCCESS;
+	}
+
+	/* Get the ROLE CONTROL value */
+	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
+	if (rv)
+		return rv;
+
+	/* TODO: Set TCPC_CONTROl.PlugOrientation */
+
+	if (role & TCPC_REG_ROLE_CTRL_DRP_MASK) {
+		/*
+		 * If DRP is set, the CC pins shall stay in
+		 * Potential_Connect_as_Src or Potential_Connect_as_Sink
+		 * until directed otherwise.
+		 *
+		 * Set RC.CC1 & RC.CC2 per potential decision
+		 * Set RC.DRP=0
+		 */
+		enum tcpc_cc_pull cc1_pull, cc2_pull;
+		enum tcpc_cc_voltage_status cc1, cc2;
+
+		ccprintf("P%d: NewConnection Detected - DRP\n", port);
+
+		rv = tcpm_get_cc(port, &cc1, &cc2);
+		if (rv)
+			return rv;
+
+		switch (cc1) {
+		case TYPEC_CC_VOLT_OPEN:
+			cc1_pull = TYPEC_CC_OPEN;
+			break;
+		case TYPEC_CC_VOLT_RA:
+			cc1_pull = TYPEC_CC_RA;
+			break;
+		case TYPEC_CC_VOLT_RD:
+			cc1_pull = TYPEC_CC_RP;
+			break;
+		case TYPEC_CC_VOLT_RP_DEF:
+		case TYPEC_CC_VOLT_RP_1_5:
+		case TYPEC_CC_VOLT_RP_3_0:
+			cc1_pull = TYPEC_CC_RD;
+			break;
+		default:
+			return EC_ERROR_UNKNOWN;
+		}
+
+		switch (cc2) {
+		case TYPEC_CC_VOLT_OPEN:
+			cc2_pull = TYPEC_CC_OPEN;
+			break;
+		case TYPEC_CC_VOLT_RA:
+			cc2_pull = TYPEC_CC_RA;
+			break;
+		case TYPEC_CC_VOLT_RD:
+			cc2_pull = TYPEC_CC_RP;
+			break;
+		case TYPEC_CC_VOLT_RP_DEF:
+		case TYPEC_CC_VOLT_RP_1_5:
+		case TYPEC_CC_VOLT_RP_3_0:
+			cc2_pull = TYPEC_CC_RD;
+			break;
+		default:
+			return EC_ERROR_UNKNOWN;
+		}
+
+		/* Set the CC lines */
+		rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
+				TCPC_REG_ROLE_CTRL_SET(0,
+						CONFIG_USB_PD_PULLUP,
+						cc1_pull, cc2_pull));
+		if (rv)
+			return rv;
+	} else {
+		/*
+		 * DRP is not set. This would happen if DRP is not enabled or
+		 * was turned off and we did not have a connection.  We have
+		 * to manually turn off that we are looking for a connection
+		 * and set both CC lines to the pull value.
+		 */
+		ccprintf("P%d: NewConnection Detected - NO DRP\n", port);
+
+		rv = tcpc_update8(port,
+				  TCPC_REG_TCPC_CTRL,
+				  TCPC_REG_TCPC_CTRL_EN_LOOK4CONNECTION_ALERT,
+				  MASK_CLR);
+		if (rv)
+			return rv;
+
+		/* Set the CC lines */
+		rv = tcpm_set_cc(port, pull);
+		if (rv)
+			return rv;
+	}
+	return EC_SUCCESS;
 }
 #endif
 
@@ -852,6 +1092,7 @@ void tcpci_tcpc_alert(int port)
 		int fault;
 
 		if (tcpci_get_fault(port, &fault) == EC_SUCCESS &&
+		    fault != 0 &&
 		    tcpci_handle_fault(port, fault) == EC_SUCCESS &&
 		    tcpci_clear_fault(port, fault) == EC_SUCCESS)
 			CPRINTS("C%d FAULT 0x%02X handled", port, fault);
@@ -1030,7 +1271,6 @@ int tcpci_tcpm_init(int port)
 	int error;
 	int power_status;
 	int tries = TCPM_INIT_TRIES;
-	int regval;
 
 	/* Start with an unknown connection */
 	tcpci_set_cached_pull(port, TYPEC_CC_OPEN);
@@ -1058,9 +1298,9 @@ int tcpci_tcpm_init(int port)
 	 * Alert assertion when CC_STATUS.Looking4Connection changes state.
 	 */
 	if (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0) {
-		error = tcpc_read(port, TCPC_REG_TCPC_CTRL, &regval);
-		regval |= TCPC_REG_TCPC_CTRL_EN_LOOK4CONNECTION_ALERT;
-		error |= tcpc_write(port, TCPC_REG_TCPC_CTRL, regval);
+		error = tcpc_update8(port, TCPC_REG_TCPC_CTRL,
+				TCPC_REG_TCPC_CTRL_EN_LOOK4CONNECTION_ALERT,
+				MASK_SET);
 		if (error)
 			CPRINTS("C%d: Failed to init TCPC_CTRL!", port);
 	}
