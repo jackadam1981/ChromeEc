@@ -22,6 +22,30 @@
       "revId": "2a6ab23f59ef3368e1146d543ef551bd7afb0b25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4ec2eb3_3c335812",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-17T19:59:04Z",
+      "side": 1,
+      "message": "Looks like builtin boolean support is either very broken or very non-intuitive.",
+      "parentUuid": "01e418a1_5dab2496",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "2a6ab23f59ef3368e1146d543ef551bd7afb0b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
