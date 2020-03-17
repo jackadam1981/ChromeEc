@@ -22,6 +22,30 @@
       "revId": "402d5f5e007d064d5e28f378a63341bfe9e1a471",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a00e2b20_4b3c7b67",
+        "filename": "util/run_host_test",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-03-17T19:36:23Z",
+      "side": 1,
+      "message": "No on subprocess.run, we need to kill the process before it completes depending on partial outputs, so this is not possible with subprocess.run.\n\nFor encoding, I decided to operate on bytes as it\u0027s critical we read only one byte at a time when we read the output, which wouldn\u0027t be possible with encodings like UTF-8, which may assign more than one byte to a character.",
+      "parentUuid": "97e61f93_5e5dc0f5",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "402d5f5e007d064d5e28f378a63341bfe9e1a471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
