@@ -226,19 +226,19 @@ enum pd_cc_states pd_get_cc_state(
 	return PD_CC_NONE;
 }
 
-/**
- * This function checks the current CC status of the port partner
- * and returns true if the attached partner is UFP.
+/*
+ * This function checks the host's data role, if the host is DFP then the
+ * attached port partner is UFP.
  */
 bool pd_partner_is_ufp(int port)
 {
-	enum pd_cc_states cc_state = pd_get_task_cc_state(port);
-
-	return cc_state == PD_CC_UFP_ATTACHED ||
-		cc_state == PD_CC_UFP_DEBUG_ACC ||
-		cc_state == PD_CC_UFP_AUDIO_ACC;
+	return pd_get_data_role(port) == PD_ROLE_DFP;
 }
 
+/**
+ * This function checks the current CC status of the port partner
+ * and returns true if the attached partner is debug accessory.
+ */
 bool pd_is_debug_acc(int port)
 {
 	enum pd_cc_states cc_state = pd_get_task_cc_state(port);
