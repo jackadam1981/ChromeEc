@@ -70,8 +70,14 @@ enum pwm_channel {
 };
 
 enum adc_channel {
-	ADC_BOARD_ID_0,
-	ADC_BOARD_ID_1,
+	ADC_TEMP_SENSOR_SUBPMIC, /* ADC 0 */
+	ADC_BOARD_ID_0,          /* ADC 1 */
+	ADC_BOARD_ID_1,          /* ADC 2 */
+	ADC_TEMP_SENSOR_AMB,     /* ADC 3 */
+	ADC_TEMP_SENSOR_CHARGER, /* ADC 5 */
+	ADC_CHARGER_PMON,        /* ADC 6 */
+	ADC_TEMP_SENSOR_AP,      /* ADC 7 */
+
 	/* Number of ADC channels */
 	ADC_CH_COUNT,
 };
