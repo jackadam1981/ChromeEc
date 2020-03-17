@@ -17,7 +17,7 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "timer.h"
-
+#include "uart.h"
 
 #include "gpio_list.h"
 
@@ -55,8 +55,13 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
 	/* Convert to mV (3000mV/1024). */
-	{"BOARD_ID_0", 3000, 1024, 0, CHIP_ADC_CH1}, /* GPI0, ADC0 */
-	{"BOARD_ID_1", 3000, 1024, 0, CHIP_ADC_CH2}, /* GPI1, ADC1 */
+	{"TEMP_SENSOR_SUBPMIC", 3000, 1024, 0, CHIP_ADC_CH0},
+	{"BOARD_ID_0", 3000, 1024, 0, CHIP_ADC_CH1},
+	{"BOARD_ID_1", 3000, 1024, 0, CHIP_ADC_CH2},
+	{"TEMP_SENSOR_AMB", 3000, 1024, 0, CHIP_ADC_CH3},
+	{"TEMP_SENSOR_CHARGER", 3000, 1024, 0, CHIP_ADC_CH5},
+	{"CHARGER_PMON", 3000, 1024, 0, CHIP_ADC_CH6},
+	{"TEMP_SENSOR_AP", 3000, 1024, 0, CHIP_ADC_CH7},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
