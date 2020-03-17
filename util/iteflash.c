@@ -2221,6 +2221,23 @@ static void register_sigaction(void)
 	sigaction(SIGQUIT, &sigact, NULL);
 }
 
+/* DBGR Exit */
+static int dbgr_exit(struct common_hnd *chnd)
+{
+	int ret = 0;
+
+	if (chnd->dbgr_addr_3bytes)
+		ret |= i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x1c);
+	ret |= i2c_write_byte(chnd, 0x2e, 0x08);
+	ret |= i2c_write_byte(chnd, 0x30, 0x10);
+
+	if (ret < 0)
+		fprintf(stderr, "DBGR EXIT FAILED\n");
+
+	return 0;
+}
+
 int main(int argc, char **argv)
 {
 	int ret = 1, other_ret;
@@ -2331,7 +2348,7 @@ int main(int argc, char **argv)
 
  return_after_init:
 	/* Enable EC Host Global Reset to reset EC resource and EC domain. */
-	dbgr_reset(&chnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
+	dbgr_exit(&chnd);
 
 	if (chnd.conf.i2c_mux) {
 		printf("configuring I2C MUX to none.\n");
