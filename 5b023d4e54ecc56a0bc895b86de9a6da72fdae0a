@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f6514f0e_aa4d1896",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T08:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e47dd300_f1c75704",
+      "range": {
+        "startLine": 467,
+        "startChar": 8,
+        "endLine": 467,
+        "endChar": 17
+      },
+      "revId": "5b023d4e54ecc56a0bc895b86de9a6da72fdae0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb8aad56_19a5a5e2",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "5b023d4e54ecc56a0bc895b86de9a6da72fdae0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2072b756_ffa68ba1",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T08:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb8aad56_19a5a5e2",
+      "revId": "5b023d4e54ecc56a0bc895b86de9a6da72fdae0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "5b023d4e54ecc56a0bc895b86de9a6da72fdae0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17e3d1ff_440dd6a1",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T08:05:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c531e7d3_66b25737",
+      "range": {
+        "startLine": 608,
+        "startChar": 35,
+        "endLine": 608,
+        "endChar": 38
+      },
+      "revId": "5b023d4e54ecc56a0bc895b86de9a6da72fdae0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
