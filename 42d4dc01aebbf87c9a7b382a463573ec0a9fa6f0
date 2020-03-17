@@ -22,6 +22,30 @@
       "revId": "42d4dc01aebbf87c9a7b382a463573ec0a9fa6f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f5fd28_62368d15",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-03-17T15:01:04Z",
+      "side": 1,
+      "message": "That is true. We may want to consider adding a sysjump tag for those if the sysjump losing the state causes issues. Filed b/151719776",
+      "parentUuid": "f209e19a_5afd6f11",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 29
+      },
+      "revId": "42d4dc01aebbf87c9a7b382a463573ec0a9fa6f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
