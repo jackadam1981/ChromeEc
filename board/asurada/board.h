@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-/* Asurada development board configuration */
+/* Asurada board configuration */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
@@ -32,6 +32,8 @@
 #define CONFIG_CHARGER_OTG
 #define CONFIG_CHARGE_RAMP_HW
 
+/* Chipset */
+
 /* Keyboard */
 /*
  * #define CONFIG_KEYBOARD_BOARD_CONFIG
@@ -39,12 +41,14 @@
  * #define CONFIG_MKBP_USE_GPIO
  */
 
-/* PD */
+/* PD / USB-C */
 
 /* Optional console commands */
 #define CONFIG_CMD_FLASH
 #define CONFIG_CMD_SCRATCHPAD
 #define CONFIG_CMD_STACKOVERFLOW
+
+/* Sensor */
 
 /* UART */
 #undef CONFIG_UART_TX_BUF_SIZE
