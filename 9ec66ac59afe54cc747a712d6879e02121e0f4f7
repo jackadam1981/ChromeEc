@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "395be187_9e11a0db",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-17T13:01:52Z",
+      "side": 1,
+      "message": "reset the macros here:\n\n #undef UNIMPLEMENTED_GPIO",
+      "revId": "9ec66ac59afe54cc747a712d6879e02121e0f4f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
