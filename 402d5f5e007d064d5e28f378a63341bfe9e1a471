@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97e61f93_5e5dc0f5",
+        "filename": "util/run_host_test",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-03-17T19:31:25Z",
+      "side": 1,
+      "message": "Could you replace this Popen call with subprocess.run() and use the timeout argument to that instead of the signal handling below?\n\nYou should also specify encoding\u003d\u0027utf-8\u0027.",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "402d5f5e007d064d5e28f378a63341bfe9e1a471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
