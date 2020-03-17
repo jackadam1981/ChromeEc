@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95f7940e_025f2b8b",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-17T18:50:17Z",
+      "side": 1,
+      "message": "nit: instead",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "428dbc30_97a0ba31",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-17T18:50:17Z",
+      "side": 1,
+      "message": "can you explain why in this comment too please?",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd657406_853ea13b",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-17T18:50:17Z",
+      "side": 1,
+      "message": "instead",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1548e008_bd251180",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-17T18:50:17Z",
+      "side": 1,
+      "message": "If this the following also valid?\n\nif (FLASH_DMA_START \u0026 BIT(19))\n   IT83XX_SMFI_SCAR2H |\u003d BIT(7)\nelse\n   IT83XX_SMFI_SCAR2H \u0026\u003d ~BIT(7)",
+      "range": {
+        "startLine": 646,
+        "startChar": 6,
+        "endLine": 646,
+        "endChar": 43
+      },
+      "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98310ce7_7e420da7",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-17T18:50:17Z",
+      "side": 1,
+      "message": "can this come from a define instead?",
+      "range": {
+        "startLine": 271,
+        "startChar": 15,
+        "endLine": 271,
+        "endChar": 23
+      },
+      "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
