@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f209e19a_5afd6f11",
+        "filename": "board/dratini/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-17T01:34:45Z",
+      "side": 1,
+      "message": "BTW, while looking at this change, I just realized something. baseboard_mst_enable_control() forgets about the mst_input_levels when doing a sysjump. For HDMI, what you are doing probably fixes it. If HDMI is connected when EC starts in RO, then after jumping to RW things would be setup correctly again.. Not sure if things would still be okay for TCPC HPD though. Something to confirm.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 29
+      },
+      "revId": "42d4dc01aebbf87c9a7b382a463573ec0a9fa6f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
