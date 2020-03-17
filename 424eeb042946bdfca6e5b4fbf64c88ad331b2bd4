@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "a3a69fd0_b2b6afed",
+        "filename": "common/i2c_hid_touchpad.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-17T08:11:55Z",
+      "side": 1,
+      "message": "I see, okay then.",
+      "parentUuid": "1d09335d_883e8422",
+      "revId": "424eeb042946bdfca6e5b4fbf64c88ad331b2bd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d13abb4a_adb9f2f0",
         "filename": "common/i2c_hid_touchpad.c",
         "patchSetId": 3
