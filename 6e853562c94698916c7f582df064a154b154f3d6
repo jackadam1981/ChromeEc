@@ -46,6 +46,30 @@
       "revId": "6e853562c94698916c7f582df064a154b154f3d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef8e70c_4b1f38d9",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1126709
+      },
+      "writtenOn": "2020-03-17T07:09:39Z",
+      "side": 1,
+      "message": "Ack, that makes sense.  Thanks for the answer!",
+      "parentUuid": "c6c2f653_acd8d26f",
+      "range": {
+        "startLine": 1023,
+        "startChar": 0,
+        "endLine": 1023,
+        "endChar": 13
+      },
+      "revId": "6e853562c94698916c7f582df064a154b154f3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
