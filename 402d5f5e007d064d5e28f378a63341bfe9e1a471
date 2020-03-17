@@ -69,6 +69,30 @@
       "revId": "402d5f5e007d064d5e28f378a63341bfe9e1a471",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d3b7dc5_8ba654f7",
+        "filename": "util/run_host_test",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-03-17T20:10:02Z",
+      "side": 1,
+      "message": "My understanding is that this recommendation is to match existing style. I believe that standalone/new projects like this are free to use .format()",
+      "parentUuid": "50abda6b_fcce966a",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "402d5f5e007d064d5e28f378a63341bfe9e1a471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
