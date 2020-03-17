@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5e7e86d_cfb8fb76",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 4211,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-17T19:01:14Z",
+      "side": 1,
+      "message": "seems like this could be refactored a bit to remove common conditions like SOP || SOP\u0027 and then potentially switch on the type.\n\nCan do in this CL or another or leave it. Just a minor comment really.",
+      "range": {
+        "startLine": 4168,
+        "startChar": 2,
+        "endLine": 4211,
+        "endChar": 3
+      },
+      "revId": "2607948ae3176b28fe2f6fe9883b5f57d2bf5320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
