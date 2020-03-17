@@ -22,6 +22,30 @@
       "revId": "2607948ae3176b28fe2f6fe9883b5f57d2bf5320",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a520b0_5b0835bc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 4211,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-17T19:18:41Z",
+      "side": 1,
+      "message": "Yes, I agree with you but let\u0027s leave it for another CL.",
+      "parentUuid": "b5e7e86d_cfb8fb76",
+      "range": {
+        "startLine": 4168,
+        "startChar": 2,
+        "endLine": 4211,
+        "endChar": 3
+      },
+      "revId": "2607948ae3176b28fe2f6fe9883b5f57d2bf5320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
