@@ -46,6 +46,29 @@
       "revId": "402d5f5e007d064d5e28f378a63341bfe9e1a471",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50abda6b_fcce966a",
+        "filename": "util/run_host_test",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1367012
+      },
+      "writtenOn": "2020-03-17T20:02:43Z",
+      "side": 1,
+      "message": "% string formatting is preferred in Cros code\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#string-formatting",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "402d5f5e007d064d5e28f378a63341bfe9e1a471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
