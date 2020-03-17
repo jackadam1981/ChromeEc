@@ -16,6 +16,24 @@
       "revId": "d531f8c7ba7ac206bb3489e49be65de3e457c965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e728af6_0a72bee6",
+        "filename": "baseboard/volteer/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-17T03:57:28Z",
+      "side": 1,
+      "message": "Actually, CONFIG_ACCELGYRO_BMI260 is defined in baseboard/volteer/baseboard.h, which is included by both volteer and malefor. So, malefor will still require GPIO_ACCEL_INT_ODL in this case.",
+      "parentUuid": "f6b0f2bd_d87ccf0b",
+      "revId": "d531f8c7ba7ac206bb3489e49be65de3e457c965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
