@@ -34,6 +34,24 @@
       "revId": "d531f8c7ba7ac206bb3489e49be65de3e457c965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad87fba8_8a415be9",
+        "filename": "baseboard/volteer/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-17T06:11:21Z",
+      "side": 1,
+      "message": "We can consider to move the definition to board.h",
+      "parentUuid": "4e728af6_0a72bee6",
+      "revId": "d531f8c7ba7ac206bb3489e49be65de3e457c965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
