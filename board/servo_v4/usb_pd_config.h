@@ -70,6 +70,8 @@
 #define ALT_DP_PIN_E	(1 << 3)   /* Pin assignment E supported */
 #define ALT_DP_MF_PREF	(1 << 4)   /* Multi-Function preferred */
 #define ALT_DP_PLUG	(1 << 5)   /* Plug or receptacle */
+#define ALT_DP_MOD_HPD	(1 << 6)   /* Modify the HPD signal */
+#define ALT_DP_HPD_LVL	(1 << 7)   /* HPD level if modified */
 
 /* TX uses SPI1 on PB3-4 for CHG port, SPI2 on PB 13-14 for DUT port */
 #define SPI_REGS(p) ((p) ? STM32_SPI2_REGS : STM32_SPI1_REGS)
