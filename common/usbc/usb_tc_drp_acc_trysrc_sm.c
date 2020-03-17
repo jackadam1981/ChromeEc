@@ -1642,9 +1642,6 @@ static void tc_unattached_snk_entry(const int port)
 	if (IS_ENABLED(CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER))
 		bc12_role_change_handler(port);
 
-	/* VBus should be SafeV0, turn off auto discharge disconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 0);
-
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
 		charge_manager_update_dualrole(port, CAP_UNKNOWN);
 
@@ -1826,6 +1823,11 @@ static void tc_attached_snk_entry(const int port)
 
 	print_current_state(port);
 
+	/* New SNK connection */
+	ccprintf("P%d: %s\n", port, __func__);
+	tcpm_set_new_connection(port, TYPEC_CC_RD);
+	tcpm_enable_auto_discharge_disconnect(port, 1);
+
 	/* Clear Low Power Mode Request */
 	TC_CLR_FLAG(port, TC_FLAGS_LPM_REQUESTED);
 
@@ -1882,9 +1884,6 @@ static void tc_attached_snk_entry(const int port)
 	/* Enable PD */
 	if (IS_ENABLED(CONFIG_USB_PE_SM))
 		tc_enable_pd(port, 1);
-
-	/* VBus should be powered, turn on auto discharge disconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_attached_snk_run(const int port)
@@ -2339,9 +2338,6 @@ static void tc_unattached_src_entry(const int port)
 	if (IS_ENABLED(CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER))
 		bc12_role_change_handler(port);
 
-	/* VBus should be SafeV0, turn off auto discharge disconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 0);
-
 	if (IS_ENABLED(CONFIG_USBC_PPC)) {
 		/* There is no sink connected. */
 		ppc_sink_is_connected(port, 0);
@@ -2502,6 +2498,12 @@ static void tc_attached_src_entry(const int port)
 
 	print_current_state(port);
 
+	/* New Source connection */
+	ccprintf("P%d: %s\n", port, __func__);
+	tcpm_set_new_connection(port, TYPEC_CC_RP);
+	tcpm_enable_auto_discharge_disconnect(port, 1);
+
+
 	/* Run function relies on timeout being 0 or meaningful */
 	tc[port].timeout = 0;
 
@@ -2595,9 +2597,6 @@ static void tc_attached_src_entry(const int port)
 	/* Inform PPC that a sink is connected. */
 	if (IS_ENABLED(CONFIG_USBC_PPC))
 		ppc_sink_is_connected(port, 1);
-
-	/* VBus should be powered, turn on auto discharge disconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
 
 	/*
 	 * Only notify if we're not performing a power role swap.  During a
@@ -2786,6 +2785,10 @@ static void tc_drp_auto_toggle_entry(const int port)
 	 */
 	atomic_clear(task_get_event_bitmap(task_get_current()),
 		PD_EXIT_LOW_POWER_EVENT_MASK);
+
+	/* We are disconnected, turn off auto discharge disconnect */
+	ccprintf("P%d: DRP AutoDisDisc disable\n", port);
+	tcpm_enable_auto_discharge_disconnect(port, 0);
 
 	if (drp_state[port] == PD_DRP_TOGGLE_ON)
 		tcpm_enable_drp_toggle(port);
@@ -3161,12 +3164,6 @@ static void tc_cc_rd_entry(const int port)
 	/* Set power role to sink */
 	tc_set_power_role(port, PD_ROLE_SINK);
 	tcpm_set_msg_header(port, tc[port].power_role, tc[port].data_role);
-
-	/*
-	 * Both CC1 and CC2 pins shall be independently terminated to
-	 * ground through Rd.
-	 */
-	tcpm_set_new_connection(port, TYPEC_CC_RD);
 }
 
 
@@ -3182,13 +3179,7 @@ static void tc_cc_rp_entry(const int port)
 	/* Set power role to source */
 	tc_set_power_role(port, PD_ROLE_SOURCE);
 	tcpm_set_msg_header(port, tc[port].power_role, tc[port].data_role);
-
-	/*
-	 * Both CC1 and CC2 pins shall be independently pulled
-	 * up through Rp.
-	 */
 	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
-	tcpm_set_new_connection(port, TYPEC_CC_RP);
 }
 
 /**
