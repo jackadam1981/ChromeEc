@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32a8f8d9_266cab46",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-17T19:14:10Z",
+      "side": 1,
+      "message": "can we do this for all variants and not have a special case code block?",
+      "range": {
+        "startLine": 462,
+        "startChar": 8,
+        "endLine": 469,
+        "endChar": 0
+      },
+      "revId": "0d8ff6f3627f9bbae48efb0dcf2e2a44551fe970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5df9696_a9898ca0",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-17T19:14:10Z",
+      "side": 1,
+      "message": "what happens if we always set this bit?",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 30
+      },
+      "revId": "0d8ff6f3627f9bbae48efb0dcf2e2a44551fe970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
