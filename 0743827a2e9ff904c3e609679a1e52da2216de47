@@ -25,6 +25,47 @@
     },
     {
       "key": {
+        "uuid": "4bfd7022_f4fa55b5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T20:05:54Z",
+      "side": 1,
+      "message": "The TCPCI indicates DRP has to be set and this is not done with tcpm_set_cc.  I used the driver function attached to tcpm_set_connection to have a final connect parameter so it would perform the following:\n\n\t\ttcpci_set_role_ctrl(port, 1, TYPEC_RP_USB, pull);",
+      "parentUuid": "d1ceb89c_0f3f82ce",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4baf647b_ad21c73e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2428,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T20:05:54Z",
+      "side": 1,
+      "message": "Missed the comment\nSet RC.RpValue\u003d00b (smallest Rp to save power)",
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0f7cca5_9ef5b6a9",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -36,6 +77,30 @@
       "writtenOn": "2020-03-18T19:43:33Z",
       "side": 1,
       "message": "Same as above, can this one be tcpm_set_cc()?",
+      "range": {
+        "startLine": 2434,
+        "startChar": 2,
+        "endLine": 2434,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24415b1b_6e611bbb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2434,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T20:05:54Z",
+      "side": 1,
+      "message": "The TCPCI indicates DRP has to be set and this is not done with tcpm_set_cc.  I used the driver function attached to tcpm_set_connection to have a final connect parameter so it would perform the following:\n\n\t\ttcpci_set_role_ctrl(port, 1, TYPEC_RP_USB, pull);",
+      "parentUuid": "e0f7cca5_9ef5b6a9",
       "range": {
         "startLine": 2434,
         "startChar": 2,
