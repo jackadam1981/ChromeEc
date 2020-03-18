@@ -7,6 +7,12 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/* EC Defines */
+
+/* Chipset config */
+#define CONFIG_CHIPSET_MT8192
+#define CONFIG_POWER_COMMON
+
 /* Optional features */
 #define CONFIG_BOARD_VERSION_CUSTOM
 #define CONFIG_LOW_POWER_IDLE
@@ -77,6 +83,12 @@ enum adc_channel {
 	ADC_BOARD_ID_1,
 	/* Number of ADC channels */
 	ADC_CH_COUNT,
+};
+
+enum power_signal {
+	AP_IN_S3_L,
+	PMIC_PWR_GOOD,
+	POWER_SIGNAL_COUNT,
 };
 
 int board_get_version(void);

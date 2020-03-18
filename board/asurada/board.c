@@ -7,6 +7,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "charger.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "driver/charger/isl923x.h"
@@ -14,6 +15,8 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
+#include "power.h"
+#include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "timer.h"
@@ -45,6 +48,13 @@ const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_POWER_BUTTON_L, GPIO_LID_OPEN
 };
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
+
+/* power signal list.  Must match order of enum power_signal. */
+const struct power_signal_info power_signal_list[] = {
+	{GPIO_AP_IN_SLEEP_L, POWER_SIGNAL_ACTIVE_LOW, "AP_IN_S3_L"},
+	{GPIO_PMIC_EC_PWRGD, POWER_SIGNAL_ACTIVE_HIGH, "PMIC_PWR_GOOD"},
+};
+BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* Initialize board. */
 static void board_init(void)
