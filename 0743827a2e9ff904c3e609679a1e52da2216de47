@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b4309b07_ee3e6cff",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T20:54:58Z",
+      "side": 1,
+      "message": "Actually entering DRP is handled at the end of tc_drp_auto_toggle_entry.  This needs to know if we are coming out of being a Source and Sink.  The last parameter is not enter DRP or not enter DRP, it is whether we are connecting or disconnecting.  The parameter name is \"connect\".  I could create an enum if you think that would help.",
+      "parentUuid": "ce36b0dc_723df411",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
