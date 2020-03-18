@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ce36b0dc_723df411",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-18T20:46:23Z",
+      "side": 1,
+      "message": "Sorry, missed that last param on first read.\nHow about using an enum so that 0 becomes ENTER_DRP?\nThe \"RC.DRP\u003d1b\" is being set again in tcpci_tcpc_drp_toggle():\n\n\t/* Set auto drp toggle */\n\trv \u003d tcpci_set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_RD);\n\nDoes it need to be removed from there if we are now doing it here?",
+      "parentUuid": "4bfd7022_f4fa55b5",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
