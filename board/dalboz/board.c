@@ -140,6 +140,7 @@ static void setup_usb_db(void)
 		ioex_init(IOEX_HDMI_PCAL6408);
 		IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT2;
 		IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT2;
+		usb_port_enable[1] = IOEX_EN_USB_A1_5V_DB_OPT2;
 	} else {
 		ccprints("DB OPT1 USBC");
 		ioex_config[IOEX_C1_NCT3807].flags = 0;
