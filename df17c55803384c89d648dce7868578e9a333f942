@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "391ac71d_21046fb0",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2020-03-18T19:29:01Z",
+      "side": 1,
+      "message": "We may have a different EC in follower projects.\nShould we keep these in the sub-board directories?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 62
+      },
+      "revId": "df17c55803384c89d648dce7868578e9a333f942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
