@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "13843401_42f6f50b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T21:01:49Z",
+      "side": 1,
+      "message": "tcpm_set_connection is optional code and may or may not be chip specific. I wanted to make sure the order was what the TCPCI suggests in the spec.  Since this is optional, it is safest to leave it where it already exists so other devices do not start breaking.",
+      "parentUuid": "b4309b07_ee3e6cff",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
