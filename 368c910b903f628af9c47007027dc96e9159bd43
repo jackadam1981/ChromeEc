@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63c72064_be8d650a",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1316197
+      },
+      "writtenOn": "2020-03-18T21:29:27Z",
+      "side": 1,
+      "message": "Is there a chance of this concatenating str + None + str?",
+      "revId": "368c910b903f628af9c47007027dc96e9159bd43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
