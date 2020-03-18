@@ -46,6 +46,30 @@
       "revId": "df17c55803384c89d648dce7868578e9a333f942",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c6b284f_d8844713",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2020-03-18T21:25:43Z",
+      "side": 1,
+      "message": "SGTM, thanks.",
+      "parentUuid": "4914288e_9c825f2e",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 62
+      },
+      "revId": "df17c55803384c89d648dce7868578e9a333f942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
