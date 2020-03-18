@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "22023d0b_c5ff4e13",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-18T21:07:57Z",
+      "side": 1,
+      "message": "For the enum, what about 0\u003dSET_DRP and 1\u003dCLEAR_DRP, since that matches \"Set RC.DRP\u003d1b\" and \"Set RC.DRP\u003d0\"\n\nFor tcpci_tcpc_drp_toggle() calling tcpci_set_role_ctrl() I guess there should be no harm setting it to the same value a second time, but we will be changing from TYPEC_CC_RP to TYPEC_CC_RD in the SRC-\u003eDRP case (below).",
+      "parentUuid": "13843401_42f6f50b",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
