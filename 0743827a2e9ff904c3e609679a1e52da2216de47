@@ -420,6 +420,47 @@
       "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a0601d5_1daad7b0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-18T22:25:11Z",
+      "side": 1,
+      "message": "Ok, we can leave this alone then.",
+      "parentUuid": "42adad17_c18eac9c",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 0
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5c6c5d_d7db62c9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-18T22:25:11Z",
+      "side": 1,
+      "message": "How is EN_LOOK4CONNECTION_ALERT supposed to work?\nLooks like we clear it here and set it in tcpci_tcpm_init().\nShouldn\u0027t we be setting it just before TCPC_REG_COMMAND_LOOK4CONNECTION so that we get an alert on finding a potential connection?",
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
