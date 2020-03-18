@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "b221429f_4cfc6e68",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T21:44:22Z",
+      "side": 1,
+      "message": "If doing this is acceptable, then will use the following\n\nstatic __maybe_unused int nct3807_tcpc_drp_toggle(int port)\n{\n\t/* DRP will already be set with the correct pull on both CC lines */\n\n\t/* Set Look4Connection command */\n\treturn tcpc_write(port, TCPC_REG_COMMAND,\n\t\t\t  TCPC_REG_COMMAND_LOOK4CONNECTION);\n}",
+      "parentUuid": "d25fd6a9_3f3668a7",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
