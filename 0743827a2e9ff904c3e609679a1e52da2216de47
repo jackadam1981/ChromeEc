@@ -254,6 +254,29 @@
       "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42adad17_c18eac9c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T21:29:31Z",
+      "side": 1,
+      "message": "Ed, this is the only place the connect parameter is referenced... it is for disconnecting.  There is code near the end of this function near line 625 that also does not set DRP but is associated with a connect.",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 0
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
