@@ -140,6 +140,30 @@
       "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ff313e_80ec88ee",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-18T21:39:27Z",
+      "side": 1,
+      "message": "I think removing the array size and combining with something like:\n\n   vos_values[] \u003d {\n     STM32_PWR_D3CR_VOS1,\n     ...\n   }\n  BUILD_ASSERT(ARRAY_SIZE(vos_values) \u003d\u003d VOLTAGE_SCALE_COUNT)\n\nis a bit safer.\n\nOtherwise the compiler will let you accidentally do something like\n\n \tconst uint32_t vos_values[VOLTAGE_SCALE_COUNT] \u003d {\n             STM32_PWR_D3CR_VOS1,\n\t     STM32_PWR_D3CR_VOS1,\n\t     STM32_PWR_D3CR_VOS2,\n             // forgot last one, it gets init\u0027ed to zero\n         }",
+      "parentUuid": "7766d5f0_9d07dae1",
+      "range": {
+        "startLine": 275,
+        "startChar": 37,
+        "endLine": 275,
+        "endChar": 56
+      },
+      "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
