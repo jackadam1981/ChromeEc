@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9444af69_096f6205",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T18:23:52Z",
+      "side": 1,
+      "message": "Where are IOEX_USB_A1_RETIMER_EN and IOEX_USB_A1_CHARGE_EN_DB_L defined/initialized?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "9ad8f7166b7713aaa0d0b32a16b33db6d6e8c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f3b5dd_239a003d",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T18:23:52Z",
+      "side": 1,
+      "message": "Why don\u0027t you have to initialize the two IOEX_USB_A1_... variables here as well?",
+      "revId": "9ad8f7166b7713aaa0d0b32a16b33db6d6e8c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
