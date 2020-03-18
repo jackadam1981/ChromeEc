@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "d25fd6a9_3f3668a7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T21:42:14Z",
+      "side": 1,
+      "message": "I agree... but don\u0027t want to break everyone else.  I will isolate that function in the 3807 driver and will not change the role",
+      "parentUuid": "788fb817_afbb9c23",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
