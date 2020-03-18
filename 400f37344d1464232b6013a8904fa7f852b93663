@@ -22,6 +22,30 @@
       "revId": "400f37344d1464232b6013a8904fa7f852b93663",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e5c8d9_18b07c0d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3169,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T00:17:09Z",
+      "side": 0,
+      "message": "Why do we need this here?  Won\u0027t we connect as a SINK through tc_attached_snk_entry and know we are truly connected?  Following the TCPCI spec, it looks like we only do the conversion of CC/Role from prospective connection after debounce and that is when AutoDischargeDisconnect is supposed to be set, this is in tc_attached_snk_entry.\n\nI can add set_cc calls here and in tc_cc_rp_entry if you think that is needed.\n\nset_new_connection has quite a bit of code dealing with DRP/non-DRP converting prospective connections into real connections.  What is your thinking on putting that code inline?",
+      "parentUuid": "872c2031_173d1bfe",
+      "range": {
+        "startLine": 3166,
+        "startChar": 2,
+        "endLine": 3169,
+        "endChar": 44
+      },
+      "revId": "400f37344d1464232b6013a8904fa7f852b93663",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
