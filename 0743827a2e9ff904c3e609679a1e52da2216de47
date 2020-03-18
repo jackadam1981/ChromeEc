@@ -336,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "63db8972_654a1a2e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T23:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ebe1580_82333872",
+      "range": {
+        "startLine": 1704,
+        "startChar": 40,
+        "endLine": 1704,
+        "endChar": 42
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -350,6 +374,24 @@
       "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6932c0ac_54199fa7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2428,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T23:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4baf647b_ad21c73e",
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -400,6 +442,30 @@
     },
     {
       "key": {
+        "uuid": "1295d828_339ea082",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2434,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T23:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24415b1b_6e611bbb",
+      "range": {
+        "startLine": 2434,
+        "startChar": 2,
+        "endLine": 2434,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42adad17_c18eac9c",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -447,6 +513,30 @@
     },
     {
       "key": {
+        "uuid": "adcc1f32_45de8687",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T23:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a0601d5_1daad7b0",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 0
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd5c6c5d_d7db62c9",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -461,6 +551,24 @@
       "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52193d91_2d8724f3",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T23:16:01Z",
+      "side": 1,
+      "message": "We don\u0027t take this path when the AP is running, so we have the odds on our side 😊\nWe also enter tcpci_tcpm_init every time we come out of low power mode.  I will add the set of the mask before setting the command.",
+      "parentUuid": "dd5c6c5d_d7db62c9",
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
