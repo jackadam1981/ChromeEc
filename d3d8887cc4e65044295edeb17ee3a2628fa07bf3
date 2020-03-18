@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b55bdde0_a7b9f85f",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-18T06:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95f7940e_025f2b8b",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "428dbc30_97a0ba31",
         "filename": "chip/it83xx/config_chip_it8xxx2.h",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-17T18:50:17Z",
       "side": 1,
       "message": "can you explain why in this comment too please?",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "040bc1e6_9b35b1ab",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-18T06:56:14Z",
+      "side": 1,
+      "message": "Let\u0027s remove this comment, because IT81202 fixed the issue.",
+      "parentUuid": "428dbc30_97a0ba31",
       "range": {
         "startLine": 83,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "72c7f65b_c442780d",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-18T06:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd657406_853ea13b",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1548e008_bd251180",
         "filename": "chip/it83xx/flash.c",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0771aeaf_7c5011a5",
+        "filename": "chip/it83xx/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-18T06:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1548e008_bd251180",
+      "range": {
+        "startLine": 646,
+        "startChar": 6,
+        "endLine": 646,
+        "endChar": 43
+      },
+      "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98310ce7_7e420da7",
         "filename": "core/riscv-rv32i/init.S",
         "patchSetId": 7
@@ -114,6 +210,30 @@
       "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "511250a6_9f9d10ab",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-18T06:56:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98310ce7_7e420da7",
+      "range": {
+        "startLine": 271,
+        "startChar": 15,
+        "endLine": 271,
+        "endChar": 23
+      },
+      "revId": "d3d8887cc4e65044295edeb17ee3a2628fa07bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
