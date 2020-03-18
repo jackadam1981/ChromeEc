@@ -265,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "0f84431c_46d2c30f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T21:56:22Z",
+      "side": 1,
+      "message": "I will do it that way... I feel some time in the future we will have to refactor this but we should do that based on more than 1 tcpc to sample from.",
+      "parentUuid": "f3bb26e2_e476a6e3",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
