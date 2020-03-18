@@ -88,6 +88,10 @@ void baseboard_chipset_startup(void)
 {
 	/* Allow keyboard backlight to be enabled */
 	gpio_set_level(GPIO_EN_KB_BL, 1);
+
+	/* Enable the internal pull-up now that the AP is on. */
+	gpio_set_flags(GPIO_EC_AP_MKBP_INT_L,
+		       GPIO_PULL_UP | GPIO_OPEN_DRAIN | GPIO_OUTPUT);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, baseboard_chipset_startup,
 	     HOOK_PRIO_DEFAULT);
@@ -96,6 +100,13 @@ void baseboard_chipset_shutdown(void)
 {
 	/* Turn off the keyboard backlight if it's on. */
 	gpio_set_level(GPIO_EN_KB_BL, 0);
+
+	/*
+	 * Remove the internal pull-up when the AP turns off to prevent
+	 * leakage.
+	 */
+	gpio_set_flags(GPIO_EC_AP_MKBP_INT_L,
+		       GPIO_OPEN_DRAIN | GPIO_OUTPUT);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
