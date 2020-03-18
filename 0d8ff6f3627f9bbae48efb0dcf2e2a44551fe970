@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6460fb61_9793e483",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-18T07:15:39Z",
+      "side": 1,
+      "message": "We might have race condition if interrupts aren\u0027t masked before \u0027wfi\u0027 instruction.\nOn IT83202, when MEIE (interrupts) is masked, we can\u0027t wake up CPU while CPU is in low power mode and an interrupt is pending.\nIT81202 fixed this issue. If bit7@WMCR is set and an interrupt is pending, CPU will wake up immediately even if interrupts are masked and then do the following sequence: enable interrupts and jumping to ISR.",
+      "parentUuid": "32a8f8d9_266cab46",
+      "range": {
+        "startLine": 462,
+        "startChar": 8,
+        "endLine": 469,
+        "endChar": 0
+      },
+      "revId": "0d8ff6f3627f9bbae48efb0dcf2e2a44551fe970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5df9696_a9898ca0",
         "filename": "chip/it83xx/system.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-17T19:14:10Z",
       "side": 1,
       "message": "what happens if we always set this bit?",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 30
+      },
+      "revId": "0d8ff6f3627f9bbae48efb0dcf2e2a44551fe970",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "336dd13c_0e2c3ddd",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-18T07:15:39Z",
+      "side": 1,
+      "message": "This bit is only valid while CPU goes into low power mode:\nCPU will wake-up immediately if an interrupt is pending.",
+      "parentUuid": "b5df9696_a9898ca0",
       "range": {
         "startLine": 128,
         "startChar": 2,
