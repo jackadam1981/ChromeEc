@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3887f884_83f9eb5b",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T20:19:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "457c2a8f_223c2581",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "9ad8f7166b7713aaa0d0b32a16b33db6d6e8c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64f3b5dd_239a003d",
         "filename": "board/dalboz/board.c",
         "patchSetId": 3
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "I was relying on the initialization on lines 132/133, thinking of OPT1 as the default. I\u0027ll add it here.",
       "parentUuid": "64f3b5dd_239a003d",
+      "revId": "9ad8f7166b7713aaa0d0b32a16b33db6d6e8c30a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a134e62_1fbdab9d",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T20:19:37Z",
+      "side": 1,
+      "message": "I think this would be cleaner and show symmetry",
+      "parentUuid": "14bf288c_9b0a0f42",
       "revId": "9ad8f7166b7713aaa0d0b32a16b33db6d6e8c30a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
