@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "317a60dc_f994cda1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T21:18:16Z",
+      "side": 1,
+      "message": "I will create the enumeration.  Although from the calling side this looks like what the parameter is saying but when you look at the code in the function and how that relates to a connection, the enumeration should be TYPEC_CONNECT and TYPEC_DISCONNECT.  This is not used directly in reference to DRP... just happens that we set DRP\u003d0 when we disconnect and set DRP\u003d1 when we connect.\n\nThe disconnecting pull types are from the spec, SNK-\u003eDRP is Rd/Rd and SRC-\u003eDRP is Rp/Rp",
+      "parentUuid": "22023d0b_c5ff4e13",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
