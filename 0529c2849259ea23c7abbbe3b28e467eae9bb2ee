@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fbbdaea_3356a255",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-18T21:49:57Z",
+      "side": 1,
+      "message": "for testing purposes, can we add a 100ms delay before this pulse? It would affect the timing for the SNK case and hopefully avoid the collision with the phone.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 30
+      },
+      "revId": "0529c2849259ea23c7abbbe3b28e467eae9bb2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
