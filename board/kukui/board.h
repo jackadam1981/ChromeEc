@@ -111,9 +111,8 @@ enum adc_channel {
 
 /* power signal definitions */
 enum power_signal {
-	AP_IN_S3_L,
+	AP_IN_S3_L /* AP_IN_S3_L */,
 	PMIC_PWR_GOOD,
-
 	/* Number of signals */
 	POWER_SIGNAL_COUNT,
 };
