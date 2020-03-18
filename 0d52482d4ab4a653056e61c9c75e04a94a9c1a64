@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3962a3f_7900f995",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-18T21:41:20Z",
+      "side": 1,
+      "message": "I\u0027ll look at the reference manual, but should this be STM32_PWR_D3CR_VOS0?\n\nIf not, may be worth a comment since it sticks out.",
+      "range": {
+        "startLine": 305,
+        "startChar": 7,
+        "endLine": 305,
+        "endChar": 26
+      },
+      "revId": "0d52482d4ab4a653056e61c9c75e04a94a9c1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
