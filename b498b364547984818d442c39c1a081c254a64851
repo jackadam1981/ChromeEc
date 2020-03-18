@@ -22,6 +22,30 @@
       "revId": "b498b364547984818d442c39c1a081c254a64851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f7f2aff_a043d9ec",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-18T22:15:56Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if the plan was to fix it hardware or to just keep the FW workaround.",
+      "parentUuid": "d5efee0e_8ab40406",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 55
+      },
+      "revId": "b498b364547984818d442c39c1a081c254a64851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
