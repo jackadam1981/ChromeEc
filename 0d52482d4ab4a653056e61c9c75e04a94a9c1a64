@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cb26a668_abc0738f",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-18T22:16:14Z",
+      "side": 1,
+      "message": "Previous comment said:\n\n /* Flash latency settings for AHB/ACLK at 64 Mhz and Vcore in VOS1 range */\n\nShould this be VOLTAGE_SCALE1?\n\nVOS1 seems to match reference manual: https://www.st.com/resource/en/reference_manual/dm00314099-stm32h742-stm32h743-753-and-stm32h750-value-line-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf#page\u003d159",
+      "range": {
+        "startLine": 123,
+        "startChar": 38,
+        "endLine": 123,
+        "endChar": 52
+      },
+      "revId": "0d52482d4ab4a653056e61c9c75e04a94a9c1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3962a3f_7900f995",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 17
