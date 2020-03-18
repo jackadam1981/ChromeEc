@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "788fb817_afbb9c23",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-18T21:27:20Z",
+      "side": 1,
+      "message": "\u003e The disconnecting pull types are from the spec, SNK-\u003eDRP is Rd/Rd and SRC-\u003eDRP is Rp/Rp\n\nYes, we want to set Rp/Rp for SRC-\u003eDRP. My question is: after tcpm_set_connection(port, TYPEC_CC_RP, 0) sets Rp/Rp, then we do set_state_tc(port, TC_DRP_AUTO_TOGGLE) which will call tcpci_tcpc_drp_toggle() which will do tcpci_set_role_ctrl(port, 1, TYPEC_RP_USB, TYPEC_CC_RD), so it will change from Rp/Rp to Rd/Rd, which I don\u0027t think we want?",
+      "parentUuid": "317a60dc_f994cda1",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
