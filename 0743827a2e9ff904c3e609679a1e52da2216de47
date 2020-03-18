@@ -289,6 +289,53 @@
     },
     {
       "key": {
+        "uuid": "6ebe1580_82333872",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T21:58:57Z",
+      "side": 1,
+      "message": "This leaves the \"connect\" parameter that you want to represent Set_DRP.  Please look at the comment in tcpci.c",
+      "range": {
+        "startLine": 1704,
+        "startChar": 40,
+        "endLine": 1704,
+        "endChar": 42
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d0d782_61bfcf1c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1704,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-18T21:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f84431c_46d2c30f",
+      "range": {
+        "startLine": 1704,
+        "startChar": 2,
+        "endLine": 1704,
+        "endChar": 21
+      },
+      "revId": "0743827a2e9ff904c3e609679a1e52da2216de47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4baf647b_ad21c73e",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
