@@ -1,4 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-"
 # Copyright 2020 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -22,8 +23,8 @@ class TestUtilPrecompile(unittest.TestCase):
         inputs = (('"%s\n', 'errmsgs[rv]', 3),
                   ('%d', 10, 1),
                   ('"no format"', ),
-                  ("[%pT CCD state:", '((void *)0)', 7),
-                  ("%08x: DIO%c%-2d  %2d %3s%3s%3s%4s ",
+                  ('[%pT CCD state:', '((void *)0)', 7),
+                  ('%08x: DIO%c%-2d  %2d %3s%3s%3s%4s ',
                    1, 2, 3, 4, 5, 6, 6, 7, 858984721))
         string_indices = []
         for inp in inputs:
@@ -70,8 +71,8 @@ class TestUtilPrecompile(unittest.TestCase):
             '"another string, with a comma"',
             '"string split" " in two"',
             '"string with \\"escaped\\" double quotes"',
-            '(&(const struct hex_buffer_params){ .buffer = '
-            '(ec_efs_ctx.hash), .size = (32) })')
+            '(&(const struct hex_buffer_params)'
+            '{ .buffer = (ec_efs_ctx.hash), .size = (32) })')
         out_tokens = util_precompile.tokenize(', '.join(in_tokens))
         for in_t, out_t in zip(in_tokens, out_tokens):
             self.assertEqual(in_t, out_t)
@@ -82,9 +83,9 @@ class TestUtilPrecompile(unittest.TestCase):
         util_precompile.FMT_DICT = {}
         in_out_tuples = (
             (
-                ''' cprintf(CC_COMMAND, "Last attempt returned " "%d\\n", rv)
+                """ cprintf(CC_COMMAND, "Last attempt returned " "%d\\n", rv)
 
-                ;''',
+                ;""",
 
                 'cmsg1(CC_COMMAND, 0, 1, (uintptr_t)(rv));\n'
             ), (
