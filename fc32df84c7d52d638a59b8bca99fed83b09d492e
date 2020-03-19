@@ -16,6 +16,24 @@
       "revId": "fc32df84c7d52d638a59b8bca99fed83b09d492e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a685def2_92fe551c",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-19T19:18:08Z",
+      "side": 1,
+      "message": "GPIO_USB_C1_TCPC_INT_ODL should be handled by later CL: crrev.com/c/2108338\nFor GPIO_USB_C1_TCPC_RST_L I think it should be ok to reset PCAL6408",
+      "parentUuid": "1d9a3a06_256e270e",
+      "revId": "fc32df84c7d52d638a59b8bca99fed83b09d492e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
