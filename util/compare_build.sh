@@ -101,6 +101,59 @@ boards-with() {
   done
 }
 
+# Usage: parse-boards <associate_array_name> [board-grp1 [board-grp2...]]
+parse-boards() {
+  local -n boards="$1"
+  shift
+
+  # Board groups
+  #
+  # Get all CHIP variants in use:
+  # grep -E 'CHIP[[:space:]]*\:' board/*/build.mk \
+  #   | sed 's/.*:=[[:space:]]*//' | sort -u
+  local -A BOARD_GROUPS=(
+    [all]="$(make-print-boards)"
+    [fp]="dartmonkey bloonchipper nucleo-dartmonkey nucleo-h743zi"
+    [stm32]="$(boards-with 'CHIP[[:space:]:=]*stm32')"
+    [npcx]="$(boards-with 'CHIP[[:space:]:=]*npcx')"
+    [mchp]="$(boards-with 'CHIP[[:space:]:=]*mchp')"
+    [ish]="$(boards-with 'CHIP[[:space:]:=]*ish')"
+    [it83xx]="$(boards-with 'CHIP[[:space:]:=]*it83xx')"
+    [lm4]="$(boards-with 'CHIP[[:space:]:=]*lm4')"
+    [mec1322]="$(boards-with 'CHIP[[:space:]:=]*mec1322')"
+    [max32660]="$(boards-with 'CHIP[[:space:]:=]*max32660')"
+    [mt_scp]="$(boards-with 'CHIP[[:space:]:=]*mt_scp')"
+  )
+
+  # make-print-boards already filters out the skipped boards
+  local -A BOARDS_VALID=( )
+  assoc-add-keys BOARDS_VALID "${!BOARD_GROUPS[@]}" $(basename -a board/*)
+
+  # Parse boards selection
+  local b
+  for b; do
+    name="$(sed -E 's/^(-|\+)//' <<<"${b}")"
+    # Check for a valid board
+    if [[ "${BOARDS_VALID[${name}]}" != "${name}" ]]; then
+      echo "# Error - Board '${name}' does not exist" >&2
+      return 1
+    fi
+    # Check for expansion target
+    if [[ -n "${BOARD_GROUPS[${name}]}" ]]; then
+      name="${BOARD_GROUPS[${name}]}"
+    fi
+    # Process addition or deletion
+    case "${b}" in
+      -*)
+        assoc-rm-keys boards ${name}
+        ;;
+      +*|*)
+        assoc-add-keys boards ${name}
+        ;;
+    esac
+  done
+}
+
 
 ##########################################################################
 # Argument Parsing and Parameter Setup                                   #
@@ -113,8 +166,6 @@ FLAGS "${@}" || exit 1
 eval set -- "${FLAGS_ARGV}"
 
 set -e
-
-BOARD="${FLAGS_board}"
 
 # Can specify any valid git ref (e.g., commits or branches).
 # We need the long sha for fetching changes
@@ -138,52 +189,8 @@ else
   MAKE_FLAGS+=( "-j" )
 fi
 
-# Expansion targets
-#
-# Get all CHIP variants in use:
-# grep -E 'CHIP[[:space:]]*\:' board/*/build.mk | sed 's/.*:=[[:space:]]*//' | sort -u
-declare -A BOARDS_EXPANSIONS=(
-  [all]="$(make-print-boards)"
-  [fp]="dartmonkey bloonchipper nucleo-dartmonkey nucleo-h743zi"
-  [stm32]="$(boards-with 'CHIP[[:space:]:=]*stm32')"
-  [npcx]="$(boards-with 'CHIP[[:space:]:=]*npcx')"
-  [mchp]="$(boards-with 'CHIP[[:space:]:=]*mchp')"
-  [ish]="$(boards-with 'CHIP[[:space:]:=]*ish')"
-  [it83xx]="$(boards-with 'CHIP[[:space:]:=]*it83xx')"
-  [lm4]="$(boards-with 'CHIP[[:space:]:=]*lm4')"
-  [mec1322]="$(boards-with 'CHIP[[:space:]:=]*mec1322')"
-  [max32660]="$(boards-with 'CHIP[[:space:]:=]*max32660')"
-  [mt_scp]="$(boards-with 'CHIP[[:space:]:=]*mt_scp')"
-)
-
-# make print-boards already filters out the skipped boards
-declare -A BOARDS_VALID=( )
-assoc-add-keys BOARDS_VALID "${!BOARDS_EXPANSIONS[@]}" $(basename -a board/*)
-
 declare -A BOARDS=( )
-
-# Parse boards selection
-for b in ${BOARD}; do
-  name="$(sed -E 's/^(-|\+)//' <<<"${b}")"
-  # Check for a valid board
-  if [[ "${BOARDS_VALID[${name}]}" != "${name}" ]]; then
-    echo "# Error - Board '${name}' does not exist" >&2
-    exit 1
-  fi
-  # Check for expansion target
-  if [[ -n "${BOARDS_EXPANSIONS[${name}]}" ]]; then
-    name="${BOARDS_EXPANSIONS[${name}]}"
-  fi
-  # Process addition or deletion
-  case "${b}" in
-    -*)
-      assoc-rm-keys BOARDS ${name}
-      ;;
-    +*|*)
-      assoc-add-keys BOARDS ${name}
-      ;;
-  esac
-done
+parse-boards BOARDS ${FLAGS_board} || exit $?
 
 if [[ ${#BOARDS[@]} -eq 0 ]]; then
   echo "# Error - No boards selected" >&2
