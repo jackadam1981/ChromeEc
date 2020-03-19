@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "cd37c0ab_8ca10510",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2020-03-19T08:50:45Z",
+      "side": 1,
+      "message": "I see. Thanks!",
+      "parentUuid": "3374929d_7746a747",
+      "revId": "036bd5e94648f5c00baf3b025547071b330f1435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "028d0dc6_345974ef",
         "filename": "board/jacuzzi/board.c",
         "patchSetId": 1
@@ -81,6 +99,30 @@
       "revId": "036bd5e94648f5c00baf3b025547071b330f1435",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e38c1a71_ebaeff2b",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2020-03-19T08:50:45Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "7f56092e_40e41a49",
+      "range": {
+        "startLine": 352,
+        "startChar": 2,
+        "endLine": 352,
+        "endChar": 11
+      },
+      "revId": "036bd5e94648f5c00baf3b025547071b330f1435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
