@@ -60,9 +60,11 @@ static int __tx_char(void *context, int c)
 {
 	int tx_buf_next, tx_buf_new_tail;
 
+#ifndef CONFIG_EXTRACT_PRINTF_STRINGS
 	/* Do newline to CRLF translation */
 	if (c == '\n' && __tx_char(NULL, '\r'))
 		return 1;
+#endif
 
 #if defined CONFIG_POLLING_UART
 	(void) tx_buf_next;
@@ -93,6 +95,11 @@ static int __tx_char(void *context, int c)
 	tx_buf_head = tx_buf_next;
 #endif
 	return 0;
+}
+
+size_t uart_buffer_room(void)
+{
+	return (tx_buf_tail - tx_buf_head - 1) & (CONFIG_UART_TX_BUF_SIZE - 1);
 }
 
 #ifdef CONFIG_UART_TX_DMA

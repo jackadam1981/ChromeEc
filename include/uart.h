@@ -9,8 +9,10 @@
 #define __CROS_EC_UART_H
 
 #include <stdarg.h>  /* For va_list */
+
 #include "common.h"
 #include "gpio.h"
+#include "stddef.h"
 
 /**
  * Initialize the UART module.
@@ -246,5 +248,8 @@ int uart_comx_putc_ok(void);
  * Write a character to the COMx UART interface.
  */
 void uart_comx_putc(int c);
+
+/* Return the size of the free room in the UART TX circular buffer. */
+size_t uart_buffer_room(void);
 
 #endif  /* __CROS_EC_UART_H */
