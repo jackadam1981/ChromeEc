@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e862df97_d0be5065",
+        "filename": "board/nucleo-f072rb_iks01a2/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-03-19T17:40:04Z",
+      "side": 1,
+      "message": "Should we guard the case where both are defined by accident?",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 65
+      },
+      "revId": "ff6008b0c3a89d5af6000ec5fd0df02043a1b376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
