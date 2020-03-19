@@ -23,6 +23,7 @@
 /* We reserve 12KB space for ramcode, h2ram, and immu sections. */
 #define CHIP_RAM_SPACE_RESERVED     0x3000
 #define CONFIG_PROGRAM_MEMORY_BASE  (CHIP_ILM_BASE)
+#define CONFIG_FLASH_PHYSICAL
 
 /****************************************************************************/
 /* Chip IT83202 is used with IT8XXX2 TCPM driver */
