@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3374929d_7746a747",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-19T08:44:32Z",
+      "side": 1,
+      "message": "I check with HW eng to know that we don\u0027t have a guideline for this.\nBecause the requirement of each project is different. So that we have a matrix in EC to adjust it.",
+      "parentUuid": "7709ca6d_16d53971",
+      "revId": "036bd5e94648f5c00baf3b025547071b330f1435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "028d0dc6_345974ef",
         "filename": "board/jacuzzi/board.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-03-19T08:17:19Z",
       "side": 1,
       "message": "Probably another dumb question: do we need rotation matrix for the lid accel?",
+      "range": {
+        "startLine": 352,
+        "startChar": 2,
+        "endLine": 352,
+        "endChar": 11
+      },
+      "revId": "036bd5e94648f5c00baf3b025547071b330f1435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f56092e_40e41a49",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-19T08:44:32Z",
+      "side": 1,
+      "message": "For jacuzzi, no since original sensor output is correct.\nIt may be needed for other boards. ex: nightfury\nhttps://cs.corp.google.com/chromeos_public/src/platform/ec/board/nightfury/board.c?rcl\u003de9d97ff129e049b9a8b809a65a1fbba8b74b5e9c\u0026l\u003d254",
+      "parentUuid": "028d0dc6_345974ef",
       "range": {
         "startLine": 352,
         "startChar": 2,
