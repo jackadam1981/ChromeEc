@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84e47cc5_b1162f54",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-19T11:41:16Z",
+      "side": 1,
+      "message": "I am not sure if need to guard this block into CHIP_FAMILY_IT8XXX2.\n\nBecause:\n- CHIP_ILM_BASE is IT8XXX2 specific.\n- Currently, only IT8XXX2 uses RISC-V.  And use IT8XXX2 \u003d\u003d\u003d use CONFIG_FLASH_PHYSICAL for now.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71fe9a9_c12cc8a2",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-19T11:41:16Z",
+      "side": 1,
+      "message": "Again, to be generic, here should be only guarded by CONFIG_FLASH_PHYSICAL.\n\nHowever, __flash_dma_start is only used by chip/it83xxx/flash.c.\n\nHave no idea whether need to keep both guards.  (and the same for the following similar situations...)",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d70b20b_53380334",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-19T11:41:16Z",
+      "side": 1,
+      "message": "Refer to core/cortex-m/ec.lds.S.\n\nBut weird: these is .rodata, it should be D-ROM?  If I-ROM denotes \"instruction RO\".",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 9
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e8cd33d_4faaf4f9",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-19T11:41:16Z",
+      "side": 1,
+      "message": "ditto, .data should be in D-RAM?",
+      "range": {
+        "startLine": 233,
+        "startChar": 5,
+        "endLine": 233,
+        "endChar": 9
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ecf2d82_361ab099",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-19T11:41:16Z",
+      "side": 1,
+      "message": "Possible overkill, if other chip !\u003d IT8XXX2, but want to have CHIP_ILM_BASE equivalent starting address.\n\nBut, for now, if no such use case, do we need to take care of it?",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 6
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
