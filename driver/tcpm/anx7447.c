@@ -93,7 +93,7 @@ static inline int anx7447_reg_read(int port, int reg, int *val)
 	return rv;
 }
 
-void anx7447_hpd_mode_en(int port)
+void anx7447_hpd_mode_init(int port)
 {
 	int reg, rv;
 
@@ -101,7 +101,11 @@ void anx7447_hpd_mode_en(int port)
 	if (rv)
 		return;
 
+#ifdef CONFIG_USB_PD_TCPM_ANX7447_SOFT_CTRL_IRQ
 	reg |= ANX7447_REG_HPD_MODE;
+#else
+	reg &= ~ANX7447_REG_HPD_MODE;
+#endif
 	anx7447_reg_write(port, ANX7447_REG_HPD_CTRL_0, reg);
 }
 
@@ -483,12 +487,20 @@ void anx7447_tcpc_update_hpd_status(const struct usb_mux *me,
 		if (now < hpd_deadline[port])
 			usleep(hpd_deadline[port] - now);
 
+#ifdef CONFIG_USB_PD_TCPM_ANX7447_SOFT_CTRL_IRQ
 		anx7447_reg_read(port, ANX7447_REG_HPD_CTRL_0, &reg);
 		reg &= ~ANX7447_REG_HPD_OUT;
 		anx7447_reg_write(port, ANX7447_REG_HPD_CTRL_0, reg);
 		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
 		reg |= ANX7447_REG_HPD_OUT;
 		anx7447_reg_write(port, ANX7447_REG_HPD_CTRL_0, reg);
+#else
+		anx7447_reg_read(port, ANX7447_REG_HPD_CTRL_0, &reg);
+		reg &= ~ANX7447_REG_HPD_IRQ0;
+		anx7447_reg_write(port, ANX7447_REG_HPD_CTRL_0, reg);
+		reg |= ANX7447_REG_HPD_IRQ0;
+		anx7447_reg_write(port, ANX7447_REG_HPD_CTRL_0, reg);
+#endif
 	}
 	/* enforce 2-ms delay between HPD pulses */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -510,7 +522,7 @@ static int anx7447_mux_init(const struct usb_mux *me)
 	memset(&mux[port], 0, sizeof(struct anx_usb_mux));
 
 	/* init hpd status */
-	anx7447_hpd_mode_en(port);
+	anx7447_hpd_mode_init(port);
 	anx7447_set_hpd_level(port, 0);
 	anx7447_hpd_output_en(port);
 
