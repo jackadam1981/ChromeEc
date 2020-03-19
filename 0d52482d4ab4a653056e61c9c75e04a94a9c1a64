@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1d28fcdb_5cf18112",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-19T23:48:26Z",
+      "side": 1,
+      "message": "In the original code, I see\n\n \t\tclock_flash_latency(FLASH_ACLK_64MHZ);\n\nwhere FLASH_ACLK_64MHZ is\n\n  /* Flash latency settings for AHB/ACLK at 64 Mhz and Vcore in VOS1 range */\n#define FLASH_ACLK_64MHZ (STM32_FLASH_ACR_WRHIGHFREQ_85MHZ | \\\n\t\t\t  (0 \u003c\u003c STM32_FLASH_ACR_LATENCY_SHIFT))\n\nwhich looks like the comment is correct (using the right flash latency setting for VOS1, but not VOS3)\n\nbut then the code sets to VOS3 like you mentioned:\n\n  \t\tswitch_voltage_scale(STM32_PWR_D3CR_VOS3);\n\nSo that does seem like the old code was wrong.\n\nIf I\u0027m reading the table in https://www.st.com/resource/en/reference_manual/dm00314099-stm32h742-stm32h743-753-and-stm32h750-value-line-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf#page\u003d159 correctly you need to change to 1 WS in clock_flash_latency. You can fix it in a followup CL since that will make the history easier to read (no functional change in this commit). It\u0027s not an optimization though; I think it\u0027s a bug in this case since it is set to zero wait states, but should be set to one at that voltage.",
+      "parentUuid": "6b2f8bde_8404698d",
+      "range": {
+        "startLine": 123,
+        "startChar": 38,
+        "endLine": 123,
+        "endChar": 52
+      },
+      "revId": "0d52482d4ab4a653056e61c9c75e04a94a9c1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21d16996_089ca8fe",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 17
