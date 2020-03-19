@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d9a3a06_256e270e",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-03-19T09:29:17Z",
+      "side": 1,
+      "message": "Should we add the judgement like if (ec_config_get_usb_db() \u003d\u003d DALBOZ_DB_D_OPT1_USBAC) as GPIO_USB_C1_TCPC_INT_ODL is multiplex pin used by NCT3807 PORT 1 and PCAL6408ABSHP.\nThe other pins seems also to have this similar problem like NCT3807 reset pin and PCAL6408ABSHP. PCAL6408ABSHP would be reset if board_reset_pd_mcu is executed.",
+      "revId": "fc32df84c7d52d638a59b8bca99fed83b09d492e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
