@@ -164,6 +164,30 @@
       "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf18004_ab9e1c18",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-19T22:38:15Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "62ff313e_80ec88ee",
+      "range": {
+        "startLine": 275,
+        "startChar": 37,
+        "endLine": 275,
+        "endChar": 56
+      },
+      "revId": "e99a90eadd9e22069c7764ed7ca98a312373a5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

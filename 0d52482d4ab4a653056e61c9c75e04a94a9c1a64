@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b2f8bde_8404698d",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-19T22:38:15Z",
+      "side": 1,
+      "message": "I think I recall someone changed the voltage scaling mode after the original implementation. So, I believe this comment is now wrong.\n\nThings to note:\n\n* On reset VOS3+64MHz is the default scaling+clock. So, following this code path on clock_init is okay.\n* The original code enabled VOS3 with the HSI/64MHz. See line 181 of the original code.\n\n---\n\nI\u0027m not saying I agree with all of these setting or that they are completely correct. This implementation is simply a \"functional equivalent\". We will get to optimizing in a followup CL.\n\nThese types of comparisons are checked using https://crrev.com/c/2096017 .\nI ran the test again. In the following screenshot, you can see the test results from before this change. The right panel is after this change.\nhttps://pasteboard.co/IZSqHpA.png",
+      "parentUuid": "cb26a668_abc0738f",
+      "range": {
+        "startLine": 123,
+        "startChar": 38,
+        "endLine": 123,
+        "endChar": 52
+      },
+      "revId": "0d52482d4ab4a653056e61c9c75e04a94a9c1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21d16996_089ca8fe",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 17
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bf4e7f04_be25b983",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-19T22:38:15Z",
+      "side": 1,
+      "message": "Oops.",
+      "parentUuid": "21d16996_089ca8fe",
+      "range": {
+        "startLine": 170,
+        "startChar": 24,
+        "endLine": 170,
+        "endChar": 26
+      },
+      "revId": "0d52482d4ab4a653056e61c9c75e04a94a9c1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3962a3f_7900f995",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 17
@@ -68,6 +116,30 @@
       "revId": "0d52482d4ab4a653056e61c9c75e04a94a9c1a64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc0448e_597555b3",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-19T22:38:15Z",
+      "side": 1,
+      "message": "Intentionally set to VOS1. I\u0027ll reference the comment below this.",
+      "parentUuid": "d3962a3f_7900f995",
+      "range": {
+        "startLine": 305,
+        "startChar": 7,
+        "endLine": 305,
+        "endChar": 26
+      },
+      "revId": "0d52482d4ab4a653056e61c9c75e04a94a9c1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
