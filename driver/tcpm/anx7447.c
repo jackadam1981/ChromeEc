@@ -93,7 +93,7 @@ static inline int anx7447_reg_read(int port, int reg, int *val)
 	return rv;
 }
 
-void anx7447_hpd_mode_en(int port)
+void anx7447_hpd_mode_init(int port)
 {
 	int reg, rv;
 
@@ -124,6 +124,12 @@ void anx7447_set_hpd_level(int port, int hpd_lvl)
 	rv = anx7447_reg_read(port, ANX7447_REG_HPD_CTRL_0, &reg);
 	if (rv)
 		return;
+
+	/*
+	 * Set ANX7447_REG_HPD_MODE is 1, use ANX7447_REG_HPD_OUT
+	 * to generate HPD event.
+	 */
+	reg |= ANX7447_REG_HPD_MODE;
 
 	if (hpd_lvl)
 		reg |= ANX7447_REG_HPD_OUT;
@@ -484,10 +490,20 @@ void anx7447_tcpc_update_hpd_status(const struct usb_mux *me,
 			usleep(hpd_deadline[port] - now);
 
 		anx7447_reg_read(port, ANX7447_REG_HPD_CTRL_0, &reg);
-		reg &= ~ANX7447_REG_HPD_OUT;
+		/*
+		 * Set ANX7447_REG_HPD_MODE bit as 0, then the TCPC will generate the
+		 * HPD pulse from internal timer (by using ANX7447_REG_HPD_IRQ0)
+		 * instead of using the ANX7447_REG_HPD_OUT to set the HPD IRQ signal.
+		 */
+		reg &= ~ANX7447_REG_HPD_MODE;
+		/*
+		 * For generate hardware HPD IRQ, need clear bit
+		 * ANX7447_REG_HPD_IRQ0 first, then set it. This bit is not
+		 * write clear.
+		 */
+		reg &= ~ANX7447_REG_HPD_IRQ0;
 		anx7447_reg_write(port, ANX7447_REG_HPD_CTRL_0, reg);
-		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
-		reg |= ANX7447_REG_HPD_OUT;
+		reg |= ANX7447_REG_HPD_IRQ0;
 		anx7447_reg_write(port, ANX7447_REG_HPD_CTRL_0, reg);
 	}
 	/* enforce 2-ms delay between HPD pulses */
@@ -510,7 +526,7 @@ static int anx7447_mux_init(const struct usb_mux *me)
 	memset(&mux[port], 0, sizeof(struct anx_usb_mux));
 
 	/* init hpd status */
-	anx7447_hpd_mode_en(port);
+	anx7447_hpd_mode_init(port);
 	anx7447_set_hpd_level(port, 0);
 	anx7447_hpd_output_en(port);
 
