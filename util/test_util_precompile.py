@@ -87,12 +87,12 @@ class TestUtilPrecompile(unittest.TestCase):
 
                 ;""",
 
-                'cmsg1(CC_COMMAND, 0, 1, (uintptr_t)(rv));\n'
+                ' cmsg1(CC_COMMAND, 0, 1, (uintptr_t)(rv));\n'
             ), (
                 ' cprintf(CC_COMMAND, "ec_hash_secdata    : %ph\\n", '
                 '(&(const struct hex_buffer_params)'
                 '{ .buffer = (ec_efs_ctx.hash), .size = (32) }));',
-                'cmsg1(CC_COMMAND, 1, 5, (uintptr_t)((&(const struct '
+                ' cmsg1(CC_COMMAND, 1, 5, (uintptr_t)((&(const struct '
                 'hex_buffer_params)'
                 '{ .buffer = (ec_efs_ctx.hash), .size = (32) })));\n'
             ), (
@@ -101,11 +101,14 @@ class TestUtilPrecompile(unittest.TestCase):
             ), (
                 '  cprints(CC_CCD, "CCD test lab mode %sbled", v '
                 '? "ena" : "disa");',
-                'cmsg1(CC_CCD, 2, 3, (uintptr_t)(v ? "ena" : "disa"));\n'
+                ' cmsg1(CC_CCD, 2, 3, (uintptr_t)(v ? "ena" : "disa"));\n'
             ), (
-                ' cprintf(CC_COMMAND, "%s: deleting var failed!\\n", '
+                '  cprintf(CC_COMMAND, "%s: deleting var failed!\\n", '
                 '__func__);',
-                'cmsg1(CC_COMMAND, 3, 6, (uintptr_t)4);\n'
+                ' cmsg1(CC_COMMAND, 3, 6, (uintptr_t)4);\n'
+            ), (
+                ' return  cprintf(CC_COMMAND, "%s: done!\\n", __func__);',
+                ' return cmsg1(CC_COMMAND, 5, 6, (uintptr_t)4);\n'
             )
         )
         line_processor = util_precompile.LineProcessor()

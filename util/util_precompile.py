@@ -106,7 +106,7 @@ import re
 import sys
 import zlib
 
-PRINTF_RX = r'^[ \t]+cp(rint[fs]|uts)\('
+PRINTF_RX = r'[ \t]+cp(rint[fs]|uts)\('
 PTINTLINE = re.compile(PRINTF_RX)
 HASHLINE = re.compile(r'^# [0-9]+ ')
 TRAILING_SPACE = re.compile(r'\)[ \t]+;[ \t]*$')
@@ -214,6 +214,7 @@ def generate_cmsg_line(fmt, params, fmt_blocks,
 
     # Convert escaped newlines to literals.
     fmt = fmt.replace('\\n', '\n')
+    fmt = fmt.replace('\\t', '\t')
 
     # Either find the string among the previously encountered ones, or add it
     # to the dictionary.
@@ -298,6 +299,16 @@ def process_ccprintf(line, current_function):
     header = HEADER.search(line)
     if not header:
         return line # Must be not a valid ccprintf() invocation.
+
+    # If the line has some text before the function name, say 'return
+    # ccprintf...' save the text in preamble. If not - just set preamble to a
+    # single space.
+    start_ofs = header.span()[0]
+    if start_ofs != 0:
+        preamble = line[:start_ofs] + ' '
+    else:
+        preamble = ' '
+
     # Not strictly necessary, but makes the output look neater, remove spaces
     # after closing paren til newline.
     line = TRAILING_SPACE.sub(');', line)
@@ -306,7 +317,7 @@ def process_ccprintf(line, current_function):
     channel = header.group(1).split('(')[1]
 
     # Drop the 'cprintf(<channel>, ' header.
-    trailer = HEADER.sub('', line)
+    trailer = HEADER.sub('', line[start_ofs:])
 
     # Find the end of the quoted format string.
     quoted = EOS.search(trailer)
@@ -344,7 +355,7 @@ def process_ccprintf(line, current_function):
         sys.stderr.write('Too many parameters: "%s"\n' % line)
         return line
 
-    return generate_cmsg_line(fmt, params, fmt_blocks,
+    return preamble + generate_cmsg_line(fmt, params, fmt_blocks,
                               channel, current_function)
 
 class LineProcessor(object):
@@ -424,6 +435,10 @@ class LineProcessor(object):
         if not PTINTLINE.search(line):
             # If not a print statement - no need to worry, just pass it to the
             # output as is.
+            return line
+        if line.startswith('int'):
+            # This is either the function prototype or the first line of the
+            # function definition, no need to convert either.
             return line
         if ');' not in line:
             # This is a line with a print statement, but it is incomplete,
