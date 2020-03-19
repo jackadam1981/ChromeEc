@@ -8,6 +8,7 @@
 #include "button.h"
 #include "driver/accel_lis2dh.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/charger/sm5803.h"
 #include "driver/sync.h"
 #include "driver/temp_sensor/thermistor.h"
 #include "gpio.h"
@@ -23,19 +24,53 @@
 #include "task.h"
 #include "temp_sensor.h"
 #include "uart.h"
+#include "usb_charge.h"
+#include "usb_pd.h"
 
-static void filler_interrupt_handler(enum gpio_signal s)
+#define CPRINTUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
+
+/* C0 interrupt line shared by BC 1.2 and charger */
+static void usb_c0_interrupt(enum gpio_signal s)
 {
-	/* TODO(b/146557556): placeholder for TCPC, charger, fault protector */
+	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
+	sm5803_interrupt(0);
+}
+
+/* C1 interrupt line shared by BC 1.2, TCPC, and charger */
+static void usb_c1_interrupt(enum gpio_signal s)
+{
+	schedule_deferred_pd_interrupt(1);
+	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
+	sm5803_interrupt(1);
+}
+
+static void c0_ccsbu_ovp_interrupt(enum gpio_signal s)
+{
+	cprints(CC_USBPD, "C0: CC OVP, SBU OVP, or thermal event");
+	/*pd_handle_cc_overvoltage(0);*/
 }
 
 /* Must come after other header files and interrupt handler declarations */
 #include "gpio_list.h"
 
-int extpower_is_present(void)
+void board_init(void)
 {
-	/* TODO(b/146651778): retrieve from chargers */
-	return 0;
+	int on;
+
+	gpio_enable_interrupt(GPIO_USB_C0_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C0_CCSBU_OVP_ODL);
+
+	/* Charger on the MB will be outputting PROCHOT and OD CHG_DET */
+	sm5803_configure_gpio0(CHARGER_PRIMARY, GPIO0_MODE_PROCHOT);
+	sm5803_configure_chg_det_od(CHARGER_PRIMARY, 1);
+
+	/* Charger on the sub-board will be a GPIO */
+	sm5803_configure_gpio0(CHARGER_SECONDARY, GPIO0_MODE_OUTPUT);
+
+	/* Turn on 5V if the system is on, otherwise turn it off */
+	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND);
+	board_power_5v_enable(on);
 }
 
 void board_reset_pd_mcu(void)
@@ -44,6 +79,17 @@ void board_reset_pd_mcu(void)
 	 * Nothing to do.  TCPC C0 is internal, TCPC C1 reset pin is not
 	 * connected to the EC.
 	 */
+}
+
+__override void board_power_5v_enable(int enable)
+{
+	/*
+	 * Motherboard has a GPIO to turn on the 5V regulator, but the sub-board
+	 * sets it through the charger GPIO.
+	 */
+	gpio_set_level(GPIO_EN_PP5000, !!enable);
+	if (sm5803_set_gpio0_level(1, !!enable))
+		CPRINTUSB("Failed to %sable sub rails!", enable ? "en" : "dis");
 }
 
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
