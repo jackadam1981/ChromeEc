@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c378fde_411354eb",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T03:12:55Z",
+      "side": 1,
+      "message": "isn\u0027t there a better non-magic define you could use or create for [1]? here and line 150.",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 20
+      },
+      "revId": "df732467115f1d72791bb76d68052a65b2c50b62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
