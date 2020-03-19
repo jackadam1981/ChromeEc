@@ -115,6 +115,8 @@ parse-boards() {
     [all]="$(make-print-boards)"
     [fp]="dartmonkey bloonchipper nucleo-dartmonkey nucleo-h743zi"
     [stm32]="$(boards-with 'CHIP[[:space:]:=]*stm32')"
+    [stm32f4]="$(boards-with 'CHIP_VARIANT[[:space:]:=]*stm32f4')"
+    [stm32h7]="$(boards-with 'CHIP_VARIANT[[:space:]:=]*stm32h7')"
     [npcx]="$(boards-with 'CHIP[[:space:]:=]*npcx')"
     [mchp]="$(boards-with 'CHIP[[:space:]:=]*mchp')"
     [ish]="$(boards-with 'CHIP[[:space:]:=]*ish')"
