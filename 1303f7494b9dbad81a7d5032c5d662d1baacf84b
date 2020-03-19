@@ -16,6 +16,24 @@
       "revId": "1303f7494b9dbad81a7d5032c5d662d1baacf84b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c626d6a_df171877",
+        "filename": "baseboard/zork/variant_dalboz.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-19T20:12:18Z",
+      "side": 1,
+      "message": "Can\u0027t have both driver/ioexpander/nct38xx.h and driver/tcpm/nct38xx.h so I removed ioexpander_nct38xx.h in crrev.com/c/2110547",
+      "parentUuid": "6221cd9b_d7dbafaf",
+      "revId": "1303f7494b9dbad81a7d5032c5d662d1baacf84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
