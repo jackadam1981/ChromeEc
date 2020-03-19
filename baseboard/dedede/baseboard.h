@@ -56,6 +56,11 @@
 
 	#define CONFIG_CHARGER_SM5803		/* C0 and C1: Charger */
 	#define CONFIG_FPU			/* For charger calculations */
+	#define CONFIG_USB_PD_VBUS_DETECT_CHARGER
+	#define CONFIG_USB_PD_5V_CHARGER_CTRL
+	#define CONFIG_CHARGER_OTG
+
+	#define CONFIG_DAC			/* DAC for PSYS */
 
 	#define CONFIG_USB_PD_TCPM_ITE_ON_CHIP	/* C0: ITE EC TCPC */
 	#define CONFIG_USB_MUX_IT5205		/* C1: ITE Mux */
@@ -64,11 +69,6 @@
 	#define CONFIG_BC12_DETECT_PI3USB9201   /* BC 1.2 */
 
 	#define I2C_PORT_USB_MUX I2C_PORT_USB_C0 /* Required for ITE Mux */
-
-	/* Vbus is controlled by the charger */
-	#define CONFIG_USB_PD_VBUS_DETECT_CHARGER
-	#define CONFIG_USB_PD_5V_CHARGER_CTRL
-	#define CONFIG_CHARGER_OTG
 #else
 #error "Must define a VARIANT_DEDEDE_EC!"
 #endif
