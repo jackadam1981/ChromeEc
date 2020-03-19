@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17b0426b_8c78ad1b",
+        "filename": "util/run_host_test",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-03-19T18:23:02Z",
+      "side": 1,
+      "message": "you\u0027re making me learn about stdlib modules I haven\u0027t had reason to look at!",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "a7adbf1b9a3606204e36281f1bff428290e91886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b507058b_f32a988a",
+        "filename": "util/run_host_test",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-03-19T18:23:02Z",
+      "side": 1,
+      "message": "use time.monotonic(), since you are only measuring an elapsed duration and don\u0027t want to have weird behavior if the system clock changes.",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "a7adbf1b9a3606204e36281f1bff428290e91886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe17904_b09ac07d",
+        "filename": "util/run_host_test",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-03-19T18:23:02Z",
+      "side": 1,
+      "message": "ditto, use time.monotonic()",
+      "range": {
+        "startLine": 63,
+        "startChar": 34,
+        "endLine": 63,
+        "endChar": 45
+      },
+      "revId": "a7adbf1b9a3606204e36281f1bff428290e91886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49610798_0c111137",
+        "filename": "util/run_host_test",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-03-19T18:23:02Z",
+      "side": 1,
+      "message": "Using io.BytesIO would avoid the buffer reallocations here. Not sure how much data these test runs can actually emit.",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "a7adbf1b9a3606204e36281f1bff428290e91886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c91af6_da672394",
+        "filename": "util/run_host_test",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-03-19T18:23:02Z",
+      "side": 1,
+      "message": "you might be the first person to use an F-string in the project 😊\n\nAll of our style guides predate this feature so none of them mention it. The guides do say to use .format() or the `%` operator, but I think that\u0027s meant as advising against mashing together complicated strings with `+`.\n\nI don\u0027t have an opinion on using f-strings but I expect other people will.",
+      "range": {
+        "startLine": 87,
+        "startChar": 55,
+        "endLine": 87,
+        "endChar": 73
+      },
+      "revId": "a7adbf1b9a3606204e36281f1bff428290e91886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dc877d6_f3ad32f7",
+        "filename": "util/run_host_test",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-03-19T18:23:02Z",
+      "side": 1,
+      "message": "ditto, time.monotonic()",
+      "range": {
+        "startLine": 104,
+        "startChar": 15,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "a7adbf1b9a3606204e36281f1bff428290e91886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab2f302_3f3db71c",
+        "filename": "util/run_host_test",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-03-19T18:23:02Z",
+      "side": 1,
+      "message": "ditto, time.monotonic()",
+      "range": {
+        "startLine": 106,
+        "startChar": 17,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "a7adbf1b9a3606204e36281f1bff428290e91886",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
