@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7709ca6d_16d53971",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2020-03-19T08:17:19Z",
+      "side": 1,
+      "message": "A probably dumb question: when we meet problems like this, do we always fix it by adjusting the rotation matrix? Do we have any guidelines for how the IMU chip should be mounted?",
+      "revId": "036bd5e94648f5c00baf3b025547071b330f1435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "028d0dc6_345974ef",
+        "filename": "board/jacuzzi/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2020-03-19T08:17:19Z",
+      "side": 1,
+      "message": "Probably another dumb question: do we need rotation matrix for the lid accel?",
+      "range": {
+        "startLine": 352,
+        "startChar": 2,
+        "endLine": 352,
+        "endChar": 11
+      },
+      "revId": "036bd5e94648f5c00baf3b025547071b330f1435",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
