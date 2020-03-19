@@ -1,4 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-"
 # Copyright 2020 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -95,7 +96,6 @@ exit.
 As a result, when make is running this script is invoked as many times as
 there are .E files, but only one invocation results in processing, the rest
 just check that the newer blob is already there and exit.
-
 """
 
 import argparse
@@ -130,7 +130,7 @@ PARAM_FUNC_NAME = 6
 PARAM_TIMESTAMP = 7
 
 def tokenize(params):
-    '''Split C argument string into arguments (tokens).
+    """Split C argument string into arguments (tokens).
 
     Arguments within C string are comma separated, potentially include quoted
     strings, which in turn could include escaped quotes and commas. There
@@ -139,14 +139,13 @@ def tokenize(params):
     Only commas found outside quoted strings and parens should be considered
     token separators.
 
-
     Args:
-      params: A string, arguments given to say a C printf() invocation.
+        params: A string, arguments given to say a C printf() invocation.
 
     Returns:
-      A list of stings, parameters retrieved from 'params' with white space
-      stripped.
-    '''
+        A list of stings, parameters retrieved from 'params' with white space
+        stripped.
+    """
 
     if ',' not in params:
         return [params.strip(),]
@@ -183,24 +182,25 @@ def tokenize(params):
 
 def generate_cmsg_line(fmt, params, fmt_blocks,
                        channel, current_function):
-    '''Given artifacts of a C line vararg line generate a cmsgX invocation line.
+    """Given artifacts of a C line vararg line generate a cmsgX invocation line.
 
     See details in the file docstring.
 
     Args:
-      fmt - A string, the format string to be removed from the C source code.
-      params - A list of strings, the arguments of the fmt string from the
+        fmt: A string, the format string to be removed from the C source code.
+        params: A list of strings, the arguments of the fmt string from the
                C source code.
-      fmt_blocks - A list of strings, the result of splitting the fmt
+        fmt_blocks: A list of strings, the result of splitting the fmt
               string at '%' characters. Could be obtained locally, but is
               available from the caller.
-      channel - A string, name of the console channel the message is sent on.
-      current_function - A string, name of the C function this line is in.
+        channel: A string, name of the console channel the message is sent on.
+        current_function: A string, name of the C function this line is in.
 
     Returns:
-      The cmsgX() string to replace the current source code string.
-      Also adds the format string into the dictionary, if it is not yet there.
-    '''
+        The cmsgX() string to replace the current source code string.
+        Also adds the format string into the dictionary, if it is not yet
+        there.
+    """
     global FMT_DICT
 
     # Since all parameters passed to cmsgX() are cast to (uintptr_t), uint64_t
@@ -288,8 +288,8 @@ def process_ccprintf(line, current_function):
     elements into the matching cmstX() invocation.
 
     Args:
-      line: A string, the source line to convert.
-      current_function: A string, the name of the C function 'l' comes from.
+        line: A string, the source line to convert.
+        current_function: A string, the name of the C function 'l' comes from.
 
     Retunrs:
      The generated cmsgX() line.
@@ -316,7 +316,7 @@ def process_ccprintf(line, current_function):
             return line
         # This is a cputs() invocation with indirect string. Let's fix it by
         # converting (param) into ("%s", param).
-        fmt = "%s"
+        fmt = '%s'
         params = [trailer.rstrip(';')[:-1],] # Strip ')[;]'.
     else:
         # Extract the fmt string, eliminate possible concatenations and drop
@@ -341,14 +341,14 @@ def process_ccprintf(line, current_function):
             return line
 
     if len(params) > 8:
-        sys.stderr.write("Too many parameters: \"%s\"\n" % line)
+        sys.stderr.write('Too many parameters: "%s"\n' % line)
         return line
 
     return generate_cmsg_line(fmt, params, fmt_blocks,
                               channel, current_function)
 
 class LineProcessor(object):
-    '''Process multiline source code strings.
+    """Process multiline source code strings.
 
     The preprocessor output often generates C source code lines split in
     multiple preprocessor output lines, in case there are macros in the
@@ -361,11 +361,11 @@ class LineProcessor(object):
     This class allows to keep track of multiple preprocessor output lines.
 
     Attributes:
-
-     partial_line: A string, concatenated preprocessor output lines
+        partial_line: A string, concatenated preprocessor output lines
            representing a single printf() like invocation statement.
-     current_function: A string, name of the function current lines belong to.
-    '''
+        current_function: A string, name of the function current lines belong
+           to.
+    """
 
     def __init__(self):
         self.partial_line = ''
@@ -391,12 +391,12 @@ class LineProcessor(object):
           the parser.
 
         Args:
-          line - A string, a preprocessor output line.
+            line: A string, a preprocessor output line.
 
         Returns:
-          The input line if further processing is not required, or None, if
-          input line is not yet a full source code line, or the cmsgX()
-          invocation line, the result of converting a print statement line.
+            The input line if further processing is not required, or None, if
+            input line is not yet a full source code line, or the cmsgX()
+            invocation line, the result of converting a print statement line.
         """
         if FUNCTION.match(line):
             # If this line looks like a first function definition line -
@@ -440,8 +440,8 @@ def preobj_process(name, ext):
     statements replaced with cmsgX() invocations.
 
     Args:
-      name: A string, name of the preprocessor output file to process.
-      ext: A string, the extension to use for the generated file.
+        name: A string, name of the preprocessor output file to process.
+        ext: A string, the extension to use for the generated file.
     """
     line_processor = LineProcessor()
     output = os.path.splitext(name)[0] + '.' + ext
@@ -471,7 +471,7 @@ def generate_blob():
     Then serialize and compress the list.
 
     Returns:
-      A byte array, the compressed list of format lines.
+        A byte array, the compressed list of format lines.
     """
 
     strings = [''] * len(FMT_DICT)
