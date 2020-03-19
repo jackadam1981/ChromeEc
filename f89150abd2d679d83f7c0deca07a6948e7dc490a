@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8e399b4_82f81e3c",
+        "filename": "board/nucleo-f412zg/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-19T00:31:52Z",
+      "side": 1,
+      "message": "Yes, the flash on the F412 is a bit odd.\n* We want to use the minimal amount of flash space for RO (a single 128k page).\n* We need min 2 flash pages for rollback\n\n\nUpdate: I tried to make the RO region look a bit smaller in the flash drawing.",
+      "parentUuid": "3ae802ee_21f1bcd9",
+      "range": {
+        "startLine": 80,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 74
+      },
+      "revId": "f89150abd2d679d83f7c0deca07a6948e7dc490a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78be1d33_ce796df6",
         "filename": "board/nucleo-f412zg/board.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "62456d1e_8de186b4",
+        "filename": "board/nucleo-f412zg/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-19T00:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78be1d33_ce796df6",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 37
+      },
+      "revId": "f89150abd2d679d83f7c0deca07a6948e7dc490a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dde2df9f_affe82f6",
         "filename": "board/nucleo-f412zg/board.h",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "f89150abd2d679d83f7c0deca07a6948e7dc490a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2552283_df8a3b97",
+        "filename": "board/nucleo-f412zg/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-19T00:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dde2df9f_affe82f6",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 7
+      },
+      "revId": "f89150abd2d679d83f7c0deca07a6948e7dc490a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
