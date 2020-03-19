@@ -22,6 +22,30 @@
       "revId": "0529c2849259ea23c7abbbe3b28e467eae9bb2ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1dc178_7a9fcfdb",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-03-19T01:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fbbdaea_3356a255",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 30
+      },
+      "revId": "0529c2849259ea23c7abbbe3b28e467eae9bb2ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
