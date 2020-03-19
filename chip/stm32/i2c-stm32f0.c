@@ -49,13 +49,6 @@ void i2c_set_timeout(int port, uint32_t timeout)
 	pdata[port].timeout_us = timeout ? timeout : I2C_TX_TIMEOUT_MASTER;
 }
 
-/* timingr register values for supported input clks / i2c clk rates */
-static const uint32_t busyloop_us[I2C_FREQ_COUNT] = {
-	[I2C_FREQ_1000KHZ] = 16, /* Enough for 2 bytes */
-	[I2C_FREQ_400KHZ] = 40,  /* Enough for 2 bytes */
-	[I2C_FREQ_100KHZ] = 0,   /* No busy looping at 100kHz (bus is slow) */
-};
-
 /**
  * Wait for ISR register to contain the specified mask.
  *
@@ -80,13 +73,6 @@ static int wait_isr(int port, int mask)
 			return EC_SUCCESS;
 
 		delta = __hw_clock_source_read() - start;
-
-		/**
-		 * Depending on the bus speed, busy loop for a while before
-		 * sleeping and letting other things run.
-		 */
-		if (delta >= busyloop_us[pdata[port].freq])
-			usleep(100);
 	} while (delta < pdata[port].timeout_us);
 
 	return EC_ERROR_TIMEOUT;
