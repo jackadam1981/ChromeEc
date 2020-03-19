@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6221cd9b_d7dbafaf",
+        "filename": "baseboard/zork/variant_dalboz.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T03:06:54Z",
+      "side": 1,
+      "message": "nit: can you include this as \"driver/ioexpander/nct38xx.h\" and rename the header and driver to not have ioexpander in it?",
+      "revId": "1303f7494b9dbad81a7d5032c5d662d1baacf84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
