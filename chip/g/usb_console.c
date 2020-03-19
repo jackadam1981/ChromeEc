@@ -21,15 +21,19 @@
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 #define USB_CONSOLE_TIMEOUT_US (30 * MSEC)
 
-static int last_tx_ok = 1;
+static bool last_tx_ok = 1;
 
-static int is_reset;
+static bool is_reset;
 
+#if defined(CONFIG_USB_CONSOLE_DEFAULT_DISABLED)
+static bool is_enabled;
+#else
 /*
  * Start enabled, so we can queue early debug output before the board gets
  * around to calling usb_console_enable().
  */
-static int is_enabled = 1;
+static bool is_enabled = 1;
+#endif
 
 /*
  * But start read-only, so we don't accept console input until we explicitly
