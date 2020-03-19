@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f307459_e2307d1b",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T19:57:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a6ea4259_90281b9c",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cead4faf_f5eaed13",
         "filename": "baseboard/zork/baseboard.h",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecd88ce5_59e81d84",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cead4faf_f5eaed13",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 26
+      },
+      "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "74b73f53_8dca5ae3",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd6f692_8545367d",
+      "range": {
+        "startLine": 134,
+        "startChar": 9,
+        "endLine": 134,
+        "endChar": 28
+      },
+      "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9293d2b_5690579c",
         "filename": "baseboard/zork/usb_pd_policy.c",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ff75c1_acba9bb1",
+        "filename": "baseboard/zork/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9293d2b_5690579c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 52
+      },
+      "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3b99bb74_30bfef40",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T19:57:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "619283ae_af9c1752",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 0
+      },
+      "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ae1e8e7_d32489b3",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 8
@@ -137,6 +257,30 @@
       "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "423e9e5b_71824a1b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ae1e8e7_d32489b3",
+      "range": {
+        "startLine": 513,
+        "startChar": 36,
+        "endLine": 513,
+        "endChar": 47
+      },
+      "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "46e2b9ee_960febcf",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e847712_0ba97024",
+      "range": {
+        "startLine": 514,
+        "startChar": 21,
+        "endLine": 514,
+        "endChar": 36
+      },
+      "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46a89124_e465d5b0",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 8
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "e787650b_8fa2ccd2",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T19:57:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46a89124_e465d5b0",
+      "range": {
+        "startLine": 515,
+        "startChar": 21,
+        "endLine": 515,
+        "endChar": 36
+      },
+      "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be87b155_3c7ca08d",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 8
@@ -206,6 +398,30 @@
       "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9fc3d2a_8335afcd",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-19T19:57:24Z",
+      "side": 1,
+      "message": "Yes.  NCT3807 has its own drp_toggle because it does not play well with the set_role_ctrl here. I need to unblock zork and this is what I needed but this may be something that other TCPCI callers may want to do as well and then it may become the standard way of doing it.",
+      "parentUuid": "be87b155_3c7ca08d",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 62
+      },
+      "revId": "de17b2ac1deeafb0b7a794a1d8d915bbdc2e28fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
