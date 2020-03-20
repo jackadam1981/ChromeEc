@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "22a82fbe_401273bb",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-20T02:48:17Z",
+      "side": 1,
+      "message": "I feel ILM is like a lot external storage on other chips.\nCould we use CONFIG_EXTERNAL_STORAGE instead? e.g. https://chromium.googlesource.com/chromiumos/platform/ec/+/master/core/cortex-m/ec.lds.S#55",
+      "parentUuid": "2dddac35_fc344dd7",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d71fe9a9_c12cc8a2",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
