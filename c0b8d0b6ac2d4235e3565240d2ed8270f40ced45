@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c917627_4992a20f",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-20T04:34:18Z",
+      "side": 1,
+      "message": "This check is better be added in stdbool.h",
+      "parentUuid": "708c08d3_e7d1f8b7",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "c0b8d0b6ac2d4235e3565240d2ed8270f40ced45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7baddb22_7defe06f",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-20T03:39:04Z",
       "side": 1,
       "message": "FYI, cr50 uses common/usb_console_stream.c, not this file. I don\u0027t mind having this change unconditionally as long as cr51 and cr53 agrees. Then we don\u0027t need to define CONFIG_USB_CONSOLE_DEFAULT_DISABLED.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "c0b8d0b6ac2d4235e3565240d2ed8270f40ced45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3a84b0_6e2d1582",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-20T04:34:18Z",
+      "side": 1,
+      "message": "I think we still want the flag, if we ever return to use of this console code for Cr50 for whatever reason.",
+      "parentUuid": "7baddb22_7defe06f",
       "range": {
         "startLine": 32,
         "startChar": 0,

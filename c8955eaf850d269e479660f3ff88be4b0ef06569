@@ -110,6 +110,30 @@
       "revId": "c8955eaf850d269e479660f3ff88be4b0ef06569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5979bcb8_16e82646",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-20T04:34:18Z",
+      "side": 1,
+      "message": "please open a bug for this and mention bug number in the patch description \n\nBUG\u003d\n\nclause",
+      "parentUuid": "c9a5582b_95513466",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "c8955eaf850d269e479660f3ff88be4b0ef06569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
