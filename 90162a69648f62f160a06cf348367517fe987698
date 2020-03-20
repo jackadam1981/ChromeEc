@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0de1a9e9_dd2f4bc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-03-20T04:02:27Z",
+      "side": 1,
+      "message": "Why is resetting (and getting a chance to switch to RW) important for batteryless systems only?\n\nIt seems like the EFS-failed case can leave any machine in RO with the AP on, but that software sync involves an explicit EC reset. This seems to mean the relevant condition is enabling PD in RO for batteryless and keyboardless systems- this would mean that this is required when being in RO implies NO_BOOT, but that doesn\u0027t seem to happen either so I\u0027m not sure what\u0027s going on.\n\nThis fix makes sense for the problem as described here, but I don\u0027t understand the conditions that can require needing to give the EC another chance to switch to RW or why they don\u0027t appear in systems that have batteries.",
+      "revId": "90162a69648f62f160a06cf348367517fe987698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
