@@ -301,8 +301,6 @@ data_loop:
         /* store the content of t5 (ra after reset) into "ec_reset_lp" */
         la t0, ec_reset_lp
         sw t5, 0(t0)
-        /* clear BRAM if it is not valid */
-        jal chip_bram_valid
         /* Jump to C routine */
         jal main
         /* That should not return.  If it does, loop forever. */

@@ -115,16 +115,6 @@ int system_is_reboot_warm(void)
 		return 1;
 }
 
-void chip_pre_init(void)
-{
-	/* bit4, enable debug mode through SMBus */
-	IT83XX_SMB_SLVISELR &= ~BIT(4);
-
-	if (IS_ENABLED(IT83XX_ETWD_HW_RESET_SUPPORT))
-		/* System triggers a soft reset by default (command: reboot). */
-		IT83XX_GCTRL_ETWDUARTCR &= ~ETWD_HW_RST_EN;
-}
-
 #define BRAM_VALID_MAGIC        0x4252414D  /* "BRAM" */
 #define BRAM_VALID_MAGIC_FIELD0 (BRAM_VALID_MAGIC & 0xff)
 #define BRAM_VALID_MAGIC_FIELD1 ((BRAM_VALID_MAGIC >> 8) & 0xff)
@@ -150,6 +140,19 @@ void chip_bram_valid(void)
 		BRAM_VALID_FLAGS2 = BRAM_VALID_MAGIC_FIELD2;
 		BRAM_VALID_FLAGS3 = BRAM_VALID_MAGIC_FIELD3;
 	}
+}
+
+void chip_pre_init(void)
+{
+	/* clear BRAM if it is not valid */
+	chip_bram_valid();
+
+	/* bit4, enable debug mode through SMBus */
+	IT83XX_SMB_SLVISELR &= ~BIT(4);
+
+	if (IS_ENABLED(IT83XX_ETWD_HW_RESET_SUPPORT))
+		/* System triggers a soft reset by default (command: reboot). */
+		IT83XX_GCTRL_ETWDUARTCR &= ~ETWD_HW_RST_EN;
 }
 
 void system_pre_init(void)
