@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe7051f6_845503c7",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-20T20:14:59Z",
+      "side": 1,
+      "message": "nit: should be able to convert this to\nif (!IS_ENABLED(IT8..))",
+      "range": {
+        "startLine": 462,
+        "startChar": 8,
+        "endLine": 462,
+        "endChar": 51
+      },
+      "revId": "f7d94dd75e45f222a2d345da1861c0b2b612f9d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
