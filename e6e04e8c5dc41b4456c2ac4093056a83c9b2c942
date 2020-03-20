@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8bac9d90_3d3e9767",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-20T18:21:52Z",
+      "side": 1,
+      "message": "Is board_get_max_tbt_speed supposed to be declared __overridable in two different files?  generally the prototype is __override_proto, the default definition is __overridable and a board specific change away from the default is __override",
+      "revId": "e6e04e8c5dc41b4456c2ac4093056a83c9b2c942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a60cabc0_0fcafb91",
         "filename": "include/usb_pd.h",
         "patchSetId": 6
