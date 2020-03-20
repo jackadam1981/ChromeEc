@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e1d99686_5cb1e368",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-20T01:53:04Z",
+      "side": 1,
+      "message": "I\u0027ll use CONFIG_FLASH_PHYSICAL to guard this part. Most chips have flash, and they\u0027ll need __flash_dma_start.",
+      "parentUuid": "d71fe9a9_c12cc8a2",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d70b20b_53380334",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2020-03-19T11:41:16Z",
       "side": 1,
       "message": "Refer to core/cortex-m/ec.lds.S.\n\nBut weird: these is .rodata, it should be D-ROM?  If I-ROM denotes \"instruction RO\".",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 9
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cf9f7d2_29634f9b",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-20T01:53:04Z",
+      "side": 1,
+      "message": "I stands for internal here. So, I think this is fine.\n\nOn mt_scp, we save both intruction and data on SRAM (i.e. IRAM) at first.\nBy the need of protecting the SCP firmware, we separate the instruction, rodata and data to IROM and IRAM respectively. And, we then use MPU to protect the IROM region. That\u0027s how the name comes from.",
+      "parentUuid": "7d70b20b_53380334",
       "range": {
         "startLine": 219,
         "startChar": 5,
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d59d72f0_0d2c5583",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-20T01:53:04Z",
+      "side": 1,
+      "message": "no, it\u0027s IRAM.",
+      "parentUuid": "6e8cd33d_4faaf4f9",
+      "range": {
+        "startLine": 233,
+        "startChar": 5,
+        "endLine": 233,
+        "endChar": 9
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ecf2d82_361ab099",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
@@ -129,6 +201,30 @@
       "writtenOn": "2020-03-19T11:41:16Z",
       "side": 1,
       "message": "Possible overkill, if other chip !\u003d IT8XXX2, but want to have CHIP_ILM_BASE equivalent starting address.\n\nBut, for now, if no such use case, do we need to take care of it?",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 6
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1b9e21_481ef8f1",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-20T01:53:04Z",
+      "side": 1,
+      "message": "For simplicity in the linker script, we could just define CHIP_ILM_BASE \u003d 0",
+      "parentUuid": "7ecf2d82_361ab099",
       "range": {
         "startLine": 280,
         "startChar": 0,
