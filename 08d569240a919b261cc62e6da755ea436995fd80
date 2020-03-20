@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a3cd937_739a663c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2627,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T16:42:33Z",
+      "side": 1,
+      "message": "nit: looks like prl_send_ctrl_msg() takes care of the length as well",
+      "range": {
+        "startLine": 2627,
+        "startChar": 1,
+        "endLine": 2627,
+        "endChar": 22
+      },
+      "revId": "08d569240a919b261cc62e6da755ea436995fd80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
