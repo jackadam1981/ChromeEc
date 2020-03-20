@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b54e5c7_a0eea355",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T21:08:51Z",
+      "side": 1,
+      "message": "I think it\u0027s definitely worthwhile to centralize the storage of the cable response and partner response, but the rest of these are very, very tied to the structure of the v1 stack. \n\nFor common code, focus on moving functions which are generically applicable.",
+      "range": {
+        "startLine": 1106,
+        "startChar": 1,
+        "endLine": 1106,
+        "endChar": 39
+      },
+      "revId": "216f0a4a64a7636e0f6f7a581601c0a161f154b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25358832_4ea51640",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3825,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T21:08:51Z",
+      "side": 1,
+      "message": "Remove.  Any communication of the message type should be done through function parameters, not global flag checks.",
+      "range": {
+        "startLine": 3809,
+        "startChar": 0,
+        "endLine": 3825,
+        "endChar": 1
+      },
+      "revId": "216f0a4a64a7636e0f6f7a581601c0a161f154b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52bbe64e_a53eb948",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3862,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T21:08:51Z",
+      "side": 1,
+      "message": "Long-term, this will not be the state which handles identity processing",
+      "range": {
+        "startLine": 3858,
+        "startChar": 0,
+        "endLine": 3862,
+        "endChar": 58
+      },
+      "revId": "216f0a4a64a7636e0f6f7a581601c0a161f154b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
