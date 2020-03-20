@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c06b78bc_f8c7ba5a",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T21:02:06Z",
+      "side": 1,
+      "message": "Keep the flags references to v1 for now.  We\u0027ll want to centralize the determination of which mode to enter so there\u0027s a single function or set of functions that can be referenced to know what mode(s) we\u0027re allowed to enter.",
+      "range": {
+        "startLine": 518,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 44
+      },
+      "revId": "b1434e3ba40d19dfbcbfb57bf76400cc5be271e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff50e73_4c3e7837",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T21:02:06Z",
+      "side": 1,
+      "message": "Keep in v1 for now",
+      "revId": "b1434e3ba40d19dfbcbfb57bf76400cc5be271e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0bebaa0_0d743d68",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2939,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T21:02:06Z",
+      "side": 1,
+      "message": "Functional changes should either be mentioned in the CL description or pulled into a separate CL",
+      "range": {
+        "startLine": 2938,
+        "startChar": 0,
+        "endLine": 2939,
+        "endChar": 9
+      },
+      "revId": "b1434e3ba40d19dfbcbfb57bf76400cc5be271e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
