@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d2bc76e_a1af7e97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-20T00:15:36Z",
+      "side": 1,
+      "message": "BUG\u003d\nTEST\u003d\n\nare needed, repo upload should have mentioned that...",
+      "revId": "c8955eaf850d269e479660f3ff88be4b0ef06569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2deecb4_8b947d22",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-20T00:15:36Z",
+      "side": 1,
+      "message": "what is size of bool? If you want to change this, please use uint8_t to be sure.",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "c8955eaf850d269e479660f3ff88be4b0ef06569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f12c37_2e3f3a8b",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-20T00:15:36Z",
+      "side": 1,
+      "message": "so, how are you going to enable it?\n\nAlso, do you want to figure out what\u0027s wrong, maybe open a bug for this and mention it in the patch description?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "c8955eaf850d269e479660f3ff88be4b0ef06569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
