@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d5fd0054_80dee4c9",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-20T01:39:50Z",
+      "side": 1,
+      "message": "Sorry, poor choice of words. Yes, I think you\u0027re right.\nAs a sanity check, I confirmed that 0 is definitely not the default flash ACR (after reset). It seems to be 0x37, which aligns with the ref manual (7 WS).\n\nAs mentioned, I will be doing a reconfigure step/CL, that addresses this and other technical clock bugs (like over clocking parts of the interconnect matrix). Plus, trying to bring the core clock up to 480MHz.",
+      "parentUuid": "1d28fcdb_5cf18112",
+      "range": {
+        "startLine": 123,
+        "startChar": 38,
+        "endLine": 123,
+        "endChar": 52
+      },
+      "revId": "0d52482d4ab4a653056e61c9c75e04a94a9c1a64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21d16996_089ca8fe",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 17
