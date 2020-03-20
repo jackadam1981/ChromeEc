@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cb9c7ae_818f000e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-20T05:37:27Z",
+      "side": 1,
+      "message": "this should be BUG\u003db:...\n\nYou really should be using repo upload, it is a pain to cherry pick these patches into branches and see all upload failures...",
+      "revId": "6bfbe16fc4b27d1c096b0b7f789ebb94edaf5a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0ce4066_a58807d1",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-20T05:37:27Z",
+      "side": 1,
+      "message": "let\u0027s just drop it from here, you\u0027re right, it does not belong in this file.",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "6bfbe16fc4b27d1c096b0b7f789ebb94edaf5a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
