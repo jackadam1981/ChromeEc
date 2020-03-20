@@ -46,6 +46,30 @@
       "revId": "cc3c9a8e6e65d9202666f6b4104f73c004700b27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b38ab59b_f394de6c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 4765,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-03-20T19:22:30Z",
+      "side": 1,
+      "message": "Maybe adding some comment that these \"common\" states don\u0027t include the \"prs_snk_src\" case. Otherwise, people may mis-think the \"common\" means all cases.",
+      "parentUuid": "45f359bf_1dfa947c",
+      "range": {
+        "startLine": 4763,
+        "startChar": 0,
+        "endLine": 4765,
+        "endChar": 0
+      },
+      "revId": "cc3c9a8e6e65d9202666f6b4104f73c004700b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
