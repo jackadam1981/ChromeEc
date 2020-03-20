@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc0b0e91_35055962",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-20T22:00:38Z",
+      "side": 1,
+      "message": "I think here, we might need to read what the temp is in order to decide whether to throttle or stop throttling. \"Field set to 1 if internal temperature sensor crosses upper or lower threshold\". Sorry for not catching this earlier.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 0
+      },
+      "revId": "9bf23b4f52c3028dd9c5bfce09b7497b60e7b13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
