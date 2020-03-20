@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bc9d8637_4d8c50d2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-20T18:26:47Z",
+      "side": 1,
+      "message": "Good catch! Let me delete the function from here",
+      "parentUuid": "8bac9d90_3d3e9767",
+      "revId": "e6e04e8c5dc41b4456c2ac4093056a83c9b2c942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a60cabc0_0fcafb91",
         "filename": "include/usb_pd.h",
         "patchSetId": 6
