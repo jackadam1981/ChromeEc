@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e5cc0e4_be01c097",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4047,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2020-03-20T02:57:17Z",
+      "side": 1,
+      "message": "\u003e \"explict\" is a possible misspelling of \"explicit\".\n\nPlease fix.",
+      "parentUuid": "6945be8c_25ad1ff5",
+      "range": {
+        "startLine": 4047,
+        "startChar": 11,
+        "endLine": 4047,
+        "endChar": 18
+      },
+      "revId": "0323a09c7cce51b1fbf4765d2050a74fa72ffd6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

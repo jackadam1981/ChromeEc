@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d5ab18ef_d6bcf761",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2020-03-20T02:57:17Z",
+      "side": 1,
+      "message": "That\u0027s kinda weird? \u0027bool\u0027 captures precisely what it is for here. How big that allocation is, is a compiler setting somewhere?\nMaking it explicit uint8_t deprives compiler from being smarter still about allocation.\n\nWe all agree the existing \u0027int\u0027 is a waste, right? And I see \u0027bool\u0027 used in other code here.",
+      "parentUuid": "d2deecb4_8b947d22",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "c8955eaf850d269e479660f3ff88be4b0ef06569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5f12c37_2e3f3a8b",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 2
@@ -53,6 +77,30 @@
       "writtenOn": "2020-03-20T00:15:36Z",
       "side": 1,
       "message": "so, how are you going to enable it?\n\nAlso, do you want to figure out what\u0027s wrong, maybe open a bug for this and mention it in the patch description?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 5
+      },
+      "revId": "c8955eaf850d269e479660f3ff88be4b0ef06569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a5582b_95513466",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2020-03-20T02:57:17Z",
+      "side": 1,
+      "message": "An application call to usb_console_enable(), in a hook or even later. Already existing requirement to get the is_readonly to reset.\n\nI\u0027m remote on cros, so figuring out what exactly went wrong other than observing reboots is not feasible at the moment.. on a hunch I deemed this the culprit and it appears it was.",
+      "parentUuid": "e5f12c37_2e3f3a8b",
       "range": {
         "startLine": 30,
         "startChar": 0,
