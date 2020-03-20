@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78236ef6_f279e530",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T21:10:28Z",
+      "side": 1,
+      "message": "This is not a good candidate for moving to shared code as it\u0027s very tied to the current v1 implementation",
+      "range": {
+        "startLine": 1198,
+        "startChar": 0,
+        "endLine": 1214,
+        "endChar": 42
+      },
+      "revId": "10b3a7fe714afb5bd7555829a0d0611ab553558c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
