@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "473c6a0c_0c4e8134",
+        "filename": "common/blink.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-20T19:26:36Z",
+      "side": 1,
+      "message": "The nucleo boards have hardware debounce.\n\nI wanted to keep this simple for new devs, but I guess some preemptive SW debounce won\u0027t look too complicated.",
+      "parentUuid": "0086094f_4292f206",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "0229d2fc33c76f4d7dd533a55ba35a5923ab35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d646a90_d4ef5567",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "0229d2fc33c76f4d7dd533a55ba35a5923ab35c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cabb6629_b2c8e785",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-20T19:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d646a90_d4ef5567",
+      "range": {
+        "startLine": 1183,
+        "startChar": 2,
+        "endLine": 1184,
+        "endChar": 7
+      },
+      "revId": "0229d2fc33c76f4d7dd533a55ba35a5923ab35c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
