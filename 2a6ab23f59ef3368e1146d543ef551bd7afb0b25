@@ -46,6 +46,30 @@
       "revId": "2a6ab23f59ef3368e1146d543ef551bd7afb0b25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3882b15_b25d5adb",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-20T23:14:15Z",
+      "side": 1,
+      "message": "Looks like it works if you do the following:\n\n diff --git a/util/compare_build.sh b/util/compare_build.sh\nindex 56f7e0b0b..201d7c96d 100755\n--- a/util/compare_build.sh\n+++ b/util/compare_build.sh\n@@ -19,6 +19,7 @@ DEFINE_string \u0027jobs\u0027 \"\" \u0027Number of jobs to pass to make\u0027 \u0027j\u0027\n # If you don\u0027t have more than 32GB, you probably don\u0027t want to run in parallel.\n DEFINE_string \u0027parallel\u0027 \"yes\" \\\n                 \u0027Make both refs at the same time (extreme mem usage)\u0027 \u0027p\u0027\n+DEFINE_boolean \u0027booltest\u0027 \"${FLAGS_TRUE}\" \u0027testing bool\u0027\n \n # Process commandline flags.\n FLAGS \"${@}\" || exit 1\n@@ -53,6 +54,14 @@ parse_bool() {\n   esac\n }\n \n+if [[ \"${FLAGS_booltest}\" \u003d\u003d \"${FLAGS_TRUE}\" ]]; then\n+  echo \"booltest true\"\n+else\n+  echo \"booltest false\"\n+fi\n+\n+exit 0\n+\n KEEP_TEMP_DIR\u003d\"$(parse_bool \"${FLAGS_keep}\")\"\n PARALLEL\u003d\"$(parse_bool \"${FLAGS_parallel}\")\"\n\n\n\nThe output:\n\n  ./util/compare_build.sh --booltest\n  booltest true\n \n  ./util/compare_build.sh --nobooltest\n  booltest false",
+      "parentUuid": "e4ec2eb3_3c335812",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "2a6ab23f59ef3368e1146d543ef551bd7afb0b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
