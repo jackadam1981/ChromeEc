@@ -36,6 +36,7 @@ __startup:
 __irq:
         j __irq_isr     /* interrupts / exceptions */
 
+#ifdef CHIP_FAMILY_IT8XXX2
 /*
  * E-flash signature used to enable specific function after power-on reset.
  * (HW mechanism)
@@ -69,6 +70,7 @@ eflash_sig:
 .byte 0xB4 /* flag of signature */
 .byte 0x85, 0x12, 0x5A, 0x5A, 0xAA, 0xAA, 0x55, 0x55
 /* flags: internal oscillator + implicit location */
+#endif /* CHIP_FAMILY_IT8XXX2 */
 
 .align 2
 __ec_intc:
@@ -301,8 +303,10 @@ data_loop:
         /* store the content of t5 (ra after reset) into "ec_reset_lp" */
         la t0, ec_reset_lp
         sw t5, 0(t0)
-        /* clear BRAM if it is not valid */
-        jal chip_bram_valid
+#ifdef CHIP_FAMILY_IT8XXX2
+	/* clear BRAM if it is not valid */
+	jal chip_bram_valid
+#endif
         /* Jump to C routine */
         jal main
         /* That should not return.  If it does, loop forever. */
