@@ -22,6 +22,75 @@
       "revId": "5d45d16397b2282315046359b0da10e58ba7a5fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f90f80ee_6c673340",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T20:37:17Z",
+      "side": 1,
+      "message": "I\u0027d lean towards removing this check.  This function should be a generic storage of a response without it \"thinking\" too much beyond identifying and storing valid data.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 9
+      },
+      "revId": "5d45d16397b2282315046359b0da10e58ba7a5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "865a3315_04785acb",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T20:37:17Z",
+      "side": 1,
+      "message": "We\u0027d like to store any additional PDOs here that are present, so this should only be a check that cnt is sufficient. \n\nThe thinking is that the EC should collect and present all possible information the kernel may need.  That way, if the spec changes and there are new PDOs which cables may send, it won\u0027t take a firmware update for the kernel to get them.  The EC may not know what to do with the new data, and we should certainly have type and revision checks before using that data, but we should strive to always generically collect information to present to the kernel. \n\nArguably, we could put in storage and code for a 3rd PDO as that\u0027s the maximum number of PDOs allowed. That doesn\u0027t need to be done in this CL though.",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 59
+      },
+      "revId": "5d45d16397b2282315046359b0da10e58ba7a5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e3efeb1_4ffb359e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3945,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T20:37:17Z",
+      "side": 1,
+      "message": "Why remove the check for the count being valid?",
+      "range": {
+        "startLine": 3945,
+        "startChar": 3,
+        "endLine": 3945,
+        "endChar": 48
+      },
+      "revId": "5d45d16397b2282315046359b0da10e58ba7a5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
