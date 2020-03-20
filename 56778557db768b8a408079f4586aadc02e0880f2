@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d2c9dbe0_a3157190",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-20T14:55:29Z",
+      "side": 1,
+      "message": "There was not a bug related to Auto Discharge Disconnect.  This CL was intended to give a clean base to work on.  A number of issues looked like they were related to the way ADD was originally implemented and I wanted to remove that from the code before starting to debug the actual known bugs.  I felt it was more important to do this than fixing the current set of symptoms.\n\nI have copied the CL links into b:151152817 and asked others to test this out.  There are still two remaining issues to call that issue resolved.\n\n1) Initial boot from an already running state performs a hard reset and reboots.  This is probably due to the chip not being in a clean state and should have been power cycled to start clean.\n2) On booting the AP we go into Dual Role Power capable. An open connector will not perform the required initialization that will set this connection correctly so that an attach, at least for a USB Sink device, will not be detected.",
+      "parentUuid": "fa619a79_9c495a4a",
+      "revId": "56778557db768b8a408079f4586aadc02e0880f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3d29eb4_29c01566",
         "filename": "/COMMIT_MSG",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3bc7c566_0b39d35a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-20T14:55:29Z",
+      "side": 1,
+      "message": "My testing was on a Trembyle PCSO. Keith tested on a Volteer. I believe Edward tested on a Dalboz.  No regressions were found and improvement on Zork bases.",
+      "parentUuid": "e3d29eb4_29c01566",
+      "revId": "56778557db768b8a408079f4586aadc02e0880f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7d57a72_cd10cda5",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 9
@@ -50,6 +86,24 @@
       "revId": "56778557db768b8a408079f4586aadc02e0880f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a2381ee_06d40bcb",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-20T14:55:29Z",
+      "side": 1,
+      "message": "This happens as an interrupt event.  So a different condition, CC_Line_Change, could have given an interrupt and then we get a fault.  In the handling of the first condition we may pick up the fault as well.  When we leave the handler, we could return for the later fault and this would be misleading to anyone looking at the logs.  It would indicate that we caught fault 0x00 and handled it.  Since there is no such thing it looks confusing.  We currently do not use the faults for anything and this is more to clear the FAULT and for debug to be seen in the EC console.  I am not sure a refactor is needed.  If we start using the FAULT for more than this clearing, so the chips will exit problem mode, and debug then I would suggest a rethink on this entire process as well as where in the alert handler it should happen would be in order. A terminal else could be present to indicate there was a problem with I2C getting the information to handle this but not sure it is that important.  Unfortunately a lot of the tcpci code does not bother to even look at errors from i2c, so this would be a big refactor to do it right.",
+      "parentUuid": "b7d57a72_cd10cda5",
+      "revId": "56778557db768b8a408079f4586aadc02e0880f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
