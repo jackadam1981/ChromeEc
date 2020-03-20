@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68766123_09bdc7e3",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T21:05:46Z",
+      "side": 1,
+      "message": "Storage here will be different for v2.\n\nMy goal is to discover all partner SVIDs generically for both SOP and SOP\u0027 and store them in an array, and then store an array of \"struct svdm_svid_data\" for both SOP and SOP\u0027 which will contain all the mode information we probed.",
+      "range": {
+        "startLine": 986,
+        "startChar": 2,
+        "endLine": 986,
+        "endChar": 48
+      },
+      "revId": "e4babbed2bb1ef867b6407a48c66707d747026a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
