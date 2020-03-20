@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "450dc2b1_1d3a9c13",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T21:11:46Z",
+      "side": 1,
+      "message": "Keep this in v1.  The goal for v2 will be more generic discovery and storage",
+      "range": {
+        "startLine": 1222,
+        "startChar": 0,
+        "endLine": 1225,
+        "endChar": 2
+      },
+      "revId": "069867b391cadd5f5a8220e6b5c3725c8147b264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
