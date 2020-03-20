@@ -22,6 +22,30 @@
       "revId": "d07258972aa10bd44ee45b4234167210b4d244f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b59557_103fab59",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4784,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T19:15:18Z",
+      "side": 1,
+      "message": "Yup, I can add that to a follow-up.  b/152058087 filed",
+      "parentUuid": "4f453aac_d8589827",
+      "range": {
+        "startLine": 4784,
+        "startChar": 6,
+        "endLine": 4784,
+        "endChar": 29
+      },
+      "revId": "d07258972aa10bd44ee45b4234167210b4d244f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
