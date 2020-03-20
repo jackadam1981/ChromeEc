@@ -212,6 +212,30 @@
       "revId": "c0b8d0b6ac2d4235e3565240d2ed8270f40ced45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fb077b9_d2523592",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2020-03-20T19:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b808dbbe_93b5df7b",
+      "range": {
+        "startLine": 397,
+        "startChar": 1,
+        "endLine": 398,
+        "endChar": 31
+      },
+      "revId": "c0b8d0b6ac2d4235e3565240d2ed8270f40ced45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4a660e4c_88bf757d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2020-03-20T19:00:06Z",
+      "side": 1,
+      "message": "ah, i made a crbug, that hyperlink appears to work?\n\nrepo upload w/o --no-verify is busted (probably due to python2 vs 3? How does one update the chroot?)",
+      "parentUuid": "0cb9c7ae_818f000e",
+      "revId": "6bfbe16fc4b27d1c096b0b7f789ebb94edaf5a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0ce4066_a58807d1",
         "filename": "chip/g/usb_console.c",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "6bfbe16fc4b27d1c096b0b7f789ebb94edaf5a10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d343bd5a_fd7c31c5",
+        "filename": "chip/g/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2020-03-20T19:00:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0ce4066_a58807d1",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 32
+      },
+      "revId": "6bfbe16fc4b27d1c096b0b7f789ebb94edaf5a10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
