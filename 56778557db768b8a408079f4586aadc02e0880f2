@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa619a79_9c495a4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-03-20T03:12:25Z",
+      "side": 1,
+      "message": "nit. Bug?",
+      "revId": "56778557db768b8a408079f4586aadc02e0880f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3d29eb4_29c01566",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-03-20T03:12:25Z",
+      "side": 1,
+      "message": "boards tested? Trembyle, Dali in the positive case?\nboards tested to prevent regressions in the negative case?",
+      "revId": "56778557db768b8a408079f4586aadc02e0880f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7d57a72_cd10cda5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-03-20T03:12:25Z",
+      "side": 1,
+      "message": "this seems bad that two err conditions are to be returned, one through an return val, and one through a reference. Is it worth refactoring in a later CL? I understand that we\u0027re trying to differentiate between a read and a fault returned, but it reads differently at first glance. \n\nWhich is why this is a nice catch. \n\nBut then we move on in the logic chain...\n\nAnd then the fault might not be handled which then we get no logging to indicate that it wasn\u0027t handled (and therefore not cleared). Except that...\n\nhandle_fault just prints that we detected one, without doing anything about it, which is a misnomer in it\u0027s own right. This is coding-for-the-future, but it\u0027s not serving a purpose. \n\nthere\u0027s also no terminal else to let us know that we failed to clear the fault if the tcpc_write fails.",
+      "revId": "56778557db768b8a408079f4586aadc02e0880f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
