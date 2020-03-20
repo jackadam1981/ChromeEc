@@ -34,6 +34,24 @@
       "revId": "fc32df84c7d52d638a59b8bca99fed83b09d492e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b07f0534_9faebe2f",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-03-20T03:07:53Z",
+      "side": 1,
+      "message": "Did you say the scenario like this: now the device with HDMI DB, assume the C0 TCPC interrupt asserts meanwhile the PCAL6408ABSHP interrupt asserts. Then tcpc_get_alert_status is executed by C0 and seeing GPIO_USB_C1_TCPC_INT_ODL is low, set PD_STATUS_TCPC_ALERT_1 bit to 1?\nAbout GPIO_USB_C1_TCPC_RST_L, not sure when will AP posts pd_control(seems only depthcharge). Will EC reboot together? if not, the GPIOS of IO expander looks to need to be set again.",
+      "parentUuid": "a685def2_92fe551c",
+      "revId": "fc32df84c7d52d638a59b8bca99fed83b09d492e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
