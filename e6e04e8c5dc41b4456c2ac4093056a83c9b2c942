@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "0299ca6e_38aabe4b",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T20:54:11Z",
+      "side": 1,
+      "message": "Keep this in the v1 stack.  The plan for v2 will be to generically collect all cable SVID/mode information and it\u0027ll be accessible in an array, similar to the SVIDs for v1.",
+      "range": {
+        "startLine": 511,
+        "startChar": 1,
+        "endLine": 511,
+        "endChar": 31
+      },
+      "revId": "e6e04e8c5dc41b4456c2ac4093056a83c9b2c942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e58ee234_cd99a63d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T20:54:11Z",
+      "side": 1,
+      "message": "For now, I\u0027d prefer the flag usage stay in the v1 stack.  Rather than having a lot of separate places where we enable features and determine how to move forward, I\u0027d like to centralize this logic.",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 1
+      },
+      "revId": "e6e04e8c5dc41b4456c2ac4093056a83c9b2c942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "981dbb51_b3ab22b1",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T20:54:11Z",
+      "side": 1,
+      "message": "Similarly here, keep this in v1 for now.",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 1
+      },
+      "revId": "e6e04e8c5dc41b4456c2ac4093056a83c9b2c942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f507d3_1bce8ed9",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-20T20:54:11Z",
+      "side": 1,
+      "message": "Any references to SOP/SOP\u0027/SOP\u0027\u0027 in shared code should be through a function input parameter, rather than the flags.",
+      "range": {
+        "startLine": 694,
+        "startChar": 0,
+        "endLine": 698,
+        "endChar": 11
+      },
+      "revId": "e6e04e8c5dc41b4456c2ac4093056a83c9b2c942",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bac9d90_3d3e9767",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 6
