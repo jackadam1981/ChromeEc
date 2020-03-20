@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "fb6ef3f7_68c07488",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-20T07:38:16Z",
+      "side": 1,
+      "message": "On IT8xxx2 chips, flash is mapped to ILM (base address is 0x80000000), and CPU fetches instructions from ILM. So we need to generate instructions from base address of ILM and then load them into flash (base address is 0) or FW image will be huge.\n\nWe don\u0027t need to add CONFIG_FLASH_PHYSICAL condition here, because image works on both internal and external flash.",
+      "parentUuid": "22a82fbe_401273bb",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d71fe9a9_c12cc8a2",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
@@ -113,6 +137,75 @@
         "startChar": 0,
         "endLine": 49,
         "endChar": 66
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e8359fb_de73464d",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-20T07:38:16Z",
+      "side": 1,
+      "message": "These are CHIP_FAMILY_IT8XXX2 specific.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 6
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fd011e7_f632eefd",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-20T07:38:16Z",
+      "side": 1,
+      "message": "These all are are CHIP_FAMILY_IT8XXX2 specific too.\nOn other chips, we can define __ram_code as empty so we won\u0027t get error while building task.c.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ee48a6_4a5044e4",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-20T07:38:16Z",
+      "side": 1,
+      "message": "We should be able to remove CONFIG_FLASH_PHYSICAL from this CL.",
+      "range": {
+        "startLine": 83,
+        "startChar": 44,
+        "endLine": 83,
+        "endChar": 65
       },
       "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
