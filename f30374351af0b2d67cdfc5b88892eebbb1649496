@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2dddac35_fc344dd7",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-03-20T00:12:30Z",
+      "side": 1,
+      "message": "I think there\u0027s something weird here.\n\nFW_OFF(x) is CONFIG_PROGRAM_MEMORY_BASE + FW_OFF_(x)\n\nWhen you do ORIGIN \u003d FW_OFF(SECTION) - CHIP_ILM_BASE\n\nBut CHIP_ILM_BASE \u003d\u003d CONFIG_PROGRAM_MEMORY_BASE.\n\nI don\u0027t know exactly how this should be solved, but I\u0027m not sure if we need something special for the IT8XXX2 part?",
+      "parentUuid": "84e47cc5_b1162f54",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d71fe9a9_c12cc8a2",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
