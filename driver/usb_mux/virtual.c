@@ -50,6 +50,8 @@ static int virtual_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 	mux_state_t new_mux_state = (mux_state & ~USB_PD_MUX_HPD_STATE) |
 		(virtual_mux_state[port] & USB_PD_MUX_HPD_STATE);
 
+	ccprintf("%s: p%d: new state %d\n", __func__, port, new_mux_state);
+
 	virtual_mux_update_state(port, new_mux_state);
 
 	return EC_SUCCESS;
@@ -77,6 +79,9 @@ void virtual_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
 	mux_state_t new_mux_state = (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
 			(hpd_irq ? USB_PD_MUX_HPD_IRQ : 0) |
 			(virtual_mux_state[port] & USB_PD_MUX_USB_DP_STATE);
+
+	ccprintf("%s: p%d: new state %d\n", __func__, port, new_mux_state);
+
 
 	virtual_mux_update_state(port, new_mux_state);
 }

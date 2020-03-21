@@ -85,6 +85,9 @@ void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
 {
 	int port = me->usb_port;
 
+	ccprintf("%s: p%d: lvl %d, irq %d\n", __func__, port,
+		 hpd_lvl, hpd_irq);
+
 	dp_set_hpd(me, hpd_lvl);
 
 	if (hpd_irq) {

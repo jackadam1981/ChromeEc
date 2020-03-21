@@ -233,9 +233,16 @@ void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
 	mux_state_t mux_state;
 	const struct usb_mux *mux_ptr = &usb_muxes[port];
 
-	for (; mux_ptr; mux_ptr = mux_ptr->next_mux)
-		if (mux_ptr->hpd_update)
+	for (; mux_ptr; mux_ptr = mux_ptr->next_mux) {
+		if (mux_ptr->hpd_update) {
 			mux_ptr->hpd_update(mux_ptr, hpd_lvl, hpd_irq);
+			if (port == 1) {
+				CPRINTF("%s: P%d calling hpd_update\n",
+					__func__,
+					port);
+			}
+		}
+	}
 
 	if (!configure_mux(port, USB_MUX_GET_MODE, &mux_state)) {
 		mux_state |= (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
