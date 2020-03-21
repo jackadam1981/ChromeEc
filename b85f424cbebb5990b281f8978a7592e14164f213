@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af9ebe71_23c516be",
+        "filename": "baseboard/volteer/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-21T01:53:26Z",
+      "side": 1,
+      "message": "I\u0027m open to the idea of just making this a GPIO and picking a side to be the default, but this seems to work OK.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 53
+      },
+      "revId": "b85f424cbebb5990b281f8978a7592e14164f213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
