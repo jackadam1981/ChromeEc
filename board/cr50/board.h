@@ -366,6 +366,31 @@ int ec_is_on(void);
 int ec_is_rx_allowed(void);
 int servo_is_connected(void);
 
+/*
+ * Start (or schedule) to signal AP the completion of TPM command by asserting
+ * INT_AP_L.
+ * Returns 1 if it successfully started (or scheduled) to assert INT_AP_L.
+ * Returns 0 if it didn't.
+ */
+int ap_start_ack_completion(void);
+
+/* Stop to signal AP the completion of TPM command. */
+void ap_stop_ack_completion(void);
+
+/* enable int_ap_extension if available. */
+void int_ap_extension_enable(void);
+/* disable int_ap_extension. */
+void int_ap_extension_disable(void);
+
+/*
+ * Change the duration of INT_AP_L pulse.
+ * If zero is passed, int_ap_extension won't be enabled.
+ */
+int int_ap_extension_set_duration(int usec);
+
+/* Initialize the int_ap_extension module. */
+void int_ap_extension_init(void);
+
 /* Moving from legacy versions might require NVMEM transition. */
 int board_nvmem_legacy_check_needed(void);
 
