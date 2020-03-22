@@ -7,11 +7,50 @@
 #include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "hwtimer.h"
 #include "registers.h"
 #include "system.h"
+#include "task.h"
+#include "timer.h"
 #include "tpm_registers.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
+/* Most recent timestamp when GPIO_INT_AP_L went high. */
+static uint32_t last_time_deassert;
+
+/* Timer value to count down from. */
+static uint32_t timehs_load_;
+
+void deassert_gpio_int_ap(void)
+{
+	/* Disable IRQNUM_TIMEHS0_TIMINT1 */
+	task_disable_irq(GC_IRQNUM_TIMEHS0_TIMINT1);
+
+	/* Disable TIMEHS0 TIMER1 */
+	GR_TIMEHS_CONTROL(0, 1) = 0;
+	/* Clear interrupt status of TIMEHS0 TIMER1 */
+	GR_TIMEHS_INTCLR(0, 1) = 1;
+
+	gpio_set_level(GPIO_INT_AP_L, 1);
+	last_time_deassert = __hw_clock_source_read();
+}
+DECLARE_IRQ(GC_IRQNUM_TIMEHS0_TIMINT1, deassert_gpio_int_ap, 1);
+
+static void assert_gpio_int_ap(void)
+{
+	gpio_set_level(GPIO_INT_AP_L, 0);
+
+	GR_TIMEHS_LOAD(0, 1) = timehs_load_;
+	GR_TIMEHS_CONTROL(0, 1) = GC_TIMEHS_TIMER1CONTROL_ONESHOT_MASK |
+				  GC_TIMEHS_TIMER1CONTROL_SIZE_MASK |
+				  GC_TIMEHS_TIMER1CONTROL_INTENABLE_MASK |
+				  GC_TIMEHS_TIMER1CONTROL_ENABLE_MASK;
+
+	/* Enable IRQNUM_TIMEHS0_TIMINT1 */
+	task_enable_irq(GC_IRQNUM_TIMEHS0_TIMINT1);
+}
+DECLARE_DEFERRED(assert_gpio_int_ap);
 
 static enum device_state state = DEVICE_STATE_INIT;
 
@@ -93,7 +132,9 @@ void set_ap_on(void)
 	 * high which is the default level.
 	 */
 	gpio_set_flags(GPIO_INT_AP_L, GPIO_OUT_HIGH);
-	gpio_set_level(GPIO_INT_AP_L, 1);
+
+	/* Deassert GPIO_INT_AP. */
+	deassert_gpio_int_ap();
 
 	ccd_update_state();
 
@@ -197,9 +238,58 @@ static void init_ap_detect(void)
 		else
 			tpm_rst_asserted(GPIO_TPM_RST_L);
 	}
+
+	/* TODO(b/148691139): revise this with a proper formula */
+	timehs_load_ = MIN_USEC_INT_AP_PULSE * 25;
 }
 /*
  * TPM_RST_L isn't setup until board_init. Make sure init_ap_detect happens
  * after that.
  */
 DECLARE_HOOK(HOOK_INIT, init_ap_detect, HOOK_PRIO_DEFAULT + 1);
+
+void ap_start_ack_completion(void)
+{
+	uint32_t diff_usec;
+
+	/*
+	 * Signal the AP that Cr50 finished the transaction and is ready for
+	 * next one.
+	 */
+	if (!board_long_int_ap_pulse()) {
+		/*
+		 * If the board property does not support
+		 * BOARD_LONG_INT_AP_PULSE, then let's generate a four usec long
+		 * pulse of GPIO_INT_AP_L.
+		 */
+		gpio_set_level(GPIO_INT_AP_L, 0);
+		tick_delay(2);
+		gpio_set_level(GPIO_INT_AP_L, 1);
+		return;
+	}
+
+	diff_usec = __hw_clock_source_read() - last_time_deassert;
+	/*
+	 * If GPIO_INT_AP_L has been deasserted for MIN_USEC_INT_AP_PULSE or
+	 * longer, then let's assert it asap.
+	 */
+	if (diff_usec >= MIN_USEC_INT_AP_PULSE)
+		assert_gpio_int_ap();
+	else
+		/* Let's deassert GPIO_INT_AP_L diff_usec later. */
+		hook_call_deferred(&assert_gpio_int_ap_data, diff_usec);
+}
+
+void ap_stop_ack_completion(void)
+{
+	/* If GPIO_INT_AP_L is already deasserted, then do nothing. */
+	if (gpio_get_level(GPIO_INT_AP_L))
+		return;
+
+	/*
+	 * Cancel the schedule of deferred call to deassert_gpio_int_ap, if any
+	 * scheduled. Then deassert it by calling the deferred function directly
+	 * now.
+	 */
+	deassert_gpio_int_ap();
+}
