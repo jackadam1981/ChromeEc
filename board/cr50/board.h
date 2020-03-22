@@ -366,6 +366,30 @@ int ec_is_on(void);
 int ec_is_rx_allowed(void);
 int servo_is_connected(void);
 
+/*
+ * Assert INT_AP_L to acknowledge AP that cr50 is ready for next TPM command.
+ * NOTE: must be called by ISR only.
+ *
+ * Returns 1 if it successfully asserted (or scheduled to assert), or
+ *         0 if the extended long pulse was disabled.
+ */
+int assert_int_ap(void);
+
+/*
+ * Deassert INT_AP_L immediately.
+ * NOTE: must be called by ISR only.
+ */
+void deassert_int_ap(void);
+
+/*
+ * enable int_ap_extension if available.
+ *
+ * @param int_ap_assert_func function pointer to call at INT_AP_L assertion.
+ * @param int_ap_deassert_func function pointer to call at INT_AP_L deassertion.
+ */
+void int_ap_extension_enable(void (*int_ap_assert_func)(void),
+			     void (*int_ap_deassert_func)(void));
+
 /* Moving from legacy versions might require NVMEM transition. */
 int board_nvmem_legacy_check_needed(void);
 
