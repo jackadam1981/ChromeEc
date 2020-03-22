@@ -93,7 +93,7 @@ void set_ap_on(void)
 	 * high which is the default level.
 	 */
 	gpio_set_flags(GPIO_INT_AP_L, GPIO_OUT_HIGH);
-	gpio_set_level(GPIO_INT_AP_L, 1);
+	int_ap_extension_init();
 
 	ccd_update_state();
 
