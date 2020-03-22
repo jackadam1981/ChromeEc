@@ -322,6 +322,9 @@ int board_has_ina_support(void);
 int board_tpm_mode_change_allowed(void);
 /* The board supports EC-CR50 communication. */
 int board_has_ec_cr50_comm_support(void);
+/* The board generates a long pulse of INT_AP_L. */
+int board_uses_long_pulse_int_ap(void);
+
 int board_id_is_mismatched(void);
 /* Allow for deep sleep to be enabled on AP shutdown */
 int board_deep_sleep_allowed(void);
@@ -365,6 +368,23 @@ int ap_uart_is_on(void);
 int ec_is_on(void);
 int ec_is_rx_allowed(void);
 int servo_is_connected(void);
+
+/*
+ * Assert INT_AP_L to acknowledge AP that cr50 is ready for next
+ * TPM command.
+ *
+ * Returns 1 if it successfully asserted (or scheduled to assert)
+ *         INT_AP_L, or 0 otherwise.
+ */
+int assert_int_ap(void);
+
+/* Deassert INT_AP_L immediately */
+void deassert_int_ap(void);
+
+/* enable int_ap_extension if available. */
+void int_ap_extension_enable(void);
+/* disable int_ap_extension. */
+void int_ap_extension_disable(void);
 
 /* Moving from legacy versions might require NVMEM transition. */
 int board_nvmem_legacy_check_needed(void);
