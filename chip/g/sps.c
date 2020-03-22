@@ -12,7 +12,6 @@
 #include "sps.h"
 #include "system.h"
 #include "task.h"
-#include "timer.h"
 #include "watchdog.h"
 
 /*
@@ -210,6 +209,7 @@ static void sps_configure(enum sps_mode mode, enum spi_clock_mode clk_mode,
 	/* Use CS_DEASSERT to retrieve all remaining bytes from RX FIFO. */
 	GWRITE_FIELD(SPS, ISTATE_CLR, CS_DEASSERT, 1);
 	GWRITE_FIELD(SPS, ICTRL, CS_DEASSERT, 1);
+	GWRITE_FIELD(SPS, ICTRL, CS_ASSERT, 1);
 }
 
 /*
@@ -223,6 +223,8 @@ int sps_register_rx_handler(enum sps_mode mode, rx_handler_f rx_handler,
 {
 	task_disable_irq(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR);
 	task_disable_irq(GC_IRQNUM_SPS0_CS_DEASSERT_INTR);
+
+	int_ap_extension_disable();
 
 	if (!rx_handler)
 		return 0;
@@ -393,18 +395,19 @@ static void sps_cs_deassert_interrupt(uint32_t port)
 
 	if (pulse_needed) {
 		/*
+		 * If assert_int_ap() returns 1, it generated a long
+		 * pulse of INT_AP_L. Then, there is no need to generate
+		 * a short pulse.
+		 */
+		if (assert_int_ap())
+			return;
+
+		/*
 		 * Signal the AP that this SPI frame processing is
 		 * completed.
 		 */
 		gpio_set_level(GPIO_INT_AP_L, 0);
 
-		/*
-		 * This is to meet the AP requirement of minimum 4 usec
-		 *  duration of INT_AP_L assertion.
-		 *
-		 * TODO(b/130515803): Ideally, this should be improved
-		 * to support any duration requirement in future.
-		 */
 		tick_delay(2);
 
 		gpio_set_level(GPIO_INT_AP_L, 1);
@@ -422,6 +425,14 @@ void _sps0_cs_deassert_interrupt(void)
 }
 DECLARE_IRQ(GC_IRQNUM_SPS0_CS_DEASSERT_INTR, _sps0_cs_deassert_interrupt, 1);
 DECLARE_IRQ(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR, _sps0_interrupt, 1);
+
+void sps0_cs_assert_interrupt_(void)
+{
+	GWRITE_FIELD(SPS, ISTATE_CLR, CS_ASSERT, 1);
+
+	deassert_int_ap();
+}
+DECLARE_IRQ(GC_IRQNUM_SPS0_CS_ASSERT_INTR, sps0_cs_assert_interrupt_, 1);
 
 #ifdef CONFIG_SPS_TEST
 
