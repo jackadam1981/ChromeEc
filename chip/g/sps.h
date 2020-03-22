@@ -51,4 +51,9 @@ int sps_register_rx_handler(enum sps_mode mode,
 int sps_unregister_rx_handler(void);
 void sps_tx_status(uint8_t byte);
 
+/*
+ * Enable INT_AP_L extension for SPS protocol.
+ */
+void sps_int_ap_extension_enable(void);
+
 #endif
