@@ -1240,6 +1240,21 @@ static void pd_update_dual_role_config(int port)
 		 */
 		set_state_tc(port, TC_UNATTACHED_SRC);
 	}
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	else if (drp_state[port] == PD_DRP_TOGGLE_ON &&
+			get_state_tc(port) == TC_DRP_AUTO_TOGGLE) {
+		/*
+		 * We are transitioning into DRP mode, an unattached
+		 * connection needs to move from non-DRP to DRP in
+		 * order to be seen.  Make the hardware cycle by
+		 * trying to go to UNATTACHED
+		 */
+		set_state_tc(port,
+			     (tc[port].power_role == PD_ROLE_SINK)
+					? TC_UNATTACHED_SNK
+					: TC_UNATTACHED_SRC);
+	}
+#endif
 }
 
 #ifdef CONFIG_POWER_COMMON
