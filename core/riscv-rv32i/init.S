@@ -7,13 +7,6 @@
 
 #include "config.h"
 
-/*
- * ILM/DLM size register.
- * bit[3-0] ILM size:
- *     7: 512K byte (default setting), 8: 1M byte
- */
-#define IT83XX_GCTRL_EIDSR 0xf02031
-
 .macro vector name
 .set \name\()_handler, unhandled_ec_irq
 .weak \name\()_handler
