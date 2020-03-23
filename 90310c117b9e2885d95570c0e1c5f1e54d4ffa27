@@ -46,6 +46,30 @@
       "revId": "90310c117b9e2885d95570c0e1c5f1e54d4ffa27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "089f5103_68050e88",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-23T08:54:03Z",
+      "side": 1,
+      "message": "__data_start and __data_lma_start are different.\nYou might miss loading initialization value into IROM for data section at the parent CL.",
+      "parentUuid": "b7dba7b6_730aa90b",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 30
+      },
+      "revId": "90310c117b9e2885d95570c0e1c5f1e54d4ffa27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
