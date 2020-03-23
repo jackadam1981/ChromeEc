@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ab2211c_db788300",
+        "filename": "baseboard/kukui/battery_max17055.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-03-23T08:22:53Z",
+      "side": 1,
+      "message": "Remove the #ifdef guard here (and also in battery_info, batt_profile, alert_profile, temp_zones).\n\nI think It\u0027s ok to have redundant entries.",
+      "revId": "ccf25e94853881fea9b42b98ad7e1ef01c31777b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
