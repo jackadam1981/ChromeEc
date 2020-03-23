@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c654d88_92e63ebf",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T08:01:27Z",
+      "side": 1,
+      "message": "should it be ```__flash_dma_start % 4096 \u003d\u003d 0\u0027\u0027\u0027 ?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "39c8219f6575b0ab4d2eb3774fb37709e2a121ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a11e59de_2eba3239",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T08:01:27Z",
+      "side": 1,
+      "message": "out of curiosity, why *ARM*?",
+      "range": {
+        "startLine": 304,
+        "startChar": 18,
+        "endLine": 304,
+        "endChar": 21
+      },
+      "revId": "39c8219f6575b0ab4d2eb3774fb37709e2a121ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
