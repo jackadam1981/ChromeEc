@@ -1222,6 +1222,7 @@ enum cable_outlet {
  * SOP* is encoded in bits 31 to 28 of the 32-bit data type.
  * NOTE: This is not part of the PD spec.
  */
+#define PD_HEADER_SOP_MASK (0xf << 28)
 #define PD_HEADER_GET_SOP(header) (((header) >> 28) & 0xf)
 #define PD_HEADER_SOP(sop) ((sop) << 28)
 
