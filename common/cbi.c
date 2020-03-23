@@ -299,6 +299,14 @@ int cbi_get_fw_config(uint32_t *fw_config)
 				  &size);
 }
 
+int cbi_get_experiments(uint32_t *experiments)
+{
+	uint8_t size = sizeof(*experiments);
+
+	return cbi_get_board_info(CBI_TAG_EXPERIMENTS, (uint8_t *)experiments,
+				  &size);
+}
+
 static enum ec_status hc_cbi_get(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_get_cbi *p = args->params;
@@ -414,6 +422,7 @@ static void dump_cbi(void)
 	print_tag("MODEL_ID", cbi_get_model_id(&val), &val);
 	print_tag("SKU_ID", cbi_get_sku_id(&val), &val);
 	print_tag("FW_CONFIG", cbi_get_fw_config(&val), &val);
+	print_tag("EXPERIMENTS", cbi_get_experiments(&val), &val);
 }
 
 static int cc_cbi(int argc, char **argv)

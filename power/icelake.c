@@ -7,6 +7,7 @@
 
 #include "chipset.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "intel_x86.h"
@@ -210,6 +211,11 @@ enum power_state power_handle_state(enum power_state state)
 	int all_sys_pwrgd_out;
 #ifdef CONFIG_CHIPSET_JASPERLAKE
 	int timeout_ms = 10;
+	uint32_t experiments;
+	int use_fivr = 0;
+
+	if (!cbi_get_experiments(&experiments))
+		use_fivr = experiments & 0x1;
 #endif /* CONFIG_CHIPSET_JASPERLAKE */
 
 	dsw_pwrok_pass_thru();
@@ -293,7 +299,10 @@ enum power_state power_handle_state(enum power_state state)
 
 #ifdef CONFIG_CHIPSET_JASPERLAKE
 	case POWER_S3S0:
-		GPIO_SET_LEVEL(GPIO_EN_VCCIO_EXT, 1);
+		if (use_fivr)
+			CPRINTS("Using FIVR so not setting GPIO_EN_VCCIO_EXT!");
+		else
+			GPIO_SET_LEVEL(GPIO_EN_VCCIO_EXT, 1);
 		/* Now wait for ALL_SYS_PWRGD. */
 		while (!intel_x86_get_pg_ec_all_sys_pwrgd() &&
 			(timeout_ms > 0)) {
