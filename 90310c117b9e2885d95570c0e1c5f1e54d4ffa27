@@ -22,6 +22,30 @@
       "revId": "90310c117b9e2885d95570c0e1c5f1e54d4ffa27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7dba7b6_730aa90b",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-23T08:28:22Z",
+      "side": 1,
+      "message": "This is viable. But I think we will always have data LMA and VMA section. If we don\u0027t separate them, then once runs, the data would be clobbered and won\u0027t be reset.",
+      "parentUuid": "2282a2e7_437e3e49",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 30
+      },
+      "revId": "90310c117b9e2885d95570c0e1c5f1e54d4ffa27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
