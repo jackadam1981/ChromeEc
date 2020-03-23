@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b1d8a6b7_b4a82552",
+        "filename": "baseboard/nucleo-f412zg/base-board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-23T22:26:56Z",
+      "side": 1,
+      "message": "I gotcha. I do this for backwards compatibility, but it looks like we are past the point of no return (grep -rI ^$\u0027\\t\u0027#).",
+      "parentUuid": "efd314cb_66b06039",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "cf29af47968bd6e6f90a695033c8645585746082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eebc79bc_fbd789ec",
         "filename": "baseboard/nucleo-f412zg/base-ec.tasklist",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "cf29af47968bd6e6f90a695033c8645585746082",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74bddb2a_fc93aa31",
+        "filename": "baseboard/nucleo-f412zg/base-ec.tasklist",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-23T22:26:56Z",
+      "side": 1,
+      "message": "Oops, I meant to use this in the sub-board like in https://github.com/coreboot/chrome-ec/blob/master/board/nucleo-dartmonkey/ec.tasklist .\n\n---\n\nSure, but that does detach the config features brought in from the baseboard with their corresponding tasks. Like, the rwsig. It is enabled in the baseboard config.h.\nProbably a minor details here. Checkout the latest PS.",
+      "parentUuid": "eebc79bc_fbd789ec",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "cf29af47968bd6e6f90a695033c8645585746082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
