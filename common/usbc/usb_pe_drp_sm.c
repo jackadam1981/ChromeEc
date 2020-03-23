@@ -3810,7 +3810,6 @@ static void pe_handle_custom_vdm_request_exit(int port)
 static void pe_do_port_discovery_entry(int port)
 {
 	print_current_state(port);
-	pe[port].partner_type = PORT;
 	pe[port].vdm_cnt = 0;
 }
 
@@ -3821,12 +3820,15 @@ static void pe_do_port_discovery_run(int port)
 	struct svdm_amode_data *modep =
 				pd_get_amode_data(port, PD_VDO_VID(payload[0]));
 	int ret = 0;
+	int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+	bool intel_svid;
 
 	if (!PE_CHK_FLAG(port,
 		PE_FLAGS_VDM_REQUEST_NAKED | PE_FLAGS_VDM_REQUEST_BUSY)) {
 		switch (pe[port].vdm_cmd) {
 		case DO_PORT_DISCOVERY_START:
 			pe[port].vdm_cmd = CMD_DISCOVER_IDENT;
+			pe[port].partner_type = PORT;
 			pe[port].vdm_data[0] = 0;
 			ret = 1;
 			break;
@@ -3837,19 +3839,46 @@ static void pe_do_port_discovery_run(int port)
 			}
 			pe[port].vdm_cmd = CMD_DISCOVER_SVID;
 			pe[port].vdm_data[0] = 0;
+			pe[port].partner_type = PORT;
 			ret = 1;
 			break;
 		case CMD_DISCOVER_SVID:
+			intel_svid = is_intel_svid(port,
+						pe[port].am_policy.svid_cnt);
+			if (pe[port].cable.discovery == PD_DISC_COMPLETE &&
+			    sop == TCPC_TX_SOP && intel_svid) {
+				pe[port].partner_type = CABLE;
+				tx_emsg[port].header |=
+					PD_HEADER_SOP(TCPC_TX_SOP_PRIME);
+				pe[port].vdm_cmd = CMD_DISCOVER_SVID;
+				pe[port].vdm_data[0] = 0;
+				ret = 1;
+				break;
+			}
+
+			if (sop == TCPC_TX_SOP && !intel_svid) {
+				/*
+				 * Disable Thunderbolt-Compat mode if port
+				 * partner doesn't support Intel SVID
+				 * Ref: USB Type-C Cable and Connector Spec,
+				 * figure F-1: TBT3 Discovery Flow
+				 */
+				pe[port].cable.modes.tbt_compat =
+							PD_ALT_DISABLED;
+			}
+			pe[port].partner_type = PORT;
 			pe[port].vdm_cmd = CMD_DISCOVER_MODES;
 			ret = dfp_discover_modes(port, pe[port].vdm_data);
 			break;
 		case CMD_DISCOVER_MODES:
+			pe[port].partner_type = PORT;
 			pe[port].vdm_cmd = CMD_ENTER_MODE;
 			pe[port].vdm_data[0] = pd_dfp_enter_mode(port, 0, 0);
 			if (pe[port].vdm_data[0])
 				ret = 1;
 			break;
 		case CMD_ENTER_MODE:
+			pe[port].partner_type = PORT;
 			pe[port].vdm_cmd = CMD_DP_STATUS;
 			if (modep->opos) {
 				ret = modep->fx->status(port,
@@ -3859,12 +3888,14 @@ static void pe_do_port_discovery_run(int port)
 			}
 			break;
 		case CMD_DP_STATUS:
+			pe[port].partner_type = PORT;
 			pe[port].vdm_cmd = CMD_DP_CONFIG;
 			if (modep && modep->opos)
 				ret = modep->fx->config(port,
 							pe[port].vdm_data);
 			break;
 		case CMD_DP_CONFIG:
+			pe[port].partner_type = PORT;
 			PE_SET_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE);
 			break;
 		case CMD_EXIT_MODE:
@@ -3886,6 +3917,9 @@ static void pe_do_port_discovery_run(int port)
 			set_state_pe(port, PE_SNK_READY);
 	} else {
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_BUSY);
+
+		if (pe[port].partner_type == PORT)
+			tx_emsg[port].header |= PD_HEADER_SOP(TCPC_TX_SOP);
 
 		/*
 		 * Copy Vendor Defined Message (VDM) Header into
@@ -4123,6 +4157,7 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 
 static void pe_vdm_request_entry(int port)
 {
+	int sop = PD_HEADER_GET_SOP(tx_emsg[port].header);
 	print_current_state(port);
 
 	/* All VDM sequences are Interruptible */
@@ -4137,8 +4172,7 @@ static void pe_vdm_request_entry(int port)
 		/* Update len with the number of VDO bytes */
 		tx_emsg[port].len = pe[port].vdm_cnt * 4;
 	}
-
-	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
+	prl_send_data_msg(port, sop, PD_DATA_VENDOR_DEF);
 
 	pe[port].vdm_response_timer = TIMER_DISABLED;
 }
@@ -4264,7 +4298,7 @@ static void pe_vdm_acked_entry(int port)
 	vdo_cmd = PD_VDO_CMD(payload[0]);
 	sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
 
-	if (sop == TCPC_TX_SOP) {
+	if (sop == TCPC_TX_SOP || sop == TCPC_TX_SOP_PRIME) {
 		/*
 		 * Handle Message From Port Partner
 		 */
