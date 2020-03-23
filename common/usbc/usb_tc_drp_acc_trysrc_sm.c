@@ -82,6 +82,8 @@
 #define TC_FLAGS_WAKE_FROM_LPM          BIT(22)
 /* Flag to note the TCPM supports auto toggle */
 #define TC_FLAGS_AUTO_TOGGLE_SUPPORTED  BIT(23)
+/* Flag to note TCPM was requested to DRP auto toggle */
+#define TC_FLAGS_AUTO_TOGGLE_REQUESTED  BIT(24)
 
 /*
  * Clear all flags except TC_FLAGS_AUTO_TOGGLE_SUPPORTED,
@@ -2797,13 +2799,18 @@ static void tc_drp_auto_toggle_entry(const int port)
 	atomic_clear(task_get_event_bitmap(task_get_current()),
 		PD_EXIT_LOW_POWER_EVENT_MASK);
 
-	if (drp_state[port] == PD_DRP_TOGGLE_ON)
+	if (drp_state[port] == PD_DRP_TOGGLE_ON) {
 		tcpm_enable_drp_toggle(port);
+		TC_SET_FLAG(port, TC_FLAGS_AUTO_TOGGLE_REQUESTED);
+	} else {
+		TC_CLR_FLAG(port, TC_FLAGS_AUTO_TOGGLE_REQUESTED);
+	}
 }
 
 static void tc_drp_auto_toggle_run(const int port)
 {
 	enum pd_drp_next_states next_state;
+	enum pd_dual_role_states curr_drp_state = drp_state[port];
 	enum tcpc_cc_voltage_status cc1, cc2;
 
 	/*
@@ -2823,9 +2830,14 @@ static void tc_drp_auto_toggle_run(const int port)
 	/* Check for connection */
 	tcpm_get_cc(port, &cc1, &cc2);
 
+	if (!TC_CHK_FLAG(port, TC_FLAGS_AUTO_TOGGLE_REQUESTED) &&
+	    drp_state[port] == PD_DRP_TOGGLE_ON) {
+		curr_drp_state = PD_DRP_TOGGLE_OFF;
+	}
+
 	tc[port].drp_sink_time = get_time().val;
 	next_state = drp_auto_toggle_next_state(&tc[port].drp_sink_time,
-		tc[port].power_role, drp_state[port], cc1, cc2);
+		tc[port].power_role, curr_drp_state, cc1, cc2);
 
 	/*
 	 * The next state is not determined just by what is
@@ -2885,6 +2897,7 @@ static void tc_low_power_mode_entry(const int port)
 {
 	print_current_state(port);
 	CPRINTS("TCPC p%d Enter Low Power Mode", port);
+
 	tcpm_enter_low_power_mode(port);
 	TC_SET_FLAG(port, TC_FLAGS_LPM_ENGAGED);
 }
