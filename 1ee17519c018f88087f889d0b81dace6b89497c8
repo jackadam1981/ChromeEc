@@ -46,6 +46,30 @@
       "revId": "1ee17519c018f88087f889d0b81dace6b89497c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e994f3b_ab22ef97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-03-23T19:06:52Z",
+      "side": 1,
+      "message": "+Karthik for coreboot side of changes.",
+      "parentUuid": "46c8ecff_432a27be",
+      "range": {
+        "startLine": 9,
+        "startChar": 63,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "1ee17519c018f88087f889d0b81dace6b89497c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
