@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71669881_1ffb1b3d",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-23T20:07:01Z",
+      "side": 1,
+      "message": "Very true. Honestly, I\u0027ve had a change of heart.\nI now believe we should do most of the comparison in make with the intention of integrating with the core build system. It looks dirty now, but I think this can be rewritten more cleanly and generically.",
+      "parentUuid": "960e9c94_83a766b3",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 47
+      },
+      "revId": "dfc42f683902d4637ccd256caa6bc428f664bc4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0bf1ca4_91c12f87",
         "filename": "util/compare_build.sh",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-23T18:15:00Z",
       "side": 1,
       "message": "I think we will never hit this because we do \"set -e\"?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 2
+      },
+      "revId": "dfc42f683902d4637ccd256caa6bc428f664bc4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c73783_ec7f66f1",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-23T20:07:01Z",
+      "side": 1,
+      "message": "Very trueeeeeee\n\nIf we want to maintain set -e, we can use the solution in the latest PS.",
+      "parentUuid": "e0bf1ca4_91c12f87",
       "range": {
         "startLine": 142,
         "startChar": 0,
