@@ -334,6 +334,30 @@
     },
     {
       "key": {
+        "uuid": "d66f7dea_803dd1ad",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-23T08:51:12Z",
+      "side": 1,
+      "message": "ILM will be mapped to RAM if we enable ILM cache. We reserved 4K byte space in RAM for __ram_code:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/it83xx/config_chip_it8xxx2.h#23",
+      "parentUuid": "3882f926_3ec436ab",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66ee48a6_4a5044e4",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1

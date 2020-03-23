@@ -25,6 +25,76 @@
     },
     {
       "key": {
+        "uuid": "f8c7d31f_5268316d",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-23T08:51:12Z",
+      "side": 1,
+      "message": "No, we really want to put the __flash_dma_start at address 0, so we won\u0027t have a gap between beginning of text and __flash_dma_start.",
+      "parentUuid": "7c654d88_92e63ebf",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "39c8219f6575b0ab4d2eb3774fb37709e2a121ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef73f9bf_e939db58",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-23T08:51:12Z",
+      "side": 1,
+      "message": "Do we need to load initialization value into IROM (IRAM AT \u003e IROM)? So variables in data section can be initialized correctly.",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 9
+      },
+      "revId": "39c8219f6575b0ab4d2eb3774fb37709e2a121ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12de5886_f85fed13",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-03-23T08:51:12Z",
+      "side": 1,
+      "message": "Can you guard this section as well, because it is IT8XXX2 specific.",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 6
+      },
+      "revId": "39c8219f6575b0ab4d2eb3774fb37709e2a121ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a11e59de_2eba3239",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 2
