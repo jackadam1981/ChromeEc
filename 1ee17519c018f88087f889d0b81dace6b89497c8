@@ -22,6 +22,30 @@
       "revId": "1ee17519c018f88087f889d0b81dace6b89497c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c8ecff_432a27be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-23T17:58:15Z",
+      "side": 1,
+      "message": "It\u0027s best to wait until the AP changes are made. Otherwise, there could be a reboot loop due to the line appearing stuck asserted (or not since it\u0027s floating, but the risk is there).",
+      "parentUuid": "e28fee88_78b00cb1",
+      "range": {
+        "startLine": 9,
+        "startChar": 63,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "1ee17519c018f88087f889d0b81dace6b89497c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
