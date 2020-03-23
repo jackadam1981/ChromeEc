@@ -43,6 +43,7 @@ void espi_interrupt(void);
 void espi_vw_interrupt(void);
 void espi_enable_pad(int enable);
 void espi_init(void);
+int chip_get_ec_int(void);
 int chip_get_intc_group(int irq);
 void clock_cpu_standby(void);
 void spi_slv_int_handler(void);
