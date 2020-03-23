@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "8ee3b670_f21b776f",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T05:59:12Z",
+      "side": 1,
+      "message": "IT8XXX2 and MT8192_SCP is the 2 use cases for now.  I will use\n\n#if defined(CHIP_FAMILY_IT8XXX2)\n\n#else\n\n#endif\n\nunless we have the third use case.",
+      "parentUuid": "fb6ef3f7_68c07488",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d71fe9a9_c12cc8a2",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "074df796_a945c63b",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T05:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1d99686_5cb1e368",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e8359fb_de73464d",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
@@ -164,6 +212,30 @@
       "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4784c706_42456b03",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T05:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e8359fb_de73464d",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 6
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "fa9ecfd7_f2b28acc",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T05:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fd011e7_f632eefd",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66ee48a6_4a5044e4",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
@@ -210,6 +306,30 @@
       "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75a2577b_68ae3c0f",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T05:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66ee48a6_4a5044e4",
+      "range": {
+        "startLine": 83,
+        "startChar": 44,
+        "endLine": 83,
+        "endChar": 65
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -260,6 +380,30 @@
     },
     {
       "key": {
+        "uuid": "6a6bec88_35a7779d",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T05:59:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1cf9f7d2_29634f9b",
+      "range": {
+        "startLine": 219,
+        "startChar": 5,
+        "endLine": 219,
+        "endChar": 9
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8cd33d_4faaf4f9",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
@@ -307,6 +451,30 @@
     },
     {
       "key": {
+        "uuid": "69a3cfcb_3a4f49dc",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T05:59:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d59d72f0_0d2c5583",
+      "range": {
+        "startLine": 233,
+        "startChar": 5,
+        "endLine": 233,
+        "endChar": 9
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ecf2d82_361ab099",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
@@ -351,6 +519,30 @@
       "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1661e5a4_394e2a50",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T05:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd1b9e21_481ef8f1",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 6
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
