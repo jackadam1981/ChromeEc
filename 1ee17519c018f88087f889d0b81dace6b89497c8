@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e28fee88_78b00cb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-23T17:55:22Z",
+      "side": 1,
+      "message": "Does this need a cq depend on that work, or is it okay to commit before the AP firmware changes?",
+      "range": {
+        "startLine": 9,
+        "startChar": 63,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "1ee17519c018f88087f889d0b81dace6b89497c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
