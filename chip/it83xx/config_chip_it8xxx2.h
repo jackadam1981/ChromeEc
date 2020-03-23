@@ -82,6 +82,12 @@
 #define IT83XX_CHIP_FLASH_IS_KGD
 /* Set ILM (instruction local memory) size up to 1M bytes */
 #define IT83XX_CHIP_FLASH_SIZE_1MB
+/*
+ * ILM/DLM size register.
+ * bit[3-0] ILM size:
+ *     7: 512K byte (default setting), 8: 1M byte
+ */
+#define IT83XX_GCTRL_EIDSR 0xf02031
 /* chip id is 3 bytes */
 #define IT83XX_CHIP_ID_3BYTES
 /*
