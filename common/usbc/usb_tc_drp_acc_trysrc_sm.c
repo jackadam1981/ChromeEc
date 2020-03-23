@@ -82,6 +82,8 @@
 #define TC_FLAGS_WAKE_FROM_LPM          BIT(22)
 /* Flag to note the TCPM supports auto toggle */
 #define TC_FLAGS_AUTO_TOGGLE_SUPPORTED  BIT(23)
+/* Flag to note TCPM was requested to DRP auto toggle */
+#define TC_FLAGS_AUTO_TOGGLE_REQUESTED  BIT(24)
 
 /*
  * Clear all flags except TC_FLAGS_AUTO_TOGGLE_SUPPORTED,
@@ -2797,8 +2799,10 @@ static void tc_drp_auto_toggle_entry(const int port)
 	atomic_clear(task_get_event_bitmap(task_get_current()),
 		PD_EXIT_LOW_POWER_EVENT_MASK);
 
-	if (drp_state[port] == PD_DRP_TOGGLE_ON)
+	if (drp_state[port] == PD_DRP_TOGGLE_ON) {
 		tcpm_enable_drp_toggle(port);
+		TC_SET_FLAG(port, TC_FLAGS_AUTO_TOGGLE_REQUESTED);
+	}
 }
 
 static void tc_drp_auto_toggle_run(const int port)
@@ -2885,6 +2889,31 @@ static void tc_low_power_mode_entry(const int port)
 {
 	print_current_state(port);
 	CPRINTS("TCPC p%d Enter Low Power Mode", port);
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	/*
+	 * Need to verify we don't go into LOW_POWER for real if we
+	 * should have set DRP and didn't.  This can be caused by a
+	 * DRP mode change that we missed the configuration changes
+	 * before we performed the DRP enable
+	 */
+	if (TC_CHK_FLAG(port, TC_FLAGS_AUTO_TOGGLE_REQUESTED)) {
+		/* If DRP Auto Toggle was requested, then clear it */
+		TC_CLR_FLAG(port, TC_FLAGS_AUTO_TOGGLE_REQUESTED);
+	} else if (drp_state[port] == PD_DRP_TOGGLE_ON) {
+		/*
+		 * If DRP Auto Toggle was no requested but should
+		 * have been then send it back to UNATTACHED so we
+		 * don't lose this port due to the need of DRP
+		 */
+		set_state_tc(port,
+			     (tc[port].power_role == PD_ROLE_SINK)
+					? TC_UNATTACHED_SNK
+					: TC_UNATTACHED_SRC);
+		return;
+	}
+#endif
+
 	tcpm_enter_low_power_mode(port);
 	TC_SET_FLAG(port, TC_FLAGS_LPM_ENGAGED);
 }
