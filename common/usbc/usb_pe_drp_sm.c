@@ -3822,6 +3822,7 @@ static void pe_do_port_discovery_run(int port)
 	struct svdm_amode_data *modep =
 				pd_get_amode_data(port, PD_VDO_VID(payload[0]));
 	int ret = 0;
+	int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
 
 	if (!PE_CHK_FLAG(port,
 		PE_FLAGS_VDM_REQUEST_NAKED | PE_FLAGS_VDM_REQUEST_BUSY)) {
@@ -3837,6 +3838,17 @@ static void pe_do_port_discovery_run(int port)
 			ret = 1;
 			break;
 		case CMD_DISCOVER_SVID:
+			if (pe[port].cable.modes.tbt_compat &&
+			    sop == TCPC_TX_SOP) {
+				pe[port].partner_type = CABLE;
+				tx_emsg[port].header |=
+					PD_HEADER_SOP(TCPC_TX_SOP_PRIME);
+				pe[port].vdm_cmd = CMD_DISCOVER_SVID;
+				pe[port].vdm_data[0] = 0;
+				ret = 1;
+				break;
+			}
+
 			pe[port].vdm_cmd = CMD_DISCOVER_MODES;
 			ret = dfp_discover_modes(port, pe[port].vdm_data);
 			break;
@@ -3883,6 +3895,9 @@ static void pe_do_port_discovery_run(int port)
 			set_state_pe(port, PE_SNK_READY);
 	} else {
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_BUSY);
+
+		if (pe[port].partner_type == PORT)
+			tx_emsg[port].header |= PD_HEADER_SOP(TCPC_TX_SOP);
 
 		/*
 		 * Copy Vendor Defined Message (VDM) Header into
@@ -4122,6 +4137,7 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 
 static void pe_vdm_request_entry(int port)
 {
+	int sop = PD_HEADER_GET_SOP(tx_emsg[port].header);
 	print_current_state(port);
 
 	/* All VDM sequences are Interruptible */
@@ -4137,7 +4153,7 @@ static void pe_vdm_request_entry(int port)
 		tx_emsg[port].len = pe[port].vdm_cnt * 4;
 	}
 
-	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
+	prl_send_data_msg(port, sop, PD_DATA_VENDOR_DEF);
 
 	pe[port].vdm_response_timer = TIMER_DISABLED;
 }
@@ -4263,7 +4279,7 @@ static void pe_vdm_acked_entry(int port)
 	vdo_cmd = PD_VDO_CMD(payload[0]);
 	sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
 
-	if (sop == TCPC_TX_SOP) {
+	if (sop == TCPC_TX_SOP || sop == TCPC_TX_SOP_PRIME) {
 		/*
 		 * Handle Message From Port Partner
 		 */
@@ -4309,6 +4325,13 @@ static void pe_vdm_acked_entry(int port)
 				 */
 				if (sop == TCPC_TX_SOP)
 					pe[port].cable.modes.tbt_compat = 0;
+
+				/*
+				 * Limit cable speed if cable does not support
+				 * Intel SVID
+				 */
+				else if (sop == TCPC_TX_SOP_PRIME)
+					pe[port].cable.limit_cable_speed = 1;
 			}
 			break;
 		case CMD_DISCOVER_MODES:
