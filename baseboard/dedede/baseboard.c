@@ -9,6 +9,7 @@
 #include "board_config.h"
 #include "chipset.h"
 #include "common.h"
+#include "cros_board_info.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "intel_x86.h"
@@ -52,13 +53,27 @@ __override int intel_x86_get_pg_ec_dsw_pwrok(void)
 
 __override int intel_x86_get_pg_ec_all_sys_pwrgd(void)
 {
+	int use_fivr = 0;
+	int experiments;
+	int rv;
+
+	/*
+	 * Check if this board is using FIVR or not.  If we are, we don't need
+	 * to check PG_VCCIO_EXT_OD.
+	 */
+	if (!cbi_get_experiments(&experiments))
+		use_fivr = experiments & 0x1;
 	/*
 	 * ALL_SYS_PWRGD is an AND of DRAM PGOOD, VCCST PGOOD, and VCCIO_EXT
 	 * PGOOD.
 	 */
-	return gpio_get_level(GPIO_PG_PP1050_ST_OD) &&
-		gpio_get_level(GPIO_PG_DRAM_OD) &&
-		gpio_get_level(GPIO_PG_VCCIO_EXT_OD);
+	rv = gpio_get_level(GPIO_PG_PP1050_ST_OD) &&
+	     gpio_get_level(GPIO_PG_DRAM_OD);
+
+	if (use_fivr)
+		return rv && gpio_get_level(GPIO_PG_VCCIO_EXT_OD);
+
+	return rv;
 }
 
 __override void board_jsl_all_sys_pwrgd(int value)
