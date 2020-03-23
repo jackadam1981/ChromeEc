@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f77c2e8f_e4cf6b58",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T09:49:32Z",
+      "side": 1,
+      "message": "I see.  I just confused by \"4k-byte aligned\" message.",
+      "parentUuid": "f8c7d31f_5268316d",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "39c8219f6575b0ab4d2eb3774fb37709e2a121ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef73f9bf_e939db58",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8635582a_daa047e1",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T09:49:32Z",
+      "side": 1,
+      "message": "Ack.  core/cortex-m/ec.lds.S also put them into IROM.",
+      "parentUuid": "ef73f9bf_e939db58",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 9
+      },
+      "revId": "39c8219f6575b0ab4d2eb3774fb37709e2a121ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12de5886_f85fed13",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 2
@@ -92,6 +140,30 @@
       "revId": "39c8219f6575b0ab4d2eb3774fb37709e2a121ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c030f352_56899073",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T09:49:32Z",
+      "side": 1,
+      "message": "Done.  Also applied to MEMORY region.",
+      "parentUuid": "12de5886_f85fed13",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 6
+      },
+      "revId": "39c8219f6575b0ab4d2eb3774fb37709e2a121ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
