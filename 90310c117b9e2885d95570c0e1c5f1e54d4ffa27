@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2282a2e7_437e3e49",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T08:01:44Z",
+      "side": 1,
+      "message": "when I was reading this snippet, I was wondering if __data_start \u003d\u003d __data_lma_start?\n\nwhy not?  (or it\u0027s just fine?)\n\n  la t0, __data_start\n  la t2, __data_lma_start\n  beq t0, t2, skip_data_loop\n  la t1, __data_end\ndata_loop:\n  ...\nskip_data_loop:\n  ...",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 30
+      },
+      "revId": "90310c117b9e2885d95570c0e1c5f1e54d4ffa27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
