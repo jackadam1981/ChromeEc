@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf375fb6_c24d92de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-23T19:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "198c4032_691fd3da",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "5d45d16397b2282315046359b0da10e58ba7a5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f90f80ee_6c673340",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "5d45d16397b2282315046359b0da10e58ba7a5fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff6b343b_eed5f6f6",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-23T19:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f90f80ee_6c673340",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 9
+      },
+      "revId": "5d45d16397b2282315046359b0da10e58ba7a5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a8a5ba3c_d8f9177d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-23T19:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "865a3315_04785acb",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 59
+      },
+      "revId": "5d45d16397b2282315046359b0da10e58ba7a5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e3efeb1_4ffb359e",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2020-03-20T20:37:17Z",
       "side": 1,
       "message": "Why remove the check for the count being valid?",
+      "range": {
+        "startLine": 3945,
+        "startChar": 3,
+        "endLine": 3945,
+        "endChar": 48
+      },
+      "revId": "5d45d16397b2282315046359b0da10e58ba7a5fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c27f8239_87bbc1a4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3945,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-23T19:05:51Z",
+      "side": 1,
+      "message": "dfp_consume_cable_response checks for the count validity",
+      "parentUuid": "3e3efeb1_4ffb359e",
       "range": {
         "startLine": 3945,
         "startChar": 3,
