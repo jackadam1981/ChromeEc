@@ -575,8 +575,9 @@ struct pd_cable {
 	/* Note: this field is for TCPMv2's probing process */
 	enum pd_discovery_state discovery;
 
-	/* Note: this field is used for TCPMv2's discovery process */
+	/* Note: These fields are used for TCPMv2's discovery process */
 	struct pd_partner_alternate_mode modes;
+	bool limit_cable_speed;
 
 	/* Shared fields between TCPMv1 and TCPMv2 */
 	uint8_t is_identified;
