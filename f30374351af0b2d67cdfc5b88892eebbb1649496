@@ -286,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "363c427f_df1e2d16",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-23T08:14:25Z",
+      "side": 1,
+      "message": "I am not crystal clear about this. How does __ram_code VMA reside at ILM section, shouldn\u0027t it be in the IRAM section? Or ILM is a RAM space as well?",
+      "parentUuid": "fa9ecfd7_f2b28acc",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66ee48a6_4a5044e4",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
