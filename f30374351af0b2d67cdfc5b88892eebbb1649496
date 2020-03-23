@@ -310,6 +310,30 @@
     },
     {
       "key": {
+        "uuid": "3882f926_3ec436ab",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-03-23T08:28:17Z",
+      "side": 1,
+      "message": "What I learnt from Dino:\n\nILM is a 4KB static allocated IROM (without cache miss). \n\nchip/it83xx/config_chip.h:\n/* ...\nThe ILM for static code cache, CPU fetch instruction from\nILM(ILM -\u003e CPU)instead of flash(flash -\u003e IMMU -\u003e CPU) if enabled.\n*/",
+      "parentUuid": "363c427f_df1e2d16",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "f30374351af0b2d67cdfc5b88892eebbb1649496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66ee48a6_4a5044e4",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 1
