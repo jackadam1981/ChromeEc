@@ -159,4 +159,23 @@ void notify_sysjump_ready(volatile const task_id_t * const
  * @param port USB-C port number
  */
 void set_usb_mux_with_current_data_role(int port);
+
+/**
+ * Get the PD flags stored in BB Ram
+ *
+ * @param port USB-C port number
+ * @param flags pointer where flags are written to
+ * @return EC_SUCCESS on success
+ */
+int pd_get_saved_port_flags(int port, uint8_t *flags);
+
+/**
+ * Update the value of a given flag in BB Ram
+ *
+ * @param port USB-C port number
+ * @param flag flag to update
+ * @param val value of the flag
+ */
+void pd_update_saved_port_flags(int port, uint8_t flag, uint8_t val);
+
 #endif /* __CROS_EC_USB_COMMON_H */
