@@ -1566,6 +1566,9 @@ void charger_task(void *u)
 	int battery_critical;
 	int need_static = 1;
 	const struct charger_info * const info = charger_get_info();
+#ifdef CONFIG_CHARGER_LIMIT_TIMEOUT
+	timestamp_t deadline;
+#endif
 	int prev_plt_and_desired_mw;
 
 	/* Get the battery-specific values */
@@ -1851,6 +1854,33 @@ void charger_task(void *u)
 		}
 
 wait_for_it:
+
+#ifdef CONFIG_CHARGER_LIMIT_TIMEOUT
+	if (curr.state == ST_DISCHARGE || calc_is_full()) {
+			deadline.val = 0;
+	}else if ((curr.state == ST_CHARGE ||
+			    curr.state == ST_PRECHARGE) &&
+			   deadline.val == 0) {
+			/* must be !calc_is_full() */
+			deadline = get_time();
+			deadline.val += CONFIG_CHARGER_LIMIT_TIMEOUT_HOURS * HOUR;
+	}else if ((curr.state == ST_CHARGE ||
+			    curr.state == ST_PRECHARGE) &&
+			   timestamp_expired(deadline, NULL)
+			   && curr.requested_voltage > 4250) {
+				/* 1.
+				* When charging time is more than 48hr, and charging voltage over 4250mV.
+				* set charging voltage is 4250mV.
+				*/
+				/* must be !calc_is_full() && deadline.val != 0 */
+			curr.requested_voltage = 4250;
+	}
+	/* 2. (TBD)
+	* When battery temperature is more than 45 deg C, and charging voltage over 4100mV for two hours.
+	* set charging voltage is 4100mV.
+	*/
+#endif
+
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
 		if (chg_ctl_mode == CHARGE_CONTROL_NORMAL) {
 			sleep_usec = charger_profile_override(&curr);
