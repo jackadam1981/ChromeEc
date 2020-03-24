@@ -343,6 +343,12 @@ enum pd_alternate_modes {
 	PD_AMODE_COUNT,
 };
 
+/* Keeps a track of Alternate modes supported by the port partner */
+struct pd_partner_alternate_mode {
+	bool tbt_compat,
+	bool dp,
+};
+
 /* Policy structure for driving alternate mode */
 struct pd_policy {
 	/* index of svid currently being operated on */
@@ -568,6 +574,9 @@ struct pd_cable {
 
 	/* Note: this field is for TCPMv2's probing process */
 	enum pd_discovery_state discovery;
+
+	/* Note: this field is used for TCPMv2's discovery process */
+	struct pd_partner_alternate_mode modes;
 
 	/* Shared fields between TCPMv1 and TCPMv2 */
 	uint8_t is_identified;

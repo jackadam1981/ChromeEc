@@ -3832,6 +3832,16 @@ static void pe_do_port_discovery_run(int port)
 			ret = 1;
 			break;
 		case CMD_DISCOVER_IDENT:
+			/*
+			 * Enable Thunderbolt-Compat mode if the attached cable
+			 * supports superspeed and port partner supports modal
+			 * operation.
+			 */
+
+			if (is_modal(port, cnt, payload) &&
+			    is_tbt_cable_superspeed(port))
+				pe[port].cable.modes.tbt_compat = 1;
+
 			pe[port].vdm_cmd = CMD_DISCOVER_SVID;
 			pe[port].vdm_data[0] = 0;
 			ret = 1;
