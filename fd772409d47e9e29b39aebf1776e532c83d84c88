@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9a5e00d_9166e71a",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-24T17:33:39Z",
+      "side": 1,
+      "message": "Technically you should be able to just do:\n\n \tgit -C \\$@ checkout --quiet \\$(@:ec-%\u003d%)\n\nsince a non-shallow clone will always include all refs",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 39
+      },
+      "revId": "fd772409d47e9e29b39aebf1776e532c83d84c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
