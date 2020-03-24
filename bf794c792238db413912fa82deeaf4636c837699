@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3280021a_4418358a",
+        "filename": "common/blink.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-24T23:33:35Z",
+      "side": 1,
+      "message": "nit: no \u0027{}\u0027 for single line if-clause.",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "bf794c792238db413912fa82deeaf4636c837699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
