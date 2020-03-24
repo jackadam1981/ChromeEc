@@ -589,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "6c6d4465_a84d608c",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-24T06:16:36Z",
+      "side": 1,
+      "message": "There is no test this part currently. But we should need this if we need int2 as an interrupt, so I add this anyway.",
+      "parentUuid": "1d496d48_b065e882",
+      "range": {
+        "startLine": 1770,
+        "startChar": 0,
+        "endLine": 1770,
+        "endChar": 6
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a687f0e_a07c67ed",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 9
@@ -788,6 +812,30 @@
       "writtenOn": "2020-03-16T08:14:02Z",
       "side": 1,
       "message": "Can this number be bigger? please add a comment to say why we choose 256",
+      "range": {
+        "startLine": 1964,
+        "startChar": 29,
+        "endLine": 1964,
+        "endChar": 32
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbce306f_a885609e",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-24T06:16:36Z",
+      "side": 1,
+      "message": "The max value of this number is 2048, but I have not yet found why.",
+      "parentUuid": "4af8c080_f7dbae66",
       "range": {
         "startLine": 1964,
         "startChar": 29,
