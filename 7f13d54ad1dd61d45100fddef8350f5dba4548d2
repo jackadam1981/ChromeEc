@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "082cc665_eb78a839",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3832,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-24T01:51:00Z",
+      "side": 1,
+      "message": "how about keeping this at line 3829 and let only line 3851 override it?",
+      "range": {
+        "startLine": 3832,
+        "startChar": 3,
+        "endLine": 3832,
+        "endChar": 32
+      },
+      "revId": "7f13d54ad1dd61d45100fddef8350f5dba4548d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
