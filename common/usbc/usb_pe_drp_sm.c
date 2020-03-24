@@ -4279,6 +4279,15 @@ static void pe_vdm_acked_entry(int port)
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
 			dfp_consume_identity(port, cnt, payload);
+			/*
+			 * Ref USB Type-C Cable and Connector Spec,
+			 * fig F-1 TBT discovery flow.
+			 * Disable Thunderbolt-Compat mode if the port partner
+			 * does not support modal operation.
+			 */
+			if (!is_modal(port, cnt, payload))
+				pe[port].cable.modes.tbt_compat = 0;
+
 #ifdef CONFIG_CHARGE_MANAGER
 			if (pd_charge_from_device(pd_get_identity_vid(port),
 						pd_get_identity_pid(port))) {
