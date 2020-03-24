@@ -111,6 +111,8 @@
 #define IT83XX_RISCV_WAKEUP_CPU_WITHOUT_INT_ENABLED
 /* Auto reset rx fifo while CS# deasserted. */
 #define IT83XX_SPI_AUTO_RESET_RX_FIFO
+/* CPU accesses FIFO to reach rx valid data length. */
+#define IT83XX_SPI_RX_VALID_INT
 /* Chip actually has TCPC physical port count. */
 #define IT83XX_USBPD_PHY_PORT_COUNT    2
 #else
