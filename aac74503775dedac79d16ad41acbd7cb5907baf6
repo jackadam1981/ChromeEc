@@ -118,6 +118,30 @@
       "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b394c2c_f3f0c64e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2913,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-24T22:45:54Z",
+      "side": 1,
+      "message": "### Starts with a pd_chipset_start(DRP_TOGGLE_OFF)\n2020-03-24 16:30:03 [0.311884 power state 5 \u003d S5-\u003eS3, in 0x000b]\n2020-03-24 16:30:03 P0: PD_DRP_TOGGLE_OFF \u003d\u003e PD_DRP_TOGGLE_OFF\n2020-03-24 16:30:03 P1: PD_DRP_TOGGLE_OFF \u003d\u003e PD_DRP_TOGGLE_OFF\n\n### nct3807 is awake and exiting LPM, state is still DRP_TOGGLE_OFF\n2020-03-24 16:30:03 [0.312344 TCPC p1 Exit Low Power Mode]\n2020-03-24 16:30:03 [0.312433 PD:S5-\u003eS3]\n2020-03-24 16:30:03 [0.315250 TCPC p1 init ready]\n2020-03-24 16:30:03 P1: leaving lpm, drp_state\u003dPD_DRP_TOGGLE_OFF\n\n### tc_drp_auto_toggle_entry is completing past where we would\n### set DRP and state is still DRP_TOGGLE_OFF\n2020-03-24 16:30:03 [0.315359 C1: DRPAutoToggle]\n2020-03-24 16:30:03 P1: after setting DRP state\u003dPD_DRP_TOGGLE_OFF\n\n### pd_chipset_resume(PD_DRP_TOGGLE_ON) happens\n2020-03-24 16:30:03 RTC: 0x0009a49d (631965.00 s)\n2020-03-24 16:30:03 [0.316079 power state 2 \u003d S3, in 0x000b]\n2020-03-24 16:30:03 RTC: 0x0009a49d (631965.00 s)\n2020-03-24 16:30:03 [0.316200 power state 6 \u003d S3-\u003eS0, in 0x000b]\n2020-03-24 16:30:03 P0: PD_DRP_TOGGLE_OFF \u003d\u003e PD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: PD_DRP_TOGGLE_OFF \u003d\u003e PD_DRP_TOGGLE_ON\n\n### tc_drp_auto_toggle_run and now state is PD_DRP_TOGGLE_ON\n### continue to loop until we timeout\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 [0.316758 PD:S3-\u003eS0]\n2020-03-24 16:30:03 [0.316817 USB charge p0 m2 i0]\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 [0.317583 USB charge p1 m2 i0]\n2020-03-24 16:30:03 RTC: 0x0009a49d (631965.00 s)\n2020-03-24 16:30:03 [0.318536 power state 3 \u003d S0, in 0x000b]\n2020-03-24 16:30:03 [0.319585 Lid Accel: 0: init failed: 1]\n2020-03-24 16:30:03 [0.321796 power state 3 \u003d S0, in 0x000f]\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 [0.322986 Pass through S0_PWROK_OD: 1]\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 [0.337334 Base Accel: MS Done Init type:0x0 range:2]\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 [0.345514 Base Accel ODR: 10000 - roundup 1 from config 1 [AP 0]]\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 [0.348305 Base Gyro: MS Done Init type:0x1 range:1000]\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 [0.354124 Base Gyro ODR: 0 - roundup 0 from config 0 [AP 0]]\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 [0.387643 SW 0x05]\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 [0.393082 C0: PE_SNK_Ready]\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n2020-03-24 16:30:03 P1: DRP_run state\u003dPD_DRP_TOGGLE_ON\n\n### Timed out and heading for LOW_POWER_MODE\n2020-03-24 16:30:03 P1: Leaving DRP for LPM\n2020-03-24 16:30:03 [0.420562 C1: LowPowerMode]\n\n### Setting the hardware for LPM and state is PD_DRP_TOGGLE_ON\n### no DRP in the TCPC hardware\n2020-03-24 16:30:03 [0.420617 TCPC p1 Enter Low Power Mode]\n2020-03-24 16:30:03 P1: LPM state\u003dPD_DRP_TOGGLE_ON",
+      "parentUuid": "a843a9de_0eca9d19",
+      "range": {
+        "startLine": 2903,
+        "startChar": 1,
+        "endLine": 2913,
+        "endChar": 9
+      },
+      "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
