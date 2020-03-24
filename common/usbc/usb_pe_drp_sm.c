@@ -4306,6 +4306,19 @@ static void pe_vdm_acked_entry(int port)
 			break;
 		case CMD_DISCOVER_SVID:
 			dfp_consume_svids(port, cnt, payload);
+			/*
+			 * Ref USB Type-C Cable and Connector Spec,
+			 * fig F-1 TBT discovery flow.
+			 */
+			if (!is_intel_svid(port, pe[port].am_policy.svid_cnt)) {
+				/*
+				 * Disable Thunderbolt-Compat mode if port
+				 * partner does not support Intel SVID.
+				 */
+				if (sop == TCPC_TX_SOP)
+					CABLE_CLR_FLAG(port,
+						CABLE_FLAGS_TBT_COMPAT_ENABLE);
+			}
 			break;
 		case CMD_DISCOVER_MODES:
 			dfp_consume_modes(port, cnt, payload);
