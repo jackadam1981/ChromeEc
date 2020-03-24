@@ -29,6 +29,7 @@ driver-$(CONFIG_ACCEL_LIS2DS)+=accel_lis2ds.o stm_mems_common.o
 driver-$(CONFIG_BC12_DETECT_MAX14637)+=bc12/max14637.o
 driver-$(CONFIG_BC12_DETECT_PI3USB9201)+=bc12/pi3usb9201.o
 driver-$(CONFIG_BC12_DETECT_PI3USB9281)+=bc12/pi3usb9281.o
+driver-$(CONFIG_BC12_DETECT_MT6360)+=bc12/mt6360.o
 
 # Gyrometers
 driver-$(CONFIG_GYRO_L3GD20H)+=gyro_l3gd20h.o
