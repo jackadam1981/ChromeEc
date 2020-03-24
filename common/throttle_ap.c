@@ -70,6 +70,21 @@ void throttle_ap(enum throttle_level level,
 
 }
 
+void throttle_ap_prochot_input_interrupt(enum gpio_signal signal)
+{
+	int prochot_asserted;
+
+	prochot_asserted = gpio_get_level(signal);
+
+	if (IS_ENABLED(CONFIG_CPU_PROCHOT_ACTIVE_LOW))
+		prochot_asserted = !prochot_asserted;
+
+	if (prochot_asserted)
+		CPRINTS("External PROCHOT assertion detected");
+	else
+		CPRINTS("External PROCHOT condition cleared");
+}
+
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_APTHROTTLE
