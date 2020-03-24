@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4530cd0d_2a713236",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "you didn\u0027t use BMI160_DPS_SEL_2000 in bmi160.c.\nI think you can define BMI_DPS_SEL_2000 to 0x00 directly.\nSame as others.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 49
+      },
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2167b8a0_a7522a81",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "Ditto. Define BMI_CONF_REG(_sensor) to (0x40 + 2 * (_sensor)) directly.\nThen BMI160_CONF_REG is not needed.",
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "061e45c0_bb8d9cfc",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b17bba4_1add264f",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "How do we know current is in normal mode or fast start-up mode?",
+      "range": {
+        "startLine": 791,
+        "startChar": 9,
+        "endLine": 791,
+        "endChar": 20
+      },
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c4e960f_33e863f3",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "extra empty line",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 0
+      },
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "677e27de_23f62d09",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "This needs \"console.h\"",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4ff4bbb_7b83fabb",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "Does BMI260 also need this?\nIf yes, please update the comment.",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 7
+      },
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71034cce_b4684b23",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 221,
+        "endChar": 7
+      },
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22dcf599_5206a15f",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 293,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 7
+      },
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "620214fe_d9a43ce4",
+        "filename": "driver/accelgyro_bmi_common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "why do we need this in common.h?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72a3a41_e9405733",
+        "filename": "driver/accelgyro_bmi_common.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "bmi_get_xyz_reg",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 15
+      },
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd4ca4d1_4f429f19",
+        "filename": "include/config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4480,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-03-24T09:05:06Z",
+      "side": 1,
+      "message": "Define",
+      "range": {
+        "startLine": 4480,
+        "startChar": 3,
+        "endLine": 4480,
+        "endChar": 9
+      },
+      "revId": "3c120cf9b4481a74c11bd7feef61ede2d8187d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
