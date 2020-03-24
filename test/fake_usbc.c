@@ -197,6 +197,11 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 {
 }
 
+bool is_tbt_cable_superspeed(int port)
+{
+	return false;
+}
+
 void pd_set_dual_role(int port, enum pd_dual_role_states state)
 {
 }
