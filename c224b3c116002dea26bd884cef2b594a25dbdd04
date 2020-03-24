@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f15a04b6_c6c0f732",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-24T23:30:06Z",
+      "side": 1,
+      "message": "nit: remove this todo since it is done",
+      "revId": "c224b3c116002dea26bd884cef2b594a25dbdd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81232b7d_33b7f0de",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-24T23:30:06Z",
+      "side": 1,
+      "message": "nit: missing newline",
+      "revId": "c224b3c116002dea26bd884cef2b594a25dbdd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "101df25f_2c865646",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-24T23:30:06Z",
+      "side": 1,
+      "message": "nit: TUSB544 is not modified (\"modified\" here refers to the USB_MUX_FLAG_SET_WITHOUT_FLIP)",
+      "range": {
+        "startLine": 180,
+        "startChar": 39,
+        "endLine": 180,
+        "endChar": 47
+      },
+      "revId": "c224b3c116002dea26bd884cef2b594a25dbdd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
