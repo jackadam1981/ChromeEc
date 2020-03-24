@@ -22,6 +22,30 @@
       "revId": "11d8569da324535454ebd2e055306659fae14222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12932bf3_4c7b3ae2",
+        "filename": "common/blink.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-24T00:05:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37fbe46c_633b19e8",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "11d8569da324535454ebd2e055306659fae14222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
