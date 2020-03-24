@@ -120,6 +120,10 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 int charger_profile_override(struct charge_state_data *curr)
 {
+#ifdef CONFIG_CHARGER_LIMIT_TIMEOUT
+	static timestamp_t deadline_48;
+	static timestamp_t deadline_2;
+#endif
 	/* battery temp in 0.1 deg C */
 	int bat_temp_c = curr->batt.temperature - 2731;
 
@@ -200,6 +204,44 @@ int charger_profile_override(struct charge_state_data *curr)
 		curr->state = ST_IDLE;
 		break;
 	}
+
+#ifdef CONFIG_CHARGER_LIMIT_TIMEOUT
+	if (curr->state == ST_DISCHARGE) {
+		deadline_48.val = 0;
+	/* start to count 48hours */
+	}else if ((curr->state == ST_CHARGE ||
+				curr->state == ST_PRECHARGE) &&
+				deadline_48.val == 0) {
+			/* must be !calc_is_full() */
+		deadline_48.val = get_time().val + CONFIG_CHARGER_LIMIT_TIMEOUT_HOURS * HOUR;
+	/* check if time expired and charging voltage > 4250 */
+	}else if ((curr->state == ST_CHARGE ||
+			    curr->state == ST_PRECHARGE) &&
+				timestamp_expired(deadline_48, NULL) &&
+				curr->chg.voltage >= 4250) {
+		curr->requested_voltage = 4250;
+	}
+	/* 2. (TBD)
+	* When battery temperature is more than 45 deg C, and charging voltage over 4100mV for two hours.
+	* set charging voltage is 4100mV.
+	*/
+	if (curr->state == ST_DISCHARGE ||
+		curr->chg.voltage < 4100 ||
+		bat_temp_c < 450) {
+		deadline_2.val = 0;
+	}else if ((curr->state == ST_CHARGE ||
+				curr->state == ST_PRECHARGE) &&
+				deadline_2.val == 0) {
+			/* must be !calc_is_full() */
+		deadline_2.val = get_time().val + CONFIG_CHARGER_LIMIT_TIMEOUT_HOURS_TEMP * HOUR;
+	}else if ((curr->state == ST_CHARGE ||
+			    curr->state == ST_PRECHARGE) &&
+				timestamp_expired(deadline_2, NULL) &&
+				curr->chg.voltage >= 4100 &&
+				bat_temp_c >= 450) {
+		curr->requested_voltage = 4100;
+	}
+#endif
 
 #ifdef VARIANT_KUKUI_CHARGER_MT6370
 	mt6370_charger_profile_override(curr);
