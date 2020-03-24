@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88d290c5_955f56cc",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-24T21:33:38Z",
+      "side": 1,
+      "message": "noticed these are moved back in follow up CL.\nhow about not moving these in this CL itself?",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 1
+      },
+      "revId": "c9f99b404388dc61e3f01909abbf4cccf1e24b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
