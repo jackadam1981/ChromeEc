@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4824fd69_d401cf14",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-24T20:35:24Z",
+      "side": 1,
+      "message": "replacing this with \u0026: does not seem to prevent multiple runs of util_precompile.py, this will have to be further investigated.",
+      "range": {
+        "startLine": 355,
+        "startChar": 28,
+        "endLine": 355,
+        "endChar": 29
+      },
+      "revId": "d18782b8b8ced7ac56e5927f61fa407e029b39cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
