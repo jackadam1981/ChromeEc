@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c00be3e1_569498e7",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-24T15:44:31Z",
+      "side": 1,
+      "message": "let add a comment here saying, that when ANX7447_REG_HPD_MODE is 0b, then the TCPC will generate the HPD pulse from internal timer instead of using the ANX7447_REG_HPD_OUT to set the HPD signal",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "0560f22c16305ced13a76fd667894668560c50e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946c00d0_ae22452c",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-24T15:44:31Z",
+      "side": 1,
+      "message": "we can skip this write if ANX7447_REG_HPD_IRQ0 is already 0b (which it always be since I am guessing it reset after the TCPC generates the pulse), right?\n\nLet\u0027s also add a comment here saying we are asking the TCPC to generate a 750ms pulse on the HPD line by setting ANX7447_REG_HPD_IRQ0",
+      "range": {
+        "startLine": 488,
+        "startChar": 2,
+        "endLine": 488,
+        "endChar": 55
+      },
+      "revId": "0560f22c16305ced13a76fd667894668560c50e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
