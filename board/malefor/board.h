@@ -1,4 +1,4 @@
-/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+/* Copyright 2019 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -22,6 +22,28 @@
 /* Keyboard features */
 
 /* Sensors */
+/*  accelerometer in lid */
+#define CONFIG_ACCEL_LIS2DE             /* Lid accel */
+#define CONFIG_ACCELGYRO_LSM6DSM        /* Base accel */
+
+/* Sensors without hardware FIFO are in forced mode */
+#define CONFIG_ACCEL_FORCE_MODE_MASK \
+	BIT(LID_ACCEL)
+
+#if 0
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_UPDATE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+#endif
+
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+
+/* Camera VSYNC */
+#define CONFIG_SYNC
+#define CONFIG_SYNC_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(VSYNC)
 
 /* USB Type C and USB PD defines */
 /*
@@ -81,6 +103,14 @@
 enum battery_type {
 	BATTERY_LGC011,
 	BATTERY_TYPE_COUNT,
+};
+
+enum sensor_id {
+	LID_ACCEL = 0,
+	BASE_ACCEL,
+	BASE_GYRO,
+	VSYNC,
+	SENSOR_COUNT,
 };
 
 /* TODO: b/143375057 - Remove this code after power on. */
