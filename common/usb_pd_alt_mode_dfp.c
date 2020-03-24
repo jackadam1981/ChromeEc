@@ -484,6 +484,9 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 		cable->is_identified = 1;
 	}
 	cable->discovery = PD_DISC_COMPLETE;
+
+	if (is_tbt_cable_superspeed(port))
+		cable->modes.tbt_compat = 1;
 }
 
 /*

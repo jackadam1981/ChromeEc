@@ -4041,6 +4041,15 @@ static void pe_vdm_identity_request_cbl_run(int port)
 					"0x%04x 0x%04x", port,
 					rx_emsg[port].header, payload[0]);
 			}
+
+			/*
+			 * Ref USB Type-C Cable and Connector Spec,
+			 * fig F-1 TBT discovery flow.
+			 * Disable Thunderbolt-Compat mode if emarker is absent
+			 */
+			if (pe[port].cable.discovery == PD_DISC_FAIL)
+				pe[port].cable.modes.tbt_compat = 0;
+
 			/* Return to calling state (SRC_DISCOVERY, or ready) */
 			set_state_pe(port, get_last_state_pe(port));
 			return;
