@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4eb65605_11f68e1b",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-24T23:39:52Z",
+      "side": 1,
+      "message": "Here you need:\n\t\t.usb_port \u003d USBC_PORT_C0,\n\t\t.i2c_port \u003d I2C_PORT_USB_AP_MUX,\n\t\t.i2c_addr_flags \u003d AMD_FP5_MUX_I2C_ADDR_FLAGS,\n\t\t.driver \u003d \u0026amd_fp5_usb_mux_driver,\n\t\t.next_mux \u003d \u0026usbc0_sbu_mux,",
+      "revId": "51e912f5839781f7451649b77fc0ea9b9ceba065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
