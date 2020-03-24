@@ -22,6 +22,30 @@
       "revId": "fd772409d47e9e29b39aebf1776e532c83d84c88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb2fcac9_430ebc55",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 18
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-24T17:50:43Z",
+      "side": 1,
+      "message": "Ahhh, good to know. Fixed.",
+      "parentUuid": "d9a5e00d_9166e71a",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 39
+      },
+      "revId": "fd772409d47e9e29b39aebf1776e532c83d84c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
