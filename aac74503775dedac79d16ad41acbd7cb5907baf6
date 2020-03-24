@@ -70,6 +70,30 @@
       "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0dc2566_e6769e68",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2913,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-24T20:44:23Z",
+      "side": 1,
+      "message": "The flag is more than execution just went through DRP_AUTO_TOGGLE.  It indicates that it in fact enabled DRP.  The code goes through whether DRP is really requested or not. I tried what you gave me and the USB thumb drive that I inserted was ignored.\n\nIt does feel like a hack but not sure the right way to wait for the TOGGLE_OFF execution of wake up from LOW_POWER into DRP_AUTO_TOGGLE can be accelerated to get it out of that state and back to LOW_POWER to perform as it is supposed to.\n\nI can\u0027t access the link from my workstation.  I will look from my CrBook in a bit.  From the rest of the comment, I agree that this is a race condition.  I just don\u0027t know how to slow down one or speed up the other.",
+      "parentUuid": "f741327d_ff3c78d5",
+      "range": {
+        "startLine": 2903,
+        "startChar": 1,
+        "endLine": 2913,
+        "endChar": 9
+      },
+      "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
