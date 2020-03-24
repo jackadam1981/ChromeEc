@@ -260,6 +260,8 @@ enum pd_dual_role_states drp_state[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[0 ... (CONFIG_USB_PD_PORT_MAX_COUNT - 1)] =
 		CONFIG_USB_PD_INITIAL_DRP_STATE};
 
+static uint8_t saved_flgs[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 #ifdef CONFIG_USBC_VCONN
 static void set_vconn(int port, int enable);
 #endif
@@ -1015,8 +1017,66 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 
 void tc_state_init(int port)
 {
-	/* Unattached.SNK is the default starting state. */
-	restart_tc_sm(port, TC_UNATTACHED_SNK);
+	/*
+	 * If there's an explicit contract in place, let's restore the data and
+	 * power roles such that any messages we send to the port partner will
+	 * still be valid.
+	 */
+	if (pd_comm_is_enabled(port) &&
+		(pd_get_saved_port_flags(port, &saved_flgs[port]) ==
+								EC_SUCCESS) &&
+		(saved_flgs[port] & PD_BBRMFLG_EXPLICIT_CONTRACT)) {
+		/* Only attempt to maintain previous sink contracts */
+		if ((saved_flgs[port] & PD_BBRMFLG_POWER_ROLE) ==
+								PD_ROLE_SINK) {
+			tc_set_power_role(port,
+				(saved_flgs[port] & PD_BBRMFLG_POWER_ROLE) ?
+				PD_ROLE_SOURCE : PD_ROLE_SINK);
+			tc_set_data_role(port,
+				 (saved_flgs[port] & PD_BBRMFLG_DATA_ROLE) ?
+				 PD_ROLE_DFP : PD_ROLE_UFP);
+#ifdef CONFIG_USBC_VCONN
+			set_vconn(port,
+				(saved_flgs[port] & PD_BBRMFLG_VCONN_ROLE) ?
+				PD_ROLE_VCONN_ON : PD_ROLE_VCONN_OFF);
+#endif /* CONFIG_USBC_VCONN */
+			if (IS_ENABLED(CONFIG_USB_PE_SM)) {
+				/*
+				 * Since there is an explicit contract in place,
+				 * let's issue a SoftReset such that we can
+				 * renegotiate with our port partner in order
+				 * to synchronize our state machines.
+				 */
+				pe_dpm_request(port,
+						DPM_REQUEST_SOFT_RESET_SEND);
+
+				/*
+				 * Re-discover any alternate modes we may have
+				 * been using with this port partner.
+				 */
+				pe_dpm_request(port,
+						DPM_REQUEST_PORT_DISCOVERY);
+			}
+		} else {
+			/*
+			 * Vbus was turned off during the power supply reset
+			 * earlier, so clear the contract flag and re-start as
+			 * default role
+			 */
+			pd_update_saved_port_flags(port,
+				PD_BBRMFLG_EXPLICIT_CONTRACT, 0);
+		}
+		/*
+		 * Set the TCPC reset event such that we can set our CC
+		 * terminations, determine polarity, and enable RX so we
+		 * can hear back from our port partner if maintaining our old
+		 * connection.
+		 */
+		task_set_event(task_get_current(), PD_EVENT_TCPC_RESET, 0);
+	} else {
+		/* Unattached.SNK is the default starting state. */
+		restart_tc_sm(port, TC_UNATTACHED_SNK);
+	}
 
 	/*
 	 * If the TCPC isn't accessed, it will enter low power mode
@@ -1061,6 +1121,7 @@ uint8_t tc_get_pd_enabled(int port)
 void tc_set_power_role(int port, enum pd_power_role role)
 {
 	tc[port].power_role = role;
+	pd_update_saved_port_flags(port, PD_BBRMFLG_POWER_ROLE, role);
 }
 
 /*
@@ -1148,6 +1209,8 @@ void tc_set_data_role(int port, enum pd_data_role role)
 {
 	tc[port].data_role = role;
 
+	pd_update_saved_port_flags(port, PD_BBRMFLG_DATA_ROLE, role);
+
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
 		set_usb_mux_with_current_data_role(port);
 
@@ -1194,6 +1257,8 @@ static void set_vconn(int port, int enable)
 		TC_SET_FLAG(port, TC_FLAGS_VCONN_ON);
 	else
 		TC_CLR_FLAG(port, TC_FLAGS_VCONN_ON);
+
+	pd_update_saved_port_flags(port, PD_BBRMFLG_VCONN_ROLE, enable);
 
 	/*
 	 * TODO(chromium:951681): When we are sourcing VCONN, we should make

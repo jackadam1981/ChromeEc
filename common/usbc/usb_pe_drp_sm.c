@@ -676,6 +676,7 @@ static void pe_invalidate_explicit_contract(int port)
 {
 	pe_set_frs_enable(port, 0);
 	PE_CLR_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
+	pd_update_saved_port_flags(port, PD_BBRMFLG_EXPLICIT_CONTRACT, 0);
 }
 
 /*
@@ -1544,6 +1545,8 @@ static void pe_src_transition_supply_run(int port)
 			/* NOTE: Second pass through this code block */
 			/* Explicit Contract is now in place */
 			PE_SET_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
+			pd_update_saved_port_flags(port,
+				PD_BBRMFLG_EXPLICIT_CONTRACT, 1);
 			/*
 			 * Set first message flag to trigger a wait and add
 			 * jitter delay when operating in PD2.0 mode.
@@ -2178,6 +2181,9 @@ static void pe_snk_select_capability_run(int port)
 			if (type == PD_CTRL_ACCEPT) {
 				/* explicit contract is now in place */
 				PE_SET_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
+				pd_update_saved_port_flags(port,
+					PD_BBRMFLG_EXPLICIT_CONTRACT, 1);
+
 				set_state_pe(port, PE_SNK_TRANSITION_SINK);
 
 				/*
