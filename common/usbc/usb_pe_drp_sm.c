@@ -3832,6 +3832,10 @@ static void pe_do_port_discovery_run(int port)
 			ret = 1;
 			break;
 		case CMD_DISCOVER_IDENT:
+			if (!is_modal(port, cnt, payload)) {
+				pe[port].cable.modes.tbt_compat =
+							PD_ALT_DISABLED;
+			}
 			pe[port].vdm_cmd = CMD_DISCOVER_SVID;
 			pe[port].vdm_data[0] = 0;
 			ret = 1;
