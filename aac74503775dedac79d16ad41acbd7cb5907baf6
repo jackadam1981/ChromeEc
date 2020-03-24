@@ -46,6 +46,30 @@
       "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f741327d_ff3c78d5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2913,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-24T20:19:50Z",
+      "side": 1,
+      "message": "I think I like PS2 them most\n\nInstead of introducting a new flag, you can use get_last_state_tc(port) \u003d\u003d tc_drp_auto_toggle\n\nso,\n\nif (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) \u0026\u0026 drp_state[port] \u003d\u003d PD_DRP_TOGGLE_ON \u0026\u0026 get_last_state_tc(port) !\u003d tc_drp_auto_toggle) {\n  // We missed going through auto toggle state, reset back to unattached to ensure proper cycling\n  set_state_tc(port, power_role? SNK : SRC);\n}\n\nThis definitely seems like a hack but it is very limited; we should definitely figure out and fix long term why the state machine transitioning to low power mode instead of auto toggle\n\n\n---\n\nactually if I look at the state transitions into low_power_mode (https://cs.corp.google.com/chromeos_public/src/platform/ec/common/usbc/usb_tc_drp_acc_trysrc_sm.c?q\u003df:platform/ec+port,%5C+tc_low_power_mode\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)\u0026l\u003d2433\u0026dr\u003dC) the non auto toggle paths are guarded by conditions that say it is not AUTO_TOGGLE_ON. There is definitely something racy happening here",
+      "parentUuid": "172b0774_235cd7ac",
+      "range": {
+        "startLine": 2903,
+        "startChar": 1,
+        "endLine": 2913,
+        "endChar": 9
+      },
+      "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
