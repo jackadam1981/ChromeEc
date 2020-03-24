@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e84ee3b2_fad21f30",
+        "filename": "baseboard/volteer/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-24T17:20:20Z",
+      "side": 1,
+      "message": "I liked the name better from patchset 1.  Or maybe led_set_charge_port_tick() to follow the convention of most users of HOOK_TICK.",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "4a8205c1e3decbac70386f5defcd780b8bbb5644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
