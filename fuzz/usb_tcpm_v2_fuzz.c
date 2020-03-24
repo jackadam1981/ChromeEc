@@ -24,3 +24,8 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 				uint16_t head)
 {
 }
+
+bool is_tbt_cable_superspeed(int port)
+{
+	return false;
+}
