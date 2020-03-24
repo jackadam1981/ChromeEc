@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d98282a3_484d9d43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2020-03-24T03:11:27Z",
+      "side": 1,
+      "message": "There is no big difference in power, use internal timer to generate HPD IRQ is more accurate (~750ms).",
+      "parentUuid": "3a30ee60_1bfff7cc",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "f4170f9cb7ffe9f31845cf8063186ca52921488f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c7b390a_2c3072ec",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e66edafa_a38abe26",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2020-03-24T03:11:27Z",
+      "side": 1,
+      "message": "The patch is based on the latest commit of master branch. And I have problem to use repo upload. I\u0027ll remove this macro define.",
+      "parentUuid": "5c7b390a_2c3072ec",
+      "range": {
+        "startLine": 104,
+        "startChar": 7,
+        "endLine": 104,
+        "endChar": 47
+      },
+      "revId": "f4170f9cb7ffe9f31845cf8063186ca52921488f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aecfddff_cc074c7f",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "f4170f9cb7ffe9f31845cf8063186ca52921488f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10069bf9_035d1ab4",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2020-03-24T03:11:27Z",
+      "side": 1,
+      "message": "The USB_MUX_FLAG_NOT_TCPC defined as \"TCPC/MUX device used only as MUX\". It is OK to use this flag, and I didn\u0027t find out any define of \"USB_MUX_FLAG_MUX_GENS_HPD\".",
+      "parentUuid": "aecfddff_cc074c7f",
+      "range": {
+        "startLine": 480,
+        "startChar": 14,
+        "endLine": 480,
+        "endChar": 19
+      },
+      "revId": "f4170f9cb7ffe9f31845cf8063186ca52921488f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
