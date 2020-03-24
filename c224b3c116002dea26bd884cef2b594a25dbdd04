@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5e7d1cea_562262c9",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-24T23:49:58Z",
+      "side": 1,
+      "message": "Can you create a #define for this in either baseboard.h or in the driver header file?",
+      "range": {
+        "startLine": 317,
+        "startChar": 19,
+        "endLine": 317,
+        "endChar": 23
+      },
+      "revId": "c224b3c116002dea26bd884cef2b594a25dbdd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f15a04b6_c6c0f732",
         "filename": "board/ezkinil/board.c",
         "patchSetId": 3
