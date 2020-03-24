@@ -94,6 +94,30 @@
       "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a843a9de_0eca9d19",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2913,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-24T21:34:29Z",
+      "side": 1,
+      "message": "Let me do a little more investigation around the Code Search snippet you sent and see if I can understand why we are not dropping right into the LOW_POWER_MODE",
+      "parentUuid": "c0dc2566_e6769e68",
+      "range": {
+        "startLine": 2903,
+        "startChar": 1,
+        "endLine": 2913,
+        "endChar": 9
+      },
+      "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
