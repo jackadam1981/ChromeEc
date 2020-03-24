@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c97a14f_848ed628",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-24T21:06:14Z",
+      "side": 1,
+      "message": "/*\n * This function returns\n * True - If the THunderbolt cable speed is TBT_SS_TBT_GEN3 or\n *        TBT_SS_U32_GEN1_GEN2\n * False - Otherwise\n */",
+      "revId": "bad5dced49cc65808d52e7ddd726b557e936217d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
