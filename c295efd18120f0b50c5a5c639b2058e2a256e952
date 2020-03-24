@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24ce763f_8e3d3f05",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-24T01:33:35Z",
+      "side": 1,
+      "message": "These are board specific as well.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "c295efd18120f0b50c5a5c639b2058e2a256e952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5d8ae4_3314288c",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-24T01:33:35Z",
+      "side": 1,
+      "message": "I think these are board specific as well.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "c295efd18120f0b50c5a5c639b2058e2a256e952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5aa3add_041a904a",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-24T01:33:35Z",
+      "side": 1,
+      "message": "To me, this seems to only control the BFET which I don\u0027t think is desired. It\u0027s not clear to me that it also disables switching. We don\u0027t want to boost VSYS even though an adapter is plugged in. What would really be nice is if there was a control to disable the internal isolation FET. I may have to keep re-reading the datasheet to see if this is possible.\n\nI can also ask the vendor for clarification.",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 37
+      },
+      "revId": "c295efd18120f0b50c5a5c639b2058e2a256e952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869f1678_17c34183",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-24T01:33:35Z",
+      "side": 1,
+      "message": "I think these are also board specific.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 1
+      },
+      "revId": "c295efd18120f0b50c5a5c639b2058e2a256e952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b16825c_93c55893",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-24T01:33:35Z",
+      "side": 1,
+      "message": "yikes, one too many 0\u0027s. :)",
+      "range": {
+        "startLine": 270,
+        "startChar": 41,
+        "endLine": 270,
+        "endChar": 46
+      },
+      "revId": "c295efd18120f0b50c5a5c639b2058e2a256e952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd4a0d7_c9580b8f",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-24T01:33:35Z",
+      "side": 1,
+      "message": "I think all of this should go into a waddledee specific policy file. I don\u0027t think it\u0027s guaranteed that all it8320 variants will use the SM5803?",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 0
+      },
+      "revId": "c295efd18120f0b50c5a5c639b2058e2a256e952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
