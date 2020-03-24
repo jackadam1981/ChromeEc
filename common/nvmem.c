@@ -507,3 +507,12 @@ void nvmem_clear_cache(void)
 
 	nvmem_save();
 }
+
+#ifdef CR50_RELAXED
+void nvmem_unlock_cache(void)
+{
+	nvmem_act_partition = NVMEM_NOT_INITIALIZED;
+	nvmem_mutex.write_in_progress = 0;
+	nvmem_release_cache();
+}
+#endif

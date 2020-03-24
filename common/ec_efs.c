@@ -11,6 +11,11 @@
 #include "ec_commands.h"
 #include "extension.h"
 #include "hooks.h"
+#ifdef CR50_RELAXED
+#include "Global.h"
+#include "NV_fp.h"
+#include "nvmem.h"
+#endif
 #include "registers.h"
 #include "system.h"
 #include "tpm_nvmem.h"
@@ -284,10 +289,38 @@ void ec_efs_print_status(void)
 #ifdef CR50_RELAXED
 void ec_efs_corrupt_hash(void)
 {
+	struct vb2_secdata_kernel secdata;
+	const uint8_t secdata_size = sizeof(struct vb2_secdata_kernel);
+	TPM_HANDLE object_handle;
+	NV_INDEX nvIndex;
+	uint8_t size_to_crc;
 	int i;
 
+	/* Prepare secdata with the corrupted ECRW Hash */
+	secdata.struct_version = VB2_SECDATA_KERNEL_STRUCT_VERSION_MIN;
+	secdata.struct_size = secdata_size;
+	secdata.kernel_versions = VB2_SECDATA_KERNEL_UID;
+
 	for (i = 0; i < SHA256_DIGEST_SIZE; i++)
-		ec_efs_ctx.hash[i] = ~ec_efs_ctx.hash[i] + 0x01;
+		secdata.ec_hash[i] = ~ec_efs_ctx.hash[i] + 0x01;
+
+	size_to_crc = secdata_size -
+		      offsetof(struct vb2_secdata_kernel, crc8) -
+		      sizeof(secdata.crc8);
+	secdata.crc8 = crc8((uint8_t *)&secdata.reserved0, size_to_crc);
+
+	/* Corrupt KERNEL_NV_INDEX in nvmem cache. */
+	object_handle = HR_NV_INDEX + KERNEL_NV_INDEX;
+	NvGetIndexInfo(object_handle, &nvIndex);
+	NvWriteIndexData(object_handle, &nvIndex, 0, secdata_size, &secdata);
+	/*
+	 * NOTE: No need to commit. We are not corrupting in NVMEM.
+	 * Instead, it should unlock nvmem mutex that was locked during
+	 * NvWriteIndexData() call.
+	 */
+	nvmem_unlock_cache();
+
+	ec_efs_refresh();
 }
 #endif
 

@@ -212,6 +212,9 @@ void nvmem_clear_cache(void);
 
 void nvmem_wipe_cache(void);
 
+/* Unlock nvmem mutex lock. This is for test purpose only. */
+void nvmem_unlock_cache(void);
+
 #ifdef __cplusplus
 }
 #endif
