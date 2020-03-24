@@ -42,6 +42,12 @@
 #define PE_CLR_FLAG(port, flag) atomic_clear(&pe[port].flags, (flag))
 #define PE_CHK_FLAG(port, flag) (pe[port].flags & (flag))
 
+#define CABLE_SET_FLAG(port, flag) atomic_or(\
+			(uint32_t *)&pe[port].cable.flags, (flag))
+#define CABLE_CLR_FLAG(port, flag) atomic_clear(\
+			(uint32_t *)&pe[port].cable.flags, (flag))
+#define CABLE_CHK_FLAG(port, flag) (pe[port].cable.flags & (flag))
+
 /*
  * These macros SET, CLEAR, and CHECK, a DPM (Device Policy Manager)
  * Request. The Requests are listed in usb_pe_sm.h.
@@ -4003,6 +4009,16 @@ static void pe_vdm_identity_request_cbl_run(int port)
 				 */
 				dfp_consume_cable_response(port, cnt, payload,
 							rx_emsg[port].header);
+
+				/*
+				 * Ref USB Type-C Cable and Connector Spec,
+				 * fig F-1 TBT discovery flow.
+				 * Enable Thunderbolt-Compat mode if the cable
+				 * supports superspeed.
+				 */
+				if (is_tbt_cable_superspeed(port))
+					CABLE_SET_FLAG(port,
+						CABLE_FLAGS_TBT_COMPAT_ENABLE);
 
 				/*
 				 * Note: If port partner runs PD 2.0, we must
