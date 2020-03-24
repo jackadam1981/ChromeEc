@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "c0aa68aa_f01f9305",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-24T01:26:28Z",
+      "side": 1,
+      "message": "Yes, thanks for catching. This should be `IRAM AT \u003e IROM`.",
+      "parentUuid": "8635582a_daa047e1",
+      "range": {
+        "startLine": 229,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 9
+      },
+      "revId": "39c8219f6575b0ab4d2eb3774fb37709e2a121ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12de5886_f85fed13",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 2
