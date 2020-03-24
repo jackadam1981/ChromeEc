@@ -22,6 +22,30 @@
       "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "172b0774_235cd7ac",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2913,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-24T20:10:46Z",
+      "side": 1,
+      "message": "yes.  In that case we should not have TC_FLAGS_AUTO_TOGGLE_REQUESTED set and drp_state[port] will not be PD_DRP_TOGGLE_ON, so we will go direct to LOW_POWER mode.  This entire piece of code is to catch PD_DRP_TOGGLE_ON with no TC_FLAGS_AUTO_TOGGLE_REQUESTED. Every thing else will run direct into LOW_POWER",
+      "parentUuid": "a6401691_ce4cb0f1",
+      "range": {
+        "startLine": 2903,
+        "startChar": 1,
+        "endLine": 2913,
+        "endChar": 9
+      },
+      "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
