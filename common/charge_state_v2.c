@@ -1576,6 +1576,7 @@ void charger_task(void *u)
 	int battery_critical;
 	int need_static = 1;
 	const struct charger_info * const info = charger_get_info();
+
 	int prev_plt_and_desired_mw;
 
 	/* Get the battery-specific values */
