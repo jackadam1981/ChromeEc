@@ -9,30 +9,30 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 /* Wake Source interrupts */
-GPIO_INT(EC_LID_OPEN,          PIN(D, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, lid_interrupt)
-GPIO_INT(EC_WP_L,              PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)
-GPIO_INT(H1_EC_PWR_BTN_ODL,    PIN(0, 1), GPIO_INT_BOTH, power_button_interrupt)
-GPIO_INT(ACOK_OD,              PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, extpower_interrupt)
+GPIO_INT(EC_LID_OPEN,           PIN(D, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, lid_interrupt)
+GPIO_INT(EC_WP_L,               PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)
+GPIO_INT(H1_EC_PWR_BTN_ODL,     PIN(0, 1), GPIO_INT_BOTH, power_button_interrupt)
+GPIO_INT(ACOK_OD,               PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH, extpower_interrupt)
 
 /* Optional power sequencing interrupts */
 #ifdef VOLTEER_POWER_SEQUENCE
-GPIO_INT(CPU_C10_GATE_L,       PIN(6, 7), GPIO_INT_BOTH, c10_gate_change)
+GPIO_INT(CPU_C10_GATE_L,        PIN(6, 7), GPIO_INT_BOTH, c10_gate_change)
 #endif
 
 /* Power sequencing interrupts */
-GPIO_INT(SLP_S0_L,             PIN(D, 5), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(SLP_S0_L,              PIN(D, 5), GPIO_INT_BOTH, power_signal_interrupt)
 #ifndef CONFIG_HOSTCMD_ESPI_VW_SLP_S3
-GPIO_INT(SLP_S3_L,             PIN(A, 5), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(SLP_S3_L,              PIN(A, 5), GPIO_INT_BOTH, power_signal_interrupt)
 #endif
-GPIO_INT(SLP_SUS_L,            PIN(D, 7), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(PG_EC_RSMRST_ODL,     PIN(E, 2), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(DSW_PWROK,            PIN(C, 7), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(PG_EC_ALL_SYS_PWRGD,  PIN(F, 4),  GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(SLP_SUS_L,             PIN(D, 7), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(PG_EC_RSMRST_ODL,      PIN(E, 2), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(DSW_PWROK,             PIN(C, 7), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(PG_EC_ALL_SYS_PWRGD,   PIN(F, 4),  GPIO_INT_BOTH, power_signal_interrupt)
 
 /* Sensor Interrupts */
-GPIO_INT(EC_CAM_VSYN_SLP_S0IX, PIN(7, 2), GPIO_INT_RISING, sync_interrupt)
-GPIO_INT(EC_ALS_RGB_INT_L,     PIN(D, 4), GPIO_INT_FALLING, tcs3400_interrupt)
-GPIO_INT(TABLET_MODE_L,        PIN(9, 5), GPIO_INT_BOTH, gmr_tablet_switch_isr)
+GPIO_INT(EC_CAM_VSYN_SLP_S0IX,  PIN(7, 2), GPIO_INT_RISING, sync_interrupt)
+GPIO_INT(EC_IMU_INT_L,          PIN(5, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V, lsm6dsm_interrupt)
+GPIO_INT(TABLET_MODE_L,         PIN(9, 5), GPIO_INT_BOTH, gmr_tablet_switch_isr)
 
 /* USB-C interrupts */
 GPIO_INT(USB_C0_TCPC_INT_ODL,	PIN(E, 0), GPIO_INT_BOTH, tcpc_alert_event)
@@ -58,20 +58,19 @@ GPIO_INT(EC_VOLUP_BTN_ODL_BOARDID_0,	PIN(7, 5), GPIO_INT_BOTH | GPIO_PULL_UP, bu
 GPIO_INT(EC_VOLUP_BTN_ODL,		PIN(9, 7), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 
 /* Power Sequencing Signals */
-GPIO(EN_PP3300_A,              PIN(A, 3), GPIO_OUT_LOW)
-GPIO(EN_PP5000_A,              PIN(A, 4), GPIO_OUT_LOW)
+GPIO(EN_PP3300_A,               PIN(A, 3), GPIO_OUT_LOW)
+GPIO(EN_PP5000_A,               PIN(A, 4), GPIO_OUT_LOW)
 /* The EC does not buffer this signal on Volteer. */
 UNIMPLEMENTED(PCH_DSW_PWROK)
 
 #ifdef VOLTEER_POWER_SEQUENCE
 /* Optional power sequencing signals that are not stuffed by default */
-GPIO(EN_DRAM_VDDQ,		PIN(F, 2), GPIO_OUT_LOW)
-GPIO(EN_PP1050_STG,		PIN(C, 0), GPIO_OUT_LOW)
+GPIO(EN_DRAM_VDDQ,		    PIN(F, 2), GPIO_OUT_LOW)
+GPIO(EN_PP1050_STG,		    PIN(C, 0), GPIO_OUT_LOW)
 GPIO(EN_PP5000_USB_AG,		PIN(A, 7), GPIO_OUT_LOW)
-GPIO(EN_PPVAR_VCCIN_AUX,	PIN(8, 1), GPIO_OUT_LOW)
 GPIO(EN_PP1050_ST_S0,		PIN(3, 4), GPIO_OUT_LOW)
-GPIO(EN_VNN_BYPASS,		PIN(B, 0), GPIO_OUT_LOW)
-GPIO(EN_DRAM_VDD1,		PIN(9, 6), GPIO_OUT_LOW)
+GPIO(EN_VNN_BYPASS,		    PIN(B, 0), GPIO_OUT_LOW)
+GPIO(EN_DRAM_VDD1,		    PIN(9, 6), GPIO_OUT_LOW)
 #endif
 
 /* Other wake sources */
@@ -83,8 +82,8 @@ GPIO(EN_DRAM_VDD1,		PIN(9, 6), GPIO_OUT_LOW)
  * the real reset signal. (This is the PSL input pin not the real reset pin).
  */
 GPIO(EC_RST_ODL,		PIN(0, 2), GPIO_INT_BOTH |
-					   GPIO_HIB_WAKE_HIGH |
-					   GPIO_LOCKED)
+					    GPIO_HIB_WAKE_HIGH |
+					    GPIO_LOCKED)
 
 /* AP/PCH Signals */
 GPIO(EC_PCH_SYS_PWROK,         PIN(3, 7), GPIO_OUT_LOW)
@@ -107,7 +106,7 @@ GPIO(EC_PCH_INT_ODL,           PIN(B, 0), GPIO_ODR_HIGH)
  * TODO (b/149858568): remove board ID=0 support.
  */
 GPIO(USB_C1_RT_RST_ODL_BOARDID_0,	PIN(3, 2), GPIO_ODR_LOW) /* USB_C1 Reset on boards without board ID */
-GPIO(USB_C1_RT_RST_ODL,			PIN(8, 3), GPIO_ODR_LOW) /* USB_C1 Reset on boards board ID >=1 */
+GPIO(USB_C1_RT_RST_ODL,			    PIN(8, 3), GPIO_ODR_LOW) /* USB_C1 Reset on boards board ID >=1 */
 
 /* Don't have a load switch for retimer */
 UNIMPLEMENTED(USB_C1_LS_EN)
@@ -138,7 +137,7 @@ GPIO(EC_I2C7_EEPROM_SCL,       PIN(B, 3), GPIO_INPUT)
 GPIO(EC_I2C7_EEPROM_SDA,       PIN(B, 2), GPIO_INPUT)
 
 /* Battery signals */
-GPIO(EC_BATT_PRES_ODL, 		PIN(E, 1), GPIO_INPUT)
+GPIO(EC_BATT_PRES_ODL, 		    PIN(E, 1), GPIO_INPUT)
 
 /* Physical HPD pins are not needed on EC as these are configured by PMC */
 GPIO(USB_C0_DP_HPD,		PIN(F, 3), GPIO_INPUT)
@@ -182,4 +181,3 @@ ALTERNATE(PIN_MASK(D, BIT(2)), 0, MODULE_PMU, 0)                    /* GPIOD2 = 
 ALTERNATE(PIN_MASK(0, BIT(0) | BIT(1) | BIT(2)), 0, MODULE_PMU, 0)  /* GPIO00 = ACOK_OD,
                                                                        GPIO01 = H1_EC_PWR_BTN_ODL
                                                                        GPIO02 = EC_RST_ODL */
-
