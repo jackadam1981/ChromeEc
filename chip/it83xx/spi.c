@@ -242,8 +242,10 @@ void spi_slv_int_handler(void)
 		/* Reset fifo and prepare to receive next transaction */
 		reset_rx_fifo();
 #endif
+#ifndef IT83XX_SPI_RX_VALID_INT
 		/* Enable Rx FIFO full interrupt */
 		IT83XX_SPI_IMR &= ~IT83XX_SPI_RFFIM;
+#endif
 		/* Ready to receive */
 		spi_set_state(SPI_STATE_READY_TO_RECV);
 		/*
@@ -265,15 +267,25 @@ void spi_slv_int_handler(void)
 	 * generate clock that is not the bytes sent from
 	 * the host.
 	 */
+#ifndef IT83XX_SPI_RX_VALID_INT
 	if (IT83XX_SPI_ISR & IT83XX_SPI_RXFIFOFULL) {
 		/* Disable Rx FIFO full interrupt */
 		IT83XX_SPI_IMR |= IT83XX_SPI_RFFIM;
 		/* write clear slave status */
 		IT83XX_SPI_ISR = IT83XX_SPI_RXFIFOFULL;
+#else
+	/*
+	 * The status of Rx valid length interrupt bit is set that indicates
+	 * reached target count(IT83XX_SPI_FTCB1R, IT83XX_SPI_FTCB0R) and the
+	 * length(7th and 8th bytes) of the host requested data.
+	 */
+	if (IT83XX_SPI_RX_VLISR & IT83XX_SPI_RVLI) {
+		/* write clear slave status */
+		IT83XX_SPI_RX_VLISR = IT83XX_SPI_RVLI;
+#endif
 		/* Parse header for version of spi-protocol */
 		spi_parse_header();
 	}
-
 	/* Clear the interrupt status */
 	task_clear_pending_irq(IT83XX_IRQ_SPI_SLAVE);
 }
@@ -290,10 +302,26 @@ static void spi_init(void)
 	/* Set dummy blcoked byte */
 	IT83XX_SPI_HPR2 = 0x00;
 	/* Set FIFO data target count */
+#ifdef IT83XX_SPI_RX_VALID_INT
+	/*
+	 * Target count means the first 8 bytes of requested data by the host.
+	 * There is 12 bytes input because the CPU accesses FIFO base on double
+	 * word. If host requested data length is a byte, we need to align the
+	 * data length.
+	 */
+	IT83XX_SPI_FTCB1R = 0;
+	IT83XX_SPI_FTCB0R = 12;
+#else
 	IT83XX_SPI_FTCB1R = SPI_RX_MAX_FIFO_SIZE >> 8;
 	IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE;
+#endif
 	/* SPI slave controller enable */
 	IT83XX_SPI_SPISGCR = IT83XX_SPI_SPISCEN;
+
+#ifdef IT83XX_SPI_RX_VALID_INT
+	/* Rx valid length interrupt enabled */
+	IT83XX_SPI_RX_VLISMR &= ~IT83XX_SPI_RVLIM;
+#endif
 #ifdef IT83XX_SPI_AUTO_RESET_RX_FIFO
 	/*
 	 * General control register2
@@ -312,8 +340,10 @@ static void spi_init(void)
 	IT83XX_SPI_IMR &= ~IT83XX_SPI_EDIM;
 	/* Reset fifo and prepare to for next transaction */
 	reset_rx_fifo();
+#ifndef IT83XX_SPI_RX_VALID_INT
 	/* Enable Rx FIFO full interrupt */
 	IT83XX_SPI_IMR &= ~IT83XX_SPI_RFFIM;
+#endif
 	/* Ready to receive */
 	spi_set_state(SPI_STATE_READY_TO_RECV);
 	/* Interrupt status register(write one to clear) */
