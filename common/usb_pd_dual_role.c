@@ -7,6 +7,7 @@
 
 #include "charge_manager.h"
 #include "charge_state.h"
+#include "system.h"
 #include "usb_common.h"
 #include "usb_pd.h"
 #include "util.h"
@@ -391,3 +392,53 @@ bool pd_is_try_source_capable(void)
 	return new_try_src;
 }
 #endif /* CONFIG_USB_PD_TRY_SRC */
+
+static int get_bbram_idx(int port)
+{
+	switch (port) {
+	case 2:
+		return SYSTEM_BBRAM_IDX_PD2;
+	case 1:
+		return SYSTEM_BBRAM_IDX_PD1;
+	case 0:
+		return SYSTEM_BBRAM_IDX_PD0;
+	default:
+		return -1;
+	}
+}
+
+int pd_get_saved_port_flags(int port, uint8_t *flags)
+{
+	if (system_get_bbram(get_bbram_idx(port), flags) != EC_SUCCESS) {
+#ifndef CHIP_HOST
+		ccprintf("PD NVRAM FAIL");
+#endif
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+}
+
+static void pd_set_saved_port_flags(int port, uint8_t flags)
+{
+	if (system_set_bbram(get_bbram_idx(port), flags) != EC_SUCCESS) {
+#ifndef CHIP_HOST
+		ccprintf("PD NVRAM FAIL");
+#endif
+	}
+}
+
+void pd_update_saved_port_flags(int port, uint8_t flag, uint8_t val)
+{
+	uint8_t saved_flags;
+
+	if (pd_get_saved_port_flags(port, &saved_flags) != EC_SUCCESS)
+		return;
+
+	if (val)
+		saved_flags |= flag;
+	else
+		saved_flags &= ~flag;
+
+	pd_set_saved_port_flags(port, saved_flags);
+}
