@@ -304,44 +304,19 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_SW_CRC
 #endif
 
-#if defined(TEST_USB_SM_FRAMEWORK_H3)
-#define CONFIG_USB_PD_PORT_MAX_COUNT 1
-#undef CONFIG_USB_PRL_SM
-#undef CONFIG_USB_PE_SM
-#undef CONFIG_USB_TYPEC_SM
-#define CONFIG_USB_PD_TCPMV2
-#endif
-
-#if defined(TEST_USB_SM_FRAMEWORK_H2)
-#define CONFIG_USB_PD_PORT_MAX_COUNT 1
-#undef CONFIG_USB_PRL_SM
-#undef CONFIG_USB_PE_SM
-#undef CONFIG_USB_TYPEC_SM
-#define CONFIG_USB_PD_TCPMV2
-#endif
-
-#if defined(TEST_USB_SM_FRAMEWORK_H1)
-#define CONFIG_USB_PD_PORT_MAX_COUNT 1
-#undef CONFIG_USB_PRL_SM
-#undef CONFIG_USB_PE_SM
-#undef CONFIG_USB_TYPEC_SM
-#define CONFIG_USB_PD_TCPMV2
-#endif
-
-#if defined(TEST_USB_SM_FRAMEWORK_H0)
-#define CONFIG_USB_PD_PORT_MAX_COUNT 1
-#undef CONFIG_USB_PRL_SM
-#undef CONFIG_USB_PE_SM
-#undef CONFIG_USB_TYPEC_SM
-#define CONFIG_USB_PD_TCPMV2
+#if defined(TEST_USB_SM_FRAMEWORK_H3) || \
+	defined(TEST_USB_SM_FRAMEWORK_H2) || \
+	defined(TEST_USB_SM_FRAMEWORK_H1) || \
+	defined(TEST_USB_SM_FRAMEWORK_H0)
+#define CONFIG_TEST_SM
 #endif
 
 #if defined(TEST_USB_PRL)
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPMV2
-#undef CONFIG_USB_PE_SM
 #undef CONFIG_USB_TYPEC_SM
 #define CONFIG_USB_PRL_SM
+#undef CONFIG_USB_PE_SM
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
 #define CONFIG_USB_POWER_DELIVERY
@@ -389,15 +364,15 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #endif /* Common TypeC test defines */
 
 #ifdef TEST_USB_TYPEC_VPD
-#define CONFIG_USB_TYPEC_VPD
+#define CONFIG_USB_VPD
 #endif
 
 #ifdef TEST_USB_TYPEC_CTVPD
-#define CONFIG_USB_TYPEC_CTVPD
+#define CONFIG_USB_CTVPD
 #endif
 
 #ifdef TEST_USB_TYPEC_DRP_ACC_TRYSRC
-#define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
+#define CONFIG_USB_DRP_ACC_TRYSRC
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_TYPEC_SM
