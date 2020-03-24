@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6401691_ce4cb0f1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2913,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-24T19:30:45Z",
+      "side": 1,
+      "message": "don\u0027t we support going into low power mode when we arent\u0027 auto toggling like when we are in S5 we shouldn\u0027t be auto toggling, we shoudl only be a SNK in lower power mode.",
+      "range": {
+        "startLine": 2903,
+        "startChar": 1,
+        "endLine": 2913,
+        "endChar": 9
+      },
+      "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
