@@ -153,8 +153,10 @@ int sps_transmit(uint8_t *data, size_t data_size)
 	 * helps alleviate TX underrun problems but introduces delay before
 	 * data starts coming out.
 	 */
-	if (!GREAD_FIELD(SPS, FIFO_CTRL, TXFIFO_EN))
+	if (!GREAD_FIELD(SPS, FIFO_CTRL, TXFIFO_EN)) {
+		GWRITE_FIELD(SPS, ICTRL, TXFIFO_EMPTY, 1);
 		GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_EN, 1);
+	}
 
 	sps_tx_count += bytes_sent;
 	return bytes_sent;
@@ -200,6 +202,7 @@ static void sps_configure(enum sps_mode mode, enum spi_clock_mode clk_mode,
 
 	/* Do not enable TX FIFO until we have something to send. */
 	GWRITE_FIELD(SPS, FIFO_CTRL, RXFIFO_EN, 1);
+	GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_AUTO_DIS, 1);
 
 	GREG32(SPS, RXFIFO_THRESHOLD) = rx_fifo_threshold;
 
@@ -210,6 +213,11 @@ static void sps_configure(enum sps_mode mode, enum spi_clock_mode clk_mode,
 	/* Use CS_DEASSERT to retrieve all remaining bytes from RX FIFO. */
 	GWRITE_FIELD(SPS, ISTATE_CLR, CS_DEASSERT, 1);
 	GWRITE_FIELD(SPS, ICTRL, CS_DEASSERT, 1);
+
+	/*
+	 * Initialize TXFIFO WPTR and RPTR.
+	 */
+	GREG32(SPS, TXFIFO_WPTR) = GREG32(SPS, TXFIFO_RPTR);
 }
 
 /*
@@ -223,6 +231,7 @@ int sps_register_rx_handler(enum sps_mode mode, rx_handler_f rx_handler,
 {
 	task_disable_irq(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR);
 	task_disable_irq(GC_IRQNUM_SPS0_CS_DEASSERT_INTR);
+	task_disable_irq(GC_IRQNUM_SPS0_TXFIFO_EMPTY_INTR);
 
 	if (!rx_handler)
 		return 0;
@@ -234,6 +243,7 @@ int sps_register_rx_handler(enum sps_mode mode, rx_handler_f rx_handler,
 	sps_configure(mode, SPI_CLOCK_MODE0, rx_fifo_threshold);
 	task_enable_irq(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR);
 	task_enable_irq(GC_IRQNUM_SPS0_CS_DEASSERT_INTR);
+	task_enable_irq(GC_IRQNUM_SPS0_TXFIFO_EMPTY_INTR);
 
 	return 0;
 }
@@ -343,16 +353,6 @@ static void sps_rx_interrupt(uint32_t port, int cs_deasserted)
 			 */
 			gpio_set_level(GPIO_INT_AP_L, 0);
 
-			/*
-			 * This is to meet the AP requirement of minimum 4 usec
-			 *  duration of INT_AP_L assertion.
-			 *
-			 * TODO(b/130515803): Ideally, this should be improved
-			 * to support any duration requirement in future.
-			 */
-			tick_delay(2);
-
-			gpio_set_level(GPIO_INT_AP_L, 1);
 			seen_data = 0;
 		}
 	}
@@ -389,13 +389,6 @@ static void sps_cs_deassert_interrupt(uint32_t port)
 	/* Make sure the receive FIFO is drained. */
 	sps_rx_interrupt(port, 1);
 	GWRITE_FIELD(SPS, ISTATE_CLR, CS_DEASSERT, 1);
-	GWRITE_FIELD(SPS, FIFO_CTRL, TXFIFO_EN, 0);
-
-	/*
-	 * And transmit FIFO is emptied, so the next transaction doesn't start
-	 * by clocking out any bytes left over from this one.
-	 */
-	GREG32(SPS, TXFIFO_WPTR) = GREG32(SPS, TXFIFO_RPTR);
 }
 
 void _sps0_interrupt(void)
@@ -409,6 +402,17 @@ void _sps0_cs_deassert_interrupt(void)
 }
 DECLARE_IRQ(GC_IRQNUM_SPS0_CS_DEASSERT_INTR, _sps0_cs_deassert_interrupt, 1);
 DECLARE_IRQ(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR, _sps0_interrupt, 1);
+
+static void _sps0_txfifo_empty_interrupt(void)
+{
+	/* Disable TXFIFO_EMPTY */
+	GWRITE_FIELD(SPS, ICTRL, TXFIFO_EMPTY, 0);
+
+	/* Deassert GPIO_INT_AP_L */
+	if (!gpio_get_level(GPIO_INT_AP_L))
+		gpio_set_level(GPIO_INT_AP_L, 1);
+}
+DECLARE_IRQ(GC_IRQNUM_SPS0_TXFIFO_EMPTY_INTR, _sps0_txfifo_empty_interrupt, 1);
 
 #ifdef CONFIG_SPS_TEST
 
@@ -567,3 +571,4 @@ DECLARE_CONSOLE_COMMAND(spstest, command_sps,
 			"<num of frames>",
 			"Loop back frames (10 by default) back to the host");
 #endif /* CONFIG_SPS_TEST */
+
