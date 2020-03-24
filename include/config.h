@@ -2983,6 +2983,8 @@
 
 /*
  * On x86 systems, define this option if the CPU_PROCHOT signal is active low.
+ * This setting also applies to monitoring the PROCHOT input if provided by
+ * the board.
  */
 #undef CONFIG_CPU_PROCHOT_ACTIVE_LOW
 
