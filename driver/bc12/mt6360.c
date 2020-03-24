@@ -1,0 +1,170 @@
+#include "charger.h"
+#include "charge_manager.h"
+#include "console.h"
+#include "driver/bc12/mt6360.h"
+#include "hooks.h"
+#include "i2c.h"
+#include "task.h"
+#include "timer.h"
+#include "usb_charge.h"
+#include "usb_pd.h"
+
+/* Console output macros */
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) \
+	cprints(CC_CHARGER, "%s " format, "MT6360", ## args)
+
+static enum ec_error_list mt6360_read8(int reg, int *val)
+{
+	return i2c_read8(mt6360_config.i2c_port, mt6360_config.i2c_addr_flags,
+			reg, val);
+}
+
+static enum ec_error_list mt6360_write8(int reg, int val)
+{
+	return i2c_write8(mt6360_config.i2c_port, mt6360_config.i2c_addr_flags,
+			reg, val);
+}
+
+static int mt6360_update_bits(int reg, int mask, int val)
+{
+	int rv;
+	int reg_val = 0;
+
+	rv = mt6360_read8(reg, &reg_val);
+	if (rv)
+		return rv;
+	reg_val &= ~mask;
+	reg_val |= (mask & val);
+	rv = mt6360_write8(reg, reg_val);
+	return rv;
+}
+
+static inline int mt6360_set_bit(int reg, int mask)
+{
+	return mt6360_update_bits(reg, mask, mask);
+}
+
+static inline int mt6360_clr_bit(int reg, int mask)
+{
+	return mt6360_update_bits(reg, mask, 0x00);
+}
+
+
+static int mt6360_get_bc12_device_type(void)
+{
+	int reg;
+
+	if (mt6360_read8(MT6360_REG_USB_STATUS_1, &reg))
+		return CHARGE_SUPPLIER_NONE;
+
+	switch (reg & MT6360_MASK_USB_STATUS) {
+	case MT6360_MASK_SDP:
+		CPRINTS("BC12 SDP");
+		return CHARGE_SUPPLIER_BC12_SDP;
+	case MT6360_MASK_CDP:
+		CPRINTS("BC12 CDP");
+		return CHARGE_SUPPLIER_BC12_CDP;
+	case MT6360_MASK_DCP:
+		CPRINTS("BC12 DCP");
+		return CHARGE_SUPPLIER_BC12_DCP;
+	default:
+		CPRINTS("BC12 NONE");
+		return CHARGE_SUPPLIER_NONE;
+	}
+}
+
+static int mt6360_get_bc12_ilim(int charge_supplier)
+{
+	switch (charge_supplier) {
+	case CHARGE_SUPPLIER_BC12_DCP:
+	case CHARGE_SUPPLIER_BC12_CDP:
+		return USB_CHARGER_MAX_CURR_MA;
+	case CHARGE_SUPPLIER_BC12_SDP:
+	default:
+		return USB_CHARGER_MIN_CURR_MA;
+	}
+}
+
+static int mt6360_enable_bc12_detection(int en)
+{
+	int rv;
+
+	if (en) {
+#ifdef CONFIG_MT6360_BC12_DETECT_GPIO
+		gpio_set_level(CONFIG_MT6360_BC12_DETECT_GPIO, 1);
+#endif
+		return mt6360_set_bit(MT6360_REG_DEVICE_TYPE,
+				      MT6360_MASK_USBCHGEN);
+	}
+
+	rv = mt6360_clr_bit(MT6360_REG_DEVICE_TYPE, MT6360_MASK_USBCHGEN);
+#ifdef CONFIG_MT6360_BC12_DETECT_GPIO
+	gpio_set_level(CONFIG_MT6360_BC12_DETECT_GPIO, 0);
+#endif
+	return rv;
+}
+
+static int mt6360_ramp_allowed(int supplier)
+{
+	return supplier == CHARGE_SUPPLIER_BC12_DCP;
+}
+
+static int mt6360_ramp_max(int supplier, int sup_curr)
+{
+	return mt6360_get_bc12_ilim(supplier);
+}
+
+static void mt6360_usb_charger_task(const int port)
+{
+	int current_bc12_type = CHARGE_SUPPLIER_NONE;
+
+	while (1) {
+		int new_bc12_type = CHARGE_SUPPLIER_NONE;
+
+		task_wait_event(-1);
+
+		/* Run bc12 detection only if port is connected and is sink */
+		if (pd_snk_is_vbus_provided(port)) {
+			mt6360_enable_bc12_detection(1);
+			/* TODO: change this to interrupt */
+			usleep(300 * MSEC);
+			new_bc12_type = mt6360_get_bc12_device_type();
+			mt6360_enable_bc12_detection(0);
+		}
+
+		if (current_bc12_type == new_bc12_type)
+			/* skip update if type doesn't change */
+			continue;
+
+		if (new_bc12_type == CHARGE_SUPPLIER_NONE) {
+			CPRINTS("VBUS detached");
+			charge_manager_update_charge(
+					current_bc12_type, 0, NULL);
+		} else {
+			struct charge_port_info chg = {
+				.current = mt6360_get_bc12_ilim(new_bc12_type),
+				.voltage = USB_CHARGER_VOLTAGE_MV,
+			};
+
+			charge_manager_update_charge(new_bc12_type, 0, &chg);
+		}
+
+		current_bc12_type = new_bc12_type;
+	}
+}
+
+const struct bc12_drv mt6360_drv = {
+	.usb_charger_task = mt6360_usb_charger_task,
+	.ramp_allowed = mt6360_ramp_allowed,
+	.ramp_max = mt6360_ramp_max,
+};
+
+#ifdef CONFIG_BC12_SINGLE_DRIVER
+/* provide a default bc12_ports[] for backward compatibility */
+struct bc12_config bc12_ports[CHARGE_PORT_COUNT] = {
+	[0 ... (CHARGE_PORT_COUNT - 1)] = {
+		.drv = &mt6360_drv,
+	},
+};
+#endif /* CONFIG_BC12_SINGLE_DRIVER */
