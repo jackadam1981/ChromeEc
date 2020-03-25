@@ -127,13 +127,13 @@ static void lpc_generate_smi(void)
 
 #ifdef CONFIG_SCI_GPIO
 	/* Enforce signal-high for long enough to debounce high */
-	gpio_set_level(GPIO_PCH_SMI_L, 1);
-	udelay(65);
+	/*gpio_set_level(GPIO_PCH_SMI_L, 1);
+	udelay(65);*/
 	/* Generate a falling edge */
-	gpio_set_level(GPIO_PCH_SMI_L, 0);
-	udelay(65);
+	/*gpio_set_level(GPIO_PCH_SMI_L, 0);
+	udelay(65);*/
 	/* Set signal high, now that we've generated the edge */
-	gpio_set_level(GPIO_PCH_SMI_L, 1);
+	/*gpio_set_level(GPIO_PCH_SMI_L, 1);*/
 #elif defined(CONFIG_HOSTCMD_ESPI)
 	/*
 	 * Don't use SET_BIT/CLEAR_BIT macro to toggle SMIB/SCIB to generate

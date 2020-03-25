@@ -85,6 +85,7 @@ IOEX(HDMI_DATA_EN_DB,		EXPIN(IOEX_HDMI_PCAL6408, 0, 3), GPIO_OUT_HIGH)	/* HDMI R
  * The NPCX LPC driver configures and controls SCI, so PCH_SCI_ODL [PIN(7, 6)]
  * is not defined here as GPIO.
  */
+GPIO(EC_FCH_SCI_ODL,            PIN(7, 6), GPIO_ODR_HIGH)
 
 /* I2C pins - these will be reconfigured for alternate function below */
 GPIO(EC_I2C_USB_A0_C0_SCL,	PIN(B, 5), GPIO_INPUT)

@@ -13,6 +13,7 @@
 #include <stdbool.h>
 #include "baseboard.h"
 
+#define CONFIG_SCI_GPIO GPIO_EC_FCH_SCI_ODL
 /*
  * Allow dangerous commands.
  * TODO: Remove this config before production.
