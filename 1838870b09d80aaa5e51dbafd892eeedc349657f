@@ -22,6 +22,30 @@
       "revId": "1838870b09d80aaa5e51dbafd892eeedc349657f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d85d3060_46c5eb31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-25T18:36:14Z",
+      "side": 1,
+      "message": "That\u0027s a good question. One option I see is to keep checking in the latest blobs from the builders into the Cr50 tree. Too much manual labor though, we need to think of something better.",
+      "parentUuid": "dfa7067e_dfe3d5c8",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 70
+      },
+      "revId": "1838870b09d80aaa5e51dbafd892eeedc349657f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
