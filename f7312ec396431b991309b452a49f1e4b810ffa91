@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83fe6578_29ac8692",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-25T02:14:51Z",
+      "side": 1,
+      "message": "any specific reason for this?\nlooks like its doing same as \nuint8_t flags;\n\ndo you want to use similar approach as TCPMv1 now and change the code to set and clear like done in TCPMv2?\nPE_CHK_FLAG(port, *) \u003d\u003e CABLE_CHK_FLAG(port, *)",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 0
+      },
+      "revId": "f7312ec396431b991309b452a49f1e4b810ffa91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
