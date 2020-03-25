@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f19804a_8773eb6f",
+        "filename": "util/acroterm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-25T03:17:12Z",
+      "side": 1,
+      "message": "keep the parenthesis on one line.",
+      "range": {
+        "startLine": 328,
+        "startChar": 29,
+        "endLine": 329,
+        "endChar": 67
+      },
+      "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af71838_1ccc8c14",
+        "filename": "util/acroterm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-25T03:17:12Z",
+      "side": 1,
+      "message": "Indent this line",
+      "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "208c3a00_2d48a9c9",
+        "filename": "util/acroterm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-25T03:17:12Z",
+      "side": 1,
+      "message": "keep the comments at the same indent level as the rest of the code.",
+      "range": {
+        "startLine": 907,
+        "startChar": 0,
+        "endLine": 907,
+        "endChar": 7
+      },
+      "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8065e5d3_cbfb58bc",
+        "filename": "util/acroterm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-25T03:17:12Z",
+      "side": 1,
+      "message": "this should be one line.",
+      "range": {
+        "startLine": 1047,
+        "startChar": 11,
+        "endLine": 1049,
+        "endChar": 15
+      },
+      "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0554ec0c_24e3bbeb",
+        "filename": "util/acroterm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-25T03:17:12Z",
+      "side": 1,
+      "message": "I think we\u0027re supposed to use tempfile.tempdir.",
+      "range": {
+        "startLine": 1228,
+        "startChar": 17,
+        "endLine": 1228,
+        "endChar": 22
+      },
+      "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
