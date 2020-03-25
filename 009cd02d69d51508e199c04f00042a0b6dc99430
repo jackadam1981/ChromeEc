@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "693a7ae5_e118a552",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-25T20:48:35Z",
+      "side": 1,
+      "message": "Typically \"pd_\" functions are intended to be called from tasks outside of the PD stack to interact with it.  Will this be used outside the PD stack?",
+      "range": {
+        "startLine": 588,
+        "startChar": 5,
+        "endLine": 588,
+        "endChar": 32
+      },
+      "revId": "009cd02d69d51508e199c04f00042a0b6dc99430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e4aae6_af8e8209",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-25T20:48:35Z",
+      "side": 1,
+      "message": "Pass an \"enum tcpm_transmit_type\" for SOP/SOP\u0027",
+      "range": {
+        "startLine": 602,
+        "startChar": 45,
+        "endLine": 602,
+        "endChar": 49
+      },
+      "revId": "009cd02d69d51508e199c04f00042a0b6dc99430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
