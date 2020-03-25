@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b30e8af7_bd1cbe68",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-25T22:42:15Z",
+      "side": 1,
+      "message": "Since no boards actually use CONFIG_BOARD_HAS_BEFORE_RSMRST or CONFIG_BOARD_HAS_AFTER_RSMRST, can you switch the corresponding routines to  __overridable and delete these two config options?\n\nI\u0027m always in favor of decluttering include/config.h when possible.\n\nAlso is there another change that actually implements the before/after RSMRST routines?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "11e856e5bb8e75a7f706b3ac5a1e162caaad42df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
