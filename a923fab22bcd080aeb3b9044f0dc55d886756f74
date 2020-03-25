@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f9316fdb_e6683c2b",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-25T22:12:17Z",
+      "side": 1,
+      "message": "Oops.",
+      "parentUuid": "5ba0ff06_661499f5",
+      "range": {
+        "startLine": 11,
+        "startChar": 70,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "668e59dd_f1c21525",
         "filename": "util/compare_build.sh",
         "patchSetId": 24
@@ -45,6 +69,30 @@
       "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07310457_db746233",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-25T22:12:17Z",
+      "side": 1,
+      "message": "Yes, it is the same. Sure, but I don\u0027t think \"local -n\" is any more popular than \"for key;\" notation.\n\nAlso converted all single character variables to ${} notation.",
+      "parentUuid": "668e59dd_f1c21525",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 13
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e8b3a997_46f8a6cc",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-25T22:12:17Z",
+      "side": 1,
+      "message": "Sure, but regardless of what nonsense is in key, I don\u0027t believe there is a way to confuse this parameter. (I know. Never say never...)\n\nEx:\ndeclare -A ARR; key\u003d\"b ob]\"$\u0027\\n\u0027; ARR[$key]\u003djones; declare -p ARR",
+      "parentUuid": "ec9b672d_bdf6ed88",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 20
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d23ce3e_75fa6a98",
         "filename": "util/compare_build.sh",
         "patchSetId": 24
@@ -91,6 +163,30 @@
       "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b1edd8_5dc1da08",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-25T22:12:17Z",
+      "side": 1,
+      "message": "Right, it would be implicit if I wanted a normal indexed array.\nCapital -A indicates you need it to be an associative array, which is different.\n\n\"ARR\u003d( ); ARR[bob]\u003djones;\" would result in \"declare -a ARR\u003d([0]\u003d\"jones\")\".",
+      "parentUuid": "7d23ce3e_75fa6a98",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 27
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b0d63835_fb0c8aeb",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-25T22:12:17Z",
+      "side": 1,
+      "message": "This is intentionally expanded.\n\nWhite-space separated boards is at the core of this implementation, since you specify boards in one argument (-b \"nocturne hatch\") with space separation. Thus, boards shall not have whitespace.\n\nPositionalizing the boards here simplifies this implementation.",
+      "parentUuid": "367afbe6_69307e9f",
+      "range": {
+        "startLine": 141,
+        "startChar": 55,
+        "endLine": 141,
+        "endChar": 77
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f363da2d_37d2f7be",
         "filename": "util/compare_build.sh",
         "patchSetId": 24
@@ -137,6 +257,30 @@
       "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56b3227c_0a0cd3c3",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-25T22:12:17Z",
+      "side": 1,
+      "message": "Same thing. This needs to be an associative array so that we can index by key (not integer).",
+      "parentUuid": "f363da2d_37d2f7be",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "2f19718d_d4254fb3",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-25T22:12:17Z",
+      "side": 1,
+      "message": "Intentional expansion, since name\u003d\"${BOARDS_EXPANSIONS[${name}]}\" can result in multiple whitespace separated boards.\n\nAgain, white-space separated boards...\nPositionalizing the boards here simplifies this implementation.",
+      "parentUuid": "3cda5434_356d02a3",
+      "range": {
+        "startLine": 160,
+        "startChar": 27,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf45553c_9c3a954d",
         "filename": "util/compare_build.sh",
         "patchSetId": 24
@@ -183,6 +351,30 @@
       "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f802c28_9ed27ad7",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-03-25T22:12:17Z",
+      "side": 1,
+      "message": "Intentional.",
+      "parentUuid": "cf45553c_9c3a954d",
+      "range": {
+        "startLine": 163,
+        "startChar": 28,
+        "endLine": 163,
+        "endChar": 35
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
