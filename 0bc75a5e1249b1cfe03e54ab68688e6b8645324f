@@ -22,6 +22,30 @@
       "revId": "0bc75a5e1249b1cfe03e54ab68688e6b8645324f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8123362_e99f1e7e",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-25T21:52:23Z",
+      "side": 1,
+      "message": "Would you prefer me moving it inside of if statement or in TCPMv2 stack?",
+      "parentUuid": "e60d0338_2082549d",
+      "range": {
+        "startLine": 484,
+        "startChar": 1,
+        "endLine": 484,
+        "endChar": 37
+      },
+      "revId": "0bc75a5e1249b1cfe03e54ab68688e6b8645324f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
