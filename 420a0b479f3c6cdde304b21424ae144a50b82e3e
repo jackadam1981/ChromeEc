@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77d8fdc8_0d6c8d29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-25T03:10:37Z",
+      "side": 1,
+      "message": "bug?",
+      "range": {
+        "startLine": 24,
+        "startChar": 52,
+        "endLine": 24,
+        "endChar": 55
+      },
+      "revId": "420a0b479f3c6cdde304b21424ae144a50b82e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b2b4c42_ef3faeed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-25T03:10:37Z",
+      "side": 1,
+      "message": "Would you confirm this bug number? The bug title says \" [HOTLANE EXTERNAL FEEDBACK] [SURVEY TEXT] bad\".",
+      "range": {
+        "startLine": 29,
+        "startChar": 17,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "420a0b479f3c6cdde304b21424ae144a50b82e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46461bcc_5940ae00",
+        "filename": "common/usb_console_stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-25T03:10:37Z",
+      "side": 1,
+      "message": "If this function\u0027s role is similar to that of usb_wait_console(), then\nshouldn\u0027t it be\n     if (!is_enabled || !tx_fifo_is_ready(\u0026usb_console))\nlike line 95?",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 17
+      },
+      "revId": "420a0b479f3c6cdde304b21424ae144a50b82e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4933be_ad6bda2e",
+        "filename": "common/usb_console_stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-25T03:10:37Z",
+      "side": 1,
+      "message": "nit: perhaps EC_SUCCESS?",
+      "range": {
+        "startLine": 177,
+        "startChar": 8,
+        "endLine": 177,
+        "endChar": 9
+      },
+      "revId": "420a0b479f3c6cdde304b21424ae144a50b82e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e025234d_2e07a4ce",
+        "filename": "common/usb_console_stream.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-25T03:10:37Z",
+      "side": 1,
+      "message": "I noticed that this patch doesn\u0027t add these to chip/g/usb_console.c. I assume that you are not planning to apply CONFIG_EXTRACT_PRINTF_STRINGS to other boards using CONFIG_USB_CONSOLE, not CONFIG_USB_CONSOLE_STREAM. Is it correct? I am ok with that, BTW.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "420a0b479f3c6cdde304b21424ae144a50b82e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
