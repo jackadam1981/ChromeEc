@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f34a9af_7f19b200",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2020-03-25T03:01:59Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "c00be3e1_569498e7",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "0560f22c16305ced13a76fd667894668560c50e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "946c00d0_ae22452c",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "0560f22c16305ced13a76fd667894668560c50e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8405218b_33f8f42e",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2020-03-25T03:01:59Z",
+      "side": 1,
+      "message": "No, it is not write clean bit, I\u0027ll add comments.",
+      "parentUuid": "946c00d0_ae22452c",
+      "range": {
+        "startLine": 488,
+        "startChar": 2,
+        "endLine": 488,
+        "endChar": 55
+      },
+      "revId": "0560f22c16305ced13a76fd667894668560c50e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
