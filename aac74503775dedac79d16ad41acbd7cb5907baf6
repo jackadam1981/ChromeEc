@@ -142,6 +142,30 @@
       "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a9beee4_61805a9d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2913,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-25T02:47:42Z",
+      "side": 1,
+      "message": "Created a test at crrev.com/c/2119145 that I think matches your log.\nWill work on a state machine change next.",
+      "parentUuid": "1b394c2c_f3f0c64e",
+      "range": {
+        "startLine": 2903,
+        "startChar": 1,
+        "endLine": 2913,
+        "endChar": 9
+      },
+      "revId": "aac74503775dedac79d16ad41acbd7cb5907baf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
