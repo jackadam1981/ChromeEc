@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d2af889_09ddab96",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-03-25T22:36:07Z",
+      "side": 1,
+      "message": "can we do some rate limiting here?  not sure how quickly\nthis can toggle when things get bad.  at least\nthe isl9241 has a 10ms (default) minimum duration,\nbut that might still be too fast.\nother components may not be as kind.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "291743b02d50f8d75b33f0d8f6eb19995832a6e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
