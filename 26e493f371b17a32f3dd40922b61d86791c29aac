@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f45cf4a_7ff678b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-25T01:52:10Z",
+      "side": 1,
+      "message": "I find this form of patch description title confusing. Generally speaking the description should explain what the patch is doing.\n\nFor this case, for example, I think the following would be better:\n\n\u0027Modify ec_comm command to corrupt NVMEM copy of kernel secdata\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "26e493f371b17a32f3dd40922b61d86791c29aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd1b7e3b_f081afdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-25T01:52:10Z",
+      "side": 1,
+      "message": "this patch makes it corrupt the copy stored in the TPM NVMEM first, and then read it into the cache in ec_efs.c",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 71
+      },
+      "revId": "26e493f371b17a32f3dd40922b61d86791c29aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
