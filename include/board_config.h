@@ -34,7 +34,6 @@ void board_config_pre_init(void);
 void board_config_post_gpio_init(void);
 #endif
 
-#ifdef CONFIG_BOARD_HAS_BEFORE_RSMRST
 /**
  * Configure board before RSMRST# state change
  *
@@ -48,9 +47,7 @@ void board_config_post_gpio_init(void);
  * to apply workarounds despite the PMIC sequencing.
  */
 void board_before_rsmrst(int rsmrst);
-#endif
 
-#ifdef CONFIG_BOARD_HAS_AFTER_RSMRST
 /**
  * Configure board after RSMRST# state change
  *
@@ -58,7 +55,6 @@ void board_before_rsmrst(int rsmrst);
  * to the AP.
  */
 void board_after_rsmrst(int rsmrst);
-#endif
 
 /**
  * Configure chip early in main(), just after board_config_pre_init().
