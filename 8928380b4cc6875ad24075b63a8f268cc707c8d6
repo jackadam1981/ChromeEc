@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba4c684f_3d39f9e3",
+        "filename": "util/acroterm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-25T17:27:21Z",
+      "side": 1,
+      "message": "not sure what you have in mind, all parens can\u0027t be on one line without exceeding the line limit. I made a change, let me know it is better.",
+      "parentUuid": "7f19804a_8773eb6f",
+      "range": {
+        "startLine": 328,
+        "startChar": 29,
+        "endLine": 329,
+        "endChar": 67
+      },
+      "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3af71838_1ccc8c14",
         "filename": "util/acroterm.py",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "ab2ac355_fff3b156",
+        "filename": "util/acroterm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-25T17:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3af71838_1ccc8c14",
+      "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "208c3a00_2d48a9c9",
         "filename": "util/acroterm.py",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2020-03-25T03:17:12Z",
       "side": 1,
       "message": "keep the comments at the same indent level as the rest of the code.",
+      "range": {
+        "startLine": 907,
+        "startChar": 0,
+        "endLine": 907,
+        "endChar": 7
+      },
+      "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62b9e37a_a04f4f3c",
+        "filename": "util/acroterm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-25T17:27:21Z",
+      "side": 1,
+      "message": "actually these are debug leftovers which I forgot to clean up, removed.",
+      "parentUuid": "208c3a00_2d48a9c9",
       "range": {
         "startLine": 907,
         "startChar": 0,
@@ -85,6 +151,30 @@
       "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbaf040c_d0e83920",
+        "filename": "util/acroterm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-25T17:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8065e5d3_cbfb58bc",
+      "range": {
+        "startLine": 1047,
+        "startChar": 11,
+        "endLine": 1049,
+        "endChar": 15
+      },
+      "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
