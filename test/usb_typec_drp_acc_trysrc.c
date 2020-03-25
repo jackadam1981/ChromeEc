@@ -13,8 +13,56 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usb_sm_checks.h"
+#include "hooks.h"
 
 #define PORT0 0
+
+enum usb_tc_state {
+	/* Normal States */
+	TC_DISABLED,
+	TC_ERROR_RECOVERY,
+	TC_UNATTACHED_SNK,
+	TC_ATTACH_WAIT_SNK,
+	TC_ATTACHED_SNK,
+	TC_UNORIENTED_DBG_ACC_SRC,
+	TC_DBG_ACC_SNK,
+	TC_UNATTACHED_SRC,
+	TC_ATTACH_WAIT_SRC,
+	TC_ATTACHED_SRC,
+	TC_TRY_SRC,
+	TC_TRY_WAIT_SNK,
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	TC_DRP_AUTO_TOGGLE,
+#endif
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	TC_LOW_POWER_MODE,
+#endif
+#ifdef CONFIG_USB_PE_SM
+	TC_CT_UNATTACHED_SNK,
+	TC_CT_ATTACHED_SNK,
+#endif
+	/* Super States */
+	TC_CC_OPEN,
+	TC_CC_RD,
+	TC_CC_RP,
+};
+
+const struct svdm_response svdm_rsp = {
+	.identity = NULL,
+	.svids = NULL,
+	.modes = NULL,
+};
+
+int pd_check_vconn_swap(int port)
+{
+	return 1;
+}
+
+void pd_request_vconn_swap_off(int port)
+{}
+
+void pd_request_vconn_swap_on(int port)
+{}
 
 /* Install Mock TCPC and MUX drivers */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
@@ -118,6 +166,23 @@ __maybe_unused static int test_power_role_set(void)
 	return EC_SUCCESS;
 }
 
+__maybe_unused static int test_toggle_on(void)
+{
+	/* Print out header changes for easier debugging */
+	mock_tcpc.should_print_header_changes = true;
+
+	task_wait_event(10 * SECOND);
+	ccprints("state %s", pd_get_task_state_name(PORT0));
+	TEST_ASSERT(pd_get_task_state(PORT0) == TC_LOW_POWER_MODE);
+
+	hook_notify(HOOK_CHIPSET_STARTUP);
+	task_wait_event(5 * MSEC);
+	hook_notify(HOOK_CHIPSET_RESUME);
+	task_wait_event(10 * SECOND);
+
+	return EC_SUCCESS;
+}
+
 /* Reset the mocks before each test */
 void before_test(void)
 {
@@ -130,6 +195,7 @@ void after_test(void)
 	/* Disconnect any CC lines */
 	mock_tcpc.cc1 = TYPEC_CC_VOLT_OPEN;
 	mock_tcpc.cc2 = TYPEC_CC_VOLT_OPEN;
+	ccprints("after_test");
 	task_set_event(TASK_ID_PD_C0, PD_EVENT_CC, 0);
 }
 
@@ -141,14 +207,8 @@ void run_test(void)
 	task_wake(TASK_ID_PD_C0);
 	task_wait_event(5 * MSEC);
 
-	RUN_TEST(test_mux_con_dis_as_src);
-	RUN_TEST(test_mux_con_dis_as_snk);
-	RUN_TEST(test_power_role_set);
+	RUN_TEST(test_toggle_on);
 
-	/* Do basic state machine sanity checks last. */
-	RUN_TEST(test_tc_no_parent_cycles);
-	RUN_TEST(test_tc_no_empty_state);
-	RUN_TEST(test_tc_all_states_named);
 
 	test_print_result();
 }

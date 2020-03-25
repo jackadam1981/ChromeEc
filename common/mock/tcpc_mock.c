@@ -105,6 +105,7 @@ void mock_tcpc_discharge_vbus(int port, int enable)
 
 __maybe_unused static int mock_drp_toggle(int port)
 {
+	ccprints("mock_drp_toggle");
 	return EC_SUCCESS;
 }
 
@@ -126,6 +127,7 @@ __maybe_unused static int mock_set_src_ctrl(int port, int enable)
 
 __maybe_unused static int mock_enter_low_power_mode(int port)
 {
+	ccprints("mock_enter_low_power_mode");
 	return EC_SUCCESS;
 }
 

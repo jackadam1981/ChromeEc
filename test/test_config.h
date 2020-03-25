@@ -399,6 +399,8 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #ifdef TEST_USB_TYPEC_DRP_ACC_TRYSRC
 #define CONFIG_USB_TYPEC_DRP_ACC_TRYSRC
 #define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define CONFIG_USB_PD_TCPC_LOW_POWER
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_TYPEC_SM
 #define CONFIG_USB_PD_TCPMV2
@@ -407,7 +409,11 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_USB_PD_VBUS_DETECT_TCPC
 #define CONFIG_USB_POWER_DELIVERY
 #undef CONFIG_USB_PRL_SM
-#undef CONFIG_USB_PE_SM
+#define CONFIG_USB_PE_SM
+#define CONFIG_TEST_USB_PE_SM
+#define CONFIG_USBC_VCONN
+#define CONFIG_USB_PID 0x5036
+#define PD_VCONN_SWAP_DELAY 5000 /* us */
 #endif
 
 #ifdef TEST_USB_PD_INT

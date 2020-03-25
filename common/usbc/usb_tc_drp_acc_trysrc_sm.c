@@ -1099,6 +1099,8 @@ static void handle_device_access(int port)
 
 void tc_event_check(int port, int evt)
 {
+	if (evt != 0)
+		ccprints("tc_event_check 0x%x", evt);
 #ifdef CONFIG_USB_PE_SM
 	if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER)) {
 		if (evt & PD_EXIT_LOW_POWER_EVENT_MASK)
