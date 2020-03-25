@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e60d0338_2082549d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-25T20:17:51Z",
+      "side": 1,
+      "message": "Nit: I would argue that if the response didn\u0027t contain an identity header the discovery was really failed, but the TCPMv2 calling code for the function will currently cover that case.",
+      "range": {
+        "startLine": 484,
+        "startChar": 1,
+        "endLine": 484,
+        "endChar": 37
+      },
+      "revId": "0bc75a5e1249b1cfe03e54ab68688e6b8645324f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
