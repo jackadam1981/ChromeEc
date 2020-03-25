@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cd8c2258_d484820c",
+        "filename": "util/acroterm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-25T18:28:58Z",
+      "side": 1,
+      "message": "I was thinking \nif (self.data_len and\n    ((not self.data) or self.data[-1] !\u003d self.END_MAGIC):",
+      "parentUuid": "ba4c684f_3d39f9e3",
+      "range": {
+        "startLine": 328,
+        "startChar": 29,
+        "endLine": 329,
+        "endChar": 67
+      },
+      "revId": "8928380b4cc6875ad24075b63a8f268cc707c8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3af71838_1ccc8c14",
         "filename": "util/acroterm.py",
         "patchSetId": 3
