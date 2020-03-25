@@ -498,6 +498,27 @@ def generate_blob():
     print('dump size %d, compressed size %d' % (len(dump), len(zipped)))
     return zipped
 
+def seed_blob(outfile):
+    '''Read string data from a previously saved blob
+
+    This function is invoked only if the blob file exists.
+    '''
+    global FMT_DICT
+    if outfile.endswith('Ep'):
+        print('invoked with', ' '.join(sys.argv))
+        assert(False)
+    with open(outfile, 'rb') as blob:
+        try:
+            zipped = blob.read()
+            pickled = zlib.decompress(zipped)
+            dump = pickle.loads(pickled)
+        except (zlib.error, pickle.UnpicklingError):
+            print('%s does not seem to be a proper blob, ignored' % outfile)
+            return
+        strings = dump.split('\0')
+        for i in range(len(strings)):
+            FMT_DICT[strings[i]] = i
+
 def main(argv):
     """Main function.
 
@@ -518,11 +539,12 @@ def main(argv):
             outp_stamp = os.stat(flags.output).st_mtime_ns
 
             for e_file in files[1:]:
-                if os.stat(e_file).st_mtime_ns > outp_stamp:
+                if os.stat(e_file).st_mtime_ns >= outp_stamp:
                     break
             else:
                 # Output file is newer than all inputs.
                 return
+            seed_blob(flags.output)
 
         for e_file in files[1:]:
             preobj_process(e_file, flags.ext)
@@ -535,6 +557,7 @@ def main(argv):
 
     finally:
         fcntl.flock(lfd, fcntl.LOCK_UN)
+        lfd.close()
 
 if __name__ == '__main__':
     main(sys.argv)
