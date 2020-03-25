@@ -22,6 +22,30 @@
       "revId": "11e856e5bb8e75a7f706b3ac5a1e162caaad42df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ee2cae_bff3845e",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-25T22:52:24Z",
+      "side": 1,
+      "message": "? dedede uses HAS_AFTER_RSMRST. I could add empty routines if you prefer.",
+      "parentUuid": "b30e8af7_bd1cbe68",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "11e856e5bb8e75a7f706b3ac5a1e162caaad42df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
