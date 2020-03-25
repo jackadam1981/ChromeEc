@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ba0ff06_661499f5",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-25T21:32:35Z",
+      "side": 1,
+      "message": "\"prefixed with a\"?",
+      "range": {
+        "startLine": 11,
+        "startChar": 70,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "668e59dd_f1c21525",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-25T21:32:35Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with this syntax. Is it the same as:\n\n  for key in \"${@}\"; do\n\nIf so, that might be a little clearer.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 13
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9b672d_bdf6ed88",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-25T21:32:35Z",
+      "side": 1,
+      "message": "I think double quote this",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 20
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d23ce3e_75fa6a98",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-25T21:32:35Z",
+      "side": 1,
+      "message": "Looks like the \"declare -A\" is unnecessary when you use \"ARRAY\u003d()\": https://tldp.org/LDP/Bash-Beginners-Guide/html/sect_10_02.html\n\n \n ARRAY\u003d() \u0026\u0026 declare -p ARRAY\n\nshows\n\n declare -a ARRAY\u003d()",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 27
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "367afbe6_69307e9f",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-25T21:32:35Z",
+      "side": 1,
+      "message": "double quote",
+      "range": {
+        "startLine": 141,
+        "startChar": 55,
+        "endLine": 141,
+        "endChar": 77
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f363da2d_37d2f7be",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-25T21:32:35Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cda5434_356d02a3",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-25T21:32:35Z",
+      "side": 1,
+      "message": "double quote",
+      "range": {
+        "startLine": 160,
+        "startChar": 27,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf45553c_9c3a954d",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-25T21:32:35Z",
+      "side": 1,
+      "message": "double quote",
+      "range": {
+        "startLine": 163,
+        "startChar": 28,
+        "endLine": 163,
+        "endChar": 35
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
