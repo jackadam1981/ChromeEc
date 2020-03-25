@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "4406abed_3b4767e9",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-25T22:31:53Z",
+      "side": 1,
+      "message": "You can do the following to make it an array:\n\n    read -r -a ALL_BOARDS \u003c \u003c(basename -a board/*)\n    assoc-add-keys BOARDS_VALID \"${!BOARD_GROUPS[@]}\" \"${ALL_BOARDS[@]}\"",
+      "parentUuid": "b0d63835_fb0c8aeb",
+      "range": {
+        "startLine": 141,
+        "startChar": 55,
+        "endLine": 141,
+        "endChar": 77
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f363da2d_37d2f7be",
         "filename": "util/compare_build.sh",
         "patchSetId": 24
