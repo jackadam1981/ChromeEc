@@ -23,6 +23,7 @@
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/temp_sensor/sb_tsi.h"
+#include "driver/temp_sensor/tmp432.h"
 #include "driver/usb_mux/amd_fp5.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -43,6 +44,7 @@
 #include "task.h"
 #include "tcpci.h"
 #include "temp_sensor.h"
+#include "temp_sensor_chip.h"
 #include "thermistor.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
@@ -528,6 +530,14 @@ const struct temp_sensor_t temp_sensors[] = {
 		.read = sb_tsi_get_val,
 		.idx = 0,
 	},
+#ifdef BOARD_MORPHIUS
+	[TEMP_SENSOR_TMP432_Internal] = {
+		.name = "TMP432_Internal",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = tmp432_get_val,
+		.idx = TMP432_IDX_LOCAL,
+	},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
