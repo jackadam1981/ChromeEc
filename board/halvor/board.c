@@ -33,6 +33,20 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+void halvor_tcpc_alert_event(enum gpio_signal signal)
+{
+	/* TODO */
+}
+
+void halvor_ppc_interrupt(enum gpio_signal signal)
+{
+	/* TODO */
+}
+
+void halvor_bc12_interrupt(enum gpio_signal signal)
+{
+	/* TODO */
+}
 __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 {
 	/* Routing length exceeds 205mm prior to connection to re-timer */
