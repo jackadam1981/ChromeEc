@@ -264,7 +264,6 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
-
 /******************************************************************************/
 /* MFT channels. These are logically separate from pwm_channels. */
 const struct mft_t mft_channels[] = {
@@ -704,7 +703,6 @@ static void cbi_init(void)
 	CPRINTS("Board ID: %d", board_id);
 
 	config_volteer_gpios();
-
 	/* FW config */
 
 	if (cbi_get_fw_config(&cbi_val) != EC_SUCCESS) {
