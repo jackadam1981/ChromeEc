@@ -22,6 +22,30 @@
       "revId": "33639598dc4485034eb16505d069005ea76989ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26cdaeb6_a3a89752",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-26T22:21:13Z",
+      "side": 1,
+      "message": "There are three copies of EC-RW hash in Cr50.\nH_1 in a EC-EFS module, H_2 in a kernel secdata in nvmem cache(volatile), and H_3 in a kernel secdata in nvmem (non-volatile).\n\nWhen AP accesses kernel secdata through TPM vendor command, it is H_2 (and H_3) through TPM task.\nWhen EP requests for verification through EC-COMM, it is H_1.\nWhen H_2 (and H_3) are updated, then TPM tasks makes EFS module to reload H_1 from H_2.\n\nIn a NO_BOOT test case, it was not enough to corrupt H_1 only, because AP reads H_2, finds no changes, and does nothing. I had to corrupt H_2.\n\nThe reason why this patch corrupts H_3 is because AP would update H_2 anyway in recovery, and it will be overwritten H_3 eventually. Meanwhile, CR50 doesn\u0027t have any API to release a lock on dirty nvmem cache without a commit.",
+      "parentUuid": "fd994a2b_c043fe49",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "33639598dc4485034eb16505d069005ea76989ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
