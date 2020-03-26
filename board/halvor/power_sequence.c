@@ -88,7 +88,6 @@ static void board_chipset_startup(void)
 	 * VDDQ must ramp after VPP (VDD1) for DDR4/LPDDR4 systems.
 	 */
 	GPIO_SET_VERBOSE(GPIO_EN_DRAM_VDD1, 1);
-	GPIO_SET_VERBOSE(GPIO_EN_DRAM_VDDQ, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -127,7 +126,6 @@ static void board_chipset_shutdown(void)
 	 *  DDR_VPP           PP1800_DRAM
 	 */
 	GPIO_SET_VERBOSE(GPIO_EN_PP1050_STG, 0);
-	GPIO_SET_VERBOSE(GPIO_EN_DRAM_VDDQ, 0);
 	GPIO_SET_VERBOSE(GPIO_EN_PP1050_ST_S0, 0);
 	GPIO_SET_VERBOSE(GPIO_EN_DRAM_VDD1, 0);
 
