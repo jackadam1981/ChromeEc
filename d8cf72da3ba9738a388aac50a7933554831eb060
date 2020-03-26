@@ -70,6 +70,30 @@
       "revId": "d8cf72da3ba9738a388aac50a7933554831eb060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89de550_4df7882e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2809,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-26T19:57:38Z",
+      "side": 1,
+      "message": "It\u0027s such a fun read :)  \n\nFigure 4-16 in Type-c has the DRP with try.src states we\u0027re running in this file, and state descriptions are after the diagrams.  Both the low power mode and auto toggle states are ones we\u0027ve made to fit in with how our TCPCs practically work.  If we were only following the spec, we\u0027d just switch between unattched.snk and unattached.src when toggling (and this is what we do with things like the ITE integrated TCPCs which don\u0027t automatically toggle).",
+      "parentUuid": "8ebab3f8_5ce1c4c0",
+      "range": {
+        "startLine": 2806,
+        "startChar": 0,
+        "endLine": 2809,
+        "endChar": 2
+      },
+      "revId": "d8cf72da3ba9738a388aac50a7933554831eb060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
