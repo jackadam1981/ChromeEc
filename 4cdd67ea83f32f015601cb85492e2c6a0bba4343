@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d193203_a6f624a6",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-26T18:37:33Z",
+      "side": 1,
+      "message": "I\u0027m protecting against someone calling prochot_input_deferred() without the ISR running.  I don\u0027t think the ISR can trigger with an invalid gpio_signal.",
+      "parentUuid": "0d8ef865_472ff17b",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "4cdd67ea83f32f015601cb85492e2c6a0bba4343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee275d2a_3fe7ce46",
         "filename": "common/throttle_ap.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-26T18:27:05Z",
       "side": 1,
       "message": "Should we be throttling when this happens?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 48
+      },
+      "revId": "4cdd67ea83f32f015601cb85492e2c6a0bba4343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a793e53_54afddb9",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-26T18:37:33Z",
+      "side": 1,
+      "message": "No - if PROCHOT in is asserted, then the CPU is already throttling and the EC doesn\u0027t need to take any action.  We just want to log this condition.\nThe EC will still throttle the AP on it\u0027s own (by asserting the PROCHOUT output) for over temperature conditions above.",
+      "parentUuid": "ee275d2a_3fe7ce46",
       "range": {
         "startLine": 100,
         "startChar": 1,
