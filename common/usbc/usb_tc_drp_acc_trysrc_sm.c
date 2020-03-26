@@ -1273,6 +1273,16 @@ static void handle_new_power_state(int port)
 			/* Enter any previously exited alt modes */
 			pe_dpm_request(port, DPM_REQUEST_PORT_DISCOVERY);
 		}
+		if (chipset_in_or_transitioning_to_state(
+					CHIPSET_STATE_ON)) {
+			/*
+			 * Port can reach Attached.SRC state when chipset
+			 * is in CHIPSET_STATE_ANY_OFF state. As a result
+			 * USB device might not be powered until replugging
+			 * occurs. To avoid this, power on USB device.
+			 */
+			tc_src_power_on(port);
+		}
 	}
 }
 #endif /* CONFIG_POWER_COMMON */
