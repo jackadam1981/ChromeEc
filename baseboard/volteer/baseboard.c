@@ -224,7 +224,8 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
-
+/* Halvor does not support fan control */
+#ifdef CONFIG_FANS
 const struct fan_conf fan_conf_0 = {
 	.flags = FAN_USE_RPM_MODE,
 	.ch = MFT_CH_0,	/* Use MFT id to control fan */
@@ -251,7 +252,7 @@ const struct fan_t fans[FAN_CH_COUNT] = {
 		.rpm = &fan_rpm_0,
 	},
 };
-
+#endif /* CONFIG_FANS */
 /******************************************************************************/
 /* MFT channels. These are logically separate from pwm_channels. */
 const struct mft_t mft_channels[] = {
@@ -701,7 +702,6 @@ static void cbi_init(void)
 	CPRINTS("Board ID: %d", board_id);
 
 	config_volteer_gpios();
-
 	/* FW config */
 
 	if (cbi_get_fw_config(&cbi_val) != EC_SUCCESS) {
