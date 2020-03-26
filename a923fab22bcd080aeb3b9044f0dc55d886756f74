@@ -403,6 +403,30 @@
     },
     {
       "key": {
+        "uuid": "bde31adb_8ead76b1",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-03-26T16:08:39Z",
+      "side": 1,
+      "message": "I think you can convert to an array like the other change:\n\n   read -r -a name_arr \u003c\u003c\u003c \"${name}\"\n   ...\n   assoc-rm-keys BOARDS \"${name_arr[@]}\"",
+      "parentUuid": "2f19718d_d4254fb3",
+      "range": {
+        "startLine": 160,
+        "startChar": 27,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf45553c_9c3a954d",
         "filename": "util/compare_build.sh",
         "patchSetId": 24
