@@ -33,7 +33,16 @@
 #undef CONFIG_EXTPOWER_DEBOUNCE_MS
 #define CONFIG_EXTPOWER_DEBOUNCE_MS 200
 
+<<<<<<< HEAD   (b9df50 kakadu: align battery_max17055.c with master branch)
 #undef CONFIG_SYSTEM_UNLOCKED
+=======
+#define CONFIG_I2C_BITBANG
+#undef I2C_BITBANG_PORT_COUNT
+#define I2C_BITBANG_PORT_COUNT 1
+#undef CONFIG_I2C_NACK_RETRY_COUNT
+#define CONFIG_I2C_NACK_RETRY_COUNT 3
+#define CONFIG_SMBUS_PEC
+>>>>>>> CHANGE (390887 damu: enable bit-bang for battery smbus)
 
 #define CONFIG_USB_PD_TCPM_FUSB302
 #define CONFIG_USB_PD_DISCHARGE_GPIO
