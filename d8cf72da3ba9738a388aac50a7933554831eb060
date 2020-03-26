@@ -46,6 +46,30 @@
       "revId": "d8cf72da3ba9738a388aac50a7933554831eb060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ebab3f8_5ce1c4c0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2809,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-26T14:06:40Z",
+      "side": 1,
+      "message": "I agree with both of you.  I don\u0027t know the type-c spec very well.  I wanted to get any factory zork issues remedied with something that at least worked and then can think of a refactor in a more opportune time.  I will go back through the type-c spec and see how much of this existing state machine is in the spec and how much we just added.  If this and low_power_mode are things that we just added then this is all fair game and I will try to find a way to rework the states and Ed can do the same as he has time or you both can review what I do and see where we depart in thought.",
+      "parentUuid": "011ff973_dda8558e",
+      "range": {
+        "startLine": 2806,
+        "startChar": 0,
+        "endLine": 2809,
+        "endChar": 2
+      },
+      "revId": "d8cf72da3ba9738a388aac50a7933554831eb060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
