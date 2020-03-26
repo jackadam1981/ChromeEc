@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "943a1c73_4f50f867",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-03-26T22:19:41Z",
+      "side": 1,
+      "message": "switching to FIPS mode requires powerwash anyways, so that shouldn\u0027t be an issue, as long as non-FIPS mode keeps using the old seed.\niiuc, this change doesn\u0027t change the structure size (SHA256_DIGEST_WORDS \u003d\u003d 32/4 \u003d\u003d 8), so old salts will continue to be recognized hjust fine. it\u0027s only the generation process for the new salts that changes. please correct me if I\u0027m wrong.",
+      "parentUuid": "acc82c50_4e79641f",
+      "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10303ff3_2e8f59cf",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 15
@@ -30,6 +48,24 @@
       "writtenOn": "2020-03-10T07:02:54Z",
       "side": 1,
       "message": "If we are going to create a new salt, may as well create it the same way as the others - the reason to continue to use setvar here was to avoid resetting it.\n\nThat said, probably best to check with vbendeb what the best way to store this is now (with the new nvram setup)",
+      "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5ccf3a7_c0b1cf52",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-03-26T22:19:41Z",
+      "side": 1,
+      "message": "the new nvmem supports setvar/getvar, as before. these functions are ok to use.\n\n\u003e If we are going to create a new salt, may as well create it the same way as the others\n\nsorry, didn\u0027t quite get this comment. if we need to create the new salt, let\u0027s do it the fips way.",
+      "parentUuid": "10303ff3_2e8f59cf",
       "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
