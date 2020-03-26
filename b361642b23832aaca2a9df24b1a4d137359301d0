@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5796ce6e_48908bb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-26T17:23:25Z",
+      "side": 1,
+      "message": "please add (for tracking and future reference):\nBUG\u003db:152444591 b:150110431 b:150913968 b:151152817",
+      "revId": "b361642b23832aaca2a9df24b1a4d137359301d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ea8432_f351f57f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3676,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-26T17:23:25Z",
+      "side": 1,
+      "message": "I know it is just a temporary hack, but could you change this to CONFIG_ZORK_AUTO_DISCHARGE or similar? With CONFIG_ZORK_ADD_CHANGES I read \"add\" as in the opposite of \"remove\".",
+      "revId": "b361642b23832aaca2a9df24b1a4d137359301d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
