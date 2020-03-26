@@ -292,6 +292,20 @@ static void it83xx_enable_vconn(enum usbpd_port port, int enabled)
 				| USBPD_REG_MASK_DISCONNECT_POWER_CC2;
 		}
 	} else {
+		/*
+		 * If we connect with port partner via
+		 * 1)Active cable: means unused CC Rp connect with Ra. Turn off
+		 *   Vconn can drop to ~0v from 5v.
+		 * 2)Passive cable: means unused CC Rp connect with nothing
+		 *   (open). Turn off Vconn drop to 3.3v from 5v, so we should
+		 *   assert Rd to drop voltage to 0v.
+		 */
+		if (IS_ENABLED(IT83XX_USBPD_CC1_CC2_RESISTANCE_SEPARATE)) {
+			if (cc_pin == USBPD_CC_PIN_1)
+				CLEAR_MASK(IT83XX_USBPD_CCCSR(port), BIT(5));
+			else
+				CLEAR_MASK(IT83XX_USBPD_CCCSR(port), BIT(1));
+		}
 		/* Connect cc analog module (ex.UP/RD/DET/TX/RX) */
 		IT83XX_USBPD_CCCSR(port) &= ~(USBPD_REG_MASK_CC2_DISCONNECT |
 					      USBPD_REG_MASK_CC1_DISCONNECT);
