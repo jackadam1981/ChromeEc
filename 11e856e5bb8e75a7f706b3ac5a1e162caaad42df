@@ -46,6 +46,30 @@
       "revId": "11e856e5bb8e75a7f706b3ac5a1e162caaad42df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43f3af72_336d4c80",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-26T00:16:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure why my search failed to find the dedede implementation.  But, yes I would still prefer default empty routines for board_before_rsmrst() and board_after_rsmrst() implemented with the __overridable attribute.",
+      "parentUuid": "30ee2cae_bff3845e",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "11e856e5bb8e75a7f706b3ac5a1e162caaad42df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
