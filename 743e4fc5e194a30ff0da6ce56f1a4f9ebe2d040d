@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325ad824_1b3c4665",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-03-26T05:28:06Z",
+      "side": 1,
+      "message": "Should we re-order IT83XX_SPI_ENDDETECTINT and IT83XX_SPI_RXFIFOFULL (as it was) to prevent a rx FIFO getting cleared if a transacation just ended?",
+      "range": {
+        "startLine": 240,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 46
+      },
+      "revId": "743e4fc5e194a30ff0da6ce56f1a4f9ebe2d040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
