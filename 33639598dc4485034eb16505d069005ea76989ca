@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd994a2b_c043fe49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-26T21:58:19Z",
+      "side": 1,
+      "message": "Why didn\u0027t this work? \n\nThis behavior (corrupting only the cached hash) is better because the original hash can be restored (by resetting Cr50 or reloading the hash from NVMEM).\n\nHash cache needs to be updated only when NVMEM is written (by AP) and Cr50 should refer to always the cached hash when it talks to EC or AP. \n\nWas there some bug in the cache handling code? I think we should fix that.",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "33639598dc4485034eb16505d069005ea76989ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
