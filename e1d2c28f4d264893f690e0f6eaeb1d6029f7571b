@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f7eac38_8ec612c0",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "Can you structure this as a guard clause, like the other \"return false\" checks in this function? There\u0027s a lot of indentation and line continuation in here, and that might reduce some of it.",
+      "range": {
+        "startLine": 518,
+        "startChar": 1,
+        "endLine": 519,
+        "endChar": 44
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d606d26_5b869ff0",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "Based on the comments describing this function, it seems like it shouldn\u0027t be gated on this. It should be able to return true as long as any alt mode is supported. Keep this change as behavior-preserving refactor, but should there be another change to remove this config check?",
+      "range": {
+        "startLine": 548,
+        "startChar": 8,
+        "endLine": 548,
+        "endChar": 49
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b11a1f4_62c41795",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "Can you combine this with the above comment? It directly contradicts that comment, and I was briefly confused. Consider \"Check if SVID 0 \u003d USB_VID_INTEL (however, see below).\"",
+      "range": {
+        "startLine": 563,
+        "startChar": 2,
+        "endLine": 569,
+        "endChar": 5
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6adbee1_a13354b5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "Can this have a name that meaningfully differentiates it from enter_tbt_compat_mode?",
+      "range": {
+        "startLine": 563,
+        "startChar": 11,
+        "endLine": 563,
+        "endChar": 32
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2b05d56_134130f2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1967,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "Most of the functions declared here do not modify payload. Can you make it const uint32_t* as appropriate?",
+      "range": {
+        "startLine": 1967,
+        "startChar": 33,
+        "endLine": 1967,
+        "endChar": 50
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c5851e2_100a1b87",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1973,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "Nit: Can you spell this out? I have a slightly weaker preference the the variable name be spelled out.",
+      "range": {
+        "startLine": 1973,
+        "startChar": 38,
+        "endLine": 1973,
+        "endChar": 41
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fb4f88b_09511246",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1979,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 1979,
+        "startChar": 20,
+        "endLine": 1979,
+        "endChar": 28
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc68c4b_28d4bd08",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1983,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "Match order of parameters.",
+      "range": {
+        "startLine": 1982,
+        "startChar": 1,
+        "endLine": 1983,
+        "endChar": 52
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37fc623e_f17986b5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1990,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 1990,
+        "startChar": 3,
+        "endLine": 1990,
+        "endChar": 24
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ecc8c3_b54c1510",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1999,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 1999,
+        "startChar": 3,
+        "endLine": 1999,
+        "endChar": 17
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8feb95_65e2a635",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2002,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T17:54:17Z",
+      "side": 1,
+      "message": "Nit: Use consistent capitalization.",
+      "range": {
+        "startLine": 2002,
+        "startChar": 20,
+        "endLine": 2002,
+        "endChar": 25
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
