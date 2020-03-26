@@ -397,7 +397,6 @@ int tcpci_tcpc_drp_toggle(int port)
 	return rv;
 }
 
-#ifdef CONFIG_ZORK_AUTO_DISCHARGE
 int tcpci_tcpc_set_connection(int port,
 			      enum tcpc_cc_pull pull,
 			      int connect)
@@ -511,7 +510,6 @@ int tcpci_tcpc_set_connection(int port,
 	}
 	return rv;
 }
-#endif
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -1179,17 +1177,9 @@ int tcpci_tcpm_init(int port)
 	 * Alert assertion when CC_STATUS.Looking4Connection changes state.
 	 */
 	if (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0) {
-#ifndef CONFIG_ZORK_AUTO_DISCHARGE
-		int regval;
-
-		error = tcpc_read(port, TCPC_REG_TCPC_CTRL, &regval);
-		regval |= TCPC_REG_TCPC_CTRL_EN_LOOK4CONNECTION_ALERT;
-		error |= tcpc_write(port, TCPC_REG_TCPC_CTRL, regval);
-#else
 		error = tcpc_update8(port, TCPC_REG_TCPC_CTRL,
 				TCPC_REG_TCPC_CTRL_EN_LOOK4CONNECTION_ALERT,
 				MASK_SET);
-#endif
 		if (error)
 			CPRINTS("C%d: Failed to init TCPC_CTRL!", port);
 	}

@@ -3227,11 +3227,7 @@ static void tc_cc_rd_entry(const int port)
 	 * Both CC1 and CC2 pins shall be independently terminated to
 	 * ground through Rd.
 	 */
-#ifndef CONFIG_ZORK_AUTO_DISCHARGE
-	tcpm_set_new_connection(port, TYPEC_CC_RD);
-#else
 	tcpm_set_cc(port, TYPEC_CC_RD);
-#endif
 }
 
 
@@ -3253,11 +3249,7 @@ static void tc_cc_rp_entry(const int port)
 	 * up through Rp.
 	 */
 	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
-#ifndef CONFIG_ZORK_AUTO_DISCHARGE
-	tcpm_set_new_connection(port, TYPEC_CC_RP);
-#else
 	tcpm_set_cc(port, TYPEC_CC_RP);
-#endif
 }
 
 /**
