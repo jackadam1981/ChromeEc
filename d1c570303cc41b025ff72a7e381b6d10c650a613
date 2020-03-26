@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "c1b9a7ac_d08b9a70",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-26T22:15:48Z",
+      "side": 1,
+      "message": "The power up/down sequencing on Intel chipsets isn\u0027t symmetrical with respect to order and isn\u0027t symmetrical with the timings.",
+      "parentUuid": "a993d847_6e19a498",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f96ef763_e22c82aa",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 2
@@ -333,6 +357,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "11e316e8_dd7389e7",
+      "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9505bd88_69f6380a",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-26T22:15:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da6844e_92da9dc6",
       "revId": "d1c570303cc41b025ff72a7e381b6d10c650a613",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
