@@ -28,6 +28,7 @@
 #include "tablet_mode.h"
 #include "timer.h"
 #include "uart.h"
+#include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 
@@ -88,8 +89,21 @@ const struct adc_t adc_channels[] = {
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* BC12 */
-const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
+const struct mt6360_config_t mt6360_config = {
+	.i2c_port = 0,
+	.i2c_addr_flags = MT6360_PMU_SLAVE_ADDR_FLAGS,
 };
+
+int board_is_sourcing_vbus(int port)
+{
+	/* TODO */
+	return 0;
+}
+
+void usb_charger_set_switches(int port, enum usb_switch setting)
+{
+	/* TODO */
+}
 
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {
