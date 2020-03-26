@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a99cb8ad_03c05862",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3663,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-26T20:58:33Z",
+      "side": 1,
+      "message": "effect",
+      "range": {
+        "startLine": 3663,
+        "startChar": 33,
+        "endLine": 3663,
+        "endChar": 39
+      },
+      "revId": "87e5a2c8ed648b31068c833f6e5730dff2964ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fa5e63_54a51457",
+        "filename": "test/test_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-26T20:58:33Z",
+      "side": 1,
+      "message": "Why change the port count?  I didn\u0027t notice anything in the commit message about this",
+      "range": {
+        "startLine": 315,
+        "startChar": 36,
+        "endLine": 315,
+        "endChar": 38
+      },
+      "revId": "87e5a2c8ed648b31068c833f6e5730dff2964ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
