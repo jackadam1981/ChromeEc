@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d8ef865_472ff17b",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T18:27:05Z",
+      "side": 1,
+      "message": "Are you contemplating the scenario where the ISR was actually called with GPIO_COUNT?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "4cdd67ea83f32f015601cb85492e2c6a0bba4343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee275d2a_3fe7ce46",
+        "filename": "common/throttle_ap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-26T18:27:05Z",
+      "side": 1,
+      "message": "Should we be throttling when this happens?",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 48
+      },
+      "revId": "4cdd67ea83f32f015601cb85492e2c6a0bba4343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
