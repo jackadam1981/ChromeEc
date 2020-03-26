@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95b35798_3036e31c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2809,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-26T03:46:25Z",
+      "side": 1,
+      "message": "Pardon me if this has already been asked since I\u0027m late to the auto toggle CL party, but why would we want to be in auto toggle state when we\u0027re not actually toggling?  Why not go into unattached.snk if nothing is attached and we\u0027re not going to be toggling? \n\nOr is this an issue of the drp_state changing while we\u0027re in the auto toggle state? So we were toggling, but aren\u0027t now?",
+      "range": {
+        "startLine": 2806,
+        "startChar": 0,
+        "endLine": 2809,
+        "endChar": 2
+      },
+      "revId": "d8cf72da3ba9738a388aac50a7933554831eb060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
