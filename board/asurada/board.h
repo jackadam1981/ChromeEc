@@ -29,6 +29,9 @@
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_EC_BATT_PRES_ODL
 
 /* BC12 */
+#define CONFIG_BC12_DETECT_MT6360
+#define CONFIG_MT6360_BC12_DETECT_GPIO GPIO_EN_USB_C0_BC12_DET
+#define CONFIG_USB_CHARGER
 
 /* Charger */
 #define CONFIG_CHARGER
@@ -37,6 +40,7 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 20 /* BOARD_RS1 */
 #define CONFIG_CHARGER_SENSE_RESISTOR 10 /* BOARD_RS2 */
 #define CONFIG_CHARGER_OTG
+#define CONFIG_CHARGE_RAMP_HW
 #define CONFIG_CHARGE_MANAGER
 
 /* Chipset */
@@ -140,6 +144,7 @@ enum power_signal {
 
 void board_reset_pd_mcu(void);
 int board_get_version(void);
+int board_is_sourcing_vbus(int port);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
