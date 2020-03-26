@@ -37,38 +37,32 @@ GPIO_INT(TABLET_MODE_L,        PIN(9, 5), GPIO_INT_BOTH, gmr_tablet_switch_isr)
 /* USB-C interrupts */
 GPIO_INT(USB_C0_TCPC_INT_ODL,	PIN(E, 0), GPIO_INT_BOTH, tcpc_alert_event)
 GPIO_INT(USB_C1_TCPC_INT_ODL,	PIN(A, 2), GPIO_INT_BOTH, tcpc_alert_event)
+GPIO_INT(USB_C2_TCPC_INT_ODL,   PIN(A, 0), GPIO_INT_BOTH, tcpc_alert_event)
 
 GPIO_INT(USB_C0_PPC_INT_ODL,	PIN(6, 2), GPIO_INT_BOTH, ppc_interrupt)
 GPIO_INT(USB_C1_PPC_INT_ODL,	PIN(F, 5), GPIO_INT_BOTH, ppc_interrupt)
+GPIO_INT(USB_C2_PPC_INT_ODL,    PIN(A, 4), GPIO_INT_BOTH, ppc_interrupt)
 
 GPIO_INT(USB_C0_BC12_INT_ODL,	PIN(E, 4), GPIO_INT_BOTH, bc12_interrupt)
 GPIO_INT(USB_C1_MIX_INT_ODL,	PIN(0, 3), GPIO_INT_BOTH, bc12_interrupt)
+GPIO_INT(USB_C2_MIX_INT_ODL,	PIN(6, 1), GPIO_INT_BOTH, bc12_interrupt)
 
 /* HDMI interrupts */
 
 /* Volume button interrupts */
-GPIO_INT(EC_VOLDN_BTN_ODL,		PIN(9, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
-/*
- * EC_VOLUP_BTN_ODL moved from GPIO75 to GPIO97 on boards with board ID >=1.
- * GPIO97/EN_PP1050_BYPASS is DNS on board ID 0, and GPIO75 will be used once
- * EFS support is added.
- * TODO (b/149858568): remove board ID=0 support.
- */
-GPIO_INT(EC_VOLUP_BTN_ODL_BOARDID_0,	PIN(7, 5), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
-GPIO_INT(EC_VOLUP_BTN_ODL,		PIN(9, 7), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 
 /* Power Sequencing Signals */
 GPIO(EN_PP3300_A,              PIN(A, 3), GPIO_OUT_LOW)
-GPIO(EN_PP5000_A,              PIN(A, 4), GPIO_OUT_LOW)
-/* The EC does not buffer this signal on Volteer. */
+
+/* The EC does not buffer this signal on Halvor. */
 UNIMPLEMENTED(PCH_DSW_PWROK)
+UNIMPLEMENTED(EN_PP5000_A)
 
 #ifdef VOLTEER_POWER_SEQUENCE
 /* Optional power sequencing signals that are not stuffed by default */
-GPIO(EN_DRAM_VDDQ,		PIN(F, 2), GPIO_OUT_LOW)
 GPIO(EN_PP1050_STG,		PIN(C, 0), GPIO_OUT_LOW)
 GPIO(EN_PP5000_USB_AG,		PIN(A, 7), GPIO_OUT_LOW)
-GPIO(EN_PPVAR_VCCIN_AUX,	PIN(8, 1), GPIO_OUT_LOW)
+GPIO(EN_PPVAR_VCCIN_AUX,	PIN(4, 3), GPIO_OUT_LOW)
 GPIO(EN_PP1050_ST_S0,		PIN(3, 4), GPIO_OUT_LOW)
 GPIO(EN_VNN_BYPASS,		PIN(B, 0), GPIO_OUT_LOW)
 GPIO(EN_DRAM_VDD1,		PIN(9, 6), GPIO_OUT_LOW)
@@ -99,20 +93,34 @@ GPIO(SYS_RST_ODL,              PIN(C, 5), GPIO_ODR_HIGH)
 GPIO(EC_PCH_INT_ODL,           PIN(B, 0), GPIO_ODR_HIGH)
 
 /* USB and USBC Signals */
+GPIO(USB_C0_RT_RST_ODL,			PIN(6, 6), GPIO_ODR_LOW)
+GPIO(USB_C1_RT_RST_ODL,			PIN(8, 6), GPIO_ODR_LOW)
+GPIO(USB_C2_RT_RST_ODL,			PIN(3, 5), GPIO_ODR_LOW)
 
-/*
- * USB_C1 moved from GPIO32 to GPIO83 on boards with board ID >=1.
- * GPIO83/EN_PP1800_A is DNS on board ID 0 and GPIO32 is N/C on board ID >=1
- * so it's safe to define GPIOs compatible with both designs.
- * TODO (b/149858568): remove board ID=0 support.
- */
-GPIO(USB_C1_RT_RST_ODL_BOARDID_0,	PIN(3, 2), GPIO_ODR_LOW) /* USB_C1 Reset on boards without board ID */
-GPIO(USB_C1_RT_RST_ODL,			PIN(8, 3), GPIO_ODR_LOW) /* USB_C1 Reset on boards board ID >=1 */
+GPIO(USB_C0_OC_ODL,             PIN(B, 1), GPIO_ODR_HIGH)
+GPIO(USB_C1_OC_ODL,             PIN(5, 0), GPIO_ODR_HIGH)
+GPIO(USB_C2_OC_ODL,             PIN(3, 2), GPIO_ODR_HIGH)
+
+GPIO(USB_CO_FRS_EN,             PIN(4, 0), GPIO_OUT_HIGH)
+GPIO(USB_C1_FRS_EN,             PIN(9, 4), GPIO_OUT_HIGH)
+GPIO(USB_C2_FRS_EN,             PIN(6, 0), GPIO_OUT_HIGH)
+
 
 /* Don't have a load switch for retimer */
 UNIMPLEMENTED(USB_C1_LS_EN)
 /* Retimer Force Power enable is connected to AP */
 UNIMPLEMENTED(USB_C1_RT_FORCE_PWR)
+
+/* Other input pins */
+GPIO(CCD_MODE_ODL,              PIN(E, 5),  GPIO_INPUT)
+GPIO(EC_PROCHOT_IN_L,           PIN(F, 0),  GPIO_INPUT)
+GPIO(3AXIS_INT_L,		        PIN(8, 1),  GPIO_INPUT)		/* 3 Axis Accel */
+GPIO(CHARGER_INT_L,             PIN(7, 3),  GPIO_INPUT)
+GPIO(6AXIS_INT_L,		        PIN(5, 6),  GPIO_INPUT)
+
+/* Other output pins */
+GPIO(EC_PPEXT_EN1,              PIN(C, 2), GPIO_OUT_HIGH)
+GPIO(EC_I2CBUFFER_EN,           PIN(9, 3), GPIO_OUT_LOW)
 
 /* Misc Signals */
 
@@ -124,14 +132,16 @@ UNIMPLEMENTED(USB_C1_RT_FORCE_PWR)
 GPIO(EC_EDP_BL_EN,             PIN(D, 3), GPIO_OUT_HIGH)
 
 /* I2C pins - Alternate function below configures I2C module on these pins */
-GPIO(EC_I2C0_SENSOR_SCL,       PIN(B, 5), GPIO_INPUT | GPIO_SEL_1P8V)
-GPIO(EC_I2C0_SENSOR_SDA,       PIN(B, 4), GPIO_INPUT | GPIO_SEL_1P8V)
+GPIO(EC_I2C0_SENSOR_SCL,       PIN(B, 5), GPIO_INPUT)
+GPIO(EC_I2C0_SENSOR_SDA,       PIN(B, 4), GPIO_INPUT)
 GPIO(EC_I2C1_USB_C0_SCL,       PIN(9, 0), GPIO_INPUT)
 GPIO(EC_I2C1_USB_C0_SDA,       PIN(8, 7), GPIO_INPUT)
 GPIO(EC_I2C2_USB_C1_SCL,       PIN(9, 2), GPIO_INPUT)
 GPIO(EC_I2C2_USB_C1_SDA,       PIN(9, 1), GPIO_INPUT)
 GPIO(EC_I2C3_USB_1_MIX_SCL,    PIN(D, 1), GPIO_INPUT)
 GPIO(EC_I2C3_USB_1_MIX_SDA,    PIN(D, 0), GPIO_INPUT)
+GPIO(EC_I2C4_USB_C2_SCL,       PIN(F, 3), GPIO_INPUT)
+GPIO(EC_I2C4_USB_C2_SDA,       PIN(F, 2), GPIO_INPUT)
 GPIO(EC_I2C5_POWER_SCL,        PIN(3, 3), GPIO_INPUT)
 GPIO(EC_I2C5_POWER_SDA,        PIN(3, 6), GPIO_INPUT)
 GPIO(EC_I2C7_EEPROM_SCL,       PIN(B, 3), GPIO_INPUT)
@@ -141,8 +151,9 @@ GPIO(EC_I2C7_EEPROM_SDA,       PIN(B, 2), GPIO_INPUT)
 GPIO(EC_BATT_PRES_ODL, 		PIN(E, 1), GPIO_INPUT)
 
 /* Physical HPD pins are not needed on EC as these are configured by PMC */
-GPIO(USB_C0_DP_HPD,		PIN(F, 3), GPIO_INPUT)
+GPIO(USB_C0_DP_HPD,		PIN(C, 6), GPIO_INPUT)
 GPIO(USB_C1_DP_HPD,		PIN(7, 0), GPIO_INPUT)
+GPIO(USB_C2_DP_HPD,     PIN(B, 7), GPIO_INPUT)
 
 /* Alternate functions GPIO definitions */
 ALTERNATE(PIN_MASK(B, BIT(5) | BIT(4)), 0, MODULE_I2C, (GPIO_INPUT | GPIO_SEL_1P8V)) /* I2C0 */
@@ -155,13 +166,10 @@ ALTERNATE(PIN_MASK(B, BIT(3) | BIT(2)), 0, MODULE_I2C, 0)                       
 /* This selects between an LED module on the motherboard and one on the daughter
  * board, to be controlled by LED_{1,2,3}_L. PWM allows driving both modules at
  * the same time. */
-ALTERNATE(PIN_MASK(6, BIT(0)), 0, MODULE_PWM, 0)                                     /* LED_SIDESEL_4_L */
-ALTERNATE(PIN_MASK(C, BIT(2) | BIT(3) | BIT(4)), 0, MODULE_PWM, 0)                   /* LED_{3,2,1}_L */
+
+ALTERNATE(PIN_MASK(C, BIT(3) | BIT(4)), 0, MODULE_PWM, 0)                   /* LED_{2,1}_L */
 
 /* Fan signals */
-GPIO(EN_PP5000_FAN,            PIN(6, 1), GPIO_OUT_LOW)
-ALTERNATE(PIN_MASK(B, BIT(7)), 0, MODULE_PWM, 0)	/* FAN_PWM */
-ALTERNATE(PIN_MASK(4, BIT(0)), 0, MODULE_PWM, 0)	/* FAN_SPEED_TACH */
 
 /* Keyboard pins */
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
@@ -171,11 +179,12 @@ ALTERNATE(PIN_MASK(2, 0x03), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH) /* KSO_00-0
 GPIO(EC_KSO_02_INV, PIN(1, 7),                        GPIO_OUT_LOW)  /* KSO_02 */
 ALTERNATE(PIN_MASK(1, 0x7F), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH) /* KSO_03-09 */
 ALTERNATE(PIN_MASK(0, 0xF0), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH) /* KSO_10-13 */
-ALTERNATE(PIN_MASK(8, 0x04), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH) /* KSO_14 */
+ALTERNATE(PIN_MASK(8, 0x12), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH) /* KSO_14-15 */
 ALTERNATE(PIN_MASK(8, BIT(0)), 0, MODULE_PWM, 0)                     /* EC_KB_BL_PWM */
 
 /* UART */
 ALTERNATE(PIN_MASK(6, BIT(5) | BIT(4)), 0, MODULE_UART, 0)                           /* UART from EC to Servo */
+ALTERNATE(PIN_MASK(7, BIT(5))         , 0, MODULE_UART, 0)                           /* UART2 from H1 to EC */
 
 /* Power Switch Logic (PSL) inputs */
 ALTERNATE(PIN_MASK(D, BIT(2)), 0, MODULE_PMU, 0)                    /* GPIOD2 = EC_LID_OPEN */
