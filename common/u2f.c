@@ -111,6 +111,17 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 	    (req->flags & U2F_AUTH_FLAG_TUP) != 0)
 		return VENDOR_RC_NOT_ALLOWED;
 
+	/* If not enforcing user presence, enforce pairing secret */
+	if ((req->flags & U2F_AUTH_FLAG_TUP) == 0) {
+		uint8_t wrapped_secret[SHA256_DIGEST_SIZE];
+		if (u2f_wrap_pairing_secret(
+			req->pairingSecret, wrapped_secret) != EC_SUCCESS)
+			return VENDOR_RC_INTERNAL_ERROR;
+		if (safe_memcmp(wrapped_secret, req->wrappedPairingSecret,
+				sizeof(wrapped_secret)) != 0)
+			return VENDOR_RC_NOT_ALLOWED;
+	}
+
 	/* Generate origin-specific keypair */
 	do {
 		if (!DCRYPTO_ladder_random(&od_seed))
@@ -147,6 +158,44 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 	return VENDOR_RC_SUCCESS;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_U2F_GENERATE, u2f_generate);
+
+static enum vendor_cmd_rc u2f_wrap_secret(enum vendor_cmd_cc code,
+					  void *buf,
+					  size_t input_size,
+					  size_t *response_size)
+{
+	U2F_WRAP_REQ *req = buf;
+	U2F_WRAP_RESP *resp;
+
+	/* Chip-specific derived version of pairing secret */
+	uint8_t wrapped_secret[SHA256_DIGEST_SIZE];
+
+	size_t response_buf_size = *response_size;
+
+	*response_size = 0;
+
+	if (input_size != sizeof(U2F_WRAP_REQ) ||
+	    response_buf_size < sizeof(U2F_WRAP_RESP))
+		return VENDOR_RC_BOGUS_ARGS;
+
+	if (u2f_wrap_pairing_secret(
+		req->pairingSecret, wrapped_secret) != EC_SUCCESS)
+		return VENDOR_RC_INTERNAL_ERROR;
+
+	/*
+	 * From this point: the request 'req' content is invalid as it is
+	 * overridden by the response we are building in the same buffer.
+	 */
+	resp = buf;
+
+	*response_size = sizeof(*resp);
+
+	memcpy(resp->wrappedPairingSecret, wrapped_secret,
+	       sizeof(wrapped_secret));
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_WRAP_SECRET, u2f_wrap_secret);
 
 static int verify_kh_pubkey(const uint8_t *key_handle,
 			    const U2F_EC_POINT *public_key, int *matches) {
@@ -269,9 +318,21 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 	if (req->flags == U2F_AUTH_CHECK_ONLY)
 		return VENDOR_RC_SUCCESS;
 
-	/* Always enforce user presence, with optional consume. */
-	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES)
+	/* Maybe enforce user presence, w/ optional consume */
+	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES &&
+	    (req->flags & U2F_AUTH_FLAG_TUP) != 0)
 		return VENDOR_RC_NOT_ALLOWED;
+
+	/* If not enforcing user presence, enforce pairing secret */
+	if ((req->flags & U2F_AUTH_FLAG_TUP) == 0) {
+		uint8_t wrapped_secret[SHA256_DIGEST_SIZE];
+		if (u2f_wrap_pairing_secret(
+			req->pairingSecret, wrapped_secret) != EC_SUCCESS)
+			return VENDOR_RC_INTERNAL_ERROR;
+		if (safe_memcmp(wrapped_secret, req->wrappedPairingSecret,
+				sizeof(wrapped_secret)) != 0)
+			return VENDOR_RC_NOT_ALLOWED;
+	}
 
 	/* Re-create origin-specific key. */
 	if (legacy_kh) {

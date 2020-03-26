@@ -177,6 +177,24 @@ int u2f_origin_key(const uint8_t *seed, p256_int *d)
 					   (const uint8_t *)tmp) == 0;
 }
 
+int u2f_wrap_pairing_secret(const uint8_t *pairing_secret,
+			    uint8_t *output)
+{
+	LITE_HMAC_CTX ctx;
+	struct u2f_state *state = get_state();
+
+	if (!state)
+		return EC_ERROR_UNKNOWN;
+
+	DCRYPTO_HMAC_SHA256_init(&ctx, state->salt_kek, SHA256_DIGEST_SIZE);
+	HASH_update(&ctx.hash, pairing_secret, P256_NBYTES);
+
+	memcpy(output,
+	       DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
+
+	return EC_SUCCESS;
+}
+
 int u2f_origin_user_keyhandle(const uint8_t *origin,
 			      const uint8_t *user,
 			      const uint8_t *origin_seed,

@@ -53,6 +53,20 @@ int u2f_origin_keypair(uint8_t *seed, p256_int *d,
 int u2f_origin_key(const uint8_t *seed, p256_int *d);
 
 /**
+ * Pack the specified pairing secret into a chip-specific validation value.
+ * The validation value should be sent to the pairing peer and optionally
+ * sent back with a pairing secret on future U2F_SIGN commands to ensure
+ * the secret is correct.
+ *
+ * @param pairing_secret the secret to pack.
+ * @param output pointer to store the derived value.
+ *
+ * @return EC_SUCCESS if the derivation succeeded.
+ */
+int u2f_wrap_pairing_secret(const uint8_t *pairing_secret,
+			    uint8_t *output);
+
+/**
  * Pack the specified origin, user secret and origin-specific seed
  * into a key handle.
  *

@@ -53,8 +53,10 @@ typedef struct {
 // TODO(louiscollard): Add Descriptions.
 
 typedef struct {
-    uint8_t appId[U2F_APPID_SIZE];      // Application id
+    uint8_t appId[U2F_APPID_SIZE];         // Application id
     uint8_t userSecret[U2F_P256_SIZE];
+    uint8_t pairingSecret[U2F_P256_SIZE];  // Required if presence is waived
+    uint8_t wrappedPairingSecret[U2F_P256_SIZE];  // Required if presence is waived
     uint8_t flags;
 } U2F_GENERATE_REQ;
 
@@ -66,6 +68,8 @@ typedef struct {
 typedef struct {
     uint8_t appId[U2F_APPID_SIZE];         // Application id
     uint8_t userSecret[U2F_P256_SIZE];
+    uint8_t pairingSecret[U2F_P256_SIZE];  // Required if presence is waived
+    uint8_t wrappedPairingSecret[U2F_P256_SIZE];  // Required if presence is waived
     uint8_t keyHandle[U2F_FIXED_KH_SIZE];  // Key handle
     uint8_t hash[U2F_P256_SIZE];
     uint8_t flags;
@@ -75,6 +79,14 @@ typedef struct {
     uint8_t sig_r[U2F_P256_SIZE];   // Signature
     uint8_t sig_s[U2F_P256_SIZE];   // Signature
 } U2F_SIGN_RESP;
+
+typedef struct {
+    uint8_t pairingSecret[U2F_P256_SIZE];
+} U2F_WRAP_REQ;
+
+typedef struct {
+    uint8_t wrappedPairingSecret[U2F_P256_SIZE];
+} U2F_WRAP_RESP;
 
 typedef struct {
     uint8_t userSecret[U2F_P256_SIZE];

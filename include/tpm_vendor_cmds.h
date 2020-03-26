@@ -147,6 +147,9 @@ enum vendor_cmd_cc {
 	VENDOR_CC_GET_BOOT_MODE = 52,
 	VENDOR_CC_RESET_EC = 53,
 
+	/* Wraps a secret from userspace */
+	VENDOR_CC_WRAP_SECRET = 54,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
