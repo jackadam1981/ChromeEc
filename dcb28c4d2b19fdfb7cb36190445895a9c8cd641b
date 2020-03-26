@@ -22,6 +22,30 @@
       "revId": "dcb28c4d2b19fdfb7cb36190445895a9c8cd641b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff32d713_906bcdbc",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4581,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-26T20:21:48Z",
+      "side": 1,
+      "message": "Good catch. I changed my logic without updating my comment :)",
+      "parentUuid": "df0fe735_1d35794a",
+      "range": {
+        "startLine": 4581,
+        "startChar": 19,
+        "endLine": 4581,
+        "endChar": 27
+      },
+      "revId": "dcb28c4d2b19fdfb7cb36190445895a9c8cd641b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
