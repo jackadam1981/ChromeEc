@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e7155c9_456e00c1",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-27T23:20:05Z",
+      "side": 0,
+      "message": "moving to _sps0_txfifo_empty_interrupt().",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 36
+      },
+      "revId": "8755dcc9a750d1f6fb7e9bb9c2d900a8dea932ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d86b866_06d0d10f",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-27T23:20:05Z",
+      "side": 0,
+      "message": "Use FIFO_CTRL_TXFIFO_AUTO_DIS instead.",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 53
+      },
+      "revId": "8755dcc9a750d1f6fb7e9bb9c2d900a8dea932ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
