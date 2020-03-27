@@ -61,6 +61,9 @@
 
 #define I2C_ADDR_EEPROM_FLAGS 0x50 /* 7b address */
 
+/* waddledoo use AT24C02D as CBI rom */
+#define CONFIG_CBI_EEPROM_AT24C02D
+
 /* Sensors */
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
