@@ -78,7 +78,6 @@ struct cbi_data *cbi_find_tag(const void *cbi, enum cbi_data_tag tag)
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, "CBI " format, ## args)
 
-#define EEPROM_PAGE_WRITE_SIZE	16
 #define EEPROM_PAGE_WRITE_MS	5
 #define EC_ERROR_CBI_CACHE_INVALID	EC_ERROR_INTERNAL_FIRST
 
@@ -246,7 +245,7 @@ static int write_board_info(void)
 	}
 
 	while (rest > 0) {
-		int size = MIN(EEPROM_PAGE_WRITE_SIZE, rest);
+		int size = MIN(CONFIG_EPROM_PAGE_WRITE_SIZE, rest);
 		int rv;
 		rv = i2c_write_block(I2C_PORT_EEPROM, I2C_ADDR_EEPROM_FLAGS,
 				     p - cbi, p, size);
