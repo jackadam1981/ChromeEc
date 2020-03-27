@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7da901f_0a5832f9",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-03-27T00:34:10Z",
+      "side": 1,
+      "message": "I guess if we really want to do this, we need to save a global state (one bit) to make sure this command is only allowed once per boot.",
+      "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc2edb6_7d2681fb",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-03-27T00:34:10Z",
+      "side": 1,
+      "message": "This is another thing that bothers me: if we really want to add a command, ideally it should be following the other u2f commands, but it seems we can\u0027t change the order.",
+      "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
