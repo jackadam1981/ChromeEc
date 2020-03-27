@@ -34,6 +34,24 @@
       "revId": "67647d43944e8aa163fa9a055f9d9f0893348851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "830f0d4b_655741c0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-27T21:10:51Z",
+      "side": 1,
+      "message": "Ok, this looks good to me then, just waiting on volteer test.",
+      "parentUuid": "d5ad5f9d_5f872133",
+      "revId": "67647d43944e8aa163fa9a055f9d9f0893348851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
