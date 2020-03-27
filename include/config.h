@@ -4444,6 +4444,12 @@
  */
 #undef CONFIG_CROS_BOARD_INFO
 
+/*
+ * Different rom parts would have different page size.
+ * Use 16-byte as default, but changed to 8-byte if AT24C02D is used as CBI rom.
+ */
+#undef CONFIG_CBI_EEPROM_AT24C02D
+
 /*****************************************************************************/
 /*
  * ISH config defaults

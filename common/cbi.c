@@ -78,9 +78,14 @@ struct cbi_data *cbi_find_tag(const void *cbi, enum cbi_data_tag tag)
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, "CBI " format, ## args)
 
-#define EEPROM_PAGE_WRITE_SIZE	16
 #define EEPROM_PAGE_WRITE_MS	5
 #define EC_ERROR_CBI_CACHE_INVALID	EC_ERROR_INTERNAL_FIRST
+
+#ifdef CONFIG_CBI_EEPROM_AT24C02D
+#define CBI_EEPROM_PAGE_WRITE_SIZE 8
+#else
+#define CBI_EEPROM_PAGE_WRITE_SIZE 16
+#endif
 
 static int cached_read_result = EC_ERROR_CBI_CACHE_INVALID;
 static uint8_t cbi[CBI_EEPROM_SIZE];
@@ -234,9 +239,6 @@ static int eeprom_is_write_protected(void)
 
 static int write_board_info(void)
 {
-	/* The code is only tested for ST M24C02, whose page size for a single
-	 * write is 16 byte. To support different EEPROMs, you may need to
-	 * craft the i2c packets accordingly. */
 	const uint8_t *p = cbi;
 	int rest = head->total_size;
 
@@ -246,7 +248,7 @@ static int write_board_info(void)
 	}
 
 	while (rest > 0) {
-		int size = MIN(EEPROM_PAGE_WRITE_SIZE, rest);
+		int size = MIN(CBI_EEPROM_PAGE_WRITE_SIZE, rest);
 		int rv;
 		rv = i2c_write_block(I2C_PORT_EEPROM, I2C_ADDR_EEPROM_FLAGS,
 				     p - cbi, p, size);
