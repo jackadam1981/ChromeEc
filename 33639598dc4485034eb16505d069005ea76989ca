@@ -70,6 +70,76 @@
       "revId": "33639598dc4485034eb16505d069005ea76989ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38465ad6_d37e216a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-27T16:54:36Z",
+      "side": 1,
+      "message": "Why do we need H1? Can EFS module reference H2 by a pointer?",
+      "parentUuid": "a955b365_66e4f0cc",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "33639598dc4485034eb16505d069005ea76989ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ec75a8d_83d4efc9",
+        "filename": "common/ec_comm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-27T16:54:36Z",
+      "side": 1,
+      "message": "How much code would you need if you do \"ec_comm sethash \u003chash\u003e\"? \"ec_comm corrupt\" would be useful only for FAFT while \"ec_comm sethash\" can be used for manually syncing Hmir with Heff as well as uncorrupting a hash.\n\nI\u0027m not sure how guilty we would feel to add as much code as this CL is adding just for testing a corner case.",
+      "range": {
+        "startLine": 326,
+        "startChar": 28,
+        "endLine": 326,
+        "endChar": 35
+      },
+      "revId": "33639598dc4485034eb16505d069005ea76989ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c6658d_ada4f99d",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-27T16:54:36Z",
+      "side": 1,
+      "message": "Why don\u0027t you read secdata kernel from NVMEM instead of hardcoding these values?\n\nThis code is assuming secdata kernel is v1.0, which is not always the case.",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 50
+      },
+      "revId": "33639598dc4485034eb16505d069005ea76989ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
