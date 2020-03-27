@@ -61,6 +61,10 @@
 
 #define I2C_ADDR_EEPROM_FLAGS 0x50 /* 7b address */
 
+/* CBI rom: AT24C02D only supports 8-byte page write mode */
+#undef CONFIG_EPROM_PAGE_WRITE_SIZE
+#define CONFIG_EPROM_PAGE_WRITE_SIZE 8
+
 /* Sensors */
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
