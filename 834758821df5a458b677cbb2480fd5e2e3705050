@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8de4ffb6_4dec303d",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-27T14:49:12Z",
+      "side": 1,
+      "message": "is pulse extension not going to work on devices which use i2c?",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 4
+      },
+      "revId": "834758821df5a458b677cbb2480fd5e2e3705050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
