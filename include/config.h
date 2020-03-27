@@ -4434,6 +4434,12 @@
  */
 #undef CONFIG_CROS_BOARD_INFO
 
+/*
+ * Different rom parts would have different page size.
+ * Use 16-byte as default, but a board can change it.
+ */
+#define EEPROM_PAGE_WRITE_SIZE 16
+
 /*****************************************************************************/
 /*
  * ISH config defaults
