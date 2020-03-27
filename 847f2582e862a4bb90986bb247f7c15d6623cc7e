@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d08e73b5_639fe95f",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-27T20:57:29Z",
+      "side": 1,
+      "message": "Earlier it\u0027s said that the min power for power on is 7.5W, if that\u0027s true, I\u0027d assume this would follow?",
+      "range": {
+        "startLine": 134,
+        "startChar": 32,
+        "endLine": 134,
+        "endChar": 37
+      },
+      "revId": "847f2582e862a4bb90986bb247f7c15d6623cc7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
