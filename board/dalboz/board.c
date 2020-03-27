@@ -21,6 +21,7 @@
 #include "pwm_chip.h"
 #include "switch.h"
 #include "system.h"
+#include "tablet_mode.h"
 #include "task.h"
 #include "usb_charge.h"
 
@@ -189,8 +190,16 @@ DECLARE_HOOK(HOOK_INIT, setup_usb_db, HOOK_PRIO_INIT_I2C + 2);
 
 void board_update_sensor_config_from_sku(void)
 {
-	/* Enable Gyro interrupts */
-	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
+	if (ec_config_has_lid_angle_tablet_mode()) {
+		/* Enable Gyro interrupts */
+		gpio_enable_interrupt(GPIO_6AXIS_INT_L);
+	} else {
+		motion_sensor_count = 0;
+		/* Device is clamshell only */
+		tablet_set_mode(0);
+		/* Gyro is not present, don't allow line to float */
+		gpio_set_flags(GPIO_6AXIS_INT_L, GPIO_INPUT | GPIO_PULL_DOWN);
+	}
 }
 
 const struct pwm_t pwm_channels[] = {
