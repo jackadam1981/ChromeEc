@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a508378f_12816140",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-03-27T06:39:36Z",
+      "side": 1,
+      "message": "To make it more explicit these are mutually exclusive, and that one must be specified, suggest refactoring this and merging with the presence check, with the outermost if checking whether presence was requested",
+      "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7da901f_0a5832f9",
         "filename": "common/u2f.c",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2020-03-27T00:34:10Z",
       "side": 1,
       "message": "I guess if we really want to do this, we need to save a global state (one bit) to make sure this command is only allowed once per boot.",
+      "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "280ae880_5ef796ff",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-03-27T06:39:36Z",
+      "side": 1,
+      "message": "Yea, though we will need to do it again without rebooting if a different user logs in",
+      "parentUuid": "e7da901f_0a5832f9",
       "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -47,6 +82,30 @@
       "writtenOn": "2020-03-27T00:38:27Z",
       "side": 1,
       "message": "We were saying \"return a derived version of u2f_secret in MakeCredential\", but that doesn\u0027t quite work, because in U2f_GENERATE you may be using power button and won\u0027t have a u2f_secret to wrap. As a result, I feel there needs to be a separate pairing process, which is awkward.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 83
+      },
+      "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "537c8f67_134d532e",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-03-27T06:39:36Z",
+      "side": 1,
+      "message": "hm yes, I think it might be worth writing up a quick one-pager and making sure that everyone is one the same page.. I think the solution we discussed with Mattias doesn\u0027t work because you can\u0027t do user-verification on a KH generated with presence, and the solution we discussed with Martin doesn\u0027t work because you could generate a new wrapped secret later (without knowing the real verification secret)\n\nI think we may have made things too difficult for ourselves, it might be worth considering we accept some compromise (eg not supporting presence on verification-created keys)",
+      "parentUuid": "cc998774_3de8a8eb",
       "range": {
         "startLine": 58,
         "startChar": 0,
