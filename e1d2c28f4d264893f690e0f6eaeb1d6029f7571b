@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5101488f_b355c8f2",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-27T22:20:54Z",
+      "side": 1,
+      "message": "Thanks! That looks much nicer!",
+      "parentUuid": "5c736c0b_4cad7e52",
+      "range": {
+        "startLine": 518,
+        "startChar": 1,
+        "endLine": 519,
+        "endChar": 44
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d606d26_5b869ff0",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 15
@@ -93,6 +117,30 @@
       "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85e169a8_99607013",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-27T22:20:54Z",
+      "side": 1,
+      "message": "Can you leave it in to keep this CL as a pure refactor and make a separate CL to remove this check?",
+      "parentUuid": "82217c1b_edbb9e8b",
+      "range": {
+        "startLine": 548,
+        "startChar": 8,
+        "endLine": 548,
+        "endChar": 49
+      },
+      "revId": "e1d2c28f4d264893f690e0f6eaeb1d6029f7571b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
