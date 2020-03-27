@@ -22,6 +22,30 @@
       "revId": "847f2582e862a4bb90986bb247f7c15d6623cc7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf44ce8_b2a55224",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-03-27T22:41:02Z",
+      "side": 1,
+      "message": "Right. The above CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON should be set to the same as this one. I will change it as a separated CL. This CL is purely to move code.\n\nI recalled that the above CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON was set to 7.5W as we tested it based on a bare-board and some earlier design, like Cheza proto-0. Filed a bug b/152647632 to track if the value is accurate.",
+      "parentUuid": "d08e73b5_639fe95f",
+      "range": {
+        "startLine": 134,
+        "startChar": 32,
+        "endLine": 134,
+        "endChar": 37
+      },
+      "revId": "847f2582e862a4bb90986bb247f7c15d6623cc7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
