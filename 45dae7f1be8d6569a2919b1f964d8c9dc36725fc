@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71fc3a48_1fbf85eb",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-27T22:02:37Z",
+      "side": 1,
+      "message": "we should make this a  CONFIG_ option like:\n\n#define CONFIG_CBI_EEPROM_PAGE_WRITE_SIZE 16\n\nin config.h which a comment explanation.\n\nthen Waddlesdoo board.h will\n\n\n#undef CONFIG_CBI_EEPROM_PAGE_WRITE_SIZE\n#define CONFIG_CBI_EEPROM_PAGE_WRITE_SIZE 8",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "45dae7f1be8d6569a2919b1f964d8c9dc36725fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
