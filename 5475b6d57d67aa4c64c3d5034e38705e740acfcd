@@ -33,6 +33,29 @@
       "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc998774_3de8a8eb",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-03-27T00:38:27Z",
+      "side": 1,
+      "message": "We were saying \"return a derived version of u2f_secret in MakeCredential\", but that doesn\u0027t quite work, because in U2f_GENERATE you may be using power button and won\u0027t have a u2f_secret to wrap. As a result, I feel there needs to be a separate pairing process, which is awkward.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 83
+      },
+      "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
