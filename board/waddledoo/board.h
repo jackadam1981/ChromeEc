@@ -92,6 +92,9 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO
 
+/* CBI rom: AT24C02D only supports 8-byte page write mode */
+#define EEPROM_PAGE_WRITE_SIZE	8
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
