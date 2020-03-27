@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "009a6f63_4282cfd0",
+        "filename": "board/tglrvpu_ite/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-27T22:43:24Z",
+      "side": 1,
+      "message": "can we move it to icelake.c?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 75
+      },
+      "revId": "3b9daecf73ff66d0b9f2dc7962148e148327fc65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "661512dc_743f8b8a",
+        "filename": "power/icelake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-27T22:43:24Z",
+      "side": 1,
+      "message": "nit:\nGPIO_SET_LEVEL(signal-\u003egpio, signal-\u003eactive_low ? !level : level)",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 37
+      },
+      "revId": "3b9daecf73ff66d0b9f2dc7962148e148327fc65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
