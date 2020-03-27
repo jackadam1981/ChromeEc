@@ -16,6 +16,24 @@
       "revId": "67647d43944e8aa163fa9a055f9d9f0893348851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ad5f9d_5f872133",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-27T20:32:10Z",
+      "side": 1,
+      "message": "The original code disabled it here and enabled it again later. The TCPCI spec indicates that this was not the correct place to disable it.  That was part of the original cleanup that was reverted.  I do believe this to be correct.",
+      "parentUuid": "416d33f1_e64631d8",
+      "revId": "67647d43944e8aa163fa9a055f9d9f0893348851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
