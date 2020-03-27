@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "416d33f1_e64631d8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-03-27T20:29:05Z",
+      "side": 1,
+      "message": "This seems odd, we\u0027re changing from enable\u003d0 to enable\u003d1 here? Is that right?",
+      "revId": "67647d43944e8aa163fa9a055f9d9f0893348851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
