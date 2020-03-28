@@ -64,6 +64,11 @@ void pd_request_vconn_swap_off(int port)
 void pd_request_vconn_swap_on(int port)
 {}
 
+void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
+				uint16_t head)
+{
+}
+
 /* Install Mock TCPC and MUX drivers */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
