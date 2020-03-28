@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15a611bf_6b789f0f",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-03-28T03:24:02Z",
+      "side": 1,
+      "message": "If we clear this flag, the ANX7447_REG_HPD_OUT is still functional? The anx7447_set_hpd_level() still using it.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 30
+      },
+      "revId": "49ec6e9b06c3ad082c129047723f24d395833032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
