@@ -287,7 +287,7 @@ void disable_enter_usb4_mode(int port)
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 
-static struct pd_policy pe[CONFIG_USB_PD_PORT_MAX_COUNT];
+static struct pd_discovery pe[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static void enable_transmit_sop_prime(int port)
 {
@@ -532,7 +532,7 @@ static bool is_usb4_vdo(int port, int cnt, uint32_t *payload)
 
 void pd_dfp_pe_init(int port)
 {
-	memset(&pe[port], 0, sizeof(struct pd_policy));
+	memset(&pe[port], 0, sizeof(struct pd_discovery));
 }
 
 static int dfp_discover_ident(uint32_t *payload)
@@ -561,7 +561,7 @@ static bool check_tbt_cable_speed(int port)
 						TBT_SS_U32_GEN1_GEN2);
 }
 
-struct pd_policy *pd_get_am_policy(int port)
+struct pd_discovery *pd_get_am_policy(int port)
 {
 	return &pe[port];
 }

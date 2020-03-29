@@ -16,7 +16,7 @@ static void dump_pe(int port)
 	int i, j, idh_ptype;
 	struct svdm_amode_data *modep;
 	uint32_t mode_caps;
-	struct pd_policy *pe = pd_get_am_policy(port);
+	struct pd_discovery *pe = pd_get_am_policy(port);
 	const char * const idh_ptype_names[]  = {
 		"UNDEF", "Hub", "Periph", "PCable", "ACable", "AMA",
 		"RSV6", "RSV7"};

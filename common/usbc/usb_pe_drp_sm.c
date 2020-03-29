@@ -354,8 +354,8 @@ static struct policy_engine {
 	/* PD_VDO_INVALID is used when there is an invalid VDO */
 	int32_t ama_vdo;
 	int32_t vpd_vdo;
-	/* alternate mode policy*/
-	struct pd_policy am_policy;
+	/* alternate mode discovery results */
+	struct pd_discovery am_policy;
 
 	/* VDM - used to send information to shared VDM Request state */
 	/* TODO(b/150611251): Remove when all VDMs use shared parent */
@@ -4900,11 +4900,11 @@ uint8_t pd_get_src_cap_cnt(int port)
 
 void pd_dfp_pe_init(int port)
 {
-	memset(&pe[port].am_policy, 0, sizeof(struct pd_policy));
+	memset(&pe[port].am_policy, 0, sizeof(struct pd_discovery));
 }
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-struct pd_policy *pd_get_am_policy(int port)
+struct pd_discovery *pd_get_am_policy(int port)
 {
 	return &pe[port].am_policy;
 }

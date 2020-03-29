@@ -343,8 +343,8 @@ enum pd_alternate_modes {
 	PD_AMODE_COUNT,
 };
 
-/* Policy structure for driving alternate mode */
-struct pd_policy {
+/* Structure for storing discovery results */
+struct pd_discovery {
 	/* index of svid currently being operated on */
 	int svid_idx;
 	/* count of svids discovered */
@@ -1798,13 +1798,13 @@ bool consume_sop_prime_prime_repeat_msg(int port, uint8_t msg_id);
 bool is_transmit_msg_sop_prime(int port);
 
 /*
- * Return the pointer to PD alternate mode policy
+ * Return the pointer to PD alternate mode discovery results
  * Note: Caller function can mutate the data in this structure.
  *
  * @param port  USB-C port number
- * @return      pointer to PD alternate mode policy
+ * @return      pointer to PD alternate mode discovery results
  */
-struct pd_policy *pd_get_am_policy(int port);
+struct pd_discovery *pd_get_am_policy(int port);
 
 /*
  * Return the pointer to PD cable attributes
