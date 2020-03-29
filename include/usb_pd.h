@@ -334,6 +334,26 @@ enum pd_discovery_state {
 	PD_DISC_FAIL,		/* Cable did not respond, or Discover* NAK */
 };
 
+/* Discover Identity ACK contents after headers */
+union disc_ident_ack {
+	struct {
+		struct id_header_vdo_rev20 idh;
+		struct cert_stat_vdo cert;
+		struct product_vdo product;
+		union product_type_vdo1 product_t1;
+		union product_type_vdo2 product_t2;
+		uint32_t product_t3;
+	};
+
+	uint32_t raw_value[PDO_MAX_OBJECTS - 1];
+};
+
+/* Discover Identity data - ACK plus discovery state */
+struct identity_data {
+	union disc_ident_ack response;
+	enum pd_discovery_state discovery;
+};
+
 /* supported alternate modes */
 enum pd_alternate_modes {
 	PD_AMODE_GOOGLE,
@@ -436,6 +456,7 @@ struct pd_discovery {
 #define PD_VDO_CMD(vdo)  ((vdo) & 0x1f)
 #define PD_VDO_CMDT(vdo) (((vdo) >> 6) & 0x3)
 
+
 /*
  * SVDM Identity request -> response
  *
@@ -468,17 +489,6 @@ struct pd_discovery {
 #define VDO_INDEX_PTYPE_DFP_VDO  6
 #define VDO_I(name) VDO_INDEX_##name
 
-/*
- * SVDM Identity Header
- * --------------------
- * <31>     :: data capable as a USB host
- * <30>     :: data capable as a USB device
- * <29:27>  :: product type
- * <26>     :: modal operation supported (1b == yes)
- * <25:16>  :: SBZ
- * <15:0>   :: USB-IF assigned VID for this cable vendor
- */
-
 enum idh_ptype {
 	IDH_PTYPE_UNDEF,
 	IDH_PTYPE_HUB,
@@ -497,21 +507,9 @@ enum idh_ptype {
 #define PD_IDH_IS_MODAL(vdo) (((vdo) >> 26) & 0x1)
 #define PD_IDH_VID(vdo)      ((vdo) & 0xffff)
 
-/*
- * Cert Stat VDO
- * -------------
- * <31:20> : SBZ
- * <19:0>  : USB-IF assigned TID for this cable
- */
 #define VDO_CSTAT(tid)    ((tid) & 0xfffff)
 #define PD_CSTAT_TID(vdo) ((vdo) & 0xfffff)
 
-/*
- * Product VDO
- * -----------
- * <31:16> : USB Product ID
- * <15:0>  : USB bcdDevice
- */
 #define VDO_PRODUCT(pid, bcd) (((pid) & 0xffff) << 16 | ((bcd) & 0xffff))
 #define PD_PRODUCT_PID(vdo) (((vdo) >> 16) & 0xffff)
 
@@ -521,23 +519,6 @@ enum idh_ptype {
  * so initialize it with an invalid value 0xff.
  */
 #define INVALID_MSG_ID_COUNTER 0xff
-
-union cable_vdo {
-	/* Passive cable VDO */
-	union passive_cable_vdo_rev20 p_rev20;
-	union passive_cable_vdo_rev30 p_rev30;
-
-	/* Active cable VDO */
-	union active_cable_vdo_rev20 a_rev20;
-	union active_cable_vdo1_rev30 a_rev30;
-
-	uint32_t raw_value;
-};
-
-union active_cable_vdo2 {
-	union active_cable_vdo2_rev30 a2_rev30;
-	uint32_t raw_value;
-};
 
 /* Protocol revision */
 enum pd_rev_type {
@@ -574,9 +555,9 @@ struct pd_cable {
 	/* Type of cable */
 	enum idh_ptype type;
 	/* Cable attributes */
-	union cable_vdo attr;
+	union product_type_vdo1 attr;
 	/* For USB PD REV3, active cable has 2 VDOs */
-	union active_cable_vdo2 attr2;
+	union product_type_vdo2 attr2;
 	/* Cable revision */
 	enum pd_rev_type rev;
 
