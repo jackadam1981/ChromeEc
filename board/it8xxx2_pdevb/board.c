@@ -14,6 +14,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+BUILD_ASSERT(IT83XX_USBPD_PHY_PORT_COUNT >=
+		CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT);
+
 #define USB_PD_PORT_ITE_0   0
 #define USB_PD_PORT_ITE_1   1
 #define USB_PD_PORT_ITE_2   2

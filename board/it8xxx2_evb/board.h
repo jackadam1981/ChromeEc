@@ -11,6 +11,9 @@
 /* Select Baseboard features */
 #include "baseboard.h"
 
+/* PD */
+#define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT   0
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

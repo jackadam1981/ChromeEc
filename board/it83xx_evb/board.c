@@ -8,6 +8,9 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 
+BUILD_ASSERT(IT83XX_USBPD_PHY_PORT_COUNT >=
+		CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT);
+
 /*
  * PWM channels. Must be in the exactly same order as in enum pwm_channel.
  * There total three 16 bits clock prescaler registers for all pwm channels,

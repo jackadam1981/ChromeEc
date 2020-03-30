@@ -24,6 +24,9 @@
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 
+BUILD_ASSERT(IT83XX_USBPD_PHY_PORT_COUNT >=
+		CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT);
+
 /* TCPC gpios */
 const struct tcpc_gpio_config_t tcpc_gpios[] = {
 	[TYPE_C_PORT_0] = {

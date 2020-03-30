@@ -33,6 +33,9 @@
 
 #define CPRINTUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
+BUILD_ASSERT(IT83XX_USBPD_PHY_PORT_COUNT >=
+		CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT);
+
 /* C0 interrupt line shared by BC 1.2 and charger */
 static void usb_c0_interrupt(enum gpio_signal s)
 {

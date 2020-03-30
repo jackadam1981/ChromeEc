@@ -14,6 +14,9 @@
 /* Optional features */
 #define CONFIG_DAC
 
+/* PD */
+#define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT   0
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

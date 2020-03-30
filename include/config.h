@@ -3825,6 +3825,9 @@
 /* Number of USB PD ports */
 #undef CONFIG_USB_PD_PORT_MAX_COUNT
 
+/* Number of ITE USB PD active ports */
+#undef CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT
+
 /* Simple DFP, such as power adapter, will not send discovery VDM on connect */
 #undef CONFIG_USB_PD_SIMPLE_DFP
 
