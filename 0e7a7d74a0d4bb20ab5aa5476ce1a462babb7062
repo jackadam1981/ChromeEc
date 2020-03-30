@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a35d94ba_e0896916",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4021,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-30T21:18:10Z",
+      "side": 1,
+      "message": "should we check of TBT enabled \u0026 !is_tbt_cable_superspeed()\nthen clear this?\ninstead of set here? just like TCPMv1",
+      "revId": "0e7a7d74a0d4bb20ab5aa5476ce1a462babb7062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
