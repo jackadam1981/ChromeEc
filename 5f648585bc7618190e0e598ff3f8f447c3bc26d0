@@ -22,6 +22,30 @@
       "revId": "5f648585bc7618190e0e598ff3f8f447c3bc26d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4edd21_fa4b6a17",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-30T17:58:15Z",
+      "side": 1,
+      "message": "It looks like EC_FEATURE_SCP wasn\u0027t added to this list when it was introduced (https://crrev.com/c/1379410). We should add it.\n\nAs long as we bundle an OS image, which includes ectool (and other components which speak cros EC host commands), with a proper EC image, it\u0027s ok to reuse a number because EC update is part of an OS update.\n\nAs far as my code search goes, CONFIG_AUDIO_CODEC is used only by Zork, which hasn\u0027t branched. So, it should be ok to reuse the number. In other words, there should be no devices whose OS image doesn\u0027t understand EC_FEATURE_AUDIO_CODEC but whose EC says it\u0027s supported.\n\nIn general, to reuse a feature number, we need to\n\n  1. Find all relevant firmware branches\n  2. Cherry-pick a reuse CL to the branches found in #1\n  3. Coordinate OS and firmware releases\n\nSo, it\u0027s safer (and easier) not to reuse removed numbers.",
+      "parentUuid": "14b9e513_cf021ca5",
+      "range": {
+        "startLine": 770,
+        "startChar": 2,
+        "endLine": 770,
+        "endChar": 16
+      },
+      "revId": "5f648585bc7618190e0e598ff3f8f447c3bc26d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
