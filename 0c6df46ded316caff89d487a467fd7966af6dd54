@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "562f8c5f_d752fb7b",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4441,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-30T18:06:22Z",
+      "side": 1,
+      "message": "need to start with CONFIG_, otherwise +2",
+      "range": {
+        "startLine": 4441,
+        "startChar": 8,
+        "endLine": 4441,
+        "endChar": 30
+      },
+      "revId": "0c6df46ded316caff89d487a467fd7966af6dd54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
