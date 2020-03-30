@@ -668,10 +668,24 @@ void gpio_pre_init(void)
 
 	/*
 	 * To prevent cc pins leakage ...
-	 * If we don't use ITE TCPC: disable all ITE port cc modules.
+	 * 1) If we don't use ITE TCPC: disable all ITE port cc modules.
 	 */
 	if (!IS_ENABLED(CONFIG_USB_PD_TCPM_ITE_ON_CHIP)) {
 		for (i = 0; i < IT83XX_USBPD_PHY_PORT_COUNT; i++) {
+			it83xx_disable_cc_module(i);
+			/* Dis-connect 5.1K dead battery resistor to CC */
+			IT83XX_USBPD_CCPSR(i) |=
+				(USBPD_REG_MASK_DISCONNECT_5_1K_CC2_DB |
+				 USBPD_REG_MASK_DISCONNECT_5_1K_CC1_DB);
+		}
+	/*
+	 * 2) If we use part of ITE TCPC port and follow port index order:
+	 *    disable board not active ITE pd port cc modules.
+	 */
+	} else if (IT83XX_USBPD_PHY_PORT_COUNT >
+		   CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT) {
+		for (i = CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT;
+		     i < IT83XX_USBPD_PHY_PORT_COUNT; i++) {
 			it83xx_disable_cc_module(i);
 			/* Dis-connect 5.1K dead battery resistor to CC */
 			IT83XX_USBPD_CCPSR(i) |=
