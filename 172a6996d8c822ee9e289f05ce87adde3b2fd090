@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18215eaf_799810d4",
+        "filename": "util/util_precompile.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2020-03-30T22:27:21Z",
+      "side": 1,
+      "message": "Are these the only escaped literals?  That is, do we have any \u0027\\\\\u0027 or \u0027\\x1B\u0027?\n\nAlso, maybe \u0027escaped newlines\u0027 -\u003e \u0027escaped characters\u0027?",
+      "range": {
+        "startLine": 215,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 34
+      },
+      "revId": "172a6996d8c822ee9e289f05ce87adde3b2fd090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
