@@ -436,6 +436,42 @@ void lpc_disable_acpi_interrupts(void)
 	CLEAR_BIT(NPCX_HIPMCTL(PMC_ACPI), NPCX_HIPMCTL_IBFIE);
 }
 
+#ifdef CONFIG_HOSTCMD_ESPI
+static int sci_set_level(int argc, char **argv)
+{
+       int level = 0;
+
+       if (argc == 1)
+               return EC_ERROR_PARAM1;
+
+       if (!strcasecmp(argv[1], "high"))
+               level = 1;
+       else if (!strcasecmp(argv[1], "low"))
+               level = 0;
+       else
+               level = -1;
+
+       if (level == -1)
+               return EC_ERROR_PARAM2;
+
+       if (level == 0) {
+               NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(1);
+               udelay(65);
+               /* Generate a falling edge */
+               NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(0);
+       } else {
+               NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(0);
+               udelay(65);
+               /* Generate a falling edge */
+               NPCX_HIPMIC(PMC_ACPI) = NPCX_VW_SCI(1);
+       }
+
+       return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(scilvl, sci_set_level, "[high|low]",
+                       "Set SCI to high or low");
+#endif
+
 /**
  * Handle write to ACPI I/O port
  *
