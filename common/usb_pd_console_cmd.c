@@ -17,27 +17,30 @@ static void dump_pe(int port)
 	struct svdm_amode_data *modep;
 	uint32_t mode_caps;
 	struct pd_discovery *pe = pd_get_am_policy(port);
+	union disc_ident_ack *resp = pd_get_identity_response(port,
+							      TCPC_TX_SOP);
+
 	const char * const idh_ptype_names[]  = {
 		"UNDEF", "Hub", "Periph", "PCable", "ACable", "AMA",
 		"RSV6", "RSV7"};
 
-	if (pe->identity[0] == 0) {
+	if (pd_get_identity_discovery(port, TCPC_TX_SOP) != PD_DISC_COMPLETE) {
 		ccprintf("No identity discovered yet.\n");
 		return;
 	}
 
-	idh_ptype = PD_IDH_PTYPE(pe->identity[0]);
+	idh_ptype = pd_get_product_type(port);
 	ccprintf("IDENT:\n");
 	ccprintf("\t[ID Header] %08x :: %s, VID:%04x\n",
-				pe->identity[0],
+				resp->raw_value[0],
 				idh_ptype_names[idh_ptype],
 				pd_get_identity_vid(port));
 
-	ccprintf("\t[Cert Stat] %08x\n", pe->identity[1]);
-	for (i = 2; i < ARRAY_SIZE(pe->identity); i++) {
+	ccprintf("\t[Cert Stat] %08x\n", resp->cert.xid);
+	for (i = 2; i < ARRAY_SIZE(resp->raw_value); i++) {
 		ccprintf("\t");
-		if (pe->identity[i])
-			ccprintf("[%d] %08x ", i, pe->identity[i]);
+		if (resp->raw_value[i])
+			ccprintf("[%d] %08x ", i, resp->raw_value[i]);
 	}
 	ccprintf("\n");
 
