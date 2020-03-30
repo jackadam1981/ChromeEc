@@ -16,6 +16,24 @@
       "revId": "0e7a7d74a0d4bb20ab5aa5476ce1a462babb7062",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1133277_2ac6d8db",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4021,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-03-30T21:57:27Z",
+      "side": 1,
+      "message": "In case of TCPMv1, we send discover Identity SOP and check for modal operation first. If the port partner doesn\u0027t support modal operation, we don\u0027t want to go ahead with the flow.\n\nIn case of TCPMv2, we send discover Identity SOP\u0027 first, hence, this condition enables TBT is we support superspeed cable",
+      "parentUuid": "a35d94ba_e0896916",
+      "revId": "0e7a7d74a0d4bb20ab5aa5476ce1a462babb7062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
