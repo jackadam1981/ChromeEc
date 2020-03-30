@@ -22,6 +22,30 @@
       "revId": "bea61218cca7bd604d670b6081269ef0210dc894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b87ee8_7ffe541b",
+        "filename": "baseboard/volteer/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-03-30T20:05:28Z",
+      "side": 1,
+      "message": "In theory, it should make it twice as bright. In practice, I don\u0027t notice a difference. The RGB duty cycles come from led_color_map. Changing them on the fly would be pretty complicated.\n\nIMO, if inconsistent effective duty cycle is a problem, it would be better just to say that only one side is ever illuminated at a time and avoid the issue.\n\nWDYT?",
+      "parentUuid": "2488aea0_899eee34",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 25
+      },
+      "revId": "bea61218cca7bd604d670b6081269ef0210dc894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
