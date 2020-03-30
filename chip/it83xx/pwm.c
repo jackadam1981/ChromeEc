@@ -265,6 +265,8 @@ static void pwm_init(void)
 	for (ch = 0; ch < PWM_CH_COUNT; ch++)
 		pwm_ch_freq(ch);
 
+	/* TODO: */
+	IT83XX_PWM_CTR1M = 0;
 	/* enable PWMs clock counter. */
 	IT83XX_PWM_ZTIER |= 0x02;
 }
