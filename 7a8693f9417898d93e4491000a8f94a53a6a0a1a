@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "26808ad7_6fc69e19",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-30T19:43:57Z",
+      "side": 1,
+      "message": "This data comes from Bosch.  The separate file also needs to add the correct license information.  See b:130415695 for the license discussion.\n\nThe array should also be static and const.",
+      "parentUuid": "c997b656_d3a4b139",
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a910b7be_b7688ac1",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 13
@@ -138,6 +156,29 @@
     },
     {
       "key": {
+        "uuid": "67e787a1_a853cbfc",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-30T19:43:57Z",
+      "side": 1,
+      "message": "This usage doesn\u0027t follow the other CONFIG_* style configuration macros.\n\nThe I2C port number is already passed in through the motion_sensors[] array.  So this macro can be removed entirely.\n\nThis should be done as a separate CL. I assigned you bug b:146065507 to do this cleanup.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3ba21b2_43e7a3e3",
         "filename": "driver/accelgyro_bmi_common.c",
         "patchSetId": 13
@@ -149,6 +190,75 @@
       "writtenOn": "2020-03-25T17:37:02Z",
       "side": 1,
       "message": "Add bmi_ prefix.\nUse it in BMI160 driver as well.",
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6df06bc_3f48b2a7",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-30T19:43:57Z",
+      "side": 1,
+      "message": "Are both macros needed?  Please remove CONFIG_MAG_BMI160_BMM150 if possible.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 0
+      },
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f03e4aa2_244560ab",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-30T19:43:57Z",
+      "side": 1,
+      "message": "Same here - remove CONFIG_MAG_BMI160_LIS2MDL.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 0
+      },
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a21ffa91_a088fc44",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-30T19:43:57Z",
+      "side": 1,
+      "message": "Remove CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
       "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
