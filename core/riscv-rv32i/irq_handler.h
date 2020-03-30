@@ -11,6 +11,11 @@
 /* Helper macros to build the IRQ handler and priority struct names */
 #define IRQ_HANDLER(irqname) CONCAT3(irq_, irqname, _handler)
 #define IRQ_PRIORITY(irqname) CONCAT2(prio_, irqname)
+
+#ifndef CHIP_FAMILY_IT8XXX2
+#define CPU_INT(irq) irq
+#endif
+
 /*
  * Macro to connect the interrupt handler "routine" to the irq number "irq" and
  * ensure it is enabled in the interrupt controller with the right priority.
