@@ -287,7 +287,26 @@ void ec_efs_print_status(void)
 #endif
 }
 
-enum ec_error_list ec_efs_corrupt_hash(void)
+static int ascii_char_to_hex(char c)
+{
+	if (c < '0') {
+		return -1;
+	} else if (c <= '9') {
+		return c - '0';
+	} else if (c < 'A') {
+		return -1;
+	} else if (c <= 'F') {
+		return c - ('A'-10);
+	} else if (c < 'a') {
+		return -1;
+	} else if (c <= 'f') {
+		return c - ('a'-10);
+	} else {
+		return -1;
+	}
+}
+
+enum ec_error_list ec_efs_set_hash(char *hash)
 {
 #ifndef BOARD_HOST
 	struct vb2_secdata_kernel secdata;
@@ -296,6 +315,9 @@ enum ec_error_list ec_efs_corrupt_hash(void)
 	NV_INDEX nvIndex;
 	uint8_t size_to_crc;
 	int i;
+
+	if (strlen(hash) < SHA256_DIGEST_SIZE*2)
+		return EC_ERROR_INVAL;
 
 	/* Check CCD is opened */
 	if (ccd_get_state() != CCD_STATE_OPENED) {
@@ -308,9 +330,20 @@ enum ec_error_list ec_efs_corrupt_hash(void)
 			   (void *)&secdata) != TPM_READ_SUCCESS)
 		return EC_ERROR_VBOOT_DATA_UNDERSIZED;
 
-	/* Modify hash */
-	for (i = 0; i < SHA256_DIGEST_SIZE; i++)
-		secdata.ec_hash[i] = ~ec_efs_ctx.hash[i] + 0x01;
+	/* Convert hash in ascii to hex */
+	for (i = 0; i < SHA256_DIGEST_SIZE; i++) {
+		uint8_t hex;
+		int v;
+		v = ascii_char_to_hex(hash[i*2]);
+		if (v < 0)
+			return EC_ERROR_INVAL;
+		hex = v;
+		v = ascii_char_to_hex(hash[i*2+1]);
+		if (v < 0)
+			return EC_ERROR_INVAL;
+		hex = (hex << 4) | v;
+		secdata.ec_hash[i] = hex;
+	}
 
 	size_to_crc = secdata_size -
 		      offsetof(struct vb2_secdata_kernel, crc8) -

@@ -322,9 +322,9 @@ static int command_ec_comm(int argc, char **argv)
 		return EC_ERROR_INVAL;
 	}
 
-	if (argc > 1) {
-		if (!strcasecmp(argv[1], "corrupt")) {
-			int result = ec_efs_corrupt_hash();
+	if (argc > 2) {
+		if (!strcasecmp(argv[1], "sethash")) {
+			int result = ec_efs_set_hash(argv[2]);
 
 			if (result != EC_SUCCESS)
 				return result;
@@ -359,6 +359,6 @@ static int command_ec_comm(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(ec_comm, command_ec_comm,
-			     "[corrupt]",
+			     "[sethash <hash>]",
 			     "Dump EC-CR50-comm status"
 );
