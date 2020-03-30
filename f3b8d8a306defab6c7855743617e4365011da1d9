@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95a3e1de_e0c6002a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4297,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-30T21:23:41Z",
+      "side": 1,
+      "message": "discover_ident is sent before cable in Chrome TCPM.\nset the enable flag here if modal is true like TCPMv1.",
+      "range": {
+        "startLine": 4295,
+        "startChar": 3,
+        "endLine": 4297,
+        "endChar": 36
+      },
+      "revId": "f3b8d8a306defab6c7855743617e4365011da1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
