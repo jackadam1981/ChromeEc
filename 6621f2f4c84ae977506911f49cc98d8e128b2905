@@ -22,6 +22,53 @@
       "revId": "6621f2f4c84ae977506911f49cc98d8e128b2905",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9235384_3b0374cd",
+        "filename": "common/ec_comm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-30T17:33:00Z",
+      "side": 1,
+      "message": "I guess it\u0027s ok since ccd has to be open for corrupt_hash to run.",
+      "parentUuid": "c8e39ae0_64f9d9a0",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 18
+      },
+      "revId": "6621f2f4c84ae977506911f49cc98d8e128b2905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bca00066_ec94b154",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-03-30T17:33:00Z",
+      "side": 1,
+      "message": "LGTM once you fix this comment.",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 32
+      },
+      "revId": "6621f2f4c84ae977506911f49cc98d8e128b2905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
