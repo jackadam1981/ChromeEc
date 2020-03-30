@@ -264,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "70bc3b13_3598a0c0",
+        "filename": "common/ec_comm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-03-30T22:17:39Z",
+      "side": 1,
+      "message": "If \u0027sethash\u0027 is required to restore EC-hash for development purpose, then I can make it available for dev image, and can build node-locked image for developers later. However this patch make this command available for prepvt/pvt just for autotest only. We need more justification to pay more flash bytes to extend this test option.",
+      "parentUuid": "3b45f2ec_335f4b27",
+      "range": {
+        "startLine": 326,
+        "startChar": 28,
+        "endLine": 326,
+        "endChar": 35
+      },
+      "revId": "33639598dc4485034eb16505d069005ea76989ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7c6658d_ada4f99d",
         "filename": "common/ec_efs.c",
         "patchSetId": 7
