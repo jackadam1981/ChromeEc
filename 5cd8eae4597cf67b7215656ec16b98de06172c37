@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "574f29e4_36de5065",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2020-03-30T22:52:10Z",
+      "side": 1,
+      "message": "acroterm",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "5cd8eae4597cf67b7215656ec16b98de06172c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e928efa4_0b399b23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2020-03-30T22:52:10Z",
+      "side": 1,
+      "message": "There are other differences, too, right?\n\nIn Acropora, all messages are implicitly an entire line with a timestamp.\n\nCr50 seems to allow ccprintf(\"%c\", c) for console_putchar().  If strictly translated to Acropora, that would translate to cmsg1(\"$\", CMSG_CHAR(c)), which would render as something like \"[0.123456/T3] A\\n\" for console_putchar(\u0027A\u0027)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "5cd8eae4597cf67b7215656ec16b98de06172c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "324fa869_7a457a58",
+        "filename": "util/acroterm.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2020-03-30T22:52:10Z",
+      "side": 1,
+      "message": "acroterm",
+      "range": {
+        "startLine": 1228,
+        "startChar": 36,
+        "endLine": 1228,
+        "endChar": 44
+      },
+      "revId": "5cd8eae4597cf67b7215656ec16b98de06172c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fbd9ee1_8496effd",
+        "filename": "util/acroterm.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2020-03-30T22:52:10Z",
+      "side": 1,
+      "message": "Or if you want to be clever with naming,\n\n\"ACr50term\"\n\n(maybe too clever)",
+      "range": {
+        "startLine": 1306,
+        "startChar": 15,
+        "endLine": 1306,
+        "endChar": 27
+      },
+      "revId": "5cd8eae4597cf67b7215656ec16b98de06172c37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
