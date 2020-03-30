@@ -94,6 +94,30 @@
       "revId": "d8cf72da3ba9738a388aac50a7933554831eb060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a7a8a09_cdb3bacb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2809,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-03-30T16:12:10Z",
+      "side": 1,
+      "message": "I agree with all that is being said on this comment thread, but do not think it can be reliably fixed quick enough for this bug\u0027s required completion time.  I am pushing up a non-WIP version that works and believe the state changes should come at a later time.",
+      "parentUuid": "c89de550_4df7882e",
+      "range": {
+        "startLine": 2806,
+        "startChar": 0,
+        "endLine": 2809,
+        "endChar": 2
+      },
+      "revId": "d8cf72da3ba9738a388aac50a7933554831eb060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
