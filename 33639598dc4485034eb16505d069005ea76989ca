@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "a4f0c483_717312a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-30T18:25:01Z",
+      "side": 1,
+      "message": "I think we shouldn\u0027t have two RAM copies. We should consolidate H1 and H2. I think you\u0027re leaving a source of more bugs.",
+      "parentUuid": "d66aa18a_159611c5",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "33639598dc4485034eb16505d069005ea76989ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ec75a8d_83d4efc9",
         "filename": "common/ec_comm.c",
         "patchSetId": 7
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "CR50 footprint is getting quite tight for now, and not sure we want to make this test feature heavier. \nCould you justify more about having \"sethash \u003chash\u003e?\" We\u0027ve already done manaully syncing/uncorrupting before while we brought up EFS2 because AP BIOS was not ready. But today we do have EFS2-ready BIOS, not sure if we would need any need for manual hash modification.",
       "parentUuid": "0ec75a8d_83d4efc9",
+      "range": {
+        "startLine": 326,
+        "startChar": 28,
+        "endLine": 326,
+        "endChar": 35
+      },
+      "revId": "33639598dc4485034eb16505d069005ea76989ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f959d272_3b5322f7",
+        "filename": "common/ec_comm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-30T18:25:01Z",
+      "side": 1,
+      "message": "We shouldn\u0027t rely on properly working BIOS to restore/uncorrupt Hmir. This command is for testing. So, we should assume all the three pieces can malfunction.\n\nIn my instinct, we\u0027re not adding too much code to support sethash.",
+      "parentUuid": "27678b04_3ba6668e",
       "range": {
         "startLine": 326,
         "startChar": 28,
