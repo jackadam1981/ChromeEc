@@ -16,6 +16,29 @@
       "revId": "42737b3909240423d04d0039bbac423eb4c4fb94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7758a0ed_1333a154",
+        "filename": "common/ec_features.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-03-30T02:19:34Z",
+      "side": 1,
+      "message": "This isn\u0027t a very useful display - compact, but requires manual decoding.\nAt the risk of being more verbose, could you have a loop like:\n 0: 0\n 1: 1\n 2: 0\n..\n63: 0\nThat would allow you to map the feature number to a value very quickly.\nTo make it more compact, maybe only display the features that are on:\n Features on:  1 3 6 8 10 23 34",
+      "range": {
+        "startLine": 158,
+        "startChar": 14,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "42737b3909240423d04d0039bbac423eb4c4fb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
