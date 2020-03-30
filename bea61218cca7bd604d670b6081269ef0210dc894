@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2488aea0_899eee34",
+        "filename": "baseboard/volteer/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-03-30T19:54:05Z",
+      "side": 1,
+      "message": "wouldn\u0027t this mean that it is twice as bright when only 1 side is illuminated? I think it might be good to halve the RGB PWM duty cycle when only 1 side is used.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 25
+      },
+      "revId": "bea61218cca7bd604d670b6081269ef0210dc894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
