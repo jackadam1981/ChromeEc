@@ -39,6 +39,30 @@
       "revId": "42737b3909240423d04d0039bbac423eb4c4fb94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bac5ce0_edeb524d",
+        "filename": "common/ec_features.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-30T15:28:52Z",
+      "side": 1,
+      "message": "That sounds a good idea. I think it\u0027s even better if we do it for (all) other commands printing flags as a hex integer.\n\nFor example, we can do the same for sleep_mask and hostevent command. Then, it\u0027ll be easier to justify the code space. I made cc_feat compact because it\u0027s enabled by default.\n\nI\u0027ll leave it aside now so that it can be done globally (in a separate patch).",
+      "parentUuid": "7758a0ed_1333a154",
+      "range": {
+        "startLine": 158,
+        "startChar": 14,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "42737b3909240423d04d0039bbac423eb4c4fb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
