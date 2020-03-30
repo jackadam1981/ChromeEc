@@ -4368,6 +4368,13 @@ static void pe_vdm_acked_entry(int port)
 			break;
 		case CMD_DISCOVER_MODES:
 			dfp_consume_modes(port, cnt, payload);
+			if (is_tbt_compat_mode_enabled(port) &&
+			    is_vdo_tbt_compat_mode(port, cnt, payload)) {
+				if (sop == TCPC_TX_SOP) {
+					store_disc_mode_sop_resp(port,
+								payload);
+				}
+			}
 			break;
 		case CMD_ENTER_MODE:
 			break;
