@@ -3860,6 +3860,16 @@ static void pe_do_port_discovery_run(int port)
 			ret = dfp_discover_modes(port, pe[port].vdm_data);
 			break;
 		case CMD_DISCOVER_MODES:
+			if (CABLE_CHK_FLAG(port,
+			    CABLE_FLAGS_TBT_COMPAT_ENABLE) &&
+			    !is_limit_tbt_cable_speed(port) &&
+			    sop == TCPC_TX_SOP) {
+				pe[port].partner_type = CABLE;
+				tx_emsg[port].header |=
+					PD_HEADER_SOP(TCPC_TX_SOP_PRIME);
+				pe[port].vdm_cmd = CMD_DISCOVER_MODES;
+				break;
+			}
 			pe[port].vdm_cmd = CMD_ENTER_MODE;
 			pe[port].vdm_data[0] = pd_dfp_enter_mode(port, 0, 0);
 			if (pe[port].vdm_data[0])
@@ -4353,6 +4363,9 @@ static void pe_vdm_acked_entry(int port)
 				CABLE_FLAGS_TBT_COMPAT_ENABLE)) {
 				if (sop == TCPC_TX_SOP) {
 					store_disc_mode_sop_resp(port,
+								payload);
+				} else if (sop == TCPC_TX_SOP_PRIME) {
+					store_disc_mode_sop_prime_resp(port,
 								payload);
 				}
 			}
