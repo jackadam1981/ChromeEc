@@ -46,6 +46,30 @@
       "revId": "743e4fc5e194a30ff0da6ce56f1a4f9ebe2d040d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17c95acb_87033f1b",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-30T14:51:07Z",
+      "side": 1,
+      "message": "We should at least have your explanation as a comment in this section so we remember that detail when looking back at the code\n\n----\n\nAlthought this does seem racy. If we got both IT83XX_SPI_RXFIFOFULL and IT83XX_SPI_ENDDETECTINT because something got behind, we would clear all data. What is the harm in putting the IT83XX_SPI_RXFIFOFULL section first?",
+      "parentUuid": "3b1811ed_16b84ab0",
+      "range": {
+        "startLine": 240,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 46
+      },
+      "revId": "743e4fc5e194a30ff0da6ce56f1a4f9ebe2d040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
