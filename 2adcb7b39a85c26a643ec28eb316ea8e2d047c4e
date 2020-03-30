@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0ef2cff_a51b6d15",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-30T23:51:49Z",
+      "side": 1,
+      "message": "Can you remove this? If you remove it, you can restore the original hash by running ec_comm corrupt again.",
+      "range": {
+        "startLine": 313,
+        "startChar": 45,
+        "endLine": 313,
+        "endChar": 49
+      },
+      "revId": "2adcb7b39a85c26a643ec28eb316ea8e2d047c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
