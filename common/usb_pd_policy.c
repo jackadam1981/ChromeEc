@@ -744,7 +744,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 		case CMD_DISCOVER_MODES:
 			dfp_consume_modes(port, cnt, payload);
 			if (is_tbt_compat_enabled(port) &&
-				is_tbt_compat_mode(port, cnt, payload)) {
+				is_vdo_tbt_compat_mode(port, cnt, payload)) {
 				rsize = process_tbt_compat_discover_modes(
 						port,
 						PD_HEADER_GET_SOP(head),

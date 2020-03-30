@@ -1985,7 +1985,7 @@ bool is_intel_svid(int port, int prev_svid_cnt);
  * @return         True if Thunderbolt Alternate mode response is received,
  *                 false otherwise
  */
-bool is_tbt_compat_mode(int port, int cnt, const uint32_t *payload);
+bool is_vdo_tbt_compat_mode(int port, int cnt, const uint32_t *payload);
 
 /*
  * Checks if the cable supports Thunderbolt speed.

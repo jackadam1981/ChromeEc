@@ -29,3 +29,7 @@ bool is_tbt_cable_superspeed(int port)
 {
 	return false;
 }
+
+void store_disc_mode_sop_resp(int port, const uint32_t *payload)
+{
+}
