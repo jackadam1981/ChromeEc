@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14b9e513_cf021ca5",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-03-30T02:10:27Z",
+      "side": 1,
+      "message": "So I presume that this list is roughly in order (as per the enum), but I can\u0027t EC_FEATURE_SCP is not between these 2 (and doesn\u0027t appear in the list).\nI know that it\u0027s unrelated to your change, just trying to work out the inconsistency.\nI am not sure about the common use of the enum list - is it like protobuf field numbers? In which case, is it appropriate to reuse a number?",
+      "range": {
+        "startLine": 770,
+        "startChar": 2,
+        "endLine": 770,
+        "endChar": 16
+      },
+      "revId": "5f648585bc7618190e0e598ff3f8f447c3bc26d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
