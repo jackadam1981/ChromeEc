@@ -17,6 +17,25 @@
 
 #define PORT0 0
 
+/* TODO(jettrink): Move these pd_* function instead mock */
+__overridable void pd_request_power_swap(int port)
+{}
+
+uint8_t pd_get_src_cap_cnt(int port)
+{
+	return 0;
+}
+
+const uint32_t * const pd_get_src_caps(int port)
+{
+	return NULL;
+}
+
+void pd_set_src_caps(int port, int cnt, uint32_t *src_caps)
+{
+}
+/* End pd_ mock section */
+
 /* Install Mock TCPC and MUX drivers */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
@@ -81,9 +100,11 @@ __maybe_unused static int test_mux_con_dis_as_snk(void)
 	/* This wait will go through AttachWait.SNK to Attached.SNK */
 	task_wait_event(5 * SECOND);
 
-	/* We are in Attached.SNK now */
-	TEST_EQ(mock_usb_mux.state, USB_PD_MUX_USB_ENABLED, "%d");
-	TEST_EQ(mock_usb_mux.num_set_calls, 1, "%d");
+	/*
+	 * We are in Attached.SNK now, but the port partner isn't data capable
+	 * so we should not connect the USB data mux.
+	 */
+	TEST_EQ(mock_usb_mux.state, USB_PD_MUX_NONE, "%d");
 
 	mock_tcpc.cc1 = TYPEC_CC_VOLT_OPEN;
 	mock_tcpc.cc2 = TYPEC_CC_VOLT_OPEN;
