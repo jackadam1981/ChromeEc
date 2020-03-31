@@ -1996,6 +1996,28 @@ bool is_tbt_compat_mode(int port, int cnt, const uint32_t *payload);
  */
 bool cable_supports_tbt_speed(int port);
 
+/* Checks the CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED flag
+ *
+ * @param port   USB-C port number
+ */
+bool is_limit_tbt_cable_speed(int port);
+
+/*
+ * Store port partner's Discover Mode response
+ *
+ * @param port   USB-C port number
+ * @param payload  payload data
+ */
+void store_disc_mode_sop_resp(int port, const uint32_t *payload);
+
+/*
+ * Store cables's Discover Mode response
+ *
+ * @param port   USB-C port number
+ * @param payload  payload data
+ */
+void store_disc_mode_sop_prime_resp(int port, const uint32_t *payload);
+
 /**
  * Fills the TBT3 objects in the payload and returns the number
  * of objects it has filled.

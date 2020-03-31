@@ -1097,6 +1097,11 @@ static void pe_set_tx_msg_type(int port, int sop)
 
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
+bool is_limit_tbt_cable_speed(int port)
+{
+	return CABLE_CHK_FLAG(port, CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED);
+}
+
 /*
  * This function must only be called from the PE_SNK_READY entry and
  * PE_SRC_READY entry State.
