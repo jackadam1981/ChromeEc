@@ -70,6 +70,30 @@
       "revId": "743e4fc5e194a30ff0da6ce56f1a4f9ebe2d040d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b8c889_1266e34e",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-03-31T06:54:34Z",
+      "side": 1,
+      "message": "When we got the IT83XX_SPI_ENDDETECTINT, the status of IT83XX_SPI_RXFIFOFULL would continue to be pulled up because of the sent dummy data. So if IT83XX_SPI_RXFIFOFULL section puts first, we need to use other conditions to block.\n\nIf we got IT83XX_SPI_ENDDETECTINT, it actually represents that the data parse has been completed so AP will pull up CS#(IT83XX_SPI_ENDDETECTINT) and clear all data.",
+      "parentUuid": "17c95acb_87033f1b",
+      "range": {
+        "startLine": 240,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 46
+      },
+      "revId": "743e4fc5e194a30ff0da6ce56f1a4f9ebe2d040d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
