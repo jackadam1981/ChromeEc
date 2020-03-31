@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0a42d74_91bc0970",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-31T18:07:43Z",
+      "side": 1,
+      "message": "Hi Ayushee, sorry about the last minute comment.\nKeith/Diana - Do you have any preference about using this macro vs moving this bit checking functions in TCPMv1 to common code?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "4bc2aeed51cef9a6fae1a7c37a22f11fe35f2e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
