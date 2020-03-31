@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b0fdc016_81aaaff4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T17:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8baa52f_3cbfcec5",
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56f3410c_159ae18f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 13
@@ -50,6 +68,24 @@
       "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0942f416_83e73ab0",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T17:16:35Z",
+      "side": 1,
+      "message": "Done. Removed it to common code.",
+      "parentUuid": "91026c75_1ff16f13",
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "22809e6f_d4809e14",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T17:16:35Z",
+      "side": 1,
+      "message": "Move it to separate .c file and add the license. No sure whether it is right. Please check it.",
+      "parentUuid": "26808ad7_6fc69e19",
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a910b7be_b7688ac1",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 13
@@ -102,6 +156,24 @@
       "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e976fc56_af8bbc0d",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T17:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a910b7be_b7688ac1",
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "838f0f33_b8536add",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T17:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad16d9d7_fc7b412e",
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9ab510e_23e0c6ca",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 13
@@ -139,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "6adf3862_066a879a",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T17:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9ab510e_23e0c6ca",
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e86ed25_9c8396f0",
         "filename": "driver/accelgyro_bmi260.h",
         "patchSetId": 13
@@ -153,6 +261,24 @@
       "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7862b525_232068ee",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T17:16:35Z",
+      "side": 1,
+      "message": "Initially, we want to share these register by this way. But, as you give the better way to share the BMI code. Replacd it to BMI260_AUX_X_L_G, same as others.",
+      "parentUuid": "9e86ed25_9c8396f0",
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -193,6 +319,24 @@
       "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dd0a2a0_8b96a67d",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T17:16:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3ba21b2_43e7a3e3",
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
