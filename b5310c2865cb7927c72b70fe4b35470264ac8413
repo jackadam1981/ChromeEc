@@ -22,6 +22,30 @@
       "revId": "b5310c2865cb7927c72b70fe4b35470264ac8413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87852559_549b9a8c",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-03-31T00:27:55Z",
+      "side": 1,
+      "message": "Arrgh... How did this get through the CQ?\n\nOK.  This explains why my rebase was so weird on the following CL.\nThis is fixed with https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2120754",
+      "parentUuid": "50318f12_2e011d78",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 3
+      },
+      "revId": "b5310c2865cb7927c72b70fe4b35470264ac8413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
