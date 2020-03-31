@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2846a2e_116f9766",
+        "filename": "board/volteer/sensors.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-31T22:27:33Z",
+      "side": 1,
+      "message": "Please create a \u0027base_standard_ref\u0027 rotation matrix for the BMI260 accel \u0026 gyro.  The newest Volteer boards move the BMA253 sensor to a separate daughter board (which will ultimately be mounted in the lid).  So the BMA253 sensor should still use lid_standard_ref.",
+      "range": {
+        "startLine": 134,
+        "startChar": 23,
+        "endLine": 134,
+        "endChar": 39
+      },
+      "revId": "3025c9c77182bed54ade6d0eb1744983ba5bb0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b93f4fa_777ee3e0",
+        "filename": "board/volteer/sensors.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-03-31T22:27:33Z",
+      "side": 1,
+      "message": "Also change to base_standard_ref.",
+      "range": {
+        "startLine": 164,
+        "startChar": 23,
+        "endLine": 164,
+        "endChar": 39
+      },
+      "revId": "3025c9c77182bed54ade6d0eb1744983ba5bb0c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
