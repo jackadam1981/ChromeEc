@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "306d013c_b479d755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-31T21:41:32Z",
+      "side": 1,
+      "message": "Why is this happening? It seems like a bug if it is.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "d8dcf3b7d41d4579913396fe06d4f253fe7b33f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6de439bc_9b5db852",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-03-31T21:41:32Z",
+      "side": 1,
+      "message": "This seems like a bug, and I don\u0027t think this is the right fix. Why is the port in Attached.SRC when the chipset is off?",
+      "range": {
+        "startLine": 1279,
+        "startChar": 0,
+        "endLine": 1282,
+        "endChar": 49
+      },
+      "revId": "d8dcf3b7d41d4579913396fe06d4f253fe7b33f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
