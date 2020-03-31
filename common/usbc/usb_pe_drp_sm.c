@@ -5249,6 +5249,11 @@ static const struct usb_state pe_states[] = {
 	},
 };
 
+bool is_limit_tbt_cable_speed(int port)
+{
+	return CABLE_CHK_FLAG(port, CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED);
+}
+
 #ifdef TEST_BUILD
 const struct test_sm_data test_pe_sm_data[] = {
 	{

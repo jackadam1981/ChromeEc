@@ -585,6 +585,44 @@ bool cable_supports_tbt_speed(int port)
 		cable->cable_mode_resp.tbt_cable_speed == TBT_SS_U32_GEN1_GEN2);
 }
 
+void store_disc_mode_sop_resp(int port, const uint32_t *payload)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	/* Store Discover Mode SOP response */
+	cable->dev_mode_resp.raw_value = payload[1];
+
+	if (is_limit_tbt_cable_speed(port)) {
+		/*
+		 * Passive cable has Nacked for Discover SVID.
+		 * No need to do Discover modes of cable. Assign the
+		 * cable discovery attributes and enter into device
+		 * Thunderbolt-compatible mode.
+		 */
+		cable->cable_mode_resp.tbt_cable_speed =
+			(cable->rev == PD_REV30 && cable->attr.p_rev30.ss >
+				USB_R30_SS_U32_U40_GEN2) ?
+			TBT_SS_U32_GEN1_GEN2 : cable->attr.p_rev30.ss;
+	}
+}
+
+void store_disc_mode_sop_prime_resp(int port, const uint32_t *payload)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+	enum tbt_compat_cable_speed max_tbt_speed;
+
+	/* Store Discover Mode SOP' response */
+	cable->cable_mode_resp.raw_value = payload[1];
+
+	/* Cable does not have Intel SVID for Discover SVID */
+	if (is_limit_tbt_cable_speed(port))
+		cable->cable_mode_resp.tbt_cable_speed = TBT_SS_U32_GEN1_GEN2;
+
+	max_tbt_speed = board_get_max_tbt_speed(port);
+	if (cable->cable_mode_resp.tbt_cable_speed > max_tbt_speed)
+		cable->cable_mode_resp.tbt_cable_speed = max_tbt_speed;
+}
+
 /*
  * Enter Thunderbolt-compatible mode
  * Reference: USB Type-C cable and connector specification, Release 2.0
