@@ -1,0 +1,1 @@
+../third_party/bmi260/accelgyro_bmi260_config_tbin.h
