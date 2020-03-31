@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbae153c_016b01f7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-31T21:10:28Z",
+      "side": 1,
+      "message": "missed this one",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 25
+      },
+      "revId": "e2731d662d1c4e0658a28977439223fe4019488e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8ff370b_f060c586",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2839,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-03-31T21:10:28Z",
+      "side": 1,
+      "message": "How does this state exit?",
+      "range": {
+        "startLine": 2839,
+        "startChar": 12,
+        "endLine": 2839,
+        "endChar": 33
+      },
+      "revId": "e2731d662d1c4e0658a28977439223fe4019488e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
