@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52ef6af7_7aa8e7bd",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-03-31T19:26:47Z",
+      "side": 1,
+      "message": "I am in the process of adding more tests here too. I really don\u0027t think we should use the enum states here. We should only verify behavoir at the TCPC level (or other system calls). I will upload a CL today with examples of what I am talking about",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "c75971628ccfbe713bf6bb414c407b2d8388557e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
