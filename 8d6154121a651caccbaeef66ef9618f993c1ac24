@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f230480_dfaf410c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-31T18:50:13Z",
+      "side": 1,
+      "message": "added a .md file to the patch set.",
+      "parentUuid": "898a6328_1fad9f4a",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "8d6154121a651caccbaeef66ef9618f993c1ac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bebc334a_be99a54a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ab30c45a_33434e89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-31T18:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bebc334a_be99a54a",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "8d6154121a651caccbaeef66ef9618f993c1ac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e68f941_d695bef1",
         "filename": "Makefile",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2020-03-30T22:32:01Z",
       "side": 1,
       "message": "One downside of using .Ep is that rw-eps and rw-deps are typo-similar, as are rw-es and rw-eps.  (Not that I have a better naming idea; just pointing out the risk.)",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 0
+      },
+      "revId": "8d6154121a651caccbaeef66ef9618f993c1ac24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1bb115a_24c1a769",
+        "filename": "Makefile",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-03-31T18:50:13Z",
+      "side": 1,
+      "message": "I kept the names, but if you have a suggestion on what to use instead - I\u0027ll change them.",
+      "parentUuid": "0e68f941_d695bef1",
       "range": {
         "startLine": 352,
         "startChar": 0,
