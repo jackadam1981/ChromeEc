@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89c34226_52cacf13",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4325,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-31T19:44:18Z",
+      "side": 1,
+      "message": "This is not the plan for the TCPMv2 code in the long run.  I\u0027m covering this as a part of b:152418267, but the overall plan is to have separate SVID arrays for each transmit type.",
+      "range": {
+        "startLine": 4317,
+        "startChar": 4,
+        "endLine": 4325,
+        "endChar": 4
+      },
+      "revId": "6ebc649d812476612bece123136209281ffb3939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
