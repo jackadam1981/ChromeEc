@@ -22,6 +22,30 @@
       "revId": "2adcb7b39a85c26a643ec28eb316ea8e2d047c4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4dd65a9_b56df17f",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-03-31T00:02:47Z",
+      "side": 1,
+      "message": "Sorry, this code already has the reversible property. It\u0027s more like \u0027reverse\u0027 than \u0027corrupt\u0027.",
+      "parentUuid": "f0ef2cff_a51b6d15",
+      "range": {
+        "startLine": 313,
+        "startChar": 45,
+        "endLine": 313,
+        "endChar": 49
+      },
+      "revId": "2adcb7b39a85c26a643ec28eb316ea8e2d047c4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
