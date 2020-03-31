@@ -46,6 +46,30 @@
       "revId": "b5310c2865cb7927c72b70fe4b35470264ac8413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc96d3e6_1c69a0dc",
+        "filename": "board/nightfury/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2020-03-31T01:44:53Z",
+      "side": 1,
+      "message": "I have upload CL to fix conflict.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2128390",
+      "parentUuid": "87852559_549b9a8c",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 3
+      },
+      "revId": "b5310c2865cb7927c72b70fe4b35470264ac8413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
