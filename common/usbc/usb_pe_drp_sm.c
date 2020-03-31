@@ -3881,12 +3881,34 @@ static void pe_do_port_discovery_run(int port)
 			ret = dfp_discover_modes(port, pe[port].vdm_data);
 			break;
 		case CMD_DISCOVER_MODES:
-			if (is_tbt_compat_mode_enabled(port) &&
-			    !is_limit_tbt_cable_speed(port) &&
-			    sop == TCPC_TX_SOP) {
-				pe_set_tx_msg_type(port, TCPC_TX_SOP_PRIME);
-				pe[port].vdm_cmd = CMD_DISCOVER_MODES;
-				ret = dfp_discover_modes(port,
+			if (is_tbt_compat_mode_enabled(port)) {
+				if (!is_limit_tbt_cable_speed(port) &&
+				    sop == TCPC_TX_SOP) {
+					/* Discover modes for SOP' */
+					pe[port].am_policy.svid_idx--;
+					pe_set_tx_msg_type(port,
+							TCPC_TX_SOP_PRIME);
+					pe[port].vdm_cmd = CMD_DISCOVER_MODES;
+					ret = dfp_discover_modes(port,
+							pe[port].vdm_data);
+					break;
+				}
+				/*
+				 * Ref: USB Type-C Cable and Connector
+				 * Specification, figure F-1: TBT3 Discovery
+				 * Flow and Section F.2.7 TBT3 Cable Enter Mode
+				 * Command.
+				 * For passive cables, Enter Mode SOP' is
+				 * skipped.
+				 * For active cables, Enter Mode SOP',
+				 * SOP'', SOP.
+				 */
+				if (get_usb_pd_cable_type(port) !=
+							IDH_PTYPE_ACABLE) {
+					pe_set_tx_msg_type(port, TCPC_TX_SOP);
+				}
+				pe[port].vdm_cmd = CMD_ENTER_MODE;
+				ret = enter_tbt_compat_mode(port, sop,
 						pe[port].vdm_data);
 				break;
 			}
@@ -3897,6 +3919,36 @@ static void pe_do_port_discovery_run(int port)
 				ret = 1;
 			break;
 		case CMD_ENTER_MODE:
+			if (is_tbt_compat_mode_enabled(port)) {
+				if (sop == TCPC_TX_SOP) {
+					/*
+					 * Update Mux state to
+					 * Thunderbolt-compatible mode.
+					 */
+					set_tbt_compat_mode_ready(port);
+
+					 /*
+					  * No response once device (and cable)
+					  * acks.
+					  */
+					break;
+				}
+
+				/* Check if the cable has a SOP'' controller */
+				if (sop == TCPC_TX_SOP_PRIME &&
+				    pe[port].cable.attr.a_rev20.sop_p_p) {
+					pe_set_tx_msg_type(port,
+						TCPC_TX_SOP_PRIME_PRIME);
+				} else {
+					pe_set_tx_msg_type(port, TCPC_TX_SOP);
+				}
+
+				pe[port].vdm_cmd = CMD_ENTER_MODE;
+				ret = enter_tbt_compat_mode(port, sop,
+						pe[port].vdm_data);
+				break;
+			}
+
 			pe[port].vdm_cmd = CMD_DP_STATUS;
 			if (modep && modep->opos) {
 				ret = modep->fx->status(port,
