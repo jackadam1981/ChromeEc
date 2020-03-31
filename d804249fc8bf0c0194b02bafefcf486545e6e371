@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52f49eef_9c8582a9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 4299,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-31T19:46:29Z",
+      "side": 1,
+      "message": "We\u0027ll plan to verify data like this at the time the AP requests an entry into a mode, and return an error if the request is bad.",
+      "range": {
+        "startLine": 4291,
+        "startChar": 0,
+        "endLine": 4299,
+        "endChar": 36
+      },
+      "revId": "d804249fc8bf0c0194b02bafefcf486545e6e371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
