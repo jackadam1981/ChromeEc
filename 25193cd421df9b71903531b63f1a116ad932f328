@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8fd99b9_d529d10b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3933,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-31T19:30:52Z",
+      "side": 1,
+      "message": "bring this comments at at 3923, it will look neat",
+      "range": {
+        "startLine": 3925,
+        "startChar": 0,
+        "endLine": 3933,
+        "endChar": 9
+      },
+      "revId": "25193cd421df9b71903531b63f1a116ad932f328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3999d330_d12f923e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3944,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-31T19:30:52Z",
+      "side": 1,
+      "message": "nit:\n/* Set transmit msg type based on SOP* */\npe_set_tx_msg_type(port, sop \u003d\u003d TCPC_TX_SOP_PRIME \u0026\u0026 pe[port].cable.attr.a_rev20.sop_p_p ? TCPC_TX_SOP_PRIME_PRIME : TCPC_TX_SOP);",
+      "range": {
+        "startLine": 3938,
+        "startChar": 0,
+        "endLine": 3944,
+        "endChar": 5
+      },
+      "revId": "25193cd421df9b71903531b63f1a116ad932f328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
