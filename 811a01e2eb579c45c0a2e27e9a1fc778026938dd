@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3e30b85_00fe06cb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 3872,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-31T19:45:25Z",
+      "side": 1,
+      "message": "This will also be covered as a part of the b:152418267 work.  The plan is to generically discover the SVIDs and modes for all types, with no regard for configuration options set.",
+      "range": {
+        "startLine": 3866,
+        "startChar": 0,
+        "endLine": 3872,
+        "endChar": 10
+      },
+      "revId": "811a01e2eb579c45c0a2e27e9a1fc778026938dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
