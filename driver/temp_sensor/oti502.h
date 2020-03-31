@@ -12,6 +12,8 @@
 
 #define OTI502_IDX_AMBIENT	0
 #define OTI502_IDX_OBJECT	1
+#define OTI502_K_MSB  0x01
+#define OTI502_K_LSB  0x40
 
 /**
  * Get the last polled value of a sensor.

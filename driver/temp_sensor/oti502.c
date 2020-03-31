@@ -11,9 +11,13 @@
 #include "i2c.h"
 #include "hooks.h"
 #include "util.h"
+#include "timer.h"
 
 static int temp_val_ambient;	/* Ambient is chip temperature*/
 static int temp_val_object;		/* Object is IR temperature */
+static int parameter_need_update = 0;
+static int parameter_done = 1;
+static uint8_t msb, lsb;
 
 static int oti502_read_block(const int offset, uint8_t *data, int len)
 {
@@ -41,6 +45,9 @@ static void temp_sensor_poll(void)
 {
 	uint8_t temp_val[6];
 
+	if (parameter_need_update)
+		return;
+
 	memset(temp_val, 0, sizeof(temp_val));
 
 	oti502_read_block(0x80, temp_val, sizeof(temp_val));
@@ -65,3 +72,56 @@ static void temp_sensor_poll(void)
 }
 DECLARE_HOOK(HOOK_SECOND, temp_sensor_poll, HOOK_PRIO_TEMP_SENSOR);
 
+static void read_oti502_params(void)
+{
+	int val = 0;
+
+	i2c_write8(I2C_PORT_THERMAL, OTI502_I2C_ADDR_FLAGS, 0x0E, 0x30);
+	msleep(1);
+	i2c_read16(I2C_PORT_THERMAL, OTI502_I2C_ADDR_FLAGS, 0x86, &val);
+
+	msb = val & 0xff;
+	lsb = val >> 8;
+
+	ccprintf("K-parameter: MSB:0x%x, LSB:0x%x %x!\n", msb, lsb, val);
+}
+
+static void parameter_update(void)
+{
+	uint8_t data;
+	int rv;
+	int val;
+
+	if (parameter_done) {
+		rv = i2c_write8(I2C_PORT_THERMAL, OTI502_I2C_ADDR_FLAGS, 0x0E, 0x74);
+		msleep(1);
+		rv = i2c_read16(I2C_PORT_THERMAL, OTI502_I2C_ADDR_FLAGS, 0x86, &val);
+
+		if (rv)
+			return;
+
+		ccprintf("OTI502 FW VER: %x!\n", val);
+		parameter_done = 0;
+	} else
+		return;
+
+	read_oti502_params();
+
+	if (msb != OTI502_K_MSB || lsb != OTI502_K_LSB) {
+		parameter_need_update = 1;
+		i2c_write8(I2C_PORT_THERMAL, OTI502_I2C_ADDR_FLAGS, 0x0E, 0x31);
+		msleep(1);
+		i2c_write8(I2C_PORT_THERMAL, OTI502_I2C_ADDR_FLAGS, 0x0F, OTI502_K_LSB);
+		msleep(5);
+		i2c_write8(I2C_PORT_THERMAL, OTI502_I2C_ADDR_FLAGS, 0x0E, 0x30);
+		msleep(1);
+		i2c_write8(I2C_PORT_THERMAL, OTI502_I2C_ADDR_FLAGS, 0x0F, OTI502_K_MSB);
+		msleep(5);
+
+		data = 0x06;
+		i2c_xfer(I2C_PORT_THERMAL, 0x00, &data, 1, NULL, 0);
+		msleep(600);
+		parameter_need_update = 0;
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, parameter_update, HOOK_PRIO_TEMP_SENSOR_DONE);
