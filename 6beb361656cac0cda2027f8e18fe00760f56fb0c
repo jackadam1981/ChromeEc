@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dda77db9_7e4b0a19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-03-31T17:52:03Z",
+      "side": 1,
+      "message": "This is a schematic review bug number.  Please create / use an appropriate bug for this change.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "6beb361656cac0cda2027f8e18fe00760f56fb0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b87f818_42176d91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-03-31T17:52:03Z",
+      "side": 1,
+      "message": "This submission is to master.\nI assume we need cherry picks to firmware-hatch and factory-hatch",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "6beb361656cac0cda2027f8e18fe00760f56fb0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
