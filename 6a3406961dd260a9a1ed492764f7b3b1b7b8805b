@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fab7648_6bdfb675",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-03-31T19:48:43Z",
+      "side": 1,
+      "message": "The cable mode response will be moving out of the cable structure and into an array of modes stored by type.  I\u0027ll keep you cc\u0027d on changes as this is implemented so you can see what it looks like going forward.",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 47
+      },
+      "revId": "6a3406961dd260a9a1ed492764f7b3b1b7b8805b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
