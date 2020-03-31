@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa300518_fd272759",
+        "filename": "power/icelake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-03-31T18:14:04Z",
+      "side": 1,
+      "message": "nit:\nreturn signal-\u003eactive_low ? level : !level;",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 14
+      },
+      "revId": "43810913fd484aa0ab3a2fd972ff68ee9cf0cc69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
