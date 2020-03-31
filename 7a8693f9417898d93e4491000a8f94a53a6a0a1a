@@ -219,6 +219,30 @@
     },
     {
       "key": {
+        "uuid": "6c8b4545_4b048493",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T10:09:40Z",
+      "side": 1,
+      "message": "Currently, the code of bmi160 and bmi260 is shared the macro CONFIG_MAG_BMI_BMM150. Once BMI160_BMM150 is defined, the BMI_BMM160 is defined. The CONFIG_MAG_BMI160_BMM150 is used in some board config. I will cleanup those definition in other CL. Same of the others.",
+      "parentUuid": "d6df06bc_3f48b2a7",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 0
+      },
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f03e4aa2_244560ab",
         "filename": "include/config.h",
         "patchSetId": 13
@@ -242,6 +266,30 @@
     },
     {
       "key": {
+        "uuid": "dbc87b0e_ae2fa9b9",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T10:09:40Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "f03e4aa2_244560ab",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 0
+      },
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a21ffa91_a088fc44",
         "filename": "include/config.h",
         "patchSetId": 13
@@ -262,6 +310,30 @@
       "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8028ec79_dae4d952",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-03-31T10:09:40Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "a21ffa91_a088fc44",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
