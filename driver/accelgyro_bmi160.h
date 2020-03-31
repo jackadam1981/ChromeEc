@@ -140,12 +140,7 @@
 #define BMI160_FIFO_LENGTH_1   0x23
 #define BMI160_FIFO_LENGTH_MASK    ((1 << 11) - 1)
 #define BMI160_FIFO_DATA       0x24
-enum fifo_header {
-	BMI160_EMPTY = 0x80,
-	BMI160_SKIP = 0x40,
-	BMI160_TIME = 0x44,
-	BMI160_CONFIG = 0x48
-};
+
 
 #define BMI160_FH_MODE_MASK    0xc0
 #define BMI160_FH_PARM_OFFSET    2
@@ -437,18 +432,6 @@ enum fifo_header {
 #define BMI160_GYRO_MAX_FREQ MOTION_MAX_SENSOR_FREQUENCY(3200000, 100000)
 
 extern const struct accelgyro_drv bmi160_drv;
-
-enum bmi160_running_mode {
-	STANDARD_UI_9DOF_FIFO          = 0,
-	STANDARD_UI_IMU_FIFO           = 1,
-	STANDARD_UI_IMU                = 2,
-	STANDARD_UI_ADVANCEPOWERSAVE   = 3,
-	ACCEL_PEDOMETER                = 4,
-	APPLICATION_HEAD_TRACKING      = 5,
-	APPLICATION_NAVIGATION         = 6,
-	APPLICATION_REMOTE_CONTROL     = 7,
-	APPLICATION_INDOOR_NAVIGATION  = 8,
-};
 
 #define BMI160_FLAG_SEC_I2C_ENABLED    (1 << 0)
 #define BMI160_FIFO_FLAG_OFFSET        4
