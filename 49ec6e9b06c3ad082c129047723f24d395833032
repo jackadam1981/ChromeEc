@@ -22,6 +22,30 @@
       "revId": "49ec6e9b06c3ad082c129047723f24d395833032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd3bf729_75fd1345",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2020-03-31T04:35:41Z",
+      "side": 1,
+      "message": "ANX7447_REG_HPD_OUT is not functional if we clear HPD_MODE, will use HPD_PLUG and HPD_UNPLUG, please check the patch set #4.",
+      "parentUuid": "15a611bf_6b789f0f",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 30
+      },
+      "revId": "49ec6e9b06c3ad082c129047723f24d395833032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
