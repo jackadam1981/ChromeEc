@@ -34,6 +34,24 @@
       "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db20e3de_11e4d2d9",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-01T23:49:07Z",
+      "side": 1,
+      "message": "The states are externally defined by the PD spec, not just an internal implementation detail, that\u0027s one of the things I like about TCPMv2, so we are checking we have implemented the spec correctly, which seems like a good thing to me.\n\nIf you really don\u0027t want the direct connection, then how about a mapping from internal state to external PD spec state to decouple them? Then do something like:\nTEST_ASSERT(pd_spec_state(PORT0) \u003d\u003d PD_SPEC_ATTACH_WAIT_SNK)\n\nI feel like not having any access to the state makes it more inconvenient and error prone to write tests, which will lead to fewer tests.",
+      "parentUuid": "90d3828d_3bb6782a",
+      "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
