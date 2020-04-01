@@ -16,6 +16,256 @@
       "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36271b2e_91eb7b82",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "Don\u0027t we have a config that indicates the number of ports on a system? Why is 3 the default? I know this is copied code. Is there a bug tracking the things I\u0027ve commented on this file?",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f85fa2_4ba192e7",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure why this is a fixed width variable. And it\u0027s more of a \u0027set\u0027 vs \u0027clear\u0027 construct. The variable name should reflect its semantics.\n\nEven better would be to have an inline helper that clearly read \u0027clear\u0027 or \u0027set\u0027. i.e.\n\npd_clear_saved_port_flag()\npd_set_saved_port_flag()",
+      "range": {
+        "startLine": 431,
+        "startChar": 56,
+        "endLine": 431,
+        "endChar": 67
+      },
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abea4233_f67f6c6e",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we propogate errors up?",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "771aa5e5_5ce5ecb0",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "It\u0027s ok to silently fail?",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b1151ad_63d2346e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "This seems odd to have a flag per port when sysjump is a global semantic about the EC itself, not usb ports.",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb77481b_3dd4e565",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "I think this sequence deserves a comment. We\u0027re checking for the sysjump flag and maintaining only that flag. Why would be helpful. I have an idea, but the code would read better explaining it.",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96c9cb9f_5363973b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "where would we not call this in a loop in order to set it for every port?",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ce4fa6c_b145cbf4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2006,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "There are 4-5 open coded sequences like this. Why isn\u0027t there a helper that conveys the proper semantics?",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7487ba2_89be8e9b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2007,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "but why? I can see that\u0027s what the function is named. We should provide commentary for the reasons why.",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0756fbf_f10330cc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2030,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "Just sysjumping is enough for us to be ready to sink? There\u0027s some assumptions lurking here, I think, that need an explanation.",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a509df_286b9482",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2346,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "put this else branch into a function? It\u0027ll be tail call optimized, but then it can be named and documented more clearly as to what it should be doing.",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51727dda_5cb9472b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2396,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "times out",
+      "range": {
+        "startLine": 2396,
+        "startChar": 46,
+        "endLine": 2396,
+        "endChar": 54
+      },
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6593643f_95f4a8a1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2398,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "This SYSJUMP flag should be cleared besides a time out, right?",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70749cf5_545ff288",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-01T02:05:56Z",
+      "side": 1,
+      "message": "IS this entirely true? There are 3 conditionals in the if() check.",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
