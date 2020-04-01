@@ -92,13 +92,15 @@ static void print_gpio_info(int gpio)
 #endif
 	changed = last_val_changed(gpio, v);
 
-	ccprintf("  %d%c %s%s%s%s%s%s%s%s%s%s%s%s\n", v,
+	/* Split the printf call into multiple calls to reduce the stack usage. */
+	ccprintf("  %d%c %s%s%s%s%s", v,
 		 (changed ? '*' : ' '),
 		 (flags & GPIO_INPUT ? "I " : ""),
 		 (flags & GPIO_OUTPUT ? "O " : ""),
 		 (flags & GPIO_LOW ? "L " : ""),
 		 (flags & GPIO_HIGH ? "H " : ""),
-		 (flags & GPIO_ANALOG ? "A " : ""),
+		 (flags & GPIO_ANALOG ? "A " : ""));
+	ccprintf("%s%s%s%s%s%s%s\n",
 		 (flags & GPIO_OPEN_DRAIN ? "ODR " : ""),
 		 (flags & GPIO_PULL_UP ? "PU " : ""),
 		 (flags & GPIO_PULL_DOWN ? "PD " : ""),
