@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4361f30f_a8498424",
+        "filename": "common/mock/tcpc_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-01T00:04:49Z",
+      "side": 1,
+      "message": "Pop these into a header for re-use elsewhere?",
+      "revId": "7e039b6842acaaf1d9a3f61e4219a6d9c0d08322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "298dbc86_72217b26",
+        "filename": "common/mock/tcpc_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-01T00:04:49Z",
+      "side": 1,
+      "message": "The meaning of \"host side\" is not obvious to me, we already have too many hosts (host EC tests, host commands/events)",
+      "range": {
+        "startLine": 62,
+        "startChar": 26,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "7e039b6842acaaf1d9a3f61e4219a6d9c0d08322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb2a1f3e_c99a404c",
+        "filename": "common/mock/tcpc_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-01T00:04:49Z",
+      "side": 1,
+      "message": "Why \"x set to y\" here and \"Setting x to y\" above? Make consistent?",
+      "range": {
+        "startLine": 124,
+        "startChar": 18,
+        "endLine": 124,
+        "endChar": 31
+      },
+      "revId": "7e039b6842acaaf1d9a3f61e4219a6d9c0d08322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
