@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a5fee31_010f1447",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T19:21:06Z",
+      "side": 1,
+      "message": "Done. I added a build assert, since a lot of other things would break it wasn\u0027t 0",
+      "parentUuid": "1cb8d2d3_42bc0324",
+      "revId": "97199052fc6f2e57d2474b623b3f00a52f3539a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1ed3d46_ca0db788",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "97199052fc6f2e57d2474b623b3f00a52f3539a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b98e244_cd90d876",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T19:21:06Z",
+      "side": 1,
+      "message": "It take a little time to settle. 1 tick isn\u0027t enough. I added \"settle\" to comment",
+      "parentUuid": "c1ed3d46_ca0db788",
+      "revId": "97199052fc6f2e57d2474b623b3f00a52f3539a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
