@@ -16,6 +16,24 @@
       "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90d3828d_3bb6782a",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T22:16:52Z",
+      "side": 1,
+      "message": "That is validating the internal workings of the state machine.\n\nWe could change the number of state and sub-states and it shouldn\u0027t matter as long as the contract (in terms of timing and resistors changing) still holds true.\n\nThe impl should be free to express its state machine how ever it likes.",
+      "parentUuid": "ff3026b8_4d3adc29",
+      "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
