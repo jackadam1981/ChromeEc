@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43428cd1_8fb3bfbc",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-01T23:14:14Z",
+      "side": 1,
+      "message": "seems like this would be more self-documenting if you had it as\n\nvoid pd_update_saved_port_flags(int port, uint8_t flag, uint8_t do_set)\n\nWith this you don\u0027t need the two new functions below.  The code below tends to use this function even with the other two helper functions available.",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 68
+      },
+      "revId": "f1b0a54ea9548ebebf1666aeaceafb61eb86fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd0ca00f_8c6eb61e",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-01T23:14:14Z",
+      "side": 1,
+      "message": "this naming is confusing with the similar pd_set_saved_port_flags",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 1
+      },
+      "revId": "f1b0a54ea9548ebebf1666aeaceafb61eb86fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d30925_4babee33",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2033,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-01T23:14:14Z",
+      "side": 1,
+      "message": "good catch on this to fix my issue",
+      "range": {
+        "startLine": 2033,
+        "startChar": 21,
+        "endLine": 2033,
+        "endChar": 39
+      },
+      "revId": "f1b0a54ea9548ebebf1666aeaceafb61eb86fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b193ec20_e921f2e6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2742,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-01T23:14:14Z",
+      "side": 1,
+      "message": "why do these both go to PE_SRC_HARD_RESET?",
+      "range": {
+        "startLine": 2739,
+        "startChar": 2,
+        "endLine": 2742,
+        "endChar": 41
+      },
+      "revId": "f1b0a54ea9548ebebf1666aeaceafb61eb86fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
