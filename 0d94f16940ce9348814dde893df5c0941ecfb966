@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0376141_adbac53b",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-01T10:06:14Z",
+      "side": 1,
+      "message": "I think it\u0027s better to move back to bmi160.c.\nThere are two advantages.\n1. common.[ch] don\u0027t need to include 160/260.h to avoid cyclic inclusion.\n2. we can have bmi160 and bmi260 two sensors on one board.\n\nYou need to add extra parameters in bmi_get_range_table function.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "0d94f16940ce9348814dde893df5c0941ecfb966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
