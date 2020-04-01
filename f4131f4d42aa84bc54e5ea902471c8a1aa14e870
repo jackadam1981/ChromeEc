@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce914f0b_935fc51f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac7aa0b8_0e72597a",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36271b2e_91eb7b82",
         "filename": "common/usb_pd_dual_role.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4119d5c2_e9564afe",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "From system.h, enum system_bbram_idx only allows for 3 ports. A bug has been opened b:152967274",
+      "parentUuid": "36271b2e_91eb7b82",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "be5c4161_a32cf503",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "Also from system.h, 1-byte is allocated to each port index. Although the PD saved states only use 1-bit of this byte, so the wrappers can be used.",
+      "parentUuid": "99f85fa2_4ba192e7",
+      "range": {
+        "startLine": 431,
+        "startChar": 56,
+        "endLine": 431,
+        "endChar": 67
+      },
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abea4233_f67f6c6e",
         "filename": "common/usb_pd_dual_role.c",
         "patchSetId": 3
@@ -70,6 +130,24 @@
       "writtenOn": "2020-04-01T02:05:56Z",
       "side": 1,
       "message": "Shouldn\u0027t we propogate errors up?",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78895842_4b294589",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "From the way things are set up, it seems we only need to print an error message on failure if CHIP_HOST isn\u0027t defined. See line 413. We could propagate the error up but this would waste space if all we are doing is printing an error message.",
+      "parentUuid": "abea4233_f67f6c6e",
       "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "f9e460b7_be6a688f",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "parentUuid": "771aa5e5_5ce5ecb0",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b1151ad_63d2346e",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -107,6 +203,24 @@
       "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b98f6d_2b55d67b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "1b1151ad_63d2346e",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "05d4445b_06cc04d9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "fb77481b_3dd4e565",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96c9cb9f_5363973b",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -141,6 +273,24 @@
       "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5185af46_b4a1a93b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "The port param has been removed",
+      "parentUuid": "96c9cb9f_5363973b",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -161,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "333a268a_c3371d39",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2006,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "9ce4fa6c_b145cbf4",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7487ba2_89be8e9b",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -175,6 +343,24 @@
       "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0391bb46_1635993c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2007,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "I added a comment",
+      "parentUuid": "c7487ba2_89be8e9b",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -195,6 +381,24 @@
     },
     {
       "key": {
+        "uuid": "b4f2f6af_5e4ea37d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2030,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "From the comment in file usb_tc_drp_acc_trysrc_sm.c, function tc_state_init, \"Only attempt to maintain previous sink contracts\". Also, this is the startup function for the SNK state machine.",
+      "parentUuid": "e0756fbf_f10330cc",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5a509df_286b9482",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -209,6 +413,24 @@
       "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52b42cdc_ac040d74",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2346,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "e5a509df_286b9482",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -235,6 +457,30 @@
     },
     {
       "key": {
+        "uuid": "061cf56e_783479d5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2396,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "51727dda_5cb9472b",
+      "range": {
+        "startLine": 2396,
+        "startChar": 46,
+        "endLine": 2396,
+        "endChar": 54
+      },
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6593643f_95f4a8a1",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -252,6 +498,24 @@
     },
     {
       "key": {
+        "uuid": "965c38f6_0dbf90a2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2398,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "6593643f_95f4a8a1",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70749cf5_545ff288",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -263,6 +527,24 @@
       "writtenOn": "2020-04-01T02:05:56Z",
       "side": 1,
       "message": "IS this entirely true? There are 3 conditionals in the if() check.",
+      "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0722f6a6_8fd50048",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-01T22:49:01Z",
+      "side": 1,
+      "message": "This function is called once at system startup and if no pd state needs to be carried across the sysjump, the default behavior of resetting the state machines is initiated. Do you believe something else should occur?",
+      "parentUuid": "70749cf5_545ff288",
       "revId": "f4131f4d42aa84bc54e5ea902471c8a1aa14e870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
