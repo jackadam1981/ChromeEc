@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff3026b8_4d3adc29",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-01T20:29:43Z",
+      "side": 1,
+      "message": "To me, TEST_ASSERT(pd_get_task_state(PORT0) \u003d\u003d TC_ATTACH_WAIT_SNK) seems much preferable to a comment.",
+      "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
