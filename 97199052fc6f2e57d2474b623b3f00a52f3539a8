@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cb8d2d3_42bc0324",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-01T00:10:36Z",
+      "side": 1,
+      "message": "Do we rely on TYPEC_CC_VOLT_OPEN happening to be 0? Better to make explicit?",
+      "revId": "97199052fc6f2e57d2474b623b3f00a52f3539a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ed3d46_ca0db788",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-01T00:10:36Z",
+      "side": 1,
+      "message": "Any reason for SECOND here? Isn\u0027t just a single tick needed?",
+      "revId": "97199052fc6f2e57d2474b623b3f00a52f3539a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
