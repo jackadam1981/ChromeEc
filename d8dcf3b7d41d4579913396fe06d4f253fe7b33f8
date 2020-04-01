@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d09f178c_7621e152",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-04-01T08:33:51Z",
+      "side": 1,
+      "message": "When chipset enters S5 state (pd_chipset_shutdown()) DRP state is set to PD_DRP_FORCE_SINK and PD_EVENT_UPDATE_DUAL_ROLE is set.\n\ntc_event_check() function sees that PD_EVENT_UPDATE_DUAL_ROLE is set and calls pd_update_dual_role_config() which changes state to Unattached.SNK because current power role is PD_ROLE_SOURCE, and PD_DRP_FORCE_SINK is set.\n\nIn Unattached.SNK state it goes to LowPowerMode state (because PD_DRP_FORCE_SINK), which is immediately followed by DRPAutoToogle state.\n\nIn DRPAutoToggle state drp_auto_toggle_next_state() returns DRP_TC_UNATTACHED_SNK, but tc_drp_auto_toggle_run() jumps to TC_ATTACH_WAIT_SNK.\n\nIn AttachWait.SNK we jump to Unattached.SRC because both pins are not RP. Comment in this function says that we should transition to Unattached.SNK, maybe this is the bug I was looking for. Furthermore DRP state is still PD_DRP_FORCE_SINK.\n\nFrom Unattached.SRC it jumps to AttachWait.SRC, because one of CC pins are RD, then it goes directly to Attached.SRC \n\n\nVoila!",
+      "parentUuid": "306d013c_b479d755",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "d8dcf3b7d41d4579913396fe06d4f253fe7b33f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6de439bc_9b5db852",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-03-31T21:41:32Z",
       "side": 1,
       "message": "This seems like a bug, and I don\u0027t think this is the right fix. Why is the port in Attached.SRC when the chipset is off?",
+      "range": {
+        "startLine": 1279,
+        "startChar": 0,
+        "endLine": 1282,
+        "endChar": 49
+      },
+      "revId": "d8dcf3b7d41d4579913396fe06d4f253fe7b33f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0827614_d6741092",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-04-01T08:33:51Z",
+      "side": 1,
+      "message": "Please see detailed explaination in previous comment.",
+      "parentUuid": "6de439bc_9b5db852",
       "range": {
         "startLine": 1279,
         "startChar": 0,
