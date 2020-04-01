@@ -16,6 +16,24 @@
       "revId": "b3abcbe6ea2ed38a682f5b031bf23ddc23b3a7c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f6ae67_9d41eacb",
+        "filename": "board/dalboz/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-01T02:49:10Z",
+      "side": 1,
+      "message": "Agreed, please change to GPIO_ODR_HIGH",
+      "parentUuid": "a9ac0af5_2fc11e8f",
+      "revId": "b3abcbe6ea2ed38a682f5b031bf23ddc23b3a7c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
