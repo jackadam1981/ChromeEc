@@ -46,6 +46,53 @@
       "revId": "45dae7f1be8d6569a2919b1f964d8c9dc36725fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "994a6301_35787916",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-04-01T14:10:54Z",
+      "side": 1,
+      "message": "The page size is a part property. How about adding:\n\n  #ifdef CONFIG_CBI_EEPROM_AT24C02D\n  #define CBI_EEPROM_PAGE_WRITE_SIZE 8\n  #else\n  #define CBI_EEPROM_PAGE_WRITE_SIZE 16\n  #endif\n\nto cbi.c?\n\nThen Waddlesdoo only needs to select a part (i.e. CONFIG_CBI_EEPROM_AT24C02D).",
+      "parentUuid": "8753a419_c24ad77d",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "45dae7f1be8d6569a2919b1f964d8c9dc36725fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "272af9f7_79093c0b",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-04-01T14:10:54Z",
+      "side": 1,
+      "message": "Can you remove this?",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 41
+      },
+      "revId": "45dae7f1be8d6569a2919b1f964d8c9dc36725fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
