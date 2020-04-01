@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "10243ef0_c3dc5b9d",
+        "filename": "common/mock/tcpc_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T19:20:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4361f30f_a8498424",
+      "revId": "7e039b6842acaaf1d9a3f61e4219a6d9c0d08322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "298dbc86_72217b26",
         "filename": "common/mock/tcpc_mock.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "bef7002b_4f56add2",
+        "filename": "common/mock/tcpc_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T19:20:12Z",
+      "side": 1,
+      "message": "It does make sense when you are reading the test output..\n\nWe have \"setting host side\" and \"setting partner side\"\n\nbut I am open to a more descriptive name. Do you have any suggestions?\n\n\"TCPM side\"?",
+      "parentUuid": "298dbc86_72217b26",
+      "range": {
+        "startLine": 62,
+        "startChar": 26,
+        "endLine": 62,
+        "endChar": 35
+      },
+      "revId": "7e039b6842acaaf1d9a3f61e4219a6d9c0d08322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb2a1f3e_c99a404c",
         "filename": "common/mock/tcpc_mock.c",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "7e039b6842acaaf1d9a3f61e4219a6d9c0d08322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d52d553_99883124",
+        "filename": "common/mock/tcpc_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T19:20:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb2a1f3e_c99a404c",
+      "range": {
+        "startLine": 124,
+        "startChar": 18,
+        "endLine": 124,
+        "endChar": 31
+      },
+      "revId": "7e039b6842acaaf1d9a3f61e4219a6d9c0d08322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
