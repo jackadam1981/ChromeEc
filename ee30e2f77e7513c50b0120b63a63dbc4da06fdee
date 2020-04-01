@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a37b68a_78b4f8ff",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T19:24:58Z",
+      "side": 0,
+      "message": "no one was using, so removed",
+      "range": {
+        "startLine": 571,
+        "startChar": 5,
+        "endLine": 571,
+        "endChar": 22
+      },
+      "revId": "ee30e2f77e7513c50b0120b63a63dbc4da06fdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0414d9e4_d838a1e3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T19:24:58Z",
+      "side": 0,
+      "message": "moved into host command file",
+      "range": {
+        "startLine": 1280,
+        "startChar": 3,
+        "endLine": 1280,
+        "endChar": 16
+      },
+      "revId": "ee30e2f77e7513c50b0120b63a63dbc4da06fdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

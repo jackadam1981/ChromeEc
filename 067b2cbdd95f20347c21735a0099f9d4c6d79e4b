@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5234534b_1e96c3b6",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T19:24:58Z",
+      "side": 1,
+      "message": "this isn\u0027t my favorite line, but our unit tests include too much. When we clean up our unit dependencies, we should be able to clean this up too.",
+      "range": {
+        "startLine": 591,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 27
+      },
+      "revId": "067b2cbdd95f20347c21735a0099f9d4c6d79e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26970556_6d7050c4",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T19:24:58Z",
+      "side": 1,
+      "message": "just moved over",
+      "range": {
+        "startLine": 382,
+        "startChar": 7,
+        "endLine": 382,
+        "endChar": 44
+      },
+      "revId": "067b2cbdd95f20347c21735a0099f9d4c6d79e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0df16b16_cc12309c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-01T19:24:58Z",
+      "side": 1,
+      "message": "moved up from TC layer",
+      "range": {
+        "startLine": 501,
+        "startChar": 1,
+        "endLine": 503,
+        "endChar": 29
+      },
+      "revId": "067b2cbdd95f20347c21735a0099f9d4c6d79e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
