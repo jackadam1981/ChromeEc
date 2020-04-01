@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e76f9044_f7824a71",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-01T06:06:49Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_FANS",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 20
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa570599_d84cb5ae",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-01T06:06:49Z",
+      "side": 1,
+      "message": "#endif /* CONFIG_FANS */",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 6
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18527749_8a18f45c",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-01T06:06:49Z",
+      "side": 1,
+      "message": "remove and UNIMPLEMENTED these GPIO in gpio.inc",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 20
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17d28a5_d74ff0d9",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-01T06:06:49Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 720,
+        "endChar": 20
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "455486e5_b87e23d2",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-01T06:06:49Z",
+      "side": 1,
+      "message": "Could we move change to halvor/board.h and #undef it?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa5e6e1_14f79d8f",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-01T06:06:49Z",
+      "side": 1,
+      "message": "Could we move change to halvor/board.h and #undef it?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc785f5_3457b086",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-01T06:06:49Z",
+      "side": 1,
+      "message": "Halvor",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 48
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faacf553_9f746359",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-01T06:06:49Z",
+      "side": 1,
+      "message": "GPIO_INT(6AXIS_INT_L,\t\tPIN(5, 6), GPIO_INT_FALLING,\tbmi160_interrupt)\nand move to Sensor Interrupts group",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
