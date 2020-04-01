@@ -270,6 +270,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #ifdef TEST_BUTTON
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_VOLUME_BUTTONS
+#define CONFIG_HOSTCMD_BUTTON
 #endif
 
 #ifdef TEST_BATTERY_GET_PARAMS_SMART
