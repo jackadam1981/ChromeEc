@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf76197c_2fba77e7",
+        "filename": "test/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-04-01T15:43:15Z",
+      "side": 1,
+      "message": "No need of variable",
+      "range": {
+        "startLine": 166,
+        "startChar": 1,
+        "endLine": 166,
+        "endChar": 11
+      },
+      "revId": "d22b437e786efad5ab01104ea1d7c61262a744e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5755156b_48e8d22f",
+        "filename": "test/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-04-01T15:43:15Z",
+      "side": 1,
+      "message": "No need of variable",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 11
+      },
+      "revId": "d22b437e786efad5ab01104ea1d7c61262a744e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ce4131_089ec6ea",
+        "filename": "test/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-04-01T15:43:15Z",
+      "side": 1,
+      "message": "No need of variable",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 11
+      },
+      "revId": "d22b437e786efad5ab01104ea1d7c61262a744e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3332672_a78e5035",
+        "filename": "test/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-04-01T15:43:15Z",
+      "side": 1,
+      "message": "Can we make a common function, instead of separate functions?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "d22b437e786efad5ab01104ea1d7c61262a744e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
