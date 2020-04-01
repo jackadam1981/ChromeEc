@@ -12,6 +12,7 @@
 #include "baseboard.h"
 
 /* Optional features */
+#define CONFIG_ADC_VOLTAGE_COMPARATOR
 #define CONFIG_DAC
 
 #ifndef __ASSEMBLER__
@@ -29,12 +30,20 @@ enum pwm_channel {
 enum adc_channel {
 	ADC_VBUSSA,
 	ADC_VBUSSB,
+	ADC_EVB_CH_5,
 	ADC_EVB_CH_13,
 	ADC_EVB_CH_14,
 	ADC_EVB_CH_15,
 	ADC_EVB_CH_16,
 	/* Number of ADC channels */
 	ADC_CH_COUNT
+};
+
+enum board_vcmp {
+	VCMP_SNS_PP3300_LOW,
+	VCMP_SNS_PP3300_HIGH,
+	/* Number of voltage comparator channels */
+	VCMP_COUNT
 };
 
 #endif /* !__ASSEMBLER__ */

@@ -7,6 +7,7 @@
 #include "adc_chip.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "console.h"
 
 /*
  * PWM channels. Must be in the exactly same order as in enum pwm_channel.
@@ -47,6 +48,13 @@ const struct adc_t adc_channels[] = {
 		.shift = 0,
 		.channel = CHIP_ADC_CH1, /* GPI1, ADC1 */
 	},
+	[ADC_EVB_CH_5] = {
+		.name = "ADC_EVB_CH_5",
+		.factor_mul = ADC_MAX_MVOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+		.channel = CHIP_ADC_CH5, /* GPI5, ADC5 */
+	},
 	[ADC_EVB_CH_13] = {
 		.name = "ADC_EVB_CH_13",
 		.factor_mul = ADC_MAX_MVOLT,
@@ -77,3 +85,45 @@ const struct adc_t adc_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+void board_vcmp_pp3300_h(void)
+{
+	ccprints("cb detect High");
+	/* Disable this interrupt while it's asserted. */
+	vcmp_enable(VCMP_SNS_PP3300_HIGH, 0);
+	/* Enable the voltage low interrupt. */
+	vcmp_enable(VCMP_SNS_PP3300_LOW, 1);
+}
+
+void board_vcmp_pp3300_l(void)
+{
+	ccprints("cb detect Low");
+	/* Disable this interrupt while it's asserted. */
+	vcmp_enable(VCMP_SNS_PP3300_LOW, 0);
+	/* Enable the voltage low interrupt. */
+	vcmp_enable(VCMP_SNS_PP3300_HIGH, 1);
+}
+
+/*
+ * Voltage comparator channels. Must be in the exactly same order as
+ * enum board_vcmp.
+ * BUILD ASSERT: 1.VCMP_COUNT is less equal than chip supported maximum
+ *                 CHIP_VCMP_COUNT.
+ *               2.vcmp_list[] index equal VCMP_COUNT.
+ */
+const struct vcmp_t vcmp_list[] = {
+	[VCMP_SNS_PP3300_LOW] = {.name = "VCMP_SNS_PP3300_L",
+				 .threshold = 200 /* mv */,
+				 .flag = LESS_EQUAL_THRESHOLD,
+				 .vcmp_thresh_cb = board_vcmp_pp3300_l,
+				 .scan_period = VCMP_SCAN_PERIOD_1MS,
+				 .adc_ch = CHIP_ADC_CH5},
+	[VCMP_SNS_PP3300_HIGH] = {.name = "VCMP_SNS_PP3300_H",
+				  .threshold = 2800 /* mv */,
+				  .flag = GREATER_THRESHOLD,
+				  .vcmp_thresh_cb = board_vcmp_pp3300_h,
+				  .scan_period = VCMP_SCAN_PERIOD_1MS,
+				  .adc_ch = CHIP_ADC_CH5},
+};
+BUILD_ASSERT(ARRAY_SIZE(vcmp_list) <= CHIP_VCMP_COUNT);
+BUILD_ASSERT(ARRAY_SIZE(vcmp_list) == VCMP_COUNT);
