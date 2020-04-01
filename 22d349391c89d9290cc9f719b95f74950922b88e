@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91d8ffd8_b54421f2",
+        "filename": "third_party/bmi260/LICENSE",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-04-01T19:32:28Z",
+      "side": 1,
+      "message": "delete the 2nd asterisk (only need one asterisk)",
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f00d841_2498331e",
+        "filename": "third_party/bmi260/LICENSE",
+        "patchSetId": 16
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-04-01T19:32:28Z",
+      "side": 1,
+      "message": "Delete these lines, they\u0027re not a license.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c3ff307_b0449410",
+        "filename": "third_party/bmi260/accelgyro_bmi260_config_tbin.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-04-01T19:32:28Z",
+      "side": 1,
+      "message": "delete the 2nd asterisk (just one asterisk needed)",
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d88563_83fb792b",
+        "filename": "third_party/bmi260/accelgyro_bmi260_config_tbin.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-04-01T19:32:28Z",
+      "side": 1,
+      "message": "Don\u0027t duplicate the full license in header comments.  Reference the license file like we usually do:\n\n/*\n * Copyright (c) 2020 Bosch Sensortec GmbH. All rights reserved.\n *\n * Use of this source code is governed by a BSD-style license that can be\n * found in the LICENSE file.\n */\n\n(Note, I\u0027m not sure if you should keep the @file, @date, @version lines.  If you do they belong here, not in LICENSE.)",
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
