@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a1578233_662ad6e1",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-02T00:05:22Z",
+      "side": 1,
+      "message": "Aaron suggested I use the function below but I agree you. Actually I just noticed that in my cherry picking from my home computer to my work, I totally left out the functions bellow.",
+      "parentUuid": "43428cd1_8fb3bfbc",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 68
+      },
+      "revId": "f1b0a54ea9548ebebf1666aeaceafb61eb86fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd0ca00f_8c6eb61e",
         "filename": "common/usb_pd_dual_role.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3120ae24_657dd5f9",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-02T00:05:22Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "dd0ca00f_8c6eb61e",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 1
+      },
+      "revId": "f1b0a54ea9548ebebf1666aeaceafb61eb86fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59d30925_4babee33",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "f1b0a54ea9548ebebf1666aeaceafb61eb86fe90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb4b8394_dc1b30b1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2033,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-02T00:05:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "59d30925_4babee33",
+      "range": {
+        "startLine": 2033,
+        "startChar": 21,
+        "endLine": 2033,
+        "endChar": 39
+      },
+      "revId": "f1b0a54ea9548ebebf1666aeaceafb61eb86fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -115,6 +187,30 @@
       "revId": "f1b0a54ea9548ebebf1666aeaceafb61eb86fe90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01706b12_530d2f28",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2742,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-02T00:05:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cef5386_42026acb",
+      "range": {
+        "startLine": 2739,
+        "startChar": 2,
+        "endLine": 2742,
+        "endChar": 41
+      },
+      "revId": "f1b0a54ea9548ebebf1666aeaceafb61eb86fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
