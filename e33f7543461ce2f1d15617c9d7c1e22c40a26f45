@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99cd27b1_7a25af9e",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-02T18:50:08Z",
+      "side": 1,
+      "message": "\u003e \"busses\" is a possible misspelling of \"buses\".\n\nGoing to fix in followup commit.",
+      "parentUuid": "6def8d31_da6600f9",
+      "range": {
+        "startLine": 4,
+        "startChar": 17,
+        "endLine": 4,
+        "endChar": 23
+      },
+      "revId": "e33f7543461ce2f1d15617c9d7c1e22c40a26f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
