@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b4364ef1_9301b39a",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-02T21:14:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a508378f_12816140",
+      "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7da901f_0a5832f9",
         "filename": "common/u2f.c",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "c25177b7_9c233a71",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-02T21:14:02Z",
+      "side": 1,
+      "message": "No longer applicable.",
+      "parentUuid": "280ae880_5ef796ff",
+      "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbc2edb6_7d2681fb",
         "filename": "include/tpm_vendor_cmds.h",
         "patchSetId": 1
@@ -68,6 +104,24 @@
       "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4a4a27f_60833b97",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-02T21:14:02Z",
+      "side": 1,
+      "message": "No longer applicable",
+      "parentUuid": "dbc2edb6_7d2681fb",
+      "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -115,6 +169,30 @@
       "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cafd98a3_1c36e516",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-02T21:14:02Z",
+      "side": 1,
+      "message": "No longer applicable.",
+      "parentUuid": "537c8f67_134d532e",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 83
+      },
+      "revId": "5475b6d57d67aa4c64c3d5034e38705e740acfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
