@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "56d9325d_7dab14f7",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-02T04:59:52Z",
+      "side": 1,
+      "message": "Checking external behavior is good. And some decoupling of spec states from internal implementation details makes sense. But I think writing the states in comments instead of as a TEST_ASSERT is a missed opportunity to catch some more bugs.",
+      "parentUuid": "3eab173b_4397091c",
+      "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0256f3c6_b54db5f1",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 2
