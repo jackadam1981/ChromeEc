@@ -22,6 +22,30 @@
       "revId": "0d563f2878ec8c8ed0b700d4141b335a73507d55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43835d46_410006fb",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1291180
+      },
+      "writtenOn": "2020-04-02T01:58:12Z",
+      "side": 1,
+      "message": "OK,I\u0027ll change it in the next patch.",
+      "parentUuid": "32502395_a0ca71e7",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 32
+      },
+      "revId": "0d563f2878ec8c8ed0b700d4141b335a73507d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
