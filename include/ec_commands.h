@@ -5801,6 +5801,75 @@ struct ec_response_locate_chip {
 } __ec_align2;
 
 /*****************************************************************************/
+/*
+ *  "Get the Keyboard Top Row Layout". An EC implementing this command is
+ *  expected to be capable of sending action codes for the top row keys.
+ *  Additionally, capability to send function codes for the same keys is
+ *  optional and acceptable.
+ *
+ *  Note: If the top row can generate both function and action codes by
+ *  using a dedicated Fn key, it does not matter whether the key sends
+ *  "function" or "action" codes by default. In both cases, the response
+ *  will look the same.
+ */
+#define EC_CMD_GET_KEYBD_TOP_ROW_LAYOUT 0x0130
+
+/* Possible values for the top row keys */
+enum action_key {
+	TK_ABSENT = 0,
+	TK_BACK,
+	TK_FORWARD,
+	TK_REFRESH,
+	TK_FULLSCREEN,
+	TK_OVERVIEW,
+	TK_BRIGHTNESS_DOWN,
+	TK_BRIGHTNESS_UP,
+	TK_VOL_MUTE,
+	TK_VOL_DOWN,
+	TK_VOL_UP,
+	TK_SNIP,
+	TK_PRIVACY_SCRN_TOGGLE,
+	TK_KBD_BKLIGHT_DOWN,
+	TK_KBD_BKLIGHT_UP,
+	TK_PLAY_PAUSE,
+	TK_NEXT_TRACK,
+	TK_PREV_TRACK,
+};
+
+/* Max & Min number of top row keys, excluding Esc and Screenlock keys */
+#define MAX_TOP_ROW_KEYS 15
+#define MIN_TOP_ROW_KEYS 10
+
+struct top_row_layout {
+
+	/*
+	 *  Number of top row keys, excluding Esc and Screenlock.
+	 *  If this is 0, all Vivaldi keyboard code is disabled.
+	 *  (i.e. does not expose any tables to the kernel).
+	 */
+	uint8_t num_top_row_keys;
+
+	/*
+	 *  The action keys in the top row, in order from left to right.
+	 *  The values are filled from enum action_key. Esc and Screenlock
+	 *  keys are not considered part of top row keys.
+	 */
+	uint8_t action_keys[MAX_TOP_ROW_KEYS];
+
+	/*
+	 * Is the keyboard capable of sending function keys *in addition to*
+	 * action keys. This is possible for e.g. if the keyboard has a
+	 * dedicated Fn key.
+	 */
+	uint8_t can_send_function_keys;
+
+} __ec_align1;
+
+struct ec_response_top_row_layout {
+	struct top_row_layout top_row;
+} __ec_align1;
+
+/*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
 /*****************************************************************************/
