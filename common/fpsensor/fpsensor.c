@@ -334,18 +334,28 @@ static enum ec_status fp_command_passthru(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_FP_PASSTHRU, fp_command_passthru, EC_VER_MASK(0));
 
-static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
-{
-	struct ec_response_fp_info *r = args->response;
 
-	if (fp_sensor_get_info(r) != EC_SUCCESS)
-		return EC_RES_UNAVAILABLE;
+static enum ec_error_list fp_system_info(struct ec_response_fp_info *r)
+{
+	enum ec_error_list rv = fp_sensor_get_info(r);
+	if (rv != EC_SUCCESS)
+		return rv;
 
 	r->template_size = FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;
 	r->template_max = FP_MAX_FINGER_COUNT;
 	r->template_valid = templ_valid;
 	r->template_dirty = templ_dirty;
 	r->template_version = FP_TEMPLATE_FORMAT_VERSION;
+
+	return EC_SUCCESS;
+}
+
+static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
+{
+	struct ec_response_fp_info *r = args->response;
+
+	if (fp_system_info(r) != EC_SUCCESS)
+		return EC_RES_UNAVAILABLE;
 
 	/* V1 is identical to V0 with more information appended */
 	args->response_size = args->version ? sizeof(*r) :
@@ -633,6 +643,42 @@ DECLARE_HOST_COMMAND(EC_CMD_FP_TEMPLATE, fp_command_template, EC_VER_MASK(0));
 
 #ifdef CONFIG_CMD_FPSENSOR_DEBUG
 /* --- Debug console commands --- */
+
+int command_fpinfo(int argc, char **argv)
+{
+	struct ec_response_fp_info r;
+	enum ec_error_list rv;
+	uint16_t dead;
+
+	rv = fp_system_info(&r);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	CPRINTF("Fingerprint sensor: "
+		"vendor %x product %x model %x version %x\n",
+		r.vendor_id, r.product_id, r.model_id, r.version);
+	CPRINTF("Image: size %dx%d %d bpp\n", r.width, r.height, r.bpp);
+	CPRINTF("Error flags: %s%s%s%s\n",
+	       r.errors & FP_ERROR_NO_IRQ ? "NO_IRQ " : "",
+	       r.errors & FP_ERROR_SPI_COMM ? "SPI_COMM " : "",
+	       r.errors & FP_ERROR_BAD_HWID ? "BAD_HWID " : "",
+	       r.errors & FP_ERROR_INIT_FAIL ? "INIT_FAIL " : "");
+	dead = FP_ERROR_DEAD_PIXELS(r.errors);
+	if (dead == FP_ERROR_DEAD_PIXELS_UNKNOWN)
+		CPRINTF("Dead pixels: UNKNOWN\n");
+	else
+		CPRINTF("Dead pixels: %u\n", dead);
+
+	CPRINTF("Templates: version %d size %d count %d/%d"
+		" dirty bitmap %x\n",
+		r.template_version, r.template_size, r.template_valid,
+		r.template_max, r.template_dirty);
+
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(fpinfo, command_fpinfo, NULL,
+			"Fetch fingerprint sensor/system info");
 
 /*
  * Send the current Fingerprint buffer to the host
