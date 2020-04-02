@@ -52,6 +52,47 @@
       "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eab173b_4397091c",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-02T04:40:08Z",
+      "side": 1,
+      "message": "I see the temptation to verify spec states, but I tend to agree with Jett that it\u0027s the external factors which should ultimately be tested.  I\u0027d like for us to follow the same philosophy when we do more PE testing: testing the messages in and out more so than the states themselves.  Some of the reasoning is that we don\u0027t always follow the spec states (ex. auto toggle and low power mode are top of mind), and some is that it\u0027s ultimately the external behavior that matters in practice.\n\nI also miss our desk clump conversations about things like this.",
+      "parentUuid": "db20e3de_11e4d2d9",
+      "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0256f3c6_b54db5f1",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-02T04:40:08Z",
+      "side": 1,
+      "message": "nit: tracking TODOs by bug makes them more documented for the future, and easier for others to pick up if needed",
+      "range": {
+        "startLine": 585,
+        "startChar": 8,
+        "endLine": 585,
+        "endChar": 16
+      },
+      "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
