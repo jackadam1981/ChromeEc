@@ -34,6 +34,24 @@
       "revId": "3b0101bce6669af2f7cd4a2e58883e632af301aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e57164_a2f88f47",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-04-02T02:13:39Z",
+      "side": 1,
+      "message": "I moved this part of the change to this CL:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2133368\n\nThe structure shouldn\u0027t have much extra impact since it\u0027s a loop iterating on a constant array.",
+      "parentUuid": "628f77ab_b322140f",
+      "revId": "3b0101bce6669af2f7cd4a2e58883e632af301aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
