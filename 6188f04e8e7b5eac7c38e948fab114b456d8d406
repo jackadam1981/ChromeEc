@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "14473ef8_d1479373",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-02T19:32:48Z",
+      "side": 1,
+      "message": "I\u0027m uncertain why \"pe\" has been the historical name of choice.  It definitely conflicts with the v2 PE layer naming.  \"pd\" would be a conflict with old stack... how do you feel about \"ami\" for \"alternate mode info\"? And a similar re-naming of pd_get_am_policy to pd_get_am_info?",
+      "parentUuid": "a3ea89f8_8d83fec4",
+      "range": {
+        "startLine": 290,
+        "startChar": 27,
+        "endLine": 290,
+        "endChar": 29
+      },
+      "revId": "6188f04e8e7b5eac7c38e948fab114b456d8d406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0aa4064d_25655629",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
