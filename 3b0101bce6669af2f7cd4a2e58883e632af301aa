@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "628f77ab_b322140f",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-04-02T02:10:27Z",
+      "side": 1,
+      "message": "This is a good change, I\u0027d split it even further with a small macro.\n\n#define PRINT_GPIO_FLAG(mask, str) ccprintf(\"%s\", flags \u0026 (mask) ? (str \" \") : \"\")\nPRINT_GPIO_FLAG(GPIO_INPUT, \"I\")\n...\n#undef PRINT_GPIO_FLAG\n\n(or, even better:\n#define PRINT_GPIO_FLAG(mask, str) do { \\\n if (flags \u0026 (mask)) \\ \n   ccputs(str \" \"); \\\n} while (0)\n)\n\n(just please check that resulting binary size is still not too much larger)",
+      "revId": "3b0101bce6669af2f7cd4a2e58883e632af301aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
