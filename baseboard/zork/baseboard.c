@@ -55,13 +55,9 @@
 
 #define SAFE_RESET_VBUS_MV 5000
 
-const enum gpio_signal hibernate_wake_pins[] = {
-	GPIO_LID_OPEN,
-	GPIO_AC_PRESENT,
-	GPIO_POWER_BUTTON_L,
-	GPIO_EC_RST_ODL,
-};
-const int hibernate_wake_pins_used =  ARRAY_SIZE(hibernate_wake_pins);
+/* Use ULP Power Shutdown instead of NPCX PSL hibernate wake pins. */
+const enum gpio_signal hibernate_wake_pins[] = {};
+const int hibernate_wake_pins_used;
 
 const struct adc_t adc_channels[] = {
 	[ADC_TEMP_SENSOR_CHARGER] = {

@@ -19,15 +19,12 @@ GPIO_INT(SLP_S5_L,		PIN(E, 0), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(S0_PWROK_OD,		PIN(5, 6), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(EC_PWROK_OD,		PIN(3, 7), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(EC_PWR_BTN_ODL,	PIN(0, 1), GPIO_INT_BOTH,			power_button_interrupt)
-GPIO_INT(LID_OPEN,		PIN(D, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	lid_interrupt)
-GPIO_INT(ACOK_OD,		PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	extpower_interrupt)
+GPIO_INT(LID_OPEN,		PIN(D, 2), GPIO_INT_BOTH,			lid_interrupt)
+GPIO_INT(ACOK_OD,		PIN(0, 0), GPIO_INT_BOTH,			extpower_interrupt)
 GPIO_INT(EC_WP_L,		PIN(5, 0), GPIO_INT_BOTH,			switch_interrupt)
 GPIO_INT(VOLDN_BTN_ODL,		PIN(A, 6), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interrupt)
 GPIO_INT(VOLUP_BTN_ODL,		PIN(9, 5), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interrupt)
 GPIO_INT(6AXIS_INT_L,		PIN(A, 0), GPIO_INT_FALLING | GPIO_PULL_UP,	bmi160_interrupt)
-
-/* GPIO_INT_BOTH is required for PSL wake from hibernate, but we don't need an interrupt handler. */
-GPIO(EC_RST_ODL,		PIN(0, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH)
 
 GPIO(3AXIS_INT_L,		PIN(9, 6), GPIO_INPUT | GPIO_PULL_UP)		/* 3 Axis Accel */
 GPIO(CCD_MODE_ODL,		PIN(C, 6), GPIO_INPUT)				/* Case Closed Debug Mode */
@@ -50,6 +47,7 @@ GPIO(USB_C0_HPD,		PIN(F, 5), GPIO_OUT_LOW)			/* C0 DP Hotplug Detect */
 GPIO(USB_C0_IN_HPD,		PIN(7, 3), GPIO_OUT_LOW)			/* C0 IN Hotplug Detect */
 GPIO(DP1_HPD,			PIN(F, 4), GPIO_OUT_LOW)			/* C1 DP Hotplug Detect */
 GPIO(DP2_HPD,			PIN(C, 1), GPIO_OUT_LOW)			/* C1 DP Hotplug Detect */
+GPIO(SYS_SHDN,			PIN(B, 1), GPIO_OUT_LOW)			/* ULP Power Shutdown */
 
 GPIO(LED_FULL_L,		PIN(6, 0), GPIO_OUT_HIGH)
 GPIO(LED_CHRG_L,		PIN(C, 0), GPIO_OUT_HIGH)
@@ -128,10 +126,6 @@ ALTERNATE(PIN_MASK(2, 0x03), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH)		/* KSO_00-
 GPIO(EC_KSO_02_INV, PIN(1, 7), GPIO_OUT_LOW)					/* KSO_02 inverted */
 ALTERNATE(PIN_MASK(1, 0x7F), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH)		/* KSO_03-09 */
 ALTERNATE(PIN_MASK(0, 0xE0), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH)		/* KSO_10-12 */
-
-/* Power Switch Logic (PSL) inputs */
-ALTERNATE(PIN_MASK(0, BIT(0) | BIT(1) | BIT(2)), 0, MODULE_PMU, 0)		/* AC_PRESENT, POWER_BUTTON_L, EC_RST_ODL */
-ALTERNATE(PIN_MASK(D, BIT(2)), 0, MODULE_PMU, 0)				/* LID_OPEN */
 
 ALTERNATE(PIN_MASK(A, 0xA0), 1,  MODULE_WOV, 0) 				/* I2S_SYNC/I2S_SCLK  GPIOA5/A7 */
 ALTERNATE(PIN_MASK(B, 0x01), 1,  MODULE_WOV, 0) 				/* I2S_SDAT           GPIOB0    */

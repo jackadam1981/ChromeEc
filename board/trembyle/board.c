@@ -310,3 +310,9 @@ void setup_fw_config(void)
 	setup_mux();
 }
 DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
+
+void board_hibernate_late(void)
+{
+	/* Do ULP Power Shutdown, which will power off EC. */
+	gpio_set_level(GPIO_SYS_SHDN, 1);
+}
