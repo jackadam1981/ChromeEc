@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "412523e3_18fffa65",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-02T16:23:08Z",
+      "side": 1,
+      "message": "I was thinking somewhere along these lines that we had a different enum that is public that let\u0027s the state machine express what SPEC state it is in for testing.\n\nThen it is more of a public interface we are testing that is well defined and decoupled from the impl. It might look rather redundant at this point though.\n\nLet\u0027s land this and I can upload a refactor CL that could introduce this concept to see if it helps or hurts things\n\n---\n\nI miss our desk conversations too",
+      "parentUuid": "56d9325d_7dab14f7",
+      "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0256f3c6_b54db5f1",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 2
@@ -111,6 +129,30 @@
       "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34805acd_ccd1fa6a",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-02T16:23:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0256f3c6_b54db5f1",
+      "range": {
+        "startLine": 585,
+        "startChar": 8,
+        "endLine": 585,
+        "endChar": 16
+      },
+      "revId": "8f9a4f8720dc64e5df9423c9d2d3543770f16595",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
