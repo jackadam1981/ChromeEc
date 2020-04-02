@@ -45,6 +45,30 @@
       "revId": "e2731d662d1c4e0658a28977439223fe4019488e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "852845ec_0ff8651d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2839,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-02T04:22:53Z",
+      "side": 1,
+      "message": "It definitely exists if pd_update_dual_role_config() calls check_drp_connection() on power transitions.  For the condition where something is plugged in, I\u0027m not sure where it would exit now... Ed, do we still need the WAKE_FROM_LPM check?",
+      "parentUuid": "b8ff370b_f060c586",
+      "range": {
+        "startLine": 2839,
+        "startChar": 12,
+        "endLine": 2839,
+        "endChar": 33
+      },
+      "revId": "e2731d662d1c4e0658a28977439223fe4019488e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
