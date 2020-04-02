@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27a66108_71920f3e",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-02T18:57:12Z",
+      "side": 1,
+      "message": "Is this still necessary? I don\u0027t remember doing this.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 7
+      },
+      "revId": "263e8f55c0d3324f92c477376d5d6431359bf3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a87785e5_7f00af49",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-02T18:57:12Z",
+      "side": 1,
+      "message": "Is this still necessary? Sounds like it was merged upstream in v3.19, which was a while ago...",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "263e8f55c0d3324f92c477376d5d6431359bf3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
