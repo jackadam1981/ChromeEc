@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "600d2cfd_e5073365",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T18:02:36Z",
+      "side": 1,
+      "message": "Power_x86:",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "f8049ef3238117b165726e9809b6271e304f873a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98930620_e6ecc9c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T18:02:36Z",
+      "side": 1,
+      "message": "From MAX6818 Data sheet, Range of \u0027Debounce Duaration\u0027 is\nMinimum - 20 ms, Typical - 40 ms, Maximum - 80 ms.\nHence,",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "f8049ef3238117b165726e9809b6271e304f873a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d8fd5f_bb32a0c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T18:02:36Z",
+      "side": 1,
+      "message": "pls add crosbug info",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "f8049ef3238117b165726e9809b6271e304f873a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cdbafc1_950ad9fb",
+        "filename": "baseboard/intelrvp/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T18:02:36Z",
+      "side": 1,
+      "message": "From MAX6818 Data sheet, Range of \u0027Debounce Duaration\u0027 is",
+      "range": {
+        "startLine": 188,
+        "startChar": 3,
+        "endLine": 188,
+        "endChar": 57
+      },
+      "revId": "f8049ef3238117b165726e9809b6271e304f873a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
