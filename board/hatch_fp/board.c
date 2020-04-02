@@ -4,6 +4,7 @@
  */
 /* Meowth Fingerprint MCU configuration */
 
+#include "board_config.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -13,6 +14,29 @@
 #include "system.h"
 #include "task.h"
 #include "util.h"
+#include "queue_policies.h"
+#include "usart.h"
+#include "usart-stm32f3.h"
+#include "usart_tx_dma.h"
+#include "usart_rx_dma.h"
+
+
+static struct usart_config const loopback_usart;
+
+static struct queue const loopback_queue =
+	QUEUE_DIRECT(64, uint8_t,
+		     loopback_usart.producer,
+		     loopback_usart.consumer);
+
+static struct usart_config const loopback_usart =
+	USART_CONFIG(usart1_hw,
+		     usart_rx_interrupt,
+		     usart_tx_interrupt,
+		     115200,
+		     0,
+		     loopback_queue,
+		     loopback_queue);
+
 
 /**
  * Disable restricted commands when the system is locked.
@@ -66,8 +90,9 @@ const struct spi_device_t spi_devices[] = {
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
-static void spi_configure(void)
+static void configure_fp_spi(void)
 {
+	cprints(CC_SYSTEM,"CONFIG FP from board.c");
 	/* Configure SPI GPIOs */
 	gpio_config_module(MODULE_SPI_MASTER, 1);
 	/*
@@ -84,11 +109,20 @@ static void spi_configure(void)
 /* Initialize board. */
 static void board_init(void)
 {
-	spi_configure();
+	if (0)
+	{
+		configure_fp_spi();
+		//to be moved in fp_sensor_task
+
+	}
+
+	queue_init(&loopback_queue);
+	usart_init(&loopback_usart);
 
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
 	gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
+
 	/* enable the SPI slave interface if the PCH is up */
 	hook_call_deferred(&ap_deferred_data, 0);
 }

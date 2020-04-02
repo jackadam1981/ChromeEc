@@ -303,7 +303,7 @@ void host_packet_receive(struct host_packet *pkt)
 
 	if (pkt->request_size < sizeof(*r) + r->data_len) {
 		/*
-		 * Packet too small for expected params.  Note that it's ok if
+		 * Packet too small for expected params.  Note that it's ok
 		 * the received packet data is too big; some interfaces may pad
 		 * the data at the end (SPI) or may not know how big the
 		 * received data is (LPC).

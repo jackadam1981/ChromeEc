@@ -18,7 +18,7 @@ static void usart_rx_init(struct usart_config const *config)
 
 	STM32_USART_CR1(base) |= STM32_USART_CR1_RXNEIE;
 	STM32_USART_CR1(base) |= STM32_USART_CR1_RE;
-	STM32_USART_CR3(base) |= STM32_USART_CR3_OVRDIS;
+	// STM32_USART_CR3(base) |= STM32_USART_CR3_OVRDIS;
 }
 
 static void usart_rx_interrupt_handler(struct usart_config const *config)

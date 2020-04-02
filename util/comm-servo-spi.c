@@ -143,6 +143,8 @@ static int send_request(int cmd, int version,
 
 	if (ftdi_write_data(&ftdi, txbuf, total_len) != total_len)
 		goto free_request;
+	
+	printf("ftdi_write txbuf\n");
 
 	if (raw_read(txbuf, block_size) != 0)
 		goto free_request;
@@ -165,6 +167,7 @@ static int send_request(int cmd, int version,
 
 free_request:
 	free(txbuf);
+	printf("ERROR FREE: Txbuf\n");
 	return ret;
 }
 

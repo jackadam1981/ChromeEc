@@ -276,7 +276,12 @@ int spi_enable(int port, int enable)
 	if (enable == spi_enabled[port])
 		return EC_SUCCESS;
 	if (enable)
+	{
+		STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
+		/* Enable clocks to SPI2 module (master) */
+		STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
 		return spi_master_initialize(port);
+	}
 	else
 		return spi_master_shutdown(port);
 }
