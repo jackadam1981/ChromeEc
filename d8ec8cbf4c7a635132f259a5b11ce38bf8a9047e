@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff5cd813_9eef5369",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2026,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-02T00:45:30Z",
+      "side": 1,
+      "message": "For another CL, but I\u0027m not sure why we only clear this flag here. Is there a loop doing init for all the port state based on sysjump status? i.e. we snapshot the flag and run the initial state after sucking in the serialized state?",
+      "revId": "d8ec8cbf4c7a635132f259a5b11ce38bf8a9047e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
