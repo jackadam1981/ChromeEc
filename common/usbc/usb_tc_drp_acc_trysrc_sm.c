@@ -95,8 +95,8 @@
 	TC_FLAGS_LPM_REQUESTED | \
 	TC_FLAGS_LPM_ENGAGED))
 
-/* 100 ms is enough time for any TCPC transaction to complete. */
-#define PD_LPM_DEBOUNCE_US (100 * MSEC)
+/* 10 ms is enough time for any TCPC transaction to complete. */
+#define PD_LPM_DEBOUNCE_US (10 * MSEC)
 
 /*
  * The TypeC state machine uses this bit to disable/enable PD
@@ -2827,19 +2827,59 @@ static void tc_low_power_mode_entry(const int port)
 
 static void tc_low_power_mode_run(const int port)
 {
-#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	enum pd_drp_next_states next_state;
+	enum tcpc_cc_voltage_status cc1, cc2;
+
 	/*
 	 * If we were tagged to wake up immediately instead of
-	 * going into LOW_POWER or we should have DRP enabled and
-	 * it didn't happen, then go back to TC_DRP_AUTO_TOGGLE.
+	 * going into LOW_POWER
 	 */
-	if ((TC_CHK_FLAG(port, TC_FLAGS_WAKE_FROM_LPM)) ||
-	    (!TC_CHK_FLAG(port, TC_FLAGS_AUTO_TOGGLE_REQUESTED) &&
-	     drp_state[port] == PD_DRP_TOGGLE_ON)) {
-		set_state_tc(port, TC_DRP_AUTO_TOGGLE);
+	if ((TC_CHK_FLAG(port, TC_FLAGS_WAKE_FROM_LPM))) {
+		/* Check for connection */
+		tcpm_get_cc(port, &cc1, &cc2);
+
+		/* Determine the next state to attempt */
+		tc[port].drp_sink_time = get_time().val;
+		next_state = drp_auto_toggle_next_state(&tc[port].drp_sink_time,
+			tc[port].power_role, drp_state[port], cc1, cc2);
+
+		if (next_state == DRP_TC_DEFAULT)
+			next_state = (PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE)
+				? DRP_TC_UNATTACHED_SRC
+				: DRP_TC_UNATTACHED_SNK;
+
+		switch (next_state) {
+		case DRP_TC_UNATTACHED_SNK:
+			/*
+			 * New SNK connection.
+			 *     Set RC.CC1 & RC.CC2 per decision
+			 *     Set RC.DRP=0
+			 *     Set TCPC_CONTROl.PlugOrientation
+			 */
+			tcpm_set_connection(port, TYPEC_CC_RD, 1);
+			set_state_tc(port, TC_UNATTACHED_SNK);
+			break;
+		case DRP_TC_UNATTACHED_SRC:
+			/*
+			 * New SRC connection.
+			 *     Set RC.CC1 & RC.CC2 per decision
+			 *     Set RC.DRP=0
+			 *     Set TCPC_CONTROl.PlugOrientation
+			 */
+			tcpm_set_connection(port, TYPEC_CC_RP, 1);
+			set_state_tc(port, TC_UNATTACHED_SRC);
+			break;
+		case DRP_TC_DRP_AUTO_TOGGLE:
+		default:
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+			set_state_tc(port, TC_DRP_AUTO_TOGGLE);
+#endif
+			break;
+		}
+
 		return;
 	}
-#endif
+
 	tc_pause_event_loop(port);
 }
 
