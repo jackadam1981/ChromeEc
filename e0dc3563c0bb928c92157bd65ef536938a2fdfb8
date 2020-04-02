@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "850bd5f9_bd1a0ed1",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-02T16:39:45Z",
+      "side": 1,
+      "message": "do you also plan on adding a mock control that let\u0027s the test write control the values in these registers too?",
+      "range": {
+        "startLine": 18,
+        "startChar": 7,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "e0dc3563c0bb928c92157bd65ef536938a2fdfb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb6c7f22_9957a30a",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-02T16:39:45Z",
+      "side": 1,
+      "message": "should bounds check here",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "e0dc3563c0bb928c92157bd65ef536938a2fdfb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "915d2edf_7cad1593",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-02T16:39:45Z",
+      "side": 1,
+      "message": "I think memcpy can handle this will both being pointers (it also handle non-aligned copies)",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "e0dc3563c0bb928c92157bd65ef536938a2fdfb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00897ed9_5de6269e",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-02T16:39:45Z",
+      "side": 1,
+      "message": "add else error? (and above too)",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 26
+      },
+      "revId": "e0dc3563c0bb928c92157bd65ef536938a2fdfb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add91122_e681cf6d",
+        "filename": "test/test_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-02T16:39:45Z",
+      "side": 1,
+      "message": "would love for Policy Engine to be undef\u0027ed too\n\n(and host commands)",
+      "range": {
+        "startLine": 405,
+        "startChar": 8,
+        "endLine": 405,
+        "endChar": 24
+      },
+      "revId": "e0dc3563c0bb928c92157bd65ef536938a2fdfb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79265446_ddba1ceb",
+        "filename": "test/usb_tcpci_low_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-02T16:39:45Z",
+      "side": 1,
+      "message": "we should reset both mocks",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 19
+      },
+      "revId": "e0dc3563c0bb928c92157bd65ef536938a2fdfb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e73e6b3d_3c2d3c72",
+        "filename": "test/usb_tcpci_low_power.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-02T16:39:45Z",
+      "side": 1,
+      "message": "I think moving this to before test makes test tests more isolated",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "e0dc3563c0bb928c92157bd65ef536938a2fdfb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
