@@ -15,7 +15,7 @@ GPIO_INT(VOLUME_DOWN_L,        PIN(0, 3), GPIO_INT_BOTH, button_interrupt)
 GPIO_INT(VOLUME_UP_L,          PIN(0, 4), GPIO_INT_BOTH, button_interrupt)
 GPIO_INT(CHARGE_DONE,          PIN(0, 5), GPIO_INT_BOTH, inductive_charging_interrupt)
 /* Fingerprint */
-GPIO_INT(FPS_INT,              PIN(0, 14), GPIO_INT_RISING, fps_event)
+GPIO_INT(FPS_INT_L,            PIN(0, 14), GPIO_INT_RISING, fps_event)
 
 GPIO(EC_INT_L,             PIN(0, 6), 0)
 GPIO(WP,                   PIN(0, 7), 0)

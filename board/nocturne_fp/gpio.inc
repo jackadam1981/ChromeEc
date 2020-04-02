@@ -5,7 +5,7 @@
  */
 
 /* Interrupts */
-GPIO_INT(FPS_INT,         PIN(A, 0), GPIO_INT_RISING, fps_event)
+GPIO_INT(FPS_INT_L,       PIN(A, 0), GPIO_INT_RISING, fps_event)
 GPIO_INT(SPI1_NSS,        PIN(A, 4), GPIO_INPUT, spi_event)
 
 GPIO_INT(PCH_SLP_S0_L,    PIN(D,13), GPIO_INT_BOTH, slp_event)

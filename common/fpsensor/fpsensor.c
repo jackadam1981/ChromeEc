@@ -223,7 +223,7 @@ void fp_task(void)
 		if (evt & TASK_EVENT_UPDATE_CONFIG) {
 			uint32_t mode = sensor_mode;
 
-			gpio_disable_interrupt(GPIO_FPS_INT);
+			gpio_disable_interrupt(GPIO_FPS_INT_L);
 			if ((mode ^ enroll_session) & FP_MODE_ENROLL_SESSION) {
 				if (mode & FP_MODE_ENROLL_SESSION) {
 					if (fp_enrollment_begin())
@@ -254,7 +254,7 @@ void fp_task(void)
 			else
 				timeout_us = -1;
 			if (mode & FP_MODE_ANY_WAIT_IRQ) {
-				gpio_enable_interrupt(GPIO_FPS_INT);
+				gpio_enable_interrupt(GPIO_FPS_INT_L);
 			} else if (mode & FP_MODE_RESET_SENSOR) {
 				fp_reset_and_clear_context();
 				sensor_mode &= ~FP_MODE_RESET_SENSOR;
@@ -264,7 +264,7 @@ void fp_task(void)
 		} else if (evt & (TASK_EVENT_SENSOR_IRQ | TASK_EVENT_TIMER)) {
 			overall_t0 = get_time();
 			timestamps_invalid = 0;
-			gpio_disable_interrupt(GPIO_FPS_INT);
+			gpio_disable_interrupt(GPIO_FPS_INT_L);
 			if (sensor_mode & FP_MODE_ANY_DETECT_FINGER) {
 				st = fp_sensor_finger_status();
 				if (st == FINGER_PRESENT &&
@@ -287,7 +287,7 @@ void fp_task(void)
 
 			if (sensor_mode & FP_MODE_ANY_WAIT_IRQ) {
 				fp_sensor_configure_detect();
-				gpio_enable_interrupt(GPIO_FPS_INT);
+				gpio_enable_interrupt(GPIO_FPS_INT_L);
 			} else {
 				fp_sensor_low_power();
 			}

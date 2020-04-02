@@ -155,7 +155,7 @@ static int fpc_pulse_hw_reset(void)
 	gpio_set_level(GPIO_FP_RST_ODL, 1);
 	/* the IRQ line should be set high by the sensor */
 	usleep(FP_SENSOR_IRQ_MAX_DELAY_US);
-	if (!gpio_get_level(GPIO_FPS_INT)) {
+	if (!gpio_get_level(GPIO_FPS_INT_L)) {
 		CPRINTS("Sensor IRQ not ready");
 		errors |= FP_ERROR_NO_IRQ;
 		rc = EC_ERROR_HW_INTERNAL;

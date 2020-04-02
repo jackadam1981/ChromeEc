@@ -70,12 +70,12 @@ int __unused fpc_sensor_spi_write_read(uint8_t *write, uint8_t *read,
 
 bool __unused fpc_sensor_spi_check_irq(void)
 {
-	return (gpio_get_level(GPIO_FPS_INT) == 1);
+	return (gpio_get_level(GPIO_FPS_INT_L) == 1);
 }
 
 bool __unused fpc_sensor_spi_read_irq(void)
 {
-	return (gpio_get_level(GPIO_FPS_INT) == 1);
+	return (gpio_get_level(GPIO_FPS_INT_L) == 1);
 }
 
 void __unused fpc_sensor_spi_reset(bool state)
