@@ -180,3 +180,12 @@ int ioexpander_read_intelrvp_version(int *port0, int *port1)
 		I2C_ADDR_PCA9555_BOARD_ID_GPIO,
 		PCA9555_CMD_INPUT_PORT_1, port1);
 }
+
+__override int intel_x86_get_debounce_timer(void)
+{
+	/*
+	 * Debounce time for SYS_RESET_L is 40 ms. Wait 60ms to be safe.
+	 */
+	return 60;
+}
+

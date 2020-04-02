@@ -683,8 +683,18 @@ __override void power_chipset_handle_host_sleep_event(
 
 #endif
 
+__overridable int intel_x86_get_debounce_timer(void)
+{
+	/*
+	 * Debounce time for SYS_RESET_L is 16 ms. Wait twice that period
+	 * to be safe.
+	 */
+	return 32;
+}
+
 void chipset_reset(enum chipset_reset_reason reason)
 {
+	int debounce_delay;
 	/*
 	 * Irrespective of cold_reset value, always toggle SYS_RESET_L to
 	 * perform a chipset reset. RCIN# which was used earlier to trigger
@@ -707,13 +717,11 @@ void chipset_reset(enum chipset_reset_reason reason)
 
 	report_ap_reset(reason);
 
+	debounce_delay = intel_x86_get_debounce_timer();
 	gpio_set_level(GPIO_SYS_RESET_L, 0);
-	/*
-	 * Debounce time for SYS_RESET_L is 16 ms. Wait twice that period
-	 * to be safe.
-	 */
-	udelay(32 * MSEC);
+	udelay(debounce_delay * MSEC);
 	gpio_set_level(GPIO_SYS_RESET_L, 1);
+
 }
 
 enum ec_error_list intel_x86_wait_power_up_ok(void)
