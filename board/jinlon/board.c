@@ -43,6 +43,8 @@
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "ec_commands.h"
+#include "keyboard_8042.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -389,6 +391,62 @@ static void board_update_sensor_config_from_sku(void)
 	motion_sensor_count = ARRAY_SIZE(motion_sensors);
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+}
+
+static struct top_row_layout keybd1 = {
+	.num_top_row_keys = 13,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNIP,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_KBD_BKLIGHT_DOWN,	/* T8 */
+		TK_KBD_BKLIGHT_UP,	/* T9 */
+		TK_PLAY_PAUSE,		/* T10 */
+		TK_VOL_MUTE,		/* T11 */
+		TK_VOL_DOWN,		/* T12 */
+		TK_VOL_UP,		/* T13 */
+	},
+	.can_send_function_keys = false,
+};
+
+static struct top_row_layout keybd2 = {
+	.num_top_row_keys = 13,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNIP,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_PRIVACY_SCRN_TOGGLE,	/* T8 */
+		TK_KBD_BKLIGHT_DOWN,	/* T9 */
+		TK_KBD_BKLIGHT_UP,	/* T10 */
+		TK_VOL_MUTE,		/* T11 */
+		TK_VOL_DOWN,		/* T12 */
+		TK_VOL_UP,		/* T13 */
+	},
+	.can_send_function_keys = false,
+};
+
+__override void board_set_vivaldi_top_row(void)
+{
+	switch (get_board_sku()) {
+	case 1:
+	case 21:
+		vivaldi_top_row = &keybd1;
+		break;
+	case 2:
+	case 22:
+		vivaldi_top_row = &keybd2;
+		break;
+	default:
+		cprints(CC_KEYBOARD, "Error! Unknown VIVLADI keyboard layout!");
+	}
 }
 
 static void board_init(void)
