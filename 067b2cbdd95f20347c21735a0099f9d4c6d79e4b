@@ -68,6 +68,23 @@
       "revId": "067b2cbdd95f20347c21735a0099f9d4c6d79e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5da745b7_221d3152",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-02T04:02:53Z",
+      "side": 1,
+      "message": "Why did this change from USB_PD_MUX_USB_ENABLED to USB_PD_MUX_NONE?",
+      "revId": "067b2cbdd95f20347c21735a0099f9d4c6d79e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
