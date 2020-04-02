@@ -338,7 +338,7 @@ static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_fp_info *r = args->response;
 
-	if (fp_sensor_get_info(r) < 0)
+	if (fp_sensor_get_info(r) != EC_SUCCESS)
 		return EC_RES_UNAVAILABLE;
 
 	r->template_size = FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE;
