@@ -2477,11 +2477,22 @@
 #undef CONFIG_KEYBOARD_SCANCODE_MUTABLE
 
 /*
+<<<<<<< HEAD   (765a88 nightfury : remove ambient thermal sensor)
  * Include the Vivaldi keyboard code. The vivaldi is a newer keyboard that can
  * have up to 15 top row keys (other than Esc and Power/Lock) and also allows
  * OEMs flexibility to use these keys for different purposes (or reordering).
  */
 #undef CONFIG_KEYBOARD_VIVALDI
+=======
+ * Allow the board layer keyboard customization. If define, the board layer
+ * needs to implement:
+ * 1. the function board_keyboard_drive_col() which is used to control
+ *    the refresh key column.
+ * 2. the scancode_set2 and keycap_label array
+ * 3. keyboard_customization.h which is similar to keyboard_config.h
+ */
+#undef CONFIG_KEYBOARD_CUSTOMIZATION
+>>>>>>> CHANGE (07e22e common/vivaldi: Revert Vivaldi changes)
 
 /*
  * Allow board-specific 8042 keyboard callback when a key state is changed.
@@ -4611,11 +4622,6 @@
 /* The Matrix Keyboard Protocol depends on MKBP events. */
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
-#endif
-
-/* Vivaldi keyboard code needs to be able to change the keyboard scancodes */
-#ifdef CONFIG_KEYBOARD_VIVALDI
-#define CONFIG_KEYBOARD_SCANCODE_MUTABLE
 #endif
 
 /******************************************************************************/
