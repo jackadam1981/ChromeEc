@@ -85,6 +85,24 @@
       "revId": "067b2cbdd95f20347c21735a0099f9d4c6d79e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5f44893_b7b47f6b",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-02T15:31:52Z",
+      "side": 1,
+      "message": "It surprised me too actually. This is where we have wiggle room to interpret the spec and what it means for us.\n\nWhen we have a PD-capable port partner that is the source, they respond with PDO_FIXED_COMM_CAP or not. If they are the source (and we are the sink) and they don\u0027t specify that bit, then we don\u0027t engage the MUXs.\n\nIf it is non-PD-capable and we are the SNK, then we shouldn\u0027t engage the mux either since we don\u0027t support OTG USB (since we are going to be the UFP).\n\n\nThe extra test dependencies were making it seem that the port partner expressed PDO_FIXED_COMM_CAP (but the test never even used PD communication).\n\n\nWe should add another test to ensure that the MUXes do engage when the SRC partner does express PDO_FIXED_COMM_CAP",
+      "parentUuid": "5da745b7_221d3152",
+      "revId": "067b2cbdd95f20347c21735a0099f9d4c6d79e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
