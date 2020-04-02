@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d41b5431_82c344b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T15:23:41Z",
+      "side": 1,
+      "message": "digitize the apreset physical button. And the EC SYS_RESET_L is connected to input of the digitizer.",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "709b9b45dc7900325f2b040a3fac0c98abdfd2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05165205_8b463cfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T15:23:41Z",
+      "side": 1,
+      "message": "also BUG\u003db:** please file a crosbug",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "709b9b45dc7900325f2b040a3fac0c98abdfd2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3a9dafb_e3a86d3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T15:23:41Z",
+      "side": 1,
+      "message": "manually tested on TGLRVP, aprset EC console command triggers warm boot",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "709b9b45dc7900325f2b040a3fac0c98abdfd2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4888bfe2_8b4bc569",
+        "filename": "baseboard/intelrvp/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T15:23:41Z",
+      "side": 1,
+      "message": "add the data from MAX6818 table",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 65
+      },
+      "revId": "709b9b45dc7900325f2b040a3fac0c98abdfd2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf57ae8d_f4435a77",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T15:23:41Z",
+      "side": 1,
+      "message": "how about naming it as\nintel_x86_sys_reset_delay",
+      "range": {
+        "startLine": 686,
+        "startChar": 18,
+        "endLine": 686,
+        "endChar": 46
+      },
+      "revId": "709b9b45dc7900325f2b040a3fac0c98abdfd2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f79e7d1f_e2fd8fe0",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T15:23:41Z",
+      "side": 1,
+      "message": "32 * MSEC",
+      "range": {
+        "startLine": 692,
+        "startChar": 10,
+        "endLine": 692,
+        "endChar": 11
+      },
+      "revId": "709b9b45dc7900325f2b040a3fac0c98abdfd2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52eb3c21_98665bfa",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T15:23:41Z",
+      "side": 1,
+      "message": "directly replace the function",
+      "range": {
+        "startLine": 722,
+        "startChar": 8,
+        "endLine": 722,
+        "endChar": 29
+      },
+      "revId": "709b9b45dc7900325f2b040a3fac0c98abdfd2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c5376dc_a1292d5d",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T15:23:41Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "709b9b45dc7900325f2b040a3fac0c98abdfd2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bcff845_86b28ecf",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-02T15:23:41Z",
+      "side": 1,
+      "message": "SYS_RESET_L",
+      "range": {
+        "startLine": 96,
+        "startChar": 10,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "709b9b45dc7900325f2b040a3fac0c98abdfd2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
