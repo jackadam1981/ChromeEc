@@ -59,14 +59,16 @@ typedef struct {
 } U2F_GENERATE_REQ;
 
 typedef struct {
-    U2F_EC_POINT pubKey;                   // Generated public key
-    uint8_t keyHandle[U2F_FIXED_KH_SIZE];  // Key handle
+    U2F_EC_POINT pubKey;                    // Generated public key
+    uint8_t keyHandle[U2F_FIXED_KH_SIZE];   // Key handle
+    uint8_t authSecret[U2F_FIXED_KH_SIZE];  // Authorization secret
 } U2F_GENERATE_RESP;
 
 typedef struct {
-    uint8_t appId[U2F_APPID_SIZE];         // Application id
+    uint8_t appId[U2F_APPID_SIZE];          // Application id
     uint8_t userSecret[U2F_P256_SIZE];
-    uint8_t keyHandle[U2F_FIXED_KH_SIZE];  // Key handle
+    uint8_t keyHandle[U2F_FIXED_KH_SIZE];   // Key handle
+    uint8_t authSecret[U2F_FIXED_KH_SIZE];  // Authorization secret
     uint8_t hash[U2F_P256_SIZE];
     uint8_t flags;
 } U2F_SIGN_REQ;

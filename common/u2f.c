@@ -95,6 +95,10 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 	/* Key handle */
 	uint8_t kh[U2F_FIXED_KH_SIZE];
 
+	/* Authorization secret */
+	uint8_t auth_secret_seed[P256_NBYTES];
+	uint8_t auth_secret[U2F_FIXED_KH_SIZE];
+
 	/* Whether keypair generation succeeded */
 	int generate_keypair_rc;
 
@@ -127,6 +131,15 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 	if (generate_keypair_rc != EC_SUCCESS)
 		return VENDOR_RC_INTERNAL_ERROR;
 
+	/* Generate origin-specific authorization secret */
+	if (!DCRYPTO_ladder_random(&auth_secret_seed))
+		return VENDOR_RC_INTERNAL_ERROR;
+
+	if (u2f_origin_user_keyhandle(req->appId, req->userSecret,
+				      auth_secret_seed, auth_secret)
+		!= EC_SUCCESS)
+		return VENDOR_RC_INTERNAL_ERROR;
+
 	/*
 	 * From this point: the request 'req' content is invalid as it is
 	 * overridden by the response we are building in the same buffer.
@@ -143,6 +156,9 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code,
 
 	/* Copy key handle to response. */
 	memcpy(resp->keyHandle, kh, sizeof(kh));
+
+	/* Copy authorization secret to response. */
+	memcpy(resp->authSecret, auth_secret, sizeof(auth_secret));
 
 	return VENDOR_RC_SUCCESS;
 }
@@ -269,9 +285,25 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code,
 	if (req->flags == U2F_AUTH_CHECK_ONLY)
 		return VENDOR_RC_SUCCESS;
 
-	/* Always enforce user presence, with optional consume. */
-	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES)
-		return VENDOR_RC_NOT_ALLOWED;
+	/*
+	 * Either enforce user presence (with optional consume) or enforce
+	 * correct authorization secret.
+	 */
+	if ((req->flags & U2F_AUTH_FLAG_TUP) != 0) {
+		if (pop_check_presence(req->flags & G2F_CONSUME)
+			!= POP_TOUCH_YES)
+			return VENDOR_RC_NOT_ALLOWED;
+	} else {
+		int auth_secret_owned;
+
+		if (verify_kh_owned(req->userSecret, req->appId,
+				    req->authSecret, &auth_secret_owned)
+			!= EC_SUCCESS)
+			return VENDOR_RC_INTERNAL_ERROR;
+
+		if (!auth_secret_owned)
+			return VENDOR_RC_PASSWORD_REQUIRED;
+	}
 
 	/* Re-create origin-specific key. */
 	if (legacy_kh) {
