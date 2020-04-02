@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d8232d9_57455f6f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-02T18:22:21Z",
+      "side": 0,
+      "message": "Do these fields not need to be set in the PR_SWAP_COMPLETE scenario?",
+      "range": {
+        "startLine": 1181,
+        "startChar": 1,
+        "endLine": 1186,
+        "endChar": 0
+      },
+      "revId": "6188f04e8e7b5eac7c38e948fab114b456d8d406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
