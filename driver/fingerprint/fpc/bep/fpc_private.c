@@ -202,7 +202,7 @@ int fp_sensor_get_info(struct ec_response_fp_info *resp)
 	rc = spi_transaction(SPI_FP_DEVICE, spi_buf, 3, spi_buf,
 			     SPI_READBACK_ALL);
 	if (rc)
-		return EC_RES_ERROR;
+		return EC_ERROR_UNKNOWN;
 
 	resp->model_id = (spi_buf[1] << 8) | spi_buf[2];
 	resp->errors = errors;
