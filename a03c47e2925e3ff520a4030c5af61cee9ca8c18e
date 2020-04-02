@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b199a6f_cba850b8",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-04-02T02:40:41Z",
+      "side": 1,
+      "message": "ARRAY_SIZE",
+      "range": {
+        "startLine": 117,
+        "startChar": 17,
+        "endLine": 117,
+        "endChar": 71
+      },
+      "revId": "a03c47e2925e3ff520a4030c5af61cee9ca8c18e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46408bdb_30f13313",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-04-02T02:40:41Z",
+      "side": 1,
+      "message": "no brace",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 6
+      },
+      "revId": "a03c47e2925e3ff520a4030c5af61cee9ca8c18e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
