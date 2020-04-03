@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b1651db7_bcdc0822",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-03T19:51:54Z",
+      "side": 1,
+      "message": "I\u0027ve gone back and forth.  Hypothetically if the hoho or zinger were ported to TCPMv2, they wouldn\u0027t be DRPs so we wouldn\u0027t need to worry about it in this file.  Plus then we wouldn\u0027t need to fill this file with as many ifdefs as TCPMv1 had.\n\nThe fuzz tests are the only current TCPMv2 consumer not enabling this config. Do we want to enable it for fuzz testing?",
+      "parentUuid": "7b1444c7_86506ce5",
+      "range": {
+        "startLine": 210,
+        "startChar": 7,
+        "endLine": 210,
+        "endChar": 33
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e2770ca_690ebea7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "03994d60_cbdda490",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4200,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-03T19:51:54Z",
+      "side": 1,
+      "message": "Errors will be handled in pe_report_error.  Only cases which are specifically exempted in that function handle the error themselves by and large (ex. like cable probing, where not getting GoodCRCs is fine)",
+      "parentUuid": "5422ce88_2f559c9e",
+      "range": {
+        "startLine": 4199,
+        "startChar": 2,
+        "endLine": 4200,
+        "endChar": 48
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9e102e4_28a2ef42",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -82,6 +130,30 @@
       "writtenOn": "2020-04-03T18:47:56Z",
       "side": 1,
       "message": "will we retry forever? If so, can you just call that out in the comments",
+      "range": {
+        "startLine": 4247,
+        "startChar": 3,
+        "endLine": 4248,
+        "endChar": 37
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48100997_e06fa3fa",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4248,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-03T19:51:54Z",
+      "side": 1,
+      "message": "We could.  Hypothetically, we could retry in this current implementation forever if we either always get BUSY, or the port partner never replies in time.  I could be persuaded to put in a maximum number of retries for busy.  I need to double check what we\u0027re supposed to do if the partner doesn\u0027t reply in time, but currently we\u0027d just timeout and go back to ready.",
+      "parentUuid": "e9e102e4_28a2ef42",
       "range": {
         "startLine": 4247,
         "startChar": 3,
