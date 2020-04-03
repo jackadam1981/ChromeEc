@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ee5c8778_28e89e5e",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-03T22:50:06Z",
+      "side": 1,
+      "message": "Yes, EC interrupts are always edge triggered (I believe some ECs don\u0027t even support level-triggering).  That\u0027s why we ended up with the sn5s330 driver the way it is.\n\nIf the line doesn\u0027t de-assert until the condition is cleared, does that leave you in the position of possibly missing something important because the interrupt triggered on something that\u0027s filtered out, and then something important came in later without the line de-asserting?",
+      "parentUuid": "d17add6a_da3b117f",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 0
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab5aeddb_5db210ba",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 12
