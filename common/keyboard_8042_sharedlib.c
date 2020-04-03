@@ -13,9 +13,6 @@
 #include "util.h"
 
 /* The standard Chrome OS keyboard matrix table in scan code set 2. */
-#ifndef CONFIG_KEYBOARD_SCANCODE_MUTABLE
-SHAREDLIB(const
-#endif
 uint16_t scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
 	{0x0000, 0x0000, 0x0014, 0xe01f, 0xe014, 0xe007, 0x0000, 0x0000},
 	{0xe01f, 0x0076, 0x000d, 0x000e, 0x001c, 0x001a, 0x0016, 0x0015},
@@ -37,11 +34,16 @@ uint16_t scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
 	{0xe04a, 0x007c, 0x007b, 0x0074, 0x0071, 0x0073, 0x006b, 0x0070},
 	{0x006c, 0x0075, 0x007d, 0x0079, 0x007a, 0x0072, 0x0069, 0xe05a},
 #endif
+<<<<<<< HEAD   (765a88 nightfury : remove ambient thermal sensor)
 }
 #ifndef CONFIG_KEYBOARD_SCANCODE_MUTABLE
 )
 #endif
 ;
+=======
+};
+#endif /* CONFIG_KEYBOARD_CUSTOMIZATION */
+>>>>>>> CHANGE (d527ea common: Make scancode table always mutable)
 
 /*
  * The translation table from scan code set 2 to set 1.
@@ -83,9 +85,13 @@ char * const keycap_long_label[KLLI_MAX & KEYCAP_LONG_LABEL_INDEX_BITMASK] = {
 	"RIGHT",   "DOWN",  "UP",    "ESC",
 });
 
+<<<<<<< HEAD   (765a88 nightfury : remove ambient thermal sensor)
 #ifndef CONFIG_KEYBOARD_SCANCODE_MUTABLE
 SHAREDLIB(const
 #endif
+=======
+#ifndef CONFIG_KEYBOARD_CUSTOMIZATION
+>>>>>>> CHANGE (d527ea common: Make scancode table always mutable)
 char keycap_label[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
 	{KLLI_UNKNO, KLLI_UNKNO, KLLI_L_CTR, KLLI_SEARC,
 			KLLI_R_CTR, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO},
@@ -120,12 +126,18 @@ char keycap_label[KEYBOARD_COLS_MAX][KEYBOARD_ROWS] = {
 	{KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO,
 			KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO, KLLI_UNKNO},
 #endif
+<<<<<<< HEAD   (765a88 nightfury : remove ambient thermal sensor)
 }
 #ifndef CONFIG_KEYBOARD_SCANCODE_MUTABLE
 )
 #endif
 ;
 #endif
+=======
+};
+#endif /* CONFIG_KEYBOARD_CUSTOMIZATION */
+#endif /* CONFIG_KEYBOARD_DEBUG */
+>>>>>>> CHANGE (d527ea common: Make scancode table always mutable)
 
 uint8_t scancode_translate_set2_to_1(uint8_t code)
 {

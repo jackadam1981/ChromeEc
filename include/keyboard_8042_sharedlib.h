@@ -18,11 +18,11 @@ struct button_8042_t {
 };
 
 /* The standard Chrome OS keyboard matrix table. */
+<<<<<<< HEAD   (765a88 nightfury : remove ambient thermal sensor)
 #ifdef CONFIG_KEYBOARD_SCANCODE_MUTABLE
+=======
+>>>>>>> CHANGE (d527ea common: Make scancode table always mutable)
 extern uint16_t scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
-#else
-extern const uint16_t scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
-#endif
 
 /* Translation from scan code set 2 to set 1. */
 extern const uint8_t scancode_translate_table[];
@@ -69,11 +69,11 @@ enum keycap_long_label_idx {
 };
 
 extern const char * const keycap_long_label[];
+<<<<<<< HEAD   (765a88 nightfury : remove ambient thermal sensor)
 #ifdef CONFIG_KEYBOARD_SCANCODE_MUTABLE
+=======
+>>>>>>> CHANGE (d527ea common: Make scancode table always mutable)
 extern char keycap_label[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
-#else
-extern const char keycap_label[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
-#endif
 #endif
 
 /* Button scancodes (Power, Volume Down, Volume Up, etc.) */

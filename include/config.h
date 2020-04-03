@@ -2472,6 +2472,7 @@
 #define CONFIG_KEYBOARD_RUNTIME_KEYS
 
 /*
+<<<<<<< HEAD   (765a88 nightfury : remove ambient thermal sensor)
  * Allow the keyboard scan code set tables to be modified at runtime.
  */
 #undef CONFIG_KEYBOARD_SCANCODE_MUTABLE
@@ -2480,6 +2481,14 @@
  * Include the Vivaldi keyboard code. The vivaldi is a newer keyboard that can
  * have up to 15 top row keys (other than Esc and Power/Lock) and also allows
  * OEMs flexibility to use these keys for different purposes (or reordering).
+=======
+ * Allow the board layer keyboard customization. If define, the board layer
+ * needs to implement:
+ * 1. the function board_keyboard_drive_col() which is used to control
+ *    the refresh key column.
+ * 2. the scancode_set2 and keycap_label array
+ * 3. keyboard_customization.h which is similar to keyboard_config.h
+>>>>>>> CHANGE (d527ea common: Make scancode table always mutable)
  */
 #undef CONFIG_KEYBOARD_VIVALDI
 
