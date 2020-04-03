@@ -1051,6 +1051,7 @@ static void dump_charge_state(void)
 #define DUMP(FLD, FMT) ccprintf(#FLD " = " FMT "\n", curr.FLD)
 #define DUMP_CHG(FLD, FMT) ccprintf("\t" #FLD " = " FMT "\n", curr.chg. FLD)
 #define DUMP_BATT(FLD, FMT) ccprintf("\t" #FLD " = " FMT "\n", curr.batt. FLD)
+#define DUMP_OCPC(FLD, FMT) ccprintf("\t" #FLD " = " FMT "\n", curr.ocpc. FLD)
 	ccprintf("state = %s\n", state_list[curr.state]);
 	DUMP(ac, "%d");
 	DUMP(batt_is_charging, "%d");
@@ -1075,6 +1076,10 @@ static void dump_charge_state(void)
 	DUMP_BATT(full_capacity, "%dmAh");
 	ccprintf("\tis_present = %s\n", batt_pres[curr.batt.is_present]);
 	cflush();
+#ifdef CONFIG_OCPC
+	ccprintf("ocpc.*:\n");
+	DUMP_OCPC(active_chg_chip, "%d");
+#endif /* CONFIG_OCPC */
 	DUMP(requested_voltage, "%dmV");
 	DUMP(requested_current, "%dmA");
 #ifdef CONFIG_CHARGER_OTG
@@ -2408,6 +2413,28 @@ int charge_set_input_current_limit(int ma, int mv)
 	return EC_SUCCESS;
 #else
 	return charger_set_input_current(ma);
+#endif
+}
+
+#ifdef CONFIG_OCPC
+void charge_set_active_chg_chip(int idx)
+{
+	ASSERT(idx < (int)chg_cnt);
+
+	if (idx == curr.ocpc.active_chg_chip)
+		return;
+
+	CPRINTS("Act Chg: %d", idx);
+	curr.ocpc.active_chg_chip = idx;
+}
+#endif /* CONFIG_OCPC */
+
+int charge_get_active_chg_chip(void)
+{
+#ifdef CONFIG_OCPC
+	return curr.ocpc.active_chg_chip;
+#else
+	return CHARGER_SOLO;
 #endif
 }
 
