@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50087ef1_ad2b3bac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-03T22:33:41Z",
+      "side": 1,
+      "message": "I was wondering how to test this.  I just filed the bug since I ran across the comment about the incoming message SOP* while working on the emark discovery, I don\u0027t have a good example port partner for it.\n\nPerhaps program a chromebook to act as a bad port partner and plug into another chromebook with the change?  Or write a PE unit test?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "a18aba9480421552bfb0221d30c6ad2b96d50fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a82e57e6_74be7ce1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-03T22:33:41Z",
+      "side": 1,
+      "message": "No need to address this here, but does the if match the spec?  I think I would read it as translating with different parenthesis so we always soft reset on transmit error both in and out of a contract: \n\nif ((e \u003d\u003d ERR_TCH_XMIT) || (!PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT) \u0026\u0026 !PE_CHK_FLAGS(port, PE_FLAGS_INTERRUPTIBLE_AMS))",
+      "range": {
+        "startLine": 765,
+        "startChar": 0,
+        "endLine": 771,
+        "endChar": 4
+      },
+      "revId": "a18aba9480421552bfb0221d30c6ad2b96d50fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94996092_7ed4a302",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-03T22:33:41Z",
+      "side": 1,
+      "message": "Also no need to address here, but I\u0027ve noticed the READY states don\u0027t process the protocol error flag?",
+      "range": {
+        "startLine": 782,
+        "startChar": 3,
+        "endLine": 784,
+        "endChar": 35
+      },
+      "revId": "a18aba9480421552bfb0221d30c6ad2b96d50fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
