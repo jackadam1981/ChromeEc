@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a4f17033_d8f9d51e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-03T21:21:36Z",
+      "side": 1,
+      "message": "Our current code enters and exits like this today? That seems crazy to me. I don\u0027t know that we want to continue that. I might be missing something here though. Is there anything you can link to that (spec or something) that will enlighten me perhaps?",
+      "parentUuid": "aaafe691_52fdd8fc",
+      "range": {
+        "startLine": 1186,
+        "startChar": 39,
+        "endLine": 1186,
+        "endChar": 59
+      },
+      "revId": "2d7c9bee933d0b377ca9fb6148b9abbcee129319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f9cb40d_bd1bf051",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
