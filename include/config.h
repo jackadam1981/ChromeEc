@@ -1003,6 +1003,15 @@
 /* Charger enable GPIO is active low */
 #undef CONFIG_CHARGER_EN_ACTIVE_LOW
 
+/*
+ * OCPC - One Charger IC Per Type-C
+ *
+ * Define this if the board may have multiple charger ICs in the system.  The
+ * assumption is that that primary charger is index 0 and is the charger IC
+ * connected to the battery FET.
+ */
+#undef CONFIG_OCPC
+
 /* Enable trickle charging */
 #undef CONFIG_TRICKLE_CHARGING
 

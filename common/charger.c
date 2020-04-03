@@ -85,6 +85,11 @@ int charger_closest_current(int current)
 
 void charger_get_params(struct charger_params *chg)
 {
+	int chgnum = CHARGER_SOLO;
+
+	if (IS_ENABLED(CONFIG_OCPC))
+		chgnum = charge_get_active_chg_chip();
+
 	memset(chg, 0, sizeof(*chg));
 
 	if (charger_get_current(&chg->current))
@@ -119,7 +124,11 @@ static int check_print_error(int rv)
 void print_charger_debug(void)
 {
 	int d;
+	int chgnum = CHARGER_SOLO;
 	const struct charger_info *info = charger_get_info();
+
+	if (IS_ENABLED(CONFIG_OCPC))
+		chgnum = charge_get_active_chg_chip();
 
 	/* info */
 	print_item_name("Name:");
@@ -339,6 +348,13 @@ enum ec_error_list charger_get_current(int *current)
 	int chgnum = 0;
 	int rv = EC_ERROR_UNIMPLEMENTED;
 
+	/*
+	 * Only the primary charger IC attempts to regulate the current in the
+	 * tight loop.
+	 */
+	if (IS_ENABLED(CONFIG_OCPC))
+		chgnum = PRIMARY_CHARGER;
+
 	if ((chgnum < 0) || (chgnum >= chg_cnt)) {
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
 		return EC_ERROR_INVAL;
@@ -354,6 +370,13 @@ enum ec_error_list charger_set_current(int current)
 {
 	int chgnum = 0;
 	int rv = EC_ERROR_UNIMPLEMENTED;
+
+	/*
+	 * Only the primary charger IC attempts to regulate the current in the
+	 * tight loop.
+	 */
+	if (IS_ENABLED(CONFIG_OCPC))
+		chgnum = PRIMARY_CHARGER;
 
 	if ((chgnum < 0) || (chgnum >= chg_cnt)) {
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
@@ -435,6 +458,9 @@ enum ec_error_list charger_set_input_current(int input_current)
 {
 	int chgnum = 0;
 	int rv = EC_ERROR_UNIMPLEMENTED;
+
+	if (IS_ENABLED(CONFIG_OCPC))
+		chgnum = charge_get_active_chg_chip();
 
 	if ((chgnum < 0) || (chgnum >= chg_cnt)) {
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
