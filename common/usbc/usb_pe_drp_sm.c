@@ -343,6 +343,9 @@ static struct policy_engine {
 	/* last requested voltage PDO index */
 	int requested_idx;
 
+	/* port address where soft resets are sent*/
+	enum tcpm_transmit_type sop;
+
 	/* Current limit / voltage based on the last request message */
 	uint32_t curr_limit;
 	uint32_t supply_voltage;
@@ -714,10 +717,12 @@ static bool pe_can_send_sop_prime(int port)
 			pe[port].power_role == PD_ROLE_SOURCE;
 }
 
-void pe_report_error(int port, enum pe_error e)
+void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 {
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
+
+	pe[port].sop = type;
 
 	/*
 	 * Generate Hard Reset if Protocol Error occurred
@@ -919,6 +924,8 @@ static bool common_src_snk_dpm_requests(int port)
 					DPM_REQUEST_SOFT_RESET_SEND)) {
 		PE_CLR_DPM_REQUEST(port,
 					DPM_REQUEST_SOFT_RESET_SEND);
+		/* Currently only support sending soft reset to SOP */
+		pe[port].sop = TCPC_TX_SOP;
 		set_state_pe(port, PE_SEND_SOFT_RESET);
 		return true;
 	} else if (PE_CHK_DPM_REQUEST(port,
@@ -1410,13 +1417,15 @@ static void pe_src_send_capabilities_run(int port)
 		 *	PE_SNK/SRC_READY if explicit contract
 		 *	PE_SEND_SOFT_RESET otherwise
 		 */
-		if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT))
+		if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
 			if (pe[port].power_role == PD_ROLE_SINK)
 				set_state_pe(port, PE_SNK_READY);
 			else
 				set_state_pe(port, PE_SRC_READY);
-		else
+		} else {
+			pe[port].sop = TCPC_TX_SOP;
 			set_state_pe(port, PE_SEND_SOFT_RESET);
+		}
 		return;
 	}
 
@@ -2030,6 +2039,7 @@ static void pe_snk_startup_run(int port)
 		 * is entered.
 		 */
 		sysjump_occurred = false;
+		pe[port].sop = TCPC_TX_SOP;
 		set_state_pe(port, PE_SEND_SOFT_RESET);
 	} else {
 		/*
@@ -2176,6 +2186,7 @@ static void pe_snk_select_capability_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		pe[port].sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
 
 		/*
 		 * Transition to the PE_SNK_Transition_Sink state when:
@@ -2698,7 +2709,8 @@ static void pe_send_soft_reset_run(int port)
 		 * unexpected incoming message type
 		 */
 		/* Send Soft Reset message */
-		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_SOFT_RESET);
+		prl_send_ctrl_msg(port,
+			pe[port].sop, PD_CTRL_SOFT_RESET);
 
 		/* Initialize and run SenderResponseTimer */
 		pe[port].sender_response_timer =
@@ -4018,6 +4030,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
+		pe[port].sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
 
 		if (sop == TCPC_TX_SOP_PRIME && type == PD_DATA_VENDOR_DEF &&
 							cnt > 0 && ext == 0) {
@@ -4590,6 +4603,7 @@ static void pe_vcs_send_swap_run(int port)
 
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		pe[port].sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
 
 		/* Only look at control messages */
 		if (cnt == 0) {
@@ -4755,7 +4769,7 @@ static void pe_vcs_send_ps_rdy_swap_entry(int port)
 
 	/* Send a PS_RDY Message */
 	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
-
+	pe[port].sop = TCPC_TX_SOP;
 	pe[port].sub = PE_SUB0;
 }
 

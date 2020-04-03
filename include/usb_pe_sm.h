@@ -65,8 +65,9 @@ void pe_message_sent(int port);
  *
  * @param port USB-C port number
  * @param  e    error
+ * @param type  port address where error was generated
  */
-void pe_report_error(int port, enum pe_error e);
+void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type);
 
 /**
  * Called by the Protocol Layer to informs the Policy Engine
