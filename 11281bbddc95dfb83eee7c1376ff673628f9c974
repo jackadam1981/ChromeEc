@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b1444c7_86506ce5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-03T18:47:56Z",
+      "side": 1,
+      "message": "it would be nice to define the enums all the time. We think we are going to have any real usecases on devices that wont\u0027 support ALT mode?",
+      "range": {
+        "startLine": 210,
+        "startChar": 7,
+        "endLine": 210,
+        "endChar": 33
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e2770ca_690ebea7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-03T18:47:56Z",
+      "side": 1,
+      "message": "I really hope we can remove all of these. what is the dependency we need to address?",
+      "range": {
+        "startLine": 1280,
+        "startChar": 7,
+        "endLine": 1280,
+        "endChar": 33
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5422ce88_2f559c9e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4200,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-03T18:47:56Z",
+      "side": 1,
+      "message": "do we need to check for ERR flag when we don\u0027t get GoodCRC?",
+      "range": {
+        "startLine": 4199,
+        "startChar": 2,
+        "endLine": 4200,
+        "endChar": 48
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e102e4_28a2ef42",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-03T18:47:56Z",
+      "side": 1,
+      "message": "will we retry forever? If so, can you just call that out in the comments",
+      "range": {
+        "startLine": 4247,
+        "startChar": 3,
+        "endLine": 4248,
+        "endChar": 37
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57517e21_1fca0168",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4265,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-03T18:47:56Z",
+      "side": 1,
+      "message": "optional: if you make this an else if, then you can drop the set_state_pe right above since that is what will happen at the end of this block too (and they really are mutually exclusive)",
+      "range": {
+        "startLine": 4263,
+        "startChar": 2,
+        "endLine": 4265,
+        "endChar": 4
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
