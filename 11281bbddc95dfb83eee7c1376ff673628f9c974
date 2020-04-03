@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aee99ae8_d347a871",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-03T21:20:04Z",
+      "side": 1,
+      "message": "I think the fuzz tester should probably test these states too, I even think this is were fuzzing is actually the most valuable.\n\nI think we should make it a goal to have as few ifdefs as possible. the drp_arc_try_src is already specific enough",
+      "parentUuid": "b1651db7_bcdc0822",
+      "range": {
+        "startLine": 210,
+        "startChar": 7,
+        "endLine": 210,
+        "endChar": 33
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e2770ca_690ebea7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "We could.  Hypothetically, we could retry in this current implementation forever if we either always get BUSY, or the port partner never replies in time.  I could be persuaded to put in a maximum number of retries for busy.  I need to double check what we\u0027re supposed to do if the partner doesn\u0027t reply in time, but currently we\u0027d just timeout and go back to ready.",
       "parentUuid": "e9e102e4_28a2ef42",
+      "range": {
+        "startLine": 4247,
+        "startChar": 3,
+        "endLine": 4248,
+        "endChar": 37
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2878ee6b_02e49c1b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-03T21:20:04Z",
+      "side": 1,
+      "message": "if the spec doesn\u0027t say anything about stopping, I am okay trying forever if the partner keeps giving us busy. Just call it out though",
+      "parentUuid": "48100997_e06fa3fa",
       "range": {
         "startLine": 4247,
         "startChar": 3,
