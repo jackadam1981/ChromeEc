@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aaafe691_52fdd8fc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-03T19:55:01Z",
+      "side": 1,
+      "message": "Currently, I\u0027m planning to implement new discovery one step at a time without disrupting the automatic DP enter mode for existing boards (especially puff).  So we would send enter and exit through here right now, as well as DP commands.",
+      "parentUuid": "ab63979d_bd4dfe8a",
+      "range": {
+        "startLine": 1186,
+        "startChar": 39,
+        "endLine": 1186,
+        "endChar": 59
+      },
+      "revId": "2d7c9bee933d0b377ca9fb6148b9abbcee129319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f9cb40d_bd1bf051",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-03T18:57:21Z",
       "side": 1,
       "message": "once all SOP and SOP\u0027 Identities are DONE, should we also set PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE (or is that does somewhere else, if so maybe call that out in the comment)?",
+      "range": {
+        "startLine": 1189,
+        "startChar": 2,
+        "endLine": 1189,
+        "endChar": 3
+      },
+      "revId": "2d7c9bee933d0b377ca9fb6148b9abbcee129319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f9c4892_e04bbbd6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-03T19:55:01Z",
+      "side": 1,
+      "message": "It\u0027s currently triggered somewhere else.  I\u0027ll call it out in a comment",
+      "parentUuid": "9f9cb40d_bd1bf051",
       "range": {
         "startLine": 1189,
         "startChar": 2,
