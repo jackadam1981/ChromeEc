@@ -54,6 +54,13 @@ static int sync_read(const struct motion_sensor_t *s, vector_3_t v)
 static int sync_set_data_rate(const struct motion_sensor_t *s,
 				int rate, int roundup)
 {
+#ifdef CONFIG_PSEUDO_VSYNC
+	if (rate == 9999) {
+		CPRINTF("sync event triggered\n");
+		sync_interrupt(0);
+		return EC_SUCCESS;
+	}
+#endif
 	sync_enabled = !!rate;
 	CPRINTF("sync event driver enabling=%d\n", sync_enabled);
 	return EC_SUCCESS;
