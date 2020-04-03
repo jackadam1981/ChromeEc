@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2f25f58b_ac3c8729",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-03T21:33:54Z",
+      "side": 1,
+      "message": "Ah, do you mean the +1?  That\u0027s just taking advantage of the ordering of the VDM commands for now, not the long-term plan.  It should be removed by the time the alternate mode re-vamp is done.  I can call that out in a comment.\n\nCurrently, vdm_cmd tracks where we are in the process with the last VDM sent, and it happens that we walk down the enum as we go (discover identity -\u003e discover SVID -\u003e discover mode -\u003e enter mode).  I\u0027ve found it\u0027s a bit more resilient to things like interruptions than the v1 stack, which always relied on the incoming message type to continue on its merry way.",
+      "parentUuid": "a4f17033_d8f9d51e",
+      "range": {
+        "startLine": 1186,
+        "startChar": 39,
+        "endLine": 1186,
+        "endChar": 59
+      },
+      "revId": "2d7c9bee933d0b377ca9fb6148b9abbcee129319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f9cb40d_bd1bf051",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
