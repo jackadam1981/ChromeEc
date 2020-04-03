@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "97a5f821_d2f0c835",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-03T23:22:48Z",
+      "side": 1,
+      "message": "Ok, the logic for your filtering looks sound. You\u0027re only processing the interrupt on the first assertion of the corresponding fault bit.  Then you\u0027re ignoring the fault bit until it self-clears and re-asserts.",
+      "parentUuid": "8829a7c3_9798585c",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 36
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2661814_e88d57b7",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 12
@@ -88,6 +112,29 @@
         "startChar": 0,
         "endLine": 116,
         "endChar": 27
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c14d6c7a_3be42760",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-03T23:22:48Z",
+      "side": 1,
+      "message": "I guess it\u0027s more accurate to say the bits automatically clear on read, if the underlying condition also cleared.\nIt\u0027s probably best to document the observed behavior of ALERT_L (it\u0027s level sensitive, asserted as long as any condition that triggers alert is still active, etc).",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 32
       },
       "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -154,6 +201,30 @@
       "side": 1,
       "message": "Yes, EC interrupts are always edge triggered (I believe some ECs don\u0027t even support level-triggering).  That\u0027s why we ended up with the sn5s330 driver the way it is.\n\nIf the line doesn\u0027t de-assert until the condition is cleared, does that leave you in the position of possibly missing something important because the interrupt triggered on something that\u0027s filtered out, and then something important came in later without the line de-asserting?",
       "parentUuid": "d17add6a_da3b117f",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 0
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fff3a7a1_58cae4c6",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-03T23:22:48Z",
+      "side": 1,
+      "message": "At a minimum, you need to re-read the STATUS and CONTROL_4 regs again before doing this check.  Since I2C accesses can be slow, it\u0027s probably best to check ALERT_L directly when the board defines  CONFIG_USBC_PPC_DEDICATED_INT.  Otherwise poll the STATUS and CONTROL_4 regs.\n\nSomething like.\nif (IS_ENABLED(CONFIG_USBC_PPC_DEDICATED_INT) \u0026\u0026\n    ppc_get_alert_status(port)) {\n  syv682x_interrupt(port);\n} else {\n  read_reg(port, SYV682X_CONTROL_4_REG, \u0026control4);\n  read_reg(port, SYV682X_STATUS_REG, \u0026status);\n  if (status \u0026 SYV682X_STATUS_INT_MASK ||\n      control4 \u0026 SYV682X_CONTROL_4_INT_MASK) {\n    syv682x_interrupt(port);\n  }\n}\n\nUltimately, we probably want to rate limit this.  The corner case of FRS occurring while a fault is active, probably isn\u0027t worth it.",
+      "parentUuid": "ee5c8778_28e89e5e",
       "range": {
         "startLine": 181,
         "startChar": 0,
