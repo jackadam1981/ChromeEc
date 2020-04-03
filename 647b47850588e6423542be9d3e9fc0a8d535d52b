@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "637a4088_2a647a27",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-03T22:37:22Z",
+      "side": 1,
+      "message": "This is called when the lid angle \u003e180 degree, which disables the keyboard.\n\nThe jacuzzi case is that the CONFIG_LID_ANGLE_UPDATE is not defined, that EC won\u0027t keep track of the lid angle so won\u0027t call this callback.  I don\u0027t know why the CONFIG is disabled.\n\nThe Minnie case is too old that this logic was still in common/lid_angle.c and not separated out to a board-specific function.",
+      "parentUuid": "a2f7997d_49e0cda9",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 44
+      },
+      "revId": "647b47850588e6423542be9d3e9fc0a8d535d52b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc18c807_2816aa0c",
         "filename": "board/lazor/gpio.inc",
         "patchSetId": 4
@@ -92,6 +116,30 @@
       "revId": "647b47850588e6423542be9d3e9fc0a8d535d52b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5165a772_e598a2e9",
+        "filename": "board/lazor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-03T22:37:22Z",
+      "side": 1,
+      "message": "Yes, the gmr_tablet_switch_init() in common/tablet_mode.c. The tablet_mode.c is built if CONFIG_TABLET_MODE defined. The gmr_tablet_switch_init() initializes the interrupt handler of GMR_TABLET_MODE_GPIO_L, which is this GPIO (board.h).",
+      "parentUuid": "5a84a5c4_79185e66",
+      "range": {
+        "startLine": 43,
+        "startChar": 54,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "647b47850588e6423542be9d3e9fc0a8d535d52b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
