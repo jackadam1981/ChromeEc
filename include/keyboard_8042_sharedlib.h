@@ -18,12 +18,8 @@ struct button_8042_t {
 };
 
 /* The standard Chrome OS keyboard matrix table. */
-#if defined(CONFIG_KEYBOARD_SCANCODE_MUTABLE) || \
-	defined(CONFIG_KEYBOARD_CUSTOMIZATION)
-extern uint16_t scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
-#else
-extern const uint16_t scancode_set2[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
-#endif
+extern uint16_t get_scancode_set2(uint8_t row, uint8_t col);
+extern void set_scancode_set2(uint8_t row, uint8_t col, uint16_t val);
 
 /* Translation from scan code set 2 to set 1. */
 extern const uint8_t scancode_translate_table[];
@@ -70,12 +66,9 @@ enum keycap_long_label_idx {
 };
 
 extern const char * const keycap_long_label[];
-#if defined(CONFIG_KEYBOARD_SCANCODE_MUTABLE) || \
-	defined(CONFIG_KEYBOARD_CUSTOMIZATION)
-extern char keycap_label[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
-#else
-extern const char keycap_label[KEYBOARD_COLS_MAX][KEYBOARD_ROWS];
-#endif
+
+extern char get_keycap_label(uint8_t row, uint8_t col);
+extern void set_keycap_label(uint8_t row, uint8_t col, char val);
 #endif
 
 /* Button scancodes (Power, Volume Down, Volume Up, etc.) */
