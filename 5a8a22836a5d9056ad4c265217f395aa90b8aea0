@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8829a7c3_9798585c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-03T22:04:12Z",
+      "side": 1,
+      "message": "Yes, the faults would not clear unless the condition is gone. For instance, if you reboot the EC while charging at 20V; the initialization of this will reconfigure the OVP limit to 5V and you\u0027ll get about 1000 messages saying OVP until it discharges below 5V.\n\nThe real problematic one is OCP, since we count the overcurrent events and will permanently disable the port if there are too many. It takes a few ms after the interrupt for the OCP to go away I\u0027ve found (not obvious from the datasheet), so if there is ever an overcurrent we will permanently disable the port because we will get like 100 OCP alerts since it never clears. One other solution I thought of is delaying a bit between each time we re-check the interrupts, the issue is that we could miss an FRS event and violate timing if we do that. This may be an unrealistic corner case though.",
+      "parentUuid": "d264ea91_c2389212",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 36
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2661814_e88d57b7",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 12
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "d17add6a_da3b117f",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-03T22:04:12Z",
+      "side": 1,
+      "message": "Yes I played with this quite a bit and didn\u0027t know the best way to go about it. Since the EC pin interrupts are edge-triggered as far as I can tell, it will not trigger another interrupt if the alerts weren\u0027t cleared. An equivalent check here would be checking the alert_l pin status, but that only works if it is not a shared interrupt. If its shared we can\u0027t know if the interrupts were actually cleared. So I stuck with this.\n\nIf you look at the sn5s330 driver that is how it works (check alert pin). I think it is a bit different though since it has registers for the rise and fall of alert bits. \n\nTo answer your question, from experimentation, the ALERT_L will not de-assert if the alert condition is still present, even if the register is read. It seems that the ALERT_L pin directly tracks the alert registers, and they will not clear unless the condition is gone.\n\nOne thing I would like to do is add a delay to this, unfortunately that means we could miss FRS events.",
+      "parentUuid": "51b82732_40a267ee",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 0
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab5aeddb_5db210ba",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 12
@@ -105,6 +153,30 @@
       "writtenOn": "2020-04-03T21:33:52Z",
       "side": 1,
       "message": "Nit - this isn\u0027t needed.",
+      "range": {
+        "startLine": 423,
+        "startChar": 49,
+        "endLine": 423,
+        "endChar": 56
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c82638_506a117d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-03T22:04:12Z",
+      "side": 1,
+      "message": "You\u0027re right, I left it in for readability since I was messing with it. I will remove.",
+      "parentUuid": "ab5aeddb_5db210ba",
       "range": {
         "startLine": 423,
         "startChar": 49,
