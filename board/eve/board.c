@@ -494,7 +494,7 @@ static void board_init(void)
 	/* Update AC status to the PCH */
 	board_update_ac_status();
 
-#if defined(CONFIG_KEYBOARD_SCANCODE_MUTABLE) && !defined(TEST_BUILD)
+#ifndef TEST_BUILD
 	if (board_get_version() == 4) {
 		/* Set F13 to new defined key on EVT */
 		CPRINTS("Overriding F13 scan code");
