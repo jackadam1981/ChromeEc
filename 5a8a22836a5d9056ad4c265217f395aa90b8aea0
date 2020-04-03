@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1db40a6b_4c2fc27c",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-03T21:33:52Z",
+      "side": 1,
+      "message": "Nit - it would be good to split this out as a separate CL.",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 471,
+        "endChar": 0
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d264ea91_c2389212",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-03T21:33:52Z",
+      "side": 1,
+      "message": "Why is this function needed?  Are there faults that never clear even after reading the status register?  See my note below regarding the state register values.",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 36
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2661814_e88d57b7",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-03T21:33:52Z",
+      "side": 1,
+      "message": "Nit - should use {} because the if clause has them.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b82732_40a267ee",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-03T21:33:52Z",
+      "side": 1,
+      "message": "The status and control4 values are stale at this point, so you\u0027re always going to execute this path one extra time.\n\nThe SYV documentation isn\u0027t very explicit on the behavior of the ALERT_L pin.  It states \"The output remains asserted until all registers of the device are read by I2C control.\" But it doesn\u0027t state what happens to ALERT_L if the condition that triggered the interrupt is still active.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 0
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab5aeddb_5db210ba",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-03T21:33:52Z",
+      "side": 1,
+      "message": "Nit - this isn\u0027t needed.",
+      "range": {
+        "startLine": 423,
+        "startChar": 49,
+        "endLine": 423,
+        "endChar": 56
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
