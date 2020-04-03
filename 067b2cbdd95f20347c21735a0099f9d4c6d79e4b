@@ -121,6 +121,24 @@
       "revId": "067b2cbdd95f20347c21735a0099f9d4c6d79e4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "224e60c0_c703e3d8",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-03T21:16:39Z",
+      "side": 1,
+      "message": "The port partner shouldn\u0027t send any PD communication in this mock set up. The port partner should just be setting resistors.\n\nfake_usbc.c was providing\n\n__overridable bool pd_get_partner_usb_comm_capable(int port)\n{\n\treturn true;\n}\n\nwhich was overriding the file under tests implementation that checked its flag",
+      "parentUuid": "d6be481e_c62efa4a",
+      "revId": "067b2cbdd95f20347c21735a0099f9d4c6d79e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
