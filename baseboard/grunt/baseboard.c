@@ -277,8 +277,11 @@ static uint32_t sku_id;
 
 static int ps8751_tune_mux(const struct usb_mux *me)
 {
-	/* Tune USB mux registers for treeya's port 1 Rx measurement */
-	if ((sku_id >= 0xa0) && (sku_id <= 0xaf))
+	/* Tune USB mux registers for treeya's port 1 Rx measurement.
+	Nuwani board same as treeya board.
+    */
+	if (((sku_id >= 0xa0) && (sku_id <= 0xaf)) ||
+        ((sku_id >= 0xd0) && (sku_id <= 0xdf)))
 		mux_write(me, PS8XXX_REG_MUX_USB_C2SS_EQ, 0x40);
 
 	return EC_SUCCESS;
@@ -764,7 +767,8 @@ int board_is_convertible(void)
 	/* Grunt: 6 */
 	/* Kasumi360: 82 */
 	/* Treeya360: a8-af */
-	return (sku_id == 6 || sku_id == 82 ||
+    /* Nuwani360: d8 */
+	return (sku_id == 6 || sku_id == 82 || sku_id == 0xd8 ||
 		((sku_id >= 0xa8) && (sku_id <= 0xaf)));
 }
 
@@ -777,13 +781,15 @@ __override uint32_t board_override_feature_flags0(uint32_t flags0)
 {
 	/*
 	 * Remove keyboard backlight feature for devices that don't support it.
-	 * All Treeya and Treeya360 models do not support keyboard backlight.
+	 * All Treeya/Nuwani and Treeya360/Nuwani360 models do not support 
+	   keyboard backlight.
 	 */
 	if (sku_id == 16 || sku_id == 17 ||
 	    sku_id == 20 || sku_id == 21 ||
 	    sku_id == 32 || sku_id == 33 ||
 	    sku_id == 40 || sku_id == 41 ||
-	    ((sku_id >= 0xa0) && (sku_id <= 0xaf)))
+	    ((sku_id >= 0xa0) && (sku_id <= 0xaf)) ||
+	    ((sku_id >= 0xd0) && (sku_id <= 0xdf)))
 		return (flags0 & ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
 	else
 		return flags0;
