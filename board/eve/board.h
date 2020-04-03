@@ -142,6 +142,9 @@
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+#define CONFIG_SYNC  /* Pseudo Camera VSYNC */
+#define CONFIG_PSEUDO_VSYNC
+#define CONFIG_SYNC_INT_EVENT TASK_EVENT_CUSTOM(16)
 
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 1024
@@ -283,6 +286,7 @@ enum sensor_id {
 	BASE_GYRO,
 	BASE_MAG,
 	LID_LIGHT,
+	VSYNC,
 };
 
 enum adc_channel {

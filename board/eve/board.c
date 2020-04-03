@@ -21,6 +21,7 @@
 #include "driver/accelgyro_bmi160.h"
 #include "driver/als_si114x.h"
 #include "driver/charger/bd9995x.h"
+#include "driver/sync.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
@@ -1008,6 +1009,17 @@ struct motion_sensor_t motion_sensors[] = {
 			 .ec_rate = 0,
 		 },
 	 },
+	},
+	[VSYNC] = {
+		.name = "Camera VSYNC",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_GPIO,
+		.type = MOTIONSENSE_TYPE_SYNC,
+		.location = MOTIONSENSE_LOC_CAMERA,
+		.drv = &sync_drv,
+		.default_range = 0,
+		.min_frequency = 0,
+		.max_frequency = 1,
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
