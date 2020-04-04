@@ -3104,6 +3104,7 @@ static void __exit i2cp_exit(void)
 MODULE_AUTHOR("Matthew Blecker <matthewb@ihavethememo.net");
 MODULE_DESCRIPTION("Driver for userspace I2C adapter implementations.");
 MODULE_LICENSE("GPL");
+MODULE_SOFTDEP("pre: i2c-dev");
 
 module_init(i2cp_init);
 module_exit(i2cp_exit);
