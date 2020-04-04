@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a5b05a76_d07b0e20",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-04T00:16:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a5f821_d2f0c835",
+      "range": {
+        "startLine": 107,
+        "startChar": 12,
+        "endLine": 107,
+        "endChar": 36
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2661814_e88d57b7",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 12
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "At a minimum, you need to re-read the STATUS and CONTROL_4 regs again before doing this check.  Since I2C accesses can be slow, it\u0027s probably best to check ALERT_L directly when the board defines  CONFIG_USBC_PPC_DEDICATED_INT.  Otherwise poll the STATUS and CONTROL_4 regs.\n\nSomething like.\nif (IS_ENABLED(CONFIG_USBC_PPC_DEDICATED_INT) \u0026\u0026\n    ppc_get_alert_status(port)) {\n  syv682x_interrupt(port);\n} else {\n  read_reg(port, SYV682X_CONTROL_4_REG, \u0026control4);\n  read_reg(port, SYV682X_STATUS_REG, \u0026status);\n  if (status \u0026 SYV682X_STATUS_INT_MASK ||\n      control4 \u0026 SYV682X_CONTROL_4_INT_MASK) {\n    syv682x_interrupt(port);\n  }\n}\n\nUltimately, we probably want to rate limit this.  The corner case of FRS occurring while a fault is active, probably isn\u0027t worth it.",
       "parentUuid": "ee5c8778_28e89e5e",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 0
+      },
+      "revId": "5a8a22836a5d9056ad4c265217f395aa90b8aea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94682049_e509ba22",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-04T00:16:17Z",
+      "side": 1,
+      "message": "Okay thanks, I think you\u0027re right that its not worth it. \n\nIs the preferred way to delay to add a delay in the hook_call_deferred, or by doing msleep here? I\u0027m guessing msleep would be blocking.\n\nTo answer Diana\u0027s question, yes we could miss something. We have no way to know when a new interrupt comes in unless we poll. The good news is all the alert conditions are bad, and we should never really be operating in that state. The exception is FRS, but that is guaranteed to clear on read.\n\nThe corner case I was worried about was the error condition going away, then getting an FRS (which is the only interrupt we really need to deal with).  We don\u0027t know the error condition went away without reading the register, and it won\u0027t generate an interrupt since it was never cleared.",
+      "parentUuid": "fff3a7a1_58cae4c6",
       "range": {
         "startLine": 181,
         "startChar": 0,
