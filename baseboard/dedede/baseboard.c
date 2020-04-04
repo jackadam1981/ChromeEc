@@ -7,11 +7,13 @@
 
 #include "adc.h"
 #include "board_config.h"
+#include "charge_manager.h"
 #include "chipset.h"
 #include "common.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "intel_x86.h"
+#include "usb_pd.h"
 
 /******************************************************************************/
 /*
