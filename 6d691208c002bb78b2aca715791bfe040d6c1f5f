@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b77d75f0_ba8c8ee9",
+        "filename": "common/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-04-04T02:10:50Z",
+      "side": 1,
+      "message": "nit: if (",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 5
+      },
+      "revId": "6d691208c002bb78b2aca715791bfe040d6c1f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49dfa0d4_4d2bc362",
+        "filename": "common/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-04-04T02:10:50Z",
+      "side": 1,
+      "message": "nit: if (",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 6
+      },
+      "revId": "6d691208c002bb78b2aca715791bfe040d6c1f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9be5fa9_810f27da",
+        "filename": "include/config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1614,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-04-04T02:10:50Z",
+      "side": 1,
+      "message": "You have this as CONFIG_DPTF_FAIL_SAFE_OFFSET everywhere else. Also this text doesn\u0027t seem to indicate it needs a value, see \"cur_temp +\u003d CONFIG_DPTF_FAIL_SAFE_OFFSET;\"",
+      "range": {
+        "startLine": 1614,
+        "startChar": 7,
+        "endLine": 1614,
+        "endChar": 28
+      },
+      "revId": "6d691208c002bb78b2aca715791bfe040d6c1f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
