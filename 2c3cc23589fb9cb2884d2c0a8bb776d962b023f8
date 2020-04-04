@@ -22,6 +22,30 @@
       "revId": "2c3cc23589fb9cb2884d2c0a8bb776d962b023f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdb53951_c875b55c",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-04T18:32:21Z",
+      "side": 0,
+      "message": "Do you think that check is helpful? Why not just allow any value to be added to the list?\nThis is for manual debugging anyway.",
+      "parentUuid": "47cdcaac_cf8487c9",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "2c3cc23589fb9cb2884d2c0a8bb776d962b023f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
