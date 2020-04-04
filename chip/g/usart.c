@@ -172,15 +172,19 @@ void get_data_from_usb(struct usart_config const *config)
 		 * transferred to EC eventually once EC-CR50 communication
 		 * enables EC UART.
 		 */
-		if (!ec_bridge_tx_enabled_)
+		if (!ec_bridge_tx_enabled_) {
+			uartn_tx_stop(config->uart);
 			return;
+		}
 
 		/*
 		 * If EC-CR50 communication is on-going, then let's not forward
 		 * console input to EC for now.
 		 */
-		if (ec_comm_is_uart_in_packet_mode(UART_EC))
+		if (ec_comm_is_uart_in_packet_mode(UART_EC)) {
+			uartn_tx_stop(config->uart);
 			return;
+		}
 	}
 #endif  /* BOARD_CR50 */
 
