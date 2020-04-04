@@ -70,6 +70,30 @@
       "revId": "4256c299d366e183ada43541cc6b75cc7ff06f71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c295ce90_a5adf980",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-04T01:09:31Z",
+      "side": 1,
+      "message": "We\u0027ve discussed about this in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2018061\n\nWe decided not to change AP UART path: If UART-AP is disabled, then all characters shall be pushed into UART FIFO, but it won\u0027t be transferred to AP because UART AP TX won\u0027t be enabled.\n\nThis check is to not leak any data to EC if UART-EC-TX is disabled. I\u0027ve checked uart_stress_tester running without character loss.",
+      "parentUuid": "b478626f_7ac463bd",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 28
+      },
+      "revId": "4256c299d366e183ada43541cc6b75cc7ff06f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
