@@ -22,6 +22,30 @@
       "revId": "8a300c2e7f2194559d2390c0e54231a418130f0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55040c8e_5d2bff68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-04T01:53:43Z",
+      "side": 1,
+      "message": "This is another version of fix. http://crrev.com/c/2136340, which might look straightforward. Meanwhile I thought \"why don\u0027t we ignore the data and skip calling we call uartn_tx_start()?\", and made this patch. Will rewrite the description.",
+      "parentUuid": "6640a499_60440d72",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "8a300c2e7f2194559d2390c0e54231a418130f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
