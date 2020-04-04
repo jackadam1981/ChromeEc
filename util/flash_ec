@@ -51,7 +51,7 @@ die() {
 BOARDS_IT83XX=(
 	glkrvp_ite
 	it83xx_evb
-	it8xxx2_pdevb
+        it8xxx2_pdevb
 	reef_it8320
 	tglrvpu_ite
 	tglrvpy_ite
@@ -75,7 +75,6 @@ BOARDS_STM32=(
 	magnemite
 	masterball
 	minimuffin
-	moonball
 	nami_fp
 	nocturne_fp
 	oak_pd
