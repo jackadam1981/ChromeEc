@@ -7,11 +7,13 @@
 
 #include "adc.h"
 #include "board_config.h"
+#include "charge_manager.h"
 #include "chipset.h"
 #include "common.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "intel_x86.h"
+#include "usb_pd.h"
 
 /******************************************************************************/
 /*
@@ -149,6 +151,18 @@ void baseboard_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
+
+int board_get_chg_chip_from_chg_port(int chg_port)
+{
+	/*
+	 * The secondary charger IC is active only when the sub-board is present
+	 * and we have decided to charge from that side.
+	 */
+	if (chg_port == CHARGE_PORT_NONE)
+		return -1;
+
+	return chg_port && pd_is_port_enabled(1);
+}
 
 void board_hibernate_late(void)
 {
