@@ -46,6 +46,30 @@
       "revId": "8a300c2e7f2194559d2390c0e54231a418130f0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "843ec008_b1325f05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-04T02:54:19Z",
+      "side": 1,
+      "message": "This is the sequence of data from USB host to UART FIFO: When USB data comes from Host, then uart_written() shall be called in a config-\u003edeferred_rx() in usb-stream.c. uart_written() calls uartn_tx_start() to set GC_UART_ICTRL_TX_MASK and to trigger UART EC TX interrupt. UART-EC TX interrupt handler calls get_data_from_usb() to move data from USB data queue to UART TX FIFO.\n\nSince cr50 can know the data won\u0027t be pushed into UART TX FIFO, I thought it would be better to ignore them when they arrive and to skip calling uartn_tx_start().",
+      "parentUuid": "55040c8e_5d2bff68",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "8a300c2e7f2194559d2390c0e54231a418130f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
