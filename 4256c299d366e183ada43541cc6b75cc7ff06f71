@@ -46,6 +46,30 @@
       "revId": "4256c299d366e183ada43541cc6b75cc7ff06f71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b478626f_7ac463bd",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-04T00:48:13Z",
+      "side": 1,
+      "message": "ok, but we check this only for the EC channel. I still don\u0027t get why this is necessary. It would be good to avoid the extra check on the fast path.",
+      "parentUuid": "35c02f0f_fa020a9b",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 28
+      },
+      "revId": "4256c299d366e183ada43541cc6b75cc7ff06f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
