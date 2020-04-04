@@ -22,6 +22,30 @@
       "revId": "4256c299d366e183ada43541cc6b75cc7ff06f71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c02f0f_fa020a9b",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-04T00:45:33Z",
+      "side": 1,
+      "message": "Fixed.\n\nIt is not EC-EFS specific. It is more about not sending data if UART-EC TX is disabled, and I intend to not call \"uartn_tx_start()\" in line 275 if UART-EC TX is disabled.",
+      "parentUuid": "446baf08_b4c7a968",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 28
+      },
+      "revId": "4256c299d366e183ada43541cc6b75cc7ff06f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
