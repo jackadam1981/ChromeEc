@@ -3,11 +3,13 @@
 # This attempts to build and install the i2c-pseudo Linux kernel module.
 
 set -e
+cd "$(dirname "$0")"
 
 make clean
 make
 ret=0
 sudo make modules_install || ret="$?"
+sudo cp -v 50-i2c-pseudo.rules /etc/udev/rules.d/
 
 if [ "$ret" -eq 0 ]; then
   make clean
@@ -28,3 +30,5 @@ else
   echo "PARTIAL SUCCESS: loaded i2c-pseudo module (not installed)"
   make clean
 fi
+
+sudo modprobe i2c-dev
