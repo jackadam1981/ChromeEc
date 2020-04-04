@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6640a499_60440d72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-04T01:28:18Z",
+      "side": 1,
+      "message": "sorry, I don\u0027t understand this this description.\n\nwhat is \u0027USB RX stream handler\u0027 and why moving this data from USB RX processing function to UART TX processing function on the same stream make a difference?\n\n\"By doing so, it avoids starting UART EC TX for nothing.\"\n\nThis is is not clear either.",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "8a300c2e7f2194559d2390c0e54231a418130f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
