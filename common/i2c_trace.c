@@ -92,9 +92,6 @@ static int command_i2ctrace_enable(int port, int slave_addr_lo,
 	struct i2c_trace_range *t;
 	struct i2c_trace_range *new_entry = NULL;
 
-	if (port >= i2c_ports_used)
-		return EC_ERROR_PARAM2;
-
 	if (slave_addr_lo > slave_addr_hi)
 		return EC_ERROR_PARAM3;
 
