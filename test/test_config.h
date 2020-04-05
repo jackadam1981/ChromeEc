@@ -338,6 +338,8 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define PD_VCONN_SWAP_DELAY 5000 /* us */
 #define CONFIG_USB_PD_DISCHARGE_GPIO
 #undef CONFIG_USB_PD_HOST_CMD
+#define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USBC_SS_MUX
 #endif
 
 /* Common TypeC tests defines */
