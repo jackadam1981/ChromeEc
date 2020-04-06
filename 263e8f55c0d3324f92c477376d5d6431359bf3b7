@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15a7cc5f_36c74053",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-04-06T02:00:23Z",
+      "side": 1,
+      "message": "Most likely not. But, Mary is the right person to confirm.",
+      "parentUuid": "27a66108_71920f3e",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 7
+      },
+      "revId": "263e8f55c0d3324f92c477376d5d6431359bf3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a87785e5_7f00af49",
         "filename": "docs/case_closed_debugging.md",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2020-04-03T18:46:43Z",
       "side": 1,
       "message": "What is ryu? Is there any documentation on it?",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 4
+      },
+      "revId": "263e8f55c0d3324f92c477376d5d6431359bf3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "920fed40_98d1ea92",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-04-06T02:00:23Z",
+      "side": 1,
+      "message": "Ryu was our internal codename for Tegra124/Tegra132 reference platform. It eventually was shipped as Pixel-C. CCD support for it was added here: crrev.com/c/229139.",
+      "parentUuid": "04deecc9_2e454474",
       "range": {
         "startLine": 188,
         "startChar": 1,
