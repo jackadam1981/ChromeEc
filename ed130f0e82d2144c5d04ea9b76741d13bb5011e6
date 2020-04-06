@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e7dd334_fbff4398",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-06T19:12:30Z",
+      "side": 1,
+      "message": "void",
+      "range": {
+        "startLine": 686,
+        "startChar": 14,
+        "endLine": 686,
+        "endChar": 18
+      },
+      "revId": "ed130f0e82d2144c5d04ea9b76741d13bb5011e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3aeb205_7b90c8d1",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-06T19:12:30Z",
+      "side": 1,
+      "message": "udelay",
+      "range": {
+        "startLine": 692,
+        "startChar": 1,
+        "endLine": 692,
+        "endChar": 8
+      },
+      "revId": "ed130f0e82d2144c5d04ea9b76741d13bb5011e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceb590e4_2728cee5",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-06T19:12:30Z",
+      "side": 1,
+      "message": "intel_x86_sys_reset_delay()",
+      "range": {
+        "startLine": 720,
+        "startChar": 1,
+        "endLine": 720,
+        "endChar": 37
+      },
+      "revId": "ed130f0e82d2144c5d04ea9b76741d13bb5011e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44b4b137_5d0c2f0a",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-06T19:12:30Z",
+      "side": 1,
+      "message": "as Keith suggested we can avoid this by doing sleep sleep inside the function.\nJust in case if future platforms change time to MS to US (mostly unlikely though)",
+      "range": {
+        "startLine": 101,
+        "startChar": 3,
+        "endLine": 101,
+        "endChar": 40
+      },
+      "revId": "ed130f0e82d2144c5d04ea9b76741d13bb5011e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
