@@ -465,6 +465,22 @@ bool is_usb2_cable_support(int port)
 		0 : 1;
 }
 
+bool is_limit_usb3_speed(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	switch (cable->rev) {
+	case PD_REV20:
+		return cable->attr.p_rev20.ss == USB_R20_SS_U31_GEN1_GEN2;
+
+	case PD_REV30:
+		return cable->attr.p_rev30.ss == USB_R30_SS_U32_U40_GEN2 ||
+			cable->attr.p_rev30.ss == USB_R30_SS_U40_GEN3;
+	default:
+		return 0;
+	}
+}
+
 void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 				uint16_t head)
 {
