@@ -222,6 +222,30 @@
       "revId": "c152f5a591f3a64dfbac93da9a49bd53284ac376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73e7a312_8b94a9c5",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-06T20:13:09Z",
+      "side": 1,
+      "message": "Nit: What about unsigned int?",
+      "parentUuid": "eca763b2_3b10f6c7",
+      "range": {
+        "startLine": 483,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 22
+      },
+      "revId": "c152f5a591f3a64dfbac93da9a49bd53284ac376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
