@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "32f4569b_db9ae83d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-06T19:32:05Z",
+      "side": 1,
+      "message": "This comment might be better placed at the sites of the non-interrupt-driven interrupt-handling calls.\n\nI think there might still be a race in the current code:\n1. Call syv682_handle_status_interrupt from syv682_is_vbus_present from a lower-priority task. One of the OC or OV flags is set.\n2. Read flags[port]. (Enter critical section.)\n3. ALERT_L asserts. Call syv682_handle_interrupt and read STATUS. One of the OC or OV flags is set.\n4. Read-modify-write flags[port] in response.\n5. Return from syv682_irq_deferred and suspend the task.\n6. syv682_handle_status_interrupt writes the now-stale modified value of flags[port].\n\nI think something like that would be theoretically possible as long as you read-modify-write flags[port] from different tasks. You should probably synchronize access to it.",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e98a4605_ab9cea6b",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 16
@@ -18,6 +41,29 @@
         "startChar": 2,
         "endLine": 407,
         "endChar": 19
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b4e4441_403e4e0c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-06T19:32:05Z",
+      "side": 1,
+      "message": "Nit: This seems more immediately relevant in syv682x_interrupt, where the delay is specified.",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 57
       },
       "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
