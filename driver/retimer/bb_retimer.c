@@ -22,6 +22,10 @@
 				| USB_PD_MUX_TBT_COMPAT_ENABLED \
 				| USB_PD_MUX_USB4_ENABLED)
 
+#define BB_RETIMER_MUX_DATA_AM	(USB_PD_MUX_DP_ENABLED \
+				| USB_PD_MUX_TBT_COMPAT_ENABLED \
+				| USB_PD_MUX_USB4_ENABLED)
+
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
@@ -125,6 +129,19 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		if (is_usb2_cable_support(port))
 			*set_retimer_con |= BB_RETIMER_USB_2_CONNECTION;
 	}
+
+	/*
+	 * Bit 22: ACTIVE/PASSIVE
+	 * 0 - Passive cable
+	 * 1 - Active cable
+	 *
+	 * If Alternate mode is DP/Thunderbolt_compat/USB4, ACTIVE/PASIVE is
+	 * set according to Discover mode SOP' response.
+	 */
+	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) &&
+	    (mux_state & BB_RETIMER_MUX_DATA_AM))
+		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
+
 }
 
 static void retimer_set_state_ufp(mux_state_t mux_state,
@@ -147,6 +164,14 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 		 */
 		*set_retimer_con |= BB_RETIMER_USB_DATA_ROLE;
 	}
+	/*
+	 * TODO: Add the following bits:
+	 *
+	 * Bit 22: ACTIVE/PASSIVE
+	 * For USB4, set according to bits 20:19 of enter USB SOP.
+	 * For thubderbolt-compat mode, set according to bit 24 of enter mode
+	 * sop.
+	 */
 }
 
 /**
@@ -275,24 +300,6 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		 */
 		if (cable_resp.tbt_cable == TBT_CABLE_OPTICAL)
 			set_retimer_con |= BB_RETIMER_TBT_CABLE_TYPE;
-
-		/*
-		 * Bit 22: Active/Passive
-		 * 0 - Passive cable
-		 * 1 - Active cable
-		 */
-		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
-			set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
-			/*
-			 * Bit 20: TBT_ACTIVE_LINK_TRAINING
-			 * 0 - Active with bi-directional LSRX communication
-			 * 1 - Active with uni-directional LSRX communication
-			 * Set to "0" when passive cable plug
-			 */
-			if (cable_resp.lsrx_comm == UNIDIR_LSRX_COMM)
-				set_retimer_con |=
-					BB_RETIMER_TBT_ACTIVE_LINK_TRAINING;
-		}
 
 		/*
 		 * Bit 23: USB4 Connection
