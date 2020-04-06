@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e9321f8_d92daa4e",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-06T16:00:37Z",
+      "side": 1,
+      "message": "what happens when the timeout exceeds? do we error and exit?",
+      "range": {
+        "startLine": 826,
+        "startChar": 0,
+        "endLine": 832,
+        "endChar": 6
+      },
+      "revId": "5d9e3c529dba2267e3efd692f7f7140afb609042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
