@@ -324,8 +324,10 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		 * 011b - 10Gb/s and 20Gb/s
 		 * 10..11b - Reserved
 		 */
-		set_retimer_con |= BB_RETIMER_TBT_CABLE_SPEED_SUPPORT(
+		if (pd_get_data_role(port) == PD_ROLE_DFP)
+			set_retimer_con |= BB_RETIMER_TBT_CABLE_SPEED_SUPPORT(
 						cable_resp.tbt_cable_speed);
+		/* TODO: Add TBT/USB4 Cable speed for UFP */
 	}
 	/* Writing the register4 */
 	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
