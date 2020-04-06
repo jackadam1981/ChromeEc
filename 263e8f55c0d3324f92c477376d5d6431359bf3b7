@@ -116,6 +116,30 @@
       "revId": "263e8f55c0d3324f92c477376d5d6431359bf3b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b5dff87_2f8b87cf",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-06T17:14:34Z",
+      "side": 1,
+      "message": "Ah, I see. But we never shipped Chrome OS on ryu, right? I\u0027ll probably just remove this since it\u0027s somewhat confusing (I thought there may be another debug device I didn\u0027t know about).",
+      "parentUuid": "920fed40_98d1ea92",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 4
+      },
+      "revId": "263e8f55c0d3324f92c477376d5d6431359bf3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
