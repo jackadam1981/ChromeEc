@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e98a4605_ab9cea6b",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-06T18:00:10Z",
+      "side": 1,
+      "message": "I think both paths should use a delay.  50ms also seems a bit long. Hard to say what the right delay is.  Based on your comments - OCP events take a few ms to clear, but OVP, RVS, and TSD events are sticky, so we\u0027ll keep handling this interrupt.\n\nFor your reference, msleep() isn\u0027t technically blocking, higher priority tasks get the opportunity to run and all tasks are higher priority than the HOOKS task. However msleep() will block any other deferred or hooks from running, so the hook_called_deferred() is the right choice.\n\nWe probably also need to consider if we need to check for a stuck OCP state, in which case we would want to turn off the port.",
+      "range": {
+        "startLine": 407,
+        "startChar": 2,
+        "endLine": 407,
+        "endChar": 19
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
