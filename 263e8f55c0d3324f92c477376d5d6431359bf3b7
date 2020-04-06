@@ -140,6 +140,30 @@
       "revId": "263e8f55c0d3324f92c477376d5d6431359bf3b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9939de9b_4ee3883a",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-04-06T18:07:48Z",
+      "side": 1,
+      "message": "We shipped smaug which was Tegra210 and it shipped with Android OS. However, it still used Chrome OS firmware stack i.e. EC and BIOS. Thus, it used CCD support that was developed for Ryu.\n\n(One correction in my comment above: Ryu was our internal codename for Tegra132/Tegra210 reference platform).",
+      "parentUuid": "2b5dff87_2f8b87cf",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 4
+      },
+      "revId": "263e8f55c0d3324f92c477376d5d6431359bf3b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
