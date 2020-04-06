@@ -140,6 +140,20 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 	    mux_state & (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED))
 		*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
 
+	/*
+	 * Bit 22: ACTIVE/PASSIVE
+	 * 0 - Passive cable
+	 * 1 - Active cable
+	 *
+	 * If Alternate mode is Thunderbolt_compat/DP/USB4, ACTIVE/PASIVE is
+	 * set according to Discover mode SOP' response.
+	 */
+	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) &&
+	    (mux_state & (USB_PD_MUX_DP_ENABLED |
+			  USB_PD_MUX_TBT_COMPAT_ENABLED |
+			  USB_PD_MUX_USB4_ENABLED)))
+		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
+
 	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
 		cable_resp = get_cable_tbt_vdo(port);
 		/*
@@ -176,6 +190,7 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 	/*
 	 * TODO: Add following bit:
 	 * Bit 2: RE_TIMER_DRIVER
+	 * Bit 22: ACTIVE/PASSIVE
 	 */
 }
 
@@ -298,13 +313,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		if (cable_resp.tbt_cable == TBT_CABLE_OPTICAL)
 			set_retimer_con |= BB_RETIMER_TBT_CABLE_TYPE;
 
-		/*
-		 * Bit 22: Active/Passive
-		 * 0 - Passive cable
-		 * 1 - Active cable
-		 */
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
-			set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
 			/*
 			 * Bit 20: TBT_ACTIVE_LINK_TRAINING
 			 * 0 - Active with bi-directional LSRX communication
