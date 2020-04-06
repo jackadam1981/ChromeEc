@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5350aaa4_0b9cb477",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-06T12:14:32Z",
+      "side": 1,
+      "message": "The set_data_rate and set_offset are different between BMI160 and BMI260. So, they can not be shared in common.c .\nIn the other hand, get_data_rate and get_offset are pretty much the same between BMI160 and BMI260, but I think it is better that get_* is in the same file of set_*, right?",
+      "parentUuid": "7269d4f9_85b2aa62",
+      "range": {
+        "startLine": 673,
+        "startChar": 0,
+        "endLine": 675,
+        "endChar": 26
+      },
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7760d9c7_29aaf579",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 16
@@ -45,6 +69,30 @@
       "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bc53a2c_ddc7f53a",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-06T12:14:32Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "7760d9c7_29aaf579",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 26
+      },
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
