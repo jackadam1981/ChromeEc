@@ -11,8 +11,8 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
-#include "chip/it83xx/intc.h"
 #include "driver/charger/isl923x.h"
+#include "driver/tcpm/it83xx_pd.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -27,6 +27,11 @@
 #include "tablet_mode.h"
 #include "timer.h"
 #include "uart.h"
+#include "usb_mux.h"
+#include "usb_pd_tcpm.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #include "gpio_list.h"
 
@@ -81,6 +86,8 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
+/* BC12 */
+
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {
 	.output_settle_us = 35,
@@ -121,7 +128,54 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+/* TCPC */
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it83xx_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
+	},
+	{
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it83xx_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
+	},
+};
+
+/* USB Mux */
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+};
+
+uint16_t tcpc_get_alert_status(void)
+{
+	return 0;
+}
+
+void board_reset_pd_mcu(void)
+{
+}
+
 int board_get_version(void)
 {
 	return 0;
+}
+
+int board_set_active_charge_port(int charge_port)
+{
+	CPRINTS("New chg p%d", charge_port);
+
+	return 0;
+}
+
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+}
+
+void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
+{
 }
