@@ -22,6 +22,30 @@
       "revId": "5d9e3c529dba2267e3efd692f7f7140afb609042",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3c6d0f1_afee40a5",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-06T16:59:00Z",
+      "side": 1,
+      "message": "It will fail at the next DUT control command that tries to talk with the H1. I guess we could die here if the loop counter is 0",
+      "parentUuid": "0e9321f8_d92daa4e",
+      "range": {
+        "startLine": 826,
+        "startChar": 0,
+        "endLine": 832,
+        "endChar": 6
+      },
+      "revId": "5d9e3c529dba2267e3efd692f7f7140afb609042",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
