@@ -114,7 +114,9 @@ static void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 }
 
 static void retimer_set_state_dfp(int port, mux_state_t mux_state,
-				  uint32_t *set_retimer_con)
+				  uint32_t *set_retimer_con,
+				  union tbt_mode_resp_cable cable_resp,
+				  union tbt_mode_resp_device dev_resp)
 {
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/*
@@ -129,10 +131,66 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		if (is_usb2_cable_support(port))
 			*set_retimer_con |= BB_RETIMER_USB_2_CONNECTION;
 	}
+
+	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
+		/*
+		 * Bit 16: TBT_CONNECTION
+		 * 0 - TBT not configured
+		 * 1 - TBT configured
+		 */
+		if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED)
+			*set_retimer_con |= BB_RETIMER_TBT_CONNECTION;
+
+		/*
+		 * Bit 2: RE_TIMER_DRIVER
+		 * 0 - Re-driver
+		 * 1 - Re-timer
+		 */
+		if (cable_resp.retimer_type == USB_RETIMER)
+			*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+
+		/*
+		 * Bit 17: TBT_TYPE
+		 * 0 - Type-C to Type-C Cable
+		 * 1 - Type-C Legacy TBT Adapter
+		 */
+		if (dev_resp.tbt_adapter == TBT_ADAPTER_TBT2_LEGACY)
+			*set_retimer_con |= BB_RETIMER_TBT_TYPE;
+
+		/*
+		 * Bit 18: CABLE_TYPE
+		 * 0 - Electrical cable
+		 * 1 - Optical cable
+		 */
+		if (cable_resp.tbt_cable == TBT_CABLE_OPTICAL)
+			*set_retimer_con |= BB_RETIMER_TBT_CABLE_TYPE;
+
+		/*
+		 * Bit 20: TBT_ACTIVE_LINK_TRAINING
+		 * 0 - Active with bi-directional LSRX communication
+		 * 1 - Active with uni-directional LSRX communication
+		 * Set to "0" when passive cable plug
+		 */
+		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE &&
+		    cable_resp.lsrx_comm == UNIDIR_LSRX_COMM)
+			*set_retimer_con |= BB_RETIMER_TBT_ACTIVE_LINK_TRAINING;
+
+		/*
+		 * Bits 29-28: TBT_GEN_SUPPORT
+		 * 00b - 3rd generation TBT (10.3125 and 20.625Gb/s)
+		 * 01b - 4th generation TBT (10.00005Gb/s, 10.3125Gb/s,
+		 *                           20.0625Gb/s, 20.000Gb/s)
+		 * 10..11b - Reserved
+		 */
+		*set_retimer_con |= BB_RETIMER_TBT_CABLE_GENERATION(
+				       cable_resp.tbt_rounded);
+	}
 }
 
 static void retimer_set_state_ufp(mux_state_t mux_state,
-				  uint32_t *set_retimer_con)
+				  uint32_t *set_retimer_con,
+				  union tbt_mode_resp_cable cable_resp,
+				  union tbt_mode_resp_device dev_resp)
 {
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/*
@@ -151,6 +209,20 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 		 */
 		*set_retimer_con |= BB_RETIMER_USB_DATA_ROLE;
 	}
+
+	/*
+	 * TODO: Add following bit:
+	 * Bit 16: TBT_CONNECTION
+	 * Bit 18: CABLE_TYPE
+	 * Bit 20: TBT_ACTIVE_LINK_TRAINING
+	 * Bits 29-28: TBT_GEN_SUPPORT
+	 */
+
+	 /* Bit 17: TBT_TYPE
+	  * 0 - Type-C to Type-C Cable
+	  * 1 - Type-C Legacy TBT Adapter
+	  * For UFP, TBT_TYPE = 0
+	  */
 }
 
 /**
@@ -276,53 +348,6 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 			set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
 
 		/*
-		 * Bit 16: TBT_CONNECTION
-		 * 0 - TBT not configured
-		 * 1 - TBT configured
-		 */
-		if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
-			set_retimer_con |= BB_RETIMER_TBT_CONNECTION;
-
-			/*
-			 * Bit 17: TBT_TYPE
-			 * 0 - Type-C to Type-C Cable
-			 * 1 - Type-C Legacy TBT Adapter
-			 */
-			if (dev_resp.tbt_adapter == TBT_ADAPTER_TBT2_LEGACY)
-				set_retimer_con |= BB_RETIMER_TBT_TYPE;
-
-			/*
-			 * Bits 29-28: TBT_GEN_SUPPORT
-			 * 00b - 3rd generation TBT (10.3125 and 20.625Gb/s)
-			 * 01b - 4th generation TBT (10.00005Gb/s, 10.3125Gb/s,
-			 *                           20.0625Gb/s, 20.000Gb/s)
-			 * 10..11b - Reserved
-			 */
-			set_retimer_con |= BB_RETIMER_TBT_CABLE_GENERATION(
-					       cable_resp.tbt_rounded);
-		}
-
-		/*
-		 * Bit 18: CABLE_TYPE
-		 * 0 - Electrical cable
-		 * 1 - Optical cable
-		 */
-		if (cable_resp.tbt_cable == TBT_CABLE_OPTICAL)
-			set_retimer_con |= BB_RETIMER_TBT_CABLE_TYPE;
-
-		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
-			/*
-			 * Bit 20: TBT_ACTIVE_LINK_TRAINING
-			 * 0 - Active with bi-directional LSRX communication
-			 * 1 - Active with uni-directional LSRX communication
-			 * Set to "0" when passive cable plug
-			 */
-			if (cable_resp.lsrx_comm == UNIDIR_LSRX_COMM)
-				set_retimer_con |=
-					BB_RETIMER_TBT_ACTIVE_LINK_TRAINING;
-		}
-
-		/*
 		 * Bit 23: USB4 Connection
 		 * 0 - USB4 not configured
 		 * 1 - USB4 Configured
@@ -342,10 +367,13 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 						cable_resp.tbt_cable_speed);
 	}
 
-	if (pd_get_data_role(port) == PD_ROLE_DFP)
-		retimer_set_state_dfp(port, mux_state, &set_retimer_con);
-	else
-		retimer_set_state_ufp(mux_state, &set_retimer_con);
+	if (pd_get_data_role(port) == PD_ROLE_DFP) {
+		retimer_set_state_dfp(port, mux_state, &set_retimer_con,
+				      cable_resp, dev_resp);
+	} else {
+		retimer_set_state_ufp(mux_state, &set_retimer_con,
+				      cable_resp, dev_resp);
+	}
 
 	/* Writing the register4 */
 	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
