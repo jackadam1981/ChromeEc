@@ -193,7 +193,7 @@ static void ensure_keyboard_scanned(int old_polls)
  * @param col		Column of key
  * @param pressed	Non-zero if pressed, zero if released
  */
-static void simulate_key(int row, int col, int pressed)
+void simulate_key(int row, int col, int pressed)
 {
 	int old_polls;
 
@@ -221,6 +221,17 @@ static void simulate_key(int row, int col, int pressed)
 	usleep(pressed ?
 	       keyscan_config.debounce_down_us : keyscan_config.debounce_up_us);
 	ensure_keyboard_scanned(kbd_polls);
+}
+
+/**
+ * Gets the simulated values for a given column.
+ *
+ * @param col Column of key
+ * @return The row mask of this simulated column. Each BIT(x) represents row x.
+ */
+int get_simulated_col(int col)
+{
+	return simulated_key[col];
 }
 
 /**
@@ -1001,6 +1012,7 @@ int keyboard_get_keyboard_id(void)
 
 /*****************************************************************************/
 /* Console commands */
+/* Note that other commands may be in keyboard_scan_console_cmd.c */
 #ifdef CONFIG_CMD_KEYBOARD
 static int command_ksstate(int argc, char **argv)
 {
@@ -1025,49 +1037,4 @@ static int command_ksstate(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(ksstate, command_ksstate,
 			"ksstate [on | off | force]",
 			"Show or toggle printing keyboard scan state");
-
-static int command_keyboard_press(int argc, char **argv)
-{
-	if (argc == 1) {
-		int i, j;
-
-		ccputs("Simulated keys:\n");
-		for (i = 0; i < keyboard_cols; ++i) {
-			if (simulated_key[i] == 0)
-				continue;
-			for (j = 0; j < KEYBOARD_ROWS; ++j)
-				if (simulated_key[i] & BIT(j))
-					ccprintf("\t%d %d\n", i, j);
-		}
-
-	} else if (argc == 3 || argc == 4) {
-		int r, c, p;
-		char *e;
-
-		c = strtoi(argv[1], &e, 0);
-		if (*e || c < 0 || c >= keyboard_cols)
-			return EC_ERROR_PARAM1;
-
-		r = strtoi(argv[2], &e, 0);
-		if (*e || r < 0 || r >= KEYBOARD_ROWS)
-			return EC_ERROR_PARAM2;
-
-		if (argc == 3) {
-			/* Simulate a press and release */
-			simulate_key(r, c, 1);
-			simulate_key(r, c, 0);
-		} else {
-			p = strtoi(argv[3], &e, 0);
-			if (*e || p < 0 || p > 1)
-				return EC_ERROR_PARAM3;
-
-			simulate_key(r, c, p);
-		}
-	}
-
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
-			"[col row [0 | 1]]",
-			"Simulate keypress");
 #endif
