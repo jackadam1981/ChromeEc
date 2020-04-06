@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca2e41d9_e5537938",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-06T23:06:30Z",
+      "side": 1,
+      "message": "This seems like a slightly weird enum to reuse. Are the numbers associated with each type standardized, e.g. would it be possible for a refactor to renumber the types and break this? Would it ever make sense to have an entry for a non-SOP type?",
+      "range": {
+        "startLine": 369,
+        "startChar": 27,
+        "endLine": 369,
+        "endChar": 50
+      },
+      "revId": "3e42453c8d53c140c7f0564e775b9f63bf81ca0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99284f67_64f9f1af",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-06T23:06:30Z",
+      "side": 1,
+      "message": "This seems oddly different than the two array sizes used below. Why not define your constant to be the number of possible types instead of the highest-numbered type?",
+      "range": {
+        "startLine": 381,
+        "startChar": 49,
+        "endLine": 381,
+        "endChar": 53
+      },
+      "revId": "3e42453c8d53c140c7f0564e775b9f63bf81ca0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
