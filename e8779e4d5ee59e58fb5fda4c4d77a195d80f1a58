@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e59cb025_a5c739e4",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-06T19:58:37Z",
+      "side": 1,
+      "message": "Good suggestion, I will add comments at the calls as well.\n\nFor this race condition you could be right, it didn\u0027t occur to me that we could need to handle an OCP interrupt in the middle of checking VBUS.\n\nI don\u0027t think it is an issue though. There is 2 main purposes of the rising-edge detection in flags:\n1. Don\u0027t spam the EC console.\n2. Don\u0027t send multiple OC events for a single OC event (this is functional, since this will permanently disable the port).\n\nI think the worst-case scenario for this situation is OC not triggered in vbus check, interrupt halts writing that to flags, OC is triggered in interrupt handler, interrupt is re-triggered. In that delay, the vbus check finishes and clears the flag. The next interrupt re-sets the flag; and we send 2 OC events instead of 1. I think we need 3 to trigger the \u0027disconnect required\u0027 state.\n\nThe \u0027race condition\u0027 I\u0027m worried about here is actually pretty specific:\n1. FRS triggered. Both the TCPC and PPC generate interrupts. \n2. The TCPC is serviced first (this is actually correct if there is a choice, since the TCPC has more time-sensitive events)\n3. The TCPC checks VBUS, thus clearing the FRS alert bit (here we should check the FRS bit, this is the race condition). I\u0027m also assuming we\u0027re using the PPC VBUS checking.\n4. We never detect an FRS event since the bit is already cleared when the PPC interrupt handler comes in.\n\nThe control4 check is not strictly necessary since none of those interrupts are actionable, but is included for coherence.",
+      "parentUuid": "32f4569b_db9ae83d",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e98a4605_ab9cea6b",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 16
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bec8171d_275e04a2",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-06T19:58:37Z",
+      "side": 1,
+      "message": "True, you\u0027re right, that is my mistake. I put it at 50ms since if we aren\u0027t trying to catch FRS then nothing is really urgent, especially since all of the alerts have already been registered. is 10ms more appropriate? \n\nAnd for OCP, we do check for a stuck OCP state.  Here, the SYV682 will turn off its load switch immediately and the OCP alert will go away in a few ms. We will only continue to see overcurrent if the switch is turned back on. The pd overcurrent handler will try to turn on the load switch once or twice, if it continues to see multiple overcurrents in a certain amount of time, it will permanently disable sourcing until disconnect.",
+      "parentUuid": "e98a4605_ab9cea6b",
+      "range": {
+        "startLine": 407,
+        "startChar": 2,
+        "endLine": 407,
+        "endChar": 19
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b4e4441_403e4e0c",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 16
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-06T19:32:05Z",
       "side": 1,
       "message": "Nit: This seems more immediately relevant in syv682x_interrupt, where the delay is specified.",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 57
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "151a705b_ac051ae2",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-06T19:58:37Z",
+      "side": 1,
+      "message": "You\u0027re right. Will move.",
+      "parentUuid": "6b4e4441_403e4e0c",
       "range": {
         "startLine": 432,
         "startChar": 1,
