@@ -119,6 +119,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	int port = me->usb_port;
 	union tbt_mode_resp_cable cable_resp;
 	union tbt_mode_resp_device dev_resp;
+	bool is_port_dfp = pd_get_data_role(port) == PD_ROLE_DFP ? 1 : 0;
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
@@ -137,6 +138,21 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		set_retimer_con |= BB_RETIMER_CONNECTION_ORIENTATION;
 
 	/*
+	 * For DFP:
+	 * Bit 4: USB2_CONNECTION
+	 * 0 - No USB2 Connection
+	 * 1 - USB2 connection
+	 * For passive cable, USB2_CONNECTION = 1
+	 * For active cable, USB2_CONNECTION = According to Active cable VDO2
+	 *                                     Bit 5, USB 2.0 support.
+	 *
+	 * For UFP:
+	 * Don't care
+	 */
+	if (is_port_dfp && is_usb2_cable_support(port))
+		set_retimer_con |= BB_RETIMER_USB_2_CONNECTION;
+
+	/*
 	 * Bit 5: USB_3_CONNECTION
 	 * 0 - No USB3.1 Connection
 	 * 1 - USB3.1 connection
@@ -150,7 +166,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		 * 0 - DFP
 		 * 1 - UFP
 		 */
-		if (pd_get_data_role(port) == PD_ROLE_UFP)
+		if (!is_port_dfp)
 			set_retimer_con |= BB_RETIMER_USB_DATA_ROLE;
 	}
 

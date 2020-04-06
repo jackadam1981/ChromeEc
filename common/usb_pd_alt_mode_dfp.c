@@ -456,6 +456,14 @@ enum idh_ptype get_usb_pd_cable_type(int port)
 	return cable->type;
 }
 
+bool is_usb2_cable_support(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	return cable->attr2.a2_rev30.usb_20_support & USB2_NOT_SUPPORTED ?
+		0 : 1;
+}
+
 void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 				uint16_t head)
 {
