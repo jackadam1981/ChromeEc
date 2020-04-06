@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a71f55e8_a4d70427",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-06T22:10:37Z",
+      "side": 1,
+      "message": "size_t? or at least unsigned?",
+      "range": {
+        "startLine": 232,
+        "startChar": 22,
+        "endLine": 232,
+        "endChar": 25
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cadcec55_5adaa281",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-06T22:10:37Z",
+      "side": 1,
+      "message": "now we have it in a separated function, can we bounds-check the column?",
+      "range": {
+        "startLine": 234,
+        "startChar": 22,
+        "endLine": 234,
+        "endChar": 25
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4b640b6_2811a297",
+        "filename": "common/keyboard_scan_console_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-06T22:10:37Z",
+      "side": 1,
+      "message": "We can just conditionally compile this file based on $(CONFIG_CMD_KEYBOARD) in the Makefile?\n\nA bit cleaner imo, since this is the only thing in the file.",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f003e19a_149cb8ee",
+        "filename": "common/keyboard_scan_console_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-06T22:10:37Z",
+      "side": 1,
+      "message": "this symbol should potentially be exposed thru a function as well?",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1cd41e_12130e07",
+        "filename": "common/keyboard_scan_console_cmd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-06T22:10:37Z",
+      "side": 1,
+      "message": "change to enum { KEY_PRESS, KEY_RELEASE }?",
+      "range": {
+        "startLine": 18,
+        "startChar": 36,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2795a45f_cdc5a123",
+        "filename": "common/keyboard_scan_console_cmd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-06T22:10:37Z",
+      "side": 1,
+      "message": "unsigned?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
