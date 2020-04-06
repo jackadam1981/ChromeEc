@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae22e3fe_fa5a820b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-06T16:05:20Z",
+      "side": 1,
+      "message": "In my opinion, this would be cleaner to put the delay call directly into intel_x86_sys_reset_delay().  But I\u0027m okay with this approach.",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 720,
+        "endChar": 37
+      },
+      "revId": "68fc5c6d9a2471bbe46bd3f9b3aa90e704c1ef3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d891c338_3925925b",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-06T16:05:20Z",
+      "side": 1,
+      "message": "Nit - As implemented, the default debounce time is 32 ms.",
+      "range": {
+        "startLine": 98,
+        "startChar": 33,
+        "endLine": 98,
+        "endChar": 53
+      },
+      "revId": "68fc5c6d9a2471bbe46bd3f9b3aa90e704c1ef3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bc84a53_2b2827e0",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-06T16:05:20Z",
+      "side": 1,
+      "message": "Need to document the return value - debounce time in microseconds.",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "68fc5c6d9a2471bbe46bd3f9b3aa90e704c1ef3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
