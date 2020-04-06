@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f2daa6d_1cb64075",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-06T14:54:09Z",
+      "side": 1,
+      "message": "if strtoi fails, we don\u0027t want to call get_i2c_port on it?",
+      "range": {
+        "startLine": 1368,
+        "startChar": 12,
+        "endLine": 1368,
+        "endChar": 24
+      },
+      "revId": "5ce6cfd3a11e00ce1480eea6e590c81a2639db89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25bbeb55_ed521b79",
+        "filename": "common/i2c_trace.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-06T14:54:09Z",
+      "side": 1,
+      "message": "presumably, it would be nice to provide padding on these values so it reads like a table?",
+      "range": {
+        "startLine": 67,
+        "startChar": 17,
+        "endLine": 67,
+        "endChar": 24
+      },
+      "revId": "5ce6cfd3a11e00ce1480eea6e590c81a2639db89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
