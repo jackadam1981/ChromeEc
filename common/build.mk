@@ -163,6 +163,7 @@ common-$(CONFIG_CMD_MEM)+=memory_commands.o
 common-$(HAS_TASK_HOSTCMD)+=host_command.o ec_features.o
 common-$(HAS_TASK_PDCMD)+=host_command_pd.o
 common-$(HAS_TASK_KEYSCAN)+=keyboard_scan.o
+common-$(CONFIG_CMD_KEYBOARD)+=keyboard_scan_console_cmd.o
 common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 

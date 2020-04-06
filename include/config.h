@@ -1217,7 +1217,7 @@
 #undef  CONFIG_CMD_ILIM
 #define CONFIG_CMD_INA
 #undef  CONFIG_CMD_JUMPTAGS
-#define CONFIG_CMD_KEYBOARD
+#define CONFIG_CMD_KEYBOARD /* Depends on HAS_TASK_KEYSCAN */
 #undef  CONFIG_CMD_LEDTEST
 #undef  CONFIG_CMD_LID_ANGLE
 #undef  CONFIG_CMD_MCDP
@@ -5286,5 +5286,10 @@
 #define CONFIG_ACCEL_CAL_NEWTON_RADIUS_THRES 0.001f
 #endif
 #endif /* CONFIG_ONLINE_CALIB */
+
+/* The keyboard console command depend on the keyscan task */
+#ifndef HAS_TASK_KEYSCAN
+#undef CONFIG_CMD_KEYBOARD
+#endif
 
 #endif  /* __CROS_EC_CONFIG_H */
