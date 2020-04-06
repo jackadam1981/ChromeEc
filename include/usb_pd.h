@@ -1824,6 +1824,22 @@ struct pd_cable *pd_get_cable_attributes(int port);
  */
 bool is_usb2_cable_support(int port);
 
+/*
+ * Returns the Cable revision 2.0 cable speed
+ *
+ * @param port  USB-C port number
+ * @return      Rev 2.0 Cable speed
+ */
+enum usb_rev20_ss get_usb_pd_rev20_cable_speed(int port);
+
+/*
+ * Returns the Cable revision 3.0 cable speed
+ *
+ * @param port  USB-C port number
+ * @return      Rev 3.0 Cable speed
+ */
+enum usb_rev30_ss get_usb_pd_rev30_cable_speed(int port);
+
 /**
  * Set DFP enter mode flags if available
  *

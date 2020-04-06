@@ -464,6 +464,20 @@ bool is_usb2_cable_support(int port)
 		0 : 1;
 }
 
+enum usb_rev20_ss get_usb_pd_rev20_cable_speed(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	return cable->rev == PD_REV20 ? cable->attr.p_rev20.ss : 0;
+}
+
+enum usb_rev30_ss get_usb_pd_rev30_cable_speed(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	return cable->rev == PD_REV30 ? cable->attr.p_rev30.ss : 0;
+}
+
 void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 				uint16_t head)
 {

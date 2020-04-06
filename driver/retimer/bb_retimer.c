@@ -171,6 +171,16 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	}
 
 	/*
+	 * Bit 6: USB3_Speed
+	 * 0 – USB3 is limited to Gen1
+	 * 1 – USB3 Gen1/Gen2 supported
+	 */
+	if (get_usb_pd_rev20_cable_speed(port) == USB_R20_SS_U31_GEN1_GEN2 ||
+	    get_usb_pd_rev30_cable_speed(port) == USB_R30_SS_U32_U40_GEN2 ||
+	    get_usb_pd_rev30_cable_speed(port) == USB_R30_SS_U40_GEN3)
+		set_retimer_con |= BB_RETIMER_USB_3_SPEED;
+
+	/*
 	 * Bit 8: DP_CONNECTION
 	 * 0 – No DP connection
 	 * 1 – DP connected
