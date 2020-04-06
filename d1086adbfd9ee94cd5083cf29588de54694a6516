@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46bc00c4_202e9c4d",
+        "filename": "power/intel_x86.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-06T20:28:46Z",
+      "side": 1,
+      "message": "pls use \"repo upload\", git hooks will ensure the coding guideline are correct",
+      "range": {
+        "startLine": 98,
+        "startChar": 74,
+        "endLine": 98,
+        "endChar": 82
+      },
+      "revId": "d1086adbfd9ee94cd5083cf29588de54694a6516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
