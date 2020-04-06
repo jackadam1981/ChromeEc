@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63671f17_1dd6c693",
+        "filename": "driver/accelgyro_bmi260_config_tbin.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-04-06T17:49:18Z",
+      "side": 1,
+      "message": "I would prefer either:\n\n[A] This is an actual text file that #include\u0027s the third_party path.\n\n-or-\n\n[B] Just delete this and have all includes of accelgyro_bmi260_config_tbin.h reference its third_party path directly.",
+      "revId": "4320c5b2672ab1065d655aace577ebcd7522618b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
