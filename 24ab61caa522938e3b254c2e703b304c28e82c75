@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24855309_4b9b2683",
+        "filename": "extra/i2c_pseudo/50-i2c-pseudo.rules",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-06T22:30:54Z",
+      "side": 1,
+      "message": "It\u0027s still standard on Debian-based distros, but not created by default on Gentoo or Arch, it seems.  I\u0027m not sure if any group has replaced plugdev as the common way of providing access to these sorts of devices; AFAIKT the group just gets created as necessary on platforms where it doesn\u0027t exist by default.\n\nvapier@ probably has an opinion, but we could (1) not install the udev rule if plugdev doesn\u0027t exist, (2) create plugdev as a system group if it doesn\u0027t exist, or (3) install the udev rule anyway and let it fail",
+      "parentUuid": "c4d26c26_a0e8a59c",
+      "range": {
+        "startLine": 1,
+        "startChar": 42,
+        "endLine": 1,
+        "endChar": 57
+      },
+      "revId": "24ab61caa522938e3b254c2e703b304c28e82c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "804df306_7f9748c1",
         "filename": "extra/i2c_pseudo/install",
         "patchSetId": 3
@@ -88,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "6f207ef1_2d499150",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-06T22:30:54Z",
+      "side": 1,
+      "message": "This appears to be standard across distros.  I don\u0027t see a reliable way to query the correct path that isn\u0027t just as hard-coded.",
+      "parentUuid": "d6198be0_cd711104",
+      "range": {
+        "startLine": 12,
+        "startChar": 31,
+        "endLine": 12,
+        "endChar": 49
+      },
+      "revId": "24ab61caa522938e3b254c2e703b304c28e82c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "511dcc3d_674d6a3c",
         "filename": "extra/i2c_pseudo/install",
         "patchSetId": 3
@@ -99,6 +147,24 @@
       "writtenOn": "2020-04-06T22:07:59Z",
       "side": 1,
       "message": "Skip this, I\u0027d rather this script not do anything extraneous.",
+      "revId": "24ab61caa522938e3b254c2e703b304c28e82c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3fbbad2_f3908de0",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-06T22:30:54Z",
+      "side": 1,
+      "message": "It\u0027s effectively a dependency of i2c-pseudo.  I\u0027m not sure why i2c-pseudo doesn\u0027t already require it to be loaded.  Maybe this would be better served adding it as a dependency via a MODULE_SOFTDEP macro or whatever?",
+      "parentUuid": "511dcc3d_674d6a3c",
       "revId": "24ab61caa522938e3b254c2e703b304c28e82c75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
