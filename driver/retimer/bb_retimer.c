@@ -109,6 +109,22 @@ static void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 	}
 }
 
+static void set_active_passive_cable_dfp(int port, const mux_state_t mux_state,
+				uint32_t *set_retimer_con)
+{
+	/*
+	 * For DFP,
+	 * If Alternate mode is Thunderbolt_compat/DP/USB4,
+	 * ACTIVE/PASIVE = Discover mode SOP' response.
+	 *                 0 otherwiae
+	 */
+	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) &&
+	    (mux_state & (USB_PD_MUX_DP_ENABLED |
+			  USB_PD_MUX_TBT_COMPAT_ENABLED |
+			  USB_PD_MUX_USB4_ENABLED)))
+		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
+}
+
 static void retimer_set_tbt_bits_dfp(uint32_t *set_retimer_con,
 				const union tbt_mode_resp_cable cable_resp,
 				const union tbt_mode_resp_device dev_resp)
@@ -262,6 +278,16 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 			set_retimer_con |= BB_RETIMER_HPD_LVL;
 	}
 
+	/*
+	 * Bit 22: ACTIVE/PASSIVE
+	 * 0 – Passive cable
+	 * 1 - Active cable
+	 */
+	if (is_port_dfp)
+		set_active_passive_cable_dfp(port, mux_state, &set_retimer_con);
+
+	/* TODO: Set Active/Passive bit for UFP */
+
 	if (mux_state & (USB_PD_MUX_TBT_COMPAT_ENABLED |
 			 USB_PD_MUX_USB4_ENABLED)) {
 		cable_resp = get_cable_tbt_vdo(port);
@@ -280,14 +306,6 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 			}
 			/* TODO: Add retimer_set_bits for UFP */
 		}
-
-		/*
-		 * Bit 22: Active/Passive
-		 * 0 - Passive cable
-		 * 1 - Active cable
-		 */
-		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
-			set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
 
 		/*
 		 * Bit 23: USB4 Connection
