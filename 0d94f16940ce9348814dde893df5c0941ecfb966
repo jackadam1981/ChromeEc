@@ -22,6 +22,30 @@
       "revId": "0d94f16940ce9348814dde893df5c0941ecfb966",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c455b89_52ee52b0",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-06T05:39:50Z",
+      "side": 1,
+      "message": "1. 160/260.h will not include the common.h. So, there should be no cyclic inclusion, I think?\n2. This problem can be solved by next CL(https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2086534/).\nI just follow the pattern of accel_kionix.c. It will be like:\n```\n/* List of range values in +/-G\u0027s and their associated register values. */\nconst struct bmi_accel_param_pair g_ranges[][4] \u003d {\n#ifdef CONFIG_ACCELGYRO_BMI160\n\t{ {2,  BMI160_GSEL_2G},\n\t  {4,  BMI160_GSEL_4G},\n\t  {8,  BMI160_GSEL_8G},\n\t  {16, BMI160_GSEL_16G} },\n#endif\n#ifdef CONFIG_ACCELGYRO_BMI260\n\t{ {2,  BMI260_GSEL_2G},\n\t  {4,  BMI260_GSEL_4G},\n\t  {8,  BMI260_GSEL_8G},\n\t  {16, BMI260_GSEL_16G} },\n#endif\n};\n```",
+      "parentUuid": "c0376141_adbac53b",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "0d94f16940ce9348814dde893df5c0941ecfb966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
