@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b9cda377_ccf83b2d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-06T12:35:29Z",
+      "side": 1,
+      "message": "Added config to fuzz test in a new CL",
+      "parentUuid": "aee99ae8_d347a871",
+      "range": {
+        "startLine": 210,
+        "startChar": 7,
+        "endLine": 210,
+        "endChar": 33
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e2770ca_690ebea7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -93,6 +117,30 @@
       "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a8d2081_644d4535",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-06T12:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e2770ca_690ebea7",
+      "range": {
+        "startLine": 1280,
+        "startChar": 7,
+        "endLine": 1280,
+        "endChar": 33
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +188,30 @@
       "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d17708c9_1e9efa4a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4200,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-06T12:35:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03994d60_cbdda490",
+      "range": {
+        "startLine": 4199,
+        "startChar": 2,
+        "endLine": 4200,
+        "endChar": 48
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "b9038059_04ee8850",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4248,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-06T12:35:29Z",
+      "side": 1,
+      "message": "I\u0027ll add a comment.  Seems like a potential policy field the AP could tweak for the future though: max busy/wait retries for a command (probably one max to rule them all)",
+      "parentUuid": "2878ee6b_02e49c1b",
+      "range": {
+        "startLine": 4247,
+        "startChar": 3,
+        "endLine": 4248,
+        "endChar": 37
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57517e21_1fca0168",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -234,6 +330,30 @@
       "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72353ce7_cf3af525",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4265,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-06T12:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57517e21_1fca0168",
+      "range": {
+        "startLine": 4263,
+        "startChar": 2,
+        "endLine": 4265,
+        "endChar": 4
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
