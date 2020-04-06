@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "7269d4f9_85b2aa62",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-06T09:18:21Z",
+      "side": 1,
+      "message": "move to common.c?",
+      "range": {
+        "startLine": 673,
+        "startChar": 0,
+        "endLine": 675,
+        "endChar": 26
+      },
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7760d9c7_29aaf579",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-06T09:18:21Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 26
+      },
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab5e6e28_fec27b5c",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-06T09:18:21Z",
+      "side": 1,
+      "message": "should be in accelgyro_bmi_common.h since many definitions use BMI160 and BMI260 registers",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c361953f_1b39c7b3",
+        "filename": "driver/accelgyro_bmi_common.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-04-06T09:18:21Z",
+      "side": 1,
+      "message": "include accelgyro_bmi160.h and accelgyro_bmi260.h?",
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91d8ffd8_b54421f2",
         "filename": "third_party/bmi260/LICENSE",
         "patchSetId": 16
