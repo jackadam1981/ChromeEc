@@ -670,8 +670,12 @@ int chip_i2c_xfer(int port, uint16_t slave_addr_flags,
 	/* Make sure we're in a good state to start */
 	if ((flags & I2C_XFER_START) && (i2c_is_busy(port)
 		|| (i2c_get_line_levels(port) != I2C_LINE_IDLE))) {
+
 		/* Attempt to unwedge the port. */
-		i2c_unwedge(port);
+		pd->err = i2c_unwedge(port);
+		if (pd->err)
+			return pd->err;
+
 		/* reset i2c port */
 		i2c_reset(port, I2C_RC_NO_IDLE_FOR_START);
 	}
