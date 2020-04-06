@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "ca281aff_2e5f2a87",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-06T22:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "804df306_7f9748c1",
+      "revId": "24ab61caa522938e3b254c2e703b304c28e82c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6198be0_cd711104",
         "filename": "extra/i2c_pseudo/install",
         "patchSetId": 3
@@ -136,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "40c610a9_c62a93cb",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-06T22:54:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b1bd1fd_0aecd781",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 7
+      },
+      "revId": "24ab61caa522938e3b254c2e703b304c28e82c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "511dcc3d_674d6a3c",
         "filename": "extra/i2c_pseudo/install",
         "patchSetId": 3
@@ -165,6 +207,24 @@
       "side": 1,
       "message": "It\u0027s effectively a dependency of i2c-pseudo.  I\u0027m not sure why i2c-pseudo doesn\u0027t already require it to be loaded.  Maybe this would be better served adding it as a dependency via a MODULE_SOFTDEP macro or whatever?",
       "parentUuid": "511dcc3d_674d6a3c",
+      "revId": "24ab61caa522938e3b254c2e703b304c28e82c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e539b50a_09806f61",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-06T22:54:44Z",
+      "side": 1,
+      "message": "Added MODULE_SOFTDEP as a POC; let me know what you think.",
+      "parentUuid": "f3fbbad2_f3908de0",
       "revId": "24ab61caa522938e3b254c2e703b304c28e82c75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
