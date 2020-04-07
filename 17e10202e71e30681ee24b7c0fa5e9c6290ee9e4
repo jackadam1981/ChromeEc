@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1298cab2_537e58ca",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-07T21:32:46Z",
+      "side": 1,
+      "message": "use board_get_max_tbt_speed()",
+      "range": {
+        "startLine": 330,
+        "startChar": 3,
+        "endLine": 330,
+        "endChar": 46
+      },
+      "revId": "17e10202e71e30681ee24b7c0fa5e9c6290ee9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
