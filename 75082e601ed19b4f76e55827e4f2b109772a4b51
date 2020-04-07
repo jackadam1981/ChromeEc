@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2bc72819_73f21cc5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4376,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T23:32:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eec9a0b6_931d173a",
+      "range": {
+        "startLine": 4376,
+        "startChar": 6,
+        "endLine": 4376,
+        "endChar": 47
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65b71f31_7a9b212b",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -69,6 +93,30 @@
       "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d44a95b_10efd6a5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4396,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T23:32:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a57c4b0f_366a1f23",
+      "range": {
+        "startLine": 4396,
+        "startChar": 6,
+        "endLine": 4396,
+        "endChar": 11
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "a74d0c40_24e481e6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4400,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T23:32:21Z",
+      "side": 1,
+      "message": "I was referencing the 1.2 spec and not the 2.0.... things have changed.  I have some more reading in store for me",
+      "parentUuid": "de9e9ef1_263b5444",
+      "range": {
+        "startLine": 4400,
+        "startChar": 14,
+        "endLine": 4400,
+        "endChar": 36
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2e6ecb3_30f5d321",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -163,6 +235,30 @@
       "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f34d46b5_8ac64e10",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4403,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T23:32:21Z",
+      "side": 1,
+      "message": "I was trying to follow the spec. Aseda is probably right.",
+      "parentUuid": "9b4e6957_13989685",
+      "range": {
+        "startLine": 4403,
+        "startChar": 4,
+        "endLine": 4403,
+        "endChar": 42
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
