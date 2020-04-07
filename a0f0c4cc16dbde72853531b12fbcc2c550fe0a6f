@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73b5f6ed_04fa9ec8",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-07T15:58:44Z",
+      "side": 1,
+      "message": "Nit: This seems like a straightforward place to use NUM_SOP_STAR_TYPES. Did you prefer to stay consistent with the non-CONFIG_USB_PD_DECODE_SOP case?",
+      "range": {
+        "startLine": 369,
+        "startChar": 29,
+        "endLine": 369,
+        "endChar": 58
+      },
+      "revId": "a0f0c4cc16dbde72853531b12fbcc2c550fe0a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

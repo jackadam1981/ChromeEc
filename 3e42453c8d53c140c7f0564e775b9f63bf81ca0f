@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "279f2f58_e2d4c87b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-07T15:58:44Z",
+      "side": 1,
+      "message": "I\u0027m not worried about it not working. I was mainly worried that tcpm_transmit_type could diverge from being suitable for this use case, but it sounds like that is unlikely.",
+      "parentUuid": "0a535d63_f11d8769",
+      "range": {
+        "startLine": 369,
+        "startChar": 27,
+        "endLine": 369,
+        "endChar": 50
+      },
+      "revId": "3e42453c8d53c140c7f0564e775b9f63bf81ca0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99284f67_64f9f1af",
         "filename": "include/usb_pd.h",
         "patchSetId": 5
