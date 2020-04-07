@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e7d23ace_9c4879cb",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-04-07T06:22:12Z",
+      "side": 1,
+      "message": "that makes the script harder to maintain and unreliable.  things like existence of groups should not affect the flow of the cwd.\n\nthe way David has written it here is def the better answer.\n\nthe only other viable idiom is to never `cd` and instead set a variable to this value that gets expanded.  that tends to be preferred when processing user arguments that involve pathnames (which this script doesn\u0027t).",
+      "parentUuid": "8c7cca26_16ab7666",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dfa4d65_15881a6d",
         "filename": "extra/i2c_pseudo/install",
         "patchSetId": 5
