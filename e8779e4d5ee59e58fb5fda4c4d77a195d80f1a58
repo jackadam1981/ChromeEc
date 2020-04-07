@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "83951179_ff16cd74",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T20:59:24Z",
+      "side": 1,
+      "message": "So it looks like because of task priority it shouldn\u0027t be an issue.\n\nfor SYV682, the VBUS reading does work. I thought the issue was that it didn\u0027t generate an interrupt, so we prefer to use the TCPC, right? We can do that but I think it should be a separate CL.",
+      "parentUuid": "9382eaa9_eabcff71",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e98a4605_ab9cea6b",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 16
@@ -141,6 +165,30 @@
       "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3003869_b08f67c5",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T20:59:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec8171d_275e04a2",
+      "range": {
+        "startLine": 407,
+        "startChar": 2,
+        "endLine": 407,
+        "endChar": 19
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

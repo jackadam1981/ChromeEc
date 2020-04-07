@@ -22,6 +22,30 @@
       "revId": "a4873aa71b0dde81a8c0685d71da8c560e1bbb80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7dfd644_9a330f3b",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T20:59:24Z",
+      "side": 1,
+      "message": "I did it, let me know if I did it correctly, I\u0027m not as confident on style with macros.",
+      "parentUuid": "d3d358fb_3e4f0fce",
+      "range": {
+        "startLine": 408,
+        "startChar": 34,
+        "endLine": 408,
+        "endChar": 36
+      },
+      "revId": "a4873aa71b0dde81a8c0685d71da8c560e1bbb80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
