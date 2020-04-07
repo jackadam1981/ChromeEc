@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a535d63_f11d8769",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T05:13:04Z",
+      "side": 1,
+      "message": "The type enum isn\u0027t a part of the spec, but it is heavily used in the PRL and PE layers in the new stack so I would be surprised if it were re-ordered.  We already assume the enum order somewhat for NUM_SOP_STAR_TYPES which we use to find the boundary of the transmit types in that enum.\n\nEach port or cable will return one DiscoverIdentity ACK and I don\u0027t know of a way for the contents to differ.  We always want to clear data after a disconnect, so we wouldn\u0027t keep past results.  Technically there are SOP\u0027_Debug and SOP\u0027\u0027_Debug types but I don\u0027t anticipate those being used and don\u0027t want to waste static space.\n\nAre there any situations you\u0027re worried we\u0027re missing here?",
+      "parentUuid": "ca2e41d9_e5537938",
+      "range": {
+        "startLine": 369,
+        "startChar": 27,
+        "endLine": 369,
+        "endChar": 50
+      },
+      "revId": "3e42453c8d53c140c7f0564e775b9f63bf81ca0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99284f67_64f9f1af",
         "filename": "include/usb_pd.h",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "3e42453c8d53c140c7f0564e775b9f63bf81ca0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b323d7_7363167e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T05:13:04Z",
+      "side": 1,
+      "message": "Done.\n\nThough note the arrays below will become 2-d arrays when we collect cable information.  Or an array of structures, if you prefer since I by and large plan to leave the implementation details up to you.",
+      "parentUuid": "99284f67_64f9f1af",
+      "range": {
+        "startLine": 381,
+        "startChar": 49,
+        "endLine": 381,
+        "endChar": 53
+      },
+      "revId": "3e42453c8d53c140c7f0564e775b9f63bf81ca0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
