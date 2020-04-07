@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2a5a8530_9274840d",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-07T17:53:13Z",
+      "side": 1,
+      "message": "Actually, the major reason I put this at the top is because make always runs using the Makefile in the current directory, so the script was totally broken and would happily clean up and build the wrong directory if you run it via path from somewhere else (such as hdctools).  Was this an intended behavior?",
+      "parentUuid": "e7d23ace_9c4879cb",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dfa4d65_15881a6d",
         "filename": "extra/i2c_pseudo/install",
         "patchSetId": 5
@@ -90,6 +114,24 @@
     },
     {
       "key": {
+        "uuid": "ad8ec2ef_4b5a1546",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-07T17:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dfa4d65_15881a6d",
+      "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34746987_4553b738",
         "filename": "extra/i2c_pseudo/install",
         "patchSetId": 5
@@ -104,6 +146,24 @@
       "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4877ce23_cd510fc7",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-07T17:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34746987_4553b738",
+      "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -127,6 +187,30 @@
       "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acad8163_43b864bb",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-07T17:53:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2db0b133_7bbcedb1",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
