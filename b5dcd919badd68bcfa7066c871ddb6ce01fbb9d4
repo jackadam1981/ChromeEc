@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cc12167a_7d6f86fb",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T21:58:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a13a054_bab02fcb",
+      "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c7ce28d_62d38ff4",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 18
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-07T21:29:24Z",
       "side": 1,
       "message": "Why is this function calling into the IRQ handler?",
+      "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe11018c_60e56f54",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T21:58:11Z",
+      "side": 1,
+      "message": "Avoid race conditions, interrupts are clear on read so we need to check them whenever we read that register.",
+      "parentUuid": "4c7ce28d_62d38ff4",
       "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4dc87215_391bc8fa",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T21:58:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "438dede1_4d4e4093",
+      "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9b296a4_d3c98509",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 18
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "ce2bc381_6640cda3",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T21:58:11Z",
+      "side": 1,
+      "message": "Keith asked me to, I think because we use it twice below for different CONFIG options, so would be nice to only change the delay in 1 spot",
+      "parentUuid": "a9b296a4_d3c98509",
+      "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d0a5a45_458d653f",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 18
@@ -81,6 +153,24 @@
       "writtenOn": "2020-04-07T21:29:24Z",
       "side": 1,
       "message": "It would be nice to put a comment here expanding upon why you revisit this every 10ms.",
+      "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17561685_94a73e25",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T21:58:11Z",
+      "side": 1,
+      "message": "What are you thinking, directly above I say \"repeat until interrupts are cleared\"",
+      "parentUuid": "9d0a5a45_458d653f",
       "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
