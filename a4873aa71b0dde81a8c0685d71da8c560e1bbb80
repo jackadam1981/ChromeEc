@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3d358fb_3e4f0fce",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-07T17:22:16Z",
+      "side": 1,
+      "message": "Nit - should create a macro that is shared by both syv682x_interrupt_delayed() in this function.",
+      "range": {
+        "startLine": 408,
+        "startChar": 34,
+        "endLine": 408,
+        "endChar": 36
+      },
+      "revId": "a4873aa71b0dde81a8c0685d71da8c560e1bbb80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
