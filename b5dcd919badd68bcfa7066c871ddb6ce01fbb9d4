@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "59adf95f_5702d894",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T22:34:57Z",
+      "side": 1,
+      "message": "Yes I can add it, its also included below on the comments for this function.",
+      "parentUuid": "bd122eeb_ea630eb1",
+      "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "438dede1_4d4e4093",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 18
@@ -261,6 +279,24 @@
       "side": 1,
       "message": "+1. It might also be nice to say why 10 was chosen. Does one of those events take some minimum time to clear?",
       "parentUuid": "38aa2d48_164eab3a",
+      "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23f7b11d_66c6df8c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T22:34:57Z",
+      "side": 1,
+      "message": "Will do. The 10ms is not significant. We already have the mechanism to only trigger on the rising edge so that delay could be anything. If it is too long we could potentially violate FRS event timing but that is a weird corner case, other than that I don\u0027t think it really matters. There are some that take minimum times to clear but the time is dependent on electrical properties (RC constant etc.), plus we don\u0027t really care about the falling edges of the interrupts.",
+      "parentUuid": "577d4dee_4d87c8a4",
       "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
