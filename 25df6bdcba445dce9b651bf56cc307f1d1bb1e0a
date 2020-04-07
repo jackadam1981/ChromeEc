@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8c7cca26_16ab7666",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-04-07T06:00:10Z",
+      "side": 1,
+      "message": "Move this so it only happens when the plugdev group exists.\n\nI also lean towards avoiding the chdir, and just doing:\n  sudo cp -iv \"$(dirname \"$0\")/50-i2c-pseudo.rules\" ...\n\nThat\u0027s not a strong preference though, keeping the chdir is fine if you prefer.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dfa4d65_15881a6d",
         "filename": "extra/i2c_pseudo/install",
         "patchSetId": 5
@@ -30,6 +53,29 @@
       "writtenOn": "2020-04-07T04:46:33Z",
       "side": 1,
       "message": "you want to use getent instead of probing /etc/group which might not be the relevant authority\n\n if getent group plugdev \u003e/dev/null; then",
+      "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db0b133_7bbcedb1",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-04-07T06:00:10Z",
+      "side": 1,
+      "message": "nit: 1\u003e\u00262 to match existing style.",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 15
+      },
       "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
