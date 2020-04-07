@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f3e3fd5_6cc02e42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "Test with some normal PR swaps on a board to ensure the shared state changes are good",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71de893f_fb6f8768",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3443,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "Also include section titles to help searching when the spec changes.  In the PD 3.0 Version 2.0 + ECNs spec, this appears to be an enter_usb diagram.  Similarly, the section mentioned below is a security state diagram",
+      "range": {
+        "startLine": 3443,
+        "startChar": 20,
+        "endLine": 3443,
+        "endChar": 25
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1423802a_8d97d629",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3455,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "Generally, follow the text if text and diagrams disagree as far as I know.",
+      "range": {
+        "startLine": 3452,
+        "startChar": 0,
+        "endLine": 3455,
+        "endChar": 4
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad9e5bd2_1422c4d6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3486,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "What happens when an unexpected message is received?  Do we just time out and go to error recovery?  Note if that\u0027s the intention.",
+      "range": {
+        "startLine": 3486,
+        "startChar": 2,
+        "endLine": 3486,
+        "endChar": 3
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6211f372_b7547786",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3492,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "Out of curiosity, moved because you saw an issue, or out of caution?",
+      "range": {
+        "startLine": 3489,
+        "startChar": 0,
+        "endLine": 3492,
+        "endChar": 4
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d015f498_03852339",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3661,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "You\u0027ll also need to add a special case for no GoodCRC:\n\nThe SenderResponseTimer times out or\nThe FR_Swap Message is not sent after retries (a GoodCRC Message has not been received). A soft reset Shall Not\nbe initiated in this case.\n\nCheck pe_report_error for the states we consider special cases and add this there if needed.",
+      "range": {
+        "startLine": 3660,
+        "startChar": 0,
+        "endLine": 3661,
+        "endChar": 43
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13dafb23_4b66f2eb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4937,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "Maybe sync with Eric since he had a CL covering this?  I can review if it\u0027s a matter of needing a reviewer",
+      "range": {
+        "startLine": 4936,
+        "startChar": 0,
+        "endLine": 4937,
+        "endChar": 35
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21516214_a9b6f632",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4959,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "Not a valid reply for get_snk_cap that I know of.  I believe we can also get Not_Supported from any state, now that I\u0027m reading the control message section of the spec.",
+      "range": {
+        "startLine": 4959,
+        "startChar": 9,
+        "endLine": 4959,
+        "endChar": 29
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ec7b45e_1a05b728",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "Probably quote the TCPCI spec that these should both be set for FRS.  I see it in a diagram now that I\u0027m looking, but it\u0027s not immediately obvious.",
+      "range": {
+        "startLine": 973,
+        "startChar": 5,
+        "endLine": 973,
+        "endChar": 43
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35d1990f_22842a67",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "Probably also note that it looks like the TCPCI spec is the one dictating that we clear and ignore all other alerts.  We\u0027ll see if that leads to fun bugs",
+      "range": {
+        "startLine": 978,
+        "startChar": 0,
+        "endLine": 979,
+        "endChar": 10
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee33316_42dfac03",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T22:41:58Z",
+      "side": 1,
+      "message": "Should fake prl do this?",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 42
+      },
+      "revId": "41a7722b99f6a5d09813891a35877ae59e21f997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
