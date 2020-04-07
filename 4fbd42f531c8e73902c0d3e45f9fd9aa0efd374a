@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fc01665d_ccfec8bf",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-07T05:50:58Z",
+      "side": 0,
+      "message": "CL:2138148 will remove this GPIO",
+      "parentUuid": "feb905af_ea8498d2",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 35
+      },
+      "revId": "4fbd42f531c8e73902c0d3e45f9fd9aa0efd374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1d9a082_f1675b2f",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-01T06:06:49Z",
       "side": 0,
       "message": "UNIMPLEMENTED it",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 32
+      },
+      "revId": "4fbd42f531c8e73902c0d3e45f9fd9aa0efd374a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c81341c7_7e74cb97",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-07T05:50:58Z",
+      "side": 0,
+      "message": "CL:2138148 will remove this GPIO",
+      "parentUuid": "d1d9a082_f1675b2f",
       "range": {
         "startLine": 109,
         "startChar": 5,

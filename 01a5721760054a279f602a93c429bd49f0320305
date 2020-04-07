@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53f39097_f6818854",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-07T05:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e76f9044_f7824a71",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 20
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa570599_d84cb5ae",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f894f8c2_bc9ce077",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-07T05:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa570599_d84cb5ae",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 6
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18527749_8a18f45c",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-01T06:06:49Z",
       "side": 1,
       "message": "remove and UNIMPLEMENTED these GPIO in gpio.inc",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 20
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "153427b9_625fceb7",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-07T05:50:58Z",
+      "side": 1,
+      "message": "CL:2138148 will move this function from baseboard to volteer board, so do not need to change.\nI will rebase this change when 2138148 is merged",
+      "parentUuid": "18527749_8a18f45c",
       "range": {
         "startLine": 674,
         "startChar": 0,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "15b42ce1_fb86a590",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-07T05:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "455486e5_b87e23d2",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fa5e6e1_14f79d8f",
         "filename": "baseboard/volteer/baseboard.h",
         "patchSetId": 2
@@ -137,6 +233,30 @@
       "revId": "01a5721760054a279f602a93c429bd49f0320305",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b622f142_72a96634",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-07T05:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fa5e6e1_14f79d8f",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "df132c3a_6483d4d7",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-07T05:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcc785f5_3457b086",
+      "range": {
+        "startLine": 57,
+        "startChar": 41,
+        "endLine": 57,
+        "endChar": 48
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "faacf553_9f746359",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 2
@@ -174,6 +318,30 @@
       "writtenOn": "2020-04-01T06:06:49Z",
       "side": 1,
       "message": "GPIO_INT(6AXIS_INT_L,\t\tPIN(5, 6), GPIO_INT_FALLING,\tbmi160_interrupt)\nand move to Sensor Interrupts group",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "01a5721760054a279f602a93c429bd49f0320305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e069bcb8_ead8188c",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-07T05:50:58Z",
+      "side": 1,
+      "message": "Volteer baseboard does not include accelgyro_bmi160.\nI will modify the accelgyro define for another CL.",
+      "parentUuid": "faacf553_9f746359",
       "range": {
         "startLine": 119,
         "startChar": 0,
