@@ -24,8 +24,10 @@ class ServoUpdaterException(Exception):
 BOARD_C2D2 = "c2d2"
 BOARD_SERVO_MICRO = "servo_micro"
 BOARD_SERVO_V4 = "servo_v4"
+BOARD_SERVO_V41 = "servo_v41"
 BOARD_SWEETBERRY = "sweetberry"
-SERVO_BOARDS = (BOARD_C2D2, BOARD_SERVO_MICRO, BOARD_SERVO_V4, BOARD_SWEETBERRY)
+SERVO_BOARDS = (BOARD_C2D2, BOARD_SERVO_MICRO, BOARD_SWEETBERRY,
+                BOARD_SERVO_V4, BOARD_SERVO_V41)
 
 DEFAULT_BASE_PATH = '/usr/'
 TEST_IMAGE_BASE_PATH = '/usr/local/'
@@ -172,7 +174,7 @@ def findfiles(cname, fname):
   check for board.json, board.bin
 
   Args:
-    cname: config name, or board name. eg. "servo_v4".
+    cname: config name, or board name. eg. "servo_v4.json" or "servo_v4"
     fname: firmware binary name. Can be None to try default.
   Returns:
     cname, fname: validated filenames selected from the path.
@@ -196,22 +198,29 @@ def findfiles(cname, fname):
     newname = os.path.join(configs_path, cname)
     if os.path.isfile(newname):
       cname = newname
-    elif os.path.isfile(newname + ".json"):
+    else:
       # Try appending ".json" to convert board name to config file.
       cname = newname + ".json"
-    else:
-      raise ServoUpdaterException("Can't find file: %s." % cname)
+    if not os.path.isfile(cname):
+      raise ServoUpdaterException("Can't find json file: %s." % cname)
+
+  with open(cname) as data_file:
+    data = json.load(data_file)
+  boardname = data['board']
 
   if not fname:
     # If None, try to infer board name from config.
-    for board in SERVO_BOARDS:
-      if board in cname:
-        newname = os.path.join(firmware_path, board + ".bin")
-        if os.path.isfile(newname):
-          fname = newname
-          break
+    if boardname in SERVO_BOARDS:
+      binary_file = boardname + ".bin"
+      newname = os.path.join(firmware_path, binary_file)
+      if os.path.isfile(newname):
+        fname = newname
+      else:
+        raise ServoUpdaterException("Can't find firmware binary: {}"\
+                                    .format(binary_file))
     else:
-      raise ServoUpdaterException("Can't find firmware binary file")
+      raise ServoUpdaterException("Invalid board: {}"\
+                                  .format(boardname))
   elif not os.path.isfile(fname):
     # If a name is specified but not found, try the default path.
     newname = os.path.join(firmware_path, fname)
