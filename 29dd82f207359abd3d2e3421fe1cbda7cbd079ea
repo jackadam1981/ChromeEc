@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9c0140a_ac378917",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T04:03:36Z",
+      "side": 1,
+      "message": "Actually, does this compile on its own, or does it need the subsequent patch sets?",
+      "range": {
+        "startLine": 96,
+        "startChar": 30,
+        "endLine": 96,
+        "endChar": 39
+      },
+      "revId": "29dd82f207359abd3d2e3421fe1cbda7cbd079ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
