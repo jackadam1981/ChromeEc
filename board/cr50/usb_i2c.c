@@ -23,13 +23,7 @@ int usb_i2c_board_is_enabled(void)
 	if (!board_has_ina_support())
 		return 0;
 
-	/*
-	 * Note that this signal requires an external pullup, because this is
-	 * one of the real open drain pins; we cannot pull it up or drive it
-	 * high.  On test boards without the pullup, this will mis-detect as
-	 * enabled.
-	 */
-	return !gpio_get_level(GPIO_EN_PP3300_INA_L);
+	return !!GREAD(PINMUX, I2C0_SDA_SEL);
 }
 
 static void ina_disconnect(void)
