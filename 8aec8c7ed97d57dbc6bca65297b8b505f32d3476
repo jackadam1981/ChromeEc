@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "210f7e60_72c5fa92",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-04-07T09:20:35Z",
+      "side": 1,
+      "message": "This won\u0027t allow us to enforce that the authSecret corresponds to the U2F keypair (determined by the keyhandle), just that it has the same appId and is owned by this device. \n\nI think we do want them to be linked right? \n\nI was imagining that we would derive something from the seed used for the keypair rather than a new random.",
+      "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "311b866f_12f3b667",
+        "filename": "include/u2f.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-04-07T09:20:35Z",
+      "side": 1,
+      "message": "Should we be passing the public key of the auth-time secrets keypair here? So that we can encrypt the auth time secret with it?",
+      "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0158f2f_361b0fcc",
+        "filename": "include/u2f.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-04-07T09:20:35Z",
+      "side": 1,
+      "message": "Sorry I wrote some shoddy code before which broke when adding a field to one of these structs, I think it\u0027s all fixed now but please keep an eye out for any other traps I left..",
+      "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5053c047_9e75a727",
+        "filename": "include/u2f.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-04-07T09:20:35Z",
+      "side": 1,
+      "message": "The cr50 and CrOS (and therefore u2fd) releases are not tightly coupled, so we need to support both old and new APIs (on both sides) for at least one milestone release (could be more).",
+      "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
