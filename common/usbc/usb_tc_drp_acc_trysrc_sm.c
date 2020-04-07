@@ -2811,10 +2811,23 @@ static void tc_drp_auto_toggle_run(const int port)
 		/*
 		 * We are staying in PD_STATE_DRP_AUTO_TOGGLE
 		 */
+#ifndef CONFIG_USB_PD_TCPC_LOW_POWER
+		ccprintf("C%d: DRP Auto Toggle active\n", port);
+		tc_pause_event_loop(port);
+#endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
 		break;
 	}
 }
+
+static void tc_drp_auto_toggle_exit(const int port)
+{
+#ifndef CONFIG_USB_PD_TCPC_LOW_POWER
+	TC_CLR_FLAG(port, TC_FLAGS_AUTO_TOGGLE_REQUESTED);
+	reset_device_and_notify(port);
+	tc_start_event_loop(port);
+#endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
 #endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE */
+}
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static void tc_low_power_mode_entry(const int port)
@@ -3357,6 +3370,7 @@ static const struct usb_state tc_states[] = {
 	[TC_DRP_AUTO_TOGGLE] = {
 		.entry = tc_drp_auto_toggle_entry,
 		.run   = tc_drp_auto_toggle_run,
+		.exit  = tc_drp_auto_toggle_exit,
 	},
 #endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE */
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
