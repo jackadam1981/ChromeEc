@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a897945_de169a2a",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T04:56:32Z",
+      "side": 1,
+      "message": "nit: do we anticipate the active charger being picked as the sub-board when it\u0027s not present?",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 42
+      },
+      "revId": "d5252334a45ad46644cd49ded19cf7616ceff0a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
