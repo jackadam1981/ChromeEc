@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dfa4d65_15881a6d",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-04-07T04:46:33Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34746987_4553b738",
+        "filename": "extra/i2c_pseudo/install",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-04-07T04:46:33Z",
+      "side": 1,
+      "message": "you want to use getent instead of probing /etc/group which might not be the relevant authority\n\n if getent group plugdev \u003e/dev/null; then",
+      "revId": "25df6bdcba445dce9b651bf56cc307f1d1bb1e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
