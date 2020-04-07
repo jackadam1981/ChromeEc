@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6f91734_1fbdcedc",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-04-07T17:39:55Z",
+      "side": 1,
+      "message": "nit: json",
+      "range": {
+        "startLine": 177,
+        "startChar": 63,
+        "endLine": 177,
+        "endChar": 71
+      },
+      "revId": "2cfec1dee491548d0b45874191bba33939282ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "126b2d8a_0048e60e",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-04-07T17:39:55Z",
+      "side": 1,
+      "message": "nit: rename to config file as the format shouldnt matter",
+      "range": {
+        "startLine": 205,
+        "startChar": 46,
+        "endLine": 205,
+        "endChar": 50
+      },
+      "revId": "2cfec1dee491548d0b45874191bba33939282ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc667410_1075e4ac",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-04-07T17:39:55Z",
+      "side": 1,
+      "message": "just do \u0027%s\u0027 % instead of escaping newline and format",
+      "range": {
+        "startLine": 219,
+        "startChar": 65,
+        "endLine": 219,
+        "endChar": 69
+      },
+      "revId": "2cfec1dee491548d0b45874191bba33939282ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a05b1c8_f659705d",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-04-07T17:39:55Z",
+      "side": 1,
+      "message": "just do \u0027%s\u0027 % instead of escaping newline and format",
+      "range": {
+        "startLine": 222,
+        "startChar": 36,
+        "endLine": 223,
+        "endChar": 53
+      },
+      "revId": "2cfec1dee491548d0b45874191bba33939282ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
