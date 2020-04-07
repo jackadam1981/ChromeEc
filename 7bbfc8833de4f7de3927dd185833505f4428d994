@@ -22,6 +22,30 @@
       "revId": "7bbfc8833de4f7de3927dd185833505f4428d994",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc442fb_e1225e05",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4441,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2020-04-07T08:57:59Z",
+      "side": 1,
+      "message": "I missed one E here.",
+      "parentUuid": "52f23c21_1a715f5a",
+      "range": {
+        "startLine": 4441,
+        "startChar": 15,
+        "endLine": 4441,
+        "endChar": 16
+      },
+      "revId": "7bbfc8833de4f7de3927dd185833505f4428d994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
