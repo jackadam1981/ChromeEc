@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ebc1eac6_67fadc65",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-07T17:07:47Z",
+      "side": 1,
+      "message": "The general approach sounds appropriate.\n\nSending multiple OC events is the worst-case scenario I was thinking of as well. One other consequence could be printing multiple error messages for the same event. Neither of them are severe, but they would frustrate the two main purposes for which you added rising-edge detection. Given the I2C transactions involved in actually servicing the interrupt, synchronizing access to the flags would be fairly lightweight.\n\nIf you\u0027re leaving in a benign race condition, it would be good to call it out in the code.",
+      "parentUuid": "e59cb025_a5c739e4",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e98a4605_ab9cea6b",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 16
@@ -140,6 +164,30 @@
       "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "436e929e_f53834e8",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-07T17:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "151a705b_ac051ae2",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 57
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
