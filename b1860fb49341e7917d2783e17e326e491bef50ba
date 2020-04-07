@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70d0a254_04b142df",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T19:39:44Z",
+      "side": 1,
+      "message": "is there somewhere in the spec that indicates the debounce should happen within 10ms or was this a tested value that worked on a failing TCPC when the value was 100?",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "b1860fb49341e7917d2783e17e326e491bef50ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "600b36b7_17a76fc5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2836,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T19:39:44Z",
+      "side": 1,
+      "message": "I sort of want to say a helper function for all/most of below would be in order as it repeats a lot of the same code that DRP_AUTO_TOGGLE has in its run exit path",
+      "revId": "b1860fb49341e7917d2783e17e326e491bef50ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e74ab9_2a3889cf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2873,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T19:39:44Z",
+      "side": 1,
+      "message": "this case never happens, but is present for the submit.  In this case I don\u0027t think going over to auto toggle is the right answer. Maybe staying in the same state would be more appropriate.",
+      "range": {
+        "startLine": 2873,
+        "startChar": 0,
+        "endLine": 2873,
+        "endChar": 10
+      },
+      "revId": "b1860fb49341e7917d2783e17e326e491bef50ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
