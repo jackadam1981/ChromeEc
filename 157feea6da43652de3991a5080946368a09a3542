@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1e8a1d9_9ca103c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-07T20:24:35Z",
+      "side": 1,
+      "message": "BB retimer",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "157feea6da43652de3991a5080946368a09a3542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb940c6_965f444d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-07T20:24:35Z",
+      "side": 1,
+      "message": "may be you have to test with ACTIVE CABLE \u0026 USB2 devices connected to DOCKs",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 55
+      },
+      "revId": "157feea6da43652de3991a5080946368a09a3542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6971b982_2ca31d53",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-07T20:24:35Z",
+      "side": 1,
+      "message": "return (passive_cable? or attr2.a2_rev30.usb_20_support \u003d\u003d USB2_SUPPORTED)\npassive cables support USB2",
+      "range": {
+        "startLine": 463,
+        "startChar": 8,
+        "endLine": 464,
+        "endChar": 8
+      },
+      "revId": "157feea6da43652de3991a5080946368a09a3542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0fa1508_758ee93c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-07T20:24:35Z",
+      "side": 1,
+      "message": "bring it inside line 160\nMUX_USB* is set for both  USB2 \u0026 USB3",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 49
+      },
+      "revId": "157feea6da43652de3991a5080946368a09a3542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
