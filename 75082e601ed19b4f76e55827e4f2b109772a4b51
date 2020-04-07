@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eec9a0b6_931d173a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4376,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T22:57:35Z",
+      "side": 1,
+      "message": ":-)  I caught that but got moved to working on something else and didn\u0027t get it landed. Thanks for fixing it",
+      "range": {
+        "startLine": 4376,
+        "startChar": 6,
+        "endLine": 4376,
+        "endChar": 47
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b71f31_7a9b212b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4396,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T22:57:35Z",
+      "side": 1,
+      "message": "I don\u0027t think you want a break here. It should continue into the set_state_pe on 4399",
+      "range": {
+        "startLine": 4396,
+        "startChar": 6,
+        "endLine": 4396,
+        "endChar": 11
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25d97915_5686b181",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4400,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T22:57:35Z",
+      "side": 1,
+      "message": "I will look back at the spec but thought this also handled PD_CTRL_WAIT in the same way",
+      "range": {
+        "startLine": 4400,
+        "startChar": 14,
+        "endLine": 4400,
+        "endChar": 36
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2e6ecb3_30f5d321",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4403,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-07T22:57:35Z",
+      "side": 1,
+      "message": "I didn\u0027t see the soft reset on a bad message.  I thought this just timed out but I am probably wrong.",
+      "range": {
+        "startLine": 4403,
+        "startChar": 4,
+        "endLine": 4403,
+        "endChar": 42
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
