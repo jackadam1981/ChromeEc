@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9382eaa9_eabcff71",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-07T17:16:13Z",
+      "side": 1,
+      "message": "Regarding the race condition:\nWhen ALERT_L is asserted, the STATUS register is read during the deferred call, which is the HOOKS task (lowest priority). So this sequence cannot result in preemption of calls to syv682_is_vbus_present().  I suppose the it\u0027s possible that the PPC deferred interrupt could be be preempted by a TCPC interrupt that calls syv682_is_vbus_present(), since the TCPC interrupts have a separate task that is the highest priority.\n\nOf course right now, syv682_is_vbus_present() isn\u0027t used.  Because the SYV682 doesn\u0027t really support reading VBUS, maybe it\u0027s best that we explicitly disallow CONFIG_USB_PD_VBUS_DETECT_PPC in this driver?",
+      "parentUuid": "e59cb025_a5c739e4",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "e8779e4d5ee59e58fb5fda4c4d77a195d80f1a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e98a4605_ab9cea6b",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 16
