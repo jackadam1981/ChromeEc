@@ -146,12 +146,8 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 
 /**
  * Notifies a task that is waiting on a system jump, that it's complete.
- *
- * @param sysjump_task_waiting  indicates if the task is waiting on the
- *				system jump.
  */
-void notify_sysjump_ready(volatile const task_id_t * const
-	sysjump_task_waiting);
+void notify_sysjump_ready(void);
 
 /**
  * Set USB MUX with current data role
