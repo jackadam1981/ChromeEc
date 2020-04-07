@@ -2278,6 +2278,13 @@ int pd_analyze_rx(int port, uint32_t *payload);
 int pd_comm_is_enabled(int port);
 
 /**
+ * Check if PD is cable of Alternater mode
+ *
+ * @return true if it's Alternate mode capable else false
+ */
+bool pd_alt_mode_capable(int port);
+
+/**
  * Get connected state
  *
  * @param port USB-C port number
