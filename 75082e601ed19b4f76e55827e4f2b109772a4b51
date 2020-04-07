@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "a57c4b0f_366a1f23",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4396,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T23:10:52Z",
+      "side": 1,
+      "message": "This break isn\u0027t necessary, it just breaks from the switch so we still go into PE_SNK_READY.",
+      "parentUuid": "65b71f31_7a9b212b",
+      "range": {
+        "startLine": 4396,
+        "startChar": 6,
+        "endLine": 4396,
+        "endChar": 11
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25d97915_5686b181",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "de9e9ef1_263b5444",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4400,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T23:10:52Z",
+      "side": 1,
+      "message": "I don\u0027t think PD_CTRL_WAIT is a valid response to get_src_caps",
+      "parentUuid": "25d97915_5686b181",
+      "range": {
+        "startLine": 4400,
+        "startChar": 14,
+        "endLine": 4400,
+        "endChar": 36
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2e6ecb3_30f5d321",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -82,6 +130,30 @@
       "writtenOn": "2020-04-07T22:57:35Z",
       "side": 1,
       "message": "I didn\u0027t see the soft reset on a bad message.  I thought this just timed out but I am probably wrong.",
+      "range": {
+        "startLine": 4403,
+        "startChar": 4,
+        "endLine": 4403,
+        "endChar": 42
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b4e6957_13989685",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4403,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-07T23:10:52Z",
+      "side": 1,
+      "message": "This was a recommendation from Aseda, if we get to this point than the port partner has violated the spec so we aren\u0027t really sure what is happening.",
+      "parentUuid": "c2e6ecb3_30f5d321",
       "range": {
         "startLine": 4403,
         "startChar": 4,
