@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "372a985c_358906ad",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T04:52:48Z",
+      "side": 1,
+      "message": "nit: !\u003d primary would be more extensible, though I\u0027m guessing we don\u0027t have a lot of demand for 3-port OCPC right now",
+      "range": {
+        "startLine": 1256,
+        "startChar": 31,
+        "endLine": 1256,
+        "endChar": 51
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c2fb7bc_32bee1a7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1663,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T04:52:48Z",
+      "side": 1,
+      "message": "CHARGE_PORT_NONE?",
+      "range": {
+        "startLine": 1663,
+        "startChar": 28,
+        "endLine": 1663,
+        "endChar": 30
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea36ce53_b7e1096f",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T04:52:48Z",
+      "side": 1,
+      "message": "struct charge_state_data?",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb25d8f1_89b979d6",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T04:52:48Z",
+      "side": 1,
+      "message": "nit: \u003d\u003d primary?  Or do we anticipate being called with none and needing to return?",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 54
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78fb8d65_19fb38c1",
         "filename": "common/ocpc.c",
         "patchSetId": 3
@@ -71,6 +163,29 @@
     },
     {
       "key": {
+        "uuid": "334b4777_0e5a1dae",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T04:52:48Z",
+      "side": 1,
+      "message": "Why not have the charger layer take the charger number for these as an input?",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa99e2e3_a6d910b2",
         "filename": "include/ocpc.h",
         "patchSetId": 3
@@ -91,6 +206,29 @@
       "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea62f8d0_fa03b79a",
+        "filename": "include/ocpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-07T04:52:48Z",
+      "side": 1,
+      "message": "nit: get_adcs or fill_adcs or something similar might be more consistent?  get_params kind of implies the function will be filling out every field in the structure given, like it does for charger_get_params and battery_get_params, whereas this is very specifically populating 4 fields.",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
