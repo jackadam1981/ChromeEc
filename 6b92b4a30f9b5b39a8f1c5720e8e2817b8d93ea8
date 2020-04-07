@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2508ef0_283a3a15",
+        "filename": "board/volteer/sensors.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-07T15:56:34Z",
+      "side": 1,
+      "message": "I think this should be:\nconst mat33_fp_t base_standard_ref \u003d {\n\t{ 0, FLOAT_TO_FP(1), 0},\n\t{ FLOAT_TO_FP(-1), 0, 0},\n\t{ 0, 0, FLOAT_TO_FP(1)}\n};\n\nNote that the normal position for the motherboard is with the CPU side down, and the HDMI connector on the left.  With the motherboard flat in this position, the accelerometer read should be 0, 0, +1G.  See the bug for additional details.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "6b92b4a30f9b5b39a8f1c5720e8e2817b8d93ea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
