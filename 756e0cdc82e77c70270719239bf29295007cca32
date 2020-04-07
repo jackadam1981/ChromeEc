@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebff25d4_306c6174",
+        "filename": "chip/it83xx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-07T00:39:18Z",
+      "side": 1,
+      "message": "I think it\u0027s okay to return, but shouldn\u0027t we also reset the controller still?",
+      "range": {
+        "startLine": 676,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 18
+      },
+      "revId": "756e0cdc82e77c70270719239bf29295007cca32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
