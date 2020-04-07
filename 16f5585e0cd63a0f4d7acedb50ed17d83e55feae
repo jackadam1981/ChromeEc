@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78fb8d65_19fb38c1",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-07T02:46:01Z",
+      "side": 1,
+      "message": "seems redundant with the next line?",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecb917c3_aa902e0a",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-07T02:46:01Z",
+      "side": 1,
+      "message": "magic?",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d192e6e_9420ddd6",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-07T02:46:01Z",
+      "side": 1,
+      "message": "is the plan that when shut down, this drive will also affect the calculated rsys_rbat?\n\nand I suppose on systems with secondary chargers that can do current compensation, drive could be applied to that compensation instead when in S0.",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 7
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa99e2e3_a6d910b2",
+        "filename": "include/ocpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-07T02:46:01Z",
+      "side": 1,
+      "message": "cute",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
