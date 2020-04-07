@@ -46,6 +46,30 @@
       "revId": "1672af1f0343e91e8b61952b035f17854010e648",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2086d26_c2e4a1a3",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-07T20:04:41Z",
+      "side": 1,
+      "message": "you\u0027re already checking every loop iteration as part of the loop condition though.\n\n```\nwhile [[ \"$(dut_control_get h1_vref_present)\" \u003d \"off\" ]]; do\n\tif [[ \"${LOOP_COUNTER}\" -eq 1 ]]; then\n\t\tdie \"H1 Vref not present after waiting\"\n\tfi\n\tsleep 0.1\n\tlet LOOP_COUNTER\u003dLOOP_COUNTER-1\ndone\n```\n\nor whatever order you want.  Same number of checks.  A little simpler imo but not that important.",
+      "parentUuid": "8fd78014_af595796",
+      "range": {
+        "startLine": 830,
+        "startChar": 3,
+        "endLine": 830,
+        "endChar": 42
+      },
+      "revId": "1672af1f0343e91e8b61952b035f17854010e648",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
