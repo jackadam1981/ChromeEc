@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1877855c_2af85e01",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-07T23:53:26Z",
+      "side": 1,
+      "message": "I would prefer to keep a sw flag indicating the status and not make implicit assumptions how HW register values should be interpreted?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "1596d6dd671f7c8320eb082b32fd5b5c05b8ea67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
