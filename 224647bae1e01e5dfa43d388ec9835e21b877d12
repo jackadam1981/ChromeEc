@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0db82199_a9b5c3e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-07T20:44:31Z",
+      "side": 1,
+      "message": "from Kernel: lsusb -t\ncheck if USB3 Gen1/Gen2 etc enumerate",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 56
+      },
+      "revId": "224647bae1e01e5dfa43d388ec9835e21b877d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c8c4b4d_b98dc6a8",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-07T20:44:31Z",
+      "side": 1,
+      "message": "how about:\nbool limit_usb3_speed(int port)\n{\n   handle everything here\n}",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 0
+      },
+      "revId": "224647bae1e01e5dfa43d388ec9835e21b877d12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
