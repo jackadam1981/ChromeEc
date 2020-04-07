@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "2ba58aa6_a89dd07e",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-07T22:05:00Z",
+      "side": 1,
+      "message": "Sorry I wasn\u0027t clear.  I meant create a macro for the delay value\n#define INTERRUPT_DELAY_MS   10\n\nsyv682x_interrupt_delayed(port, INTERRUPT_DELAY_MS)",
+      "parentUuid": "ce2bc381_6640cda3",
+      "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d0a5a45_458d653f",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 18
@@ -171,6 +189,24 @@
       "side": 1,
       "message": "What are you thinking, directly above I say \"repeat until interrupts are cleared\"",
       "parentUuid": "9d0a5a45_458d653f",
+      "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38aa2d48_164eab3a",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-07T22:05:00Z",
+      "side": 1,
+      "message": "Maybe just indicate because ALERT_L is level sensitive, the driver needs to keep polling the status registers until all interrupts are cleared.",
+      "parentUuid": "17561685_94a73e25",
       "revId": "b5dcd919badd68bcfa7066c871ddb6ce01fbb9d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
