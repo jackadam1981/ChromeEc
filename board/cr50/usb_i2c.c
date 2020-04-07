@@ -17,19 +17,15 @@
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
+static int usb_i2c_enabled;
+
 int usb_i2c_board_is_enabled(void)
 {
 	/* board options use the INA pins as GPIOs */
 	if (!board_has_ina_support())
 		return 0;
 
-	/*
-	 * Note that this signal requires an external pullup, because this is
-	 * one of the real open drain pins; we cannot pull it up or drive it
-	 * high.  On test boards without the pullup, this will mis-detect as
-	 * enabled.
-	 */
-	return !gpio_get_level(GPIO_EN_PP3300_INA_L);
+	return usb_i2c_enabled;
 }
 
 static void ina_disconnect(void)
@@ -45,6 +41,7 @@ static void ina_disconnect(void)
 
 	/* Disable power to INA chips */
 	gpio_set_level(GPIO_EN_PP3300_INA_L, 1);
+	usb_i2c_enabled = 0;
 }
 
 static void ina_connect(void)
@@ -71,13 +68,11 @@ static void ina_connect(void)
 	 * lines are connected.
 	 */
 	i2cm_init();
+	usb_i2c_enabled = 1;
 }
 
 void usb_i2c_board_disable(void)
 {
-	if (!usb_i2c_board_is_enabled())
-		return;
-
 	ina_disconnect();
 }
 
@@ -99,8 +94,7 @@ int usb_i2c_board_enable(void)
 	if (!ccd_is_cap_enabled(CCD_CAP_I2C))
 		return EC_ERROR_ACCESS_DENIED;
 
-	if (!usb_i2c_board_is_enabled())
-		ina_connect();
+	ina_connect();
 
 	return EC_SUCCESS;
 }
