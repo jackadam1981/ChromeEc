@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ec0b628e_8d479b9e",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-07T19:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a71f55e8_a4d70427",
+      "range": {
+        "startLine": 232,
+        "startChar": 22,
+        "endLine": 232,
+        "endChar": 25
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cadcec55_5adaa281",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3b3bb2499498f561608241b922cf22a118214562",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a72b4ec_7e2ae2cd",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-07T19:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cadcec55_5adaa281",
+      "range": {
+        "startLine": 234,
+        "startChar": 22,
+        "endLine": 234,
+        "endChar": 25
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d8c7fa69_5722c96b",
+        "filename": "common/keyboard_scan_console_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-07T19:48:15Z",
+      "side": 1,
+      "message": "haha, for sure. That was my first solution. It is actually pretty complicated because of the all, ro, and rw image in the make file\n\nThe overall HAS_TASK_KEYBOARD can be \u0027y\u0027, \u0027ro\u0027, or \u0027rw\u0027 and likewise CONFIG_CMD_KEYBOARD can be \u0027y\u0027, \u0027ro\u0027, and \u0027rw\u0027 in the make file.\n\nThe CONFIG_CMD_KEYBOARD isn\u0027t always rw when HAS_TASK_KEYBOARD is rw, but I think the task should gate if the CMD are present (even if the CONFIG_CMD_KEYBOARD says \u0027y\u0027)\n\n\nWhile typing the explanation up, I thought of a cleaner way to handle everything. Now added a section at the bottom of config.h that undefs CONFIG_CMD_KEYBOARD if HAS_TASK_KEYBOARD isn\u0027t present, then we can use CONFIG_CMD_KEYBOARD directly in the makefile, thoughts?",
+      "parentUuid": "c4b640b6_2811a297",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f003e19a_149cb8ee",
         "filename": "common/keyboard_scan_console_cmd.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e63eb35f_98e67760",
+        "filename": "common/keyboard_scan_console_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-07T19:48:15Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "f003e19a_149cb8ee",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c1cd41e_12130e07",
         "filename": "common/keyboard_scan_console_cmd.h",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2020-04-06T22:10:37Z",
       "side": 1,
       "message": "change to enum { KEY_PRESS, KEY_RELEASE }?",
+      "range": {
+        "startLine": 18,
+        "startChar": 36,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7eb3a43_6589e5d0",
+        "filename": "common/keyboard_scan_console_cmd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-07T19:48:15Z",
+      "side": 1,
+      "message": "I switched it to an enum, but then the get_simulated_col wants to use an enum, and then we get into more inefficient territory. I changed it to a bool. I don\u0027t know if I like the bool change; what are your thoughts?",
+      "parentUuid": "8c1cd41e_12130e07",
       "range": {
         "startLine": 18,
         "startChar": 36,
@@ -137,6 +257,30 @@
       "revId": "3b3bb2499498f561608241b922cf22a118214562",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1477d1fb_c4800ec8",
+        "filename": "common/keyboard_scan_console_cmd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-07T19:48:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2795a45f_cdc5a123",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 3
+      },
+      "revId": "3b3bb2499498f561608241b922cf22a118214562",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
