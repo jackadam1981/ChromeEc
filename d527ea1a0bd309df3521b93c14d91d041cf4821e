@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcc8736d_9e081c4f",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:12:52Z",
+      "side": 1,
+      "message": "if we are making the keycode maps always mutable, then we should provide getter/setter methods instead of letting anyone directly modify the variable.\n\nIt wasn\u0027t worth putting in the proper API when only 1 or 2 boards needed it to be mutable, but if it will always be mutable, then we should protect against common code from accidentally over-writing a value when it didn\u0027t mean to (when it is accessing keycap_label).\n\nWe had that protection before (common code not accidentally changing the variable) because we still had some boards being compiled with the variable as a const, which would have failed to compile if common code modified the variable.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 24
+      },
+      "revId": "d527ea1a0bd309df3521b93c14d91d041cf4821e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
