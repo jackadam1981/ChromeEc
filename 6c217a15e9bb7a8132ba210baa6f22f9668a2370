@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc988771_5ce748d2",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "is this link supposed to be public? If so can we upload it to a chromium account and share it that way?",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 85
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe510c9_ab35119d",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "let\u0027s put a\n\nBUILD_ASSERT(ARRAY_SIZE(vivaldi) \u003d\u003d MAX_TOP_ROW_KEYS);\n\nand remove the size in the declaration; that what we know we have a valid entry for each key",
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "870da065_a984d5f9",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "this should be a const pointer so this code doesn\u0027t modify what the board gives us\n\nalso this should be a static (non-exposed variable)",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "944d72d5_847d86b0",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "we should return a const struct top_row_layout * and use that to set vivaldi_top_row",
+      "range": {
+        "startLine": 96,
+        "startChar": 14,
+        "endLine": 96,
+        "endChar": 18
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b95f8893_9eaa2d68",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "you can declare all of these variable in the for loop, please move them there.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2574db16_9b8e2f43",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "this would become\nvivaldi_top_row \u003d board_get_viviadli_top_row();",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "027527ad_5b193bb4",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "does it need to set vivaldi_top_row to NULL to disable?",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10592c51_40a09f61",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "let\u0027s use ARRAY_SIZE(vivaldi) so we don\u0027t ever get out of sync with array size",
+      "range": {
+        "startLine": 124,
+        "startChar": 17,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f70dd0ab_c6b3b233",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "please add a comment that this is potentially indexing past meaningful data, but we bounds check it below",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 40
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f2c04d_80e587ad",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "nit: can you use array notation instead? it make it more clear.\n\nactual_key_mask[col]",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d948536b_41619769",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "let\u0027s expand to \"key !\u003d DISABLED\" to make it more clear why we are skipping it",
+      "range": {
+        "startLine": 131,
+        "startChar": 47,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e659a91e_dc92ec25",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "nit: use BIT(row)\n\nhere and below",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 22
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97550366_ec197da3",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:35:40Z",
+      "side": 1,
+      "message": "we should bounds check here or at least add a note where vivaldi is defined that the values for row and col must be less than XX",
+      "range": {
+        "startLine": 137,
+        "startChar": 17,
+        "endLine": 137,
+        "endChar": 25
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
