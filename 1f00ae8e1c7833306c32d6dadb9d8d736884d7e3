@@ -22,6 +22,30 @@
       "revId": "1f00ae8e1c7833306c32d6dadb9d8d736884d7e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e60b0346_b28be0e5",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-04-08T03:20:18Z",
+      "side": 1,
+      "message": "Hi Dennis\nI remove the comment. \nModified last step on to 100, verify on morphius board, fan works fine.",
+      "parentUuid": "aa879c9b_af8084b1",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 33
+      },
+      "revId": "1f00ae8e1c7833306c32d6dadb9d8d736884d7e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
