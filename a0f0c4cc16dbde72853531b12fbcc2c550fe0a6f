@@ -70,6 +70,29 @@
       "revId": "a0f0c4cc16dbde72853531b12fbcc2c550fe0a6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8577346_f97a3531",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T16:36:58Z",
+      "side": 1,
+      "message": "can this return a const pointer instead? hopefully no one is using this to write data",
+      "range": {
+        "startLine": 1714,
+        "startChar": 0,
+        "endLine": 1714,
+        "endChar": 20
+      },
+      "revId": "a0f0c4cc16dbde72853531b12fbcc2c550fe0a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
