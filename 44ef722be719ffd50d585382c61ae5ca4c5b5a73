@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d5b1a0b_91a87063",
+        "filename": "board/jinlon/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:37:46Z",
+      "side": 1,
+      "message": "these would be const objects now (based on const comments from parent CL)",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 13
+      },
+      "revId": "44ef722be719ffd50d585382c61ae5ca4c5b5a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
