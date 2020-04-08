@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c197533f_bc87c0e4",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-04-08T19:13:44Z",
+      "side": 1,
+      "message": "\u0027%s\u0027 regressed",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 79
+      },
+      "revId": "34f6f1743957a6edd9272f1c100b5fa4f3bcd0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
