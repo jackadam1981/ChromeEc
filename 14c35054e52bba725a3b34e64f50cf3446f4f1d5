@@ -22,6 +22,30 @@
       "revId": "14c35054e52bba725a3b34e64f50cf3446f4f1d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15472f64_05ae4130",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-04-08T18:54:28Z",
+      "side": 0,
+      "message": "sorry I answered my own question, blanked there for a second. Why keep BOARD_SERVO_V4 around though?",
+      "parentUuid": "6958ed33_36ccfafd",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "14c35054e52bba725a3b34e64f50cf3446f4f1d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
