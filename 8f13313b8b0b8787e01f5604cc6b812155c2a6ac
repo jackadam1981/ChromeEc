@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cc02b3b_fa19096e",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 0,
+      "message": "This really needs to be done. A ton of people ask me about ccd issues related to running old servo v4 firmware.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 45
+      },
+      "revId": "8f13313b8b0b8787e01f5604cc6b812155c2a6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd46c841_50fb1c8f",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 0,
+      "message": "I still think they should do this. 0.3.9 is very old at this point. Syncing the chroot and updating cr50 is generally a good idea.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 71
+      },
+      "revId": "8f13313b8b0b8787e01f5604cc6b812155c2a6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c48ec0_8c66c759",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 0,
+      "message": "without the word \u0027setup\u0027 in any heading it\u0027s not very clear what needs to be done to setup ccd.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 28
+      },
+      "revId": "8f13313b8b0b8787e01f5604cc6b812155c2a6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "752cd505_959d3fa1",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 0,
+      "message": "I think this is important to have at the start of the ccd open section. People aren\u0027t going to read this whole doc. They may get to the step where cr50 is actually open and stop. The more places this exists the better.\nPeople will brick their devices if they don\u0027t know this.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 7
+      },
+      "revId": "8f13313b8b0b8787e01f5604cc6b812155c2a6ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

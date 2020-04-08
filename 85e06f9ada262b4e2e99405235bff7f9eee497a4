@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26bfc692_2ea3b17b",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 1,
+      "message": "I think it\u0027d be useful to add two subsections \"with servod\" and without servod or something.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43649014_a3f3d53e",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 1,
+      "message": "if ccd open is its own section, opening ccd without the battery should probably be a subsection.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 23
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ccf1ca_6e2e994e",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 1,
+      "message": "This isn\u0027t true. it has to have a minor version \u003e\u003d9. Also the major versions may change.",
+      "range": {
+        "startLine": 157,
+        "startChar": 22,
+        "endLine": 157,
+        "endChar": 40
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49cb921f_c2f5ac61",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 1,
+      "message": "I think having the full ccd output is useful",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 76
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8bfa645_9e0800c5",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 1,
+      "message": "This is very extreme. Normal people probably shouldn\u0027t be doing this to their machine. . I don\u0027t think you should recommend it in the standard ccd open instructions.\nsetting a password or setting individual capabilities you need access to is better.\n\nIf this is purely a development or test machine sure. Do this.",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 219,
+        "endChar": 29
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41a9028b_f13ad2c4",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 1,
+      "message": "\u0027Most Accessible\u0027 or add an As at the start.",
+      "range": {
+        "startLine": 273,
+        "startChar": 5,
+        "endLine": 273,
+        "endChar": 27
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "022c8cd0_ff04353e",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 1,
+      "message": "I think this should be part of the hardware write protect section.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 7
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3407bb87_7b1d25a8",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 1,
+      "message": "This has nothing to do with ccd. Can you move it to a separate doc?",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 19
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87ee7765_37ef0b8e",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T00:57:49Z",
+      "side": 1,
+      "message": "make this a subsection of flash-ap",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 726,
+        "endChar": 43
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
