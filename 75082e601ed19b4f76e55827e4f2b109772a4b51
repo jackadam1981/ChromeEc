@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "02a5ef47_a67de81e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-08T21:24:21Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m curious as to other people\u0027s opinions. Either way, I don\u0027t want to hold up your CL; let\u0027s fix it as you see fit and then we can collectively discuss what the best practices are and come back and fix them.",
+      "parentUuid": "827d3240_5b7997e8",
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec9a0b6_931d173a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
