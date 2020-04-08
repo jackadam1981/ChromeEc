@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "a74f7fae_f3070ade",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-08T22:28:21Z",
+      "side": 1,
+      "message": "13... SoftReset\n\nThe letting this fall into TimeOut puts us in PE_SNK_READY.  I think that is why this section is working on my system.",
+      "parentUuid": "bb069a49_d6cb3db6",
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec9a0b6_931d173a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
