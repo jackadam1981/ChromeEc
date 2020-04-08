@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "f81a0b8f_841e7562",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T18:24:53Z",
+      "side": 1,
+      "message": "I agree with both Marco and Diasuke, Having part numbers config will be too difficult to maintain and the solution of just using 8-bytes solves our problems.\n\nI upload CL:2142440 to address this new consideration for AVL and EEPROM with 8-byte page writes.\n\nI also upload a new version of this CL for Elmo, with the fix, since he has been very will to take feedback, and I feed bad for the churn we cause. Thanks Elmo for working through this will us!",
+      "parentUuid": "9e25321a_e27223af",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "45dae7f1be8d6569a2919b1f964d8c9dc36725fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "272af9f7_79093c0b",
         "filename": "common/cbi.c",
         "patchSetId": 4
