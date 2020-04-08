@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fa5300c5_c4505579",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-08T19:44:14Z",
+      "side": 1,
+      "message": "Yeah, that was my thought initially. Perhaps currently it\u0027s only in one place, but I was thinking long-term. Maybe an EC console command, or a host command would end up setting the DPM request and my fear is that they won\u0027t remember to check that it\u0027s not a source.",
+      "parentUuid": "cbc68264_65bd04b9",
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec9a0b6_931d173a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -405,6 +423,30 @@
       "side": 1,
       "message": "So the issue is, that now when we send the GET_SINK_CAP to chargers, we send a soft reset when we don\u0027t get the appropriate response; so we reset the charger, right?\n\nYeah we definitely shouldn\u0027t be sending GET_SINK_CAPS to chargers; only DRPs. It seems that that is the kind of protocol error which softreset is meant for.",
       "parentUuid": "c7bd06a2_42062aaf",
+      "range": {
+        "startLine": 4403,
+        "startChar": 4,
+        "endLine": 4403,
+        "endChar": 42
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b17da8e4_6713ac1e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4403,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-08T19:44:14Z",
+      "side": 1,
+      "message": "Yeah, and the other issue is that we\u0027re ignoring the SoftReset that they sent to us. That should be fixed, but not in this CL.",
+      "parentUuid": "297b3bfb_44443dce",
       "range": {
         "startLine": 4403,
         "startChar": 4,
