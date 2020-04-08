@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84c93a9e_3fed640a",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "As a separate CL, can you move the fan support from baseboard.c to board/volteer/board.c and board/malefor/board.c?",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 41
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1d2417d_4e210b2c",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "The TCPC, PPC, and BC12 interrupts should be implemented in a separate CL. You will also need to create your own interrupt handlers in board/halvor/board.c - the volteer baseboard versions do not support the 3rd port interrupt.\n\nUse unique names such as halvor_tcpc_alert_event, halvor_ppc_interrupt, and halvor_bc12_interrupt for your interrupt handlers.  This way you can avoid having to move the volteer baseboard interrupt handlers.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 75
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9511f0f1_904c5c17",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "This should match the net name \"USB_C0_PPC_INT_ODL\"",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba59f23_601f350b",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "This name should match the schematic net name \"EN_PPVAR_VCCIN\".",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0ae2c37_014fd468",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "Also put these USB reset signals into a separate CL, can be done with the USB interrupts CL.",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bf69b89_26e5d07f",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "This GPIO needs to be moved to a different pin.  The PCH is not powered when the EC comes out of reset and will pull this pin to 0V.  This will cause the EC to float all the output and I/O pins.",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6612ad39_043cf1b4",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "Change these definitions to match the net names. If the name is required by baseboard (or other code in the EC), add a mapping in the halvor/board.h from the net name to the common name.  For more details see:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/docs/new_board_checklist.md#gpio-naming",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e987c95_ee939680",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "Match indentation from above.  I also suggest putting these changes in with the separate CL for USB related GPIOs.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 46
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbfe867c_2d6f05d1",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "This is the wrong value, KSO_14 is on GPIO82, KSO_15 is GPIO83.  Correct mask should be 0x0C (bits 2 and 3 set).",
+      "range": {
+        "startLine": 182,
+        "startChar": 22,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fb42693_d0ec83c8",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "This pin used as part of EFS2 (Early Firmware Selection).  The signal is used as a GPIO and not a UART signal. So define this as a GPIO entry instead.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 110
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d03dcd_59251c4e",
+        "filename": "board/halvor/power_sequence.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-08T20:34:19Z",
+      "side": 1,
+      "message": "Note - this file is not used by Volteer.  This file implements manual power sequencing of TigerLake and was a backup plan if the board power sequencing didn\u0027t work.  This file will likely be removed at the next Volteer build phase.\n\nThe changes you have made in this file are fine.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
