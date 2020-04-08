@@ -9,6 +9,7 @@
 #define __CROS_EC_BOARD_H
 
 #define VARIANT_ZORK_TREMBYLE
+#define VARIANT_ZORK_EZKINIL
 
 #include <stdbool.h>
 #include "baseboard.h"
