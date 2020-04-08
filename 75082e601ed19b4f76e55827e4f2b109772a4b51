@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "06e88f3f_6f55b8bc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-08T23:05:32Z",
+      "side": 1,
+      "message": "Okay. With my board; I was able to replicate this with one of my chargers, but it is sending back a \"Not supported\", which is the correct response.",
+      "parentUuid": "a74f7fae_f3070ade",
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec9a0b6_931d173a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
