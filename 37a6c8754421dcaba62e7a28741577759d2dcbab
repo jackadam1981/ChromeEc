@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3093c46a_97127642",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-08T18:09:54Z",
+      "side": 1,
+      "message": "typo: \u0027battery\u0027",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "37a6c8754421dcaba62e7a28741577759d2dcbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56418e0c_68140730",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2711,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-08T18:09:54Z",
+      "side": 1,
+      "message": "typo: \u0027POWER\u0027",
+      "range": {
+        "startLine": 2711,
+        "startChar": 48,
+        "endLine": 2711,
+        "endChar": 52
+      },
+      "revId": "37a6c8754421dcaba62e7a28741577759d2dcbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5afb55c_160ae99a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2813,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-08T18:09:54Z",
+      "side": 1,
+      "message": "This comment is copy/pasted but looking below it\u0027s not immediately clear that a CC_STATUS change ends up setting WAKE_FROM_LPM. I think it does, but it\u0027s just done elsewhere.",
+      "range": {
+        "startLine": 2812,
+        "startChar": 0,
+        "endLine": 2813,
+        "endChar": 32
+      },
+      "revId": "37a6c8754421dcaba62e7a28741577759d2dcbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f86edf_a57e9c47",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-08T18:09:54Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this change has to do with the others.",
+      "revId": "37a6c8754421dcaba62e7a28741577759d2dcbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
