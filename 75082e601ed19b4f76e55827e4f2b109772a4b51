@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "827d3240_5b7997e8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-08T21:16:03Z",
+      "side": 1,
+      "message": "This might be a best practices discussion to have for the v2 stack?  Then we can put the result in the TCPMv2 .md \"Best Practices\" section for reference :)",
+      "parentUuid": "e383cb58_894e824c",
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec9a0b6_931d173a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
