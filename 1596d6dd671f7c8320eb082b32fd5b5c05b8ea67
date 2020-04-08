@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "10100ed6_f798df0a",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-08T15:54:38Z",
+      "side": 1,
+      "message": "Actually, I am leaning toward to the patchset#1. I2C0_SDA_SEL (or I2C0_SCL_SEL) value directly represents the USB_I2C status itself, rather than an interpretation.  It won\u0027t be affected by any external HW change. (Note that this patch reads the internal I2C0 pin connection, not DIO pin connection.) We don\u0027t need to spend a byte for SW flag worrying about syncing it to actual I2C status.",
+      "parentUuid": "c9dc5be8_be69b45f",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "1596d6dd671f7c8320eb082b32fd5b5c05b8ea67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc6d921f_c3816bae",
         "filename": "board/cr50/usb_i2c.c",
         "patchSetId": 1
