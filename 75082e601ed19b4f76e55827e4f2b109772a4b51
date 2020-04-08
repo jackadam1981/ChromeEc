@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cbc68264_65bd04b9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-08T19:11:24Z",
+      "side": 1,
+      "message": "Here? There is only 1 place I can find where the DPM request is made to get sink capabilities (line 1988). I think we should include the check at the point we make the request, no? Really, we should never get to this point unless we go through the DRP connection flow.",
+      "parentUuid": "84a3d9f1_74868864",
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec9a0b6_931d173a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -363,6 +381,30 @@
       "side": 1,
       "message": "Ah, then there are two bugs:\n\n1) Don\u0027t send GetSinkCaps to Sources\n2) We should always Accept a SoftReset if received.",
       "parentUuid": "7237cb76_1f5149e0",
+      "range": {
+        "startLine": 4403,
+        "startChar": 4,
+        "endLine": 4403,
+        "endChar": 42
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "297b3bfb_44443dce",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4403,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-08T19:11:24Z",
+      "side": 1,
+      "message": "So the issue is, that now when we send the GET_SINK_CAP to chargers, we send a soft reset when we don\u0027t get the appropriate response; so we reset the charger, right?\n\nYeah we definitely shouldn\u0027t be sending GET_SINK_CAPS to chargers; only DRPs. It seems that that is the kind of protocol error which softreset is meant for.",
+      "parentUuid": "c7bd06a2_42062aaf",
       "range": {
         "startLine": 4403,
         "startChar": 4,
