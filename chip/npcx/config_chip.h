@@ -18,6 +18,13 @@
 #error "Unsupported chip family"
 #endif
 
+#define NPCX_FAMILY_NPCX5        5000
+#define NPCX_FAMILY_NPCX7        7000
+
+#define NPCX_FAMILY_CODE_(x, y)  x ## y
+#define NPCX_FAMILY_CODE(x, y)   NPCX_FAMILY_CODE_(x, y)
+#define NPCX_FAMILY_VERSION      NPCX_FAMILY_CODE(NPCX_FAMILY_, CHIP_FAMILY)
+
 /* 32k hz internal oscillator frequency (FRCLK) */
 #define INT_32K_CLOCK 32768
 
