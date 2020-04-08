@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "bb069a49_d6cb3db6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-08T22:14:04Z",
+      "side": 1,
+      "message": "So it seems the response from the charger should be Not Supported if we send this to a source. This is normative for Sinks and DRPs, so should always be supported. I don\u0027t actually see anywhere saying that we CAN\u0027T send this to a source. \n\nSo anyway, I think there are 2 things we can do:\n1. Check the PDO DRP bit in the source caps response, and don\u0027t send a get_sink_caps to it if it isn\u0027t set.\n2. On a \u0027Not Supported\u0027 response, just return to PE_SNK_READY.\n\nDenis, do you know for sure it was a \u0027Soft Reset\u0027 from the charger? Or was it \u0027Not supported\u0027?",
+      "parentUuid": "02a5ef47_a67de81e",
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec9a0b6_931d173a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
