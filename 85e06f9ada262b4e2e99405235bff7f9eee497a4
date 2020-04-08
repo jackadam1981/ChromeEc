@@ -2,6 +2,167 @@
   "comments": [
     {
       "key": {
+        "uuid": "94e8b6c0_86276387",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "I wonder if it is worth mentioning that Cr50 reboot and device reboot is not the same thing. \n\nCr50 never reboots unless the power (including battery) is disconnected or its firmware is updated. (or it crashes :P)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c2cfaa_b6bd581d",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "maybe insert a sentence here mentioning that a typical capabilities state is shown below in [cap] section. Or show that section first - might improve understanding of what this section is talking about",
+      "range": {
+        "startLine": 16,
+        "startChar": 59,
+        "endLine": 16,
+        "endChar": 60
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0833dc6_ee2221cf",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "should ability to flash AP and EC firmware be also mentioned here?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe29926b_68b67e28",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "is it Settings or Setting (see line 38 below)",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70d24ff5_9478bb40",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "maybe \"whatever the Cr50 privilege level is.\"",
+      "range": {
+        "startLine": 36,
+        "startChar": 62,
+        "endLine": 36,
+        "endChar": 101
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd10a2a_d6d15217",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "s|dev|/dev|",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9565889_01e470ce",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "should these be ordered in the tty dev order? Cr50/AP/EC? And mentioned that most often the indices are 0,1, and 2 unless there are other FTDI UART connections?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 118
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26bfc692_2ea3b17b",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -18,6 +179,52 @@
         "startChar": 0,
         "endLine": 83,
         "endChar": 27
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281feda6_e1fca8e5",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "where does this come from?",
+      "range": {
+        "startLine": 87,
+        "startChar": 64,
+        "endLine": 87,
+        "endChar": 75
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74550c28_8f64bc8f",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "it doesn\u0027t just display the names, it creates alternative devices to access consoles, It would be good to emphasize that this is in addition to the devices describe above and requires servod running, etc.",
+      "range": {
+        "startLine": 106,
+        "startChar": 28,
+        "endLine": 106,
+        "endChar": 60
       },
       "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -48,6 +255,29 @@
     },
     {
       "key": {
+        "uuid": "f4aacebd_386f95a0",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "should you mention that it is normally disabled on chrome os devices?",
+      "range": {
+        "startLine": 123,
+        "startChar": 37,
+        "endLine": 123,
+        "endChar": 47
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85ccf1ca_6e2e994e",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -64,6 +294,29 @@
         "startChar": 22,
         "endLine": 157,
         "endChar": 40
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65353b1d_13786111",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "Cr50 console `ccd` command output",
+      "range": {
+        "startLine": 173,
+        "startChar": 21,
+        "endLine": 173,
+        "endChar": 33
       },
       "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -94,6 +347,75 @@
     },
     {
       "key": {
+        "uuid": "05f465b0_f41a5fee",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "this is on the AP, not inside chroot",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 11
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46897ba9_1086eb55",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "press power button multiple times.",
+      "range": {
+        "startLine": 188,
+        "startChar": 68,
+        "endLine": 188,
+        "endChar": 75
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4173a023_778cbfe5",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "could GBB glags be set at this point to force dev mode even when Cr50 loses it?",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 7
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8bfa645_9e0800c5",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -110,6 +432,52 @@
         "startChar": 1,
         "endLine": 219,
         "endChar": 29
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34566b39_5b7afa4a",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "s/cr50/ccd/",
+      "range": {
+        "startLine": 228,
+        "startChar": 29,
+        "endLine": 228,
+        "endChar": 33
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd2438ee_1cc603a7",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "s/cr50/ccd/",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 231,
+        "endChar": 12
       },
       "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -140,6 +508,75 @@
     },
     {
       "key": {
+        "uuid": "fd33823a_ada26e65",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "s/serial/serial number/",
+      "range": {
+        "startLine": 323,
+        "startChar": 69,
+        "endLine": 323,
+        "endChar": 76
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "564e5ab8_e3f780bd",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "and you have more than one Cr50 devce connected to your workstation",
+      "range": {
+        "startLine": 336,
+        "startChar": 7,
+        "endLine": 336,
+        "endChar": 9
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86600f6f_24f34a18",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "s/serial/serial number/",
+      "range": {
+        "startLine": 336,
+        "startChar": 38,
+        "endLine": 336,
+        "endChar": 44
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "022c8cd0_ff04353e",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -163,6 +600,29 @@
     },
     {
       "key": {
+        "uuid": "2c71d957_f1fd6065",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "s/adjust/adjusts/",
+      "range": {
+        "startLine": 391,
+        "startChar": 17,
+        "endLine": 391,
+        "endChar": 23
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3407bb87_7b1d25a8",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -179,6 +639,236 @@
         "startChar": 0,
         "endLine": 429,
         "endChar": 19
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2387b490_408685a8",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "are a few words required about Cr50 RO and RW, what they are, etc? Here or in an earlier section, not sure.",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 29
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10a05aec_36a52eb1",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "after printing the regular banner on the console it",
+      "range": {
+        "startLine": 444,
+        "startChar": 45,
+        "endLine": 445,
+        "endChar": 18
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bac6440_da0303b8",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "it is much simpler to run \u0027sudo emerge chromeos-cr50\u0027 and look for the image in /opt/googe/cr50/firmware",
+      "range": {
+        "startLine": 467,
+        "startChar": 11,
+        "endLine": 467,
+        "endChar": 62
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdfa2708_e508f6ce",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "not the case with 0.0.11 any more",
+      "range": {
+        "startLine": 515,
+        "startChar": 76,
+        "endLine": 516,
+        "endChar": 23
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d22ce446_e367fef5",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "also should not be a concern with 0.0.11",
+      "range": {
+        "startLine": 520,
+        "startChar": 33,
+        "endLine": 522,
+        "endChar": 59
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "788b7192_769d1135",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "to",
+      "range": {
+        "startLine": 560,
+        "startChar": 48,
+        "endLine": 560,
+        "endChar": 50
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24f357ca_a8542c89",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "what\u0027s FWMP",
+      "range": {
+        "startLine": 567,
+        "startChar": 47,
+        "endLine": 567,
+        "endChar": 51
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e27a0f5_f430d0df",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": ")",
+      "range": {
+        "startLine": 656,
+        "startChar": 29,
+        "endLine": 656,
+        "endChar": 31
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e36d0d85_1c46bf17",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "s/workaround/work around/",
+      "range": {
+        "startLine": 660,
+        "startChar": 3,
+        "endLine": 660,
+        "endChar": 14
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bdedb4c_ffa7b511",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T01:30:43Z",
+      "side": 1,
+      "message": "should be mentioned earlier, where \u0027version\u0027 command output is shown",
+      "range": {
+        "startLine": 679,
+        "startChar": 68,
+        "endLine": 680,
+        "endChar": 69
       },
       "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
