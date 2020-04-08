@@ -52,6 +52,24 @@
       "revId": "4320c5b2672ab1065d655aace577ebcd7522618b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44c045de_55d57921",
+        "filename": "driver/accelgyro_bmi260_config_tbin.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-04-08T16:13:44Z",
+      "side": 1,
+      "message": "...to clarify, not out of any principled issue with symlinks.  Rather, in cases like this I don\u0027t see a clear reason for the indirection (hence just delete this), and if it is useful, then I prefer #include because it\u0027s the same as any other #include, including using the search path.  Whereas a symlink seems arbitrarily different, and *must* reference a completely relative path.",
+      "parentUuid": "f47e4ef4_ed7737a1",
+      "revId": "4320c5b2672ab1065d655aace577ebcd7522618b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
