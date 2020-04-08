@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "84a3d9f1_74868864",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-08T19:01:05Z",
+      "side": 1,
+      "message": "Maybe we should check here that our port partner is DRP or a SNK. Because I imagine that the DPM request can come from anywhere. It might be better to do the filtering here.",
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec9a0b6_931d173a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
