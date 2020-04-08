@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c30004d4_0f3abc20",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2816,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T19:24:31Z",
+      "side": 1,
+      "message": "which event are we waiting on, can you add that to the comments here?",
+      "range": {
+        "startLine": 2816,
+        "startChar": 2,
+        "endLine": 2816,
+        "endChar": 21
+      },
+      "revId": "8bf607237f8bc1e01849a04230136687a5f0cebc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
