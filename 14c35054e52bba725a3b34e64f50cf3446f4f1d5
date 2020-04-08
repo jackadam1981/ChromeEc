@@ -46,6 +46,30 @@
       "revId": "14c35054e52bba725a3b34e64f50cf3446f4f1d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aef6a9f_1ea6de82",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-04-08T18:59:00Z",
+      "side": 0,
+      "message": "They\u0027re not really needed.\n\nThe logic was extracting the board name by checking each of these entries stored in the SERVO_BOARDS tuple with the path to the configuration file.\n\nIt would have a path like \u0027some/path/sweetberry.json\u0027 and check each field to see:\nIs \u0027c2d2\u0027 in that string? No. Is \u0027servo_micro\u0027 in that string? No. Proceeding until it finds a match.\n\nWhen it finds a match, it treated that as the board name. This breaks when you have version strings are substrings of others. For instance, if you don\u0027t order version strings in a way that makes sure no string is a substring of a following string it will fail. \u0027servo_v4\u0027 was matching \u0027some/path/servo_v41.json\u0027 instead of us identifying the correct board as \u0027servo_v41\u0027. The result was it would attempt to flash with a \u0027servo_v4\u0027 binary image.\n\nI could rearrange the list in the order that prevents collisions with later version numbers or treat these as configuration files and extract the field from their names. All of the json files used as configs already include the correct field and the servo_updater uses it later on too.",
+      "parentUuid": "6958ed33_36ccfafd",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "14c35054e52bba725a3b34e64f50cf3446f4f1d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
