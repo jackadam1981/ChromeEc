@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e383cb58_894e824c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-08T21:11:43Z",
+      "side": 1,
+      "message": "I see what you\u0027re saying, but if that is the case there are a lot more places we need to put checks in, since almost every DPM request or PE state transition is only appropriate in one or a few situations.",
+      "parentUuid": "fa5300c5_c4505579",
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec9a0b6_931d173a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
