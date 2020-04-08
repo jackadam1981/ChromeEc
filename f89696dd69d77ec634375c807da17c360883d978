@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "037fa588_2ec3d9f4",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T21:01:26Z",
+      "side": 1,
+      "message": "servo v2 isn\u0027t a ccd device. maybe delete the word CCD in 182.",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "f89696dd69d77ec634375c807da17c360883d978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
