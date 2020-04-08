@@ -259,6 +259,30 @@
       "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39db18b7_ec1bc3f7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4403,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-08T17:24:42Z",
+      "side": 1,
+      "message": "I am thinking letting this timeout is a better idea. My charger is giving me back a soft reset message and this change makes us loop",
+      "parentUuid": "f34d46b5_8ac64e10",
+      "range": {
+        "startLine": 4403,
+        "startChar": 4,
+        "endLine": 4403,
+        "endChar": 42
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
