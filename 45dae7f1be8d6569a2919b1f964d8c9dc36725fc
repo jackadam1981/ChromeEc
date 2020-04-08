@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f3a2a88c_fd788184",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-04-08T13:06:15Z",
+      "side": 1,
+      "message": "1. Will it end up we add many EEPROM Parts configs here since this is a common code if lots of boards uses the part with 8 bytes as well?\n2. If it is a part property then will we support a board to be with multiple EEPROM sources which can be with either 16 or 8 bytes of page? I don\u0027t think so because we don\u0027t have a way to identify parts yet and no reason to do so.\n3. As a result, it seems to me we should see it as the BOARD property then the selected source should follow this config?",
+      "parentUuid": "64f070ae_dc5fdef7",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "45dae7f1be8d6569a2919b1f964d8c9dc36725fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "272af9f7_79093c0b",
         "filename": "common/cbi.c",
         "patchSetId": 4
