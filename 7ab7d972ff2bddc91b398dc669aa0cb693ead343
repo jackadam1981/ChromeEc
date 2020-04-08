@@ -22,6 +22,30 @@
       "revId": "7ab7d972ff2bddc91b398dc669aa0cb693ead343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ada5cee2_774c9b82",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-08T21:30:16Z",
+      "side": 1,
+      "message": "I don\u0027t think we should delete this. This is about more generic CCD than the cr50 doc. People using servo v4, micro and ryu only really need to reference this doc.\nThis doc contains vendor and product ids that aren\u0027t anywhere else. \nThe information to setup the drivers and udev rules isn\u0027t anywhere else.\n\nThe hdctools ccd doc information is covered in other docs. We could remove that.",
+      "parentUuid": "2301359b_e564d949",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 29
+      },
+      "revId": "7ab7d972ff2bddc91b398dc669aa0cb693ead343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
