@@ -93,6 +93,30 @@
       "revId": "a0f0c4cc16dbde72853531b12fbcc2c550fe0a6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3687c37_565e1b33",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-08T19:39:08Z",
+      "side": 1,
+      "message": "Currently dfp_consume_identity is using non-const behavior (see note on return).  We could make this const and have the identity consumption do the structure referencing though if there are concerns about bad callers.",
+      "parentUuid": "b8577346_f97a3531",
+      "range": {
+        "startLine": 1714,
+        "startChar": 0,
+        "endLine": 1714,
+        "endChar": 20
+      },
+      "revId": "a0f0c4cc16dbde72853531b12fbcc2c550fe0a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
