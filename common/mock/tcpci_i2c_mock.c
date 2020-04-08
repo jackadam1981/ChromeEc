@@ -55,6 +55,14 @@ static struct tcpci_reg tcpci_regs[] = {
 	TCPCI_REG(TCPC_REG_COMMAND, 1),
 };
 
+void mock_tcpci_set_reg(int reg_offset, uint16_t value)
+{
+	struct tcpci_reg *reg = tcpci_regs + reg_offset;
+
+	reg->value = value;
+	ccprints("TCPCI mock set %s = 0x%x",  reg->name, reg->value);
+}
+
 int tcpci_i2c_xfer(int port, uint16_t slave_addr_flags,
 		const uint8_t *out, int out_size,
 		uint8_t *in, int in_size, int flags)

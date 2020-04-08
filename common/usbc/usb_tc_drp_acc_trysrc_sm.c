@@ -1086,6 +1086,7 @@ static void handle_device_access(int port)
 
 void tc_event_check(int port, int evt)
 {
+	ccprints("evt %x", evt);
 	if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER)) {
 		if (evt & PD_EXIT_LOW_POWER_EVENT_MASK)
 			TC_SET_FLAG(port, TC_FLAGS_WAKE_FROM_LPM);

@@ -11,6 +11,49 @@
 #include "usb_mux.h"
 #include "hooks.h"
 
+#define PORT0 0
+
+void mock_tcpci_set_reg(int reg, uint16_t value);
+
+enum mock_cc_state {
+	MOCK_CC_SRC_OPEN = 0,
+	MOCK_CC_SNK_OPEN = 0,
+	MOCK_CC_SRC_RA = 1,
+	MOCK_CC_SNK_RP_DEF = 1,
+	MOCK_CC_SRC_RD = 2,
+	MOCK_CC_SNK_RP_1_5 = 2,
+	MOCK_CC_SNK_RP_3_0 = 3,
+};
+enum mock_connect_result {
+	MOCK_CC_WE_ARE_SRC = 0,
+	MOCK_CC_WE_ARE_SNK = 1,
+};
+
+__maybe_unused static void mock_set_cc(enum mock_connect_result cr,
+	enum mock_cc_state cc1, enum mock_cc_state cc2)
+{
+	mock_tcpci_set_reg(TCPC_REG_CC_STATUS,
+		TCPC_REG_CC_STATUS_SET(cr, cc1, cc2));
+}
+
+__maybe_unused static void mock_set_role(int drp, enum tcpc_rp_value rp,
+	enum tcpc_cc_pull cc1, enum tcpc_cc_pull cc2)
+{
+	mock_tcpci_set_reg(TCPC_REG_ROLE_CTRL,
+		TCPC_REG_ROLE_CTRL_SET(drp, rp, cc1, cc2));
+}
+
+static int mock_alert_count;
+
+uint16_t tcpc_get_alert_status(void)
+{
+	if (mock_alert_count > 0) {
+		mock_alert_count--;
+		return PD_STATUS_TCPC_ALERT_0;
+	}
+	return 0;
+}
+
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,
 	.svids = NULL,
@@ -38,6 +81,19 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.driver = &mock_usb_mux_driver,
 	}
 };
+
+__maybe_unused static int test_connect_as_sink(void)
+{
+	task_wait_event(10 * SECOND);
+
+	mock_set_cc(MOCK_CC_WE_ARE_SNK, MOCK_CC_SNK_OPEN, MOCK_CC_SNK_RP_3_0);
+	mock_tcpci_set_reg(TCPC_REG_ALERT, TCPC_REG_ALERT_CC_STATUS);
+	mock_alert_count = 1;
+	schedule_deferred_pd_interrupt(PORT0);
+	task_wait_event(10 * SECOND);
+
+	return EC_SUCCESS;
+}
 
 __maybe_unused static int test_startup_and_resume(void)
 {
@@ -69,7 +125,7 @@ void run_test(void)
 	task_wake(TASK_ID_PD_C0);
 	task_wait_event(5 * MSEC);
 
-	RUN_TEST(test_startup_and_resume);
+	RUN_TEST(test_connect_as_sink);
 
 	test_print_result();
 }
