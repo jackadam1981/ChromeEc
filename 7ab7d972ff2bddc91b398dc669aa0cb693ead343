@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2301359b_e564d949",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-08T21:20:09Z",
+      "side": 1,
+      "message": "Should I just delete this doc in favor of https://crrev.com/c/2137929 ? It seems like https://crrev.com/c/2137929 has all the same information. There\u0027s also the CCD doc in hdctools: https://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/ccd.md that gives the same \"generic CCD\" overview that this doc does. Maybe we should just link to that?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 29
+      },
+      "revId": "7ab7d972ff2bddc91b398dc669aa0cb693ead343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
