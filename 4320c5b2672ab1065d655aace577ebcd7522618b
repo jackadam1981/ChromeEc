@@ -16,6 +16,24 @@
       "revId": "4320c5b2672ab1065d655aace577ebcd7522618b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7076a1d_cc4341bc",
+        "filename": "driver/accelgyro_bmi260_config_tbin.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-08T10:10:33Z",
+      "side": 1,
+      "message": "I used the same pattern from the ec codebase, making the symbolic link from the file in third_party to where you want to use it.\nFor example: \n\"./include/aes.h -\u003e ../third_party/boringssl/include/aes.h\"\n\"./test/x25519.c -\u003e ../third_party/boringssl/test/x25519.c\"\n\nIf you think I don\u0027t have to follow this pattern, I will follow your opinion instead.",
+      "parentUuid": "63671f17_1dd6c693",
+      "revId": "4320c5b2672ab1065d655aace577ebcd7522618b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
