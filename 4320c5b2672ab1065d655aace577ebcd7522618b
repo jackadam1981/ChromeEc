@@ -34,6 +34,24 @@
       "revId": "4320c5b2672ab1065d655aace577ebcd7522618b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47e4ef4_ed7737a1",
+        "filename": "driver/accelgyro_bmi260_config_tbin.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-04-08T16:09:25Z",
+      "side": 1,
+      "message": "I prefer not using symlinks without a specific need.  But I\u0027ll leave this to your best judgement!",
+      "parentUuid": "c7076a1d_cc4341bc",
+      "revId": "4320c5b2672ab1065d655aace577ebcd7522618b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
