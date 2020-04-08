@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5968a78a_0c4f621b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-08T02:35:14Z",
+      "side": 1,
+      "message": "The 10ms as well as the 100ms were chosen arbitrarily. The ANX TCPC generates EC_EVENTS when nothing is connected and it seems to stop detecting connections if this state continues for some time greater than 10ms, call it x. But connections are detected if a device is connected before time x or putting it to sleep. I have a debug printout on the bug that shows this.",
+      "parentUuid": "70d0a254_04b142df",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "b1860fb49341e7917d2783e17e326e491bef50ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "600b36b7_17a76fc5",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "b1860fb49341e7917d2783e17e326e491bef50ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ece87e_2a3c0ecb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2836,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-08T02:35:14Z",
+      "side": 1,
+      "message": "I thought as much too but decided not to because the DRP_TC_DRP_AUTO_TOGGLE/default case was different. I\u0027ve created a helper function",
+      "parentUuid": "600b36b7_17a76fc5",
+      "revId": "b1860fb49341e7917d2783e17e326e491bef50ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "b1860fb49341e7917d2783e17e326e491bef50ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a76bafb_7b75fd26",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2873,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-08T02:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8e74ab9_2a3889cf",
+      "range": {
+        "startLine": 2873,
+        "startChar": 0,
+        "endLine": 2873,
+        "endChar": 10
+      },
+      "revId": "b1860fb49341e7917d2783e17e326e491bef50ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
