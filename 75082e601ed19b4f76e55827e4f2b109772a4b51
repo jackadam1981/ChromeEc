@@ -283,6 +283,30 @@
       "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0707a2f_23ffe307",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4403,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-08T18:34:14Z",
+      "side": 1,
+      "message": "A SoftReset in response to a SoftReset? That charger sounds really broken... what is it?  What did we receive that caused us to send the SoftReset?\n\nI guess if the PD port partner is a pure source (no DRP), we shouldn\u0027t send it a GetSinkCap. We should already know that from the SourceCap.\n\nSoftResets are to be sent whenever there\u0027s a protocol error.",
+      "parentUuid": "39db18b7_ec1bc3f7",
+      "range": {
+        "startLine": 4403,
+        "startChar": 4,
+        "endLine": 4403,
+        "endChar": 42
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
