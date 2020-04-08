@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9553182c_0aaa5e4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T02:27:47Z",
+      "side": 1,
+      "message": "this description does not match the patch any more.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "ce159772f9e4797b27d658883bc39c995518428f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12ae36f3_1d67f566",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T02:27:47Z",
+      "side": 1,
+      "message": "make this bool please.\n\nAlso, I am not sure all changes included in this patch are necessary:\n\njust this and lines 28 and 44 should be enough, no?",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "ce159772f9e4797b27d658883bc39c995518428f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
