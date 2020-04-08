@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "52eb0d8f_a5a9469a",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-08T21:18:12Z",
+      "side": 1,
+      "message": "Yes! I was going to ask about that because I wasn\u0027t sure when/if Cr50 reboots. What happens when the battery drains to zero? Does that count as a reboot?",
+      "parentUuid": "94e8b6c0_86276387",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64c2cfaa_b6bd581d",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
