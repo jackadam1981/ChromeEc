@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2d133931_960231a7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T16:53:01Z",
+      "side": 1,
+      "message": "Thanks. I think we also need to update the fuzzing logic to make the incoming discover identity packets be fuzzed (which will pretty much always make the state machine do into a error state, but **not** crash)",
+      "parentUuid": "b9cda377_ccf83b2d",
+      "range": {
+        "startLine": 210,
+        "startChar": 7,
+        "endLine": 210,
+        "endChar": 33
+      },
+      "revId": "11281bbddc95dfb83eee7c1376ff673628f9c974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e2770ca_690ebea7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4

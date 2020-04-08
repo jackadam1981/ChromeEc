@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3d423c6_413ddae0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1779,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T16:53:01Z",
+      "side": 1,
+      "message": "this is sad, look at all of these set_state_pe calls with a return after them 😞\n\nCan you fix this in another CL (if not, I can add it to my list)",
+      "range": {
+        "startLine": 1700,
+        "startChar": 2,
+        "endLine": 1779,
+        "endChar": 37
+      },
+      "revId": "29336e6c195315d261133811f075923c3f8c9dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
