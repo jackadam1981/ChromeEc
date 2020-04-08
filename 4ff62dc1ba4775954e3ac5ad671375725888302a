@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b32c1eef_31c3f0d4",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-04-08T06:54:42Z",
+      "side": 1,
+      "message": "Sorry I don\u0027t know what I was thinking here. I think I thought the intention was for this CL to generate new, FIPS-compliant salts at next use (which of course it doesn\u0027t do). Good to know that FIPS will require powerwash.",
+      "parentUuid": "943a1c73_4f50f867",
+      "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10303ff3_2e8f59cf",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 15
@@ -69,6 +87,24 @@
       "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72350c59_69c15a66",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-04-08T06:54:42Z",
+      "side": 1,
+      "message": "The other salts are saved using write_tpm_nvmem_hidden, this was because in the old flash setup we ran out of space so could not use setvar.\n\nBy \"If we are going to create a new salt, may as well create it the same way as the others\", I meant that I think it would be cleaner to store all salts using the same function, which previously meant write_tpm_nvmem_hidden, as setvar did not have space.\n\nThat said, this comment also doesn\u0027t make sense given the salt won\u0027t reset until powerwash.",
+      "parentUuid": "c5ccf3a7_c0b1cf52",
+      "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
