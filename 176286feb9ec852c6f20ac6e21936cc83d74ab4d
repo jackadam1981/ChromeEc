@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e747a6a5_be679be6",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-08T15:19:51Z",
+      "side": 1,
+      "message": "comment is misleading",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 38
+      },
+      "revId": "176286feb9ec852c6f20ac6e21936cc83d74ab4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "907d58ee_9e8690cb",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-08T15:19:51Z",
+      "side": 1,
+      "message": "comment is misleading",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 35
+      },
+      "revId": "176286feb9ec852c6f20ac6e21936cc83d74ab4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "966acb84_30846539",
+        "filename": "driver/usb_mux/ps874x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-08T15:19:51Z",
+      "side": 1,
+      "message": "Since you are starting with the current value of PS874X_REG_MODE, isn\u0027t it possible that some of these bits were set on entry into this condition tree?  If so you have to deal with clearing the bits that will not be set.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 39
+      },
+      "revId": "176286feb9ec852c6f20ac6e21936cc83d74ab4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
