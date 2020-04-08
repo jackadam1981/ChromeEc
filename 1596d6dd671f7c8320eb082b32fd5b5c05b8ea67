@@ -70,6 +70,76 @@
       "revId": "1596d6dd671f7c8320eb082b32fd5b5c05b8ea67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9dc5be8_be69b45f",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-08T00:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c80d56_411aaa09",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "1596d6dd671f7c8320eb082b32fd5b5c05b8ea67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc6d921f_c3816bae",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-08T00:47:24Z",
+      "side": 1,
+      "message": "I am removing this as commented, to ensure that USB_I2C shall be disconnected.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 0
+      },
+      "revId": "1596d6dd671f7c8320eb082b32fd5b5c05b8ea67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e44b4786_54b44506",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-08T00:47:24Z",
+      "side": 1,
+      "message": "I think it is not necessary: rdd module will call usb_i2c_board_is_enabled() to get the current I2C status. If it finds I2C disabled but wants to enable, it will usb_i2c_board_enable(). It implies usb_i2c_board_is_enabled() returned 0 and would this time too.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "1596d6dd671f7c8320eb082b32fd5b5c05b8ea67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
