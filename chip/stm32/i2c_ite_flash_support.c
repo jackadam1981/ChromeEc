@@ -282,6 +282,11 @@ static int command_enable_ite_dfu(int argc, char **argv)
 		STM32_TIM_CCER(16) = STM32_TIM_CCER_CC1E;
 		STM32_TIM_CCER(17) = STM32_TIM_CCER_CC1E;
 	}
+	/*
+	 * We want the rising edge of SDAT to be in the middle of SCLK, so
+	 * invert the SDA (faster) signal.
+	 */
+	STM32_TIM_CCER(17) |= STM32_TIM_CCER_CC1P;
 
 	/* Enable main output. */
 	STM32_TIM_BDTR(16) = STM32_TIM_BDTR_MOE;
