@@ -331,6 +331,30 @@
       "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7bd06a2_42062aaf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4403,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-08T18:49:18Z",
+      "side": 1,
+      "message": "Ah, then there are two bugs:\n\n1) Don\u0027t send GetSinkCaps to Sources\n2) We should always Accept a SoftReset if received.",
+      "parentUuid": "7237cb76_1f5149e0",
+      "range": {
+        "startLine": 4403,
+        "startChar": 4,
+        "endLine": 4403,
+        "endChar": 42
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
