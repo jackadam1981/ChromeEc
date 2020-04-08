@@ -22,6 +22,30 @@
       "revId": "34f6f1743957a6edd9272f1c100b5fa4f3bcd0c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41792bd1_472f74bb",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-04-08T19:23:11Z",
+      "side": 1,
+      "message": "Regressions should be fixed now.",
+      "parentUuid": "c197533f_bc87c0e4",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 79
+      },
+      "revId": "34f6f1743957a6edd9272f1c100b5fa4f3bcd0c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
