@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3572701_3035f8e5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6077,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:07:28Z",
+      "side": 1,
+      "message": "nit: since these values are serialized over an API, can you specified the value for each enum please",
+      "range": {
+        "startLine": 6077,
+        "startChar": 1,
+        "endLine": 6077,
+        "endChar": 8
+      },
+      "revId": "b89e871603682dbf6a313583e400c802dc147810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb2e670_c20baeca",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6098,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:07:28Z",
+      "side": 1,
+      "message": "what is this used for? what if TK_ABSENT is used, does the min still apply?\n\nAlso, it is work adding a note that value for MAX cannot change will creating a new version of the response struct.\n\nAnother way to structure the response would be to use the num_top_row_keys count as the size of the a uint8_t action_keys[0] as the last member of the response. Then we don\u0027t have to send extra bytes for keys we aren\u0027t using",
+      "range": {
+        "startLine": 6098,
+        "startChar": 0,
+        "endLine": 6098,
+        "endChar": 27
+      },
+      "revId": "b89e871603682dbf6a313583e400c802dc147810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b45def_e0cc8408",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:07:28Z",
+      "side": 1,
+      "message": "might want to make this a flag field and BIT(0) is can_send_function_keys",
+      "range": {
+        "startLine": 6121,
+        "startChar": 9,
+        "endLine": 6121,
+        "endChar": 31
+      },
+      "revId": "b89e871603682dbf6a313583e400c802dc147810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aebd972c_6f00b39a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6126,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-08T17:07:28Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this extra struct level as it doesn\u0027t appear from the name that you would add anything else to this response struct\n\n(also if/when we switch to using action_keys[0], will will want to ensure that the last field in response is that field)",
+      "range": {
+        "startLine": 6126,
+        "startChar": 1,
+        "endLine": 6126,
+        "endChar": 31
+      },
+      "revId": "b89e871603682dbf6a313583e400c802dc147810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
