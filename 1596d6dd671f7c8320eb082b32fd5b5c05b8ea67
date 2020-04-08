@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "63ede7e3_0d469fbc",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T18:08:47Z",
+      "side": 1,
+      "message": "what if i2c was selected for whatever other reason, not for programming the EC?\n\nWhat if this register holds the required value, but other registers which need to be configured do not?",
+      "parentUuid": "10100ed6_f798df0a",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 33
+      },
+      "revId": "1596d6dd671f7c8320eb082b32fd5b5c05b8ea67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc6d921f_c3816bae",
         "filename": "board/cr50/usb_i2c.c",
         "patchSetId": 1
