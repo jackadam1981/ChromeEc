@@ -226,7 +226,7 @@ static int board_ps8818_mux_set(const struct usb_mux *me,
 
 const struct pi3dpx1207_usb_control pi3dpx1207_controls[] = {
 	[USBC_PORT_C0] = {
-#ifdef VARIANT_ZORK_TREMBYLE
+#ifdef CONFIG_USBC_RETIMER_PI3DPX1207
 		.enable_gpio = IOEX_USB_C0_DATA_EN,
 		.dp_enable_gpio = GPIO_USB_C0_IN_HPD,
 #endif
