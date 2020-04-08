@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "14dd3df8_c999ef0a",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-08T21:38:51Z",
+      "side": 1,
+      "message": "yes, if the battery drains completely, everything shuts down, when the power is applied the Cr50 boots up first and then takes the EC out of reset which allows the rest of the device to boot.\n\nIf H1 power is not interrupted, the device can go through AP reboot (warm or cold) or EC reboot where EC reboots and AP goes through cold reboot, but the H1/Cr50 never reboots (again, unless there is a Cr50 firmware update or Cr50 crash)",
+      "parentUuid": "52eb0d8f_a5a9469a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64c2cfaa_b6bd581d",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
