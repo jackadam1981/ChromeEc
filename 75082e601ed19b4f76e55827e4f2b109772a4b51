@@ -307,6 +307,30 @@
       "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7237cb76_1f5149e0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4403,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-08T18:38:34Z",
+      "side": 1,
+      "message": "Soft reset from sending PD_CTRL_GET_SINK_CAP.  Definitely not a DRP device, just a charger.  I am not sure us sending a soft reset to the devices soft reset is very neighborly on our side of the wire.",
+      "parentUuid": "f0707a2f_23ffe307",
+      "range": {
+        "startLine": 4403,
+        "startChar": 4,
+        "endLine": 4403,
+        "endChar": 42
+      },
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
