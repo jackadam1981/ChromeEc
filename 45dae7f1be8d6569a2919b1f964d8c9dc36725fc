@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "9e25321a_e27223af",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-04-08T16:02:39Z",
+      "side": 1,
+      "message": "I think we can simply change EEPROM_PAGE_WRITE_SIZE from 16 to 8. (No change in board.h or config.h) It\u0027ll be slower for 16 byte EEPROMs but writes don\u0027t happen in a normal boot. So, the write speed doesn\u0027t matter.",
+      "parentUuid": "f3a2a88c_fd788184",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "45dae7f1be8d6569a2919b1f964d8c9dc36725fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "272af9f7_79093c0b",
         "filename": "common/cbi.c",
         "patchSetId": 4
