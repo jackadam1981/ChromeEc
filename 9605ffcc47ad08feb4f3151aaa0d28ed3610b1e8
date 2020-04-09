@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77413c7d_09343bcf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-09T18:31:04Z",
+      "side": 1,
+      "message": "We try to use the IS_ENABLED(...) macros whenever possible.",
+      "revId": "9605ffcc47ad08feb4f3151aaa0d28ed3610b1e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
