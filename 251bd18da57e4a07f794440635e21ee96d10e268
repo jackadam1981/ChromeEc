@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "713cde78_d28899bf",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-09T18:08:32Z",
+      "side": 1,
+      "message": "make 2 functions:\nretimer_set_dfp_state()\nretimer_set_ufp_state()",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 36
+      },
+      "revId": "251bd18da57e4a07f794440635e21ee96d10e268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
