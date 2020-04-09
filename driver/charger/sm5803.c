@@ -197,6 +197,45 @@ static void sm5803_init(int chgnum)
 	rv |= meas_write8(chgnum, SM5803_REG_TINT_LOW_TH,
 						SM5803_TINT_LOW_LEVEL);
 
+	/* Special register init - only for early silicon, remove later */
+	rv |= chg_write8(chgnum, 0x1F, 0x09);
+
+	rv |= chg_write8(chgnum, 0x22, 0xB3);
+	rv |= chg_write8(chgnum, 0x23, 0x81);
+	rv |= chg_write8(chgnum, 0x28, 0xB7);
+
+	rv |= chg_write8(chgnum, 0x4A, 0x82);
+	rv |= chg_write8(chgnum, 0x4B, 0xA3);
+	rv |= chg_write8(chgnum, 0x4C, 0xA8);
+	rv |= chg_write8(chgnum, 0x4D, 0xC2);
+	rv |= chg_write8(chgnum, 0x4E, 0x04);
+	rv |= chg_write8(chgnum, 0x4F, 0xFF);
+
+	rv |= chg_write8(chgnum, 0x50, 0x98);
+	rv |= chg_write8(chgnum, 0x51, 0x80);
+	rv |= chg_write8(chgnum, 0x52, 0x77);
+	rv |= chg_write8(chgnum, 0x53, 0xD0);
+	rv |= chg_write8(chgnum, 0x54, 0x03);
+	rv |= chg_write8(chgnum, 0x55, 0xF1);
+	rv |= chg_write8(chgnum, 0x56, 0xFF);
+	rv |= chg_write8(chgnum, 0x57, 0x03);
+	rv |= chg_write8(chgnum, 0x58, 0xF1);
+	rv |= chg_write8(chgnum, 0x59, 0xFF);
+	rv |= chg_write8(chgnum, 0x5A, 0x10);
+	rv |= chg_write8(chgnum, 0x5B, 0x02);
+	rv |= chg_write8(chgnum, 0x5C, 0x6F);
+	rv |= chg_write8(chgnum, 0x5D, 0xB0);
+	rv |= chg_write8(chgnum, 0x5E, 0x3C);
+	rv |= chg_write8(chgnum, 0x5F, 0x3C);
+
+	rv |= chg_write8(chgnum, 0x60, 0xAA);
+	rv |= chg_write8(chgnum, 0x61, 0x20);
+	rv |= chg_write8(chgnum, 0x65, 0x3E);
+	rv |= chg_write8(chgnum, 0x66, 0x36);
+	rv |= chg_write8(chgnum, 0x67, 0x64);
+	rv |= chg_write8(chgnum, 0x68, 0x88);
+	rv |= chg_write8(chgnum, 0x69, 0xC7);
+
 	if (rv)
 		CPRINTS("%s %d: Failed initialization", CHARGER_NAME, chgnum);
 }
