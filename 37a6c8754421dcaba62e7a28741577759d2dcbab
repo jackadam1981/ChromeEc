@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a7e6cb6_3f071f46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-09T17:16:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3093c46a_97127642",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "37a6c8754421dcaba62e7a28741577759d2dcbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56418e0c_68140730",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "37a6c8754421dcaba62e7a28741577759d2dcbab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8756b78_f9cf6b64",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2711,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-09T17:16:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56418e0c_68140730",
+      "range": {
+        "startLine": 2711,
+        "startChar": 48,
+        "endLine": 2711,
+        "endChar": 52
+      },
+      "revId": "37a6c8754421dcaba62e7a28741577759d2dcbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4edc17aa_6017cb48",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2813,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-09T17:16:46Z",
+      "side": 1,
+      "message": "I updated the comment.",
+      "parentUuid": "d5afb55c_160ae99a",
+      "range": {
+        "startLine": 2812,
+        "startChar": 0,
+        "endLine": 2813,
+        "endChar": 32
+      },
+      "revId": "37a6c8754421dcaba62e7a28741577759d2dcbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0f86edf_a57e9c47",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 6
@@ -85,6 +157,24 @@
       "revId": "37a6c8754421dcaba62e7a28741577759d2dcbab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83f3343_72d089c0",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-09T17:16:46Z",
+      "side": 1,
+      "message": "This leaked in from testing I was performing on another CL. Removed.",
+      "parentUuid": "d0f86edf_a57e9c47",
+      "revId": "37a6c8754421dcaba62e7a28741577759d2dcbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
