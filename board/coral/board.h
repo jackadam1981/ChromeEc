@@ -188,8 +188,6 @@
 #define I2C_PORT_LID_ACCEL		NPCX_I2C_PORT2
 #define I2C_PORT_BATTERY		NPCX_I2C_PORT3
 #define I2C_PORT_CHARGER		NPCX_I2C_PORT3
-/* Accelerometer and Gyroscope are the same device. */
-#define I2C_PORT_ACCEL			I2C_PORT_GYRO
 
 /* Sensors */
 #define CONFIG_MKBP_EVENT
