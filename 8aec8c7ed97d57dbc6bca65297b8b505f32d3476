@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "448223c4_ebd5aba5",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-04-09T14:47:10Z",
+      "side": 1,
+      "message": "That was my assumption as well. Not sure these are equivalent in practice?",
+      "parentUuid": "210f7e60_72c5fa92",
+      "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "311b866f_12f3b667",
         "filename": "include/u2f.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-04-07T09:20:35Z",
       "side": 1,
       "message": "Should we be passing the public key of the auth-time secrets keypair here? So that we can encrypt the auth time secret with it?",
+      "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3c404b7_5bcc7e6d",
+        "filename": "include/u2f.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-04-09T14:47:10Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to concern Cr50 with that aspect, we can return the secret in clear and encrypt with the auth-time secrets pubkey in userspace.",
+      "parentUuid": "311b866f_12f3b667",
       "revId": "8aec8c7ed97d57dbc6bca65297b8b505f32d3476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
