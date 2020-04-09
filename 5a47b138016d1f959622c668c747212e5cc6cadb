@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dff66bd_44e94898",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-09T18:06:39Z",
+      "side": 1,
+      "message": "return cable-\u003etype \u003d\u003d IDH_PTYPE_PCABLE ||\n cable-\u003eattr2.a2_rev30.usb_20_support \u003d\u003d USB2_SUPPORTED",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 8
+      },
+      "revId": "5a47b138016d1f959622c668c747212e5cc6cadb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452ba398_19843687",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-09T18:06:39Z",
+      "side": 1,
+      "message": "I think you can avoid this, make to functions based on\nif (pd_get_data_role(port) \u003d\u003d PD_ROLE_UFP)\nhandle everything separate",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 66
+      },
+      "revId": "5a47b138016d1f959622c668c747212e5cc6cadb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
