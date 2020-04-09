@@ -15,6 +15,7 @@
 
 #if BOARD_REV >= OAK_REV5
 #define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_BMI_SPI
 #define CONFIG_ACCEL_KX022
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
@@ -158,8 +159,8 @@
 #define I2C_PORT_USB_MUX 1
 #define I2C_PORT_TCPC    1
 
-/* Enable Accel over SPI */
-#define CONFIG_SPI_ACCEL_PORT    0  /* First SPI master port (SPI2) */
+/* Enable Accel over SPI for BMI */
+#define CONFIG_BMI_SPI_PORT 0  /* First SPI master port (SPI2) */
 
 /* Ambient Light Sensor address */
 #define OPT3001_I2C_ADDR_FLAGS OPT3001_I2C_ADDR1_FLAGS

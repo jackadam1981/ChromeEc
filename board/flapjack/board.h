@@ -85,6 +85,7 @@
 /* Motion Sensors */
 #ifdef SECTION_IS_RW
 #define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_BMI_I2C
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
@@ -242,8 +243,8 @@
 /* Route sbs host requests to virtual battery driver */
 #define VIRTUAL_BATTERY_ADDR_FLAGS	0x0B
 
-/* Enable Accel over SPI */
-#define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */
+/* Enable Accel over SPI for kionix */
+#define CONFIG_KIONIX_SPI_PORT 0  /* The first SPI master port (SPI2) */
 
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT

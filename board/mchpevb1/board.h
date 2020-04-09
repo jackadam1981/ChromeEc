@@ -131,6 +131,7 @@
 
 /* Optional features */
 #define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_BMI_SPI
 /* #define CONFIG_ACCEL_KX022 */
 /* #define CONFIG_ALS */
 /* #define CONFIG_ALS_OPT3001 */
@@ -324,11 +325,11 @@
 #define CONFIG_MCHP_GPSPI	0x01
 #endif
 
-/* SPI Accelerometer
+/* SPI Accelerometer for BMI
  * CONFIG_SPI_FLASH_PORT is the index into
  * spi_devices[] in board.c
  */
-#define CONFIG_SPI_ACCEL_PORT 1
+#define CONFIG_BMI_SPI_PORT 1
 
 /*
  * Enable EC UART commands to read/write

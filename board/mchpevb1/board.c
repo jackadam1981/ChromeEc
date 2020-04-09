@@ -311,7 +311,7 @@ uint16_t board_i2c_slave_addrs(int controller)
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
 	{ QMSPI0_PORT, 4, GPIO_QMSPI_CS0},
-#if defined(CONFIG_SPI_ACCEL_PORT)
+#if defined(CONFIG_BMI_SPI_PORT)
 	{ GPSPI0_PORT, 2, GPIO_SPI0_CS0 },
 #endif
 };
@@ -934,9 +934,9 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv = &bmi160_drv,
 		.mutex = &g_base_mutex,
 		.drv_data = &g_bmi160_data,
-		.port = CONFIG_SPI_ACCEL_PORT,
+		.port = CONFIG_BMI_SPI_PORT,
 		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(
-			CONFIG_SPI_ACCEL_PORT),
+			CONFIG_BMI_SPI_PORT),
 		.rot_standard_ref = NULL, /* Identity matrix. */
 		.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
 		.min_frequency = BMI_ACCEL_MIN_FREQ,
@@ -959,9 +959,9 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv = &bmi160_drv,
 		.mutex = &g_base_mutex,
 		.drv_data = &g_bmi160_data,
-		.port = CONFIG_SPI_ACCEL_PORT,
+		.port = CONFIG_BMI_SPI_PORT,
 		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(
-			CONFIG_SPI_ACCEL_PORT),
+			CONFIG_BMI_SPI_PORT),
 		.default_range = 1000, /* dps */
 		.rot_standard_ref = NULL, /* Identity Matrix. */
 		.min_frequency = BMI_GYRO_MIN_FREQ,
@@ -999,7 +999,7 @@ static void board_spi_enable(void)
 {
 	trace0(0, BRD, 0, "HOOK_CHIPSET_STARTUP - board_spi_enable");
 
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+	spi_enable(CONFIG_BMI_SPI_PORT, 1);
 
 	/* Toggle SPI chip select to switch BMI160 from I2C mode
 	 * to SPI mode
@@ -1014,7 +1014,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_spi_enable,
 static void board_spi_disable(void)
 {
 	trace0(0, BRD, 0, "HOOK_CHIPSET_SHUTDOWN - board_spi_disable");
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
+	spi_enable(CONFIG_BMI_SPI_PORT, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_spi_disable,
 	     MOTION_SENSE_HOOK_PRIO + 1);

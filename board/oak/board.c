@@ -109,7 +109,7 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 #ifdef CONFIG_ACCELGYRO_BMI160
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
-	{ CONFIG_SPI_ACCEL_PORT, 1, GPIO_SPI2_NSS }
+	{ CONFIG_BMI_SPI_PORT, 1, GPIO_SPI2_NSS }
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 #endif
@@ -295,7 +295,7 @@ static void board_init(void)
 	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
 	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
 
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+	spi_enable(CONFIG_BMI_SPI_PORT, 1);
 	CPRINTS("Board using SPI sensors");
 #endif
 }
@@ -670,7 +670,8 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = &g_bmi160_data,
 		.port = I2C_PORT_ACCEL,
-		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(0),
+		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(
+			CONFIG_BMI_SPI_PORT),
 		.rot_standard_ref = &base_standard_ref,
 		.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
 		.min_frequency = BMI_ACCEL_MIN_FREQ,
@@ -694,7 +695,8 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = &g_bmi160_data,
 		.port = I2C_PORT_ACCEL,
-		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(0),
+		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(
+			CONFIG_BMI_SPI_PORT),
 		.default_range = 1000, /* dps */
 		.rot_standard_ref = &base_standard_ref,
 		.min_frequency = BMI_GYRO_MIN_FREQ,
