@@ -59,6 +59,25 @@ static const uint16_t action_scancodes[] = {
 	[TK_PRIVACY_SCRN_TOGGLE] = SCANCODE_PRIVACY_SCRN_TOGGLE,
 };
 
+static const struct ec_response_keybd_config default_keybd = {
+	/* Default Chromeos keyboard config */
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_FORWARD,		/* T2 */
+		TK_REFRESH,		/* T3 */
+		TK_FULLSCREEN,		/* T4 */
+		TK_OVERVIEW,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	/* No function keys, no numeric keypad, no screenlock key */
+	.capabilities = 0,
+};
+
 static const struct ec_response_keybd_config *vivaldi_keybd;
 
 static enum
@@ -79,7 +98,7 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_KEYBD_CONFIG, get_vivaldi_keybd_config,
 __overridable
 const struct ec_response_keybd_config *board_vivaldi_keybd_config(void)
 {
-	return NULL;
+	return &default_keybd;
 }
 
 static void vivaldi_init(void)
