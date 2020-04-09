@@ -156,7 +156,6 @@
 
 /* 2 I2C master ports, connect to battery, charger, pd and USB switches */
 #define I2C_PORT_MASTER  0
-#define I2C_PORT_ACCEL   0
 #define I2C_PORT_BATTERY 0
 #define I2C_PORT_CHARGER 0
 #define I2C_PORT_PERICOM 0
@@ -165,8 +164,8 @@
 #define I2C_PORT_USB_MUX 1
 #define I2C_PORT_TCPC    1
 
-/* Enable Accel over SPI */
-#define CONFIG_SPI_ACCEL_PORT    0  /* First SPI master port (SPI2) */
+/* Enable Accel over SPI for kionix */
+#define CONFIG_KIONIX_SPI_PORT 0  /* First SPI master port (SPI2) */
 
 /* Timer selection */
 #define TIM_CLOCK32 2

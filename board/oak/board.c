@@ -109,7 +109,7 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 #ifdef CONFIG_ACCELGYRO_BMI160
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
-	{ CONFIG_SPI_ACCEL_PORT, 1, GPIO_SPI2_NSS }
+	{ CONFIG_KIONIX_SPI_PORT, 1, GPIO_SPI2_NSS }
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 #endif
@@ -295,7 +295,7 @@ static void board_init(void)
 	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
 	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
 
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+	spi_enable(CONFIG_KIONIX_SPI_PORT, 1);
 	CPRINTS("Board using SPI sensors");
 #endif
 }

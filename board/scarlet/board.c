@@ -128,7 +128,7 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 /******************************************************************************/
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
-	{ CONFIG_SPI_ACCEL_PORT, 1, GPIO_SPI_ACCEL_CS_L },
+	{ CONFIG_KIONIX_SPI_PORT, 1, GPIO_SPI_ACCEL_CS_L },
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
@@ -240,7 +240,7 @@ static void board_spi_enable(void)
 	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
 	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
 
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+	spi_enable(CONFIG_KIONIX_SPI_PORT, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP,
 	     board_spi_enable,
@@ -248,7 +248,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP,
 
 static void board_spi_disable(void)
 {
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
+	spi_enable(CONFIG_KIONIX_SPI_PORT, 0);
 
 	/* Disable clocks to SPI2 module */
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
@@ -412,8 +412,8 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv = &bmi160_drv,
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
-	 .port = CONFIG_SPI_ACCEL_PORT,
-	 .i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(CONFIG_SPI_ACCEL_PORT),
+	 .port = CONFIG_KIONIX_SPI_PORT,
+	 .i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(CONFIG_KIONIX_SPI_PORT),
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
 	 .min_frequency = BMI_ACCEL_MIN_FREQ,
@@ -435,8 +435,8 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv = &bmi160_drv,
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
-	 .port = CONFIG_SPI_ACCEL_PORT,
-	 .i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(CONFIG_SPI_ACCEL_PORT),
+	 .port = CONFIG_KIONIX_SPI_PORT,
+	 .i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(CONFIG_KIONIX_SPI_PORT),
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &base_standard_ref,
 	 .min_frequency = BMI_GYRO_MIN_FREQ,

@@ -53,6 +53,7 @@
 #ifndef VARIANT_KUKUI_NO_SENSORS
 #define CONFIG_ACCEL_KX022	/* Lid accel */
 #define CONFIG_ACCELGYRO_BMI160 /* Base accel */
+#define CONFIG_BMI_SPI
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
@@ -81,8 +82,8 @@
 #define I2C_PORT_BATTERY            2
 #endif
 
-/* Enable Accel over SPI */
-#define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */
+/* Enable Accel over SPI for kionix */
+#define CONFIG_KIONIX_SPI_PORT 0  /* The first SPI master port (SPI2) */
 
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT

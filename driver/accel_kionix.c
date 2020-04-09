@@ -140,7 +140,7 @@ static int raw_read8(const int port,
 	int rv = EC_ERROR_INVAL;
 
 	if (SLAVE_IS_SPI(i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_KIONIX_SPI_PORT
 		uint8_t val;
 		uint8_t cmd = 0x80 | reg;
 
@@ -168,7 +168,7 @@ static int raw_write8(const int port,
 	int rv = EC_ERROR_INVAL;
 
 	if (SLAVE_IS_SPI(i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_KIONIX_SPI_PORT
 		uint8_t cmd[2] = { reg, data };
 
 		rv = spi_transaction(
@@ -189,7 +189,7 @@ static int raw_read_multi(const int port,
 	int rv = EC_ERROR_INVAL;
 
 	if (SLAVE_IS_SPI(i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_KIONIX_SPI_PORT
 		reg |= 0x80;
 		rv = spi_transaction(
 			&spi_devices[SLAVE_GET_SPI_ADDR(i2c_spi_addr_flags)],

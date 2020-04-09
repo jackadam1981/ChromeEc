@@ -164,7 +164,7 @@ void tablet_mode_interrupt(enum gpio_signal signal)
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
 	{ QMSPI0_PORT, 4, GPIO_QMSPI_CS0},
-#if defined(CONFIG_SPI_ACCEL_PORT)
+#if defined(CONFIG_KIONIX_SPI_PORT)
 	{ GPSPI0_PORT, 2, GPIO_SPI0_CS0 },
 #endif
 };
