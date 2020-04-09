@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "0c3563e6_efb47880",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-09T02:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1d2417d_4e210b2c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 75
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9511f0f1_904c5c17",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 5
@@ -68,6 +92,30 @@
       "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23fad403_8b27309c",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-09T02:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9511f0f1_904c5c17",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "7b01ceba_76ce22af",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-09T02:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eba59f23_601f350b",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0ae2c37_014fd468",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 5
@@ -105,6 +177,30 @@
       "writtenOn": "2020-04-08T20:34:19Z",
       "side": 1,
       "message": "Also put these USB reset signals into a separate CL, can be done with the USB interrupts CL.",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baec7a55_a5b08f57",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-09T02:34:36Z",
+      "side": 1,
+      "message": "Is it like \"enum gpio_signal ps8xxx_rst_odl \u003d GPIO_USB_C1_RT_RST_ODL;\" in baseboard/volteer.c??",
+      "parentUuid": "a0ae2c37_014fd468",
       "range": {
         "startLine": 96,
         "startChar": 5,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "48b6bddb_e0cff39f",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-09T02:34:36Z",
+      "side": 1,
+      "message": "I referred the GPIO table on tracker 150353126 #11, and this table had be reviewed on #10.",
+      "parentUuid": "8bf69b89_26e5d07f",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6612ad39_043cf1b4",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 5
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "9f73f2fa_747954a5",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-09T02:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6612ad39_043cf1b4",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e987c95_ee939680",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 5
@@ -174,6 +318,30 @@
       "writtenOn": "2020-04-08T20:34:19Z",
       "side": 1,
       "message": "Match indentation from above.  I also suggest putting these changes in with the separate CL for USB related GPIOs.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 46
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0189ed87_1c876f1b",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-09T02:34:36Z",
+      "side": 1,
+      "message": "Do you mean that I can pull all USB-C port 2 setting to the separate CL?\nContain EC_I2C_4_SDA, EC_I2C_4_SCL, USB_C2_OC_OD, ...etc",
+      "parentUuid": "4e987c95_ee939680",
       "range": {
         "startLine": 156,
         "startChar": 0,
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "9862a6a4_e3d65614",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-09T02:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbfe867c_2d6f05d1",
+      "range": {
+        "startLine": 182,
+        "startChar": 22,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fb42693_d0ec83c8",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 5
@@ -220,6 +412,30 @@
       "writtenOn": "2020-04-08T20:34:19Z",
       "side": 1,
       "message": "This pin used as part of EFS2 (Early Firmware Selection).  The signal is used as a GPIO and not a UART signal. So define this as a GPIO entry instead.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 110
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27527a89_22dcbb32",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-09T02:34:36Z",
+      "side": 1,
+      "message": "Thank you, I will define this as a INPUT GPIO.",
+      "parentUuid": "2fb42693_d0ec83c8",
       "range": {
         "startLine": 187,
         "startChar": 0,
