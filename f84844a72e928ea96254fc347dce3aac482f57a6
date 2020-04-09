@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16748182_3570a8a9",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-04-09T17:02:47Z",
+      "side": 1,
+      "message": "I think that using the double bitwise not to cast to boolean is a risk. If a future developer is not familiar with it, they will potentially remove it and it takes longer to understand.\n\nint dp_supported \u003d (alt_dp_config \u0026 ALT_DP_ENABLE) !\u003d 0; is clearer to understand and compiler optimizations will almost always reduce them to the same expression unless they\u0027re disabled.\n\nSame feedback elsewhere where is is used like the dp_status() and cmd_dp_action() functions.",
+      "revId": "f84844a72e928ea96254fc347dce3aac482f57a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
