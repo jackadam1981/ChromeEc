@@ -173,6 +173,12 @@
 /* Support the orientation gesture */
 #undef CONFIG_GESTURE_ORIENTATION
 
+/* When set, it indicates the BMI driver uses I2C for read/write */
+#undef CONFIG_BMI_I2C
+
+/* When set, it indicates the BMI driver uses SPI for read/write */
+#undef CONFIG_BMI_SPI
+
 /*
  * Use the old standard reference frame for accelerometers. The old
  * reference frame is:

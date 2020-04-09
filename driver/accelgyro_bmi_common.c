@@ -140,7 +140,7 @@ int bmi_get_engineering_val(const int reg_val,
 	return pairs[i].val;
 }
 
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_BMI_SPI
 int bmi_spi_raw_read(const int addr, const uint8_t reg,
 		     uint8_t *data, const int len)
 {
@@ -159,7 +159,7 @@ int bmi_read8(const int port, const uint16_t i2c_spi_addr_flags,
 	int rv = -EC_ERROR_PARAM1;
 
 	if (SLAVE_IS_SPI(i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_BMI_SPI
 		uint8_t val;
 
 		rv = bmi_spi_raw_read(SLAVE_GET_SPI_ADDR(i2c_spi_addr_flags),
@@ -168,7 +168,7 @@ int bmi_read8(const int port, const uint16_t i2c_spi_addr_flags,
 			*data_ptr = val;
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_BMI_I2C
 		rv = i2c_read8(port, i2c_spi_addr_flags,
 			       reg, data_ptr);
 #endif
@@ -185,7 +185,7 @@ int bmi_write8(const int port, const uint16_t i2c_spi_addr_flags,
 	int rv = -EC_ERROR_PARAM1;
 
 	if (SLAVE_IS_SPI(i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_BMI_SPI
 		uint8_t cmd[2] = { reg, data };
 
 		rv = spi_transaction(
@@ -193,7 +193,7 @@ int bmi_write8(const int port, const uint16_t i2c_spi_addr_flags,
 			cmd, 2, NULL, 0);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_BMI_I2C
 		rv = i2c_write8(port, i2c_spi_addr_flags,
 				reg, data);
 #endif
@@ -217,12 +217,12 @@ int bmi_read16(const int port, const uint16_t i2c_spi_addr_flags,
 	int rv = -EC_ERROR_PARAM1;
 
 	if (SLAVE_IS_SPI(i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_BMI_SPI
 		rv = bmi_spi_raw_read(SLAVE_GET_SPI_ADDR(i2c_spi_addr_flags),
 				      reg, (uint8_t *)data_ptr, 2);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_BMI_I2C
 		rv = i2c_read16(port, i2c_spi_addr_flags,
 				reg, data_ptr);
 #endif
@@ -239,11 +239,11 @@ int bmi_write16(const int port, const uint16_t i2c_spi_addr_flags,
 	int rv = -EC_ERROR_PARAM1;
 
 	if (SLAVE_IS_SPI(i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_BMI_SPI
 		CPRINTS("%s() spi part is not implemented", __func__);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_BMI_I2C
 		rv = i2c_write16(port, i2c_spi_addr_flags,
 				 reg, data);
 #endif
@@ -267,12 +267,12 @@ int bmi_read32(const int port, const uint16_t i2c_spi_addr_flags,
 	int rv = -EC_ERROR_PARAM1;
 
 	if (SLAVE_IS_SPI(i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_BMI_SPI
 		rv = bmi_spi_raw_read(SLAVE_GET_SPI_ADDR(i2c_spi_addr_flags),
 				  reg, (uint8_t *)data_ptr, 4);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_BMI_I2C
 		rv = i2c_read32(port, i2c_spi_addr_flags,
 				reg, data_ptr);
 #endif
@@ -289,12 +289,12 @@ int bmi_read_n(const int port, const uint16_t i2c_spi_addr_flags,
 	int rv = -EC_ERROR_PARAM1;
 
 	if (SLAVE_IS_SPI(i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_BMI_SPI
 		rv = bmi_spi_raw_read(SLAVE_GET_SPI_ADDR(i2c_spi_addr_flags),
 				  reg, data_ptr, len);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_BMI_I2C
 		rv = i2c_read_block(port, i2c_spi_addr_flags,
 				    reg, data_ptr, len);
 #endif
@@ -311,11 +311,11 @@ int bmi_write_n(const int port, const uint16_t i2c_spi_addr_flags,
 	int rv = -EC_ERROR_PARAM1;
 
 	if (SLAVE_IS_SPI(i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
+#ifdef CONFIG_BMI_SPI
 		CPRINTS("%s() spi part is not implemented", __func__);
 #endif
 	} else {
-#ifdef I2C_PORT_ACCEL
+#ifdef CONFIG_BMI_I2C
 		rv = i2c_write_block(port, i2c_spi_addr_flags,
 				     reg, data_ptr, len);
 #endif
