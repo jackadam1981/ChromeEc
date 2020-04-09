@@ -163,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "87de62e9_a9544fc3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-09T20:08:01Z",
+      "side": 1,
+      "message": "I moved this version over to my build and I am no longer seeing the SoftReset being sent from the charger.  My trembyle died last night so maybe it was doing something bad to the lines.  So just tried with a new device and it is happy with this code.",
+      "parentUuid": "06e88f3f_6f55b8bc",
+      "revId": "75082e601ed19b4f76e55827e4f2b109772a4b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eec9a0b6_931d173a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
