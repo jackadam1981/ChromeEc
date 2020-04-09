@@ -563,10 +563,25 @@ void tc_partner_dr_data(int port, int en)
 
 void tc_pd_connection(int port, int en)
 {
-	if (en)
+	if (en) {
 		TC_SET_FLAG(port, TC_FLAGS_PARTNER_PD_CAPABLE);
-	else
+#if defined(CONFIG_LOW_POWER_IDLE) && !defined(CONFIG_USB_PD_TCPC_ON_CHIP)
+		/* If a PD device is attached then disable deep sleep */
+		disable_sleep(SLEEP_MASK_USB_PD);
+#endif
+	} else {
+		__maybe_unused int i;
 		TC_CLR_FLAG(port, TC_FLAGS_PARTNER_PD_CAPABLE);
+#if defined(CONFIG_LOW_POWER_IDLE) && !defined(CONFIG_USB_PD_TCPC_ON_CHIP)
+		/* If a PD device is not attached then enable deep sleep */
+		for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+			if (pd_capable(i))
+				break;
+		}
+		if (i == board_get_usb_pd_port_count())
+			enable_sleep(SLEEP_MASK_USB_PD);
+#endif
+	}
 }
 
 void tc_ctvpd_detected(int port)
