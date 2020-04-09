@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b1bb525_da175577",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "Please create a bug and reference the bug in this comment.  See line 59 below for an example.  The same bug can be used for all three interrupt handlers.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "783c7acd_db8dea95",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "You can delete this and also remove references in halvor/power_sequence.c.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ceada0d_059455af",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "These are active high signals, so you need to set the power on state to GPIO_OUT_LOW.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 0
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01d962e7_e6444a22",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "Please use consistent spacing for the macros below.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "440d5ec4_b5918faf",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "Remove the 3AXIS_INT_L/EC_ACCEL_INT_L from this change and only add it as part adding sensors. Depending on the sensors used, this signals may need to be configured as an interrupts.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 70
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccafcab0_19a331bc",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "Also remove 6AXIS_INT_L from this change, and add as part of sensor support. See CL:2097805 for the change that adds BMI260 support to Volteer.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 50
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c209c8bd_5e5ffd8c",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "This should be an output and driven low by default, for reference on Puff this signal is called PACKET_MODE_EN.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/board/puff/gpio.inc?q\u003dgpio.inc+f:puff\u0026dr#87",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 55
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "731b9a72_f7af82e8",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "The I2C signals should be fixed in a separate change list.  This change should also create the correct i2c_ports[] defintion.\n\nSee https://chromium.googlesource.com/chromiumos/platform/ec/+/master/docs/configuration/i2c.md \n\nBecause the Halvor I2C bus setup is different than other Volteer boards, you will first have to move the i2c_ports[] definition from volteer/baseboard.c to volteer/board.c.\n\nAlso, please use the net names for the I2C bus signals.  Only I2C bus 4 is correct above.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5c6907c_e0fd7ffe",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "Delete this - this pin will only be a GPIO.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 110
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b43a6c_dcada4e6",
+        "filename": "board/halvor/power_sequence.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "Delete this, EN_PPVAR_VCCIN_AUX is not on Halvor design.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a71ea23_41d206eb",
+        "filename": "board/halvor/power_sequence.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "Also delete this reference.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 46
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

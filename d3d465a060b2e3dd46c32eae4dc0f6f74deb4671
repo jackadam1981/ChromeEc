@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d5263029_a426d935",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "In general, if your change is limited to one one functional area (such as USB), it\u0027s easier to review.\n\nMy suggestion is to move all the USB GPIOs into a different changelist.\nI2C related signals will be in another changelist.\nAnd sensor related signals in a another changelist.",
+      "parentUuid": "baec7a55_a5b08f57",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bf69b89_26e5d07f",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 5
@@ -248,6 +272,30 @@
       "side": 1,
       "message": "I referred the GPIO table on tracker 150353126 #11, and this table had be reviewed on #10.",
       "parentUuid": "8bf69b89_26e5d07f",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 18
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ada5a61_d8afb367",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "Thanks for referencing the bug. Just be aware the first version of Volteer connected the JEN1# and TEST# signals to the PCH, also with pull-ups to PP3300_A.  The EC would not come out of reset because the PCH pulled JEN1# and TEST# low. We had to cut these traces to get the EC up.",
+      "parentUuid": "48b6bddb_e0cff39f",
       "range": {
         "startLine": 102,
         "startChar": 5,
@@ -342,6 +390,30 @@
       "side": 1,
       "message": "Do you mean that I can pull all USB-C port 2 setting to the separate CL?\nContain EC_I2C_4_SDA, EC_I2C_4_SCL, USB_C2_OC_OD, ...etc",
       "parentUuid": "4e987c95_ee939680",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 46
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d054a66a_27879e2f",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-09T17:38:46Z",
+      "side": 1,
+      "message": "See the comment above at line 102.",
+      "parentUuid": "0189ed87_1c876f1b",
       "range": {
         "startLine": 156,
         "startChar": 0,
