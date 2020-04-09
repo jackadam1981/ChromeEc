@@ -57,8 +57,6 @@
 /* TODO(b:147440290): Need to handle multiple charger ICs */
 #define I2C_PORT_CHARGER    I2C_PORT_USB_C0
 
-#define I2C_PORT_ACCEL      I2C_PORT_SENSOR
-
 #define I2C_ADDR_EEPROM_FLAGS 0x50 /* 7b address */
 
 /* Sensors */
