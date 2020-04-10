@@ -1382,6 +1382,7 @@ static __maybe_unused int reset_device_and_notify(int port)
 void pd_wait_exit_low_power(int port)
 {
 	if (TC_CHK_FLAG(port, TC_FLAGS_LPM_ENGAGED)) {
+		TC_CLR_FLAG(port, TC_FLAGS_LPM_ENGAGED);
 		TC_SET_FLAG(port, TC_FLAGS_WAKE_FROM_LPM);
 
 		if (port != TASK_ID_TO_PD_PORT(task_get_current())) {
@@ -2888,9 +2889,8 @@ static void tc_low_power_mode_run(const int port)
 static void tc_low_power_mode_exit(const int port)
 {
 	CPRINTS("TCPC p%d Exit Low Power Mode", port);
-	TC_CLR_FLAG(port, TC_FLAGS_LPM_REQUESTED | TC_FLAGS_LPM_ENGAGED |
+	TC_CLR_FLAG(port, TC_FLAGS_LPM_REQUESTED |
 		TC_FLAGS_WAKE_FROM_LPM | TC_FLAGS_AUTO_TOGGLE_REQUESTED);
-	reset_device_and_notify(port);
 	tc_start_event_loop(port);
 }
 #endif
