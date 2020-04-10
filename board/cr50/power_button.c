@@ -56,9 +56,119 @@ static void power_button_press_enable_interrupt(int enable)
 	}
 }
 
+#ifdef CONFIG_AP_RO_VERIFICATION
+
+/*
+ * Implement sequence detecting trigger for starting AP RO verification.
+ *
+ * 'RCTD' is short for 'RO check trigger detection'.
+ *
+ * Start the detection sequence each time power button is pressed. While it is
+ * kept pressed, count number of presses of the escape key. If the escape key
+ * is pressed PRESS_COUNT times within RCTD_CUTOFF_TIME, consider the RO
+ * verification process triggered.
+ *
+ * If power button is released before the escape key is pressed the required
+ * number of times, or the cutoff time expires, stop the sequence until the
+ * next power button press.
+ */
+static void rctd_poll(void);
+DECLARE_DEFERRED(rctd_poll);
+
+#define RCTD_CUTOFF_TIME (3 * SECOND)
+#define RCTD_POLL_INTERVAL (20 * MSEC) /* Poll buttons this often.*/
+#define DEBOUNCE_COUNT 2  /* Keyboard keys are pretty noisy, need debouncing. */
+#define PRESS_COUNT 3
+
+/*
+ * Lower 32 bit of the timestamp when the sequence started. Is zero if the
+ * sequence is not running.
+ */
+static uint32_t rctd_start_time;
+
+/*
+ * rctd_poll_handler - periodically check states of power button and escape key.
+ *
+ * Returns non-zero value if the polling needs to continue, or zero, if the
+ * polling should stop.
+ */
+static int rctd_poll_handler(void)
+{
+	uint32_t dior_state;
+	uint8_t esc_curr_state;
+	static uint8_t esc_press_count;
+	static uint8_t esc_last_state;
+	static uint8_t esc_debounced_state;
+	static uint8_t esc_debounce_counter;
+
+	/*
+	 * H1 DIORx pins provide current state of both the power button and
+	 * escape key.
+	 */
+	dior_state = GREG32(RBOX, CHECK_INPUT);
+	esc_curr_state = !!(dior_state & GC_RBOX_CHECK_INPUT_KEY0_IN_MASK);
+
+	if (rctd_start_time == 0) {
+		/* Start the new sequence. */
+		rctd_start_time = get_time().le.lo;
+		esc_debounced_state = esc_last_state = esc_curr_state;
+		esc_debounce_counter = DEBOUNCE_COUNT;
+		esc_press_count = 0;
+	} else {
+		/* Have this been running longer than the timeout? */
+		if ((get_time().le.lo - rctd_start_time) > RCTD_CUTOFF_TIME) {
+			CPRINTS("Timeout, no RO check triggered");
+			return 0;
+		}
+	}
+
+
+	if ((dior_state & GC_RBOX_CHECK_INPUT_PWRB_IN_MASK) != 0) {
+		CPRINTS("Power button released, RO Check Detection stopped");
+		return 0;
+	}
+
+	if (esc_curr_state != esc_debounced_state) {
+		esc_debounced_state = esc_curr_state;
+		esc_debounce_counter = 0;
+		return 1;
+	}
+
+	if (esc_debounce_counter >= DEBOUNCE_COUNT)
+		return 1;
+
+	if (++esc_debounce_counter != DEBOUNCE_COUNT)
+		return 1;
+
+	esc_last_state = esc_debounced_state;
+	if (!esc_last_state)
+		return 1;
+
+	CPRINTS("Esc press registered");
+	if (++esc_press_count != PRESS_COUNT)
+		return 1;
+
+	CPRINTS("RO Validation triggered");
+	return 0;
+}
+
+static void rctd_poll(void)
+{
+	if (rctd_poll_handler())
+		hook_call_deferred(&rctd_poll_data, RCTD_POLL_INTERVAL);
+	else
+		rctd_start_time = 0;
+}
+#endif
+
 static void power_button_handler(void)
 {
 	CPRINTS("power button pressed");
+
+#ifdef CONFIG_AP_RO_VERIFICATION
+	if (rctd_start_time == 0)
+		hook_call_deferred(&rctd_poll_data, 0);
+#endif
 
 	if (physical_detect_press() != EC_SUCCESS) {
 		/* Not consumed by physical detect */
