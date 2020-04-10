@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "afe664f0_609d7373",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-10T04:06:07Z",
+      "side": 1,
+      "message": "oh, sorry, I brain fog, This is not the escape key, this is the refresh key.\n\npower + refresh cause EC reset.",
+      "parentUuid": "1d2b4c16_030cddc5",
+      "range": {
+        "startLine": 67,
+        "startChar": 48,
+        "endLine": 67,
+        "endChar": 58
+      },
+      "revId": "81f2133019cdd5e922a6fcfadc7263b52c8a742c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39b7fb00_b6d0ce6b",
         "filename": "board/cr50/power_button.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-10T03:36:29Z",
       "side": 1,
       "message": "Why isn\u0027t the PWRB_RED interrupt used to reset this?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 11
+      },
+      "revId": "81f2133019cdd5e922a6fcfadc7263b52c8a742c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a8a6d57_3e104b6d",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-10T04:06:07Z",
+      "side": 1,
+      "message": "we still need to poll, it seems natural to use read it in the poll cycle. Power button release interrupt handler has other functions, is not always enabled, seems another good reason not to use it.",
+      "parentUuid": "39b7fb00_b6d0ce6b",
       "range": {
         "startLine": 126,
         "startChar": 0,
