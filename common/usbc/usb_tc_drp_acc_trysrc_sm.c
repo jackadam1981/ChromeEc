@@ -197,12 +197,6 @@ static struct type_c {
 	/* current port data role (DFP or UFP) */
 	enum pd_data_role data_role;
 	/*
-	 * Higher-level power deliver state machines are enabled if false,
-	 * else they're disabled if bits PD_DISABLED_NO_CONNECTION or
-	 * PD_DISABLED_BY_POLICY are set.
-	 */
-	uint32_t pd_disabled_mask;
-	/*
 	 * Timer for handling TOGGLE_OFF/FORCE_SINK mode when auto-toggle
 	 * enabled. See drp_auto_toggle_next_state() for details.
 	 */
@@ -251,6 +245,14 @@ static struct type_c {
 	/* Type-C current change */
 	typec_current_t typec_curr_change;
 } tc[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+/*
+ * Higher-level power deliver state machines are enabled if false,
+ * else they're disabled if bits PD_DISABLED_NO_CONNECTION or
+ * PD_DISABLED_BY_POLICY are set.
+ */
+uint32_t pd_disabled_mask[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+		PD_DISABLED_NO_CONNECTION};
 
 /* Port dual-role state */
 static volatile __maybe_unused
@@ -398,19 +400,18 @@ void tc_request_power_swap(int port)
 static void tc_policy_pd_enable(int port, int en)
 {
 	if (en)
-		atomic_clear(&tc[port].pd_disabled_mask, PD_DISABLED_BY_POLICY);
+		atomic_clear(&pd_disabled_mask[port], PD_DISABLED_BY_POLICY);
 	else
-		atomic_or(&tc[port].pd_disabled_mask, PD_DISABLED_BY_POLICY);
+		atomic_or(&pd_disabled_mask[port], PD_DISABLED_BY_POLICY);
 }
 
 static void tc_enable_pd(int port, int en)
 {
 	if (en)
-		atomic_clear(&tc[port].pd_disabled_mask,
+		atomic_clear(&pd_disabled_mask[port],
 						PD_DISABLED_NO_CONNECTION);
 	else
-		atomic_or(&tc[port].pd_disabled_mask,
-						PD_DISABLED_NO_CONNECTION);
+		atomic_or(&pd_disabled_mask[port], PD_DISABLED_NO_CONNECTION);
 
 }
 
@@ -1054,7 +1055,7 @@ uint8_t tc_get_polarity(int port)
 
 uint8_t tc_get_pd_enabled(int port)
 {
-	return !tc[port].pd_disabled_mask;
+	return !pd_disabled_mask[port];
 }
 
 void tc_set_power_role(int port, enum pd_power_role role)
