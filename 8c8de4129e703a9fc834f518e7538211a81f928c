@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5bbc43ab_eb397a89",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-10T06:32:39Z",
+      "side": 1,
+      "message": "I will create a separate change list for USB function, and clear all change in this change.\nThank you.",
+      "parentUuid": "4b1bb525_da175577",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 11
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "783c7acd_db8dea95",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d9de1a0e_55eac1bf",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-10T06:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "783c7acd_db8dea95",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ceada0d_059455af",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-09T17:38:46Z",
       "side": 1,
       "message": "These are active high signals, so you need to set the power on state to GPIO_OUT_LOW.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 0
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca8bfe6f_34b3970d",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-10T06:32:39Z",
+      "side": 1,
+      "message": "I will put these change to separate CL, and set GPIO_OUT_LOW.\nThank you.",
+      "parentUuid": "5ceada0d_059455af",
       "range": {
         "startLine": 105,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c4ebd414_1a45b712",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-10T06:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01d962e7_e6444a22",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "440d5ec4_b5918faf",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 10
@@ -114,6 +210,30 @@
       "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b2875cf_077fa81f",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-10T06:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "440d5ec4_b5918faf",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 70
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "b677594f_1654acb9",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-10T06:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccafcab0_19a331bc",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 50
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c209c8bd_5e5ffd8c",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 10
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "ab47e18f_84199266",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-10T06:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c209c8bd_5e5ffd8c",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 55
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "731b9a72_f7af82e8",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 10
@@ -174,6 +342,30 @@
       "writtenOn": "2020-04-09T17:38:46Z",
       "side": 1,
       "message": "The I2C signals should be fixed in a separate change list.  This change should also create the correct i2c_ports[] defintion.\n\nSee https://chromium.googlesource.com/chromiumos/platform/ec/+/master/docs/configuration/i2c.md \n\nBecause the Halvor I2C bus setup is different than other Volteer boards, you will first have to move the i2c_ports[] definition from volteer/baseboard.c to volteer/board.c.\n\nAlso, please use the net names for the I2C bus signals.  Only I2C bus 4 is correct above.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 0
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f71b3dc_5e24bfd9",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-10T06:32:39Z",
+      "side": 1,
+      "message": "Thank you, I will create a separate change list for I2C signals, and clear all change in this CL.",
+      "parentUuid": "731b9a72_f7af82e8",
       "range": {
         "startLine": 137,
         "startChar": 0,
@@ -206,6 +398,30 @@
       "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca6f6e2_4fc51478",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-10T06:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5c6907c_e0fd7ffe",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 110
+      },
+      "revId": "8c8de4129e703a9fc834f518e7538211a81f928c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

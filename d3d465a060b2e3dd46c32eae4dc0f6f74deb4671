@@ -426,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "6794db20_fba0c945",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-10T06:32:39Z",
+      "side": 1,
+      "message": "I will create a separate change list for USB related GPIOs and setting, thank you.",
+      "parentUuid": "d054a66a_27879e2f",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 46
+      },
+      "revId": "d3d465a060b2e3dd46c32eae4dc0f6f74deb4671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbfe867c_2d6f05d1",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 5
