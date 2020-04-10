@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55a3f692_230b5118",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-10T16:22:33Z",
+      "side": 1,
+      "message": "The LED support also needs to be corrected.  I opened bug b:153728832 to track this effort.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 93
+      },
+      "revId": "2b379214c6eb8de0c47a27cf6b95dd730591e2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
