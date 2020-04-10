@@ -425,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "e2ee0a30_5174b480",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-10T23:32:55Z",
+      "side": 1,
+      "message": "hmm, never seen it before.",
+      "parentUuid": "b3e19baa_feaef0cb",
+      "range": {
+        "startLine": 87,
+        "startChar": 64,
+        "endLine": 87,
+        "endChar": 75
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74550c28_8f64bc8f",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -506,6 +530,30 @@
       "side": 1,
       "message": "Sorry, not sure exactly what you mean. Do you mean the permissions are read-write, but the AP console is otherwise disabled? This is a production-only thing?",
       "parentUuid": "f4aacebd_386f95a0",
+      "range": {
+        "startLine": 123,
+        "startChar": 37,
+        "endLine": 123,
+        "endChar": 47
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41cee468_7ee930d7",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-10T23:32:55Z",
+      "side": 1,
+      "message": "yes, I am talking about the AP console not enabled in the device image after it passes a certain development phase. \n\nPeople might think that their Cr50 setting is wrong, but the they don\u0027t see any console traffic because it is disabled in the image.",
+      "parentUuid": "ca674275_cd8dbdeb",
       "range": {
         "startLine": 123,
         "startChar": 37,
@@ -800,6 +848,30 @@
     },
     {
       "key": {
+        "uuid": "e59f43f2_0ed22c6a",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-10T23:32:55Z",
+      "side": 1,
+      "message": "it sure does, it is the recommended way to maintain dev state after Cr50 tpm contents are wiped out.\n\nI can add it later.",
+      "parentUuid": "1d15f82b_73363b1a",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 7
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8bfa645_9e0800c5",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -984,6 +1056,30 @@
       "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eac8e95_27d44423",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-10T23:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd33823a_ada26e65",
+      "range": {
+        "startLine": 323,
+        "startChar": 69,
+        "endLine": 323,
+        "endChar": 76
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1267,6 +1363,30 @@
     },
     {
       "key": {
+        "uuid": "74bf263f_3b7c7f5c",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-10T23:32:55Z",
+      "side": 1,
+      "message": "I think this is an important clarification.",
+      "parentUuid": "10a05aec_36a52eb1",
+      "range": {
+        "startLine": 444,
+        "startChar": 45,
+        "endLine": 445,
+        "endChar": 18
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7bac6440_da0303b8",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -1394,6 +1514,30 @@
       "side": 1,
       "message": "Looks like \"Firmware Management Parameters\" (http://what/fwmp).",
       "parentUuid": "24f357ca_a8542c89",
+      "range": {
+        "startLine": 567,
+        "startChar": 47,
+        "endLine": 567,
+        "endChar": 51
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa22c23d_6d2f851d",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-10T23:32:55Z",
+      "side": 1,
+      "message": "I know, I meant that it would be good to have an explanation for the reader.",
+      "parentUuid": "11885e9c_64fed7f9",
       "range": {
         "startLine": 567,
         "startChar": 47,
