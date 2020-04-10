@@ -39,6 +39,13 @@ static int k_i = KI;
 static int k_d = KD;
 static int debug_output;
 
+enum phase {
+	PHASE_UNKNOWN = -1,
+	PHASE_CC,
+	PHASE_CV_TRIP,
+	PHASE_CV_COMPLETE,
+};
+
 int ocpc_config_secondary_charger(void *curr, struct ocpc_data *ocpc,
 				  int voltage_mv, int current_ma)
 {
@@ -53,10 +60,14 @@ int ocpc_config_secondary_charger(void *curr, struct ocpc_data *ocpc,
 	int min_vsys_target;
 	int error = 0;
 	int derivative = 0;
+	static enum phase ph;
 
 	/* There's nothing to do if we're not using this charger. */
 	if (charge_get_active_chg_chip() != SECONDARY_CHARGER)
 		return EC_ERROR_INVAL;
+
+	if (ocpc->last_vsys == OCPC_UNINIT)
+		ph = PHASE_UNKNOWN;
 
 	if (current_ma == 0) {
 		vsys_target = voltage_mv;
@@ -74,10 +85,20 @@ int ocpc_config_secondary_charger(void *curr, struct ocpc_data *ocpc,
 	charger_get_params(&charger);
 
 	/* Set our current target accordingly. */
-	if (batt.voltage < batt.desired_voltage)
+	if (batt.voltage < batt.desired_voltage) {
+		if (ph < PHASE_CV_TRIP)
+			ph = PHASE_CC;
 		i_ma = batt.desired_current;
-	else
-		i_ma = MAX(batt.current, 0);
+	} else{
+		/*
+		 * Once the battery voltage reaches the desired voltage, we
+		 * should note that we've reached the CV step and set VSYS to
+		 * the desired CV + offset.
+		 */
+		i_ma = batt.current;
+		ph = ph == PHASE_CC ? PHASE_CV_TRIP : PHASE_CV_COMPLETE;
+
+	}
 
 	/* Ensure our target is not negative. */
 	i_ma = MAX(i_ma, 0);
@@ -102,6 +123,7 @@ int ocpc_config_secondary_charger(void *curr, struct ocpc_data *ocpc,
 			ocpc->integral = 500;
 	}
 
+	CPRINTS_DBG("phase = %d", ph);
 	CPRINTS_DBG("error = %dmA", error);
 	CPRINTS_DBG("derivative = %d", derivative);
 	CPRINTS_DBG("integral = %d", ocpc->integral);
@@ -141,6 +163,13 @@ int ocpc_config_secondary_charger(void *curr, struct ocpc_data *ocpc,
 	 */
 	if (ocpc->last_vsys != OCPC_UNINIT)
 		vsys_target = ocpc->last_vsys + drive;
+
+	/*
+	 * Once we're in the CV region, all we need to do is keep VSYS at the 
+	 * desired voltage.
+	 */
+	if (ph >= PHASE_CV_TRIP)
+		vsys_target = batt.desired_voltage;
 
 	/*
 	 * Ensure VSYS is no higher than 1V over the max battery voltage, but
