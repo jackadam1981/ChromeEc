@@ -52,6 +52,24 @@
       "revId": "da75a310c4f840a5c498bfa57b8c099007f81ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7aae1c2_f5372690",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-04-10T16:14:12Z",
+      "side": 1,
+      "message": "Thanks for the background Edward. Yeah, It wasn\u0027t clear initially from the name that this is like a common file for all boards based on trembyle reference and there is one for dalboz reference. On Octopus, everything in baseboard was organized by VARIANT attributes instead of the reference name e.g. VARIANT_OCTOPUS_EC_ITE*, VARIANT_OCTOPUS_STANDALONE_TCPCS, VARIANT_OCTOPUS_CHARGER_*,etc. Probably, zork variants follow the reference more closely and hence they use the reference name directly.\n\nBTW, I don\u0027t think this check is needed: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2141371/4/baseboard/zork/variant_trembyle.c#346",
+      "parentUuid": "98d6b269_c8e4c2da",
+      "revId": "da75a310c4f840a5c498bfa57b8c099007f81ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
