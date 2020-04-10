@@ -311,6 +311,7 @@ static struct mutex g_lid_mutex;
 
 static struct lsm6dsm_data lsm6dsm_data;
 
+<<<<<<< HEAD   (9101a0 jacuzzi: Fix sensor rotation matrix)
 /* TCS3400 private data */
 static struct als_drv_data_t g_tcs3400_data = {
 	.als_cal.scale = 1,
@@ -364,6 +365,8 @@ static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
 	.saturation.atime = TCS_DEFAULT_ATIME,
 };
 
+=======
+>>>>>>> CHANGE (e0b491 kakadu: remove als sensor)
 /* Matrix to rotate accelerometer into standard reference frame */
 static const mat33_fp_t lid_standard_ref = {
 	{FLOAT_TO_FP(-1), 0, 0},
@@ -425,44 +428,6 @@ struct motion_sensor_t motion_sensors[] = {
 		.min_frequency = LSM6DSM_ODR_MIN_VAL,
 		.max_frequency = LSM6DSM_ODR_MAX_VAL,
 	},
-	[CLEAR_ALS] = {
-		.name = "Clear Light",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_TCS3400,
-		.type = MOTIONSENSE_TYPE_LIGHT,
-		.location = MOTIONSENSE_LOC_LID,
-		.drv = &tcs3400_drv,
-		.drv_data = &g_tcs3400_data,
-		.port = I2C_PORT_ALS,
-		.i2c_spi_addr_flags = TCS3400_I2C_ADDR_FLAGS,
-		.rot_standard_ref = NULL,
-		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
-		.min_frequency = TCS3400_LIGHT_MIN_FREQ,
-		.max_frequency = TCS3400_LIGHT_MAX_FREQ,
-		.config = {
-			/* Run ALS sensor in S0 */
-			[SENSOR_CONFIG_EC_S0] = {
-				.odr = 1000,
-			},
-		},
-	},
-	[RGB_ALS] = {
-		.name = "RGB Light",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_TCS3400,
-		.type = MOTIONSENSE_TYPE_LIGHT_RGB,
-		.location = MOTIONSENSE_LOC_LID,
-		.drv = &tcs3400_rgb_drv,
-		.drv_data = &g_tcs3400_rgb_data,
-		/* Unused. RGB channels read by CLEAR_ALS. */
-		/*.port = I2C_PORT_ALS,*/
-		.rot_standard_ref = NULL,
-		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
-		/* 0 indicates we should not use sensor directly */
-		.min_frequency = 0,
-		/* 0 indicates we should not use sensor directly */
-		.max_frequency = 0,
-	},
 	[VSYNC] = {
 		.name = "Camera vsync",
 		.active_mask = SENSOR_ACTIVE_S0,
@@ -476,9 +441,6 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
-const struct motion_sensor_t *motion_als_sensors[] = {
-	&motion_sensors[CLEAR_ALS],
-};
 #endif /* VARIANT_KUKUI_NO_SENSORS */
 
 void usb_charger_set_switches(int port, enum usb_switch setting)
