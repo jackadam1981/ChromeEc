@@ -93,6 +93,30 @@
       "revId": "81f2133019cdd5e922a6fcfadc7263b52c8a742c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90497711_db553fc7",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-10T23:55:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a8a6d57_3e104b6d",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 11
+      },
+      "revId": "81f2133019cdd5e922a6fcfadc7263b52c8a742c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
