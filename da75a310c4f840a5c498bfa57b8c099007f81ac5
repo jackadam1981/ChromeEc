@@ -70,6 +70,24 @@
       "revId": "da75a310c4f840a5c498bfa57b8c099007f81ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e46f9c3_ef43fff7",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-10T16:23:22Z",
+      "side": 1,
+      "message": "Unfortunately the distinction between trembyle-reference-common and trembyle-board-specific is confusing here: I\u0027m open to any naming improvement suggestions!\nAnd yes, I agree \"#ifdef VARIANT_ZORK_TREMBYLE\" in variant_trembyle.c is redundant and should be deleted.",
+      "parentUuid": "f7aae1c2_f5372690",
+      "revId": "da75a310c4f840a5c498bfa57b8c099007f81ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
