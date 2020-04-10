@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96e87147_40cf36b0",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-04-10T07:42:01Z",
+      "side": 1,
+      "message": "This seems to be a weird file. Why does baseboard/zork/ have a particular variant file. Shouldn\u0027t this be going under board/trembyle?\n\nDavid - I understand that your change is not really adding this file. I am just noting that the semantics here of using specific variant in baseboard are really odd.",
+      "revId": "da75a310c4f840a5c498bfa57b8c099007f81ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
