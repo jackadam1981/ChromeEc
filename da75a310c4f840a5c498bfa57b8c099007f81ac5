@@ -34,6 +34,24 @@
       "revId": "da75a310c4f840a5c498bfa57b8c099007f81ac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98d6b269_c8e4c2da",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-10T15:53:18Z",
+      "side": 1,
+      "message": "Furquan, intent of variant_trembyle.c is code that is common to all boards based on trembyle reference. Similar pattern was used for octopus EC.",
+      "parentUuid": "32995869_458bfdee",
+      "revId": "da75a310c4f840a5c498bfa57b8c099007f81ac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
