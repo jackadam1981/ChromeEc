@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3086b65_9143a2dd",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-11T16:21:50Z",
+      "side": 1,
+      "message": "In the direction of cleanup, can we go with IS_ENABLED instead?\n\ndiff --git a/driver/tcpm/tcpci.c b/driver/tcpm/tcpci.c\nindex e67fc5fa0..dc966a332 100644\n--- a/driver/tcpm/tcpci.c\n+++ b/driver/tcpm/tcpci.c\n@@ -1016,23 +1016,25 @@ void tcpci_tcpc_alert(int port)\n                tcpc_write16(port, TCPC_REG_ALERT, status);\n \n        if (status \u0026 TCPC_REG_ALERT_CC_STATUS) {\n-#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE\n-               enum tcpc_cc_voltage_status cc1;\n-               enum tcpc_cc_voltage_status cc2;\n+               if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {\n+                       enum tcpc_cc_voltage_status cc1;\n+                       enum tcpc_cc_voltage_status cc2;\n \n-               /*\n-                * Some TCPCs generate CC Alerts when\n-                * drp auto toggle is active and nothing\n-                * is connected to the port. So, get the\n-                * CC line status and only generate a\n-                * PD_EVENT_CC if something is connected.\n-                */\n-               tcpci_tcpm_get_cc(port, \u0026cc1, \u0026cc2);\n-               if (cc1 !\u003d TYPEC_CC_VOLT_OPEN ||\n-                               cc2 !\u003d TYPEC_CC_VOLT_OPEN)\n-#endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE */\n+                       /*\n+                        * Some TCPCs generate CC Alerts when\n+                        * drp auto toggle is active and nothing\n+                        * is connected to the port. So, get the\n+                        * CC line status and only generate a\n+                        * PD_EVENT_CC if something is connected.\n+                        */\n+                       tcpci_tcpm_get_cc(port, \u0026cc1, \u0026cc2);\n+                       if (!cc_is_open(cc1, cc2))\n+                               /* CC status changed, wake task */\n+                               pd_event |\u003d PD_EVENT_CC;\n+               } else {\n                        /* CC status changed, wake task */\n                        pd_event |\u003d PD_EVENT_CC;\n+               }\n        }\n        if (status \u0026 TCPC_REG_ALERT_POWER_STATUS) {\n                int reg \u003d 0;",
+      "range": {
+        "startLine": 1019,
+        "startChar": 0,
+        "endLine": 1037,
+        "endChar": 0
+      },
+      "revId": "adb3a870155a3537bcab7e1b52d6fa4010fcc1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
