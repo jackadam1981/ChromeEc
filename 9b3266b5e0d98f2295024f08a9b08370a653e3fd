@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c11d61ac_d3bbab2d",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:25:41Z",
+      "side": 1,
+      "message": "From the inactive charger? I\u0027ve generally been following the approach of adding what I need as I go along. I haven\u0027t needed it, but I\u0027ll add it for symmetry.",
+      "parentUuid": "a0224b3d_f43000cb",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 37
+      },
+      "revId": "9b3266b5e0d98f2295024f08a9b08370a653e3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5f5fc10_c71cf275",
         "filename": "common/charger.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "052a3bbb_a4d530bb",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:25:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5f5fc10_c71cf275",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 30
+      },
+      "revId": "9b3266b5e0d98f2295024f08a9b08370a653e3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "123888c2_e4cbe10e",
         "filename": "common/charger.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-07T04:16:11Z",
       "side": 1,
       "message": "Why the inconsistency between the get requiring the charger number and the set calculating it for you?  Timing considerations with the active port selection?  It would be good to be consistent if at all possible.",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 40
+      },
+      "revId": "9b3266b5e0d98f2295024f08a9b08370a653e3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e70bb5b_9363eb25",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:25:41Z",
+      "side": 1,
+      "message": "It was mainly changing the minimum needed. I can try to be consistent here.",
+      "parentUuid": "123888c2_e4cbe10e",
       "range": {
         "startLine": 462,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "28ef60d1_823d7ef2",
+        "filename": "include/ocpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:25:41Z",
+      "side": 1,
+      "message": "I was thinking the latter. And then along those lines, I was wondering if there was any real need for the board conversion function between charge port and charger IC.",
+      "parentUuid": "ab6f569b_2bfc8dea",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "9b3266b5e0d98f2295024f08a9b08370a653e3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5593e702_6e6080ad",
         "filename": "include/ocpc.h",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2020-04-07T04:16:11Z",
       "side": 1,
       "message": "The original intent of the CHARGER_SOLO define was to cause compilation errors when CONFIG_CHARGER_SINGLE_CHIP was undef\u0027d using a driver which had hard-coded charge number calls.  Is that not desired anymore?  Though I suppose that config could also be obsoleted by the OCPC config",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "9b3266b5e0d98f2295024f08a9b08370a653e3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b95053ad_1d97da8f",
+        "filename": "include/ocpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:25:41Z",
+      "side": 1,
+      "message": "I think maybe I don\u0027t need to define this. I wasn\u0027t using it in the method that you had intended it to be used in. It was only being used in charge_state_v2.c if you\u0027re not using OCPC and I think it\u0027s safe to just return 0 in that case.",
+      "parentUuid": "5593e702_6e6080ad",
       "range": {
         "startLine": 15,
         "startChar": 8,
