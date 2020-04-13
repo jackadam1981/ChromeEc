@@ -22,6 +22,30 @@
       "revId": "e0b4917a07f1a2ec4d0e1d363b2553314714a3ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd8ce991_3371c551",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1400912
+      },
+      "writtenOn": "2020-04-13T07:14:56Z",
+      "side": 1,
+      "message": "Done. CL(https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2147413/4)",
+      "parentUuid": "af461502_a6b74064",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 31
+      },
+      "revId": "e0b4917a07f1a2ec4d0e1d363b2553314714a3ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
