@@ -22,6 +22,30 @@
       "revId": "bf72722e9ddc6a3c7b92c927c4ffaf48a99e5752",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "522729d8_b58bafbd",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-04-13T00:42:54Z",
+      "side": 1,
+      "message": "I will have a patch to fix the name.",
+      "parentUuid": "3fe0a7ef_fccd3fdc",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 0
+      },
+      "revId": "bf72722e9ddc6a3c7b92c927c4ffaf48a99e5752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
