@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f817ccb1_b22af07a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-13T16:06:52Z",
+      "side": 1,
+      "message": "To maintain equivalent functionality, I think you need to add \n    if (!IS_ENABLED(CONFIG_USB_PE_SM))\n        return 0;\n\nIf a board enables CONFIG_USB_CTVPD and disables CONFIG_USB_DRP_ACC_TRYSRC, then there won\u0027t be any caller to notify_sysjump_ready() causing a hang in pd_prepare_sysjump().",
+      "range": {
+        "startLine": 1025,
+        "startChar": 0,
+        "endLine": 1025,
+        "endChar": 32
+      },
+      "revId": "de3fde97ac6b138d48a3596c958bf9489eb10607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
