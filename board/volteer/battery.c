@@ -38,15 +38,17 @@ const struct board_batt_params board_battery_info[] = {
 	 */
 	[BATTERY_LGC011] = {
 		.fuel_gauge = {
-			.manuf_name = "LGC",
+			.manuf_name = "LGC KT0030G018",
+			.device_name = "AC17A8M",
 			.ship_mode = {
-				.reg_addr = 0x00,
-				.reg_data = { 0x10, 0x10 },
+				.reg_addr = 0x3A,
+				.reg_data = { 0xC574, 0xC574 },
 			},
 			.fet = {
+				.mfgacc_support = 1,
 				.reg_addr = 0x0,
-				.reg_mask = 0x6000,
-				.disconnect_val = 0x6000,
+				.reg_mask = 0x0002,
+				.disconnect_val = 0x0,
 			}
 		},
 		.batt_info = {
