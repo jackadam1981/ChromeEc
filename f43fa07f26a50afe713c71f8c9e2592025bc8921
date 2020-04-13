@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "462b4d86_70796a7d",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-13T15:14:47Z",
+      "side": 1,
+      "message": "Is this also something that needs to be done for other octopus units?  Or is something about this specific to ITE or the components used for ampton?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 41
+      },
+      "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
