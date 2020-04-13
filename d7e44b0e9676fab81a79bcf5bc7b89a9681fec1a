@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4aaeb22f_9e16580c",
+        "filename": "driver/usb_mux/ps874x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-04-13T00:36:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "362025e1_6c74213b",
+      "range": {
+        "startLine": 15,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "d7e44b0e9676fab81a79bcf5bc7b89a9681fec1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bce16426_1970c794",
         "filename": "driver/usb_mux/ps874x.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "d7e44b0e9676fab81a79bcf5bc7b89a9681fec1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5febb89_e870539d",
+        "filename": "driver/usb_mux/ps874x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-04-13T00:36:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bce16426_1970c794",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "d7e44b0e9676fab81a79bcf5bc7b89a9681fec1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4b7ece9b_45e72e09",
+        "filename": "driver/usb_mux/ps874x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-04-13T00:36:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2569c10b_81bb76ce",
+      "range": {
+        "startLine": 115,
+        "startChar": 10,
+        "endLine": 115,
+        "endChar": 36
+      },
+      "revId": "d7e44b0e9676fab81a79bcf5bc7b89a9681fec1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c137303c_65c394b6",
         "filename": "driver/usb_mux/ps874x.h",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "d7e44b0e9676fab81a79bcf5bc7b89a9681fec1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7efb9015_8fab9ed4",
+        "filename": "driver/usb_mux/ps874x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-04-13T00:36:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c137303c_65c394b6",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 32
+      },
+      "revId": "d7e44b0e9676fab81a79bcf5bc7b89a9681fec1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
