@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fba3ae4f_6324c9ed",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:26:26Z",
+      "side": 1,
+      "message": "Yeah, if we ever have more than two, we can change this. I\u0027d imagine that we\u0027d also to restructure things a bit. (e.g. turn config_secondary into config_auxiliary or similar and pass the index.)",
+      "parentUuid": "372a985c_358906ad",
+      "range": {
+        "startLine": 1256,
+        "startChar": 31,
+        "endLine": 1256,
+        "endChar": 51
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c2fb7bc_32bee1a7",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "41f50df2_7d798e4b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1663,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c2fb7bc_32bee1a7",
+      "range": {
+        "startLine": 1663,
+        "startChar": 28,
+        "endLine": 1663,
+        "endChar": 30
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea36ce53_b7e1096f",
         "filename": "common/ocpc.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-07T04:52:48Z",
       "side": 1,
       "message": "struct charge_state_data?",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f82b28d_0c9807b5",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:26:26Z",
+      "side": 1,
+      "message": "Yeah.... this one was very annoying. I initially had that, but got compiliation errors because of the missing type. I add the header, and get more compiliation errors due to circular includes. I couldn\u0027t get it to work, so I gave up and did this instead. 😞",
+      "parentUuid": "ea36ce53_b7e1096f",
       "range": {
         "startLine": 42,
         "startChar": 34,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "04fa3799_51f8ce00",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:26:26Z",
+      "side": 1,
+      "message": "The caller has a guard, so perhaps this isn\u0027t necessary, but I\u0027m just being defensive here. I\u0027d rather not take any action at all if we haven\u0027t selected the secondary charger but we were called here somehow.",
+      "parentUuid": "fb25d8f1_89b979d6",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 54
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78fb8d65_19fb38c1",
         "filename": "common/ocpc.c",
         "patchSetId": 3
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f02dfe9a_846ba824",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:26:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78fb8d65_19fb38c1",
+      "range": {
+        "startLine": 80,
+        "startChar": 9,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecb917c3_aa902e0a",
         "filename": "common/ocpc.c",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2020-04-07T02:46:01Z",
       "side": 1,
       "message": "magic?",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80d86229_77a58941",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:26:26Z",
+      "side": 1,
+      "message": "Yeah, it seemed like a nice round number. It was growing really large and unbounded.",
+      "parentUuid": "ecb917c3_aa902e0a",
       "range": {
         "startLine": 101,
         "startChar": 23,
@@ -160,6 +304,30 @@
       "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf905b42_15f0c848",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:26:26Z",
+      "side": 1,
+      "message": "Yep, that\u0027s right. \u0026\u0026 hmm, yeah, I guess we could do that.",
+      "parentUuid": "3d192e6e_9420ddd6",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 7
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "1e8ecf84_a984a03b",
+        "filename": "include/ocpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:26:26Z",
+      "side": 1,
+      "message": "😄",
+      "parentUuid": "fa99e2e3_a6d910b2",
+      "range": {
+        "startLine": 17,
+        "startChar": 20,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea62f8d0_fa03b79a",
         "filename": "include/ocpc.h",
         "patchSetId": 3
@@ -229,6 +421,30 @@
       "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57eaf036_05d1b4f4",
+        "filename": "include/ocpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-13T22:26:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea62f8d0_fa03b79a",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
