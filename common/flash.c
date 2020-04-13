@@ -732,6 +732,7 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 			EC_FLASH_PROTECT_ALL_AT_BOOT);
 	int new_flags_at_boot = old_flags_at_boot;
 
+	ccprintf("%s: old_flags=0x%x, mask=0x%x, flags=0x%x\n", __func__, old_flags_at_boot, mask, flags);
 	/* Sanitize input flags */
 	flags = flags & mask;
 
