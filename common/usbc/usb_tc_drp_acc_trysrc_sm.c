@@ -84,6 +84,10 @@
 #define TC_FLAGS_AUTO_TOGGLE_SUPPORTED  BIT(23)
 /* Flag to note TCPM was requested to DRP auto toggle */
 #define TC_FLAGS_AUTO_TOGGLE_REQUESTED  BIT(24)
+/* Flag to note pd_set_suspend was called to DISABLE */
+#define TC_FLAGS_SUSPEND_DISABLE        BIT(25)
+/* Flag to note pd_set_suspend was called to go UNATTACH_SNK */
+#define TC_FLAGS_SUSPEND_UNATTACH_SNK   BIT(26)
 
 /*
  * Clear all flags except TC_FLAGS_AUTO_TOGGLE_SUPPORTED,
@@ -668,7 +672,7 @@ int tc_src_power_on(int port)
 void tc_src_power_off(int port)
 {
 	if (get_state_tc(port) == TC_ATTACHED_SRC ||
-			get_state_tc(port) == TC_UNORIENTED_DBG_ACC_SRC) {
+	    get_state_tc(port) == TC_UNORIENTED_DBG_ACC_SRC) {
 		/* Remove VBUS */
 		pd_power_supply_reset(port);
 
@@ -683,14 +687,11 @@ void pd_set_suspend(int port, int suspend)
 	if (pd_is_port_enabled(port) == !suspend)
 		return;
 
-	/* TODO(crbug/1052432): This function should use flags to influence the
-	 * TC state machine, not call set_state_tc directly.
-	 */
-	set_state_tc(port,
-		suspend ? TC_DISABLED : TC_UNATTACHED_SNK);
 	/* If the state was TC_DISABLED, pd_task needs to be awakened to respond
 	 * to the state change.
 	 */
+	TC_SET_FLAG(port, (suspend) ? TC_FLAGS_SUSPEND_DISABLE
+				    : TC_FLAGS_SUSPEND_UNATTACH_SNK);
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
@@ -3201,6 +3202,15 @@ static void tc_cc_open_entry(const int port)
 
 void tc_run(const int port)
 {
+	/* Handle deferred pd_set_suspend state changes */
+	if (TC_CHK_FLAG(port, TC_FLAGS_SUSPEND_DISABLE)) {
+		TC_CLR_FLAG(port, TC_FLAGS_SUSPEND_DISABLE);
+		set_state_tc(port, TC_DISABLED);
+	} else if (TC_CHK_FLAG(port, TC_FLAGS_SUSPEND_UNATTACH_SNK)) {
+		TC_CLR_FLAG(port, TC_FLAGS_SUSPEND_UNATTACH_SNK);
+		set_state_tc(port, TC_UNATTACHED_SNK);
+	}
+
 	run_state(port, &tc[port].ctx);
 }
 
