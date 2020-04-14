@@ -46,6 +46,30 @@
       "revId": "c7aa63d89a5012a3c15ab7655302bd6f7d3541da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "581a1b75_6fd42ea1",
+        "filename": "board/asurada/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1109909
+      },
+      "writtenOn": "2020-04-14T09:46:01Z",
+      "side": 1,
+      "message": "BTW, should we add \"asurada\" into BOARDS_IT83XX_SPI_PROGRAMMING() of flash_ec? So we can flash FW image into board asurada with flashrom.",
+      "parentUuid": "836ab91e_d622892b",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c7aa63d89a5012a3c15ab7655302bd6f7d3541da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
