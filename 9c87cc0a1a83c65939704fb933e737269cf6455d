@@ -22,6 +22,30 @@
       "revId": "9c87cc0a1a83c65939704fb933e737269cf6455d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a87b8056_f368d74b",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-14T22:56:20Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "bfd0d65f_d855370a",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 36
+      },
+      "revId": "9c87cc0a1a83c65939704fb933e737269cf6455d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

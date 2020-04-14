@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b6eb7bae_a3ca3ac0",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-14T22:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee784d10_b80d904d",
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19ed2f83_8687cfd0",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 6
@@ -48,6 +66,30 @@
       "writtenOn": "2020-04-14T00:21:27Z",
       "side": 1,
       "message": "this should be const",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 28
+      },
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ab5529_5b0ada4f",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-14T22:56:20Z",
+      "side": 1,
+      "message": "I left it as variable still, so that we can adjust int_ap_l duration through \"int_ap\" console command.\nIf it is zero, then INT_AP extension will be disabled, and let tick_delay() hold INT_AP_L low.",
+      "parentUuid": "19ed2f83_8687cfd0",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -83,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "9759eb69_cc5b14fb",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-14T22:56:20Z",
+      "side": 1,
+      "message": "Modified it to be timer-based.",
+      "parentUuid": "6ceeca8d_6aa188a0",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 58
+      },
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d205549_c46c848e",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
@@ -103,6 +169,30 @@
       "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deea5f72_a74d7648",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-14T22:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d205549_c46c848e",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 55
+      },
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -198,6 +288,30 @@
       "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9b01dea_2a52bb97",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-14T22:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "884065cd_69acd8ac",
+      "range": {
+        "startLine": 408,
+        "startChar": 5,
+        "endLine": 408,
+        "endChar": 28
+      },
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
