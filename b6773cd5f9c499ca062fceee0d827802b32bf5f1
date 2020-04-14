@@ -108,6 +108,30 @@
       "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "815b34fc_72657ab4",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-14T00:39:14Z",
+      "side": 1,
+      "message": "Yes, it can make INT_AP_L pulse shorter, which is intended.\n\nAP transaction is roughly\n1. tpm_sync()   /* recognize INT_AP_L assertion or waiting for it. */\n2. spi_claim()  /* assert SPI_CS */\n3. read status, read|write command|data ...\n4. spi_release() /* deassert SPI_CS */\n\nSo, I expect if AP asserted SPI_CS then, it means it recognized INT_AP_L assertion, and Cr50 doesn\u0027t need to keep it asserted.",
+      "parentUuid": "2f342bbd_0f7b3832",
+      "range": {
+        "startLine": 408,
+        "startChar": 5,
+        "endLine": 408,
+        "endChar": 28
+      },
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
