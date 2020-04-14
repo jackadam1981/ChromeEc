@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "848cbb81_619d875e",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "nit: I was uncertain was this was when reading code down below. Can we renamee it to vivalid_keys (or just keys)?\n\n\nWe probably don\u0027t need the vivalid_ prefix on all the internal (i.e. static) variable. (I am fine if you leave the prefixes, just a thought)",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "e1a6a502ecd36b7ad79d32af6d1c987d8f4f3c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a7439fd_0e03564e",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "nit: might be worth putting in the invalid num_top_row_key into print statement for easier debuggint",
+      "range": {
+        "startLine": 102,
+        "startChar": 33,
+        "endLine": 102,
+        "endChar": 50
+      },
+      "revId": "e1a6a502ecd36b7ad79d32af6d1c987d8f4f3c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e14ab7f7_c275162f",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "this doesn\u0027t actually panic here. I wouldn\u0027t use it. Just disable viviadle here by setting to NULL and returning (you already have the debug print saying it was bad)",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "e1a6a502ecd36b7ad79d32af6d1c987d8f4f3c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

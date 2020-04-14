@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2d44dbda_2c95b2d7",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "This code base is open to the public, and anyone can use it. It is mostly used by Google and partners.\n\nI it is nicer to add links that everyone can access, but it isn\u0027t also possible with private datasheets. Maybe make a go/link instead and put in parenthesis that this is an internal datasheet, please.",
+      "parentUuid": "6e08be90_08faf114",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 85
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5fe510c9_ab35119d",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 3
@@ -78,6 +102,47 @@
       "side": 1,
       "message": "\u003e let\u0027s put a\n\u003e \n\u003e BUILD_ASSERT(ARRAY_SIZE(vivaldi) \u003d\u003d MAX_TOP_ROW_KEYS);\n\u003e \n\u003e and remove the size in the declaration; that what we know we have a valid entry for each key\n\nWill do",
       "parentUuid": "5fe510c9_ab35119d",
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b35c0a_1896f7f9",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34da6e47_83d1ab80",
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb593870_4c9b35de",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "did you get rid of the default?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 45
+      },
       "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -131,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "80145150_336b3653",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a70fe5eb_94f888e8",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "944d72d5_847d86b0",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 3
@@ -175,6 +264,30 @@
       "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91de37ea_02e6e51e",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "843ed5df_6cd9386e",
+      "range": {
+        "startLine": 96,
+        "startChar": 14,
+        "endLine": 96,
+        "endChar": 18
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +338,30 @@
     },
     {
       "key": {
+        "uuid": "019805d5_78056b72",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4dade2a_2d5a1eba",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2574db16_9b8e2f43",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 3
@@ -269,6 +406,30 @@
       "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45178307_5f3167e2",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f474c37f_7fb054a5",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -319,6 +480,30 @@
     },
     {
       "key": {
+        "uuid": "ec2ac6b6_9d4ea216",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47f32830_a127affb",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10592c51_40a09f61",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 3
@@ -363,6 +548,30 @@
       "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74c56f2f_81614c7f",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d23a010a_1d0f4def",
+      "range": {
+        "startLine": 124,
+        "startChar": 17,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -413,6 +622,30 @@
     },
     {
       "key": {
+        "uuid": "c1075b74_fa8e01bf",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b5f4d98_c572d227",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 40
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1f2c04d_80e587ad",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 3
@@ -457,6 +690,30 @@
       "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "604e02ac_155dab1e",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d365470a_392f491b",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 39
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -507,6 +764,30 @@
     },
     {
       "key": {
+        "uuid": "f556f3c8_6617e324",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2f1af5a_e27ade3f",
+      "range": {
+        "startLine": 131,
+        "startChar": 47,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e659a91e_dc92ec25",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 3
@@ -554,6 +835,30 @@
     },
     {
       "key": {
+        "uuid": "3803d4d3_c977b1e9",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8b38cb8_6dce5d07",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 22
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97550366_ec197da3",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 3
@@ -598,6 +903,30 @@
       "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0e5129_adeecdaf",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:20:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f267d00_c398ffd4",
+      "range": {
+        "startLine": 137,
+        "startChar": 17,
+        "endLine": 137,
+        "endChar": 25
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
