@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88adce45_1a94d0bf",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-14T18:34:58Z",
+      "side": 1,
+      "message": "Separate the gsctool support into it\u0027s own change, so the cr50 changes are easier to pick into the branches.",
+      "revId": "465f2efb876dc9433bb498632d99da8872a034e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0249774_7e1f1f8d",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-14T18:34:58Z",
+      "side": 1,
+      "message": "Can you make these all caps?",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 8
+      },
+      "revId": "465f2efb876dc9433bb498632d99da8872a034e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
