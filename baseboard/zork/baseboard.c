@@ -331,6 +331,9 @@ int board_tcpc_fast_role_swap_enable(int port, int enable)
 static void reset_pd_port(int port, enum gpio_signal reset_gpio_l,
 			  int hold_delay, int finish_delay)
 {
+	/* Disable the PPC SNK to make sure we do not Over Voltage Fault */
+	ppc_vbus_sink_enable(port, 0);
+
 	gpio_set_level(reset_gpio_l, 0);
 	msleep(hold_delay);
 	gpio_set_level(reset_gpio_l, 1);
