@@ -22,6 +22,30 @@
       "revId": "c7aa63d89a5012a3c15ab7655302bd6f7d3541da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836ab91e_d622892b",
+        "filename": "board/asurada/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-04-14T07:36:55Z",
+      "side": 1,
+      "message": "Just confirmed with Tony, we switch to this. Thanks.",
+      "parentUuid": "3ae32453_ede6d360",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c7aa63d89a5012a3c15ab7655302bd6f7d3541da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
