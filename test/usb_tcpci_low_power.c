@@ -1,0 +1,143 @@
+/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "mock/usb_mux_mock.h"
+#include "task.h"
+#include "test_util.h"
+#include "timer.h"
+#include "tcpci.h"
+#include "usb_mux.h"
+#include "hooks.h"
+
+#define PORT0 0
+
+void mock_tcpci_set_reg(int reg, uint16_t value);
+
+enum mock_cc_state {
+	MOCK_CC_SRC_OPEN = 0,
+	MOCK_CC_SNK_OPEN = 0,
+	MOCK_CC_SRC_RA = 1,
+	MOCK_CC_SNK_RP_DEF = 1,
+	MOCK_CC_SRC_RD = 2,
+	MOCK_CC_SNK_RP_1_5 = 2,
+	MOCK_CC_SNK_RP_3_0 = 3,
+};
+enum mock_connect_result {
+	MOCK_CC_WE_ARE_SRC = 0,
+	MOCK_CC_WE_ARE_SNK = 1,
+};
+
+__maybe_unused static void mock_set_cc(enum mock_connect_result cr,
+	enum mock_cc_state cc1, enum mock_cc_state cc2)
+{
+	mock_tcpci_set_reg(TCPC_REG_CC_STATUS,
+		TCPC_REG_CC_STATUS_SET(cr, cc1, cc2));
+}
+
+__maybe_unused static void mock_set_role(int drp, enum tcpc_rp_value rp,
+	enum tcpc_cc_pull cc1, enum tcpc_cc_pull cc2)
+{
+	mock_tcpci_set_reg(TCPC_REG_ROLE_CTRL,
+		TCPC_REG_ROLE_CTRL_SET(drp, rp, cc1, cc2));
+}
+
+static int mock_alert_count;
+
+__maybe_unused static void mock_set_alert(int alert)
+{
+	mock_tcpci_set_reg(TCPC_REG_ALERT, alert);
+	mock_alert_count = 1;
+	schedule_deferred_pd_interrupt(PORT0);
+}
+
+uint16_t tcpc_get_alert_status(void)
+{
+	ccprints("mock_alert_count %d", mock_alert_count);
+	if (mock_alert_count > 0) {
+		mock_alert_count--;
+		return PD_STATUS_TCPC_ALERT_0;
+	}
+	return 0;
+}
+
+const struct svdm_response svdm_rsp = {
+	.identity = NULL,
+	.svids = NULL,
+	.modes = NULL,
+};
+
+int pd_check_vconn_swap(int port)
+{
+	return 1;
+}
+
+void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
+				uint16_t head)
+{
+}
+
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.drv = &tcpci_tcpm_drv,
+	},
+};
+
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.driver = &mock_usb_mux_driver,
+	}
+};
+
+__maybe_unused static int test_connect_as_sink(void)
+{
+	task_wait_event(10 * SECOND);
+
+	mock_set_cc(MOCK_CC_WE_ARE_SNK, MOCK_CC_SNK_OPEN, MOCK_CC_SNK_RP_3_0);
+	mock_set_alert(TCPC_REG_ALERT_CC_STATUS);
+
+	task_wait_event(50 * MSEC);
+
+	mock_tcpci_set_reg(TCPC_REG_POWER_STATUS, TCPC_REG_POWER_STATUS_VBUS_PRES);
+	mock_set_alert(TCPC_REG_ALERT_POWER_STATUS);
+
+	task_wait_event(10 * SECOND);
+
+	return EC_SUCCESS;
+}
+
+__maybe_unused static int test_startup_and_resume(void)
+{
+	task_wait_event(10 * SECOND);
+
+	hook_notify(HOOK_CHIPSET_STARTUP);
+	task_wait_event(5 * MSEC);
+	hook_notify(HOOK_CHIPSET_RESUME);
+	task_wait_event(10 * SECOND);
+
+	return EC_SUCCESS;
+}
+
+void before_test(void)
+{
+	mock_usb_mux_reset();
+}
+
+void after_test(void)
+{
+	ccprints("after_test");
+}
+
+void run_test(void)
+{
+	test_reset();
+
+	/* Ensure that PD task initializes its state machine */
+	task_wake(TASK_ID_PD_C0);
+	task_wait_event(5 * MSEC);
+
+	RUN_TEST(test_connect_as_sink);
+
+	test_print_result();
+}
