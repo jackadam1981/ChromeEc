@@ -1310,7 +1310,8 @@ static __maybe_unused int reset_device_and_notify(int port)
 	int task, waiting_tasks;
 
 	/* This should only be called from the PD task */
-	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
+	if (port != TASK_ID_TO_PD_PORT(task_get_current()))
+		return EC_ERROR_UNKNOWN;
 
 	rv = tc_restart_tcpc(port);
 
