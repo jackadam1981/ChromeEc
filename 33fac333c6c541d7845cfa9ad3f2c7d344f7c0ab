@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61a736d2_9ff22ae5",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-14T23:57:29Z",
+      "side": 1,
+      "message": "This could be guarded with CONFIG_I2C, to potentially save code size if a board enabled SPI and disabled I2C.  But this is probably a very unlikely combination, so I\u0027m good without a guard.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
