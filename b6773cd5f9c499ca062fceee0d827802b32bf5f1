@@ -85,6 +85,29 @@
       "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f342bbd_0f7b3832",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-14T00:25:36Z",
+      "side": 1,
+      "message": "also, one more concern about this: could this result in time between INT_AP_L pulses shorter than 100 us, in turn causing a lost pulse?",
+      "range": {
+        "startLine": 408,
+        "startChar": 5,
+        "endLine": 408,
+        "endChar": 28
+      },
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
