@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "278527ba_1ad88f0d",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:23:07Z",
+      "side": 1,
+      "message": "Since you using this CC_KEYBOARD channel (which is correct) in this file a lot, it is common to define CPRINTS and CPRINTF macros at the top of the file like this:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/f1d4d43109c8c97b2a84d58d4f2b3d871f8ba322/common/keyboard_mkbp.c#34",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "e1a6a502ecd36b7ad79d32af6d1c987d8f4f3c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a7439fd_0e03564e",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 5
