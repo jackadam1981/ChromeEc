@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61bacc28_aa4ccadd",
+        "filename": "common/keyboard_8042_sharedlib.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:04:30Z",
+      "side": 1,
+      "message": "probably should bounds check here and all other getters and setters in this CL",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "697308f14cd5c4f7da5e97b7b157be2ac4f65035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5aed44f_eb2614a0",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:04:30Z",
+      "side": 1,
+      "message": "please update comments. Add function headers with comments on how to user what return values are in valid and in valid cases.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 51
+      },
+      "revId": "697308f14cd5c4f7da5e97b7b157be2ac4f65035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f891458_5b01514e",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:04:30Z",
+      "side": 1,
+      "message": "don\u0027t need \"extern\" keyword in header file for function declaration. please remove",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 6
+      },
+      "revId": "697308f14cd5c4f7da5e97b7b157be2ac4f65035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10eb3593_d5b9c831",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:04:30Z",
+      "side": 1,
+      "message": "since you are converting keycap_label, please convert this one too. It seems weird for them to be treeted differently",
+      "range": {
+        "startLine": 68,
+        "startChar": 26,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "697308f14cd5c4f7da5e97b7b157be2ac4f65035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15751d99_140835f5",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:04:30Z",
+      "side": 1,
+      "message": "no extern.\n\nNeeds function headers",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 6
+      },
+      "revId": "697308f14cd5c4f7da5e97b7b157be2ac4f65035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
