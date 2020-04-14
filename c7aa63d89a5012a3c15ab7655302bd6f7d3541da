@@ -70,6 +70,30 @@
       "revId": "c7aa63d89a5012a3c15ab7655302bd6f7d3541da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47fe0382_2dbe6a35",
+        "filename": "board/asurada/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-04-14T09:58:39Z",
+      "side": 1,
+      "message": "No, chip detection should be good after CL:2104879 merged.",
+      "parentUuid": "581a1b75_6fd42ea1",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "c7aa63d89a5012a3c15ab7655302bd6f7d3541da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
