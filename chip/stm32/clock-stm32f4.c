@@ -44,19 +44,6 @@ uint32_t us_to_rtcss(int32_t us)
 	return (RTC_PREDIV_S - (us / US_PER_RTC_TICK));
 }
 
-static void wait_for_ready(volatile uint32_t *cr_reg,
-			uint32_t enable, uint32_t ready)
-{
-	/* Ensure that clock source is ON */
-	if (!(*cr_reg & ready)) {
-		/* Enable clock */
-		*cr_reg |= enable;
-		/* Wait for ready */
-		while (!(*cr_reg & ready))
-			;
-	}
-}
-
 void config_hispeed_clock(void)
 {
 #ifdef CONFIG_STM32_CLOCK_HSE_HZ
@@ -83,7 +70,7 @@ void config_hispeed_clock(void)
 		return;
 
 	/* Ensure that HSE/HSI is ON */
-	wait_for_ready(&(STM32_RCC_CR), clk_enable_mask, clk_check_mask);
+	clock_wait_for_ready(&(STM32_RCC_CR), clk_enable_mask, clk_check_mask);
 
 	/* PLL input must be between 1-2MHz, near 2 */
 	/* Valid values 2-63 */
@@ -155,7 +142,7 @@ void config_hispeed_clock(void)
 		PLLCFGR_PLLQ(usbdiv) |
 		PLLCFGR_PLLR(i2sdiv);
 
-	wait_for_ready(&(STM32_RCC_CR),
+	clock_wait_for_ready(&(STM32_RCC_CR),
 		STM32_RCC_CR_PLLON, STM32_RCC_CR_PLLRDY);
 
 	/* Wait until the PLL is the clock source */
@@ -168,7 +155,7 @@ void config_hispeed_clock(void)
 	STM32_RCC_BDCR = STM32_RCC_BDCR_RTCEN | BDCR_RTCSEL(BDCR_SRC_HSE);
 #else
 	/* Ensure that LSI is ON */
-	wait_for_ready(&(STM32_RCC_CSR),
+	clock_wait_for_ready(&(STM32_RCC_CSR),
 		STM32_RCC_CSR_LSION, STM32_RCC_CSR_LSIRDY);
 
 	STM32_RCC_BDCR = STM32_RCC_BDCR_RTCEN | BDCR_RTCSEL(BDCR_SRC_LSI);

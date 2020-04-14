@@ -329,6 +329,19 @@ void __rtc_alarm_irq(void)
 }
 DECLARE_IRQ(STM32_IRQ_RTC_ALARM, __rtc_alarm_irq, 1);
 
+void clock_wait_for_ready(volatile uint32_t *cr_reg,
+			  uint32_t enable, uint32_t ready)
+{
+	/* Ensure that clock source is ON */
+	if (!(*cr_reg & ready)) {
+		/* Enable clock */
+		*cr_reg |= enable;
+		/* Wait for ready */
+		while (!(*cr_reg & ready))
+			;
+	}
+}
+
 __attribute__((weak))
 int clock_get_timer_freq(void)
 {

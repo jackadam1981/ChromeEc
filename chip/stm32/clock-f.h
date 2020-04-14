@@ -91,6 +91,10 @@ void config_hispeed_clock(void);
 /* Get timer clock frequency (for STM32 only) */
 int clock_get_timer_freq(void);
 
+/* Wait for given clock to be ready */
+void clock_wait_for_ready(volatile uint32_t *cr_reg,
+			  uint32_t enable, uint32_t ready);
+
 /*
  * Return 1 if host_wake_time is nonzero and the saved host_wake_time
  * is expired at a given time, ts.
