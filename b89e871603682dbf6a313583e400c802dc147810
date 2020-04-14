@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7ad15cab_3e30c9f1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6098,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-14T14:00:32Z",
+      "side": 1,
+      "message": "If we don\u0027t think that the upper bound max is going to increase, then the way you have it does make it more clear. sgtm.",
+      "parentUuid": "91e37b68_80b6b59b",
+      "range": {
+        "startLine": 6098,
+        "startChar": 0,
+        "endLine": 6098,
+        "endChar": 27
+      },
+      "revId": "b89e871603682dbf6a313583e400c802dc147810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69b45def_e0cc8408",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
