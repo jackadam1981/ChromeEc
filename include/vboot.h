@@ -163,16 +163,6 @@ enum cr50_comm_err {
 } __packed;
 BUILD_ASSERT(sizeof(enum cr50_comm_err) == sizeof(uint16_t));
 
-/*
- * BIT(1) : NO_BOOT flag
- * BIT(0) : RECOVERY flag
- */
-enum boot_mode {
-	BOOT_MODE_NORMAL           = 0x00,
-	BOOT_MODE_NO_BOOT          = 0x01,
-} __packed;
-BUILD_ASSERT(sizeof(enum boot_mode) == sizeof(uint8_t));
-
 /**
  * Indicate PD is allowed (in RO) by vboot or not.
  *

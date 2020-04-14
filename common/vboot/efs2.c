@@ -15,6 +15,7 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "crc8.h"
+#include "ec_commands.h"
 #include "flash.h"
 #include "hooks.h"
 #include "sha256.h"
@@ -31,8 +32,8 @@
 static const char *boot_mode_to_string(uint8_t mode)
 {
 	static const char *boot_mode_str[] = {
-		[BOOT_MODE_NORMAL] =		"NORMAL",
-		[BOOT_MODE_NO_BOOT] =		"NO_BOOT",
+		[EC_EFS_BOOT_MODE_NORMAL] =		"NORMAL",
+		[EC_EFS_BOOT_MODE_NO_BOOT] =		"NO_BOOT",
 	};
 	if (mode < ARRAY_SIZE(boot_mode_str))
 		return boot_mode_str[mode];
@@ -174,7 +175,7 @@ static enum cr50_comm_err set_boot_mode(uint8_t mode)
 
 	CPRINTS("Setting boot mode to %s(%d)", boot_mode_to_string(mode), mode);
 	rv = cmd_to_cr50(CR50_COMM_CMD_SET_BOOT_MODE,
-			 &mode, sizeof(enum boot_mode));
+			 &mode, sizeof(enum cr50_boot_mode));
 	if (rv != CR50_COMM_SUCCESS)
 		CPRINTS("Failed to set boot mode");
 	return rv;
