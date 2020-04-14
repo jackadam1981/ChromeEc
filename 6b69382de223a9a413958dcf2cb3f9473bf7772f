@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24a42ed9_777dc1e2",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-14T19:42:42Z",
+      "side": 1,
+      "message": "nit: CHARGER_SOLO",
+      "range": {
+        "startLine": 534,
+        "startChar": 27,
+        "endLine": 534,
+        "endChar": 28
+      },
+      "revId": "6b69382de223a9a413958dcf2cb3f9473bf7772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc931a2_3d012b1e",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-14T19:42:42Z",
+      "side": 1,
+      "message": "Redundant?",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 13
+      },
+      "revId": "6b69382de223a9a413958dcf2cb3f9473bf7772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e759993_43d238a5",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-14T19:42:42Z",
+      "side": 1,
+      "message": "Do we need current from active or primary?",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 32
+      },
+      "revId": "6b69382de223a9a413958dcf2cb3f9473bf7772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

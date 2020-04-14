@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a2f6bf73_efc6bc79",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-14T19:42:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c11d61ac_d3bbab2d",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 37
+      },
+      "revId": "9b3266b5e0d98f2295024f08a9b08370a653e3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5f5fc10_c71cf275",
         "filename": "common/charger.c",
         "patchSetId": 3
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "cccd7191_ef34b85a",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-14T19:42:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e70bb5b_9363eb25",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 40
+      },
+      "revId": "9b3266b5e0d98f2295024f08a9b08370a653e3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab6f569b_2bfc8dea",
         "filename": "include/ocpc.h",
         "patchSetId": 3
@@ -178,6 +226,30 @@
       "side": 1,
       "message": "I was thinking the latter. And then along those lines, I was wondering if there was any real need for the board conversion function between charge port and charger IC.",
       "parentUuid": "ab6f569b_2bfc8dea",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "9b3266b5e0d98f2295024f08a9b08370a653e3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fdeb999_106f62b9",
+        "filename": "include/ocpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-14T19:42:42Z",
+      "side": 1,
+      "message": "I\u0027m good with forcing the board to put primary at the 0 index, since the assumption is documented in config.h. We could probably also get rid of the board conversion function?  Maybe add the port \u003d\u003d chgnum assumption to the OCPC comment block?",
+      "parentUuid": "28ef60d1_823d7ef2",
       "range": {
         "startLine": 13,
         "startChar": 0,
@@ -234,6 +306,30 @@
       "revId": "9b3266b5e0d98f2295024f08a9b08370a653e3fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d83515cc_ed2dc442",
+        "filename": "include/ocpc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-14T19:42:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b95053ad_1d97da8f",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "9b3266b5e0d98f2295024f08a9b08370a653e3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
