@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b97b03f4_4303128f",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-14T00:21:27Z",
+      "side": 1,
+      "message": "This file deals with AP state, processing INT_AP_L does not belong here. Should be in board.c or better yet in a separate file.",
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19ed2f83_8687cfd0",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-14T00:21:27Z",
+      "side": 1,
+      "message": "this should be const",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 28
+      },
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ceeca8d_6aa188a0",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-14T00:21:27Z",
+      "side": 1,
+      "message": "this still could result in a very long delay",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 58
+      },
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d205549_c46c848e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-14T00:21:27Z",
+      "side": 1,
+      "message": "let\u0027s not blow another property bit for this. We should be able to determine the need for long pulses at run time.",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 55
+      },
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
