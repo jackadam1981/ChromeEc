@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "896c383d_68bb9f3b",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-04-14T06:32:56Z",
+      "side": 1,
+      "message": "try if(IS_ENABLED(...)) instead?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "c987cad5db38f5e223b2f293e21ed083259d8602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a5a38d_1d696f2d",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-04-14T06:32:56Z",
+      "side": 1,
+      "message": "try if(IS_ENABLED(...)) instead?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "c987cad5db38f5e223b2f293e21ed083259d8602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cccd9d38_4192462e",
+        "filename": "board/damu/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-04-14T06:32:56Z",
+      "side": 1,
+      "message": "It seems all jacuzzi should have this config. Could we move this to the kukui baseboard?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "c987cad5db38f5e223b2f293e21ed083259d8602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
