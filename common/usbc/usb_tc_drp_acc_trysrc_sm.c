@@ -1544,6 +1544,8 @@ static void tc_unattached_snk_entry(const int port)
 		/* Detect USB PD cc disconnect */
 		hook_notify(HOOK_USB_PD_DISCONNECT);
 		print_current_state(port);
+		/* Reset power supply if not toggling */
+		pd_power_supply_reset(port);
 	}
 
 	/*
@@ -3167,9 +3169,6 @@ static void tc_cc_rd_entry(const int port)
 	/* Disable VCONN */
 	if (IS_ENABLED(CONFIG_USBC_VCONN))
 		set_vconn(port, 0);
-
-	/* Disable VBUS */
-	pd_power_supply_reset(port);
 
 	/* Set power role to sink */
 	tc_set_power_role(port, PD_ROLE_SINK);
