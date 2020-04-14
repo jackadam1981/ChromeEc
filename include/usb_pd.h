@@ -1873,9 +1873,10 @@ enum idh_ptype get_usb_pd_cable_type(int port);
  * @param cnt       number of data objects in payload
  * @param payload   payload data
  * @param head      PD packet header
+ * @param type	    Transmit type (SOP' or SOP'')
  */
 void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
-					uint16_t head);
+				uint16_t head, enum tcpm_transmit_type type);
 
 /**
  * Return enter USB message payload
