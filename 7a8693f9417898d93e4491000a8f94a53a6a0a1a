@@ -305,6 +305,30 @@
     },
     {
       "key": {
+        "uuid": "ca50c304_c8bc5745",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-14T10:13:03Z",
+      "side": 1,
+      "message": "uploaded the CL(https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2147769)",
+      "parentUuid": "67e787a1_a853cbfc",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "7a8693f9417898d93e4491000a8f94a53a6a0a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3ba21b2_43e7a3e3",
         "filename": "driver/accelgyro_bmi_common.c",
         "patchSetId": 13

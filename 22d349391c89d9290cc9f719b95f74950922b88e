@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5c24c538_1ef19fee",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-14T10:13:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5350aaa4_0b9cb477",
+      "range": {
+        "startLine": 673,
+        "startChar": 0,
+        "endLine": 675,
+        "endChar": 26
+      },
+      "revId": "22d349391c89d9290cc9f719b95f74950922b88e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7760d9c7_29aaf579",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 16

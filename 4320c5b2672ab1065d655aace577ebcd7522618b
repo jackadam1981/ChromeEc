@@ -70,6 +70,24 @@
       "revId": "4320c5b2672ab1065d655aace577ebcd7522618b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed686d84_aa107f02",
+        "filename": "driver/accelgyro_bmi260_config_tbin.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-14T10:13:03Z",
+      "side": 1,
+      "message": "Thanks for explanation. I think that it will be better to delete the symlink and include the accelgyro_bmi260_config_tbin.h directly.",
+      "parentUuid": "44c045de_55d57921",
+      "revId": "4320c5b2672ab1065d655aace577ebcd7522618b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
