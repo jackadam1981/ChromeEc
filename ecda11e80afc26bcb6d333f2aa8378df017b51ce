@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bafa715_374fc4c5",
+        "filename": "driver/usb_mux/ps874x.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-14T13:38:28Z",
+      "side": 1,
+      "message": "Your header depends on \u0027#include \"usb_mux.h\"\u0027 being included. So you either make the C file headers order dependent, not the best choice, or include it here as well to make sure it is in place for struct usb_mux being used later on.",
+      "revId": "ecda11e80afc26bcb6d333f2aa8378df017b51ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
