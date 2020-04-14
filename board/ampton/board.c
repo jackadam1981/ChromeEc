@@ -11,6 +11,7 @@
 #include "charge_state.h"
 #include "common.h"
 #include "cros_board_info.h"
+#include "driver/accel_bma2x2.h"
 #include "driver/accel_kionix.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/ppc/sn5s330.h"
@@ -175,6 +176,38 @@ const mat33_fp_t gyro_standard_ref = {
 /* sensor private data */
 static struct kionix_accel_data g_kx022_data;
 static struct bmi160_drv_data_t g_bmi160_data;
+
+/* BMA255 private data */
+static struct accelgyro_saved_data_t g_bma255_data;
+
+static const struct motion_sensor_t motion_sensor_bma253 = {
+	.name = "Lid Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_BMA255,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_LID,
+	.drv = &bma2x2_accel_drv,
+	.mutex = &g_lid_mutex,
+	.drv_data = &g_bma255_data,
+	.port = I2C_PORT_SENSOR,
+	.addr = BMA2x2_I2C_ADDR2,
+	.rot_standard_ref = &lid_standard_ref,
+	.min_frequency = BMA255_ACCEL_MIN_FREQ,
+	.max_frequency = BMA255_ACCEL_MAX_FREQ,
+	.default_range = 4, /* g */
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 0,
+		},
+		/* Sensor on in S3 */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 0,
+		},
+	},
+};
 
 /* Drivers */
 struct motion_sensor_t motion_sensors[] = {
@@ -360,3 +393,28 @@ void lid_angle_peripheral_enable(int enable)
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 }
 #endif
+
+static void board_motion_sense_resume(void)
+{
+	if (board_is_convertible()) {
+		int value;
+		int retry = 30; /* TODO: We must try on real hardware and tune this value */
+
+		do {
+			if (!i2c_read8(motion_sensors[LID_ACCEL].port,
+				motion_sensors[LID_ACCEL].addr, KX022_WHOAMI, &value)) {
+					ccprints("LID accel: KX022");
+					break;
+			} else if (!i2c_read8(motion_sensor_bma253.port,
+				motion_sensor_bma253.addr, BMA2x2_CHIP_ID_ADDR, &value)) {
+					motion_sensors[LID_ACCEL] = motion_sensor_bma253;
+					ccprints("LID accel: BMA253");
+					break;
+			} else {
+				usleep(10);
+			}
+		} while (--retry);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_motion_sense_resume,
+	     MOTION_SENSE_HOOK_PRIO - 1);
