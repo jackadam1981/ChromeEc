@@ -12,8 +12,10 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
-#define TC_SET_FLAG(port, flag) atomic_or(&tc[port].flags, (flag))
-#define TC_CLR_FLAG(port, flag) atomic_clear(&tc[port].flags, (flag))
+void print_flag(int set_or_clear, int flag);
+
+#define TC_SET_FLAG(port, flag) do { print_flag(1, flag); atomic_or(&tc[port].flags, (flag)); } while (0)
+#define TC_CLR_FLAG(port, flag) do { print_flag(0, flag); atomic_clear(&tc[port].flags, (flag)); } while (0)
 #define TC_CHK_FLAG(port, flag) (tc[port].flags & (flag))
 
 enum try_src_override_t {

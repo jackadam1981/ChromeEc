@@ -253,6 +253,11 @@ task_id_t task_get_current(void)
 	return current_task - tasks;
 }
 
+const char *task_get_name(task_id_t tskid)
+{
+	return task_names[tskid];
+}
+
 uint32_t *task_get_event_bitmap(task_id_t tskid)
 {
 	task_ *tsk = __task_id_to_ptr(tskid);
