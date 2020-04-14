@@ -143,7 +143,7 @@ test_mockable __keep int main(void)
 			system_print_reset_flags();
 			CPUTS("]\n");
 		}
-		CPRINTF("[Image: %s, %s]\n",
+		CPRINTF("[Image3: %s, %s]\n",
 			 system_get_image_copy_string(),
 			 system_get_build_info());
 	}

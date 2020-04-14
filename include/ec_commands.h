@@ -5709,6 +5709,13 @@ struct ec_params_efs_verify {
 	uint8_t region;		/* enum ec_flash_region */
 } __ec_align1;
 
+/* Boot mode used by EFS2 */
+enum cr50_boot_mode {
+	CR50_BOOT_MODE_NORMAL  = 0x00,
+	CR50_BOOT_MODE_NO_BOOT = 0x01,
+} __packed;
+BUILD_ASSERT(sizeof(enum cr50_boot_mode) == sizeof(uint8_t));
+
 /*
  * Retrieve info from Cros Board Info store. Response is based on the data
  * type. Integers return a uint32. Strings return a string, using the response
