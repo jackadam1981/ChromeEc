@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b7b7867_59a4264a",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-14T23:29:15Z",
+      "side": 1,
+      "message": "Change to usb_retimer or usb_bb_retimer.",
+      "range": {
+        "startLine": 87,
+        "startChar": 11,
+        "endLine": 87,
+        "endChar": 18
+      },
+      "revId": "33e326e112194db09144dc3619d98d1126cc51b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef769c3c_3cc5a67d",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-14T23:29:15Z",
+      "side": 1,
+      "message": "The bus names should match the devices connected to the bus.  Because this bus only contains the BurnsideBridges, I suggest using I2C_PORT_USB_RETIMER or I2C_PORT_USB_BB_RETIMER as the name.",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "33e326e112194db09144dc3619d98d1126cc51b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d90c3ae_532c5ca8",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-14T23:29:15Z",
+      "side": 1,
+      "message": "This bus is 3.3V.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 63
+      },
+      "revId": "33e326e112194db09144dc3619d98d1126cc51b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f2d7f3_9939b844",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-14T23:29:15Z",
+      "side": 1,
+      "message": "Also remove the GPIO_SEL_1P8V flag from here.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 95
+      },
+      "revId": "33e326e112194db09144dc3619d98d1126cc51b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03d95fe_e078d56c",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-14T23:29:15Z",
+      "side": 1,
+      "message": "You need to add alternate pin setup for I2C bus 4.  I2C signals need both GPIO entries and ALTERNATE entries.",
+      "revId": "33e326e112194db09144dc3619d98d1126cc51b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
