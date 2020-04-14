@@ -848,6 +848,30 @@
     },
     {
       "key": {
+        "uuid": "2f1fe59c_c90879bb",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-14T12:22:17Z",
+      "side": 1,
+      "message": "The max burst_write_len is actually among 3500 ~ 3800. If the burst_write_len is too big, the transaction will timeout. So I set this number to 2048. Also add comment to explain.",
+      "parentUuid": "cbce306f_a885609e",
+      "range": {
+        "startLine": 1964,
+        "startChar": 29,
+        "endLine": 1964,
+        "endChar": 32
+      },
+      "revId": "ccaba58657f130e967149b66ff6c95f1a69a7f7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebb21941_6200db86",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 9
