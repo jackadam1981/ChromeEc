@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "8c46ebb0_5bfc3b0d",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-14T19:55:36Z",
+      "side": 1,
+      "message": "Hmmmm... that\u0027s unfortunate.\n\nIs it just needed for the desired input current?  Then this function could just take an int*",
+      "parentUuid": "2f82b28d_0c9807b5",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb25d8f1_89b979d6",
         "filename": "common/ocpc.c",
         "patchSetId": 3
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "The caller has a guard, so perhaps this isn\u0027t necessary, but I\u0027m just being defensive here. I\u0027d rather not take any action at all if we haven\u0027t selected the secondary charger but we were called here somehow.",
       "parentUuid": "fb25d8f1_89b979d6",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 54
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa8c2710_8468f3aa",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-14T19:55:36Z",
+      "side": 1,
+      "message": "I\u0027m good with defensive programming, though this would be another breadcrumb spot for 3-ports.",
+      "parentUuid": "04fa3799_51f8ce00",
       "range": {
         "startLine": 58,
         "startChar": 34,
@@ -399,6 +447,30 @@
       "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b073cf9a_2a1ddbe2",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-14T19:55:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "334b4777_0e5a1dae",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
