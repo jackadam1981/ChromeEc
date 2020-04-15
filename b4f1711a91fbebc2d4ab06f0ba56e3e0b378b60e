@@ -46,6 +46,30 @@
       "revId": "b4f1711a91fbebc2d4ab06f0ba56e3e0b378b60e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e2d35a_80da95fc",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-15T22:44:21Z",
+      "side": 1,
+      "message": "I think it makes sense for the PE layer to interact with the muxes to set the lanes for alternate mode. Since TC and PE are on the same task, we don\u0027t have to worry about conflict. And the TC layer should touch the mux when PD is connected.\n\nWe can clean up the PE test dependencies later I guess.",
+      "parentUuid": "e03b57d8_4d39bb32",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "b4f1711a91fbebc2d4ab06f0ba56e3e0b378b60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
