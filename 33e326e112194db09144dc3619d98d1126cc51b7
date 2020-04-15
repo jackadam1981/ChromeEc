@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "499810a4_a466bb53",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-15T02:20:29Z",
+      "side": 1,
+      "message": "The USB TCPC, PPC, and mux configuration will all need to move from the baseboard to the variant, but you can do that as a separate CL.\n\nI recommend in this CL creating a macro to satisfy the current requirements in volteer/baseboard.c\n\n#define I2C_PORT_USB_1_MIX    I2C_PORT_USB_RETIMER",
+      "parentUuid": "a8d48dc6_63196bfc",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "33e326e112194db09144dc3619d98d1126cc51b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d90c3ae_532c5ca8",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 1
@@ -130,6 +154,30 @@
       "side": 1,
       "message": "Should I also remove GPIO_INPUT flag like another I2C BUS setting.",
       "parentUuid": "d8f2d7f3_9939b844",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 95
+      },
+      "revId": "33e326e112194db09144dc3619d98d1126cc51b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57465007_1b74ac61",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-15T02:20:29Z",
+      "side": 1,
+      "message": "Yes, you can remove the GPIO_INPUT flag too.",
+      "parentUuid": "0db15adc_863b8799",
       "range": {
         "startLine": 143,
         "startChar": 0,
