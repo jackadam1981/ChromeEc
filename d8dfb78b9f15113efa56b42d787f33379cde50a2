@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a8c49d3_411908aa",
+        "filename": "board/jinlon/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-15T19:43:32Z",
+      "side": 1,
+      "message": "let\u0027s add a comment here for future developers that this kind of decision should be based on fw_config in the future instead of sku value (so when people see this example they use fw_config in the future).",
+      "range": {
+        "startLine": 438,
+        "startChar": 1,
+        "endLine": 438,
+        "endChar": 27
+      },
+      "revId": "d8dfb78b9f15113efa56b42d787f33379cde50a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
