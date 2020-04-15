@@ -16,6 +16,24 @@
       "revId": "2c6b1679db4ed5bdebc41b4c5c3cabed81e61346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "befec2c6_8a1a9bf2",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-15T15:21:19Z",
+      "side": 1,
+      "message": "Not sure what you mean? If battery is not connected then it doesn\u0027t matter what I2C port does it?",
+      "parentUuid": "5fad2850_8a6cdac2",
+      "revId": "2c6b1679db4ed5bdebc41b4c5c3cabed81e61346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
