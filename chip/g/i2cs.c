@@ -420,6 +420,7 @@ void i2cs_post_read_fill_fifo(uint8_t *buffer, size_t len)
 int i2cs_register_write_complete_handler(wr_complete_handler_f wc_handler)
 {
 	task_disable_irq(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT);
+	int_ap_extension_disable();
 
 	if (!wc_handler)
 		return 0;
@@ -428,6 +429,10 @@ int i2cs_register_write_complete_handler(wr_complete_handler_f wc_handler)
 	write_complete_handler_ = wc_handler;
 	task_enable_irq(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT);
 
+	/*
+	 *TODO: call int_ap_extension_enable() if TPM_BOARD_CFG has
+	 * LONG_INT_AP_PULSE set
+	 */
 	/*
 	 * Start a self perpetuating polling function to check for 'hosed'
 	 * condition periodically.
