@@ -22,6 +22,30 @@
       "revId": "b82939c34d6406567969b36ae681c957c0994781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e58081_c95b1edd",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-04-15T06:34:32Z",
+      "side": 1,
+      "message": "this comes from rt946x.c, RT946X_AICR_TYP2MAX(2000)",
+      "parentUuid": "adfdc5d9_561a439f",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "b82939c34d6406567969b36ae681c957c0994781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
