@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2da0573_1d4de7aa",
+        "filename": "common/keyboard_scan_console_cmd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-15T20:26:56Z",
+      "side": 1,
+      "message": "I agreed, but this was a little different. I was trying to put all of the dependencies in this header file, so it could be more easily replaced when only pulling in the c file; otherwise pulling in that C would require to have all of the valid header files.\n\nI don\u0027t love it, so I am definitely open to ideas to keep the c file as portage as possible without introducing too many weird paradigms.",
+      "parentUuid": "2ee83219_65f2b8d0",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "a04fc8bf436d0932d84fa282c62f3952efe0dda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6c701a3_f24df418",
         "filename": "include/config.h",
         "patchSetId": 2
