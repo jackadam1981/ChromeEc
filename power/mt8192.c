@@ -147,6 +147,7 @@ static void sys_reset(void)
 	 * TODO(yllin): toggle PMIC_WATCHDOG_L as well?
 	 *              AP should toggle WDTRSTB.
 	 */
+	CPRINTS("#### SYS RST ####");
 	gpio_set_level(GPIO_SYS_RST_ODL, 0);
 	if (in_interrupt_context())
 		udelay(SYS_RST_PULSE_LENGTH);
@@ -384,12 +385,23 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_S5G3;
 		}
 
+		CPRINTS("PMIC_EC_PWRGD=%d", gpio_get_level(GPIO_PMIC_EC_PWRGD));
+		CPRINTS("AP_IN_SLEEP_L=%d", gpio_get_level(GPIO_AP_IN_SLEEP_L));
+		CPRINTS("EC_PMIC_WACHDOG_L=%d", gpio_get_level(GPIO_EC_PMIC_WATCHDOG_L));
+		CPRINTS("SYS_RST_ODL=%d", gpio_get_level(GPIO_SYS_RST_ODL));
+
 		gpio_set_level(GPIO_EN_PP1800_U, 1);
 		gpio_set_level(GPIO_EN_PP3300_U, 1);
 
 		booted = 1;
+		CPRINTS("run power_sequence_s5s3");
 		/* Enable S3 power supplies, release AP reset. */
 		power_seq_run(s5s3_power_seq, ARRAY_SIZE(s5s3_power_seq));
+		CPRINTS("PMIC_EC_PWRGD=%d", gpio_get_level(GPIO_PMIC_EC_PWRGD));
+		CPRINTS("AP_IN_SLEEP_L=%d", gpio_get_level(GPIO_AP_IN_SLEEP_L));
+		CPRINTS("EC_PMIC_WACHDOG_L=%d", gpio_get_level(GPIO_EC_PMIC_WATCHDOG_L));
+		CPRINTS("SYS_RST_ODL=%d", gpio_get_level(GPIO_SYS_RST_ODL));
+
 		gpio_enable_interrupt(GPIO_AP_EC_WATCHDOG_L);
 
 		/* Call hooks now that rails are up */

@@ -12,6 +12,7 @@
 /* Chipset config */
 #define CONFIG_CHIPSET_MT8192
 #define CONFIG_POWER_COMMON
+#define CONFIG_CMD_POWERINDEBUG
 
 /* Optional features */
 #define CONFIG_BOARD_VERSION_CUSTOM
@@ -44,11 +45,9 @@
 
 /* Keyboard */
 #define CONFIG_CMD_KEYBOARD
-/*
- * #define CONFIG_KEYBOARD_BOARD_CONFIG
- * #define CONFIG_KEYBOARD_PROTOCOL_MKBP
- * #define CONFIG_MKBP_USE_GPIO
- */
+#define CONFIG_KEYBOARD_BOARD_CONFIG
+#define CONFIG_KEYBOARD_PROTOCOL_MKBP
+#define CONFIG_MKBP_USE_GPIO
 
 /* I2C */
 #define CONFIG_I2C
@@ -99,6 +98,14 @@
 /* UART */
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
+
+/*
+ * Remapping of schematic GPIO names to common GPIO names expected (hardcoded)
+ * in the EC code base.
+ */
+#define GPIO_ENTERING_RW	GPIO_EC_ENTERING_RW
+#define GPIO_EC_INT_L		GPIO_EC_AP_INT_ODL
+#define GPIO_KBD_KSO2		GPIO_EC_KSO_02_INV
 
 #ifndef __ASSEMBLER__
 
