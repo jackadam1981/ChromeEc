@@ -202,6 +202,9 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 		process_write_access(reg_size, tpm_reg,
 				     data, i2cs_data_size);
 
+	if (assert_int_ap())
+		return;
+
 	/*
 	 * Since cr50 does not provide i2c clock stretching, we need some
 	 * onther means of flow controlling the host. Let's generate a pulse
@@ -209,13 +212,6 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 	 */
 	gpio_set_level(GPIO_INT_AP_L, 0);
 
-	/*
-	 * This is to meet the AP requirement of minimum 4 usec
-	 *  duration of INT_AP_L assertion.
-	 *
-	 * TODO(b/130515803): Ideally, this should be improved
-	 * to support any duration requirement in future.
-	 */
 	tick_delay(2);
 
 	gpio_set_level(GPIO_INT_AP_L, 1);

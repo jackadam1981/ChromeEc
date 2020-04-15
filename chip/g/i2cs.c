@@ -429,6 +429,10 @@ int i2cs_register_write_complete_handler(wr_complete_handler_f wc_handler)
 	task_enable_irq(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT);
 
 	/*
+	 *TODO: call int_ap_extension_enable() if TPM_BOARD_CFG has
+	 * LONG_INT_AP_PULSE set
+	 */
+	/*
 	 * Start a self perpetuating polling function to check for 'hosed'
 	 * condition periodically.
 	 */
@@ -466,4 +470,9 @@ size_t i2cs_zero_read_fifo_buffer_depth(void)
 void i2cs_get_status(struct i2cs_status *status)
 {
 	status->read_recovery_count = i2cs_read_recovery_count;
+}
+
+void i2cs_sda_isr(enum gpio_signal signal)
+{
+	deassert_int_ap();
 }

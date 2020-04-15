@@ -61,4 +61,11 @@ struct i2cs_status {
 };
 void i2cs_get_status(struct i2cs_status *status);
 
+/*
+ * Interrupt handler of GPIO_MONITOR_I2CS_SDA.
+ * Its role is to detect any transaction start during INT_AP_L
+ *  assertion and to deassert INT_AP_L.
+ */
+void i2cs_sda_isr(enum gpio_signal signal);
+
 #endif /* ! __CHIP_G_I2CS_H */
