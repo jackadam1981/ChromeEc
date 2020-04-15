@@ -142,6 +142,9 @@ int ap_start_ack_completion(void)
 
 void ap_stop_ack_completion(void)
 {
+	if (board_tpm_uses_i2c())
+		gpio_disable_interrupt(GPIO_MONITOR_I2CS_SDA);
+
 	/* If INT_AP_L is already deasserted, then do nothing. */
 	if (gpio_get_level(GPIO_INT_AP_L))
 		return;

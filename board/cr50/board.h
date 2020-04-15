@@ -388,6 +388,13 @@ void int_ap_extension_disable(void);
  */
 int int_ap_extension_set_duration(int usec);
 
+/*
+ * Interrupt handler of GPIO_MONITOR_I2CS_SDA.
+ * Its role is to detect any transaction start during INT_AP_L
+ *  assertion and to deassert INT_AP_L.
+ */
+void i2cs_sda_isr(enum gpio_signal signal);
+
 /* Moving from legacy versions might require NVMEM transition. */
 int board_nvmem_legacy_check_needed(void);
 

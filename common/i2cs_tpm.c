@@ -202,6 +202,14 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 		process_write_access(reg_size, tpm_reg,
 				     data, i2cs_data_size);
 
+#ifdef CR50_DEV
+	/* TODO: WIP: Experimental: Remove before commit */
+	if (ap_start_ack_completion()) {
+		gpio_enable_interrupt(GPIO_MONITOR_I2CS_SDA);
+		return;
+	}
+#endif
+
 	/*
 	 * Since cr50 does not provide i2c clock stretching, we need some
 	 * onther means of flow controlling the host. Let's generate a pulse
@@ -219,6 +227,11 @@ static void wr_complete_handler(void *i2cs_data, size_t i2cs_data_size)
 	tick_delay(2);
 
 	gpio_set_level(GPIO_INT_AP_L, 1);
+}
+
+void i2cs_sda_isr(enum gpio_signal signal)
+{
+	ap_stop_ack_completion();
 }
 
 static void i2cs_if_stop(void)
