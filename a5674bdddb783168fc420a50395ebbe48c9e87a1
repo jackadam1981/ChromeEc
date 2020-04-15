@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb72c32c_a8c7a926",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-15T06:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dafeae8_23572dfd",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "a5674bdddb783168fc420a50395ebbe48c9e87a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5632131e_fd7c6626",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "a5674bdddb783168fc420a50395ebbe48c9e87a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ecb3bd1_537e0068",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-15T06:12:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5632131e_fd7c6626",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 46
+      },
+      "revId": "a5674bdddb783168fc420a50395ebbe48c9e87a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "28a9b59b_5922af91",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-15T06:12:34Z",
+      "side": 1,
+      "message": "Done. Removed timehs_load_.",
+      "parentUuid": "f6cf5ff9_81363714",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "a5674bdddb783168fc420a50395ebbe48c9e87a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab9fbe0d_46ab4077",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "a5674bdddb783168fc420a50395ebbe48c9e87a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3520e6d_4409c9d7",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-15T06:12:34Z",
+      "side": 1,
+      "message": "Reimplemented the state machine, so that only schedule_timer() can modify it. The attempt to schedule over other schedule shall be ignored, unless it is in interrupt context.",
+      "parentUuid": "ab9fbe0d_46ab4077",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "a5674bdddb783168fc420a50395ebbe48c9e87a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
