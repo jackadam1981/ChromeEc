@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98fa4987_5dafa7af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-15T10:52:15Z",
+      "side": 1,
+      "message": "b/153705222",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "07591ff2ea9381c01ad1536a4d80e7c45c9a5af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca12baf4_b3d0fc1d",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-15T10:52:15Z",
+      "side": 1,
+      "message": "Also need the definition for USB_C2_MIX_INT_ODL",
+      "revId": "07591ff2ea9381c01ad1536a4d80e7c45c9a5af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3723fdda_7bbd7445",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1277492
+      },
+      "writtenOn": "2020-04-15T10:52:15Z",
+      "side": 1,
+      "message": "Add above \nblank line\n/* Definition for Halvor USB PD interrupt handlers. */",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 54
+      },
+      "revId": "07591ff2ea9381c01ad1536a4d80e7c45c9a5af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
