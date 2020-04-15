@@ -141,6 +141,30 @@
       "revId": "a0f0c4cc16dbde72853531b12fbcc2c550fe0a6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7eda5b1_9702f4fc",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1714,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-15T22:49:16Z",
+      "side": 1,
+      "message": "Thank you. it is both protecting against bad (or unintentional) callers. It also makes it very difficult to audit your API surface to see what callers are actually setting or not.",
+      "parentUuid": "d35c2f27_977ba4c0",
+      "range": {
+        "startLine": 1714,
+        "startChar": 0,
+        "endLine": 1714,
+        "endChar": 20
+      },
+      "revId": "a0f0c4cc16dbde72853531b12fbcc2c550fe0a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
