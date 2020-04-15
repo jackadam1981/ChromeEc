@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dafeae8_23572dfd",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-15T01:40:54Z",
+      "side": 1,
+      "message": "not used in this file",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "a5674bdddb783168fc420a50395ebbe48c9e87a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5632131e_fd7c6626",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-15T01:40:54Z",
+      "side": 1,
+      "message": "why not use (PCLK_FREQ/1000000)",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 46
+      },
+      "revId": "a5674bdddb783168fc420a50395ebbe48c9e87a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6cf5ff9_81363714",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-15T01:40:54Z",
+      "side": 1,
+      "message": "Minimum duration of the INT_AP_L pulse in microseconds.\n\n\n also, - min_duration_int_ap_ and timehs_load_ are the same thing, or rather are in a constant scale relationship, why do you need to keep two variables?",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "a5674bdddb783168fc420a50395ebbe48c9e87a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab9fbe0d_46ab4077",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-15T01:40:54Z",
+      "side": 1,
+      "message": "This seems extremely brittle - somene starts this value, starts the timer, but then another caller can change this value and start another timer while the original timer is still running?",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "a5674bdddb783168fc420a50395ebbe48c9e87a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
