@@ -46,6 +46,30 @@
       "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e06766_65b47c6c",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-15T22:56:11Z",
+      "side": 1,
+      "message": "I2C_PORT_ACCEL doesn\u0027t follow the pattern of other CONFIG_* options and isn\u0027t currently documented in config.h. Current board.h files are setting this to a specific I2C bus instance, but this driver doesn\u0027t actually check the value assigned so it\u0027s an inconsistent design.\n\nThe SPI/I2C bus designation is already required be setup in the motion_sensors[].i2c_spi_addr_flags, so both I2C_PORT_ACCEL and CONFIG_SPI_ACCEL_PORT are redundant in my opinion.\n\nIf all boards have I2C, then the I2C_PORT_ACCEL check only provides a small code size saving.  So my suggestion is to just remove I2C_PORT_ACCEL instead of renaming and documenting the macro in config.h\n\nBecause only a subset of boards enable SPI, having a guard on the SPI driver calls makes sense, but could be done with just CONFIG_SPI.  Again the cost is a small amount of code, but we get to delete a redundant config option.",
+      "parentUuid": "1c768e29_3c659590",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
