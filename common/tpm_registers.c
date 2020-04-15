@@ -85,6 +85,8 @@
 #define TPM_DID_VID	    (0xf00)
 #define TPM_RID		    (0xf04)
 #define TPM_FW_VER	    (0xf90)
+#define TPM_FW_VER_INT_EXT  (0xf91)	/* TPM_FW_VER with a request to       */
+					/* extend the duration of INT_AP_L    */
 
 #define GOOGLE_VID 0x1ae0
 #define GOOGLE_DID 0x0028
@@ -442,6 +444,9 @@ void tpm_register_put(uint32_t regaddr, const uint8_t *data, uint32_t data_size)
 	case TPM_DATA_FIFO:
 		fifo_reg_write(data, data_size);
 		break;
+	case TPM_FW_VER_INT_EXT:
+		int_ap_extension_set_duration(MIN_DURATION_INT_AP);
+		/* fall through */
 	case TPM_FW_VER:
 		/* Reset read byte count */
 		tpm_fw_ver_index = 0;
@@ -519,6 +524,7 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 		fifo_reg_read(dest, data_size);
 		break;
 	case TPM_FW_VER:
+	case TPM_FW_VER_INT_EXT:
 		for (i = 0; i < data_size; i++) {
 			/*
 			 * Only read while the index remains less than the
