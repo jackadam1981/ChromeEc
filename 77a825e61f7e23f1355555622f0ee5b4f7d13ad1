@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25e5cdcc_3fe8e5c0",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-15T17:33:21Z",
+      "side": 1,
+      "message": "Reverting it. Will make another patch for this if needed.",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 61
+      },
+      "revId": "77a825e61f7e23f1355555622f0ee5b4f7d13ad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea8e4aed_cc0a20c0",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-15T17:33:21Z",
+      "side": 1,
+      "message": "Reverting it. Will make another patch for this if needed.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 36
+      },
+      "revId": "77a825e61f7e23f1355555622f0ee5b4f7d13ad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

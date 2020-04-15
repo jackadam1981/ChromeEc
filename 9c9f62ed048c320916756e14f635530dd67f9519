@@ -22,6 +22,30 @@
       "revId": "9c9f62ed048c320916756e14f635530dd67f9519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "465337c4_27ca1297",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-15T17:33:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3da08e77_98fba986",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 6
+      },
+      "revId": "9c9f62ed048c320916756e14f635530dd67f9519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
