@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29115ac4_b80db6f0",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-15T21:40:55Z",
+      "side": 1,
+      "message": "applicable to DP/USB as well",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 50
+      },
+      "revId": "cc5ebb0c2fa47f7bdb2509741aefcb0ab1a96016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5aa730_257b3aba",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-15T21:40:55Z",
+      "side": 1,
+      "message": "applicable to DP/USB as well",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "cc5ebb0c2fa47f7bdb2509741aefcb0ab1a96016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "425a4821_3534392c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-15T21:40:55Z",
+      "side": 1,
+      "message": "usb4 specific",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 34
+      },
+      "revId": "cc5ebb0c2fa47f7bdb2509741aefcb0ab1a96016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8216ca6a_6035f9ac",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-15T21:40:55Z",
+      "side": 1,
+      "message": "process_tbt_compat_discover_modes handles this, can be common for both ufp \u0026 dfp",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 35
+      },
+      "revId": "cc5ebb0c2fa47f7bdb2509741aefcb0ab1a96016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
