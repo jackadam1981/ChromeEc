@@ -163,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "d70daf5b_0cfa2a94",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-15T21:20:59Z",
+      "side": 1,
+      "message": "is_tbt_cable_superspeed()\nhow about using this function by modifying the function name to be more generic ?",
+      "parentUuid": "b7461c08_af7353a6",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 6
+      },
+      "revId": "d01fd7eeeb407f4f9fe711198e1f9ad44ac2ee7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "845f2ff2_d2cafdd4",
         "filename": "include/usb_pd.h",
         "patchSetId": 4
