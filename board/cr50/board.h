@@ -514,4 +514,10 @@ enum nvmem_users {
 /* Total time deep sleep should not be allowed while wiping the TPM. */
 #define DISABLE_SLEEP_TIME_TPM_WIPE (TPM_PROCESSING_TIME + TPM_RESET_TIME)
 
+/*
+ * Minimum duration of INT_AP pulse in microseconds that AP requires.
+ * 100 microseconds if a requirement from Tiger Lage in its gpio low power mode.
+ */
+#define MIN_DURATION_INT_AP		100
+
 #endif /* __CROS_EC_BOARD_H */
