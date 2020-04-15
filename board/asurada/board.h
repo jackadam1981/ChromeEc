@@ -43,6 +43,7 @@
 /* Chipset */
 
 /* Keyboard */
+#define CONFIG_CMD_KEYBOARD
 /*
  * #define CONFIG_KEYBOARD_BOARD_CONFIG
  * #define CONFIG_KEYBOARD_PROTOCOL_MKBP
