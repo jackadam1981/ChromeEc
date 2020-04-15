@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ee83219_65f2b8d0",
+        "filename": "common/keyboard_scan_console_cmd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-15T17:44:50Z",
+      "side": 1,
+      "message": "shouldn\u0027t these go in the .c file? this is the style we use elsewhere",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "a04fc8bf436d0932d84fa282c62f3952efe0dda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6c701a3_f24df418",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5292,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-15T17:44:50Z",
+      "side": 1,
+      "message": "Gee... I wish we had Kconfig ;)",
+      "range": {
+        "startLine": 5291,
+        "startChar": 0,
+        "endLine": 5292,
+        "endChar": 26
+      },
+      "revId": "a04fc8bf436d0932d84fa282c62f3952efe0dda6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
