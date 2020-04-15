@@ -429,6 +429,11 @@ int i2cs_register_write_complete_handler(wr_complete_handler_f wc_handler)
 	task_enable_irq(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT);
 
 	/*
+	 * TODO(b148691139/): Call int_ap_extension_enable() if
+	 * board property tells to extend INT_AP_L pulse.
+	 */
+
+	/*
 	 * Start a self perpetuating polling function to check for 'hosed'
 	 * condition periodically.
 	 */
