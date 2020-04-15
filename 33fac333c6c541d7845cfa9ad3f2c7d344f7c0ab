@@ -22,6 +22,30 @@
       "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c768e29_3c659590",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-15T22:11:21Z",
+      "side": 1,
+      "message": "The point of I2C_PORT_ACCEL is to prevent to insert this code, when we know the BMI160 is using a SPI bus.\nGuarding with CONFIG_I2C is not enough, because CONFIG_I2C is always included as there is a least one i2c device (battery, other sensors) connected to the EC.",
+      "parentUuid": "61a736d2_9ff22ae5",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
