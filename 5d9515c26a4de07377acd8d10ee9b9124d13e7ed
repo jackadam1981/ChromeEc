@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6669b579_982ed493",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-15T20:00:28Z",
+      "side": 1,
+      "message": "should add a comment saying that if all of the ports are also not connected, then we can allow the sleep mask",
+      "range": {
+        "startLine": 580,
+        "startChar": 3,
+        "endLine": 583,
+        "endChar": 4
+      },
+      "revId": "5d9515c26a4de07377acd8d10ee9b9124d13e7ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
