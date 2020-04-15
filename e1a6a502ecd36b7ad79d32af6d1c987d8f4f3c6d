@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "12984b7d_b6a813cc",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-04-15T01:22:20Z",
+      "side": 1,
+      "message": "\u003e nit: I was uncertain was this was when reading code down below. Can we renamee it to vivalid_keys (or just keys)?\n\u003e \nDone",
+      "parentUuid": "848cbb81_619d875e",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 9
+      },
+      "revId": "e1a6a502ecd36b7ad79d32af6d1c987d8f4f3c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "278527ba_1ad88f0d",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "e1a6a502ecd36b7ad79d32af6d1c987d8f4f3c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eb1cc20_0d7a2289",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-04-15T01:22:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "278527ba_1ad88f0d",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 23
+      },
+      "revId": "e1a6a502ecd36b7ad79d32af6d1c987d8f4f3c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cf9591ee_9ed9ba8b",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-04-15T01:22:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a7439fd_0e03564e",
+      "range": {
+        "startLine": 102,
+        "startChar": 33,
+        "endLine": 102,
+        "endChar": 50
+      },
+      "revId": "e1a6a502ecd36b7ad79d32af6d1c987d8f4f3c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e14ab7f7_c275162f",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "e1a6a502ecd36b7ad79d32af6d1c987d8f4f3c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6136f85c_6de142a6",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-04-15T01:22:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e14ab7f7_c275162f",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "e1a6a502ecd36b7ad79d32af6d1c987d8f4f3c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

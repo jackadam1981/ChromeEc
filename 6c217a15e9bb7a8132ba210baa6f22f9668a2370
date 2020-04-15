@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e7dee29c_88d212db",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-04-15T01:22:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d44dbda_2c95b2d7",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 85
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fe510c9_ab35119d",
         "filename": "common/keyboard_vivaldi.c",
         "patchSetId": 3
@@ -146,6 +170,30 @@
       "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "657305d9_f00eabd6",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-04-15T01:22:20Z",
+      "side": 1,
+      "message": "\u003e did you get rid of the default?\n\nNo, like you noticed, put it in the last patch",
+      "parentUuid": "fb593870_4c9b35de",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 45
+      },
+      "revId": "6c217a15e9bb7a8132ba210baa6f22f9668a2370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
