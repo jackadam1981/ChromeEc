@@ -13,6 +13,7 @@
 #include "console.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
+#include "driver/ppc/syv682x.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -28,11 +29,14 @@
 #include "tablet_mode.h"
 #include "timer.h"
 #include "uart.h"
+#include "usbc_ppc.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+static void ppc_interrupt(enum gpio_signal signal);
 
 #include "gpio_list.h"
 
@@ -130,6 +134,31 @@ const struct i2c_port_t i2c_ports[] = {
 	{"usb1",     IT83XX_I2C_CH_E, 100, GPIO_I2C_E_SCL, GPIO_I2C_E_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* PPC */
+struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.i2c_port = I2C_PORT_USBC_0,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv
+	},
+};
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+
+static void ppc_interrupt(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_USB_C0_PPC_INT_ODL:
+		syv682x_interrupt(0);
+	default:
+		break;
+	}
+}
+
+void board_overcurrent_event(int port, int is_overcurrented)
+{
+	/* TODO: check correct operation for Asurada */
+}
 
 /* TCPC */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
