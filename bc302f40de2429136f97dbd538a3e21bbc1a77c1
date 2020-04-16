@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "671da7b6_f53dd150",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-16T20:01:31Z",
+      "side": 1,
+      "message": "Delete this comment - it only applies to the Volteer reference board.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2bc3d8_016bcc40",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-16T20:01:31Z",
+      "side": 1,
+      "message": "The SMP specification indicates that for enter ship mode, 0x34 value changes from 0x0100 to 0x0000. This is opposite the LGC specification.\n\nDoes the SMP specification have an error? You should be able to check by reading this register directly from the battery.  If the battery is operating, register 0x34 should have bit 0x0100 clear.",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f64b88_e7ab6881",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-16T20:01:31Z",
+      "side": 1,
+      "message": "Specification lists 6.5V for \"Voltage at end of discharge\".",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98324b51_d2c81770",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-16T20:01:31Z",
+      "side": 1,
+      "message": "Specification lists 337mA for \"Max Continue Charge Current for Pre-charge mode\".",
+      "range": {
+        "startLine": 56,
+        "startChar": 24,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b126a1e0_94ccbd48",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-16T20:01:31Z",
+      "side": 1,
+      "message": "How is this determined - is this based off of the \"Low Voltage for Discharge Protection\" setting?",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714d122d_7f5a93d7",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-16T20:01:31Z",
+      "side": 1,
+      "message": "Should this be 320 mA from the \"Taper Current for Charging\" parameter?",
+      "range": {
+        "startLine": 83,
+        "startChar": 24,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
