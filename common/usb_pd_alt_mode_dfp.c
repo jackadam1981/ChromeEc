@@ -502,6 +502,18 @@ bool is_cable_speed_usb3_capable(int port)
 	}
 }
 
+bool is_active_cable_element_retimer(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	/* Ref: USB PD Spec 2.0 Table 6-29 Active Cable VDO
+	 * Revision 2 Active cables do not have Active element support.
+	 */
+	return cable->rev & PD_REV30 &&
+		get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE &&
+		cable->attr2.a2_rev30.active_elem == ACTIVE_RETIMER;
+}
+
 void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 				uint16_t head)
 {

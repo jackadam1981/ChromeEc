@@ -177,6 +177,20 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		set_retimer_con |= BB_RETIMER_CONNECTION_ORIENTATION;
 
 	/*
+	 * Bit 2: RE_TIMER_DRIVER
+	 * 0 - Re-driver
+	 * 1 - Re-timer
+	 *
+	 * If Alternate mode is USB/DP/USB4, RE_TIMER_DRIVER is
+	 * set according to SOP' VDO2 response Bit 9.
+	 *
+	 */
+	if (is_active_cable_element_retimer(port) &&
+	   (mux_state & (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED |
+			 USB_PD_MUX_USB4_ENABLED)))
+		set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+
+	/*
 	 * Bit 5: USB_3_CONNECTION
 	 * 0 - No USB3.1 Connection
 	 * 1 - USB3.1 connection
@@ -237,6 +251,10 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		 * Bit 2: RE_TIMER_DRIVER
 		 * 0 - Re-driver
 		 * 1 - Re-timer
+		 *
+		 * If Alternate mode is Thunderbolt-Compat, RE_TIMER_DRIVER is
+		 * set according to Discover Mode SOP' response,
+		 * Bit 22: Retimer Type.
 		 */
 		if (cable_resp.retimer_type == USB_RETIMER)
 			set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
