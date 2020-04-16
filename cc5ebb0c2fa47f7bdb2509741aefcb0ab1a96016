@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "45005dd6_c22bdc56",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-16T06:19:42Z",
+      "side": 1,
+      "message": "In case of UFP, if the enter mode bits 20:19 for USB/DP \u003d 11b, then we set the cable type. It isn\u0027t valid for USB/PD, DFP.",
+      "parentUuid": "1e5aa730_257b3aba",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "cc5ebb0c2fa47f7bdb2509741aefcb0ab1a96016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "425a4821_3534392c",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 4
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "bd374b09_3f581146",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-16T06:19:42Z",
+      "side": 1,
+      "message": "Need to set it for both USB4 and TBT",
+      "parentUuid": "425a4821_3534392c",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 34
+      },
+      "revId": "cc5ebb0c2fa47f7bdb2509741aefcb0ab1a96016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8216ca6a_6035f9ac",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 4
@@ -82,6 +130,30 @@
       "writtenOn": "2020-04-15T21:40:55Z",
       "side": 1,
       "message": "process_tbt_compat_discover_modes handles this, can be common for both ufp \u0026 dfp",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 35
+      },
+      "revId": "cc5ebb0c2fa47f7bdb2509741aefcb0ab1a96016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbc23421_cc7647f4",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-16T06:19:42Z",
+      "side": 1,
+      "message": "In case of UFP, we copy the value received from the TBT enter mode command. Not sure how process_tbt_compat_discover_mode handles it.",
+      "parentUuid": "8216ca6a_6035f9ac",
       "range": {
         "startLine": 179,
         "startChar": 0,
