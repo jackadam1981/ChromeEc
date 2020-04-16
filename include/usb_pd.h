@@ -355,6 +355,15 @@ struct identity_data {
 	enum pd_discovery_state discovery;
 };
 
+/* TODO: Come up with a better name for this */
+struct svid_data_s {
+	/* Count of SVIDs discovered */
+	int cnt;
+	/* Supported SVIDs and corresponding VDO mode data */
+	struct svdm_svid_data svids[SVID_DISCOVERY_MAX];
+	enum pd_discovery_state discovery;
+};
+
 /* supported alternate modes */
 enum pd_alternate_modes {
 	PD_AMODE_GOOGLE,
@@ -375,12 +384,10 @@ enum pd_alternate_modes {
 struct pd_discovery {
 	/* index of svid currently being operated on */
 	int svid_idx;
-	/* count of svids discovered */
-	int svid_cnt;
 	/* Identity data for all supported SOP* communications */
 	struct identity_data identity[DISCOVERY_TYPE_COUNT];
-	/* supported svids & corresponding vdo mode data */
-	struct svdm_svid_data svids[SVID_DISCOVERY_MAX];
+	/* Discovered SVID data for all supported SOP* communications */
+	struct svid_data_s svids[DISCOVERY_TYPE_COUNT];
 	/*  active modes */
 	struct svdm_amode_data amodes[PD_AMODE_COUNT];
 	/* Next index to insert DFP alternate mode into amodes */
@@ -1726,6 +1733,14 @@ uint16_t pd_get_identity_pid(int port);
  */
 uint8_t pd_get_product_type(int port);
 
+/* TODO: Comment and implement */
+void pd_set_svid_discovery(int port, enum tcpm_transmit_type type,
+		enum pd_discovery_state disc);
+
+enum pd_discovery_state pd_get_svid_discovery(int port,
+		enum tcpm_transmit_type type);
+
+/* TODO: Handle other transmit types */
 /**
  * Return the SVID count of port partner connected to a specified port
  *
