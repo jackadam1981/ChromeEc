@@ -187,6 +187,30 @@
     },
     {
       "key": {
+        "uuid": "570398ab_f5d12cc3",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-16T06:19:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70daf5b_0cfa2a94",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 6
+      },
+      "revId": "d01fd7eeeb407f4f9fe711198e1f9ad44ac2ee7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "845f2ff2_d2cafdd4",
         "filename": "include/usb_pd.h",
         "patchSetId": 4
