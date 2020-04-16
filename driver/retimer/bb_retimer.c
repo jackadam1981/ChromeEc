@@ -114,10 +114,11 @@ static void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 }
 
 static void retimer_set_state_dfp(int port, mux_state_t mux_state,
-				  uint32_t *set_retimer_con,
-				  union tbt_mode_resp_cable cable_resp,
-				  union tbt_mode_resp_device dev_resp)
+				  uint32_t *set_retimer_con)
 {
+	union tbt_mode_resp_cable cable_resp;
+	union tbt_mode_resp_device dev_resp;
+
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/*
 		 * Bit 4: USB2_CONNECTION (ignored if BIT5=0).
@@ -159,6 +160,9 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
 
 	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
+		cable_resp = get_cable_tbt_vdo(port);
+		dev_resp = get_dev_tbt_vdo(port);
+
 		/*
 		 * Bit 2: RE_TIMER_DRIVER
 		 * 0 - Re-driver
@@ -198,6 +202,16 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 			*set_retimer_con |= BB_RETIMER_TBT_ACTIVE_LINK_TRAINING;
 
 		/*
+		 * Bit 27-25: TBT Cable speed
+		 * 000b - No functionality
+		 * 001b - USB3.1 Gen1 Cable
+		 * 010b - 10Gb/s
+		 * 011b - 10Gb/s and 20Gb/s
+		 * 10..11b - Reserved
+		 */
+		*set_retimer_con |= BB_RETIMER_TBT_CABLE_SPEED_SUPPORT(
+						cable_resp.tbt_cable_speed);
+		/*
 		 * Bits 29-28: TBT_GEN_SUPPORT
 		 * 00b - 3rd generation TBT (10.3125 and 20.625Gb/s)
 		 * 01b - 4th generation TBT (10.00005Gb/s, 10.3125Gb/s,
@@ -207,6 +221,18 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		*set_retimer_con |= BB_RETIMER_TBT_CABLE_GENERATION(
 				       cable_resp.tbt_rounded);
 	}
+
+	/*
+	 * Bit 27-25: USB4 Cable speed
+	 * 000b - No functionality
+	 * 001b - USB3.1 Gen1 Cable
+	 * 010b - 10Gb/s
+	 * 011b - 10Gb/s and 20Gb/s
+	 * 10..11b - Reserved
+	 */
+	if (mux_state & USB_PD_MUX_USB4_ENABLED)
+		*set_retimer_con |= BB_RETIMER_USB4_CABLE_SPEED_SUPPORT(
+					get_usb4_cable_speed(port));
 }
 
 static void retimer_set_state_ufp(mux_state_t mux_state,
@@ -269,8 +295,6 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
-	union tbt_mode_resp_cable cable_resp;
-	union tbt_mode_resp_device dev_resp;
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
@@ -340,45 +364,26 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 			set_retimer_con |= BB_RETIMER_HPD_LVL;
 	}
 
-	if (mux_state & (USB_PD_MUX_TBT_COMPAT_ENABLED |
-			 USB_PD_MUX_USB4_ENABLED)) {
-		cable_resp = get_cable_tbt_vdo(port);
-		dev_resp = get_dev_tbt_vdo(port);
+	/*
+	 * Bit 16: TBT_CONNECTION
+	 * 0 - TBT not configured
+	 * 1 - TBT configured
+	 */
+	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED)
+		set_retimer_con |= BB_RETIMER_TBT_CONNECTION;
 
-		/*
-		 * Bit 16: TBT_CONNECTION
-		 * 0 - TBT not configured
-		 * 1 - TBT configured
-		 */
-		if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED)
-			set_retimer_con |= BB_RETIMER_TBT_CONNECTION;
+	/*
+	 * Bit 23: USB4_CONNECTION
+	 * 0 - USB4 not configured
+	 * 1 - USB4 Configured
+	 */
+	if (mux_state & USB_PD_MUX_USB4_ENABLED)
+		set_retimer_con |= BB_RETIMER_USB4_ENABLED;
 
-		/*
-		 * Bit 23: USB4 Connection
-		 * 0 - USB4 not configured
-		 * 1 - USB4 Configured
-		 */
-		if (mux_state & USB_PD_MUX_USB4_ENABLED)
-			set_retimer_con |= BB_RETIMER_USB4_ENABLED;
-
-		/*
-		 * Bit 27-25: TBT/USB4 Cable speed
-		 * 000b - No functionality
-		 * 001b - USB3.1 Gen1 Cable
-		 * 010b - 10Gb/s
-		 * 011b - 10Gb/s and 20Gb/s
-		 * 10..11b - Reserved
-		 */
-		set_retimer_con |= BB_RETIMER_TBT_CABLE_SPEED_SUPPORT(
-						cable_resp.tbt_cable_speed);
-	}
-
-	if (pd_get_data_role(port) == PD_ROLE_DFP) {
-		retimer_set_state_dfp(port, mux_state, &set_retimer_con,
-				      cable_resp, dev_resp);
-	} else {
+	if (pd_get_data_role(port) == PD_ROLE_DFP)
+		retimer_set_state_dfp(port, mux_state, &set_retimer_con);
+	else
 		retimer_set_state_ufp(mux_state, &set_retimer_con);
-	}
 
 	/* Writing the register4 */
 	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,

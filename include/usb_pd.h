@@ -1958,6 +1958,13 @@ enum idh_ptype get_usb_pd_cable_type(int port);
  */
 void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 					uint16_t head);
+/**
+ * Return USB4 cable speed
+ *
+ * @param port      USB-C port number
+ * @return          USB4 cable speed
+ */
+enum usb_rev30_ss get_usb4_cable_speed(int port);
 
 /**
  * Return enter USB message payload
