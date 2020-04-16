@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6890615_237c4d03",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-16T22:31:42Z",
+      "side": 1,
+      "message": "return cable-\u003erev \u0026 PD_REV30 \u0026\u0026\n\tget_usb_pd_cable_type(port) \u003d\u003d IDH_PTYPE_ACABLE \u0026\u0026\n\tcable-\u003eattr2.a2_rev30.active_elem \u003d\u003d xyz;",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 10
+      },
+      "revId": "b751911667421001d236857e09d7a551047ad218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a3f3a4f_f49ceb55",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-16T22:31:42Z",
+      "side": 1,
+      "message": "may be USB4 also",
+      "range": {
+        "startLine": 140,
+        "startChar": 43,
+        "endLine": 140,
+        "endChar": 64
+      },
+      "revId": "b751911667421001d236857e09d7a551047ad218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b11dd75_f6691744",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-16T22:31:42Z",
+      "side": 1,
+      "message": "this can remain same for UFP \u0026 DFP as we send this info based on attached cable.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 4
+      },
+      "revId": "b751911667421001d236857e09d7a551047ad218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
