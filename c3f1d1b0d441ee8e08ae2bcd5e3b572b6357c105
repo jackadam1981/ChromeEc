@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56b87f85_b3cfde2e",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-16T16:04:05Z",
+      "side": 1,
+      "message": "probably worth commenting here (and above potentially) that we skip the first work as that is the header and not part of the identit",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 0
+      },
+      "revId": "c3f1d1b0d441ee8e08ae2bcd5e3b572b6357c105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "196862a2_562dbd38",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-16T16:04:05Z",
+      "side": 1,
+      "message": "[very trivial comment] I have wondered if we should use \u0027\u0027 or \" :)\n\n\" saves a byte, but consistency is worth more than a byte.\n\n(This is not actionable)",
+      "range": {
+        "startLine": 26,
+        "startChar": 53,
+        "endLine": 26,
+        "endChar": 55
+      },
+      "revId": "c3f1d1b0d441ee8e08ae2bcd5e3b572b6357c105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0cdb381_e78e736d",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-16T16:04:05Z",
+      "side": 1,
+      "message": "these should also probably be static so we don\u0027t use unneeded stack space",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "c3f1d1b0d441ee8e08ae2bcd5e3b572b6357c105",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
