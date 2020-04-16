@@ -133,6 +133,20 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 	}
 
 	/*
+	 * Bit 2: RE_TIMER_DRIVER
+	 * 0 - Re-driver
+	 * 1 - Re-timer
+	 *
+	 * If Alternate mode is USB/DP/USB4, RE_TIMER_DRIVER is
+	 * set according to SOP' VDO2 response Bit 9.
+	 *
+	 */
+	if (is_active_cable_element_retimer(port) &&
+	   (mux_state & (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED |
+			 USB_PD_MUX_USB4_ENABLED)))
+		*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+
+	/*
 	 * Bit 22: ACTIVE/PASSIVE
 	 * 0 - Passive cable
 	 * 1 - Active cable
@@ -143,8 +157,6 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) &&
 	    (mux_state & BB_RETIMER_MUX_DATA_AM))
 		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
-
-	/* TODO: Bit 2: RE_TIMER_DRIVER for USB/DP/USB4 */
 
 	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
 		/*
@@ -241,8 +253,7 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 	 *
 	 * Bit 22: ACTIVE/PASSIVE
 	 * For USB4, set according to bits 20:19 of enter USB SOP.
-	 * For thubderbolt-compat mode, set according to bit 24 of enter mode
-	 * sop.
+	 * For thubderbolt-compat mode, set according to bit 24 of enter mode.
 	 *
 	 * Bits 29-28: TBT_GEN_SUPPORT
 	 * For Thunderbolt-compat mode, set according to bits 20:19 of enter
