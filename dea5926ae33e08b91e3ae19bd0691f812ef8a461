@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fae65fc8_abb52397",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:50:37Z",
+      "side": 1,
+      "message": "do it in a CL just after this one, before adding BMI260 code.",
+      "revId": "dea5926ae33e08b91e3ae19bd0691f812ef8a461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0044b53_1a772737",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:50:37Z",
+      "side": 1,
+      "message": "remove, adapt other board (like frequency, in a CL just after this one.)",
+      "revId": "dea5926ae33e08b91e3ae19bd0691f812ef8a461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18072504_edabdf01",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:50:37Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "dea5926ae33e08b91e3ae19bd0691f812ef8a461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7aa36f8_bf191ad8",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4550,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:50:37Z",
+      "side": 1,
+      "message": "this is transient code, remove.",
+      "revId": "dea5926ae33e08b91e3ae19bd0691f812ef8a461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
