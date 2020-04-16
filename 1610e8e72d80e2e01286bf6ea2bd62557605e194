@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44a805e1_1614193f",
+        "filename": "power/mt8192.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-04-16T10:21:21Z",
+      "side": 1,
+      "message": "From Alvis: Remove this part, and leave PMIC_FORCE_RESET defined in gpio.inc for debugging purpose.  HW is not going to implement this function.",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 0
+      },
+      "revId": "1610e8e72d80e2e01286bf6ea2bd62557605e194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
