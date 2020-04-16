@@ -22,6 +22,30 @@
       "revId": "b5d345cb093a820e4358b86efbe97d492269c85d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d482a2e_c00acf25",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-16T21:22:41Z",
+      "side": 1,
+      "message": "is_cable_speed_usb3_capable returns true if the cable speed is USB_R20_SS_U31_GEN1_GEN2, USB_R30_SS_U32_U40_GEN2 or USB_R30_SS_U40_GEN3",
+      "parentUuid": "2d052fe9_b4427f2e",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 32
+      },
+      "revId": "b5d345cb093a820e4358b86efbe97d492269c85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
