@@ -46,6 +46,30 @@
       "revId": "b5d345cb093a820e4358b86efbe97d492269c85d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44bdc08_09bfdfa6",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-16T21:24:54Z",
+      "side": 1,
+      "message": "Ack\nAh! sorry misread",
+      "parentUuid": "0d482a2e_c00acf25",
+      "range": {
+        "startLine": 194,
+        "startChar": 5,
+        "endLine": 194,
+        "endChar": 32
+      },
+      "revId": "b5d345cb093a820e4358b86efbe97d492269c85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
