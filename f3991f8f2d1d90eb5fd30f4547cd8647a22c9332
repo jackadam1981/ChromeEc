@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bdb51a6_8dc830f1",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-16T16:07:10Z",
+      "side": 1,
+      "message": "does this mean GPIOH7 is not connected to an actually usable pin on the package?\n\nIf that is the case maybe reword the comment to say that. Otherwise looks good to me",
+      "range": {
+        "startLine": 729,
+        "startChar": 15,
+        "endLine": 729,
+        "endChar": 51
+      },
+      "revId": "f3991f8f2d1d90eb5fd30f4547cd8647a22c9332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
