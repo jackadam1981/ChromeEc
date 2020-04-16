@@ -112,6 +112,7 @@ static void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 				  uint32_t *set_retimer_con)
 {
+	union tbt_mode_resp_cable cable_resp;
 
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/*
@@ -127,6 +128,28 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 			*set_retimer_con |= BB_RETIMER_USB_2_CONNECTION;
 	}
 
+	/*
+	 * Bit 2: RE_TIMER_DRIVER
+	 * 0 - Re-driver
+	 * 1 - Re-timer
+	 *
+	 * If Alternate mode is USB/DP, RE_TIMER_DRIVER is set according to
+	 * SOP' VDO2 response Bit 9.
+	 */
+	if (is_active_cable_element_retimer(port) &&
+	    mux_state & (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED))
+		*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+
+	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
+		cable_resp = get_cable_tbt_vdo(port);
+		/*
+		 * Bit 2: RE_TIMER_DRIVER
+		 * 0 - Re-driver
+		 * 1 - Re-timer
+		 */
+		if (cable_resp.retimer_type == USB_RETIMER)
+			*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+	}
 }
 
 static void retimer_set_state_ufp(mux_state_t mux_state,
@@ -149,6 +172,11 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 		 */
 		*set_retimer_con |= BB_RETIMER_USB_DATA_ROLE;
 	}
+
+	/*
+	 * TODO: Add following bit:
+	 * Bit 2: RE_TIMER_DRIVER
+	 */
 }
 
 /**
@@ -234,14 +262,6 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 			 USB_PD_MUX_USB4_ENABLED)) {
 		cable_resp = get_cable_tbt_vdo(port);
 		dev_resp = get_dev_tbt_vdo(port);
-
-		/*
-		 * Bit 2: RE_TIMER_DRIVER
-		 * 0 - Re-driver
-		 * 1 - Re-timer
-		 */
-		if (cable_resp.retimer_type == USB_RETIMER)
-			set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
 
 		/*
 		 * Bit 16: TBT_CONNECTION
