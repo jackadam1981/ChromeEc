@@ -155,8 +155,22 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 			  USB_PD_MUX_USB4_ENABLED)))
 		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
 
-	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
+	if (mux_state & (USB_PD_MUX_TBT_COMPAT_ENABLED |
+			 USB_PD_MUX_USB4_ENABLED)) {
 		cable_resp = get_cable_tbt_vdo(port);
+		/*
+		 * Bit 27-25: TBT/USB4 Cable speed
+		 * 000b - No functionality
+		 * 001b - USB3.1 Gen1 Cable
+		 * 010b - 10Gb/s
+		 * 011b - 10Gb/s and 20Gb/s
+		 * 10..11b - Reserved
+		 */
+		*set_retimer_con |= BB_RETIMER_TBT_CABLE_SPEED_SUPPORT(
+						cable_resp.tbt_cable_speed);
+	}
+
+	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
 		dev_resp = get_dev_tbt_vdo(port);
 
 		/*
@@ -212,6 +226,13 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 				       cable_resp.tbt_rounded);
 	}
 
+	/*
+	 * Bit 23: USB4_CONNECTION
+	 * 0 - USB4 not configured
+	 * 1 - USB4 Configured
+	 */
+	if (mux_state & USB_PD_MUX_USB4_ENABLED)
+		*set_retimer_con |= BB_RETIMER_USB4_ENABLED;
 }
 
 static void retimer_set_state_ufp(mux_state_t mux_state,
@@ -242,6 +263,8 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 	 * Bit 16: TBT_CONNECTION
 	 * Bit 22: ACTIVE/PASSIVE
 	 * Bit 20: TBT_ACTIVE_LINK_TRAINING
+	 * Bit 23: USB4_CONNECTION
+	 * Bits 27-25: TBT/USB4 Cable speed
 	 * Bits 29-28: TBT_GEN_SUPPORT
 	 */
 
@@ -260,7 +283,6 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
-	union tbt_mode_resp_cable cable_resp;
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
@@ -328,30 +350,6 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 		 */
 		if (mux_state & USB_PD_MUX_HPD_LVL)
 			set_retimer_con |= BB_RETIMER_HPD_LVL;
-	}
-
-	if (mux_state & (USB_PD_MUX_TBT_COMPAT_ENABLED |
-			 USB_PD_MUX_USB4_ENABLED)) {
-		cable_resp = get_cable_tbt_vdo(port);
-
-		/*
-		 * Bit 23: USB4 Connection
-		 * 0 - USB4 not configured
-		 * 1 - USB4 Configured
-		 */
-		if (mux_state & USB_PD_MUX_USB4_ENABLED)
-			set_retimer_con |= BB_RETIMER_USB4_ENABLED;
-
-		/*
-		 * Bit 27-25: TBT/USB4 Cable speed
-		 * 000b - No functionality
-		 * 001b - USB3.1 Gen1 Cable
-		 * 010b - 10Gb/s
-		 * 011b - 10Gb/s and 20Gb/s
-		 * 10..11b - Reserved
-		 */
-		set_retimer_con |= BB_RETIMER_TBT_CABLE_SPEED_SUPPORT(
-						cable_resp.tbt_cable_speed);
 	}
 
 	if (pd_get_data_role(port) == PD_ROLE_DFP)
