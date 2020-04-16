@@ -70,6 +70,24 @@
       "revId": "2c6b1679db4ed5bdebc41b4c5c3cabed81e61346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3d6cac9_3ffd48b9",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-16T01:56:44Z",
+      "side": 1,
+      "message": "Right, you would need to do EC reboot after plugging in the battery.\nIs that ok?",
+      "parentUuid": "d64e5d39_f439ed38",
+      "revId": "2c6b1679db4ed5bdebc41b4c5c3cabed81e61346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
