@@ -383,8 +383,9 @@ static bool is_intel_svid(int port, int prev_svid_cnt)
 		 * For the Discover SVIDs, responder may present the SVIDs
 		 * in any order hence check all SVIDs if Intel SVID present.
 		 */
-		for (i = prev_svid_cnt; i < discovery[port].svid_cnt; i++) {
-			if (discovery[port].svids[i].svid == USB_VID_INTEL)
+		for (i = prev_svid_cnt; i < pd_get_svid_count(port); i++) {
+			if (discovery[port].svids[TCPC_TX_SOP].svids[i].svid ==
+					USB_VID_INTEL)
 				return true;
 		}
 	}
@@ -900,7 +901,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 			break;
 		case CMD_DISCOVER_SVID:
 			{
-			int prev_svid_cnt = discovery[port].svid_cnt;
+			int prev_svid_cnt = pd_get_svid_count(port);
 			dfp_consume_svids(port, cnt, payload);
 			/*
 			 * Ref: USB Type-C Cable and Connector Specification,
