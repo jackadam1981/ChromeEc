@@ -379,16 +379,6 @@
 #define BMI160_FF_DATA_LEN_GYR          6
 #define BMI160_FF_DATA_LEN_MAG          8
 
-/*
- * TODO(chingkang): Replace following in some board config to
- *                  bmi version. Then, remove this definition(s).
- */
-/* Min and Max sampling frequency in mHz */
-#define BMI160_ACCEL_MIN_FREQ 12500
-#define BMI160_ACCEL_MAX_FREQ MOTION_MAX_SENSOR_FREQUENCY(1600000, 100000)
-#define BMI160_GYRO_MIN_FREQ  25000
-#define BMI160_GYRO_MAX_FREQ MOTION_MAX_SENSOR_FREQUENCY(3200000, 100000)
-
 extern const struct accelgyro_drv bmi160_drv;
 
 /*
