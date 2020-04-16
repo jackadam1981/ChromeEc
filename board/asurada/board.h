@@ -282,3 +282,4 @@ int board_get_version(void);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
+
