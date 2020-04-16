@@ -206,6 +206,17 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 			*set_retimer_con |= BB_RETIMER_TBT_CABLE_TYPE;
 
 		/*
+		 * Bit 19: VPO_DOCK_DETECTED_OR_DP_OVERDRIVE
+		 * 0 - No vPro Dock.No DP Overdrive
+		 *     detected
+		 * 1 - vPro Dock or DP Overdrive
+		 *     detected
+		 */
+		if ((dev_resp.vendor_spec_b1 | dev_resp.intel_spec_b0) ==
+		     VENDOR_SPECIFIC_SUPPORT)
+			*set_retimer_con |= BB_RETIMER_VPRO_DOCK_DP_OVERDRIVE;
+
+		/*
 		 * Bit 20: TBT_ACTIVE_LINK_TRAINING
 		 * 0 - Active with bi-directional LSRX communication
 		 * 1 - Active with uni-directional LSRX communication
@@ -262,6 +273,7 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 	 * Bit 18: CABLE_TYPE
 	 * Bit 16: TBT_CONNECTION
 	 * Bit 22: ACTIVE/PASSIVE
+	 * Bit 19: VPO_DOCK_DETECTED_OR_DP_OVERDRIVE
 	 * Bit 20: TBT_ACTIVE_LINK_TRAINING
 	 * Bit 23: USB4_CONNECTION
 	 * Bits 27-25: TBT/USB4 Cable speed
