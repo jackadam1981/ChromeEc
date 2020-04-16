@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7146b578_1d253308",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-16T17:31:11Z",
+      "side": 1,
+      "message": "this could also be \n\n#if !defined(CHIP_FAMILY_NPCX5)\n   Implement new features\n#end",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "2bc8638ac4f4d23c83c3d3bec01e90f20d51ac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05fa0337_cd27e1cd",
+        "filename": "chip/npcx/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-16T17:31:11Z",
+      "side": 1,
+      "message": "instead of adding these macros, we can just defined NPCX_FAMILY_VERSION directly in the above section since we already have an exhaustive switch.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "2bc8638ac4f4d23c83c3d3bec01e90f20d51ac3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
