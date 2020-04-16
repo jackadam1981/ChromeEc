@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "57a7669a_aea86b82",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-16T21:26:51Z",
+      "side": 1,
+      "message": "nit: Make it false due to bool",
+      "range": {
+        "startLine": 501,
+        "startChar": 9,
+        "endLine": 501,
+        "endChar": 11
+      },
+      "revId": "b5d345cb093a820e4358b86efbe97d492269c85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d052fe9_b4427f2e",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 5
