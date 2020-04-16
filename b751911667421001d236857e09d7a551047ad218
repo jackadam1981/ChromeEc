@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b541066b_26716f2e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-16T22:40:47Z",
+      "side": 0,
+      "message": "may be you can keep this for all the cases. that should be it\nsimilar to BB_RETIMER_MUX_DATA_PRESENT add\nBB_RETIMER_MUX_DATA_ACTIVE (USB|DP|TBT|USB4)",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 5
+      },
+      "revId": "b751911667421001d236857e09d7a551047ad218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
