@@ -289,3 +289,4 @@ extern enum gpio_signal GPIO_AC_PRESENT;
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
+
