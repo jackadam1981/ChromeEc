@@ -22,6 +22,29 @@
       "revId": "e048ec4d1fd5eb10a60c7448ac26529ab60b27ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ab53400_16a7b6ed",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-16T16:36:01Z",
+      "side": 1,
+      "message": "This name doesn\u0027t explain what it is measuring the temperature of.\nTEMP_SENSOR_5V_REGULATOR would be better.",
+      "range": {
+        "startLine": 473,
+        "startChar": 2,
+        "endLine": 473,
+        "endChar": 29
+      },
+      "revId": "e048ec4d1fd5eb10a60c7448ac26529ab60b27ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
