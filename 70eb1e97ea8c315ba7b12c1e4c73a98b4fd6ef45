@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09a71bb5_99866356",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "be sure tast hardware.SensorRing works on Volteer EVT2.",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1439ee7_0e716ba5",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "until tested, remove the gesture code/double tap/orientation from this CL and put in another ones.",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb94279_7b401e41",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "get_offset is the same when magnetometer code is not compiled in.",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "122a9761_91bc4bb6",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "nit: alignement.",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc740c4_87946b03",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "replace \"/ 32768\" with \u003e\u003e 15.",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b360fe8_845dd7fd",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "not need to set.",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d7e5f31_dc29e6b8",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "remove for now.",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f719108_1b9d3442",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "how long does it take to write the 8K? If the sensor is shutdown in S5, it may impact boot time. Shutdown in S3, it will impact resume time.",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae3600b1_782f481f",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "Return an error instead.",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0ec3f16_8d3cb346",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "remove debug printfs",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "893d7d7b_8b691b9b",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "remove debug printfs",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c87ea9d4_6ec5cd24",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "remove debug printfs",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "320cbe4f_8b1ae7b3",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "remove for now.",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96347951_eb4c6603",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2048244_402bedaf",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "not your fault, but this function should not be exported.\nInstead, read_gyro_sensor_temp() should call motion_sensors[idx].drv.read_temp(s, temp_ptr);",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80524c5a_17deb4ad",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "if(V(s)) is enough",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e57b94a_2ddb8a21",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "Is it because Timestamp is enabled in the FIFO setting?",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b385fa2_81993cbd",
+        "filename": "driver/build.mk",
+        "patchSetId": 21
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-16T04:51:08Z",
+      "side": 1,
+      "message": "put just below CONFIG_ACCELGYRO_BMI160",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
