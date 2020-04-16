@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ad576460_1fda20a5",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-16T17:45:24Z",
+      "side": 1,
+      "message": "this should probalby be based on VARIANT_OCTOPUS_EC_ITE8320 not AMPTON specfically",
+      "range": {
+        "startLine": 169,
+        "startChar": 7,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "462b4d86_70796a7d",
         "filename": "baseboard/octopus/baseboard.c",
         "patchSetId": 2
@@ -65,6 +88,29 @@
         "startChar": 0,
         "endLine": 175,
         "endChar": 4
+      },
+      "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d6970f4_ae6d5cbe",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-16T17:45:24Z",
+      "side": 1,
+      "message": "can you describe why this is occuring and what this is fixing? \n\nWhy does it matter if the SoC is in S4 or S5? and why do we need to reset it to wake it up only to shut it down? We need more comment explain the question of why we are writing this code",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
       },
       "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
