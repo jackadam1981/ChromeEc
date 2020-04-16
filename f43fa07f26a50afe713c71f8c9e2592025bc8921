@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fd0d9806_db9ac869",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2020-04-16T16:01:30Z",
+      "side": 1,
+      "message": "Using apshutdown will cause power drop, under this situation it will let EC hang.We modify this sequence follow normal shutdown, it will no power drop and EC will not hang.This solution is for Apel and Ampton using ITE code.If other  ITE based project meet this issue, it can also use this solution.",
+      "parentUuid": "462b4d86_70796a7d",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 41
+      },
+      "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43b5ed89_40db8bf6",
         "filename": "baseboard/octopus/baseboard.c",
         "patchSetId": 2
