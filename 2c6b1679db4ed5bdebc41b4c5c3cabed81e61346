@@ -52,6 +52,24 @@
       "revId": "2c6b1679db4ed5bdebc41b4c5c3cabed81e61346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64e5d39_f439ed38",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-04-16T01:35:51Z",
+      "side": 1,
+      "message": "The console would always print messages below if power on with AC only then connect the battery.\n2020-04-16 09:31:45 ri2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:45 i2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:45 ei2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:45 i2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:45 i2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:45 i2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:45 bi2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:46 i2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:46 oi2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:46 i2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:46 i2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:46 oi2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:46 ti2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:46 i2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:46 i2c 7 recovery! error code is 7, current state is 0\n2020-04-16 09:31:46 i2c 7 recovery! error code is 7, current state is 0",
+      "parentUuid": "9e0b417f_9882375f",
+      "revId": "2c6b1679db4ed5bdebc41b4c5c3cabed81e61346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
