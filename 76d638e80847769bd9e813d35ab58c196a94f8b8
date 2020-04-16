@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f98b4a4_3bee2556",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-16T21:28:39Z",
+      "side": 1,
+      "message": "You can create UNIMPLEMTED() entries for USB_C0_BC12_INT_ODL and USB_C1_BC12_INT_ODL instead of mapping to the BC12 interrupts.  The GPIO_USB_C0_BC12_INT_ODL and GPIO_USB_C1_BC12_INT_ODL interrupts won\u0027t be used by the baseboard once you implement the Halvor USB interrupts as part of b:153705222.\n\nNote that before you work on b:153705222, you need to move USB structures from the volteer baseboard into the board variants.\n\nThis includes:\npi3usb9201_bc12_chips[]\ntcpc_config[]\nppc_chips[]\nusb_muxes[]\nbb_controls[]\nbaseboard_tcpc_init()",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "76d638e80847769bd9e813d35ab58c196a94f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
