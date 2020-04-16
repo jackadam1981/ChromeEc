@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2983012e_5645d4d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-04-16T00:08:30Z",
+      "side": 1,
+      "message": "Can this be NPCX_FAMILY_VERSION or NPCX_FAMILY_CODE to make it clear that it has a numeric value?",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "21cfb7585b271f98d201aa79d5ed7042f624dd5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
