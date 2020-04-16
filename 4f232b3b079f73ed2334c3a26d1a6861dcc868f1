@@ -22,6 +22,30 @@
       "revId": "4f232b3b079f73ed2334c3a26d1a6861dcc868f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de96bcb_67ef1323",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-16T01:15:20Z",
+      "side": 1,
+      "message": "This is a new feature for Compal design. (b/151045907)\nI will remove this define in this change.\nAnd add this to separate change for extension box.\nThank you.",
+      "parentUuid": "d6062a8d_8c4f6ea3",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 24
+      },
+      "revId": "4f232b3b079f73ed2334c3a26d1a6861dcc868f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
