@@ -135,6 +135,20 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 	}
 
 	/*
+	 * Bit 2: RE_TIMER_DRIVER
+	 * 0 - Re-driver
+	 * 1 - Re-timer
+	 *
+	 * If Alternate mode is USB/DP/USB4, RE_TIMER_DRIVER is
+	 * set according to SOP' VDO2 response Bit 9.
+	 *
+	 */
+	if ((mux_state & (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED |
+			 USB_PD_MUX_USB4_ENABLED)) &&
+	    is_active_cable_element_retimer(port))
+		*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+
+	/*
 	 * Bit 22: ACTIVE/PASSIVE
 	 * 0 - Passive cable
 	 * 1 - Active cable
@@ -145,8 +159,6 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 	if ((mux_state & BB_RETIMER_MUX_DATA_ALT_MODE) &&
 	    (cable_type == IDH_PTYPE_ACABLE))
 		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
-
-	/* TODO: Bit 2: RE_TIMER_DRIVER for USB/DP/USB4 */
 
 	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
 		dev_resp = get_dev_tbt_vdo(port);
