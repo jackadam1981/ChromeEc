@@ -7,6 +7,11 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/* EC Defines */
+#define CONFIG_VBOOT_HASH
+
+/* Chipset config */
+
 /* Optional features */
 #define CONFIG_BOARD_VERSION_CUSTOM
 #define CONFIG_EXTPOWER_GPIO
