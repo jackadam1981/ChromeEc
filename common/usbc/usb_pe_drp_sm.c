@@ -4791,7 +4791,8 @@ static void pe_vcs_send_swap_run(int port)
 			 */
 			if (get_time().val > pe[port].sender_response_timer ||
 						type == PD_CTRL_REJECT ||
-							type == PD_CTRL_WAIT) {
+						type == PD_CTRL_WAIT ||
+						type == PD_CTRL_NOT_SUPPORTED) {
 				if (pe[port].power_role == PD_ROLE_SOURCE)
 					set_state_pe(port, PE_SRC_READY);
 				else
