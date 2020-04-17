@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "a3059d3e_ffed0288",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-17T03:35:36Z",
+      "side": 1,
+      "message": "The new SMP Spec correct this, .precharge_current is 332.",
+      "parentUuid": "98324b51_d2c81770",
+      "range": {
+        "startLine": 56,
+        "startChar": 24,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b126a1e0_94ccbd48",
         "filename": "board/malefor/battery.c",
         "patchSetId": 1
