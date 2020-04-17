@@ -2,9 +2,8 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-/* Flash memory module for STM32G4 family */
+/* Flash memory module for stm32g4 */
 
-#include "common.h"
 #include "clock.h"
 #include "flash.h"
 #include "hooks.h"
@@ -24,6 +23,34 @@
 
 /* Flash page programming timeout.  This is 2x the datasheet max. */
 #define FLASH_TIMEOUT_US 48000
+
+#define G4_CONFIG_FLASH_WRITE_SIZE (CONFIG_FLASH_WRITE_SIZE * 2)
+/*
+ * Cros-Ec common flash APIs use the term 'bank' equivalent to how 'page' is
+ * used in the RM0440 TRM. Redifining macros here in terms of pages in order to
+ * match STM32 documentation for write protect computations in this file.
+ */
+#define STM32G4_PAGE_SIZE CONFIG_FLASH_BANK_SIZE
+#define STM32G4_PAGE_MAX_COUNT (CONFIG_FLASH_SIZE / STM32G4_PAGE_SIZE)
+#define STM32G4_RO_FIRST_PAGE_IDX WP_BANK_OFFSET
+#define STM32G4_RO_LAST_PAGE_IDX ((CONFIG_WP_STORAGE_SIZE / STM32G4_PAGE_SIZE) \
+				 + STM32G4_RO_FIRST_PAGE_IDX)
+#define STM32G4_RW_FIRST_PAGE_IDX (STM32G4_RO_LAST_PAGE_IDX + 1)
+#define STM32G4_RW_LAST_PAGE_IDX (STM32G4_PAGE_MAX_COUNT)
+
+
+#define STM32G4_PAGE_ROLLBACK_COUNT ROLLBACK_BANK_COUNT
+#define STM32G4_PAGE_ROLLBACK_FIRST_IDX ROLLBACK_BANK_OFFSET
+#define STM32G4_PAGE_ROLLBACK_LAST_IDX (STM32G4_PAGE_ROLLBACK_FIRST_IDX +\
+					STM32G4_PAGE_ROLLBACK_COUNT)
+
+#define STM32G4_WRP_MASK              (STM32G4_PAGE_MAX_COUNT - 1)
+#define STM32G4_WRP_START(val)        ((val) & STM32G4_WRP_MASK)
+#define STM32G4_WRP_END(val)          (((val) >> 16) & STM32G4_WRP_MASK)
+#define STM32G4_WRP_RANGE(start, end) (((start) & STM32G4_WRP_MASK) | \
+				       (((end) & STM32G4_WRP_MASK) << 16))
+#define STM32G4_WRP_RANGE_DISABLED    STM32G4_WRP_RANGE(STM32G4_WRP_MASK, 0x00)
+#define STM32G4_WRP1X_MASK STM32G4_WRP_RANGE(STM32G4_WRP_MASK, STM32G4_WRP_MASK)
 
 static inline int calculate_flash_timeout(void)
 {
@@ -89,6 +116,9 @@ static void lock(void)
  * | 0x1FFF7820   |     |nWRP1B|      |nWRP1B|   |     | WRP1B|      | WRP1B|
  * |              |     |_END  |      |_STRT |   |     | _END |      | _STRT|
  * +--------------+------------+-------------+   +------------+-------------+
+ * | 0x1FFF7828   |     |nBOOT |      |nSEC_ |   |     | BOOT |      | SEC_ |
+ * |              |     |LOCK  |      |SIZE1 |   |     | _LOCK|      | SIZE1|
+ * +--------------+------------+-------------+   +------------+-------------+
  *
  * Note that the variable with n prefix means the complement.
  */
@@ -124,15 +154,15 @@ static int commit_optb(void)
 static void unprotect_all_blocks(void)
 {
 	unlock_optb();
-	STM32_FLASH_WRP1AR = FLASH_WRP_RANGE_DISABLED;
-	STM32_FLASH_WRP1BR = FLASH_WRP_RANGE_DISABLED;
+	STM32_FLASH_WRP1AR = STM32G4_WRP_RANGE_DISABLED;
+	STM32_FLASH_WRP1BR = STM32G4_WRP_RANGE_DISABLED;
 	commit_optb();
 }
 
 int flash_physical_protect_at_boot(uint32_t new_flags)
 {
-	uint32_t ro_range = FLASH_WRP_RANGE_DISABLED;
-	uint32_t rb_rw_range = FLASH_WRP_RANGE_DISABLED;
+	uint32_t ro_range = STM32G4_WRP_RANGE_DISABLED;
+	uint32_t rb_rw_range = STM32G4_WRP_RANGE_DISABLED;
 	/*
 	 * WRP1AR is storing the write-protection range for the RO region.
 	 * WRP1BR is storing the write-protection range for the
@@ -140,30 +170,36 @@ int flash_physical_protect_at_boot(uint32_t new_flags)
 	 */
 	if (new_flags & (EC_FLASH_PROTECT_ALL_AT_BOOT |
 			 EC_FLASH_PROTECT_RO_AT_BOOT))
-		ro_range = FLASH_WRP_RANGE(WP_BANK_OFFSET,
-					   WP_BANK_OFFSET + WP_BANK_COUNT);
+		ro_range = STM32G4_WRP_RANGE(STM32G4_RO_FIRST_PAGE_IDX,
+					     STM32G4_RO_LAST_PAGE_IDX);
 
 	if (new_flags & EC_FLASH_PROTECT_ALL_AT_BOOT) {
-		rb_rw_range = FLASH_WRP_RANGE(WP_BANK_OFFSET + WP_BANK_COUNT,
-					      PHYSICAL_BANKS);
+		rb_rw_range = STM32G4_WRP_RANGE(STM32G4_RW_FIRST_PAGE_IDX,
+						STM32G4_RW_LAST_PAGE_IDX);
 	} else {
-		uint8_t strt = WP_BANK_OFFSET + WP_BANK_COUNT;
-		uint8_t end = FLASH_WRP_END(FLASH_WRP_RANGE_DISABLED);
+		/*
+		 * Start index will be 1st index following RO region index. The
+		 * end index is initialized as 'no protect' value. Only if end
+		 * gets changed based on either rollback or RW protection will
+		 * the 2nd memory protection area get written in option bytes.
+		 */
+		uint8_t start = STM32G4_RW_FIRST_PAGE_IDX;
+		uint8_t end = STM32G4_WRP_END(STM32G4_WRP_RANGE_DISABLED);
 #ifdef CONFIG_ROLLBACK
 		if (new_flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT) {
-			strt = ROLLBACK_BANK_OFFSET;
-			end = ROLLBACK_BANK_OFFSET + ROLLBACK_BANK_COUNT;
+			start = STM32G4_PAGE_ROLLBACK_FIRST_IDX;
+			end = STM32G4_PAGE_ROLLBACK_LAST_IDX;
 		} else {
-			strt = ROLLBACK_BANK_OFFSET + ROLLBACK_BANK_COUNT;
+			start = STM32G4_PAGE_ROLLBACK_LAST_IDX;
 		}
 #endif /* !CONFIG_ROLLBACK */
 #ifdef CONFIG_FLASH_PROTECT_RW
 		if (new_flags & EC_FLASH_PROTECT_RW_AT_BOOT)
-			end = PHYSICAL_BANKS;
+			end = STM32G4_RW_LAST_PAGE_IDX;
 #endif /* CONFIG_FLASH_PROTECT_RW */
 
-		if (end != FLASH_WRP_END(FLASH_WRP_RANGE_DISABLED))
-			rb_rw_range = FLASH_WRP_RANGE(strt, end);
+		if (end != STM32G4_WRP_END(STM32G4_WRP_RANGE_DISABLED))
+			rb_rw_range = STM32G4_WRP_RANGE(start, end);
 	}
 
 	unlock_optb();
@@ -191,16 +227,14 @@ static int registers_need_reset(void)
 {
 	uint32_t flags = flash_get_protect();
 	int ro_at_boot = (flags & EC_FLASH_PROTECT_RO_AT_BOOT) ? 1 : 0;
-	/*
-	 * The RO region is write-protected by the WRP1AR range,
-	 * it starts at page WP_BANK_OFFSET for WP_BANK_COUNT pages.
-	 */
+	/* The RO region is write-protected by the WRP1AR range. */
 	uint32_t wrp1ar = STM32_OPTB_WRP1AR;
 	uint32_t ro_range = ro_at_boot ?
-		FLASH_WRP_RANGE(WP_BANK_OFFSET, WP_BANK_OFFSET + WP_BANK_COUNT)
-		: FLASH_WRP_RANGE_DISABLED;
+		STM32G4_WRP_RANGE(STM32G4_RO_FIRST_PAGE_IDX,
+				  STM32G4_RO_LAST_PAGE_IDX)
+		: STM32G4_WRP_RANGE_DISABLED;
 
-	return ro_range != (wrp1ar & FLASH_WRP_MASK);
+	return ro_range != (wrp1ar & STM32G4_WRP1X_MASK);
 }
 
 /*****************************************************************************/
@@ -345,10 +379,10 @@ int flash_physical_get_protect(int block)
 	uint32_t wrp1ar = STM32_FLASH_WRP1AR;
 	uint32_t wrp1br = STM32_FLASH_WRP1BR;
 
-	return ((block >= FLASH_WRP_START(wrp1ar)) &&
-		(block < FLASH_WRP_END(wrp1ar))) ||
-		((block >= FLASH_WRP_START(wrp1br)) &&
-		(block < FLASH_WRP_END(wrp1br)));
+	return ((block >= STM32G4_WRP_START(wrp1ar)) &&
+		(block <= STM32G4_WRP_END(wrp1ar))) ||
+		((block >= STM32G4_WRP_START(wrp1br)) &&
+		(block <= STM32G4_WRP_END(wrp1br)));
 }
 
 /*
@@ -362,17 +396,17 @@ uint32_t flash_physical_get_protect_flags(void)
 	uint32_t wrp1br = STM32_OPTB_WRP1BR;
 
 	/* RO region protection range is in WRP1AR range */
-	if (wrp1ar == FLASH_WRP_RANGE(WP_BANK_OFFSET,
-				      WP_BANK_OFFSET + WP_BANK_COUNT))
+	if (wrp1ar == STM32G4_WRP_RANGE(STM32G4_RO_FIRST_PAGE_IDX,
+					STM32G4_RO_LAST_PAGE_IDX))
 		flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
 	/* Rollback and RW regions protection range is in WRP1BR range */
-	if (wrp1br != FLASH_WRP_RANGE_DISABLED) {
-		int end = FLASH_WRP_END(wrp1br);
-		int strt = FLASH_WRP_START(wrp1br);
+	if (wrp1br != STM32G4_WRP_RANGE_DISABLED) {
+		int end = STM32G4_WRP_END(wrp1br);
+		int strt = STM32G4_WRP_START(wrp1br);
 
 #ifdef CONFIG_ROLLBACK
-		if (strt <= ROLLBACK_BANK_OFFSET &&
-		    end >= ROLLBACK_BANK_OFFSET + ROLLBACK_BANK_COUNT)
+		if (strt <= STM32G4_PAGE_ROLLBACK_FIRST_IDX &&
+		    end >= STM32G4_PAGE_ROLLBACK_LAST_IDX)
 			flags |= EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
 #endif /* CONFIG_ROLLBACK */
 #ifdef CONFIG_FLASH_PROTECT_RW
@@ -462,6 +496,7 @@ int flash_pre_init(void)
 			 * update to the write protect register and reboot so
 			 * it takes effect.
 			 */
+
 			flash_physical_protect_at_boot(
 				EC_FLASH_PROTECT_RO_AT_BOOT);
 			need_reset = 1;
@@ -505,14 +540,12 @@ int flash_pre_init(void)
 		need_reset = 1;
 	}
 
-#ifdef CONFIG_FLASH_PROTECT_RW
 	if ((flash_physical_get_valid_flags() & EC_FLASH_PROTECT_RW_AT_BOOT) &&
 	    (!!(prot_flags & EC_FLASH_PROTECT_RW_AT_BOOT) !=
 	     !!(prot_flags & EC_FLASH_PROTECT_RW_NOW))) {
 		/* RW_AT_BOOT and RW_NOW do not match. */
 		need_reset = 1;
 	}
-#endif
 
 #ifdef CONFIG_ROLLBACK
 	if ((flash_physical_get_valid_flags() &
