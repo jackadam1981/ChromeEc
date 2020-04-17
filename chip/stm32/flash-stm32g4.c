@@ -2,9 +2,12 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-/* Flash memory module for STM32G4 family */
 
-#include "common.h"
+/* Flash memory module for stm32g4 */
+
+#include <stdbool.h>
+#include "battery.h"
+#include "console.h"
 #include "clock.h"
 #include "flash.h"
 #include "hooks.h"
@@ -15,6 +18,9 @@
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
+
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /*
  * Approximate number of CPU cycles per iteration of the loop when polling
@@ -88,6 +94,9 @@ static void lock(void)
  * +--------------+------------+-------------+   +------------+-------------+
  * | 0x1FFF7820   |     |nWRP1B|      |nWRP1B|   |     | WRP1B|      | WRP1B|
  * |              |     |_END  |      |_STRT |   |     | _END |      | _STRT|
+ * +--------------+------------+-------------+   +------------+-------------+
+ * | 0x1FFF7828   |     |nBOOT |      |nSEC_ |   |     | BOOT |      | SEC_ |
+ * |              |     |LOCK  |      |SIZE1 |   |     | _LOCK|      | SIZE1|
  * +--------------+------------+-------------+   +------------+-------------+
  *
  * Note that the variable with n prefix means the complement.
@@ -462,8 +471,9 @@ int flash_pre_init(void)
 			 * update to the write protect register and reboot so
 			 * it takes effect.
 			 */
-			flash_physical_protect_at_boot(
-				EC_FLASH_PROTECT_RO_AT_BOOT);
+
+			/* flash_physical_protect_at_boot( */
+			/* 	EC_FLASH_PROTECT_RO_AT_BOOT); */
 			need_reset = 1;
 		}
 
@@ -476,8 +486,8 @@ int flash_pre_init(void)
 			 * to the check above.  One of them should be able to
 			 * go away.
 			 */
-			flash_protect_at_boot(
-				prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT);
+			/* flash_protect_at_boot( */
+			/* 	prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT); */
 			need_reset = 1;
 		}
 	} else {
@@ -529,3 +539,45 @@ int flash_pre_init(void)
 
 	return EC_SUCCESS;
 }
+
+static void stm32g4_read_optb(void)
+{
+	int i;
+	uint32_t optb[STM32_OPTB_ENTRY_NUM];
+	uint32_t optb_comp[STM32_OPTB_ENTRY_NUM];
+
+	for(i = 0; i < STM32_OPTB_ENTRY_NUM; i++) {
+		optb[i] = STM32_OPTB_READ(i);
+		optb_comp[i] = STM32_OPTB_COMP_READ(i);
+	}
+	ccprintf("optb user: ");
+	ccprintf("\t nBoot1 = %d  nBoot0 = %d nSwBoot0 = %d\n",
+		 !!(optb[0] & STM32_OPTB_USER_nBOOT1),
+		 !!(optb[0] & STM32_OPTB_USER_nBOOT0),
+		 !!(optb[0] & STM32_OPTB_USER_nSWBOOT0));
+	ccprintf("0x%08x\toptb\t\topt_comp\n", STM32_OPTB_BASE);
+	for(i = 0; i < 6; i++) {
+		ccprintf("\toptb[%d]: 0x%08x\t0x%08x\t0x%08x\n",
+			 i,
+			 optb[i], optb_comp[i], optb_comp[i] ^ optb[i]);
+	}
+}
+
+static int command_optb(int argc, char **argv)
+{
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "rd")) {
+		stm32g4_read_optb();
+	} else if (!strcasecmp(argv[1], "rw")) {
+
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(optb, command_optb,
+			"[info|dump|vbus|ilim",
+			"Turn on/off|set vbus.");
