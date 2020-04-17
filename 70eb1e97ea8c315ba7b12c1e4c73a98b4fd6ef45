@@ -138,6 +138,24 @@
     },
     {
       "key": {
+        "uuid": "36d5a9eb_253c9f20",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-17T14:25:30Z",
+      "side": 1,
+      "message": "It will take about 250ms to 260ms to finish init_config().",
+      "parentUuid": "6f719108_1b9d3442",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae3600b1_782f481f",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 21
@@ -288,6 +306,24 @@
       "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5cf4c4d_02770258",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-17T14:25:30Z",
+      "side": 1,
+      "message": "No, I have disabled the timestamp in config_interrupt(). The config frame in BMI260 has 4 bytes payload, include 1 byte indicating the changes of config and 3 byte sensortime. I did not find any register that can disable this.",
+      "parentUuid": "8e57b94a_2ddb8a21",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
