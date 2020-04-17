@@ -3202,7 +3202,8 @@ static void pe_drs_send_swap_run(int port)
 				set_state_pe(port, PE_DRS_CHANGE);
 				return;
 			} else if ((type == PD_CTRL_REJECT) ||
-						(type == PD_CTRL_WAIT)) {
+					(type == PD_CTRL_WAIT) ||
+					(type == PD_CTRL_NOT_SUPPORTED)) {
 				if (type == PD_CTRL_WAIT)
 					PE_SET_FLAG(port,
 						PE_FLAGS_WAITING_DR_SWAP);
