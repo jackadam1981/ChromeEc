@@ -89,13 +89,14 @@
 
 /*
  * Clear all flags except TC_FLAGS_AUTO_TOGGLE_SUPPORTED,
- * TC_FLAGS_LPM_REQUESTED, and TC_FLAGS_LPM_ENGAGED if
- * they are set.
+ * TC_FLAGS_LPM_REQUESTED, TC_FLAGS_LPM_ENGAGED and
+ * TC_FLAGS_SUSPEND if they are set.
  */
 #define CLR_ALL_BUT_LPM_FLAGS(port) (tc[port].flags &= \
 	(TC_FLAGS_AUTO_TOGGLE_SUPPORTED | \
 	TC_FLAGS_LPM_REQUESTED | \
-	TC_FLAGS_LPM_ENGAGED))
+	TC_FLAGS_LPM_ENGAGED | \
+	TC_FLAGS_SUSPEND))
 
 /* 10 ms is enough time for any TCPC transaction to complete. */
 #define PD_LPM_DEBOUNCE_US (10 * MSEC)
@@ -711,7 +712,15 @@ void pd_set_suspend(int port, int suspend)
 		TC_CLR_FLAG(port, TC_FLAGS_SUSPEND);
 
 	/* Wake up pd_task to respond to the state change. */
-	task_wake(PD_PORT_TO_TASK_ID(port));
+	if (suspend) {
+		task_wake(PD_PORT_TO_TASK_ID(port));
+		while (pd_is_port_enabled(port)) {
+			msleep(1);
+			task_wake(PD_PORT_TO_TASK_ID(port));
+		}
+	} else {
+		task_wake(PD_PORT_TO_TASK_ID(port));
+	}
 }
 
 int pd_is_port_enabled(int port)
@@ -3238,8 +3247,13 @@ void tc_run(const int port)
 	 * be suspended then we need to go directly to
 	 * DISABLED
 	 */
-	if (TC_CHK_FLAG(port, TC_FLAGS_SUSPEND))
+	if (TC_CHK_FLAG(port, TC_FLAGS_SUSPEND)) {
+		/* Invalidate a contract, if there is one */
+		pd_update_saved_port_flags(port,
+			PD_BBRMFLG_EXPLICIT_CONTRACT, 0);
+
 		set_state_tc(port, TC_DISABLED);
+	}
 
 	run_state(port, &tc[port].ctx);
 }
