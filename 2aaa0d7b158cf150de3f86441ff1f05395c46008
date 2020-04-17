@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fedc5908_b78cbe22",
+        "filename": "board/hatch_fp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-17T20:23:20Z",
+      "side": 1,
+      "message": "The one thing to note here is that when this switch is made we\u0027ll break the servo console to the FPMCU on dratini (see schematics in http://go/cros-fingerprint-docs#dragonair-dratini).\n\nI think we have enough time to move that to different pins since we already may need to make one more change.\n\nThis is a small change so we can revert if we have to.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 74
+      },
+      "revId": "2aaa0d7b158cf150de3f86441ff1f05395c46008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
