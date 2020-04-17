@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ab456c9_df2d0bd5",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-17T22:46:24Z",
+      "side": 1,
+      "message": "moved to include/i2c.h.",
+      "parentUuid": "6b01b43a_4eda0cc7",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 43
+      },
+      "revId": "828d3d407f1722fbad8f5a3c1ddd89ee930f54f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0cf0f09_c103dfd5",
         "filename": "common/i2cs_tpm.c",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "828d3d407f1722fbad8f5a3c1ddd89ee930f54f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd4180b_13e7c06b",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-17T22:46:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43cd0c16_7d72449a",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 52
+      },
+      "revId": "828d3d407f1722fbad8f5a3c1ddd89ee930f54f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
