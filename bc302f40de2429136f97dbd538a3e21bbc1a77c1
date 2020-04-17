@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "c16f0107_cf9e8e81",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-17T15:57:46Z",
+      "side": 1,
+      "message": "If the SMP specification is correct, then this represents the state of register 0x34\n\n    Battery is operating: 0x34 \u003d 0x0100\n    Battery is in ship mode: 0x34 \u003d 0x0000\nSo you need to set the disconnect_val to 0x0000 (bit is clear).  This is the EC code that uses disconnect_val\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/battery_fuel_gauge.c#191",
+      "parentUuid": "5bf3d0f7_0cd170d9",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7f64b88_e7ab6881",
         "filename": "board/malefor/battery.c",
         "patchSetId": 1
@@ -164,6 +188,30 @@
       "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5954fd1_6f0c8ba7",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-17T15:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8473e384_ae737291",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "ded1a76d_ff0db6da",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-17T15:57:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3059d3e_ffed0288",
+      "range": {
+        "startLine": 56,
+        "startChar": 24,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b126a1e0_94ccbd48",
         "filename": "board/malefor/battery.c",
         "patchSetId": 1
@@ -249,6 +321,30 @@
       "side": 1,
       "message": "No, just now contact with LGC vendor, .voltage_min is 6V in 25° (3V/cell --\u003e RSOC 0%)",
       "parentUuid": "b126a1e0_94ccbd48",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e209c0_e898b260",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-17T15:57:46Z",
+      "side": 1,
+      "message": "Please add a comment indicating the the voltage_min and precharge_current values are specified by LGC directly and not shown in the specification.",
+      "parentUuid": "f997af8e_a3a8c561",
       "range": {
         "startLine": 82,
         "startChar": 19,
