@@ -327,6 +327,8 @@ void dfp_consume_svids(int port, int cnt, uint32_t *payload)
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 	struct svid_data_s *svid_disc = &disc->svids[TCPC_TX_SOP];
 
+	/* TODO: Assumes that disc->svid_cnt starts out even; change below
+	 * comparison to >= */
 	for (i = svid_disc->cnt; i < svid_disc->cnt + 12; i += 2) {
 		if (i == SVID_DISCOVERY_MAX) {
 			CPRINTF("ERR:SVIDCNT\n");
@@ -356,6 +358,8 @@ void dfp_consume_svids(int port, int cnt, uint32_t *payload)
 	/* TODO(tbroch) need to re-issue discover svids if > 12 */
 	if (i && ((i % 12) == 0))
 		CPRINTF("ERR:SVID+12\n");
+
+	pd_set_svid_discovery(port, TCPC_TX_SOP, PD_DISC_COMPLETE);
 }
 
 void dfp_consume_modes(int port, int cnt, uint32_t *payload)
@@ -405,6 +409,15 @@ void pd_set_identity_discovery(int port, enum tcpm_transmit_type type,
 	pd->identity[type].discovery = disc;
 }
 
+void pd_set_svid_discovery(int port, enum tcpm_transmit_type type,
+			       enum pd_discovery_state disc)
+{
+	struct pd_discovery *pd = pd_get_am_discovery(port);
+
+	pd->svids[type].discovery = disc;
+}
+
+
 enum pd_discovery_state pd_get_identity_discovery(int port,
 						  enum tcpm_transmit_type type)
 {
@@ -444,6 +457,13 @@ uint8_t pd_get_product_type(int port)
 								TCPC_TX_SOP);
 
 	return resp->idh.product_type;
+}
+
+enum pd_discovery_state pd_get_svid_discovery(int port,
+		enum tcpm_transmit_type type) {
+	struct pd_discovery *disc = pd_get_am_discovery(port);
+
+	return disc->svids[type].discovery;
 }
 
 int pd_get_svid_count(int port)
