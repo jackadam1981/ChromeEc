@@ -8,7 +8,7 @@
 #include "battery_fuel_gauge.h"
 #include "common.h"
 #include "util.h"
-
+#include "battery_smart.h"
 /*
  * Battery info for all Mushu battery types. Note that the fields
  * start_charging_min/max and charging_min/max are not used for the charger.
@@ -33,29 +33,29 @@
  */
 const struct board_batt_params board_battery_info[] = {
 	/* SMP LIS Dell FMXMT Battery Information */
-	[BATTERY_SMP_LIS] = {
+	[BATTERY_POWER_TECH] = {
 		.fuel_gauge = {
-			.manuf_name = "SMP-LIS3.78",
+			.manuf_name = "POW-TECH",
 			.ship_mode = {
 				.reg_addr = 0x0,
 				.reg_data = { 0x10, 0x10 },
 			},
 			.fet = {
-				.reg_addr = 0x0,
-				.reg_mask = 0x2000,
-				.disconnect_val = 0x2000,
+				.reg_addr = 0x16,
+				.reg_mask = STATUS_DISCHARGING,
+				.disconnect_val = 0xc0,
 			}
 		},
 		.batt_info = {
-			.voltage_max		= 8800,
-			.voltage_normal		= 7660, /* mV */
-			.voltage_min		= 6000, /* mV */
+			.voltage_max		= 13200,
+			.voltage_normal		= 11550, /* mV */
+			.voltage_min		= 9000, /* mV */
 			.precharge_current	= 256,	/* mA */
 			.start_charging_min_c	= 0,
-			.start_charging_max_c	= 60,
+			.start_charging_max_c	= 45,
 			.charging_min_c		= 0,
-			.charging_max_c		= 60,
-			.discharging_min_c	= 0,
+			.charging_max_c		= 45,
+			.discharging_min_c	= -20,
 			.discharging_max_c	= 60,
 		},
 	},
@@ -75,15 +75,15 @@ const struct board_batt_params board_battery_info[] = {
 			}
 		},
 		.batt_info = {
-			.voltage_max		= 8800,
-			.voltage_normal		= 7660, /* mV */
-			.voltage_min		= 6000, /* mV */
+			.voltage_max		= 13200,
+			.voltage_normal		= 11550, /* mV */
+			.voltage_min		= 9000, /* mV */
 			.precharge_current	= 256,	/* mA */
 			.start_charging_min_c	= 0,
-			.start_charging_max_c	= 60,
+			.start_charging_max_c	= 45,
 			.charging_min_c		= 0,
-			.charging_max_c		= 60,
-			.discharging_min_c	= 0,
+			.charging_max_c		= 45,
+			.discharging_min_c	= -20,
 			.discharging_max_c	= 60,
 		},
 	},
