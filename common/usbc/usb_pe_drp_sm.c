@@ -365,6 +365,9 @@ static struct policy_engine {
 	/* alternate mode discovery results */
 	struct pd_discovery discovery;
 
+	/* Partner type to send */
+	enum tcpm_transmit_type tx_type;
+
 	/* VDM - used to send information to shared VDM Request state */
 	/* TODO(b/150611251): Remove when all VDMs use shared parent */
 	enum port_partner partner_type;
@@ -543,6 +546,8 @@ static void pe_init(int port)
 	pe[port].source_cap_timer = TIMER_DISABLED;
 	pe[port].no_response_timer = TIMER_DISABLED;
 	pe[port].data_role = pd_get_data_role(port);
+	/* TODO: Assign a valid enum value */
+	pe[port].tx_type = 255;
 
 	tc_pd_connection(port, 0);
 
@@ -1172,6 +1177,7 @@ static bool pe_attempt_port_discovery(int port)
 	if (get_time().val > pe[port].discover_port_identity_timer) {
 		if (pe[port].cable.discovery == PD_DISC_NEEDED &&
 		    pe_can_send_sop_prime(port)) {
+			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 			return true;
 		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP) ==
@@ -1383,6 +1389,7 @@ static void pe_src_discovery_run(int port)
 	if (pe[port].cable.discovery == PD_DISC_NEEDED &&
 	    get_time().val > pe[port].discover_port_identity_timer &&
 	    pe_can_send_sop_prime(port)) {
+		pe[port].tx_type = TCPC_TX_SOP_PRIME;
 		set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 		return;
 	}
@@ -4053,12 +4060,18 @@ static void pe_vdm_identity_request_cbl_entry(int port)
 
 	print_current_state(port);
 
+	if (pe[port].tx_type == 255) {
+		CPRINTS("c%d: TX type expected to be set, returning", port);
+		set_state_pe(port, get_last_state_pe(port));
+		return;
+	}
+
 	msg[0] = VDO(USB_SID_PD, 1, VDO_SVDM_VERS(pd_get_vdo_ver(port,
-							   TCPC_TX_SOP_PRIME)) |
+							   pe[port].tx_type)) |
 		     DISCOVER_IDENTITY);
 	tx_emsg[port].len = sizeof(uint32_t);
 
-	prl_send_data_msg(port, TCPC_TX_SOP_PRIME, PD_DATA_VENDOR_DEF);
+	prl_send_data_msg(port, pe[port].tx_type, PD_DATA_VENDOR_DEF);
 
 	pe[port].discover_port_identity_counter++;
 }
@@ -4082,7 +4095,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
 
-		if (sop == TCPC_TX_SOP_PRIME && type == PD_DATA_VENDOR_DEF &&
+		if (sop == pe[port].tx_type && type == PD_DATA_VENDOR_DEF &&
 							cnt > 0 && ext == 0) {
 			/*
 			 * Valid DiscoverIdentity responses should have at least
@@ -4106,7 +4119,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 				 * during an Explicit Contract
 				 */
 				if (prl_get_rev(port, TCPC_TX_SOP) != PD_REV20)
-					prl_set_rev(port, TCPC_TX_SOP_PRIME,
+					prl_set_rev(port, pe[port].tx_type,
 							pe[port].cable.rev);
 
 			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_NAK) {
@@ -4114,7 +4127,8 @@ static void pe_vdm_identity_request_cbl_run(int port)
 				 * PE_SRC_VDM_Identity_NAKed and
 				 * PE_INIT_PORT_VDM_Identity_NAKed embedded here
 				 */
-				pe[port].cable.discovery = PD_DISC_FAIL;
+				pd_set_identity_discovery(port,
+						pe[port].tx_type, PD_DISC_FAIL);
 			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_BUSY) {
 				/*
 				 * Don't fill in the discovery field so we
@@ -4129,7 +4143,8 @@ static void pe_vdm_identity_request_cbl_run(int port)
 				 * Cable gave us an incorrect size or command,
 				 * mark discovery as failed
 				 */
-				pe[port].cable.discovery = PD_DISC_FAIL;
+				pd_set_identity_discovery(port,
+						pe[port].tx_type, PD_DISC_FAIL);
 				CPRINTS("C%d: Unexpected cable response: "
 					"0x%04x 0x%04x", port,
 					rx_emsg[port].header, payload[0]);
@@ -4184,7 +4199,7 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 {
 	if (pe[port].discover_port_identity_counter >=
 						N_DISCOVER_IDENTITY_COUNT)
-		pe[port].cable.discovery = PD_DISC_FAIL;
+		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 
 	/*
 	 * Set discover identity timer unless BUSY case already did so
@@ -4193,10 +4208,13 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 	 * contract, so we could re-try faster from src_discovery if
 	 * desired here
 	 */
-	if (pe[port].cable.discovery == PD_DISC_NEEDED &&
+	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_NEEDED
+			&&
 			pe[port].discover_port_identity_timer > get_time().val)
 		pe[port].discover_port_identity_timer = get_time().val +
 							PD_T_DISCOVER_IDENTITY;
+
+	pe[port].tx_type = 255;
 }
 
 /**

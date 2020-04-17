@@ -18,7 +18,7 @@ static void dump_pe(int port)
 	uint32_t mode_caps;
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 	const union disc_ident_ack *resp = pd_get_identity_response(port,
-								TCPC_TX_SOP);
+			TCPC_TX_SOP);
 
 	const char * const idh_ptype_names[]  = {
 		"UNDEF", "Hub", "Periph", "PCable", "ACable", "AMA",
