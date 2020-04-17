@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6b01b43a_4eda0cc7",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-17T22:26:32Z",
+      "side": 1,
+      "message": "this extern declaration seems to be misplaced here, it should be in some i2cs .h file.",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 43
+      },
+      "revId": "828d3d407f1722fbad8f5a3c1ddd89ee930f54f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0cf0f09_c103dfd5",
         "filename": "common/i2cs_tpm.c",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2020-04-17T21:29:59Z",
       "side": 1,
       "message": "Will remove in the next patch.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 52
+      },
+      "revId": "828d3d407f1722fbad8f5a3c1ddd89ee930f54f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43cd0c16_7d72449a",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-17T22:26:32Z",
+      "side": 1,
+      "message": "This patch is marked \u0027verified 1\u0027 but it is not ready for merging? Let\u0027s see the final patch.",
+      "parentUuid": "f0cf0f09_c103dfd5",
       "range": {
         "startLine": 206,
         "startChar": 0,
