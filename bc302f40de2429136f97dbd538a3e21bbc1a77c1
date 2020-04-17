@@ -25,6 +25,54 @@
     },
     {
       "key": {
+        "uuid": "150c48b8_a3403ee9",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-17T03:32:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "671da7b6_f53dd150",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702be985_27a93f6a",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-17T03:32:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "671da7b6_f53dd150",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea2bc3d8_016bcc40",
         "filename": "board/malefor/battery.c",
         "patchSetId": 1
@@ -48,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5bf3d0f7_0cd170d9",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-17T03:32:43Z",
+      "side": 1,
+      "message": "Hi Keith,\n\nThe battery is operating, register 0x34 has bit 0x0100 clear.\nSMP Spec should indicate right.\nAction for entering ship mode, D-FET OFF function 0x34 value changes to ”0x0100” from “0x0000”.",
+      "parentUuid": "ea2bc3d8_016bcc40",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7f64b88_e7ab6881",
         "filename": "board/malefor/battery.c",
         "patchSetId": 1
@@ -59,6 +131,30 @@
       "writtenOn": "2020-04-16T20:01:31Z",
       "side": 1,
       "message": "Specification lists 6.5V for \"Voltage at end of discharge\".",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8473e384_ae737291",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-17T03:32:43Z",
+      "side": 1,
+      "message": "Sorry, I uploaded a old SMP Spec, the latest SMP Spec has modified battery minimum voltage(6V) and prechage current(332mA). Please check b/154155827#comment2 attachment.",
+      "parentUuid": "f7f64b88_e7ab6881",
       "range": {
         "startLine": 55,
         "startChar": 19,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f997af8e_a3a8c561",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-17T03:32:43Z",
+      "side": 1,
+      "message": "No, just now contact with LGC vendor, .voltage_min is 6V in 25° (3V/cell --\u003e RSOC 0%)",
+      "parentUuid": "b126a1e0_94ccbd48",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "714d122d_7f5a93d7",
         "filename": "board/malefor/battery.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2020-04-16T20:01:31Z",
       "side": 1,
       "message": "Should this be 320 mA from the \"Taper Current for Charging\" parameter?",
+      "range": {
+        "startLine": 83,
+        "startChar": 24,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f9cadee_74ceea00",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-17T03:32:43Z",
+      "side": 1,
+      "message": "LGC vendor feedbacked that the precharge current is 256mA when Cell voltage less than 3V. .precharge_current is 256mA.",
+      "parentUuid": "714d122d_7f5a93d7",
       "range": {
         "startLine": 83,
         "startChar": 24,
