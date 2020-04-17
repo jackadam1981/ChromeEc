@@ -4819,6 +4819,21 @@ static void pe_vcs_send_swap_run(int port)
 				else
 					set_state_pe(port, PE_SNK_READY);
 			}
+			/*
+			 * May Transition to PE_VCS_ForceVCONN state when:
+			 *   1) A Not_Supported Message is received and
+			 *   2) the port is not presently the Vconn Source
+			 */
+			if (type == PD_CTRL_NOT_SUPPORTED &&
+						    !tc_is_vconn_src(port)) {
+				/*
+				 * create new state
+				 * turn on vconn, wait for tc to confirm
+				 * check whether soft reset to cable is needed
+				 * enforce probing after tVconnStable, unless TC
+				 * covers that
+				 */
+			}
 		}
 		/*
 		 * Unexpected Data Message Received
