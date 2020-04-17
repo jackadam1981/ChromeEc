@@ -150,6 +150,7 @@
 #define STM32_LPUART1_BASE          (STM32_APB1PERIPH_BASE + 0x8000UL)
 /* UART9 is used as link to LPUART in STM32 uart.c implementation */
 #define STM32_USART9_BASE            (STM32_APB1PERIPH_BASE + 0x8000UL)
+#define STM32_I2C4_BASE             (STM32_APB1PERIPH_BASE + 0x8400UL)
 #define STM32_UCPD1_BASE            (STM32_APB1PERIPH_BASE + 0xA000UL)
 #define STM32_SRAMCAN_BASE          (STM32_APB1PERIPH_BASE + 0xA400UL)
 
@@ -309,17 +310,19 @@
 #define GPIO_ALT_EVENTOUT            0xF
 
 /* --- I2C --- */
-#define STM32_I2C_CR1(n)            REG16(stm32_i2c_reg(n, 0x00))
-#define STM32_I2C_CR2(n)            REG16(stm32_i2c_reg(n, 0x04))
-#define STM32_I2C_OAR1(n)           REG16(stm32_i2c_reg(n, 0x08))
-#define STM32_I2C_OAR2(n)           REG16(stm32_i2c_reg(n, 0x0C))
-#define STM32_I2C_TIMINGR(n)        REG32(stm32_i2c_reg(n, 0x10))
-#define STM32_I2C_TIMEOUTR(n)       REG32(stm32_i2c_reg(n, 0x14))
-#define STM32_I2C_ISR(n)            REG32(stm32_i2c_reg(n, 0x18))
-#define STM32_I2C_ICR(n)            REG32(stm32_i2c_reg(n, 0x1C))
-#define STM32_I2C_PECR(n)           REG32(stm32_i2c_reg(n, 0x20))
-#define STM32_I2C_RXDR(n)           REG32(stm32_i2c_reg(n, 0x24))
-#define STM32_I2C_TXDR(n)           REG32(stm32_i2c_reg(n, 0x28))
+#define stm32g4_i2c_reg(base, offset) ((uint16_t *)((base) + (offset)))
+
+#define STM32_I2C_CR1(base)            REG32(stm32g4_i2c_reg(base, 0x00))
+#define STM32_I2C_CR2(base)            REG32(stm32g4_i2c_reg(base, 0x04))
+#define STM32_I2C_OAR1(base)           REG16(stm32g4_i2c_reg(base, 0x08))
+#define STM32_I2C_OAR2(base)           REG16(stm32g4_i2c_reg(base, 0x0C))
+#define STM32_I2C_TIMINGR(base)        REG32(stm32g4_i2c_reg(base, 0x10))
+#define STM32_I2C_TIMEOUTR(base)       REG32(stm32g4_i2c_reg(base, 0x14))
+#define STM32_I2C_ISR(base)            REG32(stm32g4_i2c_reg(base, 0x18))
+#define STM32_I2C_ICR(base)            REG32(stm32g4_i2c_reg(base, 0x1C))
+#define STM32_I2C_PECR(base)           REG32(stm32g4_i2c_reg(base, 0x20))
+#define STM32_I2C_RXDR(base)           REG32(stm32g4_i2c_reg(base, 0x24))
+#define STM32_I2C_TXDR(base)           REG32(stm32g4_i2c_reg(base, 0x28))
 
 /* --- I2C CR1 Bit Definitions --- */
 #define STM32_I2C_CR1_PE            BIT(0)
