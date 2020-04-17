@@ -22,6 +22,30 @@
       "revId": "975dd3cbcec7333f839c58e8898ca0313ad6acb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1684fb9e_ee57a034",
+        "filename": "board/hatch/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2020-04-17T11:45:12Z",
+      "side": 1,
+      "message": "I will move this to config.h and upload new patch set for 1772861.",
+      "parentUuid": "9125fbec_767385b8",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 36
+      },
+      "revId": "975dd3cbcec7333f839c58e8898ca0313ad6acb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
