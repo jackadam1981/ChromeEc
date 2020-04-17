@@ -22,6 +22,30 @@
       "revId": "1610e8e72d80e2e01286bf6ea2bd62557605e194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b263cb1f_f6d93cfd",
+        "filename": "power/mt8192.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-04-17T03:40:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a805e1_1614193f",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 0
+      },
+      "revId": "1610e8e72d80e2e01286bf6ea2bd62557605e194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
