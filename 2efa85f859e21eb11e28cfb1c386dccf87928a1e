@@ -22,6 +22,30 @@
       "revId": "2efa85f859e21eb11e28cfb1c386dccf87928a1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89326bc9_74739d6a",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-04-17T18:16:50Z",
+      "side": 1,
+      "message": "\u003e not for this CL, but do you think it is possible to transfer the existing use case of CONFIG_KEYBOARD_CUSTOMIZATION into the vivaldi scheme?\n\nPossibly. That would take enhancing this for the whole keyboard so that we don\u0027t make any assumptions that this is chromeos keyboard layout. \n\n\u003e \n\u003e If not it it probably worth adding a comment in config.h for CONFIG_KEYBOARD_CUSTOMIZATION that if one only wants to customize the top keys, then override board_vivaldi_keybd_config in board.c\n\nWill do",
+      "parentUuid": "090a9471_645fe1ee",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "2efa85f859e21eb11e28cfb1c386dccf87928a1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
