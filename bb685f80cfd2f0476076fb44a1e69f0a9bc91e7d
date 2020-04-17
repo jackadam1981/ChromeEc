@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc178ed6_66a76d3a",
+        "filename": "chip/npcx/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-04-17T23:53:34Z",
+      "side": 1,
+      "message": "Why do these have 4 digits? If you\u0027re going to have minor versions, can you comment on that?",
+      "range": {
+        "startLine": 12,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "bb685f80cfd2f0476076fb44a1e69f0a9bc91e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
