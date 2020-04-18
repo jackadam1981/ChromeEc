@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24c551b7_de0517ae",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-18T00:33:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24a42ed9_777dc1e2",
+      "range": {
+        "startLine": 534,
+        "startChar": 27,
+        "endLine": 534,
+        "endChar": 28
+      },
+      "revId": "6b69382de223a9a413958dcf2cb3f9473bf7772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dc931a2_3d012b1e",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a914c06c_bb8d6508",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-18T00:33:06Z",
+      "side": 1,
+      "message": "*nervous chuckle* yep",
+      "parentUuid": "4dc931a2_3d012b1e",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 13
+      },
+      "revId": "6b69382de223a9a413958dcf2cb3f9473bf7772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e759993_43d238a5",
         "filename": "common/charger.c",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "6b69382de223a9a413958dcf2cb3f9473bf7772f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee377bd9_98bad9df",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-18T00:33:06Z",
+      "side": 1,
+      "message": "They end up being the same, but I guess it makes sense for it to be the primary since it\u0027s the one that can tightly regulate this. This only seems to be used for debug though. Done.",
+      "parentUuid": "5e759993_43d238a5",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 32
+      },
+      "revId": "6b69382de223a9a413958dcf2cb3f9473bf7772f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
