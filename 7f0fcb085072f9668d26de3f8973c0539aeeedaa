@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a4efec99_354bcce8",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-18T01:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6f9faa0_26755074",
+      "revId": "7f0fcb085072f9668d26de3f8973c0539aeeedaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d26169c5_b4c69ea6",
         "filename": "common/u2f.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ddde15f0_535ec73e",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-18T01:37:08Z",
+      "side": 1,
+      "message": "Done. If some other boards use this file, they will have a build error since they don\u0027t have the definition of is_pp_asserted().",
+      "parentUuid": "d26169c5_b4c69ea6",
+      "range": {
+        "startLine": 116,
+        "startChar": 34,
+        "endLine": 116,
+        "endChar": 60
+      },
+      "revId": "7f0fcb085072f9668d26de3f8973c0539aeeedaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5ccb99c_b6277c55",
         "filename": "common/u2f.c",
         "patchSetId": 2
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "351dea32_03be1e90",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-18T01:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5ccb99c_b6277c55",
+      "revId": "7f0fcb085072f9668d26de3f8973c0539aeeedaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e42310ae_80567ee8",
         "filename": "common/u2f.c",
         "patchSetId": 2
@@ -73,6 +133,24 @@
       "revId": "7f0fcb085072f9668d26de3f8973c0539aeeedaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f246ad5_f6591ee7",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-18T01:37:08Z",
+      "side": 1,
+      "message": "As discussed, we will require power button press for PIN now.",
+      "parentUuid": "e42310ae_80567ee8",
+      "revId": "7f0fcb085072f9668d26de3f8973c0539aeeedaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
