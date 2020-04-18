@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "33ccfc58_2b8d8f29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-04-18T00:06:08Z",
+      "side": 1,
+      "message": "There is a discussion on making DPTF ping EC periodically: https://buganizer.corp.google.com/issues/152882154.\n\nI assume you\u0027re waiting for the outcome and reshape this patch accordingly.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "6d691208c002bb78b2aca715791bfe040d6c1f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b77d75f0_ba8c8ee9",
         "filename": "common/thermal.c",
         "patchSetId": 11
