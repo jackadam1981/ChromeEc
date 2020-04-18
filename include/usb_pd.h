@@ -392,6 +392,7 @@ struct pd_discovery {
 	struct svdm_amode_data amodes[PD_AMODE_COUNT];
 	/* Next index to insert DFP alternate mode into amodes */
 	int amode_idx;
+	enum pd_discovery_state modes_discovery;
 };
 
 /*
@@ -1758,6 +1759,12 @@ int pd_get_svid_count(int port);
  * @return         SVID
  */
 uint16_t pd_get_svid(int port, uint16_t svid_idx);
+
+void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
+		enum pd_discovery_state disc);
+
+enum pd_discovery_state pd_get_modes_discovery(int port,
+		enum tcpm_transmit_type type);
 
 /**
  * Return the pointer to modes of VDO of port partner connected

@@ -378,6 +378,7 @@ void dfp_consume_modes(int port, int cnt, uint32_t *payload)
 	}
 
 	disc->svid_idx++;
+	pd_set_modes_discovery(port, TCPC_TX_SOP, PD_DISC_COMPLETE);
 }
 
 int dfp_discover_modes(int port, uint32_t *payload)
@@ -478,6 +479,22 @@ uint16_t pd_get_svid(int port, uint16_t svid_idx)
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 
 	return disc->svids[TCPC_TX_SOP].svids[svid_idx].svid;
+}
+
+void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
+		enum pd_discovery_state disc)
+{
+	struct pd_discovery *pd = pd_get_am_discovery(port);
+
+	pd->modes_discovery = disc;
+}
+
+enum pd_discovery_state pd_get_modes_discovery(int port,
+		enum tcpm_transmit_type type)
+{
+	struct pd_discovery *disc = pd_get_am_discovery(port);
+
+	return disc->modes_discovery;
 }
 
 uint32_t *pd_get_mode_vdo(int port, uint16_t svid_idx)
