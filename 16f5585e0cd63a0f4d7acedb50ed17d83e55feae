@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "51100b85_ebde958e",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-18T00:33:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c664290_e80d6363",
+      "range": {
+        "startLine": 1256,
+        "startChar": 31,
+        "endLine": 1256,
+        "endChar": 51
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c2fb7bc_32bee1a7",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
@@ -191,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "4ea4a515_b3f8caeb",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-18T00:33:25Z",
+      "side": 1,
+      "message": "Yeah, thus far. Done",
+      "parentUuid": "8c46ebb0_5bfc3b0d",
+      "range": {
+        "startLine": 42,
+        "startChar": 34,
+        "endLine": 42,
+        "endChar": 40
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb25d8f1_89b979d6",
         "filename": "common/ocpc.c",
         "patchSetId": 3
@@ -259,6 +307,30 @@
       "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28efae40_8b90c59d",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-18T00:33:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa8c2710_8468f3aa",
+      "range": {
+        "startLine": 58,
+        "startChar": 34,
+        "endLine": 58,
+        "endChar": 54
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -368,6 +440,30 @@
       "side": 1,
       "message": "That seems like a loop failure of some sort.  Do we ever reset the integral?\n\nhttps://en.wikipedia.org/wiki/Integral_windup",
       "parentUuid": "80d86229_77a58941",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97e64579_01cbd10d",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-18T00:33:25Z",
+      "side": 1,
+      "message": "Yes, we reset the integral and last error when the charger has been removed. It seems like what I have here is one of the proposed solutions of preventing the integral term from accumulating above pre-determined bounds.",
+      "parentUuid": "fa79fcd4_3f25e150",
       "range": {
         "startLine": 101,
         "startChar": 23,

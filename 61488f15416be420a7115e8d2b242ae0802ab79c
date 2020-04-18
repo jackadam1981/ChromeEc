@@ -22,6 +22,30 @@
       "revId": "61488f15416be420a7115e8d2b242ae0802ab79c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2165df5_adc17434",
+        "filename": "common/ocpc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-18T00:33:25Z",
+      "side": 1,
+      "message": "It might not; I don\u0027t think it did initially, but I forgot why I added it here.  I can remove it.\n\nThe primary charger is always updated with the charge request, the secondary charger only if it\u0027s the active one.",
+      "parentUuid": "b23bc2f7_0015633c",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 52
+      },
+      "revId": "61488f15416be420a7115e8d2b242ae0802ab79c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
