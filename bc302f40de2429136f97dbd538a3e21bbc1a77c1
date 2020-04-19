@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "1daea22c_5e0810a2",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-19T07:35:54Z",
+      "side": 1,
+      "message": "The SMP SPEC shows:\n1) Enter shipping mode\nD-FET OFF function 0x34 value changes to ”0x0100” from “0x0000” \n2) Exit shipping mode\nD-FET OFF function 0x34 value changes to “0x0000” from “0x0100”\nThese should indicate that\nBattery is in ship mode: 0x34 \u003d 0x0100\nBattery is operating: 0x34 \u003d 0x0000\nThese should be correct. I double check that the 0x34 value is 0x0100 when the battery is shipping mode, it will be 0x0000 when the battery is operating.\n\nBTW, we should enable macro CONFIG_BATTERY_REVIVE_DISCONNECT, otherwise API battery_get_disconnect_state() will not be called and not to check the 0x34 value in volteer family. \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/battery_fuel_gauge.c#163",
+      "parentUuid": "c16f0107_cf9e8e81",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7f64b88_e7ab6881",
         "filename": "board/malefor/battery.c",
         "patchSetId": 1
@@ -357,6 +381,30 @@
     },
     {
       "key": {
+        "uuid": "00ed22dd_b48b9aae",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-19T07:35:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52e209c0_e898b260",
+      "range": {
+        "startLine": 82,
+        "startChar": 19,
+        "endLine": 82,
+        "endChar": 23
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "714d122d_7f5a93d7",
         "filename": "board/malefor/battery.c",
         "patchSetId": 1
@@ -401,6 +449,30 @@
       "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0776d15f_22e52ea0",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-19T07:35:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f9cadee_74ceea00",
+      "range": {
+        "startLine": 83,
+        "startChar": 24,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
