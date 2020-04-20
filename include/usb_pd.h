@@ -265,8 +265,22 @@ struct svdm_response {
 	struct amode_fx *amode;
 };
 
+/*
+ * State of discovery
+ *
+ * Note: Discovery needed must be 0 to meet expectations that it be the default
+ * value after resetting connection information via memset.
+ */
+enum pd_discovery_state {
+	PD_DISC_NEEDED = 0,	/* Cable or partner still needs to be probed */
+	PD_DISC_COMPLETE,	/* Successfully probed, valid to read VDO */
+	PD_DISC_FAIL,		/* Cable did not respond, or Discover* NAK */
+};
+
 struct svdm_svid_data {
 	uint16_t svid;
+	/* State of mode discovery for this SVID */
+	enum pd_discovery_state discovery;
 	int mode_cnt;
 	uint32_t mode_vdo[PDO_MODES];
 };
@@ -322,18 +336,6 @@ enum hpd_event {
 /* DisplayPort flags */
 #define DP_FLAGS_DP_ON              BIT(0) /* Display port mode is on */
 #define DP_FLAGS_HPD_HI_PENDING     BIT(1) /* Pending HPD_HI */
-
-/*
- * State of discovery
- *
- * Note: Discovery needed must be 0 to meet expectations that it be the default
- * value after resetting connection information via memset.
- */
-enum pd_discovery_state {
-	PD_DISC_NEEDED = 0,	/* Cable or partner still needs to be probed */
-	PD_DISC_COMPLETE,	/* Successfully probed, valid to read VDO */
-	PD_DISC_FAIL,		/* Cable did not respond, or Discover* NAK */
-};
 
 /* Discover Identity ACK contents after headers */
 union disc_ident_ack {
