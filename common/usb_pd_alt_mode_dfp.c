@@ -516,8 +516,8 @@ enum idh_ptype get_usb_pd_cable_type(int port)
  * TODO(b/152417597): Support SOP and SOP'; eliminate redundant code for port
  * partner and cable identity discovery.
  */
-void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
-				uint16_t head)
+void dfp_consume_cable_response(int port, int cnt, uint32_t *head,
+				uint32_t *payload)
 {
 	struct pd_cable *cable = pd_get_cable_attributes(port);
 	struct pd_discovery *disc = pd_get_am_discovery(port);
@@ -534,7 +534,7 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 	pd_set_identity_discovery(port, TCPC_TX_SOP_PRIME, PD_DISC_COMPLETE);
 
 	/* Get cable rev */
-	cable->rev = PD_HEADER_REV(head);
+	cable->rev = PD_HEADER_REV(*head);
 
 	/* TODO: Move cable references to use discovery response */
 	if (is_vdo_present(cnt, VDO_INDEX_IDH)) {

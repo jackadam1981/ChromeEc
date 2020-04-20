@@ -641,17 +641,18 @@ static bool consume_sop_repeat_message(int port, uint8_t msg_id)
  * using SOP* Packets Shall maintain copies of the last MessageID for
  * each type of SOP* it uses.
  */
-static bool consume_repeat_message(int port, uint16_t msg_header)
+static bool consume_repeat_message(int port, uint32_t msg_header)
 {
 	uint8_t msg_id = PD_HEADER_ID(msg_header);
+	enum pd_msg_type msg_type = PD_HEADER_GET_SOP(msg_header);
 
 	/* If repeat message ignore, except softreset control request. */
 	if (PD_HEADER_TYPE(msg_header) == PD_CTRL_SOFT_RESET &&
 	    PD_HEADER_CNT(msg_header) == 0) {
 		return false;
-	} else if (is_transmit_msg_sop_prime(port)) {
+	} else if (msg_type == PD_MSG_SOP_PRIME) {
 		return consume_sop_prime_repeat_msg(port, msg_id);
-	} else if (is_transmit_msg_sop_prime_prime(port)) {
+	} else if (msg_type == PD_MSG_SOP_PRIME_PRIME) {
 		return consume_sop_prime_prime_repeat_msg(port, msg_id);
 	} else {
 		return consume_sop_repeat_message(port, msg_id);
@@ -1220,7 +1221,7 @@ static void queue_vdm(int port, uint32_t *header, const uint32_t *data,
 }
 
 static void handle_vdm_request(int port, int cnt, uint32_t *payload,
-				uint16_t head)
+				uint32_t *head)
 {
 	int rlen = 0;
 	uint32_t *rdata;
@@ -1502,11 +1503,11 @@ static void pd_update_pdo_flags(int port, uint32_t pdo)
 #endif
 }
 
-static void handle_data_request(int port, uint16_t head,
+static void handle_data_request(int port, uint32_t *head,
 		uint32_t *payload)
 {
-	int type = PD_HEADER_TYPE(head);
-	int cnt = PD_HEADER_CNT(head);
+	int type = PD_HEADER_TYPE(*head);
+	int cnt = PD_HEADER_CNT(*head);
 
 	switch (type) {
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -1523,8 +1524,8 @@ static void handle_data_request(int port, uint16_t head,
 			/*
 			 * Only adjust sink rev if source rev is higher.
 			 */
-			if (PD_HEADER_REV(head) < pd[port].rev)
-				pd[port].rev = PD_HEADER_REV(head);
+			if (PD_HEADER_REV(*head) < pd[port].rev)
+				pd[port].rev = PD_HEADER_REV(*head);
 #endif
 			/* Port partner is now known to be PD capable */
 			pd[port].flags |= PD_FLAGS_PREVIOUS_PD_CONN;
@@ -1546,7 +1547,7 @@ static void handle_data_request(int port, uint16_t head,
 			 * Adjust the rev level to what the sink supports. If
 			 * they're equal, no harm done.
 			 */
-			pd[port].rev = PD_HEADER_REV(head);
+			pd[port].rev = PD_HEADER_REV(*head);
 #endif
 			if (!pd_check_requested_voltage(payload[0], port)) {
 				if (send_control(port, PD_CTRL_ACCEPT) < 0)
@@ -1671,10 +1672,10 @@ static void pd_dr_swap(int port)
 	pd[port].flags |= PD_FLAGS_CHECK_IDENTITY;
 }
 
-static void handle_ctrl_request(int port, uint16_t head,
+static void handle_ctrl_request(int port, uint32_t *head,
 		uint32_t *payload)
 {
-	int type = PD_HEADER_TYPE(head);
+	int type = PD_HEADER_TYPE(*head);
 	int res;
 
 	switch (type) {
@@ -1969,9 +1970,9 @@ static void handle_ctrl_request(int port, uint16_t head,
 }
 
 #ifdef CONFIG_USB_PD_REV30
-static void handle_ext_request(int port, uint16_t head, uint32_t *payload)
+static void handle_ext_request(int port, uint32_t *head, uint32_t *payload)
 {
-	int type = PD_HEADER_TYPE(head);
+	int type = PD_HEADER_TYPE(*head);
 
 	switch (type) {
 	case PD_EXT_GET_BATTERY_CAP:
@@ -1982,23 +1983,23 @@ static void handle_ext_request(int port, uint16_t head, uint32_t *payload)
 		break;
 	case PD_EXT_BATTERY_CAP:
 		break;
-	default:
+		default:
 		send_control(port, PD_CTRL_NOT_SUPPORTED);
 	}
 }
 #endif
 
-static void handle_request(int port, uint16_t head,
+static void handle_request(int port, uint32_t *head,
 		uint32_t *payload)
 {
-	int cnt = PD_HEADER_CNT(head);
-	int data_role = PD_HEADER_DROLE(head);
+	int cnt = PD_HEADER_CNT(*head);
+	int data_role = PD_HEADER_DROLE(*head);
 	int p;
 
 	/* dump received packet content (only dump ping at debug level 3) */
-	if ((debug_level == 2 && PD_HEADER_TYPE(head) != PD_CTRL_PING) ||
+	if ((debug_level == 2 && PD_HEADER_TYPE(*head) != PD_CTRL_PING) ||
 	    debug_level >= 3) {
-		CPRINTF("C%d RECV %04x/%d ", port, head, cnt);
+		CPRINTF("C%d RECV %04x/%d ", port, *head, cnt);
 		for (p = 0; p < cnt; p++)
 			CPRINTF("[%d]%08x ", p, payload[p]);
 		CPRINTF("\n");
@@ -2042,7 +2043,7 @@ static void handle_request(int port, uint16_t head,
 
 #ifdef CONFIG_USB_PD_REV30
 	/* Check if this is an extended chunked data message. */
-	if (pd[port].rev == PD_REV30 && PD_HEADER_EXT(head)) {
+	if (pd[port].rev == PD_REV30 && PD_HEADER_EXT(*head)) {
 		handle_ext_request(port, head, payload);
 		return;
 	}
@@ -2143,11 +2144,11 @@ static void exit_tbt_mode_sop_prime(int port)
 		   pd_get_polarity(port));
 }
 
-static void pd_vdm_send_state_machine(int port)
+static void pd_vdm_send_state_machine(int port, uint32_t head)
 {
 	int res;
 	uint16_t header;
-	enum pd_msg_type msg_type = pd_msg_tx_type(port);
+	enum pd_msg_type msg_type = PD_HEADER_GET_SOP(head);
 
 	switch (pd[port].vdm_state) {
 	case VDM_STATE_READY:
@@ -2320,7 +2321,7 @@ void pd_dev_get_rw_hash(int port, uint16_t *dev_id, uint8_t *rw_hash,
 		memcpy(rw_hash, pd[port].dev_rw_hash, PD_RW_HASH_SIZE);
 }
 
-__maybe_unused static void exit_supported_alt_mode(int port)
+__maybe_unused static void exit_supported_alt_mode(int port, uint32_t head)
 {
 	int i;
 
@@ -2337,13 +2338,13 @@ __maybe_unused static void exit_supported_alt_mode(int port)
 			pd_send_vdm(port, supported_modes[i].svid,
 				    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
 			/* Wait for an ACK from port-partner */
-			pd_vdm_send_state_machine(port);
+			pd_vdm_send_state_machine(port, head);
 		}
 	}
 }
 
 #ifdef CONFIG_POWER_COMMON
-static void handle_new_power_state(int port)
+static void handle_new_power_state(int port, uint32_t head)
 {
 
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
@@ -2351,7 +2352,7 @@ static void handle_new_power_state(int port)
 		 * The SoC will negotiate the alternate mode again when
 		 * it boots up.
 		 */
-		exit_supported_alt_mode(port);
+		exit_supported_alt_mode(port, head);
 	}
 	/* Ensure mux is set properly after chipset transition */
 	set_usb_mux_with_current_data_role(port);
@@ -2844,7 +2845,7 @@ static void pd_send_enter_usb(int port, int *timeout)
 
 void pd_task(void *u)
 {
-	int head;
+	int head = 0;
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 	uint32_t payload[7];
 	int timeout = 10*MSEC;
@@ -3061,7 +3062,7 @@ void pd_task(void *u)
 
 	while (1) {
 		/* process VDM messages last */
-		pd_vdm_send_state_machine(port);
+		pd_vdm_send_state_machine(port, head);
 
 		/* Verify board specific health status : current, voltages... */
 		res = pd_board_checks();
@@ -3084,12 +3085,12 @@ void pd_task(void *u)
 #endif
 #ifdef CONFIG_POWER_COMMON
 		if (evt & PD_EVENT_POWER_STATE_CHANGE)
-			handle_new_power_state(port);
+			handle_new_power_state(port, head);
 #endif
 
 #if defined(CONFIG_USB_PD_ALT_MODE_DFP)
 		if (evt & PD_EVENT_SYSJUMP) {
-			exit_supported_alt_mode(port);
+			exit_supported_alt_mode(port, head);
 			notify_sysjump_ready();
 		}
 #endif
@@ -3196,7 +3197,7 @@ void pd_task(void *u)
 								EC_SUCCESS
 			    && !consume_repeat_message(port, head)
 			   )
-				handle_request(port, head, payload);
+				handle_request(port, &head, payload);
 
 			/* Check if there are any more messages */
 			if (tcpm_has_pending_message(port))
