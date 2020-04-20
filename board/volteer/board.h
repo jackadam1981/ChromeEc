@@ -19,6 +19,10 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
+/* LED defines */
+/* Although there are 2 LEDs, they are both controlled by the same lines. */
+#define CONFIG_LED_PWM_COUNT 1
+
 /* Keyboard features */
 
 /* Sensors */
