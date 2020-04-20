@@ -127,9 +127,6 @@
 
 /* Common LED defines */
 #define CONFIG_LED_COMMON
-#define CONFIG_LED_PWM
-/* Although there are 2 LEDs, they are both controlled by the same lines. */
-#define CONFIG_LED_PWM_COUNT 1
 
 /* USB Type C and USB PD defines */
 /* Enable the new USB-C PD stack */
