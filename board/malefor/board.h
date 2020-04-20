@@ -22,6 +22,7 @@
 /* Keyboard features */
 
 /* Sensors */
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 #define CONFIG_ACCEL_LIS2DE             /* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM        /* Base accel */
 
@@ -29,16 +30,10 @@
 #define CONFIG_ACCEL_FORCE_MODE_MASK \
 	BIT(LID_ACCEL)
 
-/*
- * TODO: b/152434719 - Malefor will support 360-degree rotation of the
- * lid on some SKUs, these macros will be enabled once covers are ready.
- */
-#if 0
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
-#endif
 
 #define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
@@ -128,6 +123,12 @@ enum sensor_id {
 	VSYNC,
 	SENSOR_COUNT,
 };
+
+#define CBI_FW_CONFIG_CONVERTIBLE_MASK	0x01
+#define CBI_FW_CONFIG_CONVERTIBLE_SHIFT	15
+#define CBI_FW_CONFIG_CONVERTIBLE_TYPE(bits) \
+	(((bits) >> CBI_FW_CONFIG_CONVERTIBLE_SHIFT) &  \
+	CBI_FW_CONFIG_CONVERTIBLE_MASK)
 
 /* TODO: b/143375057 - Remove this code after power on. */
 void c10_gate_change(enum gpio_signal signal);
