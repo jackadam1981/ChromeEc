@@ -68,6 +68,30 @@
       "revId": "9607a57aecd455e445f6d1aac868f65e9a7eb47a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06c70452_7d7e1061",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5294,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-04-20T21:54:06Z",
+      "side": 1,
+      "message": "\u003e change this to \n\u003e \n\u003e /* commetn that vivaldi requires 8042....*/\n\u003e #ifndef CONFIG_KEYBOARD_PROTOCOL_8042\n\u003e #undef CONFIG_KEYBOARD_VIVALDI\n\u003e #endif\n\nDone, can you PTAL",
+      "parentUuid": "1298aeff_fa534169",
+      "range": {
+        "startLine": 5290,
+        "startChar": 0,
+        "endLine": 5294,
+        "endChar": 6
+      },
+      "revId": "9607a57aecd455e445f6d1aac868f65e9a7eb47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
