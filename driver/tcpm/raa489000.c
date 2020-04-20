@@ -20,7 +20,7 @@
 int raa489000_init(int port)
 {
 	int rv;
-	int regval;
+	int regval, regval_2;
 	int i2c_port;
 	struct charge_port_info chg = { 0 };
 
@@ -34,6 +34,48 @@ int raa489000_init(int port)
 	rv = tcpc_write16(port, 0xAA, 0x0D0B);
 	if (rv)
 		CPRINTS("c%d: failed unlock step3", port);
+
+	/* Read Alert(0x10) */
+	rv = tcpc_read16(port, TCPC_REG_ALERT, &regval);
+	/* ALEART.Fault == 1? */
+	if (TCPC_REG_ALERT_FAULT && regval) {
+		/* Yes, to read FAULT_STATUS(0x1F) */
+		tcpc_read16(port, TCPC_REG_FAULT_STATUS, &regval_2);
+		/* FS.AllRegistersResetToDefault == 1? */
+		if (TCPC_REG_FAULT_STATUS_ALL_REGS_RESET && regval_2) {
+			/* Yes, to clear ALERT.Power Status (bit, W1C) */
+			regval = regval | TCPC_REG_ALERT_POWER_STATUS;
+			rv = tcpc_write16(port, TCPC_REG_ALERT, regval);
+		} else
+			CPRINTS("UNEXPECTED FAULT_STATUS");
+	} else
+		CPRINTS("UNEXPECTED ALEART");
+
+	/*
+	 * The TCPM needs to initializes the only one Vender
+	 * defined register TCPC_SETTING_1(0x80).TCPC
+	 * Power Control(bit4) =1b after power-on.
+	 */
+	rv = tcpc_read16(port, RAA489000_TCPC_SETTING1, &regval);
+	/* Allow the TCPC to control VBUS. */
+	regval |= RAA489000_TCPC_PWR_CNTRL;
+	rv = tcpc_write16(port, RAA489000_TCPC_SETTING1, regval);
+
+	/* Read Alert(0x10) */
+	rv = tcpc_read16(port, TCPC_REG_ALERT, &regval);
+	/* ALEART.Fault == 1? */
+	if (TCPC_REG_ALERT_POWER_STATUS && regval) {
+		/* Yes, to read POWER_STATUS(0x1E) */
+		tcpc_read(port, TCPC_REG_POWER_STATUS, &regval_2);
+		/* FS.TCP C Initializati on Status == 0? */
+		if (!(TCPC_REG_POWER_STATUS_UNINIT && regval_2)) {
+			/* Yes, to clear ALERT.Power Status (bit, W1C) */
+			regval = regval | TCPC_REG_ALERT_POWER_STATUS;
+			rv = tcpc_write16(port, TCPC_REG_ALERT, regval);
+		} else
+			CPRINTS("2_UNEXPECTED POWER_STATUS");
+	} else
+		CPRINTS("2_UNEXPECTED ALEART");
 
 	/* Note: registers may not be ready until TCPCI init succeeds */
 	rv = tcpci_tcpm_init(port);
