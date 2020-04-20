@@ -15,6 +15,7 @@
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -63,6 +64,30 @@ __override bool board_is_tbt_usb4_port(int port)
 	 */
 	return port == USBC_PORT_C1;
 }
+
+int board_is_convertible(void)
+{
+	const uint32_t sku_id = get_board_sku_id();
+
+	return (sku_id == 0x7fffffff);
+}
+
+int board_is_lid_angle_tablet_mode(void)
+{
+	return board_is_convertible();
+}
+
+/* Enable or disable input devices, based on tablet mode or chipset state */
+#ifndef TEST_BUILD
+void lid_angle_peripheral_enable(int enable)
+{
+	if (board_is_convertible()) {
+		if (tablet_get_mode() || chipset_in_state(CHIPSET_STATE_ANY_OFF))
+			enable = 0;
+		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+	}
+}
+#endif
 
 /******************************************************************************/
 /* Sensors */

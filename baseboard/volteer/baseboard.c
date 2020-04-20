@@ -620,10 +620,16 @@ static void config_db_usb3(void)
 }
 
 static uint8_t board_id;
+static uint32_t sku_id;
 
 uint8_t get_board_id(void)
 {
 	return board_id;
+}
+
+uint32_t get_board_sku_id(void)
+{
+	return sku_id;
 }
 
 __overridable void config_volteer_gpios(void)
@@ -641,6 +647,14 @@ static void cbi_init(void)
 	uint32_t cbi_val;
 	uint32_t usb_db_val;
 
+	/* SKU ID */
+	if (cbi_get_sku_id(&cbi_val) != EC_SUCCESS || cbi_val > UINT32_MAX)
+		CPRINTS("CBI: Read SKU ID failed");
+	else
+		sku_id = cbi_val;
+
+	CPRINTS("SKU ID: %d", sku_id);
+
 	/* Board ID */
 	if (cbi_get_board_version(&cbi_val) != EC_SUCCESS ||
 	    cbi_val > UINT8_MAX)
@@ -653,7 +667,6 @@ static void cbi_init(void)
 	config_volteer_gpios();
 
 	/* FW config */
-
 	if (cbi_get_fw_config(&cbi_val) != EC_SUCCESS) {
 		CPRINTS("CBI: Read FW config failed, assuming USB4");
 		usb_db_val = USB_DB_USB4;
