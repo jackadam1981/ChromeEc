@@ -484,7 +484,7 @@ static int process_tbt_compat_discover_modes(int port,
 	 * Ref: USB Type-C Cable and Connector Specification, figure F-1: TBT3
 	 * Discovery Flow and Section F.2.7 TBT3 Cable Enter Mode Command.
 	 */
-	if (is_transmit_msg_sop_prime(port)) {
+	if (sop == TCPC_TX_SOP_PRIME) {
 		/* Store Discover Mode SOP' response */
 		cable[port].cable_mode_resp.raw_value = payload[1];
 
@@ -557,7 +557,7 @@ static int obj_cnt_enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 			uint32_t *payload)
 {
 	/* Enter mode SOP' for active cables */
-	if (is_transmit_msg_sop_prime(port)) {
+	if (sop == TCPC_TX_SOP_PRIME) {
 		disable_transmit_sop_prime(port);
 		/* Check if the cable has a SOP'' controller */
 		if (cable[port].attr.a_rev20.sop_p_p)
@@ -566,7 +566,7 @@ static int obj_cnt_enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 	}
 
 	/* Enter Mode SOP'' for active cables with SOP'' controller */
-	if (is_transmit_msg_sop_prime_prime(port)) {
+	if (sop == TCPC_TX_SOP_PRIME_PRIME) {
 		disable_transmit_sop_prime_prime(port);
 		return enter_tbt_compat_mode(port, sop, payload);
 	}
