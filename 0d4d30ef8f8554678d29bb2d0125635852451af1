@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3c4b600_c2e8a584",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-04-20T10:03:21Z",
+      "side": 0,
+      "message": "some chip driver has extra code to handle this pin, so they need to define it.\n\nit83xx doesn\u0027t need this.",
+      "parentUuid": "27fcb34c_a1203604",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 55
+      },
+      "revId": "0d4d30ef8f8554678d29bb2d0125635852451af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4e46a14_ca132796",
         "filename": "board/asurada/gpio.inc",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "0d4d30ef8f8554678d29bb2d0125635852451af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db065466_7f650dd5",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-04-20T10:03:21Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "a4e46a14_ca132796",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 53
+      },
+      "revId": "0d4d30ef8f8554678d29bb2d0125635852451af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
