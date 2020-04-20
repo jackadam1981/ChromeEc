@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "5c93b76e_1502a573",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-20T22:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe29926b_68b67e28",
+      "range": {
+        "startLine": 32,
+        "startChar": 10,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70d24ff5_9478bb40",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -378,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "bd4566d8_3559b1f7",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-20T22:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26bfc692_2ea3b17b",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "281feda6_e1fca8e5",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -472,6 +520,30 @@
     },
     {
       "key": {
+        "uuid": "a8977920_57930d17",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-20T22:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74550c28_8f64bc8f",
+      "range": {
+        "startLine": 106,
+        "startChar": 28,
+        "endLine": 106,
+        "endChar": 60
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43649014_a3f3d53e",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -554,6 +626,30 @@
       "side": 1,
       "message": "yes, I am talking about the AP console not enabled in the device image after it passes a certain development phase. \n\nPeople might think that their Cr50 setting is wrong, but the they don\u0027t see any console traffic because it is disabled in the image.",
       "parentUuid": "ca674275_cd8dbdeb",
+      "range": {
+        "startLine": 123,
+        "startChar": 37,
+        "endLine": 123,
+        "endChar": 47
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6934f7_e3e7df10",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-20T22:54:52Z",
+      "side": 1,
+      "message": "Ah, thanks. I did not know this was done either. Added text.\n\nIs there any way to tell if the AP console is disabled?",
+      "parentUuid": "41cee468_7ee930d7",
       "range": {
         "startLine": 123,
         "startChar": 37,
@@ -704,6 +800,30 @@
       "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef2f714_273a46bf",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-20T22:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e36dbd2f_8f952d9a",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 76
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1317,6 +1437,30 @@
     },
     {
       "key": {
+        "uuid": "2af34a63_1a373e1b",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-20T22:54:52Z",
+      "side": 1,
+      "message": "Let\u0027s do that in a followup CL. I don\u0027t know why it\u0027s in here, but it was here before. I\u0027d like to get these docs in better shape before making them perfect: http://go/better-best",
+      "parentUuid": "3407bb87_7b1d25a8",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 19
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2387b490_408685a8",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -1384,6 +1528,30 @@
       "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd70c200_543b535c",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-20T22:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74bf263f_3b7c7f5c",
+      "range": {
+        "startLine": 444,
+        "startChar": 45,
+        "endLine": 445,
+        "endChar": 18
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1476,6 +1644,30 @@
       "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0507b0b2_5402d304",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-20T22:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "788b7192_769d1135",
+      "range": {
+        "startLine": 560,
+        "startChar": 48,
+        "endLine": 560,
+        "endChar": 50
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
