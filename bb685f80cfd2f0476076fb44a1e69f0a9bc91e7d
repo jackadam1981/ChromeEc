@@ -22,6 +22,30 @@
       "revId": "bb685f80cfd2f0476076fb44a1e69f0a9bc91e7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ff3d8d6_c9c70fa3",
+        "filename": "chip/npcx/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-04-20T02:37:37Z",
+      "side": 1,
+      "message": "Yes, I want to keep the flexibility in case one day the chip version code may be extended for minor version. (Ex: Chip variants in a chip family)",
+      "parentUuid": "cc178ed6_66a76d3a",
+      "range": {
+        "startLine": 12,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "bb685f80cfd2f0476076fb44a1e69f0a9bc91e7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
