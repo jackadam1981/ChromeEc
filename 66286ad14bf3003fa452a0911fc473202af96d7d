@@ -22,6 +22,29 @@
       "revId": "66286ad14bf3003fa452a0911fc473202af96d7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8724c04c_745df5f3",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-04-20T14:42:48Z",
+      "side": 1,
+      "message": "If we want to clear this bit then \"regval \u0026 ~TCPC_REG_ALERT_POWER_STATUS\"?\n\nAnd others",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 48
+      },
+      "revId": "66286ad14bf3003fa452a0911fc473202af96d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
