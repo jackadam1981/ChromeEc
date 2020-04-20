@@ -295,6 +295,12 @@ enum usb_db_id {
 #define CBI_FW_CONFIG_USB_DB_TYPE(bits) \
 	(((bits) & CBI_FW_CONFIG_USB_DB_MASK) >> CBI_FW_CONFIG_USB_DB_SHIFT)
 
+#define CBI_FW_CONFIG_LID_ANGLE_TABLET_MODE_MASK	0x01
+#define CBI_FW_CONFIG_LID_ANGLE_TABLET_MODE_SHIFT	15
+#define CBI_FW_CONFIG_LID_ANGLE_TABLET_MODE_TYPE(bits) \
+	(((bits) >> CBI_FW_CONFIG_LID_ANGLE_TABLET_MODE_SHIFT) &  \
+	CBI_FW_CONFIG_LID_ANGLE_TABLET_MODE_MASK)
+
 extern enum gpio_signal ps8xxx_rst_odl;
 
 void board_reset_pd_mcu(void);
@@ -305,6 +311,7 @@ void tcpc_alert_event(enum gpio_signal signal);
 void bc12_interrupt(enum gpio_signal signal);
 
 unsigned char get_board_id(void);
+unsigned int get_fw_config(void);
 
 /**
  * Configure GPIOs based on the CBI board version.  Boards in the Volteer
