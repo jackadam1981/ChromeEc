@@ -45,6 +45,29 @@
       "revId": "9607a57aecd455e445f6d1aac868f65e9a7eb47a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1298aeff_fa534169",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 5294,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-20T21:27:23Z",
+      "side": 1,
+      "message": "change this to \n\n/* commetn that vivaldi requires 8042....*/\n#ifndef CONFIG_KEYBOARD_PROTOCOL_8042\n#undef CONFIG_KEYBOARD_VIVALDI\n#endif",
+      "range": {
+        "startLine": 5290,
+        "startChar": 0,
+        "endLine": 5294,
+        "endChar": 6
+      },
+      "revId": "9607a57aecd455e445f6d1aac868f65e9a7eb47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
