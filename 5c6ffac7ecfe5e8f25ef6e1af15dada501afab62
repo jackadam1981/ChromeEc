@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "92f9b0e9_ac852b13",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-20T20:28:00Z",
+      "side": 1,
+      "message": "actually, compress the numbers for the bit you removed above as well",
+      "parentUuid": "fc531f9d_bb6a6af5",
+      "range": {
+        "startLine": 84,
+        "startChar": 44,
+        "endLine": 84,
+        "endChar": 46
+      },
+      "revId": "5c6ffac7ecfe5e8f25ef6e1af15dada501afab62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "585546fc_d8d824d0",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 6
