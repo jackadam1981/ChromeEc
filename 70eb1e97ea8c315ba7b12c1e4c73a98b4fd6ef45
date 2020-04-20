@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "eeda6e0e_ace275ca",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done. Should I create the gesture/double tap/orientation CL now, or when there is some board need it?",
+      "parentUuid": "a1439ee7_0e716ba5",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7eb94279_7b401e41",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 21
@@ -50,6 +68,24 @@
       "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae49fc3_794717bb",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "I move get_data_rate and get_offset to common.c .",
+      "parentUuid": "7eb94279_7b401e41",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "64b27375_f8f11537",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "122a9761_91bc4bb6",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc740c4_87946b03",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 21
@@ -84,6 +138,24 @@
       "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c81ed03_48d56d06",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc740c4_87946b03",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "bb3c6a88_013057ef",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b360fe8_845dd7fd",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7e5f31_dc29e6b8",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 21
@@ -118,6 +208,24 @@
       "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0caee3da_fc088d32",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d7e5f31_dc29e6b8",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +281,24 @@
     },
     {
       "key": {
+        "uuid": "16bdac22_7cbf9f02",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae3600b1_782f481f",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0ec3f16_8d3cb346",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 21
@@ -187,6 +313,24 @@
       "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b858609b_a813ae6b",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0ec3f16_8d3cb346",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -207,6 +351,24 @@
     },
     {
       "key": {
+        "uuid": "8bd64f78_f1cea2ca",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "893d7d7b_8b691b9b",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c87ea9d4_6ec5cd24",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 21
@@ -221,6 +383,24 @@
       "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6be832bc_9a6709ba",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c87ea9d4_6ec5cd24",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -241,6 +421,24 @@
     },
     {
       "key": {
+        "uuid": "6c9e6278_078b1ece",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "320cbe4f_8b1ae7b3",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96347951_eb4c6603",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 21
@@ -255,6 +453,24 @@
       "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98eff7a5_92e69589",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96347951_eb4c6603",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -275,6 +491,24 @@
     },
     {
       "key": {
+        "uuid": "fb29abd6_fe10187a",
+        "filename": "driver/accelgyro_bmi260.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2048244_402bedaf",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80524c5a_17deb4ad",
         "filename": "driver/accelgyro_bmi_common.c",
         "patchSetId": 21
@@ -289,6 +523,24 @@
       "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd39ee3d_798fc0e9",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80524c5a_17deb4ad",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -341,6 +593,24 @@
       "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1992405a_d95a9a2c",
+        "filename": "driver/build.mk",
+        "patchSetId": 21
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-20T11:49:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b385fa2_81993cbd",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
