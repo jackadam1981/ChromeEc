@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0db56ad7_235cd6a9",
+        "filename": "board/eve/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-20T21:00:43Z",
+      "side": 1,
+      "message": "just #undef CONFIG_KEYBOARD_VIVALDI here instead",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 39
+      },
+      "revId": "9607a57aecd455e445f6d1aac868f65e9a7eb47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69e24551_9763e53e",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2371,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-20T21:00:43Z",
+      "side": 1,
+      "message": "we don\u0027t need a new config for this.",
+      "range": {
+        "startLine": 2370,
+        "startChar": 1,
+        "endLine": 2371,
+        "endChar": 38
+      },
+      "revId": "9607a57aecd455e445f6d1aac868f65e9a7eb47a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
