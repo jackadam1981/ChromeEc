@@ -247,6 +247,19 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
 }
 
+/* SD Card */
+void board_enable_sd_card(void)
+{
+	/* Enable power to SD Card (LOD5, LDO3) */
+	i2c_write16(0, 0x64, 0x0b, 0x05c0);
+	i2c_write16(0, 0x64, 0x05, 54208);
+
+	/* Set LOD5, LDO3 to 3.3V */
+	i2c_write16(0, 0x64, 0x0f, 0xb355);
+	i2c_write16(0, 0x64, 0x09, 24528);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_enable_sd_card, HOOK_PRIO_DEFAULT);
+
 static struct mutex g_base_mutex;
 
 static struct bmi160_drv_data_t g_bmi160_data;
