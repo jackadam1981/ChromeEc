@@ -46,6 +46,30 @@
       "revId": "8f97ceae86ac230c4be63c5eefc7952655098888",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670bc30f_93c2b3c4",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-21T17:56:38Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "e079e626_6b3f974e",
+      "range": {
+        "startLine": 487,
+        "startChar": 5,
+        "endLine": 487,
+        "endChar": 30
+      },
+      "revId": "8f97ceae86ac230c4be63c5eefc7952655098888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
