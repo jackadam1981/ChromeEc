@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "93cdd889_f4c7d8cd",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-21T00:51:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d3e885e9_078d6344",
+      "range": {
+        "startLine": 546,
+        "startChar": 2,
+        "endLine": 546,
+        "endChar": 32
+      },
+      "revId": "dbc7b758d4c985badfb6f4ceecffcee8e50296ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25932565_37006bc8",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "dbc7b758d4c985badfb6f4ceecffcee8e50296ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07e58ac2_19794a65",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-21T00:51:20Z",
+      "side": 1,
+      "message": "Good catch, I missed that.",
+      "parentUuid": "25932565_37006bc8",
+      "revId": "dbc7b758d4c985badfb6f4ceecffcee8e50296ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
