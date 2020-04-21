@@ -46,6 +46,30 @@
       "revId": "e20d8f8984966314ef08645dbb50bbd682782907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924693f8_10efd749",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-04-21T01:47:17Z",
+      "side": 1,
+      "message": "that\u0027s probably copied from somewhere. we can just keep one CONFIG_VBOOT_HASH. There are two CONFIG_VBOOT_HASH here.",
+      "parentUuid": "7c1f3570_cac14f66",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "e20d8f8984966314ef08645dbb50bbd682782907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
