@@ -172,6 +172,7 @@ const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_deassert_list);
 /******************************************************************************/
 /* PWM configuration */
 const struct pwm_t pwm_channels[] = {
+#ifndef BOARD_MALEFOR
 	[PWM_CH_LED1_BLUE] = {
 		.channel = 2,
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
@@ -187,6 +188,7 @@ const struct pwm_t pwm_channels[] = {
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
 		.freq = 2400,
 	},
+#endif
 	[PWM_CH_LED4_SIDESEL] = {
 		.channel = 7,
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
