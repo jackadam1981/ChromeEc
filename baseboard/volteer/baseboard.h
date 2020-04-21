@@ -239,16 +239,6 @@ enum adc_channel {
 	ADC_CH_COUNT
 };
 
-enum pwm_channel {
-	PWM_CH_LED1_BLUE = 0,
-	PWM_CH_LED2_GREEN,
-	PWM_CH_LED3_RED,
-	PWM_CH_LED4_SIDESEL,
-	PWM_CH_FAN,
-	PWM_CH_KBLIGHT,
-	PWM_CH_COUNT
-};
-
 enum fan_channel {
 	FAN_CH_0 = 0,
 	/* Number of FAN channels */
