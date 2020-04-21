@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "1389df21_b1ee65fd",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-21T00:10:47Z",
+      "side": 1,
+      "message": "Converting its meaning from a timer status to a INT_AP status.",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 42
+      },
+      "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96059d7c_6250ef21",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 13
@@ -45,6 +68,30 @@
       "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea58fec_749adb61",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-21T00:10:47Z",
+      "side": 1,
+      "message": "Realized, that this function is called by ISRs only. Removing this.",
+      "parentUuid": "96059d7c_6250ef21",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "46c662b4_ca6680e9",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-21T00:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab547a02_0278be36",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 37
+      },
+      "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfa12e7a_a1b3e86b",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 13
@@ -91,6 +162,30 @@
       "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "141deb59_8a10b7bf",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-21T00:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfa12e7a_a1b3e86b",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "ff1fa381_ed2c76c0",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-21T00:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8c64107_6d1366f2",
+      "range": {
+        "startLine": 146,
+        "startChar": 5,
+        "endLine": 146,
+        "endChar": 19
+      },
+      "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70badc9b_7209c922",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 13
@@ -137,6 +256,30 @@
       "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "522feb6c_6b7eb988",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-21T00:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70badc9b_7209c922",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 45
+      },
+      "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "2c08c365_c7f4a9f7",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-21T00:10:47Z",
+      "side": 1,
+      "message": "sps_register_rx_handler() can be called to stop sps interface. GC_IRQNUM_TIMEHS0_TIMINT1 should be disabled in that case.",
+      "parentUuid": "65702058_e3048c04",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 28
+      },
+      "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "290602cf_a8373122",
         "filename": "chip/g/sps.c",
         "patchSetId": 13
@@ -183,6 +350,30 @@
       "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bd87eaf_6f431c0b",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-21T00:10:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "290602cf_a8373122",
+      "range": {
+        "startLine": 347,
+        "startChar": 7,
+        "endLine": 347,
+        "endChar": 30
+      },
+      "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
