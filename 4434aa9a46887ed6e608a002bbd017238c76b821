@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6208c4f9_dfa90942",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-21T18:05:52Z",
+      "side": 1,
+      "message": "__maybe_unused \n\nor ifdef CONFIG_USB_PD_ALT_MODE_DFP",
+      "parentUuid": "f58f33ff_a5e923be",
+      "range": {
+        "startLine": 648,
+        "startChar": 2,
+        "endLine": 648,
+        "endChar": 56
+      },
+      "revId": "4434aa9a46887ed6e608a002bbd017238c76b821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5dc459ee_9f527a2f",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
