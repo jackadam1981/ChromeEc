@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "1d94adf4_f967b4ba",
+        "filename": "board/malefor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-04-21T03:12:33Z",
+      "side": 1,
+      "message": "Dear Keith,\nThe return value(0x0100) should be right. It would not be 0x0000 after enable shipping mode. \nThe messages below are from OEM Specification for your reference. \n\nTurn OFF D-FET (Enable ship mode)\n1. Write “0x0000” to Battery by 0x34(W)\n2. Write “0x1000” to Battery by 0x34(W)\n3. Turn OFF D-FET and return “0x0100” for 0x34(R)",
+      "parentUuid": "1daea22c_5e0810a2",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "bc302f40de2429136f97dbd538a3e21bbc1a77c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7f64b88_e7ab6881",
         "filename": "board/malefor/battery.c",
         "patchSetId": 1
