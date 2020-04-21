@@ -106,6 +106,7 @@
  * option to be able to select interrupt or polling (foced mode).
  */
 #undef CONFIG_ACCEL_LIS2DW_AS_BASE
+#undef CONFIG_ACCEL_LIS2DS_AS_BASE
 
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_BMI260

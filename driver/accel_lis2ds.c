@@ -26,7 +26,12 @@
 
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
+
+#ifdef CONFIG_ACCEL_LIS2DS_AS_BASE
+
 STATIC_IF(CONFIG_ACCEL_FIFO) volatile uint32_t last_interrupt_timestamp;
+
+#ifdef CONFIG_ACCEL_FIFO
 
 /**
  * lis2ds_enable_fifo - Enable/Disable FIFO in LIS2DS12
@@ -80,6 +85,10 @@ static int lis2ds_load_fifo(struct motion_sensor_t *s, uint16_t nsamples,
 
 	return read_len;
 }
+
+#endif /* CONFIG_ACCEL_FIFO */
+
+#ifdef CONFIG_ACCEL_INTERRUPTS
 
 __maybe_unused static int lis2ds_config_interrupt(const struct motion_sensor_t *s)
 {
@@ -162,6 +171,9 @@ __maybe_unused static int lis2ds_irq_handler(struct motion_sensor_t *s,
 	return ret;
 }
 
+#endif /* CONFIG_ACCEL_INTERRUPTS */
+#endif /* CONFIG_ACCEL_LIS2DS_AS_BASE */
+
 /**
  * set_range - set full scale range
  * @s: Motion sensor pointer
@@ -185,11 +197,36 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 	reg_val = LIS2DS_FS_REG(newrange);
 
 	mutex_lock(s->mutex);
-	err = st_write_data_with_mask(s, LIS2DS_FS_ADDR, LIS2DS_FS_MASK,
-				      reg_val);
+
+#if defined(CONFIG_ACCEL_FIFO) && defined(CONFIG_ACCEL_LIS2DS_AS_BASE)
+	/*
+	 * FIFO stop collecting events. Restart FIFO in Bypass mode.
+	 * If the range is changed, all samples in FIFO must be discharged
+	 * because of a different sensitivity.
+	 */
+	ret = lis2ds_enable_fifo(s, LIS2DS_FIFO_BYPASS_MODE);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to disable FIFO. Error: %d", ret);
+		goto unlock_range;
+	}
+#endif
+
+	err = st_write_data_with_mask(s, LIS2DS_FS_ADDR,
+				      LIS2DS_FS_MASK, reg_val);
 	if (err == EC_SUCCESS)
 		/* Save internally gain for speed optimization. */
 		data->base.range = newrange;
+
+#if defined(CONFIG_ACCEL_FIFO) && defined(CONFIG_ACCEL_LIS2DS_AS_BASE)
+	/* FIFO restart collecting events in Continuous mode. */
+	ret = lis2ds_enable_fifo(s, LIS2DS_FIFO_CONT_MODE);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to enable FIFO. Error: %d", ret);
+		goto unlock_range;
+	}
+
+unlock_range:
+#endif
 	mutex_unlock(s->mutex);
 
 	return EC_SUCCESS;
@@ -209,14 +246,15 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	uint8_t reg_val = 0;
 
 	mutex_lock(s->mutex);
-	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
-		/* FIFO stop collecting events. Restart FIFO in Bypass mode */
-		ret = lis2ds_enable_fifo(s, LIS2DS_FIFO_BYPASS_MODE);
-		if (ret != EC_SUCCESS) {
-			CPRINTS("Failed to disable FIFO. Error: %d", ret);
-			goto unlock_rate;
-		}
+
+#if defined(CONFIG_ACCEL_FIFO) && defined(CONFIG_ACCEL_LIS2DS_AS_BASE)
+	/* FIFO stop collecting events. Restart FIFO in Bypass mode */
+	ret = lis2ds_enable_fifo(s, LIS2DS_FIFO_BYPASS_MODE);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to disable FIFO. Error: %d", ret);
+		goto unlock_rate;
 	}
+#endif
 
 	/* Avoid LIS2DS_ODR_TO_REG to manage 0 mHz rate */
 	if (rate > 0) {
@@ -237,17 +275,17 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 
 	ret = st_write_data_with_mask(s, LIS2DS_ACC_ODR_ADDR,
 				      LIS2DS_ACC_ODR_MASK, reg_val);
-	if (ret == EC_SUCCESS) {
+	if (ret == EC_SUCCESS)
 		data->base.odr = normalized_rate;
 
-		if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
-			/* FIFO restart collecting events in Cont. mode. */
-			ret = lis2ds_enable_fifo(s, LIS2DS_FIFO_CONT_MODE);
-			if (ret != EC_SUCCESS)
-				CPRINTS("Failed to enable FIFO. Error: %d",
-					ret);
-		}
+#if defined(CONFIG_ACCEL_FIFO) && defined(CONFIG_ACCEL_LIS2DS_AS_BASE)
+	/* FIFO restart collecting events in Continuous mode. */
+	ret = lis2ds_enable_fifo(s, LIS2DS_FIFO_CONT_MODE);
+	if (ret != EC_SUCCESS) {
+		CPRINTS("Failed to enable FIFO. Error: %d", ret);
+		goto unlock_rate;
 	}
+#endif
 
 unlock_rate:
 	mutex_unlock(s->mutex);
@@ -349,11 +387,11 @@ static int init(const struct motion_sensor_t *s)
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
 
-#ifdef CONFIG_ACCEL_INTERRUPTS
+#if defined(CONFIG_ACCEL_INTERRUPTS) && defined(CONFIG_ACCEL_LIS2DS_AS_BASE)
 	ret = lis2ds_config_interrupt(s);
 	if (ret != EC_SUCCESS)
 		goto err_unlock;
-#endif /* CONFIG_ACCEL_INTERRUPTS */
+#endif
 
 	mutex_unlock(s->mutex);
 
@@ -380,7 +418,7 @@ const struct accelgyro_drv lis2ds_drv = {
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 	.perform_calib = NULL,
-#ifdef CONFIG_ACCEL_INTERRUPTS
+#if defined(CONFIG_ACCEL_INTERRUPTS) && defined(CONFIG_ACCEL_LIS2DS_AS_BASE)
 	.irq_handler = lis2ds_irq_handler,
-#endif /* CONFIG_ACCEL_INTERRUPTS */
+#endif /* CONFIG_ACCEL_INTERRUPTS && CONFIG_ACCEL_LIS2DS_AS_BASE */
 };
