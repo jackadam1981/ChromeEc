@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8992b87f_a51ddc6c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-21T20:20:54Z",
+      "side": 1,
+      "message": "I\u0027m thinking of the case where HV_DR is set to sink, but we are sourcing from the 5V path. You\u0027re right that with the current driver the HV_DR should be set, but that is an implementation detail and while the 5V channel is selected, the HV_DR is a don\u0027t-care AFAICT from experimentation. I\u0027m just thinking for robustness sake, reading this bit doesn\u0027t really tell us what we need to know since arbitrary register writes could trick it, which defeats the purpose of a reset.\n\nI suppose the real correct check is to check all 3: CH_SEL, HV_DR, and POWER_ENB.",
+      "parentUuid": "073cc194_d97590d5",
+      "range": {
+        "startLine": 494,
+        "startChar": 18,
+        "endLine": 494,
+        "endChar": 41
+      },
+      "revId": "b7fc456ab9e49078c73348166e8da40aebac4fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21501612_fadd67dd",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 1
