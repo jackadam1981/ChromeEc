@@ -22,6 +22,30 @@
       "revId": "b7fc456ab9e49078c73348166e8da40aebac4fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "073cc194_d97590d5",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-21T19:54:19Z",
+      "side": 1,
+      "message": "The spec seems incomplete with regards to CH_SEL and HV_DR.  Only the high voltage path is bidirectional, so in theory just enabling the 5V path will also put the PPC into source mode.  However the spec doesn\u0027t indicate what happens if HV_DR is clear (enabling sink mode) and CH_SEL is clear (enble 5V).\n\nThe EC driver implementation unconditionally sets HV_DR and clears CH_SEL when enabling source mode. When enabling SINK, we do the opposite - clear HV_DR and set CH_SEL.\n\nSo based on the EC driver - we could check either CH_SEL or HV_DR here.  I chose HV_DR specifically because the register description ties this to source/sink mode.\n\nPOWER_ENB is probably worth checking.  If the FETs are off, it should be safe to perform the reset.",
+      "parentUuid": "7a18bf57_3d179115",
+      "range": {
+        "startLine": 494,
+        "startChar": 18,
+        "endLine": 494,
+        "endChar": 41
+      },
+      "revId": "b7fc456ab9e49078c73348166e8da40aebac4fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
