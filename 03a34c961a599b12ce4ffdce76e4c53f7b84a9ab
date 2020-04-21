@@ -22,6 +22,30 @@
       "revId": "03a34c961a599b12ce4ffdce76e4c53f7b84a9ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dfb11a9_f32f92cc",
+        "filename": "chip/npcx/config_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-04-21T02:16:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f947b089_1d0405b1",
+      "range": {
+        "startLine": 13,
+        "startChar": 36,
+        "endLine": 13,
+        "endChar": 44
+      },
+      "revId": "03a34c961a599b12ce4ffdce76e4c53f7b84a9ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
