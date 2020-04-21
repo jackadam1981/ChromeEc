@@ -476,6 +476,30 @@
     },
     {
       "key": {
+        "uuid": "2cd7f0a9_7203c931",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-04-21T02:15:37Z",
+      "side": 1,
+      "message": "I think I\u0027m struggling to see why we even would want an integral term.  To get the integral to zero you have to have an equivalently-sized error in the opposite direction, but we don\u0027t want that.\n\nI think at best we should be zeroing the integral when we cross the target current...but I\u0027m not a controls expert so maybe my intuition is all wrong.",
+      "parentUuid": "97e64579_01cbd10d",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d192e6e_9420ddd6",
         "filename": "common/ocpc.c",
         "patchSetId": 3
