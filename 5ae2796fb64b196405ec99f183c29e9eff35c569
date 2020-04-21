@@ -22,6 +22,30 @@
       "revId": "5ae2796fb64b196405ec99f183c29e9eff35c569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf94dbf_97bcf0e2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4801,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-21T17:09:42Z",
+      "side": 1,
+      "message": "Number matches the bullets in the spec, so I\u0027d lean towards either keeping it as a 2 or changing to a \"-\"",
+      "parentUuid": "16d5ac4c_65b5f59d",
+      "range": {
+        "startLine": 4801,
+        "startChar": 7,
+        "endLine": 4801,
+        "endChar": 9
+      },
+      "revId": "5ae2796fb64b196405ec99f183c29e9eff35c569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
