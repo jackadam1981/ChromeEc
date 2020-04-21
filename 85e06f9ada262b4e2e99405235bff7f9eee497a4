@@ -709,6 +709,30 @@
     },
     {
       "key": {
+        "uuid": "81359eed_bd841a40",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-21T19:17:30Z",
+      "side": 1,
+      "message": "Ok, so the old wording isn\u0027t right, but this is still wrong. If someone runs 0.4.1, ccd will not work and that fits into 0.4.X.",
+      "parentUuid": "1996eb46_6c381bfa",
+      "range": {
+        "startLine": 157,
+        "startChar": 22,
+        "endLine": 157,
+        "endChar": 40
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65353b1d_13786111",
         "filename": "docs/case_closed_debugging_cr50.md",
         "patchSetId": 13
@@ -1847,6 +1871,30 @@
       "writtenOn": "2020-04-08T01:30:43Z",
       "side": 1,
       "message": "should be mentioned earlier, where \u0027version\u0027 command output is shown",
+      "range": {
+        "startLine": 679,
+        "startChar": 68,
+        "endLine": 680,
+        "endChar": 69
+      },
+      "revId": "85e06f9ada262b4e2e99405235bff7f9eee497a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f96554e_6785e4fe",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-04-21T19:17:30Z",
+      "side": 1,
+      "message": "I agree this needs to be mentioned earlier.",
+      "parentUuid": "8bdedb4c_ffa7b511",
       "range": {
         "startLine": 679,
         "startChar": 68,
