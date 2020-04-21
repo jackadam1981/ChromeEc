@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a18bf57_3d179115",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-04-21T18:18:11Z",
+      "side": 1,
+      "message": "While the comments above seem to disagree, and I think the logic will work as long as nobody changes the vbus_source_enable function or manually sets this bit, I think this isn\u0027t the bit we need to check. This just says the direction of the HV path, but it could always be 0 even when we\u0027re sourcing. This doesn\u0027t enable the sink path or choose the path we are using. \n\nI think we need to check the power_enb and ch_sel bits.",
+      "range": {
+        "startLine": 494,
+        "startChar": 18,
+        "endLine": 494,
+        "endChar": 41
+      },
+      "revId": "b7fc456ab9e49078c73348166e8da40aebac4fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
