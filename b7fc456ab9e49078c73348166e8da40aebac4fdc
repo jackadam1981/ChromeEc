@@ -46,6 +46,75 @@
       "revId": "b7fc456ab9e49078c73348166e8da40aebac4fdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21501612_fadd67dd",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-21T20:10:12Z",
+      "side": 1,
+      "message": "Nit: \"and thermal shutdown.\"",
+      "range": {
+        "startLine": 523,
+        "startChar": 13,
+        "endLine": 523,
+        "endChar": 29
+      },
+      "revId": "b7fc456ab9e49078c73348166e8da40aebac4fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693c6a39_a816b78f",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-21T20:10:12Z",
+      "side": 1,
+      "message": "Nit: The consecutive 0 and O are slightly hard to parse. How do you feel about an underscore here?",
+      "range": {
+        "startLine": 62,
+        "startChar": 26,
+        "endLine": 62,
+        "endChar": 28
+      },
+      "revId": "b7fc456ab9e49078c73348166e8da40aebac4fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e717ef_5a0c4f1c",
+        "filename": "driver/ppc/syv682x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-21T20:10:12Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be 1600?",
+      "range": {
+        "startLine": 65,
+        "startChar": 24,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "b7fc456ab9e49078c73348166e8da40aebac4fdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
