@@ -69,6 +69,30 @@
       "revId": "06844a28625fdaf61fd96745c7b5b73b7ee07490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0a9dc16_a7d487a9",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-21T18:30:07Z",
+      "side": 1,
+      "message": "3. I\u0027m also talking to the rest of the fingerprint team for this.",
+      "parentUuid": "adc61277_05352172",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 25
+      },
+      "revId": "06844a28625fdaf61fd96745c7b5b73b7ee07490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
