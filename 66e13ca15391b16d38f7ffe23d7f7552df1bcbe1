@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d49b07d8_2184dae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-21T00:11:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd9f20ea_6d6f38d3",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 5
+      },
+      "revId": "66e13ca15391b16d38f7ffe23d7f7552df1bcbe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1389df21_b1ee65fd",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 13
