@@ -240,9 +240,11 @@ enum adc_channel {
 };
 
 enum pwm_channel {
+#ifndef BOARD_MALEFOR
 	PWM_CH_LED1_BLUE = 0,
 	PWM_CH_LED2_GREEN,
 	PWM_CH_LED3_RED,
+#endif
 	PWM_CH_LED4_SIDESEL,
 	PWM_CH_FAN,
 	PWM_CH_KBLIGHT,
