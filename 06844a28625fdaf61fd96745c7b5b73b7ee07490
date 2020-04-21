@@ -22,6 +22,53 @@
       "revId": "06844a28625fdaf61fd96745c7b5b73b7ee07490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e2ec416_fb098638",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-21T18:01:53Z",
+      "side": 1,
+      "message": "I don\u0027t know. What was the use case of allowing u2f_generate without presence, besides for PIN?\n\nThis will change again anyways when we support that crypto scheme based on auth-time secrets.",
+      "parentUuid": "78ddb19c_a88e32c7",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 10
+      },
+      "revId": "06844a28625fdaf61fd96745c7b5b73b7ee07490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adc61277_05352172",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-04-21T18:01:53Z",
+      "side": 1,
+      "message": "Comments on the CL, moved here for better discoverability:\n1. \u003e\u003e\u003e\u003e\u003e\u003e\u003e Looks like this will work as described, however, we should think about consume (eg how long is the line asserted for?) - we don\u0027t want to allow multiple assertions for one press.\n\nI\u0027m currently using 10 seconds timeout in FPMCU, meaning after 10 seconds, the line is deasserted. I believe 5 seconds will also work. The assertion needs to last long enough for cryptohome to tell UI to tell u2fd to tell cr50 to check it.\n\n2. \u003e\u003e\u003e\u003e\u003e\u003e\u003e Is the GPIO_DIOM4 line *always* guaranteed, on every device, to be wired to either the FPMCU or nothing? And do we have a guarantee that this line will only be asserted when there was a match, including on older versions of FPMCU firmware that don\u0027t know to signal to cr50 (it was always be false there)?\n\nWe checked existing fingerprint devices and the line works for them. I checked with Vadim and currently there\u0027s no plan to connect DIOM4 to anything else. I think the spirit of https://crrev/c/2076499 is to view DIOM4 as a source of presence, even if it\u0027s connected to something else in the future.\n\nThe line is pulled high by default, and asserted only if the other end (FPMCU) sets it to low. So older FPMCU firmware cannot assert this line.\n\n3. \u003e\u003e\u003e\u003e\u003e\u003e\u003e Also, I thought we were going to only allow this for the \u0027new\u0027 key handles?\nI thought we would only differentiate \"old\" and \"new\" key handles for password/PIN, since DIOM4 seems as strong as power button. Two options:\n(a) Power button works for all key handles, DIOM4 and crypto scheme works only for \"new\" i.e. versioned key handles.\n(b) Power button and DIOM4 work for all key handles, crypto scheme works only for \"new\" i.e. versioned key handles.\nBut, since the reliability of DIOM4 may change in the future (as discussed in 2), you may be right, it\u0027s safer to choose (b) to keep the ability to iterate on how we apply DIOM4.",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 25
+      },
+      "revId": "06844a28625fdaf61fd96745c7b5b73b7ee07490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
