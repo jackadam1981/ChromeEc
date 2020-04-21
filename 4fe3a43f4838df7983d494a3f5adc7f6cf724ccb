@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "68a01439_73a9eed9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-21T19:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8361ea_438485d0",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 39
+      },
+      "revId": "4fe3a43f4838df7983d494a3f5adc7f6cf724ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46893bdd_dbc4b517",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 20
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a9089bdf_3f71da4e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-21T19:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46893bdd_dbc4b517",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 39
+      },
+      "revId": "4fe3a43f4838df7983d494a3f5adc7f6cf724ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01e09392_a953850f",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 20
@@ -68,6 +116,30 @@
       "revId": "4fe3a43f4838df7983d494a3f5adc7f6cf724ccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e159ee22_6f121132",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-21T19:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01e09392_a953850f",
+      "range": {
+        "startLine": 569,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 45
+      },
+      "revId": "4fe3a43f4838df7983d494a3f5adc7f6cf724ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
