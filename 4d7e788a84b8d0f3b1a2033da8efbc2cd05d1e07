@@ -22,6 +22,30 @@
       "revId": "4d7e788a84b8d0f3b1a2033da8efbc2cd05d1e07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7bf167f_2f114040",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-21T21:14:26Z",
+      "side": 1,
+      "message": "Doing it is to minimize the impact to the existing PD FAFT. Before this patch, servo v4 acts as a dongle with no DP alt-mode supported, i.e. the \"return 0\" case. As PD FAFT doesn\u0027t require plugging a monitor to the servo v4, so the behavior has no change.\n\nI am afraid enabling DP alt-mode may cause issues on some devices. So enable it step-by-step. Some following CL will change this condition to a user config. A test can explicitly enable or disable the DP-alt-mode.",
+      "parentUuid": "1e505062_0f19ec24",
+      "range": {
+        "startLine": 792,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 1
+      },
+      "revId": "4d7e788a84b8d0f3b1a2033da8efbc2cd05d1e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
