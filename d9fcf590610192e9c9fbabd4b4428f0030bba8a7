@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81961c09_1b2b472c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-21T22:45:23Z",
+      "side": 1,
+      "message": "how about naming get_tcpm_transit_msg_type()?",
+      "range": {
+        "startLine": 476,
+        "startChar": 31,
+        "endLine": 476,
+        "endChar": 48
+      },
+      "revId": "d9fcf590610192e9c9fbabd4b4428f0030bba8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
