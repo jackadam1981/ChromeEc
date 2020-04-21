@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f58f33ff_a5e923be",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-21T18:01:01Z",
+      "side": 1,
+      "message": "It gives unused variable error",
+      "parentUuid": "65291428_d0e8f433",
+      "range": {
+        "startLine": 648,
+        "startChar": 2,
+        "endLine": 648,
+        "endChar": 56
+      },
+      "revId": "4434aa9a46887ed6e608a002bbd017238c76b821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5dc459ee_9f527a2f",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
