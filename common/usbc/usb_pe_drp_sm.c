@@ -551,8 +551,6 @@ static void pe_init(int port)
 	pe[port].no_response_timer = TIMER_DISABLED;
 	pe[port].data_role = pd_get_data_role(port);
 	pe[port].tx_type = -1;
-	/* HACK */
-	pd_set_modes_discovery(port, TCPC_TX_SOP, PD_DISC_NEEDED);
 
 	tc_pd_connection(port, 0);
 
@@ -4503,10 +4501,14 @@ static void pe_init_port_vdm_svids_request_run(int port)
 static void pe_init_vdm_modes_request_entry(int port)
 {
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
-	const struct pd_discovery *disc = pd_get_am_discovery(port);
 	/* TODO: Support SOP' */
-	const struct svid_data_s *svid_disc = &disc->svids[TCPC_TX_SOP];
-	const uint16_t svid = svid_disc->svids[disc->svid_idx].svid;
+	const int32_t svid = pd_get_next_svid_for_discovery(port, TCPC_TX_SOP);
+
+	if (svid == -1) {
+		CPRINTF("C%d: No more modes to discover\n", port);
+		set_state_pe(port, get_last_state_pe(port));
+		return;
+	}
 
 	print_current_state(port);
 
@@ -4517,7 +4519,7 @@ static void pe_init_vdm_modes_request_entry(int port)
 	}
 	CPRINTF("%s: TX type %d\n", __func__, pe[port].tx_type);
 
-	msg[0] = VDO(svid, 1,
+	msg[0] = VDO((uint16_t) svid, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
 			DISCOVER_MODES);
 	tx_emsg[port].len = sizeof(uint32_t);
@@ -4534,6 +4536,13 @@ static void pe_init_vdm_modes_request_run(int port)
 		uint8_t type;
 		uint8_t cnt;
 		uint8_t ext;
+		const uint16_t requested_svid =
+			(uint16_t) pd_get_next_svid_for_discovery(
+					port, TCPC_TX_SOP);
+		/* Should be nonnegative due to check in entry function. This
+		 * interface would make more sense if we got a pointer to a
+		 * struct svdm_svid_data. */
+
 
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
@@ -4569,7 +4578,7 @@ static void pe_init_vdm_modes_request_run(int port)
 				CPRINTF("%s: NAK\n", __func__);
 				/* PE_INIT_VDM_SVIDs_NAKed embedded here */
 				pd_set_modes_discovery(port, pe[port].tx_type,
-						PD_DISC_FAIL);
+						requested_svid, PD_DISC_FAIL);
 			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_BUSY) {
 				/*
 				 * Don't fill in the discovery field so we
@@ -4586,7 +4595,7 @@ static void pe_init_vdm_modes_request_run(int port)
 				 * mark discovery as failed
 				 */
 				pd_set_modes_discovery(port, pe[port].tx_type,
-						PD_DISC_FAIL);
+						requested_svid, PD_DISC_FAIL);
 				CPRINTS("C%d: Unexpected DiscSVID response: "
 						"0x%04x 0x%04x",
 						port, rx_emsg[port].header,

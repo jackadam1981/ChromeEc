@@ -1763,10 +1763,12 @@ int pd_get_svid_count(int port);
 uint16_t pd_get_svid(int port, uint16_t svid_idx);
 
 void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
-		enum pd_discovery_state disc);
+		uint16_t svid, enum pd_discovery_state disc);
 
 enum pd_discovery_state pd_get_modes_discovery(int port,
 		enum tcpm_transmit_type type);
+
+int32_t pd_get_next_svid_for_discovery(int port, enum tcpm_transmit_type type);
 
 /**
  * Return the pointer to modes of VDO of port partner connected

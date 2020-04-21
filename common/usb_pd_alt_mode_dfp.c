@@ -378,7 +378,8 @@ void dfp_consume_modes(int port, int cnt, uint32_t *payload)
 	}
 
 	disc->svid_idx++;
-	pd_set_modes_discovery(port, TCPC_TX_SOP, PD_DISC_COMPLETE);
+	pd_set_modes_discovery(port, TCPC_TX_SOP, svid_disc->svids[idx].svid,
+			PD_DISC_COMPLETE);
 }
 
 int dfp_discover_modes(int port, uint32_t *payload)
@@ -482,19 +483,59 @@ uint16_t pd_get_svid(int port, uint16_t svid_idx)
 }
 
 void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
-		enum pd_discovery_state disc)
+		uint16_t svid, enum pd_discovery_state disc)
 {
-	struct pd_discovery *pd = pd_get_am_discovery(port);
+	struct svid_data_s *svid_disc =
+		&pd_get_am_discovery(port)->svids[type];
 
-	pd->modes_discovery = disc;
+	for (int i = 0; i < svid_disc->cnt; ++i) {
+		/* Horrible names */
+		struct svdm_svid_data *data = &svid_disc->svids[i];
+		if (data->svid != svid) continue;
+
+		data->discovery = disc;
+		return;
+	}
 }
 
 enum pd_discovery_state pd_get_modes_discovery(int port,
 		enum tcpm_transmit_type type)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
+	struct svid_data_s *svid_disc = &disc->svids[type];
 
-	return disc->modes_discovery;
+	for (int i = 0; i < svid_disc->cnt; ++i) {
+		enum pd_discovery_state discovery = svid_disc->svids[i].discovery;
+		/*
+		 * This makes it so that if mode discovery fails for any SVID,
+		 * none of the subsequent ones are attempted. Is this
+		 * appropriate?
+		 */
+		if (discovery == PD_DISC_FAIL || discovery == PD_DISC_NEEDED)
+			return discovery;
+	}
+
+	return PD_DISC_COMPLETE;
+}
+
+int32_t pd_get_next_svid_for_discovery(int port, enum tcpm_transmit_type type) {
+	struct pd_discovery *disc = pd_get_am_discovery(port);
+	struct svid_data_s *svid_disc = &disc->svids[type];
+
+	for (int i = 0; i < svid_disc->cnt; ++i) {
+		enum pd_discovery_state discovery = svid_disc->svids[i].discovery;
+		/*
+		 * This makes it so that if mode discovery fails for any SVID,
+		 * none of the subsequent ones are attempted. Is this
+		 * appropriate?
+		 */
+		if (discovery == PD_DISC_FAIL)
+			return -1;
+		if (discovery == PD_DISC_NEEDED)
+			return svid_disc->svids[i].svid;
+	}
+
+	return -1;
 }
 
 uint32_t *pd_get_mode_vdo(int port, uint16_t svid_idx)
