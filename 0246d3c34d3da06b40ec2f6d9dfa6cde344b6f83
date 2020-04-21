@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5b1a67c_1e20a1a0",
+        "filename": "include/ocpc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-21T22:20:41Z",
+      "side": 1,
+      "message": "nit: if these are instead an enum similar to the one in dedede\u0027s baseboard.h, then there would be an enum value representing the total chargers, which could be used if we need any other charger-related arrays at compile-time (ex. for mutexes in the driver to gate RMW sequences on the same register)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "0246d3c34d3da06b40ec2f6d9dfa6cde344b6f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
