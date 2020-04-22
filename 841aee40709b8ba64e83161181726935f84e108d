@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "505e5694_95289ac7",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-22T15:53:17Z",
+      "side": 1,
+      "message": "If this is intended as a general replacement for PD_GET_HEADER_SOP, it should be defined in a way that it can be used by all of the consumers of that macro.",
+      "range": {
+        "startLine": 476,
+        "startChar": 31,
+        "endLine": 476,
+        "endChar": 57
+      },
+      "revId": "841aee40709b8ba64e83161181726935f84e108d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7593de3_57430263",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-22T15:53:17Z",
+      "side": 1,
+      "message": "This looks like it changes the check for transmit type from looking at the header of the incoming message to looking at the state of the cable, but maybe I am missing something. Is this what you intended?",
+      "range": {
+        "startLine": 785,
+        "startChar": 11,
+        "endLine": 785,
+        "endChar": 37
+      },
+      "revId": "841aee40709b8ba64e83161181726935f84e108d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
