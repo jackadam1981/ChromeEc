@@ -321,8 +321,6 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_G3S5:
 		forcing_shutdown = 0;
 
-		gpio_set_level(GPIO_EN_PP5000_A, 1);
-
 		/* Power up to next state */
 		return POWER_S5;
 
@@ -455,8 +453,6 @@ enum power_state power_handle_state(enum power_state state)
 		/* Release the power button, in case it was long pressed. */
 		if (forcing_shutdown)
 			gpio_set_level(GPIO_EC_PMIC_EN_ODL, 1);
-
-		gpio_set_level(GPIO_EN_PP5000_A, 0);
 
 		return POWER_G3;
 	}

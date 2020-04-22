@@ -32,6 +32,7 @@
 #include "usbc_ppc.h"
 #include "version.h"
 #include "vboot.h"
+#include "ansic.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -3002,6 +3003,9 @@ void pd_task(void *u)
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 		tcpm_set_cc(port, PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE ?
 			    TYPEC_CC_RP : TYPEC_CC_RD);
+
+	CPRINTS(ANSI_GREEN("C%d vdm_state=%d task_state=%d pr=%d"), port,
+		pd[port].vdm_state, pd[port].task_state, PD_ROLE_DEFAULT(port));
 
 #ifdef CONFIG_USBC_PPC
 	/*

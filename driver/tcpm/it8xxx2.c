@@ -17,6 +17,7 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "hooks.h"
+#include "ansic.h"
 
 #if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) || \
 	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || \
@@ -514,6 +515,7 @@ static int it83xx_tcpm_set_rx_enable(int port, int enable)
 {
 	int i;
 
+	CPRINTS(ANSI_RED("C%d %s(en=%d)"),port, __func__, enable);
 	if (enable) {
 		IT83XX_USBPD_IMR(port) &= ~USBPD_REG_MASK_MSG_RX_DONE;
 		USBPD_ENABLE_BMC_PHY(port);

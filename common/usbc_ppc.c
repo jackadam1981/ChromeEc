@@ -46,9 +46,9 @@ int ppc_init(int port)
 	if (ppc->drv->init) {
 		rv = ppc->drv->init(port);
 		if (rv)
-			CPRINTS("p%d: PPC init failed! (%d)", port, rv);
+			CPRINTS("\033[1;31mp%d: PPC init failed! (%d)\033[m", port, rv);
 		else
-			CPRINTS("p%d: PPC init'd.", port);
+			CPRINTS("\033[1;36mp%d: PPC init'd.\033[m", port);
 	}
 
 	return rv;

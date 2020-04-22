@@ -15,6 +15,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "util.h"
+#include "ansic.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
