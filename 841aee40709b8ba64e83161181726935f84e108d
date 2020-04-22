@@ -93,6 +93,30 @@
       "revId": "841aee40709b8ba64e83161181726935f84e108d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b08c7202_e99a5e7d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-22T23:01:42Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll clean it up in the following CL",
+      "parentUuid": "cc7cbe72_1c4a7bfa",
+      "range": {
+        "startLine": 785,
+        "startChar": 11,
+        "endLine": 785,
+        "endChar": 37
+      },
+      "revId": "841aee40709b8ba64e83161181726935f84e108d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
