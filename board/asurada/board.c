@@ -79,11 +79,20 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+static void sub_board_init(void)
+{
+	board_get_sub_board();
+}
+DECLARE_HOOK(HOOK_INIT, sub_board_init, HOOK_PRIO_INIT_I2C - 1);
+
 static void board_tcpc_init(void)
 {
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
+	if (board_get_sub_board() == SUB_BOARD_TYPEC)
+		gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
 }
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
+/* Called after INIT_I2C */
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
@@ -172,10 +181,16 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
-	CPRINTS("\x1b[1;33m%s\x1b[m", __func__);
+	CPRINTS("\x1b[1;33mC%d %s\x1b[m",
+		signal == GPIO_USB_C0_PPC_INT_ODL ? 0 : signal == GPIO_USB_C1_PPC_INT_ODL ? 1 : 2, __func__);
 	switch (signal) {
 	case GPIO_USB_C0_PPC_INT_ODL:
-		syv682x_interrupt(0);
+		syv682x_interrupt(USBC_PORT_C0);
+		break;
+	case GPIO_USB_C1_PPC_INT_ODL:
+		if (board_get_sub_board() == SUB_BOARD_TYPEC)
+			syv682x_interrupt(USBC_PORT_C1);
+		break;
 	default:
 		break;
 	}
@@ -183,8 +198,13 @@ static void ppc_interrupt(enum gpio_signal signal)
 
 int ppc_get_alert_status(int port)
 {
-	return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
-	/* TODO: add GPIO_USB_C1_PPC_INT_ODL */
+	if (port == USBC_PORT_C0)
+		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
+
+	if (board_get_sub_board() == SUB_BOARD_TYPEC)
+		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
+
+	return 0;
 }
 
 void board_overcurrent_event(int port, int is_overcurrented)
@@ -216,11 +236,28 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 
 uint16_t tcpc_get_alert_status(void)
 {
+	/*
+	 * C0 & C1: TCPC is embedded in the EC and processes interrupts in the
+	 * chip code (it83xx/intc.c)
+	 */
 	return 0;
 }
 
 void board_reset_pd_mcu(void)
 {
+	/*
+	 * C0 & C1: The internal TCPC on ITE EC does not have a reset signal,
+	 * but it will get reset when the EC gets reset.
+	 */
+	return;
+}
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	if (board_get_sub_board() == SUB_BOARD_TYPEC)
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+	else
+		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
 }
 
 int board_get_version(void)
@@ -242,6 +279,32 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
+}
+
+/* Sub Board */
+enum board_sub_board board_get_sub_board(void)
+{
+	static enum board_sub_board sub;
+
+	if (sub != SUB_BOARD_NONE)
+		return sub;
+
+	/* HDMI board has external pull high. */
+	if (gpio_get_level(GPIO_EC_X_GPIO3)) {
+		sub = SUB_BOARD_HDMI;
+		/* TODO(b:154565980): config for hdmi sub board. */
+	} else {
+		sub = SUB_BOARD_TYPEC;
+		/* EC_X_GPIO1 */
+		gpio_set_flags(GPIO_USB_C1_FRS_EN, GPIO_OUT_LOW);
+		/* X_EC_GPIO2 */
+		gpio_set_flags(GPIO_USB_C1_PPC_INT_ODL, GPIO_INT_BOTH);
+		/* EC_X_GPIO3 */
+		gpio_set_flags(GPIO_USB_C1_DP_IN_HPD, GPIO_ODR_LOW);
+	}
+
+	CPRINTS("%s SUB", sub == SUB_BOARD_HDMI ? "HDMI" : "TYPEC");
+	return sub;
 }
 
 /* SD Card */
