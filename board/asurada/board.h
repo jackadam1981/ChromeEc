@@ -24,9 +24,10 @@
 #define CONFIG_WP_ACTIVE_HIGH
 
 /* Battery */
-#define CONFIG_BATTERY_SMART
+#define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_FUEL_GAUGE
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_EC_BATT_PRES_ODL
+#define CONFIG_BATTERY_SMART
 
 /* BC12 */
 #define CONFIG_BC12_DETECT_MT6360
@@ -54,6 +55,7 @@
 
 /* I2C */
 #define CONFIG_I2C
+#define CONFIG_I2C_DEBUG
 #define CONFIG_I2C_MASTER
 #define I2C_PORT_CHARGER IT83XX_I2C_CH_A
 #define I2C_PORT_BATTERY IT83XX_I2C_CH_A
@@ -109,6 +111,14 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
+/* GPIO name remapping */
+#define GPIO_EN_HDMI_PWR	GPIO_EC_X_GPIO1
+#define GPIO_USB_C1_FRS_EN	GPIO_EC_X_GPIO1
+#define GPIO_USB_C1_PPC_INT_ODL	GPIO_X_EC_GPIO2
+#define GPIO_PS185_EC_DP_HPD	GPIO_X_EC_GPIO2
+#define GPIO_USB_C1_DP_IN_HPD	GPIO_EC_X_GPIO3
+#define GPIO_PS185_PWRDN_ODL	GPIO_EC_X_GPIO3
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -142,9 +152,24 @@ enum power_signal {
 	POWER_SIGNAL_COUNT,
 };
 
+enum board_sub_board {
+	SUB_BOARD_NONE,
+	SUB_BOARD_TYPEC,
+	SUB_BOARD_HDMI,
+
+	SUB_BOARD_COUNT,
+};
+
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_C1,
+	USBC_PORT_COUNT
+};
+
 void board_reset_pd_mcu(void);
 int board_get_version(void);
 int board_is_sourcing_vbus(int port);
+enum board_sub_board board_get_sub_board(void);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
