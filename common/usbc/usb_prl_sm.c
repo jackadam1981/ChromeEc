@@ -84,6 +84,18 @@
 /* PD counter definitions */
 #define PD_MESSAGE_ID_COUNT 7
 
+/*
+ * Debug log level - higher number == more log
+ *   Level 0: disabled
+ *   Level 1: packet info
+ *   Level 2: Level 1
+ *   Level 3: Level 2, plus ping packet and packet dump on error
+ *
+ * Note that higher log level causes timing changes and thus may affect
+ * performance.
+ */
+static enum debug_level prl_debug_level;
+
 static enum sm_local_state local_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Protocol Transmit States (Section 6.11.2.2) */
@@ -350,6 +362,11 @@ static void prl_init(int port)
 
 	prl_hr[port].ctx = cleared;
 	set_state_prl_hr(port, PRL_HR_WAIT_FOR_REQUEST);
+}
+
+void prl_set_debug_level(enum debug_level debug_level)
+{
+	prl_debug_level = debug_level;
 }
 
 void prl_start_ams(int port)
@@ -1547,6 +1564,17 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	cnt = PD_HEADER_CNT(header);
 	msid = PD_HEADER_ID(header);
 	sop = PD_HEADER_GET_SOP(header);
+
+	/* dump received packet content (only dump ping at debug level 3) */
+	if ((prl_debug_level && type != PD_CTRL_PING) ||
+		prl_debug_level >= DEBUG_LEVEL_3) {
+		int p;
+
+		ccprintf("C%d RECV %04x/%d ", port, header, cnt);
+		for (p = 0; p < cnt; p++)
+			ccprintf("[%d]%08x ", p, pdmsg[port].rx_chk_buf[p]);
+		ccprintf("\n");
+	}
 
 	/*
 	 * Ignore messages sent to the cable from our
