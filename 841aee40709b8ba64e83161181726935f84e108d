@@ -45,6 +45,30 @@
       "revId": "841aee40709b8ba64e83161181726935f84e108d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b8674a6_f2996712",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-22T16:13:15Z",
+      "side": 1,
+      "message": "PD_GET_HEADER_SOP is not a part of PD spec, it isn\u0027t implemented on TCPMv1 and doesn\u0027t get stuffed with message type being transmitted. So, using PD_GET_HEADER_SOP will always return 0 irrespective of message type.\n\nIn case of TCPMv1, the type of messages is tracked with CABLE_FLAGS_SOP_PRIME_ENABLE, CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flags\n\nSo yes, the incoming message is checked with status of cable flags",
+      "parentUuid": "c7593de3_57430263",
+      "range": {
+        "startLine": 785,
+        "startChar": 11,
+        "endLine": 785,
+        "endChar": 37
+      },
+      "revId": "841aee40709b8ba64e83161181726935f84e108d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
