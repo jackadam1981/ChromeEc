@@ -649,18 +649,6 @@ static int process_tbt_compat_discover_modes(int port, uint32_t *payload)
 		/* Store Discover Mode SOP' response */
 		cable[port].cable_mode_resp.raw_value = payload[1];
 
-		/* Cable does not have Intel SVID for Discover SVID */
-		if (is_limit_tbt_cable_speed(port))
-			cable[port].cable_mode_resp.tbt_cable_speed =
-						TBT_SS_U32_GEN1_GEN2;
-
-		max_tbt_speed = board_get_max_tbt_speed(port);
-		if (cable[port].cable_mode_resp.tbt_cable_speed >
-			max_tbt_speed) {
-			cable[port].cable_mode_resp.tbt_cable_speed =
-				max_tbt_speed;
-		}
-
 		/*
 		 * Enter Mode SOP' (Cable Enter Mode) and Enter USB SOP' is
 		 * skipped for passive cables.
@@ -690,17 +678,28 @@ static int process_tbt_compat_discover_modes(int port, uint32_t *payload)
 
 		if (is_limit_tbt_cable_speed(port)) {
 			/*
-			 * Passive cable has Nacked for Discover SVID.
+			 * Passive cable doesn't have Intel SVID,
 			 * No need to do Discover modes of cable. Assign the
 			 * cable discovery attributes and enter into device
-			 * Thunderbolt-compatible mode.
+			 * USB4 mode (if enabled) or Thunderbolt-compatible
+			 * mode.
 			 */
-			cable[port].cable_mode_resp.tbt_cable_speed =
-				(cable[port].rev == PD_REV30 &&
-				cable[port].attr.p_rev30.ss >
-					USB_R30_SS_U32_U40_GEN2) ?
-				TBT_SS_U32_GEN1_GEN2 :
-				cable[port].attr.p_rev30.ss;
+			if (is_limit_tbt_cable_speed(port))
+				cable[port].cable_mode_resp.tbt_cable_speed =
+							TBT_SS_U32_GEN1_GEN2;
+
+			max_tbt_speed = board_get_max_tbt_speed(port);
+			if (cable[port].cable_mode_resp.tbt_cable_speed >
+				max_tbt_speed) {
+				cable[port].cable_mode_resp.tbt_cable_speed =
+					max_tbt_speed;
+			}
+
+			if (is_usb4_mode_enabled(port)) {
+				enable_enter_usb4_mode(port);
+				usb_mux_set_safe_mode(port);
+				return 0;
+			}
 
 			rsize = enter_tbt_compat_mode(port, payload);
 		} else {
