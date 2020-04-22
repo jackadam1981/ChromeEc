@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "33973246_b8165325",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-22T16:16:42Z",
+      "side": 1,
+      "message": "Nit: I would argue that this CL is not malefor-specific and should be prefixed with \"volteer\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "1865d55d69045646aa0908b21336814a23f2c3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60f881ac_2f2ff03d",
         "filename": "board/halvor/led.c",
         "patchSetId": 13
