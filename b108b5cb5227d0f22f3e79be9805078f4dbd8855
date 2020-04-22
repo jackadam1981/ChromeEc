@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51f0d793_9fcb0177",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-22T00:21:58Z",
+      "side": 1,
+      "message": "With an older patchset from the ancestor CL, you used PD_HEADER_GET_SOP(head) to determine the message type directly without using the CABLE_FLAGS_SOP_PRIME_ENABLE and CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flags.\n\nIf you got back to PD_HEADER_GET_SOP(head), can you eliminate these two cable flags completely?",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 0
+      },
+      "revId": "b108b5cb5227d0f22f3e79be9805078f4dbd8855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
