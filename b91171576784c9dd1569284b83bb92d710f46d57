@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1341fd24_48304eef",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-04-22T18:54:05Z",
+      "side": 1,
+      "message": "What is the purpose of having two levels at the bottom that both have 0 for the RPM values of both fans?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 16
+      },
+      "revId": "b91171576784c9dd1569284b83bb92d710f46d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
