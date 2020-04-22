@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1af9eb82_d18b7939",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-22T23:48:32Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 47
+      },
+      "revId": "ba5894fd8db9f55454ef9c8fb71d93d26640e954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c163b66_cd559065",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-22T23:48:32Z",
+      "side": 1,
+      "message": "how about moving it to to line 734?",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 0
+      },
+      "revId": "ba5894fd8db9f55454ef9c8fb71d93d26640e954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27c5ad57_f1fb6ec4",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-22T23:48:32Z",
+      "side": 1,
+      "message": "keep original logic as line 696 takes care of it",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 693,
+        "endChar": 3
+      },
+      "revId": "ba5894fd8db9f55454ef9c8fb71d93d26640e954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
