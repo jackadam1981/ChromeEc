@@ -12,22 +12,16 @@
 /* TODO(b/148624000): Change this pin assignment once schematics are final */
 GPIO_INT(EC_WP_L,              PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)
 
-/* Power sequencing interrupts */
 
-/* Sensor Interrupts */
+/* Outputs */
+GPIO(LED1,                PIN(A, 5),  GPIO_OUT_LOW) /* Green */
 
-/* USB-C interrupts */
-
-/* HDMI interrupts */
-
-/* Volume button interrupts */
-
-/* AP Signals */
-
-/* USB and USBC Signals */
 
 /* Misc Signals */
-UNIMPLEMENTED(EC_ENTERING_RW)
+UNIMPLEMENTED(ENTERING_RW)
 
-/* UART */
+/* USART1: C4/C5 */
+ALTERNATE(PIN_MASK(C, 0x0030), GPIO_ALT_USART,  MODULE_UART, GPIO_PULL_UP)
+
+
 

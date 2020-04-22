@@ -17,6 +17,30 @@
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
+/*
+ * Enable the blink example that exercises the LEDs.
+ */
+
+
+/* Setup UART console */
+
+#define STM32G431_EVAL_USE_LPUART_CONSOLE
+#undef CONFIG_UART_CONSOLE
+#define CONFIG_UART_TX_DMA
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 2048
+
+#ifdef STM32G431_EVAL_USE_LPUART_CONSOLE
+#define CONFIG_UART_CONSOLE 9
+#define CONFIG_UART_TX_DMA_CH STM32_DMAC_LPUART_TX
+#define CONFIG_UART_TX_DMA_PH 4
+#else
+#define CONFIG_UART_CONSOLE 1
+#define CONFIG_UART_TX_DMA_CH STM32_DMAC_USART1_TX
+#define CONFIG_UART_TX_DMA_PH 2
+#endif
+
+
 /* Keyboard features */
 
 /* Sensors */
