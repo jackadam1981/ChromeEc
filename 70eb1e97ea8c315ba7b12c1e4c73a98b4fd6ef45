@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "49ff3833_9d77dc4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-22T15:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09a71bb5_99866356",
+      "revId": "70eb1e97ea8c315ba7b12c1e4c73a98b4fd6ef45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1439ee7_0e716ba5",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 21
