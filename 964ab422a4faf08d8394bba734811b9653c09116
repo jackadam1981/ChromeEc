@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ea4672d_6b844b68",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-22T16:30:57Z",
+      "side": 1,
+      "message": "As it stands, this should probably go in board/malefor/board.h. But wait until Keith answers whether we will have a baseboard-spanning FW_CONFIG framework for Volteer.\n\nNit: It seems odd to include \"lid angle\" in the name here. Something like CBI_FW_CONFIG_CONVERTIBLE makes more sense to me.",
+      "range": {
+        "startLine": 300,
+        "startChar": 8,
+        "endLine": 300,
+        "endChar": 48
+      },
+      "revId": "964ab422a4faf08d8394bba734811b9653c09116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
