@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ea14354_5d107ca1",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-22T21:09:42Z",
+      "side": 0,
+      "message": "this is still needed for TBT as we are changing the data based on payload",
+      "revId": "9ceae7d5957a620a9acaf98a1ae0abc77ef16321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
