@@ -11,6 +11,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "driver/accelgyro_bmi160.h"
 #include "driver/bc12/mt6360.h"
 #include "driver/charger/isl923x.h"
 #include "driver/ppc/syv682x.h"
@@ -21,12 +22,14 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "switch.h"
 #include "tablet_mode.h"
+#include "task.h"
 #include "timer.h"
 #include "uart.h"
 #include "usb_charge.h"
@@ -243,3 +246,103 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
 }
+
+static struct mutex g_base_mutex;
+
+static struct bmi160_drv_data_t g_bmi160_data;
+
+/* Matrix to rotate accelerometer into standard reference frame */
+static const mat33_fp_t base_standard_ref = {
+	{FLOAT_TO_FP(-1), 0, 0},
+	{0, FLOAT_TO_FP(-1), 0},
+	{0, 0, FLOAT_TO_FP(1)},
+};
+
+#ifdef CONFIG_MAG_BMI160_BMM150
+/* Matrix to rotate accelrator into standard reference frame */
+static const mat33_fp_t mag_standard_ref = {
+	{0, FLOAT_TO_FP(-1), 0},
+	{FLOAT_TO_FP(-1), 0, 0},
+	{0, 0, FLOAT_TO_FP(-1)},
+};
+#endif /* CONFIG_MAG_BMI160_BMM150 */
+
+struct motion_sensor_t motion_sensors[] = {
+	[LID_ACCEL] = {
+		.name = "Lid Accel",
+	},
+	/*
+	 * Note: bmi160: supports accelerometer and gyro sensor
+	 * Requirement: accelerometer sensor must init before gyro sensor
+	 * DO NOT change the order of the following table.
+	 */
+	[BASE_ACCEL] = {
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_ACCEL,
+		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+		.rot_standard_ref = &base_standard_ref,
+		.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+		.min_frequency = BMI160_ACCEL_MIN_FREQ,
+		.max_frequency = BMI160_ACCEL_MAX_FREQ,
+		.config = {
+			/* Sensor on for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+			/* Sensor on for angle detection */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+		},
+	},
+	[BASE_GYRO] = {
+		.name = "Gyro",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_ACCEL,
+		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+		.default_range = 1000, /* dps */
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = BMI160_GYRO_MIN_FREQ,
+		.max_frequency = BMI160_GYRO_MAX_FREQ,
+	},
+#ifdef CONFIG_MAG_BMI160_BMM150
+	[BASE_MAG] = {
+		.name = "Lid Mag",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_MAG,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_ACCEL,
+		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+		.default_range = BIT(11), /* 16LSB / uT, fixed */
+		.rot_standard_ref = &mag_standard_ref,
+		.min_frequency = BMM150_MAG_MIN_FREQ,
+		.max_frequency = BMM150_MAG_MAX_FREQ(SPECIAL),
+	},
+#endif /* CONFIG_MAG_BMI160_BMM150 */
+	[CLEAR_ALS] = {
+		 .name = "Clear Light",
+	},
+	[RGB_ALS] = {
+		 .name = "RGB Light",
+	},
+};
+const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
