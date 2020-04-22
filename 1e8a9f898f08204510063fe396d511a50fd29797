@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82079a02_a2808fa7",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-22T15:36:16Z",
+      "side": 1,
+      "message": "Maybe this isn\u0027t what Keith meant, and I don\u0027t mean to step on his toes, but this CL defines these functions without implementing them to allow the GPIO_INT lines in gpio.inc to compile. If you leave those lines as UNIMPLEMENTED in this CL and wait to define these functions until after you move the Volteer USB ISRs into its board file, you will avoid having the Volteer functions built into Halvor but not used. As a side effect, you will be able to avoid using the \"halvor_\" prefix to distinguish these functions from their Volteer counterparts.",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 12
+      },
+      "revId": "1e8a9f898f08204510063fe396d511a50fd29797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
