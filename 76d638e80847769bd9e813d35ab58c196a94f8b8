@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "325f4534_8f0698ad",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-22T01:56:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f98b4a4_3bee2556",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "76d638e80847769bd9e813d35ab58c196a94f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "930d3ea1_2c34af05",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "76d638e80847769bd9e813d35ab58c196a94f8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df6c7a4c_5e048bc3",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-04-22T01:56:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "930d3ea1_2c34af05",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "76d638e80847769bd9e813d35ab58c196a94f8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
