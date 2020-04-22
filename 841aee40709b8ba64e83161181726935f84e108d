@@ -69,6 +69,30 @@
       "revId": "841aee40709b8ba64e83161181726935f84e108d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7cbe72_1c4a7bfa",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-22T17:58:22Z",
+      "side": 1,
+      "message": "When CONFIG_USB_PD_DECODE_SOP is enabled or TCPC_FLAGS_TCPCI_REV2_0 is defined by tcpc_config[], then the received header will have frame type added to bits 31:28.  See tcpci_tcpm_get_message_raw(), which is shared by TCPMv1 and TCPMv2.\n\nBecause the CABLE flags are only set if CONFIG_USB_PD_DECODE_SOP, the frame type should also be available for these code paths.\n\nThere are only 3 TCPC drivers that don\u0027t use tcpci_tcpm_get_message_raw().  I\u0027m looking at those data sheets to see if they provide a register to read the frame type.\n\nI think this can be cleaned up in CL:2159592 instead of here.",
+      "parentUuid": "6b8674a6_f2996712",
+      "range": {
+        "startLine": 785,
+        "startChar": 11,
+        "endLine": 785,
+        "endChar": 37
+      },
+      "revId": "841aee40709b8ba64e83161181726935f84e108d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
