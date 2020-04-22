@@ -22,6 +22,30 @@
       "revId": "4039ff05cbb386ea3e9a89d467ceedb7464dc855",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "586cafa9_1f9f436f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-22T18:20:02Z",
+      "side": 1,
+      "message": "I don\u0027t it needs to be unmasked. We unmask the VBUS presence interrupt (which is gated by CONFIG_USB_PD_VBUS_DETECT_TCPC), so that\u0027s the event that is triggering this. The TCPCI spec says that \"[The VBUS presence] bit is not valid when POWER_STATUS.VbusDetectionEnabled\n\u003d 0b.\" hence why I\u0027m checking that.\n\nIt\u0027s not immediately clear to me why one would want to mask/unmask the VBUS detection interrupt; it\u0027s enabled by default and the TCPM turns it off with an explicit command. VBUS presence makes sense, but VBUS detection enabled/disabled makes less sense in my opinion.",
+      "parentUuid": "d81ea67d_cb3749fc",
+      "range": {
+        "startLine": 1064,
+        "startChar": 12,
+        "endLine": 1064,
+        "endChar": 42
+      },
+      "revId": "4039ff05cbb386ea3e9a89d467ceedb7464dc855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
