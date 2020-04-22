@@ -46,6 +46,30 @@
       "revId": "d1cd9115b46e62fff4ed9943b10165ea6805ae08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5236970_0a4ac41a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-22T21:25:32Z",
+      "side": 1,
+      "message": "get_enter_usb_msg_payload() gets the data cable[port].cable_mode_resp\nwhere as \nenter_tbt_compat_mode() cable[port].dev_mode_resp\n\nso no need to assign it to TBT",
+      "parentUuid": "af50d976_7f196964",
+      "range": {
+        "startLine": 676,
+        "startChar": 12,
+        "endLine": 676,
+        "endChar": 34
+      },
+      "revId": "d1cd9115b46e62fff4ed9943b10165ea6805ae08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
