@@ -197,8 +197,31 @@ enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
 	return cable[port].cable_mode_resp.tbt_rounded;
 }
 
+static inline bool is_limit_tbt_cable_speed(int port)
+{
+	return !!(cable[port].flags & CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED);
+}
+
+static void usb_pd_limit_cable_speed(int port)
+{
+	enum tbt_compat_cable_speed max_tbt_speed =
+				board_get_max_tbt_speed(port);
+
+	/* Cable does not have Intel SVID for Discover SVID */
+	if (is_limit_tbt_cable_speed(port))
+		cable[port].cable_mode_resp.tbt_cable_speed =
+				TBT_SS_U32_GEN1_GEN2;
+
+	max_tbt_speed = board_get_max_tbt_speed(port);
+	if (cable[port].cable_mode_resp.tbt_cable_speed > max_tbt_speed)
+		cable[port].cable_mode_resp.tbt_cable_speed = max_tbt_speed;
+}
+
 static enum usb_rev30_ss get_usb4_cable_speed(int port)
 {
+	/* Limits cable speed if applicable */
+	usb_pd_limit_cable_speed(port);
+
 	if ((cable[port].rev == PD_REV30) &&
 	    (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) &&
 	   ((cable[port].attr.p_rev30.ss != USB_R30_SS_U32_U40_GEN2) ||
@@ -405,11 +428,6 @@ static inline void limit_tbt_cable_speed(int port)
 {
 	/* Cable flags are cleared when cable reset is called */
 	cable[port].flags |= CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED;
-}
-
-static inline bool is_limit_tbt_cable_speed(int port)
-{
-	return !!(cable[port].flags & CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED);
 }
 
 static inline bool is_usb4_mode_enabled(int port)
@@ -635,10 +653,55 @@ __overridable bool board_is_tbt_usb4_port(int port)
 	return true;
 }
 
+static int process_am_discover_svids(int port, int cnt, uint32_t *payload)
+{
+	int prev_svid_cnt = discovery[port].svid_cnt;
+	int rsize;
+
+	dfp_consume_svids(port, cnt, payload);
+
+	/*
+	 * Ref: USB Type-C Cable and Connector Specification,
+	 * figure F-1: TBT3 Discovery Flow
+	 *
+	 * For USB4 mode if cable doesn't have Intel SVID, no need to do
+	 * Discover modes of device and cable, directly enter USB4 mode.
+	 *
+	 * For Thunderbolt-compatible, check if 0x8087 is received for
+	 * Discover SVID SOP. If not, disable Thunderbolt-compatible mode
+	 *
+	 * If 0x8087 is not received for Discover SVID SOP' limit to TBT
+	 * passive Gen 2 cable.
+	 */
+	if (is_tbt_compat_enabled(port)) {
+		bool intel_svid = is_intel_svid(port, prev_svid_cnt);
+
+		if (is_transmit_msg_sop_prime(port)) {
+			if (!intel_svid) {
+				limit_tbt_cable_speed(port);
+				if (is_usb4_mode_enabled(port)) {
+					enable_enter_usb4_mode(port);
+					usb_mux_set_safe_mode(port);
+					return 0;
+				}
+			}
+		} else if (!intel_svid) {
+			disable_tbt_compat_mode(port);
+		} else {
+			enable_transmit_sop_prime(port);
+			return dfp_discover_svids(payload);
+		}
+	}
+
+	rsize = dfp_discover_modes(port, payload);
+
+	disable_transmit_sop_prime(port);
+	return rsize;
+}
+
 static int process_tbt_compat_discover_modes(int port, uint32_t *payload)
 {
 	int rsize;
-	enum tbt_compat_cable_speed max_tbt_speed;
 
 	/*
 	 * For active cables, Enter mode: SOP', SOP'', SOP
@@ -649,17 +712,8 @@ static int process_tbt_compat_discover_modes(int port, uint32_t *payload)
 		/* Store Discover Mode SOP' response */
 		cable[port].cable_mode_resp.raw_value = payload[1];
 
-		/* Cable does not have Intel SVID for Discover SVID */
-		if (is_limit_tbt_cable_speed(port))
-			cable[port].cable_mode_resp.tbt_cable_speed =
-						TBT_SS_U32_GEN1_GEN2;
-
-		max_tbt_speed = board_get_max_tbt_speed(port);
-		if (cable[port].cable_mode_resp.tbt_cable_speed >
-			max_tbt_speed) {
-			cable[port].cable_mode_resp.tbt_cable_speed =
-				max_tbt_speed;
-		}
+		/* Limits cable speed if applicable */
+		usb_pd_limit_cable_speed(port);
 
 		/*
 		 * Enter Mode SOP' (Cable Enter Mode) and Enter USB SOP' is
@@ -899,38 +953,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 #endif
 			break;
 		case CMD_DISCOVER_SVID:
-			{
-			int prev_svid_cnt = discovery[port].svid_cnt;
-			dfp_consume_svids(port, cnt, payload);
-			/*
-			 * Ref: USB Type-C Cable and Connector Specification,
-			 * figure F-1: TBT3 Discovery Flow
-			 *
-			 * Check if 0x8087 is received for Discover SVID SOP.
-			 * If not, disable Thunderbolt-compatible mode
-			 *
-			 * If 0x8087 is not received for Discover SVID SOP'
-			 * limit to TBT passive Gen 2 cable
-			 */
-			if (is_tbt_compat_enabled(port)) {
-				bool intel_svid =
-					is_intel_svid(port, prev_svid_cnt);
-				if (is_transmit_msg_sop_prime(port)) {
-					if (!intel_svid)
-						limit_tbt_cable_speed(port);
-				} else if (intel_svid) {
-					rsize = dfp_discover_svids(payload);
-					enable_transmit_sop_prime(port);
-					break;
-				} else {
-					disable_tbt_compat_mode(port);
-				}
-			}
-
-			rsize = dfp_discover_modes(port, payload);
-
-			disable_transmit_sop_prime(port);
-			}
+			rsize = process_am_discover_svids(port, cnt, payload);
 			break;
 		case CMD_DISCOVER_MODES:
 			dfp_consume_modes(port, cnt, payload);
