@@ -916,7 +916,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				bool intel_svid =
 					is_intel_svid(port, prev_svid_cnt);
 				if (is_transmit_msg_sop_prime(port)) {
-					if (!intel_svid)
+					if (!intel_svid &&
+					    !is_usb4_mode_enabled(port))
 						limit_tbt_cable_speed(port);
 				} else if (intel_svid) {
 					rsize = dfp_discover_svids(payload);
