@@ -22,6 +22,30 @@
       "revId": "d1cd9115b46e62fff4ed9943b10165ea6805ae08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af50d976_7f196964",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-22T21:16:57Z",
+      "side": 1,
+      "message": "I still need to assign tbt_cable_speed for entering USB4 mode since we are skipping the Discover mode SOP\u0027 part",
+      "parentUuid": "4fbdbd3e_641f87b6",
+      "range": {
+        "startLine": 676,
+        "startChar": 12,
+        "endLine": 676,
+        "endChar": 34
+      },
+      "revId": "d1cd9115b46e62fff4ed9943b10165ea6805ae08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
