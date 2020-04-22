@@ -7,6 +7,7 @@
 
 #include "chipset.h"
 #include "clock.h"
+#include "clock-f.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
@@ -35,7 +36,7 @@
 
 #define WAIT_STATE_FREQ_STEP_HZ 20000000
 #define STM32G4_SYSCLK_MAX_HZ 170000000
-#define STM32G4_HSI_HZ 16000000
+#define STM32G4_HSI_CLK_HZ 16000000
 #define STM32G4_PLL_IN_FREQ_HZ 8000000
 #define STM32G4_PLL_M 4
 #define STM32G4_PLL_R 8
@@ -43,6 +44,12 @@
 #define STM32G4_APB1_PRE 1
 #define STM32G4_APB2_PRE 1
 
+enum rcc_clksrc {
+	sysclk_rsvd,
+	sysclk_hsi,
+	sysclk_hse,
+	sysclk_pll,
+};
 
 int32_t rtcss_to_us(uint32_t rtcss)
 {
@@ -97,12 +104,12 @@ static int stm32g4_config_pll(uint32_t hclk_hz, uint32_t pll_src,
 	 */
 	uint32_t pll_n;
 	uint32_t pll_m;
-	uint32_t hclck_freq;
+	uint32_t hclk_freq;
 	uint32_t cfgr_val;
 
 	/* Pll input divider = input freq / desired_input_freq */
 	pll_m = pll_clk_in_hz / STM32G4_PLL_IN_FREQ_HZ;
-	pll_n = (hclck_hz * STM32G4_PLL_R * STM32G4_AHB_PRE) /
+	pll_n = (hclk_hz * STM32G4_PLL_R * STM32G4_AHB_PRE) /
 		STM32G4_PLL_IN_FREQ_HZ;
 
 	/* Sanity checks */
@@ -131,12 +138,14 @@ static int stm32g4_config_pll(uint32_t hclk_hz, uint32_t pll_src,
 	 * Program prescalers and set system clock source as PLL
 	 * Assuming AHB, APB1, and APB2 prescalers are 1, and no clock output
 	 * desired so MCO fields are left at reset value.
+	 *
+	 * TODO -> for debug have MCOSEL set to system clock.
 	 */
-	STM32_RCC_CFGR = STM32_RCC_CFGR_SW_PLL;
+	STM32_RCC_CFGR = 0x10000000 | STM32_RCC_CFGR_SW_PLL;
 
 	/* Wait until the PLL is the system clock source */
-	if ((STM32_RCC_CFGR & STM32_RCC_CFGR_SWS_MASK) ==
-	    STM32_RCC_CFGR_SWS_PLL)
+	while ((STM32_RCC_CFGR & STM32_RCC_CFGR_SWS_MASK) !=
+	       STM32_RCC_CFGR_SWS_PLL);
 
 	return EC_SUCCESS;
 }
@@ -156,23 +165,23 @@ static void stm32g4_config_rtc_clock(void)
 	STM32_RCC_BDCR |= STM32_RCC_BDCR_BDRST;
 #ifdef CONFIG_STM32_CLOCK_HSE_HZ
 	STM32_RCC_BDCR = STM32_RCC_BDCR_RTCEN | BDCR_RTCSEL(BDCR_SRC_HSE);
-#else
+#endif
 }
 
 static void stm32g4_config_high_speed_clock(uint32_t hclk_hz,
 					    enum rcc_clksrc sysclk_src,
-					    enum rcc_osctype osc)
+					    uint32_t pll_clksrc)
 {
 	/* Ensure that HSI is ON */
 	wait_for_ready(&(STM32_RCC_CR), STM32_RCC_CR_HSION,
 		       STM32_RCC_CR_HSIRDY);
 
-	if (sysclck_src == HSI) {
+	if (sysclk_src == sysclk_hsi) {
 		/* If using 16 MHZ HSI for sysclk, then need to make sure the
 		 * sysclk selection is correct, that the internal oscillator is
 		 * stable, and that hlck_hz is 16 MHz.
 		 */
-	} else if (sysclk_src == PLL) {
+	} else if (sysclk_src == sysclk_pll) {
 		/* If PLL_R is the desired clock source, then need to calculate
 		 * PLL multilier/diviber parameters. Once the PLL output is
 		 * stable, then the PLL must be selected as the clock
@@ -184,12 +193,8 @@ static void stm32g4_config_high_speed_clock(uint32_t hclk_hz,
 		if ((STM32_RCC_CFGR & STM32_RCC_CFGR_SWS_MASK) ==
 		    STM32_RCC_CFGR_SWS_PLL)
 		return;
-
-		/* Ensure that HSE/HSI is ON */
-		wait_for_ready(&(STM32_RCC_CR), clk_enable_mask,
-			       clk_check_mask);
-		stm32g4_config_pll(hclk_hz, clksrc, STM32G4_HSI_
-	} else if (sysclk_src == HSE) {
+		stm32g4_config_pll(hclk_hz, pll_clksrc, STM32G4_HSI_CLK_HZ);
+	} else if (sysclk_src == sysclk_hse) {
 	}
 }
 
@@ -248,21 +253,23 @@ void clock_init(void)
 	/* Configure flash wait state and enable I/D cache */
 	stm32g4_set_flash_ws(CPU_CLOCK);
 	/* Set up high speed clock and enable PLL */
-	stm32g4_config_high_speed_clock(CPU_CLOCK);
+	stm32g4_config_high_speed_clock(CPU_CLOCK, sysclk_pll,
+					PLLCFGR_PLLSRC_HSI);
 	/* Set up low speed clock */
 	stm32g4_config_low_speed_clock();
 	/* Set up real time clock */
-	stm32g4_rtc_init();
+	stm32g4_config_rtc_clock();
 }
 
 int clock_get_timer_freq(void)
 {
-	return STM32G4_TIMER_CLOCK;
+	/* TODO fix this */
+	return 2000000;
 }
 
 int clock_get_freq(void)
 {
-	return STM32G4_IO_CLOCK;
+	return CPU_CLOCK;
 }
 
 void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)
@@ -271,7 +278,7 @@ void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)
 
 	if (bus == BUS_AHB) {
 		while (cycles--)
-			dummy = STM32_DMA_GET_ISR(0);
+			dummy = STM32_DMA1_REGS->isr;
 	} else { /* APB */
 		while (cycles--)
 			dummy = STM32_USART_BRR(STM32_USART1_BASE);
@@ -282,28 +289,25 @@ void clock_enable_module(enum module_id module, int enable)
 {
 	if (module == MODULE_USB) {
 		if (enable) {
-			STM32_RCC_AHB2ENR |= STM32_RCC_AHB2ENR_OTGFSEN;
-			STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_OTGHSEN |
-				STM32_RCC_AHB1ENR_OTGHSULPIEN;
+			STM32_RCC_CRRCR |= RCC_CRRCR_HSI48O;
 		} else {
-			STM32_RCC_AHB2ENR &= ~STM32_RCC_AHB2ENR_OTGFSEN;
-			STM32_RCC_AHB1ENR &= ~STM32_RCC_AHB1ENR_OTGHSEN &
-				     ~STM32_RCC_AHB1ENR_OTGHSULPIEN;
+			STM32_RCC_CRRCR &= ~RCC_CRRCR_HSI48O;
 		}
 		return;
 	} else if (module == MODULE_I2C) {
 		if (enable) {
 			/* Enable clocks to I2C modules if necessary */
-			STM32_RCC_APB1ENR |=
-				STM32_RCC_I2C1EN | STM32_RCC_I2C2EN
-				| STM32_RCC_I2C3EN | STM32_RCC_FMPI2C4EN;
-			STM32_RCC_DCKCFGR2 =
-				(STM32_RCC_DCKCFGR2 & ~DCKCFGR2_FMPI2C1SEL_MASK)
-				| DCKCFGR2_FMPI2C1SEL(FMPI2C1SEL_APB);
+			STM32_RCC_APB1ENR1 |=
+				STM32_RCC_APB1ENR1_I2C1EN |
+				STM32_RCC_APB1ENR1_I2C2EN |
+				STM32_RCC_APB1ENR1_I2C3EN;
+			STM32_RCC_APB1ENR1 |= STM32_RCC_APB1ENR2_I2C4EN;
 		} else {
-			STM32_RCC_APB1ENR &=
-				~(STM32_RCC_I2C1EN | STM32_RCC_I2C2EN |
-				  STM32_RCC_I2C3EN | STM32_RCC_FMPI2C4EN);
+			STM32_RCC_APB1ENR1 &=
+				~(STM32_RCC_APB1ENR1_I2C1EN |
+				  STM32_RCC_APB1ENR1_I2C2EN |
+				  STM32_RCC_APB1ENR1_I2C3EN);
+			STM32_RCC_APB1ENR1 &= ~STM32_RCC_APB1ENR2_I2C4EN;
 		}
 		return;
 	} else if (module == MODULE_ADC) {

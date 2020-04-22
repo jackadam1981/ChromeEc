@@ -36,6 +36,7 @@
 #define STM32_IRQ_DMA_CHANNEL_4   14
 #define STM32_IRQ_DMA_CHANNEL_5   15
 #define STM32_IRQ_DMA_CHANNEL_6   16
+#define STM32_IRQ_DMA_CHANNEL_7   17
 #define STM32_IRQ_ADC1            18
 #define STM32_IRQ_USB_HP          19
 #define STM32_IRQ_USB_LP          20
@@ -90,6 +91,9 @@
 #define STM32_IRQ_CORDIC          100
 #define STM32_IRQ_FMAC            101
 
+/* LPUART gets accessed as UART9 in STM32 uart driver */
+#define STM32_IRQ_UART9 STM32_IRQ_LPUART
+
 /* To simplify code generation, define DMA channel 13 - 14 */
 #define STM32_IRQ_DMA_CHANNEL_13   STM32_IRQ_DMA2_CHANNEL6
 #define STM32_IRQ_DMA_CHANNEL_14   STM32_IRQ_DMA2_CHANNEL7
@@ -141,6 +145,8 @@
 #define STM32_I2C3_BASE             (STM32_APB1PERIPH_BASE + 0x7800UL)
 #define STM32_LPTIM1_BASE           (STM32_APB1PERIPH_BASE + 0x7C00UL)
 #define STM32_LPUART1_BASE          (STM32_APB1PERIPH_BASE + 0x8000UL)
+/* UART9 is used as link to LPUART in STM32 uart.c implementation */
+#define STM32_UART9_BASE            (STM32_APB1PERIPH_BASE + 0x8000UL)
 #define STM32_UCPD1_BASE            (STM32_APB1PERIPH_BASE + 0xA000UL)
 #define STM32_SRAMCAN_BASE          (STM32_APB1PERIPH_BASE + 0xA400UL)
 
@@ -175,7 +181,7 @@
 #define STM32_CORDIC_BASE           (STM32_AHB1PERIPH_BASE + 0x0C00UL)
 #define STM32_RCC_BASE              (STM32_AHB1PERIPH_BASE + 0x1000UL)
 #define STM32_FMAC_BASE             (STM32_AHB1PERIPH_BASE + 0x1400UL)
-#define STM32_FLASH_R_BASE          (STM32_AHB1PERIPH_BASE + 0x2000UL)
+#define STM32_FLASH_REGS_BASE       (STM32_AHB1PERIPH_BASE + 0x2000UL)
 #define STM32_CRC_BASE              (STM32_AHB1PERIPH_BASE + 0x3000UL)
 
 #define STM32_DMA1_Channel1_BASE    (STM32_DMA1_BASE + 0x0008UL)
@@ -230,6 +236,9 @@
 #define STM32_DAC3_BASE             (STM32_AHB2PERIPH_BASE + 0x08001000UL)
 
 #define STM32_RNG_BASE              (STM32_AHB2PERIPH_BASE + 0x08060800UL)
+
+#define STM32_UNIQUE_ID_BASE        0x1FFF7590
+#define STM32_DBGMCU_BASE           0xE0042000
 
 #ifndef __ASSEMBLER__
 
@@ -356,26 +365,6 @@
 
 /* --- Power / Reset / Clocks --- */
 
-#if defined(CHIP_VARIANT_STM32G41X)
-/* Required or recommended clocks for stm32f446 */
-#define STM32F4_PLL_REQ 2000000
-#define STM32F4_RTC_REQ 1000000
-#define STM32F4_IO_CLOCK  42000000
-#define STM32F4_USB_REQ 48000000
-#define STM32F4_VCO_CLOCK 336000000
-#define STM32F4_HSI_CLOCK 16000000
-#define STM32F4_LSI_CLOCK 32000
-#define STM32F4_TIMER_CLOCK STM32F4_IO_CLOCK
-#define STM32F4_PLLP_DIV 4
-#define STM32F4_AHB_PRE 0x8
-#define STM32F4_APB1_PRE 0x0
-#define STM32F4_APB2_PRE 0x0
-#define STM32_FLASH_ACR_LATENCY     BIT(0)
-
-#else
-#error "No valid clocks defined"
-#endif
-
 #define STM32_RCC_CR                    REG32(STM32_RCC_BASE + 0x00)
 #define STM32_RCC_ICSCR                 REG32(STM32_RCC_BASE + 0x04)
 #define STM32_RCC_CFGR                  REG32(STM32_RCC_BASE + 0x08)
@@ -406,6 +395,9 @@
 #define STM32_RCC_CRRCR                 REG32(STM32_RCC_BASE + 0x98)
 #define STM32_RCC_CCIPR2                REG32(STM32_RCC_BASE + 0x9C)
 
+#define STM32_RCC_APB1ENR STM32_RCC_APB1ENR1
+#define STM32_RCC_AHBENR STM32_RCC_APB1ENR
+
 /* --- RCC CR Bit Definitions --- */
 #define STM32_RCC_CR_HSION		BIT(8)
 #define STM32_RCC_CR_HSIRDY		BIT(10)
@@ -417,6 +409,8 @@
 /* --- RCC PLLCFGR Bit Definitions --- */
 #define  PLLCFGR_PLLSRC_OFF		0
 #define  PLLCFGR_PLLSRC(val)		(((val) & 0x3) << PLLCFGR_PLLSRC_OFF)
+#define  PLLCFGR_PLLSRC_HSI		2
+#define  PLLCFGR_PLLSRC_HSE		3
 /* PLL Division factor */
 #define  PLLCFGR_PLLM_OFF		4
 #define  PLLCFGR_PLLM(val)		(((val) & 0x1f) << PLLCFGR_PLLM_OFF)
@@ -488,6 +482,11 @@
 #define STM32_RCC_APB1ENR1_PWREN                 BIT(28)
 #define STM32_RCC_APB1ENR1_I2C3EN                BIT(30)
 
+#define STM32_RCC_PWREN STM32_RCC_APB1ENR1_PWREN
+
+/* --- RCC APB1ENR2 Bit Definitions --- */
+#define STM32_RCC_APB1ENR2_I2C4EN                BIT(1)
+
 /* --- RCC APB2ENR Bit Definitions --- */
 #define STM32_RCC_APB2ENR_SYSCFGEN	BIT(0)
 #define STM32_RCC_APB2ENR_TIM1		BIT(11)
@@ -500,9 +499,18 @@
 #define STM32_RCC_APB2ENR_TIM10	BIT(17)
 #define STM32_RCC_APB2ENR_TIM11	BIT(18)
 
+#define STM32_RCC_PB2_USART1		STM32_RCC_APB2ENR_USART1
+
+/* gpio.c needs STM32_RCC_SYSCFGEN */
+#define STM32_RCC_SYSCFGEN STM32_RCC_APB2ENR_SYSCFGEN
+
 /* --- RCC CSR Bit Definitions --- */
 #define STM32_RCC_CSR_LSION		BIT(0)
 #define STM32_RCC_CSR_LSIRDY		BIT(1)
+
+/* --- RCC CRRCR Bit Definitions */
+#define RCC_CRRCR_HSI48O               BIT(0)
+#define RCC_CRRCR_HSIRDY               BIT(1)
 
 /* Reset causes definitions */
 /*
@@ -820,60 +828,55 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 /*
  * Available DMA streams, numbered from 0.
  *
- * Named channel to respect older interface, but a stream can serve
- * any channels, as long as they are in the same DMA controller.
  *
- * Stream 0 - 7 are managed by controller DMA1, 8 - 15 DMA2.
+ * Channels 0 - 5 are managed by controller DMA1, 6 - 11 by DMA2.
  */
 enum dma_channel {
 	/* Channel numbers */
-	STM32_DMA1_STREAM0 = 0,
-	STM32_DMA1_STREAM1 = 1,
-	STM32_DMA1_STREAM2 = 2,
-	STM32_DMA1_STREAM3 = 3,
-	STM32_DMA1_STREAM4 = 4,
-	STM32_DMA1_STREAM5 = 5,
-	STM32_DMA1_STREAM6 = 6,
-	STM32_DMA1_STREAM7 = 7,
-	STM32_DMAS_COUNT = 8,
-	STM32_DMA2_STREAM0 = 8,
-	STM32_DMA2_STREAM1 = 9,
-	STM32_DMA2_STREAM2 = 10,
-	STM32_DMA2_STREAM3 = 11,
-	STM32_DMA2_STREAM4 = 12,
-	STM32_DMA2_STREAM5 = 13,
-	STM32_DMA2_STREAM6 = 14,
-	STM32_DMA2_STREAM7 = 15,
+	STM32_DMAC_CH1 = 0,
+	STM32_DMAC_CH2 = 1,
+	STM32_DMAC_CH3 = 2,
+	STM32_DMAC_CH4 = 3,
+	STM32_DMAC_CH5 = 4,
+	STM32_DMAC_CH6 = 5,
+	STM32_DMAC_CH7 = 6,
+	/*
+	 * Skip CH8, it should belong to DMA engine 1.
+	 * Sharing code with STM32s that have 16 engines will be easier.
+	 */
+	STM32_DMAC_CH9 = 8,
+	STM32_DMAC_CH10 = 9,
+	STM32_DMAC_CH11 = 10,
+	STM32_DMAC_CH12 = 11,
+	STM32_DMAC_CH13 = 12,
+	STM32_DMAC_CH14 = 13,
 
-	STM32_DMAS_USART1_TX = STM32_DMA2_STREAM7,
-	STM32_DMAS_USART1_RX = STM32_DMA2_STREAM5,
-
-	/* Legacy naming for uart.c */
-	STM32_DMAC_USART1_TX = STM32_DMAS_USART1_TX,
-	STM32_DMAC_USART1_RX = STM32_DMAS_USART1_RX,
-
-	STM32_DMAC_I2C1_TX = STM32_DMA1_STREAM6,
-	STM32_DMAC_I2C1_RX = STM32_DMA1_STREAM0,
-
-	STM32_DMAC_I2C2_TX = STM32_DMA1_STREAM7,
-	STM32_DMAC_I2C2_RX = STM32_DMA1_STREAM3,
-
-	STM32_DMAC_I2C3_TX = STM32_DMA1_STREAM4,
-	STM32_DMAC_I2C3_RX = STM32_DMA1_STREAM1,
-
-	STM32_DMAC_FMPI2C4_TX = STM32_DMA1_STREAM5,
-	STM32_DMAC_FMPI2C4_RX = STM32_DMA1_STREAM2,
-
-	/* Legacy naming for spi_master.c */
-	STM32_DMAC_SPI1_TX = STM32_DMA2_STREAM3, /* REQ 3 */
-	STM32_DMAC_SPI1_RX = STM32_DMA2_STREAM0, /* REQ 3 */
-	STM32_DMAC_SPI2_TX = STM32_DMA1_STREAM4, /* REQ 0 */
-	STM32_DMAC_SPI2_RX = STM32_DMA1_STREAM3, /* REQ 0 */
-	STM32_DMAC_SPI3_TX = STM32_DMA1_STREAM7, /* REQ 0 */
-	STM32_DMAC_SPI3_RX = STM32_DMA1_STREAM0, /* REQ 0 */
-	STM32_DMAC_SPI4_TX = STM32_DMA2_STREAM1, /* STM32H7 */
-	STM32_DMAC_SPI4_RX = STM32_DMA2_STREAM4, /* STM32H7 */
+	/* Channel functions */
+	STM32_DMAC_ADC = STM32_DMAC_CH1,
+	STM32_DMAC_SPI1_RX = STM32_DMAC_CH2,
+	STM32_DMAC_SPI1_TX = STM32_DMAC_CH3,
+	STM32_DMAC_DAC_CH1 = STM32_DMAC_CH2,
+	STM32_DMAC_DAC_CH2 = STM32_DMAC_CH3,
+	STM32_DMAC_I2C2_TX = STM32_DMAC_CH4,
+	STM32_DMAC_I2C2_RX = STM32_DMAC_CH5,
+	STM32_DMAC_USART1_TX = STM32_DMAC_CH4,
+	STM32_DMAC_USART1_RX = STM32_DMAC_CH5,
+	STM32_DMAC_USART2_RX = STM32_DMAC_CH6,
+	STM32_DMAC_USART2_TX = STM32_DMAC_CH7,
+	STM32_DMAC_I2C1_TX = STM32_DMAC_CH6,
+	STM32_DMAC_I2C1_RX = STM32_DMAC_CH7,
+	STM32_DMAC_PMSE_ROW = STM32_DMAC_CH6,
+	STM32_DMAC_PMSE_COL = STM32_DMAC_CH7,
+	STM32_DMAC_SPI2_RX = STM32_DMAC_CH4,
+	STM32_DMAC_SPI2_TX = STM32_DMAC_CH5,
+	STM32_DMAC_SPI3_RX = STM32_DMAC_CH9,
+	STM32_DMAC_SPI3_TX = STM32_DMAC_CH10,
+	STM32_DMAC_LPUART_RX = STM32_DMAC_CH9,
+	STM32_DMAC_LPUART_TX = STM32_DMAC_CH10,
+	STM32_DMAC_COUNT = 14,
 };
+
+#define STM32_DMAC_PER_CTLR 8
 
 #define STM32_REQ_USART1_TX 4
 #define STM32_REQ_USART1_RX 4
@@ -900,97 +903,214 @@ enum dma_channel {
 #define STM32_SPI3_TX_REQ_CH 0
 #define STM32_SPI3_RX_REQ_CH 0
 
-#define STM32_DMAS_TOTAL_COUNT 16
-
-/* Registers for a single stream of a DMA controller */
-struct stm32_dma_stream {
-	uint32_t	scr;		/* Control */
-	uint32_t	sndtr;		/* Number of data to transfer */
-	uint32_t	spar;		/* Peripheral address */
-	uint32_t	smar0;		/* Memory address 0 */
-	uint32_t	smar1;		/*  address 1 for double buffer */
-	uint32_t	rsvd;		/* Reserved */
+/* Registers for a single channel of the DMA controller */
+struct stm32_dma_chan {
+	uint32_t	ccr;		/* Control */
+	uint32_t	cndtr;		/* Number of data to transfer */
+	uint32_t	cpar;		/* Peripheral address */
+	uint32_t	cmar;		/* Memory address */
+	uint32_t	reserved;
 };
 
-/* Always use stm32_dma_stream_t so volatile keyword is included! */
-typedef volatile struct stm32_dma_stream stm32_dma_stream_t;
+/* Always use stm32_dma_chan_t so volatile keyword is included! */
+typedef volatile struct stm32_dma_chan stm32_dma_chan_t;
 
 /* Common code and header file must use this */
-typedef stm32_dma_stream_t dma_chan_t;
-struct stm32_dma_regs {
-	uint32_t	isr[2];
-	uint32_t	ifcr[2];
-	stm32_dma_stream_t stream[STM32_DMAS_COUNT];
-};
+typedef stm32_dma_chan_t dma_chan_t;
 
+/* Registers for the DMA controller */
+struct stm32_dma_regs {
+	uint32_t	isr;
+	uint32_t	ifcr;
+	stm32_dma_chan_t chan[STM32_DMAC_COUNT];
+};
 
 /* Always use stm32_dma_regs_t so volatile keyword is included! */
 typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 
 #define STM32_DMA1_REGS ((stm32_dma_regs_t *)STM32_DMA1_BASE)
 
+
+#define STM32_DMA_CCR_CHANNEL(channel)		 (0)
 #define STM32_DMA2_REGS ((stm32_dma_regs_t *)STM32_DMA2_BASE)
-
 #define STM32_DMA_REGS(channel) \
-	((channel) < STM32_DMAS_COUNT ? STM32_DMA1_REGS : STM32_DMA2_REGS)
+	((channel) < STM32_DMAC_PER_CTLR ? STM32_DMA1_REGS : STM32_DMA2_REGS)
+#define STM32_DMA_CSELR(channel) \
+	REG32(((channel) < STM32_DMAC_PER_CTLR ? \
+			STM32_DMA1_BASE : STM32_DMA2_BASE)  + 0xA8)
 
-#define STM32_DMA_CCR_EN                BIT(0)
-#define STM32_DMA_CCR_DMEIE             BIT(1)
-#define STM32_DMA_CCR_TEIE              BIT(2)
-#define STM32_DMA_CCR_HTIE              BIT(3)
-#define STM32_DMA_CCR_TCIE              BIT(4)
-#define STM32_DMA_CCR_PFCTRL            BIT(5)
-#define STM32_DMA_CCR_DIR_P2M		(0 << 6)
-#define STM32_DMA_CCR_DIR_M2P		(1 << 6)
-#define STM32_DMA_CCR_DIR_M2M		(2 << 6)
-#define STM32_DMA_CCR_CIRC              BIT(8)
-#define STM32_DMA_CCR_PINC              BIT(9)
-#define STM32_DMA_CCR_MINC              BIT(10)
-#define STM32_DMA_CCR_PSIZE_8_BIT       (0 << 11)
-#define STM32_DMA_CCR_PSIZE_16_BIT      (1 << 11)
-#define STM32_DMA_CCR_PSIZE_32_BIT      (2 << 11)
-#define STM32_DMA_CCR_MSIZE_8_BIT       (0 << 13)
-#define STM32_DMA_CCR_MSIZE_16_BIT      (1 << 13)
-#define STM32_DMA_CCR_MSIZE_32_BIT      (2 << 13)
-#define STM32_DMA_CCR_PINCOS            BIT(15)
-#define STM32_DMA_CCR_PL_LOW            (0 << 16)
-#define STM32_DMA_CCR_PL_MEDIUM         (1 << 16)
-#define STM32_DMA_CCR_PL_HIGH           (2 << 16)
-#define STM32_DMA_CCR_PL_VERY_HIGH      (3 << 16)
-#define STM32_DMA_CCR_DBM               BIT(18)
-#define STM32_DMA_CCR_CT                BIT(19)
-#define STM32_DMA_CCR_PBURST(b_len)		 ((((b_len) - 4) / 4) << 21)
-#define STM32_DMA_CCR_MBURST(b_len)		 ((((b_len) - 4) / 4) << 21)
-#define STM32_DMA_CCR_CHANNEL_MASK		 (0x7 << 25)
-#define STM32_DMA_CCR_CHANNEL(channel)		 ((channel) << 25)
-#define STM32_DMA_CCR_RSVD_MASK		(0xF0100000)
+/* Bits for DMA controller regs (isr and ifcr) */
+#define STM32_DMA_CH_OFFSET(channel)   (4 * ((channel) % STM32_DMAC_PER_CTLR))
+#define STM32_DMA_ISR_MASK(channel, mask) \
+	((mask) << STM32_DMA_CH_OFFSET(channel))
+#define STM32_DMA_ISR_GIF(channel)	STM32_DMA_ISR_MASK(channel, BIT(0))
+#define STM32_DMA_ISR_TCIF(channel)	STM32_DMA_ISR_MASK(channel, BIT(1))
+#define STM32_DMA_ISR_HTIF(channel)	STM32_DMA_ISR_MASK(channel, BIT(2))
+#define STM32_DMA_ISR_TEIF(channel)	STM32_DMA_ISR_MASK(channel, BIT(3))
+#define STM32_DMA_ISR_ALL(channel)	STM32_DMA_ISR_MASK(channel, 0x0f)
 
-#define STM32_DMA_CH_LOCAL(channel)     ((channel) % STM32_DMAS_COUNT)
-#define STM32_DMA_CH_LH(channel)        \
-	((STM32_DMA_CH_LOCAL(channel) < 4) ? 0 : 1)
-#define STM32_DMA_CH_OFFSET(channel)    \
-	(((STM32_DMA_CH_LOCAL(channel) % 4) * 6) + \
-	(((STM32_DMA_CH_LOCAL(channel) % 4) >= 2) ? 4 : 0))
-#define STM32_DMA_CH_GETBITS(channel, val) \
-	(((val) >> STM32_DMA_CH_OFFSET(channel)) & 0x3f)
-#define STM32_DMA_GET_IFCR(channel)      \
-	(STM32_DMA_CH_GETBITS(channel,   \
-	STM32_DMA_REGS(channel)->ifcr[STM32_DMA_CH_LH(channel)]))
-#define STM32_DMA_GET_ISR(channel)       \
-	(STM32_DMA_CH_GETBITS(channel,   \
-	STM32_DMA_REGS(channel)->isr[STM32_DMA_CH_LH(channel)]))
+#define STM32_DMA_GIF                   BIT(0)
+#define STM32_DMA_TCIF                  BIT(1)
+#define STM32_DMA_HTIF                  BIT(2)
+#define STM32_DMA_TEIF                  BIT(3)
+#define STM32_DMA_ALL                   0xf
 
-#define STM32_DMA_SET_IFCR(channel, val) \
-	(STM32_DMA_REGS(channel)->ifcr[STM32_DMA_CH_LH(channel)] = \
-	(STM32_DMA_REGS(channel)->ifcr[STM32_DMA_CH_LH(channel)] & \
-	~(0x3f << STM32_DMA_CH_OFFSET(channel))) | \
-	(((val) & 0x3f) << STM32_DMA_CH_OFFSET(channel)))
+#define STM32_DMA_GET_ISR(channel)      \
+	((STM32_DMA_REGS(channel)->isr >> STM32_DMA_CH_OFFSET(channel)) \
+	& STM32_DMA_ALL)
 #define STM32_DMA_SET_ISR(channel, val) \
-	(STM32_DMA_REGS(channel)->isr[STM32_DMA_CH_LH(channel)] = \
-	(STM32_DMA_REGS(channel)->isr[STM32_DMA_CH_LH(channel)] & \
-	~(0x3f << STM32_DMA_CH_OFFSET(channel))) | \
-	(((val) & 0x3f) << STM32_DMA_CH_OFFSET(channel)))
+	(STM32_DMA_REGS(channel)->isr = \
+	((STM32_DMA_REGS(channel)->isr & \
+	~(STM32_DMA_ALL << STM32_DMA_CH_OFFSET(channel))) | \
+	(((val) & STM32_DMA_ALL) << STM32_DMA_CH_OFFSET(channel))))
+#define STM32_DMA_GET_IFCR(channel)      \
+	((STM32_DMA_REGS(channel)->ifcr >> STM32_DMA_CH_OFFSET(channel)) \
+	& STM32_DMA_ALL)
+#define STM32_DMA_SET_IFCR(channel, val) \
+	(STM32_DMA_REGS(channel)->ifcr = \
+	((STM32_DMA_REGS(channel)->ifcr & \
+	~(STM32_DMA_ALL << STM32_DMA_CH_OFFSET(channel))) | \
+	(((val) & STM32_DMA_ALL) << STM32_DMA_CH_OFFSET(channel))))
 
+
+/* Bits for DMA channel regs */
+#define STM32_DMA_CCR_EN		BIT(0)
+#define STM32_DMA_CCR_TCIE		BIT(1)
+#define STM32_DMA_CCR_HTIE		BIT(2)
+#define STM32_DMA_CCR_TEIE		BIT(3)
+#define STM32_DMA_CCR_DIR		BIT(4)
+#define STM32_DMA_CCR_CIRC		BIT(5)
+#define STM32_DMA_CCR_PINC		BIT(6)
+#define STM32_DMA_CCR_MINC		BIT(7)
+#define STM32_DMA_CCR_PSIZE_8_BIT	(0 << 8)
+#define STM32_DMA_CCR_PSIZE_16_BIT	(1 << 8)
+#define STM32_DMA_CCR_PSIZE_32_BIT	(2 << 8)
+#define STM32_DMA_CCR_MSIZE_8_BIT	(0 << 10)
+#define STM32_DMA_CCR_MSIZE_16_BIT	(1 << 10)
+#define STM32_DMA_CCR_MSIZE_32_BIT	(2 << 10)
+#define STM32_DMA_CCR_PL_LOW		(0 << 12)
+#define STM32_DMA_CCR_PL_MEDIUM		(1 << 12)
+#define STM32_DMA_CCR_PL_HIGH		(2 << 12)
+#define STM32_DMA_CCR_PL_VERY_HIGH	(3 << 12)
+#define STM32_DMA_CCR_MEM2MEM		BIT(14)
+
+/* The requests for the DMA1/DMA2 controllers are routed through DMAMUX1. */
+/* DMAMUX1/2 registers */
+#define DMAMUX1 0
+#define DMAMUX2 1
+#define STM32_DMAMUX_BASE(n)        ((n) ? STM32_DMAMUX2_BASE \
+					 : STM32_DMAMUX1_BASE)
+#define STM32_DMAMUX_REG32(n, off)  REG32(STM32_DMAMUX_BASE(n) + (off))
+#define STM2_DMAMUX_CxCR(n, x)      STM32_DMAMUX_REG32(n, 4 * (x))
+#define STM2_DMAMUX_CSR(n)          STM32_DMAMUX_REG32(n, 0x80)
+#define STM2_DMAMUX_CFR(n)          STM32_DMAMUX_REG32(n, 0x84)
+#define STM2_DMAMUX_RGxCR(n, x)     STM32_DMAMUX_REG32(n, 0x100 + 4 * (x))
+#define STM2_DMAMUX_RGSR(n)         STM32_DMAMUX_REG32(n, 0x140)
+#define STM2_DMAMUX_RGCFR(n)        STM32_DMAMUX_REG32(n, 0x144)
+
+enum dmamux1_request {
+	DMAMUX1_REQ_ADC1 = 5,
+	DMAMUX1_REQ_DAC1_CH1 = 6,
+	DMAMUX1_REQ_DAC1_CH2 = 7,
+	DMAMUX1_REQ_TIM6_UP = 8,
+	DMAMUX1_REQ_TIM7_UP = 9,
+	DMAMUX1_REQ_SPI1_RX = 10,
+	DMAMUX1_REQ_SPI1_TX = 11,
+	DMAMUX1_REQ_SPI2_RX = 12,
+	DMAMUX1_REQ_SPI2_TX = 13,
+	DMAMUX1_REQ_SPI3_RX = 14,
+	DMAMUX1_REQ_SPI3_TX = 15,
+	DMAMUX1_REQ_I2C1_RX = 16,
+	DMAMUX1_REQ_I2C1_TX = 17,
+	DMAMUX1_REQ_I2C2_RX = 18,
+	DMAMUX1_REQ_I2C2_TX = 19,
+	DMAMUX1_REQ_I2C3_RX = 20,
+	DMAMUX1_REQ_I2C3_TX = 21,
+	DMAMUX1_REQ_I2C4_RX = 22,
+	DMAMUX1_REQ_I2C4_TX = 23,
+	DMAMUX1_REQ_USART1_RX = 24,
+	DMAMUX1_REQ_USART1_TX = 25,
+	DMAMUX1_REQ_USART2_RX = 26,
+	DMAMUX1_REQ_USART2_TX = 27,
+	DMAMUX1_REQ_USART3_RX = 28,
+	DMAMUX1_REQ_USART3_TX = 29,
+	DMAMUX1_REQ_UART4_RX = 30,
+	DMAMUX1_REQ_UART4_TX = 31,
+	DMAMUX1_REQ_USART5_RX = 32,
+	DMAMUX1_REQ_UART5_TX = 33,
+	DMAMUX1_REQ_LPUART1_RX = 34,
+	DMAMUX1_REQ_LPUART1_TX = 35,
+	DMAMUX1_REQ_ADC2 = 36,
+	DMAMUX1_REQ_ADC3 = 37,
+	DMAMUX1_REQ_ADC4 = 38,
+	DMAMUX1_REQ_ADC5 = 39,
+	DMAMUX1_REQ_QUADSPI = 40,
+	DMAMUX1_REQ_DAC2_CH1 = 41,
+	DMAMUX1_REQ_TIM1_CH1 = 42,
+	DMAMUX1_REQ_TIM1_CH2 = 43,
+	DMAMUX1_REQ_TIM1_CH3 = 44,
+	DMAMUX1_REQ_TIM1_CH4 = 45,
+	DMAMUX1_REQ_TIM1_UP = 46,
+	DMAMUX1_REQ_TIM1_TRIG = 47,
+	DMAMUX1_REQ_TIM1_COM = 48,
+	DMAMUX1_REQ_TIM8_CH1 = 49,
+	DMAMUX1_REQ_TIM8_CH2 = 50,
+	DMAMUX1_REQ_TIM8_CH3 = 51,
+	DMAMUX1_REQ_TIM8_CH4 = 52,
+	DMAMUX1_REQ_TIM8_UP = 53,
+	DMAMUX1_REQ_TIM8_TRIG = 54,
+	DMAMUX1_REQ_TIM8_COM = 55,
+	DMAMUX1_REQ_TIM2_CH1 = 56,
+	DMAMUX1_REQ_TIM2_CH2 = 57,
+	DMAMUX1_REQ_TIM2_CH3 = 58,
+	DMAMUX1_REQ_TIM2_CH4 = 59,
+	DMAMUX1_REQ_TIM2_UP = 60,
+	DMAMUX1_REQ_TIM3_CH1 = 61,
+	DMAMUX1_REQ_TIM3_CH2 = 62,
+	DMAMUX1_REQ_TIM3_CH3 = 63,
+	DMAMUX1_REQ_TIM3_CH4 = 64,
+	DMAMUX1_REQ_TIM3_UP = 65,
+	DMAMUX1_REQ_TIM3_TRIG = 66,
+	DMAMUX1_REQ_TIM4_CH1 = 67,
+	DMAMUX1_REQ_TIM4_CH2 = 68,
+	DMAMUX1_REQ_TIM4_CH3 = 69,
+	DMAMUX1_REQ_TIM4_CH4 = 70,
+	DMAMUX1_REQ_TIM4_UP = 71,
+	DMAMUX1_REQ_TIM5_CH1 = 72,
+	DMAMUX1_REQ_TIM5_CH2 = 73,
+	DMAMUX1_REQ_TIM5_CH3 = 74,
+	DMAMUX1_REQ_TIM5_CH4 = 75,
+	DMAMUX1_REQ_TIM5_UP = 76,
+	DMAMUX1_REQ_TIM5_TRIG = 77,
+	DMAMUX1_REQ_TIM15_CH1 = 78,
+	DMAMUX1_REQ_TIM15_UP = 79,
+	DMAMUX1_REQ_TIM15_TRIG = 80,
+	DMAMUX1_REQ_TIM15_COM = 81,
+	DMAMUX1_REQ_TIM16_CH1 = 82,
+	DMAMUX1_REQ_TIM16_UP = 83,
+	DMAMUX1_REQ_TIM17_CH1 = 84,
+	DMAMUX1_REQ_TIM17_UP = 85,
+	DMAMUX1_REQ_TIM20_CH1 = 86,
+	DMAMUX1_REQ_TIM20_CH2 = 87,
+	DMAMUX1_REQ_TIM20_CH3 = 88,
+	DMAMUX1_REQ_TIM20_CH4 = 89,
+	DMAMUX1_REQ_TIM20_UP = 90,
+	DMAMUX1_REQ_AES_IN = 91,
+	DMAMUX1_REQ_AES_OUT = 92,
+	DMAMUX1_REQ_TIM20_TRIG = 93,
+	DMAMUX1_REQ_TIM20_COM = 94,
+	DMAMUX1_REQ_DAC3_CH1 = 102,
+	DMAMUX1_REQ_DAC3_CH2 = 103,
+	DMAMUX1_REQ_DAC4_CH1 = 104,
+	DMAMUX1_REQ_DAC4_CH2 = 105,
+	DMAMUX1_REQ_SPI4_RX = 106,
+	DMAMUX1_REQ_SPI4_TX = 107,
+	DMAMUX1_REQ_SAI1_A = 108,
+	DMAMUX1_REQ_SAI1_B = 109,
+};
+/* LPUART gets accessed as UART9 in STM32 uart module */
+#define DMAMUX1_REQ_UART9_RX DMAMUX1_REQ_LPUART1_RX
+#define DMAMUX1_REQ_UART9_TX DMAMUX1_REQ_LPUART1_TX
 
 /* --- CRC --- */
 #define STM32_CRC_DR                REG32(STM32_CRC_BASE + 0x0)

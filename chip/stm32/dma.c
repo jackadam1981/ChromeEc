@@ -231,7 +231,7 @@ void dma_test(enum dma_channel channel)
 
 void dma_init(void)
 {
-#if defined(CHIP_FAMILY_STM32L4)
+#if defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32G4)
 	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN|STM32_RCC_AHB1ENR_DMA2EN;
 #else
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;

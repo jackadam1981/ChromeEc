@@ -5,7 +5,12 @@
 
 /* Memory mapping STM32G431xb has 128 KBytes of internal flash*/
 #define CONFIG_FLASH_SIZE       (128 * 1024)
+#define CONFIG_FLASH_WRITE_SIZE 0x0004
+#define CONFIG_FLASH_ERASE_SIZE 0x0800
+#define CONFIG_FLASH_BANK_SIZE CONFIG_FLASH_SIZE
 
+#define SIZE_2KB (2 * 1024)
+#define SIZE_64KB (64 * 1024)
 /* Erasing 128K can take up to 2s, need to defer erase. */
 #define CONFIG_FLASH_DEFERRED_ERASE
 
@@ -43,12 +48,15 @@
 #undef I2C_PORT_COUNT
 #define I2C_PORT_COUNT	3
 
+/* Number of DMA channels supported (6 channels each for DMA1 and DMA2  */
+#define DMAC_COUNT 12
+
 /* Use PSTATE embedded in the RO image, not in its own erase block */
 #define CONFIG_FLASH_PSTATE
 #undef CONFIG_FLASH_PSTATE_BANK
 
 /* Use OTP regions */
-#define CONFIG_OTP
+/* #define CONFIG_OTP */
 
 /* Number of IRQ vectors on the NVIC */
 #define CONFIG_IRQ_COUNT	101
