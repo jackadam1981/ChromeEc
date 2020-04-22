@@ -46,6 +46,30 @@
       "revId": "4039ff05cbb386ea3e9a89d467ceedb7464dc855",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "765c3e4b_da615bc5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-22T21:18:49Z",
+      "side": 1,
+      "message": "I see; you\u0027re right that we shouldn\u0027t hit this path without the config.  I was thrown off by the config being checked earlier.  Looks good.",
+      "parentUuid": "586cafa9_1f9f436f",
+      "range": {
+        "startLine": 1064,
+        "startChar": 12,
+        "endLine": 1064,
+        "endChar": 42
+      },
+      "revId": "4039ff05cbb386ea3e9a89d467ceedb7464dc855",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
