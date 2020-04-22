@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "364e4c73_e4fae7b9",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-22T15:15:28Z",
+      "side": 1,
+      "message": "Based on reading extpower_gpio.c and samus\u0027s exptpower.c, I believe we\u0027ll also want to send the corresponding EC_HOST_EVENT_AC_* event as well",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 0
+      },
+      "revId": "7a82635dd5101e76879e2b2db9ed3cab2bd42745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
