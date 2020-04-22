@@ -22,6 +22,30 @@
       "revId": "1e8a9f898f08204510063fe396d511a50fd29797",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2bf5671_55f8da3e",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-22T23:11:40Z",
+      "side": 1,
+      "message": "By adding the halvor_ prefix, Compal can move the Volteer USB ISRs in a later CL.\n\nInitially I though the Volteer USB ISRs could remain in the baseboard, and get optimized out by the linker, but it makes more sense for the USB ISRs to move from the baseboard to the board variant.\n\nI actually prefer the having the board name prefix on these ISRs - when all boards use the same function name, it makes finding the specific board implementation more difficult.",
+      "parentUuid": "82079a02_a2808fa7",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 12
+      },
+      "revId": "1e8a9f898f08204510063fe396d511a50fd29797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
