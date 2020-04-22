@@ -727,10 +727,10 @@ static void charge_manager_refresh(void)
 						 new_charge_current_uncapped);
 		else
 			new_charge_current = new_charge_current_uncapped;
-
 		new_charge_voltage =
 			available_charge[new_supplier][new_port].voltage;
 	}
+	kakadu_pd_current_voltage(new_charge_voltage, new_charge_current_uncapped);
 
 	/* Change the charge limit + charge port/supplier if modified. */
 	if (new_port != charge_port || new_charge_current != charge_current ||

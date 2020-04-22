@@ -6,11 +6,13 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "button.h"
+#include "battery.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
 #include "charge_state.h"
 #include "charger.h"
 #include "charger_mt6370.h"
+#include "charge_manager.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -26,6 +28,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "max17055.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -44,6 +47,11 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+/* Voltage reg value to mV */
+#define VOLTAGE_CONV(REG)       ((REG * 5) >> 6)
+/* Current reg value to mA */
+#define CURRENT_CONV(REG)       (((REG * 25) >> 4) / BATTERY_MAX17055_RSENSE)
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -101,7 +109,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 };
 
 struct mt6370_thermal_bound thermal_bound = {
-	.target = 80,
+	.target = 90,
 	.err = 4,
 };
 
@@ -150,6 +158,8 @@ uint16_t tcpc_get_alert_status(void)
 }
 
 static int force_discharge;
+static int voltage_pd;
+static int current_pd;
 
 int board_set_active_charge_port(int charge_port)
 {
@@ -274,6 +284,7 @@ static void board_init(void)
 	 * (b/133655155)
 	 */
 	mt6370_backlight_set_dim(MT6370_BLDIM_DEFAULT * 3 / 4);
+
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -436,3 +447,93 @@ __override int board_has_virtual_mux(void)
 {
 	return board_get_version() < 5;
 }
+
+static int max17055_read(int offset, int *data)
+{
+	return i2c_read16(I2C_PORT_BATTERY, MAX17055_ADDR_FLAGS,
+			  offset, data);
+}
+
+__override
+void kakadu_pd_current_voltage(int voltage, int current)
+{
+	voltage_pd = voltage;
+	current_pd = current;
+	ccprintf("voltage_pd=%d, current_pd=%d\n", voltage_pd, current_pd);
+}
+
+static int command_kakadu(int argc, char **argv)
+{
+	int reg = 0;
+	int input_current;
+	int voltage;
+	int jc_temp;
+
+	struct batt_params batt_new = {0};
+
+	/*Get battery current and voltage*/
+	if (max17055_read(REG_VOLTAGE, &reg))
+		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
+	batt_new.voltage = VOLTAGE_CONV(reg);
+	ccprintf("batt_new.voltage=%d\n", batt_new.voltage);
+
+	if (max17055_read(REG_AVERAGE_CURRENT, &reg))
+		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
+	batt_new.current = CURRENT_CONV((int16_t)reg);
+	ccprintf("batt_new.current=%d\n", batt_new.current);
+
+	ccprintf("EC set to charger, current=3595\n");
+	ccprintf("EC set to charger, voltage=4370\n");
+
+	if (charger_get_vbus_voltage(0, &voltage))
+		return EC_ERROR_INVAL;
+	ccprintf("PD voltage=%d\n", voltage);
+
+	/*Get EC set input current to charger*/
+	if (charger_get_input_current(CHARGER_SOLO, &input_current))
+		return EC_ERROR_INVAL;
+	ccprintf("input_current=%d\n", input_current);
+
+	if (rt946x_get_adc(MT6370_ADC_TEMP_JC, &jc_temp))
+		return EC_ERROR_INVAL;
+	ccprintf("jc_temp=%d\n", jc_temp);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(kakadu, command_kakadu,
+			"[delay]",
+			"Bring up PP3300 and PP5000 manually");
+
+
+static void kakadu_second(void)
+{
+	int reg = 0;
+	int current_lim = 0;
+	int voltage;
+	int voltage_now;
+	struct batt_params batt_new = {0};
+
+	/*Get battery current and voltage*/
+	if (max17055_read(REG_VOLTAGE, &reg))
+		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
+	batt_new.voltage = VOLTAGE_CONV(reg);
+	//ccprintf("batt_new.voltage=%d\n", batt_new.voltage);
+
+	if (max17055_read(REG_AVERAGE_CURRENT, &reg))
+		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
+	batt_new.current = CURRENT_CONV((int16_t)reg);
+	//ccprintf("batt_new.current=%d\n", batt_new.current);
+
+	current_lim = chg_ramp_get_current_limit();
+	//ccprintf("current_lim=%d\n", current_lim);
+
+	if (charger_get_vbus_voltage(0, &voltage))
+		voltage_now = 0;
+	else
+		voltage_now = voltage;
+	//ccprintf("voltage_now=%d\n", voltage_now);
+
+	ccprintf("BAT_V=%d, BAT_I=%d, ADP_V=%d, ADP_I=%d, read_ADP_V=%d, read_ADP_I=%d\n", batt_new.voltage, batt_new.current, voltage_now, current_lim, voltage_pd, current_pd);
+
+}
+DECLARE_HOOK(HOOK_SECOND, kakadu_second, HOOK_PRIO_DEFAULT);
