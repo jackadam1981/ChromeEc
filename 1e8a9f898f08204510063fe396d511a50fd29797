@@ -46,6 +46,30 @@
       "revId": "1e8a9f898f08204510063fe396d511a50fd29797",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d87be4cf_d2f4e852",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-22T23:16:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2bf5671_55f8da3e",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 12
+      },
+      "revId": "1e8a9f898f08204510063fe396d511a50fd29797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
