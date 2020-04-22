@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bab88362_b316960d",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-04-22T08:23:41Z",
+      "side": 1,
+      "message": "Yea it is never done in normal use, but you can generate one on the command line (eg during an integration test). It\u0027s of limited use since you need presence for a sign (so your test setup needs servo anyway), but I think we may as well not make this more restrictive than it needs to be",
+      "parentUuid": "6e2ec416_fb098638",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 109,
+        "endChar": 10
+      },
+      "revId": "06844a28625fdaf61fd96745c7b5b73b7ee07490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "adc61277_05352172",
         "filename": "common/u2f.c",
         "patchSetId": 4
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "3. Update: the fingerprint team feels it might be clearer and safer to restrict DIOM4 to new, versioned key handles.",
       "parentUuid": "f0a9dc16_a7d487a9",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 25
+      },
+      "revId": "06844a28625fdaf61fd96745c7b5b73b7ee07490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f7f568d_fb016871",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-04-22T08:23:41Z",
+      "side": 1,
+      "message": "Thanks - restricting DIOM4 to new, versioned key handles sounds good.\n\nAbout \u0027consume\u0027 - what happens now is that presence is \u0027active\u0027 for 10 seconds, but once you read it, it is \u0027consumed\u0027, and a second request within 10 seconds of presence will fail (so an attacker can\u0027t piggy-back off a legitimate request)\n\nIf we\u0027re restricting DIOM4 to the new key handles we could ignore this for now, but let\u0027s not forget about it.",
+      "parentUuid": "26f9255c_253769c4",
       "range": {
         "startLine": 111,
         "startChar": 6,
