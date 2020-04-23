@@ -22,6 +22,30 @@
       "revId": "b91171576784c9dd1569284b83bb92d710f46d57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce82b2c1_27288326",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-04-23T03:52:35Z",
+      "side": 1,
+      "message": "This is feedback from our thermal guy:\nThat fan table user case is for tablet mode, that will closer user than clamshell mode ,\nFor great user experience at acoustic , we use 0 rpm for step one and two at tablet mode.",
+      "parentUuid": "1341fd24_48304eef",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 16
+      },
+      "revId": "b91171576784c9dd1569284b83bb92d710f46d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
