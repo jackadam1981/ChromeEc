@@ -5,7 +5,6 @@
 
 #include "byteorder.h"
 #include "ccd_config.h"
-#include "cryptoc/sha256.h"
 #include "console.h"
 #include "dcrypto.h"
 #include "extension.h"
@@ -242,12 +241,14 @@ int usb_spi_board_enable(int host)
 			CPRINTS("%s: AP access denied", __func__);
 			return EC_ERROR_ACCESS_DENIED;
 		}
-	} else {
+	} else if (host != USB_SPI_H1) {
 		CPRINTS("%s: device %d not supported", __func__, host);
 		return EC_ERROR_INVAL;
 	}
 
-	if (set_spi_bus_user(SPI_BUS_USER_USB, 1) != EC_SUCCESS) {
+	if (set_spi_bus_user(host == USB_SPI_H1 ?
+			     SPI_BUS_USER_HASH : SPI_BUS_USER_USB, 1) !=
+	    EC_SUCCESS) {
 		CPRINTS("%s: bus in use", __func__);
 		return EC_ERROR_BUSY;
 	}
@@ -261,7 +262,7 @@ int usb_spi_board_enable(int host)
 	if (host == USB_SPI_EC)
 		enable_ec_spi();
 	else
-		enable_ap_spi();
+		enable_ap_spi(); /* Works for either H1 or AP. */
 
 	enable_spi_pinmux();
 	return EC_SUCCESS;
@@ -578,41 +579,37 @@ static enum vendor_cmd_rc spi_hash_dump(uint8_t *dest, uint32_t offset,
 	return VENDOR_RC_SUCCESS;
 }
 
-static enum vendor_cmd_rc spi_hash_sha256(uint8_t *dest, uint32_t offset,
-					  uint32_t size)
+
+int usb_spi_sha256_start(HASH_CTX *ctx)
 {
-	HASH_CTX sha;
+	if (get_spi_bus_user() != SPI_BUS_USER_HASH) {
+		CPRINTS("%s: not enabled", __func__);
+		return EC_ERROR_BUSY;
+	}
+
+	DCRYPTO_SHA256_init(ctx, 0);
+
+	return EC_SUCCESS;
+}
+
+#include "watchdog.h"
+
+int usb_spi_sha256_update(HASH_CTX *ctx, uint32_t offset, uint32_t size)
+{
 	uint8_t data[SPI_HASH_CHUNK_SIZE];
 	int chunk_size = SPI_HASH_CHUNK_SIZE;
 	int chunks = 0;
 
-	/* Fail if we don't own the bus */
-	if (get_spi_bus_user() != SPI_BUS_USER_HASH) {
-		CPRINTS("%s: not enabled", __func__);
-		return VENDOR_RC_NOT_ALLOWED;
-	}
-
-	/* Bump inactivity timer to turn hashing mode off */
-	hook_call_deferred(&spi_hash_inactive_timeout_data,
-			   SPI_HASH_TIMEOUT_US);
-
-	if (size > MAX_SPI_HASH_SIZE)
-		return VENDOR_RC_BOGUS_ARGS;
-
-	CPRINTS("%s: 0x%x 0x%x", __func__, offset, size);
-
-	DCRYPTO_SHA256_init(&sha, 0);
-
 	for (chunks = 0; size > 0; chunks++) {
 		int this_chunk = MIN(size, chunk_size);
+
 		/* Read the data */
 		if (spi_read_chunk(data, offset, this_chunk) != EC_SUCCESS) {
 			CPRINTS("%s: read error at 0x%x", __func__, offset);
 			return VENDOR_RC_READ_FLASH_FAIL;
 		}
-
 		/* Update hash */
-		HASH_update(&sha, data, this_chunk);
+		HASH_update(ctx, data, this_chunk);
 
 		/* Give other things a chance to happen */
 		if (!(chunks % 128))
@@ -621,8 +618,37 @@ static enum vendor_cmd_rc spi_hash_sha256(uint8_t *dest, uint32_t offset,
 		size -= this_chunk;
 		offset += this_chunk;
 	}
+	return EC_SUCCESS;
+}
 
-	memcpy(dest, HASH_final(&sha), SHA256_DIGEST_SIZE);
+void usb_spi_sha256_final(HASH_CTX *ctx, void *digest, size_t digest_size)
+{
+	size_t copy_size;
+
+	copy_size = MIN(digest_size, SHA256_DIGEST_SIZE);
+	memcpy(digest, HASH_final(ctx), copy_size);
+
+	if (copy_size < digest_size)
+		memset((uint8_t *)digest + copy_size,
+		       0, digest_size - copy_size);
+}
+
+static enum vendor_cmd_rc spi_hash_sha256(uint8_t *dest, uint32_t offset,
+					  uint32_t size)
+{
+	HASH_CTX sha;
+
+	CPRINTS("%s: 0x%x 0x%x", __func__, offset, size);
+		if (size > MAX_SPI_HASH_SIZE)
+		return VENDOR_RC_BOGUS_ARGS;
+
+	/* Bump inactivity timer to turn hashing mode off */
+	hook_call_deferred(&spi_hash_inactive_timeout_data,
+			   SPI_HASH_TIMEOUT_US);
+
+	usb_spi_sha256_start(&sha);
+	usb_spi_sha256_update(&sha, offset, size);
+	usb_spi_sha256_final(&sha, dest, SHA256_DIGEST_SIZE);
 
 	CPRINTS("%s: done", __func__);
 	return VENDOR_RC_SUCCESS;
