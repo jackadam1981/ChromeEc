@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8559cfda_8f58ab84",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-23T22:51:46Z",
+      "side": 1,
+      "message": "Per the OCPC doc, we set CC and CV on the primary charger (as we do above), but we need to disable switching on it as well.  Should boards be expected to do this through their board_set_active_charge_port function, or should the charge_state_v2 code handle it?",
+      "range": {
+        "startLine": 1277,
+        "startChar": 0,
+        "endLine": 1280,
+        "endChar": 52
+      },
+      "revId": "c15df341e90e8fa217fff3f8917e8a90c51b96f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
