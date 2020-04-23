@@ -45,6 +45,29 @@
       "revId": "7cf61c4dd827bd7d794f97a52079d115efb4a728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c714a4c_3d3d30a8",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-23T17:51:26Z",
+      "side": 1,
+      "message": "sorry i just realized dfp_discover_modes() doesnt depend on sop_prime**\npls feel free to get rid of rsize variable as before",
+      "range": {
+        "startLine": 696,
+        "startChar": 1,
+        "endLine": 696,
+        "endChar": 14
+      },
+      "revId": "7cf61c4dd827bd7d794f97a52079d115efb4a728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
