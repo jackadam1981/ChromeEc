@@ -455,11 +455,18 @@ void prl_run(int port, int evt, int en)
 void prl_set_rev(int port, enum tcpm_transmit_type type,
 						enum pd_rev_type rev)
 {
-	pdmsg[port].rev[type] = rev;
+	/* We only store revisions for SOP* types. */
+	if (type < NUM_SOP_STAR_TYPES)
+		pdmsg[port].rev[type] = rev;
 }
+
 enum pd_rev_type prl_get_rev(int port, enum tcpm_transmit_type type)
 {
-	return pdmsg[port].rev[type];
+	/* We only store revisions for SOP* types. */
+	if (type < NUM_SOP_STAR_TYPES)
+		return pdmsg[port].rev[type];
+	else
+		return PD_REVISION;
 }
 
 /* Common Protocol Layer Message Transmission */
