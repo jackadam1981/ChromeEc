@@ -21,11 +21,13 @@ static uint32_t myrand(void)
 
 void dummy_task(void)
 {
-	int i = 0;
+	int t;
 
 	while (1) {
-		ccprints("%s: %d", __func__, ++i);
+		t = myrand() % 5 + 1;
+
+		//ccprints("%d: %d", task_get_current(), t);
 		cflush();
-		sleep(myrand() % 10 + 1);
+		sleep(t);
 	}
 }
