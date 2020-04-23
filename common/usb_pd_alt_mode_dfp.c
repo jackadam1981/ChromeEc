@@ -374,23 +374,45 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
 void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 		uint32_t *payload)
 {
+	int svid_idx;
+	struct svdm_svid_data *mode_discovery = NULL;
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 	struct svid_data_s *svid_disc = &disc->svids[type];
-	int idx = disc->svid_idx;
+	uint16_t response_svid = (uint16_t) (payload[0] >> 16);
 
-	CPRINTF("C%d: Consuming modes for %s\n", port, sop_names[type]);
+	CPRINTF("C%d: Consuming modes for %s, SVID %x\n", port, sop_names[type],
+			(int) response_svid);
 
-	svid_disc->svids[idx].mode_cnt = cnt - 1;
+	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
+		uint16_t svid = svid_disc->svids[svid_idx].svid;
+		if (svid == response_svid) {
+			CPRINTF("C%d: Found storage for SVID %x modes\n", port,
+					svid);
+			mode_discovery = &svid_disc->svids[svid_idx];
+			break;
+		}
+	}
+	if (!mode_discovery) {
+		CPRINTF("C%d: Mode response for SVID %x but didn't discover "
+				"that SVID\n",
+				port, (int) response_svid);
+		return;
+	}
 
-	if (svid_disc->svids[idx].mode_cnt < 0) {
+
+	mode_discovery->mode_cnt = cnt - 1;
+
+	if (mode_discovery->mode_cnt < 0) {
 		CPRINTF("ERR:NOMODE\n");
 	} else {
-		memcpy(svid_disc->svids[disc->svid_idx].mode_vdo, &payload[1],
-		       sizeof(uint32_t) * svid_disc->svids[idx].mode_cnt);
+		CPRINTF("C%d: Storing modes for SVID %x\n", port,
+				response_svid);
+		memcpy(mode_discovery->mode_vdo, &payload[1],
+		       sizeof(uint32_t) * mode_discovery->mode_cnt);
 	}
 
 	disc->svid_idx++;
-	pd_set_modes_discovery(port, type, svid_disc->svids[idx].svid,
+	pd_set_modes_discovery(port, type, mode_discovery->svid,
 			PD_DISC_COMPLETE);
 }
 
@@ -499,10 +521,11 @@ void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
 {
 	struct svid_data_s *svid_disc =
 		&pd_get_am_discovery(port)->svids[type];
+	int svid_idx;
 
-	for (int i = 0; i < svid_disc->cnt; ++i) {
+	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
 		/* Horrible names */
-		struct svdm_svid_data *data = &svid_disc->svids[i];
+		struct svdm_svid_data *data = &svid_disc->svids[svid_idx];
 		if (data->svid != svid) continue;
 
 		data->discovery = disc;
@@ -515,9 +538,11 @@ enum pd_discovery_state pd_get_modes_discovery(int port,
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 	struct svid_data_s *svid_disc = &disc->svids[type];
+	int svid_idx;
 
-	for (int i = 0; i < svid_disc->cnt; ++i) {
-		enum pd_discovery_state discovery = svid_disc->svids[i].discovery;
+	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
+		enum pd_discovery_state discovery =
+			svid_disc->svids[svid_idx].discovery;
 		/*
 		 * This makes it so that if mode discovery fails for any SVID,
 		 * none of the subsequent ones are attempted. Is this
@@ -533,9 +558,11 @@ enum pd_discovery_state pd_get_modes_discovery(int port,
 int32_t pd_get_next_svid_for_discovery(int port, enum tcpm_transmit_type type) {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 	struct svid_data_s *svid_disc = &disc->svids[type];
+	int svid_idx;
 
-	for (int i = 0; i < svid_disc->cnt; ++i) {
-		enum pd_discovery_state discovery = svid_disc->svids[i].discovery;
+	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
+		enum pd_discovery_state discovery =
+			svid_disc->svids[svid_idx].discovery;
 		/*
 		 * This makes it so that if mode discovery fails for any SVID,
 		 * none of the subsequent ones are attempted. Is this
@@ -544,7 +571,7 @@ int32_t pd_get_next_svid_for_discovery(int port, enum tcpm_transmit_type type) {
 		if (discovery == PD_DISC_FAIL)
 			return -1;
 		if (discovery == PD_DISC_NEEDED)
-			return svid_disc->svids[i].svid;
+			return svid_disc->svids[svid_idx].svid;
 	}
 
 	return -1;
