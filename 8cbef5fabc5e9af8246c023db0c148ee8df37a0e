@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "743bac1e_9b470ebb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1329037
+      },
+      "writtenOn": "2020-04-23T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22168b29_9ec800e4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 74
+      },
+      "revId": "8cbef5fabc5e9af8246c023db0c148ee8df37a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16ca4294_36492faa",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "69b2561d_3e05c5c0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1329037
+      },
+      "writtenOn": "2020-04-23T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16ca4294_36492faa",
+      "range": {
+        "startLine": 681,
+        "startChar": 5,
+        "endLine": 681,
+        "endChar": 11
+      },
+      "revId": "8cbef5fabc5e9af8246c023db0c148ee8df37a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "feed07f6_a77b3231",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "8cbef5fabc5e9af8246c023db0c148ee8df37a0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c759d890_b98f54a2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1329037
+      },
+      "writtenOn": "2020-04-23T23:09:41Z",
+      "side": 1,
+      "message": "Done. Nice catch!",
+      "parentUuid": "feed07f6_a77b3231",
+      "range": {
+        "startLine": 685,
+        "startChar": 3,
+        "endLine": 685,
+        "endChar": 26
+      },
+      "revId": "8cbef5fabc5e9af8246c023db0c148ee8df37a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
