@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31dec2e6_85083a74",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2020-04-23T00:50:07Z",
+      "side": 1,
+      "message": "Dino, We tried Hi-Z this gpio pin, but it was still high until set it `pull down`.\nDo you know why?",
+      "range": {
+        "startLine": 30,
+        "startChar": 59,
+        "endLine": 30,
+        "endChar": 73
+      },
+      "revId": "5689fa1c50ffcf625443ba4669904a24f3c4259c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
