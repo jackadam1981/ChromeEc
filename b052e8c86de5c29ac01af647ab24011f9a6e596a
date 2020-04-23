@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77cf0401_e4469158",
+        "filename": "test/kb_vivaldi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-23T16:40:03Z",
+      "side": 1,
+      "message": "I would recommend the TEST_EQ and TEST_NE macros since they print more information about failures.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 48
+      },
+      "revId": "b052e8c86de5c29ac01af647ab24011f9a6e596a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bca7421_48a7a8e9",
+        "filename": "test/kb_vivaldi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-23T16:40:03Z",
+      "side": 1,
+      "message": "when the result is pass, you don\u0027t get output, you can temporarily change this to return -1;\n\nThen you get the following output:\n\u003d\u003d\u003d\u003d\u003d\u003d Emulator output \u003d\u003d\u003d\u003d\u003d\u003d\nConsole input initialized\n\n\n--- Emulator initialized after reboot ---\n[Reset cause: power-on]\n[0.000665 SW 0x04]\n[0.000667 VIVALDI: Num top row keys \u003d 13]\n[0.000668 VIVALDI key-0 (r-0, c-2) \u003d scancode-E038]\n[0.000669 VIVALDI key-1 (r-3, c-2) \u003d scancode-E020]\n[0.000670 VIVALDI key-2 (r-2, c-2) \u003d scancode-E01D]\n[0.000671 VIVALDI key-3 (r-1, c-2) \u003d scancode-E024]\n[0.000672 VIVALDI key-4 (r-3, c-4) \u003d scancode-E02D]\n[0.000673 VIVALDI key-5 (r-2, c-4) \u003d scancode-E02C]\n[0.000674 VIVALDI key-6 (r-1, c-4) \u003d scancode-E035]\n[0.000675 VIVALDI key-7 (r-2, c-9) \u003d scancode-E043]\n[0.000676 VIVALDI key-8 (r-1, c-9) \u003d scancode-E044]\n[0.000677 VIVALDI key-9 (r-0, c-4) \u003d scancode-E054]\n[0.000678 VIVALDI key-10 (r-0, c-1) \u003d scancode-E023]\n[0.000679 VIVALDI key-11 (r-1, c-5) \u003d scancode-E021]\n[0.000680 VIVALDI key-12 (r-3, c-5) \u003d scancode-E032]\n[0.000695 KB init state: -- -- -- -- -- -- -- -- -- -- -- -- --]\n[0.000696 KB disable_scanning_mask changed: 0x00000001]\n[0.000697 KB Clear Buffer]\nConsole is enabled; type HELP for help.\n\u003e [0.000701 event set 0x0000000000002000]\n[0.000702 hostcmd init 0x0000000000002000]\nRunning test_ec_cmd_get_keybd_config...\ntest_ec_cmd_get_keybd_config: enter\n[0.010694 HC 0x12a]\ntest_ec_cmd_get_keybd_config: rv \u003d 0 enter\nFail\nFail! (1 tests)\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nmake: *** [Makefile.rules:303: run-kb_vivaldi] Error 1",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "b052e8c86de5c29ac01af647ab24011f9a6e596a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
