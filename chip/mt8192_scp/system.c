@@ -53,6 +53,10 @@ void system_pre_init(void)
 	//scp_memmap_init();
 	/* Disable jump (mt_scp has only RW) and enable MPU. */
 	system_disable_jump();
+
+	/* for JTAG */
+	AP_GPIO_MODE16_CLR = 0x07777700;
+	AP_GPIO_MODE16_SET = 0x03333300;
 }
 
 void system_reset(int flags)
