@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82f7d6bd_1cb3316a",
+        "filename": "board/malefor/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-23T17:27:16Z",
+      "side": 1,
+      "message": "Only the power LED routes to the left and and right sides, correct?\n\nRight now, your implementation always turns on both power LEDs (at 50% brightness).  If you have plans to turn on/off the left and right LEDs independently, please file a bug and add a TODO comment.\n\nIf you always plan to turn both left and right LEDs on at the same time, please note that in this comment.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 71
+      },
+      "revId": "6d4f81033030dff11b7828547fb94bbb232ec8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d37ea0b_65403eac",
+        "filename": "board/malefor/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-23T17:27:16Z",
+      "side": 1,
+      "message": "Please use the net names from the schematic with gpio.inc.\nThis should be LED_1_L, LED_2_L, and LED_3_L.\n\nYou can update the comment to indicate the function of each LED - for example \"Battery - Green LED\", \"Power - White LED\"",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "6d4f81033030dff11b7828547fb94bbb232ec8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7194f70_97ba9279",
+        "filename": "board/malefor/led.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-23T17:27:16Z",
+      "side": 1,
+      "message": "Nit - align this column for all entries in the table.",
+      "range": {
+        "startLine": 21,
+        "startChar": 51,
+        "endLine": 21,
+        "endChar": 65
+      },
+      "revId": "6d4f81033030dff11b7828547fb94bbb232ec8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
