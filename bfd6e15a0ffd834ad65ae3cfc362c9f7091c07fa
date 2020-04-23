@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "95d38aab_5a18d233",
+        "filename": "util/ap_ro_hash.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-23T17:41:53Z",
+      "side": 1,
+      "message": "these ranges can be determined by examining coreboot map files.\n\nThis script as presented does allow using fmap area names only.\n\nThe ability to specify ranges will be handy in case we decide to move to partial verification of the RO space by the GSC, with the rest of the RO space verified by the AP.\n\nThat would allow to greatly speed up the check and hence run it on every EC reset.",
+      "parentUuid": "714d5c6d_17d40572",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "bfd6e15a0ffd834ad65ae3cfc362c9f7091c07fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f50ab83_77fd4f62",
         "filename": "util/ap_ro_hash.py",
         "patchSetId": 1
