@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7af091e4_31c7db77",
+        "filename": "util/ap_ro_hash.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-23T00:57:34Z",
+      "side": 1,
+      "message": "the thing is that many (all?) FMAP sections have large gaps. For instance the RO_SECTION section of Grunt flash image has 1205 KB of padding (areas filled up with 0x0 or 0xff) out of 2564 KB",
+      "parentUuid": "aafff1be_7a876500",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "bfd6e15a0ffd834ad65ae3cfc362c9f7091c07fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f50ab83_77fd4f62",
         "filename": "util/ap_ro_hash.py",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-23T00:32:06Z",
       "side": 1,
       "message": "Initially I thought this was updating cr50. Can you rename this to gsc_store_ro_hash or something.",
+      "range": {
+        "startLine": 318,
+        "startChar": 4,
+        "endLine": 318,
+        "endChar": 16
+      },
+      "revId": "bfd6e15a0ffd834ad65ae3cfc362c9f7091c07fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f045b5b_53e277d2",
+        "filename": "util/ap_ro_hash.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-23T00:57:34Z",
+      "side": 1,
+      "message": "sure, will change.",
+      "parentUuid": "3f50ab83_77fd4f62",
       "range": {
         "startLine": 318,
         "startChar": 4,
