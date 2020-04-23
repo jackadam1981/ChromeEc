@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "814de80c_98c3ab1c",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-23T20:03:33Z",
+      "side": 1,
+      "message": "Since BIOS folks prefer to have a long pulse configuration only, will remove this in the next patch. Will test on more platforms.",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 36
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
