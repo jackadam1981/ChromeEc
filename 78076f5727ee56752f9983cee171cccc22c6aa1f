@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61cb5287_416f0fa7",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-23T16:46:26Z",
+      "side": 1,
+      "message": "Hmm I thought this file was also used in TCPMv2 but looks like no. I could see this file getting resued in TCPMv2 eventually (maybe)? What do you think about adding\n\n#ifdef TCPMv2\n#error Can only use this with TCPMv1\n#endif\n\nthoughts?",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 35
+      },
+      "revId": "78076f5727ee56752f9983cee171cccc22c6aa1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
