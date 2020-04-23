@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fd4a6bba_177060b7",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-04-23T19:17:59Z",
+      "side": 1,
+      "message": "Yeah, those shouldn\u0027t be public.  We could put a test in to make sure that they\u0027re set and fail otherwise.",
+      "parentUuid": "938c206a_611e3865",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "066fa547_a93e3807",
         "filename": "util/coverity.sh",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2019-09-23T18:17:27Z",
       "side": 1,
       "message": "Are you sure you don\u0027t want these before $PATH?",
+      "range": {
+        "startLine": 13,
+        "startChar": 18,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2501dab_2396ff9a",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-04-23T19:17:59Z",
+      "side": 1,
+      "message": "It shouldn\u0027t matter either way.",
+      "parentUuid": "066fa547_a93e3807",
       "range": {
         "startLine": 13,
         "startChar": 18,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c60f752c_0d8a5f86",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-04-23T19:17:59Z",
+      "side": 1,
+      "message": "Meh, probably not - they\u0027re just used in the script.",
+      "parentUuid": "b4a43077_9f025394",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3eb3cd94_9726908d",
         "filename": "util/coverity.sh",
         "patchSetId": 2
@@ -106,6 +178,30 @@
       "writtenOn": "2019-09-23T18:17:27Z",
       "side": 1,
       "message": "You want to proceed with any errors from mkdir, rm, make, etc.?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d68171_7d5c969a",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-04-23T19:17:59Z",
+      "side": 1,
+      "message": "Up to you.  My thought was that coverity was about the code and I\u0027d want it to build and report errors.",
+      "parentUuid": "3eb3cd94_9726908d",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "26840397_7f00fd31",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-04-23T19:17:59Z",
+      "side": 1,
+      "message": "I don\u0027t recall.  My guess is that it was failing here if the build log didn\u0027t exist, but I don\u0027t know why that would matter.",
+      "parentUuid": "8154ece6_3b7bc216",
+      "range": {
+        "startLine": 94,
+        "startChar": 27,
+        "endLine": 94,
+        "endChar": 34
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28d39196_11202d39",
         "filename": "util/coverity.sh",
         "patchSetId": 2
@@ -152,6 +272,30 @@
       "writtenOn": "2019-09-23T18:17:27Z",
       "side": 1,
       "message": "? You don\u0027t set \u0027-x\u0027. \u0027sh -x\u0027 is only one-time isn\u0027t it?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 6
+      },
+      "revId": "9c49bd1eb3123615cacc251682e53fcdd4ad25d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd2eb126_3247f3d5",
+        "filename": "util/coverity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2020-04-23T19:17:59Z",
+      "side": 1,
+      "message": "This prevents the following commands from printing out.  They will print to the logfile by default.  I don\u0027t want the proj-token printing out.",
+      "parentUuid": "28d39196_11202d39",
       "range": {
         "startLine": 101,
         "startChar": 0,
