@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1e544fb2_b0ee1d83",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-23T00:03:04Z",
+      "side": 1,
+      "message": "correction: remove assignment at line 207",
+      "parentUuid": "1af9eb82_d18b7939",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 47
+      },
+      "revId": "ba5894fd8db9f55454ef9c8fb71d93d26640e954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c163b66_cd559065",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 7
