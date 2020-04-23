@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cd0932d_fbacfdca",
+        "filename": "util/iteflash.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-23T16:34:22Z",
+      "side": 1,
+      "message": "If there is any product with 768 KB flash size, then would you add the description, like \"A:768KB\" somewhere between line 588 and 615?",
+      "range": {
+        "startLine": 587,
+        "startChar": 44,
+        "endLine": 587,
+        "endChar": 47
+      },
+      "revId": "0bbe41da54899b39c1d6aeaa2d18151427add98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
