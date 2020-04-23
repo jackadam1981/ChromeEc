@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "290a52f5_0f9ed363",
+        "filename": "board/malefor/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-23T16:40:16Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t reply earlier, but I think this should go back into volteer/baseboard.h.  The convertible/clamshell selection will probably be needed on other Volteer based designs.\n\nPlease also change to use bit #4 so there isn\u0027t a gap in the FW_CONFIG.\n\nI think we should follow the convention of the zork platform, and create enums for FW_CONFIG fields.  https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/baseboard/zork/cbi_ec_fw_config.h",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "9d5477c85c2e2539da6fb06ea77252e113b7b28b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
