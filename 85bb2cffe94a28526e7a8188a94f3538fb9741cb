@@ -22,6 +22,30 @@
       "revId": "85bb2cffe94a28526e7a8188a94f3538fb9741cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412325b8_36a8a731",
+        "filename": "board/malefor/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-23T03:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed4a0ab5_350ae054",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "85bb2cffe94a28526e7a8188a94f3538fb9741cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
