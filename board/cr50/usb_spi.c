@@ -229,10 +229,8 @@ static void disable_spi_pinmux(void)
 /*****************************************************************************/
 /* USB SPI methods */
 
-int usb_spi_board_enable(struct usb_spi_config const *config)
+int usb_spi_board_enable(int host)
 {
-	int host = config->state->enabled_host;
-
 	/* Make sure we're allowed to enable the requested device */
 	if (host == USB_SPI_EC) {
 		if (!ccd_is_cap_enabled(CCD_CAP_EC_FLASH)) {
@@ -269,7 +267,7 @@ int usb_spi_board_enable(struct usb_spi_config const *config)
 	return EC_SUCCESS;
 }
 
-void usb_spi_board_disable(struct usb_spi_config const *config)
+void usb_spi_board_disable(void)
 {
 	CPRINTS("%s", __func__);
 

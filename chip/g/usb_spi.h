@@ -239,7 +239,7 @@ int usb_spi_interface(struct usb_spi_config const *config,
  * usb_spi_board_enable should return EC_SUCCESS on success or an error
  * otherwise.
  */
-int usb_spi_board_enable(struct usb_spi_config const *config);
-void usb_spi_board_disable(struct usb_spi_config const *config);
+int usb_spi_board_enable(int host);
+void usb_spi_board_disable(void);
 
 #endif /* __CROS_EC_USB_SPI_H */
