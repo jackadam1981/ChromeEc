@@ -1183,19 +1183,23 @@ static bool pe_attempt_port_discovery(int port)
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 			return true;
+#if 0
 		} else if (pd_get_identity_discovery(port,
 				TCPC_TX_SOP_PRIME_PRIME) == PD_DISC_NEEDED
 			   && pe_can_send_sop_prime(port)) {
 			pe[port].tx_type = TCPC_TX_SOP_PRIME_PRIME;
 			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 			return true;
+#endif
 		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP) ==
 			 PD_DISC_NEEDED &&
 			 pe_can_send_sop_vdm(port, CMD_DISCOVER_IDENT)) {
 			set_state_pe(port,
 				     PE_INIT_PORT_VDM_IDENTITY_REQUEST);
 			return true;
-		} else if (pd_get_svid_discovery(port, TCPC_TX_SOP) ==
+		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP) ==
+				PD_DISC_COMPLETE &&
+				pd_get_svid_discovery(port, TCPC_TX_SOP) ==
 				PD_DISC_NEEDED &&
 				pe_can_send_sop_vdm(port, CMD_DISCOVER_SVID)) {
 			pe[port].tx_type = TCPC_TX_SOP;
@@ -1206,8 +1210,7 @@ static bool pe_attempt_port_discovery(int port)
 				pe_can_send_sop_vdm(port, CMD_DISCOVER_MODES)) {
 			pe[port].tx_type = TCPC_TX_SOP;
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
-			/* TODO: Is identity discovery a precondition to SVIDs
-			 * discovery? */
+			return true;
 		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP_PRIME)
 				== PD_DISC_COMPLETE &&
 				pd_get_svid_discovery(port, TCPC_TX_SOP_PRIME)
@@ -1215,6 +1218,13 @@ static bool pe_attempt_port_discovery(int port)
 				pe_can_send_sop_prime(port)) {
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
+			return true;
+		} else if (pd_get_modes_discovery(port, TCPC_TX_SOP_PRIME) ==
+				PD_DISC_NEEDED &&
+				pe_can_send_sop_prime(port)) {
+			pe[port].tx_type = TCPC_TX_SOP_PRIME;
+			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
+			return true;
 		/*
 		 * Note: determine if next VDM can be sent by taking advantage
 		 * of discovery following the VDM command enum ordering.
