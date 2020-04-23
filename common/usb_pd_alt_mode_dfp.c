@@ -288,14 +288,18 @@ void dfp_consume_attention(int port, uint32_t *payload)
 		modep->fx->attention(port, payload);
 }
 
-void dfp_consume_identity(int port, int cnt, uint32_t *payload)
+static char *sop_names[] = {"SOP", "SOP'", "SOP''"};
+
+void dfp_consume_identity(int port, enum tcpm_transmit_type type, int cnt,
+		uint32_t *payload)
 {
 	int ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 	size_t identity_size = MIN(sizeof(union disc_ident_ack),
 				   (cnt - 1) * sizeof(uint32_t));
-	memcpy(disc->identity[TCPC_TX_SOP].response.raw_value,
-	       payload + 1, identity_size);
+	memcpy(disc->identity[type].response.raw_value, payload + 1,
+			identity_size);
+	CPRINTF("C%d: Consuming identity for %s\n", port, sop_names[type]);
 
 	switch (ptype) {
 	case IDH_PTYPE_AMA:
@@ -315,17 +319,21 @@ void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 	default:
 		break;
 	}
-	pd_set_identity_discovery(port, TCPC_TX_SOP, PD_DISC_COMPLETE);
+	pd_set_identity_discovery(port, type, PD_DISC_COMPLETE);
 }
 
-void dfp_consume_svids(int port, int cnt, uint32_t *payload)
+void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
+		uint32_t *payload)
 {
 	int i;
 	uint32_t *ptr = payload + 1;
 	int vdo = 1;
 	uint16_t svid0, svid1;
 	struct pd_discovery *disc = pd_get_am_discovery(port);
-	struct svid_data_s *svid_disc = &disc->svids[TCPC_TX_SOP];
+	struct svid_data_s *svid_disc = &disc->svids[type];
+
+	CPRINTF("C%d: Consuming SVIDs for %s\n", port, sop_names[type]);
+	CPRINTF("C%d: Already discovered %d SVIDs\n", port, svid_disc->cnt);
 
 	for (i = svid_disc->cnt; i < svid_disc->cnt + 12; i += 2) {
 		if (i >= SVID_DISCOVERY_MAX) {
@@ -357,14 +365,20 @@ void dfp_consume_svids(int port, int cnt, uint32_t *payload)
 	if (i && ((i % 12) == 0))
 		CPRINTF("ERR:SVID+12\n");
 
-	pd_set_svid_discovery(port, TCPC_TX_SOP, PD_DISC_COMPLETE);
+	pd_set_svid_discovery(port, type, PD_DISC_COMPLETE);
+
+	CPRINTF("C%d: Now discovered %d SVIDs\n", port, svid_disc->cnt);
+
 }
 
-void dfp_consume_modes(int port, int cnt, uint32_t *payload)
+void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
+		uint32_t *payload)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
-	struct svid_data_s *svid_disc = &disc->svids[TCPC_TX_SOP];
+	struct svid_data_s *svid_disc = &disc->svids[type];
 	int idx = disc->svid_idx;
+
+	CPRINTF("C%d: Consuming modes for %s\n", port, sop_names[type]);
 
 	svid_disc->svids[idx].mode_cnt = cnt - 1;
 
@@ -376,7 +390,7 @@ void dfp_consume_modes(int port, int cnt, uint32_t *payload)
 	}
 
 	disc->svid_idx++;
-	pd_set_modes_discovery(port, TCPC_TX_SOP, svid_disc->svids[idx].svid,
+	pd_set_modes_discovery(port, type, svid_disc->svids[idx].svid,
 			PD_DISC_COMPLETE);
 }
 

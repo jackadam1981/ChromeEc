@@ -1644,7 +1644,8 @@ void dfp_consume_attention(int port, uint32_t *payload);
  * @param cnt     number of data objects in payload
  * @param payload payload data.
  */
-void dfp_consume_identity(int port, int cnt, uint32_t *payload);
+void dfp_consume_identity(int port, enum tcpm_transmit_type type, int cnt,
+		uint32_t *payload);
 
 /**
  * Consume the SVIDs
@@ -1653,7 +1654,8 @@ void dfp_consume_identity(int port, int cnt, uint32_t *payload);
  * @param cnt     number of data objects in payload
  * @param payload payload data.
  */
-void dfp_consume_svids(int port, int cnt, uint32_t *payload);
+void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
+		uint32_t *payload);
 
 /**
  * Consume the alternate modes
@@ -1662,7 +1664,8 @@ void dfp_consume_svids(int port, int cnt, uint32_t *payload);
  * @param cnt     number of data objects in payload
  * @param payload payload data.
  */
-void dfp_consume_modes(int port, int cnt, uint32_t *payload);
+void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
+		uint32_t *payload);
 
 /**
  * Return the discover alternate mode payload data

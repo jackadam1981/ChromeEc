@@ -4255,14 +4255,6 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 		pd_set_identity_discovery(port, pe[port].tx_type, PD_DISC_FAIL);
 
 	/*
-	 * If anything caused SOP' discovery to fail, go ahead and mark SOP'' as
-	 * failed as well.
-	 */
-	if (pd_get_identity_discovery(port, TCPC_TX_SOP_PRIME) == PD_DISC_FAIL)
-		pd_set_identity_discovery(port, TCPC_TX_SOP_PRIME_PRIME,
-					  PD_DISC_FAIL);
-
-	/*
 	 * Set discover identity timer unless BUSY case already did so
 	 *
 	 * Note: DiscoverIdentityTimer only applies within an explicit
@@ -4329,7 +4321,7 @@ static void pe_init_port_vdm_identity_request_run(int port)
 				/*
 				 * PE_INIT_PORT_VDM_Identity_ACKed embedded here
 				 */
-				dfp_consume_identity(port, cnt, payload);
+				dfp_consume_identity(port, sop, cnt, payload);
 
 				/*
 				 * TODO(b:152419850): Fake vdm_cmd for now to
@@ -4340,7 +4332,7 @@ static void pe_init_port_vdm_identity_request_run(int port)
 				/*
 				 * PE_INIT_PORT_VDM_Identity_NAKed embedded here
 				 */
-				pd_set_identity_discovery(port, TCPC_TX_SOP,
+				pd_set_identity_discovery(port, sop,
 							  PD_DISC_FAIL);
 			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_BUSY) {
 				/*
@@ -4359,7 +4351,7 @@ static void pe_init_port_vdm_identity_request_run(int port)
 				 * Partner gave an incorrect size or command,
 				 * mark discovery as failed
 				 */
-				pd_set_identity_discovery(port, TCPC_TX_SOP,
+				pd_set_identity_discovery(port, sop,
 							  PD_DISC_FAIL);
 				CPRINTS("C%d: Unexpected partner response: "
 					"0x%04x 0x%04x", port,
@@ -4370,8 +4362,7 @@ static void pe_init_port_vdm_identity_request_run(int port)
 			 * Partner doesn't support structured VDMs, mark
 			 * discovery as failed
 			 */
-			pd_set_identity_discovery(port, TCPC_TX_SOP,
-							  PD_DISC_FAIL);
+			pd_set_identity_discovery(port, sop, PD_DISC_FAIL);
 		} else {
 			/*
 			 * Return to PE_S[RC,NK]_Ready to process unexpected
@@ -4386,18 +4377,20 @@ static void pe_init_port_vdm_identity_request_run(int port)
 	}
 }
 
+static char *sop_names[] = {"SOP", "SOP'", "SOP''"};
+
 static void pe_init_port_vdm_svids_request_entry(int port)
 {
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
 
 	print_current_state(port);
 
-	if (pe[port].tx_type == 255) {
+	if (pe[port].tx_type == TCPC_TX_INVALID) {
 		CPRINTS("C%d: TX type expected to be set, returning", port);
 		set_state_pe(port, get_last_state_pe(port));
 		return;
 	}
-	CPRINTF("%s: TX type %d\n", __func__, pe[port].tx_type);
+	CPRINTF("C%d: Discover SVIDs %s\n", port, sop_names[pe[port].tx_type]);
 
 	msg[0] = VDO(USB_SID_PD, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
@@ -4419,7 +4412,6 @@ static void pe_init_port_vdm_svids_request_run(int port)
 
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
-		CPRINTF("%s: Received a message\n", __func__);
 		/* Retrieve the message information */
 		payload = (uint32_t *)rx_emsg[port].buf;
 		sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
@@ -4429,8 +4421,6 @@ static void pe_init_port_vdm_svids_request_run(int port)
 
 		if (sop == pe[port].tx_type && type == PD_DATA_VENDOR_DEF &&
 							cnt > 0 && ext == 0) {
-			CPRINTF("%s: Valid message, type=%d, cnt=%d\n",
-					__func__, sop, (int)cnt);
 			/* TODO: Check for valid SVID ACK instead */
 			/*
 			 * Valid DiscoverIdentity responses should have at least
@@ -4441,7 +4431,7 @@ static void pe_init_port_vdm_svids_request_run(int port)
 				CPRINTF("%s: ACK\n", __func__);
 				/* PE_INIT_VDM_SVIDs_ACKed embedded here */
 				/* TODO: Handle multiple transmit types */
-				dfp_consume_svids(port, cnt, payload);
+				dfp_consume_svids(port, sop, cnt, payload);
 				/*
 				 * TODO(b:152419850): Fake vdm_cmd for now to
 				 * ensure existing discovery process continues.
@@ -4450,8 +4440,7 @@ static void pe_init_port_vdm_svids_request_run(int port)
 			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_NAK) {
 				CPRINTF("%s: NAK\n", __func__);
 				/* PE_INIT_VDM_SVIDs_NAKed embedded here */
-				pd_set_svid_discovery(port, pe[port].tx_type,
-						PD_DISC_FAIL);
+				pd_set_svid_discovery(port, sop, PD_DISC_FAIL);
 			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_BUSY) {
 				/*
 				 * Don't fill in the discovery field so we
@@ -4467,8 +4456,7 @@ static void pe_init_port_vdm_svids_request_run(int port)
 				 * Cable gave us an incorrect size or command,
 				 * mark discovery as failed
 				 */
-				pd_set_svid_discovery(port, pe[port].tx_type,
-						PD_DISC_FAIL);
+				pd_set_svid_discovery(port, sop, PD_DISC_FAIL);
 				CPRINTS("C%d: Unexpected DiscSVID response: "
 						"0x%04x 0x%04x",
 						port, rx_emsg[port].header,
@@ -4508,11 +4496,18 @@ static void pe_init_port_vdm_svids_request_run(int port)
 	}
 }
 
+static void pe_init_vdm_svids_request_exit(int port)
+{
+	/* Invalidate TX type so it must be set before next call */
+	pe[port].tx_type = TCPC_TX_INVALID;
+}
+
 static void pe_init_vdm_modes_request_entry(int port)
 {
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
 	/* TODO: Support SOP' */
-	const int32_t svid = pd_get_next_svid_for_discovery(port, TCPC_TX_SOP);
+	const int32_t svid =
+		pd_get_next_svid_for_discovery(port, pe[port].tx_type);
 
 	if (svid == -1) {
 		CPRINTF("C%d: No more modes to discover\n", port);
@@ -4522,12 +4517,12 @@ static void pe_init_vdm_modes_request_entry(int port)
 
 	print_current_state(port);
 
-	if (pe[port].tx_type == 255) {
+	if (pe[port].tx_type == TCPC_TX_INVALID) {
 		CPRINTS("C%d: TX type expected to be set, returning", port);
 		set_state_pe(port, get_last_state_pe(port));
 		return;
 	}
-	CPRINTF("%s: TX type %d\n", __func__, pe[port].tx_type);
+	CPRINTF("C%d: Discover modes %s\n", port, sop_names[pe[port].tx_type]);
 
 	msg[0] = VDO((uint16_t) svid, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
@@ -4546,9 +4541,9 @@ static void pe_init_vdm_modes_request_run(int port)
 		uint8_t type;
 		uint8_t cnt;
 		uint8_t ext;
-		const uint16_t requested_svid =
+		uint16_t requested_svid =
 			(uint16_t) pd_get_next_svid_for_discovery(
-					port, TCPC_TX_SOP);
+					port, pe[port].tx_type);
 		/* Should be nonnegative due to check in entry function. This
 		 * interface would make more sense if we got a pointer to a
 		 * struct svdm_svid_data. */
@@ -4556,7 +4551,6 @@ static void pe_init_vdm_modes_request_run(int port)
 
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
-		CPRINTF("%s: Received a message\n", __func__);
 		/* Retrieve the message information */
 		payload = (uint32_t *)rx_emsg[port].buf;
 		sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
@@ -4566,8 +4560,6 @@ static void pe_init_vdm_modes_request_run(int port)
 
 		if (sop == pe[port].tx_type && type == PD_DATA_VENDOR_DEF &&
 							cnt > 0 && ext == 0) {
-			CPRINTF("%s: Valid message, type=%d, cnt=%d\n",
-					__func__, sop, (int)cnt);
 			/* TODO: Check for valid SVID ACK instead */
 			/*
 			 * Valid DiscoverIdentity responses should have at least
@@ -4578,7 +4570,7 @@ static void pe_init_vdm_modes_request_run(int port)
 				CPRINTF("%s: ACK\n", __func__);
 				/* PE_INIT_VDM_SVIDs_ACKed embedded here */
 				/* TODO: Handle multiple transmit types */
-				dfp_consume_modes(port, cnt, payload);
+				dfp_consume_modes(port, sop, cnt, payload);
 				/*
 				 * TODO(b:152419850): Fake vdm_cmd for now to
 				 * ensure existing discovery process continues.
@@ -4587,7 +4579,7 @@ static void pe_init_vdm_modes_request_run(int port)
 			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_NAK) {
 				CPRINTF("%s: NAK\n", __func__);
 				/* PE_INIT_VDM_SVIDs_NAKed embedded here */
-				pd_set_modes_discovery(port, pe[port].tx_type,
+				pd_set_modes_discovery(port, sop,
 						requested_svid, PD_DISC_FAIL);
 			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_BUSY) {
 				/*
@@ -4604,7 +4596,7 @@ static void pe_init_vdm_modes_request_run(int port)
 				 * Cable gave us an incorrect size or command,
 				 * mark discovery as failed
 				 */
-				pd_set_modes_discovery(port, pe[port].tx_type,
+				pd_set_modes_discovery(port, sop,
 						requested_svid, PD_DISC_FAIL);
 				CPRINTS("C%d: Unexpected DiscSVID response: "
 						"0x%04x 0x%04x",
@@ -4643,6 +4635,12 @@ static void pe_init_vdm_modes_request_run(int port)
 		set_state_pe(port, get_last_state_pe(port));
 		return;
 	}
+}
+
+static void pe_init_vdm_modes_request_exit(int port)
+{
+	/* Invalidate TX type so it must be set before next call */
+	pe[port].tx_type = TCPC_TX_INVALID;
 }
 
 /**
@@ -4808,7 +4806,7 @@ static void pe_vdm_acked_entry(int port)
 		switch (vdo_cmd) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
-			dfp_consume_identity(port, cnt, payload);
+			dfp_consume_identity(port, TCPC_TX_SOP, cnt, payload);
 #ifdef CONFIG_CHARGE_MANAGER
 			if (pd_charge_from_device(pd_get_identity_vid(port),
 						pd_get_identity_pid(port))) {
@@ -4818,10 +4816,10 @@ static void pe_vdm_acked_entry(int port)
 #endif
 			break;
 		case CMD_DISCOVER_SVID:
-			dfp_consume_svids(port, cnt, payload);
+			dfp_consume_svids(port, TCPC_TX_SOP, cnt, payload);
 			break;
 		case CMD_DISCOVER_MODES:
-			dfp_consume_modes(port, cnt, payload);
+			dfp_consume_modes(port, TCPC_TX_SOP, cnt, payload);
 			break;
 		case CMD_ENTER_MODE:
 			break;
@@ -5702,11 +5700,13 @@ static const struct usb_state pe_states[] = {
 	[PE_INIT_VDM_SVIDS_REQUEST] = {
 		.entry	= pe_init_port_vdm_svids_request_entry,
 		.run	= pe_init_port_vdm_svids_request_run,
+		.exit   = pe_init_vdm_svids_request_exit,
 		.parent = &pe_states[PE_VDM_SEND_REQUEST],
 	},
 	[PE_INIT_VDM_MODES_REQUEST] = {
 		.entry	= pe_init_vdm_modes_request_entry,
 		.run	= pe_init_vdm_modes_request_run,
+		.exit   = pe_init_vdm_modes_request_exit,
 		.parent = &pe_states[PE_VDM_SEND_REQUEST],
 	},
 	[PE_VDM_REQUEST] = {
