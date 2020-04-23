@@ -46,6 +46,30 @@
       "revId": "b91171576784c9dd1569284b83bb92d710f46d57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de0edf9_7d3fb9fa",
+        "filename": "board/jinlon/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-04-23T15:41:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ce82b2c1_27288326",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 16
+      },
+      "revId": "b91171576784c9dd1569284b83bb92d710f46d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
