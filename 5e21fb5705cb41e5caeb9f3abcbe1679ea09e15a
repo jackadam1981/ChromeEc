@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e53d61e_a64607c0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-23T16:42:53Z",
+      "side": 1,
+      "message": "nit: maybe pd_set_dual_role_and_event since the event isn\u0027t necessarily the UPDATE_DUAL_ROLE event",
+      "range": {
+        "startLine": 418,
+        "startChar": 35,
+        "endLine": 418,
+        "endChar": 41
+      },
+      "revId": "5e21fb5705cb41e5caeb9f3abcbe1679ea09e15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
