@@ -16,6 +16,7 @@
 #include "hwtimer.h"
 #include "registers.h"
 #include "task.h"
+#include "console.h"
 
 #define TIMER_SYSTEM 5
 #define TIMER_EVENT 3
@@ -193,6 +194,9 @@ void __hw_clock_event_set(uint32_t deadline)
 		event_deadline = 1;
 		event_high = 0;
 	}
+
+	ccprints("%s: event_deadline=%x event_high=%x", __func__, event_deadline, event_high);
+	cflush();
 
 	if (event_deadline)
 		timer_reload(TIMER_EVENT, event_deadline);
