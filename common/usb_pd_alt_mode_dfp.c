@@ -327,10 +327,8 @@ void dfp_consume_svids(int port, int cnt, uint32_t *payload)
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 	struct svid_data_s *svid_disc = &disc->svids[TCPC_TX_SOP];
 
-	/* TODO: Assumes that disc->svid_cnt starts out even; change below
-	 * comparison to >= */
 	for (i = svid_disc->cnt; i < svid_disc->cnt + 12; i += 2) {
-		if (i == SVID_DISCOVERY_MAX) {
+		if (i >= SVID_DISCOVERY_MAX) {
 			CPRINTF("ERR:SVIDCNT\n");
 			break;
 		}
