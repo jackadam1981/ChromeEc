@@ -92,6 +92,30 @@
       "revId": "ba5894fd8db9f55454ef9c8fb71d93d26640e954",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea9b168_51bbc26a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-04-23T16:52:28Z",
+      "side": 1,
+      "message": "It gives: WARNING: else is not generally useful after a break or return\n    #81: FILE: common/usb_pd_policy.c:688:\n    +\t\t\treturn dfp_discover_svids(payload);\n    +\t\t} else {",
+      "parentUuid": "27c5ad57_f1fb6ec4",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 693,
+        "endChar": 3
+      },
+      "revId": "ba5894fd8db9f55454ef9c8fb71d93d26640e954",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
