@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22168b29_9ec800e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-23T22:25:11Z",
+      "side": 1,
+      "message": "Nit - line length.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 74
+      },
+      "revId": "8cbef5fabc5e9af8246c023db0c148ee8df37a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16ca4294_36492faa",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-23T22:25:11Z",
+      "side": 1,
+      "message": "Should this path disable_tbt_compat_mode()?",
+      "range": {
+        "startLine": 681,
+        "startChar": 5,
+        "endLine": 681,
+        "endChar": 11
+      },
+      "revId": "8cbef5fabc5e9af8246c023db0c148ee8df37a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feed07f6_a77b3231",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-23T22:25:11Z",
+      "side": 1,
+      "message": "I think this path also needs to call enable_enter_usb4_mode(), if the USB4 VDO was received.\n\nThe conditions for this path:\n    USB4 VDO received\n    Discover ID SOP\u0027 identifies cable as USB 3.2 Gen2\n    DFP is Gen3 capable\n    EC sends Discover_SVID SOP\n    Port partner does not support TBT, so SVID !\u003d intel_svid\n\nIn other words, port partner is USB4 capable but not TBT capable (non Intel partner) and the cable is Gen2.\n\nIf USB4 port partners must support TBT, then this is okay as is.",
+      "range": {
+        "startLine": 685,
+        "startChar": 3,
+        "endLine": 685,
+        "endChar": 26
+      },
+      "revId": "8cbef5fabc5e9af8246c023db0c148ee8df37a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
