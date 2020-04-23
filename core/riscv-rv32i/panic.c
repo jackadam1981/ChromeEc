@@ -97,6 +97,18 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 }
 #endif /* CONFIG_SOFTWARE_PANIC */
 
+#define READ_CSR(reg) ({ \
+	unsigned long __tmp; \
+	asm volatile("csrr %0, %1" : "=r"(__tmp) : "i"(reg)); \
+	__tmp; \
+})
+
+#define READ_CSR_RAW(reg) ({ \
+	unsigned long __tmp; \
+	asm volatile ("csrr %0, " #reg : "=r"(__tmp)); \
+	__tmp; \
+})
+
 static void print_panic_information(uint32_t *regs, uint32_t mcause,
 					uint32_t mepc)
 {
@@ -117,6 +129,21 @@ static void print_panic_information(uint32_t *regs, uint32_t mcause,
 		     regs[24], regs[25], regs[26], regs[27]);
 	panic_printf("GP  %08x RA  %08x  SP %08x  MEPC %08x\n",
 		     regs[28], regs[29], regs[30], mepc);
+
+	panic_printf("mie=%x\n", (unsigned int)READ_CSR_RAW(mie));
+	panic_printf("mip=%x\n", (unsigned int)READ_CSR_RAW(mip));
+	panic_printf("mstatus=%x\n", (unsigned int)READ_CSR_RAW(mstatus));
+	panic_printf("mcause=%x\n", (unsigned int)READ_CSR_RAW(mcause));
+	panic_printf("mctren=%x\n", (unsigned int)READ_CSR(0x7c0));
+
+	panic_printf("CSR_VIC_MICAUSE=%x\n", (unsigned int)READ_CSR(0x5c0));
+	panic_printf("CSR_VIC_MIASWI=%x\n", (unsigned int)READ_CSR(0x5c1));
+	panic_printf("CSR_VIC_MIEMS=%x\n", (unsigned int)READ_CSR(0x5c2));
+	panic_printf("CSR_VIC_MIPEND_G0=%x\n", (unsigned int)READ_CSR(0x5d0));
+	panic_printf("CSR_VIC_MIMASK_G0=%x\n", (unsigned int)READ_CSR(0x5d8));
+	panic_printf("CSR_VIC_MIWAKEUP_G0=%x\n", (unsigned int)READ_CSR(0x5e0));
+	panic_printf("CSR_VIC_MILSEL_G0=%x\n", (unsigned int)READ_CSR(0x5e8));
+	panic_printf("CSR_VIC_MIEMASK_G0=%x\n", (unsigned int)READ_CSR(0x5f0));
 
 #ifdef CONFIG_DEBUG_EXCEPTIONS
 	if ((regs[SOFT_PANIC_GPR_REASON] & 0xfffffff0) == PANIC_SW_BASE) {
