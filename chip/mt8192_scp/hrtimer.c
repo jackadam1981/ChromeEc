@@ -16,6 +16,7 @@
 #include "hwtimer.h"
 #include "registers.h"
 #include "task.h"
+#include "console.h"
 
 #define TIMER_SYSTEM 5
 #define TIMER_EVENT 3
@@ -156,6 +157,7 @@ static void timer_reload(int n, uint32_t value)
 	timer_enable(n);
 }
 
+#if 0
 static int timer_reload_event_high(void)
 {
 	if (event_high) {
@@ -167,6 +169,23 @@ static int timer_reload_event_high(void)
 		return 0;
 	}
 }
+#else
+static int timer_reload_event_high(void)
+{
+	if (event_high) {
+		if (SCP_CORE0_TIMER_RST_VAL(TIMER_EVENT) == 0xffffffff)
+			timer_enable(TIMER_EVENT);
+		else
+			timer_reload(TIMER_EVENT, 0xffffffff);
+		event_high--;
+		return 1;
+	}
+
+	/* Disable event timer clock when done. */
+	timer_disable(TIMER_EVENT);
+	return 0;
+}
+#endif
 
 void __hw_clock_event_clear(void)
 {
@@ -191,23 +210,82 @@ void __hw_clock_event_set(uint32_t deadline)
 		event_high = 0;
 	}
 
+	ccprints("%s: event_deadline=%x event_high=%x", __func__, event_deadline, event_high);
+	cflush();
+
 	if (event_deadline)
 		timer_reload(TIMER_EVENT, event_deadline);
 	else
 		timer_reload_event_high();
 }
 
+#include "csr.h"
+#include "timer.h"
 static void irq_group6_handler(void)
 {
+	ccprints("%s", __func__);
+	cflush();
+
 	switch (ec_int) {
 	case SCP_IRQ_TIMER(TIMER_EVENT):
+#if 1
+	ccprintf("mie=%x\n", (unsigned int)READ_CSR_RAW(mie));
+	ccprintf("mip=%x\n", (unsigned int)READ_CSR_RAW(mip));
+	ccprintf("mstatus=%x\n", (unsigned int)READ_CSR_RAW(mstatus));
+	ccprintf("mcause=%x\n", (unsigned int)READ_CSR_RAW(mcause));
+	ccprintf("mctren=%x\n", (unsigned int)READ_CSR(0x7c0));
+
+	ccprintf("CSR_VIC_MICAUSE=%x\n", (unsigned int)READ_CSR(0x5c0));
+	ccprintf("CSR_VIC_MIASWI=%x\n", (unsigned int)READ_CSR(0x5c1));
+	ccprintf("CSR_VIC_MIEMS=%x\n", (unsigned int)READ_CSR(0x5c2));
+	ccprintf("CSR_VIC_MIPEND_G0=%x\n", (unsigned int)READ_CSR(0x5d0));
+	ccprintf("CSR_VIC_MIMASK_G0=%x\n", (unsigned int)READ_CSR(0x5d8));
+	ccprintf("CSR_VIC_MIWAKEUP_G0=%x\n", (unsigned int)READ_CSR(0x5e0));
+	ccprintf("CSR_VIC_MILSEL_G0=%x\n", (unsigned int)READ_CSR(0x5e8));
+	ccprintf("CSR_VIC_MIEMASK_G0=%x\n", (unsigned int)READ_CSR(0x5f0));
+	cflush();
+#endif
+
 		if (timer_is_irq(TIMER_EVENT)) {
+			timer_disable(TIMER_EVENT);
 			timer_ack_irq(TIMER_EVENT);
+#if 1
+	ccprintf("before miems mctren=%x\n", (unsigned int)READ_CSR(0x7c0));
+	ccprintf("before miems: CSR_VIC_MIPEND_G0=%x\n", (unsigned int)READ_CSR(0x5d0));
+	ccprintf("before miems: CORE0_TIMER_IRQ_CTRL(timer3)=%x\n", SCP_CORE0_TIMER_IRQ_CTRL(TIMER_EVENT));
+	ccprintf("before miems: CORE0_TIMER_CUR_VAL(timer3)=%x\n", SCP_CORE0_TIMER_CUR_VAL(TIMER_EVENT));
+	ccprintf("before miems: CORE0_INTC_IRQ_OUT=%x\n", SCP_CORE0_INTC_IRQ_OUT);
+	ccprintf("before miems: CORE0_INTC_IRQ_STA0=%x\n", REG32(0x70032010));
+	ccprintf("before miems: CORE0_INTC_IRQ_GRP6_STA0=%x\n", SCP_CORE0_INTC_IRQ_GRP_STA(6, 0));
+	cflush();
+#endif
 			task_clear_pending_irq(ec_int);
 			if (timer_reload_event_high())
 				return;
+#if 1
+	ccprintf("after miems mctren=%x\n", (unsigned int)READ_CSR(0x7c0));
+	ccprintf("after miems: CSR_VIC_MIPEND_G0=%x\n", (unsigned int)READ_CSR(0x5d0));
+	ccprintf("after miems: CORE0_TIMER_IRQ_CTRL(timer3)=%x\n", SCP_CORE0_TIMER_IRQ_CTRL(TIMER_EVENT));
+	ccprintf("after miems: CORE0_TIMER_CUR_VAL(timer3)=%x\n", SCP_CORE0_TIMER_CUR_VAL(TIMER_EVENT));
+	ccprintf("after miems: CORE0_INTC_IRQ_OUT=%x\n", SCP_CORE0_INTC_IRQ_OUT);
+	ccprintf("after miems: CORE0_INTC_IRQ_STA0=%x\n", REG32(0x70032010));
+	ccprintf("after miems: CORE0_INTC_IRQ_GRP6_STA0=%x\n", SCP_CORE0_INTC_IRQ_GRP_STA(6, 0));
+	cflush();
+#endif
+
 		}
 		process_timers(0);
+#if 1
+	ccprintf("before exiting: mctren=%x\n", (unsigned int)READ_CSR(0x7c0));
+	ccprintf("before exiting: CSR_VIC_MIPEND_G0=%x\n", (unsigned int)READ_CSR(0x5d0));
+	ccprintf("before exiting: CORE0_TIMER_IRQ_CTRL(timer3)=%x\n", SCP_CORE0_TIMER_IRQ_CTRL(TIMER_EVENT));
+	ccprintf("before exiting: CORE0_TIMER_CUR_VAL(timer3)=%x\n", SCP_CORE0_TIMER_CUR_VAL(TIMER_EVENT));
+	ccprintf("before exiting: CORE0_INTC_IRQ_OUT=%x\n", SCP_CORE0_INTC_IRQ_OUT);
+	ccprintf("before exiting: CORE0_INTC_IRQ_STA0=%x\n", REG32(0x70032010));
+	ccprintf("before exiting: CORE0_INTC_IRQ_GRP6_STA0=%x\n", SCP_CORE0_INTC_IRQ_GRP_STA(6, 0));
+	cflush();
+#endif
+
 		break;
 	case SCP_IRQ_TIMER(TIMER_SYSTEM):
 		/* If this is a hardware irq, check overflow */

@@ -293,9 +293,13 @@ task_ * __ram_code next_sched_task(void)
 
 static inline void __schedule(int desched, int resched, int swirq)
 {
-	register int p0 asm("a0") = desched;
-	register int p1 asm("a1") = resched;
-	register int p2 asm("a2") = swirq;
+	register int p0 asm("a0");
+	register int p1 asm("a1");
+	register int p2 asm("a2");
+
+	p0 = desched;
+	p1 = resched;
+	p2 = swirq;
 
 	asm("ecall" : : "r"(p0), "r"(p1), "r"(p2));
 }
@@ -318,6 +322,10 @@ void __ram_code start_irq_handler(void)
 	asm volatile ("sw a1, 1*4(sp)");
 	asm volatile ("sw a2, 2*4(sp)");
 
+#if 1
+	ccprints("%s: mepc=%x", __func__, get_mepc());
+	cflush();
+#endif
 	in_interrupt = 1;
 
 	/* If this is a SW interrupt */
@@ -369,6 +377,11 @@ void __ram_code end_irq_handler(void)
 	}
 #endif
 	in_interrupt = 0;
+
+#if 1
+	ccprints("%s: mepc=%x", __func__, get_mepc());
+	cflush();
+#endif
 }
 
 static uint32_t __ram_code __wait_evt(int timeout_us, task_id_t resched)
