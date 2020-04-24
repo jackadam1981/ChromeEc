@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "21be049c_59d3f67a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1329037
+      },
+      "writtenOn": "2020-04-24T00:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcaab7ca_56efc8d6",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 690,
+        "endChar": 10
+      },
+      "revId": "9ae1a13d03a3fe516e1a6df0e2ccac706072a68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44afc560_d87866af",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-23T23:44:10Z",
       "side": 1,
       "message": "Should this path also call usb_pd_limit_cable_speed(port) so that board_get_max_tbt_speed() is checked?",
+      "range": {
+        "startLine": 886,
+        "startChar": 5,
+        "endLine": 886,
+        "endChar": 27
+      },
+      "revId": "9ae1a13d03a3fe516e1a6df0e2ccac706072a68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfeaf8af_11d0fd11",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1329037
+      },
+      "writtenOn": "2020-04-24T00:12:00Z",
+      "side": 1,
+      "message": "I am planning to add it in another CL",
+      "parentUuid": "44afc560_d87866af",
       "range": {
         "startLine": 886,
         "startChar": 5,
