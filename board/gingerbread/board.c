@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Honeybuns board-specific configuration */
+/* Gingerbread board-specific configuration */
 
 #include "common.h"
 #include "gpio.h"
