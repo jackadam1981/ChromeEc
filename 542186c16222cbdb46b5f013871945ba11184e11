@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d52f0e5e_b3e9a275",
+        "filename": "board/mushu/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-04-24T00:03:29Z",
+      "side": 1,
+      "message": "Where do these values come from? Which fuel gauge is this battery using?",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "542186c16222cbdb46b5f013871945ba11184e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
