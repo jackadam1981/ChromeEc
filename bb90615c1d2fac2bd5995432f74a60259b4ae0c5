@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fce0b618_cd1f9236",
+        "filename": "board/mushu/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-04-24T16:04:43Z",
+      "side": 1,
+      "message": "For this FG, register address 0 returns the lower 16 bits of the operational status register. Those 16 bits contain both XCHG/XDSG and CHG/DSG bits. Because you can use register address 0, .mfgacc_suport is not required. That\u0027s only required if the register address 0x54 (operational status).\n\nwe only want to use the discharge bit for this purpose because charge function can be prevented when the battery is full. Either the XDSG or DSG bit can be used, but the polarity of disconnect value has to match. Typically, we have used XDSG (bit 13) with a disconnect val of 0x2000.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "bb90615c1d2fac2bd5995432f74a60259b4ae0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
