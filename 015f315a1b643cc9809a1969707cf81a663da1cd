@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2444cd1f_e785adaf",
+        "filename": "util/gdbinit",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-24T20:25:35Z",
+      "side": 1,
+      "message": "Nit: use `os.path.join` to prevent future gotchas, as it handles the addition of slashes automatically.",
+      "range": {
+        "startLine": 48,
+        "startChar": 29,
+        "endLine": 48,
+        "endChar": 78
+      },
+      "revId": "015f315a1b643cc9809a1969707cf81a663da1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5883c340_c1cf9ac4",
+        "filename": "util/gdbinit",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-24T20:25:35Z",
+      "side": 1,
+      "message": "Looks like this quote is mismatched.",
+      "range": {
+        "startLine": 60,
+        "startChar": 38,
+        "endLine": 60,
+        "endChar": 39
+      },
+      "revId": "015f315a1b643cc9809a1969707cf81a663da1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aa9f1cc_0af75dec",
+        "filename": "util/gdbinit",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-24T20:25:35Z",
+      "side": 1,
+      "message": "Definitely use `os.path.join` here.",
+      "revId": "015f315a1b643cc9809a1969707cf81a663da1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e2bf1e4_7e8ca33f",
+        "filename": "util/gdbinit",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2020-04-24T20:25:35Z",
+      "side": 1,
+      "message": "Could you add a comment saying why this isn\u0027t needed for OpenOCD?",
+      "revId": "015f315a1b643cc9809a1969707cf81a663da1cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
