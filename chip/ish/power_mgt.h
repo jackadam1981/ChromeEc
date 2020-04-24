@@ -12,6 +12,8 @@
 extern void uart_port_restore(void);
 extern void uart_to_idle(void);
 extern void clear_fabric_error(void);
+extern void i2c_port_restore(void);
+extern void lapic_restore(void);
 
 /* power states for ISH */
 enum ish_pm_state {
