@@ -4468,6 +4468,11 @@
 #undef CONFIG_ISH_PM_D3
 
 /*
+ * Define the following if the ip accessible power gating is required.
+ */
+#undef CONFIG_ISH_IPAPG
+
+/*
  * Define the following to the number of uSeconds of elapsed time that is
  * required to enter D0I2 and D0I3, if they are supported
  */
