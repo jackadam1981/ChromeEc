@@ -115,6 +115,30 @@
       "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5cd554_d46ca3c2",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2020-04-24T08:02:30Z",
+      "side": 1,
+      "message": "Fixed EN_PP3300_A is closed too early when apshutdown case,voltage drop occurs when PP3300_A is off before DUT shutdown because PP3300_LDO (capability\u003c150mA) is not sufficient to sustain all the 3.3V power rails when DUT is in S0. So we modify sequence to avoid this issue.",
+      "parentUuid": "4d6970f4_ae6d5cbe",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
