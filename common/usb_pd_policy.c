@@ -863,7 +863,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 			} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
 				board_is_tbt_usb4_port(port)) {
 				pd_dfp_discovery_init(port);
-				dfp_consume_identity(port, cnt, payload);
+				dfp_consume_identity(port, TCPC_TX_SOP, cnt,
+						payload);
 
 				/* Enable USB4 mode if USB4 VDO present
 				 * and port partner supports USB Rev 3.0.
@@ -889,7 +890,12 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				}
 			} else {
 				pd_dfp_discovery_init(port);
-				dfp_consume_identity(port, cnt, payload);
+				/*
+				 * TODO: Figure out if this is actually supposed
+				 * to be SOP.
+				 */
+				dfp_consume_identity(port, TCPC_TX_SOP, cnt,
+						payload);
 				rsize = dfp_discover_svids(payload);
 			}
 #ifdef CONFIG_CHARGE_MANAGER
@@ -902,7 +908,11 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 		case CMD_DISCOVER_SVID:
 			{
 			int prev_svid_cnt = pd_get_svid_count(port);
-			dfp_consume_svids(port, cnt, payload);
+			/*
+			 * TODO: Figure out if this is actually supposed
+			 * to be SOP.
+			 */
+			dfp_consume_svids(port, TCPC_TX_SOP, cnt, payload);
 			/*
 			 * Ref: USB Type-C Cable and Connector Specification,
 			 * figure F-1: TBT3 Discovery Flow
@@ -934,7 +944,11 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 			}
 			break;
 		case CMD_DISCOVER_MODES:
-			dfp_consume_modes(port, cnt, payload);
+			/*
+			 * TODO: Figure out if this is actually supposed
+			 * to be SOP.
+			 */
+			dfp_consume_modes(port, TCPC_TX_SOP, cnt, payload);
 			if (is_tbt_compat_enabled(port) &&
 				is_tbt_compat_mode(port, cnt, payload)) {
 				rsize = process_tbt_compat_discover_modes(
