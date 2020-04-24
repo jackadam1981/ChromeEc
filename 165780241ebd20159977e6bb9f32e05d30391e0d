@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45b52f88_6425fb70",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-24T02:43:29Z",
+      "side": 1,
+      "message": "Need to add \nBUILD_ASSERT(ARRAY_SIZE(pwm_channels) \u003d\u003d PWM_CH_COUNT);",
+      "revId": "165780241ebd20159977e6bb9f32e05d30391e0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
