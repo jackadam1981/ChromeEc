@@ -492,6 +492,12 @@ enum idh_ptype {
 	IDH_PTYPE_VPD,
 };
 
+#define PD_IDH_UFP_PTYPE_VALID(ptype)  (ptype == IDH_PTYPE_HUB || \
+					ptype == IDH_PTYPE_PERIPH || \
+					ptype == IDH_PTYPE_PSD || \
+					ptype == IDH_PTYPE_AMA ||  \
+					ptype == IDH_PTYPE_VPD)
+
 struct id_header_vdo_rev20 {
 	uint16_t usb_vendor_id;
 	uint16_t reserved0 : 10;
