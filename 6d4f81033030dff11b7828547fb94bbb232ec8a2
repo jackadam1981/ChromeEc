@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b8184102_c94025e7",
+        "filename": "board/malefor/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-24T03:47:57Z",
+      "side": 1,
+      "message": "1. The power LED routes to the right side. The left side is used as charge LED. The power LED and battery LED are controlled independently. For malefor, we could keep the max brightness as 50% at present.\n2. We tend to remove chip NX3L1G3157GM (U31) in OEM project, and would not use PWM_CH_LED4_SIDESEL.",
+      "parentUuid": "82f7d6bd_1cb3316a",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 71
+      },
+      "revId": "6d4f81033030dff11b7828547fb94bbb232ec8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d37ea0b_65403eac",
         "filename": "board/malefor/gpio.inc",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d2a1480f_c140caac",
+        "filename": "board/malefor/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-24T03:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d37ea0b_65403eac",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 0
+      },
+      "revId": "6d4f81033030dff11b7828547fb94bbb232ec8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7194f70_97ba9279",
         "filename": "board/malefor/led.c",
         "patchSetId": 9
@@ -68,6 +116,30 @@
       "revId": "6d4f81033030dff11b7828547fb94bbb232ec8a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83776787_da59ee01",
+        "filename": "board/malefor/led.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-04-24T03:47:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7194f70_97ba9279",
+      "range": {
+        "startLine": 21,
+        "startChar": 51,
+        "endLine": 21,
+        "endChar": 65
+      },
+      "revId": "6d4f81033030dff11b7828547fb94bbb232ec8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
