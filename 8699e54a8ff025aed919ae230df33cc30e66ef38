@@ -137,6 +137,30 @@
       "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0467c07c_74ce4ad0",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-24T20:44:36Z",
+      "side": 1,
+      "message": "this is not the \u0027BIOS folks\u0027 call, I personally would prefer to keep the short pulse as the default behavior.",
+      "parentUuid": "814de80c_98c3ab1c",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 36
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
