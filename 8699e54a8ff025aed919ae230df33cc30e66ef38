@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "14895c55_93a242f7",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-04-24T00:06:38Z",
+      "side": 1,
+      "message": "the logic seems to work ok, but is harder to follow than necessary. honestly, I\u0027d do the following instead:\n\nstatic bool ready_asserted_ \u003d false; /* we actually rely in the code that int_ap_sts_ can take only one of two states, and everything, which is not asserted is DEasserted, so better to express it explicitly in the variable type (bool) and then pick an appropriate name */\n\ntimer_int_ap_irq_handler() {\n  if (ready_asserted_) {\n    ready_set_state(false);    \n  } else {\n    ready_set_state(true);\n    schedule_timer_after_deasserted_delay();\n  }\n}\n\nap_start_ack_completion() {\n  if (ready_deasserted_delay_completed())\n    ready_set_state(true);\n}\n\nap_stop_ack_completion() {\n  if (ready_asserted_)\n    ready_set_state(false);\n  else\n    schedule_timer_after_deasserted_delay();\n}\n\nschedule_timer_after_deasserted_delay() {\n  diff_usec \u003d __hw_clock_source_read() - last_time_deassert_;\n  /* schedule timer for diff_usec */\n}\n\nready_set_state(bool do_assert) {\n  /* clear timer interrupt */\n  gpio_set_level(GPIO_INT_AP_L, do_assert);\n  ready_asserted_ \u003d do_assert;\n}\n\nbool ready_deasserted_delay_completed() {\n  return __hw_clock_source_read() \u003e\u003d last_time_deassert_;\n}",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5fb349_0ed7cde9",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-04-24T00:06:38Z",
+      "side": 1,
+      "message": "nit: spaces instead",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76c730c4_20c42673",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-04-24T00:06:38Z",
+      "side": 1,
+      "message": "nit: we talk in logical assert/deassert terms in most other cases, let\u0027s do the same here.",
+      "range": {
+        "startLine": 26,
+        "startChar": 30,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f265f0f_25b43348",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-04-24T00:06:38Z",
+      "side": 1,
+      "message": "question: does it work as expected when __hw_clock_source_read() wraps around zero?\niiuc tick is at 2^18 kHz, and the tick register is 32 bits (?), so will wrap around in \u003c5 hours. right?\n\nif so, then there\u0027s the following minor disadvantage of the current algo:\n1) we sent a response to a spi packet, deasserted \u0027ready\u0027 100us later, set last_time_deassert_ to \u003ccur_time\u003e.\n2) ~5 hours have passed. so, the reading of __hw_clock_source_read() is ~ \u003ccur_time\u003e again. we get a new command, process it, and call ap_start_ack_completion() when __hw_clock_source_read() \u003d\u003d last_time_deassert_. diff_usec is 100us, so all we do is schedule_timer_(100us), 100us later the timer will fire and *assert* \u0027ready\u0027, then 100us later deassert it. so, we are basically asserting ready 100us later than we should.\ngranted, this is a rare occurrence (5hr*N between calls w/o going to deep sleep) and a relatively minor inconvenience (100us lost), so I feel we can ignore this. but I\u0027d like to make sure this analysis was done and see it captured in the comments.\n\nso, I guess, nit: write a comment explaining what happens when it wraps around 0.\nor even better: write a markdown file with design and put under source control in cr50 tree, in this file refer to it.",
+      "range": {
+        "startLine": 88,
+        "startChar": 13,
+        "endLine": 88,
+        "endChar": 60
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1161ff79_b2b9c4a1",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-04-24T00:06:38Z",
+      "side": 1,
+      "message": "the logic seems ok, but still a question:\n\nwhat if, say, __hw_clock_source_read() \u003d\u003d last_time_deassert_ + min_duration_int_ap_ already, but timer_int_ap_irq_handler() hasn\u0027t been called yet because the tick just happened and we are still sitting in SPI/I2C handler atm.\n\nthen the current int_ap_sts_ is DEASSERTED. and, by calling timer_int_ap_irq_handler() we will: assert \u0027ready\u0027, set int_ap_sts_ \u003d ASSERTED and schedule the timer to fire min_duration_int_ap_ from now.\n\nis it still possible for timer_int_ap_irq_handler() to be fired right after that based on the currently pending TIMER1 interrupt? I hope no, since the first thing timer_int_ap_irq_handler() called here does is clearing the interrupt. but, if yes, the pending handler would immediately deassert \u0027ready\u0027 again, which is not what we want.",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "814de80c_98c3ab1c",
         "filename": "chip/g/sps.c",
         "patchSetId": 15
