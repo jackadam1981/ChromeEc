@@ -27,6 +27,8 @@ struct ish_aon_share {
 	uint32_t error_count;
 	/* last error */
 	int last_error;
+	uint32_t pg_exit;
+	uint32_t uma_msb;
 	/* aontask's TSS segment entry */
 	struct tss_entry *aon_tss;
 	/* aontask's LDT start address */
