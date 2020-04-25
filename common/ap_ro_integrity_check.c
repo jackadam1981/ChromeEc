@@ -175,7 +175,7 @@ int validate_ap_ro(void)
 	uint8_t digest[SHA256_DIGEST_SIZE];
 	int rv;
 
-	if (p_chk->header.num_ranges == ~0) {
+	if (p_chk->header.num_ranges == (uint16_t) ~0) {
 		CPRINTS("%s: RO verification not programmed", __func__);
 		return EC_ERROR_INVAL;
 	}
@@ -239,7 +239,7 @@ static int ap_ro_info_cmd(int argc, char **argv)
 		flash_physical_erase(h1_flash_offset_, AP_RO_DATA_SPACE_SIZE);
 	}
 #endif
-	if ((p_chk->header.num_ranges == ~0) &&
+	if ((p_chk->header.num_ranges == (uint16_t) ~0) &&
 	    (p_chk->header.checksum == ~0)) {
 		ccprintf("AP RO check space is not programmed\n");
 		return EC_SUCCESS;
