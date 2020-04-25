@@ -243,6 +243,10 @@ int usb_spi_interface(struct usb_spi_config const *config,
 int usb_spi_board_enable(int host);
 void usb_spi_board_disable(void);
 
+/* Functions to use to fast track AP RO flash verification. */
+void enable_ap_spi_hash_shortcut(void);
+void disable_ap_spi_hash_shortcut(void);
+
 int usb_spi_sha256_start(HASH_CTX *ctx);
 int usb_spi_sha256_update(HASH_CTX *ctx, uint32_t offset, uint32_t size);
 void usb_spi_sha256_final(HASH_CTX *ctx, void *digest, size_t digest_size);
