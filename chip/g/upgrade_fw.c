@@ -63,8 +63,8 @@ static void set_valid_sections(void)
 	}
 
 	valid_sections.ro_top_offset = valid_sections.ro_base_offset +
-		CONFIG_RO_SIZE - 0x800; /* 2K for certs! */
-
+				       /* 4K for certs and AP RO hash! */
+				       CONFIG_RO_SIZE - 0x1000;
 	valid_sections.rw_top_offset = valid_sections.rw_base_offset +
 		CONFIG_RW_SIZE;
 }
