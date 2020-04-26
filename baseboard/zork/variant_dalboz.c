@@ -159,6 +159,7 @@ const struct usb_mux usbc0_sbu_mux = {
 	.driver = &usbc0_sbu_mux_driver,
 };
 
+#if 0
 static int usbc1_hpd_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	if (mux_state & USB_PD_MUX_DP_ENABLED)
@@ -179,6 +180,7 @@ const struct usb_mux usbc1_hpd_mux = {
 	.usb_port = USBC_PORT_C1,
 	.driver = &usbc1_hpd_mux_driver,
 };
+#endif
 
 struct usb_mux usbc1_amd_fp5_usb_mux = {
 	.usb_port = USBC_PORT_C1,
@@ -186,7 +188,7 @@ struct usb_mux usbc1_amd_fp5_usb_mux = {
 	.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
 	.driver = &amd_fp5_usb_mux_driver,
 	.flags = USB_MUX_FLAG_SET_WITHOUT_FLIP,
-	.next_mux = &usbc1_hpd_mux,
+/*	.next_mux = &usbc1_hpd_mux, */
 };
 
 struct usb_mux usb_muxes[] = {

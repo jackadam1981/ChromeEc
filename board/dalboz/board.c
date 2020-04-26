@@ -158,6 +158,36 @@ void pcal6408_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&pcal6408_handler_data, 0);
 }
 
+static int board_ps8743_mux_set(const struct usb_mux *me,
+				mux_state_t mux_state)
+{
+	int rv = EC_SUCCESS;
+	int reg = 0;
+
+	rv = ps8743_read(me, PS8743_REG_MODE, &reg);
+	if (rv)
+		return rv;
+
+	/* Disable FLIP pin, enable I2C control. */
+	reg |= PS8743_MODE_FLIP_REG_CONTROL;
+	/* Disable CE_DP pin, enable I2C control. */
+	reg |= PS8743_MODE_DP_REG_CONTROL;
+
+	/* DP specific config */
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		/* Enable IN_HPD on the DB */
+		ioex_set_level(IOEX_USB_C1_HPD_IN_DB, 1);
+		/* Disable USB mode on DB */
+		ioex_set_level(IOEX_USB_C1_DATA_EN, 0);
+	} else {
+		/* Disable IN_HPD on the DB */
+		ioex_set_level(IOEX_USB_C1_HPD_IN_DB, 0);
+		/* Enable USB mode on DB */
+		ioex_set_level(IOEX_USB_C1_DATA_EN, 1);
+	}
+	return ps8743_write(me, PS8743_REG_MODE, reg);
+}
+
 static void setup_fw_config(void)
 {
 	uint32_t board_version = 0;
@@ -167,6 +197,7 @@ static void setup_fw_config(void)
 		ccprints("PS8743 USB MUX");
 		usb_muxes[USBC_PORT_C1].i2c_addr_flags = PS8743_I2C_ADDR1_FLAG;
 		usb_muxes[USBC_PORT_C1].driver = &ps8743_usb_mux_driver;
+		usb_muxes[USBC_PORT_C1].board_set = &board_ps8743_mux_set;
 	} else {
 		ccprints("PS8740 USB MUX");
 		usb_muxes[USBC_PORT_C1].i2c_addr_flags = PS8740_I2C_ADDR0_FLAG;
