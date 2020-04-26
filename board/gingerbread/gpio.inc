@@ -5,8 +5,10 @@
  * found in the LICENSE file.
  */
 
-/* Declare symbolic names for all the GPIOs that we care about.
- * Note: Those with interrupt handlers must be declared first. */
+/*
+ * Declare symbolic names for all te GPIOs that we care about.
+ * Note: Those with interrupt handlers must be declared first.
+ */
 
 GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(B, 0),       GPIO_INT_FALLING,  ppc_interrupt)
 
@@ -45,7 +47,32 @@ GPIO(USBC_UF_RESET_L,               PIN(C, 11), GPIO_ODR_LOW)
 GPIO(EC_HUB1_RESET_L,               PIN(E, 13), GPIO_ODR_LOW)
 GPIO(EC_HUB2_RESET_L,               PIN(E, 14), GPIO_ODR_LOW)
 
-/* Misc Signals */
+/* DEBUG signals */
+
+GPIO(DEBUG_GPIO1,                   PIN(B, 13),      GPIO_OUT_LOW)
+
+/* Configure as output to enable @1.5A on USBA Ports
+* USB CDP enables. */
+
+GPIO(USB3_A1_CDP_EN,                PIN(E, 7),       GPIO_OUT_LOW)
+GPIO(USB3_A2_CDP_EN,                PIN(E, 8),       GPIO_OUT_LOW)
+GPIO(USB3_P1_CDP_EN,                PIN(C, 1),       GPIO_OUT_LOW)
+GPIO(USB3_P3_CDP_EN,                PIN(E, 11),      GPIO_OUT_LOW)
+GPIO(USB3_P4_CDP_EN,                PIN(E, 12),      GPIO_OUT_LOW)
+
+/* Write protect */
+GPIO(EC_FLASH_WP_ODL,               PIN(A, 3),       GPIO_ODR_HIGH)
+GPIO(EC_WP_L,                       PIN(A, 10),      GPIO_INT_BOTH)
+
+
+/* SPI Bus */
+
+GPIO(FLASH_SPI1_NSS,                PIN(A, 4),       GPIO_INT_FALLING)
+GPIO(FLASH_SPI1_SCK,                PIN(A, 5),       GPIO_INT_BOTH)
+GPIO(FLASH_SPI1_MISO,               PIN(A, 6),       GPIO_INT_BOTH)
+GPIO(FLASH_SPI1_MOSI,               PIN(A, 7),       GPIO_INT_BOTH)
+
+/* misc signals */
 
 /*
  * I2C SCL/SDA pins. These will normally be under control of the peripheral from
@@ -62,7 +89,8 @@ GPIO(EC_I2C3_SDA,                   PIN(C,  9),  GPIO_ODR_HIGH)
 UNIMPLEMENTED(EC_ENTERING_RW)
 UNIMPLEMENTED(EC_WP_L)
 
-/* UART */
+ALTERNATE(PIN_MASK(B, 0x0A00),      7,               MODULE_USART,    0) /* GPIOB10-11:UART_TX/RX */
+ALTERNATE(PIN_MASK(A, 0x0078),      5,               MODULE_SPI,      0) /* GPIOA4-7: SPI Signals */
 
 /* I2C Ports
  *   I2C1: SDA/SCL -> PB7/PA15
