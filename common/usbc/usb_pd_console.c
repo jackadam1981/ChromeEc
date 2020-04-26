@@ -29,12 +29,12 @@ test_export_static int command_pd(int argc, char **argv)
 
 			if (level < DEBUG_DISABLE)
 				level = DEBUG_DISABLE;
-			else if (level > DEBUG_LEVEL_3)
-				level = DEBUG_LEVEL_3;
+			else if (level > DEBUG_LEVEL_MAX)
+				level = DEBUG_LEVEL_MAX;
 
 			prl_set_debug_level(level);
 			pe_set_debug_level(level);
-			ccprintf("debug_level=%d\n", level);
+			ccprintf("debug=%d\n", level);
 			return EC_SUCCESS;
 		}
 	} else if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC) &&

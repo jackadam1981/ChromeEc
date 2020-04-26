@@ -54,7 +54,7 @@ enum debug_level {
 	DEBUG_DISABLE,
 	DEBUG_LEVEL_1,
 	DEBUG_LEVEL_2,
-	DEBUG_LEVEL_3
+	DEBUG_LEVEL_MAX
 };
 
 /**

@@ -1585,9 +1585,9 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	if (cnt > CHK_BUF_SIZE)
 		cnt = CHK_BUF_SIZE;
 
-	/* dump received packet content (only dump ping at debug level 3) */
+	/* dump received packet content (only dump ping at debug level MAX) */
 	if ((prl_debug_level >= DEBUG_LEVEL_1 && type != PD_CTRL_PING) ||
-		prl_debug_level >= DEBUG_LEVEL_3) {
+		prl_debug_level >= DEBUG_LEVEL_MAX) {
 		int p;
 
 		ccprintf("C%d RECV %04x/%d ", port, header, cnt);
