@@ -152,6 +152,15 @@ static inline int tcpm_init(int port)
 	return rv;
 }
 
+static inline int tcpm_hard_reset_init(int port)
+{
+	const struct tcpm_drv *tcpc = tcpc_config[port].drv;
+
+	if (tcpc->hard_reset_init)
+		return tcpc->hard_reset_init(port);
+	return EC_SUCCESS;
+}
+
 static inline int tcpm_release(int port)
 {
 	return tcpc_config[port].drv->release(port);
@@ -310,6 +319,15 @@ static inline int tcpm_get_chip_info(int port, int live,
  * @return EC_SUCCESS or error
  */
 int tcpm_init(int port);
+
+/**
+ * Initialize TCPM driver post hard reset.
+ *
+ * @param port Type-C port number
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_hard_reset_init(int port);
 
 /**
  * Read the CC line status.

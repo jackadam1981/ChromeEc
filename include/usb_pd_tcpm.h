@@ -179,6 +179,15 @@ struct tcpm_drv {
 	int (*init)(int port);
 
 	/**
+	 * Initialize TCPM driver post hard reset.
+	 *
+	 * @param port Type-C port number
+	 *
+	 * @return EC_SUCCESS or error
+	 */
+	int (*hard_reset_init)(int port);
+
+	/**
 	 * Release the TCPM hardware and disconnect the driver.
 	 * Only .init() can be called after .release().
 	 *
