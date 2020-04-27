@@ -39,6 +39,8 @@
 #define TCPC_REG_ALERT_TX_COMPLETE  (TCPC_REG_ALERT_TX_SUCCESS | \
 				      TCPC_REG_ALERT_TX_DISCARDED | \
 				      TCPC_REG_ALERT_TX_FAILED)
+#define TCPC_REG_ALERT_SENT_HRST    (TCPC_REG_ALERT_TX_SUCCESS | \
+				      TCPC_REG_ALERT_TX_FAILED)
 
 #define TCPC_REG_ALERT_MASK        0x12
 #define TCPC_REG_POWER_STATUS_MASK 0x14
@@ -206,6 +208,7 @@ enum tcpc_cc_pull tcpci_get_cached_pull(int port);
 
 void tcpci_tcpc_alert(int port);
 int tcpci_tcpm_init(int port);
+int tcpci_tcpm_hard_reset_init(int port);
 int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2);
 int tcpci_tcpm_get_vbus_level(int port);

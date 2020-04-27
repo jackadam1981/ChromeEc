@@ -990,6 +990,60 @@ void tcpci_tcpc_alert(int port)
 			CPRINTS("C%d FAULT 0x%02X handled", port, fault);
 	}
 
+	/* Check for Hard Reset sent. */
+	if ((alert & TCPC_REG_ALERT_SENT_HRST) ==
+			TCPC_REG_ALERT_SENT_HRST) {
+		/*
+		 * A Hard Reset was sent (step 2 below), it is required to
+		 * restore the mask registers that have been reset to TCPCI
+		 * default values (step 4 below) and give an opportunity for
+		 * any other changes to be made when we have issued a hard
+		 * reset.
+		 *
+		 * USB-TCPCI Spec R2 V1P1
+		 * 4.7.3 Transmitting a Hard Reset Message
+		 * The steps for transmitting a Hard Reset message are as
+		 * follows:
+		 * 1. The TCPM writes to TRANSMIT to request a Hard Reset
+		 *    transmission,
+		 *       If a previous TRANSMIT request has not yet
+		 *       completed, the TCPC shall assert the
+		 *       TransmitSOP*MessageDiscarded bit in the ALERT
+		 *       register.
+		 * 2. The TCPC asserts both ALERT.TransmitSOP*MessageSuccessful
+		 *    and ALERT.TransmitSOP*MessageFailed regardless of the
+		 *    outcome of the transmission and asserts the Alert# pin.
+		 * 3. The TCPC clears the RECEIVE_DETECT and
+		 *    READABLE_BYTE_COUNT registers to disable the USB PD
+		 *    message passing.
+		 * 4. The TCPC resets the mask registers (ALERT_MASK,
+		 *    POWER_STATUS_MASK, EXTENDED_STATUS_MASK,
+		 *    ALERT_EXTENDED_MASK) per Table 4-1
+		 */
+		if (tcpc_config[port].drv->hard_reset_init)
+			tcpc_config[port].drv->hard_reset_init(port);
+
+		/*
+		 * 5. The TCPM clears the Alert by writing a logical 1 to the
+		 *    asserted bit in the ALERT register. If
+		 *    ALERT.ReceiveSOP*MessageStatus bit is asserted,the
+		 *    TCPM shall also clear the
+		 *    ALERT.ReceiveSOP*MessageStatus bit.
+		 */
+		alert &= ~TCPC_REG_ALERT_SENT_HRST;
+		tcpc_write16(port,
+			     TCPC_REG_ALERT,
+			     TCPC_REG_ALERT_SENT_HRST);
+
+		/*
+		 * 6. The TCPM writes to the RECEIVE_DETECT register to
+		 *    enable USB PD message passing.
+		 */
+		tcpc_write(port,
+			   TCPC_REG_RX_DETECT,
+			   TCPC_REG_RX_DETECT_SOP_HRST_MASK);
+	}
+
 	/*
 	 * Check for TX complete first b/c PD state machine waits on TX
 	 * completion events. This will send an event to the PD tasks
@@ -1239,6 +1293,21 @@ int tcpci_tcpm_init(int port)
 	tcpm_get_chip_info(port, 1, NULL);
 
 	return EC_SUCCESS;
+}
+
+/*
+ * A Hard Reset was sent, it is required to restore the mask registers
+ * that have been reset to TCPCI default values (see USB-TCPCI Spec R2 V1P1).
+ */
+int tcpci_tcpm_hard_reset_init(int port)
+{
+	int rv;
+
+	rv = init_alert_mask(port);
+	if (rv)
+		return rv;
+	rv = init_power_status_mask(port);
+	return rv;
 }
 
 #ifdef CONFIG_USB_PD_TCPM_MUX
