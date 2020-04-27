@@ -3729,6 +3729,12 @@
 /* HPD is sent to the GPU from the EC via a GPIO */
 #undef CONFIG_USB_PD_DP_HPD_GPIO
 
+/*
+ * HPD is sent to the GPU from the EC via a GPIO, and the HPD GPIO level has
+ * to be handled separately.
+ */
+#undef CONFIG_USB_PD_DP_HPD_GPIO_CUSTOM
+
 /* Check if max voltage request is allowed before each request */
 #undef CONFIG_USB_PD_CHECK_MAX_REQUEST_ALLOWED
 
@@ -4924,6 +4930,12 @@
 	defined(CONFIG_USB_PD_DISCHARGE_TCPC) || \
 	defined(CONFIG_USB_PD_DISCHARGE_PPC)
 #define CONFIG_USB_PD_DISCHARGE
+#endif
+
+/*****************************************************************************/
+/* Define derived config options for DP HPD GPIO */
+#ifdef CONFIG_USB_PD_DP_HPD_GPIO_CUSTOM
+#define CONFIG_USB_PD_DP_HPD_GPIO
 #endif
 
 /*****************************************************************************/
