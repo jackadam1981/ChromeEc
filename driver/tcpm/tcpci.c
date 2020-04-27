@@ -1473,6 +1473,7 @@ DECLARE_CONSOLE_COMMAND(tcpci_dump, command_tcpci_dump, "<Type-C port>",
 
 const struct tcpm_drv tcpci_tcpm_drv = {
 	.init			= &tcpci_tcpm_init,
+	.hard_reset_init	= &tcpci_tcpm_hard_reset_init,
 	.release		= &tcpci_tcpm_release,
 	.get_cc			= &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
