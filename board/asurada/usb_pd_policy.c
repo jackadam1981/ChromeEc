@@ -6,6 +6,22 @@
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 
+__override int svdm_get_hpd_gpio(int port)
+{
+	/* HPD is low active, inverse the result */
+	return !gpio_get_level(GPIO_EC_DPBRDG_HPD_ODL);
+}
+
+__override void svdm_set_hpd_gpio(int port, int en)
+{
+	/* HPD is low active, inverse the en */
+	gpio_set_level(GPIO_EC_DPBRDG_HPD_ODL, !en);
+
+	if (port == 1)
+		gpio_set_level(GPIO_PS185_EC_DP_HPD);
+
+}
+
 int pd_snk_is_vbus_provided(int port)
 {
 	return ppc_is_vbus_present(port);
