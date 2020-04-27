@@ -1,0 +1,441 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "211c18ff_d4344bac",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "Since this is being submitted to our public EC repositories, we would like intel to license this using the standard Chromium OS license.\n\n /* Copyright 2019 The Chromium OS Authors. All rights reserved.\n  * Use of this source code is governed by a BSD-style license that can be\n  * found in the LICENSE file.\n  */\n\nWe cannot accept code which is copyrighted to Intel.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16a6b37a_03044455",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "pretty much all of this can be written in C. please use C, not asm.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 4
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c986b25d_e940852d",
+        "filename": "chip/ish/aontaskfw/ish_aon_share.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "document these please",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e95eb4b_34dc7d1d",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "why is this no longer static? it will need declared in a header file if so",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 28
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c23af8ac_a6c7523e",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "this looks like it belongs in a header file",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 6
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d66c943_af5b60d3",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "since these variables are not static, they should be declared in a header file, or just make them static\n\nalso, tr is not a good variable name. I have no idea what it means.",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 38
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b078f342_6e144760",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "brace should go on same line as do",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 2
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e12fecf_e3dab668",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "what is \"pce\"?",
+      "range": {
+        "startLine": 569,
+        "startChar": 10,
+        "endLine": 569,
+        "endChar": 13
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "236ef7f3_95b43a78",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "what is \"sx\"?",
+      "range": {
+        "startLine": 570,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 8
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edfd3420_244e7a5f",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "This isn\u0027t formatted correctly to Linux Kernel style guide. You can use clang-format on this region to correct.",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 43
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "254abbe7_517f569f",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "what is \"NR\"?",
+      "range": {
+        "startLine": 622,
+        "startChar": 8,
+        "endLine": 622,
+        "endChar": 19
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed3ff51e_f5c23064",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "static?",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 33
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db1681f2_cf815a45",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CONFIG_ISH_IPAPG) \u0026\u0026 is_ipapg_allowed())\n\nwill allow you to remove the inner condition",
+      "range": {
+        "startLine": 679,
+        "startChar": 5,
+        "endLine": 679,
+        "endChar": 33
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a333f7f3_059b180d",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 739,
+        "endChar": 26
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e281041_3807fb8b",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "indented incorrectly",
+      "range": {
+        "startLine": 967,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 2
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524de3f0_b6a2453d",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "put this into the for loop",
+      "range": {
+        "startLine": 533,
+        "startChar": 1,
+        "endLine": 533,
+        "endChar": 7
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "967c3ad9_b73dcf1e",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "should go in a header file, not here",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f9ed7b9_26afd980",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "what is pg?",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ce6f7b_b229ea4e",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-27T15:02:34Z",
+      "side": 1,
+      "message": "get rid of spaces at the end of line, like this",
+      "range": {
+        "startLine": 633,
+        "startChar": 30,
+        "endLine": 633,
+        "endChar": 31
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
