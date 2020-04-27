@@ -31,6 +31,7 @@ GPIO_INT(PMIC_EC_PWRGD, PIN(F, 3),
 /* Sensor Interrupts */
 
 /* USB-C interrupts */
+GPIO_INT(USB_C0_PPC_INT_ODL, PIN(D, 1), GPIO_INT_BOTH, ppc_interrupt)
 
 /* Volume button interrupts */
 
@@ -45,7 +46,7 @@ GPIO_INT(VOLUME_DOWN_L,      PIN(D, 6), GPIO_INT_BOTH | GPIO_PULL_UP,
          button_interrupt) /* EC_VOLDN_BTN_ODL */
 GPIO_INT(VOLUME_UP_L,        PIN(D, 5), GPIO_INT_BOTH | GPIO_PULL_UP,
          button_interrupt) /* EC_VOLUP_BTN_ODL */
-GPIO_INT(X_EC_GPIO2,         PIN(B, 2), GPIO_ODR_HIGH, ppc_interrupt)
+GPIO_INT(X_EC_GPIO2,         PIN(B, 2), GPIO_ODR_HIGH, x_ec_interrupt)
 
 /* Power Sequencing Signals */
 GPIO(EC_PMIC_EN_ODL,         PIN(D, 0), GPIO_ODR_HIGH | GPIO_SEL_1P8V)
@@ -121,7 +122,6 @@ UNIMPLEMENTED_GPIO(AP_SPI_EC_MISO_R,       PIN(M, 1))
 UNIMPLEMENTED_GPIO(AP_SPI_EC_MOSI,         PIN(M, 0))
 UNIMPLEMENTED_GPIO(AP_SPI_EC_CLK,          PIN(M, 4))
 UNIMPLEMENTED_GPIO(SET_VMC_VOLT_AT_1V8,    PIN(D, 4))
-UNIMPLEMENTED_GPIO(USB_C0_PPC_INT_ODL,     PIN(D, 1))
 UNIMPLEMENTED_GPIO(EN_PP3000_VMC_PMU,      PIN(D, 2))
 UNIMPLEMENTED_GPIO(PWR_LED_ODL,            PIN(A, 0))
 UNIMPLEMENTED_GPIO(EC_LED_PWM1,            PIN(A, 1))
