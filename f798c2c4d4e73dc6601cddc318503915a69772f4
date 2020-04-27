@@ -22,6 +22,30 @@
       "revId": "f798c2c4d4e73dc6601cddc318503915a69772f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4870a99c_eb9f6d68",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4007,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-27T21:31:04Z",
+      "side": 1,
+      "message": "pe_src_ready_entry and pe_snk_ready_entry always end the AMS\n\nThere might be other cases where we\u0027re not correctly signaling that we\u0027re in an AMS.  I haven\u0027t inventoried, I just ran into this one while testing discovery path",
+      "parentUuid": "65d43dd0_4c44462d",
+      "range": {
+        "startLine": 4007,
+        "startChar": 2,
+        "endLine": 4007,
+        "endChar": 15
+      },
+      "revId": "f798c2c4d4e73dc6601cddc318503915a69772f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
