@@ -169,6 +169,17 @@ void chip_pre_init(void)
 		STM32_RCC_PB1_WWDG | STM32_RCC_PB1_IWDG;
 	apb2fz_reg = STM32_RCC_PB2_TIM9 | STM32_RCC_PB2_TIM10 |
 		STM32_RCC_PB2_TIM11;
+#elif defined(CHIP_FAMILY_STM32G4)
+	apb1fz_reg =
+		STM32_DBGMCU_APB1FZ_TIM2 | STM32_DBGMCU_APB1FZ_TIM3 |
+		STM32_DBGMCU_APB1FZ_TIM4 | STM32_DBGMCU_APB1FZ_TIM5 |
+		STM32_DBGMCU_APB1FZ_TIM6 | STM32_DBGMCU_APB1FZ_TIM7 |
+		STM32_DBGMCU_APB1FZ_RTC  | STM32_DBGMCU_APB1FZ_WWDG |
+		STM32_DBGMCU_APB1FZ_IWDG;
+	apb2fz_reg =
+		STM32_DBGMCU_APB2FZ_TIM1 | STM32_DBGMCU_APB2FZ_TIM8 |
+		STM32_DBGMCU_APB2FZ_TIM15 | STM32_DBGMCU_APB2FZ_TIM16 |
+		STM32_DBGMCU_APB2FZ_TIM17 | STM32_DBGMCU_APB2FZ_TIM20;
 #elif defined(CHIP_FAMILY_STM32H7)
 	/* TODO(b/67081508) */
 #endif
@@ -241,6 +252,16 @@ void system_pre_init(void)
 #elif defined(CHIP_FAMILY_STM32H7)
 	/* enable backup registers */
 	STM32_RCC_AHB4ENR |= BIT(28);
+#elif defined(CHIP_FAMILY_STM32G4)
+	/*
+	 * To enable back domain access the follow 4 steps are required:
+	 * 1. Enable power interface clock by setting PWREN
+	 * 2. Set DBP bit to allow access to backup domain
+	 * 3. Select RTC clock source
+	 * 4. Enable RTC clock by setting RTCEN
+	 * Step 1 is done above, and steps 3,4 are completed below in the while
+	 * loop. So only step 2 needs to be done here for the G4 family.
+	 */
 #else
 	/* enable backup registers */
 	STM32_RCC_APB1ENR |= BIT(27);
@@ -269,7 +290,7 @@ void system_pre_init(void)
 	}
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
 	defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32F4) || \
-	defined(CHIP_FAMILY_STM32H7)
+	defined(CHIP_FAMILY_STM32H7) || defined(CHIP_FAMILY_STM32G4)
 	if ((STM32_RCC_BDCR & BDCR_ENABLE_MASK) != BDCR_ENABLE_VALUE) {
 		/* The RTC settings are bad, we need to reset it */
 		STM32_RCC_BDCR |= STM32_RCC_BDCR_BDRST;
@@ -524,8 +545,8 @@ int system_is_reboot_warm(void)
 #elif defined(CHIP_FAMILY_STM32L4)
 	return ((STM32_RCC_AHB2ENR & STM32_RCC_AHB2ENR_GPIOMASK)
 			== STM32_RCC_AHB2ENR_GPIOMASK);
-#elif defined(CHIP_FAMILY_STM32F4)
-	return ((STM32_RCC_AHB1ENR & STM32_RCC_AHB1ENR_GPIOMASK)
+#elif defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32G4)
+	return ((STM32_RCC_AHB2ENR & STM32_RCC_AHB2ENR_GPIOMASK)
 			== gpio_required_clocks());
 #elif defined(CHIP_FAMILY_STM32H7)
 	return ((STM32_RCC_AHB4ENR & STM32_RCC_AHB4ENR_GPIOMASK)
