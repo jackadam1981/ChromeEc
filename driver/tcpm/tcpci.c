@@ -907,7 +907,6 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 				TCPC_REG_TRANSMIT_SET_WITH_RETRY(type));
 }
 
-#ifndef CONFIG_USB_PD_TCPC_LOW_POWER
 /*
  * Returns true if TCPC has reset based on reading mask registers. Only need to
  * check this if the TCPC low power mode (LPM) code isn't compiled in because
@@ -929,7 +928,6 @@ static int register_mask_reset(int port)
 
 	return 0;
 }
-#endif
 
 static int tcpci_get_fault(int port, int *fault)
 {
@@ -1074,7 +1072,6 @@ void tcpci_tcpc_alert(int port)
 	    && (alert_ext & TCPC_REG_ALERT_EXT_SNK_FRS))
 		pd_got_frs_signal(port);
 
-#ifndef CONFIG_USB_PD_TCPC_LOW_POWER
 	/*
 	 * Check registers to see if we can tell that the TCPC has reset. If
 	 * so, perform a tcpc_init. This only needs to happen for devices that
@@ -1083,7 +1080,6 @@ void tcpci_tcpc_alert(int port)
 	 */
 	if (register_mask_reset(port))
 		pd_event |= PD_EVENT_TCPC_RESET;
-#endif
 
 	/*
 	 * Wait until all possible TCPC accesses in this function are complete
