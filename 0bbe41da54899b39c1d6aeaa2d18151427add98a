@@ -22,6 +22,30 @@
       "revId": "0bbe41da54899b39c1d6aeaa2d18151427add98a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c372078_8d3911bc",
+        "filename": "util/iteflash.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1138020
+      },
+      "writtenOn": "2020-04-27T03:00:03Z",
+      "side": 1,
+      "message": "There is no product with 768KB flash size.",
+      "parentUuid": "4cd0932d_fbacfdca",
+      "range": {
+        "startLine": 587,
+        "startChar": 44,
+        "endLine": 587,
+        "endChar": 47
+      },
+      "revId": "0bbe41da54899b39c1d6aeaa2d18151427add98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
