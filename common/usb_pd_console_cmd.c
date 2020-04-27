@@ -19,7 +19,7 @@ static void dump_pe(int port)
 	const union disc_ident_ack *resp;
 	enum tcpm_transmit_type type;
 	/* TODO: Support other message types */
-	const struct svid_data_s *svid_disc =
+	const struct svid_data *svid_disc =
 		&pd_get_am_discovery(port)->svids[TCPC_TX_SOP];
 
 	const char * const idh_ptype_names[]  = {

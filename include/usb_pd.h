@@ -277,12 +277,20 @@ enum pd_discovery_state {
 	PD_DISC_FAIL,		/* Cable did not respond, or Discover* NAK */
 };
 
-struct svdm_svid_data {
+struct svid_mode_data {
 	uint16_t svid;
 	/* State of mode discovery for this SVID */
 	enum pd_discovery_state discovery;
 	int mode_cnt;
 	uint32_t mode_vdo[PDO_MODES];
+};
+
+struct svid_data {
+	/* Count of SVIDs discovered */
+	int cnt;
+	/* Supported SVIDs and corresponding VDO mode data */
+	struct svid_mode_data svids[SVID_DISCOVERY_MAX];
+	enum pd_discovery_state discovery;
 };
 
 struct svdm_amode_fx {
@@ -323,7 +331,7 @@ struct svdm_amode_data {
 	/* VDM object position */
 	int opos;
 	/* mode capabilities specific to SVID amode. */
-	struct svdm_svid_data *data;
+	struct svid_mode_data *data;
 };
 
 enum hpd_event {
@@ -357,15 +365,6 @@ struct identity_data {
 	enum pd_discovery_state discovery;
 };
 
-/* TODO: Come up with a better name for this */
-struct svid_data_s {
-	/* Count of SVIDs discovered */
-	int cnt;
-	/* Supported SVIDs and corresponding VDO mode data */
-	struct svdm_svid_data svids[SVID_DISCOVERY_MAX];
-	enum pd_discovery_state discovery;
-};
-
 /* supported alternate modes */
 enum pd_alternate_modes {
 	PD_AMODE_GOOGLE,
@@ -389,12 +388,11 @@ struct pd_discovery {
 	/* Identity data for all supported SOP* communications */
 	struct identity_data identity[DISCOVERY_TYPE_COUNT];
 	/* Discovered SVID data for all supported SOP* communications */
-	struct svid_data_s svids[DISCOVERY_TYPE_COUNT];
+	struct svid_data svids[DISCOVERY_TYPE_COUNT];
 	/*  active modes */
 	struct svdm_amode_data amodes[PD_AMODE_COUNT];
 	/* Next index to insert DFP alternate mode into amodes */
 	int amode_idx;
-	enum pd_discovery_state modes_discovery;
 };
 
 /*
@@ -1644,8 +1642,7 @@ void dfp_consume_attention(int port, uint32_t *payload);
  * @param cnt     number of data objects in payload
  * @param payload payload data.
  */
-void dfp_consume_identity(int port, enum tcpm_transmit_type type, int cnt,
-		uint32_t *payload);
+void dfp_consume_identity(int port, int cnt, uint32_t *payload);
 
 /**
  * Consume the SVIDs
@@ -1704,6 +1701,21 @@ void pd_set_identity_discovery(int port, enum tcpm_transmit_type type,
 enum pd_discovery_state pd_get_identity_discovery(int port,
 						enum tcpm_transmit_type type);
 
+/* TODO: Comment and implement */
+void pd_set_svid_discovery(int port, enum tcpm_transmit_type type,
+		enum pd_discovery_state disc);
+
+enum pd_discovery_state pd_get_svids_discovery(int port,
+		enum tcpm_transmit_type type);
+
+void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
+		uint16_t svid, enum pd_discovery_state disc);
+
+enum pd_discovery_state pd_get_modes_discovery(int port,
+		enum tcpm_transmit_type type);
+
+struct svid_mode_data *pd_get_next_mode(int port, enum tcpm_transmit_type type);
+
 /**
  * Return a pointer to the discover identity response structure for this SOP*
  * type
@@ -1739,13 +1751,6 @@ uint16_t pd_get_identity_pid(int port);
  */
 uint8_t pd_get_product_type(int port);
 
-/* TODO: Comment and implement */
-void pd_set_svid_discovery(int port, enum tcpm_transmit_type type,
-		enum pd_discovery_state disc);
-
-enum pd_discovery_state pd_get_svid_discovery(int port,
-		enum tcpm_transmit_type type);
-
 /* TODO: Handle other transmit types */
 /**
  * Return the SVID count of port partner connected to a specified port
@@ -1764,14 +1769,6 @@ int pd_get_svid_count(int port);
  * @return         SVID
  */
 uint16_t pd_get_svid(int port, uint16_t svid_idx);
-
-void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
-		uint16_t svid, enum pd_discovery_state disc);
-
-enum pd_discovery_state pd_get_modes_discovery(int port,
-		enum tcpm_transmit_type type);
-
-int32_t pd_get_next_svid_for_discovery(int port, enum tcpm_transmit_type type);
 
 /**
  * Return the pointer to modes of VDO of port partner connected
@@ -1905,7 +1902,7 @@ enum idh_ptype get_usb_pd_cable_type(int port);
  * @param type	    Transmit type (SOP' or SOP'')
  */
 void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
-				uint16_t head, enum tcpm_transmit_type type);
+				uint16_t head);
 
 /**
  * Return enter USB message payload

@@ -1199,7 +1199,7 @@ static bool pe_attempt_port_discovery(int port)
 			return true;
 		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP) ==
 				PD_DISC_COMPLETE &&
-				pd_get_svid_discovery(port, TCPC_TX_SOP) ==
+				pd_get_svids_discovery(port, TCPC_TX_SOP) ==
 				PD_DISC_NEEDED &&
 				pe_can_send_sop_vdm(port, CMD_DISCOVER_SVID)) {
 			pe[port].tx_type = TCPC_TX_SOP;
@@ -1213,7 +1213,7 @@ static bool pe_attempt_port_discovery(int port)
 			return true;
 		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP_PRIME)
 				== PD_DISC_COMPLETE &&
-				pd_get_svid_discovery(port, TCPC_TX_SOP_PRIME)
+				pd_get_svids_discovery(port, TCPC_TX_SOP_PRIME)
 				== PD_DISC_NEEDED &&
 				pe_can_send_sop_prime(port)) {
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
@@ -4152,8 +4152,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 				 * PE_INIT_PORT_VDM_Identity_ACKed embedded here
 				 */
 				dfp_consume_cable_response(port, cnt, payload,
-							   rx_emsg[port].header,
-							   pe[port].tx_type);
+						rx_emsg[port].header);
 
 				/*
 				 * Note: If port partner runs PD 2.0, we must
@@ -4321,7 +4320,7 @@ static void pe_init_port_vdm_identity_request_run(int port)
 				/*
 				 * PE_INIT_PORT_VDM_Identity_ACKed embedded here
 				 */
-				dfp_consume_identity(port, sop, cnt, payload);
+				dfp_consume_identity(port, cnt, payload);
 
 				/*
 				 * TODO(b:152419850): Fake vdm_cmd for now to
@@ -4505,15 +4504,16 @@ static void pe_init_vdm_svids_request_exit(int port)
 static void pe_init_vdm_modes_request_entry(int port)
 {
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
-	/* TODO: Support SOP' */
-	const int32_t svid =
-		pd_get_next_svid_for_discovery(port, pe[port].tx_type);
-
-	if (svid == -1) {
-		CPRINTF("C%d: No more modes to discover\n", port);
-		set_state_pe(port, get_last_state_pe(port));
-		return;
-	}
+	const struct svid_mode_data *mode_data =
+		pd_get_next_mode(port, pe[port].tx_type);
+	uint16_t svid;
+	/*
+	 * The caller should have checked that there was something to discover
+	 * before entering this state.
+	 */
+	assert(mode_data);
+	assert(mode_data->discovery == PD_DISC_NEEDED);
+	svid = mode_data->svid;
 
 	print_current_state(port);
 
@@ -4541,12 +4541,12 @@ static void pe_init_vdm_modes_request_run(int port)
 		uint8_t type;
 		uint8_t cnt;
 		uint8_t ext;
-		uint16_t requested_svid =
-			(uint16_t) pd_get_next_svid_for_discovery(
-					port, pe[port].tx_type);
-		/* Should be nonnegative due to check in entry function. This
-		 * interface would make more sense if we got a pointer to a
-		 * struct svdm_svid_data. */
+		struct svid_mode_data *mode_data =
+			pd_get_next_mode(port, pe[port].tx_type);
+		uint16_t requested_svid;
+		assert(mode_data);
+		assert(mode_data->discovery == PD_DISC_NEEDED);
+		requested_svid = mode_data->svid;
 
 
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
@@ -4569,7 +4569,6 @@ static void pe_init_vdm_modes_request_run(int port)
 								cnt > 1) {
 				CPRINTF("%s: ACK\n", __func__);
 				/* PE_INIT_VDM_SVIDs_ACKed embedded here */
-				/* TODO: Handle multiple transmit types */
 				dfp_consume_modes(port, sop, cnt, payload);
 				/*
 				 * TODO(b:152419850): Fake vdm_cmd for now to
@@ -4806,7 +4805,7 @@ static void pe_vdm_acked_entry(int port)
 		switch (vdo_cmd) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		case CMD_DISCOVER_IDENT:
-			dfp_consume_identity(port, TCPC_TX_SOP, cnt, payload);
+			dfp_consume_identity(port, cnt, payload);
 #ifdef CONFIG_CHARGE_MANAGER
 			if (pd_charge_from_device(pd_get_identity_vid(port),
 						pd_get_identity_pid(port))) {

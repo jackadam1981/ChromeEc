@@ -68,7 +68,7 @@ static int pd_allocate_mode(int port, uint16_t svid)
 	struct svdm_amode_data *modep;
 	int mode_idx = pd_get_mode_idx(port, svid);
 	struct pd_discovery *disc = pd_get_am_discovery(port);
-	struct svid_data_s *svid_disc;
+	struct svid_data *svid_disc;
 
 	if (mode_idx != -1)
 		return mode_idx;
@@ -83,7 +83,7 @@ static int pd_allocate_mode(int port, uint16_t svid)
 	svid_disc = &disc->svids[TCPC_TX_SOP];
 	for (i = 0; i < supported_modes_cnt; i++) {
 		for (j = 0; j < svid_disc->cnt; j++) {
-			struct svdm_svid_data *svidp = &svid_disc->svids[j];
+			struct svid_mode_data *svidp = &svid_disc->svids[j];
 
 			if ((svidp->svid != supported_modes[i].svid) ||
 			    (svid && (svidp->svid != svid)))
@@ -290,16 +290,15 @@ void dfp_consume_attention(int port, uint32_t *payload)
 
 static char *sop_names[] = {"SOP", "SOP'", "SOP''"};
 
-void dfp_consume_identity(int port, enum tcpm_transmit_type type, int cnt,
-		uint32_t *payload)
+void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 {
 	int ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 	size_t identity_size = MIN(sizeof(union disc_ident_ack),
 				   (cnt - 1) * sizeof(uint32_t));
-	memcpy(disc->identity[type].response.raw_value, payload + 1,
-			identity_size);
-	CPRINTF("C%d: Consuming identity for %s\n", port, sop_names[type]);
+	/* Note: only store VDOs, not the VDM header */
+	memcpy(disc->identity[TCPC_TX_SOP].response.raw_value,
+	       payload + 1, identity_size);
 
 	switch (ptype) {
 	case IDH_PTYPE_AMA:
@@ -319,7 +318,7 @@ void dfp_consume_identity(int port, enum tcpm_transmit_type type, int cnt,
 	default:
 		break;
 	}
-	pd_set_identity_discovery(port, type, PD_DISC_COMPLETE);
+	pd_set_identity_discovery(port, TCPC_TX_SOP, PD_DISC_COMPLETE);
 }
 
 void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
@@ -330,7 +329,7 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
 	int vdo = 1;
 	uint16_t svid0, svid1;
 	struct pd_discovery *disc = pd_get_am_discovery(port);
-	struct svid_data_s *svid_disc = &disc->svids[type];
+	struct svid_data *svid_disc = &disc->svids[type];
 
 	CPRINTF("C%d: Consuming SVIDs for %s\n", port, sop_names[type]);
 	CPRINTF("C%d: Already discovered %d SVIDs\n", port, svid_disc->cnt);
@@ -375,9 +374,9 @@ void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 		uint32_t *payload)
 {
 	int svid_idx;
-	struct svdm_svid_data *mode_discovery = NULL;
+	struct svid_mode_data *mode_discovery = NULL;
 	struct pd_discovery *disc = pd_get_am_discovery(port);
-	struct svid_data_s *svid_disc = &disc->svids[type];
+	struct svid_data *svid_disc = &disc->svids[type];
 	uint16_t response_svid = (uint16_t) (payload[0] >> 16);
 
 	CPRINTF("C%d: Consuming modes for %s, SVID %x\n", port, sop_names[type],
@@ -419,7 +418,7 @@ void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 int dfp_discover_modes(int port, uint32_t *payload)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
-	struct svid_data_s *svid_disc = &disc->svids[TCPC_TX_SOP];
+	struct svid_data *svid_disc = &disc->svids[TCPC_TX_SOP];
 	uint16_t svid = svid_disc->svids[disc->svid_idx].svid;
 
 	if (disc->svid_idx >= svid_disc->cnt)
@@ -495,7 +494,7 @@ uint8_t pd_get_product_type(int port)
 	return resp->idh.product_type;
 }
 
-enum pd_discovery_state pd_get_svid_discovery(int port,
+enum pd_discovery_state pd_get_svids_discovery(int port,
 		enum tcpm_transmit_type type) {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 
@@ -519,13 +518,13 @@ uint16_t pd_get_svid(int port, uint16_t svid_idx)
 void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
 		uint16_t svid, enum pd_discovery_state disc)
 {
-	struct svid_data_s *svid_disc =
+	struct svid_data *svid_disc =
 		&pd_get_am_discovery(port)->svids[type];
 	int svid_idx;
 
 	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
 		/* Horrible names */
-		struct svdm_svid_data *data = &svid_disc->svids[svid_idx];
+		struct svid_mode_data *data = &svid_disc->svids[svid_idx];
 		if (data->svid != svid) continue;
 
 		data->discovery = disc;
@@ -536,45 +535,31 @@ void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
 enum pd_discovery_state pd_get_modes_discovery(int port,
 		enum tcpm_transmit_type type)
 {
-	struct pd_discovery *disc = pd_get_am_discovery(port);
-	struct svid_data_s *svid_disc = &disc->svids[type];
-	int svid_idx;
+	const struct svid_mode_data *mode_data = pd_get_next_mode(port, type);
 
-	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
-		enum pd_discovery_state discovery =
-			svid_disc->svids[svid_idx].discovery;
-		/*
-		 * This makes it so that if mode discovery fails for any SVID,
-		 * none of the subsequent ones are attempted. Is this
-		 * appropriate?
-		 */
-		if (discovery == PD_DISC_FAIL || discovery == PD_DISC_NEEDED)
-			return discovery;
-	}
+	/*
+	 * If there are no SVIDs for which to discover modes, mode discovery is
+	 * trivially complete.
+	 */
+	if (!mode_data) return PD_DISC_COMPLETE;
 
-	return PD_DISC_COMPLETE;
+	return mode_data->discovery;
 }
 
-int32_t pd_get_next_svid_for_discovery(int port, enum tcpm_transmit_type type) {
-	struct pd_discovery *disc = pd_get_am_discovery(port);
-	struct svid_data_s *svid_disc = &disc->svids[type];
+struct svid_mode_data *pd_get_next_mode(int port,
+		enum tcpm_transmit_type type) {
+	struct svid_data *svid_disc = &pd_get_am_discovery(port)->svids[type];
 	int svid_idx;
 
 	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
-		enum pd_discovery_state discovery =
-			svid_disc->svids[svid_idx].discovery;
-		/*
-		 * This makes it so that if mode discovery fails for any SVID,
-		 * none of the subsequent ones are attempted. Is this
-		 * appropriate?
-		 */
-		if (discovery == PD_DISC_FAIL)
-			return -1;
-		if (discovery == PD_DISC_NEEDED)
-			return svid_disc->svids[svid_idx].svid;
+		struct svid_mode_data *mode_data = &svid_disc->svids[svid_idx];
+
+		if (mode_data->discovery == PD_DISC_COMPLETE) continue;
+		
+		return mode_data;
 	}
 
-	return -1;
+	return NULL;
 }
 
 uint32_t *pd_get_mode_vdo(int port, uint16_t svid_idx)
@@ -632,7 +617,7 @@ enum idh_ptype get_usb_pd_cable_type(int port)
 }
 
 void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
-				uint16_t head, enum tcpm_transmit_type type)
+				uint16_t head)
 {
 	struct pd_cable *cable = pd_get_cable_attributes(port);
 	struct pd_discovery *disc = pd_get_am_discovery(port);
@@ -642,10 +627,15 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 	if (!IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 		return;
 
-	memcpy(disc->identity[type].response.raw_value,
+	/* Note: only store VDOs, not the VDM header */
+	/*
+	 * TODO(b/152417597): Support SOP and SOP'; eliminate redundant code for
+	 * port partner and cable identity discovery.
+	 */
+	memcpy(disc->identity[TCPC_TX_SOP_PRIME].response.raw_value,
 	       payload + 1, identity_size);
 
-	pd_set_identity_discovery(port, type, PD_DISC_COMPLETE);
+	pd_set_identity_discovery(port, TCPC_TX_SOP_PRIME, PD_DISC_COMPLETE);
 
 	/* Get cable rev */
 	cable->rev = PD_HEADER_REV(head);

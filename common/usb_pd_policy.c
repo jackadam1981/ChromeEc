@@ -823,7 +823,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 			if (is_transmit_msg_sop_prime(port)) {
 				/* Store cable type */
 				dfp_consume_cable_response(port, cnt, payload,
-						       head, TCPC_TX_SOP_PRIME);
+						       head);
 
 				/*
 				 * Enter USB4 mode if the cable supports USB4
@@ -863,8 +863,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 			} else if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
 				board_is_tbt_usb4_port(port)) {
 				pd_dfp_discovery_init(port);
-				dfp_consume_identity(port, TCPC_TX_SOP, cnt,
-						payload);
+				dfp_consume_identity(port, cnt, payload);
 
 				/* Enable USB4 mode if USB4 VDO present
 				 * and port partner supports USB Rev 3.0.
@@ -894,8 +893,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				 * TODO: Figure out if this is actually supposed
 				 * to be SOP.
 				 */
-				dfp_consume_identity(port, TCPC_TX_SOP, cnt,
-						payload);
+				dfp_consume_identity(port, cnt, payload);
 				rsize = dfp_discover_svids(payload);
 			}
 #ifdef CONFIG_CHARGE_MANAGER
