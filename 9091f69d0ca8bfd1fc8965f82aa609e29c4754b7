@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaa21989_fca4f99c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-04-27T21:39:49Z",
+      "side": 1,
+      "message": "Since we\u0027re starting to review, the WIP can be removed prior to uploading next patch.",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "9091f69d0ca8bfd1fc8965f82aa609e29c4754b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5621f4da_3169a24f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-04-27T21:39:49Z",
+      "side": 1,
+      "message": "Should have a space between last line of description and the BUG\u003d line",
+      "revId": "9091f69d0ca8bfd1fc8965f82aa609e29c4754b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67bc673a_cbb2ebad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-04-27T21:39:49Z",
+      "side": 1,
+      "message": "The general practice to have an issue ID associated with each CL. For this CL an issue titled \"gingerbread: Need to add gpio signals in gpio.inc\" would work.",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "9091f69d0ca8bfd1fc8965f82aa609e29c4754b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beff8a30_5bbf2ef2",
+        "filename": "board/gingerbread/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-04-27T21:39:49Z",
+      "side": 1,
+      "message": "Should add a note here that this is not the desired irq handler for this function.",
+      "range": {
+        "startLine": 29,
+        "startChar": 70,
+        "endLine": 29,
+        "endChar": 86
+      },
+      "revId": "9091f69d0ca8bfd1fc8965f82aa609e29c4754b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f61c37f_dafc08b0",
+        "filename": "board/gingerbread/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-04-27T21:39:49Z",
+      "side": 1,
+      "message": "Should this line be above where tpcp interrupts are listed?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 22
+      },
+      "revId": "9091f69d0ca8bfd1fc8965f82aa609e29c4754b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9c56309_0d9cbe60",
+        "filename": "board/gingerbread/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-04-27T21:39:49Z",
+      "side": 1,
+      "message": "I don\u0027t know what the right answer is here, but I do see GPIO_PULL_UP used as a flag in other gpio.inc for STM32 boards.",
+      "range": {
+        "startLine": 133,
+        "startChar": 70,
+        "endLine": 133,
+        "endChar": 71
+      },
+      "revId": "9091f69d0ca8bfd1fc8965f82aa609e29c4754b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
