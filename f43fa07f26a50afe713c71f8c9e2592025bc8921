@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbd6bfaa_bc1fa361",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2020-04-27T05:12:41Z",
+      "side": 1,
+      "message": "Yes ,It should based on VARIANT_OCTOPUS_EC_ITE8320",
+      "parentUuid": "ad576460_1fda20a5",
+      "range": {
+        "startLine": 169,
+        "startChar": 7,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "462b4d86_70796a7d",
         "filename": "baseboard/octopus/baseboard.c",
         "patchSetId": 2
@@ -83,6 +107,30 @@
       "writtenOn": "2020-04-15T15:39:43Z",
       "side": 1,
       "message": "Should there be a timeout in case this never changes?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 4
+      },
+      "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae0dbba6_99da3b84",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2020-04-27T05:12:41Z",
+      "side": 1,
+      "message": "OK, It should be a timeout.",
+      "parentUuid": "43b5ed89_40db8bf6",
       "range": {
         "startLine": 174,
         "startChar": 0,
