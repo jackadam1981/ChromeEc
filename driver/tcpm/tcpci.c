@@ -969,7 +969,6 @@ void tcpci_tcpc_alert(int port)
 {
 	int alert = 0;
 	int alert_ext = 0;
-	int failed_attempts;
 	uint32_t pd_event = 0;
 
 	/* Read the Alert register from the TCPC */
@@ -1001,26 +1000,34 @@ void tcpci_tcpc_alert(int port)
 					   TCPC_TX_COMPLETE_FAILED);
 
 	/* Pull all RX messages from TCPC into EC memory */
-	failed_attempts = 0;
-	while (alert & TCPC_REG_ALERT_RX_STATUS) {
-		if (tcpm_enqueue_message(port))
-			++failed_attempts;
-		if (tcpm_alert_status(port, &alert))
-			++failed_attempts;
+	if (alert & TCPC_REG_ALERT_RX_STATUS) {
+		int failed_attempts = 0;
+		int saved_alert = alert;
 
-		/* Ensure we don't loop endlessly */
-		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
-			CPRINTS("C%d Cannot consume RX buffer after %d failed attempts!",
-				port, failed_attempts);
-			/*
-			 * The port is in a bad state, we don't want to consume
-			 * all EC resources so suspend the port for a little
-			 * while.
-			 */
-			pd_set_suspend(port, 1);
-			pd_deferred_resume(port);
-			return;
+		while (alert & TCPC_REG_ALERT_RX_STATUS) {
+			if (tcpm_enqueue_message(port))
+				++failed_attempts;
+			if (tcpm_alert_status(port, &alert))
+				++failed_attempts;
+
+			saved_alert |= alert;
+
+			/* Ensure we don't loop endlessly */
+			if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
+				CPRINTS("C%d Cannot consume RX buffer "
+					"after %d failed attempts!",
+					port, failed_attempts);
+				/*
+				 * The port is in a bad state, we don't want
+				 * to consume all EC resources so suspend the
+				 * port for a little while.
+				 */
+				pd_set_suspend(port, 1);
+				pd_deferred_resume(port);
+				return;
+			}
 		}
+		alert = saved_alert;
 	}
 
 	/* Clear all pending alert bits */
