@@ -1174,11 +1174,13 @@ static bool pe_attempt_port_discovery(int port)
 	if (get_time().val > pe[port].discover_port_identity_timer) {
 		if (pe[port].cable.discovery == PD_DISC_NEEDED &&
 		    pe_can_send_sop_prime(port)) {
+			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 			return true;
 		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP) ==
 			 PD_DISC_NEEDED &&
 			 pe_can_send_sop_vdm(port, CMD_DISCOVER_IDENT)) {
+			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 			set_state_pe(port,
 				     PE_INIT_PORT_VDM_IDENTITY_REQUEST);
 			return true;
@@ -1188,6 +1190,7 @@ static bool pe_attempt_port_discovery(int port)
 		 * Remove once do_port_discovery can be removed.
 		 */
 		} else if (pe_can_send_sop_vdm(port, pe[port].vdm_cmd + 1)) {
+			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 			set_state_pe(port, PE_DO_PORT_DISCOVERY);
 			return true;
 		}
