@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26d8301d_b15aea4f",
+        "filename": "board/kakadu/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-04-27T03:46:16Z",
+      "side": 1,
+      "message": "remove the \"else\" part. it will never fill into this case",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "a9a3f4bddf62d0813644cbce79039a31eccdda7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
