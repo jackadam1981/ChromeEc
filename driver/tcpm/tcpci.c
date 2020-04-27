@@ -1248,6 +1248,17 @@ int tcpci_tcpm_init(int port)
 	return EC_SUCCESS;
 }
 
+int tcpci_tcpm_hard_reset_init(int port)
+{
+	int rv;
+
+	rv = init_alert_mask(port);
+	if (rv)
+		return rv;
+	rv = init_power_status_mask(port);
+	return rv;
+}
+
 #ifdef CONFIG_USB_PD_TCPM_MUX
 
 /*

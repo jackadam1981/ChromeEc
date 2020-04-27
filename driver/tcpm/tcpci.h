@@ -206,6 +206,7 @@ enum tcpc_cc_pull tcpci_get_cached_pull(int port);
 
 void tcpci_tcpc_alert(int port);
 int tcpci_tcpm_init(int port);
+int tcpci_tcpm_hard_reset_init(int port);
 int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2);
 int tcpci_tcpm_get_vbus_level(int port);

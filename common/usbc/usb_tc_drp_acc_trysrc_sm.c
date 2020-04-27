@@ -879,6 +879,8 @@ static bool tc_perform_src_hard_reset(int port)
 
 static void tc_perform_snk_hard_reset(int port)
 {
+	tcpm_hard_reset_init(port);
+
 	tc_set_data_role(port, PD_ROLE_UFP);
 
 	/* Clear the input current limit */
