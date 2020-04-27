@@ -41,6 +41,7 @@ static void kakadu_led_set_battery(void)
 
 	switch (chstate) {
 	case PWR_STATE_CHARGE:
+	case PWR_STATE_CHARGE_NEAR_FULL:
 		br[EC_LED_COLOR_GREEN] = 255;
 		br[EC_LED_COLOR_RED] = 255;
 		break;
@@ -48,9 +49,6 @@ static void kakadu_led_set_battery(void)
 		/* real battery SoC 5%*/
 		if (charge_get_percent() <= 5)
 			br[EC_LED_COLOR_RED] = 255;
-		break;
-	case PWR_STATE_CHARGE_NEAR_FULL:
-		br[EC_LED_COLOR_GREEN] = 255;
 		break;
 	case PWR_STATE_ERROR:
 		br[EC_LED_COLOR_RED] = 255;
@@ -116,8 +114,8 @@ static void kakadu_led_init(void)
 	mt6370_led_set_dim_mode(LED_GREEN, dim);
 	mt6370_led_set_pwm_frequency(LED_RED, freq);
 	mt6370_led_set_pwm_frequency(LED_GREEN, freq);
-	mt6370_led_set_pwm_dim_duty(LED_RED, 0);
-	mt6370_led_set_pwm_dim_duty(LED_GREEN, 0);
+	mt6370_led_set_pwm_dim_duty(LED_RED, 13);
+	mt6370_led_set_pwm_dim_duty(LED_GREEN, 31);
 }
 DECLARE_HOOK(HOOK_INIT, kakadu_led_init, HOOK_PRIO_DEFAULT);
 
