@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8184d905_2d325e11",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-04-27T17:51:59Z",
+      "side": 1,
+      "message": "sorry for noticing it late\nnit: please update as per new code, may be in header where IS_PD_IDH_UFP_PTYPE is defined",
+      "range": {
+        "startLine": 511,
+        "startChar": 4,
+        "endLine": 511,
+        "endChar": 64
+      },
+      "revId": "7391953a3fd881db908a9fba796c233f98c1cf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
