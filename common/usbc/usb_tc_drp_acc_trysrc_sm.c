@@ -836,6 +836,9 @@ static bool tc_perform_src_hard_reset(int port)
 {
 	switch (tc[port].ps_reset_state) {
 	case PS_STATE0:
+		/* Allow the TCPC to clean up from the reset. */
+		tcpm_hard_reset_init(port);
+
 		/* Remove VBUS */
 		tc_src_power_off(port);
 
@@ -879,6 +882,9 @@ static bool tc_perform_src_hard_reset(int port)
 
 static void tc_perform_snk_hard_reset(int port)
 {
+	/* Allow the TCPC to clean up from the reset. */
+	tcpm_hard_reset_init(port);
+
 	tc_set_data_role(port, PD_ROLE_UFP);
 
 	/* Clear the input current limit */
