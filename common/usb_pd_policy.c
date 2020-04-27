@@ -727,7 +727,7 @@ static int process_am_discover_svids(int port, int cnt, uint32_t *payload)
 				limit_tbt_cable_speed(port);
 			else
 				disable_tbt_compat_mode(port);
-		} else {
+		} else if (!is_transmit_msg_sop_prime(port)) {
 			enable_transmit_sop_prime(port);
 			return dfp_discover_svids(payload);
 		}
