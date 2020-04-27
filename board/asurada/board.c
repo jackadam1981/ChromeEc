@@ -16,6 +16,8 @@
 #include "driver/charger/isl923x.h"
 #include "driver/ppc/syv682x.h"
 #include "driver/tcpm/it83xx_pd.h"
+#include "driver/usb_mux/it5205.h"
+#include "driver/usb_mux/ps8743.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -217,6 +219,18 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 
 /* USB Mux */
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.usb_port = 0,
+		.i2c_port = I2C_PORT_USB_MUX0,
+		.i2c_addr_flags = IT5205_I2C_ADDR1_FLAGS,
+		.driver = &it5205_usb_mux_driver,
+	},
+	{
+		.usb_port = 1,
+		.i2c_port = I2C_PORT_USB_MUX1,
+		.i2c_addr_flags = PS8743_I2C_ADDR0_FLAG,
+		.driver = &ps8743_usb_mux_driver,
+	},
 };
 
 uint16_t tcpc_get_alert_status(void)
