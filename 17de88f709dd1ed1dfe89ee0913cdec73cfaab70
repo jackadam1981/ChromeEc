@@ -16,6 +16,24 @@
       "revId": "17de88f709dd1ed1dfe89ee0913cdec73cfaab70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cddd9c74_0609ea65",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-27T19:05:42Z",
+      "side": 1,
+      "message": "This pertains to all of the mask registers...\n\nThis register shall be initialized per Table 4-1 upon power on or Hard Reset",
+      "parentUuid": "1e2eaa32_2c956f81",
+      "revId": "17de88f709dd1ed1dfe89ee0913cdec73cfaab70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
