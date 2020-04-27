@@ -59,6 +59,14 @@ stm32_dma_chan_t *dma_get_channel(enum dma_channel channel)
 	return &dma->chan[channel % STM32_DMAC_PER_CTLR];
 }
 
+#if defined(CHIP_FAMILY_STM32G4)
+void dma_select_channel(enum dma_channel channel, uint8_t req)
+{
+	uint32_t reg_address = STM32_DMAMUX_BASE + 4 * channel;
+	STM32_DMAMUX_CxCR(channel) = req;
+	CPRINTF("dmamux address = 0x%x, reg = %dn", reg_address, req);
+}
+#else
 #ifdef STM32_DMA_CSELR
 void dma_select_channel(enum dma_channel channel, unsigned char stream)
 {
@@ -74,6 +82,7 @@ void dma_select_channel(enum dma_channel channel, unsigned char stream)
 	STM32_DMA_CSELR(channel) = val | (stream << ch * shift);
 }
 #endif
+#endif /* CHIP_FAMILY_STM32G4 */
 
 void dma_disable(enum dma_channel channel)
 {
@@ -233,6 +242,9 @@ void dma_init(void)
 {
 #if defined(CHIP_FAMILY_STM32L4)
 	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN|STM32_RCC_AHB1ENR_DMA2EN;
+#elif defined(CHIP_FAMILY_STM32G4)
+	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN|STM32_RCC_AHB1ENR_DMA2EN |
+		STM32_RCC_AHB1ENR_DMAMUXEN;
 #else
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;
 #endif
