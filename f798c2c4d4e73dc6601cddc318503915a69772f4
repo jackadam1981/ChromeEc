@@ -46,6 +46,30 @@
       "revId": "f798c2c4d4e73dc6601cddc318503915a69772f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6149a15a_798d8712",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4007,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-27T22:38:18Z",
+      "side": 1,
+      "message": "Actually, it looks like there\u0027s a flag most other AMS\u0027s use to set this on exit from ready.  I\u0027ll update to use that flag like the other sequences.",
+      "parentUuid": "4870a99c_eb9f6d68",
+      "range": {
+        "startLine": 4007,
+        "startChar": 2,
+        "endLine": 4007,
+        "endChar": 15
+      },
+      "revId": "f798c2c4d4e73dc6601cddc318503915a69772f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
