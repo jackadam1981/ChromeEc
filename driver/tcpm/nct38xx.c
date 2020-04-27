@@ -100,6 +100,27 @@ static int nct38xx_tcpm_init(int port)
 	return nct38xx_init(port);
 }
 
+static int nct38xx_tcpm_hard_reset_init(int port)
+{
+	int rv;
+
+	rv = tcpci_tcpm_hard_reset_init(port);
+	if (rv)
+		return rv;
+
+	/*
+	 * Enable the Vendor Define alert event only when the IO expander
+	 * feature is defined
+	 */
+	if (IS_ENABLED(CONFIG_IO_EXPANDER_NCT38XX))
+		rv = tcpc_update16(port,
+				   TCPC_REG_ALERT_MASK,
+				   TCPC_REG_ALERT_VENDOR_DEF,
+				   MASK_SET);
+
+	return rv;
+}
+
 static void nct38xx_tcpc_alert(int port)
 {
 	int alert, rv;
@@ -168,6 +189,7 @@ static int nct3807_handle_fault(int port, int fault)
 
 const struct tcpm_drv nct38xx_tcpm_drv = {
 	.init			= &nct38xx_tcpm_init,
+	.hard_reset_init	= &nct38xx_tcpm_hard_reset_init,
 	.release		= &tcpci_tcpm_release,
 	.get_cc			= &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
