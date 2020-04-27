@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5141fced_fc7929d9",
+        "filename": "util/iteflash.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-27T16:19:43Z",
+      "side": 1,
+      "message": "Please put the specific condition for EFLASH_TYPE_KGD, and add some handling code for other cases.",
+      "range": {
+        "startLine": 573,
+        "startChar": 1,
+        "endLine": 573,
+        "endChar": 9
+      },
+      "revId": "0bbe41da54899b39c1d6aeaa2d18151427add98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4cd0932d_fbacfdca",
         "filename": "util/iteflash.c",
         "patchSetId": 31
@@ -46,6 +69,76 @@
       "revId": "0bbe41da54899b39c1d6aeaa2d18151427add98a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71cd8d68_28aa8a85",
+        "filename": "util/iteflash.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-27T16:19:43Z",
+      "side": 1,
+      "message": "If so, can we have -1 or 0 instead, so that the code fails somewhere if ver happens to be \u00270xA0\u0027 falsely?",
+      "parentUuid": "9c372078_8d3911bc",
+      "range": {
+        "startLine": 587,
+        "startChar": 44,
+        "endLine": 587,
+        "endChar": 47
+      },
+      "revId": "0bbe41da54899b39c1d6aeaa2d18151427add98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96b0e13_1da6c2cc",
+        "filename": "util/iteflash.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-27T16:19:43Z",
+      "side": 1,
+      "message": "How about replacing this with \"} else if (eflash_type \u003d\u003d EFLASH_TYPE_8315) {\"? Or how about converting line 2291~2297 into switch statement, and handle all other cases as error.",
+      "range": {
+        "startLine": 2294,
+        "startChar": 1,
+        "endLine": 2294,
+        "endChar": 9
+      },
+      "revId": "0bbe41da54899b39c1d6aeaa2d18151427add98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21967f23_757d7c90",
+        "filename": "util/iteflash.c",
+        "patchSetId": 31
+      },
+      "lineNbr": 2315,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-27T16:19:43Z",
+      "side": 1,
+      "message": "Likewise,how about converting this into switch statement?",
+      "range": {
+        "startLine": 2315,
+        "startChar": 3,
+        "endLine": 2315,
+        "endChar": 11
+      },
+      "revId": "0bbe41da54899b39c1d6aeaa2d18151427add98a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
