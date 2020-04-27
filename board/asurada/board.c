@@ -11,8 +11,8 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
-#include "chip/it83xx/intc.h"
 #include "driver/charger/isl923x.h"
+#include "driver/tcpm/it83xx_pd.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -27,6 +27,11 @@
 #include "tablet_mode.h"
 #include "timer.h"
 #include "uart.h"
+#include "usb_mux.h"
+#include "usb_pd_tcpm.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #include "gpio_list.h"
 
@@ -134,9 +139,65 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+/* TCPC */
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it83xx_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
+	},
+	{
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		/* TCPC is embedded within EC so no i2c config needed */
+		.drv = &it83xx_tcpm_drv,
+		/* Alert is active-low, push-pull */
+		.flags = 0,
+	},
+};
+
+/* USB Mux */
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+};
+
+uint16_t tcpc_get_alert_status(void)
+{
+	/*
+	 * C0 & C1: TCPC is embedded in the EC and processes interrupts in the
+	 * chip code (it83xx/intc.c)
+	 */
+	return 0;
+}
+
+void board_reset_pd_mcu(void)
+{
+	/*
+	 * C0 & C1: TCPC is embedded in the EC and processes interrupts in the
+	 * chip code (it83xx/intc.c)
+	 */
+	return;
+}
+
 int board_get_version(void)
 {
 	return 0;
+}
+
+int board_set_active_charge_port(int charge_port)
+{
+	CPRINTS("New chg p%d", charge_port);
+
+	return 0;
+}
+
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+}
+
+void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
+{
 }
 
 /* Sub-board */
@@ -149,10 +210,17 @@ static enum board_sub_board board_get_sub_board(void)
 		return sub;
 
 	/* HDMI board has external pull high. */
-	if (gpio_get_level(GPIO_EC_X_GPIO3))
+	if (gpio_get_level(GPIO_EC_X_GPIO3)) {
 		sub = SUB_BOARD_HDMI;
-	else
+	} else {
 		sub = SUB_BOARD_TYPEC;
+		/* EC_X_GPIO1 */
+		gpio_set_flags(GPIO_USB_C1_FRS_EN, GPIO_OUT_LOW);
+		/* X_EC_GPIO2 */
+		gpio_set_flags(GPIO_USB_C1_PPC_INT_ODL, GPIO_INT_BOTH);
+		/* EC_X_GPIO3 */
+		gpio_set_flags(GPIO_USB_C1_DP_IN_HPD, GPIO_ODR_LOW);
+	}
 
 	CPRINTS("%s SUB", sub == SUB_BOARD_HDMI ? "HDMI" : "TYPEC");
 	return sub;
@@ -163,4 +231,12 @@ static void sub_board_init(void)
 	board_get_sub_board();
 }
 DECLARE_HOOK(HOOK_INIT, sub_board_init, HOOK_PRIO_INIT_I2C - 1);
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	if (board_get_sub_board() == SUB_BOARD_TYPEC)
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+	else
+		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+}
 
