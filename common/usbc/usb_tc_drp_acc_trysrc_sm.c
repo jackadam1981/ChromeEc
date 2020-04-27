@@ -68,18 +68,20 @@
 #define TC_FLAGS_PARTNER_PD_CAPABLE     BIT(15)
 /* Flag to note hard reset has been triggered */
 #define TC_FLAGS_HARD_RESET             BIT(16)
+/* Flag to note we are currently performing hard reset */
+#define TC_FLAGS_HARD_RESET_IN_PROGRESS BIT(17)
 /* Flag to note port partner is USB comms capable */
-#define TC_FLAGS_PARTNER_USB_COMM       BIT(17)
+#define TC_FLAGS_PARTNER_USB_COMM       BIT(18)
 /* Flag to note we are currently performing PR Swap */
-#define TC_FLAGS_PR_SWAP_IN_PROGRESS    BIT(18)
+#define TC_FLAGS_PR_SWAP_IN_PROGRESS    BIT(19)
 /* Flag to note we need to perform PR Swap */
-#define TC_FLAGS_DO_PR_SWAP             BIT(19)
+#define TC_FLAGS_DO_PR_SWAP             BIT(20)
 /* Flag to note we are performing Discover Identity */
-#define TC_FLAGS_DISC_IDENT_IN_PROGRESS BIT(20)
+#define TC_FLAGS_DISC_IDENT_IN_PROGRESS BIT(21)
 /* Flag to note we should check for connection */
-#define TC_FLAGS_CHECK_CONNECTION       BIT(21)
+#define TC_FLAGS_CHECK_CONNECTION       BIT(22)
 /* Flag to note pd_set_suspend SUSPEND state */
-#define TC_FLAGS_SUSPEND                BIT(22)
+#define TC_FLAGS_SUSPEND                BIT(23)
 
 /*
  * Clear all flags except TC_FLAGS_LPM_ENGAGED and TC_FLAGS_SUSPEND.
@@ -622,11 +624,37 @@ void tc_prs_snk_src_assert_rp(int port)
 	}
 }
 
+/****************************************************************************
+ * Hard reset communication to the TypeC state machine
+ *
+ * USB TCPCI Spec R2V1p1
+ * 4.4.5.4.4 Discharge by the Sink TCPC during a Connection (Optional
+ * Normative)
+ * While there is a valid Source-to-Sink connection, the TCPC acting as a
+ * Sink shall reduce its current to less than iSnkSwapStdby within
+ * tSnkSwapStby (USB PD) when handling a Power Role Swap or Hard Reset. The
+ * TCPM shall write POWER_CONTROL.AutoDischargeDisconnect to 0 or
+ * VBUS_SINK_DISCONNECT_THRESHOLD to 0 and COMMAND.DisableSinkVbus to
+ * disable the Sink disconnect detection and remove the Sink connection upon
+ * reception of or prior to transmitting a Power Role Swap or Hard Reset.
+ */
 void tc_hard_reset(int port)
 {
+	tcpm_enable_auto_discharge_disconnect(port, 0);
+
 	TC_SET_FLAG(port, TC_FLAGS_HARD_RESET);
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
+
+void tc_hard_reset_complete(int port)
+{
+	tcpm_enable_auto_discharge_disconnect(port, 1);
+
+	TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET);
+	TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET_IN_PROGRESS);
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
+}
+/****************************************************************************/
 
 void tc_disc_ident_in_progress(int port)
 {
@@ -1821,8 +1849,15 @@ static void tc_attached_snk_run(const int port)
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET)) {
 		TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET);
+		TC_SET_FLAG(port, TC_FLAGS_HARD_RESET_IN_PROGRESS);
 		tc_perform_snk_hard_reset(port);
 	}
+
+	/*
+	 * HARD RESET in progress, don't disconnect
+	 */
+	if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET_IN_PROGRESS))
+		return;
 
 	/*
 	 * The sink will be powered off during a power role swap but we don't
@@ -2173,8 +2208,15 @@ static void tc_dbg_acc_snk_run(const int port)
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET)) {
 		TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET);
+		TC_SET_FLAG(port, TC_FLAGS_HARD_RESET_IN_PROGRESS);
 		tc_perform_snk_hard_reset(port);
 	}
+
+	/*
+	 * HARD RESET in progress, don't disconnect
+	 */
+	if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET_IN_PROGRESS))
+		return;
 
 	/*
 	 * The sink will be powered off during a power role swap but we

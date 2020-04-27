@@ -2205,6 +2205,9 @@ static void pe_snk_evaluate_capability_entry(int port)
 	/* Reset Hard Reset counter to zero */
 	pe[port].hard_reset_counter = 0;
 
+	/* Inform the TC Layer the Hard Reset is complete */
+	tc_hard_reset_complete(port);
+
 	/* Set to highest revision supported by both ports. */
 	prl_set_rev(port, TCPC_TX_SOP,
 			MIN(PD_REVISION, PD_HEADER_REV(rx_emsg[port].header)));
