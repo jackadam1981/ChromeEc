@@ -4003,6 +4003,8 @@ static void pe_vdm_send_request_entry(int port)
 {
 	/* All VDM sequences are Interruptible */
 	PE_SET_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
+	if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT))
+		prl_start_ams(port);
 
 	pe[port].vdm_response_timer = TIMER_DISABLED;
 }
