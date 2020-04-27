@@ -377,6 +377,12 @@ static inline int rt946x_enable_wdt(int chgnum, int en)
 		(chgnum, RT946X_REG_CHGCTRL13, RT946X_MASK_WDT_EN);
 }
 
+static inline int rt946x_enable_OCP(int chgnum, int en)
+{
+	return (en ? rt946x_set_bit : rt946x_clr_bit)
+		(chgnum, RT946X_REG_CHGCTRL13, RT946X_MASK_OCP);
+}
+
 /* Enable high-impedance mode */
 static inline int rt946x_enable_hz(int chgnum, int en)
 {
@@ -613,6 +619,11 @@ static int rt946x_init_setting(int chgnum)
 		return rv;
 	/* Disable WDT */
 	rv = rt946x_enable_wdt(chgnum, 0);
+	if (rv)
+		return rv;
+
+	/* 8A OCP */
+	rv = rt946x_enable_OCP(chgnum, 1);
 	if (rv)
 		return rv;
 	/* Disable battery thermal protection */

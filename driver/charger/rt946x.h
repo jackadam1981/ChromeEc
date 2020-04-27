@@ -373,8 +373,12 @@
 
 /* ========== CHGCTRL13 0x0D ============ */
 #define RT946X_SHIFT_WDT_EN	7
+#define RT946X_SHIFT_OCP	2
+
 
 #define RT946X_MASK_WDT_EN	BIT(RT946X_SHIFT_WDT_EN)
+#define RT946X_MASK_OCP 	BIT(RT946X_SHIFT_OCP)
+
 
 /* ========== CHGCTRL14 0x0E ============ */
 #define RT946X_SHIFT_AICLMEAS	7
