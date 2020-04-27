@@ -232,3 +232,45 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
 }
+
+/* Sub-board */
+
+static enum board_sub_board board_get_sub_board(void)
+{
+	static enum board_sub_board sub = SUB_BOARD_NONE;
+
+	if (sub != SUB_BOARD_NONE)
+		return sub;
+
+	/* HDMI board has external pull high. */
+	if (gpio_get_level(GPIO_EC_X_GPIO3)) {
+		sub = SUB_BOARD_HDMI;
+		/* TODO(b:154565980): config for hdmi sub board. */
+	} else {
+		sub = SUB_BOARD_TYPEC;
+		/* EC_X_GPIO1 */
+		gpio_set_flags(GPIO_USB_C1_FRS_EN, GPIO_OUT_LOW);
+		/* X_EC_GPIO2 */
+		gpio_set_flags(GPIO_USB_C1_PPC_INT_ODL, GPIO_INT_BOTH);
+		/* EC_X_GPIO3 */
+		gpio_set_flags(GPIO_USB_C1_DP_IN_HPD, GPIO_ODR_LOW);
+	}
+
+	CPRINTS("%s SUB", sub == SUB_BOARD_HDMI ? "HDMI" : "TYPEC");
+	return sub;
+}
+
+static void sub_board_init(void)
+{
+	board_get_sub_board();
+}
+DECLARE_HOOK(HOOK_INIT, sub_board_init, HOOK_PRIO_INIT_I2C - 1);
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	if (board_get_sub_board() == SUB_BOARD_TYPEC)
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+	else
+		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+}
+
