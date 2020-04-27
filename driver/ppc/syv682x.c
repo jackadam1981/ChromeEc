@@ -173,6 +173,7 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 	int regval;
 	int rv;
 
+	CPRINTS("C%d %s(0x%x)", port, __func__, enable);
 	if (!enable && syv682x_is_sourcing_vbus(port)) {
 		/*
 		 * We're currently a source, so nothing more to do
@@ -250,6 +251,7 @@ static int syv682x_vbus_source_enable(int port, int enable)
 	 * For source mode need to make sure 5V power path is connected
 	 * and source mode is selected.
 	 */
+	CPRINTS("C%d %s(0x%x)", port, __func__, enable);
 	rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval);
 	if (rv)
 		return rv;
@@ -301,6 +303,7 @@ static int syv682x_set_vbus_source_current_limit(int port,
 	int limit;
 	int regval;
 
+	CPRINTS("C%d %s(0x%x)", port, __func__, rp);
 	rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval);
 	if (rv)
 		return rv;
@@ -330,6 +333,7 @@ static int syv682x_set_vbus_source_current_limit(int port,
 #ifdef CONFIG_USBC_PPC_POLARITY
 static int syv682x_set_polarity(int port, int polarity)
 {
+	CPRINTS("C%d %s(0x%x)", port, __func__, polarity);
 	/*
 	 * The SYV682x does not explicitly set CC polarity. However, if VCONN is
 	 * being used then the polarity is required to connect 5V to the correct
@@ -353,6 +357,7 @@ static int syv682x_set_vconn(int port, int enable)
 	int regval;
 	int rv;
 
+	CPRINTS("C%d %s(0x%x)", port, __func__, enable);
 	rv = read_reg(port, SYV682X_CONTROL_4_REG, &regval);
 	if (rv)
 		return rv;
@@ -519,6 +524,7 @@ static int syv682x_init(int port)
 		 * PPC is not configured as a sink or there is no VBUS present.
 		 * It's safe to perform a full register reset.
 		 */
+		CPRINTS("C%d %s not sink", port, __func__);
 		rv = syv682x_reset(port);
 		if (rv)
 			return rv;
@@ -532,6 +538,7 @@ static int syv682x_init(int port)
 		if (rv)
 			return rv;
 	} else {
+		CPRINTS("C%d %s sink", port, __func__);
 		/* Dead battery mode, or an existing PD contract is in place */
 		rv = syv682x_vbus_sink_enable(port, 1);
 		if (rv)
