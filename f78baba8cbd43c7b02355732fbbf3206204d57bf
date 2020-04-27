@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c85c706_d6b71e2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-27T17:14:59Z",
+      "side": 1,
+      "message": "nit: let\u0027s change to enabled GPIO alternate mode by default for pin into gpio.inc marked as MODULE_ADC",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 67
+      },
+      "revId": "f78baba8cbd43c7b02355732fbbf3206204d57bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
