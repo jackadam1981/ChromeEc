@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a00604a_134548f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-28T02:44:26Z",
+      "side": 1,
+      "message": "Has this helped with the issues you\u0027ve been seeing, or is this just to try aligning more closely to the TCPC spec while debugging?",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "57cdcdede79cfbd603bbcd8288e3dd1f9b8dd951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc3468f9_cc613c9c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-28T02:44:26Z",
+      "side": 1,
+      "message": "Also needed in the source hard reset?",
+      "range": {
+        "startLine": 881,
+        "startChar": 1,
+        "endLine": 882,
+        "endChar": 27
+      },
+      "revId": "57cdcdede79cfbd603bbcd8288e3dd1f9b8dd951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c89c5a2_d3ce1da8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-28T02:44:26Z",
+      "side": 1,
+      "message": "Reading the TCPC spec and searching for \"hard reset\", I see where this is coming from.  Include a quote from it to enlighten future readers too :)",
+      "range": {
+        "startLine": 1244,
+        "startChar": 0,
+        "endLine": 1253,
+        "endChar": 1
+      },
+      "revId": "57cdcdede79cfbd603bbcd8288e3dd1f9b8dd951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
