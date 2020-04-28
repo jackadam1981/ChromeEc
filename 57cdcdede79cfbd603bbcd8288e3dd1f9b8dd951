@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce4c9689_72237547",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-28T03:18:46Z",
+      "side": 1,
+      "message": "My current issue deals with HardReset and ACOK not being asserted to the charger.  Because HardReset was setting the TCPCI Mask registers back to the TCPCI defaults, the IO Expander alert was no longer connected.  The change didn\u0027t help with my charging issue but was a bug for trembyle.",
+      "parentUuid": "2a00604a_134548f1",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "57cdcdede79cfbd603bbcd8288e3dd1f9b8dd951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc3468f9_cc613c9c",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ef368beb_e346abf9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-28T03:18:46Z",
+      "side": 1,
+      "message": "I have no idea.  Probably since the USB will have HardReset sent across it.  I will add it.",
+      "parentUuid": "cc3468f9_cc613c9c",
+      "range": {
+        "startLine": 881,
+        "startChar": 1,
+        "endLine": 882,
+        "endChar": 27
+      },
+      "revId": "57cdcdede79cfbd603bbcd8288e3dd1f9b8dd951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c89c5a2_d3ce1da8",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "57cdcdede79cfbd603bbcd8288e3dd1f9b8dd951",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d874fb_d7f96942",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-28T03:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c89c5a2_d3ce1da8",
+      "range": {
+        "startLine": 1244,
+        "startChar": 0,
+        "endLine": 1253,
+        "endChar": 1
+      },
+      "revId": "57cdcdede79cfbd603bbcd8288e3dd1f9b8dd951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
