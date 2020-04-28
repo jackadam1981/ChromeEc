@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e85bb608_0f8849e1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-28T15:42:03Z",
+      "side": 1,
+      "message": "can we add a note (probalby in the function header) that pe_attempt_port_discovery should only be called from SRC or SNK ready, and that returning to SRC or SNK ready will clear any AMS flag",
+      "range": {
+        "startLine": 1148,
+        "startChar": 42,
+        "endLine": 1149,
+        "endChar": 3
+      },
+      "revId": "6dd8dc9a786b1879906527a5202137a2eb5b51a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
