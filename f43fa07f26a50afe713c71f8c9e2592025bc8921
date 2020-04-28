@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "84177320_7ef49380",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-04-28T06:38:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd6bfaa_bc1fa361",
+      "range": {
+        "startLine": 169,
+        "startChar": 7,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "462b4d86_70796a7d",
         "filename": "baseboard/octopus/baseboard.c",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "OK, It should be a timeout.",
       "parentUuid": "43b5ed89_40db8bf6",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 4
+      },
+      "revId": "f43fa07f26a50afe713c71f8c9e2592025bc8921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c133a58_03560e54",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-04-28T06:38:03Z",
+      "side": 1,
+      "message": "I prefer no timeout here.\nWe should always be able to get the status of SLP_S4 goes low after asserting RSMRST, or wait for watchdog triggered to check why SLP_S4 doesn\u0027t goes low. \nThis will avoid random exception due to turn PP3300_A off directly (the problem we are facing now).",
+      "parentUuid": "ae0dbba6_99da3b84",
       "range": {
         "startLine": 174,
         "startChar": 0,
