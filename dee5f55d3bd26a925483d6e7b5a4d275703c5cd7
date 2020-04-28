@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7dd2dcc_e28e34bc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-04-28T21:52:49Z",
+      "side": 1,
+      "message": "I only see Discover Identity and Enter/Exit Mode listed in 8.3.2 Atomic Message Sequence Diagrams. Should Discover SVIDs and Discover Modes not start AMS?",
+      "range": {
+        "startLine": 1199,
+        "startChar": 3,
+        "endLine": 1199,
+        "endChar": 53
+      },
+      "revId": "dee5f55d3bd26a925483d6e7b5a4d275703c5cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
