@@ -210,13 +210,19 @@ static int command_gpio_set(int argc, char **argv)
 #endif
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(gpioset, command_gpio_set,
+DECLARE_CONSOLE_COMMAND_FLAGS(gpioset, command_gpio_set,
 #ifdef CONFIG_CMD_GPIO_EXTENDED
-			"name <0 | 1 | IN | A | ALT [func]>",
+			      "name <0 | 1 | IN | A | ALT [func]>",
 #else
-			"name <0 | 1>",
+			      "name <0 | 1>",
 #endif
-			"Set a GPIO");
+			      "Set a GPIO",
+#ifdef CONFIG_FP_SENSOR
+			      CMD_FLAG_RESTRICTED
+#else
+			      CONFIG_CONSOLE_COMMAND_FLAGS_DEFAULT
+#endif
+);
 
 /*****************************************************************************/
 /* Host commands */
