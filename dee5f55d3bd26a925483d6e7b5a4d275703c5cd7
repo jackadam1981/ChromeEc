@@ -22,6 +22,30 @@
       "revId": "dee5f55d3bd26a925483d6e7b5a4d275703c5cd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba0db21_a47c0c8a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-28T22:33:22Z",
+      "side": 1,
+      "message": "They should be in Table 8-4 between \"Source startup Cable Plug Discover Identity\" and \"DFP to UFP Enter Mode\"",
+      "parentUuid": "b7dd2dcc_e28e34bc",
+      "range": {
+        "startLine": 1199,
+        "startChar": 3,
+        "endLine": 1199,
+        "endChar": 53
+      },
+      "revId": "dee5f55d3bd26a925483d6e7b5a4d275703c5cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
