@@ -22,6 +22,30 @@
       "revId": "6dd8dc9a786b1879906527a5202137a2eb5b51a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d1817ee_5c9aa691",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-28T16:13:04Z",
+      "side": 1,
+      "message": "Function header covers the SRC/SNK ready requirements, but I can add information about the AMS flag",
+      "parentUuid": "e85bb608_0f8849e1",
+      "range": {
+        "startLine": 1148,
+        "startChar": 42,
+        "endLine": 1149,
+        "endChar": 3
+      },
+      "revId": "6dd8dc9a786b1879906527a5202137a2eb5b51a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
