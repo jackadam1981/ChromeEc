@@ -350,7 +350,7 @@ static void adc_init(void)
 		ch = adc_channels[index].channel;
 
 		/* enable adc channel[x] function pin */
-		*adc_ctrl_regs[ch].adc_pin_ctrl = 0x00;
+		*adc_ctrl_regs[ch].adc_pin_ctrl = 0x02;
 	}
 	/*
 	 * bit7@ADCSTS     : ADCCTS1 = 0
