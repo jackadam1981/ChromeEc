@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93811fc9_d0afe754",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4972,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-28T15:32:14Z",
+      "side": 1,
+      "message": "can we make this a first-class constant or at least add a comment why we are waiting this amount of time",
+      "range": {
+        "startLine": 4972,
+        "startChar": 39,
+        "endLine": 4972,
+        "endChar": 47
+      },
+      "revId": "4ac5b6cdecb05f6c67265d189b31f245e6cf8499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
