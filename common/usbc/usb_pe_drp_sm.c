@@ -4178,6 +4178,15 @@ static void pe_vdm_identity_request_cbl_run(int port)
 
 static void pe_vdm_identity_request_cbl_exit(int port)
 {
+	/*
+	 * If partner sent GoodCRC but didn't respond, try down-reving to PD 2.0
+	 * Some PD 2.0 cables may not correctly reply to PD 3.0 discovery.
+	 */
+	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT)) {
+		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT);
+		prl_set_rev(port, TCPC_TX_SOP_PRIME, PD_REV20);
+	}
+
 	if (pe[port].discover_port_identity_counter >=
 						N_DISCOVER_IDENTITY_COUNT)
 		pe[port].cable.discovery = PD_DISC_FAIL;
