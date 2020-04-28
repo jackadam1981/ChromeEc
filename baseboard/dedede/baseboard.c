@@ -94,6 +94,8 @@ __override void board_after_rsmrst(int rsmrst)
 	flags |= GPIO_INT_BOTH;
 
 	gpio_set_flags(GPIO_PG_PP1050_ST_OD, flags);
+	if (!rsmrst)
+		gpio_set_level(GPIO_PCH_DSW_PWROK, 0);
 }
 
 /*
