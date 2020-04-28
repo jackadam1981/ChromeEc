@@ -466,7 +466,7 @@ void clock_cpu_standby(void)
 			 */
 			interrupt_enable();
 
-		asm("wfi");
+		asm("nop");
 	}
 }
 
