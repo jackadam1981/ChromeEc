@@ -500,6 +500,30 @@
     },
     {
       "key": {
+        "uuid": "7811ad59_06f4c86a",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-28T20:14:48Z",
+      "side": 1,
+      "message": "I\u0027m no controls expert either (I never even took a controls theory course). It kind of make sense to me though? If the set point is causing an error over the target, wouldn\u0027t you want to reduce the set point to drive the error back down towards the target? I think there\u0027s also a bit of lag between setting our set point and learning what the current actually is.\n\nI think without it, you might end up with some constant error. But, I could also be completely wrong.",
+      "parentUuid": "2cd7f0a9_7203c931",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d192e6e_9420ddd6",
         "filename": "common/ocpc.c",
         "patchSetId": 3

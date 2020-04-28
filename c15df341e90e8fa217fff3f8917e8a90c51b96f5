@@ -22,6 +22,30 @@
       "revId": "c15df341e90e8fa217fff3f8917e8a90c51b96f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f259d26_57fb91e2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-28T20:14:48Z",
+      "side": 1,
+      "message": "I would think that board_set_active_charge_port() would handle this. I don\u0027t expect the charger ICs to switch if their input path is turned off.",
+      "parentUuid": "8559cfda_8f58ab84",
+      "range": {
+        "startLine": 1277,
+        "startChar": 0,
+        "endLine": 1280,
+        "endChar": 52
+      },
+      "revId": "c15df341e90e8fa217fff3f8917e8a90c51b96f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
