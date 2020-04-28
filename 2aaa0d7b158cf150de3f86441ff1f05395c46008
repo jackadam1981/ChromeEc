@@ -22,6 +22,30 @@
       "revId": "2aaa0d7b158cf150de3f86441ff1f05395c46008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e35f4a_8c529594",
+        "filename": "board/hatch_fp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-04-28T21:40:45Z",
+      "side": 1,
+      "message": "Is there a plan for dartini and drangonair to follow drangonclaw\u0027s mapping? do we have an ETA on those changes. Also I believe after DVT they will have to leave uart pins NC unless they can connect it to H1",
+      "parentUuid": "fedc5908_b78cbe22",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 74
+      },
+      "revId": "2aaa0d7b158cf150de3f86441ff1f05395c46008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
