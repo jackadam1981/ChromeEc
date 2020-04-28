@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26d4b9a7_74ca5fb7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-28T14:27:48Z",
+      "side": 1,
+      "message": "I\u0027m going to test this via my FAFT_PD setup",
+      "parentUuid": "50087ef1_ad2b3bac",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "a18aba9480421552bfb0221d30c6ad2b96d50fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a82e57e6_74be7ce1",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c0c50ae5_7ab1c2ff",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-28T14:27:48Z",
+      "side": 1,
+      "message": "Yes, I agree with you.",
+      "parentUuid": "a82e57e6_74be7ce1",
+      "range": {
+        "startLine": 765,
+        "startChar": 0,
+        "endLine": 771,
+        "endChar": 4
+      },
+      "revId": "a18aba9480421552bfb0221d30c6ad2b96d50fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94996092_7ed4a302",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-03T22:33:41Z",
       "side": 1,
       "message": "Also no need to address here, but I\u0027ve noticed the READY states don\u0027t process the protocol error flag?",
+      "range": {
+        "startLine": 782,
+        "startChar": 3,
+        "endLine": 784,
+        "endChar": 35
+      },
+      "revId": "a18aba9480421552bfb0221d30c6ad2b96d50fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5171724d_31aa1b76",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-28T14:27:48Z",
+      "side": 1,
+      "message": "Could you open a P2 bug for this and the above issue too?",
+      "parentUuid": "94996092_7ed4a302",
       "range": {
         "startLine": 782,
         "startChar": 3,
