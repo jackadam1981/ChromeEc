@@ -22,6 +22,30 @@
       "revId": "a72c29d7438f4295e1509feb3358a5d15ff67305",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6255253e_47c76c64",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-28T19:30:12Z",
+      "side": 1,
+      "message": "Ok, will replace line 119 of gpio.inc with \nGPIO_INT(MONITOR_I2CS_SDA, PIN(1, 6), GPIO_INT_HIGH, i2cs_sda_isr)\n.",
+      "parentUuid": "3b218f90_89abf407",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 47
+      },
+      "revId": "a72c29d7438f4295e1509feb3358a5d15ff67305",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
