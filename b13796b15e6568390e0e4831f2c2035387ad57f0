@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97354fbf_46f90f7d",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-28T06:08:15Z",
+      "side": 1,
+      "message": "be sure to run make -j buildall, it should have spotted an error line 30.",
+      "revId": "b13796b15e6568390e0e4831f2c2035387ad57f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12dcc464_9557efc9",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-28T06:08:15Z",
+      "side": 1,
+      "message": "should be in config.h\nName is not correct; main would be more appropriate: the sensor used by android must be interrupt driven.",
+      "revId": "b13796b15e6568390e0e4831f2c2035387ad57f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5699268_e3cd4339",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-04-28T06:08:15Z",
+      "side": 1,
+      "message": "If \"CONFIG_ACCEL_LIS2DS_AS_BASE\" is defined, CONFIG_ACCEL_FIFO is implied.",
+      "revId": "b13796b15e6568390e0e4831f2c2035387ad57f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
