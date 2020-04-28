@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ada6c168_dfe9decb",
+        "filename": "baseboard/zork/variant_trembyle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-04-28T19:57:17Z",
+      "side": 1,
+      "message": "This is assuming there\u0027s no collision of addresses and buses, correct? May want to capture the assumption as well as indicate when you want to nuke this code.",
+      "revId": "df48fc7a0f99c3520b8300a485d51cede7128897",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
