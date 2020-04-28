@@ -161,6 +161,9 @@ static int command_gpio_set(int argc, char **argv)
 	int af = -1;
 	char *e;
 
+	if (system_is_locked())
+		return EC_ERROR_ACCESS_DENIED;
+
 	if (argc < 3)
 		return EC_ERROR_PARAM_COUNT;
 
@@ -197,6 +200,9 @@ static int command_gpio_set(int argc, char **argv)
 #else
 	char *e;
 	int v;
+
+	if (system_is_locked())
+		return EC_ERROR_ACCESS_DENIED;
 
 	if (argc < 3)
 		return EC_ERROR_PARAM_COUNT;
