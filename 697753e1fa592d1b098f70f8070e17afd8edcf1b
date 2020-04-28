@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2db5432d_f9af0a28",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-28T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7bb9938_a1fe01c2",
+      "range": {
+        "startLine": 1017,
+        "startChar": 5,
+        "endLine": 1017,
+        "endChar": 19
+      },
+      "revId": "697753e1fa592d1b098f70f8070e17afd8edcf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "157a08bb_404e6604",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "b46edebd_3d3ee702",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-28T20:21:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "157a08bb_404e6604",
+      "range": {
+        "startLine": 1569,
+        "startChar": 6,
+        "endLine": 1569,
+        "endChar": 21
+      },
+      "revId": "697753e1fa592d1b098f70f8070e17afd8edcf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d0904a6_5a047318",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-28T20:21:05Z",
+      "side": 1,
+      "message": "I think it depends on the port partner whether they send pings or not.",
+      "parentUuid": "2962f1fa_e3ad5ccb",
+      "range": {
+        "startLine": 1569,
+        "startChar": 33,
+        "endLine": 1569,
+        "endChar": 45
+      },
+      "revId": "697753e1fa592d1b098f70f8070e17afd8edcf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30668198_ace109db",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "697753e1fa592d1b098f70f8070e17afd8edcf1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c4c1f4_b09a1259",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-04-28T20:21:05Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "30668198_ace109db",
+      "range": {
+        "startLine": 1574,
+        "startChar": 2,
+        "endLine": 1575,
+        "endChar": 55
+      },
+      "revId": "697753e1fa592d1b098f70f8070e17afd8edcf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
