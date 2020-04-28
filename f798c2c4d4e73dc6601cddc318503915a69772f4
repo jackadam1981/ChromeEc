@@ -70,6 +70,30 @@
       "revId": "f798c2c4d4e73dc6601cddc318503915a69772f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2f1d962_a5e591a9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4007,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-28T02:03:52Z",
+      "side": 1,
+      "message": "Okay, now taking advantage of the ready exit method of handling this.  Any lingering concerns about AMS ending?",
+      "parentUuid": "6149a15a_798d8712",
+      "range": {
+        "startLine": 4007,
+        "startChar": 2,
+        "endLine": 4007,
+        "endChar": 15
+      },
+      "revId": "f798c2c4d4e73dc6601cddc318503915a69772f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
