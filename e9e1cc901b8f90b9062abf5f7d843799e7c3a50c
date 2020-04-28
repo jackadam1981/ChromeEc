@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6ad7142_9a1f2cfd",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-28T23:55:58Z",
+      "side": 1,
+      "message": "It doesn\u0027t match the above comment. It now shows at debug level 1.",
+      "range": {
+        "startLine": 1589,
+        "startChar": 25,
+        "endLine": 1589,
+        "endChar": 38
+      },
+      "revId": "e9e1cc901b8f90b9062abf5f7d843799e7c3a50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c94e07b_1d9057c7",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-28T23:55:58Z",
+      "side": 1,
+      "message": "I meant to add DEBUG_LEVEL_MAX as extra and still keep DEBUG_LEVEL_3, like\n\n        ...\n        DEBUG_LEVEL_3,\n        DEBUG_LEVEL_MAX \u003d DEBUG_LEVEL_3,\n}",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 16
+      },
+      "revId": "e9e1cc901b8f90b9062abf5f7d843799e7c3a50c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
