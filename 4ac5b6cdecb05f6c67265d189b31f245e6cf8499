@@ -22,6 +22,30 @@
       "revId": "4ac5b6cdecb05f6c67265d189b31f245e6cf8499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1327c1b_5bac8d99",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4972,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-28T16:11:26Z",
+      "side": 1,
+      "message": "To be honest, I\u0027m not sure why this value was picked?  We don\u0027t start the sender response timer until after we get a GoodCRC (below).  If we don\u0027t get a GoodCRC, we should hit a protocol error (processed below).  \n\nSo we can probably remove this timeout, and just go with the sender response timer?  And then as long as I\u0027m heading down the spec rabbit hole, we\u0027ll need to add support to the soft reset state to do the proper error handling there on sender response timeout since UFP and DFP have different requirements there... hop hop hop ...",
+      "parentUuid": "93811fc9_d0afe754",
+      "range": {
+        "startLine": 4972,
+        "startChar": 39,
+        "endLine": 4972,
+        "endChar": 47
+      },
+      "revId": "4ac5b6cdecb05f6c67265d189b31f245e6cf8499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
