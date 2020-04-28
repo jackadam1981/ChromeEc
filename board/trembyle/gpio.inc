@@ -38,7 +38,7 @@ GPIO(EN_PWR_A,			PIN(B, 7), GPIO_OUT_LOW)			/* Enable Power */
 GPIO(EC_EDP_BL_DISABLE,		PIN(A, 2), GPIO_OUT_HIGH)			/* Enable Backlight */
 GPIO(EC_ENTERING_RW,		PIN(E, 5), GPIO_OUT_LOW)			/* EC Entering RW */
 GPIO(EC_FCH_PWR_BTN_L,		PIN(6, 2), GPIO_OUT_HIGH)			/* Power Button to SOC */
-GPIO(EC_FCH_PWR_BTN_L_V0,	PIN(8, 6), GPIO_OUT_HIGH)			/* Power Button to SOC */
+GPIO(EC_FCH_PWR_BTN_L_V0,	PIN(6, 7), GPIO_OUT_HIGH)			/* Power Button to SOC */
 GPIO(EC_FCH_RSMRST_L,		PIN(A, 1), GPIO_OUT_LOW)			/* RSMRST# to SOC */
 GPIO(EC_FCH_PWROK,		PIN(D, 3), GPIO_OUT_LOW)			/* Power OK to SOC */
 GPIO(EC_FCH_PWROK_V0,		PIN(7, 5), GPIO_OUT_LOW)			/* Power OK to SOC */
@@ -51,6 +51,7 @@ GPIO(USB_C0_HPD,		PIN(F, 5), GPIO_OUT_LOW)			/* C0 DP Hotplug Detect */
 GPIO(USB_C0_IN_HPD,		PIN(7, 3), GPIO_OUT_LOW)			/* C0 IN Hotplug Detect */
 GPIO(DP1_HPD,			PIN(F, 4), GPIO_OUT_LOW)			/* C1 DP Hotplug Detect */
 GPIO(DP2_HPD,			PIN(C, 1), GPIO_OUT_LOW)			/* C1 DP Hotplug Detect */
+GPIO(PACKET_MODE_EN,		PIN(8, 6), GPIO_OUT_LOW)
 
 UNIMPLEMENTED(PCH_SMI_L)
 
