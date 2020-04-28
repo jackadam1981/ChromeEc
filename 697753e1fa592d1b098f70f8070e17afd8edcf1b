@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8850ea2d_e5ecf91d",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-28T21:52:23Z",
+      "side": 1,
+      "message": "Better to assign DEBUG_LEVEL_MAX \u003d DEBUG_LEVEL_3 in the enum declaration such that we can expand it easily when needed.",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "697753e1fa592d1b098f70f8070e17afd8edcf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b906a77f_22eb3e37",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-28T21:52:23Z",
+      "side": 1,
+      "message": "Just use \u0027debug\u003d%d\\n\u0027 to match with TCPMv1.",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 24
+      },
+      "revId": "697753e1fa592d1b098f70f8070e17afd8edcf1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7bb9938_a1fe01c2",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
