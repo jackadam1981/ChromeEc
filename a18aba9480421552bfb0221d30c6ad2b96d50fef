@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "067dada8_b8228864",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-28T15:58:46Z",
+      "side": 1,
+      "message": "Sounds like a good plan",
+      "parentUuid": "26d4b9a7_74ca5fb7",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "a18aba9480421552bfb0221d30c6ad2b96d50fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a82e57e6_74be7ce1",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Could you open a P2 bug for this and the above issue too?",
       "parentUuid": "94996092_7ed4a302",
+      "range": {
+        "startLine": 782,
+        "startChar": 3,
+        "endLine": 784,
+        "endChar": 35
+      },
+      "revId": "a18aba9480421552bfb0221d30c6ad2b96d50fef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e9dc14c_6e191ad7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-28T15:58:46Z",
+      "side": 1,
+      "message": "Okay, filed two bugs.  I assigned the above \"if\" statement bug to myself because  I think I understand the spec/code interaction there.  I assigned the bug for processing the PROTOCOL_ERROR flag in the ready states to you, since I don\u0027t understand as much about how those errors should be correctly interacting with the PRL AMS flags.",
+      "parentUuid": "5171724d_31aa1b76",
       "range": {
         "startLine": 782,
         "startChar": 3,
