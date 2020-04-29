@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a7ce347_4fe4ea35",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "211c18ff_d4344bac",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16a6b37a_03044455",
         "filename": "chip/ish/aontaskfw/ipapg.S",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "674b57884383d4982358a649e08136edc0bd44c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29511074_956e5916",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "This IPAPG entry and exit code is critical and frequently used, so we use asm and hand optimized it. Although this also can be implemented by C with inline asm but may not easily as optimal as it.",
+      "parentUuid": "16a6b37a_03044455",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 4
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d12b9176_483ebe97",
+        "filename": "chip/ish/aontaskfw/ish_aon_share.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c986b25d_e940852d",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e95eb4b_34dc7d1d",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "674b57884383d4982358a649e08136edc0bd44c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f04ee8e3_90f34748",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "This structure will be accessed outside this file by IPAPG code.",
+      "parentUuid": "9e95eb4b_34dc7d1d",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 28
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "21d153ff_d4af0e7d",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c23af8ac_a6c7523e",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 6
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d66c943_af5b60d3",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "674b57884383d4982358a649e08136edc0bd44c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10c7aadd_809ceb1e",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "tr means task register.",
+      "parentUuid": "1d66c943_af5b60d3",
+      "range": {
+        "startLine": 545,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 38
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "328c9c02_24399a54",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b078f342_6e144760",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 2
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e12fecf_e3dab668",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "674b57884383d4982358a649e08136edc0bd44c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77265035_1d170cad",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "Power control enabled register.",
+      "parentUuid": "3e12fecf_e3dab668",
+      "range": {
+        "startLine": 569,
+        "startChar": 10,
+        "endLine": 569,
+        "endChar": 13
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "f69ff48d_fe295f5f",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "sx means system PM states, such as s0, s3,s4",
+      "parentUuid": "236ef7f3_95b43a78",
+      "range": {
+        "startLine": 570,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 8
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edfd3420_244e7a5f",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 1
@@ -229,6 +445,30 @@
       "revId": "674b57884383d4982358a649e08136edc0bd44c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcd86728_ec228e3b",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "edfd3420_244e7a5f",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 43
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "122ae073_ae6f7cb2",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "NR means number(of)",
+      "parentUuid": "254abbe7_517f569f",
+      "range": {
+        "startLine": 622,
+        "startChar": 8,
+        "endLine": 622,
+        "endChar": 19
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed3ff51e_f5c23064",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 1
@@ -275,6 +539,30 @@
       "revId": "674b57884383d4982358a649e08136edc0bd44c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c58738_068503d3",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "ed3ff51e_f5c23064",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 33
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "f5673810_9da9091b",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "db1681f2_cf815a45",
+      "range": {
+        "startLine": 679,
+        "startChar": 5,
+        "endLine": 679,
+        "endChar": 33
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a333f7f3_059b180d",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 1
@@ -321,6 +633,30 @@
       "revId": "674b57884383d4982358a649e08136edc0bd44c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69342800_678d56cd",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a333f7f3_059b180d",
+      "range": {
+        "startLine": 738,
+        "startChar": 0,
+        "endLine": 739,
+        "endChar": 26
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "67d55951_0de9db4b",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "9e281041_3807fb8b",
+      "range": {
+        "startLine": 967,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 2
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "524de3f0_b6a2453d",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 1
@@ -367,6 +727,30 @@
       "revId": "674b57884383d4982358a649e08136edc0bd44c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23f79fda_5351aea3",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "524de3f0_b6a2453d",
+      "range": {
+        "startLine": 533,
+        "startChar": 1,
+        "endLine": 533,
+        "endChar": 7
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "e6636ac9_f9cc5141",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "967c3ad9_b73dcf1e",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 32
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f9ed7b9_26afd980",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 1
@@ -416,6 +824,30 @@
     },
     {
       "key": {
+        "uuid": "eb97e2d5_ba159df7",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "pg means power gating, it indicats the statistics for IPAPG",
+      "parentUuid": "8f9ed7b9_26afd980",
+      "range": {
+        "startLine": 90,
+        "startChar": 16,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06ce6f7b_b229ea4e",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 1
@@ -436,6 +868,30 @@
       "revId": "674b57884383d4982358a649e08136edc0bd44c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ba358d_5adcd666",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-04-29T09:40:08Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "06ce6f7b_b229ea4e",
+      "range": {
+        "startLine": 633,
+        "startChar": 30,
+        "endLine": 633,
+        "endChar": 31
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
