@@ -215,6 +215,7 @@ enum usb_pe_state {
 	PE_VDM_IDENTITY_REQUEST_CBL,
 	PE_INIT_PORT_VDM_IDENTITY_REQUEST,
 	PE_INIT_VDM_SVIDS_REQUEST,
+	PE_INIT_VDM_MODES_REQUEST,
 	PE_VDM_REQUEST,
 	PE_VDM_ACKED,
 	PE_VDM_RESPONSE,
@@ -287,6 +288,7 @@ static const char * const pe_state_names[] = {
 	[PE_INIT_PORT_VDM_IDENTITY_REQUEST] =
 					   "PE_INIT_PORT_VDM_Identity_Request",
 	[PE_INIT_VDM_SVIDS_REQUEST] = "PE_INIT_VDM_SVIDs_Request",
+	[PE_INIT_VDM_MODES_REQUEST] = "PE_INIT_VDM_Modes_Request",
 	[PE_VDM_REQUEST] = "PE_VDM_Request",
 	[PE_VDM_ACKED] = "PE_VDM_Acked",
 	[PE_VDM_RESPONSE] = "PE_VDM_Response",
@@ -1222,6 +1224,12 @@ static bool pe_attempt_port_discovery(int port)
 				pe_can_send_sop_vdm(port, CMD_DISCOVER_SVID)) {
 			pe[port].tx_type = TCPC_TX_SOP;
 			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
+			return true;
+		} else if (pd_get_modes_discovery(port, TCPC_TX_SOP) ==
+				PD_DISC_NEEDED &&
+				pe_can_send_sop_vdm(port, CMD_DISCOVER_MODES)) {
+			pe[port].tx_type = TCPC_TX_SOP;
+			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
 			return true;
 		/*
 		 * Note: determine if next VDM can be sent by taking advantage
@@ -4517,6 +4525,153 @@ static void pe_init_vdm_svids_request_exit(int port)
 	pe[port].tx_type = TCPC_TX_INVALID;
 }
 
+static void pe_init_vdm_modes_request_entry(int port)
+{
+	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
+	const struct svid_mode_data *mode_data =
+		pd_get_next_mode(port, pe[port].tx_type);
+	uint16_t svid;
+	/*
+	 * The caller should have checked that there was something to discover
+	 * before entering this state.
+	 */
+	assert(mode_data);
+	assert(mode_data->discovery == PD_DISC_NEEDED);
+	svid = mode_data->svid;
+
+	print_current_state(port);
+
+	if (pe[port].tx_type == TCPC_TX_INVALID) {
+		CPRINTS("C%d: TX type expected to be set, returning", port);
+		set_state_pe(port, get_last_state_pe(port));
+		return;
+	}
+	CPRINTF("%s: TX type %d\n", __func__, pe[port].tx_type);
+
+	msg[0] = VDO((uint16_t) svid, 1,
+			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
+			DISCOVER_MODES);
+	tx_emsg[port].len = sizeof(uint32_t);
+
+	prl_send_data_msg(port, pe[port].tx_type, PD_DATA_VENDOR_DEF);
+}
+
+static void pe_init_vdm_modes_request_run(int port)
+{
+	/* Message received */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		uint32_t *payload;
+		int sop;
+		uint8_t type;
+		uint8_t cnt;
+		uint8_t ext;
+		struct svid_mode_data *mode_data =
+			pd_get_next_mode(port, pe[port].tx_type);
+		uint16_t requested_svid;
+
+		assert(mode_data);
+		assert(mode_data->discovery == PD_DISC_NEEDED);
+		requested_svid = mode_data->svid;
+
+
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		CPRINTF("%s: Received a message\n", __func__);
+		/* Retrieve the message information */
+		payload = (uint32_t *)rx_emsg[port].buf;
+		sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+		type = PD_HEADER_TYPE(rx_emsg[port].header);
+		cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		ext = PD_HEADER_EXT(rx_emsg[port].header);
+
+		if (sop == pe[port].tx_type && type == PD_DATA_VENDOR_DEF &&
+							cnt > 0 && ext == 0) {
+			CPRINTF("%s: Valid message, type=%d, cnt=%d\n",
+					__func__, sop, (int)cnt);
+			/* TODO: Check for valid SVID ACK instead */
+			/*
+			 * Valid DiscoverIdentity responses should have at least
+			 * 4 objects (header, ID header, Cert Stat, Product VDO)
+			 */
+			if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_ACK &&
+								cnt > 1) {
+				CPRINTF("%s: ACK\n", __func__);
+				/* PE_INIT_VDM_SVIDs_ACKed embedded here */
+				dfp_consume_modes(port, sop, cnt, payload);
+				/*
+				 * TODO(b:152419850): Fake vdm_cmd for now to
+				 * ensure existing discovery process continues.
+				 */
+				pe[port].vdm_cmd = DISCOVER_MODES;
+			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_NAK) {
+				CPRINTF("%s: NAK\n", __func__);
+				/* PE_INIT_VDM_SVIDs_NAKed embedded here */
+				pd_set_modes_discovery(port, sop,
+						requested_svid, PD_DISC_FAIL);
+			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_BUSY) {
+				/*
+				 * Don't fill in the discovery field so we
+				 * re-probe in tVDMBusy
+				 */
+				CPRINTS("C%d: Cable Busy, Discover SVIDs will "
+						"be re-tried", port);
+				/*
+				 * TODO: Need another timer for backoff. Might
+				 * want to generalize BUSY case to work with
+				 * multiple states.
+				 */
+			} else {
+				/*
+				 * Cable gave us an incorrect size or command,
+				 * mark discovery as failed
+				 */
+				pd_set_modes_discovery(port, sop,
+						requested_svid, PD_DISC_FAIL);
+				CPRINTS("C%d: Unexpected DiscSVID response: "
+						"0x%04x 0x%04x",
+						port, rx_emsg[port].header,
+						payload[0]);
+			}
+			/* TODO: Refactor to eliminate redundancy */
+			/* Return to calling state (PE_{SRC,SNK}_Ready) */
+			set_state_pe(port, get_last_state_pe(port));
+			return;
+		}
+
+		/*
+		 * Unexpected Message Received. Return to PE_[SRC,SNK]_Ready to
+		 * process Reset PE_FLAGS_MSG_RECEIVED so Src.Ready or Snk.Ready
+		 * can handle it.
+		 */
+		PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+		set_state_pe(port, get_last_state_pe(port));
+		return;
+	}
+
+	if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
+		/* No Good CRC */
+		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
+		CPRINTF("%s: Protocol error\n", __func__);
+
+		/* TODO: change comment */
+		/*
+		 * See section 6.4.4.3.1 - Discover Identity
+		 *
+		 * Discover Identity Command request sent to SOP' Shall Not
+		 * cause a Soft Reset if a GoodCRC Message response is not
+		 * returned since this can indicate a non-PD Capable cable
+		 */
+		set_state_pe(port, get_last_state_pe(port));
+		return;
+	}
+}
+
+static void pe_init_vdm_modes_request_exit(int port)
+{
+	/* Invalidate TX type so it must be set before next call */
+	pe[port].tx_type = TCPC_TX_INVALID;
+}
+
 /**
  * PE_VDM_REQUEST
  * TODO(b/150611251): transition other VDMs to use shared parent above
@@ -4693,7 +4848,7 @@ static void pe_vdm_acked_entry(int port)
 			dfp_consume_svids(port, TCPC_TX_SOP, cnt, payload);
 			break;
 		case CMD_DISCOVER_MODES:
-			dfp_consume_modes(port, cnt, payload);
+			dfp_consume_modes(port, TCPC_TX_SOP, cnt, payload);
 			break;
 		case CMD_ENTER_MODE:
 			break;
@@ -5595,6 +5750,12 @@ static const struct usb_state pe_states[] = {
 		.entry	= pe_init_vdm_svids_request_entry,
 		.run	= pe_init_vdm_svids_request_run,
 		.exit   = pe_init_vdm_svids_request_exit,
+		.parent = &pe_states[PE_VDM_SEND_REQUEST],
+	},
+	[PE_INIT_VDM_MODES_REQUEST] = {
+		.entry	= pe_init_vdm_modes_request_entry,
+		.run	= pe_init_vdm_modes_request_run,
+		.exit   = pe_init_vdm_modes_request_exit,
 		.parent = &pe_states[PE_VDM_SEND_REQUEST],
 	},
 	[PE_VDM_REQUEST] = {
