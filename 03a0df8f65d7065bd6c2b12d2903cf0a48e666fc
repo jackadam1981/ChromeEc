@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be70184a_283e7d1a",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-04-29T03:57:04Z",
+      "side": 1,
+      "message": "uint32_t -\u003e bool",
+      "range": {
+        "startLine": 318,
+        "startChar": 7,
+        "endLine": 318,
+        "endChar": 15
+      },
+      "revId": "03a0df8f65d7065bd6c2b12d2903cf0a48e666fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
