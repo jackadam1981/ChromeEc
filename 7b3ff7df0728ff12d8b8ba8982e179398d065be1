@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e05ab625_27cb43eb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2209,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T17:10:09Z",
+      "side": 1,
+      "message": "The line above is clearing the hard_reset_counter... which is the place the PE has determined we are beyond the hard reset retry sequence.  Seems like it is an OK place to say we are good to go.",
+      "parentUuid": "327449b0_a01a3581",
+      "range": {
+        "startLine": 2208,
+        "startChar": 1,
+        "endLine": 2209,
+        "endChar": 30
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c89c57f9_4cb1cfa6",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
