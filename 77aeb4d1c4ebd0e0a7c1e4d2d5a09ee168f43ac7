@@ -105,6 +105,24 @@
       "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b34265c6_7f249f7d",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-29T18:35:03Z",
+      "side": 1,
+      "message": "It is both TCPC_REG_ALERT_TX_SUCCESS and TCPC_REG_ALERT_TX_FAILED together, which apparently is only used to indicate TX_HARD_RST.",
+      "parentUuid": "e0b7658f_38f0c911",
+      "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
