@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "1bb99323_a460df83",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2209,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-29T18:00:55Z",
+      "side": 1,
+      "message": "If we\u0027re aiming to ignore Vbus in the TC until its come back, then we should do this in wait_for_capabilities_entry.  I believe in that state we expect Vbus to be stable.",
+      "parentUuid": "7a369a56_428c90fa",
+      "range": {
+        "startLine": 2208,
+        "startChar": 1,
+        "endLine": 2209,
+        "endChar": 30
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c89c57f9_4cb1cfa6",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -192,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "57059aaa_0e7c0f93",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-29T18:00:55Z",
+      "side": 1,
+      "message": "That would be a deviation from the spec. The TC spec specifically calls out: \n\nA port that is not a V CONN -Powered USB Device and is not in the process of a USB PD\nPR_Swap or a USB PD Hard Reset or a USB PD FR_Swap shall transition to Unattached.SNK\nwithin tSinkDisconnect when V BUS falls below vSinkDisconnect for V BUS operating at or\nbelow 5 V or below vSinkDisconnectPD when negotiated by USB PD to operate above 5 V.\n\nSo we\u0027d have to decide if this is a case where we want to allow such a deviation (like we did for LPM and auto toggle)",
+      "parentUuid": "ec8d10ae_d48a4295",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 47
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad772e39_ff3f2a1d",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -249,6 +297,29 @@
         "startChar": 0,
         "endLine": 653,
         "endChar": 40
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eaf5785_816e86d1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-29T18:00:55Z",
+      "side": 1,
+      "message": "nit: Add flag check here, with comment from spec explaining why we\u0027re ignoring Vbus drops",
+      "range": {
+        "startLine": 1863,
+        "startChar": 0,
+        "endLine": 1867,
+        "endChar": 56
       },
       "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
