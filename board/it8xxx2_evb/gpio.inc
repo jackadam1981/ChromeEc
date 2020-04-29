@@ -18,6 +18,10 @@ GPIO_INT(WP_L,           PIN(I, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   switch_inter
 GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING | GPIO_PULL_UP, uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
 
+GPIO(KSI_0,          PIN(KSI, 0), GPIO_OUT_HIGH)
+GPIO(KSO_0,          PIN(KSO_L, 0), GPIO_OUT_HIGH)
+GPIO(KSO_8,          PIN(KSO_H, 0), GPIO_OUT_HIGH)
+
 GPIO(PCH_SMI_L,      PIN(D, 3), GPIO_OUT_HIGH)
 GPIO(PCH_SCI_L,      PIN(D, 4), GPIO_OUT_HIGH)
 GPIO(GATE_A20_H,     PIN(B, 5), GPIO_OUT_HIGH)
