@@ -1062,11 +1062,15 @@ void tcpci_tcpc_alert(int port)
 		if (reg & TCPC_REG_POWER_STATUS_VBUS_DET)
 			board_vbus_present_change();
 	}
+
 	if (alert & TCPC_REG_ALERT_RX_HARD_RST) {
 		/* hard reset received */
+		CPRINTS("C%d Hard Reset received", port);
 		pd_execute_hard_reset(port);
 		pd_event |= TASK_EVENT_WAKE;
 	}
+	if ((alert & TCPC_REG_ALERT_SENT_HRST) == TCPC_REG_ALERT_SENT_HRST)
+		CPRINTS("C%d Hard Reset sent", port);
 
 	if (IS_ENABLED(CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP)
 	    && (alert_ext & TCPC_REG_ALERT_EXT_SNK_FRS))
