@@ -22,6 +22,30 @@
       "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05a3ab18_5e57d5f1",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2020-04-29T18:03:14Z",
+      "side": 1,
+      "message": "We just replace the kx022 with bma253 because shortage for the lid sensor, we still use the BMI160 on base board for all convertible sku. The sku id 3 and 4 was reserved for the AR camera , but we never produce the ampton with the AR camera.",
+      "parentUuid": "dc0505f2_831114a5",
+      "range": {
+        "startLine": 316,
+        "startChar": 2,
+        "endLine": 318,
+        "endChar": 0
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
