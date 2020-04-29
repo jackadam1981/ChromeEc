@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fbb9164f_d3f4dee2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T21:53:39Z",
+      "side": 1,
+      "message": "these hard reset flag descriptions still don\u0027t describe out they interact and how they are different (or if the overlap or not)",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 47
+      },
+      "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "621c9c2c_9a053f47",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -13,6 +36,29 @@
       "writtenOn": "2020-04-29T21:30:19Z",
       "side": 1,
       "message": "nit: move TC_FLAGS_HARD_RESET_IN_PROGRESS to match tc_attached_snk_run",
+      "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd2cb682_871d3a82",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T21:53:39Z",
+      "side": 1,
+      "message": "probably worth calling out that this is not necessarily balanced with tc_hard_reset calls",
+      "range": {
+        "startLine": 323,
+        "startChar": 3,
+        "endLine": 323,
+        "endChar": 44
+      },
       "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
