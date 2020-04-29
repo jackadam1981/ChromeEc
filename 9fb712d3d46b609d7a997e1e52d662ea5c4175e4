@@ -22,6 +22,30 @@
       "revId": "9fb712d3d46b609d7a997e1e52d662ea5c4175e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88cad1ec_e6c51c53",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-29T02:27:10Z",
+      "side": 1,
+      "message": "I would rather keep it checked and reset in the same function a few lines apart.",
+      "parentUuid": "b5886833_6f619abd",
+      "range": {
+        "startLine": 394,
+        "startChar": 5,
+        "endLine": 394,
+        "endChar": 17
+      },
+      "revId": "9fb712d3d46b609d7a997e1e52d662ea5c4175e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
