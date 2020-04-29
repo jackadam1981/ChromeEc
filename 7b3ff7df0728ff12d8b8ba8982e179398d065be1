@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "327449b0_a01a3581",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2209,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T16:57:01Z",
+      "side": 1,
+      "message": "this needs to be called when source-\u003esnk connection is stable. pe_snk_hard_reset_exit is just saying the hard reset message has been sent.  Way too early to tell the TCPC to reconnect AutoDischargeDisconnect.  Also don\u0027t think we want to allow disconnects on the TC connection until this point.",
+      "parentUuid": "56bcb191_b7e293e7",
+      "range": {
+        "startLine": 2208,
+        "startChar": 1,
+        "endLine": 2209,
+        "endChar": 30
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c89c57f9_4cb1cfa6",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7fb6c25c_297007b9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T16:57:01Z",
+      "side": 1,
+      "message": "no. TC_FLAGS_HARD_RESET indicates we are starting the hard reset sequence.  The TC_FLAGS_HARD_RESET_IN_PROGRESS is used to stop the TC state machine from going to unattached like we do with PR_SWAP",
+      "parentUuid": "c89c57f9_4cb1cfa6",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 47
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bdef7120_023ae636",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-29T16:44:37Z",
       "side": 1,
       "message": "from the way I understand the flags, we shouldn\u0027t need to clear this right?",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 40
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2d94524_aef3c3f6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T16:57:01Z",
+      "side": 1,
+      "message": "We shouldn\u0027t but I was concerned that if our state machine was not in a state that we were expecting a hard reset that this could remain set and that would be a bad thing.  I can remove this if you would prefer",
+      "parentUuid": "bdef7120_023ae636",
       "range": {
         "startLine": 653,
         "startChar": 0,
