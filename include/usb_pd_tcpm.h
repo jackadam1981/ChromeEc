@@ -85,6 +85,7 @@ static inline enum tcpc_cc_polarity polarity_rm_dts(
 }
 
 enum tcpm_transmit_type {
+	TCPC_TX_INVALID = -1,
 	TCPC_TX_SOP = 0,
 	TCPC_TX_SOP_PRIME = 1,
 	TCPC_TX_SOP_PRIME_PRIME = 2,
