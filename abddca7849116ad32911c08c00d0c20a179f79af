@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd03c22e_105987e1",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-29T23:33:42Z",
+      "side": 1,
+      "message": "Agree. I felt it strange too when I wrote it. Will fix it in a follow up CL.",
+      "parentUuid": "abaa53f0_500afd70",
+      "range": {
+        "startLine": 88,
+        "startChar": 26,
+        "endLine": 88,
+        "endChar": 34
+      },
+      "revId": "abddca7849116ad32911c08c00d0c20a179f79af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26eb10c0_854d6bfd",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "83adca9b_ce027e85",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-29T23:33:42Z",
+      "side": 1,
+      "message": "It should not. I will fix it.\n\nOne more issue is that the HPD_IRQ should be sent earlier. It does\u0027t need to wait for the HPD_USTREAM_DEBOUNCE_LVL (2ms) debouncing.",
+      "parentUuid": "26eb10c0_854d6bfd",
+      "revId": "abddca7849116ad32911c08c00d0c20a179f79af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac047b7a_fbbb535d",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 3
@@ -53,6 +95,24 @@
       "writtenOn": "2020-04-29T20:30:33Z",
       "side": 1,
       "message": "How do you know it\u0027s a low pulse? I believe the interrupt is triggered on both edges.",
+      "revId": "abddca7849116ad32911c08c00d0c20a179f79af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b45109_6ef135e7",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-29T23:33:42Z",
+      "side": 1,
+      "message": "The following checks for `level` high, meaning a rising edge. The rising edge implies the previous state is low. I can make it more clear that saves the previous state.",
+      "parentUuid": "ac047b7a_fbbb535d",
       "revId": "abddca7849116ad32911c08c00d0c20a179f79af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
