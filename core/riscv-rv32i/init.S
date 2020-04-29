@@ -147,8 +147,16 @@ __irq_isr:
         fsw ft2,  -19*4(sp)
         fsw ft1,  -18*4(sp)
         fsw ft0,  -17*4(sp)
+        /*
+         * Note: we never execute on this stack frame, so it does not need to
+         * be 16-byte aligned.
+         */
         addi sp, sp, -37*4
 #else
+        /*
+         * Note: we never execute on this stack frame, so it does not need to
+         * be 16-byte aligned.
+         */
         addi sp, sp, -16*4
 #endif
         /* save sp to scratch register */
