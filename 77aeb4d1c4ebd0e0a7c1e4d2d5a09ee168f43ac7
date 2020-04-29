@@ -22,6 +22,30 @@
       "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb1e846_d0ff24bf",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T17:07:19Z",
+      "side": 1,
+      "message": "no. it will only trigger on Hard Reset sent.\n\n4.7.3 Transmitting a Hard Reset Message\nThe steps for transmitting a Hard Reset message are as follows:\n  1. The TCPM writes to TRANSMIT to request a Hard Reset transmission,\n     • If a previous TRANSMIT request has not yet completed, the TCPC\n       shall assert the TransmitSOP*MessageDiscarded bit in the ALERT\n       register.\n  2. The TCPC asserts both ALERT.TransmitSOP*MessageSuccessful and\n     ALERT.TransmitSOP*MessageFailed regardless of the outcome of the\n     transmission and asserts the Alert# pin.",
+      "parentUuid": "fe15f3b7_58b9a1a6",
+      "range": {
+        "startLine": 1072,
+        "startChar": 6,
+        "endLine": 1072,
+        "endChar": 67
+      },
+      "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
