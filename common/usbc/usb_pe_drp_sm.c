@@ -4436,6 +4436,8 @@ static void pe_init_port_vdm_identity_request_exit(int port)
 		pd_set_svids_discovery(port, TCPC_TX_SOP, PD_DISC_FAIL);
 }
 
+static char *sop_names[] = {"SOP", "SOP'", "SOP''"};
+
 /**
  * PE_INIT_VDM_SVIDs_Request
  *
@@ -4452,6 +4454,7 @@ static void pe_init_vdm_svids_request_entry(int port)
 		set_state_pe(port, get_last_state_pe(port));
 		return;
 	}
+	CPRINTF("C%d: Discover SVIDs %s\n", port, sop_names[pe[port].tx_type]);
 
 	msg[0] = VDO(USB_SID_PD, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
@@ -4568,6 +4571,7 @@ static void pe_init_vdm_modes_request_entry(int port)
 		set_state_pe(port, get_last_state_pe(port));
 		return;
 	}
+	CPRINTF("C%d: Discover modes %s\n", port, sop_names[pe[port].tx_type]);
 
 	msg[0] = VDO((uint16_t) svid, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
