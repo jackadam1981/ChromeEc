@@ -291,6 +291,10 @@ void dfp_consume_attention(int port, uint32_t *payload)
 		modep->fx->attention(port, payload);
 }
 
+#ifdef CONFIG_USB_PD_TCPMV2
+static char *sop_names[] = {"SOP", "SOP'", "SOP''"};
+#endif
+
 void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 {
 	int ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
@@ -330,6 +334,10 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
 	uint16_t svid0, svid1;
 	struct pd_discovery *disc = pd_get_am_discovery(port, type);
 
+#ifdef CONFIG_USB_PD_TCPMV2
+	CPRINTF("C%d: Already discovered %d SVIDs\n", port, disc->svid_cnt);
+#endif
+
 	for (i = disc->svid_cnt; i < disc->svid_cnt + 12; i += 2) {
 		if (i >= SVID_DISCOVERY_MAX) {
 			CPRINTF("ERR:SVIDCNT\n");
@@ -361,6 +369,10 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
 		CPRINTF("ERR:SVID+12\n");
 
 	pd_set_svids_discovery(port, type, PD_DISC_COMPLETE);
+
+#ifdef CONFIG_USB_PD_TCPMV2
+	CPRINTF("C%d: Now discovered %d SVIDs\n", port, disc->svid_cnt);
+#endif
 }
 
 void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
@@ -371,10 +383,19 @@ void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 	struct pd_discovery *disc = pd_get_am_discovery(port, type);
 	uint16_t response_svid = (uint16_t) PD_VDO_VID(payload[0]);
 
+#ifdef CONFIG_USB_PD_TCPMV2
+	CPRINTF("C%d: Consuming modes for %s, SVID %x\n", port, sop_names[type],
+			(int) response_svid);
+#endif
+
 	for (svid_idx = 0; svid_idx < disc->svid_cnt; ++svid_idx) {
 		uint16_t svid = disc->svids[svid_idx].svid;
 
 		if (svid == response_svid) {
+#ifdef CONFIG_USB_PD_TCPMV2
+			CPRINTF("C%d: Found storage for SVID %x modes\n", port,
+					svid);
+#endif
 			mode_discovery = &disc->svids[svid_idx];
 			break;
 		}
