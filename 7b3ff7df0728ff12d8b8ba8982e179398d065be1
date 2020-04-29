@@ -329,6 +329,24 @@
     },
     {
       "key": {
+        "uuid": "4d9fbf3c_a1340ac4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-29T20:41:14Z",
+      "side": 1,
+      "message": "I tried this out, and unsurprisingly got ac\u003doff after a hard reset, which then went to ac\u003don with a \"tcpm_enable_auto_discharge_disconnect(port, 1)\" (using test console command).",
+      "parentUuid": "ad772e39_ff3f2a1d",
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bdef7120_023ae636",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
