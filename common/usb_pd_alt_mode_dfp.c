@@ -511,7 +511,7 @@ enum idh_ptype get_usb_pd_cable_type(int port)
 }
 
 void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
-				uint16_t head)
+				uint16_t head, enum tcpm_transmit_type type)
 {
 	struct pd_cable *cable = pd_get_cable_attributes(port);
 	struct pd_discovery *disc = pd_get_am_discovery(port);
@@ -522,6 +522,10 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 		return;
 
 	/* Note: only store VDOs, not the VDM header */
+	/*
+	 * TODO(b/152417597): Support SOP and SOP'; eliminate redundant code for
+	 * port partner and cable identity discovery.
+	 */
 	memcpy(disc->identity[TCPC_TX_SOP_PRIME].response.raw_value,
 	       payload + 1, identity_size);
 
