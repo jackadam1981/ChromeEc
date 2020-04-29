@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aeb5f697_67cd6fdd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2215,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T23:48:12Z",
+      "side": 1,
+      "message": "This is not the normal location that would enable AutoDischargeDisconnect if it were not for the HardReset.  It would be much earlier.  Luckily it does not hurt anything to set an already set AutoDischargeDisconnect bit in the TCPC register.",
+      "parentUuid": "6aa17cd6_45a6f6af",
+      "range": {
+        "startLine": 2215,
+        "startChar": 1,
+        "endLine": 2215,
+        "endChar": 48
+      },
+      "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbb9164f_d3f4dee2",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
