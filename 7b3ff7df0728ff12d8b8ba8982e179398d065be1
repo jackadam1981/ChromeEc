@@ -288,6 +288,30 @@
     },
     {
       "key": {
+        "uuid": "b9d28056_c47dd91f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-29T19:23:08Z",
+      "side": 1,
+      "message": "Sorry, I missed the title of the section which is \"4.5.2.2.5.2\nExiting from Attached.SNK State\".  It specifically calls out remaining in Attached.SNK while a hard reset is processing, similar to what we do for power role swaps and FR swaps. \n\nWhat would we want the new hard reset state to do?  And would it cover both sink and source case, or just the sink case (which this CL is trying to fix)?",
+      "parentUuid": "2bdf0554_d12d04f3",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 47
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad772e39_ff3f2a1d",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
