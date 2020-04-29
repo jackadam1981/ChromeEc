@@ -46,6 +46,30 @@
       "revId": "03a0df8f65d7065bd6c2b12d2903cf0a48e666fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "304ba669_70e62321",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-04-29T04:13:43Z",
+      "side": 1,
+      "message": "ah sorry, didn\u0027t look at the history. interesting, we do have bool in a neighboring chip/g/usb_console.c already. so, not sure how it can fail here.\n\nbut, yes, fix first, dealing with this weirdness later :)",
+      "parentUuid": "388d2169_b3c02c13",
+      "range": {
+        "startLine": 318,
+        "startChar": 7,
+        "endLine": 318,
+        "endChar": 15
+      },
+      "revId": "03a0df8f65d7065bd6c2b12d2903cf0a48e666fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
