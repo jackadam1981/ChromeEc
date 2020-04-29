@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7a369a56_428c90fa",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2209,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T17:17:16Z",
+      "side": 1,
+      "message": "That is resetting the counter for a multiple hard resets, but each hard reset even should be independent event and should mark the hard reset complete.\n\nSo if we call N hard_reset_start, I would excepted N hard_reset_complete calls.",
+      "parentUuid": "e05ab625_27cb43eb",
+      "range": {
+        "startLine": 2208,
+        "startChar": 1,
+        "endLine": 2209,
+        "endChar": 30
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c89c57f9_4cb1cfa6",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "no. TC_FLAGS_HARD_RESET indicates we are starting the hard reset sequence.  The TC_FLAGS_HARD_RESET_IN_PROGRESS is used to stop the TC state machine from going to unattached like we do with PR_SWAP",
       "parentUuid": "c89c57f9_4cb1cfa6",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 47
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "200bbbdb_d367eab2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T17:17:16Z",
+      "side": 1,
+      "message": "line 1850 looks for the hard_reset flag, then clears it and sets the in progress flag. This definitely like it is asking the state machine to start the hard reset process (and that is has not started yet) while the in progress flag indicates that we have already started the hard reset process and haven\u0027t finished yet.\n\n\nIf this is an incorrect understanding, then we definitely need comments explaining how these two flags interact and are different and what they mean",
+      "parentUuid": "7fb6c25c_297007b9",
       "range": {
         "startLine": 69,
         "startChar": 0,
