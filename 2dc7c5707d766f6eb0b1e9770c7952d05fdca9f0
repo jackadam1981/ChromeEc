@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "603959b3_7c53a7e1",
+        "filename": "board/nucleo-dartmonkey/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-29T00:28:21Z",
+      "side": 1,
+      "message": "Would be nice to have this as common part of the baseboard so we don\u0027t have to repeat it. We can do that as a followup.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "2dc7c5707d766f6eb0b1e9770c7952d05fdca9f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
