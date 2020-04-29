@@ -283,6 +283,8 @@ struct svid_mode_data {
 	uint16_t svid;
 	/* The number of modes discovered for this SVID */
 	int mode_cnt;
+	/* State of mode discovery for this SVID */
+	enum pd_discovery_state discovery;
 	/* The discovered mode VDOs */
 	uint32_t mode_vdo[PDO_MODES];
 };
@@ -1645,7 +1647,8 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
  * @param cnt     number of data objects in payload
  * @param payload payload data.
  */
-void dfp_consume_modes(int port, int cnt, uint32_t *payload);
+void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
+		uint32_t *payload);
 
 /**
  * Return the discover alternate mode payload data
@@ -1703,6 +1706,14 @@ void pd_set_svids_discovery(int port, enum tcpm_transmit_type type,
  */
 enum pd_discovery_state pd_get_svids_discovery(int port,
 		enum tcpm_transmit_type type);
+
+void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
+		uint16_t svid, enum pd_discovery_state disc);
+
+enum pd_discovery_state pd_get_modes_discovery(int port,
+		enum tcpm_transmit_type type);
+
+struct svid_mode_data *pd_get_next_mode(int port, enum tcpm_transmit_type type);
 
 /**
  * Return a pointer to the discover identity response structure for this SOP*
