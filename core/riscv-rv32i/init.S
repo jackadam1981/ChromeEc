@@ -147,7 +147,8 @@ __irq_isr:
         fsw ft2,  -19*4(sp)
         fsw ft1,  -18*4(sp)
         fsw ft0,  -17*4(sp)
-        addi sp, sp, -37*4
+        /* Ensure stack frame is aligned on 16-byte boundary */
+        addi sp, sp, -48*4
 #else
         addi sp, sp, -16*4
 #endif
@@ -191,7 +192,7 @@ __irq_exit:
         /* restore sp from scratch register */
         csrr sp, mscratch
 #ifdef CONFIG_FPU
-        addi sp, sp, 37*4
+        addi sp, sp, 48*4
         /* restore ft0-11, fa0-7, and fcsr. */
         lw t0,    -37*4(sp)
         csrw fcsr, t0
