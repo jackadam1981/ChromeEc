@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "252f4864_a6d146fc",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T18:29:16Z",
+      "side": 1,
+      "message": "Sure I think hard reset uses this variable, but other TX message like PS_READY also use this register to notify that the message successfully sent",
+      "parentUuid": "9cb1e846_d0ff24bf",
+      "range": {
+        "startLine": 1072,
+        "startChar": 6,
+        "endLine": 1072,
+        "endChar": 67
+      },
+      "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15628407_c3a0079d",
         "filename": "driver/tcpm/tcpci.h",
         "patchSetId": 1
@@ -60,6 +84,24 @@
       "writtenOn": "2020-04-29T17:30:25Z",
       "side": 1,
       "message": "nit: TCPC_REG_ALERT_TX_HARD_RST (to match TCPC_REG_ALERT_RX_HARD_RST)",
+      "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b7658f_38f0c911",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T18:29:16Z",
+      "side": 1,
+      "message": "But it isn\u0027t limited to TX_HARD_RST; it is the the general SOP* TX complete bit\n\nfrom spec\n\n\"B6 - Transmit SOP* Message Successful -\nReset or SOP* message transmission successful. GoodCRC\nresponse received on SOP* message transmission. Transmit SOP*\nmessage buffer registers are empty.\"\n\n\nThat is why I am saying that the code in the alert handler is notifying when we finish sending any PD message (like PS_READY for example)",
+      "parentUuid": "15628407_c3a0079d",
       "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
