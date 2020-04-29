@@ -168,6 +168,47 @@
     },
     {
       "key": {
+        "uuid": "ec8d10ae_d48a4295",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-29T17:26:15Z",
+      "side": 1,
+      "message": "What do you think about adding a new TC state for hard reset?\nIt feels like we might be using flags to solve something which should be a separate state?\nIt might be a project for a future CL, but wanted to get your thoughts.",
+      "parentUuid": "200bbbdb_d367eab2",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 47
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad772e39_ff3f2a1d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-29T17:26:15Z",
+      "side": 1,
+      "message": "I\u0027d be very happy if adding this line alone solved the problem, but I assume we are not so lucky?",
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bdef7120_023ae636",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
