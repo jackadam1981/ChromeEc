@@ -466,7 +466,12 @@ void clock_cpu_standby(void)
 			 */
 			interrupt_enable();
 
+#if 0
 		asm("wfi");
+#else
+		while (IT83XX_INTC_AIVCT == 0x10)
+			;
+#endif
 	}
 }
 
