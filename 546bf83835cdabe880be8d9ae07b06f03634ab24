@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6aa17cd6_45a6f6af",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2215,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T23:27:25Z",
+      "side": 1,
+      "message": "I didn\u0027t want to require the AutoDischargeDisconnect relocation to have anything to do with allowing the TC to leave attached.  This was the easiest way to move each part independently to make sure one or the other was not causing a problem. I renamed tc_hard_reset to be tc_hard_reset_request and tc_hard_reset_complete will be tc_hard_reset_allow_unattach.  These don\u0027t imply that AutoDischargeDisconnect is being performed, so think, at least until we prove if either of these can be pushed earlier, that we leave this disassociated.",
+      "parentUuid": "47397c76_f0dc382a",
+      "range": {
+        "startLine": 2215,
+        "startChar": 1,
+        "endLine": 2215,
+        "endChar": 48
+      },
+      "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbb9164f_d3f4dee2",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a66df3e_02b9f9f4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T23:27:25Z",
+      "side": 1,
+      "message": "Is this good?\n\n/* Flag to note hard reset has been requested */\n#define TC_FLAGS_HARD_RESET_REQUESTED   BIT(16)\n/*\n * Flag to note hard reset has been performed and we can\u0027t go to unattached\n * until we have a source-sink connection again\n */\n#define TC_FLAGS_HARD_RESET_NO_UNATTACH BIT(17)",
+      "parentUuid": "fbb9164f_d3f4dee2",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 47
+      },
+      "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0131ecea_c0bfc952",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T23:27:25Z",
+      "side": 1,
+      "message": "didn\u0027t think so but didn\u0027t know for sure and didn\u0027t think it would hurt anything... I will remove it.",
+      "parentUuid": "16853a37_aebae4c7",
+      "range": {
+        "startLine": 636,
+        "startChar": 1,
+        "endLine": 636,
+        "endChar": 58
+      },
+      "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "621c9c2c_9a053f47",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -85,6 +157,24 @@
       "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86cdd10c_1198e04e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2204,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T23:27:25Z",
+      "side": 1,
+      "message": "oops. caught one and missed one.",
+      "parentUuid": "621c9c2c_9a053f47",
+      "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -108,6 +198,30 @@
       "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "112cb631_6802f133",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T23:27:25Z",
+      "side": 1,
+      "message": "Does this work for you?\n\n/*\n * Hard Reset is being requested.  This should not allow a TC connection\n * to go to an unattached state until the connection is recovered from\n * the hard reset.  It is possible for a Hard Reset to cause a timeout\n * in trying to recover and an additional Hard Reset would be issued.\n * During this entire process it is important that the TC is not allowed\n * to go to an unattached state.\n */\nvoid tc_hard_reset_request(int port)\n{\n\tTC_SET_FLAG(port, TC_FLAGS_HARD_RESET_REQUESTED);\n\ttask_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);\n}\n\n/*\n * Hard Reset happened and this is how the PE will unblock leaving\n * the attached state.\n */\nvoid tc_hard_reset_allow_unattach(int port)\n{\n\tTC_CLR_FLAG(port, TC_FLAGS_HARD_RESET_NO_UNATTACH);\n}",
+      "parentUuid": "bd2cb682_871d3a82",
+      "range": {
+        "startLine": 323,
+        "startChar": 3,
+        "endLine": 323,
+        "endChar": 44
+      },
+      "revId": "546bf83835cdabe880be8d9ae07b06f03634ab24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
