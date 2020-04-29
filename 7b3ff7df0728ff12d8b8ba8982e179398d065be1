@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "e0e1a9dd_6d5f3c16",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2209,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-29T22:02:08Z",
+      "side": 1,
+      "message": "That seems incorrect... The condition to enter wait_for_capabilities is for Vbus to be there.  We can let this go for now and test moving this condition later though to unblock the lab?",
+      "parentUuid": "ae5935e2_2c86308a",
+      "range": {
+        "startLine": 2208,
+        "startChar": 1,
+        "endLine": 2209,
+        "endChar": 30
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c89c57f9_4cb1cfa6",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
