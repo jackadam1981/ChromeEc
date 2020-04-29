@@ -1760,10 +1760,16 @@ static void tc_attach_wait_snk_run(const int port)
 	 */
 	if (pd_is_vbus_present(port)) {
 		if (new_cc_state == PD_CC_DFP_ATTACHED) {
-			if (is_try_src_enabled(port))
+			if (is_try_src_enabled(port)) {
 				set_state_tc(port, TC_TRY_SRC);
-			else
+			} else {
+				/*
+				 * Initial data role for sink is UFP
+				 * This also sets the usb mux
+				 */
+				tc_set_data_role(port, PD_ROLE_UFP);
 				set_state_tc(port, TC_ATTACHED_SNK);
+			}
 		} else {
 			/* new_cc_state is PD_CC_DFP_DEBUG_ACC */
 			TC_SET_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
@@ -1811,12 +1817,6 @@ static void tc_attached_snk_entry(const int port)
 		tcpm_get_cc(port, &cc1, &cc2);
 		tc[port].polarity = get_snk_polarity(cc1, cc2);
 		pd_set_polarity(port, tc[port].polarity);
-
-		/*
-		 * Initial data role for sink is UFP
-		 * This also sets the usb mux
-		 */
-		tc_set_data_role(port, PD_ROLE_UFP);
 
 		hook_notify(HOOK_USB_PD_CONNECT);
 
@@ -2954,8 +2954,14 @@ static void tc_try_wait_snk_run(const int port)
 	 * when VBUS is detected.
 	 */
 	if (get_time().val > tc[port].try_wait_debounce &&
-						pd_is_vbus_present(port))
+						pd_is_vbus_present(port)) {
+		/*
+		 * Initial data role for sink is UFP
+		 * This also sets the usb mux
+		 */
+		tc_set_data_role(port, PD_ROLE_UFP);
 		set_state_tc(port, TC_ATTACHED_SNK);
+	}
 }
 
 #endif
