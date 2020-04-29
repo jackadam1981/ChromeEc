@@ -94,6 +94,30 @@
       "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5801f67_bdfe670d",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-04-29T17:45:17Z",
+      "side": 1,
+      "message": "I add the CONFIG_BMI_I2C and CONFIG_BMI_SPI macro to guard the code. CONFIG_BMI_I2C will be defined if the board is using I2C port on BMI, and so will CONFIG_BMI_SPI.\nGwendal, I am not sure if I should eliminate SLAVE_IS_SPI. Will there be some cases that the BMI use both I2C and SPI?",
+      "parentUuid": "70bab8b6_df52ac29",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
