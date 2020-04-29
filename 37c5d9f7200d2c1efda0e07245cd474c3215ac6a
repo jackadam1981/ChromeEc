@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f177b295_0f77b3ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T18:39:12Z",
+      "side": 1,
+      "message": "please include that these skus have never been manufactured (otherwise this would have been an invalid change)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc0505f2_831114a5",
         "filename": "board/ampton/board.c",
         "patchSetId": 1
@@ -46,6 +69,30 @@
       "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab43604e_5e210cc5",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T18:39:12Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t realize that these SKUs were never produces. Then this change is okay, I would say we need to update our records with this change, but for octopus this is really the only place (the code) where we record this information.",
+      "parentUuid": "05a3ab18_5e57d5f1",
+      "range": {
+        "startLine": 316,
+        "startChar": 2,
+        "endLine": 318,
+        "endChar": 0
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
