@@ -240,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "1e1b629d_bf94ce59",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-29T18:17:18Z",
+      "side": 1,
+      "message": "Can you explain more what would be a deviation? I\u0027m not understanding from reading that section. It says \"and is not in the process of a ... USB PD Hard Reset\", which to me seems compatible with adding a state to track being in the process of a hard reset.",
+      "parentUuid": "57059aaa_0e7c0f93",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 47
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad772e39_ff3f2a1d",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
