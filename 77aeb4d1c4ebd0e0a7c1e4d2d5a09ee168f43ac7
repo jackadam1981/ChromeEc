@@ -46,6 +46,23 @@
       "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15628407_c3a0079d",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-29T17:30:25Z",
+      "side": 1,
+      "message": "nit: TCPC_REG_ALERT_TX_HARD_RST (to match TCPC_REG_ALERT_RX_HARD_RST)",
+      "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
