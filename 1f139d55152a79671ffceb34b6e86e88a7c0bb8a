@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef91fba7_591ade93",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4187,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T19:53:21Z",
+      "side": 1,
+      "message": "well do we want to try N number of times at 3.0 before downgrading to 2.0?\n\nWhat if it was a real timeout because something else what happening?",
+      "range": {
+        "startLine": 4185,
+        "startChar": 1,
+        "endLine": 4187,
+        "endChar": 0
+      },
+      "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
