@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "ad3b43ac_8bb5d891",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2209,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T23:29:37Z",
+      "side": 1,
+      "message": "I moved the allow_unblock call to be earlier and this was the first function that I was able to allow unblocking the TC without it going directly to unattached",
+      "parentUuid": "e0e1a9dd_6d5f3c16",
+      "range": {
+        "startLine": 2208,
+        "startChar": 1,
+        "endLine": 2209,
+        "endChar": 30
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c89c57f9_4cb1cfa6",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -381,6 +405,30 @@
       "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "363df394_887c34df",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-29T23:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5a6d8c7_ffe916a5",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 47
+      },
+      "revId": "7b3ff7df0728ff12d8b8ba8982e179398d065be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
