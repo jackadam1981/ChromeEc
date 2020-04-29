@@ -1231,6 +1231,14 @@ static bool pe_attempt_port_discovery(int port)
 			pe[port].tx_type = TCPC_TX_SOP;
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
 			return true;
+		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP_PRIME)
+				== PD_DISC_COMPLETE &&
+				pd_get_svids_discovery(port, TCPC_TX_SOP_PRIME)
+				== PD_DISC_NEEDED &&
+				pe_can_send_sop_prime(port)) {
+			pe[port].tx_type = TCPC_TX_SOP_PRIME;
+			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
+			return true;
 		/*
 		 * Note: determine if next VDM can be sent by taking advantage
 		 * of discovery following the VDM command enum ordering.
