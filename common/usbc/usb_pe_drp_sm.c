@@ -4445,6 +4445,8 @@ static void pe_init_port_vdm_identity_request_exit(int port)
 	}
 }
 
+static char *sop_names[] = {"SOP", "SOP'", "SOP''"};
+
 /**
  * PE_INIT_VDM_SVIDs_Request
  *
@@ -4461,6 +4463,7 @@ static void pe_init_vdm_svids_request_entry(int port)
 		set_state_pe(port, get_last_state_pe(port));
 		return;
 	}
+	CPRINTF("C%d: Discover SVIDs %s\n", port, sop_names[pe[port].tx_type]);
 
 	msg[0] = VDO(USB_SID_PD, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
@@ -4571,7 +4574,7 @@ static void pe_init_vdm_modes_request_entry(int port)
 		set_state_pe(port, get_last_state_pe(port));
 		return;
 	}
-	CPRINTF("%s: TX type %d\n", __func__, pe[port].tx_type);
+	CPRINTF("C%d: Discover modes %s\n", port, sop_names[pe[port].tx_type]);
 
 	msg[0] = VDO((uint16_t) svid, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
@@ -4601,7 +4604,6 @@ static void pe_init_vdm_modes_request_run(int port)
 
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
-		CPRINTF("%s: Received a message\n", __func__);
 		/* Retrieve the message information */
 		payload = (uint32_t *)rx_emsg[port].buf;
 		sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
@@ -4611,8 +4613,6 @@ static void pe_init_vdm_modes_request_run(int port)
 
 		if (sop == pe[port].tx_type && type == PD_DATA_VENDOR_DEF &&
 							cnt > 0 && ext == 0) {
-			CPRINTF("%s: Valid message, type=%d, cnt=%d\n",
-					__func__, sop, (int)cnt);
 			/* TODO: Check for valid SVID ACK instead */
 			/*
 			 * Valid DiscoverIdentity responses should have at least
