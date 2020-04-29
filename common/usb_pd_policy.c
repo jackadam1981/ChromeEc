@@ -966,6 +966,10 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				}
 			} else {
 				pd_dfp_discovery_init(port);
+				/*
+				 * TODO: Figure out if this is actually supposed
+				 * to be SOP.
+				 */
 				dfp_consume_identity(port, cnt, payload);
 				rsize = dfp_discover_svids(payload);
 			}

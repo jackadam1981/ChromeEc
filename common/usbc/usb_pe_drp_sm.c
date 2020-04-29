@@ -4321,7 +4321,7 @@ static void pe_init_port_vdm_identity_request_run(int port)
 				/*
 				 * PE_INIT_PORT_VDM_Identity_NAKed embedded here
 				 */
-				pd_set_identity_discovery(port, TCPC_TX_SOP,
+				pd_set_identity_discovery(port, sop,
 							  PD_DISC_FAIL);
 			} else if (PD_VDO_CMDT(payload[0]) == CMDT_RSP_BUSY) {
 				/*
@@ -4340,7 +4340,7 @@ static void pe_init_port_vdm_identity_request_run(int port)
 				 * Partner gave an incorrect size or command,
 				 * mark discovery as failed
 				 */
-				pd_set_identity_discovery(port, TCPC_TX_SOP,
+				pd_set_identity_discovery(port, sop,
 							  PD_DISC_FAIL);
 				CPRINTS("C%d: Unexpected partner response: "
 					"0x%04x 0x%04x", port,
@@ -4351,8 +4351,7 @@ static void pe_init_port_vdm_identity_request_run(int port)
 			 * Partner doesn't support structured VDMs, mark
 			 * discovery as failed
 			 */
-			pd_set_identity_discovery(port, TCPC_TX_SOP,
-							  PD_DISC_FAIL);
+			pd_set_identity_discovery(port, sop, PD_DISC_FAIL);
 		} else {
 			/*
 			 * Return to PE_S[RC,NK]_Ready to process unexpected
