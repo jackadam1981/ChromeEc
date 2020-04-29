@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5ab37135_45549a76",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T18:50:09Z",
+      "side": 1,
+      "message": "I see the and in the 2 bullet now. Are we sure that this is the only user of this double bit set (probably is the only use case, but it is not called out)?\n\nI think splitting this logic of both bits being set across header file and c file make this harder to reason about/trace.\n\nIf we either\n 1) had a header macro (or function) that defined both bits and did the full comparison with comments\n 2) specified the TX and FAILED bits here in the c file with comments\n\n\nwould both be easier to follow.",
+      "parentUuid": "252f4864_a6d146fc",
+      "range": {
+        "startLine": 1072,
+        "startChar": 6,
+        "endLine": 1072,
+        "endChar": 67
+      },
+      "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15628407_c3a0079d",
         "filename": "driver/tcpm/tcpci.h",
         "patchSetId": 1
@@ -120,6 +144,24 @@
       "side": 1,
       "message": "It is both TCPC_REG_ALERT_TX_SUCCESS and TCPC_REG_ALERT_TX_FAILED together, which apparently is only used to indicate TX_HARD_RST.",
       "parentUuid": "e0b7658f_38f0c911",
+      "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "852dee44_2585e457",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-29T18:50:09Z",
+      "side": 1,
+      "message": "Wow that is crazy. We definitely need a comment saying that both of these bits are required to be set and this is not a OR mask (unlike the above line)",
+      "parentUuid": "b34265c6_7f249f7d",
       "revId": "77aeb4d1c4ebd0e0a7c1e4d2d5a09ee168f43ac7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
