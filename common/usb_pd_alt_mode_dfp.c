@@ -288,6 +288,8 @@ void dfp_consume_attention(int port, uint32_t *payload)
 		modep->fx->attention(port, payload);
 }
 
+static char *sop_names[] = {"SOP", "SOP'", "SOP''"};
+
 void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 {
 	int ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
@@ -297,6 +299,7 @@ void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 	/* Note: only store VDOs, not the VDM header */
 	memcpy(disc->identity[TCPC_TX_SOP].response.raw_value,
 	       payload + 1, identity_size);
+	CPRINTF("C%d: Consuming port identity for SOP\n", port);
 
 	switch (ptype) {
 	case IDH_PTYPE_AMA:
@@ -329,6 +332,9 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 	struct svid_data *svid_disc = &disc->svids[type];
 
+	CPRINTF("C%d: Consuming SVIDs for %s\n", port, sop_names[type]);
+	CPRINTF("C%d: Already discovered %d SVIDs\n", port, svid_disc->cnt);
+
 	for (i = svid_disc->cnt; i < svid_disc->cnt + 12; i += 2) {
 		if (i >= SVID_DISCOVERY_MAX) {
 			CPRINTF("ERR:SVIDCNT\n");
@@ -360,6 +366,9 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
 		CPRINTF("ERR:SVID+12\n");
 
 	pd_set_svid_discovery(port, type, PD_DISC_COMPLETE);
+
+	CPRINTF("C%d: Now discovered %d SVIDs\n", port, svid_disc->cnt);
+
 }
 
 void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
@@ -371,10 +380,15 @@ void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 	struct svid_data *svid_disc = &disc->svids[type];
 	uint16_t response_svid = (uint16_t) (payload[0] >> 16);
 
+	CPRINTF("C%d: Consuming modes for %s, SVID %x\n", port, sop_names[type],
+			(int) response_svid);
+
 	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
 		uint16_t svid = svid_disc->svids[svid_idx].svid;
 
 		if (svid == response_svid) {
+			CPRINTF("C%d: Found storage for SVID %x modes\n", port,
+					svid);
 			mode_discovery = &svid_disc->svids[svid_idx];
 			break;
 		}
@@ -387,12 +401,16 @@ void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 		return;
 	}
 
+	CPRINTF("C%d: Consuming modes for %s\n", port, sop_names[type]);
+
 	mode_discovery->mode_cnt = cnt - 1;
 	if (mode_discovery->mode_cnt < 0) {
 		CPRINTF("ERR:NOMODE\n");
 		pd_set_modes_discovery(port, type, mode_discovery->svid,
 				PD_DISC_FAIL);
 	} else {
+		CPRINTF("C%d: Storing modes for SVID %x\n", port,
+				response_svid);
 		memcpy(mode_discovery->mode_vdo, &payload[1],
 		       sizeof(uint32_t) * mode_discovery->mode_cnt);
 	}
