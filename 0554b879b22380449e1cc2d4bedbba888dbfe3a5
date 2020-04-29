@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "698bc742_f2441f4b",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-04-29T09:41:01Z",
+      "side": 1,
+      "message": "Looks like the \"BMA2x2_I2C_ADDR2\" in driver/accel_bma2x2.h should be 0x32 in octopus firmware branch (8bits address) instead of 0x19 (7bits address used in ToT)",
+      "parentUuid": "50d1354c_c51d2b8e",
+      "range": {
+        "startLine": 193,
+        "startChar": 9,
+        "endLine": 193,
+        "endChar": 13
+      },
+      "revId": "0554b879b22380449e1cc2d4bedbba888dbfe3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f763933_30d8bee9",
         "filename": "board/ampton/board.c",
         "patchSetId": 3
