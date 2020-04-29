@@ -22,6 +22,30 @@
       "revId": "03a0df8f65d7065bd6c2b12d2903cf0a48e666fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "388d2169_b3c02c13",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-04-29T04:02:44Z",
+      "side": 1,
+      "message": "that\u0027t the thing - I started with bool (see patchset1) when I tried building it in the pre-pvt branch it failed, I am not sure if the problem is the compiler or invocation, but did not want to look into it yet.",
+      "parentUuid": "be70184a_283e7d1a",
+      "range": {
+        "startLine": 318,
+        "startChar": 7,
+        "endLine": 318,
+        "endChar": 15
+      },
+      "revId": "03a0df8f65d7065bd6c2b12d2903cf0a48e666fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
