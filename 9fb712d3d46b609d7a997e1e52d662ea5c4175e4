@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5886833_6f619abd",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-04-29T02:23:28Z",
+      "side": 1,
+      "message": "Can we use seen_data here and move seen-data in line 345 under this? We don\u0027t need pulse_needed in line 320 and line 355.",
+      "range": {
+        "startLine": 394,
+        "startChar": 5,
+        "endLine": 394,
+        "endChar": 17
+      },
+      "revId": "9fb712d3d46b609d7a997e1e52d662ea5c4175e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
