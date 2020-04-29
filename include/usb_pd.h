@@ -285,6 +285,8 @@ struct svid_mode_data {
 	int mode_cnt;
 	/* The discovered mode VDOs */
 	uint32_t mode_vdo[PDO_MODES];
+	/* State of mode discovery for this SVID */
+	enum pd_discovery_state discovery;
 };
 
 /* SVID and mode discovery state for a particular transmit type */
@@ -1642,10 +1644,12 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
  * Consume the alternate modes
  *
  * @param port    USB-C port number
+ * @param type    Transmit type (SOP, SOP') for received modes
  * @param cnt     number of data objects in payload
  * @param payload payload data.
  */
-void dfp_consume_modes(int port, int cnt, uint32_t *payload);
+void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
+		uint32_t *payload);
 
 /**
  * Return the discover alternate mode payload data
@@ -1697,12 +1701,48 @@ void pd_set_svids_discovery(int port, enum tcpm_transmit_type type,
 /**
  * Get SVID discovery state for this type and port
  *
- * @param port  USB-C port number
- * @param type	SOP* type to retrieve
- * @return      Current discovery state (failed or complete)
+ * @param port USB-C port number
+ * @param type SOP* type to retrieve
+ * @return     Current discovery state (failed or complete)
  */
 enum pd_discovery_state pd_get_svids_discovery(int port,
 		enum tcpm_transmit_type type);
+
+/**
+ * Set Modes discovery state for this port, SOP* type, and SVID.
+ *
+ * @param port USB-C port number
+ * @param type SOP* type to set
+ * @param svid SVID to set mode discovery state for
+ * @param disc Discovery state to set (failed or complete)
+ */
+void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
+		uint16_t svid, enum pd_discovery_state disc);
+
+/**
+ * Get Modes discovery state for this port and SOP* type. Modes discover is
+ * considered complete for a port and type when modes have been discovered for
+ * all discovered SVIDs. Mode discovery is failed if mode discovery for any SVID
+ * failed.
+ *
+ * @param port USB-C port number
+ * @param type SOP* type to retrieve
+ * @return      Current discovery state (failed or complete)
+ */
+enum pd_discovery_state pd_get_modes_discovery(int port,
+		enum tcpm_transmit_type type);
+
+/**
+ * Get a pointer to mode data for the next SVID with undiscovered modes. This
+ * data may indicate that discovery failed.
+ *
+ * @param port USB-C port number
+ * @param type SOP* type to retrieve
+ * @return     Pointer to the first SVID-mode structure with undiscovered mode;
+ *             discovery may be needed or failed; returns NULL if all SVIDs have
+ *             discovered modes
+ */
+struct svid_mode_data *pd_get_next_mode(int port, enum tcpm_transmit_type type);
 
 /**
  * Return a pointer to the discover identity response structure for this SOP*

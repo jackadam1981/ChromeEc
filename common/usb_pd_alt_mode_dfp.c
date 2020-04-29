@@ -362,22 +362,52 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
 	pd_set_svids_discovery(port, type, PD_DISC_COMPLETE);
 }
 
-void dfp_consume_modes(int port, int cnt, uint32_t *payload)
+void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
+		uint32_t *payload)
 {
+	int svid_idx;
+	struct svid_mode_data *mode_discovery = NULL;
 	struct pd_discovery *disc = pd_get_am_discovery(port);
-	struct svid_data *svid_disc = &disc->svids[TCPC_TX_SOP];
-	int idx = disc->svid_idx;
+	struct svid_data *svid_disc = &disc->svids[type];
+	uint16_t response_svid = (uint16_t) PD_VDO_VID(payload[0]);
 
-	svid_disc->svids[idx].mode_cnt = cnt - 1;
+	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
+		uint16_t svid = svid_disc->svids[svid_idx].svid;
 
-	if (svid_disc->svids[idx].mode_cnt < 0) {
-		CPRINTF("ERR:NOMODE\n");
-	} else {
-		memcpy(svid_disc->svids[disc->svid_idx].mode_vdo, &payload[1],
-		       sizeof(uint32_t) * svid_disc->svids[idx].mode_cnt);
+		if (svid == response_svid) {
+			mode_discovery = &svid_disc->svids[svid_idx];
+			break;
+		}
+	}
+	if (!mode_discovery) {
+		const struct svid_mode_data *requested_mode_data =
+			pd_get_next_mode(port, type);
+		CPRINTF("C%d: Mode response for undiscovered SVID %x, but TCPM "
+				"requested SVID %x\n",
+				port, response_svid, requested_mode_data->svid);
+		/*
+		 * Although SVIDs discovery seemed like it succeeded before, the
+		 * partner is now responding with undiscovered SVIDs. Discovery
+		 * cannot reasonably continue under these circumstances.
+		 */
+		pd_set_modes_discovery(port, type, requested_mode_data->svid,
+				PD_DISC_FAIL);
+		return;
 	}
 
+	mode_discovery->mode_cnt = cnt - 1;
+	if (mode_discovery->mode_cnt < 0) {
+		CPRINTF("ERR:NOMODE\n");
+		pd_set_modes_discovery(port, type, mode_discovery->svid,
+				PD_DISC_FAIL);
+		return;
+	}
+
+	memcpy(mode_discovery->mode_vdo, &payload[1],
+			sizeof(uint32_t) * mode_discovery->mode_cnt);
 	disc->svid_idx++;
+	pd_set_modes_discovery(port, type, mode_discovery->svid,
+			PD_DISC_COMPLETE);
 }
 
 int dfp_discover_modes(int port, uint32_t *payload)
@@ -479,6 +509,57 @@ uint16_t pd_get_svid(int port, uint16_t svid_idx)
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 
 	return disc->svids[TCPC_TX_SOP].svids[svid_idx].svid;
+}
+
+void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
+		uint16_t svid, enum pd_discovery_state disc)
+{
+	struct svid_data *svid_disc =
+		&pd_get_am_discovery(port)->svids[type];
+	int svid_idx;
+
+	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
+		struct svid_mode_data *mode_data = &svid_disc->svids[svid_idx];
+
+		if (mode_data->svid != svid)
+			continue;
+
+		mode_data->discovery = disc;
+		return;
+	}
+}
+
+enum pd_discovery_state pd_get_modes_discovery(int port,
+		enum tcpm_transmit_type type)
+{
+	const struct svid_mode_data *mode_data = pd_get_next_mode(port, type);
+
+	/*
+	 * If there are no SVIDs for which to discover modes, mode discovery is
+	 * trivially complete.
+	 */
+	if (!mode_data)
+		return PD_DISC_COMPLETE;
+
+	return mode_data->discovery;
+}
+
+struct svid_mode_data *pd_get_next_mode(int port,
+		enum tcpm_transmit_type type)
+{
+	struct svid_data *svid_disc = &pd_get_am_discovery(port)->svids[type];
+	int svid_idx;
+
+	for (svid_idx = 0; svid_idx < svid_disc->cnt; ++svid_idx) {
+		struct svid_mode_data *mode_data = &svid_disc->svids[svid_idx];
+
+		if (mode_data->discovery == PD_DISC_COMPLETE)
+			continue;
+
+		return mode_data;
+	}
+
+	return NULL;
 }
 
 uint32_t *pd_get_mode_vdo(int port, uint16_t svid_idx)
