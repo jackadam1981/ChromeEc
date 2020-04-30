@@ -255,4 +255,20 @@ struct usart_configs {
 
 struct usart_configs usart_get_configs(void);
 
+#if defined(CONFIG_USART_HOST_COMMAND)
+/*
+ * The usart_tx structures contain functions pointers for the
+ * interrupt handlers implemented to process incoming host request and send
+ * host response. Generic queue based interrupt handlers are not used for
+ * host transport handling.
+ */
+
+extern struct usart_tx const tl_usart_tx_interrupt;
+
+/*
+ * This function starts tx when tl has response to be sent
+ */
+void tl_usart_tx_start(struct usart_config const *config);
+#endif /* CONFIG_USART_HOST_COMMAND */
+
 #endif /* __CROS_EC_USART_H */
