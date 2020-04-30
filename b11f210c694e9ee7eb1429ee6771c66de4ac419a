@@ -22,6 +22,30 @@
       "revId": "b11f210c694e9ee7eb1429ee6771c66de4ac419a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1c4ce57_5c5a9fa2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-04-30T18:39:51Z",
+      "side": 0,
+      "message": "I agree keeping this here is better: then just need a way in here to know we are on the path tc_state_init() -\u003e \"explicit contract in place\" -\u003e set_state_tc(port, TC_ATTACHED_SNK).\nSomething like pe_set_sysjump() / sysjump_occurred but for usb_tc_drp_acc_trysrc_sm.c ?",
+      "parentUuid": "6c84785f_a437cb61",
+      "range": {
+        "startLine": 1815,
+        "startChar": 2,
+        "endLine": 1819,
+        "endChar": 38
+      },
+      "revId": "b11f210c694e9ee7eb1429ee6771c66de4ac419a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
