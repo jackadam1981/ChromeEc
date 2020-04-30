@@ -46,6 +46,30 @@
       "revId": "ac78052365db619227eaea3e187365e30d5c20d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b09e41a4_ae3c8d6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-30T19:17:05Z",
+      "side": 1,
+      "message": "We retain data roles in a soft reset.  From a quick look in the spec, I can\u0027t seem to find the wording I thought was there, but the soft_reset message section does say: \n\nModal Operation is unaffected by Soft Reset\n\nWhich should at least imply that data roles remain the same",
+      "parentUuid": "c7279bed_25de2689",
+      "range": {
+        "startLine": 10,
+        "startChar": 42,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "ac78052365db619227eaea3e187365e30d5c20d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
