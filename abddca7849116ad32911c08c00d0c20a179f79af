@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "5b1e9816_ab74a3a7",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-30T00:26:56Z",
+      "side": 1,
+      "message": "Fixed it by a separated deferred function for IRQ.",
+      "parentUuid": "83adca9b_ce027e85",
+      "revId": "abddca7849116ad32911c08c00d0c20a179f79af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac047b7a_fbbb535d",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 3
@@ -116,6 +134,24 @@
       "revId": "abddca7849116ad32911c08c00d0c20a179f79af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129acd7c_db691404",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-04-30T00:26:56Z",
+      "side": 1,
+      "message": "Now record the previous state in hpd_evt(). Explicitly check the previous level is L and the current level is H.",
+      "parentUuid": "a0b45109_6ef135e7",
+      "revId": "abddca7849116ad32911c08c00d0c20a179f79af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
