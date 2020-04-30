@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87704978_ec8fd95d",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-04-30T23:58:29Z",
+      "side": 1,
+      "message": "This should get replaced by the enum pd_msg_type which is already used in the receive path by TCPMv2.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/45902108/include/usb_pd.h#1188\n\nAlso, since pd_msg_type is a 4-bit field, the invalid setting should be set to 0xF instead of -1.",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "6d0a42f264ffe17b6042f4e7d4205a21a5de15ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
