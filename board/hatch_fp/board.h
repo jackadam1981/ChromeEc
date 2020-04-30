@@ -89,6 +89,20 @@
 #define CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE
 
 /*-------------------------------------------------------------------------*
+ * USART Transport Setup
+ *-------------------------------------------------------------------------*/
+
+#undef CONFIG_USART_HOST_COMMAND
+#define CONFIG_USART_HOST_COMMAND
+
+#define CONFIG_STREAM_USART
+#define CONFIG_STREAM_USART1
+#undef CONFIG_TL_UART_HW
+#define CONFIG_TL_UART_HW usart1_hw
+#undef CONFIG_TL_UART_BAUD_RATE
+#define CONFIG_TL_UART_BAUD_RATE 3000000
+
+/*-------------------------------------------------------------------------*
  * UART Console Setup
  *-------------------------------------------------------------------------*/
 
