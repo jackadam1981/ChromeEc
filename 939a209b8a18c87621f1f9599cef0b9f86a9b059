@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3edb2950_6597b7f4",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-30T17:47:46Z",
+      "side": 0,
+      "message": "We should be checking is the EVENT_TIMER bit is set, not that only the event timer bit is set.\n\nso, if (task_wait_event(TIMEOUT) \u0026 TASK_EVENT_TIMER\n\nHowever if the task is woken for any other reason, the timer will be reset/disabled so this isn\u0027t really a good way to hanle this. Should you be msleep\u0027ing instead?",
+      "revId": "939a209b8a18c87621f1f9599cef0b9f86a9b059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
