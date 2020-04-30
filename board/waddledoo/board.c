@@ -78,6 +78,8 @@ void board_init(void)
 
 	gpio_enable_interrupt(GPIO_USB_C0_INT_ODL);
 	gpio_enable_interrupt(GPIO_SUB_USB_C1_INT_ODL);
+	/* Enable gpio interrupt for base accelgyro sensor */
+	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 
 	/* Turn on 5V if the system is on, otherwise turn it off. */
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND);
@@ -233,6 +235,19 @@ static struct mutex g_base_mutex;
 static struct accelgyro_saved_data_t g_bma253_data;
 static struct bmi_drv_data_t g_bmi160_data;
 
+/* Matrix to rotate accelerator into standard reference frame */
+static const mat33_fp_t lid_standard_ref = {
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+
+static const mat33_fp_t base_standard_ref = {
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
 		.name = "Lid Accel",
@@ -245,7 +260,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv_data = &g_bma253_data,
 		.port = I2C_PORT_SENSOR,
 		.i2c_spi_addr_flags = BMA2x2_I2C_ADDR1_FLAGS,
-		.rot_standard_ref = NULL,
+		.rot_standard_ref = &lid_standard_ref,
 		.default_range = 2,
 		.min_frequency = BMA255_ACCEL_MIN_FREQ,
 		.max_frequency = BMA255_ACCEL_MAX_FREQ,
@@ -269,7 +284,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.drv_data = &g_bmi160_data,
 		.port = I2C_PORT_SENSOR,
 		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
-		.rot_standard_ref = NULL,
+		.rot_standard_ref = &base_standard_ref,
 		.default_range = 4,
 		.min_frequency = BMI_ACCEL_MIN_FREQ,
 		.max_frequency = BMI_ACCEL_MAX_FREQ,
@@ -296,7 +311,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.port = I2C_PORT_SENSOR,
 		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 		.default_range = 1000, /* dps */
-		.rot_standard_ref = NULL,
+		.rot_standard_ref = &base_standard_ref,
 		.min_frequency = BMI_GYRO_MIN_FREQ,
 		.max_frequency = BMI_GYRO_MAX_FREQ,
 	},
