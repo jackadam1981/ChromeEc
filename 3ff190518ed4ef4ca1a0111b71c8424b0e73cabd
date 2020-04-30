@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "996d522f_dfe76c0e",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-04-30T07:46:24Z",
+      "side": 1,
+      "message": "Do we need this change if we always use system stack in ISR and it is 16-byte aligned\n(line 157 below)?\n\nBTW, we might need to change task_stacks in task.c to 16-byte aligned.",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 26
+      },
+      "revId": "3ff190518ed4ef4ca1a0111b71c8424b0e73cabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
