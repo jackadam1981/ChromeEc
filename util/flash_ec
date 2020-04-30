@@ -998,7 +998,7 @@ function flash_flashrom() {
 		} > $T
 		fi
 
-		info "Programming EC firmware image."
+		info "Programming EC firmware image. bhau"
 		local FLASHROM_WRITE="${FLASHROM_CMDLINE} ${FLASHROM_OPTIONS}"
 		if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
 			info "Running flashrom:" 1>&2
@@ -1103,7 +1103,7 @@ function flash_stm32() {
 	local IMG_READ="${FLAGS_read}"
 	# Program EC image.
 	if [[ -z "${IMG_READ}" ]]; then
-		info "Programming EC firmware image."
+		info "Programming EC firmware image.POINY3"
 		# Unprotect flash, erase, and write
 		local STM32MON_COMMAND="${STM32MON} ${STM32MON_OPT} -u -e -w"
 		if [[ "${FLAGS_verbose}" == ${FLAGS_TRUE} ]]; then
@@ -1434,7 +1434,7 @@ function flash_npcx_uut() {
 		timeout -k 10 -s 9 "${FLAGS_timeout}" \
 			"${UUT_MON[@]}" || die "Failed to load monitor binary."
 
-		info "Programming EC firmware image."
+		info "Programming EC firmware image. POINT 2"
 		local UUT_WR=( "${NPCX_UUT}" "${UUT_ARGS[@]}"      \
 			       "--auto" "--offset=${FLAGS_offset}" \
 			       "--file=${IMG}" )
