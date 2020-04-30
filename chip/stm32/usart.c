@@ -14,6 +14,10 @@
 #include "usart.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SPI, format, ## args)
+
+
 void usart_init(struct usart_config const *config)
 {
 	intptr_t base = config->hw->base;
@@ -167,6 +171,23 @@ void usart_set_parity(struct usart_config const *config, int parity)
 
 void usart_interrupt(struct usart_config const *config)
 {
-	config->tx->interrupt(config);
-	config->rx->interrupt(config);
+
+    if (1) {
+        intptr_t base = config->hw->base;
+        int c = 0;
+
+        while (STM32_USART_SR(base) & STM32_USART_SR_RXNE) {
+            c = STM32_USART_RDR(base);
+        }
+
+        CPRINTS("usart bhanu %c", c);
+
+        while (!(STM32_USART_SR(base) & STM32_USART_SR_TXE));
+        STM32_USART_TDR(base) = c;
+        STM32_USART_CR1(base) &= ~STM32_USART_CR1_TXEIE;
+    }
+   	if (0) {
+        config->tx->interrupt(config);
+        config->rx->interrupt(config);
+    }
 }
