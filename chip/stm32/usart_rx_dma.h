@@ -101,6 +101,10 @@ struct usart_rx_dma {
 void usart_rx_dma_init(struct usart_config const *config);
 void usart_rx_dma_interrupt(struct usart_config const *config);
 
+#if defined(CONFIG_USART_HOST_COMMAND)
+void tl_usart_rx_dma_interrupt(struct usart_config const *config);
+#endif
+
 /*
  * Debug function, used to print DMA RX statistics to the console.
  */

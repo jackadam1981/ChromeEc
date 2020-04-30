@@ -10,6 +10,7 @@
 #include "console.h"
 #include "registers.h"
 #include "system.h"
+#include "usart_host_command.h"
 #include "util.h"
 
 void usart_rx_dma_init(struct usart_config const *config)
@@ -24,6 +25,9 @@ void usart_rx_dma_init(struct usart_config const *config)
 		.periph  = (void *)&STM32_USART_RDR(base),
 		.flags   = (STM32_DMA_CCR_MSIZE_8_BIT |
 			    STM32_DMA_CCR_PSIZE_8_BIT |
+#ifdef CHIP_FAMILY_STM32F4
+	            STM32_DMA_CCR_CHANNEL(STM32_REQ_USART1_RX) |
+#endif
 			    STM32_DMA_CCR_CIRC),
 	};
 
@@ -79,6 +83,46 @@ void usart_rx_dma_interrupt(struct usart_config const *config)
 
 	dma_config->state->index = new_index;
 }
+
+#if defined(CONFIG_USART_HOST_COMMAND)
+void tl_usart_rx_dma_interrupt(struct usart_config const *config)
+{
+	struct usart_rx_dma const *dma_config =
+		DOWNCAST(config->rx, struct usart_rx_dma const, usart_rx);
+
+	dma_chan_t *channel  = dma_get_channel(dma_config->channel);
+	size_t     new_index = dma_bytes_done(channel, dma_config->fifo_size);
+	size_t     old_index = dma_config->state->index;
+	size_t     new_bytes = 0;
+
+	if (new_index > old_index) {
+		new_bytes = new_index - old_index;
+
+		tl_usart_rx_add_bytes(dma_config->fifo_buffer + old_index,
+					new_bytes);
+	} else if (new_index < old_index) {
+		/*
+		 * Handle the case where the received bytes are not contiguous
+		 * in the circular DMA buffer.  This is done with two queue
+		 * adds.
+		 */
+		new_bytes = dma_config->fifo_size - (old_index - new_index);
+
+		tl_usart_rx_add_bytes(dma_config->fifo_buffer + old_index,
+					dma_config->fifo_size - old_index);
+
+		tl_usart_rx_add_bytes(dma_config->fifo_buffer,
+					new_index);
+	} else {
+		/* (new_index == old_index): nothing to add to the queue. */
+	}
+
+	if (dma_config->state->max_bytes < new_bytes)
+		dma_config->state->max_bytes = new_bytes;
+
+	dma_config->state->index = new_index;
+}
+#endif /* CONFIG_USART_HOST_COMMAND */
 
 void usart_rx_dma_info(struct usart_config const *config)
 {
