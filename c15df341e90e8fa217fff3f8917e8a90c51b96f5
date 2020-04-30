@@ -46,6 +46,30 @@
       "revId": "c15df341e90e8fa217fff3f8917e8a90c51b96f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c31c78e2_43e4fe94",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-30T21:53:22Z",
+      "side": 1,
+      "message": "Okay.  I think I\u0027ll reconfigure the SM5803 driver then since it\u0027s currently set up to use set_mode to enable switching.  Maybe I\u0027ll make chip-specific call-ins for enabling the switching and enabling the battery charging parameters so we don\u0027t hit conflicts with the charge_state_v2 calls.",
+      "parentUuid": "5f259d26_57fb91e2",
+      "range": {
+        "startLine": 1277,
+        "startChar": 0,
+        "endLine": 1280,
+        "endChar": 52
+      },
+      "revId": "c15df341e90e8fa217fff3f8917e8a90c51b96f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
