@@ -409,8 +409,9 @@ static bool is_intel_svid(int port, int prev_svid_cnt)
 		 * For the Discover SVIDs, responder may present the SVIDs
 		 * in any order hence check all SVIDs if Intel SVID present.
 		 */
-		for (i = prev_svid_cnt; i < discovery[port].svid_cnt; i++) {
-			if (discovery[port].svids[i].svid == USB_VID_INTEL)
+		for (i = prev_svid_cnt; i < pd_get_svid_count(port); i++) {
+			if (discovery[port].svids[TCPC_TX_SOP].svids[i].svid ==
+					USB_VID_INTEL)
 				return true;
 		}
 	}
@@ -675,9 +676,9 @@ static void usb_pd_limit_cable_speed(int port)
 
 static int process_am_discover_svids(int port, int cnt, uint32_t *payload)
 {
-	int prev_svid_cnt = discovery[port].svid_cnt;
+	int prev_svid_cnt = discovery[port].svids[TCPC_TX_SOP].cnt;
 
-	dfp_consume_svids(port, cnt, payload);
+	dfp_consume_svids(port, TCPC_TX_SOP, cnt, payload);
 
 	/*
 	 * Ref: USB Type-C Cable and Connector Specification,
@@ -899,7 +900,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 			if (is_transmit_msg_sop_prime(port)) {
 				/* Store cable type */
 				dfp_consume_cable_response(port, cnt, payload,
-							head);
+						       head, TCPC_TX_SOP_PRIME);
 
 				/*
 				 * Enter USB4 mode if the cable supports USB4
