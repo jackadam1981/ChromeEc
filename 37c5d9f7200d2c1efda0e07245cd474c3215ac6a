@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "3a41cfd3_2c1078d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2020-04-30T07:37:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "783f5f85_3a21e94f",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf83a722_3bf5d66d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2020-04-30T07:37:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f177b295_0f77b3ec",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d89b220d_edbe0cd3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41f6ec2b_da875795",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2020-04-30T07:37:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d89b220d_edbe0cd3",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d1ed688d_4abcf5b7",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2020-04-30T07:37:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447318be_b63d1e7f",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 9
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b50bc640_f38431f3",
         "filename": "board/ampton/board.c",
         "patchSetId": 1
@@ -105,6 +201,24 @@
       "writtenOn": "2020-04-30T02:20:25Z",
       "side": 1,
       "message": "Do you verify the chip mounting orientation is good for this lid_standard_ref matrix as well?",
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34e1c6fc_9b055264",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2020-04-30T07:37:09Z",
+      "side": 1,
+      "message": "Yes, the direction of two chip are same. We don\u0027t need to change the matrix.",
+      "parentUuid": "b50bc640_f38431f3",
       "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -227,6 +341,30 @@
       "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ab8969_94d0c9f8",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2020-04-30T07:37:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "126bfa67_4f62f4db",
+      "range": {
+        "startLine": 316,
+        "startChar": 2,
+        "endLine": 318,
+        "endChar": 0
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
