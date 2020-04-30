@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19e21fba_ce095fae",
+        "filename": "util/gdbinit",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-04-30T20:16:10Z",
+      "side": 1,
+      "message": "This is pretty meta and forces flashing on connect (when using Segger).\n\nWould something like the following work, outside the python section?\n\ndefine target hookpost-remote\n    if $GDBSERVER_SEGGER\n        ec-load-reset-break\n    end\nend\n\ndefine ec-load-reset-break\n    echo \\ Flashing EC binary\n    python gdb.execute(\u0027load {EC_DIR}/build/{BOARD}/ec.obj\u0027.format(BOARD\u003d..., EC_DIR\u003d...))\n    echo \\ Resetting target\n    monitor reset\n    echo \\ Halting target\n    monitor halt\n    echo \\ Setting breakpoint on main\n    b main\nend\n\n\nI don\u0027t use Segger (at the moment), so I\u0027m fine with pushing this, but I think we may want to tweak this later.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 38
+      },
+      "revId": "027c3e6e60f5f3338e60d303a795d302d114bbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "667208ac_e93572d0",
+        "filename": "util/gdbinit",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-04-30T20:16:10Z",
+      "side": 1,
+      "message": "here",
+      "revId": "027c3e6e60f5f3338e60d303a795d302d114bbba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
