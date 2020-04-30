@@ -319,6 +319,8 @@ __overridable enum critical_shutdown board_system_is_idle(
  */
 static enum power_state power_common_state(enum power_state state)
 {
+	int waited_evt;
+
 	switch (state) {
 	case POWER_G3:
 		if (want_g3_exit || want_reboot_ap_at_g3) {
@@ -381,7 +383,9 @@ static enum power_state power_common_state(enum power_state state)
 
 		/* Wait for inactivity timeout */
 		power_wait_signals(0);
-		if (task_wait_event(S5_INACTIVITY_TIMEOUT) ==
+		waited_evt = task_wait_event(S5_INACTIVITY_TIMEOUT);
+		CPRINTS("waited_evt=0x%x", waited_evt);
+		if (waited_evt ==
 		    TASK_EVENT_TIMER) {
 			/* Prepare to drop to G3; wake not requested yet */
 			return POWER_S5G3;

@@ -410,6 +410,8 @@ uint32_t __ram_code task_set_event(task_id_t tskid, uint32_t event, int wait)
 {
 	task_ *receiver = __task_id_to_ptr(tskid);
 
+	if (tskid == TASK_ID_CHIPSET)
+		ccprints("%s(tskid=%d, evt=0x%x, wait=%d), in_interrupt_context=%d", __func__, tskid, event, wait, in_interrupt_context());
 	ASSERT(receiver);
 
 	/* Set the event bit in the receiver message bitmap */
