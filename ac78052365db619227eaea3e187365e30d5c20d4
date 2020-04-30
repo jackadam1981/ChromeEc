@@ -22,6 +22,30 @@
       "revId": "ac78052365db619227eaea3e187365e30d5c20d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7279bed_25de2689",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-30T18:49:27Z",
+      "side": 1,
+      "message": "we warm boot and we should be able to send a soft reset but we are sending as the wrong data role.  This causes the other end to drop the bus instead of handling soft reset correctly",
+      "parentUuid": "dbfbad6a_038a30d2",
+      "range": {
+        "startLine": 10,
+        "startChar": 42,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "ac78052365db619227eaea3e187365e30d5c20d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
