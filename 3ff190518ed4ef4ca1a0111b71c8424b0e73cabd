@@ -22,6 +22,30 @@
       "revId": "3ff190518ed4ef4ca1a0111b71c8424b0e73cabd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70f7cc8e_c15d29b4",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-30T18:28:48Z",
+      "side": 1,
+      "message": "If ISR is using system stack, then we don\u0027t strictly need this change since no one would be using the stack frame on top of this, but I think it is still a good idea to make this change for consistency (and to try to prevent subtle bugs in the future).\n\nWe probably do need to take a look at task_stacks as well\n\nWhat are your thoughts?",
+      "parentUuid": "996d522f_dfe76c0e",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 26
+      },
+      "revId": "3ff190518ed4ef4ca1a0111b71c8424b0e73cabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
