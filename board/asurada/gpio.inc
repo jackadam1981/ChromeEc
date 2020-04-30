@@ -50,6 +50,8 @@ GPIO_INT(VOLUME_DOWN_L,      PIN(D, 6), GPIO_INT_BOTH | GPIO_PULL_UP,
          button_interrupt) /* EC_VOLDN_BTN_ODL */
 GPIO_INT(VOLUME_UP_L,        PIN(D, 5), GPIO_INT_BOTH | GPIO_PULL_UP,
          button_interrupt) /* EC_VOLUP_BTN_ODL */
+GPIO_INT(SPI0_CS,            PIN(M, 5), GPIO_INT_FALLING | GPIO_PULL_UP,
+         spi_event)        /* SPI slave Chip Select -- AP_SPI_EC_CS_L */
 GPIO_INT(X_EC_GPIO2,         PIN(B, 2), GPIO_ODR_HIGH, x_ec_interrupt)
 
 /* Power Sequencing Signals */
@@ -83,6 +85,7 @@ GPIO(I2C_E_SCL,              PIN(E, 0), GPIO_INPUT) /* I2C_USB_C1_SCL */
 GPIO(I2C_E_SDA,              PIN(E, 7), GPIO_INPUT) /* I2C_USB_C1_SDA */
 
 /* SPI pins - Alternate function below configures SPI module on these pins */
+ALTERNATE(PIN_MASK(M, 0x33), 0, MODULE_SPI, 0) /* SPI */
 
 /* NC / TP */
 
@@ -119,7 +122,6 @@ UNIMPLEMENTED(PCH_PLTRST_L)
 #define UNIMPLEMENTED_GPIO(name, pin) UNIMPLEMENTED(name)
 
 UNIMPLEMENTED_GPIO(PACKET_MODE_EN,         PIN(M, 6))
-UNIMPLEMENTED_GPIO(AP_SPI_EC_CS_L,         PIN(M, 5))
 UNIMPLEMENTED_GPIO(EC_GPM3,                PIN(M, 3))
 UNIMPLEMENTED_GPIO(AP_SPI_EC_MISO_R,       PIN(M, 1))
 UNIMPLEMENTED_GPIO(AP_SPI_EC_MOSI,         PIN(M, 0))
