@@ -572,6 +572,30 @@
     },
     {
       "key": {
+        "uuid": "8b032859_540a2951",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-04-30T22:09:39Z",
+      "side": 1,
+      "message": "Based on my control system experience (i.e. watching several YouTube videos) we\u0027d want the integral term to prevent issues with steady state error.  P or PI controllers are often recommended for systems where the output is one or no integrations from the input, and PID or PD controllers for systems where the output is two or more integrations away from input.",
+      "parentUuid": "becedabd_0253f674",
+      "range": {
+        "startLine": 101,
+        "startChar": 23,
+        "endLine": 101,
+        "endChar": 26
+      },
+      "revId": "16f5585e0cd63a0f4d7acedb50ed17d83e55feae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d192e6e_9420ddd6",
         "filename": "common/ocpc.c",
         "patchSetId": 3
