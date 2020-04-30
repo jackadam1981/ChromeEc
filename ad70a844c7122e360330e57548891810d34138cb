@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2936bac3_d02390bf",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-04-30T17:33:49Z",
+      "side": 1,
+      "message": "Can we reword this a bit? Maybe something along the lines of \"If a dedicated supplier is present, power is not a concern and therefore always allow Try.Src.\"",
+      "range": {
+        "startLine": 385,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 21
+      },
+      "revId": "ad70a844c7122e360330e57548891810d34138cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
