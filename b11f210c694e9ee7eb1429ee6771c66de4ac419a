@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bdbc0a0_782212e7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-30T18:21:00Z",
+      "side": 1,
+      "message": "Thank you, this rename definitley helps understand what it happening better!",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 47
+      },
+      "revId": "b11f210c694e9ee7eb1429ee6771c66de4ac419a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c16da4f_f2936827",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2227,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-30T18:21:00Z",
+      "side": 1,
+      "message": "nit: line 2216 means this condition will always be true, so we can drop it from the condition",
+      "range": {
+        "startLine": 2227,
+        "startChar": 5,
+        "endLine": 2227,
+        "endChar": 55
+      },
+      "revId": "b11f210c694e9ee7eb1429ee6771c66de4ac419a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
