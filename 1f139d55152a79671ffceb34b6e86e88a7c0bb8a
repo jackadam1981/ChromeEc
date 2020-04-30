@@ -94,6 +94,30 @@
       "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4759a30_98b6e79c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4187,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-04-30T22:33:11Z",
+      "side": 1,
+      "message": "Well by clearing the TIMEOUT flag all the time aren\u0027t we actually prevent PD_DISC_FAIL from getting set in the _exit transition?\n\nAlso, I would vote for using 3 of the retries on PDF 3.0 and the remain on 2.0 (or if we think that is too complicated at least call out that we think it is worth giving up PD 30 after one attempt and try 5 times with PD 2.0)",
+      "parentUuid": "5b010655_e4d2c9df",
+      "range": {
+        "startLine": 4185,
+        "startChar": 1,
+        "endLine": 4187,
+        "endChar": 0
+      },
+      "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
