@@ -22,6 +22,30 @@
       "revId": "f2e2410d8e73d8118daa296aef83bf07bf2c6d73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826e822d_d4e6d188",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-04-30T22:24:18Z",
+      "side": 1,
+      "message": "line 995: /* Only attempt to maintain previous sink contracts */",
+      "parentUuid": "2694851b_7aee9e00",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 37
+      },
+      "revId": "f2e2410d8e73d8118daa296aef83bf07bf2c6d73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
