@@ -10,6 +10,8 @@
 #include "common.h"
 #include "registers.h"
 #include "system.h"
+#include "task.h"
+#include "usart_host_command.h"
 #include "util.h"
 
 static void usart_tx_init(struct usart_config const *config)
@@ -73,3 +75,62 @@ struct usart_tx const usart_tx_interrupt = {
 	.interrupt = usart_tx_interrupt_handler,
 	.info      = NULL,
 };
+
+#if defined(CONFIG_USART_HOST_COMMAND)
+
+static void tl_usart_tx_interrupt_handler(struct usart_config const *config)
+{
+	intptr_t base = config->hw->base;
+	uint8_t  byte;
+
+	if (!(STM32_USART_SR(base) & STM32_USART_SR_TXE))
+		return;
+
+	if (tl_usart_tx_char(&byte)) {
+		STM32_USART_TDR(base) = byte;
+		/*
+		 * Make sure the TXE interrupt is enabled and that we won't go
+		 * into deep sleep.  This invocation of the USART interrupt
+		 * handler may have been manually triggered to start
+		 * transmission.
+		 */
+		disable_sleep(SLEEP_MASK_UART);
+
+		STM32_USART_CR1(base) |= STM32_USART_CR1_TXEIE;
+	} else {
+		/*
+		 * The TX queue is empty, disable the TXE interrupt and enable
+		 * deep sleep mode. The TXE interrupt will remain disabled
+		 * until a write call happens.
+		 */
+		enable_sleep(SLEEP_MASK_UART);
+
+		STM32_USART_CR1(base) &= ~STM32_USART_CR1_TXEIE;
+	}
+}
+
+void tl_usart_tx_start(struct usart_config const *config)
+{
+	intptr_t base = config->hw->base;
+
+	/* If interrupt is already enabled, nothing to do */
+	if (STM32_USART_CR1(base) & STM32_USART_CR1_TXEIE)
+		return;
+
+	disable_sleep(SLEEP_MASK_UART);
+	STM32_USART_CR1(base) |= (STM32_USART_CR1_TXEIE);
+
+	task_trigger_irq(config->hw->irq);
+}
+
+struct usart_tx const tl_usart_tx_interrupt = {
+	.consumer_ops = {
+		.written = usart_written,
+	},
+
+	.init      = usart_tx_init,
+	.interrupt = tl_usart_tx_interrupt_handler,
+	.info      = NULL,
+};
+
+#endif /* CONFIG_USART_HOST_COMMAND */

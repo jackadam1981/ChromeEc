@@ -6,12 +6,14 @@
 
 #include "common.h"
 #include "console.h"
+#include "fpsensor_detect.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
 #include "spi.h"
 #include "system.h"
 #include "task.h"
+#include "usart_host_command.h"
 #include "util.h"
 
 /**
@@ -66,29 +68,61 @@ const struct spi_device_t spi_devices[] = {
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
-static void spi_configure(void)
+#ifdef SECTION_IS_RW
+static void configure_fp_sensor_spi(void)
 {
 	/* Configure SPI GPIOs */
 	gpio_config_module(MODULE_SPI_MASTER, 1);
-	/*
-	 * Set all SPI master signal pins to very high speed:
-	 * pins B12/13/14/15
-	 */
+
+	/* Set all SPI master signal pins to very high speed: B12/13/14/15 */
 	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
+
 	/* Enable clocks to SPI2 module (master) */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
 
 	spi_enable(CONFIG_SPI_FP_PORT, 1);
 }
+#endif
 
 /* Initialize board. */
 static void board_init(void)
 {
-	spi_configure();
+#ifdef SECTION_IS_RW
+	enum fp_sensor_type retSensor = get_fp_sensor_type();
+	enum fp_transport_type retTransport = get_fp_transport_type();
+
+	ccprints("FP_SENSOR_SEL: %s",
+		fp_sensor_type_to_str(retSensor));
+
+	/* Configure and Enable FP SPI */
+	configure_fp_sensor_spi();
+
+	ccprints("TRANSPORT_SEL: %s",
+		fp_transport_type_to_str(retTransport));
+
+	/* Initialize Transport based on bootstrap */
+	if (retTransport == FP_TRANSPORT_TYPE_UART) {
+
+#if defined(CONFIG_USART_HOST_COMMAND)
+		usart_host_command_init();
+#endif /* CONFIG_USART_HOST_COMMAND */
+
+		/* Disable SPI interrupt to disable SPI transport layer */
+		gpio_disable_interrupt(GPIO_SPI1_NSS);
+
+	} else if (retTransport == FP_TRANSPORT_TYPE_SPI) {
+		/* SPI transport is enabled. SPI1_NSS interrupt will process
+		 * incoming request/
+		 */
+	} else {
+		ccprints("ERROR: Selected transport is not valid.");
+	}
+#endif
 
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
 	gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
+
 	/* enable the SPI slave interface if the PCH is up */
 	hook_call_deferred(&ap_deferred_data, 0);
 }
