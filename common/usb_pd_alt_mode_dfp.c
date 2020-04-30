@@ -68,6 +68,7 @@ static int pd_allocate_mode(int port, uint16_t svid)
 	struct svdm_amode_data *modep;
 	int mode_idx = pd_get_mode_idx(port, svid);
 	struct pd_discovery *disc = pd_get_am_discovery(port);
+	struct svid_data *svid_disc;
 
 	if (mode_idx != -1)
 		return mode_idx;
@@ -79,9 +80,10 @@ static int pd_allocate_mode(int port, uint16_t svid)
 	}
 
 	/* Allocate ...  if SVID == 0 enter default supported policy */
+	svid_disc = &disc->svids[TCPC_TX_SOP];
 	for (i = 0; i < supported_modes_cnt; i++) {
-		for (j = 0; j < disc->svid_cnt; j++) {
-			struct svdm_svid_data *svidp = &disc->svids[j];
+		for (j = 0; j < svid_disc->cnt; j++) {
+			struct svid_mode_data *svidp = &svid_disc->svids[j];
 
 			if ((svidp->svid != supported_modes[i].svid) ||
 			    (svid && (svidp->svid != svid)))
@@ -89,7 +91,7 @@ static int pd_allocate_mode(int port, uint16_t svid)
 
 			modep = &disc->amodes[disc->amode_idx];
 			modep->fx = &supported_modes[i];
-			modep->data = &disc->svids[j];
+			modep->data = &svid_disc->svids[j];
 			disc->amode_idx++;
 			return disc->amode_idx - 1;
 		}
@@ -317,15 +319,17 @@ void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 	pd_set_identity_discovery(port, TCPC_TX_SOP, PD_DISC_COMPLETE);
 }
 
-void dfp_consume_svids(int port, int cnt, uint32_t *payload)
+void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
+		uint32_t *payload)
 {
 	int i;
 	uint32_t *ptr = payload + 1;
 	int vdo = 1;
 	uint16_t svid0, svid1;
 	struct pd_discovery *disc = pd_get_am_discovery(port);
+	struct svid_data *svid_disc = &disc->svids[type];
 
-	for (i = disc->svid_cnt; i < disc->svid_cnt + 12; i += 2) {
+	for (i = svid_disc->cnt; i < svid_disc->cnt + 12; i += 2) {
 		if (i >= SVID_DISCOVERY_MAX) {
 			CPRINTF("ERR:SVIDCNT\n");
 			break;
@@ -340,34 +344,37 @@ void dfp_consume_svids(int port, int cnt, uint32_t *payload)
 		svid0 = PD_VDO_SVID_SVID0(*ptr);
 		if (!svid0)
 			break;
-		disc->svids[i].svid = svid0;
-		disc->svid_cnt++;
+		svid_disc->svids[i].svid = svid0;
+		svid_disc->cnt++;
 
 		svid1 = PD_VDO_SVID_SVID1(*ptr);
 		if (!svid1)
 			break;
-		disc->svids[i + 1].svid = svid1;
-		disc->svid_cnt++;
+		svid_disc->svids[i + 1].svid = svid1;
+		svid_disc->cnt++;
 		ptr++;
 		vdo++;
 	}
 	/* TODO(tbroch) need to re-issue discover svids if > 12 */
 	if (i && ((i % 12) == 0))
 		CPRINTF("ERR:SVID+12\n");
+
+	pd_set_svids_discovery(port, type, PD_DISC_COMPLETE);
 }
 
 void dfp_consume_modes(int port, int cnt, uint32_t *payload)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
+	struct svid_data *svid_disc = &disc->svids[TCPC_TX_SOP];
 	int idx = disc->svid_idx;
 
-	disc->svids[idx].mode_cnt = cnt - 1;
+	svid_disc->svids[idx].mode_cnt = cnt - 1;
 
-	if (disc->svids[idx].mode_cnt < 0) {
+	if (svid_disc->svids[idx].mode_cnt < 0) {
 		CPRINTF("ERR:NOMODE\n");
 	} else {
-		memcpy(disc->svids[disc->svid_idx].mode_vdo, &payload[1],
-		       sizeof(uint32_t) * disc->svids[idx].mode_cnt);
+		memcpy(svid_disc->svids[disc->svid_idx].mode_vdo, &payload[1],
+		       sizeof(uint32_t) * svid_disc->svids[idx].mode_cnt);
 	}
 
 	disc->svid_idx++;
@@ -376,9 +383,10 @@ void dfp_consume_modes(int port, int cnt, uint32_t *payload)
 int dfp_discover_modes(int port, uint32_t *payload)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
-	uint16_t svid = disc->svids[disc->svid_idx].svid;
+	struct svid_data *svid_disc = &disc->svids[TCPC_TX_SOP];
+	uint16_t svid = svid_disc->svids[disc->svid_idx].svid;
 
-	if (disc->svid_idx >= disc->svid_cnt)
+	if (disc->svid_idx >= svid_disc->cnt)
 		return 0;
 
 	payload[0] = VDO(svid, 1, CMD_DISCOVER_MODES);
@@ -400,6 +408,15 @@ void pd_set_identity_discovery(int port, enum tcpm_transmit_type type,
 
 	pd->identity[type].discovery = disc;
 }
+
+void pd_set_svids_discovery(int port, enum tcpm_transmit_type type,
+			       enum pd_discovery_state disc)
+{
+	struct pd_discovery *pd = pd_get_am_discovery(port);
+
+	pd->svids[type].discovery = disc;
+}
+
 
 enum pd_discovery_state pd_get_identity_discovery(int port,
 						  enum tcpm_transmit_type type)
@@ -442,25 +459,33 @@ uint8_t pd_get_product_type(int port)
 	return resp->idh.product_type;
 }
 
+enum pd_discovery_state pd_get_svids_discovery(int port,
+		enum tcpm_transmit_type type)
+{
+	struct pd_discovery *disc = pd_get_am_discovery(port);
+
+	return disc->svids[type].discovery;
+}
+
 int pd_get_svid_count(int port)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 
-	return disc->svid_cnt;
+	return disc->svids[TCPC_TX_SOP].cnt;
 }
 
 uint16_t pd_get_svid(int port, uint16_t svid_idx)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 
-	return disc->svids[svid_idx].svid;
+	return disc->svids[TCPC_TX_SOP].svids[svid_idx].svid;
 }
 
 uint32_t *pd_get_mode_vdo(int port, uint16_t svid_idx)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port);
 
-	return disc->svids[svid_idx].mode_vdo;
+	return disc->svids[TCPC_TX_SOP].svids[svid_idx].mode_vdo;
 }
 
 void notify_sysjump_ready(void)
