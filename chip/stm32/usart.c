@@ -167,6 +167,6 @@ void usart_set_parity(struct usart_config const *config, int parity)
 
 void usart_interrupt(struct usart_config const *config)
 {
-	config->tx->interrupt(config);
-	config->rx->interrupt(config);
+        config->tx->interrupt(config);
+        config->rx->interrupt(config);
 }
