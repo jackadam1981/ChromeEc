@@ -3555,6 +3555,12 @@
 #undef CONFIG_STREAM_USB
 
 /*****************************************************************************/
+/* UART HOST COMMAND config */
+#undef CONFIG_USART_HOST_COMMAND
+#undef CONFIG_TL_UART_HW
+#undef CONFIG_TL_UART_BAUD_RATE
+
+/*****************************************************************************/
 /* UART config */
 
 /* Baud rate for UARTs */
