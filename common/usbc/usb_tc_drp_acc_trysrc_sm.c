@@ -186,6 +186,22 @@ static const char * const tc_state_names[] = {
 };
 #endif
 
+/*
+ * Debug log level - higher number == more log
+ *   Level 0: disabled
+ *   Level 1: state names
+ *   Level 2: Level 1
+ *   Level 3: Level 2
+ *
+ * Note that higher log level causes timing changes and thus may affect
+ * performance.
+ */
+#ifdef CONFIG_USB_PD_DEBUG_LEVEL
+static enum debug_level tc_debug_level = CONFIG_USB_PD_DEBUG_LEVEL;
+#else
+static enum debug_level tc_debug_level;
+#endif
+
 /* Generate a compiler error if invalid states are referenced */
 #ifndef CONFIG_USB_PD_TRY_SRC
 #define TC_TRY_SRC	TC_TRY_SRC_UNDEFINED
@@ -1116,7 +1132,8 @@ static enum usb_tc_state get_last_state_tc(const int port)
 
 static void print_current_state(const int port)
 {
-	CPRINTS("C%d: %s", port, tc_state_names[get_state_tc(port)]);
+	if (tc_debug_level >= DEBUG_LEVEL_1)
+		CPRINTS("C%d: %s", port, tc_state_names[get_state_tc(port)]);
 }
 
 static void handle_device_access(int port)
@@ -3196,6 +3213,11 @@ static void tc_cc_open_entry(const int port)
 		 */
 		ppc_clear_oc_event_counter(port);
 	}
+}
+
+void tc_set_debug_level(enum debug_level debug_level)
+{
+	tc_debug_level = debug_level;
 }
 
 void tc_run(const int port)
