@@ -22,6 +22,30 @@
       "revId": "6af07bc53bd21aa9eb805a215b047604026a5ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dba6b54_537cda0d",
+        "filename": "test/stm32f_rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-04-30T17:49:13Z",
+      "side": 1,
+      "message": "Unfortunately it doesn\u0027t fit on one line (\u003e 80 characters).",
+      "parentUuid": "50ad118b_b07511d8",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "6af07bc53bd21aa9eb805a215b047604026a5ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
