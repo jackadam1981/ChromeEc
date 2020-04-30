@@ -10,6 +10,7 @@
 #include "console.h"
 #include "registers.h"
 #include "system.h"
+#include "usart_host_command.h"
 #include "util.h"
 
 void usart_rx_dma_init(struct usart_config const *config)
@@ -27,6 +28,9 @@ void usart_rx_dma_init(struct usart_config const *config)
 			    STM32_DMA_CCR_CIRC),
 	};
 
+	if (IS_ENABLED(CHIP_FAMILY_STM32F4))
+		options.flags |= STM32_DMA_CCR_CHANNEL(STM32_REQ_USART1_RX);
+
 	STM32_USART_CR1(base) |= STM32_USART_CR1_RXNEIE;
 	STM32_USART_CR1(base) |= STM32_USART_CR1_RE;
 	STM32_USART_CR3(base) |= STM32_USART_CR3_DMAR;
@@ -37,7 +41,10 @@ void usart_rx_dma_init(struct usart_config const *config)
 	dma_start_rx(&options, dma_config->fifo_size, dma_config->fifo_buffer);
 }
 
-void usart_rx_dma_interrupt(struct usart_config const *config)
+void usart_rx_dma_interrupt_common(
+		struct usart_config const *config,
+		size_t (*add_units)(struct queue const *q,
+				const void *src, size_t count))
 {
 	struct usart_rx_dma const *dma_config =
 		DOWNCAST(config->rx, struct usart_rx_dma const, usart_rx);
@@ -51,7 +58,7 @@ void usart_rx_dma_interrupt(struct usart_config const *config)
 	if (new_index > old_index) {
 		new_bytes = new_index - old_index;
 
-		added = queue_add_units(config->producer.queue,
+		added = add_units(config->producer.queue,
 					dma_config->fifo_buffer + old_index,
 					new_bytes);
 	} else if (new_index < old_index) {
@@ -62,10 +69,10 @@ void usart_rx_dma_interrupt(struct usart_config const *config)
 		 */
 		new_bytes = dma_config->fifo_size - (old_index - new_index);
 
-		added = queue_add_units(config->producer.queue,
+		added = add_units(config->producer.queue,
 					dma_config->fifo_buffer + old_index,
 					dma_config->fifo_size - old_index) +
-			queue_add_units(config->producer.queue,
+			add_units(config->producer.queue,
 					dma_config->fifo_buffer,
 					new_index);
 	} else {
@@ -79,6 +86,19 @@ void usart_rx_dma_interrupt(struct usart_config const *config)
 
 	dma_config->state->index = new_index;
 }
+
+void usart_rx_dma_interrupt(struct usart_config const *config)
+{
+	usart_rx_dma_interrupt_common(config, &queue_add_units);
+}
+
+
+#if defined(CONFIG_USART_HOST_COMMAND)
+void usart_host_command_rx_dma_interrupt(struct usart_config const *config)
+{
+	usart_rx_dma_interrupt_common(config, &usart_host_command_rx_add_units);
+}
+#endif /* CONFIG_USART_HOST_COMMAND */
 
 void usart_rx_dma_info(struct usart_config const *config)
 {

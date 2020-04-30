@@ -197,6 +197,11 @@ void usart_shutdown(struct usart_config const *config);
 void usart_interrupt(struct usart_config const *config);
 
 /*
+ * Start tx interrupt handler to process tx units.
+ */
+void usart_tx_start(struct usart_config const *config);
+
+/*
  * These are HW specific baud rate calculation and setting functions that the
  * peripheral variant code uses during initialization and clock frequency
  * change.  The baud rate divisor input frequency is passed in Hertz.
@@ -254,5 +259,15 @@ struct usart_configs {
 };
 
 struct usart_configs usart_get_configs(void);
+
+#if defined(CONFIG_USART_HOST_COMMAND)
+/*
+ * This usart_tx structure contains function pointer to interrupt
+ * handler implemented to send host response. Generic queue based
+ * interrupt handler is not used for usart host transport.
+ */
+extern struct usart_tx const usart_host_command_tx_interrupt;
+
+#endif /* CONFIG_USART_HOST_COMMAND */
 
 #endif /* __CROS_EC_USART_H */
