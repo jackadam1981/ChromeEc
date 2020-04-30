@@ -25,6 +25,92 @@
     },
     {
       "key": {
+        "uuid": "783f5f85_3a21e94f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-04-30T02:20:25Z",
+      "side": 1,
+      "message": "s/BMA253/BMA253 in the lid/",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d89b220d_edbe0cd3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-04-30T02:20:25Z",
+      "side": 1,
+      "message": "octopus",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "447318be_b63d1e7f",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-04-30T02:20:25Z",
+      "side": 1,
+      "message": "BMA253",
+      "range": {
+        "startLine": 179,
+        "startChar": 3,
+        "endLine": 179,
+        "endChar": 9
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b50bc640_f38431f3",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-04-30T02:20:25Z",
+      "side": 1,
+      "message": "Do you verify the chip mounting orientation is good for this lid_standard_ref matrix as well?",
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc0505f2_831114a5",
         "filename": "board/ampton/board.c",
         "patchSetId": 1
@@ -84,6 +170,30 @@
       "side": 1,
       "message": "Ah, I didn\u0027t realize that these SKUs were never produces. Then this change is okay, I would say we need to update our records with this change, but for octopus this is really the only place (the code) where we record this information.",
       "parentUuid": "05a3ab18_5e57d5f1",
+      "range": {
+        "startLine": 316,
+        "startChar": 2,
+        "endLine": 318,
+        "endChar": 0
+      },
+      "revId": "37c5d9f7200d2c1efda0e07245cd474c3215ac6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d2f6f4d_c882250c",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-04-30T02:20:25Z",
+      "side": 1,
+      "message": "We are under confirmation in b/154297511 and requests to update go/octopus-skus as well.",
+      "parentUuid": "ab43604e_5e210cc5",
       "range": {
         "startLine": 316,
         "startChar": 2,
