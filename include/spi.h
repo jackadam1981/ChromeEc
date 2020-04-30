@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_SPI_H
 #define __CROS_EC_SPI_H
 
+#include "host_command.h"
+
 /*
  * SPI Clock polarity and phase mode (0 - 3)
  * @code
@@ -100,6 +102,11 @@ int spi_transaction_flush(const struct spi_device_t *spi_device);
 
 /* Wait for async response received but do not de-assert chip select */
 int spi_transaction_wait(const struct spi_device_t *spi_device);
+
+/* Get SPI protocol information. This function is called in runtime if board's
+ * host command transport is SPI.
+ */
+enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args);
 
 #ifdef CONFIG_SPI
 /**
