@@ -385,7 +385,7 @@ bool pd_is_try_source_capable(void)
 	 * Since a dedicated charge port can source power allow PD
 	 * trying as source.
 	 */
-	new_try_src |= (charge_manager_get_active_charge_port() ==
+	new_try_src |= (charge_manager_get_supplier() ==
 			     CHARGE_SUPPLIER_DEDICATED);
 #endif /* CONFIG_DEDICATED_CHARGE_PORT_COUNT */
 
