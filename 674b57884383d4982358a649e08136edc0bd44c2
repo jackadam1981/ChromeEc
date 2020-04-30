@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "aa771f77_50958e06",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "Always assume a compiler will do a better job than you can by hand. Please write in C, using inline asm only where absolutely necessary.",
+      "parentUuid": "29511074_956e5916",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 4
+      },
+      "revId": "674b57884383d4982358a649e08136edc0bd44c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c986b25d_e940852d",
         "filename": "chip/ish/aontaskfw/ish_aon_share.h",
         "patchSetId": 1

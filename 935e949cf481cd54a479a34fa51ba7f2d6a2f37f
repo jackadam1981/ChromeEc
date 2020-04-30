@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62476d16_af99b690",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "only declarations should go in header files, not implementations. (declare as extern in the header file, then put the definition in a .c file).",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4506a1e1_4aa967f2",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "extern",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "278f1e78_64bd906c",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "extern",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "555100e4_5c63397f",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "use a real variable name",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 11
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f1b16ae_d48dd299",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "extern",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d945818e_3bfc6bec",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "you need a space after the }",
+      "range": {
+        "startLine": 470,
+        "startChar": 2,
+        "endLine": 470,
+        "endChar": 7
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a14967_e70e48e8",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "please do not use abbreviations in variable names",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 8
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4301e0_b3ecf831",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "overindented",
+      "range": {
+        "startLine": 493,
+        "startChar": 2,
+        "endLine": 493,
+        "endChar": 6
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c522a5ec_83b34a7d",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "You can simply put \"if (!IS_ENABLED(CONFIG_ISH_IPAPG)) return 0;\" at the top of the previous function?",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 1
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b9bd21_5dac2d47",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "needs a better variable name? avoid abbreviations when possible",
+      "range": {
+        "startLine": 531,
+        "startChar": 8,
+        "endLine": 531,
+        "endChar": 19
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84fbc09a_bce6f807",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "declare this in the corresponding for loops",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 9
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60a0050e_d48c7be4",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "ARRAY_SIZE(ioapic_rte)",
+      "range": {
+        "startLine": 540,
+        "startChar": 21,
+        "endLine": 540,
+        "endChar": 32
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd39b7de_1b39fe64",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "ARRAY_SIZE(ioapic_rte)",
+      "range": {
+        "startLine": 548,
+        "startChar": 21,
+        "endLine": 548,
+        "endChar": 32
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41cf0256_ed49257d",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "indentation is not correct",
+      "range": {
+        "startLine": 868,
+        "startChar": 0,
+        "endLine": 874,
+        "endChar": 2
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2d32bac_9d680a57",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-04-30T20:21:35Z",
+      "side": 1,
+      "message": "please declare in for loop",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 7
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
