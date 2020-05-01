@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "00627aeb_69d973b5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T16:09:32Z",
+      "side": 1,
+      "message": "It is SOP.  This is the path that systems not using SOP\u0027follow.",
+      "range": {
+        "startLine": 973,
+        "startChar": 4,
+        "endLine": 973,
+        "endChar": 45
+      },
+      "revId": "6d0a42f264ffe17b6042f4e7d4205a21a5de15ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87704978_ec8fd95d",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 2
@@ -61,6 +84,30 @@
       "side": 1,
       "message": "I think a new CL is the way to go.  I filed bug b:155476419 to track.\n\nI still think you should set the TCPC_TX_INVALID value to 0xF to be compatible with the conversion over to pd_msg_type.",
       "parentUuid": "eb4da6a3_bbee682e",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "6d0a42f264ffe17b6042f4e7d4205a21a5de15ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1fbec0f_bcd7077d",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T16:09:32Z",
+      "side": 1,
+      "message": "Keith, where do you see enum pd_msg_type being used in TCPMv2?  All the type references I see in v2 are enum tcpm_transmit_type.\n\nI\u0027m fine with changing enums (especially as the new enum would be shorter names), but we do need to make comments to enforce that the enum ordering must match the TCPC RX_BUF_FRAME_TYPE definition if we\u0027re moving to an enum outside the TCPM code area.",
+      "parentUuid": "851fa334_db386c93",
       "range": {
         "startLine": 87,
         "startChar": 5,
