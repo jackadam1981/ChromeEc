@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a1c59b6a_2a696a75",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-01T16:53:25Z",
+      "side": 1,
+      "message": "Whoops. I thought I deleted that comment. 😊",
+      "parentUuid": "00627aeb_69d973b5",
+      "range": {
+        "startLine": 973,
+        "startChar": 4,
+        "endLine": 973,
+        "endChar": 45
+      },
+      "revId": "6d0a42f264ffe17b6042f4e7d4205a21a5de15ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87704978_ec8fd95d",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 2
@@ -117,6 +141,30 @@
       "revId": "6d0a42f264ffe17b6042f4e7d4205a21a5de15ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfacb181_61830dd7",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-01T16:53:25Z",
+      "side": 1,
+      "message": "\u003e Keith, where do you see enum pd_msg_type being used in TCPMv2?\n\nIt was me who said that, but I was wrong. During my rebase to change this, I ran into some conflicts, but I think they had to do with uses of pd_msg_tx_type from usb_pd_policy.c. TCPMv1 and TCPMv2 both interact with the functions in usb_pd_alt_mode.c, some of which use enum tcpm_transmit_type.\n\nI\u0027ll move further discussion to the bug that Keith created.",
+      "parentUuid": "a1fbec0f_bcd7077d",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "6d0a42f264ffe17b6042f4e7d4205a21a5de15ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
