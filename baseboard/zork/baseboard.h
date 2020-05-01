@@ -119,6 +119,12 @@
  */
 #define CONFIG_USB_PID 0x5040
 
+/* TODO(b:155472912) turn off chatty PD debug before release
+ *
+ * Default USB PD debug level
+ */
+#define CONFIG_USB_PD_DEBUG_LEVEL 1
+
 /* Enable the TCPMv2 PD stack */
 #define CONFIG_USB_PD_TCPMV2
 
