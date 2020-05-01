@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1079df15_4b258139",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-01T22:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed47b727_aee9edff",
+      "range": {
+        "startLine": 1417,
+        "startChar": 5,
+        "endLine": 1417,
+        "endChar": 30
+      },
+      "revId": "9b3bd01cc2331ce99dd7e54434457ee3259d115f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e448736_40ada9c3",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -45,6 +69,53 @@
       "revId": "9b3bd01cc2331ce99dd7e54434457ee3259d115f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4cc5543_2dffe136",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-01T22:12:28Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1e448736_40ada9c3",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 35
+      },
+      "revId": "9b3bd01cc2331ce99dd7e54434457ee3259d115f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f12748_a8ee2ea2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-01T22:12:28Z",
+      "side": 1,
+      "message": "It looks like is_identified is conceptually redundant with discovery. Getting rid of it without loss of functionality would involve validating identity response VDMs inside TCPMv1 before calling dfp_consume_cable, which it currently doesn\u0027t do. That fits somewhat with this CL, but it could also be part of a whole larger effort to get rid of this struct entirely. I\u0027m inclined to leave it for now but open to persuasion.",
+      "range": {
+        "startLine": 551,
+        "startChar": 9,
+        "endLine": 551,
+        "endChar": 22
+      },
+      "revId": "9b3bd01cc2331ce99dd7e54434457ee3259d115f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
