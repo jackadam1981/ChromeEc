@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a2c2836_34b4858f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4487,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-01T19:40:01Z",
+      "side": 1,
+      "message": "PE_DO_PORT_DISCOVERY has its own discovery state (basically) in the form of pe[port].vdm_cmd. As a temporary compatibility measure, this code sets that field after discovery. pe_vdm_request_run handles VDM-related flags, which are the other way that PE_DO_PORT_DISCOVERY is controlled.",
+      "parentUuid": "6ecdbdb1_399da338",
+      "range": {
+        "startLine": 4487,
+        "startChar": 0,
+        "endLine": 4487,
+        "endChar": 52
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "affc3a2d_f1c98e31",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
