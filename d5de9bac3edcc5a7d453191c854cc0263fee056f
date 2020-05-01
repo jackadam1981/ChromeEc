@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8f2c3fa_78ac0336",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T19:41:22Z",
+      "side": 1,
+      "message": "We may hit issues with the v1 way of doing things here?  v1 was storing all the SVIDs in the same array, SOP and SOP\u0027.  Though I guess looking at process_am_discover_svids, we\u0027re going to still stuff everything in SOP on v1?",
+      "range": {
+        "startLine": 412,
+        "startChar": 7,
+        "endLine": 412,
+        "endChar": 53
+      },
+      "revId": "d5de9bac3edcc5a7d453191c854cc0263fee056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e57402_0d52e140",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T19:41:22Z",
+      "side": 1,
+      "message": "Thanks for taking the time to comment the header structs.  It took me forever to figure out what was going on with these when I worked on my first DP enter mode bug",
+      "revId": "d5de9bac3edcc5a7d453191c854cc0263fee056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d82fdf0_ac15a5a2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T19:41:22Z",
+      "side": 1,
+      "message": "I may answer my own question here as I move up the CL stack, but is this being shared between SOP and SOP\u0027\u0027?",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 391,
+        "endChar": 14
+      },
+      "revId": "d5de9bac3edcc5a7d453191c854cc0263fee056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
