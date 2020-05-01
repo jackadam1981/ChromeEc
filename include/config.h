@@ -3088,7 +3088,7 @@
  * verification to an automatic jump to RW (if AP does not request the wait to
  * be interrupted).
  */
-#define CONFIG_RWSIG_JUMP_TIMEOUT (1000 * MSEC)
+#define CONFIG_RWSIG_JUMP_TIMEOUT (3000 * MSEC)
 
 /*
  * Defines what type of futility signature type should be used.
