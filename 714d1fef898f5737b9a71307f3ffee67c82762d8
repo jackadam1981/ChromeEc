@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "708a340e_7bae806e",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-01T19:30:32Z",
+      "side": 1,
+      "message": "The new name for this field should be TABLETMODE to match the boxter configuration data.  See b:155497872 for details.",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 32
+      },
+      "revId": "714d1fef898f5737b9a71307f3ffee67c82762d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "410e262b_c2021059",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-01T19:30:32Z",
+      "side": 1,
+      "message": "The bit number should be 11.",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 41
+      },
+      "revId": "714d1fef898f5737b9a71307f3ffee67c82762d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
