@@ -2111,6 +2111,9 @@
 /* For ECs with multiple wakeup pins, define enabled wakeup pins */
 #undef CONFIG_HIBERNATE_WAKEUP_PINS
 
+/* Prevent booting after waking up from hibernation */
+#undef CONFIG_AP_OFF_ON_HIBERNATE_WAKE
+
 /*
  * If defined, chip hibernation is used. Your board needs to define wake-up
  * signals. Undefine this to use board hibernation capability.
