@@ -46,6 +46,30 @@
       "revId": "3ff190518ed4ef4ca1a0111b71c8424b0e73cabd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c33f937e_67603939",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-05-01T08:06:03Z",
+      "side": 1,
+      "message": "If we change sp here, we also need to increase scratchpad size for the first content switch. Or some data will be overwritten after the switch.\n\nI will look into this change next week.",
+      "parentUuid": "70f7cc8e_c15d29b4",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 151,
+        "endChar": 26
+      },
+      "revId": "3ff190518ed4ef4ca1a0111b71c8424b0e73cabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
