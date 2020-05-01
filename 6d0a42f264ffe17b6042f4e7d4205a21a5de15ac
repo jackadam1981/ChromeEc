@@ -22,6 +22,30 @@
       "revId": "6d0a42f264ffe17b6042f4e7d4205a21a5de15ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4da6a3_bbee682e",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-01T06:46:02Z",
+      "side": 1,
+      "message": "Currently, these two enums coexist in the PE, apparently stably. If I change policy_engine.tx_type to pd_msg_type, I get compiler errors (implicit enum conversion) from the fuzz tests.\n\nTo do this nicely, I think I\u0027d have to plumb the type change down to the TCPC layer in both TCPM versions. That kind of change would probably be easier to perform and to understand as one big CL. I propose to leave it like it is for now and create a bug (if one doesn\u0027t already exist) to do a large-scale change later.\n\nA compromise would be to explicitly cast between enums at the boundaries between the new discovery code and the existing uses of tcpm_transmit_type in the PE. That would at least avoid new uses of tcpm_transmit_type. It would be gross, but that probably reflects the nature of the situation.\n\nWDYT?",
+      "parentUuid": "87704978_ec8fd95d",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "6d0a42f264ffe17b6042f4e7d4205a21a5de15ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
