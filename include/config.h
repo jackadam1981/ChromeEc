@@ -2112,6 +2112,14 @@
 #undef CONFIG_HIBERNATE_WAKEUP_PINS
 
 /*
+ * Prevent booting after waking up from hibernation.
+ *
+ * Note the charging power after wake-up will be limited to 15W unless EFS2
+ * is enabled.
+ */
+#undef CONFIG_AP_OFF_ON_HIBERNATE_WAKE
+
+/*
  * If defined, chip hibernation is used. Your board needs to define wake-up
  * signals. Undefine this to use board hibernation capability.
  */
