@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5cb691e_a8ba272c",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T19:26:27Z",
+      "side": 1,
+      "message": "nit: since we\u0027re opting to not probe SOP\u0027\u0027, this wouldn\u0027t really be necessary and may cause some reader confusion",
+      "range": {
+        "startLine": 514,
+        "startChar": 19,
+        "endLine": 514,
+        "endChar": 47
+      },
+      "revId": "1cc8a196a158b821c68266928060075e98dfbd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eba49c0_34a619af",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4138,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T19:26:27Z",
+      "side": 1,
+      "message": "Same nit for here, may cause reader confusion in the future since we\u0027re just doing SOP\u0027 right now",
+      "range": {
+        "startLine": 4133,
+        "startChar": 0,
+        "endLine": 4138,
+        "endChar": 0
+      },
+      "revId": "1cc8a196a158b821c68266928060075e98dfbd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
