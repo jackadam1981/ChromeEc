@@ -46,6 +46,30 @@
       "revId": "6d0a42f264ffe17b6042f4e7d4205a21a5de15ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "851fa334_db386c93",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-01T15:48:51Z",
+      "side": 1,
+      "message": "I think a new CL is the way to go.  I filed bug b:155476419 to track.\n\nI still think you should set the TCPC_TX_INVALID value to 0xF to be compatible with the conversion over to pd_msg_type.",
+      "parentUuid": "eb4da6a3_bbee682e",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "6d0a42f264ffe17b6042f4e7d4205a21a5de15ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
