@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8572121b_51c90874",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T21:04:01Z",
+      "side": 1,
+      "message": "Yeah, might want to mark discovery as failed and bail if something went wrong in the process to cause us to request the wrong SVID (or if the partner sent us nonsense)",
+      "range": {
+        "startLine": 386,
+        "startChar": 3,
+        "endLine": 386,
+        "endChar": 53
+      },
+      "revId": "d2d9ff7fd8acffb8f7e3e586723df805acd021d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd39ee8e_b8da7c49",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T21:04:01Z",
+      "side": 1,
+      "message": "Would continue to set complete below?",
+      "range": {
+        "startLine": 393,
+        "startChar": 2,
+        "endLine": 394,
+        "endChar": 18
+      },
+      "revId": "d2d9ff7fd8acffb8f7e3e586723df805acd021d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ca3c15_4f7d8d11",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4564,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T21:04:01Z",
+      "side": 1,
+      "message": "CMD_DISCOVER_MODES from usb_pd.h preferably.  Once we can remove do_port_discovery, the near-duplicate enum in this file should probably go",
+      "range": {
+        "startLine": 4564,
+        "startChar": 3,
+        "endLine": 4564,
+        "endChar": 17
+      },
+      "revId": "d2d9ff7fd8acffb8f7e3e586723df805acd021d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9db4af54_1126249f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4677,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T21:04:01Z",
+      "side": 1,
+      "message": "We should handle protocol errors for this state in the generic pe_report_error() (which actually already happens if the state isn\u0027t in the exception if at the top of that function).  Before we successfully get an ACK for cable discovery, we have a corner case to handle.  After, we\u0027re in regular soft reset territory like we would be with a SOP partner.",
+      "range": {
+        "startLine": 4662,
+        "startChar": 0,
+        "endLine": 4677,
+        "endChar": 2
+      },
+      "revId": "d2d9ff7fd8acffb8f7e3e586723df805acd021d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
