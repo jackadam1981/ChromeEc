@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ba232faa_42aa9323",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-01T21:57:16Z",
+      "side": 1,
+      "message": "I copy/pasted what was in the PE doc. I don\u0027t think there is any real set meaning to the levels.",
+      "parentUuid": "bad38d2f_c34df0ce",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 21
+      },
+      "revId": "ad802ef3812ee18cb51b89ba7de7831f78ace9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f77188d1_99e322e2",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "ad802ef3812ee18cb51b89ba7de7831f78ace9de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b225f43f_322c5659",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-01T21:57:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f77188d1_99e322e2",
+      "range": {
+        "startLine": 1136,
+        "startChar": 2,
+        "endLine": 1136,
+        "endChar": 41
+      },
+      "revId": "ad802ef3812ee18cb51b89ba7de7831f78ace9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
