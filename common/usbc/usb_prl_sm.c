@@ -97,7 +97,11 @@
  * Note that higher log level causes timing changes and thus may affect
  * performance.
  */
+#ifdef CONFIG_USB_PD_DEBUG_LEVEL
+static enum debug_level prl_debug_level = CONFIG_USB_PD_DEBUG_LEVEL;
+#else
 static enum debug_level prl_debug_level;
+#endif
 
 static enum sm_local_state local_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
