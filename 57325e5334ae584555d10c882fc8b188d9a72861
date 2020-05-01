@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb82fefb_7f5ae99f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-01T16:28:48Z",
+      "side": 1,
+      "message": "The two levels of svids[] arrrays is confusing. How about svid_response[] instead?  \n\nAnother option is to combine the identity_data and svid_data structs because they are now both indexed by SOP message type.\n\nSomething like\nstruct sop_discovery_data {\n    struct indentity_data indentity;\n    struct svid_data svid;\n}\n\nstruct pd_discovery {\n    struct sop_discovery_data sop_data[DISCOVERY_TYPE_COUNT];\n}\n\nWDYT?",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 46
+      },
+      "revId": "57325e5334ae584555d10c882fc8b188d9a72861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
