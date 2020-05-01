@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9864c7e6_8294a1fc",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-01T21:10:20Z",
+      "side": 1,
+      "message": "why do you need to undef? no one should be defining this private config, right?",
+      "range": {
+        "startLine": 175,
+        "startChar": 7,
+        "endLine": 175,
+        "endChar": 26
+      },
+      "revId": "7c50b281c7ac7a051595bebc3c4020e6d7d55449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e02d960e_f898ff91",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-01T21:10:20Z",
+      "side": 1,
+      "message": "can you add comments saying why we are doing this (i.e. defining PD_DEBUG_LEVEL to 0 explicity in board.h will remove these debug strings and prints",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "7c50b281c7ac7a051595bebc3c4020e6d7d55449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b04e796f_ff4d1d33",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-01T21:10:20Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need to define this right? Nothing links against this.\n\nHaving this defined here seems a little dangerous since will be trying to dereference uninitiaized memory",
+      "range": {
+        "startLine": 213,
+        "startChar": 20,
+        "endLine": 213,
+        "endChar": 34
+      },
+      "revId": "7c50b281c7ac7a051595bebc3c4020e6d7d55449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acfdac74_0c8ced62",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-01T21:10:20Z",
+      "side": 1,
+      "message": "maybe we only need this comment in the header file where enum debug_level is defined?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 3
+      },
+      "revId": "7c50b281c7ac7a051595bebc3c4020e6d7d55449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a1fa94_2ca09d55",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-01T21:10:20Z",
+      "side": 1,
+      "message": "I think we can just return \"\" here",
+      "range": {
+        "startLine": 558,
+        "startChar": 10,
+        "endLine": 558,
+        "endChar": 27
+      },
+      "revId": "7c50b281c7ac7a051595bebc3c4020e6d7d55449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ffa050e_701d1de6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-01T21:10:20Z",
+      "side": 1,
+      "message": "should this just call tc_get_currnt_state isntead?",
+      "range": {
+        "startLine": 862,
+        "startChar": 12,
+        "endLine": 862,
+        "endChar": 34
+      },
+      "revId": "7c50b281c7ac7a051595bebc3c4020e6d7d55449",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
