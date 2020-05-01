@@ -312,6 +312,15 @@ DECLARE_HOST_COMMAND(EC_CMD_RWSIG_ACTION,
 		     rwsig_cmd_action,
 		     EC_VER_MASK(0));
 
+static int command_stop(int argc, char **argv)
+{
+	rwsig_abort();
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(stop, command_stop,
+			     NULL,
+			     "Stop RW sig");
+
 #else /* !HAS_TASK_RWSIG */
 enum ec_status rwsig_cmd_check_status(struct host_cmd_handler_args *args)
 {

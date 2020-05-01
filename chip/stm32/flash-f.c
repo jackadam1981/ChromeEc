@@ -504,6 +504,7 @@ int flash_physical_protect_at_boot(uint32_t new_flags)
 			val |= 1 << block;
 	}
 	if (original_val != val) {
+		CPRINTF("Writing protection\n");
 		write_optb(STM32_FLASH_nWRP_ALL,
 			   val << STM32_FLASH_nWRP_OFFSET);
 	}
@@ -514,6 +515,7 @@ int flash_physical_protect_at_boot(uint32_t new_flags)
 
 static void unprotect_all_blocks(void)
 {
+	CPRINTF("Unprotect all\n");
 	write_optb(STM32_FLASH_nWRP_ALL, STM32_FLASH_nWRP_ALL);
 }
 
