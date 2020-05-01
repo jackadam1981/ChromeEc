@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bad38d2f_c34df0ce",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T15:40:07Z",
+      "side": 1,
+      "message": "I don\u0027t really understand these descriptions?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 21
+      },
+      "revId": "ad802ef3812ee18cb51b89ba7de7831f78ace9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f77188d1_99e322e2",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
