@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "536310a1_5e709ca3",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-01T15:26:07Z",
+      "side": 1,
+      "message": "Can you change this to use the PD_HEADER_SOP() macro, guarded with CONFIG_USB_PD_DECODE_SOP?  All the TCPC drivers support filling this in with the exception of the IT83xx driver, which is fixed with CL:2173303\n\nI think this might allow you to eliminate the CABLE_FLAGS_SOP_PRIME_[PRIME]_ENABLE  flags completely.",
+      "range": {
+        "startLine": 599,
+        "startChar": 0,
+        "endLine": 599,
+        "endChar": 64
+      },
+      "revId": "cf279120ee252978433a13dc8318474dcd8ca7af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
