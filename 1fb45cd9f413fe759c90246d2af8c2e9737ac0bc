@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ecdbdb1_399da338",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4487,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-01T19:08:56Z",
+      "side": 1,
+      "message": "The SVID discovery state isn\u0027t checked by pe_do_port_discovery_run().  Won\u0027t pe_do_discovery_run() send another Discover SVID?  It should probably be harmless to resend Discover SVID, but probably not the desired behavior.\n\nI supposed, this is temporary, because PE_DO_PORT_DISCOVERY will eventually be eliminated, correct?",
+      "range": {
+        "startLine": 4487,
+        "startChar": 0,
+        "endLine": 4487,
+        "endChar": 52
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "affc3a2d_f1c98e31",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4498,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-01T19:08:56Z",
+      "side": 1,
+      "message": "The set state at line 4510 will ensure pe_attempt_port_discover() is called again, which is already using discover_port_identity_timer.  So I think you can safely reuse the same timer here.",
+      "range": {
+        "startLine": 4493,
+        "startChar": 0,
+        "endLine": 4498,
+        "endChar": 0
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
