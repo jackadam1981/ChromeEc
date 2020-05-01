@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "46a6b8ba_616b606f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T19:58:26Z",
+      "side": 1,
+      "message": "Alternatively, we could consider having identity mark svids as failed if identity discovery fails, so only the svids discovery needs to be checked.",
+      "range": {
+        "startLine": 1222,
+        "startChar": 0,
+        "endLine": 1226,
+        "endChar": 51
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ecdbdb1_399da338",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -49,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "75e615f6_2e7f9dca",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4487,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T19:58:26Z",
+      "side": 1,
+      "message": "Based on traces I\u0027ve seen so far, we\u0027ll double-discover on NAKs (usually it\u0027s discover identity being NAK\u0027d), but that seems like an acceptable transition behavior as the ultimate goal is to align our states with the spec (which doesn\u0027t contain DO_PORT_DISCOVERY)",
+      "parentUuid": "7a2c2836_34b4858f",
+      "range": {
+        "startLine": 4487,
+        "startChar": 0,
+        "endLine": 4487,
+        "endChar": 52
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "affc3a2d_f1c98e31",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -65,6 +112,53 @@
         "startChar": 0,
         "endLine": 4498,
         "endChar": 0
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09038d57_e14c3e3e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4498,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T19:58:26Z",
+      "side": 1,
+      "message": "Should be safe to re-use the timer.  The timer\u0027s \"official\" use is to space out cable discovery.  Past that point, might as well put it to an additional use spacing BUSY responses.\n\nWe might want a configured maximum busy limit, but that would probably be a policy TODO for later",
+      "parentUuid": "affc3a2d_f1c98e31",
+      "range": {
+        "startLine": 4493,
+        "startChar": 0,
+        "endLine": 4498,
+        "endChar": 0
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b28af43_79678af5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4500,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T19:58:26Z",
+      "side": 1,
+      "message": "Partner",
+      "range": {
+        "startLine": 4500,
+        "startChar": 7,
+        "endLine": 4500,
+        "endChar": 12
       },
       "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
