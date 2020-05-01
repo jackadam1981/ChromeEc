@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed47b727_aee9edff",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-01T17:13:13Z",
+      "side": 1,
+      "message": "Change to pe_get_identity_discovery(port, TXPC_TX_SOP_PRIME)",
+      "range": {
+        "startLine": 1417,
+        "startChar": 5,
+        "endLine": 1417,
+        "endChar": 30
+      },
+      "revId": "9b3bd01cc2331ce99dd7e54434457ee3259d115f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e448736_40ada9c3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-01T17:13:13Z",
+      "side": 1,
+      "message": "This should be deleted.",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 35
+      },
+      "revId": "9b3bd01cc2331ce99dd7e54434457ee3259d115f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
