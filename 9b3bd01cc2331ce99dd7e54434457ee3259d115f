@@ -116,6 +116,30 @@
       "revId": "9b3bd01cc2331ce99dd7e54434457ee3259d115f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1705566f_306b63b0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-01T22:17:26Z",
+      "side": 1,
+      "message": "I suspect we have a general cleanup task in our future to remove pd_cable entirely from v2.  The attributes are already redundant with the identity discovery information, and these CLs make the discovery mode fields redundant as well. \n\nUltimately, we\u0027ll probably keep the flags and last message support in here for v1 to use, but the shared code should move away from this structure once discovery is complete.",
+      "parentUuid": "63f12748_a8ee2ea2",
+      "range": {
+        "startLine": 551,
+        "startChar": 9,
+        "endLine": 551,
+        "endChar": 22
+      },
+      "revId": "9b3bd01cc2331ce99dd7e54434457ee3259d115f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
