@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a65e0ed0_50aa32e4",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-01T18:18:46Z",
+      "side": 1,
+      "message": "You should use the BIT(...) macro for these.",
+      "range": {
+        "startLine": 67,
+        "startChar": 22,
+        "endLine": 67,
+        "endChar": 30
+      },
+      "revId": "33d3641d50b9e8d4dd6ff5e9fdd72dd0b3325ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32656430_727b7baf",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-01T18:18:46Z",
+      "side": 1,
+      "message": "I think that this should check that HPD is present?",
+      "range": {
+        "startLine": 919,
+        "startChar": 2,
+        "endLine": 919,
+        "endChar": 5
+      },
+      "revId": "33d3641d50b9e8d4dd6ff5e9fdd72dd0b3325ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
