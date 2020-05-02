@@ -166,6 +166,30 @@
       "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9cdc0a3_ed27c48e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4187,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-05-02T23:06:57Z",
+      "side": 1,
+      "message": "Clarifying: the UFP/DFP role in a GoodCRC is /also/ somewhat meaningless information. From PD3.0 (6.2.1.1.6 Port Data Role):\n\n\u003e The Port Data Role field Shall only be defined for SOP Packets. For all other SOP* Packets the Port Data Role field is Reserved and Shall be set to zero.\n\u003e \n\u003e If a USB Type-C® Port receives a Message with the Port Data Role field set to the same Data Role as its current Data Role, except for the GoodCRC Message, USB Type-C Error Recovery actions as defined in [USB Type-C 2.0] Shall be performed.\n\nHowever, this didn\u0027t stop particular DUTs (b/132285896#comment46 ) (b/116340006#comment7 ) from freaking out when it received a GoodCRC with the wrong \"role bit\" set.\n\nThus we should carefully contemplate how to follow spec... while being \"tolerant\" of bad DUT.",
+      "parentUuid": "8dee791b_63c8a052",
+      "range": {
+        "startLine": 4185,
+        "startChar": 1,
+        "endLine": 4187,
+        "endChar": 0
+      },
+      "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
