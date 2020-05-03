@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96d17010_2cc0a9a9",
+        "filename": "power/mt8192.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-03T23:30:45Z",
+      "side": 1,
+      "message": "I\u0027d just do\nif(delay)\n   msleep(delay);\n\nA tad more readable IMHO.",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 248,
+        "endChar": 33
+      },
+      "revId": "119fc1481290de3b0777ba71c57c109d3809fadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
