@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e440ded2_6dbcc2b8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-03T20:34:23Z",
+      "side": 1,
+      "message": "I think I like that idea better, especially considering the level of indentation here.",
+      "parentUuid": "46a6b8ba_616b606f",
+      "range": {
+        "startLine": 1222,
+        "startChar": 0,
+        "endLine": 1226,
+        "endChar": 51
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ecdbdb1_399da338",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "bf66bae2_95429971",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4498,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-03T20:34:23Z",
+      "side": 1,
+      "message": "Done.\n\nDo you think that something like vdm_wait_timer would then be a better name for this field? That would make the cable-discovery case less obviously spec-compliant, but the other cases would be less surprising to the reader.",
+      "parentUuid": "09038d57_e14c3e3e",
+      "range": {
+        "startLine": 4493,
+        "startChar": 0,
+        "endLine": 4498,
+        "endChar": 0
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b28af43_79678af5",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -163,6 +211,30 @@
       "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a14ad056_75ea7075",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4500,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-03T20:34:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b28af43_79678af5",
+      "range": {
+        "startLine": 4500,
+        "startChar": 7,
+        "endLine": 4500,
+        "endChar": 12
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
