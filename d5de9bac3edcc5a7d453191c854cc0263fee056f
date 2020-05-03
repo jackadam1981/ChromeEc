@@ -62,6 +62,30 @@
       "revId": "d5de9bac3edcc5a7d453191c854cc0263fee056f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f71a4a5_6ff5e1f1",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-03T04:08:13Z",
+      "side": 1,
+      "message": "At the point in this chain where I wrote code to index SVIDs (mode discovery), I actively avoided reading from this field, because it was unclear to me what exactly \"currently being operated on\" meant. Also, as you point out, it is unaware of SOP/SOP\u0027. I instead look up the next SVID to discover modes for when I need it. Hopefully, this will meet with your approval.\n\nI retained the writes to svid_idx that I encountered, because I didn\u0027t want to disturb its consumers. dfp_consume_modes increments it, and dfp_discover_modes reads it. Those are straightforward and could be changed to use the new interface, assuming it passes review. process_tbt_compat_discover_modes decrements it for reasons that are non-obvious to me.",
+      "parentUuid": "1d82fdf0_ac15a5a2",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 391,
+        "endChar": 14
+      },
+      "revId": "d5de9bac3edcc5a7d453191c854cc0263fee056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

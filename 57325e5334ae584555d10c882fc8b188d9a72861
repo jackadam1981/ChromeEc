@@ -22,6 +22,30 @@
       "revId": "57325e5334ae584555d10c882fc8b188d9a72861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "173004e0_793c5d42",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-03T04:08:13Z",
+      "side": 1,
+      "message": "If this were C++, I would have a map from SVID to mode data, and the data structures would be split more cleanly. As it is, I had a hard time coming up with concise, expressive names for the two layers of structures. What about changing the outer \u0027svids\u0027 to \u0027svid_discovery\u0027 and the inner \u0027svids\u0027 to \u0027svids_and_modes\u0027; I think that does at least an OK job of indicating to the reader what they contain.\n\nI think that combining the SOP*-indexed arrays is an orthogonal issue. In the structure you proposed, you\u0027d still have sop_data[SOP\u0027].svid.svids[svid_idx].\n\nWe could have something like this:\n\nstruct pd_discovery {\n  union disc_ident_ack identity_response;\n  enum pd_discovery_state identity_discovery;\n  int svid_cnt;\n  struct svid_mode_data svids_and_modes[SVID_DISCOVERY_MAX];\n  enum pd_discovery_state svids_dsicovery;\n  /* Whatever we end up doing for mode entry */\n}\n\nstruct pd_discovery discovery[DISCOVERY_TYPE_COUNT];\n\nWhich one of those strikes you better?",
+      "parentUuid": "cb82fefb_7f5ae99f",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 46
+      },
+      "revId": "57325e5334ae584555d10c882fc8b188d9a72861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
