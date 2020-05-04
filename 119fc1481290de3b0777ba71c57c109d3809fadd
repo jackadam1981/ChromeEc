@@ -22,6 +22,30 @@
       "revId": "119fc1481290de3b0777ba71c57c109d3809fadd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc639b30_3931c3d9",
+        "filename": "power/mt8192.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-04T03:55:39Z",
+      "side": 1,
+      "message": "This is dropped. We don\u0027t use power_seq_run() now.",
+      "parentUuid": "96d17010_2cc0a9a9",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 248,
+        "endChar": 33
+      },
+      "revId": "119fc1481290de3b0777ba71c57c109d3809fadd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
