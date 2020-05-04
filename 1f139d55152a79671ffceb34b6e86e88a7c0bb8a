@@ -214,6 +214,30 @@
       "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b59d1b45_e226e301",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4187,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-04T17:45:32Z",
+      "side": 1,
+      "message": "For cable plugs which take a while to \"boot up\", would you expect them to GoodCRC without replying?  If they don\u0027t GoodCRC, we\u0027ll continue to re-try PD 3.0 in this scenario because we\u0027ll hit the protocol error case.\n\nFor the duplicate message ID headers causing a soft reset, can you point me to the spec section for that one?  I\u0027m not having luck finding it in my spec-spelunking this morning. \n\nNice find!  So per-spec we \"may\" retry with PD 2.0.  I\u0027ll add that reference into the code comments.",
+      "parentUuid": "70e27382_8b156193",
+      "range": {
+        "startLine": 4185,
+        "startChar": 1,
+        "endLine": 4187,
+        "endChar": 0
+      },
+      "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
