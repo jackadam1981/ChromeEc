@@ -22,6 +22,30 @@
       "revId": "f9fde6d795ae105d27152642d14278a4bc87f1a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78f39021_d7af2628",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-04T20:24:10Z",
+      "side": 1,
+      "message": "Don\u0027t mind if I do :) It\u0027s so nice and compact",
+      "parentUuid": "4f4866f6_f45bc551",
+      "range": {
+        "startLine": 361,
+        "startChar": 1,
+        "endLine": 367,
+        "endChar": 12
+      },
+      "revId": "f9fde6d795ae105d27152642d14278a4bc87f1a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
