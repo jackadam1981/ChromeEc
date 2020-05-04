@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0635c2b1_7d445551",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-04T22:23:59Z",
+      "side": 1,
+      "message": "I think level 1 doesn\u0027t print anything right now, correct?  Since this change increases the packet info to level 2?",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 25
+      },
+      "revId": "4a9ec38f0751fad680f311aea53a22a16c4ee719",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
