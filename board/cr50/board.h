@@ -322,6 +322,9 @@ int board_has_ina_support(void);
 int board_tpm_mode_change_allowed(void);
 /* The board supports EC-CR50 communication. */
 int board_has_ec_cr50_comm_support(void);
+/* The board generates a long pulse of INT_AP_L. */
+int board_uses_long_pulse_int_ap(void);
+
 int board_id_is_mismatched(void);
 /* Allow for deep sleep to be enabled on AP shutdown */
 int board_deep_sleep_allowed(void);

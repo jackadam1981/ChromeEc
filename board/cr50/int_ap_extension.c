@@ -118,6 +118,9 @@ void deassert_int_ap(void)
 
 void int_ap_extension_enable(void)
 {
+	if (!board_uses_long_pulse_int_ap())
+		return;
+
 	/* Initialize int_ap_asserted_ based on the level of INT_AP_L. */
 	int_ap_asserted_ = !gpio_get_level(GPIO_INT_AP_L);
 	pulse_length = USEC_TO_TIMEHS_TICKS(PULSE_LENGTH);
