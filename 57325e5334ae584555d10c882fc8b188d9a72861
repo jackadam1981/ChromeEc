@@ -46,6 +46,30 @@
       "revId": "57325e5334ae584555d10c882fc8b188d9a72861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8d87c1_d8571f63",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-04T16:42:14Z",
+      "side": 1,
+      "message": "I like your proposal of an array of struct pd_discovery types.\n\nLooking back at the Type-C Connector Spec, both USB4 and TBT entry requires sending an Enter message to the cable and the port partner.  So storing svdm_amode_data for each SOP type is going to be needed here anyway.",
+      "parentUuid": "173004e0_793c5d42",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 46
+      },
+      "revId": "57325e5334ae584555d10c882fc8b188d9a72861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
