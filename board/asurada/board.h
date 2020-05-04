@@ -160,6 +160,7 @@ enum battery_type {
 };
 
 enum pwm_channel {
+	PWM_CH_PWRLED,
 	PWM_CH_COUNT,
 };
 
