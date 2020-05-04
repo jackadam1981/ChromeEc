@@ -238,6 +238,30 @@
       "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dcda9f3_bd3fec9c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4187,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-05-04T20:02:29Z",
+      "side": 1,
+      "message": "\u003e For the duplicate message ID headers causing a soft reset, can you point me to the spec section for that one?  I\u0027m not having luck finding it in my spec-spelunking this morning. \n\nLikely covered under (6.8.1 Soft Reset and Protocol Error). Duplicate header ID messages \u003d GoodCRC is sent, but no reply. Thus Soft_Reset process \"opens up\" to us. (Important note: Until we get a GoodCRC, Soft_Reset is closed off to us -- since we can\u0027t be sure plug is PD-capable in the first place.)\n\nIgnore the bit about having left PE_SRC_RDY. We aren\u0027t dealing with \"an unexpected packet\"... but instead \"protocol failure\" which falls into the [[MAY]] statement below.\n\nAlso helpful citations:\n\n* PRL_Tx_Check_RetryCounter state diagram in (Figure 6-54 Common Protocol Layer Message Transmission State Diagram).\n* (8.3.3.24.2.3 DFP/VCONN Source SOP’/SOP’’ Soft Reset or Cable Reset of a Cable Plug or VPD State) which implies SOP\u0027 Soft_Reset can only be used after \"Previously Cable Discovered\" -- OR -- request from DPM.\n* (8.3.3.24.3 Source Startup Structured VDM Discover Identity of a Cable Plug State Diagram) says \"Device Policy Manager is notified\" on VDMResponseTimer timeout. Thus it\u0027s a policy choice at that point.\n\n\n\u003e The Soft Reset [[May]] be triggered by either Port Partner in response to the Protocol Error.\n\u003e (...)\n\u003e A failure to see a GoodCRC Message in response to any Message within tReceive (after nRetryCount retries), when a Port Pair is Connected, is indicative of a communications failure resulting in a Soft Reset (see Section 6.6.9.1).\n\u003e (...)\n\u003e The sender of a Soft_Reset Message Shall reset its MessageIDCounter and RetryCounter, the receiver of the Message Shall reset its MessageIDCounter and RetryCounter before sending the Accept Message response.\n\u003e (...)\n\u003e Any failure in the Soft Reset process will trigger [a Hard Reset when SOP Packets are being used] or [Cable Reset, sent by the DFP only, for any other SOP* Packets[; for example a GoodCRC Message is not received during the Soft Reset process (see Section 6.8.3 and Section 6.8.4).\n\nI added brackets for clarity in the last paragraph. Please note a \"Cable Reset\" (SOP\u0027 special bitstream) is separate and distinct from a \"Soft Reset\" (PD message).\n\n\u003e 6.8.4 Cable Reset\n\u003e \n\u003e Only a DFP Shall generate Cable Reset Signaling. [[A DFP Shall only generate Cable Reset Signaling within an Explicit Contract.]] A Cable Reset Shall cause all Active Modes in the Cable Plugs to be exited (see Section 6.4.4.3.4).\n\ntl;dr:\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n(1) If we get PD3.0 GoodCRC back but no response (VDMResponseTimer timeout), we are Cable_NAK\u0027d state. Policy layer can Soft_Reset the cable, downrev [since \"NAK\u0027ed\u0027], and try again. We can even proceed to SOP\u0027 Cable_Reset hard signaling if needed if SOP\u0027 Soft_Reset fails.\n\n(2) If we get nRetryCount transmit failure (no GoodCRC), we are (Discover Identity request sending Failure). Same Cable_NAK\u0027d state, DPM notified. Policy manager MAY downrev PD version and try again. Since no GoodCRC, we can\u0027t be sure PD-capable eMarker exists so Soft_Reset is off the table.\n\nIf we don\u0027t want to break spec by cutting (RetryCounter) in half (to avoid Sink HARD_RESET\u0027ing us for SRC_CAP timeout)... we need to interleave SRC_CAP with DiscID.",
+      "parentUuid": "b59d1b45_e226e301",
+      "range": {
+        "startLine": 4185,
+        "startChar": 1,
+        "endLine": 4187,
+        "endChar": 0
+      },
+      "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
