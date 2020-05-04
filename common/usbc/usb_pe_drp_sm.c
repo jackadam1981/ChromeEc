@@ -204,12 +204,14 @@ enum usb_pe_state {
 	PE_PRS_SNK_SRC_SOURCE_ON,
 	PE_PRS_SNK_SRC_SEND_SWAP,
 	PE_FRS_SNK_SRC_START_AMS,
+#ifdef CONFIG_USBC_VCONN
 	PE_VCS_EVALUATE_SWAP,
 	PE_VCS_SEND_SWAP,
 	PE_VCS_WAIT_FOR_VCONN_SWAP,
 	PE_VCS_TURN_ON_VCONN_SWAP,
 	PE_VCS_TURN_OFF_VCONN_SWAP,
 	PE_VCS_SEND_PS_RDY_SWAP,
+#endif /* CONFIG_USBC_VCONN */
 	PE_DO_PORT_DISCOVERY,
 	PE_VDM_SEND_REQUEST,
 	PE_VDM_IDENTITY_REQUEST_CBL,
@@ -274,12 +276,14 @@ static const char * const pe_state_names[] = {
 	[PE_PRS_SNK_SRC_SOURCE_ON] = "PE_PRS_SNK_SRC_Source_On",
 	[PE_PRS_SNK_SRC_SEND_SWAP] = "PE_PRS_SNK_SRC_Send_Swap",
 	[PE_FRS_SNK_SRC_START_AMS] = "PE_FRS_SNK_SRC_Start_Ams",
+#ifdef CONFIG_USBC_VCONN
 	[PE_VCS_EVALUATE_SWAP] = "PE_VCS_Evaluate_Swap",
 	[PE_VCS_SEND_SWAP] = "PE_VCS_Send_Swap",
 	[PE_VCS_WAIT_FOR_VCONN_SWAP] = "PE_VCS_Wait_For_Vconn_Swap",
 	[PE_VCS_TURN_ON_VCONN_SWAP] = "PE_VCS_Turn_On_Vconn_Swap",
 	[PE_VCS_TURN_OFF_VCONN_SWAP] = "PE_VCS_Turn_Off_Vconn_Swap",
 	[PE_VCS_SEND_PS_RDY_SWAP] = "PE_VCS_Send_Ps_Rdy_Swap",
+#endif /* CONFIG_USBC_VCONN */
 	[PE_DO_PORT_DISCOVERY] = "PE_Do_Port_Discovery",
 	[PE_VDM_SEND_REQUEST] = "PE_VDM_Send_Request",
 	[PE_VDM_IDENTITY_REQUEST_CBL] = "PE_VDM_Identity_Request_Cbl",
@@ -740,15 +744,20 @@ void pe_invalidate_explicit_contract(int port)
  */
 static bool pe_can_send_sop_prime(int port)
 {
-	if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT))
-		if (prl_get_rev(port, TCPC_TX_SOP) == PD_REV20)
+	if (IS_ENABLED(CONFIG_USBC_VCONN)) {
+		if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
+			if (prl_get_rev(port, TCPC_TX_SOP) == PD_REV20)
+				return tc_is_vconn_src(port) &&
+					pe[port].data_role == PD_ROLE_DFP;
+			else
+				return tc_is_vconn_src(port);
+		} else {
 			return tc_is_vconn_src(port) &&
-				pe[port].data_role == PD_ROLE_DFP;
-		else
-			return tc_is_vconn_src(port);
-	else
-		return tc_is_vconn_src(port) &&
-			pe[port].power_role == PD_ROLE_SOURCE;
+				pe[port].power_role == PD_ROLE_SOURCE;
+		}
+	} else {
+		return false;
+	}
 }
 
 /*
@@ -816,14 +825,16 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 	 *
 	 * TODO(b/150774779): TCPMv2: Improve pe_error documentation
 	 */
-	if (get_state_pe(port) == PE_SRC_SEND_CAPABILITIES ||
+	if ((get_state_pe(port) == PE_SRC_SEND_CAPABILITIES ||
 			get_state_pe(port) == PE_SRC_TRANSITION_SUPPLY ||
 			get_state_pe(port) == PE_PRS_SRC_SNK_WAIT_SOURCE_ON ||
 			get_state_pe(port) == PE_SRC_DISABLED ||
 			get_state_pe(port) == PE_SRC_DISCOVERY ||
 			get_state_pe(port) == PE_VDM_REQUEST ||
-			get_state_pe(port) == PE_VDM_IDENTITY_REQUEST_CBL ||
-			get_state_pe(port) == PE_VCS_SEND_PS_RDY_SWAP) {
+			get_state_pe(port) == PE_VDM_IDENTITY_REQUEST_CBL) ||
+			(IS_ENABLED(CONFIG_USBC_VCONN) &&
+				get_state_pe(port) == PE_VCS_SEND_PS_RDY_SWAP)
+			) {
 		PE_SET_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		return;
 	}
@@ -952,7 +963,8 @@ test_export_static enum usb_pe_state get_state_pe(const int port)
 
 static bool common_src_snk_dpm_requests(int port)
 {
-	if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_VCONN_SWAP)) {
+	if (IS_ENABLED(CONFIG_USBC_VCONN) &&
+			PE_CHK_DPM_REQUEST(port, DPM_REQUEST_VCONN_SWAP)) {
 		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_VCONN_SWAP);
 		set_state_pe(port, PE_VCS_SEND_SWAP);
 		return true;
@@ -1192,7 +1204,8 @@ static bool pe_attempt_port_discovery(int port)
 		}
 	}
 
-	if (PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON)) {
+	if (IS_ENABLED(CONFIG_USBC_VCONN) &&
+			PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON)) {
 		PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
 
 		if (!tc_is_vconn_src(port)) {
@@ -4764,6 +4777,7 @@ static void pe_vdm_response_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 }
 
+#ifdef CONFIG_USBC_VCONN
 /*
  * PE_VCS_Evaluate_Swap
  */
@@ -5113,6 +5127,7 @@ static void pe_vcs_send_ps_rdy_swap_run(int port)
 		}
 	}
 }
+#endif /* CONFIG_USBC_VCONN */
 
 /*
  * PE_DR_SNK_Get_Sink_Cap
@@ -5444,6 +5459,7 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_frs_snk_src_start_ams_entry,
 		.parent = &pe_states[PE_PRS_FRS_SHARED],
 	},
+#ifdef CONFIG_USBC_VCONN
 	[PE_VCS_EVALUATE_SWAP] = {
 		.entry = pe_vcs_evaluate_swap_entry,
 		.run   = pe_vcs_evaluate_swap_run,
@@ -5468,6 +5484,7 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_vcs_send_ps_rdy_swap_entry,
 		.run   = pe_vcs_send_ps_rdy_swap_run,
 	},
+#endif /* CONFIG_USBC_VCONN */
 	[PE_DO_PORT_DISCOVERY] = {
 		.entry = pe_do_port_discovery_entry,
 		.run   = pe_do_port_discovery_run,
