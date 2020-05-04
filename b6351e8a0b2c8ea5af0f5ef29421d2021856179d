@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c647556b_321aecef",
+        "filename": "power/mt8192.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-04T04:37:27Z",
+      "side": 1,
+      "message": "powered",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "b6351e8a0b2c8ea5af0f5ef29421d2021856179d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "609cfee4_283783c5",
+        "filename": "power/mt8192.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-04T04:37:27Z",
+      "side": 1,
+      "message": "line too long",
+      "revId": "b6351e8a0b2c8ea5af0f5ef29421d2021856179d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
