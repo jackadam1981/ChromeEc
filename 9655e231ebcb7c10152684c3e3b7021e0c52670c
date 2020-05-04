@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "875f414e_8115a1e7",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-04T19:16:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43007383_890bd4cb",
+      "range": {
+        "startLine": 290,
+        "startChar": 11,
+        "endLine": 290,
+        "endChar": 37
+      },
+      "revId": "9655e231ebcb7c10152684c3e3b7021e0c52670c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f627b1bb_cf81f3ef",
         "filename": "baseboard/volteer/baseboard.c",
         "patchSetId": 4
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "this needs to be NULL?",
       "parentUuid": "f627b1bb_cf81f3ef",
+      "range": {
+        "startLine": 291,
+        "startChar": 16,
+        "endLine": 291,
+        "endChar": 45
+      },
+      "revId": "9655e231ebcb7c10152684c3e3b7021e0c52670c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a2298b9_c2be2835",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-04T19:16:31Z",
+      "side": 1,
+      "message": "This function writes a register in the PS8815 retimer.  At a minimum, it\u0027s not causing harm, but I\u0027ll test without this to confirm whether it\u0027s needed.",
+      "parentUuid": "8e571316_e18d2714",
       "range": {
         "startLine": 291,
         "startChar": 16,
