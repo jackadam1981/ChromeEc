@@ -60,6 +60,11 @@ const unsigned int chg_cnt = ARRAY_SIZE(chg_chips);
  * number of pwm channel greater than three.
  */
 const struct pwm_t pwm_channels[] = {
+	[PWM_CH_PWRLED] = {
+		.channel = 0,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 100,
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
