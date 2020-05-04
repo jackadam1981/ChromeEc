@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97501102_fa59bca0",
+        "filename": "board/ampton/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-05-04T03:42:12Z",
+      "side": 1,
+      "message": "Could we fix the definition of BMA2x2_I2C_ADDR2 in accel_bma2x2.h instead of fixing it here?",
+      "range": {
+        "startLine": 193,
+        "startChar": 9,
+        "endLine": 193,
+        "endChar": 25
+      },
+      "revId": "3926dc97580e7097220e2b86b9c0a6f6c2d92929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
