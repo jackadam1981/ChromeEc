@@ -102,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "2f8703be_f0e81068",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-04T23:36:45Z",
+      "side": 1,
+      "message": "This is renamed as pulse_length in int_ap_extension.c.",
+      "parentUuid": "99ab5529_5b0ada4f",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 28
+      },
+      "revId": "b6773cd5f9c499ca062fceee0d827802b32bf5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ceeca8d_6aa188a0",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 6

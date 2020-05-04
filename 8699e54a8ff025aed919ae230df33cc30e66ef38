@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75cbb717_61af57ce",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-04T23:36:45Z",
+      "side": 1,
+      "message": "Re-implemented this. Patchset#17 doesn\u0027t need to maintain last_time_deasst_ any more.",
+      "parentUuid": "14895c55_93a242f7",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca5fb349_0ed7cde9",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b0c6f2_cf1ed376",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-04T23:36:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca5fb349_0ed7cde9",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2ee8a809_04d945f0",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-04T23:36:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76c730c4_20c42673",
+      "range": {
+        "startLine": 26,
+        "startChar": 30,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f265f0f_25b43348",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 15
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ab2e6e68_5b885b5b",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-04T23:36:45Z",
+      "side": 1,
+      "message": "Reimplemented this to be independent from __hw_clock_source_read(). It won\u0027t have the wrap-around issue any more.",
+      "parentUuid": "0f265f0f_25b43348",
+      "range": {
+        "startLine": 88,
+        "startChar": 13,
+        "endLine": 88,
+        "endChar": 60
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1161ff79_b2b9c4a1",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 15
@@ -114,6 +210,30 @@
       "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b6eec2_f82016d2",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-04T23:36:45Z",
+      "side": 1,
+      "message": "ap_stop_ack_completion() must have been called earlier when SPS0_CS_ASSERT was asserted, and ap_stop_ack_completion() would deassert INT_AP_L and disable timer.",
+      "parentUuid": "1161ff79_b2b9c4a1",
+      "range": {
+        "startLine": 93,
+        "startChar": 5,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -161,6 +281,30 @@
       "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63bb72eb_d68633f3",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-04T23:36:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0467c07c_74ce4ad0",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 36
+      },
+      "revId": "8699e54a8ff025aed919ae230df33cc30e66ef38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
