@@ -141,6 +141,30 @@
       "revId": "9655e231ebcb7c10152684c3e3b7021e0c52670c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73027189_47bd8d14",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-04T22:43:21Z",
+      "side": 1,
+      "message": "looks like USB_C1_HPD_TP is a TP on schematics hence no harm.\n\nMaking it NULL -\u003e I think it\u0027s not mandatory but more of a good to have change.",
+      "parentUuid": "5a2298b9_c2be2835",
+      "range": {
+        "startLine": 291,
+        "startChar": 16,
+        "endLine": 291,
+        "endChar": 45
+      },
+      "revId": "9655e231ebcb7c10152684c3e3b7021e0c52670c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
