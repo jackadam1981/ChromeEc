@@ -9,10 +9,10 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 /* Wake Source interrupts */
-GPIO_INT(POWER_BUTTON_L,     PIN(E, 4), GPIO_INT_BOTH | GPIO_PULL_UP,
-         power_button_interrupt) /* H1_EC_PWR_BTN_ODL */
-GPIO_INT(LID_OPEN,           PIN(E, 2), GPIO_INT_BOTH | GPIO_PULL_DOWN,
-         lid_interrupt)
+GPIO_INT(POWER_BUTTON_L,     PIN(E, 4), GPIO_INT_BOTH | GPIO_PULL_UP |
+	 GPIO_HIB_WAKE_HIGH, power_button_interrupt) /* H1_EC_PWR_BTN_ODL */
+GPIO_INT(LID_OPEN,           PIN(E, 2), GPIO_INT_BOTH | GPIO_PULL_DOWN |
+         GPIO_HIB_WAKE_HIGH, lid_interrupt)
 GPIO_INT(TABLET_MODE_L,      PIN(J, 7), GPIO_INT_BOTH | GPIO_PULL_UP,
          gmr_tablet_switch_isr)
 
@@ -35,7 +35,7 @@ GPIO_INT(PMIC_EC_PWRGD, PIN(F, 3),
 /* Volume button interrupts */
 
 /* Other interrupts */
-GPIO_INT(AC_PRESENT,         PIN(M, 2),  GPIO_INT_BOTH,
+GPIO_INT(AC_PRESENT,         PIN(M, 2),  GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,
          extpower_interrupt) /* ACOK_OD */
 GPIO_INT(UART1_RX,           PIN(B, 0), GPIO_INT_FALLING | GPIO_PULL_DOWN,
          uart_deepsleep_interrupt) /* UART_DEBUG_TX_EC_RX */
@@ -66,6 +66,7 @@ GPIO(EC_INT_L,               PIN(E, 6), GPIO_ODR_HIGH) /* EC_AP_INT_ODL */
 
 /* Misc Signals */
 GPIO(EC_BATT_PRES_ODL,       PIN(C, 0), GPIO_INPUT)
+GPIO(EC_RST_ODL,             PIN(L, 1), GPIO_INPUT)
 
 /* I2C pins - Alternate function below configures I2C module on these pins */
 GPIO(I2C_A_SCL,              PIN(B, 3), GPIO_INPUT) /* I2C_CHG_BATT_SCL */
@@ -114,7 +115,6 @@ UNIMPLEMENTED_GPIO(EC_GPM3,                PIN(M, 3))
 UNIMPLEMENTED_GPIO(AP_SPI_EC_MISO_R,       PIN(M, 1))
 UNIMPLEMENTED_GPIO(AP_SPI_EC_MOSI,         PIN(M, 0))
 UNIMPLEMENTED_GPIO(AP_SPI_EC_CLK,          PIN(M, 4))
-UNIMPLEMENTED_GPIO(EC_RST_ODL,             PIN(L, 1))
 UNIMPLEMENTED_GPIO(SET_VMC_VOLT_AT_1V8,    PIN(D, 4))
 UNIMPLEMENTED_GPIO(USB_C0_PPC_INT_ODL,     PIN(D, 1))
 UNIMPLEMENTED_GPIO(EN_PP3000_VMC_PMU,      PIN(D, 2))
