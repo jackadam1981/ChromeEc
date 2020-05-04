@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4575207_65b19301",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-04T15:36:40Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t belong in the shared usb_pd_policy.c. The volteer/board.c file already includes a summarized version of this comment.",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 0
+      },
+      "revId": "457f76d14cac576018c917fd17e2f54b00c00ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
