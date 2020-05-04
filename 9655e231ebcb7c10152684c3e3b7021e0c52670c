@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f49122e3_33cee7ad",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-04T16:21:32Z",
+      "side": 1,
+      "message": "EC_HOST_EVENT_USB_MUX event has to be sent in this driver too.",
+      "range": {
+        "startLine": 290,
+        "startChar": 11,
+        "endLine": 290,
+        "endChar": 37
+      },
+      "revId": "9655e231ebcb7c10152684c3e3b7021e0c52670c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f627b1bb_cf81f3ef",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-04T16:21:32Z",
+      "side": 1,
+      "message": "HPD has to be sent from extcon driver from Kernel to avoid PMC timeouts if sequence is not followed",
+      "range": {
+        "startLine": 291,
+        "startChar": 16,
+        "endLine": 291,
+        "endChar": 45
+      },
+      "revId": "9655e231ebcb7c10152684c3e3b7021e0c52670c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
