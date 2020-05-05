@@ -15,8 +15,6 @@
 #ifndef __BOARD_H
 #define __BOARD_H
 
-#undef CONFIG_SYSTEM_UNLOCKED
-
 /*-------------------------------------------------------------------------*
  * Flash layout:
  *
@@ -87,6 +85,18 @@
  * status.
  */
 #define CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE
+
+/*
+ * Ensure that the system is not forced to be in unlocked state.
+ */
+#undef CONFIG_SYSTEM_UNLOCKED
+
+/*
+ * Change system_is_locked behavior to match that of flash protection
+ * ro_now, which means that the FPMCU stays in lockdown when HW WP
+ * is deasserted.
+ */
+#define CONFIG_SYSTEM_LOCKED_ON_RO_NOW
 
 /*-------------------------------------------------------------------------*
  * UART Console Setup
