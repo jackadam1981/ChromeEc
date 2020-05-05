@@ -450,7 +450,7 @@ __override const struct ec_response_keybd_config
 	default:
 		cprints(CC_KEYBOARD, "Error! Unknown VIVLADI keyboard layout!");
 	}
-	return NULL;
+	return &keybd1;
 }
 
 static void board_init(void)
