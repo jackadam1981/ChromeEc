@@ -73,6 +73,16 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	__enter_hibernate(seconds, microseconds);
 }
 
+uint32_t chip_read_reset_flags(void)
+{
+	return bkpdata_read_reset_flags();
+}
+
+void chip_save_reset_flags(uint32_t flags)
+{
+	bkpdata_write_reset_flags(flags);
+}
+
 static void check_reset_cause(void)
 {
 	uint32_t flags = bkpdata_read_reset_flags();
@@ -338,7 +348,7 @@ void system_reset(int flags)
 		save_flags |= EC_RESET_FLAG_AP_WATCHDOG;
 #endif
 
-	bkpdata_write_reset_flags(save_flags);
+	chip_save_reset_flags(save_flags);
 
 	if (flags & SYSTEM_RESET_HARD) {
 #ifdef CONFIG_SOFTWARE_PANIC
