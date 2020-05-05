@@ -172,7 +172,15 @@ static void shutdown_s0_rails(void)
 	gpio_set_level(GPIO_EC_PCH_SYS_PWROK, 0);
 	gpio_set_level(GPIO_EN_IMVP8_VR, 0);
 	gpio_set_level(GPIO_EN_S0_RAILS, 0);
-	usleep(1);	/* tPCH10: PCH_PWROK to VCCIO off >400 ns */
+	/*
+	 * * tPCH10: PCH_PWROK to VCCIO off >400ns (but only on surprise
+	 *   power-down)
+	 * * tPLT18: SLP_S3_L to VCCIO disable <200us
+	 *
+	 * tPCH10 is only 7 CPU cycles at 16 MHz so we should satisfy that
+	 * minimum time with no extra code, and sleeping is likely to cause
+	 * a delay that exceeds tPLT18.
+	 */
 	gpio_set_level(GPIO_EN_PP950_VCCIO, 0);
 }
 
