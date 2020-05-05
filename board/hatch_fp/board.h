@@ -16,6 +16,7 @@
 #define __BOARD_H
 
 #undef CONFIG_SYSTEM_UNLOCKED
+#define CONFIG_SYSTEM_LOCKED_RO_NOW
 
 /*-------------------------------------------------------------------------*
  * Flash layout:

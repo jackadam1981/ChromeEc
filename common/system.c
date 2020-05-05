@@ -172,6 +172,10 @@ int system_is_locked(void)
 	return 0;
 
 #elif defined(CONFIG_FLASH)
+	if (IS_ENABLED(CONFIG_SYSTEM_LOCKED_RO_NOW)) {
+		return !!(EC_FLASH_PROTECT_RO_NOW & flash_get_protect());
+	}
+
 	/*
 	 * Unlocked if write protect pin deasserted or read-only firmware
 	 * is not protected.
