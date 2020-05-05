@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d57c934f_cc8507f6",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-05T04:45:33Z",
+      "side": 1,
+      "message": "Here, as long as v1 still functions this should probably be alright.  Anything we let into the common usb_pd_alt_mode_dfp.c file should ultimately use the new structures properly, but if it would take an unnecessary re-factor to get the usb_pd_policy.c code into the new way of doing things, then don\u0027t worry about it. Probably note the usage in process_am_discover_svids.",
+      "parentUuid": "e8f2c3fa_78ac0336",
+      "range": {
+        "startLine": 412,
+        "startChar": 7,
+        "endLine": 412,
+        "endChar": 53
+      },
+      "revId": "d5de9bac3edcc5a7d453191c854cc0263fee056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12e57402_0d52e140",
         "filename": "include/usb_pd.h",
         "patchSetId": 5
