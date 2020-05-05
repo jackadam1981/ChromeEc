@@ -3303,6 +3303,12 @@
 #undef CONFIG_SYSTEM_UNLOCKED
 
 /*
+ * Change the behavior of system_is_locked to stay locked when ro_now
+ * is asserted, not unlock when HW WP is deasserted.
+ */
+#undef CONFIG_SYSTEM_LOCKED_RO_NOW
+
+/*
  * Device can be a tablet as well as a clamshell.
  */
 #undef CONFIG_TABLET_MODE
