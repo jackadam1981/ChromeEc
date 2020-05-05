@@ -3303,6 +3303,12 @@
 #undef CONFIG_SYSTEM_UNLOCKED
 
 /*
+ * Change the behavior of system_is_locked to stay locked when ro_now
+ * is asserted.
+ */
+#undef CONFIG_SYSTEM_LOCKED_ON_RO_NOW
+
+/*
  * Device can be a tablet as well as a clamshell.
  */
 #undef CONFIG_TABLET_MODE
