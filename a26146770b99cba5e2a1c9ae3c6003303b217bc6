@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44513037_9b41af64",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-05T04:25:02Z",
+      "side": 1,
+      "message": "Reading the spec, this seems like it should be \u003c\u003d 0 (6.4.4.3.3 Discover Modes: \"The Discover Modes Command ACK sent back by the Responder Shall contain one or more Modes\")",
+      "range": {
+        "startLine": 399,
+        "startChar": 30,
+        "endLine": 399,
+        "endChar": 31
+      },
+      "revId": "a26146770b99cba5e2a1c9ae3c6003303b217bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fdd9a10_cd8771a3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4596,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-05T04:25:02Z",
+      "side": 1,
+      "message": "Spec citation?  Or assumption based on our current mode parsing?",
+      "range": {
+        "startLine": 4596,
+        "startChar": 18,
+        "endLine": 4596,
+        "endChar": 53
+      },
+      "revId": "a26146770b99cba5e2a1c9ae3c6003303b217bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
