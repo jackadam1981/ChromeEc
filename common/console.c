@@ -126,12 +126,13 @@ static int split_words(char *input, int *argc, char **argv)
  *
  * @return A pointer to the command structure, or NULL if no match found.
  */
-static const struct console_command *find_command(char *name)
+static const struct console_command *find_command(void *cmds, void *cmds_end,
+						  char *name)
 {
 	const struct console_command *cmd, *match = NULL;
 	int match_length = strlen(name);
 
-	for (cmd = __cmds; cmd < __cmds_end; cmd++) {
+	for (cmd = cmds; cmd < cmds_end; cmd++) {
 		if (!strncasecmp(name, cmd->name, match_length)) {
 			if (match)
 				return NULL;
@@ -174,7 +175,7 @@ static int handle_command(char *input)
 	const struct console_command *cmd;
 	char *argv[MAX_ARGS_PER_COMMAND];
 	int argc = 0;
-	int rv;
+	int rv = EC_SUCCESS;
 #ifdef CONFIG_EXPERIMENTAL_CONSOLE
 	char *e = NULL;
 	int i = 0;
@@ -234,18 +235,20 @@ command_has_error:
 	if (!argc)
 		return EC_SUCCESS;
 
-	cmd = find_command(argv[0]);
-	if (!cmd) {
-		ccprintf("Command '%s' not found or ambiguous.\n", argv[0]);
-		return EC_ERROR_UNKNOWN;
+	cmd = find_command(__rcmds, __rcmds_end, argv[0]);
+	if (cmd) {
+		if (console_is_restricted(cmd->name))
+			rv = EC_ERROR_ACCESS_DENIED;
+	} else {
+		cmd = find_command(__cmds, __cmds_end, argv[0]);
+		if (!cmd) {
+			ccprintf("Command '%s' not found.\n", argv[0]);
+			return EC_ERROR_UNKNOWN;
+		}
 	}
 
-#ifdef CONFIG_RESTRICTED_CONSOLE_COMMANDS
-	if (console_is_restricted() && cmd->flags & CMD_FLAG_RESTRICTED)
-		rv = EC_ERROR_ACCESS_DENIED;
-	else
-#endif
-	rv = cmd->handler(argc, argv);
+	if (rv == EC_SUCCESS)
+		rv = cmd->handler(argc, argv);
 	if (rv == EC_SUCCESS)
 		return rv;
 
