@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9bcf77c_78b729a6",
+        "filename": "include/config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-05T15:41:14Z",
+      "side": 1,
+      "message": "Please add a sanity check after line 5117 that requires at least one of CONFIG_BMI_I2C or CONFIG_BMI_SPI if the CONFIG_ACCELGRYO_BMI160 or CONFIG_ACCELGYRO_BMI260 is enabled.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 0
+      },
+      "revId": "73bc633bef0bd8b99d3b3c755e9d33f63b8b3197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
