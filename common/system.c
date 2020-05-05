@@ -167,11 +167,15 @@ int system_is_locked(void)
 	if (force_locked)
 		return 1;
 
-#ifdef CONFIG_SYSTEM_UNLOCKED
-	/* System is explicitly unlocked */
-	return 0;
+	if (IS_ENABLED(CONFIG_SYSTEM_UNLOCKED))
+		/* System is explicitly unlocked */
+		return 0;
 
-#elif defined(CONFIG_FLASH)
+	if (IS_ENABLED(CONFIG_SYSTEM_LOCKED_ON_RO_NOW))
+		/* Locked status is purley based on ro_now status */
+		return !!(EC_FLASH_PROTECT_RO_NOW & flash_get_protect());
+
+#ifdef CONFIG_FLASH
 	/*
 	 * Unlocked if write protect pin deasserted or read-only firmware
 	 * is not protected.
