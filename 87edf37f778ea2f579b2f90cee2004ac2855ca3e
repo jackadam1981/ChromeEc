@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3be8f867_da435784",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-05T15:03:49Z",
+      "side": 1,
+      "message": "Makes sense.\n\nCan we add a comment of where we expect the main (before task start) stack is and where the tasks stacks are in relation to the system stack?\n\nI am guessing that both the pre-tasks stack is in a greater memory location than the system stack (same applies to task\u0027s stacks too, right?)\n\n----\n\nActually since we are no longer switching to the system stack here, should we omit the compare and jump and just to the following always\n\n        /* save sp to scratch register */\n        csrw mscratch, sp\n        /* This ensures sp is 16-byte aligned.*/\n        andi sp, sp, -16",
+      "parentUuid": "edfa5bbc_f6f68d78",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "87edf37f778ea2f579b2f90cee2004ac2855ca3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45270cd3_5120d499",
         "filename": "core/riscv-rv32i/switch.S",
         "patchSetId": 3
