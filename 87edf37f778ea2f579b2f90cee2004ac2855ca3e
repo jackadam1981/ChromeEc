@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "edfa5bbc_f6f68d78",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-05-05T07:34:17Z",
+      "side": 1,
+      "message": "Because main routine and ISR share system stack, so I made a change below.\nThis change ensures sp will be 16-byte aligned if there is an interrupt triggered in main().",
+      "parentUuid": "88df33fa_f5571cbb",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "87edf37f778ea2f579b2f90cee2004ac2855ca3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45270cd3_5120d499",
         "filename": "core/riscv-rv32i/switch.S",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-04T17:10:53Z",
       "side": 1,
       "message": "while tracing code, I noticed that this always overrites the stack pointer with the base system stack, but the isr function task special care to ensure that we don\u0027t loose system stack data.\n\n@Dino can you verify that this works as expected (and is needed), please?",
+      "range": {
+        "startLine": 141,
+        "startChar": 8,
+        "endLine": 142,
+        "endChar": 25
+      },
+      "revId": "87edf37f778ea2f579b2f90cee2004ac2855ca3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03191e48_faab8a6d",
+        "filename": "core/riscv-rv32i/switch.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-05-05T07:34:17Z",
+      "side": 1,
+      "message": "This change isn\u0027t needed.\nBecause task has its own stack and only ISR uses system stack if EC starts the task scheduling. So we don\u0027t need to care stack data of main routine will be broken.",
+      "parentUuid": "45270cd3_5120d499",
       "range": {
         "startLine": 141,
         "startChar": 8,
