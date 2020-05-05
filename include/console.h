@@ -55,18 +55,7 @@ struct console_command {
 	/* Short help for command */
 	const char *help;
 #endif
-#ifdef CONFIG_CONSOLE_COMMAND_FLAGS
-	const uint32_t flags;
-#endif
 };
-
-/* Flag bits for when CONFIG_CONSOLE_COMMAND_FLAGS is enabled */
-#define CMD_FLAG_RESTRICTED  0x00000001
-
-/* The default .flags value can be overridden in board.h */
-#ifndef CONFIG_CONSOLE_COMMAND_FLAGS_DEFAULT
-#define CONFIG_CONSOLE_COMMAND_FLAGS_DEFAULT 0
-#endif
 
 #ifdef CONFIG_RESTRICTED_CONSOLE_COMMANDS
 /*
@@ -181,39 +170,35 @@ void console_has_input(void);
 #define _HELP_ARGS(A, H)
 #endif
 
-/* We may or may not have a .flags field */
-#ifdef CONFIG_CONSOLE_COMMAND_FLAGS
-#define _FLAG_ARGS(F)							\
-	.flags = F,
-#else
-#define _FLAG_ARGS(F)
-#endif
-
 /* This macro takes all possible args and discards the ones we don't use */
-#define _DCL_CON_CMD_ALL(NAME, ROUTINE, ARGDESC, HELP, FLAGS)		\
+#define _DCL_CON_CMD_ALL(NAME, ROUTINE, ARGDESC, HELP, SECTION)		\
 	static const char __con_cmd_label_##NAME[] = #NAME;		\
 	_Static_assert(sizeof(__con_cmd_label_##NAME) < 16,		\
 		       "command name '" #NAME "' is too long");		\
 	const struct console_command __keep __no_sanitize_address	\
 	__con_cmd_##NAME						\
-	__attribute__((section(".rodata.cmds." #NAME))) =		\
+	__attribute__((section(SECTION #NAME))) =		\
 	{ .name = __con_cmd_label_##NAME,				\
 	  .handler = ROUTINE,						\
 	  _HELP_ARGS(ARGDESC, HELP)					\
-	  _FLAG_ARGS(FLAGS)						\
 	}
+
+#define _DCL_N_CON_CMD_ALL(NAME, ROUTINE, ARGDESC, HELP)		\
+	_DCL_CON_CMD_ALL(NAME, ROUTINE, ARGDESC, HELP, ".rodata.cmds.")
+
+#define _DCL_R_CON_CMD_ALL(NAME, ROUTINE, ARGDESC, HELP)		\
+	_DCL_CON_CMD_ALL(NAME, ROUTINE, ARGDESC, HELP, ".rodata.rcmds.")
 
 /*
  * If the .flags field exists, we can use this to specify its value. If not,
  * the value will be discarded so it doesn't matter.
  */
-#define DECLARE_CONSOLE_COMMAND_FLAGS(NAME, ROUTINE, ARGDESC, HELP, FLAGS) \
-	_DCL_CON_CMD_ALL(NAME, ROUTINE, ARGDESC, HELP, FLAGS)
+#define DECLARE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP) \
+	_DCL_N_CON_CMD_ALL(NAME, ROUTINE, ARGDESC, HELP)
 
 /* This works as before, for the same reason. */
-#define DECLARE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP)	\
-	_DCL_CON_CMD_ALL(NAME, ROUTINE, ARGDESC, HELP,		\
-			 CONFIG_CONSOLE_COMMAND_FLAGS_DEFAULT)
+#define DECLARE_RESTRICTED_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP)	\
+	_DCL_R_CON_CMD_ALL(NAME, ROUTINE, ARGDESC, HELP)
 
 /*
  * This can be used to ensure that whatever default flag bits are set (if any),

@@ -141,6 +141,11 @@ SECTIONS
 		__cmds_end = .;
 
 		. = ALIGN(4);
+		__rcmds = .;
+		KEEP(*(SORT(.rodata.rcmds*)))
+		__rcmds_end = .;
+
+		. = ALIGN(4);
 		__extension_cmds = .;
 		KEEP(*(.rodata.extensioncmds))
 		__extension_cmds_end = .;
