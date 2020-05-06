@@ -1515,7 +1515,7 @@ static void rt946x_bc12_workaround(void)
 }
 DECLARE_DEFERRED(rt946x_bc12_workaround);
 
-void usb_charger_task(void *u)
+void rt946x_usb_charger_task(void *u)
 {
 	struct charge_port_info chg;
 	int bc12_type = CHARGE_SUPPLIER_NONE;
@@ -1590,16 +1590,16 @@ wait_event:
 	}
 }
 
-void usb_charger_set_switches(int port, enum usb_switch setting)
+void rt946x_set_switches(int port, enum usb_switch setting)
 {
 }
 
-int usb_charger_ramp_allowed(int supplier)
+int rt946x_ramp_allowed(int port, int supplier)
 {
 	return supplier == CHARGE_SUPPLIER_BC12_DCP;
 }
 
-int usb_charger_ramp_max(int supplier, int sup_curr)
+int rt946x_ramp_max(int port, int supplier, int sup_curr)
 {
 	return rt946x_get_bc12_ilim(supplier);
 }
@@ -1899,3 +1899,23 @@ const struct charger_drv rt946x_drv = {
 	.ramp_get_current_limit = &rt946x_ramp_get_current_limit,
 #endif
 };
+
+#ifdef HAS_TASK_USB_CHG
+const struct bc12_drv rt946x_bc12_drv = {
+	.usb_charger_task = rt946x_usb_charger_task,
+	.set_switches = rt946x_set_switches,
+#if defined(CONFIG_CHARGE_RAMP_HW) || defined(CONFIG_CHARGE_RAMP_SW)
+	.ramp_allowed = rt946x_ramp_allowed,
+	.ramp_max = rt946x_ramp_max,
+#endif /* defined(CONFIG_CHARGE_RAMP_HW) || defined(CONFIG_CHARGE_RAMP_SW) */
+};
+
+#ifdef CONFIG_BC12_SINGLE_DRIVER
+struct bc12_config bc12_chips[CHARGE_PORT_COUNT] = {
+	[0 ... (CHARGE_PORT_COUNT - 1)] = {
+		.drv = &rt946x_bc12_drv,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(bc12_chips) >= USB_CHG_TASK_COUNT);
+#endif /* CONFIG_BC12_SINGLE_DRIVER */
+#endif
