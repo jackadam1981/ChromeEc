@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7434b98_3b2783e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-06T23:10:16Z",
+      "side": 1,
+      "message": "The TCPMV2 stack is not enabled by default on kohaku.\n\nAdd the following to baseboard/hatch/baseboard.h and remove CONFIG_USB_PD_TCPMV1:\n\n#define CONFIG_USB_PD_REV20\n#define CONFIG_USB_PD_DECODE_SOP\n#define CONFIG_USB_PD_TCPMV2\n#define CONFIG_USB_DRP_ACC_TRYSRC\n#define CONFIG_USB_PRL_SM\n#define CONFIG_USB_PE_SM\n#define CONFIG_USB_PID 0x1234",
+      "parentUuid": "cb9395e6_cd8d86a3",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 64
+      },
+      "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c652492e_50ae03b3",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
