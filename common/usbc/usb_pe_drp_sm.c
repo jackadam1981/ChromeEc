@@ -211,10 +211,6 @@ enum usb_pe_state {
 	PE_SOFT_RESET,
 	PE_SEND_NOT_SUPPORTED,
 	PE_SRC_PING,
-#ifdef CONFIG_USB_PD_REV30
-	PE_GIVE_BATTERY_CAP,
-	PE_GIVE_BATTERY_STATUS,
-#endif /* CONFIG_USB_PD_REV30 */
 	PE_DRS_EVALUATE_SWAP,
 	PE_DRS_CHANGE,
 	PE_DRS_SEND_SWAP,
@@ -227,9 +223,6 @@ enum usb_pe_state {
 	PE_PRS_SNK_SRC_ASSERT_RP,
 	PE_PRS_SNK_SRC_SOURCE_ON,
 	PE_PRS_SNK_SRC_SEND_SWAP,
-#ifdef CONFIG_USB_PD_REV30
-	PE_FRS_SNK_SRC_START_AMS,
-#endif /* CONFIG_USB_PD_REV30 */
 	PE_VCS_EVALUATE_SWAP,
 	PE_VCS_SEND_SWAP,
 	PE_VCS_WAIT_FOR_VCONN_SWAP,
@@ -248,12 +241,30 @@ enum usb_pe_state {
 	PE_BIST_TX,
 	PE_BIST_RX,
 	PE_DR_SNK_GET_SINK_CAP,
+	/* REV30 only states below here */
+	PE_FRS_SNK_SRC_START_AMS,
+	PE_GIVE_BATTERY_CAP,
+	PE_GIVE_BATTERY_STATUS,
 
 	/* Super States */
-#ifdef CONFIG_USB_PD_REV30
 	PE_PRS_FRS_SHARED,
-#endif /* CONFIG_USB_PD_REV30 */
 };
+
+
+/*
+ * Ensure that Invalid states don't link properly. This let's us use guard
+ * code with IS_ENABLED instead of ifdefs and still save flash space
+ */
+#ifndef CONFIG_USB_PD_REV30
+extern enum usb_pe_state PE_FRS_SNK_SRC_START_AMS_NOT_SUPPORTED;
+extern enum usb_pe_state PE_GIVE_BATTERY_CAP_NOT_SUPPORTED;
+extern enum usb_pe_state PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED;
+extern enum usb_pe_state PE_PRS_FRS_SHARE_NOT_SUPPORTED;
+#define PE_FRS_SNK_SRC_START_AMS PE_FRS_SNK_SRC_START_AMS_NOT_SUPPORTED
+#define PE_GIVE_BATTERY_CAP PE_GIVE_BATTERY_CAP_NOT_SUPPORTED;
+#define PE_GIVE_BATTERY_STATUS PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED;
+#define PE_PRS_FRS_SHARED PE_PRS_FRS_SHARED_NOT_SUPPORTED;
+#endif
 
 /* Forward declare the full list of states. This is indexed by usb_pe_state */
 static const struct usb_state pe_states[];
@@ -655,7 +666,6 @@ void pe_run(int port, int evt, int en)
 			set_state(port, &pe[port].ctx, NULL);
 			break;
 		}
-#ifdef CONFIG_USB_PD_REV30
 		/*
 		 * Check for Fast Role Swap signal
 		 * This is not a typical pattern for adding state changes.
@@ -663,11 +673,11 @@ void pe_run(int port, int evt, int en)
 		 * state once we are listening for the signal and we want to
 		 * make sure to handle it immediately.
 		 */
-		if (PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED)) {
+		if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+		    PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED)) {
 			PE_CLR_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
 			set_state_pe(port, PE_FRS_SNK_SRC_START_AMS);
 		}
-#endif /* CONFIG_USB_PD_REV30 */
 
 		/* Run state machine */
 		run_state(port, &pe[port].ctx);
