@@ -6,6 +6,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "button.h"
+#include "battery.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
 #include "charge_state.h"
@@ -26,6 +27,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "max17055.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -45,6 +47,13 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+/* Voltage reg value to mV */
+#define VOLTAGE_CONV(REG)       ((REG * 5) >> 6)
+/* Current reg value to mA */
+#define CURRENT_CONV(REG)       (((REG * 25) >> 4) / BATTERY_MAX17055_RSENSE)
+/* Percentage reg value to 1% */
+#define PERCENTAGE_CONV(REG)    (REG >> 8)
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	schedule_deferred_pd_interrupt(0 /* port */);
@@ -54,6 +63,7 @@ static void gauge_interrupt(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_CHARGER);
 }
+static int fake_state_of_charge = -1;
 
 #include "gpio_list.h"
 
@@ -99,6 +109,21 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.drv = &mt6370_tcpm_drv,
 	},
 };
+
+static const char *get_error_text(int rv)
+{
+	if (rv == EC_ERROR_UNIMPLEMENTED)
+		return "(unsupported)";
+	else
+		return "(error)";
+}
+
+static int check_print_error(int rv)
+{
+	if (rv != EC_SUCCESS)
+		ccprintf("%s\n", get_error_text(rv));
+	return rv == EC_SUCCESS;
+}
 
 struct mt6370_thermal_bound thermal_bound = {
 	.target = 80,
@@ -429,3 +454,59 @@ __override int board_has_virtual_mux(void)
 {
 	return board_get_version() < 5;
 }
+
+static int max17055_read(int offset, int *data)
+{
+	return i2c_read16(I2C_PORT_BATTERY, MAX17055_ADDR_FLAGS,
+			  offset, data);
+}
+
+static enum ec_status
+host_command_get_jc_temp(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_get_jc_temp *p = args->params;
+	struct ec_response_get_jc_temp *r1 = args->response;
+	int temp2;
+	int reg = 0;
+	struct batt_params batt_new = {0};
+	int value;
+
+	if(p->index !=0)
+		return EC_RES_SUCCESS;
+	rt946x_get_adc(MT6370_ADC_TEMP_JC, &temp2);
+	r1->temp = temp2;
+
+	/*Get battery current and voltage*/
+	if (max17055_read(REG_VOLTAGE, &reg))
+		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
+	batt_new.voltage = VOLTAGE_CONV(reg);
+	r1->charge_current = batt_new.voltage;
+
+	if (max17055_read(REG_AVERAGE_CURRENT, &reg))
+		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
+	batt_new.current = CURRENT_CONV((int16_t)reg);
+	r1->charge_current = batt_new.current;
+
+	if (max17055_read(REG_STATE_OF_CHARGE, &reg) &&
+	    fake_state_of_charge < 0)
+		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
+
+	r1->RSOC = fake_state_of_charge >= 0 ?
+				fake_state_of_charge : PERCENTAGE_CONV(reg);
+
+	if (check_print_error(battery_time_to_full(&value))) {
+		if (value == 65535) {
+			r1->hour   = 0;
+			r1->minute = 0;
+		} else {
+			r1->hour   = value / 60;
+			r1->minute = value % 60;
+		}
+	}
+
+
+	args->response_size = sizeof(*r1);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_JC_TEMP, host_command_get_jc_temp, EC_VER_MASK(0));
+
