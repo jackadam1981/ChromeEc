@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dd746ba_d886e97b",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-06T17:36:34Z",
+      "side": 1,
+      "message": "I feel like we should be able to use an existing define for this like CONFIG_FLASH or something. Does that not work?\n\nIf we can\u0027t use that, then we should derive a new define in this file locally for FLASH_SUPPORT and make CHIP_FAMILY_IT8XXX2 remove that define (but hopefully we can use an existing config define instead)",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "209ef2836d86bae41dacb9f40454cc89c35b8e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
