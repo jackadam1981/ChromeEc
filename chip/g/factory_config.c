@@ -80,7 +80,8 @@ static int write_factory_config(uint64_t *new_fc)
 {
 	uint64_t fc;
 	uint32_t rv;
-#ifndef CR50_DEV
+// #ifndef CR50_DEV
+#if 0
 	struct board_id id;
 
 	/* Fail if Board ID Type is already programmed */

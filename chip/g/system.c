@@ -591,7 +591,8 @@ const char *system_get_build_info(void)
 static void update_rollback_mask(uint32_t addr_a, uint32_t addr_b,
 				 uint32_t info_base_offset)
 {
-#ifndef CR50_DEV
+// #ifndef CR50_DEV
+#if 0
 	const struct SignedHeader *header_a;
 	const struct SignedHeader *header_b;
 	const struct SignedHeader *header_this;
