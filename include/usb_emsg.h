@@ -8,13 +8,19 @@
 #ifndef __CROS_EC_USB_EBUF_H
 #define __CROS_EC_USB_EBUF_H
 
+#ifndef CONFIG_USB_PD_REV20
 #define EXTENDED_BUFFER_SIZE 260
+#endif
 #define BUFFER_SIZE 28
 
 struct extended_msg {
 	uint32_t header;
 	uint32_t len;
+#ifndef CONFIG_USB_PD_REV20
 	uint8_t buf[EXTENDED_BUFFER_SIZE];
+#else
+	uint8_t buf[BUFFER_SIZE];
+#endif /* CONFIG_USB_PD_REV20 */
 };
 
 /* Defined in usb_prl_sm.c */

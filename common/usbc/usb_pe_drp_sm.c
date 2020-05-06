@@ -211,8 +211,6 @@ enum usb_pe_state {
 	PE_SOFT_RESET,
 	PE_SEND_NOT_SUPPORTED,
 	PE_SRC_PING,
-	PE_GIVE_BATTERY_CAP,
-	PE_GIVE_BATTERY_STATUS,
 	PE_DRS_EVALUATE_SWAP,
 	PE_DRS_CHANGE,
 	PE_DRS_SEND_SWAP,
@@ -225,7 +223,6 @@ enum usb_pe_state {
 	PE_PRS_SNK_SRC_ASSERT_RP,
 	PE_PRS_SNK_SRC_SOURCE_ON,
 	PE_PRS_SNK_SRC_SEND_SWAP,
-	PE_FRS_SNK_SRC_START_AMS,
 	PE_VCS_EVALUATE_SWAP,
 	PE_VCS_SEND_SWAP,
 	PE_VCS_WAIT_FOR_VCONN_SWAP,
@@ -244,6 +241,11 @@ enum usb_pe_state {
 	PE_BIST_TX,
 	PE_BIST_RX,
 	PE_DR_SNK_GET_SINK_CAP,
+
+	/* PD3.0 only states below here*/
+	PE_FRS_SNK_SRC_START_AMS,
+	PE_GIVE_BATTERY_CAP,
+	PE_GIVE_BATTERY_STATUS,
 
 	/* Super States */
 	PE_PRS_FRS_SHARED,
@@ -295,8 +297,6 @@ static const char * const pe_state_names[] = {
 	[PE_SOFT_RESET] = "PE_Soft_Reset",
 	[PE_SEND_NOT_SUPPORTED] = "PE_Send_Not_Supported",
 	[PE_SRC_PING] = "PE_SRC_Ping",
-	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
-	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
 	[PE_DRS_EVALUATE_SWAP] = "PE_DRS_Evaluate_Swap",
 	[PE_DRS_CHANGE] = "PE_DRS_Change",
 	[PE_DRS_SEND_SWAP] = "PE_DRS_Send_Swap",
@@ -309,7 +309,6 @@ static const char * const pe_state_names[] = {
 	[PE_PRS_SNK_SRC_ASSERT_RP] = "PE_PRS_SNK_SRC_Assert_Rp",
 	[PE_PRS_SNK_SRC_SOURCE_ON] = "PE_PRS_SNK_SRC_Source_On",
 	[PE_PRS_SNK_SRC_SEND_SWAP] = "PE_PRS_SNK_SRC_Send_Swap",
-	[PE_FRS_SNK_SRC_START_AMS] = "PE_FRS_SNK_SRC_Start_Ams",
 	[PE_VCS_EVALUATE_SWAP] = "PE_VCS_Evaluate_Swap",
 	[PE_VCS_SEND_SWAP] = "PE_VCS_Send_Swap",
 	[PE_VCS_WAIT_FOR_VCONN_SWAP] = "PE_VCS_Wait_For_Vconn_Swap",
@@ -329,6 +328,12 @@ static const char * const pe_state_names[] = {
 	[PE_BIST_TX] = "PE_Bist_TX",
 	[PE_BIST_RX] = "PE_Bist_RX",
 	[PE_DR_SNK_GET_SINK_CAP] = "PE_DR_SNK_Get_Sink_Cap",
+
+	/* PD3.0 only states below here*/
+	[PE_FRS_SNK_SRC_START_AMS] = "PE_FRS_SNK_SRC_Start_Ams",
+	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
+	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
+
 	/* Super States */
 	[PE_PRS_FRS_SHARED] = "SS:PE_PRS_FRS_SHARED",
 };
@@ -339,6 +344,22 @@ static const char * const pe_state_names[] = {
  */
 extern const char **pe_state_names;
 #endif
+
+/*
+ * Ensure that Invalid states don't link properly. This let's us use guard
+ * code with IS_ENABLED instead of ifdefs and still save flash space
+ */
+#ifdef CONFIG_USB_PD_REV20
+extern enum usb_pe_state PE_FRS_SNK_SRC_START_AMS_NOT_SUPPORTED;
+extern enum usb_pe_state PE_GIVE_BATTERY_CAP_NOT_SUPPORTED;
+extern enum usb_pe_state PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED;
+extern enum usb_pe_state PE_PRS_FRS_SHARE_NOT_SUPPORTED;
+#define PE_FRS_SNK_SRC_START_AMS PE_FRS_SNK_SRC_START_AMS_NOT_SUPPORTED
+#define PE_GIVE_BATTERY_CAP PE_GIVE_BATTERY_CAP_NOT_SUPPORTED
+#define PE_GIVE_BATTERY_STATUS PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED
+#define PE_PRS_FRS_SHARED PE_PRS_FRS_SHARED_NOT_SUPPORTED
+void pe_set_frs_enable(int port, int enable);
+#endif /* CONFIG_USB_PD_REV20 */
 
 /*
  * NOTE:
@@ -651,7 +672,8 @@ void pe_run(int port, int evt, int en)
 		 * state once we are listening for the signal and we want to
 		 * make sure to handle it immediately.
 		 */
-		if (PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED)) {
+		if (!IS_ENABLED(CONFIG_USB_PD_REV20) &&
+		PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED)) {
 			PE_CLR_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
 			set_state_pe(port, PE_FRS_SNK_SRC_START_AMS);
 		}
@@ -706,6 +728,7 @@ void pe_got_hard_reset(int port)
 		set_state_pe(port, PE_SNK_TRANSITION_TO_DEFAULT);
 }
 
+#ifndef CONFIG_USB_PD_REV20
 /*
  * pd_got_frs_signal
  *
@@ -751,10 +774,13 @@ static void pe_set_frs_enable(int port, int enable)
 		}
 	}
 }
+#endif /* CONFIG_USB_PD_REV20 */
 
 void pe_invalidate_explicit_contract(int port)
 {
-	pe_set_frs_enable(port, 0);
+	if (!IS_ENABLED(CONFIG_USB_PD_REV20))
+		pe_set_frs_enable(port, 0);
+
 	PE_CLR_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
 	pd_update_saved_port_flags(port, PD_BBRMFLG_EXPLICIT_CONTRACT, 0);
 }
@@ -1065,7 +1091,8 @@ static void print_current_state(const int port)
 {
 	const char *mode = "";
 
-	if (PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH))
+	if (!IS_ENABLED(CONFIG_USB_PD_REV20) &&
+			PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH))
 		mode = " FRS-MODE";
 
 	if (IS_ENABLED(USB_PD_DEBUG_LABELS))
@@ -1804,6 +1831,7 @@ static void pe_src_ready_run(int port)
 		/* Extended Message Requests */
 		if (ext > 0) {
 			switch (type) {
+#ifndef CONFIG_USB_PD_REV20
 #ifdef CONFIG_BATTERY
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
@@ -1812,6 +1840,7 @@ static void pe_src_ready_run(int port)
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
 #endif
+#endif /* CONFIG_USB_PD_REV20 */
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -2584,6 +2613,7 @@ static void pe_snk_ready_run(int port)
 		/* Extended Message Request */
 		if (ext > 0) {
 			switch (type) {
+#ifndef CONFIG_USB_PD_REV20
 #ifdef CONFIG_BATTERY
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
@@ -2592,6 +2622,7 @@ static void pe_snk_ready_run(int port)
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
 #endif
+#endif /* CONFIG_USB_PD_REV20 */
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -3008,6 +3039,7 @@ static void pe_src_ping_run(int port)
 	}
 }
 
+#ifndef CONFIG_USB_PD_REV20
 /**
  * PE_Give_Battery_Cap
  */
@@ -3175,6 +3207,7 @@ static void pe_give_battery_status_run(int port)
 		set_state_pe(port, PE_SRC_READY);
 	}
 }
+#endif /* CONFIG_USB_PD_REV20 */
 
 /**
  * PE_DRS_Evaluate_Swap
@@ -3581,7 +3614,8 @@ static void pe_prs_snk_src_transition_to_off_entry(int port)
 {
 	print_current_state(port);
 
-	if (!PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH))
+	if (!!IS_ENABLED(CONFIG_USB_PD_REV20) ||
+			!PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH))
 		tc_snk_power_off(port);
 
 	pe[port].ps_source_timer = get_time().val + PD_T_PS_SOURCE_OFF;
@@ -3643,11 +3677,11 @@ static void pe_prs_snk_src_assert_rp_run(int port)
 {
 	/* Wait until TypeC is in the Attached.SRC state */
 	if (tc_is_attached_src(port)) {
-		if (!PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH)) {
+		if (!!IS_ENABLED(CONFIG_USB_PD_REV20) ||
+			!PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH)) {
 			/* Contract is invalid now */
 			pe_invalidate_explicit_contract(port);
 		}
-
 		set_state_pe(port, PE_PRS_SNK_SRC_SOURCE_ON);
 	}
 }
@@ -3726,11 +3760,15 @@ static void pe_prs_snk_src_send_swap_entry(int port)
 	 *     bringing Vbus to vSafe5.
 	 *     Request the Protocol Layer to send a FR_Swap Message.
 	 */
-	prl_send_ctrl_msg(port,
-		TCPC_TX_SOP,
-		PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH)
-			? PD_CTRL_FR_SWAP
-			: PD_CTRL_PR_SWAP);
+	if (!IS_ENABLED(CONFIG_USB_PD_REV20)) {
+		prl_send_ctrl_msg(port,
+			TCPC_TX_SOP,
+			PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH)
+				? PD_CTRL_FR_SWAP
+				: PD_CTRL_PR_SWAP);
+	} else {
+		prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PR_SWAP);
+	}
 
 	/* Start the SenderResponseTimer */
 	pe[port].sender_response_timer =
@@ -3749,10 +3787,13 @@ static void pe_prs_snk_src_send_swap_run(int port)
 	 *   1) The SenderResponseTimer times out.
 	 */
 	if (get_time().val > pe[port].sender_response_timer)
-		set_state_pe(port,
-			     PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH)
+		if (!IS_ENABLED(CONFIG_USB_PD_REV20))
+			set_state_pe(port,
+				PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH)
 				? PE_WAIT_FOR_ERROR_RECOVERY
 				: PE_SNK_READY);
+		else
+			set_state_pe(port, PE_SNK_READY);
 
 	/*
 	 * Transition to PE_PRS_SNK_SRC_Transition_to_off when:
@@ -3775,12 +3816,16 @@ static void pe_prs_snk_src_send_swap_run(int port)
 				set_state_pe(port,
 					     PE_PRS_SNK_SRC_TRANSITION_TO_OFF);
 			else if ((type == PD_CTRL_REJECT) ||
-						(type == PD_CTRL_WAIT))
-				set_state_pe(port,
-					PE_CHK_FLAG(port,
+						(type == PD_CTRL_WAIT)) {
+				if (!IS_ENABLED(CONFIG_USB_PD_REV20))
+					set_state_pe(port,
+						PE_CHK_FLAG(port,
 						PE_FLAGS_FAST_ROLE_SWAP_PATH)
 					   ? PE_WAIT_FOR_ERROR_RECOVERY
 					   : PE_SNK_READY);
+				else
+					set_state_pe(port, PE_SNK_READY);
+			}
 		}
 	}
 }
@@ -3791,6 +3836,7 @@ static void pe_prs_snk_src_send_swap_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 }
 
+#ifndef CONFIG_USB_PD_REV20
 /**
  * PE_FRS_SNK_SRC_Start_AMS
  */
@@ -3833,6 +3879,7 @@ static void pe_prs_frs_shared_exit(int port)
 	 */
 	PE_CLR_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH);
 }
+#endif /* CONFIG_USB_PD_REV20 */
 
 /**
  * BIST TX
@@ -5171,7 +5218,6 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 	int type;
 	int cnt;
 	int ext;
-	uint32_t payload;
 
 	/* Wait until message is sent */
 	if (pe[port].sender_response_timer == 0) {
@@ -5202,7 +5248,6 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
 		ext = PD_HEADER_EXT(rx_emsg[port].header);
-		payload = *(uint32_t *)rx_emsg[port].buf;
 
 		if (ext == 0) {
 			if ((cnt > 0) && (type == PD_DATA_SINK_CAP)) {
@@ -5216,9 +5261,11 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 				 * TODO(b/14191267): Make sure we can handle
 				 * the required current before we enable FRS.
 				 */
-				if (payload & PDO_FIXED_DUAL_ROLE) {
-					switch (payload &
-						PDO_FIXED_FRS_CURR_MASK) {
+				if (!IS_ENABLED(CONFIG_USB_PD_REV20) &&
+						*(uint32_t *)rx_emsg[port].buf &
+							PDO_FIXED_DUAL_ROLE) {
+					switch (*(uint32_t *)rx_emsg[port].buf &
+					PDO_FIXED_FRS_CURR_MASK) {
 					case PDO_FIXED_FRS_CURR_NOT_SUPPORTED:
 						break;
 					case PDO_FIXED_FRS_CURR_DFLT_USB_POWER:
@@ -5228,6 +5275,7 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 						break;
 					}
 				}
+
 				set_state_pe(port, PE_SNK_READY);
 			} else if (type == PD_CTRL_REJECT ||
 				   type == PD_CTRL_NOT_SUPPORTED) {
@@ -5294,10 +5342,12 @@ void pd_set_dfp_enter_mode_flag(int port, bool set)
 
 static const struct usb_state pe_states[] = {
 	/* Super States */
+#ifndef CONFIG_USB_PD_REV20
 	[PE_PRS_FRS_SHARED] = {
 		.entry = pe_prs_frs_shared_entry,
 		.exit  = pe_prs_frs_shared_exit,
 	},
+#endif /* CONFIG_USB_PD_REV20 */
 
 	/* Normal States */
 	[PE_SRC_STARTUP] = {
@@ -5406,6 +5456,7 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_src_ping_entry,
 		.run   = pe_src_ping_run,
 	},
+#ifndef CONFIG_USB_PD_REV20
 	[PE_GIVE_BATTERY_CAP] = {
 		.entry = pe_give_battery_cap_entry,
 		.run   = pe_give_battery_cap_run,
@@ -5414,6 +5465,7 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_give_battery_status_entry,
 		.run   = pe_give_battery_status_run,
 	},
+#endif /* CONFIG_USB_PD_REV20 */
 	[PE_DRS_EVALUATE_SWAP] = {
 		.entry = pe_drs_evaluate_swap_entry,
 		.run   = pe_drs_evaluate_swap_run,
@@ -5456,32 +5508,42 @@ static const struct usb_state pe_states[] = {
 	[PE_PRS_SNK_SRC_TRANSITION_TO_OFF] = {
 		.entry = pe_prs_snk_src_transition_to_off_entry,
 		.run   = pe_prs_snk_src_transition_to_off_run,
+#ifndef CONFIG_USB_PD_REV20
 		.parent = &pe_states[PE_PRS_FRS_SHARED],
+#endif /* CONFIG_USB_PD_REV20 */
 	},
 	/* State actions are shared with PE_FRS_SNK_SRC_ASSERT_RP */
 	[PE_PRS_SNK_SRC_ASSERT_RP] = {
 		.entry = pe_prs_snk_src_assert_rp_entry,
 		.run   = pe_prs_snk_src_assert_rp_run,
+#ifndef CONFIG_USB_PD_REV20
 		.parent = &pe_states[PE_PRS_FRS_SHARED],
+#endif /* CONFIG_USB_PD_REV20 */
 	},
 	/* State actions are shared with PE_FRS_SNK_SRC_SOURCE_ON */
 	[PE_PRS_SNK_SRC_SOURCE_ON] = {
 		.entry = pe_prs_snk_src_source_on_entry,
 		.run   = pe_prs_snk_src_source_on_run,
 		.exit  = pe_prs_snk_src_source_on_exit,
+#ifndef CONFIG_USB_PD_REV20
 		.parent = &pe_states[PE_PRS_FRS_SHARED],
+#endif /* CONFIG_USB_PD_REV20 */
 	},
 	/* State actions are shared with PE_FRS_SNK_SRC_SEND_SWAP */
 	[PE_PRS_SNK_SRC_SEND_SWAP] = {
 		.entry = pe_prs_snk_src_send_swap_entry,
 		.run   = pe_prs_snk_src_send_swap_run,
 		.exit  = pe_prs_snk_src_send_swap_exit,
+#ifndef CONFIG_USB_PD_REV20
 		.parent = &pe_states[PE_PRS_FRS_SHARED],
+#endif /* CONFIG_USB_PD_REV20 */
 	},
+#ifndef CONFIG_USB_PD_REV20
 	[PE_FRS_SNK_SRC_START_AMS] = {
 		.entry = pe_frs_snk_src_start_ams_entry,
 		.parent = &pe_states[PE_PRS_FRS_SHARED],
 	},
+#endif /* CONFIG_USB_PD_REV20 */
 	[PE_VCS_EVALUATE_SWAP] = {
 		.entry = pe_vcs_evaluate_swap_entry,
 		.run   = pe_vcs_evaluate_swap_run,
