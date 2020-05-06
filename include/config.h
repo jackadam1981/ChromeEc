@@ -4121,6 +4121,13 @@
  */
 #undef CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER
 
+/*
+ * Allow multiple bc12 drivers if not defined.
+ */
+#if defined(HAS_TASK_USB_CHG) || defined(HAS_TASK_USB_CHG_P0)
+#define CONFIG_BC12_SINGLE_DRIVER
+#endif
+
 /* External BC1.2 charger detection devices. */
 #undef CONFIG_BC12_DETECT_MAX14637
 #undef CONFIG_BC12_DETECT_PI3USB9201
