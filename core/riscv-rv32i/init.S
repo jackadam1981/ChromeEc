@@ -147,8 +147,16 @@ __irq_isr:
         fsw ft2,  -19*4(sp)
         fsw ft1,  -18*4(sp)
         fsw ft0,  -17*4(sp)
+        /*
+         * Note: we never execute on this stack frame, so it does not need to
+         * be 16-byte aligned.
+         */
         addi sp, sp, -37*4
 #else
+        /*
+         * Note: we never execute on this stack frame, so it does not need to
+         * be 16-byte aligned.
+         */
         addi sp, sp, -16*4
 #endif
         /* save sp to scratch register */
@@ -156,9 +164,14 @@ __irq_isr:
         /* switch to system stack if we are called from process stack */
         la t0, stack_end
         /* no chagne sp if sp < end of system stack */
-        bltu sp, t0, __no_adjust_sp
+        bltu sp, t0, __sp_16byte_aligned
         mv sp, t0
-__no_adjust_sp:
+__sp_16byte_aligned:
+        /*
+         * This ensures sp is 16-byte aligned. (Apply to there is an interrupt
+         * triggered in main routine.)
+         */
+        andi sp, sp, -16
         /* read exception cause */
         csrr t0, mcause
         /* isolate exception cause */
@@ -388,7 +401,15 @@ _data_end:
 _data_lma_start:
 .long __data_lma_start
 
-/* Reserve space for system stack */
+/*
+ * Reserve space for system stack.
+ * Main routine and ISR will share this space before task start.
+ * This space is dedicated to ISR after task start.
+ *
+ * NOTE: Location of system stack (.bss.system_stack) must be less than
+ * tasks stacks (task_stacks@.bss) and scratchpad for first context switch
+ * (scratchpad[]@.bss.task_scratchpad).
+ */
 .section .bss.system_stack
 stack_start:
 .space CONFIG_STACK_SIZE, 0
