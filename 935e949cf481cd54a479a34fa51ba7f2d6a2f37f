@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0534519d_e6a725ae",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "original code is in ish_aontask.c. I move them to .h file according to your comments. I am a little confused, so could you help to give me more info on what the changes should look like?",
+      "parentUuid": "62476d16_af99b690",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4506a1e1_4aa967f2",
         "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41cd3ce7_b1dc624c",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "4506a1e1_4aa967f2",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 6
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "b4c0f82b_fabf6c31",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "tr means task register, is new name \"task_reg\" ok?",
+      "parentUuid": "555100e4_5c63397f",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 11
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b504ff47_db86b600",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "same as above.",
+      "parentUuid": "278f1e78_64bd906c",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f1b16ae_d48dd299",
         "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
         "patchSetId": 3
@@ -114,6 +210,30 @@
       "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8cd627_147c0cc1",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "same as above.",
+      "parentUuid": "6f1b16ae_d48dd299",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0db2ffc0_f93a3bd9",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "d945818e_3bfc6bec",
+      "range": {
+        "startLine": 470,
+        "startChar": 2,
+        "endLine": 470,
+        "endChar": 7
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1a14967_e70e48e8",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 3
@@ -160,6 +304,30 @@
       "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ec27dd_e41aac5d",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "c1a14967_e70e48e8",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 8
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "436690c3_b8943a9f",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "1e4301e0_b3ecf831",
+      "range": {
+        "startLine": 493,
+        "startChar": 2,
+        "endLine": 493,
+        "endChar": 6
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c522a5ec_83b34a7d",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 3
@@ -206,6 +398,30 @@
       "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9b00462_ab02ce2f",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "If so, then many unnecessary code will be compiled into the final image when IPAPG is not enabled. But if you prefer, I can change it.",
+      "parentUuid": "c522a5ec_83b34a7d",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 1
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "0e65ad3e_10eadeaa",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "12b9bd21_5dac2d47",
+      "range": {
+        "startLine": 531,
+        "startChar": 8,
+        "endLine": 531,
+        "endChar": 19
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84fbc09a_bce6f807",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 3
@@ -252,6 +492,30 @@
       "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5474a131_bb489138",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "84fbc09a_bce6f807",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 9
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "d330a717_589fc6b0",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "60a0050e_d48c7be4",
+      "range": {
+        "startLine": 540,
+        "startChar": 21,
+        "endLine": 540,
+        "endChar": 32
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd39b7de_1b39fe64",
         "filename": "chip/ish/aontaskfw/ish_aontask.c",
         "patchSetId": 3
@@ -298,6 +586,30 @@
       "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ee97777_e5596980",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "fd39b7de_1b39fe64",
+      "range": {
+        "startLine": 548,
+        "startChar": 21,
+        "endLine": 548,
+        "endChar": 32
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "9fcd066d_07973563",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "41cf0256_ed49257d",
+      "range": {
+        "startLine": 868,
+        "startChar": 0,
+        "endLine": 874,
+        "endChar": 2
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2d32bac_9d680a57",
         "filename": "chip/ish/i2c.c",
         "patchSetId": 3
@@ -344,6 +680,30 @@
       "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c3816ba_f856267c",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-06T09:51:11Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "f2d32bac_9d680a57",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 7
+      },
+      "revId": "935e949cf481cd54a479a34fa51ba7f2d6a2f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
