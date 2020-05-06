@@ -429,3 +429,20 @@ __override int board_has_virtual_mux(void)
 {
 	return board_get_version() < 5;
 }
+
+static enum ec_status
+host_command_get_jc_temp(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_get_jc_temp *p = args->params;
+	struct ec_response_get_jc_temp *r1 = args->response;
+	int temp2;
+	if(p->index !=0)
+		return EC_RES_SUCCESS;
+	rt946x_get_adc(MT6370_ADC_TEMP_JC, &temp2);
+	r1->temp = temp2;
+	
+	args->response_size = sizeof(*r1);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_JC_TEMP, host_command_get_jc_temp, EC_VER_MASK(0));
+
