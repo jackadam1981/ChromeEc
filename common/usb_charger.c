@@ -118,3 +118,11 @@ static void usb_charger_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
+
+void usb_charger_task(void *u)
+{
+	int port = (intptr_t)u;
+
+	if (bc12_chips[port].drv->usb_charger_task)
+		bc12_chips[port].drv->usb_charger_task(u);
+}
