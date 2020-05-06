@@ -35,10 +35,6 @@
  */
 
 
-/* Misc Signals */
-UNIMPLEMENTED(ENTERING_RW)
-
-
 /* Power sequencing interrupts */
 GPIO(PWR_BTN,                       PIN(A,  0),      GPIO_INPUT) /*TODO: move
 								  * into pwr btn
