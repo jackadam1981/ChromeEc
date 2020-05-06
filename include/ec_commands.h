@@ -1047,6 +1047,7 @@ struct ec_response_hello {
 
 /* Get version number */
 #define EC_CMD_GET_VERSION 0x0002
+#define EC_CMD_GET_JC_TEMP 0x002F
 
 enum ec_current_image {
 	EC_IMAGE_UNKNOWN = 0,
@@ -1067,6 +1068,19 @@ struct ec_response_get_version {
 	char reserved[32];
 	uint32_t current_image;
 } __ec_align4;
+
+struct ec_response_get_jc_temp {
+	uint8_t temp;
+	uint8_t charge_voltage;
+	uint8_t charge_current;
+	uint8_t RSOC;
+	uint8_t hour;
+	uint8_t minute;
+} __ec_align_size1;
+
+struct ec_params_get_jc_temp {
+	uint8_t index;
+} __ec_align_size1;
 
 /* Read test */
 #define EC_CMD_READ_TEST 0x0003
