@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd85dcb_6dcbfd39",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-06T19:46:58Z",
+      "side": 1,
+      "message": "this isn\u0027t strictly needed (to organize these states at the end_ but it does make it slight more efficient on space",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 35
+      },
+      "revId": "2a940fc91f67ec649f330b8393d1a26e0d1f96d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3304a678_993fc876",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5554,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-06T19:46:58Z",
+      "side": 1,
+      "message": "I think this state machine set up section is one of the few exceptions where we will actually need to use ifdefs",
+      "revId": "2a940fc91f67ec649f330b8393d1a26e0d1f96d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
