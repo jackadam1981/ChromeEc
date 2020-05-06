@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dafe635a_aef3a096",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-06T23:58:18Z",
+      "side": 1,
+      "message": "looks like these args are swapped, can you re-check?",
+      "range": {
+        "startLine": 519,
+        "startChar": 51,
+        "endLine": 520,
+        "endChar": 21
+      },
+      "revId": "b50679e5138c607ed16eb15c72475e62bd6cdffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "449696a9_6a5dfcd5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-06T23:58:18Z",
+      "side": 1,
+      "message": "Nit: try to put this args at the end, easy to track if something is missed than the original code",
+      "range": {
+        "startLine": 491,
+        "startChar": 2,
+        "endLine": 491,
+        "endChar": 46
+      },
+      "revId": "b50679e5138c607ed16eb15c72475e62bd6cdffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c108f104_d2a896c1",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-06T23:58:18Z",
+      "side": 1,
+      "message": "I think its okay to remove this",
+      "range": {
+        "startLine": 643,
+        "startChar": 0,
+        "endLine": 643,
+        "endChar": 31
+      },
+      "revId": "b50679e5138c607ed16eb15c72475e62bd6cdffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea15132a_83a34a7e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-06T23:58:18Z",
+      "side": 1,
+      "message": "swap args",
+      "range": {
+        "startLine": 712,
+        "startChar": 42,
+        "endLine": 713,
+        "endChar": 15
+      },
+      "revId": "b50679e5138c607ed16eb15c72475e62bd6cdffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3975977e_8c3baf91",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1675,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-06T23:58:18Z",
+      "side": 1,
+      "message": "looks like few functions don\u0027t need pointer",
+      "range": {
+        "startLine": 1675,
+        "startChar": 42,
+        "endLine": 1675,
+        "endChar": 52
+      },
+      "revId": "b50679e5138c607ed16eb15c72475e62bd6cdffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b621db89_2f3370b2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2848,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-06T23:58:18Z",
+      "side": 1,
+      "message": "uint32_t",
+      "range": {
+        "startLine": 2848,
+        "startChar": 5,
+        "endLine": 2848,
+        "endChar": 10
+      },
+      "revId": "b50679e5138c607ed16eb15c72475e62bd6cdffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84064d7b_406dd855",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1553,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-06T23:58:18Z",
+      "side": 1,
+      "message": "pointer to **\nin all the functions",
+      "range": {
+        "startLine": 1553,
+        "startChar": 19,
+        "endLine": 1553,
+        "endChar": 27
+      },
+      "revId": "b50679e5138c607ed16eb15c72475e62bd6cdffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
