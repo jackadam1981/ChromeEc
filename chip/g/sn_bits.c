@@ -83,9 +83,12 @@ static int write_sn_hash(const uint32_t sn_hash[3])
 		return rv;
 
 	/* Check the sn data space is currently uninitialized */
-	for (i = 0; i < (sizeof(sn_data) / sizeof(uint32_t)); i++)
-		if (((uint32_t *) &sn_data)[i] != 0xffffffff)
-			return EC_ERROR_INVALID_CONFIG;
+	for (i = 0; i < (sizeof(sn_data) / sizeof(uint32_t)); i++) {
+		if (((uint32_t *) &sn_data)[i] != 0xffffffff) {
+			CPRINTF("DEBUG: SN data already initialized! Ignoring.\n");
+			//return EC_ERROR_INVALID_CONFIG;
+		}
+	}
 
 	sn_data.version = SN_DATA_VERSION;
 	memcpy(sn_data.sn_hash, sn_hash, sizeof(sn_data.sn_hash));
@@ -156,8 +159,10 @@ static enum vendor_cmd_rc vc_sn_set_hash(enum vendor_cmd_cc code,
 	 */
 	if (read_board_id(&bid) != EC_SUCCESS ||
 	    !board_id_type_is_blank(&bid)) {
-		*pbuf = EC_ERROR_ACCESS_DENIED;
-		return VENDOR_RC_NOT_ALLOWED;
+		CPRINTF("DEBUG: Board ID is not empty! Ignoring.\n");
+
+		//*pbuf = EC_ERROR_ACCESS_DENIED;
+		//return VENDOR_RC_NOT_ALLOWED;
 	}
 
 	memcpy(&sn_hash, pbuf, sizeof(sn_hash));
