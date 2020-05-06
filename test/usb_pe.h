@@ -111,8 +111,6 @@ enum usb_pe_state {
 	PE_SOFT_RESET,
 	PE_SEND_NOT_SUPPORTED,
 	PE_SRC_PING,
-	PE_GIVE_BATTERY_CAP,
-	PE_GIVE_BATTERY_STATUS,
 	PE_DRS_EVALUATE_SWAP,
 	PE_DRS_CHANGE,
 	PE_DRS_SEND_SWAP,
@@ -125,7 +123,6 @@ enum usb_pe_state {
 	PE_PRS_SNK_SRC_ASSERT_RP,
 	PE_PRS_SNK_SRC_SOURCE_ON,
 	PE_PRS_SNK_SRC_SEND_SWAP,
-	PE_FRS_SNK_SRC_START_AMS,
 	PE_VCS_EVALUATE_SWAP,
 	PE_VCS_SEND_SWAP,
 	PE_VCS_WAIT_FOR_VCONN_SWAP,
@@ -141,8 +138,15 @@ enum usb_pe_state {
 	PE_BIST,
 	PE_DR_SNK_GET_SINK_CAP,
 
+	/* PD3.0 only states below here*/
+	PE_FRS_SNK_SRC_START_AMS,
+	PE_GIVE_BATTERY_CAP,
+	PE_GIVE_BATTERY_STATUS,
+
+#ifdef CONFIG_USB_PD_REV30
 	/* Super States */
 	PE_PRS_FRS_SHARED,
+#endif
 };
 
 void set_state_pe(const int port, const enum usb_pe_state new_state);
