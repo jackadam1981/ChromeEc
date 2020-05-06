@@ -322,6 +322,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_USB_PRL_SM
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_USB_PD_REV30
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_SHA256
 #define CONFIG_SW_CRC
@@ -332,6 +333,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PE_SM
 #define CONFIG_USB_PID 0x5036
+#define CONFIG_USB_PD_REV30
 #define CONFIG_USB_POWER_DELIVERY
 #undef CONFIG_USB_PRL_SM
 #define CONFIG_USB_PD_TCPMV2
@@ -366,6 +368,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_USB_TYPEC_SM
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_USB_PD_REV30
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_SW_CRC
 #undef CONFIG_USB_PD_HOST_CMD
