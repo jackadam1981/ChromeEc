@@ -112,6 +112,7 @@ static void bc12_detect(const int port)
 	new_chg.current = 500;
 #endif /* !defined(CONFIG_CHARGE_RAMP_SW && CONFIG_CHARGE_RAMP_HW) */
 
+	CPRINTS("bc12 port %d", port);
 	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, port, &new_chg);
 }
 
