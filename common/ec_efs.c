@@ -141,7 +141,7 @@ static enum vendor_cmd_rc vc_get_boot_mode_(struct vendor_cmd_params *p)
 
 	if (!board_has_ec_cr50_comm_support()) {
 		p->out_size = 0;
-		return VENDOR_RC_NO_SUCH_SUBCOMMAND;
+		return VENDOR_RC_NO_SUCH_COMMAND;
 	}
 
 	buffer = (uint8_t *)p->buffer;
@@ -163,7 +163,7 @@ static enum vendor_cmd_rc vc_reset_ec_(struct vendor_cmd_params *p)
 	p->out_size = 0;
 
 	if (!board_has_ec_cr50_comm_support())
-		return VENDOR_RC_NO_SUCH_SUBCOMMAND;
+		return VENDOR_RC_NO_SUCH_COMMAND;
 
 	/*
 	 * Let's reset EC a little later so that CR50 can send a TPM command
