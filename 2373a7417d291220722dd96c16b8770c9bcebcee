@@ -22,6 +22,30 @@
       "revId": "2373a7417d291220722dd96c16b8770c9bcebcee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d631701c_7e145ed7",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2020-05-06T02:42:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "420789c1_ba34b451",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 25
+      },
+      "revId": "2373a7417d291220722dd96c16b8770c9bcebcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
