@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "420789c1_ba34b451",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-06T01:38:35Z",
+      "side": 1,
+      "message": "How about:\n\n /* Set GPM0~6 1.8V input */\n IT83XX_GPIO_GCR30 |\u003d BIT(4);",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 25
+      },
+      "revId": "2373a7417d291220722dd96c16b8770c9bcebcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
