@@ -376,7 +376,7 @@ $(foreach b, $(cts_boards), \
 	) \
 )
 
-cov-test-targets=$(foreach t,$(test-list-host),build/host/$(t).info)
+cov-test-targets=$(foreach t,$(cov-test-list-host),build/host/$(t).info)
 bldversion=$(shell (./util/getversion.sh ; echo VERSION) | $(CPP) -P -)
 
 # lcov fails when multiple instances run at the same time.
