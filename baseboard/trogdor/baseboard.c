@@ -8,7 +8,9 @@
 #include "charger.h"
 #include "driver/charger/isl923x.h"
 #include "i2c.h"
+#include "keyboard_scan.h"
 #include "power.h"
+#include "timer.h"
 
 /* Wake-up pins for hibernate */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -77,3 +79,24 @@ const struct charger_config_t chg_chips[] = {
 };
 
 const unsigned int chg_cnt = ARRAY_SIZE(chg_chips);
+
+/******************************************************************************/
+/* Keyboard scan setting */
+struct keyboard_scan_config keyscan_config = {
+	/*
+	 * F3 key scan cycle completed but scan input is not
+	 * charging to logic high when EC start scan next
+	 * column for "T" key, so we set .output_settle_us
+	 * to 80us.
+	 */
+	.output_settle_us = 80,
+	.debounce_down_us = 9 * MSEC,
+	.debounce_up_us = 30 * MSEC,
+	.scan_period_us = 3 * MSEC,
+	.min_post_scan_delay_us = 1000,
+	.poll_timeout_us = 100 * MSEC,
+	.actual_key_mask = {
+		0x1c, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
+	},
+};
