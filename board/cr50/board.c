@@ -1148,7 +1148,7 @@ void assert_ec_rst(void)
 	/* Prevent bit bang interrupt storm. */
 	if (uart_bitbang_is_enabled())
 		task_disable_irq(bitbang_config.rx_irq);
-	else if (board_has_ec_cr50_comm_support())
+	else
 		ec_efs_reset();
 
 	wait_ec_rst(1);
