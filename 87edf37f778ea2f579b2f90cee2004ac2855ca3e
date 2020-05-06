@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2ecf14e6_4ea3b670",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-05-06T07:41:26Z",
+      "side": 1,
+      "message": "I want to add comment at line 401(patchest 4):\n/*\n * Reserve space for system stack.\n * Main routine and ISR will share this space before task start.\n * This space is dedicated to ISR after task start.\n *\n * NOTE: Location of system stack (.bss.system_stack) must be less than\n * tasks stacks (task_stacks@.bss) and scratchpad for first context switch\n * (scratchpad[]@.bss.task_scratchpad).\n */\nand changing comment at line 170(patchest 4):\n/*\n * This ensures sp is 16-byte aligned. (Apply to there is an interrupt\n * triggered in main routine.)\n */\nBut it seems that I don\u0027t have permission to add patch set to this CL anymore.\n\nYes.\n\nNo, ISR always uses system stack.\nIf we want to save instructions here, we need to have main routine has its own stack space then we can reduce these code:\n        la t0, stack_end\n        bltu sp, t0, __sp_16byte_aligned\n        mv sp, t0\n__sp_16byte_aligned:\n        andi sp, sp, -16\nto one line:\n       la sp, stack_end\nBut the space will never be used after task start.",
+      "parentUuid": "3be8f867_da435784",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 168,
+        "endChar": 17
+      },
+      "revId": "87edf37f778ea2f579b2f90cee2004ac2855ca3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45270cd3_5120d499",
         "filename": "core/riscv-rv32i/switch.S",
         "patchSetId": 3
