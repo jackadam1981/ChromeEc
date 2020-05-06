@@ -964,12 +964,19 @@ static int tcpci_clear_fault(int port, int fault)
 void tcpci_tcpc_alert(int port)
 {
 	int alert = 0;
+	int alert_mask;
 	int alert_ext = 0;
 	int failed_attempts;
 	uint32_t pd_event = 0;
 
 	/* Read the Alert register from the TCPC */
 	tcpm_alert_status(port, &alert);
+
+	/*
+	 * Read the alert mask register - TODO only process unmasked
+	 * interrupts
+	 */
+	tcpc_read16(port, TCPC_REG_ALERT_MASK, &alert_mask);
 
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)
@@ -1047,8 +1054,16 @@ void tcpci_tcpc_alert(int port)
 	}
 	if (alert & TCPC_REG_ALERT_POWER_STATUS) {
 		int reg = 0;
+		int power_mask;
 		/* Read Power Status register */
 		tcpci_tcpm_get_power_status(port, &reg);
+
+		/*
+		 * Read power status mask register - TODO only process unmasked
+		 * interrupts980
+		 */
+		tcpc_read(port, TCPC_REG_POWER_STATUS_MASK, &power_mask);
+
 		/* Update VBUS status */
 		tcpc_vbus[port] = reg &
 			TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
