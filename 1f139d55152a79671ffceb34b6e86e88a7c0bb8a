@@ -286,6 +286,30 @@
       "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a9a0fc_969f5fe4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4187,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-05-06T23:45:34Z",
+      "side": 1,
+      "message": "\u003e For 1, how would we tell that we got a PD 3.0 GoodCRC if the GoodCRC Revision field is useless?  \n\nI apologize for being imprecise. By \"PD3.0 GoodCRC\" I meant \"We sent a PD3.0 DiscID and get a GoodCRC back\".\n\nPer PD3.0 (6.2.1.1.5 Specification Revision) we cannot tell what partner is from GoodCRC alone. When responding to inbound packet with (01b \u003d PD2.0) set, the receiver [SHALL] set (01b) in GoodCRC. [This includes us! AI: We should verify this.] If responding to inbound packet with (10b \u003d PD3.0) receiver [MAY] set (00b 01b or 10b).\n\nThus, the person getting the GoodCRC back can\u0027t tell anything from (01b). (00b or 10b) are *most likely* a PD3.0 DUT. (01b) could be anything. But spec says \"Don\u0027t Care\" so we should honor that -- in case there\u0027s something in PD4.0+ spec that exploits the Ignore in state machine.\n\n\n\u003e For 2, I don\u0027t think we could down-rev after reaching nDiscoverIdentityCount given this language in 6.6.15 DiscoverIdentityTimer: (...)\n\nFound the \"eMarker boot time\" citation: tVCONNStable. Good catch. I think that restriction on  nDiscoverIdentityCount doesn\u0027t apply because we\u0027re not in an explicit contract.... yet.\n\n\u003e (6.4.4.3.1 Discover Identity)\n\u003e Cable Plug will not be ready for PD Communication until tVCONNStable after VCONN has been applied (see [USB Type-C 2.0]).\n\u003e \n\u003e During Cable Plug discovery, [[when there is an Explicit Contract,]] Discover Identity Commands are sent at a rate defined by the DiscoverIdentityTimer (see Section 6.6.15) up to a maximum of nDiscoverIdentityCount times (see Section 6.7.5).\n\n\u003e (6.6.15 DiscoverIdentityTimer)\n\u003e The DiscoverIdentityTimer is used [[during an Explicit Contract]] using SOP’. (...)\n\nBefore connect, we\u0027re in an Implicit Contract. Still probing for Src_Cap response to become Explicit. And \"just so happen\" to be trying to un-bork the eMarker.",
+      "parentUuid": "2f89d6c0_a4256aaa",
+      "range": {
+        "startLine": 4185,
+        "startChar": 1,
+        "endLine": 4187,
+        "endChar": 0
+      },
+      "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
