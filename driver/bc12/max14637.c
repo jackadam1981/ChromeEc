@@ -151,7 +151,7 @@ static void detect_or_power_down_ic(const int port)
 	}
 }
 
-void usb_charger_task(void *u)
+void max14637_usb_charger_task(void *u)
 {
 	const int port = (intptr_t)u;
 	uint32_t evt;
@@ -175,7 +175,7 @@ void usb_charger_task(void *u)
 	}
 }
 
-void usb_charger_set_switches(int port, enum usb_switch setting)
+void max14637_set_switches(int port, enum usb_switch setting)
 {
 	/*
 	 * The MAX14637 automatically sets up the USB 2.0 high-speed switches.
@@ -183,7 +183,7 @@ void usb_charger_set_switches(int port, enum usb_switch setting)
 }
 
 #if defined(CONFIG_CHARGE_RAMP_SW) || defined(CONFIG_CHARGE_RAMP_HW)
-int usb_charger_ramp_allowed(int supplier)
+int max14637_ramp_allowed(int port, int supplier)
 {
 	/*
 	 * Due to the limitations in the application of the MAX14637, we
@@ -193,7 +193,7 @@ int usb_charger_ramp_allowed(int supplier)
 	return supplier == CHARGE_SUPPLIER_OTHER;
 }
 
-int usb_charger_ramp_max(int supplier, int sup_curr)
+int max14637_ramp_max(int port, int supplier, int sup_curr)
 {
 	/* Use the current limit that was decided by the MAX14637. */
 	if (supplier == CHARGE_SUPPLIER_OTHER)
@@ -220,3 +220,21 @@ static void bc12_chipset_startup(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, bc12_chipset_startup, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, bc12_chipset_startup, HOOK_PRIO_DEFAULT);
+
+const struct bc12_drv max14637_drv = {
+	.usb_charger_task = max14637_usb_charger_task,
+	.set_switches = max14637_set_switches,
+#if defined(CONFIG_CHARGE_RAMP_SW) || defined(CONFIG_CHARGE_RAMP_HW)
+	.ramp_allowed = max14637_ramp_allowed,
+	.ramp_max = max14637_ramp_max,
+#endif /* CONFIG_CHARGE_RAMP_SW || CONFIG_CHARGE_RAMP_HW */
+};
+
+#ifdef CONFIG_BC12_SINGLE_DRIVER
+struct bc12_config bc12_chips[CHARGE_PORT_COUNT] = {
+	[0 ... (CHARGE_PORT_COUNT - 1)] = {
+		.drv = &max14637_drv,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(bc12_chips) >= USB_CHG_TASK_COUNT);
+#endif /* CONFIG_BC12_SINGLE_DRIVER */
