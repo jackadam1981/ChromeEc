@@ -11,6 +11,8 @@
 /* Select Baseboard features */
 #include "baseboard.h"
 
+#define CONFIG_ITE_KSO_AS_KEYBOARD_GPIO_OUTPUT
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
