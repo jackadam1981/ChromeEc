@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ce84840_c0e0c0d1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-06T21:54:30Z",
+      "side": 1,
+      "message": "why is conditional compilation required? All ec_efs_reset() does is stting boot mode to Normal, right?",
+      "range": {
+        "startLine": 1152,
+        "startChar": 0,
+        "endLine": 1155,
+        "endChar": 0
+      },
+      "revId": "6292496744a1bd484cab47a2d8ddce829f51cc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
