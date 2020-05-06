@@ -427,6 +427,30 @@
     },
     {
       "key": {
+        "uuid": "e949d52f_c9a91ae9",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-05-06T23:57:59Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "bde31adb_8ead76b1",
+      "range": {
+        "startLine": 160,
+        "startChar": 27,
+        "endLine": 160,
+        "endChar": 34
+      },
+      "revId": "a923fab22bcd080aeb3b9044f0dc55d886756f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf45553c_9c3a954d",
         "filename": "util/compare_build.sh",
         "patchSetId": 24
