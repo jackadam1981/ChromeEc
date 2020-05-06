@@ -262,6 +262,30 @@
       "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f89d6c0_a4256aaa",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4187,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-06T22:24:07Z",
+      "side": 1,
+      "message": "We should already be interleaving SRC_CAP with DiscID, by virtue of always prioritizing the SRC_CAP timer.\n\nFor 1, how would we tell that we got a PD 3.0 GoodCRC if the GoodCRC Revision field is useless?  \n\nFor 2, I don\u0027t think we could down-rev after reaching nDiscoverIdentityCount given this language in 6.6.15 DiscoverIdentityTimer:\n\n\"If no GoodCRC Message response is received after nDiscoverIdentityCount\nDiscover Identity Command requests have been sent by a Port, the Port Shall Not send any further SOP’/SOP’’\"\n\nWe\u0027d have to pick a point to down-rev before then.  \n\nBased on the wording you found in the Specification Revision section of the message header, I would guess the down-rev is geared towards a case with a GoodCRC received (since it mentions not getting an ACK back, as opposed to message sending failure).  But it\u0027s definitely not stated explicitly.",
+      "parentUuid": "6dcda9f3_bd3fec9c",
+      "range": {
+        "startLine": 4185,
+        "startChar": 1,
+        "endLine": 4187,
+        "endChar": 0
+      },
+      "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
