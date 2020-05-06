@@ -109,12 +109,16 @@
  * what is currently set
  */
 #define TC_FLAGS_TC_WARM_ATTACHED_SNK   BIT(24)
+/* Flag to not if AutoDischargeDisconnect is ENABLED */
+#define TC_FLAGS_AUTO_DISCHARGE_DISCONN BIT(25)
 
 /*
  * Clear all flags except TC_FLAGS_LPM_ENGAGED and TC_FLAGS_SUSPEND.
  */
 #define CLR_ALL_BUT_LPM_FLAGS(port) (TC_CLR_FLAG(port, \
-	~(TC_FLAGS_LPM_ENGAGED | TC_FLAGS_SUSPEND)))
+	~(TC_FLAGS_LPM_ENGAGED | \
+	  TC_FLAGS_SUSPEND | \
+	  TC_FLAGS_AUTO_DISCHARGE_DISCONN)))
 
 /* 100 ms is enough time for any TCPC transaction to complete. */
 #define PD_LPM_DEBOUNCE_US (100 * MSEC)
@@ -681,7 +685,27 @@ void tc_prs_snk_src_assert_rp(int port)
 	}
 }
 
-/*
+void tc_enable_auto_discharge_disconnect(int port, int enable)
+{
+	const struct tcpm_drv *tcpc = tcpc_config[port].drv;
+
+	if (!tcpc->tcpc_enable_auto_discharge_disconnect)
+		return;
+
+	if (enable) {
+		if (!TC_CHK_FLAG(port, TC_FLAGS_AUTO_DISCHARGE_DISCONN)) {
+			TC_SET_FLAG(port, TC_FLAGS_AUTO_DISCHARGE_DISCONN);
+			tcpc->tcpc_enable_auto_discharge_disconnect(port, 1);
+		}
+	} else {
+		if (TC_CHK_FLAG(port, TC_FLAGS_AUTO_DISCHARGE_DISCONN)) {
+			TC_CLR_FLAG(port, TC_FLAGS_AUTO_DISCHARGE_DISCONN);
+			tcpc->tcpc_enable_auto_discharge_disconnect(port, 0);
+		}
+	}
+}
+
+/****************************************************************************
  * Hard Reset is being requested.  This should not allow a TC connection
  * to go to an unattached state until the connection is recovered from
  * the hard reset.  It is possible for a Hard Reset to cause a timeout
@@ -745,9 +769,12 @@ enum try_src_override_t tc_get_try_src_override(void)
 void tc_snk_power_off(int port)
 {
 	if (get_state_tc(port) == TC_ATTACHED_SNK ||
-			get_state_tc(port) == TC_DBG_ACC_SNK) {
+	    get_state_tc(port) == TC_DBG_ACC_SNK) {
 		TC_SET_FLAG(port, TC_FLAGS_POWER_OFF_SNK);
 		sink_stop_drawing_current(port);
+
+		/* Disable AutoDischargeDisconnect */
+		tc_enable_auto_discharge_disconnect(port, 0);
 	}
 }
 
@@ -769,6 +796,9 @@ void tc_src_power_off(int port)
 		if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
 			charge_manager_set_ceil(port, CEIL_REQUESTOR_PD,
 						CHARGE_CEIL_NONE);
+
+		/* Disable AutoDischargeDisconnect */
+		tc_enable_auto_discharge_disconnect(port, 0);
 	}
 }
 
@@ -1264,6 +1294,9 @@ static void sink_stop_drawing_current(int port)
 		charge_manager_set_ceil(port,
 				CEIL_REQUESTOR_PD, CHARGE_CEIL_NONE);
 	}
+
+	/* Disable AutoDischargeDisconnect */
+	tc_enable_auto_discharge_disconnect(port, 0);
 }
 
 #ifdef CONFIG_USB_PD_TRY_SRC
@@ -1663,9 +1696,6 @@ static void tc_unattached_snk_entry(const int port)
 		CLR_ALL_BUT_LPM_FLAGS(port);
 		tc_enable_pd(port, 0);
 	}
-
-	/* Turn on auto discharge disconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_unattached_snk_run(const int port)
@@ -1704,8 +1734,8 @@ static void tc_unattached_snk_run(const int port)
 		 *     Set RC.CC1=10b (Rd)
 		 *     Set RC.CC2=10b (Rd)
 		 */
-		tcpm_enable_auto_discharge_disconnect(port, 0);
-		tcpm_set_connection(port, TYPEC_CC_RD, 0);
+		tc_enable_auto_discharge_disconnect(port, 0);
+		tcpm_set_connection(port, TYPEC_CC_RD, 0, NULL);
 		set_state_tc(port, TC_DRP_AUTO_TOGGLE);
 		return;
 	}
@@ -1736,7 +1766,7 @@ static void tc_unattached_snk_run(const int port)
 		 * We are disconnecting without DRP.
 		 *     PC.AutoDischargeDisconnect=0b
 		 */
-		tcpm_enable_auto_discharge_disconnect(port, 0);
+		tc_enable_auto_discharge_disconnect(port, 0);
 		set_state_tc(port, TC_LOW_POWER_MODE);
 	}
 #endif
@@ -1907,6 +1937,9 @@ static void tc_attached_snk_entry(const int port)
 	/* Enable PD */
 	if (IS_ENABLED(CONFIG_USB_PE_SM))
 		tc_enable_pd(port, 1);
+
+	/* Turn on auto discharge disconnect */
+	tc_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_attached_snk_run(const int port)
@@ -1941,6 +1974,9 @@ static void tc_attached_snk_run(const int port)
 
 		if (!pe_is_explicit_contract(port))
 			sink_power_sub_states(port);
+
+		/* Enable AutoDischargeDisconnect */
+		tc_enable_auto_discharge_disconnect(port, 1);
 	}
 
 	/*
@@ -2015,6 +2051,9 @@ static void tc_attached_snk_run(const int port)
 
 	/* Run Sink Power Sub-State */
 	sink_power_sub_states(port);
+
+	/* Enable AutoDischargeDisconnect */
+	tc_enable_auto_discharge_disconnect(port, 1);
 #endif /* CONFIG_USB_PE_SM */
 }
 
@@ -2150,6 +2189,7 @@ static void tc_unoriented_dbg_acc_src_run(const int port)
 			!TC_CHK_FLAG(port, TC_FLAGS_DISC_IDENT_IN_PROGRESS)) {
 
 		set_state_tc(port, TC_UNATTACHED_SNK);
+		return;
 	}
 
 #ifdef CONFIG_USB_PE_SM
@@ -2250,6 +2290,9 @@ static void tc_dbg_acc_snk_entry(const int port)
 
 	/* Enable PD */
 	tc_enable_pd(port, 1);
+
+	/* Enable AutoDischargeDisconnect */
+	tc_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_dbg_acc_snk_run(const int port)
@@ -2297,6 +2340,9 @@ static void tc_dbg_acc_snk_run(const int port)
 
 		if (!pe_is_explicit_contract(port))
 			sink_power_sub_states(port);
+
+		/* Enable AutoDischargeDisconnect */
+		tc_enable_auto_discharge_disconnect(port, 1);
 	}
 
 	/* PD swap commands */
@@ -2371,9 +2417,6 @@ static void tc_unattached_src_entry(const int port)
 	}
 
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_SRC;
-
-	/* Turn on auto discharge disconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_unattached_src_run(const int port)
@@ -2430,8 +2473,8 @@ static void tc_unattached_src_run(const int port)
 		 *     Set RC.CC1=01b (Rp)
 		 *     Set RC.CC2=01b (Rp)
 		 */
-		tcpm_enable_auto_discharge_disconnect(port, 0);
-		tcpm_set_connection(port, TYPEC_CC_RP, 0);
+		tc_enable_auto_discharge_disconnect(port, 0);
+		tcpm_set_connection(port, TYPEC_CC_RP, 0, NULL);
 		set_state_tc(port, TC_DRP_AUTO_TOGGLE);
 	}
 #endif
@@ -2443,7 +2486,7 @@ static void tc_unattached_src_run(const int port)
 		 * We are disconnecting without DRP.
 		 *     PC.AutoDischargeDisconnect=0b
 		 */
-		tcpm_enable_auto_discharge_disconnect(port, 0);
+		tc_enable_auto_discharge_disconnect(port, 0);
 		set_state_tc(port, TC_LOW_POWER_MODE);
 	}
 #endif
@@ -2626,6 +2669,9 @@ static void tc_attached_src_entry(const int port)
 	 */
 	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
 		hook_notify(HOOK_USB_PD_CONNECT);
+
+	/* Turn on auto discharge disconnect */
+	tc_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_attached_src_run(const int port)
@@ -2772,6 +2818,9 @@ static void tc_attached_src_run(const int port)
 		}
 	}
 #endif
+
+	/* Enable AutoDischargeDisconnect */
+	tc_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_attached_src_exit(const int port)
@@ -2796,6 +2845,7 @@ static __maybe_unused void check_drp_connection(const int port)
 {
 	enum pd_drp_next_states next_state;
 	enum tcpc_cc_voltage_status cc1, cc2;
+	int prev_drp;
 
 	TC_CLR_FLAG(port, TC_FLAGS_CHECK_CONNECTION);
 
@@ -2819,8 +2869,12 @@ static __maybe_unused void check_drp_connection(const int port)
 		 *     Set RC.DRP=0
 		 *     Set TCPC_CONTROl.PlugOrientation
 		 */
-		tcpm_set_connection(port, TYPEC_CC_RD, 1);
-		set_state_tc(port, TC_UNATTACHED_SNK);
+		tcpm_set_connection(port, TYPEC_CC_RD, 1, &prev_drp);
+		if (prev_drp) {
+			tc_enable_auto_discharge_disconnect(port, 1);
+			set_state_tc(port, TC_ATTACH_WAIT_SNK);
+		} else
+			set_state_tc(port, TC_UNATTACHED_SNK);
 		break;
 	case DRP_TC_UNATTACHED_SRC:
 		/*
@@ -2829,8 +2883,12 @@ static __maybe_unused void check_drp_connection(const int port)
 		 *     Set RC.DRP=0
 		 *     Set TCPC_CONTROl.PlugOrientation
 		 */
-		tcpm_set_connection(port, TYPEC_CC_RP, 1);
-		set_state_tc(port, TC_UNATTACHED_SRC);
+		tcpm_set_connection(port, TYPEC_CC_RP, 1, &prev_drp);
+		if (prev_drp) {
+			tc_enable_auto_discharge_disconnect(port, 1);
+			set_state_tc(port, TC_ATTACH_WAIT_SRC);
+		} else
+			set_state_tc(port, TC_UNATTACHED_SRC);
 		break;
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
@@ -2846,7 +2904,7 @@ static __maybe_unused void check_drp_connection(const int port)
 				    (PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE)
 					? TYPEC_CC_RP
 					: TYPEC_CC_RD,
-				    0);
+				    0, NULL);
 		set_state_tc(port, TC_DRP_AUTO_TOGGLE);
 		break;
 #endif

@@ -397,10 +397,14 @@ int tcpci_tcpc_drp_toggle(int port)
 
 int tcpci_tcpc_set_connection(int port,
 			      enum tcpc_cc_pull pull,
-			      int connect)
+			      int connect,
+			      int *prev_drp)
 {
 	int rv;
 	int role;
+
+	if (prev_drp)
+		*prev_drp = 0;
 
 	/*
 	 * Disconnecting will set the following and then return
@@ -418,6 +422,9 @@ int tcpci_tcpc_set_connection(int port,
 	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
 	if (rv)
 		return rv;
+
+	if (prev_drp)
+		*prev_drp = !!(role & TCPC_REG_ROLE_CTRL_DRP_MASK);
 
 	if (role & TCPC_REG_ROLE_CTRL_DRP_MASK) {
 		enum tcpc_cc_pull cc1_pull, cc2_pull;

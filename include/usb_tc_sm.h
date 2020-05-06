@@ -389,6 +389,17 @@ const char *tc_get_current_state(int port);
  */
 uint32_t tc_get_flags(int port);
 
+/**
+ * Enable/Disable AutoDischargeDisconnect
+ *
+ * This is similar to the tcpm version but performs state caching in the
+ * TCPMv2 code so we don't hit the hardware when it is not needed
+ *
+ * @param port USB-C port number
+ * @param enable Disable(0) otherwise Enable
+ */
+void tc_enable_auto_discharge_disconnect(int port, int enable);
+
 #ifdef CONFIG_USB_CTVPD
 
 /**
