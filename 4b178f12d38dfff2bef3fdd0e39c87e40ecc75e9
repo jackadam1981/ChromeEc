@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab017e2_da1c2d90",
+        "filename": "chip/g/crypto_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T17:52:48Z",
+      "side": 1,
+      "message": "isn\u0027t it also const void* already in DCRYPTO_SHA1_hash declaration? no need to typecast",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "4b178f12d38dfff2bef3fdd0e39c87e40ecc75e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
