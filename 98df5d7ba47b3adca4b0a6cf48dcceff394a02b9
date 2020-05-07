@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4935870c_cad6a40f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-07T18:33:46Z",
+      "side": 1,
+      "message": "You are correct. I\u0027ll change to IS_ENABLED(!CONFIG_USB_PD_REV20)",
+      "parentUuid": "afd8912f_a04e8c5f",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28fa0ce4_64401734",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1bffbea_152ee2a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-07T18:33:46Z",
+      "side": 1,
+      "message": "To make the TCPMv2 code size smaller when back porting to older devices.",
+      "parentUuid": "28fa0ce4_64401734",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -115,6 +163,30 @@
       "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0bb619a_68f7d360",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-07T18:33:46Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t quite understand what you wanted but your test cl was very helpful. Thanks.",
+      "parentUuid": "c652492e_50ae03b3",
+      "range": {
+        "startLine": 658,
+        "startChar": 0,
+        "endLine": 670,
+        "endChar": 32
+      },
+      "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
