@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ca7d2e90_b008c045",
+        "filename": "util/ap_ro_hash.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:10:28Z",
+      "side": 1,
+      "message": "ah, VENDOR_RC_NOT_ALLOWED is also possible.\n\nok, maybe then check for vendor RCs?\n\n    if (tpm_response.rc \u0026 0x500) \u0026\u0026 (tpm_response.rc !\u003d VENDOR_RC_NO_SUCH_COMMAND_ERROR):\n        return int(tpm_response.payload[0])\n    return tpm_response.rc",
+      "parentUuid": "da9dd58e_96237a0e",
+      "range": {
+        "startLine": 353,
+        "startChar": 4,
+        "endLine": 357,
+        "endChar": 39
+      },
+      "revId": "648fe39d576c5690e310e23869cf91d030b21d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bfb89afa_f9309993",
         "filename": "util/ap_ro_hash.py",
         "patchSetId": 2
