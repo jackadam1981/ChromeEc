@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9e3272c0_060eb202",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-07T16:29:50Z",
+      "side": 1,
+      "message": "I\u0027d rather not, because no matter the order of the two CLs (one for run_host_test, one for Makefile rules), the first CL will be broken.\nIf run_host_test is updated first, then it will fail when it gets to the tests that are currently being excluded (is_enabled_error, static_if_error, fpsensor, etc.)\nIf the Makefile rules are updated first, then generating code coverage will fail, because the proc.kill() in run_host_test will prevent any of the executables from generating code coverage output.\nIf these CLs were in different repos, I would have them Cq-Depend on each other. Either one is useless without the other.",
+      "parentUuid": "06f7cb92_bc27c15d",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 72
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6124686_2c80cbfe",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ab055d9_5d60d0eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-07T16:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6124686_2c80cbfe",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "73e0f3f7_530dd040",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-07T16:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8974ce82_559de325",
+      "range": {
+        "startLine": 15,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64ce471e_46e90840",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2552ea5_122f9321",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-07T16:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64ce471e_46e90840",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 31
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ac5006c0_e0c99fe9",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-07T16:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7389f22_520d0372",
+      "range": {
+        "startLine": 145,
+        "startChar": 26,
+        "endLine": 145,
+        "endChar": 27
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00e5bb94_8a846a1d",
         "filename": "util/run_host_test",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8cc81a_d8b9e155",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-07T16:29:50Z",
+      "side": 1,
+      "message": "It doesn\u0027t. Leftover from when I was experimenting with proc.send_signal() instead of proc.kill() and proc.terminate().\nI removed it in the next patchset.",
+      "parentUuid": "00e5bb94_8a846a1d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "994c22d2_894ae9b0",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-07T16:29:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1edfc842_2c325efa",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 81
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05573f4b_baff48ff",
         "filename": "util/run_host_test",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af89dbd6_852b0ab5",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-07T16:29:50Z",
+      "side": 1,
+      "message": "This is a new wait, though. If the timeout is 60 seconds, and we spend 59 seconds running, then the python code sends the SIGTERM. We now have another 60 seconds to wait for the program to exit cleanly.",
+      "parentUuid": "05573f4b_baff48ff",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
