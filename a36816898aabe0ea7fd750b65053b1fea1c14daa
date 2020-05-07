@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06f7cb92_bc27c15d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-07T04:16:08Z",
+      "side": 1,
+      "message": "Move to a separate CL to keep the independent units separate?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 72
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6124686_2c80cbfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-07T04:16:08Z",
+      "side": 1,
+      "message": "M",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8974ce82_559de325",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-07T04:16:08Z",
+      "side": 1,
+      "message": "M",
+      "range": {
+        "startLine": 15,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 10
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64ce471e_46e90840",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-07T04:16:08Z",
+      "side": 1,
+      "message": "these probably belong in tests/build.mk? this file gets too much noise",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 31
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7389f22_520d0372",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-07T04:16:08Z",
+      "side": 1,
+      "message": "can you add the space here?",
+      "range": {
+        "startLine": 145,
+        "startChar": 26,
+        "endLine": 145,
+        "endChar": 27
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00e5bb94_8a846a1d",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-07T04:16:08Z",
+      "side": 1,
+      "message": "where does this get used?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1edfc842_2c325efa",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-07T04:16:08Z",
+      "side": 1,
+      "message": "this won\u0027t happen as the pipe is opened non-blocking (see the fcntl above)\n\n(even without the non-blocking pipe, we have a timeout)",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 81
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05573f4b_baff48ff",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-07T04:16:08Z",
+      "side": 1,
+      "message": "perhaps we want to pad this a little? if we finished very close to the timeout, we\u0027ll have almost no time to exit cleanly.",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
