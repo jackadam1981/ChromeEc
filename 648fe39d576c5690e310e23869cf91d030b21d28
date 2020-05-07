@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5abfcc74_47eae84c",
+        "filename": "util/ap_ro_hash.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T18:27:15Z",
+      "side": 1,
+      "message": "should it be the opposite?\n\nif tpm_response.rc \u003d\u003d /* GENERIC_ERROR */\n  return int(tpm_response.payload[0])\nreturn tpm_response.rc\n\niiuc, the last byte contains the actual error when RC is set to some \u0027generic error\u0027 code. other RCs may come from other software layers, so worth treating them as normal for RCs",
+      "range": {
+        "startLine": 353,
+        "startChar": 4,
+        "endLine": 357,
+        "endChar": 39
+      },
+      "revId": "648fe39d576c5690e310e23869cf91d030b21d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb89afa_f9309993",
+        "filename": "util/ap_ro_hash.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T18:27:15Z",
+      "side": 1,
+      "message": "can we just use VENDOR_RC_NO_SUCH_COMMAND_ERROR here?",
+      "range": {
+        "startLine": 518,
+        "startChar": 8,
+        "endLine": 518,
+        "endChar": 12
+      },
+      "revId": "648fe39d576c5690e310e23869cf91d030b21d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b15ebeab_71c721ed",
+        "filename": "util/ap_ro_hash.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T18:27:15Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 573,
+        "startChar": 39,
+        "endLine": 573,
+        "endChar": 46
+      },
+      "revId": "648fe39d576c5690e310e23869cf91d030b21d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc06c77_f9e63694",
+        "filename": "util/ap_ro_hash.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T18:27:15Z",
+      "side": 1,
+      "message": "%x is typically easier to grasp",
+      "range": {
+        "startLine": 574,
+        "startChar": 33,
+        "endLine": 574,
+        "endChar": 35
+      },
+      "revId": "648fe39d576c5690e310e23869cf91d030b21d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
