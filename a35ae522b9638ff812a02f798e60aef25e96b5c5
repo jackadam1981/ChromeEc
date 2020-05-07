@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69947543_9623b13e",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-07T22:52:01Z",
+      "side": 1,
+      "message": "ok, will do.",
+      "parentUuid": "a232973b_09070a14",
+      "range": {
+        "startLine": 597,
+        "startChar": 1,
+        "endLine": 597,
+        "endChar": 43
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c08d7fb_af0f0f95",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "408ea682_a0de883a",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-07T22:52:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c08d7fb_af0f0f95",
+      "range": {
+        "startLine": 600,
+        "startChar": 2,
+        "endLine": 600,
+        "endChar": 5
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "5f8f35eb_af0ccaa2",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-07T22:52:01Z",
+      "side": 1,
+      "message": "will change to use SPI_HASH_CHUNK_SIZE directly.",
+      "parentUuid": "7ab097bb_fd3c3383",
+      "range": {
+        "startLine": 611,
+        "startChar": 9,
+        "endLine": 611,
+        "endChar": 26
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "583eb0b6_fbf994fc",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-07T22:52:01Z",
+      "side": 1,
+      "message": "This is true for cases when size is divisible by chunk size (which is likely to be the case, of course), I just wanted to get the code smaller and simpler (no need to keep another variable), did not think about this as an issue, as programming of 128 chunks is by orders of magnitude longer than 1ms.\n\nHow about I change this to\n\nif (!((size/chunk_size) + 1) % 128)\n\nto avoid the problem.",
+      "parentUuid": "03f6fd98_af70e4d7",
+      "range": {
+        "startLine": 611,
+        "startChar": 2,
+        "endLine": 611,
+        "endChar": 37
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a08bbd2d_f2db0bd3",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2020-05-07T18:14:34Z",
       "side": 1,
       "message": "do we need to sleep at all if we kick a watchdog?",
+      "range": {
+        "startLine": 612,
+        "startChar": 3,
+        "endLine": 612,
+        "endChar": 9
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17859c5d_0fe93685",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-07T22:52:01Z",
+      "side": 1,
+      "message": "I don\u0027t know, I left it to be on the safe side as it does not seem a big deal. It could give a chance to move some UART or USB stuff around to avoid buffer overflows, etc. It was not enough to get the watchdog kicked reliably, and I did not want to increase this time.",
+      "parentUuid": "a08bbd2d_f2db0bd3",
       "range": {
         "startLine": 612,
         "startChar": 3,
@@ -137,6 +257,30 @@
       "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b3b690_017c825c",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-07T22:52:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9dfb6da7_4a57e674",
+      "range": {
+        "startLine": 647,
+        "startChar": 1,
+        "endLine": 647,
+        "endChar": 21
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
