@@ -39,6 +39,48 @@
       "revId": "ec4b9b07732873642467f572d51e70ead9ff3339",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d86941c_4b821338",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T23:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fac77a5_f12f4134",
+      "revId": "ec4b9b07732873642467f572d51e70ead9ff3339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20d9f90c_f0c87573",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T23:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b28aed5c_2ce2a95b",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 31
+      },
+      "revId": "ec4b9b07732873642467f572d51e70ead9ff3339",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
