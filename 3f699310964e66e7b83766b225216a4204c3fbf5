@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8bb08a1_f50e1bd1",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T00:32:11Z",
+      "side": 1,
+      "message": "Do you have some document which helps explaining this logic?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a044062e_4de1f7d7",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T00:32:11Z",
+      "side": 1,
+      "message": "Can it be called as a deferred function? The below 50ms delay seems long for an interrupt handler.",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 158,
+        "endChar": 27
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730bb258_b6d0294d",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T00:32:11Z",
+      "side": 1,
+      "message": "Need to forcing_shutdown for the else clause, like the MT8183\u0027s?",
+      "range": {
+        "startLine": 191,
+        "startChar": 25,
+        "endLine": 191,
+        "endChar": 26
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc4d0f1b_e5985902",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T00:32:11Z",
+      "side": 1,
+      "message": "You mentioned \u0027twice\u0027 twice.",
+      "range": {
+        "startLine": 249,
+        "startChar": 43,
+        "endLine": 249,
+        "endChar": 48
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b13f1547_bd36aa76",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T00:32:11Z",
+      "side": 1,
+      "message": "Is PP5000_A needed in S5? Usually it is turned on at S5S3.",
+      "range": {
+        "startLine": 283,
+        "startChar": 17,
+        "endLine": 283,
+        "endChar": 33
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24512fd9_876a3423",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T00:32:11Z",
+      "side": 1,
+      "message": "I guess MT8192 doesn\u0027t need this logic.",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 3
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70931630_dba5707d",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T00:32:11Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t match the below work. Need to modify it to reflect the change.",
+      "range": {
+        "startLine": 335,
+        "startChar": 2,
+        "endLine": 335,
+        "endChar": 51
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bba323f_9011a210",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T00:32:11Z",
+      "side": 1,
+      "message": "Add comment on this work.",
+      "range": {
+        "startLine": 402,
+        "startChar": 2,
+        "endLine": 405,
+        "endChar": 31
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
