@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "afd8912f_a04e8c5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-07T15:14:55Z",
+      "side": 1,
+      "message": "Did we change the config usage around again?  I thought CONFIG_USB_PD_REV30 was only for TCPMv1?",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28fa0ce4_64401734",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-07T15:14:55Z",
+      "side": 1,
+      "message": "Is the overall goal to make TCPMv2 smaller when porting to older devices? Or to ensure we don\u0027t inadvertently mix PD version functionality?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb9395e6_cd8d86a3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
