@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc6c0b3a_1632c40c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-07T04:38:00Z",
+      "side": 1,
+      "message": "So basically we\u0027re trying to avoid re-setting or re-clearing auto discharge disconnect with this function?",
+      "range": {
+        "startLine": 695,
+        "startChar": 1,
+        "endLine": 695,
+        "endChar": 14
+      },
+      "revId": "3abee3b8d588d64efbc780532f7e60b34fb3a523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d029eb8_b53b14a3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2823,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-07T04:38:00Z",
+      "side": 1,
+      "message": "Why the need for the call here when entry also calls this?",
+      "range": {
+        "startLine": 2822,
+        "startChar": 0,
+        "endLine": 2823,
+        "endChar": 46
+      },
+      "revId": "3abee3b8d588d64efbc780532f7e60b34fb3a523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "122c823e_514e6253",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2877,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-07T04:38:00Z",
+      "side": 1,
+      "message": "This feels odd.  Are we bouncing around in a strange way between the states?",
+      "range": {
+        "startLine": 2872,
+        "startChar": 0,
+        "endLine": 2877,
+        "endChar": 41
+      },
+      "revId": "3abee3b8d588d64efbc780532f7e60b34fb3a523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
