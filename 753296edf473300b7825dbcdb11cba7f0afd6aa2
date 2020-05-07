@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9fa017e_69481b53",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "do we need 2K? can we make it a part of INFO1 instead? this will also get protection from erasing for free (it\u0027s a write-once thing anyways)",
+      "range": {
+        "startLine": 165,
+        "startChar": 30,
+        "endLine": 165,
+        "endChar": 52
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac17448_d9ab4630",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "is that what we wanted? a single digest over everything? not a separate digest for each range?\nworks for me, just wondering if there could be reasons to choose the other option.",
+      "range": {
+        "startLine": 38,
+        "startChar": 32,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dbf4871_3630bf4a",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "iiuc we separate the header from the payload since when the regions are specified we receive only the payload.\ninstead, can we just ask the caller to send both the header+payload (and combine it in a single structure).\n\nyes, it adds some info duplication (total size and num_ranges field), but checks \u0026 handling become simpler. and it\u0027s easier to deal with future changes to the format if we ever need them. one thing we can do right now is to include some versioning field in the header from the beginning. from experience, we will change something at some point, and version will be invaluable for that.",
+      "range": {
+        "startLine": 52,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9325c9c_dd464b5e",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "uint16_t oruint8_t is probably enough for num_ranges\ncan we add some version field using the rest of the bits instead?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c74b477b_6b44cd71",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "if we are doing it, can we just do the full-size digest? we are not saving much by truncating it.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4297861_862347f6",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "vc_ap_ro_check -\u003e vc_seed_ap_ro_check",
+      "range": {
+        "startLine": 76,
+        "startChar": 26,
+        "endLine": 76,
+        "endChar": 40
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "254329e5_9e07f166",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "vc_ap_ro_check -\u003e vc_seed_ap_ro_check",
+      "range": {
+        "startLine": 139,
+        "startChar": 51,
+        "endLine": 139,
+        "endChar": 65
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61225c6f_d9aabece",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "can we ensure it in a more predictable way (udelay(1000)), not through cflush()? we only need this stabilization delay once, not for every range, right?\nand if we need to ensure a delay, shall it become a part of usb_spi_sha256_start()?",
+      "range": {
+        "startLine": 189,
+        "startChar": 24,
+        "endLine": 189,
+        "endChar": 35
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91ddfaa8_f00bd84e",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "nit: something like \"AP RO Verification: FAILED\" for failure and \"AP RO Verification: SUCCESS\" for success.\nEasier for an eye to distinguish, possibly easier for a script to capture as well.",
+      "range": {
+        "startLine": 200,
+        "startChar": 11,
+        "endLine": 200,
+        "endChar": 28
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "376d014b_fb391dbe",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "maybe cflush() before returning? to have a predictable ordering between console messages and command completion",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 7
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68406a73_764d251a",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "I\u0027d suggest for unification purposes to treat this info as S/N. i.e. store in INFO1, require a special image to erase. to avoid using different mechanisms and policies for the data with the same level of importance and same lifetime",
+      "range": {
+        "startLine": 230,
+        "startChar": 27,
+        "endLine": 230,
+        "endChar": 32
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a12a1a2_eb1d1c25",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T19:29:28Z",
+      "side": 1,
+      "message": "nit: ap_ro_check -\u003e ap_ro_info\notherwise, sounds like it checks AP RO, while it actually displays stored \u0027check data\u0027 about it.",
+      "range": {
+        "startLine": 260,
+        "startChar": 29,
+        "endLine": 260,
+        "endChar": 40
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
