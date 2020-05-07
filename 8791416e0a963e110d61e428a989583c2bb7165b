@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87a6fecf_21bb4a24",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-07T15:21:35Z",
+      "side": 1,
+      "message": "Is the goal here to save space by excluding these states, or to prevent them from being called when the config isn\u0027t selected?",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 25
+      },
+      "revId": "8791416e0a963e110d61e428a989583c2bb7165b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
