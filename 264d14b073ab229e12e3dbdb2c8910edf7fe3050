@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3acd1e18_633929bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-05-07T00:18:31Z",
+      "side": 1,
+      "message": "Nit: At first I didn\u0027t know what bug this was supposed to fix, would be nice to include at least a little bit of the bug in here (or somewhere else in the commit message).\n\nat least a:\nTEST\u003dPress Refresh, no sign of \u0027T\u0027 anymore\n\nThe way you have it now makes it seem like the keyboard didn\u0027t work before, and the truth is that most of it did (and this bug would have been hard to find without trying every key individually).",
+      "revId": "264d14b073ab229e12e3dbdb2c8910edf7fe3050",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
