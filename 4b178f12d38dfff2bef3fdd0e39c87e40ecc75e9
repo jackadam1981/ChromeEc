@@ -22,6 +22,30 @@
       "revId": "4b178f12d38dfff2bef3fdd0e39c87e40ecc75e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac16ef7_3861e52c",
+        "filename": "chip/g/crypto_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-07T20:17:24Z",
+      "side": 1,
+      "message": "Done\n\nAlso fixed other places where \tDCRYPTO_SHA1_hash() is invoked.",
+      "parentUuid": "9ab017e2_da1c2d90",
+      "range": {
+        "startLine": 19,
+        "startChar": 19,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "4b178f12d38dfff2bef3fdd0e39c87e40ecc75e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
