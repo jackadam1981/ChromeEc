@@ -46,7 +46,7 @@
 /* BC 1.2 */
 
 /* I2C Bus Configuration */
-
+#define CONFIG_I2C
 
 #ifndef __ASSEMBLER__
 
