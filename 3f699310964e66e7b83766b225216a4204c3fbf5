@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7296309_bae62a31",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-07T02:08:58Z",
+      "side": 1,
+      "message": "p19~p23 https://drive.google.com/file/d/1XJ-SRHuo7hoo5tNDbrhb04zfwuI6_GAp/view?usp\u003dsharing",
+      "parentUuid": "a8bb08a1_f50e1bd1",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a044062e_4de1f7d7",
         "filename": "power/mt8192.c",
         "patchSetId": 33
@@ -45,6 +69,30 @@
       "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17b0f7f4_094bb89d",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-07T02:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a044062e_4de1f7d7",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 158,
+        "endChar": 27
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "193f6fe1_8342b456",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-07T02:08:58Z",
+      "side": 1,
+      "message": "yes, it does.",
+      "parentUuid": "730bb258_b6d0294d",
+      "range": {
+        "startLine": 191,
+        "startChar": 25,
+        "endLine": 191,
+        "endChar": 26
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc4d0f1b_e5985902",
         "filename": "power/mt8192.c",
         "patchSetId": 33
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a0f82c7f_b0a695f7",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-07T02:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc4d0f1b_e5985902",
+      "range": {
+        "startLine": 249,
+        "startChar": 43,
+        "endLine": 249,
+        "endChar": 48
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b13f1547_bd36aa76",
         "filename": "power/mt8192.c",
         "patchSetId": 33
@@ -105,6 +201,30 @@
       "writtenOn": "2020-05-07T00:32:11Z",
       "side": 1,
       "message": "Is PP5000_A needed in S5? Usually it is turned on at S5S3.",
+      "range": {
+        "startLine": 283,
+        "startChar": 17,
+        "endLine": 283,
+        "endChar": 33
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b407aaf_c5ef9e8f",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-07T02:08:58Z",
+      "side": 1,
+      "message": "https://docs.google.com/document/d/16tKfUbVnN5XlQBx7AHBQT6A_nlIKrxCn67GjZdOvQx8/edit#bookmark\u003did.e36x7lpb8xo\n\nFor _A: it means EC/H1 on state, and this should be on at G3S5 IMO?",
+      "parentUuid": "b13f1547_bd36aa76",
       "range": {
         "startLine": 283,
         "startChar": 17,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9d8795d8_01312396",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-07T02:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24512fd9_876a3423",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 3
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70931630_dba5707d",
         "filename": "power/mt8192.c",
         "patchSetId": 33
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f06a2fba_a8b2b16f",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-07T02:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70931630_dba5707d",
+      "range": {
+        "startLine": 335,
+        "startChar": 2,
+        "endLine": 335,
+        "endChar": 51
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bba323f_9011a210",
         "filename": "power/mt8192.c",
         "patchSetId": 33
@@ -183,6 +351,30 @@
       "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf2fb9a_e2e410fa",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-07T02:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bba323f_9011a210",
+      "range": {
+        "startLine": 402,
+        "startChar": 2,
+        "endLine": 405,
+        "endChar": 31
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
