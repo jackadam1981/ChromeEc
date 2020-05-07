@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1899c632_273a13d5",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T23:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a65e0ed0_50aa32e4",
+      "range": {
+        "startLine": 67,
+        "startChar": 22,
+        "endLine": 67,
+        "endChar": 30
+      },
+      "revId": "33d3641d50b9e8d4dd6ff5e9fdd72dd0b3325ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32656430_727b7baf",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "33d3641d50b9e8d4dd6ff5e9fdd72dd0b3325ca0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49e34ad2_fe072128",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-07T23:47:02Z",
+      "side": 1,
+      "message": "Right. Servo v4 is not a DP branch device, in which this field is set to UFP_D connected (0x2) always. This field should depend on the HPD present.",
+      "parentUuid": "32656430_727b7baf",
+      "range": {
+        "startLine": 919,
+        "startChar": 2,
+        "endLine": 919,
+        "endChar": 5
+      },
+      "revId": "33d3641d50b9e8d4dd6ff5e9fdd72dd0b3325ca0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
