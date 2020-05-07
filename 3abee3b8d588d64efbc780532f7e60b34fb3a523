@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c74ce57_88b1bbe2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-07T06:07:03Z",
+      "side": 1,
+      "message": "Yes. Talking to I2C is not the most efficient use of processor to set the same value over and over.",
+      "parentUuid": "dc6c0b3a_1632c40c",
+      "range": {
+        "startLine": 695,
+        "startChar": 1,
+        "endLine": 695,
+        "endChar": 14
+      },
+      "revId": "3abee3b8d588d64efbc780532f7e60b34fb3a523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d029eb8_b53b14a3",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d2a91921_b0a46cbb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2823,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-07T06:07:03Z",
+      "side": 1,
+      "message": "There used to be a path with reset that ended up turning this off and it caused USB memory devices to stop being seen.  I can take this out and see if it fails for me.",
+      "parentUuid": "4d029eb8_b53b14a3",
+      "range": {
+        "startLine": 2822,
+        "startChar": 0,
+        "endLine": 2823,
+        "endChar": 46
+      },
+      "revId": "3abee3b8d588d64efbc780532f7e60b34fb3a523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "122c823e_514e6253",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-07T04:38:00Z",
       "side": 1,
       "message": "This feels odd.  Are we bouncing around in a strange way between the states?",
+      "range": {
+        "startLine": 2872,
+        "startChar": 0,
+        "endLine": 2877,
+        "endChar": 41
+      },
+      "revId": "3abee3b8d588d64efbc780532f7e60b34fb3a523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5379693f_212e2dff",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2877,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-07T06:07:03Z",
+      "side": 1,
+      "message": "TCPCI indicates that if we were auto-toggling, DRP was enabled, then we know which state we are in.  If we jump to unattached, it will end up over in unattached_src where it is already known we have a connection to a snk.  If DRP was not set then we do not have a suspected connection and we need to drop in at unattached and try. The auto discharge disconnect enable here removed the need to assume unattached was the starting point of an attached device.  If it is not done then the debug accessories will tell me the right thing here and when we get to WaitSNK it will look like it is open/open.  If I enable auto discharge then it shows as being a debug accessory.",
+      "parentUuid": "122c823e_514e6253",
       "range": {
         "startLine": 2872,
         "startChar": 0,
