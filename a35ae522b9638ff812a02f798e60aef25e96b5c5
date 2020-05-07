@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a232973b_09070a14",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T18:14:34Z",
+      "side": 1,
+      "message": "don\u0027t create the constant, use SPI_HASH_CHUNK_SIZE directly?",
+      "range": {
+        "startLine": 597,
+        "startChar": 1,
+        "endLine": 597,
+        "endChar": 43
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c08d7fb_af0f0f95",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T18:14:34Z",
+      "side": 1,
+      "message": "nit: const int",
+      "range": {
+        "startLine": 600,
+        "startChar": 2,
+        "endLine": 600,
+        "endChar": 5
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03f6fd98_af70e4d7",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T18:14:34Z",
+      "side": 1,
+      "message": "this has a side effect of kicking the watchdog earlier. e.g. for 129 chunks, the old approach would run for 128 cycles, kick, run for 1 cycle. the new code: run for 1 cycle, kick, run for 128 cycles. which is still ok, just an observation.\n\nbut, for sizes, which are not multiples of chunk_size, it will unnecessarily kick it on the last cycle (including very small sizes \u003c chunk_size, it will kick it on the only cycle).\n\nI\u0027d go back to the counter for simplicity.",
+      "range": {
+        "startLine": 611,
+        "startChar": 2,
+        "endLine": 611,
+        "endChar": 37
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab097bb_fd3c3383",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T18:14:34Z",
+      "side": 1,
+      "message": "is it smart enough to recognize that const int chunk_size is a power of 2 to optimize the calc? maybe use SPI_HASH_CHUNK_SIZE directly?",
+      "range": {
+        "startLine": 611,
+        "startChar": 9,
+        "endLine": 611,
+        "endChar": 26
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a08bbd2d_f2db0bd3",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T18:14:34Z",
+      "side": 1,
+      "message": "do we need to sleep at all if we kick a watchdog?",
+      "range": {
+        "startLine": 612,
+        "startChar": 3,
+        "endLine": 612,
+        "endChar": 9
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dfb6da7_4a57e674",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-07T18:14:34Z",
+      "side": 1,
+      "message": "need to check if returns an error, and abort and return an error, if so\nsame for usb_spi_sha256_update() below",
+      "range": {
+        "startLine": 647,
+        "startChar": 1,
+        "endLine": 647,
+        "endChar": 21
+      },
+      "revId": "a35ae522b9638ff812a02f798e60aef25e96b5c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
