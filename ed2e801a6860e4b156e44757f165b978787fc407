@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05b0d8e8_63d34443",
+        "filename": "board/casta/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-07T14:58:12Z",
+      "side": 1,
+      "message": "should be CPRINTS() instead just to use the correct console channel. See definition at top of file",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 11
+      },
+      "revId": "ed2e801a6860e4b156e44757f165b978787fc407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
