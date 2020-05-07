@@ -1234,6 +1234,10 @@ function flash_it83xx() {
 		# Enable i2c bus on C2D2 at 400kbps
 		servo_save_add "i2c_ec_bus_speed"
 		dut_control_or_die i2c_ec_bus_speed:400
+		# Ensure the CR50 doesn't go into low power while flashing
+		# otherwise the DUT side muxes will get cut
+		servo_save_add "cr50_idle_level"
+		dut_control cr50_idle_level:active
 	fi
 
 	# Now the we have enabled the I2C mux on the servo to talk to the dut,
