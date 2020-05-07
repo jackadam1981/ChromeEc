@@ -502,8 +502,7 @@ static void jump_to_image(uintptr_t init_addr)
 	 * PD is enabled because the device is not write protected, EFS2 jumps
 	 * to RW before PD tasks start. So, there is no states to clean up.
 	 */
-	if (!IS_ENABLED(CONFIG_VBOOT_EFS2) &&
-			IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+	if (task_start_called() && IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 		/* Note: must be before i2c module is locked down */
 		pd_prepare_sysjump();
 
