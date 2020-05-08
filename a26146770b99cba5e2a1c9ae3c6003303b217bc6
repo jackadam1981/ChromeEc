@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "799ecf50_88de3248",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-08T06:46:20Z",
+      "side": 1,
+      "message": "Next sentence: \"The Discover Modes Command ACK Shall contain a Message Header with the Number of Data Objects field set to a value of 1 to 7 (the actual value is the number of Mode objects plus one).\" If the number of mode objects + 1 can be 1, that would imply that the number of mode objects can be 0.\n\nI\u0027m not sure how I looked this up before without noticing the conflict. I think we should follow the first sentence.",
+      "parentUuid": "44513037_9b41af64",
+      "range": {
+        "startLine": 399,
+        "startChar": 30,
+        "endLine": 399,
+        "endChar": 31
+      },
+      "revId": "a26146770b99cba5e2a1c9ae3c6003303b217bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fdd9a10_cd8771a3",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "a26146770b99cba5e2a1c9ae3c6003303b217bc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90eee092_5fa590c4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4596,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-08T06:46:20Z",
+      "side": 1,
+      "message": "See other comment.",
+      "parentUuid": "9fdd9a10_cd8771a3",
+      "range": {
+        "startLine": 4596,
+        "startChar": 18,
+        "endLine": 4596,
+        "endChar": 53
+      },
+      "revId": "a26146770b99cba5e2a1c9ae3c6003303b217bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
