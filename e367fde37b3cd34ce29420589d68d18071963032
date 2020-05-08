@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c597d3f2_d23d3111",
+        "filename": "include/charge_ramp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:39:03Z",
+      "side": 1,
+      "message": "we should add more comments around this parameter. Is the charge port either 0 (for the single case) otherwise is matches up with USB-C ports?\n\nOr if the above is not true and it is more complicated than that, then maybe we should define a board-level enum that defines what each charge port represents.",
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "991aa9d5_c29354a7",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4120,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:39:03Z",
+      "side": 1,
+      "message": "This needs a undef section above that describe what the CONFIG_BC12_SINGLE_DRIVER option means.\n\nWhat if USB_CHG_P0 and USB_CHG_P1 were defined, wouldn\u0027t that be multiple bc12 drivers?",
+      "range": {
+        "startLine": 4120,
+        "startChar": 8,
+        "endLine": 4120,
+        "endChar": 33
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4331b0f_ffe397f2",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:39:03Z",
+      "side": 1,
+      "message": "I don\u0027t think we should hard code this assumption; if we really have tight ram space we might want to handle all of the charges in a single task (assuming we could still meet timing requirements).  We should instead let the board define the max number of charger ports",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bbdca9e_102ce63f",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:39:03Z",
+      "side": 1,
+      "message": "all of these fields need detailed comments",
+      "range": {
+        "startLine": 103,
+        "startChar": 7,
+        "endLine": 103,
+        "endChar": 15
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55d64bb1_326bc53a",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:39:03Z",
+      "side": 1,
+      "message": "should we instead store the task id for the charger task?",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ba4257_f8930639",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:39:03Z",
+      "side": 1,
+      "message": "let\u0027s always define these in the struct and define them as optional",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 67
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "897b3b85_3032498f",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:39:03Z",
+      "side": 1,
+      "message": "this seems like we are mixing APIs. We shouldn\u0027t need this guard as the CHARGE_PORT_NONE is onyl for determining an active charging port. Maybe we should rename that to NO_ACTIVE_CHARGE_PORT instead",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 30
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
