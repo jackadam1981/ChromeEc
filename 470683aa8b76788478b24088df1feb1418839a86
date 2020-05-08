@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70138324_e68c14b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T21:21:02Z",
+      "side": 1,
+      "message": "Did you test this against TCPMv1 stack?  Specifically you should check that the TCPMv1 stack enters TBT mode with the TBT dock when connecting to the USB4 DB.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "470683aa8b76788478b24088df1feb1418839a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "885d2cd3_74a59c4f",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T21:21:02Z",
+      "side": 1,
+      "message": "Nit - it would be better to group all the svids related functions together.  But I\u0027m okay with the order as is.",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 0
+      },
+      "revId": "470683aa8b76788478b24088df1feb1418839a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
