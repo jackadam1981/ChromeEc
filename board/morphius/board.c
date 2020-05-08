@@ -11,6 +11,7 @@
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
 #include "driver/retimer/pi3dpx1207.h"
+#include "driver/temp_sensor/tmp432.h"
 #include "driver/usb_mux/amd_fp5.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -293,6 +294,9 @@ void setup_fw_config(void)
 	gpio_enable_interrupt(GPIO_EN_PWR_TOUCHPAD_PS2);
 
 	setup_mux();
+
+	/* Disable thermal ic */
+	tmp432_set_power(TMP432_POWER_OFF);
 }
 DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
 
@@ -441,6 +445,9 @@ static void board_chipset_startup(void)
 {
 	/* Normal charge current */
 	sb_smart_charge_mode(SB_SMART_CHARGE_DISABLE);
+
+	/* Enable thermal ic */
+	tmp432_set_power(TMP432_POWER_ON);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -449,5 +456,8 @@ static void board_chipset_suspend(void)
 {
 	/* SMART charge current */
 	sb_smart_charge_mode(SB_SMART_CHARGE_ENABLE);
+
+	/* Disable thermal ic */
+	tmp432_set_power(TMP432_POWER_OFF);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
