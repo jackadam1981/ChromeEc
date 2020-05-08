@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddfab9c5_4f432340",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T20:20:55Z",
+      "side": 1,
+      "message": "what are your thoughts about keeping this consistent with how we implemented Rev20 stuff?",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 236,
+        "endChar": 22
+      },
+      "revId": "106d681e6a322aaf43b66d2117901061e7147a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
