@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19adf018_fbb0dd1a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T20:16:05Z",
+      "side": 1,
+      "message": "I think this will need an ifdef guard to work right (unless you can figure out a way around it)\n\njust letting you know so you don\u0027t get suck trying to make the impossible work ;)",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 46
+      },
+      "revId": "b3ec4d420d8d3d29f9b18aee1e44eabcca1bb123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

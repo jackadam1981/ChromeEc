@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e55d25ad_20f09ef3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T20:16:05Z",
+      "side": 1,
+      "message": "I think the !REV20 makes it difficult to reason about (also when 4.0 comes, then this code would break).\n\nWhat about if we:\n - At the end of config.h, we automatically define all of the versions up to the latest version that is supported by the board\n\nFor example,\n  if board is tcpmv2, then both rev20 and rev30 would get defined\n  if board is tcpmv2 and defines rev20, then only rev20 is defined\n  if board is tcpmv1, then only rev20 is defined\n  if board is tcpmv1 and defines rev30. then both rev20 and rev30 get defined.\n\nThis way, the code doesn\u0027t care which version is used, it just know that certain sections are V30 and V40 (in the future) and V20 implicitly.\n\nThoughts?",
+      "parentUuid": "4935870c_cad6a40f",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28fa0ce4_64401734",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
