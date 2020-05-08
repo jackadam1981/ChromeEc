@@ -22,6 +22,30 @@
       "revId": "02f82e4956d67312af4310ba7d83368a6f878dfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75b20965_2b63194f",
+        "filename": "board/strago/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-08T22:46:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73619bec_fb74fc9d",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "02f82e4956d67312af4310ba7d83368a6f878dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
