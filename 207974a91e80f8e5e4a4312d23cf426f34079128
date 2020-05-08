@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5320bffc_6049447b",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-08T02:37:23Z",
+      "side": 1,
+      "message": "why do you think this is better than conditionally compile the idle_action enum and the idle_name array?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "207974a91e80f8e5e4a4312d23cf426f34079128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
