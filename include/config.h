@@ -308,6 +308,13 @@
 #undef CONFIG_TCS_USE_LUX_TABLE
 
 /*
+ * For b:143440730, system might hang-up before enter S0/S3. Check
+ * GPIO_ALL_SYS_PGOOD here to make sure it will trigger every time.
+ */
+
+#undef CONFIG_ALL_SYS_PWRGD_CHECK_REBOOT
+
+/*
  * Define the event to raise when a sensor interrupt triggers.
  * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
  */
