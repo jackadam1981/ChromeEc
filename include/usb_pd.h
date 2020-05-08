@@ -1554,10 +1554,11 @@ __override_proto int pd_custom_vdm(int port, int cnt, uint32_t *payload,
  * @param payload  payload data.
  * @param rpayload pointer to the data to send back.
  * @param head     message header
+ * @param rtype    pointer to the type of message (SOP/SOP'/SOP'')
  * @return if >0, number of VDOs to send back.
  */
 int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
-		uint16_t head);
+		uint16_t head, enum tcpm_transmit_type *rtype);
 
 /**
  * Handle Custom VDMs for flashing.
@@ -1766,14 +1767,6 @@ bool consume_sop_prime_repeat_msg(int port, uint8_t msg_id);
  */
 bool consume_sop_prime_prime_repeat_msg(int port, uint8_t msg_id);
 
-/**
- * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_ENABLE
- *
- * @param port		USB-C port number
- * @return              Status of CABLE_FLAGS_SOP_PRIME_ENABLE flag
- */
-bool is_transmit_msg_sop_prime(int port);
-
 /*
  * Returns the pointer to PD alternate mode discovery results
  * Note: Caller function can mutate the data in this structure.
@@ -1799,22 +1792,6 @@ struct pd_cable *pd_get_cable_attributes(int port);
  * @param set   If true set the flag else clear
  */
 void pd_set_dfp_enter_mode_flag(int port, bool set);
-
-/**
- * Returns the status of cable flag - CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE
- *
- * @param port		USB-C port number
- * @return		Status of CABLE_FLAGS_SOP_PRIME_PRIME_ENABLE flag
- */
-bool is_transmit_msg_sop_prime_prime(int port);
-
-/**
- * Returns the type of communication (SOP/SOP'/SOP'')
- *
- * @param port		USB-C port number
- * @return		Type of message to be transmitted
- */
-enum pd_msg_type pd_msg_tx_type(int port);
 
 /**
  * Reset Cable type, Cable attributes and cable flags
