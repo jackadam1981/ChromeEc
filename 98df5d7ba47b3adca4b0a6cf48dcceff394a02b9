@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "97ef4a3e_8892cd2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-08T21:19:31Z",
+      "side": 1,
+      "message": "I like your proposal but it could get a little crazy checking all the conditions as the pd rev and or the tcpm version levels increase.\n\nI\u0027ll start another CL containing your proposed changes and update this CL accordingly.",
+      "parentUuid": "e55d25ad_20f09ef3",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28fa0ce4_64401734",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
