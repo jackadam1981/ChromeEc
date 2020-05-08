@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95577c1e_9951fca2",
+        "filename": "board/puff/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-05-08T03:02:11Z",
+      "side": 1,
+      "message": "This seems useful enough to put in the chip directory? Maybe as an inline function.",
+      "range": {
+        "startLine": 405,
+        "startChar": 3,
+        "endLine": 405,
+        "endChar": 11
+      },
+      "revId": "2eb5327ed3efa9bc131fee262df52356b9408af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd7fdaf_e9ad09ba",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-05-08T03:02:11Z",
+      "side": 1,
+      "message": "unexpected?",
+      "range": {
+        "startLine": 179,
+        "startChar": 57,
+        "endLine": 179,
+        "endChar": 65
+      },
+      "revId": "2eb5327ed3efa9bc131fee262df52356b9408af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
