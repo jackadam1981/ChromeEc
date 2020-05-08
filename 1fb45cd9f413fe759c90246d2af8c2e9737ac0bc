@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "2460ccbf_0b1bfeec",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4498,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-08T06:44:47Z",
+      "side": 1,
+      "message": "I\u0027m taking that as a, \"Don\u0027t worry about it.\"",
+      "parentUuid": "bf66bae2_95429971",
+      "range": {
+        "startLine": 4493,
+        "startChar": 0,
+        "endLine": 4498,
+        "endChar": 0
+      },
+      "revId": "1fb45cd9f413fe759c90246d2af8c2e9737ac0bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b28af43_79678af5",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
