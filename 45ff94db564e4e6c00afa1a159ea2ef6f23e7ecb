@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6d9aae5_742de0e3",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2392,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T20:36:35Z",
+      "side": 1,
+      "message": "let\u0027s just undef this here and that should change the default for all boards.",
+      "range": {
+        "startLine": 2392,
+        "startChar": 1,
+        "endLine": 2392,
+        "endChar": 31
+      },
+      "revId": "45ff94db564e4e6c00afa1a159ea2ef6f23e7ecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
