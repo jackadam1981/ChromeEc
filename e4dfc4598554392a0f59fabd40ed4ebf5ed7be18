@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32e67b10_48a70fe5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T00:15:32Z",
+      "side": 1,
+      "message": "I think it would be better to add another parameter here that is explicitly used to store the transmit SOP type for the response.\n\n  int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,\n              uint32_t head, enum tcpm_transmit_type *rtype)\n\nThis plus a change to queue_vdm() and I think you can eliminate carrying around (uint32_t *head) throughout usb_pd_protocol.c",
+      "range": {
+        "startLine": 630,
+        "startChar": 2,
+        "endLine": 630,
+        "endChar": 16
+      },
+      "revId": "e4dfc4598554392a0f59fabd40ed4ebf5ed7be18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6493df6_0529215c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T00:15:32Z",
+      "side": 1,
+      "message": "Add a new field to this structure to store the SOP type of the next VDM to send:\n    enum tcpm_transmit_type xmit_type;",
+      "revId": "e4dfc4598554392a0f59fabd40ed4ebf5ed7be18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff1bbee_9118f5d0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T00:15:32Z",
+      "side": 1,
+      "message": "Add a parameter enum tcpm_transmit_type type to this routine to save into pd[port].xmit_type.",
+      "range": {
+        "startLine": 1213,
+        "startChar": 0,
+        "endLine": 1215,
+        "endChar": 0
+      },
+      "revId": "e4dfc4598554392a0f59fabd40ed4ebf5ed7be18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6fde5d1_ffa3857d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T00:15:32Z",
+      "side": 1,
+      "message": "Create a local variable enum tcpm_transmit_type rtype to pass by reference to pd_svdm().",
+      "range": {
+        "startLine": 1250,
+        "startChar": 2,
+        "endLine": 1250,
+        "endChar": 51
+      },
+      "revId": "e4dfc4598554392a0f59fabd40ed4ebf5ed7be18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d67c683_17d893b1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T00:15:32Z",
+      "side": 1,
+      "message": "Pass rtype to queue_vdm by value as a new parameter.",
+      "range": {
+        "startLine": 1255,
+        "startChar": 2,
+        "endLine": 1255,
+        "endChar": 11
+      },
+      "revId": "e4dfc4598554392a0f59fabd40ed4ebf5ed7be18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d58726b_a51c4481",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2071,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T00:15:32Z",
+      "side": 1,
+      "message": "This caller to queue_vdm() would always set the SOP type to TCPC_TX_SOP.",
+      "range": {
+        "startLine": 2071,
+        "startChar": 0,
+        "endLine": 2071,
+        "endChar": 49
+      },
+      "revId": "e4dfc4598554392a0f59fabd40ed4ebf5ed7be18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0174be98_cca7860a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T00:15:32Z",
+      "side": 1,
+      "message": "By saving the SOP type into the pd[port] structure, you can eliminate passing the \"head\" parameter.",
+      "range": {
+        "startLine": 2147,
+        "startChar": 0,
+        "endLine": 2147,
+        "endChar": 62
+      },
+      "revId": "e4dfc4598554392a0f59fabd40ed4ebf5ed7be18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
