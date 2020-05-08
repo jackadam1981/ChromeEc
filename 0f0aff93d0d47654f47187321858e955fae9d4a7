@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f13eadeb_ff42233d",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 0,
+      "message": "this change doesn\u0027t seem like it belongs in this CL (adding support for UART console). Maybe break this out into a parent CL in preparation for the uart-based hostcommand suport",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "0f0aff93d0d47654f47187321858e955fae9d4a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

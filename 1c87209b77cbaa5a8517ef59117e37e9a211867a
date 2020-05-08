@@ -68,6 +68,282 @@
       "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc18ce5b_588872c8",
+        "filename": "chip/stm32/usart-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "const static?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03f2f7ac_616d514f",
+        "filename": "chip/stm32/usart-stm32f4.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "add note about CONFIG_STREAM_USART\\d config providing these variables?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d679b7_a7abd317",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "these should be CC_HOSTCMD; we don\u0027t need to create a new channel.",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2204fdd_c5f77f78",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "TL?",
+      "range": {
+        "startLine": 95,
+        "startChar": 47,
+        "endLine": 95,
+        "endChar": 49
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "275fbbf4_8d463cd7",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "I made the comment below; I think we can simplyies this and avoid this statemachine logic",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe0c5235_3f993808",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "The statemachine seems overly complicated. What issues occur if we just keep queueing up bytes with a deferred handler called to process everything at once including number of bytes and checksum in the host command framework?",
+      "range": {
+        "startLine": 343,
+        "startChar": 6,
+        "endLine": 343,
+        "endChar": 19
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d7993b1_8de14ce9",
+        "filename": "chip/stm32/usart_rx_dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "needs comments\n\nmight be cleaner to just do below with\n\nif (ID_ENABLED(CHIP_FAMILY_STM32F4)\n   options.flags |\u003d STM_DMA...;",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51664616_5126866d",
+        "filename": "chip/stm32/usart_rx_dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "need to single source comment code otherwise it becomes unmaintainable",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ace743fb_d2b57a7d",
+        "filename": "chip/stm32/usart_tx_interrupt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "this code looks like a duplicate from above. Let\u0027s signle source as much of the shared code as possible.",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f48618a0_f2164531",
+        "filename": "chip/stm32/usart_tx_interrupt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "needs comment",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31ff9543_ee524898",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "we should be reusing the host command channel for your uses in this CL",
+      "range": {
+        "startLine": 104,
+        "startChar": 16,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dc21106_71d560ce",
+        "filename": "include/usart_host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-08T21:56:32Z",
+      "side": 1,
+      "message": "what is the tl prefix for?\n\nAlso this is local to the stm32 implementation, so I think we should define the header file there instead.",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
