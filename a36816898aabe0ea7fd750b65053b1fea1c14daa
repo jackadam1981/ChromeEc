@@ -375,6 +375,30 @@
       "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebd881f2_286635ba",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-08T20:53:48Z",
+      "side": 1,
+      "message": "That might be a bit much.  Wait only 1 second for the process to exit?",
+      "parentUuid": "af89dbd6_852b0ab5",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f54c703e_d7794857",
+        "filename": "common/test_util.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-08T20:53:48Z",
+      "side": 1,
+      "message": "do you know why this ifdef is here? think that we can remove it? or add a comment?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 52
+      },
+      "revId": "d537864b04808615ccdcd0097d5466def828bb77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91f81606_5115e528",
+        "filename": "util/run_host_test",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-08T20:53:48Z",
+      "side": 1,
+      "message": "one \"t\"",
+      "range": {
+        "startLine": 84,
+        "startChar": 34,
+        "endLine": 84,
+        "endChar": 36
+      },
+      "revId": "d537864b04808615ccdcd0097d5466def828bb77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33419ec9_c36d3387",
+        "filename": "util/run_host_test",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-08T20:53:48Z",
+      "side": 1,
+      "message": "SIGTERM",
+      "range": {
+        "startLine": 84,
+        "startChar": 58,
+        "endLine": 84,
+        "endChar": 64
+      },
+      "revId": "d537864b04808615ccdcd0097d5466def828bb77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
