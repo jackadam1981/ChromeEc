@@ -55,12 +55,6 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
-/* Default no action, overwrite it in board.c if necessary*/
-__overridable void board_chipset_forced_shutdown(void)
-{
-        return;
-}
-
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
 	int timeout_ms = 50;
@@ -81,11 +75,6 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	/* Turn off PP5000_A rail */
 	gpio_set_level(GPIO_EN_PP5000_A, 0);
 #endif
-
-	/* For b:143440730, stop checking GPIO_ALL_SYS_PGOOD if system is
-	 * already force to G3.
-         */
-	board_chipset_forced_shutdown();
 
 	/* Need to wait a min of 10 msec before check for power good */
 	msleep(10);
@@ -122,12 +111,6 @@ enum power_state chipset_force_g3(void)
 	return POWER_G3;
 }
 
-/* Default no action, overwrite it in board.c if necessary*/
-__attribute__((weak)) void all_sys_pgood_check_reboot(void)
-{
-	return;
-}
-
 /* Called by APL power state machine when transitioning from G3 to S5 */
 void chipset_pre_init_callback(void)
 {
@@ -146,11 +129,6 @@ void chipset_pre_init_callback(void)
 	 * power_wait_signals() as PP5000_A_PGOOD is included in the
 	 * CHIPSET_G3S5_POWERUP_SIGNAL macro.
 	 */
-
-	/* For b:143440730, system might hang-up before enter S0/S3. Check
-	 * GPIO_ALL_SYS_PGOOD here to make sure it will trigger every time.
-	 */
-	all_sys_pgood_check_reboot();
 }
 
 enum power_state power_handle_state(enum power_state state)

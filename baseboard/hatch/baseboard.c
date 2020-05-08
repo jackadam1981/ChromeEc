@@ -37,6 +37,9 @@
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+static void check_reboot_deferred(void);
+DECLARE_DEFERRED(check_reboot_deferred);
+
 /******************************************************************************/
 /* Wake up pins */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -114,10 +117,16 @@ __attribute__((weak)) bool board_has_kb_backlight(void)
 	return true;
 }
 
+static void check_reboot_deferred(void)
+{
+	if (!gpio_get_level(GPIO_PG_EC_ALL_SYS_PWRGD))
+		system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
+}
+
 /* Called on AP S5 -> S3 transition */
 static void baseboard_chipset_startup(void)
 {
-	/* TODD(b/122266850): Need to fill out this hook */
+	hook_call_deferred(&check_reboot_deferred_data, 3000 * MSEC);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, baseboard_chipset_startup,
 	     HOOK_PRIO_DEFAULT);
@@ -142,7 +151,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, baseboard_chipset_suspend,
 /* Called on AP S3 -> S5 transition */
 static void baseboard_chipset_shutdown(void)
 {
-
+	hook_call_deferred(&check_reboot_deferred_data, -1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
