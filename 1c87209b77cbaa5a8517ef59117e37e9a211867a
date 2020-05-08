@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fec9373_55c9ccc8",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-08T17:13:32Z",
+      "side": 1,
+      "message": "nit: EC uses \"Linux codestyle\", which uses lowercase_underscore names, not camelCase.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 63
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96a1e80f_38ca4149",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-08T17:13:32Z",
+      "side": 1,
+      "message": "I think we\u0027re moving toward the \n\n if (IS_ENABLED(CONFIG_USART_HOST_COMMAND))\n\nstyle",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 38
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ddc28d_0da3fbb1",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-08T17:13:32Z",
+      "side": 1,
+      "message": "nit: switch statement",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
