@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "b46dcb5c_df1434b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-08T22:01:59Z",
+      "side": 1,
+      "message": "After looking at config.h. I think we should remove CONFIG_USB_PD_REV20, resulting in both TCPMv1 and TCPMv2 stacks defaulting to REV 2.0 functionality. And use Jett\u0027s proposal for REV 3.0 and higher",
+      "parentUuid": "97ef4a3e_8892cd2b",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28fa0ce4_64401734",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
