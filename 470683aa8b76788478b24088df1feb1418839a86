@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc2ceb56_d45effdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-08T22:52:24Z",
+      "side": 1,
+      "message": "Yes. I updated the commit message to reflect that.",
+      "parentUuid": "70138324_e68c14b2",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "470683aa8b76788478b24088df1feb1418839a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "885d2cd3_74a59c4f",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "470683aa8b76788478b24088df1feb1418839a86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af59e6f7_461faf48",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-08T22:52:24Z",
+      "side": 1,
+      "message": "Ack. That was an oversight. I\u0027ll make a cleanup CL.",
+      "parentUuid": "885d2cd3_74a59c4f",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 0
+      },
+      "revId": "470683aa8b76788478b24088df1feb1418839a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
