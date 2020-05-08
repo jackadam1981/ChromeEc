@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "998199ee_83ecc718",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-08T21:17:38Z",
+      "side": 1,
+      "message": "That might be a good idea.  I mean, you both wrote and approved the current scheme and didn\u0027t recall it.  I just remembered because I\u0027d written the ifdef in the PS8751 driver to disallow PD 3.0.  Which should also update if this config changes...",
+      "parentUuid": "e55d25ad_20f09ef3",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 65
+      },
+      "revId": "98df5d7ba47b3adca4b0a6cf48dcceff394a02b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28fa0ce4_64401734",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
