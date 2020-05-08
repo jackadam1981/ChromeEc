@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "3f06f606_8ec1fb0c",
+        "filename": "power/mt8192.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-08T01:11:44Z",
+      "side": 1,
+      "message": "I usually don\u0027t trust the netname. As long as the hardware guys don\u0027t yell, should be fine.",
+      "parentUuid": "1b407aaf_c5ef9e8f",
+      "range": {
+        "startLine": 283,
+        "startChar": 17,
+        "endLine": 283,
+        "endChar": 33
+      },
+      "revId": "3f699310964e66e7b83766b225216a4204c3fbf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24512fd9_876a3423",
         "filename": "power/mt8192.c",
         "patchSetId": 33

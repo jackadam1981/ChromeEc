@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "937555f7_90a804ef",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 36
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-08T01:11:44Z",
+      "side": 1,
+      "message": "Maybe add some alignment like other lines, to improve the readability.",
+      "range": {
+        "startLine": 50,
+        "startChar": 20,
+        "endLine": 50,
+        "endChar": 21
+      },
+      "revId": "460c1aa74192233b8360e8f9a9c4660926ac23ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ea84c0_64f4f18d",
+        "filename": "power/mt8192.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-08T01:11:44Z",
+      "side": 1,
+      "message": "Now you can remove this as no interrupt calls this function.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 5
+      },
+      "revId": "460c1aa74192233b8360e8f9a9c4660926ac23ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
