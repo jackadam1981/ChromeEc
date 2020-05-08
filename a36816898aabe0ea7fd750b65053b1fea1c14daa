@@ -423,6 +423,30 @@
       "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62b28522_c626d8a3",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-08T21:11:26Z",
+      "side": 1,
+      "message": "Is code coverage going to run in the CQ as a part of src_test in the ebuild? That\u0027s where we had the timeout issues happening. I think 1 second is actually more than generous enough for all other scenarios.\n\nIf it\u0027s part of the CQ src_test phase, I\u0027d say we start at 5 seconds and bump it up if that\u0027s not enough.",
+      "parentUuid": "0a4369a6_c445bbf8",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
