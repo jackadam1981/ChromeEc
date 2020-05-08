@@ -14,6 +14,7 @@
 #include "console.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/bc12/mt6360.h"
+#include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
 #include "driver/ppc/syv682x.h"
 #include "driver/tcpm/it83xx_pd.h"
@@ -46,6 +47,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+static void sub_bc12_interrupt(enum gpio_signal signal);
 static void ppc_interrupt(enum gpio_signal signal);
 
 #include "gpio_list.h"
@@ -162,10 +164,17 @@ int board_is_sourcing_vbus(int port)
 	return 0;
 }
 
-void usb_charger_set_switches(int port, enum usb_switch setting)
-{
-	/* TODO */
-}
+const struct pi3usb9201_config_t pi3usb9201_bc12_chips[2] = {
+	[1] = {
+		.i2c_port = 4,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
+	}
+};
+
+struct bc12_config bc12_chips[2] = {
+	{ .drv = &mt6360_drv },
+	{ .drv = &pi3usb9201_drv },
+};
 
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {
@@ -180,6 +189,20 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+
+static void sub_bc12_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("sub_bc12_interrupt");
+	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
+}
+
+static void board_sub_bc12_init(void)
+{
+	if (board_get_sub_board() == SUB_BOARD_TYPEC)
+		gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
+}
+/* Must be done after I2C and subboard */
+DECLARE_HOOK(HOOK_INIT, board_sub_bc12_init, HOOK_PRIO_INIT_I2C + 1);
 
 /*
  * I2C channels (A, B, and C) are using the same timing registers (00h~07h)
@@ -224,6 +247,7 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
+	CPRINTS("\x1b[1;31m%s\x1b[m", __func__);
 	switch (signal) {
 	case GPIO_USB_C0_PPC_INT_ODL:
 		syv682x_interrupt(0);
