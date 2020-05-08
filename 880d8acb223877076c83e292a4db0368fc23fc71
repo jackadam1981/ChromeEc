@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e666d20f_6661ae15",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "Pass the received SOP type as a separate parameter.  Use *rtype only for the response.  See comment on pd_svdm().",
+      "range": {
+        "startLine": 491,
+        "startChar": 4,
+        "endLine": 491,
+        "endChar": 34
+      },
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e28c02b_97b09e67",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "Also pass received SOP as separate argument.",
+      "range": {
+        "startLine": 540,
+        "startChar": 3,
+        "endLine": 540,
+        "endChar": 33
+      },
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca8ae11_67aff47d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "Also pass received SOP as separate argument.",
+      "range": {
+        "startLine": 610,
+        "startChar": 2,
+        "endLine": 610,
+        "endChar": 32
+      },
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887f5354_8d664ea2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "You should pass in the 32-bit head here and use PD_HEADER_SOP(head) to determine the SOP type of the received message.  Use *rtype as an output only to track the SOP type of the response usb_pd_protocol.c will transmit.",
+      "range": {
+        "startLine": 637,
+        "startChar": 2,
+        "endLine": 637,
+        "endChar": 15
+      },
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fde0ec16_eeef6279",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "Set *rtype \u003d TCPC_TX_SOP; here.",
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cbe995f_bc5d2510",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "Use PD_HEADER_SOP(head)",
+      "range": {
+        "startLine": 710,
+        "startChar": 7,
+        "endLine": 710,
+        "endChar": 34
+      },
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd5ceef4_405f9424",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "Use PD_HEADER_SOP(head)",
+      "range": {
+        "startLine": 890,
+        "startChar": 6,
+        "endLine": 890,
+        "endChar": 33
+      },
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4aca981_37826734",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "Sorry I wasn\u0027t clearer with my request on the last patchset.\n\nYou should pass the 32-bit version of msg_header throughout this file, so any routines that care about the SOP type of the received message can use PD_HEADER_SOP(msg_header) for the check.\n\nThe pd[port].xmit_type will be used to track the SOP type of the next VDM to be sent only.\n\nNote that there is a separate bug b:155476419 that will cleanup the duplication of pd_msg_type and tcpm_transmit_type.",
+      "range": {
+        "startLine": 654,
+        "startChar": 12,
+        "endLine": 654,
+        "endChar": 30
+      },
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94323f48_7d3f7ce6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1230,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "Use the 32-bit version.  You\u0027ll have to pass this through handle_request() and handle_data_request()",
+      "range": {
+        "startLine": 1230,
+        "startChar": 4,
+        "endLine": 1230,
+        "endChar": 17
+      },
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a909c0f_825a1057",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2184,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "Nit - use msg_type.",
+      "range": {
+        "startLine": 2184,
+        "startChar": 7,
+        "endLine": 2184,
+        "endChar": 26
+      },
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6af41fe_35964461",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2185,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-08T22:45:27Z",
+      "side": 1,
+      "message": "Nit - use msg_type",
+      "range": {
+        "startLine": 2185,
+        "startChar": 7,
+        "endLine": 2185,
+        "endChar": 26
+      },
+      "revId": "880d8acb223877076c83e292a4db0368fc23fc71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
