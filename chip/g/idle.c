@@ -43,8 +43,6 @@ BUILD_ASSERT(ARRAY_SIZE(idle_name) == NUM_CHOICES);
 
 static int command_idle(int argc, char **argv)
 {
-	int i;
-
 	if (argc > 1) {
 		if (!strncasecmp("c", argv[1], 1)) {
 			GREG32(PMU, PWRDN_SCRATCH17) = 0;
@@ -52,11 +50,21 @@ static int command_idle(int argc, char **argv)
 			ccprintf("Console is locked, cannot set idle state\n");
 			return EC_ERROR_INVAL;
 		} else {
-			for (i = 1; i < ARRAY_SIZE(idle_name); i++)
-				if (!strncasecmp(idle_name[i], argv[1], 1)) {
-					idle_action = i;
-					break;
-				}
+			switch (argv[1][0]) {
+			case 'w':
+				idle_action = IDLE_WFI;
+				break;
+			case 's':
+				idle_action = IDLE_SLEEP;
+				break;
+#ifdef CR50_DEV
+			case 'd':
+				idle_action = IDLE_DEEP_SLEEP;
+				break;
+#endif
+			default:
+				return EC_ERROR_INVAL;
+			}
 		}
 	}
 
@@ -66,7 +74,11 @@ static int command_idle(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(idle, command_idle,
+#ifdef CR50_DEV
 			     "[w|s|d|c]",
+#else
+			     "[w|s|c]",
+#endif
 			     "Set idle action: wfi, sleep, deep sleep or "
 			     "Clear the deep sleep count");
 
