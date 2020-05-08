@@ -399,6 +399,30 @@
       "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a4369a6_c445bbf8",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-08T21:05:50Z",
+      "side": 1,
+      "message": "I\u0027m comfortable with leaving it as-is, because if this is running on a heavily-loaded system, 1 second may not be enough.\nThe tests exit very quickly, or they take 60 seconds and that tells you something is very wrong.",
+      "parentUuid": "ebd881f2_286635ba",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "a36816898aabe0ea7fd750b65053b1fea1c14daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
