@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b2faad32_a93df4f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-08T18:24:42Z",
+      "side": 1,
+      "message": "It is about USB",
+      "parentUuid": "f47a68ec_7dcf4c6a",
+      "revId": "3ce75d42d860bca3786eecba451c8403cd066c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0772d41b_99730f4a",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "3ce75d42d860bca3786eecba451c8403cd066c5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac854432_546f6748",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-08T18:24:42Z",
+      "side": 1,
+      "message": "I prefer the lines to match above instead of weird indents.  I think I will leave this one",
+      "parentUuid": "0772d41b_99730f4a",
+      "revId": "3ce75d42d860bca3786eecba451c8403cd066c5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
