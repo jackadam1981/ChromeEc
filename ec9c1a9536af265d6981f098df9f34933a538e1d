@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2677c864_f9e5aa33",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-08T03:23:24Z",
+      "side": 1,
+      "message": "hmm, we were even ignoring bad input before this patch.",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "ec9c1a9536af265d6981f098df9f34933a538e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e9ddde_9eae5d34",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-08T03:23:24Z",
+      "side": 1,
+      "message": "need to drop this too",
+      "range": {
+        "startLine": 68,
+        "startChar": 38,
+        "endLine": 68,
+        "endChar": 47
+      },
+      "revId": "ec9c1a9536af265d6981f098df9f34933a538e1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
