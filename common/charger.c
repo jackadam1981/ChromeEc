@@ -620,3 +620,26 @@ int chg_ramp_get_current_limit(void)
 	return rv;
 }
 #endif
+
+enum ocpc_pid_status charger_set_vsys_compensation(int chgnum,
+						   struct ocpc_data *ocpc,
+						   int current_ma,
+						   int voltage_mv)
+{
+	if ((chgnum < 0) || (chgnum >= chg_cnt)) {
+		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
+		return OCPC_PID_LOOP_UNKNOWN_ERROR;
+	}
+
+	if (chg_chips[chgnum].drv->set_vsys_compensation)
+		return chg_chips[chgnum].drv->set_vsys_compensation(chgnum,
+								    ocpc,
+								    current_ma,
+								    voltage_mv);
+
+	/*
+	 * This shouldn't happen as this should only be called on chargers
+	 * that support this.
+	 */
+	return OCPC_PID_LOOP_UNKNOWN_ERROR;
+}

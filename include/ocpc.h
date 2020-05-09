@@ -33,6 +33,13 @@ struct ocpc_data {
 	int last_vsys;
 };
 
+enum ocpc_pid_status {
+	OCPC_PID_LOOP_NOT_NEEDED = 0,
+	OCPC_PID_LOOP_NEEDED,
+	OCPC_PID_LOOP_UNKNOWN_ERROR,
+	OCPC_PID_LOOP_STATUS_COUNT,
+};
+
 /** Set the VSYS target for the secondary charger IC.
  *
  * @param curr: Pointer to desired_input_current

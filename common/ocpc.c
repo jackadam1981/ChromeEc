@@ -61,6 +61,8 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	int error = 0;
 	int derivative = 0;
 	static enum phase ph;
+	int chgnum;
+	enum ocpc_pid_status action;
 
 	/*
 	 * There's nothing to do if we're not using this charger.  Should
@@ -68,8 +70,26 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	 * should change to ensure that only the active charger IC is acted
 	 * upon.
 	 */
-	if (charge_get_active_chg_chip() != SECONDARY_CHARGER)
+	chgnum = charge_get_active_chg_chip();
+	if (chgnum != SECONDARY_CHARGER)
 		return EC_ERROR_INVAL;
+
+	action = charger_set_vsys_compensation(chgnum, ocpc, current_ma,
+					       voltage_mv);
+	switch (action) {
+	case OCPC_PID_LOOP_NOT_NEEDED:
+		/* No further action required, so we're done here. */
+		return EC_SUCCESS;
+
+	case OCPC_PID_LOOP_UNKNOWN_ERROR:
+		/* Something went wrong configuring the auxiliary charger IC. */
+		return EC_ERROR_UNKNOWN;
+
+	case OCPC_PID_LOOP_NEEDED:
+	default:
+		/* Let's get to work */
+		break;
+	}
 
 	if (ocpc->last_vsys == OCPC_UNINIT)
 		ph = PHASE_UNKNOWN;
