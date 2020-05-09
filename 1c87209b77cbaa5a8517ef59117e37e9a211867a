@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bd2c188b_75a7797c",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0fec9373_55c9ccc8",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 63
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96a1e80f_38ca4149",
         "filename": "board/hatch_fp/board.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7045005f_a388ee81",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96a1e80f_38ca4149",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 38
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d174b8c5_8e5fda8b",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2ddc28d_0da3fbb1",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 2
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc18ce5b_588872c8",
         "filename": "chip/stm32/usart-stm32f4.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb0282d6_357bd753",
+        "filename": "chip/stm32/usart-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "I dont think we can limit the scope of this const struct.",
+      "parentUuid": "fc18ce5b_588872c8",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c1e18be6_a928829c",
+        "filename": "chip/stm32/usart-stm32f4.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03f2f7ac_616d514f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d679b7_a7abd317",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8376df7_f1393793",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c1d679b7_a7abd317",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "1eff578e_f2a6d3cd",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "Transport layer.\nActually, now that I come to think of it, it does not make much sense as this is USART implementation. I will edit comments and keywords in all the file and try to make them more standard.",
+      "parentUuid": "c2204fdd_c5f77f78",
+      "range": {
+        "startLine": 95,
+        "startChar": 47,
+        "endLine": 95,
+        "endChar": 49
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "275fbbf4_8d463cd7",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ce1992b_a811191d",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "Replied below.",
+      "parentUuid": "275fbbf4_8d463cd7",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 0
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "44174b4d_858048ed",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "State machine keeps the status of incoming request packet and makes it easy to implement under run, overrun, bad header and contiguous request. We can discard packets in this layer before sending it to host command framework. Alternative of this would have been to keep some more variables to maintain similar information. Also overrun packets has to be handled in this layer as in buffer is fixed.\n\nAlso UART bytes from host are not contiguous and are in burst (this changes for different SOC and kernel driver). By doing this we are saving those multiple kicks to deferred handler and also are getting one state variable to monitor and process the request and response packet. \n\nIn corner cases where transport is weak, it can be easily debugged on chrome device. \n\nI have added simple state machine diagram in this file which should help readability and future maintenance of this layer. Design doc is also had all the information.\n\nThis layer and this state machine is only reading header and limited to processing of UART bytes as packet. Any issue with that basic UART packet is caught in this layer and thrown on console. Any issue with packet data and checksum can be handled by command framework.\n\nIn case of new projects, this should help us debug basic transport\u0027s electrical issues of bloonchipper and should help EEs to determine if single Schmitt-trigger buffers are required for higher baudrates. I think overall this is simpler and easier to debug issues in development and while in field.",
+      "parentUuid": "fe0c5235_3f993808",
+      "range": {
+        "startLine": 343,
+        "startChar": 6,
+        "endLine": 343,
+        "endChar": 19
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d7993b1_8de14ce9",
         "filename": "chip/stm32/usart_rx_dma.c",
         "patchSetId": 1
@@ -229,6 +445,30 @@
       "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22dffe42_edb7595c",
+        "filename": "chip/stm32/usart_rx_dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d7993b1_8de14ce9",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "50444b1e_353879e5",
+        "filename": "chip/stm32/usart_rx_dma.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "same as commnets in chip/stm32/usart_tx_interrupt.c",
+      "parentUuid": "51664616_5126866d",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ace743fb_d2b57a7d",
         "filename": "chip/stm32/usart_tx_interrupt.c",
         "patchSetId": 1
@@ -275,6 +539,30 @@
       "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ede9c3de_c89e8b57",
+        "filename": "chip/stm32/usart_tx_interrupt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "usart_tx_interrupt_handler is also used by other usart instances.\nEither we can use\n1. Queues to TX and RX.\nOR\n2. we can add a mechanism for generic interrupt handler to call buffer handler (queues or custom handlers) based on function pointer. My only worry is that it will be little complicated and overkill considering we already have consumer/ producer for queue available.",
+      "parentUuid": "ace743fb_d2b57a7d",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "f5289617_6f703307",
+        "filename": "include/console_channel.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "31ff9543_ee524898",
+      "range": {
+        "startLine": 104,
+        "startChar": 16,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dc21106_71d560ce",
         "filename": "include/usart_host_command.h",
         "patchSetId": 1
@@ -344,6 +656,30 @@
       "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c5401d_9b08da8e",
+        "filename": "include/usart_host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3dc21106_71d560ce",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "1c87209b77cbaa5a8517ef59117e37e9a211867a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

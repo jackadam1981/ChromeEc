@@ -22,6 +22,30 @@
       "revId": "0f0aff93d0d47654f47187321858e955fae9d4a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c10974c_ae2ed1e6",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T21:52:46Z",
+      "side": 0,
+      "message": "This is just a cleanup as spi_enable(CONFIG_SPI_FP_PORT, 1) is done from board.c for all the boards using FP sensor.\nCPRINTS is also moved to board.c because we check for bootstrapping there. \n\nI will take this in a separate CL.",
+      "parentUuid": "f13eadeb_ff42233d",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 0
+      },
+      "revId": "0f0aff93d0d47654f47187321858e955fae9d4a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
