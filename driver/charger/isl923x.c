@@ -950,6 +950,104 @@ static enum ec_error_list isl923x_get_vbus_voltage(int chgnum, int port,
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_CHARGER_RAA489000
+static enum ocpc_pid_status raa489000_set_vsys_compensation(int chgnum,
+							    struct ocpc_data *o,
+							    int current_ma,
+							    int voltage_mv)
+{
+	int device_id = 0;
+	int rv;
+	int rp1;
+	int rp2;
+	int regval;
+
+	/* Only B0+ silicon supports VSYS compensation. */
+	rv = isl923x_device_id(chgnum, &device_id);
+	if (rv)
+		return OCPC_PID_LOOP_UNKNOWN_ERROR;
+
+	/*
+	 * Note: this makes the assumption that this charger IC is used on the
+	 * primary port as well.
+	 */
+
+	if (device_id < RAA489000_DEV_ID_B0)
+		return OCPC_PID_LOOP_NEEDED;
+
+	/*
+	 * Set the desired current and voltage which if tripped indicates
+	 * over charging.
+	 */
+	rv |= isl923x_set_current(chgnum, current_ma);
+	rv |= isl923x_set_voltage(chgnum, voltage_mv);
+
+	/*
+	 * Need to set board resistance values: Rp1 and Rp2.
+	 *
+	 * Rp1 is the total resistance from the right-hand side of the
+	 * auxiliary sense resistor to the actual VSYS node.  It should include:
+	 * a.     resistance of sub board sense resistor
+	 * b.     connector/cable resistance
+	 * c.     sub board PCB resistance to the actual VSYS node
+	 *
+	 * Rp2 is the total resistance from the actual VSYS node to the battery.
+	 * It should include:
+	 * a.     resistance of primary charger sense resistor (battery side)
+	 * b.     Rds(on) of BGATE FET
+	 * c.     main board PCB resistance to the battery
+	 * d.     battery internal resistance
+	 */
+
+	/*
+	 * Rp1 is set between 36-156mOhms in 4mOhm increments.  This must be
+	 * non-zero in order for compensation to work.  The system keeps track
+	 * of combined resistance; we'll assume that Rp2 is what was statically
+	 * defined leaving Rp1 as the difference, but at least 36mOhms.
+	 */
+	rp1 = o->combined_rsys_rbatt_mo - CONFIG_OCPC_DEF_RBATT_MOHMS;
+	rp1 /= 4;
+	rp1 = CLAMP(rp1, RAA489000_RP1_MIN, RAA489000_RP1_MAX);
+	/* Rp2 is set between 0-124mOhms in 4mOhm increments. */
+	rp2 = CONFIG_OCPC_DEF_RBATT_MOHMS / 4;
+	rp2 = CLAMP(rp2, RAA489000_RP2_MIN, RAA489000_RP2_MAX);
+
+	rv |= raw_read16(chgnum, RAA489000_REG_CONTROL10, &regval);
+	if (!rv) {
+		/* Set Rp1 and Rp2 */
+		regval &= ~RAA489000_C10_RP1_MASK;
+		regval &= ~RAA489000_C10_RP2_MASK;
+		regval |= rp2;
+		regval |= (rp1 << RAA489000_C10_RP1_SHIFT);
+
+		/* Enable DVC mode */
+		regval |= RAA489000_C10_ENABLE_DVC_MODE;
+
+		/* Disable charge current loop */
+		regval &= ~RAA489000_C10_ENABLE_DVC_CC_LOOP;
+
+		rv |= raw_write16(chgnum, RAA489000_REG_CONTROL10, regval);
+	}
+
+	if (rv) {
+		CPRINTS("%s(%d) Failed to enable DVC!", __func__, chgnum);
+		return OCPC_PID_LOOP_UNKNOWN_ERROR;
+	}
+
+	/* Lastly, enable DVC fast charge mode for the primary charger IC. */
+	rv = raw_read16(PRIMARY_CHARGER, RAA489000_REG_CONTROL10, &regval);
+	regval |= RAA489000_C10_ENABLE_DVC_CHARGE_MODE;
+	rv |= raw_write16(PRIMARY_CHARGER, RAA489000_REG_CONTROL10, regval);
+	if (rv) {
+		CPRINTS("%s Failed to enable DVC on primary charger!",
+			__func__);
+		return OCPC_PID_LOOP_UNKNOWN_ERROR;
+	}
+
+	return OCPC_PID_LOOP_NOT_NEEDED;
+}
+#endif /* CONFIG_CHARGER_RAA489000 */
+
 const struct charger_drv isl923x_drv = {
 	.init = &isl923x_init,
 	.post_init = &isl923x_post_init,
@@ -977,5 +1075,8 @@ const struct charger_drv isl923x_drv = {
 	.ramp_is_stable = &isl923x_ramp_is_stable,
 	.ramp_is_detected = &isl923x_ramp_is_detected,
 	.ramp_get_current_limit = &isl923x_ramp_get_current_limit,
+#endif
+#ifdef CONFIG_CHARGER_RAA489000
+	.set_vsys_compensation = &raa489000_set_vsys_compensation,
 #endif
 };
