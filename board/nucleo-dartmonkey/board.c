@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "fpsensor_detect.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
@@ -65,6 +66,7 @@ const struct spi_device_t spi_devices[] = {
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
+#ifdef SECTION_IS_RW
 static void spi_configure(void)
 {
 	/* Configure SPI GPIOs */
@@ -76,11 +78,20 @@ static void spi_configure(void)
 
 	spi_enable(CONFIG_SPI_FP_PORT, 1);
 }
+#endif
 
 /* Initialize board. */
 static void board_init(void)
 {
+#ifdef SECTION_IS_RW
 	spi_configure();
+
+	ccprints("TRANSPORT_SEL: %s",
+		fp_transport_type_to_str(get_fp_transport_type()));
+
+	ccprints("FP_SENSOR_SEL: %s",
+		fp_sensor_type_to_str(get_fp_sensor_type()));
+#endif
 
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
