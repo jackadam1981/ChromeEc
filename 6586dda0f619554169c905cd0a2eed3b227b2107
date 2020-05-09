@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93f56ff7_2e4a1d53",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-09T09:37:53Z",
+      "side": 0,
+      "message": "This is already done in board.c of boards using this task.",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 35
+      },
+      "revId": "6586dda0f619554169c905cd0a2eed3b227b2107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
