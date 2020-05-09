@@ -70,6 +70,30 @@
       "revId": "262917326055d53327e3daadd6abeb44ab1d7b9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d501f1_905c5ade",
+        "filename": "common/test_util.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-09T01:02:56Z",
+      "side": 1,
+      "message": "make CTS_MODULE\u003dhook BOARD\u003dstm32l476g-eval\n  VERSION ec_version.h\n  LDS     firmware_image.lds\n  LDS     RW/ec.RW.lds\n  CC      RW/board/stm32l476g-eval/board.o\n[...]\n  CC      RW/common/test_util.o\ncommon/test_util.c:9:10: fatal error: signal.h: No such file or directory\n #include \u003csignal.h\u003e",
+      "parentUuid": "08c75ee6_5c7a5a0e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 72
+      },
+      "revId": "262917326055d53327e3daadd6abeb44ab1d7b9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
