@@ -1070,7 +1070,10 @@ void tc_state_init(int port)
 			 * change the data role when we get to the state.
 			 */
 			TC_SET_FLAG(port, TC_FLAGS_TC_WARM_ATTACHED_SNK);
-			set_state_tc(port, TC_ATTACHED_SNK);
+			set_state_tc(port,
+				(saved_flgs[port] & PD_BBRMFLG_DBGACC_ROLE)
+					? TC_DBG_ACC_SNK
+					: TC_ATTACHED_SNK);
 		} else {
 			restart_tc_sm(port, TC_UNATTACHED_SNK);
 			/*
@@ -1920,6 +1923,9 @@ static void tc_attached_snk_entry(const int port)
 	/* Enable auto discharge disconnect, if not PR Swapping */
 	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
 		tcpm_enable_auto_discharge_disconnect(port, 1);
+
+	/* Save our current connection is not a DEBUG ACCESSORY */
+	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 0);
 }
 
 static void tc_attached_snk_run(const int port)
@@ -2107,6 +2113,9 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 	/* Enable auto discharge disconnect, if not PR Swapping */
 	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
 		tcpm_enable_auto_discharge_disconnect(port, 1);
+
+	/* Save our current connection is a DEBUG ACCESSORY */
+	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
 }
 
 static void tc_unoriented_dbg_acc_src_run(const int port)
@@ -2247,10 +2256,16 @@ static void tc_dbg_acc_snk_entry(const int port)
 		pd_set_polarity(port, tc[port].polarity);
 
 		/*
-		 * Initial data role for sink is UFP
+		 * Initial data role for sink is UFP unless this is a warm
+		 * attach.  If it is a warm attach, the data role will be
+		 * restored to the current connect role and will already
+		 * have called tc_set_data_role with the appropriate role.
 		 * This also sets the usb mux
 		 */
-		tc_set_data_role(port, PD_ROLE_UFP);
+		if (TC_CHK_FLAG(port, TC_FLAGS_TC_WARM_ATTACHED_SNK))
+			TC_CLR_FLAG(port, TC_FLAGS_TC_WARM_ATTACHED_SNK);
+		else
+			tc_set_data_role(port, PD_ROLE_UFP);
 
 		if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 			tc[port].typec_curr =
@@ -2272,6 +2287,9 @@ static void tc_dbg_acc_snk_entry(const int port)
 	/* Enable auto discharge disconnect, if not PR Swapping */
 	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
 		tcpm_enable_auto_discharge_disconnect(port, 1);
+
+	/* Save our current connection is a DEBUG ACCESSORY */
+	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
 }
 
 static void tc_dbg_acc_snk_run(const int port)
@@ -2648,6 +2666,9 @@ static void tc_attached_src_entry(const int port)
 		hook_notify(HOOK_USB_PD_CONNECT);
 		tcpm_enable_auto_discharge_disconnect(port, 1);
 	}
+
+	/* Save our current connection is not a DEBUG ACCESSORY */
+	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 0);
 }
 
 static void tc_attached_src_run(const int port)
