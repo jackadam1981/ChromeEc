@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "5c2a7084_15625432",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T04:48:11Z",
+      "side": 1,
+      "message": "Were you able to verify single driver-multiple chips works?  It looks like krane and juniper don\u0027t cover this case.  If you have access to a grunt, octopus, or hatch I believe they should all cover having more than one USB_CHG_P* task using the same chip driver.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe9962d_2b32fdb3",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T04:48:11Z",
+      "side": 1,
+      "message": "Does this work? I thought most boards send NULL to this task and use the task number to derive port",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d315189_bc2cbffc",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T04:48:11Z",
+      "side": 1,
+      "message": "Seems like this could be made optional",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 61
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd7439df_35836568",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T04:48:11Z",
+      "side": 1,
+      "message": "This can take an \"int\" for port now, and no longer needs the void pointer",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 41
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c79f546_ba11f17c",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T04:48:11Z",
+      "side": 1,
+      "message": "Internal driver functions can be \"static\" now",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 28
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c597d3f2_d23d3111",
         "filename": "include/charge_ramp.h",
         "patchSetId": 4
@@ -76,6 +191,30 @@
       "writtenOn": "2020-05-08T21:39:03Z",
       "side": 1,
       "message": "all of these fields need detailed comments",
+      "range": {
+        "startLine": 103,
+        "startChar": 7,
+        "endLine": 103,
+        "endChar": 15
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "431a5d08_f7dd43eb",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T04:48:11Z",
+      "side": 1,
+      "message": "Including expectations for which fields are required, and which may be NULL (ex. usb_charger_task)",
+      "parentUuid": "1bbdca9e_102ce63f",
       "range": {
         "startLine": 103,
         "startChar": 7,
