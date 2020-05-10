@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f7b5487_705a88f3",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T05:03:28Z",
+      "side": 1,
+      "message": "I like how this comment makes me picture the charger task rolling up its sleeves and grabbing a calculator :)",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 25
+      },
+      "revId": "f874ed3ac988a030e77a2b9144551c84aeb25d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a70e1570_2932f1d5",
+        "filename": "include/charger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T05:03:28Z",
+      "side": 1,
+      "message": "Something about this feels slightly strange mixed in with the ec_error_list and int returns...\n\nIt seems like we could potentially map to ec_error_list without anything too funky, right?  \n\nSuccess \u003d set vsys compensation\nUnimplemented \u003d not an available feature, need OCPC code to help out\n\nThen return invalid from the wrapper if called on a bad chip number?",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "f874ed3ac988a030e77a2b9144551c84aeb25d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
