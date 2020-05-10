@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52c4a16c_b3dcfcae",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T05:29:23Z",
+      "side": 1,
+      "message": "Bug comment looks like this should be \"main\" charger, so I\u0027d guess MB?  And would this voltage be the same we normally set in the charge_state_v2 code, or slightly different?",
+      "range": {
+        "startLine": 982,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 47
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635bcfc9_6670bc11",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T05:29:23Z",
+      "side": 1,
+      "message": "Probably note whether these are expected to be constant values or may change with board state?",
+      "range": {
+        "startLine": 986,
+        "startChar": 4,
+        "endLine": 986,
+        "endChar": 53
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f73eb014_ab9f3137",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T05:29:23Z",
+      "side": 1,
+      "message": "Subtract min from rp1 when converting to register value?",
+      "range": {
+        "startLine": 1009,
+        "startChar": 1,
+        "endLine": 1009,
+        "endChar": 10
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c243aa6_6d3d6b76",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T05:29:23Z",
+      "side": 1,
+      "message": "Looks like disable \u003d 1 in register",
+      "range": {
+        "startLine": 1026,
+        "startChar": 2,
+        "endLine": 1027,
+        "endChar": 46
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "277b93b9_4d5d5cae",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T05:29:23Z",
+      "side": 1,
+      "message": "Ordering on bug comment would seem like \"sub\" voltage and current are set here.  Phrasing makes me think these values would be somehow slightly different than the MB values",
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db0a0fc0_24b94469",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T05:29:23Z",
+      "side": 1,
+      "message": "Something we\u0027ll need to use when trickling, I\u0027m guessing?  Can the function guess whether we\u0027re trickling based on parameters, or I guess be told that?",
+      "range": {
+        "startLine": 324,
+        "startChar": 9,
+        "endLine": 324,
+        "endChar": 51
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
