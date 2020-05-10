@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f59ae700_be958ff7",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T04:28:19Z",
+      "side": 1,
+      "message": "nit: and SOP\u0027\u0027.  We\u0027re not discovering SOP\u0027\u0027, but we\u0027ll need to track when we\u0027ve entered modes with it for the purposes of then exiting said modes.\n\nOverall, that\u0027ll be an issue for upcoming-weeks us though :)",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "176a82f5b053497fa0c8c42cc400280259a51ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1376034d_bd43804c",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T04:28:19Z",
+      "side": 1,
+      "message": "Are we planning to change this, or leave it as-is with the current usage warnings?",
+      "range": {
+        "startLine": 652,
+        "startChar": 2,
+        "endLine": 652,
+        "endChar": 65
+      },
+      "revId": "176a82f5b053497fa0c8c42cc400280259a51ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4cec38_9b5e4be5",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T04:28:19Z",
+      "side": 1,
+      "message": "Nit: we\u0027ll likely be deprecating this command, though we\u0027re not through the API reviews yet",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 65
+      },
+      "revId": "176a82f5b053497fa0c8c42cc400280259a51ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc8780b6_17d0cd84",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 5270,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-10T04:28:19Z",
+      "side": 1,
+      "message": "Update to clear SOP and SOP\u0027",
+      "range": {
+        "startLine": 5270,
+        "startChar": 1,
+        "endLine": 5270,
+        "endChar": 36
+      },
+      "revId": "176a82f5b053497fa0c8c42cc400280259a51ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
