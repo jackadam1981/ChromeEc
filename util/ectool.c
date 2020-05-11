@@ -281,6 +281,8 @@ const char help_str[] =
 	"      Run RW signature verification and get status.\n"
 	"  sertest\n"
 	"      Serial output test for COM2\n"
+	"  smartdc\n"
+	"      Configure smart discharge system\n"
 	"  stress [reboot] [help]\n"
 	"      Stress test the ec host command interface.\n"
 	"  sysinfo [flags|reset_flags|firmware_copy]\n"
@@ -2587,6 +2589,66 @@ int cmd_port_80_flood(int argc, char *argv[])
 	return -1;
 }
 #endif
+
+static void cmd_smart_discharge_usage(const char *command)
+{
+	printf("Usage: %s [hours_to_survive [cutoff] [hibern]]\n", command);
+	printf("Get/Set smart discharge parameters\n");
+	printf("hours_to_survive: Desired hours for battery to survive\n");
+	printf("cutoff: Discharge rate in cutoff\n");
+	printf("hibern: Discharge rate in hibernation\n");
+}
+
+int cmd_smart_discharge(int argc, char *argv[])
+{
+	struct ec_params_smart_discharge *p = ec_outbuf;
+	struct ec_response_smart_discharge *r = ec_inbuf;
+	char *e;
+	int rv;
+
+	if (argc > 1) {
+		if (strcmp(argv[1], "help") == 0) {
+			cmd_smart_discharge_usage(argv[0]);
+			return 0;
+		}
+		p->flags = EC_SMART_DISCHARGE_FLAGS_SET;
+		p->hours_to_survive = strtol(argv[1], &e, 0);
+		if (p->hours_to_survive < 0 || (e && *e)) {
+			perror("Bad value for [hours_to_survive]");
+			return -1;
+		}
+		if (argc == 3) {
+			perror("Invalid number of parameters");
+			return -1;
+		}
+		if (argc > 3) {
+			p->drate.cutoff = strtol(argv[2], &e, 0);
+			if (p->drate.cutoff < 0 || (e && *e)) {
+				perror("Bad value for [cutoff]");
+				return -1;
+			}
+			p->drate.hibern = strtol(argv[3], &e, 0);
+			if (p->drate.hibern < 0 || (e && *e)) {
+				perror("Bad value for [hibern]");
+				return -1;
+			}
+		}
+	}
+
+	rv = ec_command(EC_CMD_SMART_DISCHARGE,0, p, sizeof(*p),
+			r, ec_max_insize);
+	if (rv < 0) {
+		perror("ERROR: EC_CMD_SMART_DISCHARGE failed");
+		return rv;
+	}
+	printf("Hours to survive: %d h\n", r->hours_to_survive);
+	printf("Cutoff threshold: %d mAh\n", r->dzone.cutoff);
+	printf("Stay-up threshold: %d mAh\n", r->dzone.stayup);
+	printf("Cutoff discharge rate: %d mAh/h\n", r->drate.cutoff);
+	printf("Hibernation discharge rate: %d mAh/h\n", r->drate.hibern);
+
+	return 0;
+}
 
 /*
  * This boolean variable and handler are used for
@@ -9589,6 +9651,7 @@ const struct command commands[] = {
 	{"rwsigaction", cmd_rwsig_action_legacy},
 	{"rwsigstatus", cmd_rwsig_status},
 	{"sertest", cmd_serial_test},
+	{"smartdc", cmd_smart_discharge},
 	{"stress", cmd_stress_test},
 	{"sysinfo", cmd_sysinfo},
 	{"port80flood", cmd_port_80_flood},

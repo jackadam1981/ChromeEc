@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
+#include "charge_state.h"
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "console.h"
@@ -1481,4 +1482,83 @@ void board_fill_source_power_info(int port,
 	r->meas.current_max = 0;
 	r->meas.current_lim = 0;
 	r->max_power = 0;
+}
+
+/*
+ * Smart discharge system
+ *
+ * EC controls how the system discharges differently depending on the remaining
+ * capacity and the expected hours to survive.
+ *
+ * 0          X1                X2                                   full
+ * |----------|-----------------|---------------------------------------|
+ *     cutoff         stay-up                       safe
+ *
+ * EC cuts off the battery at X1 mAh and hibernates the system at X2 mAh. X1 and
+ * X2 are derived from the cutoff and hibernation discharge rate, respectively.
+ *
+ * TODO: Learn discharge rates dynamically.
+ *
+ * TODO: Save dzone in non-volatile memory and restore it when waking up from
+ * cutoff or hibernation.
+ */
+static uint16_t hours_to_survive;
+static struct discharge_zone dzone;
+static struct discharge_rate drate;
+
+static enum ec_status hc_smart_discharge_set(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_smart_discharge *p = args->params;
+	struct ec_response_smart_discharge *r = args->response;
+	int capacity;
+
+	if (p->flags == 0) {
+		r->hours_to_survive = hours_to_survive;
+		r->dzone = dzone;
+		r->drate = drate;
+		return EC_RES_SUCCESS;
+	}
+
+	if (battery_full_charge_capacity(&capacity))
+		return EC_RES_UNAVAILABLE;
+
+	if (p->drate.hibern < p->drate.cutoff)
+		/* Hibernation discharge rate should be always higher. */
+		return EC_RES_INVALID_PARAM;
+	else if (p->drate.cutoff > 0 || p->drate.hibern > 0)
+		drate = p->drate;
+
+	/* Commit */
+	hours_to_survive = p->hours_to_survive;
+	dzone.stayup = MIN(hours_to_survive * drate.hibern, capacity);
+	dzone.cutoff = MIN(hours_to_survive * drate.cutoff, dzone.stayup);
+
+	/* Retrieve */
+	r->hours_to_survive = hours_to_survive;
+	r->dzone = dzone;
+	r->drate = drate;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SMART_DISCHARGE,
+		     hc_smart_discharge_set,
+		     EC_VER_MASK(0));
+
+__overridable enum critical_shutdown board_system_is_idle(
+		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
+{
+	int remain;
+
+	if (now < *target)
+		return CRITICAL_SHUTDOWN_IGNORE;
+
+	if (battery_remaining_capacity(&remain))
+		return CRITICAL_SHUTDOWN_IGNORE;
+
+	if (remain < dzone.cutoff)
+		return CRITICAL_SHUTDOWN_CUTOFF;
+	else if (remain < dzone.stayup)
+		return CRITICAL_SHUTDOWN_IGNORE;
+	else
+		return CRITICAL_SHUTDOWN_HIBERNATE;
 }
