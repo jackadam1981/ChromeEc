@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8ed404e_db6ea3a1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 5272,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-11T19:48:48Z",
+      "side": 1,
+      "message": "I don\u0027t think this works to clear SOP\u0027.  Try testing: \n- plug something in, observe discovery\n- unplug and re-plug, should go through SOP\u0027 discovery again\n\nOn my kindred, we seem to only do SOP\u0027 discovery for the first plug-in on a port and \"pe\" shows the cable still there after unplug:\n\n2020-05-11 13:45:06 [292.529862 AC off]\n2020-05-11 13:45:06 [292.535161 C1: LowPowerMode]\n2020-05-11 13:45:06 [292.639031 TCPC p1 Enter Low Power Mode]\n2020-05-11 13:46:20 \u003e pe 1 dump\n2020-05-11 13:46:23 No SOP identity discovered yet.\n2020-05-11 13:46:23 IDENT SOP\u0027:\n2020-05-11 13:46:23     [ID Header] 24002b1d :: ACable, VID:2b1d\n2020-05-11 13:46:23     [Cert Stat] 00000000\n2020-05-11 13:46:23     [2] 14010010    [3] 11085858 \n2020-05-11 13:46:23 No SVIDS discovered yet.",
+      "range": {
+        "startLine": 5272,
+        "startChar": 1,
+        "endLine": 5272,
+        "endChar": 60
+      },
+      "revId": "fa8b615f1ff62988684f44db0ee05e32fdbac46e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
