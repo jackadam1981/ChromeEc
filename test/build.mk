@@ -142,6 +142,7 @@ power_button-y=power_button.o
 powerdemo-y=powerdemo.o
 printf-y=printf.o
 queue-y=queue.o
+rollback_entropy-y=rollback_entropy.o
 rsa-y=rsa.o
 rsa3-y=rsa.o
 rtc-y=rtc.o
