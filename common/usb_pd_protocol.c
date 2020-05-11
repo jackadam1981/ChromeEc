@@ -2352,6 +2352,11 @@ static void handle_new_power_state(int port)
 		 * it boots up.
 		 */
 		exit_supported_alt_mode(port);
+	} else {
+#ifdef CONFIG_USBC_VCONN_SWAP
+		/* Request for Vconn Swap */
+		pd_try_vconn_src(port);
+#endif
 	}
 	/* Ensure mux is set properly after chipset transition */
 	set_usb_mux_with_current_data_role(port);
