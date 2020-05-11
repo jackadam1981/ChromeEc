@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d1aced0_f032db70",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-05-11T09:10:18Z",
+      "side": 1,
+      "message": "\u003e In this case X_EC_GPIO2 should probably be re-configured as GPIO_INT_FALLING.\nMy bad, GPIO_INT_BOTH is better as there is timing definition for HPD in DP spec.",
+      "parentUuid": "2ea0f9c2_8ccf8dcb",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 23
+      },
+      "revId": "e1a969fb0d5aebd0a9776c67d4af1ef3993d5c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f3503f1_f0011742",
         "filename": "board/asurada/board.c",
         "patchSetId": 40
