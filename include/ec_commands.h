@@ -6139,6 +6139,48 @@ struct ec_response_keybd_config {
 
 } __ec_align1;
 
+/*
+ * Configure smart discharge
+ */
+#define EC_CMD_SMART_DISCHARGE 0x012B
+
+/*
+ * Discharge rates when the system is in cutoff or hibernation.
+ *
+ */
+
+#define EC_SMART_DISCHARGE_FLAGS_SET	BIT(0)
+
+struct discharge_rate {
+	uint16_t cutoff;  /* Discharge rate (uAh/hour) in cutoff */
+	uint16_t hibern;  /* Discharge rate (uAh/hour) in hibernation */
+};
+
+struct discharge_zone {
+	/* When the capacity (mAh) goes below this, EC cuts off the battery. */
+	int cutoff;
+	/* When the capacity (mAh) is below this, EC stays up. */
+	int stayup;
+};
+
+struct ec_params_smart_discharge {
+	uint8_t flags;  /* EC_SMART_DISCHARGE_FLAGS_* */
+	/*
+	 * Desired hours for the battery to survive before reaching 0%. Set to
+	 * zero to disable smart discharging. That is, the system hibernates as
+	 * soon as the G3 idle timer expires.
+	 */
+	uint16_t hours_to_survive;
+	/* Set to zero to use the rates the EC previously learned. */
+	struct discharge_rate drate;
+};
+
+struct ec_response_smart_discharge {
+	uint16_t hours_to_survive;
+	struct discharge_rate drate;
+	struct discharge_zone dzone;
+};
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
