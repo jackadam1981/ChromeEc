@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daf31ec1_51068ad7",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 23
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-11T08:29:54Z",
+      "side": 1,
+      "message": "found a error: ppc_interrupt is not implemented yet.",
+      "range": {
+        "startLine": 48,
+        "startChar": 55,
+        "endLine": 48,
+        "endChar": 68
+      },
+      "revId": "f2f936c225449d982922d17f912467e0b209c31b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
