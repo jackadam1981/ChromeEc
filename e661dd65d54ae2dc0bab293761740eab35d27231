@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8aa4d1eb_64d1dc0d",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-05-11T20:15:54Z",
+      "side": 1,
+      "message": "why is configure_fp_spensor_spi under rw?",
+      "revId": "e661dd65d54ae2dc0bab293761740eab35d27231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28547a0d_0f0780bc",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-05-11T20:15:54Z",
+      "side": 1,
+      "message": "if we are a UART interface, why do we setup  spi?",
+      "revId": "e661dd65d54ae2dc0bab293761740eab35d27231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969b2926_f3779d6a",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-05-11T20:15:54Z",
+      "side": 1,
+      "message": "underrun? not clear to me why this is an underrun.",
+      "revId": "e661dd65d54ae2dc0bab293761740eab35d27231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
