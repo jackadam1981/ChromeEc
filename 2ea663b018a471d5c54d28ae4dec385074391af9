@@ -34,6 +34,24 @@
       "revId": "2ea663b018a471d5c54d28ae4dec385074391af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a28295c6_3e5c9647",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-11T21:51:25Z",
+      "side": 1,
+      "message": "Ah, I see the issue now. Nevermind.",
+      "parentUuid": "f67d3b23_82e4931e",
+      "revId": "2ea663b018a471d5c54d28ae4dec385074391af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
