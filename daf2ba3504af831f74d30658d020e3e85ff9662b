@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "5bc833b2_c5683427",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2020-05-11T22:47:08Z",
+      "side": 1,
+      "message": "Ah, I didn\u0027t realize that. Looking at the DVT schematic now I see the pull-up is marked DNP. Maybe it would be better to leave that and do the full initialization here.",
+      "parentUuid": "60c3529d_a84c148b",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "daf2ba3504af831f74d30658d020e3e85ff9662b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "708eca64_96d5317a",
         "filename": "board/endeavour/pse.c",
         "patchSetId": 3
