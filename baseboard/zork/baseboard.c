@@ -577,6 +577,7 @@ void hdmi_hpd_interrupt(enum ioex_signal signal)
 
 static void pi3hdx1204_retimer_power(void)
 {
+	uint8_t buf[PI3HDX1204_DE_OFFSET+1] = {0};
 	if (ec_config_has_hdmi_retimer_pi3hdx1204()) {
 		int enable = chipset_in_or_transitioning_to_state(
 			CHIPSET_STATE_ON);
@@ -584,6 +585,17 @@ static void pi3hdx1204_retimer_power(void)
 				  PI3HDX1204_I2C_ADDR_FLAGS,
 				  enable);
 	}
+	buf[PI3HDX1204_EQ_CH0_CH1_OFFSET] =
+		PI3HDX1204_EQ_DB710;
+	buf[PI3HDX1204_EQ_CH2_CH3_OFFSET] =
+		PI3HDX1204_EQ_DB710;
+	buf[PI3HDX1204_VOD_OFFSET] =
+		PI3HDX1204_VOD_115_ALL_CHANNELS;
+	buf[PI3HDX1204_DE_OFFSET] =
+		PI3HDX1204_DE_DB_MINUS5;
+	pi3hdx1204_write(I2C_PORT_TCPC1,
+				  PI3HDX1204_I2C_ADDR_FLAGS,
+				  buf, PI3HDX1204_DE_OFFSET);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, pi3hdx1204_retimer_power, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pi3hdx1204_retimer_power, HOOK_PRIO_DEFAULT);
