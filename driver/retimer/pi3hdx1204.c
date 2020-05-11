@@ -21,3 +21,25 @@ int pi3hdx1204_enable(const int i2c_port,
 			buf, PI3HDX1204_ENABLE_OFFSET + 1,
 			NULL, 0);
 }
+
+int pi3hdx1204_write(const int i2c_port,
+		      const uint16_t i2c_addr_flags,
+		      uint8_t *buf, const int offset)
+{
+	int rv;
+	uint8_t get_buf[offset + 1];
+
+	rv = i2c_read_block(i2c_port, i2c_addr_flags,
+			0, get_buf, PI3HDX1204_ENABLE_OFFSET + 1);
+	if (rv)
+		return rv;
+
+	/* Restore current enable status. */
+	buf[PI3HDX1204_ENABLE_OFFSET] =
+		get_buf[PI3HDX1204_ENABLE_OFFSET];
+
+	return i2c_xfer(i2c_port, i2c_addr_flags,
+			buf, offset + 1,
+			NULL, 0);
+}
+
