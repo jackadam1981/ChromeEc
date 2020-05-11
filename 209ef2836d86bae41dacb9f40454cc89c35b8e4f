@@ -22,6 +22,30 @@
       "revId": "209ef2836d86bae41dacb9f40454cc89c35b8e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c263ff04_02187a2f",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-05-11T03:18:01Z",
+      "side": 1,
+      "message": "I guess you mean CONFIG_FLASH_PHYSICAL.\n\nYes, we can leverage CONFIG_FLASH_PHYSICAL here with the following considerations:\n\n- Some IT8XXX2-specific logic is inevitable, e.g. CHIP_RAM_SPACE_RESERVED, H2RAM\n\u003d\u003e cannot remove CHIP_FAMILY_IT8XXX2 in this file\n\n- Only 2 chips are using this file, I would like to keep it as a simple \"if else\".  If we have a third rv32i chip which is not the \"if else\" case, then we could start to think how to refactor it.",
+      "parentUuid": "0dd746ba_d886e97b",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "209ef2836d86bae41dacb9f40454cc89c35b8e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
