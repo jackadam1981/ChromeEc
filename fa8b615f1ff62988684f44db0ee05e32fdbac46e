@@ -22,6 +22,30 @@
       "revId": "fa8b615f1ff62988684f44db0ee05e32fdbac46e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2adc2841_e5b06e21",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 5272,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-11T21:24:29Z",
+      "side": 1,
+      "message": "Okay, failed to upload to the newest CL stack on my kindred for my part.  This looks like it\u0027s working.",
+      "parentUuid": "c8ed404e_db6ea3a1",
+      "range": {
+        "startLine": 5272,
+        "startChar": 1,
+        "endLine": 5272,
+        "endChar": 60
+      },
+      "revId": "fa8b615f1ff62988684f44db0ee05e32fdbac46e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
