@@ -309,13 +309,6 @@ static void power_set_active_wake_mask(void)
 static void power_set_active_wake_mask(void) { }
 #endif
 
-__overridable enum critical_shutdown board_system_is_idle(
-		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
-{
-	return now > *target ?
-			CRITICAL_SHUTDOWN_HIBERNATE : CRITICAL_SHUTDOWN_IGNORE;
-}
-
 /**
  * Common handler for steady states
  *
