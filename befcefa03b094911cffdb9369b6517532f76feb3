@@ -81,6 +81,30 @@
       "revId": "befcefa03b094911cffdb9369b6517532f76feb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3abc50e0_c977355d",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-11T22:58:46Z",
+      "side": 1,
+      "message": "Ah yes, I forgot about that. Sorry about that and thanks for the pointer.",
+      "parentUuid": "8a83c705_bd306deb",
+      "range": {
+        "startLine": 121,
+        "startChar": 34,
+        "endLine": 121,
+        "endChar": 52
+      },
+      "revId": "befcefa03b094911cffdb9369b6517532f76feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
