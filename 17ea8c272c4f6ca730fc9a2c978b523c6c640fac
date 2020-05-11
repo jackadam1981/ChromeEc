@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f70e41a_1ddc8644",
+        "filename": "test/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-11T23:30:54Z",
+      "side": 1,
+      "message": "This assumes the flash can be read directly (which, yes, is always 100% true for chips with rollback protection -- at the moment)...\n\nCan you use flash_read() instead?",
+      "revId": "17ea8c272c4f6ca730fc9a2c978b523c6c640fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
