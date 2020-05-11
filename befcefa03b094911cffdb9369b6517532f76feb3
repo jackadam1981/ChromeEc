@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f63267bb_89cf9881",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-11T22:22:55Z",
+      "side": 1,
+      "message": "nit: Perhaps add a one-line comment summarizing the LTC4291?",
+      "revId": "befcefa03b094911cffdb9369b6517532f76feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b33ff32a_9a5d8a2a",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-11T22:22:55Z",
+      "side": 1,
+      "message": "You probably want this to be HOOK_PRIO_INIT_I2C+1. (The order is not guaranteed if the priorities are equal.)",
+      "range": {
+        "startLine": 121,
+        "startChar": 34,
+        "endLine": 121,
+        "endChar": 52
+      },
+      "revId": "befcefa03b094911cffdb9369b6517532f76feb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
