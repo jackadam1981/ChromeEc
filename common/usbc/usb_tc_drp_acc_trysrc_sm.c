@@ -710,10 +710,13 @@ void tc_hard_reset_request(int port)
  */
 void tc_hard_reset_allow_unattach(int port)
 {
-	TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET_NO_UNATTACH);
+	/* Only deal with HardReset if we are currently doing HardReset */
+	if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET_NO_UNATTACH)) {
+		TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET_NO_UNATTACH);
 
-	/* Enable AutoDischargeDisconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
+		/* Enable AutoDischargeDisconnect */
+		tcpm_enable_auto_discharge_disconnect(port, 1);
+	}
 }
 
 void tc_disc_ident_in_progress(int port)
@@ -774,9 +777,6 @@ void tc_src_power_off(int port)
 		if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
 			charge_manager_set_ceil(port, CEIL_REQUESTOR_PD,
 						CHARGE_CEIL_NONE);
-
-		/* Disable AutoDischargeDisconnect */
-		tcpm_enable_auto_discharge_disconnect(port, 0);
 	}
 }
 
@@ -930,6 +930,9 @@ static bool tc_perform_src_hard_reset(int port)
 		/* Remove VBUS */
 		tc_src_power_off(port);
 
+		/* Disable AutoDischargeDisconnect */
+		tcpm_enable_auto_discharge_disconnect(port, 0);
+
 		/* Turn off VCONN */
 		set_vconn(port, 0);
 
@@ -974,6 +977,9 @@ static void tc_perform_snk_hard_reset(int port)
 
 	/* Clear the input current limit */
 	sink_stop_drawing_current(port);
+
+	/* Disable AutoDischargeDisconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
 
 	/*
 	 * When VCONN is supported, the Hard Reset Shall cause
@@ -1275,9 +1281,6 @@ static void sink_stop_drawing_current(int port)
 		charge_manager_set_ceil(port,
 				CEIL_REQUESTOR_PD, CHARGE_CEIL_NONE);
 	}
-
-	/* Disable AutoDischargeDisconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 0);
 }
 
 #ifdef CONFIG_USB_PD_TRY_SRC
@@ -1968,6 +1971,7 @@ static void tc_attached_snk_run(const int port)
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 			/* Clear PR_SWAP flag in exit */
+			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 			set_state_tc(port, TC_ATTACHED_SRC);
 			return;
 		}
@@ -2051,6 +2055,9 @@ static void tc_attached_snk_exit(const int port)
 
 	/* Stop drawing power */
 	sink_stop_drawing_current(port);
+
+	/* Disable AutoDischargeDisconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
 }
 
 /**
@@ -2186,6 +2193,7 @@ static void tc_unoriented_dbg_acc_src_run(const int port)
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 			/* Clear TC_FLAGS_DO_PR_SWAP on exit */
+			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 			return set_state_tc(port, TC_DBG_ACC_SNK);
 		}
 
@@ -2211,6 +2219,9 @@ static void tc_unoriented_dbg_acc_src_exit(const int port)
 	 * UnorientedDbg.SRC.
 	 */
 	tc_src_power_off(port);
+
+	/* Disable AutoDischargeDisconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
 
 	/* Clear PR swap flag */
 	TC_CLR_FLAG(port, TC_FLAGS_DO_PR_SWAP);
@@ -2346,6 +2357,7 @@ static void tc_dbg_acc_snk_run(const int port)
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 		/* Clear PR_SWAP flag in exit */
+		TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 		set_state_tc(port, TC_UNORIENTED_DBG_ACC_SRC);
 		return;
 	}
@@ -2368,6 +2380,9 @@ static void tc_dbg_acc_snk_exit(const int port)
 
 	/* Stop drawing power */
 	sink_stop_drawing_current(port);
+
+	/* Disable AutoDischargeDisconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
 
 	/* Save our current connection is not a DEBUG ACCESSORY */
 	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 0);
@@ -2757,6 +2772,7 @@ static void tc_attached_src_run(const int port)
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 			/* Clear TC_FLAGS_DO_PR_SWAP on exit */
+			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 			return set_state_tc(port, TC_ATTACHED_SNK);
 		}
 
@@ -2825,6 +2841,9 @@ static void tc_attached_src_exit(const int port)
 	 * Attached.SRC.
 	 */
 	tc_src_power_off(port);
+
+	/* Disable AutoDischargeDisconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
 
 	if (!TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 		/* Disable VCONN if not power role swapping */
@@ -3184,6 +3203,9 @@ static void tc_ct_attached_snk_entry(int port)
 
 	/* The port shall reject a VCONN swap request. */
 	TC_SET_FLAG(port, TC_FLAGS_REJECT_VCONN_SWAP);
+
+	/* Enable AutoDischargeDisconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_ct_attached_snk_run(int port)
@@ -3221,6 +3243,9 @@ static void tc_ct_attached_snk_exit(int port)
 {
 	/* Stop drawing power */
 	sink_stop_drawing_current(port);
+
+	/* Disable AutoDischargeDisconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
 
 	TC_CLR_FLAG(port, TC_FLAGS_REJECT_VCONN_SWAP);
 }
