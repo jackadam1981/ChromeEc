@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44e78729_1a315915",
+        "filename": "board/puff/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-05-11T01:28:00Z",
+      "side": 1,
+      "message": "Will do so in another change, since there are other users that could be refactored as well.",
+      "parentUuid": "95577c1e_9951fca2",
+      "range": {
+        "startLine": 405,
+        "startChar": 3,
+        "endLine": 405,
+        "endChar": 11
+      },
+      "revId": "2eb5327ed3efa9bc131fee262df52356b9408af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddd7fdaf_e9ad09ba",
         "filename": "power/cometlake-discrete.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "2eb5327ed3efa9bc131fee262df52356b9408af5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e196c798_339dd53d",
+        "filename": "power/cometlake-discrete.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-05-11T01:28:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddd7fdaf_e9ad09ba",
+      "range": {
+        "startLine": 179,
+        "startChar": 57,
+        "endLine": 179,
+        "endChar": 65
+      },
+      "revId": "2eb5327ed3efa9bc131fee262df52356b9408af5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
