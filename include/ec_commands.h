@@ -6139,6 +6139,16 @@ struct ec_response_keybd_config {
 
 } __ec_align1;
 
+/*
+ * Configure safe discharge
+ */
+#define EC_CMD_SAFE_DISCHARGE_SET 0x012B
+
+struct ec_params_safe_discharge {
+	/* Desired hours for the battery to survive before reaching 0%. */
+	uint16_t hours_to_survive;
+};
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 

@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
+#include "charge_state.h"
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "console.h"
@@ -1481,4 +1482,63 @@ void board_fill_source_power_info(int port,
 	r->meas.current_max = 0;
 	r->meas.current_lim = 0;
 	r->max_power = 0;
+}
+
+/*
+ * Safe discharge system
+ */
+
+/*
+ * Discharge rates when the system is in cutoff or hibernation.
+ *
+ * If not configured (cutoff=0, hibern=0), it will give the default behavior.
+ * That is, the system hibernates as soon as the timer expires.
+ *
+ * TODO: Calculate discharge rates dynamically.
+ */
+static struct discharge_rate_t {
+	uint8_t cutoff;  /* Discharge rate (mAh/hour) in cutoff */
+	uint8_t hibern;  /* Discharge rate (mAh/hour) in hibernation */
+} drate;
+
+static struct discharge_zone_t {
+	/* When the capacity (mAh) goes below this, EC cuts off the battery. */
+	int cutoff;
+	/* When the capacity (mAh) is below this, EC stays up. */
+	int stayup;
+} dzone;
+
+static enum ec_status hc_safe_discharge_set(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_safe_discharge *p = args->params;
+
+	if (drate.cutoff == 0 || drate.hibern == 0)
+		return EC_RES_UNAVAILABLE;
+
+	dzone.cutoff = p->hours_to_survive * drate.cutoff;
+	dzone.stayup = p->hours_to_survive * drate.hibern;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SAFE_DISCHARGE_SET,
+		     hc_safe_discharge_set,
+		     EC_VER_MASK(0));
+
+__overridable enum critical_shutdown board_system_is_idle(
+		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
+{
+	int remain;
+
+	if (now < *target)
+		return CRITICAL_SHUTDOWN_IGNORE;
+
+	if (battery_remaining_capacity(&remain))
+		return CRITICAL_SHUTDOWN_IGNORE;
+
+	if (remain < dzone.cutoff)
+		return CRITICAL_SHUTDOWN_CUTOFF;
+	else if (remain < dzone.stayup)
+		return CRITICAL_SHUTDOWN_IGNORE;
+	else
+		return CRITICAL_SHUTDOWN_HIBERNATE;
 }
