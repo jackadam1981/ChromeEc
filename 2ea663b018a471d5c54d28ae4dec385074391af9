@@ -16,6 +16,24 @@
       "revId": "2ea663b018a471d5c54d28ae4dec385074391af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f67d3b23_82e4931e",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-11T21:26:52Z",
+      "side": 1,
+      "message": "Are we ready to enable CONFIG_OCPC for waddledee?",
+      "parentUuid": "1c2c21ba_d0a1bb45",
+      "revId": "2ea663b018a471d5c54d28ae4dec385074391af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
