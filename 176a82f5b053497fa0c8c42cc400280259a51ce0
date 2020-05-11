@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "89ffe4db_508a5f8c",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-11T19:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f59ae700_be958ff7",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "176a82f5b053497fa0c8c42cc400280259a51ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1376034d_bd43804c",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "176a82f5b053497fa0c8c42cc400280259a51ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf728e8_e735543f",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-11T19:26:54Z",
+      "side": 1,
+      "message": "My expectation is that Intel will refactor this function when they add TBT support to TCPMv2. I intend to leave it as is until then. I don\u0027t see a great way to fix it in isolation from the other TCPMv1-specific TBT code.",
+      "parentUuid": "1376034d_bd43804c",
+      "range": {
+        "startLine": 652,
+        "startChar": 2,
+        "endLine": 652,
+        "endChar": 65
+      },
+      "revId": "176a82f5b053497fa0c8c42cc400280259a51ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0b963236_d59f3d0b",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-11T19:26:54Z",
+      "side": 1,
+      "message": "Then it will be an easy todo to do.",
+      "parentUuid": "eb4cec38_9b5e4be5",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 65
+      },
+      "revId": "176a82f5b053497fa0c8c42cc400280259a51ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc8780b6_17d0cd84",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "176a82f5b053497fa0c8c42cc400280259a51ce0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ab2d489_c67eaf1b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 5270,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-11T19:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc8780b6_17d0cd84",
+      "range": {
+        "startLine": 5270,
+        "startChar": 1,
+        "endLine": 5270,
+        "endChar": 36
+      },
+      "revId": "176a82f5b053497fa0c8c42cc400280259a51ce0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
