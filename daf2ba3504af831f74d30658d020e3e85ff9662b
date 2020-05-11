@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "20570d08_3f3886b9",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2020-05-11T21:17:12Z",
+      "side": 1,
+      "message": "No, the operating mode is initialized to auto by the pin configuration.",
+      "parentUuid": "2bcaecdf_47f5a617",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "daf2ba3504af831f74d30658d020e3e85ff9662b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "708eca64_96d5317a",
         "filename": "board/endeavour/pse.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "daf2ba3504af831f74d30658d020e3e85ff9662b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8010abd4_d28bf665",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2020-05-11T21:17:12Z",
+      "side": 1,
+      "message": "You\u0027re right; I didn\u0027t read the spec closely enough and just set both fields to all ones.",
+      "parentUuid": "708eca64_96d5317a",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "daf2ba3504af831f74d30658d020e3e85ff9662b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
