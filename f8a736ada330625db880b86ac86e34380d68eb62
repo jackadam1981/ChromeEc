@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d658d07e_68fa88c8",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-05-11T18:13:54Z",
+      "side": 1,
+      "message": "I like the idea of isolating this functionality to RW, but does RO have the \"spixfer\" command? Aka, is SPI master code still enabled for RO?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f760460e_e4fc3d77",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-05-11T18:13:54Z",
+      "side": 1,
+      "message": "Isn\u0027t transport selection relevant to RO?",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d06133c0_2ee66069",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-05-11T18:13:54Z",
+      "side": 1,
+      "message": "Ahhh, this should probably use a different console channel. Maybe CC_FP or CC_SPI? (Just not console-command channel)",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
