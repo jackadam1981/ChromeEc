@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bcaecdf_47f5a617",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2020-05-11T13:05:34Z",
+      "side": 1,
+      "message": "Do we need to explicitly set the operating mode to auto as well? Or is confirming the auto pin configuration via STATPIN enough?",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "daf2ba3504af831f74d30658d020e3e85ff9662b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "708eca64_96d5317a",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2020-05-11T13:05:34Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me how this maps to the HPMDx register definition. Based on the datasheet, I would expect \"max\" to mean the highest PD class for both dual- and single-signature PDs. This is class 5 and class 8, respectively.\n\nTo specify dual-signature class 5 and single-signature class 8, shouldn\u0027t LTC4291_HPMD_MAX be 0xA8?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "daf2ba3504af831f74d30658d020e3e85ff9662b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
