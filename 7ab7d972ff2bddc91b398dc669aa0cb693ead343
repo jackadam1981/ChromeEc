@@ -46,6 +46,30 @@
       "revId": "7ab7d972ff2bddc91b398dc669aa0cb693ead343",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1af0417_d0438eb5",
+        "filename": "docs/case_closed_debugging.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-11T15:42:14Z",
+      "side": 1,
+      "message": "I don\u0027t think any of the udev rules or driver config are needed anymore. I don\u0027t remember setting any of that up.",
+      "parentUuid": "ada5cee2_774c9b82",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 29
+      },
+      "revId": "7ab7d972ff2bddc91b398dc669aa0cb693ead343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
