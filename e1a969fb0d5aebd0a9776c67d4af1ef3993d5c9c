@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ea0f9c2_8ccf8dcb",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-05-11T07:56:46Z",
+      "side": 1,
+      "message": "When HDMI sub-board is attached X_EC_GPIO2 would become PS185_EC_DP_HPD, which is a push-pull pin from HDMI bridge chip.\nIn this case X_EC_GPIO2 should probably be re-configured as GPIO_INT_FALLING.",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 23
+      },
+      "revId": "e1a969fb0d5aebd0a9776c67d4af1ef3993d5c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f3503f1_f0011742",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 40
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-05-11T07:56:46Z",
+      "side": 1,
+      "message": "You may want to enable EC\u0027s internal pullup for USB_C1_PPC_INT_ODL, as the external pullup (R386) needs to be removed to avoid driving race when HDMI sub-board is attached.",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 57
+      },
+      "revId": "e1a969fb0d5aebd0a9776c67d4af1ef3993d5c9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
