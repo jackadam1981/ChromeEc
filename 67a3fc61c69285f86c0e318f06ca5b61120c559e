@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1dbabc3_97c7fb30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-11T17:44:22Z",
+      "side": 1,
+      "message": "make it generic as its applicable to all type of VCONN capable devices",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "67a3fc61c69285f86c0e318f06ca5b61120c559e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5528e913_8371b67d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-11T17:44:22Z",
+      "side": 1,
+      "message": "Add details",
+      "revId": "67a3fc61c69285f86c0e318f06ca5b61120c559e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71de0ca6_367a9196",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2357,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-11T17:44:22Z",
+      "side": 1,
+      "message": "nit: Google is avoiding ifdef, please use this\nif (IS_ENABLED(CONFIG_USBC_VCONN_SWAP))",
+      "range": {
+        "startLine": 2357,
+        "startChar": 0,
+        "endLine": 2357,
+        "endChar": 29
+      },
+      "revId": "67a3fc61c69285f86c0e318f06ca5b61120c559e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86a97f12_5c1d3e59",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2358,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-11T17:44:22Z",
+      "side": 1,
+      "message": "how about vconn source in else part only as we dont have to provide power to cable when not using it.\nif (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {\n} else if (IS_ENABLED(CONFIG_USBC_VCONN_SWAP)) {\n   **\n}",
+      "range": {
+        "startLine": 2358,
+        "startChar": 1,
+        "endLine": 2358,
+        "endChar": 17
+      },
+      "revId": "67a3fc61c69285f86c0e318f06ca5b61120c559e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
