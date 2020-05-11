@@ -52,6 +52,24 @@
       "revId": "2ea663b018a471d5c54d28ae4dec385074391af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e36f17ce_d6edc340",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-11T22:06:09Z",
+      "side": 1,
+      "message": "Yup. We can add this to a general cleanup of CONFIG_CHARGER_SINGLE_CHIP once we\u0027re rolling with OCPC and ready to deprecate it (and probably deprecate the enum chg_id as well)",
+      "parentUuid": "a28295c6_3e5c9647",
+      "revId": "2ea663b018a471d5c54d28ae4dec385074391af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
