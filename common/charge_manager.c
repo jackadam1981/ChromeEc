@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
+#include "charge_state.h"
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "console.h"
@@ -1481,4 +1482,60 @@ void board_fill_source_power_info(int port,
 	r->meas.current_max = 0;
 	r->meas.current_lim = 0;
 	r->max_power = 0;
+}
+
+/*
+ * Safe discharge configuration.
+ *
+ * Discharge rates (% per 100 hours) when the system is in cutoff or
+ * hibernation.
+ *
+ * If not configured (cutoff=0%, hibern=0%), it will give the default behavior.
+ * That is, the system hibernates as soon as the timer expires.
+ *
+ * TODO: Save the SOC in NVRAM and update them dynamically when the system wake
+ * up from cutoff or hibernation.
+ */
+static struct discharge_rate_t {
+	uint8_t cutoff;
+	uint8_t hibern;
+} drate;
+
+static struct discharge_zone_t {
+	/* When soc goes below this, EC cuts off the battery. */
+	uint8_t cutoff;
+	/* When soc goes below this, EC stays up. */
+	uint8_t stayup;
+} dzone;
+
+static enum ec_status hc_safe_discharge_set(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_safe_discharge *p = args->params;
+
+	if (drate.cutoff == 0 || drate.hibern == 0)
+		return EC_RES_UNAVAILABLE;
+
+	dzone.cutoff = p->hours_to_survive * drate.cutoff / 100;
+	dzone.stayup = p->hours_to_survive * drate.hibern / 100;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SAFE_DISCHARGE_SET,
+		     hc_safe_discharge_set,
+		     EC_VER_MASK(0));
+
+__overridable enum critical_shutdown board_system_is_idle(
+		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
+{
+	int soc = charge_get_percent();
+
+	if (now < *target)
+		return CRITICAL_SHUTDOWN_IGNORE;
+
+	if (soc < dzone.cutoff)
+		return CRITICAL_SHUTDOWN_CUTOFF;
+	else if (soc < dzone.stayup)
+		return CRITICAL_SHUTDOWN_IGNORE;
+	else
+		return CRITICAL_SHUTDOWN_HIBERNATE;
 }
