@@ -710,10 +710,13 @@ void tc_hard_reset_request(int port)
  */
 void tc_hard_reset_allow_unattach(int port)
 {
-	TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET_NO_UNATTACH);
+	/* Only deal with HardReset if we are currently doing HardReset */
+	if (TC_CHK_FLAG(port, TC_FLAGS_HARD_RESET_NO_UNATTACH)) {
+		TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET_NO_UNATTACH);
 
-	/* Enable AutoDischargeDisconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
+		/* Enable AutoDischargeDisconnect */
+		tcpm_enable_auto_discharge_disconnect(port, 1);
+	}
 }
 
 void tc_disc_ident_in_progress(int port)
@@ -1968,6 +1971,7 @@ static void tc_attached_snk_run(const int port)
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 			/* Clear PR_SWAP flag in exit */
+			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 			set_state_tc(port, TC_ATTACHED_SRC);
 			return;
 		}
@@ -2186,6 +2190,7 @@ static void tc_unoriented_dbg_acc_src_run(const int port)
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 			/* Clear TC_FLAGS_DO_PR_SWAP on exit */
+			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 			return set_state_tc(port, TC_DBG_ACC_SNK);
 		}
 
@@ -2346,6 +2351,7 @@ static void tc_dbg_acc_snk_run(const int port)
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 		/* Clear PR_SWAP flag in exit */
+		TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 		set_state_tc(port, TC_UNORIENTED_DBG_ACC_SRC);
 		return;
 	}
@@ -2757,6 +2763,7 @@ static void tc_attached_src_run(const int port)
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 			/* Clear TC_FLAGS_DO_PR_SWAP on exit */
+			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 			return set_state_tc(port, TC_ATTACHED_SNK);
 		}
 
@@ -3184,6 +3191,9 @@ static void tc_ct_attached_snk_entry(int port)
 
 	/* The port shall reject a VCONN swap request. */
 	TC_SET_FLAG(port, TC_FLAGS_REJECT_VCONN_SWAP);
+
+	/* Enable AutoDischargeDisconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_ct_attached_snk_run(int port)
