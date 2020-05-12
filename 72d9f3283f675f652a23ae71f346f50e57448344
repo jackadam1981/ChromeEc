@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e0c3e56_604851ea",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-12T06:38:25Z",
+      "side": 1,
+      "message": "drop this?",
+      "revId": "72d9f3283f675f652a23ae71f346f50e57448344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed20a1cf_51c56dc4",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 53
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-12T06:38:25Z",
+      "side": 1,
+      "message": "I think we don\u0027t need this? We use ppc to control.",
+      "revId": "72d9f3283f675f652a23ae71f346f50e57448344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
