@@ -472,6 +472,30 @@
     },
     {
       "key": {
+        "uuid": "c2c604cc_fdf5f242",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-12T22:59:21Z",
+      "side": 1,
+      "message": "right. I mean when testing the guaranteed ordering between messages printed to the console and sending the response for this command. in theory, we could send the response before the message is flushed to the console, so if some script goes and looks at the console as soon as the command is finished, it may not yet see it there.\nin practice, highly unlikely to have that much of a delay (I guess), so not a big deal.\njust to clarify that I didn\u0027t mean the ordering between different messages, but the ordering between the console messages and command completion.",
+      "parentUuid": "63d37451_075818b9",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 7
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68406a73_764d251a",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 2
@@ -507,6 +531,30 @@
       "side": 1,
       "message": "Well, last I heard was that we might have to reprogram the RO and as a result update this value. Also, keeping it separate from INFO1 would make the factory process more flexible, when this value could be erased until the device is finalized (this policy is not yet supported, but I have been thinking about it).\n\nFor these reasons I put it in a separate space.",
       "parentUuid": "68406a73_764d251a",
+      "range": {
+        "startLine": 230,
+        "startChar": 27,
+        "endLine": 230,
+        "endChar": 32
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28e84d3d_d0799b12",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-12T22:59:21Z",
+      "side": 1,
+      "message": "let\u0027s finalize this once we get the decision on \u003crewritable\u003e vs \u003cbetter protection for a one-time-set data\u003e. note that one-time set doesn\u0027t mean set at factory (INFO1 is still writable, just not readable).\nyes, if we want it to be rewritable (we don\u0027t support it atm anyways with this code, though), this is the way to do it.",
+      "parentUuid": "336b86ba_05153a69",
       "range": {
         "startLine": 230,
         "startChar": 27,
