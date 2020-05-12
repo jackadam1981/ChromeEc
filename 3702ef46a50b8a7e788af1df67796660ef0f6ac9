@@ -22,6 +22,30 @@
       "revId": "3702ef46a50b8a7e788af1df67796660ef0f6ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9839a78a_9376c022",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-12T22:59:39Z",
+      "side": 1,
+      "message": "it actually is, let me change this.",
+      "parentUuid": "01971146_84b431a5",
+      "range": {
+        "startLine": 610,
+        "startChar": 5,
+        "endLine": 610,
+        "endChar": 52
+      },
+      "revId": "3702ef46a50b8a7e788af1df67796660ef0f6ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
