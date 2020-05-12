@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e712de2c_148957b5",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-12T07:39:57Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171fe299_d0f062cb",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-12T07:39:57Z",
+      "side": 1,
+      "message": "I see a lot of dummy tabs. please remove all",
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7286a9e_60930a10",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-12T07:39:57Z",
+      "side": 1,
+      "message": "use tab instead of spaces at the begginng",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 9
+      },
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3e5ad11_2b60b685",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-12T07:39:57Z",
+      "side": 1,
+      "message": "Currently we are not using delayed FPU context saving. FPU h/w context is saved when the task with FPU flag is pre-empted. So please remove these.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "687b5336_18d41c1e",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-12T07:39:57Z",
+      "side": 1,
+      "message": "no need to restore FPU H/W",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8afec015_92c77f7d",
+        "filename": "chip/ish/aontaskfw/ish_aon_defs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-12T07:39:57Z",
+      "side": 1,
+      "message": "?? you should not declare variable in header. please move to c file.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca849bda_39bebcd7",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-12T07:39:57Z",
+      "side": 1,
+      "message": "why do we need this ? Which modules are turned off and expected to manage their context ? Any docuemnt about IPAPG of ISH to understand about the code ?",
+      "range": {
+        "startLine": 543,
+        "startChar": 1,
+        "endLine": 546,
+        "endChar": 2
+      },
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b5315a_1c4ccc0f",
+        "filename": "chip/ish/aontaskfw/ish_aontask.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-12T07:39:57Z",
+      "side": 1,
+      "message": "correct indentation",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 875,
+        "endChar": 0
+      },
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
