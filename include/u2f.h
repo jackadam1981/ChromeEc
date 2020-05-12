@@ -31,6 +31,8 @@ extern "C" {
 #define U2F_MAX_ATTEST_SIZE   256 /* Size of largest blob to sign */
 #define U2F_P256_SIZE	      32
 #define U2F_FIXED_KH_SIZE     64 /* Size of fixed size key handles */
+#define U2F_KH_VERSION_SIZE   1 /* Size of key handle version */
+#define U2F_VERSIONED_KH_SIZE (U2F_FIXED_KH_SIZE + U2F_KH_VERSION_SIZE)
 
 #define ENC_SIZE(x) ((x + 7) & 0xfff8)
 
@@ -49,6 +51,10 @@ struct u2f_ec_point {
 #define U2F_AUTH_ENFORCE    0x03 /* Enforce user presence and sign */
 #define U2F_AUTH_CHECK_ONLY 0x07 /* Check only */
 #define U2F_AUTH_FLAG_TUP   0x01 /* Test of user presence set */
+/* The key handle can be used with fingerprint or PIN. */
+#define U2F_UV_ENABLED_KH 0x08
+
+#define U2F_KH_VERSION_1 0x01
 
 /* TODO(louiscollard): Add Descriptions. */
 
@@ -63,12 +69,25 @@ struct u2f_generate_resp {
 	uint8_t keyHandle[U2F_FIXED_KH_SIZE]; /* Key handle */
 };
 
+struct u2f_generate_versioned_resp {
+	struct u2f_ec_point pubKey; /* Generated public key */
+	uint8_t keyHandle[U2F_VERSIONED_KH_SIZE]; /* Key handle */
+};
+
 struct u2f_sign_req {
 	uint8_t appId[U2F_APPID_SIZE]; /* Application id */
 	uint8_t userSecret[U2F_P256_SIZE];
 	uint8_t keyHandle[U2F_FIXED_KH_SIZE]; /* Key handle */
 	uint8_t hash[U2F_P256_SIZE];
 	uint8_t flags;
+};
+
+struct u2f_sign_versioned_req {
+	uint8_t appId[U2F_APPID_SIZE]; /* Application id */
+	uint8_t userSecret[U2F_P256_SIZE];
+	uint8_t hash[U2F_P256_SIZE];
+	uint8_t flags;
+	uint8_t keyHandle[U2F_VERSIONED_KH_SIZE]; /* Key handle */
 };
 
 struct u2f_sign_resp {

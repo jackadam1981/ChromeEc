@@ -58,14 +58,32 @@ int u2f_origin_key(const uint8_t *seed, p256_int *d);
  *
  * @param origin pointer to origin id
  * @param user pointer to user secret
- * @param pointer to origin-specific random seed
+ * @param seed pointer to origin-specific random seed
+ * @param key_handle buffer to hold the output key handle, must be at least
+ * U2F_FIXED_KH_SIZE.
  *
  * @return EC_SUCCESS if a valid keypair was created.
  */
-int u2f_origin_user_keyhandle(const uint8_t *origin,
-			      const uint8_t *user,
-			      const uint8_t *seed,
-			      uint8_t *key_handle);
+int u2f_origin_user_keyhandle(const uint8_t *origin, const uint8_t *user,
+			      const uint8_t *seed, uint8_t *key_handle);
+
+/**
+ * Pack the specified origin, user secret, origin-specific seed and version
+ * byte into a key handle.
+ *
+ * @param origin pointer to origin id
+ * @param user pointer to user secret
+ * @param seed pointer to origin-specific random seed
+ * @param version the version byte to pack; should be greater than 0.
+ * @param key_handle buffer to hold the output key handle, must be at least
+ * U2F_VERSIONED_KH_SIZE.
+ *
+ * @return EC_SUCCESS if a valid keypair was created.
+ */
+int u2f_origin_user_versioned_keyhandle(const uint8_t *origin,
+					const uint8_t *user,
+					const uint8_t *seed, uint8_t version,
+					uint8_t *key_handle);
 
 /**
  * Generate an origin and user-specific ECDSA keypair from the specified
@@ -73,17 +91,16 @@ int u2f_origin_user_keyhandle(const uint8_t *origin,
  *
  * If pk_x and pk_y are NULL, public key generation will be skipped.
  *
- * @param key_handle pointer to the 64 byte key handle
+ * @param key_handle pointer to the key handle
+ * @param key_handle_size size of the key handle in bytes
  * @param d pointer to ECDSA private key
  * @param pk_x pointer to public key point
  * @param pk_y pointer to public key point
  *
  * @return EC_SUCCESS if a valid keypair was created.
  */
-int u2f_origin_user_keypair(const uint8_t *key_handle,
-			    p256_int *d,
-			    p256_int *pk_x,
-			    p256_int *pk_y);
+int u2f_origin_user_keypair(const uint8_t *key_handle, size_t key_handle_size,
+			    p256_int *d, p256_int *pk_x, p256_int *pk_y);
 
 /***
  * Generate a hardware derived 256b private key.

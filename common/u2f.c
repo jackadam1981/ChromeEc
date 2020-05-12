@@ -79,15 +79,14 @@ int g2f_attestation_cert(uint8_t *buf)
 			       G2F_ATTESTATION_CERT_MAX_LEN);
 }
 
-/* U2F GENERATE command  */
-static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
-				       size_t input_size, size_t *response_size)
+static enum vendor_cmd_rc
+u2f_generate_non_versioned(void *buf, size_t input_size, size_t *response_size)
 {
 	struct u2f_generate_req *req = buf;
 	struct u2f_generate_resp *resp;
 
-	/* Origin keypair */
-	uint8_t od_seed[P256_NBYTES];
+	/* Origin keypair. Must be word aligned, otherwise TRNG will crash. */
+	uint8_t od_seed[P256_NBYTES] __aligned(4);
 	p256_int od, opk_x, opk_y;
 
 	/* Key handle */
@@ -114,12 +113,13 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 		if (!DCRYPTO_ladder_random(&od_seed))
 			return VENDOR_RC_INTERNAL_ERROR;
 
-		if (u2f_origin_user_keyhandle(req->appId, req->userSecret,
-					      od_seed, kh) != EC_SUCCESS)
+		if (u2f_origin_user_keyhandle(
+			    req->appId, req->userSecret, od_seed, kh) !=
+		    EC_SUCCESS)
 			return VENDOR_RC_INTERNAL_ERROR;
 
-		generate_keypair_rc =
-			u2f_origin_user_keypair(kh, &od, &opk_x, &opk_y);
+		generate_keypair_rc = u2f_origin_user_keypair(
+			kh, sizeof(kh), &od, &opk_x, &opk_y);
 	} while (generate_keypair_rc == EC_ERROR_TRY_AGAIN);
 
 	if (generate_keypair_rc != EC_SUCCESS)
@@ -144,16 +144,96 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 
 	return VENDOR_RC_SUCCESS;
 }
+
+static enum vendor_cmd_rc u2f_generate_versioned(void *buf, size_t input_size,
+						 size_t *response_size)
+{
+	struct u2f_generate_req *req = buf;
+	struct u2f_generate_versioned_resp *resp;
+
+	/* Origin keypair. Must be word aligned, otherwise TRNG will crash. */
+	uint8_t od_seed[P256_NBYTES] __aligned(4);
+	p256_int od, opk_x, opk_y;
+
+	/* Key handle */
+	uint8_t kh[U2F_VERSIONED_KH_SIZE];
+
+	/* Whether keypair generation succeeded */
+	int generate_keypair_rc;
+
+	size_t response_buf_size = *response_size;
+
+	*response_size = 0;
+
+	if (input_size != sizeof(struct u2f_generate_req) ||
+	    response_buf_size < sizeof(struct u2f_generate_versioned_resp))
+		return VENDOR_RC_BOGUS_ARGS;
+
+	/* Maybe enforce user presence, w/ optional consume */
+	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES &&
+	    (req->flags & U2F_AUTH_FLAG_TUP) != 0)
+		return VENDOR_RC_NOT_ALLOWED;
+
+	/* Generate origin-specific keypair */
+	do {
+		if (!DCRYPTO_ladder_random(&od_seed))
+			return VENDOR_RC_INTERNAL_ERROR;
+
+		if (u2f_origin_user_versioned_keyhandle(
+			    req->appId, req->userSecret, od_seed,
+			    U2F_KH_VERSION_1, kh) != EC_SUCCESS)
+			return VENDOR_RC_INTERNAL_ERROR;
+
+		generate_keypair_rc = u2f_origin_user_keypair(
+			kh, sizeof(kh), &od, &opk_x, &opk_y);
+	} while (generate_keypair_rc == EC_ERROR_TRY_AGAIN);
+
+	if (generate_keypair_rc != EC_SUCCESS)
+		return VENDOR_RC_INTERNAL_ERROR;
+
+	/*
+	 * From this point: the request 'req' content is invalid as it is
+	 * overridden by the response we are building in the same buffer.
+	 */
+	resp = buf;
+
+	*response_size = sizeof(*resp);
+
+	/* Insert origin-specific public keys into the response */
+	p256_to_bin(&opk_x, resp->pubKey.x); /* endianness */
+	p256_to_bin(&opk_y, resp->pubKey.y); /* endianness */
+
+	resp->pubKey.pointFormat = U2F_POINT_UNCOMPRESSED;
+
+	/* Copy key handle to response. */
+	memcpy(resp->keyHandle, kh, sizeof(kh));
+
+	return VENDOR_RC_SUCCESS;
+}
+
+/* U2F GENERATE command  */
+static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
+				       size_t input_size, size_t *response_size)
+{
+	struct u2f_generate_req *req = buf;
+
+	if ((req->flags & U2F_UV_ENABLED_KH) == 0)
+		return u2f_generate_non_versioned(buf, input_size,
+						  response_size);
+
+	return u2f_generate_versioned(buf, input_size, response_size);
+}
 DECLARE_VENDOR_COMMAND(VENDOR_CC_U2F_GENERATE, u2f_generate);
 
-static int verify_kh_pubkey(const uint8_t *key_handle,
+static int verify_kh_pubkey(const uint8_t *key_handle, size_t key_handle_size,
 			    const struct u2f_ec_point *public_key, int *matches)
 {
 	int rc;
 	struct u2f_ec_point kh_pubkey;
 	p256_int od, opk_x, opk_y;
 
-	rc = u2f_origin_user_keypair(key_handle, &od, &opk_x, &opk_y);
+	rc = u2f_origin_user_keypair(key_handle, key_handle_size, &od, &opk_x,
+				     &opk_y);
 	if (rc != EC_SUCCESS)
 		return rc;
 
@@ -190,6 +270,34 @@ static int verify_kh_owned(const uint8_t *user_secret, const uint8_t *app_id,
 	return rc;
 }
 
+static int verify_versioned_kh_owned(const uint8_t *user_secret,
+				     const uint8_t *app_id,
+				     const uint8_t *key_handle, int *owned)
+{
+	int rc;
+	/* Re-created key handle. */
+	uint8_t recreated_kh[U2F_VERSIONED_KH_SIZE];
+
+	/*
+	 * Re-create the key handle and compare against that which
+	 * was provided. This allows us to verify that the key handle
+	 * is owned by this combination of device, current user and app_id.
+	 */
+
+	/* Version byte is at the beginning, before the origin seed. */
+	uint8_t version = key_handle[0];
+
+	rc = u2f_origin_user_versioned_keyhandle(
+		app_id, user_secret, key_handle + U2F_KH_VERSION_SIZE, version,
+		recreated_kh);
+
+	if (rc == EC_SUCCESS)
+		*owned = safe_memcmp(recreated_kh, key_handle,
+				     sizeof(recreated_kh)) == 0;
+
+	return rc;
+}
+
 static int verify_legacy_kh_owned(const uint8_t *app_id,
 				  const uint8_t *key_handle,
 				  uint8_t *origin_seed)
@@ -214,9 +322,8 @@ static int verify_legacy_kh_owned(const uint8_t *app_id,
 /* Below, we depend on the response not being larger than than the request. */
 BUILD_ASSERT(sizeof(struct u2f_sign_resp) <= sizeof(struct u2f_sign_req));
 
-/* U2F SIGN command */
-static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
-				   size_t input_size, size_t *response_size)
+static enum vendor_cmd_rc u2f_sign_non_versioned(void *buf,
+						 size_t *response_size)
 {
 	const struct u2f_sign_req *req = buf;
 	struct u2f_sign_resp *resp;
@@ -239,9 +346,6 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 	/* Response is smaller than request, so no need to check this. */
 	*response_size = 0;
 
-	if (input_size != sizeof(struct u2f_sign_req))
-		return VENDOR_RC_BOGUS_ARGS;
-
 	if (verify_kh_owned(req->userSecret, req->appId, req->keyHandle,
 			    &kh_owned) != EC_SUCCESS)
 		return VENDOR_RC_INTERNAL_ERROR;
@@ -263,7 +367,7 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 	}
 
 	/* We might not actually need to sign anything. */
-	if (req->flags == U2F_AUTH_CHECK_ONLY)
+	if ((req->flags & U2F_AUTH_CHECK_ONLY) == U2F_AUTH_CHECK_ONLY)
 		return VENDOR_RC_SUCCESS;
 
 	/* Always enforce user presence, with optional consume. */
@@ -275,7 +379,8 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 		if (u2f_origin_key(legacy_origin_seed, &origin_d) != EC_SUCCESS)
 			return VENDOR_RC_INTERNAL_ERROR;
 	} else {
-		if (u2f_origin_user_keypair(req->keyHandle, &origin_d, NULL,
+		if (u2f_origin_user_keypair(req->keyHandle, U2F_FIXED_KH_SIZE,
+					    &origin_d, NULL,
 					    NULL) != EC_SUCCESS)
 			return VENDOR_RC_INTERNAL_ERROR;
 	}
@@ -305,6 +410,85 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 
 	return VENDOR_RC_SUCCESS;
 }
+
+static enum vendor_cmd_rc u2f_sign_versioned(void *buf, size_t *response_size)
+{
+	const struct u2f_sign_versioned_req *req = buf;
+	struct u2f_sign_resp *resp;
+
+	struct drbg_ctx ctx;
+
+	/* Whether the key handle is owned by this device. */
+	int kh_owned;
+
+	/* Origin private key. */
+	p256_int origin_d;
+
+	/* Hash, and corresponding signature. */
+	p256_int h, r, s;
+
+	/* Response is smaller than request, so no need to check this. */
+	*response_size = 0;
+
+	if (verify_versioned_kh_owned(req->userSecret, req->appId,
+				      req->keyHandle, &kh_owned) != EC_SUCCESS)
+		return VENDOR_RC_INTERNAL_ERROR;
+
+	/* Versioned KH can't be legacy KH. */
+	if (!kh_owned)
+		return VENDOR_RC_PASSWORD_REQUIRED;
+
+	/* We might not actually need to sign anything. */
+	if ((req->flags & U2F_AUTH_CHECK_ONLY) == U2F_AUTH_CHECK_ONLY)
+		return VENDOR_RC_SUCCESS;
+
+	/* Always enforce user presence, with optional consume. */
+	if (pop_check_presence(req->flags & G2F_CONSUME) != POP_TOUCH_YES)
+		return VENDOR_RC_NOT_ALLOWED;
+
+	/* Re-create origin-specific key. */
+	if (u2f_origin_user_keypair(req->keyHandle, U2F_VERSIONED_KH_SIZE,
+				    &origin_d, NULL, NULL) != EC_SUCCESS)
+		return VENDOR_RC_INTERNAL_ERROR;
+
+	/* Prepare hash to sign. */
+	p256_from_bin(req->hash, &h);
+
+	/* Sign. */
+	hmac_drbg_init_rfc6979(&ctx, &origin_d, &h);
+	if (!dcrypto_p256_ecdsa_sign(&ctx, &origin_d, &h, &r, &s)) {
+		p256_clear(&origin_d);
+		return VENDOR_RC_INTERNAL_ERROR;
+	}
+	p256_clear(&origin_d);
+
+	/*
+	 * From this point: the request 'req' content is invalid as it is
+	 * overridden by the response we are building in the same buffer.
+	 * The response is smaller than the request, so we have the space.
+	 */
+	resp = buf;
+
+	*response_size = sizeof(*resp);
+
+	p256_to_bin(&r, resp->sig_r);
+	p256_to_bin(&s, resp->sig_s);
+
+	return VENDOR_RC_SUCCESS;
+}
+
+/* U2F SIGN command */
+static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
+				   size_t input_size, size_t *response_size)
+{
+	if (input_size == sizeof(struct u2f_sign_req))
+		return u2f_sign_non_versioned(buf, response_size);
+
+	if (input_size == sizeof(struct u2f_sign_versioned_req))
+		return u2f_sign_versioned(buf, response_size);
+
+	return VENDOR_RC_BOGUS_ARGS;
+}
 DECLARE_VENDOR_COMMAND(VENDOR_CC_U2F_SIGN, u2f_sign);
 
 struct g2f_register_msg {
@@ -321,6 +505,8 @@ static inline int u2f_attest_verify_reg_resp(const uint8_t *user_secret,
 {
 	struct g2f_register_msg *msg = (void *)data;
 	int verified;
+	/* We only do u2f_attest on non-versioned KHs. */
+	const int key_handle_size = U2F_FIXED_KH_SIZE;
 
 	if (data_size != sizeof(struct g2f_register_msg))
 		return VENDOR_RC_NOT_ALLOWED;
@@ -335,8 +521,8 @@ static inline int u2f_attest_verify_reg_resp(const uint8_t *user_secret,
 	if (!verified)
 		return VENDOR_RC_NOT_ALLOWED;
 
-	if (verify_kh_pubkey(msg->key_handle, &msg->public_key, &verified) !=
-	    EC_SUCCESS)
+	if (verify_kh_pubkey(msg->key_handle, key_handle_size, &msg->public_key,
+			     &verified) != EC_SUCCESS)
 		return VENDOR_RC_INTERNAL_ERROR;
 
 	if (!verified)
