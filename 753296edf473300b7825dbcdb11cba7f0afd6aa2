@@ -496,6 +496,30 @@
     },
     {
       "key": {
+        "uuid": "1112ea7a_f39f23ba",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-12T23:34:55Z",
+      "side": 1,
+      "message": "Ah, I see what you mean. In this case the vendor command is sent by the AP, and the console is not really monitored, I don\u0027t think we should delay vendor command response.",
+      "parentUuid": "c2c604cc_fdf5f242",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 7
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68406a73_764d251a",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 2
@@ -555,6 +579,30 @@
       "side": 1,
       "message": "let\u0027s finalize this once we get the decision on \u003crewritable\u003e vs \u003cbetter protection for a one-time-set data\u003e. note that one-time set doesn\u0027t mean set at factory (INFO1 is still writable, just not readable).\nyes, if we want it to be rewritable (we don\u0027t support it atm anyways with this code, though), this is the way to do it.",
       "parentUuid": "336b86ba_05153a69",
+      "range": {
+        "startLine": 230,
+        "startChar": 27,
+        "endLine": 230,
+        "endChar": 32
+      },
+      "revId": "753296edf473300b7825dbcdb11cba7f0afd6aa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9693dcfd_81aadf6d",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-12T23:34:55Z",
+      "side": 1,
+      "message": "sure, who is supposed to decide? I can see an issue where a customer wants to replace the AP RO for whatever reason, even though it has not yet happened.\n\nAn alternative could be keeping multiple instance of the hash database in INFO1, but this is a bit non-deterministic, we don\u0027t know how big this database is, not sure how much room we can have in INFO1 for this purpose, etc.",
+      "parentUuid": "28e84d3d_d0799b12",
       "range": {
         "startLine": 230,
         "startChar": 27,
