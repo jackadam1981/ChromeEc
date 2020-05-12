@@ -257,6 +257,12 @@ static void sm5803_init(int chgnum)
 	rv |= chg_write8(chgnum, 0x68, 0x88);
 	rv |= chg_write8(chgnum, 0x69, 0xC7);
 
+	/* Inits to access page 0x37 and enable trickle charging */
+	rv |= main_write8(chgnum, 0x1F, 0x01);
+	rv |= i2c_update8(chg_chips[chgnum].i2c_port, 0x37,
+			  0x8E, BIT(5), MASK_SET);
+	rv |= main_write8(chgnum, 0x1F, 0x00);
+
 	/* --- End special register init section --- */
 
 	/* Set default input current */
