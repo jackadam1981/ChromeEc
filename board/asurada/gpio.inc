@@ -74,6 +74,7 @@ GPIO(EC_BL_EN_OD,            PIN(B, 5), GPIO_ODR_LOW)
 GPIO(EC_INT_L,               PIN(E, 6), GPIO_ODR_HIGH) /* EC_AP_INT_ODL */
 
 /* USB and USBC Signals */
+GPIO(EC_DPBRDG_HPD_ODL,      PIN(J, 0), GPIO_ODR_HIGH)
 
 /* Misc Signals */
 GPIO(EC_BATT_PRES_ODL,       PIN(C, 0), GPIO_INPUT)
