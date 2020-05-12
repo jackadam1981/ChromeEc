@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "cfd5697d_7d48d956",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2020-05-12T15:36:27Z",
+      "side": 1,
+      "message": "As discussed offline, let\u0027s support full initialization in this commit. I.e. it should work whether or not the hardware is configured in auto-mode.",
+      "parentUuid": "5bc833b2_c5683427",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "daf2ba3504af831f74d30658d020e3e85ff9662b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "708eca64_96d5317a",
         "filename": "board/endeavour/pse.c",
         "patchSetId": 3
