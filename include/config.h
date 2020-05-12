@@ -173,6 +173,26 @@
 /* Support the orientation gesture */
 #undef CONFIG_GESTURE_ORIENTATION
 
+/* Support the body_detection */
+#undef CONFIG_BODY_DETECTION
+
+/* Which sensor body_detection use */
+#undef CONFIG_BODY_DETECTION_SENSOR
+
+/* The max number of sampling data for 1 second */
+#undef CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE
+
+/* The threshold of acceleration variance */
+#undef CONFIG_BODY_DETECTION_VAR_THRESHOLD
+#undef CONFIG_BODY_DETECTION_CONFIDENCE_DELTA
+
+/* The confidence limit of on_body/off_body */
+#undef CONFIG_BODY_DETECTION_ON_BODY_CON
+#undef CONFIG_BODY_DETECTION_OFF_BODY_CON
+
+/* The threshold duration to change to off_body */
+#undef CONFIG_BODY_DETECTION_STATIONARY_DURATION
+
 /*
  * Use the old standard reference frame for accelerometers. The old
  * reference frame is:
