@@ -22,6 +22,30 @@
       "revId": "79cfd093abe70308f5810f2277e92ef128ec534d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae655c67_dc9f1c46",
+        "filename": "test/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-12T22:58:15Z",
+      "side": 1,
+      "message": "I agree, but it should be a separate patch, and it would be more involved, as memcpy/memset are much more pervasive.",
+      "parentUuid": "d7fa6610_cdf32851",
+      "range": {
+        "startLine": 98,
+        "startChar": 9,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "79cfd093abe70308f5810f2277e92ef128ec534d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
