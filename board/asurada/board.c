@@ -114,8 +114,12 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 static void board_tcpc_init(void)
 {
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
-	if (board_get_sub_board() == SUB_BOARD_TYPEC)
-		gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
+	/* C1: GPIO_USB_C1_PPC_INT_ODL & HDMI: GPIO_PS185_EC_DP_HPD */
+	gpio_enable_interrupt(GPIO_X_EC_GPIO2);
+
+	/* If this is not a Type-C subboard, disable the task. */
+	if (board_get_sub_board() != SUB_BOARD_TYPEC)
+		task_disable_task(TASK_ID_PD_C1);
 }
 /* Must be done after I2C and subboard */
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
@@ -195,6 +199,9 @@ static void board_sub_bc12_init(void)
 {
 	if (board_get_sub_board() == SUB_BOARD_TYPEC)
 		gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
+	else
+		/* If this is not a Type-C subboard, disable the task. */
+		task_disable_task(TASK_ID_USB_CHG_P1);
 }
 /* Must be done after I2C and subboard */
 DECLARE_HOOK(HOOK_INIT, board_sub_bc12_init, HOOK_PRIO_INIT_I2C + 1);
@@ -250,7 +257,15 @@ static void ppc_interrupt(enum gpio_signal signal)
 
 static void hdmi_hpd_interrupt(enum gpio_signal signal)
 {
-	/* TODO: implement HDMI HPD */
+	int hpd = gpio_get_level(signal);
+
+	/*
+	 * low active, inverse the hdmi hpd
+	 * TODO: C0&HDMI shares the same HPD, implement FCFS policy.
+	 */
+	gpio_set_level(GPIO_EC_DPBRDG_HPD_ODL, !hpd);
+
+	CPRINTS("HDMI %splug", hpd ? "" : "un");
 }
 
 /* HDMI/TYPE-C function shared subboard interrupt */
@@ -444,6 +459,12 @@ static enum board_sub_board board_get_sub_board(void)
 		sub = SUB_BOARD_HDMI;
 		/* Only has 1 PPC with HDMI subboard */
 		ppc_cnt = 1;
+		/* EC_X_GPIO1 */
+		gpio_set_flags(GPIO_EN_HDMI_PWR, GPIO_OUT_HIGH);
+		/* X_EC_GPIO2 */
+		gpio_set_flags(GPIO_PS185_EC_DP_HPD, GPIO_INT_BOTH);
+		/* EC_X_GPIO3 */
+		gpio_set_flags(GPIO_PS185_PWRDN_ODL, GPIO_ODR_HIGH);
 	} else {
 		sub = SUB_BOARD_TYPEC;
 		/* EC_X_GPIO1 */
