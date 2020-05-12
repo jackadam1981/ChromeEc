@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01971146_84b431a5",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-12T22:50:37Z",
+      "side": 1,
+      "message": "not sure if (((size / SPI_HASH_CHUNK_SIZE) % 128) \u003d\u003d 127) is simpler",
+      "range": {
+        "startLine": 610,
+        "startChar": 5,
+        "endLine": 610,
+        "endChar": 52
+      },
+      "revId": "3702ef46a50b8a7e788af1df67796660ef0f6ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
