@@ -16,6 +16,24 @@
       "revId": "17ea8c272c4f6ca730fc9a2c978b523c6c640fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a53b8054_d612d04c",
+        "filename": "test/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-12T17:13:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f70e41a_1ddc8644",
+      "revId": "17ea8c272c4f6ca730fc9a2c978b523c6c640fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
