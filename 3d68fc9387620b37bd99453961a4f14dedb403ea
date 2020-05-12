@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3e0c587_9c12a9c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-12T14:00:27Z",
+      "side": 1,
+      "message": "power state transitions above G3",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 70
+      },
+      "revId": "3d68fc9387620b37bd99453961a4f14dedb403ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "285e2a55_3bd6e3fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-12T14:00:27Z",
+      "side": 1,
+      "message": "To communicate with cable plug VCONN is required and the VCONN is\ntypically provided by 5V rail. When the DUT is below S5, 5V rail is\ndown \u0026 VCONN sourcing is disabled. Hence need to re-enable the\nVCONN sourcing when the power state transition happens from G3 to higher state.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 6
+      },
+      "revId": "3d68fc9387620b37bd99453961a4f14dedb403ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3958457_0b3fcc90",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2355,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-12T14:00:27Z",
+      "side": 1,
+      "message": "bring it inside ifdef",
+      "range": {
+        "startLine": 2355,
+        "startChar": 1,
+        "endLine": 2355,
+        "endChar": 9
+      },
+      "revId": "3d68fc9387620b37bd99453961a4f14dedb403ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
