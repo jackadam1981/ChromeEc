@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf045e8b_50d7b8b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2020-05-12T09:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1dbabc3_97c7fb30",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "67a3fc61c69285f86c0e318f06ca5b61120c559e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5528e913_8371b67d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "67a3fc61c69285f86c0e318f06ca5b61120c559e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88cd1754_ba769ad1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2020-05-12T09:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5528e913_8371b67d",
+      "revId": "67a3fc61c69285f86c0e318f06ca5b61120c559e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a2ce485b_0d235876",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2357,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2020-05-12T09:17:22Z",
+      "side": 1,
+      "message": "The function definition is under CONFIG_USBC_VCONN_SWAP.\nCalling under \"if\" causes the build errors for the platforms \nwhere this function is not defined",
+      "parentUuid": "71de0ca6_367a9196",
+      "range": {
+        "startLine": 2357,
+        "startChar": 0,
+        "endLine": 2357,
+        "endChar": 29
+      },
+      "revId": "67a3fc61c69285f86c0e318f06ca5b61120c559e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86a97f12_5c1d3e59",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2020-05-11T17:44:22Z",
       "side": 1,
       "message": "how about vconn source in else part only as we dont have to provide power to cable when not using it.\nif (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {\n} else if (IS_ENABLED(CONFIG_USBC_VCONN_SWAP)) {\n   **\n}",
+      "range": {
+        "startLine": 2358,
+        "startChar": 1,
+        "endLine": 2358,
+        "endChar": 17
+      },
+      "revId": "67a3fc61c69285f86c0e318f06ca5b61120c559e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99956b6f_302d81a6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2358,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2020-05-12T09:17:22Z",
+      "side": 1,
+      "message": "Thanks for the comments. Added else.\nusage of \"IS_ENABLED\" causes build errors",
+      "parentUuid": "86a97f12_5c1d3e59",
       "range": {
         "startLine": 2358,
         "startChar": 1,
