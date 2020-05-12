@@ -255,7 +255,13 @@ static void ppc_interrupt(enum gpio_signal signal)
 }
 
 static void hdmi_hpd_interrupt(enum gpio_signal signal) {
-	/* TODO: implement HDMI HPD */
+	int hpd = gpio_get_level(signal);
+
+	/*
+	 * low active, inverse the hdmi hpd
+	 * TODO: C0&HDMI shares the same HPD, implement FCFS policy.
+	 */
+	gpio_set_level(GPIO_EC_DPBRDG_HPD_ODL, !hpd);
 }
 
 /* HDMI/TYPE-C function shared subboard interrupt */
@@ -449,6 +455,12 @@ static enum board_sub_board board_get_sub_board(void)
 		sub = SUB_BOARD_HDMI;
 		/* Only has 1 PPC with HDMI subboard */
 		ppc_cnt = 1;
+		/* EC_X_GPIO1 */
+		gpio_set_flags(GPIO_EN_HDMI_PWR, GPIO_OUT_HIGH);
+		/* X_EC_GPIO2 */
+		gpio_set_flags(GPIO_PS185_EC_DP_HPD, GPIO_INT_BOTH);
+		/* EC_X_GPIO3 */
+		gpio_set_flags(GPIO_PS185_PWRDN_ODL, GPIO_ODR_HIGH);
 	} else {
 		sub = SUB_BOARD_TYPEC;
 		/* EC_X_GPIO1 */
