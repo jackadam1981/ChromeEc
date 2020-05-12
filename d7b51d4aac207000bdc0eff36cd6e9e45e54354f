@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16ae6b00_e2d05641",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-12T22:17:37Z",
+      "side": 1,
+      "message": "0xff (or, just be consistent)",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "d7b51d4aac207000bdc0eff36cd6e9e45e54354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "951e568c_4c3eb80c",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-12T22:17:37Z",
+      "side": 1,
+      "message": "Insead of setting variables ones by one, would it be nicer to define the whole structure above?\n\nstruct rollback_data expected_initialized \u003d {\n  .id \u003d ...\n  .secret \u003d {...}\n};",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 41
+      },
+      "revId": "d7b51d4aac207000bdc0eff36cd6e9e45e54354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5567cc1_7143a873",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-12T22:17:37Z",
+      "side": 1,
+      "message": "nit (up to you): A simple memset(0xff) of the whole expected struct may be easier to read?",
+      "revId": "d7b51d4aac207000bdc0eff36cd6e9e45e54354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6876c2_4f59446f",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-12T22:17:37Z",
+      "side": 1,
+      "message": "I thought we were supposed to be in RO anyway? I guess that\u0027s to avoid issues with a missing symbol?\n\nMaybe ifdef the whole function? (and make it error out in the else case?)",
+      "revId": "d7b51d4aac207000bdc0eff36cd6e9e45e54354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
