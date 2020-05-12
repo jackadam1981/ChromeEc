@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7fa6610_cdf32851",
+        "filename": "test/nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-05-12T22:47:01Z",
+      "side": 1,
+      "message": "why are memset and memcpy uint8_t*, btw? would be easier if they were also void* as in stdlib.",
+      "range": {
+        "startLine": 98,
+        "startChar": 9,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "79cfd093abe70308f5810f2277e92ef128ec534d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
