@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "42c54aec_545521a3",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-12T04:30:56Z",
+      "side": 1,
+      "message": "RO FW section only checka for rw signature and does not need any sensor or transport layer implementation. We should keep RO section small.",
+      "parentUuid": "8aa4d1eb_64d1dc0d",
+      "revId": "e661dd65d54ae2dc0bab293761740eab35d27231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28547a0d_0f0780bc",
         "filename": "board/hatch_fp/board.c",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e86faac9_6a069d35",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-12T04:30:56Z",
+      "side": 1,
+      "message": "This SPI configurations is FW SPI (FPMCU is master).\nTransport SPI works in slave mode and works in GPIO_SPI_NSS interrupt context.",
+      "parentUuid": "28547a0d_0f0780bc",
+      "revId": "e661dd65d54ae2dc0bab293761740eab35d27231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "969b2926_f3779d6a",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2020-05-11T20:15:54Z",
       "side": 1,
       "message": "underrun? not clear to me why this is an underrun.",
+      "revId": "e661dd65d54ae2dc0bab293761740eab35d27231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1643fef_e39f8a89",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-12T04:30:56Z",
+      "side": 1,
+      "message": "If all data bytes (data_len) are not received within RX_TIMEOUT ~150ms, then packet had underrun. Host has EC_MSG_DEADLINE ~200ms to retry request and FPMCU needs to decide before that and reset this layer to receive new packet.",
+      "parentUuid": "969b2926_f3779d6a",
       "revId": "e661dd65d54ae2dc0bab293761740eab35d27231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
