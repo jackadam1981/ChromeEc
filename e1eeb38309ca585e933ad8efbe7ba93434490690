@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "376da1b0_c4d336c8",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-05-12T09:55:38Z",
+      "side": 1,
+      "message": "The PS4 looks good as the internal pullup on USB_C1_PPC_INT_ODL is set.\nAnd the GPIOs for HDMI option seems to be set in crrev.com/c/2195722/5 so all look in place.\n\nOne last question I have is that why we need to define X_EC_GPIO2 as ppc_interrupt in gpio.inc?\nCan we move that declaration to here?",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "e1eeb38309ca585e933ad8efbe7ba93434490690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
