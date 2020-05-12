@@ -26,6 +26,9 @@
 
 #define CONFIG_LED_COMMON
 
+/* testing on body detection */
+#define CONFIG_ON_BODY_DETECTION
+
 /* Sensors */
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_THERMISTOR

@@ -173,6 +173,9 @@
 /* Support the orientation gesture */
 #undef CONFIG_GESTURE_ORIENTATION
 
+/* Support the on body detection */
+#undef CONFIG_ON_BODY_DETECTION
+
 /*
  * Use the old standard reference frame for accelerometers. The old
  * reference frame is:

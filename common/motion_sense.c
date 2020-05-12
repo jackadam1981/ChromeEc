@@ -21,6 +21,7 @@
 #include "motion_sense.h"
 #include "motion_sense_fifo.h"
 #include "motion_lid.h"
+#include "on_body_detection.h"
 #include "online_calibration.h"
 #include "power.h"
 #include "queue.h"
@@ -875,6 +876,10 @@ void motion_sense_task(void *u)
 		}
 #ifdef CONFIG_GESTURE_DETECTION
 		check_and_queue_gestures(&event);
+#endif
+#ifdef CONFIG_ON_BODY_DETECTION
+		/* motion_detect */
+		motion_detection();
 #endif
 #ifdef CONFIG_LID_ANGLE
 		/*
