@@ -371,7 +371,12 @@ int flash_physical_get_protect(int block)
 	int bank = block / BLOCKS_PER_HWBANK;
 	int index = block % BLOCKS_PER_HWBANK;
 
-	return !(STM32_FLASH_WPSN_CUR(bank) & BIT(index));
+	/*
+	 * If access_disabled is set, we no longer have access to the flash
+	 * control register. This effectively means that all flash regions are
+	 * locked, since no write or erase operations can be started.
+	 */
+	return access_disabled || !(STM32_FLASH_WPSN_CUR(bank) & BIT(index));
 }
 
 /*
