@@ -46,6 +46,30 @@
       "revId": "afc3d3be1e307d70f109f6e31dfa55e4c17ae5fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "514313a0_35f5163b",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-12T22:41:20Z",
+      "side": 0,
+      "message": "I think we should limit its scope, but this is a separate conversation.",
+      "parentUuid": "69a1c4ba_3fc0a36e",
+      "range": {
+        "startLine": 161,
+        "startChar": 26,
+        "endLine": 161,
+        "endChar": 39
+      },
+      "revId": "afc3d3be1e307d70f109f6e31dfa55e4c17ae5fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
