@@ -22,6 +22,30 @@
       "revId": "666d525aa9b678ae9c6ff0188f52e7a0eb05a677",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccf0f9b1_95309f6d",
+        "filename": "board/fleex/analyzestack.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-13T20:49:48Z",
+      "side": 1,
+      "message": "I was more concerned with the name change and took care of the line number while I was at it.  Should I remove this change and just let it have the wrong name?  I will revert this and leave it alone.",
+      "parentUuid": "bb47558f_da94aec0",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "666d525aa9b678ae9c6ff0188f52e7a0eb05a677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
