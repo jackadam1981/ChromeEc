@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5a7ca4e_9742ec06",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-05-13T10:55:22Z",
+      "side": 1,
+      "message": "So I presume you are relating the size of the field to the number of enums.\nIn which case maybe have a BJ_POWER_MAX (\u003d2 for now) and then use this to calculate the size of the mask.",
+      "revId": "a88a392515e6dc44644f3fa9a2b12117b40946b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
