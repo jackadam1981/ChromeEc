@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3d12db_5d0d1e8c",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "if we are optimizing the size of RO, then that should be done in a separate CL (maybe as a parent if you need the space)\n\nI know the EC\u0027s RO still have to be functionality for recovery modes. Is that not the case for fingerprint?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfea18d7_be2565f1",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "who will we get the RW image if the RO doesn\u0027t support the host command interface? Isn\u0027t the RW image gettting transported over the UART-based ec_command interface?",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 25
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de103da7_0c21f04e",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "this comment doesn\u0027t help. why would I need to start the interrupt handler, doesn\u0027 the ISR do that?",
+      "range": {
+        "startLine": 200,
+        "startChar": 8,
+        "endLine": 202,
+        "endChar": 19
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c155418_bac65f68",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "nit: (150 * MSEC)\n\nAnd you don\u0027t need to specified the US since that is implied in this codebase if a time unit is left unspecified (since we operate with a 1MHZ main counter)",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42a5c2a4_d25fcf64",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "nit: no need to specify 0 if you are not serializing this value",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 35
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f8ef6d_e737dd27",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "nit: need \\n before text for consistency and style",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e52ccfe_76ffe7bc",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "define what this is (I think it is the host side time out?)",
+      "range": {
+        "startLine": 142,
+        "startChar": 21,
+        "endLine": 142,
+        "endChar": 39
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "228ef6ae_821529ed",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "while you are receving the header, are you in the READY or RECIEVING state?\n\nI am having difficulty understanding this.\n\nDo you think a listing what transition states are possible underwhat condition would be easier to read? You could potentially even put those comments in the enum state definition.",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "064c1f84_a4bf437d",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "let\u0027s just add comments saying we are making valid, unnamed, empty structures and buffers to use with DMA.",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 52
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5517110e_5e83085a",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "can you use the .field \u003d notiation to self document what you are setting here, please?",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 12
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ccf0d8_38ac76f5",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "it is possible that the deferred function is running right now (or in the middle of running). This cancels any future invocations of this method.\n\nThis means that the current_state variable could get reset to READY_RX after the next line is run.\n\nWe need to add access guards to this global state",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 6
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72aacb05_17931e7b",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:45:51Z",
+      "side": 1,
+      "message": "It looks like there is a race condition between the defered task and high priority tasks. We need to guard access to variable",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 344,
+        "endChar": 14
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
