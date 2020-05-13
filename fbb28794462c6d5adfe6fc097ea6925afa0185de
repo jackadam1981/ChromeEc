@@ -16,6 +16,24 @@
       "revId": "fbb28794462c6d5adfe6fc097ea6925afa0185de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5081226_6c5b64b3",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-13T17:32:24Z",
+      "side": 1,
+      "message": "Probably.  I plan to gate all the inits by revision when we get the next version\u0027s in b/155218826 but we could start gating now since we know the version register for our current revision",
+      "parentUuid": "7bf72e6f_8cfd7890",
+      "revId": "fbb28794462c6d5adfe6fc097ea6925afa0185de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
