@@ -392,6 +392,30 @@
     },
     {
       "key": {
+        "uuid": "f2c036a8_7db1f553",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T22:39:14Z",
+      "side": 1,
+      "message": "Oh, I misunderstood. I was thinking that vSrcValid meant Vbus was on in a valid voltage at or above 5V.\n\nSo what would the return of is_vbus(VBUS_LEVELSAVE5V) return when Vbus is 20V? If we want that enum value to handle that, then I think we need to make the name more inclusive of higher voltages.",
+      "parentUuid": "425957e5_fa64dd46",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b57a843d_aa2da0e6",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
