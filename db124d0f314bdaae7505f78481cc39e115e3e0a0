@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "053ac0c9_29a27a74",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-05-13T16:21:36Z",
+      "side": 1,
+      "message": "nit: I\u0027d prefer to avoid the abbreviation and make it tcpm_check_vbus_level()",
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd2991c4_c990bdc1",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
