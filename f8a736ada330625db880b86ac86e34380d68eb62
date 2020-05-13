@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "455f316d_ccd622f7",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-05-13T07:38:25Z",
+      "side": 1,
+      "message": "I agree there. I just wanted to make sure we were consistent. So, if we are not going to configure spi-master in RO anymore, then let\u0027s ensure we disabled the spi-master code in RO *OR* the polar opposite.\n\n---\n\nOne oddball use case for spi-master in RO would be to use spixfer to debug raw sensor communication without the RW driver interfering.",
+      "parentUuid": "df213866_47a79ddf",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f760460e_e4fc3d77",
         "filename": "board/nucleo-dartmonkey/board.c",
         "patchSetId": 3
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "d04486fc_e1976277",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-05-13T07:38:25Z",
+      "side": 1,
+      "message": "No, I\u0027m referring specifically to the TRANSPORT_SEL, which (should) select the host command interface (SPI or your new USART).\n\nIf we are actually going to base a transport layer decision on this strapping pin, then this logic would need to be in RO, since we use the host interface to communicate with RO.",
+      "parentUuid": "18b10418_59314054",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d06133c0_2ee66069",
         "filename": "board/nucleo-dartmonkey/board.c",
         "patchSetId": 3
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "I checked the implementation of other board.c file and CPRINT does not exsist. i think this might be because it is too early in init process to send bytes on different channed. \nWe should confirm why other boards dont have channel console write in their board.c",
       "parentUuid": "d06133c0_2ee66069",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35dfea6d_0e9d56a9",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-05-13T07:38:25Z",
+      "side": 1,
+      "message": "Not totally sure I understand.\n\nThe all capital CPRINT{S,F} invocations you see in EC sources are typically macros that are defined at file scopes to conveniently hide which channel a certain file intends to use. For the common/fpsensor/fpsensor.c, CPRINTS is defined in fpsensor_private.h (I know...excellent place to hide it) and uses the FP channel.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/ec/common/fpsensor/fpsensor_private.h;l\u003d12?ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec\u0026q\u003dfpsensor_private.h",
+      "parentUuid": "95cbf0b4_b0d96d55",
       "range": {
         "startLine": 89,
         "startChar": 1,
