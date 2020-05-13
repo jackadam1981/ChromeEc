@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3780b85f_0390bace",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-13T05:31:22Z",
+      "side": 1,
+      "message": "Can you use \"#\" for comments for consistency.\n//LAPIC\n\u003d\u003e\n# LAPIC",
+      "range": {
+        "startLine": 6,
+        "startChar": 1,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "6efb439122180c2dc12c90379e220ff33dc1ebd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d8d0ede_cc2ad9e9",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-13T05:31:22Z",
+      "side": 1,
+      "message": "move to \"registers.h\" with following the rules(XXXX_REG, XXXX_REG_ADDR, etc) and include \"registers.h\" here",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "6efb439122180c2dc12c90379e220ff33dc1ebd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dba354d_67c18a17",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-13T05:31:22Z",
+      "side": 1,
+      "message": "extra tab",
+      "range": {
+        "startLine": 114,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 15
+      },
+      "revId": "6efb439122180c2dc12c90379e220ff33dc1ebd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "fecdcee0_32a17c98",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-13T05:31:22Z",
+      "side": 1,
+      "message": "Please remove it(or ,at least, use CONFIG_FPU). Currently we are not using FPU H/W at all. This instruction takes more than hundred cycles if core in ISH doesn\u0027t have any special design for handling this. It\u0027s huge overhead for 100Mhz core.",
+      "parentUuid": "ab9e350b_1368b066",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "687b5336_18d41c1e",
         "filename": "chip/ish/aontaskfw/ipapg.S",
         "patchSetId": 4
@@ -213,6 +237,30 @@
       "side": 1,
       "message": "Same as above.",
       "parentUuid": "687b5336_18d41c1e",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff65d7df_e555797c",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-13T05:31:22Z",
+      "side": 1,
+      "message": "Please remove it.",
+      "parentUuid": "19226446_2a45d997",
       "range": {
         "startLine": 89,
         "startChar": 1,
