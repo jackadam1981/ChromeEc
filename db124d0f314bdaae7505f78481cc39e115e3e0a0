@@ -296,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "2f420787_54c45605",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-13T20:10:40Z",
+      "side": 1,
+      "message": "vSrcValid will have other meanings though, right? It\u0027s not just used with vSafe5V but with whatever vSrcNew is",
+      "parentUuid": "e3a3f760_5c175def",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b57a843d_aa2da0e6",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1

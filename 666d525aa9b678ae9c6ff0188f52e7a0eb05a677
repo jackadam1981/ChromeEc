@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb47558f_da94aec0",
+        "filename": "board/fleex/analyzestack.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-13T20:10:40Z",
+      "side": 1,
+      "message": "nit: no need to update the stack analysis.  The line numbers and things in here are probably waaaaaay out of date at this point",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "666d525aa9b678ae9c6ff0188f52e7a0eb05a677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
