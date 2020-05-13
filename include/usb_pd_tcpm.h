@@ -106,6 +106,12 @@ enum tcpc_transmit_complete {
 	TCPC_TX_COMPLETE_FAILED =    2,
 };
 
+/* USB-C PD Vbus levels */
+enum vbus_level {
+	VBUS_LEVEL_SAFE0V = 0,
+	VBUS_LEVEL_SAFE5V = 1,
+};
+
 /**
  * Returns whether the sink has detected a Rp resistor on the other side.
  */
@@ -202,13 +208,14 @@ struct tcpm_drv {
 		enum tcpc_cc_voltage_status *cc2);
 
 	/**
-	 * Read VBUS
+	 * Check VBUS level
 	 *
 	 * @param port Type-C port number
+	 * @param level safe level voltage to check against
 	 *
-	 * @return 0 => VBUS not detected, 1 => VBUS detected
+	 * @return 0 => VBUS not at level, 1 => VBUS at level
 	 */
-	int (*get_vbus_level)(int port);
+	int (*chk_vbus_level)(int port, enum vbus_level level);
 
 	/**
 	 * Set the value of the CC pull-up used when we are a source.

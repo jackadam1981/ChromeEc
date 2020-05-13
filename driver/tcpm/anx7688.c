@@ -171,7 +171,7 @@ static int anx7688_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 }
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-static int anx7688_tcpm_get_vbus_level(int port)
+static int anx7688_tcpm_chk_vbus_level(int port, enum vbus_level level)
 {
 	int reg = 0;
 
@@ -191,7 +191,7 @@ const struct tcpm_drv anx7688_tcpm_drv = {
 	.release		= &anx7688_release,
 	.get_cc			= &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-	.get_vbus_level		= &anx7688_tcpm_get_vbus_level,
+	.chk_vbus_level		= &anx7688_tcpm_chk_vbus_level,
 #endif
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,

@@ -22,9 +22,9 @@ add:
   tcpm_init[driver/tcpm/tcpm.h:106]:
     - anx7447_init
     - tcpci_tcpm_init
-  tcpm_get_vbus_level[driver/tcpm/tcpm.h:129]:
-    - anx7447_tcpm_get_vbus_level
-    - tcpci_tcpm_get_vbus_level
+  tcpm_chk_vbus_level[driver/tcpm/tcpm.h:338]:
+    - anx7447_tcpm_chk_vbus_level
+    - tcpci_tcpm_chk_vbus_level
   baseboard_tcpc_init[baseboard/octopus/baseboard.c:212]:
     - anx7447_tcpc_update_hpd_status
     - ps8xxx_tcpc_update_hpd_status

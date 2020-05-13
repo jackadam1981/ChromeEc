@@ -247,7 +247,8 @@ int extpower_is_present(void)
 	if (board_vbus_source_enabled(CHARGE_PORT_USB_C))
 		usb_c_extpower_present = 0;
 	else
-		usb_c_extpower_present = tcpm_get_vbus_level(CHARGE_PORT_USB_C);
+		usb_c_extpower_present = tcpm_chk_vbus_level(CHARGE_PORT_USB_C,
+							VBUS_LEVEL_SAFE5V);
 
 	return usb_c_extpower_present || kukui_pogo_extpower_present();
 }

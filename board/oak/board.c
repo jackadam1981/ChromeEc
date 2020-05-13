@@ -511,7 +511,7 @@ void vbus_task(void *u)
 			vbus = !gpio_get_level(port ? GPIO_USB_C1_VBUS_WAKE_L :
 						      GPIO_USB_C0_VBUS_WAKE_L);
 #else
-			vbus = tcpm_get_vbus_level(port);
+			vbus = tcpm_chk_vbus_level(port, VBUS_LEVEL_SAFE5V);
 #endif
 			/* check if VBUS changed */
 			if (((bc12[port].vbus >> port) & 1) == vbus)

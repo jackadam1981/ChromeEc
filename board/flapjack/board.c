@@ -366,7 +366,7 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 
 int extpower_is_present(void)
 {
-	return tcpm_get_vbus_level(0);
+	return tcpm_chk_vbus_level(0, VBUS_LEVEL_SAFE5V);
 }
 
 int pd_snk_is_vbus_provided(int port)
