@@ -45,6 +45,98 @@
       "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd2991c4_c990bdc1",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2602,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T16:17:42Z",
+      "side": 1,
+      "message": "should we return bool instead?",
+      "range": {
+        "startLine": 2602,
+        "startChar": 0,
+        "endLine": 2602,
+        "endChar": 3
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "585fdde0_72fa7e93",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T16:17:42Z",
+      "side": 1,
+      "message": "nit: we probably don\u0027t need to set values here unless we are serialize this value somewhere",
+      "range": {
+        "startLine": 111,
+        "startChar": 18,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b6025da_4210c0c7",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T16:17:42Z",
+      "side": 1,
+      "message": "what if we are at 20V? do we need another option?",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57a843d_aa2da0e6",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T16:17:42Z",
+      "side": 1,
+      "message": "should we return bool instead?",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 4
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
