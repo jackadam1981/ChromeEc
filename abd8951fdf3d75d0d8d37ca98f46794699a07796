@@ -46,6 +46,30 @@
       "revId": "abd8951fdf3d75d0d8d37ca98f46794699a07796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "507edc8d_822e21f0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2456,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-13T21:40:26Z",
+      "side": 1,
+      "message": "Looks like it\u0027s wrong for the 2.0 version of the spec.  We could search older ones if it might have been true at one point.\n\n4.5.2.2.7.2\nExiting from Unattached.SRC State\nThe port shall transition to AttachWait.SRC when:\n• The SRC.Rd state is present on either the CC1 or CC2 pin or\n• The SRC.Ra state is present on both the CC1 and CC2 pins.",
+      "parentUuid": "3b2ff068_e7ea1a40",
+      "range": {
+        "startLine": 2456,
+        "startChar": 2,
+        "endLine": 2456,
+        "endChar": 53
+      },
+      "revId": "abd8951fdf3d75d0d8d37ca98f46794699a07796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
