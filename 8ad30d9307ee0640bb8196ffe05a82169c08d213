@@ -22,6 +22,30 @@
       "revId": "8ad30d9307ee0640bb8196ffe05a82169c08d213",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba2c23d_69a7e90b",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-13T15:57:26Z",
+      "side": 1,
+      "message": "Huh, I wonder why the presubmit script didn\u0027t complain.",
+      "parentUuid": "2cbde32b_133dbe7b",
+      "range": {
+        "startLine": 1255,
+        "startChar": 68,
+        "endLine": 1255,
+        "endChar": 75
+      },
+      "revId": "8ad30d9307ee0640bb8196ffe05a82169c08d213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
