@@ -416,6 +416,30 @@
     },
     {
       "key": {
+        "uuid": "5d2218d1_03b819ef",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-13T23:57:30Z",
+      "side": 1,
+      "message": "Maybe the safest answer without having really long names would be\n\nenum vbus_level {\n        VBUS_SAFE0V,\n        VBUS_PRESENT,\n};\n\nAny objections to this?",
+      "parentUuid": "f2c036a8_7db1f553",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b57a843d_aa2da0e6",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
