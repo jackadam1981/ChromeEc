@@ -17,6 +17,42 @@
 
 /* clock control */
 #define SCP_CLK_CTRL_BASE		(SCP_REG_BASE + 0x21000)
+/* clock source select */
+#define SCP_CLK_SW_SEL			REG32(SCP_CLK_CTRL_BASE + 0x0000)
+#define   CLK_SW_SEL_26M		0
+#define   CLK_SW_SEL_32K		1
+#define   CLK_SW_SEL_ULPOSC2		2
+#define   CLK_SW_SEL_ULPOSC1		3
+#if 0
+/* clock interrupt acknowledge */
+#define SCP_CLK_IRQ_ACK			REG32(SCP_CLK_CTRL_BASE + 0x0010)
+#endif
+/* system clock counter value */
+#define SCP_CLK_SYS_VAL			REG32(SCP_CLK_CTRL_BASE + 0x0014)
+#define   CLK_SYS_VAL_MASK		(0x3ff << 0)
+#define   CLK_SYS_VAL_VAL(v)		((v) & CLK_SYS_VAL_MASK)
+/* ULPOSC clock counter value */
+#define SCP_CLK_HIGH_VAL		REG32(SCP_CLK_CTRL_BASE + 0x0018)
+#define   CLK_HIGH_VAL_MASK             (0x1f << 0)
+#define   CLK_HIGH_VAL_VAL(v)		((v) & CLK_HIGH_VAL_MASK)
+/* clock select slow */
+#define SCP_CLK_SEL_SLOW		REG32(SCP_CLK_CTRL_BASE + 0x001C)
+#define   CLK_SW_SEL_SLOW_MASK		0x3
+#define   CLK_SW_SEL_SLOW_VAL(v)	((v) & CLK_SW_SEL_SLOW_MASK)
+#define   CLK_DIVSW_SEL_SLOW_MASK	0x30
+#define   CLK_DIVSW_SEL_SLOW_VAL(v)	(((v) << 3) & CLK_DIVSW_SEL_SLOW_MASK)
+/* sleep mode control */
+#define SCP_SLEEP_CTRL                  REG32(SCP_CLK_CTRL_BASE + 0x0020)
+#define   SLP_CTRL_EN			BIT(0)
+#define   VREQ_COUNT_MASK		(0x7F << 1)
+#define   VREQ_COUNT_VAL(v)		(((v) << 1) & VREQ_COUNT_MASK)
+#define   SPM_SLP_MODE			BIT(8)
+/* clock divider select */
+#define SCP_CLK_DIV_SEL			REG32(SCP_CLK_CTRL_BASE + 0x0024)
+#define   CLK_DIV_SEL1			0
+#define   CLK_DIV_SEL2			1
+#define   CLK_DIV_SEL4			2
+#define   CLK_DIV_SEL3			3
 /* clock gate */
 #define SCP_SET_CLK_CG			REG32(SCP_CLK_CTRL_BASE + 0x0030)
 #define   CG_TIMER_MCLK			BIT(0)
@@ -45,6 +81,12 @@
 #define   CG_DMA2_CH1			BIT(24)
 #define   CG_DMA2_CH2			BIT(25)
 #define   CG_DMA2_CH3			BIT(26)
+/* wake clock select */
+#define SCP_WAKE_CKSW_SEL		REG32(SCP_CLK_CTRL_BASE + 0x0040)
+#define   WAKE_CKSW_SEL_NORMAL_MASK	0x3
+#define   WAKE_CKSW_SEL_NORMAL_VAL(v)	((v) & WAKE_CKSW_SEL_NORMAL_MASK)
+#define   WAKE_CKSW_SEL_SLOW_MASK	0x30
+#define   WAKE_CKSW_SEL_SLOW_VAL(v)	(((v) << 3) & WAKE_CKSW_SEL_SLOW_MASK)
 /* UART clock select */
 #define SCP_UART_CK_SEL			REG32(SCP_CLK_CTRL_BASE + 0x0044)
 #define   UART0_CK_SEL_SHIFT		0
@@ -63,6 +105,39 @@
 #define     UART_CK_SW_STATUS_26M	BIT(0)
 #define     UART_CK_SW_STATUS_32K	BIT(1)
 #define     UART_CK_SW_STATUS_ULPOS	BIT(2)
+/* VREQ control */
+#define SCP_CPU_VREQ_CTRL		REG32(SCP_CLK_CTRL_BASE + 0x0054)
+#define   VREQ_SEL			BIT(0)
+#define   VREQ_VALUE			BIT(4)
+#define   VREQ_EXT_SEL			BIT(8)
+#define   VREQ_DVFS_SEL			BIT(16)
+#define   VREQ_DVFS_VALUE		BIT(20)
+#define   VREQ_DVFS_EXT_SEL		BIT(24)
+#define   VREQ_SRCLKEN_SEL		BIT(27)
+#define   VREQ_SRCLKEN_VALUE		BIT(28)
+/* clock on control */
+#define SCP_CLK_ON_CTRL			REG32(SCP_CLK_CTRL_BASE + 0x006C)
+#define   HIGH_AO			BIT(0)
+#define   HIGH_DIS_SUB			BIT(1)
+#define   HIGH_CG_AO			BIT(2)
+#define   HIGH_CORE_AO			BIT(4)
+#define   HIGH_CORE_DIS_SUB		BIT(5)
+#define   HIGH_CORE_CG_AO		BIT(6)
+#define   HIGH_FINAL_VAL_MASK		(0x1f << 8)
+#define   HIGH_FINAL_VAL_VAL(v)		((v) & HIGH_FINAL_VAL_MASK)
+/* clock general control */
+#define SCP_CLK_CTRL_GENERAL_CTRL	REG32(SCP_CLK_CTRL_BASE + 0x009C)
+#define   VREQ_PMIC_WRAP_SEL		(0x2)
+/* sleep control clock */
+#define SCP_CLK_CTRL_SLP_CTRL		REG32(SCP_CLK_CTRL_BASE + 0x00A0)
+/* fast wake count end */
+#define SCP_FAST_WAKE_CNT_END		REG32(SCP_CLK_CTRL_BASE + 0x00A4)
+#define   FAST_WAKE_CNT_END_MASK	0xfff
+#define   FAST_WAKE_CNT_END_VAL(v)	((v) & FAST_WAKE_CNT_END_MASK)
+
+/* system control */
+#define SCP_SYS_CTRL			REG32(SCP_REG_BASE + 0x24000)
+#define   AUTO_DDREN			BIT(9)
 
 /* UART */
 #define SCP_UART_COUNT			2
@@ -129,6 +204,12 @@
 #define   TIMER_IRQ_CLR			BIT(5)
 #define SCP_IRQ_TIMER(n)		CONCAT2(SCP_IRQ_TIMER, n)
 
+/* miscellaneous */
+#define VDNR_DCM_TOP_SCP_BUS_U_SCP_BUS_CTRL_0 REG32(SCP_REG_BASE + 0x50328)
+
+/* secure control */
+#define SCP_SEC_CTRL			REG32(SCP_REG_BASE + 0xA5000)
+#define	  VREQ_SECURE_DIS		BIT(4)
 /* memory remap */
 #define SCP_R_REMAP_0X0123		REG32(SCP_REG_BASE + 0xA5060)
 #define SCP_R_REMAP_0X4567		REG32(SCP_REG_BASE + 0xA5064)
