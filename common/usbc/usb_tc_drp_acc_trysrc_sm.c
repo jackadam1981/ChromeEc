@@ -2452,9 +2452,14 @@ static void tc_unattached_src_run(const int port)
 	 * A DRP shall transition to Unattached.SNK within tDRPTransition
 	 * after dcSRC.DRP ∙ tDRP
 	 */
-	if (cc_is_at_least_one_rd(cc1, cc2) || cc_is_audio_acc(cc1, cc2))
-		set_state_tc(port, TC_ATTACH_WAIT_SRC);
-	else if (get_time().val > tc[port].next_role_swap &&
+	if (cc_is_at_least_one_rd(cc1, cc2) || cc_is_audio_acc(cc1, cc2)) {
+		if (pd_check_vbus_level(port, VBUS_LEVEL_SAFE0V)) {
+			set_state_tc(port, TC_ATTACH_WAIT_SRC);
+			return;
+		}
+	}
+
+	if (get_time().val > tc[port].next_role_swap &&
 			drp_state[port] != PD_DRP_FORCE_SOURCE &&
 			drp_state[port] != PD_DRP_FREEZE)
 		set_state_tc(port, TC_UNATTACHED_SNK);
@@ -2552,7 +2557,7 @@ static void tc_attach_wait_src_run(const int port)
 	 * state is detected on both the CC1 and CC2 pins for at least
 	 * tCCDebounce.
 	 */
-	if (!pd_is_vbus_present(port)) {
+	if (pd_check_vbus_level(port, VBUS_LEVEL_SAFE0V)) {
 		if (new_cc_state == PD_CC_UFP_ATTACHED) {
 			set_state_tc(port, TC_ATTACHED_SRC);
 			return;
@@ -3017,8 +3022,8 @@ static void tc_try_src_run(const int port)
 	 */
 	if (new_cc_state == PD_CC_NONE) {
 		if ((get_time().val > tc[port].try_wait_debounce &&
-					!pd_is_vbus_present(port)) ||
-					get_time().val > tc[port].timeout) {
+		     pd_check_vbus_level(port, VBUS_LEVEL_SAFE0V)) ||
+		    get_time().val > tc[port].timeout) {
 			set_state_tc(port, TC_TRY_WAIT_SNK);
 		}
 	}
@@ -3162,7 +3167,8 @@ static void tc_ct_unattached_snk_run(int port)
 	 * the CC pin is SNK.Open for tVPDDetach after VBUS is vSafe0V.
 	 */
 	if (get_time().val > tc[port].cc_debounce) {
-		if (new_cc_state == PD_CC_NONE && !pd_is_vbus_present(port)) {
+		if (new_cc_state == PD_CC_NONE &&
+		    pd_check_vbus_level(port, VBUS_LEVEL_SAFE0V)) {
 			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 				pd_dfp_exit_mode(port, 0, 0);
 
