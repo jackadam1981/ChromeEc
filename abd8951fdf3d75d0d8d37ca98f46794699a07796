@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e15334aa_02b93496",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2456,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-13T21:06:40Z",
+      "side": 1,
+      "message": "I don\u0027t see a requirement for this in the type-c spec unattached.src state.  Looks like it\u0027s checked later in other states",
+      "range": {
+        "startLine": 2456,
+        "startChar": 2,
+        "endLine": 2456,
+        "endChar": 53
+      },
+      "revId": "abd8951fdf3d75d0d8d37ca98f46794699a07796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
