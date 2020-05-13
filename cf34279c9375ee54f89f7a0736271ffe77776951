@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fa69549_4ead161f",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T04:18:09Z",
+      "side": 1,
+      "message": "should be USB_C1?",
+      "range": {
+        "startLine": 198,
+        "startChar": 24,
+        "endLine": 198,
+        "endChar": 47
+      },
+      "revId": "cf34279c9375ee54f89f7a0736271ffe77776951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db3be2dc_6fe0e5eb",
+        "filename": "board/asurada/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T04:18:09Z",
+      "side": 1,
+      "message": "This feature is required on Asurada.\nRemove the ifdef guard to make sure all Asurada derivatives has this config enabled.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 46
+      },
+      "revId": "cf34279c9375ee54f89f7a0736271ffe77776951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
