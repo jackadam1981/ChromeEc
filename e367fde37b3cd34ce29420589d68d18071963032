@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f6e342e_39fd13ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "yes I think the chromestop here has these devices. I will find more device to test this week.",
+      "parentUuid": "5c2a7084_15625432",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbe9962d_2b32fdb3",
         "filename": "common/usb_charger.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "e367fde37b3cd34ce29420589d68d18071963032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4565097e_fa355ca2",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "Fixed, thanks!",
+      "parentUuid": "cbe9962d_2b32fdb3",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c977ee36_bd9762b3",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d315189_bc2cbffc",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 61
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd7439df_35836568",
         "filename": "driver/bc12/pi3usb9201.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "e367fde37b3cd34ce29420589d68d18071963032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63b1276f_5470e815",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd7439df_35836568",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 41
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "cdbf4ac5_6f7bd8a4",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c79f546_ba11f17c",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 28
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c597d3f2_d23d3111",
         "filename": "include/charge_ramp.h",
         "patchSetId": 4
@@ -128,6 +248,24 @@
       "writtenOn": "2020-05-08T21:39:03Z",
       "side": 1,
       "message": "we should add more comments around this parameter. Is the charge port either 0 (for the single case) otherwise is matches up with USB-C ports?\n\nOr if the above is not true and it is more complicated than that, then maybe we should define a board-level enum that defines what each charge port represents.",
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca1e83b1_84b605f3",
+        "filename": "include/charge_ramp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "This match up with PD port plus dedicated port, assumes PD port starts from 0, same as charge_manager.\n\nThis is for the multi driver use case. Since different drivers has different implementation of ramp_allowed/ramp_max, I must pick one driver to dispatch the function call.\n(I think this is weird, but I don\u0027t have a better idea)",
+      "parentUuid": "c597d3f2_d23d3111",
       "revId": "e367fde37b3cd34ce29420589d68d18071963032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "53200231_357f1e5b",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4120,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "#ifdef removed (lacking USB_CHG task caused some compile error before, but the issue is no longer exists now)\n\nIf USB_CHG_P0 and USB_CHG_P1 are defined, I\u0027m assuming this means multiple port (and maybe multiple chip) but single driver for backward compatibility.",
+      "parentUuid": "991aa9d5_c29354a7",
+      "range": {
+        "startLine": 4120,
+        "startChar": 8,
+        "endLine": 4120,
+        "endChar": 33
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4331b0f_ffe397f2",
         "filename": "include/usb_charge.h",
         "patchSetId": 4
@@ -177,6 +339,30 @@
       "revId": "e367fde37b3cd34ce29420589d68d18071963032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e7d341b_adb96c2d",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "This is for checking that number of tasks is always less than or equal to number of bc12_chip array, to make sure the usb_charger_task won\u0027t have out of bound access.\n\nRemoved.",
+      "parentUuid": "b4331b0f_ffe397f2",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -227,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "13322b9a_d69d6759",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "431a5d08_f7dd43eb",
+      "range": {
+        "startLine": 103,
+        "startChar": 7,
+        "endLine": 103,
+        "endChar": 15
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55d64bb1_326bc53a",
         "filename": "include/usb_charge.h",
         "patchSetId": 4
@@ -247,6 +457,30 @@
       "revId": "e367fde37b3cd34ce29420589d68d18071963032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3052b421_106ba08b",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d64bb1_326bc53a",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 34
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -273,6 +507,47 @@
     },
     {
       "key": {
+        "uuid": "38152e84_b8bbab37",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ba4257_f8930639",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 67
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5a4d13b_ceb045e4",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "renamed to bc12_ports (\"_chips\" seems confusing)",
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "897b3b85_3032498f",
         "filename": "include/usb_charge.h",
         "patchSetId": 4
@@ -293,6 +568,30 @@
       "revId": "e367fde37b3cd34ce29420589d68d18071963032",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2991f704_1fe53a97",
+        "filename": "include/usb_charge.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-13T08:37:04Z",
+      "side": 1,
+      "message": "this was intended for array boundary check. changed to port \u003e\u003d 0.",
+      "parentUuid": "897b3b85_3032498f",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 30
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
