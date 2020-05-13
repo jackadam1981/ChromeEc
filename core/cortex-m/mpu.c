@@ -235,10 +235,51 @@ int mpu_lock_rw_flash(void)
 #ifdef CONFIG_ROLLBACK_MPU_PROTECT
 int mpu_lock_rollback(int lock)
 {
-	return mpu_config_region(REGION_ROLLBACK,
-			CONFIG_MAPPED_STORAGE_BASE + CONFIG_ROLLBACK_OFF,
-			CONFIG_ROLLBACK_SIZE, MPU_ATTR_XN | MPU_ATTR_NO_NO,
-			lock);
+	int rv;
+	int num_mpu_regions = mpu_num_regions();
+
+	const uint32_t rollback_region_start_address =
+		CONFIG_MAPPED_STORAGE_BASE + CONFIG_ROLLBACK_OFF;
+	const uint32_t rollback_region_total_size = CONFIG_ROLLBACK_SIZE;
+	const uint16_t mpu_attr = MPU_ATTR_XN | MPU_ATTR_NO_NO;
+
+	/*
+	 * Originally rollback MPU support was added on Cortex-M7, which
+	 * supports 16 MPU regions. For rollback MPU support on Cortex-M4, we
+	 * are limited to 8 MPU regions. We could unify both to use the same
+	 * region (< 8), but we have frozen RO for Cortex-M7, which configures
+	 * REGION_CHIP_ROLLBACK.
+	 */
+	uint8_t rollback_mpu_region = REGION_ROLLBACK;
+
+	if (rollback_mpu_region < num_mpu_regions) {
+		rv = mpu_config_region(rollback_mpu_region,
+				       rollback_region_start_address,
+				       rollback_region_total_size, mpu_attr,
+				       lock);
+		return rv;
+	}
+
+	/*
+	 * We can't use REGION_ROLLBACK because our MPU doesn't have enough
+	 * regions. Instead, we choose unused MPU regions. Note that we
+	 * should be able to use a single region here like we do above, but
+	 * it doesn't seem to work on the STM32F412.
+	 */
+
+	rollback_mpu_region = REGION_CHIP_RESERVED;
+	rv = mpu_config_region(rollback_mpu_region,
+			       rollback_region_start_address,
+			       rollback_region_total_size / 2, mpu_attr, lock);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	rollback_mpu_region = REGION_STORAGE2;
+	rv = mpu_config_region(rollback_mpu_region,
+			       rollback_region_start_address +
+				       (rollback_region_total_size / 2),
+			       rollback_region_total_size / 2, mpu_attr, lock);
+	return rv;
 }
 #endif
 
