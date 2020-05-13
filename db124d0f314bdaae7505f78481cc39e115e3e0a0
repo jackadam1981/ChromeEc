@@ -224,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "0fef0268_0f5e407c",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-13T19:09:26Z",
+      "side": 1,
+      "message": "I think we\u0027ll need another mechanism for that. Eventually Type-C layer should be checking that VBUS is within vSrcValid. That could be anything with PPS and therefore, I don\u0027t think adding enum entries for those would be the way to go.",
+      "parentUuid": "702c87ec_59df3afe",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b57a843d_aa2da0e6",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
