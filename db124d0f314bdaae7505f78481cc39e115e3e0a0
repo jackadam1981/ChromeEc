@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "63f34f3c_487e0535",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-13T18:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "053ac0c9_29a27a74",
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd2991c4_c990bdc1",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -85,6 +103,30 @@
       "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52f63bce_65edff5f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2602,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-13T18:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd2991c4_c990bdc1",
+      "range": {
+        "startLine": 2602,
+        "startChar": 0,
+        "endLine": 2602,
+        "endChar": 3
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "d947568b_4a8e1332",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-13T18:19:17Z",
+      "side": 1,
+      "message": "It does default to this. In other places in the code we set values when we rely on the value.  In this case these line up to the tcpc_vbus bits.",
+      "parentUuid": "585fdde0_72fa7e93",
+      "range": {
+        "startLine": 111,
+        "startChar": 18,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b6025da_4210c0c7",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
@@ -134,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "702c87ec_59df3afe",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-13T18:19:17Z",
+      "side": 1,
+      "message": "When we need it, we should add it.  I have not seen any code that looks for Safe20V",
+      "parentUuid": "2b6025da_4210c0c7",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b57a843d_aa2da0e6",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
@@ -154,6 +244,30 @@
       "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ddfa07b_409d2c51",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-13T18:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b57a843d_aa2da0e6",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 4
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
