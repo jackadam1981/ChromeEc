@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ee4e1c9_a1bb39f1",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-13T23:27:09Z",
+      "side": 1,
+      "message": "I\u0027m checking with ST on why a single region doesn\u0027t work here, but this does work.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 4
+      },
+      "revId": "90746ebe3b97cb4b685c7f6ce658685461a053ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
