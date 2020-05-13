@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d14e9d08_2bce5875",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2020-05-13T00:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19435db1_d9979d5f",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "6275a6a6e7472c95d5abc069bf4323c1352f95bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "804af86b_145f907c",
         "filename": "board/endeavour/pse.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-12T21:20:14Z",
       "side": 1,
       "message": "Add a comment explaining why this is a warning, e.g. this pin isn\u0027t expected to by pulled high on Endeavour.\n\nOn second thought, should it even be labelled as a warning?",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 42
+      },
+      "revId": "6275a6a6e7472c95d5abc069bf4323c1352f95bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d67c34c_54bb669c",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2020-05-13T00:42:05Z",
+      "side": 1,
+      "message": "I think as we discussed it is a minor issue if it starts in AUTO. We\u0027ll want to catch this in DVT.",
+      "parentUuid": "804af86b_145f907c",
       "range": {
         "startLine": 109,
         "startChar": 1,
