@@ -22,6 +22,30 @@
       "revId": "e1eeb38309ca585e933ad8efbe7ba93434490690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f63083b_b7bc03d9",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-13T00:57:00Z",
+      "side": 1,
+      "message": "At the latest PS7, the interrupt handle has been renamed to x_ec_interrupt() to shared across type-c and hdmi sub.\n\nWe have to declare the interrupt handler so that they can be embedded in the gpio_irq_handlers table. Declaring the inerrupt handler in gpio.inc makes things easier.",
+      "parentUuid": "376da1b0_c4d336c8",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 40
+      },
+      "revId": "e1eeb38309ca585e933ad8efbe7ba93434490690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
