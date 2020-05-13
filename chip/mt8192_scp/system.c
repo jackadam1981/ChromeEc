@@ -5,6 +5,7 @@
 
 /* System : hardware specific implementation */
 
+#include "csr.h"
 #include "memmap.h"
 #include "registers.h"
 #include "system.h"
@@ -12,6 +13,15 @@
 void system_pre_init(void)
 {
 	memmap_init();
+
+	/* enable CPU and platform low power CG */
+	/* enable CPU DCM */
+	set_csr(CSR_MCTREN, CSR_MCTREN_CG);
+#if 0
+	/* enable BUS DCM */
+	VDNR_DCM_TOP_SCP_BUS_U_SCP_BUS_CTRL_0 = BIT(1);
+#endif
+
 	/* Disable jump (it has only RW) and enable MPU. */
 	/* TODO: implement MPU */
 	system_disable_jump();
