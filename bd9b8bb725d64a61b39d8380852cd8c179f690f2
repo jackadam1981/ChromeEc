@@ -22,6 +22,30 @@
       "revId": "bd9b8bb725d64a61b39d8380852cd8c179f690f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6972977_9117bd0a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2457,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-13T18:20:38Z",
+      "side": 1,
+      "message": "It already states to transition to AttachWait.SRC requires Safe0V, we just weren\u0027t doing it.  Are you just looking for an additional NOTE that indicates there is no timeout for this?  I would rather take the else off the next condition to make sure a timeout will happen.",
+      "parentUuid": "2c9f9ac6_de131812",
+      "range": {
+        "startLine": 2456,
+        "startChar": 2,
+        "endLine": 2457,
+        "endChar": 42
+      },
+      "revId": "bd9b8bb725d64a61b39d8380852cd8c179f690f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
