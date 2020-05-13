@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "754c9c93_b1545cd1",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-13T15:57:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16ae6b00_e2d05641",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 5
+      },
+      "revId": "d7b51d4aac207000bdc0eff36cd6e9e45e54354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "951e568c_4c3eb80c",
         "filename": "test/rollback_entropy.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7125f15b_2107e8cd",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-13T15:57:55Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Updated and I think it\u0027s more readable.",
+      "parentUuid": "951e568c_4c3eb80c",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 41
+      },
+      "revId": "d7b51d4aac207000bdc0eff36cd6e9e45e54354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5567cc1_7143a873",
         "filename": "test/rollback_entropy.c",
         "patchSetId": 1
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "66b2b497_31310308",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-13T15:57:55Z",
+      "side": 1,
+      "message": "I wanted to keep the format the same just for consistency even though it could be simplified to just the memset.",
+      "parentUuid": "b5567cc1_7143a873",
+      "revId": "d7b51d4aac207000bdc0eff36cd6e9e45e54354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db6876c2_4f59446f",
         "filename": "test/rollback_entropy.c",
         "patchSetId": 1
@@ -79,6 +145,24 @@
       "revId": "d7b51d4aac207000bdc0eff36cd6e9e45e54354f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccd018e7_3f0b96ba",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-13T15:57:55Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s just to avoid issues with missing symbol. I was trying to limit the scope of the #ifdef since I find code that has huge #ifdef chunks a bit hard to read (My editor will fold the code, so I can ignore it, but tends to be hard to follow in gitiles, etc especially as the defines accumulate and nest).\n\nIt\u0027s also nice to have the compiler run over as much of the code as possible, which motivated the IF_ENABLED macro: https://chromium-review.googlesource.com/1553573.\n\nI switched it to use IF_ENABLED. What do you think about that?",
+      "parentUuid": "db6876c2_4f59446f",
+      "revId": "d7b51d4aac207000bdc0eff36cd6e9e45e54354f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
