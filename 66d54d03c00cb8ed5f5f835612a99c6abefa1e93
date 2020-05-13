@@ -202,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "552401b2_3009a044",
+        "filename": "chip/ish/aontaskfw/ipapg.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1137654
+      },
+      "writtenOn": "2020-05-13T05:42:15Z",
+      "side": 1,
+      "message": "forget about \"(or ,at least, use CONFIG_FPU)\", this code should be removed.",
+      "parentUuid": "fecdcee0_32a17c98",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 19
+      },
+      "revId": "66d54d03c00cb8ed5f5f835612a99c6abefa1e93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "687b5336_18d41c1e",
         "filename": "chip/ish/aontaskfw/ipapg.S",
         "patchSetId": 4
