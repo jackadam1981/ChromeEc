@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb33d489_a417df1b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we don\u0027t have flags in REV2.0; it seems like we would. Can you add a comment explaining this please.\n\n----\n\nAlso, I wouldn\u0027t think that any code would be calling this. I dont\u0027 think we need these condition excludes here",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f9bb5c9_583a9de9",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "needs a comment that chunking in only supported in REV3.0 (which know I see why the flags are commented out too - still need a comment above about chunking support in rev3.0 only)",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 26
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e41346c4_756928e5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "if you extern these structs when in rev2.0 complication mode, then we can use IS_ENABLE to guard reading and write to these fields instead of ifdefs",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 5
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "332a110e_50280ddb",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "nit: what do you think about moving this field down to group all of the REV3.0 stuff together?",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 13
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33352869_ecc648d4",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "when is this getting called with rev30 is not defined?",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 1
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6829b53f_2546732c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "need to bounds check this with array size",
+      "range": {
+        "startLine": 607,
+        "startChar": 2,
+        "endLine": 607,
+        "endChar": 19
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3072bf3_49a24be8",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "can you make a local variable for this, it would be easier to read",
+      "range": {
+        "startLine": 811,
+        "startChar": 0,
+        "endLine": 815,
+        "endChar": 32
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b7141f_16f332c9",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "logic seems much better!",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a9ce1ff_5894f040",
+        "filename": "fuzz/fuzz_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "We should totally make another fuzz target for REV2 and REV3 since there are different buffer sizes etc.\n\nCan you add another fuzz target, I think it will be mostly copy and paste to add it",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63081a9a_cb23f5eb",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3797,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "I think this makes sense. We need to send an email to people to ensure they know to add this configuration to their board.h\n\nAlso we should update the tcpmV2 documentation (actually can you update that in this CL)",
+      "range": {
+        "startLine": 3796,
+        "startChar": 0,
+        "endLine": 3797,
+        "endChar": 35
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88957b97_b4e952ed",
+        "filename": "include/usb_emsg.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T15:36:21Z",
+      "side": 1,
+      "message": "Hmm, I never noticed, but this is a very generic name is a header file. we should probably use the EXTENEDED_BUFFER_SIZE name for both of these, then the code on line 20 doesn\u0027t need to change (only this section needs the ifdef)",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
