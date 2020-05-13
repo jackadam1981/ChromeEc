@@ -22,6 +22,30 @@
       "revId": "abd8951fdf3d75d0d8d37ca98f46794699a07796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b2ff068_e7ea1a40",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2456,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-13T21:34:23Z",
+      "side": 1,
+      "message": "I was going by the comment that was here prior... If the comment is wrong then I will remove the code and the required Safe0V portion of the comment",
+      "parentUuid": "e15334aa_02b93496",
+      "range": {
+        "startLine": 2456,
+        "startChar": 2,
+        "endLine": 2456,
+        "endChar": 53
+      },
+      "revId": "abd8951fdf3d75d0d8d37ca98f46794699a07796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
