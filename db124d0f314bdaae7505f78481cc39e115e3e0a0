@@ -177,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "93303c11_fc6c1e9b",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:58:35Z",
+      "side": 1,
+      "message": "If we are relying on the values mapping to the tcpc_bus bits, then we should have a comment about it.\n\nHowever, I don\u0027t know that that we need to add that coupling as it doesn\u0027t really give us much especially with the vSrcValid value in this enum set",
+      "parentUuid": "d947568b_4a8e1332",
+      "range": {
+        "startLine": 111,
+        "startChar": 18,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b6025da_4210c0c7",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
@@ -245,6 +269,30 @@
       "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3a3f760_5c175def",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-13T19:58:35Z",
+      "side": 1,
+      "message": "vSrcValid sounds like a good name for 5V or greater. That is basically what the current check does. I feel like we should add that now if we can since a lot of code is interested in that concept (probably even more than Safe5V)",
+      "parentUuid": "0fef0268_0f5e407c",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
