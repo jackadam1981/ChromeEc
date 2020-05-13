@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df213866_47a79ddf",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-13T06:54:01Z",
+      "side": 1,
+      "message": "RO\u0027s function is to only do basic init and rwsig then jump to RW. We might not need RO to init FP sensor.",
+      "parentUuid": "d658d07e_68fa88c8",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f760460e_e4fc3d77",
         "filename": "board/nucleo-dartmonkey/board.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "18b10418_59314054",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-13T06:54:01Z",
+      "side": 1,
+      "message": "same as above this will be more relevant in RW.",
+      "parentUuid": "f760460e_e4fc3d77",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d06133c0_2ee66069",
         "filename": "board/nucleo-dartmonkey/board.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-11T18:13:54Z",
       "side": 1,
       "message": "Ahhh, this should probably use a different console channel. Maybe CC_FP or CC_SPI? (Just not console-command channel)",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95cbf0b4_b0d96d55",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-13T06:54:01Z",
+      "side": 1,
+      "message": "I checked the implementation of other board.c file and CPRINT does not exsist. i think this might be because it is too early in init process to send bytes on different channed. \nWe should confirm why other boards dont have channel console write in their board.c",
+      "parentUuid": "d06133c0_2ee66069",
       "range": {
         "startLine": 89,
         "startChar": 1,
