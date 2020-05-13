@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4dab469_152812e0",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-13T23:49:43Z",
+      "side": 1,
+      "message": "oh, so you\u0027re just doing this for the size check? A bit wordy but I don\u0027t have any great idea...",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 70
+      },
+      "revId": "229db9ff7901fbdc62a7dcd7e498e5c0840cb3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
