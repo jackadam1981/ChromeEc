@@ -22,6 +22,30 @@
       "revId": "f187263463ddf34b4628e6bf2748f45cde74693c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e296c81f_eccda90f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-05-13T18:06:36Z",
+      "side": 1,
+      "message": "\u003e where you able to test this. You say it fixes 155852339 can you say which test you performed to verify that.\n\u003e \n\u003e Otherwise LGTM\n\n\nI don\u0027t have the hardware to test it, so Quanta tested it and confirmed it solves their problem: https://b.corp.google.com/issues/155852339#comment27",
+      "parentUuid": "83918796_5f687676",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 9
+      },
+      "revId": "f187263463ddf34b4628e6bf2748f45cde74693c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
