@@ -973,7 +973,6 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 
 	pe[port].vdm_cnt = count + 1;
 
-	PE_SET_FLAG(port, PE_FLAGS_SEND_SVDM);
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
