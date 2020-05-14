@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "315f5dfc_49284c59",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-05-14T05:21:45Z",
+      "side": 1,
+      "message": "This config option is enabled by default (inclue/config.h), so we didn\u0027t declare it repeatedly.",
+      "parentUuid": "1becbba8_5f73daca",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "d86b11050bd930c115d2d6744ff6f627196f4875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "264789c4_710dd7c7",
         "filename": "core/riscv-rv32i/ec.lds.S",
         "patchSetId": 10
