@@ -34,6 +34,24 @@
       "revId": "a88a392515e6dc44644f3fa9a2b12117b40946b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f8bbd6_ca30893a",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-05-14T00:53:24Z",
+      "side": 1,
+      "message": "OK. At this stage, is it wise to maybe allocate more bits in case we have variants that allow lower power (45W) barreljacks? This does seem like the kind of field that we want to allow some expansion for. Expanding it by 1 bit allows it to be backwards compatible.",
+      "parentUuid": "78466289_5955d73d",
+      "revId": "a88a392515e6dc44644f3fa9a2b12117b40946b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
