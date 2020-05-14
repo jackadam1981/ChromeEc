@@ -234,6 +234,9 @@ int sps_register_rx_handler(enum sps_mode mode, rx_handler_f rx_handler,
 	task_enable_irq(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR);
 	task_enable_irq(GC_IRQNUM_SPS0_CS_DEASSERT_INTR);
 
+	if (board_cfg_reg_read() & BITMASK_LONG_INT_AP_PULSE)
+		sps_int_ap_extension_enable();
+
 	return 0;
 }
 
@@ -428,6 +431,34 @@ void sps0_cs_assert_interrupt_(void)
 	deassert_int_ap();
 }
 DECLARE_IRQ(GC_IRQNUM_SPS0_CS_ASSERT_INTR, sps0_cs_assert_interrupt_, 1);
+
+/*
+ * Function that should be called before INT_AP_L gets asserted.
+ */
+static void sps_int_ap_assert_func_(void)
+{
+	GWRITE_FIELD(SPS, ISTATE_CLR, CS_ASSERT, 1);
+	GWRITE_FIELD(SPS, ICTRL, CS_ASSERT, 1);
+
+	task_enable_irq(GC_IRQNUM_SPS0_CS_ASSERT_INTR);
+}
+
+/*
+ * Function that should be called before INT_AP_L gets deasserted.
+ */
+static void sps_int_ap_deassert_func_(void)
+{
+	GWRITE_FIELD(SPS, ISTATE_CLR, CS_ASSERT, 1);
+	GWRITE_FIELD(SPS, ICTRL, CS_ASSERT, 0);
+
+	task_disable_irq(GC_IRQNUM_SPS0_CS_ASSERT_INTR);
+}
+
+void sps_int_ap_extension_enable(void)
+{
+	int_ap_extension_enable(sps_int_ap_assert_func_,
+				sps_int_ap_deassert_func_);
+}
 
 #ifdef CONFIG_SPS_TEST
 

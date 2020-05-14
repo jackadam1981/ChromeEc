@@ -68,4 +68,9 @@ void i2cs_get_status(struct i2cs_status *status);
  */
 void i2cs_sda_isr(enum gpio_signal signal);
 
+/*
+ * Enable INT_AP_L extension for I2CS protocol.
+ */
+void i2cs_int_ap_extension_enable(void);
+
 #endif /* ! __CHIP_G_I2CS_H */
