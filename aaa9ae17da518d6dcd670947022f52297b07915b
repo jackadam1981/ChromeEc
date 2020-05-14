@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e430d81_b6ea6fc0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4588,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-14T17:57:40Z",
+      "side": 1,
+      "message": "In principle, I should check the number of data objects and active PD rev, because this response would be invalid under PD 2.0 or with data objects included. However, I think the response on our end should probably still be to give up on discovery in those cases. WDYT?",
+      "range": {
+        "startLine": 4588,
+        "startChar": 3,
+        "endLine": 4588,
+        "endChar": 69
+      },
+      "revId": "aaa9ae17da518d6dcd670947022f52297b07915b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
