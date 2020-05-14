@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8cbc7324_80afe9b1",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-14T17:28:33Z",
+      "side": 1,
+      "message": "The guard has been removed",
+      "parentUuid": "fb33d489_a417df1b",
+      "range": {
+        "startLine": 35,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f9bb5c9_583a9de9",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "393df9fa_4d66c87b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-14T17:28:33Z",
+      "side": 1,
+      "message": "The guard has been removed",
+      "parentUuid": "4f9bb5c9_583a9de9",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 26
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d5a87eae_e2e06f7b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-14T17:28:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e41346c4_756928e5",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 5
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "332a110e_50280ddb",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa1705c4_2cce1ba7",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-14T17:28:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332a110e_50280ddb",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 13
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "cf97535f_0fe3db66",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-14T17:28:33Z",
+      "side": 1,
+      "message": "The guard has been removed",
+      "parentUuid": "33352869_ecc648d4",
+      "range": {
+        "startLine": 325,
+        "startChar": 1,
+        "endLine": 327,
+        "endChar": 1
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6829b53f_2546732c",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 4
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "cc24b681_c1424335",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-14T17:28:33Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6829b53f_2546732c",
+      "range": {
+        "startLine": 607,
+        "startChar": 2,
+        "endLine": 607,
+        "endChar": 19
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3072bf3_49a24be8",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 4
@@ -160,6 +304,30 @@
       "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a84ee3_4ea8ed5a",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-14T17:28:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3072bf3_49a24be8",
+      "range": {
+        "startLine": 811,
+        "startChar": 0,
+        "endLine": 815,
+        "endChar": 32
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "0b26c2e7_ad10530c",
+        "filename": "fuzz/fuzz_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-14T17:28:33Z",
+      "side": 1,
+      "message": "I duplicated the tests for the fuzz target but I\u0027m not sure it\u0027s doing what it\u0027s supposed to do but I\u0027ve uploaded my changes anyway. I need to learn more about fuzz.",
+      "parentUuid": "4a9ce1ff_5894f040",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63081a9a_cb23f5eb",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "3894dc29_0d3fb262",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3797,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-14T17:28:33Z",
+      "side": 1,
+      "message": "I updated the board files that use TCPMv2.",
+      "parentUuid": "63081a9a_cb23f5eb",
+      "range": {
+        "startLine": 3796,
+        "startChar": 0,
+        "endLine": 3797,
+        "endChar": 35
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88957b97_b4e952ed",
         "filename": "include/usb_emsg.h",
         "patchSetId": 4
@@ -252,6 +468,30 @@
       "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06112646_3a6eba8f",
+        "filename": "include/usb_emsg.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-14T17:28:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88957b97_b4e952ed",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "b3953190d915e5dc1986e3d0ad3574db3097dcec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
