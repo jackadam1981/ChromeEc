@@ -1931,6 +1931,57 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 					uint16_t head);
 
 /**
+ * Check if attached device enumerates as a USB4 device
+ *
+ * @param port      USB-C port number
+ * @param cnt       number of data objects in payload
+ * @param payload   payload data
+ * @return          True if device supports USB4 mode
+ */
+bool is_usb4_vdo(int port, int cnt, uint32_t *payload);
+
+/**
+ * Check if attached cable is ready to enter USB4 mode
+ *
+ * Ref: USB Type-C Cable and Connector Specification
+ * Figure 5-1 USB4 Discovery and Entry Flow Model.
+ *
+ * Note: USB Type-C Cable and Connector Specification
+ * doesn't include details for Revision 2 cables.
+ *
+ *                         Passive Cable
+ *                                |
+ *                -----------------------------------
+ *                |                                 |
+ *           Revision 2                        Revision 3
+ *          USB Signalling                   USB Signalling
+ *             |                                     |
+ *     ------------------            -------------------------
+ *     |       |        |            |       |       |       |
+ * USB2.0   USB3.1    USB3.1       USB3.2   USB4   USB3.2   USB2
+ *   |      Gen1      Gen1 Gen2    Gen2     Gen3   Gen1       |
+ *   |       |          |           |        |       |       Exit
+ *   --------           ------------         --------        USB4
+ *      |                    |                  |          Discovery.
+ *    Exit          Is DFP Gen3 Capable?     Enter USB4
+ *    USB4                  |                with respective
+ *   Discovery.   --- No ---|--- Yes ---     cable speed.
+ *                |                    |
+ *    Enter USB4 with             Is Cable TBT3
+ *    respective cable                 |
+ *    speed.                 --- No ---|--- Yes ---
+ *                           |                    |
+ *                   Enter USB4 with        Enter USB4 with
+ *                   TBT Gen2 passive       TBT Gen3 passive
+ *                   cable.                 cable.
+ *
+ * @param port      USB-C port number
+ * @param cnt       number of data objects in payload
+ * @return          True is cable is ready to enter USB4 mode
+ */
+bool is_cable_ready_to_enter_usb4(int port, int cnt);
+
+/**
  * Return enter USB message payload
  *
  * @param port	USB-C port number
