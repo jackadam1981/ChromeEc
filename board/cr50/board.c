@@ -789,6 +789,10 @@ static void process_board_cfg(void)
 
 	if (tpm_board_cfg & BOARD_CFG_LONG_INT_AP_BIT)
 		int_ap_extension_enable();
+
+#ifdef CR50_DEV
+	ccprintf("TPM_BOARD_CFG has been processed.\n");
+#endif
 }
 DECLARE_DEFERRED(process_board_cfg);
 
@@ -1864,6 +1868,9 @@ static bool board_cfg_reg_write_disabled_;
 
 void board_cfg_reg_write_disable(void)
 {
+#ifdef CR50_DEV
+	CPRINTS("TPM_BOARD_CFG write disabled.");
+#endif
 	board_cfg_reg_write_disabled_ = true;
 }
 
@@ -1874,8 +1881,16 @@ void board_cfg_reg_write(uint32_t value)
 	 * PWRDN_SCRATCH21 is already written, then do not allow the register
 	 * write but return.
 	 */
-	if (GREG32(PMU, PWRDN_SCRATCH21) || board_cfg_reg_write_disabled_)
+	if (GREG32(PMU, PWRDN_SCRATCH21) || board_cfg_reg_write_disabled_) {
+#ifdef CR50_DEV
+		ccprintf("WARN: TPM_BOARD_CFG write is ignored.\n");
+		if (board_cfg_reg_write_disabled_)
+			ccprintf("TPM2_PCR_Extend already was processed.\n");
+		if (GREG32(PMU, PWRDN_SCRATCH21))
+			ccprintf("TPM_BOARD_CFG was already written once.\n");
+#endif
 		return;
+	}
 
 	/* Store the tpm_board_cfg in power-down scratch. */
 	GREG32(PMU, PWRDN_SCRATCH21) = value|BOARD_CFG_LOCKED_BIT;
@@ -1886,5 +1901,51 @@ void board_cfg_reg_write(uint32_t value)
 
 uint32_t board_cfg_reg_read(void)
 {
+#ifdef CR50_DEV
+	ccprintf("TPM_BOARD_CFG is read: %08x\n", GREG32(PMU, PWRDN_SCRATCH21));
+#endif
+
 	return GREG32(PMU, PWRDN_SCRATCH21);
 }
+
+#ifdef CR50_DEV
+/**
+ * Console command to display TPM_BOARD_CFG register value.
+ */
+static int command_brdcfg(int argc, char **argv)
+{
+	bool force_write = false;
+	bool backup_bool;
+
+	if (argc > 2) {
+		if (!strcasecmp(argv[2], "force"))
+			force_write = true;
+	}
+
+	if (argc > 1) {
+		uint32_t val;
+		char *e;
+
+		val = strtoi(argv[1], &e, 16);
+		if (*e)
+			return EC_ERROR_PARAM1;
+
+		if (force_write) {
+			backup_bool = board_cfg_reg_write_disabled_;
+			board_cfg_reg_write_disabled_ = false;
+		}
+
+		board_cfg_reg_write(val);
+
+		if (force_write)
+			board_cfg_reg_write_disabled_ = backup_bool;
+	}
+
+	ccprintf("TPM_BOARD_CFG = 0x%08x\n", board_cfg_reg_read());
+	ccprintf("TPM_BOARD_CFG write is %s\n",
+				board_cfg_reg_write_disabled_ ? "disabled" : "enabled");
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(brdcfg, command_brdcfg, NULL,
+			     "Get or set TPM_BOARD_CFG value");
+#endif
