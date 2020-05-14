@@ -1779,3 +1779,18 @@ int board_nvmem_legacy_check_needed(void)
 
 	return (h->major_ <= 2) || (h->minor_ <= 18);
 }
+
+void board_cfg_reg_write(uint32_t value)
+{
+	/* If PWRDN_SCRATCH21 is already written, then do nothing but return. */
+	if (GREG32(PMU, PWRDN_SCRATCH21))
+		return;
+
+	/* Store the tpm_board_cfg in power-down scratch. */
+	GREG32(PMU, PWRDN_SCRATCH21) = value|BITMASK_PROGRAMMED_LOCKED;
+}
+
+uint32_t board_cfg_reg_read(void)
+{
+	return GREG32(PMU, PWRDN_SCRATCH21);
+}
