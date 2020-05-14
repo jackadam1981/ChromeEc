@@ -3870,6 +3870,12 @@
 /* Enable if the board supports USB3.2 devices */
 #undef CONFIG_USB_PD_USB32
 
+/* Enable if port is cable of operating as an USB4 device */
+#undef CONFIG_USB_PD_USB4_DRD
+
+/* Enable if port is cable of operating as an USB3.2 device */
+#undef CONFIG_USB_PD_USB32_DRD
+
 /* Enable if the board is Thunderbolt Gen 3 capable */
 #undef CONFIG_USB_PD_TBT_GEN3_CAPABLE
 

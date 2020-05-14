@@ -2010,6 +2010,28 @@ void set_max_usb4_cable_speed(int port);
 enum usb_rev30_ss board_get_max_usb_tbt_speed(int port);
 
 /**
+ * Check if attached device has USB4 VDO
+ *
+ * @param port      USB-C port number
+ * @param cnt       number of data objects in payload
+ * @param payload   payload data
+ * @return          True if device has USB4 VDO
+ */
+bool is_usb4_vdo(int port, int cnt, uint32_t *payload);
+
+/*
+ * For Cable rev 3.0: USB4 cable speed is set according to speed supported by
+ * the port and the response received from the cable, whichever is least.
+ *
+ * For Cable rev 2.0: Since board_is_tbt_usb4_port() should not enabled if the
+ * port supports speed less than USB_R20_SS_U31_GEN1_GEN2, USB4 cable speed is
+ * set according to the cable response.
+ *
+ * @param port      USB-C port number
+ */
+void set_max_usb4_cable_speed(int port);
+
+/**
  * Return enter USB message payload
  *
  * @param port	USB-C port number
