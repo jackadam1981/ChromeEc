@@ -16,6 +16,24 @@
       "revId": "a88a392515e6dc44644f3fa9a2b12117b40946b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78466289_5955d73d",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2020-05-14T00:26:25Z",
+      "side": 1,
+      "message": "This is following the prior art from zork: https://chromium.googlesource.com/chromiumos/platform/ec/+/ffa5571e4d7de4dc96ba36f5069e3ff150bde071/baseboard/zork/cbi_ec_fw_config.h\n\nThis should follow go/puff-skuid so it\u0027s probably worthwhile for it to be explicitly set.",
+      "parentUuid": "c5a7ca4e_9742ec06",
+      "revId": "a88a392515e6dc44644f3fa9a2b12117b40946b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
