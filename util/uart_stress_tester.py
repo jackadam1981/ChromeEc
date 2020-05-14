@@ -42,8 +42,7 @@ CR = '\r'                        # Carriage Return
 LF = '\n'                        # Line Feed
 CRLF = CR + LF
 FLAG_FILENAME = '/tmp/chargen_testing'
-TPM_CMD = ('trunks_client --key_create --rsa=2048 --usage=sign'
-           ' --key_blob=/tmp/blob &> /dev/null')
+TPM_CMD = ('trunks_client --stress_test &> /dev/null')
                                  # A ChromeOS TPM command for the cr50 stress
                                  # purpose.
 CR50_LOAD_GEN_CMD = ('while [[ -f %s ]]; do   %s; done &'
