@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc9507f6_6ef15308",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-14T21:10:36Z",
+      "side": 1,
+      "message": "shouldn\u0027t these compile out if CONFIG_USB_PD_DEBUG_LEVEL is set to 0 like PE and TC did? Can guard it with\n\n    !defined(CONFIG_USB_PD_DEBUG_LEVEL) ||\n    defined(TEST_BUILD) ||\n    CONFIG_USB_PD_DEBUG_LEVEL !\u003d 0",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 0
+      },
+      "revId": "2c38c1d61740b8c98f538037e5aedc3173313893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b8dc80_03c18fbb",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-14T21:10:36Z",
+      "side": 1,
+      "message": "Shorter stringless version if CONFIG_USB_PD_DEBUG_LEVEL is set to 0?",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 1
+      },
+      "revId": "2c38c1d61740b8c98f538037e5aedc3173313893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28ec11f0_54e7f5b7",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-14T21:10:36Z",
+      "side": 1,
+      "message": "Shorter stringless version if CONFIG_USB_PD_DEBUG_LEVEL is set to 0?",
+      "range": {
+        "startLine": 336,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 0
+      },
+      "revId": "2c38c1d61740b8c98f538037e5aedc3173313893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e48fb112_85c1fe40",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-14T21:10:36Z",
+      "side": 1,
+      "message": "Shorter stringless version if CONFIG_USB_PD_DEBUG_LEVEL is set to 0?",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 42
+      },
+      "revId": "2c38c1d61740b8c98f538037e5aedc3173313893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f55f9be3_e447648d",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-14T21:10:36Z",
+      "side": 1,
+      "message": "Shorter stringless version if CONFIG_USB_PD_DEBUG_LEVEL is set to 0?",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 42
+      },
+      "revId": "2c38c1d61740b8c98f538037e5aedc3173313893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
