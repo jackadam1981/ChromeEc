@@ -148,6 +148,9 @@ void int_ap_register(void (*func_enable)(void))
 
 void int_ap_extension_enable(void)
 {
+	if (!(board_cfg_reg_read() & BITMASK_LONG_INT_AP_PULSE))
+		return;
+
 	int_ap_extension_stop_pulse();
 
 	pulse_length = USEC_TO_TIMEHS_TICKS(PULSE_LENGTH);
