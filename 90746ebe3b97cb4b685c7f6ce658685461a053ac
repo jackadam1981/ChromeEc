@@ -22,6 +22,30 @@
       "revId": "90746ebe3b97cb4b685c7f6ce658685461a053ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb76f72_fb21af21",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-14T00:55:36Z",
+      "side": 1,
+      "message": "Looks like the issue is the constraint on the alignment of MPU regions on the Cortex-M4: \n\nhttps://developer.arm.com/docs/dui0553/a/cortex-m4-peripherals/optional-memory-protection-unit/mpu-region-base-address-register  \n\n \n The base address is aligned to the size of the region. For example, a 64KB region must be aligned on a multiple of 64KB, for example, at 0x00010000 or 0x00020000.\n\n\n\nWill update the comment tomorrow.",
+      "parentUuid": "0ee4e1c9_a1bb39f1",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 4
+      },
+      "revId": "90746ebe3b97cb4b685c7f6ce658685461a053ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
