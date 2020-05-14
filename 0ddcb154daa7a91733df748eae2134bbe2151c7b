@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "910bdd90_f3ad5dd5",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-14T01:51:33Z",
+      "side": 0,
+      "message": "make buildall for get_usb_pd_cable_type(port) is giving the following error:\n\nbuild/host/usb_pd_fuzz/libec.a(libec.a.2.o): In function `get_usb4_cable_speed\u0027:\n/home/ayushee/trunk/src/platform/ec/common/usb_pd_policy.c:229: undefined reference to `get_usb_pd_cable_type\u0027\nclang-11: error: linker command failed with exit code 1 (use -v to see invocation)\nmake[2]: *** [Makefile.rules:524: build/host/usb_pd_fuzz/usb_pd_fuzz.exe] Error 1\nmake[1]: *** [Makefile.rules:323: host-usb_pd_fuzz] Error 2\nmake[1]: *** Waiting for unfinished jobs....\nmake: *** [Makefile.rules:202: buildall] Error 2",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 33
+      },
+      "revId": "0ddcb154daa7a91733df748eae2134bbe2151c7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
