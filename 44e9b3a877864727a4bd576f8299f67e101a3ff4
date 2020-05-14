@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08d48041_764e4f10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-05-14T02:47:12Z",
+      "side": 1,
+      "message": "Can you add chromium:1072743?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 3
+      },
+      "revId": "44e9b3a877864727a4bd576f8299f67e101a3ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e02e4fbc_1c59944e",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-05-14T02:47:12Z",
+      "side": 1,
+      "message": "Can you replace this whole thing with system_jumped_late (cl:2200245)?",
+      "range": {
+        "startLine": 183,
+        "startChar": 7,
+        "endLine": 184,
+        "endChar": 39
+      },
+      "revId": "44e9b3a877864727a4bd576f8299f67e101a3ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
