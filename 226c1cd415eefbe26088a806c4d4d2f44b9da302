@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9750ce5_2e4cb078",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1882,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-14T02:09:02Z",
+      "side": 1,
+      "message": "USB3.1 and above",
+      "range": {
+        "startLine": 1881,
+        "startChar": 28,
+        "endLine": 1882,
+        "endChar": 23
+      },
+      "revId": "226c1cd415eefbe26088a806c4d4d2f44b9da302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e870883_52885fe5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1885,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-14T02:09:02Z",
+      "side": 1,
+      "message": "supports speed",
+      "range": {
+        "startLine": 1885,
+        "startChar": 30,
+        "endLine": 1885,
+        "endChar": 35
+      },
+      "revId": "226c1cd415eefbe26088a806c4d4d2f44b9da302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b9ce55_31f7a712",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1890,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-14T02:09:02Z",
+      "side": 1,
+      "message": "how about is_cable_speed_usb3_x_capable?",
+      "range": {
+        "startLine": 1890,
+        "startChar": 5,
+        "endLine": 1890,
+        "endChar": 32
+      },
+      "revId": "226c1cd415eefbe26088a806c4d4d2f44b9da302",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
