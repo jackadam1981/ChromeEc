@@ -30,6 +30,7 @@
 #include "scratch_reg1.h"
 #include "signed_header.h"
 #include "spi.h"
+#include "stdbool.h"
 #include "system.h"
 #include "system_chip.h"
 #include "task.h"
@@ -1778,4 +1779,35 @@ int board_nvmem_legacy_check_needed(void)
 	h = (const struct SignedHeader *)get_program_memory_addr(other_rw);
 
 	return (h->major_ <= 2) || (h->minor_ <= 18);
+}
+
+/*
+ * TPM_BOARD_CFG write is allowed from TPM reset until TPM2_PCR_Extend command
+ * is requested.
+ */
+static bool board_cfg_reg_write_disabled_
+	__attribute__((section(".bss.Tpm2_common")));
+
+void board_cfg_reg_write_disable(void)
+{
+	board_cfg_reg_write_disabled_ = true;
+}
+
+void board_cfg_reg_write(uint32_t value)
+{
+	/*
+	 * If BIOS requested TPM2_PCR_Extended command already or
+	 * PWRDN_SCRATCH21 is already written, then do not allow the register
+	 * write but return.
+	 */
+	if (GREG32(PMU, PWRDN_SCRATCH21) || board_cfg_reg_write_disabled_)
+		return;
+
+	/* Store the tpm_board_cfg in power-down scratch. */
+	GREG32(PMU, PWRDN_SCRATCH21) = value|BITMASK_PROGRAMMED_LOCKED;
+}
+
+uint32_t board_cfg_reg_read(void)
+{
+	return GREG32(PMU, PWRDN_SCRATCH21);
 }
