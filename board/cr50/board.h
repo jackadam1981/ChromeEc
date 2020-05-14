@@ -158,6 +158,7 @@
 
 #ifndef __ASSEMBLER__
 
+#include "compile_time_macros.h"
 #include "gpio_signal.h"
 
 /* USB string indexes */
@@ -403,6 +404,28 @@ void board_start_ite_sync(void);
 void board_unwedge_i2cs(void);
 
 int board_in_prod_mode(void);
+
+/* Bit masks for each bit in TPM_BOARD_CFG register */
+enum board_cfg_reg_bitmask {
+	BOARD_CFG_LOCKED_BIT = BIT(31),
+};
+
+/* Disable write on TPM_BOARD_CFG register. */
+void board_cfg_reg_write_disable(void);
+
+/*
+ * Write on TPM_BOARD_CFG register if BOARD_CFG_LOCKED_BIT is clear.
+ *
+ * @param value: value to write on TPM_BOARD_CFG
+ */
+void board_cfg_reg_write(unsigned int value);
+
+/*
+ * Read TPM_BOARD_CFG register.
+ *
+ * @param TPM_BOARD_CFG register value in uint32_t type.
+ */
+unsigned int board_cfg_reg_read(void);
 
 #endif /* !__ASSEMBLER__ */
 
