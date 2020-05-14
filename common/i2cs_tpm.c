@@ -256,15 +256,15 @@ static void i2cs_if_register(void)
 	tpm_register_interface(i2cs_if_start, i2cs_if_stop);
 	i2cs_fifo_adjust_count = 0;
 	i2cs_write_error_count = 0;
-
-	int_ap_register(i2cs_int_ap_extension_enable_);
-
-	/*
-	 * TODO: if TPM_BOARD_CFG has INT_AP extension enabled, then call
-	 * int_ap_extension_enable(), and set int_ap_extension_enabled_ true.
-	 */
 }
 DECLARE_HOOK(HOOK_INIT, i2cs_if_register, HOOK_PRIO_LAST);
+
+static void i2cs_int_ap_extension_callback_register_(void)
+{
+	int_ap_register(i2cs_int_ap_extension_enable_);
+}
+DECLARE_HOOK(HOOK_INIT, i2cs_int_ap_extension_callback_register_,
+	     HOOK_PRIO_INIT_CR50_BOARD - 1);
 
 static int command_i2cs(int argc, char **argv)
 {
