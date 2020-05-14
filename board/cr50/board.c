@@ -1781,6 +1781,15 @@ int board_nvmem_legacy_check_needed(void)
 	return (h->major_ <= 2) || (h->minor_ <= 18);
 }
 
+static void deferred_process_board_cfg(void)
+{
+	uint32_t tpm_board_cfg = GREG32(PMU, PWRDN_SCRATCH21);
+
+	if (tpm_board_cfg & BITMASK_LONG_INT_AP_PULSE)
+		int_ap_extension_enable();
+}
+DECLARE_DEFERRED(deferred_process_board_cfg);
+
 /*
  * TPM_BOARD_CFG write is allowed from TPM reset until TPM2_PCR_Extend command
  * is requested.
@@ -1805,6 +1814,9 @@ void board_cfg_reg_write(uint32_t value)
 
 	/* Store the tpm_board_cfg in power-down scratch. */
 	GREG32(PMU, PWRDN_SCRATCH21) = value|BITMASK_PROGRAMMED_LOCKED;
+
+	/* Process board_configuration change in a deferred function */
+	hook_call_deferred(&deferred_process_board_cfg_data, 0);
 }
 
 uint32_t board_cfg_reg_read(void)
