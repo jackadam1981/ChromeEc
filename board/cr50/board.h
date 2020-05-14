@@ -484,6 +484,9 @@ enum nvmem_users {
 
 #define CONFIG_CCD_ITE_PROGRAMMING
 
+/* Enable TPM_BOARD_CFG support. */
+#define CONFIG_TPM_BOARD_CFG
+
 /*
  * Increase sizes of USB over I2C read and write queues. Sizes are are such
  * that when appropriate overheads are included, total buffer sizes are powers
