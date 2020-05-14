@@ -6535,6 +6535,17 @@ struct ec_params_charger_control {
 	uint8_t allow_charging;
 } __ec_align_size1;
 
+#define EC_CMD_TYPEC_CONTROL 0x0603
+
+enum typec_control_cmd {
+	TYPEC_CONTROL_SEND_VDM,
+};
+
+struct ec_params_typec_control {
+	int port;
+	enum typec_control_cmd cmd;
+} __ec_align_size1;
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or

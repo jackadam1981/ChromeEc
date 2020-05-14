@@ -12,11 +12,13 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "shared_mem.h"
 #include "stdbool.h"
 #include "task.h"
 #include "tcpm.h"
 #include "util.h"
 #include "usb_common.h"
+#include "usb_dpm.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pe_sm.h"
@@ -105,6 +107,7 @@
 /* Flag to note Power Supply reset has completed */
 #define PE_FLAGS_PS_RESET_COMPLETE           BIT(13)
 /* Flag to note a Structured Vendor Defined Message should be sent */
+/* TODO: Unused and probably redundant with DPM_REQUEST_SVDM; delete */
 #define PE_FLAGS_SEND_SVDM                   BIT(14)
 /* VCONN swap operation has completed */
 #define PE_FLAGS_VCONN_SWAP_COMPLETE         BIT(15)
@@ -1076,6 +1079,32 @@ static bool common_src_snk_dpm_requests(int port)
 						PD_T_DISCOVER_IDENTITY;
 		}
 		return true;
+	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_SVDM)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_SVDM);
+
+		/* Only the DFP can send mode entry requests. */
+		/* TODO: Maybe some response to the host */
+		if (pe[port].data_role != PD_ROLE_DFP) {
+			CPRINTF("C%d: DPM requested mode entry, but port isn't "
+					"DFP\n", port);
+			return true;
+		}
+
+		if (PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE) ||
+				!pe_can_send_sop_vdm(port,
+					pe[port].vdm_cmd + 1)) {
+			CPRINTF("C%d: DPM requested mode entry, but mode entry"
+					" already done or not ready yet\n",
+					port);
+			return true;
+		}
+
+		/*
+		 * TODO: Don't just do all of port discovery (really DP entry
+		 * and config). Send a specific SVDM based on the DPM request.
+		 */
+		set_state_pe(port, PE_DO_PORT_DISCOVERY);
+		return true;
 	}
 
 	return false;
@@ -1315,21 +1344,38 @@ static bool pe_attempt_port_discovery(int port)
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
 			return true;
-		/*
-		 * Note: determine if next VDM can be sent by taking advantage
-		 * of discovery following the VDM command enum ordering.
-		 * Remove once do_port_discovery can be removed.
-		 */
-		} else if (pe_can_send_sop_vdm(port, pe[port].vdm_cmd + 1)) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-			set_state_pe(port, PE_DO_PORT_DISCOVERY);
-			return true;
 		}
 	}
 
 	return false;
 }
 #endif
+
+static void pe_attempt_mode_entry(int port)
+{
+	if (!IS_ENABLED(CONFIG_USB_PD_HOST_CMD))
+		return;
+	/*
+	 * Note: determine if next VDM can be sent by taking advantage
+	 * of discovery following the VDM command enum ordering.
+	 * Remove once do_port_discovery can be removed.
+	 */
+	/*
+	 * TODO: Decide where and how to gate this. Only want to send host
+	 * commands to myself if
+	 * 1) AP has not done it and will not do it, and
+	 * 2) the mode to be entered is one that the EC should handle, because
+	 *    a) CONFIG_SYSTEM_UNLOCKED is enabled, or
+	 *    b) the alt mode is DP, and the EC is in recovery mode.
+	 * Right now, the same check is performed before sending and after
+	 * receiving the same DPM request.
+	 */
+	if (!PE_CHK_FLAG(port, PE_FLAGS_DISCOVER_PORT_IDENTITY_DONE) &&
+			/* TODO: Remove after pe_do_port_discovery is removed */
+			pe_can_send_sop_vdm(port, pe[port].vdm_cmd + 1)) {
+		dpm_send_svdm(port);
+	}
+}
 
 int pd_dev_store_rw_hash(int port, uint16_t dev_id, uint32_t *rw_hash,
 					uint32_t current_image)
@@ -2000,6 +2046,9 @@ static void pe_src_ready_run(int port)
 
 			return;
 		}
+
+		/* No DPM requests; attempt mode entry if needed */
+		pe_attempt_mode_entry(port);
 	}
 }
 
@@ -2782,6 +2831,9 @@ static void pe_snk_ready_run(int port)
 
 			return;
 		}
+
+		/* No DPM requests; attempt mode entry if needed */
+		pe_attempt_mode_entry(port);
 	}
 }
 
@@ -4920,8 +4972,10 @@ static void pe_vdm_acked_entry(int port)
 			dfp_consume_modes(port, TCPC_TX_SOP, cnt, payload);
 			break;
 		case CMD_ENTER_MODE:
+			CPRINTF("C%d: Received ACK for Enter Mode\n", port);
 			break;
 		case CMD_DP_STATUS:
+			CPRINTF("C%d: Received ACK for DP Status\n", port);
 			/*
 			 * DP status response & UFP's DP attention have same
 			 * payload
@@ -4929,6 +4983,7 @@ static void pe_vdm_acked_entry(int port)
 			dfp_consume_attention(port, payload);
 			break;
 		case CMD_DP_CONFIG:
+			CPRINTF("C%d: Received ACK for DP Config\n", port);
 			if (modep && modep->opos && modep->fx->post_config)
 				modep->fx->post_config(port);
 			break;
