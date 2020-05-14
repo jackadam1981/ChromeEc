@@ -175,8 +175,13 @@ int ioex_init(int ioex)
 		int flags = g->flags;
 
 		if (g->ioex == ioex && g->mask && !(flags & GPIO_DEFAULT)) {
-			/* SysJump should not set the output levels */
-			if (system_jumped_to_this_image())
+			/*
+			 * If output level was set before sysjump, don't set
+			 * it back to default now. EFS2 does sysjump before
+			 * ioex_init.
+			 */
+			if (!IS_ENABLED(CONFIG_VBOOT_EFS2)
+			    && system_jumped_to_this_image())
 				flags &= ~(GPIO_LOW | GPIO_HIGH);
 
 			drv->set_flags_by_mask(g->ioex, g->port,
