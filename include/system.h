@@ -124,6 +124,15 @@ uintptr_t get_program_memory_addr(enum ec_image copy);
 int system_jumped_to_this_image(void);
 
 /**
+ * Return non-zero if late (legacy) sysjump occurred.
+ *
+ * This happens when EFS failed and RO jumped to RW late on AP's request.
+ * This is typically called to avoid running some code twice (once in RO and
+ * again RW).
+ */
+int system_jumped_late(void);
+
+/**
  * Preserve data across a jump between images.
  *
  * This may ONLY be called from within a HOOK_SYSJUMP handler.
