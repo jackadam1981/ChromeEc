@@ -70,6 +70,30 @@
       "revId": "aaa9ae17da518d6dcd670947022f52297b07915b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f73893e_85e18d19",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4588,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-14T19:36:15Z",
+      "side": 1,
+      "message": "Done. Although the Number of Data Objects should be sufficient to identify a control message, checking Extended might be prudent as well.",
+      "parentUuid": "0f5f6a51_654736a9",
+      "range": {
+        "startLine": 4588,
+        "startChar": 3,
+        "endLine": 4588,
+        "endChar": 69
+      },
+      "revId": "aaa9ae17da518d6dcd670947022f52297b07915b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
