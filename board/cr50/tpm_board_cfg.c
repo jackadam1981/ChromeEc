@@ -51,6 +51,18 @@ uint32_t board_cfg_reg_read(void)
  */
 static int command_brdcfg(int argc, char **argv)
 {
+#ifdef CR50_DEV
+	if (argc > 1) {
+		uint32_t val;
+		char *e;
+
+		val = strtoi(argv[1], &e, 16);
+		if (*e)
+			return EC_ERROR_PARAM1;
+
+		board_cfg_reg_write(val);
+	}
+#endif
 	ccprintf("TPM_BOARD_CFG = 0x%08x\n", board_cfg_reg_read());
 	return EC_SUCCESS;
 }
