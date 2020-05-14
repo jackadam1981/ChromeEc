@@ -44,6 +44,23 @@ void pd_set_src_caps(int port, int cnt, uint32_t *src_caps)
 __overridable void pe_invalidate_explicit_contract(int port)
 {
 }
+
+int pd_get_vdo_ver(int port, enum tcpm_transmit_type type)
+{
+	return VDM_VER20;
+}
+
+struct svdm_amode_data *pd_get_amode_data(int port, uint16_t svid)
+{
+	/* No mode data */
+	return NULL;
+}
+
+uint32_t pd_dfp_enter_mode(int port, uint16_t svid, int opos)
+{
+	/* It didn't work */
+	return 0;
+}
 /* End pd_ mock section */
 
 /* Install Mock TCPC and MUX drivers */
