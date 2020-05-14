@@ -3588,6 +3588,9 @@
 /* Speak to the TPM 2.0 hardware protocol on the I2C slave interface */
 #undef CONFIG_TPM_I2CS
 
+/* TPM_BOARD_CFG register support. */
+#undef CONFIG_TPM_BOARD_CFG
+
 /*****************************************************************************/
 /* USART stream config */
 #undef CONFIG_STREAM_USART
