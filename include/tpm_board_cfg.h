@@ -12,6 +12,7 @@
 
 /* Bit masks for each bit in TPM_BOARD_CFG register */
 #define BITMASK_PROGRAMMED_LOCKED	BIT(31)
+#define BITMASK_LONG_INT_AP_PULSE	BIT(0)
 
 /*
  * Write on TPM_BOARD_CFG register if BITMASK_PROGRAMMED_LOCKED is clear.

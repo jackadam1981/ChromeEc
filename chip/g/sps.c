@@ -13,6 +13,7 @@
 #include "system.h"
 #include "task.h"
 #include "watchdog.h"
+#include "tpm_board_cfg.h"
 
 /*
  * This file is a driver for the CR50 SPS (SPI slave) controller. The
@@ -238,6 +239,9 @@ int sps_register_rx_handler(enum sps_mode mode, rx_handler_f rx_handler,
 	task_enable_irq(GC_IRQNUM_SPS0_RXFIFO_LVL_INTR);
 	task_enable_irq(GC_IRQNUM_SPS0_CS_DEASSERT_INTR);
 	task_enable_irq(GC_IRQNUM_SPS0_CS_ASSERT_INTR);
+
+	if (board_cfg_reg_read() & BITMASK_LONG_INT_AP_PULSE)
+		int_ap_extension_enable();
 
 	return 0;
 }
