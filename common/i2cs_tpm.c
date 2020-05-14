@@ -259,10 +259,8 @@ static void i2cs_if_register(void)
 
 	int_ap_register(i2cs_int_ap_extension_enable_);
 
-	/*
-	 * TODO: if TPM_BOARD_CFG has INT_AP extension enabled, then call
-	 * int_ap_extension_enable(), and set int_ap_extension_enabled_ true.
-	 */
+	if (board_cfg_reg_read() & BITMASK_LONG_INT_AP_PULSE)
+		int_ap_extension_enable();
 }
 DECLARE_HOOK(HOOK_INIT, i2cs_if_register, HOOK_PRIO_LAST);
 
