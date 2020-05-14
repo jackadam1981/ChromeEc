@@ -16,6 +16,24 @@
       "revId": "f9bcbb1a530dfb32c46ecbff57417853ae54be77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e61de96_7678f78f",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1400912
+      },
+      "writtenOn": "2020-05-14T03:15:03Z",
+      "side": 1,
+      "message": "Our thermal guy test connect AC and run fish tank, charger junction temperature will keep at 92c. If we set .target\u003d80, EC will limit input current and result in power team test failed.\n\nWe have updated a test result at issue tracker.",
+      "parentUuid": "8422e3cb_7e84df1e",
+      "revId": "f9bcbb1a530dfb32c46ecbff57417853ae54be77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
