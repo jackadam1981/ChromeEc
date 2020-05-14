@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ed5d549_e6210018",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-14T21:58:20Z",
+      "side": 1,
+      "message": "Nit - because enter_tbt_compat_mode() directly uses *rtype, it should be explicitly initialized here.",
+      "revId": "de6c2cb21e9dc79368b8df5c588aa28a4140ed80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ae8e2b_923e1e6e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-14T21:58:20Z",
+      "side": 1,
+      "message": "I suggest moving this block to just before the enter_tbt_compat_mode() call at line 586 because the response SOP type is only relevant when USB4 is not supported/disabled.\n\nAlso, I suggest changing the comment to only mention TBT modes since the USB mode entry is handled elsewhere (and already has a TODO for active cables).\n\nSuggested comment:\n\"Send TBT3 Cable Enter Mode (SOP\u0027) for active cables, otherwise send TBT3 Device Enter Mode (SOP)\"",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 570,
+        "endChar": 0
+      },
+      "revId": "de6c2cb21e9dc79368b8df5c588aa28a4140ed80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
