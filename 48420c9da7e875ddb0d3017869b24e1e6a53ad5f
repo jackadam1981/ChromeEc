@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "48dc0a0d_0aef9e00",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-05-14T08:51:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc0d793f_dc6febde",
+      "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d5e1627_11aa9a27",
         "filename": "include/config.h",
         "patchSetId": 13
@@ -33,6 +51,24 @@
       "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c236860d_4c6c7500",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-05-14T08:51:37Z",
+      "side": 1,
+      "message": "Some board.c is still using this macro to determine the spi port. I think we should not remove or rename this macro.",
+      "parentUuid": "6d5e1627_11aa9a27",
+      "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
