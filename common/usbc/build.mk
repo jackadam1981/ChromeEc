@@ -10,6 +10,8 @@ _usbc_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 ifneq ($(CONFIG_USB_PD_TCPMV2),)
 all-obj-y+=$(_usbc_dir)usb_sm.o
 all-obj-y+=$(_usbc_dir)usbc_task.o
+all-obj-y+=$(_usbc_dir)usb_pd_dpm.o
+all-obj-y+=$(_usbc_dir)dp_alt_mode.o
 
 # Type-C state machines
 ifneq ($(CONFIG_USB_TYPEC_SM),)

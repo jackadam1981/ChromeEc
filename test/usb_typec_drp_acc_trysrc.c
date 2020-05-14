@@ -11,6 +11,7 @@
 #include "test_util.h"
 #include "timer.h"
 #include "usb_mux.h"
+#include "usb_pe_sm.h"
 #include "usb_pd_tcpm.h"
 #include "usb_sm_checks.h"
 #include "usb_tc_sm.h"
@@ -42,6 +43,38 @@ void pd_set_src_caps(int port, int cnt, uint32_t *src_caps)
 }
 
 __overridable void pe_invalidate_explicit_contract(int port)
+{
+}
+
+int pd_get_vdo_ver(int port, enum tcpm_transmit_type type)
+{
+	return VDM_VER20;
+}
+
+struct svdm_amode_data *pd_get_amode_data(int port, uint16_t svid)
+{
+	/* No mode data */
+	return NULL;
+}
+
+uint32_t pd_dfp_enter_mode(int port, uint16_t svid, int opos)
+{
+	/* It didn't work */
+	return 0;
+}
+
+bool pd_is_mode_discovered_for_svid(int port, enum tcpm_transmit_type type,
+		uint16_t svid)
+{
+	return false;
+}
+
+bool pd_setup_vdm_request(int port, uint32_t *vdm, uint32_t vdo_cnt)
+{
+	return false;
+}
+
+void pe_dpm_request(int port, enum pe_dpm_request req)
 {
 }
 /* End pd_ mock section */
