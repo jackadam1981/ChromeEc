@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b49390f_c40d727a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T20:06:56Z",
+      "side": 1,
+      "message": "I still need more time to wrap my head around this patch, but it would be very interesting to see a test where \n\ntrunks_client --stress_test and uart stress tester run in parallel for the entire duration.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
