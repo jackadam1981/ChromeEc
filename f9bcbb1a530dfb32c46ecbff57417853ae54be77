@@ -52,6 +52,24 @@
       "revId": "f9bcbb1a530dfb32c46ecbff57417853ae54be77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab12947_d27a0e98",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1400912
+      },
+      "writtenOn": "2020-05-14T07:31:06Z",
+      "side": 1,
+      "message": "Our power test requirement is charging time need to meet 0~100% within 3hr when DUT in S5.",
+      "parentUuid": "c227010a_c6c9b3dd",
+      "revId": "f9bcbb1a530dfb32c46ecbff57417853ae54be77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
