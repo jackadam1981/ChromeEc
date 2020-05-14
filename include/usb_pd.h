@@ -1588,6 +1588,10 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload);
  * @param opos object position of mode to exit.
  * @return vdm for UFP to be sent to enter mode or zero if not.
  */
+/*
+ * TODO: Name should be changed to reflect that this only constructs a VDH;
+ * doesn't actually send anything.
+ */
 uint32_t pd_dfp_enter_mode(int port, uint16_t svid, int opos);
 
 /**
@@ -1807,6 +1811,9 @@ uint16_t pd_get_svid(int port, uint16_t svid_idx, enum tcpm_transmit_type type);
  */
 uint32_t *pd_get_mode_vdo(int port, uint16_t svid_idx,
 		enum tcpm_transmit_type type);
+
+bool pd_is_mode_discovered_for_svid(int port, enum tcpm_transmit_type type,
+		uint16_t svid);
 
 /**
  * Return the alternate mode entry and exit data
@@ -2178,6 +2185,12 @@ void pd_log_recv_vdm(int port, int cnt, uint32_t *payload);
  */
 void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 		 int count);
+
+/*
+ * TODO: Probably, this should only be used by the DPM, and pd_send_vdm should
+ * be implemented in terms of dpm_send_svdm.
+ */
+bool pd_setup_vdm_request(int port, uint32_t *vdm, uint32_t vdo_cnt);
 
 /* Power Data Objects for the source and the sink */
 __override_proto extern const uint32_t pd_src_pdo[];
