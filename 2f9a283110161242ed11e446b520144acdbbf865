@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6e2067d3_5ff7f1ce",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-05-14T05:02:21Z",
+      "side": 1,
+      "message": "Hmm, confirmed.",
+      "parentUuid": "d4a35dc9_0c34d5f6",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 12
+      },
+      "revId": "2f9a283110161242ed11e446b520144acdbbf865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0635b983_ca58b005",
         "filename": "core/riscv-rv32i/task.c",
         "patchSetId": 9
@@ -69,6 +93,30 @@
       "revId": "2f9a283110161242ed11e446b520144acdbbf865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf55e298_12433471",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-05-14T05:02:21Z",
+      "side": 1,
+      "message": "NACK.",
+      "parentUuid": "0635b983_ca58b005",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 12
+      },
+      "revId": "2f9a283110161242ed11e446b520144acdbbf865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
