@@ -274,6 +274,13 @@ int system_jumped_to_this_image(void)
 	return jumped_to_image;
 }
 
+int system_jumped_late(void)
+{
+	/* Late jump means no EFS AND Sysjump. */
+	return !(reset_flags & EC_RESET_FLAG_EFS)
+			&& (reset_flags & EC_RESET_FLAG_SYSJUMP);
+}
+
 int system_add_jump_tag(uint16_t tag, int version, int size, const void *data)
 {
 	struct jump_tag *t;
