@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1becbba8_5f73daca",
+        "filename": "chip/it83xx/config_chip_it8xxx2.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-05-14T05:00:23Z",
+      "side": 1,
+      "message": "Dino, I was surprised even if I don\u0027t define this, EC can also boot.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 29
+      },
+      "revId": "d86b11050bd930c115d2d6744ff6f627196f4875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "264789c4_710dd7c7",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-05-14T05:00:23Z",
+      "side": 1,
+      "message": "I can\u0027t use CONFIG_EXTERNAL_STORAGE for this:\n\nWhen I define CONFIG_EXTERNAL_STORAGE and build EC:\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: build/asurada/RW/common/flash.o: in function `flash_read\u0027:\n/home/tzungbi/trunk/src/platform/ec/common/flash.c:614: undefined reference to `flash_lock_mapped_storage\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: /home/tzungbi/trunk/src/platform/ec/common/flash.c:618: undefined reference to `flash_lock_mapped_storage\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: build/asurada/RW/common/system.o: in function `sysinfo\u0027:\n/home/tzungbi/trunk/src/platform/ec/common/system.c:931: undefined reference to `system_get_shrspi_image_copy\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: build/asurada/RW/common/system.o: in function `system_get_image_copy\u0027:\n/home/tzungbi/trunk/src/platform/ec/common/system.c:306: undefined reference to `system_get_shrspi_image_copy\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: /home/tzungbi/trunk/src/platform/ec/common/system.c:403: undefined reference to `system_get_shrspi_image_copy\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: /home/tzungbi/trunk/src/platform/ec/common/system.c:403: undefined reference to `system_get_shrspi_image_copy\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: build/asurada/RW/common/system.o: in function `system_run_image_copy\u0027:\n/home/tzungbi/trunk/src/platform/ec/common/system.c:615: undefined reference to `system_get_shrspi_image_copy\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: build/asurada/RW/common/system.o: in function `is_rw_image\u0027:\n/home/tzungbi/trunk/src/platform/ec/common/system.c:548: undefined reference to `system_get_lfw_address\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: build/asurada/RW/common/system.o: in function `system_run_image_copy\u0027:\n/home/tzungbi/trunk/src/platform/ec/common/system.c:589: undefined reference to `system_set_image_copy\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: build/asurada/RW/common/system.o: in function `system_get_image_copy\u0027:\n/home/tzungbi/trunk/src/platform/ec/common/system.c:403: undefined reference to `system_get_shrspi_image_copy\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: /home/tzungbi/trunk/src/platform/ec/common/system.c:403: undefined reference to `system_get_shrspi_image_copy\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: build/asurada/RW/common/system.o: in function `system_get_image_data\u0027:\n/home/tzungbi/trunk/src/platform/ec/common/system.c:685: undefined reference to `flash_lock_mapped_storage\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: /home/tzungbi/trunk/src/platform/ec/common/system.c:687: undefined reference to `flash_lock_mapped_storage\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: build/asurada/RW/common/system.o: in function `host_command_get_version\u0027:\n/home/tzungbi/trunk/src/platform/ec/common/system.c:1363: undefined reference to `system_get_shrspi_image_copy\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: build/asurada/RW/common/vboot_hash.o: in function `hash_next_chunk\u0027:\n/home/tzungbi/trunk/src/platform/ec/common/vboot_hash.c:118: undefined reference to `flash_lock_mapped_storage\u0027\n/opt/coreboot-sdk/lib/gcc/riscv64-elf/8.3.0/../../../../riscv64-elf/bin/ld: /home/tzungbi/trunk/src/platform/ec/common/vboot_hash.c:119: undefined reference to `flash_lock_mapped_storage\u0027\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile.rules:505: build/asurada/RW/ec.RW.elf] Error 1",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 63
+      },
+      "revId": "d86b11050bd930c115d2d6744ff6f627196f4875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
