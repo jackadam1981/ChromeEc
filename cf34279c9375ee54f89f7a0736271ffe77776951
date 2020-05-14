@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6572c642_aa31ef92",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-14T03:54:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa69549_4ead161f",
+      "range": {
+        "startLine": 198,
+        "startChar": 24,
+        "endLine": 198,
+        "endChar": 47
+      },
+      "revId": "cf34279c9375ee54f89f7a0736271ffe77776951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db3be2dc_6fe0e5eb",
         "filename": "board/asurada/usb_pd_policy.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-13T04:18:09Z",
       "side": 1,
       "message": "This feature is required on Asurada.\nRemove the ifdef guard to make sure all Asurada derivatives has this config enabled.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 46
+      },
+      "revId": "cf34279c9375ee54f89f7a0736271ffe77776951",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "729d8c80_2516861a",
+        "filename": "board/asurada/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-14T03:54:02Z",
+      "side": 1,
+      "message": "I prefer leaving this as is, and add another config check. So people won\u0027t left something while copy-paste the code.",
+      "parentUuid": "db3be2dc_6fe0e5eb",
       "range": {
         "startLine": 27,
         "startChar": 0,
