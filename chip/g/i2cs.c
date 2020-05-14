@@ -429,10 +429,9 @@ int i2cs_register_write_complete_handler(wr_complete_handler_f wc_handler)
 	write_complete_handler_ = wc_handler;
 	task_enable_irq(GC_IRQNUM_I2CS0_INTR_WRITE_COMPLETE_INT);
 
-	/*
-	 *TODO: call int_ap_extension_enable() if TPM_BOARD_CFG has
-	 * LONG_INT_AP_PULSE set
-	 */
+	if (board_cfg_reg_read() & BITMASK_LONG_INT_AP_PULSE)
+		int_ap_extension_enable();
+
 	/*
 	 * Start a self perpetuating polling function to check for 'hosed'
 	 * condition periodically.
