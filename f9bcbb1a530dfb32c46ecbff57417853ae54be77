@@ -70,6 +70,24 @@
       "revId": "f9bcbb1a530dfb32c46ecbff57417853ae54be77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c42bda_64d45591",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-14T07:53:31Z",
+      "side": 1,
+      "message": "In S5, the DUT will not activate the thermal control. So in theory, this won\u0027t effect the power test.",
+      "parentUuid": "7ab12947_d27a0e98",
+      "revId": "f9bcbb1a530dfb32c46ecbff57417853ae54be77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
