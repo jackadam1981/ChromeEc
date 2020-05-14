@@ -46,6 +46,30 @@
       "revId": "aaa9ae17da518d6dcd670947022f52297b07915b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f5f6a51_654736a9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4588,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-14T19:02:19Z",
+      "side": 1,
+      "message": "Check that cnt \u003d\u003d 0 to know it\u0027s a control message rather than a data message.\n\nCurrently data message 10000b is undefined, but since VDM AMSes are interruptible it could be valid for a partner to send a new message during the sequence, in which case we need to go to ready to handle the new message",
+      "parentUuid": "6a44bc6a_5305b0c6",
+      "range": {
+        "startLine": 4588,
+        "startChar": 3,
+        "endLine": 4588,
+        "endChar": 69
+      },
+      "revId": "aaa9ae17da518d6dcd670947022f52297b07915b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
