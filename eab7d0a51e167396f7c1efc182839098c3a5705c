@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96b193f9_9da4f386",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-14T01:53:57Z",
+      "side": 1,
+      "message": "Per discuss,  could we allow DCP capped at USB_CHARGER_MAX_CURR_MA and all the rest capped at 1500mA? So that krane can re-define the USB_CHARGER_MAX_CURR_MA to 2000.",
+      "range": {
+        "startLine": 1155,
+        "startChar": 0,
+        "endLine": 1160,
+        "endChar": 33
+      },
+      "revId": "eab7d0a51e167396f7c1efc182839098c3a5705c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26511b9c_59e46158",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1196,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-14T01:53:57Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 1196,
+        "startChar": 8,
+        "endLine": 1196,
+        "endChar": 32
+      },
+      "revId": "eab7d0a51e167396f7c1efc182839098c3a5705c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
