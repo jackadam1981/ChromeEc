@@ -440,6 +440,30 @@
     },
     {
       "key": {
+        "uuid": "0d350d7c_4f1c371c",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-14T00:43:43Z",
+      "side": 1,
+      "message": "This is the way the TCPCI R2 V1p1 defines the bit that indicates this second value.\n\nPower Status Register B2 - V BUS Present\nThe TCPC shall report V BUS present when TCPC detects V BUS rises\nabove 4V. The TCPC shall report V BUS is not present when TCPC\ndetects V BUS falls below 3.5V. The TCPC may report V BUS is not\npresent if V BUS is between 3.5V and 4V.",
+      "parentUuid": "5d2218d1_03b819ef",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "db124d0f314bdaae7505f78481cc39e115e3e0a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b57a843d_aa2da0e6",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
