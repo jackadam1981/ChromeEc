@@ -88,6 +88,24 @@
       "revId": "f9bcbb1a530dfb32c46ecbff57417853ae54be77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49442e8e_dad0b5eb",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1400912
+      },
+      "writtenOn": "2020-05-14T08:29:47Z",
+      "side": 1,
+      "message": "It will enter `battery_thermal_control` and set input_current in `board_set_charge_limit_throttle`, is it correct?",
+      "parentUuid": "03c42bda_64d45591",
+      "revId": "f9bcbb1a530dfb32c46ecbff57417853ae54be77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
