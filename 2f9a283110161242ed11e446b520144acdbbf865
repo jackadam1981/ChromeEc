@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27cb936a_b88e34bd",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-14T03:42:44Z",
+      "side": 1,
+      "message": "Should we keep `static volatile`?",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 12
+      },
+      "revId": "2f9a283110161242ed11e446b520144acdbbf865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0635b983_ca58b005",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-14T03:42:44Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 12
+      },
+      "revId": "2f9a283110161242ed11e446b520144acdbbf865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
