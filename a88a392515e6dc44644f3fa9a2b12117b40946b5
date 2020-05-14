@@ -52,6 +52,24 @@
       "revId": "a88a392515e6dc44644f3fa9a2b12117b40946b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51c1935_1e51893c",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2020-05-14T01:01:24Z",
+      "side": 1,
+      "message": "Based on fizz[0], it seems more likely we\u0027d end up with alternative 65W and 90W power supplies instead. I\u0027d rather punt on this until another fw config field is needed.\n\n[0] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/ffa5571e4d7de4dc96ba36f5069e3ff150bde071/board/fizz/board.c#687",
+      "parentUuid": "50f8bbd6_ca30893a",
+      "revId": "a88a392515e6dc44644f3fa9a2b12117b40946b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
