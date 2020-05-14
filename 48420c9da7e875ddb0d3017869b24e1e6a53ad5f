@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc0d793f_dc6febde",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-14T00:19:07Z",
+      "side": 1,
+      "message": "use #else, as config.h impose either CONFIG_BMI_SPI or CONFIG_BMI_I2C to be defined.",
+      "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d5e1627_11aa9a27",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-14T00:19:07Z",
+      "side": 1,
+      "message": "Do you want to remove this one, or rename it, as it now applies to kionix only.",
+      "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
