@@ -22,6 +22,167 @@
       "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7132d124_56c5fb41",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:17:05Z",
+      "side": 1,
+      "message": "It would be clearer to say that return value of zero means that extended pulse is not enabled.",
+      "range": {
+        "startLine": 373,
+        "startChar": 3,
+        "endLine": 374,
+        "endChar": 35
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca1d8e77_a1d1072e",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:17:05Z",
+      "side": 1,
+      "message": "mention that these functions must be called on interrupt context.",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 0
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571c1190_85fb76e0",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:17:05Z",
+      "side": 1,
+      "message": "I feel a bit apprehensive about this function\u0027s prototype: the caller always knows what action it wants, assert or deassert the signal. Passing the desired state as an argument would remove any ambiguity and any chance of this function called out or order messing things up.",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4800c0ed_d2688b3c",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:17:05Z",
+      "side": 1,
+      "message": "the logic of this snippet is not quite clear, I think changing the order would make it better readable, first set the variable, and then use its value to control the signal:\n\nint_ap_asserted_ \u003d !int_ap_asserted_\ngpio_set_level(GPIO_INT_AP_L, !int_ap_asserted_); /* It is asserted when low. */",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51a6aeb_07b0d31f",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:17:05Z",
+      "side": 1,
+      "message": "the timer would be set both if INT_AP_L is asserted or deasserted, is this the intention? In that case the comment is misleading.",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 33
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866cb97d_f2c58b0b",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:17:05Z",
+      "side": 1,
+      "message": "maybe add a check to confirm that these functions were called from interrupt context (say check only if CR50_DEV is enabled)",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 1
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b9f77a_f197cfef",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:17:05Z",
+      "side": 1,
+      "message": "this function should set int_ap_asserted to the desired state (false) and then set the gpio to follow the suite.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
