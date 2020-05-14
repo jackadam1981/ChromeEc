@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7528d847_bd60053f",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-14T21:50:27Z",
+      "side": 1,
+      "message": "Compiler magic will take care of these for us.  Double checked in the smap files.\n\nNormal build:\ngrep prl_tx_state build/waddledee/RO/ec.RO.smap \n00017322 t print_current_prl_tx_state\n00028110 r prl_tx_states\n000281e8 r prl_tx_state_names\n\nWith CONFIG_USB_PD_DEBUG_LEVEL 0:\ngrep prl_tx_state build/waddledee/RO/ec.RO.smap\n0002751c r prl_tx_states",
+      "parentUuid": "fc9507f6_6ef15308",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 0
+      },
+      "revId": "2c38c1d61740b8c98f538037e5aedc3173313893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8b8dc80_03c18fbb",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-14T21:10:36Z",
       "side": 1,
       "message": "Shorter stringless version if CONFIG_USB_PD_DEBUG_LEVEL is set to 0?",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 1
+      },
+      "revId": "2c38c1d61740b8c98f538037e5aedc3173313893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94de62f5_d76a02ed",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-14T21:50:27Z",
+      "side": 1,
+      "message": "I\u0027d lean towards no.  For reference, this is the level of talkativeness we get out of the PRL: \n\n2020-05-14 12:51:16 [358.667103 C0: PE_SNK_Select_Capability]\n2020-05-14 12:51:16 C0 Req [4] 15000mV 2000mA\n2020-05-14 12:51:16 [358.667871 C0: TCH_WAIT_FOR_TRANSMISSION_COMPLETE]\n2020-05-14 12:51:16 [358.669409 C0: PRL_TX_WAIT_FOR_PHY_RESPONSE]\n2020-05-14 12:51:16 C0 RECV 03a3/0 \n2020-05-14 12:51:16 [358.674959 C0: RCH_PASS_UP_MESSAGE]\n2020-05-14 12:51:16 [358.675324 C0: RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER]\n2020-05-14 12:51:16 [358.675881 C0: PRL_TX_WAIT_FOR_MESSAGE_REQUEST]\n2020-05-14 12:51:16 [358.676934 C0: TCH_MESSAGE_SENT]\n2020-05-14 12:51:16 [358.677299 C0: TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE]\n2020-05-14 12:51:16 [358.678525 New charge port: C0]\n2020-05-14 12:51:16 [358.681558 CL: p0 s0 i500 v15000]\n2020-05-14 12:51:16 [358.682050 event set 0x0000000000200000]\n2020-05-14 12:51:16 [358.682966 event clear 0x0000000000200000]\n2020-05-14 12:51:16 [358.683302 ACPI query \u003d 22]\n2020-05-14 12:51:16 [358.683860 C0: PE_SNK_Transition_Sink]",
+      "parentUuid": "c8b8dc80_03c18fbb",
       "range": {
         "startLine": 315,
         "startChar": 0,
