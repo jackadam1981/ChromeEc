@@ -34,6 +34,24 @@
       "revId": "f9bcbb1a530dfb32c46ecbff57417853ae54be77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c227010a_c6c9b3dd",
+        "filename": "board/kakadu/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-14T07:26:55Z",
+      "side": 1,
+      "message": "What\u0027s your power test requirement? This value is adjustable, and is used to prevent overheating on the device when charging. You are free to modify this value if that aligns to your specification.",
+      "parentUuid": "4e61de96_7678f78f",
+      "revId": "f9bcbb1a530dfb32c46ecbff57417853ae54be77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
