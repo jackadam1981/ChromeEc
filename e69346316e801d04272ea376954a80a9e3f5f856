@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2dfb3d4_910b43de",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:33:12Z",
+      "side": 1,
+      "message": "there is no need to make this a configuration option, there are no other tpm users in the system.",
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9703d428_df09a784",
+        "filename": "board/cr50/tpm_board_cfg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:33:12Z",
+      "side": 1,
+      "message": "I don\u0027t think you need a separate file for this, just add two functions to board.c\n\nAlso, no need in the dedicated console command - you can use \u0027md \u003caddr\u003e\u0027 to read the value.",
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c61f06_d73c832b",
+        "filename": "board/cr50/tpm_board_cfg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:33:12Z",
+      "side": 1,
+      "message": "no need in these lines, just use (value | BITMASK_PROGRAMMED_LOCKED) in line 29.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2e1e7e5_e140e18c",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:33:12Z",
+      "side": 1,
+      "message": "please align with the previous lines",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 29
+      },
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64756112_94c9c198",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:33:12Z",
+      "side": 1,
+      "message": "set value to 0 in case data size is less than value size.",
+      "range": {
+        "startLine": 425,
+        "startChar": 10,
+        "endLine": 425,
+        "endChar": 15
+      },
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "761a3cca_e53334ba",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:33:12Z",
+      "side": 1,
+      "message": "no need in these",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 1
+      },
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "298178ed_7f182a7c",
+        "filename": "include/tpm_board_cfg.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-14T21:33:12Z",
+      "side": 1,
+      "message": "just add these to board.h",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
