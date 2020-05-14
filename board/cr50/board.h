@@ -411,6 +411,8 @@ int board_in_prod_mode(void);
  * Bit masks for each bit in TPM_BOARD_CFG register
  */
 enum board_cfg_reg_bitmask {
+	BITMASK_LONG_INT_AP_PULSE = BIT(0),
+
 	BITMASK_PROGRAMMED_LOCKED = BIT(31),
 };
 
