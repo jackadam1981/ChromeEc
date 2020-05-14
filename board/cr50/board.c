@@ -1806,3 +1806,27 @@ uint32_t board_cfg_reg_read(void)
 {
 	return GREG32(PMU, PWRDN_SCRATCH21);
 }
+
+#ifdef CR50_DEV
+/**
+ * Console command to display TPM_BOARD_CFG register value.
+ */
+static int command_brdcfg(int argc, char **argv)
+{
+	if (argc > 1) {
+		uint32_t val;
+		char *e;
+
+		val = strtoi(argv[1], &e, 16);
+		if (*e)
+			return EC_ERROR_PARAM1;
+
+		board_cfg_reg_write(val);
+	}
+
+	ccprintf("TPM_BOARD_CFG = 0x%08x\n", board_cfg_reg_read());
+	return EC_SUCCESS;
+}
+DECLARE_SAFE_CONSOLE_COMMAND(brdcfg, command_brdcfg, NULL,
+			     "Get or set TPM_BOARD_CFG value");
+#endif
