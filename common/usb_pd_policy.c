@@ -189,68 +189,6 @@ enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
 	return cable[port].cable_mode_resp.tbt_rounded;
 }
 
-static enum usb_rev30_ss get_usb4_cable_speed(int port)
-{
-	if ((cable[port].rev == PD_REV30) &&
-	    (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) &&
-	   ((cable[port].attr.p_rev30.ss != USB_R30_SS_U32_U40_GEN2) ||
-	    !IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE))) {
-		return cable[port].attr.p_rev30.ss;
-	}
-
-	/*
-	 * Converting Thunderolt-Compatible cable speed to equivalent USB4 cable
-	 * speed.
-	 */
-	return cable[port].cable_mode_resp.tbt_cable_speed == TBT_SS_TBT_GEN3 ?
-	       USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
-}
-
-uint32_t get_enter_usb_msg_payload(int port)
-{
-	/*
-	 * Ref: USB Power Delivery Specification Revision 3.0, Version 2.0
-	 * Table 6-47 Enter_USB Data Object
-	 */
-	union enter_usb_data_obj eudo;
-
-	if (!IS_ENABLED(CONFIG_USB_PD_USB4))
-		return 0;
-
-	eudo.mode = USB_PD_40;
-	eudo.usb4_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB4);
-	eudo.usb3_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB32);
-	eudo.cable_speed = get_usb4_cable_speed(port);
-
-	if ((cable[port].rev == PD_REV30) &&
-	    (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)) {
-		eudo.cable_type = (cable[port].attr2.a2_rev30.active_elem ==
-			ACTIVE_RETIMER) ? CABLE_TYPE_ACTIVE_RETIMER :
-			CABLE_TYPE_ACTIVE_REDRIVER;
-	/* TODO: Add eudo.cable_type for Revisiosn 2 active cables */
-	} else {
-		eudo.cable_type = CABLE_TYPE_PASSIVE;
-	}
-
-	switch (cable[port].attr.p_rev20.vbus_cur) {
-	case USB_VBUS_CUR_3A:
-		eudo.cable_current = USB4_CABLE_CURRENT_3A;
-		break;
-	case USB_VBUS_CUR_5A:
-		eudo.cable_current = USB4_CABLE_CURRENT_5A;
-		break;
-	default:
-		eudo.cable_current = USB4_CABLE_CURRENT_INVALID;
-		break;
-	}
-	eudo.pcie_supported = IS_ENABLED(CONFIG_USB_PD_PCIE_TUNNELING);
-	eudo.dp_supported = IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP);
-	eudo.tbt_supported = IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE);
-	eudo.host_present = 1;
-
-	return eudo.raw_value;
-}
-
 bool should_enter_usb4_mode(int port)
 {
 	return IS_ENABLED(CONFIG_USB_PD_USB4) &&
@@ -320,28 +258,6 @@ static inline void disable_usb4_mode(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_USB4))
 		cable[port].flags &= ~CABLE_FLAGS_USB4_CAPABLE;
-}
-
-/*
- * For Cable rev 3.0: USB4 cable speed is set according to speed supported by
- * the port and the response received from the cable, whichever is least.
- *
- * For Cable rev 2.0: Since board_is_tbt_usb4_port() should not enabled if the
- * port supports speed less than USB_R20_SS_U31_GEN1_GEN2, USB4 cable speed is
- * set according to the cable response.
- */
-static void set_max_usb4_cable_speed(int port)
-{
-	/*
-	 * Converting Thunderbolt-Compatible board speed to equivalent USB4
-	 * speed.
-	 */
-	enum usb_rev30_ss max_usb4_speed =
-			board_get_max_tbt_speed(port) == TBT_SS_TBT_GEN3 ?
-			USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
-
-	if (max_usb4_speed < cable[port].attr.p_rev30.ss)
-		cable[port].attr.p_rev30.ss = max_usb4_speed;
 }
 
 /*
@@ -419,23 +335,6 @@ static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 	return false;
 }
 
-static bool is_usb4_vdo(int port, int cnt, uint32_t *payload)
-{
-	enum idh_ptype ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
-
-	if (IS_PD_IDH_UFP_PTYPE(ptype)) {
-		/*
-		 * Ref: USB Type-C Cable and Connector Specification
-		 * Figure 5-1 USB4 Discovery and Entry Flow Model
-		 * Device USB4 VDO detection.
-		 */
-		return IS_ENABLED(CONFIG_USB_PD_USB4) &&
-			is_vdo_present(cnt, VDO_INDEX_PTYPE_UFP1_VDO) &&
-			PD_PRODUCT_IS_USB4(payload[VDO_INDEX_PTYPE_UFP1_VDO]);
-	}
-	return false;
-}
-
 void pd_dfp_discovery_init(int port)
 {
 	memset(&discovery[port], 0, sizeof(struct pd_discovery));
@@ -470,11 +369,6 @@ void pd_set_dfp_enter_mode_flag(int port, bool set)
 struct pd_cable *pd_get_cable_attributes(int port)
 {
 	return &cable[port];
-}
-
-__overridable bool board_is_tbt_usb4_port(int port)
-{
-	return true;
 }
 
 static void usb_pd_limit_cable_speed(int port)
