@@ -267,7 +267,9 @@ static inline void disable_usb4_mode(int port)
  * Note: USB Type-C Cable and Connector Specification
  * doesn't include details for Revision 2 cables.
  *
- *                         Passive Cable
+ * ############################################################################
+ *                         PASSIVE CABLE
+ * ############################################################################
  *                                |
  *                -----------------------------------
  *                |                                 |
@@ -293,13 +295,38 @@ static inline void disable_usb4_mode(int port)
  *                   TBT Gen2 passive       TBT Gen3 passive
  *                   cable.                 cable.
  *
+ * ############################################################################
+ *                         ACTIVE CABLE
+ * ############################################################################
+ *                              |
+ *                  ------------------------------
+ *                 |                             |
+ *            Revision 2                   Revision 3
+ *           USB Signalling              USB Signalling
+ *                 |                              |
+ *             Is 4th gen                       USB4
+ *             TBT cable?                     Supported?
+ *                |                                |
+ *      No  ----- |---- yes                yes ----|---- No
+ *      |                |                  |             |
+ * Exit USB4          Enter mode       Enter USB SOP    Exit USB4
+ * Discovery          TBT SOP'              |           Discovery
+ *                       |             Enter USB SOP'
+ *                    Enter mode            |
+ *                    TBT SOP''        Enter USB SOP''
+ *                   (if applicable)   (if applicable)
+ *                       |
+ *                    Enter USB SOP
+ *
  */
 static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 {
-	/* TODO: USB4 enter mode for Active cables */
+	/* TODO: USB4 enter mode for Rev 2 Active cables */
 
-	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
-	   (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) &&
+	if (!IS_ENABLED(CONFIG_USB_PD_USB4))
+		return false;
+
+	if ((get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) &&
 	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1)) {
 		switch (cable[port].rev) {
 		case PD_REV30:
@@ -331,7 +358,12 @@ static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 		default:
 			disable_usb4_mode(port);
 		}
-	}
+	} else if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE &&
+		   cable->rev == PD_REV30 &&
+		   is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE2) &&
+		   cable->attr2.a2_rev30.usb_40_support == USB4_SUPPORTED)
+		return true;
+
 	return false;
 }
 

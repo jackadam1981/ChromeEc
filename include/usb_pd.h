@@ -1933,6 +1933,23 @@ bool is_vdo_present(int cnt, int index);
 enum idh_ptype get_usb_pd_cable_type(int port);
 
 /**
+ * Return the Cable revision
+ *
+ * @param port	USB-C port number
+ * @return	cable rev
+ */
+enum pd_rev_type get_usb_pd_cable_rev(int port);
+
+/**
+ * Return true is cable has SOP'' controller
+ *
+ * @param port	USB-C port number
+ * @return      True, is SOP'' controller is present
+ *              False otherwise.
+ */
+bool is_cable_sop_prime_prime_controller(int port);
+
+/**
  * Stores the cable's response to discover Identity SOP' request
  *
  * @param port      USB-C port number

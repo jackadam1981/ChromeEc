@@ -2810,16 +2810,13 @@ void pd_interrupt_handler_task(void *p)
 }
 #endif /* HAS_TASK_PD_INT_C0 || HAS_TASK_PD_INT_C1 || HAS_TASK_PD_INT_C2 */
 
-static void pd_send_enter_usb(int port, int *timeout)
+static void pd_send_enter_usb(int port, int *timeout,
+			      enum tcpm_transmit_type sop)
 {
 	uint32_t usb4_payload;
 	uint16_t header;
 	int res;
 
-	/*
-	 * TODO: Enable Enter USB for cables (SOP').
-	 * This is needed for active cables
-	 */
 	if (!IS_ENABLED(CONFIG_USBC_SS_MUX) ||
 	    !IS_ENABLED(CONFIG_USB_PD_USB4) ||
 	    !IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
@@ -2827,15 +2824,52 @@ static void pd_send_enter_usb(int port, int *timeout)
 
 	usb4_payload = get_enter_usb_msg_payload(port);
 
-	header = PD_HEADER(PD_DATA_ENTER_USB,
-		pd[port].power_role,
-		pd[port].data_role,
-		pd[port].msg_id,
-		1,
-		PD_REV30,
-		0);
+	/* Send Enter USB SOP' */
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE &&
+	    get_usb_pd_cable_rev(port) == PD_REV30 &&
+	    sop ==  TCPC_TX_SOP) {
+		header = PD_HEADER(
+			PD_DATA_ENTER_USB,
+			PD_PLUG_FROM_DFP_UFP,
+			0,
+			pd[port].msg_id,
+			1,
+			PD_REV30,
+			0);
+		res = pd_transmit(port, TCPC_TX_SOP_PRIME, header,
+				   &usb4_payload, AMS_START);
+	/* Send Enter USB SOP'' */
+	} else if (sop ==  TCPC_TX_SOP_PRIME &&
+		   is_cable_sop_prime_prime_controller(port)) {
+		header = PD_HEADER(
+			PD_DATA_ENTER_USB,
+			PD_PLUG_FROM_DFP_UFP,
+			0,
+			pd[port].msg_id,
+			1,
+			PD_REV30,
+			0);
+		res = pd_transmit(port, TCPC_TX_SOP_PRIME_PRIME, header,
+				   &usb4_payload, AMS_START);
+	/* Send Enter USB SOP */
+	} else {
+		header = PD_HEADER(PD_DATA_ENTER_USB,
+			pd[port].power_role,
+			pd[port].data_role,
+			pd[port].msg_id,
+			1,
+			PD_REV30,
+			0);
 
-	res = pd_transmit(port, TCPC_TX_SOP, header, &usb4_payload, AMS_START);
+		res = pd_transmit(port, TCPC_TX_SOP, header, &usb4_payload,
+				  AMS_START);
+
+		/* Disable Enter USB4 mode prevent re-entry */
+		disable_enter_usb4_mode(port);
+
+		set_state(port, PD_STATE_ENTER_USB);
+	}
+
 	if (res < 0) {
 		*timeout = 10*MSEC;
 		/*
@@ -2847,11 +2881,6 @@ static void pd_send_enter_usb(int port, int *timeout)
 			   READY_RETURN_STATE(port));
 		return;
 	}
-
-	/* Disable Enter USB4 mode prevent re-entry */
-	disable_enter_usb4_mode(port);
-
-	set_state(port, PD_STATE_ENTER_USB);
 }
 
 void pd_task(void *u)
@@ -3730,7 +3759,8 @@ void pd_task(void *u)
 			 * USB4 compatible.
 			 */
 			if (should_enter_usb4_mode(port)) {
-				pd_send_enter_usb(port, &timeout);
+				pd_send_enter_usb(port, &timeout,
+						  PD_HEADER_GET_SOP(head));
 				break;
 			}
 
@@ -4349,7 +4379,8 @@ void pd_task(void *u)
 			 * USB4 compatible.
 			 */
 			if (should_enter_usb4_mode(port)) {
-				pd_send_enter_usb(port, &timeout);
+				pd_send_enter_usb(port, &timeout,
+						  PD_HEADER_GET_SOP(head));
 				break;
 			}
 

@@ -656,6 +656,20 @@ bool is_active_cable_element_retimer(int port)
 		cable->attr2.a2_rev30.active_elem == ACTIVE_RETIMER;
 }
 
+enum pd_rev_type get_usb_pd_cable_rev(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	return cable->rev;
+}
+
+bool is_cable_sop_prime_prime_controller(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	return cable->attr.a_rev20.sop_p_p;
+}
+
 /*
  * TODO(b/152417597): Support SOP and SOP'; eliminate redundant code for port
  * partner and cable identity discovery.

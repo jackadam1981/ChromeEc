@@ -326,6 +326,11 @@ enum active_cable_usb2_support {
 	USB2_NOT_SUPPORTED,
 };
 
+enum active_cable_usb4_support {
+	USB4_SUPPORTED,
+	USB4_NOT_SUPPORTED,
+};
+
 union active_cable_vdo2_rev30 {
 	struct {
 		uint8_t usb_gen : 1;
@@ -335,7 +340,7 @@ union active_cable_vdo2_rev30 {
 		uint8_t usb_32_support : 1;
 		enum active_cable_usb2_support usb_20_support : 1;
 		uint8_t usb_20_hub_hop : 2;
-		uint8_t usb_40_support : 1;
+		enum active_cable_usb4_support usb_40_support : 1;
 		enum retimer_active_element active_elem : 1;
 		uint8_t physical_conn : 1;
 		uint8_t u3_to_u0 : 1;
