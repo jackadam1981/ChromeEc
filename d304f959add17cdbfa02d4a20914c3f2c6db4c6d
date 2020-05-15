@@ -118,6 +118,30 @@
       "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb399064_5c7521f2",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T17:57:56Z",
+      "side": 1,
+      "message": "Ok, I guess I should re-locate the \u0027enable_sleep(SLEEP_MASK_SPI)\u0027 or \u0027enable_sleep(SLEEP_MASK_I2C_SLAVE)\u0027 calls properly.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/cr50/chip/g/sps_tpm.c;rcl\u003d6bfa838a0d5fd9498ac0c298bfb08b99b5fe4a7e;l\u003d125\n\nhttps://source.corp.google.com/chromeos_public/src/platform/cr50/chip/g/i2cs.c;rcl\u003dfa6f77cd0da5b2f17494201e0770d1c8d550b7f4;l\u003d333",
+      "parentUuid": "f77d0920_8126ff4e",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
