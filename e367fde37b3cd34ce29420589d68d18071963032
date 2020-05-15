@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1cad80b0_d089fce9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-15T08:51:01Z",
+      "side": 1,
+      "message": "Done, verified on a Blooglet (Octopus).",
+      "parentUuid": "6f6e342e_39fd13ab",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "e367fde37b3cd34ce29420589d68d18071963032",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbe9962d_2b32fdb3",
         "filename": "common/usb_charger.c",
         "patchSetId": 4

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2517e310_6065a1a3",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-15T08:51:01Z",
+      "side": 1,
+      "message": "Yes, thanks for catching this.",
+      "parentUuid": "2cebf76d_67ea312c",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 43
+      },
+      "revId": "e05ca80ff34fb9c69cde55f1126daeacdbc786e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0366bb45_4b2b3d84",
         "filename": "driver/bc12/max14637.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6b19e880_333405b2",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-15T08:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0366bb45_4b2b3d84",
+      "range": {
+        "startLine": 154,
+        "startChar": 38,
+        "endLine": 154,
+        "endChar": 41
+      },
+      "revId": "e05ca80ff34fb9c69cde55f1126daeacdbc786e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca4ce9e5_a5a1a54a",
         "filename": "driver/bc12/max14637.c",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "e05ca80ff34fb9c69cde55f1126daeacdbc786e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890799c9_cee4a548",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-15T08:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca4ce9e5_a5a1a54a",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 224,
+        "endChar": 32
+      },
+      "revId": "e05ca80ff34fb9c69cde55f1126daeacdbc786e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -114,6 +186,54 @@
       "revId": "e05ca80ff34fb9c69cde55f1126daeacdbc786e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0195dc4b_87b11e4d",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4120,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-15T08:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc6aebd0_8f901685",
+      "range": {
+        "startLine": 4120,
+        "startChar": 19,
+        "endLine": 4120,
+        "endChar": 25
+      },
+      "revId": "e05ca80ff34fb9c69cde55f1126daeacdbc786e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c979e76_e2dc6ab5",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4120,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-15T08:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8363439_4ae1b1fd",
+      "range": {
+        "startLine": 4120,
+        "startChar": 6,
+        "endLine": 4120,
+        "endChar": 17
+      },
+      "revId": "e05ca80ff34fb9c69cde55f1126daeacdbc786e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
