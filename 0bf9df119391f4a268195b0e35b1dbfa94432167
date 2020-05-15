@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adbc2e69_49edaf56",
+        "filename": "test/cmocka/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-15T20:57:27Z",
+      "side": 1,
+      "message": "When we have a lot of unit tests (in the future), this section of build.mk is going to become unwieldy. Can we put the srcs and cflags for each unit test in its own .mk file, and use $(tests) to include each of those .mk files?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 33
+      },
+      "revId": "0bf9df119391f4a268195b0e35b1dbfa94432167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
