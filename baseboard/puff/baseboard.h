@@ -1,12 +1,12 @@
-/* Copyright 2019 The Chromium OS Authors. All rights reserved.
+/* Copyright 2020 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-/* Puff board configuration */
+/* Puff baseboard configuration */
 
-#ifndef __CROS_EC_BOARD_H
-#define __CROS_EC_BOARD_H
+#ifndef __CROS_EC_BASEBOARD_H
+#define __CROS_EC_BASEBOARD_H
 
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
@@ -268,4 +268,4 @@ enum ec_cfg_bj_power_type ec_config_get_bj_power(void);
  */
 #define GPIO_RSMRST_L_PGOOD	GPIO_PCH_RSMRST_L
 
-#endif /* __CROS_EC_BOARD_H */
+#endif /* __CROS_EC_BASEBOARD_H */
