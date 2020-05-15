@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/ppc/syv682x.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -89,8 +90,8 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 	[USB_PD_PORT_TCPC_1] = {
 		.i2c_port = I2C_PORT_TCPC1,
-		.i2c_addr = NX20P3483_ADDR2,
-		.drv = &nx20p348x_drv,
+		.i2c_addr = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
