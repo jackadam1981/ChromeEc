@@ -142,6 +142,23 @@
       "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b21cdc3_dd51f360",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-05-15T21:28:55Z",
+      "side": 1,
+      "message": "Do you need to set pulse_length to 0?",
+      "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
