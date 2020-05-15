@@ -62,7 +62,7 @@ const unsigned int chg_cnt = ARRAY_SIZE(chg_chips);
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_PWRLED] = {
 		.channel = 0,
-		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.flags = PWM_CONFIG_ACTIVE_LOW,
 		.freq_hz = 100,
 	},
 };
