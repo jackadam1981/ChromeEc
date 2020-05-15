@@ -70,6 +70,30 @@
       "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c48a1cde_4f91be3f",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-05-15T17:46:12Z",
+      "side": 1,
+      "message": "Cr50 enters regular sleep even if the AP is on.\nDoes the high speed timer continue running when cr50 is in regular sleep? I don\u0027t think it\u0027s a wake source.",
+      "parentUuid": "58931a35_298fcfb8",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
