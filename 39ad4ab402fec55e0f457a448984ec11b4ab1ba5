@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0efc7bbe_52b731f0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1889,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-15T22:23:34Z",
+      "side": 1,
+      "message": "How about is_cable_speed_gen2_capable()?  I don\u0027t think USB3.1 is meaningful in this context since both USB3.1 (rev 2) and USB3.1 (rev 3) cables can be limited to Gen1.",
+      "range": {
+        "startLine": 1889,
+        "startChar": 5,
+        "endLine": 1889,
+        "endChar": 34
+      },
+      "revId": "39ad4ab402fec55e0f457a448984ec11b4ab1ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
