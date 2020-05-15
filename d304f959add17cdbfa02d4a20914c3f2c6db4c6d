@@ -159,6 +159,24 @@
       "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c63f5c49_29748c33",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T21:35:20Z",
+      "side": 1,
+      "message": "Not necessary.\npulse_length is used in assert_int_ap() and timer ISR, which are called while AP is on. It is not used while int_ap_extension is disabled.\n\nHowever, it is not harmful to have it. will add it in the next patch.",
+      "parentUuid": "2b21cdc3_dd51f360",
+      "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
