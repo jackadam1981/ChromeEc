@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ec06038_ed343e88",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-15T02:26:36Z",
+      "side": 1,
+      "message": "If this flag is enabled, the power led would still be active in low-power mode. I think we don\u0027t want it on in LP mode?",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "95804ee410e9ff626eeb4d6d18e72d7faae802aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
