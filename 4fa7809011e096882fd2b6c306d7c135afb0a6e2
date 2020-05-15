@@ -22,6 +22,30 @@
       "revId": "4fa7809011e096882fd2b6c306d7c135afb0a6e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e3a5f9e_8ac8a507",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-15T22:39:45Z",
+      "side": 1,
+      "message": "We are refereeing 1.43:\nInfo in Datasheet is not clear but here is the details.\n\n1. For DFP set this based on DUT capability (based on info in mux_state).\n2. For UFP set it 1 only if USB capable (based on info in mux_state)\nthis bit \u003d 0 if these are true:\nUSB4\u003d1,TBT3\u003d1,\nDP Alt Mode 4 lanes\u003d1,\nor SOP’ discover ID header B29:27\u003d000b\n\nAs EC already takes care of items in point 1\u00262, it is being set only if USB capable.",
+      "parentUuid": "0a50532d_897ec13a",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 49
+      },
+      "revId": "4fa7809011e096882fd2b6c306d7c135afb0a6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
