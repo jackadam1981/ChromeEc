@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16b27014_82e485dc",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-15T13:15:01Z",
+      "side": 1,
+      "message": "where did these numbers come from? can they be #defined in a header file?",
+      "range": {
+        "startLine": 629,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 30
+      },
+      "revId": "c1ee7e03e244b290ed19746f8870923a9ca48cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
