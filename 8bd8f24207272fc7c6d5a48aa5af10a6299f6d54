@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0334fe2d_c64c4870",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-15T17:35:53Z",
+      "side": 1,
+      "message": "Can we get more details? It looks like we need to build the code and see that it compiles correctly? Can you specify which platforms failed before this CL as the ones to check to be sure they built correctly?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "8bd8f24207272fc7c6d5a48aa5af10a6299f6d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
