@@ -22,6 +22,40 @@
       "revId": "0bf9df119391f4a268195b0e35b1dbfa94432167",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62fc3c4_c0e9c268",
+        "filename": "test/cmocka/mocks/task_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-15T23:36:45Z",
+      "side": 1,
+      "message": "Consider adding a comment that this will call the mock version of udelay(), rather than actually delaying execution of the unit test.",
+      "revId": "0bf9df119391f4a268195b0e35b1dbfa94432167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17be14f3_936fde2a",
+        "filename": "test/cmocka/mocks/timer_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-15T23:36:45Z",
+      "side": 1,
+      "message": "I don\u0027t like this, but I\u0027m not sure I see a better way (within the framework we currently have) to simulate actual time ticking on the clock.",
+      "revId": "0bf9df119391f4a268195b0e35b1dbfa94432167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
