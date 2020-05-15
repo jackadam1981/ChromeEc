@@ -3,10 +3,9 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
-# Board specific files build
+# Baseboard specific files build
 #
 
-CHIP:=npcx
-CHIP_FAMILY:=npcx7
-CHIP_VARIANT:=npcx7m6fc
-BASEBOARD:=puff
+baseboard-y=baseboard.o
+baseboard-y+=led.o
+baseboard-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o
