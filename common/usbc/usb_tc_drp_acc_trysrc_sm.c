@@ -1983,6 +1983,7 @@ static void tc_attached_snk_run(const int port)
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 			/* Clear PR_SWAP flag in exit */
+			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 			set_state_tc(port, TC_ATTACHED_SRC);
 			return;
 		}
@@ -2200,6 +2201,7 @@ static void tc_unoriented_dbg_acc_src_run(const int port)
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 			/* Clear TC_FLAGS_DO_PR_SWAP on exit */
+			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 			return set_state_tc(port, TC_DBG_ACC_SNK);
 		}
 
@@ -2366,6 +2368,7 @@ static void tc_dbg_acc_snk_run(const int port)
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 		/* Clear PR_SWAP flag in exit */
+		TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 		set_state_tc(port, TC_UNORIENTED_DBG_ACC_SRC);
 		return;
 	}
@@ -2778,6 +2781,7 @@ static void tc_attached_src_run(const int port)
 		 */
 		if (TC_CHK_FLAG(port, TC_FLAGS_DO_PR_SWAP)) {
 			/* Clear TC_FLAGS_DO_PR_SWAP on exit */
+			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 			return set_state_tc(port, TC_ATTACHED_SNK);
 		}
 
