@@ -7,7 +7,20 @@ cmocka_srcs := test/cmocka
 cmocka_out := $(out)/cmocka
 
 # Register all tests
-tests:=
+tests:= usb_typec_drp_acc_trysrc
+
+# usb_typec_drp_acc_trysrc test attributes
+usb_typec_drp_acc_trysrc-srcs = \
+	$(cmocka_srcs)/usb_typec_drp_acc_trysrc.c \
+	common/usb_common.c \
+	common/usbc/usb_tc_drp_acc_trysrc_sm.c \
+	common/usbc/usb_sm.c \
+	common/usb_pd_dual_role.c \
+	common/mock/tcpc_mock.c \
+	common/mock/usb_mux_mock.c \
+	driver/usb_mux/usb_mux.c
+
+usb_typec_drp_acc_trysrc-cflags =
 
 # Include common mocks
 common_mocks = $(wildcard $(cmocka_srcs)/mocks/*)
