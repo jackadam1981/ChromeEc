@@ -26,7 +26,7 @@
 #endif
 
 /* excludes non-base tasks for test build */
-#ifdef TEST_BUILD
+#if defined(TEST_BUILD) && !defined(CMOCKA_TEST)
 #define TASK_NOTEST(...)
 #ifdef TEST_TASK_EXTRA_ARGS
 #define TASK_TEST(...) TASK(__VA_ARGS__, TEST_TASK_EXTRA_ARGS)

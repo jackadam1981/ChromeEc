@@ -364,7 +364,7 @@ struct irq_def {
  */
 #ifdef CONFIG_COMMON_RUNTIME
 #include "irq_handler.h"
-#else
+#elseif !defined(CMOCKA_TEST)
 #define IRQ_HANDLER(irqname) CONCAT3(irq_, irqname, _handler)
 #define IRQ_HANDLER_OPT(irqname) CONCAT3(irq_, irqname, _handler_optional)
 #define DECLARE_IRQ(irq, routine, priority) DECLARE_IRQ_(irq, routine, priority)

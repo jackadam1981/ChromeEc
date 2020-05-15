@@ -11,6 +11,12 @@
 /* Test config flags only apply for test builds */
 #ifdef TEST_BUILD
 
+/* No need for runtime and host commands in unit-tests */
+#ifdef CMOCKA_TEST
+#undef CONFIG_COMMON_RUNTIME
+#undef CONFIG_CMD_TYPEC
+#endif
+
 /* Host commands are sorted. */
 #define CONFIG_HOSTCMD_SECTION_SORTED
 

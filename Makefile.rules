@@ -113,6 +113,9 @@ cmd_host_test = $(MAKE) BOARD=host PROJECT=$* \
 	$(if $(TEST_SCRIPT),TEST_SCRIPT=$(TEST_SCRIPT)) $(TEST_FLAG) \
 	build/host/$*/$*.exe
 cmd_run_host_test = ./util/run_host_test $* $(silent)
+cmd_cmocka_c_to_obj = $(CC) $(C_WARN) $(CFLAGS) $(CMOCKA_CFLAGS) $($(1)-cflags) \
+	-MMD -MT $@ -c $< -o $@
+cmd_cmocka_exe = $(CC) $^ $($(1)-cflags) -o $@ $(CMOCKA_LDFLAGS)
 # generate new version.h, compare if it changed and replace if so
 cmd_version = ./util/getversion.sh > $@.tmp && \
 	cmp -s $@.tmp $@ && rm -f $@.tmp || mv $@.tmp $@
