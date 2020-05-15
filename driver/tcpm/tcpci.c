@@ -25,10 +25,8 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#ifdef CONFIG_USB_PD_DECODE_SOP
 static int vconn_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int rx_en[CONFIG_USB_PD_PORT_MAX_COUNT];
-#endif
 
 /*
  * Last reported VBus Level
@@ -569,21 +567,19 @@ int tcpci_tcpm_set_vconn(int port, int enable)
 	if (rv)
 		return rv;
 
-#ifdef CONFIG_USB_PD_DECODE_SOP
-	/* save vconn */
-	vconn_en[port] = enable;
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP)) {
+		/* save vconn */
+		vconn_en[port] = enable;
 
-	if (rx_en[port]) {
-		int detect_sop_en = TCPC_REG_RX_DETECT_SOP_HRST_MASK;
+		if (rx_en[port]) {
+			int detect_sop_en;
 
-		if (enable) {
-			detect_sop_en =
-				TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK;
+			detect_sop_en = (enable)
+				? TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK
+				: TCPC_REG_RX_DETECT_SOP_HRST_MASK;
+			tcpc_write(port, TCPC_REG_RX_DETECT, detect_sop_en);
 		}
-
-		tcpc_write(port, TCPC_REG_RX_DETECT, detect_sop_en);
 	}
-#endif
 	reg &= ~TCPC_REG_POWER_CTRL_VCONN(1);
 	reg |= TCPC_REG_POWER_CTRL_VCONN(enable);
 	return tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
@@ -617,22 +613,19 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 {
 	int detect_sop_en = 0;
 
-	if (enable) {
-		detect_sop_en = TCPC_REG_RX_DETECT_SOP_HRST_MASK;
-
-#ifdef CONFIG_USB_PD_DECODE_SOP
-		/* save rx_on */
+	/* save rx */
+	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP))
 		rx_en[port] = enable;
 
+	if (enable) {
 		/*
 		 * Only the VCONN Source is allowed to communicate
 		 * with the Cable Plugs.
 		 */
-
-		if (vconn_en[port])
-			detect_sop_en =
-				TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK;
-#endif
+		detect_sop_en = (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) &&
+					vconn_en[port])
+				? TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK
+				: TCPC_REG_RX_DETECT_SOP_HRST_MASK;
 	}
 
 	/* If enable, then set RX detect for SOP and HRST */
