@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9c0a35b6_7bd53902",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:47:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2dfb3d4_910b43de",
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9703d428_df09a784",
         "filename": "board/cr50/tpm_board_cfg.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2937c98_6eb37960",
+        "filename": "board/cr50/tpm_board_cfg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:47:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9703d428_df09a784",
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "3a8345b8_b6b89591",
+        "filename": "board/cr50/tpm_board_cfg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:47:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35c61f06_d73c832b",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2e1e7e5_e140e18c",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -79,6 +139,30 @@
       "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa42747_fbf7fa5f",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:47:26Z",
+      "side": 1,
+      "message": "I am re-aligning the lines above replacing spaces with tabs.",
+      "parentUuid": "a2e1e7e5_e140e18c",
+      "range": {
+        "startLine": 89,
+        "startChar": 24,
+        "endLine": 89,
+        "endChar": 29
+      },
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "99314311_96c942ee",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:47:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64756112_94c9c198",
+      "range": {
+        "startLine": 425,
+        "startChar": 10,
+        "endLine": 425,
+        "endChar": 15
+      },
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "761a3cca_e53334ba",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "257a7c99_28527a9d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:47:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "761a3cca_e53334ba",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 1
+      },
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "298178ed_7f182a7c",
         "filename": "include/tpm_board_cfg.h",
         "patchSetId": 2
@@ -148,6 +280,30 @@
       "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85272092_006ad8df",
+        "filename": "include/tpm_board_cfg.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:47:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "298178ed_7f182a7c",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "e69346316e801d04272ea376954a80a9e3f5f856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
