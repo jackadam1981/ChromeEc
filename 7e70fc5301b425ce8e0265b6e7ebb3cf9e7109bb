@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97312dd3_d65b6633",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-15T20:07:28Z",
+      "side": 0,
+      "message": "Remove definition and free up the bit as well?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "7e70fc5301b425ce8e0265b6e7ebb3cf9e7109bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
