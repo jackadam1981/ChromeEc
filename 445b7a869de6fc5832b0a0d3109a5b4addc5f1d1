@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4bde04d_68742810",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T17:31:37Z",
+      "side": 1,
+      "message": "This patch needs to lock the program on this register once AP-FW leaves RO.\nWill bring this patch back with that implementation.",
+      "range": {
+        "startLine": 1790,
+        "startChar": 38,
+        "endLine": 1790,
+        "endChar": 63
+      },
+      "revId": "445b7a869de6fc5832b0a0d3109a5b4addc5f1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
