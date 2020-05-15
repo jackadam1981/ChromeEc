@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a138919c_a0bcb0f9",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-05-15T21:11:01Z",
+      "side": 1,
+      "message": "Undo this during cleanup. This will change cr50 sleep behavior and could interfere with testing.",
+      "range": {
+        "startLine": 1308,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 3
+      },
+      "revId": "fb823f914cb355297345af017f005a937e55fd99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
