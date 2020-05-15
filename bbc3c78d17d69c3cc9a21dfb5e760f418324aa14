@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cf612bf_70fb218b",
+        "filename": "include/task.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-15T20:53:51Z",
+      "side": 1,
+      "message": "Previously, DECLARE_IRQ and related functions would be declared either in irq_handler.h #included above, or in the #defines below. If CMOCKA_TEST is defined, then those macros won\u0027t be defined at all. Consider including a comment about why it\u0027s OK to leave the macros completely undefined in a CMOCKA-based unit test, so that a future maintainer doesn\u0027t have to wonder.",
+      "revId": "bbc3c78d17d69c3cc9a21dfb5e760f418324aa14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c29742f4_e0f9dbe5",
+        "filename": "test/cmocka/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-15T20:53:51Z",
+      "side": 1,
+      "message": "Maybe add a comment here that if any of the cmocka unit tests fail, these commands will not execute. They are here to make it easy at the end of a run (possibly with -j) that all of the tests have passed.",
+      "revId": "bbc3c78d17d69c3cc9a21dfb5e760f418324aa14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
