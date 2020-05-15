@@ -46,6 +46,30 @@
       "revId": "7e70fc5301b425ce8e0265b6e7ebb3cf9e7109bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f65809c_f6bf8311",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-15T20:48:51Z",
+      "side": 0,
+      "message": "I usually opt for closing the gap when removing flags.  It\u0027s a pain in more complex CLs because you often end up having to rebase once or twice during review.  But I kind of doubt people will be likely to notice the available bit otherwise.",
+      "parentUuid": "f557170b_cadad899",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "7e70fc5301b425ce8e0265b6e7ebb3cf9e7109bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
