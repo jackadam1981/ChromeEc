@@ -46,6 +46,30 @@
       "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58931a35_298fcfb8",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T17:43:56Z",
+      "side": 1,
+      "message": "If the timer is for assertion, then it means AP is on. Cr50 wouldn\u0027t sleep.\nIf the timer is for deassertion, then AP could be off, but Cr50 sleeps a few seconds after AP off detection. This timer is just for 100usec.\nDo we still need sleep prevention here?",
+      "parentUuid": "06746b2e_a0003692",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
