@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c0a14f9_6f7e72e0",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-15T02:27:48Z",
+      "side": 1,
+      "message": "Could you also add a comment to notify this might be removed on rev1, or saying this is rev0 only?",
+      "range": {
+        "startLine": 95,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "e2af0479181e6c413bca3ed1c320d85ed285be3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
