@@ -22,6 +22,30 @@
       "revId": "c1ee7e03e244b290ed19746f8870923a9ca48cf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d04f25f9_4e976c64",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1333246
+      },
+      "writtenOn": "2020-05-15T13:47:20Z",
+      "side": 1,
+      "message": "50 is the idle counts in clocks that PMU decide that the HW fabric is in idle condition and 0xf is the count value for trunk clock gate. These two values are from HW spec. I added #define for them in corresponding power_mgt.h.",
+      "parentUuid": "16b27014_82e485dc",
+      "range": {
+        "startLine": 629,
+        "startChar": 0,
+        "endLine": 630,
+        "endChar": 30
+      },
+      "revId": "c1ee7e03e244b290ed19746f8870923a9ca48cf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
