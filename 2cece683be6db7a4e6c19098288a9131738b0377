@@ -16,6 +16,24 @@
       "revId": "2cece683be6db7a4e6c19098288a9131738b0377",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59f0f778_389a242a",
+        "filename": "board/lazor/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-15T21:54:12Z",
+      "side": 0,
+      "message": "The host command is not used. And prevent using it incorrectly.",
+      "parentUuid": "d36249ce_aa2c42a4",
+      "revId": "2cece683be6db7a4e6c19098288a9131738b0377",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
