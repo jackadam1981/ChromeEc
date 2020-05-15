@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebc876d2_f71db567",
+        "filename": "board/mushu/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-15T19:54:42Z",
+      "side": 1,
+      "message": "nit: PS8751.  Hopefully the newer chips won\u0027t share this issue",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 14
+      },
+      "revId": "821b193d894e529377ed041a6ff1019463e93b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ec7ca34_74c42d39",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1901,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-15T19:54:42Z",
+      "side": 1,
+      "message": "Also PD 3.0 only, right?  We should probably just ignore unexpected bits when running in PD 2.0 mode? I\u0027ve been going through the PD 2.0 spec to try finding the right passage for what to do when we get an unexpected message running that revision.  So far no luck but I\u0027ll try spec-spelunking more later.",
+      "range": {
+        "startLine": 1901,
+        "startChar": 23,
+        "endLine": 1901,
+        "endChar": 44
+      },
+      "revId": "821b193d894e529377ed041a6ff1019463e93b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956f7be7_efba2b97",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3664,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-15T19:54:42Z",
+      "side": 1,
+      "message": "Is the FAST_ROLE_SWAP_PATH flag defined in PD 2.0 mode?  Seems like relatively minimal space savings for a few of these if the flag will already be preventing us from accidentally heading down the FRS path",
+      "range": {
+        "startLine": 3662,
+        "startChar": 0,
+        "endLine": 3664,
+        "endChar": 52
+      },
+      "revId": "821b193d894e529377ed041a6ff1019463e93b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb6791b8_f38e4950",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5550,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-15T19:54:42Z",
+      "side": 1,
+      "message": "Would this be better to check if partner revision is PD 2.0?  Even in PD 3.0 mode, we should be ignoring reserved bits if the partner is talking PD 2.0 to us",
+      "range": {
+        "startLine": 5546,
+        "startChar": 5,
+        "endLine": 5550,
+        "endChar": 31
+      },
+      "revId": "821b193d894e529377ed041a6ff1019463e93b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9171ad3_353f2c10",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1783,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-15T19:54:42Z",
+      "side": 1,
+      "message": "I\u0027m not very experienced with the PRL, but from a quick glance at the PD 2.0 spec there is a PRL_TX_DISCARD_MESSAGE state there.  Should we be discarding PD 2.0 as well in this condition?",
+      "range": {
+        "startLine": 1783,
+        "startChar": 27,
+        "endLine": 1783,
+        "endChar": 51
+      },
+      "revId": "821b193d894e529377ed041a6ff1019463e93b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6abc10fc_7ccce6a6",
+        "filename": "docs/usb-tcpmv2.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-15T19:54:42Z",
+      "side": 1,
+      "message": "Awesome, thank you for updating the .md doc",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 124
+      },
+      "revId": "821b193d894e529377ed041a6ff1019463e93b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03b26c4c_2cc7f06c",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-15T19:54:42Z",
+      "side": 1,
+      "message": "The simplification of this compile check definitely makes me feel like we\u0027re on the right track putting a define in for REV30 only",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "821b193d894e529377ed041a6ff1019463e93b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
