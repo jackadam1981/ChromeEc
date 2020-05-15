@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ead843b_644823ed",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-15T02:45:20Z",
+      "side": 0,
+      "message": "remove prototype and fake\n    include/usb_tc_sm.h:void tc_hard_reset_allow_unattach(int port);\n    test/fake_usbc.c:void tc_hard_reset_allow_unattach(int port)",
+      "range": {
+        "startLine": 711,
+        "startChar": 1,
+        "endLine": 711,
+        "endChar": 43
+      },
+      "revId": "c6534cc428cc6d58ed4417a74752d84c7747e700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
