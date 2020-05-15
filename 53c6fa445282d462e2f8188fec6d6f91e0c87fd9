@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e88df713_a621c919",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-15T02:14:24Z",
+      "side": 1,
+      "message": "CONFIG_CHARGER_INPUT_CURRENT is used to govern the current while PD transition. We shouldn\u0027t use that high value. Use 512 instead.\n\nhttps://github.com/coreboot/chrome-ec/blob/master/docs/low_battery_startup.md#config_charger_input_current",
+      "range": {
+        "startLine": 35,
+        "startChar": 37,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "53c6fa445282d462e2f8188fec6d6f91e0c87fd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
