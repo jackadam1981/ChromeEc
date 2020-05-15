@@ -30,14 +30,6 @@ static int vconn_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int rx_en[CONFIG_USB_PD_PORT_MAX_COUNT];
 #endif
 
-/*
- * Last reported VBus Level
- *
- * BIT(VBUS_SAFE0V) will indicate if in SAFE0V
- * BIT(VBUS_PRESENT) will indicate if in PRESENT
- */
-static int tcpc_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
-
 /* Cached RP role values */
 static int cached_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -607,7 +599,7 @@ static int tcpm_alert_ext_status(int port, int *alert_ext)
 	return tcpc_read(port, TCPC_REG_ALERT_EXT, alert_ext);
 }
 
-static int tcpm_ext_status(int port, int *ext_status)
+__maybe_unused static int tcpm_ext_status(int port, int *ext_status)
 {
 	/* Read TCPC Extended Status register */
 	return tcpc_read(port, TCPC_REG_EXT_STATUS, ext_status);
@@ -654,10 +646,23 @@ void tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level)
 {
-	if (level == VBUS_SAFE0V)
-		return !!(tcpc_vbus[port] & BIT(VBUS_SAFE0V));
-	else
-		return !!(tcpc_vbus[port] & BIT(VBUS_PRESENT));
+	int reg = 0;
+
+	if (level == VBUS_SAFE0V) {
+		if (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0) {
+			/* Read TCPC's vSafe0V status directly */
+			tcpm_ext_status(port, &reg);
+			return !!(reg & TCPC_REG_EXT_STATUS_SAFE0V);
+		}
+
+		/* TCPCI rev 1 - vSafe0V if VBUS not present */
+		tcpci_tcpm_get_power_status(port, &reg);
+		return !(reg & TCPC_REG_POWER_STATUS_VBUS_PRES);
+	}
+
+	/* Read TCPC's VBUS present status directly */
+	tcpci_tcpm_get_power_status(port, &reg);
+	return !!(reg & TCPC_REG_POWER_STATUS_VBUS_PRES);
 }
 #endif
 
@@ -1072,37 +1077,15 @@ void tcpci_tcpc_alert(int port)
 		}
 	}
 
-	/* Check for VBus change */
-	if ((tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0) &&
-	    (alert & TCPC_REG_ALERT_EXT_STATUS)) {
-		int ext_status = 0;
-
-		/* Read Extended Status register */
-		tcpm_ext_status(port, &ext_status);
-		/* Safe0V and not Safe5V */
-		if (ext_status & TCPC_REG_EXT_STATUS_SAFE0V)
-			tcpc_vbus[port] = BIT(VBUS_SAFE0V);
-	}
 	if (alert & TCPC_REG_ALERT_POWER_STATUS) {
 		int pwr_status = 0;
 
 		/* Read Power Status register */
 		tcpci_tcpm_get_power_status(port, &pwr_status);
-		/* Update VBUS status */
-		if (pwr_status & TCPC_REG_POWER_STATUS_VBUS_PRES)
-			/* Safe5V and not Safe0V */
-			tcpc_vbus[port] = BIT(VBUS_PRESENT);
-		else if (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0)
-			/* not Safe5V */
-			tcpc_vbus[port] &= ~BIT(VBUS_PRESENT);
-		else
-			/* not Safe5V and not Safe0V */
-			tcpc_vbus[port] = BIT(VBUS_SAFE0V);
-
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) && defined(CONFIG_USB_CHARGER)
 		/* Update charge manager with new VBUS state */
 		usb_charger_vbus_change(port,
-				!!(tcpc_vbus[port] & BIT(VBUS_PRESENT)));
+			!!(pwr_status & TCPC_REG_POWER_STATUS_VBUS_PRES));
 		pd_event |= TASK_EVENT_WAKE;
 #endif /* CONFIG_USB_PD_VBUS_DETECT_TCPC && CONFIG_USB_CHARGER */
 		if (pwr_status & TCPC_REG_POWER_STATUS_VBUS_DET)
@@ -1275,32 +1258,13 @@ int tcpci_tcpm_init(int port)
 	/* Initialize power_status_mask */
 	init_power_status_mask(port);
 
-	if (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0) {
-		int ext_status = 0;
-
-		/* Read Extended Status register */
-		tcpm_ext_status(port, &ext_status);
-		/* Initial level, set appropriately */
-		if (power_status & TCPC_REG_POWER_STATUS_VBUS_PRES)
-			tcpc_vbus[port] = BIT(VBUS_PRESENT);
-		else if (ext_status & TCPC_REG_EXT_STATUS_SAFE0V)
-			tcpc_vbus[port] = BIT(VBUS_SAFE0V);
-		else
-			tcpc_vbus[port] = 0;
-	} else {
-		/* Initial level, set appropriately */
-		tcpc_vbus[port] = (power_status &
-				   TCPC_REG_POWER_STATUS_VBUS_PRES)
-					? BIT(VBUS_PRESENT)
-					: BIT(VBUS_SAFE0V);
-	}
-
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) && defined(CONFIG_USB_CHARGER)
 	/*
 	 * Set Vbus change now in case the TCPC doesn't send a power status
 	 * changed interrupt for it later.
 	 */
-	usb_charger_vbus_change(port, !!(tcpc_vbus[port] & BIT(VBUS_PRESENT)));
+	usb_charger_vbus_change(port,
+		!!(power_status & TCPC_REG_POWER_STATUS_VBUS_PRES));
 #endif
 	error = init_alert_mask(port);
 	if (error)
