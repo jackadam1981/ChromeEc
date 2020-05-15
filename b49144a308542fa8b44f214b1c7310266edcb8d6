@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "191f5930_f83ea4dc",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-05-15T08:53:54Z",
+      "side": 1,
+      "message": "Suggest just having key_handle_size",
+      "range": {
+        "startLine": 209,
+        "startChar": 54,
+        "endLine": 209,
+        "endChar": 67
+      },
+      "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cc2fcc4_0bb82a23",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 1
@@ -19,6 +42,87 @@
         "endLine": 230,
         "endChar": 46
       },
+      "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecab4cd3_37d9cfc3",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-05-15T08:53:54Z",
+      "side": 1,
+      "message": "Any concern in particular?",
+      "parentUuid": "2cc2fcc4_0bb82a23",
+      "range": {
+        "startLine": 228,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 46
+      },
+      "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc378c0_5331e749",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-05-15T08:53:54Z",
+      "side": 1,
+      "message": "Here I was imagining we\u0027d have \u0027USE_FP_ENABLED_KH\u0027 or something similar",
+      "range": {
+        "startLine": 87,
+        "startChar": 33,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21fccaa0_d1a5dc49",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-05-15T08:53:54Z",
+      "side": 1,
+      "message": "Maybe better to not have the version actually included in the seed? Not sure what the implications are but it\u0027s supposed to be a random number so having this at the beginning seems maybe risky. We can still include it in the data taken into account for HMAC in the second part of the KH.",
+      "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bedceeb0_e4145e22",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-05-15T08:53:54Z",
+      "side": 1,
+      "message": "Let\u0027s put this at the end so we can change the size easily later",
       "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
