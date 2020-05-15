@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e2fe7e59_0ab9644f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:45:49Z",
+      "side": 1,
+      "message": "ran the same command line with http://crrev.com/c/2203457 with Long pulse extension enabled, and got no character loss.",
+      "parentUuid": "1b49390f_c40d727a",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7132d124_56c5fb41",
         "filename": "board/cr50/board.h",
         "patchSetId": 20
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "06569b5b_ad55ea15",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7132d124_56c5fb41",
+      "range": {
+        "startLine": 373,
+        "startChar": 3,
+        "endLine": 374,
+        "endChar": 35
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca1d8e77_a1d1072e",
         "filename": "board/cr50/board.h",
         "patchSetId": 20
@@ -68,6 +116,30 @@
       "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b320f9f4_bdd1230a",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca1d8e77_a1d1072e",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 0
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "09a15f5a_b183c316",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4800c0ed_d2688b3c",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f51a6aeb_07b0d31f",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 20
@@ -137,6 +233,30 @@
       "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b041c7e_82f9a431",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f51a6aeb_07b0d31f",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 33
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "e0ee699a_b13c2a14",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "866cb97d_f2c58b0b",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 1
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69b9f77a_f197cfef",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 20
@@ -183,6 +327,30 @@
       "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31827070_541a29c4",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-15T00:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69b9f77a_f197cfef",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
