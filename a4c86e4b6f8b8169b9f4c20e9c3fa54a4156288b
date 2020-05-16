@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00f2fefc_8c04d428",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-16T05:43:31Z",
+      "side": 1,
+      "message": "Remove #ifdef.",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f062df_4dc9f067",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-16T05:43:31Z",
+      "side": 1,
+      "message": "How did you verify it?",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "509da946_c9b147f5",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-16T05:43:31Z",
+      "side": 1,
+      "message": "There is only one accelerometer, so we can not calculate lid angle. \nRemove .config setting.",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecb152ae_ceec5341",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-16T05:43:31Z",
+      "side": 1,
+      "message": "Remove #ifdef.",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a890b04b_4234704c",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-16T05:43:31Z",
+      "side": 1,
+      "message": "different CL",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c112a879_bc64f972",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-16T05:43:31Z",
+      "side": 1,
+      "message": "CONFIG_MAG_BMI_BMM150 is defined line 120, remove this #ifdef",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
