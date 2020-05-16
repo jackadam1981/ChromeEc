@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f47d405_9202a475",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-16T05:51:02Z",
+      "side": 1,
+      "message": "The hypothetical problem now is if 2 sensors use this code, but one is using SPI and the other uses I2C, since, SLAVE_IS_SPI is removed, the code does not work anymore.",
+      "revId": "c1fe9101ebd3efdfd9b2fe54beebd84f1a6841f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

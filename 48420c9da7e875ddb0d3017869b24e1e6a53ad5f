@@ -69,6 +69,24 @@
       "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b94f02f_c159b8ed",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-16T05:51:02Z",
+      "side": 1,
+      "message": "This define is only used for kionix now.\nAs you added a define specifically for BMI sensor, it make sense to rename it CONFIG_KIONIX_...",
+      "parentUuid": "c236860d_4c6c7500",
+      "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
