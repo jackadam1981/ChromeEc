@@ -156,7 +156,7 @@ static void enable_pp5000_rail(void)
 static void dsw_pwrok_pass_thru(void)
 {
 	int dswpwrok_in = intel_x86_get_pg_ec_dsw_pwrok();
-	static int dswpwrok_out = -1;
+	int dswpwrok_out = gpio_get_level(GPIO_PCH_DSW_PWROK);
 
 	/* Pass-through DSW_PWROK to ICL. */
 	if (dswpwrok_in != dswpwrok_out) {
@@ -179,7 +179,6 @@ static void dsw_pwrok_pass_thru(void)
 		 */
 		msleep(10);
 		GPIO_SET_LEVEL(GPIO_PCH_DSW_PWROK, dswpwrok_in);
-		dswpwrok_out = dswpwrok_in;
 	}
 }
 
