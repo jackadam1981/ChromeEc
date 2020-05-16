@@ -22,6 +22,30 @@
       "revId": "e8624baa86ed7c128d6ccfca14743be6c1a33245",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f6e11c6_c3545ee4",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-16T01:03:55Z",
+      "side": 1,
+      "message": "yes, good point, even if we don\u0027t care about the values that much, we need to accommodate the room for them. Will fix.",
+      "parentUuid": "8a5b0b15_3681a4a0",
+      "range": {
+        "startLine": 1345,
+        "startChar": 14,
+        "endLine": 1345,
+        "endChar": 24
+      },
+      "revId": "e8624baa86ed7c128d6ccfca14743be6c1a33245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
