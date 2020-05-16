@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a5b0b15_3681a4a0",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-16T01:02:15Z",
+      "side": 1,
+      "message": "Since this VC command might send back an ap_ro_check_vc_errors, wouldn\u0027t it be nicer to check it as well?",
+      "range": {
+        "startLine": 1345,
+        "startChar": 14,
+        "endLine": 1345,
+        "endChar": 24
+      },
+      "revId": "e8624baa86ed7c128d6ccfca14743be6c1a33245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
