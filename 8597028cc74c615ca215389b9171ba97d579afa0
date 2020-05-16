@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daa89116_0a32afb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-16T03:16:20Z",
+      "side": 1,
+      "message": "had to remove the \u0027cherry-picked from\u0027 line to avoid git adding the second Change-Id.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "8597028cc74c615ca215389b9171ba97d579afa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
