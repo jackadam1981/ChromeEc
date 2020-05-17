@@ -43,30 +43,8 @@ static int mock_read_temp(const struct motion_sensor_t *s, int *temp)
 	return EC_ERROR_UNKNOWN;
 }
 
-struct mock_get_range_result {
-	struct motion_sensor_t *s;
-	int ret;
-	struct mock_get_range_result *next;
-};
-
-static struct mock_get_range_result *mock_get_range_results;
-
-static int mock_get_range(const struct motion_sensor_t *s)
-{
-	struct mock_get_range_result *ptr = mock_get_range_results;
-
-	while (ptr) {
-		if (ptr->s == s)
-			return ptr->ret;
-		ptr = ptr->next;
-	}
-
-	return 4;
-}
-
 static struct accelgyro_drv mock_sensor_driver = {
 	.read_temp = mock_read_temp,
-	.get_range = mock_get_range,
 };
 
 static struct accelgyro_drv empty_sensor_driver = {};
@@ -104,6 +82,7 @@ bool accel_cal_accumulate(
 struct motion_sensor_t motion_sensors[] = {
 	[BASE] = {
 		.type = MOTIONSENSE_TYPE_ACCEL,
+		.default_range = 4,
 		.drv = &mock_sensor_driver,
 		.online_calib_data[0] = {
 			.type_specific_data = &base_accel_cal_data,
@@ -111,6 +90,7 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 	[LID] = {
 		.drv = &empty_sensor_driver,
+		.default_range = 4,
 	},
 };
 

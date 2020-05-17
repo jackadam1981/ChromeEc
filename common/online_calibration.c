@@ -59,7 +59,7 @@ static void data_int16_to_fp(const struct motion_sensor_t *s,
 			     const int16_t *data, fpv3_t out)
 {
 	int i;
-	fp_t range = INT_TO_FP(s->drv->get_range(s));
+	fp_t range = INT_TO_FP(s->current_range);
 
 	for (i = 0; i < 3; ++i) {
 		fp_t v = INT_TO_FP((int32_t)data[i]);
@@ -75,7 +75,7 @@ static void data_fp_to_int16(const struct motion_sensor_t *s,
 			     const fpv3_t data, int16_t *out)
 {
 	int i;
-	fp_t range = INT_TO_FP(s->drv->get_range(s));
+	fp_t range = INT_TO_FP(s->current_range);
 
 	for (i = 0; i < 3; ++i) {
 		int32_t iv;

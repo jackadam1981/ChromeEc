@@ -14,9 +14,9 @@
 
 /*****************************************************************************/
 /* Mock functions */
-static int accel_init(const struct motion_sensor_t *s)
+static int accel_init(struct motion_sensor_t *s)
 {
-	return EC_SUCCESS;
+	return sensor_init_done(s);
 }
 
 static int accel_read(const struct motion_sensor_t *s, intv3_t v)
@@ -25,9 +25,10 @@ static int accel_read(const struct motion_sensor_t *s, intv3_t v)
 	return EC_SUCCESS;
 }
 
-static int accel_get_range(const struct motion_sensor_t *s)
+static int accel_set_range(struct motion_sensor_t *s, int range, int rnd)
 {
-	return s->default_range;
+	s->current_range = range;
+	return EC_SUCCESS;
 }
 
 static int accel_get_resolution(const struct motion_sensor_t *s)
@@ -53,7 +54,7 @@ static int accel_get_data_rate(const struct motion_sensor_t *s)
 const struct accelgyro_drv test_motion_sense = {
 	.init = accel_init,
 	.read = accel_read,
-	.get_range = accel_get_range,
+	.set_range = accel_set_range,
 	.get_resolution = accel_get_resolution,
 	.set_data_rate = accel_set_data_rate,
 	.get_data_rate = accel_get_data_rate,
