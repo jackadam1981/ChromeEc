@@ -307,11 +307,10 @@ static int set_power_mode(const struct motion_sensor_t *s,
  * @range: Range
  * @rnd: Round up/down flag
  */
-static int set_range(const struct motion_sensor_t *s, int range, int rnd)
+static int set_range(struct motion_sensor_t *s, int range, int rnd)
 {
 	int err = EC_SUCCESS;
 	uint8_t reg_val;
-	struct stprivate_data *data = s->drv_data;
 	int newrange = range;
 
 	/* Adjust and check rounded value. */
@@ -338,7 +337,7 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 	err = st_write_data_with_mask(s, LIS2DW12_FS_ADDR, LIS2DW12_FS_MASK,
 				      reg_val);
 	if (err == EC_SUCCESS)
-		data->base.range = newrange;
+		s->current_range = newrange;
 #if defined(CONFIG_ACCEL_FIFO) && defined(CONFIG_ACCEL_LIS2DW_AS_BASE)
 	/* FIFO restart collecting events in Cont. mode. */
 	err = lis2dw12_enable_fifo(s, LIS2DW12_FIFO_CONT_MODE);
@@ -348,13 +347,6 @@ unlock_rate:
 	mutex_unlock(s->mutex);
 
 	return err;
-}
-
-static int get_range(const struct motion_sensor_t *s)
-{
-	struct stprivate_data *data = s->drv_data;
-
-	return data->base.range;
 }
 
 /**
@@ -497,7 +489,7 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	return EC_SUCCESS;
 }
 
-static int init(const struct motion_sensor_t *s)
+static int init(struct motion_sensor_t *s)
 {
 	int ret = 0, tmp, timeout = 0, status;
 	struct stprivate_data *data = s->drv_data;
@@ -591,7 +583,6 @@ const struct accelgyro_drv lis2dw12_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,
-	.get_range = get_range,
 	.get_resolution = st_get_resolution,
 	.set_data_rate = set_data_rate,
 	.get_data_rate = st_get_data_rate,
