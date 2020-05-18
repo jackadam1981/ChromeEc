@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e552f01_156c8f47",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-18T19:51:53Z",
+      "side": 1,
+      "message": "Does this only discard for non-ping control messages?  Do we also need to discard when a new data message comes in?",
+      "range": {
+        "startLine": 1930,
+        "startChar": 1,
+        "endLine": 1930,
+        "endChar": 44
+      },
+      "revId": "94bf48cf73d2763416f2694a9a56148b21e22588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
