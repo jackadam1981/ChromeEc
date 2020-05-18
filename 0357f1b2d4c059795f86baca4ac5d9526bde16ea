@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "c73914d3_b3dca128",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-18T16:49:58Z",
+      "side": 1,
+      "message": "We need to get started on the EC portion of the changes to mode entry to support putting USB4 and TBT entry into the v2 stack.  However, the kernel won\u0027t be ready to actually tell us to enter modes for another several months so our current plan is to have the EC fake out the calls we eventually expect the AP to be sending. \n\nThe alternative would be trying to take the v1 method of entering TBT and USB4, and try to shove it into the v2 stack until the AP is ready to use the new host commands.  This seems like it would comparatively create a lot of additional cleanup for us later, and give us less pseudo-runtime with the new host commands before integration.",
+      "parentUuid": "21b1fcd7_ea1f632c",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57dbc3c5_890f9008",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -130,6 +154,30 @@
       "side": 1,
       "message": "If we do that, then I would want the checks to be done through API calls into pe_ functions and those function clearly indicate they are running on another tasks so can only access things in an atomic way",
       "parentUuid": "57dbc3c5_890f9008",
+      "range": {
+        "startLine": 1087,
+        "startChar": 2,
+        "endLine": 1087,
+        "endChar": 42
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3764fa44_1bf78146",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-18T16:49:58Z",
+      "side": 1,
+      "message": "Sounds reasonable",
+      "parentUuid": "a9665de0_27c7902d",
       "range": {
         "startLine": 1087,
         "startChar": 2,
