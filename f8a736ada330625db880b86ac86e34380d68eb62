@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "be54b287_50ab1110",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T17:28:35Z",
+      "side": 1,
+      "message": "Same as comment below.. I have removed the #ifdefs",
+      "parentUuid": "455f316d_ccd622f7",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 6
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f760460e_e4fc3d77",
         "filename": "board/nucleo-dartmonkey/board.c",
         "patchSetId": 3
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "7cd18666_4604e278",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T17:28:35Z",
+      "side": 1,
+      "message": "My understanding was wrong in this case. Looks like RO also accepts new image from transport, so i should not restrict it for RW only.",
+      "parentUuid": "d04486fc_e1976277",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 20
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d06133c0_2ee66069",
         "filename": "board/nucleo-dartmonkey/board.c",
         "patchSetId": 3
@@ -212,6 +260,30 @@
       "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839a1ab3_650e9500",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T17:28:35Z",
+      "side": 1,
+      "message": "CPRTINTS in runtime is processed in console task. board_init is called before task start hence we cannot process in print via a channel. \nhttps://source.corp.google.com/chromeos_public/src/platform/ec/common/console_output.c;l\u003d81?q\u003dcommon%2Fconsole_output\n\nI think we are just showing the bootstrapping information in this case, so it should be fine to use standard ccprints.",
+      "parentUuid": "35dfea6d_0e9d56a9",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 9
+      },
+      "revId": "f8a736ada330625db880b86ac86e34380d68eb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
