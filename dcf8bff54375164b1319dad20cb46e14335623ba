@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bea40cca_91330b7b",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T08:26:44Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2191733\nRaised a cleanup CL",
+      "parentUuid": "4a3d12db_5d0d1e8c",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfea18d7_be2565f1",
         "filename": "board/hatch_fp/board.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de2c352_604637a6",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T08:26:44Z",
+      "side": 1,
+      "message": "Yes, this is needed removing SECTION IS RW",
+      "parentUuid": "cfea18d7_be2565f1",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 25
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9510a267_0708472a",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T08:26:44Z",
+      "side": 1,
+      "message": "Once we have a response ready, we need to kick uasrt to send bytes out. We need to call the tx_isr once and then ISR will stop after all the response bytes are sent.",
+      "parentUuid": "de103da7_0c21f04e",
+      "range": {
+        "startLine": 200,
+        "startChar": 8,
+        "endLine": 202,
+        "endChar": 19
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c155418_bac65f68",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09078f77_9142f765",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T08:26:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c155418_bac65f68",
+      "range": {
+        "startLine": 37,
+        "startChar": 32,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c3545826_6438c5bf",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T08:26:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "42a5c2a4_d25fcf64",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 35
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65f8ef6d_e737dd27",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d78ce44_fe102ab0",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T08:26:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65f8ef6d_e737dd27",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "ad811e99_b8d13edf",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T08:26:44Z",
+      "side": 1,
+      "message": "added comment.",
+      "parentUuid": "2e52ccfe_76ffe7bc",
+      "range": {
+        "startLine": 142,
+        "startChar": 21,
+        "endLine": 142,
+        "endChar": 39
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "228ef6ae_821529ed",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 6
@@ -183,6 +351,30 @@
       "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58091a87_95f43bb4",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T08:26:44Z",
+      "side": 1,
+      "message": "I corrected the state. Hope its clear now. \nI will also add comments in enum.",
+      "parentUuid": "228ef6ae_821529ed",
+      "range": {
+        "startLine": 151,
+        "startChar": 8,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "a3b50903_ab2f1b41",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T08:26:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "064c1f84_a4bf437d",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 52
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5517110e_5e83085a",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 6
@@ -229,6 +445,30 @@
       "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eff0cac_6a6cc555",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-18T08:26:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5517110e_5e83085a",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 12
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
