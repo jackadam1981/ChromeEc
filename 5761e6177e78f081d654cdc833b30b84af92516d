@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "947f118d_8b91ece1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-18T20:50:15Z",
+      "side": 1,
+      "message": "Yes, this solves the problem I mentioned above. (booting twice was normal since adding entropy requires one more boot, but before it was not initializing entropy properly.)",
+      "parentUuid": "f7b5577a_34954d7b",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "5761e6177e78f081d654cdc833b30b84af92516d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b34ff010_66bfc49e",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 1
