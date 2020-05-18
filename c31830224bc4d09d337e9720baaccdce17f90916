@@ -22,6 +22,30 @@
       "revId": "c31830224bc4d09d337e9720baaccdce17f90916",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6601173d_d29c2f88",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-18T21:31:56Z",
+      "side": 1,
+      "message": "I don\u0027t think anyone is using AutoDischargeDisconnect that is not required to do so.  I tried my best to avoid using the \"feature\".  I will look for a more general placement for Rev1 compatibility but will also leave the Safe0V alert disable because that is when it really should happen.\n\nI think the closest Rev1 can come to this is to see Safe5V change and use that to trigger AutoDischarge disabling.",
+      "parentUuid": "20b6c91e_64369488",
+      "range": {
+        "startLine": 1090,
+        "startChar": 3,
+        "endLine": 1091,
+        "endChar": 50
+      },
+      "revId": "c31830224bc4d09d337e9720baaccdce17f90916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
