@@ -561,12 +561,14 @@ uint32_t tc_get_flags(int port)
 
 int tc_is_attached_src(int port)
 {
-	return get_state_tc(port) == TC_ATTACHED_SRC;
+	return get_state_tc(port) == TC_ATTACHED_SRC ||
+		get_state_tc(port) == TC_UNORIENTED_DBG_ACC_SRC;
 }
 
 int tc_is_attached_snk(int port)
 {
-	return get_state_tc(port) == TC_ATTACHED_SNK;
+	return get_state_tc(port) == TC_ATTACHED_SNK ||
+		get_state_tc(port) == TC_DBG_ACC_SNK;
 }
 
 void tc_partner_dr_power(int port, int en)
@@ -660,9 +662,16 @@ void tc_pr_swap_complete(int port)
 
 void tc_prs_src_snk_assert_rd(int port)
 {
-	/* Must be in Attached.SRC when this function is called */
-	if (get_state_tc(port) == TC_ATTACHED_SRC) {
-		/* Transition to Attached.SNK to assert Rd */
+	/*
+	 * Must be in Attached.SRC or UnorientedDebugAccessory.SRC
+	 * when this function is called
+	 */
+	if (get_state_tc(port) == TC_ATTACHED_SRC ||
+		get_state_tc(port) == TC_UNORIENTED_DBG_ACC_SRC) {
+		/*
+		 * Transition to Attached.SNK to
+		 * DebugAccessory.SNK assert Rd
+		 */
 		TC_SET_FLAG(port, TC_FLAGS_DO_PR_SWAP);
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 	}
@@ -670,9 +679,16 @@ void tc_prs_src_snk_assert_rd(int port)
 
 void tc_prs_snk_src_assert_rp(int port)
 {
-	/* Must be in Attached.SNK when this function is called */
-	if (get_state_tc(port) == TC_ATTACHED_SNK) {
-		/* Transition to Attached.SRC to assert Rp */
+	/*
+	 * Must be in Attached.SNK or DebugAccessory.SNK
+	 * when this function is called
+	 */
+	if (get_state_tc(port) == TC_ATTACHED_SNK ||
+		get_state_tc(port) == TC_DBG_ACC_SNK) {
+		/*
+		 * Transition to Attached.SRC or
+		 * UnorientedDebugAccessory.SRC to assert Rp
+		 */
 		TC_SET_FLAG(port, TC_FLAGS_DO_PR_SWAP);
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 	}
