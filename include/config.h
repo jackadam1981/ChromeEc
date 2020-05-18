@@ -4109,6 +4109,10 @@
 #undef CONFIG_USB_PD_TCPM_PS8705
 #undef CONFIG_USB_PD_TCPM_PS8805
 #undef CONFIG_USB_PD_TCPM_PS8815
+#undef CONFIG_USB_PD_TCPM_MT6370
+#undef CONFIG_USB_PD_TCPM_TUSB422
+#undef CONFIG_USB_PD_TCPM_RAA489000
+#undef CONFIG_USB_PD_TCPM_STM32GX
 
 /*
  * Defined automatically by chip and depends on chip. This guards the onboard
