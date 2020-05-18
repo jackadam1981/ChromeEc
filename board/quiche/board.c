@@ -5,6 +5,11 @@
 
 /* Quiche board-specific configuration */
 
+#include "common.h"
+#include "driver/tcpm/ps8xxx.h"
+#include "driver/tcpm/stm32gx.h"
+#include "driver/tcpm/tcpci.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "switch.h"
 
@@ -36,6 +41,22 @@ const struct power_seq board_power_seq[] = {
 };
 
 int board_power_seq_count = ARRAY_SIZE(board_power_seq);
+
+/* TCPCs */
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.bus_type = EC_BUS_TYPE_EMBEDDED,
+		.drv = &stm32gx_tcpm_drv,
+	},
+};
+
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[0] = {
+		.usb_port = 0,
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+	},
+};
 
 static void board_init(void)
 {
