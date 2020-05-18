@@ -6,6 +6,8 @@
 /* Honeybuns family-specific configuration */
 #include "common.h"
 #include "console.h"
+#include "adc.h"
+#include "adc_chip.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -16,7 +18,6 @@
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
 /******************************************************************************/
-
 
 static int board_power_sequence(void)
 {
