@@ -5,6 +5,8 @@
 
 /* Honeybuns family-specific configuration */
 #include "console.h"
+#include "adc.h"
+#include "adc_chip.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
