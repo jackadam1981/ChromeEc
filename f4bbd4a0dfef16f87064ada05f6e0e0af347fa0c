@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "111a2eaa_ea102605",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-18T06:00:27Z",
+      "side": 1,
+      "message": "Reformed it as \"set_int_ap_(bool do_assert)\".",
+      "parentUuid": "571c1190_85fb76e0",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "f4bbd4a0dfef16f87064ada05f6e0e0af347fa0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4800c0ed_d2688b3c",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 20

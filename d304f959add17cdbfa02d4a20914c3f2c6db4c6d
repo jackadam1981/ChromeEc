@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "6ac79a63_b8ab551c",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-18T06:00:27Z",
+      "side": 1,
+      "message": "Per our hangout discussion, I am not adding additional sleep_mask because ToT code already does delay_sleep(1 second) when it enables sleep for SLEEP_MASK_I2C_SLAVE or SLEEP_MASK_SPI.",
+      "parentUuid": "cb399064_5c7521f2",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b21cdc3_dd51f360",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 21
@@ -177,6 +201,24 @@
       "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb94e3a9_e618940a",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-18T06:00:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c63f5c49_29748c33",
+      "revId": "d304f959add17cdbfa02d4a20914c3f2c6db4c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
