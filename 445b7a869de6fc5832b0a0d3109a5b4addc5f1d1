@@ -22,6 +22,30 @@
       "revId": "445b7a869de6fc5832b0a0d3109a5b4addc5f1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eba78ee_ceba5614",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-18T06:00:46Z",
+      "side": 1,
+      "message": "I am differentiating write-enable(volatile) and program-lock(semi-permanent).\nWe don\u0027t want to lock the program permanently as soon as cr50 gets updated with this patch while AP runs old BIOS yet.",
+      "parentUuid": "c4bde04d_68742810",
+      "range": {
+        "startLine": 1790,
+        "startChar": 38,
+        "endLine": 1790,
+        "endChar": 63
+      },
+      "revId": "445b7a869de6fc5832b0a0d3109a5b4addc5f1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
