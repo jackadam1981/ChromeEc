@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8530081_085d5a51",
+        "filename": "driver/retimer/pi3hdx1204.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-18T02:36:21Z",
+      "side": 1,
+      "message": "The first patchsets read the buffer in first.  This would have filled in offset 0 and 1.  Are these readonly or always 0?  If not then you need to read them first before writing them... I will +2 in case they are readonly or always 0 and will not queue it.  Comment/fix before sending this to the queue",
+      "revId": "191301b4870ea19577ab7351259958b2186aab3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
