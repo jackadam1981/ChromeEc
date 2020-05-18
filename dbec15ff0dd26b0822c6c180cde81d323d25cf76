@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d33bdac2_0da69b6f",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-18T16:23:42Z",
+      "side": 1,
+      "message": "This function won\u0027t work with TCPMv2.\nThe original implementation essentially returned 3 states:\n   1. Cable supports USB4 and speed is known\n   2. Cable supports USB4 but TBT discovery needed to determine max speed\n   3. Cable doesn\u0027t support USB4 (isn\u0027t super speed)\n\nReturn state #2 doesn\u0027t apply to TCPMv2, because TBT discovery should always be completed if the cable supports it.  TCPMv2 should always discover all supported modes.",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 878,
+        "endChar": 52
+      },
+      "revId": "dbec15ff0dd26b0822c6c180cde81d323d25cf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8b51be6_89987f11",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-18T16:23:42Z",
+      "side": 1,
+      "message": "I think it\u0027s a good change to move disable_usb4_mode() outside of is_cable_ready_to_enter_usb4() (which needs to stay in this file).",
+      "range": {
+        "startLine": 627,
+        "startChar": 0,
+        "endLine": 627,
+        "endChar": 29
+      },
+      "revId": "dbec15ff0dd26b0822c6c180cde81d323d25cf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
