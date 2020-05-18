@@ -48,6 +48,53 @@
     },
     {
       "key": {
+        "uuid": "029bf334_caf161a0",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-18T16:44:19Z",
+      "side": 1,
+      "message": "I would rather see static space used here since it doesn\u0027t have a runtime failure potential",
+      "parentUuid": "a9a86708_35280a8f",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 17
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b1fcd7_ea1f632c",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-18T16:44:19Z",
+      "side": 1,
+      "message": "i am confused by this. Is the AP requsting this information? Why aren\u0027t we processing this in the hostcommand task? There are already buffers for request and response there.\n\nAlso, don\u0027t we need to send an event (either MKBP or HOST_EVENT) to the AP so it can initiate the host command request.",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57dbc3c5_890f9008",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -71,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "a9665de0_27c7902d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-18T16:44:19Z",
+      "side": 1,
+      "message": "If we do that, then I would want the checks to be done through API calls into pe_ functions and those function clearly indicate they are running on another tasks so can only access things in an atomic way",
+      "parentUuid": "57dbc3c5_890f9008",
+      "range": {
+        "startLine": 1087,
+        "startChar": 2,
+        "endLine": 1087,
+        "endChar": 42
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3a786be_bbc81267",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -82,6 +153,30 @@
       "writtenOn": "2020-05-17T04:44:02Z",
       "side": 1,
       "message": "Long-ish run we\u0027ll have to revisit the idea of whether we want to keep the flag for discover being done, and when to set it.  It saves us running through our full discovery checklist every ready run, but is also redundant information. \n\nIt might also be worth breaking into SOP done and SOP\u0027 done when we do notifications, since we could potentially end up with a partner which won\u0027t allow us to discover one or the other (ex. if we can\u0027t swap to vconn source), but the kernel would still be capable of acting on the info we did collect (really, entering DP most likely).",
+      "range": {
+        "startLine": 1093,
+        "startChar": 24,
+        "endLine": 1093,
+        "endChar": 60
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "708bf9bb_de355dc2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-18T16:44:19Z",
+      "side": 1,
+      "message": "+1 to separating SOP\u0027 and SOP notifications",
+      "parentUuid": "d3a786be_bbc81267",
       "range": {
         "startLine": 1093,
         "startChar": 24,
