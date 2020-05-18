@@ -22,6 +22,30 @@
       "revId": "3e246041726d2c4ef02f2474cd85b90ea641da2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57e9ba06_cb60a09b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-18T21:04:10Z",
+      "side": 1,
+      "message": "I found a path, which may have been DBG ACCESS, that did not call to enable SWAP_IN_PROGRESS.  This was the easiest way to make sure when we land on the other side of the swap that we don\u0027t do the wrong thing.  I am adding some debug code in to try to locate the missing request to enable SWAP_IN_PROGRESS but wanted to get something working.\n\nI will drop this CL and look for who is not calling to set the flag.",
+      "parentUuid": "80bd7e3a_2b39ee03",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e246041726d2c4ef02f2474cd85b90ea641da2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
