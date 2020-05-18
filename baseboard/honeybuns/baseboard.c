@@ -4,6 +4,8 @@
  */
 
 /* Honeybuns family-specific configuration */
+#include "adc.h"
+#include "adc_chip.h"
 #include "gpio.h"
 #include "i2c.h"
 
@@ -15,4 +17,12 @@ const struct i2c_port_t i2c_ports[] = {
 	{"eeprom",  I2C_PORT_EEPROM,  400, GPIO_EC_I2C3_SCL, GPIO_EC_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+#ifdef CONFIG_ADC
+/* ADC channels */
+const struct adc_t adc_channels[] = {
+	{"NOT_NEEDED", 0, 3000, 3000, 0},
+};
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+#endif
 
