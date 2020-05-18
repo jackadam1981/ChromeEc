@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d3809f0_ed98c6ed",
+        "filename": "power/mt8192.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2020-05-18T07:58:41Z",
+      "side": 1,
+      "message": "Those 2 rails are controlled by PMIC for now, so the controls from EC are reserved. We probably want to remove these two lines here.",
+      "range": {
+        "startLine": 326,
+        "startChar": 2,
+        "endLine": 327,
+        "endChar": 38
+      },
+      "revId": "1c1ce953d6cc50082140053e62815a8f1f4d817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "406c48ce_b7373a4c",
+        "filename": "power/mt8192.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2020-05-18T07:58:41Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 409,
+        "startChar": 2,
+        "endLine": 410,
+        "endChar": 38
+      },
+      "revId": "1c1ce953d6cc50082140053e62815a8f1f4d817b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
