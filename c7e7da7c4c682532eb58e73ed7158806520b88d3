@@ -22,6 +22,30 @@
       "revId": "c7e7da7c4c682532eb58e73ed7158806520b88d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea86914_249bbe57",
+        "filename": "extra/i2c_pseudo/check_stream_open.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-05-18T21:42:04Z",
+      "side": 1,
+      "message": "It\u0027s handled by the shell, vs \"cat\" being forked as a subprocess.\n\nSee patchset 1, I actually had this as \"cat\" originally.  I think \"cat\u0027 reads better in this case, and the performance difference is immaterial here.  But since Tricium complained, I went ahead and changed it.",
+      "parentUuid": "e30af486_ace89d3e",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "c7e7da7c4c682532eb58e73ed7158806520b88d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
