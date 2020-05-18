@@ -10,6 +10,7 @@
 
 /* EC Defines */
 #define CONFIG_CRC8
+#undef CONFIG_ADC
 
 /* TODO Define FLASH_PSTATE_LOCKED prior to building MP FW. */
 #undef CONFIG_FLASH_PSTATE_LOCKED
@@ -53,6 +54,41 @@
 /* Common battery defines */
 
 /* USB Type C and USB PD defines */
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_DRP_ACC_TRYSRC
+/* No AP on any honeybuns variants */
+#undef CONFIG_USB_PD_HOST_CMD
+
+#define CONFIG_USB_PD_ALT_MODE
+#define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_LOGGING
+#define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_PD_TCPM_MUX
+#define CONFIG_USB_PD_TCPM_TCPCI
+#define CONFIG_USB_PD_DECODE_SOP
+#define CONFIG_USB_PID 0x5048
+
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+
+#ifdef CONFIG_USB_PD_TRY_SRC
+#error "Why the fuck is CONFIG_USB_PD_TRY_SRC enabled?"
+#endif
+
+/* Define typical operating power and max power. */
+#define PD_MAX_VOLTAGE_MV     20000
+#define PD_MAX_CURRENT_MA     3000
+#define PD_MAX_POWER_MW       45000
+#define PD_OPERATING_POWER_MW 15000
+
+/* TODO(b:147314141): Verify these timings */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY	30000	/* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY	250000	/* us */
+#define PD_VCONN_SWAP_DELAY		5000	/* us */
+
 
 /* BC 1.2 */
 
@@ -70,6 +106,11 @@ struct power_seq {
 	int signal;
 	int pol;
 	int delay;
+};
+
+enum adc_channel {
+	ADC_NOT_NEEDED,	/* ADC0 */
+	ADC_CH_COUNT
 };
 
 extern const struct power_seq board_power_seq[];
