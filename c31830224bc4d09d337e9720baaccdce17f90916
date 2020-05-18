@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20b6c91e_64369488",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-18T20:26:56Z",
+      "side": 1,
+      "message": "Auto discharge disconnect is used in rev 1.0 of the TCPC spec too though, right?  Will these changes work on that revision too?",
+      "range": {
+        "startLine": 1090,
+        "startChar": 3,
+        "endLine": 1091,
+        "endChar": 50
+      },
+      "revId": "c31830224bc4d09d337e9720baaccdce17f90916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
