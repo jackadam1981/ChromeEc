@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "040bcaa1_64768196",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-18T16:55:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06a3f435_5e3b8aa2",
+      "range": {
+        "startLine": 164,
+        "startChar": 55,
+        "endLine": 164,
+        "endChar": 77
+      },
+      "revId": "4e88cba67e08bc0917629786b18276c0bcadd458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4446c23_b06fb328",
         "filename": "chip/g/upgrade_fw.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "4e88cba67e08bc0917629786b18276c0bcadd458",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb83b60f_f4423b69",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-18T16:55:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4446c23_b06fb328",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "4e88cba67e08bc0917629786b18276c0bcadd458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
