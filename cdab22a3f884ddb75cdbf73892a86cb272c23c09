@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc5b1006_a66a7084",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2900,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-18T19:15:44Z",
+      "side": 0,
+      "message": "the two uses of prev_drp ended up not being needed.  So removed the parameter and just always enable AutoDischargeDisconnect here and for the Unattached.SRC case below.",
+      "range": {
+        "startLine": 2900,
+        "startChar": 0,
+        "endLine": 2900,
+        "endChar": 15
+      },
+      "revId": "cdab22a3f884ddb75cdbf73892a86cb272c23c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
