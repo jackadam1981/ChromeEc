@@ -13,6 +13,7 @@ test-list-y=\
        aes \
        compile_time_macros \
        crc32 \
+       flash_write_protect \
        mutex \
        pingpong \
        rollback \
