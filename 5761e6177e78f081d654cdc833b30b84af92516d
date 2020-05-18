@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ec750cfe_0bf40445",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-18T19:01:22Z",
+      "side": 1,
+      "message": "Tom, I built bloonchipper with this chain and flash_fp_mcu to my Dratini. When I reboot the AP, I noticed FPMCU would boot twice, thus losing the fp seed and the rollback entropy. Can you check that?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "5761e6177e78f081d654cdc833b30b84af92516d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b34ff010_66bfc49e",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 1
