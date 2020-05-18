@@ -22,6 +22,30 @@
       "revId": "e519a3113eff3bdff8145482949efc58a855a4d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e050961_5765c5e3",
+        "filename": "board/mushu/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2020-05-18T08:59:03Z",
+      "side": 1,
+      "message": "Config 0 degree will keep fan on before enter OS.\nThermal team doesn\u0027t want fan off in sequence.\nAfter enter OS, DPTF will control fan1 and fan2 by fan table.",
+      "parentUuid": "b9dacfa9_e6dc4d26",
+      "range": {
+        "startLine": 445,
+        "startChar": 23,
+        "endLine": 445,
+        "endChar": 27
+      },
+      "revId": "e519a3113eff3bdff8145482949efc58a855a4d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
