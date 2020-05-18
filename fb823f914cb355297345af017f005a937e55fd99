@@ -22,6 +22,30 @@
       "revId": "fb823f914cb355297345af017f005a937e55fd99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc979a48_ad2d6168",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-18T16:14:20Z",
+      "side": 1,
+      "message": "I originally stored this setting, but we always do an h1 reset after we finish (either success or fail) and the idle level is reset to Power-on-Reset, which seems a little better.\n\nAlso we cannot set the idle state to what we get here since it would be deep.",
+      "parentUuid": "a138919c_a0bcb0f9",
+      "range": {
+        "startLine": 1308,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 3
+      },
+      "revId": "fb823f914cb355297345af017f005a937e55fd99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
