@@ -22,6 +22,30 @@
       "revId": "67e50d64ac93fe5fa931d66c0a2401773133a5bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fedaa6d_76465a7a",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-19T21:50:01Z",
+      "side": 1,
+      "message": "This file only compiles with that define present, so we should be covered",
+      "parentUuid": "3d09d1a9_c6f81326",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 61
+      },
+      "revId": "67e50d64ac93fe5fa931d66c0a2401773133a5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
