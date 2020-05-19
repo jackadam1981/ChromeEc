@@ -22,6 +22,30 @@
       "revId": "b9e7df25f8da5afcb804bcc07aec4dc0c45ffeca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b15f9a2_075786e2",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-19T23:22:11Z",
+      "side": 1,
+      "message": "Some of the register names wouldn\u0027t fit on one line, so overall I felt it was easier to read with 4 lines per entry.  I also tried 3 lines per entry (name and size on same line) but found it wasn\u0027t as readable.",
+      "parentUuid": "d477d209_c47d1f00",
+      "range": {
+        "startLine": 1450,
+        "startChar": 1,
+        "endLine": 1453,
+        "endChar": 3
+      },
+      "revId": "b9e7df25f8da5afcb804bcc07aec4dc0c45ffeca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
