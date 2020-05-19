@@ -71,6 +71,18 @@
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
 
+/* HACK! Avoid running out of space */
+#if 1
+#define CONFIG_USB_PD_DEBUG_LEVEL 1
+#undef CONFIG_USB_PD_TCPMV1
+#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_DRP_ACC_TRYSRC
+#define CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_PRL_SM
+#define CONFIG_USB_PE_SM
+#define CONFIG_USB_PD_REV30
+#endif
+
 /* USB Type A Features */
 
 /* BC 1.2 */
