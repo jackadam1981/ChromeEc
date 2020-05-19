@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0949affc_b62b55a3",
+        "filename": "common/ocpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-19T22:29:27Z",
+      "side": 1,
+      "message": "Could you elaborate on that? The analysis that I\u0027ve done is simply taken a look at the voltage waveform on an oscilloscope to see that it converges with minimal oscillation. I\u0027ve also done this in the state where the SoC is off as well as when the SoC is on and therefore the load is more dynamic.",
+      "parentUuid": "466dc67e_fb55fe49",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "8f595750717b97e3db66fc06852c69a7b70bfc11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05b491bf_6e929126",
         "filename": "common/ocpc.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "30d5ec4a_61c1e7fd",
+        "filename": "common/ocpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-19T22:29:27Z",
+      "side": 1,
+      "message": "In my opinion it\u0027s acceptable to a point. As we are using smart batteries, the fuel gauges onboard have built-in protection that should disable the charge FET if it receives a voltage it doesn\u0027t like for too long.\n\nGiven the lag time in setting the voltage, our charger task tick time, and retrieving the new values from the ADCs, I think some overshoot is expected.",
+      "parentUuid": "05b491bf_6e929126",
+      "range": {
+        "startLine": 151,
+        "startChar": 21,
+        "endLine": 151,
+        "endChar": 23
+      },
+      "revId": "8f595750717b97e3db66fc06852c69a7b70bfc11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "800ab07e_fc5b75bb",
         "filename": "common/ocpc.c",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-19T15:37:15Z",
       "side": 1,
       "message": "Could improve readability to multiply integral by k_i here instead of including it in the integration in line 126.",
+      "range": {
+        "startLine": 152,
+        "startChar": 36,
+        "endLine": 152,
+        "endChar": 50
+      },
+      "revId": "8f595750717b97e3db66fc06852c69a7b70bfc11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "689dfb88_ccf2caa4",
+        "filename": "common/ocpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-19T22:29:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "800ab07e_fc5b75bb",
       "range": {
         "startLine": 152,
         "startChar": 36,
