@@ -2505,6 +2505,8 @@ static void pd_partner_port_reset(int port)
 	uint64_t timeout;
 	uint8_t flags;
 
+	if (!IS_ENABLED(CONFIG_USB_PD_RESTORE_BBRAM))
+		return;
 	/*
 	 * If there is no contract in place (or if we fail to read the BBRAM
 	 * flags), there is no need to reset the partner.

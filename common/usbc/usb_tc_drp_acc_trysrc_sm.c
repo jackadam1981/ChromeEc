@@ -1066,7 +1066,8 @@ void tc_state_init(int port)
 	 * power roles such that any messages we send to the port partner will
 	 * still be valid.
 	 */
-	if (pd_comm_is_enabled(port) &&
+	if (IS_ENABLED(CONFIG_USB_PD_RESTORE_BBRAM) &&
+		pd_comm_is_enabled(port) &&
 		(pd_get_saved_port_flags(port, &saved_flgs[port]) ==
 								EC_SUCCESS) &&
 		(saved_flgs[port] & PD_BBRMFLG_EXPLICIT_CONTRACT)) {
