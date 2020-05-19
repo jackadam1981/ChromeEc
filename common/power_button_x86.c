@@ -212,8 +212,25 @@ static void set_initial_pwrbtn_state(void)
 {
 	uint32_t reset_flags = system_get_reset_flags();
 
-	if (system_jumped_to_this_image() &&
-	    chipset_in_state(CHIPSET_STATE_ON)) {
+	if ((reset_flags & EC_RESET_FLAG_AP_OFF) ||
+		   (keyboard_scan_get_boot_keys() == BOOT_KEY_DOWN_ARROW)) {
+		system_clear_reset_flags(EC_RESET_FLAG_AP_OFF);
+		/*
+		 * Reset triggered by keyboard-controlled reset, and down-arrow
+		 * was held down.  Or reset flags request AP off.
+		 *
+		 * Leave the main processor off.  This is a fail-safe
+		 * combination for debugging failures booting the main
+		 * processor.
+		 *
+		 * Don't let the PCH see that the power button was pressed.
+		 * Otherwise, it might power on.
+		 */
+		CPRINTS("PB init-off");
+		power_button_pch_release();
+		return;
+	} else if (system_jumped_to_this_image() &&
+			!chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
 		/*
 		 * Jumped to this image while the chipset was already on, so
 		 * simply reflect the actual power button state unless power
@@ -229,22 +246,6 @@ static void set_initial_pwrbtn_state(void)
 		} else {
 			CPRINTS("PB init-jumped");
 		}
-		return;
-	} else if ((reset_flags & EC_RESET_FLAG_AP_OFF) ||
-		   (keyboard_scan_get_boot_keys() == BOOT_KEY_DOWN_ARROW)) {
-		/*
-		 * Reset triggered by keyboard-controlled reset, and down-arrow
-		 * was held down.  Or reset flags request AP off.
-		 *
-		 * Leave the main processor off.  This is a fail-safe
-		 * combination for debugging failures booting the main
-		 * processor.
-		 *
-		 * Don't let the PCH see that the power button was pressed.
-		 * Otherwise, it might power on.
-		 */
-		CPRINTS("PB init-off");
-		power_button_pch_release();
 		return;
 	}
 

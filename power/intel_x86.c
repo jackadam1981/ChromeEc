@@ -340,23 +340,34 @@ void chipset_throttle_cpu(int throttle)
 
 enum power_state power_chipset_init(void)
 {
+	if (!system_jumped_to_this_image())
+		return POWER_G3;
 	/*
-	 * If we're switching between images without rebooting, see if the x86
-	 * is already powered on; if so, leave it there instead of cycling
-	 * through G3.
+	 * We are here as RW. We need to handle the following cases:
+	 *
+	 * 1. Late sysjump by software sync. AP is in S0.
+	 * 2. Shutdown in recovery mode then sysjump by EFS2. AP is in S5.
+	 * 3. Reboot from recovery mode then sysjump by EFS2. AP is in S5.
+	 * 4. Early jump by EFS2 right after cold reset. AP is in G3.
 	 */
-	if (system_jumped_to_this_image()) {
-		if ((power_get_signals() & IN_ALL_S0) == IN_ALL_S0) {
-			/* Disable idle task deep sleep when in S0. */
-			disable_sleep(SLEEP_MASK_AP_RUN);
-			CPRINTS("already in S0");
-			return POWER_S0;
-		}
-
-		/* Force all signals to their G3 states */
-		chipset_force_g3();
+	if ((power_get_signals() & IN_ALL_S0) == IN_ALL_S0) {
+		/* case #1. Disable idle task deep sleep when in S0. */
+		disable_sleep(SLEEP_MASK_AP_RUN);
+		CPRINTS("already in S0");
+		return POWER_S0;
 	}
-
+	/*
+	 * We could use CHIPSET_G3S5_POWERUP_SIGNAL but checking AP_IDLE flag
+	 * is more more a platform independent solution.
+	 */
+	if ((power_get_signals() & CHIPSET_G3S5_POWERUP_SIGNAL)
+			== CHIPSET_G3S5_POWERUP_SIGNAL) {
+		/* case #2 & #3 */
+		CPRINTS("already in S5");
+		return POWER_S5;
+	}
+	/* case #4 */
+	chipset_force_g3();
 	return POWER_G3;
 }
 
