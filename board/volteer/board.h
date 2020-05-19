@@ -74,6 +74,25 @@
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
 
+/* HACK! Avoid running out of space */
+#if 1
+#define CONFIG_USB_PD_DEBUG_LEVEL 1
+#undef CONFIG_USB_PD_TCPMV1
+#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_DRP_ACC_TRYSRC
+#define CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_PRL_SM
+#define CONFIG_USB_PE_SM
+#define CONFIG_USB_PD_REV30
+
+#undef CONFIG_CMD_HCDEBUG
+#undef CONFIG_CMD_ACCELS
+#undef CONFIG_CMD_ACCEL_INFO
+#undef CONFIG_CMD_ACCELSPOOF
+#undef CONFIG_CMD_BATTFAKE
+#undef CONFIG_CMD_KEYBOARD
+#endif
+
 /* USB Type A Features */
 #define USB_PORT_COUNT			1
 #define CONFIG_USB_PORT_POWER_DUMB
