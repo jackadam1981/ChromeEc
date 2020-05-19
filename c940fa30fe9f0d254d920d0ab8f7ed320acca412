@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "476a5311_cee43e23",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-19T05:29:10Z",
+      "side": 1,
+      "message": "Got it. Thanks.",
+      "parentUuid": "67133e5f_da9a7dcb",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "c940fa30fe9f0d254d920d0ab8f7ed320acca412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23bec78a_a4890242",
         "filename": "chip/it83xx/irq.c",
         "patchSetId": 12
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Move it into chip_get_ec_int().",
       "parentUuid": "23bec78a_a4890242",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "c940fa30fe9f0d254d920d0ab8f7ed320acca412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a53848a6_339daa97",
+        "filename": "chip/it83xx/irq.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-19T05:29:10Z",
+      "side": 1,
+      "message": "It looks better now.",
+      "parentUuid": "38d9090b_7e5e4832",
       "range": {
         "startLine": 67,
         "startChar": 0,
