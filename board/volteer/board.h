@@ -71,9 +71,6 @@
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
 
-/* HACK! Avoid running out of space */
-#define CONFIG_USB_PD_DEBUG_LEVEL 0
-
 /* USB Type A Features */
 
 /* BC 1.2 */
