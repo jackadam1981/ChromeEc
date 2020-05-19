@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2306565a_a768bb5d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5188,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-05-19T00:44:18Z",
+      "side": 1,
+      "message": "Based on your comments in the bug, I sense this might be a recurring theme.\n\nWould it make sense to create a central function \"check_discard_rules(my packet, inbound packet)\" that we call in each transmit state?\n\nSee PD3.0 v2.0 - Section 6.10 Message Discarding. It has a table of (in) vs (out), and which cases should result in a discard, and which cases should result in steamrolling over it.",
+      "range": {
+        "startLine": 5185,
+        "startChar": 1,
+        "endLine": 5188,
+        "endChar": 5
+      },
+      "revId": "4305110c45c0faa0fc870d53bb5035ee31332141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
