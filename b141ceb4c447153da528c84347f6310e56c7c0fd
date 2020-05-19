@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c017e30_139a8d69",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-19T22:19:06Z",
+      "side": 1,
+      "message": "Any chance this can be fully ifdef\u0027d out like the rch_get_state, or is that not an option?",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 32
+      },
+      "revId": "b141ceb4c447153da528c84347f6310e56c7c0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fcfed7f_1da9d644",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-19T22:19:06Z",
+      "side": 1,
+      "message": "It looks like PD 2.0 should use this during prl_send_data_msg, so how does it need to handle this error?  Also should referencing the TCH state from the PD 2.0 build throw an error compiling?",
+      "range": {
+        "startLine": 673,
+        "startChar": 2,
+        "endLine": 675,
+        "endChar": 0
+      },
+      "revId": "b141ceb4c447153da528c84347f6310e56c7c0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2aa6ae3_c2a08704",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1929,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-19T22:19:06Z",
+      "side": 1,
+      "message": "So Nathan pointed out to me recently that there\u0027s actually a table with rules for discarding in the spec that we\u0027re not currently using.  No need to bog down this review with it, I\u0027ll look at it for one of my bugs.  Just thought I\u0027d let you know to expect a CL for that coming.",
+      "range": {
+        "startLine": 1926,
+        "startChar": 1,
+        "endLine": 1929,
+        "endChar": 4
+      },
+      "revId": "b141ceb4c447153da528c84347f6310e56c7c0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
