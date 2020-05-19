@@ -210,7 +210,7 @@ static void power_button_released(uint64_t tnow)
  */
 static void set_initial_pwrbtn_state(void)
 {
-	uint32_t reset_flags = system_get_reset_flags();
+	uint32_t flags = system_get_reset_flags();
 
 	if (system_jumped_to_this_image() &&
 	    chipset_in_state(CHIPSET_STATE_ON)) {
@@ -230,7 +230,7 @@ static void set_initial_pwrbtn_state(void)
 			CPRINTS("PB init-jumped");
 		}
 		return;
-	} else if ((reset_flags & EC_RESET_FLAG_AP_OFF) ||
+	} else if ((flags & EC_RESET_FLAG_AP_OFF) ||
 		   (keyboard_scan_get_boot_keys() == BOOT_KEY_DOWN_ARROW)) {
 		/*
 		 * Reset triggered by keyboard-controlled reset, and down-arrow
@@ -248,11 +248,12 @@ static void set_initial_pwrbtn_state(void)
 		return;
 	}
 
-#ifdef CONFIG_BRINGUP
-	pwrbtn_state = PWRBTN_STATE_IDLE;
-#else
-	pwrbtn_state = PWRBTN_STATE_INIT_ON;
-#endif
+	if ((flags & EC_RESET_FLAG_AP_IDLE) || IS_ENABLED(CONFIG_BRINGUP)) {
+		pwrbtn_state = PWRBTN_STATE_IDLE;
+	} else {
+		pwrbtn_state = PWRBTN_STATE_INIT_ON;
+	}
+
 	CPRINTS("PB %s",
 		pwrbtn_state == PWRBTN_STATE_INIT_ON ? "init-on" : "idle");
 }

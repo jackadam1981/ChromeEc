@@ -347,7 +347,7 @@ static void board_chipset_shutdown(void)
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown,
 	     /* Slightly higher than handle_pending_reboot because
 	      * it may clear AP_OFF flag. */
-	     HOOK_PRIO_DEFAULT - 1);
+	     HOOK_PRIO_LAST + 1);
 #endif
 
 static void check_reset_cause(void)
