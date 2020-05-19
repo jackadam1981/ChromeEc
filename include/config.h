@@ -3732,6 +3732,9 @@
 /* Default USB data role when a USB PD debug accessory is seen */
 #define CONFIG_USB_PD_DEBUG_DR PD_ROLE_DFP
 
+/* Restore the state of the PD from saved state in BBRAM. */
+#define CONFIG_USB_PD_RESTORE_BBRAM
+
 /*
  * Define to have a fixed PD Task debug level.
  * Undef to allow runtime change via console command.

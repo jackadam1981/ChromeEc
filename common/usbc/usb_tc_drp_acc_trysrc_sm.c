@@ -1077,8 +1077,9 @@ void tc_state_init(int port)
 								EC_SUCCESS) &&
 		(saved_flgs[port] & PD_BBRMFLG_EXPLICIT_CONTRACT)) {
 		/* Only attempt to maintain previous sink contracts */
-		if ((saved_flgs[port] & PD_BBRMFLG_POWER_ROLE) ==
-								PD_ROLE_SINK) {
+		if (IS_ENABLED(CONFIG_USB_PD_RESTORE_BBRAM) &&
+		    (saved_flgs[port] & PD_BBRMFLG_POWER_ROLE) ==
+							PD_ROLE_SINK) {
 			tc_set_power_role(port,
 				(saved_flgs[port] & PD_BBRMFLG_POWER_ROLE) ?
 				PD_ROLE_SOURCE : PD_ROLE_SINK);
