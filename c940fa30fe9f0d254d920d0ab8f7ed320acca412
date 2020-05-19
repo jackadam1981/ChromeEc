@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce2f74f8_351a16d3",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-19T03:03:48Z",
+      "side": 1,
+      "message": "Could we unify intc_get_ec_int() and chip_get_ec_int()? i.e. drop int_get_ec_int() and use chip_get_ec_int() instead?",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "c940fa30fe9f0d254d920d0ab8f7ed320acca412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23bec78a_a4890242",
+        "filename": "chip/it83xx/irq.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-19T03:03:48Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t see the reason we need this as an extern global var? Could we just drop it?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "c940fa30fe9f0d254d920d0ab8f7ed320acca412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
