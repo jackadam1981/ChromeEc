@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aea0a15c_d363bc9b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-19T23:36:24Z",
+      "side": 1,
+      "message": "It\u0027s used in an IS_ENABLED section and a compiler error is generated if the entire function\nis ifdef\u0027d out.",
+      "parentUuid": "1c017e30_139a8d69",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 32
+      },
+      "revId": "b141ceb4c447153da528c84347f6310e56c7c0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fcfed7f_1da9d644",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "993a8bd6_22fbd1a5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-19T23:36:24Z",
+      "side": 1,
+      "message": "This wasn\u0027t in the spec. It\u0027s something I added. Maybe the error mechanism should be its own thing and not part of TCH or RCH.",
+      "parentUuid": "6fcfed7f_1da9d644",
+      "range": {
+        "startLine": 673,
+        "startChar": 2,
+        "endLine": 675,
+        "endChar": 0
+      },
+      "revId": "b141ceb4c447153da528c84347f6310e56c7c0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d2aa6ae3_c2a08704",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-19T22:19:06Z",
       "side": 1,
       "message": "So Nathan pointed out to me recently that there\u0027s actually a table with rules for discarding in the spec that we\u0027re not currently using.  No need to bog down this review with it, I\u0027ll look at it for one of my bugs.  Just thought I\u0027d let you know to expect a CL for that coming.",
+      "range": {
+        "startLine": 1926,
+        "startChar": 1,
+        "endLine": 1929,
+        "endChar": 4
+      },
+      "revId": "b141ceb4c447153da528c84347f6310e56c7c0fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c40c14c_896b11e5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1929,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-19T23:36:24Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "d2aa6ae3_c2a08704",
       "range": {
         "startLine": 1926,
         "startChar": 1,
