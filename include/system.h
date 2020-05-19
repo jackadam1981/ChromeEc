@@ -279,6 +279,10 @@ const char *system_get_build_info(void);
  * Stay in RO next reboot, instead of potentially selecting RW during EFS.
  */
 #define SYSTEM_RESET_STAY_IN_RO         BIT(6)
+/*
+ * Leave AP idle on next reboot.
+ */
+#define SYSTEM_RESET_LEAVE_AP_IDLE      BIT(7)
 
 /**
  * Reset the system.

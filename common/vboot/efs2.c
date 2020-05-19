@@ -317,7 +317,7 @@ void hook_shutdown(void)
 
 	CPRINTS("Reboot\n\n");
 	cflush();
-	system_reset(SYSTEM_RESET_LEAVE_AP_OFF);
+	system_reset(SYSTEM_RESET_LEAVE_AP_IDLE);
 }
 /*
  * There can be hooks which are needed to set external chips to a certain state
