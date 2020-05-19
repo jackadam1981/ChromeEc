@@ -22,6 +22,30 @@
       "revId": "94bf48cf73d2763416f2694a9a56148b21e22588",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f72b8c_5cc24d8a",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1930,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-19T02:56:06Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "3e552f01_156c8f47",
+      "range": {
+        "startLine": 1930,
+        "startChar": 1,
+        "endLine": 1930,
+        "endChar": 44
+      },
+      "revId": "94bf48cf73d2763416f2694a9a56148b21e22588",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

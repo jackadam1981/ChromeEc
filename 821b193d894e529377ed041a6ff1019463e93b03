@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "857b2545_047b8019",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1901,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-19T02:56:06Z",
+      "side": 1,
+      "message": "Done. I added the comment to the not supported state.",
+      "parentUuid": "5392b582_08645184",
+      "range": {
+        "startLine": 1901,
+        "startChar": 23,
+        "endLine": 1901,
+        "endChar": 44
+      },
+      "revId": "821b193d894e529377ed041a6ff1019463e93b03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "956f7be7_efba2b97",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
