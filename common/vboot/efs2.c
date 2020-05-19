@@ -302,6 +302,21 @@ void vboot_main(void)
 	CPRINTS("Exit");
 }
 
+static void reset_ap_off(void)
+{
+	/*
+	 * AP can do cold reset (e.g. by CF9). We don't want to block it.
+	 * When it happens, the chipset should be in S3 or above.
+	 */
+	if (!chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
+
+	CPRINTS("Reset AP_OFF");
+	cflush();
+	system_reset(SYSTEM_RESET_LEAVE_AP_OFF);
+}
+DECLARE_DEFERRED(reset_ap_off);
+
 void hook_shutdown(void)
 {
 	CPRINTS("%s", __func__);
@@ -315,9 +330,7 @@ void hook_shutdown(void)
 	if (system_is_in_rw())
 		return;
 
-	CPRINTS("Reboot\n\n");
-	cflush();
-	system_reset(SYSTEM_RESET_LEAVE_AP_OFF);
+	hook_call_deferred(&reset_ap_off_data, 500 * MSEC);
 }
 /*
  * There can be hooks which are needed to set external chips to a certain state
