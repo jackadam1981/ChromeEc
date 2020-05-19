@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "602648a3_2e6aaeee",
+        "filename": "common/usbc/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-19T06:02:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "407c5963_5cf221df",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9a86708_35280a8f",
         "filename": "common/usbc/usb_dpm.c",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "b2110e4f_de6422ff",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-19T06:02:43Z",
+      "side": 1,
+      "message": "Done. Diana is correct that I was just cargo-culting the host command.",
+      "parentUuid": "029bf334_caf161a0",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 17
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21b1fcd7_ea1f632c",
         "filename": "common/usbc/usb_dpm.c",
         "patchSetId": 2
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "We need to get started on the EC portion of the changes to mode entry to support putting USB4 and TBT entry into the v2 stack.  However, the kernel won\u0027t be ready to actually tell us to enter modes for another several months so our current plan is to have the EC fake out the calls we eventually expect the AP to be sending. \n\nThe alternative would be trying to take the v1 method of entering TBT and USB4, and try to shove it into the v2 stack until the AP is ready to use the new host commands.  This seems like it would comparatively create a lot of additional cleanup for us later, and give us less pseudo-runtime with the new host commands before integration.",
       "parentUuid": "21b1fcd7_ea1f632c",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efbaa6ca_d46abdbb",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-19T06:02:43Z",
+      "side": 1,
+      "message": "Jett: Is there a clean way to route this through the hostcommand task? I didn\u0027t see one.",
+      "parentUuid": "c73914d3_b3dca128",
       "range": {
         "startLine": 50,
         "startChar": 1,
@@ -190,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "79d609f0_c876912a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-19T06:02:43Z",
+      "side": 1,
+      "message": "I used an accessor, but that accessor doesn\u0027t take any explicit synchronization actions. Neither do any of the other simple getters I looked at in usb_tc_drp_acc_trysrc_sm.c. Is that a problem?\n\nFurthermore, note that some SVDMs may be sent by the UFP. If we wanted to support passing through, e.g. Discover Modes from the host, we would have to inspect the VDM header when we do this check. Do we care about this use case? If so, is that too low-level for the host command to concern itself with, or would you still want to handle it there?",
+      "parentUuid": "3764fa44_1bf78146",
+      "range": {
+        "startLine": 1087,
+        "startChar": 2,
+        "endLine": 1087,
+        "endChar": 42
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3a786be_bbc81267",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -237,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "ffe33941_b328538f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-19T06:02:43Z",
+      "side": 1,
+      "message": "WRT redundancy, I intend that vdm_cmd should die with pe_do_port_discovery. As it stands, this flag really means, \"DP setup done,\" so it has the wrong name. My expectation is that the EC would generate a notification for each host command/SVDM ACK in the mode entry/setup sequence. If that included SOP\u0027, e.g. USB4, then there would be SOP\u0027-specific notifications.\n\nBut it sounds like you\u0027re talking about notifications for when we\u0027ve finished actual discovery. It probably does make sense to separate notifications for SOP and SOP\u0027. I could also imagine a single notification that just says \"discovery updated,\" and we would send it whenever we had discovered as much as we could and then subsequently when we discovered anything else. That might be more trouble than its worth, though.",
+      "parentUuid": "708bf9bb_de355dc2",
+      "range": {
+        "startLine": 1093,
+        "startChar": 24,
+        "endLine": 1093,
+        "endChar": 60
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "001a1855_47665182",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -248,6 +368,30 @@
       "writtenOn": "2020-05-17T04:44:02Z",
       "side": 1,
       "message": "I\u0027ve been half contemplating a new config, which you\u0027d set in development and disable once the kernel is ready enough to enter modes.  What are your thoughts?  It occurs to me that platforms coming up a couple of years from now might be able to enter modes via the kernel early in bring up, they wouldn\u0027t need the EC DPM long.",
+      "range": {
+        "startLine": 1366,
+        "startChar": 0,
+        "endLine": 1368,
+        "endChar": 47
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74109811_5242ceb9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-19T06:02:43Z",
+      "side": 1,
+      "message": "That seems reasonable to me. If there is a direct connection between being unlocked and driving DP, it is not obvious to me. Do you think I should do that as part of this CL?\n\nOr should I wait to do any such gating until the AP is actually capable of setting up DP?",
+      "parentUuid": "001a1855_47665182",
       "range": {
         "startLine": 1366,
         "startChar": 0,
@@ -283,6 +427,30 @@
     },
     {
       "key": {
+        "uuid": "a379ab21_956595f4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1369,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-19T06:02:43Z",
+      "side": 1,
+      "message": "If they don\u0027t want to compose VDMs, would it be better for the EC to just handle it instead of maintaining an alternate interface for AP firmware to use?",
+      "parentUuid": "43fbaf14_43a50dac",
+      "range": {
+        "startLine": 1369,
+        "startChar": 7,
+        "endLine": 1369,
+        "endChar": 61
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6feafd87_7d817038",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -294,6 +462,30 @@
       "writtenOn": "2020-05-17T04:44:02Z",
       "side": 1,
       "message": "When passing in parameters for the command (ex. the VDM bits) I\u0027m guessing we\u0027ll want to create a union to hold the command arguments.  If we make it a decent size, then we should hopefully be able to keep supporting new sub-commands on the same version HC",
+      "range": {
+        "startLine": 6544,
+        "startChar": 0,
+        "endLine": 6547,
+        "endChar": 19
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb7fea41_c14a3755",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6547,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-19T06:02:43Z",
+      "side": 1,
+      "message": "Can we reasonably assume that any figure subcommand will use a port number, and thus port should be outside the union?\n\nCan you elaborate on \"make it a decent size\"? By default, it will be whatever size the largest parameter pack in the union is. I\u0027m assuming you\u0027re considering the scenario where the AP supports a subcommand that the EC doesn\u0027t. If the AP sends it using a newer, larger union definition, the EC should just slice the union when it accesses it, right? But it would reject the command for having an unknown subcommand anyway, before it tried to access the union, right?",
+      "parentUuid": "6feafd87_7d817038",
       "range": {
         "startLine": 6544,
         "startChar": 0,
