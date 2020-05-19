@@ -111,7 +111,7 @@ test_static int test_mpu_update_region_invalid_alignment(void)
 	return EC_SUCCESS;
 }
 
-void run_test(void)
+void run_test(int argc, char **argv)
 {
 	ccprintf("Running MPU test\n");
 	RUN_TEST(reset_mpu);
