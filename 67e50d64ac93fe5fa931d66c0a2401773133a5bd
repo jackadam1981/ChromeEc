@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d09d1a9_c6f81326",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-19T21:40:51Z",
+      "side": 1,
+      "message": "Does this also need to check #if defined(CONFIG_USB_POWER_DELIVERY) to match previous implementation?",
+      "range": {
+        "startLine": 592,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 61
+      },
+      "revId": "67e50d64ac93fe5fa931d66c0a2401773133a5bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
