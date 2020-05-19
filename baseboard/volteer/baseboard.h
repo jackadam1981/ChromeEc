@@ -82,8 +82,11 @@
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 
 /* Sensor console commands */
+/* HACK to save space */
+#if 0
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
+#endif
 
 /* Thermal features */
 #define CONFIG_FANS			FAN_CH_COUNT
@@ -133,22 +136,23 @@
 
 /* USB Type C and USB PD defines */
 /* Enable the new USB-C PD stack */
-/* TODO: b/145756626 - re-enable once all blocking issues resolved */
 #if 0
+#define CONFIG_USB_PD_DEBUG_LEVEL 0
 #define CONFIG_USB_PD_TCPMV2
 #define CONFIG_USB_DRP_ACC_TRYSRC
+#define CONFIG_USB_TYPEC_SM
+#define CONFIG_USB_PRL_SM
+#define CONFIG_USB_PE_SM
 #else
-/*
- * PD 3.0 is always enabled by the TCPMv2 stack, so it's only explicitly
- * enabled when using the TCPMv1 stack
- */
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_REV30
 #endif
 
+#if 0
 #define CONFIG_CMD_TCPC_DUMP
+#endif
 
 #define CONFIG_USB_POWER_DELIVERY
-#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_DISCHARGE_PPC
