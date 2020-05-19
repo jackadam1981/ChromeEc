@@ -315,9 +315,8 @@ void hook_shutdown(void)
 	if (system_is_in_rw())
 		return;
 
-	CPRINTS("Reboot\n\n");
-	cflush();
-	system_reset(SYSTEM_RESET_LEAVE_AP_OFF);
+	system_set_reset_flags(EC_RESET_FLAG_AP_IDLE);
+	verify_and_jump();
 }
 /*
  * There can be hooks which are needed to set external chips to a certain state
