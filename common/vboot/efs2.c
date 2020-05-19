@@ -209,8 +209,7 @@ static void verify_and_jump(void)
 		enable_pd();
 		break;
 	case CR50_COMM_SUCCESS:
-		system_set_reset_flags(
-				system_get_reset_flags() | EC_RESET_FLAG_EFS);
+		system_set_reset_flags(EC_RESET_FLAG_EFS);
 		rv = system_run_image_copy(EC_IMAGE_RW);
 		CPRINTS("Failed to jump (0x%x)", rv);
 		system_clear_reset_flags(EC_RESET_FLAG_EFS);
@@ -315,9 +314,8 @@ void hook_shutdown(void)
 	if (system_is_in_rw())
 		return;
 
-	CPRINTS("Reboot\n\n");
-	cflush();
-	system_reset(SYSTEM_RESET_LEAVE_AP_OFF);
+	system_set_reset_flags(EC_RESET_FLAG_AP_IDLE);
+	verify_and_jump();
 }
 /*
  * There can be hooks which are needed to set external chips to a certain state
