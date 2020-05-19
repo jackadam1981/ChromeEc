@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "db8a29f5_eeb559de",
+        "filename": "docs/code_coverage.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-19T23:19:47Z",
+      "side": 1,
+      "message": "tests",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "3fb4349e16ac71218319767df5e0e3e03ae789af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e3d207_4f9dbb9e",
+        "filename": "docs/code_coverage.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-19T23:19:47Z",
+      "side": 1,
+      "message": "may want to add, \"as opposed to manual on-board tests.\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 61,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "3fb4349e16ac71218319767df5e0e3e03ae789af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67ed2602_f9fe888b",
         "filename": "docs/code_coverage.md",
         "patchSetId": 3
@@ -81,6 +127,29 @@
       "writtenOn": "2020-05-19T23:10:04Z",
       "side": 1,
       "message": "Hmm, this is kind of gross. IS there a better way? Is this pretty standard for coverage tools?",
+      "revId": "3fb4349e16ac71218319767df5e0e3e03ae789af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a025f524_e229076d",
+        "filename": "docs/code_coverage.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-19T23:19:47Z",
+      "side": 1,
+      "message": "I guess this is fine to document for now, but we should fix it by adding _coverage to the file name for objects built with coverage?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 3
+      },
       "revId": "3fb4349e16ac71218319767df5e0e3e03ae789af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
