@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67133e5f_da9a7dcb",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-05-19T05:21:03Z",
+      "side": 1,
+      "message": "No.  They are slightly different.\n\nchip_get_ec_int() accesses the hardware register to find out the INT number and saves to ec_int.\nintc_get_int() returns cached ec_int.\n\nNote that ec_int could be set by:  (see core/riscv-rv32i/task.c start_irq_handler())\n- chip_get_ec_int()\n- soft irq\n\nIn short, we cannot replace intc_get_ec_int() by chip_get_ec_int().\n\nHowever, we can remove intc_get_ec_int() since they can access the ec_int directly.\n\n\nI won\u0027t do that in this CL.  If you ask, I can submit another CL to remove intc_get_ec_int().",
+      "parentUuid": "ce2f74f8_351a16d3",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "c940fa30fe9f0d254d920d0ab8f7ed320acca412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23bec78a_a4890242",
         "filename": "chip/it83xx/irq.c",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "c940fa30fe9f0d254d920d0ab8f7ed320acca412",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38d9090b_7e5e4832",
+        "filename": "chip/it83xx/irq.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-05-19T05:21:03Z",
+      "side": 1,
+      "message": "Move it into chip_get_ec_int().",
+      "parentUuid": "23bec78a_a4890242",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "c940fa30fe9f0d254d920d0ab8f7ed320acca412",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
