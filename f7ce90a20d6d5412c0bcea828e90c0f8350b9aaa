@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "325e22a1_1ab5f8ed",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-19T18:14:14Z",
+      "side": 1,
+      "message": "config.h explicitly checks that at least one discharge option is enabled (if discharge is enabled), but it does not check that only one is enabled. (There is also a GPIO option that I didn\u0027t look into.) I have a pretty vague understanding of the electrical requirements of VBUS discharge. Does anything bad happen if the TCPC and PPC both discharge VBUS?",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6afef4c1_9ca6ec36",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-19T18:14:14Z",
+      "side": 1,
+      "message": "Eric: Is this the register you were talking about?",
+      "range": {
+        "startLine": 67,
+        "startChar": 19,
+        "endLine": 67,
+        "endChar": 53
+      },
+      "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
