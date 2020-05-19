@@ -346,15 +346,16 @@ enum power_state power_chipset_init(void)
 	 * through G3.
 	 */
 	if (system_jumped_to_this_image()) {
-		if ((power_get_signals() & IN_ALL_S0) == IN_ALL_S0) {
+		uint32_t sig = power_get_signals();
+		CPRINTS("%s: power_signal=0x%08x", __func__, sig);
+		if ((sig & IN_ALL_S0) == IN_ALL_S0) {
 			/* Disable idle task deep sleep when in S0. */
 			disable_sleep(SLEEP_MASK_AP_RUN);
 			CPRINTS("already in S0");
 			return POWER_S0;
 		}
-
-		/* Force all signals to their G3 states */
-		chipset_force_g3();
+		CPRINTS("already in S5");
+		return POWER_S5;
 	}
 
 	return POWER_G3;

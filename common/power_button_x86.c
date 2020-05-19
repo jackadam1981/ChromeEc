@@ -246,6 +246,10 @@ static void set_initial_pwrbtn_state(void)
 		CPRINTS("PB init-off");
 		power_button_pch_release();
 		return;
+	} else if (reset_flags & EC_RESET_FLAG_AP_IDLE) {
+		pwrbtn_state = PWRBTN_STATE_IDLE;
+		CPRINTS("PB idle");
+		return;
 	}
 
 #ifdef CONFIG_BRINGUP
