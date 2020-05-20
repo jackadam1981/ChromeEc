@@ -495,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "bfe3678a_82e3a1af",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-20T05:06:12Z",
+      "side": 1,
+      "message": "All the global resets are guarded under interrupt disabled so that globals can be processed in entirety in same context.",
+      "parentUuid": "94ccf0d8_38ac76f5",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 6
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72aacb05_17931e7b",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 6
@@ -515,6 +539,30 @@
       "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e13bf0f_175e2825",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-20T05:06:12Z",
+      "side": 1,
+      "message": "Added interrupt disabled and enabled to make sure higher priority interrupts or tasks are not preempting this.",
+      "parentUuid": "72aacb05_17931e7b",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 344,
+        "endChar": 14
+      },
+      "revId": "dcf8bff54375164b1319dad20cb46e14335623ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

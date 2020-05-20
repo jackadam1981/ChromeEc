@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "324eacd9_3c3b448b",
+        "filename": "chip/stm32/host_command_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-20T05:06:12Z",
+      "side": 1,
+      "message": "I had to add this because EC_CMD_GET_PROTOCOL_INFO is declared in common/i2c_slave.c.\nAnd adding i2c to this file did not feel like a good option because its only added for *_pd boards.",
+      "revId": "2b0ff69f0f3edd2f33f8d348f293a8a905c91bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11bc0e78_247af3cc",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-20T05:06:12Z",
+      "side": 1,
+      "message": "Added a critical section here. This will avoid race condition with interrupt tasks or other task function using globals.",
+      "revId": "2b0ff69f0f3edd2f33f8d348f293a8a905c91bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
