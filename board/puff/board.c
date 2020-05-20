@@ -404,6 +404,35 @@ static void override_interrupt_priority(int irq, int priority)
 		(priority << prio_shift);
 }
 
+static uint16_t board_version;
+static uint8_t model_id;
+static uint32_t sku_id;
+static uint32_t fw_config;
+
+static void cbi_init(void)
+{
+	/*
+	 * Load board info from CBI to control per-device configuration.
+	 *
+	 * If unset it's safe to treat the board as a proto, just C10 gating
+	 * won't be enabled.
+	 */
+	uint32_t val;
+
+	if (cbi_get_board_version(&val) == EC_SUCCESS && val <= UINT16_MAX)
+		board_version = val;
+	if (cbi_get_fw_config(&val) == EC_SUCCESS)
+		fw_config = val;
+	if (cbi_get_model_id(&val) == EC_SUCCESS) {
+		/* TODO: Add inlines to handle new model/sku fields */
+		model_id = val >> 24;
+		sku_id = val & 0xFFFFFF;
+	}
+	CPRINTS("Model: %d, SKU: %d, Board Version: %d, F/W config: 0x%08x",
+		model_id, sku_id, board_version, fw_config);
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
+
 static void board_init(void)
 {
 	uint8_t *memmap_batt_flags;
@@ -432,6 +461,13 @@ static void board_init(void)
 	/* Always claim AC is online, because we don't have a battery. */
 	memmap_batt_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
 	*memmap_batt_flags |= EC_BATT_FLAG_AC_PRESENT;
+	/*
+	 * For Puff EVT, the directly connected recovery
+	 * button is not available.
+	 */
+	if (model_id == MODEL_PUFF)
+		button_disable_gpio(GPIO_EC_RECOVERY_BTN_ODL);
+
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -567,29 +603,6 @@ int extpower_is_present(void)
 {
 	return adp_connected;
 }
-
-static uint16_t board_version;
-static uint32_t fw_config;
-
-
-static void cbi_init(void)
-{
-	/*
-	 * Load board info from CBI to control per-device configuration.
-	 *
-	 * If unset it's safe to treat the board as a proto, just C10 gating
-	 * won't be enabled.
-	 */
-	uint32_t val;
-
-	if (cbi_get_board_version(&val) == EC_SUCCESS && val <= UINT16_MAX)
-		board_version = val;
-	CPRINTS("Board Version: 0x%04x", board_version);
-	if (cbi_get_fw_config(&val) == EC_SUCCESS)
-		fw_config = val;
-	CPRINTS("Firmware config: 0x%08x", fw_config);
-}
-DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
 int board_is_c10_gate_enabled(void)
 {
