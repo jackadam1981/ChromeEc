@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaace60d_015f53a1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 5552,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:17:07Z",
+      "side": 1,
+      "message": "I know it will require one more level of independ, but this is pretty hard to read without the variable payload. Since we don\u0027t have an else, we can pull the DUAL_ROLE check into a separate if clause after we defined the payload variable.",
+      "range": {
+        "startLine": 5551,
+        "startChar": 5,
+        "endLine": 5552,
+        "endChar": 26
+      },
+      "revId": "2c544a54dec892d29314c7b7790b2ce4ffc1c5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44944266_60ae1d23",
+        "filename": "fuzz/usb_tcpm_v2_rev30_fuzz.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:17:07Z",
+      "side": 1,
+      "message": "can we use the same .c file for both fuzz tests? (remove one and set the build.mk to specific the same .o file?)",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 1
+      },
+      "revId": "2c544a54dec892d29314c7b7790b2ce4ffc1c5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
