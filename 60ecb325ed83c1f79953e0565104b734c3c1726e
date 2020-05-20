@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d5cc44a_45c63eae",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-20T08:58:23Z",
+      "side": 1,
+      "message": "As this is a deferred call, race condition on current state is handled. please check the comments.",
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38fb89b0_85ae6812",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-20T08:58:23Z",
+      "side": 1,
+      "message": "This is a callback processed handled by host command task. Race condition is handled. Also added check to make sure state is checked before processing request.",
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50c826bb_cde3db7b",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-20T08:58:23Z",
+      "side": 1,
+      "message": "This critical section makes sure that all the global variables are handled at once. Please check the comments.",
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
