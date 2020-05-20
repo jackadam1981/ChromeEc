@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "653210ab_0d0792e5",
+        "filename": "common/test_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-20T14:11:55Z",
+      "side": 1,
+      "message": "does it make sense to plumb this to every test even though only one needs it? Or just declare a special command for that one test?",
+      "range": {
+        "startLine": 202,
+        "startChar": 10,
+        "endLine": 202,
+        "endChar": 20
+      },
+      "revId": "0b1abedb4461b3fe973dd8c675437da78a2bb3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3276fcb6_673b6e0f",
+        "filename": "common/test_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-05-20T14:11:55Z",
+      "side": 1,
+      "message": "So there is still no help message? If the argument-parsing is completely test specific, then where does this get documented?",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 13
+      },
+      "revId": "0b1abedb4461b3fe973dd8c675437da78a2bb3dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
