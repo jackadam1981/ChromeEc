@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "501ea866_5d1c58b9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:24:06Z",
+      "side": 1,
+      "message": "Well it does make all checks for vbus on REv20 TCPC no longer cached, which does have timing implications. There is no way around it if you are interested in Safe0V though, but if you only care about VBUS_PRESENT then the cached value should work",
+      "parentUuid": "85848a9b_6cb9f30e",
+      "range": {
+        "startLine": 659,
+        "startChar": 1,
+        "endLine": 667,
+        "endChar": 2
+      },
+      "revId": "7a77a24dd37e9b567b22a6a902ef68fd4d643026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f4c4fcb_2800f6d9",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 6
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I want to show that I am setting Safe0V and clearing Safe5V",
       "parentUuid": "9f4c4fcb_2800f6d9",
+      "range": {
+        "startLine": 1123,
+        "startChar": 31,
+        "endLine": 1123,
+        "endChar": 52
+      },
+      "revId": "7a77a24dd37e9b567b22a6a902ef68fd4d643026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e31ed5_40dceed7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:24:06Z",
+      "side": 1,
+      "message": "Oh, I read this as \"not (Safe5V and Safe0V)\" instead of \"(not Safe5V) and (Safe0V)\"\n\nBah, you can do what you want with that ;) I do see what you are saying now\n\nMaybe \"Safe0V and not Safe5V\" as a suggestion, but I don\u0027t feel strongly about this either way",
+      "parentUuid": "f382a904_84dfa534",
       "range": {
         "startLine": 1123,
         "startChar": 31,
