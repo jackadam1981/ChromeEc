@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98a739a4_ec7550a1",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-20T00:38:27Z",
+      "side": 1,
+      "message": "I don\u0027t really see the value of these functions that you call only once.\n\nAnd they should be static anyway.",
+      "revId": "d16f0e1616295b08c1a18826318d14d2a6cab899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de5ec27_d61482d3",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-20T00:38:27Z",
+      "side": 1,
+      "message": "Well or you can just move this below and check\n\nif (num_mpu_regions !\u003d 0)\n\ninstead of writing a tiny function that you use once only.",
+      "revId": "d16f0e1616295b08c1a18826318d14d2a6cab899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfd9e2e5_f79ca2c0",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-20T00:38:27Z",
+      "side": 1,
+      "message": "num_mpu_regions",
+      "range": {
+        "startLine": 278,
+        "startChar": 17,
+        "endLine": 278,
+        "endChar": 32
+      },
+      "revId": "d16f0e1616295b08c1a18826318d14d2a6cab899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
