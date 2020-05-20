@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9859a66c_ce07e726",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1890,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T17:20:21Z",
+      "side": 1,
+      "message": "nit: we can collapse this to a single #if\n\n#if defined(REV30) \u0026\u0026 defined(BATTERY)",
+      "range": {
+        "startLine": 1889,
+        "startChar": 7,
+        "endLine": 1890,
+        "endChar": 21
+      },
+      "revId": "2c0e0ec334000717d56ff0e0e141834bb775831d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5868b35_c1fb18c6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 2651,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T17:20:21Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 2650,
+        "startChar": 0,
+        "endLine": 2651,
+        "endChar": 21
+      },
+      "revId": "2c0e0ec334000717d56ff0e0e141834bb775831d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb3bb8d4_eb11dd4e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 5553,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T17:20:21Z",
+      "side": 1,
+      "message": "can we defined payload in this if clause as a local variable, it will make the code easier to read.",
+      "range": {
+        "startLine": 5552,
+        "startChar": 7,
+        "endLine": 5553,
+        "endChar": 18
+      },
+      "revId": "2c0e0ec334000717d56ff0e0e141834bb775831d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f66245a_42546b2e",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T17:20:21Z",
+      "side": 1,
+      "message": "I think these files are missing in this CL, right? I couldn\u0027t find them",
+      "range": {
+        "startLine": 30,
+        "startChar": 41,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "2c0e0ec334000717d56ff0e0e141834bb775831d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
