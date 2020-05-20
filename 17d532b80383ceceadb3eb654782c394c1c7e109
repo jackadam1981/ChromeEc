@@ -22,6 +22,30 @@
       "revId": "17d532b80383ceceadb3eb654782c394c1c7e109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7930de0_362acc3b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 5539,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T22:40:30Z",
+      "side": 1,
+      "message": "I think the compiler knows that the variable isn\u0027t be use so it optimizes it out. I am a little surprised to, but it is more readable!",
+      "parentUuid": "8fb39451_8865e188",
+      "range": {
+        "startLine": 5539,
+        "startChar": 5,
+        "endLine": 5539,
+        "endChar": 20
+      },
+      "revId": "17d532b80383ceceadb3eb654782c394c1c7e109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
