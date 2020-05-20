@@ -16,6 +16,24 @@
       "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79ee2d7b_cb7673ea",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-20T20:21:41Z",
+      "side": 1,
+      "message": "We could have a #define for the number of MPU regions and use that to choose either the single region or two regions, but this code is more generic and doesn\u0027t require (yet another) config option that someone might forget to enable (or set incorrectly).\n\nCombined with the rollback test that runs on device, it\u0027s easy to confirm that the right code is running here: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/test/rollback.c\n\n(I have a separate upcoming commit that flashes and runs all the unit tests to make sure they pass as described in: http://go/cros-fingerprint-automated-testing).\n\nI know there\u0027s always the size concern, but I\u0027d prefer to default to generic, maintainable, easy-to-read code first before trying to cut out every last byte before we\u0027ve hit a memory wall.",
+      "parentUuid": "03850953_8526c1e6",
+      "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
