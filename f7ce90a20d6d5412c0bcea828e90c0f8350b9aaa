@@ -49,6 +49,52 @@
     },
     {
       "key": {
+        "uuid": "e981996c_b6b02ad1",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-20T16:12:27Z",
+      "side": 1,
+      "message": "TCPC discharge can be used if auto toggle is disabled.  So change to:\n\n#if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) \u0026\u0026\n  #defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c66bd36a_8744bc1a",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-20T16:12:27Z",
+      "side": 1,
+      "message": "Delete \"does\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6afef4c1_9ca6ec36",
         "filename": "driver/tcpm/tusb422.c",
         "patchSetId": 1
@@ -65,6 +111,29 @@
         "startChar": 19,
         "endLine": 67,
         "endChar": 53
+      },
+      "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa0edf0d_d2d4d537",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-20T16:12:27Z",
+      "side": 1,
+      "message": "Should this be guarded with CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 65
       },
       "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
