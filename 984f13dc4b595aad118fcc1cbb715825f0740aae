@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8112f55_ec49edfb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-20T01:32:43Z",
+      "side": 1,
+      "message": "of Debug.SRC... or you could remove the comments.  There are a number of references to IS_ATTACHED_Sxx that do not have a comment and they are still easily understandable",
+      "range": {
+        "startLine": 389,
+        "startChar": 16,
+        "endLine": 389,
+        "endChar": 28
+      },
+      "revId": "984f13dc4b595aad118fcc1cbb715825f0740aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd44813b_0b01224e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-20T01:32:43Z",
+      "side": 1,
+      "message": "or Debug.SNK",
+      "range": {
+        "startLine": 400,
+        "startChar": 16,
+        "endLine": 400,
+        "endChar": 28
+      },
+      "revId": "984f13dc4b595aad118fcc1cbb715825f0740aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
