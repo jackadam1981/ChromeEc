@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fb39451_8865e188",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 5539,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-20T20:41:26Z",
+      "side": 1,
+      "message": "I expected this to generate a compiler error when CONFIG_USB_PD_REV30 was not defined but it didn\u0027t.",
+      "range": {
+        "startLine": 5539,
+        "startChar": 5,
+        "endLine": 5539,
+        "endChar": 20
+      },
+      "revId": "17d532b80383ceceadb3eb654782c394c1c7e109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
