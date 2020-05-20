@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2fa4a53_81d69e92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-20T17:16:34Z",
+      "side": 1,
+      "message": "Pretty much.  Interruptible AMSes can just treat this the same as receiving an unexpected message since the result is the same (go back to ready and handle the message).  \n\nAll other states need to treat unexpected messages due to discard differently since it would be a soft reset if we actually sent the first message.\n\nI can make a bug to inventory the other states.  Note that there appears to still be issues progressing correctly to send messages though, and I need to work on those later this week.",
+      "parentUuid": "e65923cf_e8c8f802",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "4305110c45c0faa0fc870d53bb5035ee31332141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2306565a_a768bb5d",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
