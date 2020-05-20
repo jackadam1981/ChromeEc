@@ -22,6 +22,30 @@
       "revId": "778245d7f970a3d6be7d7f29e69172450f0783ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7914d04_10b55912",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-20T21:32:09Z",
+      "side": 0,
+      "message": "Those calls are already done in board.c. This was just re-initializing the SPI again.\n\nSince we should initialize FP sensor and its SPI based on bootstarp, doing it from board.c should be fine.",
+      "parentUuid": "a9da62c4_ab4979cb",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 35
+      },
+      "revId": "778245d7f970a3d6be7d7f29e69172450f0783ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
