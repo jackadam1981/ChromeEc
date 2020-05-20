@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "696b43b7_81459626",
+        "filename": "util/signer/ec_RW-manifest-dev.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-20T19:34:11Z",
+      "side": 1,
+      "message": "this is wiping changes to this file after the \u0027step back\u0027 change. Since this revert requires editing anyways, why not to leave these at {5,6}.2?",
+      "revId": "5aa345e451be69eec55ee1e921bec4a93a2ab919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
