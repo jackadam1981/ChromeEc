@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03850953_8526c1e6",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-20T04:55:35Z",
+      "side": 1,
+      "message": "Can we just use a different enum mpu_region in mpu.h, instead of trying to look for an available region at runtime?",
+      "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
