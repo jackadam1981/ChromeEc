@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39a37a70_6a24a4dc",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-20T23:31:13Z",
+      "side": 1,
+      "message": "nit: you can keep a variable and pass it to retimer_set_state_*()",
+      "range": {
+        "startLine": 310,
+        "startChar": 7,
+        "endLine": 310,
+        "endChar": 53
+      },
+      "revId": "a3faee5789a112e5e1d58dbffafc224c1fcf813e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
