@@ -9046,8 +9046,21 @@ int cmd_cec(int argc, char *argv[])
 	return -1;
 }
 
+int cmd_damu(int argc, char *argv[])
+{
+	struct ec_params_get_jc_temp p;
+	struct ec_response_get_jc_temp r;
+	int rv;
+	p.index=0;
+	rv = ec_command(EC_CMD_GET_JC_TEMP, 0, &p, sizeof(p), &r, sizeof(r));
+	printf("ChgV:%d, ChgC:%d, ADTV:%d, ADTC:%d, RSOC:%d%%, Time-full:%dh:%d\n",r.charge_voltage,
+	r.charge_current, r.voltage_from_ADT, r.current_from_ADT, r.RSOC, r.hour, r.minute);
+	return rv;
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
+	{"damu", cmd_damu},
 	{"adcread", cmd_adc_read},
 	{"addentropy", cmd_add_entropy},
 	{"apreset", cmd_apreset},

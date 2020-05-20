@@ -55,6 +55,10 @@ static void tcpc_alert_event(enum gpio_signal signal)
 	schedule_deferred_pd_interrupt(0 /* port */);
 }
 
+#ifdef SECTION_IS_RW
+static int fake_state_of_charge = -1;
+#endif
+
 #include "gpio_list.h"
 
 /******************************************************************************/
@@ -113,6 +117,22 @@ struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
 		.drv = &it8801_ioexpander_drv,
 	},
 };
+
+#ifdef SECTION_IS_RW
+static const char *get_error_text(int rv)
+{
+	if (rv == EC_ERROR_UNIMPLEMENTED)
+		return "(unsupported)";
+	else
+		return "(error)";
+}
+static int check_print_error(int rv)
+{
+	if (rv != EC_SUCCESS)
+		ccprintf("%s\n", get_error_text(rv));
+	return rv == EC_SUCCESS;
+}
+#endif
 
 /******************************************************************************/
 /* SPI devices */
@@ -435,3 +455,55 @@ int board_get_charger_i2c(void)
 	/* TODO(b:138415463): confirm the bus allocation for future builds */
 	return board_get_version() == 1 ? 2 : 1;
 }
+
+#ifdef SECTION_IS_RW
+static enum ec_status
+host_command_get_jc_temp(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_get_jc_temp *p = args->params;
+	struct ec_response_get_jc_temp *r1 = args->response;
+	struct batt_params batt_new = {0};
+	int value = 0;
+	int current_lim = 0;
+	int voltage_now = 0;
+
+	if(p->index !=0)
+		return EC_RES_SUCCESS;
+
+	/*Get battery current and voltage*/
+	if (sb_read(SB_VOLTAGE, &batt_new.voltage))
+		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
+	r1->charge_voltage = batt_new.voltage;
+
+	if (sb_read(SB_CURRENT, &batt_new.current))
+		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
+	else
+		batt_new.current = (int16_t)batt_new.current;
+	r1->charge_current = batt_new.current;
+
+	if (sb_read(SB_RELATIVE_STATE_OF_CHARGE, &batt_new.state_of_charge)
+	    && fake_state_of_charge < 0)
+		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
+	r1->RSOC = batt_new.state_of_charge;
+
+	if (check_print_error(battery_time_to_full(&value))) {
+		if (value == 65535) {
+			r1->hour   = 0;
+			r1->minute = 0;
+		} else {
+			r1->hour   = value / 60;
+			r1->minute = value % 60;
+		}
+	}
+
+	current_lim = chg_ramp_get_current_limit();
+	r1->current_from_ADT = current_lim;
+
+	voltage_now = tcpc_get_vbus_voltage(0);
+	r1->voltage_from_ADT = voltage_now;
+
+	args->response_size = sizeof(*r1);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_JC_TEMP, host_command_get_jc_temp, EC_VER_MASK(0));
+#endif
