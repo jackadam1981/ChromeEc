@@ -95,6 +95,8 @@ GPIO(SYS_RST_ODL,              PIN(C, 5), GPIO_ODR_HIGH)
 GPIO(EC_PCH_INT_ODL,           PIN(B, 0), GPIO_ODR_HIGH)
 
 /* USB and USBC Signals */
+GPIO(EN_PP5000_USBA,		PIN(C, 6), GPIO_OUT_LOW)	/* Enable USB-A charging - all ports */
+GPIO(USB_A_LOW_PWR_OD,		PIN(6, 6), GPIO_ODR_HIGH)	/* Limit USB-A charging current - all ports */
 
 /*
  * USB_C1 moved from GPIO32 to GPIO83 on boards with board ID >=1.
