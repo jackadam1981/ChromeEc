@@ -94,6 +94,30 @@
       "revId": "8bd8f24207272fc7c6d5a48aa5af10a6299f6d54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "739210f6_37720d31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-20T16:59:14Z",
+      "side": 1,
+      "message": "Oops, I got the CL stack wrong. The CL *after* this one adds the \"cmocka-unit-tests\" target, so \"build and run cmocka-unit-tests\"  isn\u0027t possible at this point in the CL stack. Just update the TEST\u003d line to say that \"make buildall succeeds\".",
+      "parentUuid": "03479301_0cdea401",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "8bd8f24207272fc7c6d5a48aa5af10a6299f6d54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
