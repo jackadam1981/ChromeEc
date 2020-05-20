@@ -16,6 +16,24 @@
       "revId": "c1fe9101ebd3efdfd9b2fe54beebd84f1a6841f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e52c8d4d_806e5c74",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-05-20T06:44:56Z",
+      "side": 1,
+      "message": "This might be a big problem in that case. Maybe we can assume this problem probably will not happen? And, if someday that case actually happend, we can use if(SLAVE_IS_SPI(...)) again.",
+      "parentUuid": "6f47d405_9202a475",
+      "revId": "c1fe9101ebd3efdfd9b2fe54beebd84f1a6841f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

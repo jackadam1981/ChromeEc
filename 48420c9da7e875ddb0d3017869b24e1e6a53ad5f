@@ -87,6 +87,24 @@
       "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb18b76_ff7a0936",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-05-20T06:44:56Z",
+      "side": 1,
+      "message": "I rename CONFIG_SPI_ACCEL_PORT to CONFIG_KIONIX_SPI_PORT.",
+      "parentUuid": "0b94f02f_c159b8ed",
+      "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
