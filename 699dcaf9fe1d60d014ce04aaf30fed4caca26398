@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f966c970_6d2f6151",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2020-05-20T11:44:19Z",
+      "side": 1,
+      "message": "fw_config is meant to obsolete branching on SKU ID.",
+      "revId": "699dcaf9fe1d60d014ce04aaf30fed4caca26398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e45e16_361213b7",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2020-05-20T11:44:19Z",
+      "side": 1,
+      "message": "Don\u0027t reference build phases.",
+      "revId": "699dcaf9fe1d60d014ce04aaf30fed4caca26398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e81586_40f31bf7",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2020-05-20T11:44:19Z",
+      "side": 1,
+      "message": "Use board_version \u003c 2.",
+      "revId": "699dcaf9fe1d60d014ce04aaf30fed4caca26398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
