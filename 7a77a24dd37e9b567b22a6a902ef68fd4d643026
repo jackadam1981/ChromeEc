@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ced3a38_1b42d2cf",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T17:38:38Z",
+      "side": 1,
+      "message": "shouldn\u0027t we only do this if the level parameter was VBUS_SAFE0V?",
+      "range": {
+        "startLine": 659,
+        "startChar": 1,
+        "endLine": 667,
+        "endChar": 2
+      },
+      "revId": "7a77a24dd37e9b567b22a6a902ef68fd4d643026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f4c4fcb_2800f6d9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T17:38:38Z",
+      "side": 1,
+      "message": "this comment doesn\u0027t makes sense anymore, I think you can just remove these 4 words",
+      "range": {
+        "startLine": 1123,
+        "startChar": 31,
+        "endLine": 1123,
+        "endChar": 52
+      },
+      "revId": "7a77a24dd37e9b567b22a6a902ef68fd4d643026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
