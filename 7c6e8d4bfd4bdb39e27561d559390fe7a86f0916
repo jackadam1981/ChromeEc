@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcf12cdc_dba99ac6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-20T17:35:39Z",
+      "side": 1,
+      "message": "Please don\u0027t use build phase names in commit messages nor the code as it leaks the project\u0027s progress. Instead, one should use the term \"revision\" or \"version\" followed by a 0-based number indicating the build number. (I should probably make a presubmit check).",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 3
+      },
+      "revId": "7c6e8d4bfd4bdb39e27561d559390fe7a86f0916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67584a7_497654fe",
+        "filename": "board/puff/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-20T17:35:39Z",
+      "side": 1,
+      "message": "version 0",
+      "range": {
+        "startLine": 405,
+        "startChar": 45,
+        "endLine": 405,
+        "endChar": 52
+      },
+      "revId": "7c6e8d4bfd4bdb39e27561d559390fe7a86f0916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
