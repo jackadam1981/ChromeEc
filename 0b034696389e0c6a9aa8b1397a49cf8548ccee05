@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fd017c2_c93f4b30",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 0,
+      "message": "this seems like this is going to effect a lot of fingerprint boards. What do the other fingerprint boards do instead? This may need to be broken out into another parent CL",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 47
+      },
+      "revId": "0b034696389e0c6a9aa8b1397a49cf8548ccee05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

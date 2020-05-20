@@ -2,6 +2,167 @@
   "comments": [
     {
       "key": {
+        "uuid": "56094092_cf4edacc",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "shouldn\u0027t we error if the type is UART but the code wasn\u0027t included in the build?",
+      "range": {
+        "startLine": 102,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 43
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c1671a3_1c74a207",
+        "filename": "chip/stm32/host_command_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "does if (ID_ENABLED(..)) not work here?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b0f866_a7c10489",
+        "filename": "chip/stm32/host_command_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "the value returned from get_fp_transport_type needs to be a get once; we definitely don\u0027t want the value changing at run time (like it there was noise on the GPIO line)",
+      "range": {
+        "startLine": 22,
+        "startChar": 40,
+        "endLine": 22,
+        "endChar": 61
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7078762_5e025728",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "There is an interrupt handler for TX? I thought we would just add tx data to correct buffer and kick the hardware, but not in an interrupt context.\n\nWhat are the preconditions for this, what buffers need to be full or ready? Who would call this when? (Also why is this a public function, I would think that it could be private the the transport layer code?)",
+      "range": {
+        "startLine": 200,
+        "startChar": 3,
+        "endLine": 200,
+        "endChar": 49
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d7199a3_daf7d55a",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "nit: let\u0027s rename to _buffer instead of _bytes; I kept misinterpreting this variable as a size instead of a buffer.",
+      "range": {
+        "startLine": 71,
+        "startChar": 24,
+        "endLine": 71,
+        "endChar": 29
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "615c7d4f_19a14845",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "this doesn\u0027t need to be a global variable",
+      "range": {
+        "startLine": 84,
+        "startChar": 16,
+        "endLine": 84,
+        "endChar": 32
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc397842_7597cbac",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "this doesn\u0027t need to be a global variabe",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d5cc44a_45c63eae",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 10
@@ -16,6 +177,29 @@
       "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcf1ce94_ae118bc3",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "This is more of a nit, but makes it easier for the reader to validate\n\nCan you make the interrupt disable to enable code tighter for example\n\n\ninterrupt_disable()\nif (current_state !\u003d COMPLETE) {\n interrupt_enable();\n return;\n}\n\ncurrent_state\u003dPROCESING;\ninterrupt_enable();",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 355,
+        "endChar": 0
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -36,6 +220,29 @@
     },
     {
       "key": {
+        "uuid": "1f79bdc6_c6e079c1",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "we shouldn\u0027t do this why interrupts are disabled. We don\u0027t  know what that function may do (in the future). \n\nWriting to variable while interrupts are disabled is find, but calling other functions gets risky very fast.",
+      "range": {
+        "startLine": 413,
+        "startChar": 2,
+        "endLine": 413,
+        "endChar": 16
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50c826bb_cde3db7b",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 10
@@ -50,6 +257,282 @@
       "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a24d9c47_9d98861d",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "nit: rename to usart_in_buffer  (bytes keeps making me think this is a number not a buffer)",
+      "range": {
+        "startLine": 465,
+        "startChar": 30,
+        "endLine": 465,
+        "endChar": 44
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2044efbd_655081fa",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "shouldn\u0027t we copy up to max size? so dropping this condition here and adding MIN(count, MAX-usart_in_head) for the memcpy count parameters.",
+      "range": {
+        "startLine": 472,
+        "startChar": 3,
+        "endLine": 472,
+        "endChar": 50
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e853b5fb_748d7414",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "this cause should be moved up into previous clause; that will make it easier to follow and ensure you aren\u0027t potentially uninitialized/unset usart_in_data_len variable",
+      "range": {
+        "startLine": 514,
+        "startChar": 1,
+        "endLine": 521,
+        "endChar": 39
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7171de86_d911ac7e",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "this should also be moved up into the \n\n(current_state \u003d\u003d USART_HOST_CMD_RECEIVING) \u0026\u0026\n\t(usart_in_head \u003e\u003d sizeof(struct ec_host_request))\n\nif clause\n\n\nThen it would just be datalen \u003e in_head \u003d\u003e do this stuff",
+      "range": {
+        "startLine": 526,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 44
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa3e2fce_95a54721",
+        "filename": "chip/stm32/usart_host_command.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "taking in a queue here is wrong. This should be uart_config if anything (see later comments).\n\nAlso this should be named something like append data since we aren\u0027t working with units (that is a queue concept that we are not using here)\n\n\nThe comments also need to document when and where someone would call this, say an interrupt handler when more data is available from the hardware and we need to store it in the host command transport layer buffer.",
+      "range": {
+        "startLine": 18,
+        "startChar": 39,
+        "endLine": 18,
+        "endChar": 60
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11da08d9_245507f3",
+        "filename": "chip/stm32/usart_host_command.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "More comments, see other comments about spi one. We need to tell the developer why they might ever want to use this, e.g. the transport layer is determined at run time",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412d94de_6542a2c8",
+        "filename": "chip/stm32/usart_rx_dma.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "we should make this a function pointer a typedef. Also why are we taking in a queue? We should be taking in a usart_config instead since that is the common denominator",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 35
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "295dcd7b_cef7a065",
+        "filename": "chip/stm32/usart_rx_dma.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "we should declare this function always in the header file; drop the #if",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 37
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "619b5b92_21d902b4",
+        "filename": "chip/stm32/usart_tx_interrupt.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "is this a new function? this need documentation of when and why you call this (only once or multiple times okay; before tasks starts).",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92a47d9c_08b12d39",
+        "filename": "common/fpsensor/build.mk",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "if we are only going to include this with console, then we should probably rename the file to fpsensor_detect_strings.c instead otherwise it really isn\u0027t a common place to add new code.",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 67
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffce07d6_9214c7be",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3567,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "need more comments.\n\nThis includes the uart transport layer for the host command interface. The HW is the .. and the Baud rate is ...; You typicall need baud rate XXX to handle packets in a timely fashion",
+      "range": {
+        "startLine": 3565,
+        "startChar": 7,
+        "endLine": 3567,
+        "endChar": 41
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04da8ded_5817d2d7",
+        "filename": "include/spi.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T15:53:35Z",
+      "side": 1,
+      "message": "need more comments; We are exposing this so boards that decide what the host command transport layer is at runtime can call into this function.",
+      "range": {
+        "startLine": 106,
+        "startChar": 3,
+        "endLine": 106,
+        "endChar": 27
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
