@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bd156ba8_6a15d87f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:18:48Z",
+      "side": 1,
+      "message": "If you have captured the task to audit the other states, then feel free to submit this CL if you think it is helpful (or wait until you can do them all at the same time - either way)",
+      "parentUuid": "d2fa4a53_81d69e92",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "4305110c45c0faa0fc870d53bb5035ee31332141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2306565a_a768bb5d",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
