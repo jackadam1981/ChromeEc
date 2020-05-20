@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "37536cef_6a49bdf4",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-20T20:49:16Z",
+      "side": 1,
+      "message": "We\u0027ll also be passing the VDM contents in static space when we\u0027re ready",
+      "parentUuid": "f490af30_55410f5f",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cab102ea_b59d3ad4",
         "filename": "include/ec_commands.h",
         "patchSetId": 3

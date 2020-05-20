@@ -358,6 +358,30 @@
     },
     {
       "key": {
+        "uuid": "1e5cede6_1f02c48b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-20T20:49:16Z",
+      "side": 1,
+      "message": "True, our data role could have changed.  So we could consolidate checks into the PD task and count on notifications to the AP to let them know what\u0027s up.  I can check with Prashant on his thoughts there. \n\nAgreed that pd_* functions should be used for any host command checks.",
+      "parentUuid": "147251a2_f91af7c5",
+      "range": {
+        "startLine": 1087,
+        "startChar": 2,
+        "endLine": 1087,
+        "endChar": 42
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3a786be_bbc81267",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
