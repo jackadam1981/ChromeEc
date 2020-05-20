@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cab102ea_b59d3ad4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6538,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-20T17:08:49Z",
+      "side": 1,
+      "message": "Is there a bug to propagate this change into the kernel?  Right now it\u0027s a manual duplication of this file to cros_ec_commands.h\nhttps://chromium.googlesource.com/chromiumos/third_party/kernel/+/2d23dcab/include/linux/platform_data/cros_ec_commands.h#",
+      "range": {
+        "startLine": 6538,
+        "startChar": 0,
+        "endLine": 6538,
+        "endChar": 35
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
