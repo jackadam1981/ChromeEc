@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "8092e7e8_ef556583",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:10:28Z",
+      "side": 1,
+      "message": "this only needs to be the sizeof(struct ec_host_response) + sizeof(EC_CMD_TYPEC_CONTROL_response). The command doesn\u0027t have a response struct, so we only need the size of the header.\n\nAlso depending on how many host command we spoof in this file, we may one to just reuse the same throw-away response buffer.",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1af7fe_f54307dc",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:10:28Z",
+      "side": 1,
+      "message": "nit: s/Sending/Spoofing/",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f490af30_55410f5f",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:10:28Z",
+      "side": 1,
+      "message": "hmm this needs a lock/atomic protection. We can make this a bitmask with the port requested and the deferred handler can atomic_read_clear\n\n\nand this can atomic_set(..., BIT(port))",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cab102ea_b59d3ad4",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -37,6 +106,30 @@
       "side": 1,
       "message": "AFAIK there isn\u0027t currently a specific bug for this, and I can\u0027t find a general one for kernel changes related to USB alternate modes. b:152251292 is for the Type-C daemon. Probably we shouldn\u0027t copy things over until the EC side is pretty nailed down. If you want, I can make a kernel bug blocked by the tracking bug for the EC side.",
       "parentUuid": "cab102ea_b59d3ad4",
+      "range": {
+        "startLine": 6538,
+        "startChar": 0,
+        "endLine": 6538,
+        "endChar": 35
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35f70377_7a78eace",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6538,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:10:28Z",
+      "side": 1,
+      "message": "It is replicated when needed, Gwendal has done some work on this to slightly automate the process.\n\nsee `make build_cros_ec_commands` for the process that Gwendal added.",
+      "parentUuid": "a20649b0_9eb252b3",
       "range": {
         "startLine": 6538,
         "startChar": 0,

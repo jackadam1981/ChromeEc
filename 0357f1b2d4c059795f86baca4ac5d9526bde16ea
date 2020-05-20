@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "9f1aafeb_e5ab8824",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:10:28Z",
+      "side": 1,
+      "message": "Ah, I wasn\u0027t fully picking up on what was happening here. Now I that I know that we are spoofing the AP sending host commands, this makese more sense. You do not need to schedule this on the host cammand task, and it would likely cause issues if you did.\n\nThis way if fine. Let\u0027s add comments here and to the function that this is replicate behavior as if the AP was sending this Host command to us.",
+      "parentUuid": "efbaa6ca_d46abdbb",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57dbc3c5_890f9008",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -298,6 +322,30 @@
       "side": 1,
       "message": "Are we talking atomic gets/sets of the data role, Jett?  I think I\u0027d assumed that the atomic ops were most needed when they\u0027re variables we\u0027re read/modify/writing like the flags. \n\nI suspect it would be reasonable to have the host command perform the level of checks we do in pe_can_send_sop_vdm() currently (and possibly make that a generally accessible pd_* function if we\u0027re safe running from another task)",
       "parentUuid": "79d609f0_c876912a",
+      "range": {
+        "startLine": 1087,
+        "startChar": 2,
+        "endLine": 1087,
+        "endChar": 42
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147251a2_f91af7c5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-20T18:10:28Z",
+      "side": 1,
+      "message": "If we do any checking in the host command task (to let the AP know more quickly of a failure), I would still want to perform those same checks on the PD task since it is very possible that the state has changed since then - since the PD task is the controller of the state.\n\nI don\u0027t know how much value there is in telling the AP 200ms sooner that the request was bad or not (for more complex state checking). Either way, the PD task defintely needs to verify that the state is still appropriate before proceeding (so we should add this DRP check back into the PD task as well)\n\nAnything that the host command access should probably go through pd_* function and though functions should clearly indicate that they are called from other tasks. Those function should only be reading a state or setting flags atomically - nothing more.\n\nto me pd_ prefix is the API interface of the pd framework to other modules/code/tasks and we should know that pd_ means they need to be thread/task safe.",
+      "parentUuid": "0c7c8378_a902bd18",
       "range": {
         "startLine": 1087,
         "startChar": 2,
