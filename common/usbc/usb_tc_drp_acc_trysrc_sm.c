@@ -1378,14 +1378,16 @@ static void handle_new_power_state(int port)
 			 */
 			pe_exit_dp_mode(port);
 
-			/*
-			 * Reset mux to USB. DP mode is selected
-			 * again at boot up.
-			 */
+			/* Disconnect both USB and DP mux. */
 			set_usb_mux_with_current_data_role(port);
 		} else if (chipset_in_or_transitioning_to_state(
 					CHIPSET_STATE_ON)) {
-			/* Enter any previously exited alt modes */
+			/* Restore the USB mux */
+			set_usb_mux_with_current_data_role(port);
+			/*
+			 * Restore the DP mux by entering any previously exited
+			 * exited alt modes
+			 */
 			pe_dpm_request(port, DPM_REQUEST_PORT_DISCOVERY);
 		}
 	}
