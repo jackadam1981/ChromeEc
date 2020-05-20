@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "415106cf_ee8797f4",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-20T21:40:55Z",
+      "side": 1,
+      "message": "It\u0027s really just about readability. It\u0027s not obvious (without reading the comments) that num_mpu_regions \u003d\u003d 0 means that it doesn\u0027t have an MPU versus having an MPU but somehow being misconfgured.\n\nThe compiler optimizes it all anyway, so it shouldn\u0027t be a code size or performance issue.",
+      "parentUuid": "4de5ec27_d61482d3",
+      "revId": "d16f0e1616295b08c1a18826318d14d2a6cab899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfd9e2e5_f79ca2c0",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 4
@@ -74,6 +92,30 @@
       "revId": "d16f0e1616295b08c1a18826318d14d2a6cab899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c283d798_4cba8519",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-20T21:40:55Z",
+      "side": 1,
+      "message": "I was trying to keep the same style that the other functions in this file have, which is that they all start with \"mpu_\".",
+      "parentUuid": "dfd9e2e5_f79ca2c0",
+      "range": {
+        "startLine": 278,
+        "startChar": 17,
+        "endLine": 278,
+        "endChar": 32
+      },
+      "revId": "d16f0e1616295b08c1a18826318d14d2a6cab899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
