@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "0931dc43_c3f67ad1",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-20T23:45:13Z",
+      "side": 1,
+      "message": "I don\u0027t think this is more readable, I had to look up what the function really does, above.",
+      "parentUuid": "415106cf_ee8797f4",
+      "revId": "d16f0e1616295b08c1a18826318d14d2a6cab899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfd9e2e5_f79ca2c0",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 4
@@ -107,6 +125,30 @@
       "side": 1,
       "message": "I was trying to keep the same style that the other functions in this file have, which is that they all start with \"mpu_\".",
       "parentUuid": "dfd9e2e5_f79ca2c0",
+      "range": {
+        "startLine": 278,
+        "startChar": 17,
+        "endLine": 278,
+        "endChar": 32
+      },
+      "revId": "d16f0e1616295b08c1a18826318d14d2a6cab899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59a37d9b_a08e4594",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-20T23:45:13Z",
+      "side": 1,
+      "message": "num_mpu_regions \u003d mpu_num_regions();\n\nMaybe reuse your variable?",
+      "parentUuid": "c283d798_4cba8519",
       "range": {
         "startLine": 278,
         "startChar": 17,
