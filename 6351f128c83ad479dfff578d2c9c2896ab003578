@@ -22,6 +22,30 @@
       "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a20649b0_9eb252b3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6538,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-20T17:25:00Z",
+      "side": 1,
+      "message": "AFAIK there isn\u0027t currently a specific bug for this, and I can\u0027t find a general one for kernel changes related to USB alternate modes. b:152251292 is for the Type-C daemon. Probably we shouldn\u0027t copy things over until the EC side is pretty nailed down. If you want, I can make a kernel bug blocked by the tracking bug for the EC side.",
+      "parentUuid": "cab102ea_b59d3ad4",
+      "range": {
+        "startLine": 6538,
+        "startChar": 0,
+        "endLine": 6538,
+        "endChar": 35
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
