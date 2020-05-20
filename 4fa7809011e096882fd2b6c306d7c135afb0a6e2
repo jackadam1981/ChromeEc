@@ -46,6 +46,30 @@
       "revId": "4fa7809011e096882fd2b6c306d7c135afb0a6e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e807ca4_90cc2dc7",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-20T16:51:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e3a5f9e_8ac8a507",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 49
+      },
+      "revId": "4fa7809011e096882fd2b6c306d7c135afb0a6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
