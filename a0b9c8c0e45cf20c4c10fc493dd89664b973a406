@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09a04441_e22c8b9d",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-20T22:47:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c9d10f_d454c866",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "a0b9c8c0e45cf20c4c10fc493dd89664b973a406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d35b463_2c9de66f",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ccca145f_40acf342",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-20T22:47:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d35b463_2c9de66f",
+      "range": {
+        "startLine": 142,
+        "startChar": 5,
+        "endLine": 142,
+        "endChar": 41
+      },
+      "revId": "a0b9c8c0e45cf20c4c10fc493dd89664b973a406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3826f65_a33268cd",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "a0b9c8c0e45cf20c4c10fc493dd89664b973a406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c12ceaba_dcee9654",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-20T22:47:25Z",
+      "side": 1,
+      "message": "Added a cross bug",
+      "parentUuid": "c3826f65_a33268cd",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 4
+      },
+      "revId": "a0b9c8c0e45cf20c4c10fc493dd89664b973a406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
