@@ -34,6 +34,24 @@
       "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7da36aa_d65c1cca",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-20T23:43:12Z",
+      "side": 1,
+      "message": "\u003e this code is more generic and doesn\u0027t require (yet another) config option that someone might forget to enable (or set incorrectly).\n\nThis can be alleviated with BUILD_ASSERT. And you have tests too now.\n\nGenerally the EC philosophy is to do things at compile time.",
+      "parentUuid": "79ee2d7b_cb7673ea",
+      "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
