@@ -105,6 +105,24 @@
       "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11fc4441_9dd694c8",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 3201,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-05-20T06:53:16Z",
+      "side": 1,
+      "message": "But, some board.c such as board/scarlet/board.c. is using CONFIG_SPI_ACCEL_PORT to determine the spi port for BMI. Using CONFIG_KIONIX_SPI_PORT will be kind of weird in this case.",
+      "parentUuid": "fbb18b76_ff7a0936",
+      "revId": "48420c9da7e875ddb0d3017869b24e1e6a53ad5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
