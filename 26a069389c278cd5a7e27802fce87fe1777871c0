@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c71bc408_e6a36de9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-20T17:21:45Z",
+      "side": 1,
+      "message": "nit: Maybe add that this happens because the chipset is transitioning to off. It\u0027s not clear from here without digging into the function internals.",
+      "revId": "26a069389c278cd5a7e27802fce87fe1777871c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
