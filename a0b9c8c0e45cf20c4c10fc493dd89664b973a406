@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33c9d10f_d454c866",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-20T20:43:23Z",
+      "side": 1,
+      "message": "how about?\nBB_RETIMER_MUX_DATA_ALT_MODE",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 31
+      },
+      "revId": "a0b9c8c0e45cf20c4c10fc493dd89664b973a406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d35b463_2c9de66f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-20T20:43:23Z",
+      "side": 1,
+      "message": "check this first and then other so that it wont call the function if it fails",
+      "range": {
+        "startLine": 142,
+        "startChar": 5,
+        "endLine": 142,
+        "endChar": 41
+      },
+      "revId": "a0b9c8c0e45cf20c4c10fc493dd89664b973a406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3826f65_a33268cd",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-20T20:43:23Z",
+      "side": 1,
+      "message": "lets add these before publishing to Google",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 4
+      },
+      "revId": "a0b9c8c0e45cf20c4c10fc493dd89664b973a406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
