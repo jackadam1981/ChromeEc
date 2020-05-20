@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9e40697c_7d1b6434",
+        "filename": "common/ocpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-05-20T00:28:33Z",
+      "side": 1,
+      "message": "The system will become unstable if the parameters are chosen such that the gain is too high-- the PID output will diverge or oscillate indefinitely. An extremely thorough theoretical stability and gain analysis would involve creating a model for the \"plant\" (battery) behavior and looking at the transfer function of the system. From what I\u0027ve read online, it does not look like this is commonly done in industry. \n\nI would guess that oscilloscope visualizations should suffice as testing since we\u0027re not concerned with converging very quickly. This means we can have a large proportional gain compared to integral or derivative gain, which makes for a slower but more stable system.",
+      "parentUuid": "0949affc_b62b55a3",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "8f595750717b97e3db66fc06852c69a7b70bfc11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05b491bf_6e929126",
         "filename": "common/ocpc.c",
         "patchSetId": 6
