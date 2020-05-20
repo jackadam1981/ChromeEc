@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe7311b2_143f695e",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-20T23:16:28Z",
+      "side": 1,
+      "message": "Tom, please note that when we lock the RW, the RW start address is passed here and it\u0027s not aligned: https://b.corp.google.com/issues/155410753#comment18",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 38
+      },
+      "revId": "9e4ff414b519af09b74b8dda9858fdc67116baf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
