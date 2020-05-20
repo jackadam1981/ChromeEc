@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "af3a2aae_9534717d",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-20T11:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00f2fefc_8c04d428",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2f062df_4dc9f067",
         "filename": "board/asurada/board.c",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "743f6688_1e1e3745",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-20T11:47:10Z",
+      "side": 1,
+      "message": "Not able to verify. TODO comment added.",
+      "parentUuid": "e2f062df_4dc9f067",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "509da946_c9b147f5",
         "filename": "board/asurada/board.c",
         "patchSetId": 9
@@ -47,6 +83,24 @@
       "writtenOn": "2020-05-16T05:43:31Z",
       "side": 1,
       "message": "There is only one accelerometer, so we can not calculate lid angle. \nRemove .config setting.",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e21970c_4f65e30a",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-20T11:47:10Z",
+      "side": 1,
+      "message": "Lid sensor exists but not enabled yet. so I think it\u0027s ok to leave as it is.",
+      "parentUuid": "509da946_c9b147f5",
       "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "a1ffe3a5_d4b89828",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-20T11:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecb152ae_ceec5341",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a890b04b_4234704c",
         "filename": "board/asurada/board.h",
         "patchSetId": 9
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "b370926a_5f245b0b",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-20T11:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a890b04b_4234704c",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c112a879_bc64f972",
         "filename": "board/asurada/board.h",
         "patchSetId": 9
@@ -101,6 +191,24 @@
       "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fca5b6b_43f4f1fb",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-20T11:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c112a879_bc64f972",
+      "revId": "a4c86e4b6f8b8169b9f4c20e9c3fa54a4156288b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
