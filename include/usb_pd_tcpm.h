@@ -424,6 +424,15 @@ struct tcpm_drv {
 	 * @return EC_SUCCESS or error
 	 */
 	 int (*handle_fault)(int port, int fault);
+
+#ifdef CONFIG_CMD_TCPCI_DUMP
+	/**
+	 * Dump TCPCI registers
+	 *
+	 * @param port Type-C port number
+	 */
+	 void (*dump_registers)(int port);
+#endif /* defined(CONFIG_CMD_TCPCI_DUMP) */
 };
 
 /*
