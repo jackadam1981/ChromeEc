@@ -70,6 +70,30 @@
       "revId": "9c607c0523cb925229c7746a98ac200da7e3f1a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7418a547_63603c88",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-21T21:37:41Z",
+      "side": 1,
+      "message": "already gone. I had it here because there were paths that were not re-enabling the feature and it MUST be enabled when we are attached.  I added the code that was missing and removed all of these.",
+      "parentUuid": "ef58958b_4c67bc9a",
+      "range": {
+        "startLine": 1973,
+        "startChar": 0,
+        "endLine": 1975,
+        "endChar": 0
+      },
+      "revId": "9c607c0523cb925229c7746a98ac200da7e3f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
