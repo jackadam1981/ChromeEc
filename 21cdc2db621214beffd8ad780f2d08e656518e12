@@ -52,6 +52,24 @@
       "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdea6851_dd8bde0b",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-21T00:32:55Z",
+      "side": 1,
+      "message": "I think the \"always have everything at compile time\" ends up making the code incredibly hard to read as it scales  across different chips (tons of nested ifdefs and huge config files that are mostly copy/pasted).\n\nI\u0027m not sure I see the downside of doing something at runtime if it can be done correctly and generically (like this case).\n\nI\u0027ll defer to Jett since we don\u0027t seem to agree.",
+      "parentUuid": "d7da36aa_d65c1cca",
+      "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
