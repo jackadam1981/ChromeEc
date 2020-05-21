@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "21f346e3_2b9eb6d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-21T17:55:10Z",
+      "side": 1,
+      "message": "Please also add bug b:143768086, which was opened to enable DPTF on the EC side.",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "0ad7f7182707f6e00d541ad8a4efdeef69078304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "343b593c_7747d942",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2020-05-21T11:23:37Z",
       "side": 1,
       "message": "What\u0027s the complain/error from EC side during ACPI write ? What\u0027s purpose/significance of writing these values? \nPlease, add the details in commit message above. so, it makes this test clear. Thanks.",
+      "range": {
+        "startLine": 13,
+        "startChar": 52,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "0ad7f7182707f6e00d541ad8a4efdeef69078304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72689a49_e498841c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-21T17:55:10Z",
+      "side": 1,
+      "message": "Did these APCI messages start showing up after the AP enabled DPTF with CL:2173224",
+      "parentUuid": "343b593c_7747d942",
       "range": {
         "startLine": 13,
         "startChar": 52,
