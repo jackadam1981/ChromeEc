@@ -10,6 +10,7 @@
 #include "common.h"
 #include "console.h"
 #include "extpower.h"
+#include "driver/ppc/syv682x.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -915,10 +916,21 @@ void __attribute__((weak)) power_5v_enable(task_id_t tid, int enable)
 	 * If there are any outstanding requests for the rail to be enabled,
 	 * turn on the rail.  Otherwise, turn it off.
 	 */
-	if (pwr_5v_en_req)
-		gpio_set_level(GPIO_EN_PP5000, 1);
-	else
+	if (pwr_5v_en_req) {
+		if (!gpio_get_level(GPIO_EN_PP5000)) {
+			/* First enable pp5000, initial syv682x*/
+			gpio_set_level(GPIO_EN_PP5000, 1);
+			syv682x_inita();
+		}
+		else {
+			gpio_set_level(GPIO_EN_PP5000, 1);
+		}
+	}
+	else {
+		/* Clear init state for next syv682x initial*/
 		gpio_set_level(GPIO_EN_PP5000, 0);
+		clear_init_state();
+	}
 
 	mutex_unlock(&pwr_5v_ctl_mtx);
 }

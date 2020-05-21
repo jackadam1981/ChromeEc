@@ -4380,8 +4380,15 @@ void pd_task(void *u)
 #endif
 
 		/* Check for disconnection if we're connected */
-		if (!pd_is_connected(port))
+		if (!pd_is_connected(port)) {
+			/* Stop PD task if no pd connect and pp5000 disabled. */
+			if (port == 1){
+				if (!gpio_get_level(GPIO_PP5000_PG)) {
+					task_wait_event(-1);
+				}
+			}
 			continue;
+		}
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 		if (pd_is_power_swapping(port))
 			continue;
@@ -4391,6 +4398,7 @@ void pd_task(void *u)
 			tcpm_get_cc(port, &cc1, &cc2);
 			if (pd[port].polarity)
 				cc1 = cc2;
+
 			if (cc1 == TYPEC_CC_VOLT_OPEN) {
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				/* Debouncing */
@@ -4435,6 +4443,12 @@ void pd_task(void *u)
 			timeout = 5*MSEC;
 		}
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
+		if (port == 1){
+			/* Check if pp5000 disable, stop pd task. */
+			if (!gpio_get_level(GPIO_PP5000_PG)) {
+				task_wait_event(-1);
+			}
+		}
 	}
 }
 

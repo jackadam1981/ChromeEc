@@ -12,6 +12,7 @@
 #include "console.h"
 #include "driver/bc12/max14637.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/ppc/syv682x.h"
 #include "gpio.h"
 #include "hooks.h"
 #ifdef VARIANT_OCTOPUS_EC_ITE8320

@@ -7,9 +7,12 @@
 #include "common.h"
 #include "console.h"
 #include "driver/ppc/syv682x.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "system.h"
+#include "task.h"
+#include "tcpm.h"
 #include "timer.h"
 #include "usb_charge.h"
 #include "usb_pd_tcpm.h"
@@ -29,6 +32,7 @@
 
 static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 static uint8_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+static int init_state = 0; /* syv682x initial status to prevent multipal initialization. */
 
 #define SYV682X_VBUS_DET_THRESH_MV		4000
 /* Longest time that can be programmed in DSG_TIME field */
@@ -460,6 +464,9 @@ static int syv682x_init(int port)
 	int rv;
 	int regval;
 
+	if (init_state)
+		return 1;
+
 	/*
 	 * Reset all I2C registers to default values because the SYV682x does
 	 * not provide a pin reset.  The SYV682X_RST_REG bit is self-clearing.
@@ -524,7 +531,30 @@ static int syv682x_init(int port)
 	if (rv)
 		return rv;
 
+	init_state = 1;
 	return EC_SUCCESS;
+}
+
+/* syv682x_inita is for pp5000 enable. */
+void syv682x_inita(void) {
+	while (!gpio_get_level(GPIO_PP5000_PG))
+		;
+	syv682x_init(1);
+}
+
+/* syv682x_initb is for AC insert in G3. */
+void syv682x_initb(void) {
+	if (!gpio_get_level(GPIO_AC_PRESENT))
+		return;
+	task_wake(TASK_ID_PD_C1);
+	while (!gpio_get_level(GPIO_PP5000_PG))
+		;
+	syv682x_init(1);
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, syv682x_initb, HOOK_PRIO_DEFAULT);
+
+void clear_init_state(void) {
+	init_state = 0;
 }
 
 const struct ppc_drv syv682x_drv = {

@@ -76,5 +76,7 @@ struct ppc_drv;
 extern const struct ppc_drv syv682x_drv;
 
 void syv682x_interrupt(int port);
+void syv682x_inita(void);
+void clear_init_state(void);
 
 #endif /* defined(__CROS_EC_SYV682X_H) */
