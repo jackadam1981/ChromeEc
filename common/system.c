@@ -27,6 +27,7 @@
 #include "mpu.h"
 #endif
 #include "panic.h"
+#include "power.h"
 #include "sysjump.h"
 #include "system.h"
 #include "task.h"
@@ -918,11 +919,34 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 /*****************************************************************************/
 /* Hooks */
 
+static void wait_shutdown_complete(void);
+DECLARE_DEFERRED(wait_shutdown_complete);
+
+static void wait_shutdown_complete(void)
+{
+	if (reboot_at_shutdown) {
+		if (power_get_state() == POWER_S5 ||
+		    power_get_state() == POWER_G3) {
+			CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown);
+			handle_pending_reboot(reboot_at_shutdown);
+		} else {
+			hook_call_deferred(&wait_shutdown_complete_data, MSEC);
+		}
+	}
+}
+
 static void system_common_shutdown(void)
 {
+	/*
+	 * This CHIPSET_SHUTDOWN hook is triggered before the power rails are
+	 * removed. The hook is executed in the CHIPSET task context, meaning
+	 * the chipset is still ON.
+	 *
+	 * Should wait for the power sequence transition to S5/G3, in a
+	 * different task (HOOKS) context; then perform the pending reboot.
+	 */
 	if (reboot_at_shutdown)
-		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown);
-	handle_pending_reboot(reboot_at_shutdown);
+		hook_call_deferred(&wait_shutdown_complete_data, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, system_common_shutdown, HOOK_PRIO_DEFAULT);
 
