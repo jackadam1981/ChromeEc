@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36235b84_1473107e",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-21T20:37:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9488794_a8f7f765",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 55
+      },
+      "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03850953_8526c1e6",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 4
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "\u003e Generally the EC philosophy is to do things at compile time.\n\nCatching errors at build and compile time is definitely preferable in most scenarios. It is just cheaper in the long run to catch things sooner rather than later.\n\n\u003eI think the \"always have everything at compile time\" ends up making the code incredibly hard to read as it scales  across different chips (tons of nested ifdefs and huge config files that are mostly copy/pasted).\n\nThis is also very true; the TCPMv1 stack is a very good example of this getting out of control and readability suffers greatly.\n\n\nIn this particular instance the runtime based approach seems fine to me. From reading the code, it seems that if the wrong runtime options was chosen, it still might work (e.g. we used two regions instead of one). What is the down side there? If it doesn\u0027t work, then we bubble an error up and panic immediately on boot every time.\n\nA runtime check that always panics on boot is the next best thing to catching at build/compile time. If we do error, we are going to see that immediately as a panic. The really scary stuff is silent or intermittent runtime errors. Since this would always error immediately, think this is also okay.\n\n\nPlease correct me if I am wrong about there not being any silent error scenario.\nAlso is there a downtime of using two regions instead of one if we got it wrong at run-time?",
       "parentUuid": "c5ea0c6d_2f4a7468",
+      "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb83f380_7087ff1b",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-21T20:37:48Z",
+      "side": 1,
+      "message": "\u003e In this particular instance the runtime based approach seems fine to me. From reading the code, it seems that if the wrong runtime options was chosen, it still might work (e.g. we used two regions instead of one). What is the down side there?\n\nmpu_num_regions() (as written now) will always return what the processor says is the number of MPU regions that it supports.\n\n\nThe unit tests for the MPU (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2202852/3/test/mpu.c) make sure that we don\u0027t have a silicon level bug of reporting the wrong number of regions or the case where someone modifies mpu_num_regions() incorrectly.\n\nThere\u0027s shouldn\u0027t be a downside to using two regions instead of one in all cases (other than having fewer regions to use for other things in the future). I thought about writing it that way, but it\u0027s hard to test the scenario where we have an old RO that is configured with one region and an RW that changes it over to use two regions (which is what would happen the next time we release an RW update for the FP FW running on STM32H743).",
+      "parentUuid": "f312aa1e_6ccf7e67",
       "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
