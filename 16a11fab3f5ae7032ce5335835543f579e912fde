@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec451aea_d071373b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-05-21T06:06:20Z",
+      "side": 1,
+      "message": "This could use some heavy comments as to why that mirror the CL description. I think it\u0027s also important to note the combinations. e.g. If EFS2 is part of this how are we handling !EFS2? And should we guard the return value based on the various options?",
+      "revId": "16a11fab3f5ae7032ce5335835543f579e912fde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
