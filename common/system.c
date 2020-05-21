@@ -27,6 +27,7 @@
 #include "mpu.h"
 #endif
 #include "panic.h"
+#include "power.h"
 #include "sysjump.h"
 #include "system.h"
 #include "task.h"
@@ -855,9 +856,9 @@ void system_common_pre_init(void)
 }
 
 /**
- * Handle a pending reboot command.
+ * Handle a reboot command.
  */
-static int handle_pending_reboot(enum ec_reboot_cmd cmd)
+static int handle_reboot(enum ec_reboot_cmd cmd)
 {
 	switch (cmd) {
 	case EC_REBOOT_CANCEL:
@@ -918,11 +919,34 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 /*****************************************************************************/
 /* Hooks */
 
+static void handle_pending_reboot(void);
+DECLARE_DEFERRED(handle_pending_reboot);
+
+static void handle_pending_reboot(void)
+{
+	/*
+	 * This SHUTDOWN hook is triggered in S3S5. The power-off sequence is
+	 * being performed at the same time. Some chipset power-off sequence may
+	 * take longer time and may have a race. Should wait for the sequence to
+	 * completely finish.
+	 */
+	if (reboot_at_shutdown) {
+		if (power_get_state() == POWER_S5 ||
+		    power_get_state() == POWER_G3) {
+			CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown);
+			handle_reboot(reboot_at_shutdown);
+		} else {
+			hook_call_deferred(&handle_pending_reboot_data, MSEC);
+		}
+	}
+}
+
 static void system_common_shutdown(void)
 {
-	if (reboot_at_shutdown)
-		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown);
-	handle_pending_reboot(reboot_at_shutdown);
+	if (reboot_at_shutdown) {
+		CPRINTF("Wait completely shutdown: %d\n", reboot_at_shutdown);
+		handle_pending_reboot();
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, system_common_shutdown, HOOK_PRIO_DEFAULT);
 
@@ -1568,7 +1592,7 @@ enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 #endif
 
 	CPRINTS("Executing host reboot command %d", p.cmd);
-	switch (handle_pending_reboot(p.cmd)) {
+	switch (handle_reboot(p.cmd)) {
 	case EC_SUCCESS:
 		return EC_RES_SUCCESS;
 	case EC_ERROR_INVAL:
