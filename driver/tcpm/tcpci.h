@@ -248,4 +248,14 @@ int tcpci_tcpm_set_src_ctrl(int port, int enable);
 
 void tcpci_tcpc_fast_role_swap_enable(int port, int enable);
 
+#ifdef CONFIG_CMD_TCPCI_DUMP
+struct tcpci_reg_dump_map {
+	uint8_t		addr;
+	uint8_t		size;
+	const char	*name;
+};
+void tcpci_dump_registers(int port, const struct tcpci_reg_dump_map *reg,
+			  int count);
+#endif
+
 #endif /* __CROS_EC_USB_PD_TCPM_TCPCI_H */
