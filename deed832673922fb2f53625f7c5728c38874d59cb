@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba5ee548_81aadcd1",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-21T16:51:30Z",
+      "side": 1,
+      "message": "Why not put into DFP/UFP routines?  For UFP, bit will likely always be 0 since Chrome OS probably would not support TBT mode as a UFP.\n\nAlso, this bit should be 0 for DFP USB mode?",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 0
+      },
+      "revId": "deed832673922fb2f53625f7c5728c38874d59cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
