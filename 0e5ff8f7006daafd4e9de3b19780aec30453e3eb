@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "747c01d2_5e65caae",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-21T23:26:26Z",
+      "side": 1,
+      "message": "Also, why \u0027p\u0027 when we also use \u0027.\u0027?",
+      "range": {
+        "startLine": 440,
+        "startChar": 16,
+        "endLine": 440,
+        "endChar": 20
+      },
+      "revId": "0e5ff8f7006daafd4e9de3b19780aec30453e3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7293529d_07d487f9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-21T23:26:26Z",
+      "side": 1,
+      "message": "nit: nothing on the first line in multi-line comments.",
+      "revId": "0e5ff8f7006daafd4e9de3b19780aec30453e3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
