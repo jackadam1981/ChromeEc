@@ -72,6 +72,16 @@ static void check_reset_cause(void)
 	chip_save_reset_flags(0);
 
 	system_set_reset_flags(flags);
+
+	/*
+	 * Clear the contract of PD recorded in bram if this is a
+	 * power-on reset.
+	 * TODO: Should we create a config option to hide these code?
+	 */
+	if (!(flags & ~(EC_RESET_FLAG_POWER_ON | EC_RESET_FLAG_RESET_PIN))) {
+		for (int i = 0; i < MAX_SYSTEM_BBRAM_IDX_PD_PORTS; i++)
+			system_set_bbram((SYSTEM_BBRAM_IDX_PD0 + i), 0);
+	}
 }
 
 static void system_reset_cause_is_unknown(void)
