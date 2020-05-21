@@ -576,6 +576,9 @@ int tcpci_tcpm_set_vconn(int port, int enable)
 				TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK;
 		}
 
+		CPRINTS("T%d: set_vconn RX_DETECT=0x%X %sABLE", port,
+			detect_sop_en, enable ? "EN" : "DIS");
+
 		tcpc_write(port, TCPC_REG_RX_DETECT, detect_sop_en);
 	}
 #endif
@@ -631,6 +634,9 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 				TCPC_REG_RX_DETECT_SOP_SOPP_SOPPP_HRST_MASK;
 #endif
 	}
+
+	CPRINTS("T%d: set_rx RX_DETECT=0x%X %sABLE", port,
+		detect_sop_en, enable ? "EN" : "DIS");
 
 	/* If enable, then set RX detect for SOP and HRST */
 	return tcpc_write(port, TCPC_REG_RX_DETECT, detect_sop_en);
