@@ -61,7 +61,7 @@ Revision: $Rev: 17697 $
   #define SEGGER_RTT_PRINTF_BUFFER_SIZE (64)
 #endif
 
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <stdarg.h>
 
 

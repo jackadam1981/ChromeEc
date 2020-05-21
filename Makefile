@@ -273,6 +273,8 @@ include test/build.mk
 include util/build.mk
 include util/lock/build.mk
 
+include third_party/SEGGER_RTT_V672d/build.mk
+
 includes+=$(includes-y)
 
 # Wrapper for fetching all the sources relevant to this build

@@ -111,8 +111,9 @@ Revision: $Rev: 17697 $
 #endif
 
 #ifndef SEGGER_RTT_ASM  // defined when SEGGER_RTT.h is included from assembly file
-#include <stdlib.h>
+// #include <stdlib.h>
 #include <stdarg.h>
+#include "util.h"
 
 /*********************************************************************
 *
@@ -315,6 +316,7 @@ int SEGGER_RTT_vprintf(unsigned BufferIndex, const char * sFormat, va_list * pPa
 #define RTT_CTRL_BG_BRIGHT_CYAN       "\x1B[4;46m"
 #define RTT_CTRL_BG_BRIGHT_WHITE      "\x1B[4;47m"
 
+#define STRCPY(pDest, pSrc, NumBytes)	strncpy((pDest), (pSrc), NumBytes)
 
 #endif
 
