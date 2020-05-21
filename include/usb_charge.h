@@ -24,6 +24,7 @@
  */
 #ifndef USB_CHARGER_MAX_CURR_MA
 #define USB_CHARGER_MAX_CURR_MA 1500
+#error e
 #endif
 
 /**
