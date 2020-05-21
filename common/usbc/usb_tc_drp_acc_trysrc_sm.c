@@ -436,6 +436,19 @@ void tc_request_power_swap(int port)
 		 */
 		if (IS_ATTACHED_SRC(port) || IS_ATTACHED_SNK(port))
 			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
+
+		/* TCPCI Rev2 V1p1 4.4.5.4.4
+		 * Disconnect Detection by the Sink TCPC during a Connection
+		 *
+		 * Upon reception of or prior to transmitting a PR_Swap
+		 * message, the TCPM acting as a Sink shall disable the Sink
+		 * disconnect detection to retain PD message delivery when
+		 * Power Role Swap happens.
+		 *
+		 * Disable Auto Discharge Disconnect
+		 */
+		if (IS_ATTACHED_SNK(port))
+			tcpm_enable_auto_discharge_disconnect(port, 0);
 	}
 }
 
@@ -656,6 +669,9 @@ int tc_check_vconn_swap(int port)
 void tc_pr_swap_complete(int port)
 {
 	TC_CLR_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
+
+	/* Enable AutoDischargeDisconnect */
+	tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 void tc_prs_src_snk_assert_rd(int port)
@@ -1954,7 +1970,8 @@ static void tc_attached_snk_entry(const int port)
 		tc_enable_pd(port, 1);
 
 	/* Enable auto discharge disconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_attached_snk_run(const int port)
@@ -2153,7 +2170,8 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 		ppc_sink_is_connected(port, 1);
 
 	/* Enable auto discharge disconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 
 	/* Save our current connection is a DEBUG ACCESSORY */
 	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
@@ -2329,7 +2347,8 @@ static void tc_dbg_acc_snk_entry(const int port)
 	tc_enable_pd(port, 1);
 
 	/* Enable auto discharge disconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 
 	/* Save our current connection is a DEBUG ACCESSORY */
 	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
@@ -2721,7 +2740,8 @@ static void tc_attached_src_entry(const int port)
 	}
 
 	/* Enable AutoDischargeDisconnect */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_attached_src_run(const int port)
