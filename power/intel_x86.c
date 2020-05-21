@@ -352,9 +352,8 @@ enum power_state power_chipset_init(void)
 			CPRINTS("already in S0");
 			return POWER_S0;
 		}
-
-		/* Force all signals to their G3 states */
-		chipset_force_g3();
+		CPRINTS("already in S5");
+		return POWER_S5;
 	}
 
 	return POWER_G3;
