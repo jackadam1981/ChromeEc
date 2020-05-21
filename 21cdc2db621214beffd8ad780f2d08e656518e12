@@ -171,6 +171,24 @@
       "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3f1dee_6d5757a2",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-21T21:18:08Z",
+      "side": 1,
+      "message": "The runtime approach seems okay to me here then; we would always get immediate failures on first boot so we would catch this. The code size does not seem like an issue, and it does have slightly less maintenance burden on static configuration.",
+      "parentUuid": "bb83f380_7087ff1b",
+      "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
