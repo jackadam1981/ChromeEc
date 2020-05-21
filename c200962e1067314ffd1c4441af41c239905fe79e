@@ -22,6 +22,30 @@
       "revId": "c200962e1067314ffd1c4441af41c239905fe79e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f955b4a5_02291030",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-05-21T08:36:42Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to include these flags for sign requests. cr50 should always ignore them and only pay attention to what is stored in the KH anyway\n\nI think instead we want to not set the \"check presence\" (using power button) flag, and cr50 will then validate that that is allowed, given the version/type bits set in the KH",
+      "parentUuid": "19759c7b_8bd420c9",
+      "range": {
+        "startLine": 287,
+        "startChar": 2,
+        "endLine": 288,
+        "endChar": 8
+      },
+      "revId": "c200962e1067314ffd1c4441af41c239905fe79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
