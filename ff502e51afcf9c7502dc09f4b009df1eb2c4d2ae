@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6385af8c_fe59e42f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-21T20:45:35Z",
+      "side": 1,
+      "message": "is it WIP?",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 47
+      },
+      "revId": "ff502e51afcf9c7502dc09f4b009df1eb2c4d2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c889362_2017ae5d",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-21T20:45:35Z",
+      "side": 1,
+      "message": "move this also to retimer_set_state_dfp() \n1. you can remove if at 335\n2. cable_resp \u003d ()** also inside that function",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 34
+      },
+      "revId": "ff502e51afcf9c7502dc09f4b009df1eb2c4d2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
