@@ -46,6 +46,30 @@
       "revId": "9c607c0523cb925229c7746a98ac200da7e3f1a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef58958b_4c67bc9a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-21T21:23:19Z",
+      "side": 1,
+      "message": "I don\u0027t understand why you can just remove it, was it not needed before?",
+      "parentUuid": "fabc0556_a715ce90",
+      "range": {
+        "startLine": 1973,
+        "startChar": 0,
+        "endLine": 1975,
+        "endChar": 0
+      },
+      "revId": "9c607c0523cb925229c7746a98ac200da7e3f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
