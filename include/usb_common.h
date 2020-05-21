@@ -172,4 +172,12 @@ int pd_get_saved_port_flags(int port, uint8_t *flags);
  * @param do_set value written to the BB Ram flag
  */
 void pd_update_saved_port_flags(int port, uint8_t flag, uint8_t do_set);
+
+/**
+ * Returns the version of the PD stack
+ *
+ * @return PD stack version
+ */
+enum pd_stack_version pd_get_stack_version(void);
+
 #endif /* __CROS_EC_USB_COMMON_H */

@@ -727,3 +727,8 @@ int pd_is_vbus_present(int port)
 {
 	return pd_check_vbus_level(port, VBUS_PRESENT);
 }
+
+enum pd_stack_version pd_get_stack_version(void)
+{
+	return PD_STACK_VERSION;
+}
