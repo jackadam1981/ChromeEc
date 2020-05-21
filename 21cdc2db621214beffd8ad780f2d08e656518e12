@@ -70,6 +70,24 @@
       "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5ea0c6d_2f4a7468",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-05-21T00:34:20Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "cdea6851_dd8bde0b",
+      "revId": "21cdc2db621214beffd8ad780f2d08e656518e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
