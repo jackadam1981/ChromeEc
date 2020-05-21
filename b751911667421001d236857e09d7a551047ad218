@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9f84cc89_30f03a95",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-21T19:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6890615_237c4d03",
+      "range": {
+        "startLine": 509,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 10
+      },
+      "revId": "b751911667421001d236857e09d7a551047ad218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a3f3a4f_f49ceb55",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6bd576c6_22518ac7",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-21T19:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a3f3a4f_f49ceb55",
+      "range": {
+        "startLine": 140,
+        "startChar": 43,
+        "endLine": 140,
+        "endChar": 64
+      },
+      "revId": "b751911667421001d236857e09d7a551047ad218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b11dd75_f6691744",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-16T22:31:42Z",
       "side": 1,
       "message": "this can remain same for UFP \u0026 DFP as we send this info based on attached cable.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 4
+      },
+      "revId": "b751911667421001d236857e09d7a551047ad218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aec15095_08f9af8f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-21T19:26:18Z",
+      "side": 1,
+      "message": "It is set according to b20:19 of enter USB received from DFP",
+      "parentUuid": "0b11dd75_f6691744",
       "range": {
         "startLine": 175,
         "startChar": 0,
