@@ -434,8 +434,29 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask,
 
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
-	return (IT83XX_GPIO_DATA(gpio_list[signal].port) &
-			gpio_list[signal].mask) ? 1 : 0;
+	uint32_t port = gpio_list[signal].port;
+	uint32_t mask = gpio_list[signal].mask;
+	int bit_level = (IT83XX_GPIO_DATA(port) & mask) ? 1 : 0;
+
+	if (bit_level && (IT83XX_GPIO_GPOT(port) & mask)) {
+		/*
+		 * For open drain outputs not being asserted, briefly configure
+		 * them as input to read their level
+		 */
+		int pin = GPIO_MASK_TO_NUM(mask);
+
+		IT83XX_GPIO_CTRL(port, pin) = (IT83XX_GPIO_CTRL(port, pin) |
+						GPCR_PORT_PIN_MODE_INPUT) &
+						~GPCR_PORT_PIN_MODE_OUTPUT;
+
+		bit_level = (IT83XX_GPIO_DATA(port) & mask) ? 1 : 0;
+
+		IT83XX_GPIO_CTRL(port, pin) = (IT83XX_GPIO_CTRL(port, pin) |
+						GPCR_PORT_PIN_MODE_OUTPUT) &
+						~GPCR_PORT_PIN_MODE_INPUT;
+	}
+
+	return bit_level;
 }
 
 void gpio_set_level(enum gpio_signal signal, int value)
