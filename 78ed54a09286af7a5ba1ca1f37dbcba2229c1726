@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "56e9d8d0_2a53f464",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4387,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-05-21T07:25:08Z",
+      "side": 1,
+      "message": "We set pp5000 disable condition here because pp5000 disable in G3(Only wait in G3) and only pd adpter can trigger pd task to wakeup.",
+      "parentUuid": "a9e59ed1_2b8b9869",
+      "revId": "78ed54a09286af7a5ba1ca1f37dbcba2229c1726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71dc45f3_771bb3d9",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-05-21T05:25:18Z",
       "side": 1,
       "message": "Will PP5000 get chance to be enabled in G3? I guess the loop here will be forever in G3 when DUT goes from S0 to G3 then plug AC.",
+      "revId": "78ed54a09286af7a5ba1ca1f37dbcba2229c1726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6aa54c_88ea8c95",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-05-21T07:25:08Z",
+      "side": 1,
+      "message": "usb_charger_task will enable pp5000 in detect_or_power_down_ic(port) in max14637.c when indert adapter in G3.\nAfter that it will leave loop and complete initialization.",
+      "parentUuid": "71dc45f3_771bb3d9",
       "revId": "78ed54a09286af7a5ba1ca1f37dbcba2229c1726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
