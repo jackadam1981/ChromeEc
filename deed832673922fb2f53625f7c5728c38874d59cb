@@ -22,6 +22,30 @@
       "revId": "deed832673922fb2f53625f7c5728c38874d59cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcd05570_c96f892a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-21T17:26:57Z",
+      "side": 1,
+      "message": "I\u0027ll be refactoring this bit in another CL - It consists of refactoring all the TBT bits together.\n\nIntel is working on the PD flow for DUT as UFP: b/157163664",
+      "parentUuid": "ba5ee548_81aadcd1",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 0
+      },
+      "revId": "deed832673922fb2f53625f7c5728c38874d59cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
