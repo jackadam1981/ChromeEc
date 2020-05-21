@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "780e08c4_36d01c97",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-21T01:00:19Z",
+      "side": 1,
+      "message": "Right! Done",
+      "parentUuid": "191f5930_f83ea4dc",
+      "range": {
+        "startLine": 209,
+        "startChar": 54,
+        "endLine": 209,
+        "endChar": 67
+      },
+      "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cc2fcc4_0bb82a23",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a148a018_44b6df27",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-21T01:00:19Z",
+      "side": 1,
+      "message": "No. When I wrote this comment I was concerned with the truncated signature issue (remember I sent an email) which is now resolved.",
+      "parentUuid": "ecab4cd3_37d9cfc3",
+      "range": {
+        "startLine": 228,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 46
+      },
+      "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fc378c0_5331e749",
         "filename": "common/u2f.c",
         "patchSetId": 1
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "1a03caec_1d9e8e45",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-21T01:00:19Z",
+      "side": 1,
+      "message": "Right. I was imagining using a U2F_USE_VERSIONED_KH flag plus a FP_BACKED flag or a SECRET_BACKED flag, but you are right, we can simplify it by not using the VERSIONED_KH flag.",
+      "parentUuid": "1fc378c0_5331e749",
+      "range": {
+        "startLine": 87,
+        "startChar": 33,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21fccaa0_d1a5dc49",
         "filename": "common/u2f.c",
         "patchSetId": 1
@@ -112,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "15eea8c8_6a5c504d",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-21T01:00:19Z",
+      "side": 1,
+      "message": "Done. It\u0027s packed (hashed) separately now, see board/cr50/u2f.c, though the version byte is still copied to the end of the seed, before the HMAC output.",
+      "parentUuid": "21fccaa0_d1a5dc49",
+      "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bedceeb0_e4145e22",
         "filename": "include/u2f.h",
         "patchSetId": 1
@@ -126,6 +216,24 @@
       "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3bf995d_7b71da9b",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-21T01:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bedceeb0_e4145e22",
+      "revId": "b49144a308542fa8b44f214b1c7310266edcb8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

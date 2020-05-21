@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19759c7b_8bd420c9",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-21T01:00:19Z",
+      "side": 1,
+      "message": "I don\u0027t want to introduce another \"versioned\" variable or macro, so this ends up a bit hard to read (especially the else if branch below).\n\nMaybe more readable if I do:\n\nif ((req-\u003eflags \u0026 U2F_FP_ENABLED_KH) !\u003d 0)\n    return VENDOR_RC_BOGUS_ARGS;\nif ((req-\u003eflags \u0026 U2F_PIN_ENABLED_KH) !\u003d 0)\n    return VENDOR_RC_BOGUS_ARGS;",
+      "range": {
+        "startLine": 287,
+        "startChar": 2,
+        "endLine": 288,
+        "endChar": 8
+      },
+      "revId": "c200962e1067314ffd1c4441af41c239905fe79e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
