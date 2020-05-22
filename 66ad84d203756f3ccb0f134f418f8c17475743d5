@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec0369d0_8f270ed4",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-22T00:51:52Z",
+      "side": 1,
+      "message": "Why it now has a \u0027\\n\u0027 in the beginning but previously it didn\u0027t have it?",
+      "range": {
+        "startLine": 175,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 5
+      },
+      "revId": "66ad84d203756f3ccb0f134f418f8c17475743d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19a749ec_7b5b97dc",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-22T00:51:52Z",
+      "side": 1,
+      "message": "You may assign the following TCPMv1 \u003d 1. Having this TCPMV0 seems weird.",
+      "range": {
+        "startLine": 532,
+        "startChar": 1,
+        "endLine": 532,
+        "endChar": 25
+      },
+      "revId": "66ad84d203756f3ccb0f134f418f8c17475743d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
