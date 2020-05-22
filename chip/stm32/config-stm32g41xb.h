@@ -4,7 +4,7 @@
  */
 
 /* Memory mapping STM32G431xb has 128 KBytes of internal flash*/
-#define CONFIG_FLASH_SIZE       (128 * 1024)
+#define CONFIG_FLASH_SIZE       (256 * 1024)
 #define CONFIG_FLASH_WRITE_SIZE 0x0004
 #define CONFIG_FLASH_ERASE_SIZE 0x0800
 #define CONFIG_FLASH_BANK_SIZE CONFIG_FLASH_SIZE
