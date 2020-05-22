@@ -59,6 +59,8 @@
 #include "gpio_signal.h"
 #include "registers.h"
 
+#define BOARD_NUM_POWER_GPIOS 22
+extern const struct power_seq board_power_seq[];
 
 #endif /* !__ASSEMBLER__ */
 
