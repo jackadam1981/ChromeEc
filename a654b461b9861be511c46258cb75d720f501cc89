@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6aa1be25_3eef6102",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T23:11:47Z",
+      "side": 1,
+      "message": "Again, to avoid sysjumping mid sequence, it would be nice if the AP told the EC that it\u0027s going down for a reset instead of shutting down.",
+      "revId": "a654b461b9861be511c46258cb75d720f501cc89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
