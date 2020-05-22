@@ -14,8 +14,6 @@
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
-#undef CONFIG_UART_TX_BUF_SIZE
-#define CONFIG_UART_TX_BUF_SIZE 4096
 
 /* Keyboard features */
 
@@ -40,7 +38,10 @@
 #define GPIO_ENTERING_RW	GPIO_EC_ENTERING_RW
 #define GPIO_WP_L		GPIO_EC_WP_L
 
-
+#define BOARD_NUM_POWER_GPIOS 22
+#define CONFIG_UART_CONSOLE 3
+#define CONFIG_UART_TX_DMA_CH STM32_DMAC_USART3_TX
+#define CONFIG_UART_TX_DMA_PH DMAMUX_REQ_USART3_TX
 
 #ifndef __ASSEMBLER__
 
