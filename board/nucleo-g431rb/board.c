@@ -7,6 +7,9 @@
 
 #include "common.h"
 #include "console.h"
+#include "driver/tcpm/ps8xxx.h"
+#include "driver/tcpm/stm32gx.h"
+#include "driver/tcpm/tcpci.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -14,6 +17,8 @@
 #include "system.h"
 #include "task.h"
 #include "uart.h"
+#include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
