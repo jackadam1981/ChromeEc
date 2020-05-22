@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "092f8574_8cba7d64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2020-05-22T06:09:32Z",
+      "side": 1,
+      "message": "query: \nis there any change in the irq info for the above 5 HPD signals?",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "7f58d6db8627679b58db536d11dcdb750c674f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31fd663f_1099f244",
         "filename": "driver/usb_mux/virtual.c",
         "patchSetId": 3
