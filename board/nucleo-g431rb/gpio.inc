@@ -12,10 +12,8 @@
 /* TODO(b/148624000): Change this pin assignment once schematics are final */
 GPIO_INT(EC_WP_L,              PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)
 
-
 /* Outputs */
 GPIO(LED1,                     PIN(A, 5),  GPIO_OUT_LOW) /* Green */
-
 
 /* Misc Signals */
 UNIMPLEMENTED(ENTERING_RW)
@@ -24,3 +22,4 @@ UNIMPLEMENTED(ENTERING_RW)
 ALTERNATE(PIN_MASK(A, 0x000C), GPIO_ALT_LPUART,  MODULE_UART, GPIO_PULL_UP)
 /* MCO A8 */
 ALTERNATE(PIN_MASK(A, 0x0100), 0,  MODULE_CLOCK, 0)
+
