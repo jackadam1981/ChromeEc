@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0394ba68_37442b4b",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T22:46:46Z",
+      "side": 1,
+      "message": "the default state should already be idle, so no need to explicitly set it here.",
+      "revId": "3a9b1911afd0d6caf3420d80b3023c74ac674ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e55246_f669b167",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T22:46:46Z",
+      "side": 1,
+      "message": "I see how idle matches the flag name, but this seems to be the same as \"init-jumped\" just that the AP is off. Maybe we should make them the same? From the logs, we would already know that we sysjumped therefore, maybe make them both \"PB idle\"?",
+      "range": {
+        "startLine": 252,
+        "startChar": 14,
+        "endLine": 252,
+        "endChar": 18
+      },
+      "revId": "3a9b1911afd0d6caf3420d80b3023c74ac674ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "413e3db4_579c2321",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5800,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T22:46:46Z",
+      "side": 1,
+      "message": "nit: Leave AP alone",
+      "range": {
+        "startLine": 5800,
+        "startChar": 46,
+        "endLine": 5800,
+        "endChar": 60
+      },
+      "revId": "3a9b1911afd0d6caf3420d80b3023c74ac674ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
