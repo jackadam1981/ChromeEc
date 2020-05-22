@@ -248,11 +248,33 @@ int mpu_lock_ro_flash(void)
 int mpu_lock_rw_flash(void)
 {
 	/* Prevent execution from internal mapped RW flash */
-	return mpu_config_region(REGION_STORAGE,
-				 CONFIG_MAPPED_STORAGE_BASE + CONFIG_RW_MEM_OFF,
-				 CONFIG_RW_SIZE,
-				 MPU_ATTR_XN | MPU_ATTR_RW_RW |
-				 MPU_ATTR_FLASH_MEMORY, 1);
+	const uint16_t mpu_attr = MPU_ATTR_XN | MPU_ATTR_RW_RW |
+				  MPU_ATTR_FLASH_MEMORY;
+	const uint32_t rw_start_address =
+		CONFIG_MAPPED_STORAGE_BASE + CONFIG_RW_MEM_OFF;
+
+	/*
+	 * Lease significant set bit of the address determines the size of the
+	 * region because the address must be aligned to the size.
+	 */
+	const int first_region_size_bit =
+		31 - __builtin_clz(rw_start_address & -rw_start_address);
+	const uint32_t first_region_size = BIT(first_region_size_bit);
+	const uint32_t second_region_address =
+		rw_start_address + first_region_size;
+	const uint32_t second_region_size = CONFIG_RW_SIZE - first_region_size;
+	int rv;
+
+	rv = mpu_config_region(REGION_STORAGE, rw_start_address,
+			       first_region_size, mpu_attr, 1);
+	if ((rv != EC_SUCCESS) || (second_region_size == 0))
+		return rv;
+
+	if (!is_aligned(second_region_address, second_region_size))
+		return -EC_ERROR_INVAL;
+
+	return mpu_config_region(REGION_STORAGE2, second_region_address,
+				 second_region_size, mpu_attr, 1);
 }
 #endif /* !CONFIG_EXTERNAL_STORAGE */
 
