@@ -321,8 +321,6 @@ static inline void disable_usb4_mode(int port)
  */
 static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 {
-	/* TODO: USB4 enter mode for Rev 2 Active cables */
-
 	if (!IS_ENABLED(CONFIG_USB_PD_USB4))
 		return false;
 
@@ -559,7 +557,8 @@ static int process_tbt_compat_discover_modes(int port,
 		/* Limits cable speed if applicable */
 		usb_pd_limit_cable_speed(port);
 
-		if (is_usb4_mode_enabled(port)) {
+		if (is_usb4_mode_enabled(port) &&
+		    get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) {
 			/*
 			 * If Cable is not Thunderbolt Gen 3
 			 * capable or Thunderbolt Gen1_Gen2
@@ -617,10 +616,22 @@ static int obj_cnt_enter_tbt_compat_mode(int port,
 		enum tcpm_transmit_type sop, uint32_t *payload,
 		enum tcpm_transmit_type *rtype)
 {
+	bool is_cable_sop_p_p = cable[port].attr.a_rev20.sop_p_p;
+
+	if (is_usb4_mode_enabled(port) &&
+	   (sop == TCPC_TX_SOP_PRIME || is_cable_sop_p_p)) {
+		if (cable_supports_tbt_speed(port)) {
+			enable_enter_usb4_mode(port);
+			usb_mux_set_safe_mode(port);
+			return 0;
+		}
+		disable_usb4_mode(port);
+	}
+
 	/* Enter mode SOP' for active cables */
 	if (sop == TCPC_TX_SOP_PRIME) {
 		/* Check if the cable has a SOP'' controller */
-		if (cable[port].attr.a_rev20.sop_p_p)
+		if (is_cable_sop_p_p)
 			*rtype = TCPC_TX_SOP_PRIME_PRIME;
 		return enter_tbt_compat_mode(port, *rtype, payload);
 	}
