@@ -25,14 +25,14 @@ GPIO(PWR_BTN,                       PIN(A,  0),      GPIO_INPUT) /*TODO: move
 								  *  */
 GPIO(EN_AC_JACK,                    PIN(A,  1),      GPIO_OUT_LOW)
 GPIO(EN_BB,                         PIN(A, 10),      GPIO_OUT_LOW)
-GPIO(EN_PP3300_ALW,                 PIN(B,  2),      GPIO_OUT_LOW)
+GPIO(EN_PP3300_BB,                 PIN(B,  2),      GPIO_OUT_LOW)
 GPIO(EN_PP5000_A,                   PIN(C,  6),      GPIO_OUT_LOW)
 GPIO(EN_PP1200_A,                   PIN(E,  8),      GPIO_OUT_LOW)
 GPIO(EN_PP1100_A,                   PIN(C,  7),      GPIO_OUT_LOW)
 GPIO(EN_PP1050_A,                   PIN(A,  2),      GPIO_OUT_LOW)
 GPIO(EN_PP5000_C,                   PIN(D,  1),      GPIO_OUT_LOW)
 GPIO(EN_PP5000_HSPORT,              PIN(D,  0),      GPIO_OUT_LOW)
-GPIO(STATUS_LED1,                   PIN(B, 12),      GPIO_OUT_HIGH)
+GPIO(TP41,                          PIN(B, 12),      GPIO_OUT_LOW)
 
 /* USB-C CC LINES */
 GPIO(USBC_HOST_CC1,                 PIN(B,  6),      GPIO_INPUT)
@@ -110,16 +110,19 @@ GPIO(EC_I2C3_SDA,                   PIN(C,  9),      GPIO_ODR_HIGH) /* I2C port 
 
 UNIMPLEMENTED(ENTERING_RW)
 
-/* #ifdef STM32G431_EVAL_USE_LPUART_CONSOLE */
+#ifdef STM32G431_EVAL_USE_LPUART_CONSOLE
 /* USART1 C4/C5 */
 ALTERNATE(PIN_MASK(C, 0x0030), GPIO_ALT_USART,       MODULE_UART, GPIO_PULL_UP)
-ALTERNATE(PIN_MASK(C, 0x0C00), GPIO_ALT_USART,       MODULE_UART,    GPIO_PULL_UP) /* GPIOB10-11:UART_TX/RX */
-ALTERNATE(PIN_MASK(B, 0x0100),      4,               MODULE_I2C,      0) /* GPIOB7: I2C1_SDA */
-ALTERNATE(PIN_MASK(A, 0X8000),      4,               MODULE_I2C,      0) /* GPIOA15: I2C1_SCL*/
-ALTERNATE(PIN_MASK(A, 0x0600),      4,               MODULE_I2C,      0) /* GPIOA8-9: I2C2_SDA/SCL */
-ALTERNATE(PIN_MASK(C, 0x0600),      8,               MODULE_I2C,      0) /* GPIOC8-9: I2C3_SDA/SCL */
-ALTERNATE(PIN_MASK(A, 0x0078),      5,               MODULE_SPI,      0) /* GPIOA4-7: SPI Signals */
+#else
+ALTERNATE(PIN_MASK(C, 0x0C00), GPIO_ALT_USART,       MODULE_UART,    GPIO_PULL_UP) /* GPIOC 10-11:UART_TX/RX */
+#endif
+ALTERNATE(PIN_MASK(B, 0x0080),      4,               MODULE_I2C,      GPIO_OPEN_DRAIN) /* GPIOB7: I2C1_SDA */
+ALTERNATE(PIN_MASK(A, 0X8000),      4,               MODULE_I2C,      GPIO_OPEN_DRAIN) /* GPIOA15: I2C1_SCL*/
+ALTERNATE(PIN_MASK(A, 0x0300),      4,               MODULE_I2C,      GPIO_OPEN_DRAIN) /* GPIOA8-9: I2C2_SDA/SCL */
+ALTERNATE(PIN_MASK(C, 0x0300),      8,               MODULE_I2C,      GPIO_OPEN_DRAIN) /* GPIOC8-9: I2C3_SDA/SCL */
+ALTERNATE(PIN_MASK(A, 0x00F0),      5,               MODULE_SPI,      0) /* GPIOA4-7: SPI Signals */
 /* LPUART1: A2/A3 */
 ALTERNATE(PIN_MASK(A, 0x000C), GPIO_ALT_LPUART,  MODULE_UART, GPIO_PULL_UP)
 /* MCO A8 */
 ALTERNATE(PIN_MASK(A, 0x0100), 0,  MODULE_CLOCK, 0)
+
