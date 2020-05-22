@@ -50,6 +50,15 @@
 
 #ifndef __ASSEMBLER__
 
+struct power_seq {
+	int signal; /* power/reset gpio_signal to control */
+	int pol;    /* polarity to set in power sequence */
+	int delay;  /* delay (in msec) after setting gpio_signal */
+};
+
+extern const struct power_seq board_power_seq[];
+extern int board_power_seq_count;
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BASEBOARD_H */
