@@ -6,8 +6,10 @@
 /* STM32G431 Nucleo-64 board-specific configuration */
 
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "switch.h"
 #include "system.h"
 #include "task.h"
@@ -15,7 +17,6 @@
 #include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
-
 
 static void board_init(void)
 {
