@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d721ede8_f952e087",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T00:14:32Z",
+      "side": 1,
+      "message": "We already set the main charger before calling into this function, so I don\u0027t think this part is needed.",
+      "parentUuid": "52c4a16c_b3dcfcae",
+      "range": {
+        "startLine": 982,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 47
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "635bcfc9_6670bc11",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ceccf7_813b06d9",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T00:14:32Z",
+      "side": 1,
+      "message": "I expect these to be fairly constant. Temperature affects resistivity, but I don\u0027t think the board will see such high temperatures where it will make a difference.",
+      "parentUuid": "635bcfc9_6670bc11",
+      "range": {
+        "startLine": 986,
+        "startChar": 4,
+        "endLine": 986,
+        "endChar": 53
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e5c154bf_9367baa1",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T00:14:32Z",
+      "side": 1,
+      "message": "Ack. I\u0027ve added a TODO.",
+      "parentUuid": "6a989d48_1130db72",
+      "range": {
+        "startLine": 1005,
+        "startChar": 28,
+        "endLine": 1006,
+        "endChar": 63
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f73eb014_ab9f3137",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d257803_7d954f08",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T00:14:32Z",
+      "side": 1,
+      "message": "Ack. I\u0027ve also reordered this. I should be clamping prior to register conversion.",
+      "parentUuid": "f73eb014_ab9f3137",
+      "range": {
+        "startLine": 1009,
+        "startChar": 1,
+        "endLine": 1009,
+        "endChar": 10
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b24a6cad_938d33df",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T00:14:32Z",
+      "side": 1,
+      "message": "Good catch; done.",
+      "parentUuid": "5c243aa6_6d3d6b76",
+      "range": {
+        "startLine": 1026,
+        "startChar": 2,
+        "endLine": 1027,
+        "endChar": 46
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "277b93b9_4d5d5cae",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 1
@@ -134,6 +254,24 @@
     },
     {
       "key": {
+        "uuid": "80ed0431_b3288ea3",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T00:14:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "277b93b9_4d5d5cae",
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db0a0fc0_24b94469",
         "filename": "driver/charger/isl923x.h",
         "patchSetId": 1
@@ -145,6 +283,30 @@
       "writtenOn": "2020-05-10T05:29:23Z",
       "side": 1,
       "message": "Something we\u0027ll need to use when trickling, I\u0027m guessing?  Can the function guess whether we\u0027re trickling based on parameters, or I guess be told that?",
+      "range": {
+        "startLine": 324,
+        "startChar": 9,
+        "endLine": 324,
+        "endChar": 51
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b610e135_53756fb2",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T00:14:32Z",
+      "side": 1,
+      "message": "Correct. We should be able to tell when we\u0027re trickle charging if the battery voltage is less than the minimum. We could also look at desired charge currents, but maybe these simple batteries won\u0027t update their charge request. Therefore, sticking to the battery voltage is likely ideal.",
+      "parentUuid": "db0a0fc0_24b94469",
       "range": {
         "startLine": 324,
         "startChar": 9,
