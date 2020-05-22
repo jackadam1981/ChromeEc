@@ -44,7 +44,7 @@ GPIO(PWR_BTN,                       PIN(A,  0),      GPIO_INPUT) /*TODO: move
 								  *  */
 GPIO(EN_AC_JACK,                    PIN(A,  1),      GPIO_OUT_LOW)
 GPIO(EN_BB,                         PIN(A, 10),      GPIO_OUT_LOW)
-GPIO(EN_PP3300_ALW,                 PIN(B,  2),      GPIO_OUT_LOW)
+GPIO(EN_PP3300_BB,                  PIN(B,  2),      GPIO_OUT_LOW)
 GPIO(EN_PP5000_A,                   PIN(C,  6),      GPIO_OUT_LOW)
 GPIO(EN_PP1200_A,                   PIN(E,  8),      GPIO_OUT_LOW)
 GPIO(EN_PP1100_A,                   PIN(C,  7),      GPIO_OUT_LOW)
