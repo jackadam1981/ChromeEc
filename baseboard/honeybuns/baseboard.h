@@ -29,17 +29,10 @@
 /* Honeybuns platform does not have a lid switch */
 #undef CONFIG_LID_SWITCH
 
-/* Host communication */
-
-/* Chipset config */
-
-/* Common Keyboard Defines */
-
-/* Sensors */
-
-/* Common charger defines */
-
-/* Common battery defines */
+#undef CONFIG_UART_CONSOLE
+#define CONFIG_UART_TX_DMA
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 2048
 
 /* USB Type C and USB PD defines */
 
@@ -47,8 +40,16 @@
 
 /* I2C Bus Configuration */
 
-
 #ifndef __ASSEMBLER__
+
+struct power_seq {
+	int signal;
+	int pol;
+	int delay;
+};
+
+extern const struct power_seq board_power_seq[];
+extern int board_power_seq_count;
 
 #endif /* !__ASSEMBLER__ */
 
