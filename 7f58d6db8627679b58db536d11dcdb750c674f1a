@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31fd663f_1099f244",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2020-05-22T05:43:23Z",
+      "side": 1,
+      "message": "Few queries:\nis there any possibility of sending mux mode: connect mode/usb mode for several times?\nEarlier why this condition check was there?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "7f58d6db8627679b58db536d11dcdb750c674f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
