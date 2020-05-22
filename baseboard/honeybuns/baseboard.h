@@ -29,6 +29,11 @@
 /* Honeybuns platform does not have a lid switch */
 #undef CONFIG_LID_SWITCH
 
+#define I2C_ADDR_EEPROM_FLAGS   0x50
+#define CONFIG_CROS_BOARD_INFO
+#define CONFIG_BOARD_VERSION_CBI
+#define CONFIG_CMD_CBI
+
 /* Host communication */
 
 /* Chipset config */
@@ -46,7 +51,11 @@
 /* BC 1.2 */
 
 /* I2C Bus Configuration */
-
+#define CONFIG_I2C
+#define CONFIG_I2C_MASTER
+#define I2C_PORT_USBC		0
+#define I2C_PORT_MST		1
+#define I2C_PORT_EEPROM	2
 
 #ifndef __ASSEMBLER__
 
