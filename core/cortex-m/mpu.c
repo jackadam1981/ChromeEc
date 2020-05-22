@@ -248,11 +248,53 @@ int mpu_lock_ro_flash(void)
 int mpu_lock_rw_flash(void)
 {
 	/* Prevent execution from internal mapped RW flash */
-	return mpu_config_region(REGION_STORAGE,
-				 CONFIG_MAPPED_STORAGE_BASE + CONFIG_RW_MEM_OFF,
-				 CONFIG_RW_SIZE,
-				 MPU_ATTR_XN | MPU_ATTR_RW_RW |
-				 MPU_ATTR_FLASH_MEMORY, 1);
+	const uint16_t mpu_attr = MPU_ATTR_XN | MPU_ATTR_RW_RW |
+				  MPU_ATTR_FLASH_MEMORY;
+	const uint32_t rw_start_address =
+		CONFIG_MAPPED_STORAGE_BASE + CONFIG_RW_MEM_OFF;
+	int first_region_size_bit;
+	uint32_t second_region_size;
+	uint32_t second_region_start_address;
+	int found = 0;
+	int rv;
+
+	/* Bit position of size rounded up to a power of 2*/
+	int size_bit = 31 - __builtin_clz(CONFIG_RW_SIZE);
+
+	if (!POWER_OF_TWO(CONFIG_RW_SIZE))
+		size_bit++;
+
+	/*
+	 * Try to represent with at most 2 MPU regions, each with the address
+	 * aligned to the size and the size being a power of 2. Minimal region
+	 * size is 32 bytes.
+	 */
+	for (first_region_size_bit = size_bit; first_region_size_bit > 4;
+	     first_region_size_bit--) {
+		if (!is_aligned(rw_start_address, BIT(first_region_size_bit)))
+			continue;
+		second_region_size =
+			CONFIG_RW_SIZE - BIT(first_region_size_bit);
+		second_region_start_address =
+			rw_start_address + BIT(first_region_size_bit);
+		if ((second_region_size == 0) ||
+		    is_aligned(second_region_start_address,
+			       second_region_size)) {
+			found = 1;
+			break;
+		}
+	}
+
+	if (!found)
+		return EC_ERROR_HW_INTERNAL;
+
+	rv = mpu_config_region(REGION_STORAGE, rw_start_address,
+			       BIT(first_region_size_bit), mpu_attr, 1);
+	if ((rv != EC_SUCCESS) || (second_region_size == 0))
+		return rv;
+
+	return mpu_config_region(REGION_STORAGE2, second_region_start_address,
+				 second_region_size, mpu_attr, 1);
 }
 #endif /* !CONFIG_EXTERNAL_STORAGE */
 
