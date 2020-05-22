@@ -4,6 +4,7 @@
  */
 
 #include <stdbool.h>
+#include <third_party/SEGGER_RTT_V672d/RTT/SEGGER_RTT.h>
 #include "mpu.h"
 #include "mpu_private.h"
 #include "string.h"
@@ -181,6 +182,8 @@ void run_test(int argc, char **argv)
 	enum ec_image cur_image = system_get_image_copy();
 
 	ccprintf("Running MPU test\n");
+
+	SEGGER_RTT_printf(0, "SEGGER Running MPU test\n");
 
 	RUN_TEST(reset_mpu);
 	RUN_TEST(test_mpu_info);

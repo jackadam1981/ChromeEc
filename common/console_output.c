@@ -5,6 +5,7 @@
 
 /* Console output module for Chrome EC */
 
+#include <third_party/SEGGER_RTT_V672d/RTT/SEGGER_RTT.h>
 #include "console.h"
 #include "uart.h"
 #include "usb_console.h"
@@ -61,6 +62,10 @@ int cprintf(enum console_channel channel, const char *format, ...)
 	int rv1, rv2;
 	va_list args;
 
+	va_start(args, format);
+	SEGGER_RTT_vprintf(0, format, &args);
+	va_end(args);
+
 #ifdef CONFIG_CONSOLE_CHANNEL
 	/* Filter out inactive channels */
 	if (!(CC_MASK(channel) & channel_mask))
@@ -82,6 +87,10 @@ int cprints(enum console_channel channel, const char *format, ...)
 {
 	int r, rv;
 	va_list args;
+
+	va_start(args, format);
+	SEGGER_RTT_vprintf(0, format, &args);
+	va_end(args);
 
 #ifdef CONFIG_CONSOLE_CHANNEL
 	/* Filter out inactive channels */
