@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53274c06_b5398993",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-22T23:09:01Z",
+      "side": 1,
+      "message": "Technically, this could be anything between G3 and S0 (in either direction). There could be timing violations by having the EC jump mid-sequence; I don\u0027t think jumping during this time is a good idea...\n\nIf we\u0027re sequencing up, I think the chipset task will catch up, but I don\u0027t think it will if we\u0027re sequencing down.\n\nCould the AP tell the EC if it\u0027s going down for a full-reset, such that the EC can wait until it\u0027s done before jumping? (or timeout if it never comes back up for some reason)",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 36
+      },
+      "revId": "c5e59d0d663c8f8b43dab7915f664e4a2a401162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
