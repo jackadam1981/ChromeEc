@@ -342,8 +342,14 @@ int mpu_pre_init(void)
 
 	mpu_disable();
 	for (i = 0; i < num_mpu_regions; ++i) {
-		rv = mpu_config_region(i, CONFIG_RAM_BASE, CONFIG_RAM_SIZE, 0,
-				       0);
+		/*
+		 * Disable all regions.
+		 *
+		 * We use the smallest possible size (32 bytes), but it
+		 * doesn't really matter since the regions are disabled.
+		 */
+		rv = mpu_update_region(i, CONFIG_RAM_BASE, 5, 0,
+				       0, 0);
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
