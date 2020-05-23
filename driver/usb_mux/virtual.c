@@ -28,8 +28,9 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 {
 	if (virtual_mux_state[port] != mux_state) {
 		virtual_mux_state[port] = mux_state;
-
+#ifdef CONFIG_HOSTCMD_EVENTS
 		host_set_single_event(EC_HOST_EVENT_USB_MUX);
+#endif
 	}
 }
 
