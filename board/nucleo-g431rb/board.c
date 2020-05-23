@@ -25,6 +25,11 @@ static void board_init(void)
 	 * is configured here.
 	 */
 	gpio_config_module(MODULE_CLOCK, 1);
+
+	/* turn on main board power */
+	gpio_set_level(GPIO_EN_AC_JACK, 1);
+	msleep(500);
+	gpio_set_level(GPIO_EN_PP5000_A, 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -33,7 +38,7 @@ static void led_second(void)
 	static int count;
 
 	/* Blink user LED on nucleo board */
-	gpio_set_level(GPIO_LED1, count++ & 0x1);
+	gpio_set_level(GPIO_DEBUG_GPIO1, (count++ % 4));
 }
 DECLARE_HOOK(HOOK_SECOND, led_second, HOOK_PRIO_DEFAULT);
 
