@@ -90,7 +90,7 @@ enum power_button_state {
 	/* Power button pressed when chipset was off; stretching pulse */
 	PWRBTN_STATE_WAS_OFF,
 };
-static enum power_button_state pwrbtn_state = PWRBTN_STATE_IDLE;
+static enum power_button_state pwrbtn_state; /* 0 = PWRBTN_STATE_IDLE */
 
 static const char * const state_names[] = {
 	"idle",
@@ -211,6 +211,7 @@ static void power_button_released(uint64_t tnow)
 static void set_initial_pwrbtn_state(void)
 {
 	uint32_t reset_flags = system_get_reset_flags();
+	const char *msg = NULL;
 
 	if (system_jumped_to_this_image() &&
 	    chipset_in_state(CHIPSET_STATE_ON)) {
@@ -224,12 +225,11 @@ static void set_initial_pwrbtn_state(void)
 		 * state_machine(), it would take the appropriate action there.
 		 */
 		if (power_button_is_pressed() && power_button_pulse_enabled) {
-			CPRINTS("PB init-jumped-held");
+			msg = "jumped-held";
 			set_pwrbtn_to_pch(0, 0);
 		} else {
-			CPRINTS("PB init-jumped");
+			msg = "jumped";
 		}
-		return;
 	} else if ((reset_flags & EC_RESET_FLAG_AP_OFF) ||
 		   (keyboard_scan_get_boot_keys() == BOOT_KEY_DOWN_ARROW)) {
 		/* Clear AP_OFF so that it won't be carried over to RW. */
@@ -245,23 +245,20 @@ static void set_initial_pwrbtn_state(void)
 		 * Don't let the PCH see that the power button was pressed.
 		 * Otherwise, it might power on.
 		 */
-		CPRINTS("PB init-off");
+		msg = "by AP_OFF";
 		power_button_pch_release();
-		return;
 	} else if (reset_flags & EC_RESET_FLAG_AP_IDLE) {
 		system_clear_reset_flags(EC_RESET_FLAG_AP_IDLE);
-		pwrbtn_state = PWRBTN_STATE_IDLE;
-		CPRINTS("PB idle");
-		return;
+		msg = "by AP_IDLE";
+	} else if (IS_ENABLED(CONFIG_BRINGUP)) {
+		msg = "bringup";
+	} else {
+		pwrbtn_state = PWRBTN_STATE_INIT_ON;
 	}
 
-#ifdef CONFIG_BRINGUP
-	pwrbtn_state = PWRBTN_STATE_IDLE;
-#else
-	pwrbtn_state = PWRBTN_STATE_INIT_ON;
-#endif
-	CPRINTS("PB %s",
-		pwrbtn_state == PWRBTN_STATE_INIT_ON ? "init-on" : "idle");
+	CPRINTS("PB init-%s %s",
+		pwrbtn_state == PWRBTN_STATE_INIT_ON ? "on" : "idle",
+				msg ? msg : "");
 }
 
 /**
