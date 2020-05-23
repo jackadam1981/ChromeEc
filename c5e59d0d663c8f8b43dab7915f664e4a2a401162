@@ -22,6 +22,30 @@
       "revId": "c5e59d0d663c8f8b43dab7915f664e4a2a401162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2478a22b_b2d34406",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-05-23T01:12:56Z",
+      "side": 1,
+      "message": "\u003e Could the AP tell the EC if it\u0027s going down ...\n\nIt\u0027s possible but we need to know all possible initiators. There could be some binary component which issue a reboot.",
+      "parentUuid": "53274c06_b5398993",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 36
+      },
+      "revId": "c5e59d0d663c8f8b43dab7915f664e4a2a401162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
