@@ -16,6 +16,23 @@
       "revId": "288e1a5d8ea9be1e15829067969cc786d725a4a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44fea84b_331bf1da",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-05-23T03:41:53Z",
+      "side": 1,
+      "message": "As Caveh mentions, this is broken for most ECs it seems, because:\n - if CONFIG_RAM_SIZE is non-power of 2, the next region is used.\n - region 6 is reserved (line 148) and that\u0027s what breaks.\n\nIf the intent is just to test the setting of the MPU, it may be better to use mpu_update_region directly with the next smallest power of 2 for CONFIG_RAMSIZE.",
+      "revId": "288e1a5d8ea9be1e15829067969cc786d725a4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
