@@ -46,6 +46,30 @@
       "revId": "c5e59d0d663c8f8b43dab7915f664e4a2a401162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c85a7b56_07a7d9c9",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-05-23T23:57:47Z",
+      "side": 1,
+      "message": "\u003e Technically, this could be anything between G3 and S0\n\nIn the G3S5 handler of power_handle_state, it checks these signals in CHIPSET_G3S5_POWERUP_SIGNAL. So, when these signals (and not others) are up, I think we can say the chipset state is in S5. (Note S0 is already checked before this line.) At least that seems the case for cometlake-discrete.\n\n\u003e There could be timing violations by having the EC jump mid-sequence;\n\nIn the S5 handler of common_intel_x86_power_handle_state, there is a while loop which retries the G3S5 sequence until IN_PCH_SLP_S4_DEASSERTED is signaled. I presume this loop (and the comment in power_wait_s5_rtc_reset) indicates the S5 exit is permissive in terms of timing.\n\nHere are some other thoughts which went into this patch series.\n\n1. The reason I didn\u0027t pursue \u0027making AP notify EC of upcoming reboot\u0027 is because that\u0027ll require all the reboot issuers to be modified. On Puff, SYS_RST can be issued by Cr50. A requester could be in a FSP or some other binary.\n\n2. At least on Puff, the proposed power sequencing never fails in either way. It always goes down to G3 when the PCH is shutting down and it always goes up to S3 otherwise.\n\n3. An alternative solution would be to hook on S5-\u003eG3 transition. The problem is the delay between S5-\u003eG3 is too large (10 sec). So, we can easily miss a power button press right after a shutdown.\n\n4. This is a corner case. This path is taken only when EC is still in RO when the system reboots or shutdown (i.e. recovery mode). In most cases, RW is already running, thus, sysjump is already done. Going in the reverse direction is not a critical failure (especially because recovery is supposed to be attended and there is no in-the-middle reboot required during the process).",
+      "parentUuid": "2478a22b_b2d34406",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 36
+      },
+      "revId": "c5e59d0d663c8f8b43dab7915f664e4a2a401162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
