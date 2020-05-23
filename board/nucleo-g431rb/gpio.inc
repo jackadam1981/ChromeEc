@@ -35,10 +35,6 @@
  */
 
 
-/* Misc Signals */
-UNIMPLEMENTED(ENTERING_RW)
-
-
 /* Power sequencing interrupts */
 GPIO(PWR_BTN,                       PIN(A,  0),      GPIO_INPUT) /*TODO: move
 								  * into pwr btn
@@ -134,7 +130,10 @@ GPIO(EC_I2C3_SDA,                   PIN(C,  9),      GPIO_ODR_HIGH) /* I2C port 
 
 UNIMPLEMENTED(ENTERING_RW)
 
-ALTERNATE(PIN_MASK(B, 0x0A00),      7,               MODULE_USART,    GPIO_PULL_UP) /* GPIOB10-11:UART_TX/RX */
+/* #ifdef STM32G431_EVAL_USE_LPUART_CONSOLE */
+/* USART1 C4/C5 */
+ALTERNATE(PIN_MASK(C, 0x0030), GPIO_ALT_USART,       MODULE_UART, GPIO_PULL_UP)
+ALTERNATE(PIN_MASK(C, 0x0C00), GPIO_ALT_USART,       MODULE_UART,    GPIO_PULL_UP) /* GPIOB10-11:UART_TX/RX */
 ALTERNATE(PIN_MASK(B, 0x0100),      4,               MODULE_I2C,      0) /* GPIOB7: I2C1_SDA */
 ALTERNATE(PIN_MASK(A, 0X8000),      4,               MODULE_I2C,      0) /* GPIOA15: I2C1_SCL*/
 ALTERNATE(PIN_MASK(A, 0x0600),      4,               MODULE_I2C,      0) /* GPIOA8-9: I2C2_SDA/SCL */
