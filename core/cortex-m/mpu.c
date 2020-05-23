@@ -328,6 +328,7 @@ int mpu_pre_init(void)
 {
 	int i;
 	int num_mpu_regions;
+	int size_bit;
 	int rv;
 
 	if (!has_mpu())
@@ -341,9 +342,10 @@ int mpu_pre_init(void)
 		return EC_ERROR_UNIMPLEMENTED;
 
 	mpu_disable();
+	size_bit = 31 - __builtin_clz(CONFIG_RAM_SIZE);
 	for (i = 0; i < num_mpu_regions; ++i) {
-		rv = mpu_config_region(i, CONFIG_RAM_BASE, CONFIG_RAM_SIZE, 0,
-				       0);
+		rv = mpu_update_region(i, CONFIG_RAM_BASE, size_bit, 0,
+				       0, 0);
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
