@@ -45,6 +45,30 @@
       "revId": "7f58d6db8627679b58db536d11dcdb750c674f1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7d402cd_a22e9c99",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-24T01:07:52Z",
+      "side": 1,
+      "message": "except HPD, other mux are not send multiple times.\nAs mux is handled in SOC i think that is the reason this check is present.",
+      "parentUuid": "31fd663f_1099f244",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "7f58d6db8627679b58db536d11dcdb750c674f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
