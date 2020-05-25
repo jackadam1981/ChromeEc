@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0503bfc_fce4be68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1249062
+      },
+      "writtenOn": "2020-05-25T16:04:58Z",
+      "side": 1,
+      "message": "I don\u0027t know how accurate this needs to be but note this is applicable only to the CR_SIN that is selected by DEVALTC.UART_SL2.\n\nAlso, sorry about previous commit change, I don\u0027t do this often, I should have added a comment.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "1b051fcc3406468a48be9f8b8bcecf4f0037909d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
