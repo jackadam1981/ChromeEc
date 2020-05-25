@@ -6,17 +6,21 @@
 /* STM32GX UCPD module for Chrome EC */
 
 #include "clock.h"
+#include "console.h"
 #include "common.h"
+#include "driver/tcpm/tcpm.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
 #include "task.h"
+#include "timer.h"
 #include "ucpd-stm32gx.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
-
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 /*
  * UCPD is fed directly from HSI which is @ 16MHz. The ucpd_clk goes to
  * a prescaler who's output feeds the 'half-bit' divider which is used
@@ -43,7 +47,76 @@
 #define UCPD_HBIT_DIV 26
 #define UCPD_TRANSWIN_HBIT_CNT 8
 #define UCPD_IFRGAP_HBIT_CNT 17
+#define UCPD_BUF_LEN 30
 
+struct msg_header_info {
+	uint8_t pr;
+	uint8_t dr;
+};
+
+static struct msg_header_info msg_header;
+
+static int ucpd_tx_byte_count;
+static uint8_t ucpd_tx_data_buf[UCPD_BUF_LEN];
+static int ucpd_rx_byte_count;
+static uint8_t ucpd_rx_buffer[UCPD_BUF_LEN];
+static uint8_t ucpd_rxdr[UCPD_BUF_LEN];
+static uint8_t ucpd_rxdr_idx;
+
+#define UCPD_IMR_RX_INT_MASK (STM32_UCPD_IMR_RXNEIE| \
+			      STM32_UCPD_IMR_RXORDDETIE | \
+			      STM32_UCPD_IMR_RXHRSTDETIE |	\
+			      STM32_UCPD_IMR_RXOVRIE |		\
+			      STM32_UCPD_IMR_RXMSGENDIE)
+
+static int ucpd_txorderset[] = {
+	TX_ORDERSET_SOP,
+	TX_ORDERSET_SOP,
+	TX_ORDERSET_SOP2,
+	TX_ORDERSET_HARD_RESET,
+	TX_ORDERSET_CABLE_RESET,
+	TX_ORDERSET_SOP1_DEBUG,
+	TX_ORDERSET_SOP2_DEBUG,
+};
+
+static void ucpd_check_cc(void);
+DECLARE_DEFERRED(ucpd_check_cc);
+static void ucpd_check_cc(void)
+{
+	uint32_t sr;
+	//int anamode;
+	int vstate_cc1, vstate_cc2;
+	static int cc1_prev;
+	static int cc2_prev;
+
+	/* Get vstate_ccx values */
+	sr = STM32_UCPD_SR(0);
+	/* Get Rp or Rd active */
+	//anamode = !!(STM32_UCPD_CR(0) & STM32_UCPD_CR_ANAMODE);
+	vstate_cc1 = (sr & STM32_UCPD_SR_VSTATE_CC1_MASK) >>
+		STM32_UCPD_SR_VSTATE_CC1_SHIFT;
+	vstate_cc2 = (sr & STM32_UCPD_SR_VSTATE_CC2_MASK) >>
+		STM32_UCPD_SR_VSTATE_CC2_SHIFT;
+
+	if(vstate_cc1 != cc1_prev)
+		ccprintf("ucpd: CC1 change!!!, new = %d, prev = %d\n",
+			vstate_cc1 , cc1_prev);
+
+	if(vstate_cc2 != cc2_prev)
+		ccprintf("ucpd: CC2 change!!!, new = %d, prev = %d\n",
+			 vstate_cc2, cc2_prev);
+
+
+	cc1_prev = vstate_cc1;
+	cc2_prev = vstate_cc2;
+
+}
+
+static void ucpd_hard_reset_rx_log(void)
+{
+	CPRINTS("ucpd: hard reset recieved");
+}
+DECLARE_DEFERRED(ucpd_hard_reset_rx_log);
 
 static void ucpd_port_enable(int port, int enable)
 {
@@ -61,15 +134,108 @@ static int ucpd_is_cc_pull_active(int port, int cc_line)
 	return (cc_enable >> cc_line);
 }
 
+static void ucpd_tx_data_byte(int port)
+{
+	STM32_UCPD_TXDR(port) =  ucpd_tx_data_buf[ucpd_tx_byte_count++];
+}
+
+static void ucpd_rx_data_byte(int port)
+{
+	if (ucpd_rx_byte_count < UCPD_BUF_LEN)
+		ucpd_rx_buffer[ucpd_rx_byte_count++] = STM32_UCPD_RXDR(port);
+
+	ucpd_rxdr[ucpd_rxdr_idx++] = STM32_UCPD_RXDR(port);
+}
+
+static void ucpd_clear_tx_int(int port)
+{
+	STM32_UCPD_IMR(port) &= ~(STM32_UCPD_IMR_TXISIE |
+				  STM32_UCPD_IMR_TXMSGDISCIE |
+				  STM32_UCPD_IMR_TXMSGSENTIE |
+				  STM32_UCPD_IMR_TXMSGABTIE);
+}
+
+static int sr_log;
+static int msg_hdr;
+static void ucpd_irq_log(void)
+{
+	//CPRINTS("ucpd: irq: sr = 0x%x", sr_log);
+}
+DECLARE_DEFERRED(ucpd_irq_log);
+
+static int sr_save;
+static void ucpd_irq_txmsg_log(void)
+{
+	CPRINTS("ucpd: tx irq = %x", sr_save);
+	sr_save = 0;
+}
+DECLARE_DEFERRED(ucpd_irq_txmsg_log);
+
 void stm32gx_ucpd1_irq(void)
 {
 	/* STM32_IRQ_UCPD indicates this is from UCPD1, so port = 0 */
 	int port = 0;
 	uint32_t sr = STM32_UCPD_SR(port);
 
+	sr_log = sr;
+	hook_call_deferred(&ucpd_irq_log_data, 0);
+
+	/* Check for CC events */
 	if (sr & (STM32_UCPD_SR_TYPECEVT1 | STM32_UCPD_SR_TYPECEVT2)) {
+		/* Measure every 100ms, forever. */
+		hook_call_deferred(&ucpd_check_cc_data, 1 * MSEC);
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
 	}
+
+	/* Check for Tx events */
+	/* Check for data register empty */
+	if (sr & STM32_UCPD_SR_TXIS) {
+		sr_save |= STM32_UCPD_SR_TXIS;
+		hook_call_deferred(&ucpd_irq_txmsg_log_data, 0);
+		ucpd_tx_data_byte(port);
+	}
+	/* Check for tx message complete */
+	if (sr & STM32_UCPD_SR_TXMSGSENT) {
+		sr_save |= STM32_UCPD_SR_TXMSGSENT;
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
+		ucpd_clear_tx_int(port);
+		hook_call_deferred(&ucpd_irq_txmsg_log_data, 0);
+	}
+	if (sr & (STM32_UCPD_SR_TXMSGABT | STM32_UCPD_SR_TXMSGDISC)) {
+		pd_transmit_complete(port, TCPC_TX_COMPLETE_FAILED);
+		ucpd_clear_tx_int(port);
+		sr_save |= (sr & (STM32_UCPD_SR_TXMSGABT |
+				  STM32_UCPD_SR_TXMSGDISC));
+		hook_call_deferred(&ucpd_irq_txmsg_log_data, 0);
+	}
+
+	/* Check for Rx Events */
+	/* Check first for start of new message */
+	if (sr & STM32_UCPD_SR_RXORDDET) {
+		ucpd_rx_byte_count = 0;
+		ucpd_rxdr_idx = 0;
+	}
+	/* Check for byte received */
+	if (sr & STM32_UCPD_SR_RXNE) {
+		ucpd_rx_data_byte(port);
+	}
+	/* Check for end of message */
+	if (sr & STM32_UCPD_SR_RXMSGEND) {
+		/* Check for errors */
+		if (!(sr & STM32_UCPD_SR_RXERR)) {
+			msg_hdr = ucpd_rx_buffer[0];
+			/* TODO - Add error checking here */
+			tcpm_enqueue_message(port);
+		};
+	}
+	/* Check for fault conditions */
+	if (sr & STM32_UCPD_SR_RXHRSTDET) {
+		/* hard reset received */
+		pd_execute_hard_reset(port);
+		task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE, 0);
+		hook_call_deferred(&ucpd_hard_reset_rx_log_data, 0);
+	}
+
 	/* Clear interrupts now that PD events have been set */
 	STM32_UCPD_ICR(port) = sr;
 }
@@ -78,6 +244,7 @@ DECLARE_IRQ(STM32_IRQ_UCPD1, stm32gx_ucpd1_irq, 1);
 int stm32gx_ucpd_init(int port)
 {
 	uint32_t cfgr1_reg;
+	uint32_t moder_reg;
 
 	/*
 	* After exiting reset, stm32gx will have dead battery mode enabled by
@@ -89,8 +256,10 @@ int stm32gx_ucpd_init(int port)
 	/* Ensure that clock to UCPD is enabled */
 	STM32_RCC_APB1ENR2 |= STM32_RCC_APB1ENR2_UPCD1EN;
 
-	/* Set up alternate function for pins */
-
+	/* Make sure CC1/CC2 pins PB4/PB6 are set for analog mode */
+	moder_reg = STM32_GPIO_MODER(GPIO_B);
+	moder_reg |= 0x330;
+	STM32_GPIO_MODER(GPIO_B) = moder_reg;
 	/*
 	 * CFGR1 must be written when UCPD peripheral is disabled. Note that
 	 * disabling ucpd causes the peripheral to quit any ongoing activity and
@@ -103,6 +272,13 @@ int stm32gx_ucpd_init(int port)
 		STM32_UCPD_CFGR1_IFRGAP_VAL(UCPD_TRANSWIN_HBIT_CNT - 1) |
 		STM32_UCPD_CFGR1_HBITCLKD_VAL(UCPD_IFRGAP_HBIT_CNT - 1);
 	STM32_UCPD_CFGR1(port) = cfgr1_reg;
+
+	/*
+	 * Set RXORDSETEN field to control which types of ordered sets the PD
+	 * receiver must receive.
+	 * SOP, SOP', Hard Reset Det, Cable Reset Det enabled
+	 */
+	STM32_UCPD_CFGR1(port) |= STM32_UCPD_CFGR1_RXORDSETEN_VAL(0x1B);
 
 	/* Configure and enable DMAs */
 
@@ -131,6 +307,7 @@ int stm32gx_ucpd_release(int port)
 
 	return EC_SUCCESS;
 }
+
 
 int stm32gx_ucpd_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2)
@@ -166,10 +343,17 @@ int stm32gx_ucpd_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 		STM32_UCPD_SR_VSTATE_CC2_SHIFT;
 
 	/* Do circular shift if port == source */
-	if (!anamode && vstate_cc1 != STM32_UCPD_SR_VSTATE_OPEN)
-		vstate_cc1 = (vstate_cc1 + 1) % 2;
-	if (!anamode && vstate_cc2 != STM32_UCPD_SR_VSTATE_OPEN)
-		vstate_cc2 = (vstate_cc2 + 1) % 2;
+	if (anamode) {
+		if (vstate_cc1 != STM32_UCPD_SR_VSTATE_RA)
+			vstate_cc1 += 4;
+		if (vstate_cc2 != STM32_UCPD_SR_VSTATE_RA)
+			vstate_cc2 += 4;
+	} else {
+		if (vstate_cc1 != STM32_UCPD_SR_VSTATE_OPEN)
+			vstate_cc1 = (vstate_cc1 + 1) % 2;
+		if (vstate_cc2 != STM32_UCPD_SR_VSTATE_OPEN)
+			vstate_cc2 = (vstate_cc2 + 1) % 2;
+	}
 
 	*cc1 = vstate_cc1;
 	*cc2 = vstate_cc2;
@@ -229,8 +413,7 @@ int stm32gx_ucpd_set_cc(int port, int cc_pull, int rp)
 	return EC_SUCCESS;
 }
 
-int stm32gx_ucpd_set_polarity(int port, enum tcpc_cc_polarity polarity)
-{
+int stm32gx_ucpd_set_polarity(int port, enum tcpc_cc_polarity polarity) {
 	/*
 	 * Polarity impacts the PHYCCSEL, CCENABLE, and CCxTCDIS fields. This
 	 * function is called when polarity is updated at TCPM layer. STM32Gx
@@ -248,3 +431,184 @@ int stm32gx_ucpd_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	return EC_SUCCESS;
 }
 
+int stm32gx_ucpd_set_rx_enable(int port, int enable)
+{
+	/*
+	 * USB PD receiver enable is controlled by the bit PHYRXEN in
+	 * UCPD_CR. Enable Rx interrupts when RX PD decoder is active.
+	 */
+	CPRINTS("ucpd: pd rx enable = %d", enable);
+	if (enable) {
+		int pol;
+		int mask;
+
+		STM32_UCPD_CR(port) |= STM32_UCPD_CR_PHYRXEN;
+		STM32_UCPD_ICR(port) |= UCPD_IMR_RX_INT_MASK;
+		STM32_UCPD_IMR(port) |= UCPD_IMR_RX_INT_MASK;
+
+		/* Temp hack, get rid of this code later */
+		pol = !!(STM32_UCPD_CR(port) & STM32_UCPD_CR_PHYCCSEL);
+		pol ^= 1;
+		mask = 1 << (STM32_UCPD_CR_CCENABLE_SHIFT + pol);
+		STM32_UCPD_CR(port) &= ~mask;
+	} else {
+		STM32_UCPD_CR(port) &= ~STM32_UCPD_CR_PHYRXEN;
+		STM32_UCPD_IMR(port) &= ~UCPD_IMR_RX_INT_MASK;
+	}
+
+	return EC_SUCCESS;
+}
+
+int stm32gx_ucpd_set_msg_header(int port, int power_role, int data_role)
+{
+	msg_header.pr = power_role;
+	msg_header.dr = data_role;
+
+	return EC_SUCCESS;
+}
+
+int stm32gx_ucpd_transmit(int port,
+			enum tcpm_transmit_type type,
+			uint16_t header,
+			const uint32_t *data)
+{
+	enum ucpd_tx_ordset orderset;
+	/*
+	 * First check if transmit_type is hard reset or cable reset. These
+	 * messages are triggered via bits in CR and don't need to be written to
+	 * TXDR to cause transmit. Must also check for TX_BIST_MODE here as
+	 * well.
+	 *
+	 * The transmission type in ucpd is controlled via the
+	 */
+	switch (type) {
+	case TCPC_TX_HARD_RESET:
+		/*
+		 * From RM0440 45.4.4:
+		 * In order to facilitate generation of a Hard Reset, a special
+		 * code of TXMODE field is used. No other fields need to be
+		 * written. On writing the correct code, the hardware forces
+		 * Hard Reset Tx under the correct (optimal) timings with
+		 * respect to an on-going Tx message, which (if still in
+		 * progress) is cleanly terminated by truncating the current
+		 * sequence and directly appending an EOP K-code sequence. No
+		 * specific interrupt is generated relating to this truncation
+		 * event.
+		 */
+		/* Enable interrupt for Hard Reset sent/discarded */
+		STM32_UCPD_CR(port) |= STM32_UCPD_IMR_HRSTDISCIE |
+			STM32_UCPD_IMR_HRSTSENTIE;
+		/* Initiate Hard Reset */
+		STM32_UCPD_CR(port) |= STM32_UCPD_CR_TXHRST;
+		break;
+	case TCPC_TX_CABLE_RESET:
+		CPRINTS("ucpd: cable reset ctrl msg");
+		break;
+	case TCPC_TX_BIST_MODE_2:
+		CPRINTS("ucpd: cable reset ctrl msg");
+		break;
+	case TCPC_TX_SOP:
+	case TCPC_TX_SOP_PRIME:
+	case TCPC_TX_SOP_PRIME_PRIME:
+	case TCPC_TX_SOP_DEBUG_PRIME:
+	case TCPC_TX_SOP_DEBUG_PRIME_PRIME:
+		/*
+		 * These types are normal transmission, TXMODE = 0. To transmit
+		 * regular message, control or data, requires the following:
+		 *     1. Set TXMODE = 0
+		 *     2. Set TX_ORDSETR based on message type
+		 *     3. Set TX_PAYSZR which must account for 2 bytes of header
+		 *     4. Configure DMA (optional if DMA is desired)
+		 *     5. Enable transmit interrupts
+		 *     6. Start TX by setting TXSEND in CR
+		 */
+		/* Clear TX mode */
+		STM32_UCPD_CR(port) &= ~STM32_UCPD_CR_TXMODE_MASK;
+		/* Index into ordset enum (skip 2 resets in debug type) */
+		orderset = (type >= TCPC_TX_HARD_RESET) ? type += 2 : type;
+		STM32_UCPD_TX_ORDSETR(port) = ucpd_txorderset[orderset];
+		/*
+		 * Set tx length parameter (in bytes). Note the count field in
+		 * the header is number of 32 bit objects. Also, the length
+		 * field must account for the 2 header bytes.
+		 */
+		STM32_UCPD_TX_PAYSZR(port) = (PD_HEADER_CNT(header) << 2) + 2;
+		/* Configure DMA */
+		/* TODO: Scott you lazy fucker */
+
+		/* Enable interrupts */
+		STM32_UCPD_IMR(port) |= (STM32_UCPD_IMR_TXISIE |
+					 STM32_UCPD_IMR_TXMSGDISCIE |
+					 STM32_UCPD_IMR_TXMSGSENTIE |
+					 STM32_UCPD_IMR_TXMSGABTIE);
+
+		/* Copy data to ucpd data buffer */
+		memcpy(ucpd_tx_data_buf, (uint8_t *)&header, 2);
+		memcpy(ucpd_tx_data_buf + 2, (uint8_t *)data,
+		       PD_HEADER_CNT(header) << 2);
+		ucpd_tx_byte_count = 0;
+
+		CPRINTS("ucpd: tx msg: type = %d, header = %x, len = %d",
+			type, header, (PD_HEADER_CNT(header) << 2) + 2);
+		CPRINTS("ucpd: txorder = %x, paysz = %d, cr = %x",
+			STM32_UCPD_TX_ORDSETR(port),
+			STM32_UCPD_TX_PAYSZR(port),
+			STM32_UCPD_CR(port));
+		CPRINTS("ucpd: %02x %02x %02x %02x %02x %02x",
+			ucpd_tx_data_buf[0], ucpd_tx_data_buf[1],
+			ucpd_tx_data_buf[2], ucpd_tx_data_buf[3],
+			ucpd_tx_data_buf[4], ucpd_tx_data_buf[5]);
+
+		/* Write first data byte to TXDR */
+		ucpd_tx_data_byte(port);
+		/* Start message transmission */
+		//STM32_UCPD_CR(port) |= STM32_UCPD_CR_TXSEND;
+		break;
+	case TCPC_TX_INVALID:
+		break;
+	default:
+		CPRINTS("ucpd: unknown message type %d", type);
+		break;
+	}
+
+	return EC_SUCCESS;
+}
+
+int stm32gx_ucpd_get_message_raw(int port, uint32_t *payload, int *head)
+{
+	/* uint16_t *rx_header = (uint16_t *)ucpd_rx_buffer; */
+	uint16_t *rx_header = (uint16_t *)ucpd_rxdr;
+	int rxpaysz;
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	int sop;
+#endif
+
+	/* First 2 bytes of data buffer are the header */
+	*head = *rx_header;
+
+#ifdef CONFIG_USB_PD_DECODE_SOP
+/*
+ * The message header is a 16-bit value that's stored in a 32-bit data type.
+ * SOP* is encoded in bits 31 to 28 of the 32-bit data type.
+ * NOTE: This is not part of the PD spec.
+ */
+	/* Get SOP value */
+	sop = STM32_UCPD_RX_ORDSETR(port) & STM32_UCPD_RXORDSETR_MASK;
+	/* Put SOP in bits 31:28 of 32 bit header */
+	*head |= PD_HEADER_SOP(sop);
+#endif
+	msg_hdr = *head;
+
+	rxpaysz = STM32_UCPD_RX_PAYSZR(port) & STM32_UCPD_RX_PAYSZR_MASK;
+	/* This size includes 2 bytes for message header */
+	rxpaysz -= 2;
+	if (rxpaysz != (PD_HEADER_CNT(*head) << 2))
+		CPRINTS("ucpd: rx_msg: header size %d vs rxpaysz %d  mismtach",
+			PD_HEADER_CNT(*head) << 2, rxpaysz);
+	/* Copy payload (src/dst are both 32 bit aligned) */
+	memcpy(payload, ucpd_rxdr + 2, rxpaysz);
+
+	/* Do I need to clear any UCDP status bits here?? */
+
+	return EC_SUCCESS;
+}

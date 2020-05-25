@@ -36,8 +36,7 @@ static int cached_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static int stm32gx_tcpm_get_message_raw(int port, uint32_t *buf, int *head)
 {
-
-	return EC_SUCCESS;
+	return stm32gx_ucpd_get_message_raw(port, buf, head);
 }
 
 static int stm32gx_tcpm_init(int port)
@@ -90,18 +89,19 @@ static int stm32gx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 
 static int stm32gx_tcpm_set_vconn(int port, int enable)
 {
-
+	ccprintf("tcpm: set vconn -> %d\n", enable);
 	return EC_SUCCESS;
 }
 
 static int stm32gx_tcpm_set_msg_header(int port, int power_role, int data_role)
 {
-	return EC_SUCCESS;
+	return stm32gx_ucpd_set_msg_header(port, power_role, data_role);
 }
 
 static int stm32gx_tcpm_set_rx_enable(int port, int enable)
 {
-	return EC_SUCCESS;
+	ccprintf("tcpm: set rxenable -> %d\n", enable);
+	return stm32gx_ucpd_set_rx_enable(port, enable);
 }
 
 static int stm32gx_tcpm_transmit(int port,
@@ -109,13 +109,12 @@ static int stm32gx_tcpm_transmit(int port,
 			uint16_t header,
 			const uint32_t *data)
 {
-	return EC_SUCCESS;
+	return stm32gx_ucpd_transmit(port, type, header, data);
 }
 
 static int stm32gx_tcpm_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 **chip_info)
 {
-
 	return EC_SUCCESS;
 }
 

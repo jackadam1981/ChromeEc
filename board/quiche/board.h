@@ -20,6 +20,9 @@
 /* Sensors */
 
 /* USB Type C and USB PD defines */
+#define USB_PD_PORT_HOST   0
+#define USB_PD_PORT_UF   1
+#define USB_PD_PORT_DP   2
 
 /* USB Type A Features */
 
