@@ -38,12 +38,31 @@ GPIO(USBC_DP_PD_RST_L,              PIN(E,  9), GPIO_ODR_LOW)
 GPIO(USBC_UF_RESET_L,               PIN(D,  2), GPIO_ODR_LOW)
 
 /* USB Hubs signals */
-GPIO(EC_HUB2_RESET_L,               PIN(C,  5), GPIO_ODR_LOW)
-GPIO(EC_HUB3_RESET_L,               PIN(C, 10), GPIO_ODR_LOW)
+GPIO(EC_HUB2_RESET_L,               PIN(C,  5), GPIO_ODR_HIGH)
+GPIO(EC_HUB3_RESET_L,               PIN(C, 10), GPIO_ODR_HIGH)
+
+/* USB-A Current limit switches, set default to 1.5A */
+
+GPIO(USB3_A1_CDP_EN,                PIN(C,  3), GPIO_OUT_LOW)
+GPIO(USB3_A2_CDP_EN,                PIN(C,  2), GPIO_OUT_LOW)
+GPIO(USB3_A3_CDP_EN,                PIN(C,  0), GPIO_OUT_LOW)
+GPIO(USB3_A4_CDP_EN,                PIN(C,  1), GPIO_OUT_LOW)
+GPIO(USB3_A5_CDP_EN,                PIN(B,  9), GPIO_OUT_LOW)
+GPIO(USB3_A6_CDP_EN,                PIN(C, 13), GPIO_OUT_LOW)
 
 /* Write protect */
 GPIO(EC_FLASH_WP_ODL,               PIN(A,  3), GPIO_ODR_HIGH)
 GPIO(EC_WP_L,                       PIN(E, 11), GPIO_INT_BOTH)
+
+/* SPI Bus */
+GPIO(FLASH_SPI1_NSS,                PIN(A,  4), GPIO_INT_FALLING)
+GPIO(FLASH_SPI1_SCK,                PIN(A,  5), GPIO_INT_BOTH)
+GPIO(FLASH_SPI1_MISO,               PIN(A,  6), GPIO_INT_BOTH)
+GPIO(FLASH_SPI1_MOSI,               PIN(A,  7), GPIO_INT_BOTH)
+
+/* UART Bus */
+GPIO(EC_UART_TX,                    PIN(B, 11), GPIO_INT_BOTH)
+GPIO(EC_UART_RX,                    PIN(B, 10), GPIO_INT_BOTH)
 
 /*
  * I2C SCL/SDA pins. These will normally be under control of the peripheral from
