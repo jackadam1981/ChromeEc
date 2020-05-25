@@ -88,3 +88,4 @@ int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
 }
+
