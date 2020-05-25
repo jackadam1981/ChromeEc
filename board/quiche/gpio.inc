@@ -10,11 +10,7 @@
 
 
 
-/*
- * TODO: Enable Wake source interrupts
- * GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_BOTH,   ppc_interrupt)
- */
-
+GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_BOTH,   ppc_interrupt)
 /*
  * USB-C Interrupts
  * TODO: Enable TCPC Interrupts
@@ -51,14 +47,10 @@ GPIO(EN_PP1100_A,                   PIN(C,  7),      GPIO_OUT_LOW)
 GPIO(EN_PP1050_A,                   PIN(A,  2),      GPIO_OUT_LOW)
 GPIO(EN_PP5000_C,                   PIN(D,  1),      GPIO_OUT_LOW)
 GPIO(EN_PP5000_HSPORT,              PIN(D,  0),      GPIO_OUT_LOW)
-GPIO(TP41,                          PIN(B, 12),      GPIO_OUT_HIGH)
 
 /* USB-C CC LINES */
-GPIO(USBC_HOST_CC1,                 PIN(B,  6),      GPIO_INPUT)
-GPIO(USBC_HOST_CC2,                 PIN(B,  4),      GPIO_INPUT)
-
-/* DEBUG signals */
-GPIO(DEBUG_GPIO1,                   PIN(B, 13),      GPIO_OUT_LOW)
+/* GPIO(USBC_HOST_CC1,                 PIN(B,  6),      GPIO_INPUT) */
+/* GPIO(USBC_HOST_CC2,                 PIN(B,  4),      GPIO_INPUT) */
 
 /* MST Hub signals */
 
@@ -71,7 +63,7 @@ GPIO(DEMUX_DUAL_DP_MODE,            PIN(B,  0),      GPIO_OUT_LOW)
 GPIO(DEMUX_DP_HDMI_MODE,            PIN(E, 15),      GPIO_OUT_LOW)
 GPIO(DEMUX_DUAL_DP_RESET_N,         PIN(E, 13),      GPIO_ODR_HIGH)
 GPIO(DEMUX_DUAL_DP_PD_N,            PIN(E, 12),      GPIO_ODR_HIGH)
-GPIO(DEMUX_DP_HDMI_PD_N,            PIN(D,  9),      GPIO_ODR_HIGH)
+GPIO(DEMUX_DP_HDMI_PD_N,            PIN(B, 13),      GPIO_ODR_LOW)
 
 /* USBC Mux and Demux Signals */
 
@@ -90,8 +82,8 @@ GPIO(EC_HUB3_RESET_L,               PIN(C, 10),      GPIO_ODR_HIGH)
 
 GPIO(USB3_A1_CDP_EN,                PIN(C,  3),      GPIO_OUT_LOW)
 GPIO(USB3_A2_CDP_EN,                PIN(C,  2),      GPIO_OUT_LOW)
-GPIO(USB3_A4_CDP_EN,                PIN(C,  1),      GPIO_OUT_LOW)
 GPIO(USB3_A3_CDP_EN,                PIN(C,  0),      GPIO_OUT_LOW)
+GPIO(USB3_A4_CDP_EN,                PIN(C,  1),      GPIO_OUT_LOW)
 GPIO(USB3_A5_CDP_EN,                PIN(B,  9),      GPIO_OUT_LOW)
 GPIO(USB3_A6_CDP_EN,                PIN(C, 13),      GPIO_OUT_LOW)
 
@@ -123,7 +115,9 @@ GPIO(EC_I2C1_SDA,                   PIN(B,  7),      GPIO_ODR_HIGH) /* I2C port 
 GPIO(EC_I2C2_SDA,                   PIN(A,  8),      GPIO_ODR_HIGH) /* I2C port 2 SDA */
 GPIO(EC_I2C2_SCL,                   PIN(A,  9),      GPIO_ODR_HIGH) /* I2C port 2 SCL */
 GPIO(EC_I2C3_SCL,                   PIN(C,  8),      GPIO_ODR_HIGH) /* I2C port 3 SCL */
-GPIO(EC_I2C3_SDA,                   PIN(C,  9),      GPIO_ODR_HIGH) /* I2C port 3 SDA */
+GPIO(EC_I2C3_SDA,                   PIN(C,  9),      GPIO_ODR_HIGH) /* I2C port
+								     * 3 SDA */
+
 
 /* Unimplemented signals since we are not an EC */
 

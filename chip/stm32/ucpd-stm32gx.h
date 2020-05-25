@@ -15,5 +15,12 @@ int stm32gx_ucpd_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 int stm32gx_ucpd_get_role_control(int port);
 int stm32gx_ucpd_set_cc(int port, int cc_pull, int rp);
 int stm32gx_ucpd_set_polarity(int port, enum tcpc_cc_polarity polarity);
+int stm32gx_ucpd_set_rx_enable(int port, int enable);
+int stm32gx_ucpd_set_msg_header(int port, int power_role, int data_role);
+int stm32gx_ucpd_transmit(int port,
+			enum tcpm_transmit_type type,
+			uint16_t header,
+			  const uint32_t *data);
+int stm32gx_ucpd_get_message_raw(int port, uint32_t *payload, int *head);
 
 #endif /* __CROS_EC_UCPD_STM32GX_H */
