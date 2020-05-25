@@ -10,11 +10,7 @@
 
 
 
-/*
- * TODO: Enable Wake source interrupts
- * GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_BOTH,   ppc_interrupt)
- */
-
+GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_BOTH,   ppc_interrupt)
 /*
  * USB-C Interrupts
  * TODO: Enable TCPC Interrupts
@@ -54,11 +50,8 @@ GPIO(EN_PP5000_HSPORT,              PIN(D,  0),      GPIO_OUT_LOW)
 GPIO(TP41,                          PIN(B, 12),      GPIO_OUT_HIGH)
 
 /* USB-C CC LINES */
-GPIO(USBC_HOST_CC1,                 PIN(B,  6),      GPIO_INPUT)
-GPIO(USBC_HOST_CC2,                 PIN(B,  4),      GPIO_INPUT)
-
-/* DEBUG signals */
-GPIO(DEBUG_GPIO1,                   PIN(B, 13),      GPIO_OUT_LOW)
+/* GPIO(USBC_HOST_CC1,                 PIN(B,  6),      GPIO_INPUT) */
+/* GPIO(USBC_HOST_CC2,                 PIN(B,  4),      GPIO_INPUT) */
 
 /* MST Hub signals */
 
@@ -71,7 +64,7 @@ GPIO(DEMUX_DUAL_DP_MODE,            PIN(B,  0),      GPIO_OUT_LOW)
 GPIO(DEMUX_DP_HDMI_MODE,            PIN(E, 15),      GPIO_OUT_LOW)
 GPIO(DEMUX_DUAL_DP_RESET_N,         PIN(E, 13),      GPIO_ODR_HIGH)
 GPIO(DEMUX_DUAL_DP_PD_N,            PIN(E, 12),      GPIO_ODR_HIGH)
-GPIO(DEMUX_DP_HDMI_PD_N,            PIN(D,  9),      GPIO_ODR_HIGH)
+GPIO(DEMUX_DP_HDMI_PD_N,            PIN(B, 13),      GPIO_ODR_LOW)
 
 /* USBC Mux and Demux Signals */
 

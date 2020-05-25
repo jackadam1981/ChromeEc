@@ -369,6 +369,7 @@
 #define STM32_UCPD_SR_FRSEVT		BIT(19)
 
 #define STM32_UCPD_SR_VSTATE_OPEN 3
+#define STM32_UCPD_SR_VSTATE_RA 0
 
 /* --- UCPD ICR Bit Definitions --- */
 #define STM32_UCPD_ICR_TXMSGDISCCF	BIT(1)
