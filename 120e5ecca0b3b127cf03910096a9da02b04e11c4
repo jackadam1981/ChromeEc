@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aaba514_4b41b209",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-05-25T06:39:07Z",
+      "side": 1,
+      "message": "Npcx gpio dirver doesn\u0027t handle the disabling of the WKINEN bit.\nIn this case, it may be the easier approach to disable it in the board\u0027s initialization. I will update a patch in the issue tracking system.",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "120e5ecca0b3b127cf03910096a9da02b04e11c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
