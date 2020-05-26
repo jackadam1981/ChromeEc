@@ -248,6 +248,20 @@ enum power_state power_handle_state(enum power_state state)
 
 	dsw_pwrok_pass_thru();
 
+#ifdef CONFIG_CHIPSET_JASPERLAKE
+	if (state == POWER_S3S0) {
+		GPIO_SET_LEVEL(GPIO_EN_VCCIO_EXT, 1);
+		/* Now wait for ALL_SYS_PWRGD. */
+		while (!intel_x86_get_pg_ec_all_sys_pwrgd() &&
+			(timeout_ms > 0)) {
+			msleep(1);
+			timeout_ms--;
+		};
+		if (!timeout_ms)
+			CPRINTS("ALL_SYS_PWRGD not received.");
+	}
+#endif /* CONFIG_CHIPSET_JASPERLAKE */
+
 	all_sys_pwrgd_pass_thru();
 
 	common_intel_x86_handle_rsmrst(state);
@@ -310,18 +324,6 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 #ifdef CONFIG_CHIPSET_JASPERLAKE
-	case POWER_S3S0:
-		GPIO_SET_LEVEL(GPIO_EN_VCCIO_EXT, 1);
-		/* Now wait for ALL_SYS_PWRGD. */
-		while (!intel_x86_get_pg_ec_all_sys_pwrgd() &&
-			(timeout_ms > 0)) {
-			msleep(1);
-			timeout_ms--;
-		};
-		if (!timeout_ms)
-			CPRINTS("ALL_SYS_PWRGD not received.");
-		break;
-
 	case POWER_S0S3:
 		GPIO_SET_LEVEL(GPIO_EN_VCCIO_EXT, 0);
 		break;
