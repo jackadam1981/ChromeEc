@@ -14,6 +14,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "ioexpanders.h"
+#include "pathsel.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
@@ -314,6 +315,7 @@ static void board_init(void)
 
 #ifdef SECTION_IS_RO
 	init_uservo_port();
+	init_pathsel();
 
 	/* Enable DUT USB2.0 pair. */
 	gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 0);
@@ -327,6 +329,7 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_CHGSRV_TCPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USBH_I2C_BUSY_INT);
 	gpio_enable_interrupt(GPIO_BC12_INT_ODL);
+
 
 	ccd_meas_sbu();
 #endif /* SECTION_IS_RO */
