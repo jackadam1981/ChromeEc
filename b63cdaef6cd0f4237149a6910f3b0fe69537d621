@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3152128_12d20dfa",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-05-26T15:49:17Z",
+      "side": 1,
+      "message": "What does \u0027cold reset\u0027 here mean? Is this a power on reset?",
+      "range": {
+        "startLine": 355,
+        "startChar": 27,
+        "endLine": 355,
+        "endChar": 62
+      },
+      "revId": "b63cdaef6cd0f4237149a6910f3b0fe69537d621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
