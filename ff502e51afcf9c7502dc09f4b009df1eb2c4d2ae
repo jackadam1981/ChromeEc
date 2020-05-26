@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "07e60436_4665d6a3",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-26T17:35:03Z",
+      "side": 1,
+      "message": "Nit - for consistency with dev_resp and cable_type variables, don\u0027t pass this is as an argument and call get_cable_tbt_vdo() inside this routine.",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 42
+      },
+      "revId": "ff502e51afcf9c7502dc09f4b009df1eb2c4d2ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6385af8c_fe59e42f",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 9
