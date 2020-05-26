@@ -93,6 +93,30 @@
       "revId": "a0cb0862ddcb31b8479c32d3f2169d0e9693d41c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a64dbd6a_cfecd416",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-26T07:00:05Z",
+      "side": 1,
+      "message": "In such case, we could have a board hook to handle the command. Does it sound good to you?",
+      "parentUuid": "41109931_464e8626",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 49
+      },
+      "revId": "a0cb0862ddcb31b8479c32d3f2169d0e9693d41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
