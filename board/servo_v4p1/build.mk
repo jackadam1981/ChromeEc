@@ -21,5 +21,6 @@ board-y+=pathsel.o
 # These files are compiled into RO only
 board-ro+=ccd_measure_sbu.o
 board-ro+=chg_control.o
+board-ro+=ina231s.o
 
 all_deps=$(patsubst ro,,$(def_all_deps))
