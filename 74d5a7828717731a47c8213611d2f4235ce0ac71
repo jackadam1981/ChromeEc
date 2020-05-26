@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "575c63c5_5498a674",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-26T20:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f47532e1_ed4578cb",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "74d5a7828717731a47c8213611d2f4235ce0ac71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c9c2108_5397d801",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6b4f2a01_93f045be",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-26T20:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c9c2108_5397d801",
+      "range": {
+        "startLine": 146,
+        "startChar": 6,
+        "endLine": 147,
+        "endChar": 27
+      },
+      "revId": "74d5a7828717731a47c8213611d2f4235ce0ac71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03833563_7cb90f8f",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-26T17:54:47Z",
       "side": 1,
       "message": "Unrelated to this CL, should Bit 22 get set if (mux_state \u0026 USB_PD_MUX_USB_ENABLED)",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 50
+      },
+      "revId": "74d5a7828717731a47c8213611d2f4235ce0ac71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4198e2f9_214d6059",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-26T20:25:23Z",
+      "side": 1,
+      "message": "Added it in another CL:https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2216554",
+      "parentUuid": "03833563_7cb90f8f",
       "range": {
         "startLine": 159,
         "startChar": 0,
