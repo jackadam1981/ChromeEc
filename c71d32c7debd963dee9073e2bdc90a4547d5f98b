@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dc10b2f_37813248",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-05-26T22:31:02Z",
+      "side": 1,
+      "message": "I don\u0027t see anything preventing this from being set on the primary charger.  is that guaranteed elsewhere?",
+      "range": {
+        "startLine": 1005,
+        "startChar": 0,
+        "endLine": 1005,
+        "endChar": 62
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8442b10_7d679288",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-05-26T22:31:02Z",
+      "side": 1,
+      "message": "I don\u0027t like the potential for silent overcompensation here; that\u0027s dangerous.  If Rp1 is less than Rp1_min we should probably just disable compensation with a warning.",
+      "range": {
+        "startLine": 1006,
+        "startChar": 0,
+        "endLine": 1006,
+        "endChar": 56
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8bff320_47cc8e22",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-05-26T22:31:02Z",
+      "side": 1,
+      "message": "why are we guaranteeing to overcompensate by up to 4mOhms, regardless of how far rp1 is above the minimum?",
+      "range": {
+        "startLine": 1009,
+        "startChar": 0,
+        "endLine": 1009,
+        "endChar": 59
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aefd4f64_53ed055e",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-05-26T22:31:02Z",
+      "side": 1,
+      "message": "ditto; silently bumping up rp2 is not safe",
+      "range": {
+        "startLine": 1012,
+        "startChar": 1,
+        "endLine": 1012,
+        "endChar": 35
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
