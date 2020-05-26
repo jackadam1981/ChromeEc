@@ -48,10 +48,12 @@
 #ifdef SECTION_IS_RO
 static void vbus0_evt(enum gpio_signal signal)
 {
+	task_wake(TASK_ID_PD_C0);
 }
 
 static void vbus1_evt(enum gpio_signal signal)
 {
+	task_wake(TASK_ID_PD_C1);
 }
 
 static void tca_evt(enum gpio_signal signal)
@@ -339,6 +341,12 @@ static void board_init(void)
 
 	/* Disable power to DUT by default */
 	chg_power_select(CHG_POWER_OFF);
+
+	/*
+	 * Voltage transition needs to occur in lockstep between the CHG and
+	 * DUT ports, so initially limit voltage to 5V.
+	 */
+	pd_set_max_voltage(PD_MIN_MV);
 
 	ccd_meas_sbu();
 #endif /* SECTION_IS_RO */
