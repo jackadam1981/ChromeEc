@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18f6919a_2b92872f",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-26T22:00:46Z",
+      "side": 1,
+      "message": "nit: least",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 9
+      },
+      "revId": "a1c00f79e0a2aab2731777fe7a7c3c80ddb3869b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0136e52b_3e161abb",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-26T22:00:46Z",
+      "side": 1,
+      "message": "Looks like we can use the __fls macro, which is the same thing: https://chromium.googlesource.com/chromiumos/platform/ec/+/a1c00f79e0a2aab2731777fe7a7c3c80ddb3869b/include/common.h#316.",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 20
+      },
+      "revId": "a1c00f79e0a2aab2731777fe7a7c3c80ddb3869b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
