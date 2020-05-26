@@ -22,6 +22,30 @@
       "revId": "108eebefb21652326df9b4d47a73993c1c98d662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3f0036_628a9370",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-05-26T23:59:34Z",
+      "side": 1,
+      "message": "Good point - will fix it in the next CL (have a couple of other changes going in).",
+      "parentUuid": "9cd2a611_1574536c",
+      "range": {
+        "startLine": 541,
+        "startChar": 1,
+        "endLine": 541,
+        "endChar": 27
+      },
+      "revId": "108eebefb21652326df9b4d47a73993c1c98d662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
