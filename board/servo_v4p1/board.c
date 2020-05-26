@@ -6,6 +6,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "ccd_measure_sbu.h"
 #include "common.h"
 #include "console.h"
 #include "ec_version.h"
@@ -327,6 +328,7 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USBH_I2C_BUSY_INT);
 	gpio_enable_interrupt(GPIO_BC12_INT_ODL);
 
+	ccd_meas_sbu();
 #endif /* SECTION_IS_RO */
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
