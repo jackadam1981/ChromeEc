@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/ppc/syv682x.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -79,6 +80,30 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	}
 };
 
+const struct ppc_config_t ppc_nx20p348x_port0 = {
+		.i2c_port = I2C_PORT_TCPC0,
+		.i2c_addr = NX20P3483_ADDR2,
+		.drv = &nx20p348x_drv,
+};
+
+const struct ppc_config_t ppc_syv682x_port0 = {
+		.i2c_port = I2C_PORT_TCPC0,
+		.i2c_addr = SYV682X_ADDR0,
+		.drv = &syv682x_drv,
+};
+
+const struct ppc_config_t ppc_nx20p348x_port1 = {
+		.i2c_port = I2C_PORT_TCPC1,
+		.i2c_addr = NX20P3483_ADDR2,
+		.drv = &nx20p348x_drv,
+};
+
+const struct ppc_config_t ppc_syv682x_port1 = {
+		.i2c_port = I2C_PORT_TCPC1,
+		.i2c_addr = SYV682X_ADDR0,
+		.drv = &syv682x_drv,
+};
+
 /******************************************************************************/
 /* USB-C PPC Configuration */
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
@@ -94,6 +119,26 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+
+static void setup_ppc(void)
+{
+	if (gpio_get_level(GPIO_PPC_ID)) {
+		memcpy(&ppc_chips[USB_PD_PORT_TCPC_0],
+		       &ppc_syv682x_port0,
+		       sizeof(struct ppc_config_t));
+		memcpy(&ppc_chips[USB_PD_PORT_TCPC_1],
+		       &ppc_syv682x_port1,
+		       sizeof(struct ppc_config_t));
+	} else 
+		memcpy(&ppc_chips[USB_PD_PORT_TCPC_0],
+		       &ppc_nx20p348x_port0,
+		       sizeof(struct ppc_config_t));
+		memcpy(&ppc_chips[USB_PD_PORT_TCPC_1],
+		       &ppc_nx20p348x_port1,
+		       sizeof(struct ppc_config_t));
+	}
+}
+DECLARE_HOOK(HOOK_INIT, setup_ppc, HOOK_PRIO_INIT_I2C + 2);
 
 /******************************************************************************/
 /* Power Delivery and charing functions */
