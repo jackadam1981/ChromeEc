@@ -3,5 +3,9 @@
  * found in the LICENSE file.
  */
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
 #ifdef SECTION_IS_RO
+#include "ccd_measure_sbu.c"
 #endif /* SECTION_IS_RO */
