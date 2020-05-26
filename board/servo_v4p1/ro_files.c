@@ -8,4 +8,5 @@
 #include "chg_control.c"
 #include "ina231s.c"
 #include "pathsel.c"
+#include "usb_pd_policy.c"
 #endif /* SECTION_IS_RO */
