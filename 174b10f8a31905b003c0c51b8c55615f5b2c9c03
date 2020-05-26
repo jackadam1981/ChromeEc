@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4440eeb_31a41cc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-05-26T01:48:26Z",
+      "side": 1,
+      "message": "Since you\u0027re merging this into the grunt branch, I feel like the TEST\u003d should involve flashing the build on a grunt, at least. Verifying that other boards you have (such as nocturne) work is also good, but definitely it should work on a grunt.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 0
+      },
+      "revId": "174b10f8a31905b003c0c51b8c55615f5b2c9c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
