@@ -22,6 +22,30 @@
       "revId": "afef1293f14f2444cef0986b8361bdb39d2d6ba9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e42990_bf6a91d4",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-26T22:19:10Z",
+      "side": 1,
+      "message": "The 32 byte minimum comes from the ARMv7-M architecture, so it shouldn\u0027t change for any future designs any Cortex-M processors.\n\nThis code is just meant to disable all MPU regions and ensure we don\u0027t write any reserved values into the MPU configuration registers.  The base and size of each MPU region gets updated when the regions are enabled later.",
+      "parentUuid": "5ca2f088_6d3f5193",
+      "range": {
+        "startLine": 349,
+        "startChar": 39,
+        "endLine": 349,
+        "endChar": 49
+      },
+      "revId": "afef1293f14f2444cef0986b8361bdb39d2d6ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
