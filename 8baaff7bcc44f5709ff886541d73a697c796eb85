@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38616f26_217bbac5",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-26T15:20:28Z",
+      "side": 1,
+      "message": "CONFIG_RAM_SIZE isn\u0027t always a power of 2, so this will often round down.\n\nSince this code is just disabling all MPU data regions, I don\u0027t think this needs to be tied to CONFIG_RAM_BASE/CONFIG_RAM_SIZE? Can\u0027t you just set the base and size of each region to an arbitrary, but fixed, value shared by all chips?",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 48
+      },
+      "revId": "8baaff7bcc44f5709ff886541d73a697c796eb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
