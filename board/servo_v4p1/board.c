@@ -14,6 +14,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "ioexpanders.h"
+#include "pathsel.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
@@ -304,6 +305,7 @@ static void board_init(void)
 	usleep(MSEC);
 
 	init_ioexpanders();
+	init_pathsel();
 
 	/* Clear BBRAM, we don't want any PD state carried over on reset. */
 	system_set_bbram(SYSTEM_BBRAM_IDX_PD0, 0);
