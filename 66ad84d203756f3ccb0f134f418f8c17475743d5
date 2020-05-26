@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "160ce9fd_a6f99ab0",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-26T15:23:12Z",
+      "side": 1,
+      "message": "I thought the output looked better if version was on the next line. But I can remove it.",
+      "parentUuid": "ec0369d0_8f270ed4",
+      "range": {
+        "startLine": 175,
+        "startChar": 3,
+        "endLine": 175,
+        "endChar": 5
+      },
+      "revId": "66ad84d203756f3ccb0f134f418f8c17475743d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19a749ec_7b5b97dc",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "66ad84d203756f3ccb0f134f418f8c17475743d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e9676d_85562070",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-26T15:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19a749ec_7b5b97dc",
+      "range": {
+        "startLine": 532,
+        "startChar": 1,
+        "endLine": 532,
+        "endChar": 25
+      },
+      "revId": "66ad84d203756f3ccb0f134f418f8c17475743d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
