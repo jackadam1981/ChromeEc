@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5366a0a_22f7d087",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "The print is helpful,\n\n@Tom, do you want this board_init to panic if we don\u0027t have the compile time support for UART and that is what is selected for host command support?",
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "035533ea_70b5c6a4",
+        "filename": "chip/stm32/host_command_common.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "nit: for multiple line comments, the style is to have the first /* followed immediately by a \\n\n\nI see this multiple times in this CL, please go through instances and fix.\n\nso\n\n/*\n * If FP sensor ..\n * ....\n */",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fd47595_be58066a",
+        "filename": "chip/stm32/host_command_common.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "this formatting of these ifs is weird and there are extra (). Also we should put the IS_ENABLE stuff first so the compile can optimize this code out if the config options are not both defined.\n\nTry:\n\n\tif (IS_ENABLED(HAS_TASK_FPSENSOR) \u0026\u0026\n\t   IS_ENABLED(CONFIG_USART_HOST_COMMAND) \u0026\u0026\n\t   curr_transport_type \u003d\u003d FP_TRANSPORT_TYPE_UART)\n\t\tret_statue \u003d ...;",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e18c1db_2f61a59e",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "we should make this and the tx function signature use a uint_8* instead of void* since void doesn\u0027t have a size that count could apply to. If we are passing a count in byte then we should pass a byte buffer to be self consistent; it is also easier to read",
+      "range": {
+        "startLine": 484,
+        "startChar": 12,
+        "endLine": 484,
+        "endChar": 16
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884f989c_feffff04",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "nit: formatting of if is weird, see earlier comment for example of how to format",
+      "range": {
+        "startLine": 496,
+        "startChar": 1,
+        "endLine": 498,
+        "endChar": 26
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a2dad25_ade773af",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "weird formatting. I am going to stop mention it. Please fix all instance. I would recommend using clang format. There is a .clang-format file in the root of the ec directory with the options that we like",
+      "range": {
+        "startLine": 524,
+        "startChar": 7,
+        "endLine": 525,
+        "endChar": 19
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2ca6c1a_dbe8c6f3",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "let\u0027s say why we wait a little bit of time, i.e. we are trying to catch overrun case before processing the packet.",
+      "range": {
+        "startLine": 531,
+        "startChar": 3,
+        "endLine": 531,
+        "endChar": 46
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1524707a_26ab00bb",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "nit: don\u0027t need the {} since this is only one line. I think presubmit.py will complain about this",
+      "range": {
+        "startLine": 549,
+        "startChar": 49,
+        "endLine": 549,
+        "endChar": 50
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2842c3d3_80c6fcf3",
+        "filename": "chip/stm32/usart_host_command.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "nit: update comment to not talk about unit - Should just be data",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3c1598_dd287cd1",
+        "filename": "chip/stm32/usart_host_command.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 22,
+        "startChar": 14,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de0a8295_f077b598",
+        "filename": "chip/stm32/usart_rx_dma.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "nit: add_data_t",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bed1c095_5afb37d1",
+        "filename": "chip/stm32/usart_tx_interrupt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "nit: remove_data_t",
+      "range": {
+        "startLine": 17,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

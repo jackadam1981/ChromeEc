@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "5fa1260d_ddfa0e16",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T15:46:17Z",
+      "side": 1,
+      "message": "You\u0027re right, we do need this to be global.",
+      "parentUuid": "9eed21c0_fd157273",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 33
+      },
+      "revId": "60ecb325ed83c1f79953e0565104b734c3c1726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d5cc44a_45c63eae",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 10
