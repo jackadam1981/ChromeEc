@@ -5,5 +5,6 @@
 
 #ifdef SECTION_IS_RO
 #include "ccd_measure_sbu.c"
+#include "chg_control.c"
 #include "pathsel.c"
 #endif /* SECTION_IS_RO */
