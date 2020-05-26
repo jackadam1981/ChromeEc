@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35974822_24f9690f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-05-26T06:04:03Z",
+      "side": 1,
+      "message": "This is increasing it from 4 to 16; should it be 8 instead? Each entry costs 32 bytes of RAM.",
+      "revId": "d84c1ffc2074cf7fb0d8d2b4b0069f40f7678284",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
