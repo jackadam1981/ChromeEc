@@ -12,6 +12,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/bc12/mt6360.h"
 #include "driver/bc12/pi3usb9201.h"
@@ -528,10 +529,39 @@ void board_enable_sd_card(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_enable_sd_card, HOOK_PRIO_DEFAULT);
 
+/* Lid */
+#ifndef TEST_BUILD
+/* This callback disables keyboard when convertibles are fully open */
+static bool board_is_convertible(void)
+{
+	/*
+	 * TODO: assume convertible for now.
+	 * Should add a feature flag VARIANT_ASURADA_CONVERTIBLE after
+	 * baseboard ready.
+	 */
+	return true;
+}
+
+void lid_angle_peripheral_enable(int enable)
+{
+	/*
+	 * If the lid is in tablet position via other sensors,
+	 * ignore the lid angle, which might be faulty then
+	 * disable keyboard.
+	 */
+	if (tablet_get_mode())
+		enable = 0;
+	if (board_is_convertible())
+		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+}
+#endif
+
 /* Sensor */
 static struct mutex g_base_mutex;
+static struct mutex g_lid_mutex;
 
 static struct bmi_drv_data_t g_bmi160_data;
+static struct stprivate_data g_lis2dwl_data;
 
 /* Matrix to rotate accelerometer into standard reference frame */
 /* TODO: update the matrix after we have assembled unit */
@@ -547,6 +577,13 @@ static const mat33_fp_t mag_standard_ref = {
 	{0, FLOAT_TO_FP(-1), 0},
 	{FLOAT_TO_FP(-1), 0, 0},
 	{0, 0, FLOAT_TO_FP(-1)},
+};
+
+/* TODO: update the matrix after we have assembled unit */
+static const mat33_fp_t lid_standard_ref = {
+	{FLOAT_TO_FP(1), 0, 0},
+	{0, FLOAT_TO_FP(1), 0},
+	{0, 0, FLOAT_TO_FP(1)},
 };
 
 struct motion_sensor_t motion_sensors[] = {
@@ -614,6 +651,32 @@ struct motion_sensor_t motion_sensors[] = {
 		.rot_standard_ref = &mag_standard_ref,
 		.min_frequency = BMM150_MAG_MIN_FREQ,
 		.max_frequency = BMM150_MAG_MAX_FREQ(SPECIAL),
+	},
+	[LID_ACCEL] = {
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LIS2DWL,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &lis2dw12_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &g_lis2dwl_data,
+		.port = I2C_PORT_ACCEL,
+		.i2c_spi_addr_flags = LIS2DWL_ADDR1_FLAGS,
+		.rot_standard_ref = &lid_standard_ref,
+		.default_range = 2, /* g */
+		.min_frequency = LIS2DW12_ODR_MIN_VAL,
+		.max_frequency = LIS2DW12_ODR_MAX_VAL,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 12500 | ROUND_UP_FLAG,
+			},
+			/* Sensor on for lid angle detection */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+			},
+		},
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
