@@ -7,6 +7,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "ccd_measure_sbu.h"
+#include "chg_control.h"
 #include "common.h"
 #include "console.h"
 #include "ec_version.h"
@@ -330,6 +331,8 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USBH_I2C_BUSY_INT);
 	gpio_enable_interrupt(GPIO_BC12_INT_ODL);
 
+	/* Disable power to DUT by default */
+	chg_power_select(CHG_POWER_OFF);
 
 	ccd_meas_sbu();
 #endif /* SECTION_IS_RO */
