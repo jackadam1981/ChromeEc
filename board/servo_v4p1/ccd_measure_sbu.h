@@ -3,6 +3,10 @@
  * found in the LICENSE file.
  */
 
-#ifdef SECTION_IS_RO
-#include "ccd_measure_sbu.c"
-#endif /* SECTION_IS_RO */
+#ifndef __CROS_EC_CCD_MEASURE_SBU_H
+#define __CROS_EC_CCD_MEASURE_SBU_H
+
+void ccd_enable(int enable);
+void ccd_meas_sbu(void);
+
+#endif /* __CROS_EC_CCD_MEASURE_SBU_H */
