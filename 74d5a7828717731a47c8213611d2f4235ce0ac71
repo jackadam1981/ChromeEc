@@ -22,6 +22,52 @@
       "revId": "74d5a7828717731a47c8213611d2f4235ce0ac71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9c2108_5397d801",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-26T17:54:47Z",
+      "side": 1,
+      "message": "Nit - suggest a macro to encapsulate these bits, maybe BB_RETIMER_MUX_USB_DP_MODE.",
+      "range": {
+        "startLine": 146,
+        "startChar": 6,
+        "endLine": 147,
+        "endChar": 27
+      },
+      "revId": "74d5a7828717731a47c8213611d2f4235ce0ac71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03833563_7cb90f8f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-26T17:54:47Z",
+      "side": 1,
+      "message": "Unrelated to this CL, should Bit 22 get set if (mux_state \u0026 USB_PD_MUX_USB_ENABLED)",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 50
+      },
+      "revId": "74d5a7828717731a47c8213611d2f4235ce0ac71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
