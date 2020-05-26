@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ca2f088_6d3f5193",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T20:50:08Z",
+      "side": 1,
+      "message": "seems a little brittle to hard code 32 here, but we do have good comments and a panic, so we should catch any future code that breaks this assumptions pretty quickly.\n\nI don\u0027t have any suggestions that would allow us to avoid hard coding a number here. I think 1024 might be a little better since we should have enough ram for N mpu regions at 1K each and if a chip in the future has a larger minimum than 32, we won\u0027t break.\n\nI realize this is bike shedding at this point, so +2 either way.",
+      "range": {
+        "startLine": 349,
+        "startChar": 39,
+        "endLine": 349,
+        "endChar": 49
+      },
+      "revId": "afef1293f14f2444cef0986b8361bdb39d2d6ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
