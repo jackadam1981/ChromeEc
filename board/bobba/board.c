@@ -17,6 +17,7 @@
 #include "driver/accelgyro_bmi160.h"
 #include "driver/charger/bd9995x.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/ppc/syv682x.h"
 #include "driver/sync.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -74,11 +75,17 @@ static void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_PD_C0_INT_ODL:
-		nx20p348x_interrupt(0);
+		if (gpio_get_level(GPIO_PPC_ID))
+			syv682x_interrupt(0);
+		else
+			nx20p348x_interrupt(0);
 		break;
 
 	case GPIO_USB_PD_C1_INT_ODL:
-		nx20p348x_interrupt(1);
+		if (gpio_get_level(GPIO_PPC_ID))
+			syv682x_interrupt(1);
+		else
+			nx20p348x_interrupt(1);
 		break;
 
 	default:
