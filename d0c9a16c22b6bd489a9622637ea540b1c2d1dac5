@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bd40368_5f22692a",
+        "filename": "board/berknip/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-26T16:52:05Z",
+      "side": 1,
+      "message": "nit: formatting to align with previous lines",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 57
+      },
+      "revId": "d0c9a16c22b6bd489a9622637ea540b1c2d1dac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9acaf78d_17fadf2f",
+        "filename": "board/berknip/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-26T16:52:05Z",
+      "side": 1,
+      "message": "nit: Can you create an enumeration of LEFT_PORT and RIGHT_PORT to make the 0 and 1 more clear to the reader?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "d0c9a16c22b6bd489a9622637ea540b1c2d1dac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
