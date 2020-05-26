@@ -46,6 +46,30 @@
       "revId": "afef1293f14f2444cef0986b8361bdb39d2d6ba9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e29594a6_844ebf6a",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-26T22:28:43Z",
+      "side": 1,
+      "message": "Ah, that is good to know. 32 seems okay to me then. Thanks!",
+      "parentUuid": "43e42990_bf6a91d4",
+      "range": {
+        "startLine": 349,
+        "startChar": 39,
+        "endLine": 349,
+        "endChar": 49
+      },
+      "revId": "afef1293f14f2444cef0986b8361bdb39d2d6ba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
