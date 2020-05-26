@@ -5,6 +5,7 @@
 
 /* Console module for Chrome EC */
 
+#include <third_party/SEGGER_RTT_V672d/RTT/SEGGER_RTT.h>
 #include "clock.h"
 #include "console.h"
 #ifdef CONFIG_EXPERIMENTAL_CONSOLE
@@ -281,6 +282,8 @@ static int console_putc(int c)
 {
 	int rv1 = uart_putc(c);
 	int rv2 = usb_putc(c);
+
+	// SEGGER_RTT_PutChar(0, c);
 
 	return rv1 == EC_SUCCESS ? rv2 : rv1;
 }
@@ -650,10 +653,14 @@ void console_has_input(void)
 
 void console_task(void *u)
 {
+
+	SEGGER_RTT_ConfigUpBuffer(0, "console", input_buf, sizeof(input_buf),
+				  SEGGER_RTT_MODE_BLOCK_IF_FIFO_FULL);
 	console_init();
 
 	while (1) {
 		int c;
+		int num_chars;
 
 		while (1) {
 			c = uart_getc();
@@ -665,6 +672,13 @@ void console_task(void *u)
 		while (1) {
 			c = usb_getc();
 			if (c == -1)
+				break;
+			console_handle_char(c);
+		}
+
+		while (1) {
+			num_chars = SEGGER_RTT_ReadUpBuffer(0, &c, sizeof(c));
+			if (num_chars == 0)
 				break;
 			console_handle_char(c);
 		}
