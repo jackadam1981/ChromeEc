@@ -16,6 +16,24 @@
       "revId": "f710b4001b3ce6222452db74548755d1554d14bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a332fe9d_dd35e654",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-26T18:15:09Z",
+      "side": 1,
+      "message": "It seemed appropriate to justify why they are where they are so if a path is missed it will be clear and we can adjust accordingly. 😊",
+      "parentUuid": "72da5ccd_95780606",
+      "revId": "f710b4001b3ce6222452db74548755d1554d14bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
