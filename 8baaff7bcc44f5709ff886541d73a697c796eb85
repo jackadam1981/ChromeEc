@@ -22,6 +22,30 @@
       "revId": "8baaff7bcc44f5709ff886541d73a697c796eb85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a99436_ed2c5c90",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-26T15:27:16Z",
+      "side": 1,
+      "message": "Yes, I think that makes sense.\n\nI did something like that in the test I wrote: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/test/mpu.c#49",
+      "parentUuid": "38616f26_217bbac5",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 48
+      },
+      "revId": "8baaff7bcc44f5709ff886541d73a697c796eb85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
