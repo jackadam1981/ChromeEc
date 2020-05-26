@@ -16,6 +16,7 @@
 #include "i2c.h"
 #include "ioexpanders.h"
 #include "pathsel.h"
+#include "pi3usb9201.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "spi.h"
@@ -306,6 +307,7 @@ static void board_init(void)
 	usleep(MSEC);
 
 	init_ioexpanders();
+	init_pi3usb9201();
 
 	/* Clear BBRAM, we don't want any PD state carried over on reset. */
 	system_set_bbram(SYSTEM_BBRAM_IDX_PD0, 0);
