@@ -783,7 +783,7 @@ int tcpci_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 }
 
 /* Cache depth needs to be power of 2 */
-#define CACHE_DEPTH BIT(2)
+#define CACHE_DEPTH BIT(4)
 #define CACHE_DEPTH_MASK (CACHE_DEPTH - 1)
 
 struct queue {
