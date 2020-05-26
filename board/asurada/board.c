@@ -537,16 +537,25 @@ void lid_angle_peripheral_enable(int enable)
 }
 #endif
 
+void ldo_write(uint8_t offset, uint8_t value) {
+	/*
+	 * TODO(pihsun): This is correct because the length == 1 -> the high 3
+	 * bits of the offset byte is 0. Consider having a general function
+	 * that can handle 1~4 bytes of data?
+	 */
+	i2c_write8(0, 0x64 | I2C_FLAG_PEC, offset, value);
+}
+
 /* SD Card */
 void board_enable_sd_card(void)
 {
 	/* Enable power to SD Card (LOD5, LDO3) */
-	i2c_write16(0, 0x64, 0x0b, 0x05c0);
-	i2c_write16(0, 0x64, 0x05, 54208);
+	ldo_write(0x0b, 0xc0);
+	ldo_write(0x05, 0xc0);
 
 	/* Set LOD5, LDO3 to 3.3V */
-	i2c_write16(0, 0x64, 0x0f, 0xb355);
-	i2c_write16(0, 0x64, 0x09, 24528);
+	ldo_write(0x0f, 0x55);
+	ldo_write(0x09, 0xd0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_enable_sd_card, HOOK_PRIO_DEFAULT);
 
