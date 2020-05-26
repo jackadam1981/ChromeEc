@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4957530_257400f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-26T06:48:09Z",
+      "side": 1,
+      "message": "Done\n(why spell checker doesn\u0027t show up? lol)",
+      "parentUuid": "1bce8ce2_7857a52d",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "a0cb0862ddcb31b8479c32d3f2169d0e9693d41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d761216_19d9e855",
         "filename": "common/virtual_battery.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-26T05:31:56Z",
       "side": 1,
       "message": "Does add a custom sb command here helpful?",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 49
+      },
+      "revId": "a0cb0862ddcb31b8479c32d3f2169d0e9693d41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41109931_464e8626",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-26T06:48:09Z",
+      "side": 1,
+      "message": "Maybe not.\n\nIf the board has a dumb battery (e.g. kukui), virtual_battery module has no knowledge about how to access it directly.\n\nIf the board has a smart battery, it\u0027s possible to access the battery. But without the knowledge about the meaning of the command, we don\u0027t know which kind of read we should use: sb_read, sb_read_string, or even read8 / read32.\n\nYes we can guess from read_len parameter, but I think it\u0027s not a good solution.",
+      "parentUuid": "9d761216_19d9e855",
       "range": {
         "startLine": 307,
         "startChar": 0,
