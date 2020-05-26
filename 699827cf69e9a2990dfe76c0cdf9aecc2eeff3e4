@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f080bc68_f7cb26dd",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-26T20:37:07Z",
+      "side": 1,
+      "message": "Reverting change diff(#21,#22).",
+      "parentUuid": "c48bd35a_30f57fec",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d832b72a_ad321492",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 22
@@ -45,6 +69,30 @@
       "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a97cb6_62754e62",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-26T20:37:07Z",
+      "side": 1,
+      "message": "In this design, this function (assert_int_ap()) is called in sps_cs_deassert_interrupt() only, and \u0027INT_AP_L\u0027 must be deasserted. (SPS_CS assert ISR already deasserted INT_AP_L). Timer must be counting the deassertion time only here. I\u0027m adding some lines above line 119, that warn if INT_AP_L is already asserted.",
+      "parentUuid": "d832b72a_ad321492",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 19
+      },
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bc45c384_381ca41b",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-26T20:37:07Z",
+      "side": 1,
+      "message": "I intend to disable the HW timer and clear timer IRQ status first before setting another timer. I was concerned that the HW timer could be expired before it reaches line 57.",
+      "parentUuid": "c8a9f1f7_6427884d",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7575b7ec_fa31d247",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 22
@@ -85,6 +157,47 @@
       "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87332d61_e53609cf",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-26T20:37:07Z",
+      "side": 1,
+      "message": "When AP is off, sps/i2cs interface stop function would call this.",
+      "parentUuid": "7575b7ec_fa31d247",
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa4b375_d15cf2c3",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-26T20:37:07Z",
+      "side": 1,
+      "message": "Relocating it to int_ap_extension_disable().",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 49
+      },
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "f55d5f7d_b0fc1298",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-26T20:37:07Z",
+      "side": 1,
+      "message": "sps_register_rx_handler() shall be called when AP is on or off.\nI intend to disable GC_IRQNUM_TIMEHS0_TIMINT1 when AP is off.\n\nThe patch http://crrev.com/c/2202839 adds the matching call to enable the extension, below line 241.",
+      "parentUuid": "387c3689_6e1a30ab",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad484d55_d8f5cb06",
         "filename": "chip/g/sps.c",
         "patchSetId": 22
@@ -125,6 +262,24 @@
       "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17c66493_f74e1075",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-26T20:37:07Z",
+      "side": 1,
+      "message": "Relocating it to int_ap_extension_enable()",
+      "parentUuid": "ad484d55_d8f5cb06",
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
