@@ -201,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "f0f8b84e_60fc8f24",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-26T21:55:07Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a good idea, the int_ap_extension_disable() is not just for SPS, it is for I2C only.",
+      "parentUuid": "1aa4b375_d15cf2c3",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 49
+      },
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387c3689_6e1a30ab",
         "filename": "chip/g/sps.c",
         "patchSetId": 22
@@ -248,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "27ff1cd2_1c62d70f",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-26T21:55:07Z",
+      "side": 1,
+      "message": "My point is that int_ap_extension_disable() is not needed at all. The extension will not kick in if the pulse duration is zero.\n\nOr do you mean it is needed to shut down the pulse if it is in progress? This probably is needed. But the problem with this as presented, nobody calls int_ap_extension_enable() after this, so the long pulse remains disabled.\n\n\nI think \u0027enable()\u0027 should be called only once when it is requested that the system moves to the long pulse. And then disable() should be called only to stop the timer and deassert the request, if active, but not change the pulse length.",
+      "parentUuid": "f55d5f7d_b0fc1298",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad484d55_d8f5cb06",
         "filename": "chip/g/sps.c",
         "patchSetId": 22
@@ -277,6 +325,24 @@
       "side": 1,
       "message": "Relocating it to int_ap_extension_enable()",
       "parentUuid": "ad484d55_d8f5cb06",
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d33a5ed_d84fd2ff",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-26T21:55:07Z",
+      "side": 1,
+      "message": "please don\u0027t",
+      "parentUuid": "17c66493_f74e1075",
       "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
