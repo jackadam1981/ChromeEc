@@ -489,7 +489,8 @@ clear:
 }
 
 /* Cache depth needs to be power of 2 */
-#define CACHE_DEPTH BIT(2)
+/* TODO: Keep track of the high water mark */
+#define CACHE_DEPTH BIT(3)
 #define CACHE_DEPTH_MASK (CACHE_DEPTH - 1)
 
 struct queue {
