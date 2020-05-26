@@ -1,0 +1,151 @@
+/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include "adc.h"
+#include "adc_chip.h"
+#include "common.h"
+#include "console.h"
+#include "dacs.h"
+#include "ec_version.h"
+#include "gpio.h"
+#include "hooks.h"
+#include "i2c.h"
+#include "ioexpanders.h"
+#include "queue_policies.h"
+#include "math_util.h"
+#include "registers.h"
+#include "spi.h"
+#include "system.h"
+#include "task.h"
+#include "timer.h"
+#include "update_fw.h"
+#include "usart-stm32f0.h"
+#include "usart_tx_dma.h"
+#include "usart_rx_dma.h"
+#include "usb_gpio.h"
+#include "usb_i2c.h"
+#include "usb_pd.h"
+#include "usb_spi.h"
+#include "usb-stream.h"
+#include "util.h"
+
+#define CC1_DAC_ADDR 0x48
+#define CC2_DAC_ADDR 0x49
+
+#define REG_NOOP    0
+#define REG_DEVID   1
+#define REG_SYNC    2
+#define REG_CONFIG  3
+#define REG_GAIN    4
+#define REG_TRIGGER 5
+#define REG_STATUS  7
+#define REG_DAC     8
+
+static uint8_t dac_enabled;
+
+void init_dacs(void)
+{
+	/* Disable both DACS by default */
+	enable_dac(CC1_DAC, 0);
+	enable_dac(CC2_DAC, 0);
+	dac_enabled = 0;
+}
+
+void enable_dac(enum dac_t dac, uint8_t en)
+{
+	switch (dac) {
+	case CC1_DAC:
+		if (en) {
+			fault_clear_cc(1);
+			fault_clear_cc(0);
+			en_vout_buf_cc1(1);
+			/* Power ON DAC */
+			i2c_write8(1, CC1_DAC_ADDR, REG_CONFIG, 1);
+			dac_enabled |= CC1_DAC;
+		} else {
+			en_vout_buf_cc1(0);
+			/* Power OFF DAC */
+			i2c_write8(1, CC1_DAC_ADDR, REG_CONFIG, 0);
+			dac_enabled &= ~CC1_DAC;
+		}
+		break;
+	case CC2_DAC:
+		if (en) {
+			fault_clear_cc(1);
+			fault_clear_cc(0);
+			en_vout_buf_cc2(1);
+			i2c_write8(1, CC2_DAC_ADDR, REG_CONFIG, 1);
+			dac_enabled |= CC2_DAC;
+		} else {
+			en_vout_buf_cc2(0);
+			/* Power down DAC */
+			i2c_write8(1, CC2_DAC_ADDR, REG_CONFIG, 0);
+			dac_enabled &= ~CC2_DAC;
+		}
+		break;
+	}
+}
+
+int write_dac(enum dac_t dac, uint16_t value)
+{
+	uint16_t tmp;
+
+	tmp = (value << 8) & 0xff00;
+	tmp |= (value >> 8) & 0xff;
+	tmp <<= 2;
+
+	switch (dac) {
+	case CC1_DAC:
+		if (!(dac_enabled & CC1_DAC)) {
+			ccprintf("CC1_DAC is disabled\n");
+			return EC_ERROR_ACCESS_DENIED;
+		}
+		i2c_write16(1, CC1_DAC_ADDR, REG_DAC, tmp);
+		break;
+	case CC2_DAC:
+		if (!(dac_enabled & CC2_DAC)) {
+			ccprintf("CC2_DAC is disabled\n");
+			return EC_ERROR_ACCESS_DENIED;
+		}
+		i2c_write16(1, CC2_DAC_ADDR, REG_DAC, tmp);
+		break;
+	}
+	return EC_SUCCESS;
+}
+
+static int cmd_cc_dac(int argc, char *argv[])
+{
+	uint8_t dac;
+	uint64_t value;
+	uint64_t round_up;
+	char *e;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	dac = strtoi(argv[1], &e, 10);
+	if (*e || (dac != CC1_DAC && dac != CC2_DAC))
+		return EC_ERROR_PARAM2;
+
+	if (!strcasecmp(argv[2], "on")) {
+		enable_dac(dac, 1);
+	} else if (!strcasecmp(argv[2], "off")) {
+		enable_dac(dac, 0);
+	} else {
+		/* get value in mV */
+		value = strtoi(argv[2], &e, 10);
+		/* 5000 mV max */
+		if (*e || value > 5000)
+			return EC_ERROR_PARAM3;
+		/* 305176 = (5V / 2^14) * 1000000 */
+		round_up = (((value * 1000000) + 152588) / 305176);
+		if (!write_dac(dac, (uint16_t)round_up))
+			ccprintf("Setting DAC to %lld counts\n", round_up);
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(cc_dac, cmd_cc_dac,
+			"dac <\"on\"|\"off\"|value>",
+			"Set Servo v4.1 CC dacs");
