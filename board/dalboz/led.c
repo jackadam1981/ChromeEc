@@ -11,8 +11,10 @@
 #define LED_OFF_LVL	1
 #define LED_ON_LVL	0
 
-const int led_charge_lvl_1;
-const int led_charge_lvl_2 = 100;
+const int led_charge_lvl_1 = 10;
+const int led_charge_lvl_2 = 30;
+const int led_charge_lvl_3 = 50;
+const int led_charge_lvl_4 = 100;
 
 struct led_descriptor led_bat_state_table[LED_NUM_STATES][LED_NUM_PHASES] = {
 	[STATE_CHARGING_LVL_1]       = {{EC_LED_COLOR_GREEN,  2 * LED_ONE_SEC},
