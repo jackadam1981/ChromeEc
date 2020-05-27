@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5dc0ecd_6352f3b1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-05-27T16:25:56Z",
+      "side": 1,
+      "message": "Why aren\u0027t these part of sps_init and i2cs_init?",
+      "range": {
+        "startLine": 1791,
+        "startChar": 0,
+        "endLine": 1794,
+        "endChar": 34
+      },
+      "revId": "a7b3f690aa312c90bd09a947f567156b60ce76fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
