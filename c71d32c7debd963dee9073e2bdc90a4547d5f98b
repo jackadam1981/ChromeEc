@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "5989765b_dff4896d",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-27T23:08:45Z",
+      "side": 1,
+      "message": "I thought about attempting to force the BGATE on, but then I\u0027m worried about losing protections. Plus, the charger isn\u0027t switching at all in this state so I\u0027m not sure that it would help.",
+      "parentUuid": "70e9c03f_99452fba",
+      "range": {
+        "startLine": 1006,
+        "startChar": 0,
+        "endLine": 1006,
+        "endChar": 56
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d8bff320_47cc8e22",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 5
