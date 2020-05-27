@@ -249,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "2ce052c7_305e3dbf",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T22:02:43Z",
+      "side": 1,
+      "message": "I neglect to bring this back. If AP is off, then this interrupt should be disabled.",
+      "parentUuid": "9e2fd241_4fbbc061",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 49
+      },
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387c3689_6e1a30ab",
         "filename": "chip/g/sps.c",
         "patchSetId": 22
