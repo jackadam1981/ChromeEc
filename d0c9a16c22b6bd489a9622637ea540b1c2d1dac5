@@ -93,6 +93,30 @@
       "revId": "d0c9a16c22b6bd489a9622637ea540b1c2d1dac5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a10f5ec4_9ec139e6",
+        "filename": "board/berknip/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-27T15:57:04Z",
+      "side": 1,
+      "message": "This reads much clearer. thank you.\nWould you mind extending this to below uses of 0/1 port to better the code base?",
+      "parentUuid": "0a62ad64_0f9445cc",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "d0c9a16c22b6bd489a9622637ea540b1c2d1dac5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
