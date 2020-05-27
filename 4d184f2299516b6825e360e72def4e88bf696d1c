@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9983c90_d4b73db3",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T20:41:28Z",
+      "side": 1,
+      "message": "Unlike SPS implementation, this patch enables I2CS_SDA interrupt on every INT_AP_L assertion, and disables on INT_AP_L deassertion, because we don\u0027t want frequent interrupt incidents. \n\nHaven has I2CS_INT_STATE_INTR_READ_BEGIN but not I2CS_INT_STATE_INTR_WRITE_BEGIN. If it did, I\u0027d enable interrupts on READ_BEGIN and WRITE_BEGIN instead of GPIO_MONITOR_I2CS_SDA.",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 47
+      },
+      "revId": "4d184f2299516b6825e360e72def4e88bf696d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
