@@ -22,6 +22,30 @@
       "revId": "b63cdaef6cd0f4237149a6910f3b0fe69537d621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e7e78e_57ba8338",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-05-27T16:00:48Z",
+      "side": 1,
+      "message": "Case#4 is when EC runs RO from main(). It\u0027s power on reset and system_reset. The latter is usually implemented by WDT.",
+      "parentUuid": "f3152128_12d20dfa",
+      "range": {
+        "startLine": 355,
+        "startChar": 27,
+        "endLine": 355,
+        "endChar": 62
+      },
+      "revId": "b63cdaef6cd0f4237149a6910f3b0fe69537d621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
