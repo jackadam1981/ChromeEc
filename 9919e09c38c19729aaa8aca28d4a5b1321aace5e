@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "228372cb_0b1d7028",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "Done. I\u0027m not opposed to changing the API, if it\u0027s practical. This CL (probably, CLs) is aimed at refactoring to support new feature development. After that, I think I will need to do another round of refactoring to save flash space. The discovery accessors can be a bit redundant and might be worthy targets on that basis alone. I\u0027ll ping you OOB.",
+      "parentUuid": "7f985479_78ab4e3a",
+      "range": {
+        "startLine": 587,
+        "startChar": 1,
+        "endLine": 587,
+        "endChar": 4
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da371b7a_499ee51e",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c546a979_46cb8828",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "My plan (not reflected in comments) was to require and assume that vdm was the maximum size of a VDM (7 VDOs). I think enforcing this in code is a good idea. I\u0027m disinclined to support sub-maximal buffers, given the small size of full ones.\n\nReturning the number of VDOs seems fine will save copying a few bytes of garbage, but it shouldn\u0027t affect what actually gets transmitted.",
+      "parentUuid": "da371b7a_499ee51e",
+      "range": {
+        "startLine": 63,
+        "startChar": 5,
+        "endLine": 63,
+        "endChar": 22
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "509e2f62_f75e294b",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eafb7d0f_db08f3e6",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "509e2f62_f75e294b",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 7
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d749e7b8_29efb567",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee5be0de_e6da790f",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 5
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9415922a_37cdbd82",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 4
@@ -161,6 +257,30 @@
       "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08a42414_b427e1b2",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "Done. Should have fixed these old comments up before replying.",
+      "parentUuid": "9415922a_37cdbd82",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -187,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "9654dbcc_eeafc9f2",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "If host-command plans continue, I think this structure will ultimately contain the same information as the host command parameters, so I\u0027ll go ahead and reuse that struct definition and protect it with a mutex.",
+      "parentUuid": "4435f69c_e9254731",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42788bb6_64f9481d",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 4
@@ -207,6 +351,30 @@
       "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bfedad8_763cbd85",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "The plan:\nActive AP: AP sends host command. Host command calls pd_setup_vdm_request (based on host command args). Host command sets DPM request (essentially a flag), and the PD task reacts to it.\n\nPassive AP: PD task calls dpm_attempt_mode_entry. dpm_attempt_mode_entry sets up and schedules send_svdm_deferred. send_svdm_deferred spoofs the host command in an approximation of what the AP would do before sending the host command. The rest proceeds as above.\n\nIn this patchset, pd_setup_vdm_request is called from dpm_attempt_mode_entry (PD task) instead of the host command (hook or host command task). I expect that that call will move into the host command, but see the below comment.\n\nI don\u0027t think there would ever be a reason to call these from the TCPC alert handler. None of this stuff should happen until the PE is waiting in a ready state.",
+      "parentUuid": "42788bb6_64f9481d",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -360,6 +528,30 @@
       "writtenOn": "2020-05-27T21:42:29Z",
       "side": 1,
       "message": "A queue could be interesting, particularly if it includes a type with the message data.  Then for multi-type entries (like TBT with an active cable) they could all just dump into the queue and we can send out the queue as we\u0027re able.",
+      "parentUuid": "d221fa09_9817d858",
+      "range": {
+        "startLine": 1005,
+        "startChar": 0,
+        "endLine": 1029,
+        "endChar": 27
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b16fbe_e8c0aad2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "I\u0027ll need to take a look at queues. I\u0027m not familiar with their semantics in the EC. If they provide a check-and-set-style atomic op, they might work well.\n\nI don\u0027t think there would be a great advantage to allowing the host (or anybody) to queue up multiple SVDMs in a row. In general, the next step in the sequences we want to support is dictated by the result of the last step. We might need something like this to accommodate TBT mode entry. I\u0027m not sure how tight the timing would be in a typical host-command round trip scenario.",
       "parentUuid": "d221fa09_9817d858",
       "range": {
         "startLine": 1005,

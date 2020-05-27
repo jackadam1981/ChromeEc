@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "d29bb0ca_871b7b96",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f1aafeb_e5ab8824",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 27
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57dbc3c5_890f9008",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2

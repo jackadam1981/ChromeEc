@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22c05732_0919e2b2",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "Reduced the size of the buffer. Wouldn\u0027t reusing it between commands mean that only one command in the file could be in flight at a time? That seems like it would be the usual state of affairs but also an odd limitation.",
+      "parentUuid": "8092e7e8_ef556583",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d1af7fe_f54307dc",
         "filename": "common/usbc/usb_dpm.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "722ba792_d1e9db2b",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "I deleted this line once I was sure it happened at the right time.",
+      "parentUuid": "6d1af7fe_f54307dc",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -92,6 +140,30 @@
       "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "089b05bc_956cac5f",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:18:11Z",
+      "side": 1,
+      "message": "If we continue down the current host command path, the deferred function params will ultimately be the same as the host command params. I went ahead and reused the struct definition and mutexed it.",
+      "parentUuid": "37536cef_6a49bdf4",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
