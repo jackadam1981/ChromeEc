@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8326073e_280dd189",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-27T20:31:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6ed3c6b_c7fa0d25",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "4ec4c06063fb6e9161addc80c686ee1e16f7fab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ad788f0_2c85f084",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "4ec4c06063fb6e9161addc80c686ee1e16f7fab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b85a7b5e_866e339c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-27T20:31:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad788f0_2c85f084",
+      "range": {
+        "startLine": 238,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 4
+      },
+      "revId": "4ec4c06063fb6e9161addc80c686ee1e16f7fab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
