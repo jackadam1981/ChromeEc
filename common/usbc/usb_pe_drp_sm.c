@@ -1261,6 +1261,11 @@ static bool pe_attempt_port_discovery(int port)
 		return false;
 
 	/*
+	 * Ensure that previous NAKs or timeouts are cleared.
+	 */
+	PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_NAKED);
+
+	/*
 	 * TODO: POLICY decision: move policy functionality out to a separate
 	 * file.  For now, try once to become DFP/Vconn source
 	 */
