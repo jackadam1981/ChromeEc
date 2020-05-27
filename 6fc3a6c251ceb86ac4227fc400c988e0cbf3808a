@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9152f92_cdb134df",
+        "filename": "board/hatch_fp/board.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-27T15:40:00Z",
+      "side": 1,
+      "message": "don\u0027t need to undefine this first, sorry I didn\u0027t catch that on previous iterations",
+      "range": {
+        "startLine": 95,
+        "startChar": 7,
+        "endLine": 95,
+        "endChar": 32
+      },
+      "revId": "6fc3a6c251ceb86ac4227fc400c988e0cbf3808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f25304e0_eb27def4",
+        "filename": "chip/stm32/host_command_common.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-27T15:40:00Z",
+      "side": 1,
+      "message": "same comment, the IS_ENABLED should all be at the front to allow the compiler to optimize out code better",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 24
+      },
+      "revId": "6fc3a6c251ceb86ac4227fc400c988e0cbf3808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef32dae3_2f75cf86",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-27T15:40:00Z",
+      "side": 1,
+      "message": "need newline for multiple line comments",
+      "range": {
+        "startLine": 539,
+        "startChar": 3,
+        "endLine": 539,
+        "endChar": 8
+      },
+      "revId": "6fc3a6c251ceb86ac4227fc400c988e0cbf3808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37b16f48_427e2e0f",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-27T15:40:00Z",
+      "side": 1,
+      "message": "nit: drop both extra set of () please",
+      "range": {
+        "startLine": 581,
+        "startChar": 5,
+        "endLine": 582,
+        "endChar": 29
+      },
+      "revId": "6fc3a6c251ceb86ac4227fc400c988e0cbf3808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfcbb82a_7fe78eec",
+        "filename": "chip/stm32/usart_rx_dma.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-27T15:40:00Z",
+      "side": 1,
+      "message": "nit: reformat these parameters space please.\n\nHere and line 75 and 78\u003d",
+      "range": {
+        "startLine": 64,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 16
+      },
+      "revId": "6fc3a6c251ceb86ac4227fc400c988e0cbf3808a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
