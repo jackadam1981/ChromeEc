@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eddd5210_22b7f3dd",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-27T17:44:31Z",
+      "side": 1,
+      "message": "You should also update the comment to explain why we\u0027re disabling VCCIO here.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 0
+      },
+      "revId": "b8cb03370335735ec7c799802418ea60a66522f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
