@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a473d060_ce2db65b",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-27T01:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f6919a_2b92872f",
+      "range": {
+        "startLine": 257,
+        "startChar": 4,
+        "endLine": 257,
+        "endChar": 9
+      },
+      "revId": "a1c00f79e0a2aab2731777fe7a7c3c80ddb3869b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0136e52b_3e161abb",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8d396f17_15301e33",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-27T01:47:50Z",
+      "side": 1,
+      "message": "I see this file using \"31 - __builtin_clz\" above so I\u0027m following this style. Let\u0027s leave this to the next reviewer. If we change to __fls we probably want to change the other occurrences as well.",
+      "parentUuid": "0136e52b_3e161abb",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 20
+      },
+      "revId": "a1c00f79e0a2aab2731777fe7a7c3c80ddb3869b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6acbb53a_4a7e31ed",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-05-26T23:42:55Z",
       "side": 1,
       "message": "This is the right region to use, but it will conflict with the region I chose for rollback: https://chromium.googlesource.com/chromiumos/platform/ec/+/a1c00f79e0a2aab2731777fe7a7c3c80ddb3869b/core/cortex-m/mpu.c#329\n\nIt looks like REGION_CODE_RAM may be unused, so we could change rollback to use that if it\u0027s unused.\n\nAlso, can you double-check the existing logic in mpu_config_region? It tries to use subregions if the size is not a power of two and can end up using one value higher than the region specified: https://chromium.googlesource.com/chromiumos/platform/ec/+/a1c00f79e0a2aab2731777fe7a7c3c80ddb3869b/core/cortex-m/mpu.c#169\n\nThis is where the comment in the num about \"Second region for unaligned size\" comes from I think: https://chromium.googlesource.com/chromiumos/platform/ec/+/a1c00f79e0a2aab2731777fe7a7c3c80ddb3869b/core/cortex-m/include/mpu.h#29\n\nHere are the details on subregions:\n\nhttps://developer.arm.com/docs/dui0553/a/cortex-m4-peripherals/optional-memory-protection-unit/mpu-region-attribute-and-size-register\n\nhttps://developer.arm.com/docs/dui0553/a/cortex-m4-peripherals/optional-memory-protection-unit/updating-an-mpu-region#BIHEEIGC",
+      "range": {
+        "startLine": 276,
+        "startChar": 26,
+        "endLine": 276,
+        "endChar": 41
+      },
+      "revId": "a1c00f79e0a2aab2731777fe7a7c3c80ddb3869b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18990d67_f6970286",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-27T01:47:50Z",
+      "side": 1,
+      "message": "I checked the subregion logic in mpu_config_region. It would work when the address is aligned to the rounded-up-size. In the case of bloonchipper we still need two regions because the address is not aligned to the rounded-up-size.\n\nHowever, the subregion logic did inspire me that if the RW size is so small that its rounded-up-size is aligned with the address, my code in PS2 \u0026 PS3 had a bug since it was using the \"aligned size\". E.g. if RW start address is 0x60000, and RW size is 0x10000, my old code would pass 0x20000 as the size to mpu_config_region. Though such small RW sounds unlikely, let me make the algorithm robust.\n\nSince strict size alignment is not a requirement (the requirement is actually looser: address should be aligned to the rounded-up-size, given we have subregion logic), I\u0027m removing my strict alignment check on second_region_size.\n\nAnd yes, let\u0027s change rollback to use REGION_CODE_RAM.",
+      "parentUuid": "6acbb53a_4a7e31ed",
       "range": {
         "startLine": 276,
         "startChar": 26,
