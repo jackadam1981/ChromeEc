@@ -27,11 +27,15 @@ const uint32_t pd_src_pdo[] = {
 	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
 };
 const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
+const uint32_t pd_src_pdo_max[] = {
+	PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
+};
+const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
 
 const uint32_t pd_snk_pdo[] = {
 	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
-	PDO_BATT(4750, 21000, 15000),
-	PDO_VAR(4750, 21000, 3000),
+	PDO_BATT(4750, PD_MAX_VOLTAGE_MV, PD_OPERATING_POWER_MW),
+	PDO_VAR(4750, PD_MAX_VOLTAGE_MV, PD_MAX_CURRENT_MA),
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
@@ -42,34 +46,30 @@ int pd_board_checks(void)
 
 int pd_check_data_swap(int port, int data_role)
 {
-	/*
-	 * Allow data swap if we are a UFP, otherwise don't allow.
-	 *
-	 * When we are still in the Read-Only firmware, avoid swapping roles
-	 * so we don't jump in RW as a SNK/DFP and potentially confuse the
-	 * power supply by sending a soft-reset with wrong data role.
-	 */
-	return (data_role == PD_ROLE_UFP) &&
-	       (system_get_image_copy() != SYSTEM_IMAGE_RO) ? 1 : 0;
+	/* Allow data swap if we are a UFP, otherwise don't allow. */
+	return (data_role == PD_ROLE_UFP) ? 1 : 0;
 }
 
 void pd_check_dr_role(int port, int dr_role, int flags)
 {
 	/* If UFP, try to switch to DFP */
-	if ((flags & PD_FLAGS_PARTNER_DR_DATA) &&
-			dr_role == PD_ROLE_UFP &&
-			system_get_image_copy() != SYSTEM_IMAGE_RO)
+	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_UFP)
 		pd_request_data_swap(port);
 }
 
 int pd_check_power_swap(int port)
 {
 	/*
-	 * Allow power swap as long as we are acting as a dual role device,
-	 * otherwise assume our role is fixed (not in S0 or console command
-	 * to fix our role).
+	 * Allow power swap if we are acting as a dual role device.  If we are
+	 * not acting as dual role (ex. suspended), then only allow power swap
+	 * if we are sourcing when we could be sinking.
 	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
+	if (pd_get_dual_role(port) == PD_DRP_TOGGLE_ON)
+		return 1;
+	else if (pd_get_role(port) == PD_ROLE_SOURCE)
+		return 1;
+
+	return 0;
 }
 
 void pd_check_pr_role(int port, int pr_role, int flags)
@@ -101,7 +101,6 @@ int pd_check_vconn_swap(int port)
 
 void pd_execute_data_swap(int port, int data_role)
 {
-	/* Do nothing */
 }
 
 int pd_is_valid_input_voltage(int mv)
@@ -150,7 +149,7 @@ int pd_set_power_supply_ready(int port)
 
 void pd_transition_voltage(int idx)
 {
-	/* No-operation: we are always 5V */
+	/* Most devices are fixed 5V output. */
 }
 
 int pd_snk_is_vbus_provided(int port)
@@ -171,7 +170,7 @@ const struct svdm_response svdm_rsp = {
 };
 
 int pd_custom_vdm(int port, int cnt, uint32_t *payload,
-		  uint32_t **rpayload)
+				uint32_t **rpayload)
 {
 	int cmd = PD_VDO_CMD(payload[0]);
 	uint16_t dev_id = 0;
@@ -200,6 +199,7 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 							 is_rw ?
 							 SYSTEM_IMAGE_RW :
 							 SYSTEM_IMAGE_RO);
+
 			/*
 			 * Send update host event unless our RW hash is
 			 * already known to be the latest update RW.
@@ -222,7 +222,9 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 		CPRINTF("Current: %dmA\n", payload[1]);
 		break;
 	case VDO_CMD_FLIP:
+#ifdef CONFIG_USBC_SS_MUX
 		usb_mux_flip(port);
+#endif
 		break;
 #ifdef CONFIG_USB_PD_LOGGING
 	case VDO_CMD_GET_LOG:
@@ -235,10 +237,11 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 }
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-static int dp_flags[CONFIG_USB_PD_PORT_COUNT];
-static uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
 
-static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
+int dp_flags[CONFIG_USB_PD_PORT_COUNT];
+uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
+
+__override int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 {
 	dp_flags[port] = 0;
 	dp_status[port] = 0;
@@ -250,7 +253,7 @@ static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 	return -1;
 }
 
-static int svdm_dp_status(int port, uint32_t *payload)
+__overridable int svdm_dp_status(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
 
@@ -263,7 +266,7 @@ static int svdm_dp_status(int port, uint32_t *payload)
 				   0, /* multi-function ... no */
 				   (!!(dp_flags[port] & DP_FLAGS_DP_ON)),
 				   0, /* power low? ... no */
-				   (!!(dp_flags[port] & DP_FLAGS_DP_ON)));
+				   (!!DP_FLAGS_DP_ON));
 	return 2;
 };
 
@@ -281,7 +284,7 @@ static enum typec_mux svdm_dp_mux_mode(int port)
 		return TYPEC_MUX_DP;
 }
 
-static int svdm_dp_config(int port, uint32_t *payload)
+__override int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
 	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
@@ -319,7 +322,7 @@ static int svdm_dp_config(int port, uint32_t *payload)
 static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_COUNT];
 
 #define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
-static void svdm_dp_post_config(int port)
+__override void svdm_dp_post_config(int port)
 {
 	const struct usb_mux * const mux = &usb_muxes[port];
 
@@ -339,25 +342,37 @@ static void svdm_dp_post_config(int port)
 	mux->hpd_update(port, 1, 0);
 }
 
-static int svdm_dp_attention(int port, uint32_t *payload)
+__overridable int svdm_dp_attention(int port, uint32_t *payload)
 {
-	int cur_lvl;
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
+	const struct usb_mux *mux = &usb_muxes[port];
+#ifdef CONFIG_USB_PD_DP_HPD_GPIO
 	enum gpio_signal hpd = PORT_TO_HPD(port);
-	const struct usb_mux * const mux = &usb_muxes[port];
+	int cur_lvl = gpio_get_level(hpd);
+#endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
-	cur_lvl = gpio_get_level(hpd);
 	dp_status[port] = payload[1];
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
+	    (irq || lvl))
+		/*
+		 * Wake up the AP.  IRQ or level high indicates a DP sink is now
+		 * present.
+		 */
+#ifdef CONFIG_MKBP_EVENT
+		pd_notify_dp_alt_mode_entry();
+#endif
 
 	/* Its initial DP status message prior to config */
 	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
 		if (lvl)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
-		return 1; /* ack */
+		return 1;
 	}
 
-	if (irq && cur_lvl) {
+#ifdef CONFIG_USB_PD_DP_HPD_GPIO
+	if (irq & cur_lvl) {
 		uint64_t now = get_time().val;
 		/* wait for the minimum spacing between IRQ_HPD if needed */
 		if (now < hpd_deadline[port])
@@ -370,7 +385,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 
 		/* set the minimum time delay (2ms) for the next HPD IRQ */
 		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
-	} else if (irq && !lvl) {
+	} else if (irq & !lvl) {
 		/*
 		 * IRQ can only be generated when the level is high, because
 		 * the IRQ is signaled by a short low pulse from the high level.
@@ -382,11 +397,21 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 		/* set the minimum time delay (2ms) for the next HPD IRQ */
 		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 	}
-	mux->hpd_update(port, lvl, irq);
-	return 1; /* ack */
+#endif /* CONFIG_USB_PD_DP_HPD_GPIO */
+
+	if (mux->hpd_update)
+		mux->hpd_update(port, lvl, irq);
+
+#ifdef USB_PD_PORT_TCPC_MST
+	if (port == USB_PD_PORT_TCPC_MST)
+		baseboard_mst_enable_control(port, lvl);
+#endif
+
+	/* ack */
+	return 1;
 }
 
-static void svdm_exit_dp_mode(int port)
+__override void svdm_exit_dp_mode(int port)
 {
 	const struct usb_mux * const mux = &usb_muxes[port];
 
@@ -399,17 +424,17 @@ static void svdm_exit_dp_mode(int port)
 	mux->hpd_update(port, 0, 0);
 }
 
-static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
+__overridable int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
 {
 	/* Always enter GFU mode */
 	return 0;
 }
 
-static void svdm_exit_gfu_mode(int port)
+__overridable void svdm_exit_gfu_mode(int port)
 {
 }
 
-static int svdm_gfu_status(int port, uint32_t *payload)
+__overridable int svdm_gfu_status(int port, uint32_t *payload)
 {
 	/*
 	 * This is called after enter mode is successful, send unstructured
@@ -419,12 +444,12 @@ static int svdm_gfu_status(int port, uint32_t *payload)
 	return 0;
 }
 
-static int svdm_gfu_config(int port, uint32_t *payload)
+__overridable int svdm_gfu_config(int port, uint32_t *payload)
 {
 	return 0;
 }
 
-static int svdm_gfu_attention(int port, uint32_t *payload)
+__overridable int svdm_gfu_attention(int port, uint32_t *payload)
 {
 	return 0;
 }
@@ -439,6 +464,7 @@ const struct svdm_amode_fx supported_modes[] = {
 		.attention = &svdm_dp_attention,
 		.exit = &svdm_exit_dp_mode,
 	},
+
 	{
 		.svid = USB_VID_GOOGLE,
 		.enter = &svdm_enter_gfu_mode,
