@@ -141,6 +141,30 @@
       "revId": "a0cb0862ddcb31b8479c32d3f2169d0e9693d41c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff96e1a9_0f0d589d",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-05-27T06:38:59Z",
+      "side": 1,
+      "message": "I have a better idea:\n\nno need to change the behavior of battery_get_vendor_param,\njust call battery_get_vendor_param 16 times to get the whole string.\n\nSimpler and can benefit from internal error checking and retry.",
+      "parentUuid": "67cbc685_019e9931",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 49
+      },
+      "revId": "a0cb0862ddcb31b8479c32d3f2169d0e9693d41c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
