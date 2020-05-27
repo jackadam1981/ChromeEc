@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "860aefc1_dc24cbbe",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T02:22:08Z",
+      "side": 1,
+      "message": "Per OOB discussion with Diana, honeybuns has complicated the idea of using a host command to do this. If we still want to use a host command for this purpose, it should be trivial to add vdm and vdo_cnt to ec_params_typec_ctrl, etc., and invoke pd_setup_vdm_request from within typec_control.",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 53
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25c1bb68_a6c6284b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T02:22:08Z",
+      "side": 1,
+      "message": "I don\u0027t think a flag is currently sufficient to synchronize access to a large object across multiple state transitions. I think that it probably would be if we had atomic check and set for flags. That seems practical but well out of scope. In the meantime, this seemed like one of the less weird synchronization schemes. But if anyone has any better ideas, I\u0027m open.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 52
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af6e70f_f3bc7549",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T02:22:08Z",
+      "side": 1,
+      "message": "After further testing, I am fairly convinced that, at least in the sysjump case, this never happens. At ToT, with TCPMv2, I can see this function being called, but no Exit Mode ever sends.\n\nHow would people feel about deleting this for now and creating a bug to reimplement it in terms of the forthcoming host command/DPM interface? That makes synchronization a lot easier to think about and seems like the direction that we should go in the long run. At present, I assert that deleting this function body doesn\u0027t make things any worse.",
+      "range": {
+        "startLine": 1046,
+        "startChar": 4,
+        "endLine": 1055,
+        "endChar": 57
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f9e554a_4c73acfb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T02:22:08Z",
+      "side": 1,
+      "message": "Is this a good place to do this?\n\n\nIt seems like I\u0027m crossing an interface boundary unnecessarily. I\u0027ve basically moved state from the PE to other files without creating independent state machines for that state (yet?). In the long run, the DPM, in particular, may be able to pull itself up by its bootstraps. For now, it seems like the DP and DPM state should stay interlocked with the PE to avoid a lot of additional complexity and keep this CL from getting even more enormous.",
+      "range": {
+        "startLine": 1533,
+        "startChar": 2,
+        "endLine": 1536,
+        "endChar": 0
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d49bbf_b4da9ed0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5044,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T02:22:08Z",
+      "side": 1,
+      "message": "It seems like we need to check the SVID here to know whether we can do any DP stuff, but for now, I didn\u0027t want to disturb how this state works more than necessary.",
+      "range": {
+        "startLine": 5044,
+        "startChar": 3,
+        "endLine": 5044,
+        "endChar": 35
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fed954a_328b8875",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5059,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T02:22:08Z",
+      "side": 1,
+      "message": "Ideally, I think the PE would probably hand these off to the DPM, and the DPM would in turn hand off DP stuff to the DP module. This seemed to me like a reasonable intermediate form, but I\u0027m interested in other perspectives.",
+      "range": {
+        "startLine": 5039,
+        "startChar": 2,
+        "endLine": 5059,
+        "endChar": 9
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46e5d5f0_508b9088",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1593,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T02:22:08Z",
+      "side": 1,
+      "message": "I guess it does actually call the enter function. I was confused by it briefly, but this isn\u0027t an important part of this CL.",
+      "range": {
+        "startLine": 1592,
+        "startChar": 3,
+        "endLine": 1593,
+        "endChar": 34
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7a28ec4_276ba21d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2191,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T02:22:08Z",
+      "side": 1,
+      "message": "See comments on pe_send_vdm.",
+      "range": {
+        "startLine": 2190,
+        "startChar": 3,
+        "endLine": 2191,
+        "endChar": 44
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eaaa8bd5_266b14be",
+        "filename": "test/fake_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T02:22:08Z",
+      "side": 1,
+      "message": "I\u0027m not very clear on why I had to do this. I was getting linker errors from dp_alt_mode.o in tests, but I never linked dp_alt_mode.o into tests in the build files. I might have expected to get linker errors from usb_pe_drp_sm.o WRT dp_alt_mode.o instead.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 1
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
