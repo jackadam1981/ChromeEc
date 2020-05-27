@@ -11,6 +11,10 @@
 #include "common.h"
 #include "compile_time_macros.h"
 
+#define DBG(x) do { \
+	REG32(0x70026000) = x; \
+} while(0)
+
 #define DUMMY_GPIO_BANK 0
 
 #define SCP_REG_BASE			0x70000000
