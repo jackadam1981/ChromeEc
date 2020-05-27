@@ -22,6 +22,30 @@
       "revId": "b8cb03370335735ec7c799802418ea60a66522f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4304506e_e227c58d",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-05-27T18:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eddd5210_22b7f3dd",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 0
+      },
+      "revId": "b8cb03370335735ec7c799802418ea60a66522f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
