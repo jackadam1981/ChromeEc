@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aafe685_897782ca",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-27T17:35:47Z",
+      "side": 1,
+      "message": "I don\u0027t get this: are you adding functions potentially to call on every pulse assertion/deassertion? Does not seem the right thing to do to me - the issue with the previous patchset was that that CS assertion interrupt should be controlled outside of int_ap_extension.c, this change of prototype does not seem to address the review concern and is changing the patch logic  if I get it right.",
+      "range": {
+        "startLine": 387,
+        "startChar": 1,
+        "endLine": 388,
+        "endChar": 80
+      },
+      "revId": "faf7d00394cc8f3dd117ab07cff3477d4a7322cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
