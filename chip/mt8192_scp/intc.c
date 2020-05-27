@@ -147,6 +147,7 @@ static struct {
 };
 BUILD_ASSERT(ARRAY_SIZE(irqs) == SCP_INTC_IRQ_COUNT);
 
+#include "console.h"
 /*
  * Find current interrupt source.
  *
@@ -173,6 +174,20 @@ int chip_get_ec_int(void)
 	}
 
 error:
+#if 0
+	while (1) {
+		int c;
+		volatile int i;
+
+		for (c = 65; c < 91; ++c) {
+			DBG(c);
+
+			for (i = 0; i < 1000000; ++i)
+				;
+		}
+	}
+#endif
+
 	/* unreachable, SCP crashes and dumps registers after returning */
 	return -1;
 }
@@ -216,12 +231,47 @@ void chip_disable_irq(int irq)
 	SCP_CORE0_INTC_SLP_WAKE_EN(word) &= ~mask;
 }
 
+#include "csr.h"
+#include "console.h"
 void chip_clear_pending_irq(int irq)
 {
 	unsigned int group = irqs[irq].group;
+	extern volatile int ec_int;
+
+#if 1
+	ccprintf("before miems: ec_int=%d\n", ec_int);
+	ccprintf("before miems: miemask_g0=%x\n",(unsigned int)read_csr(0x5f0));
+	ccprintf("before miems: mcause=%x\n", (unsigned int)read_csr(0x342));
+	ccprintf("before miems: micause=%x\n", (unsigned int)read_csr(0x5c0));
+	ccprintf("before miems: CSR_VIC_MIPEND_G0=%x\n", (unsigned int)read_csr(0x5d0));
+	ccprintf("before miems: CORE0_TIMER_IRQ_CTRL(timer5)=%x\n", SCP_CORE0_TIMER_IRQ_CTRL(5));
+	ccprintf("before miems: CORE0_TIMER_CUR_VAL(timer5)=%x\n", SCP_CORE0_TIMER_CUR_VAL(5));
+	ccprintf("before miems: CORE0_INTC_IRQ_OUT=%x\n", SCP_CORE0_INTC_IRQ_OUT);
+	ccprintf("before miems: CORE0_INTC_IRQ_STA0=%x\n", REG32(0x70032010));
+	ccprintf("before miems: CORE0_INTC_IRQ_GRP6_STA0=%x\n", SCP_CORE0_INTC_IRQ_GRP_STA(6, 0));
+	ccprintf("before miems: CORE0_INTC_IRQ_GRP12_STA0=%x\n", SCP_CORE0_INTC_IRQ_GRP_STA(12, 0));
+	ccprintf("before miems: UART0_IER=%x\n", REG32(0x70026004));
+	cflush();
+#endif
 
 	/* must clear interrupt source before writing this */
 	write_csr(CSR_VIC_MIEMS, group);
+
+#if 1
+	ccprintf("after miems: ec_int=%d\n", ec_int);
+	ccprintf("after miems: miemask_g0=%x\n",(unsigned int)read_csr(0x5f0));
+	ccprintf("after miems: mcause=%x\n", (unsigned int)read_csr(0x342));
+	ccprintf("after miems: micause=%x\n", (unsigned int)read_csr(0x5c0));
+	ccprintf("after miems: CSR_VIC_MIPEND_G0=%x\n", (unsigned int)read_csr(0x5d0));
+	ccprintf("after miems: CORE0_TIMER_IRQ_CTRL(timer5)=%x\n", SCP_CORE0_TIMER_IRQ_CTRL(5));
+	ccprintf("after miems: CORE0_TIMER_CUR_VAL(timer5)=%x\n", SCP_CORE0_TIMER_CUR_VAL(5));
+	ccprintf("after miems: CORE0_INTC_IRQ_OUT=%x\n", SCP_CORE0_INTC_IRQ_OUT);
+	ccprintf("after miems: CORE0_INTC_IRQ_STA0=%x\n", REG32(0x70032010));
+	ccprintf("after miems: CORE0_INTC_IRQ_GRP6_STA0=%x\n", SCP_CORE0_INTC_IRQ_GRP_STA(6, 0));
+	ccprintf("after miems: CORE0_INTC_IRQ_GRP12_STA0=%x\n", SCP_CORE0_INTC_IRQ_GRP_STA(12, 0));
+	ccprintf("after miems: UART0_IER=%x\n", REG32(0x70026004));
+	cflush();
+#endif
 }
 
 int chip_trigger_irq(int irq)
