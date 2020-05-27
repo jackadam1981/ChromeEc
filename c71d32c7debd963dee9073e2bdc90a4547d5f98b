@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c38c7875_254c867c",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-27T03:32:28Z",
+      "side": 1,
+      "message": "Currently, the caller will only be called if it\u0027s the secondary charger. This function doesn\u0027t explicitly guard against being called with any particular charger; I could add that.",
+      "parentUuid": "0dc10b2f_37813248",
+      "range": {
+        "startLine": 1005,
+        "startChar": 0,
+        "endLine": 1005,
+        "endChar": 62
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8442b10_7d679288",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-26T22:31:02Z",
       "side": 1,
       "message": "I don\u0027t like the potential for silent overcompensation here; that\u0027s dangerous.  If Rp1 is less than Rp1_min we should probably just disable compensation with a warning.",
+      "range": {
+        "startLine": 1006,
+        "startChar": 0,
+        "endLine": 1006,
+        "endChar": 56
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be31b6c8_39f60827",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-27T03:32:28Z",
+      "side": 1,
+      "message": "My understanding is that the BFET will not be enabled if charging from an auxiliary charger and if DVC is not enabled. This is why I did it this way. Tomorrow, I can try some experiments to see if it will still work if it\u0027s disabled.",
+      "parentUuid": "a8442b10_7d679288",
       "range": {
         "startLine": 1006,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ac7c6efd_1b66d3f9",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-27T03:32:28Z",
+      "side": 1,
+      "message": "When we subtract the minimum and divide by 4, that\u0027s 0-based. The min value starts at register value \u00271\u0027 not \u00270\u0027.",
+      "parentUuid": "d8bff320_47cc8e22",
+      "range": {
+        "startLine": 1009,
+        "startChar": 0,
+        "endLine": 1009,
+        "endChar": 59
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aefd4f64_53ed055e",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2020-05-26T22:31:02Z",
       "side": 1,
       "message": "ditto; silently bumping up rp2 is not safe",
+      "range": {
+        "startLine": 1012,
+        "startChar": 1,
+        "endLine": 1012,
+        "endChar": 35
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "822a01e7_ea43932a",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-27T03:32:28Z",
+      "side": 1,
+      "message": "RP2 min is 0, so this shouldn\u0027t be bumping it up. I also need to revise this a bit. Because I immediately disregard it in the next line.",
+      "parentUuid": "aefd4f64_53ed055e",
       "range": {
         "startLine": 1012,
         "startChar": 1,
