@@ -26,9 +26,16 @@ void uart_init(void)
 	SCP_UART_CK_SEL |= UART0_CK_SEL_VAL(UART_CK_SEL_26M);
 	SCP_SET_CLK_CG |= CG_UART0_MCLK | CG_UART0_BCLK | CG_UART0_RST;
 
+#if 0
 	/* set AP GPIO164 and GPIO165 to alt func 3 */
 	AP_GPIO_MODE20_CLR = 0x00770000;
 	AP_GPIO_MODE20_SET = 0x00330000;
+#else
+	/* set AP GPIO94 and GPIO95 to alt func 1 */
+	AP_GPIO_MODE11_CLR = 0x77000000;
+	AP_GPIO_MODE11_SET = 0x55000000;
+#endif
+
 #elif UARTN == 1
 	SCP_UART_CK_SEL |= UART1_CK_SEL_VAL(UART_CK_SEL_26M);
 	SCP_SET_CLK_CG |= CG_UART1_MCLK | CG_UART1_BCLK | CG_UART1_RST;
@@ -122,6 +129,7 @@ void irq_group12_handler(void)
 {
 	extern volatile int ec_int;
 
+//DBG(0x41);
 	switch (ec_int) {
 	case UART_TX_IRQ(UARTN):
 		uart_process();
