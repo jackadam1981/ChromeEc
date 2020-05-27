@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2d3df5ff_3342982e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:42Z",
+      "side": 1,
+      "message": "Moved this text to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2202839/6.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 61
+      },
+      "revId": "530a0445354a94c4366699bd6aff2d7477164b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be7cdd15_edda2c76",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 23
@@ -22,6 +45,30 @@
       "revId": "530a0445354a94c4366699bd6aff2d7477164b77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1ac560b_cf443d2c",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be7cdd15_edda2c76",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "530a0445354a94c4366699bd6aff2d7477164b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -48,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "9e45cba9_6623a6d6",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec458cc0_c83c64a6",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 49
+      },
+      "revId": "530a0445354a94c4366699bd6aff2d7477164b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fef99c8c_0d991ef5",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 23
@@ -62,6 +133,47 @@
       "revId": "530a0445354a94c4366699bd6aff2d7477164b77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "056b7a1e_a80be899",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fef99c8c_0d991ef5",
+      "revId": "530a0445354a94c4366699bd6aff2d7477164b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48dc89f5_1684e1a9",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:42Z",
+      "side": 1,
+      "message": "Moved it to sps_int_ap_deassert_func_() in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2202839/6.",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 431,
+        "endChar": 45
+      },
+      "revId": "530a0445354a94c4366699bd6aff2d7477164b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

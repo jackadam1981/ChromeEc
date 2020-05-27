@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "9e2fd241_4fbbc061",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:42Z",
+      "side": 1,
+      "message": "I left it in chip/g/sps.c in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2202839/6.",
+      "parentUuid": "f0f8b84e_60fc8f24",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 49
+      },
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "387c3689_6e1a30ab",
         "filename": "chip/g/sps.c",
         "patchSetId": 22
@@ -296,6 +320,30 @@
     },
     {
       "key": {
+        "uuid": "457a8d84_9087ec4b",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:42Z",
+      "side": 1,
+      "message": "removed int_ap_extension_disable().",
+      "parentUuid": "27ff1cd2_1c62d70f",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 27
+      },
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad484d55_d8f5cb06",
         "filename": "chip/g/sps.c",
         "patchSetId": 22
@@ -343,6 +391,24 @@
       "side": 1,
       "message": "please don\u0027t",
       "parentUuid": "17c66493_f74e1075",
+      "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a06d9108_fa0c5935",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:42Z",
+      "side": 1,
+      "message": "I left it in chip/g/sps.c in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2202839/6.",
+      "parentUuid": "5d33a5ed_d84fd2ff",
       "revId": "699827cf69e9a2990dfe76c0cdf9aecc2eeff3e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
