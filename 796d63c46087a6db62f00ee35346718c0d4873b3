@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5d1b2d90_68050fea",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "I checked fpsensor and other places, looks like we print console message and continue.",
+      "parentUuid": "a5366a0a_22f7d087",
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "035533ea_70b5c6a4",
         "filename": "chip/stm32/host_command_common.c",
         "patchSetId": 15
@@ -39,6 +57,30 @@
       "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518bfd60_efbb3742",
+        "filename": "chip/stm32/host_command_common.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "I will fix it everywhere.",
+      "parentUuid": "035533ea_70b5c6a4",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a8cd8282_750bbe7d",
+        "filename": "chip/stm32/host_command_common.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9fd47595_be58066a",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e18c1db_2f61a59e",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 15
@@ -85,6 +151,30 @@
       "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecf0d3de_dfead349",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2e18c1db_2f61a59e",
+      "range": {
+        "startLine": 484,
+        "startChar": 12,
+        "endLine": 484,
+        "endChar": 16
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "648ad45b_bfc9cf7e",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "884f989c_feffff04",
+      "range": {
+        "startLine": 496,
+        "startChar": 1,
+        "endLine": 498,
+        "endChar": 26
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a2dad25_ade773af",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 15
@@ -131,6 +245,30 @@
       "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "928eb77e_f23ad153",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2dad25_ade773af",
+      "range": {
+        "startLine": 524,
+        "startChar": 7,
+        "endLine": 525,
+        "endChar": 19
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "6cd07069_bcc15dd5",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2ca6c1a_dbe8c6f3",
+      "range": {
+        "startLine": 531,
+        "startChar": 3,
+        "endLine": 531,
+        "endChar": 46
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1524707a_26ab00bb",
         "filename": "chip/stm32/usart_host_command.c",
         "patchSetId": 15
@@ -177,6 +339,30 @@
       "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d87d131c_ae277c55",
+        "filename": "chip/stm32/usart_host_command.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "it did not complain, maybe because of comments in between. But i removed it.",
+      "parentUuid": "1524707a_26ab00bb",
+      "range": {
+        "startLine": 549,
+        "startChar": 49,
+        "endLine": 549,
+        "endChar": 50
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "85a3e7c8_34a17959",
+        "filename": "chip/stm32/usart_host_command.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2842c3d3_80c6fcf3",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad3c1598_dd287cd1",
         "filename": "chip/stm32/usart_host_command.h",
         "patchSetId": 15
@@ -223,6 +433,30 @@
       "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53795a53_8676b06f",
+        "filename": "chip/stm32/usart_host_command.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ad3c1598_dd287cd1",
+      "range": {
+        "startLine": 22,
+        "startChar": 14,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "cd69ad99_f984f3c2",
+        "filename": "chip/stm32/usart_rx_dma.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de0a8295_f077b598",
+      "range": {
+        "startLine": 16,
+        "startChar": 17,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bed1c095_5afb37d1",
         "filename": "chip/stm32/usart_tx_interrupt.c",
         "patchSetId": 15
@@ -269,6 +527,30 @@
       "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71c88953_809e8e5d",
+        "filename": "chip/stm32/usart_tx_interrupt.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-05-27T00:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bed1c095_5afb37d1",
+      "range": {
+        "startLine": 17,
+        "startChar": 17,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "796d63c46087a6db62f00ee35346718c0d4873b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
