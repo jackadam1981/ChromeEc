@@ -22,6 +22,30 @@
       "revId": "5dfe63e6b04b14f2f3df7f0c9979cef8792be84b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2c66d35_f6d109db",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-27T20:33:31Z",
+      "side": 1,
+      "message": "Retimer spec says : If SOP discover SVID support TBT3, If TBT3 discover Mode VDO bit 31 or bit 26 set to 1",
+      "parentUuid": "b4298ead_e2a8f9dd",
+      "range": {
+        "startLine": 206,
+        "startChar": 6,
+        "endLine": 207,
+        "endChar": 30
+      },
+      "revId": "5dfe63e6b04b14f2f3df7f0c9979cef8792be84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
