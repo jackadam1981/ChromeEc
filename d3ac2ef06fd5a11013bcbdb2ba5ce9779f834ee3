@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c03faa6b_1c6c416b",
+        "filename": "board/kappa/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-05-27T08:33:53Z",
+      "side": 1,
+      "message": "this should be `unsigned char` or `uint8_t` in case the read value \u003e\u003d 0x80.",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 295,
+        "endChar": 5
+      },
+      "revId": "d3ac2ef06fd5a11013bcbdb2ba5ce9779f834ee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
