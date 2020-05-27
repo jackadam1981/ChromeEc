@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ca6f100_8287223e",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-27T16:58:43Z",
+      "side": 1,
+      "message": "How about moving this to a helper function that computes the region sizes?\n\nSomething like\n\n const int MAX_RW_REGIONS \u003d 2;\n\n struct mpu_rw_regions {\n   int num_regions;\n   uint32_t region_addr[MAX_RW_REGIONS];\n   uint32_t region_size[MAX_RW_REGIONS];\n };\n\n int mpu_get_rw_regions(struct mpu_rw_regions *r);\n\n\nThen we can add the helper function to mpu_private.h and add a test in test/mpu.c that verifies the regions are what we expect.",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 72
+      },
+      "revId": "a1c8758e006db1dfae0b3728228aaf82d44cbafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
