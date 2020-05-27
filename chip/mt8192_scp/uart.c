@@ -117,11 +117,18 @@ void uart_process(void)
 	uart_process_output();
 }
 
+#define DBG(x) do { \
+	REG32(0x70026000) = x; \
+	REG32(0x70026000) = 0xd; \
+	REG32(0x70026000) = 0xa; \
+} while(0)
+
 #if (UARTN < SCP_UART_COUNT)
 void irq_group12_handler(void)
 {
 	extern volatile int ec_int;
 
+//DBG(0x41);
 	switch (ec_int) {
 	case UART_TX_IRQ(UARTN):
 		uart_process();
