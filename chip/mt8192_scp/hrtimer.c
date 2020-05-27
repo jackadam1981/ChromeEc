@@ -132,6 +132,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	timer_set_clock(TIMER_SYSTEM, TIMER_CLK_SRC_26M);
 	sys_high = TIMER_CLOCK_MHZ - 1;
 	timer_set_reset_value(TIMER_SYSTEM, 0xffffffff);
+	timer_set_reset_value(TIMER_SYSTEM, 0x7bfa480); /* 5 seconds */
 	task_enable_irq(SCP_IRQ_TIMER(TIMER_SYSTEM));
 	timer_enable(TIMER_SYSTEM);
 
@@ -182,6 +183,10 @@ void __hw_clock_event_set(uint32_t deadline)
 		timer_reload_event_high();
 }
 
+#include "cpu.h"
+#include "console.h"
+#include "csr.h"
+#include "timer.h"
 static void irq_group6_handler(void)
 {
 	extern volatile int ec_int;
@@ -198,6 +203,12 @@ static void irq_group6_handler(void)
 		}
 		break;
 	case SCP_IRQ_TIMER(TIMER_SYSTEM):
+		while (get_mcause() == 0xb && !timer_is_irq(TIMER_SYSTEM)) {
+			ccprints("wait!");
+			cflush();
+			udelay(1000000); /* 1 second */
+		}
+
 		/* If this is a hardware irq, check overflow */
 		if (!in_soft_interrupt_context()) {
 			timer_ack_irq(TIMER_SYSTEM);
