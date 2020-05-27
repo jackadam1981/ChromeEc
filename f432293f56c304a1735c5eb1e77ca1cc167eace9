@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "984c6232_99a8b22e",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-05-27T16:31:11Z",
+      "side": 1,
+      "message": "We should understand the constraints and needs of the verify_and_jump().",
+      "range": {
+        "startLine": 321,
+        "startChar": 45,
+        "endLine": 322,
+        "endChar": 14
+      },
+      "revId": "f432293f56c304a1735c5eb1e77ca1cc167eace9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa197f8_c86f5d9f",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2020-05-27T16:31:11Z",
+      "side": 1,
+      "message": "This comment needs more information. WE have NO_BOOT and \u0027spoofed\u0027 in there with not a lot of context.",
+      "revId": "f432293f56c304a1735c5eb1e77ca1cc167eace9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
