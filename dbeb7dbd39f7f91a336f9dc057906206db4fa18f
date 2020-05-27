@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efd88c8d_f52f493d",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:50Z",
+      "side": 1,
+      "message": "this will be called right before INT_AP_L assertion in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2202839/6.",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 47
+      },
+      "revId": "dbeb7dbd39f7f91a336f9dc057906206db4fa18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f084e7_ef12d127",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:50Z",
+      "side": 1,
+      "message": "Moving this to chip/g/i2cs.c, where the paring function is implemented in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2202839/6.",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 0
+      },
+      "revId": "dbeb7dbd39f7f91a336f9dc057906206db4fa18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1d6e3a0_91e18210",
+        "filename": "include/i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T06:06:50Z",
+      "side": 1,
+      "message": "Moving it to chip/g/i2cs.h.",
+      "range": {
+        "startLine": 521,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 0
+      },
+      "revId": "dbeb7dbd39f7f91a336f9dc057906206db4fa18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
