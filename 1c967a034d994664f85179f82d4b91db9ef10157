@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88efbc0f_2e534f92",
+        "filename": "driver/bc12/max14637.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-27T15:52:13Z",
+      "side": 1,
+      "message": "this print should have a little more details, what does this mean? That bc1.2 was detected? Should we also include the results of is_chg_det_activated?",
+      "range": {
+        "startLine": 115,
+        "startChar": 10,
+        "endLine": 115,
+        "endChar": 19
+      },
+      "revId": "1c967a034d994664f85179f82d4b91db9ef10157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
