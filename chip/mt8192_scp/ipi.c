@@ -163,6 +163,7 @@ static void ipi_handler(void)
 	}
 
 	CPRINTS("IPI %d", ipi_recv_buf->id);
+	cflush();
 
 	ipi_handler_table[ipi_recv_buf->id](
 		ipi_recv_buf->id, ipi_recv_buf->buffer, ipi_recv_buf->len);
