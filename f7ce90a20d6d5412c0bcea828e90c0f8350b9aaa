@@ -72,6 +72,54 @@
     },
     {
       "key": {
+        "uuid": "9602cf34_1d5723e0",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T16:57:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f8e6448d_3e723609",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc95254a_e503a7d6",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T16:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e981996c_b6b02ad1",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 35
+      },
+      "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c66bd36a_8744bc1a",
         "filename": "driver/tcpm/tusb422.c",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c970fa60_f4929b5b",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T16:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c66bd36a_8744bc1a",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 20
+      },
+      "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +210,30 @@
       "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71ef547d_f751022a",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T16:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa0edf0d_d2d4d537",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 65
+      },
+      "revId": "f7ce90a20d6d5412c0bcea828e90c0f8350b9aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
