@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b6ed3c6b_c7fa0d25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-27T20:12:18Z",
+      "side": 1,
+      "message": "Correct setting USB4 cable speed",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "4ec4c06063fb6e9161addc80c686ee1e16f7fab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ad788f0_2c85f084",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 4
