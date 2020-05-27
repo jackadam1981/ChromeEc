@@ -2187,6 +2187,12 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 		pd_set_power_supply_ready(port);
 
 		/*
+		 * Now our cc Rp is connection with cc Rd of partner, then
+		 * enable TCPC detect plug in and TCPC will trigger PD_EVENT_CC
+		 * immediately. The cc state variables will be updated.
+		 */
+		tcpm_plug_in_out_isr_enable(port, 1);
+		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
 		 * data role / usb mux connections.
 		 */

@@ -332,6 +332,14 @@ struct tcpm_drv {
 	 * @param enable FRS enable (true) disable (false)
 	 */
 	 void (*set_frs_enable)(int port, int enable);
+
+	/**
+	 * Enable/Disable TCPC plug in/out interrupt detection
+	 *
+	 * @param port Type-C port number
+	 * @param enable interrupt detection enable (true) disable (false)
+	 */
+	 void (*plug_in_out_isr_enable)(int port, int enable);
 };
 
 /*
