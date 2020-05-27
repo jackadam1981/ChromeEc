@@ -122,7 +122,7 @@ __override const struct rt946x_init_setting *board_rt946x_init_setting(void)
 		.ircmp_vclamp = 32,
 		.ircmp_res = 25,
 		.boost_voltage = 5050,
-		.boost_current = 1500,
+		.boost_current = 3000,
 	};
 
 	return &battery_init_setting;
