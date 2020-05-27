@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4298ead_e2a8f9dd",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-27T20:17:00Z",
+      "side": 1,
+      "message": "this is correct however below statement is more readbale \n(dev_resp.intel_spec_b0 \u003d\u003d VENDOR_SPECIFIC_SUPPORT ||\ndev_resp.vendor_spec_b1 \u003d\u003d VENDOR_SPECIFIC_SUPPORT)\n\nQQ:\ndev_resp.vendor_spec_b0 not needed?",
+      "range": {
+        "startLine": 206,
+        "startChar": 6,
+        "endLine": 207,
+        "endChar": 30
+      },
+      "revId": "5dfe63e6b04b14f2f3df7f0c9979cef8792be84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
