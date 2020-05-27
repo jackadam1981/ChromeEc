@@ -22,6 +22,30 @@
       "revId": "834bbdff3c710c508a4a20ecae56451f3b045c55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a506d37_be8886cf",
+        "filename": "include/usb_pe_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-27T22:17:25Z",
+      "side": 1,
+      "message": "Yeesh.",
+      "parentUuid": "a23ec895_1d31b50f",
+      "range": {
+        "startLine": 39,
+        "startChar": 39,
+        "endLine": 39,
+        "endChar": 41
+      },
+      "revId": "834bbdff3c710c508a4a20ecae56451f3b045c55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
