@@ -22,6 +22,30 @@
       "revId": "faf7d00394cc8f3dd117ab07cff3477d4a7322cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9517ba6_7ebad0cb",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-27T20:17:36Z",
+      "side": 1,
+      "message": "(I2CS|SPS) CS assertion interrupt should be disabled at two time points:\n1. When I2CS|SPS CS is asserted.\n2. When INT_AP_L is de-asserted.\n\nFor the second case, I have been kept CS assertion disabling in int_ap_extension.c.\nInstead, patchset#25 disables CS assertion for the case 2. When CS gets asserted later, it attempts to deassert INT_AP_L. If it finds INT_AP_L already deasserted, then it does nothing but return.",
+      "parentUuid": "5aafe685_897782ca",
+      "range": {
+        "startLine": 387,
+        "startChar": 1,
+        "endLine": 388,
+        "endChar": 80
+      },
+      "revId": "faf7d00394cc8f3dd117ab07cff3477d4a7322cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
