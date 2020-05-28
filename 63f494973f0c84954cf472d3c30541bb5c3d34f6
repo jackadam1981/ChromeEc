@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c8a6cf7a_68f4156a",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-05-28T10:46:30Z",
+      "side": 1,
+      "message": "1. Oh! We should not put these codes in common codes of octopus here because it will impact all other board variants.\n2. We can do this instead\n    - keep this file the same so the default PPC is still nx20p348x and not impact other boards.\n    - Move ppc_syv682x variable and setup_ppc function into bobba/board.c and the comment in line 115 can be still applied.",
+      "parentUuid": "39a3fcbd_53445879",
+      "revId": "63f494973f0c84954cf472d3c30541bb5c3d34f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47af88b1_ac7f07f9",
         "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
         "patchSetId": 5
