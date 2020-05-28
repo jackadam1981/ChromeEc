@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65b934e6_be17fc61",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T03:38:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b46e94f_031b0782",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 3
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bc2eeed_66ce3265",
         "filename": "board/cr50/board.h",
         "patchSetId": 29
@@ -45,6 +69,30 @@
       "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc4d506c_41d41334",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T03:38:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bc2eeed_66ce3265",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 33
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ff21b6ee_2cda3799",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T03:38:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf44254_7a9d5f41",
+      "range": {
+        "startLine": 43,
+        "startChar": 69,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07351f5e_7f0d58bc",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 29
@@ -91,6 +163,30 @@
       "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2c5b066_551d976c",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T03:38:06Z",
+      "side": 1,
+      "message": "replaced deassert_int_ap() call as suggested.",
+      "parentUuid": "07351f5e_7f0d58bc",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 26
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d34c7fdb_e675b07d",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T03:38:06Z",
+      "side": 1,
+      "message": "Removed it. GC_IRQNUM_TIMEHS0_TIMINT1 shall be kept enabled. It shouldn\u0027t affect sleep behaviors.",
+      "parentUuid": "5de31391_72f5d53b",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 17
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa132919_b2ca320f",
         "filename": "board/cr50/int_ap_extension.c",
         "patchSetId": 29
@@ -137,6 +257,30 @@
       "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b562576_2f8f88c3",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T03:38:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa132919_b2ca320f",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 19
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "6e563f13_bcf648d6",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T03:38:06Z",
+      "side": 1,
+      "message": "This is the ToT code, not belonging to this patch.",
+      "parentUuid": "158a7e85_815f6b17",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 21
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cc6a806_466d197f",
         "filename": "chip/g/sps.c",
         "patchSetId": 29
@@ -183,6 +351,30 @@
       "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5e23921_e48e5805",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T03:38:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc6a806_466d197f",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 26
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
