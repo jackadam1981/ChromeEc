@@ -22,6 +22,30 @@
       "revId": "475926e82d85705a20193f2d4e7d802be839d4a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88a0c13f_d5b220b0",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1979,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-28T22:38:42Z",
+      "side": 1,
+      "message": "As I understand, it is one of the paths that causes the issue to be seen.",
+      "parentUuid": "5d9c2a91_7162aec4",
+      "range": {
+        "startLine": 1979,
+        "startChar": 4,
+        "endLine": 1979,
+        "endChar": 42
+      },
+      "revId": "475926e82d85705a20193f2d4e7d802be839d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
