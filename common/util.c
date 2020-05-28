@@ -282,6 +282,7 @@ int safe_memcmp(const void *s1, const void *s2, size_t size)
 	return result != 0;
 }
 
+#ifndef TEST_FUZZ
 __stdlib_compat void *memcpy(void *dest, const void *src, size_t len)
 {
 	char *d = (char *)dest;
@@ -324,8 +325,10 @@ __stdlib_compat void *memcpy(void *dest, const void *src, size_t len)
 
 	return dest;
 }
+#endif /* TEST_FUZZ */
 
 
+#ifndef TEST_FUZZ
 __stdlib_compat __visible void *memset(void *dest, int c, size_t len)
 {
 	char *d = (char *)dest;
@@ -362,8 +365,10 @@ __stdlib_compat __visible void *memset(void *dest, int c, size_t len)
 
 	return dest;
 }
+#endif /* TEST_FUZZ */
 
 
+#ifndef TEST_FUZZ
 __stdlib_compat void *memmove(void *dest, const void *src, size_t len)
 {
 	if ((uintptr_t)dest <= (uintptr_t)src ||
@@ -414,6 +419,7 @@ __stdlib_compat void *memmove(void *dest, const void *src, size_t len)
 		return dest;
 	}
 }
+#endif /* TEST_FUZZ */
 
 
 __stdlib_compat void *memchr(const void *buffer, int c, size_t n)
