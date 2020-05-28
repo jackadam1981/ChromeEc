@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91222ca8_d470342d",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-28T21:30:45Z",
+      "side": 1,
+      "message": "I really like your use of const! We don\u0027t do it enough 😊",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 6
+      },
+      "revId": "f23b6c9d2a0f49c01c0b852114e559634ddb8413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fe4180f_01a90704",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-28T21:30:45Z",
+      "side": 1,
+      "message": "nit: can be replaced with\n__fls(rw_start_address \u0026 -rw_start_address);",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 59
+      },
+      "revId": "f23b6c9d2a0f49c01c0b852114e559634ddb8413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64aba0dc_19ff97fd",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-28T21:30:45Z",
+      "side": 1,
+      "message": "what happens if 2 regions aren\u0027t enough?\n\ne.g. CONFIG_MAPPED_STORAGE_BASE + CONFIG_RW_MEM_OFF \u003d\u003d 0x8000020 or something that had a small alignment\n\nI am sure that doesn\u0027t happen today, but what about in the future; what should happen here and how should it fail or handle it?",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 72
+      },
+      "revId": "f23b6c9d2a0f49c01c0b852114e559634ddb8413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ebb5681_2effa7d7",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-28T21:30:45Z",
+      "side": 1,
+      "message": "should we not call this if second_region_size \u003d\u003d 0?",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 23
+      },
+      "revId": "f23b6c9d2a0f49c01c0b852114e559634ddb8413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
