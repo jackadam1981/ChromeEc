@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ec1f4abe_4d3a605b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-28T21:17:31Z",
+      "side": 1,
+      "message": "Yes, you are correct.",
+      "parentUuid": "46b3ffa4_5c4037f3",
+      "range": {
+        "startLine": 563,
+        "startChar": 1,
+        "endLine": 563,
+        "endChar": 27
+      },
+      "revId": "aeeb9b73b3f229a509e8c6a2d46d8ed91797154f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cf0d2a7_29064b32",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
@@ -88,6 +112,52 @@
         "startChar": 3,
         "endLine": 1100,
         "endChar": 33
+      },
+      "revId": "aeeb9b73b3f229a509e8c6a2d46d8ed91797154f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7de29e5_9ae5920f",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-28T21:17:31Z",
+      "side": 1,
+      "message": "Replace with:\nRCH_SET_FLAG(port, PRL_FLAGS_MSG_RECEIVED);\n/* Clear extended message objects */\nTCH_CLR_FLAG(port, PRL_FLAGS_MSG_XMIT);\npdmsg[port].data_objs \u003d 0;\n\nFrom the spec, the extended message buffers should be cleared in this state.",
+      "range": {
+        "startLine": 1826,
+        "startChar": 1,
+        "endLine": 1826,
+        "endChar": 44
+      },
+      "revId": "aeeb9b73b3f229a509e8c6a2d46d8ed91797154f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad929ebe_4264f5ce",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-28T21:17:31Z",
+      "side": 1,
+      "message": "Replace with:\n\n(tch_get_state(port) !\u003d TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE \u0026\u0026\n\ttch_get_state(port) !\u003d TCH_WAIT_FOR_TRANSMISSION_COMPLETE) ||\n        TCH_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT)\n\nThis handles the case where a message has been queued for sending but a message is received before tch_wait_for_message_request_from_pe has been run.",
+      "range": {
+        "startLine": 1963,
+        "startChar": 11,
+        "endLine": 1966,
+        "endChar": 38
       },
       "revId": "aeeb9b73b3f229a509e8c6a2d46d8ed91797154f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
