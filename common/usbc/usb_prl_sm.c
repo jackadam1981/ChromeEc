@@ -1058,6 +1058,9 @@ static void prl_tx_src_pending_run(const int port)
 		 * SinkTxTimer timeout
 		 */
 		else {
+			if (IS_ENABLED(CONFIG_USB_PD_REV30))
+				prl_copy_msg_to_buffer(port);
+
 			prl_tx_construct_message(port);
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 		}
@@ -1093,6 +1096,9 @@ static void prl_tx_snk_pending_run(const int port)
 		 * Rp = SinkTxOk
 		 */
 		else {
+			if (IS_ENABLED(CONFIG_USB_PD_REV30))
+				prl_copy_msg_to_buffer(port);
+
 			prl_tx_construct_message(port);
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 		}
