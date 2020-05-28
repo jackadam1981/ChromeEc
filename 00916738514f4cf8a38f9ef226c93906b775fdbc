@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0824a08_4045ae31",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-05-28T21:19:40Z",
+      "side": 1,
+      "message": "Can you add this in a separate CL, so it\u0027s easy to disable AP_RO verification?",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 33
+      },
+      "revId": "00916738514f4cf8a38f9ef226c93906b775fdbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
