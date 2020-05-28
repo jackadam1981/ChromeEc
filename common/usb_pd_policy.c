@@ -237,7 +237,7 @@ uint32_t get_enter_usb_msg_payload(int port)
 	eudo.mode = USB_PD_40;
 	eudo.usb4_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB4);
 	eudo.usb3_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB32);
-	eudo.cable_speed = get_usb4_cable_speed(port);
+	eudo.cable_speed = board_get_max_usb_tbt_speed(port);
 
 	if ((cable[port].rev == PD_REV30) &&
 	    (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)) {
@@ -349,28 +349,6 @@ static inline void disable_usb4_mode(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_USB4))
 		cable[port].flags &= ~CABLE_FLAGS_USB4_CAPABLE;
-}
-
-/*
- * For Cable rev 3.0: USB4 cable speed is set according to speed supported by
- * the port and the response received from the cable, whichever is least.
- *
- * For Cable rev 2.0: Since board_is_tbt_usb4_port() should not enabled if the
- * port supports speed less than USB_R20_SS_U31_GEN1_GEN2, USB4 cable speed is
- * set according to the cable response.
- */
-static void set_max_usb4_cable_speed(int port)
-{
-	/*
-	 * Converting Thunderbolt-Compatible board speed to equivalent USB4
-	 * speed.
-	 */
-	enum usb_rev30_ss max_usb4_speed =
-			board_get_max_tbt_speed(port) == TBT_SS_TBT_GEN3 ?
-			USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
-
-	if (max_usb4_speed < cable[port].attr.p_rev30.ss)
-		cable[port].attr.p_rev30.ss = max_usb4_speed;
 }
 
 /*
