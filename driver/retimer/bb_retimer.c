@@ -235,7 +235,7 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		 * 10..11b - Reserved
 		 */
 		*set_retimer_con |= BB_RETIMER_USB4_TBT_CABLE_SPEED_SUPPORT(
-					get_usb4_cable_speed(port));
+					board_get_max_usb_tbt_speed(port));
 	}
 }
 

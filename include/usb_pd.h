@@ -1969,8 +1969,24 @@ enum idh_ptype get_usb_pd_cable_type(int port);
  */
 void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
 					uint16_t head);
+
+/*
+ * Overrides USB4 cable speed based on board design.
+ *
+ * For Cable rev 3.0: USB4 cable speed is set according to speed supported by
+ * the port and the response received from the cable, whichever is least.
+ *
+ * For Cable rev 2.0: Since board_is_tbt_usb4_port() should not enabled if the
+ * port supports speed less than USB_R20_SS_U31_GEN1_GEN2, USB4 cable speed is
+ * set according to the cable response.
+ *
+ * @param port      USB-C port number
+ */
+void set_max_usb4_cable_speed(int port);
+
 /**
- * Returns USB4 cable speed.
+ * Returns USB4 cable speed according to the port, if port supports lesser
+ * USB4 cable speed than the cable.
  *
  * For USB4 cable speed = USB3.2 Gen 2:
  *                              |
@@ -1991,7 +2007,7 @@ void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
  * @param port      USB-C port number
  * @return          USB4 cable speed
  */
-enum usb_rev30_ss get_usb4_cable_speed(int port);
+enum usb_rev30_ss board_get_max_usb_tbt_speed(int port);
 
 /**
  * Return enter USB message payload
