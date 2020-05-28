@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "89189fab_2a4d520a",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-28T22:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe4180f_01a90704",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 59
+      },
+      "revId": "f23b6c9d2a0f49c01c0b852114e559634ddb8413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64aba0dc_19ff97fd",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 5
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "90e6fae3_a593e9aa",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-28T22:56:50Z",
+      "side": 1,
+      "message": "In that case we would try to cover whatever is left in the second region. The second call to mpu_config_region at the end of this function will try subregions on the second region if necessary. That\u0027s our best effort: if subregions on the second region don\u0027t work then it\u0027s impossible to do it with 2 regions, we will get -EC_ERROR_INVAL. Since we don\u0027t want to use a third region, this is \"what should happen\".\n\nI updated the comment.",
+      "parentUuid": "64aba0dc_19ff97fd",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 72
+      },
+      "revId": "f23b6c9d2a0f49c01c0b852114e559634ddb8413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ebb5681_2effa7d7",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 5
@@ -91,6 +139,30 @@
       "revId": "f23b6c9d2a0f49c01c0b852114e559634ddb8413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7ef81d_adecb94c",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-28T22:56:50Z",
+      "side": 1,
+      "message": "Yes, see the return above :)",
+      "parentUuid": "5ebb5681_2effa7d7",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 23
+      },
+      "revId": "f23b6c9d2a0f49c01c0b852114e559634ddb8413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
