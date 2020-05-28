@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c8b28bdf_dee35a87",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-28T04:45:20Z",
+      "side": 1,
+      "message": "As a personal philosophy, I generally think driver functions should have a \"mine is not to wonder why\" approach to life.  It\u0027s the duty of the higher layers to call them correctly.  But it\u0027s fine if we want to check here.",
+      "parentUuid": "c38c7875_254c867c",
+      "range": {
+        "startLine": 1005,
+        "startChar": 0,
+        "endLine": 1005,
+        "endChar": 62
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8442b10_7d679288",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 5
@@ -231,6 +255,52 @@
         "startChar": 1,
         "endLine": 1012,
         "endChar": 35
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8fae43e_75f08130",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-28T04:45:20Z",
+      "side": 1,
+      "message": "Is there value in passing up the i2c error return?  We seem to often do that in the driver functions, though I don\u0027t know that I can put my finger on a time when it was specifically helpful.",
+      "range": {
+        "startLine": 1034,
+        "startChar": 9,
+        "endLine": 1034,
+        "endChar": 25
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f062cb_6c882b71",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-28T04:45:20Z",
+      "side": 1,
+      "message": "Should it be okay that we\u0027re performing this step before setting the voltage and current on the secondary?",
+      "range": {
+        "startLine": 1037,
+        "startChar": 1,
+        "endLine": 1037,
+        "endChar": 70
       },
       "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

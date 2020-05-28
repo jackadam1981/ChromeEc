@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ea6a1f11_b723278a",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-28T04:45:20Z",
+      "side": 1,
+      "message": "Just checking, but the bug comments mentioned to set to \"a value that indicates over charging if reached\".  Is that what we\u0027re putting into the main charger currently?",
+      "parentUuid": "d721ede8_f952e087",
+      "range": {
+        "startLine": 982,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 47
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "635bcfc9_6670bc11",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 1
