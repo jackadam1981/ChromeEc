@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39a3fcbd_53445879",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-05-28T08:11:36Z",
+      "side": 1,
+      "message": "Could we assume nx20p348x is the default here? So we just need to assignment when PPC is not NXP?",
+      "revId": "63f494973f0c84954cf472d3c30541bb5c3d34f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47af88b1_ac7f07f9",
+        "filename": "baseboard/octopus/variant_usbc_standalone_tcpcs.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-05-28T08:11:36Z",
+      "side": 1,
+      "message": "could we just do \n\n    ppc_chips[USB_PD_PORT_TCPC_0] \u003d ppc_chips[USB_PD_PORT_TCPC_1] \u003d ppc_syv682x;",
+      "revId": "63f494973f0c84954cf472d3c30541bb5c3d34f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a8177e9_1af03b70",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-05-28T08:11:36Z",
+      "side": 1,
+      "message": "Considering we might have third PPC, we can introduce a function to wrap these codes so we don\u0027t need the duplication in line 85 as well?",
+      "revId": "63f494973f0c84954cf472d3c30541bb5c3d34f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea6b7aa7_7c01bbbe",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-05-28T08:11:36Z",
+      "side": 1,
+      "message": "Please refer to b/154772847#comment52 for the discussion of enabling two GPIOs at this time.",
+      "revId": "63f494973f0c84954cf472d3c30541bb5c3d34f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
