@@ -735,6 +735,30 @@
       "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32ddd8ef_48dea3f2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6547,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-28T21:13:27Z",
+      "side": 1,
+      "message": "Removing the host command from this CL.",
+      "parentUuid": "ffecfdff_d362ecd1",
+      "range": {
+        "startLine": 6544,
+        "startChar": 0,
+        "endLine": 6547,
+        "endChar": 19
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

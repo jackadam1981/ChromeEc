@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f8338e8e_f7b46262",
+        "filename": "common/usbc/usb_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-28T21:13:27Z",
+      "side": 1,
+      "message": "I\u0027m removing the host command from this CL entirely.",
+      "parentUuid": "22c05732_0919e2b2",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "6351f128c83ad479dfff578d2c9c2896ab003578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d1af7fe_f54307dc",
         "filename": "common/usbc/usb_dpm.c",
         "patchSetId": 3

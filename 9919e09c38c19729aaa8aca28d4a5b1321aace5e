@@ -401,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "c75b2bec_aecbdf3c",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-28T21:13:27Z",
+      "side": 1,
+      "message": "Ack. My intention is that this be an essentially non-functional change. In our OOB discussion of this general structure, I speculated that one mechanism for configuring different policies for different boards could be conditionally compiling different DPM files/functions/data structures.",
+      "parentUuid": "ab58abc3_e338ed34",
+      "range": {
+        "startLine": 89,
+        "startChar": 15,
+        "endLine": 89,
+        "endChar": 30
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "860aefc1_dc24cbbe",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 4
@@ -471,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "032cff88_90ef8eec",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-28T21:13:27Z",
+      "side": 1,
+      "message": "No longer used. I\u0027m punting the host command and associated synchronization to another CL.",
+      "parentUuid": "25c1bb68_a6c6284b",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 52
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1166270_3b92763c",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -491,6 +539,30 @@
       "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e83dfeaa_a18c3692",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-28T21:13:27Z",
+      "side": 1,
+      "message": "This confused me briefly, and I made a note for myself to fix it, but it\u0027s out of scope for now.",
+      "parentUuid": "d1166270_3b92763c",
+      "range": {
+        "startLine": 483,
+        "startChar": 4,
+        "endLine": 484,
+        "endChar": 61
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -565,6 +637,30 @@
     },
     {
       "key": {
+        "uuid": "b85050c9_3bdb248c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-28T21:13:27Z",
+      "side": 1,
+      "message": "Removing synchronization from this CL.",
+      "parentUuid": "13b16fbe_e8c0aad2",
+      "range": {
+        "startLine": 1005,
+        "startChar": 0,
+        "endLine": 1029,
+        "endChar": 27
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af6e70f_f3bc7549",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -612,6 +708,30 @@
     },
     {
       "key": {
+        "uuid": "aac8a886_9a6dc90c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-28T21:13:27Z",
+      "side": 1,
+      "message": "I\u0027m not seeing an Exit Mode when I shutdown either. That\u0027s also true for ToT and at the commit before I added SVID discovery. I guess this needs to be fixed, but I\u0027m removing synchronization from this CL. This function won\u0027t be any more broken than it was before.",
+      "parentUuid": "68d3a5c9_903563c7",
+      "range": {
+        "startLine": 1046,
+        "startChar": 4,
+        "endLine": 1055,
+        "endChar": 57
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7953cdea_3d843231",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -632,6 +752,30 @@
       "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c389f7_63bc0e71",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1410,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-28T21:13:27Z",
+      "side": 1,
+      "message": "My ultimate intention with these TODOs is to use tx_type and get rid of partner_type. I had envisioned including partner_type in the glorious deletion of PE_DO_PORT_DISCOVERY, along with vdm_cmd.",
+      "parentUuid": "7953cdea_3d843231",
+      "range": {
+        "startLine": 1410,
+        "startChar": 1,
+        "endLine": 1410,
+        "endChar": 30
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -776,6 +920,30 @@
     },
     {
       "key": {
+        "uuid": "173a0093_c2ee35d4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5059,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-28T21:13:27Z",
+      "side": 1,
+      "message": "If all the DPM is in charge of is mode management, then I would say that, in the long term, the AP should *be* the DPM, and the DPM module should be inert, with its basic DP functionality deactivated unless we\u0027re in recovery mode.\n\nIf we wanted to hew very close to the spec and make the PE basically unintelligent and hand those decisions off to the DPM, the DPM would still need to be doing stuff when the AP is driving, and it would probably make sense to have it also handle things like queuing and notifications.",
+      "parentUuid": "67008326_2b280e03",
+      "range": {
+        "startLine": 5039,
+        "startChar": 2,
+        "endLine": 5059,
+        "endChar": 9
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46e5d5f0_508b9088",
         "filename": "include/usb_pd.h",
         "patchSetId": 4
@@ -857,6 +1025,30 @@
       "side": 1,
       "message": "I believe v2 initially had a lot of things hiding behind the DFP config.  During the addition of the new discovery states, we opted to stop using the DFP config to gate behavior since we expect DRP systems to also be DFPs.  So I would guess the change is due to not hiding new code behind CONFIG_USB_PD_ALT_MODE_DFP",
       "parentUuid": "eaaa8bd5_266b14be",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 1
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a6e9215_73d26895",
+        "filename": "test/fake_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-28T21:13:27Z",
+      "side": 1,
+      "message": "Should I hide it?",
+      "parentUuid": "6dfa6670_2661c1f4",
       "range": {
         "startLine": 181,
         "startChar": 0,
