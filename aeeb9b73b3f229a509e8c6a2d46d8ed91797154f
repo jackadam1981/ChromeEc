@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "309d7e1c_f908ef71",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-28T20:39:16Z",
+      "side": 1,
+      "message": "That was my original implementation but noticed prl_send_data_msg calls prl_copy_msg_to_buffer and didn\u0027t know if this would get bypassed/overwritten in the prl_tx_[snk | src]_pending path or not.",
+      "parentUuid": "46b3ffa4_5c4037f3",
+      "range": {
+        "startLine": 563,
+        "startChar": 1,
+        "endLine": 563,
+        "endChar": 27
+      },
+      "revId": "aeeb9b73b3f229a509e8c6a2d46d8ed91797154f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cf0d2a7_29064b32",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
