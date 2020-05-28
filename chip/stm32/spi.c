@@ -665,7 +665,9 @@ static void spi_init(void)
 	STM32_RCC_APB2RSTR &= ~STM32_RCC_PB2_SPI1;
 
 	/* 40 MHz pin speed */
-	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xff00;
+	/* STM32_GPIO_OSPEEDR(GPIO_A) |= 0xff00; */
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xc0000000;
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xfc000fc0;
 
 	/* Enable clocks to SPI1 module */
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;

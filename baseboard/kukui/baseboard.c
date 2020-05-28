@@ -115,8 +115,8 @@ int board_get_version(void)
 static void baseboard_spi_init(void)
 {
 	/* Set SPI PA15,PB3/4/5/13/14/15 pins to high speed */
-	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xc0000000;
-	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xfc000fc0;
+	/* STM32_GPIO_OSPEEDR(GPIO_A) |= 0xc0000000;
+	 * STM32_GPIO_OSPEEDR(GPIO_B) |= 0xfc000fc0; */
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_spi_init, HOOK_PRIO_INIT_SPI + 1);
 
