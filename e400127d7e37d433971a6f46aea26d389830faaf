@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa81b093_dd2512f5",
+        "filename": "board/servo_v4p1/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-28T22:48:44Z",
+      "side": 1,
+      "message": "This is just \"DP_HPD\" if I read the correct schematic.",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "e400127d7e37d433971a6f46aea26d389830faaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d4d26f1_77bc02aa",
+        "filename": "test/scratchpad.tasklist",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-28T22:48:44Z",
+      "side": 1,
+      "message": "Not related?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "e400127d7e37d433971a6f46aea26d389830faaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

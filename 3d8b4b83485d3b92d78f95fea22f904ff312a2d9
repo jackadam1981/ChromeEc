@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "12803cd9_2c21e8b1",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-28T22:48:44Z",
+      "side": 1,
+      "message": "Don\u0027t have too much meaning that init_ioexpanders() initiates one value and then here overrides it to another value. Simply initiates it at the first place.",
+      "parentUuid": "c17e48ec_ef206b14",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 17
+      },
+      "revId": "3d8b4b83485d3b92d78f95fea22f904ff312a2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "adb0531e_c606958a",
         "filename": "board/servo_v4p1/board.h",
         "patchSetId": 8
@@ -507,6 +531,30 @@
       "side": 1,
       "message": "I think this is correct but I\u0027ll check with Mike.\nhttps://docs.google.com/spreadsheets/d/1_-sNB3lucdS8UcPcnkw8lId9AlG1dcXqUinSuF9gLZU/edit#gid\u003d1764022667",
       "parentUuid": "c1e6442b_21370da7",
+      "range": {
+        "startLine": 15,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "3d8b4b83485d3b92d78f95fea22f904ff312a2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7eb1e3e_a5eb0309",
+        "filename": "board/servo_v4p1/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-28T22:48:44Z",
+      "side": 1,
+      "message": "The spreadsheet has this change in the EVT page. Should be OK if this code only for Proto. Just a reminder that this will need update for EVT.",
+      "parentUuid": "07a33277_caa469bb",
       "range": {
         "startLine": 15,
         "startChar": 9,
