@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3f135bd_950ce3f2",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-28T22:10:49Z",
+      "side": 1,
+      "message": "This function needs a comment referencing Figure 5-1 from the type C spec.  You should specifically call out the case for USB4 with USB3.2 Gen2\n\nAlso, this function won\u0027t properly limit the cable speed if CONFIG_USB_PD_TBT_GEN3_CAPABLE isn\u0027t defined. That should probably be addressed in a separate bug.",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 873,
+        "endChar": 48
+      },
+      "revId": "66936ae1f3fe8634db65aac493d7a0ab4f5e0fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
