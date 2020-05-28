@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b46e94f_031b0782",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-28T02:16:39Z",
+      "side": 1,
+      "message": "does this comment not fit in  in one line?",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 3
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bc2eeed_66ce3265",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-28T02:16:39Z",
+      "side": 1,
+      "message": "I think these function names are misleading. One of them is enabling the extension, another one stops the pulse, if it is in progress.",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 33
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbf44254_7a9d5f41",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-28T02:16:39Z",
+      "side": 1,
+      "message": "is enabled.",
+      "range": {
+        "startLine": 43,
+        "startChar": 69,
+        "endLine": 43,
+        "endChar": 75
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07351f5e_7f0d58bc",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-28T02:16:39Z",
+      "side": 1,
+      "message": "this function could be called in non-interrupt context, but deassert_int_ap() expects to be called from within interrupts.",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 26
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de31391_72f5d53b",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-28T02:16:39Z",
+      "side": 1,
+      "message": "nobody is going to call task_enable_irq() again. int_ap_extension_start() and int_ap_extension_stop() are not symmetric, even though the names suggest so.",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 17
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa132919_b2ca320f",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-28T02:16:39Z",
+      "side": 1,
+      "message": "I think instead of calling deassert_int_ap() you should just clean up the stuff locally: stop timer, disable timer interrupts, set int_ap_asserted_  and assertion_delayed_  to false and deassert AP_INT_L",
+      "range": {
+        "startLine": 174,
+        "startChar": 1,
+        "endLine": 174,
+        "endChar": 19
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "158a7e85_815f6b17",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-28T02:16:39Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be enabled only in case pulse extension is active?",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 21
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc6a806_466d197f",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-28T02:16:39Z",
+      "side": 1,
+      "message": "int_ap_extension_start() should be called only once, when the AP requests it, or when it is detected that the appropriate long life register bit is set.\n\nint_ap_extension_start() is called by main() or when the TPM register is written.\n\nThen int_ap_extension_start() would call the callback, and all the callback should do is to save the Boolean state and enable the CS_ASSERT interrupt (as it is doing below).",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 26
+      },
+      "revId": "597701d7c430e346df0219d6c6a34db994718b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
