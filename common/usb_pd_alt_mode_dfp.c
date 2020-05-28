@@ -870,19 +870,34 @@ __overridable enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
  * ############################################################################
  */
 
-enum usb_rev30_ss get_usb4_cable_speed(int port)
+void set_max_usb4_cable_speed(int port)
 {
 	struct pd_cable *cable = pd_get_cable_attributes(port);
 
 	/*
-	 * TODO: Return USB4 cable speed for USB3.2 Gen 2 cables if DFP isn't
-	 * Gen 3 capable.
+	 * Converting Thunderbolt-Compatible board speed to equivalent USB4
+	 * speed.
 	 */
-	if ((cable->rev == PD_REV30) &&
-	    (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) &&
-	   ((cable->attr.p_rev30.ss != USB_R30_SS_U32_U40_GEN2) ||
-	    !IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE))) {
-		return cable->attr.p_rev30.ss;
+	enum usb_rev30_ss max_usb4_speed =
+			board_get_max_tbt_speed(port) == TBT_SS_TBT_GEN3 ?
+			USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
+
+	if (max_usb4_speed < cable->attr.p_rev30.ss)
+		cable->attr.p_rev30.ss = max_usb4_speed;
+}
+
+enum usb_rev30_ss board_get_max_usb_tbt_speed(int port)
+{
+	struct pd_cable *cable = pd_get_cable_attributes(port);
+
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE &&
+	    !IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE)) {
+		if (cable->rev == PD_REV30) {
+			set_max_usb4_cable_speed(port);
+			if (cable->attr.p_rev30.ss != USB_R30_SS_U32_U40_GEN2)
+				return cable->attr.p_rev30.ss;
+		}
+		return USB_R30_SS_U32_U40_GEN2;
 	}
 
 	/*
