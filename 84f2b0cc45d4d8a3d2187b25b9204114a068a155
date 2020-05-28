@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d9568ae_7ee9bf07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-28T19:23:46Z",
+      "side": 1,
+      "message": "how about removing this?",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "84f2b0cc45d4d8a3d2187b25b9204114a068a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a293540_9d2aeb0d",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-28T19:23:46Z",
+      "side": 1,
+      "message": "EDP back-light control defines",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 23
+      },
+      "revId": "84f2b0cc45d4d8a3d2187b25b9204114a068a155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
