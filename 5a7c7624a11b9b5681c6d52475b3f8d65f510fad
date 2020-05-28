@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be891394_fbeaedbd",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-05-28T17:12:38Z",
+      "side": 0,
+      "message": "Maybe unused if CONFIG_ACCEL_INTERRUPTS is not defined.\nAlso, even when CONFIG_ACCEL_INTERRUPTS, we need to cover the case the interrupt to the accelerometer is not connected to the EC, to save on GPIO pins.",
+      "revId": "5a7c7624a11b9b5681c6d52475b3f8d65f510fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
