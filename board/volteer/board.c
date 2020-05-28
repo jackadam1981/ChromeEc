@@ -14,6 +14,7 @@
 #include "driver/retimer/bb_retimer.h"
 #include "driver/sync.h"
 #include "extpower.h"
+#include "espi.h"
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
@@ -220,3 +221,81 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+static bool s0ix_suspend_pending;
+static int volteer_s0ix_level = 1;
+
+/* Called during S0 -> S0ix transition */
+static void volteer_chipset_suspend(void)
+{
+	CPRINTS("%s", __func__);
+	/* Disable eDP backlight */
+	gpio_set_level(GPIO_EC_EDP_BL_EN, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, volteer_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+/* Called during S3 -> S0 and S0ix -> S0 transition */
+static void volteer_chipset_resume(void)
+{
+	CPRINTS("%s", __func__);
+	s0ix_suspend_pending = false;
+	volteer_s0ix_level = 0;
+
+	/* Ensure eDP backlight is enabled */
+	gpio_set_level(GPIO_EC_EDP_BL_EN, 1);
+
+	/* Force update of cached power signals */
+	power_signal_interrupt(GPIO_PCH_SLP_S0_L);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, volteer_chipset_resume, HOOK_PRIO_DEFAULT);
+
+static void volteer_fake_slp_slp0ix(void)
+{
+	CPRINTS("Volteer: force S0ix");
+	volteer_s0ix_level = 0;
+
+	/* Force update of cached power signals */
+	power_signal_interrupt(GPIO_PCH_SLP_S0_L);
+}
+DECLARE_DEFERRED(volteer_fake_slp_slp0ix);
+
+__override void power_board_handle_host_sleep_event(
+		enum host_sleep_event state)
+{
+	if (state == HOST_SLEEP_EVENT_S0IX_SUSPEND) {
+		hook_call_deferred(&volteer_fake_slp_slp0ix_data, 10 * MSEC);
+		s0ix_suspend_pending = true;
+	} else {
+		volteer_s0ix_level = 1;
+		s0ix_suspend_pending = false;
+	}
+}
+
+__override int power_signal_get_level(enum gpio_signal signal)
+{
+	if (s0ix_suspend_pending && (signal == GPIO_PCH_SLP_S0_L))
+		return volteer_s0ix_level;
+
+	if (IS_ENABLED(CONFIG_HOSTCMD_ESPI)) {
+		/* Check signal is from GPIOs or VWs */
+		if (espi_signal_is_vw(signal))
+			return espi_vw_get_wire(signal);
+	}
+	return gpio_get_level(signal);
+
+}
+
+static int command_volteer(int argc, char **argv)
+{
+
+	/* Print the mask */
+	ccprintf("s0ix_suspend_pending: %d\n", s0ix_suspend_pending);
+	ccprintf("volteer_s0ix_level:   %d\n", volteer_s0ix_level);
+
+	return EC_SUCCESS;
+};
+DECLARE_CONSOLE_COMMAND(volteer, command_volteer,
+			NULL,
+			"Get Volteer power state variables");
+
+
