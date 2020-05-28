@@ -23,4 +23,10 @@ enum flash_rdp_level {
 
 bool is_flash_rdp_enabled(void);
 
+void unlock_flash_control_register(void);
+void unlock_flash_option_bytes(void);
+void lock_flash_control_register(void);
+bool flash_option_bytes_locked(void);
+bool flash_control_register_locked(void);
+
 #endif /* __CROS_EC_STM32_FLASH_F_H */
