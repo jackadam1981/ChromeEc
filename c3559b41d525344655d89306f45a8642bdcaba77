@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14b19755_d113b9cb",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-28T01:12:59Z",
+      "side": 1,
+      "message": "comments which fit into one line should not have separate header/footer lines.",
+      "revId": "c3559b41d525344655d89306f45a8642bdcaba77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19119c24_84748284",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-28T01:12:59Z",
+      "side": 1,
+      "message": "should the description and name mention that this does not disable the long pulse, but just stops the pulse in progress, if any.",
+      "range": {
+        "startLine": 395,
+        "startChar": 2,
+        "endLine": 395,
+        "endChar": 30
+      },
+      "revId": "c3559b41d525344655d89306f45a8642bdcaba77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
