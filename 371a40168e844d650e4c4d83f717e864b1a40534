@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d42a9b66_17dd2312",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T19:29:58Z",
+      "side": 1,
+      "message": "This wasn\u0027t enough, because sps_configure() clears SPS_ICTRL register.\nSPS_ICTRL_CS_ASSERT should be set here.",
+      "range": {
+        "startLine": 245,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 49
+      },
+      "revId": "371a40168e844d650e4c4d83f717e864b1a40534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6986c4e7_aff4c557",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T19:29:58Z",
+      "side": 1,
+      "message": "Just it is enough to call int_ap_extension_enable() because the callback function will be called there and it will set int_ap_extension_enabled_ true as in line 258.",
+      "range": {
+        "startLine": 285,
+        "startChar": 29,
+        "endLine": 285,
+        "endChar": 69
+      },
+      "revId": "371a40168e844d650e4c4d83f717e864b1a40534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
