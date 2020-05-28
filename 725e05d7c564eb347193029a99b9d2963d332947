@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71679adc_d71ab158",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-28T20:49:08Z",
+      "side": 1,
+      "message": "I guess, I put this too early. Undoing this.\nOnce it is confirmed, will make a separate patch later.",
+      "range": {
+        "startLine": 106,
+        "startChar": 27,
+        "endLine": 106,
+        "endChar": 80
+      },
+      "revId": "725e05d7c564eb347193029a99b9d2963d332947",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
