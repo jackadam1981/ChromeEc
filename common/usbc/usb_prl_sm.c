@@ -669,6 +669,16 @@ enum pd_rev_type prl_get_rev(int port, enum tcpm_transmit_type type)
 static void prl_copy_msg_to_buffer(int port)
 {
 	/*
+	 * Control Messages will have a length of 0 and
+	 * no need to spend time with the tx_chk_buf
+	 * for this path
+	 */
+	if (tx_emsg[port].len == 0) {
+		pdmsg[port].data_objs = 0;
+		return;
+	}
+
+	/*
 	 * Make sure the Policy Engine isn't sending
 	 * more than CHK_BUF_SIZE_BYTES. If so,
 	 * truncate len. This will surely send a
@@ -1058,6 +1068,9 @@ static void prl_tx_src_pending_run(const int port)
 		 * SinkTxTimer timeout
 		 */
 		else {
+			if (IS_ENABLED(CONFIG_USB_PD_REV30))
+				prl_copy_msg_to_buffer(port);
+
 			prl_tx_construct_message(port);
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 		}
@@ -1093,6 +1106,9 @@ static void prl_tx_snk_pending_run(const int port)
 		 * Rp = SinkTxOk
 		 */
 		else {
+			if (IS_ENABLED(CONFIG_USB_PD_REV30))
+				prl_copy_msg_to_buffer(port);
+
 			prl_tx_construct_message(port);
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 		}
