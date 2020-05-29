@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "4669f4b4_977bef30",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:29:56Z",
+      "side": 1,
+      "message": "this is a valid concern, but preventing changes to this register once it is written is also important, the Cr50 will have to be restarted (for instance by running gsctool) if the Cr50 image does not allow rebooting from the console.",
+      "parentUuid": "a8a7f7c1_a36d31bb",
+      "range": {
+        "startLine": 1789,
+        "startChar": 1,
+        "endLine": 1789,
+        "endChar": 20
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3cf32de_34072bc3",
         "filename": "board/cr50/board.h",
         "patchSetId": 11
@@ -213,6 +237,30 @@
       "side": 1,
       "message": "Will restore it, but line 88 won\u0027t be aligned with the others, which was commented earlier.\nMeanwhile, upload checker doesn\u0027t allow whitespaces but tabs only.",
       "parentUuid": "b8625ee0_e378571c",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b513572f_909dd26d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:29:56Z",
+      "side": 1,
+      "message": "you mean you can\u0027t add \u0027\u003ctab\u003e\u003cspace\u003e\u0027 any more? This is should not be a problem. In any case, please no unrelated changes.",
+      "parentUuid": "962593a3_d75ee4e0",
       "range": {
         "startLine": 80,
         "startChar": 0,
