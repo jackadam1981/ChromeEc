@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0595c270_97453fc1",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-29T16:20:36Z",
+      "side": 1,
+      "message": "should this go in the unlock_flash_option_bytes() function itself?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 17
+      },
+      "revId": "1017e03748e1e93216861cb93b6e3facef481832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
