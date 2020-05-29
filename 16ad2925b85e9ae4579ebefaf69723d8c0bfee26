@@ -46,6 +46,76 @@
       "revId": "16ad2925b85e9ae4579ebefaf69723d8c0bfee26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b58eafe0_d7489a79",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T04:51:26Z",
+      "side": 1,
+      "message": "yes, good point.",
+      "parentUuid": "2a708f24_0eda217d",
+      "range": {
+        "startLine": 119,
+        "startChar": 38,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "16ad2925b85e9ae4579ebefaf69723d8c0bfee26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab06462d_726e4322",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T04:51:26Z",
+      "side": 1,
+      "message": "so this function will be called even if AP_INT_L has been already deasserted. \n\nNow I see why you thought about having a callback to call when the pulse is finished.",
+      "range": {
+        "startLine": 224,
+        "startChar": 5,
+        "endLine": 224,
+        "endChar": 17
+      },
+      "revId": "16ad2925b85e9ae4579ebefaf69723d8c0bfee26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b654ddef_7e1dcff8",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T04:51:26Z",
+      "side": 1,
+      "message": "we will have to discuss this - I am not sure why this prioriy was picked for this, worst case the we\u0027ll have another registration init function on a different priority.",
+      "range": {
+        "startLine": 266,
+        "startChar": 42,
+        "endLine": 266,
+        "endChar": 56
+      },
+      "revId": "16ad2925b85e9ae4579ebefaf69723d8c0bfee26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
