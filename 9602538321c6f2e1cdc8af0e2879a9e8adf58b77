@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "321410ff_93b6f6f5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T22:45:29Z",
+      "side": 1,
+      "message": "you shouldn\u0027t need this any more, stdbool.h comes from util.h",
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b073f9_3c4e7d50",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T22:45:29Z",
+      "side": 1,
+      "message": "adding this variable to this section will make sure that is is cleared each time TPM is reset, I don\u0027t think we want this, this register should be written once per H1 reboot.",
+      "range": {
+        "startLine": 1789,
+        "startChar": 1,
+        "endLine": 1789,
+        "endChar": 20
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3cf32de_34072bc3",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T22:45:29Z",
+      "side": 1,
+      "message": "comments which fit into a single line do not need wrapping lines.",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 4
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0097c08_a6030b88",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T22:45:29Z",
+      "side": 1,
+      "message": "How about BOARD_CFG_LOCKED_BIT for a name.",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 26
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8625ee0_e378571c",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T22:45:29Z",
+      "side": 1,
+      "message": "please restore these lines.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
