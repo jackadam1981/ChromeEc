@@ -310,6 +310,30 @@
       "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3654157a_a2a20ac1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4187,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-29T21:22:20Z",
+      "side": 1,
+      "message": "Circling back from bug discussion.  This CL will cover the spec-codified reason to downgrade.  I\u0027ll post a second to cover the additional suggestion to down-rev with no GoodCRC",
+      "parentUuid": "59a9a0fc_969f5fe4",
+      "range": {
+        "startLine": 4185,
+        "startChar": 1,
+        "endLine": 4187,
+        "endChar": 0
+      },
+      "revId": "1f139d55152a79671ffceb34b6e86e88a7c0bb8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
