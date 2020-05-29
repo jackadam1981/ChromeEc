@@ -69,6 +69,30 @@
       "revId": "3843acf25c610d121cefbce9db7bc377d2d61575",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c377aa_d506c093",
+        "filename": "chip/stm32/flash-f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-29T17:32:22Z",
+      "side": 1,
+      "message": "SG.\n\nI do think comment here around when unlock should work and if you should disabled bus_fault monitoring or not\n\n(these changes can be made in follow up CLs if you need to land these CLs now though)",
+      "parentUuid": "c171fa46_e281f169",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "3843acf25c610d121cefbce9db7bc377d2d61575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
