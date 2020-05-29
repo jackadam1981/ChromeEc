@@ -16,6 +16,24 @@
       "revId": "27720288156943560fa7badcab0c844c8119d7ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6580ce5d_42fe2d45",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-05-29T04:21:46Z",
+      "side": 1,
+      "message": "It\u0027s one of the bits of the register - the pattern of the defines is that the\nregister is defined using the address, followed by defines that specify the use of the bits\nin that register. It\u0027s useful documentation.",
+      "parentUuid": "df59753f_0aea2010",
+      "revId": "27720288156943560fa7badcab0c844c8119d7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
