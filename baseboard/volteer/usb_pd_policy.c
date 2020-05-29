@@ -17,8 +17,11 @@
 
 int pd_check_vconn_swap(int port)
 {
-	/* Only allow vconn swap if pp5000_A rail is enabled */
-	return gpio_get_level(GPIO_EN_PP5000_A);
+	/*
+	 * For testing with Gatkex board, prevent UFP partner from claiming
+	 * VCONN
+	 */
+	return 0;
 }
 
 void pd_power_supply_reset(int port)
