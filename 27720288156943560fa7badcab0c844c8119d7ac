@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df59753f_0aea2010",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-05-29T03:52:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be used and it aliases HPD_DEGLITCH_H?",
+      "revId": "27720288156943560fa7badcab0c844c8119d7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
