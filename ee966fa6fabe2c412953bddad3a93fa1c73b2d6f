@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "73dbbd17_62f9f1a4",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-29T17:49:51Z",
+      "side": 1,
+      "message": "Keith mentioned in another CL we may not do DRD for USB4 \u0026 TBT.\nCan you add a separate config CONFIG_USB_PD_USB4_DRD?",
+      "range": {
+        "startLine": 938,
+        "startChar": 21,
+        "endLine": 938,
+        "endChar": 52
+      },
+      "revId": "ee966fa6fabe2c412953bddad3a93fa1c73b2d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a3ac7e8_89da41ce",
         "filename": "include/usb_pd.h",
         "patchSetId": 9
