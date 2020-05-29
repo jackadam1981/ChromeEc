@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5da46e3_fd6dc891",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-29T14:58:23Z",
+      "side": 1,
+      "message": "nit: let\u0027s only use uint8_t",
+      "range": {
+        "startLine": 466,
+        "startChar": 1,
+        "endLine": 466,
+        "endChar": 8
+      },
+      "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67259ace_bcb45b5e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-29T14:58:23Z",
+      "side": 1,
+      "message": "Can we document on this defintion that the alt_opos varaible needs to be set properly.\n\nAlso, is this something that could be looked up again with pd_alt_mode(port, USB_SID_DISPLAYPORT) in the common_src_snk_dpm_requests function instead of passing it around?",
+      "range": {
+        "startLine": 1025,
+        "startChar": 23,
+        "endLine": 1025,
+        "endChar": 47
+      },
+      "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
