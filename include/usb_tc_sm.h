@@ -180,8 +180,9 @@ void tc_request_power_swap(int port);
  * This function is called from the Policy Engine.
  *
  * @param port USB_C port number
+ * @param success swap completed normally
  */
-void tc_pr_swap_complete(int port);
+void tc_pr_swap_complete(int port, bool success);
 
 /**
  * Informs the Type-C State Machine that a Discover Identity is in progress.
@@ -313,6 +314,13 @@ void tc_set_debug_level(enum debug_level level);
  * @param port USB-C port number
  */
 void tc_start_error_recovery(int port);
+
+/**
+ * End error recovery
+ *
+ * @param port USB-C port number
+ */
+void tc_end_error_recovery(int port);
 
 /**
  * Hard Reset the TypeC port
