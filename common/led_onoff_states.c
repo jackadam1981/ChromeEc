@@ -31,6 +31,10 @@ static enum led_states led_get_state(void)
 			new_state = STATE_CHARGING_LVL_1;
 		else if (charge_lvl < led_charge_lvl_2)
 			new_state = STATE_CHARGING_LVL_2;
+		else if (charge_lvl < led_charge_lvl_3)
+			new_state = STATE_CHARGING_LVL_3;
+		else if (charge_lvl <= led_charge_lvl_4)
+			new_state = STATE_CHARGING_LVL_4;
 		else
 			if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 				new_state = STATE_CHARGING_FULL_S5;
@@ -49,12 +53,18 @@ static enum led_states led_get_state(void)
 	case PWR_STATE_DISCHARGE /* and PWR_STATE_DISCHARGE_FULL */:
 		if (chipset_in_state(CHIPSET_STATE_ON)) {
 #ifdef CONFIG_LED_ONOFF_STATES_BAT_LOW
-			if (charge_get_percent() <
-				CONFIG_LED_ONOFF_STATES_BAT_LOW)
-				new_state = STATE_DISCHARGE_S0_BAT_LOW;
+			/* Get percent charge */
+			charge_lvl = charge_get_percent();
+			/* Determine which charge state to use */
+			if (charge_lvl < led_charge_lvl_1)
+				new_state = STATE_CHARGING_LVL_1;
+			else if (charge_lvl < led_charge_lvl_2)
+				new_state = STATE_CHARGING_LVL_2;
+			else if (charge_lvl < led_charge_lvl_3)
+				new_state = STATE_CHARGING_LVL_3;
 			else
 #endif
-				new_state = STATE_DISCHARGE_S0;
+				new_state = STATE_CHARGING_LVL_4;
 		} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
 			new_state = STATE_DISCHARGE_S3;
 		else

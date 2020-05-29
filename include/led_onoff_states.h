@@ -26,8 +26,10 @@ enum led_phase {
 
 /*
  * STATE_CHARGING_LVL_1 is when 0 <= charge_percentage < led_charge_level_1
- * STATE_CHARGING_LVL_2 is when led_charge_level_1 <=
- * charge_percentage < led_charge_level_2.
+ * STATE_CHARGING_LVL_2 is when 11 <= charge_percentage < led_charge_level_2
+ * STATE_CHARGING_LVL_3 is when 31 <= charge_percentage < led_charge_level_3
+ * STATE_CHARGING_LVL_4 is when 51 <= charge_percentage < led_charge_level_4
+ * charge_percentage < led_charge_level_4.
  * STATE_CHARGING_FULL_CHARGE is when
  * led_charge_level_2 <= charge_percentage < 100.
  *
@@ -37,6 +39,8 @@ enum led_phase {
 enum led_states {
 	STATE_CHARGING_LVL_1,
 	STATE_CHARGING_LVL_2,
+	STATE_CHARGING_LVL_3,
+	STATE_CHARGING_LVL_4,
 	STATE_CHARGING_FULL_CHARGE,
 	STATE_CHARGING_FULL_S5,
 	STATE_DISCHARGE_S0,
@@ -63,6 +67,12 @@ extern const int led_charge_lvl_1;
 
 /* Charging LED state level 2 - defined in board's led.c */
 extern const int led_charge_lvl_2;
+
+/* Charging LED state level 3 - defined in board's led.c */
+extern const int led_charge_lvl_3;
+
+/* Charging LED state level 4 - defined in board's led.c */
+extern const int led_charge_lvl_4;
 
 #ifdef CONFIG_LED_POWER_LED
 enum pwr_led_states {
