@@ -1406,9 +1406,10 @@ static void handle_new_power_state(int port)
 	if (IS_ENABLED(CONFIG_POWER_COMMON) &&
 	    IS_ENABLED(CONFIG_USB_PE_SM)) {
 		if (chipset_in_or_transitioning_to_state(
-					CHIPSET_STATE_ANY_OFF)) {
+					CHIPSET_STATE_ANY_OFF |
+					CHIPSET_STATE_ANY_SUSPEND)) {
 			/*
-			 * The SoC will negotiated DP mode again when it
+			 * The SoC will negotiate DP mode again when it
 			 * boots up
 			 */
 			pe_exit_dp_mode(port);
