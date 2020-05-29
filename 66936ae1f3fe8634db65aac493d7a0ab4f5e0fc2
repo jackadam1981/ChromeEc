@@ -22,6 +22,30 @@
       "revId": "66936ae1f3fe8634db65aac493d7a0ab4f5e0fc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4885de36_7698c9e1",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-29T00:16:55Z",
+      "side": 1,
+      "message": "Added the referencing in include/usb_pd.h and I\u0027ll add a separate CL for the second part",
+      "parentUuid": "e3f135bd_950ce3f2",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 873,
+        "endChar": 48
+      },
+      "revId": "66936ae1f3fe8634db65aac493d7a0ab4f5e0fc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
