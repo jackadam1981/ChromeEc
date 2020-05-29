@@ -1023,6 +1023,16 @@ void pe_exit_dp_mode(int port)
 	}
 }
 
+bool pe_in_dp_mode(const int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
+		int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
+
+		return (opos > 0);
+	}
+	return false;
+}
+
 /*
  * Private functions
  */

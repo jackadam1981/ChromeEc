@@ -113,6 +113,14 @@ void pe_hard_reset_sent(int port);
 void pe_exit_dp_mode(int port);
 
 /**
+ * Check if port is in DP mode
+ *
+ * @param port USB-C port number
+ * @return true if alt mode active on port
+ */
+bool pe_in_dp_mode(int port);
+
+/**
  * Get the id of the current Policy Engine state
  *
  * @param port USB-C port number

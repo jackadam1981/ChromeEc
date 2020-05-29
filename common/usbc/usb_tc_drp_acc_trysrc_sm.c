@@ -1408,7 +1408,7 @@ static void handle_new_power_state(int port)
 		if (chipset_in_or_transitioning_to_state(
 					CHIPSET_STATE_ANY_OFF)) {
 			/*
-			 * The SoC will negotiated DP mode again when it
+			 * The SoC will negotiate DP mode again when it
 			 * boots up
 			 */
 			pe_exit_dp_mode(port);
@@ -1421,15 +1421,22 @@ static void handle_new_power_state(int port)
 		} else if (chipset_in_or_transitioning_to_state(
 					CHIPSET_STATE_ON)) {
 			/*
-			 * The following function will restore the USB mux, as
-			 * the chipset is transitioning to ON.
+			 * Check whether DP mode is already active, which means
+			 * that the CPU was suspended, not shut down.
 			 */
-			set_usb_mux_with_current_data_role(port);
-			/*
-			 * Restore the DP mux by entering any previously exited
-			 * alt modes
-			 */
-			pe_dpm_request(port, DPM_REQUEST_PORT_DISCOVERY);
+			if (!pe_in_dp_mode(port)) {
+				/*
+				 * The following function will restore the USB
+				 * mux, as the chipset is transitioning to ON.
+				 */
+				set_usb_mux_with_current_data_role(port);
+				/*
+				 * Request port discovery to restore any
+				 * alt modes.
+				 */
+				pe_dpm_request(port,
+					       DPM_REQUEST_PORT_DISCOVERY);
+			}
 		}
 	}
 }
