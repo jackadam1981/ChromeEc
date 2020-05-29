@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4b14dab_a35d59e0",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-29T16:18:23Z",
+      "side": 1,
+      "message": "something to think about or comment for the requirements for this function: that we are already not in an ignore_bus_fault(1) state when entering the disable_flash_option_bytes function, because these calls don\u0027t nest I am assuming.\n\nYou could check the ignore_bus_fault state first before disabling it. (or maybe just comments to reduce complexity); Either way, it should be called out.",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "56b70c4d1e0d42ffe3bb5aa185ff18a152ab9ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
