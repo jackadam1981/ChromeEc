@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a960e52_be30b1a2",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-05-29T09:42:54Z",
+      "side": 1,
+      "message": "should this be uint8_t?",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 276,
+        "endChar": 4
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c3ec580_bc62139a",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-05-29T09:42:54Z",
+      "side": 1,
+      "message": "I guess this is where you\u0027ll do something different for version 1?",
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
