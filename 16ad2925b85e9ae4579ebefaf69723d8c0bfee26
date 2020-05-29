@@ -22,6 +22,30 @@
       "revId": "16ad2925b85e9ae4579ebefaf69723d8c0bfee26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a708f24_0eda217d",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-29T02:36:51Z",
+      "side": 1,
+      "message": "It is an DATA line, and I intend to have this interrupt enable only when INT_AP_L is asserted.\nI couldn\u0027t find any proper I2CS interrupt sources in H1 corresponding to SPS_CS_ASSERT.",
+      "parentUuid": "0ab14a6c_472b24e8",
+      "range": {
+        "startLine": 119,
+        "startChar": 38,
+        "endLine": 119,
+        "endChar": 50
+      },
+      "revId": "16ad2925b85e9ae4579ebefaf69723d8c0bfee26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
