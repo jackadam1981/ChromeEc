@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05d95000_8b4f7551",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-29T16:05:11Z",
+      "side": 1,
+      "message": "I like the flexibility that the TBT speed checks allows a runtime override of the maximum speed.  Can you rename board_get_max_tbt_speed() to be more generic - board_get_max_usb_tbt_speed() and also check that here?\n\nI see the need for the EC to make a runtime decision based off of SKU and FW_CONFIG information for both USB4 and TBT.\n\nUltimately this decision will get pushed into the kernel policy, but that is a ways off.",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 873,
+        "endChar": 48
+      },
+      "revId": "5e90b5d8435338da790ef1bdd2b27548ae7a31e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
