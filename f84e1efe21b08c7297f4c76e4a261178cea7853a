@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "740afc80_47e6e873",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:45:36Z",
+      "side": 1,
+      "message": "this function should check the register and call ap_long_pulse_enable() if necessary - this is why we had the callbacks, right?\n\nThe init priorites of sps and i2c interfaces need to be modified to make sure that the registration function runs before board_init()",
+      "range": {
+        "startLine": 767,
+        "startChar": 11,
+        "endLine": 767,
+        "endChar": 21
+      },
+      "revId": "f84e1efe21b08c7297f4c76e4a261178cea7853a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6479e4ad_7ff0e2e4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:45:36Z",
+      "side": 1,
+      "message": "why does this have to be done through a deferred function?",
+      "range": {
+        "startLine": 1783,
+        "startChar": 1,
+        "endLine": 1787,
+        "endChar": 45
+      },
+      "revId": "f84e1efe21b08c7297f4c76e4a261178cea7853a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7eca080_2be19c6c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1815,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:45:36Z",
+      "side": 1,
+      "message": "int_ap_extension_enable() should be called only if the appropriate bit is set.",
+      "range": {
+        "startLine": 1815,
+        "startChar": 1,
+        "endLine": 1815,
+        "endChar": 57
+      },
+      "revId": "f84e1efe21b08c7297f4c76e4a261178cea7853a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aeff230_a39d565b",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:45:36Z",
+      "side": 1,
+      "message": "let\u0027s use the same scope for all bits:\n\nBOARD_CFG_LONG_INT_PULSE_BIT \n\nor something like this.",
+      "range": {
+        "startLine": 412,
+        "startChar": 1,
+        "endLine": 412,
+        "endChar": 22
+      },
+      "revId": "f84e1efe21b08c7297f4c76e4a261178cea7853a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20b2698f_0ce74942",
+        "filename": "board/cr50/int_ap_extension.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:45:36Z",
+      "side": 1,
+      "message": "the check should be in the board_cfg domain - it defines all bits anyways.",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 53
+      },
+      "revId": "f84e1efe21b08c7297f4c76e4a261178cea7853a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299fbd15_00783cf7",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:45:36Z",
+      "side": 1,
+      "message": "no need to call this. \n\nWe have a callback to tell us when the long pulse needs to be enabled.",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 26
+      },
+      "revId": "f84e1efe21b08c7297f4c76e4a261178cea7853a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75bff2c9_a361c49a",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:45:36Z",
+      "side": 1,
+      "message": "the callback should be enough, no need in this.",
+      "revId": "f84e1efe21b08c7297f4c76e4a261178cea7853a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
