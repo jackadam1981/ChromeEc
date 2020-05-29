@@ -22,6 +22,30 @@
       "revId": "1017e03748e1e93216861cb93b6e3facef481832",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a313d219_1b8ba9dd",
+        "filename": "test/flash_physical.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-29T17:33:35Z",
+      "side": 1,
+      "message": "No. In the general case, when locking/unlocking, we want everything to work (no bus fault). \n\nWhen we disable a register, the act of disabling generates a bus fault, so we want to ignore that. After a register is disabled any lock/unlock attempts will generate a fault. In this case we want the fault because once the register is disabled, we don\u0027t expect any non-malicious code to try to do any more locking/unlocking.",
+      "parentUuid": "0595c270_97453fc1",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 17
+      },
+      "revId": "1017e03748e1e93216861cb93b6e3facef481832",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
