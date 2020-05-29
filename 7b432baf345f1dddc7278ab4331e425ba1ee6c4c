@@ -91,6 +91,30 @@
       "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c707434_c0f90cf9",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-29T17:26:11Z",
+      "side": 1,
+      "message": "I see that it gets used in the next CL. This line might be better placed in that CL, but I don\u0027t have a strong opinion.",
+      "parentUuid": "41e0d00e_039ea9cc",
+      "range": {
+        "startLine": 161,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 11
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
