@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47a7df70_431f2fd9",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-29T01:20:37Z",
+      "side": 1,
+      "message": "nit: want to publish on top of retimer series?",
+      "range": {
+        "startLine": 905,
+        "startChar": 25,
+        "endLine": 905,
+        "endChar": 45
+      },
+      "revId": "ee966fa6fabe2c412953bddad3a93fa1c73b2d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a3ac7e8_89da41ce",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1947,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-29T01:20:37Z",
+      "side": 1,
+      "message": "has USB4 VDO",
+      "range": {
+        "startLine": 1947,
+        "startChar": 28,
+        "endLine": 1947,
+        "endChar": 55
+      },
+      "revId": "ee966fa6fabe2c412953bddad3a93fa1c73b2d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b44837c9_ab9905bd",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-29T01:20:37Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 1952,
+        "startChar": 34,
+        "endLine": 1952,
+        "endChar": 53
+      },
+      "revId": "ee966fa6fabe2c412953bddad3a93fa1c73b2d6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
