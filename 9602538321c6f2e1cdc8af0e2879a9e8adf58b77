@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30ab0b57_e68cdecb",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-29T23:16:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "321410ff_93b6f6f5",
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8b073f9_3c4e7d50",
         "filename": "board/cr50/board.c",
         "patchSetId": 11
@@ -30,6 +48,30 @@
       "writtenOn": "2020-05-29T22:45:29Z",
       "side": 1,
       "message": "adding this variable to this section will make sure that is is cleared each time TPM is reset, I don\u0027t think we want this, this register should be written once per H1 reboot.",
+      "range": {
+        "startLine": 1789,
+        "startChar": 1,
+        "endLine": 1789,
+        "endChar": 20
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a7f7c1_a36d31bb",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-29T23:16:24Z",
+      "side": 1,
+      "message": "I considered the case that BIOS gets updated to support TPM_BOARD_CFG, while Cr50 was already supporting it. BIOS would get rebooted, but Cr50 won\u0027t get reset in this case.",
+      "parentUuid": "a8b073f9_3c4e7d50",
       "range": {
         "startLine": 1789,
         "startChar": 1,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "044fcae5_e7fdd602",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-29T23:16:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3cf32de_34072bc3",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 4
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0097c08_a6030b88",
         "filename": "board/cr50/board.h",
         "patchSetId": 11
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "a2b6b1ad_fbf536ef",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-29T23:16:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0097c08_a6030b88",
+      "range": {
+        "startLine": 414,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 26
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8625ee0_e378571c",
         "filename": "common/tpm_registers.c",
         "patchSetId": 11
@@ -108,6 +198,30 @@
       "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "962593a3_d75ee4e0",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-29T23:16:24Z",
+      "side": 1,
+      "message": "Will restore it, but line 88 won\u0027t be aligned with the others, which was commented earlier.\nMeanwhile, upload checker doesn\u0027t allow whitespaces but tabs only.",
+      "parentUuid": "b8625ee0_e378571c",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
