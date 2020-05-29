@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "765a7a9c_ed505d4a",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-29T16:14:52Z",
+      "side": 1,
+      "message": "nit: what about \"return !!STM32_FLASH_OPT_LOCKED;\" for clarity. Looks like the offical _Bool doesn\u0027t allow values beside 0 and 1 so the !! isn\u0027t strictly needed",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "3843acf25c610d121cefbce9db7bc377d2d61575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dad4ca39_42417411",
+        "filename": "chip/stm32/flash-f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-29T16:14:52Z",
+      "side": 1,
+      "message": "why isn\u0027t there an unlock version? Is it lock once and can\u0027t be unlocked?\n\nAdding comments here would be helpful",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 32
+      },
+      "revId": "3843acf25c610d121cefbce9db7bc377d2d61575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
