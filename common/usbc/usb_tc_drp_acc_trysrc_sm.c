@@ -373,15 +373,28 @@ void pd_execute_hard_reset(int port)
 	/* DO NOTHING */
 }
 
+#ifndef CONFIG_USB_PD_DISCHARGE
 void pd_set_vbus_discharge(int port, int enable)
 {
 	/* DO NOTHING */
 }
+#endif
 
+#ifdef CONFIG_USB_PE_SM
 uint16_t pd_get_identity_vid(int port)
 {
 	/* DO NOTHING */
 	return 0;
+}
+#endif
+
+void pe_invalidate_explicit_contract(int port)
+{
+
+}
+
+void pe_exit_dp_mode(int port)
+{
 }
 
 #endif /* !CONFIG_USB_PRL_SM */
