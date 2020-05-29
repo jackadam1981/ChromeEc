@@ -34,6 +34,24 @@
       "revId": "27720288156943560fa7badcab0c844c8119d7ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "308ffb8e_69119565",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-29T16:41:45Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be done in this CL, but the format that I have seen and liked the most is\n\n#define ANX7447_REG_HPD_DEGLITCH_H\t0x80\n#define ANX7447_REG_HPD_DETECT\t\t\tBIT(7)\n\nWhere the bits are tabbed over one and use the BIT macro\n\nJust something to keep in mind",
+      "parentUuid": "6580ce5d_42fe2d45",
+      "revId": "27720288156943560fa7badcab0c844c8119d7ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
