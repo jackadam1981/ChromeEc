@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c140656_bf1b3193",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-05-29T01:09:27Z",
+      "side": 1,
+      "message": "sleep should be disabled during this otherwise cr50 may enter deep sleep and stop holding the ec in reset.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "9b9ec40898f863aaf12a1057deb5ec846d3aeeba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
