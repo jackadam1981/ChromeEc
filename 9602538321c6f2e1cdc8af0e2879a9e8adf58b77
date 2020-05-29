@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "fc7355bf_41ea648d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-29T23:46:47Z",
+      "side": 1,
+      "message": "Ok. So I picture, the case that I am concerned would happen among developers only.\n\nIn other cases, BIOS should have a chance to write TPM_BOARD_CFG.\n- the case in factory: BIOS + cr50 factory image runs first, and (new) BIOS will update new cr50 image later. Cr50 would get a reset and BIOS has a chance to write TPM_BOARD_CFG.\n- the case in general update: if more TPM_BOARD_CFG bits are introduced, then there will be an update on both BIOS and Cr50. Both shall be updated and BIOS still has a chance to write TPM_BOARD_CFG.",
+      "parentUuid": "4669f4b4_977bef30",
+      "range": {
+        "startLine": 1789,
+        "startChar": 1,
+        "endLine": 1789,
+        "endChar": 20
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3cf32de_34072bc3",
         "filename": "board/cr50/board.h",
         "patchSetId": 11
