@@ -45,6 +45,30 @@
       "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d2d302a_7a8addba",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-29T20:30:53Z",
+      "side": 1,
+      "message": "Agreed it would be nice to not have to pass around.  We have a fair amount of shared state to track as it is (though technically I think we could also put \"7\" for opos without a lookup)",
+      "parentUuid": "67259ace_bcb45b5e",
+      "range": {
+        "startLine": 1025,
+        "startChar": 23,
+        "endLine": 1025,
+        "endChar": 47
+      },
+      "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
