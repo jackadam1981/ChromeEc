@@ -163,6 +163,30 @@
       "revId": "f23b6c9d2a0f49c01c0b852114e559634ddb8413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "948a95f1_c2420cdc",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-05-29T16:03:15Z",
+      "side": 1,
+      "message": "I yes, I completely skipped over that thinking in was only the error return paradigm. It might be worth adding a comment, but not critical",
+      "parentUuid": "9a7ef81d_adecb94c",
+      "range": {
+        "startLine": 275,
+        "startChar": 5,
+        "endLine": 275,
+        "endChar": 23
+      },
+      "revId": "f23b6c9d2a0f49c01c0b852114e559634ddb8413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
