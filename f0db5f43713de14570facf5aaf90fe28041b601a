@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb7cc25b_283870b1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-05-29T23:51:57Z",
+      "side": 1,
+      "message": "Done - I only used int32_t because all the other fields used that.",
+      "parentUuid": "c5da46e3_fd6dc891",
+      "range": {
+        "startLine": 466,
+        "startChar": 1,
+        "endLine": 466,
+        "endChar": 8
+      },
+      "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67259ace_bcb45b5e",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Agreed it would be nice to not have to pass around.  We have a fair amount of shared state to track as it is (though technically I think we could also put \"7\" for opos without a lookup)",
       "parentUuid": "67259ace_bcb45b5e",
+      "range": {
+        "startLine": 1025,
+        "startChar": 23,
+        "endLine": 1025,
+        "endChar": 47
+      },
+      "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "209fa121_d0433adb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-05-29T23:51:57Z",
+      "side": 1,
+      "message": "I\u0027ve added some comments about the need to save the value in alt_opos.\n\nSorry about the length of the next bit..\n\nUnfortunately this exposes the asynch nature of the request handling.\nOriginally I had the code do the clean-up as part of the task\u0027s handling of the request,\nbut when pe_exit_dp_mode is called, there is an expectation that this will be complete\nonce that function returns (and in fact this function calls pd_dfp_exit_mode which deletes the state of the connection, which is why we need to save the opos at that time).\n\nIn fact, this is an interesting topic, of how much this code is synch or asynch, and\nthe trickiness of mixing this around. Strictly speaking, when pe_exit_dp_mode returns, the\ninternal state of the alt mode is cleared, but the message hasn\u0027t gone out.\nSo to follow the pattern correctly, all the imperative requests that get requested\nas an asynch request should have some kind of completed event so that it becomes notification\ndriven, but I haven\u0027t seen much code that handles it like this.\nMixing the synch and asynch calls seems like a classic recipe for subtle timing issues\nor race conditions.\n\nThe doco for TCPMv2 implies everything should be asynch (\u0027always use flags to communicate\u0027)\nbut clearly that\u0027s not happening here. The real issue is whether it is OK to clean up\nthe state and leave the message sending as a separate (asynch) thing. In this case it\u0027s\nlikely to be OK. I guess.\n\nThe alt mode code seems to go to some length to remember the opos, and I couldn\u0027t find an\nobvious reference to an expected value (would like to know why \u00277\u0027 is the correct value) but\nI am still finding my way around the many specs. It definitely seemed safer to follow the\ncurrent approach of saving the opos to be used later.",
+      "parentUuid": "9d2d302a_7a8addba",
       "range": {
         "startLine": 1025,
         "startChar": 23,
