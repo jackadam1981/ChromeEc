@@ -39,6 +39,24 @@
       "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "866c001a_bd594c85",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-05-29T18:36:10Z",
+      "side": 1,
+      "message": "Yes. Like:\n\nbool presence \u003d (pop_check_presence(flags \u0026 G2F_CONSUME) \u003d\u003d POP_TOUCH_YES);\nif (!presence) {\n    if (version \u003d\u003d 0)\n        return VENDOR_RC_NOT_ALLOWED;\n\n    if (flags \u0026 U2F_AUTH_FLAG_TUP) !\u003d 0)\n        return VENDOR_RC_NOT_ALLOWED;\n\n    if (!fingerprint_gpio_asserted() \u0026\u0026 !authorization_key_correct())\n        return VENDOR_RC_NOT_ALLOWED;\n}",
+      "parentUuid": "5c3ec580_bc62139a",
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
