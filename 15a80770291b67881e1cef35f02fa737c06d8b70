@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eba0cfc9_6d29bb81",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-29T22:37:00Z",
+      "side": 1,
+      "message": "This function needs to be in the HOOKS task. Merging it in system_common_shutdown() makes it in the same CHIPSET task. This is a deadlock: waits for the power_state change but it also blocks the power_state change.",
+      "parentUuid": "87d23135_f4e4beaf",
+      "range": {
+        "startLine": 927,
+        "startChar": 12,
+        "endLine": 927,
+        "endChar": 34
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99b89b05_d63c5ab0",
         "filename": "common/system.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7452d3ce_6ba5080f",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-29T22:37:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99b89b05_d63c5ab0",
+      "range": {
+        "startLine": 930,
+        "startChar": 6,
+        "endLine": 931,
+        "endChar": 35
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "330b9748_c4b06632",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-29T22:37:00Z",
+      "side": 1,
+      "message": "Done. It was copied from the existing code.",
+      "parentUuid": "1e4287a8_93fd2fb6",
+      "range": {
+        "startLine": 932,
+        "startChar": 3,
+        "endLine": 932,
+        "endChar": 10
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "799ec602_910736fe",
         "filename": "common/system.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bac0f73a_acd534ed",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-05-29T22:37:00Z",
+      "side": 1,
+      "message": "Moved it the lowest priority, as it just schedules a deferred call.",
+      "parentUuid": "799ec602_910736fe",
+      "range": {
+        "startLine": 953,
+        "startChar": 60,
+        "endLine": 953,
+        "endChar": 77
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
