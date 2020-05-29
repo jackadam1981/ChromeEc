@@ -36,6 +36,59 @@ static int check_p256_point(const TPMS_ECC_POINT *a)
 		check_p256_param(&a->y);
 }
 
+static int check_p256_param_in_range(const TPM2B_ECC_PARAMETER *a)
+{
+	return a->b.size <= sizeof(p256_int);
+}
+
+static int check_p256_point_in_range(const TPMS_ECC_POINT *a)
+{
+	return check_p256_param_in_range(&a->x) &&
+	       check_p256_param_in_range(&a->y);
+}
+
+static void prepend_zeros_for_p256_param(TPM2B_ECC_PARAMETER *a)
+{
+	int i = a->b.size;
+	int j = sizeof(p256_int);
+
+	if (i == j)
+		return;
+	while (j > 0) {
+		j--;
+		i--;
+		a->b.buffer[j] = i >= 0 ? a->b.buffer[i] : 0;
+	}
+	a->b.size = sizeof(p256_int);
+}
+
+static void prepend_zeros_for_p256_point(TPMS_ECC_POINT *a)
+{
+	prepend_zeros_for_p256_param(&a->x);
+	prepend_zeros_for_p256_param(&a->y);
+}
+
+static void unprepend_zeros_for_p256_param(TPM2B_ECC_PARAMETER *a)
+{
+	int i = 0;
+	int j = 0;
+
+	while (i < a->b.size && a->b.buffer[i] == '\x00')
+		i++;
+	while (i < a->b.size) {
+		a->b.buffer[j] = a->b.buffer[i];
+		i++;
+		j++;
+	}
+	a->b.size = j;
+}
+
+static void unprepend_zeros_for_p256_point(TPMS_ECC_POINT *a)
+{
+	unprepend_zeros_for_p256_param(&a->x);
+	unprepend_zeros_for_p256_param(&a->y);
+}
+
 BOOL _cpri__EccIsPointOnCurve(TPM_ECC_CURVE curve_id, TPMS_ECC_POINT *q)
 {
 	int result;
@@ -70,6 +123,14 @@ CRYPT_RESULT _cpri__EccPointMultiply(
 {
 	int result;
 
+	if (in != NULL && !check_p256_point(in) &&
+	    check_p256_point_in_range(in)) {
+		prepend_zeros_for_p256_point(in);
+		result = _cpri__EccPointMultiply(out, curve_id, n1, in, n2);
+		unprepend_zeros_for_p256_point(in);
+		return result;
+	}
+
 	switch (curve_id) {
 	case TPM_ECC_NIST_P256:
 		if ((n1 != NULL && n2 != NULL) ||
@@ -81,9 +142,7 @@ CRYPT_RESULT _cpri__EccPointMultiply(
 			return CRYPT_PARAMETER;
 		if (n1 != NULL && !check_p256_param(n1))
 			return CRYPT_PARAMETER;
-		if (in != NULL &&
-			(!check_p256_point(in) ||
-				!_cpri__EccIsPointOnCurve(curve_id, in)))
+		if (in != NULL && !_cpri__EccIsPointOnCurve(curve_id, in))
 			return CRYPT_POINT;
 		if (n2 != NULL && !check_p256_param(n2))
 			return CRYPT_PARAMETER;
