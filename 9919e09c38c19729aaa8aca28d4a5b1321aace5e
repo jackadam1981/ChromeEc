@@ -1058,6 +1058,30 @@
       "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "099cfc2f_be832c4f",
+        "filename": "test/fake_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-29T04:42:02Z",
+      "side": 1,
+      "message": "Preferably not.  The ifdef-ing for this in particular should be unnecessary in the DRP PE.  Though I wonder why pd_get_vdo_ver isn\u0027t defined since it\u0027s a part of the PE SM?",
+      "parentUuid": "2a6e9215_73d26895",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 1
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

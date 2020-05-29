@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da717cb6_37ddf0f9",
+        "filename": "common/usbc/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-29T04:42:02Z",
+      "side": 1,
+      "message": "Jett\u0027s probably a better reference for the build file, but I\u0027d guess we want these building when building CONFIG_USB_DRP_ACC_TRYSRC",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "0a478f4724c80cdc7aa6e9014deffee921d1c95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
