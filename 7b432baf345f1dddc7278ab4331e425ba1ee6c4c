@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3e3e611_a342c162",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-29T16:57:40Z",
+      "side": 1,
+      "message": "It looks like this is creating a relationship between config options in which TCPC-driven FRS is the default, and PPC-driven FRS is subordinate. I think it would make more sense to have a method-agnostic CONFIG_USB_PD_FRS (or similar), which would be set automatically based on CONFIG_USB_PD_FRS_TCPC or CONFIG_USB_PD_FRS_PPC, which would be what a board file would set. If possible, the code in the PE (or wherever) that enables or disables FRS would be method-agnostic. This might benefit from something like pd_frs_enable (or similar) in usb_common.c, somewhat analogous to pd_check_vbus_level.",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 46
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a861e472_c83a495f",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4022,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-29T16:57:40Z",
+      "side": 1,
+      "message": "This should have its own comment explaining what it does, or the comment above should be expanded.\n\nNit: The comment above should probably be expanded anyway.",
+      "range": {
+        "startLine": 4022,
+        "startChar": 7,
+        "endLine": 4022,
+        "endChar": 45
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e48b569_7d790038",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4022,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-29T16:57:40Z",
+      "side": 1,
+      "message": "Nit: It is unusual to have both PD and TYPEC in a config item name. I would prefer just PD. Perhaps I\u0027m missing something about CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP. Denis?",
+      "range": {
+        "startLine": 4022,
+        "startChar": 18,
+        "endLine": 4022,
+        "endChar": 27
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41e0d00e_039ea9cc",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-05-29T16:57:40Z",
+      "side": 1,
+      "message": "Where does this get used?",
+      "range": {
+        "startLine": 161,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 11
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
