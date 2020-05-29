@@ -22,6 +22,30 @@
       "revId": "70e2457b8375c3ce729427554510846fb7e7a7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eddf3c3e_98cb7dea",
+        "filename": "common/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-05-29T04:06:35Z",
+      "side": 1,
+      "message": "ec/include/common.h already handles this with \"#define __has_feature(x) 0\" for GCC.",
+      "parentUuid": "f4213f64_4d0ceea5",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 74
+      },
+      "revId": "70e2457b8375c3ce729427554510846fb7e7a7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
