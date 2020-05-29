@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87d23135_f4e4beaf",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-05-29T21:50:29Z",
+      "side": 1,
+      "message": "I think you can merge this into system_common_shutdown. The prototype is the same as DECLARE_HOOK.",
+      "range": {
+        "startLine": 927,
+        "startChar": 12,
+        "endLine": 927,
+        "endChar": 34
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b89b05_d63c5ab0",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-05-29T21:50:29Z",
+      "side": 1,
+      "message": "Can you call chipset_in_state(CHIPSET_STATE_ANY_OFF)?",
+      "range": {
+        "startLine": 930,
+        "startChar": 6,
+        "endLine": 931,
+        "endChar": 35
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4287a8_93fd2fb6",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-05-29T21:50:29Z",
+      "side": 1,
+      "message": "Why not CPRINTS?",
+      "range": {
+        "startLine": 932,
+        "startChar": 3,
+        "endLine": 932,
+        "endChar": 10
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "799ec602_910736fe",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-05-29T21:50:29Z",
+      "side": 1,
+      "message": "We should probably play with this (lower it).",
+      "range": {
+        "startLine": 953,
+        "startChar": 60,
+        "endLine": 953,
+        "endChar": 77
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
