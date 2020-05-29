@@ -665,16 +665,17 @@ int tc_check_vconn_swap(int port)
 #endif
 }
 
-void tc_pr_swap_complete(int port)
+void tc_pr_swap_complete(int port, int aborted)
 {
 	TC_CLR_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 
 	/*
 	 * We turned off AutoDischargeDisconnect when we started the PR Swap,
 	 * if we were a SNK. Re-enable AutoDischargeDisconnect to make sure
-	 * it is back on now that swap is complete.
+	 * it is back on if swap is complete.
 	 */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
+	if (!aborted)
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 void tc_prs_src_snk_assert_rd(int port)
@@ -1055,6 +1056,15 @@ void tc_start_error_recovery(int port)
 	 *   from any other state when directed.
 	 */
 	set_state_tc(port, TC_ERROR_RECOVERY);
+}
+
+void tc_end_error_recovery(int port)
+{
+	/*
+	 * Error recovery is completed from the Policy Engine, so
+	 * would be a good time to re-enable AutoDischargeDisconnect
+	 */
+	tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void restart_tc_sm(int port, enum usb_tc_state start_state)
@@ -3379,6 +3389,14 @@ static void tc_cc_open_entry(const int port)
 	/* Disable VCONN */
 	if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON))
 		set_vconn(port, 0);
+
+	/*
+	 * We are about the remove CC termination. This needs
+	 * to have AutoDischargeDisconnect Disabled in order
+	 * for TCPCI to not give a FAULT-0x01 when we write
+	 * the Role Control register for OPEN/OPEN
+	 */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
 
 	/* Remove terminations from CC */
 	tcpm_set_cc(port, TYPEC_CC_OPEN);

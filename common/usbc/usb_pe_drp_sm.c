@@ -3534,7 +3534,8 @@ static void pe_prs_src_snk_wait_source_on_run(int port)
 
 static void pe_prs_src_snk_wait_source_on_exit(int port)
 {
-	tc_pr_swap_complete(port);
+	tc_pr_swap_complete(port,
+			    !PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE));
 }
 
 /**
@@ -3771,7 +3772,8 @@ static void pe_prs_snk_src_source_on_run(int port)
 
 static void pe_prs_snk_src_source_on_exit(int port)
 {
-	tc_pr_swap_complete(port);
+	tc_pr_swap_complete(port,
+			    !PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE));
 }
 
 /**
@@ -4033,6 +4035,11 @@ static void pe_wait_for_error_recovery_entry(int port)
 static void pe_wait_for_error_recovery_run(int port)
 {
 	/* Stay here until error recovery is complete */
+}
+
+static void pe_wait_for_error_recovery_exit(int port)
+{
+	tc_end_error_recovery(port);
 }
 
 /**
@@ -5917,6 +5924,7 @@ static const struct usb_state pe_states[] = {
 	[PE_WAIT_FOR_ERROR_RECOVERY] = {
 		.entry = pe_wait_for_error_recovery_entry,
 		.run   = pe_wait_for_error_recovery_run,
+		.exit  = pe_wait_for_error_recovery_exit,
 	},
 	[PE_BIST_TX] = {
 		.entry = pe_bist_tx_entry,

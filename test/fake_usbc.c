@@ -105,7 +105,7 @@ void tc_partner_usb_comm(int port, int en)
 void tc_pd_connection(int port, int en)
 {}
 
-void tc_pr_swap_complete(int port)
+void tc_pr_swap_complete(int port, int aborted)
 {}
 
 void tc_prs_snk_src_assert_rp(int port)
@@ -124,6 +124,9 @@ void tc_set_timeout(int port, uint64_t timeout)
 {}
 
 __overridable void tc_start_error_recovery(int port)
+{}
+
+__overridable void tc_end_error_recovery(int port)
 {}
 
 __overridable void tc_snk_power_off(int port)
