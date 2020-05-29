@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa864de9_a71856fa",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:37:26Z",
+      "side": 1,
+      "message": "I just tried modifying this line and repo uploading - no preuploader complaints.",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "d95e352da48534f527f96d5a928b6f69f9354fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
