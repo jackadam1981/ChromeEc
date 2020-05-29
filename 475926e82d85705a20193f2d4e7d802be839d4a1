@@ -70,6 +70,30 @@
       "revId": "475926e82d85705a20193f2d4e7d802be839d4a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c76617_d3899670",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1979,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-05-29T01:52:58Z",
+      "side": 1,
+      "message": "Please see 6-49 Chunked Message Router State Diagram.\n\nThe problem is when we receive a message before a pending tx message is processed by TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE. By checking the PRL_FLAGS_MSG_XMIT flag, the RTR state machine can navigate to the proper state.\n\nFor example:\n(normal case):\n  1) call pe_send_msg. This sets PRL_FLAGS_MSG_XMIT\n  2) TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE transition to some other state\n  3) We receive a message.\n  4) The RTR_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER transitions to RTR_TX_CHUNKS\n  \n(edge case):\n  1) call pe_send_msg. This sets PRL_FLAGS_MSG_XMIT\n  2) We receive a message.\n  3) The RTR_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER transitions to RTR_RX_CHUNKS\n  4) TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE transition to some other state",
+      "parentUuid": "445a45e9_10712400",
+      "range": {
+        "startLine": 1979,
+        "startChar": 4,
+        "endLine": 1979,
+        "endChar": 42
+      },
+      "revId": "475926e82d85705a20193f2d4e7d802be839d4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
