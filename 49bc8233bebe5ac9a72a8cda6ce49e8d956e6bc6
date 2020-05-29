@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8427eee5_4401f5eb",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-05-29T16:15:16Z",
+      "side": 1,
+      "message": "Nit - change names to VENDOR_SPECIFIC_NOT_SUPPORTED and VENDOR_SPECIFIC_SUPPORTED to better match type-c connector spec.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "49bc8233bebe5ac9a72a8cda6ce49e8d956e6bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
