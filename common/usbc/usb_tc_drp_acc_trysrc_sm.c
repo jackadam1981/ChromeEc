@@ -665,16 +665,17 @@ int tc_check_vconn_swap(int port)
 #endif
 }
 
-void tc_pr_swap_complete(int port)
+void tc_pr_swap_complete(int port, int aborted)
 {
 	TC_CLR_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
 
 	/*
 	 * We turned off AutoDischargeDisconnect when we started the PR Swap,
 	 * if we were a SNK. Re-enable AutoDischargeDisconnect to make sure
-	 * it is back on now that swap is complete.
+	 * it is back on if swap is complete.
 	 */
-	tcpm_enable_auto_discharge_disconnect(port, 1);
+	if (!aborted)
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 void tc_prs_src_snk_assert_rd(int port)
@@ -1987,6 +1988,16 @@ static void tc_attached_snk_entry(const int port)
 	/* Enable PD */
 	if (IS_ENABLED(CONFIG_USB_PE_SM))
 		tc_enable_pd(port, 1);
+
+	/*
+	 * In most cases AutoDischargeDisconnect will already be enabled
+	 * but there are Recovery Paths and hardware that does not support
+	 * DRP that may not cross the enables. So adding an enable here
+	 * to make sure we have it enabled when it is needed.  If it is
+	 * already enabled, it will not hurt the TCPC operations.
+	 */
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_attached_snk_run(const int port)
@@ -2186,6 +2197,16 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 
 	/* Save our current connection is a DEBUG ACCESSORY */
 	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
+
+	/*
+	 * In most cases AutoDischargeDisconnect will already be enabled
+	 * but there are Recovery Paths and hardware that does not support
+	 * DRP that may not cross the enables. So adding an enable here
+	 * to make sure we have it enabled when it is needed.  If it is
+	 * already enabled, it will not hurt the TCPC operations.
+	 */
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_unoriented_dbg_acc_src_run(const int port)
@@ -2359,6 +2380,16 @@ static void tc_dbg_acc_snk_entry(const int port)
 
 	/* Save our current connection is a DEBUG ACCESSORY */
 	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
+
+	/*
+	 * In most cases AutoDischargeDisconnect will already be enabled
+	 * but there are Recovery Paths and hardware that does not support
+	 * DRP that may not cross the enables. So adding an enable here
+	 * to make sure we have it enabled when it is needed.  If it is
+	 * already enabled, it will not hurt the TCPC operations.
+	 */
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_dbg_acc_snk_run(const int port)
@@ -2745,6 +2776,16 @@ static void tc_attached_src_entry(const int port)
 	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
 		hook_notify(HOOK_USB_PD_CONNECT);
 	}
+
+	/*
+	 * In most cases AutoDischargeDisconnect will already be enabled
+	 * but there are Recovery Paths and hardware that does not support
+	 * DRP that may not cross the enables. So adding an enable here
+	 * to make sure we have it enabled when it is needed.  If it is
+	 * already enabled, it will not hurt the TCPC operations.
+	 */
+	if (!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+		tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
 static void tc_attached_src_run(const int port)
@@ -3379,6 +3420,14 @@ static void tc_cc_open_entry(const int port)
 	/* Disable VCONN */
 	if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON))
 		set_vconn(port, 0);
+
+	/*
+	 * We are about the remove CC termination. This needs
+	 * to have AutoDischargeDisconnect Disabled in order
+	 * for TCPCI to not give a FAULT-0x01 when we write
+	 * the Role Control register for OPEN/OPEN
+	 */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
 
 	/* Remove terminations from CC */
 	tcpm_set_cc(port, TYPEC_CC_OPEN);
