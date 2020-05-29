@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83aa9c1e_962a39d3",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-29T18:23:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76776594_9aaee2da",
+      "range": {
+        "startLine": 540,
+        "startChar": 1,
+        "endLine": 540,
+        "endChar": 8
+      },
+      "revId": "51867cdd4574341736015abbecd5872b88488251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3f74f97_54536450",
         "filename": "chip/stm32/flash-f.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "51867cdd4574341736015abbecd5872b88488251",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7228d212_41b09407",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-05-29T18:23:52Z",
+      "side": 1,
+      "message": "Done. I\u0027ll create a followup CL that changes the argument to an enum to make it clearer (this has confused me too).",
+      "parentUuid": "b3f74f97_54536450",
+      "range": {
+        "startLine": 754,
+        "startChar": 30,
+        "endLine": 754,
+        "endChar": 31
+      },
+      "revId": "51867cdd4574341736015abbecd5872b88488251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
