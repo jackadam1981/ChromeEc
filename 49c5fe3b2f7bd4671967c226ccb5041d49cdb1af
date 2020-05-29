@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcfd21ca_4bef72c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-29T01:29:52Z",
+      "side": 1,
+      "message": "do you want to reframe?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "49c5fe3b2f7bd4671967c226ccb5041d49cdb1af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf76f3bb_9a00dd2b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-29T01:29:52Z",
+      "side": 1,
+      "message": "nit: i think extra \u0027(\u0027 can be removed",
+      "range": {
+        "startLine": 329,
+        "startChar": 5,
+        "endLine": 329,
+        "endChar": 6
+      },
+      "revId": "49c5fe3b2f7bd4671967c226ccb5041d49cdb1af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f337f10_badf7c33",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-29T01:29:52Z",
+      "side": 1,
+      "message": "{ }",
+      "range": {
+        "startLine": 364,
+        "startChar": 59,
+        "endLine": 364,
+        "endChar": 60
+      },
+      "revId": "49c5fe3b2f7bd4671967c226ccb5041d49cdb1af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b443df26_315b7c4a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2871,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-05-29T01:29:52Z",
+      "side": 1,
+      "message": "can you optimize this?",
+      "range": {
+        "startLine": 2827,
+        "startChar": 0,
+        "endLine": 2871,
+        "endChar": 2
+      },
+      "revId": "49c5fe3b2f7bd4671967c226ccb5041d49cdb1af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
