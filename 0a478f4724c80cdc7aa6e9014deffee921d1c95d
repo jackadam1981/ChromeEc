@@ -22,6 +22,29 @@
       "revId": "0a478f4724c80cdc7aa6e9014deffee921d1c95d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9cb4af8_526dfaf6",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-05-29T05:00:15Z",
+      "side": 1,
+      "message": "Check for error return.  Mode entry will fail when the AP is off and then we loop sending unstructured VDMs to the port partner",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "0a478f4724c80cdc7aa6e9014deffee921d1c95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
