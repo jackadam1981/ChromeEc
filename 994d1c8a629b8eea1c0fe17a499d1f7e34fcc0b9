@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d68579be_571d8914",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-29T02:57:06Z",
+      "side": 1,
+      "message": "Can we keep the comment \"/* This is an erase attempt. */\" under this?",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 23
+      },
+      "revId": "994d1c8a629b8eea1c0fe17a499d1f7e34fcc0b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
