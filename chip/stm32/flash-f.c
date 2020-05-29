@@ -537,6 +537,7 @@ int flash_physical_protect_at_boot(uint32_t new_flags)
 {
 	int block;
 	int original_val, val;
+	int rv;
 
 	original_val = val = STM32_OPTB_WP & STM32_OPTB_nWRP_ALL;
 
@@ -559,10 +560,11 @@ int flash_physical_protect_at_boot(uint32_t new_flags)
 			val |= 1 << block;
 	}
 	if (original_val != val) {
-		write_optb(STM32_FLASH_nWRP_ALL,
-			   val << STM32_FLASH_nWRP_OFFSET);
+		rv = write_optb(STM32_FLASH_nWRP_ALL,
+				val << STM32_FLASH_nWRP_OFFSET);
+		if (rv != EC_SUCCESS)
+			return rv;
 	}
-
 
 	return flash_physical_protect_at_boot_update_rdp_pstate(new_flags);
 }
@@ -748,6 +750,10 @@ int flash_pre_init(void)
 		return EC_SUCCESS;
 
 	if (prot_flags & EC_FLASH_PROTECT_GPIO_ASSERTED) {
+		if (prot_flags & EC_FLASH_PROTECT_RO_NOW) {
+			flash_physical_protect_now(0);
+		}
+
 		if ((prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT) &&
 		    !(prot_flags & EC_FLASH_PROTECT_RO_NOW)) {
 			/*
