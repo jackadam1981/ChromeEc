@@ -31,6 +31,10 @@ static enum led_states led_get_state(void)
 			new_state = STATE_CHARGING_LVL_1;
 		else if (charge_lvl < led_charge_lvl_2)
 			new_state = STATE_CHARGING_LVL_2;
+		else if (charge_lvl < led_charge_lvl_3)
+			new_state = STATE_CHARGING_LVL_3;
+		else if (charge_lvl < led_charge_lvl_4)
+			new_state = STATE_CHARGING_LVL_4;
 		else
 			if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 				new_state = STATE_CHARGING_FULL_S5;
