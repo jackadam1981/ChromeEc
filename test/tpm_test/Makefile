@@ -67,7 +67,7 @@ $(obj)/_$(TARGET).so: $(OBJS) $(obj)/$(TARGET).py
 
 $(obj)/%_wrap.c: $(src)/%.i
 	$(call echo,"  SWIG    $(notdir $@)")
-	$(Q)swig -python -outdir $(obj) -o $@ $<
+	$(Q)swig4.0 -python -outdir $(obj) -o $@ $<
 
 clean:
 	@rm -rf $(obj)/
