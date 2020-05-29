@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "84582d77_0a1febaf",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-29T23:53:47Z",
+      "side": 1,
+      "message": "When the OS updates the Cr50 image, the Cr50 will be rebooted, will this not help?\n\nIn general, this is true for any bits changed in this register: they will not happen until Cr50 reboots, and when Cr50 reboots, it will accept a new write.\n\nAlso, we just don\u0027t want to allow this register to be written every time, the coreboot should not be writing it unless this is a cold reboot.",
+      "parentUuid": "fc7355bf_41ea648d",
+      "range": {
+        "startLine": 1789,
+        "startChar": 1,
+        "endLine": 1789,
+        "endChar": 20
+      },
+      "revId": "9602538321c6f2e1cdc8af0e2879a9e8adf58b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3cf32de_34072bc3",
         "filename": "board/cr50/board.h",
         "patchSetId": 11
