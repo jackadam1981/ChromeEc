@@ -173,6 +173,16 @@ static inline int tcpm_select_rp_value(int port, int rp)
 	return tcpc_config[port].drv->select_rp_value(port, rp);
 }
 
+static inline int tcpm_set_rp(int port, int rp)
+{
+	const struct tcpm_drv *tcpc = tcpc_config[port].drv;
+
+	if (tcpc->set_rp)
+		return tcpc->set_rp(port, rp);
+
+	return EC_SUCCESS;
+}
+
 static inline int tcpm_set_cc(int port, int pull)
 {
 	return tcpc_config[port].drv->set_cc(port, pull);
