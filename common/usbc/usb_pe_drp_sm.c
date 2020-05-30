@@ -803,6 +803,19 @@ static void pe_set_frs_enable(int port, int enable)
 }
 #endif /* CONFIG_USB_PD_REV30 */
 
+void pe_set_explicit_contract(int port)
+{
+	PE_SET_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
+	pd_update_saved_port_flags(port, PD_BBRMFLG_EXPLICIT_CONTRACT, 1);
+
+	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+	    IS_ENABLED(CONFIG_USBC_TCPC_UPDATE_CC)) {
+		/* Set Rp for collision avoidance */
+		ccprintf("PE%d: explicit contract\n", port);
+		typec_update_cc(port);
+	}
+}
+
 void pe_invalidate_explicit_contract(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_REV30))
@@ -810,6 +823,13 @@ void pe_invalidate_explicit_contract(int port)
 
 	PE_CLR_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
 	pd_update_saved_port_flags(port, PD_BBRMFLG_EXPLICIT_CONTRACT, 0);
+
+	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+	    IS_ENABLED(CONFIG_USBC_TCPC_UPDATE_CC)) {
+		/* Set Rp for current limit */
+		ccprintf("PE%d: implicit contract\n", port);
+		typec_update_cc(port);
+	}
 }
 
 /*
@@ -1817,9 +1837,8 @@ static void pe_src_transition_supply_run(int port)
 			PE_CLR_FLAG(port, PE_FLAGS_PS_READY);
 			/* NOTE: Second pass through this code block */
 			/* Explicit Contract is now in place */
-			PE_SET_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
-			pd_update_saved_port_flags(port,
-				PD_BBRMFLG_EXPLICIT_CONTRACT, 1);
+			pe_set_explicit_contract(port);
+
 			/*
 			 * Set first message flag to trigger a wait and add
 			 * jitter delay when operating in PD2.0 mode.
@@ -2478,9 +2497,7 @@ static void pe_snk_select_capability_run(int port)
 			 */
 			if (type == PD_CTRL_ACCEPT) {
 				/* explicit contract is now in place */
-				PE_SET_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
-				pd_update_saved_port_flags(port,
-					PD_BBRMFLG_EXPLICIT_CONTRACT, 1);
+				pe_set_explicit_contract(port);
 
 				set_state_pe(port, PE_SNK_TRANSITION_SINK);
 
@@ -3486,6 +3503,9 @@ static void pe_prs_src_snk_transition_to_off_entry(int port)
 {
 	print_current_state(port);
 
+	/* Contract is invalid */
+	pe_invalidate_explicit_contract(port);
+
 	/* Tell TypeC to power off the source */
 	tc_src_power_off(port);
 
@@ -3515,11 +3535,8 @@ static void pe_prs_src_snk_assert_rd_entry(int port)
 static void pe_prs_src_snk_assert_rd_run(int port)
 {
 	/* Wait until Rd is asserted */
-	if (tc_is_attached_snk(port)) {
-		/* Contract is invalid */
-		pe_invalidate_explicit_contract(port);
+	if (tc_is_attached_snk(port))
 		set_state_pe(port, PE_PRS_SRC_SNK_WAIT_SOURCE_ON);
-	}
 }
 
 /**
