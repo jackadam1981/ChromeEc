@@ -84,8 +84,10 @@ static struct i2c_wrt_op last_write_op[CONFIG_USB_PD_PORT_MAX_COUNT];
  */
 static int tcpc_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+#ifndef CONFIG_USBC_TCPC_UPDATE_CC
 /* Cached RP role values */
 static int cached_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
+#endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 int tcpc_addr_write(int port, int i2c_addr, int reg, int val)
@@ -266,6 +268,7 @@ int tcpc_update16(int port, int reg,
  * cached values need to be maintained in case part of the
  * used TCPCI functionality relies on these values
  */
+#ifndef CONFIG_USBC_TCPC_UPDATE_CC
 void tcpci_set_cached_rp(int port, int rp)
 {
 	cached_rp[port] = rp;
@@ -275,6 +278,7 @@ int tcpci_get_cached_rp(int port)
 {
 	return cached_rp[port];
 }
+#endif
 
 static int init_alert_mask(int port)
 {
@@ -341,6 +345,7 @@ static int tcpci_tcpm_get_power_status(int port, int *status)
 	return tcpc_read(port, TCPC_REG_POWER_STATUS, status);
 }
 
+#ifndef CONFIG_USBC_TCPC_UPDATE_CC
 int tcpci_tcpm_select_rp_value(int port, int rp)
 {
 	/* Keep track of current RP value */
@@ -348,6 +353,7 @@ int tcpci_tcpm_select_rp_value(int port, int rp)
 
 	return EC_SUCCESS;
 }
+#endif
 
 void tcpci_tcpc_discharge_vbus(int port, int enable)
 {
@@ -445,6 +451,29 @@ int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	return rv;
 }
 
+#ifdef CONFIG_USBC_TCPC_UPDATE_CC
+int tcpci_tcpm_update_cc(int port, int drp,
+			 enum tcpc_rp_value rp,
+			 enum tcpc_cc_polarity polarity,
+			 enum tcpc_cc_pull cc1, enum tcpc_cc_pull cc2)
+{
+	int rv;
+
+	ccprintf("C%d: update_cc drp=%d rp=%d pol=%d cc1=%d cc2=%d\n",
+		port, drp, rp, polarity, cc1, cc2);
+
+	rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
+			TCPC_REG_ROLE_CTRL_SET(drp, rp, cc1, cc2));
+	if (rv)
+		return rv;
+
+	return tcpc_update8(port, TCPC_REG_TCPC_CTRL,
+			    TCPC_REG_TCPC_CTRL_SET(1),
+			    (polarity == POLARITY_CC1)
+					? MASK_CLR
+					: MASK_SET);
+}
+#else
 int tcpci_tcpm_set_cc(int port, int pull)
 {
 	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
@@ -452,12 +481,23 @@ int tcpci_tcpm_set_cc(int port, int pull)
 						 tcpci_get_cached_rp(port),
 						 pull, pull));
 }
+#endif
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 int tcpci_set_role_ctrl(int port, int toggle, int rp, int pull)
 {
-	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
-			  TCPC_REG_ROLE_CTRL_SET(toggle, rp, pull, pull));
+	ccprintf("C%d: set_role_ctrl drp=%d rp=%d pull=%d\n",
+		port, toggle, rp, pull);
+	if (IS_ENABLED(CONFIG_USBC_TCPC_UPDATE_CC)) {
+		typec_select_drp(port, toggle);
+		typec_select_pull(port, pull);
+		typec_select_src_current_limit(port, rp);
+		return typec_update_cc(port);
+	} else {
+		return tcpc_write(port, TCPC_REG_ROLE_CTRL,
+				  TCPC_REG_ROLE_CTRL_SET(toggle, rp,
+							 pull, pull));
+	}
 }
 
 int tcpci_tcpc_drp_toggle(int port)
@@ -474,7 +514,14 @@ int tcpci_tcpc_drp_toggle(int port)
 	 * and it may be wise as chips can use this to make this the
 	 * standard and remove this set_role_ctrl call.
 	 */
-	rv = tcpci_set_role_ctrl(port, 1, tcpci_get_cached_rp(port), TYPEC_CC_RD);
+	if (IS_ENABLED(CONFIG_USBC_TCPC_UPDATE_CC)) {
+		typec_select_drp(port, 1);
+		typec_select_pull(port, TYPEC_CC_RD);
+		rv = typec_update_cc(port);
+	} else {
+		rv = tcpci_set_role_ctrl(port, 1, tcpci_get_cached_rp(port),
+					 TYPEC_CC_RD);
+	}
 	if (rv)
 		return rv;
 
@@ -574,24 +621,45 @@ int tcpci_tcpc_set_connection(int port,
 		}
 
 		/* Set the CC lines */
-		rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
-				TCPC_REG_ROLE_CTRL_SET(0,
-						CONFIG_USB_PD_PULLUP,
-						cc1_pull, cc2_pull));
-		if (rv)
-			return rv;
+		ccprintf("C%d: set_conn rp=%d\n", port, CONFIG_USB_PD_PULLUP);
+		if (IS_ENABLED(CONFIG_USBC_TCPC_UPDATE_CC)) {
+			typec_select_drp(port, 0);
+			typec_select_pull(port,
+					  (cc2_pull == TYPEC_CC_OPEN)
+						? cc1_pull
+						: cc2_pull);
+			typec_select_src_current_limit(port,
+						       CONFIG_USB_PD_PULLUP);
+		} else {
+			rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
+					TCPC_REG_ROLE_CTRL_SET(0,
+							CONFIG_USB_PD_PULLUP,
+							cc1_pull, cc2_pull));
+			if (rv)
+				return rv;
+		}
 
 		/* Set TCPC_CONTROl.PlugOrientation */
 		if (pull == TYPEC_CC_RD)
-			polarity = polarity_rm_dts(
-					get_snk_polarity(cc1, cc2));
+			polarity = get_snk_polarity(cc1, cc2);
 		else
 			polarity = get_src_polarity(cc1, cc2);
 
-		rv = tcpc_update8(port, TCPC_REG_TCPC_CTRL,
-				  TCPC_REG_TCPC_CTRL_SET(1),
-				  (polarity == POLARITY_CC1) ? MASK_CLR
-							     : MASK_SET);
+		if (IS_ENABLED(CONFIG_USBC_TCPC_UPDATE_CC)) {
+			typec_select_polarity(port, polarity);
+			rv = tcpm_update_cc(port,
+					    0,
+					    CONFIG_USB_PD_PULLUP,
+					    polarity,
+					    cc1_pull, cc2_pull);
+		} else {
+			polarity = polarity_rm_dts(polarity);
+			rv = tcpc_update8(port, TCPC_REG_TCPC_CTRL,
+					  TCPC_REG_TCPC_CTRL_SET(1),
+					  (polarity == POLARITY_CC1)
+						? MASK_CLR
+						: MASK_SET);
+		}
 	} else {
 		/*
 		 * DRP is not set. This would happen if DRP is not enabled or
@@ -615,6 +683,7 @@ int tcpci_enter_low_power_mode(int port)
 }
 #endif
 
+#ifndef CONFIG_USBC_TCPC_UPDATE_CC
 int tcpci_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	return tcpc_update8(port,
@@ -623,6 +692,7 @@ int tcpci_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 			    polarity_rm_dts(polarity)
 					? MASK_SET : MASK_CLR);
 }
+#endif
 
 #ifdef CONFIG_USBC_PPC
 int tcpci_tcpm_set_snk_ctrl(int port, int enable)
@@ -1770,9 +1840,13 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
 #endif
+#ifdef CONFIG_USBC_TCPC_UPDATE_CC
+	.update_cc		= &tcpci_tcpm_update_cc,
+#else
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,
+#endif
 	.set_vconn		= &tcpci_tcpm_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
