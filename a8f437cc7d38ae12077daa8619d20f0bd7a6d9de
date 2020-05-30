@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a775f663_b59d47a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-30T20:20:45Z",
+      "side": 1,
+      "message": "This happens when PE goes into PE_WAIT_FOR_ERROR_RECOVERY.  It will call tc_start_error_recovery for the TC to handle recovery from the TypeC point of view.  I was seeing this with a hard reset, which is why I called that out.\n\nTCPCI raises a fault-0x01 (I2C) when something that is not valid occurs when an I2C write happens over the TCPCI. This is not an indication that the I2C interface had a problem. In most of these situations that I have seen there is some tie in to AutoDischargeDisconnect being enabled or disabled when it should not be.",
+      "parentUuid": "52b382ec_5df61b37",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "a8f437cc7d38ae12077daa8619d20f0bd7a6d9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b886e046_953ef75d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-30T19:59:29Z",
       "side": 1,
       "message": "Does \"failing exit\" mean transition to PE_WAIT_FOR_ERROR_RECOVERY? Could the AutoDischargeDisconnect cleanup be handled as part of the PE_WAIT_FOR_ERROR_RECOVERY state?",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "a8f437cc7d38ae12077daa8619d20f0bd7a6d9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1608951e_0dfba24c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-30T20:20:45Z",
+      "side": 1,
+      "message": "The exit from PW_WAIT_FOR_ERROR_RECOVERY does not have a known connection.  Not until we land in one of the ATTACHED states will we know that.  The main way in to an attached state would be the auto-toggle locates a connection and we know at that point that it exists. This is why AutoDischargeDisconnect is enabled immediately in that case.  In the case of error recovery, this is not true.",
+      "parentUuid": "b886e046_953ef75d",
       "range": {
         "startLine": 12,
         "startChar": 7,
