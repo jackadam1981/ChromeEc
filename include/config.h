@@ -3913,6 +3913,13 @@
 #undef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
 
 /*
+ * Enable typec_update_cc interface. For lack of wanting to break the current
+ * code, I want to leave the existing set_cc/select_rp interface but want to
+ * update to a different mechanism for those TCPCs that can do so.
+ */
+#undef CONFIG_USBC_TCPC_UPDATE_CC
+
+/*
  * Choose one of the following TCPMs (type-C port manager) to manage TCPC. The
  * TCPM stub is used to make direct function calls to TCPC when TCPC is on
  * the same MCU. The TCPCI TCPM uses the standard TCPCI i2c interface to TCPC.

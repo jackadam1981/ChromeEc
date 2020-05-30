@@ -213,9 +213,17 @@ int tcpci_tcpm_init(int port);
 int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2);
 bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level);
+
+/* Used when CONFIG_USBC_TCPC_UPDATE_CC is defined */
+int tcpci_tcpm_update_cc(int port, int drp,
+			 enum tcpc_rp_value rp,
+			 enum tcpc_cc_polarity polarity,
+			 enum tcpc_cc_pull cc1, enum tcpc_cc_pull cc2);
+/* Used when CONFIG_USBC_TCPC_UPDATE_CC is not defined */
 int tcpci_tcpm_select_rp_value(int port, int rp);
 int tcpci_tcpm_set_cc(int port, int pull);
 int tcpci_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity);
+
 int tcpci_tcpm_set_vconn(int port, int enable);
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpci_tcpm_set_rx_enable(int port, int enable);

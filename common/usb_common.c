@@ -244,7 +244,12 @@ bool pd_is_debug_acc(int port)
 
 void pd_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
-	tcpm_set_polarity(port, polarity);
+	if (IS_ENABLED(CONFIG_USBC_TCPC_UPDATE_CC)) {
+		typec_select_polarity(port, polarity);
+		typec_update_cc(port);
+	} else {
+		tcpm_set_polarity(port, polarity);
+	}
 
 	if (IS_ENABLED(CONFIG_USBC_PPC_POLARITY))
 		ppc_set_polarity(port, polarity);
