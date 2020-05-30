@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "327e4bf8_de27d4f2",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-30T00:07:01Z",
+      "side": 1,
+      "message": "I tend to agree with you Diana. Although in this particular case, I don\u0027t think it\u0027s ever expected to do this on the primary charger.",
+      "parentUuid": "c8b28bdf_dee35a87",
+      "range": {
+        "startLine": 1005,
+        "startChar": 0,
+        "endLine": 1005,
+        "endChar": 62
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8442b10_7d679288",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 5
@@ -165,6 +189,30 @@
       "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8226521_fa571159",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-30T00:07:01Z",
+      "side": 1,
+      "message": "Ugh, now it\u0027s working. For some reason the charger stops working. I can\u0027t find a stable repro for it... I thought it was maybe related to hibernate, but I can\u0027t repro it on demand.",
+      "parentUuid": "5989765b_dff4896d",
+      "range": {
+        "startLine": 1006,
+        "startChar": 0,
+        "endLine": 1006,
+        "endChar": 56
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -285,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "a74da357_772372ad",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-30T00:07:01Z",
+      "side": 1,
+      "message": "I think it may be useful in those cases where we\u0027re looking for a very particular error. I also keep or\u0027ing in return values so I\u0027m not sure how useful it is to return rv as is. Multiple i2c transactions could fail for different reasons.",
+      "parentUuid": "b8fae43e_75f08130",
+      "range": {
+        "startLine": 1034,
+        "startChar": 9,
+        "endLine": 1034,
+        "endChar": 25
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84f062cb_6c882b71",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 5
@@ -296,6 +368,30 @@
       "writtenOn": "2020-05-28T04:45:20Z",
       "side": 1,
       "message": "Should it be okay that we\u0027re performing this step before setting the voltage and current on the secondary?",
+      "range": {
+        "startLine": 1037,
+        "startChar": 1,
+        "endLine": 1037,
+        "endChar": 70
+      },
+      "revId": "c71d32c7debd963dee9073e2bdc90a4547d5f98b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a99d174_7a4ebe5e",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-30T00:07:01Z",
+      "side": 1,
+      "message": "That\u0027s a good question. I think this is okay, but what might be better is to set VSYS to a safe value the first time before we calculate VSYS. I do see a brief current spike upon adapter current plug in and I believe it\u0027s because the VSYS value is maintained at whatever it was when the adapter is removed.\n\nI can do that in a follow up CL.",
+      "parentUuid": "84f062cb_6c882b71",
       "range": {
         "startLine": 1037,
         "startChar": 1,

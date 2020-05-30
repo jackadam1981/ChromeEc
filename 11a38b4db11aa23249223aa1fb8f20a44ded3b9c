@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7e5d2a91_bac661b3",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-30T00:07:01Z",
+      "side": 1,
+      "message": "Yep, we\u0027re putting the charge request into the main charger. I consider that over charging if those are exceeded.",
+      "parentUuid": "ea6a1f11_b723278a",
+      "range": {
+        "startLine": 982,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 47
+      },
+      "revId": "11a38b4db11aa23249223aa1fb8f20a44ded3b9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "635bcfc9_6670bc11",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 1
