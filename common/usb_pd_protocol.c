@@ -2590,6 +2590,23 @@ bool pd_get_partner_unconstr_power(int port)
 	return !!(pd[port].flags & PD_FLAGS_PARTNER_UNCONSTR);
 }
 
+#ifdef CONFIG_CHARGE_MANAGER
+int pd_set_analog_rp_value(int port, int rp)
+{
+	int rv;
+
+	if (pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT)
+		CPRINTS("P%d: Setting analog Rp when in an explicit contract",
+			port);
+
+	rv = tcpm_select_rp_value(port, rp);
+	if (rv)
+		return rv;
+
+	return tcpm_set_rp_value(port, rp);
+}
+#endif
+
 enum tcpc_cc_polarity pd_get_polarity(int port)
 {
 	return pd[port].polarity;
