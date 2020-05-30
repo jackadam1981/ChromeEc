@@ -3466,9 +3466,12 @@ static void pe_prs_src_snk_transition_to_off_run(int port)
 
 	/* Wait until Rd is asserted */
 	if (tc_is_attached_snk(port)) {
-		/* Contract is invalid */
-		pe_invalidate_explicit_contract(port);
-		set_state_pe(port, PE_PRS_SRC_SNK_WAIT_SOURCE_ON);
+		/* Wait for Safe0V */
+		if (tcpm_check_vbus_level(port, VBUS_SAFE0V)) {
+			/* Contract is invalid */
+			pe_invalidate_explicit_contract(port);
+			set_state_pe(port, PE_PRS_SRC_SNK_WAIT_SOURCE_ON);
+		}
 	}
 }
 
