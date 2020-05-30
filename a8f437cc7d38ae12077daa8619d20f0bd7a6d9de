@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52b382ec_5df61b37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-05-30T19:59:29Z",
+      "side": 1,
+      "message": "Seems surprising to me that a PD hard reset would cause I2C fault.",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "a8f437cc7d38ae12077daa8619d20f0bd7a6d9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b886e046_953ef75d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-05-30T19:59:29Z",
+      "side": 1,
+      "message": "Does \"failing exit\" mean transition to PE_WAIT_FOR_ERROR_RECOVERY? Could the AutoDischargeDisconnect cleanup be handled as part of the PE_WAIT_FOR_ERROR_RECOVERY state?",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "a8f437cc7d38ae12077daa8619d20f0bd7a6d9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
