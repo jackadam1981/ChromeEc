@@ -22,6 +22,30 @@
       "revId": "49bc8233bebe5ac9a72a8cda6ce49e8d956e6bc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a78229_cbb77307",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-05-30T00:04:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8427eee5_4401f5eb",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "49bc8233bebe5ac9a72a8cda6ce49e8d956e6bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
