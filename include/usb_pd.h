@@ -1020,6 +1020,16 @@ bool pd_get_partner_dual_role_power(int port);
  */
 bool pd_get_partner_unconstr_power(int port);
 
+/**
+ * Set the analog rp value of the CC pull-up used when we are a source.
+ * This is only valid when we are under an implicit contract.
+ * This function is called from the Charge_Manager.
+ *
+ * @param port USB_C port number
+ * @param rp One of enum tcpc_rp_value
+ */
+int pd_set_analog_rp_value(int port, int rp);
+
 /* Control Message type */
 enum pd_ctrl_msg_type {
 	/* 0 Reserved */
