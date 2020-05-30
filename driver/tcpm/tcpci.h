@@ -214,6 +214,7 @@ int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2);
 bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level);
 int tcpci_tcpm_select_rp_value(int port, int rp);
+int tcpci_tcpm_set_rp_value(int port);
 int tcpci_tcpm_set_cc(int port, int pull);
 int tcpci_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity);
 int tcpci_tcpm_set_vconn(int port, int enable);

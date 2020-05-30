@@ -188,6 +188,7 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
 #endif
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
+	.set_rp_value		= &tcpci_tcpm_set_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,
 	.set_vconn		= &tcpci_tcpm_set_vconn,
