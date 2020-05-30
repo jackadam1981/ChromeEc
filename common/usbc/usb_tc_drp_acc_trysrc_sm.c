@@ -2901,13 +2901,14 @@ static void tc_attached_src_run(const int port)
 
 static void tc_attached_src_exit(const int port)
 {
-	/*
-	 * A port shall cease to supply VBUS within tVBUSOFF of exiting
-	 * Attached.SRC.
-	 */
-	tc_src_power_off(port);
-
 	if (!TC_CHK_FLAG(port, TC_FLAGS_REQUEST_PR_SWAP)) {
+		/*
+		 * A port shall cease to supply VBUS within tVBUSOFF of exiting
+		 * Attached.SRC.
+		 * SRC->SNK Swap will have already turned off source power
+		 */
+		tc_src_power_off(port);
+
 		/* Disable VCONN if not power role swapping */
 		if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON))
 			set_vconn(port, 0);
