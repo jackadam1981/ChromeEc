@@ -3447,6 +3447,16 @@ static void pe_prs_src_snk_evaluate_swap_run(int port)
 
 /**
  * PE_PRS_SRC_SNK_Transition_To_Off
+ *
+ * Citation from PD3.0 spec:
+ * 8.3.3.18.3.4 PE_PRS_SRC_SNK_Transition_to_off State
+ * On entry to the PE_PRS_SRC_SNK_Transition_to_off state the Policy Engine
+ * Shall request the Device Policy Manager to turn off the Source.
+ *
+ * The Policy Engine Shall transition to the PE_PRS_SRC_SNK_Assert_Rd (or
+ * PE_PRS_SRC_SNK_Wait_Source_On in our compressed implementation) state
+ * when:
+ • The Device Policy Manager indicates that the Source has been turned off.
  */
 static void pe_prs_src_snk_transition_to_off_entry(int port)
 {
@@ -3456,6 +3466,8 @@ static void pe_prs_src_snk_transition_to_off_entry(int port)
 	tc_prs_src_snk_assert_rd(port);
 	pe[port].ps_source_timer =
 			get_time().val + PD_POWER_SUPPLY_TURN_OFF_DELAY;
+	pe[port].timeout =
+			get_time().val + PD_T_SAFE_0V;
 }
 
 static void pe_prs_src_snk_transition_to_off_run(int port)
@@ -3464,8 +3476,15 @@ static void pe_prs_src_snk_transition_to_off_run(int port)
 	if (get_time().val < pe[port].ps_source_timer)
 		return;
 
-	/* Wait until Rd is asserted */
-	if (tc_is_attached_snk(port)) {
+	/*
+	 * Wait until Rd is asserted and we are at Safe0V
+	 * Don't allow this to stay here forever. If we do not reach
+	 * Safe0V within tSafe0V then we will continue and give it a
+	 * try anyway.
+	 */
+	if (tc_is_attached_snk(port) &&
+	    (tcpm_check_vbus_level(port, VBUS_SAFE0V) ||
+	     get_time().val > pe[port].timeout)) {
 		/* Contract is invalid */
 		pe_invalidate_explicit_contract(port);
 		set_state_pe(port, PE_PRS_SRC_SNK_WAIT_SOURCE_ON);
