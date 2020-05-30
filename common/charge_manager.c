@@ -1246,7 +1246,11 @@ void charge_manager_source_port(int port, int enable)
 #endif
 
 		typec_set_source_current_limit(p, rp);
-		tcpm_select_rp_value(p, rp);
+		ccprintf("CM%d: Update Rp[%d]=%d\n", port, p, rp);
+		if (IS_ENABLED(CONFIG_USBC_TCPC_UPDATE_CC))
+			typec_select_src_current_limit(p, rp);
+		else
+			tcpm_select_rp_value(p, rp);
 		pd_update_contract(p);
 	}
 }

@@ -2972,4 +2972,79 @@ __override_proto enum ec_pd_port_location board_get_pd_port_location(int port);
  * does nothing, but a board may override it.
  */
 __override_proto void board_vbus_present_change(void);
+
+/****************************************************************************
+ * TCPC CC/Rp Management
+ *
+ * These functions are used when CONFIG_USBC_TCPC_UPDATE_CC is defined
+ */
+
+/**
+ * Called to cache DRP-Toggle enable/disable
+ * A call to typec_update_cc will actually update the hardware to reflect the
+ * cache.
+ *
+ * @param port	     The PD port number
+ * @param drp_toggle DRP-Toggle enable(1) or disable(0)
+ */
+void typec_select_drp(int port, int drp_toggle);
+
+/**
+ * Called to cache CC polarity
+ * A call to typec_update_cc will actually update the hardware to reflect the
+ * cache.
+ *
+ * @param port	   The PD port number
+ * @param polarity Polarity normal(0) or flipped(1)
+ */
+void typec_select_polarity(int port, enum tcpc_cc_polarity polarity);
+
+/**
+ * Called to cache CC pull
+ * A call to typec_update_cc will actually update the hardware to reflect the
+ * cache.
+ *
+ * @param port The PD port number
+ * @param p1   CC1 pull
+ * @param p2   CC2 pull
+ */
+void typec_select_pull(int port, enum tcpc_cc_pull p1, enum tcpc_cc_pull p2);
+
+/**
+ * Called to cache Source Current Limit
+ * A call to typec_update_cc will actually update the hardware to reflect the
+ * cache.
+ *
+ * @param port The PD port number
+ * @param rp   Rp is the Current Limit to advertise
+ */
+void typec_select_src_current_limit(int port, enum tcpc_rp_value rp);
+
+/**
+ * Called to cache Source Collision Rp
+ * A call to typec_update_cc will actually update the hardware to reflect the
+ * cache.
+ *
+ * @param port The PD port number
+ * @param rp   Rp is the Collision Avoidance Rp value
+ */
+void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp);
+
+/**
+ * Called to retrieve cached Active Source Rp
+ *
+ * @param port The PD port number
+ * @return     The Collision Avoidance Rp value
+ */
+enum tcpc_rp_value typec_get_active_select_rp(int port);
+
+/**
+ * Called to update cached CC/Rp values to hardware
+ *
+ * @param port The PD port number
+ * @return 0 on success else failure
+ */
+int typec_update_cc(int port);
+/****************************************************************************/
+
 #endif  /* __CROS_EC_USB_PD_H */
