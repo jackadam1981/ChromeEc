@@ -113,6 +113,12 @@ enum vbus_level {
 	VBUS_PRESENT,
 };
 
+/* Parameter value for select_rp_value */
+enum select_rp_update {
+	DELAY_UPDATE,
+	UPDATE_REG,
+};
+
 /**
  * Returns whether the sink has detected a Rp resistor on the other side.
  */
@@ -223,10 +229,12 @@ struct tcpm_drv {
 	 *
 	 * @param port Type-C port number
 	 * @param rp One of enum tcpc_rp_value
+	 * @param update_reg Should the Role Control register be updated
 	 *
 	 * @return EC_SUCCESS or error
 	 */
-	int (*select_rp_value)(int port, int rp);
+	int (*select_rp_value)(int port, int rp,
+		enum select_rp_update update_reg);
 
 	/**
 	 * Set the CC pull resistor. This sets our role as either source or sink.

@@ -346,7 +346,8 @@ static int fusb302_send_message(int port, uint16_t header, const uint32_t *data,
 	return rv;
 }
 
-static int fusb302_tcpm_select_rp_value(int port, int rp)
+static int fusb302_tcpm_select_rp_value(int port, int rp,
+		enum select_rp_update update_reg)
 {
 	int reg;
 	int rv;

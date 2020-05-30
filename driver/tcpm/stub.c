@@ -53,7 +53,7 @@ int tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	return tcpc_get_cc(port, cc1, cc2);
 }
 
-int tcpm_select_rp_value(int port, int rp)
+int tcpm_select_rp_value(int port, int rp, enum select_rp_update update_reg)
 {
 	return tcpc_select_rp_value(port, rp);
 }

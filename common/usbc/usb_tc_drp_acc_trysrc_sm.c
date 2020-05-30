@@ -1073,7 +1073,7 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 		/* Initialize USB mux to its default state */
 		usb_mux_init(port);
 
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP, UPDATE_REG);
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 		/* Initialize PD and type-C supplier current limits to 0 */
@@ -2156,7 +2156,7 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 		 * Both CC1 and CC2 pins shall be independently terminated to
 		 * pulled up through Rp.
 		 */
-		tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+		tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP, UPDATE_REG);
 
 		/* Enable VBUS */
 		pd_set_power_supply_ready(port);
@@ -2691,7 +2691,7 @@ static void tc_attached_src_entry(const int port)
 		 * Both CC1 and CC2 pins shall be independently terminated to
 		 * pulled up through Rp.
 		 */
-		tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+		tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP, UPDATE_REG);
 
 		/* Enable VBUS */
 		pd_set_power_supply_ready(port);
@@ -3229,7 +3229,7 @@ static void tc_ct_unattached_snk_entry(int port)
 	 * Both CC1 and CC2 pins shall be independently terminated to
 	 * ground through Rd.
 	 */
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP, DELAY_UPDATE);
 	tcpm_set_cc(port, TYPEC_CC_RD);
 	tc[port].cc_state = PD_CC_UNSET;
 
@@ -3405,7 +3405,7 @@ static void tc_cc_rp_entry(const int port)
 	 * Both CC1 and CC2 pins shall be independently pulled
 	 * up through Rp.
 	 */
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP, DELAY_UPDATE);
 	tcpm_set_cc(port, TYPEC_CC_RP);
 }
 

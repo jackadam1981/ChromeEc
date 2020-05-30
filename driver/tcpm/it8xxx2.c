@@ -407,7 +407,8 @@ static int it83xx_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	return EC_SUCCESS;
 }
 
-static int it83xx_tcpm_select_rp_value(int port, int rp_sel)
+static int it83xx_tcpm_select_rp_value(int port, int rp_sel,
+		enum select_rp_update update_reg)
 {
 	uint8_t rp;
 
@@ -606,7 +607,7 @@ static void it83xx_init(enum usbpd_port port, int role)
 	/* Enable cc voltage detector */
 	IT83XX_USBPD_CCGCR(port) &= ~USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR;
 	/* Select Rp value USB-DEFAULT (Rd value default connect with 5.1k) */
-	it83xx_tcpm_select_rp_value(port, TYPEC_RP_USB);
+	it83xx_tcpm_select_rp_value(port, TYPEC_RP_USB, UPDATE_REG);
 	/* Which cc pin connect in attached state. Default to cc1  */
 	it83xx_select_polarity(port, USBPD_CC_PIN_1);
 	/* Change data role as the same power role */

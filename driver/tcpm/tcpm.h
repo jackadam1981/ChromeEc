@@ -168,9 +168,10 @@ static inline bool tcpm_check_vbus_level(int port, enum vbus_level level)
 	return tcpc_config[port].drv->check_vbus_level(port, level);
 }
 
-static inline int tcpm_select_rp_value(int port, int rp)
+static inline int tcpm_select_rp_value(int port, int rp,
+	enum select_rp_update update_reg)
 {
-	return tcpc_config[port].drv->select_rp_value(port, rp);
+	return tcpc_config[port].drv->select_rp_value(port, rp, update_reg);
 }
 
 static inline int tcpm_set_cc(int port, int pull)
@@ -339,10 +340,11 @@ bool tcpm_check_vbus_level(int port, enum vbus_level level);
  *
  * @param port Type-C port number
  * @param rp One of enum tcpc_rp_value
+ * @param update_reg Should the Role Control register be updated
  *
  * @return EC_SUCCESS or error
  */
-int tcpm_select_rp_value(int port, int rp);
+int tcpm_select_rp_value(int port, int rp, enum select_rp_update update_reg);
 
 /**
  * Set the CC pull resistor. This sets our role as either source or sink.

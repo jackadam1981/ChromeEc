@@ -267,24 +267,27 @@ static int tcpci_tcpm_get_power_status(int port, int *status)
 	return tcpc_read(port, TCPC_REG_POWER_STATUS, status);
 }
 
-int tcpci_tcpm_select_rp_value(int port, int rp)
+int tcpci_tcpm_select_rp_value(int port, int rp,
+	enum select_rp_update update_reg)
 {
-	int rv;
-	int role;
+	if (update_reg == UPDATE_REG) {
+		int rv;
+		int role;
 
-	/* Update the RP value in the TCPCI Role Control register */
-	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
-	if (rv)
-		return rv;
+		/* Update the RP value in the TCPCI Role Control register */
+		rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
+		if (rv)
+			return rv;
 
-	rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
-			TCPC_REG_ROLE_CTRL_SET(
-				TCPC_REG_ROLE_CTRL_DRP(role),
-				rp,
-				TCPC_REG_ROLE_CTRL_CC1(role),
-				TCPC_REG_ROLE_CTRL_CC2(role)));
-	if (rv)
-		return rv;
+		rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
+				TCPC_REG_ROLE_CTRL_SET(
+					TCPC_REG_ROLE_CTRL_DRP(role),
+					rp,
+					TCPC_REG_ROLE_CTRL_CC1(role),
+					TCPC_REG_ROLE_CTRL_CC2(role)));
+		if (rv)
+			return rv;
+	}
 
 	/* Keep track of current RP value */
 	tcpci_set_cached_rp(port, rp);

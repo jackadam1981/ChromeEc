@@ -54,7 +54,8 @@ static bool mock_check_vbus_level(int port, enum vbus_level level)
 		return !mock_tcpc.vbus_level;
 }
 
-static int mock_select_rp_value(int port, int rp)
+static int mock_select_rp_value(int port, int rp,
+		enum select_rp_update update_reg)
 {
 	mock_tcpc.last.rp = rp;
 

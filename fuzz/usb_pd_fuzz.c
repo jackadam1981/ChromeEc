@@ -25,7 +25,8 @@
 static int mock_tcpm_init(int port) { return EC_SUCCESS; }
 static int mock_tcpm_release(int port) { return EC_SUCCESS; }
 
-static int mock_tcpm_select_rp_value(int port, int rp)
+static int mock_tcpm_select_rp_value(int port, int rp,
+		enum select_rp_update update_reg)
 {
 	return EC_SUCCESS;
 }

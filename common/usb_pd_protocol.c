@@ -427,7 +427,7 @@ static void set_vconn(int port, int enable)
 /* Note: rp should be set to either SINK_TX_OK or SINK_TX_NG */
 static void sink_can_xmit(int port, int rp)
 {
-	tcpm_select_rp_value(port, rp);
+	tcpm_select_rp_value(port, rp, DELAY_UPDATE);
 	tcpm_set_cc(port, TYPEC_CC_RP);
 
 	/* We must wait tSinkTx before sending a message */
@@ -3021,7 +3021,7 @@ void pd_task(void *u)
 	/* Initialize PD protocol state variables for each port. */
 	pd[port].vdm_state = VDM_STATE_DONE;
 	set_state(port, this_state);
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP, UPDATE_REG);
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/*
 	 * If we're not in an explicit contract, set our terminations to match

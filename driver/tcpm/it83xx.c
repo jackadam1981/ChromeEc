@@ -444,7 +444,8 @@ static int it83xx_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	return EC_SUCCESS;
 }
 
-static int it83xx_tcpm_select_rp_value(int port, int rp_sel)
+static int it83xx_tcpm_select_rp_value(int port, int rp_sel,
+		enum select_rp_update update_reg)
 {
 	uint8_t rp;
 

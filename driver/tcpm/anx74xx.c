@@ -704,7 +704,8 @@ static int anx74xx_rp_control(int port, int rp)
 	return tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_6, reg);
 }
 
-static int anx74xx_tcpm_select_rp_value(int port, int rp)
+static int anx74xx_tcpm_select_rp_value(int port, int rp,
+		enum select_rp_update update_reg)
 {
 	/* Keep track of current RP value */
 	tcpci_set_cached_rp(port, rp);
