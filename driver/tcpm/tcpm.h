@@ -168,14 +168,31 @@ static inline bool tcpm_check_vbus_level(int port, enum vbus_level level)
 	return tcpc_config[port].drv->check_vbus_level(port, level);
 }
 
+static inline int tcpm_update_cc(int port, int rp, int cc1, int cc2)
+{
+#ifdef CONFIG_USBC_TCPC_UPDATE_CC
+	return tcpc_config[port].drv->update_cc(port, rp, cc1, cc2);
+#else
+	return EC_SUCCESS;
+#endif
+}
+
 static inline int tcpm_select_rp_value(int port, int rp)
 {
+#ifndef CONFIG_USBC_TCPC_UPDATE_CC
 	return tcpc_config[port].drv->select_rp_value(port, rp);
+#else
+	return EC_SUCCESS;
+#endif
 }
 
 static inline int tcpm_set_cc(int port, int pull)
 {
+#ifndef CONFIG_USBC_TCPC_UPDATE_CC
 	return tcpc_config[port].drv->set_cc(port, pull);
+#else
+	return EC_SUCCESS;
+#endif
 }
 
 static inline int tcpm_set_connection(int port,
@@ -353,6 +370,20 @@ int tcpm_select_rp_value(int port, int rp);
  * @return EC_SUCCESS or error
  */
 int tcpm_set_cc(int port, int pull);
+
+/**
+ * Set the CC pull resistor to the selected pull. This sets our role as
+ * either source or sink.
+ *
+ * @param port Type-C port number
+ * @param rp   Rp
+ * @param cc1  Pull value for CC1
+ * @param cc2  Pull value for CC2
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_update_cc(int port, enum tcpc_rp_value rp,
+			 enum tcpc_cc_pull cc1, enum tcpc_cc_pull cc2);
 
 /**
  * Set polarity

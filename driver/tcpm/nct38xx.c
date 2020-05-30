@@ -187,8 +187,12 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
 #endif
+#ifdef CONFIG_USBC_TCPC_UPDATE_CC
+	.update_cc		= &tcpci_tcpm_update_cc,
+#else
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,
+#endif
 	.set_polarity		= &tcpci_tcpm_set_polarity,
 	.set_vconn		= &tcpci_tcpm_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,

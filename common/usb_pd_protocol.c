@@ -283,6 +283,12 @@ static struct pd_protocol {
 	 * When we can give up on a HARD_RESET transmission.
 	 */
 	uint64_t hard_reset_complete_timer;
+
+	/* Selected TCPC Polarity and CC/Rp values */
+	uint8_t select_polarity;
+	uint8_t select_cc_pull;
+	uint8_t select_current_limit;
+	uint8_t select_collision_rp;
 } pd[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #ifdef CONFIG_USB_PD_TCPMV1_DEBUG
@@ -307,6 +313,75 @@ static const char * const pd_state_names[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_state_names) == PD_STATE_COUNT);
 #endif
+
+/*
+ * TCPC CC/Rp management
+ */
+void typec_select_polarity(int port, enum tcpc_cc_polarity polarity)
+{
+	pd[port].select_polarity = polarity;
+}
+int typec_update_polarity(const int port)
+{
+	return tcpm_set_polarity(port,
+				 polarity_rm_dts(pd[port].select_polarity));
+}
+
+void typec_select_pull(int port, enum tcpc_cc_pull pull)
+{
+	pd[port].select_cc_pull = pull;
+}
+void typec_select_src_current_limit(int port, enum tcpc_rp_value rp)
+{
+	pd[port].select_current_limit = rp;
+}
+void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp)
+{
+	pd[port].select_collision_rp = rp;
+}
+enum tcpc_rp_value typec_get_active_select_rp(int port)
+{
+	/* PD3.0 Explicit contract will use the collision Rp */
+	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+	    pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT) {
+		return pd[port].select_collision_rp;
+	}
+	return pd[port].select_current_limit;
+}
+int typec_update_cc(int port)
+{
+	int rv;
+	enum tcpc_rp_value rp = typec_get_active_select_rp(port);
+
+#ifdef CONFIG_USBC_TCPC_UPDATE_CC
+	enum tcpc_cc_pull cc1_pull = pd[port].select_cc_pull;
+	enum tcpc_cc_pull cc2_pull = pd[port].select_cc_pull;
+
+	if (pd[port].task_state == PD_STATE_SNK_READY ||
+	    pd[port].task_state == PD_STATE_SRC_READY) {
+		if (polarity_rm_dts(pd[port].select_polarity) ==
+							POLARITY_CC1)
+			cc2_pull = TYPEC_CC_OPEN;
+		else
+			cc1_pull = TYPEC_CC_OPEN;
+	}
+
+	rv = tcpm_update_cc(port, rp, cc1_pull, cc2_pull);
+	if (rv)
+		return rv;
+#else
+	enum tcpc_cc_pull cc_pull = pd[port].select_cc_pull;
+
+	rv = tcpm_select_rp_value(port, rp);
+	if (rv)
+		return rv;
+
+	rv = tcpm_set_cc(port, cc_pull);
+	if (rv)
+		return rv;
+#endif
+	return EC_SUCCESS;
+}
 
 int pd_comm_is_enabled(int port)
 {
@@ -429,8 +504,9 @@ static void set_vconn(int port, int enable)
 /* Note: rp should be set to either SINK_TX_OK or SINK_TX_NG */
 static void sink_can_xmit(int port, int rp)
 {
-	tcpm_select_rp_value(port, rp);
-	tcpm_set_cc(port, TYPEC_CC_RP);
+	typec_select_pull(port, TYPEC_CC_RP);
+	typec_select_src_collision_rp(port, rp);
+	typec_update_cc(port);
 
 	/* We must wait tSinkTx before sending a message */
 	if (rp == SINK_TX_NG)
@@ -780,7 +856,8 @@ static inline void set_state(int port, enum pd_states next_state)
 		if (pd[port].power_role == PD_ROLE_SOURCE) {
 			/* Restore non-active ports to CONFIG_USB_PD_PULLUP */
 			pd_power_supply_reset(port);
-			tcpm_set_cc(port, TYPEC_CC_RP);
+			typec_select_pull(port, TYPEC_CC_RP);
+			typec_update_cc(port);
 		}
 #ifdef CONFIG_USB_PD_REV30
 		/* Adjust rev to highest level*/
@@ -1344,7 +1421,8 @@ void pd_execute_hard_reset(int port)
 	 */
 	if (pd[port].task_state == PD_STATE_SNK_SWAP_STANDBY ||
 	    pd[port].task_state == PD_STATE_SNK_SWAP_COMPLETE) {
-		tcpm_set_cc(port, TYPEC_CC_RD);
+		typec_select_pull(port, TYPEC_CC_RD);
+		typec_update_cc(port);
 		pd_power_supply_reset(port);
 	}
 
@@ -2031,7 +2109,8 @@ static void handle_request(int port, uint32_t head,
 		 * If the port doesn't support removing the terminations, just
 		 * go to the unattached state.
 		 */
-		if (tcpm_set_cc(port, TYPEC_CC_OPEN) == EC_SUCCESS) {
+		typec_select_pull(port, TYPEC_CC_OPEN);
+		if (typec_update_cc(port) == EC_SUCCESS) {
 			/* Do not drive VBUS or VCONN. */
 			pd_power_supply_reset(port);
 #ifdef CONFIG_USBC_VCONN
@@ -2040,8 +2119,11 @@ static void handle_request(int port, uint32_t head,
 			usleep(PD_T_ERROR_RECOVERY);
 
 			/* Restore terminations. */
-			tcpm_set_cc(port, DUAL_ROLE_IF_ELSE(port, TYPEC_CC_RD,
+			typec_select_pull(port,
+					  DUAL_ROLE_IF_ELSE(port,
+							    TYPEC_CC_RD,
 							    TYPEC_CC_RP));
+			typec_update_cc(port);
 		}
 		set_state(port,
 			  DUAL_ROLE_IF_ELSE(port,
@@ -2472,7 +2554,8 @@ static void pd_update_dual_role_config(int port)
 		 && pd[port].task_state == PD_STATE_SRC_DISCONNECTED))) {
 		pd_set_power_role(port, PD_ROLE_SINK);
 		set_state(port, PD_STATE_SNK_DISCONNECTED);
-		tcpm_set_cc(port, TYPEC_CC_RD);
+		typec_select_pull(port, TYPEC_CC_RD);
+		typec_update_cc(port);
 		/* Make sure we're not sourcing VBUS. */
 		pd_power_supply_reset(port);
 	}
@@ -2485,7 +2568,8 @@ static void pd_update_dual_role_config(int port)
 	    drp_state[port] == PD_DRP_FORCE_SOURCE) {
 		pd_set_power_role(port, PD_ROLE_SOURCE);
 		set_state(port, PD_STATE_SRC_DISCONNECTED);
-		tcpm_set_cc(port, TYPEC_CC_RP);
+		typec_select_pull(port, TYPEC_CC_RP);
+		typec_update_cc(port);
 	}
 }
 
@@ -2543,7 +2627,8 @@ static void pd_partner_port_reset(int port)
 	/* Provide Rp for 200 msec. or until we no longer have VBUS. */
 	CPRINTF("C%d Apply Rp!\n", port);
 	cflush();
-	tcpm_set_cc(port, TYPEC_CC_RP);
+	typec_select_pull(port, TYPEC_CC_RP);
+	typec_update_cc(port);
 	timeout = get_time().val + 200 * MSEC;
 
 	while (get_time().val < timeout && pd_is_vbus_present(port))
@@ -3030,7 +3115,7 @@ void pd_task(void *u)
 	/* Initialize PD protocol state variables for each port. */
 	pd[port].vdm_state = VDM_STATE_DONE;
 	set_state(port, this_state);
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+	typec_select_src_current_limit(port, CONFIG_USB_PD_PULLUP);
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/*
 	 * If we're not in an explicit contract, set our terminations to match
@@ -3038,8 +3123,11 @@ void pd_task(void *u)
 	 */
 	if (!(saved_flgs & PD_BBRMFLG_EXPLICIT_CONTRACT))
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
-		tcpm_set_cc(port, PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE ?
-			    TYPEC_CC_RP : TYPEC_CC_RD);
+	{
+		typec_select_pull(port, PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE
+						? TYPEC_CC_RP : TYPEC_CC_RD);
+		typec_update_cc(port);
+	}
 
 #ifdef CONFIG_USBC_PPC
 	/*
@@ -3138,8 +3226,10 @@ void pd_task(void *u)
 				 * Set the terminations to match our power
 				 * role.
 				 */
-				tcpm_set_cc(port, pd[port].power_role ?
-					    TYPEC_CC_RP : TYPEC_CC_RD);
+				typec_select_pull(port, pd[port].power_role
+								? TYPEC_CC_RP
+								: TYPEC_CC_RD);
+				typec_update_cc(port);
 
 				/* Determine the polarity. */
 				tcpm_get_cc(port, &cc1, &cc2);
@@ -3158,9 +3248,12 @@ void pd_task(void *u)
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 			{
 				/* Ensure CC termination is default */
-				tcpm_set_cc(port, PD_ROLE_DEFAULT(port) ==
-					    PD_ROLE_SOURCE ? TYPEC_CC_RP :
-					    TYPEC_CC_RD);
+				typec_select_pull(port,
+						  PD_ROLE_DEFAULT(port) ==
+							PD_ROLE_SOURCE
+								? TYPEC_CC_RP
+								: TYPEC_CC_RD);
+				typec_update_cc(port);
 			}
 
 			/*
@@ -3312,7 +3405,8 @@ void pd_task(void *u)
 				 */
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
 				pd_set_power_role(port, PD_ROLE_SINK);
-				tcpm_set_cc(port, TYPEC_CC_RD);
+				typec_select_pull(port, TYPEC_CC_RD);
+				typec_update_cc(port);
 				pd[port].try_src_marker =
 					get_time().val + PD_T_DEBOUNCE;
 				timeout = 2 * MSEC;
@@ -3334,7 +3428,8 @@ void pd_task(void *u)
 			 */
 			set_state(port, PD_STATE_SNK_DISCONNECTED);
 			pd_set_power_role(port, PD_ROLE_SINK);
-			tcpm_set_cc(port, TYPEC_CC_RD);
+			typec_select_pull(port, TYPEC_CC_RD);
+			typec_update_cc(port);
 			next_role_swap = get_time().val + PD_T_DRP_SNK;
 			/* Swap states quickly */
 			timeout = 2 * MSEC;
@@ -3454,7 +3549,8 @@ void pd_task(void *u)
 				 * safe because Vconn is being sourced,
 				 * preventing incorrect CCD detection.
 				 */
-				tcpm_set_cc(port, TYPEC_CC_RP);
+				typec_select_pull(port, TYPEC_CC_RP);
+				typec_update_cc(port);
 #endif /* CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP */
 				/* If PD comm is enabled, enable TCPC RX */
 				if (pd_comm_is_enabled(port))
@@ -3824,7 +3920,8 @@ void pd_task(void *u)
 				 * their Rp once VBUS falls beneath
 				 * ~3.67V. (b/77827528).
 				 */
-				tcpm_set_cc(port, TYPEC_CC_RD);
+				typec_select_pull(port, TYPEC_CC_RD);
+				typec_update_cc(port);
 				pd_set_power_role(port, PD_ROLE_SINK);
 
 				/* Inform TCPC of power role update. */
@@ -3899,10 +3996,12 @@ void pd_task(void *u)
 				break;
 			}
 			/* Set the CC termination and state back to default */
-			tcpm_set_cc(port,
-				    PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE ?
-					TYPEC_CC_RP :
-					TYPEC_CC_RD);
+			typec_select_pull(port,
+					  PD_ROLE_DEFAULT(port) ==
+						PD_ROLE_SOURCE
+							? TYPEC_CC_RP
+							: TYPEC_CC_RD);
+			typec_update_cc(port);
 			set_state(port, PD_DEFAULT_STATE(port));
 			CPRINTS("TCPC p%d resumed!", port);
 #endif
@@ -3977,7 +4076,8 @@ void pd_task(void *u)
 				/* Swap roles to source */
 				pd_set_power_role(port, PD_ROLE_SOURCE);
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
-				tcpm_set_cc(port, TYPEC_CC_RP);
+				typec_select_pull(port, TYPEC_CC_RP);
+				typec_update_cc(port);
 				next_role_swap = get_time().val + PD_T_DRP_SRC;
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -4044,7 +4144,8 @@ void pd_task(void *u)
 					+ PD_T_TRY_TIMEOUT;
 				/* Swap roles to source */
 				pd_set_power_role(port, PD_ROLE_SOURCE);
-				tcpm_set_cc(port, TYPEC_CC_RP);
+				typec_select_pull(port, TYPEC_CC_RP);
+				typec_update_cc(port);
 				timeout = 2*MSEC;
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				/* Set flag after the state change */
@@ -4404,15 +4505,18 @@ void pd_task(void *u)
 		case PD_STATE_SNK_SWAP_STANDBY:
 			if (pd[port].last_state != pd[port].task_state) {
 				/* Switch to Rp and enable power supply. */
-				tcpm_set_cc(port, TYPEC_CC_RP);
+				typec_select_pull(port, TYPEC_CC_RP);
+				typec_update_cc(port);
 				if (pd_set_power_supply_ready(port)) {
 					/* Restore Rd */
-					tcpm_set_cc(port, TYPEC_CC_RD);
+					typec_select_pull(port, TYPEC_CC_RD);
+					typec_update_cc(port);
 					timeout = 10*MSEC;
 					set_state(port,
 						  PD_STATE_SNK_DISCONNECTED);
 					break;
 				}
+				typec_update_cc(port);
 				/* Wait for power supply to turn on */
 				set_state_timeout(
 					port,
@@ -4426,7 +4530,8 @@ void pd_task(void *u)
 			res = send_control(port, PD_CTRL_PS_RDY);
 			if (res < 0) {
 				/* Restore Rd */
-				tcpm_set_cc(port, TYPEC_CC_RD);
+				typec_select_pull(port, TYPEC_CC_RD);
+				typec_update_cc(port);
 				pd_power_supply_reset(port);
 				timeout = 10 * MSEC;
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
@@ -4613,8 +4718,10 @@ void pd_task(void *u)
 			 * If hard reset while in the last stages of power
 			 * swap, then we need to restore our CC resistor.
 			 */
-			if (pd[port].last_state == PD_STATE_SNK_SWAP_STANDBY)
-				tcpm_set_cc(port, TYPEC_CC_RD);
+			if (pd[port].last_state == PD_STATE_SNK_SWAP_STANDBY) {
+				typec_select_pull(port, TYPEC_CC_RD);
+				typec_update_cc(port);
+			}
 #endif
 
 			/* reset our own state machine */
@@ -4698,7 +4805,8 @@ void pd_task(void *u)
 				 */
 				pd[port].polarity = get_snk_polarity(cc1, cc2);
 
-				tcpm_set_cc(port, TYPEC_CC_RD);
+				typec_select_pull(port, TYPEC_CC_RD);
+				typec_update_cc(port);
 				pd_set_power_role(port, PD_ROLE_SINK);
 				timeout = 2*MSEC;
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
@@ -4713,7 +4821,8 @@ void pd_task(void *u)
 				 */
 				pd[port].polarity = get_src_polarity(cc1, cc2);
 
-				tcpm_set_cc(port, TYPEC_CC_RP);
+				typec_select_pull(port, TYPEC_CC_RP);
+				typec_update_cc(port);
 				pd_set_power_role(port, PD_ROLE_SOURCE);
 				timeout = 2*MSEC;
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
@@ -4809,7 +4918,8 @@ void pd_task(void *u)
 				if (pd_try_src_enable) {
 					/* Swap roles to sink */
 					pd_set_power_role(port, PD_ROLE_SINK);
-					tcpm_set_cc(port, TYPEC_CC_RD);
+					typec_select_pull(port, TYPEC_CC_RD);
+					typec_update_cc(port);
 					/* Set timer for TryWait.SNK state */
 					pd[port].try_src_marker = get_time().val
 						+ PD_T_DEBOUNCE;
@@ -5025,7 +5135,8 @@ void pd_request_source_voltage(int port, int mv)
 		pd[port].new_power_request = 1;
 	} else {
 		pd_set_power_role(port, PD_ROLE_SINK);
-		tcpm_set_cc(port, TYPEC_CC_RD);
+		typec_select_pull(port, TYPEC_CC_RD);
+		typec_update_cc(port);
 		set_state(port, PD_STATE_SNK_DISCONNECTED);
 	}
 
@@ -5133,7 +5244,8 @@ static int command_pd(int argc, char **argv)
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	} else if (!strcasecmp(argv[2], "charger")) {
 		pd_set_power_role(port, PD_ROLE_SOURCE);
-		tcpm_set_cc(port, TYPEC_CC_RP);
+		typec_select_pull(port, TYPEC_CC_RP);
+		typec_update_cc(port);
 		set_state(port, PD_STATE_SRC_DISCONNECTED);
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	} else if (!strncasecmp(argv[2], "dev", 3)) {

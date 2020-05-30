@@ -69,6 +69,12 @@ static struct type_c {
 	/* The cc state */
 	enum pd_cc_states cc_state;
 	uint64_t next_role_swap;
+
+	/* Selected TCPC Polarity and CC/Rp values */
+	uint8_t select_polarity;
+	uint8_t select_cc_pull;
+	uint8_t select_current_limit;
+	uint8_t select_collision_rp;
 } tc[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* List of all TypeC-level states */
@@ -169,6 +175,41 @@ void tc_reset_support_timer(int port)
 {
 	tc[port].support_timer_reset |= SUPPORT_TIMER_RESET_REQUEST;
 }
+
+
+void typec_select_polarity(int port, enum tcpc_cc_polarity polarity)
+{
+	tc[port].select_polarity = polarity;
+}
+int typec_update_polarity(int port)
+{
+	return EC_SUCCESS;
+}
+
+void typec_select_pull(int port, enum tcpc_cc_pull pull)
+{
+	tc[port].select_cc_pull = pull;
+}
+void typec_select_src_current_limit(int port, enum tcpc_rp_value rp)
+{
+	tc[port].select_current_limit = rp;
+}
+void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp)
+{
+	tc[port].select_collision_rp = rp;
+}
+enum tcpc_rp_value typec_get_active_select_rp(int port)
+{
+	/* Explicit contract will use the collision Rp */
+	if (IS_ENABLED(CONFIG_USB_PD_REV30))
+		return tc[port].select_collision_rp;
+	return tc[port].select_current_limit;
+}
+int typec_update_cc(int port)
+{
+	return EC_SUCCESS;
+}
+
 
 void tc_state_init(int port)
 {

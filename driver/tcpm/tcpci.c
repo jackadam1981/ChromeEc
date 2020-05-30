@@ -341,6 +341,7 @@ static int tcpci_tcpm_get_power_status(int port, int *status)
 	return tcpc_read(port, TCPC_REG_POWER_STATUS, status);
 }
 
+#ifndef CONFIG_USBC_TCPC_UPDATE_CC
 int tcpci_tcpm_select_rp_value(int port, int rp)
 {
 	/* Keep track of current RP value */
@@ -348,6 +349,7 @@ int tcpci_tcpm_select_rp_value(int port, int rp)
 
 	return EC_SUCCESS;
 }
+#endif
 
 void tcpci_tcpc_discharge_vbus(int port, int enable)
 {
@@ -445,6 +447,16 @@ int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	return rv;
 }
 
+#ifdef CONFIG_USBC_TCPC_UPDATE_CC
+int tcpci_tcpm_update_cc(int port,
+			 enum tcpc_rp_value rp,
+			 enum tcpc_cc_pull cc1, enum tcpc_cc_pull cc2)
+{
+	tcpci_set_cached_rp(port, rp);
+	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
+			  TCPC_REG_ROLE_CTRL_SET(0, rp, cc1, cc2));
+}
+#else
 int tcpci_tcpm_set_cc(int port, int pull)
 {
 	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
@@ -452,6 +464,7 @@ int tcpci_tcpm_set_cc(int port, int pull)
 						 tcpci_get_cached_rp(port),
 						 pull, pull));
 }
+#endif
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 int tcpci_set_role_ctrl(int port, int toggle, int rp, int pull)
@@ -1770,8 +1783,12 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
 #endif
+#ifdef CONFIG_USBC_TCPC_UPDATE_CC
+	.update_cc		= &tcpci_tcpm_update_cc,
+#else
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,
+#endif
 	.set_polarity		= &tcpci_tcpm_set_polarity,
 	.set_vconn		= &tcpci_tcpm_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
