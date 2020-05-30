@@ -22,6 +22,30 @@
       "revId": "fcf9a3c79c5e739b306c76ad1f9cfab941e72116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e28b77_66f2ef85",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-05-30T00:07:18Z",
+      "side": 1,
+      "message": "Good catch, it sure does.",
+      "parentUuid": "14c47a85_9ed0e906",
+      "range": {
+        "startLine": 360,
+        "startChar": 5,
+        "endLine": 360,
+        "endChar": 29
+      },
+      "revId": "fcf9a3c79c5e739b306c76ad1f9cfab941e72116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
