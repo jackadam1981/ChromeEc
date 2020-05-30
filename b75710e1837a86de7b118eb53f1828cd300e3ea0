@@ -22,6 +22,30 @@
       "revId": "b75710e1837a86de7b118eb53f1828cd300e3ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ce71b7d_972e6c4c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-30T23:00:22Z",
+      "side": 1,
+      "message": "Charge Manager seems to be the culprit, although there are other calls to select_rp_value that do not call set_cc.  I can either have this function set the value always or pass in a parameter that indicates if this should update_reg or delay_update.  I changed it to the latter.",
+      "parentUuid": "fc621173_211e09a4",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "b75710e1837a86de7b118eb53f1828cd300e3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
