@@ -269,3 +269,28 @@ void dpm_set_mode_entry_done(int port)
 void dpm_attempt_mode_entry(int port)
 {
 }
+
+static enum tcpc_cc_pull lcl_pull;
+static enum tcpc_rp_value lcl_rp;
+__overridable void typec_select_pull(int port, enum tcpc_cc_pull pull)
+{
+	lcl_pull = pull;
+}
+__overridable void typec_select_src_current_limit(int port,
+						  enum tcpc_rp_value rp)
+{
+	lcl_rp = rp;
+}
+__overridable void typec_select_src_collision_rp(int port,
+						 enum tcpc_rp_value rp)
+{
+	lcl_rp = rp;
+}
+__overridable enum tcpc_rp_value typec_get_active_select_rp(int port)
+{
+	return lcl_rp;
+}
+__overridable int typec_update_cc(int port)
+{
+	return EC_SUCCESS;
+}
