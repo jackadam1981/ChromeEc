@@ -230,6 +230,11 @@ bool pd_get_partner_unconstr_power(int port)
 	return 0;
 }
 
+int pd_set_analog_rp_value(int port, int rp)
+{
+	return 0;
+}
+
 const char *pd_get_task_state_name(int port)
 {
 	return NULL;

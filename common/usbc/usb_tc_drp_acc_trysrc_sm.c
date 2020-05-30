@@ -879,6 +879,17 @@ bool pd_get_partner_unconstr_power(int port)
 	return !!TC_CHK_FLAG(port, TC_FLAGS_PARTNER_UNCONSTRAINED);
 }
 
+#ifdef CONFIG_CHARGE_MANAGER
+int pd_set_analog_rp_value(int port, int rp)
+{
+	if (pe_is_explicit_contract(port))
+		CPRINTS("P%d: Setting analog Rp when in an explicit contract",
+			port);
+
+	return tcpm_set_rp_value(port, rp);
+}
+#endif
+
 const char *pd_get_task_state_name(int port)
 {
 	return tc_get_current_state(port);
