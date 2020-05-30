@@ -22,6 +22,30 @@
       "revId": "5607e6b44c0cbd4ad4fc876c034f7580b78c251d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "840f16ac_9464f740",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3464,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-30T20:35:12Z",
+      "side": 1,
+      "message": "PE_PRS_SRC_SNK_TRANSITION_TO_OFF will call tc_prs_src_snk_assert_rd. This causes the TC to go from attached.src to attached.snk and remain there in a holding pattern, not allowing what looks like a disconnect to move us to unattached.  The reason we are in PE_PRS_SRC_SNK_TRANSITION_TO_OFF is to turn off power and PS_SOURCE_TIMER is used to make a minimum required delay. This is not always long enough and with the recent addition of checking for Safe0V, this is the safest way to guarantee we are where we are supposed to be. The check that we were performing was just the tc_is_attached_snk, which verifies the tc_prs_src_snk_assert_rd told the TC to transition from attached.src to attached.snk and the TC state machine has run at least one time.  Although necessary to have happened, this does not verify Safe0V has been reached (which is required in PD3 section 7.3.9).\n\nThere are a number of states in the state machines that if the expected response does not happen then we will hang out there.  Hard Reset from the other side should kick us back to life.  PD specifies some areas that we are supposed to time out and which state to go to when this happens... this is not one of them.",
+      "parentUuid": "4df74e9c_adc1df01",
+      "range": {
+        "startLine": 3464,
+        "startChar": 31,
+        "endLine": 3464,
+        "endChar": 46
+      },
+      "revId": "5607e6b44c0cbd4ad4fc876c034f7580b78c251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
