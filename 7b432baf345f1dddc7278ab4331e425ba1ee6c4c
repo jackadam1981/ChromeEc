@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d7d30a72_553e1f76",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-30T16:40:28Z",
+      "side": 1,
+      "message": "I like this direction.  I can also see where it is not exclusive as to TCPC or PPC.  Zork uses the board_tcpc_fast_role_swap_enable to adjust the GPIOs for the PPC. Making this change would allow me to hook my PPC driver and we could off the board_tcpc_fast_role_swap_enable.  The decision to call one of the functions could be based on drv-\u003eset_frs_enable being present in the respective tcpc/ppc structures.  At that point, I am not sure I see a need for the CONFIG_USB_PD_FAST_ROLE_SWAP_PPC.",
+      "parentUuid": "a3e3e611_a342c162",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 46
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a861e472_c83a495f",
         "filename": "include/config.h",
         "patchSetId": 9
@@ -59,6 +83,30 @@
       "writtenOn": "2020-05-29T16:57:40Z",
       "side": 1,
       "message": "Nit: It is unusual to have both PD and TYPEC in a config item name. I would prefer just PD. Perhaps I\u0027m missing something about CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP. Denis?",
+      "range": {
+        "startLine": 4022,
+        "startChar": 18,
+        "endLine": 4022,
+        "endChar": 27
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "000425c9_c20b035f",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4022,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-30T16:40:28Z",
+      "side": 1,
+      "message": "I was new to USB at the time I created this.  I have not seen any USB-A devices that support FRS.  I have no problem with having this name changed to CONFIG_USB_PD_FAST_ROLE_SWAP",
+      "parentUuid": "8e48b569_7d790038",
       "range": {
         "startLine": 4022,
         "startChar": 18,
