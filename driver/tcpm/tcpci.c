@@ -349,6 +349,24 @@ int tcpci_tcpm_select_rp_value(int port, int rp)
 	return EC_SUCCESS;
 }
 
+int tcpci_tcpm_set_rp_value(int port)
+{
+	int rv;
+	int role;
+
+	/* Update the RP value in the TCPCI Role Control register */
+	rv = tcpc_read(port, TCPC_REG_ROLE_CTRL, &role);
+	if (rv)
+		return rv;
+
+	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
+			  TCPC_REG_ROLE_CTRL_SET(
+				TCPC_REG_ROLE_CTRL_DRP(role),
+				tcpci_get_cached_rp(port),
+				TCPC_REG_ROLE_CTRL_CC1(role),
+				TCPC_REG_ROLE_CTRL_CC2(role)));
+}
+
 void tcpci_tcpc_discharge_vbus(int port, int enable)
 {
 	if (IS_ENABLED(DEBUG_FORCED_DISCHARGE))

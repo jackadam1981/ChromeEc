@@ -770,6 +770,18 @@ void tc_snk_power_off(int port)
 	}
 }
 
+static int tc_set_power_supply_ready(int port)
+{
+	int rv;
+
+	rv = pd_set_power_supply_ready(port);
+	if (rv)
+		return rv;
+
+	/* Set selected Rp */
+	return tcpm_set_rp_value(port);
+}
+
 int tc_src_power_on(int port)
 {
 	if (IS_ATTACHED_SRC(port))
@@ -949,7 +961,7 @@ static bool tc_perform_src_hard_reset(int port)
 		return false;
 	case PS_STATE1:
 		/* Enable VBUS */
-		pd_set_power_supply_ready(port);
+		tc_set_power_supply_ready(port);
 
 		/* Turn off VCONN */
 		set_vconn(port, 1);
@@ -2141,7 +2153,7 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 		tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
 
 		/* Enable VBUS */
-		pd_set_power_supply_ready(port);
+		tc_set_power_supply_ready(port);
 
 		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
@@ -2160,7 +2172,7 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 		tc_set_data_role(port, PD_ROLE_DFP);
 
 		/* Enable VBUS */
-		if (pd_set_power_supply_ready(port)) {
+		if (tc_set_power_supply_ready(port)) {
 			if (IS_ENABLED(CONFIG_USBC_SS_MUX))
 				usb_mux_set(port, USB_PD_MUX_NONE,
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
@@ -2656,7 +2668,7 @@ static void tc_attached_src_entry(const int port)
 		tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
 
 		/* Enable VBUS */
-		pd_set_power_supply_ready(port);
+		tc_set_power_supply_ready(port);
 
 		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
@@ -2682,7 +2694,7 @@ static void tc_attached_src_entry(const int port)
 			set_vconn(port, 1);
 
 		/* Enable VBUS */
-		if (pd_set_power_supply_ready(port)) {
+		if (tc_set_power_supply_ready(port)) {
 			/* Stop sourcing Vconn if Vbus failed */
 			if (IS_ENABLED(CONFIG_USBC_VCONN))
 				set_vconn(port, 0);
@@ -2716,7 +2728,7 @@ static void tc_attached_src_entry(const int port)
 		set_vconn(port, 1);
 
 	/* Enable VBUS */
-	if (pd_set_power_supply_ready(port)) {
+	if (tc_set_power_supply_ready(port)) {
 		/* Stop sourcing Vconn if Vbus failed */
 		if (IS_ENABLED(CONFIG_USBC_VCONN))
 			set_vconn(port, 0);
