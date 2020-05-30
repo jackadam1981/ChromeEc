@@ -42,6 +42,11 @@ static struct type_c {
 	/* VPD host port cc state */
 	enum pd_cc_states host_cc_state;
 	uint8_t ct_cc;
+
+	/* Selected TCPC CC/Rp values */
+	uint8_t select_cc_pull;
+	uint8_t select_current_limit;
+	uint8_t select_collision_rp;
 } tc[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* List of all TypeC-level states */
@@ -71,6 +76,33 @@ static const char * const tc_state_names[] = {
 
 /* Forward declare private, common functions */
 static void set_state_tc(const int port, enum usb_tc_state new_state);
+
+void typec_select_pull(int port, enum tcpc_cc_pull pull)
+{
+	tc[port].select_cc_pull = pull;
+}
+void typec_select_src_current_limit(int port, enum tcpc_rp_value rp)
+{
+	tc[port].select_current_limit = rp;
+}
+void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp)
+{
+	tc[port].select_collision_rp = rp;
+}
+enum tcpc_rp_value typec_get_active_select_rp(int port)
+{
+	return tc[port].select_current_limit;
+}
+int typec_update_cc(int port)
+{
+	int rv;
+
+	rv = tcpm_select_rp_value(port, typec_get_active_select_rp(port));
+	if (rv)
+		return rv;
+
+	return tcpm_set_cc(port, tc[port].select_cc_pull);
+}
 
 /* Public TypeC functions */
 

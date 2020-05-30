@@ -305,6 +305,11 @@ static struct type_c {
 	typec_current_t typec_curr;
 	/* Type-C current change */
 	typec_current_t typec_curr_change;
+
+	/* Selected TCPC CC/Rp values */
+	uint8_t select_cc_pull;
+	uint8_t select_current_limit;
+	uint8_t select_collision_rp;
 } tc[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Port dual-role state */
@@ -925,6 +930,40 @@ static __maybe_unused void bc12_role_change_handler(int port)
 	task_set_event(task_id, event, 0);
 }
 
+/*
+ * TCPC CC/Rp management
+ */
+void typec_select_pull(int port, enum tcpc_cc_pull pull)
+{
+	tc[port].select_cc_pull = pull;
+}
+void typec_select_src_current_limit(int port, enum tcpc_rp_value rp)
+{
+	tc[port].select_current_limit = rp;
+}
+void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp)
+{
+	tc[port].select_collision_rp = rp;
+}
+enum tcpc_rp_value typec_get_active_select_rp(int port)
+{
+	/* Explicit contract will use the collision Rp */
+	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+	    pe_is_explicit_contract(port))
+		return tc[port].select_collision_rp;
+	return tc[port].select_current_limit;
+}
+int typec_update_cc(int port)
+{
+	int rv;
+
+	rv = tcpm_select_rp_value(port, typec_get_active_select_rp(port));
+	if (rv)
+		return rv;
+
+	return tcpm_set_cc(port, tc[port].select_cc_pull);
+}
+
 #ifdef CONFIG_USB_PE_SM
 /*
  * This function performs a source hard reset. It should be called
@@ -950,7 +989,8 @@ static bool tc_perform_src_hard_reset(int port)
 	case PS_STATE1:
 		/* Enable VBUS */
 		pd_set_power_supply_ready(port);
-		tcpm_set_cc(port, TYPEC_CC_RP);
+		typec_select_pull(port, TYPEC_CC_RP);
+		typec_update_cc(port);
 
 		/* Turn off VCONN */
 		set_vconn(port, 1);
@@ -1078,7 +1118,7 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 		/* Initialize USB mux to its default state */
 		usb_mux_init(port);
 
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+	typec_select_src_current_limit(port, CONFIG_USB_PD_PULLUP);
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 		/* Initialize PD and type-C supplier current limits to 0 */
@@ -1928,7 +1968,8 @@ static void tc_attached_snk_entry(const int port)
 		 * Both CC1 and CC2 pins shall be independently terminated to
 		 * ground through Rd.
 		 */
-		tcpm_set_cc(port, TYPEC_CC_RD);
+		typec_select_pull(port, TYPEC_CC_RD);
+		typec_update_cc(port);
 
 		/* Change role to sink */
 		tc_set_power_role(port, PD_ROLE_SINK);
@@ -1974,7 +2015,8 @@ static void tc_attached_snk_entry(const int port)
 	}
 
 	/* Apply Rd */
-	tcpm_set_cc(port, TYPEC_CC_RD);
+	typec_select_pull(port, TYPEC_CC_RD);
+	typec_update_cc(port);
 
 	tc[port].cc_debounce = 0;
 
@@ -2138,7 +2180,8 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 
 		/* Enable VBUS */
 		pd_set_power_supply_ready(port);
-		tcpm_set_cc(port, TYPEC_CC_RP);
+		typec_select_pull(port, TYPEC_CC_RP);
+		typec_update_cc(port);
 
 		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
@@ -2162,7 +2205,8 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 				usb_mux_set(port, USB_PD_MUX_NONE,
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
 		}
-		tcpm_set_cc(port, TYPEC_CC_RP);
+		typec_select_pull(port, TYPEC_CC_RP);
+		typec_update_cc(port);
 
 #ifdef CONFIG_USB_PE_SM
 		tc_enable_pd(port, 0);
@@ -2302,7 +2346,8 @@ static void tc_dbg_acc_snk_entry(const int port)
 		 * Both CC1 and CC2 pins shall be independently terminated to
 		 * ground through Rd.
 		 */
-		tcpm_set_cc(port, TYPEC_CC_RD);
+		typec_select_pull(port, TYPEC_CC_RD);
+		typec_update_cc(port);
 
 		/* Change role to sink */
 		tc_set_power_role(port, PD_ROLE_SINK);
@@ -2343,7 +2388,8 @@ static void tc_dbg_acc_snk_entry(const int port)
 		}
 	}
 	/* Apply Rd */
-	tcpm_set_cc(port, TYPEC_CC_RD);
+	typec_select_pull(port, TYPEC_CC_RD);
+	typec_update_cc(port);
 
 	/* Enable PD */
 	tc_enable_pd(port, 1);
@@ -2651,11 +2697,12 @@ static void tc_attached_src_entry(const int port)
 		 * Both CC1 and CC2 pins shall be independently terminated to
 		 * pulled up through Rp.
 		 */
-		tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+		typec_select_src_current_limit(port, CONFIG_USB_PD_PULLUP);
 
 		/* Enable VBUS */
 		pd_set_power_supply_ready(port);
-		tcpm_set_cc(port, TYPEC_CC_RP);
+		typec_select_pull(port, TYPEC_CC_RP);
+		typec_update_cc(port);
 
 		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
@@ -2690,7 +2737,8 @@ static void tc_attached_src_entry(const int port)
 				usb_mux_set(port, USB_PD_MUX_NONE,
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
 		}
-		tcpm_set_cc(port, TYPEC_CC_RP);
+		typec_select_pull(port, TYPEC_CC_RP);
+		typec_update_cc(port);
 
 		tc_enable_pd(port, 0);
 		tc[port].timeout = get_time().val +
@@ -2725,7 +2773,8 @@ static void tc_attached_src_entry(const int port)
 			usb_mux_set(port, USB_PD_MUX_NONE,
 			USB_SWITCH_DISCONNECT, tc[port].polarity);
 	}
-	tcpm_set_cc(port, TYPEC_CC_RP);
+	typec_select_pull(port, TYPEC_CC_RP);
+	typec_update_cc(port);
 #endif /* CONFIG_USB_PE_SM */
 
 	/* Inform PPC that a sink is connected. */
@@ -3182,8 +3231,9 @@ static void tc_ct_unattached_snk_entry(int port)
 	 * Both CC1 and CC2 pins shall be independently terminated to
 	 * ground through Rd.
 	 */
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
-	tcpm_set_cc(port, TYPEC_CC_RD);
+	typec_select_pull(port, TYPEC_CC_RD);
+	typec_select_src_current_limit(port, CONFIG_USB_PD_PULLUP);
+	typec_update_cc(port);
 	tc[port].cc_state = PD_CC_UNSET;
 
 	/* Set power role to sink */
@@ -3337,7 +3387,8 @@ static void tc_cc_rd_entry(const int port)
 	 * Both CC1 and CC2 pins shall be independently terminated to
 	 * ground through Rd.
 	 */
-	tcpm_set_cc(port, TYPEC_CC_RD);
+	typec_select_pull(port, TYPEC_CC_RD);
+	typec_update_cc(port);
 }
 
 
@@ -3358,8 +3409,9 @@ static void tc_cc_rp_entry(const int port)
 	 * Both CC1 and CC2 pins shall be independently pulled
 	 * up through Rp.
 	 */
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
-	tcpm_set_cc(port, TYPEC_CC_RP);
+	typec_select_pull(port, TYPEC_CC_RP);
+	typec_select_src_current_limit(port, CONFIG_USB_PD_PULLUP);
+	typec_update_cc(port);
 }
 
 /**
@@ -3375,7 +3427,8 @@ static void tc_cc_open_entry(const int port)
 		set_vconn(port, 0);
 
 	/* Remove terminations from CC */
-	tcpm_set_cc(port, TYPEC_CC_OPEN);
+	typec_select_pull(port, TYPEC_CC_OPEN);
+	typec_update_cc(port);
 
 	if (IS_ENABLED(CONFIG_USBC_PPC)) {
 		/* There is no sink connected. */
