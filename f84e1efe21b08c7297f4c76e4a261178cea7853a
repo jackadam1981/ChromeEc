@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "647f0d0b_db611d0e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-30T18:24:32Z",
+      "side": 1,
+      "message": "iiuc, TPM register access is processed in interrupt handler, and TPM command is processed in TPM task.\n\nThis is the call path for TPM_BOARD_CFG write:\n\n_sps0_interrupt()/_sps0_cs_deassert_interrupt() -\u003e sps_cs_deassert_interrupt()\n-\u003e sps_rx_interrupt()\n-\u003e sps_rx_handler(), which is tpm_rx_handler()\n-\u003e process_rx_data()\n-\u003e board_cfg_reg_write_()\nboard_cfg_reg_write()",
+      "parentUuid": "b60a5d72_274576c9",
+      "range": {
+        "startLine": 1783,
+        "startChar": 1,
+        "endLine": 1787,
+        "endChar": 45
+      },
+      "revId": "f84e1efe21b08c7297f4c76e4a261178cea7853a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7eca080_2be19c6c",
         "filename": "board/cr50/board.c",
         "patchSetId": 13
