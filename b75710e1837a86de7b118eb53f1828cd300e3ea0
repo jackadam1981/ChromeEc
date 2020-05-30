@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc621173_211e09a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-05-30T20:15:11Z",
+      "side": 1,
+      "message": "I think this was deliberate, and assumed that tcpm_select_rp_value() would be followed by tcpm_set_cc() to actually set the register.\n\nWhat was the path that wasn\u0027t updating the register? In usb_prl_sm.c I see:\n\t/* Set Rp \u003d SinkTxNG */\n\ttcpm_select_rp_value(port, SINK_TX_NG);\n\ttcpm_set_cc(port, TYPEC_CC_RP);\n\nSo that should have written the register.",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "b75710e1837a86de7b118eb53f1828cd300e3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
