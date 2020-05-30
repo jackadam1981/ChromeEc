@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d53b9e03_047093d8",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-30T04:03:45Z",
+      "side": 1,
+      "message": "sps_if_register() also has HOOK_PRIO_LAST.\nI am leaving this unchanged, and made another init function for i2cs as below.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 58
+      },
+      "revId": "7a8c010306081c7b76f62b5335839bff3d78be7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
