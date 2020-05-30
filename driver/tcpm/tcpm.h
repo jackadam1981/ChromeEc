@@ -173,6 +173,20 @@ static inline int tcpm_select_rp_value(int port, int rp)
 	return tcpc_config[port].drv->select_rp_value(port, rp);
 }
 
+static inline int tcpm_set_rp_value(int port, int rp)
+{
+	const struct tcpm_drv *tcpc = tcpc_config[port].drv;
+
+	if (tcpc->set_rp_value)
+		return tcpc->set_rp_value(port, rp);
+
+	/*
+	 * If set_rp_value is not being used, then default back to
+	 * the original call to tcpm_select_rp_value
+	 */
+	return tcpc->select_rp_value(port, rp);
+}
+
 static inline int tcpm_set_cc(int port, int pull)
 {
 	return tcpc_config[port].drv->set_cc(port, pull);
@@ -343,6 +357,16 @@ bool tcpm_check_vbus_level(int port, enum vbus_level level);
  * @return EC_SUCCESS or error
  */
 int tcpm_select_rp_value(int port, int rp);
+
+/**
+ * Set the rp value of the CC pull-up used when we are a source.
+ * This is only valid when we are under an implicit contract.
+ * This function is called indirectly from the Charge_Manager.
+ *
+ * @param port USB_C port number
+ * @param rp One of enum tcpc_rp_value
+ */
+int tcpm_set_rp_value(int port, int rp);
 
 /**
  * Set the CC pull resistor. This sets our role as either source or sink.

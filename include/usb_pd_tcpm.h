@@ -219,7 +219,7 @@ struct tcpm_drv {
 	bool (*check_vbus_level)(int port, enum vbus_level level);
 
 	/**
-	 * Set the value of the CC pull-up used when we are a source.
+	 * Store the value of the CC pull-up used when we are a source.
 	 *
 	 * @param port Type-C port number
 	 * @param rp One of enum tcpc_rp_value
@@ -227,6 +227,19 @@ struct tcpm_drv {
 	 * @return EC_SUCCESS or error
 	 */
 	int (*select_rp_value)(int port, int rp);
+
+	/**
+	 * Set the value of the CC pull-up used when we are a source.
+	 * This value does not get cached as the select_rp_value function
+	 * does and is intended for setting the Analog RP value in the
+	 * charge_manager.
+	 *
+	 * @param port Type-C port number
+	 * @param rp One of enum tcpc_rp_value
+	 *
+	 * @return EC_SUCCESS or error
+	 */
+	int (*set_rp_value)(int port, int rp);
 
 	/**
 	 * Set the CC pull resistor. This sets our role as either source or sink.
