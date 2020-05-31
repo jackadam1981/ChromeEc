@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c97c3e56_a8faaa6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-31T18:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a775f663_b59d47a5",
+      "range": {
+        "startLine": 9,
+        "startChar": 39,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "a8f437cc7d38ae12077daa8619d20f0bd7a6d9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b886e046_953ef75d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "a8f437cc7d38ae12077daa8619d20f0bd7a6d9de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f66687e3_bbd3fd00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-05-31T18:27:49Z",
+      "side": 1,
+      "message": "I tried to use the tc recovery exit and that did not work. I will try the pe recovery exit.  I have concern that some paths will still not be covered but will leave it as recommended.",
+      "parentUuid": "1608951e_0dfba24c",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "a8f437cc7d38ae12077daa8619d20f0bd7a6d9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
