@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "190bec10_cd70afd2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3483,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-05-31T22:18:17Z",
+      "side": 1,
+      "message": "This gives me some pause. Looking at (Section 7.3.10) in PD3.0 spec it says this deadline is governed by (tPSSourceOff 750-920ms Section 6.6.5.2) from ACCEPT-GoodCRC(*) which is a timer in the /SNK port partner/. (The only timer we, the SRC, should be watching is tSrcTransition holdup delay.)\n\nA timer timing out is not a valid exit condition for (PE_PRS_SRC_SNK_Transition_to_off), and does not exist in the spec. Thus I strongly suggest we do not add one here. We should follow spec.\n\nSee (Figure 8-116: Dual-Role Port in Source to Sink Power Role Swap State Diagram).\n\nHypothetically, if there is some sort of problem with silicon -- and it \"can\u0027t tell\" VBUS has been turned off -- I might suggest a board-specific driver \"hook\" workaround should be added elsewhere.",
+      "range": {
+        "startLine": 3481,
+        "startChar": 43,
+        "endLine": 3483,
+        "endChar": 15
+      },
+      "revId": "0c4f38df163808e686372f1f56d91ba2cfa10845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
