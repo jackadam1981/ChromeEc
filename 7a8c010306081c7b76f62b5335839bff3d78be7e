@@ -22,6 +22,30 @@
       "revId": "7a8c010306081c7b76f62b5335839bff3d78be7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67e6ad7b_c0d0a13e",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-05-31T14:08:00Z",
+      "side": 1,
+      "message": "I don\u0027t think this is justified: using HOOK_PRIO_LAST got to be an artifact of the time when board properties were not available during init time, but now the read properties function is running on the highest init priority:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/5a60b3b2/board/cr50/board.c#1517\n\nproperties init is the only dependency of the i2cs_if_register(), all tpm_rester_interface() does is just setting two variables. I think we can move the i2cs_if_register() priority to before the one used by board_init() (HOOK_PRIO_INIT_CR50_BOARD).",
+      "parentUuid": "d53b9e03_047093d8",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 58
+      },
+      "revId": "7a8c010306081c7b76f62b5335839bff3d78be7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
