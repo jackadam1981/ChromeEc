@@ -46,6 +46,30 @@
       "revId": "b75710e1837a86de7b118eb53f1828cd300e3ea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce0229d3_6c3a88a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-05-31T00:10:04Z",
+      "side": 1,
+      "message": "I agree with Ed, this choice was deliberate. There are areas in stack we want to change /future/ RP, without making an immediate I2C write/change. Agreed with Ed correct fix is figuring out where set_cc() call needs to be judiciously added (or is failing to work).\n\nAs written, this patch may adversely affect TCPC quirk/\"hook\" implementations by bypassing set_cc() wrapper. (Similar but different example: crrev/c/2209186)\n\nNot a coder; defer to Ed. But I would humbly suggest avoiding adding optional parameters to functions that bypass other functions.",
+      "parentUuid": "2ce71b7d_972e6c4c",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "b75710e1837a86de7b118eb53f1828cd300e3ea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
