@@ -46,6 +46,30 @@
       "revId": "7a8c010306081c7b76f62b5335839bff3d78be7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f4da0ad_443238c0",
+        "filename": "common/i2cs_tpm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-05-31T18:29:06Z",
+      "side": 1,
+      "message": "Changed its priority to (HOOK_PRIO_INIT_CR50_BOARD - 1).",
+      "parentUuid": "67e6ad7b_c0d0a13e",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 58
+      },
+      "revId": "7a8c010306081c7b76f62b5335839bff3d78be7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
