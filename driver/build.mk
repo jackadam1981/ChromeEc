@@ -79,7 +79,6 @@ driver-$(CONFIG_IO_EXPANDER_PCA9534)+=ioexpander/pca9534.o
 driver-$(CONFIG_IO_EXPANDER_NCT38XX)+=ioexpander/ioexpander_nct38xx.o
 driver-$(CONFIG_IO_EXPANDER_PCAL6408)+=ioexpander/pcal6408.o
 
-
 # Current/Power monitor
 driver-$(CONFIG_INA219)$(CONFIG_INA231)+=ina2xx.o
 driver-$(CONFIG_INA3221)+=ina3221.o
