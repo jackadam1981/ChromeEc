@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c015fca2_c491b366",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-01T14:55:38Z",
+      "side": 1,
+      "message": "nit: I think this name and logic would be slightly better as success (we would drop all three negations)",
+      "range": {
+        "startLine": 668,
+        "startChar": 39,
+        "endLine": 668,
+        "endChar": 46
+      },
+      "revId": "80bb802eea42734fa6d402604fa9e0568a59e77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef8e175_61c748e6",
+        "filename": "include/usb_tc_sm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-01T14:55:38Z",
+      "side": 1,
+      "message": "also taking in a bool seems like the more appropriate data type",
+      "range": {
+        "startLine": 185,
+        "startChar": 35,
+        "endLine": 185,
+        "endChar": 38
+      },
+      "revId": "80bb802eea42734fa6d402604fa9e0568a59e77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
