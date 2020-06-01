@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0cdd98ea_61f7a382",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-01T21:22:36Z",
+      "side": 1,
+      "message": "TC_UNATTACHED_SRC means not connected, no?\nAnd then after the call to restart_tc_sm(), then we will enable AutoDischargeDisconnect if/when we become connected again. Just like when tc_state_init() calls restart_tc_sm() on boot.",
+      "parentUuid": "88da094b_71a94dc1",
+      "revId": "9f6b91b5070dc81639a40d03ff94d01e32e288c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a065ff66_f2eeffd3",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
