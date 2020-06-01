@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "88da094b_71a94dc1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-01T20:51:32Z",
+      "side": 1,
+      "message": "Currently AutoDischargeDisconnect is enabled when we have a connection based on check_drp_connection.  Otherwise, we enable when an exception to the rule completes its path (HardReset, PR Swap).  restart_tc_sm is not aligned with the recovery of an exception. tc_end_error_recovery is called when error recovery is completed and we are going into an attached state.\n\nI can try adding an enable each time we enter restart_tc_sm. I am not sure what appropriately means at this point. We do not know if we have a connection or not. So this would have to be a blind enable.",
+      "parentUuid": "0aa2138a_7f87d1da",
+      "revId": "9f6b91b5070dc81639a40d03ff94d01e32e288c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a065ff66_f2eeffd3",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2020-06-01T20:28:16Z",
       "side": 1,
       "message": "What path would have AutoDischargeDisconnect enabled here?",
+      "revId": "9f6b91b5070dc81639a40d03ff94d01e32e288c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c552778b_aca47432",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3392,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-01T20:51:32Z",
+      "side": 1,
+      "message": "I think I plugged the hole in the exit routine by only re-enabling AutoDischargeDisconnect when we are performing a swap. I can remove this one and fix it later if it is determined there was another hole that was missed.",
+      "parentUuid": "a065ff66_f2eeffd3",
       "revId": "9f6b91b5070dc81639a40d03ff94d01e32e288c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
