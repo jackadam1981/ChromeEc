@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca7e5c57_1dff0661",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-01T21:05:54Z",
+      "side": 1,
+      "message": "These can be delivered from powerd as well.",
+      "range": {
+        "startLine": 1500,
+        "startChar": 0,
+        "endLine": 1501,
+        "endChar": 64
+      },
+      "revId": "41aca58e602af1fb3e107b444b35586a9e12aa06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0fd3003_f9170002",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-01T21:05:54Z",
+      "side": 1,
+      "message": "We need to save this in NVRAM so that it can be restored even after cutoff or hibernation (without waking up OS).",
+      "range": {
+        "startLine": 1518,
+        "startChar": 19,
+        "endLine": 1518,
+        "endChar": 35
+      },
+      "revId": "41aca58e602af1fb3e107b444b35586a9e12aa06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
