@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9cacce88_464b83ca",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-01T22:23:13Z",
+      "side": 1,
+      "message": "All of the attach entries have their enables removed, as was previously requested. So I am not sure how this would get enabled when the connection is made.  I added a blind enable in restart_tc_sm but I have no idea if the bases are covered at this point.",
+      "parentUuid": "0cdd98ea_61f7a382",
+      "revId": "9f6b91b5070dc81639a40d03ff94d01e32e288c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a065ff66_f2eeffd3",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -87,6 +105,24 @@
       "revId": "9f6b91b5070dc81639a40d03ff94d01e32e288c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "607f7693_a074638c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3392,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-01T22:23:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c552778b_aca47432",
+      "revId": "9f6b91b5070dc81639a40d03ff94d01e32e288c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
