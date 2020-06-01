@@ -71,6 +71,9 @@
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
 
+/* Enable USB4 DRD */
+#define CONFIG_USB_PD_USB4_DRD
+
 /* USB Type A Features */
 
 /* BC 1.2 */
