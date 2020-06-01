@@ -434,7 +434,7 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask,
 
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
-	return (IT83XX_GPIO_DATA(gpio_list[signal].port) &
+	return (IT83XX_GPIO_GET_DATA_MIRROR(gpio_list[signal].port) &
 			gpio_list[signal].mask) ? 1 : 0;
 }
 
@@ -445,10 +445,10 @@ void gpio_set_level(enum gpio_signal signal, int value)
 	/* critical section with interrupts off */
 	interrupt_disable();
 	if (value)
-		IT83XX_GPIO_DATA(gpio_list[signal].port) |=
+		IT83XX_GPIO_SET_DATA(gpio_list[signal].port) |=
 				 gpio_list[signal].mask;
 	else
-		IT83XX_GPIO_DATA(gpio_list[signal].port) &=
+		IT83XX_GPIO_SET_DATA(gpio_list[signal].port) &=
 				~gpio_list[signal].mask;
 	/* restore interrupts */
 	set_int_mask(int_mask);
@@ -512,9 +512,9 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 	/* If output, set level before changing type to an output. */
 	if (flags & GPIO_OUTPUT) {
 		if (flags & GPIO_HIGH)
-			IT83XX_GPIO_DATA(port) |= mask;
+			IT83XX_GPIO_SET_DATA(port) |= mask;
 		else if (flags & GPIO_LOW)
-			IT83XX_GPIO_DATA(port) &= ~mask;
+			IT83XX_GPIO_SET_DATA(port) &= ~mask;
 	}
 
 	/* For each bit high in the mask, set input/output and pullup/down. */
@@ -734,7 +734,7 @@ void gpio_pre_init(void)
 	 */
 	if (IS_ENABLED(IT83XX_GPIO_H7_DEFAULT_OUTPUT_LOW)) {
 		IT83XX_GPIO_CTRL(GPIO_H, 7) = GPCR_PORT_PIN_MODE_OUTPUT;
-		IT83XX_GPIO_DATA(GPIO_H) &= ~BIT(7);
+		IT83XX_GPIO_SET_DATA(GPIO_H) &= ~BIT(7);
 	}
 
 	for (i = 0; i < GPIO_COUNT; i++, g++) {
