@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "553b0118_3c9160f4",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-01T17:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12803cd9_2c21e8b1",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 17
+      },
+      "revId": "3d8b4b83485d3b92d78f95fea22f904ff312a2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adb0531e_c606958a",
         "filename": "board/servo_v4p1/board.h",
         "patchSetId": 8
@@ -564,6 +588,30 @@
       "revId": "3d8b4b83485d3b92d78f95fea22f904ff312a2d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2951b7b5_5ce85d9c",
+        "filename": "board/servo_v4p1/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-01T17:46:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d7eb1e3e_a5eb0309",
+      "range": {
+        "startLine": 15,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "3d8b4b83485d3b92d78f95fea22f904ff312a2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
