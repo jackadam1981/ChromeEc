@@ -93,6 +93,30 @@
       "revId": "0a478f4724c80cdc7aa6e9014deffee921d1c95d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "319762aa_6554f00a",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-01T04:17:29Z",
+      "side": 1,
+      "message": "vdm_cnt \u003d 1 would be valid for a few VDM types it\u0027s sending in the do_port_discovery path (Discover Identity, Discover SVIDs, Discover Mode).  vdm_cnt of 0 should be invalid since at a minimum we need our VDM header for it to be a correct message.",
+      "parentUuid": "4f7885fc_572bb244",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "0a478f4724c80cdc7aa6e9014deffee921d1c95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93663201_a20edf19",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-01T04:17:29Z",
+      "side": 1,
+      "message": "nit: could probably also remove this debug before commit?",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "aaf38e27f9d078f924c0ddc11ba15791a07f210f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

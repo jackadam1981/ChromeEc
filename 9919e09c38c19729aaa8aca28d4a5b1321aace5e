@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "20d8fd42_7cd66ae4",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-01T04:17:29Z",
+      "side": 1,
+      "message": "No reason that I know of.  I assume before the shared portions of the header (CMD_INIT, VDM version) were handled by the common usb_pd_policy.c switch code, but we could change that going forward.",
+      "parentUuid": "c172a0d1_67b02829",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee5be0de_e6da790f",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 4
