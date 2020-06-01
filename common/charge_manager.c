@@ -707,6 +707,7 @@ static void charge_manager_refresh(void)
 #else
 #ifdef CONFIG_CHARGE_RAMP_HW
 		/* Enable or disable charge ramp */
+		CPRINTS("[SC] charger_set_hw_ramp11111");
 		charger_set_hw_ramp(chg_ramp_allowed(new_supplier));
 #endif
 		board_set_charge_limit(new_port, new_supplier,

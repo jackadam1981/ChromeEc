@@ -1672,6 +1672,7 @@ static void handle_data_request(int port, uint16_t head,
 				pd_transmit(port, TCPC_TX_BIST_MODE_2, 0,
 					    NULL);
 				/* Set to appropriate port disconnected state */
+				CPRINTS("[SC] set1 dis_a");
 				set_state(port, DUAL_ROLE_IF_ELSE(port,
 						PD_STATE_SNK_DISCONNECTED,
 						PD_STATE_SRC_DISCONNECTED));
@@ -2088,6 +2089,7 @@ static void handle_request(int port, uint16_t head,
 			tcpm_set_cc(port, DUAL_ROLE_IF_ELSE(port, TYPEC_CC_RD,
 							    TYPEC_CC_RP));
 		}
+		CPRINTS("[SC] set2 dis");
 		set_state(port,
 			  DUAL_ROLE_IF_ELSE(port,
 					    PD_STATE_SNK_DISCONNECTED,
@@ -2468,6 +2470,7 @@ static void pd_update_dual_role_config(int port)
 	     || (drp_state[port] == PD_DRP_TOGGLE_OFF
 		 && pd[port].task_state == PD_STATE_SRC_DISCONNECTED))) {
 		pd_set_power_role(port, PD_ROLE_SINK);
+		CPRINTS("[SC] set 3 dis_c");
 		set_state(port, PD_STATE_SNK_DISCONNECTED);
 		tcpm_set_cc(port, TYPEC_CC_RD);
 		/* Make sure we're not sourcing VBUS. */
@@ -2731,10 +2734,11 @@ void pd_interrupt_handler_task(void *p)
 			 * interrupts. Upon existing suspend, we schedule a
 			 * PD_PROCESS_INTERRUPT to check if we missed anything.
 			 */
+			CPRINTS("[SC] PD_PROCESS_INTERRUPT");
 			while ((tcpc_get_alert_status() & port_mask) &&
 			       pd_is_port_enabled(port)) {
 				timestamp_t now;
-
+				CPRINTS("[SC] before tcpc_alert");
 				tcpc_alert(port);
 
 				now = get_time();
@@ -3001,7 +3005,9 @@ void pd_task(void *u)
 
 		/* wait for next event/packet or timeout expiration */
 		evt = task_wait_event(timeout);
-
+                
+		if (evt & PD_EVENT_TX)
+			CPRINTS("[SC] PD_EVENT_TX");
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 		if (evt & PD_EXIT_LOW_POWER_EVENT_MASK)
 			exit_low_power_mode(port);
@@ -3220,6 +3226,7 @@ void pd_task(void *u)
 				 * Transition to TryWait.SNK now, so set
 				 * state and update src marker time.
 				 */
+				CPRINTS("[SC] set 5 dis_c");
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
 				pd_set_power_role(port, PD_ROLE_SINK);
 				tcpm_set_cc(port, TYPEC_CC_RD);
@@ -3874,7 +3881,7 @@ void pd_task(void *u)
 
 		case PD_STATE_SNK_DISCONNECTED_DEBOUNCE:
 			tcpm_get_cc(port, &cc1, &cc2);
-
+			CPRINTS("[SC] cc1=%x, cc2=%x",cc1, cc2);
 			if (cc_is_rp(cc1) && cc_is_rp(cc2)) {
 				/* Debug accessory */
 				new_cc_state = PD_CC_DFP_DEBUG_ACC;
@@ -4530,6 +4537,7 @@ void pd_task(void *u)
 				tcpm_set_cc(port, TYPEC_CC_RD);
 				pd_set_power_role(port, PD_ROLE_SINK);
 				timeout = 2*MSEC;
+				CPRINTS("[SC] set 10 dis_c");
 				set_state(port, PD_STATE_SNK_DISCONNECTED);
 			} else if (next_state == DRP_TC_UNATTACHED_SRC) {
 				tcpm_set_cc(port, TYPEC_CC_RP);
@@ -4610,6 +4618,7 @@ void pd_task(void *u)
 			if (pd[port].polarity)
 				cc1 = cc2;
 			if (cc1 == TYPEC_CC_VOLT_OPEN) {
+				CPRINTS("[SC] set8 dis_c");
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				/* Debouncing */
 				timeout = 10*MSEC;
@@ -4627,6 +4636,7 @@ void pd_task(void *u)
 					pd[port].try_src_marker = get_time().val
 						+ PD_T_DEBOUNCE;
 					/* Advance to TryWait.SNK state */
+					CPRINTS("[SC] set9 dis_c");
 					set_state(port,
 						  PD_STATE_SNK_DISCONNECTED);
 					/* Mark state as TryWait.SNK */
@@ -4648,6 +4658,7 @@ void pd_task(void *u)
 		    pd[port].task_state != PD_STATE_SNK_HARD_RESET_RECOVER &&
 		    pd[port].task_state != PD_STATE_HARD_RESET_EXECUTE) {
 			/* Sink: detect disconnect by monitoring VBUS */
+			CPRINTS("[SC] set7 dis_c");
 			set_state(port, PD_STATE_SNK_DISCONNECTED);
 			/* set timeout small to reconnect fast */
 			timeout = 5*MSEC;

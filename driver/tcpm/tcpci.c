@@ -590,7 +590,7 @@ void tcpci_tcpc_alert(int port)
 
 	/* Read the Alert register from the TCPC */
 	tcpm_alert_status(port, &status);
-
+	CPRINTS("[SC] MT6370 pd status=%x", status);
 	/*
 	 * Check for TX complete first b/c PD state machine waits on TX
 	 * completion events. This will send an event to the PD tasks
@@ -608,7 +608,7 @@ void tcpci_tcpc_alert(int port)
 			++failed_attempts;
 		if (tcpm_alert_status(port, &status))
 			++failed_attempts;
-
+		CPRINTS("[SC] TCPC_REG_ALRTT_RX_STATUS");
 		/* Ensure we don't loop endlessly */
 		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
 			CPRINTF("C%d Cannot consume RX buffer after %d failed "
@@ -623,7 +623,7 @@ void tcpci_tcpc_alert(int port)
 			return;
 		}
 	}
-
+	CPRINTS("[SC] status write=%x", status);
 	/* Clear all pending alert bits */
 	if (status)
 		tcpc_write16(port, TCPC_REG_ALERT, status);
@@ -632,10 +632,14 @@ void tcpci_tcpc_alert(int port)
 		/* CC status changed, wake task */
 		pd_event |= PD_EVENT_CC;
 	}
+	CPRINTS("[SC] pd_event=%x", pd_event);
 	if (status & TCPC_REG_ALERT_POWER_STATUS) {
+		
 		int reg = 0;
+		CPRINTS("[SC] TCPC_REG_ALERT_POWER_STATUS");
 		/* Read Power Status register */
 		tcpci_tcpm_get_power_status(port, &reg);
+		CPRINTS("[SC] status=%x", reg);
 		/* Update VBUS status */
 		tcpc_vbus[port] = reg &
 			TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
@@ -650,7 +654,7 @@ void tcpci_tcpc_alert(int port)
 		pd_execute_hard_reset(port);
 		pd_event |= TASK_EVENT_WAKE;
 	}
-
+	CPRINTS("[SC] pd_event1=%x", pd_event);
 #ifndef CONFIG_USB_PD_TCPC_LOW_POWER
 	/*
 	 * Check registers to see if we can tell that the TCPC has reset. If
@@ -661,7 +665,7 @@ void tcpci_tcpc_alert(int port)
 	if (register_mask_reset(port))
 		pd_event |= PD_EVENT_TCPC_RESET;
 #endif
-
+	CPRINTS("[SC] pd_event2=%x", pd_event);
 	/*
 	 * Wait until all possible TCPC accesses in this function are complete
 	 * prior to setting events and/or waking the pd task. When the PD
@@ -669,6 +673,7 @@ void tcpci_tcpc_alert(int port)
 	 * this function), the pd task may put the TCPC into low power mode and
 	 * the next I2C transaction to the TCPC will cause it to wake again.
 	 */
+	CPRINTS("[SC] pd_event3=%x", pd_event);
 	if (pd_event)
 		task_set_event(PD_PORT_TO_TASK_ID(port), pd_event, 0);
 }

@@ -137,6 +137,9 @@
 #define CONFIG_SWITCH
 #define CONFIG_WATCHDOG_HELP
 
+#define CONFIG_COMMON_RUNTIME
+#define CONFIG_USB_PD_DEBUG_LEVEL 3
+
 #undef CONFIG_SYSTEM_UNLOCKED /* Disable dangerous commands for testing */
 
 #undef  CONFIG_UART_CONSOLE

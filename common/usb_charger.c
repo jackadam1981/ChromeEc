@@ -27,7 +27,8 @@
 static void update_vbus_supplier(int port, int vbus_level)
 {
 	struct charge_port_info charge = {0};
-
+	cprintf(CC_USB, "[SC] usb_charger_port_is_sourcing_vbus(port)=%d\n", 
+		usb_charger_port_is_sourcing_vbus(port));
 	if (vbus_level && !usb_charger_port_is_sourcing_vbus(port)) {
 		charge.voltage = USB_CHARGER_VOLTAGE_MV;
 		charge.current = USB_CHARGER_MIN_CURR_MA;

@@ -15,6 +15,7 @@
 
 test_mockable int chg_ramp_allowed(int supplier)
 {
+	cprints(CC_USBCHARGE, "system_is_in_rw=%d", system_is_in_rw());
 	/* Don't allow ramping in RO when write protected. */
 	if (!system_is_in_rw() && system_is_locked())
 		return 0;

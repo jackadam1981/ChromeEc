@@ -388,6 +388,7 @@ static void isl923x_init(void)
 
 	/* Disable voltage regulation loop to disable charge ramp */
 	reg |= ISL923X_C0_DISABLE_VREG;
+	CPRINTS("[SC] ISL923X_C0_DISABLE_VREG111");
 
 	if (raw_write16(ISL923X_REG_CONTROL0, reg))
 		goto init_fail;
@@ -467,7 +468,7 @@ int charger_set_hw_ramp(int enable)
 	rv = raw_read16(ISL923X_REG_CONTROL0, &reg);
 	if (rv)
 		return rv;
-
+	CPRINTS("[SC] charger_set_hw_ramp=%d", enable);
 	/* HW ramp is controlled by input voltage regulation reference bits */
 	if (enable)
 		reg &= ~ISL923X_C0_DISABLE_VREG;
