@@ -22,6 +22,30 @@
       "revId": "f26df919ec4ac82e818ada07c2feb7e95e044bca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94cfc9ad_5a51f2af",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-01T15:23:34Z",
+      "side": 1,
+      "message": "The user of this function is calling select_rp_value before calling this, mimicking set_cc.  I think it may be more obvious this is the correct pattern if I pull the cached value here and not pass rp as a parameter",
+      "parentUuid": "67e89ad6_c829e44f",
+      "range": {
+        "startLine": 278,
+        "startChar": 4,
+        "endLine": 278,
+        "endChar": 21
+      },
+      "revId": "f26df919ec4ac82e818ada07c2feb7e95e044bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
