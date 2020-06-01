@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d704250f_7a34e453",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:06:56Z",
+      "side": 1,
+      "message": "Do we need this mapping table if we configure all of them as INTC_GRP_0?",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b99157f_4a2ecf11",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:06:56Z",
+      "side": 1,
+      "message": "BUILD_ASSERT(SCP_INTC_IRQ_COUNT \u003d\u003d ARRAY_SIZE(irqs));",
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "727c4ddf_39e7f2b6",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:06:56Z",
+      "side": 1,
+      "message": "Could you add a TODO in case we want to enable the second core.",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 15
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf8f4a7_85d772ca",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:06:56Z",
+      "side": 1,
+      "message": "It seems a valid value. How about using 0xff or (-1) instead?\n\nAlso, since this is expected to crash, could we print logs and assert to check.",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45f68800_2b8dfe6d",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:06:56Z",
+      "side": 1,
+      "message": "Add a TODO for the second core. (also below)",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 19
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1e93aac_3eb13312",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:06:56Z",
+      "side": 1,
+      "message": "insert a blank line between 225, 226.",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e8ff00_ae4f5b25",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:06:56Z",
+      "side": 1,
+      "message": "use `Reset` would be more accurate.",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 7
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96327675_74d5bf46",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:06:56Z",
+      "side": 1,
+      "message": "Could we have a macro for this:\n\ne.g.\n\n DEFAULT_CORE0_INTC_IRQ_POL0",
+      "range": {
+        "startLine": 255,
+        "startChar": 29,
+        "endLine": 255,
+        "endChar": 39
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86670164_23e28392",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:06:56Z",
+      "side": 1,
+      "message": "(w)",
+      "range": {
+        "startLine": 27,
+        "startChar": 47,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a85c719_afb0c5ac",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:06:56Z",
+      "side": 1,
+      "message": "(g)  also below.",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
