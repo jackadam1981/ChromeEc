@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c172a0d1_67b02829",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-01T01:32:53Z",
+      "side": 1,
+      "message": "Done. I don\u0027t want to get bogged down in changing how this works right now, but is there any reason that pd_dfp_enter_mode and the status and config mode functions couldn\u0027t be changed to produce a finished VDM all by themselves?\n\nWith the caveat that svdm_dp_config is overridden by several boards and would be annoying to update.",
+      "parentUuid": "2c35f776_b19fd553",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee5be0de_e6da790f",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 4
@@ -826,6 +850,30 @@
     },
     {
       "key": {
+        "uuid": "c8a4661e_c1ae1af7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-01T01:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f300b15d_fa9f2765",
+      "range": {
+        "startLine": 1533,
+        "startChar": 2,
+        "endLine": 1536,
+        "endChar": 0
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1d49bbf_b4da9ed0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -870,6 +918,30 @@
       "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d588eb_c61c6771",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5044,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-01T01:32:53Z",
+      "side": 1,
+      "message": "It looks like it is checked in dfp_consume_attention (indirectly, outside of mode-specific code). It would make sense to set the DP ACKed state inside the DP-specific consumption functions, like svdm_dp_attention. Unfortunately, those are being overridden by numerous boards and thus seem like bad places to put things that should always run.\n\nI envision that the DP module would eventually contain all the DP-specific functions currently in usb_pd_alt_mode.c. If there is board-specific mux behavior, that should be in a board function that gets called by the generic function. I don\u0027t think board code should need to parse VDOs or set DP flags (which I guess should also be in the DP module eventually).\n\nIn the meantime, without dramatically expanding the scope of this CL, this seems like no worse a place than any for this code.",
+      "parentUuid": "b90d4558_ba2ecbea",
+      "range": {
+        "startLine": 5044,
+        "startChar": 3,
+        "endLine": 5044,
+        "endChar": 35
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1082,6 +1154,30 @@
       "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c737bc15_d85fb4ec",
+        "filename": "test/fake_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-01T01:32:53Z",
+      "side": 1,
+      "message": "OK, apparently I don\u0027t need any of this stuff anymore. I still don\u0027t understand why.",
+      "parentUuid": "099cfc2f_be832c4f",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 1
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

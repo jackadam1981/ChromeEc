@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "129c800f_535fae26",
+        "filename": "common/usbc/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-01T01:32:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da717cb6_37ddf0f9",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "0a478f4724c80cdc7aa6e9014deffee921d1c95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9cb4af8_526dfaf6",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-29T05:00:15Z",
       "side": 1,
       "message": "Check for error return.  Mode entry will fail when the AP is off and then we loop sending unstructured VDMs to the port partner",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "0a478f4724c80cdc7aa6e9014deffee921d1c95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f7885fc_572bb244",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-01T01:32:53Z",
+      "side": 1,
+      "message": "Done. Is there a reason we don\u0027t bail out of pe_vdm_request_entry immediately when vdm_cnt \u003c\u003d 1?",
+      "parentUuid": "b9cb4af8_526dfaf6",
       "range": {
         "startLine": 79,
         "startChar": 2,

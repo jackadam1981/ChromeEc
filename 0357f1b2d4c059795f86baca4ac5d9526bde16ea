@@ -406,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "2f06a2da_61e180a2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-01T01:32:53Z",
+      "side": 1,
+      "message": "I think the concerns about when to check things aren\u0027t very relevant until the host command makes it back in. It looks like I removed this check in Patchset 3 for reasons that currently escape me. I added it back in in `dpm_attempt_mode_entry`, next to the other checks.",
+      "parentUuid": "1e5cede6_1f02c48b",
+      "range": {
+        "startLine": 1087,
+        "startChar": 2,
+        "endLine": 1087,
+        "endChar": 42
+      },
+      "revId": "0357f1b2d4c059795f86baca4ac5d9526bde16ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3a786be_bbc81267",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
