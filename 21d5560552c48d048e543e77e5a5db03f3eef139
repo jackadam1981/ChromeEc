@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e8f9c0d_69de44a0",
+        "filename": "common/usb_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-01T18:13:39Z",
+      "side": 1,
+      "message": "would you mind offing the else and allow either or both FRS mechanisms to be enabled?",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 735,
+        "endChar": 5
+      },
+      "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
