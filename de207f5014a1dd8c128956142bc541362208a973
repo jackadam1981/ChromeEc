@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28f442a1_51aaf3a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-01T19:00:23Z",
+      "side": 1,
+      "message": "good for this CL, but I\u0027d add a new command to explicitly check for this state. will be useful if/when RSA centers actually start using this approach (or we switch to AP RO verif on every boot). this new commadn would also play nice with the global variable and ability to set it back to false from the next comment.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 49
+      },
+      "revId": "de207f5014a1dd8c128956142bc541362208a973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2162fc_7666a0c7",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-01T19:00:23Z",
+      "side": 1,
+      "message": "can we instead set a global variable so that all RST and RBOX handlers check that variable first and re-assert EC reset and keep it there? or maybe just do it inside deassert_ec_rst() and turn it into NOP if this variable is set. \n\nthis way we leave a way to get EC out of reset through a debug console w/o powercycle (would need a new command for it, which maybe CR50_DEV or widely enabled) w/o this deferred call reasserting it back again every 100ms. useful for dev machines.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "de207f5014a1dd8c128956142bc541362208a973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
