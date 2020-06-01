@@ -16,6 +16,24 @@
       "revId": "6da48220a76cea79d12ecd008b44c1ad082ca8cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5e46a5_852f9975",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3488,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-01T20:55:12Z",
+      "side": 1,
+      "message": "I will try that... The spec is not very clear. \n\nThe Policy Engine Shall transition to the PE_PRS_SRC_SNK_Assert_Rd state when:\n• The Device Policy Manager indicates that the Source has been turned off.\n\nSource turned off does not imply Safe0V has been reached.",
+      "parentUuid": "f903782f_7e1ffb0d",
+      "revId": "6da48220a76cea79d12ecd008b44c1ad082ca8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
