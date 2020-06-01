@@ -69,6 +69,30 @@
       "revId": "79ac80e77d21262223701d9a5160786002d7d475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d638e51_6b4ada6f",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-01T19:25:16Z",
+      "side": 1,
+      "message": "is your tab set to 4 spaces by any chance?\n\ngerrit shows this line as wrapped, repo upload would also confirm that this line exceeds 80 characters.",
+      "parentUuid": "1493bff9_a7c7bbc7",
+      "range": {
+        "startLine": 82,
+        "startChar": 73,
+        "endLine": 82,
+        "endChar": 77
+      },
+      "revId": "79ac80e77d21262223701d9a5160786002d7d475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
