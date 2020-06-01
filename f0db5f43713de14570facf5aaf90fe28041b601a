@@ -117,6 +117,30 @@
       "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5df26ba6_f59a196f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-01T19:21:40Z",
+      "side": 1,
+      "message": "It would seem like the correct thing for pd_dfp_exit_mode to be called from the PD task itself.   The v1 stack ran the exit mode shortly before actually sending the message so it didn\u0027t encounter this issue. \n\n7 should be a valid opos to send because of this criteria in 6.4.4.3.5\nExit Mode Command \"A value of 111b in the Object Position field Shall indicate that all Active Modes Shall be exited.\".  That said, it would probably be better to move the pd_dfp_exit_mode call into the PD task.  And if it\u0027s cleaning up all the SVID data structures, it should probably be called after all SVIDs have had a successful ExitMode (though we currently only enter DP on the v2 stack, so that would be theoretical code more so than something you could test easily right now).",
+      "parentUuid": "209fa121_d0433adb",
+      "range": {
+        "startLine": 1025,
+        "startChar": 23,
+        "endLine": 1025,
+        "endChar": 47
+      },
+      "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
