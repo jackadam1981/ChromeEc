@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67e89ad6_c829e44f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-01T15:05:04Z",
+      "side": 1,
+      "message": "should we also cache the rp value in this function too?\n\nOr should we not take in the rp value here and require the caller to fist call select_rp_value and we just use that value instead?",
+      "range": {
+        "startLine": 278,
+        "startChar": 4,
+        "endLine": 278,
+        "endChar": 21
+      },
+      "revId": "f26df919ec4ac82e818ada07c2feb7e95e044bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
