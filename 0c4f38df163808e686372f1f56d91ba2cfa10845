@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2c139d01_5ee0c395",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3466,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-01T14:22:14Z",
+      "side": 1,
+      "message": "TC turns off source power on exit from attached.src.\nTC asserts Rd on entrance to attached.snk.\n\nI will add the extra state and power off the source power as the PE state machine indicates.",
+      "parentUuid": "551e6fe2_d893f1ad",
+      "range": {
+        "startLine": 3465,
+        "startChar": 1,
+        "endLine": 3466,
+        "endChar": 32
+      },
+      "revId": "0c4f38df163808e686372f1f56d91ba2cfa10845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "190bec10_cd70afd2",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "0c4f38df163808e686372f1f56d91ba2cfa10845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7515b1e0_54ea91b7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3483,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-01T14:22:14Z",
+      "side": 1,
+      "message": "Removing the timeout.",
+      "parentUuid": "190bec10_cd70afd2",
+      "range": {
+        "startLine": 3481,
+        "startChar": 43,
+        "endLine": 3483,
+        "endChar": 15
+      },
+      "revId": "0c4f38df163808e686372f1f56d91ba2cfa10845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
