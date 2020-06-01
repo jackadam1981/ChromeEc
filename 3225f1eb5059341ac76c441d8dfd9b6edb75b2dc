@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "021eb39c_e13d98e2",
+        "filename": "board/sylas/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "fixed already",
+      "parentUuid": "683f2dd6_4f7ccbc2",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "858d2eb1_5ba408ef",
         "filename": "board/sylas/battery.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93628cea_7295b29e",
+        "filename": "board/sylas/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "Change for project Sylas.",
+      "parentUuid": "858d2eb1_5ba408ef",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "16e522bd_236b4bb8",
+        "filename": "board/sylas/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "I have already created definition \"PROJECT_SYLAS\" for project Sylas.",
+      "parentUuid": "a5538502_eefd8034",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1acc9735_b10372ab",
         "filename": "board/sylas/board.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b36ff458_f5e4f2f7",
+        "filename": "board/sylas/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "fixed already",
+      "parentUuid": "1acc9735_b10372ab",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "fe7e4886_388cc6be",
+        "filename": "board/sylas/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "Have already created a new ec thermal struct for project Sylas.",
+      "parentUuid": "49bf6f83_92f4e0c1",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d32d4ec0_ad92a9eb",
         "filename": "board/sylas/board.c",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b25d880_b32ce9ed",
+        "filename": "board/sylas/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "Have already created a new switch statement for project Sylas.",
+      "parentUuid": "d32d4ec0_ad92a9eb",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 8
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "d9817a10_1aaa098b",
+        "filename": "board/sylas/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "fixed already",
+      "parentUuid": "58aebef9_cc3504d9",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6385a650_ebc5b535",
         "filename": "board/sylas/board.h",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c07f43a_856b33a5",
+        "filename": "board/sylas/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "Defined \"PROJECT_SYLAS\" for project Sylas.",
+      "parentUuid": "6385a650_ebc5b535",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 13
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "41e988e4_ace410fe",
+        "filename": "board/sylas/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "fixed already",
+      "parentUuid": "b3379830_951232ea",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87e35e1e_3f2c89d5",
         "filename": "board/sylas/ec.tasklist",
         "patchSetId": 2
@@ -229,6 +445,30 @@
       "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53bec4f6_94437ae8",
+        "filename": "board/sylas/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "fixed already",
+      "parentUuid": "87e35e1e_3f2c89d5",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "8b304071_3d4525c9",
+        "filename": "board/sylas/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "fixed already",
+      "parentUuid": "bff91b83_0216a556",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87b7ed29_b5b1b224",
         "filename": "board/sylas/led.c",
         "patchSetId": 2
@@ -275,6 +539,30 @@
       "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d701d7e_16227864",
+        "filename": "board/sylas/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1416759
+      },
+      "writtenOn": "2020-06-01T07:28:46Z",
+      "side": 1,
+      "message": "fixed already",
+      "parentUuid": "87b7ed29_b5b1b224",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
