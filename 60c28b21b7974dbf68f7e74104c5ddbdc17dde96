@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c8099e1_858d3dba",
+        "filename": "board/asurada_scp/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T05:38:50Z",
+      "side": 1,
+      "message": "I assume you will modify this part in other patches.\n\nAFAIK, it has 32KB I-cache and D-cache respectively, and the SRAM size is 1MB, also IPI buffer location is not at 0x7bdb0.",
+      "revId": "60c28b21b7974dbf68f7e74104c5ddbdc17dde96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
