@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f903782f_7e1ffb0d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3488,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-01T20:36:32Z",
+      "side": 1,
+      "message": "It would make more sense to me to wait for Safe0V in pe_prs_src_snk_transition_to_off_run().\nDo we want to assert Rd before Safe0V?",
+      "revId": "6da48220a76cea79d12ecd008b44c1ad082ca8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
