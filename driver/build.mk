@@ -78,6 +78,8 @@ driver-$(CONFIG_IO_EXPANDER_IT8801)+=ioexpander/it8801.o
 driver-$(CONFIG_IO_EXPANDER_PCA9534)+=ioexpander/pca9534.o
 driver-$(CONFIG_IO_EXPANDER_NCT38XX)+=ioexpander/ioexpander_nct38xx.o
 driver-$(CONFIG_IO_EXPANDER_PCAL6408)+=ioexpander/pcal6408.o
+driver-$(CONFIG_IO_EXPANDER_TCA6416A)+=ioexpander/tca6416a.o
+driver-$(CONFIG_IO_EXPANDER_TCA6424A)+=ioexpander/tca6424a.o
 
 
 # Current/Power monitor
