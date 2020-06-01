@@ -7,28 +7,93 @@
 
 /* STM32 USB SPI driver for Chrome EC */
 
+#include <stdbool.h>
+
 #include "compile_time_macros.h"
 #include "hooks.h"
 #include "usb_descriptor.h"
 #include "usb_hw.h"
 
 /*
- * Command:
- *     +------------------+-----------------+------------------------+
- *     | write count : 1B | read count : 1B | write payload : <= 62B |
- *     +------------------+-----------------+------------------------+
+ * This SPI flash programming interface is designed to talk to a Chromium OS
+ * device over a Raiden USB connection.
  *
- *     write count:   1 byte, zero based count of bytes to write
+ * USB SPI Version 2:
  *
- *     read count:    1 byte, zero based count of bytes to read
+ *     USB SPI version 2 adds support for larger SPI transfers and reduces the
+ *     number of USB packets transferred. This improves performance when
+ *     writing or reading large chunks of memory from a device. A packet ID
+ *     field is used to distinguish the different packet types. Additional
+ *     packets have been included to query the device for it's configuration
+ *     allowing the interface to be used on platforms with different SPI
+ *     limitations. It includes validation and a packet to recover from the
+ *     situations where USB packets are lost.
  *
- *     write payload: up to 62 bytes of data to write, length must match
- *                    write count
  *
- * Response:
- *     +-------------+-----------------------+
- *     | status : 2B | read payload : <= 62B |
- *     +-------------+-----------------------+
+ * Example: USB SPI request with 128 byte write and 0 byte read.
+ *
+ *      Packet #1 Host to Device:
+ *           packet id     = USB_SPI_PKT_ID_CMD_START_TRANSFER
+ *           write count   = 128
+ *           read count    = 0
+ *           payload       = First 58 bytes from the write buffer,
+ *                           start is byte 0
+ *
+ *      Packet #2 Host to Device:
+ *           packet id  = USB_SPI_PKT_ID_CMD_TRANSFER_CONTINUE
+ *           data index = 58
+ *           payload    = next 60 bytes from the write buffer,
+ *                        starting at byte 58
+ *
+ *      Packet #3 Host to Device:
+ *           packet id  = USB_SPI_PKT_ID_CMD_TRANSFER_CONTINUE
+ *           data index = 118
+ *           payload    = next 10 bytes from the write buffer,
+ *                        starting at byte 118
+ *
+ *      Packet #4 Device to Host:
+ *           packet id   = USB_SPI_PKT_ID_RSP_TRANSFER_START
+ *           status code = status code from device
+ *           payload     = 0 bytes
+ *
+ *
+ * Message Packets:
+ *
+ * Command Packet (Host to Device):
+ *
+ *      Start of USB SPI command, containing the number of bytes to write and
+ *      read and a payload of bytes to write. If the payload is unable to fit
+ *      in one USB packet, it contains the first 58 bytes.
+ *
+ *     +----------------+------------------+-----------------+---------------+
+ *     | packet id : 2B | write count : 2B | read count : 2B | w.p. : <= 58B |
+ *     +----------------+------------------+-----------------+---------------+
+ *
+ *     packet id:     2 byte enum defined by packet_id_type
+ *                    Valid values packet id = USB_SPI_PKT_ID_CMD_START_TRANSFER
+ *
+ *     write count:   2 byte, zero based count of bytes to write
+ *
+ *     read count:    2 byte, zero based count of bytes to read
+ *
+ *     write payload: Up to 62 bytes of data to write to SPI, the total
+ *                    length of all TX packets must match write count.
+ *                    Due to data alignment constraints, this must be an
+ *                    even number of bytes unless this is the final packet.
+ *
+ *
+ * Response Packet (Device to Host):
+ *
+ *      Start of the USB SPI response, containing the status code and
+ *      any bytes read in the payload. If read buffer can not fit in
+ *       a single packet, it represents the first 60 bytes.
+ *
+ *     +----------------+------------------+-----------------------+
+ *     | packet id : 2B | status code : 2B | read payload : <= 60B |
+ *     +----------------+------------------+-----------------------+
+ *
+ *     packet id:     2 byte enum defined by packet_id_type
+ *                    Valid values packet id = USB_SPI_PKT_ID_RSP_TRANSFER_START
  *
  *     status code: 2 byte status code
  *         0x0000: Success
@@ -51,33 +116,171 @@
  *             The bottom 15 bits will contain the bottom 14 bits from the EC
  *             error code.
  *
- *     read payload: up to 62 bytes of data read from SPI, length will match
- *                   requested read count
+ *     read payload: Up to 60 bytes of data read from SPI, the total
+ *                   length of all RX packets must match read count
+ *                   unless an error status was returned. Due to data
+ *                   alignment constraints, this must be a even number
+ *                   of bytes unless this is the final packet.
+ *
+ *
+ * Continue Packet (Bidirectional):
+ *
+ *      Continuation packet for the writes and read buffers. Both packets
+ *      follow the same format, a data index counts the number of bytes
+ *      previously transferred in the USB SPI transfer and a payload of bytes.
+ *
+ *     +----------------+-----------------+-------------------------------+
+ *     | packet id : 2B | data index : 2B | write / read payload : <= 60B |
+ *     +----------------+-----------------+-------------------------------+
+ *
+ *     packet id:     2 byte enum defined by packet_id_type
+ *                    The packet id has 2 values depending on direction:
+ *                    packet id = USB_SPI_PKT_ID_CMD_TRANSFER_CONTINUE
+ *                    indicates the packet is being transmitted from the host
+ *                    to the device and contains SPI write payload.
+ *                    packet id = USB_SPI_PKT_ID_RSP_TRANSFER_CONTINUE
+ *                    indicates the packet is being transmitted from the device
+ *                    to the host and contains SPI read payload.
+ *
+ *     data index:    The data index indicates the number of bytes in the
+ *                    read or write buffers have already been transmitted.
+ *                    It is used to validate that no packets have been dropped
+ *                    and that the prior packets have been correctly decoded.
+ *                    this value corresponds to the position in the destination
+ *                    destination to start copying the payload into.
+ *
+ *     read and write payload:
+ *                    Contains up to 60 bytes of payload data to transfer to
+ *                    the SPI write buffer or from the SPI read buffer.
+ *
+ *
+ * Command Get Configuration Packet (Host to Device):
+ *
+ *      Query the device to request it's USB SPI configuration indicating
+ *      the number of bytes it can write and read.
+ *
+ *     +----------------+
+ *     | packet id : 2B |
+ *     +----------------+
+ *
+ *     packet id:     2 byte enum USB_SPI_PKT_ID_CMD_GET_USB_SPI_CONFIG
+ *
+ * Response Configuration Packet (Device to Host):
+ *
+ *      Response packet form the device to report the maximum write and
+ *      read size supported by the device.
+ *
+ *     +----------------+----------------------+---------------------+
+ *     | packet id : 2B | max write count : 2B | max read count : 2B |
+ *     +----------------+----------------------+---------------------+
+ *
+ *     packet id:         2 byte enum USB_SPI_PKT_ID_CMD_GET_USB_SPI_CONFIG
+ *
+ *     max write count :  2 byte count of the maximum number of bytes
+ *                        the device can write to SPI in one transaction.
+ *
+ *     max read count :   2 byte count of the maximum number of bytes
+ *                        the device can read from SPI in one transaction.
+ *
+ * Command Restart Response Packet (Host to Device):
+ *
+ *      Command to restart the response transfer from the device. This enables
+ *      the host to recover from a lost packet when reading the response
+ *      without restarting the SPI transfer.
+ *
+ *     +----------------+
+ *     | packet id : 2B |
+ *     +----------------+
+ *
+ *     packet id:         2 byte enum USB_SPI_PKT_ID_CMD_GET_USB_SPI_CONFIG
+ *
+ * USB Error Codes:
+ *
+ * send_command return codes have the following format:
+ *
+ *     0x00000:         Status code success.
+ *     0x00001-0x0FFFF: Error code returned by the USB SPI device.
+ *     0x10001-0x1FFFF: USB SPI Host error codes
+ *     0x20001-0x20063  Lower bits store the positive value representation
+ *                      of the libusb_error enum. See the libusb documentation:
+ *                      http://libusb.sourceforge.net/api-1.0/group__misc.html
  */
 
-#define PAYLOAD_SIZE_V1                 (62)
+#define USB_SPI_PAYLOAD_SIZE_V2_START       (58)
+
+#define USB_SPI_PAYLOAD_SIZE_V2_RESPONSE    (60)
+
+#define USB_SPI_PAYLOAD_SIZE_V2_CONTINUE    (60)
+
+#define USB_SPI_PAYLOAD_SIZE_V2_ERROR       (60)
+
+#define USB_SPI_MIN_PACKET_SIZE             (2)
+
+enum packet_id_type {
+
+	/* Request USB SPI configuration data from device. */
+	USB_SPI_PKT_ID_CMD_GET_USB_SPI_CONFIG = 0,
+	/* USB SPI configuration data from device. */
+	USB_SPI_PKT_ID_RSP_USB_SPI_CONFIG     = 1,
+
+	/* Start a USB SPI transfer and deliver first packet of data to write. */
+	USB_SPI_PKT_ID_CMD_START_TRANSFER     = 2,
+	/* Additional packets containing write payload. */
+	USB_SPI_PKT_ID_CMD_TRANSFER_CONTINUE  = 3,
+
+	/*
+	 * Request the device restart the response enabling us to recover from
+	 * packet loss without another SPI transfer.
+	 */
+	USB_SPI_PKT_ID_CMD_RESTART_RESPONSE   = 4,
+
+	/* First packet of USB SPI response with status code and read payload. */
+	USB_SPI_PKT_ID_RSP_TRANSFER_START     = 5,
+	/* Additional packets containing read payload. */
+	USB_SPI_PKT_ID_RSP_TRANSFER_CONTINUE  = 6,
+};
 
 typedef struct {
-	int8_t write_count;
+	int16_t packet_id;
+	uint16_t max_write_count;
+	uint16_t max_read_count;
+} __attribute__((packed)) usb_spi_response_configuration_v2_t;
+
+typedef struct {
+	int16_t packet_id;
+	int16_t write_count;
 	/* -1 Indicates readback all on halfduplex compliant devices. */
-	int8_t read_count;
-	uint8_t data[PAYLOAD_SIZE_V1];
-} __attribute__((packed)) usb_spi_command_v1_t;
+	int16_t read_count;
+	uint8_t data[USB_SPI_PAYLOAD_SIZE_V2_START];
+} __attribute__((packed)) usb_spi_command_v2_t;
 
 typedef struct {
+	int16_t packet_id;
 	uint16_t status_code;
-	uint8_t data[PAYLOAD_SIZE_V1];
-} __attribute__((packed)) usb_spi_response_v1_t;
+	uint8_t data[USB_SPI_PAYLOAD_SIZE_V2_RESPONSE];
+} __attribute__((packed)) usb_spi_response_v2_t;
 
-typedef union {
-	usb_spi_command_v1_t command;
-	usb_spi_response_v1_t response;
-} __attribute__((packed)) usb_spi_packet_v1_t;
+typedef struct {
+	int16_t packet_id;
+	uint16_t data_index;
+	uint8_t data[USB_SPI_PAYLOAD_SIZE_V2_CONTINUE];
+} __attribute__((packed)) usb_spi_continue_v2_t;
+
+typedef struct {
+	union {
+		int16_t packet_id;
+		usb_spi_command_v2_t cmd_start;
+		usb_spi_continue_v2_t cmd_continue;
+		usb_spi_response_configuration_v2_t rsp_config;
+		usb_spi_response_v2_t rsp_start;
+		usb_spi_continue_v2_t rsp_continue;
+	};
+} __attribute__((packed)) usb_spi_packet_v2_t;
 
 typedef struct {
 	union {
 		uint8_t bytes[USB_MAX_PACKET_SIZE];
-		usb_spi_packet_v1_t packet_v1;
+		usb_spi_packet_v2_t packet_v2;
 	};
 	/*
 	 * By storing the number of bytes in the header and knowing that the
@@ -86,7 +289,7 @@ typedef struct {
 	 * duplicating variables that can go out of sync.
 	 */
 	int header_size;
-	/* Number of bytes in the packet.*/
+	/* Number of bytes in the packet. */
 	int packet_size;
 } usb_spi_packet_ctx_t;
 
@@ -111,11 +314,15 @@ enum usb_spi_request {
 	USB_SPI_REQ_DISABLE = 0x0001,
 };
 
-#define USB_SPI_MAX_WRITE_COUNT 62
-#define USB_SPI_MAX_READ_COUNT  62
-
-BUILD_ASSERT(USB_MAX_PACKET_SIZE == (1 + 1 + USB_SPI_MAX_WRITE_COUNT));
-BUILD_ASSERT(USB_MAX_PACKET_SIZE == (2 + USB_SPI_MAX_READ_COUNT));
+/*
+ * To optimize for speed, we want to fill whole packets for each transfer
+ * This is done by setting the read and write count's to the payload sizes
+ * of the smaller start packet + N * continue packets.
+ */
+#define USB_SPI_BUFFER_SIZE     (USB_SPI_PAYLOAD_SIZE_V2_START + \
+								 (4 * USB_SPI_PAYLOAD_SIZE_V2_CONTINUE))
+#define USB_SPI_MAX_WRITE_COUNT USB_SPI_BUFFER_SIZE
+#define USB_SPI_MAX_READ_COUNT  USB_SPI_BUFFER_SIZE
 
 typedef struct {
 	/* Address of transmit buffer. */
@@ -134,6 +341,19 @@ typedef struct {
 	/* Number of bytes received. */
 	int receive_index;
 } usb_spi_receive_ctx_t;
+
+enum usb_spi_task {
+	/* No tasks are required. */
+	USB_SPI_TASK_IDLE = 0,
+	/* Indicates the device needs to send it's USB SPI configuration.*/
+	USB_SPI_TASK_SEND_CONFIGURATION,
+	/* Indicates we device needs start the SPI transfer. */
+	USB_SPI_TASK_START_SPI,
+	/* Indicates we should start a transfer response. */
+	USB_SPI_TASK_START_RESPONSE,
+	/* Indicates we need to continue a transfer response. */
+	USB_SPI_TASK_CONTINUE_RESPONSE,
+};
 
 struct usb_spi_state {
 	/*
@@ -157,6 +377,10 @@ struct usb_spi_state {
 	 * callback.
 	 */
 	int enabled;
+
+	/* Mark that we need to return the configurati*/
+
+	enum usb_spi_task mode;
 
 	/*
 	 * Stores the status code response for the transfer, delivered in the
