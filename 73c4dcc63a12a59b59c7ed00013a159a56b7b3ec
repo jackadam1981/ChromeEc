@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7de728e_e76e5e04",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-01T22:57:36Z",
+      "side": 1,
+      "message": "as keith suggested no CONFIG_USB_PD_USB4_DRD for Chrome.\nenable only CONFIG_USB_PD_USB32_DRD in baseboard.",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 30
+      },
+      "revId": "73c4dcc63a12a59b59c7ed00013a159a56b7b3ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
