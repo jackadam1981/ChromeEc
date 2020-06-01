@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "abbedeee_254d69d0",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-01T16:24:52Z",
+      "side": 1,
+      "message": "I\u0027ll add it to my to do list.",
+      "parentUuid": "20d8fd42_7cd66ae4",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee5be0de_e6da790f",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 4
@@ -1193,6 +1217,30 @@
       "side": 1,
       "message": "OK, apparently I don\u0027t need any of this stuff anymore. I still don\u0027t understand why.",
       "parentUuid": "099cfc2f_be832c4f",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 1
+      },
+      "revId": "9919e09c38c19729aaa8aca28d4a5b1321aace5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1280eb53_7340d6cc",
+        "filename": "test/fake_usbc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-01T16:24:52Z",
+      "side": 1,
+      "message": "Edit: I still need some of it for usb_pe_drp.c. I think I copied it, forgot about it, deleted one of the copies, and thought it was gone.",
+      "parentUuid": "c737bc15_d85fb4ec",
       "range": {
         "startLine": 181,
         "startChar": 0,
