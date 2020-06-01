@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62eddd60_69ca7218",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-01T22:44:17Z",
+      "side": 1,
+      "message": "As mentioned in my overall comment, change this so we don\u0027t clobber the actual VDO data returned by the cable.",
+      "range": {
+        "startLine": 886,
+        "startChar": 0,
+        "endLine": 886,
+        "endChar": 42
+      },
+      "revId": "d01c6de35723bb1e6811af3b2d46fda62f32f362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aebd463c_03f9b862",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-01T22:44:17Z",
+      "side": 1,
+      "message": "Sorry my previous comments were not clear - this function should remain called get_usb4_cable_speed().  I was suggesting a rename of board_get_max_tbt_speed() to board_get_max_usb_tbt_speed().  However, because the TBT and USB enums are different, I think board_get_max_tbt_speed() can remain as is.",
+      "range": {
+        "startLine": 889,
+        "startChar": 18,
+        "endLine": 889,
+        "endChar": 45
+      },
+      "revId": "d01c6de35723bb1e6811af3b2d46fda62f32f362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "447aa3eb_22b94ab3",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 909,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-01T22:44:17Z",
+      "side": 1,
+      "message": "I think this function would be clearer by using a local variable to set the maximum speed supported by the USB/TBT cable, and reflowing to a single exit point with a check against board_get_max_tbt_speed().\n\nThe common exit point would look like:\n    \n    /* Logic to set usb4_cable_speed based on passive, REV30, TBT checks\n       as before */\n\n    if (usb4_cable_speed \u003e board_get_max_usb_speed(port))\n        usb4_cable_speed \u003d board_get_max_usb_speed(port);\n\n    return usb4_cable_speed;\n\nboard_get_max_usb_speed() is optional - this just converts board_get_max_tbt_speed() to enum usb_rev_ss.",
+      "range": {
+        "startLine": 909,
+        "startChar": 0,
+        "endLine": 909,
+        "endChar": 1
+      },
+      "revId": "d01c6de35723bb1e6811af3b2d46fda62f32f362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f40bc606_ab86ff0a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-01T22:44:17Z",
+      "side": 1,
+      "message": "Revert to get_usb4_cable_speed().",
+      "range": {
+        "startLine": 240,
+        "startChar": 20,
+        "endLine": 240,
+        "endChar": 47
+      },
+      "revId": "d01c6de35723bb1e6811af3b2d46fda62f32f362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88b8cd29_56cae17c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-01T22:44:17Z",
+      "side": 1,
+      "message": "Remove this call so that cable-\u003eattr.rev_30.ss is not clobbered.  The get_usb4_cable_speed() will handle limiting based on board attributes.",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 34
+      },
+      "revId": "d01c6de35723bb1e6811af3b2d46fda62f32f362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3762cd70_f467ffe0",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-01T22:44:17Z",
+      "side": 1,
+      "message": "Move this logic into get_tbt_cable_speed() so that you don\u0027t overwrite cable-\u003ecable_mode_resp.tbt_cable_speed.  Probably makes sense as a separate CL.",
+      "range": {
+        "startLine": 508,
+        "startChar": 0,
+        "endLine": 510,
+        "endChar": 0
+      },
+      "revId": "d01c6de35723bb1e6811af3b2d46fda62f32f362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0850d1be_cc6ca7cc",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-01T22:44:17Z",
+      "side": 1,
+      "message": "I think this public routine can be eliminated once the call done by is_cable_ready_to_enter_usb4() is removed.",
+      "range": {
+        "startLine": 1973,
+        "startChar": 0,
+        "endLine": 1986,
+        "endChar": 0
+      },
+      "revId": "d01c6de35723bb1e6811af3b2d46fda62f32f362",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
