@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0e624451_cde589d5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-01T18:08:13Z",
+      "side": 1,
+      "message": "Without these flags though, we could have a situation where both the PPC and TCPC support FRS. This is the case on Volteer, the P8815 technically supports FRS timing but we are using the PPC. It is pretty easy to combine them if we decide that down the line.\n\nLet me make the change to shorten this config flag. I like your suggested names.",
+      "parentUuid": "a3e3e611_a342c162",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 46
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a861e472_c83a495f",
         "filename": "include/config.h",
         "patchSetId": 9
@@ -119,6 +143,54 @@
     },
     {
       "key": {
+        "uuid": "eb164af0_68a50498",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4022,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-01T18:08:13Z",
+      "side": 1,
+      "message": "I changed to CONFIG_USB_PD_FRS. \n\nUSB-A devices are not PD, so all the flags related to PD here wouldn\u0027t impact Type-A, I don\u0027t think theres any ambiguity if we have PD.",
+      "parentUuid": "000425c9_c20b035f",
+      "range": {
+        "startLine": 4022,
+        "startChar": 18,
+        "endLine": 4022,
+        "endChar": 27
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf1e4db_d0dd4ffc",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4022,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-01T18:08:13Z",
+      "side": 1,
+      "message": "Did my best, lmk what you think",
+      "parentUuid": "a861e472_c83a495f",
+      "range": {
+        "startLine": 4022,
+        "startChar": 7,
+        "endLine": 4022,
+        "endChar": 45
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41e0d00e_039ea9cc",
         "filename": "include/usbc_ppc.h",
         "patchSetId": 9
@@ -154,6 +226,30 @@
       "side": 1,
       "message": "I see that it gets used in the next CL. This line might be better placed in that CL, but I don\u0027t have a strong opinion.",
       "parentUuid": "41e0d00e_039ea9cc",
+      "range": {
+        "startLine": 161,
+        "startChar": 5,
+        "endLine": 161,
+        "endChar": 11
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19090099_4ef986f8",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-01T18:08:13Z",
+      "side": 1,
+      "message": "Yeah It could go there, I put it here so I wouldn\u0027t have to reach into the common files for the changes to the PPC driver itself. I\u0027ll leave it in this one unless there is a strong opinion.",
+      "parentUuid": "1c707434_c0f90cf9",
       "range": {
         "startLine": 161,
         "startChar": 5,
