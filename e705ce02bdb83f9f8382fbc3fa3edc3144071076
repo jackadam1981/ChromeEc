@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d08bdde_9c95bcc0",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:56:11Z",
+      "side": 1,
+      "message": "Use UART_CLOCK_26_MHZ instead.",
+      "range": {
+        "startLine": 22,
+        "startChar": 29,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "e705ce02bdb83f9f8382fbc3fa3edc3144071076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c531d01e_45493c61",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:56:11Z",
+      "side": 1,
+      "message": "Does UART work in S3?",
+      "range": {
+        "startLine": 26,
+        "startChar": 37,
+        "endLine": 26,
+        "endChar": 52
+      },
+      "revId": "e705ce02bdb83f9f8382fbc3fa3edc3144071076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbb61c30_e8e05042",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:56:11Z",
+      "side": 1,
+      "message": "It seems this is always true.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "e705ce02bdb83f9f8382fbc3fa3edc3144071076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "662620e4_6aa227b0",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-01T07:56:11Z",
+      "side": 1,
+      "message": "You miss the default case.",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 7
+      },
+      "revId": "e705ce02bdb83f9f8382fbc3fa3edc3144071076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
