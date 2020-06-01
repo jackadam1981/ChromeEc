@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df58aff9_062c9398",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-01T18:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b16a19b3_3d4d418b",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 39
+      },
+      "revId": "c8eda12a12dca2954e3d6cc70db1f91282c01887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad4cf4ab_87f62318",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "c8eda12a12dca2954e3d6cc70db1f91282c01887",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21a5d856_66bd903a",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-01T18:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad4cf4ab_87f62318",
+      "range": {
+        "startLine": 483,
+        "startChar": 38,
+        "endLine": 483,
+        "endChar": 39
+      },
+      "revId": "c8eda12a12dca2954e3d6cc70db1f91282c01887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4e2a62d7_47b4cbef",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-01T18:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240af8e3_3cb0efb9",
+      "range": {
+        "startLine": 572,
+        "startChar": 3,
+        "endLine": 572,
+        "endChar": 4
+      },
+      "revId": "c8eda12a12dca2954e3d6cc70db1f91282c01887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3582e48e_5fc57c41",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 9
@@ -82,6 +154,30 @@
       "writtenOn": "2020-05-29T17:25:05Z",
       "side": 1,
       "message": "Nit: I might prefer something like \"leave VCONN disabled\" to reassure that this is the default state. The same goes for enabling FRS.",
+      "range": {
+        "startLine": 574,
+        "startChar": 4,
+        "endLine": 574,
+        "endChar": 17
+      },
+      "revId": "c8eda12a12dca2954e3d6cc70db1f91282c01887",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fbc7175_cf516c2b",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-01T18:09:11Z",
+      "side": 1,
+      "message": "I think I actually disagree. There is no reset for this part, the register reset must be done as part of this init sequence. So, we could be doing this when Vconn is enabled (eg. on an EC reboot this will happen). We don\u0027t want to leave it, we explicitly want to set Vconn to disabled.\n\nFRS case is more reasonable, because that should always be the default. Still, we want to explicitly set it since this is taking the place of the reset.",
+      "parentUuid": "3582e48e_5fc57c41",
       "range": {
         "startLine": 574,
         "startChar": 4,
