@@ -22,6 +22,30 @@
       "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "611d1e5d_01051e90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-01T21:44:37Z",
+      "side": 1,
+      "message": "Charge Manager appears to be the culprit as to saving the rp value and it gets set in hardware on the low value and does not get returned back to the higher value.  With this change removed the SinkTxNG stays in effect and the dock resets when it sees they are communicating with us and they should not have been.  With this change, the SinkTxNG works as it is supposed to.  I do not know the charge manager or why it is changing the value, just know it is breaking our attach",
+      "parentUuid": "2445c8d7_93fe3dda",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
