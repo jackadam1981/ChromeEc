@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2445c8d7_93fe3dda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-01T20:46:18Z",
+      "side": 1,
+      "message": "I don\u0027t see how the collision detection was going wrong with the old code, can you walk me through it? I don\u0027t think we should be relying on charge_manager for the collision detection, if that is what is happening.",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
