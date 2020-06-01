@@ -96,59 +96,39 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	led_alert(insufficient_power);
 }
 
-#include "port-sm.c"
+#define PORT_OC_FRONT_A0	BIT(0)
+#define PORT_OC_FRONT_A1	BIT(1)
+#define PORT_OC_REAR_A0		BIT(2)
+#define PORT_OC_REAR_A1		BIT(3)
+#define PORT_OC_REAR_A2		BIT(4)
+#define PORT_OC_HDMI0		BIT(5)
+#define PORT_OC_HDMI1		BIT(6)
 
 static bool usbc_overcurrent;
+static uint8_t port_oc;
+
 /*
- * Update USB port power limits based on current state.
- *
- * Port power consumption is assumed to be negligible if not overcurrent,
- * and we have two knobs: the front port power limit, and the USB-C power limit.
- * Either one of the front ports may run at high power (one at a time) or we
- * can limit both to low power. On USB-C we can similarly limit the port power,
- * but there's only one port.
+ * Update the overcurrent bits for all of the ports.
  */
-void update_port_limits(void)
-{
-	struct port_states state = {
-		.bitfield = (!gpio_get_level(GPIO_USB_A0_OC_ODL)
-			     << PORTMASK_FRONT_A0) |
-			    (!gpio_get_level(GPIO_USB_A1_OC_ODL)
-			     << PORTMASK_FRONT_A1) |
-			    (!gpio_get_level(GPIO_USB_A2_OC_ODL)
-			     << PORTMASK_REAR_A0) |
-			    (!gpio_get_level(GPIO_USB_A3_OC_ODL)
-			     << PORTMASK_REAR_A1) |
-			    (!gpio_get_level(GPIO_USB_A4_OC_ODL)
-			     << PORTMASK_REAR_A2) |
-			    (!gpio_get_level(GPIO_HDMI_CONN0_OC_ODL)
-			     << PORTMASK_HDMI0) |
-			    (!gpio_get_level(GPIO_HDMI_CONN1_OC_ODL)
-			     << PORTMASK_HDMI1) |
-			    ((ppc_is_sourcing_vbus(0) && usbc_overcurrent)
-			     << PORTMASK_TYPEC),
-		.front_a_limited = gpio_get_level(GPIO_USB_A_LOW_PWR_OD),
-		/* Assume high-power; there's no way to poll this. */
-		/*
-		 * TODO(b/143190102) add a way to poll port power limit so we
-		 * can detect when it can be increased again if the port is
-		 * already active.
-		 */
-		.c_low_power = 0,
-	};
-
-	update_port_state(&state);
-
-	ppc_set_vbus_source_current_limit(0,
-		state.c_low_power ? TYPEC_RP_1A5 : TYPEC_RP_3A0);
-	/* Output high limits power */
-	gpio_set_level(GPIO_USB_A_LOW_PWR_OD, state.front_a_limited);
-}
-DECLARE_DEFERRED(update_port_limits);
-
 static void port_ocp_interrupt(enum gpio_signal signal)
 {
-	hook_call_deferred(&update_port_limits_data, 0);
+	uint8_t oc = 0;
+
+	if (!gpio_get_level(GPIO_USB_A0_OC_ODL))
+		oc |= PORT_OC_FRONT_A0;
+	if (!gpio_get_level(GPIO_USB_A1_OC_ODL))
+		oc |= PORT_OC_FRONT_A1;
+	if (!gpio_get_level(GPIO_USB_A2_OC_ODL))
+		oc |= PORT_OC_REAR_A0;
+	if (!gpio_get_level(GPIO_USB_A3_OC_ODL))
+		oc |= PORT_OC_REAR_A1;
+	if (!gpio_get_level(GPIO_USB_A4_OC_ODL))
+		oc |= PORT_OC_REAR_A2;
+	if (!gpio_get_level(GPIO_HDMI_CONN0_OC_ODL))
+		oc |= PORT_OC_HDMI0;
+	if (!gpio_get_level(GPIO_HDMI_CONN1_OC_ODL))
+		oc |= PORT_OC_HDMI1;
+	port_oc = oc;
 }
 
 /******************************************************************************/
@@ -297,7 +277,7 @@ const struct adc_t adc_channels[] = {
 	[ADC_PPVAR_IMON] = {  /* 500 mV/A */
 		.name = "PPVAR_IMON",
 		.input_ch = NPCX_ADC_CH9,
-		.factor_mul = ADC_MAX_VOLT,
+		.factor_mul = ADC_MAX_VOLT * 2, /* Milliamps */
 		.factor_div = ADC_READ_MAX + 1,
 	},
 	[ADC_TEMP_SENSOR_1] = {
@@ -439,7 +419,6 @@ static void board_init(void)
 	 */
 	cpu_set_interrupt_priority(NPCX_IRQ_WKINTC_0, 2);
 
-	update_port_limits();
 	gpio_enable_interrupt(GPIO_BJ_ADP_PRESENT_L);
 
 	/* Always claim AC is online, because we don't have a battery. */
@@ -611,3 +590,130 @@ enum ec_cfg_bj_power_type ec_config_get_bj_power(void)
 {
 	return ((fw_config & EC_CFG_BJ_POWER_MASK) >> EC_CFG_BJ_POWER_L);
 }
+
+/*
+ * Power monitoring and management.
+ *
+ * Actual power demand is calculated from the VBUS voltage and
+ * the input current (read from a shunt).
+ * The power limit is from the charge manager.
+ *
+ * The overall goal is to gracefully manage the power demand so that
+ * there is a staged throttling of usage. There are 3 throttles
+ * that can be applied (in priority order):
+ *
+ *  - Type A BC1.2 restriction (3W)
+ *  - Type C PD (throttle to 1.5A if sourcing)
+ *  - Turn on PROCHOT, which immediately throttles the CPU.
+ *
+ *  Type-C port overcurrent is also checked.
+ *
+ *  TODO: Incorporate port overcurrent limit indicators.
+ *
+ *  This function runs every 2 ms when the CPU is up,
+ *  and continually monitors the power usage, applying the
+ *  throttles when necessary.
+ */
+#define THROT_TYPE_A_BC		BIT(0)
+#define THROT_TYPEC		BIT(1)
+#define THROT_PROCHOT		BIT(2)
+
+static void power_monitor(void);
+DECLARE_DEFERRED(power_monitor);
+static void power_monitor(void)
+{
+	static uint32_t current_state;
+	int32_t delay;
+	uint32_t new_state = 0, diff;
+
+	/*
+	 * If CPU is off or suspended, no need to throttle
+	 * or restrict power.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF |
+			     CHIPSET_STATE_SUSPEND)) {
+		/*
+		 * Slow down monitoring, remove any throttling (except
+		 * for USB-C overcurrent).
+		 */
+		delay = 20 * MSEC;
+		if (ppc_is_sourcing_vbus(0) && usbc_overcurrent)
+			new_state |= THROT_TYPEC;
+	} else {
+		int32_t charger_mw;
+
+		delay = 2 * MSEC;
+		/*
+		 * Get current charger limit (in mw).
+		 * If not configured yet, skip.
+		 */
+		charger_mw = charge_manager_get_power_limit_uw() / 1000;
+		if (charger_mw != 0) {
+			int32_t headroom, mv, ma, margin = 0;
+
+			/*
+			 * Determine existing power usage.
+			 */
+			mv = adc_read_channel(ADC_VBUS);
+			ma = adc_read_channel(ADC_PPVAR_IMON);
+			/* For barreljack supply, allow extra margin */
+			if (charge_manager_get_supplier() ==
+					CHARGE_SUPPLIER_DEDICATED)
+				margin = 2000;
+			/*
+			 * Calculate headroom (mw). If negative, power
+			 * demand is exceeding configured power budget, so
+			 * throttling is required to reduce the demand.
+			 */
+			headroom = charger_mw - (mv * ma / 1000) + margin;
+			/*
+			 * If required, try limiting type-A power.
+			 */
+			if (headroom < 0) {
+				new_state |= THROT_TYPE_A_BC;
+				if (!(current_state & THROT_TYPE_A_BC))
+					headroom += 3200;
+			}
+			/*
+			 * If type-C port is sourcing power,
+			 * check for overcurrent or whether it needs
+			 * to be throttled.
+			 */
+			if (ppc_is_sourcing_vbus(0) &&
+			    (usbc_overcurrent || headroom < 0)) {
+				new_state |= THROT_TYPEC;
+				if (!(current_state & THROT_TYPEC))
+					headroom += 8800;
+			}
+			/*
+			 * As a last resort, turn on PROCHOT to
+			 * throttle the CPU.
+			 */
+			if (headroom < 0)
+				new_state |= THROT_PROCHOT;
+		}
+	}
+	/*
+	 * Adjust the throttles only if they have changed.
+	 */
+	diff = new_state ^ current_state;
+	current_state = new_state;
+	if (diff & THROT_PROCHOT) {
+		int prochot = (new_state & THROT_PROCHOT) ? 0 : 1;
+
+		gpio_set_level(GPIO_EC_PROCHOT_ODL, prochot);
+	}
+	if (diff & THROT_TYPEC) {
+		int on = (new_state & THROT_TYPEC);
+
+		ppc_set_vbus_source_current_limit(0,
+			on ? TYPEC_RP_1A5 : TYPEC_RP_3A0);
+	}
+	if (diff & THROT_TYPE_A_BC) {
+		int typea_bc = (new_state & THROT_TYPE_A_BC) ? 1 : 0;
+
+		gpio_set_level(GPIO_USB_A_LOW_PWR_OD, typea_bc);
+	}
+	hook_call_deferred(&power_monitor_data, delay);
+}
+DECLARE_HOOK(HOOK_INIT, power_monitor, HOOK_PRIO_INIT_ADC + 1);
