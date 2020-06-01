@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aa2138a_7f87d1da",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-01T20:28:16Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we enable AutoDischargeDisconnect here.\ntc_error_recovery_run() calls restart_tc_sm(port, TC_UNATTACHED_SRC): why isn\u0027t that path already handling setting AutoDischargeDisconnect appropriately?",
+      "revId": "9f6b91b5070dc81639a40d03ff94d01e32e288c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a065ff66_f2eeffd3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3392,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-01T20:28:16Z",
+      "side": 1,
+      "message": "What path would have AutoDischargeDisconnect enabled here?",
+      "revId": "9f6b91b5070dc81639a40d03ff94d01e32e288c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
