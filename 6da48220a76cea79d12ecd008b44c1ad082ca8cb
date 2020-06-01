@@ -34,6 +34,24 @@
       "revId": "6da48220a76cea79d12ecd008b44c1ad082ca8cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302802ec_f72068d6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 3488,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-06-01T23:46:54Z",
+      "side": 1,
+      "message": "This is governed under Swap Standby requirements.\n\nCiting (PD3.0 - 7.1.10 Swap Standby for Sources):\n\u003e Sources and Sinks of a Dual-Role Power Port Shall support Swap Standby. Swap Standby occurs for the Source after the Source power supply has discharged the bulk capacitance on VBUS to vSafe0V as part of the Power Role Swap transition.\n\nAdditional text follows in spec.",
+      "parentUuid": "8f5e46a5_852f9975",
+      "revId": "6da48220a76cea79d12ecd008b44c1ad082ca8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
