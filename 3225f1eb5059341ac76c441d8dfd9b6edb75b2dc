@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "683f2dd6_4f7ccbc2",
+        "filename": "board/sylas/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please correct the copyrights. E.g. 2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858d2eb1_5ba408ef",
+        "filename": "board/sylas/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please create a new battery info struct parameter for sylas. If sylas uses the same configuration as sona, you can refer it.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5538502_eefd8034",
+        "filename": "board/sylas/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please create a new switch statement for sylas. If sylas uses the same configuration as sona, you can refer it.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1acc9735_b10372ab",
+        "filename": "board/sylas/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please correct the copyrights. E.g. 2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49bf6f83_92f4e0c1",
+        "filename": "board/sylas/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please create a new ec thermal struct parameter for sylas. If sylas uses the same configuration as sona, you can refer it.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d32d4ec0_ad92a9eb",
+        "filename": "board/sylas/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please create a new switch statement for sylas. If sylas uses the same configuration as sona, you can refer it.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 8
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58aebef9_cc3504d9",
+        "filename": "board/sylas/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please correct the copyrights. E.g. 2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6385a650_ebc5b535",
+        "filename": "board/sylas/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please create a new oem_id parameter for sylas.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 13
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3379830_951232ea",
+        "filename": "board/sylas/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please correct the copyrights. E.g. 2020",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87e35e1e_3f2c89d5",
+        "filename": "board/sylas/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please correct the copyrights. E.g. 2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff91b83_0216a556",
+        "filename": "board/sylas/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please correct the copyrights. E.g. 2020",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87b7ed29_b5b1b224",
+        "filename": "board/sylas/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314118
+      },
+      "writtenOn": "2020-06-01T02:33:57Z",
+      "side": 1,
+      "message": "Please correct the copyrights. E.g. 2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "3225f1eb5059341ac76c441d8dfd9b6edb75b2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
