@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "3dcadd3d_fd593f4b",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-02T16:28:29Z",
+      "side": 1,
+      "message": "Fixed in crrev.com/c/2226878/1.",
+      "parentUuid": "dc54b507_1fb829ad",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d281d7f_edfaa66f",
         "filename": "util/flash_jlink.py",
         "patchSetId": 2
@@ -68,6 +92,30 @@
       "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8489930d_da346f82",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-02T16:28:29Z",
+      "side": 1,
+      "message": "Fixed in crrev.com/c/2226878/1.",
+      "parentUuid": "4d281d7f_edfaa66f",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -137,6 +185,54 @@
       "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18da485f_678029db",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-02T16:28:29Z",
+      "side": 1,
+      "message": "Fixed in crrev.com/c/2226878/1.",
+      "parentUuid": "46288ff6_eba38006",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6c386b5_cde9edbc",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-02T16:28:29Z",
+      "side": 1,
+      "message": "Fixed in crrev.com/c/2226878/1",
+      "parentUuid": "a2f72439_9e2f4059",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
