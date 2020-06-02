@@ -283,6 +283,30 @@
       "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d26e86e2_467cabb3",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-02T19:26:15Z",
+      "side": 1,
+      "message": "Then, I think a cleaner solution is to define HOOK_CHIPSET_SHUTDOWN_COMPLETE and call hook_notify(..._COMPLETE) from the end of POWER_S3S5 (just before return POWER_S5) or from POWER_S5G3. This should work for both x86 and sc7180.\n\nThis way, you can avoid impacting x86 projects (approaching releases) because only your project would react to SHUTDOWN_COMPLETE.\n\nHOOK_CHIPSET_SHUTDOWN doesn\u0027t seem properly named. It\u0027s more like SHUTDOWN_START. Calling handle_pending_reboot before completing a shutdown doesn\u0027t seem right.",
+      "parentUuid": "a859fbaf_97adcb1d",
+      "range": {
+        "startLine": 953,
+        "startChar": 60,
+        "endLine": 953,
+        "endChar": 77
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
