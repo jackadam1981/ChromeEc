@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdec0796_d00a35c9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 3458,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-02T20:40:24Z",
+      "side": 1,
+      "message": "Did you find a spec quote to cover when the contract invalidates?  I haven\u0027t seen anything definite yet about exactly when we should be invalidating the previous contract while swapping, but I also haven\u0027t spent a bunch of time on it",
+      "range": {
+        "startLine": 3457,
+        "startChar": 1,
+        "endLine": 3458,
+        "endChar": 39
+      },
+      "revId": "52a1131017569296e5a4b1dbc0cf7bf779b67e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "499c56e9_7287fab8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-02T20:40:24Z",
+      "side": 1,
+      "message": "What would you think about having the charge manager cache the Rp value it wants in the TC, and then the TC can set it when we\u0027re advertising initial source current?  The TC has much better knowledge of when it\u0027s appropriate to change Rp in its states",
+      "range": {
+        "startLine": 887,
+        "startChar": 0,
+        "endLine": 889,
+        "endChar": 9
+      },
+      "revId": "52a1131017569296e5a4b1dbc0cf7bf779b67e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0871966b_f52ccd94",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-02T20:40:24Z",
+      "side": 1,
+      "message": "In the future we could let host commands call this as well if we let the AP tells us what to source out.  So I think this is the right direction to move for that case as well.",
+      "range": {
+        "startLine": 1026,
+        "startChar": 3,
+        "endLine": 1026,
+        "endChar": 51
+      },
+      "revId": "52a1131017569296e5a4b1dbc0cf7bf779b67e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
