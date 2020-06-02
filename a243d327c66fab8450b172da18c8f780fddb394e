@@ -22,6 +22,30 @@
       "revId": "a243d327c66fab8450b172da18c8f780fddb394e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2498d951_da436e6c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-02T05:19:11Z",
+      "side": 1,
+      "message": "The DP mode guard is there because set_usb_mux_with_current_data_role overrides the alt mode settings in the mux - at least, that\u0027s my hypothesis. Basically, it changes the mux config so that DP mode is not working. Maybe that function needs to be smarter. I don\u0027t want to go too far down this rabbit hole :-)\n\nOK. Shall I raise a bug and put a TODO in here?\nApart from moving the pe_dpm_request(DPM_REQUEST_PORT_DISCOVERY) elsewhere, is the rest of the logic OK?",
+      "parentUuid": "26000bd0_b7b1dbb6",
+      "range": {
+        "startLine": 1433,
+        "startChar": 0,
+        "endLine": 1438,
+        "endChar": 40
+      },
+      "revId": "a243d327c66fab8450b172da18c8f780fddb394e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
