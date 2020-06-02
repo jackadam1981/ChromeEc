@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26000bd0_b7b1dbb6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-02T04:04:54Z",
+      "side": 1,
+      "message": "This doesn\u0027t belong here. I\u0027d pointed it out before, but I guess I missed it when it went in. https://crrev.com/c/2098566/3/common/usbc/usb_tc_drp_acc_trysrc_sm.c#1265\n\nThe bug is as you mentioned: at this point, startup and resume look the same. We should move it into `pd_chipset_startup()` at least. I would also drop the DP mode guard.\n\nWe shouldn\u0027t blindly kick off port discovery if the connection hasn\u0027t changed; we already know what the port partner is. This seems to be legacy logic from TCPMv1. I\u0027d like for us to be more specific with our intentions instead of just \"kicking off port discovery\" \u003d~ \"enter DP Alt mode\". We don\u0027t have to fix that in this CL however.",
+      "range": {
+        "startLine": 1433,
+        "startChar": 0,
+        "endLine": 1438,
+        "endChar": 40
+      },
+      "revId": "a243d327c66fab8450b172da18c8f780fddb394e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
