@@ -46,6 +46,30 @@
       "revId": "5607e6b44c0cbd4ad4fc876c034f7580b78c251d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e8d914_bc642c1f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3464,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-02T16:48:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "840f16ac_9464f740",
+      "range": {
+        "startLine": 3464,
+        "startChar": 31,
+        "endLine": 3464,
+        "endChar": 46
+      },
+      "revId": "5607e6b44c0cbd4ad4fc876c034f7580b78c251d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
