@@ -141,6 +141,30 @@
       "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a12643_b616d607",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-02T02:32:19Z",
+      "side": 1,
+      "message": "So I tried to use 7 as the opos, but the monitor replies with a NAK.\nI presume this is to signal an invalid opos.\nAnd upon repower, the attempt to set the monitor back into DP mode fails.\nMoving the calls around seems a bigger task that will likely need more investigation on my part. Can I use this as a workaround until I get that done? This issue is causing dogfood failures.",
+      "parentUuid": "5df26ba6_f59a196f",
+      "range": {
+        "startLine": 1025,
+        "startChar": 23,
+        "endLine": 1025,
+        "endChar": 47
+      },
+      "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
