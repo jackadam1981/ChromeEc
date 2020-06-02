@@ -46,6 +46,30 @@
       "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adcf6d80_796c412e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-06-02T00:43:14Z",
+      "side": 1,
+      "message": "\u003e I do not know the charge manager or why it is changing the value, just know it is breaking our attach\n\nIt appears to be a mutex race for select_rp() between [Analog Rp: Type-C current level] in charge_manager() and [PD Rp: PD3-Collision Avoidance PD2-BMCFloorClearance] in TCPMv2.\n\n\"Analog Rp\" only applies in implicit contract, until very last bit of PS_RDY-GoodCRC*. (Plus maybe during PR_SWAP from PS_RDY#2-GoodCRC* until PS_RDY#3-GoodCRC*.) \"PD Rp\" applies after that.\n\nCharge_manager() has no concept of there being \"two\" Rp settings.",
+      "parentUuid": "611d1e5d_01051e90",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
