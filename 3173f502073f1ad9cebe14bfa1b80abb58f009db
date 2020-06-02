@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f8f62cf_a7030a18",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-02T15:09:36Z",
+      "side": 1,
+      "message": "Don\u0027t you need to do a reset after programming?\n\nThen, an exit should suffice.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc54b507_1fb829ad",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-02T15:09:36Z",
+      "side": 1,
+      "message": "Is this the correct indentation?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d281d7f_edfaa66f",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-02T15:09:36Z",
+      "side": 1,
+      "message": "Is this the correct indentation?",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40bda0a7_71f43fe9",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-02T15:09:36Z",
+      "side": 1,
+      "message": "This is pretty specific. Installing the deb would make this easier JLinkExe, /usr/bin/JLinkExe, or /opt/SEGGER/JLink/JLinkExe all work.",
+      "range": {
+        "startLine": 68,
+        "startChar": 21,
+        "endLine": 68,
+        "endChar": 56
+      },
+      "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2f72439_9e2f4059",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-02T15:09:36Z",
+      "side": 1,
+      "message": "This indentation doesn\u0027t look like the rest.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46288ff6_eba38006",
+        "filename": "util/flash_jlink.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-02T15:09:36Z",
+      "side": 1,
+      "message": "From a previous comment from @vapier:\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/styleguide/python.md#main",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "3173f502073f1ad9cebe14bfa1b80abb58f009db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
