@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32ef415a_90141b5a",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-02T09:37:56Z",
+      "side": 1,
+      "message": "Should we put this config into bobba/board.h instead of baseboard level here?",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0973707b_8bef0b08",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-02T09:37:56Z",
+      "side": 1,
+      "message": "We should also check the board version and only judge by this PPC_ID in the new board version.",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91a3d8a7_c61782b9",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-02T09:37:56Z",
+      "side": 1,
+      "message": "board_setup_ppc might apply to the naming convention in this board level?",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189d2b4f_c056cbb1",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-02T09:37:56Z",
+      "side": 1,
+      "message": "Do we have the external pull high?",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
