@@ -145,13 +145,19 @@ int flash_physical_write(int offset, int size, const char *data);
  */
 int flash_physical_erase(int offset, int size);
 
+enum flash_physical_protect_level {
+	FLASH_PROTECT_LEVEL_NONE,
+	FLASH_PROTECT_LEVEL_BOOT,
+	FLASH_PROTECT_LEVEL_PERSISTENT,
+};
+
 /**
  * Read physical write protect setting for a flash bank.
  *
  * @param bank	        Bank index to check.
  * @return non-zero if bank is protected until reboot.
  */
-int flash_physical_get_protect(int bank);
+enum flash_physical_protect_level flash_physical_get_protect(int bank);
 
 /**
  * Return flash protect state flags from the physical layer.

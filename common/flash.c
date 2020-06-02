@@ -775,7 +775,7 @@ uint32_t flash_get_protect(void)
 		}
 #endif
 
-		if (flash_physical_get_protect(i)) {
+		if (flash_physical_get_protect(i) != FLASH_PROTECT_LEVEL_NONE) {
 			/* At least one bank in the region is protected */
 			flags |= bank_flag;
 			if (not_protected[region])
@@ -1008,7 +1008,15 @@ static int command_flash_info(int argc, char **argv)
 			ccputs("\n    ");
 		else if (!(i & 7))
 			ccputs(" ");
-		ccputs(flash_physical_get_protect(i) ? "Y" : ".");
+
+		switch (flash_physical_get_protect(i)) {
+		case FLASH_PROTECT_LEVEL_NONE:
+			ccputs("."); break;
+		case FLASH_PROTECT_LEVEL_BOOT:
+			ccputs("B"); break;
+		case FLASH_PROTECT_LEVEL_PERSISTENT:
+			ccputs("P"); break;
+		}
 	}
 	ccputs("\n");
 	return EC_SUCCESS;

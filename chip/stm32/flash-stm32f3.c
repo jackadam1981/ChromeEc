@@ -92,16 +92,20 @@ struct flash_wp_state {
 
 /*****************************************************************************/
 /* Physical layer APIs */
-
-int flash_physical_get_protect(int block)
+enum flash_physical_protect_level flash_physical_get_protect(int block)
 {
-	return (entire_flash_locked ||
+
 #if defined(CHIP_FAMILY_STM32F3)
-		!(STM32_FLASH_WRPR & BIT(block))
+	if (!(STM32_FLASH_WRPR & BIT(block)))
 #elif defined(CHIP_FAMILY_STM32F4)
-		!(STM32_OPTB_WP & STM32_OPTB_nWRP(block))
+	if (!(STM32_OPTB_WP & STM32_OPTB_nWRP(block)))
 #endif
-	       );
+		return FLASH_PROTECT_LEVEL_PERSISTENT;
+
+	if (entire_flash_locked)
+		return FLASH_PROTECT_LEVEL_BOOT;
+
+	return FLASH_PROTECT_LEVEL_NONE;
 }
 
 uint32_t flash_physical_get_protect_flags(void)
