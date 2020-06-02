@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4735e3d8_3dfb59f4",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T19:51:12Z",
+      "side": 1,
+      "message": "this should become\n\n#else\n\n\nbut better yet, since eraseflashinfo is not possible with the latest RO, let\u0027s just drop this function alltogether?\n\nWill make a big difference for CR50_DEV free space",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 534,
+        "endChar": 15
+      },
+      "revId": "e0bc0c8c9c022bfc3c3716935152a7cb815e0ebd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
