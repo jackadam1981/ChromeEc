@@ -22,6 +22,30 @@
       "revId": "1c4f9496b27ef285492c505f2680fca329a86f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de824a96_36ee5dbe",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T22:13:27Z",
+      "side": 1,
+      "message": "can we add this later when we decide how exactly we want the test to work and what exactly the command would need to do?",
+      "parentUuid": "24e2acf9_045becec",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "1c4f9496b27ef285492c505f2680fca329a86f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

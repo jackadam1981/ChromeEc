@@ -213,6 +213,30 @@
       "revId": "de207f5014a1dd8c128956142bc541362208a973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f005e8d7_661e1172",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T22:13:27Z",
+      "side": 1,
+      "message": "I really don\u0027t see a reason to do anything else if we keep polling 10 times a second, it would be just a waste of code space.\n\nEspecially since we can\u0027t prevent EC RST deassertion when someone presses power+refresh.",
+      "parentUuid": "6158943d_cda721dc",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "de207f5014a1dd8c128956142bc541362208a973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
