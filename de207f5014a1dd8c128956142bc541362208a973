@@ -189,6 +189,30 @@
       "revId": "de207f5014a1dd8c128956142bc541362208a973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6158943d_cda721dc",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-02T21:31:59Z",
+      "side": 1,
+      "message": "I think it would be good to prevent deassert_ec_rst() from deasserting ec rst if we\u0027re trying to hold the EC in reset just to get rid of the most obvious path for taking the device out of reset. I don\u0027t think running \u0027ecrst off\u0027 should be able to temporarily take the device out of reset.\n\nKeeping the periodic polling seems reasonable to protect against corner cases.",
+      "parentUuid": "26fdb452_a17747a8",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "de207f5014a1dd8c128956142bc541362208a973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24e2acf9_045becec",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-02T21:31:59Z",
+      "side": 1,
+      "message": "It would be useful to be able to trigger ap ro verification using a console command. We can\u0027t override the refresh button using servo, so right now we won\u0027t be able to trigger ap ro verification in faft.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 28
+      },
+      "revId": "1c4f9496b27ef285492c505f2680fca329a86f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
