@@ -22,6 +22,30 @@
       "revId": "99e40128ac0700c919834aaae1e085716b5d76fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20c83f3a_6f97250a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-06-02T17:04:30Z",
+      "side": 1,
+      "message": "Fixed. Could you add pdk@semihalf.corp-partner.google.com to CC? Without this I can\u0027t even open issue you provided.",
+      "parentUuid": "ee6d84e7_7ccfb0b4",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "99e40128ac0700c919834aaae1e085716b5d76fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
