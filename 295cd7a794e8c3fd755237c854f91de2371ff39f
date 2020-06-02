@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bdd63d2_a26182e2",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-02T22:53:58Z",
+      "side": 1,
+      "message": "Notify DPM of mode entry being done",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "295cd7a794e8c3fd755237c854f91de2371ff39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62be9ec_3f73ffcb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 4924,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-02T22:53:58Z",
+      "side": 1,
+      "message": "Notify DPM that we were NAK\u0027d.  I suppose we could exit DP mode if we got a NAK for something like DP configuration, but more importantly we\u0027ll need it to unwind entry into modes with active cables when one fails.",
+      "range": {
+        "startLine": 4923,
+        "startChar": 0,
+        "endLine": 4924,
+        "endChar": 44
+      },
+      "revId": "295cd7a794e8c3fd755237c854f91de2371ff39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4be7c7c5_fb25d9ad",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 4983,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-02T22:53:58Z",
+      "side": 1,
+      "message": "Let\u0027s handle the SVID ACK in the DPM so it can pass through to the appropriate module.",
+      "range": {
+        "startLine": 4982,
+        "startChar": 0,
+        "endLine": 4983,
+        "endChar": 36
+      },
+      "revId": "295cd7a794e8c3fd755237c854f91de2371ff39f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
