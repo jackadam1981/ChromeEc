@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e191a5de_c3685307",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-02T18:57:26Z",
+      "side": 1,
+      "message": "I know, but it still has similar issues. The change is like:\n\n```\nstatic void system_common_shutdown(void);\nDECLARE_DEFERRED(system_common_shutdown);\n\nstatic void system_common_shutdown(void)\n{\n\tif (reboot_at_shutdown) {\n\t\tif (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {\n\t\t\tCPRINTS(\"Reboot at shutdown: %d\", reboot_at_shutdown);\n\t\t\thandle_pending_reboot(reboot_at_shutdown);\n\t\t} else {\n\t\t\thook_call_deferred(\u0026system_common_shutdown_data, MSEC);\n\t\t}\n\t}\n}\nDECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, system_common_shutdown, HOOK_PRIO_LAST);\n```\n\nIn the hook call, checking chipset_in_state() is a waste. The hook is called in S3S5. The result of chipset_in_state() is always False.\n\nThe deferred timeout has to be unified to 1ms, instead of 0. If 0, the hook task is supposed be called immediately after the chipset. For x86 power sequence, S3S5 -\u003e S5 is done instantly and then the context switches to the hook task to trigger the reboot. Unifying the timeout to 1ms will delay the reboot call.",
+      "parentUuid": "f34fbbde_39353454",
+      "range": {
+        "startLine": 927,
+        "startChar": 12,
+        "endLine": 927,
+        "endChar": 34
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99b89b05_d63c5ab0",
         "filename": "common/system.c",
         "patchSetId": 4
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "May lowering the priority alone fix the bug?",
       "parentUuid": "bac0f73a_acd534ed",
+      "range": {
+        "startLine": 953,
+        "startChar": 60,
+        "endLine": 953,
+        "endChar": 77
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a859fbaf_97adcb1d",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-02T18:57:26Z",
+      "side": 1,
+      "message": "It is still executed in the chipset task context, before the power rails are removed.",
+      "parentUuid": "bcdb791d_e0f69eed",
       "range": {
         "startLine": 953,
         "startChar": 60,
