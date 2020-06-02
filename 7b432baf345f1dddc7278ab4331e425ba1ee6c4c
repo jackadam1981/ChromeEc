@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b47fb087_05a65cf8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-02T05:28:09Z",
+      "side": 1,
+      "message": "Denis\u0027 proposal is even more aggressive about removing #ifdefs than I was imagining. If having the PPC and TCPC both react to the FRS signal is a valid configuration (I am unclear on this based on the preceding comments and brief doc reading), then checking pointers instead of using conditional compilation seems like a visually cleaner approach.\n\nRight now, the flags are used to control defining the function pointers in the PPC and TCPC generic code. If you want to enforce that only one FRS enable function is defined using this design, you can add preprocessor logic to config.h to enforce that at most one of CONFIG_USB_PD_FRS_{TCPC,PPC} is defined. You can find many examples of that sort of thing elsewhere in config.h.",
+      "parentUuid": "0e624451_cde589d5",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 46
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a861e472_c83a495f",
         "filename": "include/config.h",
         "patchSetId": 9
@@ -188,6 +212,54 @@
       "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a251413f_38d9cd10",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4022,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-02T05:28:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eb164af0_68a50498",
+      "range": {
+        "startLine": 4022,
+        "startChar": 18,
+        "endLine": 4022,
+        "endChar": 27
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef30e4d7_fc9d9a35",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4022,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-02T05:28:09Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "3cf1e4db_d0dd4ffc",
+      "range": {
+        "startLine": 4022,
+        "startChar": 7,
+        "endLine": 4022,
+        "endChar": 45
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

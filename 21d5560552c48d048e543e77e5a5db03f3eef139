@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d5814dde_9f130edc",
+        "filename": "common/usb_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-02T05:28:09Z",
+      "side": 1,
+      "message": "If FRS were disabled by configuration, calls to this function would compile but not do anything (maybe even compile out with LTO). I\u0027m fine with that, but the comment in the header file should probably note it.\n\nIt\u0027s not super important for the current CL, because the only call to this function is conditionally compiled, but I wouldn\u0027t want it to be a source of confusion in the future.",
+      "range": {
+        "startLine": 731,
+        "startChar": 0,
+        "endLine": 731,
+        "endChar": 44
+      },
+      "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e8f9c0d_69de44a0",
         "filename": "common/usb_common.c",
         "patchSetId": 10
@@ -18,6 +41,122 @@
         "startChar": 1,
         "endLine": 735,
         "endChar": 5
+      },
+      "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d826680_8893d005",
+        "filename": "common/usb_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-02T05:28:09Z",
+      "side": 1,
+      "message": "Would anything weird/bad happen if both the TCPC and the PP detected and reacted to the FRS signal?",
+      "parentUuid": "7e8f9c0d_69de44a0",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 735,
+        "endChar": 5
+      },
+      "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b089adf_b9a4e61a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-02T05:28:09Z",
+      "side": 1,
+      "message": "Remove trailing whitespace. I think the Gerrit highlighting must have changed recently. This is now much more obvious than it was before.",
+      "range": {
+        "startLine": 790,
+        "startChar": 14,
+        "endLine": 790,
+        "endChar": 15
+      },
+      "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11391129_b01e6283",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-02T05:28:09Z",
+      "side": 1,
+      "message": "Nit: Space",
+      "range": {
+        "startLine": 334,
+        "startChar": 8,
+        "endLine": 334,
+        "endChar": 10
+      },
+      "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b0b1887_92674fa8",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2654,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-02T05:28:09Z",
+      "side": 1,
+      "message": "Nit: Line this up with the \"1\" on the next line.",
+      "range": {
+        "startLine": 2654,
+        "startChar": 15,
+        "endLine": 2654,
+        "endChar": 18
+      },
+      "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec207219_772fabc7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2657,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-02T05:28:09Z",
+      "side": 1,
+      "message": "Make this a bool.",
+      "range": {
+        "startLine": 2657,
+        "startChar": 33,
+        "endLine": 2657,
+        "endChar": 36
       },
       "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
