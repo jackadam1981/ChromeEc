@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8210092_667af8bc",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:45Z",
+      "side": 1,
+      "message": "It is temporary.  It will switch to use ULPOSC.  (there is a TODO above)",
+      "parentUuid": "2d08bdde_9c95bcc0",
+      "range": {
+        "startLine": 22,
+        "startChar": 29,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "e705ce02bdb83f9f8382fbc3fa3edc3144071076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c531d01e_45493c61",
         "filename": "chip/mt8192_scp/uart.c",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-01T07:56:11Z",
       "side": 1,
       "message": "Does UART work in S3?",
+      "range": {
+        "startLine": 26,
+        "startChar": 37,
+        "endLine": 26,
+        "endChar": 52
+      },
+      "revId": "e705ce02bdb83f9f8382fbc3fa3edc3144071076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "677008bd_325bd44a",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:45Z",
+      "side": 1,
+      "message": "Yes.  I suppose SCP UART still works even if AP is in S3.  That\u0027s why it\u0027ll switch to use ULPOSC.",
+      "parentUuid": "c531d01e_45493c61",
       "range": {
         "startLine": 26,
         "startChar": 37,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bb98e2e9_2caea912",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:45Z",
+      "side": 1,
+      "message": "No.  Depends on whether we want to keep AP UART code here.\n\nTo simplify the case, UARTN can be always equal to 0 in Asurada SCP (we don\u0027t have enough GPIOs for both SCP UART0 and UART1).\n\n- UARTN \u003d\u003d 0, SCP UART0\n- UARTN \u003d\u003d 1, SCP UART1\n- UARTN \u003d\u003d 2, AP UART1",
+      "parentUuid": "cbb61c30_e8e05042",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "e705ce02bdb83f9f8382fbc3fa3edc3144071076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "662620e4_6aa227b0",
         "filename": "chip/mt8192_scp/uart.c",
         "patchSetId": 10
@@ -91,6 +163,30 @@
       "revId": "e705ce02bdb83f9f8382fbc3fa3edc3144071076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb93505_1d23df73",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:45Z",
+      "side": 1,
+      "message": "Unless compiler is not happy about this, or I prefer not to have empty default case for the case.\n\n- It is ISR.  If it don\u0027t do anything, the core crashes.  \"default: break;\" doesn\u0027t help.\n- It is quite clear only these 2 IRQs (total 4 IRQs) are in group 12.",
+      "parentUuid": "662620e4_6aa227b0",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 7
+      },
+      "revId": "e705ce02bdb83f9f8382fbc3fa3edc3144071076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
