@@ -118,6 +118,30 @@
       "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "955c92d5_a0714c60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-02T16:46:39Z",
+      "side": 1,
+      "message": "Charge manager still is doing the math. I added an interface that is called instead (at least attempts to call it if it is defined, if not defined it will revert back to the original functionality) that will verify implicit contract and will then sets the Rp value in the TCPCI Role Control register.",
+      "parentUuid": "4c8451c7_bafb683e",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
