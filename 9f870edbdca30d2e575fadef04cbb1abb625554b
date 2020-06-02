@@ -94,6 +94,30 @@
       "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c8451c7_bafb683e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-06-02T15:28:14Z",
+      "side": 1,
+      "message": "I will defer to Ed, he has far greater context.\n\nOnly note: Eve (dynamic source-balance behavior), and Type-C \"Rp Sub-state\" behavior. I don\u0027t think TCPM \"does the math\" for that; I think charge_manager() does.",
+      "parentUuid": "f36d360f_9b75b584",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
