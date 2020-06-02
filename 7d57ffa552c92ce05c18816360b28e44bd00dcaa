@@ -22,6 +22,30 @@
       "revId": "7d57ffa552c92ce05c18816360b28e44bd00dcaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6108d98c_a299e0e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-02T20:44:49Z",
+      "side": 1,
+      "message": "It\u0027s fine for the initial commit message, and we carry that over in the cherry pick.",
+      "parentUuid": "d1cbe634_debd28f0",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "7d57ffa552c92ce05c18816360b28e44bd00dcaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
