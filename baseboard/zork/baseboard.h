@@ -349,10 +349,6 @@ void bc12_interrupt(enum gpio_signal signal);
 void ppc_interrupt(enum gpio_signal signal);
 void mst_hpd_interrupt(enum ioex_signal signal);
 
-#ifdef VARIANT_ZORK_TREMBYLE
-void hdmi_hpd_interrupt(enum ioex_signal signal);
-#endif
-
 #ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
 int board_tcpc_fast_role_swap_enable(int port, int enable);
 #endif
