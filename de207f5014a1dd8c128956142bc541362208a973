@@ -141,6 +141,30 @@
       "revId": "de207f5014a1dd8c128956142bc541362208a973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9c295d0_d2878e6f",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-02T19:20:25Z",
+      "side": 1,
+      "message": "\u003e if you feel strongly about it\n\njust feels weird to enforce it by periodic reasserting when we are in full control of it. maybe better to centralize all accesses to EC reset? this is not the only place that\u0027ll break if code meddles with registers directly instead of going through proper functions. maybe do it in a followup CL?\n\n\u003e this happens in two places in the code already\n\nI only see it board.c - in ec_rst-specific functions plus ac_stayed_disconnected(). does direct RBOX_ASSERT_EC_RST access happen somewhere else?\n\nif yes, can it break other things that [de]assert_ec_rst() currently ensure - handling uart config for bitbang, holding assert for certain time? maybe another reason to centralize handling EC resets?\n\n\u003e reset is also pulsed when power+refresh are pressed (even though it is asserted again by the RO...)\n\nthose are the cases, which would force us to use periodic reassertion. looks like in this case we are ok, so can still consider going through deassert_ec_rst() everywhere.",
+      "parentUuid": "cbbc085c_66b15a9a",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "de207f5014a1dd8c128956142bc541362208a973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
