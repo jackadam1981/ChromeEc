@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f34fbbde_39353454",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-02T18:32:50Z",
+      "side": 1,
+      "message": "What I meant was to reuse this function for both DECLARE_HOOK and DECLARE_HOOK.",
+      "parentUuid": "eba0cfc9_6d29bb81",
+      "range": {
+        "startLine": 927,
+        "startChar": 12,
+        "endLine": 927,
+        "endChar": 34
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99b89b05_d63c5ab0",
         "filename": "common/system.c",
         "patchSetId": 4
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Moved it the lowest priority, as it just schedules a deferred call.",
       "parentUuid": "799ec602_910736fe",
+      "range": {
+        "startLine": 953,
+        "startChar": 60,
+        "endLine": 953,
+        "endChar": 77
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcdb791d_e0f69eed",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-02T18:32:50Z",
+      "side": 1,
+      "message": "May lowering the priority alone fix the bug?",
+      "parentUuid": "bac0f73a_acd534ed",
       "range": {
         "startLine": 953,
         "startChar": 60,
