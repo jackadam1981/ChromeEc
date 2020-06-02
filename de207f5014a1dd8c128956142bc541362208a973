@@ -117,6 +117,30 @@
       "revId": "de207f5014a1dd8c128956142bc541362208a973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbbc085c_66b15a9a",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T14:48:31Z",
+      "side": 1,
+      "message": "EC can be reset by writing into RBOX_ASSERT_EC_RST, this happens in two places in the code already, more could be added by some future contributor either for a good reason, or for lack of awareness about this \u0027hold in reset\u0027 requirement. This is why I thought it is better to have an independent function/thread to enforce the state, but I can change this if you feel strongly about it.\n\nEC reset is also pulsed when power+refresh are pressed (even though it is asserted again by the RO and deasserted by rbox_release_ec_reset()).",
+      "parentUuid": "d943d0b8_5f1b2782",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "de207f5014a1dd8c128956142bc541362208a973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
