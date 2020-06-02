@@ -46,6 +46,30 @@
       "revId": "e77772343ccc0b60bc44da8b81a32136c8a7ec31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "584d13b4_4f0c15a1",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-02T19:55:50Z",
+      "side": 1,
+      "message": "*Not on Mistral.",
+      "parentUuid": "c9a9fe09_588f8e1d",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 14
+      },
+      "revId": "e77772343ccc0b60bc44da8b81a32136c8a7ec31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

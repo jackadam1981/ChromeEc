@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66179f7d_0d5e4b89",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-02T19:55:50Z",
+      "side": 1,
+      "message": "RBOX pulses EC_RST if you press pwrb+refresh. If someone does that combo after the device fails ap ro verification, will that take the device out of reset?\nDoes this matter?",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 28
+      },
+      "revId": "c97e9f887b382fc5d14c1abae64389273c71950e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6818d1_fd626e05",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-02T19:55:50Z",
+      "side": 1,
+      "message": "Can you make a sleepmask for AP_RO_VERIFICATION?",
+      "range": {
+        "startLine": 236,
+        "startChar": 27,
+        "endLine": 236,
+        "endChar": 34
+      },
+      "revId": "c97e9f887b382fc5d14c1abae64389273c71950e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
