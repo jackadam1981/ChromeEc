@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b1916a6_c1b7cb66",
+        "filename": "test/tpm_test/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T18:52:21Z",
+      "side": 1,
+      "message": "let\u0027s just drop this - we are not going back to Python 2",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "91e926c52aaa696f0c6addaddf18ac4fb9059797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1275cbd2_a82affa8",
+        "filename": "test/tpm_test/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T18:52:21Z",
+      "side": 1,
+      "message": "this is really brittle, we might move to a newer version of Python any time.\n\nhow about using something like \nPYTHON_VERSION \u003d $(shell python -c \u0027import sys; print(\"%d.%d\" % ( sys.version_info.major, sys.version_info.minor))\u0027)\n\nand then \n\nCFLAGS +\u003d -I /usr/include/python$(PYTHON_VERSION)",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "91e926c52aaa696f0c6addaddf18ac4fb9059797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
