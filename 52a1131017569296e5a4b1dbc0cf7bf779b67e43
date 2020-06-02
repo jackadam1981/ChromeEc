@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b86e9db7_13482690",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 3458,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-02T21:03:26Z",
+      "side": 1,
+      "message": "PD3 Figure 8.116 shows PE_PRS_SRC_SNK_Evaluate_Swap and PE_PRE_SRC_SNK_Accept_Swap have an explicit contract. It shows at PE_PRS_SRC_SNK_Transition_To_Off the explicit contract is no longer called out and we are transitioning to power off.\n\nI was told the charge manager was only allowed to adjust the Analog Rp when there was only an implicit contract.  Since we shut off power, it made sense to me that this was a better place than waiting for the power to be completely gone before saying the contract was invalid.",
+      "parentUuid": "cdec0796_d00a35c9",
+      "range": {
+        "startLine": 3457,
+        "startChar": 1,
+        "endLine": 3458,
+        "endChar": 39
+      },
+      "revId": "52a1131017569296e5a4b1dbc0cf7bf779b67e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "499c56e9_7287fab8",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "49b9ffd2_60b3455e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-02T21:03:26Z",
+      "side": 1,
+      "message": "I see collision management in PRL and setting to CONFIG_USB_PD_PULLUP in TC.  Is Charge Manager the only one that sets this value on connection to a value that is not collision management or CONFIG_USB_PD_PULLUP?  If pd_set_analog_rp_value just cached the value in TC then where would this value gets used to set the initial source current versus the standard CONFIG_USB_PD_PULLUP?",
+      "parentUuid": "499c56e9_7287fab8",
+      "range": {
+        "startLine": 887,
+        "startChar": 0,
+        "endLine": 889,
+        "endChar": 9
+      },
+      "revId": "52a1131017569296e5a4b1dbc0cf7bf779b67e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0871966b_f52ccd94",
         "filename": "include/usb_pd.h",
         "patchSetId": 12
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-02T20:40:24Z",
       "side": 1,
       "message": "In the future we could let host commands call this as well if we let the AP tells us what to source out.  So I think this is the right direction to move for that case as well.",
+      "range": {
+        "startLine": 1026,
+        "startChar": 3,
+        "endLine": 1026,
+        "endChar": 51
+      },
+      "revId": "52a1131017569296e5a4b1dbc0cf7bf779b67e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04bd0801_bc79ab5b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-02T21:03:26Z",
+      "side": 1,
+      "message": "Do you want this removed or leave it until the AP is actually calling to perform this action?",
+      "parentUuid": "0871966b_f52ccd94",
       "range": {
         "startLine": 1026,
         "startChar": 3,
