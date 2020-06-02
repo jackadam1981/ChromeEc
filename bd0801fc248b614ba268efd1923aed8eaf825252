@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53f37a89_c30f2daa",
+        "filename": "test/tpm_test/mpsse.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T19:43:53Z",
+      "side": 1,
+      "message": "let\u0027s not add \u0027serial\u0027 if it is not set.",
+      "range": {
+        "startLine": 388,
+        "startChar": 60,
+        "endLine": 388,
+        "endChar": 67
+      },
+      "revId": "bd0801fc248b614ba268efd1923aed8eaf825252",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
