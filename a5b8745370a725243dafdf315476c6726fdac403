@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e481e129_9d340a36",
+        "filename": "driver/ioexpander/tca6416a.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-02T18:00:11Z",
+      "side": 1,
+      "message": "Same port naming convention change here between data sheet and port names:\n\nhttp://www.ti.com/lit/ds/symlink/tca6416a.pdf?ts\u003d1591120754946",
+      "revId": "a5b8745370a725243dafdf315476c6726fdac403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e3e87ed_ea9f0971",
+        "filename": "driver/ioexpander/tca6424a.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-02T18:00:11Z",
+      "side": 1,
+      "message": "Minor thing, it looks like these are labeled ports 0, 1, and 2:\n\nhttp://www.ti.com/lit/ds/symlink/tca6424a.pdf?ts\u003d1591120134380",
+      "revId": "a5b8745370a725243dafdf315476c6726fdac403",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
