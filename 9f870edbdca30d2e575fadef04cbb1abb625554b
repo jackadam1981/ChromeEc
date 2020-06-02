@@ -70,6 +70,30 @@
       "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f36d360f_9b75b584",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-02T03:28:41Z",
+      "side": 1,
+      "message": "It does not seem like charge manager should be calling tcpm_select_rp_value at all. It feels more natural to have it call something more like tc_set_rp_value and that should only set the register value if an explicit contract is not currently active.  In that case it would actually set the rp value and would not change the cached select_rp value.  Guessing if an explicit contract is currently active that the tc_set_rp_value should just not do it.\n\nAm I reading your statement correctly?",
+      "parentUuid": "adcf6d80_796c412e",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "9f870edbdca30d2e575fadef04cbb1abb625554b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
