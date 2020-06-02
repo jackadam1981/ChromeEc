@@ -22,6 +22,30 @@
       "revId": "fe1a5df998d10d65fd3533585ad6296857f39301",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25bc5650_39a7dd08",
+        "filename": "chip/mt8192_scp/system.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T10:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0d41bf1_cdee521e",
+      "range": {
+        "startLine": 41,
+        "startChar": 45,
+        "endLine": 41,
+        "endChar": 48
+      },
+      "revId": "fe1a5df998d10d65fd3533585ad6296857f39301",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
