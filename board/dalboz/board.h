@@ -162,6 +162,8 @@ static inline bool ec_config_has_hdmi_retimer_pi3hdx1204(void)
 extern enum gpio_signal IOEX_USB_A1_RETIMER_EN;
 extern enum gpio_signal IOEX_USB_A1_CHARGE_EN_DB_L;
 
+void hdmi_hpd_interrupt(enum ioex_signal signal);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */

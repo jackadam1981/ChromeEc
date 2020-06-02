@@ -263,3 +263,20 @@ static void check_v0_battery(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, check_v0_battery, HOOK_PRIO_INIT_I2C);
+
+static void hdmi_hpd_handler(void)
+{
+	int hpd = 0;
+
+	/* Pass HPD through from DB OPT1 HDMI connector to AP's DP1. */
+	ioex_get_level(IOEX_HDMI_CONN_HPD_3V3_DB, &hpd);
+	gpio_set_level(GPIO_DP1_HPD, hpd);
+	ccprints("HDMI HPD %d", hpd);
+}
+DECLARE_DEFERRED(hdmi_hpd_handler);
+
+void hdmi_hpd_interrupt(enum ioex_signal signal)
+{
+	/* Debounce for 2 msec. */
+	hook_call_deferred(&hdmi_hpd_handler_data, (2 * MSEC));
+}
