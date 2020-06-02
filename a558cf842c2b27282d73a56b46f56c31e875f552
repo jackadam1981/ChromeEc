@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8670fe9_f4375cde",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-06-02T17:50:07Z",
+      "side": 0,
+      "message": "Is this necessary?\n\nI thought about saving all RTC backup registers in memory then restore them later, but that feels too expensive. What\u0027s the best thing to do?",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 40
+      },
+      "revId": "a558cf842c2b27282d73a56b46f56c31e875f552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
