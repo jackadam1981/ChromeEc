@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "60a4cf7e_bbe5f97e",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T21:08:31Z",
+      "side": 1,
+      "message": "I still think this poll is simpler and more reliable as there is no need to worry about corner cases.",
+      "parentUuid": "f5d325b4_a56ff301",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 28
+      },
+      "revId": "c97e9f887b382fc5d14c1abae64389273c71950e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a6818d1_fd626e05",
         "filename": "board/cr50/power_button.c",
         "patchSetId": 5
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I think it\u0027s necessary. It\u0027s just if someone in the future decides to prevent sleep for some console command, it wouldn\u0027t be very obvious that SLEEP_MASK_CONSOLE is being used for ap verification.\n\nSLEEP_MASK_FAN will never be used for cr50, so it could be reneamed.",
       "parentUuid": "a76079ce_1aff0404",
+      "range": {
+        "startLine": 236,
+        "startChar": 27,
+        "endLine": 236,
+        "endChar": 34
+      },
+      "revId": "c97e9f887b382fc5d14c1abae64389273c71950e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5456c8e_cae3d543",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T21:08:31Z",
+      "side": 1,
+      "message": "reused the bit previously allocated to SLEEP_MASK_FAN",
+      "parentUuid": "197d8dda_7d695b81",
       "range": {
         "startLine": 236,
         "startChar": 27,
