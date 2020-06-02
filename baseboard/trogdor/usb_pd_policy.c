@@ -34,9 +34,11 @@ static void board_vbus_update_source_current(int port)
 
 void pd_power_supply_reset(int port)
 {
-	int prev_en;
+	int prev_en = vbus_en[port];
 
-	prev_en = vbus_en[port];
+	/* If not enabled, do nothing */
+	if (!prev_en)
+		return;
 
 	/* Disable VBUS */
 	vbus_en[port] = 0;
