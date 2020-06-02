@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "de4d015a_6e662a04",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:22Z",
+      "side": 1,
+      "message": "Yes.  It is a placeholder.  Following CLs need to change the group value before they uses interrupts.",
+      "parentUuid": "d704250f_7a34e453",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b99157f_4a2ecf11",
         "filename": "chip/mt8192_scp/intc.c",
         "patchSetId": 10
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "4bd39c46_888f48fd",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b99157f_4a2ecf11",
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "727c4ddf_39e7f2b6",
         "filename": "chip/mt8192_scp/intc.c",
         "patchSetId": 10
@@ -53,6 +95,30 @@
       "writtenOn": "2020-06-01T07:06:56Z",
       "side": 1,
       "message": "Could you add a TODO in case we want to enable the second core.",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 15
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d94648f5_97e2730e",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:22Z",
+      "side": 1,
+      "message": "NACK, I think the naming itself \"CORE0\" clearly indicates that: what would need to do if we want to use CORE1.",
+      "parentUuid": "727c4ddf_39e7f2b6",
       "range": {
         "startLine": 161,
         "startChar": 10,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "487bc849_9102836f",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:22Z",
+      "side": 1,
+      "message": "I noticed that current core/riscv-rv32i doesn\u0027t check return value of chip_get_ec_int().  When the return value is not okay, it just screws up the core and panics.\n\nI think we could fix core/riscv-rv32i to check the return value.  Define (-1) as the designated error code.\n\nI would like to keep it as is (0 is not okay for current Asurada SCP) and submit another patch for fixing the core/riscv-rv32i and this.\n\nNo further prints are needed here.  Because it panics and core/riscv-rv32i already has some printing functions for that (core/riscv-rv32i/panic.c).",
+      "parentUuid": "2cf8f4a7_85d772ca",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45f68800_2b8dfe6d",
         "filename": "chip/mt8192_scp/intc.c",
         "patchSetId": 10
@@ -99,6 +189,30 @@
       "writtenOn": "2020-06-01T07:06:56Z",
       "side": 1,
       "message": "Add a TODO for the second core. (also below)",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 19
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba882325_8c44a1f0",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:22Z",
+      "side": 1,
+      "message": "The same reason above.",
+      "parentUuid": "45f68800_2b8dfe6d",
       "range": {
         "startLine": 185,
         "startChar": 4,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "c221a359_2900a61b",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1e93aac_3eb13312",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9e8ff00_ae4f5b25",
         "filename": "chip/mt8192_scp/intc.c",
         "patchSetId": 10
@@ -154,6 +292,30 @@
       "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62347da_9fe23b3a",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e8ff00_ae4f5b25",
+      "range": {
+        "startLine": 254,
+        "startChar": 4,
+        "endLine": 254,
+        "endChar": 7
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "65d322f9_33508ba6",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96327675_74d5bf46",
+      "range": {
+        "startLine": 255,
+        "startChar": 29,
+        "endLine": 255,
+        "endChar": 39
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86670164_23e28392",
         "filename": "chip/mt8192_scp/registers.h",
         "patchSetId": 10
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "0a0276df_ca4d630d",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86670164_23e28392",
+      "range": {
+        "startLine": 27,
+        "startChar": 47,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a85c719_afb0c5ac",
         "filename": "chip/mt8192_scp/registers.h",
         "patchSetId": 10
@@ -223,6 +433,30 @@
       "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37dc3ddd_d1745170",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-02T11:04:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a85c719_afb0c5ac",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
