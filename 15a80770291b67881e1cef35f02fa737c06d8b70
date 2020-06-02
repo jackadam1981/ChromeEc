@@ -307,6 +307,30 @@
       "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b176b272_7f9e1d60",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-02T22:47:13Z",
+      "side": 1,
+      "message": "I thought of adding a new hook like this. But it seems overkilled just for this use case, as adding a new hook require extra flash and RAM.\n\nI\u0027d like to hear Paul\u0027s or other EC reviewer\u0027s opinion on the new hook.\n\nBTW, this is not only for Trogdor. All non-x86 boards (Rockchip, Mediatek, Qualcomm) behave the similar way: EC explicitly shutdown the power rails in S3S5.",
+      "parentUuid": "d26e86e2_467cabb3",
+      "range": {
+        "startLine": 953,
+        "startChar": 60,
+        "endLine": 953,
+        "endChar": 77
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
