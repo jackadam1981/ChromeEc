@@ -93,6 +93,30 @@
       "revId": "de207f5014a1dd8c128956142bc541362208a973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d943d0b8_5f1b2782",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-02T04:04:04Z",
+      "side": 1,
+      "message": "\u003e  because the functions are in a different source file\n\nwe could have set_deassert_allowed_state(bool), which would be implemented and set a variable in board/cr50/board.c, where [de]assert_ec_rst() functions reside. similar to what post_reboot_request() does there.\nor the other way around - how uart_bitbang_is_enabled() is used in [de]assert_ec_rst().\n\n\u003e because conceivably EC reset could be deasserted without calling the function, but by just writing into the Rbox register.\n\nyes, this may be a good reason indeed, if EC reset can be asserted/deasserted as a result of an external signal coming into Rbox and directly affecting EC reset while H1 is in deep sleep, for example. or can AP initiate EC reset bypassing H1?\notherwise: do we ever do it - don\u0027t go to deassert_ec_rst() and just make a direct change in registers? why?",
+      "parentUuid": "c409ea50_c948e147",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "de207f5014a1dd8c128956142bc541362208a973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

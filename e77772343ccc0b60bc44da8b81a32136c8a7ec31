@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48f431f5_7b3f8dfd",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-02T04:04:04Z",
+      "side": 1,
+      "message": "btw, is that enough to keep EC in reset? could AP go on booting regardless?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 14
+      },
+      "revId": "e77772343ccc0b60bc44da8b81a32136c8a7ec31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
