@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "abbce2b4_f82b799b",
+        "filename": "test/tpm_test/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-02T22:08:09Z",
+      "side": 1,
+      "message": "it\u0027s weird but in chroot, it\u0027s /usr/bin/swig as ebuild swig4 overwrites whatever swig was there, but out of chroot it\u0027s swig4.0 and swig is earlier version. Ok, will remove it.",
+      "parentUuid": "6b1916a6_c1b7cb66",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "91e926c52aaa696f0c6addaddf18ac4fb9059797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1275cbd2_a82affa8",
         "filename": "test/tpm_test/Makefile",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "91e926c52aaa696f0c6addaddf18ac4fb9059797",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a3adc7_782250c0",
+        "filename": "test/tpm_test/Makefile",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-02T22:08:09Z",
+      "side": 1,
+      "message": "sounds good, will use it. actually should be python3, as python still defaults to python2",
+      "parentUuid": "1275cbd2_a82affa8",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "91e926c52aaa696f0c6addaddf18ac4fb9059797",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
