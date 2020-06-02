@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a053898c_b1d2b2d2",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T20:11:09Z",
+      "side": 1,
+      "message": "actually this a good point, we take the EC into reset only on cold start, so this pulse would go unnoticed, so this  periodic reinforcement is necessary",
+      "parentUuid": "66179f7d_0d5e4b89",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 28
+      },
+      "revId": "c97e9f887b382fc5d14c1abae64389273c71950e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a6818d1_fd626e05",
         "filename": "board/cr50/power_button.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-02T19:55:50Z",
       "side": 1,
       "message": "Can you make a sleepmask for AP_RO_VERIFICATION?",
+      "range": {
+        "startLine": 236,
+        "startChar": 27,
+        "endLine": 236,
+        "endChar": 34
+      },
+      "revId": "c97e9f887b382fc5d14c1abae64389273c71950e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a76079ce_1aff0404",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T20:11:09Z",
+      "side": 1,
+      "message": "Do you think this is really necessary - SLEEP_MASK_CONSOLE is not used by Cr50. I can rename it to AP_RO_VERIFICATION if you prefer, just want to avoid grabbing extra mask bits unless necessary, Please let me know your preference.",
+      "parentUuid": "1a6818d1_fd626e05",
       "range": {
         "startLine": 236,
         "startChar": 27,

@@ -165,6 +165,30 @@
       "revId": "de207f5014a1dd8c128956142bc541362208a973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26fdb452_a17747a8",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T20:11:09Z",
+      "side": 1,
+      "message": "grepping for ASSERT_EC_RST shows that it is used in another place. \n\nAlso, Mary brought up a good point: what I wrote earlier\n\n\"EC reset is also pulsed when power+refresh are pressed (even though it is asserted again by the RO and deasserted by rbox_release_ec_reset()).\"\n\nis incorrect, The deassertion happens only on H1 cold starts, not on resume from deep sleep  neither when the operator presses power+refresh.\n\nWithout periodic ec reset reinforcement pressing power+refresh would reboot the device.",
+      "parentUuid": "f9c295d0_d2878e6f",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "de207f5014a1dd8c128956142bc541362208a973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

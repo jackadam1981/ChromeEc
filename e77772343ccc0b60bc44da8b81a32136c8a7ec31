@@ -70,6 +70,30 @@
       "revId": "e77772343ccc0b60bc44da8b81a32136c8a7ec31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b550f9_161e0ade",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-02T20:11:09Z",
+      "side": 1,
+      "message": "there is no way to trigger AP RO verification on Mistral either, so I wouldn\u0027t worry about it.",
+      "parentUuid": "584d13b4_4f0c15a1",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 14
+      },
+      "revId": "e77772343ccc0b60bc44da8b81a32136c8a7ec31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
