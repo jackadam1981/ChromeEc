@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "224abf97_11cab71c",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-02T19:33:51Z",
+      "side": 1,
+      "message": "nit: to",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "cb3d7ffec41a2d6ed6106406a4d57c07bd7bd20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "697c5104_1a43503c",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-02T19:33:51Z",
+      "side": 1,
+      "message": "this is actually not \"undo what append...() did\", this is remove_trailing_zeroes().\n\nwhat if somebody sent us the command with leading zeroes kept in the point? here we\u0027d strip them off and get a different param and then point.\n\nthe main question is: do we even need to strip leading zeroes off? I\u0027m not sure if anybody relies on TPMS_ECC_POINT staying exactly as it was after this function. \n\nif they don\u0027t, let\u0027s just not do unappend...().\nand if they do, we\u0027d have to make a local copy of q on the stack and append zeroes there.",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 41
+      },
+      "revId": "cb3d7ffec41a2d6ed6106406a4d57c07bd7bd20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f8d776f_f81d9b50",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-02T19:33:51Z",
+      "side": 1,
+      "message": "nit: feels like this stuff can be combined into a single function - convert_ecc_point_into_p256_ints()",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "cb3d7ffec41a2d6ed6106406a4d57c07bd7bd20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
