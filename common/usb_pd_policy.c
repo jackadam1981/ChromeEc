@@ -240,6 +240,7 @@ void disable_enter_usb4_mode(int port)
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 
 static struct pd_discovery discovery[CONFIG_USB_PD_PORT_MAX_COUNT];
+static struct partner_active_modes partner_amodes[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static void enable_transmit_sop_prime(int port)
 {
@@ -377,6 +378,7 @@ static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 void pd_dfp_discovery_init(int port)
 {
 	memset(&discovery[port], 0, sizeof(struct pd_discovery));
+	memset(&partner_amodes[port], 0, sizeof(partner_amodes[0]));
 }
 
 static int dfp_discover_ident(uint32_t *payload)
@@ -398,6 +400,13 @@ struct pd_discovery *pd_get_am_discovery(int port, enum tcpm_transmit_type type)
 	 * depends on both types being in the same structure.
 	 */
 	return &discovery[port];
+}
+
+struct partner_active_modes *pd_get_partner_active_modes(int port,
+		enum tcpm_transmit_type type)
+{
+	assert(type < AMODE_TYPE_COUNT);
+	return &partner_amodes[port];
 }
 
 /* Note: Enter mode flag is not needed by TCPMv1 */
@@ -636,7 +645,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		struct svdm_amode_data *modep;
 
-		modep = pd_get_amode_data(port, PD_VDO_VID(payload[0]));
+		modep = pd_get_amode_data(port, TCPC_TX_SOP,
+				PD_VDO_VID(payload[0]));
 #endif
 		switch (cmd) {
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
@@ -751,7 +761,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				 * SVID.
 				 */
 				disable_tbt_compat_mode(port);
-				payload[0] = pd_dfp_enter_mode(port, 0, 0);
+				payload[0] = pd_dfp_enter_mode(port,
+						TCPC_TX_SOP, 0, 0);
 				if (payload[0])
 					rsize = 1;
 			}
@@ -769,7 +780,8 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				rsize = 0;
 			} else {
 				if (!modep->opos)
-					pd_dfp_enter_mode(port, 0, 0);
+					pd_dfp_enter_mode(port, TCPC_TX_SOP, 0,
+							0);
 
 				if (modep->opos) {
 					rsize = modep->fx->status(port,
