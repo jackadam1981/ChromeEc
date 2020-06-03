@@ -925,8 +925,8 @@ static void system_common_shutdown(void)
 		CPRINTF("Reboot at shutdown: %d\n", reboot_at_shutdown);
 	handle_pending_reboot(reboot_at_shutdown);
 }
-DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, system_common_shutdown,
-	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_POST_SHUTDOWN, system_common_shutdown,
+	     HOOK_PRIO_LAST);
 
 /*****************************************************************************/
 /* Console and Host Commands */
