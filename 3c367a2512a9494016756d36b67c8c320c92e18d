@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d56b73a1_20f30876",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-03T23:10:05Z",
+      "side": 1,
+      "message": "We should also be setting the Rp before the power supply is sourcing SafeV5\n\n\"The new Source asserts Rp, then sets its power output to vSafe5V and sends a PS_RDY Message when it is ready to supply power.\" from 8.3.2.6.2 Sink Initiated Power Role Swap without subsequent Power Negotiation",
+      "parentUuid": "b47ad5ba_6aac559a",
+      "range": {
+        "startLine": 782,
+        "startChar": 8,
+        "endLine": 782,
+        "endChar": 25
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01d0e9f1_eb15bad7",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 16
