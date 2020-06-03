@@ -403,6 +403,30 @@
       "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36658558_226ce899",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-03T17:51:31Z",
+      "side": 1,
+      "message": "Actually it is not costly than I expected. 64 bytes increases in flash and no increase in RAM.\n\nI made the new hook approach in the following patch series:\n  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2228396",
+      "parentUuid": "0b3d4e92_8f101ca0",
+      "range": {
+        "startLine": 953,
+        "startChar": 60,
+        "endLine": 953,
+        "endChar": 77
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
