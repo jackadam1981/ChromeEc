@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "e70bb30e_4e4fd731",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-03T05:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "278a7096_37a71bd4",
+      "range": {
+        "startLine": 633,
+        "startChar": 14,
+        "endLine": 633,
+        "endChar": 20
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55bd1dc0_092f0685",
         "filename": "board/puff/board.c",
         "patchSetId": 3
@@ -79,6 +103,30 @@
       "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08278b08_dcfdb4b0",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-03T05:29:31Z",
+      "side": 1,
+      "message": "Most of the discussion is captured in the attached bug and the linked doc, as well as b/154845324\nToshak suggested a 2W margin since barreljacks can provide an oversupply of current for a short period.\nI imagine we may tune these. Potentially we can treat the barreljack with no margin and force a 2W margin on the type-C i.e force throttling when power gets to type-C supply - 2W so that we have some leeway and not exceed the Type C supply.",
+      "parentUuid": "55bd1dc0_092f0685",
+      "range": {
+        "startLine": 702,
+        "startChar": 13,
+        "endLine": 702,
+        "endChar": 17
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "40b12ac2_aba52c38",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-03T05:29:31Z",
+      "side": 1,
+      "message": "These are from go/puff-power-distro, but I could make them #defines for clarity.",
+      "parentUuid": "14e11e52_c6eebd4b",
+      "range": {
+        "startLine": 716,
+        "startChar": 12,
+        "endLine": 716,
+        "endChar": 16
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c53e858_23403708",
         "filename": "board/puff/board.c",
         "patchSetId": 3
@@ -125,6 +197,30 @@
       "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994e553e_92dbaf2b",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-03T05:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3c53e858_23403708",
+      "range": {
+        "startLine": 726,
+        "startChar": 12,
+        "endLine": 726,
+        "endChar": 16
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -205,6 +301,30 @@
       "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33cb4a97_b2840735",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-03T05:29:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63af8eb8_9f198293",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 790,
+        "endChar": 37
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
