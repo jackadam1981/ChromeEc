@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf241b4d_9c5cefe7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-03T17:36:51Z",
+      "side": 1,
+      "message": "Brian, each comment needs to be explicitly replied to, unless resolved.",
+      "parentUuid": "8c7e86e3_2f446b40",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "79ac80e77d21262223701d9a5160786002d7d475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e588b34_fbcfffda",
         "filename": "chip/stm32/usb_console.c",
         "patchSetId": 1
