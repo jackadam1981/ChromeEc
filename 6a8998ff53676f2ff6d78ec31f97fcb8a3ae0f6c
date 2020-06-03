@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe0b2fe7_5826fac1",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-03T22:50:01Z",
+      "side": 1,
+      "message": "what about print_or_run()\n\nlet\u0027s just add a quick comment to the function of how it is to be used and when",
+      "range": {
+        "startLine": 204,
+        "startChar": 9,
+        "endLine": 204,
+        "endChar": 16
+      },
+      "revId": "6a8998ff53676f2ff6d78ec31f97fcb8a3ae0f6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
