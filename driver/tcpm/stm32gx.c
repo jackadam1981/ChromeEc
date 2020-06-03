@@ -110,7 +110,15 @@ static int stm32gx_tcpm_transmit(int port,
 			uint16_t header,
 			const uint32_t *data)
 {
-	return stm32gx_ucpd_transmit(port, type, header, data);
+	int rv;
+	/* static int modulo_counter; */
+	//board_debug_gpio(TRIGGER_1, 1);
+	/* if (modulo_counter++ < 5) */
+	/* 	ucpd_info(0); */
+	rv = stm32gx_ucpd_transmit(port, type, header, data);
+	//board_debug_gpio(TRIGGER_1, 0);
+
+	return rv;
 }
 
 static int stm32gx_tcpm_get_chip_info(int port, int live,
