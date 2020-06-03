@@ -66,6 +66,9 @@
 /* keypad */
 #define CONFIG_KEYBOARD_KEYPAD
 
+/* PPC */
+#define CONFIG_USBC_PPC_SYV682X
+
 #ifndef __ASSEMBLER__
 
 /* support factory keyboard test */
