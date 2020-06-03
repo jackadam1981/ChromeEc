@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6124456d_02f5b23a",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-03T05:46:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "431abb1e_3239a69d",
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dff47bf7_dabfa743",
         "filename": "board/puff/board.c",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae7d323_c08d0540",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-03T05:46:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dff47bf7_dabfa743",
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -241,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "05f75cde_e5dba5c5",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-03T05:46:59Z",
+      "side": 1,
+      "message": "Do you mean that we are not allowing any headroom and if we are running on the edge then\nadding a new device may briefly exceed the rating?\nThe function is also run on-demand if any of the overcurrent interrupts occur, so the time it exceeds should be low, but agree if this is an issue, it would be much better to preserve some margin of error - I am not sure what that should be (it would be easy to just decrease the max power by whatever margin we deem appropriate).",
+      "parentUuid": "1fa9c0f2_7f654027",
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91d0bf2e_4ac582ff",
         "filename": "board/puff/board.c",
         "patchSetId": 3
@@ -255,6 +309,24 @@
       "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f800b823_32060c26",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-03T05:46:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91d0bf2e_4ac582ff",
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
