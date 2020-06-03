@@ -361,7 +361,7 @@ static void power_off(void)
 	unsigned int power_off_timeout = 100; /* ms */
 
 	/* Call hooks before we drop power rails */
-	hook_notify(HOOK_CHIPSET_SHUTDOWN);
+	hook_notify(HOOK_CHIPSET_PRE_SHUTDOWN);
 	/* switch off all rails */
 	chipset_turn_off_power_rails();
 	/* Change SUSPEND_L and EC_INT pin to high-Z to reduce power draw. */

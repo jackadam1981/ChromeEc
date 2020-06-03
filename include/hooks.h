@@ -124,7 +124,7 @@ enum hook_type {
 	 *
 	 * Hook routines are called from the chipset task.
 	 */
-	HOOK_CHIPSET_SHUTDOWN,
+	HOOK_CHIPSET_PRE_SHUTDOWN,
 
 	/*
 	 * System reset in S0.  All rails are still up.

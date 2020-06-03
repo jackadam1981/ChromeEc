@@ -696,14 +696,14 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP,
 /* Called on AP S3 -> S5 transition */
 static void board_chipset_shutdown(void)
 {
-	CPRINTS("MEC1701 HOOK_CHIPSET_SHUTDOWN board_chipset_shutdown");
+	CPRINTS("MEC1701 HOOK_CHIPSET_PRE_SHUTDOWN board_chipset_shutdown");
 	trace0(0, HOOK, 0,
-	       "HOOK_CHIPSET_SHUTDOWN board_chipset_shutdown");
+	       "HOOK_CHIPSET_PRE_SHUTDOWN board_chipset_shutdown");
 	gpio_set_level(GPIO_USB1_ENABLE, 0);
 	gpio_set_level(GPIO_USB2_ENABLE, 0);
 	hook_call_deferred(&enable_input_devices_data, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN,
 		board_chipset_shutdown,
 		HOOK_PRIO_DEFAULT);
 
@@ -1013,10 +1013,10 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_spi_enable,
 
 static void board_spi_disable(void)
 {
-	trace0(0, BRD, 0, "HOOK_CHIPSET_SHUTDOWN - board_spi_disable");
+	trace0(0, BRD, 0, "HOOK_CHIPSET_PRE_SHUTDOWN - board_spi_disable");
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_spi_disable,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_spi_disable,
 	     MOTION_SENSE_HOOK_PRIO + 1);
 #endif /* defined(HAS_TASK_MOTIONSENSE) */
 

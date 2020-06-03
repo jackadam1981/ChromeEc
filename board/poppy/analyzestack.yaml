@@ -187,7 +187,7 @@ add:
     - { name: __hooks_chipset_pre_init, stride: 8, offset: 0 }
     - { name: __hooks_chipset_reset, stride: 8, offset: 0 }
     - { name: __hooks_chipset_resume, stride: 8, offset: 0 }
-    - { name: __hooks_chipset_shutdown, stride: 8, offset: 0 }
+    - { name: __hooks_chipset_pre_shutdown, stride: 8, offset: 0 }
     - { name: __hooks_chipset_startup, stride: 8, offset: 0 }
     - { name: __hooks_chipset_suspend, stride: 8, offset: 0 }
     - { name: __hooks_freq_change, stride: 8, offset: 0 }

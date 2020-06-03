@@ -554,7 +554,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 
 	case POWER_S3S5:
 		/* Call hooks before we remove power rails */
-		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+		hook_notify(HOOK_CHIPSET_PRE_SHUTDOWN);
 
 		/* Disable wireless */
 		wireless_set_state(WIRELESS_OFF);

@@ -344,7 +344,7 @@ static void board_chipset_shutdown(void)
 	system_set_reset_flags(EC_RESET_FLAG_AP_IDLE);
 	CPRINTS("Saved AP_IDLE flag");
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
 	     /* Slightly higher than handle_pending_reboot because
 	      * it may clear AP_OFF flag. */
 	     HOOK_PRIO_DEFAULT - 1);

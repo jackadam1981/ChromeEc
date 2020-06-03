@@ -39,7 +39,7 @@ static void dptf_disable_hook(void)
 	dptf_limit_ma = -1;
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, dptf_disable_hook, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dptf_disable_hook, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, dptf_disable_hook, HOOK_PRIO_DEFAULT);
 
 int charger_closest_voltage(int voltage)
 {

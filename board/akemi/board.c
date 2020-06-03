@@ -430,7 +430,8 @@ static void board_chipset_shutdown(void)
 	/* Quick charge current */
 	sb_quick_charge_mode(SB_QUICK_CHARGE_ENABLE);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 bool board_is_convertible(void)
 {

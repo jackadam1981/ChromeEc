@@ -72,7 +72,7 @@ add:
     - { name: __hooks_chipset_startup, stride: 8, offset: 0 }
     - { name: __hooks_chipset_suspend, stride: 8, offset: 0 }
     - { name: __hooks_sysjump, stride: 8, offset: 0 }
-    - { name: __hooks_chipset_shutdown, stride: 8, offset: 0 }
+    - { name: __hooks_chipset_pre_shutdown, stride: 8, offset: 0 }
     - { name: __hooks_ac_change, stride: 8, offset: 0 }
     - { name: __hooks_battery_soc_change, stride: 8, offset: 0 }
     - { name: __hooks_chipset_reset, stride: 8, offset: 0 }

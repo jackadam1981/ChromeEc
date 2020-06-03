@@ -129,7 +129,7 @@ static void std_led_shutdown(void)
 {
 	pwr_led_set_color(LED_OFF);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, std_led_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, std_led_shutdown, HOOK_PRIO_DEFAULT);
 #endif
 
 static void std_led_set_power(void)

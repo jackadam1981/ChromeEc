@@ -288,7 +288,7 @@ static void emmc_disable_spi(void)
 	emmc_enabled = 0;
 	CPRINTS("emmc disabled");
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, emmc_disable_spi, HOOK_PRIO_FIRST);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, emmc_disable_spi, HOOK_PRIO_FIRST);
 
 static void emmc_check_status(void)
 {

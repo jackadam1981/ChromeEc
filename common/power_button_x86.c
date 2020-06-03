@@ -536,7 +536,7 @@ static void power_button_pulse_setting_reset(void)
 
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, power_button_pulse_setting_reset,
 	     HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, power_button_pulse_setting_reset,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, power_button_pulse_setting_reset,
 	     HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, power_button_pulse_setting_reset,
 	     HOOK_PRIO_DEFAULT);

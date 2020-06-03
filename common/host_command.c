@@ -612,7 +612,7 @@ static void dump_host_command_suppressed_(void)
 {
 	dump_host_command_suppressed(1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN,
 	     dump_host_command_suppressed_, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_SYSJUMP,
 	     dump_host_command_suppressed_, HOOK_PRIO_DEFAULT);

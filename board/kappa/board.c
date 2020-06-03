@@ -287,7 +287,8 @@ static void board_chipset_shutdown(void)
 {
 	gpio_set_level(GPIO_EN_USBA_5V, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 int battery_get_vendor_param(uint32_t param, uint32_t *value)
 {

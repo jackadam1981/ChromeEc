@@ -143,7 +143,7 @@ static void suspend_led_deinit(void)
 	hook_call_deferred(&suspend_led_update_deferred_data, -1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, suspend_led_deinit, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, suspend_led_deinit, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, suspend_led_deinit, HOOK_PRIO_DEFAULT);
 
 static void led_set_battery(void)
 {

@@ -489,7 +489,8 @@ __override void board_chipset_forced_shutdown(void)
 {
 	hook_call_deferred(&check_reboot_deferred_data, -1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_forced_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_forced_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 static void check_reboot_deferred(void)
 {

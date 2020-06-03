@@ -497,7 +497,7 @@ static void power_off(void)
 		return;
 
 	/* Call hooks before we drop power rails */
-	hook_notify(HOOK_CHIPSET_SHUTDOWN);
+	hook_notify(HOOK_CHIPSET_PRE_SHUTDOWN);
 	/* switch off all rails */
 	chipset_turn_off_power_rails();
 

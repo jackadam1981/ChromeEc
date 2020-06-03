@@ -70,6 +70,6 @@ test_mockable void chipset_task(void)
 			task_wait_event(-1);
 		power_off_req = 0;
 		chipset_state = CHIPSET_STATE_SOFT_OFF;
-		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+		hook_notify(HOOK_CHIPSET_PRE_SHUTDOWN);
 	}
 }

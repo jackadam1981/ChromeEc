@@ -89,5 +89,5 @@ DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, reduce_input_voltage_when_full,
 	     HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, reduce_input_voltage_when_full,
 	     HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, reduce_input_voltage_when_full,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, reduce_input_voltage_when_full,
 	     HOOK_PRIO_DEFAULT);

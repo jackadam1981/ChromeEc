@@ -143,7 +143,7 @@ static void led_shutdown(void)
 	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
 		set_color(EC_LED_ID_POWER_LED, LED_OFF, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, led_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, led_shutdown, HOOK_PRIO_DEFAULT);
 
 static void led_resume(void)
 {

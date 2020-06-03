@@ -531,7 +531,7 @@ static void s5(void)
 	power_state = LED_STATE_S5;
 	call_handler();
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, s5, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, s5, HOOK_PRIO_DEFAULT);
 
 static void led_charge_hook(void)
 {

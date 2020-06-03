@@ -134,7 +134,7 @@ static void chipset_s3_to_s0(void)
 static void chipset_s3_to_s5(void)
 {
 	ps = POWER_S5;
-	hook_notify(HOOK_CHIPSET_SHUTDOWN);
+	hook_notify(HOOK_CHIPSET_PRE_SHUTDOWN);
 }
 
 static void chipset_s0_to_s3(void)
@@ -233,7 +233,7 @@ static void board_init(void)
 		ps = POWER_S3;
 	} else {
 		enable_sleep(SLEEP_MASK_AP_RUN);
-		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+		hook_notify(HOOK_CHIPSET_PRE_SHUTDOWN);
 		ps = POWER_S5;
 	}
 

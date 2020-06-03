@@ -319,7 +319,7 @@ static void power_off_base(void)
 {
 	base_power_enable(0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, power_off_base, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, power_off_base, HOOK_PRIO_DEFAULT);
 
 static uint8_t base_power_on_attempts;
 static void clear_base_power_on_attempts_deferred(void)

@@ -198,7 +198,8 @@ static void pogo_chipset_shutdown(void)
 
 	enable_power_supply(0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pogo_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, pogo_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 void base_force_state(int state)
 {

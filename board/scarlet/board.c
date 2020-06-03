@@ -255,7 +255,7 @@ static void board_spi_disable(void)
 
 	gpio_config_module(MODULE_SPI_MASTER, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN,
 	     board_spi_disable,
 	     MOTION_SENSE_HOOK_PRIO + 1);
 

@@ -595,7 +595,7 @@ static void pwm_fan_stop(void)
 	pwm_fan_control(0); /* crosbug.com/p/8097 */
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, pwm_fan_stop, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pwm_fan_stop, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, pwm_fan_stop, HOOK_PRIO_DEFAULT);
 
 static void pwm_fan_start(void)
 {

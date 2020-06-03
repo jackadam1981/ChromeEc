@@ -391,7 +391,7 @@ enum power_state power_handle_state(enum power_state state)
 			ap_shutdown = 1;
 
 		/* Call hooks before we remove power rails */
-		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+		hook_notify(HOOK_CHIPSET_PRE_SHUTDOWN);
 
 		/*
 		 * Assert SYS_RST_ODL, and waits for AP finishing epilogue and

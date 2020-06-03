@@ -308,7 +308,7 @@ void hook_shutdown(void)
 
 	/*
 	 * We filter the cases which can be interfered with if we execute
-	 * system_reset in HOOK_CHIPSET_SHUTDOWN context. Most cases are
+	 * system_reset in HOOK_CHIPSET_PRE_SHUTDOWN context. Most cases are
 	 * filtered out by system_is_in_rw (e.g. system_common_shutdown,
 	 * check_pending_cutoff).
 	 */
@@ -325,4 +325,4 @@ void hook_shutdown(void)
  * hooks realize, they need to be considered. This hook runs last (i.e.
  * HOOK_PRIO_LAST) to make our landing on S5 as mild as possible.
  */
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, hook_shutdown, HOOK_PRIO_LAST);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, hook_shutdown, HOOK_PRIO_LAST);
