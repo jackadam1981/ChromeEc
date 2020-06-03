@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "a0e9e1ae_9738405c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-03T23:20:04Z",
+      "side": 1,
+      "message": "Fair enough. We can leave it out then 😊",
+      "parentUuid": "433dbe75_6d01b8ce",
+      "range": {
+        "startLine": 2153,
+        "startChar": 2,
+        "endLine": 2153,
+        "endChar": 22
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e520f785_4d7ac7e4",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 16
