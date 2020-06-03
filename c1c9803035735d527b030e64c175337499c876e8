@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afb7f896_b9293348",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-03T15:12:44Z",
+      "side": 1,
+      "message": "Suggest to use \"\u003d 5\" because the board version 6 might be the co-layout with other PPC instead of syv.",
+      "range": {
+        "startLine": 83,
+        "startChar": 7,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "c1c9803035735d527b030e64c175337499c876e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff15365_972347a7",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-03T15:12:44Z",
+      "side": 1,
+      "message": "1? and same for syv682x_interrupt in line 91?",
+      "range": {
+        "startLine": 93,
+        "startChar": 23,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "c1c9803035735d527b030e64c175337499c876e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "865ddcd0_2a35fb72",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-03T15:12:44Z",
+      "side": 1,
+      "message": "Additional PPC second source",
+      "revId": "c1c9803035735d527b030e64c175337499c876e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51448c6_604e8ddc",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-03T15:12:44Z",
+      "side": 1,
+      "message": "Just move the \"PPC ID pin\" in line 154 to here would be enough",
+      "revId": "c1c9803035735d527b030e64c175337499c876e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
