@@ -82,10 +82,6 @@
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USB_MUX_VIRTUAL
 
-#ifdef CONFIG_USB_PD_TRY_SRC
-#error "Why the fuck is CONFIG_USB_PD_TRY_SRC enabled?"
-#endif
-
 /* Define typical operating power and max power. */
 #define PD_MAX_VOLTAGE_MV     20000
 #define PD_MAX_CURRENT_MA     3000
@@ -103,10 +99,14 @@
 /* I2C Bus Configuration */
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+
+/* I2C Port Definitions */
 #define I2C_PORT_USBC		0
 #define I2C_PORT_MST		1
 #define I2C_PORT_EEPROM	2
+#define I2C_PORT_MP4245 I2C_PORT_MST
 
+#define MP4245_SLAVE_ADDR MP4245_I2C_ADDR_0_FLAGS
 
 #ifndef __ASSEMBLER__
 
