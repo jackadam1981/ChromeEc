@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6eacf241_ba33333d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-03T23:11:46Z",
+      "side": 1,
+      "message": "I thought it would be less disruptive if I knew I was only changing the Rp value and leaving the rest of the register exactly as it was.\n\nNo one else was complaining that this was an issue for them. I hate to make general updates that change the behavior on others if it is not a problem to them.  I know the NCT has the problem and this is a better way to fix this, so made it globally accessible but privately enabled.",
+      "parentUuid": "b47ad5ba_6aac559a",
+      "range": {
+        "startLine": 782,
+        "startChar": 8,
+        "endLine": 782,
+        "endChar": 25
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01d0e9f1_eb15bad7",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 16
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "97f41098_c1c7bf21",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-03T23:11:46Z",
+      "side": 1,
+      "message": "I had it out for a while and think it can be removed.  I will take it out.  The default should get set on the path of tc_cc_rp.\n\nI had also taken out the version of this code that was in the swap in progress in attached.src but that one does not seem to have the same parent of tc_cc_rp so chickened out and put them both back as they were in the existing code.",
+      "parentUuid": "01d0e9f1_eb15bad7",
+      "range": {
+        "startLine": 2153,
+        "startChar": 2,
+        "endLine": 2153,
+        "endChar": 22
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e520f785_4d7ac7e4",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 16
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "9e8d54ab_61205d6d",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-03T23:11:46Z",
+      "side": 1,
+      "message": "the old code didn\u0027t expect it to set the value.  It only set the cached rp and called it a day.  Since the old code didn\u0027t do it, I didn\u0027t want to sign everyone up if their system was working as it was already implemented. The code is designed to be just like it was before for those that do not have this and that would make the change backward compatible.",
+      "parentUuid": "e520f785_4d7ac7e4",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10d99b77_fd4dd0ea",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 16
@@ -130,6 +202,30 @@
       "writtenOn": "2020-06-03T21:53:15Z",
       "side": 1,
       "message": "this isn\u0027t true for 3 of the TCPC drivers. It actually Sets the RP value synchronously.",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 9
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4138092_24d4fa34",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-03T23:11:46Z",
+      "side": 1,
+      "message": "and maybe those 3 would not need to have this change if they implemented set_rp_value.  I think \"Set\" seems misleading.",
+      "parentUuid": "10d99b77_fd4dd0ea",
       "range": {
         "startLine": 222,
         "startChar": 4,
@@ -176,6 +272,30 @@
       "writtenOn": "2020-06-03T21:56:34Z",
       "side": 1,
       "message": "Personally, I lean towards allowing asynchronous calls to cache a new Rp value, but only allowing the PD task to actually set that new value in the TCPC register since it knows the times it\u0027s allowed to set Rp for either the implicit contract or collision avoidance.",
+      "parentUuid": "4e09fd8c_5b9840b3",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d6fb29_448371b4",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-03T23:11:46Z",
+      "side": 1,
+      "message": "The current fall back it to work as it currently is before the CL.  Thus if a TCPC driver used to work it should continue to work.  I favored adding set_rp_value over forcing the use of set_cc because I wanted to know the Rp value was the only one that would possibly change.",
       "parentUuid": "4e09fd8c_5b9840b3",
       "range": {
         "startLine": 229,
