@@ -45,6 +45,75 @@
       "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e520f785_4d7ac7e4",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-03T21:53:15Z",
+      "side": 1,
+      "message": "do we really want this to be an optional function? Shouldn\u0027t we add this to all TCPC implementations?\n\nThe TCPMv2 calls into this function and expects some action, if most TCPCs don\u0027t implement this, then what should happen?",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d99b77_fd4dd0ea",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-03T21:53:15Z",
+      "side": 1,
+      "message": "this isn\u0027t true for 3 of the TCPC drivers. It actually Sets the RP value synchronously.",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 9
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e09fd8c_5b9840b3",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-03T21:53:15Z",
+      "side": 1,
+      "message": "we need to figure out what our consistent interface it for setting Rp value and CC lines and if they are cached/asychronous and when they are synchronous (and which functions are truly optional)\n\nOnce the interface is defined, then we need to ensure that all of the TCPC drivers work with that interface.",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
