@@ -1542,15 +1542,15 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	 * TODO: POLICY decision: move policy functionality out to a separate
 	 * file.  For now, try once to become DFP/Vconn source
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP)) {
-		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
+	/* if (PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP)) { */
+	/* 	PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP); */
 
-		if (pe[port].data_role == PD_ROLE_UFP) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-			set_state_pe(port, PE_DRS_SEND_SWAP);
-			return true;
-		}
-	}
+	/* 	if (pe[port].data_role == PD_ROLE_UFP) { */
+	/* 		PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS); */
+	/* 		set_state_pe(port, PE_DRS_SEND_SWAP); */
+	/* 		return true; */
+	/* 	} */
+	/* } */
 
 	if (IS_ENABLED(CONFIG_USBC_VCONN) &&
 			PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON)) {
