@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "53c843f3_1b3b4ddc",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-06-03T01:05:01Z",
+      "side": 1,
+      "message": "I\u0027m worried that having this fixed delay is going to work in almost all cases, but there will be outliers where a 1ms delay is not long enough, and we\u0027ll get the same buggy behavior. I think Daisuke\u0027s suggestion of a new hook that gets called when we *know* that the shutdown is complete.",
+      "parentUuid": "e191a5de_c3685307",
+      "range": {
+        "startLine": 927,
+        "startChar": 12,
+        "endLine": 927,
+        "endChar": 34
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "99b89b05_d63c5ab0",
         "filename": "common/system.c",
         "patchSetId": 4
@@ -322,6 +346,30 @@
       "side": 1,
       "message": "I thought of adding a new hook like this. But it seems overkilled just for this use case, as adding a new hook require extra flash and RAM.\n\nI\u0027d like to hear Paul\u0027s or other EC reviewer\u0027s opinion on the new hook.\n\nBTW, this is not only for Trogdor. All non-x86 boards (Rockchip, Mediatek, Qualcomm) behave the similar way: EC explicitly shutdown the power rails in S3S5.",
       "parentUuid": "d26e86e2_467cabb3",
+      "range": {
+        "startLine": 953,
+        "startChar": 60,
+        "endLine": 953,
+        "endChar": 77
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41f99b48_60969e67",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-06-03T01:05:01Z",
+      "side": 1,
+      "message": "The more I look at the delay code, the more I worry about a race condition. Daisuke\u0027s suggestion is solid.",
+      "parentUuid": "b176b272_7f9e1d60",
       "range": {
         "startLine": 953,
         "startChar": 60,
