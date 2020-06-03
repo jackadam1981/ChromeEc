@@ -46,6 +46,30 @@
       "revId": "383fc9a79205262f320286462e5e0acfc224326c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a5c45b8_a6d5ab95",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-06-03T08:01:48Z",
+      "side": 1,
+      "message": "IIRC BMI160 drives the interrupt as push-pull (driver-controllable, you might need to check), if that\u0027s the case we don\u0027t need external pullup res.",
+      "parentUuid": "69991fa5_a0491f58",
+      "range": {
+        "startLine": 32,
+        "startChar": 75,
+        "endLine": 32,
+        "endChar": 87
+      },
+      "revId": "383fc9a79205262f320286462e5e0acfc224326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
