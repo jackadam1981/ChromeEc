@@ -38,7 +38,7 @@ static int test_lid_angle_less180(void)
 		CONFIG_LID_ANGLE_SENSOR_BASE];
 
 	/* We don't have TASK_CHIP so simulate init ourselves */
-	hook_notify(HOOK_CHIPSET_SHUTDOWN);
+	hook_notify(HOOK_CHIPSET_PRE_SHUTDOWN);
 	TEST_ASSERT(sensor_active == SENSOR_ACTIVE_S5);
 	TEST_ASSERT(lid->drv->get_data_rate(lid) == 0);
 

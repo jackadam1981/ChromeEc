@@ -138,7 +138,7 @@ static void baseboard_chipset_shutdown(void)
 {
 	/* TODD(b/111121615): Need to fill out this hook */
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
 
 void board_hibernate(void)

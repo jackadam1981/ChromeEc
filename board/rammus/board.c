@@ -725,4 +725,5 @@ static void board_chipset_shutdown(void)
 {
 	gpio_set_level(GPIO_EN_PP3300_TRACKPAD, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);

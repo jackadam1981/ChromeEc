@@ -610,7 +610,8 @@ static void board_chipset_shutdown(void)
 	/* FIXME(dhendrix): Drive USB_PD_RST_ODL low to prevent
 	   leakage? (see comment in schematic) */
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 /* FIXME(dhendrix): Add CHIPSET_RESUME and CHIPSET_SUSPEND
    hooks to enable/disable sensors? */

@@ -143,7 +143,8 @@ static void board_chipset_shutdown(void)
 	GPIO_SET_VERBOSE(GPIO_EN_VNN_BYPASS, 0);
 	GPIO_SET_VERBOSE(GPIO_EN_PP1050_BYPASS, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 /**
  * Handle C10_GATE transitions - see VCCSTG enable logic (figure 232, page 406)

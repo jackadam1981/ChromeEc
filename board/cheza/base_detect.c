@@ -185,7 +185,7 @@ static void base_detect_disable(void)
 	gpio_disable_interrupt(GPIO_CC_LID_BASE_ADC);
 	base_detect_change(BASE_DISCONNECTED);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, base_detect_disable, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, base_detect_disable, HOOK_PRIO_DEFAULT);
 
 static void base_init(void)
 {

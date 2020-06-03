@@ -154,7 +154,8 @@ static void hang_detect_shutdown(void)
 	/* Disable hang detection; it must be enabled every boot */
 	memset(&hdparams, 0, sizeof(hdparams));
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, hang_detect_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, hang_detect_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 /*****************************************************************************/
 /* Host command */

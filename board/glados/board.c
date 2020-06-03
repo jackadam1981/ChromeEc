@@ -355,7 +355,8 @@ static void board_chipset_shutdown(void)
 	gpio_set_level(GPIO_USB2_ENABLE, 0);
 	hook_call_deferred(&enable_input_devices_data, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)

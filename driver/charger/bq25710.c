@@ -588,7 +588,8 @@ static void bq25710_chipset_suspend(void)
 	bq25710_set_low_power_mode(CHARGER_SOLO, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, bq25710_chipset_suspend, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, bq25710_chipset_suspend, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, bq25710_chipset_suspend,
+	     HOOK_PRIO_DEFAULT);
 #endif
 
 #ifdef CONFIG_CMD_CHARGER_DUMP

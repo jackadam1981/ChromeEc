@@ -415,7 +415,7 @@ static void baseboard_chipset_shutdown(void)
 	/* Disable sensor power (lid accel, gyro) in S5. */
 	gpio_set_level(GPIO_EN_PP1800_SENSOR, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
 
 int board_is_i2c_port_powered(int port)

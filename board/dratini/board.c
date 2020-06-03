@@ -487,7 +487,7 @@ static void disable_hdmi(void)
 	gpio_set_level(GPIO_EN_HDMI, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, disable_hdmi, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, disable_hdmi, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, disable_hdmi, HOOK_PRIO_DEFAULT);
 
 /* Enable HDMI power while AP is active */
 static void enable_hdmi(void)
@@ -506,7 +506,7 @@ __override void board_chipset_forced_shutdown(void)
 {
 	hook_call_deferred(&check_reboot_deferred_data, -1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_forced_shutdown,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_forced_shutdown,
 	HOOK_PRIO_DEFAULT);
 
 static void check_reboot_deferred(void)

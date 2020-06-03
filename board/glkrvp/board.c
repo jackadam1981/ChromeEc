@@ -117,7 +117,8 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 static void board_chipset_shutdown(void)
 {
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 void chipset_do_shutdown(void)
 {

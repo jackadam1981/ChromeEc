@@ -191,7 +191,7 @@ void baseboard_chipset_shutdown(void)
 	/* Turn off the keyboard backlight if it's on. */
 	gpio_set_level(GPIO_EN_KB_BL, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
 
 void board_hibernate_late(void)

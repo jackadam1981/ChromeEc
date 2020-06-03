@@ -99,7 +99,7 @@ static void max695x_shutdown(void)
 	max695x_i2c_write8(MAX695X_REG_CONFIG,
 			   MAX695X_CONFIG_OPR_SHUTDOWN);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, max695x_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, max695x_shutdown, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CMD_SEVEN_SEG_DISPLAY
 static int console_command_max695x_write(int argc, char **argv)

@@ -1693,7 +1693,7 @@ static void lightbar_shutdown(void)
 {
 	lightbar_sequence(LIGHTBAR_S3S5);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, lightbar_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, lightbar_shutdown, HOOK_PRIO_DEFAULT);
 
 /****************************************************************************/
 /* Host commands via LPC bus */

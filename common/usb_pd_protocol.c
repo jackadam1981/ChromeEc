@@ -4893,7 +4893,7 @@ static void pd_chipset_shutdown(void)
 	}
 	CPRINTS("PD:S3->S5");
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, pd_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, pd_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 

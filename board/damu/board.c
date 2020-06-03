@@ -296,7 +296,7 @@ static void board_spi_disable(void)
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN,
 	     board_spi_disable,
 	     MOTION_SENSE_HOOK_PRIO + 1);
 #endif /* !VARIANT_KUKUI_NO_SENSORS */
@@ -447,7 +447,8 @@ static void board_chipset_shutdown(void)
 {
 	gpio_set_level(GPIO_EN_USBA_5V, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 int board_get_charger_i2c(void)
 {

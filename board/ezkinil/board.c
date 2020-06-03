@@ -169,7 +169,7 @@ static void usba_retimer_off(void)
 {
 	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usba_retimer_off, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, usba_retimer_off, HOOK_PRIO_DEFAULT);
 
 /*
  * USB C0 port SBU mux use standalone FSUSB42UMX

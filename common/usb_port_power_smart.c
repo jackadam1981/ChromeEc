@@ -254,4 +254,4 @@ static void usb_charge_shutdown(void)
 	/* Turn on USB ports off as we go back to S5. */
 	usb_charge_all_ports_ctrl(USB_CHARGE_MODE_DISABLED);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, usb_charge_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, usb_charge_shutdown, HOOK_PRIO_DEFAULT);

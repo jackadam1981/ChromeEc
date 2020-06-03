@@ -160,7 +160,7 @@ static void baseboard_chipset_shutdown(void)
 	/* Disable Trackpad in S5- to save power; not a low power wake source */
 	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, 1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, baseboard_chipset_shutdown,
 	     HOOK_PRIO_DEFAULT);
 
 /* Called by APL power state machine when transitioning to G3. */

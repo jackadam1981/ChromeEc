@@ -1613,7 +1613,7 @@ static void bat_low_voltage_throttle_reset(void)
 {
 	uvp_throttle_start_time.val = 0;
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN,
 	     bat_low_voltage_throttle_reset,
 	     HOOK_PRIO_DEFAULT);
 #endif
@@ -2567,7 +2567,7 @@ static void reset_current_limit(void)
 	user_current_limit = -1U;
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, reset_current_limit, HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, reset_current_limit, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, reset_current_limit, HOOK_PRIO_DEFAULT);
 
 static enum ec_status
 charge_command_current_limit(struct host_cmd_handler_args *args)

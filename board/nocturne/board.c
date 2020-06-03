@@ -273,7 +273,8 @@ static void disable_sensor_irqs(void)
 	gpio_disable_interrupt(GPIO_ACCELGYRO3_INT_L);
 	gpio_disable_interrupt(GPIO_RCAM_VSYNC);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, disable_sensor_irqs, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, disable_sensor_irqs,
+	     HOOK_PRIO_DEFAULT);
 
 static void enable_sensor_irqs(void)
 {
@@ -368,7 +369,8 @@ void board_chipset_shutdown(void)
 {
 	gpio_set_level(GPIO_EN_5V, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 int board_get_version(void)
 {

@@ -261,7 +261,7 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	 *
 	 * When the battery is under 3%, the power task would call
 	 * power_off() to shutdown AP. However, the power_off() would
-	 * notify the HOOK_CHIPSET_SHUTDOWN, where the last hook is
+	 * notify the HOOK_CHIPSET_PRE_SHUTDOWN, where the last hook is
 	 * charge_shutdown() and it hibernates the power task (infinite
 	 * loop -- not real CPU hibernate mode). Unfortunately, the
 	 * charger task is still running. It keeps generating annoying
@@ -359,7 +359,8 @@ static void clock_chipset_shutdown(void)
 	/* Drop to lower clock speed if no other module requires full speed */
 	clock_enable_module(MODULE_CHIPSET, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, clock_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
 static int command_clock(int argc, char **argv)

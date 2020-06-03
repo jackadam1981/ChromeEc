@@ -362,7 +362,8 @@ static void clock_chipset_shutdown(void)
 	/* Drop to lower clock speed if no other module requires full speed */
 	clock_enable_module(MODULE_CHIPSET, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, clock_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
 static int command_clock(int argc, char **argv)

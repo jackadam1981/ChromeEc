@@ -735,7 +735,8 @@ static void board_chipset_shutdown(void)
 
 	gpio_set_level(GPIO_PP1800_DX_SENSOR, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 int board_has_working_reset_flags(void)
 {

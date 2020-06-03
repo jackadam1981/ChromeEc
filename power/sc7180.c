@@ -472,7 +472,7 @@ static void power_off(void)
 		return;
 
 	/* Call hooks before we drop power rails */
-	hook_notify(HOOK_CHIPSET_SHUTDOWN);
+	hook_notify(HOOK_CHIPSET_PRE_SHUTDOWN);
 
 	/* Do a graceful way to shutdown PMIC/AP first */
 	set_pmic_pwron(0);

@@ -467,7 +467,8 @@ static void board_chipset_shutdown(void)
 	gpio_disable_interrupt(GPIO_USB_C1_OC_ODL);
 	gpio_set_flags(GPIO_USB_C1_OC_ODL, GPIO_INT_FALLING);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, board_chipset_shutdown,
+	     HOOK_PRIO_DEFAULT);
 
 /**
  * Power on (or off) a single TCPC.

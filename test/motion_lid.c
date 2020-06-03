@@ -179,7 +179,7 @@ static int test_lid_angle(void)
 	int lid_angle;
 
 	/* We don't have TASK_CHIP so simulate init ourselves */
-	hook_notify(HOOK_CHIPSET_SHUTDOWN);
+	hook_notify(HOOK_CHIPSET_PRE_SHUTDOWN);
 	TEST_ASSERT(sensor_active == SENSOR_ACTIVE_S5);
 	TEST_ASSERT(accel_get_data_rate(lid) == 0);
 

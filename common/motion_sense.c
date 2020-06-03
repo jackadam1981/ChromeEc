@@ -445,7 +445,7 @@ static void motion_sense_shutdown(void)
 	}
 #endif
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, motion_sense_shutdown,
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, motion_sense_shutdown,
 	     MOTION_SENSE_HOOK_PRIO);
 
 static void motion_sense_suspend(void)

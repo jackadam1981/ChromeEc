@@ -360,7 +360,7 @@ static void check_pending_cutoff(void)
 				   CONFIG_BATTERY_CUTOFF_DELAY_US);
 	}
 }
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, check_pending_cutoff, HOOK_PRIO_LAST);
+DECLARE_HOOK(HOOK_CHIPSET_PRE_SHUTDOWN, check_pending_cutoff, HOOK_PRIO_LAST);
 
 static int command_cutoff(int argc, char **argv)
 {
