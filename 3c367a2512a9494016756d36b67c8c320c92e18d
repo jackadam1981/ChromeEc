@@ -114,6 +114,30 @@
       "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4ee39b_f62ce453",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-03T21:56:34Z",
+      "side": 1,
+      "message": "Personally, I lean towards allowing asynchronous calls to cache a new Rp value, but only allowing the PD task to actually set that new value in the TCPC register since it knows the times it\u0027s allowed to set Rp for either the implicit contract or collision avoidance.",
+      "parentUuid": "4e09fd8c_5b9840b3",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
