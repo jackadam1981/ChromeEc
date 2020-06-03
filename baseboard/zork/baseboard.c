@@ -573,18 +573,31 @@ static void hdmi_hpd_handler(void)
 {
 	int hpd = 0;
 
+#ifdef BOARD_VILBOZ
+	hpd = gpio_get_level(GPIO_HDMI_CONN_HPD_3V3);
+#else
 	/* Pass HPD through from DB OPT1 HDMI connector to AP's DP1. */
 	ioex_get_level(IOEX_HDMI_CONN_HPD_3V3_DB, &hpd);
+#endif
 	gpio_set_level(GPIO_DP1_HPD, hpd);
 	ccprints("HDMI HPD %d", hpd);
 }
 DECLARE_DEFERRED(hdmi_hpd_handler);
 
+#ifdef BOARD_VILBOZ
+void hdmi_hpd_interrupt(enum gpio_signal signal)
+{
+	/* Debounce for 2 msec. */
+	hook_call_deferred(&hdmi_hpd_handler_data, (2 * MSEC));
+}
+
+#else
 void hdmi_hpd_interrupt(enum ioex_signal signal)
 {
 	/* Debounce for 2 msec. */
 	hook_call_deferred(&hdmi_hpd_handler_data, (2 * MSEC));
 }
+#endif
 
 const struct pi3hdx1204_tuning pi3hdx1204_tuning = {
 	.eq_ch0_ch1_offset = PI3HDX1204_EQ_DB710,

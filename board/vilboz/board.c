@@ -144,19 +144,7 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #endif /* HAS_TASK_MOTIONSENSE */
 
 /* These IO expander GPIOs vary with DB option. */
-enum gpio_signal IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT1;
 enum gpio_signal IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT1;
-
-static void pcal6408_handler(void)
-{
-	pcal6408_ioex_event_handler(IOEX_HDMI_PCAL6408);
-}
-DECLARE_DEFERRED(pcal6408_handler);
-
-void pcal6408_interrupt(enum gpio_signal signal)
-{
-	hook_call_deferred(&pcal6408_handler_data, 0);
-}
 
 static int board_ps8743_mux_set(const struct usb_mux *me,
 				mux_state_t mux_state)
@@ -196,20 +184,13 @@ static void setup_fw_config(void)
 
 	if (ec_config_get_usb_db() == DALBOZ_DB_D_OPT2_USBA_HDMI) {
 		ccprints("DB OPT2 HDMI");
-		ioex_config[IOEX_HDMI_PCAL6408].flags = 0;
-		ioex_init(IOEX_HDMI_PCAL6408);
-		IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT2;
-		IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT2;
-		usb_port_enable[USBA_PORT_A1] = IOEX_EN_USB_A1_5V_DB_OPT2;
-		c1_tcpc_config_interrupt = pcal6408_interrupt;
-		ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB);
+		gpio_enable_interrupt(GPIO_HDMI_CONN_HPD_3V3);
 	} else {
 		ccprints("DB OPT1 USBC");
 		ioex_config[IOEX_C1_NCT3807].flags = 0;
 		ioex_init(IOEX_C1_NCT3807);
-		IOEX_USB_A1_RETIMER_EN = IOEX_USB_A1_RETIMER_EN_OPT1;
 		IOEX_USB_A1_CHARGE_EN_DB_L = IOEX_USB_A1_CHARGE_EN_DB_L_OPT1;
-		usb_port_enable[USBA_PORT_A1] = IOEX_EN_USB_A1_5V_DB_OPT1;
+		usb_port_enable[USBA_PORT_A1] = GPIO_EN_USB_A1_5V;
 		c1_tcpc_config_interrupt = tcpc_alert_event;
 	}
 
