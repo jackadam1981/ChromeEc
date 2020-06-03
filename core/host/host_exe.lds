@@ -61,6 +61,10 @@ SECTIONS {
 		*(.rodata.HOOK_CHIPSET_PRE_SHUTDOWN)
 		__hooks_chipset_pre_shutdown_end = .;
 
+		__hooks_chipset_post_shutdown = .;
+		*(.rodata.HOOK_CHIPSET_POST_SHUTDOWN)
+		__hooks_chipset_post_shutdown_end = .;
+
 		__hooks_chipset_reset = .;
 		*(.rodata.HOOK_CHIPSET_RESET)
 		__hooks_chipset_reset_end = .;
