@@ -116,7 +116,7 @@ uint32_t flash_physical_get_protect_flags(void)
 	if (entire_flash_locked)
 		flags |= EC_FLASH_PROTECT_ALL_NOW;
 
-#if defined(CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE)
+#if defined(CONFIG_FLASH_READOUT_PROTECTION)
 	if (is_flash_rdp_enabled())
 		flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
 #endif

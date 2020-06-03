@@ -86,7 +86,7 @@
  * We want to prevent flash readout, and use it as indicator of protection
  * status.
  */
-#define CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE
+#define CONFIG_FLASH_READOUT_PROTECTION
 
 /*-------------------------------------------------------------------------*
  * USART Transport Setup

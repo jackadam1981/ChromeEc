@@ -511,9 +511,8 @@ static int flash_physical_get_protect_at_boot(int block)
 	return !(STM32_OPTB_WP & STM32_OPTB_nWRP(block));
 }
 
-static int flash_physical_protect_at_boot_update_rdp_pstate(uint32_t new_flags)
+static int flash_physical_protect_at_boot_rdp(uint32_t new_flags)
 {
-#if defined(CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE)
 	int rv = EC_SUCCESS;
 
 	bool rdp_enable = (new_flags & EC_FLASH_PROTECT_RO_AT_BOOT) != 0;
@@ -528,9 +527,6 @@ static int flash_physical_protect_at_boot_update_rdp_pstate(uint32_t new_flags)
 		rv = flash_physical_set_rdp_level(FLASH_RDP_LEVEL_1);
 
 	return rv;
-#else
-	return EC_SUCCESS;
-#endif
 }
 
 int flash_physical_protect_at_boot(uint32_t new_flags)
@@ -565,12 +561,17 @@ int flash_physical_protect_at_boot(uint32_t new_flags)
 			return rv;
 	}
 
-	return flash_physical_protect_at_boot_update_rdp_pstate(new_flags);
+	if (IS_ENABLED(CONFIG_FLASH_READOUT_PROTECTION))
+		return flash_physical_protect_at_boot_rdp(new_flags);
+
+	return EC_SUCCESS;
 }
 
 static void unprotect_all_blocks(void)
 {
 	write_optb(STM32_FLASH_nWRP_ALL, STM32_FLASH_nWRP_ALL);
+
+	/* CONFIG_FLASH_READOUT_PROTECTION: Cannot undo RDP */
 }
 
 #else   /* CHIP_FAMILY_STM32F4 */
@@ -655,10 +656,14 @@ static int registers_need_reset(void)
 	for (i = ro_wp_region_start; i < ro_wp_region_end; i++)
 		if (flash_physical_get_protect_at_boot(i) != ro_at_boot)
 			return 1;
+	if (IS_ENABLED(CONFIG_FLASH_READOUT_PROTECTION)) {
+		if (flash_physical_get_rdp_level() != FLASH_RDP_LEVEL_1)
+			return 1;
+	}
 	return 0;
 }
 
-#if defined(CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE)
+#if defined(CONFIG_FLASH_READOUT_PROTECTION)
 /**
  * Set Flash RDP (read protection) level.
  *
@@ -718,7 +723,7 @@ enum flash_rdp_level flash_physical_get_rdp_level(void)
 		return FLASH_RDP_LEVEL_INVALID;
 	}
 }
-#endif /* CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE */
+#endif /* CONFIG_FLASH_READOUT_PROTECTION */
 
 /*****************************************************************************/
 /* High-level APIs */
