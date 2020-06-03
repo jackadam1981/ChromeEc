@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7abe30bb_267fed7b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-03T04:41:00Z",
+      "side": 1,
+      "message": "The charge manager is the only one I know of which will set a value other than CONFIG_USB_PD_PULLUP or a collision management value.  Following the code path for the charge manager, is this function generally called from a PD task, but not necessarily the PD task for the port it\u0027s acting on?\n\nTechnically, we should be setting the Rp the charge manager code has selected on initial source attach so we\u0027re correctly advertising our analog current.  I don\u0027t believe setting CONFIG_USB_PD_PULLUP all the time in the TC is correct, though it should be okay since it\u0027s just an under-advertisement of our real current delivery. \n\nIf you look at v1, the PD task code never selected an Rp value itself except during collision avoidance and on startup.  We could move in this direction, always setting whatever the charge manager cached for us in the TCPCI driver in the TC (essentially by removing all the selects v2 does except perhaps on startup).  Then if we add interfaces for the AP to set this value, it can behave similarly and cache in the TCPCI driver.  I like the idea of a TC cache better, but I see the value in only having one cache and the TCPCI code does need it for other functions.  \n\nSo to conclude my ramblings, can we remove the TC Rp selections besides possibly one on init?  And what\u0027s the call order you see between the PRL and charge manager when setting Rp in this scenario you\u0027re testing?",
+      "parentUuid": "49b9ffd2_60b3455e",
+      "range": {
+        "startLine": 887,
+        "startChar": 0,
+        "endLine": 889,
+        "endChar": 9
+      },
+      "revId": "52a1131017569296e5a4b1dbc0cf7bf779b67e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0871966b_f52ccd94",
         "filename": "include/usb_pd.h",
         "patchSetId": 12
@@ -140,6 +164,30 @@
       "revId": "52a1131017569296e5a4b1dbc0cf7bf779b67e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706798ec_9162eba9",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-03T04:41:00Z",
+      "side": 1,
+      "message": "We can leave it for now.  Just calling out this might be a path we need for other reasons in the future anyway.",
+      "parentUuid": "04bd0801_bc79ab5b",
+      "range": {
+        "startLine": 1026,
+        "startChar": 3,
+        "endLine": 1026,
+        "endChar": 51
+      },
+      "revId": "52a1131017569296e5a4b1dbc0cf7bf779b67e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
