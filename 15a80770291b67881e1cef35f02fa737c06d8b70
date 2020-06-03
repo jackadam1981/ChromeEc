@@ -451,6 +451,30 @@
       "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "301e3b5e_e976857f",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-03T22:19:20Z",
+      "side": 1,
+      "message": "Will abandon this CL if go to the new hook approach.",
+      "parentUuid": "53527134_0ec0df58",
+      "range": {
+        "startLine": 953,
+        "startChar": 60,
+        "endLine": 953,
+        "endChar": 77
+      },
+      "revId": "15a80770291b67881e1cef35f02fa737c06d8b70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
