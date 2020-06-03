@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b79785b_c8104153",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 76
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2020-06-03T06:26:36Z",
+      "side": 1,
+      "message": "Definitely, the best way is to use the interrupt.\nFrom BC12 spec (Attach to PD informing user it is charging),\nthe maximum time for detection is 1s (DCD timeout + primary + secondary).\nSo, if you poll the USB Status, 300ms is probably not enough.",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "3de33fd65ef6fd3656573ebc75f2a97a99878995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
