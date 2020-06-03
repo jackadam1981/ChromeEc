@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d667b495_80e6250c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T09:14:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f394275e_02a7bb2f",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "8ba39f0e5ef9a7f530ff4664d4d95e191276f57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2b3dfa1_d89845d6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6eb16678_765cf8aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T09:14:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2b3dfa1_d89845d6",
+      "range": {
+        "startLine": 14,
+        "startChar": 40,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "8ba39f0e5ef9a7f530ff4664d4d95e191276f57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80b0cf45_8ad06556",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "8ba39f0e5ef9a7f530ff4664d4d95e191276f57a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8baabf4a_abba2bd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T09:14:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80b0cf45_8ad06556",
+      "range": {
+        "startLine": 16,
+        "startChar": 48,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "8ba39f0e5ef9a7f530ff4664d4d95e191276f57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "ec55319c_abbe2331",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T09:14:47Z",
+      "side": 1,
+      "message": "This is an error, should be 15",
+      "parentUuid": "11c446f6_6e7171ca",
+      "range": {
+        "startLine": 51,
+        "startChar": 58,
+        "endLine": 51,
+        "endChar": 60
+      },
+      "revId": "8ba39f0e5ef9a7f530ff4664d4d95e191276f57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e03ce640_e31d0fae",
         "filename": "chip/stm32/usb_spi.h",
         "patchSetId": 1
@@ -186,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "5af1b589_658cac4d",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T09:14:47Z",
+      "side": 1,
+      "message": "The source for transmitting and receive contexts and the packet contexts was nearly identical on the flashrom side. On that system, the transmit buffer had to be const.",
+      "parentUuid": "e03ce640_e31d0fae",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 24
+      },
+      "revId": "8ba39f0e5ef9a7f530ff4664d4d95e191276f57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a633a311_e55ba3ae",
         "filename": "chip/stm32/usb_spi.h",
         "patchSetId": 1
@@ -206,6 +326,30 @@
       "revId": "8ba39f0e5ef9a7f530ff4664d4d95e191276f57a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d0df1b_d70e4616",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T09:14:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a633a311_e55ba3ae",
+      "range": {
+        "startLine": 163,
+        "startChar": 4,
+        "endLine": 163,
+        "endChar": 76
+      },
+      "revId": "8ba39f0e5ef9a7f530ff4664d4d95e191276f57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
