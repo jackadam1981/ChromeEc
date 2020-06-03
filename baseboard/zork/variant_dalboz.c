@@ -106,12 +106,14 @@ struct ioexpander_config_t ioex_config[] = {
 		.drv = &nct38xx_ioexpander_drv,
 		.flags = IOEX_FLAGS_DISABLED,
 	},
+#ifndef BOARD_VILBOZ
 	[IOEX_HDMI_PCAL6408] = {
 		.i2c_host_port = I2C_PORT_TCPC1,
 		.i2c_slave_addr = PCAL6408_I2C_ADDR0,
 		.drv = &pcal6408_ioexpander_drv,
 		.flags = IOEX_FLAGS_DISABLED,
 	},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 
@@ -121,9 +123,14 @@ BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 
 int usb_port_enable[USBA_PORT_COUNT] = {
 	IOEX_EN_USB_A0_5V,
+#ifdef BOARD_VILBOZ
+	GPIO_EN_USB_A1_5V,
+#else
 	IOEX_EN_USB_A1_5V_DB_OPT1,
+#endif
 };
 
+#ifndef BOARD_VILBOZ
 static void usba_retimer_on(void)
 {
 	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 1);
@@ -135,6 +142,7 @@ static void usba_retimer_off(void)
 	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, usba_retimer_off, HOOK_PRIO_DEFAULT);
+#endif
 
 /*****************************************************************************
  * USB-C

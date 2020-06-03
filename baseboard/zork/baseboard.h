@@ -175,7 +175,13 @@
 #elif defined(VARIANT_ZORK_DALBOZ)
 	#define CONFIG_USB_MUX_PS8740
 	#define CONFIG_USB_MUX_PS8743
+	#define CONFIG_IO_EXPANDER_PORT_COUNT IOEX_PORT_COUNT
+	#define CONFIG_USB_PORT_ENABLE_DYNAMIC
+	#define CONFIG_USB_MUX_PS8740
+	#define CONFIG_USB_MUX_PS8743
+#ifndef BOARD_VILBOZ
 	#define CONFIG_IO_EXPANDER_PCAL6408
+#endif
 	#define CONFIG_IO_EXPANDER_PORT_COUNT IOEX_PORT_COUNT
 	#define CONFIG_USB_PORT_ENABLE_DYNAMIC
 #endif
@@ -326,7 +332,9 @@ enum sensor_id {
 	enum ioex_port {
 		IOEX_C0_NCT3807 = 0,
 		IOEX_C1_NCT3807,
+#ifndef BOARD_VILBOZ
 		IOEX_HDMI_PCAL6408,
+#endif
 		IOEX_PORT_COUNT
 	};
 
@@ -335,6 +343,11 @@ enum sensor_id {
 		: GPIO_DP1_HPD)
 #endif
 
+#ifdef BOARD_VILBOZ
+	#define PORT_HDMI_CONN_HPD_3V3_DB GPIO_HDMI_CONN_HPD_3V3
+#else
+	#define PORT_HDMI_CONN_HPD_3V3_DB IOEX_HDMI_CONN_HPD_3V3_DB
+#endif
 /*
  * Matrix to rotate accelerators into the standard reference frame.  The default
  * is the identity which is correct for the reference design.  Variations of
@@ -361,7 +374,11 @@ void board_reset_pd_mcu(void);
 void tcpc_alert_event(enum gpio_signal signal);
 void bc12_interrupt(enum gpio_signal signal);
 void ppc_interrupt(enum gpio_signal signal);
+#ifdef BOARD_VILBOZ
+void hdmi_hpd_interrupt(enum gpio_signal signal);
+#else
 void hdmi_hpd_interrupt(enum ioex_signal signal);
+#endif
 void mst_hpd_interrupt(enum ioex_signal signal);
 
 #ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
