@@ -2503,6 +2503,13 @@
 #undef CONFIG_KEYBOARD_KEYPAD
 
 /*
+ * ITE chip support the case that some KSO pins are enabled for keyboard
+ * function, and the others are configured as GPIO output mode. In this case
+ * that we disable the ISR in critical section to avoid race condition.
+ */
+#undef CONFIG_ITE_KSO_AS_KEYBOARD_GPIO_OUTPUT
+
+/*
  * Enable the 8042 AUX port. This is typically used for PS/2 mouse devices.
  * You will need to implement send_aux_data_to_device and lpc_aux_put_char.
  */
