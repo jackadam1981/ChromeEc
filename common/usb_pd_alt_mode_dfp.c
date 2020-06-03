@@ -796,11 +796,8 @@ bool is_tbt_compat_mode(int port, int cnt, const uint32_t *payload)
 enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
 {
 	struct pd_cable *cable = pd_get_cable_attributes(port);
-	enum tbt_compat_cable_speed max_tbt_speed =
-				board_get_max_tbt_speed(port);
 
-	return cable->cable_mode_resp.tbt_cable_speed > max_tbt_speed ?
-		max_tbt_speed : cable->cable_mode_resp.tbt_cable_speed;
+	return cable->cable_mode_resp.tbt_cable_speed;
 }
 
 bool cable_supports_tbt_speed(int port)
