@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c91031b8_4c3c4e8e",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-03T05:40:38Z",
+      "side": 1,
+      "message": "CONFIG_USBC_PPC_SYV682X is originally not enabled in Octopus and is not common for all boards of npcx or ite EC chip variants therefore we should put it in bobba/board.h initially.",
+      "parentUuid": "e60273b7_5c516c0e",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0973707b_8bef0b08",
         "filename": "board/bobba/board.c",
         "patchSetId": 9
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "If we put board version here, we should make sure all board using baseboard:octopus define same board version with PPC_ID implement.",
       "parentUuid": "0973707b_8bef0b08",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e258085_38e1db41",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-03T05:40:38Z",
+      "side": 1,
+      "message": "- This file is dedicated for Bobba FW build target only not applies to all octopus devices so will not impact other boards. And this is the reason why I asked to move customization from baseboard to here.\n\n- Considering that another PPC co-layout might be introduced in the next board version and replies on this same pin as the ID so we need to judge board version as well.",
+      "parentUuid": "3968e6d4_8578a1ac",
       "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -139,6 +175,24 @@
       "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75c433db_e01c3f24",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-03T05:40:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a77818f7_dd12ce45",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
