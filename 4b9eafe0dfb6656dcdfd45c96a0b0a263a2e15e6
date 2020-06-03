@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d5e82f1_286fc94b",
+        "filename": "driver/fingerprint/elan/elan_setting.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-03T21:52:18Z",
+      "side": 1,
+      "message": "nit: Spacing issue.\n\nWe use tab spacing with an equivalent space width of 8 chars.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "4b9eafe0dfb6656dcdfd45c96a0b0a263a2e15e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19838d91_6d004e95",
         "filename": "driver/fingerprint/fpsensor.h",
         "patchSetId": 5
