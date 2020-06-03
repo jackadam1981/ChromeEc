@@ -245,6 +245,14 @@ void gpio_set_level_verbose(enum console_channel channel,
 			    enum gpio_signal signal, int value);
 
 /**
+ * Get the value of a signal that could be either a local GPIO or an IO
+ * expander GPIO.
+ * @param signal	Signal to get
+ * @return 0 if low, 1 if high.
+ */
+int  gpio_or_ioex_get_level(int signal);
+
+/**
  * Set the value of a signal that could be either a local GPIO or an IO
  * expander GPIO.
  *

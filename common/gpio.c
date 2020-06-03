@@ -204,6 +204,18 @@ void gpio_set_level_verbose(enum console_channel channel,
 	gpio_set_level(signal, value);
 }
 
+int  gpio_or_ioex_get_level(int signal)
+{
+	int value;
+
+	if (IS_ENABLED(CONFIG_IO_EXPANDER) && signal_is_ioex(signal))
+		ioex_get_level(signal, &value);
+	else
+		value = gpio_get_level(signal);
+
+	return value;
+}
+
 void gpio_or_ioex_set_level(int signal, int value)
 {
 	if (IS_ENABLED(CONFIG_IO_EXPANDER) && signal_is_ioex(signal))
