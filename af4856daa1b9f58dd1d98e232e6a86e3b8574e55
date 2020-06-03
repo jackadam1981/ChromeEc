@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "431abb1e_3239a69d",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-03T04:51:51Z",
+      "side": 1,
+      "message": "PWR_REAR",
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dff47bf7_dabfa743",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-03T04:51:51Z",
+      "side": 1,
+      "message": "Missing HDMI1.",
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "278a7096_37a71bd4",
         "filename": "board/puff/board.c",
         "patchSetId": 3
@@ -88,6 +122,40 @@
         "endLine": 726,
         "endChar": 16
       },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa9c0f2_7f654027",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-03T04:51:51Z",
+      "side": 1,
+      "message": "This loses the old property that you could never overload this rail by connecting a device. Is that safe? (At a low duty cycle I\u0027d think so, but it\u0027s getting very close to the absolute maximum ratings for the regulator and its output inductor.)\n\nIn general this code seems to assume that it\u0027s safe to temporarily overload the power supply, but doesn\u0027t seem to explain that anywhere- could some explanation be added to the big comment block that explains the goals and operation?",
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d0bf2e_4ac582ff",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-03T04:51:51Z",
+      "side": 1,
+      "message": "!(x || y) seems like a clearer way to express this rather than the double negation.",
       "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
