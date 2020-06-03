@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05064462_45ebcf70",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-03T22:47:47Z",
+      "side": 1,
+      "message": "nit: Add a TODO that this should change?  Ideally anything in common should move to use the new discovery structures correctly",
+      "range": {
+        "startLine": 840,
+        "startChar": 0,
+        "endLine": 841,
+        "endChar": 56
+      },
+      "revId": "65b85794452172ecf32370a0c727295f196fc268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d5865c_f313a456",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4826,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-03T22:47:47Z",
+      "side": 1,
+      "message": "If we\u0027re using tx_type, should we be enforcing it get set before this function is called, similar to the SVID and mode discovery functions?",
+      "range": {
+        "startLine": 4826,
+        "startChar": 25,
+        "endLine": 4826,
+        "endChar": 42
+      },
+      "revId": "65b85794452172ecf32370a0c727295f196fc268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d8ed85_c34b91c9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4963,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-03T22:47:47Z",
+      "side": 1,
+      "message": "Assuming this becomes a call into the DPM, seems like sop should route through to the appropriate module since TBT will want that info for which enter mode ACK\u0027d",
+      "range": {
+        "startLine": 4962,
+        "startChar": 2,
+        "endLine": 4963,
+        "endChar": 35
+      },
+      "revId": "65b85794452172ecf32370a0c727295f196fc268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
