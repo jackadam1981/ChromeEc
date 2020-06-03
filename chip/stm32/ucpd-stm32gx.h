@@ -22,5 +22,6 @@ int stm32gx_ucpd_transmit(int port,
 			uint16_t header,
 			  const uint32_t *data);
 int stm32gx_ucpd_get_message_raw(int port, uint32_t *payload, int *head);
+void ucpd_info(int port);
 
 #endif /* __CROS_EC_UCPD_STM32GX_H */
