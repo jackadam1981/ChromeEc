@@ -6,5 +6,5 @@
 # Honeybuns baseboard specific files build
 #
 
-baseboard-y=baseboard.o
+baseboard-y=baseboard.o mp4245.o
 baseboard-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o
