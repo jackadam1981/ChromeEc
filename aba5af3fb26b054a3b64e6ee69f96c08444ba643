@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9da1d6e_6f4fd900",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-03T00:44:32Z",
+      "side": 1,
+      "message": "Add a check to enusre the board will declare task, e.g.:\n\n  #ifndef HAS_TASK_APUART\n    #error ...\n  #endif",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 5
+      },
+      "revId": "aba5af3fb26b054a3b64e6ee69f96c08444ba643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

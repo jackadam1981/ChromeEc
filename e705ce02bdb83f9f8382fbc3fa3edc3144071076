@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "b42a98de_cecd7a3e",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-03T00:44:32Z",
+      "side": 1,
+      "message": "Please document this in the registers.h.",
+      "parentUuid": "bb98e2e9_2caea912",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "e705ce02bdb83f9f8382fbc3fa3edc3144071076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "662620e4_6aa227b0",
         "filename": "chip/mt8192_scp/uart.c",
         "patchSetId": 10
