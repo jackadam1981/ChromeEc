@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "278a7096_37a71bd4",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-03T02:29:44Z",
+      "side": 1,
+      "message": "typo: \u0027system\u0027",
+      "range": {
+        "startLine": 633,
+        "startChar": 14,
+        "endLine": 633,
+        "endChar": 20
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55bd1dc0_092f0685",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-03T02:29:44Z",
+      "side": 1,
+      "message": "Is this margin fixed regardless of the type of barrel jack? (are there different barrel jack supplies? e.g. 90W vs. 65W?) Also, why do barrel jacks get 2W of margin? Is this some turbo thing?",
+      "range": {
+        "startLine": 702,
+        "startChar": 13,
+        "endLine": 702,
+        "endChar": 17
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e11e52_c6eebd4b",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-03T02:29:44Z",
+      "side": 1,
+      "message": "What are these magic numbers here? Can we add some macros to help shed some light?",
+      "range": {
+        "startLine": 716,
+        "startChar": 12,
+        "endLine": 716,
+        "endChar": 16
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c53e858_23403708",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-03T02:29:44Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 726,
+        "startChar": 12,
+        "endLine": 726,
+        "endChar": 16
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d9c6626_f2472caa",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-03T02:29:44Z",
+      "side": 1,
+      "message": "How are you determining this? I don\u0027t see any checks for the Type-C state.",
+      "range": {
+        "startLine": 756,
+        "startChar": 10,
+        "endLine": 756,
+        "endChar": 27
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63af8eb8_9f198293",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-03T02:29:44Z",
+      "side": 1,
+      "message": "I think we also need to inform the PD port partner if applicable.\n    \ntcpm_select_rp_value(0, rp);\npd_update_contract(0);",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 790,
+        "endChar": 37
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
