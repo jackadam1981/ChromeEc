@@ -1433,7 +1433,7 @@ static void handle_new_power_state(int port)
 void pd_send_hpd(int port, enum hpd_event hpd)
 {
 	uint32_t data[1];
-	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
+	int opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
 
 	if (!opos)
 		return;
@@ -1864,7 +1864,9 @@ static void tc_attach_wait_snk_run(const int port)
 				get_time().val > tc[port].pd_debounce) {
 		if (IS_ENABLED(CONFIG_USB_PE_SM) &&
 				IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
-			pd_dfp_exit_mode(port, 0, 0);
+			pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
+			pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
+			pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME, 0, 0);
 		}
 
 		/* We are detached */
@@ -2009,8 +2011,12 @@ static void tc_attached_snk_run(const int port)
 	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
 		/* Detach detection */
 		if (!pd_is_vbus_present(port)) {
-			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
-				pd_dfp_exit_mode(port, 0, 0);
+			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
+				pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
+				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
+				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME,
+						0, 0);
+			}
 
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return;
@@ -2395,8 +2401,12 @@ static void tc_dbg_acc_snk_run(const int port)
 	    !TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
 		/* Detach detection */
 		if (!pd_is_vbus_present(port)) {
-			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
-				pd_dfp_exit_mode(port, 0, 0);
+			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
+				pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
+				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
+				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME,
+						0, 0);
+			}
 
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return;
@@ -2809,8 +2819,12 @@ static void tc_attached_src_run(const int port)
 			!TC_CHK_FLAG(port, TC_FLAGS_DISC_IDENT_IN_PROGRESS)) {
 
 		if (IS_ENABLED(CONFIG_USB_PE_SM))
-			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
-				pd_dfp_exit_mode(port, 0, 0);
+			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
+				pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
+				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
+				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME,
+						0, 0);
+			}
 
 		set_state_tc(port, IS_ENABLED(CONFIG_USB_PD_TRY_SRC) ?
 			TC_TRY_WAIT_SNK : TC_UNATTACHED_SNK);
@@ -3249,8 +3263,12 @@ static void tc_ct_unattached_snk_run(int port)
 	if (get_time().val > tc[port].cc_debounce) {
 		if (new_cc_state == PD_CC_NONE &&
 		    pd_check_vbus_level(port, VBUS_SAFE0V)) {
-			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
-				pd_dfp_exit_mode(port, 0, 0);
+			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
+				pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
+				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
+				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME,
+						0, 0);
+			}
 
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return;
