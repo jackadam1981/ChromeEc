@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff381ff1_611d2254",
+        "filename": "board/puff/validate_port_power.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-03T04:53:09Z",
+      "side": 0,
+      "message": "You can also remove the Makefile that runs klee.",
+      "revId": "f680d5e119c0561b33abe350243ff9aa37237788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
