@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "266a2ba0_a73049ae",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-03T16:31:46Z",
+      "side": 1,
+      "message": "I looked at Rp and most of the calls to tcpm_select_rp_value will just cache and hurt nothing to have them present. I looked back at the charge manager and it is setting the Rp for both ports instead of just the one being called. I will adjust for this and see where we go from there.",
+      "parentUuid": "7abe30bb_267fed7b",
+      "range": {
+        "startLine": 887,
+        "startChar": 0,
+        "endLine": 889,
+        "endChar": 9
+      },
+      "revId": "52a1131017569296e5a4b1dbc0cf7bf779b67e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0871966b_f52ccd94",
         "filename": "include/usb_pd.h",
         "patchSetId": 12
