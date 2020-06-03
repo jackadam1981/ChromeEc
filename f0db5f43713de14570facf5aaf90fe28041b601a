@@ -189,6 +189,30 @@
       "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e76e9464_0fd42577",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-03T00:44:15Z",
+      "side": 1,
+      "message": "ACk - can I get a +2 now?",
+      "parentUuid": "61d65749_5ac5b1fd",
+      "range": {
+        "startLine": 1025,
+        "startChar": 23,
+        "endLine": 1025,
+        "endChar": 47
+      },
+      "revId": "f0db5f43713de14570facf5aaf90fe28041b601a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
