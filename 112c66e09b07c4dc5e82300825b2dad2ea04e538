@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a5872608_9977cb92",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T21:01:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63fa2b69_d950ffcd",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a98d0612_3e400c1e",
         "filename": "chip/stm32/usb_spi.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-03T20:14:34Z",
       "side": 1,
       "message": "how does this work? Is the usb buffer circular or not? if it is cicrlular, rx_count is not the number of bytes in the last packet, if it is not circular - who sets rx_count back to zero?",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 68
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c31f87fd_406b2e86",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T21:01:43Z",
+      "side": 1,
+      "message": "The buffer is not circular on this platform. rx_count only indicates the size of the last USB packet received. We do not have enough USB endpoints or space within the USB RAM region to allocate circular buffers on the Servo Micro platforms. Simiular behavior also occurs on implementations of the STM32 which do use double buffering although in that case it\u0027s treated as a bounce buffer.\n\nbtable_ep[] is mapped to the address of the USB registers controlling each endpoint. Other aspects of the endpoint status including if it can accept new packets, if it has a packet, or if it can transmit packets is controlled via access to the STM32_USB_EP(config-\u003eendpoint) register and querying or setting it\u0027s state.",
+      "parentUuid": "a98d0612_3e400c1e",
       "range": {
         "startLine": 226,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8fdfa2b2_b503ba01",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T21:01:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6f097ccf_e94105e7",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 4
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87c4209d_9511ec3d",
         "filename": "chip/stm32/usb_spi.h",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c6edd4cb_51cfefdb",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T21:01:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "87c4209d_9511ec3d",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 48
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1153a91a_3b2aa2ab",
         "filename": "chip/stm32/usb_spi.h",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-03T20:14:34Z",
       "side": 1,
       "message": "both write and read point at the same buffer? How does this work?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 0
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1719178e_6712f8ce",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T21:01:43Z",
+      "side": 1,
+      "message": "Half duplex mode has not been enabled on the STM32 based USB SPI platforms, so they perform one write transfer and one read transfer as separate operations.\n\nIf half duplex mode is enabled, this would be a significant concern since the lower level SPI implementation may or may not work depending on how data is transferred to the registered and read from it during the transaction. If it\u0027s implementation has write a block of data to a registers out and then read a register value to the target address, it\u0027ll probably work, but may fail on some platforms.\n\n\ncr50/chip/g/usb_spi.c does support a SPI_READBACK_ALL case when you send it 255 for the read_count, but it also shares the same buffer for both calls.\n\nif (read_count \u003d\u003d 255) {\n\t/* Handle simultaneously clocked RX and TX */\n\tread_count \u003d SPI_READBACK_ALL;\n\tread_length \u003d write_count;\n} else {\n...\nspi_transaction(SPI_FLASH_DEVICE,\n\t\tconfig-\u003ebuffer + HEADER_SIZE,\n\t\twrite_count,\n\t\tconfig-\u003ebuffer + HEADER_SIZE,\n\t\tread_count));\n\nI suspect right now that there are currently no hosts that actually use half duplex mode. Flashrom is the only host that I am aware of and it\u0027s implementation of the protocol doesn\u0027t support it in raiden_debug_spi.c where the read_count is directly passed to a memcpy without appropriate conversion if it did support half duplex operation.",
+      "parentUuid": "1153a91a_3b2aa2ab",
       "range": {
         "startLine": 237,
         "startChar": 0,
