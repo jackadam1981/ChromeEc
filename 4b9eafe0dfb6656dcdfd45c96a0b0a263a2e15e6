@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19838d91_6d004e95",
+        "filename": "driver/fingerprint/fpsensor.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-03T21:44:14Z",
+      "side": 1,
+      "message": "I believe these are intended for unit tests only. Are these required for the Elan sensor?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "4b9eafe0dfb6656dcdfd45c96a0b0a263a2e15e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
