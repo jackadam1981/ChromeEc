@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4c8561fc_19ff98b4",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T23:34:17Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll do the style nits in the next patch set, I was just trying to make sure other functional changes and concerns are addressed.",
+      "parentUuid": "d99479a3_6056ce8b",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a98d0612_3e400c1e",
         "filename": "chip/stm32/usb_spi.c",
         "patchSetId": 3
