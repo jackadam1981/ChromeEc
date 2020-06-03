@@ -533,6 +533,33 @@ void board_enable_sd_card(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_enable_sd_card, HOOK_PRIO_DEFAULT);
 
+/* Lid */
+#ifndef TEST_BUILD
+/* This callback disables keyboard when convertibles are fully open */
+static bool board_is_convertible(void)
+{
+	/*
+	 * TODO: assume convertible for now.
+	 * Should add a feature flag VARIANT_ASURADA_CONVERTIBLE after
+	 * baseboard ready.
+	 */
+	return true;
+}
+
+void lid_angle_peripheral_enable(int enable)
+{
+	/*
+	 * If the lid is in tablet position via other sensors,
+	 * ignore the lid angle, which might be faulty then
+	 * disable keyboard.
+	 */
+	if (tablet_get_mode())
+		enable = 0;
+	if (board_is_convertible())
+		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+}
+#endif
+
 /* Sensor */
 static struct mutex g_base_mutex;
 static struct mutex g_lid_mutex;
