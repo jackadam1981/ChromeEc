@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfe2e3f5_0f7af892",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-06-03T23:22:54Z",
+      "side": 1,
+      "message": "Can we move only this and not the sensor selection?\n\nSince this will end up in RO (and we need the transport selection in RO), it\u0027s going to be frozen forever since RO does not get updated once shipped. If we add additional fingerprint sensors, an old RO may print out the wrong sensor type, which would be confusing.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "70da986f5a877d059c57b1e0935496db0b988f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
