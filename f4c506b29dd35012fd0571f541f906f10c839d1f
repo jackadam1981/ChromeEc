@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "90dfe096_c9d84cd1",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-03T00:31:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d94648f5_97e2730e",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 15
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cf8f4a7_85d772ca",
         "filename": "chip/mt8192_scp/intc.c",
         "patchSetId": 10
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "I noticed that current core/riscv-rv32i doesn\u0027t check return value of chip_get_ec_int().  When the return value is not okay, it just screws up the core and panics.\n\nI think we could fix core/riscv-rv32i to check the return value.  Define (-1) as the designated error code.\n\nI would like to keep it as is (0 is not okay for current Asurada SCP) and submit another patch for fixing the core/riscv-rv32i and this.\n\nNo further prints are needed here.  Because it panics and core/riscv-rv32i already has some printing functions for that (core/riscv-rv32i/panic.c).",
       "parentUuid": "2cf8f4a7_85d772ca",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c0e248d_e0ec55ea",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-03T00:31:58Z",
+      "side": 1,
+      "message": "Ack, please ack to TODO for this fix.",
+      "parentUuid": "487bc849_9102836f",
       "range": {
         "startLine": 176,
         "startChar": 8,
@@ -222,6 +270,30 @@
       "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52b23437_cf9998be",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-03T00:31:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba882325_8c44a1f0",
+      "range": {
+        "startLine": 185,
+        "startChar": 4,
+        "endLine": 185,
+        "endChar": 19
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
