@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b47ad5ba_6aac559a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-03T21:02:14Z",
+      "side": 1,
+      "message": "What\u0027s the value in having a new interface versus using set cc?  And why only define it for the nuvaton TCPC to use?\n\nI do like moving in the direction of always setting selected Rp after pd_set_power_supply_ready.  It seems correct for the TC to do",
+      "range": {
+        "startLine": 782,
+        "startChar": 8,
+        "endLine": 782,
+        "endChar": 25
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01d0e9f1_eb15bad7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-03T21:02:14Z",
+      "side": 1,
+      "message": "Can be removed?",
+      "range": {
+        "startLine": 2153,
+        "startChar": 2,
+        "endLine": 2153,
+        "endChar": 22
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
