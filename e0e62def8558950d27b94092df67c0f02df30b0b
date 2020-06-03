@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2427f54_392ee429",
+        "filename": "chip/g/dcrypto/hmac.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-03T18:59:23Z",
+      "side": 1,
+      "message": "is it only intended to be used for SHA256? if so, shall we just combine it with DCRYPTO_HMAC_SHA256_init?",
+      "range": {
+        "startLine": 21,
+        "startChar": 26,
+        "endLine": 21,
+        "endChar": 43
+      },
+      "revId": "e0e62def8558950d27b94092df67c0f02df30b0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
