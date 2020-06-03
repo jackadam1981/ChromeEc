@@ -128,6 +128,30 @@
       "revId": "9777c23aaddc441b2f5780c69f15cf628603bba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "116d7116_5557659a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2908,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-03T18:28:55Z",
+      "side": 1,
+      "message": "I think it\u0027s okay call it twice in that case. I\u0027m just concerned about other edges in the graph. It makes more sense to me that leaving this state always turns it off (even if it may already be off).\n\nI\u0027d rather leave it as it was.",
+      "parentUuid": "24447cdf_eacb06da",
+      "range": {
+        "startLine": 2908,
+        "startChar": 0,
+        "endLine": 2908,
+        "endChar": 60
+      },
+      "revId": "9777c23aaddc441b2f5780c69f15cf628603bba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
