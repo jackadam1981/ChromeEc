@@ -18,10 +18,16 @@
 #include "uart.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+#include "usb_pe_sm.h"
+#include "usb_prl_sm.h"
+#include "usb_tc_sm.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
+/* only needed to build for now */
+struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -103,27 +109,19 @@ void board_tcpc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
-void board_debug_gpio(void)
-{
-	static int board_phase;
-
-	/* gpio_set_level(GPIO_TRIGGER_1, board_phase & 1); */
-	/* gpio_set_level(GPIO_TRIGGER_2, !(board_phase & 1)); */
-	board_phase++;
-}
-DECLARE_HOOK(HOOK_TICK, board_debug_gpio, HOOK_PRIO_DEFAULT);
-
 static void board_select_drp_mode(void)
 {
-	/* pd_set_dual_role(0, PD_DRP_TOGGLE_ON); */
-	/* CPRINTS("ucpd: set drp toggle on"); */
+
+	//pd_set_dual_role(0, PD_DRP_TOGGLE_ON);
+	pd_set_dual_role(0, PD_DRP_FORCE_SOURCE);
+	CPRINTS("ucpd: drp_state = %d", pd_get_dual_role(0));
 }
 DECLARE_DEFERRED(board_select_drp_mode);
 
 static void board_init(void)
 {
 	/* TODO */
-	hook_call_deferred(&board_select_drp_mode_data, 50 * MSEC);
+	hook_call_deferred(&board_select_drp_mode_data, 1 * MSEC);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -138,4 +136,12 @@ int ppc_get_alert_status(int port)
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* TODO: b/ - check correct operation for honeybuns */
+}
+
+void board_debug_gpio(int trigger, int enable)
+{
+	enum gpio_signal signal = (trigger == TRIGGER_1) ?
+		GPIO_TRIGGER_1 : GPIO_TRIGGER_2;
+
+	gpio_set_level(signal, enable);
 }
