@@ -237,6 +237,30 @@
       "revId": "de207f5014a1dd8c128956142bc541362208a973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "376c3a81_011640d3",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-03T01:01:03Z",
+      "side": 1,
+      "message": "Ok, I had an off line chat with Andrey, he also feels that it would be good to explicitly prvent reset from deassertion in addition to polling. Will make a change.",
+      "parentUuid": "f005e8d7_661e1172",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 56
+      },
+      "revId": "de207f5014a1dd8c128956142bc541362208a973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
