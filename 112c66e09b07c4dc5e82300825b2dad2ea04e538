@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d99479a3_6056ce8b",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-03T23:31:41Z",
+      "side": 1,
+      "message": "did you mean to fix the style nits?",
+      "parentUuid": "a5872608_9977cb92",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a98d0612_3e400c1e",
         "filename": "chip/stm32/usb_spi.c",
         "patchSetId": 3
