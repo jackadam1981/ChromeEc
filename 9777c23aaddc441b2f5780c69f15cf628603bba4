@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "297e220e_8bd2fa6f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 3468,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-03T04:48:25Z",
+      "side": 1,
+      "message": "Technically, the DPM is supposed to notify when we\u0027re at 0V.  Personally, I thought this type of DPM notification actually made sense to put in our TC layer when I was working on the hard reset path.  You don\u0027t have to follow that direction, but I found for the hard reset path it seemed like it made the cleanest code. \n\nAs a side note, we\u0027re working on a DPM module to put our alternate mode and policy management in.  But even with a DPM module in place, I think I\u0027d still opt for the TC layer for this specific type of management.",
+      "range": {
+        "startLine": 3468,
+        "startChar": 5,
+        "endLine": 3468,
+        "endChar": 45
+      },
+      "revId": "9777c23aaddc441b2f5780c69f15cf628603bba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd35dde8_bfa7e99f",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 12
