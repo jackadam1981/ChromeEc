@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e60273b7_5c516c0e",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-06-03T02:01:59Z",
+      "side": 1,
+      "message": "OK, but should we move to another CL for switch this from baseboard to board?",
+      "parentUuid": "32ef415a_90141b5a",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0973707b_8bef0b08",
         "filename": "board/bobba/board.c",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2020-06-02T09:37:56Z",
       "side": 1,
       "message": "We should also check the board version and only judge by this PPC_ID in the new board version.",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3968e6d4_8578a1ac",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-06-03T02:01:59Z",
+      "side": 1,
+      "message": "If we put board version here, we should make sure all board using baseboard:octopus define same board version with PPC_ID implement.",
+      "parentUuid": "0973707b_8bef0b08",
       "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a52557f7_1e746d74",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-06-03T02:01:59Z",
+      "side": 1,
+      "message": "Got it, I will update in TOT.",
+      "parentUuid": "91a3d8a7_c61782b9",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "189d2b4f_c056cbb1",
         "filename": "board/bobba/gpio.inc",
         "patchSetId": 9
@@ -64,6 +118,24 @@
       "writtenOn": "2020-06-02T09:37:56Z",
       "side": 1,
       "message": "Do we have the external pull high?",
+      "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a77818f7_dd12ce45",
+        "filename": "board/bobba/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-06-03T02:01:59Z",
+      "side": 1,
+      "message": "New board have external pull high, this pull down define is for old board without external pull high.",
+      "parentUuid": "189d2b4f_c056cbb1",
       "revId": "aa8f61ac1b8286b10a65286ff8ec5a3cb1e0c8c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
