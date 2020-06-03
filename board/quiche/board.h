@@ -27,6 +27,9 @@
 /* #undef CONFIG_USB_PRL_SM */
 /* #undef CONFIG_USB_PE_SM */
 
+#undef CONFIG_USB_PD_INITIAL_DRP_STATE
+#define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SOURCE
+
 /* USB Type A Features */
 
 /* BC 1.2 */
@@ -49,12 +52,22 @@
 #define CONFIG_UART_TX_DMA_CH STM32_DMAC_USART3_TX
 #define CONFIG_UART_TX_DMA_PH DMAMUX_REQ_USART3_TX
 
+
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
 #include "registers.h"
 #define GPIO_TRIGGER_1 GPIO_USB3_A3_CDP_EN
 #define GPIO_TRIGGER_2 GPIO_USB3_A4_CDP_EN
+
+
+enum  debug_gpio {
+	TRIGGER_1 = 0,
+	TRIGGER_2,
+};
+
+void board_debug_gpio(int trigger, int enable);
 
 #endif /* !__ASSEMBLER__ */
 
