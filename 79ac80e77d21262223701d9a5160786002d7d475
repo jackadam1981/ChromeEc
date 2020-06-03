@@ -93,6 +93,30 @@
       "revId": "79ac80e77d21262223701d9a5160786002d7d475",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8beaa12e_08bb6bed",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-03T09:10:39Z",
+      "side": 1,
+      "message": "Yeah, I thought our convention was 4 character tabs.",
+      "parentUuid": "6d638e51_6b4ada6f",
+      "range": {
+        "startLine": 82,
+        "startChar": 73,
+        "endLine": 82,
+        "endChar": 77
+      },
+      "revId": "79ac80e77d21262223701d9a5160786002d7d475",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
