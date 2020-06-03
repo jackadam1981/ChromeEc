@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "98ae699f_2655995d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-03T19:37:10Z",
+      "side": 1,
+      "message": "This conversation is fragmented into the next patchset but I think it makes sense to call both the TCPC and PPC configuration, and have the decision to call be handled at the driver level based on the existence of the function. \n\nHere is the driver level, so I think that the board_tcpc_frs_enable should be moved out of this and moved to the specific ppc driver, we should be set up now to handle that. Now, this should only be called if the FRS_TCPC is set since this is directly writing TCPCI registers. I won\u0027t move it here so I don\u0027t break Zork.",
+      "parentUuid": "b47fb087_05a65cf8",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 46
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a861e472_c83a495f",
         "filename": "include/config.h",
         "patchSetId": 9
