@@ -895,41 +895,15 @@ bool is_usb4_vdo(int port, int cnt, uint32_t *payload)
 	return false;
 }
 
-/*
- * For Cable rev 3.0: USB4 cable speed is set according to speed supported by
- * the port and the response received from the cable, whichever is least.
- *
- * For Cable rev 2.0: Since board_is_tbt_usb4_port() should not enabled if the
- * port supports speed less than USB_R20_SS_U31_GEN1_GEN2, USB4 cable speed is
- * set according to the cable response.
- */
-static enum usb_rev30_ss board_get_max_usb_cable_speed(int port)
-{
-	struct pd_cable *cable = pd_get_cable_attributes(port);
-	/*
-	 * Converting Thunderbolt-Compatible board speed to equivalent USB4
-	 * speed.
-	 */
-	enum usb_rev30_ss max_usb4_speed =
-		board_get_max_tbt_speed(port) == TBT_SS_TBT_GEN3 ?
-		USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
-
-	return max_usb4_speed < cable->attr.p_rev30.ss ?
-	       max_usb4_speed : cable->attr.p_rev30.ss;
-}
-
 enum usb_rev30_ss get_usb4_cable_speed(int port)
 {
 	struct pd_cable *cable = pd_get_cable_attributes(port);
-	enum usb_rev30_ss max_rev30_usb4_speed;
 
-	if (cable->rev == PD_REV30) {
-		max_rev30_usb4_speed = board_get_max_usb_cable_speed(port);
-		if (!IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE) ||
-		     max_rev30_usb4_speed != USB_R30_SS_U32_U40_GEN2 ||
-		     get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
-			return max_rev30_usb4_speed;
-	}
+	if (cable->rev == PD_REV30 &&
+	   (!IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE) ||
+	    cable->attr.p_rev30.ss != USB_R30_SS_U32_U40_GEN2 ||
+	    get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE))
+		return  cable->attr.p_rev30.ss;
 	/*
 	 * Converting Thunderolt-Compatible cable speed to equivalent USB4 cable
 	 * speed.
