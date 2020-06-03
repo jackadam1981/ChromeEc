@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce915ac8_b126a510",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-03T17:42:02Z",
+      "side": 1,
+      "message": "Can a routine like gpio_or_ioex_set_level be created for get and then have just the single version here instead of handling this signal pin differently at this level?",
+      "range": {
+        "startLine": 576,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 6
+      },
+      "revId": "8be6ab9fc7e9fb00f330b0981f85d13d9201635c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddc77e08_464b3382",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-03T17:42:02Z",
+      "side": 1,
+      "message": "Is this the current way to handle these changes or do they migrate to specific board.h files?\n\nIf this is the right way, I would prefer following all of your other BOARD_VILBOZ conditional compiling uses and do\n\n#elif defined(VARIANT_ZORK_DALBOZ)\n\t#define CONFIG_USB_MUX_PS8740\n\t#define CONFIG_USB_MUX_PS8743\n#ifndef BOARD_VILBOZ\n\t#define CONFIG_IO_EXPANDER_PCAL6408\n#endif\n\t#define CONFIG_IO_EXPANDER_PORT_COUNT IOEX_PORT_COUNT\n\t#define CONFIG_USB_PORT_ENABLE_DYNAMIC\n#endif",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 6
+      },
+      "revId": "8be6ab9fc7e9fb00f330b0981f85d13d9201635c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
