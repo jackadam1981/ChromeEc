@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4157b411_be597d25",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-03T23:11:25Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t think this should be removed. We should start off advertising at default USB regarless of what the last SRC advertisement was, right?",
+      "parentUuid": "01d0e9f1_eb15bad7",
+      "range": {
+        "startLine": 2153,
+        "startChar": 2,
+        "endLine": 2153,
+        "endChar": 22
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e520f785_4d7ac7e4",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 16
