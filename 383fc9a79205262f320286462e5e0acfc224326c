@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d06627da_4b3a4eab",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-03T07:31:54Z",
+      "side": 1,
+      "message": "AFAIK, we can\u0027t pull-up with 1.8v driving on it81202.",
+      "range": {
+        "startLine": 32,
+        "startChar": 75,
+        "endLine": 32,
+        "endChar": 87
+      },
+      "revId": "383fc9a79205262f320286462e5e0acfc224326c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
