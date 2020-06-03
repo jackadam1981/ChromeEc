@@ -46,6 +46,30 @@
       "revId": "a243d327c66fab8450b172da18c8f780fddb394e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70805116_9f4321c8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-03T00:22:10Z",
+      "side": 1,
+      "message": "Yeah, let\u0027s file a bug and add a TODO. Everything else seems okay to me.",
+      "parentUuid": "2498d951_da436e6c",
+      "range": {
+        "startLine": 1433,
+        "startChar": 0,
+        "endLine": 1438,
+        "endChar": 40
+      },
+      "revId": "a243d327c66fab8450b172da18c8f780fddb394e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
