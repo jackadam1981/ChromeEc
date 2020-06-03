@@ -326,8 +326,13 @@ void __ram_code start_irq_handler(void)
 		ec_int = sw_int_num;
 		ec_int_group = 16;
 	} else {
-		/* Determine interrupt number */
+		/*
+		 * Determine interrupt number.
+		 * -1 if it cannot find the corresponding interrupt source.
+		 */
 		ec_int = chip_get_ec_int();
+		if (ec_int == -1)
+			goto error;
 		ec_int_group = chip_get_intc_group(ec_int);
 	}
 
@@ -345,11 +350,15 @@ void __ram_code start_irq_handler(void)
 		irq_dist[ec_int]++;
 #endif
 
+error:
 	/* restore a0, a1, and a2 */
 	asm volatile ("lw a0, 0(sp)");
 	asm volatile ("lw a1, 1*4(sp)");
 	asm volatile ("lw a2, 2*4(sp)");
 	asm volatile ("addi sp, sp, 4*3");
+
+	/* cannot use return statement because a0 has been used */
+	asm volatile ("add t0, zero, %0" :: "r"(ec_int));
 }
 
 void __ram_code end_irq_handler(void)
