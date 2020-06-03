@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63fa2b69_d950ffcd",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-03T20:14:34Z",
+      "side": 1,
+      "message": "multiline comments should have both a header and a footer",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a98d0612_3e400c1e",
+        "filename": "chip/stm32/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-03T20:14:34Z",
+      "side": 1,
+      "message": "how does this work? Is the usb buffer circular or not? if it is cicrlular, rx_count is not the number of bytes in the last packet, if it is not circular - who sets rx_count back to zero?",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 226,
+        "endChar": 68
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f097ccf_e94105e7",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-03T20:14:34Z",
+      "side": 1,
+      "message": "comments fitting in one line do not need header/footer",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 4
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87c4209d_9511ec3d",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-03T20:14:34Z",
+      "side": 1,
+      "message": "comment needs updating",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 48
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1153a91a_3b2aa2ab",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-03T20:14:34Z",
+      "side": 1,
+      "message": "both write and read point at the same buffer? How does this work?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 0
+      },
+      "revId": "112c66e09b07c4dc5e82300825b2dad2ea04e538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
