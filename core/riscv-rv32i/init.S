@@ -184,6 +184,9 @@ __sp_16byte_aligned:
         j unhandled_interrupt
 __irq_handler:
         jal start_irq_handler
+	/* t0 = -1 if it cannot find the corresponding interrupt source */
+	addi t0, t0, 1
+	beqz t0, unhandled_interrupt
         /* get EC interrupt group 0-15 or 16:ecall */
         la t0, ec_int_group
         /* get corresponding isr */
