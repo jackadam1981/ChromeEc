@@ -22,6 +22,30 @@
       "revId": "1390a436179b6a118573b13c51d50b396f820714",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec964e6e_f4395f39",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-04T20:52:26Z",
+      "side": 1,
+      "message": "Currently, it looks redundant because CONFIG_FP_SENSOR is defined for all boards which define CONFIG_CONSOLE_COMMAND_FLAGS (and the opposite is true, too).\n\n------ \u003e8 ------\n\nHow are we protecting FPMCU\u0027s console currently? Why don\u0027t we disable the whole write access to the console when WP is on like we do for the main EC? Can an FPMCU get WP signal over a trusted channel?\n\nOtherwise we would need to keep wondering what commands should be protected every time we add a new command or change an existing command. Console commands can have a vulnerability. So, it\u0027s better not to expose them at all.",
+      "parentUuid": "f5312664_9ab2c9aa",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 6
+      },
+      "revId": "1390a436179b6a118573b13c51d50b396f820714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
