@@ -124,7 +124,7 @@ DECLARE_DEFERRED(board_select_drp_mode);
 
 static void board_init(void)
 {
-	hook_call_deferred(&board_select_drp_mode_data, 50 * MSEC);
+	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

@@ -40,7 +40,6 @@
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_CMD_CBI
 
-
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_TCPMV2
@@ -48,11 +47,11 @@
 /* No AP on any honeybuns variants */
 #undef CONFIG_USB_PD_HOST_CMD
 
-/* TODO(b/167711550): Temporarily support type-c mode only */
-#undef CONFIG_USB_PRL_SM
-#undef CONFIG_USB_PE_SM
-
+#define CONFIG_USB_PD_ALT_MODE
+#define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
+/* #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0 */
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_STM32GX
