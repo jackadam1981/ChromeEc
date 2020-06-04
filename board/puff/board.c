@@ -452,6 +452,8 @@ static void board_init(void)
 	if (board_version < 2)
 		button_disable_gpio(GPIO_EC_RECOVERY_BTN_ODL);
 
+	CPRINTS("TEST CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW :%d",CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW);
+
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
