@@ -56,6 +56,30 @@
       "revId": "4be411695607640fc69a6c6ae9f4244d206551cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8e78947_c056dae3",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-06-04T07:31:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f769ea_b5f227d3",
+      "range": {
+        "startLine": 79,
+        "startChar": 28,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "4be411695607640fc69a6c6ae9f4244d206551cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
