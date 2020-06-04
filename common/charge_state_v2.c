@@ -2593,6 +2593,7 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 	if (args->version > 0)
 		chgnum = in->chgnum;
 
+	CPRINTS("Call CHARGE COMMAND");
 	switch (in->cmd) {
 
 	case CHARGE_STATE_CMD_GET_STATE:
@@ -2605,6 +2606,7 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 		break;
 
 	case CHARGE_STATE_CMD_GET_PARAM:
+	CPRINTS("Call CHARGE_STATE_CMD_GET_PARAM");
 		val = 0;
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
 		/* custom profile params */
@@ -2641,6 +2643,7 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 				break;
 			case CS_PARAM_LIMIT_POWER:
 #ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW
+				CPRINTS("Call CS_PARAM_LIMIT_POWER");
 				/*
 				 * LIMIT_POWER status is based on battery level
 				 * and external charger power.
