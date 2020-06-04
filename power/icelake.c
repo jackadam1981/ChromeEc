@@ -206,6 +206,7 @@ static void dsw_pwrok_pass_thru(void)
 
 enum power_state power_handle_state(enum power_state state)
 {
+	int dswpwrok_in;
 	int all_sys_pwrgd_in = intel_x86_get_pg_ec_all_sys_pwrgd();
 	int all_sys_pwrgd_out;
 #ifdef CONFIG_CHIPSET_JASPERLAKE
@@ -264,7 +265,14 @@ enum power_state power_handle_state(enum power_state state)
 			break;
 
 		/* Pass thru DSWPWROK again since we changed it. */
-		dsw_pwrok_pass_thru();
+		dswpwrok_in = intel_x86_get_pg_ec_dsw_pwrok();
+		/*
+		 * A minimum 10 msec delay is required between PP3300_A being
+		 * stable and the DSW_PWROK signal being passed to the PCH.
+		 */
+		msleep(10);
+		GPIO_SET_LEVEL(GPIO_PCH_DSW_PWROK, dswpwrok_in);
+		CPRINTS("Pass thru GPIO_DSW_PWROK: %d", dswpwrok_in);
 
 		/* Turn on PP5000 after PP3300 and DSW PWROK when enabled */
 		if (IS_ENABLED(CONFIG_CHIPSET_PP3300_RAIL_FIRST))
