@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5df47368_d4f92f77",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-04T21:07:35Z",
+      "side": 1,
+      "message": "In this block you\u0027re setting r_v2-\u003ecable_speed to either the enum usb_rev30_ss type or enum tbt_compat_cable_speed type.  r_v2-\u003ecable_speed is just uint8_t and ec_commands.h doesn\u0027t define the values for this.\n\nI opened bug b:158234949 to address this.  Can you add a comment?",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 0
+      },
+      "revId": "d051da8c4f3f668427e9cf0cb0c45fe0cf6876a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
