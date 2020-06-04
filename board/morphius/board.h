@@ -146,6 +146,11 @@ enum ec_cfg_usb_db_type {
 	MORPHIUS_DB_T_OPT3_USBC_HDMI_MSTHUB = 1,
 };
 
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_C1,
+	USBC_PORT_COUNT
+};
 
 #define HAS_USBC1_RETIMER_PS8802 \
 			(BIT(MORPHIUS_DB_T_OPT3_USBC_HDMI_MSTHUB))
@@ -202,6 +207,13 @@ extern const struct usb_mux usbc0_pi3dpx1207_usb_retimer;
 extern const struct usb_mux usbc1_ps8802;
 extern const struct usb_mux usbc1_ps8818;
 extern struct usb_mux usbc1_amd_fp5_usb_mux;
+
+void board_reset_pd_mcu(void);
+
+/* Common definition for the USB PD interrupt handlers. */
+void tcpc_alert_event(enum gpio_signal signal);
+void bc12_interrupt(enum gpio_signal signal);
+void ppc_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
