@@ -66,7 +66,7 @@
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 #define PD_VCONN_SWAP_DELAY 5000 /* us */
 
-#define PD_MAX_VOLTAGE_MV 20000
+#define PD_MAX_VOLTAGE_MV 15000
 #else
 #error Must define a VARIANT_KUKUI_CHARGER
 #endif /* VARIANT_KUKUI_CHARGER */
