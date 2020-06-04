@@ -112,8 +112,8 @@ DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 static void board_select_drp_mode(void)
 {
 
-	//pd_set_dual_role(0, PD_DRP_TOGGLE_ON);
-	pd_set_dual_role(0, PD_DRP_FORCE_SOURCE);
+	pd_set_dual_role(0, PD_DRP_TOGGLE_ON);
+	//pd_set_dual_role(0, PD_DRP_FORCE_SOURCE);
 	CPRINTS("ucpd: drp_state = %d", pd_get_dual_role(0));
 }
 DECLARE_DEFERRED(board_select_drp_mode);
@@ -121,7 +121,7 @@ DECLARE_DEFERRED(board_select_drp_mode);
 static void board_init(void)
 {
 	/* TODO */
-	hook_call_deferred(&board_select_drp_mode_data, 1 * MSEC);
+	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
