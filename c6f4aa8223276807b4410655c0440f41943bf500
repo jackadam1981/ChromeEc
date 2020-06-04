@@ -94,6 +94,30 @@
       "revId": "c6f4aa8223276807b4410655c0440f41943bf500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96b476c_84aaa976",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-04T22:34:11Z",
+      "side": 1,
+      "message": "This might be more clear \"deassert_ec_rst blocked. Try cr50 reset.\", but I\u0027m fine with either.",
+      "parentUuid": "bb32e7da_06b0e236",
+      "range": {
+        "startLine": 1178,
+        "startChar": 0,
+        "endLine": 1179,
+        "endChar": 9
+      },
+      "revId": "c6f4aa8223276807b4410655c0440f41943bf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
