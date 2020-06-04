@@ -70,6 +70,30 @@
       "revId": "70e2457b8375c3ce729427554510846fb7e7a7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc130bca_d9e935f9",
+        "filename": "common/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-04T23:45:01Z",
+      "side": 1,
+      "message": "Is this fundamentally different than the existing mechanism, \"__stdlib_compat\"? Can we expand the logic in include/common.h instead?\n\nhttps://github.com/coreboot/chrome-ec/blob/master/include/common.h#L309",
+      "parentUuid": "4dfa0ed5_5cf5e85d",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 74
+      },
+      "revId": "70e2457b8375c3ce729427554510846fb7e7a7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
