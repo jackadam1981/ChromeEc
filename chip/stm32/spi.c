@@ -288,6 +288,7 @@ static void tx_status(uint8_t byte)
 {
 	stm32_spi_regs_t *spi __attribute__((unused)) = STM32_SPI1_REGS;
 
+	CPRINTF("tx_status=[%02x %02x %02x %02x]\n", byte, byte, byte, byte);
 	SPI_TXDR = byte;
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32L4)
 	/* It sends the byte 4 times in order to be sure it bypassed the FIFO
@@ -416,6 +417,8 @@ static void spi_send_response(struct host_cmd_handler_args *args)
  */
 static void spi_send_response_packet(struct host_packet *pkt)
 {
+	int i;
+
 	dma_chan_t *txdma;
 
 	/*
@@ -442,6 +445,13 @@ static void spi_send_response_packet(struct host_packet *pkt)
 	txdma = dma_get_channel(STM32_DMAC_SPI1_TX);
 	dma_prepare_tx(&dma_tx_option, sizeof(out_preamble) + pkt->response_size
 		+ EC_SPI_PAST_END_LENGTH, out_msg);
+	CPRINTF("out_msg=[");
+	for (i = 0; i < sizeof(out_preamble) + pkt->response_size +
+				EC_SPI_PAST_END_LENGTH;
+	     ++i)
+		CPRINTF("%02x ", out_msg[i]);
+	CPRINTF("]\n");
+
 	dma_go(txdma);
 #ifdef CHIP_FAMILY_STM32H7
 	/* clear any previous underrun */
