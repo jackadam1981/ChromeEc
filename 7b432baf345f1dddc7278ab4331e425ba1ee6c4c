@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "ff9ed578_fa5c56ad",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-04T16:13:47Z",
+      "side": 1,
+      "message": "I am confused by your last paragraph. Did you mean that we should move the call to board_tcpc_frs_enable to the specific TCPC driver?\n\nIs your last sentence saying that you think we should make the change previously described, but you don\u0027t want to do it in this CL? Or is it saying something about moving code to a certain location?\n\nWRT where to call the board function, it might make sense to move the call to the driver if only a few parts require some board-specific action to enable FRS, but usually board-specific code is called from a pretty generic location to make it easy for boards to define their own behaviors. This seems like a generic-enough location, unless we expect to need board-specific FRS-enable code for non-TCPCi TCPCs.\n\nIf you expect the board-specific action to be closely tied to a particular driver, e.g. TCPC foo will always need a certain GPIO to be set, then it might make sense to define a generic GPIO name and have the driver set that. Then, a board that uses that TCPC can just\n#define GPIO_TCPC_FOO_FRS_EN BOARD_NET_NAME\nin board.h.\n\nAlternatively, you could call something like board_set_frs_enable from within pd_set_frs_enable. A board could define it based on the values of the TCPC and PPC config options, or we could have something like CONFIG_USB_PD_FRS_GPIO if there is some truly non-PPC, non-TCPC way of doing this.",
+      "parentUuid": "98ae699f_2655995d",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 46
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a861e472_c83a495f",
         "filename": "include/config.h",
         "patchSetId": 9
