@@ -416,6 +416,8 @@ static void spi_send_response(struct host_cmd_handler_args *args)
  */
 static void spi_send_response_packet(struct host_packet *pkt)
 {
+	int i;
+
 	dma_chan_t *txdma;
 
 	/*
@@ -442,6 +444,13 @@ static void spi_send_response_packet(struct host_packet *pkt)
 	txdma = dma_get_channel(STM32_DMAC_SPI1_TX);
 	dma_prepare_tx(&dma_tx_option, sizeof(out_preamble) + pkt->response_size
 		+ EC_SPI_PAST_END_LENGTH, out_msg);
+	CPRINTF("out_msg=[");
+	for (i = 0; i < sizeof(out_preamble) + pkt->response_size +
+				EC_SPI_PAST_END_LENGTH;
+	     ++i)
+		CPRINTF("%02x ", out_msg[i]);
+	CPRINTF("]\n");
+
 	dma_go(txdma);
 #ifdef CHIP_FAMILY_STM32H7
 	/* clear any previous underrun */
