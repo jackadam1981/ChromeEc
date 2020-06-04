@@ -33,6 +33,29 @@
       "revId": "4be411695607640fc69a6c6ae9f4244d206551cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38f769ea_b5f227d3",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-04T07:16:44Z",
+      "side": 1,
+      "message": "board_version itself would be enough? And output error msg when not EC_SUCCESS\n\n        uint32_t board_version \u003d 0;\n\n\tif (cbi_get_board_version(\u0026board_version) !\u003d EC_SUCCESS)\n            print error msg",
+      "range": {
+        "startLine": 79,
+        "startChar": 28,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "4be411695607640fc69a6c6ae9f4244d206551cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
