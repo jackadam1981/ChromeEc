@@ -22,6 +22,30 @@
       "revId": "e05862db8dd120bc76c79ecac985bce85b4130a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d598226_d79f3d21",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-04T23:45:24Z",
+      "side": 1,
+      "message": "The pattern PRE_ (the opposite of POST_) is used before, like the above:\n\tHOOK_PRE_FREQ_CHANGE,\n\tHOOK_FREQ_CHANGE,\nand\n\tHOOK_CHIPSET_PRE_INIT.\n\nIntroducing another pattern may be inconsistent with these existing ones.\n\nOr any other drawback of naming it POST_?",
+      "parentUuid": "1c954446_b7e4ebcc",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 27
+      },
+      "revId": "e05862db8dd120bc76c79ecac985bce85b4130a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
