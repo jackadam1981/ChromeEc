@@ -273,28 +273,12 @@
 #include "math_util.h"
 #include "registers.h"
 
-enum adc_channel {
-	ADC_TEMP_SENSOR_CHARGER,
-	ADC_TEMP_SENSOR_SOC,
-	ADC_CH_COUNT
-};
-
 enum power_signal {
 	X86_SLP_S3_N,
 	X86_SLP_S5_N,
 	X86_S0_PGOOD,
 	X86_S5_PGOOD,
 	POWER_SIGNAL_COUNT
-};
-
-enum temp_sensor_id {
-	TEMP_SENSOR_CHARGER = 0,
-	TEMP_SENSOR_SOC,
-	TEMP_SENSOR_CPU,
-#ifdef BOARD_MORPHIUS
-	TEMP_SENSOR_5V_REGULATOR,
-#endif
-	TEMP_SENSOR_COUNT
 };
 
 enum fan_channel {
@@ -367,6 +351,8 @@ void mst_hpd_interrupt(enum ioex_signal signal);
 #ifdef CONFIG_USB_TYPEC_PD_FAST_ROLE_SWAP
 int board_tcpc_fast_role_swap_enable(int port, int enable);
 #endif
+
+int board_get_temp(int idx, int *temp_k);
 
 #endif /* !__ASSEMBLER__ */
 

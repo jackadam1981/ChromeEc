@@ -70,6 +70,12 @@
 /* This I2C moved. Temporarily detect and support the V0 HW. */
 extern int I2C_PORT_BATTERY;
 
+enum adc_channel {
+	ADC_TEMP_SENSOR_CHARGER,
+	ADC_TEMP_SENSOR_SOC,
+	ADC_CH_COUNT
+};
+
 enum battery_type {
 	BATTERY_SMP,
 	BATTERY_LGC,
@@ -80,6 +86,13 @@ enum battery_type {
 enum pwm_channel {
 	PWM_CH_KBLIGHT = 0,
 	PWM_CH_COUNT
+};
+
+enum temp_sensor_id {
+	TEMP_SENSOR_CHARGER = 0,
+	TEMP_SENSOR_SOC,
+	TEMP_SENSOR_CPU,
+	TEMP_SENSOR_COUNT
 };
 
 
