@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a7417f5_2572f071",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-06-04T21:04:32Z",
+      "side": 1,
+      "message": "Before:\n\n   *** 21232 bytes in flash and 4056 bytes in RAM still available on servo_micro RO ****\n  *** 25732 bytes in flash and 4056 bytes in RAM still available on servo_micro RW ****\n\nAfter:\n\n  *** 21232 bytes in flash and 3160 bytes in RAM still available on servo_micro RO ****\n  *** 25732 bytes in flash and 3160 bytes in RAM still available on servo_micro RW ****\n\n\nLooks like we have 3160 bytes left.",
+      "parentUuid": "9c93b90d_73b09b97",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 37
+      },
+      "revId": "f4125d3bbfe2229e029ee889758753bbc58e3417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7c25ecd_28a80a51",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "f4125d3bbfe2229e029ee889758753bbc58e3417",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a910d062_1d7b61ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-06-04T21:04:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7c25ecd_28a80a51",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "f4125d3bbfe2229e029ee889758753bbc58e3417",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
