@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c954446_b7e4ebcc",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-04T23:12:21Z",
+      "side": 1,
+      "message": "How about adding a suffix: _COMPLETE, _DONE, _EXIT or whatever? That\u0027ll make it easier to group HOOK_CHIPSET_SHUTDOWN_* hierarchically.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 27
+      },
+      "revId": "e05862db8dd120bc76c79ecac985bce85b4130a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
