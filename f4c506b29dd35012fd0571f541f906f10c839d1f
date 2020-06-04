@@ -226,6 +226,30 @@
     },
     {
       "key": {
+        "uuid": "c966bae6_c236d9ad",
+        "filename": "chip/mt8192_scp/intc.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-04T02:05:26Z",
+      "side": 1,
+      "message": "Done.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2227777",
+      "parentUuid": "4c0e248d_e0ec55ea",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "f4c506b29dd35012fd0571f541f906f10c839d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45f68800_2b8dfe6d",
         "filename": "chip/mt8192_scp/intc.c",
         "patchSetId": 10
