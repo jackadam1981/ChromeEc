@@ -24,6 +24,7 @@
 #define ISL923X_REG_CONTROL2         0x3d
 #define ISL9238_REG_CONTROL3         0x4c
 #define ISL9238_REG_CONTROL4         0x4e
+#define ISL9238C_REG_CONTROL6        0x37
 #define ISL923X_REG_INFO             0x3a
 #define ISL9238_REG_INFO2            0x4d
 #define ISL923X_REG_OTG_VOLTAGE      0x49
@@ -230,6 +231,21 @@
 /* Control3: Don't reread PROG pin. */
 #define ISL9238_C3_NO_REREAD_PROG_PIN BIT(15)
 
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
+=======
+/* Control4: PSYS Rsense ratio. */
+#define RAA489000_C4_PSYS_RSNS_RATIO_1_TO_1 BIT(11)
+
+/* Control4: GP comparator control bit */
+#define RAA489000_C4_DISABLE_GP_CMP BIT(12)
+
+/* Control6: charger current and maximum system voltage slew rate control. */
+#define ISL9238C_C6_SLEW_RATE_CONTROL BIT(6)
+
+/* Control8: MCU_LDO - BAT state disable */
+#define RAA489000_C8_MCU_LDO_BAT_STATE_DISABLE BIT(14)
+
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 /* OTG voltage limit in mV, current limit in mA */
 #define ISL9237_OTG_VOLTAGE_MIN 4864
 #define ISL9237_OTG_VOLTAGE_MAX 5376
@@ -286,6 +302,19 @@ enum isl9237_fsm_state {
 #define CHARGE_V_MAX  ISL9238_SYS_VOLTAGE_REG_MAX
 #define CHARGE_V_MIN  ISL923X_SYS_VOLTAGE_REG_MIN
 #define CHARGE_V_STEP 8
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
+=======
+#elif defined(CONFIG_CHARGER_ISL9238C)
+#define CHARGER_NAME  "isl9238c"
+#define CHARGE_V_MAX  ISL9238_SYS_VOLTAGE_REG_MAX
+#define CHARGE_V_MIN  ISL923X_SYS_VOLTAGE_REG_MIN
+#define CHARGE_V_STEP 8
+#elif defined(CONFIG_CHARGER_RAA489000)
+#define CHARGER_NAME  "raa489000"
+#define CHARGE_V_MAX  RAA489000_SYS_VOLTAGE_REG_MAX
+#define CHARGE_V_MIN  RAA489000_SYS_VOLTAGE_REG_MIN
+#define CHARGE_V_STEP 64
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 #endif
 
 #define CHARGE_I_MAX  ISL923X_CURRENT_REG_MAX

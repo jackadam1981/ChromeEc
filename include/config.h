@@ -775,7 +775,8 @@
 #undef CONFIG_CHARGER_BQ25892
 #undef CONFIG_CHARGER_BQ25895
 #undef CONFIG_CHARGER_ISL9237
-#undef CONFIG_CHARGER_ISL9238
+#undef CONFIG_CHARGER_ISL9238 /* For ISL9238 A/B */
+#undef CONFIG_CHARGER_ISL9238C
 #undef CONFIG_CHARGER_ISL9241
 #undef CONFIG_CHARGER_MT6370
 #undef CONFIG_CHARGER_RT9466
@@ -4655,7 +4656,12 @@
  * architecture.
  */
 #if defined(CONFIG_CHARGER_ISL9237) || defined(CONFIG_CHARGER_ISL9238) || \
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
 	defined(CONFIG_CHARGER_ISL9241)
+=======
+	defined(CONFIG_CHARGER_ISL9238C) || defined(CONFIG_CHARGER_ISL9241) || \
+	defined(CONFIG_CHARGER_RAA489000) || defined(CONFIG_CHARGER_SM5803)
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 #define CONFIG_CHARGER_NARROW_VDC
 #endif
 

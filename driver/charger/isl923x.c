@@ -23,6 +23,10 @@
 #error "ISL9237/8 is a NVDC charger, please enable CONFIG_CHARGER_NARROW_VDC."
 #endif
 
+#if defined(CONFIG_CHARGER_ISL9238) || defined(CONFIG_CHARGER_ISL9238C)
+#define CHARGER_ISL9238X
+#endif
+
 #define DEFAULT_R_AC 20
 #define DEFAULT_R_SNS 10
 #define R_AC CONFIG_CHARGER_SENSE_RESISTOR_AC
@@ -110,8 +114,13 @@ int charger_get_input_current(int *input_current)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
 #if defined(CONFIG_CHARGER_OTG) && defined(CONFIG_CHARGER_ISL9238)
 int charger_enable_otg_power(int enabled)
+=======
+#if defined(CONFIG_CHARGER_OTG) && defined(CHARGER_ISL9238X)
+static enum ec_error_list isl923x_enable_otg_power(int chgnum, int enabled)
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 {
 	int rv, control1;
 
@@ -159,7 +168,7 @@ int charger_set_otg_current_voltage(int output_current, int output_voltage)
 	/* Set current. */
 	return raw_write16(ISL923X_REG_OTG_CURRENT, current_reg);
 }
-#endif /* CONFIG_CHARGER_OTG && CONFIG_CHARGER_ISL9238 */
+#endif /* CONFIG_CHARGER_OTG && CHARGER_ISL9238X */
 
 int charger_manufacturer_id(int *id)
 {
@@ -393,6 +402,7 @@ static void isl923x_init(void)
 		goto init_fail;
 #endif /* defined(CONFIG_CHARGE_RAMP_HW) */
 
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
 #ifdef CONFIG_CHARGER_ISL9238
 	/*
 	 * Don't reread the prog pin and don't reload the ILIM on ACIN.
@@ -409,6 +419,30 @@ static void isl923x_init(void)
 	reg |= ISL9238_C3_DISABLE_AUTO_CHARING;
 	if (raw_write16(ISL9238_REG_CONTROL3, reg))
 		goto init_fail;
+=======
+	if (IS_ENABLED(CONFIG_CHARGER_ISL9238C)) {
+		/* b/155366741: enable slew rate control */
+		if (raw_read16(chgnum, ISL9238C_REG_CONTROL6, &reg))
+			goto init_fail;
+
+		reg |= ISL9238C_C6_SLEW_RATE_CONTROL;
+
+		if (raw_write16(chgnum, ISL9238C_REG_CONTROL6, reg))
+			goto init_fail;
+	}
+
+	if (IS_ENABLED(CHARGER_ISL9238X) ||
+	    IS_ENABLED(CONFIG_CHARGER_RAA489000)) {
+		/*
+		 * Don't reread the prog pin and don't reload the ILIM on ACIN.
+		 * For the RAA489000, just don't reload ACLIM.
+		 */
+		if (raw_read16(chgnum, ISL9238_REG_CONTROL3, &reg))
+			goto init_fail;
+		reg |= ISL9238_C3_NO_RELOAD_ACLIM_ON_ACIN;
+		if (!IS_ENABLED(CONFIG_CHARGER_RAA489000))
+			reg |= ISL9238_C3_NO_REREAD_PROG_PIN;
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 
 	/*
 	 * No need to proceed with the rest of init if we sysjump'd to this
@@ -599,12 +633,20 @@ static int print_amon_bmon(enum amon_bmon amon, int direction,
 {
 	int adc, curr, reg, ret;
 
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
 #ifdef CONFIG_CHARGER_ISL9238
 	ret = i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
 			 ISL9238_REG_CONTROL3, &reg);
 	if (ret)
 		return ret;
+=======
+	if (IS_ENABLED(CHARGER_ISL9238X)) {
+		ret = raw_read16(chgnum, ISL9238_REG_CONTROL3, &reg);
+		if (ret)
+			return ret;
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
 	/* Switch direction */
 	if (direction)
 		reg |= ISL9238_C3_AMON_BMON_DIRECTION;
@@ -615,6 +657,17 @@ static int print_amon_bmon(enum amon_bmon amon, int direction,
 	if (ret)
 		return ret;
 #endif
+=======
+		/* Switch direction */
+		if (direction)
+			reg |= ISL9238_C3_AMON_BMON_DIRECTION;
+		else
+			reg &= ~ISL9238_C3_AMON_BMON_DIRECTION;
+		ret = raw_write16(chgnum, ISL9238_REG_CONTROL3, reg);
+		if (ret)
+			return ret;
+	}
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 
 	mutex_lock(&control1_mutex);
 
@@ -660,35 +713,50 @@ static int console_command_amon_bmon(int argc, char **argv)
 	if (argc >= 2) {
 		print_ac = (argv[1][0] == 'a');
 		print_battery = (argv[1][0] == 'b');
-#ifdef CONFIG_CHARGER_ISL9238
-		if (argv[1][1] != '\0') {
+		if (IS_ENABLED(CHARGER_ISL9238X) && argv[1][1] != '\0') {
 			print_charge = (argv[1][1] == 'c');
 			print_discharge = (argv[1][1] == 'd');
 		}
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
 #endif
+=======
+		if (argc >= 3) {
+			chgnum = strtoi(argv[2], &e, 10);
+			if (*e)
+				return EC_ERROR_PARAM2;
+		}
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 	}
 
 	if (print_ac) {
 		if (print_charge)
 			ret |= print_amon_bmon(AMON, 0,
 					CONFIG_CHARGER_SENSE_RESISTOR_AC);
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
 #ifdef CONFIG_CHARGER_ISL9238
 		if (print_discharge)
 			ret |= print_amon_bmon(AMON, 1,
+=======
+		if (IS_ENABLED(CHARGER_ISL9238X) && print_discharge)
+			ret |= print_amon_bmon(chgnum, AMON, 1,
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 					CONFIG_CHARGER_SENSE_RESISTOR_AC);
-#endif
 	}
 
 	if (print_battery) {
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
 #ifdef CONFIG_CHARGER_ISL9238
 		if (print_charge)
 			ret |= print_amon_bmon(BMON, 0,
+=======
+		if (IS_ENABLED(CHARGER_ISL9238X) && print_charge)
+			ret |= print_amon_bmon(chgnum, BMON, 0,
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 					/*
 					 * charging current monitor has
 					 * 2x amplification factor
 					 */
-					2*CONFIG_CHARGER_SENSE_RESISTOR);
-#endif
+					2 * CONFIG_CHARGER_SENSE_RESISTOR);
 		if (print_discharge)
 			ret |= print_amon_bmon(BMON, 1,
 					CONFIG_CHARGER_SENSE_RESISTOR);
@@ -726,6 +794,7 @@ static void dump_reg_range(int low, int high)
 
 static int command_isl923x_dump(int argc, char **argv)
 {
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
 	dump_reg_range(0x14, 0x15);
 	dump_reg_range(0x38, 0x3F);
 	dump_reg_range(0x47, 0x4A);
@@ -733,9 +802,198 @@ static int command_isl923x_dump(int argc, char **argv)
 	dump_reg_range(0x4B, 0x4E);
 #endif /* CONFIG_CHARGER_ISL9238 */
 	dump_reg_range(0xFE, 0xFF);
+=======
+	int chgnum = 0;
+	char *e;
+
+	if (argc >= 2) {
+		chgnum = strtoi(argv[1], &e, 10);
+		if (*e)
+			return EC_ERROR_PARAM1;
+	}
+
+	dump_reg_range(chgnum, 0x14, 0x15);
+	if (IS_ENABLED(CONFIG_CHARGER_ISL9238C))
+		dump_reg_range(chgnum, 0x37, 0x37);
+	dump_reg_range(chgnum, 0x38, 0x3F);
+	dump_reg_range(chgnum, 0x47, 0x4A);
+	if (IS_ENABLED(CHARGER_ISL9238X) ||
+	    IS_ENABLED(CONFIG_CHARGER_RAA489000))
+		dump_reg_range(chgnum, 0x4B, 0x4E);
+	dump_reg_range(chgnum, 0xFE, 0xFF);
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
 
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(charger_dump, command_isl923x_dump, "",
 			"Dumps ISL923x registers");
 #endif /* CONFIG_CMD_CHARGER_DUMP */
+<<<<<<< HEAD   (cf10b0 kakadu: turn off Vconn boost gpio pin when S5/G3)
+=======
+
+static enum ec_error_list isl923x_get_vbus_voltage(int chgnum, int port,
+						   int *voltage)
+{
+	int val;
+	int rv;
+
+	rv = raw_read16(chgnum, RAA489000_REG_ADC_VBUS, &val);
+	if (rv)
+		return rv;
+
+	/* The VBUS voltage is returned in bits 13:6. The LSB is 96mV. */
+	val &= GENMASK(13, 6);
+	val = val >> 6;
+	val *= 96;
+	*voltage = val;
+
+	return EC_SUCCESS;
+}
+
+#ifdef CONFIG_CHARGER_RAA489000
+static enum ec_error_list raa489000_set_vsys_compensation(int chgnum,
+							  struct ocpc_data *o,
+							  int current_ma,
+							  int voltage_mv)
+{
+	int device_id = 0;
+	int rv;
+	int rp1;
+	int rp2;
+	int regval;
+
+	/* This should never be called against the primary charger. */
+	ASSERT(chgnum != PRIMARY_CHARGER);
+
+	/* Only B0+ silicon supports VSYS compensation. */
+	rv = isl923x_device_id(chgnum, &device_id);
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+
+	/*
+	 * Note: this makes the assumption that this charger IC is used on the
+	 * primary port as well.
+	 */
+
+	if (device_id < RAA489000_DEV_ID_B0)
+		return EC_ERROR_UNIMPLEMENTED;
+
+	/*
+	 * Need to set board resistance values: Rp1 and Rp2.  These are expected
+	 * to be fairly constant once we are able to calculate their values.
+	 *
+	 * Rp1 is the total resistance from the right-hand side of the
+	 * auxiliary sense resistor to the actual VSYS node.  It should include:
+	 * a.     resistance of sub board sense resistor
+	 * b.     connector/cable resistance
+	 * c.     sub board PCB resistance to the actual VSYS node
+	 *
+	 * Rp2 is the total resistance from the actual VSYS node to the battery.
+	 * It should include:
+	 * a.     resistance of primary charger sense resistor (battery side)
+	 * b.     Rds(on) of BGATE FET
+	 * c.     main board PCB resistance to the battery
+	 * d.     battery internal resistance
+	 */
+
+	/*
+	 * Rp1 is set between 36-156mOhms in 4mOhm increments.  This must be
+	 * non-zero in order for compensation to work.  The system keeps track
+	 * of combined resistance; we'll assume that Rp2 is what was statically
+	 * defined leaving Rp1 as the difference.  If Rp1 is less than 36mOhms,
+	 * then the compensation is disabled.
+	 *
+	 * TODO(b/148980020): When we can calculate Rsys vs Rbatt, update this
+	 * accordingly.
+	 */
+	rp1 = o->combined_rsys_rbatt_mo - CONFIG_OCPC_DEF_RBATT_MOHMS;
+	rp1 = MIN(rp1, RAA489000_RP1_MAX);
+	rp1 -= RAA489000_RP1_MIN;
+	if (rp1 < 0) {
+		if (o->last_vsys == OCPC_UNINIT)
+			CPRINTS("RAA489000(%d): Disabling DVC (Rp1 < 36mOhms)",
+				chgnum);
+		rp1 = 0;
+	} else {
+		rp1 /= 4;
+		rp1++; /* Rp1 min starts at register value 1 */
+	}
+
+	/* Rp2 is set between 0-124mOhms in 4mOhm increments. */
+	rp2 = CONFIG_OCPC_DEF_RBATT_MOHMS;
+	rp2 = CLAMP(rp2, RAA489000_RP2_MIN, RAA489000_RP2_MAX);
+	rp2 /= 4;
+
+	rv |= raw_read16(chgnum, RAA489000_REG_CONTROL10, &regval);
+	if (!rv) {
+		/* Set Rp1 and Rp2 */
+		regval &= ~RAA489000_C10_RP1_MASK;
+		regval &= ~RAA489000_C10_RP2_MASK;
+		regval |= rp2;
+		regval |= (rp1 << RAA489000_C10_RP1_SHIFT);
+
+		/* Enable DVC mode */
+		regval |= RAA489000_C10_ENABLE_DVC_MODE;
+
+		/* Disable charge current loop */
+		regval |= RAA489000_C10_DISABLE_DVC_CC_LOOP;
+
+		rv |= raw_write16(chgnum, RAA489000_REG_CONTROL10, regval);
+	}
+
+	if (rv) {
+		CPRINTS("%s(%d) Failed to enable DVC!", __func__, chgnum);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	/* Lastly, enable DVC fast charge mode for the primary charger IC. */
+	rv = raw_read16(PRIMARY_CHARGER, RAA489000_REG_CONTROL10, &regval);
+	regval |= RAA489000_C10_ENABLE_DVC_CHARGE_MODE;
+	rv |= raw_write16(PRIMARY_CHARGER, RAA489000_REG_CONTROL10, regval);
+	if (rv) {
+		CPRINTS("%s Failed to enable DVC on primary charger!",
+			__func__);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	/*
+	 * We'll need to use the PID loop in order to properly set VSYS such
+	 * such that we get the desired charge current.
+	 */
+	return EC_ERROR_UNIMPLEMENTED;
+}
+#endif /* CONFIG_CHARGER_RAA489000 */
+
+const struct charger_drv isl923x_drv = {
+	.init = &isl923x_init,
+	.post_init = &isl923x_post_init,
+	.get_info = &isl923x_get_info,
+	.get_status = &isl923x_get_status,
+	.set_mode = &isl923x_set_mode,
+#if defined(CONFIG_CHARGER_OTG) && defined(CHARGER_ISL9238X)
+	.enable_otg_power = &isl923x_enable_otg_power,
+	.set_otg_current_voltage = &isl923x_set_otg_current_voltage,
+#endif
+	.get_current = &isl923x_get_current,
+	.set_current = &isl923x_set_current,
+	.get_voltage = &isl923x_get_voltage,
+	.set_voltage = &isl923x_set_voltage,
+	.discharge_on_ac = &isl923x_discharge_on_ac,
+	.get_vbus_voltage = &isl923x_get_vbus_voltage,
+	.set_input_current = &isl923x_set_input_current,
+	.get_input_current = &isl923x_get_input_current,
+	.manufacturer_id = &isl923x_manufacturer_id,
+	.device_id = &isl923x_device_id,
+	.get_option = &isl923x_get_option,
+	.set_option = &isl923x_set_option,
+#ifdef CONFIG_CHARGE_RAMP_HW
+	.set_hw_ramp = &isl923x_set_hw_ramp,
+	.ramp_is_stable = &isl923x_ramp_is_stable,
+	.ramp_is_detected = &isl923x_ramp_is_detected,
+	.ramp_get_current_limit = &isl923x_ramp_get_current_limit,
+#endif
+#ifdef CONFIG_CHARGER_RAA489000
+	.set_vsys_compensation = &raa489000_set_vsys_compensation,
+#endif
+};
+>>>>>>> CHANGE (3dc414 charger/isl9238c: enable slew rate control)
