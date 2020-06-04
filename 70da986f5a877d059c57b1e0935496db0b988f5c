@@ -22,6 +22,30 @@
       "revId": "70da986f5a877d059c57b1e0935496db0b988f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b53f4054_aa3501d4",
+        "filename": "board/nucleo-dartmonkey/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2020-06-04T02:57:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bfe2e3f5_0f7af892",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "70da986f5a877d059c57b1e0935496db0b988f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
