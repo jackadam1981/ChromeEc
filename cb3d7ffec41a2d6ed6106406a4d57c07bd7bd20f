@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "562d4114_039c8a2d",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-04T08:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "224abf97_11cab71c",
+      "range": {
+        "startLine": 52,
+        "startChar": 25,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "cb3d7ffec41a2d6ed6106406a4d57c07bd7bd20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "697c5104_1a43503c",
         "filename": "board/cr50/tpm2/ecc.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "60fafd8a_24432ab7",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-04T08:29:24Z",
+      "side": 1,
+      "message": "So, for the KDFe that follows reads the x coordinate again. So it is necessary to restore the status.\nYet, just recovering the size is necessary. no need to copy the entire q. See the updated patchset.",
+      "parentUuid": "697c5104_1a43503c",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 41
+      },
+      "revId": "cb3d7ffec41a2d6ed6106406a4d57c07bd7bd20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f8d776f_f81d9b50",
         "filename": "board/cr50/tpm2/ecc.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-02T19:33:51Z",
       "side": 1,
       "message": "nit: feels like this stuff can be combined into a single function - convert_ecc_point_into_p256_ints()",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "cb3d7ffec41a2d6ed6106406a4d57c07bd7bd20f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5034430_76f4400f",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-04T08:29:24Z",
+      "side": 1,
+      "message": "In the updated patch I feel like keeping the padding and its restoration in a symmetric manner is also justifiable, so i still kept this part untouched for now. further comments are welcome, of course.",
+      "parentUuid": "8f8d776f_f81d9b50",
       "range": {
         "startLine": 79,
         "startChar": 2,
