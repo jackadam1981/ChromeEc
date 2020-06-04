@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "c690b9e9_c1bfb03e",
+        "filename": "common/usb_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-04T14:39:10Z",
+      "side": 1,
+      "message": "I am not suggesting two different means of detecting FRS. Trembyle requires both the TCPC and PPC to be enabled/disabled in order for the signals to detect properly.  Our PPC does not have any smarts in it and just requires some GPIO manipulation.",
+      "parentUuid": "8baa17bb_93a7a0b0",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 735,
+        "endChar": 5
+      },
+      "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b089adf_b9a4e61a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 10
