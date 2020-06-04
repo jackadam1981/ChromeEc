@@ -46,6 +46,30 @@
       "revId": "c6f4aa8223276807b4410655c0440f41943bf500",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b693540_df5602f9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-04T20:39:50Z",
+      "side": 1,
+      "message": "They would come from someone trying to recover a bricked system using \u0027ecrst pulse\u0027 or \u0027ecrst off\u0027\n\nIt could also happen during faft if a board is running through ccd. RO verification shouldn\u0027t get triggered during ccd faft, but if it did, it would be difficult to tell what was keeping the board in reset.",
+      "parentUuid": "f1cc5bd7_b39cf5b1",
+      "range": {
+        "startLine": 1178,
+        "startChar": 0,
+        "endLine": 1179,
+        "endChar": 9
+      },
+      "revId": "c6f4aa8223276807b4410655c0440f41943bf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
