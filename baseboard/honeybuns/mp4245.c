@@ -67,10 +67,25 @@ int mp4245_set_voltage_out(int desired_mv)
 int mp4245_set_current_lim(int desired_ma)
 {
 	int limit;
+	int rv1;
+	int val;
+	int rv2;
 
 	limit = (desired_ma + (MP4245_ILIM_STEP_MA / 2)) / MP4245_ILIM_STEP_MA;
 
-	return mp4245_reg16_write(MP4245_CMD_MFR_CURRENT_LIM, limit);
+	CPRINTS("mp4245: I_bus desired = %d, limit = %x", desired_ma,
+		limit);
+
+	rv1 = i2c_write8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+			 MP4245_CMD_MFR_CURRENT_LIM, limit);
+
+	rv2 = i2c_read8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+		   MP4245_CMD_MFR_CURRENT_LIM, &val);
+
+	CPRINTS("mp4245: I_bus = %d, lim = %x, rb = %x, %d %d",
+		desired_ma, limit, val, rv1, rv2);
+
+	return rv1;
 }
 
 int mp4245_votlage_out_enable(int enable)
