@@ -204,6 +204,7 @@ static int sn5s330_init(int port)
 	/* Default SRC current limit to ~1.5A. */
 	regval = SN5S330_ILIM_1_62;
 #endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
+	regval = SN5S330_ILIM_3_06;
 
 	/*
 	 * It seems that sometimes setting the FUNC_SET1 register fails
