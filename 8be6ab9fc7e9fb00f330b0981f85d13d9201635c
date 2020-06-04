@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "80fc3979_a45c4b37",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1287347
+      },
+      "writtenOn": "2020-06-04T02:44:14Z",
+      "side": 1,
+      "message": "I try to build it just now and failed.",
+      "parentUuid": "4f8d2447_bf14a71f",
+      "revId": "8be6ab9fc7e9fb00f330b0981f85d13d9201635c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddc77e08_464b3382",
         "filename": "baseboard/zork/baseboard.h",
         "patchSetId": 2
