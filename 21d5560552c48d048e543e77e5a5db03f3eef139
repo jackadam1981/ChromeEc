@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "2d57cb46_994fc800",
+        "filename": "common/usb_common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-04T16:29:48Z",
+      "side": 1,
+      "message": "Yeah, I was trying to respond to Abe\u0027s question about whether anything bad would happen. \n\nI changed it to always call both of these. There is a check to make sure they\u0027re defined so we can just handle this in the TCPC/TCPCI and PPC drivers.",
+      "parentUuid": "0c4296c3_8c39078e",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 735,
+        "endChar": 5
+      },
+      "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b089adf_b9a4e61a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 10
@@ -416,6 +440,30 @@
       "side": 1,
       "message": "I\u0027ll downgrade this to a nit. We didn\u0027t use to support bool in this codebase, so we have a lot of code that uses int where bool would be better. Now we support bool, so we try not to use int for bool in new code. However, people sometimes prefer to use int for consistency with the surrounding functions, which is valuable in its own way. You can leave this as int if you want.",
       "parentUuid": "b782b827_faa28ac8",
+      "range": {
+        "startLine": 2657,
+        "startChar": 33,
+        "endLine": 2657,
+        "endChar": 36
+      },
+      "revId": "21d5560552c48d048e543e77e5a5db03f3eef139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df9a7034_e4c1d0ef",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2657,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-04T16:29:48Z",
+      "side": 1,
+      "message": "Alright, I don\u0027t really know what is best but it seems to me the right way to handle it would refactor the whole file at once. I think I prefer to leave it for consistency.\n\nThanks for the background, that helps clear it up. Originally I was wondering why we didn\u0027t use bools, I didn\u0027t know we didn\u0027t support them in the past.",
+      "parentUuid": "998719f4_ae8c4a0a",
       "range": {
         "startLine": 2657,
         "startChar": 33,

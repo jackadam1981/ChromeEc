@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "37b88e3e_e3db6a7e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-04T16:29:48Z",
+      "side": 1,
+      "message": "Sorry this might be confusing. Not to the specific TCPC driver, this is the TCPCI driver so this should only be called if we are configuring the TCPC as the FRS trigger. So, this will not be defined and therefore never called, even though the tcpm_set_frs_enable is called, unless FRS_TCPC is set. \n\nThat way, if we have TCPC-specific things we need to do if the PPC is the FRS trigger, we can implement that in the specific TCPC driver and compile it based on the FRS_PPC define (even though it is the TCPC driver), and vice-versa for the PPC driver (as would be the case on Zork).\n\nRight now Zork is using that function (board_tcpc_fast_role_swap_enable) to set some PPC GPIOs as I understand it, I think Denis is saying this would better fit in the PPC driver instead. But for this CL, I think its out of scope to change the Zork FRS structure. Maybe we can open a bug to track that. I think the point is that the gpio setting isn\u0027t really a board-level configuration, it should be considered a PPC configuration. That said, I haven\u0027t really gone through the Zork implemenation.",
+      "parentUuid": "ff9ed578_fa5c56ad",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 46
+      },
+      "revId": "7b432baf345f1dddc7278ab4331e425ba1ee6c4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a861e472_c83a495f",
         "filename": "include/config.h",
         "patchSetId": 9
