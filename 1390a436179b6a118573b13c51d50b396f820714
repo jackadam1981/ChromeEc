@@ -46,6 +46,30 @@
       "revId": "1390a436179b6a118573b13c51d50b396f820714",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b4947e_2fbe4925",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-04T21:22:12Z",
+      "side": 1,
+      "message": "True, which could mean that we currently do not have a use case for differentiating CONFIG_HAS_FPSENSOR and CONFIG_CONSOLE_COMMAND_FLAGS, thus we don\u0027t need this additional conditional. Furthermore, gpioset should bear a similar security weight to the memory commands. Any board can define console_is_restricted as they see fit or not at all.\n\n------ \u003e8 ------\n\nYes, disabling the console might be a good idea, but I think that is a different conversation - b/158235289. This focuses on bringing consistency while still improving the security story. At a high level, the FPMCU console is inaccessible to a further degree than the main EC.",
+      "parentUuid": "ec964e6e_f4395f39",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 6
+      },
+      "revId": "1390a436179b6a118573b13c51d50b396f820714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
