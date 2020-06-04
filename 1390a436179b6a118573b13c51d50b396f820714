@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5312664_9ab2c9aa",
+        "filename": "common/gpio_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-04T18:18:08Z",
+      "side": 1,
+      "message": "I really think this is redundant and asymmetric with what we currently do with the rw and md commands.\n\n1) We should maintain the same access level across rw and md commands.\nhttps://github.com/coreboot/chrome-ec/blob/master/common/memory_commands.c#L113\nhttps://github.com/coreboot/chrome-ec/blob/master/common/memory_commands.c#L197\n\n2) FPMCU is the only board to enable this mechanism, thus it impacts no other boards when CMD_FLAG_RESTRICTED is added to the console declaration. This is verifiable with compare_build.sh too (I think something like ./util/compare_build.sh -b \"+all -fp\"). Furthermore, the future boards that decide to enable this mechanism can choose how they want to restrict these commands using console_is_restricted function as intended (instead of needing to alter this macro logic to and adding console_is_restricted function).\n\nRecommendation:\n--\u003e Remove #ifdef on FP.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 6
+      },
+      "revId": "1390a436179b6a118573b13c51d50b396f820714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
