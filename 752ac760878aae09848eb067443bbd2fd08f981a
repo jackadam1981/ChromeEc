@@ -34,6 +34,24 @@
       "revId": "752ac760878aae09848eb067443bbd2fd08f981a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab6b72f0_2ee6706b",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-06-04T18:50:20Z",
+      "side": 1,
+      "message": "FWIW, I usually try to separate out formatting-related changes into separate commits so they don\u0027t distract from the content of a given commit. It makes the \"git blame\" view a bit more logical. Don\u0027t worry about it for this one though.",
+      "parentUuid": "1b0df6c1_a8a6cc1e",
+      "revId": "752ac760878aae09848eb067443bbd2fd08f981a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
