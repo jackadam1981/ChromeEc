@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e438378_61c81550",
+        "filename": "core/riscv-rv32i/init.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-06-04T03:52:40Z",
+      "side": 1,
+      "message": "Can we use \"bltz\" here to save one instruction?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 36
+      },
+      "revId": "c91695b7dc34bd09ea56b2f6a78561c8ae81ab1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cb44f6d_6a170ff3",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-06-04T03:52:40Z",
+      "side": 1,
+      "message": "I would pull this code to the beginning of \"error\" to ensure pop sequence is always at the end of function.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 50
+      },
+      "revId": "c91695b7dc34bd09ea56b2f6a78561c8ae81ab1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
