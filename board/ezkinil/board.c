@@ -8,6 +8,7 @@
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
+#include "driver/retimer/pi3hdx1204.h"
 #include "driver/retimer/tusb544.h"
 #include "driver/usb_mux/amd_fp5.h"
 #include "driver/usb_mux/ps8743.h"
@@ -455,3 +456,17 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 				CONFIG_CHARGER_INPUT_CURRENT),
 				charge_mv);
 }
+
+
+/* Disable PI3HDX1204 HDMI retimer for power measurements. */
+static void pi3hdx1204_retimer_power(void)
+{
+	if (ec_config_has_hdmi_retimer_pi3hdx1204()) {
+		int enable = 0;
+
+		pi3hdx1204_enable(I2C_PORT_TCPC1,
+				  PI3HDX1204_I2C_ADDR_FLAGS,
+				  enable);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, pi3hdx1204_retimer_power, HOOK_PRIO_DEFAULT);
