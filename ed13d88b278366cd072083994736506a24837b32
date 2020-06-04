@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "becb45bb_e4e8a781",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-04T03:42:43Z",
+      "side": 1,
+      "message": "I think we should use 3.3V (rather than 3.35V)",
+      "range": {
+        "startLine": 518,
+        "startChar": 4,
+        "endLine": 518,
+        "endChar": 9
+      },
+      "revId": "ed13d88b278366cd072083994736506a24837b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b439c07_210d83d8",
+        "filename": "common/regulator.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-04T03:42:43Z",
+      "side": 1,
+      "message": "I think the underlying driver should ensure this. It\u0027s hard for the caller the ensure the correctness.\n\nOne alternative way is using buffer overrun check, but I don\u0027t think this fits host commands\u0027s style.\n\nAnother way is we support subcommands in get_info:\n\n 1. get_num\n 2. get_voltage (by index)",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "ed13d88b278366cd072083994736506a24837b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9582d710_1b30b9c5",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-04T03:42:43Z",
+      "side": 1,
+      "message": "In EC, we use voltages_uv style.",
+      "range": {
+        "startLine": 229,
+        "startChar": 37,
+        "endLine": 229,
+        "endChar": 48
+      },
+      "revId": "ed13d88b278366cd072083994736506a24837b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f38d6005_29685b5e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 6161,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-04T03:42:43Z",
+      "side": 1,
+      "message": "LGTM",
+      "range": {
+        "startLine": 6161,
+        "startChar": 13,
+        "endLine": 6161,
+        "endChar": 21
+      },
+      "revId": "ed13d88b278366cd072083994736506a24837b32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
