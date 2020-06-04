@@ -16,6 +16,24 @@
       "revId": "221fc1dd2317e0de56594120bae4a80e4ae0cb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac3d3604_5391e49f",
+        "filename": "chip/g/dcrypto/hmac.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-04T04:03:47Z",
+      "side": 1,
+      "message": "updated formatting. though it looks like my repo hooks are broken in out of chroot... will fix it.",
+      "parentUuid": "3f977499_fa712093",
+      "revId": "221fc1dd2317e0de56594120bae4a80e4ae0cb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
