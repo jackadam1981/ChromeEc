@@ -320,7 +320,7 @@ uint32_t chip_read_reset_flags(void)
 
 #ifdef CONFIG_POWER_BUTTON_INIT_IDLE
 /*
- * Set/clear AP_OFF flag. It's set when the system gracefully shuts down and
+ * Set/clear AP_IDLE flag. It's set when the system gracefully shuts down and
  * it's cleared when the system boots up. The result is the system tries to
  * go back to the previous state upon AC plug-in. If the system uncleanly
  * shuts down, it boots immediately. If the system shuts down gracefully,
@@ -346,7 +346,7 @@ static void board_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown,
 	     /* Slightly higher than handle_pending_reboot because
-	      * it may clear AP_OFF flag. */
+	      * it may clear AP_IDLE flag. */
 	     HOOK_PRIO_DEFAULT - 1);
 #endif
 
