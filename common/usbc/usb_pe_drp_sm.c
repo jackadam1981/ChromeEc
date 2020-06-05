@@ -649,9 +649,8 @@ static inline void send_data_msg(int port, enum tcpm_transmit_type type,
 	prl_send_data_msg(port, type, msg);
 }
 
-
-static inline void send_ext_data_msg(int port, enum tcpm_transmit_type type,
-			 enum pd_ext_msg_type msg)
+static __maybe_unused inline void send_ext_data_msg(
+	int port, enum tcpm_transmit_type type, enum pd_ext_msg_type msg)
 {
 	/* Clear any previous TX status before sending a new message */
 	PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
@@ -692,6 +691,11 @@ static void pe_init(int port)
 int pe_is_running(int port)
 {
 	return local_state[port] == SM_RUN;
+}
+
+bool pe_in_local_ams(int port)
+{
+	return !!PE_CHK_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 }
 
 void pe_set_debug_level(enum debug_level debug_level)
@@ -973,7 +977,6 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 	 * Error during an Interruptible AMS.
 	 */
 	else {
-		PE_SET_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		if (pe[port].power_role == PD_ROLE_SINK)
 			set_state_pe(port, PE_SNK_READY);
 		else
@@ -1885,19 +1888,8 @@ static void pe_src_ready_entry(int port)
 {
 	print_current_state(port);
 
+	/* Ensure any aborted message sequence is properly cleaned up */
 	PE_CLR_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-
-	/*
-	 * If the transition into PE_SRC_Ready is the result of Protocol Error
-	 * that has not caused a Soft Reset (see Section 8.3.3.4.1) then the
-	 * notification to the Protocol Layer of the end of the AMS Shall Not
-	 * be sent since there is a Message to be processed.
-	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
-		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
-	} else {
-		prl_end_ams(port);
-	}
 
 	/*
 	 * Wait and add jitter if we are operating in PD2.0 mode and no messages
@@ -2083,18 +2075,6 @@ static void pe_src_ready_run(int port)
 			return;
 		}
 	}
-}
-
-static void pe_src_ready_exit(int port)
-{
-	/*
-	 * If the Source is initiating an AMS then the Policy Engine Shall
-	 * notify the Protocol Layer that the first Message in an AMS will
-	 * follow.
-	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS))
-		prl_start_ams(port);
-
 }
 
 /**
@@ -2645,9 +2625,8 @@ static void pe_snk_ready_entry(int port)
 {
 	print_current_state(port);
 
+	/* Ensure any aborted message sequence is properly cleaned up */
 	PE_CLR_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-	prl_end_ams(port);
-
 	/*
 	 * On entry to the PE_SNK_Ready state as the result of a wait,
 	 * then do the following:
@@ -2852,16 +2831,6 @@ static void pe_snk_ready_run(int port)
 			return;
 		}
 	}
-}
-
-static void pe_snk_ready_exit(int port)
-{
-	/*
-	 * If the Sink is initiating an AMS then notify the Protocol Layer
-	 * that the first Message in the AMS will follow
-	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS))
-		prl_start_ams(port);
 }
 
 /**
@@ -3945,7 +3914,7 @@ static void pe_frs_snk_src_start_ams_entry(int port)
 	pe_invalidate_explicit_contract(port);
 
 	/* Inform Protocol Layer this is start of AMS */
-	prl_start_ams(port);
+	PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 
 	/* Shared PRS/FRS code, indicate FRS path */
 	PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH);
@@ -5728,7 +5697,6 @@ static const struct usb_state pe_states[] = {
 	[PE_SRC_READY] = {
 		.entry = pe_src_ready_entry,
 		.run   = pe_src_ready_run,
-		.exit  = pe_src_ready_exit,
 	},
 	[PE_SRC_DISABLED] = {
 		.entry = pe_src_disabled_entry,
@@ -5771,7 +5739,6 @@ static const struct usb_state pe_states[] = {
 	[PE_SNK_READY] = {
 		.entry = pe_snk_ready_entry,
 		.run   = pe_snk_ready_run,
-		.exit  = pe_snk_ready_exit,
 	},
 	[PE_SNK_HARD_RESET] = {
 		.entry = pe_snk_hard_reset_entry,
