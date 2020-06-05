@@ -2972,4 +2972,14 @@ __override_proto enum ec_pd_port_location board_get_pd_port_location(int port);
  * does nothing, but a board may override it.
  */
 __override_proto void board_vbus_present_change(void);
+
+
+/* TCPC Rp Management */
+void typec_set_analog_rp(int port, enum tcpc_rp_value rp);
+int typec_set_hw_analog_rp(int port);
+int typec_set_hw_analog_rp_cc(int port, int pull);
+
+void typec_set_collision_rp(int port, enum tcpc_rp_value rp);
+int typec_set_hw_collision_rp(int port);
+
 #endif  /* __CROS_EC_USB_PD_H */

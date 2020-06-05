@@ -805,8 +805,14 @@ static void pe_set_frs_enable(int port, int enable)
 
 void pe_invalidate_explicit_contract(int port)
 {
-	if (IS_ENABLED(CONFIG_USB_PD_REV30))
+	if (IS_ENABLED(CONFIG_USB_PD_REV30)) {
+		if (IS_ENABLED(CONFIG_USB_DRP_ACC_TRYSRC)) {
+			ccprintf("PE%d: implicit contract\n", port);
+			typec_set_hw_analog_rp(port);
+		}
+
 		pe_set_frs_enable(port, 0);
+	}
 
 	PE_CLR_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
 	pd_update_saved_port_flags(port, PD_BBRMFLG_EXPLICIT_CONTRACT, 0);
@@ -1817,6 +1823,12 @@ static void pe_src_transition_supply_run(int port)
 			PE_CLR_FLAG(port, PE_FLAGS_PS_READY);
 			/* NOTE: Second pass through this code block */
 			/* Explicit Contract is now in place */
+			if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+			    IS_ENABLED(CONFIG_USB_DRP_ACC_TRYSRC)) {
+				ccprintf("PE%d: explicit contract\n", port);
+				typec_set_hw_collision_rp(port);
+			}
+
 			PE_SET_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
 			pd_update_saved_port_flags(port,
 				PD_BBRMFLG_EXPLICIT_CONTRACT, 1);
@@ -2478,6 +2490,13 @@ static void pe_snk_select_capability_run(int port)
 			 */
 			if (type == PD_CTRL_ACCEPT) {
 				/* explicit contract is now in place */
+				if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+				    IS_ENABLED(CONFIG_USB_DRP_ACC_TRYSRC)) {
+					ccprintf("PE%d: explicit contract\n",
+						port);
+					typec_set_hw_collision_rp(port);
+				}
+
 				PE_SET_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT);
 				pd_update_saved_port_flags(port,
 					PD_BBRMFLG_EXPLICIT_CONTRACT, 1);

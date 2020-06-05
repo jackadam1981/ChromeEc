@@ -268,6 +268,7 @@ int tcpc_update16(int port, int reg,
  */
 void tcpci_set_cached_rp(int port, int rp)
 {
+	ccprintf("C%d: Set cached Rp=%d\n", port, rp);
 	cached_rp[port] = rp;
 }
 
@@ -344,6 +345,7 @@ static int tcpci_tcpm_get_power_status(int port, int *status)
 int tcpci_tcpm_select_rp_value(int port, int rp)
 {
 	/* Keep track of current RP value */
+	ccprintf("C%d: select_rp_value Rp=%d\n", port, rp);
 	tcpci_set_cached_rp(port, rp);
 
 	return EC_SUCCESS;
@@ -359,6 +361,7 @@ int tcpci_tcpm_set_rp_value(int port)
 	if (rv)
 		return rv;
 
+	ccprintf("C%d: set_rp rp=%d\n", port, tcpci_get_cached_rp(port));
 	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
 			  TCPC_REG_ROLE_CTRL_SET(
 				TCPC_REG_ROLE_CTRL_DRP(role),
@@ -465,6 +468,8 @@ int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 
 int tcpci_tcpm_set_cc(int port, int pull)
 {
+	ccprintf("C%d: set_cc drp=0 rp=%d pull=%d\n",
+		port, tcpci_get_cached_rp(port), pull);
 	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
 			  TCPC_REG_ROLE_CTRL_SET(0,
 						 tcpci_get_cached_rp(port),
@@ -474,6 +479,12 @@ int tcpci_tcpm_set_cc(int port, int pull)
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 int tcpci_set_role_ctrl(int port, int toggle, int rp, int pull)
 {
+	ccprintf("C%d: set_role_ctrl drp=%d rp=%d pull=%d\n",
+		port, toggle, rp, pull);
+	if (IS_ENABLED(CONFIG_USB_PD_TCPMV2)) {
+		typec_set_analog_rp(port, rp);
+		tcpci_set_cached_rp(port, rp);
+	}
 	return tcpc_write(port, TCPC_REG_ROLE_CTRL,
 			  TCPC_REG_ROLE_CTRL_SET(toggle, rp, pull, pull));
 }
@@ -592,6 +603,11 @@ int tcpci_tcpc_set_connection(int port,
 		}
 
 		/* Set the CC lines */
+		ccprintf("C%d: set_conn rp=%d\n", port, CONFIG_USB_PD_PULLUP);
+		if (IS_ENABLED(CONFIG_USB_PD_TCPMV2)) {
+			typec_set_analog_rp(port, CONFIG_USB_PD_PULLUP);
+			tcpci_set_cached_rp(port, CONFIG_USB_PD_PULLUP);
+		}
 		rv = tcpc_write(port, TCPC_REG_ROLE_CTRL,
 				TCPC_REG_ROLE_CTRL_SET(0,
 						CONFIG_USB_PD_PULLUP,

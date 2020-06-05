@@ -759,8 +759,15 @@ static void prl_tx_wait_for_message_request_run(const int port)
 			 */
 			else if (PRL_TX_CHK_FLAG(port, PRL_FLAGS_END_AMS)) {
 				/* Set Rp = SinkTxOk */
-				tcpm_select_rp_value(port, SINK_TX_OK);
-				tcpm_set_cc(port, TYPEC_CC_RP);
+				if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+				    IS_ENABLED(CONFIG_USB_DRP_ACC_TRYSRC)) {
+					typec_set_collision_rp(port,
+							       SINK_TX_OK);
+					typec_set_hw_collision_rp(port);
+				} else if (IS_ENABLED(CONFIG_USB_PD_REV30)) {
+					tcpm_select_rp_value(port, SINK_TX_OK);
+					tcpm_set_cc(port, TYPEC_CC_RP);
+				}
 				prl_tx[port].retry_counter = 0;
 				/* PRL_FLAGS_END AMS is cleared here */
 				prl_tx[port].flags = 0;
@@ -844,8 +851,14 @@ static void prl_tx_src_source_tx_entry(const int port)
 	print_current_prl_tx_state(port);
 
 	/* Set Rp = SinkTxNG */
-	tcpm_select_rp_value(port, SINK_TX_NG);
-	tcpm_set_cc(port, TYPEC_CC_RP);
+	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+	    IS_ENABLED(CONFIG_USB_DRP_ACC_TRYSRC)) {
+		typec_set_collision_rp(port, SINK_TX_NG);
+		typec_set_hw_collision_rp(port);
+	} else if (IS_ENABLED(CONFIG_USB_PD_REV30)) {
+		tcpm_select_rp_value(port, SINK_TX_NG);
+		tcpm_set_cc(port, TYPEC_CC_RP);
+	}
 }
 
 static void prl_tx_src_source_tx_run(const int port)

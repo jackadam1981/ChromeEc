@@ -305,6 +305,11 @@ static struct type_c {
 	typec_current_t typec_curr;
 	/* Type-C current change */
 	typec_current_t typec_curr_change;
+	/* Cached TCPC Rp values */
+	enum tcpc_rp_value analog_rp;
+#ifdef CONFIG_USB_PD_REV30
+	enum tcpc_rp_value collision_rp;
+#endif
 } tc[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* Port dual-role state */
@@ -770,18 +775,6 @@ void tc_snk_power_off(int port)
 	}
 }
 
-static int tc_set_power_supply_ready(int port)
-{
-	int rv;
-
-	rv = pd_set_power_supply_ready(port);
-	if (rv)
-		return rv;
-
-	/* Set selected Rp */
-	return tcpm_set_rp_value(port);
-}
-
 int tc_src_power_on(int port)
 {
 	if (IS_ATTACHED_SRC(port))
@@ -961,7 +954,9 @@ static bool tc_perform_src_hard_reset(int port)
 		return false;
 	case PS_STATE1:
 		/* Enable VBUS */
-		tc_set_power_supply_ready(port);
+		ccprintf("TC%d: HardReset Set Power Supply\n", port);
+		pd_set_power_supply_ready(port);
+		typec_set_hw_analog_rp(port);
 
 		/* Turn off VCONN */
 		set_vconn(port, 1);
@@ -1089,7 +1084,11 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 		/* Initialize USB mux to its default state */
 		usb_mux_init(port);
 
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+	ccprintf("TC%d: Restart State Machine\n", port);
+	typec_set_analog_rp(port, CONFIG_USB_PD_PULLUP);
+	if (IS_ENABLED(CONFIG_USB_PD_REV30))
+		typec_set_collision_rp(port, SINK_TX_OK);
+	typec_set_hw_analog_rp(port);
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 		/* Initialize PD and type-C supplier current limits to 0 */
@@ -1228,6 +1227,58 @@ void tc_set_power_role(int port, enum pd_power_role role)
 	tc[port].power_role = role;
 	pd_update_saved_port_flags(port, PD_BBRMFLG_POWER_ROLE, role);
 }
+
+/*
+ * TCPC Rp management
+ */
+void typec_set_analog_rp(int port, enum tcpc_rp_value rp)
+{
+	ccprintf("TC%d: set analog cache-rp=%d\n", port, rp);
+	tc[port].analog_rp = rp;
+}
+int typec_set_hw_analog_rp(int port)
+{
+	int rv;
+
+	ccprintf("TC%d: set hw analog rp=%d\n", port, tc[port].analog_rp);
+	rv = tcpm_select_rp_value(port, tc[port].analog_rp);
+	if (rv)
+		return rv;
+
+	return tcpm_set_rp_value(port);
+}
+int typec_set_hw_analog_rp_cc(int port, int pull)
+{
+	int rv;
+
+	ccprintf("TC%d: set hw analog rp=%d cc=%d\n",
+		port, tc[port].analog_rp, pull);
+	rv = tcpm_select_rp_value(port, tc[port].analog_rp);
+	if (rv)
+		return rv;
+
+	return tcpm_set_cc(port, pull);
+}
+
+#ifdef CONFIG_USB_PD_REV30
+void typec_set_collision_rp(int port, enum tcpc_rp_value rp)
+{
+	ccprintf("TC%d: set collision cache-rp=%d\n", port, rp);
+	tc[port].collision_rp = rp;
+}
+int typec_set_hw_collision_rp(int port)
+{
+	int rv;
+
+	ccprintf("TC%d: set hw collision rp=%d\n",
+		port, tc[port].collision_rp);
+	rv = tcpm_select_rp_value(port, tc[port].collision_rp);
+	if (rv)
+		return rv;
+
+	return tcpm_set_rp_value(port);
+}
+#endif
 
 /*
  * Private Functions
@@ -2148,7 +2199,9 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 				tc[port].power_role, tc[port].data_role);
 
 		/* Enable VBUS */
-		tc_set_power_supply_ready(port);
+		ccprintf("TC%d: DBG.SRC swap entry Set Power Supply\n", port);
+		pd_set_power_supply_ready(port);
+		typec_set_hw_analog_rp(port);
 
 		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
@@ -2166,12 +2219,14 @@ static void tc_unoriented_dbg_acc_src_entry(const int port)
 		 */
 		tc_set_data_role(port, PD_ROLE_DFP);
 
+		ccprintf("TC%d: DBG.SRC entry Set Power Supply\n", port);
 		/* Enable VBUS */
-		if (tc_set_power_supply_ready(port)) {
+		if (pd_set_power_supply_ready(port)) {
 			if (IS_ENABLED(CONFIG_USBC_SS_MUX))
 				usb_mux_set(port, USB_PD_MUX_NONE,
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
 		}
+		typec_set_hw_analog_rp(port);
 
 #ifdef CONFIG_USB_PE_SM
 		tc_enable_pd(port, 0);
@@ -2660,10 +2715,15 @@ static void tc_attached_src_entry(const int port)
 		 * Both CC1 and CC2 pins shall be independently terminated to
 		 * pulled up through Rp.
 		 */
-		tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
+		ccprintf("TC%d: ATT.SRC swap entry Reset/Set Power Supply\n",
+			port);
+		typec_set_analog_rp(port, CONFIG_USB_PD_PULLUP);
+		if (IS_ENABLED(CONFIG_USB_PD_REV30))
+			typec_set_collision_rp(port, SINK_TX_OK);
 
 		/* Enable VBUS */
-		tc_set_power_supply_ready(port);
+		pd_set_power_supply_ready(port);
+		typec_set_hw_analog_rp(port);
 
 		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
@@ -2688,8 +2748,9 @@ static void tc_attached_src_entry(const int port)
 		if (IS_ENABLED(CONFIG_USBC_VCONN))
 			set_vconn(port, 1);
 
+		ccprintf("TC%d: ATT.SRC entry Set Power Supply\n", port);
 		/* Enable VBUS */
-		if (tc_set_power_supply_ready(port)) {
+		if (pd_set_power_supply_ready(port)) {
 			/* Stop sourcing Vconn if Vbus failed */
 			if (IS_ENABLED(CONFIG_USBC_VCONN))
 				set_vconn(port, 0);
@@ -2698,6 +2759,7 @@ static void tc_attached_src_entry(const int port)
 				usb_mux_set(port, USB_PD_MUX_NONE,
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
 		}
+		typec_set_hw_analog_rp(port);
 
 		tc_enable_pd(port, 0);
 		tc[port].timeout = get_time().val +
@@ -2722,8 +2784,9 @@ static void tc_attached_src_entry(const int port)
 	if (IS_ENABLED(CONFIG_USBC_VCONN))
 		set_vconn(port, 1);
 
+	ccprintf("TC%d: ATT.SRC entry Set Power Supply\n", port);
 	/* Enable VBUS */
-	if (tc_set_power_supply_ready(port)) {
+	if (pd_set_power_supply_ready(port)) {
 		/* Stop sourcing Vconn if Vbus failed */
 		if (IS_ENABLED(CONFIG_USBC_VCONN))
 			set_vconn(port, 0);
@@ -2732,6 +2795,7 @@ static void tc_attached_src_entry(const int port)
 			usb_mux_set(port, USB_PD_MUX_NONE,
 			USB_SWITCH_DISCONNECT, tc[port].polarity);
 	}
+	typec_set_hw_analog_rp(port);
 #endif /* CONFIG_USB_PE_SM */
 
 	/* Inform PPC that a sink is connected. */
@@ -3188,8 +3252,11 @@ static void tc_ct_unattached_snk_entry(int port)
 	 * Both CC1 and CC2 pins shall be independently terminated to
 	 * ground through Rd.
 	 */
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
-	tcpm_set_cc(port, TYPEC_CC_RD);
+	ccprintf("TC%d: UNATT.SNK entry Reset\n", port);
+	typec_set_analog_rp(port, CONFIG_USB_PD_PULLUP);
+	if (IS_ENABLED(CONFIG_USB_PD_REV30))
+		typec_set_collision_rp(port, SINK_TX_OK);
+	typec_set_hw_analog_rp_cc(port, TYPEC_CC_RD);
 	tc[port].cc_state = PD_CC_UNSET;
 
 	/* Set power role to sink */
@@ -3364,8 +3431,11 @@ static void tc_cc_rp_entry(const int port)
 	 * Both CC1 and CC2 pins shall be independently pulled
 	 * up through Rp.
 	 */
-	tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
-	tcpm_set_cc(port, TYPEC_CC_RP);
+	ccprintf("TC%d: CC_RP entry Reset\n", port);
+	typec_set_analog_rp(port, CONFIG_USB_PD_PULLUP);
+	if (IS_ENABLED(CONFIG_USB_PD_REV30))
+		typec_set_collision_rp(port, SINK_TX_OK);
+	typec_set_hw_analog_rp_cc(port, TYPEC_CC_RP);
 }
 
 /**
