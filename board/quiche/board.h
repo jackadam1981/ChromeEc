@@ -18,6 +18,8 @@
 #define USB_PD_PORT_HOST   0
 #define USB_PD_PORT_DP   1
 
+#define CONFIG_USB_MUX_PS8822
+
 /* USB Type A Features */
 
 /* BC 1.2 */
