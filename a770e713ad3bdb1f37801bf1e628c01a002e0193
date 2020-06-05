@@ -22,6 +22,29 @@
       "revId": "a770e713ad3bdb1f37801bf1e628c01a002e0193",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa43cfe8_4b61ff55",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-05T18:57:40Z",
+      "side": 1,
+      "message": "Can we just change npcx/config_flash_layout.h:\n\n  #define CONFIG_RO_SIZE NPCX_PROGRAM_MEMORY_SIZE\n\nto\n\n  #define CONFIG_RO_SIZE (NPCX_PROGRAM_MEMORY_SIZE - CONFIG_RO_HDR_SIZE)\n\n?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "a770e713ad3bdb1f37801bf1e628c01a002e0193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
