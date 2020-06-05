@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "79708730_3e61107e",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-05T01:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25874d75_a8c6ab16",
+      "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e12b315_57a00422",
         "filename": "board/cr50/tpm2/ecc.c",
         "patchSetId": 1
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "5d97d5c3_eed4f170",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-05T01:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e55938bb_ce0de590",
+      "range": {
+        "startLine": 451,
+        "startChar": 5,
+        "endLine": 451,
+        "endChar": 46
+      },
+      "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4998162_a990ef18",
         "filename": "board/cr50/tpm2/ecc.c",
         "patchSetId": 1
@@ -73,6 +115,24 @@
       "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42650644_57b5eb52",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-05T01:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4998162_a990ef18",
+      "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "bd5084d0_d95692d6",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-05T01:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4e81b1b_090f0053",
+      "range": {
+        "startLine": 474,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 12
+      },
+      "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d43d4aa3_85865c65",
         "filename": "board/cr50/tpm2/ecc.c",
         "patchSetId": 1
@@ -119,6 +203,30 @@
       "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb48be7f_f179e222",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-05T01:59:57Z",
+      "side": 1,
+      "message": "thats for SPI/I2C use only, not USB and only for test builds",
+      "parentUuid": "d43d4aa3_85865c65",
+      "range": {
+        "startLine": 480,
+        "startChar": 10,
+        "endLine": 480,
+        "endChar": 28
+      },
+      "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "84eb9940_8ba20c5c",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-05T01:59:57Z",
+      "side": 1,
+      "message": "this command already used DECLARE_EXTENSION_COMMAND. Not sure if it make sense to change it now.",
+      "parentUuid": "b10c79a5_e8a171a0",
+      "range": {
+        "startLine": 555,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 0
+      },
+      "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bd4d92c_cc611bbc",
         "filename": "board/cr50/tpm2/ecc.c",
         "patchSetId": 1
@@ -165,6 +297,30 @@
       "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5afd8d89_36ffb82b",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-05T01:59:57Z",
+      "side": 1,
+      "message": "good point. it can be 2 bytes for KEYGEN, adding check",
+      "parentUuid": "5bd4d92c_cc611bbc",
+      "range": {
+        "startLine": 567,
+        "startChar": 2,
+        "endLine": 567,
+        "endChar": 16
+      },
+      "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -191,6 +347,30 @@
     },
     {
       "key": {
+        "uuid": "10c51613_95d7d7cd",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-05T01:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e63f6f08_da2cfe9b",
+      "range": {
+        "startLine": 615,
+        "startChar": 1,
+        "endLine": 615,
+        "endChar": 10
+      },
+      "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8a5085e_98b5c54e",
         "filename": "test/tpm_test/ecc_test.py",
         "patchSetId": 1
@@ -211,6 +391,30 @@
       "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f22c227_ec3956d9",
+        "filename": "test/tpm_test/ecc_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-05T01:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a5085e_98b5c54e",
+      "range": {
+        "startLine": 48,
+        "startChar": 49,
+        "endLine": 48,
+        "endChar": 50
+      },
+      "revId": "c9281f995a64352a74c25574d026dd6df94aa997",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
