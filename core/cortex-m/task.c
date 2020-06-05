@@ -457,6 +457,28 @@ uint32_t task_wait_event(int timeout_us)
 	return __wait_evt(timeout_us, TASK_ID_IDLE);
 }
 
+uint32_t task_wait_event_timed(int timeout_us, int *residual_us)
+{
+	uint64_t t0_us;
+	uint64_t now_us;
+	uint64_t deadline_us;
+	uint64_t r_us;
+	uint32_t events;
+
+	t0_us = get_time().val;
+	events = __wait_evt(timeout_us, TASK_ID_IDLE);
+	r_us = 0;
+	if (timeout_us > 0) {
+		/* __wait_evt() only sleeps on timeout > 0 */
+		deadline_us = t0_us + timeout_us;
+		now_us = get_time().val;
+		if (now_us < deadline_us)
+			r_us = deadline_us - now_us;
+	}
+	*residual_us = r_us;
+	return events;
+}
+
 uint32_t task_wait_event_mask(uint32_t event_mask, int timeout_us)
 {
 	uint64_t deadline = get_time().val + timeout_us;
