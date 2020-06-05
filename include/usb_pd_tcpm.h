@@ -219,25 +219,6 @@ struct tcpm_drv {
 	bool (*check_vbus_level)(int port, enum vbus_level level);
 
 	/**
-	 * Store the value of the CC pull-up used when we are a source.
-	 *
-	 * @param port Type-C port number
-	 * @param rp One of enum tcpc_rp_value
-	 *
-	 * @return EC_SUCCESS or error
-	 */
-	int (*select_rp_value)(int port, int rp);
-
-	/**
-	 * Set the selected value of the CC pull-up used when we are a source.
-	 *
-	 * @param port Type-C port number
-	 *
-	 * @return EC_SUCCESS or error
-	 */
-	int (*set_rp_value)(int port);
-
-	/**
 	 * Set the CC pull resistor. This sets our role as either source or sink.
 	 *
 	 * @param port Type-C port number
@@ -245,17 +226,10 @@ struct tcpm_drv {
 	 *
 	 * @return EC_SUCCESS or error
 	 */
-	int (*set_cc)(int port, int pull);
-
-	/**
-	 * Set polarity
-	 *
-	 * @param port Type-C port number
-	 * @param polarity port polarity
-	 *
-	 * @return EC_SUCCESS or error
-	 */
-	int (*set_polarity)(int port, enum tcpc_cc_polarity polarity);
+	int (*update_cc)(int port, int drp,
+			 enum tcpc_rp_value rp,
+			 enum tcpc_cc_polarity polarity,
+			 enum tcpc_cc_pull cc1, enum tcpc_cc_pull cc2);
 
 	/**
 	 * Set Vconn.
