@@ -32,18 +32,11 @@ _HKDF_OPCODES = {
 #    INFO_LEN      INFO
 #    1             MSB OKM LEN
 #    1             LSB OKM LEN
-#
-_HKDF_CMD_FORMAT = '{op:c}{sl:s}{salt}{ikml:s}{ikm}{infol:s}{info}{okml:s}'
-
-
 def _rfc_test_cmd(salt, ikm, info, okml):
-  op = _HKDF_OPCODES['TEST_RFC']
-  return _HKDF_CMD_FORMAT.format(op=op,
-                                 sl=pack('>H', len(salt)), salt=salt,
-                                 ikml=pack('>H', len(ikm)), ikm=ikm,
-                                 infol=pack('>H', len(info)), info=info,
-                                 okml=pack('>H', okml))
-
+  return _HKDF_OPCODES['TEST_RFC'].to_bytes(1, "big") + \
+         len(salt).to_bytes(2, "big") + salt + \
+         len(ikm).to_bytes(2, "big") + ikm + \
+         len(info).to_bytes(2, "big") + info + okml.to_bytes(2, "big")
 
 #
 # Test vectors for HKDF-SHA256 from RFC 5869.
