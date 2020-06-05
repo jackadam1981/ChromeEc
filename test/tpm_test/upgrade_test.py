@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Copyright 2016 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -29,8 +29,7 @@ def upgrade(tpm):
     Raises:
       subcmd.TpmTestError: In case of various test problems
   """
-  cmd  = struct.pack('>I', 0)  # address
-  cmd += struct.pack('>I', 0)  # data (a noop)
+  cmd = struct.pack('>II', 0, 0)  # address, data (a noop)
   wrapped_response = tpm.command(tpm.wrap_ext_command(subcmd.FW_UPGRADE, cmd))
   base_str = tpm.unwrap_ext_response(subcmd.FW_UPGRADE, wrapped_response)
   if len(base_str) < 4:
@@ -44,14 +43,14 @@ def upgrade(tpm):
   else:
     raise subcmd.TpmTestError('Unknown base address 0x%x' % base)
   fname = os.path.join(os.path.dirname(__file__), '../..', fname)
-  data = open(fname, 'r').read()[:2000]
+  data = open(fname, 'rb').read()[:2000]
   transferred = 0
   block_size = 1024
 
   while transferred < len(data):
     tx_size = min(block_size, len(data) - transferred)
     chunk = data[transferred:transferred+tx_size]
-    cmd  = struct.pack('>I', base)  # address
+    cmd = struct.pack('>I', base)  # address
     h = hashlib.sha1()
     h.update(cmd)
     h.update(chunk)
@@ -59,7 +58,7 @@ def upgrade(tpm):
     resp = tpm.unwrap_ext_response(subcmd.FW_UPGRADE,
                                    tpm.command(tpm.wrap_ext_command(
                                      subcmd.FW_UPGRADE, cmd)))
-    code = ord(resp[0])
+    code = resp[0]
     if code:
       raise subcmd.TpmTestError('%x - resp %d' % (base, code))
     base += tx_size

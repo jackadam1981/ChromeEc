@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Copyright 2019 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -8,23 +8,22 @@
 from __future__ import print_function
 
 from binascii import a2b_hex as a2b
-from struct import pack
 
 import subcmd
 import utils
 
 
 # A standard empty response to DRBG extended commands.
-EMPTY_DRBG_RESPONSE = ''.join('%c' % x for x in (0x80, 0x01,
-                                                 0x00, 0x00, 0x00, 0x0c,
-                                                 0x00, 0x00, 0x00, 0x00,
-                                                 0x00, subcmd.DRBG_TEST))
+EMPTY_DRBG_RESPONSE = bytes([0x80, 0x01,
+                             0x00, 0x00, 0x00, 0x0c,
+                             0x00, 0x00, 0x00, 0x00,
+                             0x00, subcmd.DRBG_TEST])
 
 DRBG_INIT = 0
 DRBG_RESEED = 1
 DRBG_GENERATE = 2
 
-test_inputs = (
+TEST_INPUTS = (
   (DRBG_INIT,
    ('C40894D0C37712140924115BF8A3110C7258532365BB598F81B127A5E4CB8EB0',
     'FBB1EDAF92D0C2699F5C0A7418D308B09AC679FFBB0D8918C8E62D35091DD2B9',
@@ -48,25 +47,41 @@ test_inputs = (
   (DRBG_GENERATE,
    ('85D011A3B36AC6B25A792F213A1C22C80BFD1C5B47BCA04CD0D9834BB466447B',
     'B03863C42C9396B4936D83A551871A424C5A8EDBDC9D1E0E8E89710D58B5CA1E')),
-
 )
 
-_DRBG_INIT_FORMAT = '{op:c}{p0l:s}{p0}{p1l:s}{p1}{p2l:s}{p2}'
-def _drbg_init_cmd(op, entropy, nonce, perso):
-  return _DRBG_INIT_FORMAT.format(op=op,
-                                  p0l=pack('>H', len(entropy)), p0=entropy,
-                                  p1l=pack('>H', len(nonce)), p1=nonce,
-                                  p2l=pack('>H', len(perso)), p2=perso)
+# DRBG_TEST command structure:
+#
+# field       |    size  |              note
+# ==========================================================================
+# mode        |    1     | 0 - DRBG_INIT, 1 - DRBG_RESEED, 2 - DRBG_GENERATE
+# p0_len      |    2     | size of first input in bytes
+# p0          |  p0_len  | entropy for INIT & SEED, input for GENERATE
+# p1_len      |    2     | size of second input in bytes (for INIT & RESEED)
+#             |          | or size of expected output for GENERATE
+# p1          |  p1_len  | nonce for INIT & SEED
+# p2_len      |    2     | size of third input in bytes for DRBG_INIT
+# p2          |  p2_len  | personalization for INIT & SEED
+#
+# DRBG_INIT (entropy, nonce, perso)
+# DRBG_RESEED (entropy, additional input 1, additional input 2)
+# DRBG_INIT and DRBG_RESEED returns empty response
+# (up to a maximum of 128 bytes)
+# DRBG_INIT and DRBG_RESEED commands follow same format
+def _drbg_init_cmd(drbg_op, entropy, nonce, perso):
+  return drbg_op.to_bytes(1, "big") +\
+         len(entropy).to_bytes(2, "big") + entropy +\
+         len(nonce).to_bytes(2, "big") + nonce +\
+         len(perso).to_bytes(2, "big") + perso
 
-_DRBG_GEN_FORMAT = '{op:c}{p0l:s}{p0}{p1l:s}'
-
+# DRBG_GENERATE (p0_len, p0 - additional input 1, p1_len - size of output)
+# DRBG_GENERATE returns p1_len bytes of generated data
 def _drbg_gen_cmd(inp, out):
   outlen = len(out)
   if outlen == 0:
     outlen = 32 # if we don't care about output value, still need to have it
-  return _DRBG_GEN_FORMAT.format(op=DRBG_GENERATE,
-                                 p0l=pack('>H', len(inp)), p0=inp,
-                                 p1l=pack('>H', outlen))
+  return DRBG_GENERATE.to_bytes(1, "big") +\
+         len(inp).to_bytes(2, "big") + inp +\
+         outlen.to_bytes(2, "big")
 
 
 def drbg_test(tpm):
@@ -79,7 +94,7 @@ def drbg_test(tpm):
     subcmd.TpmTestError: on unexpected target responses
   """
 
-  for test in test_inputs:
+  for test in TEST_INPUTS:
     drbg_op, drbg_params = test
     if drbg_op == DRBG_INIT:
       entropy, nonce, perso = drbg_params
@@ -87,14 +102,14 @@ def drbg_test(tpm):
       response = tpm.command(tpm.wrap_ext_command(subcmd.DRBG_TEST, cmd))
       if response != EMPTY_DRBG_RESPONSE:
         raise subcmd.TpmTestError("Unexpected response to DRBG_INIT: %s" %
-                        (utils.hex_dump(wrapped_response)))
+                                  (utils.hex_dump(response)))
     elif drbg_op == DRBG_RESEED:
       entropy, inp1, inp2 = drbg_params
       cmd = _drbg_init_cmd(drbg_op, a2b(entropy), a2b(inp1), a2b(inp2))
       response = tpm.command(tpm.wrap_ext_command(subcmd.DRBG_TEST, cmd))
       if response != EMPTY_DRBG_RESPONSE:
         raise subcmd.TpmTestError("Unexpected response to DRBG_RESEED: %s" %
-                        (utils.hex_dump(wrapped_response)))
+                                  (utils.hex_dump(response)))
     elif drbg_op == DRBG_GENERATE:
       inp, expected = drbg_params
       cmd = _drbg_gen_cmd(a2b(inp), a2b(expected))
@@ -102,7 +117,7 @@ def drbg_test(tpm):
       if expected != '':
         result = response[12:]
         if a2b(expected) != result:
-           raise subcmd.TpmTestError('error:\nexpected %s\nreceived %s' %
-                                     (utils.hex_dump(a2b(expected)),
-                                      utils.hex_dump(result)))
+          raise subcmd.TpmTestError('error:\nexpected %s\nreceived %s' %
+                                    (utils.hex_dump(a2b(expected)),
+                                     utils.hex_dump(result)))
   print('%sSUCCESS: %s' % (utils.cursor_back(), 'DRBG test'))
