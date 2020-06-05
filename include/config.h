@@ -4359,6 +4359,9 @@
 /* Support the Parade PS8743 Type-C Redriving Switch */
 #undef CONFIG_USB_MUX_PS8743
 
+/* Support the Parade PS8822 Type-C Redriving Demux Switch */
+#undef CONFIG_USB_MUX_PS8822
+
 /* 'Virtual' USB mux under host (not EC) control */
 #undef CONFIG_USB_MUX_VIRTUAL
 
