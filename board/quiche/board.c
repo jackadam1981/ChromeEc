@@ -10,6 +10,7 @@
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/stm32gx.h"
 #include "driver/tcpm/tcpci.h"
+#include "driver/usb_mux/ps8822.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "switch.h"
@@ -75,6 +76,11 @@ const struct power_seq board_power_seq[] = {
 
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
 
+static void board_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
+{
+
+}
+
 /* TCPCs */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
@@ -86,8 +92,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.usb_port = USB_PD_PORT_HOST,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
+		.driver = & ps8822_usb_mux_driver,
+		.hpd_update = &board_hpd_update,
 	},
 };
 
