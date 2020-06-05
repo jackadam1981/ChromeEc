@@ -2854,6 +2854,7 @@ void pd_task(void *u)
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 	uint32_t payload[7];
 	int timeout = 10*MSEC;
+	int resid_us;
 	enum tcpc_cc_voltage_status cc1, cc2;
 	int res, incoming_packet = 0;
 	int hard_reset_count = 0;
@@ -3080,7 +3081,8 @@ void pd_task(void *u)
 		}
 
 		/* wait for next event/packet or timeout expiration */
-		evt = task_wait_event(timeout);
+		//evt = task_wait_event(timeout);
+		evt = task_wait_event_timed(timeout, &resid_us);
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 		if (evt & PD_EXIT_LOW_POWER_EVENT_MASK)
@@ -4526,11 +4528,6 @@ void pd_task(void *u)
 			}
 			break;
 		case PD_STATE_HARD_RESET_SEND:
-			hard_reset_count++;
-			if (pd[port].last_state != pd[port].task_state) {
-				hard_reset_sent = 0;
-				pd[port].hard_reset_complete_timer = 0;
-			}
 #ifdef CONFIG_CHARGE_MANAGER
 			if (pd[port].last_state == PD_STATE_SNK_DISCOVERY ||
 			    (pd[port].last_state == PD_STATE_SOFT_RESET &&
@@ -4550,8 +4547,23 @@ void pd_task(void *u)
 			}
 #endif
 
+			if (pd[port].last_state != pd[port].task_state) {
+				// just entered this state
+				hard_reset_sent = 0;
+				resid_us = 0;
+				now = get_time();
+				pd[port].hard_reset_complete_timer =
+					now.val +
+					PD_T_HARD_RESET_COMPLETE;
+			}
+
 			if (hard_reset_sent)
 				break;
+
+			if (resid_us > 0) {
+				timeout = resid_us;
+				break;
+			}
 
 			if (pd_transmit(port, TCPC_TX_HARD_RESET, 0, NULL,
 				AMS_START) < 0) {
@@ -4563,15 +4575,7 @@ void pd_task(void *u)
 				 * expires.
 				 */
 				now = get_time();
-				if (pd[port].hard_reset_complete_timer == 0) {
-					pd[port].hard_reset_complete_timer =
-						now.val +
-						PD_T_HARD_RESET_COMPLETE;
-					timeout = PD_T_HARD_RESET_RETRY;
-					break;
-				}
-				if (now.val <
-				    pd[port].hard_reset_complete_timer) {
+				if (now.val < pd[port].hard_reset_complete_timer) {
 					CPRINTS("C%d: Retrying hard reset",
 						port);
 					timeout = PD_T_HARD_RESET_RETRY;
@@ -4585,6 +4589,7 @@ void pd_task(void *u)
 			}
 
 			hard_reset_sent = 1;
+			++hard_reset_count;
 			/*
 			 * If we are source, delay before cutting power
 			 * to allow sink time to get hard reset.
