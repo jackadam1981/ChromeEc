@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83303a33_da69f986",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-05T22:40:41Z",
+      "side": 1,
+      "message": "honestly TCPMv1 will have this problem too since they \"want\" to support rev 3.0 (or at least there is a config option for that). I don\u0027t know how much we really want to do there though.",
+      "range": {
+        "startLine": 1250,
+        "startChar": 6,
+        "endLine": 1250,
+        "endChar": 37
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98dd53d5_bcc9a335",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-05T22:40:41Z",
+      "side": 1,
+      "message": "can we call this\n\ntypec_set_src_current_limit(p, rp);",
+      "range": {
+        "startLine": 1251,
+        "startChar": 3,
+        "endLine": 1251,
+        "endChar": 22
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5254561e_ce256fb9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-05T22:40:41Z",
+      "side": 1,
+      "message": "also, does this only apply to DRP TRY_SRC? I would think this applies to any rev 3.0 source.",
+      "range": {
+        "startLine": 1827,
+        "startChar": 18,
+        "endLine": 1827,
+        "endChar": 43
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b236ce9_7e940435",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1832,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-05T22:40:41Z",
+      "side": 1,
+      "message": "we should make a function to set explicit contract (the opposite of pe_invalidate_explicit_contract), then this code goes there and not one sets or clears the flags except in those functions.",
+      "range": {
+        "startLine": 1832,
+        "startChar": 3,
+        "endLine": 1832,
+        "endChar": 49
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ecaa0d_64960fbc",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-05T22:40:41Z",
+      "side": 1,
+      "message": "We should really avoid this circular dependency. The TCPMV2 should depend on TCPC layer, but not the other way around",
+      "range": {
+        "startLine": 484,
+        "startChar": 1,
+        "endLine": 484,
+        "endChar": 40
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80fa886f_3023fcd6",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2983,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-05T22:40:41Z",
+      "side": 1,
+      "message": "I like where this is going. What do you think about:\n\n\n// Does not call into TCPC, just caches\nvoid typec_select_src_current(int port, enum tcpc_rp_value rp); \n\n// Does not call into TCPC, just caches (same as yours)\nvoid typec_select_collision_rp(int port, enum tcpc_rp_value rp);\n\n// Does not call into TCPC, just caches\nvoid typec_select_pull(int port, Rd/Rp);\n\n// Actually calls into TCPC with correct Rp, and CC information\nvoid typec_update_cc(int port)\n{\n rp \u003d cached_current_rp;\n\n // call into pe to determine if we are in explict contract\n if (rev3.0 and pe_in_explict_contract()) {\n   rp \u003d cached_collision_rp;\n }\n\n if (tc_state \u003d\u003d SRC_READ or SNK_READY) {\n   // ensure only one CC lines is getting set (unless in DBG ACC mode)\n }\n\n if (rd) {\n   tcpm_set_rds(port, polarity, both/one CC line);\n } else { //rp\n   tcpm_set_rps(port, polarity, both/one CC line, rp-value-from-above);\n }\n}\n\nAnd we call the typec_update_cc function after we call all of the select function we want to change. We also might be able to drop the caching in the tcpci layer too.",
+      "range": {
+        "startLine": 2978,
+        "startChar": 0,
+        "endLine": 2983,
+        "endChar": 40
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
