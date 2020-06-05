@@ -9,7 +9,6 @@ from __future__ import print_function
 
 import hashlib
 import hmac
-import struct
 
 import subcmd
 import utils
@@ -30,8 +29,8 @@ ALG_SHA384 = 2
 ALG_SHA512 = 3
 
 # A standard empty response to HASH extended commands.
-EMPTY_RESPONSE = ''.join('%c' % x for x in (0x80, 0x01, 0x00, 0x00, 0x00, 0x0c,
-                                            0x00, 0x00, 0x00, 0x00, 0x00, 0x01))
+EMPTY_RESPONSE = bytes([0x80, 0x01, 0x00, 0x00, 0x00, 0x0c,
+                        0x00, 0x00, 0x00, 0x00, 0x00, 0x01])
 test_inputs = (
   # Hash cmd    alg      handle  hmac_key           text
   (CMD_HMAC_SW, ALG_SHA256, 0, 'hmac_key1', 'some text, this time for sw hmac'),
@@ -47,6 +46,20 @@ test_inputs = (
   (CMD_HASH,        ALG_SHA256, 0, '', ''),
   (CMD_HASH,        ALG_SHA1,   0, '', 'anything really will work here'),
   (CMD_HASH,        ALG_SHA256, 0, '', 'some more text, this time for sha256'),
+  (CMD_HASH,        ALG_SHA256, 0, '', ('some more text, this time for sha256'
+  'long long long long long long long long long text which longer than block')),
+  (CMD_HMAC_SW,     ALG_SHA256, 0, 'hmac_key1', ('some more text, this time'
+  'long long long long long long long long long text which longer than block')),
+  (CMD_HMAC_HW,     ALG_SHA256, 0, 'hmac_key1', ('some more text, this time'
+  'long long long long long long long long long text which longer than block')),
+  (CMD_HMAC_SW,     ALG_SHA256, 0, ('long long long long long long long long'
+  ' long long long long key long key long long key'),
+   ('some more text, this time for sha256 long long long long long long long'
+    ' long text which longer than block')),
+  (CMD_HMAC_HW,     ALG_SHA256, 0, ('long long long long long long long long'
+  ' long long long long key long key long long key'),
+   ('some more text, this time for sha256 long long long long long long long'
+    ' long text which longer than 64-byte block')),
   (CMD_HASH_START,  ALG_SHA256, 1, '', 'some more text, this time for sha256'),
   (CMD_HASH_CONT,   ALG_SHA256, 1, '', 'some more text, this time for sha256'),
   (CMD_HASH_START,  ALG_SHA256, 2, '', 'this could be anything here'),
@@ -121,22 +134,20 @@ def hash_test(tpm):
 
     test_name = '%s:%s:%d' % (mode_name, alg_name, handle)
 
-    cmd = '%c' % hash_cmd
-    cmd += '%c' % hash_alg
-    cmd += '%c' % handle   # Ignored for single shots
+    cmd = hash_cmd.to_bytes(1, "big") + hash_alg.to_bytes(1, "big")
+    cmd += handle.to_bytes(1, "big")
+    cmd += len(text).to_bytes(2, "big") + bytes(text, "ascii")
 
-    cmd += struct.pack('>H', len(text))
-    cmd += text
     # for HMAC add key
     if hash_cmd in (CMD_HMAC_SW, CMD_HMAC_HW):
-      cmd += struct.pack('>H', len(hmac_key))
-      cmd += hmac_key
+      cmd += len(hmac_key).to_bytes(2, "big") + bytes(hmac_key, "ascii")
+
     wrapped_response = tpm.command(tpm.wrap_ext_command(subcmd.HASH, cmd))
     if hash_cmd in (CMD_HASH_START, CMD_HASH_CONT):
       if hash_cmd == CMD_HASH_START:
         contexts[handle] = hash_func()
       h = contexts[handle]
-      h.update(text)
+      h.update(bytes(text, "ascii"))
       if wrapped_response != EMPTY_RESPONSE:
         raise subcmd.TpmTestError("Unexpected response to '%s': %s" %
                         (test_name, utils.hex_dump(wrapped_response)))
@@ -146,10 +157,10 @@ def hash_test(tpm):
     elif hash_cmd == CMD_HASH:
       h = hash_func()
     elif hash_cmd in (CMD_HMAC_SW, CMD_HMAC_HW):
-      h = hmac.new(bytes(hmac_key), digestmod=hash_func)
+      h = hmac.new(bytes(hmac_key, "ascii"), digestmod=hash_func)
     else:
       raise subcmd.TpmTestError('Unknown command %d' % hash_cmd)
-    h.update(text)
+    h.update(bytes(text, "ascii"))
     digest = h.digest()
     result = wrapped_response[12:]
     if result != h.digest():
