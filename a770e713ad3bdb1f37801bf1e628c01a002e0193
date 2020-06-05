@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f63dfcdf_abe23d37",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-05T04:39:43Z",
+      "side": 1,
+      "message": "The nested conditionals would be easy to confuse or extend.\nKeeping to one level seems much clearer in terms of intent, even if it means\nsome duplication. So maybe:\n#elif defined(CHIP_VARIANT_NPCX7M7WB)\n\n#defines related to this variant\n\n#elif defined(CHIP_VARIANT_NPCX7M7WC)\n\n#defines related to this variant.\n\n#else...\n\nThere is already duplication in the previous block anyway, do reducing the number of\ndups doesn\u0027t buy much IMHO, and makes it hard to figure out what the real values should be (especially with the #undef).",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "a770e713ad3bdb1f37801bf1e628c01a002e0193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
