@@ -388,7 +388,7 @@ servo_has_cold_reset() {
 	dut_control -i cold_reset >/dev/null 2>&1
 }
 
-servo_has_dut_i2c_mux() {
+servo_has_dut_i2c_mux_() {
 	dut_control -i dut_i2c_mux >/dev/null 2>&1
 }
 
