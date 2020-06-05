@@ -295,6 +295,24 @@
     },
     {
       "key": {
+        "uuid": "423e3b28_a6bc2f84",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-05T02:37:56Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s mostly a question of what kind of overload we can handle and for how long. In the worst case we can end up something like 1.8A over on the 5V rail (nearly 10W over in total power), which seems too high.",
+      "parentUuid": "05f75cde_e5dba5c5",
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91d0bf2e_4ac582ff",
         "filename": "board/puff/board.c",
         "patchSetId": 3
