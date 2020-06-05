@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -15,9 +15,9 @@ import traceback
 
 # Suppressing pylint warning about an import not at the top of the file. The
 # path needs to be set *before* the last import.
-# pylint: disable=C6204
-root_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-sys.path.append(os.path.join(root_dir, '..', '..', 'build', 'tpm_test'))
+# pylint: disable=wrong-import-position
+ROOT_DIR = os.path.dirname(os.path.abspath(sys.argv[0]))
+sys.path.append(os.path.join(ROOT_DIR, '..', '..', 'build', 'tpm_test'))
 
 import crypto_test
 import drbg_test
@@ -35,7 +35,7 @@ import upgrade_test
 EXT_CMD = 0xbaccd00a
 
 
-class TPM(object):
+class TPM:
   """TPM accessor class.
 
   Object of this class allows to send valid and extended TPM commands (using
@@ -62,7 +62,7 @@ class TPM(object):
   def validate(self, data_blob, response_mode=False):
     """Check if a data blob complies with TPM command/response header format."""
     (tag, size, cmd_code, _) = struct.unpack_from(
-        self.HEADER_FMT, data_blob + '  ')
+      self.HEADER_FMT, data_blob + b'  ')
     prefix = 'Misformatted blob: '
     if tag not in (0x8001, 0x8002):
       raise subcmd.TpmTestError(prefix + 'bad tag value 0x%4.4x' % tag)
@@ -73,11 +73,10 @@ class TPM(object):
       raise subcmd.TpmTestError(prefix + 'invalid size %d' % size)
     if response_mode:
       # Startup response code, extension or vendor command response code
-      if cmd_code == 0x100 or cmd_code == 0 or cmd_code == 0x500:
-        return
-      else:
+      if cmd_code not in (0, 0x100, 0x500):
         raise subcmd.TpmTestError(
           prefix + 'invalid response code 0x%x' % cmd_code)
+      return
     if cmd_code >= 0x11f and cmd_code <= 0x18f:
       return  # This is a valid command
     if cmd_code == EXT_CMD:
@@ -87,13 +86,14 @@ class TPM(object):
     raise subcmd.TpmTestError(prefix + 'invalid command code 0x%x' % cmd_code)
 
   def command(self, cmd_data):
-    # Verify command header
+    """ Verify command header"""
     self.validate(cmd_data)
     response = self._handle.FtdiSendCommandAndWait(cmd_data)
     self.validate(response, response_mode=True)
     return response
 
   def wrap_ext_command(self, subcmd_code, cmd_body):
+    """ Wrap TPM command into extension command header"""
     return struct.pack(self.HEADER_FMT, 0x8001,
                        len(cmd_body) + struct.calcsize(self.HEADER_FMT),
                        EXT_CMD, subcmd_code) + cmd_body
@@ -117,7 +117,7 @@ class TPM(object):
     """
     header_size = struct.calcsize(self.HEADER_FMT)
     tag, size, cmd, sub = struct.unpack(self.HEADER_FMT,
-                                           response[:header_size])
+                                        response[:header_size])
     if tag != 0x8001:
       raise subcmd.TpmTestError('Wrong response tag: %4.4x' % tag)
     if cmd:
@@ -125,55 +125,59 @@ class TPM(object):
                                 cmd)
     if sub != expected_subcmd:
       raise subcmd.TpmTestError('Unexpected response subcommand field: %2.2x' %
-                     sub)
+                                sub)
     if size != len(response):
-      raise subcmd.TpmTestError('Size mismatch: header %d, actual %d' % (
-          size, len(response)))
+      raise subcmd.TpmTestError('Size mismatch: header %d, actual %d' %
+                                (size, len(response)))
     return response[header_size:]
 
   def debug_enabled(self):
+    """ Return status of debugging"""
     return self._debug_enabled
 
 def usage():
-  print ('Syntax: tpmtest.py [-d | -t | -h ]\n'
-         '     -d   -  prints additional debug information during tests\n'
-         '     -t   -  dump raw output from TRNG to /tmp/trng_output\n'
-         '     -h   -  this help\n')
-  return
+  """ Print usage information """
+  print('Syntax: tpmtest.py [-d | -t | -h ]\n'
+        '     -d   -  prints additional debug information during tests\n'
+        '     -t   -  dump raw output from TRNG to /tmp/trng_output\n'
+        '     -h   -  this help\n'
+        ' ISERIAL variable can be used to specify FTDI interface\n')
 
 if __name__ == '__main__':
   try:
-    opts, args = getopt.getopt(sys.argv[1:], 'dth','help')
+    OPTS, ARGS = getopt.getopt(sys.argv[1:], 'dth', 'help')
   except getopt.GetoptError as err:
     print(str(err))
     usage()
     sys.exit(2)
-  debug_needed = False
-  trng_only = False
-  for o, a in opts:
+  DEBUG_NEEDED = False
+  TRNG_ONLY = False
+  for o, a in OPTS:
     if o == '-d':
-      debug_needed = True
-    elif o == '-t':
-      trng_only = True
-    elif o == '-h' or o == '--help':
+      DEBUG_NEEDED = True
+    if o == '-t':
+      TRNG_ONLY = True
+    if o in ('-h', '--help'):
       usage()
       sys.exit(0)
   try:
-    t = TPM(debug_mode=debug_needed)
-    if trng_only:
-      trng_test.trng_test(t)
+    TPM_OBJECT = TPM(debug_mode=DEBUG_NEEDED)
+    if TRNG_ONLY:
+      trng_test.trng_test(TPM_OBJECT)
       sys.exit(1)
-    crypto_test.crypto_tests(t, os.path.join(root_dir, 'crypto_test.xml'))
-    drbg_test.drbg_test(t)
-    ecc_test.ecc_test(t)
-    ecies_test.ecies_test(t)
-    hash_test.hash_test(t)
-    hkdf_test.hkdf_test(t)
-    rsa_test.rsa_test(t)
-    upgrade_test.upgrade(t)
-  except subcmd.TpmTestError as e:
-    exc_file, exc_line = traceback.extract_tb(sys.exc_traceback)[-1][:2]
-    print('\nError in %s:%s: ' % (os.path.basename(exc_file), exc_line), e)
-    if debug_needed:
+    crypto_test.crypto_tests(TPM_OBJECT,
+                             os.path.join(ROOT_DIR, 'crypto_test.xml'))
+    hash_test.hash_test(TPM_OBJECT)
+    drbg_test.drbg_test(TPM_OBJECT)
+    ecc_test.ecc_test(TPM_OBJECT)
+    ecies_test.ecies_test(TPM_OBJECT)
+    hkdf_test.hkdf_test(TPM_OBJECT)
+    rsa_test.rsa_test(TPM_OBJECT)
+    upgrade_test.upgrade(TPM_OBJECT)
+  except subcmd.TpmTestError as tpm_exc:
+    EXC_TYPE, EXC_VALUE, EXC_TRACEBACK = sys.exc_info()
+    EXC_FILE, EXC_LINE = traceback.extract_tb(EXC_TRACEBACK)[-1][:2]
+    print('\nError in %s:%s: ' % (os.path.basename(EXC_FILE), EXC_LINE), tpm_exc)
+    if DEBUG_NEEDED:
       traceback.print_exc()
     sys.exit(1)
