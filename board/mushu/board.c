@@ -18,6 +18,8 @@
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
+#include "driver/temp_sensor/amd_r19me4070.h"
+#include "driver/temp_sensor/f75303.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "fan.h"
@@ -42,7 +44,6 @@
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"
-#include "driver/temp_sensor/amd_r19me4070.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -421,6 +422,18 @@ const struct temp_sensor_t temp_sensors[] = {
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_R19ME4070,
 				 .idx = R19ME4070_LOCAL},
+	[TEMP_F753303_LOCAL] = {.name = "F75303_Local",
+				 .type = TEMP_SENSOR_TYPE_BOARD,
+				 .read = f75303_get_val,
+				 .idx = F75303_IDX_LOCAL},
+	[TEMP_F753303_SOC] = {.name = "F75303_SoC",
+				 .type = TEMP_SENSOR_TYPE_BOARD,
+				 .read = f75303_get_val,
+				 .idx = F75303_IDX_REMOTE1},
+	[TEMP_F753303_POWER] = {.name = "F75303_Power",
+				 .type = TEMP_SENSOR_TYPE_BOARD,
+				 .read = f75303_get_val,
+				 .idx = F75303_IDX_REMOTE2},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
