@@ -22,6 +22,30 @@
       "revId": "87ada82e1a197afe4fb98211c4c2f00d6e08aec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4736b20d_aa6c9489",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-05T08:26:39Z",
+      "side": 1,
+      "message": "No, motion sense task triggers lid angle update only when sensor data is available.",
+      "parentUuid": "0de5ca34_34d861e5",
+      "range": {
+        "startLine": 381,
+        "startChar": 37,
+        "endLine": 381,
+        "endChar": 43
+      },
+      "revId": "87ada82e1a197afe4fb98211c4c2f00d6e08aec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
