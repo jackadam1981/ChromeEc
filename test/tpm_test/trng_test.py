@@ -9,19 +9,17 @@ import struct
 import subcmd
 import utils
 
-TRNG_TEST_FMT = '>H'
 TRNG_TEST_RSP_FMT = '>H2IH'
 TRNG_TEST_CC = 0x33
 TRNG_SAMPLE_SIZE = 1000 # minimal recommended by NIST is 1000 bytes per sample
 TRNG_SAMPLE_COUNT = 1000 # NIST require at least 1000000 of 8-bit samples
 
 def get_random_command(size):
-  return struct.pack(TRNG_TEST_FMT, size)
+  return size.to_bytes(2, "big")
 
 def get_random_command_rsp(size):
   return struct.pack(TRNG_TEST_RSP_FMT, 0x8001,
                      struct.calcsize(TRNG_TEST_RSP_FMT) + size, 0, TRNG_TEST_CC)
-
 
 def trng_test(tpm):
   """Download entropy samples from TRNG

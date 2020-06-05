@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Copyright 2015 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -31,7 +31,7 @@ def hex_dump(binstr):
   i = 0
   while i < len(binstr):
     strsize = min(16, len(binstr) - i)
-    hexstr = ' '.join('%2.2x' % ord(x) for x in binstr[i:i+strsize])
+    hexstr = ' '.join('%2.2x' % x for x in binstr[i:i+strsize])
     dump_lines.append(hexstr)
     i += strsize
   dump_lines.append('')
