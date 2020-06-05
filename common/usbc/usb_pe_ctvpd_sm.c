@@ -113,6 +113,11 @@ void pe_message_sent(int port)
 	/* No implementation needed by this policy engine */
 }
 
+bool pe_in_ams(int port)
+{
+	return false;
+}
+
 static void pe_request_run(const int port)
 {
 	uint32_t *payload = (uint32_t *)tx_emsg[port].buf;
