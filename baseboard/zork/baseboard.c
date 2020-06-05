@@ -272,6 +272,9 @@ void lid_angle_peripheral_enable(int enable)
 {
 	if (ec_config_has_lid_angle_tablet_mode())
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+#ifdef BOARD_MORPHIUS
+	gpio_config_module(MODULE_PS2, enable);
+#endif
 }
 #endif
 
