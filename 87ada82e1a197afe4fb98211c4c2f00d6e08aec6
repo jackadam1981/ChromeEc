@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0de5ca34_34d861e5",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-05T07:31:28Z",
+      "side": 1,
+      "message": "Will this function been called in S5/G3? I assume sensors are diabled in S5/G3 so presumably this won\u0027t happen?",
+      "range": {
+        "startLine": 381,
+        "startChar": 37,
+        "endLine": 381,
+        "endChar": 43
+      },
+      "revId": "87ada82e1a197afe4fb98211c4c2f00d6e08aec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
