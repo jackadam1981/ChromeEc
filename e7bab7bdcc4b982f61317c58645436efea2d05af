@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64133d61_206dc8af",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-05T23:25:12Z",
+      "side": 0,
+      "message": "removed because no longer used in src_ready and was never properly clear in snk_ready 😞",
+      "range": {
+        "startLine": 951,
+        "startChar": 2,
+        "endLine": 951,
+        "endChar": 13
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16d7153d_97ccff9b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1881,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-05T23:25:12Z",
+      "side": 0,
+      "message": "If we dropped the outgoing TX message that was send from a PE state, we are not excepting the response, so we should just carry on from here. If we want to start another AMS, we can, we we aren\u0027t necessarily going to.",
+      "range": {
+        "startLine": 1871,
+        "startChar": 1,
+        "endLine": 1881,
+        "endChar": 2
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bc814c6_95d069e8",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-05T23:25:12Z",
+      "side": 0,
+      "message": "this was clearing RX messages not TX messages",
+      "range": {
+        "startLine": 723,
+        "startChar": 2,
+        "endLine": 723,
+        "endChar": 29
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
