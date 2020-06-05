@@ -213,10 +213,10 @@ int tcpci_tcpm_init(int port);
 int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2);
 bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level);
-int tcpci_tcpm_select_rp_value(int port, int rp);
-int tcpci_tcpm_set_rp_value(int port);
-int tcpci_tcpm_set_cc(int port, int pull);
-int tcpci_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity);
+int tcpci_tcpm_update_cc(int port, int drp,
+			 enum tcpc_rp_value rp,
+			 enum tcpc_cc_polarity polarity,
+			 enum tcpc_cc_pull cc1, enum tcpc_cc_pull cc2);
 int tcpci_tcpm_set_vconn(int port, int enable);
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role);
 int tcpci_tcpm_set_rx_enable(int port, int enable);
@@ -225,7 +225,6 @@ int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,
 			uint16_t header, const uint32_t *data);
 int tcpci_tcpm_release(int port);
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-int tcpci_set_role_ctrl(int port, int toggle, int rp, int pull);
 int tcpci_tcpc_drp_toggle(int port);
 int tcpci_tcpc_set_connection(int port, enum tcpc_cc_pull pull, int connect);
 #endif

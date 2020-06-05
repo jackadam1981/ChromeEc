@@ -168,24 +168,11 @@ static inline bool tcpm_check_vbus_level(int port, enum vbus_level level)
 	return tcpc_config[port].drv->check_vbus_level(port, level);
 }
 
-static inline int tcpm_select_rp_value(int port, int rp)
+static inline int tcpm_update_cc(int port, int drp, int rp,
+				 int polarity, int cc1, int cc2)
 {
-	return tcpc_config[port].drv->select_rp_value(port, rp);
-}
-
-static inline int tcpm_set_rp_value(int port)
-{
-	const struct tcpm_drv *tcpc = tcpc_config[port].drv;
-
-	if (tcpc->set_rp_value)
-		return tcpc->set_rp_value(port);
-
-	return EC_SUCCESS;
-}
-
-static inline int tcpm_set_cc(int port, int pull)
-{
-	return tcpc_config[port].drv->set_cc(port, pull);
+	return tcpc_config[port].drv->update_cc(port, drp, rp,
+						polarity, cc1, cc2);
 }
 
 static inline int tcpm_set_connection(int port,
@@ -199,11 +186,6 @@ static inline int tcpm_set_connection(int port,
 		return tcpc->set_connection(port, pull, connect);
 
 	return EC_SUCCESS;
-}
-
-static inline int tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
-{
-	return tcpc_config[port].drv->set_polarity(port, polarity);
 }
 
 static inline int tcpm_set_vconn(int port, int enable)

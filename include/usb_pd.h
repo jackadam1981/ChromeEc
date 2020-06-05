@@ -2972,4 +2972,19 @@ __override_proto enum ec_pd_port_location board_get_pd_port_location(int port);
  * does nothing, but a board may override it.
  */
 __override_proto void board_vbus_present_change(void);
+
+
+/* TCPC Rp Management */
+
+/**
+ * Called when in an implicit contract to cache the maximum current allowed.
+ * A call to ????? will actually update the hardware to reflect the cache.
+ */
+void typec_select_drp(int port, int drp_toggle);
+void typec_select_polarity(int port, enum tcpc_cc_polarity polarity);
+void typec_select_pull(int port, enum tcpc_cc_pull p1, enum tcpc_cc_pull p2);
+void typec_select_src_current_limit(int port, enum tcpc_rp_value rp);
+void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp);
+int typec_update_cc(int port);
+
 #endif  /* __CROS_EC_USB_PD_H */
