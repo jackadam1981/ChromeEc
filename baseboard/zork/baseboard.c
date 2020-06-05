@@ -202,7 +202,7 @@ __overridable int board_get_temp(int idx, int *temp_k)
 }
 
 #ifndef TEST_BUILD
-void lid_angle_peripheral_enable(int enable)
+__overridable void lid_angle_peripheral_enable(int enable)
 {
 	if (ec_config_has_lid_angle_tablet_mode())
 		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);

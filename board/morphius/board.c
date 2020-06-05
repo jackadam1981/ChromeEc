@@ -22,6 +22,7 @@
 #include "fan_chip.h"
 #include "hooks.h"
 #include "keyboard_8042.h"
+#include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -555,4 +556,16 @@ void hdmi_hpd_interrupt(enum ioex_signal signal)
 {
 	/* Debounce for 2 msec. */
 	hook_call_deferred(&hdmi_hpd_handler_data, (2 * MSEC));
+}
+
+__override void lid_angle_peripheral_enable(int enable)
+{
+	if (ec_config_has_lid_angle_tablet_mode())
+		keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+
+	if (enable)
+		ps2_enable_channel(NPCX_PS2_CH0, 1, send_aux_data_to_host);
+	else
+		ps2_enable_channel(NPCX_PS2_CH0, 0, NULL);
+
 }
