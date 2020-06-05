@@ -22,7 +22,6 @@ def get_random_command_rsp(size):
   return struct.pack(TRNG_TEST_RSP_FMT, 0x8001,
                      struct.calcsize(TRNG_TEST_RSP_FMT) + size, 0, TRNG_TEST_CC)
 
-
 def trng_test(tpm):
   """Download entropy samples from TRNG
 
