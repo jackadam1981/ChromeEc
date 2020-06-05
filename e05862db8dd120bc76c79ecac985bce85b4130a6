@@ -70,6 +70,30 @@
       "revId": "e05862db8dd120bc76c79ecac985bce85b4130a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bde9395_4a0f46b4",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-06-05T12:22:41Z",
+      "side": 1,
+      "message": "I\u0027m looking at Daisuke\u0027s comments on the parent CL (\"HOOK_CHIPSET_SHUTDOWN is misleading, but consistently misleading with other ones\"), and the number of changes required to change all of those names. That\u0027s a lot of churn for not much benefit.\n\nLet\u0027s drop the parent CL so that HOOK_CHIPSET_SHUTDOWN remains as it is, and have this CL use HOOK_CHIPSET_SHUTDOWN_COMPLETE. Fewer code changes, and we keep the consistency, even if it is *technically* not 100% correct.",
+      "parentUuid": "6d578ade_b1e93d4a",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 27
+      },
+      "revId": "e05862db8dd120bc76c79ecac985bce85b4130a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
