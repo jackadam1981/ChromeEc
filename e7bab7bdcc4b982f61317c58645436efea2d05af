@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef7c3f28_74b32749",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-06T18:53:23Z",
+      "side": 1,
+      "message": "I didn\u0027t want to spend any time working on V1, at least while this was a WIP. I would rather the v1 stack worked just like it used to as it is \"phased out.\"",
+      "parentUuid": "83303a33_da69f986",
+      "range": {
+        "startLine": 1250,
+        "startChar": 6,
+        "endLine": 1250,
+        "endChar": 37
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98dd53d5_bcc9a335",
         "filename": "common/charge_manager.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0458609_4c38ed7c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-06T18:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98dd53d5_bcc9a335",
+      "range": {
+        "startLine": 1251,
+        "startChar": 3,
+        "endLine": 1251,
+        "endChar": 22
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b90013b8_dc62b120",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-06T18:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5254561e_ce256fb9",
+      "range": {
+        "startLine": 1827,
+        "startChar": 18,
+        "endLine": 1827,
+        "endChar": 43
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b236ce9_7e940435",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e55d26_383799b9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1832,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-06T18:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b236ce9_7e940435",
+      "range": {
+        "startLine": 1832,
+        "startChar": 3,
+        "endLine": 1832,
+        "endChar": 49
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ce39ec1e_2142278d",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-06T18:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ecaa0d_64960fbc",
+      "range": {
+        "startLine": 484,
+        "startChar": 1,
+        "endLine": 484,
+        "endChar": 40
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80fa886f_3023fcd6",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b2c4f4_32b177bd",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2983,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-06T18:53:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80fa886f_3023fcd6",
+      "range": {
+        "startLine": 2978,
+        "startChar": 0,
+        "endLine": 2983,
+        "endChar": 40
+      },
+      "revId": "e7bab7bdcc4b982f61317c58645436efea2d05af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
