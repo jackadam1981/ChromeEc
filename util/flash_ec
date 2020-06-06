@@ -8,9 +8,6 @@ SCRIPT="$(readlink -f "$0")"
 SCRIPT_DIR="$(dirname "$SCRIPT")"
 
 EC_DIR="$(readlink -f "${SCRIPT_DIR}/..")"
-if [[ "$(basename "${EC_DIR}")" != "ec" ]]; then
-	EC_DIR=
-fi
 
 # Loads script libraries.
 . "/usr/share/misc/shflags" || exit 1
