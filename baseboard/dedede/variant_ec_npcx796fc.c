@@ -7,17 +7,20 @@
 
 #include "adc_chip.h"
 #include "atomic.h"
+#include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "lid_switch.h"
 #include "power.h"
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "registers.h"
 #include "task.h"
+#include "timer.h"
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
@@ -95,6 +98,66 @@ static void set_up_adc_irqs(void)
 }
 DECLARE_HOOK(HOOK_INIT, set_up_adc_irqs, HOOK_PRIO_INIT_ADC+1);
 
+static void disable_adc_irqs_deferred(void)
+{
+	ccprints("%s", __func__);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH1, 0);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH2, 0);
+	npcx_set_adc_repetitive(adc_channels[ADC_VSNS_PP3300_A].input_ch, 0);
+
+	/*
+	 * If we're already in G3, PP3300_A is already off.  Since the ADC
+	 * interrupts were already disabled, this data is stale.  Therefore,
+	 * force the PGOOD value to 0 and have the chipset task re-evaluate.
+	 * This should help prevent leakage.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+		pp3300_a_pgood = 0;
+	power_signal_interrupt(GPIO_PG_EC_DSW_PWROK);
+}
+DECLARE_DEFERRED(disable_adc_irqs_deferred);
+
+static void disable_adc_irqs(void)
+{
+	int delay = 200 * MSEC;
+
+	/*
+	 * The EC stays in S5 for about 10s after shutting before heading down
+	 * to G3.  Therefore, we'll postpone disabling the ADC IRQs until after
+	 * this occurs.
+	 */
+	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
+		delay = 15 * SECOND;
+	hook_call_deferred(&disable_adc_irqs_deferred_data, delay);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, disable_adc_irqs, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, disable_adc_irqs, HOOK_PRIO_DEFAULT);
+
+/*
+ * We only need the ADC interrupts functional when powering up.  Therefore, only
+ * enable them from our wake sources.  These will be the power button, or lid
+ * open.
+ */
+static void enable_adc_irqs(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		ccprints("%s", __func__);
+		hook_call_deferred(&disable_adc_irqs_deferred_data, -1);
+		npcx_set_adc_repetitive(adc_channels[ADC_VSNS_PP3300_A].input_ch,
+					1);
+		npcx_adc_thresh_int_enable(NPCX_ADC_THRESH1, 1);
+		npcx_adc_thresh_int_enable(NPCX_ADC_THRESH2, 1);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, enable_adc_irqs, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, enable_adc_irqs, HOOK_PRIO_DEFAULT);
+
+static void enable_adc_irqs_via_lid(void)
+{
+	if (lid_is_open())
+		enable_adc_irqs();
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, enable_adc_irqs_via_lid, HOOK_PRIO_DEFAULT);
 
 /* I2C Ports */
 const struct i2c_port_t i2c_ports[] = {
