@@ -95,6 +95,21 @@ static void set_up_adc_irqs(void)
 }
 DECLARE_HOOK(HOOK_INIT, set_up_adc_irqs, HOOK_PRIO_INIT_ADC+1);
 
+static void disable_adc_irqs(void)
+{
+	ccprints("%s", __func__);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH1, 0);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH2, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, disable_adc_irqs, HOOK_PRIO_DEFAULT);
+
+static void enable_adc_irqs(void)
+{
+	ccprints("%s", __func__);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH1, 1);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH2, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, enable_adc_irqs, HOOK_PRIO_DEFAULT);
 
 /* I2C Ports */
 const struct i2c_port_t i2c_ports[] = {
