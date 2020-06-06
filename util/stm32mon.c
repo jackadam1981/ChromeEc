@@ -25,6 +25,7 @@
 #include <fcntl.h>
 #include <getopt.h>
 #include <inttypes.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
@@ -348,7 +349,7 @@ command_erase_t command_erase_i2c;
 
 command_erase_t *erase;
 
-static void discard_input(int);
+static void discard_input(int, bool);
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
@@ -491,7 +492,7 @@ int open_serial(const char *port, int cr50_mode)
 		}
 	}
 
-	discard_input(fd); /* in case were were invoked soon after reset */
+	discard_input(fd, true); /* in case were were invoked soon after reset */
 	return fd;
 }
 
@@ -545,7 +546,7 @@ int open_spi(const char *port)
 	return fd;
 }
 
-static void discard_input(int fd)
+static void discard_input(int fd, bool hide)
 {
 	uint8_t buffer[64];
 	int res, i;
@@ -578,6 +579,9 @@ static void discard_input(int fd)
 				res--;
 			}
 
+			if (hide)
+				continue;
+
 			printf("Recv[%d]:", res - i);
 			for (; i < res; i++)
 				printf("%02x ", buffer[i]);
@@ -585,7 +589,7 @@ static void discard_input(int fd)
 		}
 	} while (res > 0);
 
-	if (count_of_zeros)
+	if (!hide && count_of_zeros)
 		printf("%d zeros ignored\n", count_of_zeros);
 }
 
@@ -620,7 +624,7 @@ int wait_for_ack(int fd)
 			if (mode == MODE_SPI) /* Ack the NACK */
 				if (write_wrapper(fd, &ack, 1) != 1)
 					return STM32_EIO;
-			discard_input(fd);
+			discard_input(fd, false);
 			return STM32_ENACK;
 
 		case RESP_BUSY:
@@ -865,7 +869,7 @@ int init_monitor(int fd)
 	printf("Done.\n");
 
 	/* read trailing chars */
-	discard_input(fd);
+	discard_input(fd, false);
 
 	return STM32_SUCCESS;
 }
