@@ -47,10 +47,26 @@ enum try_src_override_t {
 int tc_is_attached_src(int port);
 
 /**
+ * Returns true if TypeC State machine is in attached or dbgacc source state.
+ *
+ * @param port USB-C port number
+ * @return 1 if in attached or dbgacc source state, else 0
+ */
+int tc_is_attached_or_dbgacc_src(int port);
+
+/**
  * Returns true if TypeC State machine is in attached sink state.
  *
  * @param port USB-C port number
- * @return 1 if in attached source state, else 0
+ * @return 1 if in attached sink state, else 0
+ */
+int tc_is_attached_snk(int port);
+
+/**
+ * Returns true if TypeC State machine is in attached or dbgacc sink state.
+ *
+ * @param port USB-C port number
+ * @return 1 if in attached or dbgacc sink state, else 0
  */
 int tc_is_attached_snk(int port);
 
