@@ -22,6 +22,30 @@
       "revId": "eced7aa2cc985dba0df3192049f7f235943c147f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34ecd608_424a5bbf",
+        "filename": "chip/stm32/config-stm32f4.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-06-08T19:39:46Z",
+      "side": 1,
+      "message": "The patch, http://crrev.com/c/2236413 is enabling it by default, and buildall fails without this.\nI intend to make crrev.com/c/2236413 cherry-pickable to any branch w/ or w/o stm32f4 codes.",
+      "parentUuid": "4d8aae86_516fa9a7",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "eced7aa2cc985dba0df3192049f7f235943c147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
