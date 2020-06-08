@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da7ef15d_bf933b7c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T15:38:29Z",
+      "side": 1,
+      "message": "Agreed we shouldn\u0027t be clearing Rx when we reset the PHY.  We\u0027re actually supposed to be going through this reset state more often than we do now (see b/158248741)\n\nReporting an error on discard is outside the spec (technically, getting a message when TX didn\u0027t succeed should be our clue there).  I was contemplating a specific discard flag to set for b/157228506 though.  I\u0027d like a specific discard indicator because the PE behavior needs to be different on discard than it would be for an actual protocol error.",
+      "range": {
+        "startLine": 744,
+        "startChar": 0,
+        "endLine": 751,
+        "endChar": 3
+      },
+      "revId": "84ddee6745090bfb2539442a5adb9ecc1be678cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

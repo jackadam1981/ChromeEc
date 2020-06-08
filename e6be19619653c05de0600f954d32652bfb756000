@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b6863ba_5874d93e",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T15:38:29Z",
+      "side": 0,
+      "message": "So technically this is the spec-specified method of handling OK/NG.  PE should notify of AMS start and AMS end to the PRL, and PRL uses that to set OK/NG.  Ideally I think we should try to debug the spec implementation here rather than doing our own thing?",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 1
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e739615_46771c79",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T15:38:29Z",
+      "side": 0,
+      "message": "Agreed this run seems unnecessary",
+      "range": {
+        "startLine": 727,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 54
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
