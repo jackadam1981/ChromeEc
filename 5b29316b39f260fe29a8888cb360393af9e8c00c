@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c44a3ee_dbe190c9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T16:23:15Z",
+      "side": 1,
+      "message": "nit: remove TC selection, and note that pd_set_power_supply_ready will cause caching of the right Rp?",
+      "range": {
+        "startLine": 2654,
+        "startChar": 0,
+        "endLine": 2659,
+        "endChar": 0
+      },
+      "revId": "5b29316b39f260fe29a8888cb360393af9e8c00c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
