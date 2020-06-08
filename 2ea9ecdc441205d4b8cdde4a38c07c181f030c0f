@@ -22,6 +22,30 @@
       "revId": "2ea9ecdc441205d4b8cdde4a38c07c181f030c0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1bf2132_bc3cd943",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-06-08T07:38:27Z",
+      "side": 1,
+      "message": "From PD3.0 spec: 6.3.10 PR_Swap message:\n\nAfter a successful Power Role Swap the Port Partners Shall reset their respective Protocol Layers (equivalent to a Soft\nReset): resetting their MessageIDCounter...\n\nBoth endpoints should reset their MessageID counters.",
+      "parentUuid": "8af30e3c_d8164616",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "2ea9ecdc441205d4b8cdde4a38c07c181f030c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
