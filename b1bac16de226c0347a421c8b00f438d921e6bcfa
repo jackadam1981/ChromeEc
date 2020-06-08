@@ -16,6 +16,351 @@
       "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ce0d960_5fcdbc89",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "is this required by the styleguide?",
+      "range": {
+        "startLine": 44,
+        "startChar": 24,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b497d83_ac2a610a",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "why do we need to change the name: x -\u003e x_block? we don\u0027t seem to use x anywhere, and w/o that change, the next several lines would be the same except for added .to_bytes() in \"value +\u003d\" line.",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 13
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997361e8_0c3075c8",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "why do we need to change the name? looks like `iv` is not used for anything.\nseveral lines below changed only because of init_vec-\u003eiv, not because of any python3 differences.",
+      "range": {
+        "startLine": 93,
+        "startChar": 40,
+        "endLine": 93,
+        "endChar": 48
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b2b36c6_f9e038c6",
+        "filename": "test/tpm_test/ecc_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "why do we add it to the list of modes if we don\u0027t support it?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "829c51e5_0c47943b",
+        "filename": "test/tpm_test/ecc_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "was that a typo before?",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2890de58_e541c596",
+        "filename": "test/tpm_test/ecc_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "why did we drop \u0027#\u0027 here? if required by the styleguide, why did we keep it 2 lines above?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a815defc_8ebb9f25",
+        "filename": "test/tpm_test/ecies_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "why rename?",
+      "range": {
+        "startLine": 191,
+        "startChar": 10,
+        "endLine": 191,
+        "endChar": 27
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b24d48d_021cba4a",
+        "filename": "test/tpm_test/hash_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "this seems to be unrelated to a python3 fix, and belongs in a separate CL?\nand w/o it the rest of the changes in this table are just optional whitespace differences.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 51
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74da4f77_52f4c173",
+        "filename": "test/tpm_test/hkdf_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "is it required by the styleguide?",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e097c08f_d106a03a",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "this in actual functional change, not just python3 change, right? if so, belongs in a separate CL?",
+      "range": {
+        "startLine": 540,
+        "startChar": 19,
+        "endLine": 540,
+        "endChar": 32
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759f50ce_9320a227",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "why change the order?",
+      "range": {
+        "startLine": 588,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 2
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cbb93ae_2dcd6d52",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "we still get \u0027e\u0027 here.",
+      "range": {
+        "startLine": 691,
+        "startChar": 13,
+        "endLine": 691,
+        "endChar": 16
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c12e4ec4_c064da73",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "this has nothing to do with python3 migration",
+      "range": {
+        "startLine": 144,
+        "startChar": 10,
+        "endLine": 144,
+        "endChar": 66
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0043ea0d_ab8cee78",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "why switch to uppercase for variables not used anywhere but inside this block?\nshall we rather do the following? \n\ndef main():\n  \u003cthis entire block\u003e\n\nif __name__ \u003d\u003d \u0027__main__\u0027\n  main()\n\nThen variable names can be left as-is.",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 148,
+        "endChar": 14
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0ed4d76_8a7ad976",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 1,
+      "message": "nit: name changes",
+      "range": {
+        "startLine": 42,
+        "startChar": 41,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

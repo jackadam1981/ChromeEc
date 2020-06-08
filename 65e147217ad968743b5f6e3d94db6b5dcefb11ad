@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32e1023e_a953e023",
+        "filename": "test/tpm_test/drbg_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 0,
+      "message": "was wrapped_response just a typo below? I don\u0027t see this variable set anywhere even before this change",
+      "range": {
+        "startLine": 90,
+        "startChar": 40,
+        "endLine": 90,
+        "endChar": 56
+      },
+      "revId": "65e147217ad968743b5f6e3d94db6b5dcefb11ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d85c341_bcf847f2",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T23:36:22Z",
+      "side": 0,
+      "message": "is this the exponent parameter we don\u0027t actually use?\nI\u0027d separate this change into a separate CL, where it can be separately discussed if e should be removed everywhere as we have no way to set it, or it shall actually be still handled by _keygen_cmd even if iun the form `assert(e \u003d\u003d 65537)`.\nNote that _KEYGEN_INPUTS still contain e, and _keygen_tests still gets it from there (just doesn\u0027t use anymore).",
+      "range": {
+        "startLine": 140,
+        "startChar": 25,
+        "endLine": 140,
+        "endChar": 28
+      },
+      "revId": "65e147217ad968743b5f6e3d94db6b5dcefb11ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
