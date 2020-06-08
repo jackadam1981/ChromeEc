@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd6836bc_1e85d5ea",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-08T16:40:24Z",
+      "side": 1,
+      "message": "This is the only way guarantee a tablet reset other than letting the battery drain. I don\u0027t think we should touch this.",
+      "parentUuid": "3af5ac85_d797e153",
+      "range": {
+        "startLine": 360,
+        "startChar": 12,
+        "endLine": 360,
+        "endChar": 34
+      },
+      "revId": "c6f4aa8223276807b4410655c0440f41943bf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b37fac0_6b905783",
         "filename": "board/cr50/board.c",
         "patchSetId": 7
