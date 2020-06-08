@@ -46,6 +46,30 @@
       "revId": "5b29316b39f260fe29a8888cb360393af9e8c00c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "080fd4e9_486bb980",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T17:38:12Z",
+      "side": 1,
+      "message": "Your new code is correct, I was just thinking a removal of the unnecessary Rp set and a note about how pd_set_power_supply_ready() is selecting Rp would help readability.  Just a nit though, no need to change if you don\u0027t want to.",
+      "parentUuid": "7c1b54a8_ef173fee",
+      "range": {
+        "startLine": 2654,
+        "startChar": 0,
+        "endLine": 2659,
+        "endChar": 0
+      },
+      "revId": "5b29316b39f260fe29a8888cb360393af9e8c00c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
