@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "016d35f2_7643385a",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-08T23:27:57Z",
+      "side": 1,
+      "message": "That is what I had originally. \n\nWe had a long discussion about this on the older patchsets, there are situations where we will need to configure both the PPC and TCPC to enable FRS (ex. Zork) So, the CONFIG_USB_PD_FRS_PPC/TCPC is used to designate where the FRS trigger is. Since we may still need to configure both the TCPC and PPC depending on which TCPC/PPC we\u0027re using though, I moved these checks to the TCPC/PPC driver itself.\n\nIs there a better way to handle these situations? We could have both CONFIG_USB_PD_FRS_TCPC and PPC co-exist, but then there could be ambiguity to where the trigger is implemented (ex PS8815 + syv682).",
+      "parentUuid": "309b5911_b131fd6a",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 734,
+        "endChar": 34
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8da99889_1cebb6d4",
         "filename": "common/usb_common.c",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2b5a14d3_b8997e66",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-08T23:27:57Z",
+      "side": 1,
+      "message": "That is what I had originally, see the explanation above",
+      "parentUuid": "8da99889_1cebb6d4",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 735,
+        "endChar": 35
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb922009_7a82dc8f",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 11
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-08T21:04:37Z",
       "side": 1,
       "message": "Change to CONFIG_USB_PD_FRS_PPC.",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2763bbc1_49f941ee",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-08T23:27:57Z",
+      "side": 1,
+      "message": "See explanation on the other file. Zork will need this even though the trigger is in the TCPC",
+      "parentUuid": "eb922009_7a82dc8f",
       "range": {
         "startLine": 314,
         "startChar": 0,
