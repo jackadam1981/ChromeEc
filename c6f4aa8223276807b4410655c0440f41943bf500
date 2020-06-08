@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "04357da3_e1248010",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-08T22:51:13Z",
+      "side": 1,
+      "message": "if battery cutoff procedure was executed properly, this function would not proceed beyond line 379, this is where the actual battery cut off would happen, this is our way out of the \"AP RO verification failed\" state",
+      "parentUuid": "e9548b0f_a34bd20a",
+      "range": {
+        "startLine": 360,
+        "startChar": 12,
+        "endLine": 360,
+        "endChar": 34
+      },
+      "revId": "c6f4aa8223276807b4410655c0440f41943bf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b37fac0_6b905783",
         "filename": "board/cr50/board.c",
         "patchSetId": 7
