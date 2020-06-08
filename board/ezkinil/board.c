@@ -317,6 +317,7 @@ static void hdmi_hpd_handler(void)
 
 	gpio_set_level(GPIO_DP1_HPD, hpd);
 	ccprints("HDMI HPD %d", hpd);
+	pi3hdx1204_retimer_power();
 }
 DECLARE_DEFERRED(hdmi_hpd_handler);
 
@@ -324,6 +325,11 @@ void hdmi_hpd_interrupt(enum gpio_signal signal)
 {
 	/* Debounce for 2 msec. */
 	hook_call_deferred(&hdmi_hpd_handler_data, (2 * MSEC));
+}
+
+int check_hdmi_hpd_status(void)
+{
+	return gpio_get_level(GPIO_DP1_HPD_EC_IN);
 }
 
 /*****************************************************************************
