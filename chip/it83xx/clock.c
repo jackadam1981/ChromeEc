@@ -544,6 +544,15 @@ defined(CONFIG_HOSTCMD_ESPI)
 	__builtin_unreachable();
 }
 
+/* disable wake-up interrupt of lpc/espi access */
+static void clock_disable_espi_lpc_access_wui(void)
+{
+	/* disable lpc access wui */
+	task_disable_irq(IT83XX_IRQ_WKINTAD);
+	IT83XX_WUC_WUESR4 = BIT(2);
+	task_clear_pending_irq(IT83XX_IRQ_WKINTAD);
+}
+
 void clock_sleep_mode_wakeup_isr(void)
 {
 	uint32_t st_us, c;
@@ -580,16 +589,19 @@ defined(CONFIG_HOSTCMD_ESPI)
 		clock_event_timer_clock_change(EXT_PSR_8M_HZ, 0xffffffff);
 		task_clear_pending_irq(et_ctrl_regs[EVENT_EXT_TIMER].irq);
 		process_timers(0);
-#ifdef CONFIG_HOSTCMD_X86
-		/* disable lpc access wui */
-		task_disable_irq(IT83XX_IRQ_WKINTAD);
-		IT83XX_WUC_WUESR4 = BIT(2);
-		task_clear_pending_irq(IT83XX_IRQ_WKINTAD);
-#endif
+		if (IS_ENABLED(CONFIG_HOSTCMD_X86))
+			clock_disable_espi_lpc_access_wui();
 		/* disable uart wui */
 		uart_exit_dsleep();
 		/* Record time spent in sleep. */
 		total_idle_sleep_time_us += st_us;
+	}
+
+	if (IT83XX_ECPM_PLLCTRL == EC_PLL_DOZE) {
+		/* Because CPU has been woken up, so we can disable wui here. */
+		if (IS_ENABLED(CONFIG_HOSTCMD_X86) &&
+		    IS_ENABLED(IT83XX_CPU_KEEP_ACTIVE_AT_HOST_ACCESS))
+			clock_disable_espi_lpc_access_wui();
 	}
 }
 
@@ -618,10 +630,9 @@ void __idle(void)
 			/* reset low power mode hw timer */
 			IT83XX_ETWD_ETXCTRL(LOW_POWER_EXT_TIMER) |= BIT(1);
 			sleep_mode_t0 = get_time();
-#ifdef CONFIG_HOSTCMD_X86
-			/* enable lpc access wui */
-			task_enable_irq(IT83XX_IRQ_WKINTAD);
-#endif
+			if (IS_ENABLED(CONFIG_HOSTCMD_X86))
+				/* enable lpc access wui */
+				task_enable_irq(IT83XX_IRQ_WKINTAD);
 			/* enable uart wui */
 			uart_enter_dsleep();
 			/* enable hw timer for deep doze / sleep mode wake-up */
@@ -630,6 +641,13 @@ void __idle(void)
 			clock_ec_pll_ctrl(EC_PLL_DEEP_DOZE);
 			idle_sleep_cnt++;
 		} else {
+			/*
+			 * enable espi/lpc access wui due to CPU is going to low
+			 * power mode later.
+			 */
+			if (IS_ENABLED(CONFIG_HOSTCMD_X86) &&
+			    IS_ENABLED(IT83XX_CPU_KEEP_ACTIVE_AT_HOST_ACCESS))
+				task_enable_irq(IT83XX_IRQ_WKINTAD);
 			/* doze mode */
 			clock_ec_pll_ctrl(EC_PLL_DOZE);
 			idle_doze_cnt++;

@@ -40,6 +40,8 @@
 #define CONFIG_RAM_BASE             0x80080000
 #define CONFIG_RAM_SIZE             0x00010000
 
+/* Don't let CPU goes into low power mode while eSPI/LPC cycle is recognized. */
+#define IT83XX_CPU_KEEP_ACTIVE_AT_HOST_ACCESS
 /* Embedded flash is KGD */
 #define IT83XX_CHIP_FLASH_IS_KGD
 /* Don't let internal flash go into deep power down mode. */
@@ -79,6 +81,8 @@
 #define CONFIG_RAM_BASE             0x80100000
 #define CONFIG_RAM_SIZE             0x0000f000
 
+/* Don't let CPU goes into low power mode while eSPI/LPC cycle is recognized. */
+#define IT83XX_CPU_KEEP_ACTIVE_AT_HOST_ACCESS
 /* Embedded flash is KGD */
 #define IT83XX_CHIP_FLASH_IS_KGD
 /* Set ILM (instruction local memory) size up to 1M bytes */
