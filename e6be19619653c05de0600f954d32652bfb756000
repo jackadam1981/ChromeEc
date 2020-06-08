@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b1230ec3_3befa737",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T17:30:40Z",
+      "side": 0,
+      "message": "Agreed that we don\u0027t want to get out of sync here since that leads to bad things happening.  At the very least, we should note the spec deviation here though?",
+      "parentUuid": "54a67f79_ec3efbeb",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 1
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e739615_46771c79",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 5
@@ -108,6 +132,30 @@
       "side": 0,
       "message": "I like the idea of documenting that only use run when we need to monitor for a change (time expire, vbus change)",
       "parentUuid": "df56d2aa_34596282",
+      "range": {
+        "startLine": 727,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 54
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40266968_b3b8e31e",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T17:30:40Z",
+      "side": 0,
+      "message": "I can add it to the .md then :)",
+      "parentUuid": "52256d65_3fd0e942",
       "range": {
         "startLine": 727,
         "startChar": 0,
