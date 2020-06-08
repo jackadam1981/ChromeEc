@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e9548b0f_a34bd20a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T22:24:22Z",
+      "side": 1,
+      "message": "So, even though we have the periodic EC re-assertion, we still want this to handler to do what it does?\nWhat will be the result in this case after a failed AP RO verification?\nac_stayed_disconnected() will do the following:\n 1) Assert (an already asserted) EC rst.\n 2) Do whatever it does with OVERRIDE_OUTPUT.\n 3) Deassert EC rst\nAnd X ms after that (X\u003c\u003d100) keep_ec_in_reset is called and it will\n 4) Assert EC rst.\n\nMy though was to have\n\nif (!ec_rst_override())\n  GREG32(RBOX, ASSERT_EC_RST) \u003d 0;\n\nas step #3. \nThere\u0027s no benefit from having X ms between #3 and #4, or is there?",
+      "parentUuid": "1222350a_ddbf620c",
+      "range": {
+        "startLine": 360,
+        "startChar": 12,
+        "endLine": 360,
+        "endChar": 34
+      },
+      "revId": "c6f4aa8223276807b4410655c0440f41943bf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b37fac0_6b905783",
         "filename": "board/cr50/board.c",
         "patchSetId": 7
