@@ -45,6 +45,30 @@
       "revId": "e6be19619653c05de0600f954d32652bfb756000",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df56d2aa_34596282",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T15:49:47Z",
+      "side": 0,
+      "message": "Additional thought here, is there a best practice we should enumerate around this?  Something like \"run states are only needed when waiting on a condition (timer, voltage change, etc.)\"?  That way we can transition quickly whenever possible and avoid unnecessary delays between run states.",
+      "parentUuid": "0e739615_46771c79",
+      "range": {
+        "startLine": 727,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 54
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
