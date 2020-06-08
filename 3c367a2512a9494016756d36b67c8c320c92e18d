@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "bf4730a7_e1096660",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-08T15:10:25Z",
+      "side": 1,
+      "message": "removed... and using set_cc in the locations that were calling. This made it easier for me to know what was happening as we start using update_cc.  We can reduce to a function later.",
+      "parentUuid": "6eacf241_ba33333d",
+      "range": {
+        "startLine": 782,
+        "startChar": 8,
+        "endLine": 782,
+        "endChar": 25
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01d0e9f1_eb15bad7",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 16
@@ -263,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "24138049_bb03f660",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-08T15:10:25Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "9e8d54ab_61205d6d",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10d99b77_fd4dd0ea",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 16
@@ -307,6 +355,30 @@
       "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d9d1e8_6bd8345d",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-08T15:10:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4138092_24d4fa34",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 9
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -378,6 +450,30 @@
       "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d521953_14486ef5",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-08T15:10:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "97d6fb29_448371b4",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "3c367a2512a9494016756d36b67c8c320c92e18d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
