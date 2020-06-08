@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "309b5911_b131fd6a",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-08T21:04:37Z",
+      "side": 1,
+      "message": "Technically CONFIG_USBC_PPC is independent of CONFIG_USB_POWER_DELIVERY, so  go ahead and guard this with if (IS_ENABLED(CONFIG_USB_PD_FRS_PPC)).",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 734,
+        "endChar": 34
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8da99889_1cebb6d4",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-08T21:04:37Z",
+      "side": 1,
+      "message": "Guard with if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)).",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 735,
+        "endChar": 35
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb922009_7a82dc8f",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-08T21:04:37Z",
+      "side": 1,
+      "message": "Change to CONFIG_USB_PD_FRS_PPC.",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3aade5d_b19d667e",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-08T21:04:37Z",
+      "side": 1,
+      "message": "Nit - delete extra line.",
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa9bec4f_bafb615d",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-08T21:04:37Z",
+      "side": 1,
+      "message": "Nit - delete extra line.",
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6e3e11_c1f73ac4",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-08T21:04:37Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_FRS_PPC",
+      "range": {
+        "startLine": 334,
+        "startChar": 18,
+        "endLine": 334,
+        "endChar": 35
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ee0fa08_3d1f952c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-08T21:04:37Z",
+      "side": 1,
+      "message": "Change this to return an int for consistency with ppc_fast_role_swap_enable().  Both tcpc_update8() and board_tcpc_fast_role_swap_enable() return an int so pretty easy to include in this CL.",
+      "range": {
+        "startLine": 640,
+        "startChar": 5,
+        "endLine": 640,
+        "endChar": 37
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
