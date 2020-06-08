@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd1a6e7_dd8342bd",
+        "filename": "test/tpm_test/.pylintrc",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-08T18:08:28Z",
+      "side": 1,
+      "message": "why do you need to add a separate pylintrc file? the one in the root directory should be used.",
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
