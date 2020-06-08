@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db7d90e3_e1676141",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 5421,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T17:13:22Z",
+      "side": 1,
+      "message": "Assuming this config route is the right one to go on, is there any way it could be hidden for most callers to reduce the config checks?",
+      "range": {
+        "startLine": 5414,
+        "startChar": 0,
+        "endLine": 5421,
+        "endChar": 3
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c98f76e7_bb6cfbcb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T17:13:22Z",
+      "side": 1,
+      "message": "Is this needed?  I\u0027d thought we\u0027d set this in the PRL by setting end AMS on entry to ready",
+      "range": {
+        "startLine": 812,
+        "startChar": 0,
+        "endLine": 816,
+        "endChar": 2
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e59b8153_8db83691",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3920,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-08T17:13:22Z",
+      "side": 1,
+      "message": "I\u0027m not certain about this as a new config.  It seems like an added complexity to the code.  Do we have any known TCPCs that wouldn\u0027t be able to change how they work?",
+      "range": {
+        "startLine": 3915,
+        "startChar": 0,
+        "endLine": 3920,
+        "endChar": 33
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
