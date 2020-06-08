@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d8aae86_516fa9a7",
+        "filename": "chip/stm32/config-stm32f4.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-08T19:36:30Z",
+      "side": 1,
+      "message": "why does it have to be undefined here - isn\u0027t it declared undefined by default in config.h?",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "eced7aa2cc985dba0df3192049f7f235943c147f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
