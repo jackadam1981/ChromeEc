@@ -162,12 +162,18 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 static void usba_retimer_on(void)
 {
 	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 1);
+
+	/* hdmi retimer power on */
+	ioex_set_level(IOEX_HDMI_POWER_EN_DB, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, usba_retimer_on, HOOK_PRIO_DEFAULT);
 
 static void usba_retimer_off(void)
 {
 	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
+
+	/* hdmi retimer power off */
+	ioex_set_level(IOEX_HDMI_POWER_EN_DB, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, usba_retimer_off, HOOK_PRIO_DEFAULT);
 
