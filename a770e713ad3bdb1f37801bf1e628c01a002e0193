@@ -45,6 +45,30 @@
       "revId": "a770e713ad3bdb1f37801bf1e628c01a002e0193",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0b728b5_653efad1",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-08T23:34:08Z",
+      "side": 1,
+      "message": "CONFIG_RO_SIZE must be aligned to flash erase granularity, so while we could do this it would force us to drop 4kB from the image on all chips and probably make erases slower since it would need to select a smaller erase granularity.\n\nSince other chips have enough Flash to use the full size, I think this approach is preferable since it doesn\u0027t unnecessarily affect other chips.",
+      "parentUuid": "fa43cfe8_4b61ff55",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "a770e713ad3bdb1f37801bf1e628c01a002e0193",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
