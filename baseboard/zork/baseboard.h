@@ -325,6 +325,8 @@ enum sensor_id {
  */
 extern mat33_fp_t zork_base_standard_ref;
 
+extern const struct thermistor_info thermistor_info;
+
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
 
@@ -343,7 +345,7 @@ void ppc_interrupt(enum gpio_signal signal);
 int board_tcpc_fast_role_swap_enable(int port, int enable);
 #endif
 
-int board_get_temp(int idx, int *temp_k);
+__overridable int board_get_temp(int idx, int *temp_k);
 
 #endif /* !__ASSEMBLER__ */
 
