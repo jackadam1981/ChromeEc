@@ -161,13 +161,21 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 
 static void usba_retimer_on(void)
 {
+	int hpd = gpio_get_level(GPIO_DP1_HPD_EC_IN);
+
 	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 1);
+
+	/* hdmi retimer power on while hdmi plugged in*/
+	ioex_set_level(IOEX_HDMI_POWER_EN_DB, hpd);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, usba_retimer_on, HOOK_PRIO_DEFAULT);
 
 static void usba_retimer_off(void)
 {
 	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
+
+	/* hdmi retimer power off */
+	ioex_set_level(IOEX_HDMI_POWER_EN_DB, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, usba_retimer_off, HOOK_PRIO_DEFAULT);
 
@@ -317,6 +325,10 @@ static void hdmi_hpd_handler(void)
 
 	gpio_set_level(GPIO_DP1_HPD, hpd);
 	ccprints("HDMI HPD %d", hpd);
+
+	/* Enable hdmi retimer power while hdmi plugged in. */
+	if (power_get_state() == POWER_S0)
+		ioex_set_level(IOEX_HDMI_POWER_EN_DB, hpd);
 }
 DECLARE_DEFERRED(hdmi_hpd_handler);
 
