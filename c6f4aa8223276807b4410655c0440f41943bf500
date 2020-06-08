@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3af5ac85_d797e153",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-08T16:33:08Z",
+      "side": 1,
+      "message": "shall we also check if (ec_rst_override()) in this one or when calling this one?",
+      "range": {
+        "startLine": 360,
+        "startChar": 12,
+        "endLine": 360,
+        "endChar": 34
+      },
+      "revId": "c6f4aa8223276807b4410655c0440f41943bf500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b37fac0_6b905783",
         "filename": "board/cr50/board.c",
         "patchSetId": 7
