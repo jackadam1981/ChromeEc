@@ -1222,7 +1222,7 @@ static void queue_vdm(int port, uint32_t *header, const uint32_t *data,
 static void handle_vdm_request(int port, int cnt, uint32_t *payload,
 				uint16_t head)
 {
-	int rlen = 0;
+	int rlen = 0, i;
 	uint32_t *rdata;
 
 	if (pd[port].vdm_state == VDM_STATE_BUSY) {
@@ -1249,6 +1249,13 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload,
 		rlen = pd_svdm(port, cnt, payload, &rdata, head);
 	else
 		rlen = pd_custom_vdm(port, cnt, payload, &rdata);
+
+	if (debug_level >= 2) {
+		ccprintf("C%d XMIT ", port);
+		for (i = 0; i < rlen; i++)
+			ccprintf("%04x ", payload[i]);
+		ccprintf("\n");
+	}
 
 	if (rlen > 0) {
 		queue_vdm(port, rdata, &rdata[1], rlen - 1);
@@ -2832,6 +2839,9 @@ static void pd_send_enter_usb(int port, int *timeout)
 		1,
 		PD_REV30,
 		0);
+
+	if (debug_level >= 2)
+		ccprintf("C%d XMIT %04x\n", port, usb4_payload);
 
 	res = pd_transmit(port, TCPC_TX_SOP, header, &usb4_payload, AMS_START);
 	if (res < 0) {
