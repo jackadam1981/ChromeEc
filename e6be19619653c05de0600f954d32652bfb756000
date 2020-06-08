@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54a67f79_ec3efbeb",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-08T17:03:27Z",
+      "side": 0,
+      "message": "I think is it really semantics at this point. I think using the separate start and end flags can lead to getting out of sync and calling start and end in an unbalanced way",
+      "parentUuid": "2b6863ba_5874d93e",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 1
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e739615_46771c79",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 5
@@ -60,6 +84,30 @@
       "side": 0,
       "message": "Additional thought here, is there a best practice we should enumerate around this?  Something like \"run states are only needed when waiting on a condition (timer, voltage change, etc.)\"?  That way we can transition quickly whenever possible and avoid unnecessary delays between run states.",
       "parentUuid": "0e739615_46771c79",
+      "range": {
+        "startLine": 727,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 54
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52256d65_3fd0e942",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-08T17:03:27Z",
+      "side": 0,
+      "message": "I like the idea of documenting that only use run when we need to monitor for a change (time expire, vbus change)",
+      "parentUuid": "df56d2aa_34596282",
       "range": {
         "startLine": 727,
         "startChar": 0,
