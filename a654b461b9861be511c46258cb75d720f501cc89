@@ -16,6 +16,24 @@
       "revId": "a654b461b9861be511c46258cb75d720f501cc89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c3b02bb_d0d3d5b4",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-08T20:38:18Z",
+      "side": 1,
+      "message": "As mentioned in the other CL, although this would be nice, there could be lots of other places which can invoke the reset. It\u0027s also targeting a corner case, so maybe it\u0027s not worth worrying about too much.",
+      "parentUuid": "6aa1be25_3eef6102",
+      "revId": "a654b461b9861be511c46258cb75d720f501cc89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
