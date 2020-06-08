@@ -22,6 +22,30 @@
       "revId": "5b29316b39f260fe29a8888cb360393af9e8c00c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c1b54a8_ef173fee",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-08T17:34:09Z",
+      "side": 1,
+      "message": "The old code was not doing this for any calls to pd_set_power_supply_ready but the new code is doing it after all of them. Is this wrong?",
+      "parentUuid": "9c44a3ee_dbe190c9",
+      "range": {
+        "startLine": 2654,
+        "startChar": 0,
+        "endLine": 2659,
+        "endChar": 0
+      },
+      "revId": "5b29316b39f260fe29a8888cb360393af9e8c00c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
