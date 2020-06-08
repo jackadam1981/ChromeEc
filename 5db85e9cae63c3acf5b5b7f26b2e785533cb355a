@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1eea4467_6d514be0",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-08T06:08:34Z",
+      "side": 1,
+      "message": "You can do this in another CL. This variable has to be volatile.",
+      "revId": "5db85e9cae63c3acf5b5b7f26b2e785533cb355a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
