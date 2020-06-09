@@ -386,11 +386,6 @@ extern enum usb_pe_state PE_PRS_FRS_SHARE_NOT_SUPPORTED;
 void pe_set_frs_enable(int port, int enable);
 #endif /* CONFIG_USB_PD_REV30 */
 
-enum port_partner {
-	PORT,
-	CABLE,
-};
-
 /*
  * This enum is used to implement a state machine consisting of at most
  * 3 states, inside a Policy Engine State.
@@ -458,7 +453,6 @@ static struct policy_engine {
 
 	/* VDM - used to send information to shared VDM Request state */
 	/* TODO(b/150611251): Remove when all VDMs use shared parent */
-	enum port_partner partner_type;
 	uint32_t vdm_cnt;
 	uint32_t vdm_data[VDO_HDR_SIZE + VDO_MAX_SIZE];
 
@@ -979,8 +973,6 @@ void pe_message_sent(int port)
 void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 						int count)
 {
-	pe[port].partner_type = PORT;
-
 	/* Copy VDM Header */
 	pe[port].vdm_data[0] = VDO(vid, ((vid & USB_SID_PD) == USB_SID_PD) ?
 				1 : (PD_VDO_CMD(cmd) <= CMD_ATTENTION),
@@ -4177,7 +4169,8 @@ static void pe_vdm_send_request_run(int port)
 	 */
 	if (get_time().val > pe[port].vdm_response_timer) {
 		CPRINTF("VDM %s Response Timeout\n",
-				pe[port].partner_type ? "Cable" : "Port");
+				pe[port].tx_type == TCPC_TX_SOP ?
+				"Port" : "Cable");
 		/*
 		 * Flag timeout so child state can mark appropriate discovery
 		 * item as failed.
@@ -4215,6 +4208,9 @@ static void pe_vdm_identity_request_cbl_entry(int port)
 	tx_emsg[port].len = sizeof(uint32_t);
 
 	prl_send_data_msg(port, TCPC_TX_SOP_PRIME, PD_DATA_VENDOR_DEF);
+
+	/* PE_VDM_SEND_REQUEST (the parent state) uses this field. */
+	pe[port].tx_type = TCPC_TX_SOP_PRIME;
 
 	pe[port].discover_identity_counter++;
 }
@@ -4380,6 +4376,9 @@ static void pe_init_port_vdm_identity_request_entry(int port)
 	tx_emsg[port].len = sizeof(uint32_t);
 
 	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
+
+	/* PE_VDM_SEND_REQUEST (the parent state) uses this field. */
+	pe[port].tx_type = TCPC_TX_SOP;
 }
 
 static void pe_init_port_vdm_identity_request_run(int port)
