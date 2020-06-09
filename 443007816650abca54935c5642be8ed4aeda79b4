@@ -46,6 +46,30 @@
       "revId": "443007816650abca54935c5642be8ed4aeda79b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f4dd75_d82b5108",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-09T13:13:02Z",
+      "side": 1,
+      "message": "I am not sure if the code path is reachable, but in case of \"out \u003d n1*G\" (see comment of this function), `in` and `n2` would be zero.\nI will find a chance to clarify with you via GVC.",
+      "parentUuid": "6a728e0a_646947df",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "443007816650abca54935c5642be8ed4aeda79b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
