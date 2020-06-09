@@ -17,6 +17,8 @@
 #include "system.h"
 #include "util.h"
 
+#define LED_ONE_SEC (1000 / HOOK_TICK_INTERVAL_MS)
+
 #define BAT_LED_ON 1
 #define BAT_LED_OFF 0
 
@@ -30,7 +32,7 @@ const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 enum led_color {
 	LED_OFF = 0,
 	LED_AMBER,
-	LED_WHITE,
+	LED_BLUE,
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
 
@@ -39,13 +41,13 @@ static void side_led_set_color(int port, enum led_color color)
 	gpio_set_level(port ? GPIO_EC_CHG_LED_Y_C1 : GPIO_EC_CHG_LED_Y_C0,
 		(color == LED_AMBER) ? BAT_LED_ON : BAT_LED_OFF);
 	gpio_set_level(port ? GPIO_EC_CHG_LED_W_C1 : GPIO_EC_CHG_LED_W_C0,
-		(color == LED_WHITE) ? BAT_LED_ON : BAT_LED_OFF);
+		(color == LED_BLUE) ? BAT_LED_ON : BAT_LED_OFF);
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	brightness_range[EC_LED_COLOR_AMBER] = 1;
-	brightness_range[EC_LED_COLOR_WHITE] = 1;
+	brightness_range[EC_LED_COLOR_BLUE] = 1;
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
@@ -63,8 +65,8 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 		return EC_ERROR_PARAM1;
 	}
 
-	if (brightness[EC_LED_COLOR_WHITE] != 0)
-		side_led_set_color(port, LED_WHITE);
+	if (brightness[EC_LED_COLOR_BLUE] != 0)
+		side_led_set_color(port, LED_BLUE);
 	else if (brightness[EC_LED_COLOR_AMBER] != 0)
 		side_led_set_color(port, LED_AMBER);
 	else
@@ -90,40 +92,64 @@ static void set_active_port_color(enum led_color color)
 static void board_led_set_battery(void)
 {
 	static int battery_ticks;
+	int color = LED_OFF;
+	int period = 0;
 	uint32_t chflags = charge_get_flags();
 
 	battery_ticks++;
 
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
-		/* Always indicate when charging, even in suspend. */
+		/* Always indicate amber on when charging. */
 		set_active_port_color(LED_AMBER);
 		break;
 	case PWR_STATE_DISCHARGE:
-		if (led_auto_control_is_enabled(EC_LED_ID_RIGHT_LED)) {
-			if (charge_get_percent() <= 10)
-				side_led_set_color(0,
-				   (battery_ticks & 0x4) ? LED_WHITE : LED_OFF);
+		if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+			/* Discharging in S3: Amber 1 sec, off 3 sec */
+			period = (1 + 3) * LED_ONE_SEC;
+			battery_ticks = battery_ticks % period;
+			if (battery_ticks < 1 * LED_ONE_SEC)
+				color = LED_AMBER;
 			else
-				side_led_set_color(0, LED_OFF);
+				color = LED_OFF;
+		} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+			/* Discharging in S5: off */
+			color = LED_OFF;
+		} else if (chipset_in_state(CHIPSET_STATE_ON)) {
+			/* Discharging in S0: Blue on */
+			color = LED_BLUE;
 		}
+
+		if (led_auto_control_is_enabled(EC_LED_ID_RIGHT_LED))
+			side_led_set_color(0, color);
 
 		if (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED))
 			side_led_set_color(1, LED_OFF);
 		break;
 	case PWR_STATE_ERROR:
-		set_active_port_color((battery_ticks & 0x2) ?
-				LED_WHITE : LED_OFF);
+		/* Battery error: Amber 1 sec, off 1 sec */
+		period = (1 + 1) * LED_ONE_SEC;
+		battery_ticks = battery_ticks % period;
+		if (battery_ticks < 1 * LED_ONE_SEC)
+			set_active_port_color(LED_AMBER);
+		else
+			set_active_port_color(LED_OFF);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
-		set_active_port_color(LED_WHITE);
+		/* Full Charged: Blue on */
+		set_active_port_color(LED_BLUE);
 		break;
 	case PWR_STATE_IDLE: /* External power connected in IDLE */
-		if (chflags & CHARGE_FLAG_FORCE_IDLE)
-			set_active_port_color((battery_ticks & 0x4) ?
-					LED_AMBER : LED_OFF);
-		else
-			set_active_port_color(LED_WHITE);
+		if (chflags & CHARGE_FLAG_FORCE_IDLE) {
+			/* Factory mode: Blue 2 sec, Amber 2 sec */
+			period = (2 + 2) * LED_ONE_SEC;
+			battery_ticks = battery_ticks % period;
+			if (battery_ticks < 2 * LED_ONE_SEC)
+				set_active_port_color(LED_BLUE);
+			else
+				set_active_port_color(LED_AMBER);
+		} else
+			set_active_port_color(LED_BLUE);
 		break;
 	default:
 		/* Other states don't alter LED behavior */
@@ -153,7 +179,7 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 		return;
 	}
 
-	color = state ? LED_WHITE : LED_OFF;
+	color = state ? LED_BLUE : LED_OFF;
 
 	led_auto_control(EC_LED_ID_LEFT_LED, 0);
 	led_auto_control(EC_LED_ID_RIGHT_LED, 0);
