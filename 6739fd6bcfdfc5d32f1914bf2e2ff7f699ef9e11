@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2e6d212c_cdb3a975",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T23:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eead343_36720464",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "6739fd6bcfdfc5d32f1914bf2e2ff7f699ef9e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06325e3b_579cb0b3",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "6739fd6bcfdfc5d32f1914bf2e2ff7f699ef9e11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5939f00_cb7d83e6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T23:29:58Z",
+      "side": 1,
+      "message": "I made child CL to handle the TX_COMPLETE case since there were other places it could happen.\n\nI let just clearing AMS here (since this starts and ends AMS)",
+      "parentUuid": "06325e3b_579cb0b3",
+      "range": {
+        "startLine": 2601,
+        "startChar": 8,
+        "endLine": 2601,
+        "endChar": 61
+      },
+      "revId": "6739fd6bcfdfc5d32f1914bf2e2ff7f699ef9e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6ae522ed_1ba1cd5b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T23:29:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "489938a9_032c4266",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 58
+      },
+      "revId": "6739fd6bcfdfc5d32f1914bf2e2ff7f699ef9e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "236689b8_a88b74f3",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "6739fd6bcfdfc5d32f1914bf2e2ff7f699ef9e11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6e18aa_7607c981",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T23:29:58Z",
+      "side": 1,
+      "message": "Haha, wishful thinking. Done",
+      "parentUuid": "236689b8_a88b74f3",
+      "range": {
+        "startLine": 704,
+        "startChar": 37,
+        "endLine": 704,
+        "endChar": 57
+      },
+      "revId": "6739fd6bcfdfc5d32f1914bf2e2ff7f699ef9e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -137,6 +233,30 @@
       "revId": "6739fd6bcfdfc5d32f1914bf2e2ff7f699ef9e11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b5fbe4_9c3491a5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T23:29:58Z",
+      "side": 1,
+      "message": "Since the PD state machine transition happen on a single task, we don\u0027t need to worry about someone in the PD world looking at this state.\n\nI tried moving it and it looked uglier, so I left it (I was going to change it anyway). Feel free to push back if my justification doesn\u0027t hold water",
+      "parentUuid": "f6e70a2e_0c520458",
+      "range": {
+        "startLine": 1055,
+        "startChar": 2,
+        "endLine": 1055,
+        "endChar": 44
+      },
+      "revId": "6739fd6bcfdfc5d32f1914bf2e2ff7f699ef9e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

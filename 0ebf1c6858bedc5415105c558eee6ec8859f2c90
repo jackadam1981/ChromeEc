@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fd8cbba_78a2f07e",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T23:29:58Z",
+      "side": 1,
+      "message": "we shouldn\u0027t get getting pe_message_received since we already got pe_soft_reset",
+      "range": {
+        "startLine": 1107,
+        "startChar": 1,
+        "endLine": 1107,
+        "endChar": 8
+      },
+      "revId": "0ebf1c6858bedc5415105c558eee6ec8859f2c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b551bf74_3b357039",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T23:29:58Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "b1230ec3_3befa737",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 1
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e739615_46771c79",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 5
