@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93abc398_1c12a9aa",
+        "filename": "test/tpm_test/.pylintrc",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "it is the root directory for tpm_test, isn\u0027t it?",
+      "parentUuid": "cbd1a6e7_dd8342bd",
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ce0d960_5fcdbc89",
         "filename": "test/tpm_test/crypto_test.py",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41a0adc0_bfe42563",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "cros lint complains otherwise.",
+      "parentUuid": "4ce0d960_5fcdbc89",
+      "range": {
+        "startLine": 44,
+        "startChar": 24,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "ed86ff6a_6a8cf17a",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "ask cros lint :) it doesn\u0027t like short variable names. i tried to comply with it.",
+      "parentUuid": "8b497d83_ac2a610a",
+      "range": {
+        "startLine": 67,
+        "startChar": 6,
+        "endLine": 67,
+        "endChar": 13
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "997361e8_0c3075c8",
         "filename": "test/tpm_test/crypto_test.py",
         "patchSetId": 6
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "9400340e_d2cc5afa",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "cros lint",
+      "parentUuid": "997361e8_0c3075c8",
+      "range": {
+        "startLine": 93,
+        "startChar": 40,
+        "endLine": 93,
+        "endChar": 48
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b2b36c6_f9e038c6",
         "filename": "test/tpm_test/ecc_test.py",
         "patchSetId": 6
@@ -99,6 +189,30 @@
       "writtenOn": "2020-06-08T23:36:22Z",
       "side": 1,
       "message": "why do we add it to the list of modes if we don\u0027t support it?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc78e7d_61086395",
+        "filename": "test/tpm_test/ecc_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "cros lint don\u0027t like \u0027todo\u0027 comments  :)",
+      "parentUuid": "1b2b36c6_f9e038c6",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "b9153661_f65ccc48",
+        "filename": "test/tpm_test/ecc_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "Yes, it wasn\u0027t actually checked so just worked, but TPM_ALG_NULL is 0x10. Can split it to separate patch if it makes sense",
+      "parentUuid": "829c51e5_0c47943b",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2890de58_e541c596",
         "filename": "test/tpm_test/ecc_test.py",
         "patchSetId": 6
@@ -145,6 +283,30 @@
       "writtenOn": "2020-06-08T23:36:22Z",
       "side": 1,
       "message": "why did we drop \u0027#\u0027 here? if required by the styleguide, why did we keep it 2 lines above?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d5a5cf_dcfb37b2",
+        "filename": "test/tpm_test/ecc_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "i just reformated comments... will put it back",
+      "parentUuid": "2890de58_e541c596",
       "range": {
         "startLine": 78,
         "startChar": 0,
@@ -203,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "08914906_afb10d17",
+        "filename": "test/tpm_test/hash_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "ok, i\u0027ll split it",
+      "parentUuid": "7b24d48d_021cba4a",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 51
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74da4f77_52f4c173",
         "filename": "test/tpm_test/hkdf_test.py",
         "patchSetId": 6
@@ -214,6 +400,30 @@
       "writtenOn": "2020-06-08T23:36:22Z",
       "side": 1,
       "message": "is it required by the styleguide?",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c162ad5f_1d7e7bc3",
+        "filename": "test/tpm_test/hkdf_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "yes...",
+      "parentUuid": "74da4f77_52f4c173",
       "range": {
         "startLine": 51,
         "startChar": 3,
@@ -249,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "ebc7d692_37375832",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "it is rename in newer version of RSA package used by Py3",
+      "parentUuid": "e097c08f_d106a03a",
+      "range": {
+        "startLine": 540,
+        "startChar": 19,
+        "endLine": 540,
+        "endChar": 32
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "759f50ce_9320a227",
         "filename": "test/tpm_test/rsa_test.py",
         "patchSetId": 6
@@ -272,6 +506,30 @@
     },
     {
       "key": {
+        "uuid": "e3f65897_8018f033",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "this test checks d value, while others don\u0027t and its execution takes time - having it first helps to find issues earlier, while others just have to produce something valid.",
+      "parentUuid": "759f50ce_9320a227",
+      "range": {
+        "startLine": 588,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 2
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cbb93ae_2dcd6d52",
         "filename": "test/tpm_test/rsa_test.py",
         "patchSetId": 6
@@ -292,6 +550,30 @@
       "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6c082c_2bd7bedb",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "it\u0027s in test vector, but unused",
+      "parentUuid": "4cbb93ae_2dcd6d52",
+      "range": {
+        "startLine": 691,
+        "startChar": 13,
+        "endLine": 691,
+        "endChar": 16
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -341,6 +623,30 @@
     },
     {
       "key": {
+        "uuid": "d65c2f19_125d174d",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "cros lint complains",
+      "parentUuid": "0043ea0d_ab8cee78",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 148,
+        "endChar": 14
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0ed4d76_8a7ad976",
         "filename": "test/tpm_test/trng_test.py",
         "patchSetId": 6
@@ -361,6 +667,30 @@
       "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a60ae14_2b0cef1d",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 1,
+      "message": "cros lint compliance issue",
+      "parentUuid": "e0ed4d76_8a7ad976",
+      "range": {
+        "startLine": 42,
+        "startChar": 41,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

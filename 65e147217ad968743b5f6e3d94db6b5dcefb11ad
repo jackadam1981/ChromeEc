@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b730ce38_d684b29c",
+        "filename": "test/tpm_test/drbg_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 0,
+      "message": "yes, it was error here (from copy/paste). since i didn\u0027t have exceptions, it never executed. found it later",
+      "parentUuid": "32e1023e_a953e023",
+      "range": {
+        "startLine": 90,
+        "startChar": 40,
+        "endLine": 90,
+        "endChar": 56
+      },
+      "revId": "65e147217ad968743b5f6e3d94db6b5dcefb11ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d85c341_bcf847f2",
         "filename": "test/tpm_test/rsa_test.py",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-08T23:36:22Z",
       "side": 0,
       "message": "is this the exponent parameter we don\u0027t actually use?\nI\u0027d separate this change into a separate CL, where it can be separately discussed if e should be removed everywhere as we have no way to set it, or it shall actually be still handled by _keygen_cmd even if iun the form `assert(e \u003d\u003d 65537)`.\nNote that _KEYGEN_INPUTS still contain e, and _keygen_tests still gets it from there (just doesn\u0027t use anymore).",
+      "range": {
+        "startLine": 140,
+        "startChar": 25,
+        "endLine": 140,
+        "endChar": 28
+      },
+      "revId": "65e147217ad968743b5f6e3d94db6b5dcefb11ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a49cfec_14d9d82a",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-09T00:28:56Z",
+      "side": 0,
+      "message": "it is unused, exponent is constant for our RSA. it\u0027s not transmitted to TPM.",
+      "parentUuid": "5d85c341_bcf847f2",
       "range": {
         "startLine": 140,
         "startChar": 25,
