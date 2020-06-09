@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c464ce2_d12106e3",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-09T21:42:38Z",
+      "side": 1,
+      "message": "Nit: all lower cases",
+      "range": {
+        "startLine": 92,
+        "startChar": 16,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "eff61b1bc182d23c2bd0583a8a4dd87060af3479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85e14eb1_c9fc4f75",
+        "filename": "board/servo_v4p1/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-09T21:42:38Z",
+      "side": 1,
+      "message": "Nit: space",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "eff61b1bc182d23c2bd0583a8a4dd87060af3479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b087e26_11e730be",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-09T21:42:38Z",
+      "side": 1,
+      "message": "Why I checked the schematic having different names for these I/Os? like BIT-2 is a test point TCA_GPIO_P22?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 39
+      },
+      "revId": "eff61b1bc182d23c2bd0583a8a4dd87060af3479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef89ca1c_5bde8269",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-09T21:42:38Z",
+      "side": 1,
+      "message": "Return value? tca6416a_write_bit() does return it.",
+      "range": {
+        "startLine": 103,
+        "startChar": 7,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "eff61b1bc182d23c2bd0583a8a4dd87060af3479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd257f2_0fedbe9c",
+        "filename": "board/servo_v4p1/ioexpanders.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-09T21:42:38Z",
+      "side": 1,
+      "message": "What are these inputs? Why not return them together?",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 0
+      },
+      "revId": "eff61b1bc182d23c2bd0583a8a4dd87060af3479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
