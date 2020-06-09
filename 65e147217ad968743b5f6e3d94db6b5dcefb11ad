@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4eba76f4_fddb76ff",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-09T21:36:47Z",
+      "side": 0,
+      "message": "why did this have to change",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "65e147217ad968743b5f6e3d94db6b5dcefb11ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd838f72_e9e97db1",
+        "filename": "test/tpm_test/genvectors.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-09T21:36:47Z",
+      "side": 0,
+      "message": "you shouldn\u0027t be dropping this comma until transition to Python3",
+      "range": {
+        "startLine": 75,
+        "startChar": 50,
+        "endLine": 75,
+        "endChar": 52
+      },
+      "revId": "65e147217ad968743b5f6e3d94db6b5dcefb11ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
