@@ -229,12 +229,6 @@
 #error "Must define a VARIANT_DEDEDE_EC!"
 #endif
 
-enum chg_id {
-	CHARGER_PRIMARY,
-	CHARGER_SECONDARY,
-	CHARGER_NUM,
-};
-
 /* Interrupt handler for signals that are used to generate ALL_SYS_PGOOD. */
 void baseboard_all_sys_pgood_interrupt(enum gpio_signal signal);
 

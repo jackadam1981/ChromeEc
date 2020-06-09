@@ -78,6 +78,12 @@
 #include "gpio_signal.h"
 #include "registers.h"
 
+enum chg_id {
+	CHARGER_PRIMARY,
+	CHARGER_SECONDARY,
+	CHARGER_NUM,
+};
+
 enum pwm_channel {
 	PWM_CH_KBLIGHT,
 	PWM_CH_LED_RED,
