@@ -252,6 +252,17 @@ void vboot_main(void)
 		return;
 	}
 
+	if (IS_ENABLED(CONFIG_EXTPOWER_GPIO)
+			&& !gpio_get_level(GPIO_AC_PRESENT)) {
+		/*
+		 * AC presence infers the wake-up source is AC. This is because
+		 * EC doesn't hibernate from G3 when AC is present. Since AC
+		 * isn't present, we woke up by power button or lid open. We
+		 * clear AP_IDLE to boot the AP.
+		 */
+		system_clear_reset_flags(EC_RESET_FLAG_AP_IDLE);
+	}
+
 	if (is_manual_recovery() ||
 	    (system_get_reset_flags() & EC_RESET_FLAG_STAY_IN_RO)) {
 		if (is_manual_recovery())
