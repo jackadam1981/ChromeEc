@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37a2a71c_52447db9",
+        "filename": "baseboard/grunt/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T14:26:40Z",
+      "side": 1,
+      "message": "Prime and not SOP?  Same question for other board changes",
+      "range": {
+        "startLine": 99,
+        "startChar": 30,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "584d4a147adb566b79835894099b11268c0b4f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15ab5ed0_6c117d39",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T14:26:40Z",
+      "side": 1,
+      "message": "We\u0027ll need a TODO to change this for v2 later once we generically support AP mode entry",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "584d4a147adb566b79835894099b11268c0b4f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abf451c1_3dcdf69c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1875,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T14:26:40Z",
+      "side": 1,
+      "message": "Did you find these were necessary?  I thought the PE would clear information on startup.  Do we hit problems with things still thinking we\u0027re in alternate modes when we\u0027re unattached?",
+      "range": {
+        "startLine": 1873,
+        "startChar": 0,
+        "endLine": 1875,
+        "endChar": 57
+      },
+      "revId": "584d4a147adb566b79835894099b11268c0b4f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
