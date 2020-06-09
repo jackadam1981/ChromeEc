@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dd4f86b_83dd8b5c",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-09T20:43:31Z",
+      "side": 1,
+      "message": "Could you expand on the reasoning for this? Is SLP_S3_L a requirement for ALL_SYS_PWRGD?",
+      "revId": "faaa1cd90f4cbe15d75b1bc11d1ecdb3a9b5533d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
