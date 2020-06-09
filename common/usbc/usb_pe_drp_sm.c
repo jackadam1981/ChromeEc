@@ -2089,6 +2089,12 @@ static void pe_src_disabled_entry(int port)
 	 */
 }
 
+static void pe_src_disabled_exit(int port)
+{
+	/* Reset the HardResetCounter to zero */
+	pe[port].hard_reset_counter = 0;
+}
+
 /**
  * PE_SRC_Capability_Response
  */
@@ -5722,6 +5728,7 @@ static const struct usb_state pe_states[] = {
 	},
 	[PE_SRC_DISABLED] = {
 		.entry = pe_src_disabled_entry,
+		.exit  = pe_src_disabled_exit,
 	},
 	[PE_SRC_CAPABILITY_RESPONSE] = {
 		.entry = pe_src_capability_response_entry,
