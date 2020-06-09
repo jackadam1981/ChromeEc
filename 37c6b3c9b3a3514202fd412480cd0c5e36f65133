@@ -94,6 +94,30 @@
       "revId": "37c6b3c9b3a3514202fd412480cd0c5e36f65133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0381452_02f382bc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-09T18:11:31Z",
+      "side": 1,
+      "message": "\u003e Would it be better to detach within the task though, rather than waiting for hooks to run?\n\nhook_notify() runs in the current task, not in TASK_ID_HOOKS, I believe.",
+      "parentUuid": "9a45a635_e728e6f2",
+      "range": {
+        "startLine": 2093,
+        "startChar": 1,
+        "endLine": 2095,
+        "endChar": 33
+      },
+      "revId": "37c6b3c9b3a3514202fd412480cd0c5e36f65133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
