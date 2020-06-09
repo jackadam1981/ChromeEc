@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73c396e4_9f5c3692",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "what is drp used for?",
+      "range": {
+        "startLine": 311,
+        "startChar": 9,
+        "endLine": 311,
+        "endChar": 19
+      },
+      "revId": "c4c1434358236944c24c8ccb614d776b1d4a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3d92385_d0313303",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "is there an enum for this?",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 8
+      },
+      "revId": "c4c1434358236944c24c8ccb614d776b1d4a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f95cfc0_a878b93d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "shoudl use enum type",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 8
+      },
+      "revId": "c4c1434358236944c24c8ccb614d776b1d4a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6845139_095c0094",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "needs _rp suffix",
+      "range": {
+        "startLine": 314,
+        "startChar": 9,
+        "endLine": 314,
+        "endChar": 29
+      },
+      "revId": "c4c1434358236944c24c8ccb614d776b1d4a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb53a187_51542795",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "should use enum type (and above as well)",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 315,
+        "endChar": 8
+      },
+      "revId": "c4c1434358236944c24c8ccb614d776b1d4a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42ae6742_5c1e1ac8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "we shouldn\u0027t need special code there, The typec_ interface should be the same whether TCPC_UPDATE_CC is defined or not. The inner workings of typec_update_cc should be different based on if TCPC_UPDATE_CC is defined",
+      "range": {
+        "startLine": 1054,
+        "startChar": 2,
+        "endLine": 1057,
+        "endChar": 34
+      },
+      "revId": "c4c1434358236944c24c8ccb614d776b1d4a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71c985f_e0d4e91e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "same, our interface within this file should be the same through out. Hide all of this forking logic within the new typec_* functions",
+      "range": {
+        "startLine": 1185,
+        "startChar": 1,
+        "endLine": 1192,
+        "endChar": 2
+      },
+      "revId": "c4c1434358236944c24c8ccb614d776b1d4a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcbbee2f_e643e0b3",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "we need to strip off DTS, right?",
+      "range": {
+        "startLine": 472,
+        "startChar": 8,
+        "endLine": 472,
+        "endChar": 32
+      },
+      "revId": "c4c1434358236944c24c8ccb614d776b1d4a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bda8bba4_c979f92b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "we shouldn\u0027t be calling into typec from tcpci layer; we want to avoid dependency inversion\n\ncould we instead call the new tcpci_tcpm_update_cc function directly?",
+      "range": {
+        "startLine": 492,
+        "startChar": 2,
+        "endLine": 494,
+        "endChar": 43
+      },
+      "revId": "c4c1434358236944c24c8ccb614d776b1d4a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38737852_f0c135fd",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "shouldn\u0027t need this call, if the tcpci_set_role_ctrl is already handling new code path correctly",
+      "range": {
+        "startLine": 517,
+        "startChar": 1,
+        "endLine": 521,
+        "endChar": 9
+      },
+      "revId": "c4c1434358236944c24c8ccb614d776b1d4a622c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

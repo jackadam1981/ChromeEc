@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "9bb50361_fcd8bdb8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-09T20:51:28Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to set the collision rp here since the prl layer should take care of it",
+      "range": {
+        "startLine": 1178,
+        "startChar": 2,
+        "endLine": 1178,
+        "endChar": 50
+      },
+      "revId": "e6be19619653c05de0600f954d32652bfb756000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e59b8153_8db83691",
         "filename": "include/config.h",
         "patchSetId": 5
