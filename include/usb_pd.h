@@ -648,6 +648,7 @@ struct pd_policy {
 
 /* Other Vendor IDs */
 #define USB_VID_APPLE  0x05ac
+#define USB_VID_HP 0x03f0
 
 /* Timeout for message receive in microseconds */
 #define USB_PD_RX_TMOUT_US 1800
