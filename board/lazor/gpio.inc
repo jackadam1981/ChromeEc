@@ -95,9 +95,9 @@ GPIO(USB_A0_OC_ODL,         PIN(D, 1), GPIO_ODR_HIGH)
 
 /* LEDs */
 GPIO(EC_CHG_LED_Y_C0,       PIN(6, 0), GPIO_OUT_LOW)   /* NC in the schematic */
-GPIO(EC_CHG_LED_W_C0,       PIN(C, 0), GPIO_OUT_LOW)   /* NC in the schematic */
+GPIO(EC_CHG_LED_B_C0,       PIN(C, 0), GPIO_OUT_LOW)   /* NC in the schematic */
 GPIO(EC_CHG_LED_Y_C1,       PIN(C, 3), GPIO_OUT_LOW)
-GPIO(EC_CHG_LED_W_C1,       PIN(C, 4), GPIO_OUT_LOW)
+GPIO(EC_CHG_LED_B_C1,       PIN(C, 4), GPIO_OUT_LOW)
 
 /* PWM */
 GPIO(KB_BL_PWM,             PIN(8, 0), GPIO_INPUT)     /* PWM3 */
