@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a880815c_155c609e",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-09T20:11:15Z",
+      "side": 1,
+      "message": "In principle, no. This response had nothing to do with what we were doing.\n\nOTOH, an ACK for a command other than the one we sent indicates a misbehaving partner. An SOP\u0027 or SOP\u0027\u0027 ACK would also be misbehavior but by a different partner, which interrupted us with garbage. However, PE_VDM_REQUEST should have kept such an ACK from reaching this code. It\u0027s probably safest to bail out if this happens.",
+      "parentUuid": "cc2f5a2e_0517bf25",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "a93a84d0cdfe29d073025f818976d450bfa21788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "276c1a5d_567dd9f8",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "a93a84d0cdfe29d073025f818976d450bfa21788",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d50bcc3_a5809129",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 4876,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-09T20:11:15Z",
+      "side": 1,
+      "message": "Yeah, I think this was a misapplied fixup. It shouldn\u0027t be needed here. (Arguably, the original check for SOP\u0027 is also superfluous.)",
+      "parentUuid": "276c1a5d_567dd9f8",
+      "range": {
+        "startLine": 4876,
+        "startChar": 7,
+        "endLine": 4876,
+        "endChar": 30
+      },
+      "revId": "a93a84d0cdfe29d073025f818976d450bfa21788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
