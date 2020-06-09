@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5ca6781e_c6ad3308",
+        "filename": "test/tpm_test/.pylintrc",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-09T00:47:17Z",
+      "side": 1,
+      "message": "but cros lint should be ran from the git tree root directory.",
+      "parentUuid": "93abc398_1c12a9aa",
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ce0d960_5fcdbc89",
         "filename": "test/tpm_test/crypto_test.py",
         "patchSetId": 6
