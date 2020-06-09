@@ -113,6 +113,11 @@ void pe_message_sent(int port)
 	/* No implementation needed by this policy engine */
 }
 
+void pe_handle_detach(const int port)
+{
+	/* No implementation needed by this policy engine */
+}
+
 static void pe_request_run(const int port)
 {
 	uint32_t *payload = (uint32_t *)tx_emsg[port].buf;

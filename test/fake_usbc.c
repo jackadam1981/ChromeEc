@@ -136,6 +136,10 @@ __overridable void pe_invalidate_explicit_contract(int port)
 {
 }
 
+__overridable void pe_handle_detach(const int port)
+{
+}
+
 __overridable enum pd_dual_role_states pd_get_dual_role(int port)
 {
 	return PD_DRP_TOGGLE_ON;

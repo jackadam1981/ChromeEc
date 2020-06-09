@@ -1740,6 +1740,9 @@ static void tc_unattached_snk_entry(const int port)
 		CLR_ALL_BUT_LPM_FLAGS(port);
 		tc_enable_pd(port, 0);
 	}
+
+	/* Let PE know TC is unattached */
+	pe_handle_detach(port);
 }
 
 static void tc_unattached_snk_run(const int port)
@@ -2482,6 +2485,9 @@ static void tc_unattached_src_entry(const int port)
 		tc_enable_pd(port, 0);
 	}
 
+	/* Let PE know TC is unattached */
+	pe_handle_detach(port);
+
 	tc[port].next_role_swap = get_time().val + PD_T_DRP_SRC;
 }
 
@@ -3195,6 +3201,9 @@ static void tc_ct_unattached_snk_entry(int port)
 	 * re-enable it
 	 */
 	tc_enable_pd(port, 0);
+
+	/* Let PE know TC is unattached */
+	pe_handle_detach(port);
 
 	tc[port].timeout = get_time().val + PD_POWER_SUPPLY_TURN_ON_DELAY;
 }

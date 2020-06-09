@@ -1037,6 +1037,15 @@ void pe_exit_dp_mode(int port)
 	}
 }
 
+void pe_handle_detach(const int port)
+{
+	/*
+	 * PD 3.0 Section 8.3.3.3.8
+	 * Note: The HardResetCounter is reset on a power cycle or Detach.
+	 */
+	pe[port].hard_reset_counter = 0;
+}
+
 /*
  * Private functions
  */

@@ -178,5 +178,13 @@ void pe_set_sysjump(void);
  * @param port USB-C port number
  */
 void pe_invalidate_explicit_contract(int port);
+
+/*
+ * Informs the Policy Engine that the partner is leaving an Attached
+ * state.
+ *
+ * @param port USB-C port number
+ */
+void pe_handle_detach(const int port);
 #endif /* __CROS_EC_USB_PE_H */
 
