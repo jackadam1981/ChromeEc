@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2db20257_a644f0f3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2489,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T19:21:08Z",
+      "side": 1,
+      "message": "Put in that first \"if\" clause, by the hook you could also be using ;) \n\nOtherwise we\u0027ll call this all the time on systems that manually toggle",
+      "range": {
+        "startLine": 2489,
+        "startChar": 1,
+        "endLine": 2489,
+        "endChar": 17
+      },
+      "revId": "5a8526b6275be151be69161b7f658c9d09797756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
