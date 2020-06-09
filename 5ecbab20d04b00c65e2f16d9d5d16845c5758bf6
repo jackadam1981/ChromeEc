@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fec40ed1_b7b6e3f5",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-09T21:10:31Z",
+      "side": 1,
+      "message": "__overridable",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 21
+      },
+      "revId": "5ecbab20d04b00c65e2f16d9d5d16845c5758bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acceeea0_79f49840",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-09T21:10:31Z",
+      "side": 1,
+      "message": "rewrite as: \"int enable \u003d chipset_in_or_transitioning_to_state(CHIPSET_STATE_ON) \u0026\u0026 check_hdmi_hpd_status();\"",
+      "range": {
+        "startLine": 381,
+        "startChar": 2,
+        "endLine": 382,
+        "endChar": 29
+      },
+      "revId": "5ecbab20d04b00c65e2f16d9d5d16845c5758bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfcd33c4_56b9f4e0",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-09T21:10:31Z",
+      "side": 1,
+      "message": "add __overridable",
+      "revId": "5ecbab20d04b00c65e2f16d9d5d16845c5758bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a5ac54_df8cd8ec",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-09T21:10:31Z",
+      "side": 1,
+      "message": "add __override",
+      "revId": "5ecbab20d04b00c65e2f16d9d5d16845c5758bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
