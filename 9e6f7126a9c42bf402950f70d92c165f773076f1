@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cfcc480_15d1a510",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-09T01:41:45Z",
+      "side": 1,
+      "message": "I think the variant name should be NPCX797WC to reflect the actual\npart number used. I think the other variant names are wrong (using M instead of 9, and that\nseems to be a mistake), but not necessary to fix those names in this CL.",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 36
+      },
+      "revId": "9e6f7126a9c42bf402950f70d92c165f773076f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9acf5336_b97bff40",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-09T01:41:45Z",
+      "side": 1,
+      "message": "Maybe move these 4 lines to the end of the other #defines so that the other #defines have the same order as the other variants.",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 12
+      },
+      "revId": "9e6f7126a9c42bf402950f70d92c165f773076f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
