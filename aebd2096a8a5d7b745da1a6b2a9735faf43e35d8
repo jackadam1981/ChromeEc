@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b018185_80fd242c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T22:25:55Z",
+      "side": 1,
+      "message": "Also removable?",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 2
+      },
+      "revId": "aebd2096a8a5d7b745da1a6b2a9735faf43e35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ebf4571_3a40275c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4166,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T22:25:55Z",
+      "side": 1,
+      "message": "This should work for the SVID and MODE discovery states, though DiscoverIdentity isn\u0027t currently using tx_type so I imagine it\u0027ll always print cable",
+      "range": {
+        "startLine": 4165,
+        "startChar": 4,
+        "endLine": 4166,
+        "endChar": 22
+      },
+      "revId": "aebd2096a8a5d7b745da1a6b2a9735faf43e35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
