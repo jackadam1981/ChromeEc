@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c3dd760_fcf18cce",
+        "filename": "board/vilboz/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-09T20:19:24Z",
+      "side": 1,
+      "message": "Remove these as well? (in a later CL is fine, up to you)",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 108
+      },
+      "revId": "2b451dbd890e644e517048653ccde7b59926aa2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
