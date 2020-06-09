@@ -1920,9 +1920,6 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 			prl_rx[port].msg_id[i] = -1;
 		}
 
-		/* Inform Policy Engine of Soft Reset */
-		pe_got_soft_reset(port);
-
 		/* Soft Reset occurred */
 		set_state_prl_tx(port, PRL_TX_PHY_LAYER_RESET);
 
@@ -1932,6 +1929,13 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 			set_state_tch(port,
 				TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
 		}
+
+		/*
+		 * Inform Policy Engine of Soft Reset. Note perform this after
+		 * performing the protocol layer reset, otherwise we will lose
+		 * the PE's outgoing ACCEPT message to the soft reset.
+		 */
+		pe_got_soft_reset(port);
 	}
 
 	/*
