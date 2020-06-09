@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b03d763_9b17e844",
+        "filename": "baseboard/grunt/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T22:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37a2a71c_52447db9",
+      "range": {
+        "startLine": 99,
+        "startChar": 30,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "584d4a147adb566b79835894099b11268c0b4f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15ab5ed0_6c117d39",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 4
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "I actually found them to be a good way to unearth bugs in my data structures. 😊\n\nI don\u0027t think they are necessary to support anything I\u0027ve done so far, but I thought they would be necessary after we add TBT cable plug mode entry, and I thought that getting generic stuff out of the way for that was in the spirit of this CL.",
       "parentUuid": "abf451c1_3dcdf69c",
+      "range": {
+        "startLine": 1873,
+        "startChar": 0,
+        "endLine": 1875,
+        "endChar": 57
+      },
+      "revId": "584d4a147adb566b79835894099b11268c0b4f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4852f3_1be55223",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1875,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T22:19:53Z",
+      "side": 1,
+      "message": "Mostly I\u0027m wondering if anything is using our data structures post-disconnect.  Denis is setting up a detach hook in the PE though and maybe I\u0027ll add a sticky note TODO to move the discovery reset there so we don\u0027t have it several times over in the TC.",
+      "parentUuid": "b4451c31_198f2ca3",
       "range": {
         "startLine": 1873,
         "startChar": 0,
