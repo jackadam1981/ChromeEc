@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5cc65e9_362e3dbe",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-09T02:38:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5cfcc480_15d1a510",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 36
+      },
+      "revId": "9e6f7126a9c42bf402950f70d92c165f773076f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9acf5336_b97bff40",
         "filename": "chip/npcx/config_chip-npcx7.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "9e6f7126a9c42bf402950f70d92c165f773076f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ac26a5_1ccacd33",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-09T02:38:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9acf5336_b97bff40",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 12
+      },
+      "revId": "9e6f7126a9c42bf402950f70d92c165f773076f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
