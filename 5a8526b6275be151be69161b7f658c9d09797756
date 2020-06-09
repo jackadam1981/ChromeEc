@@ -22,6 +22,30 @@
       "revId": "5a8526b6275be151be69161b7f658c9d09797756",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66e1b91a_18887677",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2489,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-09T19:58:13Z",
+      "side": 1,
+      "message": "going to run with using the hook",
+      "parentUuid": "2db20257_a644f0f3",
+      "range": {
+        "startLine": 2489,
+        "startChar": 1,
+        "endLine": 2489,
+        "endChar": 17
+      },
+      "revId": "5a8526b6275be151be69161b7f658c9d09797756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
