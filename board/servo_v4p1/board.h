@@ -190,6 +190,7 @@
 #undef CONFIG_USB_PD_PULLUP
 #define CONFIG_USB_PD_PULLUP TYPEC_RP_USB
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
+#define CONFIG_USB_PD_ALT_MODE
 
 /* Don't automatically change roles */
 #undef CONFIG_USB_PD_INITIAL_DRP_STATE
@@ -313,6 +314,13 @@ int pd_set_rp_rd(int port, int cc_pull, int rp_value);
  * @return HW ID version
  */
 int board_get_version(void);
+
+/**
+ * Enable or disable external HPD detection
+ *
+ * @param enable Enable external HPD detection if true, otherwise disable
+ */
+void ext_hpd_detection_enable(int enable);
 
 /**
  * Enable or disable CCD
