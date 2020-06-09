@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "922c1a27_15fbec7c",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-09T20:25:57Z",
+      "side": 1,
+      "message": "nit: delete \"USB-A\"",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 16
+      },
+      "revId": "9f50790fdbd668df766009cfd7fe6da3671fa04b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1244e7b_9b16e2ff",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-09T20:25:57Z",
+      "side": 1,
+      "message": "nit: retimers_on",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 27
+      },
+      "revId": "9f50790fdbd668df766009cfd7fe6da3671fa04b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "629ba279_06f65761",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-09T20:25:57Z",
+      "side": 1,
+      "message": "nit: retimers_off",
+      "range": {
+        "startLine": 171,
+        "startChar": 12,
+        "endLine": 171,
+        "endChar": 28
+      },
+      "revId": "9f50790fdbd668df766009cfd7fe6da3671fa04b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
