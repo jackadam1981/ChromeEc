@@ -16,4 +16,5 @@ ECIES = 6
 DRBG_TEST = 50
 # The same exception class used by all tpmtest modules.
 class TpmTestError(Exception):
+  """ TpmTestError exception class """
   pass

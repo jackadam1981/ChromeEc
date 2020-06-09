@@ -29,8 +29,7 @@ def upgrade(tpm):
     Raises:
       subcmd.TpmTestError: In case of various test problems
   """
-  cmd  = struct.pack('>I', 0)  # address
-  cmd += struct.pack('>I', 0)  # data (a noop)
+  cmd = struct.pack('>II', 0, 0)  # address, data (a noop)
   wrapped_response = tpm.command(tpm.wrap_ext_command(subcmd.FW_UPGRADE, cmd))
   base_str = tpm.unwrap_ext_response(subcmd.FW_UPGRADE, wrapped_response)
   if len(base_str) < 4:
@@ -51,11 +50,11 @@ def upgrade(tpm):
   while transferred < len(data):
     tx_size = min(block_size, len(data) - transferred)
     chunk = data[transferred:transferred+tx_size]
-    cmd  = struct.pack('>I', base)  # address
-    h = hashlib.sha1()
-    h.update(cmd)
-    h.update(chunk)
-    cmd = h.digest()[0:4] + cmd + chunk
+    cmd = struct.pack('>I', base)  # address
+    hash_block = hashlib.sha1()
+    hash_block.update(cmd)
+    hash_block.update(chunk)
+    cmd = hash_block.digest()[0:4] + cmd + chunk
     resp = tpm.unwrap_ext_response(subcmd.FW_UPGRADE,
                                    tpm.command(tpm.wrap_ext_command(
                                      subcmd.FW_UPGRADE, cmd)))

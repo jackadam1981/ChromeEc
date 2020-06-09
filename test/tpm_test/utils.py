@@ -8,9 +8,9 @@
 import sys
 
 if hasattr(sys.stdout, 'isatty') and sys.stdout.isatty():
-  cursor_back_cmd = '\x1b[1D'  # Move one space to the left.
+  CURSOR_BACK_CMD = '\x1b[1D'  # Move one space to the left.
 else:
-  cursor_back_cmd = ''
+  CURSOR_BACK_CMD = ''
 
 
 def cursor_back():
@@ -21,7 +21,7 @@ def cursor_back():
   spinning.
 
   """
-  return cursor_back_cmd
+  return CURSOR_BACK_CMD
 
 
 def hex_dump(binstr):

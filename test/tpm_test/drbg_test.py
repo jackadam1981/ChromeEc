@@ -24,7 +24,7 @@ DRBG_INIT = 0
 DRBG_RESEED = 1
 DRBG_GENERATE = 2
 
-test_inputs = (
+TEST_INPUTS = (
   (DRBG_INIT,
    ('C40894D0C37712140924115BF8A3110C7258532365BB598F81B127A5E4CB8EB0',
     'FBB1EDAF92D0C2699F5C0A7418D308B09AC679FFBB0D8918C8E62D35091DD2B9',
@@ -52,8 +52,8 @@ test_inputs = (
 )
 
 _DRBG_INIT_FORMAT = '{op:c}{p0l:s}{p0}{p1l:s}{p1}{p2l:s}{p2}'
-def _drbg_init_cmd(op, entropy, nonce, perso):
-  return _DRBG_INIT_FORMAT.format(op=op,
+def _drbg_init_cmd(operation, entropy, nonce, perso):
+  return _DRBG_INIT_FORMAT.format(op=operation,
                                   p0l=pack('>H', len(entropy)), p0=entropy,
                                   p1l=pack('>H', len(nonce)), p1=nonce,
                                   p2l=pack('>H', len(perso)), p2=perso)
@@ -79,7 +79,7 @@ def drbg_test(tpm):
     subcmd.TpmTestError: on unexpected target responses
   """
 
-  for test in test_inputs:
+  for test in TEST_INPUTS:
     drbg_op, drbg_params = test
     if drbg_op == DRBG_INIT:
       entropy, nonce, perso = drbg_params
@@ -87,14 +87,14 @@ def drbg_test(tpm):
       response = tpm.command(tpm.wrap_ext_command(subcmd.DRBG_TEST, cmd))
       if response != EMPTY_DRBG_RESPONSE:
         raise subcmd.TpmTestError("Unexpected response to DRBG_INIT: %s" %
-                        (utils.hex_dump(wrapped_response)))
+                                  (utils.hex_dump(response)))
     elif drbg_op == DRBG_RESEED:
       entropy, inp1, inp2 = drbg_params
       cmd = _drbg_init_cmd(drbg_op, a2b(entropy), a2b(inp1), a2b(inp2))
       response = tpm.command(tpm.wrap_ext_command(subcmd.DRBG_TEST, cmd))
       if response != EMPTY_DRBG_RESPONSE:
         raise subcmd.TpmTestError("Unexpected response to DRBG_RESEED: %s" %
-                        (utils.hex_dump(wrapped_response)))
+                                  (utils.hex_dump(response)))
     elif drbg_op == DRBG_GENERATE:
       inp, expected = drbg_params
       cmd = _drbg_gen_cmd(a2b(inp), a2b(expected))
@@ -102,7 +102,7 @@ def drbg_test(tpm):
       if expected != '':
         result = response[12:]
         if a2b(expected) != result:
-           raise subcmd.TpmTestError('error:\nexpected %s\nreceived %s' %
-                                     (utils.hex_dump(a2b(expected)),
-                                      utils.hex_dump(result)))
+          raise subcmd.TpmTestError('error:\nexpected %s\nreceived %s' %
+                                    (utils.hex_dump(a2b(expected)),
+                                     utils.hex_dump(result)))
   print('%sSUCCESS: %s' % (utils.cursor_back(), 'DRBG test'))
