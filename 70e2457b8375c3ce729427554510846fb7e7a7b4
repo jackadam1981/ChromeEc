@@ -94,6 +94,30 @@
       "revId": "70e2457b8375c3ce729427554510846fb7e7a7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd15210_d2e90da8",
+        "filename": "common/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-09T02:15:28Z",
+      "side": 1,
+      "message": "Is there some way I could define __stdlib_compat in common.h that would have the same effect as this \"#if 0\" that removes memcpy from libec.a? I\u0027m not sure how to do that, can you point me in the right direction?",
+      "parentUuid": "cc130bca_d9e935f9",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 74
+      },
+      "revId": "70e2457b8375c3ce729427554510846fb7e7a7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
