@@ -22,6 +22,7 @@ test-list-y=\
        pingpong \
        rollback \
        rollback_entropy \
+       rsa \
        rtc \
        scratchpad \
        sha256 \
