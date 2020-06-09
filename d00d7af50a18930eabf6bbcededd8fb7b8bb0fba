@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "cb334ac3_cf811f47",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 56
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-09T04:20:47Z",
+      "side": 1,
+      "message": "I don\u0027t really like mixing two similar customize point in the same place. also, boards like asurada have a dependency to PORT_TO_HPD even it\u0027s not going to be used.\n\nhow about adding a new CONFIG_USB_PD_DP_HPD_CUSTOM, such that:\n\nCONFIG_USB_PD_DP_HPD_GPIO -\u003e non-overridable svdm_set_hpd_gpio / svdm_get_hpd_gpio implemented here, board can define PORT_TO_HPD to overwrite the pin name.\nCONFIG_USB_PD_DP_HPD_CUSTOM -\u003e svdm_set_hpd_gpio / svdm_get_hpd_gpio implemented in board code",
+      "revId": "d00d7af50a18930eabf6bbcededd8fb7b8bb0fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ede79d4b_013aac45",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 56
