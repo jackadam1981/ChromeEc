@@ -22,6 +22,30 @@
       "revId": "443007816650abca54935c5642be8ed4aeda79b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a728e0a_646947df",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-09T01:40:54Z",
+      "side": 1,
+      "message": "actually, shall we check for in !\u003d NULL before calling append_zeros_to_p256_point(), DCRYPTO_p256_point_mul() that accesses \u0027in\u0027 fields. I thought we check it already outside of this func and guarantee that if we pass TPM_ECC_NIST_P256, `in` !\u003d NULL. but I see if (in !\u003d NULL \u0026\u0026 !_cpri__EccIsPointOnCurve(curve_id, in)) on line 115.",
+      "parentUuid": "9fe81616_efd3977b",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "443007816650abca54935c5642be8ed4aeda79b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
