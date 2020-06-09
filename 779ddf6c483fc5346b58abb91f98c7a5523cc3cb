@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a31276f_7e1804da",
+        "filename": "board/servo_v4p1/tca6416a.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-09T18:07:45Z",
+      "side": 1,
+      "message": "Move it to the .h file\n\nAdd the suffix _FLAGS for the 7-bit addressing.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "779ddf6c483fc5346b58abb91f98c7a5523cc3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cff8a2d6_5c5d85a0",
+        "filename": "driver/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-09T18:07:45Z",
+      "side": 1,
+      "message": "Nit: Don\u0027t change it.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "779ddf6c483fc5346b58abb91f98c7a5523cc3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
