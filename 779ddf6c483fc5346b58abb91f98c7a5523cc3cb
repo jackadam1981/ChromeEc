@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01e42caa_95cc8a74",
+        "filename": "board/servo_v4p1/tca6416a.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-09T18:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a31276f_7e1804da",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "779ddf6c483fc5346b58abb91f98c7a5523cc3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cff8a2d6_5c5d85a0",
         "filename": "driver/build.mk",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "779ddf6c483fc5346b58abb91f98c7a5523cc3cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c4b57e_5deba437",
+        "filename": "driver/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-09T18:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cff8a2d6_5c5d85a0",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "779ddf6c483fc5346b58abb91f98c7a5523cc3cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
