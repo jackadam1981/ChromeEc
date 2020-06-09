@@ -315,7 +315,7 @@ void hook_shutdown(void)
 	if (system_is_in_rw())
 		return;
 
-	CPRINTS("Reboot\n\n");
+	CPRINTF("Reboot\n\n");
 	cflush();
 	system_reset(SYSTEM_RESET_LEAVE_AP_OFF);
 }
