@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "400254c6_47c8c26d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T22:46:32Z",
+      "side": 1,
+      "message": "Bug doesn\u0027t exist.\n\nIf you put \"TEST\u003dDUT accepts soft resets\" I\u0027ll happily verify that one for you :)",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 45
+      },
+      "revId": "31f0cdfaa990a2a6d7a1db000f1bc407e78e669e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5cd9ffb_daef5ca6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T22:46:32Z",
+      "side": 1,
+      "message": "nit: pe_local_ams?  Just to convey it doesn\u0027t reflect partner-initiated AMSes",
+      "range": {
+        "startLine": 666,
+        "startChar": 5,
+        "endLine": 666,
+        "endChar": 14
+      },
+      "revId": "31f0cdfaa990a2a6d7a1db000f1bc407e78e669e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aa37221_c2cd3106",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T22:46:32Z",
+      "side": 1,
+      "message": "Note that call order is important?",
+      "range": {
+        "startLine": 1953,
+        "startChar": 2,
+        "endLine": 1954,
+        "endChar": 26
+      },
+      "revId": "31f0cdfaa990a2a6d7a1db000f1bc407e78e669e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
