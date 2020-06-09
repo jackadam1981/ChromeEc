@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc2f5a2e_0517bf25",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T14:27:02Z",
+      "side": 1,
+      "message": "Would mode entry be done for this case?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "a93a84d0cdfe29d073025f818976d450bfa21788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "276c1a5d_567dd9f8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 4876,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-09T14:27:02Z",
+      "side": 1,
+      "message": "Guessing this snuck in from the cable plug support CL?  Does it do any harm here without that change?",
+      "range": {
+        "startLine": 4876,
+        "startChar": 7,
+        "endLine": 4876,
+        "endChar": 30
+      },
+      "revId": "a93a84d0cdfe29d073025f818976d450bfa21788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
