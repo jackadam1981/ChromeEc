@@ -73,5 +73,3 @@ for mode in [AES.MODE_CBC, AES.MODE_CFB, AES.MODE_OFB]:
                                   key=b2a(h2be(key)),
                                   ct=b2a(h2be(ct[:actual_pt_len])),
                                   iv=b2a(h2be(iv))),
-
-
