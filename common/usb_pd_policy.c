@@ -393,8 +393,19 @@ static int process_am_discover_ident_sop(int port, int cnt,
 			return dfp_discover_ident(payload);
 		}
 	} else {
+		cable[port].attr.raw_value = 0x11082052;
+		enable_usb4_mode(port);
 		pd_dfp_discovery_init(port);
 		dfp_consume_identity(port, cnt, payload);
+		cable[port].cable_mode_resp.raw_value = 0x30001;
+		enable_enter_usb4_mode(port);
+		usb_mux_set_safe_mode(port);
+		/*
+		 * To change the mode of operation from USB4 the port needs to
+		 * be reconfigured.
+		 * Ref: USB Type-C Cable and Connectot Spec section 5.4.4.
+		 */
+		return 0;
 	}
 
 	return dfp_discover_svids(payload);
