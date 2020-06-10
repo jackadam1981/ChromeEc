@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac61ac2d_2d741f44",
+        "filename": "baseboard/zork/variant_dalboz.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-10T21:11:03Z",
+      "side": 1,
+      "message": "do you need sb_tsi.h as well?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "b4dd491d6c8455f1d3bb8a42fae795b837fb8a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
