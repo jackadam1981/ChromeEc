@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61bbfb2a_5c029dd0",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-10T15:07:23Z",
+      "side": 1,
+      "message": "* Please refer to [1], without CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT the src_pdo will be limited to pd_src_pdo (5V/1.5A only).\n* And refer to [2], we might need to limit the source current to 1.5A in init function when CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT is not defined.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/usb_common.c#265\n[2] https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/driver/ppc/nx20p348x.c#283",
+      "revId": "4740828e9dc27bd4b858fb51501431b1b69f0a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
