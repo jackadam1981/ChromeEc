@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd32c41e_48772cf2",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-10T19:32:20Z",
+      "side": 1,
+      "message": "nit: little weird to call straight into the driver, as opposed to going through tcpm_ or pd_ calls",
+      "range": {
+        "startLine": 345,
+        "startChar": 8,
+        "endLine": 345,
+        "endChar": 35
+      },
+      "revId": "e8b2a71113905edf2f0a9a9281ca74c97672b874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
