@@ -16,6 +16,24 @@
       "revId": "faaa1cd90f4cbe15d75b1bc11d1ecdb3a9b5533d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c97d9bd2_dd3e18ee",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1373037
+      },
+      "writtenOn": "2020-06-10T07:37:18Z",
+      "side": 1,
+      "message": "SLP_S3_L is a qualifying input signal to ALL_SYS_PWRGD logic. \nPlease refer JSL PDG, note # 10, in Platform Sequencing Timing Parameters table.\nA snippet below -\n10. It is strongly recommended that the PMC_SLP_S3_N be a qualifying input signal to ALL_SYS_PWRGD logic, which drives IMVP VR_ON inputs.",
+      "parentUuid": "4dd4f86b_83dd8b5c",
+      "revId": "faaa1cd90f4cbe15d75b1bc11d1ecdb3a9b5533d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
