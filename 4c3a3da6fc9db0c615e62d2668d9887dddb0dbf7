@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7317f2e7_ab7eb664",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-10T17:07:34Z",
+      "side": 1,
+      "message": "let\u0027s not add typedefs to the EC codebase.",
+      "parentUuid": "4dbc670d_26661105",
+      "range": {
+        "startLine": 276,
+        "startChar": 7,
+        "endLine": 276,
+        "endChar": 42
+      },
+      "revId": "4c3a3da6fc9db0c615e62d2668d9887dddb0dbf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "997d45ae_07600ff2",
         "filename": "chip/stm32/usb_spi.h",
         "patchSetId": 7
