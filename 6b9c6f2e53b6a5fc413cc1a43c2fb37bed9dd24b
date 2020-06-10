@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba41f3bf_62aed4f5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T17:43:40Z",
+      "side": 1,
+      "message": "still don\u0027t think that prl should be setting Rp here. It should already be set to Rp and this isn\u0027t the place to be override what the typec layer thinks it should be",
+      "range": {
+        "startLine": 762,
+        "startChar": 4,
+        "endLine": 762,
+        "endChar": 41
+      },
+      "revId": "6b9c6f2e53b6a5fc413cc1a43c2fb37bed9dd24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ec70a8a_5de124eb",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T17:43:40Z",
+      "side": 1,
+      "message": "same, remove the select pull",
+      "range": {
+        "startLine": 849,
+        "startChar": 1,
+        "endLine": 850,
+        "endChar": 47
+      },
+      "revId": "6b9c6f2e53b6a5fc413cc1a43c2fb37bed9dd24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b05926_a7b57c30",
+        "filename": "common/usbc/usb_tc_ctvpd_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T17:43:40Z",
+      "side": 1,
+      "message": "add comments that this isn\u0027t support for ctvpd since we are never the SOP partner. Also the vpd uses a different mechanism to update cc values.\n\nFeel free to even put ASSERT(false) in these function since they should never be called (you don\u0027t have to do that though)",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 0
+      },
+      "revId": "6b9c6f2e53b6a5fc413cc1a43c2fb37bed9dd24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db64dda3_0bd3b5b8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T17:43:40Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 948,
+        "startChar": 0,
+        "endLine": 948,
+        "endChar": 18
+      },
+      "revId": "6b9c6f2e53b6a5fc413cc1a43c2fb37bed9dd24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e17beea4_746ecc52",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T17:43:40Z",
+      "side": 1,
+      "message": "probably don\u0027t have to set this if we are setting cc_pull to Rd",
+      "range": {
+        "startLine": 960,
+        "startChar": 1,
+        "endLine": 962,
+        "endChar": 12
+      },
+      "revId": "6b9c6f2e53b6a5fc413cc1a43c2fb37bed9dd24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db9024b9_ccde9372",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T17:43:40Z",
+      "side": 1,
+      "message": "why no update_cc?",
+      "range": {
+        "startLine": 1121,
+        "startChar": 1,
+        "endLine": 1123,
+        "endChar": 0
+      },
+      "revId": "6b9c6f2e53b6a5fc413cc1a43c2fb37bed9dd24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c86a684f_33dd2c9f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3006,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T17:43:40Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be on the public interface",
+      "range": {
+        "startLine": 2998,
+        "startChar": 0,
+        "endLine": 3006,
+        "endChar": 57
+      },
+      "revId": "6b9c6f2e53b6a5fc413cc1a43c2fb37bed9dd24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab9d22be_cb0cbcc9",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3034,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T17:43:40Z",
+      "side": 1,
+      "message": "remove from public interface",
+      "range": {
+        "startLine": 3028,
+        "startChar": 0,
+        "endLine": 3034,
+        "endChar": 56
+      },
+      "revId": "6b9c6f2e53b6a5fc413cc1a43c2fb37bed9dd24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
