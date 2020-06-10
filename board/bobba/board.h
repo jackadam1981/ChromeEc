@@ -71,6 +71,8 @@
 /* Additional PPC second source */
 #define CONFIG_USBC_PPC_SYV682X
 
+#define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_1A5
+
 #ifndef __ASSEMBLER__
 
 /* support factory keyboard test */
