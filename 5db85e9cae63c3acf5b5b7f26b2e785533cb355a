@@ -16,6 +16,24 @@
       "revId": "5db85e9cae63c3acf5b5b7f26b2e785533cb355a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c606feb_1386fb9c",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-10T01:46:04Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2237495/1",
+      "parentUuid": "1eea4467_6d514be0",
+      "revId": "5db85e9cae63c3acf5b5b7f26b2e785533cb355a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
