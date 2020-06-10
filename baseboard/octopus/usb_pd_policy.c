@@ -86,3 +86,13 @@ int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
 }
+
+#ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
+static uint8_t vbus_rp[CONFIG_USB_PD_PORT_MAX_COUNT] = {TYPEC_RP_1A5,
+							TYPEC_RP_1A5};
+
+__override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
+{
+	ppc_set_vbus_source_current_limit(port, vbus_rp[port]);
+}
+#endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
