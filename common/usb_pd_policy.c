@@ -395,6 +395,15 @@ static int process_am_discover_ident_sop(int port, int cnt,
 	} else {
 		pd_dfp_discovery_init(port);
 		dfp_consume_identity(port, cnt, payload);
+		if (is_usb4_vdo(port, cnt, payload) &&
+		    PD_HEADER_REV(head) == PD_REV30) {
+			cable[port].attr.raw_value = 0x11082052;
+			enable_usb4_mode(port);
+			cable[port].cable_mode_resp.raw_value = 0x30001;
+			enable_enter_usb4_mode(port);
+			usb_mux_set_safe_mode(port);
+			return 0;
+		}
 	}
 
 	return dfp_discover_svids(payload);
