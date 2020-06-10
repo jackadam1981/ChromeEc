@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed75ef5d_f78719e7",
+        "filename": "chip/mt8192_scp/hrtimer.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-10T01:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8523895b_b456d48c",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "fdd29104b2ff972bfe850b3589e05b0268f5ffdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b0fb5a2_b4983c2b",
         "filename": "chip/mt8192_scp/hrtimer.c",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "fdd29104b2ff972bfe850b3589e05b0268f5ffdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f723082_e92b09ba",
+        "filename": "chip/mt8192_scp/hrtimer.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-10T01:45:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b0fb5a2_b4983c2b",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "fdd29104b2ff972bfe850b3589e05b0268f5ffdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3379b928_86ef15bc",
+        "filename": "chip/mt8192_scp/hrtimer.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-10T01:45:19Z",
+      "side": 1,
+      "message": "Follow mt_scp, the timer reset value set to \"c1ea4\" to indicate it is \"clear\".\n\n\n\"c1ea4\"\n\"clear\"\n\ntook me a while to understand the magic number\n\nAdd more explanation on the comment.",
+      "parentUuid": "f859680d_c96beaf3",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 9
+      },
+      "revId": "fdd29104b2ff972bfe850b3589e05b0268f5ffdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a3d396a_f71073e5",
         "filename": "chip/mt8192_scp/hrtimer.c",
         "patchSetId": 15
@@ -91,6 +163,30 @@
       "revId": "fdd29104b2ff972bfe850b3589e05b0268f5ffdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9425733_de59acc2",
+        "filename": "chip/mt8192_scp/hrtimer.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-06-10T01:45:19Z",
+      "side": 1,
+      "message": "just follow mt_scp, and I think it is dummy (at least in core/rv32i)",
+      "parentUuid": "8a3d396a_f71073e5",
+      "range": {
+        "startLine": 219,
+        "startChar": 35,
+        "endLine": 219,
+        "endChar": 36
+      },
+      "revId": "fdd29104b2ff972bfe850b3589e05b0268f5ffdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
