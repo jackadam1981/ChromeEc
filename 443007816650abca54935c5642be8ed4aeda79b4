@@ -70,6 +70,30 @@
       "revId": "443007816650abca54935c5642be8ed4aeda79b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e7cc4c9_3c13872a",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-10T02:06:25Z",
+      "side": 1,
+      "message": "Thanks, Leo, for discussing offline. To capture the conclusion: Because of checks on lines 106 \u0026 110, if you get into the else-block on line 130 you are guaranteed to have in !\u003d NULL at that point. So, not having an additional check inside that block is correct.\nAnd the only remaining thing to do in this CL is to move lines 99-102 into the else-block on line 130 and get rid of the then-unnecessary \"if (in !\u003d NULL)\" check around \"x_size\u003d...; y_size\u003d...\" lines.",
+      "parentUuid": "54f4dd75_d82b5108",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "443007816650abca54935c5642be8ed4aeda79b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
