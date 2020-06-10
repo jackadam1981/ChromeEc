@@ -63,6 +63,9 @@ int pd_set_power_supply_ready(int port)
 
 	gpio_set_level(GPIO_EN_USBC_CHARGE_L, 1);
 	gpio_set_level(GPIO_EN_PP5000_USBC, 1);
+#if defined(CONFIG_CHARGER_OTG) && defined(CONFIG_CHARGER_ISL9238)
+	charger_set_current(0);
+#endif
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
