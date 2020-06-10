@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc8ff62d_7779398c",
+        "filename": "board/boten/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-10T16:34:46Z",
+      "side": 1,
+      "message": "This would index into the charger array technically, so I\u0027d suggest just using a constant 0 here",
+      "range": {
+        "startLine": 185,
+        "startChar": 13,
+        "endLine": 185,
+        "endChar": 25
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc722ab7_e2682ba6",
+        "filename": "board/boten/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-10T16:34:46Z",
+      "side": 1,
+      "message": "Same here, though \"port\" can also be used in this case",
+      "range": {
+        "startLine": 198,
+        "startChar": 16,
+        "endLine": 198,
+        "endChar": 28
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cdeca74_bdbc6e87",
+        "filename": "board/boten/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-10T16:34:46Z",
+      "side": 1,
+      "message": "Should be removed, not using charger OTG",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 79
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cf2ab88_72cdc150",
+        "filename": "board/boten/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-10T16:34:46Z",
+      "side": 1,
+      "message": "Not necessary if you only have one type-c port",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc4611a_00a7d170",
+        "filename": "board/boten/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-10T16:34:46Z",
+      "side": 1,
+      "message": "It seems like we could decouple these from the chip variant in the baseboard since we\u0027ve had more TCPC mixing than I\u0027d originally anticipated.  We could have either a define to specify the RAA489000 TCPC, or external TCPCs in general.  Or move them to board files.\n\nPreferences, Aseda?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f91f1b_ce2a0ee5",
+        "filename": "board/boten/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-10T16:34:46Z",
+      "side": 1,
+      "message": "Should be unnecessary if using TCPC to detect Vbus",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
