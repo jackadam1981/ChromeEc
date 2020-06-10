@@ -243,6 +243,30 @@
     },
     {
       "key": {
+        "uuid": "4699f7d0_f83affbe",
+        "filename": "test/tpm_test/ecc_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-10T00:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc78e7d_61086395",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 33
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "829c51e5_0c47943b",
         "filename": "test/tpm_test/ecc_test.py",
         "patchSetId": 6
@@ -360,6 +384,30 @@
     },
     {
       "key": {
+        "uuid": "5bd0ffe8_c5b859e0",
+        "filename": "test/tpm_test/ecies_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-10T00:33:40Z",
+      "side": 1,
+      "message": "cros lint",
+      "parentUuid": "a815defc_8ebb9f25",
+      "range": {
+        "startLine": 191,
+        "startChar": 10,
+        "endLine": 191,
+        "endChar": 27
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b24d48d_021cba4a",
         "filename": "test/tpm_test/hash_test.py",
         "patchSetId": 6
@@ -454,6 +502,30 @@
     },
     {
       "key": {
+        "uuid": "64c0e73e_b70cde69",
+        "filename": "test/tpm_test/hkdf_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-10T00:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c162ad5f_1d7e7bc3",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e097c08f_d106a03a",
         "filename": "test/tpm_test/rsa_test.py",
         "patchSetId": 6
@@ -498,6 +570,30 @@
       "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "689c572f_4d835c49",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-10T00:33:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebc7d692_37375832",
+      "range": {
+        "startLine": 540,
+        "startChar": 19,
+        "endLine": 540,
+        "endChar": 32
+      },
+      "revId": "b1bac16de226c0347a421c8b00f438d921e6bcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
