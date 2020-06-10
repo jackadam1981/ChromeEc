@@ -627,16 +627,19 @@ void prl_run(int port, int evt, int en)
 
 #ifdef CONFIG_USB_PD_REV30
 		/*
-		 * Run RX Chunked state machine after prl_rx. This is what
-		 * informs the PE of incoming message. Its input is prl_rx
-		 */
-		run_state(port, &rch[port].ctx);
-
-		/*
 		 * Run TX Chunked state machine before prl_tx in case we need
-		 * to split an extended message and prl_tx can send it for us
+		 * to split an extended message and prl_tx can send it for us.
+		 * Also run this before RCH since TCH may forward incoming
+		 * messages is could not handle to RCH.
 		 */
 		run_state(port, &tch[port].ctx);
+
+		/*
+		 * Run RX Chunked state machine after prl_rx and TCH. TCH or
+		 * prl_rx may pass messages to RCH. The RCH would then pass
+		 * messages to the PE.
+		 */
+		run_state(port, &rch[port].ctx);
 #endif /* CONFIG_USB_PD_REV30 */
 
 		/* Run Protocol Layer Message Transmission state machine */
