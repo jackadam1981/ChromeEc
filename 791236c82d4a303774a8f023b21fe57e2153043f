@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "229e91b0_50921fd4",
+        "filename": "board/boten/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-10T21:23:59Z",
+      "side": 1,
+      "message": "Maybe we should just move them to the board files. I\u0027m not sure if some future design could combine this TCPC with a PPC and then they might change which part is doing the VBUS detection or discharge.",
+      "parentUuid": "8dc4611a_00a7d170",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0f91f1b_ce2a0ee5",
         "filename": "board/boten/usb_pd_policy.c",
         "patchSetId": 2
