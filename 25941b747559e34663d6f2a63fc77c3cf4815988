@@ -22,6 +22,30 @@
       "revId": "25941b747559e34663d6f2a63fc77c3cf4815988",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d334d115_ab6a174a",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T20:20:14Z",
+      "side": 0,
+      "message": "we aren\u0027t setting a message up to the PE anymore. since we are calling pe_soft_reset\n\nWe should have never been calling pe_soft_resest and pe_msg_recieve for the single soft reset RX message",
+      "parentUuid": "077e3a6c_b4df2b5a",
+      "range": {
+        "startLine": 1107,
+        "startChar": 0,
+        "endLine": 1108,
+        "endChar": 37
+      },
+      "revId": "25941b747559e34663d6f2a63fc77c3cf4815988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
