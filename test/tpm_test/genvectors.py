@@ -70,10 +70,10 @@ for mode in [AES.MODE_CBC, AES.MODE_CFB, AES.MODE_OFB]:
 
             assert obj.decrypt(ct)[:pt_len] == pt
 
-            print template.format(mode=modes[mode],
+            print(template.format(mode=modes[mode],
                                   key_bits=str(key_bytes * 8),
                                   test_num=str(test_num),
                                   pt=b2a(h2be(pt[:actual_pt_len])),
                                   key=b2a(h2be(key)),
                                   ct=b2a(h2be(ct[:actual_pt_len])),
-                                  iv=b2a(h2be(iv))),
+                                  iv=b2a(h2be(iv))))
