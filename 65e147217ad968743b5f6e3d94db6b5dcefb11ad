@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "331f1b0a_2633c4d4",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-10T00:16:15Z",
+      "side": 0,
+      "message": "cros lint complained that CryptoD has not enough methods and I thought this construct is kind of artificial for the purpose it\u0027s used for",
+      "parentUuid": "4eba76f4_fddb76ff",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 32
+      },
+      "revId": "65e147217ad968743b5f6e3d94db6b5dcefb11ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd838f72_e9e97db1",
         "filename": "test/tpm_test/genvectors.py",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "65e147217ad968743b5f6e3d94db6b5dcefb11ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b1e4a1a_bbd47726",
+        "filename": "test/tpm_test/genvectors.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-10T00:16:15Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "dd838f72_e9e97db1",
+      "range": {
+        "startLine": 75,
+        "startChar": 50,
+        "endLine": 75,
+        "endChar": 52
+      },
+      "revId": "65e147217ad968743b5f6e3d94db6b5dcefb11ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
