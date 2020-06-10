@@ -171,9 +171,12 @@ int pd_snk_is_vbus_provided(int port)
 }
 #endif
 
+static uint8_t vbus_rp[CONFIG_USB_PD_PORT_MAX_COUNT] = {TYPEC_RP_1A5,
+							TYPEC_RP_1A5};
+
 void typec_set_source_current_limit(int port, int rp)
 {
-	ppc_set_vbus_source_current_limit(port, rp);
+	ppc_set_vbus_source_current_limit(port, vbus_rp[port]);
 }
 
 int board_vbus_source_enabled(int port)
