@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a53dcb8d_9d4c1220",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-10T17:40:42Z",
+      "side": 1,
+      "message": "nit from my pedantic C++ side: \"const int\u0027 :P :D",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "02dbd9922efa43ca6c22e0ccc62fc1e9a4705bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
