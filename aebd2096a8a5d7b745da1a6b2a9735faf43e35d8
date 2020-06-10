@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8e0592c9_98518fd5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-10T20:19:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b018185_80fd242c",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 2
+      },
+      "revId": "aebd2096a8a5d7b745da1a6b2a9735faf43e35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ebf4571_3a40275c",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "aebd2096a8a5d7b745da1a6b2a9735faf43e35d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7864550_90823326",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4166,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-10T20:19:19Z",
+      "side": 1,
+      "message": "Eventually, we may get to the point where PE_VDM_IDENTITY_REQUEST_CBL and PE_INIT_PORT_VDM_IDENTITY_REQUEST share more code, and it makes sense to set tx_type before entering either of them. For now, to avoid confusion, I am setting it in the entry functions for each of them.",
+      "parentUuid": "2ebf4571_3a40275c",
+      "range": {
+        "startLine": 4165,
+        "startChar": 4,
+        "endLine": 4166,
+        "endChar": 22
+      },
+      "revId": "aebd2096a8a5d7b745da1a6b2a9735faf43e35d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
