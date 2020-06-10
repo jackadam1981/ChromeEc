@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b98d191b_5e702898",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T19:26:05Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t this be pull \u003d\u003d CC_RP\n\nWe don\u0027t need to set it if pull will be open right?",
+      "range": {
+        "startLine": 961,
+        "startChar": 5,
+        "endLine": 961,
+        "endChar": 24
+      },
+      "revId": "5793659fb92046557d71de8c33e060d1a55709cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
