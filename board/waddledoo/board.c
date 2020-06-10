@@ -346,7 +346,8 @@ int extpower_is_present(void)
 	 * TODO(b:146651593) We can likely use the charger IC to determine VBUS
 	 * presence.
 	 */
-	return pd_snk_is_vbus_provided(0) || pd_snk_is_vbus_provided(1);
+	return tcpci_tcpm_check_vbus_level(0, VBUS_PRESENT) ||
+	       tcpci_tcpm_check_vbus_level(1, VBUS_PRESENT);
 }
 
 __override void ocpc_get_pid_constants(int *kp, int *kp_div,
