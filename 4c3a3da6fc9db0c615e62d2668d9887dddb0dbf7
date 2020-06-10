@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dbc670d_26661105",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T16:28:37Z",
+      "side": 1,
+      "message": "we typically don\u0027t add the _t for the struct names.\n\nif you were going to typedef it, then we would at the _t\n\nAlso we generally don\u0027t typedef structs (for better or worse) in the ec code base\n\nIf you really want to typedef so you can write\n\nusb_spi_response_configuration_v2_t\n\ninstead of\n\nstruct usb_spi_response_configuration_v2\n\nI could be convinced, but just know that it is slightly non standard coding style for platform/ec",
+      "range": {
+        "startLine": 276,
+        "startChar": 7,
+        "endLine": 276,
+        "endChar": 42
+      },
+      "revId": "4c3a3da6fc9db0c615e62d2668d9887dddb0dbf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997d45ae_07600ff2",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-10T16:28:37Z",
+      "side": 1,
+      "message": "what are negative values use for?",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 18
+      },
+      "revId": "4c3a3da6fc9db0c615e62d2668d9887dddb0dbf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
