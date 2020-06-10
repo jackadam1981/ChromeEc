@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf112124_4db5741c",
+        "filename": "board/boten/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-10T02:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bcdfaaf_f4ed4c3c",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 49
+      },
+      "revId": "e39e6f98863bef7de8a7ca9319f01c7deee917ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29b56894_f0e355ee",
         "filename": "board/boten/board.h",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-09T17:04:34Z",
       "side": 1,
       "message": "Are the chips updating to the correct ones in a separate review?",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 47
+      },
+      "revId": "e39e6f98863bef7de8a7ca9319f01c7deee917ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c66ee964_5897e5d2",
+        "filename": "board/boten/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-10T02:18:19Z",
+      "side": 1,
+      "message": "Yes, next CL will change to the correct charger in MB port.",
+      "parentUuid": "29b56894_f0e355ee",
       "range": {
         "startLine": 25,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "49039c35_ae361f51",
+        "filename": "board/boten/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-10T02:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f3882ed_87ecc6c2",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "e39e6f98863bef7de8a7ca9319f01c7deee917ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa8cd427_926dc003",
         "filename": "board/boten/gpio.inc",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "7f368ab9_5d4bc4ad",
+        "filename": "board/boten/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-10T02:18:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa8cd427_926dc003",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 4
+      },
+      "revId": "e39e6f98863bef7de8a7ca9319f01c7deee917ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6db6afdf_37393c08",
         "filename": "board/wheelie/board.h",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-09T17:04:34Z",
       "side": 1,
       "message": "Should wheelie be kept in sync with boten?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 19
+      },
+      "revId": "e39e6f98863bef7de8a7ca9319f01c7deee917ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe0cf88_af53dda9",
+        "filename": "board/wheelie/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-10T02:18:19Z",
+      "side": 1,
+      "message": "It is recommended to complete the basic functions of Boten first, and then synchronize the code to wheelie.",
+      "parentUuid": "6db6afdf_37393c08",
       "range": {
         "startLine": 84,
         "startChar": 1,
