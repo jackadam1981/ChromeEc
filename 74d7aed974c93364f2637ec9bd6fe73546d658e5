@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e5da77c9_22a91ec7",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-11T22:16:58Z",
+      "side": 1,
+      "message": "I chatted with Denis, I think the board_tcpc_fast_role_swap_enable() call should be renamed to board_set_frs_enable() and moved into this routine.\n\nThat can be done as follow on patchset.",
+      "parentUuid": "016d35f2_7643385a",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 734,
+        "endChar": 34
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8da99889_1cebb6d4",
         "filename": "common/usb_common.c",
         "patchSetId": 11

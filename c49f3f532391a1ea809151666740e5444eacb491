@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d037dee1_98e17185",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-11T22:16:58Z",
+      "side": 1,
+      "message": "I\u0027d still like this routine to return an int for consistency.",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 726,
+        "endChar": 59
+      },
+      "revId": "c49f3f532391a1ea809151666740e5444eacb491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
