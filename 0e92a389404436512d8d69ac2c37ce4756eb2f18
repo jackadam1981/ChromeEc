@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7af0b2f6_809bfea0",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T19:27:38Z",
+      "side": 1,
+      "message": "This one is tricky because there\u0027s no way to test it that I know of (all my discard port partners are sending SOP).  Following spec, we should always be going through this state.  Following spec, I\u0027m honestly unsure how the TCH would know to wait for a message after we didn\u0027t discard though.",
+      "parentUuid": "c9990132_eea86c49",
+      "range": {
+        "startLine": 854,
+        "startChar": 1,
+        "endLine": 860,
+        "endChar": 2
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60a4bfff_81438f95",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-11T19:06:48Z",
       "side": 1,
       "message": "this check goes away if we run prl_tx first (which I think we should do)",
+      "range": {
+        "startLine": 1713,
+        "startChar": 6,
+        "endLine": 1713,
+        "endChar": 61
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d95f401_25c14246",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T19:27:38Z",
+      "side": 1,
+      "message": "I can give that whirl.  However, I would argue we should maybe try to make our checks more resilient to run order if we can?",
+      "parentUuid": "60a4bfff_81438f95",
       "range": {
         "startLine": 1713,
         "startChar": 6,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ab662d25_0a799c06",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T19:27:38Z",
+      "side": 1,
+      "message": "We can.  Due to the \"set_state\" in these entries, that would mean we wouldn\u0027t end up checking the flag until we\u0027re running somewhere, right? (I would guess in wait_for...)?  So the parent would be a no-op here and in the report error state?",
+      "parentUuid": "cc472b58_14b0a297",
+      "range": {
+        "startLine": 1912,
+        "startChar": 1,
+        "endLine": 1916,
+        "endChar": 2
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d05cba3_d20ab65f",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-06-11T19:06:48Z",
       "side": 1,
       "message": "just noting again, I think the discard logic should go here other wise we will disrupt sending non-discarded TX messages",
+      "range": {
+        "startLine": 2033,
+        "startChar": 3,
+        "endLine": 2040,
+        "endChar": 50
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1a004c2_cfd4f455",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2040,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T19:27:38Z",
+      "side": 1,
+      "message": "I think the prl_tx should tolerate that disruption okay, theoretically.  Not as sure about the TCH.  I\u0027d like to stick to the spec if we think we can make it work, though I acknowledge we can\u0027t totally stick to it because it\u0027s written assuming you\u0027re sending messages yourself.",
+      "parentUuid": "0d05cba3_d20ab65f",
       "range": {
         "startLine": 2033,
         "startChar": 3,
