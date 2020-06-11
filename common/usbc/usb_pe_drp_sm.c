@@ -140,6 +140,9 @@
 #define PE_FLAGS_VCONN_SWAP_TO_ON	     BIT(28)
 /* FLAG to track that VDM request to port partner timed out */
 #define PE_FLAGS_VDM_REQUEST_TIMEOUT	     BIT(29)
+/* FLAG to note message discard */
+#define PE_FLAGS_MSG_DISCARDED		     BIT(30)
+
 
 /* 6.7.3 Hard Reset Counter */
 #define N_HARD_RESET_COUNT 2
@@ -933,6 +936,17 @@ static void pe_send_soft_reset(const int port, enum tcpm_transmit_type type)
 {
 	pe[port].soft_reset_sop = type;
 	set_state_pe(port, PE_SEND_SOFT_RESET);
+}
+
+void pe_report_discard(int port)
+{
+	// Set flag
+	// Parent state to process flag on first message of AMS?  Evaluate how
+	// much processing needed versus just going back to ready.
+	// Should clear AMS flag here though or else we don't clear SinkNG
+	// (though not sure we want to do this with discard mid-AMS like PR
+	// swap)
+	PE_CLR_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 }
 
 void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
