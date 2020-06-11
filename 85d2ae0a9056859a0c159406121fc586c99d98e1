@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8b34c7e_ae137b54",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-11T22:44:05Z",
+      "side": 1,
+      "message": "This should be behind\n#ifdef CONFIG_AP_RO_VERIFICATION",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 1
+      },
+      "revId": "85d2ae0a9056859a0c159406121fc586c99d98e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
