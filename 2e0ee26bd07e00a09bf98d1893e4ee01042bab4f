@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a0d01bf_f5d41bdb",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-11T21:36:17Z",
+      "side": 1,
+      "message": "It seems like this just duplicates the host-test-targets above? How does this differ? Can they be combined into the same rule?",
+      "range": {
+        "startLine": 312,
+        "startChar": 7,
+        "endLine": 312,
+        "endChar": 15
+      },
+      "revId": "2e0ee26bd07e00a09bf98d1893e4ee01042bab4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d3c931f_f4f65c8d",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-11T21:36:17Z",
+      "side": 1,
+      "message": "you can use store_const here to clean up the ternary below.\n\n   action\u003d\u0027store_const\u0027, const\u003d\u0027coverage\u0027, default\u003d\u0027host\u0027, dest\u003d\u0027test_target\u0027\n\nthen use opts.test_target...",
+      "range": {
+        "startLine": 98,
+        "startChar": 44,
+        "endLine": 98,
+        "endChar": 54
+      },
+      "revId": "2e0ee26bd07e00a09bf98d1893e4ee01042bab4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "012d3873_410fa3a4",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-06-11T21:36:17Z",
+      "side": 1,
+      "message": "probably don\u0027t want to be raising this outside of the stack frame of parser.parse_args",
+      "range": {
+        "startLine": 113,
+        "startChar": 19,
+        "endLine": 113,
+        "endChar": 36
+      },
+      "revId": "2e0ee26bd07e00a09bf98d1893e4ee01042bab4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
