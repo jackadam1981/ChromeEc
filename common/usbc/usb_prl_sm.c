@@ -562,6 +562,7 @@ void prl_send_ctrl_msg(int port,
 #else
 	PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 #endif /* CONFIG_USB_PD_REV30 */
+	CPRINTS("SEND CTRL type %d prl_tx %d tch %d", msg, prl_tx_get_state(port), tch_get_state(port));
 
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
@@ -581,6 +582,7 @@ void prl_send_data_msg(int port,
 	prl_copy_msg_to_buffer(port);
 	PRL_TX_SET_FLAG(port, PRL_FLAGS_MSG_XMIT);
 #endif /* CONFIG_USB_PD_REV30 */
+	CPRINTS("SEND DATA type %d prl_tx %d tch %d", msg, prl_tx_get_state(port), tch_get_state(port));
 
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
@@ -741,9 +743,8 @@ static void prl_tx_phy_layer_reset_entry(const int port)
 	 || IS_ENABLED(CONFIG_USB_VPD)) {
 		vpd_rx_enable(pd_is_connected(port));
 	} else {
-		/* Purge any outstanding TX message */
-		PRL_TX_CLR_FLAG(port, PRL_FLAGS_MSG_XMIT);
-		/* TODO(b/157228506): notify pe if needed */
+		/* Note: can't clear PHY messages due to TCPC architecture */
+		/* Enable communications*/
 		tcpm_set_rx_enable(port, pd_is_connected(port));
 	}
 	set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
@@ -763,6 +764,7 @@ static void prl_tx_wait_for_message_request_run(const int port)
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) && !pe_in_local_ams(port)) {
 		/* Note PRL_Tx_Src_Sink_Tx is embedded here. */
 		if (PRL_TX_CHK_FLAG(port, PRL_FLAGS_SINK_NG)) {
+			CPRINTS("SINK OK");
 			typec_select_src_collision_rp(port, SINK_TX_OK);
 			typec_update_cc(port);
 		}
@@ -843,9 +845,20 @@ static void increment_msgid_counter(int port)
 static void prl_tx_discard_message_entry(const int port)
 {
 	print_current_prl_tx_state(port);
+	CPRINTS("TX DISCARD");
 
-	/* Increment msgidCounter */
-	increment_msgid_counter(port);
+	/*
+	 * Discard queued message if incoming message type is SOP
+	 * (Table 6-10)
+	 */
+	if (prl_rx[port].sop == TCPC_TX_SOP) {
+		/* Increment msgidCounter */
+		increment_msgid_counter(port);
+		/* Discard queued message awaiting transmission */
+		PRL_TX_CLR_FLAG(port, PRL_FLAGS_MSG_XMIT);
+		/* TODO(b/157228506): notify pe if needed */
+	}
+
 	set_state_prl_tx(port, PRL_TX_PHY_LAYER_RESET);
 }
 
@@ -858,6 +871,7 @@ static void prl_tx_src_source_tx_entry(const int port)
 	print_current_prl_tx_state(port);
 
 	/* Set Rp = SinkTxNG */
+	CPRINTS("SINK NG");
 	typec_select_src_collision_rp(port, SINK_TX_NG);
 	typec_update_cc(port);
 }
@@ -1689,6 +1703,16 @@ static void tch_wait_for_transmission_complete_run(const int port)
 		tch[port].error = ERR_TCH_XMIT;
 		set_state_tch(port, TCH_REPORT_ERROR);
 	}
+	/*
+	 * Any message received and not in state TCH_Wait_Chunk_Request
+	 * MUST be checked after transmission status due to our TCPC
+	 * architecture.
+	 */
+	if (TCH_CHK_FLAG(port, PRL_FLAGS_MSG_RECEIVED)) {
+		TCH_CLR_FLAG(port, PRL_FLAGS_MSG_RECEIVED);
+		set_state_tch(port, TCH_MESSAGE_RECEIVED);
+		return;
+	}
 }
 
 /*
@@ -1860,6 +1884,7 @@ static void tch_message_received_entry(const int port)
 	RCH_SET_FLAG(port, PRL_FLAGS_MSG_RECEIVED);
 
 	/* Clear extended message objects */
+	/* TODO: Notify PE of message discard */
 	TCH_CLR_FLAG(port, PRL_FLAGS_MSG_XMIT);
 	pdmsg[port].data_objs = 0;
 }
@@ -1878,6 +1903,17 @@ static void tch_message_sent_entry(const int port)
 
 	/* Tell PE message was sent */
 	pe_message_sent(port);
+
+	/*
+	 * Any message received and not in state TCH_Wait_Chunk_Request
+	 */
+	if (TCH_CHK_FLAG(port, PRL_FLAGS_MSG_RECEIVED)) {
+		TCH_CLR_FLAG(port, PRL_FLAGS_MSG_RECEIVED);
+		set_state_tch(port, TCH_MESSAGE_RECEIVED);
+		return;
+	}
+
+
 	set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
 }
 
@@ -1890,6 +1926,15 @@ static void tch_report_error_entry(const int port)
 
 	/* Report Error To Policy Engine */
 	pe_report_error(port, tch[port].error, prl_tx[port].last_xmit_type);
+	/*
+	 * Any message received and not in state TCH_Wait_Chunk_Request
+	 */
+	if (TCH_CHK_FLAG(port, PRL_FLAGS_MSG_RECEIVED)) {
+		TCH_CLR_FLAG(port, PRL_FLAGS_MSG_RECEIVED);
+		set_state_tch(port, TCH_MESSAGE_RECEIVED);
+		return;
+	}
+
 	set_state_tch(port, TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE);
 }
 #endif /* CONFIG_USB_PD_REV30 */
@@ -1982,8 +2027,14 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	 * not a ping message
 	 */
 	if ((cnt > 0) || (type != PD_CTRL_PING)) {
-		if (prl_tx_get_state(port) == PRL_TX_SRC_PENDING ||
-			prl_tx_get_state(port) == PRL_TX_SNK_PENDING)
+		/*
+		 * Note: Spec dictates that we always go into
+		 * PRL_Tx_Discard_Message upon receivng a message.  However, due
+		 * to our TCPC architecture we may be receiving a transmit
+		 * complete at the same time as a response so only do this if a
+		 * message is pending.
+		 */
+		if (prl_tx_get_state(port) != PRL_TX_WAIT_FOR_PHY_RESPONSE)
 			set_state_prl_tx(port, PRL_TX_DISCARD_MESSAGE);
 	}
 
@@ -2009,10 +2060,8 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		 * queued for sending but a message is received before
 		 * tch_wait_for_message_request_from_pe has been run
 		 */
-		else if ((tch_get_state(port) !=
-				TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE &&
-			  tch_get_state(port) !=
-				TCH_WAIT_FOR_TRANSMISSION_COMPLETE) ||
+		else if (tch_get_state(port) !=
+				TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE ||
 			 TCH_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT)) {
 			/* NOTE: RTR_TX_CHUNKS State embedded here. */
 			/*
