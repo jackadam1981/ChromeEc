@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "666e38bd_668cb70b",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-11T20:57:21Z",
+      "side": 1,
+      "message": "I think this size should be set to the platform\u0027s flash write page size plus the header size.\n\nWriting into flash is a much slower process than USB transfer, it is OK to send incomplete USB blocks.",
+      "range": {
+        "startLine": 369,
+        "startChar": 8,
+        "endLine": 369,
+        "endChar": 27
+      },
+      "revId": "23349af542c280467fce3b97782678d79942dab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
