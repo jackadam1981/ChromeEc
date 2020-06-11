@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ceaa3da2_f2eaf600",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-11T01:51:12Z",
+      "side": 1,
+      "message": "wow, I learned something new today :)",
+      "range": {
+        "startLine": 68,
+        "startChar": 32,
+        "endLine": 68,
+        "endChar": 34
+      },
+      "revId": "5a1442fc5c647626be42cfb09840621fc8a153e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46803a9d_98740508",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-11T01:51:12Z",
+      "side": 1,
+      "message": "why are these isinstance() checks are needed - why init_vec and other variables below could be of different types?",
+      "range": {
+        "startLine": 203,
+        "startChar": 7,
+        "endLine": 203,
+        "endChar": 32
+      },
+      "revId": "5a1442fc5c647626be42cfb09840621fc8a153e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a25aa3a_159c0829",
+        "filename": "test/tpm_test/crypto_test.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-11T01:51:12Z",
+      "side": 1,
+      "message": "not your issue, just an observation - instead of doing \"aaa or \u0027\u0027\" in several places it would be clearer to make this adjustment inside crypto_run()",
+      "range": {
+        "startLine": 237,
+        "startChar": 34,
+        "endLine": 237,
+        "endChar": 44
+      },
+      "revId": "5a1442fc5c647626be42cfb09840621fc8a153e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a767f167_41808637",
+        "filename": "test/tpm_test/ecies_test.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-11T01:51:12Z",
+      "side": 1,
+      "message": "this still could be \n\nbytes([x for x in range(16)])",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 62
+      },
+      "revId": "5a1442fc5c647626be42cfb09840621fc8a153e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06bdb212_00359f9d",
+        "filename": "test/tpm_test/rsa_test.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-11T01:51:12Z",
+      "side": 1,
+      "message": "why does this change?",
+      "range": {
+        "startLine": 542,
+        "startChar": 25,
+        "endLine": 542,
+        "endChar": 37
+      },
+      "revId": "5a1442fc5c647626be42cfb09840621fc8a153e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3205327f_7814e9a3",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-11T01:51:12Z",
+      "side": 1,
+      "message": "please test to make sure that the file name/line number are still reported properly and describe the test in the patch description.",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 33
+      },
+      "revId": "5a1442fc5c647626be42cfb09840621fc8a153e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "206387b1_8614a385",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-11T01:51:12Z",
+      "side": 1,
+      "message": "why dropping an empty line here - if anything, global functions are supposed to be preceded by two blank lines, the other spots in this file are not compliant.",
+      "revId": "5a1442fc5c647626be42cfb09840621fc8a153e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
