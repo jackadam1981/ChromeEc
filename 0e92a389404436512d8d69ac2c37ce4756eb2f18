@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46daf9c1_2dd4b14c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T21:22:47Z",
+      "side": 1,
+      "message": "Yup, mixed up table and section.  Shouldn\u0027t matter now though.",
+      "parentUuid": "266988e5_46bca436",
+      "range": {
+        "startLine": 852,
+        "startChar": 13,
+        "endLine": 852,
+        "endChar": 15
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9990132_eea86c49",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "c8b86e67_3aca3436",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T21:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19d3d3d7_509af660",
+      "range": {
+        "startLine": 854,
+        "startChar": 1,
+        "endLine": 860,
+        "endChar": 2
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60a4bfff_81438f95",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "I also think that this condition goes away if we can get the\n\nprl_tx_is_busy() function to work since this should really block on that",
       "parentUuid": "8d95f401_25c14246",
+      "range": {
+        "startLine": 1713,
+        "startChar": 6,
+        "endLine": 1713,
+        "endChar": 61
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2861ec9_fdcda904",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T21:22:47Z",
+      "side": 1,
+      "message": "Can I leave that for your CL?",
+      "parentUuid": "7db9285a_47307fb4",
       "range": {
         "startLine": 1713,
         "startChar": 6,
@@ -262,6 +334,30 @@
     },
     {
       "key": {
+        "uuid": "b0e3a8ba_1ee27554",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T21:22:47Z",
+      "side": 1,
+      "message": "I would argue the parent doesn\u0027t make sense here since it ultimately ends up being a no-op.  But we could also not check the flag here and allow Wait_for... to check it?",
+      "parentUuid": "7011a604_e32c69d5",
+      "range": {
+        "startLine": 1912,
+        "startChar": 1,
+        "endLine": 1916,
+        "endChar": 2
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c60f8b8e_f1688860",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -273,6 +369,30 @@
       "writtenOn": "2020-06-11T20:58:48Z",
       "side": 1,
       "message": "simplifies to type !\u003d PING\n\nResult \u003d (cnt \u003e 0) || (type !\u003d PD_CTRL_PING)\n\n!Result \u003d (cnt \u003d\u003d 0) \u0026\u0026 (type \u003d\u003d PD_CTRL_PING)\n!Result \u003d type \u003d\u003d PD_CTRL_PING\n\n!!Result \u003d type !\u003d PD_CTRL_PING",
+      "range": {
+        "startLine": 2031,
+        "startChar": 6,
+        "endLine": 2031,
+        "endChar": 39
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d09e7c0_1ac23414",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T21:22:47Z",
+      "side": 1,
+      "message": "Wouldn\u0027t we accidentally catch Battery_Status data messages if we don\u0027t check cnt since data and control message types overlap?",
+      "parentUuid": "c60f8b8e_f1688860",
       "range": {
         "startLine": 2031,
         "startChar": 6,
@@ -356,6 +476,30 @@
     },
     {
       "key": {
+        "uuid": "ea6fe8cd_cbd0550f",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2040,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T21:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb04296_826b5844",
+      "range": {
+        "startLine": 2033,
+        "startChar": 3,
+        "endLine": 2040,
+        "endChar": 50
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4285a37f_0403aff2",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -367,6 +511,30 @@
       "writtenOn": "2020-06-11T20:58:48Z",
       "side": 1,
       "message": "I don\u0027t think we even need this, just sent it straight to the TCH always since the TCH already had to have the code to pass to RCH. Now that TCH happens before RCH, the flow works\n\nAnd the data from is always TCH -\u003e RCH there is no dependency the other way, so we should always keep that order (and it is documented that way)",
+      "range": {
+        "startLine": 2065,
+        "startChar": 2,
+        "endLine": 2067,
+        "endChar": 1
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65a6f4b2_f3fec6a4",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2067,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T21:22:47Z",
+      "side": 1,
+      "message": "This currently follows the RTR diagramming.  What major benefit do you see of always going through the TCH?",
+      "parentUuid": "4285a37f_0403aff2",
       "range": {
         "startLine": 2065,
         "startChar": 2,
