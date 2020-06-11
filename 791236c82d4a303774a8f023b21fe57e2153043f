@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7fcaea1e_0f6820e2",
+        "filename": "board/boten/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-11T07:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc8ff62d_7779398c",
+      "range": {
+        "startLine": 185,
+        "startChar": 13,
+        "endLine": 185,
+        "endChar": 25
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc722ab7_e2682ba6",
         "filename": "board/boten/board.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f12cc564_2ec82cd9",
+        "filename": "board/boten/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-11T07:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc722ab7_e2682ba6",
+      "range": {
+        "startLine": 198,
+        "startChar": 16,
+        "endLine": 198,
+        "endChar": 28
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d621220a_60ae6d63",
+        "filename": "board/boten/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-11T07:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cdeca74_bdbc6e87",
+      "range": {
+        "startLine": 207,
+        "startChar": 1,
+        "endLine": 207,
+        "endChar": 79
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cf2ab88_72cdc150",
         "filename": "board/boten/board.h",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36427c44_c11924ef",
+        "filename": "board/boten/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-11T07:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cf2ab88_72cdc150",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "80a995f2_50836f3c",
+        "filename": "board/boten/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-11T07:16:08Z",
+      "side": 1,
+      "message": "Have moved these from baseboard/dedede to board boten and waddledoo.",
+      "parentUuid": "229e91b0_50921fd4",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0f91f1b_ce2a0ee5",
         "filename": "board/boten/usb_pd_policy.c",
         "patchSetId": 2
@@ -152,6 +272,30 @@
       "writtenOn": "2020-06-10T16:34:46Z",
       "side": 1,
       "message": "Should be unnecessary if using TCPC to detect Vbus",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a709327_5da426f9",
+        "filename": "board/boten/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-11T07:16:08Z",
+      "side": 1,
+      "message": "API pd_snk_is_vbus_provided() should be necessary because raa489000_init() will call it.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/driver/tcpm/raa489000.c#147",
+      "parentUuid": "f0f91f1b_ce2a0ee5",
       "range": {
         "startLine": 74,
         "startChar": 0,
