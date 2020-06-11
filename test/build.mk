@@ -54,6 +54,7 @@ test-list-host += motion_angle_tablet
 test-list-host += motion_lid
 test-list-host += motion_sense_fifo
 test-list-host += mutex
+test-list-host += my_test
 test-list-host += newton_fit
 test-list-host += online_calibration
 test-list-host += pingpong
