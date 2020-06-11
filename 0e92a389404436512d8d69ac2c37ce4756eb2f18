@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "a339bed5_950d6d07",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T22:03:14Z",
+      "side": 1,
+      "message": "that\u0027s fine",
+      "parentUuid": "d2861ec9_fdcda904",
+      "range": {
+        "startLine": 1713,
+        "startChar": 6,
+        "endLine": 1713,
+        "endChar": 61
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc472b58_14b0a297",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -358,6 +382,30 @@
     },
     {
       "key": {
+        "uuid": "a9642c05_3410d3b4",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T22:03:14Z",
+      "side": 1,
+      "message": "I think just let wait_For it check since that happens very quickly anyway and it would have the same effect",
+      "parentUuid": "b0e3a8ba_1ee27554",
+      "range": {
+        "startLine": 1912,
+        "startChar": 1,
+        "endLine": 1916,
+        "endChar": 2
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c60f8b8e_f1688860",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -393,6 +441,30 @@
       "side": 1,
       "message": "Wouldn\u0027t we accidentally catch Battery_Status data messages if we don\u0027t check cnt since data and control message types overlap?",
       "parentUuid": "c60f8b8e_f1688860",
+      "range": {
+        "startLine": 2031,
+        "startChar": 6,
+        "endLine": 2031,
+        "endChar": 39
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14c4b7c0_6e736b19",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T22:03:14Z",
+      "side": 1,
+      "message": "Excellent. thank you. Can you add that add a comment. that cnt \u003e 0 means data message",
+      "parentUuid": "0d09e7c0_1ac23414",
       "range": {
         "startLine": 2031,
         "startChar": 6,
@@ -544,6 +616,30 @@
       "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07450b06_6abcdb76",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2067,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T22:03:14Z",
+      "side": 1,
+      "message": "not major. We just have less code since we already have to code to handle that case, and we don\u0027t need to have both the special case short circuit and the just in case handling in ..FROM_PE state.\n\nThis does follow the spec so that is worth something too. I am fine leaving it.",
+      "parentUuid": "65a6f4b2_f3fec6a4",
+      "range": {
+        "startLine": 2065,
+        "startChar": 2,
+        "endLine": 2067,
+        "endChar": 1
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
