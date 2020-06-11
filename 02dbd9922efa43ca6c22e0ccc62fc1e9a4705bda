@@ -22,6 +22,30 @@
       "revId": "02dbd9922efa43ca6c22e0ccc62fc1e9a4705bda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78cc18fc_ba3b937d",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2020-06-11T06:14:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a53dcb8d_9d4c1220",
+      "range": {
+        "startLine": 123,
+        "startChar": 3,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "02dbd9922efa43ca6c22e0ccc62fc1e9a4705bda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
