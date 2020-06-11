@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b2e1d52_bf12766d",
+        "filename": "board/puff/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-06-11T09:20:48Z",
+      "side": 1,
+      "message": "Do we need to align the setting in model.yaml? https://chrome-internal-review.googlesource.com/c/chromeos/overlays/overlay-puff-private/+/2995417/3/chromeos-base/chromeos-config-bsp-puff-private/files/model.yaml#127",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 18
+      },
+      "revId": "d91ec6a658b2ba777c4496a493db054787eeed90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
