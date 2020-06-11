@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "266988e5_46bca436",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T20:58:48Z",
+      "side": 1,
+      "message": "isn\u0027t it 6-67?",
+      "range": {
+        "startLine": 852,
+        "startChar": 13,
+        "endLine": 852,
+        "endChar": 15
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9990132_eea86c49",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -73,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "19d3d3d7_509af660",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T20:58:48Z",
+      "side": 1,
+      "message": "I think the TCH always gets distrupted, so I agree let\u0027s always discard and note that we aren\u0027t following spec because TCH would be discarding anyway",
+      "parentUuid": "f7804896_b6a9950c",
+      "range": {
+        "startLine": 854,
+        "startChar": 1,
+        "endLine": 860,
+        "endChar": 2
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60a4bfff_81438f95",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -108,6 +155,30 @@
       "side": 1,
       "message": "I can give that whirl.  However, I would argue we should maybe try to make our checks more resilient to run order if we can?",
       "parentUuid": "60a4bfff_81438f95",
+      "range": {
+        "startLine": 1713,
+        "startChar": 6,
+        "endLine": 1713,
+        "endChar": 61
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db9285a_47307fb4",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1713,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T20:58:48Z",
+      "side": 1,
+      "message": "I also think that this condition goes away if we can get the\n\nprl_tx_is_busy() function to work since this should really block on that",
+      "parentUuid": "8d95f401_25c14246",
       "range": {
         "startLine": 1713,
         "startChar": 6,
@@ -167,6 +238,53 @@
     },
     {
       "key": {
+        "uuid": "7011a604_e32c69d5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T20:58:48Z",
+      "side": 1,
+      "message": "This is actually one of the reasons that I want to run the state machine again when ever you call set_state so we don\u0027t have to add this check manually and can depend on a parent run state to perform this check (when the SM settles)",
+      "parentUuid": "ab662d25_0a799c06",
+      "range": {
+        "startLine": 1912,
+        "startChar": 1,
+        "endLine": 1916,
+        "endChar": 2
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c60f8b8e_f1688860",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T20:58:48Z",
+      "side": 1,
+      "message": "simplifies to type !\u003d PING\n\nResult \u003d (cnt \u003e 0) || (type !\u003d PD_CTRL_PING)\n\n!Result \u003d (cnt \u003d\u003d 0) \u0026\u0026 (type \u003d\u003d PD_CTRL_PING)\n!Result \u003d type \u003d\u003d PD_CTRL_PING\n\n!!Result \u003d type !\u003d PD_CTRL_PING",
+      "range": {
+        "startLine": 2031,
+        "startChar": 6,
+        "endLine": 2031,
+        "endChar": 39
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d05cba3_d20ab65f",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -207,6 +325,53 @@
         "startChar": 3,
         "endLine": 2040,
         "endChar": 50
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb04296_826b5844",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2040,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T20:58:48Z",
+      "side": 1,
+      "message": "Since we are always going to discard, let\u0027s just keep the logic here",
+      "parentUuid": "d1a004c2_cfd4f455",
+      "range": {
+        "startLine": 2033,
+        "startChar": 3,
+        "endLine": 2040,
+        "endChar": 50
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4285a37f_0403aff2",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2067,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-11T20:58:48Z",
+      "side": 1,
+      "message": "I don\u0027t think we even need this, just sent it straight to the TCH always since the TCH already had to have the code to pass to RCH. Now that TCH happens before RCH, the flow works\n\nAnd the data from is always TCH -\u003e RCH there is no dependency the other way, so we should always keep that order (and it is documented that way)",
+      "range": {
+        "startLine": 2065,
+        "startChar": 2,
+        "endLine": 2067,
+        "endChar": 1
       },
       "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
