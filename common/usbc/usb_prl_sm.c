@@ -851,7 +851,7 @@ static void prl_tx_discard_message_entry(const int port)
 	if (PRL_TX_CHK_FLAG(port, PRL_FLAGS_MSG_XMIT)) {
 		increment_msgid_counter(port);
 		PRL_TX_CLR_FLAG(port, PRL_FLAGS_MSG_XMIT);
-		/* TODO(b/157228506): notify pe if needed */
+		pe_report_discard(port);
 	}
 
 	set_state_prl_tx(port, PRL_TX_PHY_LAYER_RESET);
