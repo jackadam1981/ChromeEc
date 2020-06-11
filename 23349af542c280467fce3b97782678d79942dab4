@@ -22,6 +22,30 @@
       "revId": "23349af542c280467fce3b97782678d79942dab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84bd3b57_2c02bc42",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-11T22:25:56Z",
+      "side": 1,
+      "message": "The USB SPI is just a pipe, it doesn\u0027t know what it\u0027s connected to and neither does the Servo Micros and to an extent, the Cr50 implementation is pretty similar. This just defines the maximum capabilities of that pipe and the Flashrom project is responsible for controlling the actual size of the transfers. So for instance, on Name when doing flash reads, the standard transfer will have a write count of 4 and read count of 293. But when it is performing flash writes, it has a write count of 260 and read count of 0. The delta in bytes is caused by headers that are accounted for in some areas of Flashrom and not others.\n\nThe USB and SPI transfers are each operating nowhere near their potential maximum. There\u0027s a fairly long delay between when the packet is transferred and when the endpoint ISR usb_spi_rx() and usb_spi_tx() functions are called, plus an additional delay between the ISR and when the deferred task wakes up and calls the usb_spi_deferred() function. There\u0027s also a setup and shutdown delay when doing the SPI transfer itself. These result in neither of the peripherals operating at near their maximum duty cycle.\n\nIf I move a few memory operations around into the ISR, you can get a nearly 30% additional boost in performance. There\u0027s a few lines of code to implement that last improvement, but I would like it under much more scrutiny if we want that addition since it has the higher potential for race conditions between the interrupt and deferred contexts and I\u0027m unfamiliar with the EC\u0027s mutex locks or critical sections which could be used to implement it safely.",
+      "parentUuid": "666e38bd_668cb70b",
+      "range": {
+        "startLine": 369,
+        "startChar": 8,
+        "endLine": 369,
+        "endChar": 27
+      },
+      "revId": "23349af542c280467fce3b97782678d79942dab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
