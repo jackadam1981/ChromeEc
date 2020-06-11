@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f7804896_b6a9950c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-11T20:13:07Z",
+      "side": 1,
+      "message": "Looking at this more, how do we avoid disrupting the TCH if we have to tell it there was a message incoming anyway?\n\nI\u0027m almost half leaning towards always discarding here?  It wouldn\u0027t match spec, but in this case spec seems like it\u0027s trying to help you optimize somehow.  We could always re-try what we were doing from ready, I\u0027d hope.",
+      "parentUuid": "7af0b2f6_809bfea0",
+      "range": {
+        "startLine": 854,
+        "startChar": 1,
+        "endLine": 860,
+        "endChar": 2
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60a4bfff_81438f95",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
