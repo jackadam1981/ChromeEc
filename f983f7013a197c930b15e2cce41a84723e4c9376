@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9364a8d3_6036f574",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 86
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-11T02:07:32Z",
+      "side": 1,
+      "message": "This is not needed.",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "f983f7013a197c930b15e2cce41a84723e4c9376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b440fff2_0c392124",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 86
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-11T02:07:32Z",
+      "side": 1,
+      "message": "Drop this line.",
+      "revId": "f983f7013a197c930b15e2cce41a84723e4c9376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ccd8c9_cb1e83b0",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 86
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-11T02:07:32Z",
+      "side": 1,
+      "message": "We probably don\u0027t need this any more. DCP should be capped at 1.5A .",
+      "range": {
+        "startLine": 108,
+        "startChar": 11,
+        "endLine": 108,
+        "endChar": 30
+      },
+      "revId": "f983f7013a197c930b15e2cce41a84723e4c9376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79da7ea7_74c1c1d1",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 86
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-11T02:07:32Z",
+      "side": 1,
+      "message": "port",
+      "range": {
+        "startLine": 130,
+        "startChar": 50,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "f983f7013a197c930b15e2cce41a84723e4c9376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbdaac7_015cb880",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 86
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-11T02:07:32Z",
+      "side": 1,
+      "message": "Should we move this into mt6360_usb_charger_task? It would be clearer that `mt6360_enable_bc12_detection` is handled in the same place.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 33
+      },
+      "revId": "f983f7013a197c930b15e2cce41a84723e4c9376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5383302_87109db9",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 86
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-11T02:07:32Z",
+      "side": 1,
+      "message": "/* write clear */",
+      "revId": "f983f7013a197c930b15e2cce41a84723e4c9376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "336ac1b7_82508c28",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 86
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-11T02:07:32Z",
+      "side": 1,
+      "message": "update",
+      "range": {
+        "startLine": 162,
+        "startChar": 21,
+        "endLine": 162,
+        "endChar": 28
+      },
+      "revId": "f983f7013a197c930b15e2cce41a84723e4c9376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
