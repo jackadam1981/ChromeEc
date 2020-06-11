@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c77c5af_2b8e6864",
+        "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-11T23:32:07Z",
+      "side": 1,
+      "message": "We should probably re-enable this based on chipset startup?",
+      "revId": "21e61e0a38a04e72b866232ee7170b77177fd185",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
