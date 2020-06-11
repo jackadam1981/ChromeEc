@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a19ee5a_e89f9270",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-11T07:37:57Z",
+      "side": 1,
+      "message": "the config name is changed to CONFIG_CHARGER_ISL9238C after CL:2231725",
+      "range": {
+        "startLine": 66,
+        "startChar": 43,
+        "endLine": 66,
+        "endChar": 65
+      },
+      "revId": "3f0dd23a48b65a27f836b93a435145027c242da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee621198_842cb7b3",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-11T07:37:57Z",
+      "side": 1,
+      "message": "use IS_ENABLED if possible:\n\nif (IS_ENABLED(CONFIG_CHARGER_OTG) \u0026\u0026 IS_ENABLED(CONFIG_CHARGER_ISL9238C))",
+      "revId": "3f0dd23a48b65a27f836b93a435145027c242da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
