@@ -1094,6 +1094,7 @@ test_export_static void set_state_pe(const int port,
 				     const enum usb_pe_state new_state)
 {
 	set_state(port, &pe[port].ctx, &pe_states[new_state]);
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
 
 /* Get the current TypeC state. */
