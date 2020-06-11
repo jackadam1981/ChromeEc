@@ -16,6 +16,24 @@
       "revId": "4740828e9dc27bd4b858fb51501431b1b69f0a5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123fd6ab_b53f2197",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-06-11T07:19:01Z",
+      "side": 1,
+      "message": "[1] We still need CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT to set PPC OCP.\n[2] Done.",
+      "parentUuid": "61bbfb2a_5c029dd0",
+      "revId": "4740828e9dc27bd4b858fb51501431b1b69f0a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
