@@ -1188,6 +1188,7 @@ enum cable_outlet {
  * NOTE: bit 4 was added in PD 3.0, and should be reserved and set to 0 in PD
  * 2.0 messages
  */
+/* Either pd_ctrl_msg_type or pd_data_msg_type */
 #define PD_HEADER_TYPE(header)  ((header) & 0x1F)
 #define PD_HEADER_ID(header)    (((header) >> 9) & 7)
 #define PD_HEADER_PROLE(header) (((header) >> 8) & 1)
