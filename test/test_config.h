@@ -466,13 +466,16 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define CONFIG_RWSIG
 #define CONFIG_SHA256
 #define CONFIG_RSA
+#undef CONFIG_RSA_KEY_SIZE
+#define CONFIG_RSA_KEY_SIZE 2048
 #define CONFIG_RWSIG_TYPE_RWSIG
-#define CONFIG_RW_B
-#define CONFIG_RW_B_MEM_OFF		CONFIG_RO_MEM_OFF
 #undef  CONFIG_RO_SIZE
 #define CONFIG_RO_SIZE			(CONFIG_FLASH_SIZE / 4)
 #undef  CONFIG_RW_SIZE
 #define CONFIG_RW_SIZE			CONFIG_RO_SIZE
+#define CONFIG_RW_B
+/* Make sure RW_B does not overlap with RO or RW for on-device test */
+#define CONFIG_RW_B_MEM_OFF		(CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE)
 #define CONFIG_RW_A_STORAGE_OFF		CONFIG_RW_STORAGE_OFF
 #define CONFIG_RW_B_STORAGE_OFF		(CONFIG_RW_A_STORAGE_OFF + \
 					 CONFIG_RW_SIZE)
@@ -480,6 +483,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 					 CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)
 #define CONFIG_RW_B_SIGN_STORAGE_OFF	(CONFIG_RW_B_STORAGE_OFF + \
 					 CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)
+#undef CONFIG_ROLLBACK
 #endif
 
 #ifdef TEST_X25519
