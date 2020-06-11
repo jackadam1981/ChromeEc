@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9c386620_7697fdcb",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-11T08:04:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7317f2e7_ab7eb664",
+      "range": {
+        "startLine": 276,
+        "startChar": 7,
+        "endLine": 276,
+        "endChar": 42
+      },
+      "revId": "4c3a3da6fc9db0c615e62d2668d9887dddb0dbf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "997d45ae_07600ff2",
         "filename": "chip/stm32/usb_spi.h",
         "patchSetId": 7
@@ -69,6 +93,30 @@
       "revId": "4c3a3da6fc9db0c615e62d2668d9887dddb0dbf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ca192c_9274ee3d",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-11T08:04:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "997d45ae_07600ff2",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 18
+      },
+      "revId": "4c3a3da6fc9db0c615e62d2668d9887dddb0dbf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
