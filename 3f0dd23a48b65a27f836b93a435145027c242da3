@@ -39,6 +39,48 @@
       "revId": "3f0dd23a48b65a27f836b93a435145027c242da3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c3db63_86d2e0a9",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400912
+      },
+      "writtenOn": "2020-06-11T07:43:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a19ee5a_e89f9270",
+      "range": {
+        "startLine": 66,
+        "startChar": 43,
+        "endLine": 66,
+        "endChar": 65
+      },
+      "revId": "3f0dd23a48b65a27f836b93a435145027c242da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "399e9d3d_9e6f784e",
+        "filename": "baseboard/kukui/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1400912
+      },
+      "writtenOn": "2020-06-11T07:43:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee621198_842cb7b3",
+      "revId": "3f0dd23a48b65a27f836b93a435145027c242da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
