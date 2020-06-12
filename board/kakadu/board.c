@@ -26,6 +26,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "max17055.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -44,6 +45,8 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+#define TEMPERATURE_CONV(REG)   (((REG * 10) >> 8) + 2731)
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -441,3 +444,28 @@ __override int board_has_virtual_mux(void)
 {
 	return board_get_version() < 5;
 }
+
+static int max17055_read(int offset, int *data)
+{
+	return i2c_read16(I2C_PORT_BATTERY, MAX17055_ADDR_FLAGS,
+			  offset, data);
+}
+
+static enum ec_status
+host_command_get_bat_temp(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_get_bat_temp *p = args->params;
+	struct ec_response_get_bat_temp *r1 = args->response;
+	int reg;
+
+	if(p->index !=0)
+		return EC_RES_SUCCESS;
+
+	max17055_read(REG_TEMPERATURE, &reg);
+
+	r1->temp = TEMPERATURE_CONV((int16_t)reg);
+
+	args->response_size = sizeof(*r1);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_BAT_TEMP, host_command_get_bat_temp, EC_VER_MASK(0));

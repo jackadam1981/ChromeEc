@@ -7146,6 +7146,8 @@ int cmd_battery(int argc, char *argv[])
 	int rv, val;
 	char *e;
 	int index = 0;
+	struct ec_params_get_bat_temp p;
+	struct ec_response_get_bat_temp r;
 
 	if (argc > 2) {
 		fprintf(stderr, "Usage: %s [index]\n", argv[0]);
@@ -7234,6 +7236,8 @@ int cmd_battery(int argc, char *argv[])
 	val = read_mapped_mem8(EC_MEMMAP_BATT_FLAG);
 	print_battery_flags(val);
 
+	rv = ec_command(EC_CMD_GET_BAT_TEMP, 0, &p, sizeof(p), &r, sizeof(r));
+	printf("  Battery temperature     %u C\n", r.temp);
 	return 0;
 cmd_error:
 	fprintf(stderr, "Bad battery info value. Check protocol version.\n");
