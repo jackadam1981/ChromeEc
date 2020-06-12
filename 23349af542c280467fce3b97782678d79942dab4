@@ -70,6 +70,30 @@
       "revId": "23349af542c280467fce3b97782678d79942dab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c95830f_8d33b13b",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-12T02:14:15Z",
+      "side": 1,
+      "message": "USB SPI says, \u0027I can support up to 298 byte reads and writes\u0027. The Flashrom interface sends commands through the USB SPI interface to identify which chip it is communicating with and loads the appropriate driver for the flash chip. It then notifies that driver what size read and write it supports over the SPI interface. Flashrom uses the combination of the USB SPI driver and the flash driver to identify what size reads and writes the DUT supports and it\u0027s limited by whatever is smaller.\n\nSo when doing writes on Nami, it did perform 256 byte writes, with a 4 byte header size.\nOn the other hand, reads on Nami do not follow that same constraint, it supports up to 298 bytes reads. Due to some bad flash drivers misinterpreting the SPI size for \u0027payload size\u0027 we actually tell them 293 bytes which is where that value comes from.",
+      "parentUuid": "677ba9f4_b6fcef98",
+      "range": {
+        "startLine": 369,
+        "startChar": 8,
+        "endLine": 369,
+        "endChar": 27
+      },
+      "revId": "23349af542c280467fce3b97782678d79942dab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
