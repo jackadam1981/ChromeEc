@@ -4268,6 +4268,14 @@ void pd_task(void *u)
 		case PD_STATE_SNK_REQUESTED:
 			/* Wait for ACCEPT or REJECT */
 			if (pd[port].last_state != pd[port].task_state) {
+				/*
+				 * USB PD  version 1.3 section 2.6.2:
+				 * During Explicit contract the Sink can
+				 * initiate or receive a request an exchange
+				 * of VCONN Source. Hence, enable Vconn swap
+				 * during explicit contract.
+				 */
+				pd[port].flags |= PD_FLAGS_CHECK_VCONN_STATE;
 				hard_reset_count = 0;
 				set_state_timeout(port,
 						  get_time().val +
@@ -4318,14 +4326,6 @@ void pd_task(void *u)
 				pd_check_pr_role(port, PD_ROLE_SINK,
 						 pd[port].flags);
 				pd[port].flags &= ~PD_FLAGS_CHECK_PR_ROLE;
-				/*
-				 * USB PD  version 1.3 section 2.6.2:
-				 * During Explicit contract the Sink can
-				 * initiate or receive a request an exchange
-				 * of VCONN Source. Hence, enable Vconn swap
-				 * during explicit contract.
-				 */
-				pd[port].flags |= PD_FLAGS_CHECK_VCONN_STATE;
 				break;
 			}
 
