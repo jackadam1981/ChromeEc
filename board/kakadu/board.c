@@ -26,6 +26,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "max17055.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -441,3 +442,20 @@ __override int board_has_virtual_mux(void)
 {
 	return board_get_version() < 5;
 }
+
+static enum ec_status
+host_command_get_bat_temp(struct host_cmd_handler_args *args)
+{
+	struct ec_response_get_bat_temp *r1 = args->response;
+
+	struct batt_params batt_new1 = {0};
+
+	battery_get_params(&batt_new1);
+	r1->temp = batt_new1.temperature;
+
+	args->response_size = sizeof(*r1);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_BAT_TEMP, host_command_get_bat_temp, EC_VER_MASK(0));
+
+
