@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f833ec7_94237e7b",
+        "filename": "test/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-12T23:22:32Z",
+      "side": 1,
+      "message": "so, who would release memory acquired in line 259?\n\nI think the fix should be just using a second variable for the pointer in the original line 241.",
+      "range": {
+        "startLine": 262,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 4
+      },
+      "revId": "57c75ce20a99c28f192ea80499db964b8ad25a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
