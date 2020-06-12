@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24b43af3_ddd787f4",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-12T20:00:40Z",
+      "side": 1,
+      "message": "PTAL \ncr50 builds successfully with this ifdef.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 32
+      },
+      "revId": "3e005a7ca98d7ceed97bfb931b0baa8b925a6ac7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
