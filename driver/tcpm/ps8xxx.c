@@ -21,6 +21,7 @@
 #include "usb_pd.h"
 
 #if !defined(CONFIG_USB_PD_TCPM_PS8751) && \
+	!defined(CONIFG_USB_PD_TCPM_PS8705) && \
 	!defined(CONFIG_USB_PD_TCPM_PS8805) && \
 	!defined(CONFIG_USB_PD_TCPM_PS8815)
 #error "Unsupported PS8xxx TCPC."
@@ -287,6 +288,14 @@ static int ps8xxx_dci_disable(int port)
 				       PS8805_P1_REG_MUX_USB_DCI_CFG);
 }
 #endif /* CONFIG_USB_PD_TCPM_PS8805 */
+
+#ifdef CONFIG_USB_PD_TCPM_PS8705
+static int ps8xxx_dci_disable(int port)
+{
+	/* DCI is disabled on the ps8705 */
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_USB_PD_TCPM_PS8705 */
 
 #ifdef CONFIG_USB_PD_TCPM_PS8751
 static int ps8xxx_dci_disable(int port)
