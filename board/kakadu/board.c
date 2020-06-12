@@ -241,7 +241,6 @@ int pd_snk_is_vbus_provided(int port)
 
 static void board_init(void)
 {
-
 #ifdef SECTION_IS_RW
 	int val;
 	i2c_read8(I2C_PORT_CHARGER, CHARGER_I2C_ADDR_FLAGS,
@@ -250,6 +249,20 @@ static void board_init(void)
 	i2c_write8(I2C_PORT_CHARGER, CHARGER_I2C_ADDR_FLAGS,
 		RT946X_REG_CHGCTRL1, (val | RT946X_MASK_STAT_EN));
 #endif
+
+	if (system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN)
+	{
+		if (gpio_get_level(GPIO_BATT_CUTOFF_INDICATOR) == 1)
+		{
+			board_cut_off_battery();
+			CPRINTF("[SC] came back from ship mode");
+		}
+		else
+		{
+			CPRINTF("[SC] normal boot");
+		}
+	}
+
 	/* If the reset cause is external, pulse PMIC force reset. */
 	if (system_get_reset_flags() == EC_RESET_FLAG_RESET_PIN) {
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 0);
