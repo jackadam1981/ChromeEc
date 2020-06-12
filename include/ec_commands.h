@@ -122,6 +122,7 @@ extern "C" {
 #define EC_MEMMAP_BATT_DVLT        0x54 /* Battery Design Voltage */
 #define EC_MEMMAP_BATT_LFCC        0x58 /* Battery Last Full Charge Capacity */
 #define EC_MEMMAP_BATT_CCNT        0x5c /* Battery Cycle Count */
+
 /* Strings are all 8 bytes (EC_MEMMAP_TEXT_MAX) */
 #define EC_MEMMAP_BATT_MFGR        0x60 /* Battery Manufacturer String */
 #define EC_MEMMAP_BATT_MODEL       0x68 /* Battery Model Number String */
@@ -1047,6 +1048,7 @@ struct ec_response_hello {
 
 /* Get version number */
 #define EC_CMD_GET_VERSION 0x0002
+#define EC_CMD_GET_BAT_TEMP 0x002F
 
 enum ec_current_image {
 	EC_IMAGE_UNKNOWN = 0,
@@ -1067,6 +1069,13 @@ struct ec_response_get_version {
 	char reserved[32];
 	uint32_t current_image;
 } __ec_align4;
+
+struct ec_response_get_bat_temp {
+	uint8_t temp;
+} __ec_align_size1;
+struct ec_params_get_bat_temp {
+	uint8_t index;
+} __ec_align_size1;
 
 /* Read test */
 #define EC_CMD_READ_TEST 0x0003
