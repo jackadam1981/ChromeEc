@@ -94,6 +94,30 @@
       "revId": "23349af542c280467fce3b97782678d79942dab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dff5d6ef_c6de6102",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-12T16:19:05Z",
+      "side": 1,
+      "message": "Ah, my mistake. I somehow thought that USB_SPI_PAYLOAD_SIZE_V2_START is 4 bytes in size.",
+      "parentUuid": "2c95830f_8d33b13b",
+      "range": {
+        "startLine": 369,
+        "startChar": 8,
+        "endLine": 369,
+        "endChar": 27
+      },
+      "revId": "23349af542c280467fce3b97782678d79942dab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
