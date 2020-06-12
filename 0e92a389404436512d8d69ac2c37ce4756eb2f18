@@ -406,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "7fa69fdf_0b44002c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-12T20:14:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure I have the time to debug this right now, but this is a load bearing set_state.  I believe it\u0027s why your CL kept failing to send Accept in testing because that\u0027s what I see when I remove this.",
+      "parentUuid": "a9642c05_3410d3b4",
+      "range": {
+        "startLine": 1912,
+        "startChar": 1,
+        "endLine": 1916,
+        "endChar": 2
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c60f8b8e_f1688860",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
@@ -474,6 +498,30 @@
       "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0088486a_90ea5ad7",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-12T20:14:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14c4b7c0_6e736b19",
+      "range": {
+        "startLine": 2031,
+        "startChar": 6,
+        "endLine": 2031,
+        "endChar": 39
+      },
+      "revId": "0e92a389404436512d8d69ac2c37ce4756eb2f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
