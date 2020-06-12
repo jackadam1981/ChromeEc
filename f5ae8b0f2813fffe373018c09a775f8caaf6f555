@@ -22,6 +22,30 @@
       "revId": "f5ae8b0f2813fffe373018c09a775f8caaf6f555",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42f30e71_62429382",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2191,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-12T21:14:01Z",
+      "side": 1,
+      "message": "Nevermind, forgot this includes debug at this point.",
+      "parentUuid": "f89a3b42_303b2b38",
+      "range": {
+        "startLine": 2191,
+        "startChar": 2,
+        "endLine": 2191,
+        "endChar": 24
+      },
+      "revId": "f5ae8b0f2813fffe373018c09a775f8caaf6f555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
