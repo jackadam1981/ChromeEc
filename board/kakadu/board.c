@@ -26,6 +26,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "max17055.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -44,6 +45,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+#define TEMPERATURE_CONV(REG)   (((REG * 10) >> 8) + 2731)
+#define DECI_KELVIN_TO_CELSIUS(temp_dk) ((temp_dk - 2731) / 10)
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -81,6 +85,23 @@ const struct power_signal_info power_signal_list[] = {
 	{GPIO_PMIC_EC_RESETB,  POWER_SIGNAL_ACTIVE_HIGH, "PMIC_PWR_GOOD"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+
+
+static int max17055_read(int offset, int *data)
+{
+	return i2c_read16(I2C_PORT_BATTERY, MAX17055_ADDR_FLAGS,
+			  offset, data);
+}
+
+
+static void scott_read(void)
+{
+	int reg;
+	max17055_read(REG_TEMPERATURE, &reg);
+
+	CPRINTF("r1->temp=%d", TEMPERATURE_CONV((int16_t)reg));
+}
+
 
 /******************************************************************************/
 /* SPI devices */
@@ -250,6 +271,7 @@ static void board_init(void)
 	i2c_write8(I2C_PORT_CHARGER, CHARGER_I2C_ADDR_FLAGS,
 		RT946X_REG_CHGCTRL1, (val | RT946X_MASK_STAT_EN));
 #endif
+	scott_read();
 	/* If the reset cause is external, pulse PMIC force reset. */
 	if (system_get_reset_flags() == EC_RESET_FLAG_RESET_PIN) {
 		gpio_set_level(GPIO_PMIC_FORCE_RESET_ODL, 0);
@@ -441,3 +463,20 @@ __override int board_has_virtual_mux(void)
 {
 	return board_get_version() < 5;
 }
+
+static enum ec_status
+host_command_get_bat_temp(struct host_cmd_handler_args *args)
+{
+	struct ec_response_get_bat_temp *r1 = args->response;
+
+	struct batt_params batt_new1 = {0};
+
+	battery_get_params(&batt_new1);
+	r1->temp = batt_new1.temperature;
+
+	args->response_size = sizeof(*r1);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_BAT_TEMP, host_command_get_bat_temp, EC_VER_MASK(0));
+
+
