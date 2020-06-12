@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cdc5017_67815a31",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-12T18:38:15Z",
+      "side": 1,
+      "message": "You should use CONFIG_USB_PD_PULLUP here instead.",
+      "range": {
+        "startLine": 522,
+        "startChar": 25,
+        "endLine": 522,
+        "endChar": 37
+      },
+      "revId": "b066287d452aa640f5231f9da040b29d475b0c9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
