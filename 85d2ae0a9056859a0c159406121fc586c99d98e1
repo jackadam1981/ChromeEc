@@ -22,6 +22,30 @@
       "revId": "85d2ae0a9056859a0c159406121fc586c99d98e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "398f7dbf_7d036de8",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-12T00:05:54Z",
+      "side": 1,
+      "message": "does it cause build failures in the branch?\n\nTechnically yes, it should have been behind the flag, but it should be just discarded by the linker",
+      "parentUuid": "a8b34c7e_ae137b54",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 1
+      },
+      "revId": "85d2ae0a9056859a0c159406121fc586c99d98e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
