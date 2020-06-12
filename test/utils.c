@@ -163,7 +163,11 @@ static int test_memset(void)
 	 * The speed gain is too unpredictable on host, especially on
 	 * buildbots. Skip it if we are running in the emulator.
 	 */
+#ifdef CHIP_FAMILY_STM32F4
+	TEST_ASSERT((t1.val-t0.val) > (unsigned)(t3.val-t2.val) * 2);
+#else
 	TEST_ASSERT((t1.val-t0.val) > (unsigned)(t3.val-t2.val) * 3);
+#endif
 #endif
 
 	memset(buf, 128, len);
