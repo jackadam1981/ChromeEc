@@ -201,6 +201,12 @@ test_mockable __keep int main(void)
 	button_init();
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON | CONFIG_VOLUME_BUTTONS) */
 
+	if (IS_ENABLED(CONFIG_POWER_BUTTON_INIT_IDLE)
+			&& system_is_manual_recovery()) {
+		CPRINTS("Clear AP_IDLE for recovery mode");
+		system_clear_reset_flags(EC_RESET_FLAG_AP_IDLE);
+	}
+
 #if defined(CONFIG_VBOOT_EFS) || defined(CONFIG_VBOOT_EFS2)
 	/*
 	 * Execute PMIC reset in case we're here after watchdog reset to unwedge
