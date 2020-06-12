@@ -22,6 +22,30 @@
       "revId": "77d3a2d45768de6361935750b287ca55040592cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cf8f580_5d16beb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-12T17:09:30Z",
+      "side": 1,
+      "message": "Nevermind, I see the test on the next CL includes this :)",
+      "parentUuid": "b4a53c8f_8afeeb43",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "77d3a2d45768de6361935750b287ca55040592cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
