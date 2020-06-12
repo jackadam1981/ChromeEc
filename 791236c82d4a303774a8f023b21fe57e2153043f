@@ -305,6 +305,30 @@
       "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a78c7e_19753b55",
+        "filename": "board/boten/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-12T17:02:01Z",
+      "side": 1,
+      "message": "Ah, my mistake.  I\u0027d thought callers would go through pd_is_vbus_present() in the common code, which would make this function unnecessary since vbus is being detected through the TCPC.",
+      "parentUuid": "9a709327_5da426f9",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "791236c82d4a303774a8f023b21fe57e2153043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

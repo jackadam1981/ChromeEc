@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d97627e_1a7b0f0e",
+        "filename": "board/boten/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-12T17:02:01Z",
+      "side": 1,
+      "message": "nit: would recommend changing this to pd_check_vbus_level() similar to waddledoo.  I don\u0027t think boten should be as susceptible to deadlock as waddledoo was (with two type-c ports), but it wouldn\u0027t hurt.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 35
+      },
+      "revId": "af689860351eaa079c5ebd3c2a0c095baf9a7010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
