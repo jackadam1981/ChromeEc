@@ -81,6 +81,24 @@
       "revId": "87ccf136bc7d88e85c40955af02a352bdd6ef46d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09fc5652_b8161797",
+        "filename": "common/extpower_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-12T16:11:07Z",
+      "side": 1,
+      "message": "Why would the order of operations change? hook_notify() is just a function call to power_ac_change(), are you worried about the ordering when there are multiple DECLARE_HOOK(HOOK_AC_CHANGE ...) defined?",
+      "parentUuid": "22c83d3b_365e7e6f",
+      "revId": "87ccf136bc7d88e85c40955af02a352bdd6ef46d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
