@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "timer.h"
 #include "usb_common.h"
 #include "usb_pe_sm.h"
 #include "usb_prl_sm.h"
@@ -102,9 +103,12 @@ test_export_static int command_pd(int argc, char **argv)
 			if (argc < 4)
 				return EC_ERROR_PARAM_COUNT;
 
-			if (!strcasecmp(argv[3], "power"))
+			if (!strcasecmp(argv[3], "power")) {
+				board_debug_gpio(TRIGGER_1, 1);
 				pe_dpm_request(port, DPM_REQUEST_PR_SWAP);
-			else if (!strcasecmp(argv[3], "data"))
+				usleep(200);
+				board_debug_gpio(TRIGGER_1, 0);
+			} else if (!strcasecmp(argv[3], "data"))
 				pe_dpm_request(port, DPM_REQUEST_DR_SWAP);
 			else if (IS_ENABLED(CONFIG_USBC_VCONN_SWAP) &&
 					!strcasecmp(argv[3], "vconn"))

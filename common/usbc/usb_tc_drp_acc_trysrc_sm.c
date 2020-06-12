@@ -468,8 +468,10 @@ void tc_request_power_swap(int port)
 		 * disconnect detection to retain PD message delivery when
 		 * Power Role Swap happens. Disable AutoDischargeDisconnect.
 		 */
-		if (IS_ATTACHED_SNK(port))
+		if (IS_ATTACHED_SNK(port)) {
+			CPRINTS("pe: pr swap: attached snk");
 			tcpm_enable_auto_discharge_disconnect(port, 0);
+		}
 	}
 }
 
@@ -1344,8 +1346,9 @@ void tc_event_check(int port, int evt)
 	if (evt & PD_EVENT_DEVICE_ACCESSED)
 		handle_device_access(port);
 
-	if (evt & PD_EVENT_TCPC_RESET)
+	if (evt & PD_EVENT_TCPC_RESET) {
 		reset_device_and_notify(port);
+	}
 
 #ifdef CONFIG_POWER_COMMON
 	if (IS_ENABLED(CONFIG_POWER_COMMON)) {
@@ -1395,8 +1398,10 @@ void tc_set_data_role(int port, enum pd_data_role role)
 
 	pd_update_saved_port_flags(port, PD_BBRMFLG_DATA_ROLE, role);
 
-	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		CPRINTS("tc: set_dr: set_mux with curr dr");
 		set_usb_mux_with_current_data_role(port);
+	}
 
 	/*
 	 * Run any board-specific code for role swap (e.g. setting OTG signals
@@ -1510,7 +1515,7 @@ static void handle_new_power_state(int port)
 }
 #endif /* CONFIG_POWER_COMMON */
 
-#if defined(CONFIG_USB_PD_ALT_MODE) && !defined(CONFIG_USB_PD_ALT_MODE_DFP)
+#if defined(CONFIG_USB_PD_ALT_MODE) /* && !defined(CONFIG_USB_PD_ALT_MODE_DFP) */
 void pd_send_hpd(int port, enum hpd_event hpd)
 {
 	uint32_t data[1];
@@ -1530,6 +1535,9 @@ void pd_send_hpd(int port, enum hpd_event hpd)
 		0x2);
 		pd_send_vdm(port, USB_SID_DISPLAYPORT,
 		VDO_OPOS(opos) | CMD_ATTENTION, data, 1);
+
+	CPRINTS("pd: sending hpd attention! hpd = %d, data_0 = 0x%08x",
+		hpd, data[0]);
 }
 #endif
 
@@ -1579,6 +1587,8 @@ static __maybe_unused int reset_device_and_notify(int port)
 	TC_CLR_FLAG(port, TC_FLAGS_LPM_TRANSITION);
 	TC_CLR_FLAG(port, TC_FLAGS_LPM_ENGAGED);
 	tc_start_event_loop(port);
+
+	CPRINTS("Scott is always right, but so fucking often wrong");
 
 	if (rv == EC_SUCCESS)
 		CPRINTS("TCPC p%d init ready", port);
@@ -2919,7 +2929,7 @@ static void tc_attached_src_run(const int port)
 				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME,
 						0, 0);
 			}
-
+#ifdef CONFIG_USB_PD_TRY_SRC
 		set_state_tc(port, IS_ENABLED(CONFIG_USB_PD_TRY_SRC) ?
 			TC_TRY_WAIT_SNK : TC_UNATTACHED_SNK);
 #else

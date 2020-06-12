@@ -380,20 +380,29 @@ mux_state_t get_mux_mode_to_set(int port)
 	    chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
 		return USB_PD_MUX_NONE;
 
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX_UFP_USB3) &
+	    (pd_get_data_role(port) == PD_ROLE_UFP)) {
+		CPRINTS("get_mux_mode: 0");
+		return USB_PD_MUX_USB_ENABLED;
+	}
 	/*
 	 * When PD stack is disconnected, then mux should be disconnected, which
 	 * is also what happens in the set_state disconnection code. Once the
 	 * PD state machine progresses out of disconnect, the MUX state will
 	 * be set correctly again.
 	 */
-	if (pd_is_disconnected(port))
+	if (pd_is_disconnected(port)) {
+		CPRINTS("get_mux_mode: 1");
 		return USB_PD_MUX_NONE;
+	}
 
 	/* If new data role isn't DFP & we only support DFP, also disconnect. */
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
 	    IS_ENABLED(CONFIG_USBC_SS_MUX_DFP_ONLY) &&
-	    pd_get_data_role(port) != PD_ROLE_DFP)
+	    pd_get_data_role(port) != PD_ROLE_DFP) {
+		CPRINTS("get_mux_mode: 2");
 		return USB_PD_MUX_NONE;
+	}
 
 	/*
 	 * If the power role is sink and the partner device is not capable
@@ -401,8 +410,11 @@ mux_state_t get_mux_mode_to_set(int port)
 	 */
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
 	    pd_get_power_role(port) == PD_ROLE_SINK &&
-	    !pd_get_partner_usb_comm_capable(port))
+	    !pd_get_partner_usb_comm_capable(port)) {
+		CPRINTS("get_mux_mode: 3, pr = %d, usb_comm_capable = %d",
+			pd_get_power_role(port), pd_get_partner_usb_comm_capable(port));
 		return USB_PD_MUX_NONE;
+	}
 
 	/* Otherwise connect mux since we are in S3+ */
 	return USB_PD_MUX_USB_ENABLED;
@@ -415,6 +427,9 @@ void set_usb_mux_with_current_data_role(int port)
 		enum usb_switch usb_switch_mode =
 				(mux_mode == USB_PD_MUX_NONE) ?
 				USB_SWITCH_DISCONNECT : USB_SWITCH_CONNECT;
+
+		CPRINTS("usb_common: mux set params mode = %d, switch = %d",
+			mux_mode, usb_switch_mode);
 
 		usb_mux_set(port, mux_mode, usb_switch_mode,
 				pd_get_polarity(port));
@@ -684,8 +699,10 @@ void pd_set_vbus_discharge(int port, int enable)
 		gpio_discharge_vbus(port, enable);
 	else if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_TCPC))
 		tcpc_discharge_vbus(port, enable);
-	else if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_PPC))
+	else if (IS_ENABLED(CONFIG_USB_PD_DISCHARGE_PPC)) {
+		//ccprintf("vbus: discharge -> on = %d\n", enable);
 		ppc_discharge_vbus(port, enable);
+	}
 
 	mutex_unlock(&discharge_lock[port]);
 }

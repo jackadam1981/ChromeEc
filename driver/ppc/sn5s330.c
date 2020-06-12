@@ -5,20 +5,22 @@
 
 /* TI SN5S330 USB-C Power Path Controller */
 
-/*
- * PP1 : Sourcing power path.
+/* * PP1 : Sourcing power path.
  * PP2 : Sinking power path.
  */
 
 #include "common.h"
 #include "console.h"
 #include "driver/ppc/sn5s330.h"
+#include "driver/tcpm/tcpm.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "system.h"
 #include "timer.h"
 #include "usb_charge.h"
+#include "usb_common.h"
 #include "usb_pd_tcpm.h"
+#include "usb_pd_tcpc.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -641,6 +643,7 @@ static int sn5s330_set_sbu(int port, int enable)
 }
 #endif /* CONFIG_USBC_PPC_SBU */
 
+
 static void sn5s330_handle_interrupt(int port)
 {
 	int attempt = 0;
@@ -696,6 +699,14 @@ static void sn5s330_handle_interrupt(int port)
 #if defined(CONFIG_USB_PD_VBUS_DETECT_PPC) && defined(CONFIG_USB_CHARGER)
 		read_reg(port, SN5S330_INT_TRIP_RISE_REG3, &rise);
 		read_reg(port, SN5S330_INT_TRIP_FALL_REG3, &fall);
+
+		if (fall & SN5S330_VBUS_GOOD_MASK) {
+			enum tcpc_cc_voltage_status cc1, cc2;
+
+			tcpm_get_cc(port, &cc1, &cc2);
+			CPRINTS("ppc: vbus lost!, cc1 - %d, cc2 - %d",
+				cc1, cc2);
+		}
 
 		/* Inform other modules about VBUS level */
 		if (rise & SN5S330_VBUS_GOOD_MASK

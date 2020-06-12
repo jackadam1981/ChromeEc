@@ -7,6 +7,7 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "i2c.h"
 #include "ps8822.h"
 #include "usb_mux.h"
@@ -26,17 +27,6 @@ int ps8822_write(const struct usb_mux *me, uint8_t reg, uint8_t val)
 
 static int ps8822_init(const struct usb_mux *me)
 {
-	int id1;
-	int res;
-
-	/* Reset chip back to power-on state */
-	res = ps8822_read(me, PS8822_REG_MODE, &id1);
-	if (res)
-		return res;
-
-	/*
-	 * Verify chip ID registers.
-	 */
 
 	return EC_SUCCESS;
 }
@@ -61,18 +51,25 @@ static int ps8822_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		reg |= PS8822_MODE_FLIP;
 
-	return ps8822_write(me, PS8822_REG_MODE, reg);
+
+	ps8822_write(me, PS8822_REG_MODE, reg);
+
+	return EC_SUCCESS;
 }
 
 /* Reads control register and updates mux_state accordingly */
 static int ps8822_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 {
 	int reg;
-	int res;
+	int rv;
 
-	res = ps8822_read(me, PS8822_REG_MODE, &reg);
-	if (res)
-		return res;
+	rv = ps8822_read(me, PS8822_REG_MODE, &reg);
+	if (rv) {
+		ccprintf("ps8822: get_mux: failed mod reg read\n");
+	} else {
+		ccprintf("ps8822: get_mux: mode=%x\n", reg);
+	}
+
 
 	*mux_state = 0;
 	if (reg & PS8822_MODE_USB_EN)

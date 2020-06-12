@@ -138,6 +138,7 @@ extern const struct usb_mux_driver ps8740_usb_mux_driver;
 extern const struct usb_mux_driver ps8743_usb_mux_driver;
 extern const struct usb_mux_driver ps8822_usb_mux_driver;
 extern const struct usb_mux_driver tcpm_usb_mux_driver;
+extern const struct usb_mux_driver tusb1064_usb_mux_driver;
 extern const struct usb_mux_driver virtual_usb_mux_driver;
 
 /* USB muxes present in system, ordered by PD port #, defined at board-level */
