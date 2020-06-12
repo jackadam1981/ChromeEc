@@ -46,6 +46,30 @@
       "revId": "23349af542c280467fce3b97782678d79942dab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "677ba9f4_b6fcef98",
+        "filename": "chip/stm32/usb_spi.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-12T00:02:54Z",
+      "side": 1,
+      "message": "I am not sure I am following.\n\nThe popular flash write granularity is 256 bits. The flash write operation has an overhead associated with it, so it is advantageous to be able to program the full flash write page in one go. To be able to do it we want to receive the entire page in a single USB multiblock transfer, it does not look like this is going to be possible with the chosen buffer size - do I get this right?\n\nI think it is the DUT who should let flashrom know how large the transfer could be.",
+      "parentUuid": "84bd3b57_2c02bc42",
+      "range": {
+        "startLine": 369,
+        "startChar": 8,
+        "endLine": 369,
+        "endChar": 27
+      },
+      "revId": "23349af542c280467fce3b97782678d79942dab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
