@@ -477,7 +477,7 @@ extern struct tcpc_config_t tcpc_config[];
  *
  * @return     PD_STATUS_TCPC_ALERT_* mask.
  */
-uint16_t tcpc_get_alert_status(void);
+uint16_t tcpc_get_alert_status(int port);
 
 /**
  * Optional, set the TCPC power mode.

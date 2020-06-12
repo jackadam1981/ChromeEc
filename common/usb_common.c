@@ -715,12 +715,11 @@ void pd_deferred_resume(int port)
 
 bool pd_check_vbus_level(int port, enum vbus_level level)
 {
-	if (IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_TCPC))
-		return tcpm_check_vbus_level(port, level);
-	else if (level == VBUS_PRESENT)
-		return pd_snk_is_vbus_provided(port);
+	/* port 0,1 read Vbus via ADC; port 2,3 read Vbus via TCPC register */
+	if (level == VBUS_PRESENT)
+		return (port == (0 || 1) ? pd_snk_is_vbus_provided(port) : tcpm_check_vbus_level(port, level));
 	else
-		return !pd_snk_is_vbus_provided(port);
+		return (port == (0 || 1) ? !pd_snk_is_vbus_provided(port) : tcpm_check_vbus_level(port, level));
 }
 
 int pd_is_vbus_present(int port)
