@@ -238,7 +238,6 @@ static int test_shared_mem(void)
 	char *mem;
 
 	TEST_ASSERT(shared_mem_acquire(sz, &mem) == EC_SUCCESS);
-	TEST_ASSERT(shared_mem_acquire(sz, &mem) == EC_ERROR_BUSY);
 
 	for (i = 0; i < 256; ++i) {
 		memset(mem, i, sz);
@@ -249,6 +248,21 @@ static int test_shared_mem(void)
 
 	shared_mem_release(mem);
 
+	return EC_SUCCESS;
+}
+
+static int test_shared_mem_acquire_twice(void)
+{
+	int sz = shared_mem_size();
+	char *mem;
+
+	TEST_ASSERT(shared_mem_acquire(sz, &mem) == EC_SUCCESS);
+	TEST_ASSERT(shared_mem_acquire(sz, &mem) == EC_ERROR_BUSY);
+
+	/*
+	 * At this point, mem has been set to NULL (see common/shmalloc.c) so
+	 * we don't attempt to release it.
+	 */
 	return EC_SUCCESS;
 }
 
@@ -453,13 +467,18 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_uint64divmod_1);
 	RUN_TEST(test_uint64divmod_2);
 	RUN_TEST(test_get_next_bit);
-	RUN_TEST(test_shared_mem);
 	RUN_TEST(test_scratchpad);
 	RUN_TEST(test_cond_t);
 	RUN_TEST(test_mula32);
 	RUN_TEST(test_swap);
 	RUN_TEST(test_bytes_are_trivial);
 	RUN_TEST(test_is_aligned);
+	RUN_TEST(test_shared_mem);
+	/*
+	 * test_shared_mem_acquire_twice should run at the end because it
+	 * causes memory leaks.
+	 */
+	RUN_TEST(test_shared_mem_acquire_twice);
 
 	test_print_result();
 }
