@@ -7231,6 +7231,11 @@ int cmd_battery(int argc, char *argv[])
 		goto cmd_error;
 	printf("  Remaining capacity      %u mAh\n", val);
 
+	val = read_mapped_mem32(EC_MEMMAP_BATT_TEMP);
+	if (!is_battery_range(val))
+		goto cmd_error;
+	printf("  temperature =      %u C\n", val);
+
 	val = read_mapped_mem8(EC_MEMMAP_BATT_FLAG);
 	print_battery_flags(val);
 

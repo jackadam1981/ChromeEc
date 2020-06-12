@@ -122,6 +122,8 @@ extern "C" {
 #define EC_MEMMAP_BATT_DVLT        0x54 /* Battery Design Voltage */
 #define EC_MEMMAP_BATT_LFCC        0x58 /* Battery Last Full Charge Capacity */
 #define EC_MEMMAP_BATT_CCNT        0x5c /* Battery Cycle Count */
+#define EC_MEMMAP_BATT_TEMP        0x5d /* Battery Cycle Count */
+
 /* Strings are all 8 bytes (EC_MEMMAP_TEXT_MAX) */
 #define EC_MEMMAP_BATT_MFGR        0x60 /* Battery Manufacturer String */
 #define EC_MEMMAP_BATT_MODEL       0x68 /* Battery Model Number String */

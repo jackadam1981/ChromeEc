@@ -501,6 +501,7 @@ DECLARE_HOST_COMMAND(EC_CMD_BATTERY_GET_DYNAMIC,
 static void battery_update(enum battery_index i)
 {
 	char *batt_str;
+	int reg;
 	int *memmap_dcap = (int *)host_get_memmap(EC_MEMMAP_BATT_DCAP);
 	int *memmap_dvlt = (int *)host_get_memmap(EC_MEMMAP_BATT_DVLT);
 	int *memmap_ccnt = (int *)host_get_memmap(EC_MEMMAP_BATT_CCNT);
@@ -508,6 +509,7 @@ static void battery_update(enum battery_index i)
 	int *memmap_rate = (int *)host_get_memmap(EC_MEMMAP_BATT_RATE);
 	int *memmap_cap = (int *)host_get_memmap(EC_MEMMAP_BATT_CAP);
 	int *memmap_lfcc = (int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
+	int *memmap_temp = (int *)host_get_memmap(EC_MEMMAP_BATT_TEMP);
 	uint8_t *memmap_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
 
 	/* Smart battery serial number is 16 bits */
@@ -540,6 +542,10 @@ static void battery_update(enum battery_index i)
 	*memmap_cap = battery_dynamic[i].remaining_capacity;
 	*memmap_lfcc = battery_dynamic[i].full_capacity;
 	*memmap_flags = battery_dynamic[i].flags;
+
+	max17055_read(REG_TEMPERATURE, &reg)
+	*memmap_temp = reg;
+
 }
 
 void battery_memmap_refresh(enum battery_index index)
