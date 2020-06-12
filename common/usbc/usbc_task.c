@@ -157,11 +157,11 @@ void pd_task(void *u)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 
-	if (IS_ENABLED(CONFIG_USB_TYPEC_SM))
-		tc_state_init(port);
-
 	if (IS_ENABLED(CONFIG_USBC_PPC))
 		ppc_init(port);
+
+	if (IS_ENABLED(CONFIG_USB_TYPEC_SM))
+		tc_state_init(port);
 
 	/*
 	 * Since most boards configure the TCPC interrupt as edge
