@@ -39,6 +39,30 @@
       "revId": "a54fb8bc199bc7cdb5f7c11554e02834a8526f9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6735470e_e2f01ebd",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-12T23:56:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b7cd6d0_c926c1a9",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 34
+      },
+      "revId": "a54fb8bc199bc7cdb5f7c11554e02834a8526f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
