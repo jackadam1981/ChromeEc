@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c035e56d_d3613ebe",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-12T06:02:36Z",
+      "side": 1,
+      "message": "$(CONFIG_EXTPOWER) ?",
+      "range": {
+        "startLine": 74,
+        "startChar": 7,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "87ccf136bc7d88e85c40955af02a352bdd6ef46d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "787f2fd6_577b5308",
+        "filename": "common/extpower_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-12T06:02:36Z",
+      "side": 1,
+      "message": "Add this to power_ac_change() instead of adding new file?",
+      "revId": "87ccf136bc7d88e85c40955af02a352bdd6ef46d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
