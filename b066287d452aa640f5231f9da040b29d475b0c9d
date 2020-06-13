@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a649c84_15654bc0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-06-13T07:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9e3ec64_ce7ee856",
+      "range": {
+        "startLine": 14,
+        "startChar": 53,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "b066287d452aa640f5231f9da040b29d475b0c9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cdc5017_67815a31",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "b066287d452aa640f5231f9da040b29d475b0c9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58e1c4ed_ad838d20",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-06-13T07:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50431598_c172403d",
+      "range": {
+        "startLine": 522,
+        "startChar": 25,
+        "endLine": 522,
+        "endChar": 37
+      },
+      "revId": "b066287d452aa640f5231f9da040b29d475b0c9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
