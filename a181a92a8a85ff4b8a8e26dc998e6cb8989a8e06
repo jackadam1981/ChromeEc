@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c0e4f88_204f9852",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-13T00:48:58Z",
+      "side": 1,
+      "message": "Section 2.6.2 of both \nUSB-PD Spec Revision 2.0, Version 1.3 \u0026 \nUSB-PD Spec Revision 3.0, Version 2.0",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "a181a92a8a85ff4b8a8e26dc998e6cb8989a8e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ea67f74_b9ccff50",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4273,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-13T00:48:58Z",
+      "side": 1,
+      "message": "Section 2.6.2 of both \nUSB-PD Spec Revision 2.0, Version 1.3 \u0026 \nUSB-PD Spec Revision 3.0, Version 2.0",
+      "range": {
+        "startLine": 4272,
+        "startChar": 4,
+        "endLine": 4273,
+        "endChar": 44
+      },
+      "revId": "a181a92a8a85ff4b8a8e26dc998e6cb8989a8e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
