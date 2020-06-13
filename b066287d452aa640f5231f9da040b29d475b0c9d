@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a9e3ec64_ce7ee856",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-13T04:34:53Z",
+      "side": 1,
+      "message": "David, I am sorry about this wrong suggestion. It should be \"if OC is triggered in PPC when pulling more than 1.75A by external sink device.\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 53,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "b066287d452aa640f5231f9da040b29d475b0c9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cdc5017_67815a31",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2020-06-12T18:38:15Z",
       "side": 1,
       "message": "You should use CONFIG_USB_PD_PULLUP here instead.",
+      "range": {
+        "startLine": 522,
+        "startChar": 25,
+        "endLine": 522,
+        "endChar": 37
+      },
+      "revId": "b066287d452aa640f5231f9da040b29d475b0c9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50431598_c172403d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-13T04:34:53Z",
+      "side": 1,
+      "message": "Thanks Keith, looks like CONFIG_USB_PD_PULLUP is defined as TYPEC_RP_1A5 in default and octopus platform doesn\u0027t re-define it.\n\nHi David, please address this comment then we are good to go. Thanks.",
+      "parentUuid": "7cdc5017_67815a31",
       "range": {
         "startLine": 522,
         "startChar": 25,
