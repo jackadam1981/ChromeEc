@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c77d34e3_6c82b51c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3707,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-13T20:07:57Z",
+      "side": 1,
+      "message": "Seems like this logic should also get changed to match the SNK path.\nOn entry to PD_STATE_SRC_READY\n    if (pd[port].last_state !\u003d pd[port].task_state)\n        pd[port].flags |\u003d PD_FLAGS_CHECK_VCONN_STATE;",
+      "range": {
+        "startLine": 3699,
+        "startChar": 0,
+        "endLine": 3707,
+        "endChar": 0
+      },
+      "revId": "d91bc1d77d9059c15939908e8e551131212f48fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7aa493_6dc7c7a2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4280,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-13T20:07:57Z",
+      "side": 1,
+      "message": "Seems like this logic belongs in the entry to PD_STATE_SNK_READY as there isn\u0027t yet an explicit contract established here.  \n\nThe actual VCONN swap request only happens after the explicit contract, so functionally it shouldn\u0027t matter whether you set PD_FLAGS_CHECK_VCONN_STATE here or inside PD_STATE_SNK_READY.  The comment implies that there is already an explicit contract so I\u0027d prefer this to move.",
+      "range": {
+        "startLine": 4270,
+        "startChar": 0,
+        "endLine": 4280,
+        "endChar": 49
+      },
+      "revId": "d91bc1d77d9059c15939908e8e551131212f48fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
