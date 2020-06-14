@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "351e88d7_e1deed15",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-14T05:45:20Z",
+      "side": 1,
+      "message": "Well, during an AMS it is the definition of a protocol error to receive an unexpected message :) \n\nI\u0027m debating about trying to handle the not-first case here?  If table 6-65 really covers all cases, we have flags to know what to do with the possible exception of power transitioning.  Or we can merge this with report error if we\u0027d like.",
+      "parentUuid": "6b6fb55c_e7b10535",
+      "range": {
+        "startLine": 944,
+        "startChar": 35,
+        "endLine": 944,
+        "endChar": 56
+      },
+      "revId": "7e43d4ed92987db62dad17fccf28de7356c80ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77a802f2_48914ee4",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-11T21:00:26Z",
       "side": 1,
       "message": "shoudl we also try to go back to SNK_SRC ready?",
+      "range": {
+        "startLine": 949,
+        "startChar": 1,
+        "endLine": 951,
+        "endChar": 0
+      },
+      "revId": "7e43d4ed92987db62dad17fccf28de7356c80ea6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d74e53a6_6332fd57",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-14T05:45:20Z",
+      "side": 1,
+      "message": "I think that\u0027s the best plan.  See what you think of it.",
+      "parentUuid": "77a802f2_48914ee4",
       "range": {
         "startLine": 949,
         "startChar": 1,
