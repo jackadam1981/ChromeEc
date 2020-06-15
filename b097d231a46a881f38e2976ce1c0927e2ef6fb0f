@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12207118_1f108d1d",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T19:34:20Z",
+      "side": 1,
+      "message": "instead of adding a new state to the statemcahine (which also works), I think we can just define this function and make it get called on BOARD_INIT hook and leave everything else the same. Thoughts?",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 1
+      },
+      "revId": "b097d231a46a881f38e2976ce1c0927e2ef6fb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
