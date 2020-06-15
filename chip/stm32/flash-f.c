@@ -40,18 +40,11 @@
 /* 20ms < tERASE < 40ms on F0/F3, for 1K / 2K sector size. */
 #define FLASH_ERASE_TIMEOUT_US 40000
 
-#if defined(CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE)
-#if !defined(CHIP_FAMILY_STM32F4)
-#error "CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE should work with all STM32F "
-"series chips, but has not been tested"
-#endif /* !CHIP_FAMILY_STM32F4 */
-#endif /* CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE */
-
 /* Forward declarations */
-#if defined(CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE)
+#if defined(CONFIG_FLASH_READOUT_PROTECTION)
 static enum flash_rdp_level flash_physical_get_rdp_level(void);
 static int flash_physical_set_rdp_level(enum flash_rdp_level level);
-#endif /* CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE */
+#endif /* CONFIG_FLASH_READOUT_PROTECTION */
 
 static inline int calculate_flash_timeout(void)
 {
@@ -321,7 +314,7 @@ static int write_optb(int byte, uint8_t value)
 }
 #endif
 
-#if defined(CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE)
+#if defined(CONFIG_FLASH_READOUT_PROTECTION)
 /**
  * @return true if RDP (read protection) Level 1 or 2 enabled, false otherwise
  */
@@ -336,7 +329,7 @@ bool is_flash_rdp_enabled(void)
 
 	return level != FLASH_RDP_LEVEL_0;
 }
-#endif /* CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE */
+#endif /* CONFIG_FLASH_READOUT_PROTECTION */
 
 /*****************************************************************************/
 /* Physical layer APIs */
@@ -508,7 +501,7 @@ exit_er:
 static int flash_physical_get_protect_at_boot(int block)
 {
 	/* 0: Write protection active on sector i. */
-	return !(STM32_OPTB_WP & STM32_OPTB_nWRP(block));
+	return flash_physical_get_protect(block) == FLASH_PROTECT_LEVEL_PERSISTENT;
 }
 
 static int flash_physical_protect_at_boot_rdp(uint32_t new_flags)
@@ -643,6 +636,9 @@ static void unprotect_all_blocks(void)
  * Check if write protect register state is inconsistent with RO_AT_BOOT and
  * ALL_AT_BOOT state.
  *
+ * This works because flash_get_protect will set the RO_AT_BOOT flag if even
+ * one of the blocks has it set. It will also set the inconsistent flag.
+ *
  * @return zero if consistent, non-zero if inconsistent.
  */
 static int registers_need_reset(void)
@@ -656,10 +652,10 @@ static int registers_need_reset(void)
 	for (i = ro_wp_region_start; i < ro_wp_region_end; i++)
 		if (flash_physical_get_protect_at_boot(i) != ro_at_boot)
 			return 1;
-	if (IS_ENABLED(CONFIG_FLASH_READOUT_PROTECTION)) {
-		if (flash_physical_get_rdp_level() != FLASH_RDP_LEVEL_1)
-			return 1;
-	}
+	// if (IS_ENABLED(CONFIG_FLASH_READOUT_PROTECTION)) {
+	// 	if (flash_physical_get_rdp_level() != FLASH_RDP_LEVEL_1)
+	// 		return 1;
+	// }
 	return 0;
 }
 
