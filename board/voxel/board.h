@@ -155,8 +155,18 @@ enum sensor_id {
 	SENSOR_COUNT,
 };
 
+/*
+ * FW_CONFIG values, must match project/volteer/voxel/config.star
+ */
+enum ec_cfg_usb_db_type {
+	USB_DB_NONE = 0,
+	USB_DB_COUNT
+};
+
 /* TODO: b/143375057 - Remove this code after power on. */
 void c10_gate_change(enum gpio_signal signal);
+
+void board_reset_pd_mcu(void);
 
 #endif /* !__ASSEMBLER__ */
 
