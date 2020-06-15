@@ -298,6 +298,35 @@ __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 	chg_chips[port].drv->set_otg_current_voltage(port, current, 5000);
 }
 
+/* I2C Ports */
+const struct i2c_port_t i2c_ports[] = {
+	{
+		"eeprom", I2C_PORT_EEPROM, 1000, GPIO_EC_I2C_EEPROM_SCL,
+		GPIO_EC_I2C_EEPROM_SDA
+	},
+
+	{
+		"battery", I2C_PORT_BATTERY, 100, GPIO_EC_I2C_BATTERY_SCL,
+		GPIO_EC_I2C_BATTERY_SDA
+	},
+
+	{
+		"sensor", I2C_PORT_SENSOR, 400, GPIO_EC_I2C_SENSOR_SCL,
+		GPIO_EC_I2C_SENSOR_SDA
+	},
+
+	{
+		"sub_usbc1", I2C_PORT_SUB_USB_C1, 1000,
+		GPIO_EC_I2C_SUB_USB_C1_SCL, GPIO_EC_I2C_SUB_USB_C1_SDA
+	},
+
+	{
+		"usbc0", I2C_PORT_USB_C0, 1000, GPIO_EC_I2C_USB_C0_SCL,
+		GPIO_EC_I2C_USB_C0_SDA
+	},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT] = {
