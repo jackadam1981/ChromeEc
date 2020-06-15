@@ -36,14 +36,6 @@
 	/* Flash clock must be > (50Mhz / 2) */
 	#define CONFIG_IT83XX_FLASH_CLOCK_48MHZ
 
-	#define I2C_PORT_EEPROM		IT83XX_I2C_CH_A
-	#define I2C_PORT_BATTERY	IT83XX_I2C_CH_B
-	#define I2C_PORT_SENSOR		IT83XX_I2C_CH_C
-	#define I2C_PORT_SUB_USB_C1	IT83XX_I2C_CH_E
-	#define I2C_PORT_USB_C0		IT83XX_I2C_CH_F
-
-	#define I2C_ADDR_EEPROM_FLAGS	0x50
-
 	#define CONFIG_ADC_VOLTAGE_COMPARATOR	/* ITE ADC thresholds */
 
 	#define CONFIG_DAC			/* DAC for PSYS */
