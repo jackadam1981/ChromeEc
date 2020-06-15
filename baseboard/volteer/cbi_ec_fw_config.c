@@ -14,13 +14,6 @@ BUILD_ASSERT(sizeof(union volteer_cbi_fw_config) == sizeof(uint32_t));
 
 static union volteer_cbi_fw_config fw_config;
 
-/*
- * TODO in separate CL. Update FW_CONFIG default for all Volteer projects
- */
-union volteer_cbi_fw_config fw_config_defaults = {
-	.usb_db = DB_USB4_GEN2,
-};
-
 /****************************************************************************
  * Volteer FW_CONFIG access
  */
