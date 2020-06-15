@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35cfae77_d5494956",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T18:27:52Z",
+      "side": 1,
+      "message": "how much flash space did we save? (can you add it to the commit message for tracking please)",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "616a1fc61af6cfcb445d3899e9aacb85bbe329cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5044a81_79e67d83",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3343,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T18:27:52Z",
+      "side": 1,
+      "message": "I think we can remove these states complete and introduce a DEBUG_MODE (or DEBUG_CC or DEBUG_DETECTED) flag and have only the normal mode states. It should save more space and also removes the need to branch on line 2088 for example.",
+      "range": {
+        "startLine": 3332,
+        "startChar": 1,
+        "endLine": 3343,
+        "endChar": 3
+      },
+      "revId": "616a1fc61af6cfcb445d3899e9aacb85bbe329cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
