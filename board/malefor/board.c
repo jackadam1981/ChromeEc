@@ -34,6 +34,13 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_CHIPSET, format, ## args)
 
+/*
+ * FW_CONFIG defaults for Malefor if the CBI data is not initialized.
+ */
+union volteer_cbi_fw_config fw_config_defaults = {
+	.usb_db = USB_DB_USB3_LOW_COST,
+};
+
 static void board_init(void)
 {
 	if (ec_config_has_tabletmode()) {
@@ -298,3 +305,8 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+void board_reset_pd_mcu(void)
+{
+	/* TODO(b/159024035): Malefor: check USB PD reset operation */
+}
