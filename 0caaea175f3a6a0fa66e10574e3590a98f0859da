@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d440bae0_4013cacd",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T15:49:34Z",
+      "side": 1,
+      "message": "can we make these TEST_EQ(.., 0 \"%d);",
+      "range": {
+        "startLine": 828,
+        "startChar": 2,
+        "endLine": 828,
+        "endChar": 13
+      },
+      "revId": "0caaea175f3a6a0fa66e10574e3590a98f0859da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
