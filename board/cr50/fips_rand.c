@@ -5,6 +5,7 @@
 
 #include "console.h"
 #include "cryptoc/util.h"
+#include "fips.h"
 #include "fips_rand.h"
 #include "flash_log.h"
 #include "init_chip.h"
@@ -37,12 +38,6 @@ static uint32_t entropy_fifo[ENTROPY_SIZE_WORDS];
  * source, the false positive probability for these tests shall be set to
  * at least 2^-50
  */
-
-/* dummy function, will be removed with FIPS framework */
-static int fips_crypto_allowed(void)
-{
-	return 1;
-}
 
 /**
  * rand() should be able to return error code if reading from TRNG failed
@@ -217,19 +212,25 @@ static struct rand_result fips_trng32(int power_up)
 	struct rand_result r;
 
 	/* Continuous health tests should have been initialized by now */
-	if (!fips_crypto_allowed() || (!power_up && !fips_powerup_passed()))
+	if (!(power_up || fips_crypto_allowed()))
 		return (struct rand_result){ .random_value = 0,
 					     .valid = false };
 
 	/* get noise */
 	r = read_rand();
 
-	if (r.valid)
-		/* test #1: Repetition Count Test (a.k.a Stuck-bit) */
-		if (!repetition_count_test(r.random_value) ||
-		    /* warm-up test #2: Adaptive Proportion Test */
-		    !adaptive_proportion_test(r.random_value))
-			r.valid = false; /* TODO: add FIPS status update */
+	if (r.valid) {
+		if (!repetition_count_test(r.random_value)) {
+			fips_set_status(FIPS_FATAL_TRNG_RCT);
+			r.valid = false;
+		}
+		if (!adaptive_proportion_test(r.random_value)) {
+			fips_set_status(FIPS_FATAL_TRNG_APT);
+			r.valid = false;
+		}
+	} else
+		fips_set_status(FIPS_FATAL_TRNG_OTHER);
+
 	return r;
 }
 
@@ -278,7 +279,7 @@ bool fips_trng_startup(int stage)
 		/* store entropy for further use */
 		entropy_fifo[i % ARRAY_SIZE(entropy_fifo)] = r.random_value;
 	}
-	return true;
+	return fips_powerup_passed();
 }
 
 bool fips_drbg_init(void)
