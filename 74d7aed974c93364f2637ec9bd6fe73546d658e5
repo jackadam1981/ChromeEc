@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "fe5d2031_4e0eee1e",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-15T20:05:05Z",
+      "side": 1,
+      "message": "So should we revert this to be gated by the FRS_TCPC/PPC configs here (and other places down the line)? Or leave as-is with those checks in the drivers themselves?",
+      "parentUuid": "e5da77c9_22a91ec7",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 734,
+        "endChar": 34
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8da99889_1cebb6d4",
         "filename": "common/usb_common.c",
         "patchSetId": 11
@@ -167,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "a1890436_e9e69ae9",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-15T20:05:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2763bbc1_49f941ee",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 24
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3aade5d_b19d667e",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 11
@@ -184,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "4151d29b_ff38cca5",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-15T20:05:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3aade5d_b19d667e",
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa9bec4f_bafb615d",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 11
@@ -198,6 +264,24 @@
       "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84ddcda1_b53d9d92",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-15T20:05:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa9bec4f_bafb615d",
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -224,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "ab2523be_5a01d743",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-15T20:05:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b6e3e11_c1f73ac4",
+      "range": {
+        "startLine": 334,
+        "startChar": 18,
+        "endLine": 334,
+        "endChar": 35
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ee0fa08_3d1f952c",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 11
@@ -244,6 +352,30 @@
       "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "224590c6_5e1f1c79",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-15T20:05:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee0fa08_3d1f952c",
+      "range": {
+        "startLine": 640,
+        "startChar": 5,
+        "endLine": 640,
+        "endChar": 37
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
