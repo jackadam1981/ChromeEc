@@ -118,6 +118,30 @@
       "revId": "70e2457b8375c3ce729427554510846fb7e7a7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "368ba4b8_89424709",
+        "filename": "common/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-15T19:56:38Z",
+      "side": 1,
+      "message": "That I am not sure of, but I would also be very interested in figuring it out.\n\nI just ran a sanity check and found that the attribute __stdlib_compat uses is only activated when generating dynamic libraries, so I guess this is somewhat ineffectual.",
+      "parentUuid": "4fd15210_d2e90da8",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 74
+      },
+      "revId": "70e2457b8375c3ce729427554510846fb7e7a7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
