@@ -15,17 +15,6 @@
  */
 
 /*
- * TODO in separate CL - create separate enums for each board project
- */
-enum ec_cfg_usb_db_type {
-	USB_DB_NONE = 0,
-	USB_DB_USB4_GEN2 = 1,
-	USB_DB_USB3 = 2,
-	USB_DB_USB4_GEN3 = 3,
-	USB_DB_COUNT
-};
-
-/*
  * Tablet Mode (1 bit), shared by all Volteer boards
  */
 enum ec_cfg_tabletmode_type {
