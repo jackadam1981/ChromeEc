@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6883363_c05bca3a",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-15T09:24:04Z",
+      "side": 1,
+      "message": "Should this change to CONFIG_HOST_EVENT as well? (also some other places that call pd_notify_dp_alt_mode_entry())",
+      "range": {
+        "startLine": 517,
+        "startChar": 17,
+        "endLine": 517,
+        "endChar": 34
+      },
+      "revId": "736db12af829d826f0a1247b6a787fcc56d2b060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
