@@ -30,64 +30,64 @@ struct flash_info flash_info = {
 #error "Flash info not defined for this chip. Please add it."
 #endif
 
-test_static int test_flash_physical_write(void)
-{
-	return EC_ERROR_UNIMPLEMENTED;
-}
+// test_static int test_flash_physical_write(void)
+// {
+// 	return EC_ERROR_UNIMPLEMENTED;
+// }
 
-test_static int test_flash_physical_erase(void)
-{
-	return EC_ERROR_UNIMPLEMENTED;
-}
+// test_static int test_flash_physical_erase(void)
+// {
+// 	return EC_ERROR_UNIMPLEMENTED;
+// }
 
-test_static int test_flash_physical_get_protect(void)
-{
-	return EC_ERROR_UNIMPLEMENTED;
-}
+// test_static int test_flash_physical_get_protect(void)
+// {
+// 	return EC_ERROR_UNIMPLEMENTED;
+// }
 
-test_static int test_flash_physical_get_protect_flags(void)
-{
-	return EC_ERROR_UNIMPLEMENTED;
-}
+// test_static int test_flash_physical_get_protect_flags(void)
+// {
+// 	return EC_ERROR_UNIMPLEMENTED;
+// }
 
-test_static int test_flash_physical_get_valid_flags(void)
-{
-	return EC_ERROR_UNIMPLEMENTED;
-}
+// test_static int test_flash_physical_get_valid_flags(void)
+// {
+// 	return EC_ERROR_UNIMPLEMENTED;
+// }
 
-test_static int test_flash_physical_get_writable_flags(void)
-{
-	return EC_ERROR_UNIMPLEMENTED;
-}
+// test_static int test_flash_physical_get_writable_flags(void)
+// {
+// 	return EC_ERROR_UNIMPLEMENTED;
+// }
 
-test_static int test_flash_physical_protect_at_boot_all(void)
-{
-	int rv;
-	int i;
+// test_static int test_flash_physical_protect_at_boot_all(void)
+// {
+// 	int rv;
+// 	int i;
 
-	/* Nothing should be protected */
-	for (i = 0; i < flash_info.num_flash_banks; i++) {
-		TEST_EQ(flash_physical_get_protect(i), 0, "%d");
-	}
+// 	/* Nothing should be protected */
+// 	for (i = 0; i < flash_info.num_flash_banks; i++) {
+// 		TEST_EQ(flash_physical_get_protect(i), 0, "%d");
+// 	}
 
-	/* Protecting everything. */
-	rv = flash_physical_protect_at_boot(EC_FLASH_PROTECT_ALL_AT_BOOT);
-	TEST_EQ(rv, EC_SUCCESS, "%d");
+// 	/* Protecting everything. */
+// 	rv = flash_physical_protect_at_boot(EC_FLASH_PROTECT_ALL_AT_BOOT);
+// 	TEST_EQ(rv, EC_SUCCESS, "%d");
 
-	for (i = 0; i < flash_info.num_flash_banks; i++) {
-		rv = flash_physical_get_protect(i);
-		TEST_EQ(rv, 1, "%d");
-	}
+// 	for (i = 0; i < flash_info.num_flash_banks; i++) {
+// 		rv = flash_physical_get_protect(i);
+// 		TEST_EQ(rv, 1, "%d");
+// 	}
 
-	/* TODO: Check that RDP 1 is enabled */
+// 	/* TODO: Check that RDP 1 is enabled */
 
-	return EC_SUCCESS;
-}
+// 	return EC_SUCCESS;
+// }
 
-test_static int test_flash_physical_protect_at_boot_rollback(void)
-{
-	return EC_ERROR_UNIMPLEMENTED;
-}
+// test_static int test_flash_physical_protect_at_boot_rollback(void)
+// {
+// 	return EC_ERROR_UNIMPLEMENTED;
+// }
 
 test_static int test_flash_physical_protect_at_boot_ro(void)
 {
@@ -121,27 +121,37 @@ test_static int test_flash_physical_protect_at_boot_ro(void)
 	return EC_SUCCESS;
 }
 
-test_static int test_flash_physical_protect_now(void)
-{
-	int rv;
-	int i;
+/*
+ * This must occur after at_boot_ro for F4.
+ */
+// test_static int test_flash_physical_protect_now(void)
+// {
+// 	int rv;
+// 	int i;
 
-	/* Nothing should be protected */
-	for (i = 0; i < flash_info.num_flash_banks; i++) {
-		TEST_EQ(flash_physical_get_protect(i), 0, "%d");
-	}
+// 	/* Nothing should be protected */
+// 	for (i = 0; i < flash_info.num_flash_banks; i++) {
+// 		TEST_EQ(flash_physical_get_protect(i),
+// 			FLASH_PROTECT_LEVEL_NONE,
+// 			"%d");
+// 	}
 
-	/* Protecting only RO */
-	rv = flash_physical_protect_now(0);
-	TEST_EQ(rv, EC_SUCCESS, "%d");
+// 	/* Protecting only RO */
+// 	rv = flash_physical_protect_now(0);
+// 	TEST_EQ(rv, EC_SUCCESS, "%d");
 
-	/* In current implementation, option bytes are disabled.
-	 * We should check for that here. Do we expect anything else to be
-	 * done?
-	 */
+// 	/* In current implementation, option bytes are disabled.
+// 	 * We should check for that here. Do we expect anything else to be
+// 	 * done?
+// 	 */
+// 	for (i = 0; i < flash_info.num_flash_banks; i++) {
+// 		TEST_NE(flash_physical_get_protect(i),
+// 			FLASH_PROTECT_LEVEL_NONE,
+// 			"%d");
+// 	}
 
-	return EC_SUCCESS;
-}
+// 	return EC_SUCCESS;
+// }
 
 
 test_static int test_lock_option_bytes(void)
