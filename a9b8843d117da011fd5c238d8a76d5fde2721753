@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05dca91e_fd9885e7",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-15T22:47:48Z",
+      "side": 1,
+      "message": "I believe chromeos convention is to force \u0027utf-8\u0027.\n\nSee https://chromium-review.googlesource.com/c/chromiumos/platform2/+/1910581/1/biod/study/study_serve.py#129 .\n\n\nSince this code doesn\u0027t change this behavior, I\u0027m +2-ing with the hope of a follow up CL.",
+      "range": {
+        "startLine": 224,
+        "startChar": 25,
+        "endLine": 224,
+        "endChar": 33
+      },
+      "revId": "a9b8843d117da011fd5c238d8a76d5fde2721753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
