@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3db78dc2_11154bdf",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-15T18:42:49Z",
+      "side": 1,
+      "message": "Ah, my mistake; I misread that. Good catch.",
+      "parentUuid": "5b3c17d1_99ea31fd",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 19
+      },
+      "revId": "975bb25bb46ab1a6cfb637928987447eb501f471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48fe73b4_cd0728f9",
         "filename": "driver/tcpm/ps8xxx.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "975bb25bb46ab1a6cfb637928987447eb501f471",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7777bd45_b690cb17",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-15T18:42:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48fe73b4_cd0728f9",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "975bb25bb46ab1a6cfb637928987447eb501f471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
