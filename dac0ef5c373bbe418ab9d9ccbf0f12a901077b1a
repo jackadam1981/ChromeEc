@@ -46,6 +46,30 @@
       "revId": "dac0ef5c373bbe418ab9d9ccbf0f12a901077b1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3067d1e0_457aa0d3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3398,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T18:17:11Z",
+      "side": 0,
+      "message": "This would be an awesome unit to test right to ensure we dont\u0027 regress on the vbus reset on init.",
+      "parentUuid": "b9f2d702_6c252a69",
+      "range": {
+        "startLine": 3395,
+        "startChar": 0,
+        "endLine": 3398,
+        "endChar": 2
+      },
+      "revId": "dac0ef5c373bbe418ab9d9ccbf0f12a901077b1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
