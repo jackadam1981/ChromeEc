@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "588f15d0_cba6ba4f",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-15T19:31:12Z",
+      "side": 1,
+      "message": "Is this necessary? I think every object whose build is controlled by this field should already be controlled by the absence of CONFIG_USB_PD_TCPMV2.",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "e18d406ae3280b69da758ce973f4b2a6f35cc473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8732388e_8e6ef50f",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-15T19:31:12Z",
+      "side": 1,
+      "message": "Per OOB discussion, this is (and should be) already defined for TCPMv1 and TCPMv2 in baseboard.h.",
+      "revId": "e18d406ae3280b69da758ce973f4b2a6f35cc473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
