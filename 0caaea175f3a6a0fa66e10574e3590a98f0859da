@@ -22,6 +22,30 @@
       "revId": "0caaea175f3a6a0fa66e10574e3590a98f0859da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "151430d5_913a4534",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-06-15T15:52:11Z",
+      "side": 1,
+      "message": "These are ints being treated as bools, and unlikely to have any value other than 0 or 1. However, yes, I\u0027ll update these as well.",
+      "parentUuid": "d440bae0_4013cacd",
+      "range": {
+        "startLine": 828,
+        "startChar": 2,
+        "endLine": 828,
+        "endChar": 13
+      },
+      "revId": "0caaea175f3a6a0fa66e10574e3590a98f0859da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
