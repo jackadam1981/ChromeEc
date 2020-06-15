@@ -11,6 +11,9 @@
 struct extended_msg rx_emsg[CONFIG_USB_PD_PORT_MAX_COUNT];
 struct extended_msg tx_emsg[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+void prl_initialize(int port)
+{}
+
 void prl_end_ams(int port)
 {}
 

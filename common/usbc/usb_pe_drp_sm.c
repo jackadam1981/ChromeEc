@@ -692,6 +692,7 @@ void pe_run(int port, int evt, int en)
 			break;
 		/* fall through */
 	case SM_INIT:
+	case SM_RESET:
 		pe_init(port);
 		local_state[port] = SM_RUN;
 		/* fall through */
@@ -1503,8 +1504,8 @@ static void pe_src_startup_entry(int port)
 	/* Reset CapsCounter */
 	pe[port].caps_counter = 0;
 
-	/* Reset the protocol layer */
-	prl_reset(port);
+	/* Initialize the protocol layer */
+	prl_initialize(port);
 
 	/* Set initial data role */
 	pe[port].data_role = pd_get_data_role(port);
@@ -2268,8 +2269,8 @@ static void pe_snk_startup_entry(int port)
 {
 	print_current_state(port);
 
-	/* Reset the protocol layer */
-	prl_reset(port);
+	/* Initialize the protocol layer */
+	prl_initialize(port);
 
 	/* Set initial data role */
 	pe[port].data_role = pd_get_data_role(port);

@@ -478,7 +478,7 @@ int prl_is_running(int port)
 	return local_state[port] == SM_RUN;
 }
 
-static void prl_init(int port)
+static void prl_reset_soft(int port)
 {
 	int i;
 	const struct sm_ctx cleared = {};
@@ -498,16 +498,6 @@ static void prl_init(int port)
 	rch[port].flags = 0;
 #endif /* CONFIG_USB_PD_REV30 */
 
-	/*
-	 * Initialize to highest revision supported. If the port or cable
-	 * partner doesn't support this revision, the Protocol Engine will
-	 * lower this value to the revision supported by the partner.
-	 */
-	pdmsg[port].rev[TCPC_TX_SOP] = PD_REVISION;
-	pdmsg[port].rev[TCPC_TX_SOP_PRIME] = PD_REVISION;
-	pdmsg[port].rev[TCPC_TX_SOP_PRIME_PRIME] = PD_REVISION;
-	pdmsg[port].rev[TCPC_TX_SOP_DEBUG_PRIME] = PD_REVISION;
-	pdmsg[port].rev[TCPC_TX_SOP_DEBUG_PRIME_PRIME] = PD_REVISION;
 	pdmsg[port].flags = 0;
 
 	prl_hr[port].flags = 0;
@@ -531,6 +521,19 @@ static void prl_init(int port)
 
 	prl_hr[port].ctx = cleared;
 	set_state_prl_hr(port, PRL_HR_WAIT_FOR_REQUEST);
+}
+
+static void prl_init(int port) {
+	/*
+	 * Initialize to highest revision supported. If the port or cable
+	 * partner doesn't support this revision, the Protocol Engine will
+	 * lower this value to the revision supported by the partner.
+	 */
+	pdmsg[port].rev[TCPC_TX_SOP] = PD_REVISION;
+	pdmsg[port].rev[TCPC_TX_SOP_PRIME] = PD_REVISION;
+	pdmsg[port].rev[TCPC_TX_SOP_PRIME_PRIME] = PD_REVISION;
+	pdmsg[port].rev[TCPC_TX_SOP_DEBUG_PRIME] = PD_REVISION;
+	pdmsg[port].rev[TCPC_TX_SOP_DEBUG_PRIME_PRIME] = PD_REVISION;
 }
 
 void prl_set_debug_level(enum debug_level debug_level)
@@ -601,6 +604,11 @@ void prl_send_ext_data_msg(int port,
 
 void prl_reset(int port)
 {
+	local_state[port] = SM_RESET;
+}
+
+void prl_initialize(int port)
+{
 	local_state[port] = SM_INIT;
 }
 
@@ -613,6 +621,10 @@ void prl_run(int port, int evt, int en)
 		/* fall through */
 	case SM_INIT:
 		prl_init(port);
+		local_state[port] = SM_RESET;
+		/* fall through */
+	case SM_RESET:
+		prl_reset_soft(port);
 		local_state[port] = SM_RUN;
 		/* fall through */
 	case SM_RUN:

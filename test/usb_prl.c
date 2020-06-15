@@ -781,7 +781,7 @@ static int test_prl_reset(void)
 
 	enable_prl(port, 1);
 
-	prl_reset(port);
+	prl_initialize(port);
 
 	TEST_ASSERT(prl_tx_get_state(port) ==
 				PRL_TX_WAIT_FOR_MESSAGE_REQUEST);

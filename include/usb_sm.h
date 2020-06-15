@@ -44,6 +44,7 @@ enum sm_local_state {
 	SM_INIT = 0, /* Ensure static variables initialize to SM_INIT */
 	SM_RUN,
 	SM_PAUSED,
+	SM_RESET,
 };
 
 /*

@@ -19,6 +19,13 @@
 #define N_RETRY_COUNT 2
 
 /**
+ * Initializes the Protocol Layer State Machine
+ *
+ * @param port USB-C port number
+ */
+void prl_initialize(int port);
+
+/**
  * Returns true if Protocol Layer State Machine is in run mode
  *
  * @param port USB-C port number
