@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c1cf904_e5aa4809",
+        "filename": "chip/g/dcrypto/hmac_drbg.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-15T16:37:56Z",
+      "side": 1,
+      "message": "if we are doing ++ before the function now, shall we also do \u0027\u003e\u0027 instead of \u0027\u003e\u003d\u0027 here?\n\u003d\u003d10000 is still allowed, right?",
+      "range": {
+        "startLine": 121,
+        "startChar": 27,
+        "endLine": 121,
+        "endChar": 29
+      },
+      "revId": "ac981e3a8508f58f403dd39ae4e68f7017d0c0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
