@@ -200,6 +200,30 @@ int board_set_active_charge_port(int port)
 	return EC_SUCCESS;
 }
 
+/* I2C Ports */
+const struct i2c_port_t i2c_ports[] = {
+	{
+		"eeprom", I2C_PORT_EEPROM, 1000, GPIO_EC_I2C_EEPROM_SCL,
+		GPIO_EC_I2C_EEPROM_SDA
+	},
+
+	{
+		"battery", I2C_PORT_BATTERY, 100, GPIO_EC_I2C_BATTERY_SCL,
+		GPIO_EC_I2C_BATTERY_SDA
+	},
+
+	{
+		"sensor", I2C_PORT_SENSOR, 400, GPIO_EC_I2C_SENSOR_SCL,
+		GPIO_EC_I2C_SENSOR_SDA
+	},
+
+	{
+		"usbc0", I2C_PORT_USB_C0, 1000, GPIO_EC_I2C_USB_C0_SCL,
+		GPIO_EC_I2C_USB_C0_SDA
+	},
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT] = {
