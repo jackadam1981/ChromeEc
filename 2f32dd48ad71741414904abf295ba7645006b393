@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e2980a5_cbfcc8ea",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T18:03:32Z",
+      "side": 1,
+      "message": "do we need to clear this now since entry in snk and src ready will clear this?",
+      "range": {
+        "startLine": 930,
+        "startChar": 2,
+        "endLine": 930,
+        "endChar": 52
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a600b2c_4424067a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T18:03:32Z",
+      "side": 1,
+      "message": "let\u0027s open a bug?\n\nI think we can just decide with comment explanation that we just got back to SNK/SRC READY and report that this shouldn\u0027t happen with console print maybe (or also print in discard, since it shouldnt\u0027 happen that much?)",
+      "range": {
+        "startLine": 938,
+        "startChar": 4,
+        "endLine": 938,
+        "endChar": 16
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eebf2265_6bf1b3a0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4142,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T18:03:32Z",
+      "side": 1,
+      "message": "nit: combine into one call f1 |f2",
+      "range": {
+        "startLine": 4141,
+        "startChar": 19,
+        "endLine": 4142,
+        "endChar": 41
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6acdb0ed_1cd4eaf4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4184,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T18:03:32Z",
+      "side": 1,
+      "message": "same, combine please\n\nHere and below",
+      "range": {
+        "startLine": 4183,
+        "startChar": 1,
+        "endLine": 4184,
+        "endChar": 9
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a60568e_5b2dfee3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T18:03:32Z",
+      "side": 1,
+      "message": "nit: can you clr flag first in the block.  I say this because the two calls to pe_report_discard have a different state of that flag and we should keep it consistent\n\n(I would also prefer the CLR flag on line 853 to move up one line too if you feel inclined ;) )",
+      "range": {
+        "startLine": 1886,
+        "startChar": 8,
+        "endLine": 1887,
+        "endChar": 8
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaad80eb_da3cc805",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-15T18:03:32Z",
+      "side": 1,
+      "message": "should reset the mock_discarded here",
+      "range": {
+        "startLine": 1354,
+        "startChar": 5,
+        "endLine": 1354,
+        "endChar": 16
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
