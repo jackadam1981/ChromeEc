@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbc5c493_6b010626",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-15T23:39:54Z",
+      "side": 1,
+      "message": "you mean \u0027while internal testing is in progress\u0027?",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "1b844018f49f79a6ea646d52bacdddb50fdd78aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31fe7c6_84922f2b",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-15T23:39:54Z",
+      "side": 1,
+      "message": "it\u0027s a bit of a bike shedding, but I am not very keen on this approach:\n\n- what if channel_mask_saved was not CC_DEFAULT in the beginning\n- what if someone changes the mask while tests are in progress\n\nI would rather have these functions set and unset a Boolean variable, and when the variable set have CC_MASK always return zero unless the argument is CC_COMMAND.",
+      "revId": "1b844018f49f79a6ea646d52bacdddb50fdd78aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
