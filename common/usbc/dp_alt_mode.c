@@ -61,6 +61,9 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		pd_get_amode_data(port, type, USB_SID_DISPLAYPORT);
 	const uint8_t vdm_cmd = PD_VDO_CMD(vdm[0]);
 
+	if (type == TCPC_TX_SOP && vdm_cmd == CMD_EXIT_MODE)
+		return;
+
 	if (type != TCPC_TX_SOP || next_vdm_cmd[port] != vdm_cmd) {
 		print_unexpected_response(port, type, CMDT_RSP_ACK, vdm_cmd);
 		dpm_set_mode_entry_done(port);
