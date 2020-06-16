@@ -822,8 +822,6 @@ static void board_init(void)
 		(GREG32(KEYMGR, HKEY_RWR7) == 0xaa66150f);
 
 	init_runlevel(PERMISSION_MEDIUM);
-	/* Initialize NvMem partitions */
-	nvmem_init();
 
 	/*
 	 * If this was a low power wake and not a rollback, restore the ccd
@@ -1578,6 +1576,26 @@ static void init_board_properties(void)
 	}
 	/* Save this configuration setting */
 	board_properties = properties;
+
+	/**
+	 * Initialize nvmem partitions. Moved here from board_init() as
+	 * we need to know FIPS policy early to disable console output
+	 * and leave system in RESET until power-up tests are completed.
+	 * Previously nvmem_init was called after.
+	 * init_runlevel(PERMISSION_MEDIUM);
+	 */
+	nvmem_init();
+	if (board_fips_enforced()) {
+		/* AP stay in reset until FIPS power-up tests completed */
+		assert_sys_rst();
+		/**
+		 * FIPS requires all security related output to be disabled
+		 * until power-up tests are completed. We don't have any
+		 * security related output, but since any issue can be treated
+		 * as security related, disable it
+		 */
+		console_disable_output();
+	}
 }
 DECLARE_HOOK(HOOK_INIT, init_board_properties, HOOK_PRIO_FIRST);
 
