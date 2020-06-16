@@ -45,6 +45,7 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
+#include "driver/tcpm/mt6360.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -331,11 +332,12 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = 0,
 	},
 	{
-		.bus_type = EC_BUS_TYPE_EMBEDDED,
-		/* TCPC is embedded within EC so no i2c config needed */
-		.drv = &it83xx_tcpm_drv,
-		/* Alert is active-low, push-pull */
-		.flags = 0,
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC0,
+			.addr_flags = MT6360_TCPC_I2C_ADDR_FLAGS,
+		},
+		.drv = &mt6360_tcpm_drv,
 	},
 };
 

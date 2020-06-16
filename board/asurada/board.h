@@ -60,6 +60,9 @@
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_USE_GPIO
 
+/* I2C ports */
+#define I2C_PORT_TCPC0    0
+
 /* I2C */
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
@@ -116,6 +119,7 @@
 #define PD_POWER_SUPPLY_TURN_ON_DELAY  30000  /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 #define PD_VCONN_SWAP_DELAY 5000 /* us */
+#define CONFIG_USB_PD_TCPM_MT6360
 
 /* Optional console commands */
 #define CONFIG_CMD_FLASH
