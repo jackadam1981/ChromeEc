@@ -13,7 +13,17 @@
 #include "i2c.h"
 
 /* Default retry count for transmitting */
+#ifdef CONFIG_USB_PD_TCPMV1
+/*
+ * TCPMv1 relies on the TCPC layer to perform retries, although we are still
+ * sending too many (4 in total) instead of 3 in total.
+ */
 #define PD_RETRY_COUNT 3
+#else
+/* The TCPMv2 performs retries in the protocol layer instead of TCPC layer */
+#define PD_RETRY_COUNT 0
+#endif
+
 
 /* Time to wait for TCPC to complete transmit */
 #define PD_T_TCPC_TX_TIMEOUT  (100*MSEC)
