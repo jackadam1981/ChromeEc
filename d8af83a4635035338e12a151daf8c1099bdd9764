@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9836bcaa_2465667f",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-16T09:04:35Z",
+      "side": 1,
+      "message": "CRC is default to on on mt6360, it\u0027s a protection for regulator on/off.",
+      "parentUuid": "2a05622c_c8c1d355",
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a930936_be1be677",
         "filename": "driver/bc12/mt6360.c",
         "patchSetId": 2
@@ -131,6 +149,98 @@
     },
     {
       "key": {
+        "uuid": "f692be32_2944815d",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-16T09:04:35Z",
+      "side": 1,
+      "message": "MT6360_LDO3_EN_CTRL2",
+      "range": {
+        "startLine": 241,
+        "startChar": 18,
+        "endLine": 241,
+        "endChar": 22
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ca6b07_c7cec6f6",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-16T09:04:35Z",
+      "side": 1,
+      "message": "MT6360_LDO3_CTRL3",
+      "range": {
+        "startLine": 242,
+        "startChar": 15,
+        "endLine": 242,
+        "endChar": 19
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67f014b7_9ab7d5a8",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-16T09:04:35Z",
+      "side": 1,
+      "message": "MT6360_LDO5_EN_CTRL2",
+      "range": {
+        "startLine": 251,
+        "startChar": 18,
+        "endLine": 251,
+        "endChar": 22
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d8eca0_70a299e1",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-16T09:04:35Z",
+      "side": 1,
+      "message": "MT6360_LDO5_CTRL3",
+      "range": {
+        "startLine": 252,
+        "startChar": 15,
+        "endLine": 252,
+        "endChar": 19
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24936755_9bd79945",
         "filename": "driver/bc12/mt6360.c",
         "patchSetId": 2
@@ -175,6 +285,29 @@
       "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "172ecc11_53e39b94",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-16T09:04:35Z",
+      "side": 1,
+      "message": "also move this to header file.",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 0
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
