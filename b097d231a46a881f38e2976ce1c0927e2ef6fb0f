@@ -22,6 +22,30 @@
       "revId": "b097d231a46a881f38e2976ce1c0927e2ef6fb0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c7dacdd_7397eaca",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-06-16T08:37:58Z",
+      "side": 1,
+      "message": "This is not as easy as you say. PE, PRL state machines are in SM_PAUSE state when port is unattached. When charger is attached, we are performing full reinitialization of state machines. I mean we should keep ability to call this function many times.\n\nI think I can rename this function to something like prl_restore_pd_revision() and call it in places where prl_reset() is called, except pe_send_soft_reset_entry(), but I don\u0027t think it\u0027s a good solution since it increases complexity.",
+      "parentUuid": "12207118_1f108d1d",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 1
+      },
+      "revId": "b097d231a46a881f38e2976ce1c0927e2ef6fb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
