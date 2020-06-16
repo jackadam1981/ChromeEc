@@ -13,6 +13,11 @@
 #define VARIANT_OCTOPUS_CHARGER_ISL9238
 #include "baseboard.h"
 
+#ifdef CONFIG_KEYBOARD_KEYPAD
+#error "KSO_14 was repurposed to PPC_ID pin so CONFIG_KEYBOARD_KEYPAD\
+ should not be defined."
+#endif
+
 #define CONFIG_VOLUME_BUTTONS
 #define GPIO_VOLUME_UP_L GPIO_EC_VOLUP_BTN_ODL
 #define GPIO_VOLUME_DOWN_L GPIO_EC_VOLDN_BTN_ODL
@@ -50,6 +55,9 @@
 
 #define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+
+/* Additional PPC second source */
+#define CONFIG_USBC_PPC_SYV682X
 
 #ifndef __ASSEMBLER__
 
