@@ -69,7 +69,7 @@ static int stm32gx_tcpm_select_rp_value(int port, int rp_sel)
 
 static int stm32gx_tcpm_set_cc(int port, int pull)
 {
-	return stm32gx_ucpd_set_cc(port, pull, cached_rp[port]);
+	return stm32gx_ucpd_set_cc(port, pull, cached_rp[port]);;
 }
 
 static int stm32gx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
@@ -79,11 +79,7 @@ static int stm32gx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 
 static int stm32gx_tcpm_set_vconn(int port, int enable)
 {
-	/*
-	 * TODO(b/167601672): VCONN is not provided by ucpd peripheral, so the
-	 * only action required here will be to remove Rp from the CC line that
-	 * is supplying VCONN.
-	 */
+	stm32gx_ucpd_vconn_disc_rp(port, enable);
 
 	return EC_SUCCESS;
 }
@@ -95,6 +91,7 @@ static int stm32gx_tcpm_set_msg_header(int port, int power_role, int data_role)
 
 static int stm32gx_tcpm_set_rx_enable(int port, int enable)
 {
+
 	return stm32gx_ucpd_set_rx_enable(port, enable);
 }
 
@@ -103,7 +100,14 @@ static int stm32gx_tcpm_transmit(int port,
 			uint16_t header,
 			const uint32_t *data)
 {
-	return stm32gx_ucpd_transmit(port, type, header, data);
+	int rv;
+
+	if (header == 0x194f)
+		CPRINTS("tcpm: sending svid.identity message");
+
+	rv = stm32gx_ucpd_transmit(port, type, header, data);
+
+	return rv;
 }
 
 static int stm32gx_tcpm_sop_prime_disable(int port)
