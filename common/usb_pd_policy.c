@@ -164,24 +164,15 @@ void reset_pd_cable(int port)
 	cable[port].last_sop_p_p_msg_id = INVALID_MSG_ID_COUNTER;
 }
 
-union tbt_mode_resp_cable get_cable_tbt_vdo(int port)
+uint32_t get_tbt_mode_sop_prime_response(int port)
 {
-	/*
-	 * Return Discover mode SOP prime response for Thunderbolt-compatible
-	 * mode SVDO.
-	 */
-	return cable[port].cable_mode_resp;
+	return cable[port].cable_mode_resp.raw_value;
 }
 
-union tbt_mode_resp_device get_dev_tbt_vdo(int port)
+uint32_t get_tbt_mode_sop_response(int port)
 {
-	/*
-	 * Return Discover mode SOP response for Thunderbolt-compatible
-	 * mode SVDO.
-	 */
-	return cable[port].dev_mode_resp;
+	return cable[port].dev_mode_resp.raw_value;
 }
-
 enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
 {
 	/* tbt_rounded_support is zero when uninitialized */
@@ -212,6 +203,54 @@ void disable_enter_usb4_mode(int port)
 
 static struct pd_discovery discovery[CONFIG_USB_PD_PORT_MAX_COUNT];
 static struct partner_active_modes partner_amodes[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+static bool is_modal(int port, int cnt, const uint32_t *payload)
+{
+	return is_vdo_present(cnt, VDO_INDEX_IDH) &&
+		PD_IDH_IS_MODAL(payload[VDO_INDEX_IDH]);
+}
+
+static bool is_intel_svid(int port, int prev_svid_cnt)
+{
+	int i;
+	struct pd_discovery *disc = pd_get_am_discovery(port, TCPC_TX_SOP);
+
+	/*
+	 * Ref: USB Type-C cable and connector specification, Table F-9
+	 * Check if SVID0 = USB_VID_INTEL. However,
+	 * errata: All the Thunderbolt certified cables and docks tested have
+	 * SVID1 = 0x8087.
+	 * Hence, check all the SVIDs for Intel SVID, if the response presents
+	 * SVIDs in any order.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)) {
+		for (i = prev_svid_cnt;
+				i < pd_get_svid_count(port, TCPC_TX_SOP); i++) {
+			if (disc->svids[i].svid == USB_VID_INTEL)
+				return true;
+		}
+	}
+	return false;
+}
+
+static bool is_tbt_compat_mode(int port, int cnt, const uint32_t *payload)
+{
+	/*
+	 * Ref: USB Type-C cable and connector specification
+	 * F.2.5 TBT3 Device Discover Mode Responses
+	 */
+	return is_vdo_present(cnt, VDO_INDEX_IDH) &&
+		PD_VDO_RESP_MODE_INTEL_TBT(payload[VDO_INDEX_IDH]);
+}
+
+static bool cable_supports_tbt_speed(int port)
+{
+	enum tbt_compat_cable_speed tbt_cable_speed =
+				get_tbt_cable_speed(port);
+
+	return (tbt_cable_speed == TBT_SS_TBT_GEN3 ||
+		tbt_cable_speed == TBT_SS_U32_GEN1_GEN2);
+}
 
 static bool is_tbt_compat_enabled(int port)
 {
