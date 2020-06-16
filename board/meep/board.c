@@ -18,6 +18,7 @@
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/charger/bd9995x.h"
 #include "driver/ppc/nx20p348x.h"
+#include "driver/ppc/syv682x.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -53,13 +54,24 @@ static uint8_t sku_id;
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
+	uint32_t board_version = 0;
+
+	if (cbi_get_board_version(&board_version) != EC_SUCCESS)
+		CPRINTSUSB("Get board version failed.");
+
 	switch (signal) {
 	case GPIO_USB_PD_C0_INT_ODL:
-		nx20p348x_interrupt(0);
+		if ((board_version == 6) && (gpio_get_level(GPIO_PPC_ID)))
+			syv682x_interrupt(0);
+		else
+			nx20p348x_interrupt(0);
 		break;
 
 	case GPIO_USB_PD_C1_INT_ODL:
-		nx20p348x_interrupt(1);
+		if ((board_version == 6) && (gpio_get_level(GPIO_PPC_ID)))
+			syv682x_interrupt(1);
+		else
+			nx20p348x_interrupt(1);
 		break;
 
 	default:
@@ -323,3 +335,28 @@ __override uint32_t board_override_feature_flags0(uint32_t flags0)
 	/* Report that there is no keyboard backlight */
 	return (flags0 &= ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
 }
+
+const struct ppc_config_t ppc_syv682x_port0 = {
+		.i2c_port = I2C_PORT_TCPC0,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+};
+
+const struct ppc_config_t ppc_syv682x_port1 = {
+		.i2c_port = I2C_PORT_TCPC1,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+};
+
+static void board_setup_ppc(void)
+{
+	if (gpio_get_level(GPIO_PPC_ID)) {
+		memcpy(&ppc_chips[USB_PD_PORT_TCPC_0],
+		       &ppc_syv682x_port0,
+		       sizeof(struct ppc_config_t));
+		memcpy(&ppc_chips[USB_PD_PORT_TCPC_1],
+		       &ppc_syv682x_port1,
+		       sizeof(struct ppc_config_t));
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_setup_ppc, HOOK_PRIO_INIT_I2C + 2);
