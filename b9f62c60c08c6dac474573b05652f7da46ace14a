@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58106292_e4709182",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1488,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09804e0b_d199f87b",
+      "range": {
+        "startLine": 1488,
+        "startChar": 0,
+        "endLine": 1488,
+        "endChar": 25
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9619cd48_0eb819ed",
         "filename": "common/charge_manager.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9c86c4_125be1ad",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Do you mean \u0027expected hours to zero\u0027?",
+      "parentUuid": "9619cd48_0eb819ed",
+      "range": {
+        "startLine": 1491,
+        "startChar": 38,
+        "endLine": 1491,
+        "endChar": 45
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "734828cf_35de3e24",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "This is checking non-zero. If either is zero, neither will be changed. This allows powerd to update only hours_to_survive without changing discharge rates.\n\nI changed it to accept only both zero or both non-zero and return INVALID_PARAM otherwise.",
+      "parentUuid": "0aabc8fd_52c28abb",
+      "range": {
+        "startLine": 1528,
+        "startChar": 0,
+        "endLine": 1528,
+        "endChar": 53
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0615c90e_83f7ac21",
         "filename": "common/charge_manager.c",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8ecc26d_5964bfbd",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1533,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0615c90e_83f7ac21",
+      "range": {
+        "startLine": 1533,
+        "startChar": 52,
+        "endLine": 1533,
+        "endChar": 57
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "21b94a86_f6eaa1a2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6155,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f189d60_426f0620",
+      "range": {
+        "startLine": 6155,
+        "startChar": 38,
+        "endLine": 6155,
+        "endChar": 46
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a11e0ea2_bda9034e",
         "filename": "include/ec_commands.h",
         "patchSetId": 7
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "daeb04e6_f39abbb6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6159,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "I agree discharge_zone isn\u0027t the best but I also feel neither energy_zone nor capacity_zone are the best. I changed it to smart_discharge_zone.",
+      "parentUuid": "a11e0ea2_bda9034e",
+      "range": {
+        "startLine": 6159,
+        "startChar": 7,
+        "endLine": 6159,
+        "endChar": 21
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6499f06b_b3e74d15",
         "filename": "util/ectool.c",
         "patchSetId": 7
@@ -160,6 +304,30 @@
       "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb0faa0_742b292f",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2595,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6499f06b_b3e74d15",
+      "range": {
+        "startLine": 2595,
+        "startChar": 37,
+        "endLine": 2595,
+        "endChar": 54
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,54 @@
     },
     {
       "key": {
+        "uuid": "1dc64a62_3fad0c89",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2599,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4f0f99c_79dd062e",
+      "range": {
+        "startLine": 2599,
+        "startChar": 35,
+        "endLine": 2599,
+        "endChar": 41
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee90c1b8_87d999a8",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2599,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa568e9e_65d24b41",
+      "range": {
+        "startLine": 2599,
+        "startChar": 43,
+        "endLine": 2599,
+        "endChar": 48
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6588b359_cf66d499",
         "filename": "util/ectool.c",
         "patchSetId": 7
@@ -229,6 +445,30 @@
       "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed66731b_ee3471dd",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2600,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Hibernation is a system state. So, I think it\u0027s better not to make it look like specific to EC.",
+      "parentUuid": "6588b359_cf66d499",
+      "range": {
+        "startLine": 2600,
+        "startChar": 35,
+        "endLine": 2600,
+        "endChar": 46
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "52ac452d_49439c4a",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2621,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "argv[2] and argv[3] are optional. If we do argc !\u003d 4 here, we\u0027ll reject argc \u003d\u003d 2.",
+      "parentUuid": "08ee69a2_05cb9fd7",
+      "range": {
+        "startLine": 2621,
+        "startChar": 0,
+        "endLine": 2621,
+        "endChar": 18
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d1ccad1_0b38cb75",
         "filename": "util/ectool.c",
         "patchSetId": 7
@@ -275,6 +539,30 @@
       "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1176066_03c210e2",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2625,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d1ccad1_0b38cb75",
+      "range": {
+        "startLine": 2625,
+        "startChar": 0,
+        "endLine": 2625,
+        "endChar": 17
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "f627f551_0028bcb0",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2648,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "380a14e8_367a8d8d",
+      "range": {
+        "startLine": 2648,
+        "startChar": 35,
+        "endLine": 2648,
+        "endChar": 40
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b5e43e3_94d25602",
         "filename": "util/ectool.c",
         "patchSetId": 7
@@ -321,6 +633,30 @@
       "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "861ecb23_c70882f9",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2649,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-06-16T08:33:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b5e43e3_94d25602",
+      "range": {
+        "startLine": 2649,
+        "startChar": 40,
+        "endLine": 2649,
+        "endChar": 45
+      },
+      "revId": "b9f62c60c08c6dac474573b05652f7da46ace14a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
