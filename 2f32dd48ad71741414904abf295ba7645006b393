@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24f36332_5a76261f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-16T15:28:45Z",
+      "side": 1,
+      "message": "Probably not.  \n\nI\u0027m waffling about removing the ready transition though since it causes issues with the moshi.  We report discard one cycle before the new message is received in the PE, so we can go from ready to already trying to start a different AMS in this case, which seems undesirable.  If we set a discard flag, it would slow down the PE process to match the PRL\u0027s pace here more.  Thoughts?",
+      "parentUuid": "1e2980a5_cbfcc8ea",
+      "range": {
+        "startLine": 930,
+        "startChar": 2,
+        "endLine": 930,
+        "endChar": 52
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a600b2c_4424067a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-15T18:03:32Z",
       "side": 1,
       "message": "let\u0027s open a bug?\n\nI think we can just decide with comment explanation that we just got back to SNK/SRC READY and report that this shouldn\u0027t happen with console print maybe (or also print in discard, since it shouldnt\u0027 happen that much?)",
+      "range": {
+        "startLine": 938,
+        "startChar": 4,
+        "endLine": 938,
+        "endChar": 16
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3ec859a_deaef6b7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-16T15:28:45Z",
+      "side": 1,
+      "message": "We could probably use this one, b/157228506.  I can update the comment for it. \n\nThere\u0027s a chart for what to do on unexpected message reception during an AMS, which I believe is essentially what we\u0027d have going on if we discarded mid-AMS.  It\u0027ll be a soft reset, hard reset, or going back to ready depending on whether the AMS is interruptible or involves power transitioning. We could either try addressing this via flags telling this function what to do, or having the discard flag report to the PE states and let them react accordingly.",
+      "parentUuid": "9a600b2c_4424067a",
       "range": {
         "startLine": 938,
         "startChar": 4,
