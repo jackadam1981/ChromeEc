@@ -113,6 +113,11 @@ uint8_t pd_get_src_cap_cnt(int port)
 
 static struct pd_cable cable[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+enum pd_rev_type get_usb_pd_cable_revision(int port)
+{
+	return cable[port].rev;
+}
+
 bool consume_sop_prime_repeat_msg(int port, uint8_t msg_id)
 {
 
@@ -205,7 +210,8 @@ void disable_enter_usb4_mode(int port)
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 
-static struct pd_discovery discovery[CONFIG_USB_PD_PORT_MAX_COUNT];
+static struct pd_discovery
+	discovery[CONFIG_USB_PD_PORT_MAX_COUNT][DISCOVERY_TYPE_COUNT];
 static struct partner_active_modes partner_amodes[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static bool is_tbt_compat_enabled(int port)
@@ -292,13 +298,13 @@ static inline void disable_usb4_mode(int port)
 static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 {
 	/* TODO: USB4 enter mode for Active cables */
-
+	struct pd_discovery *disc = &discovery[port][TCPC_TX_SOP_PRIME];
 	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
 	   (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) &&
 	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1)) {
 		switch (cable[port].rev) {
 		case PD_REV30:
-			switch (cable[port].attr.p_rev30.ss) {
+			switch (disc->identity.product_t1.p_rev30.ss) {
 			case USB_R30_SS_U40_GEN3:
 			case USB_R30_SS_U32_U40_GEN1:
 				return true;
@@ -312,7 +318,7 @@ static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 				return false;
 			}
 		case PD_REV20:
-			switch (cable[port].attr.p_rev20.ss) {
+			switch (disc->identity.product_t1.p_rev20.ss) {
 			case USB_R20_SS_U31_GEN1_GEN2:
 				/* Check if DFP is Gen 3 capable */
 				if (IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE))
@@ -349,11 +355,7 @@ static int dfp_discover_svids(uint32_t *payload)
 
 struct pd_discovery *pd_get_am_discovery(int port, enum tcpm_transmit_type type)
 {
-	/*
-	 * TCPMv2 separates discovered data by partner (SOP vs. SOP'); TCPMv1
-	 * depends on both types being in the same structure.
-	 */
-	return &discovery[port];
+	return &discovery[port][type];
 }
 
 struct partner_active_modes *pd_get_partner_active_modes(int port,
@@ -413,7 +415,8 @@ static int process_am_discover_ident_sop_prime(int port, int cnt,
 					uint32_t head, uint32_t *payload)
 {
 	/* Store cable type */
-	dfp_consume_cable_response(port, cnt, payload, head);
+	dfp_consume_cable_response(port, cnt, payload);
+	cable[port].rev = PD_HEADER_REV(head);
 
 	/*
 	 * Enter USB4 mode if the cable supports USB4 operation and has USB4
@@ -446,7 +449,7 @@ static int process_am_discover_svids(int port, int cnt, uint32_t *payload,
 				enum tcpm_transmit_type sop,
 				enum tcpm_transmit_type *rtype)
 {
-	int prev_svid_cnt = discovery[port].svid_cnt;
+	int prev_svid_cnt = discovery[port][TCPC_TX_SOP].svid_cnt;
 
 	/*
 	 * The pd_discovery structure stores SOP and SOP' discovery results
@@ -500,6 +503,7 @@ static int process_tbt_compat_discover_modes(int port,
 				enum tcpm_transmit_type *rtype)
 {
 	int rsize;
+	struct pd_discovery *disc;
 
 	/* Initialize transmit type to SOP */
 	*rtype = TCPC_TX_SOP;
@@ -540,6 +544,7 @@ static int process_tbt_compat_discover_modes(int port,
 	} else {
 		/* Store Discover Mode SOP response */
 		cable[port].dev_mode_resp.raw_value = payload[1];
+		disc = &discovery[port][TCPC_TX_SOP_PRIME];
 
 		if (is_limit_tbt_cable_speed(port)) {
 			/*
@@ -549,16 +554,16 @@ static int process_tbt_compat_discover_modes(int port,
 			 * Thunderbolt-compatible mode.
 			 */
 			cable[port].cable_mode_resp.tbt_cable_speed =
-				(cable[port].rev == PD_REV30 &&
-				cable[port].attr.p_rev30.ss >
+			     cable[port].rev == PD_REV30 &&
+			     (disc->identity.product_t1.p_rev30.ss >
 					USB_R30_SS_U32_U40_GEN2) ?
 				TBT_SS_U32_GEN1_GEN2 :
-				cable[port].attr.p_rev30.ss;
+				disc->identity.product_t1.p_rev30.ss;
 
 			rsize = enter_tbt_compat_mode(port, *rtype, payload);
 		} else {
 			/* Discover modes for SOP' */
-			discovery[port].svid_idx--;
+			discovery[port][TCPC_TX_SOP].svid_idx--;
 			rsize = dfp_discover_modes(port, payload);
 			*rtype = TCPC_TX_SOP_PRIME;
 		}
@@ -571,10 +576,12 @@ static int obj_cnt_enter_tbt_compat_mode(int port,
 		enum tcpm_transmit_type sop, uint32_t *payload,
 		enum tcpm_transmit_type *rtype)
 {
+	struct pd_discovery *disc = &discovery[port][TCPC_TX_SOP_PRIME];
+
 	/* Enter mode SOP' for active cables */
 	if (sop == TCPC_TX_SOP_PRIME) {
 		/* Check if the cable has a SOP'' controller */
-		if (cable[port].attr.a_rev20.sop_p_p)
+		if (disc->identity.product_t1.a_rev20.sop_p_p)
 			*rtype = TCPC_TX_SOP_PRIME_PRIME;
 		return enter_tbt_compat_mode(port, *rtype, payload);
 	}
