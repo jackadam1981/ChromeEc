@@ -143,6 +143,29 @@
     },
     {
       "key": {
+        "uuid": "4506bfe8_f3b4455e",
+        "filename": "board/meep/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-06-16T12:38:55Z",
+      "side": 1,
+      "message": "I moved cbi_get_board_version to cbi init, it is no need to call every ppc intterrupt.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 42
+      },
+      "revId": "810125d90a1b48793fa126e80a5219912357e652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "345f75a2_e3320e27",
         "filename": "board/meep/board.c",
         "patchSetId": 1
