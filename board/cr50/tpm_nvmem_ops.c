@@ -95,3 +95,14 @@ enum tpm_write_rv write_tpm_nvmem_hidden(uint16_t object_index,
 
 	return ret;
 }
+
+enum tpm_delete_rv delete_tpm_nvmem_hidden(uint16_t object_index)
+{
+	TPM_HANDLE handle = object_index | HR_HIDDEN;
+
+	if (!NvIsDefinedHiddenObject(handle))
+		return TPM_DELETE_NOT_FOUND;
+
+	NvDeleteEntity(handle);
+	return TPM_DELETE_SUCCESS;
+}
