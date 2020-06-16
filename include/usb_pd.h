@@ -1898,15 +1898,6 @@ struct partner_active_modes *pd_get_partner_active_modes(int port,
 		enum tcpm_transmit_type type);
 
 /*
- * Return the pointer to PD cable attributes
- * Note: Caller function can mutate the data in this structure.
- *
- * @param port  USB-C port number
- * @return      pointer to PD cable attributes
- */
-struct pd_cable *pd_get_cable_attributes(int port);
-
-/*
  * Returns True if cable supports USB2 connection
  *
  * @param port  USB-C port number
@@ -2032,22 +2023,6 @@ void disable_enter_usb4_mode(int port);
 bool should_enter_usb4_mode(int port);
 
 /**
- * Return the response of discover mode SOP prime, with SVID = 0x8087
- *
- * @param port	USB-C port number
- * @return	cable mode response vdo
- */
-union tbt_mode_resp_cable get_cable_tbt_vdo(int port);
-
-/**
- * Return the response of discover mode SOP, with SVID = 0x8087
- *
- * @param port	USB-C port number
- * @return	device mode response vdo
- */
-union tbt_mode_resp_device get_dev_tbt_vdo(int port);
-
-/**
  * Return Thunderbolt rounded support
  * Rounded support indicates if the cable can support rounding the
  * frequency depending upon the cable generation.
@@ -2073,25 +2048,13 @@ void set_tbt_compat_mode_ready(int port);
 bool is_tbt_cable_superspeed(int port);
 
 /**
- * Check if product supports any Modal Operation (Alternate Modes)
+ * Return Discover Mode SOP/SOP' response
  *
- * @param port	   USB-C port number
- * @param cnt      number of data objects in payload
- * @param payload  payload data
- * @return         True if product supports Modal Operation, false otherwise
+ * @param port	USB-C port number
+ * @param type  Transmit type (SOP, SOP', SOP'') for VDM
+ * @return      Discover Mode SOP/SOP' response
  */
-bool is_modal(int port, int cnt, const uint32_t *payload);
-
-/**
- * Checks if Device discover mode response contains Thunderbolt alternate mode
- *
- * @param port	   USB-C port number
- * @param cnt      number of data objects in payload
- * @param payload  payload data
- * @return         True if Thunderbolt Alternate mode response is received,
- *                 false otherwise
- */
-bool is_tbt_compat_mode(int port, int cnt, const uint32_t *payload);
+uint32_t get_tbt_mode_response(int port, enum tcpm_transmit_type type);
 
 /**
  * Returns Thunderbolt-compatible cable speed according to the port if,
@@ -2101,15 +2064,6 @@ bool is_tbt_compat_mode(int port, int cnt, const uint32_t *payload);
  * @return thunderbolt-cable cable speed
  */
 enum tbt_compat_cable_speed get_tbt_cable_speed(int port);
-
-/*
- * Checks if the cable supports Thunderbolt speed.
- *
- * @param port   USB-C port number
- * @return       True if the Thunderbolt cable speed is TBT_SS_TBT_GEN3 or
- *               TBT_SS_U32_GEN1_GEN2, false otherwise
- */
-bool cable_supports_tbt_speed(int port);
 
 /**
  * Fills the TBT3 objects in the payload and returns the number
