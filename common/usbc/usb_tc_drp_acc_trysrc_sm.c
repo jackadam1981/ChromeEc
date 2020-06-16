@@ -1524,7 +1524,7 @@ static void handle_new_power_state(int port)
 }
 #endif /* CONFIG_POWER_COMMON */
 
-#if defined(CONFIG_USB_PD_ALT_MODE) && !defined(CONFIG_USB_PD_ALT_MODE_DFP)
+#if defined(CONFIG_USB_PD_ALT_MODE)
 void pd_send_hpd(int port, enum hpd_event hpd)
 {
 	uint32_t data[1];
