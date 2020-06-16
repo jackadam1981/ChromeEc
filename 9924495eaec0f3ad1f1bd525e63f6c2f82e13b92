@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "319d336d_b8f125c9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-16T00:26:02Z",
+      "side": 1,
+      "message": "who sets this properties bit? This function should be included in the same patch with the code setting this bit.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 1
+      },
+      "revId": "9924495eaec0f3ad1f1bd525e63f6c2f82e13b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50e23866_8e98ee9f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-16T00:26:02Z",
+      "side": 1,
+      "message": "this should be bool",
+      "range": {
+        "startLine": 1501,
+        "startChar": 27,
+        "endLine": 1501,
+        "endChar": 31
+      },
+      "revId": "9924495eaec0f3ad1f1bd525e63f6c2f82e13b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea046411_fdf2a5e6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-16T00:26:02Z",
+      "side": 1,
+      "message": "should return bool",
+      "range": {
+        "startLine": 1507,
+        "startChar": 7,
+        "endLine": 1507,
+        "endChar": 10
+      },
+      "revId": "9924495eaec0f3ad1f1bd525e63f6c2f82e13b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9971e4a4_6410118a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-16T00:26:02Z",
+      "side": 1,
+      "message": "a better name would be \u0027board_fips_override_enabled() or something like this.",
+      "range": {
+        "startLine": 1507,
+        "startChar": 11,
+        "endLine": 1507,
+        "endChar": 31
+      },
+      "revId": "9924495eaec0f3ad1f1bd525e63f6c2f82e13b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7369fe0f_2bf07bad",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-16T00:26:02Z",
+      "side": 1,
+      "message": "where is this function defined?",
+      "range": {
+        "startLine": 1529,
+        "startChar": 14,
+        "endLine": 1529,
+        "endChar": 41
+      },
+      "revId": "9924495eaec0f3ad1f1bd525e63f6c2f82e13b92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
