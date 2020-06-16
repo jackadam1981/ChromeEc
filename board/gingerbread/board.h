@@ -14,18 +14,20 @@
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
-#undef CONFIG_UART_TX_BUF_SIZE
-#define CONFIG_UART_TX_BUF_SIZE 4096
+
+/* Console */
+#define CONFIG_UART_CONSOLE 3
+#define CONFIG_UART_TX_DMA_CH STM32_DMAC_USART3_TX
+#define CONFIG_UART_TX_DMA_PH DMAMUX_REQ_USART3_TX
 
 /* USB Type C and USB PD defines */
 #define USB_PD_PORT_HOST   0
 #define USB_PD_PORT_DP   1
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 
+#define CONFIG_USB_MUX_TUSB1064
 
 /* USB Type A Features */
-
-/* BC 1.2 */
 
 /*
  * Macros for GPIO signals used in common code that don't match the
@@ -36,13 +38,23 @@
 #define GPIO_ENTERING_RW	GPIO_EC_ENTERING_RW
 #define GPIO_WP_L		GPIO_EC_WP_L
 
-
+#define BOARD_NUM_POWER_GPIOS 23
 
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
 #include "registers.h"
 
+#define GPIO_TRIGGER_1 GPIO_USB3_A1_CDP_EN
+#define GPIO_TRIGGER_2 GPIO_USB3_A2_CDP_EN
+#define GPIO_DP_HPD GPIO_DDI_MST_IN_HPD
+
+enum  debug_gpio {
+	TRIGGER_1 = 0,
+	TRIGGER_2,
+};
+
+void board_debug_gpio(int trigger, int enable);
 
 #endif /* !__ASSEMBLER__ */
 
