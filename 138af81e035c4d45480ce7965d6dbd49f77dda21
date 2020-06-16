@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f57ca3e_48358034",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5465,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-16T07:21:12Z",
+      "side": 1,
+      "message": "drop this line",
+      "revId": "138af81e035c4d45480ce7965d6dbd49f77dda21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f1bbb14_e84af8d3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6167,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-16T07:21:12Z",
+      "side": 1,
+      "message": "__ec_align2 might be more appropriate?",
+      "range": {
+        "startLine": 6167,
+        "startChar": 2,
+        "endLine": 6167,
+        "endChar": 13
+      },
+      "revId": "138af81e035c4d45480ce7965d6dbd49f77dda21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
