@@ -1850,6 +1850,14 @@ bool pd_is_mode_discovered_for_svid(int port, enum tcpm_transmit_type type,
 struct svdm_amode_data *pd_get_amode_data(int port,
 		enum tcpm_transmit_type type, uint16_t svid);
 
+/*
+ * Returns cable revision
+ *
+ * @param port          USB-C port number
+ * @return              cable revision
+ */
+int usb_pd_cable_revision(int port);
+
 /**
  * Returns false if previous SOP' messageId count is different from received
  * messageId count.
@@ -1973,10 +1981,8 @@ enum idh_ptype get_usb_pd_cable_type(int port);
  * @param port      USB-C port number
  * @param cnt       number of data objects in payload
  * @param payload   payload data
- * @param head      PD packet header
  */
-void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
-					uint32_t head);
+void dfp_consume_cable_response(int port, int cnt, uint32_t *payload);
 
 /**
  * Returns USB4 cable speed according to the port, if port supports lesser
