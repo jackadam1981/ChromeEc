@@ -573,14 +573,6 @@ struct pd_cable {
 	/* For storing Discover mode response from cable */
 	union tbt_mode_resp_cable cable_mode_resp;
 
-	/* Shared fields between TCPMv1 and TCPMv2 */
-	uint8_t is_identified;
-	/* Type of cable */
-	enum idh_ptype type;
-	/* Cable attributes */
-	union product_type_vdo1 attr;
-	/* For USB PD REV3, active cable has 2 VDOs */
-	union product_type_vdo2 attr2;
 	/* Cable revision */
 	enum pd_rev_type rev;
 
@@ -1850,6 +1842,14 @@ bool pd_is_mode_discovered_for_svid(int port, enum tcpm_transmit_type type,
 struct svdm_amode_data *pd_get_amode_data(int port,
 		enum tcpm_transmit_type type, uint16_t svid);
 
+/*
+ * Returns cable revision
+ *
+ * @param port          USB-C port number
+ * @return              cable revision
+ */
+enum pd_rev_type get_usb_pd_cable_revision(int port);
+
 /**
  * Returns false if previous SOP' messageId count is different from received
  * messageId count.
@@ -1973,10 +1973,8 @@ enum idh_ptype get_usb_pd_cable_type(int port);
  * @param port      USB-C port number
  * @param cnt       number of data objects in payload
  * @param payload   payload data
- * @param head      PD packet header
  */
-void dfp_consume_cable_response(int port, int cnt, uint32_t *payload,
-					uint32_t head);
+void dfp_consume_cable_response(int port, int cnt, uint32_t *payload);
 
 /**
  * Returns USB4 cable speed according to the port, if port supports lesser
