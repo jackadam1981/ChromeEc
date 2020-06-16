@@ -8,6 +8,7 @@
 #include "mp4245.h"
 #include "common.h"
 #include "console.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "util.h"
 
@@ -67,41 +68,36 @@ int mp4245_set_voltage_out(int desired_mv)
 int mp4245_set_current_lim(int desired_ma)
 {
 	int limit;
-	int rv1;
-	int val;
-	int rv2;
 
 	limit = (desired_ma + (MP4245_ILIM_STEP_MA / 2)) / MP4245_ILIM_STEP_MA;
 
-	CPRINTS("mp4245: I_bus desired = %d, limit = %x", desired_ma,
-		limit);
-
-	rv1 = i2c_write8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+	return i2c_write8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
 			 MP4245_CMD_MFR_CURRENT_LIM, limit);
-
-	rv2 = i2c_read8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
-		   MP4245_CMD_MFR_CURRENT_LIM, &val);
-
-	CPRINTS("mp4245: I_bus = %d, lim = %x, rb = %x, %d %d",
-		desired_ma, limit, val, rv1, rv2);
-
-	return rv1;
 }
 
 int mp4245_votlage_out_enable(int enable)
 {
 	int cmd_val = enable ? MP4245_CMD_OPERATION_ON : 0;
-	int rv;
 
-	rv = i2c_write8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+	return i2c_write8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
 			MP4245_CMD_OPERATION, cmd_val);
+}
 
-	i2c_read8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
-		  MP4245_CMD_OPERATION, &cmd_val);
+static int mp4245_status;
+static void mp4245_alert_callback(void)
+{
+	//ccprintf("mp4245: alert: status = %x\n", mp4245_status);
+	//board_debug_gpio(GPIO_TRIGGER_1, 1);
+}
+DECLARE_DEFERRED(mp4245_alert_callback);
 
-	CPRINTS("mp4245: VBUS enable = %d, cmd_oper = %x", enable, cmd_val);
+void mp4245_alert_handler(void)
+{
+	//board_debug_gpio(GPIO_TRIGGER_1, 1);
 
-	return rv;
+	i2c_read16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+	 	   MP4245_CMD_STATUS_WORD, &mp4245_status);
+	hook_call_deferred(&mp4245_alert_callback_data, 0);
 }
 
 void mp4245_dump_reg(void)
@@ -128,7 +124,27 @@ void mp4245_dump_reg(void)
 
 #define MP4245_VOUT_TO_MV(v) ((v * 1000) / (1 << 10))
 #define MP4245_IOUT_TO_MA(i) (((i & 0x7ff) * 1000) / (1 << 6))
-#define MP4245
+
+int mp3245_get_vbus(int *mv, int *ma)
+{
+	int vbus;
+	int ibus;
+
+	/* Get Vbus measurement */
+	i2c_read16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+		   MP4245_CMD_READ_VOUT, &vbus);
+	vbus = MP4245_VOUT_TO_MV(vbus);
+
+	/* Get Ibus measurement */
+	i2c_read16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+		  MP4245_CMD_READ_IOUT, &ibus);
+	ibus = MP4245_IOUT_TO_MA(ibus);
+
+	*mv = vbus;
+	*ma = ibus;
+
+	return EC_SUCCESS;
+}
 
 void mp4245_get_status(void)
 {
