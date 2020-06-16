@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb6a9ed2_d98f00c6",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-16T17:44:56Z",
+      "side": 1,
+      "message": "nit1: const\nnit2: do we even need it?",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5b1dbe9_74c07077",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-16T17:44:56Z",
+      "side": 1,
+      "message": "question: do we have any ntohs-like function that we use in such cases?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 36
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a3fbb48_b1e59fd1",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-16T17:44:56Z",
+      "side": 1,
+      "message": "question: what does this do?",
+      "range": {
+        "startLine": 14,
+        "startChar": 30,
+        "endLine": 14,
+        "endChar": 37
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d34e6977_b9d4ca90",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-16T17:44:56Z",
+      "side": 1,
+      "message": "I believe it should be quoted by our bash styleguides",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec0f49e_22f3f385",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-16T17:44:56Z",
+      "side": 1,
+      "message": "question: needed?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4094692_106e0533",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-16T17:44:56Z",
+      "side": 1,
+      "message": "nit: should it be just \"-o file\" w/o \"[]\" around it? it\u0027s already indicated those params are optional in the 1st syntax line",
+      "range": {
+        "startLine": 155,
+        "startChar": 19,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "321df626_5d98df5f",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-16T17:44:56Z",
+      "side": 1,
+      "message": "nit: \", default \u003d 1\".\nor actually \", must be 1\" now.",
+      "range": {
+        "startLine": 156,
+        "startChar": 51,
+        "endLine": 156,
+        "endChar": 55
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "054d28ec_662bfe0e",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-16T17:44:56Z",
+      "side": 1,
+      "message": "shall we just fix it at some constant, which is in sync with TRNG config rather than accepting from the command line?",
+      "range": {
+        "startLine": 64,
+        "startChar": 49,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
