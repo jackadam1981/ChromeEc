@@ -46,6 +46,30 @@
       "revId": "01104974583737c2b4fb6ab61b4869d4adb7e4b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1de71a_478f057a",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-06-16T16:41:06Z",
+      "side": 1,
+      "message": "Any benefit by moving this to Depthcharge? SD is not required (can be not initialized) in Depthcharge.",
+      "parentUuid": "7cac6bb2_31095f7c",
+      "range": {
+        "startLine": 567,
+        "startChar": 5,
+        "endLine": 567,
+        "endChar": 25
+      },
+      "revId": "01104974583737c2b4fb6ab61b4869d4adb7e4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
