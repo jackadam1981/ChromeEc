@@ -113,6 +113,11 @@ uint8_t pd_get_src_cap_cnt(int port)
 
 static struct pd_cable cable[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+int get_usb_pd_cable_revision(int port)
+{
+	return cable[port].rev;
+}
+
 bool consume_sop_prime_repeat_msg(int port, uint8_t msg_id)
 {
 
@@ -298,7 +303,8 @@ static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 	    is_vdo_present(cnt, VDO_INDEX_PTYPE_CABLE1)) {
 		switch (cable[port].rev) {
 		case PD_REV30:
-			switch (cable[port].attr.p_rev30.ss) {
+			switch (
+			      discovery[port].identity.product_t1.p_rev30.ss) {
 			case USB_R30_SS_U40_GEN3:
 			case USB_R30_SS_U32_U40_GEN1:
 				return true;
@@ -312,7 +318,8 @@ static bool is_cable_ready_to_enter_usb4(int port, int cnt)
 				return false;
 			}
 		case PD_REV20:
-			switch (cable[port].attr.p_rev20.ss) {
+			switch (
+			      discovery[port].identity.product_t1.p_rev20.ss) {
 			case USB_R20_SS_U31_GEN1_GEN2:
 				/* Check if DFP is Gen 3 capable */
 				if (IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE))
@@ -413,7 +420,8 @@ static int process_am_discover_ident_sop_prime(int port, int cnt,
 					uint32_t head, uint32_t *payload)
 {
 	/* Store cable type */
-	dfp_consume_cable_response(port, cnt, payload, head);
+	dfp_consume_cable_response(port, cnt, payload);
+	cable[port].rev = PD_HEADER_REV(head);
 
 	/*
 	 * Enter USB4 mode if the cable supports USB4 operation and has USB4
