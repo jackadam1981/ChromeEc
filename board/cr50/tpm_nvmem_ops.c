@@ -14,6 +14,9 @@
 #include "NV_fp.h"
 #include "tpm_types.h"
 
+/* util.h should be last as it conflicts with TPM2 Implementation.h */
+#include "util.h"
+
 #define CPRINTF(format, args...) cprintf(CC_TASK, format, ## args)
 
 enum tpm_read_rv read_tpm_nvmem(uint16_t obj_index,
@@ -93,5 +96,39 @@ enum tpm_write_rv write_tpm_nvmem_hidden(uint16_t object_index,
 	if (commit && !NvCommit())
 		ret = TPM_WRITE_FAIL;
 
+	return ret;
+}
+
+enum tpm_wipe_rv wipe_tpm_nvmem_hidden(uint16_t object_index)
+{
+	TPM_HANDLE handle = object_index | HR_HIDDEN;
+	NV_INDEX nvIndex;
+	enum tpm_wipe_rv ret;
+
+	if (!NvIsDefinedHiddenObject(handle))
+		return TPM_WIPE_NOT_FOUND;
+
+	ret = TPM_WIPE_SUCCESS;
+	/* Get properties of this index as stored in nvmem. */
+	NvGetIndexInfo(handle, &nvIndex);
+	{
+		/**
+		 * Dynamically allocate stack. Object sizes for
+		 * TPM_HIDDEN_U2F_KEK,TPM_HIDDEN_U2F_KH_SALT are 32 or 64
+		 * bytes, so should be no issue
+		 */
+		uint8_t zero[nvIndex.publicArea.dataSize];
+
+		memset(zero, 0, nvIndex.publicArea.dataSize);
+		/* write all zeros */
+		if (NvWriteHiddenObject(handle, nvIndex.publicArea.dataSize,
+					zero) != TPM_RC_SUCCESS)
+			ret = TPM_WIPE_FAIL;
+		if (!NvCommit())
+			ret = TPM_WIPE_FAIL;
+	}
+	NvDeleteEntity(handle);
+	if (!NvCommit())
+		ret = TPM_WIPE_FAIL;
 	return ret;
 }
