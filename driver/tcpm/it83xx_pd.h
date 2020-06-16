@@ -334,7 +334,8 @@
 enum usbpd_port {
 	USBPD_PORT_A,
 	USBPD_PORT_B,
-	USBPD_PORT_C,
+	USBPD_PORT_C, //it8853 TCPC, mapping to HW port4 on board
+	USBPD_PORT_D, //it8853 TCPC, mapping to HW port5 on board
 };
 
 enum usbpd_ufp_volt_status {
