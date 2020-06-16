@@ -24,6 +24,11 @@ enum tpm_nv_hidden_object {
 	TPM_HIDDEN_U2F_KH_SALT,
 };
 
+enum tpm_delete_rv {
+	TPM_DELETE_NOT_FOUND,
+	TPM_DELETE_SUCCESS,
+};
+
 enum tpm_read_rv read_tpm_nvmem(uint16_t object_index,
 				uint16_t object_size,
 				void *obj_value);
@@ -42,5 +47,8 @@ enum tpm_write_rv write_tpm_nvmem_hidden(uint16_t object_index,
 					 uint16_t object_size,
 					 void *obj_value,
 					 int commit);
+
+/* Delete nvmem hidden object */
+enum tpm_delete_rv delete_tpm_nvmem_hidden(uint16_t object_index);
 
 #endif  /* ! __EC_BOARD_CR50_TPM_NVMEM_OPS_H */

@@ -134,7 +134,14 @@ struct access_tracker {
 enum ec_error_list new_nvmem_init(void);
 enum ec_error_list new_nvmem_migrate(unsigned int nvmem_act_partition);
 enum ec_error_list new_nvmem_save(void);
-int nvmem_erase_tpm_data(void);
+enum ec_error_list nvmem_erase_tpm_data(void);
+
+/**
+ * Wipe all deleted objects in nvmem by fill up the current flash page with
+ * dummy erased objects to make sure that it would be erased during next
+ * compaction which physically overwrites or erase deleted data.
+ */
+enum ec_error_list nvmem_wipe_deleted(void);
 
 #if defined(TEST_BUILD) && !defined(TEST_FUZZ)
 #define NVMEM_TEST_BUILD
