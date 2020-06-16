@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a3c23eea_0c4f299c",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-16T09:14:19Z",
+      "side": 1,
+      "message": "Ack.\n\nI found a LDO I2C access CRC enable bit (reg 0x03 bit 6) in PMIC registers, it\u0027s disabled by default. do we need to enable it?",
+      "parentUuid": "498a2eb1_bd8d7f65",
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a930936_be1be677",
         "filename": "driver/bc12/mt6360.c",
         "patchSetId": 2
@@ -276,6 +294,30 @@
       "side": 1,
       "message": "This is not useful in the header file since the register informations in ldo_data are all static to this .c, and it feels slightly weird to only have a mask for a register defined in .h, but not the address of the registers. Should we just keep this in this file?",
       "parentUuid": "24936755_9bd79945",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 36
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d9df4d4_8777bc6d",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-16T09:14:19Z",
+      "side": 1,
+      "message": "Then we should define the registers in header file.\n\n(that\u0027s what other drivers usually does, we don\u0027t really care about exposing the registers in public header)",
+      "parentUuid": "e4cce6c8_cb756103",
       "range": {
         "startLine": 259,
         "startChar": 0,
