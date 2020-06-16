@@ -93,6 +93,29 @@
       "revId": "44d835c3c835e2a9300f4330ec9a7dd6189ed819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aad8e04_c0a2729b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-06-16T21:33:13Z",
+      "side": 1,
+      "message": "while line 304 still use \"cable\", here inside same function is not necessary to change to use \"discovery\". Same in \"case PD_REV20:\"",
+      "range": {
+        "startLine": 304,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 58
+      },
+      "revId": "44d835c3c835e2a9300f4330ec9a7dd6189ed819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
