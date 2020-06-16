@@ -22,6 +22,30 @@
       "revId": "c504e7a3e940b7b98cb13981d5a8383a65f3f469",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba28004_b994ff80",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-16T17:55:09Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure. It says the upper 7 bits are reserved, but then it also says to explicitly write a value. Therefore, I decided to just write the value.",
+      "parentUuid": "6913552c_b3c94d65",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 46
+      },
+      "revId": "c504e7a3e940b7b98cb13981d5a8383a65f3f469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
