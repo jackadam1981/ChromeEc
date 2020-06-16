@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f5407f8_3e166410",
+        "filename": "board/berknip/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-16T15:12:34Z",
+      "side": 1,
+      "message": "nit: can you separate the implementation from the enable?  This will allow the implementation to exist even if enabling on Berknip needs to be reverted",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 36
+      },
+      "revId": "231e72603e26830b15aab6ee38a8522c2aee20d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
