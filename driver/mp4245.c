@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "mp4245.h"
 #include "util.h"
@@ -53,6 +54,44 @@ int mp4245_votlage_out_enable(int enable)
 			MP4245_CMD_OPERATION, cmd_val);
 }
 
+int mp3245_get_vbus(int *mv, int *ma)
+{
+	int vbus;
+	int ibus;
+
+	/* Get Vbus measurement */
+	i2c_read16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+		   MP4245_CMD_READ_VOUT, &vbus);
+	vbus = MP4245_VOUT_TO_MV(vbus);
+
+	/* Get Ibus measurement */
+	i2c_read16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+		  MP4245_CMD_READ_IOUT, &ibus);
+	ibus = MP4245_IOUT_TO_MA(ibus);
+
+	*mv = vbus;
+	*ma = ibus;
+
+	return EC_SUCCESS;
+}
+
+static int mp4245_status;
+static void mp4245_alert_callback(void)
+{
+	//ccprintf("mp4245: alert: status = %x\n", mp4245_status);
+	//board_debug_gpio(GPIO_TRIGGER_1, 1);
+}
+DECLARE_DEFERRED(mp4245_alert_callback);
+
+void mp4245_alert_handler(void)
+{
+	//board_debug_gpio(GPIO_TRIGGER_1, 1);
+
+	i2c_read16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+	 	   MP4245_CMD_STATUS_WORD, &mp4245_status);
+	hook_call_deferred(&mp4245_alert_callback_data, 0);
+}
+
 struct mp4245_info {
 	uint8_t cmd;
 	uint8_t len;
@@ -89,6 +128,7 @@ static struct mp4245_info  mp4245_cmds[] = {
 };
 
 static void mp4245_dump_reg(void)
+
 {
 	int i;
 	int val;
