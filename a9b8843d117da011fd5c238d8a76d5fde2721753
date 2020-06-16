@@ -46,6 +46,30 @@
       "revId": "a9b8843d117da011fd5c238d8a76d5fde2721753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccba477b_97c3199a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-06-16T18:02:11Z",
+      "side": 1,
+      "message": "It looks like it should default to \u0027utf-8\u0027 if not specified: https://docs.python.org/3/library/stdtypes.html#str.encode\n\nRequested clarification here: https://docs.google.com/document/d/1s4esNc1A9jgfeMMUVykzDZO_CZifpoel0vz6k4A_fF4/edit?disco\u003dAAAAJrnu79I",
+      "parentUuid": "4cd4a7ae_b56f0a97",
+      "range": {
+        "startLine": 224,
+        "startChar": 25,
+        "endLine": 224,
+        "endChar": 33
+      },
+      "revId": "a9b8843d117da011fd5c238d8a76d5fde2721753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
