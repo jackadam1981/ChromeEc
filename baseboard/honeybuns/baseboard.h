@@ -66,9 +66,15 @@
 #define CONFIG_USBC_PPC_DEDICATED_INT
 #define CONFIG_CMD_PPC_DUMP
 
-/* TODO(b/167711550): Temporary, will be replaced by correct mux config */
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+
 #define CONFIG_USBC_SS_MUX
-#define CONFIG_USB_MUX_VIRTUAL
+#define CONFIG_USBC_SS_MUX_UFP_USB3
+
+#define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
+#define CONFIG_USB_PD_IDENTITY_HW_VERS 1
+#define CONFIG_USB_PD_IDENTITY_SW_VERS 1
 
 /* Define typical operating power and max power. */
 #define PD_MAX_VOLTAGE_MV     20000
@@ -125,7 +131,9 @@ enum adc_channel {
 
 extern const struct power_seq board_power_seq[];
 extern const size_t board_power_seq_count;
+extern void baseboard_manage_hpd_event(int signal);
 
 #endif /* !__ASSEMBLER__ */
+
 
 #endif /* __CROS_EC_BASEBOARD_H */
