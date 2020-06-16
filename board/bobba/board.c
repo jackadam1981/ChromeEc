@@ -429,7 +429,11 @@ const struct ppc_config_t ppc_syv682x_port1 = {
 
 static void board_setup_ppc(void)
 {
-	if (gpio_get_level(GPIO_PPC_ID)) {
+	uint32_t board_version = 0;
+
+	if (cbi_get_board_version(&board_version) != EC_SUCCESS)
+		CPRINTSUSB("Get board version failed.");
+	if ((board_version == 5) && (gpio_get_level(GPIO_PPC_ID))) {
 		memcpy(&ppc_chips[USB_PD_PORT_TCPC_0],
 		       &ppc_syv682x_port0,
 		       sizeof(struct ppc_config_t));
