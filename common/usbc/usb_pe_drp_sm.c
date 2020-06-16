@@ -4298,8 +4298,7 @@ static void pe_vdm_identity_request_cbl_run(int port)
 				 * PE_SRC_VDM_Identity_ACKed and
 				 * PE_INIT_PORT_VDM_Identity_ACKed embedded here
 				 */
-				dfp_consume_cable_response(port, cnt, payload,
-							rx_emsg[port].header);
+				dfp_consume_cable_response(port, cnt, payload);
 
 				/*
 				 * Note: If port partner runs PD 2.0, we must
