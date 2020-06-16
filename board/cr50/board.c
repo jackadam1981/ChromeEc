@@ -192,6 +192,11 @@ int board_get_ccd_rec_lid_pin(void)
 	return board_properties & BOARD_CCD_REC_LID_PIN_MASK;
 }
 
+int board_fips_power_up_done(void)
+{
+	return !!(board_properties & BOARD_FIPS_POWERUP_DONE);
+}
+
 /* Get header address of the backup RW copy. */
 const struct SignedHeader *get_other_rw_addr(void)
 {
@@ -1486,6 +1491,44 @@ static uint32_t get_properties(void)
 	CPRINTS("strap_cfg 0x%x has no table entry, prop = 0x%x",
 		config, properties);
 	return properties;
+}
+
+/**
+ * NVMEM variable name for FIPS config. This is complementary for FWMP policy
+ * and used primarily for lab testing where FWMP would be complicated.
+ */
+static const uint8_t k_fips_config = NVMEM_VAR_FIPS_CONFIG;
+void board_set_fips_policy(char asserted)
+{
+	setvar(&k_fips_config, sizeof(k_fips_config), &asserted,
+	       sizeof(asserted));
+}
+
+static int board_get_fips_policy(void)
+{
+	const struct tuple *t;
+	int fips;
+
+	t = getvar(&k_fips_config, sizeof(k_fips_config));
+	fips = (t) ? tuple_val(t)[0] : 0;
+	freevar(t);
+
+	return fips;
+}
+
+int board_fips_enforced(void)
+{
+	/**
+	 * combined flag which caches fips state and the fact it was cached
+	 * bit 7 is set when bit 0 contains fips status
+	 */
+	static uint8_t fips_state;
+
+	if (fips_state & 128)
+		return fips_state & 1;
+	fips_state = board_fwmp_fips_mode_enabled() || board_get_fips_policy();
+	fips_state |= 128;
+	return fips_state & 1;
 }
 
 static void init_board_properties(void)
