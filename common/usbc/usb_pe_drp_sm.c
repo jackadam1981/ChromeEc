@@ -5524,6 +5524,20 @@ struct pd_discovery *pd_get_am_discovery(int port, enum tcpm_transmit_type type)
 	return &pe[port].discovery[type];
 }
 
+uint32_t get_tbt_mode_sop_prime_response(int port)
+{
+	const struct svdm_amode_data *modep = pd_get_amode_data(port,
+			TCPC_TX_SOP_PRIME, USB_VID_INTEL);
+	return modep->data->mode_vdo[1];
+}
+
+uint32_t get_tbt_mode_sop_response(int port)
+{
+	const struct svdm_amode_data *modep = pd_get_amode_data(port,
+			TCPC_TX_SOP, USB_VID_INTEL);
+	return modep->data->mode_vdo[1];
+}
+
 struct partner_active_modes *pd_get_partner_active_modes(int port,
 		enum tcpm_transmit_type type)
 {
