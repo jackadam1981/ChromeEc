@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7c4f40cf_d8f76a36",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-16T15:46:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "766fab17_d185b9e2",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "1fc31834c20171ff76e0b290e3bad53619b55845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96160958_ee7f509b",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 1
@@ -211,6 +235,30 @@
       "revId": "1fc31834c20171ff76e0b290e3bad53619b55845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ae8410a_1415de2f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-16T15:46:23Z",
+      "side": 1,
+      "message": "I\u0027ll respond further in the bug.",
+      "parentUuid": "407b7fb6_6c509aaa",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 64
+      },
+      "revId": "1fc31834c20171ff76e0b290e3bad53619b55845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
