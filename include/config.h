@@ -2084,6 +2084,13 @@
 /* Command to issue AP reset */
 #undef CONFIG_HOSTCMD_AP_RESET
 
+/*
+ * Support voltage regulator host command
+ * If defined, the board should also implement board functions defined in
+ * include/regulator.h
+ */
+#undef CONFIG_HOSTCMD_REGULATOR
+
 /* Flash commands over PD */
 #define CONFIG_HOSTCMD_FLASHPD
 
