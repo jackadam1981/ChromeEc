@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "498a2eb1_bd8d7f65",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-06-16T08:12:16Z",
+      "side": 1,
+      "message": "Nope, I2C_FLAG_PEC use crc({addr_8bit, reg, addr_8bit | 1, value}), but this use crc({addr_8bit | 1, reg, value})\n\nThere\u0027s no real reason to enable CRC afaik, but I feel it\u0027s good to enable it to detect issue early?",
+      "parentUuid": "2a05622c_c8c1d355",
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a930936_be1be677",
         "filename": "driver/bc12/mt6360.c",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb36ca01_d6c59033",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-06-16T08:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a930936_be1be677",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 5
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "2d63516c_96c6055f",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-06-16T08:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22bcdfab_ecd66264",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 6
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24936755_9bd79945",
         "filename": "driver/bc12/mt6360.c",
         "patchSetId": 2
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "e4cce6c8_cb756103",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-06-16T08:12:16Z",
+      "side": 1,
+      "message": "This is not useful in the header file since the register informations in ldo_data are all static to this .c, and it feels slightly weird to only have a mask for a register defined in .h, but not the address of the registers. Should we just keep this in this file?",
+      "parentUuid": "24936755_9bd79945",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 36
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a490655_c327ccb5",
         "filename": "driver/bc12/mt6360.h",
         "patchSetId": 2
@@ -102,6 +192,24 @@
       "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498c76cb_a2ea4705",
+        "filename": "driver/bc12/mt6360.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-06-16T08:12:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a490655_c327ccb5",
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
