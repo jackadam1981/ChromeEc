@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28538a5d_28c39ce7",
+        "filename": "board/dood/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-16T10:52:39Z",
+      "side": 1,
+      "message": "!\u003d",
+      "range": {
+        "startLine": 79,
+        "startChar": 43,
+        "endLine": 79,
+        "endChar": 45
+      },
+      "revId": "f42c98d7882d4bb325aa01bf7acb3170ed7d4d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcbacb7e_8e43dc73",
+        "filename": "board/dood/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-16T10:52:39Z",
+      "side": 1,
+      "message": "We should consistently to judge the PPC by [1] with board version here. And there are three places to have the same judgement so we can introduce a static function to wrap this condition.\n\n[1] if ((board_version \u003e\u003d 5) \u0026\u0026 (gpio_get_level(GPIO_PPC_ID)))",
+      "revId": "f42c98d7882d4bb325aa01bf7acb3170ed7d4d77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
