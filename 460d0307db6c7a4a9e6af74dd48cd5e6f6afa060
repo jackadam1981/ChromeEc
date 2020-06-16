@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "349b1825_7f225fb4",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-16T22:55:23Z",
+      "side": 1,
+      "message": "everything can be removed and replaced with something else :)",
+      "parentUuid": "bb6a9ed2_d98f00c6",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5b1dbe9_74c07077",
         "filename": "board/cr50/tpm2/trng.c",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "80a2b44e_eb0159c0",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-16T22:55:23Z",
+      "side": 1,
+      "message": "though legacy code used x*256 approach, lets try a newer version here, though code is less efficient, as we can\u0027t use aligned read, so it\u0027ll be less efficient, but it doesn\u0027t matter as it\u0027s a test command anyway",
+      "parentUuid": "a0ba796e_5496e93a",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 36
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a3fbb48_b1e59fd1",
         "filename": "test/tpm_test/nist_entropy.sh",
         "patchSetId": 2
@@ -92,6 +140,30 @@
       "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf50fb50_a21c90a0",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-16T22:55:23Z",
+      "side": 1,
+      "message": "it configures a mode that we can\u0027t prove independent and identically distributed nature of TRNG reading, so it runs additional tests",
+      "parentUuid": "1a3fbb48_b1e59fd1",
+      "range": {
+        "startLine": 14,
+        "startChar": 30,
+        "endLine": 14,
+        "endChar": 37
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "83d2d91d_c31f8643",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-16T22:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d34e6977_b9d4ca90",
+      "range": {
+        "startLine": 17,
+        "startChar": 11,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bec0f49e_22f3f385",
         "filename": "test/tpm_test/nist_entropy.sh",
         "patchSetId": 2
@@ -138,6 +234,30 @@
       "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d364893c_6a58ab58",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-16T22:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bec0f49e_22f3f385",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "b27a5897_e29f3924",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-16T22:55:23Z",
+      "side": 1,
+      "message": "it actually optional for optional -t :)",
+      "parentUuid": "a4094692_106e0533",
+      "range": {
+        "startLine": 155,
+        "startChar": 19,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321df626_5d98df5f",
         "filename": "test/tpm_test/tpmtest.py",
         "patchSetId": 2
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "1a6c09f5_1fa0d7eb",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-16T22:55:23Z",
+      "side": 1,
+      "message": "default \u003d 1 is better, since code can be compiled with TRNG_SAMPLE_BITS set to different value for test purposes",
+      "parentUuid": "321df626_5d98df5f",
+      "range": {
+        "startLine": 156,
+        "startChar": 51,
+        "endLine": 156,
+        "endChar": 55
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "054d28ec_662bfe0e",
         "filename": "test/tpm_test/trng_test.py",
         "patchSetId": 2
@@ -207,6 +375,30 @@
       "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "849ed575_79797271",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-16T22:55:23Z",
+      "side": 1,
+      "message": "this is for test purposes - i ran this with different setting even with fixed TRNG setting to look at data as it would be 8-bit or so.",
+      "parentUuid": "054d28ec_662bfe0e",
+      "range": {
+        "startLine": 64,
+        "startChar": 49,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
