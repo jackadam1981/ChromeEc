@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dfc3532_26d8dbe4",
+        "filename": "board/dood/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2020-06-16T08:00:21Z",
+      "side": 1,
+      "message": "In order to support old PCB board (Dood\u0027s first PVT version), tt is still required to use board_version to check whether the board support strapping pin or not.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "edb1170c141d8898ed90eb16ddb7a94e385397cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
