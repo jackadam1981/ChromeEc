@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97c5e8e1_25851f2d",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3075,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-06-16T07:55:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "354017d4_43d54596",
+      "range": {
+        "startLine": 3075,
+        "startChar": 7,
+        "endLine": 3075,
+        "endChar": 23
+      },
+      "revId": "7804c3b7d9b00d6090c958fcc683300e8267b8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c41e105_8567a143",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-16T07:36:36Z",
       "side": 1,
       "message": "Just a question: How do we define the index for regulators? I assume both side (EC/AP) should sync before hand?",
+      "range": {
+        "startLine": 6159,
+        "startChar": 10,
+        "endLine": 6159,
+        "endChar": 15
+      },
+      "revId": "7804c3b7d9b00d6090c958fcc683300e8267b8c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0c6fcbc_283851f2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6159,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-06-16T07:55:29Z",
+      "side": 1,
+      "message": "Yes it\u0027s being set from AP in the device tree, and would need to sync before hand with EC to have the correct value.",
+      "parentUuid": "4c41e105_8567a143",
       "range": {
         "startLine": 6159,
         "startChar": 10,
