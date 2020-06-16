@@ -2337,6 +2337,12 @@
  */
 #undef CONFIG_IT83XX_FLASH_CLOCK_48MHZ
 
+/*
+ * Enable it if EC's VBAT won't go low when system's power isn't
+ * presented (no battery and no AC)
+ */
+#undef CONFIG_IT83XX_RESET_PD_CONTRACT_IN_BRAM
+
 /* To define it, if I2C channel C and PECI used at the same time. */
 #undef CONFIG_IT83XX_SMCLK2_ON_GPC7
 
