@@ -165,8 +165,12 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
 
 	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
-		cable_resp = get_cable_tbt_vdo(port);
-		dev_resp = get_dev_tbt_vdo(port);
+		cable_resp.raw_value =
+			pd_get_mode_vdo_for_svid(port, TCPC_TX_SOP_PRIME,
+						USB_VID_INTEL);
+		dev_resp.raw_value =
+			pd_get_mode_vdo_for_svid(port, TCPC_TX_SOP,
+						USB_VID_INTEL);
 
 		/*
 		 * Bit 2: RE_TIMER_DRIVER

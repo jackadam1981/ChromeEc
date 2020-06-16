@@ -253,9 +253,16 @@ static const mux_state_t typec_mux_map[USB_PD_CTRL_MUX_COUNT] = {
  */
 static uint8_t get_pd_control_flags(int port)
 {
-	union tbt_mode_resp_cable cable_resp = get_cable_tbt_vdo(port);
-	union tbt_mode_resp_device device_resp = get_dev_tbt_vdo(port);
+	union tbt_mode_resp_cable cable_resp;
+	union tbt_mode_resp_device device_resp;
 
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		return 0;
+
+	cable_resp.raw_value = pd_get_mode_vdo_for_svid(port, TCPC_TX_SOP_PRIME,
+						USB_VID_INTEL);
+	device_resp.raw_value = pd_get_mode_vdo_for_svid(port, TCPC_TX_SOP,
+						USB_VID_INTEL);
 	/*
 	 * Ref: USB Type-C Cable and Connector Specification
 	 * Table F-11 TBT3 Cable Discover Mode VDO Responses
