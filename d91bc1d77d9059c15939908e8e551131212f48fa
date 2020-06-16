@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1cce0446_26bca099",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3707,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-16T08:58:56Z",
+      "side": 1,
+      "message": "Moving the PD_FLAGS_CHECK_VCONN_STATE to PD_STATE_SRC_POWERED to match with the SNK path since, we don\u0027t want to request a Vconn swap when the DUT returns to SRC_READY from ENTER_USB state",
+      "parentUuid": "c77d34e3_6c82b51c",
+      "range": {
+        "startLine": 3699,
+        "startChar": 0,
+        "endLine": 3707,
+        "endChar": 0
+      },
+      "revId": "d91bc1d77d9059c15939908e8e551131212f48fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd7aa493_6dc7c7a2",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "d91bc1d77d9059c15939908e8e551131212f48fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add956fa_166f74b8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4280,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-16T08:58:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd7aa493_6dc7c7a2",
+      "range": {
+        "startLine": 4270,
+        "startChar": 0,
+        "endLine": 4280,
+        "endChar": 49
+      },
+      "revId": "d91bc1d77d9059c15939908e8e551131212f48fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
