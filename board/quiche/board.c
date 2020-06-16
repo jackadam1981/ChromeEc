@@ -36,6 +36,11 @@ static void ppc_interrupt(enum gpio_signal signal)
 	}
 }
 
+void hpd_interrupt(enum gpio_signal signal)
+{
+	baseboard_manage_hpd_event(signal);
+}
+
 #include "gpio_list.h" /* Must come after other header files. */
 
 /*
@@ -86,7 +91,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.usb_port = USB_PD_PORT_HOST,
-		.driver = & ps8822_usb_mux_driver,
+		.i2c_addr_flags = PS8822_I2C_ADDR3_FLAG,
+		.driver = &ps8822_usb_mux_driver,
 		.hpd_update = &board_hpd_update,
 	},
 };
@@ -106,6 +112,11 @@ void board_tcpc_init(void)
 {
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
+
+	/* Enable TCPC interrupts. */
+
+	/* Enable HPD interrupt */
+	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -114,6 +125,20 @@ enum pd_dual_role_states tc_get_initial_drp_mode(int port)
 	/* Only port 0 so far, request DRP toggle */
 	return PD_DRP_TOGGLE_ON;
 }
+
+
+static void square_wave(void);
+DECLARE_DEFERRED(square_wave);
+void square_wave(void)
+{
+	/* static int count; */
+	/* int phase = count++ & 1; */
+
+	/* board_debug_gpio(TRIGGER_1, phase); */
+	/* board_debug_gpio(TRIGGER_2, !phase); */
+	hook_call_deferred(&square_wave_data, 100*MSEC);
+}
+
 
 static void board_init(void)
 {
@@ -136,8 +161,15 @@ void board_overcurrent_event(int port, int is_overcurrented)
 
 void board_debug_gpio(int trigger, int enable)
 {
-	enum gpio_signal signal = (trigger == TRIGGER_1) ?
-		GPIO_TRIGGER_1 : GPIO_TRIGGER_2;
-
-	gpio_set_level(signal, enable);
+	switch (trigger) {
+	case TRIGGER_1:
+		gpio_set_level(GPIO_TRIGGER_1, enable);
+		break;
+	case TRIGGER_2:
+		gpio_set_level(GPIO_TRIGGER_2, enable);
+		break;
+	default:
+		CPRINTS("bad debug gpio selection");
+		break;
+	}
 }
