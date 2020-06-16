@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f430cb23_6b9fa401",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-16T12:14:44Z",
+      "side": 1,
+      "message": "Let us wrap these codes into a function for judging the SYV or not so we can leverage this function here and line 78",
+      "revId": "1ed95c07774d85c012ec0abfac995199b919b7b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
