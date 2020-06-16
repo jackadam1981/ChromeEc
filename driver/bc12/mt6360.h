@@ -1,3 +1,8 @@
+/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
 #pragma once
 
 #define MT6360_PMU_SLAVE_ADDR_FLAGS 0x34
@@ -27,6 +32,24 @@
 #define MT6360_MASK_DPDMIRQ_DETACH BIT(1)
 
 #define MT6360_REG_DPDM_MASK1 0xF6
+
+enum mt6360_ldo_id {
+	MT6360_LDO3,
+	MT6360_LDO5,
+
+	MT6360_LDO_COUNT,
+};
+
+int mt6360_ldo_get_info(enum mt6360_ldo_id ldo_id, char *name,
+			uint16_t *voltage_count, uint16_t *voltages_uV);
+
+int mt6360_ldo_enable(enum mt6360_ldo_id ldo_id, uint8_t enable);
+
+int mt6360_ldo_is_enabled(enum mt6360_ldo_id ldo_id, uint8_t *enabled);
+
+int mt6360_ldo_set_voltage(enum mt6360_ldo_id ldo_id, int min_uV, int max_uV);
+
+int mt6360_ldo_get_voltage(enum mt6360_ldo_id ldo_id, int *voltage_uV);
 
 enum mt6360_led_id {
 	MT6360_LED_RGB1,
