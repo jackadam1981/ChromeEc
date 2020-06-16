@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0679d6c_00042cf0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-16T01:31:17Z",
+      "side": 1,
+      "message": "is this typecast needed?",
+      "range": {
+        "startLine": 1528,
+        "startChar": 14,
+        "endLine": 1528,
+        "endChar": 20
+      },
+      "revId": "4dd02624caa51db206f30f87e8565840b0fd25f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6296316_4a954196",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-16T01:31:17Z",
+      "side": 1,
+      "message": "just a nit to your discretion (missed it first time around), this could be shorter:\n\nif (!(fips_state \u0026 128) {\n // set fips_state\n}\n\nreturn fips_state \u0026 1;",
+      "range": {
+        "startLine": 1543,
+        "startChar": 0,
+        "endLine": 1546,
+        "endChar": 19
+      },
+      "revId": "4dd02624caa51db206f30f87e8565840b0fd25f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
