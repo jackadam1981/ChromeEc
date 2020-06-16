@@ -14,6 +14,9 @@
 #include "NV_fp.h"
 #include "tpm_types.h"
 
+/* util.h should be last as it conflicts with TPM2 Implementation.h */
+#include "util.h"
+
 #define CPRINTF(format, args...) cprintf(CC_TASK, format, ## args)
 
 enum tpm_read_rv read_tpm_nvmem(uint16_t obj_index,
@@ -94,4 +97,15 @@ enum tpm_write_rv write_tpm_nvmem_hidden(uint16_t object_index,
 		ret = TPM_WRITE_FAIL;
 
 	return ret;
+}
+
+enum tpm_delete_rv delete_tpm_nvmem_hidden(uint16_t object_index)
+{
+	TPM_HANDLE handle = object_index | HR_HIDDEN;
+
+	if (!NvIsDefinedHiddenObject(handle))
+		return TPM_DELETE_NOT_FOUND;
+
+	NvDeleteEntity(handle);
+	return TPM_DELETE_SUCCESS;
 }

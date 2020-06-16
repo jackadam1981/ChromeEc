@@ -2995,41 +2995,13 @@ static void dump_contents(const struct nn_container *ch)
 	ccprintf("\n");
 }
 
-/*
- * Clear tpm data from nvmem. First fill up the current top page with erased
- * objects, then compact the flash storage, removing all TPM related objects.
- * This would guarantee that all pages where TPM objecs were stored would be
- * erased.
- */
-int nvmem_erase_tpm_data(void)
+enum ec_error_list nvmem_wipe_deleted(void)
 {
 	const uint8_t *key;
 	const uint8_t *val;
-	int rv;
-	struct nn_container *ch;
-	struct access_tracker at = {};
 	uint8_t saved_list_index;
 	uint8_t key_len;
-
-	if (!crypto_enabled())
-		return EC_ERROR_INVAL;
-
-	ch = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
-
-	lock_mutex(__LINE__);
-
-	while (get_next_object(&at, ch, 0) == EC_SUCCESS) {
-
-		if ((ch->container_type != NN_OBJ_TPM_RESERVED) &&
-		    (ch->container_type != NN_OBJ_TPM_EVICTABLE))
-			continue;
-
-		delete_object(&at, ch);
-	}
-
-	unlock_mutex(__LINE__);
-
-	shared_mem_release(ch);
+	enum ec_error_list rv;
 
 	/*
 	 * Now fill up the current flash page with erased objects to make sure
@@ -3037,8 +3009,8 @@ int nvmem_erase_tpm_data(void)
 	 * value pairs as the erase objects.
 	 */
 	saved_list_index = master_at.list_index;
-	key = (const uint8_t *)nvmem_erase_tpm_data;
-	val = (const uint8_t *)nvmem_erase_tpm_data;
+	key = (const uint8_t *)nvmem_wipe_deleted;
+	val = (const uint8_t *)nvmem_wipe_deleted;
 	key_len = MAX_VAR_BODY_SPACE - 255;
 	do {
 		size_t to_go_in_page;
@@ -3075,7 +3047,8 @@ int nvmem_erase_tpm_data(void)
 				need_to_cover =
 					to_go_in_page -
 					offsetof(struct max_var_container,
-						 body) + 1;
+						 body) +
+					1;
 				key_len = need_to_cover / 2;
 				val_len = need_to_cover - key_len;
 			}
@@ -3090,6 +3063,42 @@ int nvmem_erase_tpm_data(void)
 	lock_mutex(__LINE__);
 	rv = compact_nvmem();
 	unlock_mutex(__LINE__);
+
+	return rv;
+}
+
+/*
+ * Clear tpm data from nvmem. First fill up the current top page with erased
+ * objects, then compact the flash storage, removing all TPM related objects.
+ * This would guarantee that all pages where TPM objects were stored would be
+ * erased.
+ */
+enum ec_error_list nvmem_erase_tpm_data(void)
+{
+	enum ec_error_list rv;
+	struct nn_container *ch;
+	struct access_tracker at = {};
+
+	if (!crypto_enabled())
+		return EC_ERROR_INVAL;
+
+	ch = get_scratch_buffer(CONFIG_FLASH_BANK_SIZE);
+
+	lock_mutex(__LINE__);
+
+	while (get_next_object(&at, ch, 0) == EC_SUCCESS) {
+		if ((ch->container_type != NN_OBJ_TPM_RESERVED) &&
+		    (ch->container_type != NN_OBJ_TPM_EVICTABLE))
+			continue;
+
+		delete_object(&at, ch);
+	}
+
+	unlock_mutex(__LINE__);
+
+	shared_mem_release(ch);
+
+	rv = nvmem_wipe_deleted();
 
 	if (rv == EC_SUCCESS)
 		rv = new_nvmem_init();
