@@ -7,18 +7,23 @@
 
 #include "common.h"
 #include "driver/ppc/sn5s330.h"
+#include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/stm32gx.h"
 #include "driver/tcpm/tcpci.h"
+#include "driver/usb_mux/tusb1064.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "mp4245.h"
 #include "switch.h"
 #include "system.h"
 #include "task.h"
 #include "uart.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+#include "usb_pe_sm.h"
+#include "usb_prl_sm.h"
+#include "usb_tc_sm.h"
 #include "util.h"
-
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
@@ -33,6 +38,16 @@ static void ppc_interrupt(enum gpio_signal signal)
 	default:
 		break;
 	}
+}
+
+static void mp4245_interrupt(enum gpio_signal signal)
+{
+	mp4245_alert_handler();
+}
+
+void hpd_interrupt(enum gpio_signal signal)
+{
+	baseboard_manage_hpd_event(signal);
 }
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -70,7 +85,12 @@ const struct power_seq board_power_seq[] = {
 
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
 
+void board_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
+{
 
+}
+
+/* TCPCs */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.bus_type = EC_BUS_TYPE_EMBEDDED,
@@ -81,8 +101,9 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.usb_port = USB_PD_PORT_HOST,
-		.driver = &virtual_usb_mux_driver,
-		.hpd_update = &virtual_hpd_update,
+		.i2c_addr_flags = TUSB1064_I2C_ADDR0_FLAG,
+		.driver = &tusb1064_usb_mux_driver,
+		.hpd_update = &board_hpd_update,
 	},
 };
 
@@ -101,12 +122,36 @@ void board_tcpc_init(void)
 {
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
+
+	/* Enable TCPC interrupts. */
+
+	/* Enable HPD interrupt */
+	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
+
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
+static void board_select_drp_mode(void)
+{
+
+	pd_set_dual_role(0, PD_DRP_TOGGLE_ON);
+	CPRINTS("ucpd: drp_state = %d", pd_get_dual_role(0));
+}
+DECLARE_DEFERRED(board_select_drp_mode);
+
+static void board_manage_led(void)
+{
+	static int counter;
+
+	gpio_set_level(GPIO_STATUS_LED1, counter & 1);
+	gpio_set_level(GPIO_STATUS_LED2, counter & 1);
+	counter++;
+}
+DECLARE_HOOK(HOOK_SECOND,board_manage_led, HOOK_PRIO_DEFAULT);
+
 static void board_init(void)
 {
-	/* TODO */
+	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -121,4 +166,19 @@ int ppc_get_alert_status(int port)
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* TODO: b/ - check correct operation for honeybuns */
+}
+
+void board_debug_gpio(int trigger, int enable)
+{
+	switch (trigger) {
+	case TRIGGER_1:
+		gpio_set_level(GPIO_TRIGGER_1, enable);
+		break;
+	case TRIGGER_2:
+		gpio_set_level(GPIO_TRIGGER_2, enable);
+		break;
+	default:
+		CPRINTS("bad debug gpio selection");
+		break;
+	}
 }
