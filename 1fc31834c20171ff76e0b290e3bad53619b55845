@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "766fab17_d185b9e2",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-16T00:16:22Z",
+      "side": 1,
+      "message": "It likely needs a bit more refactoring to properly fit it in.\nThere\u0027s no guarantee that an exit mode command will follow the setting up of a DP connection,\nsince the port can be hot-plugged, but I agree it would be nicer to have a better flow here.",
+      "parentUuid": "de606eac_f5cf9228",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "1fc31834c20171ff76e0b290e3bad53619b55845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96160958_ee7f509b",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "1fc31834c20171ff76e0b290e3bad53619b55845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260dce78_20630bc6",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-16T00:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96160958_ee7f509b",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "1fc31834c20171ff76e0b290e3bad53619b55845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "b6a4e4d8_c0b3fbe3",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-16T00:16:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b240073f_1e3d0208",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 38
+      },
+      "revId": "1fc31834c20171ff76e0b290e3bad53619b55845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d1f5c03_158b7f1b",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 1
@@ -106,6 +178,30 @@
       "writtenOn": "2020-06-15T20:35:00Z",
       "side": 1,
       "message": "I am still unclear on how we got into this situation, so the following is tentative:\n\nIIUC, we somehow got past pe_attempt_port_discovery while discovery needed to be done without proceeding to the next step. I believe this would be incorrect behavior, but for the sake of this clause, let\u0027s assume that it\u0027s going to happen sometimes.\n\nAt this point, we don\u0027t want to proceed until both SVIDs and modes are fully discovered. Therefore, this should be something like,\n\npd_get_svids_discovery(port, TCPC_TX_SOP) !\u003d PD_DISC_COMPLETE || pd_get_modes_discovery(port, TCCP_TX_SOP) !\u003d PD_DISC_COMPLETE\n\nRight now, we are only doing DisplayPort, so SOP is sufficient to check. In the general case (Thunderbolt), we would also need to check SOP\u0027.",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 64
+      },
+      "revId": "1fc31834c20171ff76e0b290e3bad53619b55845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "407b7fb6_6c509aaa",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-16T00:16:22Z",
+      "side": 1,
+      "message": "So my theory is that the fast power transitions caused by b/158634281 is causing some\ntiming issues i.e discovery is requested, but by the time it happens the CPU is\ngoing into S5 (soft power down), and then back to S3/S0, causing some overlap in\nrequests. I think we\u0027re seeing a bit of a collision between state-driven context and\nimmediate handling of state data caused by the power transitions. Maybe.",
+      "parentUuid": "4d1f5c03_158b7f1b",
       "range": {
         "startLine": 85,
         "startChar": 5,
