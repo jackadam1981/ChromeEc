@@ -963,6 +963,26 @@ static void prl_tx_construct_message(const int port)
 /*
  * PrlTxWaitForPhyResponse
  */
+static inline uint8_t n_retry_count(const enum pd_rev_type rev)
+{
+	/* PD 2.0 nRetryCount is 3 (4 total attempts). Section 6.6.2 */
+	if (!IS_ENABLED(CONFIG_USB_PD_REV30) || rev == PD_REV20)
+		return 3;
+	/* PD 3.0 nRetryCount is 2 (3 total attempts). Section 6.7.2 */
+	else
+		return 2;
+}
+
+static inline bool is_large_extended_message(const struct pd_message *msg)
+{
+#ifdef CONFIG_USB_PD_REV30
+	return msg->ext && PD_EXT_HEADER_DATA_SIZE(msg->tx_chk_buf[0]) >
+				   PD_MAX_EXT_MSG_CHUNK_LEN;
+#else
+	return false;
+#endif
+}
+
 static void prl_tx_wait_for_phy_response_entry(const int port)
 {
 	print_current_prl_tx_state(port);
@@ -972,8 +992,6 @@ static void prl_tx_wait_for_phy_response_entry(const int port)
 
 static void prl_tx_wait_for_phy_response_run(const int port)
 {
-	int pd3_retry_check;
-
 	/* Wait until TX is complete */
 
 	/*
@@ -984,27 +1002,21 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 	 */
 
 	if (get_time().val > prl_tx[port].tcpc_tx_timeout ||
-		prl_tx[port].xmit_status == TCPC_TX_COMPLETE_FAILED ||
-		prl_tx[port].xmit_status == TCPC_TX_COMPLETE_DISCARDED) {
+	    prl_tx[port].xmit_status == TCPC_TX_COMPLETE_FAILED ||
+	    prl_tx[port].xmit_status == TCPC_TX_COMPLETE_DISCARDED) {
+		const uint8_t max_retry =
+			n_retry_count(prl_get_rev(port, pdmsg[port].xmit_type));
 
 		/* NOTE: PRL_Tx_Check_RetryCounter State embedded here. */
 
 		/* Increment check RetryCounter */
 		prl_tx[port].retry_counter++;
 
-#ifdef CONFIG_USB_PD_REV30
-		pd3_retry_check = (pdmsg[port].ext &&
-		PD_EXT_HEADER_DATA_SIZE(GET_EXT_HEADER(
-		pdmsg[port].tx_chk_buf[0]) > 26));
-#else
-		pd3_retry_check = 0;
-#endif /* CONFIG_USB_PD_REV30 */
-
 		/*
 		 * (RetryCounter > nRetryCount) | Large Extended Message
 		 */
-		if (prl_tx[port].retry_counter > N_RETRY_COUNT ||
-							pd3_retry_check) {
+		if (prl_tx[port].retry_counter > max_retry ||
+		    is_large_extended_message(&pdmsg[port])) {
 			/*
 			 * NOTE: PRL_Tx_Transmission_Error State embedded
 			 * here.
@@ -1422,8 +1434,8 @@ static void rch_processing_extended_message_run(const int port)
 	else if (chunk_num == pdmsg[port].chunk_number_expected) {
 		byte_num = data_size - pdmsg[port].num_bytes_received;
 
-		if (byte_num > 25)
-			byte_num = 26;
+		if (byte_num > PD_MAX_EXT_MSG_CHUNK_LEN)
+			byte_num = PD_MAX_EXT_MSG_CHUNK_LEN;
 
 		/* Make sure extended message buffer does not overflow */
 		if (pdmsg[port].num_bytes_received +
@@ -1717,8 +1729,8 @@ static void tch_construct_chunked_message_entry(const int port)
 	data = ((uint8_t *)pdmsg[port].tx_chk_buf + 2);
 	num = tx_emsg[port].len - pdmsg[port].send_offset;
 
-	if (num > 26)
-		num = 26;
+	if (num > PD_MAX_EXT_MSG_CHUNK_LEN)
+		num = PD_MAX_EXT_MSG_CHUNK_LEN;
 
 	/* Set the chunks extended header */
 	*ext_hdr = PD_EXT_HEADER(pdmsg[port].chunk_number_to_send,

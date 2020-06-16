@@ -1223,6 +1223,9 @@ enum pd_msg_type {
 #define PD_EXT_HEADER_REQ_CHUNK(header) (((header) >> 10) & 1)
 #define PD_EXT_HEADER_DATA_SIZE(header) ((header) & 0x1ff)
 
+/* See Section 6.4.8 in PD 3.0 spec. Serves as max legacy and chunk length */
+#define PD_MAX_EXT_MSG_CHUNK_LEN 26
+
 /* Used to get extended header from the first 32-bit word of the message */
 #define GET_EXT_HEADER(msg) (msg & 0xffff)
 

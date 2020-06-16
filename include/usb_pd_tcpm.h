@@ -13,7 +13,18 @@
 #include "i2c.h"
 
 /* Default retry count for transmitting */
+#ifdef CONFIG_USB_PD_TCPMV1
+/*
+ * TCPMv1 relies on the TCPC layer to perform retries, PD 2.0 nRetryCount is
+ * 3, while PD 3.0 nRetryCount is 2. Since TCPMv1 is very PD 2.0 focused, we
+ * leave the PD 2.0 default.
+ */
 #define PD_RETRY_COUNT 3
+#else
+/* The TCPMv2 performs retries in the protocol layer instead of TCPC layer */
+#define PD_RETRY_COUNT 0
+#endif
+
 
 /* Time to wait for TCPC to complete transmit */
 #define PD_T_TCPC_TX_TIMEOUT  (100*MSEC)
