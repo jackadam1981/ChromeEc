@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9162c40c_73d2844c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-16T00:42:03Z",
+      "side": 1,
+      "message": "I guess no platforms are using CONFIG_USB_PD_FRS_TCPC.  This should fail to compile because you\u0027re missing a return statement.\n\nThis function should capture the return values of tcpc_update8() and board_tcpc_fast_role_swap_enable() as the return value.",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 726,
+        "endChar": 58
+      },
+      "revId": "1ad99a2f71e7c5dc03e8ab248d7ef7f4e37174e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

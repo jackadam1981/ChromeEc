@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "a37e0f22_649bab8c",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-16T00:42:03Z",
+      "side": 1,
+      "message": "You can the checks in the drivers themselves.",
+      "parentUuid": "fe5d2031_4e0eee1e",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 734,
+        "endChar": 34
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8da99889_1cebb6d4",
         "filename": "common/usb_common.c",
         "patchSetId": 11
@@ -141,6 +165,30 @@
       "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f2ffcc_1a4f62dc",
+        "filename": "common/usb_common.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-16T00:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b5a14d3_b8997e66",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 735,
+        "endChar": 35
+      },
+      "revId": "74d7aed974c93364f2637ec9bd6fe73546d658e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
