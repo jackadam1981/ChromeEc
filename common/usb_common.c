@@ -403,6 +403,10 @@ mux_state_t get_mux_mode_to_set(int port)
 	    chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
 		return USB_PD_MUX_NONE;
 
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX_UFP_USB3) &
+	    (pd_get_data_role(port) == PD_ROLE_UFP))
+		return USB_PD_MUX_USB_ENABLED;
+
 	/*
 	 * When PD stack is disconnected, then mux should be disconnected, which
 	 * is also what happens in the set_state disconnection code. Once the
