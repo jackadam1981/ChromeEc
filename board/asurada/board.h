@@ -70,6 +70,7 @@
 #define I2C_PORT_PPC1  IT83XX_I2C_CH_E
 #define I2C_PORT_USB_MUX0 IT83XX_I2C_CH_C
 #define I2C_PORT_USB_MUX1 IT83XX_I2C_CH_E
+#define CONFIG_SMBUS_PEC
 
 /* LED */
 #define CONFIG_LED_COMMON
@@ -197,6 +198,9 @@
 #define GPIO_PS185_PWRDN_ODL    GPIO_EC_X_GPIO3
 
 #define PORT_TO_HPD(port) GPIO_EC_DPBRDG_HPD_ODL
+
+/* Voltage regulator control */
+#define CONFIG_HOSTCMD_REGULATOR
 
 #ifndef __ASSEMBLER__
 
