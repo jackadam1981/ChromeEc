@@ -4125,6 +4125,13 @@
  * don't support being a UFP)
  */
 #undef CONFIG_USBC_SS_MUX_DFP_ONLY
+/*
+ * Use this config option to have type-c superspeed mux enabled when attaching
+ * as a sink/ufp always and not dependent on port partner being usb comms
+ * capable. This option is important for docks that need to expose USB3 hubs
+ * without PD messaging active.
+ */
+#undef CONFIG_USBC_SS_MUX_UFP_USB3
 
 /* Support v1.1 type-C connection state machine */
 #undef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
