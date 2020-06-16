@@ -2084,6 +2084,9 @@
 /* Command to issue AP reset */
 #undef CONFIG_HOSTCMD_AP_RESET
 
+/* Support voltage regulator host command */
+#undef CONFIG_HOSTCMD_REGULATOR
+
 /* Flash commands over PD */
 #define CONFIG_HOSTCMD_FLASHPD
 
