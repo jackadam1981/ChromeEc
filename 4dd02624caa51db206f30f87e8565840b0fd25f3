@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ed4a524_3c12c847",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-16T17:54:16Z",
+      "side": 1,
+      "message": "not needed, but was added to make conversion explicit. removed it now",
+      "parentUuid": "d0679d6c_00042cf0",
+      "range": {
+        "startLine": 1528,
+        "startChar": 14,
+        "endLine": 1528,
+        "endChar": 20
+      },
+      "revId": "4dd02624caa51db206f30f87e8565840b0fd25f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6296316_4a954196",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "4dd02624caa51db206f30f87e8565840b0fd25f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d141e4e9_030b97f5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-16T17:54:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6296316_4a954196",
+      "range": {
+        "startLine": 1543,
+        "startChar": 0,
+        "endLine": 1546,
+        "endChar": 19
+      },
+      "revId": "4dd02624caa51db206f30f87e8565840b0fd25f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
