@@ -52,6 +52,19 @@
 #define MP4245_ILIM_STEP_MA          50
 #define MP4245_VOUT_5V_DELAY_MS      10
 
+
+#define MP4245_MFR_STATUS_MASK_VOUT        BIT(7)
+#define MP4245_MFR_STATUS_MASK_IOUT        BIT(6)
+#define MP4245_MFR_STATUS_MASK_INPUT       BIT(5)
+#define MP4245_MFR_STATUS_MASK_TEMP        BIT(4)
+#define MP4245_MFR_STATUS_MASK_PG_STATUS   BIT(3)
+#define MP4245_MFR_STATUS_MASK_PG_ALT_EDGE BIT(2)
+#define MP4245_MFR_STATUS_MASK_OTHER       BIT(1)
+#define MP4245_MFR_STATUS_MASK_UNKNOWN     BIT(0)
+
+void mp4245_alert_handler(void);
+int mp3245_get_vbus(int *mv, int *ma);
+
 /**
  * MP4245 set output voltage level
  *
