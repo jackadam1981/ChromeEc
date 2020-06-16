@@ -4683,6 +4683,9 @@
 /* Support the Parade PS8822 Type-C Redriving Demux Switch */
 #undef CONFIG_USB_MUX_PS8822
 
+/* Support the TI TUSB1064 Type-C Redriving Demux Switch */
+#undef CONFIG_USB_MUX_TUSB1064
+
 /* 'Virtual' USB mux under host (not EC) control */
 #undef CONFIG_USB_MUX_VIRTUAL
 
