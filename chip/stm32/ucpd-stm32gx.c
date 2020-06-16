@@ -57,6 +57,7 @@
  */
 #define UCPD_BUF_LEN 30
 
+
 #define UCPD_IMR_RX_INT_MASK (STM32_UCPD_IMR_RXNEIE| \
 			      STM32_UCPD_IMR_RXORDDETIE | \
 			      STM32_UCPD_IMR_RXHRSTDETIE |	\
@@ -546,6 +547,34 @@ int stm32gx_ucpd_get_role_control(int port)
 	return role_control;
 }
 
+int stm32gx_ucpd_vconn_disc_rp(int port, int enable)
+{
+	int cr = STM32_UCPD_CR(port);
+	int pol;
+	int cc_disable_mask;
+
+	/*
+	 * This function is called when tcpm_set_vconn() method is called to
+	 * enable VCONN. ucpd does not provide vconn, but Rp must be
+	 * disconnected from the CCx line prior to enabling vconn.
+	 */
+	if (enable) {
+		/* Get CC polarity */
+		pol = !!(cr & STM32_UCPD_CR_PHYCCSEL);
+		/* Disconnect cc line that is not being used for PD messaging */
+		cc_disable_mask = 1 << (STM32_UCPD_CR_CCENABLE_SHIFT + !pol);
+		cr &= ~cc_disable_mask;
+		CPRINTS("ucpd: vconn disable Rp, pol = %d, cr = %x", pol, cr);
+	} else {
+		/* make sure Rp/Rd is connected */
+		cr |= STM32_UCPD_CR_CCENABLE_MASK;
+	}
+	/* Apply cc pull resistor change */
+	STM32_UCPD_CR(port) = cr;
+
+	return EC_SUCCESS;
+}
+
 int stm32gx_ucpd_set_cc(int port, int cc_pull, int rp)
 {
 	uint32_t cr = STM32_UCPD_CR(port);
@@ -569,6 +598,11 @@ int stm32gx_ucpd_set_cc(int port, int cc_pull, int rp)
 		cr |= STM32_UCPD_CR_CCENABLE_MASK;
 	}
 
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+	if (ucpd_cc_change_log) {
+		CPRINTS("ucpd: set_cc: pull = %d, rp = %d", cc_pull, rp);
+	}
+#endif
 	/* Update pull values */
 	STM32_UCPD_CR(port) = cr;
 
@@ -589,6 +623,10 @@ int stm32gx_ucpd_set_polarity(int port, enum tcpc_cc_polarity polarity) {
 		STM32_UCPD_CR(port) &= ~STM32_UCPD_CR_PHYCCSEL;
 	else if (polarity == POLARITY_CC2)
 		STM32_UCPD_CR(port) |= STM32_UCPD_CR_PHYCCSEL;
+
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+	ucpd_cc_set_save = STM32_UCPD_CR(port);
+#endif
 
 	return EC_SUCCESS;
 }
@@ -1018,8 +1056,13 @@ void stm32gx_ucpd1_irq(void)
 		STM32_UCPD_SR_HRSTDISC;
 
 	/* Check for CC events, set event to wake PD task */
-	if (sr & (STM32_UCPD_SR_TYPECEVT1 | STM32_UCPD_SR_TYPECEVT2))
+	if (sr & (STM32_UCPD_SR_TYPECEVT1 | STM32_UCPD_SR_TYPECEVT2)) {
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+		ucpd_sr_cc_event = sr;
+		hook_call_deferred(&ucpd_cc_change_notify_data, 0);
+#endif
+	}
 
 	/*
 	 * Check for Tx events. tx_mask includes all status bits related to the
@@ -1126,6 +1169,14 @@ static char data_names[][10] = {
 	"BATTERY",
         "ALERT",
 	"GET_INFO",
+	"ENTER_USB",
+	"RSVD",
+	"RSVD",
+	"RSVD",
+	"RSVD",
+	"RSVD",
+	"RSVD",
+	"VDM",
 };
 
 static void ucpd_dump_msg_log(void)
@@ -1179,25 +1230,9 @@ static void ucpd_dump_msg_log(void)
 			ccprintf("msg[%02d]: %08d\t CC Voltage Change!",
 				 i, delta_ts);
 		}
-
-		ccprintf("msg[%02d]: %08d\t %s\t %8s\t %02d\t %d  %d\t %s\t %s",
-			 i,
-			 delta_ts,
-			 dir ? "Rx" : "Tx",
-			 name,
-			 len,
-			 msg_log[i].comp,
-			 msg_log[i].crc,
-			 PD_HEADER_PROLE(header) ? "SRC" : "SNK",
-			 PD_HEADER_DROLE(header) ? "DFP" : "UFP");
-		for (j = 0; j < (len << 2) + 2; j++)
-			ccprintf(" %02x", msg_log[i].buf[j]);
 		ccprintf("\n");
 		msleep(5);
 	}
-
-	msg_log_cnt = 0;
-	msg_log_idx = 0;
 }
 
 static void stm32gx_ucpd_set_cc_debug(int port, int cc_mask, int pull, int rp)
@@ -1309,7 +1344,12 @@ static int command_ucpd(int argc, char **argv)
 		stm32gx_ucpd_set_cc_debug(port, cc_mask, pull, rp);
 
 	} else if (!strcasecmp(argv[1], "log")) {
-		ucpd_dump_msg_log();
+		if (argc < 3) {
+			ucpd_dump_msg_log();
+		} else if (!strcasecmp(argv[2], "clr")) {
+			msg_log_cnt = 0;
+			msg_log_idx = 0;
+		}
 	} else {
 		return EC_ERROR_PARAM1;
 	}
