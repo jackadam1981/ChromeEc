@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a05622c_c8c1d355",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-16T07:56:53Z",
+      "side": 1,
+      "message": "Doesn\u0027t i2c_read8 with I2C_FLAG_PEC work?\n\nAlso, is there any reason to enable crc?",
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a930936_be1be677",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-16T07:56:53Z",
+      "side": 1,
+      "message": "add const",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 5
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22bcdfab_ecd66264",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-16T07:56:53Z",
+      "side": 1,
+      "message": "add const",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 6
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24936755_9bd79945",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-16T07:56:53Z",
+      "side": 1,
+      "message": "move this to header file",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 36
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a490655_c327ccb5",
+        "filename": "driver/bc12/mt6360.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-16T07:56:53Z",
+      "side": 1,
+      "message": "Header added in CL:2117871, please rebase your change, thanks",
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
