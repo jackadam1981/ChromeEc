@@ -55,7 +55,7 @@ static int stm32gx_tcpm_release(int port)
 static int stm32gx_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2)
 {
-	int role_control = stm32gx_ucpd_get_role_control(port);
+//	int role_control = stm32gx_ucpd_get_role_control(port);
 
 	/* errors will return CC as open */
 	*cc1 = TYPEC_CC_VOLT_OPEN;
@@ -65,10 +65,10 @@ static int stm32gx_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	stm32gx_ucpd_get_cc(port, cc1, cc2);
 
 	/* Map between cc_state and tcpc_cc_voltage_status */
-	if (*cc1)
-		*cc1 += ((role_control & 0x3) == TYPEC_CC_RD) ? 4 : 0;
-	if (*cc2)
-		*cc2 += (((role_control >> 2) & 0x3) == TYPEC_CC_RD) ? 4 : 0;
+	/* if (*cc1) */
+	/* 	*cc1 += ((role_control & 0x3) == TYPEC_CC_RD) ? 4 : 0; */
+	/* if (*cc2) */
+	/* 	*cc2 += (((role_control >> 2) & 0x3) == TYPEC_CC_RD) ? 4 : 0; */
 
 	return EC_SUCCESS;
 }
@@ -82,6 +82,7 @@ static int stm32gx_tcpm_select_rp_value(int port, int rp_sel)
 
 static int stm32gx_tcpm_set_cc(int port, int pull)
 {
+
 	return stm32gx_ucpd_set_cc(port, pull, cached_rp[port]);;
 }
 
@@ -92,6 +93,8 @@ static int stm32gx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 
 static int stm32gx_tcpm_set_vconn(int port, int enable)
 {
+	stm32gx_ucpd_vconn_disc_rp(port, enable);
+
 	return EC_SUCCESS;
 }
 
@@ -102,6 +105,7 @@ static int stm32gx_tcpm_set_msg_header(int port, int power_role, int data_role)
 
 static int stm32gx_tcpm_set_rx_enable(int port, int enable)
 {
+
 	return stm32gx_ucpd_set_rx_enable(port, enable);
 }
 
@@ -111,12 +115,11 @@ static int stm32gx_tcpm_transmit(int port,
 			const uint32_t *data)
 {
 	int rv;
-	/* static int modulo_counter; */
-	//board_debug_gpio(TRIGGER_1, 1);
-	/* if (modulo_counter++ < 5) */
-	/* 	ucpd_info(0); */
+
+	if (header == 0x194f)
+		CPRINTS("tcpm: sending svid.identity message");
+
 	rv = stm32gx_ucpd_transmit(port, type, header, data);
-	//board_debug_gpio(TRIGGER_1, 0);
 
 	return rv;
 }
