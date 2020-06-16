@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "a0ba796e_5496e93a",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-16T17:55:45Z",
+      "side": 1,
+      "message": "yes, check out builtin/endian.h",
+      "parentUuid": "b5b1dbe9_74c07077",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 36
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a3fbb48_b1e59fd1",
         "filename": "test/tpm_test/nist_entropy.sh",
         "patchSetId": 2
