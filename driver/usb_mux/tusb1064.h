@@ -11,6 +11,11 @@
 
 #define TUSB1064_ADDR_FLAGS             0x12
 
+#define TUSB1064_I2C_ADDR0_FLAG    0x44
+#define TUSB1064_I2C_ADDR1_FLAG    0x47
+#define TUSB1064_I2C_ADDR2_FLAG    0x0C
+#define TUSB1064_I2C_ADDR3_FLAG    0x0F
+
 /* TUSB1064 General Register */
 #define TUSB1064_REG_GENERAL            0x0a
 #define REG_GENERAL_CTLSEL_USB3         BIT(0)
