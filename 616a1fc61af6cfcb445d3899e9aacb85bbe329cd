@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e33dafc_a51db58b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-16T15:20:18Z",
+      "side": 1,
+      "message": "End of sentence, it averaged 743 bytes of savings over the TCPMv2 boards.  Unless you\u0027d prefer the specific by-board output?",
+      "parentUuid": "35cfae77_d5494956",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "616a1fc61af6cfcb445d3899e9aacb85bbe329cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5044a81_79e67d83",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-15T18:27:52Z",
       "side": 1,
       "message": "I think we can remove these states complete and introduce a DEBUG_MODE (or DEBUG_CC or DEBUG_DETECTED) flag and have only the normal mode states. It should save more space and also removes the need to branch on line 2088 for example.",
+      "range": {
+        "startLine": 3332,
+        "startChar": 1,
+        "endLine": 3343,
+        "endChar": 3
+      },
+      "revId": "616a1fc61af6cfcb445d3899e9aacb85bbe329cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c346301_82a0e151",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3343,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-16T15:20:18Z",
+      "side": 1,
+      "message": "I was contemplating whether it\u0027s still worth maintaining them as separate states, primarily for TC state prints on the console so you know whether servo_v4/suzy-q detected correctly when looking through bug logs.  Though I suppose we could get a similar effect from either changing how the states print, or having a notice print when the debug flag sets?",
+      "parentUuid": "f5044a81_79e67d83",
       "range": {
         "startLine": 3332,
         "startChar": 1,
