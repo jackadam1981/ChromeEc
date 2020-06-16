@@ -311,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "877d6dc6_17462281",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-06-16T09:14:10Z",
+      "side": 1,
+      "message": "Moved all constants back to header file. (Basically partial rolling back to previous changeset).",
+      "parentUuid": "172ecc11_53e39b94",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 0
+      },
+      "revId": "d8af83a4635035338e12a151daf8c1099bdd9764",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a490655_c327ccb5",
         "filename": "driver/bc12/mt6360.h",
         "patchSetId": 2

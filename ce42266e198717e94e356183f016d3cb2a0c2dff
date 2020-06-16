@@ -22,6 +22,30 @@
       "revId": "ce42266e198717e94e356183f016d3cb2a0c2dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41c437e4_e62ac806",
+        "filename": "driver/bc12/mt6360.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-06-16T09:14:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecb7ca75_ab952f74",
+      "range": {
+        "startLine": 44,
+        "startChar": 38,
+        "endLine": 44,
+        "endChar": 49
+      },
+      "revId": "ce42266e198717e94e356183f016d3cb2a0c2dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
