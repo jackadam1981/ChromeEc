@@ -59,6 +59,7 @@
  */
 #define UCPD_BUF_LEN 30
 
+
 #define UCPD_IMR_RX_INT_MASK (STM32_UCPD_IMR_RXNEIE| \
 			      STM32_UCPD_IMR_RXORDDETIE | \
 			      STM32_UCPD_IMR_RXHRSTDETIE |	\
@@ -603,6 +604,11 @@ int stm32gx_ucpd_set_cc(int port, int cc_pull, int rp)
 		cr |= STM32_UCPD_CR_CCENABLE_MASK;
 	}
 
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+	if (ucpd_cc_change_log) {
+		CPRINTS("ucpd: set_cc: pull = %d, rp = %d", cc_pull, rp);
+	}
+#endif
 	/* Update pull values */
 	STM32_UCPD_CR(port) = cr;
 
@@ -623,6 +629,10 @@ int stm32gx_ucpd_set_polarity(int port, enum tcpc_cc_polarity polarity) {
 		STM32_UCPD_CR(port) &= ~STM32_UCPD_CR_PHYCCSEL;
 	else if (polarity == POLARITY_CC2)
 		STM32_UCPD_CR(port) |= STM32_UCPD_CR_PHYCCSEL;
+
+#ifdef CONFIG_STM32G4_UCPD_DEBUG
+	ucpd_cc_set_save = STM32_UCPD_CR(port);
+#endif
 
 	return EC_SUCCESS;
 }
@@ -1269,9 +1279,6 @@ static void ucpd_dump_msg_log(void)
 		ccprintf("\n");
 		msleep(5);
 	}
-
-	msg_log_cnt = 0;
-	msg_log_idx = 0;
 }
 
 static void stm32gx_ucpd_set_cc_debug(int port, int cc_mask, int pull, int rp)
@@ -1383,7 +1390,12 @@ static int command_ucpd(int argc, char **argv)
 		stm32gx_ucpd_set_cc_debug(port, cc_mask, pull, rp);
 
 	} else if (!strcasecmp(argv[1], "log")) {
-		ucpd_dump_msg_log();
+		if (argc < 3) {
+			ucpd_dump_msg_log();
+		} else if (!strcasecmp(argv[2], "clr")) {
+			msg_log_cnt = 0;
+			msg_log_idx = 0;
+		}
 	} else {
 		return EC_ERROR_PARAM1;
 	}
