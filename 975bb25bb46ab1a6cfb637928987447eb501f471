@@ -93,6 +93,30 @@
       "revId": "975bb25bb46ab1a6cfb637928987447eb501f471",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65c02718_9cd6e6d4",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-16T16:40:15Z",
+      "side": 1,
+      "message": "I was actually thinking it might be worth noting the product ID will be different on FW malfunction (8803).  I wasn\u0027t aware of other chips having that particular malfunction indicator.",
+      "parentUuid": "7777bd45_b690cb17",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 32
+      },
+      "revId": "975bb25bb46ab1a6cfb637928987447eb501f471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

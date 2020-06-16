@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6913552c_b3c94d65",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-16T16:40:15Z",
+      "side": 1,
+      "message": "Are we supposed to write back regval here?  Noticed the datasheet said to read before writing 0x30, but didn\u0027t see where the read value was supposed to be used.",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 46
+      },
+      "revId": "c504e7a3e940b7b98cb13981d5a8383a65f3f469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
