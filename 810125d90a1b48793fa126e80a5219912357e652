@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "345f75a2_e3320e27",
+        "filename": "board/meep/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-16T10:41:49Z",
+      "side": 1,
+      "message": "We should consistently to judge the PPC by [1] with board version here. And there are three places to have the same judgement so we can introduce a static function to wrap this condition.\n\n[1] if ((board_version \u003d\u003d 6) \u0026\u0026 (gpio_get_level(GPIO_PPC_ID)))",
+      "revId": "810125d90a1b48793fa126e80a5219912357e652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3f2aefa_966f1107",
+        "filename": "board/meep/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-16T10:41:49Z",
+      "side": 1,
+      "message": "Since the KSO_14 is repurposed to PPC ID pin so CONFIG_KEYBOARD_KEYPAD can\u0027t be defined in meep/board.h in the future. As a result, I would recommend we add [1] int the meep/board.c to prevent it from enabling in the future.\n\n#ifdef CONFIG_KEYBOARD_KEYPAD\n#error \"KSO_14 was repurposed to PPC_ID pin so CONFIG_KEYBOARD_KEYPAD should\" \\\n    \" not be defined.\"\n#endif",
+      "revId": "810125d90a1b48793fa126e80a5219912357e652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
