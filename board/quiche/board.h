@@ -28,6 +28,10 @@
 /* #undef CONFIG_USB_PE_SM */
 
 #define CONFIG_USB_MUX_PS8822
+#define BOARD_ALLOW_HIGH_VBUS
+
+/* #undef CONFIG_USB_PD_INITIAL_DRP_STATE */
+/* #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SOURCE */
 
 /* USB Type A Features */
 
@@ -59,7 +63,7 @@
 #include "registers.h"
 #define GPIO_TRIGGER_1 GPIO_USB3_A3_CDP_EN
 #define GPIO_TRIGGER_2 GPIO_USB3_A4_CDP_EN
-
+#define GPIO_DP_HPD GPIO_DDI_MST_IN_HPD
 
 enum  debug_gpio {
 	TRIGGER_1 = 0,
