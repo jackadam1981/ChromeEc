@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd943df5_5ad72375",
+        "filename": "board/boten/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-16T21:46:13Z",
+      "side": 1,
+      "message": "I\u0027m wondering if we\u0027ll run into issues having i2c ports defined in the i2c_ports but not hooked up to actual GPIOs.  I don\u0027t think I\u0027ve seen boards use that setup before.  Would you be able to try this out on a board and verify we don\u0027t have problems initializing i2c or running \"i2cscan\" on the EC? \n\nIf that doesn\u0027t work, we could have a config to indicate no C1 for the baseboard code, and use that to ifdef out a part of the i2c table.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 36
+      },
+      "revId": "5ad8fc91ae3f3dcdfc5441922b1d0f837a96310c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
