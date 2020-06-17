@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f1b6590_e7fc3865",
+        "filename": "power/sc7180.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-06-17T23:32:44Z",
+      "side": 0,
+      "message": "Looks like a behavior change? Now we\u0027ll always turn of 3300 and 5000 power whereas we wouldn\u0027t do that?",
+      "range": {
+        "startLine": 471,
+        "startChar": 6,
+        "endLine": 471,
+        "endChar": 23
+      },
+      "revId": "30ce5952cc3fea786eb300839a767a80619e73e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
