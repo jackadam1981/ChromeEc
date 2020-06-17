@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51f99747_23857707",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T18:03:14Z",
+      "side": 1,
+      "message": "Added more comments.",
+      "parentUuid": "4d826848_939ed5a9",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "59d01e4656c339b4310e0a4fddaaec50ea09365e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a74de5a9_142797dd",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-17T15:56:10Z",
       "side": 1,
       "message": "Sounds like a good plan.  Does the PRL vary retries by version?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "59d01e4656c339b4310e0a4fddaaec50ea09365e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be8c839a_bb628670",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T18:03:14Z",
+      "side": 1,
+      "message": "It didn\u0027t, but it does now.",
+      "parentUuid": "a74de5a9_142797dd",
       "range": {
         "startLine": 23,
         "startChar": 0,
