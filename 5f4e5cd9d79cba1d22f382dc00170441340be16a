@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ab736bb_5205684c",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-17T17:32:22Z",
+      "side": 1,
+      "message": "What would you think about using CONFIG_USB_PD_PORT_MAX_COUNT to gate this instead?",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "5f4e5cd9d79cba1d22f382dc00170441340be16a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
