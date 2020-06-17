@@ -261,6 +261,29 @@
     },
     {
       "key": {
+        "uuid": "6f8b597f_db3cd1b8",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-17T17:22:08Z",
+      "side": 1,
+      "message": "nit: \"| -h ]\" -\u003e \" | [-h]\"",
+      "range": {
+        "startLine": 151,
+        "startChar": 69,
+        "endLine": 151,
+        "endChar": 75
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4094692_106e0533",
         "filename": "test/tpm_test/tpmtest.py",
         "patchSetId": 2
@@ -296,6 +319,30 @@
       "side": 1,
       "message": "it actually optional for optional -t :)",
       "parentUuid": "a4094692_106e0533",
+      "range": {
+        "startLine": 155,
+        "startChar": 19,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9f177d1_1cb4f258",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-17T17:22:08Z",
+      "side": 1,
+      "message": "yes, I got that part 😊\nbut we already have `[-t source [-o file] [-s bits] ]` in the 1st line. and we don\u0027t repeat [-d] and [-t] in the followup parameter description lines.\nit\u0027s just a nit anyway",
+      "parentUuid": "b27a5897_e29f3924",
       "range": {
         "startLine": 155,
         "startChar": 19,
@@ -390,6 +437,30 @@
       "side": 1,
       "message": "this is for test purposes - i ran this with different setting even with fixed TRNG setting to look at data as it would be 8-bit or so.",
       "parentUuid": "054d28ec_662bfe0e",
+      "range": {
+        "startLine": 64,
+        "startChar": 49,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "460d0307db6c7a4a9e6af74dd48cd5e6f6afa060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a254d00a_e856e202",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-17T17:22:08Z",
+      "side": 1,
+      "message": "but why? wouldn\u0027t you need to change the constant on the cr50 side to see what it would be with 8-bit?\nit doesn\u0027t make much sense to set 8-bit here, but keep 1-bit configuration for TRNG in H1.\nagain, a nit, but don\u0027t want somebody 2 years down the road to think that they can get the actual 8-bit results by passing 8-bit on the host side only.",
+      "parentUuid": "849ed575_79797271",
       "range": {
         "startLine": 64,
         "startChar": 49,
