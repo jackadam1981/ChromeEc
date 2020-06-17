@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a9d1f6f_e2703f9e",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-17T18:20:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f43bd5dd_84c73866",
+      "range": {
+        "startLine": 19,
+        "startChar": 48,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "40126ebed23b3c8b76e603f69230aca9f0faad69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d83adbfa_db225157",
         "filename": "board/cr50/tpm2/trng.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "40126ebed23b3c8b76e603f69230aca9f0faad69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85cd2e22_e2856038",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-17T18:20:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d83adbfa_db225157",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 53
+      },
+      "revId": "40126ebed23b3c8b76e603f69230aca9f0faad69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8d22c445_744a1d61",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-17T18:20:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "039a319a_11edbb50",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "40126ebed23b3c8b76e603f69230aca9f0faad69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "094ed2a2_d5dd169b",
         "filename": "test/tpm_test/nist_entropy.sh",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "40126ebed23b3c8b76e603f69230aca9f0faad69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "971eb2f3_9de38b22",
+        "filename": "test/tpm_test/nist_entropy.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-17T18:20:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "094ed2a2_d5dd169b",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "40126ebed23b3c8b76e603f69230aca9f0faad69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
