@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95563ec2_22f006f1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-17T18:06:02Z",
+      "side": 1,
+      "message": "good point",
+      "parentUuid": "57ced58e_d77131a1",
+      "range": {
+        "startLine": 3257,
+        "startChar": 0,
+        "endLine": 3261,
+        "endChar": 0
+      },
+      "revId": "dd6cf70e4d91066629de59fae4440ae455507b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17b44083_5ff36d7d",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "dd6cf70e4d91066629de59fae4440ae455507b4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0a57304_553c88b8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5636,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-17T18:06:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b44083_5ff36d7d",
+      "revId": "dd6cf70e4d91066629de59fae4440ae455507b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "dd6cf70e4d91066629de59fae4440ae455507b4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b42c339_c2444de3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-17T18:06:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd93ade8_83aec24b",
+      "range": {
+        "startLine": 1104,
+        "startChar": 8,
+        "endLine": 1104,
+        "endChar": 35
+      },
+      "revId": "dd6cf70e4d91066629de59fae4440ae455507b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
