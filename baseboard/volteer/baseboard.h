@@ -214,7 +214,7 @@
 /* Retimer */
 #define CONFIG_USBC_RETIMER_INTEL_BB
 #define CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
-#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
+#define USBC_BB_RETIMER_I2C_ADDR	0x40
 
 /*
  * SN5S30 PPC supports up to 24V VBUS source and sink, however passive USB-C
