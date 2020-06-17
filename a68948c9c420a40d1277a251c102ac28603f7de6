@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ef9109b_407eb17f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-17T20:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d774d3b_41a0a5e2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "a68948c9c420a40d1277a251c102ac28603f7de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edb0f644_2987577f",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5255855a_17da3928",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-17T20:28:25Z",
+      "side": 1,
+      "message": "when we are sourcing a USB stick, the output hits a lot.  Otherwise it is just getting rid of the noise when we are settling and makes the output much easier to look at",
+      "parentUuid": "edb0f644_2987577f",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 40
+      },
+      "revId": "a68948c9c420a40d1277a251c102ac28603f7de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45ed10a8_a2f1fa22",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "a68948c9c420a40d1277a251c102ac28603f7de6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a17a304_2478091c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-17T20:28:25Z",
+      "side": 1,
+      "message": "I tried to group the debug for what I use them for.  Since this is changing the Role Control, I like to know when it is being written to by anyone and that is what this is doing.",
+      "parentUuid": "45ed10a8_a2f1fa22",
+      "range": {
+        "startLine": 482,
+        "startChar": 16,
+        "endLine": 482,
+        "endChar": 39
+      },
+      "revId": "a68948c9c420a40d1277a251c102ac28603f7de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
