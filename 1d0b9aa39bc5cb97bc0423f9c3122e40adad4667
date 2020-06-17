@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a594c7f_46c33d7a",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-17T22:13:44Z",
+      "side": 1,
+      "message": "make it a static function, since we are not going to use it anywhere but here",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 1
+      },
+      "revId": "1d0b9aa39bc5cb97bc0423f9c3122e40adad4667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "678e7863_5ac2bee8",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-17T22:13:44Z",
+      "side": 1,
+      "message": "You can directly use discovery[port]",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 53
+      },
+      "revId": "1d0b9aa39bc5cb97bc0423f9c3122e40adad4667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
