@@ -22,6 +22,30 @@
       "revId": "30ce5952cc3fea786eb300839a767a80619e73e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "318174b2_bd4f5323",
+        "filename": "power/sc7180.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-17T23:58:48Z",
+      "side": 0,
+      "message": "Yes, the behavior changes.\n\nIt is paired to power_on(), which may be returned in the middle.\n\nIn the normal S3S5 case, is_system_powered() should always be true, except manually forcing it for debugging.",
+      "parentUuid": "4f1b6590_e7fc3865",
+      "range": {
+        "startLine": 471,
+        "startChar": 6,
+        "endLine": 471,
+        "endChar": 23
+      },
+      "revId": "30ce5952cc3fea786eb300839a767a80619e73e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
