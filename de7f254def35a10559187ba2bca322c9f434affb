@@ -22,6 +22,30 @@
       "revId": "de7f254def35a10559187ba2bca322c9f434affb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95e00607_69cd62f5",
+        "filename": "board/waddledee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-17T15:58:37Z",
+      "side": 1,
+      "message": "Yes, drawcia will be on a different board version anyway.  I believe we are waiting for 2S battery inits for the SM5803A, but they should be coming in soon. (3S inits set up here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2247394)",
+      "parentUuid": "4d341435_de631a46",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 27
+      },
+      "revId": "de7f254def35a10559187ba2bca322c9f434affb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
