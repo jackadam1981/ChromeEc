@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d774d3b_41a0a5e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-17T20:18:12Z",
+      "side": 1,
+      "message": "Probably include a message in the commit about the debugging this adds, and how to enable it.  I suspect people will find it useful",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "a68948c9c420a40d1277a251c102ac28603f7de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb0f644_2987577f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-17T20:18:12Z",
+      "side": 1,
+      "message": "Out of curiosity, how much spam-ier is it without this caching and checking?",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 40
+      },
+      "revId": "a68948c9c420a40d1277a251c102ac28603f7de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45ed10a8_a2f1fa22",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-17T20:18:12Z",
+      "side": 1,
+      "message": "Would this be under the CC debug or role control?  Alternatively, could they be under a general connection debug together or do they spam too much for that?",
+      "range": {
+        "startLine": 482,
+        "startChar": 16,
+        "endLine": 482,
+        "endChar": 39
+      },
+      "revId": "a68948c9c420a40d1277a251c102ac28603f7de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
