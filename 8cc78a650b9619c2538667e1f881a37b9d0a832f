@@ -22,6 +22,30 @@
       "revId": "8cc78a650b9619c2538667e1f881a37b9d0a832f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e7540b3_9e8c4c0f",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-06-17T21:42:56Z",
+      "side": 1,
+      "message": "There are three different MOI for testing PD.\n* PD3.0 Tests\n* PD2.0 Communication Engine MOI\n* PD2.0 Deterministic MOI\n* (Future) PD2.0 Unified MOI\n\nPresumably Jett was running PD2.0 Deterministic MOI (TD.PD.LL.E2. Retransmission). This MOI is only run in \"PD2.0 mode\".\n\nThe equivalent \"PD3.0 mode\" test is PD3.0 Tests (TD.PD.LL3.E2. Retransmission). Note the extra \"LL\u003c3\u003e\" in the test name. This MOI is run in \"PD3.0 mode\" and will throw an error if a DUT is PD2.0.",
+      "parentUuid": "61650c53_c7e3af7c",
+      "range": {
+        "startLine": 969,
+        "startChar": 40,
+        "endLine": 969,
+        "endChar": 57
+      },
+      "revId": "8cc78a650b9619c2538667e1f881a37b9d0a832f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
