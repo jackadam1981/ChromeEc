@@ -147,6 +147,8 @@ union tbt_mode_resp_device {
  * <15:0>  : TBT Alternate Mode
  *           0x0001 = TBT Mode
  */
+#define LIMIT_TBT_SPEED(vdm, speed) ((vdm) | (speed << 16))
+
 enum tbt_compat_cable_speed {
 	TBT_SS_RES_0,
 	TBT_SS_U31_GEN1,
