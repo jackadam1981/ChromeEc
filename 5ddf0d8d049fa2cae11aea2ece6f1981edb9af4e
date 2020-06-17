@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acb9c61c_acfc3f9c",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-17T10:42:12Z",
+      "side": 1,
+      "message": "no need to change this one, the function is overridden by jacuzzi/battery.c",
+      "revId": "5ddf0d8d049fa2cae11aea2ece6f1981edb9af4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01bc8a8f_4ca054d5",
+        "filename": "board/jacuzzi/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-17T10:42:12Z",
+      "side": 1,
+      "message": "If the goal is to return BP_YES earlier, how about:\n\nif (battery_get_disconnect_state() \u003d\u003d BATTERY_DISCONNECT_ERROR)\n  return BP_NOT_SURE;\n\nSo we won\u0027t need to add any of the NOPOWER state.",
+      "revId": "5ddf0d8d049fa2cae11aea2ece6f1981edb9af4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
