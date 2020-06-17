@@ -136,7 +136,7 @@ __override enum battery_present battery_check_present_status(void)
 	 * present.
 	 */
 	if (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
-		return BP_NOT_SURE;
+		return BP_YES_NOPOWER;
 
 	/*
 	 * Ensure that battery is:

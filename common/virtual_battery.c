@@ -47,7 +47,9 @@ int virtual_battery_handler(struct ec_response_i2c_passthru *resp,
 	 * would have gotten anyways had we attempted to talk to
 	 * the battery.)
 	 */
-	if (battery_is_present() != BP_YES) {
+	enum battery_present bp = battery_is_present();
+
+	if (bp != BP_YES && bp != BP_YES_NOPOWER) {
 		resp->i2c_status = EC_I2C_STATUS_NAK;
 		return EC_ERROR_INVAL;
 	}

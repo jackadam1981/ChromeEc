@@ -192,7 +192,7 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 			reg,
 			board_battery_info[type].fuel_gauge.fet.reg_mask,
 			board_battery_info[type].fuel_gauge.fet.disconnect_val);
-		return BATTERY_DISCONNECTED;
+		return BATTERY_CONNECTED_NOPOWER;
 	}
 
 	return BATTERY_NOT_DISCONNECTED;
