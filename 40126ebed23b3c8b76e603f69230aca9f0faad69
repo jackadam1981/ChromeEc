@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "f43bd5dd_84c73866",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-17T17:28:25Z",
+      "side": 1,
+      "message": "please add a dot after \u0027TPM\u0027 and add an empty line after this one.",
+      "range": {
+        "startLine": 19,
+        "startChar": 48,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "40126ebed23b3c8b76e603f69230aca9f0faad69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d83adbfa_db225157",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-17T17:28:25Z",
+      "side": 1,
+      "message": "what is \u0027text to process\u0027 in this context? Do I guess it right that this should be \u0027the number of random bytes to generate\"? \n\nA few words of what this vendor command is supposed to do would help.",
+      "range": {
+        "startLine": 25,
+        "startChar": 26,
+        "endLine": 25,
+        "endChar": 53
+      },
+      "revId": "40126ebed23b3c8b76e603f69230aca9f0faad69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039a319a_11edbb50",
+        "filename": "board/cr50/tpm2/trng.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-17T17:28:25Z",
+      "side": 1,
+      "message": "[sizeof(text_len)] would be more robust here, in case text_len size ever changes.",
+      "range": {
+        "startLine": 41,
+        "startChar": 15,
+        "endLine": 41,
+        "endChar": 16
+      },
+      "revId": "40126ebed23b3c8b76e603f69230aca9f0faad69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "094ed2a2_d5dd169b",
         "filename": "test/tpm_test/nist_entropy.sh",
         "patchSetId": 3
