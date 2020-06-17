@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1f275d4_00ed72fd",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2087,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T20:22:38Z",
+      "side": 1,
+      "message": "let\u0027s add a note about requireing new board function to be implemented which are documented in include/regulator.h",
+      "range": {
+        "startLine": 2087,
+        "startChar": 3,
+        "endLine": 2087,
+        "endChar": 34
+      },
+      "revId": "7f165c4f00e57b9ba5e7d06d79b20a51df1db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c049774e_2adf1b9e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6213,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T20:22:38Z",
+      "side": 1,
+      "message": "what would it return in that case? What is should be set to when enabled?\n\nThank you for the comment note, these types of comments are definitely helpful!",
+      "range": {
+        "startLine": 6213,
+        "startChar": 3,
+        "endLine": 6213,
+        "endChar": 65
+      },
+      "revId": "7f165c4f00e57b9ba5e7d06d79b20a51df1db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2799939a_0d90b55a",
+        "filename": "include/regulator.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T20:22:38Z",
+      "side": 1,
+      "message": "Just double checking that if you define CONFIG_HOSTCMD_REGULATOR you must define these board function right?\n\nYou do not want to have a default implementation and mark these functions as __overridable, right?\n\n---\n\nCan you add in these comments that is must be defined when CONFIG_HOSTCMD_REGULATOR is defined",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 3
+      },
+      "revId": "7f165c4f00e57b9ba5e7d06d79b20a51df1db9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
