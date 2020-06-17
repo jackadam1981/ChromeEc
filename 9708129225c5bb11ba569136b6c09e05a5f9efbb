@@ -22,6 +22,30 @@
       "revId": "9708129225c5bb11ba569136b6c09e05a5f9efbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5abd383_a27fa3b5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4336,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-17T22:38:54Z",
+      "side": 1,
+      "message": "That means if there is a partner that returns BUSY, it will probably have a lot of other weird behaviors. No reason to make it more confusing to debug by sending spurious Soft Resets.",
+      "parentUuid": "f729486d_97ddf59c",
+      "range": {
+        "startLine": 4331,
+        "startChar": 0,
+        "endLine": 4336,
+        "endChar": 32
+      },
+      "revId": "9708129225c5bb11ba569136b6c09e05a5f9efbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
