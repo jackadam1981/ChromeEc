@@ -9046,8 +9046,21 @@ int cmd_cec(int argc, char *argv[])
 	return -1;
 }
 
+int cmd_kakadu(int argc, char *argv[])
+{
+	struct ec_params_get_jc_temp p;
+	struct ec_response_get_jc_temp r;
+	int rv;
+	p.index=0;
+	rv = ec_command(EC_CMD_GET_JC_TEMP, 0, &p, sizeof(p), &r, sizeof(r));
+
+	printf("V:%d, A:%d, capacity=%d, RSOC:%d, Cycle=%d, temp=%d\n",r.charge_voltage,
+	r.charge_current, r.remaining_capacity, r.RSOC, r.cycle, (r.temp-2731)/10);
+	return rv;
+}
 /* NULL-terminated list of commands */
 const struct command commands[] = {
+	{"kakadu", cmd_kakadu},
 	{"adcread", cmd_adc_read},
 	{"addentropy", cmd_add_entropy},
 	{"apreset", cmd_apreset},
