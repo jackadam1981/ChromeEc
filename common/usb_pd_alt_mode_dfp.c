@@ -448,12 +448,14 @@ void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 			PD_DISC_COMPLETE);
 }
 
+#if 0
 int pd_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid)
 {
 	struct svdm_amode_data *modep = pd_get_amode_data(port, type, svid);
 
 	return (modep) ? modep->opos : -1;
 }
+#endif
 
 void pd_set_identity_discovery(int port, enum tcpm_transmit_type type,
 			       enum pd_discovery_state disc)

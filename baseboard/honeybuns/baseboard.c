@@ -9,6 +9,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "usb_pd.h"
+#include "util.h"
 #include "timer.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
