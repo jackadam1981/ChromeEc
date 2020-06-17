@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "41215423_32ac915a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-17T21:51:05Z",
+      "side": 1,
+      "message": "So this is where I\u0027m seeing the wisdom of the spec just transitioning on message receive, because that ensures the PE knows that the message was discarded AND there\u0027s something new to process at the same time.\n\nFunctionally speaking, the only thing I need the PE to do on discard is clear this flag so we don\u0027t set NG again in the PRL_Tx.  That change by itself should fix our issue of presenting NG and confusing the port partners.  The rest is hopefully supposed to be helpful changes to unify how we\u0027re dealing with things.",
+      "parentUuid": "eaed7c6c_38033ce6",
+      "range": {
+        "startLine": 930,
+        "startChar": 2,
+        "endLine": 930,
+        "endChar": 52
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a600b2c_4424067a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I could go either way, but I slightly lean towards letting each state handle its own error path  (but that would cost more code size)\n\nIf there are only 3 differnet outcomes, maybe it is worth each child state setting which error hanlding they need and then common code can do it. I think we just have to play around with what looks best",
       "parentUuid": "a3ec859a_deaef6b7",
+      "range": {
+        "startLine": 938,
+        "startChar": 4,
+        "endLine": 938,
+        "endChar": 16
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31fd48d4_1fc5326f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-17T21:51:05Z",
+      "side": 1,
+      "message": "I\u0027ll give a couple of things a shot.  The advantage of having the child states handle it is that it can probably also cover the case of unexpected messages without discarding (ex. waiting for partner PS_RDY, but they send a VDM Attention)",
+      "parentUuid": "427d610d_231c0328",
       "range": {
         "startLine": 938,
         "startChar": 4,
