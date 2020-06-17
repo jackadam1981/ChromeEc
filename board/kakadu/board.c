@@ -5,6 +5,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "battery.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_ramp.h"
@@ -26,6 +27,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "lid_switch.h"
+#include "max17055.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
@@ -44,6 +46,18 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+/* Voltage reg value to mV */
+#define VOLTAGE_CONV(REG)       ((REG * 5) >> 6)
+/* Current reg value to mA */
+#define CURRENT_CONV(REG)       (((REG * 25) >> 4) / BATTERY_MAX17055_RSENSE)
+/* Percentage reg value to 1% */
+#define PERCENTAGE_CONV(REG)    (REG >> 8)
+#define TEMPERATURE_CONV(REG)   (((REG * 10) >> 8) + 2731)
+#define CYCLE_COUNT_CONV(REG)	((REG * 5) >> 9)
+
+
+static int fake_state_of_charge = -1;
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -437,3 +451,54 @@ void board_fill_source_power_info(int port,
 	r->max_power = r->meas.voltage_now * r->meas.current_max;
 }
 
+static int max17055_read(int offset, int *data)
+{
+	return i2c_read16(I2C_PORT_BATTERY, MAX17055_ADDR_FLAGS,
+			  offset, data);
+}
+
+static enum ec_status
+host_command_get_jc_temp(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_get_jc_temp *p = args->params;
+	struct ec_response_get_jc_temp *r1 = args->response;
+	int reg = 0, rv;
+	struct batt_params batt_new = {0};
+	
+	if(p->index !=0)
+		return EC_RES_SUCCESS;
+
+	if (max17055_read(REG_VOLTAGE, &reg))
+		batt_new.flags |= BATT_FLAG_BAD_VOLTAGE;
+	batt_new.voltage = VOLTAGE_CONV(reg);
+	r1->charge_voltage = batt_new.voltage;
+
+	if (max17055_read(REG_AVERAGE_CURRENT, &reg))
+		batt_new.flags |= BATT_FLAG_BAD_CURRENT;
+	batt_new.current = CURRENT_CONV((int16_t)reg);
+	r1->charge_current = batt_new.current;
+	
+	if (battery_remaining_capacity(&batt_new.remaining_capacity))
+		batt_new.flags |= BATT_FLAG_BAD_REMAINING_CAPACITY;
+	r1->remaining_capacity = batt_new.remaining_capacity;
+
+	if (max17055_read(REG_STATE_OF_CHARGE, &reg) &&
+	    fake_state_of_charge < 0)
+		batt_new.flags |= BATT_FLAG_BAD_STATE_OF_CHARGE;
+	r1->RSOC = fake_state_of_charge >= 0 ?
+				fake_state_of_charge : PERCENTAGE_CONV(reg);
+	
+	if (max17055_read(REG_TEMPERATURE, &reg))
+		batt_new.flags |= BATT_FLAG_BAD_TEMPERATURE;
+
+	batt_new.temperature = TEMPERATURE_CONV((int16_t)reg);
+	r1->RSOC = batt_new.temperature;
+
+	rv = max17055_read(REG_CYCLE_COUNT, &reg);
+	if (!rv)
+		r1->cycle = CYCLE_COUNT_CONV(reg);
+
+	args->response_size = sizeof(*r1);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_JC_TEMP, host_command_get_jc_temp, EC_VER_MASK(0));
