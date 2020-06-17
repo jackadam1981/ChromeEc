@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47f4174f_5076724f",
+        "filename": "board/jacuzzi/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-06-17T11:29:14Z",
+      "side": 1,
+      "message": "check this first before battery_get_disconnect_state()?",
+      "revId": "ee456b75d5ef90d8761ece2c052610990ac781e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
