@@ -27,6 +27,18 @@ void dpm_init(int port);
 void dpm_set_mode_entry_done(int port);
 
 /*
+ * Prints the unexpected message received by the DPM
+ *
+ * @param port          USB-C port number
+ * @param type          Transmit type (SOP, SOP') for received ACK
+ * @param vdm_cmd_type  The VDM command type of the request
+ * @param vdm_cmd       The VDM command of the request
+ * @param svid          The SVID of the request
+ */
+void print_unexpected_dpm_response(int port, enum tcpm_transmit_type type,
+				int vdm_cmd_type, int vdm_cmd, uint16_t svid);
+
+/*
  * Informs the DPM that a VDM ACK was received.
  *
  * @param port      USB-C port number
@@ -36,7 +48,6 @@ void dpm_set_mode_entry_done(int port);
  */
 void dpm_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		uint32_t *vdm);
-
 /*
  * Informs the DPM that a VDM NAK was received. Also applies when a VDM request
  * received a Not Supported response or timed out waiting for a response.
