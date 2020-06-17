@@ -46,6 +46,53 @@
       "revId": "b097d231a46a881f38e2976ce1c0927e2ef6fb0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf609f52_5ddeaa88",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T20:30:38Z",
+      "side": 1,
+      "message": "Good point, there are more cases than just power on where we need to do the full clear. Sounds like we could make two functions\n\nsoft_reset\n\nand\n\nfull_reset\n -\u003e calls soft_reset and does extra stuff like resetting PD revision\n\nor something like that instead of adding the extra state machine state.",
+      "parentUuid": "9c7dacdd_7397eaca",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 1
+      },
+      "revId": "b097d231a46a881f38e2976ce1c0927e2ef6fb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fcde52f_89521015",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T20:30:38Z",
+      "side": 1,
+      "message": "I still prefer that we do not add this extra state, since it isn\u0027t super clear what the difference it between a re-init and reset\n\nAlso there are other state machine that we would have to update to handle this new case.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "b097d231a46a881f38e2976ce1c0927e2ef6fb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
