@@ -94,6 +94,30 @@
       "revId": "01104974583737c2b4fb6ab61b4869d4adb7e4b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37168f8c_4c451d55",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-06-17T02:00:13Z",
+      "side": 1,
+      "message": "\u003e I thought BIOS may have more knowledge of SD card preset.\n\nNo. In normal boot we don\u0027t touch any storage controllers except emmc.",
+      "parentUuid": "66a024b2_82fa1a3e",
+      "range": {
+        "startLine": 567,
+        "startChar": 5,
+        "endLine": 567,
+        "endChar": 25
+      },
+      "revId": "01104974583737c2b4fb6ab61b4869d4adb7e4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
