@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec4b18f7_7e1d9667",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T22:54:48Z",
+      "side": 1,
+      "message": "maybe for another CL, but I don\u0027t think this guard is really that helpful",
+      "range": {
+        "startLine": 772,
+        "startChar": 1,
+        "endLine": 772,
+        "endChar": 45
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ed52291_1e1483f9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2197,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T22:54:48Z",
+      "side": 1,
+      "message": "is a",
+      "range": {
+        "startLine": 2197,
+        "startChar": 36,
+        "endLine": 2197,
+        "endChar": 40
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae8a5d07_5918d3a7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2199,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T22:54:48Z",
+      "side": 1,
+      "message": "should this be a 1",
+      "range": {
+        "startLine": 2198,
+        "startChar": 59,
+        "endLine": 2199,
+        "endChar": 2
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9cd0390_1ffd2132",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2386,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T22:54:48Z",
+      "side": 1,
+      "message": "nit: you can pull out the set_state and return ; actually you can just have one if without the else clause",
+      "range": {
+        "startLine": 2384,
+        "startChar": 2,
+        "endLine": 2386,
+        "endChar": 0
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df76a7c1_18f11d72",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2480,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T22:54:48Z",
+      "side": 1,
+      "message": "I like this comment, can you add the same below when we are excluding debug from Vconn, ~line 2624",
+      "range": {
+        "startLine": 2478,
+        "startChar": 4,
+        "endLine": 2480,
+        "endChar": 0
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92123b62_4fa6fe10",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2583,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T22:54:48Z",
+      "side": 1,
+      "message": "nit: const (only if you have to make other changes)",
+      "range": {
+        "startLine": 2583,
+        "startChar": 2,
+        "endLine": 2583,
+        "endChar": 6
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6582d29_fb0db16d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-17T22:54:48Z",
+      "side": 1,
+      "message": "isn\u0027t our current connect a debug accessory?",
+      "range": {
+        "startLine": 2692,
+        "startChar": 22,
+        "endLine": 2692,
+        "endChar": 57
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
