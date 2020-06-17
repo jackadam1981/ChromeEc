@@ -93,6 +93,30 @@
       "revId": "616a1fc61af6cfcb445d3899e9aacb85bbe329cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f2c949d_85c88285",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3343,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-17T20:27:03Z",
+      "side": 1,
+      "message": "Okay, saving more flash space by switching over to using our debug flag.  I added a print whenever we detect a debug connection because it felt slightly wrong messing with how we print our state names to indicate debug.  See what you think.",
+      "parentUuid": "6c346301_82a0e151",
+      "range": {
+        "startLine": 3332,
+        "startChar": 1,
+        "endLine": 3343,
+        "endChar": 3
+      },
+      "revId": "616a1fc61af6cfcb445d3899e9aacb85bbe329cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
