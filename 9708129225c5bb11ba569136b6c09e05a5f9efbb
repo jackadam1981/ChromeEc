@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f729486d_97ddf59c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4336,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-17T21:36:36Z",
+      "side": 1,
+      "message": "One wrinkle checking the return here is that BUSY also triggers this case.  I\u0027m not sure there\u0027s harm to soft resetting on a BUSY though?  I\u0027ve actually never seen a partner return a BUSY in practice.  Thoughts?",
+      "range": {
+        "startLine": 4331,
+        "startChar": 0,
+        "endLine": 4336,
+        "endChar": 32
+      },
+      "revId": "9708129225c5bb11ba569136b6c09e05a5f9efbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
