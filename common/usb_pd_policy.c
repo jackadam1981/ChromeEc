@@ -197,6 +197,54 @@ void disable_enter_usb4_mode(int port)
 		cable[port].flags &= ~CABLE_FLAGS_ENTER_USB_MODE;
 }
 
+uint32_t get_enter_usb_msg_payload(int port)
+{
+	/*
+	 * Ref: USB Power Delivery Specification Revision 3.0, Version 2.0
+	 * Table 6-47 Enter_USB Data Object
+	 */
+	union enter_usb_data_obj eudo;
+	struct pd_discovery *disc;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_USB4))
+		return 0;
+
+	disc = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+	eudo.mode = USB_PD_40;
+	eudo.usb4_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB4_DRD);
+	eudo.usb3_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB32_DRD);
+	eudo.cable_speed = get_usb4_cable_speed(port);
+
+	if ((cable[port].rev == PD_REV30) &&
+	    (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)) {
+		eudo.cable_type =
+			(disc->identity.product_t2.a2_rev30.active_elem ==
+			ACTIVE_RETIMER) ? CABLE_TYPE_ACTIVE_RETIMER :
+			CABLE_TYPE_ACTIVE_REDRIVER;
+	/* TODO: Add eudo.cable_type for Revision 2 active cables */
+	} else {
+		eudo.cable_type = CABLE_TYPE_PASSIVE;
+	}
+
+	switch (disc->identity.product_t1.p_rev20.vbus_cur) {
+	case USB_VBUS_CUR_3A:
+		eudo.cable_current = USB4_CABLE_CURRENT_3A;
+		break;
+	case USB_VBUS_CUR_5A:
+		eudo.cable_current = USB4_CABLE_CURRENT_5A;
+		break;
+	default:
+		eudo.cable_current = USB4_CABLE_CURRENT_INVALID;
+		break;
+	}
+	eudo.pcie_supported = IS_ENABLED(CONFIG_USB_PD_PCIE_TUNNELING);
+	eudo.dp_supported = IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP);
+	eudo.tbt_supported = IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE);
+	eudo.host_present = 1;
+
+	return eudo.raw_value;
+}
+
 #ifdef CONFIG_USB_PD_ALT_MODE
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
