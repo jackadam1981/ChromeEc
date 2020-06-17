@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2f50625_575a2c88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-17T21:13:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbf2f617_3d23d843",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "d371c1dccd1d0ac613014eb7f2fd4160001f29e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55d767e5_2a44ba65",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "014a449e_19f2baa4",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-17T21:13:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d767e5_2a44ba65",
+      "range": {
+        "startLine": 475,
+        "startChar": 3,
+        "endLine": 475,
+        "endChar": 37
+      },
+      "revId": "d371c1dccd1d0ac613014eb7f2fd4160001f29e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64b7f9be_962ffbee",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "d371c1dccd1d0ac613014eb7f2fd4160001f29e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76b24fe0_0ce18da1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-17T21:13:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64b7f9be_962ffbee",
+      "range": {
+        "startLine": 477,
+        "startChar": 1,
+        "endLine": 477,
+        "endChar": 62
+      },
+      "revId": "d371c1dccd1d0ac613014eb7f2fd4160001f29e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
