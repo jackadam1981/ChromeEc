@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f535bb1d_ecf59d93",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-06-17T11:18:23Z",
+      "side": 1,
+      "message": "Aha.. Done",
+      "parentUuid": "acb9c61c_acfc3f9c",
+      "revId": "5ddf0d8d049fa2cae11aea2ece6f1981edb9af4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01bc8a8f_4ca054d5",
         "filename": "board/jacuzzi/battery.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-06-17T10:42:12Z",
       "side": 1,
       "message": "If the goal is to return BP_YES earlier, how about:\n\nif (battery_get_disconnect_state() \u003d\u003d BATTERY_DISCONNECT_ERROR)\n  return BP_NOT_SURE;\n\nSo we won\u0027t need to add any of the NOPOWER state.",
+      "revId": "5ddf0d8d049fa2cae11aea2ece6f1981edb9af4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dad09e8_ec33d2c5",
+        "filename": "board/jacuzzi/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-06-17T11:18:23Z",
+      "side": 1,
+      "message": "I\u0027m worrying about the comment above here.\nOther users of this function are checking battery presence with (battery_check_present_status() \u003d\u003d BP_YES).\n\nmy intent was that only \"virtual battery i2c handler\" takes {!BP_YES but BP_YES_NOPOWER} as {battery presence but power unstable} and keep other existings presence check logics {BP_YES} current policy - \u0027power is unstable so battery is not present\u0027 strategy.",
+      "parentUuid": "01bc8a8f_4ca054d5",
       "revId": "5ddf0d8d049fa2cae11aea2ece6f1981edb9af4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
