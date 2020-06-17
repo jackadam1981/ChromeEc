@@ -22,6 +22,30 @@
       "revId": "5ad8fc91ae3f3dcdfc5441922b1d0f837a96310c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4290e0a_7c0107f7",
+        "filename": "board/boten/gpio.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-06-17T05:24:50Z",
+      "side": 1,
+      "message": "Hi Diana, at present there aren\u0027t dedede family boards at hand, a similar verification was done on the malefor board (EC NPCX796FC), it shows log \"Scanning 3 usb_1_mix: port busy (SDA\u003d0, SCL\u003d0)\" when running \"i2cscan\", and do not encounter initializing i2c problem.\n\nNot sure what will happen on Boten board. It\u0027s reliable to ifdef out a part of the i2c table.",
+      "parentUuid": "fd943df5_5ad72375",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 36
+      },
+      "revId": "5ad8fc91ae3f3dcdfc5441922b1d0f837a96310c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
