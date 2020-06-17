@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57ced58e_d77131a1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3261,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-17T03:38:29Z",
+      "side": 1,
+      "message": "Maybe we should build this request elsewhere? This doesn\u0027t seem very flexible to have it embedded within the state.",
+      "range": {
+        "startLine": 3257,
+        "startChar": 0,
+        "endLine": 3261,
+        "endChar": 0
+      },
+      "revId": "dd6cf70e4d91066629de59fae4440ae455507b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17b44083_5ff36d7d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5636,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-17T03:38:29Z",
+      "side": 1,
+      "message": "extra whitespace?",
+      "revId": "dd6cf70e4d91066629de59fae4440ae455507b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd93ade8_83aec24b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-17T03:38:29Z",
+      "side": 1,
+      "message": "missing parameter",
+      "range": {
+        "startLine": 1104,
+        "startChar": 8,
+        "endLine": 1104,
+        "endChar": 35
+      },
+      "revId": "dd6cf70e4d91066629de59fae4440ae455507b4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
