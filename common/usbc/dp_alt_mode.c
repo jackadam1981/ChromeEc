@@ -33,27 +33,6 @@ void dp_init(int port)
 	dp_reset_next_command(port);
 }
 
-static void print_unexpected_response(int port, enum tcpm_transmit_type type,
-		int vdm_cmd_type, int vdm_cmd)
-{
-	char *cmdt_str;
-
-	switch (vdm_cmd_type) {
-	case CMDT_RSP_ACK:
-		cmdt_str = "ACK";
-		break;
-	case CMDT_RSP_NAK:
-		cmdt_str = "NAK";
-		break;
-	default:
-		assert(false);
-	}
-
-	CPRINTS("C%d: Received unexpected DP VDM %s (cmd %d) from %s", port,
-			cmdt_str, vdm_cmd,
-			type == TCPC_TX_SOP ? "port partner" : "cable plug");
-}
-
 void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		uint32_t *vdm)
 {
@@ -70,7 +49,8 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 	}
 
 	if (type != TCPC_TX_SOP || next_vdm_cmd[port] != vdm_cmd) {
-		print_unexpected_response(port, type, CMDT_RSP_ACK, vdm_cmd);
+		print_unexpected_dpm_response(port, type, CMDT_RSP_ACK,
+					vdm_cmd, USB_SID_DISPLAYPORT);
 		dpm_set_mode_entry_done(port);
 		return;
 	}
@@ -100,7 +80,8 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 void dp_vdm_naked(int port, enum tcpm_transmit_type type, uint8_t vdm_cmd)
 {
 	if (type != TCPC_TX_SOP || next_vdm_cmd[port] != vdm_cmd) {
-		print_unexpected_response(port, type, CMDT_RSP_NAK, vdm_cmd);
+		print_unexpected_dpm_response(port, type, CMDT_RSP_NAK,
+					vdm_cmd, USB_SID_DISPLAYPORT);
 		return;
 	}
 
