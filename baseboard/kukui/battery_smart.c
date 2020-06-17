@@ -19,6 +19,7 @@ enum battery_present batt_pres_prev = BP_NOT_SURE;
 __overridable enum battery_present battery_check_present_status(void)
 {
 	enum battery_present batt_pres = BP_NOT_SURE;
+	enum battery_disconnect_state bd;
 
 #ifdef CONFIG_BATTERY_HW_PRESENT_CUSTOM
 	/* Get the physical hardware status */
@@ -55,11 +56,17 @@ __overridable enum battery_present battery_check_present_status(void)
 	 * 2. Not disconnected
 	 * 3. Initialized
 	 */
-	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
-	    battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
+	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL)
 		return BP_NO;
 
-	return batt_pres;
+	bd = battery_get_disconnect_state();
+
+	if (bd == BATTERY_CONNECTED_NOPOWER)
+		return BP_YES_NOPOWER;
+	else if (bd != BATTERY_CONNECTED)
+		return BP_NO;
+	else
+		return batt_pres;
 }
 
 enum battery_present battery_is_present(void)
