@@ -118,6 +118,30 @@
       "revId": "01104974583737c2b4fb6ab61b4869d4adb7e4b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "261fca6a_140754f5",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-17T02:50:59Z",
+      "side": 1,
+      "message": "Let me figure things out:\n\n1. MT6360\u0027s LDO is connected to EC, and now pihsun implements the host command to control the LDO. So AP now can control the LDO over host command.\n2. SD card controller needs the LDO. I think AP should take over the regulator control, because AP should know which device to boot from (e.g. recover from SD card)?\n\nDo I miss anything?",
+      "parentUuid": "37168f8c_4c451d55",
+      "range": {
+        "startLine": 567,
+        "startChar": 5,
+        "endLine": 567,
+        "endChar": 25
+      },
+      "revId": "01104974583737c2b4fb6ab61b4869d4adb7e4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
