@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c4472db_a3bb1048",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-06-17T16:29:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the disabling of keyboard happen only when AP is not in S0: https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/board/waddledoo/board.c#508\n\nWhen AP is in S0, OS takes care of dropping the inputs it doesn\u0027t care about. This allows the OS to decide which inputs to process and which to ignore.",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 58
+      },
+      "revId": "a7a972ad220c3792608bf8327575e696a2efe418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6979d7_aca28325",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-06-17T16:29:18Z",
+      "side": 1,
+      "message": "Same comment as I made about keyboard. Is there a reason why we are not allowing the OS to make the decision to ignore this?",
+      "range": {
+        "startLine": 566,
+        "startChar": 1,
+        "endLine": 569,
+        "endChar": 44
+      },
+      "revId": "a7a972ad220c3792608bf8327575e696a2efe418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
