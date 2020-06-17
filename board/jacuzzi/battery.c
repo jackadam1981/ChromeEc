@@ -107,6 +107,7 @@ enum battery_present battery_hw_present(void)
 __override enum battery_present battery_check_present_status(void)
 {
 	enum battery_present batt_pres = BP_NOT_SURE;
+	enum battery_disconnect_state bd;
 
 #ifdef CONFIG_BATTERY_HW_PRESENT_CUSTOM
 	/* Get the physical hardware status */
@@ -128,22 +129,25 @@ __override enum battery_present battery_check_present_status(void)
 		return batt_pres;
 
 	/*
-	 * Check battery disconnect status. If we are unable to read battery
-	 * disconnect status or DFET is off, then return BP_NOT_SURE. Battery
-	 * could be in ship mode and might require pre-charge current to wake
-	 * it up. BP_NO is not returned here because charger state machine
-	 * will not provide pre-charge current assuming that battery is not
-	 * present.
-	 */
-	if (battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
-		return BP_NOT_SURE;
-
-	/*
 	 * Ensure that battery is:
 	 * 1. Not in cutoff
 	 */
 	if (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL)
 		return BP_NO;
+
+	/*
+	 * Check battery disconnect status. If we are unable to read battery
+	 * disconnect status, then return BP_NOT_USER, and return BP_YES_NOPOWER
+	 * when DFET is off. Battery could be in ship mode and might require
+	 * pre-charge current to wake it up. BP_NO is not returned here
+	 * because charger state machine will not provide pre-charge current
+	 * assuming that battery is not present.
+	 */
+	bd = battery_get_disconnect_state();
+	if (bd == BATTERY_DISCONNECT_ERROR)
+		return BP_NOT_SURE;
+	else if (bd == BATTERY_CONNECTED_NOPOWER)
+		return BP_YES_NOPOWER;
 
 	return batt_pres;
 }
