@@ -60,7 +60,8 @@ enum battery_present {
 	BP_NOT_INIT = -1,
 	BP_NO = 0,
 	BP_YES = 1,
-	BP_NOT_SURE,
+	BP_YES_NOPOWER = 2,	/* physically present with unstable power */
+	BP_NOT_SURE,		/* temporary shutdown e.g. ship mode */
 };
 
 enum battery_cutoff_states {
@@ -71,7 +72,9 @@ enum battery_cutoff_states {
 
 enum battery_disconnect_state {
 	BATTERY_DISCONNECTED = 0,
-	BATTERY_NOT_DISCONNECTED,
+	BATTERY_NOT_DISCONNECTED = 1,
+	BATTERY_CONNECTED = 1,
+	BATTERY_CONNECTED_NOPOWER = 2,	/* same as BP_YES_NOPOWER */
 	BATTERY_DISCONNECT_ERROR,
 };
 
