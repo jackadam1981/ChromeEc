@@ -22,6 +22,30 @@
       "revId": "2855311a3e07d7100cb4b574e21373496f49f6de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c35e4cc_02257825",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-18T05:59:36Z",
+      "side": 1,
+      "message": "We are removing the pd_cable structure from TCPMv2.\n\nThe Discover Identity SOP\u0027 response for both TCPMv1 and TCPMv2 is being stored in the identity structure. So, this CL removes storing the identity SOP\u0027 response again in TCPMv1.\n\nThe Discover SVID SOP\u0027 and Discover mode SOP\u0027 responses are still being stored in pd_cable structure for TCPMv1. So the next CLs revert the common code which uses pd_cable structure back to usb_pd_policy.c.",
+      "parentUuid": "64043d5c_c38fac49",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 59
+      },
+      "revId": "2855311a3e07d7100cb4b574e21373496f49f6de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
