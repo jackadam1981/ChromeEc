@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0f896cd_6929d2f6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2174,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-18T22:10:08Z",
+      "side": 1,
+      "message": "do we not want to keep it on if we are PR swaping to attached SRC?",
+      "range": {
+        "startLine": 2172,
+        "startChar": 1,
+        "endLine": 2174,
+        "endChar": 0
+      },
+      "revId": "9d7844d2428e80518b822dcc6e135c3694941c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46b7b233_846b5da9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-18T22:10:08Z",
+      "side": 1,
+      "message": "why update here and in line 2227",
+      "range": {
+        "startLine": 2248,
+        "startChar": 2,
+        "endLine": 2248,
+        "endChar": 17
+      },
+      "revId": "9d7844d2428e80518b822dcc6e135c3694941c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9395a414_7b4b8fee",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-18T22:10:08Z",
+      "side": 1,
+      "message": "I think this can be converted to IS_ENABLE",
+      "range": {
+        "startLine": 3119,
+        "startChar": 7,
+        "endLine": 3119,
+        "endChar": 42
+      },
+      "revId": "9d7844d2428e80518b822dcc6e135c3694941c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
