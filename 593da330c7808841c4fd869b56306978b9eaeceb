@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a9c238e_7b8f8fbb",
+        "filename": "board/meep/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-06-18T02:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f3a3a85_b7a13ba8",
+      "range": {
+        "startLine": 57,
+        "startChar": 5,
+        "endLine": 57,
+        "endChar": 32
+      },
+      "revId": "593da330c7808841c4fd869b56306978b9eaeceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abe490f6_f8f29b5e",
         "filename": "board/meep/board.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-17T20:45:33Z",
       "side": 1,
       "message": "should this be \u003e\u003d 6?",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "593da330c7808841c4fd869b56306978b9eaeceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147f5a16_b89c7942",
+        "filename": "board/meep/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-06-18T02:48:28Z",
+      "side": 1,
+      "message": "Only board version 6 is supporting syv682x.",
+      "parentUuid": "abe490f6_f8f29b5e",
       "range": {
         "startLine": 59,
         "startChar": 10,
@@ -68,6 +116,30 @@
       "revId": "593da330c7808841c4fd869b56306978b9eaeceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3890736b_8c3c583a",
+        "filename": "board/meep/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-06-18T02:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "298111ed_dc2c8111",
+      "range": {
+        "startLine": 66,
+        "startChar": 6,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "593da330c7808841c4fd869b56306978b9eaeceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
