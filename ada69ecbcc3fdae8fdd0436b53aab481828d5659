@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feee736a_5a95275a",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-18T00:24:23Z",
+      "side": 1,
+      "message": "virtual",
+      "range": {
+        "startLine": 250,
+        "startChar": 3,
+        "endLine": 250,
+        "endChar": 25
+      },
+      "revId": "ada69ecbcc3fdae8fdd0436b53aab481828d5659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69083bcd_8937866f",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-18T00:24:23Z",
+      "side": 1,
+      "message": "I think this should be static now that it isn\u0027t used in the baseboard files.",
+      "revId": "ada69ecbcc3fdae8fdd0436b53aab481828d5659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
