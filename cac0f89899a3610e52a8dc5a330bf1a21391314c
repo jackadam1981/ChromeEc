@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ab973cc_ed610f0e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-18T15:46:04Z",
+      "side": 1,
+      "message": "Probably for another CL.  Though src_power_off lost its guard in the last rebase I did.",
+      "parentUuid": "ec4b18f7_7e1d9667",
+      "range": {
+        "startLine": 772,
+        "startChar": 1,
+        "endLine": 772,
+        "endChar": 45
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ed52291_1e1483f9",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6dd112_a1b28a32",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2197,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-18T15:46:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ed52291_1e1483f9",
+      "range": {
+        "startLine": 2197,
+        "startChar": 36,
+        "endLine": 2197,
+        "endChar": 40
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cb6f1885_8d3c18f3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2199,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-18T15:46:04Z",
+      "side": 1,
+      "message": "It\u0027s 0 since we\u0027re exiting.  However, this means when we PR swap with the servo we clear and then set this flag again which is a little silly.  Moved to detach.",
+      "parentUuid": "ae8a5d07_5918d3a7",
+      "range": {
+        "startLine": 2198,
+        "startChar": 59,
+        "endLine": 2199,
+        "endChar": 2
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9cd0390_1ffd2132",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feaeb615_3a15e916",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2386,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-18T15:46:04Z",
+      "side": 1,
+      "message": "That wouldn\u0027t be equivalent though, since we currently don\u0027t transition on audio accessory and plan to ignore it.",
+      "parentUuid": "b9cd0390_1ffd2132",
+      "range": {
+        "startLine": 2384,
+        "startChar": 2,
+        "endLine": 2386,
+        "endChar": 0
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d3a86c5f_92c8ff64",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2480,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-18T15:46:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df76a7c1_18f11d72",
+      "range": {
+        "startLine": 2478,
+        "startChar": 4,
+        "endLine": 2480,
+        "endChar": 0
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92123b62_4fa6fe10",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a7196f4_babf5873",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2583,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-18T15:46:04Z",
+      "side": 1,
+      "message": "Well, it looks like I\u0027m in need of another rebase already, so done :)",
+      "parentUuid": "92123b62_4fa6fe10",
+      "range": {
+        "startLine": 2583,
+        "startChar": 2,
+        "endLine": 2583,
+        "endChar": 6
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -183,6 +327,54 @@
       "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13d4f99f_67919ee4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-18T15:46:04Z",
+      "side": 1,
+      "message": "This is on exit.  Though I could be persuaded to move this to the detach function since it feels like it makes more sense there.",
+      "parentUuid": "d6582d29_fb0db16d",
+      "range": {
+        "startLine": 2692,
+        "startChar": 22,
+        "endLine": 2692,
+        "endChar": 57
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d88e451c_3bab60c3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2692,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-18T15:46:04Z",
+      "side": 1,
+      "message": "Picked this up during rebase.  See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2245576",
+      "parentUuid": "075b169b_b70cf39a",
+      "range": {
+        "startLine": 2690,
+        "startChar": 0,
+        "endLine": 2692,
+        "endChar": 0
+      },
+      "revId": "cac0f89899a3610e52a8dc5a330bf1a21391314c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
