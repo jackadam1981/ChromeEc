@@ -38,21 +38,12 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
 /*
- * Reconfigure Volteer GPIOs based on the board ID
+ * FW_CONFIG defaults for Delbin if the CBI data is not initialized.
  */
-__override void config_volteer_gpios(void)
-{
-	/* Legacy support for the first board build */
-	if (get_board_id() == 0) {
-		CPRINTS("Configuring GPIOs for board ID 0");
-		CPRINTS("VOLUME_UP button disabled");
-
-		/* Reassign USB_C1_RT_RST_ODL */
-		bb_controls[USBC_PORT_C1].retimer_rst_gpio =
-			GPIO_USB_C1_RT_RST_ODL_BOARDID_0;
-		ps8xxx_rst_odl = GPIO_USB_C1_RT_RST_ODL_BOARDID_0;
-	}
-}
+union volteer_cbi_fw_config fw_config_defaults = {
+	/* Set all FW_CONFIG fields default to 0 */
+	.raw_value = 0,
+};
 
 static void board_init(void)
 {
@@ -245,4 +236,13 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_PP5000_USBA,
 };
 
+void board_reset_pd_mcu(void)
+{
+	/* TODO(b/159336576): Delbin: check USB PD reset operation */
+}
+
+__override void board_cbi_init(void)
+{
+	/* TODO(b/159336576): Delbin: check FW_CONFIG fields for USB DB type */
+}
 
