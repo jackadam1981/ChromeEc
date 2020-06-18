@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "084792ec_cf4e1950",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "the includes should be sorted alphabetically\n\nfips_rand.h already includes dcrypto.h",
+      "range": {
+        "startLine": 6,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3674c5_aa6201d9",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "use \u0027bool\u0027 for Boolean variables.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4237a7b_03639c8b",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "should this be static?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67812e22_a6b6b8bd",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "why do these have to be invoked twice each on the same data?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8db2cc47_fddb8a8d",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "what is the meaning of this? if the sample is all zeros the entire last_clz is added to the current clz?\n\nit would be much better readable if coded like\n\nif (rnd \u003d\u003d 0)\n   clz +\u003d rand_state.last_clz\nrand_state.last_clz \u003d clz\n\nand respectively\n\nif (rnd \u003d\u003d ~0)\n   clo \u003d rand_state.last_clo\nrand_state.last_clo \u003d clo\n\n\nIn general, I think this function should be better commented.",
+      "range": {
+        "startLine": 95,
+        "startChar": 29,
+        "endLine": 95,
+        "endChar": 64
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f3df80_ab1c61a0",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "what\u0027s population count?",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6777f24_ec807a73",
+        "filename": "board/cr50/fips_rand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "I think these files should be added in chip/g - conceivably other boards could use this too.",
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81c66a5a_67561fa6",
+        "filename": "board/cr50/fips_rand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "put the compiler provided includes first and separate the two include blocks by empty lines please",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20d5c90d_d4f7f541",
+        "filename": "board/cr50/fips_rand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "log2(2^-50) is -50, right?\n\n51/.85 happens to be exactly 60",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b3492c0_85c5c452",
+        "filename": "board/cr50/fips_rand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "this is the same as\n\nTRNG_INIT_WORDS * RCT_CUTOFF_SAMPLES",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 75
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5c7e5da_b3932368",
+        "filename": "board/cr50/fips_rand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-18T20:11:36Z",
+      "side": 1,
+      "message": "this is a common calculation around this code, how about putting it into a separate macro, maybe even in include/util.h so that it is available to others.",
+      "range": {
+        "startLine": 62,
+        "startChar": 32,
+        "endLine": 62,
+        "endChar": 64
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
