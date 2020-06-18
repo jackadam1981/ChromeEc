@@ -28,6 +28,11 @@ GPIO_INT(PG_EC_ALL_SYS_PWRGD,  PIN(F, 4),  GPIO_INT_BOTH, power_signal_interrupt
 GPIO_INT(EC_IMU_INT_L,         PIN(5, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V, bmi260_interrupt)
 GPIO_INT(EC_ALS_RGB_INT_L,     PIN(D, 4), GPIO_INT_FALLING, tcs3400_interrupt)
 GPIO_INT(TABLET_MODE_L,        PIN(9, 5), GPIO_INT_BOTH, gmr_tablet_switch_isr)
+/*
+ * Lid g-sensor interrupt unused on Volteer, configure as regular input for
+ * power saving.
+ */
+GPIO(EC_ACCEL_INT,		PIN(8, 1), GPIO_INPUT | GPIO_PULL_UP)
 
 /* USB-C interrupts */
 GPIO_INT(USB_C0_TCPC_INT_ODL,	PIN(E, 0), GPIO_INT_BOTH, tcpc_alert_event)
@@ -99,7 +104,20 @@ UNIMPLEMENTED(USB_C1_RT_FORCE_PWR)
 
 /* Misc Signals */
 GPIO(UART2_EC_RX,		PIN(7, 5), GPIO_OUT_LOW)	/* H1 Packet Mode */
+GPIO(CCD_MODE_ODL,		PIN(E, 5), GPIO_INPUT)		/* Case Closed Debug Mode */
 
+/*
+ * TODO(b/138954381): M2_SSD_PLN signal (power loss notify) requirements
+ * Configure as input to save power until until optane support is added.
+ */
+GPIO(M2_SSD_PLN,		PIN(A, 0), GPIO_INPUT | GPIO_PULL_UP)
+
+/*
+ * Unused signals
+ */
+GPIO(EC_JEN1_L,			PIN(D, 6), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(EC_TEST_L,			PIN(3, 5), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO41,		PIN(4, 1), GPIO_INPUT | GPIO_PULL_UP)
 
 /*
  * eDP backlight - both PCH and EC have enable pins that must be high
