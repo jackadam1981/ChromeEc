@@ -40,6 +40,43 @@
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_CMD_CBI
 
+/* USB defines */
+/* USB Configuration */
+#define CONFIG_USB
+#define CONFIG_STREAM_USB
+#define CONFIG_USB_UPDATE
+#define CONFIG_USB_SERIALNO
+#define DEFAULT_SERIALNO "Uninitialized"
+#define CONFIG_MAC_ADDR
+#define DEFAULT_MAC_ADDR "Uninitialized"
+
+/* USB endpoint indexes (use define rather than enum to expand them) */
+#define USB_EP_CONTROL		0
+#define USB_EP_UPDATE		1
+#define USB_EP_CONSOLE		2
+#define USB_EP_COUNT		3
+
+#define USB_IFACE_UPDATE	0
+#define USB_IFACE_CONSOLE	1
+#define USB_IFACE_COUNT		2
+
+#ifndef __ASSEMBLER__
+/* USB string indexes */
+enum usb_strings {
+	USB_STR_DESC = 0,
+	USB_STR_VENDOR,
+	USB_STR_PRODUCT,
+	USB_STR_SERIALNO,
+	USB_STR_VERSION,
+	USB_STR_I2C_NAME,
+	USB_STR_UPDATE_NAME,
+#ifdef CONFIG_USB_ISOCHRONOUS
+	USB_STR_HEATMAP_NAME,
+#endif
+	USB_STR_COUNT
+};
+#endif
+
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_TCPMV2
