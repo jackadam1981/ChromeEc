@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dccf7963_6b658a67",
+        "filename": "board/jacuzzi/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2020-06-18T00:53:41Z",
+      "side": 1,
+      "message": "We can\u0027t use BP_YES here.\nBP_NOT_SURE is used for prevent_power_on() if battery can\u0027t discharge.\nIf we return BP_YES, system will power on if typeC adapter power is not enough and battery can\u0027t discharge.\nAnd it might cause power drop due to power is not enough.",
+      "parentUuid": "56cf0147_072451ec",
+      "revId": "ee456b75d5ef90d8761ece2c052610990ac781e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47f4174f_5076724f",
         "filename": "board/jacuzzi/battery.c",
         "patchSetId": 3
