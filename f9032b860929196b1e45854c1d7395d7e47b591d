@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "772d93da_61ffb172",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-18T21:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7af4408a_3889c654",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "f9032b860929196b1e45854c1d7395d7e47b591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba615ed4_05af66fb",
         "filename": "/COMMIT_MSG",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "f9032b860929196b1e45854c1d7395d7e47b591d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66e34825_679d3570",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-18T21:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba615ed4_05af66fb",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "f9032b860929196b1e45854c1d7395d7e47b591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "15ee90f7_86ef7b8d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-18T21:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f5bfb69_a45cda8d",
+      "range": {
+        "startLine": 802,
+        "startChar": 1,
+        "endLine": 802,
+        "endChar": 14
+      },
+      "revId": "f9032b860929196b1e45854c1d7395d7e47b591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6bca6f0_273798db",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 11
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "dd7b7298_6030f341",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-18T21:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6bca6f0_273798db",
+      "range": {
+        "startLine": 803,
+        "startChar": 1,
+        "endLine": 803,
+        "endChar": 14
+      },
+      "revId": "f9032b860929196b1e45854c1d7395d7e47b591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a126e1b3_e4a90c7f",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 11
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-18T19:51:44Z",
       "side": 1,
       "message": "remove it do that will look same  as old code",
+      "range": {
+        "startLine": 849,
+        "startChar": 42,
+        "endLine": 851,
+        "endChar": 17
+      },
+      "revId": "f9032b860929196b1e45854c1d7395d7e47b591d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "732e49ae_50b26ccf",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-18T21:17:03Z",
+      "side": 1,
+      "message": "Gives an error: expected \u0027\u003d\u0027, \u0027,\u0027, \u0027;\u0027, \u0027asm\u0027 or \u0027__attribute__\u0027 before \u0027.\u0027 token\nunion tbt_mode_resp_cable cable_mode_resp.raw_value \u003d\n                                         ^",
+      "parentUuid": "a126e1b3_e4a90c7f",
       "range": {
         "startLine": 849,
         "startChar": 42,
