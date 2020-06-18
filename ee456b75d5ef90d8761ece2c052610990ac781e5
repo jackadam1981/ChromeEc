@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "d9141671_fad94e8d",
+        "filename": "board/jacuzzi/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-18T04:07:02Z",
+      "side": 1,
+      "message": "I thought charge_prevent_power_on is never used in mt8183",
+      "parentUuid": "e6ed6eb5_a4b7cd04",
+      "revId": "ee456b75d5ef90d8761ece2c052610990ac781e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47f4174f_5076724f",
         "filename": "board/jacuzzi/battery.c",
         "patchSetId": 3
