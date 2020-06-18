@@ -16,6 +16,24 @@
       "revId": "9f9db3f25e5fdb4ea233f8dab952c8f99a9aac6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "330de5eb_69bc9381",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-06-18T09:17:36Z",
+      "side": 1,
+      "message": "it seems that this is a standard way to call battery_hw_present().\nI think makeing default battery_hw_present() will be much better for platforms without CONFIG_BATTERY_HW_PRESENT_CUSTOM, so we don\u0027t have to use #ifdef in every battery_hw_present() caller.",
+      "parentUuid": "774037c1_0be9c55c",
+      "revId": "9f9db3f25e5fdb4ea233f8dab952c8f99a9aac6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
