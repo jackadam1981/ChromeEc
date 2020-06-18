@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8e55532_9197e7b6",
+        "filename": "board/meep/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-06-18T08:58:55Z",
+      "side": 1,
+      "message": "I would suggest to put it into board.c because CONFIG_KEYBOARD_KEYPAD might end up to be defined in the end of this file.",
+      "revId": "c8b12792bc50c186ed7c7800178b1b18c8dbe1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
