@@ -183,7 +183,47 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 }
 #endif
 
+#ifdef CONFIG_USB_PD_TCPM_PS8815_FORCE_DID
+/*
+ * Early ps8815 A1 firmware reports 0x0001 in the TCPCI Device ID
+ * registers which makes it indistinguishable from A0. This
+ * overrides the Device ID based if vendor specific registers
+ * identify the chip as A1.
+ *
+ * See b/159289062.
+ */
+		/*
+		 * Parade doesn't report anything useful in the TCPCI
+		 * Device ID registers, so get the chip revision in a
+		 * vendor specific way.
+		 */
+static int ps8815_make_device_id(int port, int *id)
+{
+	int p1_addr;
+	int val;
+	int status;
 
+	/* P1 registers are always accessible on PS8815 */
+	p1_addr = tcpc_config[port].i2c_info.addr_flags -
+		(PS8751_I2C_ADDR1_FLAGS - PS8751_I2C_ADDR1_P1_FLAGS);
+
+	status = tcpc_addr_read16(port, p1_addr, PS8815_P1_REG_HW_REVISION,
+				  &val);
+	if (status != EC_SUCCESS)
+		return status;
+	switch (val) {
+	case 0x0a00:
+		*id = 1;
+		break;
+	case 0x0a01:
+		*id = 2;
+		break;
+	default:
+		return EC_ERROR_UNKNOWN;
+	}
+	return EC_SUCCESS;
+}
+#endif
 
 static int ps8xxx_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 *chip_info)
@@ -191,7 +231,7 @@ static int ps8xxx_get_chip_info(int port, int live,
 	int val;
 	int rv = tcpci_get_chip_info(port, live, chip_info);
 
-	if (rv)
+	if (rv != EC_SUCCESS)
 		return rv;
 
 	if (!live) {
@@ -201,9 +241,14 @@ static int ps8xxx_get_chip_info(int port, int live,
 
 	if (chip_info->fw_version_number == 0 ||
 	    chip_info->fw_version_number == -1 || live) {
+#ifdef CONFIG_USB_PD_TCPM_PS8815_FORCE_DID
+		rv = ps8815_make_device_id(port, &val);
+		if (rv != EC_SUCCESS)
+			return rv;
+		chip_info->device_id = val;
+#endif
 		rv = tcpc_read(port, FW_VER_REG, &val);
-
-		if (rv)
+		if (rv != EC_SUCCESS)
 			return rv;
 
 		chip_info->fw_version_number = val;
