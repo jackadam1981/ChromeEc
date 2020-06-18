@@ -50,6 +50,11 @@ __override void config_volteer_gpios(void)
 		bb_controls[USBC_PORT_C1].retimer_rst_gpio =
 			GPIO_USB_C1_RT_RST_ODL_BOARDID_0;
 		ps8xxx_rst_odl = GPIO_USB_C1_RT_RST_ODL_BOARDID_0;
+		/* TODO: Board ID 2 config by default. */
+	} else {
+		/* Configure unused pin as input to save power */
+		gpio_set_flags(GPIO_USB_C1_RT_RST_ODL_BOARDID_0,
+			       GPIO_INPUT | GPIO_PULL_UP);
 	}
 }
 
