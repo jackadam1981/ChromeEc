@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "774037c1_0be9c55c",
+        "filename": "baseboard/kukui/battery_smart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-18T08:56:05Z",
+      "side": 1,
+      "message": "I wonder if we can remove this ifdef.\n(without the line `batt_pres \u003d battery_hw_present()`, this function will never return BP_YES)",
+      "revId": "9f9db3f25e5fdb4ea233f8dab952c8f99a9aac6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
