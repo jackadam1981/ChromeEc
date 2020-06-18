@@ -22,6 +22,30 @@
       "revId": "1ad99a2f71e7c5dc03e8ab248d7ef7f4e37174e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33453873_2f0cd8a5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-18T18:19:15Z",
+      "side": 1,
+      "message": "you\u0027re right, my mistake.\n\neven if this config is set, it won\u0027t compile since we don\u0027t define board_tcpc_fast_role_swap_enable, I guess we will move that out of this function later though.",
+      "parentUuid": "9162c40c_73d2844c",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 726,
+        "endChar": 58
+      },
+      "revId": "1ad99a2f71e7c5dc03e8ab248d7ef7f4e37174e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
