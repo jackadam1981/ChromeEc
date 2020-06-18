@@ -1,0 +1,29 @@
+/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Mock USB TC state machine */
+
+#include "common.h"
+#include "console.h"
+#include "usb_tc_sm.h"
+#include "mock/usb_tc_sm_mock.h"
+#include "memory.h"
+
+#ifndef CONFIG_COMMON_RUNTIME
+#define cprints(format, args...)
+#endif
+
+struct typec_t pd_port[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+enum pd_cable_plug tc_get_cable_plug(int port)
+{
+	return PD_PLUG_FROM_DFP_UFP;
+}
+
+uint8_t tc_get_pd_enabled(int port)
+{
+	return mock_pd_port[port].pd_enable;
+}
+
