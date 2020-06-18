@@ -618,7 +618,8 @@ enum ucpd_tx_ordset {
 #define STM32_RCC_AHB1RSTR              REG32(STM32_RCC_BASE + 0x28)
 #define STM32_RCC_AHB2RSTR              REG32(STM32_RCC_BASE + 0x2C)
 #define STM32_RCC_AHB3RSTR              REG32(STM32_RCC_BASE + 0x30)
-#define STM32_RCC_APB1RSTR              REG32(STM32_RCC_BASE + 0x38)
+#define STM32_RCC_APB1RSTR1             REG32(STM32_RCC_BASE + 0x38)
+#define STM32_RCC_APB1RSTR2             REG32(STM32_RCC_BASE + 0x3C)
 #define STM32_RCC_APB2RSTR              REG32(STM32_RCC_BASE + 0x40)
 #define STM32_RCC_AHB1ENR               REG32(STM32_RCC_BASE + 0x48)
 #define STM32_RCC_AHB2ENR               REG32(STM32_RCC_BASE + 0x4C)
@@ -751,6 +752,11 @@ enum ucpd_tx_ordset {
 
 /* gpio.c needs STM32_RCC_SYSCFGEN */
 #define STM32_RCC_SYSCFGEN STM32_RCC_APB2ENR_SYSCFGEN
+
+/* --- RCC APB1RSTR1 Bit Definitions --- */
+#define STM32_RCC_APB1RSTR1_USB_RST     BIT(23)
+#define STM32_RCC_APB1RSTR              STM32_RCC_APB1RSTR1
+#define STM32_RCC_PB1_USB               STM32_RCC_APB1RSTR1_USB_RST
 
 /* --- RCC CSR Bit Definitions --- */
 #define STM32_RCC_CSR_LSION		BIT(0)
