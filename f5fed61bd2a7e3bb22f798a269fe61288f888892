@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ec57cdd1_fe09e3e5",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-06-18T11:22:59Z",
+      "side": 1,
+      "message": "Modify for better understanding.\nBecause EC WRST and VSTBY are connected to the same power rail, we will get two reset causes at the same time at EC power-on: power on reset and reset pin.",
+      "parentUuid": "dfd72cfe_319bbd30",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 68
+      },
+      "revId": "f5fed61bd2a7e3bb22f798a269fe61288f888892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db67c311_53fcbd2c",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-17T20:42:45Z",
       "side": 1,
       "message": "is this a case we really need to handle, since devices should have a battery and/or AC. What cause is this trying to address?",
+      "range": {
+        "startLine": 2342,
+        "startChar": 13,
+        "endLine": 2342,
+        "endChar": 35
+      },
+      "revId": "f5fed61bd2a7e3bb22f798a269fe61288f888892",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79359af0_78fe1cb1",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2342,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-06-18T11:22:59Z",
+      "side": 1,
+      "message": "Adding more comment in code.",
+      "parentUuid": "db67c311_53fcbd2c",
       "range": {
         "startLine": 2342,
         "startChar": 13,
