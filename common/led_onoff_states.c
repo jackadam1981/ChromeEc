@@ -17,6 +17,8 @@
 
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
 
+/* just a test */
+
 static enum led_states led_get_state(void)
 {
 	int  charge_lvl;
