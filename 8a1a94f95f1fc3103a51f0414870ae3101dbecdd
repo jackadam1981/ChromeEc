@@ -22,6 +22,30 @@
       "revId": "8a1a94f95f1fc3103a51f0414870ae3101dbecdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adf79edc_d20b66a3",
+        "filename": "board/cr50/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-18T15:06:47Z",
+      "side": 1,
+      "message": "not actually. I can only make it for CRYPTO_TEST",
+      "parentUuid": "f4c165eb_fc1db2b9",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "8a1a94f95f1fc3103a51f0414870ae3101dbecdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
