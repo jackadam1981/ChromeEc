@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef2eb773_3de0d91c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-18T01:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "134a9bd1_2ed5ece3",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "86d183f5d0e1c134a4b825325d32e98beb5bfaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a174d345_725e436c",
         "filename": "common/usb_pd_host_cmd.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "86d183f5d0e1c134a4b825325d32e98beb5bfaee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb210b3_3439ca3d",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-18T01:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a174d345_725e436c",
+      "range": {
+        "startLine": 260,
+        "startChar": 11,
+        "endLine": 260,
+        "endChar": 15
+      },
+      "revId": "86d183f5d0e1c134a4b825325d32e98beb5bfaee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
