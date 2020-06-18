@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed41ea72_226327e1",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-18T21:42:33Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 2
+      },
+      "revId": "b80643d39695f11d22229ac485562dec65643979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8acbe1a_2fe0f4eb",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-18T21:42:33Z",
+      "side": 1,
+      "message": "I think you can just do:\nppc_chips[USBC_PORT_C1].drv \u003d \u0026aoz1380_drv;",
+      "range": {
+        "startLine": 312,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 52
+      },
+      "revId": "b80643d39695f11d22229ac485562dec65643979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deb0551d_00341576",
+        "filename": "board/morphius/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-18T21:42:33Z",
+      "side": 1,
+      "message": "Change this to:\n#define HAS_DB_PPC_AOZ1380 \\\n\t\t\t(BIT(MORPHIUS_DB_PICASSO_AOZ1380) | BIT(MORPHIUS_DB_DALI_AOZ1380))",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 34
+      },
+      "revId": "b80643d39695f11d22229ac485562dec65643979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a2df47f_38a8c78e",
+        "filename": "board/morphius/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-18T21:42:33Z",
+      "side": 1,
+      "message": "Then this is just HAS_DB_PPC_AOZ1380",
+      "range": {
+        "startLine": 220,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 23
+      },
+      "revId": "b80643d39695f11d22229ac485562dec65643979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
