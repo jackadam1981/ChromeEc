@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84724452_e09f3599",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-18T19:32:22Z",
+      "side": 1,
+      "message": "Would this be a policy disable or the other disable flag?",
+      "range": {
+        "startLine": 1165,
+        "startChar": 2,
+        "endLine": 1165,
+        "endChar": 21
+      },
+      "revId": "5e564588db92a2e91da9027c1ca429579b20fd83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
