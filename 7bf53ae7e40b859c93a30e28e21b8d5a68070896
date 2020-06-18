@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4fea512e_74104345",
+        "filename": "board/servo_v4p1/ccd_measure_sbu.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-18T15:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e2319b0_71f14782",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "7bf53ae7e40b859c93a30e28e21b8d5a68070896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2cea433_35e8de53",
         "filename": "board/servo_v4p1/ccd_measure_sbu.c",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "81cb1fad_023d914e",
+        "filename": "board/servo_v4p1/ccd_measure_sbu.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-18T15:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2cea433_35e8de53",
+      "range": {
+        "startLine": 119,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 12
+      },
+      "revId": "7bf53ae7e40b859c93a30e28e21b8d5a68070896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dff3c0a_c101f1db",
         "filename": "board/servo_v4p1/ccd_measure_sbu.c",
         "patchSetId": 13
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-10T22:21:54Z",
       "side": 1,
       "message": "This function seems not too fundamental.\n\nThe 1s delay seems to be a hack. It may cause a race if the dts mode is not enabled by default. For example, servo v4 reboots, servod restarts and initializes the dts mode to off, this deferred call is triggered to monitor the SBU.\n\nI am not sure why it comes from. Try if this 1s is really need.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 1
+      },
+      "revId": "7bf53ae7e40b859c93a30e28e21b8d5a68070896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a4763a_6f97c407",
+        "filename": "board/servo_v4p1/ccd_measure_sbu.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-18T15:06:00Z",
+      "side": 1,
+      "message": "I added the function to keep the interface consistent and the delay is carried over from servo V4.",
+      "parentUuid": "8dff3c0a_c101f1db",
       "range": {
         "startLine": 144,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9b3d8b91_b27daf94",
+        "filename": "board/servo_v4p1/ccd_measure_sbu.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-18T15:06:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42a7d717_0c6e5a83",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "7bf53ae7e40b859c93a30e28e21b8d5a68070896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bc1a7e4_9c5815ae",
         "filename": "board/servo_v4p1/ro_files.c",
         "patchSetId": 13
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-10T22:21:54Z",
       "side": 1,
       "message": "You can link the ccd_measure_sbu.o in RO only through the build.mk.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "7bf53ae7e40b859c93a30e28e21b8d5a68070896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09263418_e047fb5c",
+        "filename": "board/servo_v4p1/ro_files.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-18T15:06:00Z",
+      "side": 1,
+      "message": "Could you inform how to do this? The build.mk link sends me to a Russian website.",
+      "parentUuid": "3bc1a7e4_9c5815ae",
       "range": {
         "startLine": 7,
         "startChar": 0,
