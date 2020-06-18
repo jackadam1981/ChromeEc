@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24bd0eee_13e2cdc9",
+        "filename": "board/jacuzzi/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-18T03:03:46Z",
+      "side": 1,
+      "message": "I found this line is weird, and it seems that many boards (e.g. corals...) use this check. It should be a bool check rather than a state check. It returns if battery is not cutoff (BATTERY_CUTTOFF_STATE_NORMAL \u003d 0).",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 57
+      },
+      "revId": "f51e6ef6ca138e9a116e5c43f2719f5f7ac1acf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c64edd4_220aef20",
+        "filename": "board/jacuzzi/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-18T03:03:46Z",
+      "side": 1,
+      "message": "I think you can\u0027t put this below line:135. It might have an early return on line:136 if the battery is not cut-off.\n\nDo you think https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/coral/battery.c#639 could solve the issue?",
+      "revId": "f51e6ef6ca138e9a116e5c43f2719f5f7ac1acf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
