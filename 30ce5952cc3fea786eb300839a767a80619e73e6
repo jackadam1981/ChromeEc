@@ -46,6 +46,30 @@
       "revId": "30ce5952cc3fea786eb300839a767a80619e73e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bba13cc_285b9e9e",
+        "filename": "power/sc7180.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-06-18T00:17:56Z",
+      "side": 0,
+      "message": "Ok. Just wanted to know if that was intentional because I don\u0027t think commit text talked about it.",
+      "parentUuid": "318174b2_bd4f5323",
+      "range": {
+        "startLine": 471,
+        "startChar": 6,
+        "endLine": 471,
+        "endChar": 23
+      },
+      "revId": "30ce5952cc3fea786eb300839a767a80619e73e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
