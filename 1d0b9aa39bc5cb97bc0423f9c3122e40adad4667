@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6abcdb26_ab2a3be1",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-18T00:45:18Z",
+      "side": 1,
+      "message": "my bad! we need it in protocol.c",
+      "parentUuid": "3a594c7f_46c33d7a",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 1
+      },
+      "revId": "1d0b9aa39bc5cb97bc0423f9c3122e40adad4667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "678e7863_5ac2bee8",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "1d0b9aa39bc5cb97bc0423f9c3122e40adad4667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e8ff1ae_40cab686",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-18T00:45:18Z",
+      "side": 1,
+      "message": "Let it be the same",
+      "parentUuid": "678e7863_5ac2bee8",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 212,
+        "endChar": 53
+      },
+      "revId": "1d0b9aa39bc5cb97bc0423f9c3122e40adad4667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
