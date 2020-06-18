@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "ac5adf9b_1d2abf5d",
+        "filename": "board/jacuzzi/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-06-18T06:44:42Z",
+      "side": 1,
+      "message": "yeah I also think that charge_prevent_power_on() isn\u0027t used by mt8183.\nI think just returning BP_YES will be enough.",
+      "parentUuid": "d9141671_fad94e8d",
+      "revId": "ee456b75d5ef90d8761ece2c052610990ac781e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47f4174f_5076724f",
         "filename": "board/jacuzzi/battery.c",
         "patchSetId": 3
