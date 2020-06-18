@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e31db9f_3e7df35c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-18T18:21:46Z",
+      "side": 1,
+      "message": "Remove pd_cable structure usage from common code",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "130aa14b589b1757964925ba918bc68c5b115148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe0350b_79b91b98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-18T18:21:46Z",
+      "side": 1,
+      "message": "not clear, add few more info like rationale behind it",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "130aa14b589b1757964925ba918bc68c5b115148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6832aa8b_3e1e4478",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-18T18:21:46Z",
+      "side": 1,
+      "message": "nit: its part of disc, how about just expanding it instead of calling another function ?",
+      "range": {
+        "startLine": 661,
+        "startChar": 8,
+        "endLine": 661,
+        "endChar": 29
+      },
+      "revId": "130aa14b589b1757964925ba918bc68c5b115148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "895b310f_4e6d5ed7",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-18T18:21:46Z",
+      "side": 1,
+      "message": "use a variable",
+      "range": {
+        "startLine": 755,
+        "startChar": 5,
+        "endLine": 755,
+        "endChar": 32
+      },
+      "revId": "130aa14b589b1757964925ba918bc68c5b115148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75023f10_ebfd3a67",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-18T18:21:46Z",
+      "side": 1,
+      "message": "need to remove?",
+      "range": {
+        "startLine": 976,
+        "startChar": 1,
+        "endLine": 976,
+        "endChar": 24
+      },
+      "revId": "130aa14b589b1757964925ba918bc68c5b115148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "269e4a64_61c4799c",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-18T18:21:46Z",
+      "side": 1,
+      "message": "how about cable_type?",
+      "range": {
+        "startLine": 115,
+        "startChar": 16,
+        "endLine": 115,
+        "endChar": 26
+      },
+      "revId": "130aa14b589b1757964925ba918bc68c5b115148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
