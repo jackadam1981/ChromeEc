@@ -12,6 +12,8 @@
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
+#include "driver/ppc/aoz1380.h"
+#include "driver/ppc/nx20p348x.h"
 #include "driver/retimer/pi3dpx1207.h"
 #include "driver/temp_sensor/sb_tsi.h"
 #include "driver/temp_sensor/tmp432.h"
@@ -34,6 +36,7 @@
 #include "temp_sensor.h"
 #include "usb_mux.h"
 #include "usb_charge.h"
+#include "usbc_ppc.h"
 
 #include "gpio_list.h"
 
@@ -287,6 +290,11 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
  * Use FW_CONFIG to set correct configuration.
  */
 
+const struct ppc_config_t ppc_aoz1380_db = {
+				/* Device does not talk I2C */
+				.drv = &aoz1380_drv
+};
+
 void setup_fw_config(void)
 {
 	/* Enable Gyro interrupts */
@@ -304,6 +312,11 @@ void setup_fw_config(void)
 
 	if (ec_config_has_hdmi_conn_hpd())
 		ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB);
+
+	if (ec_config_has_db_ppc_aoz1380()) {
+		memcpy(&ppc_chips[USBC_PORT_C1],
+			   &ppc_aoz1380_db, sizeof(struct ppc_config_t));
+	}
 }
 DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
 
@@ -555,4 +568,23 @@ void hdmi_hpd_interrupt(enum ioex_signal signal)
 {
 	/* Debounce for 2 msec. */
 	hook_call_deferred(&hdmi_hpd_handler_data, (2 * MSEC));
+}
+
+__override void ppc_interrupt(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_USB_C0_PPC_FAULT_ODL:
+		aoz1380_interrupt(USBC_PORT_C0);
+		break;
+
+	case GPIO_USB_C1_PPC_INT_ODL:
+		if (ec_config_has_db_ppc_aoz1380())
+			aoz1380_interrupt(USBC_PORT_C1);
+		else
+			nx20p348x_interrupt(USBC_PORT_C1);
+		break;
+
+	default:
+		break;
+	}
 }
