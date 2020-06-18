@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5dabf53c_b2c7b10f",
+        "filename": "board/meep/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2020-06-18T02:57:33Z",
+      "side": 1,
+      "message": "We should consider possible later changes on M/B not impacting this, but may still support syv682x. \nOne example is that, when there is another 2nd source of other component comes in, board_version changed to 7/8. syv682x will keep the same in the new M/B. Then it\u0027s better to state \"\u003e\u003d6\" here since it is possible the future changes will forget to update this parts, and will lead to syv682x doesn\u0027t work properly. \nThanks!",
+      "parentUuid": "147f5a16_b89c7942",
+      "range": {
+        "startLine": 59,
+        "startChar": 10,
+        "endLine": 59,
+        "endChar": 28
+      },
+      "revId": "593da330c7808841c4fd869b56306978b9eaeceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "298111ed_dc2c8111",
         "filename": "board/meep/board.c",
         "patchSetId": 4
