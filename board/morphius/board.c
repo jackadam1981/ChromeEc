@@ -9,6 +9,7 @@
 #include "adc_chip.h"
 #include "battery_smart.h"
 #include "button.h"
+#include "cros_board_info.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
@@ -140,25 +141,6 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 #endif /* HAS_TASK_MOTIONSENSE */
 
-static void trackpoint_reset_deferred(void)
-{
-	gpio_set_level(GPIO_EC_PS2_RESET, 1);
-	msleep(2);
-	gpio_set_level(GPIO_EC_PS2_RESET, 0);
-	msleep(10);
-}
-DECLARE_DEFERRED(trackpoint_reset_deferred);
-
-void send_aux_data_to_device(uint8_t data)
-{
-	ps2_transmit_byte(NPCX_PS2_CH0, data);
-}
-
-void ps2_pwr_en_interrupt(enum gpio_signal signal)
-{
-	hook_call_deferred(&trackpoint_reset_deferred_data, MSEC);
-}
-
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT] = {
 		.channel = 3,
@@ -287,6 +269,24 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
  * Use FW_CONFIG to set correct configuration.
  */
 
+enum gpio_signal gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
+
+static void	board_remap_gpio(void)
+{
+	uint32_t board_ver = 0;
+
+	cbi_get_board_version(&board_ver);
+
+	if (board_ver > 0x22) {
+		gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
+		ccprintf("GPIO_EC_PS2_RESET_V1\n");
+	} else {
+		gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V0;
+		ccprintf("GPIO_EC_PS2_RESET_V0\n");
+	}
+}
+
+
 void setup_fw_config(void)
 {
 	/* Enable Gyro interrupts */
@@ -304,6 +304,8 @@ void setup_fw_config(void)
 
 	if (ec_config_has_hdmi_conn_hpd())
 		ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB);
+
+	board_remap_gpio();
 }
 DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
 
@@ -555,4 +557,23 @@ void hdmi_hpd_interrupt(enum ioex_signal signal)
 {
 	/* Debounce for 2 msec. */
 	hook_call_deferred(&hdmi_hpd_handler_data, (2 * MSEC));
+}
+
+static void trackpoint_reset_deferred(void)
+{
+	gpio_set_level(gpio_ec_ps2_reset, 1);
+	msleep(2);
+	gpio_set_level(gpio_ec_ps2_reset, 0);
+	msleep(10);
+}
+DECLARE_DEFERRED(trackpoint_reset_deferred);
+
+void send_aux_data_to_device(uint8_t data)
+{
+	ps2_transmit_byte(NPCX_PS2_CH0, data);
+}
+
+void ps2_pwr_en_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&trackpoint_reset_deferred_data, MSEC);
 }
