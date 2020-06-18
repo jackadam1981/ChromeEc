@@ -141,7 +141,7 @@
 #define STM32_I2C1_BASE             STM32_APB1PERIPH(0x5400UL)
 #define STM32_I2C2_BASE             STM32_APB1PERIPH(0x5800UL)
 /* USB_IP Peripheral Registers base address */
-#define STM32_USB_BASE              STM32_APB1PERIPH(0x5C00UL)
+#define STM32_USB_FS_BASE           STM32_APB1PERIPH(0x5C00UL)
 /* USB_IP Packet Memory Area base address */
 #define STM32_USB_PMAADDR           STM32_APB1PERIPH(0x6000UL)
 #define STM32_FDCAN1_BASE           STM32_APB1PERIPH(0x6400UL)
@@ -154,6 +154,7 @@
 #define STM32_I2C4_BASE             STM32_APB1PERIPH(0x8400UL)
 /* UART9 is used as link to LPUART in STM32 uart.c implementation */
 #define STM32_USART9_BASE           STM32_APB1PERIPH(0x8000UL)
+#define STM32_I2C4_BASE             STM32_APB1PERIPH(0x8400UL)
 #define STM32_UCPD1_BASE            STM32_APB1PERIPH(0xA000UL)
 #define STM32_SRAMCAN_BASE          STM32_APB1PERIPH(0xA400UL)
 
@@ -587,7 +588,8 @@
 #define STM32_RCC_AHB1RSTR              REG32(STM32_RCC_BASE + 0x28)
 #define STM32_RCC_AHB2RSTR              REG32(STM32_RCC_BASE + 0x2C)
 #define STM32_RCC_AHB3RSTR              REG32(STM32_RCC_BASE + 0x30)
-#define STM32_RCC_APB1RSTR              REG32(STM32_RCC_BASE + 0x38)
+#define STM32_RCC_APB1RSTR1             REG32(STM32_RCC_BASE + 0x38)
+#define STM32_RCC_APB1RSTR2             REG32(STM32_RCC_BASE + 0x3C)
 #define STM32_RCC_APB2RSTR              REG32(STM32_RCC_BASE + 0x40)
 #define STM32_RCC_AHB1ENR               REG32(STM32_RCC_BASE + 0x48)
 #define STM32_RCC_AHB2ENR               REG32(STM32_RCC_BASE + 0x4C)
@@ -720,6 +722,11 @@
 
 /* gpio.c needs STM32_RCC_SYSCFGEN */
 #define STM32_RCC_SYSCFGEN STM32_RCC_APB2ENR_SYSCFGEN
+
+/* --- RCC APB1RSTR1 Bit Definitions --- */
+#define STM32_RCC_APB1RSTR1_USB_RST     BIT(23)
+#define STM32_RCC_APB1RSTR              STM32_RCC_APB1RSTR1
+#define STM32_RCC_PB1_USB               STM32_RCC_APB1RSTR1_USB_RST
 
 /* --- RCC CSR Bit Definitions --- */
 #define STM32_RCC_CSR_LSION		BIT(0)
