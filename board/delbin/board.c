@@ -36,11 +36,12 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
 /*
- * Reconfigure Volteer GPIOs based on the board ID
+ * FW_CONFIG defaults for Delbin if the CBI data is not initialized.
  */
-__override void config_volteer_gpios(void)
-{
-}
+union volteer_cbi_fw_config fw_config_defaults = {
+	/* Set all FW_CONFIG fields default to 0 */
+	.raw_value = 0,
+};
 
 static void board_init(void)
 {
@@ -52,17 +53,17 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 {
-	union volteer_cbi_fw_config fw_config = get_fw_config();
+	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
 
 	if (port == USBC_PORT_C1) {
-		if (fw_config.usb_db == DB_USB4_GEN2) {
+		if (usb_db == DB_USB4_GEN2) {
 			/*
 			 * Older boards violate 205mm trace length prior
 			 * to connection to the re-timer and only support up
 			 * to GEN2 speeds.
 			 */
 			return TBT_SS_U32_GEN1_GEN2;
-		} else if (fw_config.usb_db == DB_USB4_GEN3) {
+		} else if (usb_db == DB_USB4_GEN3) {
 			return TBT_SS_TBT_GEN3;
 		}
 	}
@@ -78,7 +79,7 @@ __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 
 __override bool board_is_tbt_usb4_port(int port)
 {
-	union volteer_cbi_fw_config fw_config = get_fw_config();
+	enum ec_cfg_usb_db_type usb_db = ec_cfg_usb_db_type();
 
 	/*
 	 * Volteer reference design only supports TBT & USB4 on port 1
@@ -88,8 +89,7 @@ __override bool board_is_tbt_usb4_port(int port)
 	 * features. Need to fix once USB-C feature set is known for Volteer.
 	 */
 	return ((port == USBC_PORT_C1)
-		&& ((fw_config.usb_db == DB_USB4_GEN2)
-			|| (fw_config.usb_db == DB_USB4_GEN3)));
+		&& ((usb_db == DB_USB4_GEN2) || (usb_db == DB_USB4_GEN3)));
 }
 
 /******************************************************************************/
@@ -233,4 +233,13 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_PP5000_USBA,
 };
 
+void board_reset_pd_mcu(void)
+{
+	/* TODO(b/159336576): Delbin: check USB PD reset operation */
+}
+
+__override void board_cbi_init(void)
+{
+	/* TODO(b/159336576): Delbin: check FW_CONFIG fields for USB DB type */
+}
 
