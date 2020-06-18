@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b0315e41_80b4661b",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-06-18T11:54:54Z",
+      "side": 1,
+      "message": "Ok, I removed SM_RESET state. What do you think about new patchset?",
+      "parentUuid": "cf609f52_5ddeaa88",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 1
+      },
+      "revId": "b097d231a46a881f38e2976ce1c0927e2ef6fb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fcde52f_89521015",
         "filename": "include/usb_sm.h",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "b097d231a46a881f38e2976ce1c0927e2ef6fb0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7baac7d_2a1a32d7",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-06-18T11:54:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fcde52f_89521015",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 9
+      },
+      "revId": "b097d231a46a881f38e2976ce1c0927e2ef6fb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
