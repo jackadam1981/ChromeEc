@@ -140,7 +140,7 @@
 #define STM32_UART4_BASE            (STM32_APB1PERIPH_BASE + 0x4C00UL)
 #define STM32_I2C1_BASE             (STM32_APB1PERIPH_BASE + 0x5400UL)
 #define STM32_I2C2_BASE             (STM32_APB1PERIPH_BASE + 0x5800UL)
-#define STM32_USB_BASE              (STM32_APB1PERIPH_BASE + 0x5C00UL)  /*!< USB_IP Peripheral Registers base address */
+#define STM32_USB_FS_BASE           (STM32_APB1PERIPH_BASE + 0x5C00UL)  /*!< USB_IP Peripheral Registers base address */
 #define STM32_USB_PMAADDR           (STM32_APB1PERIPH_BASE + 0x6000UL)  /*!< USB_IP Packet Memory Area base address */
 #define STM32_FDCAN1_BASE           (STM32_APB1PERIPH_BASE + 0x6400UL)
 #define STM32_FDCAN_CONFIG_BASE     (STM32_APB1PERIPH_BASE + 0x6500UL)  /*!< FDCAN configuration registers base address */
@@ -614,7 +614,8 @@ enum ucpd_tx_ordset {
 #define STM32_RCC_AHB1RSTR              REG32(STM32_RCC_BASE + 0x28)
 #define STM32_RCC_AHB2RSTR              REG32(STM32_RCC_BASE + 0x2C)
 #define STM32_RCC_AHB3RSTR              REG32(STM32_RCC_BASE + 0x30)
-#define STM32_RCC_APB1RSTR              REG32(STM32_RCC_BASE + 0x38)
+#define STM32_RCC_APB1RSTR1             REG32(STM32_RCC_BASE + 0x38)
+#define STM32_RCC_APB1RSTR2             REG32(STM32_RCC_BASE + 0x3C)
 #define STM32_RCC_APB2RSTR              REG32(STM32_RCC_BASE + 0x40)
 #define STM32_RCC_AHB1ENR               REG32(STM32_RCC_BASE + 0x48)
 #define STM32_RCC_AHB2ENR               REG32(STM32_RCC_BASE + 0x4C)
@@ -747,6 +748,11 @@ enum ucpd_tx_ordset {
 
 /* gpio.c needs STM32_RCC_SYSCFGEN */
 #define STM32_RCC_SYSCFGEN STM32_RCC_APB2ENR_SYSCFGEN
+
+/* --- RCC APB1RSTR1 Bit Definitions --- */
+#define STM32_RCC_APB1RSTR1_USB_RST     BIT(23)
+#define STM32_RCC_APB1RSTR              STM32_RCC_APB1RSTR1
+#define STM32_RCC_PB1_USB               STM32_RCC_APB1RSTR1_USB_RST
 
 /* --- RCC CSR Bit Definitions --- */
 #define STM32_RCC_CSR_LSION		BIT(0)
