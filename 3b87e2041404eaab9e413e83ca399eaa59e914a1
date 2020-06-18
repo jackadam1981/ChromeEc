@@ -22,6 +22,52 @@
       "revId": "3b87e2041404eaab9e413e83ca399eaa59e914a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e52cfc7e_bdfb5855",
+        "filename": "common/usb_pd_console_cmd.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-18T19:59:17Z",
+      "side": 1,
+      "message": "nit: feel free to ignore: how about just ptype?",
+      "range": {
+        "startLine": 115,
+        "startChar": 16,
+        "endLine": 115,
+        "endChar": 26
+      },
+      "revId": "3b87e2041404eaab9e413e83ca399eaa59e914a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69f7ea5c_cd4bd184",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1851,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-18T19:59:17Z",
+      "side": 1,
+      "message": "use the available enum",
+      "range": {
+        "startLine": 1851,
+        "startChar": 0,
+        "endLine": 1851,
+        "endChar": 3
+      },
+      "revId": "3b87e2041404eaab9e413e83ca399eaa59e914a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
