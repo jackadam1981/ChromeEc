@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "874a4d40_af8a2a73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-18T21:34:13Z",
+      "side": 1,
+      "message": "Yup!\n\nInteresting. That seems like a build system oversight. You can trace these back using `make BOARD\u003dpuff print-includes`.\n\nNote that the only forced defines set by this script are the ones that the make script forces (and typically don\u0027t change).\n\nFor example, for puff, `make BOARD\u003dpuff print-defines` shows the following:\n\nBOARD\u003dpuff\nBOARD_PUFF\nBOARD_TASKFILE\u003dec.tasklist\nCHIP_FAMILY\u003dNPCX7\nCHIP_FAMILY_NPCX7\nCHIP\u003dnpcx\nCHIP_NPCX\nCHIP_VARIANT\u003dnpcx7m6fc\nCHIP_VARIANT_NPCX7M6FC\nCHROMIUM_EC\nCORE\u003dcortex-m\nCORE_CORTEX_M\nFINAL_OUTDIR\u003dbuild/puff\nHAS_TASK_CHIPSET\nHAS_TASK_CONSOLE\nHAS_TASK_HOOKS\nHAS_TASK_HOSTCMD\nHAS_TASK_PD_C0\nHAS_TASK_PD_INT_C0\nHAS_TASK_POWERBTN\nHAVE_PRIVATE\nOUTDIR\u003dbuild/puff/RW\nPROJECT\u003dec\nPROTOBUF_MIN_PROTOC_VERSION\u003d0\nSECTION_IS_RW\nSECTION\u003dRW\nTEST_ec\nTEST_EC\n\nAll of the board config changes will be automatically recognized. However, configs that change the includes will require rerunning this script, since `make BOARD\u003dpuff print-includes` will change.\n\n---\n\nI have thought about integrating this ide-config generation into the make build system, so that the IDE configuration could be incremental and always be up-2-date. The downside is that it would only work for VSCode, since it is too difficult to generate entire Eclipse project files. On the bright side, it looks like Eclipse is making changes to allow more standard project definitions, like allowing Cmake projects.",
+      "parentUuid": "e1db7402_c919452e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "23033404cc3539098222a4d7180a9bc6978af5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fc6db85_6bf63a74",
         "filename": "util/ide-config.sh",
         "patchSetId": 19
@@ -45,6 +69,30 @@
       "revId": "23033404cc3539098222a4d7180a9bc6978af5d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bceee3f2_99ec9c75",
+        "filename": "util/ide-config.sh",
+        "patchSetId": 19
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-06-18T21:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fc6db85_6bf63a74",
+      "range": {
+        "startLine": 269,
+        "startChar": 16,
+        "endLine": 269,
+        "endChar": 23
+      },
+      "revId": "23033404cc3539098222a4d7180a9bc6978af5d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
