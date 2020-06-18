@@ -46,6 +46,30 @@
       "revId": "ce42266e198717e94e356183f016d3cb2a0c2dff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "496280bd_73181ae2",
+        "filename": "driver/bc12/mt6360.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-18T06:03:18Z",
+      "side": 1,
+      "message": "Use lower case \u0027v\u0027. voltages_mv",
+      "parentUuid": "41c437e4_e62ac806",
+      "range": {
+        "startLine": 44,
+        "startChar": 38,
+        "endLine": 44,
+        "endChar": 49
+      },
+      "revId": "ce42266e198717e94e356183f016d3cb2a0c2dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
