@@ -164,6 +164,23 @@
       "revId": "9d7844d2428e80518b822dcc6e135c3694941c8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea4884b8_22e0c9ba",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3122,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-06-19T04:49:46Z",
+      "side": 1,
+      "message": "It would be nice to move this out of tc_low_power_mode_entry() (so that tc_low_power_mode is not doing anything except low power).\nCan this disable AutoDischargeDisconnect move to tc_unattached_snk_run() and tc_unattached_src_run()?",
+      "revId": "9d7844d2428e80518b822dcc6e135c3694941c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
