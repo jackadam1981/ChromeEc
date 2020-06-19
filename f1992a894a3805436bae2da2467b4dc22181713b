@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f738d6c8_c61207f6",
+        "filename": "common/usbc/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-19T23:30:15Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_TBT_COMPAT_MODE",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dec75ff_0b5dbc89",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-19T23:30:15Z",
+      "side": 1,
+      "message": "nit: arrange alphabetically",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db3fa5cb_3fcaa34b",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-19T23:30:15Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aec43e6_4f96cd36",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-19T23:30:15Z",
+      "side": 1,
+      "message": "CPRINTS(\"C%d vdm%d cmd_type%d tx_type%d\\n\" **)",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 8
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf17ae2a_c9505e45",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-19T23:30:15Z",
+      "side": 1,
+      "message": "need a separate function?",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9be859c_4baa6c70",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-19T23:30:15Z",
+      "side": 1,
+      "message": "its more of a filing VDM, how about\nTBT_VDO_RESPONSE",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8043da_f31ba58b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-19T23:30:15Z",
+      "side": 1,
+      "message": "create an array, keep these in priority order and loop through to get the info\nUSB_VID_INTEL,\nUSB_SID_DISPLAYPORT,\n**\n\nfor ()\n  svid \u003d pd_is_mode_discovered_for_svid()\nswitch (svid)\n{\n   case INTEL:\n         do TBT stuff\n   case DP:\n         do dp stuff\n}",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a71abae_6b1d9ce1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5421,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-19T23:30:15Z",
+      "side": 1,
+      "message": "check if you can use IS_ENABLED",
+      "range": {
+        "startLine": 5421,
+        "startChar": 7,
+        "endLine": 5421,
+        "endChar": 36
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461704e0_1be3a78d",
+        "filename": "include/usb_tbt_alt_mode.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-19T23:30:15Z",
+      "side": 1,
+      "message": "do we need this?",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
