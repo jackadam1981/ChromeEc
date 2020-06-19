@@ -173,3 +173,12 @@ int system_get_bbram(enum system_bbram_idx idx, uint8_t *value)
 {
 	return EC_ERROR_INVAL;
 }
+
+void chip_save_reset_flags(uint32_t flags)
+{
+}
+
+uint32_t chip_read_reset_flags(void)
+{
+	return 0;
+}
