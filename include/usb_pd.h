@@ -231,6 +231,15 @@ enum pd_rx_errors {
 #define PD_T_DISCOVER_IDENTITY     (45*MSEC) /* between 40ms and 50ms */
 #define PD_T_SYSJUMP               (1000*MSEC) /* 1s */
 
+/*
+ * This delay is not part of the USB Type-C specication or the USB port
+ * controller specification. Some TCPCs require extra time before the CC_STATUS
+ * register is updated when exiting low power mode.
+ * The PS8815 TCPC in particular was measured to take 8-10 ms from low power
+ * exit before the first update to CC_STATUS.
+ */
+#define PD_T_LPM_EXIT		(25*MSEC)
+
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
 #define PD_RX_TRANSITION_WINDOW 20 /* between 12us and 20us */

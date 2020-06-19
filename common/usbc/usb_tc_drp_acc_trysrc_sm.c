@@ -2812,8 +2812,15 @@ static void tc_low_power_mode_entry(const int port)
 
 static void tc_low_power_mode_run(const int port)
 {
-	if (TC_CHK_FLAG(port, TC_FLAGS_CHECK_CONNECTION))
-		check_drp_connection(port);
+	if (TC_CHK_FLAG(port, TC_FLAGS_CHECK_CONNECTION)) {
+		if (tc[port].cc_debounce == 0) {
+			CPRINTS("TCPC p%d debounce LPM exit", port);
+			tc[port].cc_debounce = get_time().val + PD_T_LPM_EXIT;
+		} else if (get_time().val > tc[port].cc_debounce) {
+			CPRINTS("TCPC p%d debounce done", port);
+			check_drp_connection(port);
+		}
+	}
 
 	if (tc[port].tasks_preventing_lpm)
 		tc[port].low_power_time = get_time().val + PD_LPM_DEBOUNCE_US;
@@ -2825,6 +2832,8 @@ static void tc_low_power_mode_run(const int port)
 		tcpm_enter_low_power_mode(port);
 		TC_CLR_FLAG(port, TC_FLAGS_LPM_TRANSITION);
 		tc_pause_event_loop(port);
+
+		tc[port].cc_debounce = 0;
 	}
 }
 #endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
