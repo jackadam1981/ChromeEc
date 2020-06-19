@@ -92,6 +92,13 @@ const struct charger_config_t chg_chips[] = {
 const unsigned int chg_cnt = ARRAY_SIZE(chg_chips);
 #endif
 
+static void check_coldrst_deferred(void)
+{
+	if (!gpio_get_level(GPIO_EN_PP3300) || !gpio_get_level(GPIO_EN_PP5000))
+		system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
+}
+DECLARE_DEFERRED(check_coldrst_deferred);
+
 /******************************************************************************/
 /* Chipset callbacks/hooks */
 
@@ -108,6 +115,8 @@ void chipset_pre_init_callback(void)
 
 	/* Enable 5.0V and 3.3V rails, and wait for Power Good */
 	power_5v_enable(task_get_current(), 1);
+
+	hook_call_deferred(&check_coldrst_deferred_data, 2000 * MSEC);
 
 	gpio_set_level(GPIO_EN_PP3300, 1);
 	while (!gpio_get_level(GPIO_PP5000_PG) ||
@@ -182,6 +191,8 @@ void chipset_do_shutdown(void)
 
 	/* Disable PMIC */
 	gpio_set_level(GPIO_PMIC_EN, 0);
+
+	hook_call_deferred(&check_coldrst_deferred_data, -1);
 
 	/* Disable 5.0V and 3.3V rails, and wait until they power down. */
 	power_5v_enable(task_get_current(), 0);
