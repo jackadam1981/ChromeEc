@@ -46,6 +46,30 @@
       "revId": "493c0e83d1394a1755b05ad6796ee95fb9cb47fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32c73b2a_be0d8201",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-19T19:29:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9af9048_03c87d2c",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "493c0e83d1394a1755b05ad6796ee95fb9cb47fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
