@@ -7,9 +7,11 @@
 
 #include "button.h"
 #include "common.h"
+#include "charger.h"
 #include "accelgyro.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/als_tcs3400.h"
+#include "driver/charger/isl9241.h"
 #include "driver/sync.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -28,7 +30,7 @@
 #include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
-
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 static void board_init(void)
 {
 	/* Illuminate motherboard and daughter board LEDs equally to start. */
@@ -162,6 +164,23 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
+/******************************************************************************/
+#if defined CONFIG_CHARGE_CHANGE_HALF
+enum ec_error_list charger_set_current(int chgnum, int current)
+{
+	int rv = EC_ERROR_UNIMPLEMENTED;
+
+	if ((chgnum < 0) || (chgnum >= chg_cnt)) {
+		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
+		return EC_ERROR_INVAL;
+	}
+
+	if (chg_chips[chgnum].drv->set_current)
+		rv = chg_chips[chgnum].drv->set_current(chgnum, current >> 1);
+
+	return rv;
+}
+#endif
 /******************************************************************************/
 void halvor_tcpc_alert_event(enum gpio_signal signal)
 {

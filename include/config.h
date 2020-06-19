@@ -474,6 +474,8 @@
  */
 /* The board provides a custom battery_is_present() implementation. */
 #undef CONFIG_BATTERY_PRESENT_CUSTOM
+/* Because the battery current is different from VOLTEER. */
+#undef CONFIG_CHARGE_CHANGE_HALF
 /* Battery is present if the GPIO named by this define reads logic-low. */
 #undef CONFIG_BATTERY_PRESENT_GPIO
 

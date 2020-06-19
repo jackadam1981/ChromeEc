@@ -374,7 +374,7 @@ enum ec_error_list charger_get_current(int chgnum, int *current)
 
 	return rv;
 }
-
+#ifndef CONFIG_CHARGE_CHANGE_HALF
 enum ec_error_list charger_set_current(int chgnum, int current)
 {
 	int rv = EC_ERROR_UNIMPLEMENTED;
@@ -389,7 +389,7 @@ enum ec_error_list charger_set_current(int chgnum, int current)
 
 	return rv;
 }
-
+#endif
 enum ec_error_list charger_get_voltage(int chgnum, int *voltage)
 {
 	int rv = EC_ERROR_UNIMPLEMENTED;
