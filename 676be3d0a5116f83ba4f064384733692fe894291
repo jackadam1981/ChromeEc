@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dabf2049_a4b15b18",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-06-19T18:53:49Z",
+      "side": 0,
+      "message": "I\u0027ve checked flashrom codes that the \"fast-verify\" option does \"VERIFY_PARTIAL\", which reads back only the written area, and compares against the original part.\nMeanwhile, \"-v\" or \"--verify\" does \"VERIFY_FULL\".",
+      "range": {
+        "startLine": 960,
+        "startChar": 2,
+        "endLine": 960,
+        "endChar": 36
+      },
+      "revId": "676be3d0a5116f83ba4f064384733692fe894291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
