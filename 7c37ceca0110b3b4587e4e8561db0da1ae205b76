@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "fb14db72_35467e76",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-06-19T07:46:54Z",
+      "side": 1,
+      "message": "Nit: any reason to put this in the middle rather than say the beginning or the end?\n\nMight make it easier for eg debugging to quickly spot the KH type",
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b837c96_f55a0ae4",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-06-19T07:46:54Z",
+      "side": 1,
+      "message": "This seems potentially scary, can you add a comment explaining why this is necessary? \n\nSame on L98",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36d6e0dc_1d25abf5",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-06-19T07:46:54Z",
+      "side": 1,
+      "message": "Nit: Use U2F_VERSIONED_KH_SIZE here?",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 51
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a56d9e75_49dc3f7a",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-06-19T07:46:54Z",
+      "side": 1,
+      "message": "Should this be \"version\" rather than \"versioned\" ?\n\n\"versioned\" to me sounds like a bool, but this should actually be the KH version?",
+      "range": {
+        "startLine": 204,
+        "startChar": 37,
+        "endLine": 204,
+        "endChar": 46
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2046cbbd_4ad6a66c",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-06-19T07:46:54Z",
+      "side": 1,
+      "message": "Same - please add a comment",
+      "range": {
+        "startLine": 208,
+        "startChar": 45,
+        "endLine": 208,
+        "endChar": 57
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a960e52_be30b1a2",
         "filename": "common/u2f.c",
         "patchSetId": 3
@@ -19,6 +128,23 @@
         "endLine": 276,
         "endChar": 4
       },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d6a3588_f91b9b4e",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-06-19T07:46:54Z",
+      "side": 1,
+      "message": "Nit/suggest: Could move these assignments into the respective if blocks above?",
       "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -54,6 +180,47 @@
       "side": 1,
       "message": "Yes. Like:\n\nbool presence \u003d (pop_check_presence(flags \u0026 G2F_CONSUME) \u003d\u003d POP_TOUCH_YES);\nif (!presence) {\n    if (version \u003d\u003d 0)\n        return VENDOR_RC_NOT_ALLOWED;\n\n    if (flags \u0026 U2F_AUTH_FLAG_TUP) !\u003d 0)\n        return VENDOR_RC_NOT_ALLOWED;\n\n    if (!fingerprint_gpio_asserted() \u0026\u0026 !authorization_key_correct())\n        return VENDOR_RC_NOT_ALLOWED;\n}",
       "parentUuid": "5c3ec580_bc62139a",
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a24a492_5cde3b3a",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-06-19T07:46:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "866c001a_bd594c85",
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9eedc17_19aea3bd",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-06-19T07:46:54Z",
+      "side": 1,
+      "message": "Same comment about \"version\" vs \"versioned\"",
+      "range": {
+        "startLine": 389,
+        "startChar": 11,
+        "endLine": 389,
+        "endChar": 20
+      },
       "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
