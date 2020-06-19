@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "090625c4_6b449efb",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3018,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-19T16:34:24Z",
+      "side": 1,
+      "message": "this is a good question, I also thought about this. There is no other type for TPM NVMEM containers though, I believe the hidden objects are stored as evictable.",
+      "parentUuid": "fa914855_9f321081",
+      "range": {
+        "startLine": 3017,
+        "startChar": 2,
+        "endLine": 3018,
+        "endChar": 51
+      },
+      "revId": "7d201c76cdf8a8fb65fc2850c50a10c1a4efb431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "991ed765_2c94130c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "613e7e9b_a36b4a7b",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3023,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-19T16:34:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "991ed765_2c94130c",
+      "range": {
+        "startLine": 3023,
+        "startChar": 12,
+        "endLine": 3023,
+        "endChar": 21
+      },
+      "revId": "7d201c76cdf8a8fb65fc2850c50a10c1a4efb431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46d973b8_da9052a8",
         "filename": "common/new_nvmem.c",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "7d201c76cdf8a8fb65fc2850c50a10c1a4efb431",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "750cd318_c635cf9e",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3024,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-19T16:34:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "46d973b8_da9052a8",
+      "range": {
+        "startLine": 3024,
+        "startChar": 19,
+        "endLine": 3024,
+        "endChar": 31
+      },
+      "revId": "7d201c76cdf8a8fb65fc2850c50a10c1a4efb431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
