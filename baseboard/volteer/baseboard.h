@@ -261,13 +261,14 @@ enum temp_sensor_id {
 	TEMP_SENSOR_4_FAN,
 	TEMP_SENSOR_COUNT
 };
-
+#if defined(HALVOR_USBC_PORT)
+#else
 enum usbc_port {
 	USBC_PORT_C0 = 0,
 	USBC_PORT_C1,
 	USBC_PORT_COUNT
 };
-
+#endif
 /*
  * Daughterboard type is encoded in the lower 4 bits
  * of the FW_CONFIG CBI tag.

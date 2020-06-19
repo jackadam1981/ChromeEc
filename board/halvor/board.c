@@ -4,12 +4,16 @@
  */
 
 /* Volteer board-specific configuration */
-
+#include "bb_retimer.h"
 #include "button.h"
 #include "common.h"
 #include "accelgyro.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/als_tcs3400.h"
+#include "driver/bc12/pi3usb9201.h"
+#include "driver/ppc/syv682x.h"
+#include "driver/tcpm/tcpci.h"
+#include "driver/tcpm/tusb422.h"
 #include "driver/sync.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -25,6 +29,10 @@
 #include "tablet_mode.h"
 #include "uart.h"
 #include "usb_pd_tbt.h"
+#include "usbc_ppc.h"
+#include "usb_mux.h"
+#include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -166,14 +174,250 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 void halvor_tcpc_alert_event(enum gpio_signal signal)
 {
 	/* TODO (b/153705222): Need tp implement three USB-C function */
+	int port = -1;
+
+	switch (signal) {
+	case GPIO_USB_C0_TCPC_INT_ODL:
+		port = USBC_PORT_C0;
+		break;
+	case GPIO_USB_C1_TCPC_INT_ODL:
+		port = USBC_PORT_C1;
+		break;
+	case GPIO_USB_C2_TCPC_INT_ODL:
+		port = USBC_PORT_C2;
+		break;
+	default:
+		return;
+	}
+	schedule_deferred_pd_interrupt(port);
 }
 
 void halvor_ppc_interrupt(enum gpio_signal signal)
 {
 	/* TODO (b/153705222): Need tp implement three USB-C function */
+	switch (signal) {
+	case GPIO_USB_C0_PPC_INT_ODL:
+		syv682x_interrupt(USBC_PORT_C0);
+		break;
+	case GPIO_USB_C1_PPC_INT_ODL:
+		syv682x_interrupt(USBC_PORT_C1);
+		break;
+	case GPIO_USB_C2_PPC_INT_ODL:
+		syv682x_interrupt(USBC_PORT_C2);
+		break;
+	default:
+		break;
+	}
 }
 
 void halvor_bc12_interrupt(enum gpio_signal signal)
 {
 	/* TODO (b/153705222): Need tp implement three USB-C function */
+	switch (signal) {
+	case GPIO_USB_C0_BC12_INT_ODL:
+		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
+		break;
+	case GPIO_USB_C1_BC12_INT_ODL:
+		task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
+		break;
+	case GPIO_USB_C2_BC12_INT_ODL:
+		task_set_event(TASK_ID_USB_CHG_P2, USB_CHG_EVENT_BC12, 0);
+		break;
+
+	default:
+		break;
+	}
+}
+/******************************************************************************/
+/* BC1.2 charger detect configuration */
+const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
+	[USBC_PORT_C0] = {
+		.i2c_port = I2C_PORT_USB_C0,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
+	},
+	[USBC_PORT_C1] = {
+		.i2c_port = I2C_PORT_USB_C1,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
+	},
+	[USBC_PORT_C2] = {
+		.i2c_port = I2C_PORT_USB_C2,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
+/******************************************************************************/
+/* USBC PPC configuration */
+struct ppc_config_t ppc_chips[] = {
+	[USBC_PORT_C0] = {
+		.i2c_port = I2C_PORT_USB_C0,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+	},
+	[USBC_PORT_C1] = {
+		.i2c_port = I2C_PORT_USB_C1,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+	},
+	[USBC_PORT_C2] = {
+		.i2c_port = I2C_PORT_USB_C2,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+/******************************************************************************/
+/* USBC mux configuration - Tiger Lake includes internal mux */
+struct usb_mux usbc0_usb4_db_retimer = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &bb_usb_retimer,
+	.i2c_port = I2C_PORT_USB_1_MIX,
+	.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
+};
+struct usb_mux usbc1_usb4_db_retimer = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &bb_usb_retimer,
+	.i2c_port = I2C_PORT_USB_1_MIX,
+	.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
+};
+struct usb_mux usbc2_usb4_db_retimer = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &bb_usb_retimer,
+	.i2c_port = I2C_PORT_USB_1_MIX,
+	.i2c_addr_flags = USBC_PORT_C2_BB_RETIMER_I2C_ADDR,
+};
+struct usb_mux usb_muxes[] = {
+	[USBC_PORT_C0] = {
+		.usb_port = USBC_PORT_C0,
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+		.next_mux = &usbc0_usb4_db_retimer,
+	},
+	[USBC_PORT_C1] = {
+		.usb_port = USBC_PORT_C1,
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+		.next_mux = &usbc1_usb4_db_retimer,
+	},
+	[USBC_PORT_C2] = {
+		.usb_port = USBC_PORT_C2,
+		.driver = &virtual_usb_mux_driver,
+		.hpd_update = &virtual_hpd_update,
+		.next_mux = &usbc2_usb4_db_retimer,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
+
+struct bb_usb_control bb_controls[] = {
+	[USBC_PORT_C0] = {
+		/* USB-C port 0  have a retimer */
+	},
+	[USBC_PORT_C1] = {
+		.shared_nvm = false,
+		.usb_ls_en_gpio = GPIO_USB_C1_LS_EN,
+		.retimer_rst_gpio = GPIO_USB_C1_RT_RST_ODL,
+		.force_power_gpio = GPIO_USB_C1_RT_FORCE_PWR,
+	},
+	[USBC_PORT_C2] = {
+		/* USB-C port 2 have a retimer */
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
+/******************************************************************************/
+/* USBC TCPC configuration */
+struct tcpc_config_t tcpc_config[] = {
+	[USBC_PORT_C0] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB_C0,
+			.addr_flags = TUSB422_I2C_ADDR_FLAGS,
+		},
+		.drv = &tusb422_tcpm_drv,
+		.usb23 = USBC_PORT_0_USB2_NUM | (USBC_PORT_0_USB3_NUM << 4),
+	},
+	[USBC_PORT_C1] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB_C1,
+			.addr_flags = TUSB422_I2C_ADDR_FLAGS,
+		},
+		.drv = &tusb422_tcpm_drv,
+		.usb23 = USBC_PORT_1_USB2_NUM | (USBC_PORT_1_USB3_NUM << 4),
+	},
+	[USBC_PORT_C2] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_USB_C2,
+			.addr_flags = TUSB422_I2C_ADDR_FLAGS,
+		},
+		.drv = &tusb422_tcpm_drv,
+		.usb23 = USBC_PORT_2_USB2_NUM | (USBC_PORT_2_USB3_NUM << 4),
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
+BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
+/******************************************************************************/
+static void baseboard_tcpc_init(void)
+{
+	/* Only reset TCPC if not sysjump */
+	if (!system_jumped_to_this_image())
+		board_reset_pd_mcu();
+
+	/* Enable PPC interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C2_PPC_INT_ODL);
+
+	/* Enable TCPC interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C2_TCPC_INT_ODL);
+
+	/* Enable BC1.2 interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C2_BC12_INT_ODL);
+}
+DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
+/******************************************************************************/
+int ppc_get_alert_status(int port)
+{
+	if (port == USBC_PORT_C0)
+		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
+	else if (port == USBC_PORT_C1)
+		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
+	else
+		return gpio_get_level(GPIO_USB_C2_PPC_INT_ODL) == 0;
+}
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+	/*
+	 * Check which port has the ALERT line set
+	 */
+	if (!gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL))
+		status |= PD_STATUS_TCPC_ALERT_0;
+	else if (!gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL))
+		status |= PD_STATUS_TCPC_ALERT_1;
+	else if (!gpio_get_level(GPIO_USB_C2_TCPC_INT_ODL))
+		status |= PD_STATUS_TCPC_ALERT_2;
+
+	return status;
+}
+/******************************************************************************/
+/* PPC support routines */
+void ppc_interrupt(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_USB_C0_PPC_INT_ODL:
+		syv682x_interrupt(USBC_PORT_C0);
+		break;
+	case GPIO_USB_C1_PPC_INT_ODL:
+		syv682x_interrupt(USBC_PORT_C1);
+		break;
+	case GPIO_USB_C2_PPC_INT_ODL:
+		syv682x_interrupt(USBC_PORT_C2);
+	default:
+		break;
+	}
 }
