@@ -22,6 +22,30 @@
       "revId": "d77477cde82fbb509cee5e62e179dbff8d8d4c19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "187cdd1f_f3ad3f49",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-06-19T06:29:24Z",
+      "side": 1,
+      "message": "I think calling task_wake is not neccessary since we are sure that this task is running now.",
+      "parentUuid": "0ea21aa2_78d20132",
+      "range": {
+        "startLine": 824,
+        "startChar": 2,
+        "endLine": 824,
+        "endChar": 38
+      },
+      "revId": "d77477cde82fbb509cee5e62e179dbff8d8d4c19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
