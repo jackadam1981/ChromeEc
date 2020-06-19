@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb9bb9ec_a2db4859",
+        "filename": "common/mock/tcpm_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-19T20:41:27Z",
+      "side": 1,
+      "message": "shouldn\u0027t need this. only think using mocks will be host",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "6ff7307bea32759f37968da5d7d6b9e687dffbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e72343d3_a10d0f6e",
+        "filename": "common/mock/tcpm_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-19T20:41:27Z",
+      "side": 1,
+      "message": "needs more, like todo add mock control or something like that",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "6ff7307bea32759f37968da5d7d6b9e687dffbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e92afd_cb8f597a",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-19T20:41:27Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "6ff7307bea32759f37968da5d7d6b9e687dffbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5ff68e4_b0023c4d",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-19T20:41:27Z",
+      "side": 1,
+      "message": "do we need this text?",
+      "range": {
+        "startLine": 18,
+        "startChar": 43,
+        "endLine": 18,
+        "endChar": 68
+      },
+      "revId": "6ff7307bea32759f37968da5d7d6b9e687dffbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d11aae_04df9088",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-19T20:41:27Z",
+      "side": 1,
+      "message": "let\u0027s put a do here that says to remove this once usbc_fake is cleaned up, right?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "6ff7307bea32759f37968da5d7d6b9e687dffbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfa363dd_debff30f",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-19T20:41:27Z",
+      "side": 1,
+      "message": "what conflicts are you getting here?\n\nI would think that we didn\u0027t need these guards",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 42
+      },
+      "revId": "6ff7307bea32759f37968da5d7d6b9e687dffbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dce8049_41637672",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-19T20:41:27Z",
+      "side": 1,
+      "message": "not worth defining this as static since nothing in this file uses it",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "6ff7307bea32759f37968da5d7d6b9e687dffbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6503b8d_a52ac40f",
+        "filename": "common/mock/usb_pe_sm_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-19T20:41:27Z",
+      "side": 1,
+      "message": "should we define this in the header file?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "6ff7307bea32759f37968da5d7d6b9e687dffbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6303f720_f85001da",
+        "filename": "test/test_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-19T20:41:27Z",
+      "side": 1,
+      "message": "If this is complinging, I think you could add a usb_PRL_REV2 test\n\nsee statemachien framework tests for an example of how to reuse the same source code",
+      "range": {
+        "startLine": 332,
+        "startChar": 3,
+        "endLine": 332,
+        "endChar": 59
+      },
+      "revId": "6ff7307bea32759f37968da5d7d6b9e687dffbd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
