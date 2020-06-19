@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "918eeed5_7fb3271c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-06-19T21:35:04Z",
+      "side": 1,
+      "message": "Please actually test your code and describe what your tests are.\n\nCompiling it is not enough, the LEDs might not even be turning on.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 21
+      },
+      "revId": "9f1031b86640c08d262f5291d9f77182ca5fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b85f940_5b168193",
+        "filename": "board/lazor/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-06-19T21:35:04Z",
+      "side": 1,
+      "message": "Can we remove these instead? Especially if there\u0027s plans to ever use them. No need to keep them here just because trogdor had them.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 80
+      },
+      "revId": "9f1031b86640c08d262f5291d9f77182ca5fc2b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
