@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define HALVOR_USBC_PORT
 /* Baseboard features */
 #include "baseboard.h"
 
@@ -48,10 +49,12 @@
  * USB3 numbering on AP - 0 to n (PMC's USB3 numbering for MUX
  * configuration is - 1 to n hence add +1)
  */
-#define USBC_PORT_0_USB2_NUM	9
+#define USBC_PORT_0_USB2_NUM	2
 #define USBC_PORT_0_USB3_NUM	1
 #define USBC_PORT_1_USB2_NUM	4
 #define USBC_PORT_1_USB3_NUM	2
+#define USBC_PORT_2_USB2_NUM	6
+#define USBC_PORT_2_USB3_NUM	3
 
 /* Enabling Thunderbolt-compatible mode */
 #define CONFIG_USB_PD_TBT_COMPAT_MODE
@@ -91,9 +94,13 @@
 #define GPIO_RSMRST_L_PGOOD		GPIO_PG_EC_RSMRST_ODL
 #define GPIO_CPU_PROCHOT		GPIO_EC_PROCHOT_ODL
 #define GPIO_SYS_RESET_L		GPIO_SYS_RST_ODL
+#define GPIO_USB_C0_BC12_INT_ODL	GPIO_USB_C0_MIX_INT_ODL
+#define GPIO_USB_C1_BC12_INT_ODL	GPIO_USB_C1_MIX_INT_ODL
+#define GPIO_USB_C2_BC12_INT_ODL	GPIO_USB_C2_MIX_INT_ODL
 #define GPIO_WP_L			GPIO_EC_WP_L
 #define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE_L
-
+#undef  CONFIG_USB_PD_PORT_MAX_COUNT
+#define CONFIG_USB_PD_PORT_MAX_COUNT			3
 #undef CONFIG_FANS
 #undef CONFIG_VOLUME_BUTTONS
 
@@ -141,6 +148,19 @@ enum sensor_id {
 	RGB_ALS,
 	SENSOR_COUNT,
 };
+
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_C1,
+	USBC_PORT_C2,
+	USBC_PORT_COUNT
+};
+
+/* Retimer */
+#undef  USBC_PORT_C1_BB_RETIMER_I2C_ADDR
+#define USBC_PORT_C0_BB_RETIMER_I2C_ADDR	0x40
+#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x41
+#define USBC_PORT_C2_BB_RETIMER_I2C_ADDR	0x42
 
 /* TODO: b/143375057 - Remove this code after power on. */
 void c10_gate_change(enum gpio_signal signal);
