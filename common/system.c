@@ -905,6 +905,11 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_DISABLE_JUMP:
 		system_disable_jump();
 		return EC_SUCCESS;
+	case EC_REBOOT_CLEAR_AP_IDLE:
+		CPRINTS("Clear AP_IDLE");
+		chip_save_reset_flags(chip_read_reset_flags() &
+					      ~EC_RESET_FLAG_AP_IDLE);
+		return EC_SUCCESS;
 	case EC_REBOOT_HIBERNATE_CLEAR_AP_OFF:
 		if (!IS_ENABLED(CONFIG_HIBERNATE))
 			return EC_ERROR_INVAL;

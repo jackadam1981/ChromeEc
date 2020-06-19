@@ -43,3 +43,12 @@ const char *system_get_chip_revision(void)
 {
 	return "";
 }
+
+void chip_save_reset_flags(uint32_t flags)
+{
+}
+
+uint32_t chip_read_reset_flags(void)
+{
+	return 0;
+}
