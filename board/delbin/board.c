@@ -10,6 +10,9 @@
 #include "accelgyro.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi260.h"
+#include "driver/ppc/syv682x.h"
+#include "driver/tcpm/ps8xxx.h"
+#include "driver/tcpm/tcpci.h"
 #include "driver/retimer/bb_retimer.h"
 #include "extpower.h"
 #include "fan.h"
@@ -27,7 +30,7 @@
 #include "tablet_mode.h"
 #include "throttle_ap.h"
 #include "uart.h"
-#include "usb_pd_tbt.h"
+#include "usbc_ppc.h"
 #include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -48,48 +51,6 @@ static void board_init(void)
 	pwm_set_duty(PWM_CH_LED4_SIDESEL, 50);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
-__override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
-{
-	enum usb_db_id usb_db_type = get_usb_db_type();
-
-	if (port == USBC_PORT_C1) {
-		if (usb_db_type == USB_DB_USB4_GEN2) {
-			/*
-			 * Older boards violate 205mm trace length prior
-			 * to connection to the re-timer and only support up
-			 * to GEN2 speeds.
-			 */
-			return TBT_SS_U32_GEN1_GEN2;
-		} else if (usb_db_type == USB_DB_USB4_GEN3) {
-			return TBT_SS_TBT_GEN3;
-		}
-	}
-
-	/*
-	 * Thunderbolt-compatible mode not supported
-	 *
-	 * TODO (b/147726366): All the USB-C ports need to support same speed.
-	 * Need to fix once USB-C feature set is known for Volteer.
-	 */
-	return TBT_SS_RES_0;
-}
-
-__override bool board_is_tbt_usb4_port(int port)
-{
-	enum usb_db_id usb_db_type = get_usb_db_type();
-
-	/*
-	 * Volteer reference design only supports TBT & USB4 on port 1
-	 * if the USB4 DB is present.
-	 *
-	 * TODO (b/147732807): All the USB-C ports need to support same
-	 * features. Need to fix once USB-C feature set is known for Volteer.
-	 */
-	return ((port == USBC_PORT_C1)
-		&& ((usb_db_type == USB_DB_USB4_GEN2)
-			|| (usb_db_type == USB_DB_USB4_GEN3)));
-}
 
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
@@ -232,4 +193,49 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_PP5000_USBA,
 };
 
+static const struct tcpc_config_t tcpc_config_p0_usb3 = {
+	.bus_type = EC_BUS_TYPE_I2C,
+	.i2c_info = {
+		.port = I2C_PORT_USB_C0,
+		.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+	},
+	.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	.drv = &ps8xxx_tcpm_drv,
+	.usb23 = USBC_PORT_0_USB2_NUM | (USBC_PORT_0_USB3_NUM << 4),
+};
 
+static const struct usb_mux usbc0_usb3_mb_retimer = {
+	.usb_port = USBC_PORT_C0,
+	.driver = &tcpci_tcpm_usb_mux_driver,
+	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+	.next_mux = NULL,
+};
+
+static const struct usb_mux mux_config_p0_usb3 = {
+	.usb_port = USBC_PORT_C0,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+	.next_mux = &usbc0_usb3_mb_retimer,
+};
+
+static const struct ppc_config_t ppc_p0_chip = {
+	.i2c_port = I2C_PORT_USB_C0,
+	.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+	.drv = &syv682x_drv,
+};
+
+static const struct bb_usb_control bb_p0_control = {
+	.shared_nvm = false,
+	.usb_ls_en_gpio = GPIO_USB_C0_LS_EN,
+	.retimer_rst_gpio = GPIO_USB_C0_RT_RST_ODL,
+	.force_power_gpio = GPIO_USB_C0_RT_FORCE_PWR,
+};
+
+static void config_mb_usb3(void)
+{
+	tcpc_config[USBC_PORT_C0] = tcpc_config_p0_usb3;
+	usb_muxes[USBC_PORT_C0] = mux_config_p0_usb3;
+	ppc_chips[USBC_PORT_C0] = ppc_p0_chip;
+	bb_controls[USBC_PORT_C0] = bb_p0_control;
+}
+DECLARE_HOOK(HOOK_INIT, config_mb_usb3, HOOK_PRIO_FIRST);

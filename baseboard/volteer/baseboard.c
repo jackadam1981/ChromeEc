@@ -324,6 +324,7 @@ struct usb_mux usbc1_usb4_db_retimer = {
 	.i2c_port = I2C_PORT_USB_1_MIX,
 	.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
 };
+
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
@@ -378,7 +379,11 @@ void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_USB_C0_PPC_INT_ODL:
+#if defined(BOARD_DELBIN)
+		syv682x_interrupt(USBC_PORT_C0);
+#else
 		sn5s330_interrupt(USBC_PORT_C0);
+#endif
 		break;
 	case GPIO_USB_C1_PPC_INT_ODL:
 		syv682x_interrupt(USBC_PORT_C1);
@@ -391,9 +396,23 @@ void ppc_interrupt(enum gpio_signal signal)
 /* TCPC support routines */
 enum gpio_signal ps8xxx_rst_odl = GPIO_USB_C1_RT_RST_ODL;
 
-static void ps8815_reset(void)
+static void ps8815_reset(int port)
 {
 	int val;
+	int i2c_port;
+	enum gpio_signal ps8xxx_rst_odl;
+
+#if defined(BOARD_DELBIN)
+	if (port == USBC_PORT_C0) {
+		ps8xxx_rst_odl = GPIO_USB_C0_RT_RST_ODL;
+		i2c_port = I2C_PORT_USB_C0;
+	}
+#endif
+
+	if (port == USBC_PORT_C1) {
+		ps8xxx_rst_odl = GPIO_USB_C1_RT_RST_ODL;
+		i2c_port = I2C_PORT_USB_C1;
+	}
 
 	gpio_set_level(ps8xxx_rst_odl, 0);
 	msleep(GENERIC_MAX(PS8XXX_RESET_DELAY_MS,
@@ -408,25 +427,30 @@ static void ps8815_reset(void)
 
 	CPRINTS("%s: patching ps8815 registers", __func__);
 
-	if (i2c_read8(I2C_PORT_USB_C1,
+	if (i2c_read8(i2c_port,
 		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f was %02x", val);
 
-	if (i2c_write8(I2C_PORT_USB_C1,
+	if (i2c_write8(i2c_port,
 		       PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, 0x31) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f set to 0x31");
 
-	if (i2c_read8(I2C_PORT_USB_C1,
+	if (i2c_read8(i2c_port,
 		      PS8751_I2C_ADDR1_P2_FLAGS, 0x0f, &val) == EC_SUCCESS)
 		CPRINTS("ps8815: reg 0x0f now %02x", val);
 }
 
 void board_reset_pd_mcu(void)
 {
+#if defined(BOARD_DELBIN)
+	ps8815_reset(USBC_PORT_C0);
+	usb_mux_hpd_update(USBC_PORT_C0, 0, 0);
+#endif
+
 	/* No reset available for TCPC on port 0 */
 	/* Daughterboard specific reset for port 1 */
 	if (usb_db_type == USB_DB_USB3) {
-		ps8815_reset();
+		ps8815_reset(USBC_PORT_C1);
 		usb_mux_hpd_update(USBC_PORT_C1, 0, 0);
 	}
 }
