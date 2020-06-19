@@ -474,6 +474,11 @@
  */
 /* The board provides a custom battery_is_present() implementation. */
 #undef CONFIG_BATTERY_PRESENT_CUSTOM
+/*
+ * Provide a custom multiplier for different designs of
+ * battery and charger current sense.
+ */
+#define CONFIG_CHARGE_CHANGE_TIMES 0
 /* Battery is present if the GPIO named by this define reads logic-low. */
 #undef CONFIG_BATTERY_PRESENT_GPIO
 

@@ -7,9 +7,11 @@
 
 #include "button.h"
 #include "common.h"
+#include "charger.h"
 #include "accelgyro.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/als_tcs3400.h"
+#include "driver/charger/isl9241.h"
 #include "driver/sync.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -28,7 +30,7 @@
 #include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
-
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 static void board_init(void)
 {
 	/* Illuminate motherboard and daughter board LEDs equally to start. */
