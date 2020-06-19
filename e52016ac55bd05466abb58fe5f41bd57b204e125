@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb060be8_15df7025",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-19T22:48:56Z",
+      "side": 1,
+      "message": "I believe we switched to auto-defining these.  We\u0027re trying to keep the documentation up to date here: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/docs/usb-tcpmv2.md",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 27
+      },
+      "revId": "e52016ac55bd05466abb58fe5f41bd57b204e125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
