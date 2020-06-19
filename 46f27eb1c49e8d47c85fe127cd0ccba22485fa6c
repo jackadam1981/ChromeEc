@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccdfc5dc_a6ed3bcc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 5427,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-06-19T19:58:57Z",
+      "side": 1,
+      "message": "tcpm_transmit_type could be bigger than DISCOVERY_TYPE_COUNT,please add boundary check.",
+      "range": {
+        "startLine": 5427,
+        "startChar": 9,
+        "endLine": 5427,
+        "endChar": 30
+      },
+      "revId": "46f27eb1c49e8d47c85fe127cd0ccba22485fa6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
