@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "438857cc_5c7c79ee",
+        "filename": "board/servo_v4p1/ro_files.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-19T22:39:42Z",
+      "side": 1,
+      "message": "Move them to ccd_measure_sbu.c. Usually they are defined per file. The prints within a file mostly use the same channel.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "077853249335419697461a84c946fa8b1ff4c38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

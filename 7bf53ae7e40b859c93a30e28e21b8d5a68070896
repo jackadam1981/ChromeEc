@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "46b5d9e6_bef7ff1f",
+        "filename": "board/servo_v4p1/ccd_measure_sbu.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-19T22:39:42Z",
+      "side": 1,
+      "message": "That\u0027s ok to keep it consistent.",
+      "parentUuid": "c7a4763a_6f97c407",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 1
+      },
+      "revId": "7bf53ae7e40b859c93a30e28e21b8d5a68070896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42a7d717_0c6e5a83",
         "filename": "board/servo_v4p1/ccd_measure_sbu.h",
         "patchSetId": 13
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "Could you inform how to do this? The build.mk link sends me to a Russian website.",
       "parentUuid": "3bc1a7e4_9c5815ae",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "7bf53ae7e40b859c93a30e28e21b8d5a68070896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a606090_4c87c452",
+        "filename": "board/servo_v4p1/ro_files.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-19T22:39:42Z",
+      "side": 1,
+      "message": "In the board/servo_v4p1/build.mk, you can link the files differently between RO and RW, like\n\n   board-ro+\u003dccd_measure_sbu.o\n\nThat way, you don\u0027t need to combine all the RO code in this ro_files.c with the #ifdef SECTION_IS_RO.",
+      "parentUuid": "09263418_e047fb5c",
       "range": {
         "startLine": 7,
         "startChar": 0,
