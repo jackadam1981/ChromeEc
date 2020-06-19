@@ -384,6 +384,7 @@ enum ec_error_list charger_set_current(int chgnum, int current)
 		return EC_ERROR_INVAL;
 	}
 
+	current = current >> CONFIG_CHARGE_CHANGE_TIMES;
 	if (chg_chips[chgnum].drv->set_current)
 		rv = chg_chips[chgnum].drv->set_current(chgnum, current);
 
