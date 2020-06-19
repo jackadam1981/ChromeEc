@@ -22,6 +22,30 @@
       "revId": "493c0e83d1394a1755b05ad6796ee95fb9cb47fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9af9048_03c87d2c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-19T19:19:07Z",
+      "side": 1,
+      "message": "Since it is static, the compiler should optimize it out if it is not being used. If I guard this with an #ifdef then the IS_ENABLED lines that use it will fail when it is not enabled.",
+      "parentUuid": "821e2627_73920641",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "493c0e83d1394a1755b05ad6796ee95fb9cb47fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
