@@ -1,0 +1,77 @@
+/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * NXP PCA9675PW I/O Port expander driver source
+ */
+
+/* TODO (b/169814014): Implement code to fit "struct ioexpander_drv" */
+
+#include "pca9675.h"
+
+/* cache the I/O expander GPIO pins */
+static uint16_t cache_pin_val;
+
+/* i/p pin mask used to determine i/p pins used */
+const uint16_t ip_pin_mask =  PCA9675_IO_P02;
+
+static int pca9675_read(const int port, const uint16_t i2c_addr_flags,
+			       uint16_t *data)
+{
+	return i2c_xfer(port, i2c_addr_flags, NULL, 0, (uint8_t *)data, 2);
+}
+
+static int pca9675_write(const int port, const uint16_t i2c_addr_flags,
+				uint16_t data)
+{
+	return i2c_xfer(port, i2c_addr_flags, (uint8_t *)&data, 2, NULL, 0);
+}
+
+int pca9675_get_pin(const int port, const uint16_t i2c_addr_flags,
+			uint16_t pin, bool *level)
+{
+	int rv;
+	uint16_t data_read;
+
+	rv = pca9675_read(port, i2c_addr_flags, &data_read);
+	if (!rv)
+		*level = !!(data_read & pin);
+
+	return rv;
+}
+
+int pca9675_update_pins(const int port, const uint16_t i2c_addr_flags,
+			uint16_t setpins, uint16_t clearpins)
+{
+	int rv;
+	uint16_t val;
+
+	/* Check if it's an input pin which needs to be updated.If so, it
+	 * must be read form the device. if it's an output pin, the desired
+	 * state of that pin should always be determined by the driver and
+	 * not whatever value read from the device.In theory, if there's
+	 * ever an i2c read error, the state of the output pin would be
+	 * corrupted.
+	 */
+	if ((ip_pin_mask & setpins) || (ip_pin_mask & clearpins)) {
+		rv = pca9675_read(port, i2c_addr_flags, &val);
+		if (rv != EC_SUCCESS)
+			return rv;
+
+		/* Master cache copy needs to be updated only if there is
+		 * no i2c error */
+		cache_pin_val = val;
+	}
+
+	cache_pin_val |= setpins;
+	cache_pin_val &= ~clearpins;
+
+	return pca9675_write(port, i2c_addr_flags, cache_pin_val);
+}
+
+int pca9675_init(int port, const uint16_t i2c_addr_flags)
+{
+	pca9675_read(port, i2c_addr_flags, &cache_pin_val);
+
+	return pca9675_write(port, i2c_addr_flags, PCA9675_RESET_SEQ_DATA);
+}
