@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "be08c7d7_957d8bac",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3119,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-19T23:41:57Z",
+      "side": 1,
+      "message": "code is removed. so no longer an issue",
+      "parentUuid": "ef5e0c21_b5533557",
+      "range": {
+        "startLine": 3119,
+        "startChar": 7,
+        "endLine": 3119,
+        "endChar": 42
+      },
+      "revId": "9d7844d2428e80518b822dcc6e135c3694941c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea4884b8_22e0c9ba",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -196,6 +220,24 @@
       "side": 1,
       "message": "Honestly, I am not sure I even need to call this here or in drp_auto_toggle.  We should have left ADD disabled as soon as we \"really\" left the attached state.  Where PR Swap is the exception but I don\u0027t think we can stop a swap once we are moving across to the other role.",
       "parentUuid": "ea4884b8_22e0c9ba",
+      "revId": "9d7844d2428e80518b822dcc6e135c3694941c8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "850fb90e_bfa5a728",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3122,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-19T23:41:57Z",
+      "side": 1,
+      "message": "I moved them and then later just completely removed them... still works for me so leaving them out.",
+      "parentUuid": "85e82ea1_815ea3d1",
       "revId": "9d7844d2428e80518b822dcc6e135c3694941c8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
