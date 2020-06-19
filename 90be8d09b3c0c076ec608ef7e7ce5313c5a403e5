@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63a5760a_89e9a0cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-19T17:31:40Z",
+      "side": 1,
+      "message": "Did you also test out suspend?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "90be8d09b3c0c076ec608ef7e7ce5313c5a403e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db7445d4_f7288ca4",
+        "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-19T17:31:40Z",
+      "side": 1,
+      "message": "nit: I\u0027m half contemplating about whether this is worth charting out expectations in code comments? \nS0 - ADC ints off\nS0ix/S3 - ADC ints enabled booting up but disable heading back down?\nS5/G3 - ADC ints off, force pp3300_a_pgood off",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 8
+      },
+      "revId": "90be8d09b3c0c076ec608ef7e7ce5313c5a403e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
