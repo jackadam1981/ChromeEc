@@ -28,7 +28,6 @@
 #include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
-
 static void board_init(void)
 {
 	/* Illuminate motherboard and daughter board LEDs equally to start. */
