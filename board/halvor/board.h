@@ -142,6 +142,14 @@ enum sensor_id {
 	SENSOR_COUNT,
 };
 
+/*Power Parameters*/
+#undef PD_POWER_SUPPLY_TURN_OFF_DELAY
+#undef PD_MAX_POWER_MW
+#undef PD_MAX_CURRENT_MA
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY	250000 /* us */
+#define PD_MAX_POWER_MW		65000 /* mw */
+#define PD_MAX_CURRENT_MA	3250  /* ma */
+
 /* TODO: b/143375057 - Remove this code after power on. */
 void c10_gate_change(enum gpio_signal signal);
 
