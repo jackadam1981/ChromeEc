@@ -5132,7 +5132,9 @@ enum ec_reboot_cmd {
 	EC_REBOOT_COLD = 4,          /* Cold-reboot */
 	EC_REBOOT_DISABLE_JUMP = 5,  /* Disable jump until next reboot */
 	EC_REBOOT_HIBERNATE = 6,     /* Hibernate EC */
-	EC_REBOOT_HIBERNATE_CLEAR_AP_OFF = 7, /* and clears AP_IDLE flag */
+	/* and clear AP_IDLE flag (Deprecated) */
+	EC_REBOOT_HIBERNATE_CLEAR_AP_OFF = 7,
+	EC_REBOOT_CLEAR_AP_IDLE = 8, /* Clear AP_IDLE flag */
 };
 
 /* Flags for ec_params_reboot_ec.reboot_flags */

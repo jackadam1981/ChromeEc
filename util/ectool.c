@@ -252,7 +252,7 @@ const char help_str[] =
 	"      generate <num_bytes> of random numbers\n"
 	"  readtest <patternoffset> <size>\n"
 	"      Reads a pattern from the EC via LPC\n"
-	"  reboot_ec <RO|RW|cold|hibernate|hibernate-clear-ap-off|disable-jump>"
+	"  reboot_ec <RO|RW|cold|hibernate|clear-ap-idle|disable-jump>"
 			" [at-shutdown|switch-slot]\n"
 	"      Reboot EC to RO or RW\n"
 	"  reboot_ap_on_g3\n"
@@ -1079,8 +1079,8 @@ int cmd_reboot_ec(int argc, char *argv[])
 		p.cmd = EC_REBOOT_DISABLE_JUMP;
 	else if (!strcmp(argv[1], "hibernate"))
 		p.cmd = EC_REBOOT_HIBERNATE;
-	else if (!strcmp(argv[1], "hibernate-clear-ap-off"))
-		p.cmd = EC_REBOOT_HIBERNATE_CLEAR_AP_OFF;
+	else if (!strcmp(argv[1], "clear-ap-idle"))
+		p.cmd = EC_REBOOT_CLEAR_AP_IDLE;
 	else {
 		fprintf(stderr, "Unknown command: %s\n", argv[1]);
 		return -1;

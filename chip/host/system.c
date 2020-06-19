@@ -280,3 +280,12 @@ void system_pre_init(void)
 	*(uintptr_t *)(__host_flash + CONFIG_RW_MEM_OFF + 4) =
 		(uintptr_t)__rw_jump_resetvec;
 }
+
+void chip_save_reset_flags(uint32_t flags)
+{
+}
+
+uint32_t chip_read_reset_flags(void)
+{
+	return 0;
+}
