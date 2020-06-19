@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa914855_9f321081",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3018,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-19T05:28:01Z",
+      "side": 1,
+      "message": "what\u0027s the container type for hidden objects we want to erase?",
+      "range": {
+        "startLine": 3017,
+        "startChar": 2,
+        "endLine": 3018,
+        "endChar": 51
+      },
+      "revId": "7d201c76cdf8a8fb65fc2850c50a10c1a4efb431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "991ed765_2c94130c",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3023,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-19T05:28:01Z",
+      "side": 1,
+      "message": "nit: obj_inex -\u003e current_obj to better convey the meaning and since obj[s]_to_erase don\u0027t includ index in their names.",
+      "range": {
+        "startLine": 3023,
+        "startChar": 12,
+        "endLine": 3023,
+        "endChar": 21
+      },
+      "revId": "7d201c76cdf8a8fb65fc2850c50a10c1a4efb431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46d973b8_da9052a8",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3024,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-19T05:28:01Z",
+      "side": 1,
+      "message": "nit: obj_to_erase and objs_to_erase are hard to distinguish when reading the code.\ncan we use some other name instead of \"obj_to_erase\"? (\"obj\" will do)",
+      "range": {
+        "startLine": 3024,
+        "startChar": 19,
+        "endLine": 3024,
+        "endChar": 31
+      },
+      "revId": "7d201c76cdf8a8fb65fc2850c50a10c1a4efb431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
