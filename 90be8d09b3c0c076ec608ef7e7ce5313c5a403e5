@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da3a046a_05b7b3ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-19T23:23:27Z",
+      "side": 1,
+      "message": "Yes, I did also test suspend. Forgot to add it here.",
+      "parentUuid": "63a5760a_89e9a0cf",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "90be8d09b3c0c076ec608ef7e7ce5313c5a403e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db7445d4_f7288ca4",
         "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "90be8d09b3c0c076ec608ef7e7ce5313c5a403e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87100371_7d8d86ca",
+        "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-19T23:23:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db7445d4_f7288ca4",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 8
+      },
+      "revId": "90be8d09b3c0c076ec608ef7e7ce5313c5a403e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
