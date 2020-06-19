@@ -22,6 +22,30 @@
       "revId": "f458ef20d2691bc5bdb21eae15e1da2f5be26d19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62c43df_8eecf194",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-06-19T08:20:22Z",
+      "side": 1,
+      "message": "Yup, there is only one place where returned value is checked. It\u0027s pd_task() in TCPMv1 stack. Value returned here is input to task_wait_event(). I have increased timeout to one minute, but now I wonder if I should return -1 here.",
+      "parentUuid": "8197c9a6_1c7b1050",
+      "range": {
+        "startLine": 840,
+        "startChar": 2,
+        "endLine": 840,
+        "endChar": 17
+      },
+      "revId": "f458ef20d2691bc5bdb21eae15e1da2f5be26d19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
