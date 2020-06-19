@@ -157,7 +157,10 @@
 #define CONFIG_USB_PD_DISCHARGE_PPC
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT		TYPEC_RP_3A0
+#if defined(HALVOR_USBC_PORT)
+#else
 #define CONFIG_USB_PD_PORT_MAX_COUNT			2
+#endif
 #define CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_TCPC_LOW_POWER
@@ -261,13 +264,14 @@ enum temp_sensor_id {
 	TEMP_SENSOR_4_FAN,
 	TEMP_SENSOR_COUNT
 };
-
+#if defined(HALVOR_USBC_PORT)
+#else
 enum usbc_port {
 	USBC_PORT_C0 = 0,
 	USBC_PORT_C1,
 	USBC_PORT_COUNT
 };
-
+#endif
 /*
  * Daughterboard type is encoded in the lower 4 bits
  * of the FW_CONFIG CBI tag.

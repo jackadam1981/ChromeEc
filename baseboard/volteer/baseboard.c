@@ -74,6 +74,7 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /******************************************************************************/
 /* BC1.2 charger detect configuration */
+#ifndef HALVOR_USBC_PORT
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	[USBC_PORT_C0] = {
 		.i2c_port = I2C_PORT_USB_C0,
@@ -85,7 +86,7 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
-
+#endif
 /******************************************************************************/
 /* Wake up pins */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -243,6 +244,7 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 /******************************************************************************/
 /* USBC TCPC configuration */
+#ifndef HALVOR_USBC_PORT
 struct tcpc_config_t tcpc_config[] = {
 	[USBC_PORT_C0] = {
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -265,7 +267,7 @@ struct tcpc_config_t tcpc_config[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
 BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
-
+#endif
 /* USBC TCPC configuration for port 1 on USB3 board */
 static const struct tcpc_config_t tcpc_config_p1_usb3 = {
 	.bus_type = EC_BUS_TYPE_I2C,
@@ -301,6 +303,7 @@ static enum usb_db_id usb_db_type = USB_DB_NONE;
 
 /******************************************************************************/
 /* USBC PPC configuration */
+#ifndef HALVOR_USBC_PORT
 struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C0] = {
 		.i2c_port = I2C_PORT_USB_C0,
@@ -386,7 +389,7 @@ void ppc_interrupt(enum gpio_signal signal)
 		break;
 	}
 }
-
+#endif
 /******************************************************************************/
 /* TCPC support routines */
 enum gpio_signal ps8xxx_rst_odl = GPIO_USB_C1_RT_RST_ODL;
@@ -430,7 +433,7 @@ void board_reset_pd_mcu(void)
 		usb_mux_hpd_update(USBC_PORT_C1, 0, 0);
 	}
 }
-
+#ifndef HALVOR_USBC_PORT
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
@@ -453,7 +456,7 @@ int ppc_get_alert_status(int port)
 	else
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
-
+#endif
 void tcpc_alert_event(enum gpio_signal signal)
 {
 	/* TODO: b/140572591 - check correct operation for Volteer */
