@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21700ec9_6ae8534b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2020-06-19T16:51:17Z",
+      "side": 1,
+      "message": "nit, zero capacity?",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "6d7c557c97e4f03faa92cd40b7f046c7db56453a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f684c62_0b1a83ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2020-06-19T16:51:17Z",
+      "side": 1,
+      "message": "nit, remove \u0027stay\u0027",
+      "range": {
+        "startLine": 24,
+        "startChar": 59,
+        "endLine": 24,
+        "endChar": 63
+      },
+      "revId": "6d7c557c97e4f03faa92cd40b7f046c7db56453a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0829278_0c0981ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2020-06-19T16:51:17Z",
+      "side": 1,
+      "message": "nit, \u0027cutoff\u0027 for consistency above \u0026 below.",
+      "range": {
+        "startLine": 25,
+        "startChar": 15,
+        "endLine": 25,
+        "endChar": 21
+      },
+      "revId": "6d7c557c97e4f03faa92cd40b7f046c7db56453a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d34b235_eccf6280",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2020-06-19T16:51:17Z",
+      "side": 1,
+      "message": "nit, \u0027system\u0027 should be \u0027control\u0027 if thats what the \u0027c\u0027 is in \u0027smartdc\u0027?",
+      "range": {
+        "startLine": 285,
+        "startChar": 34,
+        "endLine": 285,
+        "endChar": 40
+      },
+      "revId": "6d7c557c97e4f03faa92cd40b7f046c7db56453a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6064fdc_66c2732e",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 2647,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2020-06-19T16:51:17Z",
+      "side": 1,
+      "message": "nit, could you move this above Cutoff threshold to have it in similar order to discharge rates?",
+      "range": {
+        "startLine": 2647,
+        "startChar": 1,
+        "endLine": 2647,
+        "endChar": 56
+      },
+      "revId": "6d7c557c97e4f03faa92cd40b7f046c7db56453a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
