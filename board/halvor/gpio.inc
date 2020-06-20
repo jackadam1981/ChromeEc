@@ -48,7 +48,7 @@ GPIO_INT(USB_C2_MIX_INT_ODL,	PIN(6, 1), GPIO_INT_BOTH, halvor_bc12_interrupt)
 /* Power Sequencing Signals */
 GPIO(EN_PP3300_A,              PIN(A, 3), GPIO_OUT_LOW)
 GPIO(EN_PPVAR_VCCIN,	       PIN(4, 3), GPIO_OUT_LOW)
-
+GPIO(EN_DRAM_VDD1,		       PIN(3, 5), GPIO_INPUT | GPIO_PULL_UP)
 /* The EC does not buffer this signal on Halvor. */
 UNIMPLEMENTED(PCH_DSW_PWROK)
 UNIMPLEMENTED(EN_PP5000_A)
@@ -80,7 +80,7 @@ GPIO(EC_PCH_INT_ODL,           PIN(B, 0), GPIO_ODR_HIGH)
 /* USB and USBC Signals */
 GPIO(USB_C0_RT_RST_ODL,        PIN(6, 6), GPIO_ODR_LOW)
 GPIO(USB_C1_RT_RST_ODL,        PIN(8, 6), GPIO_ODR_LOW)
-GPIO(USB_C2_RT_RST_ODL,        PIN(3, 5), GPIO_ODR_LOW)
+GPIO(USB_C2_RT_RST_ODL,        PIN(9, 6), GPIO_ODR_LOW)
 
 GPIO(USB_C0_OC_ODL,            PIN(B, 1), GPIO_ODR_HIGH)
 GPIO(USB_C1_OC_ODL,            PIN(5, 0), GPIO_ODR_HIGH)
