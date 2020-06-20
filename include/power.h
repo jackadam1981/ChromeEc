@@ -75,8 +75,6 @@ extern struct power_signal_info power_signal_list[];
 extern const struct power_signal_info power_signal_list[];
 #endif
 
-extern const struct power_signal_info power_signal_list[];
-
 /* Convert enum power_signal to a mask for signal functions */
 #define POWER_SIGNAL_MASK(signal) (1 << (signal))
 

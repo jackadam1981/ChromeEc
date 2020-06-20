@@ -8,6 +8,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "ec_commands.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -28,6 +29,26 @@
 #define IN_S5_PGOOD POWER_SIGNAL_MASK(X86_S5_PGOOD)
 
 static int forcing_shutdown; /* Forced shutdown in progress? */
+
+/* Runtime GPIO defaults */
+enum gpio_signal gpio_s0_pgood = GPIO_S0_PGOOD;
+
+#ifdef VARIANT_ZORK_TREMBYLE
+#ifndef ZORK_S0_PWROK_BOARD_VER
+	#define ZORK_S0_PWROK_BOARD_VER	5
+#endif
+
+void board_version_check(void)
+{
+	uint32_t board_ver = 0;
+
+	cbi_get_board_version(&board_ver);
+
+	if (board_ver > ZORK_S0_PWROK_BOARD_VER)
+		gpio_s0_pgood = GPIO_S0_PGOOD_V1;
+}
+DECLARE_HOOK(HOOK_INIT, board_version_check, HOOK_PRIO_INIT_I2C);
+#endif
 
 void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 {
@@ -112,7 +133,7 @@ enum power_state power_chipset_init(void)
 	 * 4. RO jumps to RW from main() by EFS2. (a.k.a. power on reset, cold
 	 *    reset). AP is in G3.
 	 */
-	if (gpio_get_level(GPIO_S0_PGOOD)) {
+	if (gpio_get_level(gpio_s0_pgood)) {
 		/* case #1. Disable idle task deep sleep when in S0. */
 		disable_sleep(SLEEP_MASK_AP_RUN);
 		CPRINTS("already in S0");
@@ -142,7 +163,7 @@ static void handle_pass_through(enum gpio_signal pin_in,
 	 * Only pass through high S0_PGOOD (S0 power) when S5_PGOOD (S5 power)
 	 * is also high (S0_PGOOD is pulled high in G3 when S5_PGOOD is low).
 	 */
-	if ((pin_in == GPIO_S0_PGOOD) && !gpio_get_level(GPIO_S5_PGOOD))
+	if ((pin_in == gpio_s0_pgood) && !gpio_get_level(GPIO_S5_PGOOD))
 		in_level = 0;
 
 	/* Nothing to do. */
@@ -153,7 +174,7 @@ static void handle_pass_through(enum gpio_signal pin_in,
 	 * SOC requires a delay of 1ms with stable power before
 	 * asserting PWR_GOOD.
 	 */
-	if ((pin_in == GPIO_S0_PGOOD) && in_level)
+	if ((pin_in == gpio_s0_pgood) && in_level)
 		msleep(1);
 
 	gpio_set_level(pin_out, in_level);
@@ -165,7 +186,7 @@ enum power_state power_handle_state(enum power_state state)
 {
 	handle_pass_through(GPIO_S5_PGOOD, GPIO_PCH_RSMRST_L);
 
-	handle_pass_through(GPIO_S0_PGOOD, GPIO_PCH_SYS_PWROK);
+	handle_pass_through(gpio_s0_pgood, GPIO_PCH_SYS_PWROK);
 
 	if (state == POWER_S5 && forcing_shutdown) {
 		power_button_pch_release();
