@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a512b34_add82a3e",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-20T20:58:00Z",
+      "side": 1,
+      "message": "Should be \u003d\u003d\n\nThere\u0027s enough places where you need to check for PD_REV30, I suggest a helper function/macro.  pd_is_rev3_vdo() or is_rev3_vdo().",
+      "range": {
+        "startLine": 694,
+        "startChar": 48,
+        "endLine": 694,
+        "endChar": 50
+      },
+      "revId": "7ddc0d8878696140ef26022cf98d24d73b2f92d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ecd1458_26f62bfd",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-20T20:58:00Z",
+      "side": 1,
+      "message": "Previously the cable VDO was stored separately in cable[].  Now the discovery[] array is used for both SOP and SOP\u0027 messages.  I think you need to add an array dimension here, matching the TCPMv2 implementation.\n\nstatic struct pd_discovery discovery[CONFIG_USB_PD_PORT_MAX_COUNT][DISCOVERY_TYPE_COUNT];\n\nOtherwise, I think there is the possibility of corrupting the cable VDOs before the AP requests the cable information through the EC_CMD_USB_PD_CONTROL command.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 67
+      },
+      "revId": "7ddc0d8878696140ef26022cf98d24d73b2f92d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7996073_63abec2f",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-20T20:58:00Z",
+      "side": 1,
+      "message": "Change to return \u0026discovery[port][type] and the comment can be deleted.",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 0
+      },
+      "revId": "7ddc0d8878696140ef26022cf98d24d73b2f92d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5deb4df7_bd13b44c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-20T20:58:00Z",
+      "side": 1,
+      "message": "This function is no longer used.  It can also be deleted from usb_pe_drp_sm.c",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 0
+      },
+      "revId": "7ddc0d8878696140ef26022cf98d24d73b2f92d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
