@@ -9,6 +9,7 @@
 #include "adc_chip.h"
 #include "button.h"
 #include "cbi_ec_fw_config.h"
+#include "cros_board_info.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
@@ -504,3 +505,19 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+static void board_remap_gpio(void)
+{
+	uint32_t board_ver = 0;
+
+	cbi_get_board_version(&board_ver);
+
+	if (board_ver > ZORK_S0_PWROK_BOARD_VER) {
+		power_signal_list[X86_S0_PGOOD].gpio = GPIO_S0_PWROK_OD_V1;
+		ccprintf("GPIO_S0_PWROK_OD_V1\n");
+	} else {
+		power_signal_list[X86_S0_PGOOD].gpio = GPIO_S0_PWROK_OD_V0;
+		ccprintf("GPIO_S0_PWROK_OD_V0\n");
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_remap_gpio, HOOK_PRIO_INIT_I2C);

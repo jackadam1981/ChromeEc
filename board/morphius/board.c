@@ -272,6 +272,8 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
  * Use FW_CONFIG to set correct configuration.
  */
 
+
+/* Runtime GPIO defaults */
 enum gpio_signal gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
 
 static void board_remap_gpio(void)
@@ -280,14 +282,21 @@ static void board_remap_gpio(void)
 
 	cbi_get_board_version(&board_ver);
 
-	if (board_ver >= 3) {
+	if (board_ver > ZORK_S0_PWROK_BOARD_VER) {
 		gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
 		ccprintf("GPIO_EC_PS2_RESET_V1\n");
+
+		power_signal_list[X86_S0_PGOOD].gpio = GPIO_S0_PWROK_OD_V1;
+		ccprintf("GPIO_S0_PWROK_OD_V1\n");
 	} else {
 		gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V0;
 		ccprintf("GPIO_EC_PS2_RESET_V0\n");
+
+		power_signal_list[X86_S0_PGOOD].gpio = GPIO_S0_PWROK_OD_V0;
+		ccprintf("GPIO_S0_PWROK_OD_V0\n");
 	}
 }
+DECLARE_HOOK(HOOK_INIT, board_remap_gpio, HOOK_PRIO_INIT_I2C);
 
 void setup_fw_config(void)
 {
@@ -305,10 +314,9 @@ void setup_fw_config(void)
 		ccprintf("DB USBC PPC aoz1380");
 		ppc_chips[USBC_PORT_C1].drv = &aoz1380_drv;
 	}
-
-	board_remap_gpio();
 }
 DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
+
 
 /*****************************************************************************
  * Fan
