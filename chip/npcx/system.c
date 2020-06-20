@@ -321,7 +321,8 @@ uint32_t chip_read_reset_flags(void)
 static void check_reset_cause(void)
 {
 	uint32_t hib_wake_flags = bbram_data_read(BBRM_DATA_INDEX_WAKE);
-	uint32_t flags = chip_read_reset_flags();
+	uint32_t chip_flags = chip_read_reset_flags();
+	uint32_t flags = chip_flags;
 
 	/* Clear saved reset flags in bbram */
 #ifdef CONFIG_POWER_BUTTON_INIT_IDLE
@@ -329,9 +330,9 @@ static void check_reset_cause(void)
 	 * We're not sure whether we're booting or not. AP_IDLE will be cleared
 	 * on S5->S3 transition.
 	 */
-	chip_save_reset_flags(flags & EC_RESET_FLAG_AP_IDLE);
+	chip_flags &= EC_RESET_FLAG_AP_IDLE;
 #else
-	chip_save_reset_flags(0);
+	chip_flags = 0;
 #endif
 	/* Clear saved hibernate wake flag in bbram , too */
 	bbram_data_write(BBRM_DATA_INDEX_WAKE, 0);
@@ -342,13 +343,35 @@ static void check_reset_cause(void)
 		/* Treat all resets as RESET_PIN */
 		flags |= EC_RESET_FLAG_RESET_PIN;
 #else
-		/* Check for VCC1 reset */
-		if (IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_STS))
-			flags |= EC_RESET_FLAG_RESET_PIN;
-		else
+		/*
+		 * Check for VCC1 reset.
+		 * If configured, check the saved flags to see whether
+		 * the previous restart was a power-on, in which case
+		 * treat this restart as a power-on as well.
+		 * This is to workaround the fact that the CR50 will
+		 * reset the EC at power up.
+		 */
+		if (IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_STS)) {
+			/* Reset pin restart rather than power-on */
+			if (IS_ENABLED(CONFIG_BOARD_RESET_AFTER_POWER_ON) &&
+			    (flags & EC_RESET_FLAG_INITIAL_PWR))
+				flags = (flags & ~EC_RESET_FLAG_INITIAL_PWR)
+					| EC_RESET_FLAG_POWER_ON;
+			else
+				flags |= EC_RESET_FLAG_RESET_PIN;
+		} else if (IS_ENABLED(CONFIG_BOARD_RESET_AFTER_POWER_ON)) {
+			/*
+			 * Power-on restart, so set a flag and save it
+			 * for the next imminent reset.
+			 */
+			flags |= EC_RESET_FLAG_POWER_ON
+			      | EC_RESET_FLAG_INITIAL_PWR;
+			chip_flags |= EC_RESET_FLAG_INITIAL_PWR;
+		} else
 			flags |= EC_RESET_FLAG_POWER_ON;
 #endif
 	}
+	chip_save_reset_flags(chip_flags);
 
 	/*
 	 * Set scratch bit to distinguish VCC1RST# is asserted again
