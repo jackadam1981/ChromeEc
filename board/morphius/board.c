@@ -45,6 +45,8 @@
 
 #ifdef HAS_TASK_MOTIONSENSE
 
+static bool support_aoz_ppc;
+
 /* Motion sensors */
 static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
@@ -272,6 +274,13 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
  * Use FW_CONFIG to set correct configuration.
  */
 
+static bool board_is_support_aoz_ppc(uint32_t board_version)
+{
+	int level = 0;
+
+	ioex_get_level(IOEX_PPC_ID, &level);
+	return ((board_version >= 3) && !level);
+}
 
 /* Runtime GPIO defaults */
 enum gpio_signal gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
@@ -288,6 +297,12 @@ static void board_remap_gpio(void)
 	} else {
 		gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V0;
 		ccprintf("GPIO_EC_PS2_RESET_V0\n");
+	}
+
+	support_aoz_ppc = board_is_support_aoz_ppc(board_ver);
+	if (support_aoz_ppc) {
+		ccprintf("DB USBC PPC aoz1380\n");
+		ppc_chips[USBC_PORT_C1].drv = &aoz1380_drv;
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_remap_gpio, HOOK_PRIO_INIT_I2C);
@@ -528,7 +543,7 @@ __override void ppc_interrupt(enum gpio_signal signal)
 		break;
 
 	case GPIO_USB_C1_PPC_INT_ODL:
-		if (ec_config_has_db_ppc_aoz1380())
+		if (support_aoz_ppc)
 			aoz1380_interrupt(USBC_PORT_C1);
 		else
 			nx20p348x_interrupt(USBC_PORT_C1);
