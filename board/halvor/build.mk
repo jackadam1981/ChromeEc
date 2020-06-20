@@ -18,7 +18,7 @@ BASEBOARD:=volteer
 # is a backup if board logic power sequencing needs to be adjusted.
 #
 # Set the following variable to 'y' to enable the Volteer optional power signals
-VOLTEER_POWER_SEQUENCE=
+VOLTEER_POWER_SEQUENCE= y
 ifneq (,$(VOLTEER_POWER_SEQUENCE))
 CFLAGS_BASEBOARD+=-DVOLTEER_POWER_SEQUENCE
 endif
