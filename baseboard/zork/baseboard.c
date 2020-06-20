@@ -44,6 +44,26 @@
 
 #define SAFE_RESET_VBUS_MV 5000
 
+/* Runtime GPIO defaults */
+enum gpio_signal GPIO_S0_PGOOD = GPIO_S0_PGOOD_V0;
+#ifdef VARIANT_ZORK_TREMBYLE
+#ifndef ZORK_S0_PWROK_BOARD_VER
+	#define ZORK_S0_PWROK_BOARD_VER	5
+#endif
+void board_version_check(void)
+{
+	uint32_t board_ver = 0;
+
+	cbi_get_board_version(&board_ver);
+
+	if (board_ver == ZORK_S0_PWROK_BOARD_VER) {
+		power_signal_list[X86_S0_PGOOD].gpio = GPIO_S0_PGOOD_V1;
+		GPIO_S0_PGOOD = GPIO_S0_PGOOD_V1;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_version_check, HOOK_PRIO_INIT_I2C);
+#endif
+
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,
 	GPIO_AC_PRESENT,
@@ -52,7 +72,7 @@ const enum gpio_signal hibernate_wake_pins[] = {
 };
 const int hibernate_wake_pins_used =  ARRAY_SIZE(hibernate_wake_pins);
 
-const struct power_signal_info power_signal_list[] = {
+struct power_signal_info power_signal_list[] = {
 	[X86_SLP_S3_N] = {
 		.gpio = GPIO_PCH_SLP_S3_L,
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
@@ -64,7 +84,7 @@ const struct power_signal_info power_signal_list[] = {
 		.name = "SLP_S5_DEASSERTED",
 	},
 	[X86_S0_PGOOD] = {
-		.gpio = GPIO_S0_PGOOD,
+		.gpio = GPIO_S0_PGOOD_V0,
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
 		.name = "S0_PGOOD",
 	},

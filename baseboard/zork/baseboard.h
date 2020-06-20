@@ -165,6 +165,8 @@
 #define CONFIG_USBC_VCONN_SWAP
 #define CONFIG_USB_MUX_AMD_FP5
 
+#define CONFIG_POWER_SIGNAL_RUNTIME_CONFIG
+
 #if defined(VARIANT_ZORK_TREMBYLE)
 	#define CONFIG_USB_PD_PORT_MAX_COUNT 2
 	#define CONFIG_USBC_PPC_NX20P3483
@@ -345,6 +347,7 @@ int board_tcpc_fast_role_swap_enable(int port, int enable);
 void pi3hdx1204_retimer_power(void);
 __override_proto int check_hdmi_hpd_status(void);
 int board_get_temp(int idx, int *temp_k);
+extern enum gpio_signal GPIO_S0_PGOOD;
 
 #endif /* !__ASSEMBLER__ */
 
