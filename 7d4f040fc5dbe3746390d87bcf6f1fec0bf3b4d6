@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18e24d25_025dd60c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 5437,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-20T21:44:39Z",
+      "side": 1,
+      "message": "I recommend referencing table F-9 from the connector spec here (similar to the comment used in is_intel_svid()).",
+      "revId": "7d4f040fc5dbe3746390d87bcf6f1fec0bf3b4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
