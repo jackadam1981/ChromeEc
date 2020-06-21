@@ -2887,7 +2887,6 @@ static void tc_attached_src_run(const int port)
 	 * Attached.SRC.
 	 */
 	if (tc[port].cc_state == PD_CC_NONE &&
-			!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS) &&
 			!TC_CHK_FLAG(port, TC_FLAGS_DISC_IDENT_IN_PROGRESS)) {
 
 		if (IS_ENABLED(CONFIG_USB_PE_SM))
