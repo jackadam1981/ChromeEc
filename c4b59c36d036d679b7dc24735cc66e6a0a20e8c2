@@ -46,6 +46,30 @@
       "revId": "c4b59c36d036d679b7dc24735cc66e6a0a20e8c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab189c8d_39d3ab59",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-21T21:10:30Z",
+      "side": 1,
+      "message": "I most of the path, the code was very close. I adjusted a couple of pieces that you pointed out and the code is happy without any of this additional code. Thank you",
+      "parentUuid": "7a65a734_fc613d92",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 3
+      },
+      "revId": "c4b59c36d036d679b7dc24735cc66e6a0a20e8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
