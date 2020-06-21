@@ -244,10 +244,6 @@ void dp_vdm_acked(int port, int cmd)
 {
 }
 
-void dp_reset_next_command(int port)
-{
-}
-
 void dpm_init(int port)
 {
 }
