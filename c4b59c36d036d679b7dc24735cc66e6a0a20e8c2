@@ -22,6 +22,30 @@
       "revId": "c4b59c36d036d679b7dc24735cc66e6a0a20e8c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a65a734_fc613d92",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1249354
+      },
+      "writtenOn": "2020-06-21T12:09:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure why this is needed, might be due to wrong flow.\nplease see my comment to issue: 158593464",
+      "parentUuid": "82f1db7b_f07dc4e5",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 3
+      },
+      "revId": "c4b59c36d036d679b7dc24735cc66e6a0a20e8c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
