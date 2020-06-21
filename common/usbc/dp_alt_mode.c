@@ -25,12 +25,48 @@
 #define CPRINTS(format, args...)
 #endif
 
-/* The next VDM command to send for DP setup */
-static int next_vdm_cmd[CONFIG_USB_PD_PORT_MAX_COUNT];
+/* The state of the dp negotiation */
+enum dp_states {
+	DP_START = 0,
+	DP_ENTER_SENT,
+	DP_ENTER_ACKED,
+	DP_ENTER_NAKED,
+	DP_STATUS_SENT,
+	DP_STATUS_ACKED,
+	DP_CONFIG_SENT,
+	DP_ACTIVE,
+	DP_EXIT_SENT,
+	DP_EXIT_RETRY_SENT,
+	DP_ENTER_RETRY,
+	DP_ENTER_RETRY_SENT,
+	DP_INACTIVE,
+	DP_MAX_STATE
+};
+static enum dp_states dp_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+/*
+ * Map of states to expected VDM commands.
+ * Default of 0 indicates no command expected.
+ */
+static const uint8_t state_vdm_cmd[DP_MAX_STATE] = {
+	[DP_ENTER_SENT] = CMD_ENTER_MODE,
+	[DP_STATUS_SENT] = CMD_DP_STATUS,
+	[DP_CONFIG_SENT] = CMD_DP_CONFIG,
+	[DP_EXIT_SENT] = CMD_EXIT_MODE,
+	[DP_EXIT_RETRY_SENT] = CMD_EXIT_MODE,
+	[DP_ENTER_RETRY_SENT] = CMD_ENTER_MODE
+};
 
 void dp_init(int port)
 {
-	dp_reset_next_command(port);
+	dp_reset_state(port);
+}
+
+static void dp_entry_failed(int port)
+{
+	CPRINTS("C%d: DP alt mode Entry failed!", port);
+	dp_state[port] = DP_INACTIVE;
+	dpm_set_mode_entry_done(port);
 }
 
 static void print_unexpected_response(int port, enum tcpm_transmit_type type,
@@ -49,9 +85,10 @@ static void print_unexpected_response(int port, enum tcpm_transmit_type type,
 		assert(false);
 	}
 
-	CPRINTS("C%d: Received unexpected DP VDM %s (cmd %d) from %s", port,
-			cmdt_str, vdm_cmd,
-			type == TCPC_TX_SOP ? "port partner" : "cable plug");
+	CPRINTS("C%d: Received unexpected DP VDM %s (cmd %d) from"
+		" %s in state %d", port, cmdt_str, vdm_cmd,
+		type == TCPC_TX_SOP ? "port partner" : "cable plug",
+		dp_state[port]);
 }
 
 void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
@@ -61,55 +98,88 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		pd_get_amode_data(port, type, USB_SID_DISPLAYPORT);
 	const uint8_t vdm_cmd = PD_VDO_CMD(vdm[0]);
 
-	/*
-	 * Handle the ACK of a request to exit alt mode.
-	 */
-	if (type == TCPC_TX_SOP && vdm_cmd == CMD_EXIT_MODE) {
-		pd_dfp_discovery_init(port);
-		return;
-	}
-
-	if (type != TCPC_TX_SOP || next_vdm_cmd[port] != vdm_cmd) {
+	if (type != TCPC_TX_SOP || state_vdm_cmd[dp_state[port]] != vdm_cmd) {
 		print_unexpected_response(port, type, CMDT_RSP_ACK, vdm_cmd);
-		dpm_set_mode_entry_done(port);
+		dp_entry_failed(port);
 		return;
 	}
 
 	/* TODO(b/155890173): Validate VDO count for specific commands */
 
-	switch (vdm_cmd) {
-	case CMD_ENTER_MODE:
-		next_vdm_cmd[port] = CMD_DP_STATUS;
+	switch (dp_state[port]) {
+	case DP_ENTER_SENT:
+	case DP_ENTER_RETRY_SENT:
+		dp_state[port] = DP_ENTER_ACKED;
 		break;
-	case CMD_DP_STATUS:
+	case DP_STATUS_SENT:
 		/* DP status response & UFP's DP attention have same payload. */
 		dfp_consume_attention(port, vdm);
-		next_vdm_cmd[port] = CMD_DP_CONFIG;
+		dp_state[port] = DP_STATUS_ACKED;
 		break;
-	case CMD_DP_CONFIG:
+	case DP_CONFIG_SENT:
 		if (modep && modep->opos && modep->fx->post_config)
 			modep->fx->post_config(port);
 		dpm_set_mode_entry_done(port);
+		dp_state[port] = DP_ACTIVE;
+		break;
+	case DP_EXIT_SENT:
+		/*
+		 * Request to exit mode successful, so put it in
+		 * inactive state.
+		 */
+		dp_state[port] = DP_INACTIVE;
+		break;
+	case DP_EXIT_RETRY_SENT:
+		/*
+		 * The request to exit the mode was successful,
+		 * so try to enter the mode again.
+		 */
+		dp_state[port] = DP_ENTER_RETRY;
 		break;
 	default:
-		/* This should never happen */
-		assert(false);
+		/* Invalid or unexpected negotiation state */
+		CPRINTF("%s called with invalid state %d\n",
+				__func__, dp_state[port]);
+		dp_entry_failed(port);
+		break;
 	}
 }
 
 void dp_vdm_naked(int port, enum tcpm_transmit_type type, uint8_t vdm_cmd)
 {
-	if (type != TCPC_TX_SOP || next_vdm_cmd[port] != vdm_cmd) {
+	if (type != TCPC_TX_SOP || state_vdm_cmd[dp_state[port]] != vdm_cmd) {
 		print_unexpected_response(port, type, CMDT_RSP_NAK, vdm_cmd);
+		dp_entry_failed(port);
 		return;
 	}
-
-	dpm_set_mode_entry_done(port);
+	switch (dp_state[port]) {
+	case DP_ENTER_SENT:
+		/*
+		 * If a request to enter DP mode is NAK'ed, this likely
+		 * means the partner is already in DP alt mode, so
+		 * request to exit the mode first before retrying
+		 * the enter command.
+		 */
+		dp_state[port] = DP_ENTER_NAKED;
+		break;
+	case DP_ENTER_RETRY_SENT:
+		/*
+		 * Another NAK on the second attempt to enter DP mode.
+		 * Give up.
+		 */
+		dp_entry_failed(port);
+		break;
+	default:
+		CPRINTS("C%d: NAK for cmd %d in state %d", port,
+			vdm_cmd, dp_state[port]);
+		dp_entry_failed(port);
+		break;
+	}
 }
 
-void dp_reset_next_command(int port)
+void dp_reset_state(int port)
 {
-	next_vdm_cmd[port] = CMD_ENTER_MODE;
+	dp_state[port] = DP_START;
 }
 
 int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
@@ -121,8 +191,9 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 	if (vdo_count < VDO_MAX_SIZE)
 		return -1;
 
-	switch (next_vdm_cmd[port]) {
-	case CMD_ENTER_MODE:
+	switch (dp_state[port]) {
+	case DP_START:
+	case DP_ENTER_RETRY:
 		/* Enter the first supported mode for DisplayPort. */
 		vdm[0] = pd_dfp_enter_mode(port, TCPC_TX_SOP,
 				USB_SID_DISPLAYPORT, 0);
@@ -132,8 +203,11 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
 		vdo_count_ret = 1;
+		dp_state[port] = (dp_state[port] == DP_START)
+				  ? DP_ENTER_SENT
+				  : DP_ENTER_RETRY_SENT;
 		break;
-	case CMD_DP_STATUS:
+	case DP_ENTER_ACKED:
 		if (!(modep && modep->opos))
 			return -1;
 
@@ -143,8 +217,9 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		vdm[0] |= PD_VDO_OPOS(modep->opos);
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		dp_state[port] = DP_STATUS_SENT;
 		break;
-	case CMD_DP_CONFIG:
+	case DP_STATUS_ACKED:
 		if (!(modep && modep->opos))
 			return -1;
 
@@ -153,10 +228,40 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 			return -1;
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		dp_state[port] = DP_CONFIG_SENT;
 		break;
+	case DP_ENTER_NAKED:
+	case DP_ACTIVE:
+		/*
+		 * Called to exit DP alt mode, either when the mode
+		 * is active and the system is shutting down, or
+		 * when an initial request to enter the mode is NAK'ed.
+		 * It would be good to invoke modep->fx->exit but
+		 * this doesn't set up the VDM, it clears state.
+		 */
+		if (!(modep && modep->opos))
+			return -1;
+
+		vdm[0] = VDO(USB_SID_DISPLAYPORT,
+			     1, /* structured */
+			     CMD_EXIT_MODE);
+
+		vdm[0] |= VDO_OPOS(modep->opos);
+		vdm[0] |= VDO_CMDT(CMDT_INIT);
+		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		vdo_count_ret = 1;
+		dp_state[port] = (dp_state[port] == DP_ACTIVE)
+				  ? DP_EXIT_SENT
+				  : DP_EXIT_RETRY_SENT;
+		break;
+	case DP_INACTIVE:
+		/*
+		 * DP mode shut down.
+		 */
+		return -1;
 	default:
-		CPRINTF("%s called with invalid next VDM command %d\n",
-				__func__, next_vdm_cmd[port]);
+		CPRINTF("%s called with invalid state %d\n",
+				__func__, dp_state[port]);
 		return -1;
 	}
 	return vdo_count_ret;

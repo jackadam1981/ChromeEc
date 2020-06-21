@@ -38,6 +38,11 @@ void dpm_set_mode_entry_done(int port)
 	dpm[port].mode_entry_done = true;
 }
 
+bool dpm_get_mode_entry_done(int port)
+{
+	return dpm[port].mode_entry_done;
+}
+
 void dpm_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		uint32_t *vdm)
 {
