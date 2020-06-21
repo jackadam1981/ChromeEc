@@ -27,6 +27,13 @@ void dpm_init(int port);
 void dpm_set_mode_entry_done(int port);
 
 /*
+ * Returns the current value of the mode entry done flag.
+ *
+ * @param port USB-C port number
+ */
+bool dpm_get_mode_entry_done(int port);
+
+/*
  * Informs the DPM that a VDM ACK was received.
  *
  * @param port      USB-C port number

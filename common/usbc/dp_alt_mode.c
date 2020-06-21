@@ -61,14 +61,6 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		pd_get_amode_data(port, type, USB_SID_DISPLAYPORT);
 	const uint8_t vdm_cmd = PD_VDO_CMD(vdm[0]);
 
-	/*
-	 * Handle the ACK of a request to exit alt mode.
-	 */
-	if (type == TCPC_TX_SOP && vdm_cmd == CMD_EXIT_MODE) {
-		pd_dfp_discovery_init(port);
-		return;
-	}
-
 	if (type != TCPC_TX_SOP || next_vdm_cmd[port] != vdm_cmd) {
 		print_unexpected_response(port, type, CMDT_RSP_ACK, vdm_cmd);
 		dpm_set_mode_entry_done(port);
@@ -87,9 +79,28 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		next_vdm_cmd[port] = CMD_DP_CONFIG;
 		break;
 	case CMD_DP_CONFIG:
+		/*
+		 * Finish the DP alt mode set, and set the next
+		 * state command to exit the mode.
+		 */
 		if (modep && modep->opos && modep->fx->post_config)
 			modep->fx->post_config(port);
 		dpm_set_mode_entry_done(port);
+		next_vdm_cmd[port] = CMD_EXIT_MODE;
+		break;
+	case CMD_EXIT_MODE:
+		/*
+		 * If the mode is currently entered, clear the state,
+		 * otherwise restart the attempt to enter the mode.
+		 * This deals with the situation where DP alt mode
+		 * may be active before a reset or entry into
+		 * recovery mode. Sending a ENTER_MODE command will
+		 * be replied with a NAK in this case.
+		 */
+		if (dpm_get_mode_entry_done(port))
+			pd_dfp_discovery_init(port);
+		else
+			dp_reset_next_command(port);
 		break;
 	default:
 		/* This should never happen */
@@ -103,8 +114,22 @@ void dp_vdm_naked(int port, enum tcpm_transmit_type type, uint8_t vdm_cmd)
 		print_unexpected_response(port, type, CMDT_RSP_NAK, vdm_cmd);
 		return;
 	}
-
-	dpm_set_mode_entry_done(port);
+	switch (vdm_cmd) {
+	case CMD_ENTER_MODE:
+		/*
+		 * If a request to enter DP mode is NAK'ed, this likely
+		 * means the partner is already in DP alt mode, so
+		 * request to exit the mode.
+		 */
+		next_vdm_cmd[port] = CMD_EXIT_MODE;
+		break;
+	default:
+		/*
+		 * TODO: Should gracefully exit the mode or deal with the NAK.
+		 */
+		dpm_set_mode_entry_done(port);
+		break;
+	}
 }
 
 void dp_reset_next_command(int port)
@@ -153,6 +178,23 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 			return -1;
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		break;
+	case CMD_EXIT_MODE:
+		/*
+		 * It would be good to call modep->fx->exit but
+		 * this doesn't set up the VDM, it clears state.
+		 */
+		if (!(modep && modep->opos))
+			return -1;
+
+		vdm[0] = VDO(USB_SID_DISPLAYPORT,
+			     1, /* structured */
+			     CMD_EXIT_MODE);
+
+		vdm[0] |= VDO_OPOS(modep->opos);
+		vdm[0] |= VDO_CMDT(CMDT_INIT);
+		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		vdo_count_ret = 1;
 		break;
 	default:
 		CPRINTF("%s called with invalid next VDM command %d\n",
