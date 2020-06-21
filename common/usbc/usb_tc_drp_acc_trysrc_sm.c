@@ -684,6 +684,11 @@ void tc_pr_swap_complete(int port, bool success)
 		tcpm_enable_auto_discharge_disconnect(port, 1);
 }
 
+int tc_is_pr_swapping(int port)
+{
+	return TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
+}
+
 void tc_prs_src_snk_assert_rd(int port)
 {
 	/*

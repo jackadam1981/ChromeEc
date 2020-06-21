@@ -983,6 +983,18 @@ void pe_got_soft_reset(int port)
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
 	/*
+	 * Unexpected message during a non-interruptible AMS while power
+	 * is transitioning shall generate a hard reset
+	 */
+	if (tc_is_pr_swapping(port)) {
+		if (pe[port].power_role == PD_ROLE_SINK)
+			set_state_pe(port, PE_SNK_HARD_RESET);
+		else
+			set_state_pe(port, PE_SRC_HARD_RESET);
+		return;
+	}
+
+	/*
 	 * The PE_SRC_Soft_Reset state Shall be entered from any state when a
 	 * Soft_Reset Message is received from the Protocol Layer.
 	 */

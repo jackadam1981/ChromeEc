@@ -108,6 +108,11 @@ void tc_pd_connection(int port, int en)
 void tc_pr_swap_complete(int port, bool success)
 {}
 
+int tc_is_pr_swapping(int port)
+{
+	return 0;
+}
+
 void tc_prs_snk_src_assert_rp(int port)
 {
 	attached_snk = 0;
