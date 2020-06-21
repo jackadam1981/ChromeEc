@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "91812871_08f53bb8",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1424125
+      },
+      "writtenOn": "2020-06-21T22:13:54Z",
+      "side": 1,
+      "message": "I guess this style is taken from dp_alt_mode.c. \nNot sure which one will be worse for code size (knowing flash is a constraint), keeping separate prints or print in one place with function calls.",
+      "parentUuid": "db3fa5cb_3fcaa34b",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0aec43e6_4f96cd36",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 6
@@ -117,6 +141,23 @@
     },
     {
       "key": {
+        "uuid": "2014d6a9_06fcee0a",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1424125
+      },
+      "writtenOn": "2020-06-21T22:13:54Z",
+      "side": 1,
+      "message": "@Li This is where we will need to add support for Active Cable.  Figure 3-7. Enter Thunderbolt Alternate Mode. Page 86. Type C - Thunderbolt Interconnect Specification.",
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9be859c_4baa6c70",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 6
@@ -140,6 +181,30 @@
     },
     {
       "key": {
+        "uuid": "67b094e5_d9ffdc22",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1424125
+      },
+      "writtenOn": "2020-06-21T22:13:54Z",
+      "side": 1,
+      "message": "I think dpm_attempt_mode_entry which calls tbt_setup_next_vdm takes care of it.",
+      "parentUuid": "d9be859c_4baa6c70",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e8043da_f31ba58b",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 6
@@ -151,6 +216,30 @@
       "writtenOn": "2020-06-19T23:30:15Z",
       "side": 1,
       "message": "create an array, keep these in priority order and loop through to get the info\nUSB_VID_INTEL,\nUSB_SID_DISPLAYPORT,\n**\n\nfor ()\n  svid \u003d pd_is_mode_discovered_for_svid()\nswitch (svid)\n{\n   case INTEL:\n         do TBT stuff\n   case DP:\n         do dp stuff\n}",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f38abe_84f4d9c2",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1424125
+      },
+      "writtenOn": "2020-06-21T22:13:54Z",
+      "side": 1,
+      "message": "The function returns true/false. Function declaration/definition will need to change.\nOr will need to use pd_get_am_discovery(port, TCPC_TX_SOP) and then reiterate through the SVIDs",
+      "parentUuid": "1e8043da_f31ba58b",
       "range": {
         "startLine": 105,
         "startChar": 5,
