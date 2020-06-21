@@ -43,6 +43,7 @@
 #include "usb_charge.h"
 #include "usb_common.h"
 #include "usb_pd.h"
+#include "usb_pe_sm.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -508,8 +509,7 @@ static void board_tcpc_init(void)
 	 * With EFSv2, it is possible to be in RW without
 	 * having reset the TCPC.
 	 */
-	if (system_get_reset_flags() &
-	    (EC_RESET_FLAG_RESET_PIN | EC_RESET_FLAG_POWER_ON))
+	if (system_get_reset_flags() & EC_RESET_FLAG_POWER_ON)
 		board_reset_pd_mcu();
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_TCPPC_INT_ODL);
@@ -542,9 +542,9 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(GPIO_USB_C0_TCPC_RST, !level);
 	if (BOARD_TCPC_C0_RESET_POST_DELAY)
 		msleep(BOARD_TCPC_C0_RESET_POST_DELAY);
-	/* Reset any saved state for previous connections. */
+	/* Since it is a power-on restart, clear any explicit contract */
 	pd_update_saved_port_flags(USB_PD_PORT_TCPC_0,
-		PD_BBRMFLG_EXPLICIT_CONTRACT, 0);
+				   PD_BBRMFLG_EXPLICIT_CONTRACT, 0);
 }
 
 int board_set_active_charge_port(int port)
