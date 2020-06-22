@@ -112,6 +112,11 @@ __override void board_vbus_present_change(void)
 	last_extpower_present = extpower_present;
 }
 
+__override int board_vbus_source_enabled(int port)
+{
+	return board_is_sourcing_vbus(port);
+}
+
 uint32_t pp3300_a_pgood;
 __override int intel_x86_get_pg_ec_dsw_pwrok(void)
 {
