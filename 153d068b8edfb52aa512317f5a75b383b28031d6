@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa57742f_705247a1",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:10:37Z",
+      "side": 1,
+      "message": "this should go in the typec_mock not pd mock",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "153d068b8edfb52aa512317f5a75b383b28031d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56b6038c_f1582383",
+        "filename": "include/mock/usb_pd_mock.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:10:37Z",
+      "side": 1,
+      "message": "should be an array by port?",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "153d068b8edfb52aa512317f5a75b383b28031d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
