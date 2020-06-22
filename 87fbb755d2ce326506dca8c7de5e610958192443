@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55762f2e_f448e341",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T21:43:18Z",
+      "side": 1,
+      "message": "let\u0027s call this tc instead of pd; they are different layers",
+      "range": {
+        "startLine": 18,
+        "startChar": 15,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "87fbb755d2ce326506dca8c7de5e610958192443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15cf6747_4d4d78aa",
+        "filename": "include/mock/usb_pe_sm_mock.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T21:43:18Z",
+      "side": 1,
+      "message": "should pe not pd",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "87fbb755d2ce326506dca8c7de5e610958192443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62d8aa6e_a28b933f",
+        "filename": "include/mock/usb_tc_sm_mock.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T21:43:18Z",
+      "side": 1,
+      "message": "should be tc not pd",
+      "range": {
+        "startLine": 17,
+        "startChar": 22,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "87fbb755d2ce326506dca8c7de5e610958192443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
