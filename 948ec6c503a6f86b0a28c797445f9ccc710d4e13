@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fcc3d3bf_5caf055f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:04:44Z",
+      "side": 1,
+      "message": "fair enough. Not saying this is bad, I just think it is useful enough to apply to more things :)",
+      "parentUuid": "4d244169_57a25953",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "948ec6c503a6f86b0a28c797445f9ccc710d4e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58fbbef9_1046a03f",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 12
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Since it is static, the optimizer should remove it if it is not being used. It is here in order to use IS_ENABLED",
       "parentUuid": "58fbbef9_1046a03f",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "948ec6c503a6f86b0a28c797445f9ccc710d4e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f821ba_b5b3fecf",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:04:44Z",
+      "side": 1,
+      "message": "Can you use the STATIC_IF just to ensure that non-debug code ever references it then (works well with IS_ENABLED)",
+      "parentUuid": "a9649bcd_13c84f1f",
       "range": {
         "startLine": 87,
         "startChar": 14,
