@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a7a3467f_43253ee8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-22T21:39:30Z",
+      "side": 1,
+      "message": "Tried to revert the parent state but leave the jumping to attached_wait... didn\u0027t work. Then also reverted the jumping to attached_wait so all would go to unattached and USB-C memory stick just looped Unattached, DRP-Toggle, LowPower, repeat\n\nI think that leaving it like this is the better option unless it breaks someone else\u0027s code.",
+      "parentUuid": "00afdf3e_5d6a689d",
+      "range": {
+        "startLine": 1765,
+        "startChar": 0,
+        "endLine": 1766,
+        "endChar": 23
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44cc84b4_f5f07818",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
