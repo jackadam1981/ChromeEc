@@ -4377,6 +4377,7 @@
 #undef CONFIG_USBC_PPC_NX20P3483
 #undef CONFIG_USBC_PPC_SN5S330
 #undef CONFIG_USBC_PPC_SYV682X
+#undef CONFIG_USBC_PPC_STUB
 
 /*
  * SYV682x PPC high voltage power path current limit.  Default limit is
