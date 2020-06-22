@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7547fce0_757d3319",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T16:52:02Z",
+      "side": 1,
+      "message": "can we name this different than they data type, so \n\nmock_usb_pd or something? (similar to tpcp mocks)",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "b3400913377d6679b2599e1f717fec86e99eb332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9370d7a4_e8f78e51",
+        "filename": "common/mock/usb_pe_sm_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T16:52:02Z",
+      "side": 1,
+      "message": "should this be mock_pd and non-static so unit test can access this?",
+      "range": {
+        "startLine": 19,
+        "startChar": 21,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "b3400913377d6679b2599e1f717fec86e99eb332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d19be673_4135e082",
+        "filename": "include/mock/usb_pe_sm_mock.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T16:52:02Z",
+      "side": 1,
+      "message": "I don\u0027t think we need the prl suffix in this, just mock_pd_ctrl and mock_pd should do, right?",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "b3400913377d6679b2599e1f717fec86e99eb332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e0efd60_52825712",
+        "filename": "include/mock/usb_pe_sm_mock.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T16:52:02Z",
+      "side": 1,
+      "message": "should we defined the externl mock_pd_ctrl variable here?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "b3400913377d6679b2599e1f717fec86e99eb332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
