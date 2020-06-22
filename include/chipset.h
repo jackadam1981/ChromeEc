@@ -255,17 +255,6 @@ void chipset_power_good_interrupt(enum gpio_signal signal);
  */
 void chipset_watchdog_interrupt(enum gpio_signal signal);
 
-/**
- * Callback which allows board to take custom action on G3 timer expiration
- *
- * @param last_shutdown_time Last shutdown time
- * @param target             Expiration time. Can be modified by board.
- * @param now                Current time
- * @return Action to take
- */
-__override_proto enum critical_shutdown board_system_is_idle(
-		uint64_t last_shutdown_time, uint64_t *target, uint64_t now);
-
 #ifdef CONFIG_CMD_AP_RESET_LOG
 
 /**

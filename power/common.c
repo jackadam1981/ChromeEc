@@ -66,10 +66,8 @@ static enum power_state state = POWER_G3;  /* Current state */
 static int want_g3_exit;      /* Should we exit the G3 state? */
 static uint64_t last_shutdown_time; /* When did we enter G3? */
 
-#ifdef CONFIG_HIBERNATE
 /* Delay before hibernating, in seconds */
 static uint32_t hibernate_delay = CONFIG_HIBERNATE_DELAY_SEC;
-#endif
 
 #ifdef CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
 /* Pause in S5 on shutdown? */
@@ -309,7 +307,6 @@ static void power_set_active_wake_mask(void)
 static void power_set_active_wake_mask(void) { }
 #endif
 
-#ifdef CONFIG_HIBERNATE
 #ifdef CONFIG_BATTERY
 /*
  * Smart discharge system
@@ -331,6 +328,7 @@ static void power_set_active_wake_mask(void) { }
  */
 static struct smart_discharge_zone sdzone;
 
+#ifdef CONFIG_HIBERNATE
 static enum ec_status hc_smart_discharge(struct host_cmd_handler_args *args)
 {
 	static uint16_t hours_to_zero;
@@ -372,8 +370,21 @@ static enum ec_status hc_smart_discharge(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_SMART_DISCHARGE,
 		     hc_smart_discharge,
 		     EC_VER_MASK(0));
+#endif	/* CONFIG_HIBERNATE */
 
-__overridable enum critical_shutdown board_system_is_idle(
+#ifdef CONFIG_HIBERNATE_BATT_PCT
+static enum critical_shutdown should_hibernate_in_idle(
+		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
+{
+	if (charge_get_percent() <= HIBERNATE_BATT_PCT) {
+		uint64_t t = last_shutdown_time + HIBERNATE_BATT_SEC * SEC_UL;
+		*target = MIN(*target, t);
+	}
+	return now > *target ?
+			CRITICAL_SHUTDOWN_HIBERNATE : CRITICAL_SHUTDOWN_IGNORE;
+}
+#else
+static enum critical_shutdown should_hibernate_in_idle(
 		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
 {
 	int remain;
@@ -397,17 +408,55 @@ __overridable enum critical_shutdown board_system_is_idle(
 	CPRINTS("SDC Safe");
 	return CRITICAL_SHUTDOWN_HIBERNATE;
 }
+#endif
 #else
 /* Default implementation for battery-less systems */
-__overridable enum critical_shutdown board_system_is_idle(
+static enum critical_shutdown should_hibernate_in_idle(
 		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
 {
 	return now > *target ?
 			CRITICAL_SHUTDOWN_HIBERNATE : CRITICAL_SHUTDOWN_IGNORE;
 }
 #endif	/* CONFIG_BATTERY */
-#endif	/* CONFIG_HIBERNATE */
 
+static void enable_power_saving(void)
+{
+	uint64_t target, now, wait;
+
+	if (extpower_is_present()) {
+		task_wait_event(-1);
+		return;
+	}
+
+	now = get_time().val;
+	target = last_shutdown_time + hibernate_delay * SECOND;
+
+	switch (should_hibernate_in_idle(last_shutdown_time, &target, now)) {
+	case CRITICAL_SHUTDOWN_HIBERNATE:
+		CPRINTS("Hibernate due to G3 idle");
+		if (IS_ENABLED(CONFIG_EXTPOWER_GPIO)
+				&& IS_ENABLED(CONFIG_VBOOT_EFS2)) {
+			chip_save_reset_flags(chip_read_reset_flags()
+					      | EC_RESET_FLAG_AP_IDLE);
+		}
+		system_hibernate(0, 0);
+		break;
+	case CRITICAL_SHUTDOWN_CUTOFF:
+		if (IS_ENABLED(CONFIG_BATTERY_CUT_OFF)) {
+			CPRINTS("Cutoff due to G3 idle");
+			/* Ensure logs are flushed. */
+			cflush();
+			board_cut_off_battery();
+		}
+		break;
+	case CRITICAL_SHUTDOWN_IGNORE:
+	default:
+		break;
+	}
+
+	wait = MIN(target - now, TASK_MAX_WAIT_US);
+	task_wait_event(wait);
+}
 /**
  * Common handler for steady states
  *
@@ -426,48 +475,10 @@ static enum power_state power_common_state(enum power_state state)
 		}
 
 		in_want = 0;
-#ifdef CONFIG_HIBERNATE
-		{
-			uint64_t target, now, wait;
-			if (extpower_is_present()) {
-				task_wait_event(-1);
-				break;
-			}
-
-			now = get_time().val;
-			target = last_shutdown_time + hibernate_delay * SECOND;
-			switch (board_system_is_idle(last_shutdown_time,
-						     &target, now)) {
-			case CRITICAL_SHUTDOWN_HIBERNATE:
-				CPRINTS("Hibernate due to G3 idle");
-				if (IS_ENABLED(CONFIG_EXTPOWER_GPIO) &&
-						IS_ENABLED(CONFIG_VBOOT_EFS2)) {
-					uint32_t reset_flags;
-					reset_flags = chip_read_reset_flags() |
-						EC_RESET_FLAG_AP_IDLE;
-					chip_save_reset_flags(reset_flags);
-				}
-				system_hibernate(0, 0);
-				break;
-#ifdef CONFIG_BATTERY_CUT_OFF
-			case CRITICAL_SHUTDOWN_CUTOFF:
-				CPRINTS("Cutoff due to G3 idle");
-				/* Ensure logs are flushed. */
-				cflush();
-				board_cut_off_battery();
-				break;
-#endif
-			case CRITICAL_SHUTDOWN_IGNORE:
-			default:
-				break;
-			}
-
-			wait = MIN(target - now, TASK_MAX_WAIT_US);
-			task_wait_event(wait);
-		}
-#else /* !CONFIG_HIBERNATE */
-		task_wait_event(-1);
-#endif
+		if (IS_ENABLED(CONFIG_HIBERNATE))
+			enable_power_saving();
+		else
+			task_wait_event(-1);
 		break;
 
 	case POWER_S5:
