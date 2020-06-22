@@ -23,9 +23,10 @@
 /* USB Type C and USB PD defines */
 #define USB_PD_PORT_HOST   0
 #define USB_PD_PORT_DP   1
-#define CONFIG_USB_PD_PORT_MAX_COUNT 1
 
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_MUX_TUSB1064
+#define CONFIG_USBC_PPC_STUB
 
 /* USB Type A Features */
 
@@ -47,7 +48,6 @@
 #define GPIO_ENTERING_RW	GPIO_EC_ENTERING_RW
 #define GPIO_WP_L		GPIO_EC_WP_L
 
-#define BOARD_NUM_POWER_GPIOS 23
 
 #ifndef __ASSEMBLER__
 
