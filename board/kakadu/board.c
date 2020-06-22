@@ -437,3 +437,14 @@ void board_fill_source_power_info(int port,
 	r->max_power = r->meas.voltage_now * r->meas.current_max;
 }
 
+/* Called by hook task every 1 sec */
+static void battery_log_second(void)
+{
+	struct batt_params batt_new = {0};
+	battery_get_params(&batt_new);
+
+	CPRINTS("voltage=%d mV, current=%d mA, remaining_capacity=%d mAh, RSOC=%d %%, TEMP=%d C", 
+	batt_new.voltage, batt_new.current, batt_new.remaining_capacity, batt_new.state_of_charge, (batt_new.temperature-2731)/10);
+
+}
+DECLARE_HOOK(HOOK_SECOND, battery_log_second, HOOK_PRIO_DEFAULT);
