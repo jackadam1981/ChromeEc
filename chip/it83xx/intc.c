@@ -66,6 +66,23 @@ static void chip_pd_irq(enum usbpd_port port)
 				PD_EVENT_CC, 0);
 		}
 	}
+
+	if (IS_ENABLED(IT83XX_INTC_FAST_SWAP_SUPPORT)) {
+		if (USBPD_IS_FAST_SWAP_DETECT(port)) {
+			/* clear detect FRS signal (cc to GND) status */
+#if defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX)
+			IT83XX_USBPD_PD30IR(port) =
+				USBPD_REG_FAST_SWAP_DETECT_STAT;
+#elif defined(CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2)
+			IT83XX_USBPD_IFS(port) =
+				USBPD_REG_FAST_SWAP_DETECT_STAT;
+#endif
+			/* assert GPIO */
+
+			//task_set_event(PD_PORT_TO_TASK_ID(port),
+			//	PD_EVENT_FAST_ROLE_SWAP, 0);
+		}
+	}
 }
 #endif
 
