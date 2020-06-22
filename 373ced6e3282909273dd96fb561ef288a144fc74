@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34a3ac60_eb8a08be",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4695,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T20:54:52Z",
+      "side": 1,
+      "message": "let\u0027s add the comment that we normally so that the YYY state is embedded here",
+      "range": {
+        "startLine": 4687,
+        "startChar": 3,
+        "endLine": 4695,
+        "endChar": 0
+      },
+      "revId": "373ced6e3282909273dd96fb561ef288a144fc74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
