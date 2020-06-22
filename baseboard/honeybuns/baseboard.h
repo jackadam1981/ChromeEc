@@ -91,8 +91,8 @@ enum usb_strings {
 #define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
 /* #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0 */
-#define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_MUX
+#define CONFIG_USB_PD_TCPM_PS8805
 #define CONFIG_USB_PD_TCPM_STM32GX
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_DECODE_SOP
@@ -104,6 +104,7 @@ enum usb_strings {
 #define CONFIG_USBC_PPC_VCONN
 #define CONFIG_USBC_PPC_DEDICATED_INT
 #define CONFIG_CMD_PPC_DUMP
+#define CONFIG_CMD_TCPC_DUMP
 
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
@@ -131,14 +132,6 @@ enum usb_strings {
 /* I2C Bus Configuration */
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
-
-/* I2C Port Definitions */
-#define I2C_PORT_USBC		0
-#define I2C_PORT_MST		1
-#define I2C_PORT_EEPROM	2
-#define I2C_PORT_MP4245 I2C_PORT_MST
-
-#define MP4245_SLAVE_ADDR MP4245_I2C_ADDR_0_FLAGS
 
 #ifndef __ASSEMBLER__
 
