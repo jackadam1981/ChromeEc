@@ -110,3 +110,8 @@ __override void svdm_safe_dp_mode(int port)
 	else
 		ppc_set_sbu(port, 0);
 }
+
+int board_vbus_source_enabled(int port)
+{
+	return ppc_is_sourcing_vbus(port);
+}
