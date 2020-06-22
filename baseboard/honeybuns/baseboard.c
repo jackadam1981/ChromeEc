@@ -34,9 +34,9 @@ static void board_power_sequence(void)
 /******************************************************************************/
 /* I2C port map configuration */
 const struct i2c_port_t i2c_ports[] = {
-	{"usbc",   I2C_PORT_USBC,   400, GPIO_EC_I2C1_SCL, GPIO_EC_I2C1_SDA},
-	{"usb_mst",  I2C_PORT_MST,  400, GPIO_EC_I2C2_SCL, GPIO_EC_I2C2_SDA},
-	{"eeprom",  I2C_PORT_EEPROM,  400, GPIO_EC_I2C3_SCL, GPIO_EC_I2C3_SDA},
+	{"i2c1",  I2C_PORT_I2C1,  400, GPIO_EC_I2C1_SCL, GPIO_EC_I2C1_SDA},
+	{"i2c2",  I2C_PORT_I2C2,  400, GPIO_EC_I2C2_SCL, GPIO_EC_I2C2_SDA},
+	{"i2c3",  I2C_PORT_I2C3,  400, GPIO_EC_I2C3_SCL, GPIO_EC_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 

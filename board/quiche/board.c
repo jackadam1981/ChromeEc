@@ -17,6 +17,7 @@
 #include "system.h"
 #include "task.h"
 #include "uart.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 #include "usb_pd_dp_ufp.h"
@@ -28,16 +29,49 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	PD_DRP_TOGGLE_ON,
+	PD_DRP_TOGGLE_ON,
+};
+
 static void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_HOST_USBC_PPC_INT_ODL:
 		sn5s330_interrupt(USB_PD_PORT_HOST);
 		break;
+	case GPIO_USBC_DP_PPC_INT_ODL:
+		sn5s330_interrupt(USB_PD_PORT_DP);
+		break;
 
 	default:
 		break;
 	}
+}
+
+static void board_tcpc_debug(void)
+{
+	board_debug_gpio(TRIGGER_1, 0);
+	board_debug_gpio(TRIGGER_2, 0);
+}
+DECLARE_DEFERRED(board_tcpc_debug);
+
+static void tcpc_alert_event(enum gpio_signal s)
+{
+	int port = -1;
+
+	board_debug_gpio(TRIGGER_1, 1);
+	hook_call_deferred(&board_tcpc_debug_data, 1*MSEC);
+	switch (s) {
+	case GPIO_USBC_DP_MUX_ALERT_ODL:
+		board_debug_gpio(TRIGGER_2, 1);
+		port = USB_PD_PORT_DP;
+		break;
+	default:
+		return;
+	}
+
+	schedule_deferred_pd_interrupt(port);
 }
 
 void hpd_interrupt(enum gpio_signal signal)
@@ -86,26 +120,47 @@ static void board_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
 
 /* TCPCs */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	{
+	[USB_PD_PORT_HOST] = {
 		.bus_type = EC_BUS_TYPE_EMBEDDED,
 		.drv = &stm32gx_tcpm_drv,
+	},
+	[USB_PD_PORT_DP] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_I2C1,
+			.addr_flags = PS8751_I2C_ADDR2_FLAGS,
+		},
+		.drv = &ps8xxx_tcpm_drv,
 	},
 };
 
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.usb_port = USB_PD_PORT_HOST,
+		.i2c_port = I2C_PORT_I2C1,
 		.i2c_addr_flags = PS8822_I2C_ADDR3_FLAG,
 		.driver = &ps8822_usb_mux_driver,
 		.hpd_update = &board_hpd_update,
+	},
+	[USB_PD_PORT_DP] = {
+		.usb_port = USB_PD_PORT_DP,
+		.i2c_port = I2C_PORT_I2C1,
+		.i2c_addr_flags = PS8751_I2C_ADDR2_FLAGS,
+		.driver = &tcpci_tcpm_usb_mux_driver,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 };
 
 /* USB-C PPC Configuration */
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
-		.i2c_port = I2C_PORT_USBC,
+		.i2c_port = I2C_PORT_I2C1,
 		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
+		.drv = &sn5s330_drv
+	},
+	[USB_PD_PORT_DP] = {
+		.i2c_port = I2C_PORT_I2C1,
+		.i2c_addr_flags = SN5S330_ADDR2_FLAGS,
 		.drv = &sn5s330_drv
 	},
 };
@@ -121,22 +176,22 @@ void board_tcpc_init(void)
 {
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
-
-	/* Enable TCPC interrupts. */
-
+	gpio_enable_interrupt(GPIO_USBC_DP_PPC_INT_ODL);
 	/* Enable HPD interrupt */
 	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
+	/* Enable TCPC interrupts. */
+	gpio_enable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
 enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
 {
-	/* Only port 0 so far, request DRP toggle */
-	return PD_DRP_TOGGLE_ON;
+	return pd_dual_role_init[port];
 }
 
 static void board_init(void)
 {
+	usb_mux_hpd_update(1, 0, 0);
 
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
@@ -145,6 +200,8 @@ int ppc_get_alert_status(int port)
 {
 	if (port == USB_PD_PORT_HOST)
 		return gpio_get_level(GPIO_HOST_USBC_PPC_INT_ODL) == 0;
+	else if (port == USB_PD_PORT_DP)
+		return gpio_get_level(GPIO_USBC_DP_PPC_INT_ODL) == 0;
 
 	return 0;
 }
@@ -185,4 +242,19 @@ void board_debug_gpio(int trigger, int enable, int pulse_usec)
 		CPRINTS("bad debug gpio selection");
 		break;
 	}
+}
+
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+	int level;
+
+	if (!gpio_get_level(GPIO_USBC_DP_MUX_ALERT_ODL)) {
+		level = !!(tcpc_config[USB_PD_PORT_DP].flags &
+			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level)
+			status |= PD_STATUS_TCPC_ALERT_1;
+	}
+
+	return status;
 }
