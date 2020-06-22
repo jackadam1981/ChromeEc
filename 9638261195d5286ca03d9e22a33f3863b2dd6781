@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1defc63_cd2f7c80",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-06-22T20:56:33Z",
+      "side": 1,
+      "message": "Agreed. But in my defense, look at fp_sensor_mock.c:\n`struct mock_ctrl_fp_sensor mock_ctrl_fp_sensor \u003d`",
+      "parentUuid": "6b4f7563_2bc62d63",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "9638261195d5286ca03d9e22a33f3863b2dd6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e33a4add_aeabea77",
         "filename": "common/mock/usb_tc_sm_mock.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "9638261195d5286ca03d9e22a33f3863b2dd6781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaf1eebe_08470823",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-06-22T20:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e33a4add_aeabea77",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "9638261195d5286ca03d9e22a33f3863b2dd6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5e3b080e_ba398422",
+        "filename": "include/mock/usb_pd_mock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-06-22T20:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73d25dbb_4a4cb3ee",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "9638261195d5286ca03d9e22a33f3863b2dd6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "278f9784_ba1ab7da",
         "filename": "include/mock/usb_pe_sm_mock.h",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "9638261195d5286ca03d9e22a33f3863b2dd6781",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d85f9f09_b3c2b18d",
+        "filename": "include/mock/usb_pe_sm_mock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-06-22T20:56:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "278f9784_ba1ab7da",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "9638261195d5286ca03d9e22a33f3863b2dd6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
