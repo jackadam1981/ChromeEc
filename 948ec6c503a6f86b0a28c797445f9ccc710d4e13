@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60758261_92b3de33",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T21:25:13Z",
+      "side": 1,
+      "message": "we should actually be doing this at the tcpm_ layer instead of the tcpi_ layer so any TCPC driver that does not use the TCPCI direct can also benefit from these debug prints",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "948ec6c503a6f86b0a28c797445f9ccc710d4e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58fbbef9_1046a03f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T21:25:13Z",
+      "side": 1,
+      "message": "can you define this below and only if DEBUG_GET_CC is defined please (in order to state space)",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "948ec6c503a6f86b0a28c797445f9ccc710d4e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
