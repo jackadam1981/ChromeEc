@@ -16,14 +16,10 @@
 
 /* USB Type C and USB PD defines */
 #define USB_PD_PORT_HOST   0
-#define USB_PD_PORT_UF   1
-#define USB_PD_PORT_DP   2
-
-/* #undef CONFIG_USB_PRL_SM */
-/* #undef CONFIG_USB_PE_SM */
-
+#define USB_PD_PORT_DP   1
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_MUX_PS8822
-#define BOARD_ALLOW_HIGH_VBUS
+/* #define BOARD_ALLOW_HIGH_VBUS */
 
 /* #undef CONFIG_USB_PD_INITIAL_DRP_STATE */
 /* #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SOURCE */
@@ -41,6 +37,14 @@
 #define GPIO_ENTERING_RW	GPIO_EC_ENTERING_RW
 #define GPIO_WP_L		GPIO_EC_WP_L
 
+/* I2C port names */
+#define I2C_PORT_I2C1		0
+#define I2C_PORT_I2C2		1
+#define I2C_PORT_I2C3	2
+/* Required symbolic I2C port names */
+#define I2C_PORT_MP4245 I2C_PORT_I2C2
+#define I2C_PORT_EEPROM I2C_PORT_I2C3
+#define MP4245_SLAVE_ADDR MP4245_I2C_ADDR_0_FLAGS
 
 
 #ifndef __ASSEMBLER__
