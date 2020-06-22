@@ -10,13 +10,13 @@
 
 
 
-GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_BOTH, ppc_interrupt)
-GPIO_INT(DDI_MST_IN_HPD,         PIN(F, 1),       GPIO_INT_BOTH, hpd_interrupt)
-
+GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
+GPIO_INT(USBC_DP_MUX_ALERT_ODL,  PIN(B,  1),      GPIO_INT_FALLING | GPIO_PULL_UP, tcpc_alert_event)
+GPIO_INT(USBC_DP_PPC_INT_ODL,    PIN(E,  7),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
+GPIO_INT(DDI_MST_IN_HPD,         PIN(F,  0),       GPIO_INT_BOTH, hpd_interrupt)
 /*
  * USB-C Interrupts
  * TODO: Enable TCPC Interrupts
- * GPIO_INT(USBC_DP_MUX_ALERT_ODL,  PIN(B,  1),      GPIO_INT_BOTH,   tcpc_alert_event)
  * GPIO_INT(USBC_UF_MUX_ALERT_L,    PIN(C, 12),      GPIO_INT_BOTH,   tcpc_alert_event)
  * GPIO_INT(USBC_UF_PPC_INT_L,      PIN(B,  5),      GPIO_INT_BOTH,   ppc_interrupt)
  * GPIO_INT(BB_I2C_INT_L,           PIN(D,  8),      GPIO_INT_BOTH,   tcpc_alert_event)
