@@ -73,6 +73,145 @@
     },
     {
       "key": {
+        "uuid": "c2e6e49b_a3211879",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:02:26Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment to the code that we need to set the CC lines here instead of earlier becasuse... so we can track/reason about it later",
+      "parentUuid": "a7a3467f_43253ee8",
+      "range": {
+        "startLine": 1765,
+        "startChar": 0,
+        "endLine": 1766,
+        "endChar": 23
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f685c42b_58893a88",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1985,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:02:26Z",
+      "side": 1,
+      "message": "shouldnt\u0027 we use pd_set_vbus_discharge isntead? What about PPC-based Vbus dischargers",
+      "range": {
+        "startLine": 1984,
+        "startChar": 2,
+        "endLine": 1985,
+        "endChar": 32
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82dd1859_bd99438a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:02:26Z",
+      "side": 1,
+      "message": "don\u0027t we also want to enable auto discharge after we completed the PR swap too?",
+      "range": {
+        "startLine": 2034,
+        "startChar": 2,
+        "endLine": 2035,
+        "endChar": 49
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f31e07f_f95a25b1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2118,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:02:26Z",
+      "side": 1,
+      "message": "do we need to notify PE or PRL layer to do some sort of error recovery (like soft or hard reset)",
+      "range": {
+        "startLine": 2116,
+        "startChar": 3,
+        "endLine": 2118,
+        "endChar": 40
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d690dc32_f901f5f5",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:02:26Z",
+      "side": 1,
+      "message": "we also seemed to disabled this in the PE layer when we were doing a PR swap. Can we consolidate to this typec layer and just unconditionally disabled auto discharge\n\n(Also what happens if we haven\u0027t discharged Vbus yet, should we do that first are we guaranteed to discharge vbus before leaving this state)?",
+      "range": {
+        "startLine": 2209,
+        "startChar": 2,
+        "endLine": 2210,
+        "endChar": 49
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "486f8cfb_0659d896",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2472,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:02:26Z",
+      "side": 1,
+      "message": "why don\u0027t we want to enable this for PR swap case too once the tc_src_power_on is stable?",
+      "range": {
+        "startLine": 2472,
+        "startChar": 0,
+        "endLine": 2472,
+        "endChar": 49
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44cc84b4_f5f07818",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -113,6 +252,70 @@
         "startChar": 3,
         "endLine": 2742,
         "endChar": 42
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88fd8bfd_99d8c588",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2742,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:02:26Z",
+      "side": 1,
+      "message": "Can we make drp_auto_toggle_next_state return the correct state instead of having this transaltion layer here?",
+      "parentUuid": "1fcdfbe0_1d725003",
+      "range": {
+        "startLine": 2742,
+        "startChar": 3,
+        "endLine": 2742,
+        "endChar": 42
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0b215a_b49428ff",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2751,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:02:26Z",
+      "side": 1,
+      "message": "same, let\u0027s return the correct state from drp_auto_toggle_next_state",
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f9be040_2591510e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3107,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T22:02:26Z",
+      "side": 1,
+      "message": "we should proably rename this super state to be about power role instead of resistor. You don\u0027t have to do it in this CL though",
+      "range": {
+        "startLine": 3107,
+        "startChar": 12,
+        "endLine": 3107,
+        "endChar": 26
       },
       "revId": "2750df417048c47700a8a15ab5653e14301058cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
