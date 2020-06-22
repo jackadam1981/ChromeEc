@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbfc5c29_80eaa7ec",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-22T00:50:53Z",
+      "side": 1,
+      "message": "This might be easier to understand if the config branch is at the top level:\n\n```\nif CONFIG_RESET_AFTER_POWER_ON {\n  if reset_pin_reset { ... } else { ... }\n} else {\n  ...\n}\n```\n\nThat way a given configuration is all in one block, rather than interleaved as they are now which takes some work to make sense of.",
+      "revId": "9a993a12b079552027d610d5a98bf1cc220fcbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
