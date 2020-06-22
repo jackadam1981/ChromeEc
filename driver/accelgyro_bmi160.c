@@ -252,7 +252,7 @@ static int perform_calib(const struct motion_sensor_t *s, int enable)
 			 BMI160_FOC_CONF, val);
 	ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
 			 BMI160_CMD_REG, BMI160_CMD_START_FOC);
-	deadline.val = get_time().val + 400 * MSEC;
+	deadline.val = get_time().val + 600 * MSEC;
 	do {
 		if (timestamp_expired(deadline, NULL)) {
 			ret = EC_RES_TIMEOUT;
