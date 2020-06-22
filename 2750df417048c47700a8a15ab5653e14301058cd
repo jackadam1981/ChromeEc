@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00afdf3e_5d6a689d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-22T20:48:51Z",
+      "side": 1,
+      "message": "I can try to put it back but entering ATTACHED_WAIT from auto-toggle, where the TCPCI has already told us the connection puts them back in a confused unattached state.  When I did that previously and land in UNATTACHED we just loop coming in and out of auto-toggle.  Setting the pull in the CC lines when we know we are switching them or just became stable seems like the best route and not the generic parent mechanism.",
+      "parentUuid": "74aa49c6_0a935937",
+      "range": {
+        "startLine": 1765,
+        "startChar": 0,
+        "endLine": 1766,
+        "endChar": 23
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44cc84b4_f5f07818",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "2750df417048c47700a8a15ab5653e14301058cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fcdfbe0_1d725003",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2742,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-22T20:48:51Z",
+      "side": 1,
+      "message": "auto-toggle has already performed the UNATTACHED states and the state diagram says after auto toggle to go to ATTACHED_WAIT",
+      "parentUuid": "44cc84b4_f5f07818",
+      "range": {
+        "startLine": 2742,
+        "startChar": 3,
+        "endLine": 2742,
+        "endChar": 42
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

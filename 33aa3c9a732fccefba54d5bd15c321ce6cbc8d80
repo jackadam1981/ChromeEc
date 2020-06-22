@@ -22,6 +22,30 @@
       "revId": "33aa3c9a732fccefba54d5bd15c321ce6cbc8d80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11bfe62e_d76b31e7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-22T20:48:51Z",
+      "side": 0,
+      "message": "It is true that they do not tell us when we leave Safe0V but there is a range between Safe0V and PRESENT that we some times meander into when we were checking for Safe0V.  Removing something that TCPCI does not do in order to try to be more accurate than they are made us miss swaps that we hit Safe0V and hovered over the line.  This seems safer with the current TCPCI spec",
+      "parentUuid": "cc27f403_f4cbbdaf",
+      "range": {
+        "startLine": 756,
+        "startChar": 3,
+        "endLine": 758,
+        "endChar": 32
+      },
+      "revId": "33aa3c9a732fccefba54d5bd15c321ce6cbc8d80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
