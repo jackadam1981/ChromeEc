@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79b79985_e097e33b",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-22T21:53:32Z",
+      "side": 1,
+      "message": "Bug b/152417597 still applies.  dfp_consume_cable_repsonse() and dfp_consume_response() can de-duplicate some shared code.",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 1
+      },
+      "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b70cc1b_55e189f5",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-22T21:53:32Z",
+      "side": 1,
+      "message": "Should be TCPC_TX_SOP_PRIME once you change process_am_discover_svids().\n\nThis function can possibly then be used by TCPMv2.",
+      "range": {
+        "startLine": 791,
+        "startChar": 55,
+        "endLine": 791,
+        "endChar": 66
+      },
+      "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043ee17f_9e93381b",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-22T21:53:32Z",
+      "side": 1,
+      "message": "You can now pass \"sop\" here instead of hard coding TCPC_TX_SOP.",
+      "range": {
+        "startLine": 459,
+        "startChar": 25,
+        "endLine": 459,
+        "endChar": 36
+      },
+      "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c06089b1_17f1469d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-22T21:53:32Z",
+      "side": 1,
+      "message": "This storage is now redundant with discovery[port][TCPC_TX_SOP], but it\u0027s okay to leave it in.  No need to fix in a follow on CL unless there\u0027s a bug  found before TCPMv2 is ready.",
+      "range": {
+        "startLine": 518,
+        "startChar": 2,
+        "endLine": 518,
+        "endChar": 39
+      },
+      "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30bce3ed_2c6a8f39",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-22T21:53:32Z",
+      "side": 1,
+      "message": "Should be \"sop\".",
+      "range": {
+        "startLine": 708,
+        "startChar": 27,
+        "endLine": 708,
+        "endChar": 38
+      },
+      "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
