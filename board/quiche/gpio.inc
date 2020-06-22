@@ -9,7 +9,9 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
-GPIO_INT(DDI_MST_IN_HPD,         PIN(F, 1),       GPIO_INT_BOTH, hpd_interrupt)
+GPIO_INT(USBC_DP_MUX_ALERT_ODL,  PIN(B,  1),      GPIO_INT_FALLING | GPIO_PULL_UP, tcpc_alert_event)
+GPIO_INT(USBC_DP_PPC_INT_ODL,    PIN(E,  7),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
+GPIO_INT(DDI_MST_IN_HPD,         PIN(F,  0),       GPIO_INT_BOTH, hpd_interrupt)
 
 /* Power sequencing signals */
 GPIO(PWR_BTN,                       PIN(A,  0), GPIO_INPUT)
