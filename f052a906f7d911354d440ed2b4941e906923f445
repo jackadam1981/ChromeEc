@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c55e5003_38ac3414",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T21:15:56Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we would want to exit the DP mode right after we configured it. Wouldn\u0027t\u0027 we want to say in the DP mode",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 36
+      },
+      "revId": "f052a906f7d911354d440ed2b4941e906923f445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
