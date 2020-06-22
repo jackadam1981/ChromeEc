@@ -2496,7 +2496,6 @@ int charge_get_active_chg_chip(void)
 #endif
 }
 
-#ifndef TEST_BUILD
 int charge_get_plt_plus_bat_desired_mw(void)
 {
 	/*
@@ -2533,7 +2532,7 @@ void charge_reset_stable_current(void)
 	/* it takes 8 to 10 seconds to stabilize battery current in practice */
 	charge_reset_stable_current_us(10 * SECOND);
 }
-#endif
+
 /*****************************************************************************/
 /* Host commands */
 

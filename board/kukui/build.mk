@@ -13,3 +13,5 @@ CHIP_VARIANT:=stm32f09x
 BASEBOARD:=kukui
 
 board-y=board.o led.o
+
+test-list-y=flash_write_protect

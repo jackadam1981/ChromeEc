@@ -17,7 +17,11 @@ test_static int check_image_and_hardware_write_protect(void)
 		return EC_ERROR_UNKNOWN;
 	}
 
+#if defined(CONFIG_WP_ACTIVE_HIGH)
 	if (gpio_get_level(GPIO_WP) != 1) {
+#else
+	if (gpio_get_level(GPIO_WP_L) != 0) {
+#endif
 		ccprintf("Hardware write protect (GPIO_WP) must be enabled\n");
 		return EC_ERROR_UNKNOWN;
 	}
