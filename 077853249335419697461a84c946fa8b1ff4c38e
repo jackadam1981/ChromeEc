@@ -22,6 +22,30 @@
       "revId": "077853249335419697461a84c946fa8b1ff4c38e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eff01f98_89eb5482",
+        "filename": "board/servo_v4p1/ro_files.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-22T18:37:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "438857cc_5c7c79ee",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "077853249335419697461a84c946fa8b1ff4c38e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
