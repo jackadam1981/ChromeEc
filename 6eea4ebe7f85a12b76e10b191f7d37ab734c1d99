@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dbdad210_bda76ff9",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-22T23:09:38Z",
+      "side": 1,
+      "message": "partially right, adding check for !r.valid, but we will still need to report FIPS_TRNG error once FIPS framework will land.",
+      "parentUuid": "686e8d37_744b55e6",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 53
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdfa5ce3_2a20160c",
         "filename": "board/cr50/fips_rand.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba88174a_de09d07d",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-22T23:09:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdfa5ce3_2a20160c",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 3
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bd14a340_cce922a5",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-22T23:09:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42a0e74c_c9c9632d",
+      "range": {
+        "startLine": 285,
+        "startChar": 15,
+        "endLine": 285,
+        "endChar": 43
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b715cbd_1fc41bd5",
         "filename": "board/cr50/fips_rand.c",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1091062_4df33dfb",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-22T23:09:38Z",
+      "side": 1,
+      "message": "interestingly compiler didn\u0027t warn on it... I recall later gcc caught this with additional flags.",
+      "parentUuid": "7b715cbd_1fc41bd5",
+      "range": {
+        "startLine": 356,
+        "startChar": 9,
+        "endLine": 356,
+        "endChar": 32
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "e0bb5682_8d420986",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-22T23:09:38Z",
+      "side": 1,
+      "message": "this is leftover actually... not used and removed.",
+      "parentUuid": "96aa1153_e6aaa665",
+      "range": {
+        "startLine": 398,
+        "startChar": 1,
+        "endLine": 398,
+        "endChar": 36
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94b292a6_da95c287",
         "filename": "board/cr50/fips_rand.h",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d2e6b5_c1de658a",
+        "filename": "board/cr50/fips_rand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-22T23:09:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94b292a6_da95c287",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
