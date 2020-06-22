@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "748734c4_b50341b2",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T20:47:41Z",
+      "side": 1,
+      "message": "we should probably add a comment here like \"After we stopped an resetart the PRL statemachine we also need to reset the default PD revisions\"",
+      "range": {
+        "startLine": 623,
+        "startChar": 2,
+        "endLine": 623,
+        "endChar": 29
+      },
+      "revId": "85abcb90e6fb647fe1c60aab1a6ce236e77c7fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
