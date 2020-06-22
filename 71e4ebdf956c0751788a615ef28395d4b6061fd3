@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5eaa852_ec9713bc",
+        "filename": "test/flash_write_protect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-06-22T18:02:16Z",
+      "side": 1,
+      "message": "I think new code is trying to move to using IS_ENABLED:\n\n  if (IS_ENABLED(CONFIG_WP_ALWAYS))",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "71e4ebdf956c0751788a615ef28395d4b6061fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
