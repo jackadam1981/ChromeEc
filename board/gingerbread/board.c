@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "driver/ppc/sn5s330.h"
+#include "driver/ppc/stub.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/stm32gx.h"
 #include "driver/tcpm/tcpci.h"
@@ -28,6 +29,21 @@
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
+static void tcpc_alert_event(enum gpio_signal s)
+{
+	int port = -1;
+
+	switch (s) {
+	case GPIO_USBC_DP_MUX_ALERT_ODL:
+		port = USB_PD_PORT_DP;
+		break;
+	default:
+		return;
+	}
+
+	schedule_deferred_pd_interrupt(port);
+}
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -91,11 +107,23 @@ void board_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
 
 }
 
-/* TCPCs */
+/*
+ * TCPCs: 2 USBC/PD ports
+ *     port 0 -> host port              -> STM32G4 UCPD
+ *     port 1 -> user data/display port -> PS8805
+ */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.bus_type = EC_BUS_TYPE_EMBEDDED,
 		.drv = &stm32gx_tcpm_drv,
+	},
+	{
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_EEPROM,
+			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+		},
+		.drv = &ps8xxx_tcpm_drv,
 	},
 };
 
@@ -106,6 +134,12 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.driver = &tusb1064_usb_mux_driver,
 		.hpd_update = &board_hpd_update,
 	},
+	[USB_PD_PORT_DP] = {
+		.usb_port = USB_PD_PORT_DP,
+		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,
+		.driver = &tcpci_tcpm_usb_mux_driver,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+	},
 };
 
 /* USB-C PPC Configuration */
@@ -114,6 +148,9 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_port = 2,
 		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
 		.drv = &sn5s330_drv
+	},
+	[USB_PD_PORT_DP] = {
+		.drv = &ppc_stub_drv
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
@@ -125,7 +162,7 @@ void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
 
 	/* Enable TCPC interrupts. */
-
+	gpio_enable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
 	/* Enable HPD interrupt */
 	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
 
@@ -200,4 +237,19 @@ void board_debug_gpio(int trigger, int enable, int pulse_usec)
 		CPRINTS("bad debug gpio selection");
 		break;
 	}
+}
+
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+	int level;
+
+	if (!gpio_get_level(GPIO_USBC_DP_MUX_ALERT_ODL)) {
+		level = !!(tcpc_config[USB_PD_PORT_DP].flags &
+			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level)
+			status |= PD_STATUS_TCPC_ALERT_1;
+	}
+
+	return status;
 }
