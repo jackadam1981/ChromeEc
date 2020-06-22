@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "957cedda_8000c1d2",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3018,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-22T20:37:10Z",
+      "side": 1,
+      "message": "yes, looks like save_new_object always sets EVICTABLE.",
+      "parentUuid": "090625c4_6b449efb",
+      "range": {
+        "startLine": 3017,
+        "startChar": 2,
+        "endLine": 3018,
+        "endChar": 51
+      },
+      "revId": "7d201c76cdf8a8fb65fc2850c50a10c1a4efb431",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "991ed765_2c94130c",
         "filename": "common/new_nvmem.c",
         "patchSetId": 2
