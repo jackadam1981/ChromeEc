@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Waddledee board configuration */
+/* Drawcia board configuration */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
@@ -111,16 +111,11 @@ enum temp_sensor_id {
 
 /* List of possible batteries */
 enum battery_type {
-	BATTERY_LGC15,
-	BATTERY_PANASONIC_AP15O5L,
-	BATTERY_SANYO,
-	BATTERY_SONY,
-	BATTERY_SMP_AP13J7K,
-	BATTERY_PANASONIC_AC15A3J,
-	BATTERY_LGC_AP18C8K,
-	BATTERY_MURATA_AP18C4K,
-	BATTERY_LGC_AP19A8K,
-	BATTERY_LGC_G023,
+	BATTERY_DANAPACK_COS,
+	BATTERY_DANAPACK_ATL,
+	BATTERY_SAMSUNG_SDI,
+	BATTERY_SIMPLO_COS,
+	BATTERY_SIMPLO_HIGHPOWER,
 	BATTERY_TYPE_COUNT,
 };
 
