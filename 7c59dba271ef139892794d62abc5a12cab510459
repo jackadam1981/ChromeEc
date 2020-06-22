@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a1f3389_2c0444b5",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4873,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T21:36:46Z",
+      "side": 1,
+      "message": "nit: this line is over 80 chars",
+      "revId": "7c59dba271ef139892794d62abc5a12cab510459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "545ea3f8_9a632135",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5463,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T21:36:46Z",
+      "side": 1,
+      "message": "if argc \u003d\u003d8 isn\u0027t that an error?",
+      "range": {
+        "startLine": 5463,
+        "startChar": 8,
+        "endLine": 5463,
+        "endChar": 17
+      },
+      "revId": "7c59dba271ef139892794d62abc5a12cab510459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
