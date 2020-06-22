@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dcab3cd_db5360f0",
+        "filename": "board/servo_v4p1/pathsel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-22T22:25:52Z",
+      "side": 1,
+      "message": "Keep the minimal set, i.e. just the gpio.h and ioexpanders.h.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "71c81c35dd7a7db69cbf3fadb82f1ff59e3af93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c10fa1de_0ed248ea",
+        "filename": "board/servo_v4p1/pathsel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-22T22:25:52Z",
+      "side": 1,
+      "message": "It is duplicated to the above usb3_a0_to_dut()?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "71c81c35dd7a7db69cbf3fadb82f1ff59e3af93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76b728d1_a18a3610",
+        "filename": "board/servo_v4p1/pathsel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-22T22:25:52Z",
+      "side": 1,
+      "message": "The EN pin of the mux is always asserted. Is there any case which needs to disable it?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "71c81c35dd7a7db69cbf3fadb82f1ff59e3af93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d59469_fb546330",
+        "filename": "board/servo_v4p1/pathsel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-22T22:25:52Z",
+      "side": 1,
+      "message": "Set the GPIO_FASTBOOT_DUTHUB_MUX_SEL back to 1?\n\nSince there is an Ethernet chip behind the hub, have to call one of the above usb3_a?_to_usb() calls to get the Ethernet chip back, which seems weird.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "71c81c35dd7a7db69cbf3fadb82f1ff59e3af93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
