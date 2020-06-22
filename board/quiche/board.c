@@ -30,16 +30,50 @@
 /* only needed to build for now */
 struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 
+static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	PD_DRP_TOGGLE_ON,
+	PD_DRP_TOGGLE_ON,
+//	PD_DRP_FORCE_SOURCE,
+};
+
 static void ppc_interrupt(enum gpio_signal signal)
 {
 	switch (signal) {
 	case GPIO_HOST_USBC_PPC_INT_ODL:
 		sn5s330_interrupt(USB_PD_PORT_HOST);
 		break;
+	case GPIO_USBC_DP_PPC_INT_ODL:
+		sn5s330_interrupt(USB_PD_PORT_DP);
+		break;
 
 	default:
 		break;
 	}
+}
+
+static void board_tcpc_debug(void)
+{
+	board_debug_gpio(TRIGGER_1, 0);
+	board_debug_gpio(TRIGGER_2, 0);
+}
+DECLARE_DEFERRED(board_tcpc_debug);
+
+static void tcpc_alert_event(enum gpio_signal s)
+{
+	int port = -1;
+
+	board_debug_gpio(TRIGGER_1, 1);
+	hook_call_deferred(&board_tcpc_debug_data, 1*MSEC);
+	switch (s) {
+	case GPIO_USBC_DP_MUX_ALERT_ODL:
+		board_debug_gpio(TRIGGER_2, 1);
+		port = USB_PD_PORT_DP;
+		break;
+	default:
+		return;
+	}
+
+	schedule_deferred_pd_interrupt(port);
 }
 
 void hpd_interrupt(enum gpio_signal signal)
@@ -88,26 +122,47 @@ static void board_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
 
 /* TCPCs */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
-	{
+	[USB_PD_PORT_HOST] = {
 		.bus_type = EC_BUS_TYPE_EMBEDDED,
 		.drv = &stm32gx_tcpm_drv,
+	},
+	[USB_PD_PORT_DP] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_I2C1,
+			.addr_flags = PS8751_I2C_ADDR2_FLAGS,
+		},
+		.drv = &ps8xxx_tcpm_drv,
 	},
 };
 
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.usb_port = USB_PD_PORT_HOST,
+		.i2c_port = I2C_PORT_I2C1,
 		.i2c_addr_flags = PS8822_I2C_ADDR3_FLAG,
 		.driver = &ps8822_usb_mux_driver,
 		.hpd_update = &board_hpd_update,
+	},
+	[USB_PD_PORT_DP] = {
+		.usb_port = USB_PD_PORT_DP,
+		.i2c_port = I2C_PORT_I2C1,
+		.i2c_addr_flags = PS8751_I2C_ADDR2_FLAGS,
+		.driver = &tcpci_tcpm_usb_mux_driver,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 };
 
 /* USB-C PPC Configuration */
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
-		.i2c_port = I2C_PORT_USBC,
+		.i2c_port = I2C_PORT_I2C1,
 		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
+		.drv = &sn5s330_drv
+	},
+	[USB_PD_PORT_DP] = {
+		.i2c_port = I2C_PORT_I2C1,
+		.i2c_addr_flags = SN5S330_ADDR2_FLAGS,
 		.drv = &sn5s330_drv
 	},
 };
@@ -118,11 +173,11 @@ void board_tcpc_init(void)
 {
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
-
-	/* Enable TCPC interrupts. */
-
+	gpio_enable_interrupt(GPIO_USBC_DP_PPC_INT_ODL);
 	/* Enable HPD interrupt */
 	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
+	/* Enable TCPC interrupts. */
+	gpio_enable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
@@ -134,11 +189,15 @@ static void board_select_drp_mode(void)
 	 * DRP state only needs to be set once, after it's initialized in TCPMv2
 	 * as the default role of sink only.
 	 */
-	pd_set_dual_role(USB_PD_PORT_HOST, PD_DRP_TOGGLE_ON);
-	CPRINTS("ucpd: drp_state = %d", pd_get_dual_role(0));
+	int port;
+
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		pd_set_dual_role(port, pd_dual_role_init[port]);
+		CPRINTS("quiche[p%d]: drp_state = %d", port,
+			pd_get_dual_role(port));
+	}
 }
 DECLARE_DEFERRED(board_select_drp_mode);
-
 
 static void square_wave(void);
 DECLARE_DEFERRED(square_wave);
@@ -152,10 +211,10 @@ void square_wave(void)
 	hook_call_deferred(&square_wave_data, 100*MSEC);
 }
 
-
 static void board_init(void)
 {
-	hook_call_deferred(&board_select_drp_mode_data, 50 * MSEC);
+	/* TODO */
+	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
 	hook_call_deferred(&square_wave_data, 50 * MSEC);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
@@ -164,6 +223,8 @@ int ppc_get_alert_status(int port)
 {
 	if (port == USB_PD_PORT_HOST)
 		return gpio_get_level(GPIO_HOST_USBC_PPC_INT_ODL) == 0;
+	else if (port == USB_PD_PORT_DP)
+		return gpio_get_level(GPIO_USBC_DP_PPC_INT_ODL) == 0;
 
 	return EC_ERROR_UNIMPLEMENTED;
 }
@@ -186,4 +247,19 @@ void board_debug_gpio(int trigger, int enable)
 		CPRINTS("bad debug gpio selection");
 		break;
 	}
+}
+
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+	int level;
+
+	if (!gpio_get_level(GPIO_USBC_DP_MUX_ALERT_ODL)) {
+		level = !!(tcpc_config[USB_PD_PORT_DP].flags &
+			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level)
+			status |= PD_STATUS_TCPC_ALERT_1;
+	}
+
+	return status;
 }
