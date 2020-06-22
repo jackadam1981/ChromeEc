@@ -266,7 +266,7 @@ void mt6370_charger_profile_override(struct charge_state_data *curr)
 {
 	static int previous_chg_limit_mv;
 	int chg_limit_mv = pd_get_max_voltage();
-
+	CPRINTS("[SC] chg_limit_mv=%d", chg_limit_mv);
 	battery_desired_curr_dynamic(curr);
 
 	battery_thermal_control(curr);
@@ -318,6 +318,8 @@ void mt6370_charger_profile_override(struct charge_state_data *curr)
 		chg_limit_mv = 5500;
 	else
 		chg_limit_mv = PD_MAX_VOLTAGE_MV;
+	
+	CPRINTS("[SC] chg_limit_mv22=%d", chg_limit_mv);
 
 	if (chg_limit_mv != previous_chg_limit_mv)
 		CPRINTS("VBUS limited to %dmV", chg_limit_mv);
@@ -325,7 +327,11 @@ void mt6370_charger_profile_override(struct charge_state_data *curr)
 
 	/* Pull down VBUS */
 	if (pd_get_max_voltage() != chg_limit_mv)
+	{
+		CPRINTS("[SC] chg_limit_mv33=%d", chg_limit_mv);
 		pd_set_external_voltage_limit(0, chg_limit_mv);
+	}
+		
 
 	/*
 	 * When the charger says it's done charging, even if fuel gauge says
@@ -336,8 +342,10 @@ void mt6370_charger_profile_override(struct charge_state_data *curr)
 	 * Enable this hack on on-board gauge only (b/142097561)
 	 */
 	if (IS_ENABLED(CONFIG_BATTERY_MAX17055) && rt946x_is_charge_done()) {
+
 		curr->batt.state_of_charge = MAX(BATTERY_LEVEL_NEAR_FULL,
 						 curr->batt.state_of_charge);
+		CPRINTS("[SC] curr->batt.state_of_charge=%d", curr->batt.state_of_charge);
 	}
 
 }

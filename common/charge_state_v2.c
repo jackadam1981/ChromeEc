@@ -37,6 +37,7 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
 /* Extra debugging prints when allocating power between lid and base. */
+static int debugging=1;
 #undef CHARGE_ALLOCATE_EXTRA_DEBUG
 
 #define CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US \
@@ -1169,7 +1170,11 @@ static int calc_is_full(void)
 	/* If bad state of charge reading, return last value */
 	if (curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE ||
 	    curr.batt.state_of_charge > 100)
-		return ret;
+		{
+			CPRINTS("[SC] curr.batt.flags=%x, curr.batt.state_of_charge=%d", curr.batt.flags, curr.batt.state_of_charge);
+			return ret;
+		}
+		
 	/*
 	 * Battery is full when SoC is above 90% and battery desired current
 	 * is 0. This is necessary because some batteries stop charging when
@@ -1178,6 +1183,7 @@ static int calc_is_full(void)
 	 */
 	ret = (curr.batt.state_of_charge >= 90 &&
 	       curr.batt.desired_current == 0);
+	CPRINTS("[SC] curr.batt.state_of_charge=%d, curr.batt.desired_current=%d", curr.batt.state_of_charge, curr.batt.desired_current);
 	return ret;
 }
 
@@ -1715,7 +1721,11 @@ void charger_task(void *u)
 		/* battery current stable now, saves the current. */
 		if (IS_ENABLED(CONFIG_USB_PD_PREFER_MV) &&
 		    get_time().val > stable_ts.val && curr.batt.current >= 0)
-			stable_current = curr.batt.current;
+			{
+				stable_current = curr.batt.current;
+				CPRINTS("[SC] //////////////////////stable_current=%d", stable_current);
+			}
+			
 
 		/*
 		 * Now decide what we want to do about it. We'll normally just
@@ -1726,11 +1736,14 @@ void charger_task(void *u)
 		 */
 		if (curr.batt.flags & (BATT_FLAG_BAD_DESIRED_VOLTAGE |
 					BATT_FLAG_BAD_DESIRED_CURRENT)) {
+			CPRINTS("[SC] BATT_FLAG_BAD_DESIRED_VOLTAGE or BATT_FLAG_BAD_DESIRED_CURRENT");
 			curr.requested_voltage = 0;
 			curr.requested_current = 0;
 		} else {
 			curr.requested_voltage = curr.batt.desired_voltage;
 			curr.requested_current = curr.batt.desired_current;
+			CPRINTS("[SC] curr.requested_voltage11=%d", curr.requested_voltage);
+			CPRINTS("[SC] curr.requested_current22=%d", curr.requested_current);
 		}
 
 		/* If we *know* there's no battery, wait for one to appear. */
@@ -1738,6 +1751,7 @@ void charger_task(void *u)
 			if (!curr.ac)
 				CPRINTS("running with no battery and no AC");
 			set_charge_state(ST_IDLE);
+			CPRINTS("[SC] curr.batt.is_present == BP_NO");
 			curr.batt_is_charging = 0;
 			battery_was_removed = 1;
 			goto wait_for_it;
@@ -1758,12 +1772,14 @@ void charger_task(void *u)
 		 * actually charge battery.
 		 */
 		curr.batt_is_charging = curr.ac && (curr.batt.current >= 0);
-
+		CPRINTS("[SC] curr.batt_is_charging=%d, curr.ac=%d", curr.batt_is_charging, curr.ac);
+		CPRINTS("[SC] curr.batt.current=%d",  curr.batt.current);
 		/* Don't let the battery hurt itself. */
 		battery_critical = shutdown_on_critical_battery();
 
 		if (!curr.ac) {
 			set_charge_state(ST_DISCHARGE);
+			CPRINTS("[SC] !curr.ac, set_charge_state(ST_DISCHARGE)");
 			goto wait_for_it;
 		}
 
@@ -1771,6 +1787,7 @@ void charger_task(void *u)
 
 		/* Used for factory tests. */
 		if (chg_ctl_mode != CHARGE_CONTROL_NORMAL) {
+			CPRINTS("[SC] Used for factory tests");
 			set_charge_state(ST_IDLE);
 			goto wait_for_it;
 		}
@@ -1778,6 +1795,7 @@ void charger_task(void *u)
 		/* If the battery is not responsive, try to wake it up. */
 		if (!(curr.batt.flags & BATT_FLAG_RESPONSIVE)) {
 			if (battery_seems_to_be_dead || battery_is_cut_off()) {
+				CPRINTS("[SC] /* It's dead, do nothing */");
 				/* It's dead, do nothing */
 				set_charge_state(ST_IDLE);
 				curr.requested_voltage = 0;
@@ -1798,15 +1816,19 @@ void charger_task(void *u)
 					precharge_start_time = get_time();
 					need_static = 1;
 				}
+				CPRINTS("[SC] set_charge_state(ST_PRECHARGE)");
 				set_charge_state(ST_PRECHARGE);
 				curr.requested_voltage =
 					batt_info->voltage_max;
 				curr.requested_current =
 					batt_info->precharge_current;
+				CPRINTS("[SC] curr.requested_voltage33=%d", curr.requested_voltage);
+				CPRINTS("[SC] curr.requested_current44=%d", curr.requested_current);
 			}
 			goto wait_for_it;
 		} else {
 			/* The battery is responding. Yay. Try to use it. */
+			CPRINTS("/* The battery is responding. Yay. Try to use it. */");
 #ifdef CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD
 			/*
 			 * TODO (crosbug.com/p/29467): remove this workaround
@@ -1855,14 +1877,16 @@ void charger_task(void *u)
 				batt_info = battery_get_info();
 				need_static = 1;
 			    }
-
+			
 			battery_seems_to_be_dead = battery_was_removed = 0;
+			CPRINTS("[SC] battery_seems_to_be_dead=%d, set_charge_state(ST_CHARGE)", battery_seems_to_be_dead);
 			set_charge_state(ST_CHARGE);
 		}
 
 wait_for_it:
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
 		if (chg_ctl_mode == CHARGE_CONTROL_NORMAL) {
+			CPRINTS("[SC] chg_ctl_mode == CHARGE_CONTROL_NORMAL");
 			sleep_usec = charger_profile_override(&curr);
 			if (sleep_usec < 0)
 				problem(PR_CUSTOM, sleep_usec);
@@ -1893,6 +1917,7 @@ wait_for_it:
 #endif
 
 		/* Keep the AP informed */
+		CPRINTS("[SC] need_static=%d", need_static);
 		if (need_static)
 			need_static = update_static_battery_info();
 		/* Wait on the dynamic info until the static info is good. */
@@ -1903,6 +1928,8 @@ wait_for_it:
 
 		/* And the EC console */
 		is_full = calc_is_full();
+		CPRINTS("[SC] is_full=%d", is_full);
+		CPRINTS("[SC] curr.batt.flags222=%d", curr.batt.flags);
 		if ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
 		    curr.batt.state_of_charge != prev_charge) ||
 #ifdef CONFIG_EC_EC_COMM_BATTERY_MASTER
@@ -1914,6 +1941,7 @@ wait_for_it:
 			show_charging_progress();
 			prev_charge = curr.batt.state_of_charge;
 			prev_disp_charge = curr.batt.display_charge;
+			CPRINTS("[SC] prev_charge=%d %%, prev_disp_charge=%d %%", prev_charge, prev_disp_charge);
 #ifdef CONFIG_EC_EC_COMM_BATTERY_MASTER
 			prev_charge_base = charge_base;
 #endif
@@ -1924,6 +1952,7 @@ wait_for_it:
 #ifndef CONFIG_CHARGER_MAINTAIN_VBAT
 		/* Turn charger off if it's not needed */
 		if (curr.state == ST_IDLE || curr.state == ST_DISCHARGE) {
+			CPRINTS("[SC] Turn charger off if it's not needed ");
 			curr.requested_voltage = 0;
 			curr.requested_current = 0;
 		}
@@ -1932,13 +1961,14 @@ wait_for_it:
 		/* Apply external limits */
 		if (curr.requested_current > user_current_limit)
 			curr.requested_current = user_current_limit;
-
+		CPRINTS("[SC] curr.requested_current77=%d", curr.requested_current);
 		/* Round to valid values */
 		curr.requested_voltage =
 			charger_closest_voltage(curr.requested_voltage);
 		curr.requested_current =
 			charger_closest_current(curr.requested_current);
-
+		CPRINTS("[SC] curr.requested_voltage88=%d", curr.requested_voltage);
+		CPRINTS("[SC] curr.requested_current99=%d", curr.requested_current);
 		/* Charger only accpets request when AC is on. */
 		if (curr.ac) {
 			/*
@@ -1947,6 +1977,7 @@ wait_for_it:
 			 * battery is not cut off yet.
 			 */
 			if (battery_is_cut_off()) {
+				CPRINTS("[SC] if (battery_is_cut_off()) {");
 				curr.requested_voltage = 0;
 				curr.requested_current = 0;
 			}
@@ -1961,12 +1992,16 @@ wait_for_it:
 					curr.requested_voltage = manual_voltage;
 				if (manual_current != -1)
 					curr.requested_current = manual_current;
+
+				CPRINTS("[SC] As a safety feature,");
 			}
 		} else {
 #ifndef CONFIG_CHARGER_MAINTAIN_VBAT
 			curr.requested_voltage = charger_closest_voltage(
 				curr.batt.voltage + info->voltage_step);
 			curr.requested_current = -1;
+			CPRINTS("[SC] curr.requested_voltageaa=%d", curr.requested_voltage);
+			CPRINTS("[SC] curr.requested_currentbb=%d", curr.requested_current);
 #endif
 #ifdef CONFIG_EC_EC_COMM_BATTERY_SLAVE
 			/*
@@ -1977,7 +2012,10 @@ wait_for_it:
 			curr.requested_current = 0;
 #endif
 		}
-
+		
+		CPRINTS("[SC] curr.batt.current11=%d", curr.batt.current);
+		CPRINTS("[SC] curr.requested_voltagecc=%d", curr.requested_voltage);
+		CPRINTS("[SC] curr.requested_currentdd=%d", curr.requested_current);
 #ifdef CONFIG_EC_EC_COMM_BATTERY_MASTER
 		charge_allocate_input_current_limit();
 #else
