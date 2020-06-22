@@ -32,6 +32,7 @@ enum volt_idx {
 	PDO_IDX_COUNT
 };
 
+/* PDOs */
 const uint32_t pd_src_host_pdo[] = {
 	[PDO_IDX_5V]  = PDO_FIXED(5000,   3000, PDO_FIXED_FLAGS),
 	[PDO_IDX_9V]  = PDO_FIXED(9000,   3000, 0),
@@ -40,9 +41,13 @@ const uint32_t pd_src_host_pdo[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_src_host_pdo) == PDO_IDX_COUNT);
 
-/* Honeybuns does not require any power from the port partner */
+/* PDOs */
+const uint32_t pd_src_user_pdo[] = {
+	[PDO_IDX_5V]  = PDO_FIXED(5000,   3000, PDO_FIXED_FLAGS),
+};
+
 const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000, 0, PDO_FIXED_FLAGS),
+	[PDO_IDX_5V]  = PDO_FIXED(5000,   0, PDO_FIXED_FLAGS),
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
@@ -57,6 +62,9 @@ int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
 	if (port == USB_PD_PORT_HOST) {
 		*src_pdo =  pd_src_host_pdo;
 		pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
+	} else {
+		*src_pdo =  pd_src_host_pdo;
+		pdo_cnt = ARRAY_SIZE(pd_src_user_pdo);
 	}
 
 	return pdo_cnt;
