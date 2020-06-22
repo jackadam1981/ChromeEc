@@ -22,6 +22,30 @@
       "revId": "e52016ac55bd05466abb58fe5f41bd57b204e125",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d33d7a79_ecf2a733",
+        "filename": "baseboard/octopus/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-06-22T06:56:23Z",
+      "side": 1,
+      "message": "Yes, I have checked and SM_FRAMEWORK was removed in 2bd83ad7c1. PE, PRL, TYPEC SM are defined by default in include/config.h",
+      "parentUuid": "fb060be8_15df7025",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 27
+      },
+      "revId": "e52016ac55bd05466abb58fe5f41bd57b204e125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
