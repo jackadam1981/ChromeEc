@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "686e8d37_744b55e6",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-22T17:49:50Z",
+      "side": 1,
+      "message": "no need to run this code if r.valid is not True.",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 53
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdfa5ce3_2a20160c",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-22T17:49:50Z",
+      "side": 1,
+      "message": "global functions\u0027 header comments should be in the .h file",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 3
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42a0e74c_c9c9632d",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-22T17:49:50Z",
+      "side": 1,
+      "message": "[i % ARRAY_ZISE(entropy_fifo)]\n\nis more error proof",
+      "range": {
+        "startLine": 285,
+        "startChar": 15,
+        "endLine": 285,
+        "endChar": 43
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b715cbd_1fc41bd5",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-22T17:49:50Z",
+      "side": 1,
+      "message": "this is not a boolean false value.",
+      "range": {
+        "startLine": 356,
+        "startChar": 9,
+        "endLine": 356,
+        "endChar": 32
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96aa1153_e6aaa665",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-22T17:49:50Z",
+      "side": 1,
+      "message": "what happens if fips_rand_bytes() returns failure",
+      "range": {
+        "startLine": 398,
+        "startChar": 1,
+        "endLine": 398,
+        "endChar": 36
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b292a6_da95c287",
+        "filename": "board/cr50/fips_rand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-22T17:49:50Z",
+      "side": 1,
+      "message": "please add empty lines above and below the include blocks",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "6eea4ebe7f85a12b76e10b191f7d37ab734c1d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

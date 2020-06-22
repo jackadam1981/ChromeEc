@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "40ea4242_e7809827",
+        "filename": "board/cr50/fips_rand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-22T17:49:50Z",
+      "side": 1,
+      "message": "oh geez, I missed the difference between clz/ctz and clo/cto",
+      "parentUuid": "71ec58d8_8b670fe9",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 0
+      },
+      "revId": "070995e5e9296417d4385d716d21ea5ba219f777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8db2cc47_fddb8a8d",
         "filename": "board/cr50/fips_rand.c",
         "patchSetId": 2
