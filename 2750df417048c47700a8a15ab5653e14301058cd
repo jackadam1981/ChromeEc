@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74aa49c6_0a935937",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-22T20:24:33Z",
+      "side": 1,
+      "message": "Why move from the parent?",
+      "range": {
+        "startLine": 1765,
+        "startChar": 0,
+        "endLine": 1766,
+        "endChar": 23
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44cc84b4_f5f07818",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2742,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-22T20:24:33Z",
+      "side": 1,
+      "message": "What\u0027s the advantage here of skipping over unattached.snk?",
+      "range": {
+        "startLine": 2742,
+        "startChar": 3,
+        "endLine": 2742,
+        "endChar": 42
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
