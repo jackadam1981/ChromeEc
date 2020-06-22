@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b4f7563_2bc62d63",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T20:51:04Z",
+      "side": 1,
+      "message": "please keep name and type different",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "9638261195d5286ca03d9e22a33f3863b2dd6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e33a4add_aeabea77",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T20:51:04Z",
+      "side": 1,
+      "message": "tc_prl is actually two different layers.\n\nThis looks to be only type-c not protocol",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "9638261195d5286ca03d9e22a33f3863b2dd6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d25dbb_4a4cb3ee",
+        "filename": "include/mock/usb_pd_mock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T20:51:04Z",
+      "side": 1,
+      "message": "please keep types and variables names different. Look at existing mock implementations",
+      "range": {
+        "startLine": 19,
+        "startChar": 14,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "9638261195d5286ca03d9e22a33f3863b2dd6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "278f9784_ba1ab7da",
+        "filename": "include/mock/usb_pe_sm_mock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-22T20:51:04Z",
+      "side": 1,
+      "message": "should probably have mock in the name",
+      "range": {
+        "startLine": 24,
+        "startChar": 22,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "9638261195d5286ca03d9e22a33f3863b2dd6781",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
