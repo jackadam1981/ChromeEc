@@ -94,22 +94,24 @@ void pd_power_supply_reset(int port)
 		pd_set_vbus_discharge(port, 1);
 	}
 
-	/* Turn off voltage output from buck-boost */
-	mp4245_votlage_out_enable(0);
-
-	/* Reset VBUS voltage to default value (fixed 5V SRC_CAP) */
-	pd_transition_voltage(1);
-
-	hook_call_deferred(&pd_check_vbus_data, -1);
+	if (port == USB_PD_PORT_HOST) {
+		/* Turn off voltage output from buck-boost */
+		mp4245_votlage_out_enable(0);
+		/* Reset VBUS voltage to default value (fixed 5V SRC_CAP) */
+		pd_transition_voltage(1);
+	}
 }
 
 int pd_set_power_supply_ready(int port)
 {
 	int rv;
 
-	/* Ensure buck-boost is enabled and Vout is on */
-	mp4245_votlage_out_enable(1);
-	msleep(4);
+	if (port == USB_PD_PORT_HOST) {
+		/* Ensure buck-boost is enabled and Vout is on */
+		mp4245_votlage_out_enable(1);
+		msleep(4);
+		hook_call_deferred(&pd_check_vbus_data, 100);
+	}
 
 	/*
 	 * Default operation of buck-boost is 5v/3.6A.
@@ -118,9 +120,6 @@ int pd_set_power_supply_ready(int port)
 	rv = ppc_vbus_source_enable(port, 1);
 	if (rv)
 		return rv;
-
-	CPRINTS("pd: vbus source enabled");
-	hook_call_deferred(&pd_check_vbus_data, 100);
 
 	return EC_SUCCESS;
 }
