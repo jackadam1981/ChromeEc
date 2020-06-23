@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "80daceb9_bfea6f0d",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-23T21:40:50Z",
+      "side": 1,
+      "message": "right, the purpose of this doc is to address the bringup problems, to answer the perpetual question \"why did my device fall into recovery?!\" 😊\n\nI\u0027ll change the title to something more appropriate and will add a brief introduction.",
+      "parentUuid": "90f23468_b73f8518",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "d30279aa11d5a32d5bf492d300c15ee9c2818258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23ebe83f_043172d4",
         "filename": "docs/cr50_bringup.md",
         "patchSetId": 1
@@ -41,6 +65,54 @@
         "startChar": 0,
         "endLine": 37,
         "endChar": 16
+      },
+      "revId": "d30279aa11d5a32d5bf492d300c15ee9c2818258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6a1522_f97c6a14",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-23T21:40:50Z",
+      "side": 1,
+      "message": "will clarify.",
+      "parentUuid": "23ebe83f_043172d4",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 16
+      },
+      "revId": "d30279aa11d5a32d5bf492d300c15ee9c2818258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de1df53f_d93efe4a",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-23T21:40:50Z",
+      "side": 1,
+      "message": "\u003e \"withouth\" is a possible misspelling of \"without\".\n\nPlease fix.",
+      "parentUuid": "932d8e72_5ca91e00",
+      "range": {
+        "startLine": 171,
+        "startChar": 45,
+        "endLine": 171,
+        "endChar": 53
       },
       "revId": "d30279aa11d5a32d5bf492d300c15ee9c2818258",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
