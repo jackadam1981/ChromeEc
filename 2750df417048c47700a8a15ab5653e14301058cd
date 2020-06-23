@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "bc268ab6_edcbd7f1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-23T20:28:04Z",
+      "side": 1,
+      "message": "I don\u0027t see when we turn in on in the PR case, can you point me to it please? It is also probably worth a comment in the code too",
+      "parentUuid": "b6db60e7_50f78b69",
+      "range": {
+        "startLine": 2034,
+        "startChar": 2,
+        "endLine": 2035,
+        "endChar": 49
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f31e07f_f95a25b1",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -535,6 +559,30 @@
       "side": 1,
       "message": "Are you sure you want to add states to the common drp_auto_toggle_next_state and affect TCPMv1?",
       "parentUuid": "88fd8bfd_99d8c588",
+      "range": {
+        "startLine": 2742,
+        "startChar": 3,
+        "endLine": 2742,
+        "endChar": 42
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e7f3b4a_02717c50",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2742,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-23T20:28:04Z",
+      "side": 1,
+      "message": "yes, we should make the needed changes in TCPMv1 too. However,iIf you have to ifdef in the common function we can do that instead",
+      "parentUuid": "21b60c3e_ef370d0c",
       "range": {
         "startLine": 2742,
         "startChar": 3,
