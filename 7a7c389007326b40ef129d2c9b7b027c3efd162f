@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17b97e9d_30e7cbc3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-23T20:51:25Z",
+      "side": 1,
+      "message": "I didn\u0027t quite get what you were saying about the TCH here. This change seems to be related to sequence only the prl_rx and RCH, which is a good change.\n\nCan you understand what you are saying about the TCH here? I think you also might be able to remove the sentence too.",
+      "range": {
+        "startLine": 1957,
+        "startChar": 36,
+        "endLine": 1959,
+        "endChar": 34
+      },
+      "revId": "7a7c389007326b40ef129d2c9b7b027c3efd162f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
