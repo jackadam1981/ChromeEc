@@ -331,6 +331,24 @@
     },
     {
       "key": {
+        "uuid": "3b2335c6_daa76521",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-23T02:42:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e2291c3_a0bbc8fb",
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91d0bf2e_4ac582ff",
         "filename": "board/puff/board.c",
         "patchSetId": 3
@@ -377,6 +395,30 @@
       "writtenOn": "2020-06-03T02:29:44Z",
       "side": 1,
       "message": "How are you determining this? I don\u0027t see any checks for the Type-C state.",
+      "range": {
+        "startLine": 756,
+        "startChar": 10,
+        "endLine": 756,
+        "endChar": 27
+      },
+      "revId": "af4856daa1b9f58dd1d98e232e6a86e3b8574e55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1f47b5_803d8e65",
+        "filename": "board/puff/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-23T02:42:04Z",
+      "side": 1,
+      "message": "It\u0027s only looking at usbc_overcurrent.",
+      "parentUuid": "3d9c6626_f2472caa",
       "range": {
         "startLine": 756,
         "startChar": 10,
