@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b3a64bdd_09fb8938",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T00:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79b79985_e097e33b",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 1
+      },
+      "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b70cc1b_55e189f5",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 12
@@ -45,6 +69,30 @@
       "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ed31d47_aefdfac4",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T00:47:08Z",
+      "side": 1,
+      "message": "We need to check intel_svid for both, SOP and SOP_PRIME response. Hence adding enum  enum tcpm_transmit_type as one more parameter to the function. \n\nFor TCPMv2, pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP, USB_VID_INTEL) can be used to check for USB_VID_INTEL. Hence moving the is_intel_svid function back to TCPMv1.\n\nWe can not use pd_is_mode_discovered_for_svid() since, USB_VID_INTEL mode is not discovered when we are checking for INTEL SVID in case of TCPMv1.",
+      "parentUuid": "5b70cc1b_55e189f5",
+      "range": {
+        "startLine": 791,
+        "startChar": 55,
+        "endLine": 791,
+        "endChar": 66
+      },
+      "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f24f443a_d2c81b2d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T00:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "043ee17f_9e93381b",
+      "range": {
+        "startLine": 459,
+        "startChar": 25,
+        "endLine": 459,
+        "endChar": 36
+      },
+      "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c06089b1_17f1469d",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 12
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "08764711_acddd4ec",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T00:47:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c06089b1_17f1469d",
+      "range": {
+        "startLine": 518,
+        "startChar": 2,
+        "endLine": 518,
+        "endChar": 39
+      },
+      "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30bce3ed_2c6a8f39",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 12
@@ -114,6 +210,30 @@
       "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e72d14d3_f20e188d",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T00:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30bce3ed_2c6a8f39",
+      "range": {
+        "startLine": 708,
+        "startChar": 27,
+        "endLine": 708,
+        "endChar": 38
+      },
+      "revId": "c5ad0add639f7067311cb7311f7d8fb729cc6d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
