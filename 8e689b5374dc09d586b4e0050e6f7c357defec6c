@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad63e548_c178a123",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-23T18:31:36Z",
+      "side": 1,
+      "message": "how about just replacing with\nCPRINTS(\"C%d vdm%d cmd_type%d tx_type%d\\n\" **)\n\nit might save some space",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "8e689b5374dc09d586b4e0050e6f7c357defec6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae55d18e_b9d7bb2e",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-23T18:31:36Z",
+      "side": 1,
+      "message": "may be in another CL:\n\nhow about doing these in callbacks just like we have callbacks in \nconst struct svdm_amode_fx supported_modes[]",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 1
+      },
+      "revId": "8e689b5374dc09d586b4e0050e6f7c357defec6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bdaf37c_a8f8ecda",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-23T18:31:36Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "8e689b5374dc09d586b4e0050e6f7c357defec6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
