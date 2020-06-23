@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd17d558_aaa4a265",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 5427,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T22:27:08Z",
+      "side": 1,
+      "message": "A couple observations here:\n\n1. This is very similar to the logic in pd_is_mode_discovered_for_svid. I think that logic could probably be made reusable for this purpose. The discovery state accessors are a bit messy right now, and you\u0027d have to change them around so that you had something like pd_get_mode_vdo_for_svid. I don\u0027t think this should be a significant amount of work.\n\n2. A function like this should really be in usb_pd_alt_mode_dfp.c. It looks like the only reason it isn\u0027t is so that TCPMv1 can implement its own version using the pd_cable structure. I think it would be cleaner to put this version, which is essentially TCPM-version-agnostic, in a generic location.\n\nIn summary, if you could implement this generically (to both SVID and TCPM version) in usb_pd_alt_mode_dfp.c, that would be great.\n\n(I have a TODO to clean up the discovery state API in usb_pd_alt_mode_dfp.c. My apologies for its current condition.)",
+      "revId": "db10f607bf0d9d21ef950d67c9f28df6246080b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5514fc9_d4b90872",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 5435,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T22:27:08Z",
+      "side": 1,
+      "message": "Use pd_get_am_discovery.",
+      "range": {
+        "startLine": 5435,
+        "startChar": 9,
+        "endLine": 5435,
+        "endChar": 33
+      },
+      "revId": "db10f607bf0d9d21ef950d67c9f28df6246080b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a0c934b_3456be22",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T22:27:08Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 2054,
+        "startChar": 40,
+        "endLine": 2054,
+        "endChar": 47
+      },
+      "revId": "db10f607bf0d9d21ef950d67c9f28df6246080b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0390ddca_d6f481c3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 2057,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T22:27:08Z",
+      "side": 1,
+      "message": "Since this is (currently) part of the externally facing PD API, it should have a pd_ prefix.",
+      "range": {
+        "startLine": 2057,
+        "startChar": 9,
+        "endLine": 2057,
+        "endChar": 30
+      },
+      "revId": "db10f607bf0d9d21ef950d67c9f28df6246080b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
