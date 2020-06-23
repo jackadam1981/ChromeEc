@@ -587,6 +587,31 @@ static int it83xx_tcpm_get_chip_info(int port, int live,
 	return EC_SUCCESS;
 }
 
+static void it83xx_tcpm_set_frs_enable(int port, int enable)
+{
+	uint8_t mask = (USBPD_REG_FAST_SWAP_REQUEST_ENABLE |
+			USBPD_REG_FAST_SWAP_DETECT_ENABLE);
+
+	if (enable) {
+		/* W/C status */
+		IT83XX_USBPD_IFS(port) = 0x33;
+		/* Enable FRS detection (cc to GND) interrupt */
+		IT83XX_USBPD_MIFS(port) &= ~(USBPD_REG_MASK_FAST_SWAP_ISR |
+					USBPD_REG_MASK_FAST_SWAP_DETECT_ISR);
+		/* Enable FRS detection (cc to GND) */
+		IT83XX_USBPD_PDFSCR(port)  = (IT83XX_USBPD_PDFSCR(port) & ~mask)
+					| USBPD_REG_FAST_SWAP_DETECT_ENABLE;
+		/* TODO: enable HW automatically output binding GPIO signal */
+	} else {
+		/* Disable FRS detection (cc to GND) interrupt */
+		IT83XX_USBPD_MIFS(port) |= (USBPD_REG_MASK_FAST_SWAP_ISR |
+					USBPD_REG_MASK_FAST_SWAP_DETECT_ISR);
+		/* Disable FRS detection and requestion */
+		IT83XX_USBPD_PDFSCR(port) &= ~mask;
+		/* TODO: disable HW automatically output binding GPIO signal */
+	}
+}
+
 static void it83xx_init(enum usbpd_port port, int role)
 {
 	uint8_t cc_config = (port == USBPD_PORT_C ?
@@ -677,4 +702,5 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.get_message_raw	= &it83xx_tcpm_get_message_raw,
 	.transmit		= &it83xx_tcpm_transmit,
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
+	.set_frs_enable		= &it83xx_tcpm_set_frs_enable,
 };
