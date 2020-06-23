@@ -22,6 +22,30 @@
       "revId": "f052a906f7d911354d440ed2b4941e906923f445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d328da_6824a24c",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-23T00:02:24Z",
+      "side": 1,
+      "message": "We don\u0027t, because once we set the mode entry done flag, no more messages are sent\nuntil we send an Exit Mode command (which we do if the processor is powering down), and in that case the ACK processing will work because the next command expected is CMD_EXIT_MODE.\n\nOne reason why this happens is because using the next_cmd as a state machine is not very flexible.\nIt likely needs a proper state machine, which I may do since I realise it may need it. The corner case is that we send a Exit_mode in response to a NAK on Entry_mode, and then retry, but we should only retry once - using the next_cmd as a state means there is no way of managing this easily.",
+      "parentUuid": "c55e5003_38ac3414",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 36
+      },
+      "revId": "f052a906f7d911354d440ed2b4941e906923f445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
