@@ -22,6 +22,30 @@
       "revId": "71e4ebdf956c0751788a615ef28395d4b6061fd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1595480_3211409f",
+        "filename": "test/flash_write_protect.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-06-23T05:24:22Z",
+      "side": 1,
+      "message": "if (IS_ENABLED(CONFIG_WP_ALWAYS))\n\t\twp \u003d 1;\n\telse if (IS_ENABLED(CONFIG_WP_ACTIVE_HIGH))\n\t\twp \u003d gpio_get_level(GPIO_WP);\n\telse\n\t\twp \u003d !gpio_get_level(GPIO_WP_L);\n\nNope ,-(\n\nxargs: ls: terminated by signal 13\ntest/flash_write_protect.c: In function \u0027check_image_and_hardware_write_protect\u0027:\ntest/flash_write_protect.c:25:23: error: \u0027GPIO_WP\u0027 undeclared (first use in this function); did you mean \u0027GPIO_WP_L\u0027?\n   wp \u003d gpio_get_level(GPIO_WP);\n                       ^~~~~~~\n                       GPIO_WP_L\ntest/flash_write_protect.c:25:23: note: each undeclared identifier is reported only once for each function it appears in\ntest/flash_write_protect.c: At top level:\ncc1: error: unrecognized command line option \u0027-Wno-address-of-packed-member\u0027 [-Werror]\ncc1: all warnings being treated as errors\n  CC      RO/chip/stm32/host_command_common.o\nmake[1]: *** [Makefile.rules:552: build/krane/flash_write_protect/RW/test/flash_write_protect.o] Error 1\nmake[1]: *** Waiting for unfinished jobs....\nmake: *** [Makefile.rules:280: test-flash_write_protect] Error 2",
+      "parentUuid": "c5eaa852_ec9713bc",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "71e4ebdf956c0751788a615ef28395d4b6061fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
