@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b297b4f5_922d5768",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "This is good to note, and it might make more sense to make it a TODO.",
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe945d12_67b05d43",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "DP",
+      "range": {
+        "startLine": 28,
+        "startChar": 20,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c0365b9_4a86f24a",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "Nit: I think that we usually name these like DP_STATE_COUNT.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df3be54_393b509e",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "Nit: \"expected VDM commands in responses\" or other such mention of response.",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd9184a8_1ffefad1",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "Nit: Shutdown has power state connotations. I might prefer something like \"teardown\" or \"inactive\" or \"exit,\" depending on whether you want a noun or a verb.",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b2de873_c0702845",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "Can you return a bool where true means the response was acceptable?",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c69cd5ef_91658e26",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "Indent beyond the previous line.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0afdcd_5508f6f1",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "If this happens, does it indicate a protocol error on the part of one of the port partners?",
+      "range": {
+        "startLine": 245,
+        "startChar": 48,
+        "endLine": 246,
+        "endChar": 57
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8cb036d_6d0d43b8",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "This should probably be a TODO to call that function after receiving an Exit ACK.",
+      "range": {
+        "startLine": 247,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 50
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ae1dd7_8a794344",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "Is the below check insufficient to keep DP entry from misbehaving? Or will we just enter mode and then exit on the power state change?\n\nIf this is a bug fix for the existing code, it should be its own CL.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846687f2_c68c02bd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4649,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "DPM",
+      "range": {
+        "startLine": 4649,
+        "startChar": 4,
+        "endLine": 4649,
+        "endChar": 7
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2106aaa_2f8fc204",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4652,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T17:19:27Z",
+      "side": 1,
+      "message": "This also looks like a bug fix for the existing code, which would merit its own CL.",
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
