@@ -973,6 +973,14 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 	if (IS_ENABLED(CONFIG_USB_PD_PREFER_MV))
 		charge_reset_stable_current();
 
+	/* Don't update charge when switching b/w ports without battery */
+	if (charge_port != CHARGE_SUPPLIER_NONE &&
+	    charge_port != port &&
+	    (battery_is_present() == BP_NO ||
+	     (battery_is_present() == BP_YES &&
+	      battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL)))
+		return;
+
 	charge.current = max_ma;
 	charge.voltage = supply_voltage;
 	charge_manager_update_charge(CHARGE_SUPPLIER_PD, port, &charge);
