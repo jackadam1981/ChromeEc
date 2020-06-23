@@ -189,6 +189,30 @@
       "revId": "948ec6c503a6f86b0a28c797445f9ccc710d4e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36800f8b_947cb86c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-23T20:36:54Z",
+      "side": 1,
+      "message": "STATIC_IF doesn\u0027t make it more global. It makes it static if the config is defined or extern if not, which causes a linker error if you reference the variable outside of the appropriate IS_ENABLED guard.\n\n--- by the way, this variable is already a global variable",
+      "parentUuid": "81b3674d_0678afbc",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "948ec6c503a6f86b0a28c797445f9ccc710d4e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
