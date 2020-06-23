@@ -1037,6 +1037,15 @@ void charge_manager_update_charge(int supplier,
 	struct charge_port_info zero = {0};
 	if (!charge)
 		charge = &zero;
+
+	/* Don't update charge when switching b/w ports without battery */
+	if (supplier == CHARGE_SUPPLIER_PD &&
+	    charge_port != CHARGE_SUPPLIER_NONE && charge_port != port &&
+	    (battery_is_present() == BP_NO ||
+	     (battery_is_present() == BP_YES &&
+	      battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL)))
+		return;
+
 	charge_manager_make_change(CHANGE_CHARGE, supplier, port, charge);
 }
 
