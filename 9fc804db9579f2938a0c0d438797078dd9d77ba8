@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a84bd8b9_d620b818",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-23T16:10:56Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "9fc804db9579f2938a0c0d438797078dd9d77ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb027de6_09bdb6f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-23T16:10:56Z",
+      "side": 1,
+      "message": "add details about the test itself",
+      "revId": "9fc804db9579f2938a0c0d438797078dd9d77ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17c77f27_c7cb1fc7",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-23T16:10:56Z",
+      "side": 1,
+      "message": "how about handling it in pd_set_input_current_limit()",
+      "range": {
+        "startLine": 976,
+        "startChar": 0,
+        "endLine": 982,
+        "endChar": 9
+      },
+      "revId": "9fc804db9579f2938a0c0d438797078dd9d77ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
