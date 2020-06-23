@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4dd796fe_dbe975b5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:05:00Z",
+      "side": 1,
+      "message": "I like giving all of the pertinent information that is available... Another TCPC may have completely different information and they should do something similar and expose useful bits of information that make sense for that TCPC.",
+      "parentUuid": "fcc3d3bf_5caf055f",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "948ec6c503a6f86b0a28c797445f9ccc710d4e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58fbbef9_1046a03f",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 12
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Can you use the STATIC_IF just to ensure that non-debug code ever references it then (works well with IS_ENABLED)",
       "parentUuid": "a9649bcd_13c84f1f",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "948ec6c503a6f86b0a28c797445f9ccc710d4e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81b3674d_0678afbc",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:05:00Z",
+      "side": 1,
+      "message": "Do you really want this to be a global?  If that were the case we should probably add it to a tcpc structure.  I was just tired of implementing these over and over again and adding a local switch was the easiest local way to accomplish this.  Let me know if you really want this changed.",
+      "parentUuid": "c9f821ba_b5b3fecf",
       "range": {
         "startLine": 87,
         "startChar": 14,
