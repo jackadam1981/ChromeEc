@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "7423c331_1443deea",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1985,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T16:03:18Z",
+      "side": 1,
+      "message": "I have not seen leaving forced discharge on at this point as a problem.  I am going to leave it as it was and if we run into a problem we can deal with it later.",
+      "parentUuid": "5a6642de_54b7e5b4",
+      "range": {
+        "startLine": 1984,
+        "startChar": 2,
+        "endLine": 1985,
+        "endChar": 32
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82dd1859_bd99438a",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -262,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "b39748ac_513369fb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2118,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T16:03:18Z",
+      "side": 1,
+      "message": "We used to blindly go to ATTACHED.SRC and I added to make sure we land at Safe0V in case the partner is not participating correctly.  With a compliant partner, we will just go direct to ATTACHED.SRC as we used to but this adds for older CrBooks that did not wait to go to Safe0V before sending PS_RDY.",
+      "parentUuid": "0194f0c9_85430929",
+      "range": {
+        "startLine": 2116,
+        "startChar": 3,
+        "endLine": 2118,
+        "endChar": 40
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d690dc32_f901f5f5",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -309,6 +357,30 @@
     },
     {
       "key": {
+        "uuid": "ba0000fe_d3390509",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T16:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06c4902d_8ffd03c2",
+      "range": {
+        "startLine": 2209,
+        "startChar": 2,
+        "endLine": 2210,
+        "endChar": 49
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "486f8cfb_0659d896",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -353,6 +425,30 @@
       "revId": "2750df417048c47700a8a15ab5653e14301058cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4674c47a_e3a93e26",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2472,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T16:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbe1b114_d48e8442",
+      "range": {
+        "startLine": 2472,
+        "startChar": 0,
+        "endLine": 2472,
+        "endChar": 49
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
