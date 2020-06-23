@@ -140,6 +140,30 @@
       "revId": "ce028b66fa99ffd833a00d59e5c7552d55b8227c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c06d121_d4aab76f",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-23T19:00:05Z",
+      "side": 1,
+      "message": "Sorry I was too terse.  The TCPMv1 stack is storing all active modes (SOP, SOP\u0027, SOP\u0027\u0027) into the same storage.\n\nYou could change this to match the TCPMv2 like this:\n    static struct partner_active_modes \n        partner_amodes[CONFIG_USB_PD_PORT_MAX_COUNT][AMODE_TYPE_COUNT];\n\nThe only other change needed to support this should be at line 398 in pd_get_partner_active_modes() and change the return to:\n    return \u0026partner_amodes[port][type];",
+      "parentUuid": "339a2dd5_33e6ba07",
+      "range": {
+        "startLine": 199,
+        "startChar": 35,
+        "endLine": 199,
+        "endChar": 49
+      },
+      "revId": "ce028b66fa99ffd833a00d59e5c7552d55b8227c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
