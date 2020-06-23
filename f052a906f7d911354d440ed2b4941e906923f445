@@ -46,6 +46,30 @@
       "revId": "f052a906f7d911354d440ed2b4941e906923f445",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84980eaf_a02b72ad",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-23T22:14:28Z",
+      "side": 1,
+      "message": "Oh, that is really sublte, can you add a comment to the code for that.\n\nI like the idea of using a proper statemachine. you should be able to re-use our existing statemachien framework. Please work with Abe on this though.",
+      "parentUuid": "33d328da_6824a24c",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 36
+      },
+      "revId": "f052a906f7d911354d440ed2b4941e906923f445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
