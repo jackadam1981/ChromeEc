@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f41f94e2_c08660bf",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T20:55:34Z",
+      "side": 0,
+      "message": "Is this statement now incorrect, or does TCPMv1 still depend on discovered Intel modes for SOP and SOP\u0027 being in the same array for TBT entry?",
+      "range": {
+        "startLine": 353,
+        "startChar": 4,
+        "endLine": 354,
+        "endChar": 54
+      },
+      "revId": "e2cbaec65479a7bb80afc773002a25d3ec3ee322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

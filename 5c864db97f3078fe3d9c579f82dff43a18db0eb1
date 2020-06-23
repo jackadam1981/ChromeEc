@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc939179_28ebb928",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-23T20:55:34Z",
+      "side": 1,
+      "message": "This should continue to be below. If CONFIG_USB_PD_DECODE_SOP is not set\n1. We shouldn\u0027t have sent the SOP\u0027 identity request and shouldn\u0027t expect the identity response, and\n2. This function call will try to access a part of the discovery structure that isn\u0027t there.",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 57
+      },
+      "revId": "5c864db97f3078fe3d9c579f82dff43a18db0eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
