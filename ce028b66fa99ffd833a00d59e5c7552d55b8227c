@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0646ba44_c1be2b8f",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T01:03:53Z",
+      "side": 1,
+      "message": "I prefer keeping it this way, since we are using the function to get cable response and device response in BB retimer as well",
+      "parentUuid": "23d2ba8e_345256c7",
+      "range": {
+        "startLine": 784,
+        "startChar": 15,
+        "endLine": 784,
+        "endChar": 36
+      },
+      "revId": "ce028b66fa99ffd833a00d59e5c7552d55b8227c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80eaa055_3056651b",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 18
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "efc534c3_cee14e11",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T01:03:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80eaa055_3056651b",
+      "range": {
+        "startLine": 800,
+        "startChar": 0,
+        "endLine": 803,
+        "endChar": 4
+      },
+      "revId": "ce028b66fa99ffd833a00d59e5c7552d55b8227c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c10aaee_abf86b23",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 18
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-22T22:12:08Z",
       "side": 1,
       "message": "I don\u0027t think adding [DISCOVER_TYPE_COUNT] is strictly required, but I think you only need to change pd_get_partner_active_modes() to ensure there is not collision between device and cable alternate modes.",
+      "range": {
+        "startLine": 199,
+        "startChar": 35,
+        "endLine": 199,
+        "endChar": 49
+      },
+      "revId": "ce028b66fa99ffd833a00d59e5c7552d55b8227c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "339a2dd5_33e6ba07",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T01:03:53Z",
+      "side": 1,
+      "message": "Sorry! Can you please explain in detail?",
+      "parentUuid": "0c10aaee_abf86b23",
       "range": {
         "startLine": 199,
         "startChar": 35,
