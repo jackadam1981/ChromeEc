@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "92c43587_32257b4f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T20:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad63e548_c178a123",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "8e689b5374dc09d586b4e0050e6f7c357defec6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae55d18e_b9d7bb2e",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0b9791f6_2b36407e",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T20:20:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae55d18e_b9d7bb2e",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 1
+      },
+      "revId": "8e689b5374dc09d586b4e0050e6f7c357defec6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bdaf37c_a8f8ecda",
         "filename": "include/usb_pd_tbt.h",
         "patchSetId": 8
@@ -62,6 +110,24 @@
       "revId": "8e689b5374dc09d586b4e0050e6f7c357defec6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc07e52_c656f3ec",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T20:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bdaf37c_a8f8ecda",
+      "revId": "8e689b5374dc09d586b4e0050e6f7c357defec6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
