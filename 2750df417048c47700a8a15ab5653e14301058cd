@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "57814c01_66733dee",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T21:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b93aadce_964b1e47",
+      "range": {
+        "startLine": 1765,
+        "startChar": 0,
+        "endLine": 1766,
+        "endChar": 23
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f685c42b_58893a88",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -260,6 +284,30 @@
       "revId": "2750df417048c47700a8a15ab5653e14301058cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "166231d1_f08262eb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T21:11:28Z",
+      "side": 1,
+      "message": "void tc_pr_swap_complete(int port, bool success)\n{\n\tTC_CLR_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);\n\n\t/*\n\t * AutoDischargeDisconnect was either turned off near the SNK-\u003eSRC\n\t * PR-Swap message or when we hit Safe0V on SRC-\u003eSNK PR-Swap.\n\t * Either case, we need to re-enable if we finished the swap.\n\t */\n\tif (success)\n\t\ttcpm_enable_auto_discharge_disconnect(port, 1);\n}",
+      "parentUuid": "bc268ab6_edcbd7f1",
+      "range": {
+        "startLine": 2034,
+        "startChar": 2,
+        "endLine": 2035,
+        "endChar": 49
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -595,6 +643,30 @@
     },
     {
       "key": {
+        "uuid": "3f15eb58_8955c1c3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2742,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T21:11:28Z",
+      "side": 1,
+      "message": "Will add a TODO to this for b:159736927\nI need this to land",
+      "parentUuid": "0e7f3b4a_02717c50",
+      "range": {
+        "startLine": 2742,
+        "startChar": 3,
+        "endLine": 2742,
+        "endChar": 42
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f0b215a_b49428ff",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -627,6 +699,24 @@
       "revId": "2750df417048c47700a8a15ab5653e14301058cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "708f56da_3a01cf48",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2751,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T21:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eea785e_171d20ce",
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
