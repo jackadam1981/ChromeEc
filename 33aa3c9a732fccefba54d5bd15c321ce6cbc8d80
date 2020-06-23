@@ -69,6 +69,30 @@
       "revId": "33aa3c9a732fccefba54d5bd15c321ce6cbc8d80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaedf2e8_50959b5a",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:00:14Z",
+      "side": 0,
+      "message": "Huge fan of smaller logical step CLs but in this case either change by itself breaks the other. They have to be done together... would be harder for a cherry-pick to know that other than to have both in the same CL",
+      "parentUuid": "c438dd9b_7b058551",
+      "range": {
+        "startLine": 229,
+        "startChar": 4,
+        "endLine": 229,
+        "endChar": 29
+      },
+      "revId": "33aa3c9a732fccefba54d5bd15c321ce6cbc8d80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

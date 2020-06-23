@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "b93aadce_964b1e47",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:00:14Z",
+      "side": 1,
+      "message": "Added comments to the main places typec_select_pull is called and indicates why it is happening... does not really mention why it will not work if called elsewhere. Hope that is OK",
+      "parentUuid": "c2e6e49b_a3211879",
+      "range": {
+        "startLine": 1765,
+        "startChar": 0,
+        "endLine": 1766,
+        "endChar": 23
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f685c42b_58893a88",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -108,6 +132,30 @@
       "writtenOn": "2020-06-22T22:02:26Z",
       "side": 1,
       "message": "shouldnt\u0027 we use pd_set_vbus_discharge isntead? What about PPC-based Vbus dischargers",
+      "range": {
+        "startLine": 1984,
+        "startChar": 2,
+        "endLine": 1985,
+        "endChar": 32
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a6642de_54b7e5b4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1985,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:00:14Z",
+      "side": 1,
+      "message": "We should but projects that have CONFIG_USB_PD_DISCHARGE_xxx need to have board_vbus_source_enabled defined and not all of them do.  I didn\u0027t want to add more code and was not sure of the right way to fix this, other than to get the code to build.\n\nMaybe I can make a base __override board_vbus_source_enable that returns a constant?  and what would be the correct return value for this default function?\n\nI added a couple of CLs ahead of this one to add functions for this to happen but not sure I did them right.  Wanted to add something in order to push up my updates to get more comments",
+      "parentUuid": "f685c42b_58893a88",
       "range": {
         "startLine": 1984,
         "startChar": 2,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "b6db60e7_50f78b69",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:00:14Z",
+      "side": 1,
+      "message": "no. not until the swap is complete and the bus is actually transitioned",
+      "parentUuid": "82dd1859_bd99438a",
+      "range": {
+        "startLine": 2034,
+        "startChar": 2,
+        "endLine": 2035,
+        "endChar": 49
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f31e07f_f95a25b1",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -154,6 +226,30 @@
       "writtenOn": "2020-06-22T22:02:26Z",
       "side": 1,
       "message": "do we need to notify PE or PRL layer to do some sort of error recovery (like soft or hard reset)",
+      "range": {
+        "startLine": 2116,
+        "startChar": 3,
+        "endLine": 2118,
+        "endChar": 40
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0194f0c9_85430929",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2118,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:00:14Z",
+      "side": 1,
+      "message": "We should time out if they do not go OPEN/OPEN.  This is the normal correct path and I was told by Amit that we used to do this wrong and send PS_RDY before we went to Safe0V.  So added this code to catch an issue that is from our older devices.",
+      "parentUuid": "9f31e07f_f95a25b1",
       "range": {
         "startLine": 2116,
         "startChar": 3,
@@ -189,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "06c4902d_8ffd03c2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:00:14Z",
+      "side": 1,
+      "message": "AutoDischargeDisconnect is definitely a TypeC issue. I had moved code over to PE to maintain parts of this and that was not the right way in my view of this world.  So I moved the TC concepts to be performed in TC.  Sometimes a PE trigger causes it but always because of some PE to TC concept and never a TC only concept coming from PE",
+      "parentUuid": "d690dc32_f901f5f5",
+      "range": {
+        "startLine": 2209,
+        "startChar": 2,
+        "endLine": 2210,
+        "endChar": 49
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "486f8cfb_0659d896",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -200,6 +320,30 @@
       "writtenOn": "2020-06-22T22:02:26Z",
       "side": 1,
       "message": "why don\u0027t we want to enable this for PR swap case too once the tc_src_power_on is stable?",
+      "range": {
+        "startLine": 2472,
+        "startChar": 0,
+        "endLine": 2472,
+        "endChar": 49
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbe1b114_d48e8442",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2472,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:00:14Z",
+      "side": 1,
+      "message": "This is completed in tc_pr_swap_complete and re-enabled at that point knowing both sides are setup and ready to go.",
+      "parentUuid": "486f8cfb_0659d896",
       "range": {
         "startLine": 2472,
         "startChar": 0,
@@ -283,6 +427,30 @@
     },
     {
       "key": {
+        "uuid": "21b60c3e_ef370d0c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2742,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:00:14Z",
+      "side": 1,
+      "message": "Are you sure you want to add states to the common drp_auto_toggle_next_state and affect TCPMv1?",
+      "parentUuid": "88fd8bfd_99d8c588",
+      "range": {
+        "startLine": 2742,
+        "startChar": 3,
+        "endLine": 2742,
+        "endChar": 42
+      },
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f0b215a_b49428ff",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 8
@@ -294,6 +462,24 @@
       "writtenOn": "2020-06-22T22:02:26Z",
       "side": 1,
       "message": "same, let\u0027s return the correct state from drp_auto_toggle_next_state",
+      "revId": "2750df417048c47700a8a15ab5653e14301058cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eea785e_171d20ce",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2751,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T00:00:14Z",
+      "side": 1,
+      "message": "same answer as above",
+      "parentUuid": "7f0b215a_b49428ff",
       "revId": "2750df417048c47700a8a15ab5653e14301058cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
