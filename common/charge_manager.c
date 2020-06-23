@@ -650,6 +650,17 @@ static void charge_manager_get_best_charge_port(int *new_port,
 
 	}
 
+	/* if no battery presence then retain charge port and charge supplier */
+	if (supplier == CHARGE_SUPPLIER_PD &&
+	    charge_port != CHARGE_SUPPLIER_NONE &&
+	    charge_port != port &&
+	    (battery_is_present() == BP_NO ||
+	     (battery_is_present() == BP_YES &&
+	      battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL))) {
+		port = charge_port;
+		supplier = charge_supplier;
+	}
+
 	*new_port = port;
 	*new_supplier = supplier;
 }
