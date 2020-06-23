@@ -213,6 +213,30 @@
       "revId": "948ec6c503a6f86b0a28c797445f9ccc710d4e13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91315afe_fd115b09",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T21:12:04Z",
+      "side": 1,
+      "message": "file global versus world global...  Your argument makes sense and I will change this as well as last_write_op above",
+      "parentUuid": "36800f8b_947cb86c",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "948ec6c503a6f86b0a28c797445f9ccc710d4e13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
