@@ -113,6 +113,18 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 	CPRINTS("p%d %s", port, __func__);
 }
 
+void board_frs_handler(enum usbpd_port port)
+{
+	/* GPIO assert to output Vbus safe5v */
+	if (port == USBPD_PORT_A)
+		gpio_set_level(GPIO_USBPD_FRS, 1);
+	else if (port == USBPD_PORT_B)
+		gpio_set_level(GPIO_USBPD_FRS, 1);
+
+	/* inform TCPMv2 to change state */
+	//pd_got_frs_signal(port);
+}
+
 /*
  * PWM channels. Must be in the exactly same order as in enum pwm_channel.
  * There total three 16 bits clock prescaler registers for all pwm channels,
