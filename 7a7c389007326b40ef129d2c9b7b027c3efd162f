@@ -22,6 +22,30 @@
       "revId": "7a7c389007326b40ef129d2c9b7b027c3efd162f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1923934a_810ee938",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-23T21:21:15Z",
+      "side": 1,
+      "message": "What I was going for was that this issue is only exposed (I think) when setting RCH PRL_FLAGS_MSG_RECEIVED in the TCH pathway (since that pathway adds an extra cycle).\n\nI\u0027ll remove this, its probably unnecessary detail and needed reworded anyway.",
+      "parentUuid": "17b97e9d_30e7cbc3",
+      "range": {
+        "startLine": 1957,
+        "startChar": 36,
+        "endLine": 1959,
+        "endChar": 34
+      },
+      "revId": "7a7c389007326b40ef129d2c9b7b027c3efd162f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
