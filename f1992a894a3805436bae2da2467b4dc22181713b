@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "591d72b4_c95a3b99",
+        "filename": "common/usbc/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T09:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f738d6c8_c61207f6",
+      "range": {
+        "startLine": 33,
+        "startChar": 10,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dec75ff_0b5dbc89",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "328c63b9_c0b35db3",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T09:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dec75ff_0b5dbc89",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "7bd60fda_aac86b90",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T09:32:14Z",
+      "side": 1,
+      "message": "Added a common function in usb_pd_dpm.c file",
+      "parentUuid": "91812871_08f53bb8",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0aec43e6_4f96cd36",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 6
@@ -106,6 +178,30 @@
       "writtenOn": "2020-06-19T23:30:15Z",
       "side": 1,
       "message": "CPRINTS(\"C%d vdm%d cmd_type%d tx_type%d\\n\" **)",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 8
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d287be84_03335333",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T09:32:14Z",
+      "side": 1,
+      "message": "Should I still add this?",
+      "parentUuid": "0aec43e6_4f96cd36",
       "range": {
         "startLine": 88,
         "startChar": 2,
@@ -138,6 +234,30 @@
       "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16451517_416f7768",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T09:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf17ae2a_c9505e45",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 27
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -223,6 +343,30 @@
     },
     {
       "key": {
+        "uuid": "0c1f884f_66b6d652",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T09:32:14Z",
+      "side": 1,
+      "message": "CL:2259518 takes care of this",
+      "parentUuid": "67b094e5_d9ffdc22",
+      "range": {
+        "startLine": 119,
+        "startChar": 12,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e8043da_f31ba58b",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 6
@@ -270,6 +414,30 @@
     },
     {
       "key": {
+        "uuid": "ad40e448_a6c11ffb",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T09:32:14Z",
+      "side": 1,
+      "message": "Not sure if we can use a switch here.\n1. First we need to check if INTEL_SVID mode is discovered\n2. If so, we need to check if we can enter into TBT, if yes, enter\n3. If not, check if DP mode is discovered\n\nWe need to fall back on DP even if INTEL_SVID is discovered but device/cable are not TBT compatible",
+      "parentUuid": "08f38abe_84f4d9c2",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a71abae_6b1d9ce1",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -286,6 +454,53 @@
         "startChar": 7,
         "endLine": 5421,
         "endChar": 36
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8b8d482_1d593580",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5421,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T09:32:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a71abae_6b1d9ce1",
+      "range": {
+        "startLine": 5421,
+        "startChar": 7,
+        "endLine": 5421,
+        "endChar": 36
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2725bf1_8117d8e1",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T09:32:14Z",
+      "side": 1,
+      "message": "Add line",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
       },
       "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -313,6 +528,30 @@
       "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed691f64_b64a9b86",
+        "filename": "include/usb_tbt_alt_mode.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-23T09:32:14Z",
+      "side": 1,
+      "message": "Similar reference is mentioned for DisplayPort AM",
+      "parentUuid": "461704e0_1be3a78d",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "f1992a894a3805436bae2da2467b4dc22181713b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
