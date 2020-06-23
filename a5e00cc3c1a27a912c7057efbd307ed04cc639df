@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e5e6ab_fef8daa6",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-23T02:45:37Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_PORT_MAX_COUNT",
+      "range": {
+        "startLine": 171,
+        "startChar": 55,
+        "endLine": 171,
+        "endChar": 56
+      },
+      "revId": "a5e00cc3c1a27a912c7057efbd307ed04cc639df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a0071b_0b63ab7f",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-23T02:45:37Z",
+      "side": 1,
+      "message": "Could you add a comment for port0, e.g:\n  /* [0]: unused. */",
+      "revId": "a5e00cc3c1a27a912c7057efbd307ed04cc639df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc188206_431317b5",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-23T02:45:37Z",
+      "side": 1,
+      "message": "add macro check:\n\n  BUILD_ASSERT(ARRAY_SIZE(CONFIG_USB_PD_PORT_MAX_COUNT), CONFIG_USB_PD_PORT_MAX_COUNT);",
+      "revId": "a5e00cc3c1a27a912c7057efbd307ed04cc639df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea782d84_598f651b",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-23T02:45:37Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_PORT_MAX_COUNT",
+      "range": {
+        "startLine": 178,
+        "startChar": 30,
+        "endLine": 178,
+        "endChar": 31
+      },
+      "revId": "a5e00cc3c1a27a912c7057efbd307ed04cc639df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1abf03f_4010f370",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 54
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-23T02:45:37Z",
+      "side": 1,
+      "message": "drop this?",
+      "revId": "a5e00cc3c1a27a912c7057efbd307ed04cc639df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
