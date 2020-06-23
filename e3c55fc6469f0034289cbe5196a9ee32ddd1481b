@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4e25bd7_6fe482c8",
+        "filename": "power/stoney.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-23T14:24:37Z",
+      "side": 1,
+      "message": "I am not sure a board level function belongs in the general power library",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "e3c55fc6469f0034289cbe5196a9ee32ddd1481b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
