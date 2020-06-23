@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "463d85b5_0d68c943",
+        "filename": "board/puff/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-23T01:16:22Z",
+      "side": 1,
+      "message": "I think the old comment here is more useful- this new one assumes the caller is for a power-on reset (which may not continue to be the case) and loses the description of what we\u0027re actually doing to the flags.",
+      "revId": "828a774e166195b687d275f26a035f35494cc02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
