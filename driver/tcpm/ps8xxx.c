@@ -188,8 +188,21 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 static int ps8xxx_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 **chip_info)
 {
+	struct ec_response_pd_chip_info_v1 info;
 	int val;
 	int rv = tcpci_get_chip_info(port, live, chip_info);
+
+	/*
+	 * The above tcpci_get_chip_info() assigns *chip_info to a pointer of a
+	 * static variable, which is used for caching the value. We should copy
+	 * the value to a local variable before modify it.
+	 *
+	 * Otherwise, the below logic will override the static variable for
+	 * caching, which is problematic and causes a race if some other task
+	 * also calls the get_chip_info().
+	 */
+	info = **chip_info;
+	*chip_info = &info;
 
 	if (rv)
 		return rv;
