@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b5936a9_3ed63fed",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-23T18:51:57Z",
+      "side": 1,
+      "message": "Need to call pd_set_identity_discovery(port, type, PD_DISC_COMPLETE); before this return.",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 9
+      },
+      "revId": "60889d5e015786f27edcc9167cc425eab01b551c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c7067a8_49d13ab2",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-23T18:51:57Z",
+      "side": 1,
+      "message": "Delete this comment.",
+      "range": {
+        "startLine": 708,
+        "startChar": 0,
+        "endLine": 714,
+        "endChar": 0
+      },
+      "revId": "60889d5e015786f27edcc9167cc425eab01b551c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
