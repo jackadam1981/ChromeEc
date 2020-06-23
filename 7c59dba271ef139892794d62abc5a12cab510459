@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a384e252_388cb870",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4873,
+      "author": {
+        "id": 1248412
+      },
+      "writtenOn": "2020-06-23T01:18:37Z",
+      "side": 1,
+      "message": "Got it. Fixed as patch set 2.",
+      "parentUuid": "9a1f3389_2c0444b5",
+      "revId": "7c59dba271ef139892794d62abc5a12cab510459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "545ea3f8_9a632135",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-06-22T21:36:46Z",
       "side": 1,
       "message": "if argc \u003d\u003d8 isn\u0027t that an error?",
+      "range": {
+        "startLine": 5463,
+        "startChar": 8,
+        "endLine": 5463,
+        "endChar": 17
+      },
+      "revId": "7c59dba271ef139892794d62abc5a12cab510459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d72c96b_69d886c1",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5463,
+      "author": {
+        "id": 1248412
+      },
+      "writtenOn": "2020-06-23T01:18:37Z",
+      "side": 1,
+      "message": "Got it. Fixed as patch set 2.",
+      "parentUuid": "545ea3f8_9a632135",
       "range": {
         "startLine": 5463,
         "startChar": 8,
