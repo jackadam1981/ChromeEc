@@ -1239,11 +1239,11 @@ function flash_it83xx() {
 	# Now the we have enabled the I2C mux on the servo to talk to the dut,
 	# we need to switch the I2C mux on the dut to allow ec programing (if
 	# there is a mux on the dut)
-	if servo_has_dut_i2c_mux; then
-		info "Switching DUT I2C Mux to ${CHIP}"
-		servo_save_add "dut_i2c_mux"
-		dut_control dut_i2c_mux:ec_prog
-	fi
+	#if servo_has_dut_i2c_mux; then
+	#	info "Switching DUT I2C Mux to ${CHIP}"
+	#	servo_save_add "dut_i2c_mux"
+	#	dut_control dut_i2c_mux:ec_prog
+	#fi
 
 	# We need to send the special waveform very soon after the EC powers on
 	if [[ "${SERVO_TYPE}" =~ "c2d2" ]]; then
