@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ee01608_c300256d",
+        "filename": "board/cr50/fips_rand.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2020-06-23T17:53:35Z",
+      "side": 1,
+      "message": "Seems high? Or did that get miscomputed for cr52?",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 29
+      },
+      "revId": "0889b9ba7d4731dac0b6c170f87227b035b1479d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
