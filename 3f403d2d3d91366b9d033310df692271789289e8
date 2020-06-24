@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0262147_68590548",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-24T23:21:55Z",
+      "side": 0,
+      "message": "I meant this function (ec_config_has_db_ppc_aoz1380) can be modified to do what you have board_is_support_aox_ppc() doing now, so you don\u0027t need to add any new code aside from that change.",
+      "revId": "3f403d2d3d91366b9d033310df692271789289e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
