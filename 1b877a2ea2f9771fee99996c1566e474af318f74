@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8424e5d_e7d0a408",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-24T16:25:27Z",
+      "side": 1,
+      "message": "All ARM devices with H1 have it. Every device has deep sleep support except for Mistral.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 6
+      },
+      "revId": "1b877a2ea2f9771fee99996c1566e474af318f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d1cc145_bd65b4c2",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-24T16:25:27Z",
+      "side": 1,
+      "message": "SYS_RST is bit 5 of board properties. PLT_RST is bit 6.",
+      "revId": "1b877a2ea2f9771fee99996c1566e474af318f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77bcdd61_48abc535",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-24T16:25:27Z",
+      "side": 1,
+      "message": "I don\u0027t know if it\u0027d be useful to add that this recovery issue only happens once you reboot the AP. The AP will be able to boot once after cr50 reboots or does a power-on reset, but the device will start booting into recovery after rebooting the AP without resetting cr50.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 13
+      },
+      "revId": "1b877a2ea2f9771fee99996c1566e474af318f74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
