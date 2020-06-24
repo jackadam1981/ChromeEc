@@ -46,6 +46,30 @@
       "revId": "deb2246d751f685b2cce57895d1187ce43f858bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "328f47af_b437d343",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-24T21:51:30Z",
+      "side": 1,
+      "message": "Correct, Ed.  Should be good here.",
+      "parentUuid": "1e0dfbb4_16780225",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "deb2246d751f685b2cce57895d1187ce43f858bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
