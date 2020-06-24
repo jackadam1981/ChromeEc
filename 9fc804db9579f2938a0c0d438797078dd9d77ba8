@@ -152,6 +152,30 @@
       "revId": "9fc804db9579f2938a0c0d438797078dd9d77ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "921eb3eb_917d7bf7",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-06-24T17:01:01Z",
+      "side": 1,
+      "message": "charge_manager_update_charge is called from several places. Probably some more condition checks may come. We will check",
+      "parentUuid": "79a67f65_3bdff0d1",
+      "range": {
+        "startLine": 976,
+        "startChar": 0,
+        "endLine": 982,
+        "endChar": 9
+      },
+      "revId": "9fc804db9579f2938a0c0d438797078dd9d77ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
