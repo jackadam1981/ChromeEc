@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e2087d0_9907c9a5",
+        "filename": "baseboard/kukui/battery_max17055.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-24T04:35:04Z",
+      "side": 1,
+      "message": "Where is this value comes from?\nCan we read from the battery directly?",
+      "revId": "61d32e4e62c5946113e1e20fe2005c2420b53c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
