@@ -1229,11 +1229,14 @@ void tc_state_init(int port)
 		 */
 		task_set_event(task_get_current(), PD_EVENT_TCPC_RESET, 0);
 	} else {
-		/* Unattached.SNK is the default starting state. */
-		restart_tc_sm(port, TC_UNATTACHED_SNK);
 
-		/* Disable VBUS; VBUS may be sourced before reboot */
+		/*
+		 * Note: Set open briefly in order to break previous connection
+		 * with the servo_v4 (b/159495742)
+		 */
 		tc_src_power_off(port);
+		tcpm_set_cc(port, TYPEC_CC_OPEN);
+		restart_tc_sm(port, TC_UNATTACHED_SNK);
 	}
 
 	/* Allow system to set try src enable */
