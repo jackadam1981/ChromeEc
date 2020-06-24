@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c9789d56_5afff078",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-06-24T23:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb14db72_35467e76",
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b837c96_f55a0ae4",
         "filename": "common/u2f.c",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe1d6f5_bd8430a0",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-06-24T23:26:42Z",
+      "side": 1,
+      "message": "Done. The compiler can put this to an aligned address which causes runtime crash.",
+      "parentUuid": "5b837c96_f55a0ae4",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 42
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "0af477ff_8d901db6",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-06-24T23:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36d6e0dc_1d25abf5",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 51
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a56d9e75_49dc3f7a",
         "filename": "common/u2f.c",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd3e979b_a056b27f",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-06-24T23:26:42Z",
+      "side": 1,
+      "message": "This comment no longer applies because I am splitting the versioned version of this function out.",
+      "parentUuid": "a56d9e75_49dc3f7a",
+      "range": {
+        "startLine": 204,
+        "startChar": 37,
+        "endLine": 204,
+        "endChar": 46
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c1a4fda0_b698acb8",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-06-24T23:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2046cbbd_4ad6a66c",
+      "range": {
+        "startLine": 208,
+        "startChar": 45,
+        "endLine": 208,
+        "endChar": 57
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a960e52_be30b1a2",
         "filename": "common/u2f.c",
         "patchSetId": 3
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "d3e71a7d_40a6542d",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-06-24T23:26:42Z",
+      "side": 1,
+      "message": "No longer applicable.",
+      "parentUuid": "3a960e52_be30b1a2",
+      "range": {
+        "startLine": 276,
+        "startChar": 1,
+        "endLine": 276,
+        "endChar": 4
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d6a3588_f91b9b4e",
         "filename": "common/u2f.c",
         "patchSetId": 3
@@ -148,6 +286,24 @@
       "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670c6efa_dc835103",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-06-24T23:26:42Z",
+      "side": 1,
+      "message": "No longer applicable.",
+      "parentUuid": "1d6a3588_f91b9b4e",
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -224,6 +380,30 @@
       "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8272736_3c31fe1c",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-06-24T23:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9eedc17_19aea3bd",
+      "range": {
+        "startLine": 389,
+        "startChar": 11,
+        "endLine": 389,
+        "endChar": 20
+      },
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
