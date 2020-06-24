@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "938fa292_745e4127",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-24T15:30:12Z",
+      "side": 1,
+      "message": "for self-documenting code, you might want to pull this out as\n\nconst bool hardware_debounced_unattached \u003d drp_state \u003d\u003d PD_DRP_TOGGLE_ON \u0026\u0026\n\t\t    auto_toggle_supported;",
+      "range": {
+        "startLine": 340,
+        "startChar": 6,
+        "endLine": 341,
+        "endChar": 27
+      },
+      "revId": "3e0c8162ab38de019f37dd71e6d67eb8ff0d8b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68fd6200_1dc7db55",
+        "filename": "include/usb_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-24T15:30:12Z",
+      "side": 1,
+      "message": "let\u0027s describe why this is important, specifically we expect the hardware auto toggle support to perform the unattached to attached debouncing before notifying us of a connection",
+      "range": {
+        "startLine": 30,
+        "startChar": 10,
+        "endLine": 30,
+        "endChar": 74
+      },
+      "revId": "3e0c8162ab38de019f37dd71e6d67eb8ff0d8b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
