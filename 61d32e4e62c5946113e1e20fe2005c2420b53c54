@@ -16,6 +16,24 @@
       "revId": "61d32e4e62c5946113e1e20fe2005c2420b53c54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da162225_d286b361",
+        "filename": "baseboard/kukui/battery_max17055.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1400912
+      },
+      "writtenOn": "2020-06-24T04:59:37Z",
+      "side": 1,
+      "message": "It came from \n/* Cycle Count */\nrv |\u003d battery_cycle_count((int *)host_get_memmap(EC_MEMMAP_BATT_CCNT));\n\nYes, I change it to read from the battery directly.",
+      "parentUuid": "1e2087d0_9907c9a5",
+      "revId": "61d32e4e62c5946113e1e20fe2005c2420b53c54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
