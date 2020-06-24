@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387cb62b_5b2c1379",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "shall it be \u0027Troubleshooting\u0027?",
+      "range": {
+        "startLine": 1,
+        "startChar": 35,
+        "endLine": 1,
+        "endChar": 43
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a11f2eb6_05af14bd",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "We always stop short of claiming TPM compatibility. So, let\u0027s call it \"a subset of TPM functionality\" or something like that?",
+      "range": {
+        "startLine": 19,
+        "startChar": 54,
+        "endLine": 20,
+        "endChar": 7
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3ae40e_ef4211ab",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "not just that. 1.16 didn\u0027t define I2c, but later revisions did. so, for example, register addresses are wrong.",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a293f645_9f17243b",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "Both SPI and I2C also use non-standard TPM ready IRQ (described below) and special wake-from-sleep procedures (also described below).",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c802fd_e5392afb",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "shall we just provide the exact period on cr50 side?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13c2ae8a_dbe02308",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "8 us is not guaranteed. I think, it\u0027d be fair to characterize it as 4+ us, technically.",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acbe3e5b_98790811",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "shall we specify how long?",
+      "range": {
+        "startLine": 117,
+        "startChar": 62,
+        "endLine": 117,
+        "endChar": 68
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8552a450_2520b2b8",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "not always, as the next sentence correctly says. so \"On most systems up to this day, this sifnal is ...\"?",
+      "range": {
+        "startLine": 117,
+        "startChar": 7,
+        "endLine": 117,
+        "endChar": 9
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ce42be4_078a443d",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "we can provide details or at least name the register. and probably should be called TPM register, not cr50 register?",
+      "range": {
+        "startLine": 118,
+        "startChar": 48,
+        "endLine": 118,
+        "endChar": 63
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c07d3c_84323e56",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "typo: space",
+      "range": {
+        "startLine": 144,
+        "startChar": 31,
+        "endLine": 144,
+        "endChar": 42
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5b647d4_be98deb8",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "\u0027host\u0027 per recent agreement",
+      "range": {
+        "startLine": 161,
+        "startChar": 17,
+        "endLine": 161,
+        "endChar": 23
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03cea3d8_ba0a1fe9",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-24T22:28:26Z",
+      "side": 1,
+      "message": "revision should be specified",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
