@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "10fbbf3c_c58f87b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-06-24T12:42:04Z",
+      "side": 1,
+      "message": "added detail test cases",
+      "parentUuid": "bb027de6_09bdb6f4",
+      "revId": "9fc804db9579f2938a0c0d438797078dd9d77ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17c77f27_c7cb1fc7",
         "filename": "common/charge_manager.c",
         "patchSetId": 3
