@@ -18,6 +18,20 @@ static void chip_pd_irq(enum usbpd_port port)
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 
 	/* check status */
+	if (IS_ENABLED(IT83XX_INTC_FAST_SWAP_SUPPORT) &&
+		IS_ENABLED(CONFIG_USB_PD_REV30)) {
+		if (USBPD_IS_FAST_SWAP_DETECT(port)) {
+			/* clear detect FRS signal (cc to GND) status */
+			USBPD_CLAER_FRS_DETECT_STATUS(port);
+			if (board_frs_handler)
+				board_frs_handler(port);
+			/* inform TCPMv2 to change state */
+			pd_got_frs_signal(port);
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+				TASK_EVENT_WAKE, 0);
+		}
+	}
+
 	if (USBPD_IS_HARD_RESET_DETECT(port)) {
 		/* clear interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
