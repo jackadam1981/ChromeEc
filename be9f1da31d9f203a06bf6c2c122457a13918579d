@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cfb7c6b_6d6a43f6",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-24T03:13:47Z",
+      "side": 1,
+      "message": "You\u0027ve made GPIO_S0_PGOOD a module-level global above, so this is no longer constant. I think you can update this value in `board_version_check` instead and do away with the new global.\n\n    [X86_X0_PGOOD] \u003d { .gpio \u003d GPIO_S0_PGOOD_V1; /* ... */ },\n\n    if (board_ver \u003c ZORK_S0_PWROK_BOARD_VER)\n        power_signal_list[X86_S0_PGOOD].gpio \u003d GPIO_S0_PGOOD_V0;\n\nThen individual boards don\u0027t need to have board_remap_gpio functions because it happens here, and they only need to define ZORK_S0_PWROK_BOARD_VER (which is optional if the default is okay).",
+      "revId": "be9f1da31d9f203a06bf6c2c122457a13918579d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
