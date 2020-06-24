@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca2c34d7_d9a734ef",
+        "filename": "board/servo_v4p1/pathsel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-24T21:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dcab3cd_db5360f0",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "71c81c35dd7a7db69cbf3fadb82f1ff59e3af93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c10fa1de_0ed248ea",
         "filename": "board/servo_v4p1/pathsel.c",
         "patchSetId": 16
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "22a7402e_a519b347",
+        "filename": "board/servo_v4p1/pathsel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-24T21:59:48Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "c10fa1de_0ed248ea",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "71c81c35dd7a7db69cbf3fadb82f1ff59e3af93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76b728d1_a18a3610",
         "filename": "board/servo_v4p1/pathsel.c",
         "patchSetId": 16
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-22T22:25:52Z",
       "side": 1,
       "message": "The EN pin of the mux is always asserted. Is there any case which needs to disable it?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 21
+      },
+      "revId": "71c81c35dd7a7db69cbf3fadb82f1ff59e3af93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c5c749_56e4591e",
+        "filename": "board/servo_v4p1/pathsel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-24T21:59:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand. The mux is enabled when the EN pin is low and I don\u0027t think there is a case where it needs to be disabled but I could be wrong.",
+      "parentUuid": "76b728d1_a18a3610",
       "range": {
         "startLine": 39,
         "startChar": 1,
@@ -91,6 +163,30 @@
       "revId": "71c81c35dd7a7db69cbf3fadb82f1ff59e3af93d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2d35655_f1f02e86",
+        "filename": "board/servo_v4p1/pathsel.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-24T21:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2d59469_fb546330",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 1
+      },
+      "revId": "71c81c35dd7a7db69cbf3fadb82f1ff59e3af93d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
