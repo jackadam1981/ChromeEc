@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a5fb338_5ef5c148",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b297b4f5_922d5768",
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe945d12_67b05d43",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 8
@@ -39,6 +57,30 @@
       "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2386bb77_796e5b2e",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe945d12_67b05d43",
+      "range": {
+        "startLine": 28,
+        "startChar": 20,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f4a884ab_1992d9ae",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0365b9_4a86f24a",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2df3be54_393b509e",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 8
@@ -85,6 +151,30 @@
       "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac6a24b4_2c3f1571",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2df3be54_393b509e",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "1bc8439f_88e7ddbd",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "dp_teardown is likely the best - this function can interrupt the negotiation since it can be driven by the CPU power transitions, and can be called regardless of the current start of the connection.",
+      "parentUuid": "bd9184a8_1ffefad1",
+      "range": {
+        "startLine": 66,
+        "startChar": 5,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b2de873_c0702845",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 8
@@ -131,6 +245,30 @@
       "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d4d4a5_4ff9f9f4",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "OK, and I renamed it to more correctly reflect that.",
+      "parentUuid": "2b2de873_c0702845",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 10
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "e5bfa749_d2fcb448",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c69cd5ef_91658e26",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da0afdcd_5508f6f1",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 8
@@ -168,6 +330,30 @@
       "writtenOn": "2020-06-23T17:19:27Z",
       "side": 1,
       "message": "If this happens, does it indicate a protocol error on the part of one of the port partners?",
+      "range": {
+        "startLine": 245,
+        "startChar": 48,
+        "endLine": 246,
+        "endChar": 57
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5e9a7d_c46d93cb",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "Not really, AFAIK, the corner case where this happens is when the\nEC is restarted (e.g to go into recovery mode) and the DP alt mode is already active.\nIt\u0027s not appropriate for the NAK to just shut down the negotiation, because the\nmonitor needs to be on for the recovery mode UI, hence the attempt to recover from it.",
+      "parentUuid": "da0afdcd_5508f6f1",
       "range": {
         "startLine": 245,
         "startChar": 48,
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "87f74276_bc5de395",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "Yes, the API to these fx functions seems to be an odd mix of action and requests.\nPerhaps it needs some rework to clarify it.",
+      "parentUuid": "a8cb036d_6d0d43b8",
+      "range": {
+        "startLine": 247,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 50
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1ae1dd7_8a794344",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 8
@@ -223,6 +433,30 @@
       "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c02a4a6_fe2f42f8",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "So perhaps it should be a separate fix, but it\u0027s really part of the fix for the same problem, which is that sometimes processes are started when the CPU is on, and then take some time (e.g discovery, DP alt mode negotiation), and by the time they complete, the CPU is off because the CPU had a power or state transition (either CPU on-\u003eoff or off-\u003eon)\nSome of this manifests in weird ways that I am not sure is deliberate or not.\nE.g in handle_new_power_state (common/usbc/usb_tc_drp_acc_trysrc_sm.c) it calls pe_exit_dp_mode, which calls pd_dfp_exit_mode, which exits the mode by clearing the opos in the mode data. This means discovery will have to run again in order for this mode to be reinitialised. So if this runs while dpm_attempt_mode_entry is also being run periodically, you can get a situation when it appears discovery has been run, but no DP mode exists (because the mode opos has been cleared), and mode_entry_done is set, and the mode is never entered.\n\nSo that is what I meant about state being out of sync, and most of it is caused by CPU power transitions forcing state changes during existing negoitations.\n\nA longer term fix is to really, really separate discovery from any kind of mode entry and exit, and have clear rules for how power transitions deal with the state data.\nI really didn\u0027t want to take on such a large refactor given the Puff schedule I\u0027m trying to meet, but I\u0027m happy to put some bandaids on until this can be done.",
+      "parentUuid": "b1ae1dd7_8a794344",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "ddabea1b_641ce668",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4649,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "846687f2_c68c02bd",
+      "range": {
+        "startLine": 4649,
+        "startChar": 4,
+        "endLine": 4649,
+        "endChar": 7
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2106aaa_2f8fc204",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 8
@@ -263,6 +521,24 @@
       "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3538f787_13ced669",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4652,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-24T02:32:20Z",
+      "side": 1,
+      "message": "Agree with that, though it\u0027s a critical part of this fix, so I beg some indulgence here.\nSeparately testing this may be an issue without the rest of the fixes.",
+      "parentUuid": "b2106aaa_2f8fc204",
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
