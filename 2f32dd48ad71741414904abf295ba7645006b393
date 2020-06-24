@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "9f86368a_958d6ffb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-24T16:06:34Z",
+      "side": 1,
+      "message": "Okay, removing set_state here.  Verified we don\u0027t seem to hit issues with timing on the transitions, though if we wanted to be defensive we could have ready wait for msg received on discard, then clear discard.",
+      "parentUuid": "41215423_32ac915a",
+      "range": {
+        "startLine": 930,
+        "startChar": 2,
+        "endLine": 930,
+        "endChar": 52
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a600b2c_4424067a",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -192,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "81597ad7_af1eefa0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-24T16:06:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "31fd48d4_1fc5326f",
+      "range": {
+        "startLine": 938,
+        "startChar": 4,
+        "endLine": 938,
+        "endChar": 16
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eebf2265_6bf1b3a0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4
@@ -212,6 +260,30 @@
       "revId": "2f32dd48ad71741414904abf295ba7645006b393",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b236c42_72fbe9ce",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4142,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-24T16:06:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eebf2265_6bf1b3a0",
+      "range": {
+        "startLine": 4141,
+        "startChar": 19,
+        "endLine": 4142,
+        "endChar": 41
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +310,30 @@
     },
     {
       "key": {
+        "uuid": "936979b7_aa7d52d9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4184,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-24T16:06:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6acdb0ed_1cd4eaf4",
+      "range": {
+        "startLine": 4183,
+        "startChar": 1,
+        "endLine": 4184,
+        "endChar": 9
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a60568e_5b2dfee3",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 4
@@ -261,6 +357,30 @@
     },
     {
       "key": {
+        "uuid": "2368ea3e_2a34559a",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1887,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-24T16:06:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a60568e_5b2dfee3",
+      "range": {
+        "startLine": 1886,
+        "startChar": 8,
+        "endLine": 1887,
+        "endChar": 8
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eaad80eb_da3cc805",
         "filename": "test/usb_prl.c",
         "patchSetId": 4
@@ -281,6 +401,30 @@
       "revId": "2f32dd48ad71741414904abf295ba7645006b393",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74d26228_f873a45d",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-24T16:06:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaad80eb_da3cc805",
+      "range": {
+        "startLine": 1354,
+        "startChar": 5,
+        "endLine": 1354,
+        "endChar": 16
+      },
+      "revId": "2f32dd48ad71741414904abf295ba7645006b393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
