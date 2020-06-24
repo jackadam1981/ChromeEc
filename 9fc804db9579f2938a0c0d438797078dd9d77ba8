@@ -62,6 +62,30 @@
       "revId": "9fc804db9579f2938a0c0d438797078dd9d77ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdcf3670_360e732a",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-06-24T11:51:54Z",
+      "side": 1,
+      "message": "The changes are added in the same function as you mentioned pd_set_input_current_limit()",
+      "parentUuid": "17c77f27_c7cb1fc7",
+      "range": {
+        "startLine": 976,
+        "startChar": 0,
+        "endLine": 982,
+        "endChar": 9
+      },
+      "revId": "9fc804db9579f2938a0c0d438797078dd9d77ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
