@@ -3210,6 +3210,9 @@ void pd_task(void *u)
 			set_state(port, PD_STATE_HARD_RESET_SEND);
 #endif /* defined(CONFIG_USBC_PPC) */
 
+		if (evt & PD_EVENT_RX_HARD_RESET)
+			pd_execute_hard_reset(port);
+
 		/* process any potential incoming message */
 		incoming_packet = tcpm_has_pending_message(port);
 		if (incoming_packet) {
