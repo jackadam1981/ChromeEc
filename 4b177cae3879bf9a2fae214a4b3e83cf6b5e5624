@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35b468b4_0e4a747f",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-24T21:55:48Z",
+      "side": 1,
+      "message": "powers on with the rest of the system?",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 75
+      },
+      "revId": "4b177cae3879bf9a2fae214a4b3e83cf6b5e5624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d57a36ca_45cac431",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-24T21:55:48Z",
+      "side": 1,
+      "message": "put the full command, so we don\u0027t run into something like the \u0027ver\u0027 issue again.",
+      "range": {
+        "startLine": 99,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 12
+      },
+      "revId": "4b177cae3879bf9a2fae214a4b3e83cf6b5e5624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ba0a1aa_95f338d7",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-06-24T21:55:48Z",
+      "side": 1,
+      "message": "without cr50 seeing a pulse on the TPM_RST_L signal",
+      "range": {
+        "startLine": 102,
+        "startChar": 45,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "4b177cae3879bf9a2fae214a4b3e83cf6b5e5624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
