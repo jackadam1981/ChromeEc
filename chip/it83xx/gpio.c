@@ -666,6 +666,8 @@ void gpio_pre_init(void)
 
 	IT83XX_GPIO_GCR = 0x06;
 
+	ccprintf("%s: warm reset(%d)", __func__, is_warm);
+
 #if IT83XX_USBPD_PHY_PORT_COUNT < CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT
 #error "ITE pd active port count should be less than physical port count !"
 #endif
