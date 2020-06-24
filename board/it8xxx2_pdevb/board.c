@@ -11,6 +11,7 @@
 #include "pwm_chip.h"
 #include "timer.h"
 #include "usb_pd_tcpm.h"
+#include "battery.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
@@ -23,6 +24,12 @@ int board_get_battery_soc(void)
 {
 	CPRINTS("%s", __func__);
 	return 100;
+}
+
+enum battery_present battery_is_present(void)
+{
+	CPRINTS("%s", __func__);
+	return BP_NO;
 }
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
@@ -111,6 +118,15 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
 	CPRINTS("p%d %s", port, __func__);
+}
+
+void board_frs_handler(enum usbpd_port port)
+{
+	/* GPIO assert to output Vbus safe5v */
+	if (port == USBPD_PORT_A)
+		gpio_set_level(GPIO_USBPD_FRS, 1);
+	else if (port == USBPD_PORT_B)
+		gpio_set_level(GPIO_USBPD_FRS, 1);
 }
 
 /*
