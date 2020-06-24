@@ -460,6 +460,30 @@
     },
     {
       "key": {
+        "uuid": "b8d550f4_c6ad3fc6",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-24T16:00:00Z",
+      "side": 1,
+      "message": "It\u0027s definitely good to get something working consistently in for now.\n\nUltimately, the kernel handling our DP mode entry in the future should address a number of these issues.  Adding pd_partner_reset() should help as well to ensure we\u0027re starting with fresh connections on resets.",
+      "parentUuid": "4c02a4a6_fe2f42f8",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "846687f2_c68c02bd",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 8
