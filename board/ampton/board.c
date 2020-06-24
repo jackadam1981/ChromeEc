@@ -355,6 +355,11 @@ static void cbi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
+void board_frs_handler(enum usbpd_port port)
+{
+	ccprints("trigger GPIO");
+}
+
 void board_hibernate_late(void)
 {
 	/*
