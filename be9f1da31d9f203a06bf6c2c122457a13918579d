@@ -34,6 +34,24 @@
       "revId": "be9f1da31d9f203a06bf6c2c122457a13918579d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3d71b6f_9add566b",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-06-24T08:52:43Z",
+      "side": 1,
+      "message": "Done, GPIO_S0_PGOOD is for /power/stoney.c",
+      "parentUuid": "5dd2d5e3_e24e3bf8",
+      "revId": "be9f1da31d9f203a06bf6c2c122457a13918579d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
