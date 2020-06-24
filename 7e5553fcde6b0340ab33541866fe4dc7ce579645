@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f2c4f55_0a77c35f",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-24T03:30:48Z",
+      "side": 1,
+      "message": "This duplicates the remapping in setup_fw_config; can ec_config_has_db_ppc_aoz1380 just be modified to check the PPC_ID gpio and board version so board_is_support_aoz_ppc can be deleted?",
+      "revId": "7e5553fcde6b0340ab33541866fe4dc7ce579645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
