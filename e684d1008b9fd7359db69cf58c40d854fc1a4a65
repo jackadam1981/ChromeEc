@@ -16,6 +16,24 @@
       "revId": "e684d1008b9fd7359db69cf58c40d854fc1a4a65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4659761c_af6429d7",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-24T14:19:21Z",
+      "side": 1,
+      "message": "Making static has the race condition. But your point is right. Returning the address of a local variable is wrong.\n\nLooks like I have to do what Julius suggested: making the caller of get_chip_info() passes in a stack-allocated buffer to be filled in. I will make another change.",
+      "parentUuid": "0a0097f9_a016fe40",
+      "revId": "e684d1008b9fd7359db69cf58c40d854fc1a4a65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
