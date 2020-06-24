@@ -307,7 +307,8 @@ enum pd_drp_next_states drp_auto_toggle_next_state(
 	enum pd_power_role power_role,
 	enum pd_dual_role_states drp_state,
 	enum tcpc_cc_voltage_status cc1,
-	enum tcpc_cc_voltage_status cc2)
+	enum tcpc_cc_voltage_status cc2,
+	bool auto_toggle_supported)
 {
 	/* Set to appropriate port state */
 	if (cc_is_open(cc1, cc2)) {
@@ -336,6 +337,9 @@ enum pd_drp_next_states drp_auto_toggle_next_state(
 	} else if ((cc_is_rp(cc1) || cc_is_rp(cc2)) &&
 		drp_state != PD_DRP_FORCE_SOURCE) {
 		/* SNK allowed unless ForceSRC */
+		if (drp_state == PD_DRP_TOGGLE_ON &&
+		    auto_toggle_supported)
+			return DRP_TC_ATTACHED_WAIT_SNK;
 		return DRP_TC_UNATTACHED_SNK;
 	} else if (cc_is_at_least_one_rd(cc1, cc2) ||
 					cc_is_audio_acc(cc1, cc2)) {
@@ -362,6 +366,9 @@ enum pd_drp_next_states drp_auto_toggle_next_state(
 			else
 				return DRP_TC_DRP_AUTO_TOGGLE;
 		} else {
+			if (drp_state == PD_DRP_TOGGLE_ON &&
+			    auto_toggle_supported)
+				return DRP_TC_ATTACHED_WAIT_SRC;
 			return DRP_TC_UNATTACHED_SRC;
 		}
 	} else {
