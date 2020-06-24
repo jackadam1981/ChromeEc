@@ -22,6 +22,30 @@
       "revId": "d60b77976b66ad1e6a738c5188b957d470e8be70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d049f293_2026f8d9",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1248412
+      },
+      "writtenOn": "2020-06-24T01:10:52Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "2684f5da_ee08dfee",
+      "range": {
+        "startLine": 258,
+        "startChar": 17,
+        "endLine": 258,
+        "endChar": 30
+      },
+      "revId": "d60b77976b66ad1e6a738c5188b957d470e8be70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
