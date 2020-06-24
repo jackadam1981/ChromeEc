@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fb3cd28_f24aab0e",
+        "filename": "baseboard/kukui/battery_max17055.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-24T05:46:18Z",
+      "side": 1,
+      "message": "I believe the presubmit check will complain the new CONFIG_ things you added.\n\nPlease rename these macros:\n#ifdef CONFIG_CHARGER_LIMIT_TIMEOUT -\u003e #ifdef BOARD_KAKADU, and\nCONFIG_CHARGER_LIMIT_TIMEOUT_HOURS, CONFIG_CHARGER_LIMIT_TIMEOUT_HOURS_TEMP: remove the CONFIG_ prefix.",
+      "range": {
+        "startLine": 209,
+        "startChar": 7,
+        "endLine": 209,
+        "endChar": 35
+      },
+      "revId": "6bc12325281c54d40060a3365e82952cef7596a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3acb9083_d7191976",
+        "filename": "baseboard/kukui/battery_max17055.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-24T05:46:18Z",
+      "side": 1,
+      "message": "Use /* ... */, and please make sure the persubmit check is happy.",
+      "revId": "6bc12325281c54d40060a3365e82952cef7596a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
