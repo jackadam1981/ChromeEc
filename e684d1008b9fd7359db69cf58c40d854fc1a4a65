@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a0097f9_a016fe40",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-06-24T04:53:18Z",
+      "side": 1,
+      "message": "Add static here (seems like you are returning a pointer that points to a local variable?)",
+      "revId": "e684d1008b9fd7359db69cf58c40d854fc1a4a65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
