@@ -1231,6 +1231,17 @@ void tc_state_init(int port)
 		 * connection.
 		 */
 		task_set_event(task_get_current(), PD_EVENT_TCPC_RESET, 0);
+	} else if ((pd_get_saved_port_flags(port, &saved_flgs[port]) ==
+								EC_SUCCESS) &&
+		(saved_flgs[port] & PD_BBRMFLG_DBGACC_ROLE)) {
+
+		/*
+		 * Note: Set open briefly in order to break previous connection
+		 * with the servo_v4 (b/159495742)
+		 */
+		tc_src_power_off(port);
+		tcpm_set_cc(port, TYPEC_CC_OPEN);
+		restart_tc_sm(port, TC_UNATTACHED_SNK);
 	} else {
 		/* Unattached.SNK is the default starting state. */
 		restart_tc_sm(port, TC_UNATTACHED_SNK);
