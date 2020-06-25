@@ -123,9 +123,8 @@ static int stm32gx_tcpm_transmit(int port,
 
 	return rv;
 }
-
 static int stm32gx_tcpm_get_chip_info(int port, int live,
-			struct ec_response_pd_chip_info_v1 **chip_info)
+			struct ec_response_pd_chip_info_v1 *chip_info)
 {
 	return EC_SUCCESS;
 }
