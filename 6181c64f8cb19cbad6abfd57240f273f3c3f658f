@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b583d3_b3884c9d",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-25T19:44:53Z",
+      "side": 1,
+      "message": "s/CLAER/CLEAR/",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83a6f793_ee6da34b",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-25T19:44:53Z",
+      "side": 1,
+      "message": "this task set event should be moved into the pd_got_frs_signal function, could you do that?",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ef1c665_d22e069f",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-25T19:44:53Z",
+      "side": 1,
+      "message": "do we need this board override yet?\n\nIf we do, let\u0027s use the __overridable __override #defines that already exist\n\nShoudl this be in the PD layer instead of the TCPC driver?",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 0
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518542e5_370b5dbb",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-06-25T19:44:53Z",
+      "side": 1,
+      "message": "can you add a bug number to track this like, TODO(b/####), please?",
+      "range": {
+        "startLine": 620,
+        "startChar": 5,
+        "endLine": 622,
+        "endChar": 0
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
