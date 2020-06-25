@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53f01922_21b1d177",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T06:40:33Z",
+      "side": 1,
+      "message": "Update this.",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "c693f876d9db32cec04f89fa9fa059c6f16589d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e2058a3_08ad2009",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T06:40:33Z",
+      "side": 1,
+      "message": "Nit: Use spaces here like the other lines in this comment.",
+      "range": {
+        "startLine": 1748,
+        "startChar": 14,
+        "endLine": 1748,
+        "endChar": 15
+      },
+      "revId": "c693f876d9db32cec04f89fa9fa059c6f16589d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85dd7d0e_8b509a91",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T06:40:33Z",
+      "side": 1,
+      "message": "The implementation returns 0 if lookup failed.\n\n1. This comment should note the error value and the condition under which it is returned.\n2. The callers should check for this value if they care whether they have a valid mode VDO.\n3. I don\u0027t think that 0 (or any other 32-bit value) is an inherently invalid mode VDO. Right now, this function is only being used for TBT, and 0 would be an invalid TBT mode VDO. But it\u0027s a generic function, so it would be good if it worked for arbitrary SVIDs.\n\nFor that reason, I might lean towards something like\n\nbool pd_get_mode_vdo_for_svid(int port, enum tcpm_transmit_type type, uint16_t svid, uint32_t *vdo_out);\n\nhere, even if it\u0027s a little ugly. If we return the VDO directly, we\u0027ll have to worry that in the future, there might be some valid VDO with whatever in-band error value we chose.",
+      "range": {
+        "startLine": 1751,
+        "startChar": 39,
+        "endLine": 1751,
+        "endChar": 47
+      },
+      "revId": "c693f876d9db32cec04f89fa9fa059c6f16589d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
