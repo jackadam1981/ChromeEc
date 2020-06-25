@@ -215,6 +215,8 @@ struct svdm_amode_data *pd_get_amode_data(int port,
 		pd_get_partner_active_modes(port, type);
 	assert(active);
 
+	CPRINTS("svdm[%d]: idx = %d", port, idx);
+
 	return (idx == -1) ? NULL : &active->amodes[idx];
 }
 
@@ -233,6 +235,9 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
 		return 0;
 	modep = &pd_get_partner_active_modes(port, type)->amodes[mode_idx];
 
+	CPRINTS("dfp[%d]: enter mode: svid = %x, opos = %d, idx = %d, modep %x",
+		port, svid, opos, mode_idx, (uint32_t)modep);
+
 	if (!opos) {
 		/* choose the lowest as default */
 		modep->opos = 1;
@@ -244,8 +249,9 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
 	}
 
 	mode_caps = modep->data->mode_vdo[modep->opos - 1];
-	if (modep->fx->enter(port, mode_caps) == -1)
+	if (modep->fx->enter(port, mode_caps) == -1) {
 		return 0;
+	}
 
 	/*
 	 * Strictly speaking, this should only happen when the request
@@ -413,6 +419,7 @@ void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 		uint16_t svid = disc->svids[svid_idx].svid;
 
 		if (svid == response_svid) {
+			CPRINTS("dfp[%d]: match svid = %x", port, svid);
 			mode_discovery = &disc->svids[svid_idx];
 			break;
 		}
@@ -444,18 +451,21 @@ void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 	memcpy(mode_discovery->mode_vdo, &payload[1],
 			sizeof(uint32_t) * mode_discovery->mode_cnt);
 	disc->svid_idx++;
+	CPRINTS("dfp[%d]: disc mode complete cnt = %d", port,
+		mode_discovery->mode_cnt);
 	pd_set_modes_discovery(port, type, mode_discovery->svid,
 			PD_DISC_COMPLETE);
 }
 
-#if 0
 int pd_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid)
 {
 	struct svdm_amode_data *modep = pd_get_amode_data(port, type, svid);
 
+	CPRINTS("pd[%d]: modep %x, type = %d, svid = %x", port,
+		(uint32_t)modep, type, svid);
+
 	return (modep) ? modep->opos : -1;
 }
-#endif
 
 void pd_set_identity_discovery(int port, enum tcpm_transmit_type type,
 			       enum pd_discovery_state disc)
@@ -1017,9 +1027,12 @@ __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 	 * when the SoC is off as opposed to suspend where adding a display
 	 * could cause a wake up.)
 	 */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+#ifdef HAS_TASK_CHIPSET
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		CPRINTS("dfp[%d]; chipset_in_state OFF", port);
 		return -1;
-
+	}
+#endif
 	/* Only enter mode if device is DFP_D capable */
 	if (mode_caps & MODE_DP_SNK) {
 		svdm_safe_dp_mode(port);
