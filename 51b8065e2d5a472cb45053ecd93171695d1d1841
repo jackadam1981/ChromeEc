@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c6e623c0_f4171369",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-25T17:55:09Z",
+      "side": 1,
+      "message": "On current boards, this signal is used for HPD and is pulled down by strappings on the boards.  So this is WAI.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 45
+      },
+      "revId": "51b8065e2d5a472cb45053ecd93171695d1d1841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b9bb69c_125300fa",
         "filename": "board/volteer/board.c",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2020-06-25T17:16:48Z",
       "side": 1,
       "message": "Eric: Are there any open bugs for parts that will need support here?",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 4
+      },
+      "revId": "51b8065e2d5a472cb45053ecd93171695d1d1841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f09450d3_d1820693",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-25T17:55:09Z",
+      "side": 1,
+      "message": "I prefer to not stub out this interrupt.  I\u0027m not aware of any use cases.",
+      "parentUuid": "0b9bb69c_125300fa",
       "range": {
         "startLine": 251,
         "startChar": 1,
