@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dcb26993_a956232e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-25T21:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53f01922_21b1d177",
+      "range": {
+        "startLine": 12,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "c693f876d9db32cec04f89fa9fa059c6f16589d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e2058a3_08ad2009",
         "filename": "include/usb_pd.h",
         "patchSetId": 21
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3bb10a36_b1e19a68",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-25T21:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e2058a3_08ad2009",
+      "range": {
+        "startLine": 1748,
+        "startChar": 14,
+        "endLine": 1748,
+        "endChar": 15
+      },
+      "revId": "c693f876d9db32cec04f89fa9fa059c6f16589d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85dd7d0e_8b509a91",
         "filename": "include/usb_pd.h",
         "patchSetId": 21
@@ -68,6 +116,30 @@
       "revId": "c693f876d9db32cec04f89fa9fa059c6f16589d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5271b58_e8ae3ab7",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 1751,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-25T21:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85dd7d0e_8b509a91",
+      "range": {
+        "startLine": 1751,
+        "startChar": 39,
+        "endLine": 1751,
+        "endChar": 47
+      },
+      "revId": "c693f876d9db32cec04f89fa9fa059c6f16589d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
