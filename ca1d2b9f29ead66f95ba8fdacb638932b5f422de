@@ -22,6 +22,30 @@
       "revId": "ca1d2b9f29ead66f95ba8fdacb638932b5f422de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ee0054_c2a5d553",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T20:13:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f8c70954_80847dc2",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "ca1d2b9f29ead66f95ba8fdacb638932b5f422de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
