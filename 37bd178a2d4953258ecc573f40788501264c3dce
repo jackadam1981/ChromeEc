@@ -343,6 +343,30 @@
     },
     {
       "key": {
+        "uuid": "2e786b01_d3d0c14f",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T06:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2655435_b954d1fe",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da0afdcd_5508f6f1",
         "filename": "common/usbc/dp_alt_mode.c",
         "patchSetId": 8
@@ -482,6 +506,30 @@
       "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8fcb693_1b765ad2",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T06:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "869ded82_d2455168",
+      "range": {
+        "startLine": 247,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 50
+      },
+      "revId": "37bd178a2d4953258ecc573f40788501264c3dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
