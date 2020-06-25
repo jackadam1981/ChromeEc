@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cd351cf_bb222d9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-25T22:39:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4ea9a3_ccbaefb3",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "1d5ee52185b0fbf559d440d0733b7a6a95ec43a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84239811_0b121d6a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "1d5ee52185b0fbf559d440d0733b7a6a95ec43a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55279d0b_0d83a4bb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-25T22:39:55Z",
+      "side": 1,
+      "message": "There is some weird padding issues going on. With this CL only, the image size for kodama changes.\n\n1. snprintf() version (patchset 1): 232 bytes free\n2. Function call CPRINTS(\"TCPC p%d %s\", port, string): 168 bytes free\n3. Macro CPRINTS(\"TCPC p%d %s\", port, string): 104 bytes free\n\nWith the child CL also applied, versions 1 and 2 have the same size on kodama (40 bytes free), version 3 overflows.",
+      "parentUuid": "84239811_0b121d6a",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "1d5ee52185b0fbf559d440d0733b7a6a95ec43a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
