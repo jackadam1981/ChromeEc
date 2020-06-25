@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddaf2da5_4e2cca1b",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T23:02:16Z",
+      "side": 1,
+      "message": "ARRAY_SIZE(disc-\u003esvids[idx].mode_vdo) would be more obviously correct.\n\nI think the case could be made for only copying mode_cnt VDOs, but at least this way, the VDOs at the end of the target array should end up zeroed.",
+      "range": {
+        "startLine": 596,
+        "startChar": 10,
+        "endLine": 596,
+        "endChar": 38
+      },
+      "revId": "57a84a0b77cb08a354448bc9a055af07b8b827f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83d2973_3364f10d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 1762,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T23:02:16Z",
+      "side": 1,
+      "message": "Note that this must be able to fit PDO_MODES VDOs.",
+      "range": {
+        "startLine": 1762,
+        "startChar": 19,
+        "endLine": 1762,
+        "endChar": 52
+      },
+      "revId": "57a84a0b77cb08a354448bc9a055af07b8b827f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836144e1_2673bee3",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 2060,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T23:02:16Z",
+      "side": 1,
+      "message": "the first discovered",
+      "range": {
+        "startLine": 2060,
+        "startChar": 10,
+        "endLine": 2060,
+        "endChar": 11
+      },
+      "revId": "57a84a0b77cb08a354448bc9a055af07b8b827f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
