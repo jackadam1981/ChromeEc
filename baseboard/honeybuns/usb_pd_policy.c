@@ -188,8 +188,10 @@ static int vdm_is_dp_enabled(int port)
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */
+#ifndef TCPM_V2_ALT_MODE
 /* Holds valid object position (opos) for entered mode */
 static int alt_mode[PD_AMODE_COUNT];
+#endif
 
 const uint32_t vdo_idh = VDO_IDH(0, /* data caps as USB host */
 				 1, /* data caps as USB device */
@@ -304,12 +306,26 @@ static void svdm_configure_demux(int port, int enable)
 
 static int svdm_enter_mode(int port, uint32_t *payload)
 {
+#ifdef TCPM_V2_ALT_MODE
+	struct svdm_amode_data *modep;
+#endif
 	int rv = 0; /* will generate a NAK */
 
 	/* SID & mode request is valid */
 	if ((PD_VDO_VID(payload[0]) == USB_SID_DISPLAYPORT) &&
 	    (PD_VDO_OPOS(payload[0]) == OPOS_DP)) {
+#ifdef TCPM_V2_ALT_MODE
+		modep = pd_get_amode_data(port, 0, USB_SID_DISPLAYPORT);
+		if (modep) {
+			CPRINTS("alt-dp: enter: modep = %p, opos = %d",
+				modep, modep->opos);
+			modep->opos = OPOS_DP;
+		} else {
+			CPRINTS("alt-dp: enter: modep is null");
+		}
+#else
 		alt_mode[PD_AMODE_DISPLAYPORT] = OPOS_DP;
+#endif
 		rv = 1;
 		pd_log_event(PD_EVENT_VIDEO_DP_MODE, 0, 1, NULL);
 		/* Configure demux to enable DP */
@@ -317,7 +333,9 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 		/* Entering ALT-DP mode, enable DP connection in demux */
 	} else if ((PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) &&
 		   (PD_VDO_OPOS(payload[0]) == OPOS_GFU)) {
+#ifndef TCPM_V2_ALT_MODE
 		alt_mode[PD_AMODE_GOOGLE] = OPOS_GFU;
+#endif
 		rv = 1;
 	}
 
@@ -329,10 +347,14 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 		/* TODO(b/): When we have usb support, put this back in? */
 		/* usb_disconnect(); */
 
+	CPRINTS("svdm_enter[%d]: svid = %x, ret = %d", port,
+		PD_VDO_VID(payload[0]), rv);
+
 	return rv;
 }
 
-int pd_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid)
+#ifndef TCPM_V2_ALT_MODE
+int pd_ufp_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid)
 {
 	if (svid == USB_SID_DISPLAYPORT)
 		return alt_mode[PD_AMODE_DISPLAYPORT];
@@ -340,16 +362,31 @@ int pd_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid)
 		return alt_mode[PD_AMODE_GOOGLE];
 	return 0;
 }
+#endif
 
 static int svdm_exit_mode(int port, uint32_t *payload)
 {
+#ifdef TCPM_V2_ALT_MODE
+	struct svdm_amode_data *modep;
+#endif
+
 	if (PD_VDO_VID(payload[0]) == USB_SID_DISPLAYPORT) {
+#ifdef TCPM_V2_ALT_MODE
+		modep = pd_get_amode_data(port, 0, USB_SID_DISPLAYPORT);
+		if (modep)
+			modep->opos = OPOS_DP;
+		else
+			CPRINTS("alt-dp: modep is NULL");
+#else
 		alt_mode[PD_AMODE_DISPLAYPORT] = 0;
+#endif
 		/* Configure demux to enable DP */
 		svdm_configure_demux(port, 0);
 		pd_log_event(PD_EVENT_VIDEO_DP_MODE, 0, 0, NULL);
 	} else if (PD_VDO_VID(payload[0]) == USB_VID_GOOGLE) {
+#ifndef TCPM_V2_ALT_MODE
 		alt_mode[PD_AMODE_GOOGLE] = 0;
+#endif
 	} else {
 		CPRINTF("Unknown exit mode req:0x%08x\n", payload[0]);
 	}
