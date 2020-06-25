@@ -1528,9 +1528,14 @@ static void handle_new_power_state(int port)
 void pd_send_hpd(int port, enum hpd_event hpd)
 {
 	uint32_t data[1];
-	int opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+	int opos = pd_ufp_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
 
+
+#ifndef TCPM_V2_ALT_MODE
 	if (!opos)
+#else
+	if (opos < 0)
+#endif
 		return;
 
 	data[0] =
@@ -1542,7 +1547,8 @@ void pd_send_hpd(int port, enum hpd_event hpd)
 		1, /* enabled */
 		0, /* power low */
 		0x2);
-		pd_send_vdm(port, USB_SID_DISPLAYPORT,
+
+	pd_send_vdm(port, USB_SID_DISPLAYPORT,
 		VDO_OPOS(opos) | CMD_ATTENTION, data, 1);
 }
 #endif
