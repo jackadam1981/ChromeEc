@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "e664cd1e_810dd8ed",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-25T17:09:51Z",
+      "side": 1,
+      "message": "PC Client Profile TPM Profile (PTP) Specification for TPM2.0 level 00 rev 0.43 had only SPI and LPC defined as h/w interfaces.\nThe current one (PC Client Platform TPM Profile Specification for TPM 2.0, version 1.04, revision 37) does have I2C covered. And it has different addresses for TPM registers on I2C compared to SPI/LPC, see section 8.3.5 I2C-TPM Registers. So, our implementation of I2C interface is not compliant with PTP.\n\nIn any case, it may not be very interesting for the intended audience of this doc. The solution here seems to be simple ;)\n\nChange\n\"Both I2C and SPI interfaces do not fully comply with the standards: the I2C\"\nto\n\"Both I2C and SPI interfaces do not fully comply with the standards: for example, the I2C\"",
+      "parentUuid": "084381f6_b5d8293b",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a293f645_9f17243b",
         "filename": "docs/cr50_bringup.md",
         "patchSetId": 4
@@ -190,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "7a364a11_d15c39d9",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-25T17:09:51Z",
+      "side": 1,
+      "message": "\"for example\" above will solve this. If we don\u0027t want to provide the exhaustive list of where we differ, not mentioning here is fine. They are indeed covered in other sections.",
+      "parentUuid": "7eca66ce_da428cb9",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52c802fd_e5392afb",
         "filename": "docs/cr50_bringup.md",
         "patchSetId": 4
@@ -225,6 +273,30 @@
       "side": 1,
       "message": "I am not sure how deterministic this is, it depends on when we detect the state change and then start the countdown.",
       "parentUuid": "52c802fd_e5392afb",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdad0ad2_34897434",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-25T17:09:51Z",
+      "side": 1,
+      "message": "\"longer than a second\"?",
+      "parentUuid": "9134b403_8c93371a",
       "range": {
         "startLine": 87,
         "startChar": 0,
@@ -507,6 +579,30 @@
       "side": 1,
       "message": "what was the agreement? I thought it was decided to follow hardware specification terminology where necessary?",
       "parentUuid": "f5b647d4_be98deb8",
+      "range": {
+        "startLine": 161,
+        "startChar": 17,
+        "endLine": 161,
+        "endChar": 23
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b918b53d_82106675",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-25T17:09:51Z",
+      "side": 1,
+      "message": "for SPI and I2C the proposed terms are \u0027host\u0027 and \u0027device\u0027.",
+      "parentUuid": "d50eee63_6dda1c3f",
       "range": {
         "startLine": 161,
         "startChar": 17,
