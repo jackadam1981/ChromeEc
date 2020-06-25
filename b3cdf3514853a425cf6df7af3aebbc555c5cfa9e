@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "cca8ac26_cd3f8bca",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-25T18:37:45Z",
+      "side": 1,
+      "message": "ah, that was my mistake. I read it as \"Both I2C and SPI interfaces do not fully comply with the *TCG standards for SPI and I2C interfaces*\". Not sure if wording can be improved, maybe \"Both I2C and SPI interfaces do not fully comply with the *respective bus* standards\" to better identify the standards we mean here.",
+      "parentUuid": "95d91d55_bd99cafb",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a293f645_9f17243b",
         "filename": "docs/cr50_bringup.md",
         "patchSetId": 4
