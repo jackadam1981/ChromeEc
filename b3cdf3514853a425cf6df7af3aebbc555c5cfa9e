@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "95d91d55_bd99cafb",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-25T17:35:48Z",
+      "side": 1,
+      "message": "This sentence is not about the TCG standards, it is about I2C and SPI standards, the reader is not expected to be familiar with the TCG platform profile, but is expected to have a working knowledge of SPI and I2C.\n\nI am not sure how to express this better.",
+      "parentUuid": "e664cd1e_810dd8ed",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 44
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a293f645_9f17243b",
         "filename": "docs/cr50_bringup.md",
         "patchSetId": 4
@@ -238,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "fa756b4c_fe22b0ba",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-25T17:35:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7a364a11_d15c39d9",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 29
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52c802fd_e5392afb",
         "filename": "docs/cr50_bringup.md",
         "patchSetId": 4
@@ -306,6 +354,30 @@
       "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7087ece9_dd2a0fc5",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-25T17:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdad0ad2_34897434",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -612,6 +684,30 @@
       "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b216cc_930056ff",
+        "filename": "docs/cr50_bringup.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-25T17:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b918b53d_82106675",
+      "range": {
+        "startLine": 161,
+        "startChar": 17,
+        "endLine": 161,
+        "endChar": 23
+      },
+      "revId": "b3cdf3514853a425cf6df7af3aebbc555c5cfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
