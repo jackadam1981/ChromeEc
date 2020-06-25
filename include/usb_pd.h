@@ -2387,6 +2387,7 @@ static inline void pd_send_host_event(int mask) { }
  * @return object position of mode chosen in alternate mode otherwise zero.
  */
 int pd_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid);
+int pd_ufp_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid);
 
 /**
  * Send hpd over USB PD.
