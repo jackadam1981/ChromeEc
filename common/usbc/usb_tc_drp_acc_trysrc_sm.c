@@ -2669,9 +2669,10 @@ static void tc_attached_src_run(const int port)
 	if (tc[port].cc_state == PD_CC_NONE &&
 			!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS) &&
 			!TC_CHK_FLAG(port, TC_FLAGS_DISC_IDENT_IN_PROGRESS)) {
-
+#ifdef CONFIG_USB_PD_TRY_SRC
 		const bool tryWait = is_try_src_enabled(port) &&
 				!TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
+#endif
 
 		if (IS_ENABLED(CONFIG_USB_PE_SM))
 			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
@@ -2681,8 +2682,8 @@ static void tc_attached_src_run(const int port)
 						0, 0);
 			}
 #ifdef CONFIG_USB_PD_TRY_SRC
-		set_state_tc(port, IS_ENABLED(CONFIG_USB_PD_TRY_SRC) ?
-			TC_TRY_WAIT_SNK : TC_UNATTACHED_SNK);
+		set_state_tc(port, tryWait ?
+					TC_TRY_WAIT_SNK : TC_UNATTACHED_SNK);
 #else
 		set_state_tc(port, TC_UNATTACHED_SNK);
 #endif
