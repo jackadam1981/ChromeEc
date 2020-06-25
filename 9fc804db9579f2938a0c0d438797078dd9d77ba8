@@ -176,6 +176,30 @@
       "revId": "9fc804db9579f2938a0c0d438797078dd9d77ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff609c0d_bb6a647a",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-06-25T05:45:05Z",
+      "side": 1,
+      "message": "The changes are added in charge_manager_update_charge().",
+      "parentUuid": "921eb3eb_917d7bf7",
+      "range": {
+        "startLine": 976,
+        "startChar": 0,
+        "endLine": 982,
+        "endChar": 9
+      },
+      "revId": "9fc804db9579f2938a0c0d438797078dd9d77ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
