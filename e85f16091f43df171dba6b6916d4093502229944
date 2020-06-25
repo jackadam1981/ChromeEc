@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a39dceb8_a870baff",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T07:23:50Z",
+      "side": 1,
+      "message": "I think you need \u003cstdint.h\u003e.",
+      "revId": "e85f16091f43df171dba6b6916d4093502229944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ee15b37_9f6b5635",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T07:23:50Z",
+      "side": 1,
+      "message": "Nit: As in the PD and VDM headers, can you put SVID between SOP type and command type?\n\nSame request for the format string.",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 46
+      },
+      "revId": "e85f16091f43df171dba6b6916d4093502229944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "227ec40e_8feed3cc",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T07:23:50Z",
+      "side": 1,
+      "message": "Use standard capitalization",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 69
+      },
+      "revId": "e85f16091f43df171dba6b6916d4093502229944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa2c48c8_26f8d241",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T07:23:50Z",
+      "side": 1,
+      "message": "As long as you\u0027re changing this comment, this should say \"alt mode setup\" or something similar, not \"discovery.\"",
+      "range": {
+        "startLine": 125,
+        "startChar": 57,
+        "endLine": 125,
+        "endChar": 66
+      },
+      "revId": "e85f16091f43df171dba6b6916d4093502229944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea0482a1_f40ae35d",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T07:23:50Z",
+      "side": 1,
+      "message": "supported",
+      "range": {
+        "startLine": 125,
+        "startChar": 30,
+        "endLine": 125,
+        "endChar": 31
+      },
+      "revId": "e85f16091f43df171dba6b6916d4093502229944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9385711a_1300260a",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T07:23:50Z",
+      "side": 1,
+      "message": "supported",
+      "range": {
+        "startLine": 129,
+        "startChar": 18,
+        "endLine": 129,
+        "endChar": 19
+      },
+      "revId": "e85f16091f43df171dba6b6916d4093502229944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
