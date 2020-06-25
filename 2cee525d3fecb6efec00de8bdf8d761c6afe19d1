@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7d736b4_0583abdf",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-06-25T19:49:12Z",
+      "side": 1,
+      "message": "Use a struct definition instead of manual offset calcuations?",
+      "range": {
+        "startLine": 214,
+        "startChar": 8,
+        "endLine": 214,
+        "endChar": 22
+      },
+      "revId": "2cee525d3fecb6efec00de8bdf8d761c6afe19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c6846e_db4ea614",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-06-25T19:49:12Z",
+      "side": 1,
+      "message": "I realize you\u0027ve now duplicated the command handlers. I don\u0027t think that buys us much in terms of making the request/response data format handling less brittle. What if you keep the command handler common, but then call a version-dependent function?",
+      "range": {
+        "startLine": 148,
+        "startChar": 26,
+        "endLine": 148,
+        "endChar": 48
+      },
+      "revId": "2cee525d3fecb6efec00de8bdf8d761c6afe19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
