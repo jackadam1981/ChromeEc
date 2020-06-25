@@ -244,4 +244,12 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_PP5000_USBA,
 };
 
-
+/******************************************************************************/
+/* Retimer interrupts */
+void retimer_interrupt(enum gpio_signal signal)
+{
+	/*
+	 * Service retimer interrupts here as required. Currently, the Burnside
+	 * Bridge interrupt does not require service.
+	 */
+}

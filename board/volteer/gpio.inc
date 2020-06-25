@@ -38,6 +38,7 @@ GPIO_INT(USB_C1_PPC_INT_ODL,	PIN(F, 5), GPIO_INT_BOTH, ppc_interrupt)
 
 GPIO_INT(USB_C0_BC12_INT_ODL,	PIN(E, 4), GPIO_INT_BOTH, bc12_interrupt)
 GPIO_INT(USB_C1_MIX_INT_ODL,	PIN(0, 3), GPIO_INT_BOTH, bc12_interrupt)
+GPIO_INT(USB_C1_RT_INT_ODL,	PIN(F, 3), GPIO_INT_BOTH, retimer_interrupt)
 
 /* HDMI interrupts */
 
