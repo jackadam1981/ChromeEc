@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a260b5dc_c88be83c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2855,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-25T18:30:12Z",
+      "side": 1,
+      "message": "Does it make sense on leaving LPM to also clear tc[port].low_power_exit_time?",
+      "range": {
+        "startLine": 2852,
+        "startChar": 0,
+        "endLine": 2855,
+        "endChar": 3
+      },
+      "revId": "25de3d13c257d6cc6856842637d5f6e1471bdc2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
