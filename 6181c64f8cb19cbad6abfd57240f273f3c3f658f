@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5ec5a4bf_e93ece37",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-06-25T20:23:51Z",
+      "side": 1,
+      "message": "I\u0027d like to see some comments about how this is placed at the top since interrupt-\u003eboard_frs_handler is latency-critical.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77b583d3_b3884c9d",
         "filename": "chip/it83xx/intc.c",
         "patchSetId": 17
@@ -64,6 +87,29 @@
         "startChar": 0,
         "endLine": 408,
         "endChar": 0
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c36936_ef37ed85",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-06-25T20:23:51Z",
+      "side": 1,
+      "message": "is this specific to the newer ECs?",
+      "range": {
+        "startLine": 610,
+        "startChar": 3,
+        "endLine": 611,
+        "endChar": 48
       },
       "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
