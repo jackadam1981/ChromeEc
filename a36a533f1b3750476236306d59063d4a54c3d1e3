@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd283f08_2910ee4e",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-25T21:44:44Z",
+      "side": 1,
+      "message": "Since Host command and the retimer use the tbt_cable_speed message, moved the response check here, so we set the correct retimer speed and the host response as well",
+      "range": {
+        "startLine": 818,
+        "startChar": 1,
+        "endLine": 829,
+        "endChar": 50
+      },
+      "revId": "a36a533f1b3750476236306d59063d4a54c3d1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
