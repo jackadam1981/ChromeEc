@@ -22,6 +22,30 @@
       "revId": "25de3d13c257d6cc6856842637d5f6e1471bdc2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d62c8d7_ecaa0c6d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2855,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-25T18:42:15Z",
+      "side": 1,
+      "message": "As implemented, this will avoid a delay if we never enter LPM.  For instance:\n* Transition to TC_LOW_POWER_MODE. Set low_power_time.\n* TCPC generates event before low_power_time expires\n* Immediately go to check_drp_connection().\n\nIf this happens before we have successfully entered LPM, then there will still be a 25 ms delay since low_power_exit_time is initialized to 0.",
+      "parentUuid": "a260b5dc_c88be83c",
+      "range": {
+        "startLine": 2852,
+        "startChar": 0,
+        "endLine": 2855,
+        "endChar": 3
+      },
+      "revId": "25de3d13c257d6cc6856842637d5f6e1471bdc2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
