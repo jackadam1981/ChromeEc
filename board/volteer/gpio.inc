@@ -100,7 +100,7 @@ UNIMPLEMENTED(USB_C1_RT_FORCE_PWR)
 
 /* Misc Signals */
 GPIO(UART2_EC_RX,		PIN(7, 5), GPIO_OUT_LOW)	/* H1 Packet Mode */
-
+GPIO(M2_SSD_PLA,		PIN(7, 0), GPIO_INPUT)		/* SSD power-loss acknoledgement */
 
 /*
  * eDP backlight - both PCH and EC have enable pins that must be high
