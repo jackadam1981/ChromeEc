@@ -274,7 +274,7 @@ CRYPT_RESULT _cpri__SignEcc(
 
 	switch (scheme) {
 	case TPM_ALG_ECDSA:
-		if (!check_p256_param(d))
+		if (!check_p256_param_in_range(d))
 			return CRYPT_PARAMETER;
 		/* Trucate / zero-pad the digest as appropriate. */
 		memset(digest_local, 0, sizeof(digest_local));
@@ -283,6 +283,7 @@ CRYPT_RESULT _cpri__SignEcc(
 		p256_from_bin(digest_local, &p256_digest);
 
 		reverse_tpm2b(&d->b);
+		append_zeros_to_p256_param(d);
 
 		hmac_drbg_init_rand(&drbg, 512);
 		result = dcrypto_p256_ecdsa_sign(&drbg,
@@ -329,6 +330,7 @@ CRYPT_RESULT _cpri__ValidateSignatureEcc(
 
 		reverse_tpm2b(&q->x.b);
 		reverse_tpm2b(&q->y.b);
+		append_zeros_to_p256_point(q);
 
 		reverse_tpm2b(&r->b);
 		reverse_tpm2b(&s->b);
