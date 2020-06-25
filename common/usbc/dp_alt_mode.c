@@ -209,6 +209,7 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		/* Enter the first supported mode for DisplayPort. */
 		vdm[0] = pd_dfp_enter_mode(port, TCPC_TX_SOP,
 				USB_SID_DISPLAYPORT, 0);
+		CPRINTS("dp[%d]: header = %x", port, vdm[0]);
 		if (vdm[0] == 0)
 			return -1;
 		/* CMDT_INIT is 0, so this is a no-op */
