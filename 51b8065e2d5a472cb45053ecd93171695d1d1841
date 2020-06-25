@@ -69,6 +69,30 @@
       "revId": "51b8065e2d5a472cb45053ecd93171695d1d1841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f320c299_0612f4f7",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-06-25T18:19:02Z",
+      "side": 1,
+      "message": "We\u0027ve gotten confirmation from Intel that the Burnside Bridge currently does not use its interrupt.",
+      "parentUuid": "f09450d3_d1820693",
+      "range": {
+        "startLine": 251,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 4
+      },
+      "revId": "51b8065e2d5a472cb45053ecd93171695d1d1841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
