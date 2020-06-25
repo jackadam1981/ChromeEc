@@ -68,6 +68,23 @@
       "revId": "57a84a0b77cb08a354448bc9a055af07b8b827f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67064a50_196c1af8",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 2064,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-25T23:05:36Z",
+      "side": 1,
+      "message": "Note that it returns 0 if there was no Intel mode VDO.",
+      "revId": "57a84a0b77cb08a354448bc9a055af07b8b827f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
