@@ -1239,10 +1239,6 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 
 	pe[port].vdm_cnt = count + 1;
 
-	CPRINTS("pe: send_vdm[%d]: data = 0x%08x, vdm0 = 0x%08x, vdm0 = 0x%08x",
-		pe[port].vdm_cnt, *data, pe[port].vdm_data[0],
-		pe[port].vdm_data[1]);
-
 	pe[port].tx_type = TCPC_TX_SOP;
 	pe_dpm_request(port, DPM_REQUEST_VDM);
 
@@ -1556,18 +1552,23 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP)) {
 		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
 
-		/* if (pe[port].data_role == PD_ROLE_UFP) { */
-		/* 	PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS); */
-		/* 	set_state_pe(port, PE_DRS_SEND_SWAP); */
-		/* 	return true; */
-		/* } */
-	}
-
-	if (pe[port].data_role == PD_ROLE_DFP) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-			set_state_pe(port, PE_DRS_SEND_SWAP);
-			return true;
+		if (port == 0) {
+			if (pe[port].data_role == PD_ROLE_DFP) {
+				PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+				set_state_pe(port, PE_DRS_SEND_SWAP);
+				return true;
+			}
 		}
+#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
+		else {
+			if (pe[port].data_role == PD_ROLE_UFP) {
+				PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+				set_state_pe(port, PE_DRS_SEND_SWAP);
+				return true;
+			}
+		}
+#endif
+	}
 
 	/* if (IS_ENABLED(CONFIG_USBC_VCONN) && */
 	/* 		PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON)) { */
