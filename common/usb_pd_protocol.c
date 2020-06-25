@@ -2681,7 +2681,7 @@ void pd_set_new_power_request(int port)
 static void pd_init_tasks(void)
 {
 	static int initialized;
-	int enable = 1;
+	int enable;
 	int i;
 
 	/* Initialize globals once, for all PD tasks.  */
@@ -2701,14 +2701,7 @@ static void pd_init_tasks(void)
 			drp_state[i] = PD_DRP_TOGGLE_ON;
 #endif
 
-#if defined(CONFIG_USB_PD_COMM_DISABLED)
-	enable = 0;
-#elif defined(CONFIG_USB_PD_COMM_LOCKED)
-	/* Disable PD communication if we're in RO, WP is enabled, and EFS
-	 * didn't register NO_BOOT. */
-	if (!system_is_in_rw() && system_is_locked() && !vboot_allow_usb_pd())
-		enable = 0;
-#endif
+	enable = pd_comm_allowed_by_policy();
 	for (i = 0; i < board_get_usb_pd_port_count(); i++)
 		pd_comm_enabled[i] = enable;
 	CPRINTS("PD comm %sabled", enable ? "en" : "dis");

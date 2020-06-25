@@ -297,7 +297,7 @@ int pd_check_requested_voltage(uint32_t rdo, const int port)
 	return EC_SUCCESS;
 }
 
-__attribute__((weak)) uint8_t board_get_usb_pd_port_count(void)
+__overridable uint8_t board_get_usb_pd_port_count(void)
 {
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
@@ -631,6 +631,16 @@ __overridable int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 __overridable bool vboot_allow_usb_pd(void)
 {
 	return false;
+}
+
+bool pd_comm_allowed_by_policy(void)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_COMM_DISABLED))
+		return false;
+	if (!IS_ENABLED(CONFIG_USB_PD_COMM_LOCKED))
+		return true;
+
+	return system_is_in_rw() || !system_is_locked() || vboot_allow_usb_pd();
 }
 
 /* VDM utility functions */
