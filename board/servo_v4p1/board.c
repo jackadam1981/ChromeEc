@@ -183,6 +183,7 @@ void ext_hpd_detection_enable(int enable)
 void snk_task(void *u)
 {
 }
+
 void pd_task(void *u)
 {
 	/* DO NOTHING */
