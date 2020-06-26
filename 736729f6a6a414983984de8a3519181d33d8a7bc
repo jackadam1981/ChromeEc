@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05abc178_d16d3b25",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-26T14:42:51Z",
+      "side": 1,
+      "message": "add reason for retaining same port \u0026 supplier \nbring to line 577\nchange if to else if for case in line 579",
+      "revId": "736729f6a6a414983984de8a3519181d33d8a7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
