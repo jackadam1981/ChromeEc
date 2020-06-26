@@ -22,6 +22,30 @@
       "revId": "d04a8c12aff0b4360c12666a31fd31c958609077",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969c4a84_32f7bd87",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-06-26T18:07:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "411edf48_26b1a06f",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "d04a8c12aff0b4360c12666a31fd31c958609077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
