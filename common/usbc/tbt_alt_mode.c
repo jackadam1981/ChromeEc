@@ -108,6 +108,7 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		tbt_state[port] = TBT_ACTIVE;
 		tbt_prints("enter mode SOP", port);
 		break;
+	case TBT_ACTIVE:
 	case TBT_EXIT_SOP_SENT:
 		/*
 		 * Request to exit mode successful, so put it in
@@ -184,7 +185,9 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 
 	switch (tbt_state[port]) {
 	case TBT_START:
+	case TBT_ENTER_SOP_SENT:
 	case TBT_ENTER_SOP_RETRY:
+	case TBT_ENTER_SOP_RETRY_SENT:
 		if (tbt_state[port] == TBT_START)
 			tbt_prints("attempt to enter mode", port);
 		/*
