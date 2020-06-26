@@ -12,6 +12,7 @@
 #include "console.h"
 #include "dacs.h"
 #include "ec_version.h"
+#include "fusb302b.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -58,36 +59,7 @@ static void vbus1_evt(enum gpio_signal signal)
 
 static void tca_evt(enum gpio_signal signal)
 {
-	uint8_t fault;
-
-	fault = read_faults();
-
-	if (!(fault & USERVO_FAULT_L))
-		ccprintf("FAULT: Microservo USB A port load switch\n");
-
-	if (!(fault & USB3_A0_FAULT_L))
-		ccprintf("FAULT: USB3 A0 port load switch\n");
-
-	if (!(fault & USB3_A1_FAULT_L))
-		ccprintf("FAULT: USB3 A1 port load switch\n");
-
-	if (!(fault & USB_DUTCHG_FLT_ODL))
-		ccprintf("FAULT: Overcurrent on Charger or DUB CC/SBU lines\n");
-
-	if (!(fault & PP3300_DP_FAULT_L))
-		ccprintf("FAULT: Overcurrent on DisplayPort\n");
-
-	if (!(fault & DAC_BUF1_LATCH_FAULT_L)) {
-		ccprintf("FAULT: CC1 drive circuitry has exceeded thermal ");
-		ccprintf("limits or exceeded current limits. Power ");
-		ccprintf("off DAC0 to clear the fault\n");
-	}
-
-	if (!(fault & DAC_BUF1_LATCH_FAULT_L)) {
-		ccprintf("FAULT: CC2 drive circuitry has exceeded thermal ");
-		ccprintf("limits or exceeded current limits. Power ");
-		ccprintf("off DAC1 to clear the fault\n");
-	}
+	irq_ioexpanders();
 }
 
 static volatile uint64_t hpd_prev_ts;
@@ -173,7 +145,7 @@ static void dp_evt(enum gpio_signal signal)
 
 static void tcpc_evt(enum gpio_signal signal)
 {
-	ccprintf("tcpc event\n");
+	update_status_fusb302b();
 }
 
 static void hub_evt(enum gpio_signal signal)
@@ -208,6 +180,9 @@ void ext_hpd_detection_enable(int enable)
 	}
 }
 #else
+void snk_task(void *u)
+{
+}
 void pd_task(void *u)
 {
 	/* DO NOTHING */
@@ -427,6 +402,7 @@ static void board_init(void)
 	init_uservo_port();
 	init_pathsel();
 	init_ina231s();
+	init_fusb302b(1);
 
 	/* Enable DUT USB2.0 pair. */
 	gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 0);
@@ -437,7 +413,6 @@ static void board_init(void)
 
 	gpio_enable_interrupt(GPIO_STM_FAULT_IRQ_L);
 	gpio_enable_interrupt(GPIO_DP_HPD);
-	gpio_enable_interrupt(GPIO_CHGSRV_TCPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USBH_I2C_BUSY_INT);
 	gpio_enable_interrupt(GPIO_BC12_INT_ODL);
 
