@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10fbb723_6193b908",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-26T16:52:58Z",
+      "side": 1,
+      "message": "Go ahead and add M2_SSD_PLN here as well.  Set as GPIO_OUT_HIGH.\nReference bug b:138954381 which has an open question as to whether these two signals are OD or not.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 77
+      },
+      "revId": "44ec8d1d9726ed8e928e9f36ff0ba49ac269a96b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
