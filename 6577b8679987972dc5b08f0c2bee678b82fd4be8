@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0e14f49_f8e94f78",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-26T16:39:26Z",
+      "side": 1,
+      "message": "Delete.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 5
+      },
+      "revId": "6577b8679987972dc5b08f0c2bee678b82fd4be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24fda7c9_13de5f10",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-26T16:39:26Z",
+      "side": 1,
+      "message": "This is a little hard to parse, how about creating macros:\n    #define PS8XXX_P3_TO_P0(port3_addr) (port3_addr - 3)\n    #define PS8XXX_P3_TO_P1(port3_addr) (port3_addr - 2)\n    #define PS8XXX_P3_TO_P2(port3_addr) (port3_addr - 1)\n\nSince the TCPC standard registers are always in P3, the hard-coded (3,2,1) above seems good.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 55
+      },
+      "revId": "6577b8679987972dc5b08f0c2bee678b82fd4be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e73784_24300d72",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-26T16:39:26Z",
+      "side": 1,
+      "message": "You should only make this call if device_id\u003d\u003d1, otherwise use the actual device_id returned in TCPC_REG_BCD_DEV.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 41
+      },
+      "revId": "6577b8679987972dc5b08f0c2bee678b82fd4be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
