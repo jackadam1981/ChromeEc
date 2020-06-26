@@ -33,7 +33,7 @@ enum pe_dpm_request {
 	DPM_REQUEST_SEND_PING           = BIT(6),
 	DPM_REQUEST_SOURCE_CAP          = BIT(7),
 	DPM_REQUEST_NEW_POWER_LEVEL     = BIT(8),
-	DPM_REQUEST_EXIT_DP_MODE        = BIT(9),
+	DPM_REQUEST_EXIT_ALT_MODE       = BIT(9),
 	DPM_REQUEST_VDM                 = BIT(10),
 	DPM_REQUEST_BIST_RX             = BIT(11),
 	DPM_REQUEST_BIST_TX             = BIT(12),
@@ -114,11 +114,11 @@ void pe_got_soft_reset(int port);
 void pe_hard_reset_sent(int port);
 
 /**
- * Exit DP mode
+ * Exit alternate mode
  *
  * @param port USB-C port number
  */
-void pe_exit_dp_mode(int port);
+void pe_exit_alt_mode(int port);
 
 /**
  * Get the id of the current Policy Engine state
