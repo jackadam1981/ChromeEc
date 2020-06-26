@@ -1366,7 +1366,7 @@ void tc_event_check(int port, int evt)
 			if (evt & PD_EVENT_SYSJUMP) {
 				for (i = 0; i <
 					CONFIG_USB_PD_PORT_MAX_COUNT; i++)
-					pe_exit_dp_mode(i);
+					pe_exit_alt_mode(i);
 				notify_sysjump_ready();
 			}
 		}
@@ -1496,10 +1496,10 @@ static void handle_new_power_state(int port)
 		if (chipset_in_or_transitioning_to_state(
 					CHIPSET_STATE_ANY_OFF)) {
 			/*
-			 * The SoC will negotiate DP mode again when it
+			 * The SoC will negotiate alternate mode again when it
 			 * boots up
 			 */
-			pe_exit_dp_mode(port);
+			pe_exit_alt_mode(port);
 
 			/*
 			 * The following function will disconnect both USB and
