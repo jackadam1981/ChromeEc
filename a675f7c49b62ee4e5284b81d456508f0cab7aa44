@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2254a2ed_6182ee05",
+        "filename": "board/servo_v4p1/chg_control.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-26T20:42:51Z",
+      "side": 1,
+      "message": "Nit: a space",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "a675f7c49b62ee4e5284b81d456508f0cab7aa44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cbd18d4_1bb9b3d8",
+        "filename": "board/servo_v4p1/chg_control.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-26T20:42:51Z",
+      "side": 1,
+      "message": "Nit: It is the same as CC1. Maybe group them together.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "a675f7c49b62ee4e5284b81d456508f0cab7aa44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
