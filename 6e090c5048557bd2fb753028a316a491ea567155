@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d9302a8_bc2b71c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-26T20:47:01Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "6e090c5048557bd2fb753028a316a491ea567155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69477733_f08cf039",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-26T20:47:01Z",
+      "side": 1,
+      "message": "how about Current alternate mode SVID?",
+      "revId": "6e090c5048557bd2fb753028a316a491ea567155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07dac038_c5b08d82",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-26T20:47:01Z",
+      "side": 1,
+      "message": "nit: add one more tab",
+      "range": {
+        "startLine": 1071,
+        "startChar": 3,
+        "endLine": 1071,
+        "endChar": 4
+      },
+      "revId": "6e090c5048557bd2fb753028a316a491ea567155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c55fd8ff_7f96c9f6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-26T20:47:01Z",
+      "side": 1,
+      "message": "i din\u0027t get this part, can you share some insights?",
+      "range": {
+        "startLine": 1083,
+        "startChar": 0,
+        "endLine": 1087,
+        "endChar": 4
+      },
+      "revId": "6e090c5048557bd2fb753028a316a491ea567155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e92a1c_cf3c1075",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-06-26T20:47:01Z",
+      "side": 1,
+      "message": "nit: fits in same line?",
+      "range": {
+        "startLine": 1177,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 32
+      },
+      "revId": "6e090c5048557bd2fb753028a316a491ea567155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
