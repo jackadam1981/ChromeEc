@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e21ce7b4_30b96b7d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-26T05:56:05Z",
+      "side": 1,
+      "message": "Sorry that I keep flip-flopping on this interface. If we only copy mode_cnt VDOs, the rest of vdo_out might be uninitialized with no way for the caller to tell how many VDOs there are.\n\nHow about this?\n1. pd_get_mode_vdo_for_svid only copies mode_cnt VDOs.\n2. pd_get_mode_vdo_for_svid returns mode_cnt for the found VDOs or 0 if nothing was found.",
+      "range": {
+        "startLine": 596,
+        "startChar": 10,
+        "endLine": 596,
+        "endChar": 54
+      },
+      "revId": "fac2b11769db90832cf3799e86ab355eddfdda01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
