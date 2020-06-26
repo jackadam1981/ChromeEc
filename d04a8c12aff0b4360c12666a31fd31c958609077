@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "411edf48_26b1a06f",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-26T17:05:58Z",
+      "side": 1,
+      "message": "After discussion with Diana, I think there should be a comment here noting that, if the above if statement is false, vdo_count will still be 0, and we won\u0027t send anything.",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 3
+      },
+      "revId": "d04a8c12aff0b4360c12666a31fd31c958609077",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
