@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "058aa06b_355e6568",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-26T17:46:41Z",
+      "side": 1,
+      "message": "Have you also been able to test conditions that can often yield false-positives? (ex. PD traffic on the CC line after FRS is enabled)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ec5a4bf_e93ece37",
         "filename": "chip/it83xx/intc.c",
         "patchSetId": 17
@@ -64,6 +87,29 @@
         "startChar": 3,
         "endLine": 31,
         "endChar": 24
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0192a05_ac068ce4",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-06-26T17:46:41Z",
+      "side": 1,
+      "message": "Would it be possible to update the datasheet to reflect the PD FRS terminology?  The datasheet I have (V1.3.4.2.1) calls this \"quick swap request\"",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 39
       },
       "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
