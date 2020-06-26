@@ -456,6 +456,8 @@ static struct policy_engine {
 	struct partner_active_modes partner_amodes[AMODE_TYPE_COUNT];
 	/* Alternate mode object position */
 	int8_t alt_opos;
+	/* Current alternate mode SVID */
+	uint16_t current_alt_svid;
 
 	/* Partner type to send */
 	enum tcpm_transmit_type tx_type;
@@ -1054,32 +1056,36 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
-/* TODO: Add a common exit routine for all the alternate modes */
-void pe_exit_dp_mode(int port)
+void pe_exit_alt_mode(int port)
 {
+	int i;
+
 	if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
-		int opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
-
-		if (opos <= 0)
-			return;
-
-		/*
-		 * TODO: Delay deleting the data until after the
-		 * the EXIT_MODE message is sent.
-		 * Unfortunately the callers of this function expect
-		 * the mode to be cleaned up before return.
-		 */
-		CPRINTS("C%d Exiting DP mode", port);
-		if (!pd_dfp_exit_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT,
-					opos))
-			return;
-
-		/*
-		 * Save the opos to be used with the message.
-		 * Request a message to be sent to exit the mode.
-		 */
-		pe[port].alt_opos = opos;
-		pe_dpm_request(port, DPM_REQUEST_EXIT_DP_MODE);
+		for (i = 0; i < supported_modes_cnt; i++) {
+			int opos = pd_alt_mode(port, TCPC_TX_SOP,
+					supported_modes[i].svid);
+			if (opos > 0 &&
+			    pd_dfp_exit_mode(port, TCPC_TX_SOP,
+					supported_modes[i].svid, opos)) {
+				/*
+				 * TODO: Delay deleting the data until after
+				 * the EXIT_MODE message is sent. Unfortunately
+				 * the callers of this function expect the mode
+				 * to be cleaned up before return.
+				 */
+				CPRINTS("C%d Exiting ALT mode (SVID = 0x%x)",
+					port, supported_modes[i].svid);
+				/*
+				 * Save the SVID and opos to be used with the
+				 * message. Request a message to be sent to
+				 * exit the mode.
+				 */
+				pe[port].alt_opos = opos;
+				pe[port].current_alt_svid =
+						supported_modes[i].svid;
+				pe_dpm_request(port, DPM_REQUEST_EXIT_ALT_MODE);
+			}
+		}
 	}
 }
 
@@ -1170,10 +1176,8 @@ static bool common_src_snk_dpm_requests(int port)
 						PD_T_DISCOVER_IDENTITY;
 		}
 		return true;
-	} else if (PE_CHK_DPM_REQUEST(port,
-				     DPM_REQUEST_EXIT_DP_MODE)) {
-		PE_CLR_DPM_REQUEST(port,
-					DPM_REQUEST_EXIT_DP_MODE);
+	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_EXIT_ALT_MODE)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_EXIT_ALT_MODE);
 		/*
 		 * Init VDM CMD_EXIT_MODE message.
 		 * alt_opos must be set with the opos to be sent.
@@ -1181,7 +1185,7 @@ static bool common_src_snk_dpm_requests(int port)
 		 */
 		pe[port].tx_type = TCPC_TX_SOP;
 		pe[port].vdm_data[0] = VDO(
-					USB_SID_DISPLAYPORT,
+					pe[port].current_alt_svid,
 					1, /* structured */
 					VDO_SVDM_VERS(
 					    pd_get_vdo_ver(port, TCPC_TX_SOP)) |
