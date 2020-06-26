@@ -22,6 +22,30 @@
       "revId": "67d874ca02ae6a6354c793f15aeb918da101e16f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad3b5169_7b61f23e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4733,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-26T06:29:03Z",
+      "side": 0,
+      "message": "Yes, it does. I will follow up with a CL to remove unneeded flags.",
+      "parentUuid": "9e3b4ad9_2913444f",
+      "range": {
+        "startLine": 4733,
+        "startChar": 23,
+        "endLine": 4733,
+        "endChar": 49
+      },
+      "revId": "67d874ca02ae6a6354c793f15aeb918da101e16f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
