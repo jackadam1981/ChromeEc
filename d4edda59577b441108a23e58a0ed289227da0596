@@ -46,6 +46,30 @@
       "revId": "d4edda59577b441108a23e58a0ed289227da0596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be70992b_46cfa466",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-26T22:29:34Z",
+      "side": 1,
+      "message": "OK. Looks like the regular expression matches all until reaching \u0027\\n\u0027.\n\nCould you add \u0027,\u0027 to the beginning of the line 172, at least they all separated by \u0027,\u0027?",
+      "parentUuid": "962abae6_22e78636",
+      "range": {
+        "startLine": 167,
+        "startChar": 39,
+        "endLine": 167,
+        "endChar": 40
+      },
+      "revId": "d4edda59577b441108a23e58a0ed289227da0596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
