@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2e13bcae_c1f133ac",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-26T17:17:59Z",
+      "side": 1,
+      "message": "can we reserve few more bytes for future changes like pin code support to avoid creating another version in future?",
+      "parentUuid": "fb14db72_35467e76",
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b837c96_f55a0ae4",
         "filename": "common/u2f.c",
         "patchSetId": 3

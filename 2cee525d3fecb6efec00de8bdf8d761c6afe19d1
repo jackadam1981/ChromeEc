@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "047c206a_5cb49e6e",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-26T17:17:59Z",
+      "side": 1,
+      "message": "this may have issues with struct alignment - need packed structs, at least defining consts for these fields would definitely make sense",
+      "parentUuid": "f7d736b4_0583abdf",
+      "range": {
+        "startLine": 214,
+        "startChar": 8,
+        "endLine": 214,
+        "endChar": 22
+      },
+      "revId": "2cee525d3fecb6efec00de8bdf8d761c6afe19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6c6846e_db4ea614",
         "filename": "common/u2f.c",
         "patchSetId": 4
@@ -41,6 +65,29 @@
         "startChar": 26,
         "endLine": 148,
         "endChar": 48
+      },
+      "revId": "2cee525d3fecb6efec00de8bdf8d761c6afe19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04405c6e_bb123347",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-26T17:17:59Z",
+      "side": 1,
+      "message": "do we really need deterministic ECDSA or can just use any random for sign?  RFC 6979 is planned to be approved by NIST in SP 800 186-5, which is draft, but current requirements is that k should be random and different messages shouldn\u0027t be signed with same k. I\u0027m going to replace it later to cr50-wide DRBG to comply with this requirement. Hope this won\u0027t break expectations somewhere.",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 45
       },
       "revId": "2cee525d3fecb6efec00de8bdf8d761c6afe19d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
