@@ -12,6 +12,7 @@
 #include "console.h"
 #include "dacs.h"
 #include "ec_version.h"
+#include "fusb302b.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -143,7 +144,7 @@ static void dp_evt(enum gpio_signal signal)
 
 static void tcpc_evt(enum gpio_signal signal)
 {
-	ccprintf("tcpc event\n");
+	update_status_fusb302b();
 }
 
 static void hub_evt(enum gpio_signal signal)
@@ -178,6 +179,9 @@ void ext_hpd_detection_enable(int enable)
 	}
 }
 #else
+void snk_task(void *u)
+{
+}
 void pd_task(void *u)
 {
 	/* DO NOTHING */
@@ -383,6 +387,7 @@ static void board_init(void)
 	init_uservo_port();
 	init_pathsel();
 	init_ina231s();
+	init_fusb302b(1);
 
 	/* Enable DUT USB2.0 pair. */
 	gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 0);
@@ -393,7 +398,6 @@ static void board_init(void)
 
 	gpio_enable_interrupt(GPIO_STM_FAULT_IRQ_L);
 	gpio_enable_interrupt(GPIO_DP_HPD);
-	gpio_enable_interrupt(GPIO_CHGSRV_TCPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USBH_I2C_BUSY_INT);
 	gpio_enable_interrupt(GPIO_BC12_INT_ODL);
 
