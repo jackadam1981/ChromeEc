@@ -201,7 +201,9 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 
 	switch (dp_state[port]) {
 	case DP_START:
+	case DP_ENTER_SENT:
 	case DP_ENTER_RETRY:
+	case DP_ENTER_RETRY_SENT:
 		/* Enter the first supported mode for DisplayPort. */
 		vdm[0] = pd_dfp_enter_mode(port, TCPC_TX_SOP,
 				USB_SID_DISPLAYPORT, 0);
@@ -218,6 +220,7 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 			dp_state[port] = DP_ENTER_RETRY_SENT;
 		break;
 	case DP_ENTER_ACKED:
+	case DP_STATUS_SENT:
 		if (!(modep && modep->opos))
 			return -1;
 
@@ -230,6 +233,7 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		dp_state[port] = DP_STATUS_SENT;
 		break;
 	case DP_STATUS_ACKED:
+	case DP_CONFIG_SENT:
 		if (!(modep && modep->opos))
 			return -1;
 
@@ -242,6 +246,8 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		break;
 	case DP_ENTER_NAKED:
 	case DP_ACTIVE:
+	case DP_EXIT_SENT:
+	case DP_EXIT_RETRY_SENT:
 		/*
 		 * Called to exit DP alt mode, either when the mode
 		 * is active and the system is shutting down, or
@@ -263,7 +269,8 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
 		vdo_count_ret = 1;
-		dp_state[port] = (dp_state[port] == DP_ACTIVE)
+		dp_state[port] = (dp_state[port] == DP_ACTIVE ||
+				dp_state[port] == DP_EXIT_SENT)
 				  ? DP_EXIT_SENT
 				  : DP_EXIT_RETRY_SENT;
 		break;
