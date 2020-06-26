@@ -610,6 +610,8 @@ static void update_rollback_mask(uint32_t addr_a, uint32_t addr_b,
 #ifndef CR50_DEV
 	const struct SignedHeader *header_a;
 	const struct SignedHeader *header_b;
+	const struct SignedHeader *header_this;
+
 	int updated_words_count = 0;
 	int i;
 	int write_enabled = 0;
@@ -630,6 +632,24 @@ static void update_rollback_mask(uint32_t addr_a, uint32_t addr_b,
 	 * (where those bits in the header are not zeroed) will fail, thus
 	 * ensuring rollback protection.
 	 */
+	/*
+	 * Due to build system quirks this code could creep in even into
+	 * images with CR50_DEV=1. Let's just double check that the current
+	 * running image does not have the rollback space completely
+	 * zeroed.
+	 */
+	header_this = (const struct SignedHeader *)
+		get_program_memory_addr(system_get_image_copy());
+	if ((header_this == header_a) || (header_this == header_b)) {
+		for (i = 0; i < ARRAY_SIZE(header_this->infomap); i++) {
+			if (header_this->infomap[i])
+				break;
+		}
+		if (i == ARRAY_SIZE(header_this->infomap)) {
+			CPRINTS("Skipped updating INFO1 RW map");
+			return;
+		}
+	}
 	/* For each bit in the header infomap field of the running image. */
 	for (i = 0; i < INFO_MAX; i++) {
 		uint32_t bit;
