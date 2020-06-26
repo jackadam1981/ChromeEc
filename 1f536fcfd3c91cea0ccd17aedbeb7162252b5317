@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "261efe83_c01a28b4",
+        "filename": "board/servo_v4p1/chg_control.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-26T01:18:24Z",
+      "side": 1,
+      "message": "The CHG port is not captive cable. Both CC lines have to be pulled the same time. Setting each CC line seems unnecessary. May just change to the function only having one argument to disable or not.",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "1f536fcfd3c91cea0ccd17aedbeb7162252b5317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a0d3d74_1d3c55f7",
+        "filename": "board/servo_v4p1/chg_control.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-26T01:18:24Z",
+      "side": 1,
+      "message": "`en` is a common short form of `enable` but `di` is not quite common. May use the whole name, `disable`.",
+      "range": {
+        "startLine": 51,
+        "startChar": 45,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "1f536fcfd3c91cea0ccd17aedbeb7162252b5317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d09dd1e_a2509a83",
+        "filename": "board/servo_v4p1/chg_control.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-26T01:18:24Z",
+      "side": 1,
+      "message": "It sets the CC analog function. Maybe pick another better name?",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "1f536fcfd3c91cea0ccd17aedbeb7162252b5317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc515da_b60b8219",
+        "filename": "board/servo_v4p1/chg_control.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-26T01:18:24Z",
+      "side": 1,
+      "message": "May add a comment that the CC line has an external fixed Rd pull-down. This drives the CC line to High that overrides the pull down that triggers a disconnection.",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 23
+      },
+      "revId": "1f536fcfd3c91cea0ccd17aedbeb7162252b5317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
