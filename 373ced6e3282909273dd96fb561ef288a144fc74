@@ -22,6 +22,30 @@
       "revId": "373ced6e3282909273dd96fb561ef288a144fc74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f13812c_2f458ab3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4695,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-26T06:26:58Z",
+      "side": 1,
+      "message": "Done. Note that\n1) We don\u0027t know which VDM command was requested here, so we can\u0027t map to a specific spec state, and\n2) VDMs not defined in the PD spec do not have associated PE states.",
+      "parentUuid": "34a3ac60_eb8a08be",
+      "range": {
+        "startLine": 4687,
+        "startChar": 3,
+        "endLine": 4695,
+        "endChar": 0
+      },
+      "revId": "373ced6e3282909273dd96fb561ef288a144fc74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
