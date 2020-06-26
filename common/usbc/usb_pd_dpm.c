@@ -28,16 +28,23 @@
 
 static struct {
 	bool mode_entry_done;
+	bool mode_exit_request;
 } dpm[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 void dpm_init(int port)
 {
 	dpm[port].mode_entry_done = false;
+	dpm[port].mode_exit_request = false;
 }
 
 void dpm_set_mode_entry_done(int port)
 {
 	dpm[port].mode_entry_done = true;
+}
+
+void dpm_set_mode_exit_request(int port)
+{
+	dpm[port].mode_exit_request = true;
 }
 
 void dpm_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
@@ -148,4 +155,42 @@ void dpm_attempt_mode_entry(int port)
 	}
 
 	pe_dpm_request(port, DPM_REQUEST_VDM);
+}
+
+void dpm_attempt_mode_exit(int port)
+{
+	int opos;
+	uint16_t svid;
+	uint32_t vdm;
+
+	if (!dpm[port].mode_exit_request)
+		return;
+
+	/* TODO: Add exit mode support for SOP' and SOP'' */
+
+	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
+	    tbt_is_active(port))
+		svid = USB_VID_INTEL;
+	else if (dp_is_active(port))
+		svid = USB_SID_DISPLAYPORT;
+	else {
+		/* Clear exit mode request */
+		dpm[port].mode_exit_request = false;
+		return;
+	}
+
+	opos = pd_alt_mode(port, TCPC_TX_SOP, svid);
+	if (opos > 0 && pd_dfp_exit_mode(port, TCPC_TX_SOP, svid, opos)) {
+		/*
+		 * TODO: Delay deleting the data until after the EXIT_MODE
+		 * message is sent. Unfortunately the callers of this function
+		 * expect the mode to be cleaned up before return.
+		 */
+		vdm = VDO(svid, 1, /* Structured */
+			  VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP)) |
+			  VDO_OPOS(opos) | VDO_CMDT(CMDT_INIT) | CMD_EXIT_MODE);
+
+		if (!pd_setup_vdm_request(port, TCPC_TX_SOP, &vdm, 1))
+			pe_dpm_request(port, DPM_REQUEST_VDM);
+	}
 }
