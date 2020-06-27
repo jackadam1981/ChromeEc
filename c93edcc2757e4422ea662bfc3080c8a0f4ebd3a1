@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "38353df1_28aa4373",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-06-27T23:20:24Z",
+      "side": 1,
+      "message": "yup - maybe the stronger argument would be that doing so would\nalso abstract away the layout FW_CONFIG from board files.",
+      "parentUuid": "2158bbe2_3080e7dd",
+      "range": {
+        "startLine": 623,
+        "startChar": 1,
+        "endLine": 626,
+        "endChar": 28
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d0673f1_30fb9213",
         "filename": "baseboard/volteer/cbi_ec_fw_config.h",
         "patchSetId": 3
