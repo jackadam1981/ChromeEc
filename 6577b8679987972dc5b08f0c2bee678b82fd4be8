@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ce69dbe_5fb29582",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-06-27T23:03:46Z",
+      "side": 1,
+      "message": "whoops... fat fingered that merge 😞",
+      "parentUuid": "c0e14f49_f8e94f78",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 5
+      },
+      "revId": "6577b8679987972dc5b08f0c2bee678b82fd4be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24fda7c9_13de5f10",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b1cbb1e0_23cb0970",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-06-27T23:03:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24fda7c9_13de5f10",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 55
+      },
+      "revId": "6577b8679987972dc5b08f0c2bee678b82fd4be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15e73784_24300d72",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "6577b8679987972dc5b08f0c2bee678b82fd4be8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11737f5d_db6574ce",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-06-27T23:03:46Z",
+      "side": 1,
+      "message": "fair enough. kinda hoping for disabling FORCE_DID soon.",
+      "parentUuid": "15e73784_24300d72",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 41
+      },
+      "revId": "6577b8679987972dc5b08f0c2bee678b82fd4be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
