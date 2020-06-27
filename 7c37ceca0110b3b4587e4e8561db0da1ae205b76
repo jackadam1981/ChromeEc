@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "c0dd3002_fc5b971c",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-06-27T00:17:01Z",
+      "side": 1,
+      "message": "I\u0027m putting a few reserved bytes after the version, see include/u2f.h in Patchset 5.",
+      "parentUuid": "2e13bcae_c1f133ac",
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b837c96_f55a0ae4",
         "filename": "common/u2f.c",
         "patchSetId": 3
