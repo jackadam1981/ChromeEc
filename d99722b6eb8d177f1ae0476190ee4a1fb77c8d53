@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f90aaef8_7d667cd4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2684,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-27T02:14:05Z",
+      "side": 1,
+      "message": "make this a bool to match the return from the function",
+      "range": {
+        "startLine": 2684,
+        "startChar": 1,
+        "endLine": 2684,
+        "endChar": 4
+      },
+      "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23bcf8a3_d1c85dbf",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-27T02:14:05Z",
+      "side": 1,
+      "message": "bool instead of int? I do see some inconsistency in bool vs int, but not sure if we have\na strong policy. IMHO if it is treated as a bool, we should make it one.",
+      "range": {
+        "startLine": 445,
+        "startChar": 42,
+        "endLine": 445,
+        "endChar": 45
+      },
+      "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c52294d5_be82c6d2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-27T02:14:05Z",
+      "side": 1,
+      "message": "If we just report the error but take no action, should it just be ignored,\nand instead tcpm_init print something more useful (as to why it failed?)",
+      "range": {
+        "startLine": 1133,
+        "startChar": 35,
+        "endLine": 1133,
+        "endChar": 38
+      },
+      "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
