@@ -94,6 +94,30 @@
       "revId": "d4edda59577b441108a23e58a0ed289227da0596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c4b061_43ff6e8e",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-06-27T02:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aa2c052_78236d1d",
+      "range": {
+        "startLine": 167,
+        "startChar": 39,
+        "endLine": 167,
+        "endChar": 40
+      },
+      "revId": "d4edda59577b441108a23e58a0ed289227da0596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
