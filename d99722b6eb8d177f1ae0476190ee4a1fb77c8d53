@@ -68,6 +68,52 @@
       "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea0e982f_3833a65d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-27T02:51:06Z",
+      "side": 1,
+      "message": "won\u0027t this be reset as well in unattached states that we will be jumping to?",
+      "range": {
+        "startLine": 1139,
+        "startChar": 0,
+        "endLine": 1139,
+        "endChar": 63
+      },
+      "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eca4ec2_413c966b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3146,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-06-27T02:51:06Z",
+      "side": 1,
+      "message": "why?  Is this one more important than all of the other prints?",
+      "range": {
+        "startLine": 3146,
+        "startChar": 1,
+        "endLine": 3146,
+        "endChar": 10
+      },
+      "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
