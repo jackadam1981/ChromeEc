@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3921288a_0d8821b2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-06-28T02:29:46Z",
+      "side": 1,
+      "message": "Just out of curiosity: Is there other Alternate mode other than current alternate mode?",
+      "revId": "d442832f00e50cbff844afec3ffed4e5a3f042b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03e80946_7e7e1fce",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
