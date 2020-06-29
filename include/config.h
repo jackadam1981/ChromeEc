@@ -700,7 +700,11 @@
 #undef CONFIG_BOOTCFG_VALUE
 
 /*****************************************************************************/
-/* Modify the default behavior to make system bringup easier. */
+/*
+ * Modify the default behavior to make system bringup easier.
+ *
+ * Note this will enable PD in RO for TCPMv2.
+ */
 #undef CONFIG_BRINGUP
 
 /*
@@ -3781,6 +3785,9 @@
  * We don't want to allow communication to outside world until
  * we jump to RW. This can by overridden with the removal of
  * the write protect screw to allow for easier testing.
+ *
+ * Note: this is assumed for TCPMv2. See also CONFIG_BRINGUP for enabling PD in
+ * RO.
  */
 #undef CONFIG_USB_PD_COMM_LOCKED
 
