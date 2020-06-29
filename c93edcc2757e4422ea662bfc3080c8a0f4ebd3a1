@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "513b0d11_1289ac84",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-29T16:43:27Z",
+      "side": 1,
+      "message": "I put the check into the C file to make the error output easier to parse.  When doing parallel builds, all the files that include this header would generate an error if the assert fails.\nUpdated with your suggestion.",
+      "parentUuid": "a3e73c45_e49bb2c5",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 70
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd7d42d5_0d5096ed",
         "filename": "baseboard/volteer/cbi_ec_fw_config.c",
         "patchSetId": 3
@@ -140,6 +164,30 @@
       "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc84985a_2a02c404",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-29T16:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd7d42d5_0d5096ed",
+      "range": {
+        "startLine": 41,
+        "startChar": 45,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -166,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "c3000c92_ba8516df",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-29T16:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e1c7a6d_58f0523a",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5021c57_794560c3",
         "filename": "baseboard/volteer/cbi_ec_fw_config.h",
         "patchSetId": 3
@@ -186,6 +258,30 @@
       "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d392d03_d11f0399",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-29T16:43:27Z",
+      "side": 1,
+      "message": "The EC code provides it\u0027s own stdbool.h file, so the double-quotes are what we want.",
+      "parentUuid": "f5021c57_794560c3",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -236,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "74134063_03adfb80",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-29T16:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f0d648a_8751c3cb",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "037ecd42_c02bfdcf",
         "filename": "baseboard/volteer/cbi_ec_fw_config.h",
         "patchSetId": 3
@@ -256,6 +376,30 @@
       "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a6b492d_df3aa2e7",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-29T16:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "037ecd42_c02bfdcf",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 59
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
