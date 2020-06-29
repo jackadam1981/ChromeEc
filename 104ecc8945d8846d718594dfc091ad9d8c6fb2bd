@@ -22,6 +22,30 @@
       "revId": "104ecc8945d8846d718594dfc091ad9d8c6fb2bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced506bb_2a66b9b3",
+        "filename": "board/servo_v4/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-06-29T19:27:30Z",
+      "side": 1,
+      "message": "This seems to be a pretty common standard for the pd_task in particular with 13 other boards already adopting magic numbers, either 1000 or 1280 bytes with the only constraint being this must be divisible by 4 for the word size. I didn\u0027t see any commit hashes from git blame that indicated why that convention is chosen. There are PD_TASK_STACK_SIZE defined for some boards, but they\u0027re unused and nowhere near the size of the typical pd_task at 800 or 2048 bytes on the 2 chip configurations it\u0027s been defined in.\n\nThe most likely explanation I see is different boards enable different feature sets for the pd_task and this can have a significant impact on the required stack size. If you\u0027re trying to optimize for available memory, setting the PD_TASK_STACK_SIZE at the upper bounds will be unsuitable for boards with limited capabilities or enabled features.\n\nWe could define stack sizes on a per board basis with defines in the board.h, but right now that convention hasn\u0027t been used on any boards.",
+      "parentUuid": "d899c6f4_1b9da689",
+      "range": {
+        "startLine": 13,
+        "startChar": 42,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "104ecc8945d8846d718594dfc091ad9d8c6fb2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
