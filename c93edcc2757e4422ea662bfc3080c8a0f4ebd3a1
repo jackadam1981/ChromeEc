@@ -97,6 +97,98 @@
     },
     {
       "key": {
+        "uuid": "a3e73c45_e49bb2c5",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T16:11:57Z",
+      "side": 1,
+      "message": "Nit: It seems like this assertion as written could be in the header file, but it would be slightly more meaningful below the definition as\nBUILD_ASSERT(sizeof(fw_config) \u003d\u003d sizeof(uint32_t)).",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 70
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7d42d5_0d5096ed",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T16:11:57Z",
+      "side": 1,
+      "message": "if?",
+      "range": {
+        "startLine": 41,
+        "startChar": 45,
+        "endLine": 41,
+        "endChar": 47
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e1c7a6d_58f0523a",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T16:11:57Z",
+      "side": 1,
+      "message": "I think this is superfluous. \u003d\u003d should produce a valid bool (at least as valid as !).",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5021c57_794560c3",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T16:11:57Z",
+      "side": 1,
+      "message": "This should use angle brackets.",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d0673f1_30fb9213",
         "filename": "baseboard/volteer/cbi_ec_fw_config.h",
         "patchSetId": 3
@@ -113,6 +205,53 @@
         "startChar": 2,
         "endLine": 37,
         "endChar": 6
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f0d648a_8751c3cb",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T16:11:57Z",
+      "side": 1,
+      "message": "Enums are required to be able to represent all of the enumerated values, but the underlying type is otherwise implementation-defined. In practice, with our current tools, I believe this will result in an unsigned field.\n\nIn general, we should probably do arithmetic and comparisons with enum values as if they were unsigned.",
+      "parentUuid": "0d0673f1_30fb9213",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "037ecd42_c02bfdcf",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T16:11:57Z",
+      "side": 1,
+      "message": "Nit: period",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 59
       },
       "revId": "c93edcc2757e4422ea662bfc3080c8a0f4ebd3a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
