@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f44a9649_101648b8",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T20:52:01Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 21
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1688d993_500212dc",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T20:52:01Z",
+      "side": 1,
+      "message": "as discussed, let\u0027s replace with switching to a new set of vars for the new drbg. so, fips_u2f_compliant is true if new variables exist.",
+      "range": {
+        "startLine": 90,
+        "startChar": 37,
+        "endLine": 90,
+        "endChar": 67
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a98b0bb_978039a8",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T20:52:01Z",
+      "side": 1,
+      "message": "nit: can be moved into fips_set_status() itself.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 9
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5822b9e7_2b3b9599",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T20:52:01Z",
+      "side": 1,
+      "message": "shall this also be a part of fips_set_status()?\nbtw shall we do it only if (err \u0026 FIPS_ERROR_MASK)? to avoid double reporting errors, which were already reported.\n\nif both these things are moved to fips_set_status(), we don\u0027t need a separate fips_throw_err().\nactually, is it even used anywhere?",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ef34a7c_1420befc",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T20:52:01Z",
+      "side": 1,
+      "message": "link doesn\u0027t work.\nshall we event refer to it here? are these vectors publicly available? if not, let\u0027s not do it?",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 74
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca40668_9ad1e8c9",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T20:52:01Z",
+      "side": 1,
+      "message": "why not have call_on_stack()?",
+      "range": {
+        "startLine": 514,
+        "startChar": 5,
+        "endLine": 514,
+        "endChar": 9
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "245772f9_dbf12748",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T20:52:01Z",
+      "side": 1,
+      "message": "\u0026\u0026 active \u003d\u003d true",
+      "range": {
+        "startLine": 598,
+        "startChar": 5,
+        "endLine": 598,
+        "endChar": 36
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55934039_485b6027",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T20:52:01Z",
+      "side": 1,
+      "message": "looks like now it\u0027s just u2f_zeroize() in any case.",
+      "range": {
+        "startLine": 604,
+        "startChar": 1,
+        "endLine": 611,
+        "endChar": 2
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
