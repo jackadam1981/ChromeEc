@@ -34,6 +34,42 @@
       "revId": "736729f6a6a414983984de8a3519181d33d8a7bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec698cf9_adb0e4cf",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-06-29T04:36:15Z",
+      "side": 1,
+      "message": "port changes from PD supplier with respect to current and voltage",
+      "parentUuid": "e3438e43_d04d73ad",
+      "revId": "736729f6a6a414983984de8a3519181d33d8a7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b52299_49348727",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-06-29T04:36:15Z",
+      "side": 1,
+      "message": "Added reason for retaining same port \u0026 supplier.\ncondition check require after selected best port not before.",
+      "parentUuid": "e3438e43_d04d73ad",
+      "revId": "736729f6a6a414983984de8a3519181d33d8a7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
