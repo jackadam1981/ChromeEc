@@ -16,6 +16,24 @@
       "revId": "155568e7dbd48a3add38be79b6fbb7e7e2d1a0e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759a531c_15ed60a0",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-06-29T09:47:26Z",
+      "side": 1,
+      "message": "I think there is a chance to happen racing condition. In TCPMv1 the end of pd_execute_hard_reset() set the pd state to *_HARD_RESET_RECOVER, but the waked up pd_task() may have chance set to other state.",
+      "parentUuid": "b2c05174_c92df993",
+      "revId": "155568e7dbd48a3add38be79b6fbb7e7e2d1a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
