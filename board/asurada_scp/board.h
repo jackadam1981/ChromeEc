@@ -40,6 +40,10 @@
 #define CONFIG_IPC_SHARED_OBJ_ADDR                                             \
 	(ICACHE_BASE -                                                         \
 	 (CONFIG_IPC_SHARED_OBJ_BUF_SIZE + 2 * 4 /* int32_t */) * 2)
+#define CONFIG_IPI
+
+#define	IPI_SCP_INIT 0
+#define IPI_COUNT 1
 
 #ifndef __ASSEMBLER__
 #include "gpio_signal.h"

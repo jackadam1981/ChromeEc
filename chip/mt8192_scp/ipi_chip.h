@@ -1,0 +1,53 @@
+/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#ifndef __CROS_EC_IPI_CHIP_H
+#define __CROS_EC_IPI_CHIP_H
+
+/*
+ * Length of EC version string is at most 32 byte (NULL included), which
+ * also aligns SCP fw_version length.
+ */
+#define SCP_FW_VERSION_LEN 32
+
+/*
+ * Video decoder supported capability:
+ * BIT(4): 0 enable 4K
+ *         1 disable 4K
+ */
+#define VCODEC_CAPABILITY_4K_DISABLED BIT(4)
+
+#ifndef IPI_SCP_INIT
+#error If CONFIG_IPI is enabled, IPI_SCP_INIT must be defined.
+#endif
+
+/*
+ * Share buffer layout for IPI_SCP_INIT response. This structure should sync
+ * across kernel and EC.
+ */
+struct scp_run_t {
+	uint32_t signaled;
+	int8_t fw_ver[SCP_FW_VERSION_LEN];
+	uint32_t dec_capability;
+	uint32_t enc_capability;
+};
+
+/*
+ * The layout of the IPC0 AP/SCP shared buffer.
+ * This should sync across kernel and EC.
+ */
+struct ipc_shared_obj {
+	/* IPI ID */
+	int32_t id;
+	/* Length of the contents in buffer. */
+	uint32_t len;
+	/* Shared buffer contents. */
+	uint8_t buffer[CONFIG_IPC_SHARED_OBJ_BUF_SIZE];
+};
+
+/* Send a IPI contents to AP. This shouldn't be used in ISR context. */
+int ipi_send(int32_t id, const void *buf, uint32_t len, int wait);
+
+#endif /* __CROS_EC_IPI_CHIP_H */
