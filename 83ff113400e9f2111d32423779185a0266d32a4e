@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "927198b9_b690fa6e",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T16:34:05Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this. cprintf and cprints are declared in console.h.",
+      "revId": "83ff113400e9f2111d32423779185a0266d32a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdaa83a0_79c76ab3",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T16:34:05Z",
+      "side": 1,
+      "message": "Nit: colon here to match other type-C console logs.",
+      "range": {
+        "startLine": 34,
+        "startChar": 20,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "83ff113400e9f2111d32423779185a0266d32a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2286e01f_15cf329c",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T16:34:05Z",
+      "side": 1,
+      "message": "Nit: TODO(b/148528713)",
+      "range": {
+        "startLine": 204,
+        "startChar": 5,
+        "endLine": 204,
+        "endChar": 9
+      },
+      "revId": "83ff113400e9f2111d32423779185a0266d32a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
