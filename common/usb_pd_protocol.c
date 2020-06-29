@@ -82,6 +82,7 @@ static int debug_level;
  * provide VBUS, but never sends any PD communication.
  */
 static uint8_t pd_comm_enabled[CONFIG_USB_PD_PORT_MAX_COUNT];
+static int test = 1;
 #else /* CONFIG_COMMON_RUNTIME */
 #define CPRINTF(format, args...)
 #define CPRINTS(format, args...)
@@ -1543,7 +1544,10 @@ static void handle_data_request(int port, uint32_t head,
 			pd_process_source_cap(port, cnt, payload);
 
 			/* Source will resend source cap on failure */
-			pd_send_request_msg(port, 1);
+			if (test == 1)
+				test = 0;
+			else
+				pd_send_request_msg(port, 1);
 		}
 		break;
 #endif /* CONFIG_USB_PD_DUAL_ROLE */

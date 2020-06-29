@@ -183,6 +183,7 @@ typedef int (*svdm_rsp_func)(int port, uint32_t *payload);
 
 /* This is true only if a sysjump has occurred */
 static bool sysjump_occurred;
+static int test = 1;
 
 /* List of all Policy Engine level states */
 enum usb_pe_state {
@@ -2447,7 +2448,10 @@ static void pe_snk_select_capability_entry(int port)
 	print_current_state(port);
 
 	/* Send Request */
-	pe_send_request_msg(port);
+	if (test == 1)
+		test = 0;
+	else
+		pe_send_request_msg(port);
 
 	/* We are PD Connected */
 	PE_SET_FLAG(port, PE_FLAGS_PD_CONNECTION);
