@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "489c2bda_dfcde2f1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T18:16:32Z",
+      "side": 1,
+      "message": "Invert this check and return early to reduce indentation.",
+      "range": {
+        "startLine": 1063,
+        "startChar": 1,
+        "endLine": 1063,
+        "endChar": 46
+      },
+      "revId": "d442832f00e50cbff844afec3ffed4e5a3f042b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03e80946_7e7e1fce",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -35,6 +58,52 @@
         "startChar": 30,
         "endLine": 1068,
         "endChar": 41
+      },
+      "revId": "d442832f00e50cbff844afec3ffed4e5a3f042b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bf0fd18_702b5a17",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T18:16:32Z",
+      "side": 1,
+      "message": "Invert this check and continue early to reduce indentation.",
+      "range": {
+        "startLine": 1067,
+        "startChar": 3,
+        "endLine": 1069,
+        "endChar": 36
+      },
+      "revId": "d442832f00e50cbff844afec3ffed4e5a3f042b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1453a8c_c96fb88c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T18:16:32Z",
+      "side": 1,
+      "message": "This will only ever Exit Mode for the SVID that is in current_alt_svid when this function returns. In order to work with multiple SVIDs simultaneously or multiple transmit types with the same SVID, we would need to cycle through PE_VDM_REQUEST_DPM multiple times. Managing that would require some kind of state that could be accessed by the code initiating the exit request. In this case, the TC state machine would need a way to ask the PE to exit its currently entered modes and then wait until that was done to proceed with whatever it was doing.\n\nI think the structure of this process would have to change significantly to coordinate multiple exits.",
+      "range": {
+        "startLine": 1064,
+        "startChar": 2,
+        "endLine": 1086,
+        "endChar": 52
       },
       "revId": "d442832f00e50cbff844afec3ffed4e5a3f042b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
