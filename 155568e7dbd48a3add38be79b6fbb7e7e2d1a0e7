@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2c05174_c92df993",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-06-29T09:16:16Z",
+      "side": 1,
+      "message": "How about just executing pd_execute_hard_Reset(port) here?\n\ne.g.\n\n \tif (USBPD_IS_HARD_RESET_DETECT(port)) {\n\t\t/* clear interrupt */\n\t\tIT83XX_USBPD_ISR(port) \u003d USBPD_REG_MASK_HARD_RESET_DETECT;\n\t\tUSBPD_SW_RESET(port);\n                pd_execute_hard_reset(port);\n                /* simply wake the task */\n                task_wake(PD_PORT_TO_TASK_ID(port));\n         }",
+      "revId": "155568e7dbd48a3add38be79b6fbb7e7e2d1a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
