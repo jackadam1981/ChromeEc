@@ -837,9 +837,12 @@ int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 	union tbt_mode_resp_cable cable_mode_resp;
 
 	/* Table F-12 TBT3 Cable Enter Mode Command */
-	payload[0] = pd_dfp_enter_mode(port, sop, USB_VID_INTEL, 0) |
+	payload[0] = pd_dfp_enter_mode(port,
+				       sop == TCPC_TX_SOP ? TCPC_TX_SOP :
+							    TCPC_TX_SOP_PRIME,
+				       USB_VID_INTEL, 0) |
 		     VDO_CMDT(CMDT_INIT) |
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		     VDO_SVDM_VERS(pd_get_vdo_ver(port, sop));
 
 	/* For TBT3 Cable Enter Mode Command, number of Objects is 1 */
 	if ((sop == TCPC_TX_SOP_PRIME) ||
