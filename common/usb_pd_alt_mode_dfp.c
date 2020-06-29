@@ -223,9 +223,18 @@ struct svdm_amode_data *pd_get_amode_data(int port,
 uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
 		uint16_t svid, int opos)
 {
-	int mode_idx = pd_allocate_mode(port, type, svid);
+	int mode_idx;
 	struct svdm_amode_data *modep;
 	uint32_t mode_caps;
+
+	/*
+	 * Enter Mode SOP'' via SVID directly since we do not send
+	 * discover SOP'' queries to the cable plug
+	 */
+	if (type == TCPC_TX_SOP_PRIME_PRIME)
+		return VDO(svid, 1, CMD_ENTER_MODE | VDO_OPOS(1));
+
+	mode_idx = pd_allocate_mode(port, type, svid);
 
 	if (mode_idx == -1)
 		return 0;
@@ -839,7 +848,7 @@ int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 	/* Table F-12 TBT3 Cable Enter Mode Command */
 	payload[0] = pd_dfp_enter_mode(port, sop, USB_VID_INTEL, 0) |
 		     VDO_CMDT(CMDT_INIT) |
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		     VDO_SVDM_VERS(pd_get_vdo_ver(port, sop));
 
 	/* For TBT3 Cable Enter Mode Command, number of Objects is 1 */
 	if ((sop == TCPC_TX_SOP_PRIME) ||
