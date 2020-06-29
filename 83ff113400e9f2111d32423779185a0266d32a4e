@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6089b207_8a124845",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-06-29T16:36:19Z",
+      "side": 1,
+      "message": "Nit: b/152235216 is a duplicate of b/148528713. Can you update this field?",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "83ff113400e9f2111d32423779185a0266d32a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "927198b9_b690fa6e",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 12
