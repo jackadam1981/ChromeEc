@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "22c54708_c47c2d91",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T17:03:57Z",
+      "side": 1,
+      "message": "\"Running U2F\" or just \"Running\"?",
+      "range": {
+        "startLine": 642,
+        "startChar": 13,
+        "endLine": 642,
+        "endChar": 20
+      },
+      "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0ae594d_b01f679e",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T17:03:57Z",
+      "side": 1,
+      "message": "as discussed, let\u0027s make sure goes after SPS init",
+      "range": {
+        "startLine": 650,
+        "startChar": 39,
+        "endLine": 650,
+        "endChar": 53
+      },
+      "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "acc82c50_4e79641f",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 15
@@ -123,6 +169,29 @@
       "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "675cc687_77c1b25f",
+        "filename": "test/tpm_test/trng_test.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-06-29T17:03:57Z",
+      "side": 1,
+      "message": "nit: spaces",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 8
+      },
+      "revId": "4ff62dc1ba4775954e3ac5ad671375725888302a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
