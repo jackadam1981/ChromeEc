@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d899c6f4_1b9da689",
+        "filename": "board/servo_v4/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-06-29T18:47:34Z",
+      "side": 1,
+      "message": "is there a reason why these are just numbers, and not a define?",
+      "range": {
+        "startLine": 13,
+        "startChar": 42,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "104ecc8945d8846d718594dfc091ad9d8c6fb2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
