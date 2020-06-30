@@ -300,23 +300,6 @@ static const struct usb_mux mux_config_p1_usb3 = {
 static enum usb_db_id usb_db_type = USB_DB_NONE;
 
 /******************************************************************************/
-/* USBC PPC configuration */
-struct ppc_config_t ppc_chips[] = {
-	[USBC_PORT_C0] = {
-		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
-		.drv = &sn5s330_drv,
-	},
-	[USBC_PORT_C1] = {
-		.i2c_port = I2C_PORT_USB_C1,
-		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
-		.drv = &syv682x_drv,
-	},
-};
-BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
-unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
-
-/******************************************************************************/
 /* USBC mux configuration - Tiger Lake includes internal mux */
 struct usb_mux usbc1_usb4_db_retimer = {
 	.usb_port = USBC_PORT_C1,
