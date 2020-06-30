@@ -90,6 +90,8 @@ void dpm_attempt_mode_entry(int port)
 
 	if (pd_get_data_role(port) != PD_ROLE_DFP)
 		return;
+
+#ifdef CONFIG_TASK_CHIPSET
 	/*
 	 * Do not try to enter mode while CPU is off.
 	 * CPU transitions (e.g b/158634281) can occur during the discovery
@@ -99,6 +101,7 @@ void dpm_attempt_mode_entry(int port)
 	 */
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
 		return;
+#endif
 	/*
 	 * If discovery has not occurred for modes, do not attempt to switch
 	 * to alt mode.
