@@ -554,7 +554,7 @@ const uint32_t pd_src_pdo_max[] = {
 const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
 
 const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
+	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS | PDO_FIXED_FRS_CURR_1A5_AT_5V),
 	PDO_BATT(4750, PD_MAX_VOLTAGE_MV, PD_OPERATING_POWER_MW),
 	PDO_VAR(4750, PD_MAX_VOLTAGE_MV, PD_MAX_CURRENT_MA),
 };
@@ -731,7 +731,7 @@ int pd_is_vbus_present(int port)
 #ifdef CONFIG_USB_PD_FRS
 void pd_set_frs_enable(int port, int enable)
 {
-	ppc_set_frs_enable(port, enable);
+	//ppc_set_frs_enable(port, enable);
 	tcpm_set_frs_enable(port, enable);
 }
 #endif /* defined(CONFIG_USB_PD_FRS) */
