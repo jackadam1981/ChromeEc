@@ -34,6 +34,24 @@
       "revId": "3183cd6749b6ab273b3155bfc71d183eaf6633f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f509ed39_937d2e4c",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-30T02:33:04Z",
+      "side": 1,
+      "message": "The issue is just in having a floating input, so we could also configure it as an output by default.\n\nGPIO_OUT_LOW | GPIO_INT_BOTH by default, and reconfigure as an input if present. Defaulting to low won\u0027t fight with an external driver pulling the input low (it\u0027s on an open-drain net), and interrupts are still enabled.",
+      "parentUuid": "82255bfa_9b259cee",
+      "revId": "3183cd6749b6ab273b3155bfc71d183eaf6633f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
