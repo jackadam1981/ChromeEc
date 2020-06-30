@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feb33440_1a972ef9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-30T17:25:22Z",
+      "side": 1,
+      "message": "Did you run `make buildall`?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "41c41d0c17bf9d23db82f581dca3fefea5501e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81392032_d1061b2b",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-30T17:25:22Z",
+      "side": 1,
+      "message": "I think that this needs to be guarded with a define for boards that have a battery. Not every board that uses charge manager has a battery.",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 0
+      },
+      "revId": "41c41d0c17bf9d23db82f581dca3fefea5501e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
