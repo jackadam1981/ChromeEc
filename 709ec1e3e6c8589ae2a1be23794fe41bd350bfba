@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79b3a36a_54db5349",
+        "filename": "board/drawcia/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-06-30T06:03:57Z",
+      "side": 1,
+      "message": "I have upload gauge ic spec. to tracker for reference. All batteries used the same guage.",
+      "parentUuid": "9656b02e_26570707",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "709ec1e3e6c8589ae2a1be23794fe41bd350bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f7a17f0_56dd810a",
         "filename": "board/drawcia/battery.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "709ec1e3e6c8589ae2a1be23794fe41bd350bfba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96cc5f61_9bf62795",
+        "filename": "board/drawcia/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-06-30T06:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f7a17f0_56dd810a",
+      "range": {
+        "startLine": 52,
+        "startChar": 21,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "709ec1e3e6c8589ae2a1be23794fe41bd350bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2621916e_252c1196",
+        "filename": "board/drawcia/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-06-30T06:03:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e6d3f11_5944dd66",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 25
+      },
+      "revId": "709ec1e3e6c8589ae2a1be23794fe41bd350bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23ed7aef_e69a0738",
         "filename": "board/drawcia/battery.c",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4fdd3526_79d2a33f",
+        "filename": "board/drawcia/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-06-30T06:03:57Z",
+      "side": 1,
+      "message": "Some comment as above.",
+      "parentUuid": "23ed7aef_e69a0738",
+      "range": {
+        "startLine": 99,
+        "startChar": 25,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "709ec1e3e6c8589ae2a1be23794fe41bd350bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a925dc7_5c3cad80",
         "filename": "board/drawcia/battery.c",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-23T20:14:06Z",
       "side": 1,
       "message": "Correct mask?  Spec shows bits 15 and 14 for the FET statuses",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 23
+      },
+      "revId": "709ec1e3e6c8589ae2a1be23794fe41bd350bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fb00a82_764835ae",
+        "filename": "board/drawcia/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-06-30T06:03:57Z",
+      "side": 1,
+      "message": "Some comment as above.",
+      "parentUuid": "0a925dc7_5c3cad80",
       "range": {
         "startLine": 104,
         "startChar": 4,
