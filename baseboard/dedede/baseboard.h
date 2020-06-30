@@ -83,7 +83,7 @@
 /* Common EC defines */
 
 /* Work around double CR50 reset by waiting in initial power on. */
-#define CONFIG_BOARD_RESET_AFTER_POWER_ON
+#define CONFIG_POR_WORKAROUND
 
 /* EC Modules */
 #define CONFIG_ADC
