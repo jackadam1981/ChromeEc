@@ -16,6 +16,24 @@
       "revId": "3183cd6749b6ab273b3155bfc71d183eaf6633f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82255bfa_9b259cee",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-06-30T01:55:23Z",
+      "side": 1,
+      "message": "OK can fix that.\nThe GPIO handling is a bit weird in terms of the UNUSED macro.\nIt puts the pins into an unused list, so I am not sure what happens if you\ntry to set them up as an interrupt afterwards.\nIt may be better to configure the input as normal, and then call gpio_reset on that pin if it is not going to be used.\nAlso, the GPIO_INT macro seems to put the pin in an interrupt table, and this wouldn\u0027t happen if the pin was UNUSED.",
+      "parentUuid": "09bbb30d_3ed5ff86",
+      "revId": "3183cd6749b6ab273b3155bfc71d183eaf6633f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
