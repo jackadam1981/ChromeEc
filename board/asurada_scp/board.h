@@ -40,6 +40,17 @@
 #define CONFIG_IPC_SHARED_OBJ_ADDR                                             \
 	(ICACHE_BASE -                                                         \
 	 (CONFIG_IPC_SHARED_OBJ_BUF_SIZE + 2 * 4 /* int32_t */) * 2)
+#define CONFIG_IPI
+
+#define SCP_IPI_INIT 0
+#define SCP_IPI_VDEC_H264 1
+#define SCP_IPI_VDEC_VP8 2
+#define SCP_IPI_VDEC_VP9 3
+#define SCP_IPI_VENC_H264 4
+#define SCP_IPI_VENC_VP8 5
+#define SCP_IPI_HOST_COMMAND 13
+#define SCP_IPI_MAX 32
+#define IPI_COUNT SCP_IPI_MAX
 
 #ifndef __ASSEMBLER__
 #include "gpio_signal.h"
