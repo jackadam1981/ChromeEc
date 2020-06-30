@@ -11,6 +11,8 @@
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi260.h"
 #include "driver/als_tcs3400.h"
+#include "driver/ppc/sn5s330.h"
+#include "driver/ppc/syv682x.h"
 #include "driver/retimer/bb_retimer.h"
 #include "driver/sync.h"
 #include "extpower.h"
@@ -30,6 +32,7 @@
 #include "throttle_ap.h"
 #include "uart.h"
 #include "usb_pd_tbt.h"
+#include "usbc_ppc.h"
 #include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -244,4 +247,19 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_PP5000_USBA,
 };
 
-
+/******************************************************************************/
+/* USBC PPC configuration */
+struct ppc_config_t ppc_chips[] = {
+	[USBC_PORT_C0] = {
+		.i2c_port = I2C_PORT_USB_C0,
+		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
+		.drv = &sn5s330_drv,
+	},
+	[USBC_PORT_C1] = {
+		.i2c_port = I2C_PORT_USB_C1,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
