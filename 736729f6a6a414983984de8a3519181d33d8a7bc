@@ -88,6 +88,24 @@
       "revId": "736729f6a6a414983984de8a3519181d33d8a7bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bfac4c3_fdaa0728",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-06-30T05:31:18Z",
+      "side": 1,
+      "message": "Removed supplier type condition check.",
+      "parentUuid": "23d9a916_4b1fbb28",
+      "revId": "736729f6a6a414983984de8a3519181d33d8a7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

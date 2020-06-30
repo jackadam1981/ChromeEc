@@ -16,6 +16,24 @@
       "revId": "a8d66c93cd9c6c15846457464ae21e39baf95779",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07956547_17a2a04e",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-06-30T05:31:18Z",
+      "side": 1,
+      "message": "Updated multi-line comments.",
+      "parentUuid": "c51f58ed_ee850fc0",
+      "revId": "a8d66c93cd9c6c15846457464ae21e39baf95779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
