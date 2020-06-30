@@ -202,7 +202,8 @@ const struct i2c_port_t i2c_ports[] = {
 
 	{
 		"sub_usbc1", I2C_PORT_SUB_USB_C1, 1000,
-		GPIO_EC_I2C_SUB_USB_C1_SCL, GPIO_EC_I2C_SUB_USB_C1_SDA
+		GPIO_EC_I2C_SUB_C1_SCL_HDMI_EN_ODL,
+		GPIO_EC_I2C_SUB_C1_SDA_HDMI_HPD_ODL
 	},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
