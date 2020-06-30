@@ -685,16 +685,15 @@
 #undef CONFIG_BOARD_FORCE_RESET_PIN
 
 /*
- * For some boards on power-on, the EC is reset by the H1 after power-on,
- * so the EC sees 2 resets. This config enables the EC to save a flag
- * on the first power-up restart, and then wait for the second reset before
- * any other setup is done (such as GPIOs, timers, UART etc.)
- * On the second reset, the saved flag is used to detect the previous
- * power-on, and treat the second reset as a power-on instead of a reset.
+ * This config enables the EC to save a flag on the first power-up restart, and
+ * then wait for the second reset before any other setup is done (such as GPIOs,
+ * timers, UART etc.) On the second reset, the saved flag is used to detect the
+ * previous power-on, and treat the second reset as a power-on instead of a
+ * reset.
  *
- * NOTE: Implemented only for npcx
+ * Note: this only affects RO behavior.
  */
-#undef CONFIG_BOARD_RESET_AFTER_POWER_ON
+#undef CONFIG_POR_WORKAROUND
 
 /* Permanent LM4 boot configuration */
 #undef CONFIG_BOOTCFG_VALUE
@@ -5314,6 +5313,16 @@
 
 #ifdef CONFIG_PWM_KBLIGHT
 #define CONFIG_KEYBOARD_BACKLIGHT
+#endif
+
+/*
+ * Until we are no longer using CR50 with double reset issue, TCPMv2 relies
+ * on the EC_RESET_FLAG_POWER_ON being set correctly after the H1 reset.
+ *
+ * Note we are using EFS2 as a proxy for newly developed boards.
+ */
+#if defined(CONFIG_VBOOT_EFS2) && !defined(CONFIG_POR_WORKAROUND)
+#error All new boards must define CONFIG_POR_WORKAROUND.
 #endif
 
 /*****************************************************************************/

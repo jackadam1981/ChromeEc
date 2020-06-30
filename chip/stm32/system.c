@@ -91,7 +91,7 @@ void system_update_reset_cause(void)
 	 * and ensure that we never build this with the needed CR50 POR
 	 * workaround
 	 */
-#ifdef CONFIG_BOARD_RESET_AFTER_POWER_ON
+#ifdef CONFIG_POR_WORKAROUND
 #error Must implement early reset cause function
 #endif
 }

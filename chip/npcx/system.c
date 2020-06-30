@@ -321,14 +321,12 @@ uint32_t chip_read_reset_flags(void)
 void system_update_reset_cause(void)
 {
 	uint32_t hib_wake_flags;
-	uint32_t chip_flags;
 	uint32_t flags;
 
 	system_check_bbram_on_reset();
 
 	hib_wake_flags = bbram_data_read(BBRM_DATA_INDEX_WAKE);
-	chip_flags = chip_read_reset_flags();
-	flags = chip_flags;
+	flags = chip_read_reset_flags();
 
 	/* Clear saved reset flags in bbram */
 #ifdef CONFIG_POWER_BUTTON_INIT_IDLE
@@ -336,9 +334,9 @@ void system_update_reset_cause(void)
 	 * We're not sure whether we're booting or not. AP_IDLE will be cleared
 	 * on S5->S3 transition.
 	 */
-	chip_flags &= EC_RESET_FLAG_AP_IDLE;
+	chip_save_reset_flags(flags & EC_RESET_FLAG_AP_IDLE);
 #else
-	chip_flags = 0;
+	chip_save_reset_flags(0);
 #endif
 	/* Clear saved hibernate wake flag in bbram , too */
 	bbram_data_write(BBRM_DATA_INDEX_WAKE, 0);
@@ -350,60 +348,12 @@ void system_update_reset_cause(void)
 		flags |= EC_RESET_FLAG_RESET_PIN;
 #else
 		/* Check for VCC1 reset */
-		int reset = IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_STS);
-
-		/*
-		 * If configured, check the saved flags to see whether
-		 * the previous restart was a power-on, in which case
-		 * treat this restart as a power-on as well.
-		 * This is to workaround the fact that the H1 will
-		 * reset the EC at power up.
-		 */
-		if (IS_ENABLED(CONFIG_BOARD_RESET_AFTER_POWER_ON)) {
-			/*
-			 * Reset pin restart rather than power-on, so check
-			 * for any flag set from a previous power-on.
-			 */
-			if (reset) {
-				if (flags & EC_RESET_FLAG_INITIAL_PWR)
-					/*
-					 * The previous restart was a power-on
-					 * so treat this restart as that, and
-					 * clear the flag so later code will
-					 * not wait for the second reset.
-					 */
-					flags =
-					  (flags & ~EC_RESET_FLAG_INITIAL_PWR)
-					   | EC_RESET_FLAG_POWER_ON;
-				else
-					/*
-					 * No previous power-on flag,
-					 * so this is a subsequent restart
-					 * i.e any restarts after the
-					 * second restart caused by the H1.
-					 */
-					flags |= EC_RESET_FLAG_RESET_PIN;
-			} else {
-				/*
-				 * Power-on restart, so set a flag and save it
-				 * for the next imminent reset. Later code
-				 * will check for this flag and wait for the
-				 * second reset.
-				 */
-				flags |= EC_RESET_FLAG_POWER_ON
-				      | EC_RESET_FLAG_INITIAL_PWR;
-				chip_flags |= EC_RESET_FLAG_INITIAL_PWR;
-			}
-		} else
-			/*
-			 * No second reset after power-on, so
-			 * set the flags according to the restart reason.
-			 */
-			flags |= reset ? EC_RESET_FLAG_RESET_PIN
-				       : EC_RESET_FLAG_POWER_ON;
+		if (IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_STS))
+			flags |= EC_RESET_FLAG_RESET_PIN;
+		else
+			flags |= EC_RESET_FLAG_POWER_ON;
 #endif
 	}
-	chip_save_reset_flags(chip_flags);
 
 	/*
 	 * Set scratch bit to distinguish VCC1RST# is asserted again
