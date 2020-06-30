@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86274c1a_3d0338f1",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-30T02:04:45Z",
+      "side": 1,
+      "message": "here and in other files:\n\n- static functions (maybe apart from those with obvious names) should be commented.\n\n- comments should be full sentences, starting with a capitalized letter and ending with a period.",
+      "revId": "d46714d79d5345deda427746ce2f2ea0ab3bc17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57ecad15_d52478ef",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-30T02:04:45Z",
+      "side": 1,
+      "message": "this command needs fine tuning: presumably \u0027fips off\u0027 should not be available in the prod images; help message should be added",
+      "range": {
+        "startLine": 773,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 64
+      },
+      "revId": "d46714d79d5345deda427746ce2f2ea0ab3bc17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2245f5a_4a7426f5",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-06-30T02:04:45Z",
+      "side": 1,
+      "message": "why not have enum for these values?",
+      "range": {
+        "startLine": 798,
+        "startChar": 6,
+        "endLine": 798,
+        "endChar": 7
+      },
+      "revId": "d46714d79d5345deda427746ce2f2ea0ab3bc17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
