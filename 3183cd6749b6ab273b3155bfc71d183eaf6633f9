@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09bbb30d_3ed5ff86",
+        "filename": "board/puff/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-06-30T00:45:16Z",
+      "side": 1,
+      "message": "I\u0027m just noticing that these OC inputs are currently configured as open-drain outputs but are supposed to be inputs.\n\nAnd A4 is unconnected if not present, so if not too hard I think we should make this pin unused by default and enable it as an input if USB4 is present so it\u0027s not left as a floating input.",
+      "revId": "3183cd6749b6ab273b3155bfc71d183eaf6633f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
