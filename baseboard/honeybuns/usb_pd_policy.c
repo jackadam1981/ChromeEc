@@ -165,21 +165,20 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 int pd_check_data_swap(int port,
 	enum pd_data_role data_role)
 {
-	/* Allow data swap if we are a UFP, otherwise don't allow. */
-	return (data_role == PD_ROLE_UFP) ? 1 : 0;
+	int swap = 0;
+
+	if (port == 0)
+		swap = (data_role == PD_ROLE_DFP);
+	else if (port == 1)
+		swap = (data_role == PD_ROLE_UFP);
+
+	return swap;
 }
 
 int pd_check_power_swap(int port)
 {
-	/*
-	 * Allow power swap if we are acting as a dual role device.  If we are
-	 * not acting as dual role (ex. suspended), then only allow power swap
-	 * if we are sourcing when we could be sinking.
-	 */
 
-	if (pd_get_power_role(port) == PD_ROLE_SOURCE)
-		return 0;
-	else if (pd_get_dual_role(port) == PD_DRP_TOGGLE_ON)
+	if (pd_get_power_role(port) == PD_ROLE_SINK)
 		return 1;
 
 	return 0;
