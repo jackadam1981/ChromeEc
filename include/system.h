@@ -53,6 +53,13 @@ int system_is_manual_recovery(void);
 __test_only void system_common_reset_state(void);
 
 /**
+ * Chip-specific implementation to update reset cause after reset.
+ *
+ * Note: may be called multiple times during initialization
+ */
+void system_update_reset_cause(void);
+
+/**
  * Set up flags that should be saved to battery backed RAM.
  *
  * @param reset_flags - flags passed into system_reset

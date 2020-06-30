@@ -37,7 +37,7 @@ enum hibdata_index {
 	HIBDATA_INDEX_PD2,		/* USB-PD2 saved port state */
 };
 
-static void check_reset_cause(void)
+void system_update_reset_cause(void)
 {
 	uint32_t status = MCHP_VBAT_STS;
 	uint32_t flags = 0;
@@ -46,14 +46,14 @@ static void check_reset_cause(void)
 				MCHP_PWR_RST_STS_VBAT);
 
 	trace12(0, MEC, 0,
-		"check_reset_cause: VBAT_PFR = 0x%08X  PCR PWRST = 0x%08X",
+		"system_update_reset_cause: VBAT_PFR = 0x%08X  PCR PWRST = 0x%08X",
 		status, rst_sts);
 
 	/* Clear the reset causes now that we've read them */
 	MCHP_VBAT_STS |= status;
 	MCHP_PCR_PWR_RST_STS |= rst_sts;
 
-	trace0(0, MEC, 0, "check_reset_cause: after clear");
+	trace0(0, MEC, 0, "system_update_reset_cause: after clear");
 	trace11(0, MEC, 0, "  VBAT_PFR  = 0x%08X", MCHP_VBAT_STS);
 	trace11(0, MEC, 0, "  PCR PWRST = 0x%08X", MCHP_PCR_PWR_RST_STS);
 
@@ -72,7 +72,7 @@ static void check_reset_cause(void)
 					    EC_RESET_FLAG_HIBERNATE)))
 		flags |= EC_RESET_FLAG_WATCHDOG;
 
-	trace11(0, MEC, 0, "check_reset_cause: EC reset flags = 0x%08x", flags);
+	trace11(0, MEC, 0, "system_update_reset_cause: EC reset flags = 0x%08x", flags);
 
 	system_set_reset_flags(flags);
 }
@@ -84,7 +84,7 @@ int system_is_reboot_warm(void)
 	 * Check reset cause here,
 	 * gpio_pre_init is executed faster than system_pre_init
 	 */
-	check_reset_cause();
+	system_update_reset_cause();
 	reset_flags = system_get_reset_flags();
 
 	if ((reset_flags & EC_RESET_FLAG_RESET_PIN) ||

@@ -249,7 +249,7 @@ static void board_init(void)
 	 * Assert wake GPIO to PD MCU to wake it from hibernate.
 	 * This cannot be done from board_pre_init() (or from any function
 	 * called before system_pre_init()), otherwise a spurious wake will
-	 * occur -- see stm32 check_reset_cause() WORKAROUND comment.
+	 * occur -- see stm32 system_update_reset_cause() WORKAROUND comment.
 	 */
 	gpio_set_level(GPIO_USB_PD_VBUS_WAKE, 1);
 

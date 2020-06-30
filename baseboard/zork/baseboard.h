@@ -102,7 +102,7 @@
  * (1) power-on reset, (2) reset-pin reset. This config will
  * allow the second reset to be treated as a power-on.
  */
-#define CONFIG_BOARD_RESET_AFTER_POWER_ON
+#define CONFIG_HOLD_STARUP_ON_POR
 
 #define CONFIG_IO_EXPANDER
 #define CONFIG_IO_EXPANDER_NCT38XX

@@ -59,6 +59,35 @@ test_mockable __keep int main(void)
 			init_reset_log();
 	}
 
+#ifdef CONFIG_HOLD_STARUP_ON_POR
+	/*
+	 * To handle the known CR50 double-reset-on-power-on not losing power on
+	 * flag. We try to preserve that information and not perform any
+	 * initlization until we get the second reset.
+	 */
+	system_update_reset_cause();
+	if (system_get_reset_flags() & EC_RESET_FLAG_POWER_ON) {
+		int32_t i;
+		uint32_t flags = chip_read_reset_flags();
+		flags |= EC_RESET_FLAG_HELD_POR;
+		chip_save_reset_flags(flags);
+
+		/*
+		 * Wait here without a timer. We can be running as fast as
+		 * 48Mhz, so we need to account for the CPU speed since we
+		 * cannot use a timer this early.
+		 */
+		for (i = (2 * SECOND) * 48 ; i > 0; --i) {
+			continue;
+		}
+		/* SHOULD NOT GET HERE! */
+	}
+	if (system_get_reset_flags() & EC_RESET_FLAG_HELD_POR) {
+		system_clear_reset_flags(EC_RESET_FLAG_HELD_POR);
+		system_set_reset_flags(EC_RESET_FLAG_POWER_ON);
+	}
+#endif /* CONFIG_HOLD_STARUP_ON_POR */
+
 	/*
 	 * Pre-initialization (pre-verified boot) stage.  Initialization at
 	 * this level should do as little as possible, because verified boot

@@ -45,7 +45,7 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 }
 
 
-static void check_reset_cause(void)
+void system_update_reset_cause(void)
 {
 	uint32_t flags = 0;
 	uint32_t raw_cause = NRF51_POWER_RESETREAS;
@@ -122,5 +122,5 @@ int system_set_bbram(enum system_bbram_idx idx, uint8_t value)
 
 void system_pre_init(void)
 {
-	check_reset_cause();
+	system_update_reset_cause();
 }
