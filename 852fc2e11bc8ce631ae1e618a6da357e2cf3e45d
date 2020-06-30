@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57f50be2_d35809ef",
+        "filename": "common/u2f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-06-30T14:13:25Z",
+      "side": 1,
+      "message": "nit: does it make sense to place a (ideally compile time) assertion here to make sure that kh_size is less or equal to sizeof(kh_buf)",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 45
+      },
+      "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
