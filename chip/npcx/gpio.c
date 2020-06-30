@@ -506,22 +506,6 @@ void gpio_pre_init(void)
 	system_check_bbram_on_reset();
 	is_warm = system_is_reboot_warm();
 
-	/*
-	 * On power-on of some boards, H1 releases the EC from reset but then
-	 * quickly asserts and releases the reset a second time. This means the
-	 * EC sees 2 resets: (1) power-on reset, (2) reset-pin reset. If we add
-	 * a delay between reset (1) and configuring GPIO output levels, then
-	 * reset (2) will happen before the end of the delay so we avoid extra
-	 * output toggles.
-	 *
-	 * Make sure to set up the timer before using udelay().
-	 */
-	if (IS_ENABLED(CONFIG_BOARD_RESET_AFTER_POWER_ON) &&
-	    system_get_reset_flags() & EC_RESET_FLAG_INITIAL_PWR) {
-		__hw_early_init_hwtimer(0);
-		udelay(2 * SECOND);
-		/* Shouldn't get here, but proceeding anyway... */
-	}
 
 #ifdef CHIP_FAMILY_NPCX7
 	/*

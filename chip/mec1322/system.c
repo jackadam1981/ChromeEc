@@ -30,7 +30,7 @@ enum hibdata_index {
 	HIBDATA_INDEX_PD2,               /* USB-PD2 saved port state */
 };
 
-static void check_reset_cause(void)
+void system_update_reset_cause(void)
 {
 	uint32_t status = MEC1322_VBAT_STS;
 	uint32_t flags = 0;
@@ -67,7 +67,7 @@ int system_is_reboot_warm(void)
 	* Check reset cause here,
 	* gpio_pre_init is executed faster than system_pre_init
 	*/
-	check_reset_cause();
+	system_update_reset_cause();
 	reset_flags = system_get_reset_flags();
 
 	if ((reset_flags & EC_RESET_FLAG_RESET_PIN) ||
