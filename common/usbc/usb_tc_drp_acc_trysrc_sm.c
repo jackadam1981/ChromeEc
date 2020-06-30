@@ -1416,7 +1416,6 @@ void tc_state_init(int port)
 		return;
 	}
 
-
 	/* Allow system to set try src enable */
 	if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
 		tc_try_src_override(TRY_SRC_NO_OVERRIDE);
