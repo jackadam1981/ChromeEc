@@ -52,4 +52,22 @@ static inline uint32_t atomic_read_clear(volatile uint32_t *addr)
 
 	return ret;
 }
+
+static inline uint32_t atomic_inc(volatile uint32_t *addr, uint32_t value)
+{
+	uint32_t ret;
+
+	asm volatile (
+		"amoadd.w.aqrl  %0, %2, %1"
+		: "=r" (ret), "+A" (*addr)
+		: "r" (value));
+
+	return ret;
+}
+
+static inline uint32_t atomic_dec(volatile uint32_t *addr, uint32_t value)
+{
+	return atomic_inc(addr, -value);
+}
+
 #endif  /* __CROS_EC_ATOMIC_H */
