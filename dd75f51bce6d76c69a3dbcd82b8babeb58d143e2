@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "046b7bbf_2c2911f5",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-06-30T01:45:13Z",
+      "side": 1,
+      "message": "The object position is empty. (1\u003c\u003c8) | CMD_ENTER_MODE will make it work.\n\nDo we have case there are multiple modes and we want to enter the mode which is not first one?",
+      "range": {
+        "startLine": 235,
+        "startChar": 9,
+        "endLine": 235,
+        "endChar": 38
+      },
+      "revId": "dd75f51bce6d76c69a3dbcd82b8babeb58d143e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
