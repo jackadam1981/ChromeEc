@@ -7,3 +7,12 @@
 #include "registers.h"
 
 #include "gpio_list.h"
+
+#include "ipi_chip.h"
+static void x(int32_t id, void *data, uint32_t len)
+{
+	ccprints("%s", __func__);
+
+	ipi_send(0xa, 0, 0, 0);
+}
+DECLARE_IPI(0xa, x, 0);
