@@ -2378,6 +2378,14 @@ static void tc_attach_wait_src_entry(const int port)
 	print_current_state(port);
 
 	tc[port].cc_state = PD_CC_UNSET;
+
+	/*
+	 * The exit condition from AttachWait.SRC to Attached.SRC
+	 * requires Vbus to go to Safe0V. Some TCPCs enable Vbus
+	 * sourcing out of auto-toggle, so make sure it is off in
+	 * order to satisfy the requirement.
+	 */
+	tc_src_power_off(port);
 }
 
 static void tc_attach_wait_src_run(const int port)
@@ -2435,6 +2443,14 @@ static void tc_attach_wait_src_run(const int port)
 			set_state_tc(port, TC_ATTACHED_SRC);
 			return;
 		}
+	} else if (IS_ENABLED(CONFIG_USBC_PPC)) {
+		/*
+		 * The exit condition from AttachWait.SRC to Attached.SRC
+		 * requires Vbus to go to Safe0V. Some TCPCs enable Vbus
+		 * sourcing out of auto-toggle, so make sure it is off in
+		 * order to satisfy the requirement.
+		 */
+		tcpm_disable_bad_vbus_sourcing(port);
 	}
 }
 

@@ -186,6 +186,7 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 #ifdef CONFIG_USBC_PPC
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
+	.set_src_ctrl_bad_vbus	= &tcpci_tcpm_set_src_ctrl,
 #endif
 	.get_chip_info		= &tcpci_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER

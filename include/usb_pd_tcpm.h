@@ -371,6 +371,19 @@ struct tcpm_drv {
 	 * @return EC_SUCCESS or error
 	 */
 	int (*set_src_ctrl)(int port, int enable);
+
+	/**
+	 * Send SourceVBUS or DisableSourceVBUS command
+	 * This version is for AttachWait.SRC to make sure any TCPC that
+	 * turns on sourcing on its own will be able to turn that back
+	 * off without affecting other projects.
+	 *
+	 * @param port Type-C port number
+	 * @enable true for enable, false for disable
+	 *
+	 * @return EC_SUCCESS or error
+	 */
+	int (*set_src_ctrl_bad_vbus)(int port, int enable);
 #endif
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
