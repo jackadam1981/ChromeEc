@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3de19ee2_57dbac60",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-30T21:59:24Z",
+      "side": 1,
+      "message": "Turns out this is also an output only and should be deleted.  I realize you copied this from my WIP CL.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "02eb5ca5541128a2a4b05e4dc81fbca2b6726cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e80b4ddc_ff06e67a",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-30T21:59:24Z",
+      "side": 1,
+      "message": "These signals are output only and should be deleted.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 55
+      },
+      "revId": "02eb5ca5541128a2a4b05e4dc81fbca2b6726cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37eec91_f36cfdc5",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-06-30T21:59:24Z",
+      "side": 1,
+      "message": "Signal name is EC_SLP_S0IX.  There is a stuff option to connect this to the PCH output.",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 18
+      },
+      "revId": "02eb5ca5541128a2a4b05e4dc81fbca2b6726cdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
