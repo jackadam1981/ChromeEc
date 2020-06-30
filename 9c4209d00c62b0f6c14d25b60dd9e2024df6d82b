@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fdcd6f4_655960c0",
+        "filename": "board/servo_v4p1/dacs.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-30T21:55:43Z",
+      "side": 1,
+      "message": "Nit: I think you can just keep the i2c.h.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "9c4209d00c62b0f6c14d25b60dd9e2024df6d82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "229c4aa1_58ba52b4",
+        "filename": "board/servo_v4p1/dacs.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-30T21:55:43Z",
+      "side": 1,
+      "message": "What I read from the datasheet, this bit is DAC_PWDWN: When set to 1, the DAC in power-down mode and the DAC output is connected to GND through a 1-kΩ internal resistor; why power-down it to enable the DAC?",
+      "range": {
+        "startLine": 65,
+        "startChar": 43,
+        "endLine": 65,
+        "endChar": 44
+      },
+      "revId": "9c4209d00c62b0f6c14d25b60dd9e2024df6d82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6816e34_cf5e4abd",
+        "filename": "board/servo_v4p1/dacs.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-30T21:55:43Z",
+      "side": 1,
+      "message": "The CC1_DAC is an ID, like 1, 2,3, etc. This statement works now as the board only has 2 DACs. If having a third DAC, it\u0027d be a problem. Should use BIT(CC1_DAC) to make it to a bitmask.",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 25
+      },
+      "revId": "9c4209d00c62b0f6c14d25b60dd9e2024df6d82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42e32699_796a39aa",
+        "filename": "board/servo_v4p1/dacs.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-30T21:55:43Z",
+      "side": 1,
+      "message": "Add comment of the format of this register value; this is from the datasheet:\n  Data are MSB aligned in straight binary format, and\n  use the following format: DATA[13:0], 0, 0",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "9c4209d00c62b0f6c14d25b60dd9e2024df6d82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5937a3e_80ed8aae",
+        "filename": "board/servo_v4p1/dacs.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-30T21:55:43Z",
+      "side": 1,
+      "message": "Nit: declare it as a constant",
+      "range": {
+        "startLine": 140,
+        "startChar": 20,
+        "endLine": 140,
+        "endChar": 24
+      },
+      "revId": "9c4209d00c62b0f6c14d25b60dd9e2024df6d82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e0c1dcf_13e236d7",
+        "filename": "board/servo_v4p1/dacs.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-30T21:55:43Z",
+      "side": 1,
+      "message": "What does this value come from? Why need it?",
+      "range": {
+        "startLine": 143,
+        "startChar": 35,
+        "endLine": 143,
+        "endChar": 41
+      },
+      "revId": "9c4209d00c62b0f6c14d25b60dd9e2024df6d82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de6c30c_d576abd0",
+        "filename": "board/servo_v4p1/dacs.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-06-30T21:55:43Z",
+      "side": 1,
+      "message": "Nit: better to mention the value is in mv, like changing it to from \"value\" to \"mv\"?",
+      "range": {
+        "startLine": 150,
+        "startChar": 24,
+        "endLine": 150,
+        "endChar": 29
+      },
+      "revId": "9c4209d00c62b0f6c14d25b60dd9e2024df6d82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
