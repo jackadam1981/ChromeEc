@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd82840e_ebfb1947",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-30T00:35:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44a9649_101648b8",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 21
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1688d993_500212dc",
         "filename": "board/cr50/fips.c",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "e31e3d54_83e1d89d",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-30T00:35:48Z",
+      "side": 1,
+      "message": "the purpose is not to write into flash log if same error",
+      "parentUuid": "1a98b0bb_978039a8",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 9
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5822b9e7_2b3b9599",
         "filename": "board/cr50/fips.c",
         "patchSetId": 3
@@ -91,6 +139,30 @@
       "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9880a7_22ae581b",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-30T00:35:48Z",
+      "side": 1,
+      "message": "fips_status() can be called from interrupt handler (globalsec) and from KAT tests. it\u0027s better to have combined status rather than update log each time.",
+      "parentUuid": "5822b9e7_2b3b9599",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "81c6e526_c0209682",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-30T00:35:48Z",
+      "side": 1,
+      "message": "moved to https://csrc.nist.gov/CSRC/media/Projects/Cryptographic-Algorithm-Validation-Program/documents/drbg/drbgtestvectors.zip",
+      "parentUuid": "8ef34a7c_1420befc",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 214,
+        "endChar": 74
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ca40668_9ad1e8c9",
         "filename": "board/cr50/fips.c",
         "patchSetId": 3
@@ -137,6 +233,30 @@
       "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00b76020_aa74a164",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-06-30T00:35:48Z",
+      "side": 1,
+      "message": "this is to be removed. RSA tests are not part of KAT now",
+      "parentUuid": "5ca40668_9ad1e8c9",
+      "range": {
+        "startLine": 514,
+        "startChar": 5,
+        "endLine": 514,
+        "endChar": 9
+      },
+      "revId": "9976eff3a5b349ef13627f941c4844c9e94d8867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
