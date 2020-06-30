@@ -19,12 +19,8 @@
  */
 #define VCODEC_CAPABILITY_4K_DISABLED BIT(4)
 
-#ifndef IPI_SCP_INIT
-#error If CONFIG_IPI is enabled, IPI_SCP_INIT must be defined.
-#endif
-
 /*
- * Share buffer layout for IPI_SCP_INIT response. This structure should sync
+ * Share buffer layout for SCP_IPI_INIT response. This structure should sync
  * across kernel and EC.
  */
 struct scp_run_t {
@@ -32,6 +28,11 @@ struct scp_run_t {
 	int8_t fw_ver[SCP_FW_VERSION_LEN];
 	uint32_t dec_capability;
 	uint32_t enc_capability;
+};
+
+enum scp_ipi_id {
+	SCP_IPI_INIT = 0,
+	SCP_IPI_MAX = 32,
 };
 
 /*
@@ -62,5 +63,26 @@ int ipi_send(int32_t id, const void *buf, uint32_t len, int wait);
 void ipi_disable_irq(void);
 /* Enable IPI IRQ. */
 void ipi_enable_irq(void);
+
+/* Helper macros to build the IPI handler and wakeup functions. */
+#define IPI_HANDLER(id) CONCAT3(ipi_, id, _handler)
+#define IPI_WAKEUP(id) CONCAT3(ipi_, id, _wakeup)
+
+/*
+ * Macro to declare an IPI handler.
+ * _id: The ID of the IPI
+ * handler: The IPI handler function
+ * is_wakeup_src: Declare IPI ID as a wake-up source or not
+ */
+#define DECLARE_IPI(_id, handler, is_wakeup_src) \
+	struct ipi_num_check##_id { \
+		int dummy1[_id < SCP_IPI_MAX ? 1 : -1]; \
+		int dummy2[is_wakeup_src == 0 || is_wakeup_src == 1 ? 1 : -1]; \
+	};  \
+	void __keep IPI_HANDLER(_id)(int32_t id, void *buf, uint32_t len) \
+	{ \
+		handler(id, buf, len); \
+	} \
+	const int __keep IPI_WAKEUP(_id) = is_wakeup_src
 
 #endif /* __CROS_EC_IPI_CHIP_H */

@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "atomic.h"
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
@@ -12,14 +13,90 @@
 #include "task.h"
 #include "util.h"
 
-#define CPRINTF(format, args...) cprintf(CC_IPI, format, ##args)
-#define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
+#define CPRINTF(format, args...) ccprintf(format, ##args)
+#define CPRINTS(format, args...) ccprints(format, ##args)
 
 static uint8_t init_done;
 
 static struct mutex ipi_lock;
 static struct ipc_shared_obj *const ipi_send_buf =
 	(struct ipc_shared_obj *)CONFIG_IPC_SHARED_OBJ_ADDR;
+static struct ipc_shared_obj *const ipi_recv_buf =
+	(struct ipc_shared_obj *)(CONFIG_IPC_SHARED_OBJ_ADDR +
+				  sizeof(struct ipc_shared_obj));
+
+static uint32_t disable_irq_count;
+
+/* IPI tables */
+static void ipi_handler_undefined(int32_t id, void *data, uint32_t len)
+{
+	CPRINTS("undefined IPI, id=%d", id);
+}
+#define IPI_WEAK_HANDLER(n) \
+	void IPI_HANDLER(n)(int32_t id, void *data, uint32_t len) \
+	__attribute__((weak, alias ("ipi_handler_undefined")));
+
+IPI_WEAK_HANDLER(0);
+IPI_WEAK_HANDLER(1);
+IPI_WEAK_HANDLER(2);
+IPI_WEAK_HANDLER(3);
+IPI_WEAK_HANDLER(4);
+IPI_WEAK_HANDLER(5);
+IPI_WEAK_HANDLER(6);
+IPI_WEAK_HANDLER(7);
+IPI_WEAK_HANDLER(8);
+IPI_WEAK_HANDLER(9);
+IPI_WEAK_HANDLER(10);
+IPI_WEAK_HANDLER(11);
+IPI_WEAK_HANDLER(12);
+IPI_WEAK_HANDLER(13);
+IPI_WEAK_HANDLER(14);
+IPI_WEAK_HANDLER(15);
+IPI_WEAK_HANDLER(16);
+IPI_WEAK_HANDLER(17);
+IPI_WEAK_HANDLER(18);
+IPI_WEAK_HANDLER(19);
+IPI_WEAK_HANDLER(20);
+IPI_WEAK_HANDLER(21);
+IPI_WEAK_HANDLER(22);
+IPI_WEAK_HANDLER(23);
+IPI_WEAK_HANDLER(24);
+IPI_WEAK_HANDLER(25);
+IPI_WEAK_HANDLER(26);
+IPI_WEAK_HANDLER(27);
+IPI_WEAK_HANDLER(28);
+IPI_WEAK_HANDLER(29);
+IPI_WEAK_HANDLER(30);
+IPI_WEAK_HANDLER(31);
+
+static void (*ipi_handler_table[SCP_IPI_MAX])(int32_t, void *, uint32_t) = {
+	IPI_HANDLER(0), IPI_HANDLER(1), IPI_HANDLER(2), IPI_HANDLER(3),
+	IPI_HANDLER(4), IPI_HANDLER(5), IPI_HANDLER(6), IPI_HANDLER(7),
+	IPI_HANDLER(8), IPI_HANDLER(9), IPI_HANDLER(10), IPI_HANDLER(11),
+	IPI_HANDLER(12), IPI_HANDLER(13), IPI_HANDLER(14), IPI_HANDLER(15),
+	IPI_HANDLER(16), IPI_HANDLER(17), IPI_HANDLER(18), IPI_HANDLER(19),
+	IPI_HANDLER(20), IPI_HANDLER(21), IPI_HANDLER(22), IPI_HANDLER(23),
+	IPI_HANDLER(24), IPI_HANDLER(25), IPI_HANDLER(26), IPI_HANDLER(27),
+	IPI_HANDLER(28), IPI_HANDLER(29), IPI_HANDLER(30), IPI_HANDLER(31),
+};
+
+void ipi_disable_irq(void)
+{
+	if (atomic_inc(&disable_irq_count, 1) == 0)
+		task_disable_irq(SCP_IRQ_GIPC_IN0);
+}
+
+void ipi_enable_irq(void)
+{
+	if (atomic_dec(&disable_irq_count, 1) == 1) {
+		int pending = SCP_GIPC_IN_SET;
+
+		task_enable_irq(SCP_IRQ_GIPC_IN0);
+
+		if (init_done && pending)
+			task_trigger_irq(SCP_IRQ_GIPC_IN0);
+	}
+}
 
 static int ipi_is_busy(void)
 {
@@ -46,6 +123,7 @@ int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
 		return EC_ERROR_INVAL;
 	}
 
+	ipi_disable_irq();
 	mutex_lock(&ipi_lock);
 
 	if (ipi_is_busy()) {
@@ -72,6 +150,7 @@ int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
 	ret = EC_SUCCESS;
 error:
 	mutex_unlock(&ipi_lock);
+	ipi_enable_irq();
 	return ret;
 }
 
@@ -89,20 +168,50 @@ static void ipi_enable_deferred(void)
 	scp_run.dec_capability = VCODEC_CAPABILITY_4K_DISABLED;
 	scp_run.enc_capability = 0;
 
-	ret = ipi_send(IPI_SCP_INIT, (void *)&scp_run, sizeof(scp_run), 1);
+	ret = ipi_send(SCP_IPI_INIT, (void *)&scp_run, sizeof(scp_run), 1);
 	if (ret) {
 		CPRINTS("failed to send initialization IPC messages");
 		init_done = 0;
 		return;
 	}
+
+	task_enable_irq(SCP_IRQ_GIPC_IN0);
 }
 DECLARE_DEFERRED(ipi_enable_deferred);
 
 static void ipi_init(void)
 {
 	memset(ipi_send_buf, 0, sizeof(struct ipc_shared_obj));
+	memset(ipi_recv_buf, 0, sizeof(struct ipc_shared_obj));
 
 	/* enable IRQ after all tasks are up */
 	hook_call_deferred(&ipi_enable_deferred_data, 0);
 }
 DECLARE_HOOK(HOOK_INIT, ipi_init, HOOK_PRIO_DEFAULT);
+
+static void ipi_handler(void)
+{
+	if (ipi_recv_buf->id >= SCP_IPI_MAX) {
+		CPRINTS("invalid IPI, id=%d", ipi_recv_buf->id);
+		return;
+	}
+
+	CPRINTS("IPI %d", ipi_recv_buf->id);
+
+	ipi_handler_table[ipi_recv_buf->id](
+		ipi_recv_buf->id, ipi_recv_buf->buffer, ipi_recv_buf->len);
+}
+
+static void irq_group7_handler(void)
+{
+	extern volatile int ec_int;
+
+	CPRINTS("%s", __func__);
+
+	if (SCP_GIPC_IN_SET & GIPC_IN(0)) {
+		ipi_handler();
+		SCP_GIPC_IN_CLR = GIPC_IN(0);
+		task_clear_pending_irq(ec_int);
+	}
+}
+DECLARE_IRQ(7, irq_group7_handler, 0);
