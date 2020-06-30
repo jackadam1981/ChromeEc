@@ -30,6 +30,15 @@
 
 /* USB Type A Features */
 
+/* I2C port names */
+#define I2C_PORT_I2C1		0
+#define I2C_PORT_I2C2		1
+#define I2C_PORT_I2C3	2
+/* Required symbolic I2C port names */
+#define I2C_PORT_MP4245 I2C_PORT_I2C2
+#define I2C_PORT_EEPROM I2C_PORT_I2C3
+#define MP4245_SLAVE_ADDR MP4245_I2C_ADDR_0_FLAGS
+
 /*
  * Macros for GPIO signals used in common code that don't match the
  * schematic names. Signal names in gpio.inc match the schematic and are
