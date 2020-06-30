@@ -51,6 +51,11 @@ __override void config_volteer_gpios(void)
 			GPIO_USB_C1_RT_RST_ODL_BOARDID_0;
 		ps8xxx_rst_odl = GPIO_USB_C1_RT_RST_ODL_BOARDID_0;
 	}
+	/* Reassign USB_C0_RT_RST_ODL */
+	bb_controls[USBC_PORT_C0].shared_nvm = false;
+	bb_controls[USBC_PORT_C0].usb_ls_en_gpio = GPIO_USB_C0_LS_EN;
+	bb_controls[USBC_PORT_C0].retimer_rst_gpio = GPIO_USB_C0_RT_RST_ODL;
+	bb_controls[USBC_PORT_C0].force_power_gpio = GPIO_USB_C0_RT_FORCE_PWR;
 }
 
 static void board_init(void)
@@ -153,11 +158,18 @@ const struct i2c_port_t i2c_ports[] = {
 		.sda = GPIO_EC_I2C2_USB_C1_SDA,
 	},
 	{
+		.name = "usb_0_mix",
+		.port = I2C_PORT_USB_0_MIX,
+		.kbps = 100,
+		.scl = GPIO_EC_I2C3_USB_0_MIX_SCL,
+		.sda = GPIO_EC_I2C3_USB_0_MIX_SDA,
+	},
+	{
 		.name = "usb_1_mix",
 		.port = I2C_PORT_USB_1_MIX,
 		.kbps = 100,
-		.scl = GPIO_EC_I2C3_USB_1_MIX_SCL,
-		.sda = GPIO_EC_I2C3_USB_1_MIX_SDA,
+		.scl = GPIO_EC_I2C4_USB_1_MIX_SCL,
+		.sda = GPIO_EC_I2C4_USB_1_MIX_SDA,
 	},
 	{
 		.name = "power",
@@ -220,3 +232,33 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+/* USBC mux configuration - Tiger Lake includes internal mux */
+struct usb_mux usbc0_usb4_db_retimer = {
+	.usb_port = USBC_PORT_C0,
+	.driver = &bb_usb_retimer,
+	.i2c_port = I2C_PORT_USB_0_MIX,
+	.i2c_addr_flags = USBC_PORT_C0_BB_RETIMER_I2C_ADDR,
+};
+
+/*****************************************************************************
+ * USB-C MUX/Retimer dynamic configuration.
+ */
+
+static void setup_mux(void)
+{
+	CPRINTS("C0 supports bb-retimer");
+
+	/* USB-C port 0 have a retimer */
+	usb_muxes[USBC_PORT_C0].next_mux = &usbc0_usb4_db_retimer;
+}
+
+/*****************************************************************************
+ * Use FW_CONFIG to set correct configuration.
+ */
+
+void setup_fw_config(void)
+{
+	setup_mux();
+}
+DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
