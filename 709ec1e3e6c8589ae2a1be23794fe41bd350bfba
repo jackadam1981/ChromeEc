@@ -257,6 +257,30 @@
       "revId": "709ec1e3e6c8589ae2a1be23794fe41bd350bfba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abaa8690_9ea2d80c",
+        "filename": "board/drawcia/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-06-30T06:04:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5fbe87f3_4ccb1d02",
+      "range": {
+        "startLine": 139,
+        "startChar": 21,
+        "endLine": 139,
+        "endChar": 25
+      },
+      "revId": "709ec1e3e6c8589ae2a1be23794fe41bd350bfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
