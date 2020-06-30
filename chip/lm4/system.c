@@ -113,7 +113,7 @@ void chip_save_reset_flags(uint32_t flags)
 	hibdata_write(HIBDATA_INDEX_SAVED_RESET_FLAGS, flags);
 }
 
-static void check_reset_cause(void)
+void system_update_reset_cause(void)
 {
 	uint32_t hib_status = LM4_HIBERNATE_HIBRIS;
 	uint32_t raw_reset_cause = LM4_SYSTEM_RESC;
@@ -495,7 +495,7 @@ void system_pre_init(void)
 	wait_for_hibctl_wc();
 	LM4_HIBERNATE_HIBIM = 0;
 
-	check_reset_cause();
+	system_update_reset_cause();
 
 #ifdef CONFIG_SOFTWARE_PANIC
 	/* Restore then clear saved panic reason */

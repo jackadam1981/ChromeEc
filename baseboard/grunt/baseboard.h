@@ -100,7 +100,7 @@
  * (1) power-on reset, (2) reset-pin reset. This config will
  * allow the second reset to be treated as a power-on.
  */
-#define CONFIG_BOARD_RESET_AFTER_POWER_ON
+#define CONFIG_DELAY_ON_POR
 
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_COL2_INVERTED

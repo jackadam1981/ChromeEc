@@ -83,7 +83,7 @@ void chip_save_reset_flags(uint32_t flags)
 	bkpdata_write_reset_flags(flags);
 }
 
-static void check_reset_cause(void)
+void system_update_reset_cause(void)
 {
 	uint32_t flags = chip_read_reset_flags();
 	uint32_t raw_cause = STM32_RCC_RESET_CAUSE;
@@ -298,7 +298,7 @@ void system_pre_init(void)
 #error "Unsupported chip family"
 #endif
 
-	check_reset_cause();
+	system_update_reset_cause();
 
 #ifdef CONFIG_SOFTWARE_PANIC
 	/* Restore then clear saved panic reason */
