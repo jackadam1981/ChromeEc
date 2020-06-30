@@ -64,6 +64,10 @@
 #define     UART_CK_SW_STATUS_32K	BIT(1)
 #define     UART_CK_SW_STATUS_ULPOS	BIT(2)
 
+/* IPC */
+#define SCP_SCP2APMCU_IPC_SET		REG32(SCP_REG_BASE + 0x24080)
+#define   IPC_SCP2HOST			BIT(0)
+
 /* UART */
 #define SCP_UART_COUNT			2
 #define UART_TX_IRQ(n)			CONCAT3(SCP_IRQ_UART, n, _TX)
