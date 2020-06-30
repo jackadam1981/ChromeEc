@@ -28,6 +28,8 @@
 /* Keyboard features */
 #define CONFIG_PWM_KBLIGHT
 
+#define CONFIG_CMD_TCPC_DUMP
+
 /* Sensors */
 /* BMI160 Base accel/gyro */
 #define CONFIG_ACCEL_INTERRUPTS
