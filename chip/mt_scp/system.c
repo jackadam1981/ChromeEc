@@ -130,7 +130,7 @@ void system_reset(int flags)
 		;
 }
 
-static void check_reset_cause(void)
+void system_update_reset_cause(void)
 {
 	uint32_t flags = 0;
 	uint32_t raw_reset_cause = SCP_GPR[1];
@@ -164,7 +164,7 @@ int system_is_reboot_warm(void)
 		EC_RESET_FLAG_SOFT      |
 		EC_RESET_FLAG_HIBERNATE;
 
-	check_reset_cause();
+	system_update_reset_cause();
 
 	return !(system_get_reset_flags() & cold_flags);
 }

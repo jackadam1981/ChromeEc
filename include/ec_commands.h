@@ -5799,7 +5799,9 @@ struct ec_params_set_cbi {
 					    */
 #define EC_RESET_FLAG_EFS         BIT(20)  /* Jumped to this image by EFS */
 #define EC_RESET_FLAG_AP_IDLE     BIT(21)  /* Leave alone AP */
-#define EC_RESET_FLAG_INITIAL_PWR BIT(22)  /* EC had power, then was reset */
+#define EC_RESET_FLAG_HELD_POR    BIT(22)  /* EC's previous power-on-reset boot
+					    * waited for a quick pin reset
+					    */
 
 struct ec_response_uptime_info {
 	/*

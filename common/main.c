@@ -38,9 +38,30 @@
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
+/*
+ * Spins the CPU for the specified number of cycles (or proportional to the
+ * input of count). Needs noinline to ensure that compiler does not try to
+ * inline loop with known compile time constants (which would affect loop rate).
+ *
+ * This is only needed before the clock is set up in early main.
+ */
+static void __maybe_unused __attribute__((noinline)) spin_loop(uint32_t count)
+{
+	uint32_t i;
+
+	for (i = 0; i < count; ++i) {
+		/*
+		 * Ensures the loop does not get optimized away via read/write
+		 * data dependency on i
+		 */
+		__asm__ volatile("" : "+g" (i) : :);
+	}
+}
+
 test_mockable __keep int main(void)
 {
 	int mpu_pre_init_rv = EC_SUCCESS;
+	bool delayed_reset_failure = false;
 
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS)) {
 		/*
@@ -57,6 +78,37 @@ test_mockable __keep int main(void)
 		 */
 		if (IS_ENABLED(CONFIG_CMD_AP_RESET_LOG))
 			init_reset_log();
+	}
+
+	if (IS_ENABLED(SECTION_IS_RO) && IS_ENABLED(CONFIG_DELAY_ON_POR)) {
+		/*
+		 * To handle the known, CR50-double-reset-on-power-on not losing
+		 * power-on flag. We try to preserve that information and not
+		 * perform any initlization until we get the second reset.
+		 */
+		system_update_reset_cause();
+		if (system_get_reset_flags() & EC_RESET_FLAG_POWER_ON) {
+			uint32_t flags = chip_read_reset_flags();
+
+			flags |= EC_RESET_FLAG_HELD_POR;
+			chip_save_reset_flags(flags);
+
+			/*
+			 * Wait here without a timer for ~80 seconds. We can be
+			 * running as fast as 48Mhz, so we need to account for
+			 * the CPU speed and number of instructions is takes per
+			 * loop. Fluxuations in time are okay, since we are
+			 * expecting a reset. However if we get off somehow, we
+			 * don't want to wait here forever.
+			 */
+			spin_loop(1000000000);
+			/* SHOULD NOT GET HERE! Notify console if we did. */
+			delayed_reset_failure = true;
+		}
+		if (system_get_reset_flags() & EC_RESET_FLAG_HELD_POR) {
+			system_clear_reset_flags(EC_RESET_FLAG_HELD_POR);
+			system_set_reset_flags(EC_RESET_FLAG_POWER_ON);
+		}
 	}
 
 	/*
@@ -157,6 +209,9 @@ test_mockable __keep int main(void)
 #ifdef CONFIG_BRINGUP
 	ccprintf("\n\nWARNING: BRINGUP BUILD\n\n\n");
 #endif
+
+	if (delayed_reset_failure)
+		ccprintf("\n\nWARNING: EXPECTED RESET FROM H1!!!\n\n\n");
 
 #ifdef CONFIG_WATCHDOG
 	/*
