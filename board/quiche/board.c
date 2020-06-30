@@ -32,8 +32,7 @@ struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 
 static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	PD_DRP_TOGGLE_ON,
-//	PD_DRP_TOGGLE_ON,
-	PD_DRP_FORCE_SOURCE,
+	PD_DRP_FORCE_SINK,
 };
 
 static void ppc_interrupt(enum gpio_signal signal)
@@ -213,6 +212,7 @@ void square_wave(void)
 
 static void board_init(void)
 {
+	board_select_drp_mode();
 	/* TODO */
 	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
 	hook_call_deferred(&square_wave_data, 50 * MSEC);
