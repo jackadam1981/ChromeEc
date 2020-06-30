@@ -174,7 +174,9 @@ void fw_update_start(struct first_response_pdu *rpdu)
 		/* RO running, so update RW */
 		update_section.base_offset = CONFIG_RW_MEM_OFF;
 		update_section.top_offset = CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE;
-		version = system_get_version(EC_IMAGE_RW);
+		ccprintf("fw: start update\n");
+		version = system_get_version(EC_IMAGE_RO);
+		//version = 0;
 		break;
 	case EC_IMAGE_RW:
 		/* RW running, so update RO */
@@ -233,6 +235,8 @@ void fw_update_command_handler(void *body,
 		return;
 	}
 	body_size = cmd_size - sizeof(struct update_command);
+
+	ccprintf("fw: body_size = %x\n", body_size);
 
 	if (!cmd_body->block_base && !body_size) {
 		struct first_response_pdu *rpdu = body;
