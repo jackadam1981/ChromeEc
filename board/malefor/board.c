@@ -9,6 +9,8 @@
 #include "common.h"
 #include "driver/accel_lis2dh.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/ppc/sn5s330.h"
+#include "driver/ppc/syv682x.h"
 #include "driver/sync.h"
 #include "extpower.h"
 #include "fan.h"
@@ -26,6 +28,7 @@
 #include "task.h"
 #include "tablet_mode.h"
 #include "uart.h"
+#include "usbc_ppc.h"
 #include "util.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -297,3 +300,20 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+/******************************************************************************/
+/* USBC PPC configuration */
+struct ppc_config_t ppc_chips[] = {
+	[USBC_PORT_C0] = {
+		.i2c_port = I2C_PORT_USB_C0,
+		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
+		.drv = &sn5s330_drv,
+	},
+	[USBC_PORT_C1] = {
+		.i2c_port = I2C_PORT_USB_C1,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
+unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
