@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a28ba23_88ec59a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-06-30T10:32:11Z",
+      "side": 1,
+      "message": "Ok, I will test PD traffic on the CC line after FRS is enabled.\nAnd if pass, I will give verify +1.",
+      "parentUuid": "058aa06b_355e6568",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ec5a4bf_e93ece37",
         "filename": "chip/it83xx/intc.c",
         "patchSetId": 17
@@ -45,6 +69,30 @@
       "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b479e0c_bb953822",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-06-30T10:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ec5a4bf_e93ece37",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 40
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4205c4d0_223ee69e",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-06-30T10:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b583d3_b3884c9d",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83a6f793_ee6da34b",
         "filename": "chip/it83xx/intc.c",
         "patchSetId": 17
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "590f89a8_7fedf3ac",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-06-30T10:32:11Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "83a6f793_ee6da34b",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0192a05_ac068ce4",
         "filename": "driver/tcpm/it83xx_pd.h",
         "patchSetId": 17
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-26T17:46:41Z",
       "side": 1,
       "message": "Would it be possible to update the datasheet to reflect the PD FRS terminology?  The datasheet I have (V1.3.4.2.1) calls this \"quick swap request\"",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 39
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb49b4f3_e19d98f7",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-06-30T10:32:11Z",
+      "side": 1,
+      "message": "Ok, I had informed to our PM, I think next version will correct this.",
+      "parentUuid": "a0192a05_ac068ce4",
       "range": {
         "startLine": 46,
         "startChar": 7,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "2c63c7c9_198c2c98",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-06-30T10:32:11Z",
+      "side": 1,
+      "message": "Yes, we need. Because different project board trigger different GPIO.\n\nDone.",
+      "parentUuid": "1ef1c665_d22e069f",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 0
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05c36936_ef37ed85",
         "filename": "driver/tcpm/it8xxx2.c",
         "patchSetId": 17
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "75891fdb_9cead650",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-06-30T10:32:11Z",
+      "side": 1,
+      "message": "Yes, it\u0027s for it81202 and later EC.",
+      "parentUuid": "05c36936_ef37ed85",
+      "range": {
+        "startLine": 610,
+        "startChar": 3,
+        "endLine": 611,
+        "endChar": 48
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "518542e5_370b5dbb",
         "filename": "driver/tcpm/it8xxx2.c",
         "patchSetId": 17
@@ -183,6 +351,30 @@
       "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82392264_9c9e9ec2",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-06-30T10:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "518542e5_370b5dbb",
+      "range": {
+        "startLine": 620,
+        "startChar": 5,
+        "endLine": 622,
+        "endChar": 0
+      },
+      "revId": "6181c64f8cb19cbad6abfd57240f273f3c3f658f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
