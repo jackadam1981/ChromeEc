@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01223b1a_1265e124",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-06-30T19:47:13Z",
+      "side": 1,
+      "message": "This code change will work as most of the call to pd_dfp_enter_mode has opos\u003d0.\n\nEven though spec doesn\u0027t clearly say it - the code may be more generic if we use Object position from Discover Mode Response to SOP-Prime Discover request. And if opos\u003d0 then default to 1. (Just like the code below).",
+      "revId": "f04349c7a89825685fcabdcb3cd1ef39bf0dde2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
