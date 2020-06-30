@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "537bf882_9e677f12",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-30T17:56:44Z",
+      "side": 1,
+      "message": "And then this could be startup.",
+      "range": {
+        "startLine": 130,
+        "startChar": 13,
+        "endLine": 130,
+        "endChar": 32
+      },
+      "revId": "6f542fe910c7d91d866c32921bc1784e465ec5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "584e8d60_af87a216",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-30T17:56:44Z",
+      "side": 1,
+      "message": "Maybe CHIPSET_SHUTDOWN instead? HPDs could/should wake us up from suspend.",
+      "range": {
+        "startLine": 136,
+        "startChar": 13,
+        "endLine": 136,
+        "endChar": 33
+      },
+      "revId": "6f542fe910c7d91d866c32921bc1784e465ec5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb397239_a0eb249b",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-06-30T17:56:44Z",
+      "side": 1,
+      "message": "I thought there was also a 2C sub board option? Does that cause our max count to increase? And therefore we\u0027d need to subtract 2 here instead?",
+      "revId": "6f542fe910c7d91d866c32921bc1784e465ec5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
