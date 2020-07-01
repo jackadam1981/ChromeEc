@@ -384,6 +384,12 @@ void pd_set_dfp_enter_mode_flag(int port, bool set)
 {
 }
 
+/* Note: This function is not needed for TCPMv1 */
+bool pd_is_usb4_mode_capable(int port)
+{
+	return false;
+}
+
 static int process_am_discover_ident_sop(int port, int cnt,
 					uint32_t head, uint32_t *payload,
 					enum tcpm_transmit_type *rtype)

@@ -1959,6 +1959,15 @@ bool is_active_cable_element_retimer(int port);
 void pd_set_dfp_enter_mode_flag(int port, bool set);
 
 /**
+ * Checks if port, port partner and cable support USB4 mode
+ *
+ * @param port  USB-C port number
+ * @return      True if port, port partner and cable support USB4 mode
+ *              False otherwise
+ */
+bool pd_is_usb4_mode_capable(int port);
+
+/**
  * Reset Cable type, Cable attributes and cable flags
  *
  * @param port     USB-C port number
@@ -2017,7 +2026,7 @@ enum usb_rev30_ss get_usb4_cable_speed(int port);
  * @param payload   payload data
  * @return          True if device has USB4 VDO
  */
-bool is_usb4_vdo(int port, int cnt, uint32_t *payload);
+bool is_usb4_vdo(int port, int cnt, const uint32_t *payload);
 
 /**
  * Return enter USB message payload
