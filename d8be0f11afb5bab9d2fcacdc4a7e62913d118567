@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8add5695_a39484f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-01T17:38:20Z",
+      "side": 1,
+      "message": "Whoops... forgot we had those task defines set up.  Thanks, Jett.  Looks like there\u0027s another in the PD host command I should probably look at",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 51
+      },
+      "revId": "d8be0f11afb5bab9d2fcacdc4a7e62913d118567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89e3c4cd_eea962b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-01T17:38:20Z",
+      "side": 1,
+      "message": "CL also corrects \"override\" usage with board_get_usb_pd_port_count()",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "d8be0f11afb5bab9d2fcacdc4a7e62913d118567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8be54173_d3e7a14c",
         "filename": "common/system.c",
         "patchSetId": 1
