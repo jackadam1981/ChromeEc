@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26c2a31e_2e8de4a7",
+        "filename": "common/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-01T23:03:29Z",
+      "side": 1,
+      "message": "Can you log something in this path to alert the developer that the reset logic isn\u0027t working as expected?  Maybe another reset flag that could be checked once clocks and the UART are setup.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "b28216f3bc85b5c2dda42c8a88ad513a8ffcec42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
