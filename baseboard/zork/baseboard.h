@@ -9,8 +9,10 @@
 #define __CROS_EC_BASEBOARD_H
 
 #if (defined(VARIANT_ZORK_TREMBYLE) \
-	+ defined(VARIANT_ZORK_DALBOZ)) != 1
-#error Must choose VARIANT_ZORK_TREMBYLE or VARIANT_ZORK_DALBOZ
+	+ defined(VARIANT_ZORK_DALBOZ) \
+	+ defined(VARIANT_ZORK_WOOMAX)) != 1
+#error Must choose VARIANT_ZORK_TREMBYLE or VARIANT_ZORK_DALBOZ \
+		or VARIANT_ZORK_WOOMAX
 #endif
 
 /* NPCX7 config */
@@ -165,7 +167,7 @@
 #define CONFIG_USBC_VCONN_SWAP
 #define CONFIG_USB_MUX_AMD_FP5
 
-#if defined(VARIANT_ZORK_TREMBYLE)
+#if defined(VARIANT_ZORK_TREMBYLE) || defined(VARIANT_ZORK_WOOMAX)
 	#define CONFIG_USB_PD_PORT_MAX_COUNT 2
 	#define CONFIG_USBC_PPC_NX20P3483
 	#define CONFIG_USBC_RETIMER_PS8802
@@ -174,7 +176,9 @@
 	#define CONFIG_USB_MUX_RUNTIME_CONFIG
 	/* USB-A config */
 	#define GPIO_USB1_ILIM_SEL IOEX_USB_A0_CHARGE_EN_L
+#if defined(VARIANT_ZORK_TREMBYLE)
 	#define GPIO_USB2_ILIM_SEL IOEX_USB_A1_CHARGE_EN_DB_L
+#endif
 #elif defined(VARIANT_ZORK_DALBOZ)
 	#define CONFIG_IO_EXPANDER_PORT_COUNT IOEX_PORT_COUNT
 #endif
@@ -182,6 +186,10 @@
 /* USB-A config */
 #define USB_PORT_COUNT USBA_PORT_COUNT
 #define CONFIG_USB_PORT_POWER_SMART
+#if defined(VARIANT_ZORK_WOOMAX)
+#undef CONFIG_USB_PORT_POWER_SMART_PORT_COUNT
+#define CONFIG_USB_PORT_POWER_SMART_PORT_COUNT 1
+#endif
 #define CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY
 #define CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE USB_CHARGE_MODE_CDP
 #define CONFIG_USB_PORT_POWER_SMART_INVERTED
@@ -228,7 +236,7 @@
 #define I2C_PORT_EEPROM		I2C_PORT_SENSOR
 #define I2C_PORT_AP_AUDIO	NPCX_I2C_PORT6_1
 
-#if defined(VARIANT_ZORK_TREMBYLE)
+#if defined(VARIANT_ZORK_TREMBYLE) || defined(VARIANT_ZORK_WOOMAX)
 	#define CONFIG_CHARGER_RUNTIME_CONFIG
 	#define I2C_PORT_BATTERY	NPCX_I2C_PORT2_0
 	#define I2C_PORT_CHARGER_V0	NPCX_I2C_PORT2_0
@@ -286,11 +294,13 @@ enum fan_channel {
 
 enum usba_port {
 	USBA_PORT_A0 = 0,
+#if !defined(VARIANT_ZORK_WOOMAX)
 	USBA_PORT_A1,
+#endif
 	USBA_PORT_COUNT
 };
 
-#ifdef VARIANT_ZORK_TREMBYLE
+#if defined(VARIANT_ZORK_TREMBYLE) || defined(VARIANT_ZORK_WOOMAX)
 enum usbc_port {
 	USBC_PORT_C0 = 0,
 	USBC_PORT_C1,
@@ -329,7 +339,7 @@ extern const struct thermistor_info thermistor_info;
 
 void mst_hpd_interrupt(enum ioex_signal signal);
 
-#ifdef VARIANT_ZORK_TREMBYLE
+#if  defined(VARIANT_ZORK_TREMBYLE) || defined(VARIANT_ZORK_WOOMAX)
 void board_reset_pd_mcu(void);
 
 /* Common definition for the USB PD interrupt handlers. */
