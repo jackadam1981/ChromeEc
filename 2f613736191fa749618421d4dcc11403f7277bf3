@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "463d52cf_d4f16a85",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-01T19:03:33Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "83bc2284_d5fd3c7b",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "2f613736191fa749618421d4dcc11403f7277bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7822196f_a4daa930",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 1
@@ -272,6 +296,30 @@
       "side": 1,
       "message": "Right, I followed this flow.\nin line 147, when sop prime is acked, it will check if sop prime prime is needed. either set state to sop prime prime or sop.\nthis is what I\u0027ve done: \nTBT_START -\u003e send vdm -\u003e TBT_ENTER_SOP_P_SENT -\u003e nack -\u003e TBT_ENTER_SOP_P_RETRY-\u003e send vdm again -\u003e TBT_ENTER_SOP_P_RETRY_SENT -\u003e nack -\u003e tbt_entry_failed                                                                                                                            \n                                        |\n                                      -\u003e ack  -\u003e (if any)TBT_ENTER_SOP_P_P -\u003e TBT_ENTER_SOP\n                                           |or-\u003e TBT_ENTER_SOP\n\nDo you mean to move the SOP_P_P tabs before SOP?",
       "parentUuid": "5f732e4a_3b3b37d8",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 8
+      },
+      "revId": "2f613736191fa749618421d4dcc11403f7277bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a438f7a3_a2552dab",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-01T19:03:33Z",
+      "side": 1,
+      "message": "No this looks good",
+      "parentUuid": "346bba1d_613dde81",
       "range": {
         "startLine": 271,
         "startChar": 0,
