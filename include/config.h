@@ -5320,7 +5320,9 @@
  * Until we a no longer using CR50 with double reset issue, TCPMv2 relied
  * on the power on flag being set correcting after the H1 reset.
  */
-
+#if defined(CONFIG_VBOOT_EFS2) && !defined(CONFIG_DELAY_ON_POR)
+#error All new boards should workaroundCR50 double reset.
+#endif
 
 /*****************************************************************************/
 /* ISH power management related definitions */
