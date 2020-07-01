@@ -731,7 +731,7 @@ int pd_is_vbus_present(int port)
 #ifdef CONFIG_USB_PD_FRS
 void pd_set_frs_enable(int port, int enable)
 {
-	ppc_set_frs_enable(port, enable);
+	//ppc_set_frs_enable(port, enable);
 	tcpm_set_frs_enable(port, enable);
 }
 #endif /* defined(CONFIG_USB_PD_FRS) */

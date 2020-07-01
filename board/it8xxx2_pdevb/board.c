@@ -11,6 +11,7 @@
 #include "pwm_chip.h"
 #include "timer.h"
 #include "usb_pd_tcpm.h"
+#include "battery.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
@@ -25,6 +26,12 @@ int board_get_battery_soc(void)
 	return 100;
 }
 
+enum battery_present battery_is_present(void)
+{
+	CPRINTS("%s", __func__);
+	return BP_NO;
+}
+
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		.bus_type = EC_BUS_TYPE_EMBEDDED,
@@ -34,13 +41,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = 0,
 	},
 	[USB_PD_PORT_ITE_1] = {
-		.bus_type = EC_BUS_TYPE_EMBEDDED,
-		/* TCPC is embedded within EC so no i2c config needed */
-		.drv = &it83xx_tcpm_drv,
-		/* Alert is active-low, push-pull */
-		.flags = 0,
-	},
-	[USB_PD_PORT_ITE_2] = {
 		.bus_type = EC_BUS_TYPE_EMBEDDED,
 		/* TCPC is embedded within EC so no i2c config needed */
 		.drv = &it83xx_tcpm_drv,
@@ -111,6 +111,21 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
 	CPRINTS("p%d %s", port, __func__);
+}
+
+__override void board_frs_handler(int port)
+{
+	/* GPIO assert to output Vbus safe5v */
+	if (port == USBPD_PORT_A)
+		//gpio_set_level(GPIO_USBPD_FRS, 1);
+		IT83XX_GPIO_DATA(GPIO_E) |= BIT(2);
+		//REG8(0x00F01605) |= BIT(2);
+		//*((volatile uint8_t *)(0x00F01605)) |= BIT(2);
+	else if (port == USBPD_PORT_B)
+		//gpio_set_level(GPIO_USBPD_FRS, 1);
+		IT83XX_GPIO_DATA(GPIO_E) |= BIT(2);
+		//REG8(0x00F01605) |= BIT(2);
+		//*((volatile uint8_t *)(0x00F01605)) |= BIT(2);
 }
 
 /*
