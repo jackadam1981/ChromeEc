@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "505bb269_4e0eca39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-01T19:17:52Z",
+      "side": 1,
+      "message": "Limit USB4 speed based on speed supported by port",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "b415166614fe9c120f04530c96396e9b32403254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccae18b5_56baf0bc",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-01T19:17:52Z",
+      "side": 1,
+      "message": "SuperSpeed",
+      "range": {
+        "startLine": 933,
+        "startChar": 19,
+        "endLine": 933,
+        "endChar": 30
+      },
+      "revId": "b415166614fe9c120f04530c96396e9b32403254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
