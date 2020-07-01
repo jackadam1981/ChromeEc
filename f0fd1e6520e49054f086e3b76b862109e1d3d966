@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f06580e2_a4cadc28",
+        "filename": "baseboard/grunt/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-07-01T05:08:48Z",
+      "side": 1,
+      "message": "Should be HOLD_STARTUP ?\n\nI actuallly prefer the old config name - I find this one a little confusing.\nMaybe trying to fit too much description into what is just a config flag.\nOpen to other suggestions though.",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "f0fd1e6520e49054f086e3b76b862109e1d3d966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
