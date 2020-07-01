@@ -22,6 +22,30 @@
       "revId": "1d880de6fecebd39b10064eaf323bb4e61c915d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d59e96ae_f523225d",
+        "filename": "baseboard/dedede/cbi_fw_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-01T15:30:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c4fdf19_090c673f",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 9
+      },
+      "revId": "1d880de6fecebd39b10064eaf323bb4e61c915d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
