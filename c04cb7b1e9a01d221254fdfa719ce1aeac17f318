@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d640e830_d4ad1318",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-01T22:29:43Z",
+      "side": 1,
+      "message": "Added code to support USB4 mode on TCPMV2.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 12
+      },
+      "revId": "c04cb7b1e9a01d221254fdfa719ce1aeac17f318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "375cc1b2_a4bf56be",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4147,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-01T22:29:43Z",
+      "side": 1,
+      "message": "nit: single line",
+      "range": {
+        "startLine": 4145,
+        "startChar": 1,
+        "endLine": 4147,
+        "endChar": 6
+      },
+      "revId": "c04cb7b1e9a01d221254fdfa719ce1aeac17f318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05c1790_4d4e1a10",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4163,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-01T22:29:43Z",
+      "side": 1,
+      "message": "more of a fallback or reset?\nif fallback - USB mode is fine\nif reset - we may need to disconnect",
+      "range": {
+        "startLine": 4163,
+        "startChar": 13,
+        "endLine": 4163,
+        "endChar": 22
+      },
+      "revId": "c04cb7b1e9a01d221254fdfa719ce1aeac17f318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca5c1f8_5a34d524",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4172,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-01T22:29:43Z",
+      "side": 1,
+      "message": "nit: move inside else part, it will look neat",
+      "range": {
+        "startLine": 4170,
+        "startChar": 0,
+        "endLine": 4172,
+        "endChar": 6
+      },
+      "revId": "c04cb7b1e9a01d221254fdfa719ce1aeac17f318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "439c7c9c_637a19ff",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4181,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-01T22:29:43Z",
+      "side": 1,
+      "message": "nit: move inside else part, it will look neat",
+      "range": {
+        "startLine": 4179,
+        "startChar": 0,
+        "endLine": 4181,
+        "endChar": 5
+      },
+      "revId": "c04cb7b1e9a01d221254fdfa719ce1aeac17f318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3626c88_aa39e8f3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4199,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-01T22:29:43Z",
+      "side": 1,
+      "message": "add a static function and do these inside that function",
+      "range": {
+        "startLine": 4188,
+        "startChar": 0,
+        "endLine": 4199,
+        "endChar": 2
+      },
+      "revId": "c04cb7b1e9a01d221254fdfa719ce1aeac17f318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
