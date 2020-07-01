@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f31a8500_78d3fd9e",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-01T08:25:08Z",
+      "side": 1,
+      "message": "looking at the schematics, i would expect this to be\n.usb_db \u003d USB4_GEN3.\n\nthe question i think we haven\u0027t discussed is whether\n.usb_db needs to be defined at all for board variants\nthat have a predetermined configuration. ideally,\nnothing should depend on .usb_db when the value is an\ninvariant.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "8171b55883b769a020f79fb23f187104eef1043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a310886_e2ff81e9",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-01T08:25:08Z",
+      "side": 1,
+      "message": "is this comment in the right place?",
+      "range": {
+        "startLine": 225,
+        "startChar": 4,
+        "endLine": 226,
+        "endChar": 46
+      },
+      "revId": "8171b55883b769a020f79fb23f187104eef1043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
