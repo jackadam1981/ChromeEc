@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "9d403623_1bc2ab76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-01T08:18:09Z",
+      "side": 1,
+      "message": "Add Thunderbolt entry flow for Active cables",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "2f613736191fa749618421d4dcc11403f7277bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "671c9d63_3cc454ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-01T08:18:09Z",
+      "side": 1,
+      "message": "Can we add a little bit more description of what the CL is doing?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "2f613736191fa749618421d4dcc11403f7277bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f15adbb_9644e301",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 1
