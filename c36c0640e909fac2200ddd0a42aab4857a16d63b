@@ -22,6 +22,30 @@
       "revId": "c36c0640e909fac2200ddd0a42aab4857a16d63b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dbcbf7a_aed0d080",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2020-07-01T06:24:59Z",
+      "side": 1,
+      "message": "This commit is to try and fix:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2227775\n\nHowever I agree we need some clarity on the respective bug to this commit, comment #17 seems to be the requirement.",
+      "parentUuid": "defa7a96_5fc6bb45",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 48
+      },
+      "revId": "c36c0640e909fac2200ddd0a42aab4857a16d63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
