@@ -22,6 +22,30 @@
       "revId": "0c01a24a6f9f9060ca3697d1a35a937025ee1659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90f80568_7b547141",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4301,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-01T21:40:20Z",
+      "side": 1,
+      "message": "Done. I added a CL to this stack to correct the description of the state flow.",
+      "parentUuid": "fc91c60f_292af260",
+      "range": {
+        "startLine": 4296,
+        "startChar": 0,
+        "endLine": 4301,
+        "endChar": 2
+      },
+      "revId": "0c01a24a6f9f9060ca3697d1a35a937025ee1659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
