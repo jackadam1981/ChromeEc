@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "47da26f8_3c480063",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-01T01:11:31Z",
+      "side": 1,
+      "message": "After some more discussion with Louis we think it\u0027s better to not add those reserved bytes because:\n1. Those bytes will not be used. Thought they can bear some hash of auth-timer user secret or any other secret coming from user auth (including PIN itself), for WebAuthn a KH can be signed with presence-only, that is, no auth-time secrets at all. So for presence-only cases, those reserved bytes will be empty. Then cr50 still cannot \"blindly sign by just looking at the KH\". So any auth-related secrets should be in the u2f command arguments.\n2. The KH is better viewed as a unique identification for a registration, so it should not contain information other that the appID and the user secret. If we append a hash of PIN code in the KH then someone can utilize that to track which KHs belong to the same user.\n\nWill remove the reserved bytes in the header in the next PS.",
+      "parentUuid": "c0dd3002_fc5b971c",
+      "revId": "7c37ceca0110b3b4587e4e8561db0da1ae205b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b837c96_f55a0ae4",
         "filename": "common/u2f.c",
         "patchSetId": 3
