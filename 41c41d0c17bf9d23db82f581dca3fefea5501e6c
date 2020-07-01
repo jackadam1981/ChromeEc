@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fe176ee4_58772dce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-07-01T05:37:09Z",
+      "side": 1,
+      "message": "yes. make buildall is working",
+      "parentUuid": "feb33440_1a972ef9",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "41c41d0c17bf9d23db82f581dca3fefea5501e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81392032_d1061b2b",
         "filename": "common/charge_manager.c",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-30T17:25:22Z",
       "side": 1,
       "message": "I think that this needs to be guarded with a define for boards that have a battery. Not every board that uses charge manager has a battery.",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 0
+      },
+      "revId": "41c41d0c17bf9d23db82f581dca3fefea5501e6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b82d0b9_5274e8df",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-07-01T05:37:09Z",
+      "side": 1,
+      "message": "battery_is_present function is used in usb_pd_protocol.c file. so no need to add guard it will work for all board.",
+      "parentUuid": "81392032_d1061b2b",
       "range": {
         "startLine": 653,
         "startChar": 0,
