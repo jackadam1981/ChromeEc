@@ -22,6 +22,30 @@
       "revId": "48db8c379f0e4a6323d5a1141b56627adecc26af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be747f81_d37b3bb8",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-01T19:32:46Z",
+      "side": 1,
+      "message": "I like to be honest in my return values... In reality, it does not matter because the return value is ignored, which unfortunately is too common.  Fingers crossed that there is a real fix for this in the TCPC.",
+      "parentUuid": "d275a5a4_1fc5992d",
+      "range": {
+        "startLine": 254,
+        "startChar": 9,
+        "endLine": 254,
+        "endChar": 32
+      },
+      "revId": "48db8c379f0e4a6323d5a1141b56627adecc26af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
