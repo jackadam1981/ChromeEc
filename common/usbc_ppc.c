@@ -311,7 +311,7 @@ int ppc_vbus_source_enable(int port, int enable)
 	return rv;
 }
 
-#ifdef CONFIG_USB_PD_FRS
+#if defined(CONFIG_USB_PD_FRS) && defined(CONFIG_USB_PD_FRS_PPC)
 int ppc_set_frs_enable(int port, int enable)
 {
 	int rv = EC_ERROR_UNIMPLEMENTED;
@@ -329,7 +329,7 @@ int ppc_set_frs_enable(int port, int enable)
 
 	return rv;
 }
-#endif /* defined(CONFIG_USB_PD_FRS) */
+#endif /* defined(CONFIG_USB_PD_FRS) && defined(CONFIG_USB_PD_FRS_PPC) */
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
 int ppc_is_vbus_present(int port)
