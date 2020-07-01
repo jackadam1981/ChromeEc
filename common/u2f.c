@@ -378,9 +378,17 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 	if ((flags & U2F_AUTH_CHECK_ONLY) == U2F_AUTH_CHECK_ONLY)
 		return VENDOR_RC_SUCCESS;
 
-	/* Always enforce user presence, with optional consume. */
-	if (pop_check_presence(flags & G2F_CONSUME) != POP_TOUCH_YES)
-		return VENDOR_RC_NOT_ALLOWED;
+	/* Maybe enforce user presence, with optional consume. */
+	if (pop_check_presence(flags & G2F_CONSUME) != POP_TOUCH_YES) {
+		if (version != U2F_KH_VERSION_1)
+			return VENDOR_RC_NOT_ALLOWED;
+		if ((flags & U2F_AUTH_FLAG_TUP) != 0)
+			return VENDOR_RC_NOT_ALLOWED;
+		/*
+		 * TODO(yichengli): Check fingerprint GPIO and authorization
+		 * secret when auth-time user secrets are ready.
+		 */
+	}
 
 	/* Re-create origin-specific key. */
 	if (legacy_kh) {
