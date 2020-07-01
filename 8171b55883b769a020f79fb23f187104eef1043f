@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "383c7791_e0a21068",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-01T17:09:46Z",
+      "side": 1,
+      "message": "If the variant has a fixed USB configuration, I think the right approach is that the board.c defines all the needed structures statically with no run-time override.\n\nEven though the EC isn\u0027t using .usb_db, presumably the AP will need it, so putting in a sane default if the CBI isn\u0027t initialized probably makes sense.\n\nThe only cost to the EC is 4 bytes of flash space.",
+      "parentUuid": "f31a8500_78d3fd9e",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "8171b55883b769a020f79fb23f187104eef1043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a310886_e2ff81e9",
         "filename": "board/voxel/board.c",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "8171b55883b769a020f79fb23f187104eef1043f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac5bb18_0705bec9",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-01T17:09:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a310886_e2ff81e9",
+      "range": {
+        "startLine": 225,
+        "startChar": 4,
+        "endLine": 226,
+        "endChar": 46
+      },
+      "revId": "8171b55883b769a020f79fb23f187104eef1043f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
