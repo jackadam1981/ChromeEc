@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc91c60f_292af260",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4301,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-01T20:20:08Z",
+      "side": 1,
+      "message": "Since the child runs before the parent, does this add another 5ms cycle to the return processing?  Should we be kicking the task to run again after this?",
+      "range": {
+        "startLine": 4296,
+        "startChar": 0,
+        "endLine": 4301,
+        "endChar": 2
+      },
+      "revId": "0c01a24a6f9f9060ca3697d1a35a937025ee1659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
