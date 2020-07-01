@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b91531f0_d7a30bb8",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T21:42:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9bcea16_73026f78",
+      "range": {
+        "startLine": 590,
+        "startChar": 42,
+        "endLine": 590,
+        "endChar": 48
+      },
+      "revId": "040491d038dd45cb45891e661c90be9db125fb93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5824ba8e_20940e1f",
         "filename": "board/cr50/fips.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "040491d038dd45cb45891e661c90be9db125fb93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30393869_58e73f82",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T21:42:36Z",
+      "side": 1,
+      "message": "_fips_status will have no FIPS_POWER_UP_TEST_DONE bit set. See fips_crypto_allowed()",
+      "parentUuid": "5824ba8e_20940e1f",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 650,
+        "endChar": 22
+      },
+      "revId": "040491d038dd45cb45891e661c90be9db125fb93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
