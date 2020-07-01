@@ -178,7 +178,8 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 
 	if (vdo_count < VDO_MAX_SIZE ||
 	    !disc->identity.idh.modal_support ||
-	    !is_tbt_cable_superspeed(port)) {
+	    !is_tbt_cable_superspeed(port) ||
+	    get_tbt_cable_speed(port) < TBT_SS_U31_GEN1) {
 		return -1;
 	}
 
