@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "831125e4_330b31e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-01T17:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41deea1b_2bd1cb8a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "e452822fc83420cb7fddd2d393d1f307bf06887c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fce5c99d_5cbc1d64",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d6631d0d_0fbc25c6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2438,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-01T17:41:49Z",
+      "side": 1,
+      "message": "there are devices like wheelie that will not build without this.  Since the drv.set_src_ctrl is not defined without CONFIG_USBC_PPC, this seems like a reasonable mechanism to let the world build",
+      "parentUuid": "fce5c99d_5cbc1d64",
+      "range": {
+        "startLine": 2438,
+        "startChar": 12,
+        "endLine": 2438,
+        "endChar": 39
+      },
+      "revId": "e452822fc83420cb7fddd2d393d1f307bf06887c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc6db745_347cf20e",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "e452822fc83420cb7fddd2d393d1f307bf06887c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe22b41_ad6b5477",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-01T17:41:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc6db745_347cf20e",
+      "range": {
+        "startLine": 435,
+        "startChar": 8,
+        "endLine": 435,
+        "endChar": 41
+      },
+      "revId": "e452822fc83420cb7fddd2d393d1f307bf06887c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
