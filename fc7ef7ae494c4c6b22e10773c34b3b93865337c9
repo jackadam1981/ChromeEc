@@ -16,6 +16,24 @@
       "revId": "fc7ef7ae494c4c6b22e10773c34b3b93865337c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f5dd50_93bfe843",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-01T20:32:37Z",
+      "side": 0,
+      "message": "The test passes without it, I don\u0027t think that is was actually needed.",
+      "parentUuid": "60f48cfd_631be8b6",
+      "revId": "fc7ef7ae494c4c6b22e10773c34b3b93865337c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
