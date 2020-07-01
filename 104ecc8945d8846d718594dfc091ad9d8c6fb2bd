@@ -46,6 +46,30 @@
       "revId": "104ecc8945d8846d718594dfc091ad9d8c6fb2bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb62ae95_d2a6337b",
+        "filename": "board/servo_v4/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-07-01T00:01:50Z",
+      "side": 1,
+      "message": "okay, thanks for digging this up, how about this\n- for this board, let\u0027s define it in the board.h for now\n- could you file a low priority bug then to determine a way to get rid of the magic numbers",
+      "parentUuid": "ced506bb_2a66b9b3",
+      "range": {
+        "startLine": 13,
+        "startChar": 42,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "104ecc8945d8846d718594dfc091ad9d8c6fb2bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
