@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42597bc2_5b0304a1",
+        "filename": "driver/bc12/mt6360.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-07-01T09:23:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19e8564e_16420bd3",
+      "range": {
+        "startLine": 25,
+        "startChar": 40,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "1ac24e438e3388c27ab639d32fd1e31c4be695d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f3f5288_435d4feb",
         "filename": "driver/bc12/mt6360.h",
         "patchSetId": 34
@@ -45,6 +69,30 @@
       "revId": "1ac24e438e3388c27ab639d32fd1e31c4be695d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bea2fa3_82ce06b6",
+        "filename": "driver/bc12/mt6360.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-07-01T09:23:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f3f5288_435d4feb",
+      "range": {
+        "startLine": 27,
+        "startChar": 40,
+        "endLine": 27,
+        "endChar": 41
+      },
+      "revId": "1ac24e438e3388c27ab639d32fd1e31c4be695d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
