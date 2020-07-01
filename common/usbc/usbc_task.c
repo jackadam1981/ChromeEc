@@ -108,6 +108,10 @@ void pd_interrupt_handler_task(void *p)
 	while (1) {
 		const int evt = task_wait_event(-1);
 
+		/* Nothing to process if port does not exist */
+		if (port >= board_get_usb_pd_port_count())
+			continue;
+
 		if (evt & PD_PROCESS_INTERRUPT) {
 			/*
 			 * While the interrupt signal is asserted; we have more
@@ -189,6 +193,10 @@ void pd_task(void *u)
 			task_wait_event(paused[port]
 						? -1
 						: USBC_EVENT_TIMEOUT);
+
+		/* Nothing to process if port does not exist */
+		if (port >= board_get_usb_pd_port_count())
+			continue;
 
 		/* handle events that affect the state machine as a whole */
 		if (IS_ENABLED(CONFIG_USB_TYPEC_SM))
