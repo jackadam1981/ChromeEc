@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92c08795_bea3e902",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-01T18:11:47Z",
+      "side": 1,
+      "message": "My spin loop kept getting optimized out! I had to make the compiler do what I wanted 😊",
+      "range": {
+        "startLine": 48,
+        "startChar": 53,
+        "endLine": 48,
+        "endChar": 62
+      },
+      "revId": "c6225c185d2cff5b279b1d0830680c3020933bae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
