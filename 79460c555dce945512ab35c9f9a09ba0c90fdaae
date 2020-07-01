@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65e4c8f2_ce73a50b",
+        "filename": "board/terrador/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-01T07:24:33Z",
+      "side": 1,
+      "message": "SYV682X_ADDR0_FLAGS?\n\nterrador schematics from 20200525 shows the SYV part.\nhas there been a design change?",
+      "range": {
+        "startLine": 232,
+        "startChar": 20,
+        "endLine": 232,
+        "endChar": 39
+      },
+      "revId": "79460c555dce945512ab35c9f9a09ba0c90fdaae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
