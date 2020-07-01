@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "0e9c8a9f_f3139398",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-01T08:36:35Z",
+      "side": 1,
+      "message": "looking at the schematics, there\u0027s no USB4/TBT\nso a good chunk of this file can go away.",
+      "revId": "3cf9a537da9604744508c0f5d10e92cc424b4fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f4c62b9_98f209bf",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-01T08:36:35Z",
+      "side": 1,
+      "message": "based on the schematics, this should be\n.usb_db \u003d USB_DB_USB3",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "3cf9a537da9604744508c0f5d10e92cc424b4fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a8822d5_b7665fe0",
         "filename": "board/delbin/board.h",
         "patchSetId": 6
