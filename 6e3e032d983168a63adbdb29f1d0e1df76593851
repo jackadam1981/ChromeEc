@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa69f9ff_ea7c9e8b",
+        "filename": "board/asurada/led.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-01T06:59:11Z",
+      "side": 1,
+      "message": "Indention in this struct is not quite aligned. Just give some example comments below.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 6
+      },
+      "revId": "6e3e032d983168a63adbdb29f1d0e1df76593851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c1f6faa_ae9bdee3",
+        "filename": "board/asurada/led.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-01T06:59:11Z",
+      "side": 1,
+      "message": "e.g. extra space",
+      "range": {
+        "startLine": 26,
+        "startChar": 54,
+        "endLine": 26,
+        "endChar": 55
+      },
+      "revId": "6e3e032d983168a63adbdb29f1d0e1df76593851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5398e7bf_40824c35",
+        "filename": "board/asurada/led.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-01T06:59:11Z",
+      "side": 1,
+      "message": "e.g. not aligned to the above line.",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "6e3e032d983168a63adbdb29f1d0e1df76593851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae201e07_e533c602",
+        "filename": "board/asurada/led.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-01T06:59:11Z",
+      "side": 1,
+      "message": "also the alignment at this struct.",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "6e3e032d983168a63adbdb29f1d0e1df76593851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f9f13b_21a679cf",
+        "filename": "board/asurada/led.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-01T06:59:11Z",
+      "side": 1,
+      "message": "Only on and off state? and no other brightness range is supported?",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "6e3e032d983168a63adbdb29f1d0e1df76593851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
