@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6a81f63c_666c8182",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-01T20:24:05Z",
+      "side": 1,
+      "message": "I\u0027m still confused about why this wasn\u0027t a problem before now: I think we used to exit low power mode on AP power on, but I\u0027m not seeing how / what changed.",
+      "revId": "18a976887fcb7ce671213639ca20ea47c0788a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90b5aeb3_3caac0a4",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
