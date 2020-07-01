@@ -1486,6 +1486,18 @@ static void pd_update_dual_role_config(int port)
 		 */
 		set_state_tc(port, TC_UNATTACHED_SRC);
 	}
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	/*
+	 * If we just enabled Auto-Toggle and we are in low power mode
+	 * the TCPC may not wake up to catch an already attached partner.
+	 * This will wake up the TCPC in order to get the reattach to
+	 * happen.
+	 */
+	else if (drp_state[port] == PD_DRP_TOGGLE_ON) {
+		/* Wake up the TCPC to start toggling */
+		pd_wait_exit_low_power(port);
+	}
+#endif
 }
 
 #ifdef CONFIG_POWER_COMMON
