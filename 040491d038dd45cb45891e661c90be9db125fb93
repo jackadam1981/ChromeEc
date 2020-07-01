@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9bcea16_73026f78",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-01T18:54:45Z",
+      "side": 1,
+      "message": "s/buffer/stack/",
+      "range": {
+        "startLine": 590,
+        "startChar": 42,
+        "endLine": 590,
+        "endChar": 48
+      },
+      "revId": "040491d038dd45cb45891e661c90be9db125fb93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5824ba8e_20940e1f",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-01T18:54:45Z",
+      "side": 1,
+      "message": "the comment does not add much value and is not following the style guide ;)\n\ndo you want to set a flag in _fips_status in this case?\n\nAlso, the \u0027else\u0027 clause needs to be in brackets when the \u0027if\u0027 clause is",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 650,
+        "endChar": 22
+      },
+      "revId": "040491d038dd45cb45891e661c90be9db125fb93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
