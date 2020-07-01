@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06b9526d_33896e3e",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-01T19:45:49Z",
+      "side": 1,
+      "message": "Please see CL:2248242.  Once that CL merges, you should add your call to setup_mux() to the function board_cbi_init() in place of the hook call.",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 13
+      },
+      "revId": "d13e81c7e646c157183fad79f539b14e68a21124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e0c84ea_f908e6fe",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-01T19:45:49Z",
+      "side": 1,
+      "message": "Please line up this column with the GPIO entries below.",
+      "range": {
+        "startLine": 104,
+        "startChar": 24,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "d13e81c7e646c157183fad79f539b14e68a21124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "153602b7_cb67ace9",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-01T19:45:49Z",
+      "side": 1,
+      "message": "Is there a schematic update newer than June 24?  The 0624_V3 schematic still shows this named \"EC_I2C3_USB_1_MIX_SCL/SDA\".",
+      "range": {
+        "startLine": 134,
+        "startChar": 5,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "d13e81c7e646c157183fad79f539b14e68a21124",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
