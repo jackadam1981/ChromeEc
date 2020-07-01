@@ -173,14 +173,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
-/* USB Retimer */
-const struct usb_mux usbc1_retimer = {
-	.usb_port = 1,
-	.i2c_port = I2C_PORT_SUB_USB_C1,
-	.i2c_addr_flags = TUSB544_I2C_ADDR_FLAGS0,
-	.driver = &tusb544_drv,
-};
-
 /* USB Muxes */
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
@@ -194,7 +186,6 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_port = I2C_PORT_SUB_USB_C1,
 		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,
 		.driver = &tcpci_tcpm_usb_mux_driver,
-		.next_mux = &usbc1_retimer,
 	},
 };
 
