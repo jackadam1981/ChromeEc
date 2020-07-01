@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "929fbed0_af1498c7",
+        "filename": "common/usbc/usb_pd_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-01T19:14:11Z",
+      "side": 1,
+      "message": "If CONFIG_USB_PE_SM is not defined, then you are missing a \"\\n\" on this print",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "9fe816a1c3a1286a6510b92503857ded5ae4b5fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
