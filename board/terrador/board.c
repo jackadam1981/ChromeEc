@@ -11,7 +11,6 @@
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi260.h"
 #include "driver/als_tcs3400.h"
-#include "driver/ppc/sn5s330.h"
 #include "driver/ppc/syv682x.h"
 #include "driver/retimer/bb_retimer.h"
 #include "driver/sync.h"
@@ -229,8 +228,8 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C0] = {
 		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
-		.drv = &sn5s330_drv,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
 	},
 	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_USB_C1,
