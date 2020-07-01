@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d275a5a4_1fc5992d",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-01T19:23:56Z",
+      "side": 1,
+      "message": "nit: seems like an EC_SUCCESS if the hack isn\u0027t needed :)",
+      "range": {
+        "startLine": 254,
+        "startChar": 9,
+        "endLine": 254,
+        "endChar": 32
+      },
+      "revId": "48db8c379f0e4a6323d5a1141b56627adecc26af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
