@@ -5315,6 +5315,16 @@
 #define CONFIG_KEYBOARD_BACKLIGHT
 #endif
 
+/*
+ * Until we are no longer using CR50 with double reset issue, TCPMv2 relies
+ * on the EC_RESET_FLAG_POWER_ON being set correctly after the H1 reset.
+ *
+ * Note we are using EFS2 as a proxy for newly developed boards.
+ */
+#if defined(CONFIG_VBOOT_EFS2) && !defined(CONFIG_DELAY_ON_POR)
+#error All new boards must define EC_RESET_FLAG_POWER_ON.
+#endif
+
 /*****************************************************************************/
 /* ISH power management related definitions */
 #if defined(CONFIG_ISH_PM_D0I2) || \
