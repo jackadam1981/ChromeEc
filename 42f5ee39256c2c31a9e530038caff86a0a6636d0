@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c1d42648_1f5f3dad",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-01T08:52:06Z",
+      "side": 1,
+      "message": "you\u0027re already introducing ec_cfg_usb_db_type() with this\npatch and using it in baseboard.c. changing the board.c\nfiles to use the union and going back to an enum later\nin the patch stack is confusing.",
+      "parentUuid": "fa4e9e6e_58890a34",
+      "range": {
+        "startLine": 55,
+        "startChar": 41,
+        "endLine": 55,
+        "endChar": 54
+      },
+      "revId": "42f5ee39256c2c31a9e530038caff86a0a6636d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc7afcdc_c7282ef2",
         "filename": "board/delbin/board.c",
         "patchSetId": 5
