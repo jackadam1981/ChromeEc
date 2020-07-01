@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90b5aeb3_3caac0a4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-01T20:19:33Z",
+      "side": 1,
+      "message": "Change to pd_wait_exit_low_power(), and then you can remove \"get_state_tc(port) \u003d\u003d TC_LOW_POWER_MODE\" check.",
+      "range": {
+        "startLine": 1499,
+        "startChar": 2,
+        "endLine": 1499,
+        "endChar": 32
+      },
+      "revId": "18a976887fcb7ce671213639ca20ea47c0788a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
