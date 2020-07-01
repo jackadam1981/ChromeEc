@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0db2d58_e8713d2f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-01T19:30:13Z",
+      "side": 1,
+      "message": "Can we have the TC_LOW_POWER_MODE_run check to see if the drp_state has changed since we went into low power mode, if it does change, then  we exit low power mode so we can update auto toggle appropriately\n\nAt minimum we should be calling reset_device_and_notify",
+      "range": {
+        "startLine": 1499,
+        "startChar": 2,
+        "endLine": 1499,
+        "endChar": 18
+      },
+      "revId": "b78632a5737d5a3de0bf7228536423156df33142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
