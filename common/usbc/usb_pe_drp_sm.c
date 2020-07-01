@@ -18,6 +18,7 @@
 #include "util.h"
 #include "usb_common.h"
 #include "usb_dp_alt_mode.h"
+#include "usb_mux.h"
 #include "usb_pd_dpm.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
@@ -27,6 +28,7 @@
 #include "usb_tc_sm.h"
 #include "usb_emsg.h"
 #include "usb_sm.h"
+#include "usb_usb4_alt_mode.h"
 #include "usbc_ppc.h"
 
 /*
@@ -251,6 +253,7 @@ enum usb_pe_state {
 	PE_WAIT_FOR_ERROR_RECOVERY,
 	PE_BIST_TX,
 	PE_BIST_RX,
+	PE_DEU_SEND_ENTER_USB,
 	PE_DR_SNK_GET_SINK_CAP,
 
 	/* AMS Start parent - runs SenderResponseTimer */
@@ -366,6 +369,7 @@ static const char * const pe_state_names[] = {
 	[PE_WAIT_FOR_ERROR_RECOVERY] = "PE_Wait_For_Error_Recovery",
 	[PE_BIST_TX] = "PE_Bist_TX",
 	[PE_BIST_RX] = "PE_Bist_RX",
+	[PE_DEU_SEND_ENTER_USB]  = "PE_DEU_Send_Enter_USB",
 	[PE_DR_SNK_GET_SINK_CAP] = "PE_DR_SNK_Get_Sink_Cap",
 
 	[PE_SENDER_RESPONSE] = "PE_SENDER_RESPONSE",
@@ -1225,8 +1229,12 @@ static bool common_src_snk_dpm_requests(int port)
 		/* Send previously set up SVDM. */
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return true;
-	}
+	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_ENTER_USB)) {
+		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_ENTER_USB);
 
+		set_state_pe(port, PE_DEU_SEND_ENTER_USB);
+		return true;
+	}
 	return false;
 }
 
@@ -4877,6 +4885,95 @@ static void pe_vdm_response_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 }
 
+/**
+ * PE_DEU_SEND_ENTER_USB
+ */
+static void pe_enter_usb_entry(int port)
+{
+	uint32_t usb4_payload;
+
+	print_current_state(port);
+
+	if (!IS_ENABLED(CONFIG_USB_PD_USB4)) {
+		pe_set_ready_state(port);
+		return;
+	}
+
+	usb4_payload = enter_usb_setup_next_msg(port);
+
+	if (!usb4_payload) {
+		pe_set_ready_state(port);
+		return;
+	}
+
+	usb_mux_set_safe_mode(port);
+
+	tx_emsg[port].len = sizeof(usb4_payload);
+
+	memcpy(tx_emsg[port].buf, (uint8_t *)&usb4_payload, tx_emsg[port].len);
+	send_data_msg(port, TCPC_TX_SOP, PD_DATA_ENTER_USB);
+
+	pe[port].sender_response_timer = TIMER_DISABLED;
+}
+
+static void pe_enter_usb_run(int port)
+{
+	int cnt;
+	int type;
+	int sop;
+
+	if (!IS_ENABLED(CONFIG_USB_PD_USB4)) {
+		pe_set_ready_state(port);
+		return;
+	}
+
+	/* Wait until message is sent */
+	if (pe[port].sender_response_timer == TIMER_DISABLED) {
+		if (!PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE))
+			return;
+
+		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		/* Initialize and run SenderResponseTimer */
+		pe[port].sender_response_timer =
+				get_time().val + PD_T_SENDER_RESPONSE;
+	}
+
+	if (get_time().val > pe[port].sender_response_timer) {
+		pe_set_ready_state(port);
+		usb4_entry_failed(port);
+		return;
+	}
+
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+		cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		type = PD_HEADER_TYPE(rx_emsg[port].header);
+		sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+
+		/* Only look at control messages */
+		if (cnt == 0) {
+			/* Accept message received */
+			if (type == PD_CTRL_ACCEPT) {
+				enter_usb_acked(port, sop);
+			} else if (type == PD_CTRL_REJECT) {
+				enter_usb_naked(port, sop);
+			} else {
+				/*
+				 * Unexpected control message received.
+				 * Send Soft Reset.
+				 */
+				pe_send_soft_reset(port, sop);
+				return;
+			}
+		} else {
+			/* Unexpected data message received. Send Soft reset */
+			pe_send_soft_reset(port, sop);
+			return;
+		}
+		pe_set_ready_state(port);
+	}
+}
+
 #ifdef CONFIG_USBC_VCONN
 /*
  * PE_VCS_Evaluate_Swap
@@ -5350,6 +5447,9 @@ void pd_dfp_discovery_init(int port)
 
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
 		tbt_init(port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_USB4))
+		usb4_init(port);
 }
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
@@ -5665,6 +5765,10 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_handle_custom_vdm_request_entry,
 		.run   = pe_handle_custom_vdm_request_run,
 		.exit  = pe_handle_custom_vdm_request_exit,
+	},
+	[PE_DEU_SEND_ENTER_USB] = {
+		.entry = pe_enter_usb_entry,
+		.run = pe_enter_usb_run,
 	},
 	[PE_WAIT_FOR_ERROR_RECOVERY] = {
 		.entry = pe_wait_for_error_recovery_entry,
