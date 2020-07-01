@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ac535aa_55a969aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-01T21:11:56Z",
+      "side": 1,
+      "message": "Nit: Briefly mention the debug level changes here.",
+      "revId": "30da2a00e080cd799ccd9fc3102c9704551a982d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e131ddb0_e9e3e1e4",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-01T21:11:56Z",
+      "side": 1,
+      "message": "Is there supposed to be another constant below here?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 71
+      },
+      "revId": "30da2a00e080cd799ccd9fc3102c9704551a982d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12f023ec_a2673396",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-01T21:11:56Z",
+      "side": 1,
+      "message": "Nit: With the current code structure, I don\u0027t think this matters, but it might be a good idea to disable the timer here by setting it to UINT64_MAX.",
+      "revId": "30da2a00e080cd799ccd9fc3102c9704551a982d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "726e963c_aeb1d03c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-01T21:11:56Z",
+      "side": 1,
+      "message": "Is this to save flash space?\n\nConsider that in some builds, CONFIG_USB_PD_DEBUG_LEVEL may be undefined.\n\nIt looks like, as of this CL, every use of CPRINTS in this file is guarded in this way. It would be cleaner to define CPRINTS to do nothing based on the definition (or non-definition) of CONFIG_USB_PD_DEBUG_LEVEL.",
+      "range": {
+        "startLine": 242,
+        "startChar": 5,
+        "endLine": 242,
+        "endChar": 34
+      },
+      "revId": "30da2a00e080cd799ccd9fc3102c9704551a982d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
