@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4506c3a_3a80b3d1",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-01T20:43:17Z",
+      "side": 1,
+      "message": "VARIANT_ZORK_TREMBYLE and VARIANT_ZORK_DALBOZ refer to reference design.\nWoomax should select VARIANT_ZORK_TREMBYLE, not add VARIANT_ZORK_WOOMAX.\nIf anything in VARIANT_ZORK_TREMBYLE needs to change (eg USB-A topology), it can be split out into the individual board files.",
+      "revId": "e29560273c7a4e0595c465c2cf76bdfdb9d2f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
