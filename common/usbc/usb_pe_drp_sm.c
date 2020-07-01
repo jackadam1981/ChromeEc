@@ -148,6 +148,8 @@
 #define PE_FLAGS_VDM_REQUEST_TIMEOUT	     BIT(29)
 /* FLAG to note message was discarded due to incoming message */
 #define PE_FLAGS_MSG_DISCARDED		     BIT(30)
+/* FLAG to note that hard reset can't be performed due to battery low */
+#define PE_FLAGS_SNK_WAITING_BATT	     BIT(31)
 
 /* Message flags which should not persist on returning to ready state */
 #define PE_FLAGS_READY_CLR		     (PE_FLAGS_LOCALLY_INITIATED_AMS \
@@ -1425,6 +1427,33 @@ static void pe_handle_detach(void)
 	pe_set_snk_caps(port, 0, NULL);
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, pe_handle_detach, HOOK_PRIO_DEFAULT);
+
+#ifdef CONFIG_USB_PD_RESET_MIN_BATT_SOC
+static void pe_update_waiting_batt_flag(void)
+{
+	int i;
+	int batt_soc = usb_get_battery_soc();
+
+	if (batt_soc < CONFIG_USB_PD_RESET_MIN_BATT_SOC ||
+	    battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
+		return;
+
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		if (PE_CHK_FLAG(i, PE_FLAGS_SNK_WAITING_BATT)) {
+			/*
+			 * Battery has gained sufficient charge to kick off PD
+			 * negotiation and withstand a hard reset. Clear the
+			 * flag and let hard reset begin if task is waiting.
+			 */
+			CPRINTS("C%d: Battery has enough charge (%d%%) " \
+			    "to withstand a hard reset", i, batt_soc);
+			PE_CLR_FLAG(i, PE_FLAGS_SNK_WAITING_BATT);
+			task_wake(PD_PORT_TO_TASK_ID(i));
+		}
+	}
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pe_update_waiting_batt_flag, HOOK_PRIO_DEFAULT);
+#endif
 
 /*
  * Private functions
@@ -2856,10 +2885,47 @@ static void pe_snk_discovery_run(int port)
  */
 static void pe_snk_wait_for_capabilities_entry(int port)
 {
+#ifdef CONFIG_USB_PD_RESET_MIN_BATT_SOC
+	int batt_soc;
+#endif
+
 	print_current_state(port);
 
 	/* Initialize and start the SinkWaitCapTimer */
 	pe[port].timeout = get_time().val + PD_T_SINK_WAIT_CAP;
+
+#ifdef CONFIG_USB_PD_RESET_MIN_BATT_SOC
+	/*
+	 * If the battery has not met a configured safe level for hard
+	 * resets, refrain from going to PE_SNK_Hard_Reset as a hard
+	 * reset could brown out the board.
+	 * Note this may mean that high-power chargers will stay at
+	 * 15W until a reset is sent, depending on boot timing.
+	 *
+	 * PE_FLAGS_SNK_WAITING_BATT flags will be cleared when
+	 * battery reaches CONFIG_USB_PD_RESET_MIN_BATT_SOC.
+	 * See pe_update_waiting_batt_flag() for more details.
+	 */
+	batt_soc = usb_get_battery_soc();
+
+	if (batt_soc < CONFIG_USB_PD_RESET_MIN_BATT_SOC ||
+	    battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
+		PE_SET_FLAG(port, PE_FLAGS_SNK_WAITING_BATT);
+	else
+		PE_CLR_FLAG(port, PE_FLAGS_SNK_WAITING_BATT);
+#endif
+
+	if (PE_CHK_FLAG(port, PE_FLAGS_SNK_WAITING_BATT)) {
+#ifdef CONFIG_CHARGE_MANAGER
+		/*
+		 * Configure this port as dedicated for
+		 * now, so it won't be de-selected by
+		 * the charge manager leaving safe mode.
+		 */
+		charge_manager_update_dualrole(port, CAP_DEDICATED);
+#endif
+		CPRINTS("C%d: Battery low! Do not perform hard reset", port);
+	}
 }
 
 static void pe_snk_wait_for_capabilities_run(int port)
@@ -2886,7 +2952,8 @@ static void pe_snk_wait_for_capabilities_run(int port)
 	}
 
 	/* When the SinkWaitCapTimer times out, perform a Hard Reset. */
-	if (get_time().val > pe[port].timeout) {
+	if (get_time().val > pe[port].timeout &&
+	    !(PE_CHK_FLAG(port, PE_FLAGS_SNK_WAITING_BATT))) {
 		PE_SET_FLAG(port, PE_FLAGS_SNK_WAIT_CAP_TIMEOUT);
 		set_state_pe(port, PE_SNK_HARD_RESET);
 	}
