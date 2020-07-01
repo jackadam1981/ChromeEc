@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36adea5a_800d5211",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-01T15:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "537bf882_9e677f12",
+      "range": {
+        "startLine": 130,
+        "startChar": 13,
+        "endLine": 130,
+        "endChar": 32
+      },
+      "revId": "6f542fe910c7d91d866c32921bc1784e465ec5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "584e8d60_af87a216",
         "filename": "board/waddledoo/board.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e41dcda0_674da507",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-01T15:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "584e8d60_af87a216",
+      "range": {
+        "startLine": 136,
+        "startChar": 13,
+        "endLine": 136,
+        "endChar": 33
+      },
+      "revId": "6f542fe910c7d91d866c32921bc1784e465ec5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb397239_a0eb249b",
         "filename": "board/waddledoo/board.c",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2020-06-30T17:56:44Z",
       "side": 1,
       "message": "I thought there was also a 2C sub board option? Does that cause our max count to increase? And therefore we\u0027d need to subtract 2 here instead?",
+      "revId": "6f542fe910c7d91d866c32921bc1784e465ec5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a71cc4b_e2e9d042",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-01T15:38:42Z",
+      "side": 1,
+      "message": "I\u0027m thinking we\u0027ll want to punt on that for now?  If we have a 2C DB, then we also have a 3C OCPC system and I suspect there will be a fair amount of code churn to support that.",
+      "parentUuid": "bb397239_a0eb249b",
       "revId": "6f542fe910c7d91d866c32921bc1784e465ec5c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
