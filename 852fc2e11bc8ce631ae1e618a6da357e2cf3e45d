@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "aec40c4b_808b22b0",
+        "filename": "common/u2f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T18:23:08Z",
+      "side": 1,
+      "message": "this alignment won\u0027t be needed once I migrate to DRBG. od, opk_x \u0026 opk_y aren\u0027t initialized with DCRYPTO_ladder_random() which cause the problem",
+      "parentUuid": "14d5525e_dfc5981a",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 27
+      },
+      "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57f50be2_d35809ef",
         "filename": "common/u2f.c",
         "patchSetId": 5
@@ -88,6 +112,29 @@
         "startChar": 0,
         "endLine": 129,
         "endChar": 45
+      },
+      "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "458966ae_39e43121",
+        "filename": "common/u2f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T18:23:08Z",
+      "side": 1,
+      "message": "this will be changed to DRBG soon",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 39
       },
       "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
