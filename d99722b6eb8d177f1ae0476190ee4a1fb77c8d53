@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c0e50b25_0661e48d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2684,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-01T20:33:18Z",
+      "side": 1,
+      "message": "I had to separate out the two different policy decision, so I just reverted this file. (But making this a bool would have been the right choice)",
+      "parentUuid": "f90aaef8_7d667cd4",
+      "range": {
+        "startLine": 2684,
+        "startChar": 1,
+        "endLine": 2684,
+        "endChar": 4
+      },
+      "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23bcf8a3_d1c85dbf",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83a219d_32c84950",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-01T20:33:18Z",
+      "side": 1,
+      "message": "I agree, I am going to make another child CL to make those changes so we don\u0027t clutter this CL",
+      "parentUuid": "23bcf8a3_d1c85dbf",
+      "range": {
+        "startLine": 445,
+        "startChar": 42,
+        "endLine": 445,
+        "endChar": 45
+      },
+      "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "49ed5494_debc8fd3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-01T20:33:18Z",
+      "side": 1,
+      "message": "I definitely see your point. I will have a follow up CL that refactors the prints and tcpc_init usage. We do use the return though to go into the DISABLEd state instead of the requested state.",
+      "parentUuid": "c52294d5_be82c6d2",
+      "range": {
+        "startLine": 1133,
+        "startChar": 35,
+        "endLine": 1133,
+        "endChar": 38
+      },
+      "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea0e982f_3833a65d",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9594fd0f_82c69519",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-01T20:33:18Z",
+      "side": 1,
+      "message": "it will in the SRC case, but not the snk case.\n\nThis still seems good to have for the SNK case as the default.\n\nI do think we could do an audit of all of the typec_select_src_current_limit_rp calls and remove some redundant ones though",
+      "parentUuid": "ea0e982f_3833a65d",
+      "range": {
+        "startLine": 1139,
+        "startChar": 0,
+        "endLine": 1139,
+        "endChar": 63
+      },
+      "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8eca4ec2_413c966b",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "755243b0_0bf7e831",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3146,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-01T20:33:18Z",
+      "side": 1,
+      "message": "Because we might brown out after applying them, so it is helpful to have the print make it to the console before we brown out. Added a comment.",
+      "parentUuid": "8eca4ec2_413c966b",
+      "range": {
+        "startLine": 3146,
+        "startChar": 1,
+        "endLine": 3146,
+        "endChar": 10
+      },
+      "revId": "d99722b6eb8d177f1ae0476190ee4a1fb77c8d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
