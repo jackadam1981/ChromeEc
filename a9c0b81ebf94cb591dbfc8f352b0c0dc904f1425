@@ -22,6 +22,30 @@
       "revId": "a9c0b81ebf94cb591dbfc8f352b0c0dc904f1425",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3f896ac_ca6b5495",
+        "filename": "docs/case_closed_debugging_cr50.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-01T23:54:25Z",
+      "side": 1,
+      "message": "Ack for cherry-pick.",
+      "parentUuid": "904460b1_053beaf2",
+      "range": {
+        "startLine": 744,
+        "startChar": 0,
+        "endLine": 744,
+        "endChar": 53
+      },
+      "revId": "a9c0b81ebf94cb591dbfc8f352b0c0dc904f1425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
