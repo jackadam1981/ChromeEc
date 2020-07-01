@@ -163,6 +163,30 @@
       "revId": "30da2a00e080cd799ccd9fc3102c9704551a982d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b96a4ed_fef6d661",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-01T23:57:00Z",
+      "side": 1,
+      "message": "I have a CL I\u0027m preparing that de-duplicates strings in all the PPC drivers. Saves 312 bytes in RW flash on Volteer.",
+      "parentUuid": "b9c02615_6dfb74ab",
+      "range": {
+        "startLine": 242,
+        "startChar": 5,
+        "endLine": 242,
+        "endChar": 34
+      },
+      "revId": "30da2a00e080cd799ccd9fc3102c9704551a982d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
