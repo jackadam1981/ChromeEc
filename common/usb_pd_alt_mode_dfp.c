@@ -907,7 +907,7 @@ __overridable enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
  * ############################################################################
  */
 
-bool is_usb4_vdo(int port, int cnt, uint32_t *payload)
+bool is_usb4_vdo(int port, int cnt, const uint32_t *payload)
 {
 	enum idh_ptype ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
 
