@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc6db745_347cf20e",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-01T17:16:09Z",
+      "side": 1,
+      "message": "Maybe better named \"TCPC_FLAGS_TCPCI_BAD_VBUS_SOURCING\" so that the flag describes the state of the TCPC.  \"DISABLE_BAD_VBUS\" is the recovery action taken when the TCPC has the bad VBUS sourcing symptom.",
+      "range": {
+        "startLine": 435,
+        "startChar": 8,
+        "endLine": 435,
+        "endChar": 41
+      },
+      "revId": "e452822fc83420cb7fddd2d393d1f307bf06887c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
