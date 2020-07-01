@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa1965f9_2d52fc5d",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T18:12:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b7e2cd1_62563d63",
+      "range": {
+        "startLine": 140,
+        "startChar": 25,
+        "endLine": 140,
+        "endChar": 74
+      },
+      "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "921a8c96_5a3c19a0",
         "filename": "board/cr50/fips.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15f2097c_64de21ef",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T18:12:15Z",
+      "side": 1,
+      "message": "they actually not causing repo upload issues. URLs are exception, but I\u0027ll try to make shorter",
+      "parentUuid": "921a8c96_5a3c19a0",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 200,
+        "endChar": 122
+      },
+      "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4973d409_911ba81a",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T18:12:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6162260_f34604ea",
+      "range": {
+        "startLine": 573,
+        "startChar": 63,
+        "endLine": 573,
+        "endChar": 67
+      },
+      "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41bce95a_d38e6fe3",
         "filename": "board/cr50/fips.c",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87442c4_526ee12e",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T18:12:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41bce95a_d38e6fe3",
+      "range": {
+        "startLine": 697,
+        "startChar": 2,
+        "endLine": 697,
+        "endChar": 10
+      },
+      "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1d86f8f4_ba784180",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T18:12:15Z",
+      "side": 1,
+      "message": "yes, it will print not-approved mode. module should identify which mode is active.",
+      "parentUuid": "ffdde959_8137de1d",
+      "range": {
+        "startLine": 701,
+        "startChar": 1,
+        "endLine": 705,
+        "endChar": 20
+      },
+      "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82528217_c39a806a",
         "filename": "board/cr50/fips.c",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd9b91e6_230a3a9d",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T18:12:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82528217_c39a806a",
+      "range": {
+        "startLine": 757,
+        "startChar": 12,
+        "endLine": 757,
+        "endChar": 14
+      },
+      "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "27cbc6c6_bcbdd664",
+        "filename": "board/cr50/fips.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T18:12:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45a0ee12_7e12f047",
+      "range": {
+        "startLine": 14,
+        "startChar": 59,
+        "endLine": 14,
+        "endChar": 69
+      },
+      "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb7982bc_c91318f9",
         "filename": "board/cr50/scratch_reg1.h",
         "patchSetId": 5
@@ -184,6 +352,30 @@
       "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d533e3e7_056bec7c",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-01T18:12:15Z",
+      "side": 1,
+      "message": "because BOARD_CCD_REC_LID_PIN_MASK use 2 bits. When I made this patch earlier there was no BOARD_EC_CR50_COMM_SUPPORT, so I set it to BIT(21). In newer version I updated it to BIT(22) as didn\u0027t recognize BOARD_CCD_REC_LID_PIN_SHIFT is also use bits. Discovered it when was surprised that bit is not set properly after reboot. BIT(24) is first one I can use.",
+      "parentUuid": "eb7982bc_c91318f9",
+      "range": {
+        "startLine": 106,
+        "startChar": 42,
+        "endLine": 106,
+        "endChar": 44
+      },
+      "revId": "b33138b7e239633ed34ac7175dba1193d99d461c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
