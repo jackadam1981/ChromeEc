@@ -35,6 +35,7 @@
 #define CONFIG_VSTORE_SLOT_COUNT 1
 #define CONFIG_VOLUME_BUTTONS
 #define CONFIG_LOW_POWER_IDLE
+#define CONFIG_DELAY_ON_POR
 
 /* Host communication */
 #define CONFIG_HOSTCMD_ESPI
