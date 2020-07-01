@@ -162,7 +162,7 @@ void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_HOST_USBC_PPC_INT_ODL);
 
 	/* Enable TCPC interrupts. */
-
+	gpio_enable_interrupt(GPIO_USBC_DP_MUX_ALERT_ODL);
 	/* Enable HPD interrupt */
 	gpio_enable_interrupt(GPIO_DDI_MST_IN_HPD);
 
