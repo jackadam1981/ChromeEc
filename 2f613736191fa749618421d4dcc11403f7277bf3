@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f15adbb_9644e301",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-01T08:09:58Z",
+      "side": 1,
+      "message": "Even Passive cable uses TBT_ENTER_SOP\nNit: Do you think can club all the _SOP_ messages together?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "2f613736191fa749618421d4dcc11403f7277bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7822196f_a4daa930",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-01T08:09:58Z",
+      "side": 1,
+      "message": "Nit:Alignment",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 55
+      },
+      "revId": "2f613736191fa749618421d4dcc11403f7277bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2252162b_4e2cbc4f",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-01T08:09:58Z",
+      "side": 1,
+      "message": "Do we need this? Since we are already assigning the tx_type to TCPC_TX_SOP in usb_pd_dpm.c?",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 24
+      },
+      "revId": "2f613736191fa749618421d4dcc11403f7277bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f732e4a_3b3b37d8",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-01T08:09:58Z",
+      "side": 1,
+      "message": "For active cables, the flow is: Enter Mode SOP\u0027 -\u003e Enter Mode SOP\"(if applicable - check should be added if the cable has a SOP\u0027\u0027 controller) -\u003e Enter mode SOP",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 8
+      },
+      "revId": "2f613736191fa749618421d4dcc11403f7277bf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
