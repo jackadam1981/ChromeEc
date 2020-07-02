@@ -128,8 +128,11 @@
 
 /* Charger */
 #define CONFIG_CHARGE_MANAGER
-/* Less than this much blocks AP power-on. */
+/* EC's thresholds. Less than this much blocks AP power-on. */
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 30000
+/* AP's thresholds. */
+#define CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT 3
+#define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 59000
 #undef CONFIG_CHARGE_MANAGER_SAFE_MODE
 
 /* USB type C */
