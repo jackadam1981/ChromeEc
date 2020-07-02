@@ -318,6 +318,14 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 	return voltage < BD9995X_BC12_MIN_VOLTAGE;
 }
 
+__override void board_frs_handler(int port)
+{
+	/* GPIO assert to output Vbus safe5v */
+	if (port == USBPD_PORT_A)
+		//gpio_set_level(GPIO_USBPD_FRS, 1);
+		IT83XX_GPIO_GPDRH |= BIT(1);
+}
+
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_startup(void)
 {
