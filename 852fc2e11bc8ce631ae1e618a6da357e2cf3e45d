@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3577a512_11a767ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-02T01:57:59Z",
+      "side": 1,
+      "message": "I haven\u0027t got a setup to run autotests. I\u0027m still trying.",
+      "parentUuid": "c955f9fc_f08e01d9",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14d5525e_dfc5981a",
         "filename": "common/u2f.c",
         "patchSetId": 5
@@ -69,6 +93,30 @@
       "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ff2e747_e96b2604",
+        "filename": "common/u2f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-02T01:57:59Z",
+      "side": 1,
+      "message": "Those are used only in cryptoc P256 calculations. I think they don\u0027t need to be aligned.",
+      "parentUuid": "14d5525e_dfc5981a",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 27
+      },
+      "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "b58a2578_b3adec1d",
+        "filename": "common/u2f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-02T01:57:59Z",
+      "side": 1,
+      "message": "Nice, using a union also helps avoid some pointer casting. Thanks!",
+      "parentUuid": "57f50be2_d35809ef",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 45
+      },
+      "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "458966ae_39e43121",
         "filename": "common/u2f.c",
         "patchSetId": 5
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "75c42dd5_65185fc1",
+        "filename": "common/u2f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-02T01:57:59Z",
+      "side": 1,
+      "message": "Okay, I guess we can remove the __aligned on od_seed once you do that.",
+      "parentUuid": "458966ae_39e43121",
+      "range": {
+        "startLine": 159,
+        "startChar": 3,
+        "endLine": 159,
+        "endChar": 39
+      },
+      "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13e6a775_93ef6ac3",
         "filename": "include/u2f.h",
         "patchSetId": 5
@@ -162,6 +258,30 @@
       "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb42e6c_0c069a5c",
+        "filename": "include/u2f.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-02T01:57:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13e6a775_93ef6ac3",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
