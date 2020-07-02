@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37ccd799_af094f33",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-07-02T09:49:26Z",
+      "side": 1,
+      "message": "Do you want to associate variable \"tmp\" with a0 register?\nCan we define \"tmp\" and associate it with a0 like this:\nregister uint32_t tmp asm (\"a0\");",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "e19e29006839b84f2cdcd5a9fce6d8402348742b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
