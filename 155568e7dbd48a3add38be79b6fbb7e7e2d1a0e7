@@ -34,6 +34,24 @@
       "revId": "155568e7dbd48a3add38be79b6fbb7e7e2d1a0e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94fea616_392467ca",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-02T02:07:29Z",
+      "side": 1,
+      "message": "Yes, you are right. Good catch. We might also move all other TCPC\u0027s hard reset to use this new event.",
+      "parentUuid": "759a531c_15ed60a0",
+      "revId": "155568e7dbd48a3add38be79b6fbb7e7e2d1a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
