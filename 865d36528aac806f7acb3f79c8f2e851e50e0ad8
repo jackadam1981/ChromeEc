@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7501e56e_9b11b26c",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-02T17:18:56Z",
+      "side": 1,
+      "message": "I just wanted to be able to have both PPC and TCPC enable functions to be allowed.\nShouldn\u0027t this be\n\nint pd_set_frs_enable(int port, int enable)\n{\n\tint rv \u003d EC_SUCCESS;\n\n\tif (IS_ENABLED(CONFIG_USB_PD_FRS_PPC))\n\t\trv \u003d ppc_set_frs_enable(port, enable);\n\tif (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))\n\t\trv \u003d tcpm_set_frs_enable(port, enable);\n\n\treturn rv;\n}",
+      "range": {
+        "startLine": 741,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 0
+      },
+      "revId": "865d36528aac806f7acb3f79c8f2e851e50e0ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cfa74d2_0f9b51be",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-02T17:18:56Z",
+      "side": 1,
+      "message": "isn\u0027t this implied if you just use #ifdef CONFIG_USB_PD_FRS_PPC)?",
+      "range": {
+        "startLine": 314,
+        "startChar": 1,
+        "endLine": 314,
+        "endChar": 64
+      },
+      "revId": "865d36528aac806f7acb3f79c8f2e851e50e0ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
