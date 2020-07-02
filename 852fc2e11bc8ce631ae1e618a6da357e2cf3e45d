@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0c290705_a2253875",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-02T21:38:18Z",
+      "side": 1,
+      "message": "I ran Cr50U2fCommands but did not have time to run Cr50U2fPowerwash. I think it should be okay since this is purely u2f computation changes. I can also try again on Monday.",
+      "parentUuid": "3577a512_11a767ce",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "852fc2e11bc8ce631ae1e618a6da357e2cf3e45d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14d5525e_dfc5981a",
         "filename": "common/u2f.c",
         "patchSetId": 5
