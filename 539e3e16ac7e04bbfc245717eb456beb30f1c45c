@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ce128be_bf02db56",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-07-02T14:27:41Z",
+      "side": 1,
+      "message": "updated comment",
+      "parentUuid": "147c7bbc_217cd268",
+      "range": {
+        "startLine": 655,
+        "startChar": 18,
+        "endLine": 655,
+        "endChar": 26
+      },
+      "revId": "539e3e16ac7e04bbfc245717eb456beb30f1c45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f857f1f1_4e845ed7",
         "filename": "common/charge_manager.c",
         "patchSetId": 20
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-02T12:00:29Z",
       "side": 1,
       "message": "to avoid",
+      "range": {
+        "startLine": 656,
+        "startChar": 28,
+        "endLine": 656,
+        "endChar": 36
+      },
+      "revId": "539e3e16ac7e04bbfc245717eb456beb30f1c45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e8d6ec_d89b4fd6",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1383643
+      },
+      "writtenOn": "2020-07-02T14:27:41Z",
+      "side": 1,
+      "message": "updated comment",
+      "parentUuid": "f857f1f1_4e845ed7",
       "range": {
         "startLine": 656,
         "startChar": 28,
