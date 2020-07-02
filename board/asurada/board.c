@@ -404,11 +404,6 @@ void board_reset_pd_mcu(void)
 	 */
 }
 
-int board_get_version(void)
-{
-	return 0;
-}
-
 int board_set_active_charge_port(int port)
 {
 	int i;
