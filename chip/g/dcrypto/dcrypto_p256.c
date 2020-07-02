@@ -772,7 +772,11 @@ static void cp1w(size_t base_offset, int word, const uint32_t src)
 		REG32_ADDR((uint8_t *)GREG32_ADDR(CRYPTO, DMEM_DUMMY) +
 			   base_offset + (word * sizeof(uint32_t)));
 
-	*dst = src;
+	/* Explicitly store a word (rather than several bytes). */
+	__asm__ __volatile__("str %[src_val], [%[dst_addr]]"
+			     : /* No Outputs */
+			     : [src_val] "r"(src), [dst_addr] "r"(dst)
+			     : /* No Clobbers */);
 }
 
 /*
