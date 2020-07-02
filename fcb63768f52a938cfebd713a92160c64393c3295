@@ -16,6 +16,24 @@
       "revId": "fcb63768f52a938cfebd713a92160c64393c3295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57ceae2d_6d24cf05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-02T18:51:52Z",
+      "side": 1,
+      "message": "I agree that charging a new device from an old one doesn\u0027t seem like a very high priority.\n\nI think this is the fix for the issue on old devices:\ncrrev.com/c/1388845 [pd: Apply Rd prior to sending PS_RDY in PRSWAP]\n\nThe fix hasn\u0027t reached Grunt devices yet:\nb/132285896 [Grunt PD: Rp/Rd during PR swap causes hard reset with PS8751]\nb/138448369 [Grunt PD: Update power role prior to sending PS_RDY in PRSWAP]",
+      "parentUuid": "704bc064_080caa9c",
+      "revId": "fcb63768f52a938cfebd713a92160c64393c3295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
