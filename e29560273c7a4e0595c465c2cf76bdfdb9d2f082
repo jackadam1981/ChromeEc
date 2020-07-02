@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "be593c50_de5260b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-02T17:21:20Z",
+      "side": 1,
+      "message": "Is there more in this CL that the already landed woomax USB-A/C CL didn\u0027t have in it or can this CL be abandoned?",
+      "revId": "e29560273c7a4e0595c465c2cf76bdfdb9d2f082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4506c3a_3a80b3d1",
         "filename": "baseboard/zork/baseboard.h",
         "patchSetId": 1
