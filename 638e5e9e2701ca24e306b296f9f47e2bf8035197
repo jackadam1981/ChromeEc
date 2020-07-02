@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a555c73_7e4037ed",
+        "filename": "baseboard/dedede/variant_ec_it8320.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-07-02T00:27:48Z",
+      "side": 1,
+      "message": "The channel should put the end. Now waddledee adc is not working.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "638e5e9e2701ca24e306b296f9f47e2bf8035197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
