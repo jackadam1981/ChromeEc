@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd73e788_27f0d31f",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-07-02T08:06:43Z",
+      "side": 1,
+      "message": "The message here is hard to grep.\n\nHow about:\nCPRINTS(debounced_hpd ? \"HDMI plug\" : \"HDMI unplug\")\n\nWe don\u0027t really need to save rom space in asurada.",
+      "revId": "37f8ad24e8d28d5362fee9ee489511d427d922e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efcd7b36_f010ee48",
+        "filename": "board/asurada/usb_pd_policy.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-07-02T08:06:43Z",
+      "side": 1,
+      "message": "Note that this pin is not implemented,\nfeel free to move the pin definition from CL:2276016 to this CL.",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "37f8ad24e8d28d5362fee9ee489511d427d922e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
