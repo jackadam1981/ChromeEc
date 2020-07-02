@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "147c7bbc_217cd268",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-07-02T12:00:29Z",
+      "side": 1,
+      "message": "If no battery present",
+      "range": {
+        "startLine": 655,
+        "startChar": 18,
+        "endLine": 655,
+        "endChar": 26
+      },
+      "revId": "539e3e16ac7e04bbfc245717eb456beb30f1c45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f857f1f1_4e845ed7",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-07-02T12:00:29Z",
+      "side": 1,
+      "message": "to avoid",
+      "range": {
+        "startLine": 656,
+        "startChar": 28,
+        "endLine": 656,
+        "endChar": 36
+      },
+      "revId": "539e3e16ac7e04bbfc245717eb456beb30f1c45c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
