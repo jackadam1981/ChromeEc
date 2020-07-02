@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9a8ae1a_8e61b839",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 4225,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-02T04:15:03Z",
+      "side": 1,
+      "message": "Should this and the unexpected message be VDM_RESULT_NO_ACTION?  Otherwise it seems like we\u0027d just wait until the parent timeout to transition back to READY",
+      "range": {
+        "startLine": 4225,
+        "startChar": 3,
+        "endLine": 4225,
+        "endChar": 29
+      },
+      "revId": "a1e4b871802e030f49f51051269a805d300a1847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
