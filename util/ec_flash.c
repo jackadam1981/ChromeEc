@@ -93,6 +93,16 @@ static int get_flash_info_v2(struct ec_response_flash_info_2 *info_response)
  * @param info_response  pointer to response that will be filled on success
  * @return Zero or positive on success, negative on failure
  */
+static int get_flash_info_v1(struct ec_response_flash_info_1 *info_response)
+{
+	return ec_command(EC_CMD_FLASH_INFO, 1, NULL, 0, info_response,
+			  sizeof(*info_response));
+}
+
+/**
+ * @param info_response  pointer to response that will be filled on success
+ * @return Zero or positive on success, negative on failure
+ */
 static int get_flash_info_v0(struct ec_response_flash_info *info_response)
 {
 	return ec_command(EC_CMD_FLASH_INFO, 0, NULL, 0, info_response,
@@ -102,41 +112,44 @@ static int get_flash_info_v0(struct ec_response_flash_info *info_response)
 /**
  * @return Write size on success, negative on failure
  */
-static int get_flash_write_size(void)
+static int get_flash_write_size(uint32_t *block_size, uint32_t *ideal_size)
 {
-	int rv = 0;
-	int write_size;
-	int flash_info_version = -1;
+	int rv = -1;
 	struct ec_response_flash_info info_response_v0 = { 0 };
+	struct ec_response_flash_info_1 info_response_v1 = { 0 };
 	struct ec_response_flash_info_2 info_response_v2 = { 0 };
 
-	if (ec_cmd_version_supported(EC_CMD_FLASH_INFO, 2))
-		flash_info_version = 2;
-	else if (ec_cmd_version_supported(EC_CMD_FLASH_INFO, 0))
-		flash_info_version = 0;
+	*block_size = *ideal_size = 0;
 
-	if (flash_info_version < 0)
-		return -1;
-
-	if (flash_info_version == 2) {
-		rv = get_flash_info_v2(&info_response_v2);
-		write_size = info_response_v2.write_ideal_size;
-	} else {
-		rv = get_flash_info_v0(&info_response_v0);
-		write_size = info_response_v0.write_block_size;
+	/* ver 1 supports block size and ideal size. */
+	if (ec_cmd_version_supported(EC_CMD_FLASH_INFO, 1)) {
+		rv = get_flash_info_v1(&info_response_v1);
+		*block_size = info_response_v1.write_block_size;
+		*ideal_size = info_response_v1.write_ideal_size;
+		return rv;
 	}
 
-	if (rv < 0)
-		return rv;
+	/* ver 0 only supports block_size */
+	if (ec_cmd_version_supported(EC_CMD_FLASH_INFO, 0)) {
+		rv = get_flash_info_v0(&info_response_v0);
+		*block_size = info_response_v0.write_block_size;
+	}
 
-	return write_size;
+	/* ver 2 only supports ideal_size */
+	if (ec_cmd_version_supported(EC_CMD_FLASH_INFO, 2)) {
+		rv |= get_flash_info_v2(&info_response_v2);
+		*ideal_size = info_response_v2.write_ideal_size;
+	}
+
+	return rv;
 }
 
 int ec_flash_write(const uint8_t *buf, int offset, int size)
 {
 	struct ec_params_flash_write *p =
 		(struct ec_params_flash_write *)ec_outbuf;
-	int write_size;
+	uint32_t write_block_size, write_ideal_size;
+	uint32_t write_size;
 	int pdata_max_size = (int)(ec_max_outsize - sizeof(*p));
 	int step;
 	int rv;
@@ -149,16 +162,35 @@ int ec_flash_write(const uint8_t *buf, int offset, int size)
 	if (!ec_cmd_version_supported(EC_CMD_FLASH_WRITE, EC_VER_FLASH_WRITE))
 		pdata_max_size = EC_FLASH_WRITE_VER0_SIZE;
 
-	write_size = get_flash_write_size();
-	if (write_size < 0)
-		return write_size;
+	if (pdata_max_size <= 0) {
+		fprintf(stderr, "Output write size is negtaive %d\n",
+			pdata_max_size);
+		return -1;
+	}
+
+	rv = get_flash_write_size(&write_block_size, &write_ideal_size);
+	if (!rv)
+		return rv;
 
 	/*
 	 * shouldn't ever happen, but report an error rather than a division
 	 * by zero in the next statement.
 	 */
-	if (write_size == 0)
+	if (write_block_size == 0 && write_ideal_size == 0)
 		return -1;
+
+	/* Assign the larger value if one of both is zero. */
+	if (write_block_size == 0 || write_ideal_size == 0)
+		write_block_size = write_ideal_size =
+			(write_block_size > write_ideal_size ?
+				       write_block_size :
+				       write_ideal_size);
+
+	/* If the pdata_max_size is enough for ideal size, use it. */
+	if (write_ideal_size <= pdata_max_size)
+		write_size = write_ideal_size;
+	else
+		write_size = pdata_max_size;
 
 	step = (pdata_max_size / write_size) * write_size;
 
