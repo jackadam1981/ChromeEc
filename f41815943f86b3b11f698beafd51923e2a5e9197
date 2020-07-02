@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23297ca1_7652bd8c",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-02T01:15:34Z",
+      "side": 1,
+      "message": "shall we just say that we treat images with completely zeroed headers differently (regardless of CR50_DEV)? though extra protection for CR50_DEV was the motivation for this.",
+      "range": {
+        "startLine": 637,
+        "startChar": 16,
+        "endLine": 637,
+        "endChar": 26
+      },
+      "revId": "f41815943f86b3b11f698beafd51923e2a5e9197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52411e44_2850342d",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-02T01:15:34Z",
+      "side": 1,
+      "message": "why do we need this check?",
+      "range": {
+        "startLine": 643,
+        "startChar": 5,
+        "endLine": 643,
+        "endChar": 59
+      },
+      "revId": "f41815943f86b3b11f698beafd51923e2a5e9197",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
