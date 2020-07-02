@@ -164,6 +164,30 @@
       "revId": "2cee525d3fecb6efec00de8bdf8d761c6afe19d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d430be2d_9233e571",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1256783
+      },
+      "writtenOn": "2020-07-02T06:14:15Z",
+      "side": 1,
+      "message": "Yes - deterministic ECDSA was used to provide a constant G2F attestation cert. This was necessary as the cert would be generated once [at factory] and added to the allowlist, then re-created (the X509 structure is not stored in flash) and used again later.\n\nI believe it is safe to switch to non-deterministic ECDSA for all other signatures; I had a note to investigate and make the change but never got round to it, sorry :(\n\nThe constant G2F cert is less important now that we have the automatic allowlisting mechanism - as this means that realistically the cert will only be used once, and adding a new cert to the allowlist will overwrite the previous one (the device is identified by the ID included in the cert). However, having single-use certs was not the original intention, and it seems plausible that using them in this way could lead to some unwanted side effects. If you wanted to switch to doing that it would be best to check with mmarquez and jayini first.",
+      "parentUuid": "a33c484e_7b18a30f",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 45
+      },
+      "revId": "2cee525d3fecb6efec00de8bdf8d761c6afe19d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
