@@ -632,6 +632,14 @@ int pd_get_vdo_ver(int port, enum tcpm_transmit_type type)
 		return VDM_VER20;
 }
 
+static void pe_set_ready_state(int port)
+{
+	if (pe[port].power_role == PD_ROLE_SOURCE)
+		set_state_pe(port, PE_SRC_READY);
+	else
+		set_state_pe(port, PE_SNK_READY);
+}
+
 static inline void send_data_msg(int port, enum tcpm_transmit_type type,
 				 enum pd_data_msg_type msg)
 {
@@ -991,12 +999,8 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 	 * Transition to PE_Snk_Ready or PE_Src_Ready by a Protocol
 	 * Error during an Interruptible AMS.
 	 */
-	else {
-		if (pe[port].power_role == PD_ROLE_SINK)
-			set_state_pe(port, PE_SNK_READY);
-		else
-			set_state_pe(port, PE_SRC_READY);
-	}
+	else
+		pe_set_ready_state(port);
 }
 
 void pe_got_soft_reset(int port)
@@ -1758,14 +1762,11 @@ static void pe_src_send_capabilities_run(int port)
 		 *	PE_SNK/SRC_READY if explicit contract
 		 *	PE_SEND_SOFT_RESET otherwise
 		 */
-		if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT)) {
-			if (pe[port].power_role == PD_ROLE_SINK)
-				set_state_pe(port, PE_SNK_READY);
-			else
-				set_state_pe(port, PE_SRC_READY);
-		} else {
+		if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT))
+			pe_set_ready_state(port);
+		else
 			pe_send_soft_reset(port, TCPC_TX_SOP);
-		}
+
 		return;
 	}
 
@@ -3120,11 +3121,8 @@ static void pe_send_not_supported_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		pe_set_ready_state(port);
 
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
 	}
 }
 
@@ -3233,10 +3231,7 @@ static void pe_give_battery_cap_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
+		pe_set_ready_state(port);
 	}
 }
 
@@ -3325,12 +3320,8 @@ static void pe_send_alert_entry(int port)
 
 	print_current_state(port);
 
-	if (pd_build_alert_msg(msg, len, pe[port].power_role) != EC_SUCCESS) {
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
-	}
+	if (pd_build_alert_msg(msg, len, pe[port].power_role) != EC_SUCCESS)
+		pe_set_ready_state(port);
 
 	/* Request the Protocol Layer to send Alert Message. */
 	send_data_msg(port, TCPC_TX_SOP, PD_DATA_ALERT);
@@ -3340,10 +3331,7 @@ static void pe_send_alert_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
+		pe_set_ready_state(port);
 	}
 }
 #endif /* CONFIG_USB_PD_REV30 */
@@ -3386,10 +3374,7 @@ static void pe_drs_evaluate_swap_run(int port)
 			 * Message sent. Transition back to PE_SRC_Ready or
 			 * PE_SNK_Ready.
 			 */
-			if (pe[port].power_role == PD_ROLE_SOURCE)
-				set_state_pe(port, PE_SRC_READY);
-			else
-				set_state_pe(port, PE_SNK_READY);
+			pe_set_ready_state(port);
 		}
 	}
 }
@@ -3425,10 +3410,7 @@ static void pe_drs_change_run(int port)
 	 * Port changed. Transition back to PE_SRC_Ready or
 	 * PE_SNK_Ready.
 	 */
-	if (pe[port].power_role == PD_ROLE_SINK)
-		set_state_pe(port, PE_SNK_READY);
-	else
-		set_state_pe(port, PE_SRC_READY);
+	pe_set_ready_state(port);
 }
 
 /**
@@ -3478,10 +3460,7 @@ static void pe_drs_send_swap_run(int port)
 					PE_SET_FLAG(port,
 						PE_FLAGS_WAITING_DR_SWAP);
 
-				if (pe[port].power_role == PD_ROLE_SINK)
-					set_state_pe(port, PE_SNK_READY);
-				else
-					set_state_pe(port, PE_SRC_READY);
+				pe_set_ready_state(port);
 				return;
 			}
 		}
@@ -3492,10 +3471,7 @@ static void pe_drs_send_swap_run(int port)
 	 *   1) the SenderResponseTimer times out.
 	 */
 	if (get_time().val > pe[port].sender_response_timer) {
-		if (pe[port].power_role == PD_ROLE_SINK)
-			set_state_pe(port, PE_SNK_READY);
-		else
-			set_state_pe(port, PE_SRC_READY);
+		pe_set_ready_state(port);
 		return;
 	}
 }
@@ -4185,18 +4161,11 @@ static void pe_enter_usb_run(int port)
 			return;
 		}
 
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
+		pe_set_ready_state(port);
 	}
 
-	if (get_time().val > pe[port].sender_response_timer) {
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
-	}
+	if (get_time().val > pe[port].sender_response_timer)
+		pe_set_ready_state(port);
 }
 
 /**
@@ -4216,10 +4185,7 @@ static void pe_snk_give_sink_cap_run(int port)
 {
 	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
+		pe_set_ready_state(port);
 	}
 }
 
@@ -4272,10 +4238,7 @@ static void pe_handle_custom_vdm_request_run(int port)
 		 * Message sent. Transition back to
 		 * PE_SRC_Ready or PE_SINK_Ready
 		 */
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
+		pe_set_ready_state(port);
 	}
 }
 
@@ -4315,10 +4278,7 @@ static void pe_vdm_send_request_run(int port)
 		 * Go back to ready on first AMS message discard
 		 * (ready states will clear the discard flag)
 		 */
-		if (pe[port].power_role == PD_ROLE_SINK)
-			set_state_pe(port, PE_SNK_READY);
-		else
-			set_state_pe(port, PE_SRC_READY);
+		pe_set_ready_state(port);
 		return;
 	}
 
@@ -4912,10 +4872,7 @@ static void pe_vdm_response_entry(int port)
 	if (cmd_type != CMDT_INIT) {
 		CPRINTF("ERR:CMDT:%d:%d\n", cmd_type, vdo_cmd);
 
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
+		pe_set_ready_state(port);
 		return;
 	}
 
@@ -4948,10 +4905,7 @@ static void pe_vdm_response_entry(int port)
 		 * (just goodCRC) return zero here.
 		 */
 		dfp_consume_attention(port, rx_payload);
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
+		pe_set_ready_state(port);
 		return;
 #endif
 	default:
@@ -5012,10 +4966,7 @@ static void pe_vdm_response_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE |
 						PE_FLAGS_PROTOCOL_ERROR);
 
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
+		pe_set_ready_state(port);
 	}
 }
 
@@ -5085,11 +5036,7 @@ static void pe_vcs_evaluate_swap_run(int port)
 			 * Message sent. Transition back to PE_SRC_Ready or
 			 * PE_SINK_Ready
 			 */
-			if (pe[port].power_role == PD_ROLE_SOURCE)
-				set_state_pe(port, PE_SRC_READY);
-			else
-				set_state_pe(port, PE_SNK_READY);
-
+			pe_set_ready_state(port);
 		}
 	}
 }
@@ -5145,10 +5092,7 @@ static void pe_vcs_send_swap_run(int port)
 			 *   3) Wait message Received.
 			 */
 			if (type == PD_CTRL_REJECT || type == PD_CTRL_WAIT) {
-				if (pe[port].power_role == PD_ROLE_SOURCE)
-					set_state_pe(port, PE_SRC_READY);
-				else
-					set_state_pe(port, PE_SNK_READY);
+				pe_set_ready_state(port);
 				return;
 			}
 		}
@@ -5167,12 +5111,8 @@ static void pe_vcs_send_swap_run(int port)
 	 * PE_SNK_Ready state when:
 	 *   1) SenderResponseTimer Timeout
 	 */
-	if (get_time().val > pe[port].sender_response_timer) {
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
-	}
+	if (get_time().val > pe[port].sender_response_timer)
+		pe_set_ready_state(port);
 }
 
 /*
@@ -5353,10 +5293,7 @@ static void pe_vcs_send_ps_rdy_swap_run(int port)
 			 * Cable plug wasn't present,
 			 * return to ready state
 			 */
-			if (pe[port].power_role == PD_ROLE_SOURCE)
-				set_state_pe(port, PE_SRC_READY);
-			else
-				set_state_pe(port, PE_SNK_READY);
+			pe_set_ready_state(port);
 		}
 	}
 }
@@ -5465,10 +5402,7 @@ static void pe_sender_response_run(int port)
 		 * Go back to ready on first AMS message discard
 		 * (ready states will clear the discard flag)
 		 */
-		if (pe[port].power_role == PD_ROLE_SINK)
-			set_state_pe(port, PE_SNK_READY);
-		else
-			set_state_pe(port, PE_SRC_READY);
+		pe_set_ready_state(port);
 		return;
 	}
 
