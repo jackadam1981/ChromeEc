@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb024638_de3d911e",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-02T19:51:20Z",
+      "side": 1,
+      "message": "nit: if (!modep || !modep-\u003eopos)",
+      "range": {
+        "startLine": 330,
+        "startChar": 2,
+        "endLine": 330,
+        "endChar": 30
+      },
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
