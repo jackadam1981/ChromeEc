@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dc328d3_e46161fd",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-02T17:29:19Z",
+      "side": 1,
+      "message": "can this one be a \"if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))\"?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 29
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "958d856a_68a53c08",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-02T17:29:19Z",
+      "side": 1,
+      "message": "Can this always be included without changing the flash being used with something like... If the optimizer is not smart enough to substitute out to be the same, then ignore the comment.\n\nstatic void tusb422_tcpci_tcpc_alert(int port)\n{\n\tif (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)) {\n\t\tint regval;\n\n\t\t/* FRS detection is a vendor defined alert */\n\t\ttcpc_read(port, TUSB422_REG_VENDOR_ALERT, \u0026regval);\n\t\tif (regval \u0026 TUBS422_REG_VENDOR_ALERT_MASK_FRS_RX) {\n\t\t\ttusb422_set_frs_enable(port, 0);\n\t\t\ttcpc_write(port, TUSB422_REG_VENDOR_ALERT, regval);\n\t\t\tpd_got_frs_signal(port);\n\t\t}\n\t}\n\ttcpci_tcpc_alert(port);\n}",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 1
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b12b743_7da49ea1",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-02T17:29:19Z",
+      "side": 1,
+      "message": "may not need to be conditional based on the above question",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 6
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
