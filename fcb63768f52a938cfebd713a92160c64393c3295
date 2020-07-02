@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "704bc064_080caa9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-02T18:35:58Z",
+      "side": 1,
+      "message": "\u003e Patch Set 4:\n\u003e \n\u003e This seems to be reverting an important part of CL:2250092\n\u003e Won\u0027t this cause a regression in the situation when both sides apply Rp?\n\nThis was based on input from Nuvoton with regards to older CrBooks and I added it as a just in case. We are not currently seeing this as being an issue and the current TCPMv2 code performs PS_RDY at the correct time.  So this would be to allow older CrBooks to DUT-DUT connect/charge and the probability is not very high even within that small use case.  I think it is more important to change to allow for TUSB422 to function correctly.\n\nThe most important part of CL:2250092 was the timing of AutoDischargeDisconnect to only be at the times of actual attach.",
+      "revId": "fcb63768f52a938cfebd713a92160c64393c3295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
