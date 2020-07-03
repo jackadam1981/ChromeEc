@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24b06d81_3e543c19",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-07-03T03:12:43Z",
+      "side": 1,
+      "message": "FRS_TCPC wasn\u0027t using the same conditional enable, but that makes sense so I\u0027ve conditionally enabled tcpc-\u003eset_frs_enable in the same way and ensured errors bubble up.",
+      "parentUuid": "7501e56e_9b11b26c",
+      "range": {
+        "startLine": 741,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 0
+      },
+      "revId": "865d36528aac806f7acb3f79c8f2e851e50e0ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cfa74d2_0f9b51be",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "865d36528aac806f7acb3f79c8f2e851e50e0ad8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d9878f_b7c92fd7",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1361259
+      },
+      "writtenOn": "2020-07-03T03:12:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cfa74d2_0f9b51be",
+      "range": {
+        "startLine": 314,
+        "startChar": 1,
+        "endLine": 314,
+        "endChar": 64
+      },
+      "revId": "865d36528aac806f7acb3f79c8f2e851e50e0ad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
