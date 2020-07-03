@@ -46,6 +46,30 @@
       "revId": "3abfc234ddf83f7aa6f5d6ef3f6783aff20f06cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d3ec819_7f622919",
+        "filename": "chip/mt8192_scp/ipi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-03T06:19:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7653d1ad_072f290f",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 16
+      },
+      "revId": "3abfc234ddf83f7aa6f5d6ef3f6783aff20f06cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
