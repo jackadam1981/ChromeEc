@@ -7,7 +7,9 @@
  * Type-C port manager for Parade PS8XXX with integrated superspeed muxes.
  *
  * Supported TCPCs:
+ * - PS8705
  * - PS8751
+ * - PS8755
  * - PS8805
  * - PS8815
  */
@@ -21,6 +23,7 @@
 #include "usb_pd.h"
 
 #if !defined(CONFIG_USB_PD_TCPM_PS8751) && \
+	!defined(CONFIG_USB_PD_TCPM_PS8755) && \
 	!defined(CONFIG_USB_PD_TCPM_PS8705) && \
 	!defined(CONFIG_USB_PD_TCPM_PS8805) && \
 	!defined(CONFIG_USB_PD_TCPM_PS8815)
@@ -285,7 +288,7 @@ static int ps8xxx_enter_low_power_mode(int port)
 #endif
 
 #if defined(CONFIG_USB_PD_TCPM_PS8751) || defined(CONFIG_USB_PD_TCPM_PS8805) \
- || defined(CONFIG_USB_PD_TCPM_PS8705)
+ || defined(CONFIG_USB_PD_TCPM_PS8705) || defined(CONFIG_USB_PD_TCPM_PS8755)
 /*
  * DCI is enabled by default and burns about 40 mW when the port is in
  * USB2 mode or when a C-to-A dongle is attached, so force it off.
@@ -308,7 +311,7 @@ static int ps8xxx_addr_dci_disable(int port, int i2c_addr, int i2c_reg)
 	}
 	return EC_SUCCESS;
 }
-#endif /* CONFIG_USB_PD_TCPM_PS8751 || CONFIG_USB_PD_TCPM_PS8[78]05 */
+#endif /* CONFIG_USB_PD_TCPM_PS875[15] || CONFIG_USB_PD_TCPM_PS8[78]05 */
 
 #ifdef CONFIG_USB_PD_TCPM_PS8815
 static int ps8xxx_dci_disable(int port)
@@ -330,7 +333,7 @@ static int ps8xxx_dci_disable(int port)
 }
 #endif /* CONFIG_USB_PD_TCPM_PS8805 */
 
-#ifdef CONFIG_USB_PD_TCPM_PS8705
+#if defined(CONFIG_USB_PD_TCPM_PS8705) || defined(CONFIG_USB_PD_TCPM_PS8755)
 static int ps8xxx_dci_disable(int port)
 {
 	int p1_addr;
@@ -359,7 +362,7 @@ static int ps8xxx_dci_disable(int port)
 
 	return rv;
 }
-#endif /* CONFIG_USB_PD_TCPM_PS8705 */
+#endif /* CONFIG_USB_PD_TCPM_PS87[05]5 */
 
 #ifdef CONFIG_USB_PD_TCPM_PS8751
 static int ps8xxx_dci_disable(int port)
