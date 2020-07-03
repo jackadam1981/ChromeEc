@@ -30,6 +30,21 @@ static struct {
 	bool mode_entry_done;
 } dpm[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+static bool pd_is_usb4_mode_capable(int port)
+{
+	const struct pd_discovery *disc =
+			pd_get_am_discovery(port, TCPC_TX_SOP);
+
+	/* Check if port, port partner and cable supports USB4 mode */
+	if (!IS_ENABLED(CONFIG_USB_PD_USB4) ||
+	    !IS_ENABLED(CONFIG_USBC_SS_MUX) ||
+	    !PD_PRODUCT_IS_USB4(disc->identity.product_t1.raw_value) ||
+	    get_usb4_cable_speed(port) < USB_R30_SS_U32_U40_GEN1)
+		return false;
+
+	return true;
+}
+
 void dpm_init(int port)
 {
 	dpm[port].mode_entry_done = false;
@@ -84,6 +99,7 @@ void dpm_attempt_mode_entry(int port)
 {
 	int vdo_count = 0;
 	uint32_t vdm[VDO_MAX_SIZE];
+	enum tcpm_transmit_type tx_type = TCPC_TX_SOP;
 
 	if (dpm[port].mode_entry_done)
 		return;
@@ -107,12 +123,22 @@ void dpm_attempt_mode_entry(int port)
 	    pd_get_modes_discovery(port, TCPC_TX_SOP) != PD_DISC_COMPLETE)
 		return;
 
-	/* Check if we discovered a Thunderbot-Compatible mode */
-	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
-	    pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP,
-					USB_VID_INTEL))
-		vdo_count = tbt_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+	if (pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP,
+					USB_VID_INTEL)) {
+		/* Check if we discovered USB4 mode */
+		if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
+		    pd_is_usb4_mode_capable(port)) {
+			usb_mux_set_safe_mode(port);
+			pe_dpm_request(port, DPM_REQUEST_ENTER_USB);
+			dpm_set_mode_entry_done(port);
+			return;
+		}
 
+		/* Check if we discovered a Thunderbot-Compatible mode */
+		if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
+			vdo_count = tbt_setup_next_vdm(port, ARRAY_SIZE(vdm),
+							vdm, &tx_type);
+	}
 	/*
 	 * IF thunderbolt mode is not discovered or if the device/cable is not
 	 * thunderbolt compatible, Check if we discovered a DisplayPort mode
@@ -142,7 +168,7 @@ void dpm_attempt_mode_entry(int port)
 	 * TODO(b/155890173): Provide a host command to request that the PE send
 	 * an arbitrary VDM via this mechanism.
 	 */
-	if (!pd_setup_vdm_request(port, TCPC_TX_SOP, vdm, vdo_count)) {
+	if (!pd_setup_vdm_request(port, tx_type, vdm, vdo_count)) {
 		dpm_set_mode_entry_done(port);
 		return;
 	}

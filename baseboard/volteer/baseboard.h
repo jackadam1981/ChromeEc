@@ -176,7 +176,7 @@
 #define CONFIG_USB_MUX_RUNTIME_CONFIG
 
 #define CONFIG_USBC_PPC
-#define CONFIG_CMD_PPC_DUMP
+/*#define CONFIG_CMD_PPC_DUMP*/
 /* Note - SN5S330 support automatically adds
  * CONFIG_USBC_PPC_POLARITY
  * CONFIG_USBC_PPC_SBU
