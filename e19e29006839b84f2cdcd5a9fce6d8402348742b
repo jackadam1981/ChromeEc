@@ -22,6 +22,30 @@
       "revId": "e19e29006839b84f2cdcd5a9fce6d8402348742b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2398c1b8_f984043c",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-07-03T00:56:59Z",
+      "side": 1,
+      "message": "Not always.\n\nIf the caller wants the return value, putting to a0 is fine.\nIf the caller don\u0027t want the return value, overriding a0 couldn\u0027t be a good idea.",
+      "parentUuid": "37ccd799_af094f33",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 5
+      },
+      "revId": "e19e29006839b84f2cdcd5a9fce6d8402348742b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
