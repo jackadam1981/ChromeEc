@@ -150,6 +150,8 @@ test_export_static int command_pd(int argc, char **argv)
 					return EC_ERROR_PARAM4;
 			}
 			return EC_SUCCESS;
+		} else if (!strcasecmp(argv[2], "srccap")) {
+			pe_dpm_request(port, DPM_REQUEST_SOURCE_CAP);
 		}
 	}
 
