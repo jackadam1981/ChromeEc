@@ -92,7 +92,7 @@ int u2f_origin_user_keypair(const uint8_t *key_handle,
  * @param key_len size of the storage buffer. Should be 32 bytes.
  * @return EC_SUCCESS if a valid key was created.
  */
-int u2f_gen_kek(const uint8_t *origin, uint8_t *kek, size_t key_len);
+int u2f_gen_kek(uint8_t *kek, size_t key_len);
 
 /**
  * Generate a hardware derived ECDSA keypair for individual attestation.

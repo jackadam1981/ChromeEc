@@ -10,6 +10,7 @@
 #include "cryptoc/sha256.h"
 #include "dcrypto.h"
 #include "extension.h"
+#include "fips_rand.h"
 #include "system.h"
 #include "u2f_impl.h"
 #include "u2f.h"
@@ -34,16 +35,18 @@ static void deinterleave64(const uint8_t *in, uint8_t *a, uint8_t *b)
 	}
 }
 
-/* (un)wrap w/ the origin dependent KEK. */
-static int wrap_kh(const uint8_t *origin, const uint8_t *in, uint8_t *out,
-		   enum encrypt_mode mode)
+/**
+ * (un)wrap w/ the origin dependent KEK for old key handles.
+ * Not used in FIPS mode.
+ */
+static int wrap_kh(const uint8_t *in, uint8_t *out, enum encrypt_mode mode)
 {
 	uint8_t kek[SHA256_DIGEST_SIZE];
 	uint8_t iv[AES_BLOCK_LEN] = { 0 };
 	int i;
 
-	/* KEK derivation */
-	if (u2f_gen_kek(origin, kek, sizeof(kek)))
+	/* KEK derivation. Will fail in FIPS mode. */
+	if (u2f_gen_kek(kek, sizeof(kek)))
 		return EC_ERROR_UNKNOWN;
 
 	DCRYPTO_aes_init(kek, 256, iv, CIPHER_MODE_CBC, mode);
@@ -111,7 +114,7 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 
 	/* Generate origin-specific keypair */
 	do {
-		if (!DCRYPTO_ladder_random(&od_seed))
+		if (!fips_rand_bytes(&od_seed, sizeof(od_seed)))
 			return VENDOR_RC_INTERNAL_ERROR;
 
 		if (u2f_origin_user_keyhandle(req->appId, req->userSecret,
@@ -168,6 +171,7 @@ static int verify_kh_pubkey(const uint8_t *key_handle,
 	return EC_SUCCESS;
 }
 
+/* Sniff test for received key handle. Check if it was created locally. */
 static int verify_kh_owned(const uint8_t *user_secret, const uint8_t *app_id,
 			   const uint8_t *key_handle, int *owned)
 {
@@ -201,7 +205,7 @@ static int verify_legacy_kh_owned(const uint8_t *app_id,
 	p256_int kh_app_id_p256;
 
 	/* Unwrap key handle */
-	if (wrap_kh(app_id, key_handle, unwrapped_kh, DECRYPT_MODE))
+	if (wrap_kh(key_handle, unwrapped_kh, DECRYPT_MODE))
 		return 0;
 	deinterleave64(unwrapped_kh, kh_app_id, origin_seed);
 

@@ -100,18 +100,10 @@ enum tpm_write_rv write_tpm_nvmem_hidden(uint16_t object_index,
 
 size_t read_tpm_nvmem_size(uint16_t obj_index)
 {
-	TPM_HANDLE object_handle;
-	NV_INDEX nvIndex;
-	uint32_t handle_addr;
+	UINT16 size;
 
-	object_handle = HR_NV_INDEX | obj_index;
+	/* In case of error it set size to zero, so don't check return code */
+	NvGetHiddenObjectSize(HR_HIDDEN | obj_index, &size);
 
-	handle_addr = NvEarlyStageFindHandle(object_handle);
-	if (!handle_addr)
-		return 0;
-
-	/* Get properties of this index as stored in nvmem. */
-	NvReadIndexInfo(object_handle, handle_addr, &nvIndex);
-
-	return nvIndex.publicArea.dataSize;
+	return size;
 }
