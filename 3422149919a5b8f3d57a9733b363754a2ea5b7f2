@@ -45,6 +45,144 @@
       "revId": "3422149919a5b8f3d57a9733b363754a2ea5b7f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d370f71b_68da1c29",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5319,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-03T02:45:44Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 5319,
+        "startChar": 12,
+        "endLine": 5319,
+        "endChar": 13
+      },
+      "revId": "3422149919a5b8f3d57a9733b363754a2ea5b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00e8c139_8b672fa1",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5319,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-03T02:45:44Z",
+      "side": 1,
+      "message": "relies",
+      "range": {
+        "startLine": 5319,
+        "startChar": 67,
+        "endLine": 5319,
+        "endChar": 73
+      },
+      "revId": "3422149919a5b8f3d57a9733b363754a2ea5b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "853d6508_4428523c",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5320,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-03T02:45:44Z",
+      "side": 1,
+      "message": "EC_RESET_FLAG_POWER_ON",
+      "range": {
+        "startLine": 5320,
+        "startChar": 6,
+        "endLine": 5320,
+        "endChar": 23
+      },
+      "revId": "3422149919a5b8f3d57a9733b363754a2ea5b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1324649c_19bb427f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5320,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-03T02:45:44Z",
+      "side": 1,
+      "message": "correctly",
+      "range": {
+        "startLine": 5320,
+        "startChar": 34,
+        "endLine": 5320,
+        "endChar": 44
+      },
+      "revId": "3422149919a5b8f3d57a9733b363754a2ea5b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b592803f_3c2eb03f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5323,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-03T02:45:44Z",
+      "side": 1,
+      "message": "must define CONFIG_DELAY_ON_POR",
+      "range": {
+        "startLine": 5323,
+        "startChar": 22,
+        "endLine": 5323,
+        "endChar": 56
+      },
+      "revId": "3422149919a5b8f3d57a9733b363754a2ea5b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0828653_0661aae4",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5323,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-03T02:45:44Z",
+      "side": 1,
+      "message": "EFS2",
+      "range": {
+        "startLine": 5323,
+        "startChar": 11,
+        "endLine": 5323,
+        "endChar": 14
+      },
+      "revId": "3422149919a5b8f3d57a9733b363754a2ea5b7f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
