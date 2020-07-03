@@ -133,6 +133,7 @@
 
 enum battery_type {
 	BATTERY_LGC011,
+	BATTERY_LGC_AP18C8K,
 	BATTERY_TYPE_COUNT,
 };
 
