@@ -16,6 +16,29 @@
       "revId": "36f76c0f97b39ee85c95f930245f3be29a062c84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac39378d_b3512492",
+        "filename": "board/asurada/board_id.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-03T07:50:36Z",
+      "side": 1,
+      "message": "use IN_RAGNE instead?\n\ne.g. \n  IN_RANGE(mv, voltage_map[i]-threshold_mv, voltage_map[i]+threshould_mv)",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 40
+      },
+      "revId": "36f76c0f97b39ee85c95f930245f3be29a062c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
