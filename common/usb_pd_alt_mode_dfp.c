@@ -672,11 +672,6 @@ void usb_mux_set_safe_mode(int port)
 		ppc_set_sbu(port, 0);
 }
 
-bool is_vdo_present(int cnt, int index)
-{
-	return cnt > index;
-}
-
 static inline bool is_rev3_vdo(int port, enum tcpm_transmit_type type)
 {
 	return pd_get_vdo_ver(port, type) == PD_REV30;
@@ -837,9 +832,12 @@ int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 	union tbt_mode_resp_cable cable_mode_resp;
 
 	/* Table F-12 TBT3 Cable Enter Mode Command */
-	payload[0] = pd_dfp_enter_mode(port, sop, USB_VID_INTEL, 0) |
+	payload[0] = pd_dfp_enter_mode(port,
+				       sop == TCPC_TX_SOP ? TCPC_TX_SOP :
+							    TCPC_TX_SOP_PRIME,
+				       USB_VID_INTEL, 0) |
 		     VDO_CMDT(CMDT_INIT) |
-		     VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		     VDO_SVDM_VERS(pd_get_vdo_ver(port, sop));
 
 	/* For TBT3 Cable Enter Mode Command, number of Objects is 1 */
 	if ((sop == TCPC_TX_SOP_PRIME) ||
@@ -907,64 +905,40 @@ __overridable enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
  * ############################################################################
  */
 
-bool is_usb4_vdo(int port, int cnt, uint32_t *payload)
-{
-	enum idh_ptype ptype = PD_IDH_PTYPE(payload[VDO_I(IDH)]);
-
-	if (IS_PD_IDH_UFP_PTYPE(ptype)) {
-		/*
-		 * Ref: USB Type-C Cable and Connector Specification
-		 * Figure 5-1 USB4 Discovery and Entry Flow Model
-		 * Device USB4 VDO detection.
-		 */
-		return IS_ENABLED(CONFIG_USB_PD_USB4) &&
-			is_vdo_present(cnt, VDO_INDEX_PTYPE_UFP1_VDO) &&
-			PD_PRODUCT_IS_USB4(payload[VDO_INDEX_PTYPE_UFP1_VDO]);
-	}
-	return false;
-}
-
 /*
  * For Cable rev 3.0: USB4 cable speed is set according to speed supported by
  * the port and the response received from the cable, whichever is least.
  *
- * For Cable rev 2.0: Since board_is_tbt_usb4_port() should not enabled if the
- * port supports speed less than USB_R20_SS_U31_GEN1_GEN2, USB4 cable speed is
- * set according to the cable response.
+ * For Cable rev 2.0: If board_is_tbt_usb4_port() is less than
+ * TBT_SS_U32_GEN1_GEN2, return USB_R30_SS_U2_ONLY speed since the board
+ * doesn't support superspeed else the USB4 cable speed is set according to
+ * the cable response.
  */
-static enum usb_rev30_ss board_get_max_usb_cable_speed(int port)
+enum usb_rev30_ss get_usb4_cable_speed(int port)
 {
-	struct pd_discovery *disc =
-		pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+	struct pd_discovery *disc;
+	enum tbt_compat_cable_speed tbt_speed = board_get_max_tbt_speed(port);
+	enum usb_rev30_ss max_usb4_speed;
+
+
+	if (tbt_speed < TBT_SS_U32_GEN1_GEN2)
+		return USB_R30_SS_U2_ONLY;
+
 	/*
 	 * Converting Thunderbolt-Compatible board speed to equivalent USB4
 	 * speed.
 	 */
-	enum usb_rev30_ss max_usb4_speed =
-		board_get_max_tbt_speed(port) == TBT_SS_TBT_GEN3 ?
+	max_usb4_speed = tbt_speed == TBT_SS_TBT_GEN3 ?
 		USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
-
-	return max_usb4_speed <  disc->identity.product_t1.p_rev30.ss ?
-	       max_usb4_speed :  disc->identity.product_t1.p_rev30.ss;
-}
-
-enum usb_rev30_ss get_usb4_cable_speed(int port)
-{
-	enum usb_rev30_ss max_rev30_usb4_speed;
 
 	if (is_rev3_vdo(port, TCPC_TX_SOP_PRIME)) {
-		max_rev30_usb4_speed = board_get_max_usb_cable_speed(port);
-		if (!IS_ENABLED(CONFIG_USB_PD_TBT_GEN3_CAPABLE) ||
-		     max_rev30_usb4_speed != USB_R30_SS_U32_U40_GEN2 ||
-		     get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
-			return max_rev30_usb4_speed;
+		disc = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+
+		return max_usb4_speed <  disc->identity.product_t1.p_rev30.ss ?
+		       max_usb4_speed :  disc->identity.product_t1.p_rev30.ss;
 	}
-	/*
-	 * Converting Thunderolt-Compatible cable speed to equivalent USB4 cable
-	 * speed.
-	 */
-	return get_tbt_cable_speed(port) == TBT_SS_TBT_GEN3 ?
-		USB_R30_SS_U40_GEN3 : USB_R30_SS_U32_U40_GEN2;
+
+	return max_usb4_speed;
 }
 
 uint32_t get_enter_usb_msg_payload(int port)
