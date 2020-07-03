@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "06fe3b7b_970d6afc",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-03T04:10:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd73e788_27f0d31f",
+      "revId": "37f8ad24e8d28d5362fee9ee489511d427d922e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efcd7b36_f010ee48",
         "filename": "board/asurada/usb_pd_policy.c",
         "patchSetId": 53
@@ -39,6 +57,30 @@
       "revId": "37f8ad24e8d28d5362fee9ee489511d427d922e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a97082aa_a998bae2",
+        "filename": "board/asurada/usb_pd_policy.c",
+        "patchSetId": 53
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-03T04:10:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efcd7b36_f010ee48",
+      "range": {
+        "startLine": 25,
+        "startChar": 16,
+        "endLine": 25,
+        "endChar": 38
+      },
+      "revId": "37f8ad24e8d28d5362fee9ee489511d427d922e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
