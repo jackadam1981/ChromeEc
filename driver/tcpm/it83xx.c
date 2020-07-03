@@ -341,6 +341,15 @@ static void it83xx_tcpm_set_frs_enable(int port, int enable)
 	uint8_t mask = (USBPD_REG_FAST_SWAP_REQUEST_ENABLE |
 			USBPD_REG_FAST_SWAP_DETECT_ENABLE);
 
+	ccprints("p%d FRS %d", port, enable);
+
+	/* request FRS */
+	if (enable == 2) {
+		IT83XX_USBPD_PDPSR(port) &= ~BIT(6);
+		IT83XX_USBPD_PDQSCR(port) |= (BIT(2) | BIT(1));
+		return;
+	}
+
 	if (enable) {
 		/*
 		 * Disable HW auto turn off FRS requestion and detection

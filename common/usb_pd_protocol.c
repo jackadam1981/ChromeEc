@@ -1172,7 +1172,7 @@ static void send_sink_cap(int port)
 	int bit_len;
 	uint16_t header = PD_HEADER(PD_DATA_SINK_CAP, pd[port].power_role,
 			pd[port].data_role, pd[port].msg_id, pd_snk_pdo_cnt,
-			pd_get_rev(port), 0);
+			2/* Rev3.0 */, 0);
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, pd_snk_pdo,
 			      AMS_RESPONSE);
@@ -5188,6 +5188,9 @@ static int command_pd(int argc, char **argv)
 #endif
 		else
 			return EC_ERROR_PARAM3;
+	} else if (!strncasecmp(argv[2], "frs", 4)) {
+		tcpm_set_frs_enable(port, 2);
+		ccprints("p%d frs request", port);
 	} else if (!strncasecmp(argv[2], "ping", 4)) {
 		int enable;
 
