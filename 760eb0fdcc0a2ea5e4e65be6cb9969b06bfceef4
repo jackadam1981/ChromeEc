@@ -22,6 +22,30 @@
       "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f612730_49c472d5",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-04T00:34:17Z",
+      "side": 1,
+      "message": "How about I keep this way, so to be consistent with other places doing the same check. For example in dp_alt_mode.c and previous version of tbt_alt_mode.c, they all use this way to check.",
+      "parentUuid": "bb024638_de3d911e",
+      "range": {
+        "startLine": 330,
+        "startChar": 2,
+        "endLine": 330,
+        "endChar": 30
+      },
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
