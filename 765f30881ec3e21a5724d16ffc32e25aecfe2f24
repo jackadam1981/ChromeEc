@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3fce03cc_0a8657f9",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-05T16:27:46Z",
+      "side": 1,
+      "message": "The routines are public so the PPC low-level drivers can also use them. The routines could be moved to usbc_ppc.h and then declared \"static inline\".\n\nI tested it out and both implementations yielded the same image size for Volteer.",
+      "parentUuid": "6b0bd784_c5e5923e",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "765f30881ec3e21a5724d16ffc32e25aecfe2f24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b87dcbcb_7691cf51",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 3
