@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6767797b_793b110c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-06T22:27:19Z",
+      "side": 1,
+      "message": "nit: locations",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "89854e9bf4681678a2906b7abf27ea1956f4ac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b60594c_8a58ec05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-06T22:27:19Z",
+      "side": 1,
+      "message": "there are a few more links that we could update, can you update them in this CL too please?\n\ne.g. https://source.corp.google.com/search?q\u003df:platform%2Fec%20closed_debugging\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)\u0026type\u003dcs",
+      "revId": "89854e9bf4681678a2906b7abf27ea1956f4ac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
