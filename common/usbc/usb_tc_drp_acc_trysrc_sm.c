@@ -358,6 +358,18 @@ static bool is_try_src_enabled(int port)
 		(pd_try_src_override == TRY_SRC_NO_OVERRIDE && pd_try_src));
 }
 
+#include "tcpci.h"
+static int tcpm_debug_accessory(int port, bool enable)
+{
+#ifdef CONFIG_USB_PD_TCPC
+	return tcpc_update8(port, TCPC_REG_CONFIG_STD_OUTPUT,
+			    TCPC_REG_CONFIG_STD_OUTPUT_DBG_ACC_CONN_N,
+			    enable ? MASK_CLR : MASK_SET);
+#else
+	return EC_SUCCESS;
+#endif
+}
+
 /*
  * Public Functions
  *
@@ -493,6 +505,7 @@ static void tc_detached(int port)
 	TC_CLR_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
 	hook_notify(HOOK_USB_PD_DISCONNECT);
 	tc_pd_connection(port, 0);
+	tcpm_debug_accessory(port, 0);
 	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 0);
 }
 
@@ -2080,6 +2093,7 @@ static void tc_attached_snk_entry(const int port)
 		tc_enable_pd(port, 1);
 
 	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER)) {
+		tcpm_debug_accessory(port, 1);
 		/* Save our current connection is a DEBUG ACCESSORY */
 		pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
 	}
@@ -2572,6 +2586,7 @@ static void tc_attached_src_entry(const int port)
 	}
 
 	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER)) {
+		tcpm_debug_accessory(port, 1);
 		/* Save our current connection is a DEBUG ACCESSORY */
 		pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
 	}
