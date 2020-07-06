@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e2ebb28_23f33baf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-06T20:02:54Z",
+      "side": 1,
+      "message": "If the idea looks okay, I\u0027ll run the cr50U2f autotests.",
+      "revId": "49886389f8b709d9fab1aa9a7ec5a43f50fbe664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53c2436e_22cf0c59",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-06T20:02:54Z",
+      "side": 1,
+      "message": "I could rebase http://crrev/c/2098878 so that I check fingerprint GPIO here, but that doesn\u0027t buy us anything, because in cr50 we are not distinguishing fingerprint-based requests and PIN/password requests (which requires auth-time user secrets).\n\nLouis and I had discussion on whether to have flags to indicate \"fingerprint-based\" and \"PIN/password-based\" but we said no because we wanted cr50 to not know those details (which should be u2fd\u0027s job).",
+      "range": {
+        "startLine": 388,
+        "startChar": 22,
+        "endLine": 388,
+        "endChar": 44
+      },
+      "revId": "49886389f8b709d9fab1aa9a7ec5a43f50fbe664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
