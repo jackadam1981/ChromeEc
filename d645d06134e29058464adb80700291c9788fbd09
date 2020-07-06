@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35ffbd20_740a62c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-06T21:10:56Z",
+      "side": 1,
+      "message": "Nice change!",
+      "revId": "d645d06134e29058464adb80700291c9788fbd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f99d8486_b020c5ba",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-06T21:10:56Z",
+      "side": 1,
+      "message": "nit: let\u0027s not set to 0 unless it is important for static initialization or serialization (and then let\u0027s make that comment if it is).",
+      "range": {
+        "startLine": 277,
+        "startChar": 19,
+        "endLine": 277,
+        "endChar": 24
+      },
+      "revId": "d645d06134e29058464adb80700291c9788fbd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31662d27_5946eb2c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4428,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-06T21:10:56Z",
+      "side": 1,
+      "message": "you are redefining all of the variable here; you should be able to omit this right?",
+      "range": {
+        "startLine": 4423,
+        "startChar": 2,
+        "endLine": 4428,
+        "endChar": 0
+      },
+      "revId": "d645d06134e29058464adb80700291c9788fbd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88023de8_7fd5cd37",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 4507,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-06T21:10:56Z",
+      "side": 1,
+      "message": "maybe define these only in the ACK case to scope variables down further (you will need to use {} )",
+      "range": {
+        "startLine": 4505,
+        "startChar": 1,
+        "endLine": 4507,
+        "endChar": 13
+      },
+      "revId": "d645d06134e29058464adb80700291c9788fbd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
