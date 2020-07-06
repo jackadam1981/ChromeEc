@@ -4175,8 +4175,10 @@ static void pe_handle_custom_vdm_request_exit(int port)
 static void pe_vdm_send_request_entry(int port)
 {
 	if (pe[port].tx_type == TCPC_TX_INVALID) {
-		CPRINTS("C%d: %s: Tx type expected to be set, returning", port,
-				pe_state_names[get_state_pe(port)]);
+		if (IS_ENABLED(USB_PD_DEBUG_LABELS))
+			CPRINTS("C%d: %s: Tx type expected to be set, "
+				"returning",
+				port, pe_state_names[get_state_pe(port)]);
 		set_state_pe(port, get_last_state_pe(port));
 		return;
 	}
