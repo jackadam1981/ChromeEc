@@ -1982,7 +1982,6 @@ static void tc_attach_wait_snk_run(const int port)
 				set_state_tc(port, TC_ATTACHED_SNK);
 		} else {
 			/* new_cc_state is PD_CC_DFP_DEBUG_ACC */
-			CPRINTS("C%d: Debug accessory detected", port);
 			TC_SET_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
 			set_state_tc(port, TC_ATTACHED_SNK);
 		}
@@ -2065,11 +2064,12 @@ static void tc_attached_snk_entry(const int port)
 				pd_is_port_partner_dualrole(port) ?
 				CAP_DUALROLE : CAP_DEDICATED);
 		}
-		/* Apply Rd */
-		typec_update_cc(port);
 
 		/* Attached.SNK - enable AutoDischargeDisconnect */
 		tcpm_enable_auto_discharge_disconnect(port, 1);
+
+		/* Apply Rd */
+		typec_update_cc(port);
 	}
 
 	tc[port].cc_debounce = 0;
@@ -2079,6 +2079,7 @@ static void tc_attached_snk_entry(const int port)
 		tc_enable_pd(port, 1);
 
 	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER)) {
+		CPRINTS("C%d: Debug accessory detected", port);
 		/* Save our current connection is a DEBUG ACCESSORY */
 		pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
 	}
@@ -2416,7 +2417,6 @@ static void tc_attach_wait_src_run(const int port)
 			set_state_tc(port, TC_ATTACHED_SRC);
 			return;
 		} else if (new_cc_state == PD_CC_UFP_DEBUG_ACC) {
-			CPRINTS("C%d: Debug accessory detected", port);
 			TC_SET_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
 			set_state_tc(port, TC_ATTACHED_SRC);
 			return;
@@ -2507,11 +2507,11 @@ static void tc_attached_src_entry(const int port)
 				USB_SWITCH_DISCONNECT, tc[port].polarity);
 		}
 
-		/* Apply Rp */
-		typec_update_cc(port);
-
 		/* Attached.SRC - enable AutoDischargeDisconnect */
 		tcpm_enable_auto_discharge_disconnect(port, 1);
+
+		/* Apply Rp */
+		typec_update_cc(port);
 
 		tc_enable_pd(port, 0);
 		tc[port].timeout = get_time().val +
@@ -2550,11 +2550,11 @@ static void tc_attached_src_entry(const int port)
 			USB_SWITCH_DISCONNECT, tc[port].polarity);
 	}
 
-	/* Apply Rp */
-	typec_update_cc(port);
-
 	/* Attached.SRC - enable AutoDischargeDisconnect */
 	tcpm_enable_auto_discharge_disconnect(port, 1);
+
+	/* Apply Rp */
+	typec_update_cc(port);
 
 #endif /* CONFIG_USB_PE_SM */
 
@@ -2571,6 +2571,7 @@ static void tc_attached_src_entry(const int port)
 	}
 
 	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER)) {
+		CPRINTS("C%d: Debug accessory detected", port);
 		/* Save our current connection is a DEBUG ACCESSORY */
 		pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
 	}
