@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b95308_d868ac82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T19:28:48Z",
+      "side": 1,
+      "message": "LGTM modulo nit. Thanks for contributing to code health!",
+      "revId": "cfc1abbdc45741de9b4d195b074feabad94afdd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19cb6f05_f7fe2328",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T19:28:48Z",
+      "side": 1,
+      "message": "Nit: Retain curly braces here to match the if clause.",
+      "revId": "cfc1abbdc45741de9b4d195b074feabad94afdd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
