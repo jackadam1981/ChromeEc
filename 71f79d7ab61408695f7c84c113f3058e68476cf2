@@ -33,6 +33,23 @@
       "revId": "71f79d7ab61408695f7c84c113f3058e68476cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0de529d4_b1c1bfa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-06T22:39:18Z",
+      "side": 1,
+      "message": "Seems a shame to inflict the extra unnecessary writes on platforms that don\u0027t require it.\nI guess I could make this opt-in via config.",
+      "revId": "71f79d7ab61408695f7c84c113f3058e68476cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
