@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53b05e60_de767d8b",
+        "filename": "chip/mt8192_scp/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-06T02:39:07Z",
+      "side": 1,
+      "message": "I think we don\u0027t need RO.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 60
+      },
+      "revId": "9fb4aef376a28c1bcdeba8249a995587882b0b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61fd1c73_d080a4fa",
+        "filename": "chip/mt8192_scp/ipi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-06T02:39:07Z",
+      "side": 1,
+      "message": "This has to be volatile.",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "9fb4aef376a28c1bcdeba8249a995587882b0b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
