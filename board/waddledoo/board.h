@@ -17,6 +17,9 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+/* Battery */
+#define CONFIG_BATTERY_FUEL_GAUGE
+
 /* Charger */
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_RAA489000
@@ -138,6 +141,12 @@ enum pwm_channel {
 	PWM_CH_LED1_AMBER,
 	PWM_CH_LED2_WHITE,
 	PWM_CH_COUNT,
+};
+
+/* List of possible batteries */
+enum battery_type {
+	BATTERY_POWER_TECH,
+	BATTERY_TYPE_COUNT,
 };
 
 int board_is_sourcing_vbus(int port);
