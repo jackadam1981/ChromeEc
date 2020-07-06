@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80ddee0f_00e57bb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-06T18:20:10Z",
+      "side": 1,
+      "message": "\u003e Patch Set 3: Verified-1\n\u003e \n\u003e (3 comments)\n\u003e \n\u003e As designed, I don\u0027t think this will work for multiple SVIDs or multiple SOPs.\n\u003e \n\u003e This is probably a case where a short design proposal in Google Docs would be helpful.\n\u003e \n\u003e Off the top of my head, you could have a PE flag controlling exit, and there would be accessors for the TC. The TC would initiate exit of all modes by calling the setter, and it would wait to do whatever it wants to do until the getter said exit was done. When this flag was set, the PE, in ready states, would call into the DPM to try to exit. The process would be similar to mode setup, and the DPM would maintain enough state to know how to progress the exit process. The mode-specific modules might be involved, depending on how complex exiting each mode is.\n\u003e \n\u003e Ayushee: Can you briefly write up what you want to do, post it to the bug, and share it with the people on this CL?\n\u003e \n\u003e Note: I\u0027m open to accepting a CL like this that explicitly only exits the first active mode, but I don\u0027t think that would get you very far with Thunderbolt.\n\nThe goal is to exit all entered alternate mode for SOP/SOP\u0027/SOP\u0027\u0027. Since we are only entering one mode at a time. It will work for now. But yes it won\u0027t get me very far",
+      "revId": "3d82b5fde40d086bc11b5f695f0f4b55f9f7b68f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
