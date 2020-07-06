@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b758f57_be59f5ed",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-06T22:38:57Z",
+      "side": 1,
+      "message": "can we decouple this from EFS2 now? Wouldn\u0027t all boards want this?",
+      "range": {
+        "startLine": 444,
+        "startChar": 17,
+        "endLine": 444,
+        "endChar": 34
+      },
+      "revId": "62ccca91e51f9b6cdcbb27956f172fa67fc4ee16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
