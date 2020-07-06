@@ -16,6 +16,23 @@
       "revId": "71f79d7ab61408695f7c84c113f3058e68476cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabebc75_d964224b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-06T20:59:29Z",
+      "side": 1,
+      "message": "Tim remembers this and it is the ps8751 which had a bit that required to be written even if it were to the same value. Guessing the gates used the write to trigger an event.\n\nMaybe a comment in the code indicating why this is not a good idea would stop others from doing the same thing Ed and myself did on this optimization.",
+      "revId": "71f79d7ab61408695f7c84c113f3058e68476cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
