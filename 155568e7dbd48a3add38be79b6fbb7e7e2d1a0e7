@@ -52,6 +52,24 @@
       "revId": "155568e7dbd48a3add38be79b6fbb7e7e2d1a0e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a53984ba_cdb82bd2",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-06T22:08:05Z",
+      "side": 1,
+      "message": "There are only 3 instances of pd_execute_hard_reset in the code base, can you replace those calls with task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_RX_HARD_RESET, 0);\n\nCould you then split this in to two CLs? 1 for common and 1 for chip change?",
+      "parentUuid": "94fea616_392467ca",
+      "revId": "155568e7dbd48a3add38be79b6fbb7e7e2d1a0e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
