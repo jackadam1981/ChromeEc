@@ -15,6 +15,8 @@ ifeq ($(CONFIG_USB_POWER_DELIVERY),y)
 baseboard-y+=chg_usb_pd.o
 ifeq ($(CONFIG_INTEL_RVP_MECC_VERSION_0_9),y)
 baseboard-y+=chg_usb_pd_mecc_0_9.o usb_pd_policy_mecc_0_9.o
+else ifeq ($(CONFIG_INTEL_RVP_MECC_VERSION_1_0),y)
+baseboard-y+=chg_usb_pd_mecc_1_0.o usb_pd_policy_mecc_1_0.o
 endif
 endif
 
