@@ -39,6 +39,30 @@
       "revId": "b71adc343eb7c7303155a8183c5835c270851d61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b94107a9_c9444eee",
+        "filename": "board/waddledoo/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-07-06T22:58:56Z",
+      "side": 1,
+      "message": "I searched MOMA and found this https://drive.google.com/file/d/1cpyvL0J4PpGnZesMhURWc_98G29lrv-Q/view\n\nThe battery row contains \"Simplo(ATL)\"\n\nI wanted to make sure this was correct.",
+      "parentUuid": "6e77e741_69de3985",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "b71adc343eb7c7303155a8183c5835c270851d61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
