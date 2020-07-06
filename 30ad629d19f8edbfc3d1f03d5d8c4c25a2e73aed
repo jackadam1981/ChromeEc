@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5cab46ab_1a35f85a",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-06T19:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f18b127_80f8b528",
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba4db3f6_bb9227bb",
         "filename": "driver/tcpm/tusb422.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-07-06T18:44:13Z",
       "side": 1,
       "message": "Does this directly affect the behavior of this CL, or is it just something we should have been doing the whole time?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74ff8c5e_8a0964b2",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-06T19:57:53Z",
+      "side": 1,
+      "message": "Well both kind of. This is something we should have been doing the whole time, but not doing it was causing me issues when I was working on this, so that is why I included it here.",
+      "parentUuid": "ba4db3f6_bb9227bb",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "97351a30_d9a9e126",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-06T19:57:53Z",
+      "side": 1,
+      "message": "My mistake, you\u0027re right. Done.",
+      "parentUuid": "8dc328d3_e46161fd",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 29
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61f50f96_62cc41af",
         "filename": "driver/tcpm/tusb422.c",
         "patchSetId": 1
@@ -85,6 +151,30 @@
       "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f28779_4b350869",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-06T19:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61f50f96_62cc41af",
+      "range": {
+        "startLine": 88,
+        "startChar": 32,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "3252749e_bc06614e",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-06T19:57:53Z",
+      "side": 1,
+      "message": "Thats cleaner, I agree. Done.",
+      "parentUuid": "958d856a_68a53c08",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 1
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b12b743_7da49ea1",
         "filename": "driver/tcpm/tusb422.c",
         "patchSetId": 1
@@ -131,6 +245,30 @@
       "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836379df_c235cd18",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-06T19:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b12b743_7da49ea1",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 6
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "c13712fe_1daf4ea0",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-06T19:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f99a58c_28178950",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e6c2b4e_0e41b851",
         "filename": "driver/tcpm/tusb422.h",
         "patchSetId": 1
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "41df1b2e_ad4b0781",
+        "filename": "driver/tcpm/tusb422.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-06T19:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e6c2b4e_0e41b851",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cff00251_9febcf15",
         "filename": "driver/tcpm/tusb422.h",
         "patchSetId": 1
@@ -200,6 +386,30 @@
       "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839f0708_aea09bee",
+        "filename": "driver/tcpm/tusb422.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-06T19:57:53Z",
+      "side": 1,
+      "message": "Good eye! Done",
+      "parentUuid": "cff00251_9febcf15",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
