@@ -22,6 +22,30 @@
       "revId": "b28216f3bc85b5c2dda42c8a88ad513a8ffcec42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ee7c63_a0f89774",
+        "filename": "common/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-06T22:56:59Z",
+      "side": 1,
+      "message": "I added a warning to the console, I didn\u0027t do this at first since it will be pretty obvious to the developer that the EC looks hung for ~2 minutes, but it would be nice to not have to debug it though if you just left it.\n\nI added a console print",
+      "parentUuid": "26c2a31e_2e8de4a7",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 29
+      },
+      "revId": "b28216f3bc85b5c2dda42c8a88ad513a8ffcec42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
