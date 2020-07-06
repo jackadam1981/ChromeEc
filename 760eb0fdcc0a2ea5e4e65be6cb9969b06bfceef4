@@ -2,6 +2,138 @@
   "comments": [
     {
       "key": {
+        "uuid": "adf143d5_e5e72253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T21:53:13Z",
+      "side": 1,
+      "message": "I\u0027m having trouble keeping track of the state flow, and I think a diagram would be helpful here. If it seems like it\u0027s getting too elaborate, you might want to move discussion back to the bug.\n\nIt looks like there is no handling for receiving a NAK after TBT_ENTER_SOP_P_RETRY_SENT. I think the state machine also never exits SOP\u0027 or SOP\u0027\u0027 once it gets to active state.",
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46dec765_398611f9",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T21:53:13Z",
+      "side": 1,
+      "message": "Nit: I missed this  before, but it should be \"NAKED,\" or \"NAKed,\" here and elsewhere.",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fdae633_10fb14a1",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T21:53:13Z",
+      "side": 1,
+      "message": "Go ahead and spell these out.",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d160a88_d0785120",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T21:53:13Z",
+      "side": 1,
+      "message": "In the previous CL, I thought about asking for an ASCII-art state transition diagram. Now, I\u0027m going to have to insist. 😊",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b7560b_331324fa",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T21:53:13Z",
+      "side": 1,
+      "message": "1. This is getting a little hard to follow. I would suggest putting high-level comments between the checks for invalid command, invalid Tx type for passive cables, and invalid Tx type for active cables.\n\n2. pe_discovery_vdm_request_run_common already validates that received ACKs or NAKs have the same Tx type as the request that was sent (which would have been SOP, SOP\u0027, or SOP\u0027\u0027, so you don\u0027t really need to check the Tx type here for active cables.",
+      "range": {
+        "startLine": 106,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 36
+      },
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84a4de36_175a7d53",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T21:53:13Z",
+      "side": 1,
+      "message": "Use two apostrophes (\u0027\u0027) to be consistent with other code and the PD spec.",
+      "range": {
+        "startLine": 215,
+        "startChar": 12,
+        "endLine": 215,
+        "endChar": 13
+      },
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb024638_de3d911e",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 5
