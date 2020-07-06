@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aacebb15_b9c119ea",
+        "filename": "board/terrador/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-06T21:28:30Z",
+      "side": 1,
+      "message": "I recommend moving this into the board_cbi_init() routine.  You will need to rebase your change to pick up this new routine in terrador/board.c",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "ca2cf834b2922c960498f845ffe9c93d7941f3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
