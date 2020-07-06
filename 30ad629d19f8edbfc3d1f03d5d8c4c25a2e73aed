@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "4f93ce28_10a2cff6",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T20:15:12Z",
+      "side": 1,
+      "message": "Just out of curiosity, what wasn\u0027t getting reset?",
+      "parentUuid": "74ff8c5e_8a0964b2",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dc328d3_e46161fd",
         "filename": "driver/tcpm/tusb422.c",
         "patchSetId": 1
