@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "7f18b127_80f8b528",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T18:44:13Z",
+      "side": 1,
+      "message": "Nit: It looks like we\u0027ve mostly been leaving blank lines after collections of register offsets and associated field masks. Can you do that here?",
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba4db3f6_bb9227bb",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T18:44:13Z",
+      "side": 1,
+      "message": "Does this directly affect the behavior of this CL, or is it just something we should have been doing the whole time?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dc328d3_e46161fd",
         "filename": "driver/tcpm/tusb422.c",
         "patchSetId": 1
@@ -18,6 +58,29 @@
         "startChar": 0,
         "endLine": 87,
         "endChar": 29
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61f50f96_62cc41af",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T18:44:13Z",
+      "side": 1,
+      "message": "You might want to use a word like, \"enable,\" just to avoid confusion with the below MASK_SET constant, since these registers are set-to-unmask.",
+      "range": {
+        "startLine": 88,
+        "startChar": 32,
+        "endLine": 88,
+        "endChar": 38
       },
       "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -64,6 +127,75 @@
         "startChar": 0,
         "endLine": 169,
         "endChar": 6
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f99a58c_28178950",
+        "filename": "driver/tcpm/tusb422.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T18:44:13Z",
+      "side": 1,
+      "message": "Nit: Remove.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e6c2b4e_0e41b851",
+        "filename": "driver/tcpm/tusb422.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T18:44:13Z",
+      "side": 1,
+      "message": "Can these be TUSB422_REG_VENDOR_INTERRUPTS_STATUS, etc. to match the datasheet?",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cff00251_9febcf15",
+        "filename": "driver/tcpm/tusb422.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-06T18:44:13Z",
+      "side": 1,
+      "message": "TUSB",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 12
       },
       "revId": "30ad629d19f8edbfc3d1f03d5d8c4c25a2e73aed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
