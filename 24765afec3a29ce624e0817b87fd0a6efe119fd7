@@ -22,6 +22,30 @@
       "revId": "24765afec3a29ce624e0817b87fd0a6efe119fd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73d4c79_6898a360",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5284,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-06T18:08:56Z",
+      "side": 1,
+      "message": "Probably best to set it to the correct current, but we currently don\u0027t check if we can support the current anyway (TODO on 5269). I thought that change could be made when we fix that.",
+      "parentUuid": "b4d935c4_46f4a1d0",
+      "range": {
+        "startLine": 5279,
+        "startChar": 0,
+        "endLine": 5284,
+        "endChar": 0
+      },
+      "revId": "24765afec3a29ce624e0817b87fd0a6efe119fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
