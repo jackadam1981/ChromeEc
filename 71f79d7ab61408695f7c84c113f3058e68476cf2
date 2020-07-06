@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09ff51c3_9e0925ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-06T20:40:19Z",
+      "side": 1,
+      "message": "Tim, didn\u0027t we hit a problem on at least one of the Hatch devices that required their TCPC registers to be written even if it was to the same value?",
+      "revId": "71f79d7ab61408695f7c84c113f3058e68476cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
