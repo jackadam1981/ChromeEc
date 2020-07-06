@@ -322,8 +322,6 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #undef CONFIG_USB_TYPEC_SM
 #undef CONFIG_USB_PD_HOST_CMD
 #define CONFIG_USB_PRL_SM
-#define CONFIG_USB_PD_TCPC
-#define CONFIG_USB_PD_TCPM_STUB
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_SHA256
 #define CONFIG_SW_CRC

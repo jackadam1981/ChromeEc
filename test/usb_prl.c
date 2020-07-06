@@ -6,6 +6,7 @@
  */
 #include "common.h"
 #include "task.h"
+#include "tcpci.h"
 #include "tcpm.h"
 #include "test_util.h"
 #include "timer.h"
@@ -18,6 +19,9 @@
 #include "usb_tc_sm.h"
 #include "util.h"
 #include "mock/tcpc_mock.h"
+#include "mock/tcpm_mock.h"
+#include "mock/usb_tc_sm_mock.h"
+#include "mock/usb_pe_sm_mock.h"
 
 #define PORT0 0
 
@@ -28,13 +32,182 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
+static void cycle_through_state_machine(int port, uint32_t num, uint32_t time)
+{
+	int i;
+
+	for (i = 0; i < num; i++) {
+		task_wake(PD_PORT_TO_TASK_ID(port));
+		task_wait_event(time);
+	}
+}
+
+static void enable_prl(int port, int en)
+{
+	tcpm_set_rx_enable(port, en);
+
+	mock_tc_port[port].pd_enable = en;
+	mock_tc_port[port].msg_tx_id = 0;
+	mock_tc_port[port].msg_rx_id = 0;
+
+	/* Init PRL */
+	cycle_through_state_machine(port, 10, MSEC);
+
+	prl_set_rev(port, TCPC_TX_SOP, mock_tc_port[port].rev);
+}
+
+static int test_receive_control_msg(void)
+{
+	int port = PORT0;
+	uint16_t header = PD_HEADER(PD_CTRL_DR_SWAP,
+		mock_tc_port[port].power_role,
+		mock_tc_port[port].data_role,
+		mock_tc_port[port].msg_rx_id,
+		0, mock_tc_port[port].rev, 0);
+
+	enable_prl(port, 1);
+
+	cycle_through_state_machine(port, 1, MSEC);
+	TEST_ASSERT(prl_is_running(port));
+
+	/* Set up the message to be received. */
+	mock_tcpm[port].mock_has_pending_message = 1;
+	mock_tcpm[port].mock_header = header;
+
+	/* Process the message. */
+	cycle_through_state_machine(port, 1, MSEC);
+
+	/* Check results. */
+	TEST_NE(mock_pe_port[port].mock_pe_message_received, 0, "%d");
+	TEST_EQ(header, rx_emsg[port].header, "%d");
+	TEST_EQ(rx_emsg[port].len, 0, "%d");
+
+	TEST_LE(mock_pe_port[port].mock_pe_error, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_message_discarded, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_got_soft_reset, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_got_hard_reset, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_hard_reset_sent, 0, "%d");
+
+	enable_prl(port, 0);
+
+	return EC_SUCCESS;
+}
+
+static int test_send_control_msg(void)
+{
+	int port = PORT0;
+
+	enable_prl(port, 1);
+
+	cycle_through_state_machine(port, 1, 40*MSEC);
+	TEST_ASSERT(prl_is_running(port));
+
+	/* Set up the message to be sent. */
+	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
+	cycle_through_state_machine(port, 1, MSEC);
+	/* Simulate the TX complete that the PD_INT handler would signal */
+	pd_transmit_complete(port, TCPC_TX_COMPLETE_SUCCESS);
+
+	cycle_through_state_machine(port, 10, MSEC);
+
+	/* Check results. */
+	TEST_NE(mock_pe_port[port].mock_pe_message_sent, 0, "%d");
+	TEST_LE(mock_pe_port[port].mock_pe_error, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_message_discarded, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_got_soft_reset, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_got_hard_reset, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_hard_reset_sent, 0, "%d");
+
+	enable_prl(port, 0);
+
+	return EC_SUCCESS;
+}
+
+static int test_discard_queued_tx_when_rx_happens(void)
+{
+	int port = PORT0;
+	uint16_t header = PD_HEADER(PD_CTRL_DR_SWAP,
+		mock_tc_port[port].power_role,
+		mock_tc_port[port].data_role,
+		mock_tc_port[port].msg_rx_id,
+		0, mock_tc_port[port].rev, 0);
+	uint8_t *buf = tx_emsg[port].buf;
+	uint8_t len = 8;
+	uint8_t i = 0;
+
+
+	enable_prl(port, 1);
+
+	cycle_through_state_machine(port, 1, MSEC);
+	TEST_ASSERT(prl_is_running(port));
+
+	/* Set up the message to be sent. */
+	for (i = 0; i < len; i++)
+		buf[i] = (uint8_t)i;
+
+	tx_emsg[port].len = len;
+	prl_send_data_msg(port, TCPC_TX_SOP, PD_DATA_SOURCE_CAP);
+
+	/* Set up the message to be received. */
+	mock_tcpm[port].mock_has_pending_message = 1;
+	mock_tcpm[port].mock_header = header;
+
+	/* Process the message. */
+	cycle_through_state_machine(port, 10, MSEC);
+
+	/* Check results. Source should have discarded its message queued up
+	 * to TX, and should have received the message from the sink.
+	 */
+	TEST_NE(mock_pe_port[port].mock_pe_message_discarded, 0, "%d");
+	TEST_NE(mock_pe_port[port].mock_pe_message_received, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_message_sent, 0, "%d");
+
+	TEST_LE(mock_pe_port[port].mock_pe_error, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_got_soft_reset, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_got_hard_reset, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_hard_reset_sent, 0, "%d");
+
+	enable_prl(port, 0);
+
+	return EC_SUCCESS;
+}
+
 void before_test(void)
 {
+	mock_tc_port[PORT0].rev = PD_REV30;
+	mock_tc_port[PORT0].power_role = PD_ROLE_SOURCE;
+	mock_tc_port[PORT0].data_role = PD_ROLE_DFP;
+
+	mock_tcpm[PORT0].mock_has_pending_message = 0;
+
+	/* Initialize the mocks with sentinel values to make it easy to detect
+	 * that the values have been written by the code under test.
+	 */
+	mock_pe_port[PORT0].mock_pe_error = -1;
+	rx_emsg[PORT0].header = 0xFFFF;
+	rx_emsg[PORT0].len = 0xFFFF;
+
+	/* These mock variable only get set to 1 by various functions, so
+	 * initialize them to 0. Tests can verify they are still 0 if that's
+	 * part of the pass criteria.
+	 */
+	mock_pe_port[PORT0].mock_pe_message_received = 0;
+	mock_pe_port[PORT0].mock_pe_message_sent = 0;
+	mock_pe_port[PORT0].mock_pe_message_discarded = 0;
+	mock_pe_port[PORT0].mock_got_soft_reset = 0;
+	mock_pe_port[PORT0].mock_pe_got_hard_reset = 0;
+	mock_pe_port[PORT0].mock_pe_hard_reset_sent = 0;
+
+	prl_reset(PORT0);
 }
 
 void run_test(int argc, char **argv)
 {
+	RUN_TEST(test_receive_control_msg);
+	RUN_TEST(test_send_control_msg);
+	RUN_TEST(test_discard_queued_tx_when_rx_happens);
 	/* TODO add tests here */
+
 
 	/* Do basic state machine sanity checks last. */
 	RUN_TEST(test_prl_no_parent_cycles);
@@ -43,4 +216,3 @@ void run_test(int argc, char **argv)
 
 	test_print_result();
 }
-
