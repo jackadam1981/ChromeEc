@@ -193,6 +193,12 @@
 #undef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
 #undef CONFIG_ACCELGYRO_BMI260_INT2_OUTPUT
 
+/*
+ * If defined, use a compressed version of the BMI260 configuration file.
+ * Saves a net of about 900 bytes of flash space.
+ */
+#undef CONFIG_ACCELGYRO_BMI160_COMPRESSED_CONFIG
+
 /* Specify type of Gyrometers attached. */
 #undef CONFIG_GYRO_L3GD20H
 
