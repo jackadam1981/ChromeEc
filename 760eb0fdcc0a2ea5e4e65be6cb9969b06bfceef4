@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ffdae7fc_4688b4c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-07T17:45:18Z",
+      "side": 1,
+      "message": "I have post flow chart to issue tracker.\nin active cable case if TBT_ENTER_SOP_P_RETRY_SENT is NAK\u0027ed, means  tbt set up failed, no need to go any further, it\u0027s handled by \"default\" case in intel_vdm_naked(), call tbt_entry_failed(port); to finish.",
+      "parentUuid": "adf143d5_e5e72253",
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46dec765_398611f9",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 5
