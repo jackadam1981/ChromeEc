@@ -1322,6 +1322,10 @@ REG8(IT83XX_PMC_BASE + (ch > LPC_PM2 ? 5 : 8) + (ch << 4))
 #define IT83XX_SPI_FTCB0R       REG8(IT83XX_SPI_BASE+0x18)
 #define IT83XX_SPI_FTCB1R       REG8(IT83XX_SPI_BASE+0x19)
 #define IT83XX_SPI_HPR2         REG8(IT83XX_SPI_BASE+0x1E)
+#define IT83XX_SPI_RX_VLISMR    REG8(IT83XX_SPI_BASE+0x26)
+#define IT83XX_SPI_RVLIM           BIT(0)
+#define IT83XX_SPI_RX_VLISR     REG8(IT83XX_SPI_BASE+0x27)
+#define IT83XX_SPI_RVLI            BIT(0)
 
 /* Platform Environment Control Interface (PECI) */
 #define IT83XX_PECI_BASE  0x00F02C00
