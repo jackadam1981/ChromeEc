@@ -33,6 +33,305 @@
       "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71901d10_fc73b5ac",
+        "filename": "board/pompom/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "This initial version is good. But it will support multiple types of batteries later. Please file a bug for it to track.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6697b7a1_0dd578d3",
+        "filename": "board/pompom/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "Keep only one.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b140d5e9_3e3eb5f6",
+        "filename": "board/pompom/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "Keep only one.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 22
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82cfd8da_ec5f0527",
+        "filename": "board/pompom/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "It depends on the sensor placement. At this moment, maybe too earlier to know. Please add a TODO and file a bug that reminds to check it later.",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 26
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd9a0ab_ba47d0b4",
+        "filename": "board/pompom/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "Please file a bug for supporting the Lid g-sensor and the tablet mode.",
+      "range": {
+        "startLine": 445,
+        "startChar": 23,
+        "endLine": 445,
+        "endChar": 37
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3777371b_02499360",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "Update the board name. Change this name on other places.",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 10
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "913234ac_785e1dd6",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "Pompom is a new start. Don\u0027t need to handle the legacy.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 23
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f99dca5_dd49301d",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "I think EC is different from Trogdor and uses a 512K flash.",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 69
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83cc504f_2904251b",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "Just keep one. This was added for a historical reason specific for Trogdor.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d780045e_d13eefd6",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "Question: just confirm if it uses PS8805?",
+      "range": {
+        "startLine": 37,
+        "startChar": 27,
+        "endLine": 37,
+        "endChar": 33
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d65f269b_cd842c11",
+        "filename": "board/pompom/board_revs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "Don\u0027t need this file for handling the board revision.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4a103cb_83af67e6",
+        "filename": "board/pompom/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "Question: Does it use the correct chip? I think it is different from Trogdor.",
+      "range": {
+        "startLine": 11,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 23
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "461295cc_c19226b9",
+        "filename": "board/pompom/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-07T19:26:34Z",
+      "side": 1,
+      "message": "Copying it from Trogdor is OK for an initial version. The LED blinking policy is subject to change, to fullfil the OEM requirement. Please file a bug for it to track.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
