@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54fe65da_dd2ee421",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-07T23:00:38Z",
+      "side": 1,
+      "message": "This will not compile if CONFIG_USB_PD_FRS_PPC is set but not CONFIG_USB_PD_FRS_TCPC. The IS_ENABLED checks in usb_common.c still require the functions within them to be defined, but tcpm_set_frs_enable is not unless CONFIG_USB_PD_FRS_TCPC is defined.",
+      "revId": "3f01ed23cae2dd07bc8d9ec69f5a15aa9afaefa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
