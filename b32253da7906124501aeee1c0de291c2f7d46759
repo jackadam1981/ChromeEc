@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9deb4e35_59a97b62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-07T15:22:25Z",
+      "side": 1,
+      "message": "You need to also delete #define CONFIG_USBC_PPC_SN5S330 from the delbin/board.h file.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/8a7c9a1c/board/delbin/board.h#74\n",
+      "revId": "b32253da7906124501aeee1c0de291c2f7d46759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0a6ea7b_8b43b17d",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-07T15:22:25Z",
+      "side": 1,
+      "message": "Call this routine from board_cbi_init() instead of creating a separate hook.",
+      "range": {
+        "startLine": 339,
+        "startChar": 12,
+        "endLine": 339,
+        "endChar": 26
+      },
+      "revId": "b32253da7906124501aeee1c0de291c2f7d46759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c8570f_924efb1b",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-07T15:22:25Z",
+      "side": 1,
+      "message": "Replace all this with a direct call to config_db_usb3().  Because Delbin only supports on USB daughter board type, there is no need to check the CBI configuration.",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 2
+      },
+      "revId": "b32253da7906124501aeee1c0de291c2f7d46759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
