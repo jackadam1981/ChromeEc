@@ -86,6 +86,24 @@
       "revId": "71f79d7ab61408695f7c84c113f3058e68476cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25fcb05d_b7865b05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-07T15:49:12Z",
+      "side": 1,
+      "message": "The default would have to be not including this optimization. If a project enables the feature and their system regresses then they probably have a reason to leave it off.  For those systems that do not have this issue then this is a good optimization",
+      "parentUuid": "55433bd3_50c288b3",
+      "revId": "71f79d7ab61408695f7c84c113f3058e68476cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
