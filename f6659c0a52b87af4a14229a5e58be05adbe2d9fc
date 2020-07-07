@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "410eb607_2ca3e860",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-07T14:41:42Z",
+      "side": 1,
+      "message": "Hi David - Please do not mark changes for Commit-Queue+2 until after it has been reviewed and been given and Code-Review+2.\n\nIf mark your change as \"Auto-Submit\", once a reviewer gives CR+2, and you have marked the changes as Verified, by default the Gerrit system will add Commit-Queue+2.",
+      "revId": "f6659c0a52b87af4a14229a5e58be05adbe2d9fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
