@@ -104,6 +104,24 @@
       "revId": "71f79d7ab61408695f7c84c113f3058e68476cf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d135d20d_87293036",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-07T15:58:32Z",
+      "side": 1,
+      "message": "Yes, I would just enable on Zork, and see if anything breaks.\nI\u0027m interested to see a specific example of a problem.\nUsing RMW for a side-effect write seems unusual to me.\nThe common write-1-to-clear (eg https://chromium.googlesource.com/chromiumos/platform/ec/+/master/driver/tcpm/tcpci.c#1142) doesn\u0027t do RMW.",
+      "parentUuid": "25fcb05d_b7865b05",
+      "revId": "71f79d7ab61408695f7c84c113f3058e68476cf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
