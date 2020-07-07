@@ -34,6 +34,23 @@
       "revId": "ab022e1797d199832c0449a85215298b16067127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "233c43cb_9ce8704c",
+        "filename": "baseboard/nucleo-f412zg/base-board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-07-07T18:56:16Z",
+      "side": 1,
+      "message": "Why are we enabling this in baseboard?\n\nThis throws off the RO rwsig assumption.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/ec/board/nucleo-dartmonkey/board.h;l\u003d46-50?ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Fec\n\nWe already enable this in RW where we need it for FP stuff.",
+      "revId": "ab022e1797d199832c0449a85215298b16067127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
