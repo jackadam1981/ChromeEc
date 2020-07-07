@@ -40,6 +40,12 @@
 
 #define CPRINTUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
+static void hdmi_hpd_interrupt(enum gpio_signal s)
+{
+	gpio_set_level(GPIO_USB_C1_DP_HPD, !gpio_get_level(s));
+	gpio_set_level(GPIO_HDMI_EN_SUB_ODL, gpio_get_level(s));
+}
+
 static void usb_c0_interrupt(enum gpio_signal s)
 {
 	/*
@@ -107,6 +113,7 @@ void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_CCSBU_OVP_ODL);
 	/* Enable gpio interrupt for base accelgyro sensor */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+	gpio_enable_interrupt(GPIO_HDMI_HPD_SUB_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
