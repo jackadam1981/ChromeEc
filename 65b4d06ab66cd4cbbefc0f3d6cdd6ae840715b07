@@ -52,6 +52,24 @@
       "revId": "65b4d06ab66cd4cbbefc0f3d6cdd6ae840715b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2df3d89_e3e7df4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-07T21:36:35Z",
+      "side": 1,
+      "message": "DP setup interruption (https://crrev.com/c/2274644): This is an orthogonal issue, but it sounds like you\u0027ll need this fix to avoid hitting that issue and test the current CL.\n\nConsolidate common VDM behavior (https://crrev.com/c/2274643): The current CL fixes a bug introduced in the consolidation CL. If you revert the consolidation CL, I would think that you would get merge conflicts testing the current CL.",
+      "parentUuid": "d8377d31_092bae2d",
+      "revId": "65b4d06ab66cd4cbbefc0f3d6cdd6ae840715b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
