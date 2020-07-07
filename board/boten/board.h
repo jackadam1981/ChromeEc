@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Waddledee board configuration */
+/* Boten board configuration */
 
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
@@ -29,7 +29,8 @@
 #define CONFIG_OCPC_DEF_RBATT_MOHMS 22 /* R_DS(on) 11.6mOhm + 10mOhm sns rstr */
 
 /* LED */
-#define CONFIG_LED_PWM_COUNT 1
+#define CONFIG_LED_POWER_LED
+#define CONFIG_LED_ONOFF_STATES
 
 /* Sensors */
 #define CONFIG_ACCEL_LIS2DWL		/* Lid accel */
@@ -84,7 +85,7 @@ enum pwm_channel {
 	PWM_CH_KBLIGHT,
 	PWM_CH_LED_RED,
 	PWM_CH_LED_GREEN,
-	PWM_CH_LED_BLUE,
+	PWM_CH_LED_WHITE,
 	PWM_CH_COUNT,
 };
 
