@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c939adfd_635adab2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-07T00:03:43Z",
+      "side": 1,
+      "message": "I removed this for testing, since we don\u0027t define CONFIG_USB_PD_TCPC.",
+      "revId": "43ed2e9281dee8d34455c778dfba1ffac91593c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
