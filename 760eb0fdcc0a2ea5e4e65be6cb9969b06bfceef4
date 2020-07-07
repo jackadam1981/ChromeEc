@@ -154,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "92410eeb_8d727698",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-07T17:56:21Z",
+      "side": 1,
+      "message": "Posted to issue tracker. we can decide which chart should be included in the implementation file.",
+      "parentUuid": "2d160a88_d0785120",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 2
+      },
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18b7560b_331324fa",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 5
