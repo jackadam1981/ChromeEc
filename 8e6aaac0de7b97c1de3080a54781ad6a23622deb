@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "506359f3_d4a260c0",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-07T02:17:35Z",
+      "side": 1,
+      "message": "I don\u0027t think you need it.",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "108542c8_0f4b18b8",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-07T02:17:35Z",
+      "side": 1,
+      "message": "This looks better fit in the chip directory (to make the wait more predicable). It takes \u0027seconds\u0027 and converts it to \u0027count\u0027 using the POR clock.",
+      "range": {
+        "startLine": 48,
+        "startChar": 53,
+        "endLine": 48,
+        "endChar": 62
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2716f7e3_e33486c7",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-07T02:17:35Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s cleaner to put these in a sub-routine.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7251832_cb95658c",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-07T02:17:35Z",
+      "side": 1,
+      "message": "There is still a window of race here but I guess it\u0027s negligible.\n\nnit: chip_save_reset_flags(chip_read_reset_flags() | HELD_POR);\n\nmay discourage developers to add code in the window. Assembly is probably the same.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 32
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0469c20_b7c8e54a",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-07T02:17:35Z",
+      "side": 1,
+      "message": "Why this much? If the 2nd reset doesn\u0027t come within 500 msec, what\u0027s the chance it would ever come?\n\nI also think it\u0027s wise to let the system boot instead of making it look like bricked. The side effect of missing POWER_ON doesn\u0027t seem as big as not booting for 80 seconds. We should propagate delayed_reset_failure properly.\n\nOn Puff, a coincell eventually fails? What\u0027s the worst thing which could happen? Do we need to update the AVL (and OEMs)?\n\nNevertheless, we should try not to build critical code around POWER_ON, IMHO.",
+      "range": {
+        "startLine": 97,
+        "startChar": 37,
+        "endLine": 97,
+        "endChar": 47
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c95f0b7e_974b4fec",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-07T02:17:35Z",
+      "side": 1,
+      "message": "nit: I prefer an uglier name: CONFIG_POR_WORKAROUND or something. We\u0027ll remove it in the future.",
+      "range": {
+        "startLine": 696,
+        "startChar": 7,
+        "endLine": 696,
+        "endChar": 26
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4027dff2_bb916a45",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-07T02:17:35Z",
+      "side": 1,
+      "message": "Can we make this a once-per-boot function? That\u0027ll allow chips\u0027 developers not to worry about the side effect of the secondary call.\n\nYou can probably keep check_reset_cause and put system_update_reset_cause in system.c as a wrapper.",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
