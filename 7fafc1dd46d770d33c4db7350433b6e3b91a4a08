@@ -16,6 +16,29 @@
       "revId": "7fafc1dd46d770d33c4db7350433b6e3b91a4a08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5683c1a5_693232ce",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5325,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-07T19:44:14Z",
+      "side": 1,
+      "message": "CONFIG_DELAY_ON_POR",
+      "range": {
+        "startLine": 5325,
+        "startChar": 34,
+        "endLine": 5325,
+        "endChar": 56
+      },
+      "revId": "7fafc1dd46d770d33c4db7350433b6e3b91a4a08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
