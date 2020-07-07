@@ -16,6 +16,24 @@
       "revId": "43ed2e9281dee8d34455c778dfba1ffac91593c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9fc2c4e_80958ce4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-07T00:06:41Z",
+      "side": 1,
+      "message": "That is fine. I removed it from the real version. Just wanted it to build and some of the devices complained.",
+      "parentUuid": "c939adfd_635adab2",
+      "revId": "43ed2e9281dee8d34455c778dfba1ffac91593c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
