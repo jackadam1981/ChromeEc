@@ -16,6 +16,23 @@
       "revId": "db13b38d85eb50b2e8d030db5960a8bf88d0e9cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "807770f7_28be4341",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1295646
+      },
+      "writtenOn": "2020-07-07T16:56:35Z",
+      "side": 1,
+      "message": "Looks good to me. The PP3300_SOC_A rail discharges to 0V in ~30ms.",
+      "revId": "db13b38d85eb50b2e8d030db5960a8bf88d0e9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
