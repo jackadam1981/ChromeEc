@@ -42,6 +42,9 @@ test_mockable __keep int main(void)
 {
 	int mpu_pre_init_rv = EC_SUCCESS;
 
+	/* Always update reset cause first thing after reset. */
+	system_update_reset_cause();
+
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS)) {
 		/*
 		 * Initialize tx buffer head and tail. This needs to be done

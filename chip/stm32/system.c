@@ -83,6 +83,19 @@ void chip_save_reset_flags(uint32_t flags)
 	bkpdata_write_reset_flags(flags);
 }
 
+void system_update_reset_cause(void)
+{
+	/*
+	 * This is called in early main and the existing check_reset_cause
+	 * function may have data dependencies, so we leave the flow untouched
+	 * and ensure that we never build this with the needed CR50 POR
+	 * workaround
+	 */
+#ifdef CONFIG_BOARD_RESET_AFTER_POWER_ON
+#error Must implement early reset cause function
+#endif
+}
+
 static void check_reset_cause(void)
 {
 	uint32_t flags = chip_read_reset_flags();

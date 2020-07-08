@@ -85,7 +85,7 @@ static int bbram_is_byte_access(enum bbram_data_index index)
 }
 
 /* Check and clear BBRAM status on any reset */
-void system_check_bbram_on_reset(void)
+static void system_check_bbram_on_reset(void)
 {
 	if (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR)) {
 		/*
@@ -318,11 +318,17 @@ uint32_t chip_read_reset_flags(void)
 	return bbram_data_read(BBRM_DATA_INDEX_SAVED_RESET_FLAGS);
 }
 
-static void check_reset_cause(void)
+void system_update_reset_cause(void)
 {
-	uint32_t hib_wake_flags = bbram_data_read(BBRM_DATA_INDEX_WAKE);
-	uint32_t chip_flags = chip_read_reset_flags();
-	uint32_t flags = chip_flags;
+	uint32_t hib_wake_flags;
+	uint32_t chip_flags;
+	uint32_t flags;
+
+	system_check_bbram_on_reset();
+
+	hib_wake_flags = bbram_data_read(BBRM_DATA_INDEX_WAKE);
+	chip_flags = chip_read_reset_flags();
+	flags = chip_flags;
 
 	/* Clear saved reset flags in bbram */
 #ifdef CONFIG_POWER_BUTTON_INIT_IDLE
@@ -927,14 +933,7 @@ uint32_t system_get_scratchpad(void)
 
 int system_is_reboot_warm(void)
 {
-	uint32_t reset_flags;
-
-	/*
-	 * Check reset cause here,
-	 * gpio_pre_init is executed faster than system_pre_init
-	 */
-	check_reset_cause();
-	reset_flags = system_get_reset_flags();
+	const uint32_t reset_flags = system_get_reset_flags();
 
 	if ((reset_flags & EC_RESET_FLAG_RESET_PIN) ||
 	    (reset_flags & EC_RESET_FLAG_POWER_ON) ||
