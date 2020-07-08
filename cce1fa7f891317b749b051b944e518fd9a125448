@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "186cd0bf_d884addc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-08T19:21:50Z",
+      "side": 1,
+      "message": "The create_initial_ec_image is good for some mature projects, that the reference design can be reused without change. But Trogdor doesn\u0027t work very well that requires some extra modifications. It is OK as an initial version and manually fix the differences (either in the same CL or later).\n\nUsing Lazor as a reference is another good choice.",
+      "parentUuid": "0ec18ba9_169203bc",
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71901d10_fc73b5ac",
         "filename": "board/pompom/battery.c",
         "patchSetId": 1
