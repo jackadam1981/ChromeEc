@@ -30,6 +30,11 @@ void system_pre_init(void)
 {
 }
 
+void system_update_reset_cause(void)
+{
+	/* Nothing to do, but needed for linking */
+}
+
 void system_reset(int flags)
 {
 	MXC_GCR->rstr0 = MXC_F_GCR_RSTR0_SYSTEM;

@@ -35,6 +35,11 @@ static void scp_remap_init(void)
 	SCP_R_REMAP_0XCDEF = 0x05030208;
 }
 
+void system_update_reset_cause(void)
+{
+	/* Nothing to do, but needed for linking */
+}
+
 void system_pre_init(void)
 {
 	scp_remap_init();

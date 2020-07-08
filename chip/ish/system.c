@@ -32,6 +32,19 @@ int system_is_reboot_warm(void)
 		 (EC_RESET_FLAG_POWER_ON | EC_RESET_FLAG_HARD));
 }
 
+void system_update_reset_cause(void)
+{
+	/*
+	 * This is called in early main and the existing check_reset_cause
+	 * function may have data dependecies, so we leave the flow untouched
+	 * and ensure that we never build this with the needed CR50 POR
+	 * workaround
+	 */
+#ifdef CONFIG_POR_WORKAROUND
+#error Must implement early reset cause function
+#endif
+}
+
 void system_pre_init(void)
 {
 	ish_fwst_set_fw_status(FWSTS_FW_IS_RUNNING);
