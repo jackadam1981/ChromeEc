@@ -134,6 +134,10 @@ int spi_transaction(const struct spi_device_t *spi_device,
 			/* Write 1 to start the data transmission of CS0 */
 			IT83XX_SSPI_SPISTS |= 0x10;
 		rxdata[idx] = IT83XX_SSPI_SPIDATA;
+		if (rxdata[idx] == 0xed) {
+			//ccprints("[SSPI] hello cmd done addr:%pP", &rxdata[idx]);
+			break;
+		}
 	}
 
 	sspi_transmission_end();
@@ -166,6 +170,82 @@ static void sspi_init(void)
 
 	for (i = 0; i < spi_devices_used; i++)
 		/* Disabling spi module */
-		spi_enable(spi_devices[i].port, 0);
+		spi_enable(spi_devices[i].port, 1);
 }
 DECLARE_HOOK(HOOK_INIT, sspi_init, HOOK_PRIO_INIT_SPI);
+
+static uint8_t rx_fifo[0x1000];
+
+static int command_spislv_hello(int argc, char **argv)
+{
+	int i;
+	uint8_t tx_buf[] = {0x03, 0xEE, 0x01, 0x00, 0x00,
+		0x00, 0x04, 0x00, 0x01, 0x02, 0x03, 0x04};
+
+	ccprints("[SSPI] rx_fifo=%pP", rx_fifo);
+
+	for (i = 0; i < 1; i++) {
+		/* Enable spi module */
+		spi_enable(spi_devices[i].port, 1);
+		spi_transaction(&spi_devices[i], tx_buf,
+			12, rx_fifo, 0x1000);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spihello, command_spislv_hello,
+			"spihello",
+			"SPI hello cmmand");
+
+#define EC_CMD_WRITE 0x0014
+
+struct ec_params_wr {
+	uint8_t *in_data;
+} __ec_align4;
+
+struct ec_response_rd {
+	uint8_t out_data[240];
+} __ec_align4;
+
+static enum ec_status command_write(struct host_cmd_handler_args *args)
+{
+	//const uint8_t *p = args->params;
+	struct ec_response_rd *r = args->response;
+	int i;
+
+	for(i = 0; i < 240; i++)
+		r->out_data[i] = i;
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_WRITE,
+		     command_write,
+		     EC_VER_MASK(0));
+
+static int command_spislv_write(int argc, char **argv)
+{
+	int i, j;
+	//uint8_t tx_buf[128] = {0x03, 0x15, 0x14, 0x00, 0x00, 0x00, 0x78, 0x00};
+	uint8_t tx_buf[256] = {0x03, 0x55, 0x14, 0x00, 0x00, 0x00, 0xF8, 0x00};
+
+	ccprints("[SSPI] rx_fifo=%pP", rx_fifo);
+
+	//for (j = 8; j < 128; j++)
+	for (j = 8; j < 256; j++)
+		tx_buf[j] = j-7;
+
+	for (i = 0; i < 1; i++) {
+		/* Enable spi module */
+		spi_enable(spi_devices[i].port, 1);
+		spi_transaction(&spi_devices[i], tx_buf,
+			//128, rx_fifo, 0x1000);
+			256, rx_fifo, 0x1000);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(spiwr256, command_spislv_write,
+			"spiwr256",
+			"SPI wr2568 cmmand");
