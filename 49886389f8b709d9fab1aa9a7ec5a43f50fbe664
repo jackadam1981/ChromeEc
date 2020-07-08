@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "3559ef74_0129924c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-08T00:18:48Z",
+      "side": 1,
+      "message": "Sgtm, but did security sign-off on this change to U2F?\nWe now rely on userland integrity (to create version 0 and not 1 for \"plain U2F\", so that it requires a powerbutton press).",
+      "revId": "49886389f8b709d9fab1aa9a7ec5a43f50fbe664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53c2436e_22cf0c59",
         "filename": "common/u2f.c",
         "patchSetId": 1
