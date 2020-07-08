@@ -447,6 +447,14 @@ void tc_request_power_swap(int port)
 		 */
 		if (IS_ATTACHED_SNK(port))
 			tcpm_enable_auto_discharge_disconnect(port, 0);
+
+		/*
+		 * PR_Swap from initial source to new sink:
+		 * Upon reception or prior to transmitting accept of PR_Swap,
+		 * we should disable TCPC plug out detection.
+		 */
+		if (IS_ATTACHED_SRC(port))
+			tcpm_plug_out_isr_enable(port, 0);
 	}
 }
 
@@ -2462,6 +2470,9 @@ static void tc_attached_src_entry(const int port)
 
 		/* Apply Rp */
 		typec_update_cc(port);
+
+		/* Now we're new source, then enable TCPC detect plug out. */
+		tcpm_plug_out_isr_enable(port, 1);
 
 		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its

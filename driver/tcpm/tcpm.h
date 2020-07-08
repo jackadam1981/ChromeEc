@@ -477,4 +477,18 @@ static inline void tcpm_dump_registers(int port)
 }
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
 
+/**
+ * Enable/Disable TCPC plug out interrupt detection
+ *
+ * @param port Type-C port number
+ * @param plug out interrupt detection, enable (true) disable (false)
+ */
+static inline void tcpm_plug_out_isr_enable(int port, int enable)
+{
+	const struct tcpm_drv *tcpc;
+
+	tcpc = tcpc_config[port].drv;
+	if (tcpc->plug_out_isr_enable)
+		tcpc->plug_out_isr_enable(port, enable);
+}
 #endif

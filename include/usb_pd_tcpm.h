@@ -413,6 +413,14 @@ struct tcpm_drv {
 	 */
 	 void (*dump_registers)(int port);
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
+
+	/**
+	 * Enable/Disable TCPC plug out interrupt detection
+	 *
+	 * @param port Type-C port number
+	 * @param plug out interrupt detection, enable (true) disable (false)
+	 */
+	 void (*plug_out_isr_enable)(int port, int enable);
 };
 
 /*

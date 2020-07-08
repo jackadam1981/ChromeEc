@@ -1895,6 +1895,12 @@ static void handle_ctrl_request(int port, uint32_t head,
 			pd_update_saved_port_flags(port,
 						   PD_BBRMFLG_EXPLICIT_CONTRACT,
 						   0);
+			/*
+			 * PR_Swap from initial source to new sink:
+			 * Upon reception or prior to transmitting accept of
+			 * PR_Swap, we should disable TCPC plug out detection.
+			 */
+			tcpm_plug_out_isr_enable(port, 0);
 			set_state(port, PD_STATE_SRC_SWAP_SNK_DISABLE);
 		} else if (pd[port].task_state == PD_STATE_SNK_SWAP_INIT) {
 			/* explicit contract goes away for power swap */
@@ -1922,6 +1928,13 @@ static void handle_ctrl_request(int port, uint32_t head,
 	case PD_CTRL_PR_SWAP:
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 		if (pd_check_power_swap(port)) {
+			/*
+			 * PR_Swap from initial source to new sink:
+			 * Upon reception or prior to transmitting accept of
+			 * PR_Swap, we should disable TCPC plug out detection.
+			 */
+			if (pd[port].power_role == PD_ROLE_SOURCE)
+				tcpm_plug_out_isr_enable(port, 0);
 			send_control(port, PD_CTRL_ACCEPT);
 			/*
 			 * Clear flag for checking power role to avoid
@@ -4447,6 +4460,11 @@ void pd_task(void *u)
 			pd[port].msg_id = 0;
 			pd_set_power_role(port, PD_ROLE_SOURCE);
 			pd_update_roles(port);
+			/*
+			 * Now we're new source, then enable TCPC detect
+			 * plug out.
+			 */
+			tcpm_plug_out_isr_enable(port, 1);
 			set_state(port, PD_STATE_SRC_DISCOVERY);
 			timeout = 10*MSEC;
 			break;
