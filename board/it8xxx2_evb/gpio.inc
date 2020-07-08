@@ -17,6 +17,7 @@ GPIO_INT(WP_L,           PIN(I, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   switch_inter
 #ifdef CONFIG_LOW_POWER_IDLE
 GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING | GPIO_PULL_UP, uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
+GPIO_INT(SPI0_CS,       PIN(M, 5), GPIO_INT_FALLING | GPIO_PULL_UP, spi_event) /* SPI slave Chip Select -- AP_SPI_EC_CS_L */
 
 GPIO(PCH_SMI_L,      PIN(D, 3), GPIO_OUT_HIGH)
 GPIO(PCH_SCI_L,      PIN(D, 4), GPIO_OUT_HIGH)
@@ -73,3 +74,4 @@ ALTERNATE(PIN_MASK(F, 0xC0), 1, MODULE_I2C, 0)             /* I2C C SCL/SDA */
 ALTERNATE(PIN_MASK(E, 0x81), 1, MODULE_I2C, 0)             /* I2C E SCL/SDA E0/E7 */
 ALTERNATE(PIN_MASK(I, 0x03), 1, MODULE_ADC, 0)             /* ADC CH0, CH1 */
 ALTERNATE(PIN_MASK(L, 0x0F), 1, MODULE_ADC, 0)             /* ADC CH13-CH16 */
+ALTERNATE(PIN_MASK(M, 0x33), 0, MODULE_SPI, 0)             /* SPI */
