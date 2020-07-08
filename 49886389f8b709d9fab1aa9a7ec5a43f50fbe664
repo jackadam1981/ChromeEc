@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "f3b1206d_b132cb67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-08T19:02:27Z",
+      "side": 1,
+      "message": "\u003e if we are compromised at both u2f_generate and u2f_sign times, the attacker can just use their private key\n\nthey won\u0027t be able to sign their keyhandle with G2F attestation key (which is whitelisted separately)",
+      "parentUuid": "782f1c8b_481f851d",
+      "revId": "49886389f8b709d9fab1aa9a7ec5a43f50fbe664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53c2436e_22cf0c59",
         "filename": "common/u2f.c",
         "patchSetId": 1
