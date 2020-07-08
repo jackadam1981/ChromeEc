@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "b37dc531_0bb118e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-08T00:48:28Z",
+      "side": 1,
+      "message": "Mattias agreed that we should waive power button press for WebAuthn but I didn\u0027t ask for sign-off for this specific approach. I\u0027ll write an email to Mattias.\n\nI think the fact that we are doing versioned KHs already implies that we rely on userland to ask for the correct version.",
+      "parentUuid": "3559ef74_0129924c",
+      "revId": "49886389f8b709d9fab1aa9a7ec5a43f50fbe664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53c2436e_22cf0c59",
         "filename": "common/u2f.c",
         "patchSetId": 1
