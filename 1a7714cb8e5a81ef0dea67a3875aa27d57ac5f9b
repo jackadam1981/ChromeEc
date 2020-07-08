@@ -16,6 +16,270 @@
       "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf64bfae_0269a1f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "For this review, most of the USB4-specific logic is out of scope, since it\u0027s in existing code. As you add active-cable support, I would like for the style of USB4 support to increasingly mirror the organization of DP and TBT support, i.e. request construction and response handling beyond basics should live outside the PE in functions and modules with \"usb4_\" names.",
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "678c8181_dfc665ab",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "I think that USB4-specific code like this (that isn\u0027t part of the PE) should be in its own module that the DPM calls into, analogous to DP and TBT.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbbb99fe_185df1f7",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "I think it would make more sense to do this in pe_enter_usb_entry.\n\nAlso, can you point me to the spec section that requires this? I only found references to USB Safe for Enter Mode.",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fd0f716_3f06d329",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "Why is this inside the TBT entry code?",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 3
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1e9b85_153d0b66",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "This should be PE_DEU_Send_Enter_USB.",
+      "range": {
+        "startLine": 255,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 13
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2cf1859_21ac0537",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4103,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "You need to check the return value.",
+      "range": {
+        "startLine": 4103,
+        "startChar": 1,
+        "endLine": 4103,
+        "endChar": 26
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5db82f8_5ea3f006",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4110,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "Unnecessary",
+      "range": {
+        "startLine": 4110,
+        "startChar": 28,
+        "endLine": 4110,
+        "endChar": 39
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b5aca95_11aa727c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4119,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "You should return to the ready state if we didn\u0027t send anything.",
+      "range": {
+        "startLine": 4116,
+        "startChar": 1,
+        "endLine": 4119,
+        "endChar": 4
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aa2317f_7d73d29d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4163,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "spelling",
+      "range": {
+        "startLine": 4163,
+        "startChar": 38,
+        "endLine": 4163,
+        "endChar": 48
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be1fc356_7c173aaa",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4164,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "NAK",
+      "range": {
+        "startLine": 4164,
+        "startChar": 7,
+        "endLine": 4164,
+        "endChar": 11
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9030092e_d87a1336",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4185,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "Nit: I have a slight preference that this timeout check and the message received check be written as early returns above the main response handling logic to reduce nesting. Maybe also the control message check.",
+      "range": {
+        "startLine": 4183,
+        "startChar": 1,
+        "endLine": 4185,
+        "endChar": 2
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31fdb227_c08c94b9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 5785,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T18:39:33Z",
+      "side": 1,
+      "message": "Here and in the code above, I would prefer that this be placed near the VDM states, due to its conceptual similarity. How about after PE_VDM_RESPONSE?",
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
