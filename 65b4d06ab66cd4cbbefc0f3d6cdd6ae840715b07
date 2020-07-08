@@ -88,6 +88,23 @@
       "revId": "65b4d06ab66cd4cbbefc0f3d6cdd6ae840715b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12227cff_5bdc76dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-08T20:00:35Z",
+      "side": 1,
+      "message": "Looks functional, though personally I have a bias towards swapping the parent/child run state order so we don\u0027t have to carry extra data around.  The only parents with run states currently are this one and the sender response timer parent I made so the overall behavior change should be small. ",
+      "revId": "65b4d06ab66cd4cbbefc0f3d6cdd6ae840715b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
