@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e9a9119_eb533537",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T14:39:59Z",
+      "side": 1,
+      "message": "in case there was an error in this function, we should proably set all of these values to 0 if there was a failure (maybe at the beginning of the function), right?",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 250,
+        "endChar": 30
+      },
+      "revId": "8af68fff3c43e733109efc616c2e6308e4faf567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
