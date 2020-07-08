@@ -51,6 +51,24 @@
       "revId": "ab022e1797d199832c0449a85215298b16067127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec5cd9de_c36f9e0c",
+        "filename": "baseboard/nucleo-f412zg/base-board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-08T20:12:08Z",
+      "side": 1,
+      "message": "This was for testing on-device tests that use the new shared_mem (malloc), see http://crrev/c/2242354. Since we actually use it in RW, tests should also use this new shared_mem (malloc). Maybe we should not run the utils test on nucleo-f412zg and nucleo-h743zi, but only run utils test on fingerprint boards.\n\nAlternatively, if we still run utils test on these nucleo boards, we disable CONFIG_MALLOC like you said, and the tests will use the old common/share_mem.c. We may want to add a comment in that case, it took me one afternoon to figure out there are two implementations of shared_mem!",
+      "parentUuid": "233c43cb_9ce8704c",
+      "revId": "ab022e1797d199832c0449a85215298b16067127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
