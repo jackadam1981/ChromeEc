@@ -16,6 +16,23 @@
       "revId": "f409b0559c30c4ede13e99b1e5c3b1578f327429",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "feb76fa2_4783d1f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-07-08T14:49:50Z",
+      "side": 1,
+      "message": "I\u0027m taking a look at this, and will work through it a bit more tomorrow.\nI do recall that there was a specific reason why the states were quite explicit about stepping through the different phases, and I may have to go back to some of the original bugs to figure that out.\nI do like that keeping the same state for retries is a cleaner approach, but need to maybe look a bit closer.\nOf course, some of the callers or higher level code may have changed as well, so perhaps it was something related to that.",
+      "revId": "f409b0559c30c4ede13e99b1e5c3b1578f327429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
