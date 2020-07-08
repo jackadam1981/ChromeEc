@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c2d8e273_bbd3f53f",
+        "filename": "board/lazor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-08T03:06:48Z",
+      "side": 1,
+      "message": "My mistake; ignore it.",
+      "parentUuid": "5472f005_39085275",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "0d30a7503c394e55a7fdb706fe4c4b48b9401703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aea38557_7c3886bd",
         "filename": "board/lazor/battery.c",
         "patchSetId": 1
