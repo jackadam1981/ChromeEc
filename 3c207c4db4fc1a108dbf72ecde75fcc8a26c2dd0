@@ -22,6 +22,30 @@
       "revId": "3c207c4db4fc1a108dbf72ecde75fcc8a26c2dd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "782dde83_31891e85",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-08T18:10:44Z",
+      "side": 1,
+      "message": "Yes. Nice catch! I have changed that as well",
+      "parentUuid": "300afee9_9419a079",
+      "range": {
+        "startLine": 845,
+        "startChar": 42,
+        "endLine": 845,
+        "endChar": 45
+      },
+      "revId": "3c207c4db4fc1a108dbf72ecde75fcc8a26c2dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
