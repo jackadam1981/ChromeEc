@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24404447_c9c70b11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T08:43:17Z",
+      "side": 1,
+      "message": "I\u0027ve observed that this fixes the bug with a Startech dock on Volteer, but I still need to try it on Puff and make sure it didn\u0027t break the behavior that the \"sent\" states were added to support.\n\nIntel: I think a change similar to this would help simplify the TBT active-cable state machine, in addition to avoiding bugs around interrupted AMSes.",
+      "revId": "f409b0559c30c4ede13e99b1e5c3b1578f327429",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
