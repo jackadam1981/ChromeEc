@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5472f005_39085275",
+        "filename": "board/lazor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-07-08T01:30:04Z",
+      "side": 1,
+      "message": "Sorry. What do you mean? Isn\u0027t \"c\" behind \"b\"?",
+      "parentUuid": "6ac33cb5_0ee68135",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "0d30a7503c394e55a7fdb706fe4c4b48b9401703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aea38557_7c3886bd",
         "filename": "board/lazor/battery.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "0d30a7503c394e55a7fdb706fe4c4b48b9401703",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aec19687_9a9f8204",
+        "filename": "board/lazor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-07-08T01:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aea38557_7c3886bd",
+      "range": {
+        "startLine": 68,
+        "startChar": 18,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "0d30a7503c394e55a7fdb706fe4c4b48b9401703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
