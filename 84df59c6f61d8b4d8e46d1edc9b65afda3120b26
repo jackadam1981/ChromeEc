@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91f49a9e_0c5d217d",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T14:32:14Z",
+      "side": 1,
+      "message": "let\u0027s add a comment saying that the boards is expected to define this (or it is defined in common code if it is the single charger case)",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "84df59c6f61d8b4d8e46d1edc9b65afda3120b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81863971_0a51f71e",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T14:32:14Z",
+      "side": 1,
+      "message": "Do you remember why there are separate return conditions here? Is it because we use -1 for sometrhing? (If you remember can you add that comment or put them together)",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 4
+      },
+      "revId": "84df59c6f61d8b4d8e46d1edc9b65afda3120b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
