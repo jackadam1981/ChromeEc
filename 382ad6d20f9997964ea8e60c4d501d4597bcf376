@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cae3f039_ff3a1a0d",
+        "filename": "board/cr50/tpm_nvmem_ops.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-08T19:11:00Z",
+      "side": 1,
+      "message": "is it part of the API contract?",
+      "range": {
+        "startLine": 105,
+        "startChar": 21,
+        "endLine": 105,
+        "endChar": 40
+      },
+      "revId": "382ad6d20f9997964ea8e60c4d501d4597bcf376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d9969d_76cacabc",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-08T19:11:00Z",
+      "side": 1,
+      "message": "why does this mean we never used U2F before?\nshall it be just (state-\u003edrbg_entropy_size \u003d\u003d 0)?",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "382ad6d20f9997964ea8e60c4d501d4597bcf376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
