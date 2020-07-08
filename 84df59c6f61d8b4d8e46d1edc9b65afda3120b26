@@ -45,6 +45,30 @@
       "revId": "84df59c6f61d8b4d8e46d1edc9b65afda3120b26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62bbee74_86976a9e",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-08T22:37:25Z",
+      "side": 1,
+      "message": "-1 is set when we have no active charge port selected. This function I think can get called even though we don\u0027t have a charger.",
+      "parentUuid": "81863971_0a51f71e",
+      "range": {
+        "startLine": 369,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 4
+      },
+      "revId": "84df59c6f61d8b4d8e46d1edc9b65afda3120b26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
