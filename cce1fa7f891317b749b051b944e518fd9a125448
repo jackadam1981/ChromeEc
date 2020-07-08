@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0ec18ba9_169203bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-07-08T06:19:44Z",
+      "side": 1,
+      "message": "Yes, we created the EC image from Trogdor.\nGenerated with the following command:\n~/trunk/src/platform/dev/contrib/variant $ ./create_initial_ec_image.sh trogdor pompom",
+      "parentUuid": "4931ca54_80841842",
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71901d10_fc73b5ac",
         "filename": "board/pompom/battery.c",
         "patchSetId": 1
