@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cd664d3_348ebbd7",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-08T18:12:24Z",
+      "side": 1,
+      "message": "nit: use a variable, it has become too big",
+      "range": {
+        "startLine": 841,
+        "startChar": 11,
+        "endLine": 847,
+        "endChar": 30
+      },
+      "revId": "be4b5eaea6c052776515a7b92104d34af723fbd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
