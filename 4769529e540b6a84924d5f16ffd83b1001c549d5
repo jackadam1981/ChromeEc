@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34261677_83a65754",
+        "filename": "board/boten/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-08T16:05:24Z",
+      "side": 1,
+      "message": "Does this produce the correct timing for turning on the chips?  I\u0027d assumed the signal would need to be on earlier (possibly always when we\u0027re in S0), but this method seems like it would yield better power consumption if it works.",
+      "range": {
+        "startLine": 46,
+        "startChar": 16,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "4769529e540b6a84924d5f16ffd83b1001c549d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c54e622_cd33f232",
+        "filename": "board/boten/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-08T16:05:24Z",
+      "side": 1,
+      "message": "Does this need to start high (not enabled)?",
+      "range": {
+        "startLine": 84,
+        "startChar": 34,
+        "endLine": 84,
+        "endChar": 46
+      },
+      "revId": "4769529e540b6a84924d5f16ffd83b1001c549d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
