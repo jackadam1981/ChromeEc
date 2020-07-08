@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8450d647_e92fdd67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-08T21:33:33Z",
+      "side": 1,
+      "message": "Verified on trembyle",
+      "revId": "770ff259e4080dcd6b663f76e8e3a3e3a6408738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b8143b7_d647f1fd",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3168,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-08T21:33:33Z",
+      "side": 1,
+      "message": "wording?",
+      "range": {
+        "startLine": 3168,
+        "startChar": 4,
+        "endLine": 3168,
+        "endChar": 42
+      },
+      "revId": "770ff259e4080dcd6b663f76e8e3a3e3a6408738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
