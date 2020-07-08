@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9582d507_cbefcf64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-08T00:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8c95ff_57a564a5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "b95fcf74703a7b6d0b321c81f454c559d40241fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6cd3441_d4b566b2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b95fcf74703a7b6d0b321c81f454c559d40241fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d569a59a_54843100",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-08T00:00:15Z",
+      "side": 1,
+      "message": "i work on it - Yicheng added versioned handles, so rebasing and will add soon",
+      "parentUuid": "d6cd3441_d4b566b2",
+      "range": {
+        "startLine": 18,
+        "startChar": 35,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "b95fcf74703a7b6d0b321c81f454c559d40241fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
