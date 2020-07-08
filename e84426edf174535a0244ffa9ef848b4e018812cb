@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa3a421_bb119b0d",
+        "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T14:48:31Z",
+      "side": 1,
+      "message": "I would have to trace it again, but I think we will initialize these pins as I2C first during start up (which will probably be okay since i2c is ODL); might be worth adding that note here",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "e84426edf174535a0244ffa9ef848b4e018812cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09ec6ffa_e0019603",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T14:48:31Z",
+      "side": 1,
+      "message": "we don\u0027t want this print in interrupt context if we can help it, can we put it somewhere else?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "e84426edf174535a0244ffa9ef848b4e018812cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
