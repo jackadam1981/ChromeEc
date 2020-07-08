@@ -165,7 +165,7 @@ static void spi_host_request_data(uint8_t *in_msg_addr, int count)
 	 * Rx FIFO in this function. We will set IT83XX_SPI_TXRXFAR = 0
 	 * in reset_rx_fifo.
 	 */
-
+ccprints("[SPI] in_msg_addr=%pP", in_msg_addr);
 	for (i = 0; i < count; i += 4)
 		/* Get data from master to buffer */
 		*(uint32_t *)(in_msg_addr + i) = IT83XX_SPI_RXFRDRB0;

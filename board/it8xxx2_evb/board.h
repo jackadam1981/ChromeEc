@@ -11,6 +11,9 @@
 /* Select Baseboard features */
 #include "baseboard.h"
 
+/* Optional features */
+#define CONFIG_SPI
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
