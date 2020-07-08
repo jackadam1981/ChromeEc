@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4bae3b07_99cd6cc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-08T17:19:44Z",
+      "side": 1,
+      "message": "I posted some responses in the bug. Let\u0027s try to hammer out high-level state flow there before we worry too much about the code here.",
+      "parentUuid": "ffdae7fc_4688b4c0",
+      "revId": "760eb0fdcc0a2ea5e4e65be6cb9969b06bfceef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46dec765_398611f9",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 5
