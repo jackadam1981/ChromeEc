@@ -39,6 +39,30 @@
       "revId": "770ff259e4080dcd6b663f76e8e3a3e3a6408738",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "653287a3_04b3ffd7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 3168,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T21:36:36Z",
+      "side": 1,
+      "message": "Done. That was exceptionally bad wording!",
+      "parentUuid": "5b8143b7_d647f1fd",
+      "range": {
+        "startLine": 3168,
+        "startChar": 4,
+        "endLine": 3168,
+        "endChar": 42
+      },
+      "revId": "770ff259e4080dcd6b663f76e8e3a3e3a6408738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
