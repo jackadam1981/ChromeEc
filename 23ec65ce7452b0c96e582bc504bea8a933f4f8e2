@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da961f40_dcd1e353",
+        "filename": "board/boten/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-08T15:35:24Z",
+      "side": 1,
+      "message": "Are you planning to use these as PWMs?  There is some common code to run PWM colors you could take a look at if you want to.  Otherwise, if you\u0027re just using them as on/off we could disable the PWM module on the pins for Boten (and move the PWM define into board.h\u0027s)",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "23ec65ce7452b0c96e582bc504bea8a933f4f8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
