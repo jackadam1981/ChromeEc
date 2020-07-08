@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "782f1c8b_481f851d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-08T01:06:03Z",
+      "side": 1,
+      "message": "Also I think if we are compromised at both u2f_generate and u2f_sign times, the attacker can just use their private key, and it doesn\u0027t matter which version we are on?",
+      "parentUuid": "b37dc531_0bb118e1",
+      "revId": "49886389f8b709d9fab1aa9a7ec5a43f50fbe664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53c2436e_22cf0c59",
         "filename": "common/u2f.c",
         "patchSetId": 1
