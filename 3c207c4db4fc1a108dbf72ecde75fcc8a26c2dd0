@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "300afee9_9419a079",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-08T17:31:15Z",
+      "side": 1,
+      "message": "Does this need the same check as above? \n    sop \u003d\u003d SOP\u0027\u0027 ?  VDO_SDVM_VERS(port, SOP\u0027) : VDO_SVDM_VERS(port, sop)\n\nI see SOP\u0027\u0027 revision initialized here https://chromium.googlesource.com/chromiumos/platform/ec/+/afd3bddc/common/usbc/usb_prl_sm.c#600, but the revision isn\u0027t ever lowered because we don\u0027t query SOP``, correct?",
+      "range": {
+        "startLine": 845,
+        "startChar": 42,
+        "endLine": 845,
+        "endChar": 45
+      },
+      "revId": "3c207c4db4fc1a108dbf72ecde75fcc8a26c2dd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
