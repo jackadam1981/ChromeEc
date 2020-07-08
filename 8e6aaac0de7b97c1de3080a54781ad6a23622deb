@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b3a093c_aa8b5ceb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T23:34:43Z",
+      "side": 1,
+      "message": "Remove this line",
+      "parentUuid": "4f7f86fb_ad1f7bcb",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "506359f3_d4a260c0",
         "filename": "common/main.c",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "48551e5c_57f14430",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T23:34:43Z",
+      "side": 1,
+      "message": "Good catch, I thought I only added when I got a build error. Must have been something else. Removed.",
+      "parentUuid": "506359f3_d4a260c0",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b14fbbd6_f0e80aac",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T23:34:43Z",
+      "side": 1,
+      "message": "I have gone back and forth on this before uploading.\n\nSince I really don\u0027t think there should be anyone using this type of function outside of this file, I like keeping it here.\n\nAlso, the POR CPU speed for all devices is non-trival to research and implement since we don\u0027t already have an existing config that gives up this information.\n\nMy approach was to make the failed assumption (of CR50 reset coming) to be very noticable but not something that would require an RMA if it happened once randmonly.\n\nI want it to be noticeable since we need to correct our development assumptions",
+      "parentUuid": "108542c8_0f4b18b8",
+      "range": {
+        "startLine": 48,
+        "startChar": 53,
+        "endLine": 48,
+        "endChar": 62
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2716f7e3_e33486c7",
         "filename": "common/main.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08796a28_891e96a7",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T23:34:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2716f7e3_e33486c7",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 5
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "42981f82_bb0015c4",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T23:34:43Z",
+      "side": 1,
+      "message": "Agreed the race is between the lines you mentioned. I don\u0027t see around if at least looking at NPCX as the example. The rail isn\u0027t going to report a reset if the power rail didn\u0027t just reset",
+      "parentUuid": "d98bbd5d_cbb7be5d",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 32
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0469c20_b7c8e54a",
         "filename": "common/main.c",
         "patchSetId": 4
@@ -152,6 +272,30 @@
       "writtenOn": "2020-07-07T02:17:35Z",
       "side": 1,
       "message": "Why this much? If the 2nd reset doesn\u0027t come within 500 msec, what\u0027s the chance it would ever come?\n\nI also think it\u0027s wise to let the system boot instead of making it look like bricked. The side effect of missing POWER_ON doesn\u0027t seem as big as not booting for 80 seconds. We should propagate delayed_reset_failure properly.\n\nOn Puff, a coincell eventually fails? What\u0027s the worst thing which could happen? Do we need to update the AVL (and OEMs)?\n\nNevertheless, we should try not to build critical code around POWER_ON, IMHO.",
+      "range": {
+        "startLine": 97,
+        "startChar": 37,
+        "endLine": 97,
+        "endChar": 47
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe7ecb3_f43f2eef",
+        "filename": "common/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T23:34:43Z",
+      "side": 1,
+      "message": "If it doesn\u0027t come within 2 second if probably wont\u0027 come.\n\nI want it to be very noticeable to developers that assumptions are wrong and need to be investigated.\n\nI wanted the wait to be long enough to handle varying power on clock speeds as well as the number of instructions that are emitted within the busy while loop.\n\nI wanted to ensure it was long enough, but not too long as if it happened to a customer once or twice they would RMA the device.\n\nIf it is happening all the time, then something is wrong and should be investigated.\n\nUnfortunately the power-on flag is important to know when not to clear the PD contract otherwise we will boot loop with no/low battery. The power on flag should be reliable, it really is a bug that CR50 does the double reset.",
+      "parentUuid": "e0469c20_b7c8e54a",
       "range": {
         "startLine": 97,
         "startChar": 37,
@@ -187,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "15894496_66c70789",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T23:34:43Z",
+      "side": 1,
+      "message": "Sounds good to me too. Done.",
+      "parentUuid": "c95f0b7e_974b4fec",
+      "range": {
+        "startLine": 696,
+        "startChar": 7,
+        "endLine": 696,
+        "endChar": 26
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4027dff2_bb916a45",
         "filename": "include/system.h",
         "patchSetId": 4
@@ -207,6 +375,30 @@
       "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba36cf6a_762aeaeb",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-08T23:34:43Z",
+      "side": 1,
+      "message": "I called this function in early main as the first line. Now it is just called once. See parent CL:2289059",
+      "parentUuid": "4027dff2_bb916a45",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 30
+      },
+      "revId": "8e6aaac0de7b97c1de3080a54781ad6a23622deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
