@@ -503,7 +503,6 @@ void gpio_pre_init(void)
 	int flags;
 	int i, j;
 
-	system_check_bbram_on_reset();
 	is_warm = system_is_reboot_warm();
 
 	/*

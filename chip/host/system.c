@@ -61,6 +61,11 @@ static void ramdata_get_persistent(void)
 	remove_persistent_storage("ramdata");
 }
 
+void system_update_reset_cause(void)
+{
+	/* Nothing to do, but needed for linking */
+}
+
 static void set_image_copy(uint32_t copy)
 {
 	FILE *f = get_persistent_storage("image_copy", "wb");

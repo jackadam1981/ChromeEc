@@ -68,7 +68,7 @@ void wp_event(enum gpio_signal signal)
  * We intercept all changes to the reset backup register to ensure that
  * our reset loop patch stays in place.
  *
- * This function will be called once in check_reset_cause during
+ * This function will be called once in system_update_reset_cause during
  * startup, which ensures proper behavior even when unexpected
  * resets occurs (pin reset or exception).
  *
@@ -94,7 +94,7 @@ void bkpdata_write_reset_flags(uint32_t save_flags)
 
 /*
  * We do not need to explicitly invoke bkpdata_write_reset_flags
- * on boot, since check_reset_cause will already invoke it once on boot.
+ * on boot, since system_update_reset_cause will already invoke it once on boot.
  */
 static void board_init_workarounds(void)
 {

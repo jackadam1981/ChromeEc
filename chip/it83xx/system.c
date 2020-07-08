@@ -38,7 +38,7 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	__enter_hibernate(seconds, microseconds);
 }
 
-static void check_reset_cause(void)
+void system_update_reset_cause(void)
 {
 	uint32_t flags;
 	uint8_t raw_reset_cause = IT83XX_GCTRL_RSTS & 0x03;
@@ -97,13 +97,7 @@ DECLARE_HOOK(HOOK_INIT, system_reset_cause_is_unknown, HOOK_PRIO_FIRST);
 
 int system_is_reboot_warm(void)
 {
-	uint32_t reset_flags;
-	/*
-	 * Check reset cause here,
-	 * gpio_pre_init is executed faster than system_pre_init
-	 */
-	check_reset_cause();
-	reset_flags = system_get_reset_flags();
+	const uint32_t reset_flags = system_get_reset_flags();
 
 	if ((reset_flags & EC_RESET_FLAG_RESET_PIN) ||
 	    (reset_flags & EC_RESET_FLAG_POWER_ON) ||
