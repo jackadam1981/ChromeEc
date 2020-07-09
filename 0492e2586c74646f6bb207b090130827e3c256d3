@@ -46,6 +46,30 @@
       "revId": "0492e2586c74646f6bb207b090130827e3c256d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "767d35e1_906f42c0",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-09T18:02:56Z",
+      "side": 1,
+      "message": "Ah, I keep forgetting about that since it\u0027s been dedede-life 24x7. I still like the idea.",
+      "parentUuid": "f998219d_4a464682",
+      "range": {
+        "startLine": 626,
+        "startChar": 1,
+        "endLine": 626,
+        "endChar": 6
+      },
+      "revId": "0492e2586c74646f6bb207b090130827e3c256d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
