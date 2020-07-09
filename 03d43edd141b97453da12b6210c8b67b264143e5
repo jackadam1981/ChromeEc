@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "468b3bb7_ea1e82de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-09T16:30:23Z",
+      "side": 1,
+      "message": "I like the idea of testing down to the TCPCI level, but there seems to be quite a bit of TCPCI that is missing. It is not just setting register values.  Is this accurate enough for what you are going for?",
+      "revId": "03d43edd141b97453da12b6210c8b67b264143e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77ae185a_f2579604",
+        "filename": "common/mock/tcpci_i2c_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-09T16:30:23Z",
+      "side": 1,
+      "message": "tcpci does not reset registers to be 0.  Is this as accurate as you want to be?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "03d43edd141b97453da12b6210c8b67b264143e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
