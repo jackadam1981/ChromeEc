@@ -22,6 +22,30 @@
       "revId": "0492e2586c74646f6bb207b090130827e3c256d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f998219d_4a464682",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-09T17:50:57Z",
+      "side": 1,
+      "message": "CHARGER_PRIMARY doesn\u0027t exist on boards not using multiple charger indexes.  They use CHARGER_SOLO.  Original intent there was to ensure that any charger chip drivers still hard-coding CHARGER_SOLO in calls would break the build when you switch to multiple charger chips an force you to update the driver behavior.  No idea how practically useful it is/has been",
+      "parentUuid": "971b79b8_39d468b9",
+      "range": {
+        "startLine": 626,
+        "startChar": 1,
+        "endLine": 626,
+        "endChar": 6
+      },
+      "revId": "0492e2586c74646f6bb207b090130827e3c256d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
