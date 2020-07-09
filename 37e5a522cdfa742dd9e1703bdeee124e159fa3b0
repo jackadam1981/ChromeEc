@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "34efca81_52722347",
+        "filename": "common/usbc/usb4_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-09T20:48:46Z",
+      "side": 1,
+      "message": "many prints in this file can be combined or removed to save space",
+      "revId": "37e5a522cdfa742dd9e1703bdeee124e159fa3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a62c07f3_320ac55a",
+        "filename": "common/usbc/usb4_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-09T20:48:46Z",
+      "side": 1,
+      "message": "USB4_STATE_COUNT",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "37e5a522cdfa742dd9e1703bdeee124e159fa3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "607810f9_db5a586f",
+        "filename": "common/usbc/usb4_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-09T20:48:46Z",
+      "side": 1,
+      "message": "add a TODO may be we need to fall back to TBT \u0026 DP alt mode then USB",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "37e5a522cdfa742dd9e1703bdeee124e159fa3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c24ba6c7_8660e5c0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 10
