@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a78d7a6a_9c287ed5",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-09T15:35:33Z",
+      "side": 1,
+      "message": "nit: would suggest removing this before commit since this is a time-sensitive interrupt path.  I need to remove mine from the Doo HDMI enable CLs as well.",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 38
+      },
+      "revId": "89825d3bd5b38e97f20d56514e2ca7d7c1235af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
