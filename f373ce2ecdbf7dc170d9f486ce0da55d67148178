@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cff423ba_9f3f305b",
+        "filename": "third_party/bmi260/accelgyro_bmi260_config_compressed.bin",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T16:56:35Z",
+      "side": 0,
+      "message": "Is it practical to use the generated utility during the build to create this file as a build artifact, rather than adding it to source control?",
+      "revId": "f373ce2ecdbf7dc170d9f486ce0da55d67148178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

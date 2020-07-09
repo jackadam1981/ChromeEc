@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef376a13_a6b048c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T16:56:35Z",
+      "side": 1,
+      "message": "Seems workable. Feel free to carry forward LGTM to future patchsets and/or fix up in future CLs.",
+      "revId": "cbd0a3d302163c7311237ac648ad685fd63dd23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6938c172_57e616e1",
+        "filename": "util/gen_bmi_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T16:56:35Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 9
+      },
+      "revId": "cbd0a3d302163c7311237ac648ad685fd63dd23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ef343d0_6bc0c7ee",
+        "filename": "util/gen_bmi_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T16:56:35Z",
+      "side": 1,
+      "message": "Note that this can fail.",
+      "range": {
+        "startLine": 39,
+        "startChar": 10,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "cbd0a3d302163c7311237ac648ad685fd63dd23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe8b6bc_c8114722",
+        "filename": "util/gen_bmi_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T16:56:35Z",
+      "side": 1,
+      "message": "Nit: 2 * sizeof(out16)\n\nElsewhere, sizeof(prev_word), etc.",
+      "range": {
+        "startLine": 71,
+        "startChar": 15,
+        "endLine": 71,
+        "endChar": 16
+      },
+      "revId": "cbd0a3d302163c7311237ac648ad685fd63dd23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d5662f_f8e4df59",
+        "filename": "util/gen_bmi_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T16:56:35Z",
+      "side": 1,
+      "message": "Line length",
+      "revId": "cbd0a3d302163c7311237ac648ad685fd63dd23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcbdff3a_8d2e4358",
+        "filename": "util/gen_bmi_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T16:56:35Z",
+      "side": 1,
+      "message": "Nit: It might be slightly lower-maintenance/more obviously correct to use argv[0] here.",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 16
+      },
+      "revId": "cbd0a3d302163c7311237ac648ad685fd63dd23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74979bbd_0e6930c0",
+        "filename": "util/gen_bmi_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T16:56:35Z",
+      "side": 1,
+      "message": "Nit: Use EXIT_SUCCESS and EXIT_FAILURE.",
+      "range": {
+        "startLine": 203,
+        "startChar": 9,
+        "endLine": 203,
+        "endChar": 11
+      },
+      "revId": "cbd0a3d302163c7311237ac648ad685fd63dd23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b5b078d_74d7f89c",
+        "filename": "util/gen_bmi_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T16:56:35Z",
+      "side": 1,
+      "message": "This function might benefit from goto-oriented error handling.",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 12
+      },
+      "revId": "cbd0a3d302163c7311237ac648ad685fd63dd23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e4e0620_32b3653e",
+        "filename": "util/gen_bmi_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T16:56:35Z",
+      "side": 1,
+      "message": "Actual input file size.",
+      "range": {
+        "startLine": 257,
+        "startChar": 26,
+        "endLine": 257,
+        "endChar": 34
+      },
+      "revId": "cbd0a3d302163c7311237ac648ad685fd63dd23a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
