@@ -16,6 +16,24 @@
       "revId": "f373ce2ecdbf7dc170d9f486ce0da55d67148178",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9daebe6e_98244259",
+        "filename": "third_party/bmi260/accelgyro_bmi260_config_compressed.bin",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-09T20:52:29Z",
+      "side": 0,
+      "message": "If this were a long term solution, that would make sense.  I would then need to create actual unit tests for the compression and decompression.",
+      "parentUuid": "cff423ba_9f3f305b",
+      "revId": "f373ce2ecdbf7dc170d9f486ce0da55d67148178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
