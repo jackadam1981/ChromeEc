@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "85d51ced_b4471671",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-07-09T13:03:22Z",
+      "side": 1,
+      "message": "Still didn\u0027t show power shortage message and boot into OS.\nPlease reference bug comment#21",
+      "revId": "c36c0640e909fac2200ddd0a42aab4857a16d63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "defa7a96_5fc6bb45",
         "filename": "board/puff/board.h",
         "patchSetId": 1
