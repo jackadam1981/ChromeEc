@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9b94d99f_2a753fb7",
+        "filename": "common/usbc/usb4_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-09T22:14:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34efca81_52722347",
+      "revId": "37e5a522cdfa742dd9e1703bdeee124e159fa3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a62c07f3_320ac55a",
         "filename": "common/usbc/usb4_alt_mode.c",
         "patchSetId": 10
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ad699e9f_5552dcf0",
+        "filename": "common/usbc/usb4_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-09T22:14:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a62c07f3_320ac55a",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "37e5a522cdfa742dd9e1703bdeee124e159fa3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "607810f9_db5a586f",
         "filename": "common/usbc/usb4_alt_mode.c",
         "patchSetId": 10
@@ -62,6 +104,30 @@
       "revId": "37e5a522cdfa742dd9e1703bdeee124e159fa3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2a209e_5fe161f0",
+        "filename": "common/usbc/usb4_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-09T22:14:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607810f9_db5a586f",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "37e5a522cdfa742dd9e1703bdeee124e159fa3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
