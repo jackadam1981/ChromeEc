@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92207ad2_38bad82c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T17:24:20Z",
+      "side": 1,
+      "message": "This also looks workable. Style concerns are minor. Feel free to carry LGTM forward to future patchsets and/or fix up in future CLs, assuming this lasts long enough to fix up.",
+      "revId": "f7dc15c80112deb2f8ad1f05b704471c9b389df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70ef0a9f_d5e58af2",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T17:24:20Z",
+      "side": 1,
+      "message": "Nit: You might want to put this in a header that can be shared by the compression utility and this file, so they can\u0027t diverge.",
+      "revId": "f7dc15c80112deb2f8ad1f05b704471c9b389df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37d13a0_f96bf5ba",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T17:24:20Z",
+      "side": 1,
+      "message": "buffer",
+      "range": {
+        "startLine": 444,
+        "startChar": 53,
+        "endLine": 444,
+        "endChar": 57
+      },
+      "revId": "f7dc15c80112deb2f8ad1f05b704471c9b389df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1682de47_e921a930",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T17:24:20Z",
+      "side": 1,
+      "message": "It would be helpful to repeat this example in the utility code.",
+      "range": {
+        "startLine": 446,
+        "startChar": 2,
+        "endLine": 457,
+        "endChar": 8
+      },
+      "revId": "f7dc15c80112deb2f8ad1f05b704471c9b389df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8888681_3696f6af",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T17:24:20Z",
+      "side": 1,
+      "message": "This is basically an invalid EC binary. It might make sense to assert here.",
+      "range": {
+        "startLine": 485,
+        "startChar": 3,
+        "endLine": 490,
+        "endChar": 4
+      },
+      "revId": "f7dc15c80112deb2f8ad1f05b704471c9b389df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c704cc2_bce100ff",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T17:24:20Z",
+      "side": 1,
+      "message": "If I understand the algorithm correctly, this should always point to an aligned uint32_t. enqueue_bmi_data would be more obvious if it took a uint32_t or uint32_t* as its parameter. If I\u0027m misunderstand the need for a byte pointer, enqueue_bmi_data might still be more obvious as enqueue_bmi_word or some such.",
+      "range": {
+        "startLine": 502,
+        "startChar": 3,
+        "endLine": 502,
+        "endChar": 8
+      },
+      "revId": "f7dc15c80112deb2f8ad1f05b704471c9b389df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4abeaea9_f36a6b5c",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T17:24:20Z",
+      "side": 1,
+      "message": "The loops over repeat_count in this CL and previous one are a mix of while with post-decrement and do/while with pre-decrement, with I think the same effect. If find the latter slightly easier to read.",
+      "range": {
+        "startLine": 504,
+        "startChar": 3,
+        "endLine": 504,
+        "endChar": 31
+      },
+      "revId": "f7dc15c80112deb2f8ad1f05b704471c9b389df7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
