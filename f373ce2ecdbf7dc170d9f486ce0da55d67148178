@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b4b8343_aed97eb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-09T13:18:41Z",
+      "side": 1,
+      "message": "As a follow on CL, we could remove all files except for incbin.h, README.md, and UNLICENSE.  Best practice is to submit third party code unmodified first.",
+      "revId": "f373ce2ecdbf7dc170d9f486ce0da55d67148178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
