@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ecb533d_8247386f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-07-09T23:06:50Z",
+      "side": 1,
+      "message": "pd_is_usb4_mode_capable - This function is defined in the new file that won\u0027t even compile if CONFIG_USB_PD_USB4 is not defined. So, In theory (I have not attempted it) this code will give compilation error if CONFIG_USB_PD_USB4 is not defined. I am guessing there are platforms which do not support USB4.",
+      "range": {
+        "startLine": 112,
+        "startChar": 39,
+        "endLine": 112,
+        "endChar": 62
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
