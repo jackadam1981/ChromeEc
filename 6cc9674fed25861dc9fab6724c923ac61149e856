@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "a0b230ef_65653143",
+        "filename": "common/usbc/usb4_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "Why do we have this state?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "484e02dd_3a00a359",
+        "filename": "common/usbc/usb4_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "Note: This logic should be in the DPM. The way things currently work, I think you can guarantee that once we start Enter USB, we won\u0027t make it back to DPM code until Enter USB has either succeeded or failed. For active-cable support, you might need to add an accessor to this file to check whether Enter USB is still in progress.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 0
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f078345f_2d000d7b",
+        "filename": "common/usbc/usb4_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "Is this necessary for USB4?",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 70
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ecb533d_8247386f",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 12
@@ -18,6 +87,282 @@
         "startChar": 39,
         "endLine": 112,
         "endChar": 62
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b78aa6f4_42e77542",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "The IS_ENABLED check should take care of this. There are definitely platforms that do not support USB4.",
+      "parentUuid": "3ecb533d_8247386f",
+      "range": {
+        "startLine": 112,
+        "startChar": 39,
+        "endLine": 112,
+        "endChar": 62
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a43935c9_2ad271bb",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "This shouldn\u0027t happen until the Accept is received and processed.",
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3150bea5_cdcd1498",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 4897,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "I see that you removed the check for alt mode and SuperSpeed mux support. Don\u0027t we still need to check for mux support?\n\nAlternatively, it might be cleaner to generate an error in config.h that CONFIG_USBC_SS_MUX is set if CONFIG_USB_PD_USB4 is set.",
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08eae21c_83f5b7ec",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 4904,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "This case should probably set usb_entry_failed.",
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4daff0c1_7dd3c6dc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 4924,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "Nit: These could move inside the below if block that initializes them.",
+      "range": {
+        "startLine": 4921,
+        "startChar": 0,
+        "endLine": 4924,
+        "endChar": 0
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af355945_dfd1bce2",
+        "filename": "include/usb_usb4_alt_mode.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "I\u0027m ambivalent about this filename. Enter USB can be used to enter more than just USB4. We might even need to enter USB 3.2 to clean up a partial USB4 entry that fails. Also, USB4 is not an alt mode.\n\nHow about just usb_mode.h?\n\n(Same comment for .c file)",
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8fe1302_ae8204ac",
+        "filename": "include/usb_usb4_alt_mode.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "USB4 is not an alt mode per se. To avoid future confusion, can you change the macro, file name, etc to just \"USB4 mode\"?",
+      "range": {
+        "startLine": 12,
+        "startChar": 27,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccad6969_51789565",
+        "filename": "include/usb_usb4_alt_mode.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "USB4",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e87bb2f8_dda10eb6",
+        "filename": "include/usb_usb4_alt_mode.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "I\u0027d like it if all of these functions had a common prefix. enter_usb_ seems reasonable, although usb4_ would also be a good fit.",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a05c231_66abccfc",
+        "filename": "include/usb_usb4_alt_mode.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "SOP\u0027\u0027?",
+      "range": {
+        "startLine": 47,
+        "startChar": 42,
+        "endLine": 47,
+        "endChar": 43
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c0499f8_09170ef2",
+        "filename": "include/usb_usb4_alt_mode.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "NAKed",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a32eb271_84629e53",
+        "filename": "include/usb_usb4_alt_mode.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "Nit: Constructs",
+      "range": {
+        "startLine": 60,
+        "startChar": 3,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b8b9801_eecd211c",
+        "filename": "include/usb_usb4_alt_mode.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "EUDO",
+      "range": {
+        "startLine": 60,
+        "startChar": 27,
+        "endLine": 60,
+        "endChar": 30
       },
       "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

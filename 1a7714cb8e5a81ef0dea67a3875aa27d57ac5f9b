@@ -130,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "37b59b3f_040d2568",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "That section does not mention the Enter USB process. Are you sure we\u0027re supposed to be in USB Safe state here?",
+      "parentUuid": "f624ef72_ccabea75",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fd0f716_3f06d329",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 9
@@ -315,6 +339,30 @@
       "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d23d971_c6da0c40",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 4110,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "That\u0027s surprising. \u0026usb4_payload is a pointer.",
+      "parentUuid": "d6d43e3a_b738aa0d",
+      "range": {
+        "startLine": 4110,
+        "startChar": 28,
+        "endLine": 4110,
+        "endChar": 39
+      },
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -538,6 +586,24 @@
       "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5984d8_d206e773",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 5785,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-09T23:44:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d4baed3b_01f0e13f",
+      "revId": "1a7714cb8e5a81ef0dea67a3875aa27d57ac5f9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
