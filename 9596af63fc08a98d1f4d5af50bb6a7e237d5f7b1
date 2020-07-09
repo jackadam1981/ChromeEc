@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c17ca7e_21da7b6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-07-09T17:44:43Z",
+      "side": 1,
+      "message": "make -j buildall is failing on TOT:\n\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/volteer/RW/ec.RW.elf section `.data\u0027 will not fit in region `FLASH\u0027\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: No room left in the flash\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: region `FLASH\u0027 overflowed by 48 bytes\ncollect2: error: ld returned 1 exit status\n\nSo I couldn\u0027t run make buildall on this CL.",
+      "revId": "9596af63fc08a98d1f4d5af50bb6a7e237d5f7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
