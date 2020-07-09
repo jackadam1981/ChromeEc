@@ -22,6 +22,30 @@
       "revId": "3001e56b7176ed8278bb355bfc8ac331894fcad9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a0b9c9_4ad5554b",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2020-07-09T03:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61b54bd2_c5826cbb",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 2
+      },
+      "revId": "3001e56b7176ed8278bb355bfc8ac331894fcad9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
