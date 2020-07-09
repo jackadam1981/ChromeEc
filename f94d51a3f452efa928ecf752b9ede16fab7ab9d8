@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a898c552_8acdc579",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-09T21:23:47Z",
+      "side": 1,
+      "message": "add parens for clarity of operator precedence",
+      "range": {
+        "startLine": 193,
+        "startChar": 32,
+        "endLine": 193,
+        "endChar": 59
+      },
+      "revId": "f94d51a3f452efa928ecf752b9ede16fab7ab9d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
