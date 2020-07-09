@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "44d47b28_b6315185",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-07-09T20:25:39Z",
+      "side": 1,
+      "message": "Cq-Depend: chromium:2288146,chromium:2288178,chrome-internal:3155790",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "c1f48d9179a5bb3439bfd5210b23092e04c09e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0724da88_63720e7e",
         "filename": "board/pompom/board.h",
         "patchSetId": 1
