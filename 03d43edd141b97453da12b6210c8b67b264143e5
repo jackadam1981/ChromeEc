@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "90c611c1_25b2f33c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-09T16:49:29Z",
+      "side": 1,
+      "message": "There is certainly room for improvement of the simulated TCPC, and that can be built out over time as more tests are added.\nThis initial version is just enough for the 2 tests: auto-toggle (+ LPM) on AP boot, and non-PD source. This would have been enough to catch the CL:2281132 regression, and I think having some coverage is better than none.",
+      "parentUuid": "468b3bb7_ea1e82de",
+      "revId": "03d43edd141b97453da12b6210c8b67b264143e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77ae185a_f2579604",
         "filename": "common/mock/tcpci_i2c_mock.c",
         "patchSetId": 1
