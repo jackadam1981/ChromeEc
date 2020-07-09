@@ -33,6 +33,24 @@
       "revId": "9596af63fc08a98d1f4d5af50bb6a7e237d5f7b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efb8770a_0e3b4028",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-09T21:05:40Z",
+      "side": 1,
+      "message": "CL:2290196 was chumped and frees 872 bytes of space.  My compression of the BMI IMU sensor config (CL:2289216) should merge tonight and frees another 900 bytes.",
+      "parentUuid": "7c17ca7e_21da7b6a",
+      "revId": "9596af63fc08a98d1f4d5af50bb6a7e237d5f7b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
