@@ -46,6 +46,30 @@
       "revId": "37e5a522cdfa742dd9e1703bdeee124e159fa3b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cc0ec49_b982c0c4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 4888,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-09T20:43:18Z",
+      "side": 1,
+      "message": "@Abe Do you prefer sending/receiving the messages inside dedicated USB4 file?",
+      "parentUuid": "90be2626_7ff4926e",
+      "range": {
+        "startLine": 4888,
+        "startChar": 0,
+        "endLine": 4888,
+        "endChar": 1
+      },
+      "revId": "37e5a522cdfa742dd9e1703bdeee124e159fa3b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
