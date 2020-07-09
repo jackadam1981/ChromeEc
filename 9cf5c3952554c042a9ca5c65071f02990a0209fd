@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6c982aa2_cc87991d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-09T21:30:06Z",
+      "side": 1,
+      "message": "Should we also test pesky historic cases of things like EC resets with dongles in, or save that for later?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 68
+      },
+      "revId": "9cf5c3952554c042a9ca5c65071f02990a0209fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44f7c3c7_5fa2b6cc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
@@ -16,6 +39,52 @@
       "revId": "9cf5c3952554c042a9ca5c65071f02990a0209fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a65442e_b1442124",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-09T21:30:06Z",
+      "side": 1,
+      "message": "Move to CONFIG_SYSTEM_UNLOCKED",
+      "range": {
+        "startLine": 706,
+        "startChar": 3,
+        "endLine": 706,
+        "endChar": 45
+      },
+      "revId": "9cf5c3952554c042a9ca5c65071f02990a0209fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf0c69b_2f44f07a",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-09T21:30:06Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the flag saving here.  We save the current flags at the beginning of the test, then set them at the end in the normal reset test.  We save them here too, but then clear them at the end of the test?",
+      "range": {
+        "startLine": 658,
+        "startChar": 1,
+        "endLine": 658,
+        "endChar": 34
+      },
+      "revId": "9cf5c3952554c042a9ca5c65071f02990a0209fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
