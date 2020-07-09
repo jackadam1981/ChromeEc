@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "7b138faf_560acb7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-07-09T03:14:15Z",
+      "side": 1,
+      "message": "Thanks for Wai-Hong and Philp\u0027s suggestion, we create an other Pompom EC initial image based on Lazor. (crrev.com/c/2289470)",
+      "parentUuid": "186cd0bf_d884addc",
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71901d10_fc73b5ac",
         "filename": "board/pompom/battery.c",
         "patchSetId": 1
