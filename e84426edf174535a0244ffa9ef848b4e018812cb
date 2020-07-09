@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56e59443_b0660900",
+        "filename": "baseboard/dedede/variant_ec_npcx796fc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-09T16:56:18Z",
+      "side": 1,
+      "message": "Noted.  If any OEM designs go this route of re-purposing the i2c lines, I\u0027m half considering setting us up to have dynamic numbers of i2c ports to protect the lines from being mis-used.  Though that would cause an assert if something calls the unused port, so it could have unpleasant behavior on a customer system if a FW change sneaks in that causes a call.",
+      "parentUuid": "1fa3a421_bb119b0d",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 206,
+        "endChar": 37
+      },
+      "revId": "e84426edf174535a0244ffa9ef848b4e018812cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09ec6ffa_e0019603",
         "filename": "board/waddledoo/board.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "e84426edf174535a0244ffa9ef848b4e018812cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7a8b7dd_e41b1033",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-09T16:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09ec6ffa_e0019603",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "e84426edf174535a0244ffa9ef848b4e018812cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
