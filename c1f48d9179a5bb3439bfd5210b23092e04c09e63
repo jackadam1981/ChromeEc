@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0724da88_63720e7e",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-07-09T03:08:36Z",
+      "side": 1,
+      "message": "pre-upload.py is failed because CONFIG_USB_PD_REV20 is not define in include/config.h",
+      "revId": "c1f48d9179a5bb3439bfd5210b23092e04c09e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
