@@ -16,6 +16,24 @@
       "revId": "3710ee4d844204f915f256c61987e96b96ccc388",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b03f2d0_aabb216e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-09T21:54:25Z",
+      "side": 1,
+      "message": "Hi Li, \nYou need to cherry-pick all three changes in this stack.\nCL:2289214 (adds incbin.h)\nCL:2289215 (adds compressed accelgyro file)\nCL:2289216 (this change)",
+      "parentUuid": "53b7b2aa_56a888fa",
+      "revId": "3710ee4d844204f915f256c61987e96b96ccc388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
