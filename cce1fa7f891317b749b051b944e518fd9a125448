@@ -90,6 +90,23 @@
     },
     {
       "key": {
+        "uuid": "007c9162_4f787fc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-07-09T17:52:24Z",
+      "side": 1,
+      "message": "Please abandon this one if you are going with chromium:2289470",
+      "revId": "cce1fa7f891317b749b051b944e518fd9a125448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71901d10_fc73b5ac",
         "filename": "board/pompom/battery.c",
         "patchSetId": 1
