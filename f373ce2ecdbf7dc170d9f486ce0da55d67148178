@@ -16,6 +16,41 @@
       "revId": "f373ce2ecdbf7dc170d9f486ce0da55d67148178",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8a0652d_ec36a0bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-09T18:35:01Z",
+      "side": 1,
+      "message": "Remove the files when we don\u0027t need the compression, or remove the files because they aren\u0027t needed for what we are doing in the interim?",
+      "parentUuid": "9b4b8343_aed97eb0",
+      "revId": "f373ce2ecdbf7dc170d9f486ce0da55d67148178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "079ae999_d6d69d84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-09T18:35:01Z",
+      "side": 1,
+      "message": "Would we revert this CL too?",
+      "revId": "f373ce2ecdbf7dc170d9f486ce0da55d67148178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
