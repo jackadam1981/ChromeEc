@@ -46,6 +46,30 @@
       "revId": "8af68fff3c43e733109efc616c2e6308e4faf567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebbb3aec_b4444e6d",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-09T17:25:28Z",
+      "side": 1,
+      "message": "For the error case, I think it\u0027s better to use the old values rather than zeroing them out (which is how it\u0027s structured now). Currently, only the secondary Ibus measurement is the one being acted upon to limit VSYS transitions if we\u0027ve already saturated our contract.",
+      "parentUuid": "a13adaaa_ef0910bb",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 250,
+        "endChar": 30
+      },
+      "revId": "8af68fff3c43e733109efc616c2e6308e4faf567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
