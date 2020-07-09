@@ -70,6 +70,30 @@
       "revId": "0492e2586c74646f6bb207b090130827e3c256d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a913ea_1194f678",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-09T19:21:59Z",
+      "side": 1,
+      "message": "I am considering whether it would be worth defining CHARGER_PRIMARY for non-OCPC as CHARGER_SOLO.  Then we still get the build failures using CHARGER_SOLO with OCPC boards and using CHARGER_SECONDARY with non-OCPC boards, but you can use CHARGER_PRIMARY for both OCPC and non-OCPC code.",
+      "parentUuid": "767d35e1_906f42c0",
+      "range": {
+        "startLine": 626,
+        "startChar": 1,
+        "endLine": 626,
+        "endChar": 6
+      },
+      "revId": "0492e2586c74646f6bb207b090130827e3c256d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
