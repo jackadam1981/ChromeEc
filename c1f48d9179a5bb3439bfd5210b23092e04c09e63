@@ -16,6 +16,24 @@
       "revId": "c1f48d9179a5bb3439bfd5210b23092e04c09e63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45efb17a_679f5412",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-09T18:27:52Z",
+      "side": 1,
+      "message": "Just remove this line and the above comment. This is the change of crrev.com/c/2184547 but missed modifying the trogdor boards.",
+      "parentUuid": "0724da88_63720e7e",
+      "revId": "c1f48d9179a5bb3439bfd5210b23092e04c09e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
