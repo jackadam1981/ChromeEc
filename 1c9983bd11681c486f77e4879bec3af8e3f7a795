@@ -22,6 +22,30 @@
       "revId": "1c9983bd11681c486f77e4879bec3af8e3f7a795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd169d01_138557a9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-09T16:55:45Z",
+      "side": 1,
+      "message": "I\u0027ll put it in the OCPC .c file",
+      "parentUuid": "f454fdb2_c006f08a",
+      "range": {
+        "startLine": 1257,
+        "startChar": 39,
+        "endLine": 1258,
+        "endChar": 27
+      },
+      "revId": "1c9983bd11681c486f77e4879bec3af8e3f7a795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
