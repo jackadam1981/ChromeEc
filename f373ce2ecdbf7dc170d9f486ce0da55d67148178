@@ -68,6 +68,42 @@
       "revId": "f373ce2ecdbf7dc170d9f486ce0da55d67148178",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe5238da_f3156f1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-09T18:54:27Z",
+      "side": 1,
+      "message": "I think we should leave the incbin.h header in the codebase.  It\u0027s an elegant way to add binary blob.  Even if it\u0027s unused in the released code, it could be useful when bringing up new device drivers that require a small binary blob before migrating the blob over to the kernel\u0027s rootfs.",
+      "parentUuid": "079ae999_d6d69d84",
+      "revId": "f373ce2ecdbf7dc170d9f486ce0da55d67148178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeeb3589_c95a3a8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-09T18:54:27Z",
+      "side": 1,
+      "message": "The other files just provide a test framework.  Only incbin.h is needed to embed a binary file directly in to the image.",
+      "parentUuid": "c8a0652d_ec36a0bb",
+      "revId": "f373ce2ecdbf7dc170d9f486ce0da55d67148178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
