@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "790b53da_a7e2c389",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-09T23:20:05Z",
+      "side": 1,
+      "message": "Please make the similar change as\n  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2290830\nwhich will be submitting at the same time.\n\nBTW, please update some of the GPIO names (in this CL or later), which should be the same as the schematic. Some of them was renamed, according to the GPIO table.",
+      "revId": "c1f48d9179a5bb3439bfd5210b23092e04c09e63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0724da88_63720e7e",
         "filename": "board/pompom/board.h",
         "patchSetId": 1
