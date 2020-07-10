@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ceb96cde_2f257404",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T16:48:57Z",
+      "side": 1,
+      "message": "Not related, an undefined symbol in a shill tast test.",
+      "revId": "c8913908003cc6765b08d5077c70b3bce3306585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be439fe0_3231b7eb",
         "filename": "board/pompom/board.h",
         "patchSetId": 3
