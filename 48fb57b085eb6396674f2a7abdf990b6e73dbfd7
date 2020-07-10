@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dee1ea2a_3fe6becb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-07-10T22:49:25Z",
+      "side": 1,
+      "message": "Not a blocker to submission, but trying to understand: \n\nI\u0027m only finding a tcpci rev 2 v.1.0 spec on usb.org. (is that good enough? I think so. https://www.usb.org/sites/default/files/documents/usb-port_controller_specification_rev2.0_v1.0_0.pdf)\n\nWhy is auto-discharge-disconnect related to the suzy-q? Shouldn\u0027t the DUT be the SNK in this case? \n    -do we get a disconnect in the PD negotiation process and so we force it back to 5V and that breaks things?\n",
+      "revId": "48fb57b085eb6396674f2a7abdf990b6e73dbfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
