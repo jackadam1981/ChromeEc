@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be439fe0_3231b7eb",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T03:31:22Z",
+      "side": 1,
+      "message": "Thanks for renaming it and use a correct name for this GPIO. I should have used a generic name, not bound to the part name.",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 48
+      },
+      "revId": "c8913908003cc6765b08d5077c70b3bce3306585",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
