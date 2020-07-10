@@ -159,11 +159,14 @@ enum ec_cfg_usb_mb_type {
 enum ec_cfg_usb_db_type {
 	MORPHIUS_DB_T_OPT1_USBC_HDMI = 0,
 	MORPHIUS_DB_T_OPT3_USBC_HDMI_MSTHUB = 1,
+	MORPHIUS_DB_PICASSO_AOZ1380 = 2,
+	MORPHIUS_DB_DALI_AOZ1380 = 3,
 };
 
 
 #define HAS_USBC1_RETIMER_PS8802 \
-			(BIT(MORPHIUS_DB_T_OPT3_USBC_HDMI_MSTHUB))
+	(BIT(MORPHIUS_DB_T_OPT3_USBC_HDMI_MSTHUB) | \
+	BIT(MORPHIUS_DB_DALI_AOZ1380))
 
 static inline bool ec_config_has_usbc1_retimer_ps8802(void)
 {
@@ -172,7 +175,8 @@ static inline bool ec_config_has_usbc1_retimer_ps8802(void)
 }
 
 #define HAS_USBC1_RETIMER_PS8818 \
-			(BIT(MORPHIUS_DB_T_OPT1_USBC_HDMI))
+	(BIT(MORPHIUS_DB_T_OPT1_USBC_HDMI) | \
+	BIT(MORPHIUS_DB_PICASSO_AOZ1380))
 
 static inline bool ec_config_has_usbc1_retimer_ps8818(void)
 {
@@ -181,7 +185,8 @@ static inline bool ec_config_has_usbc1_retimer_ps8818(void)
 }
 
 #define HAS_HDMI_RETIMER_PI3HDX1204 \
-			(BIT(MORPHIUS_DB_T_OPT1_USBC_HDMI))
+	(BIT(MORPHIUS_DB_T_OPT1_USBC_HDMI) | \
+	BIT(MORPHIUS_DB_PICASSO_AOZ1380))
 
 static inline bool ec_config_has_hdmi_retimer_pi3hdx1204(void)
 {
@@ -190,7 +195,8 @@ static inline bool ec_config_has_hdmi_retimer_pi3hdx1204(void)
 }
 
 #define HAS_MST_HUB_RTD2141B \
-			(BIT(MORPHIUS_DB_T_OPT3_USBC_HDMI_MSTHUB))
+	(BIT(MORPHIUS_DB_T_OPT3_USBC_HDMI_MSTHUB) | \
+	BIT(MORPHIUS_DB_DALI_AOZ1380))
 
 static inline bool ec_config_has_mst_hub_rtd2141b(void)
 {
@@ -199,7 +205,8 @@ static inline bool ec_config_has_mst_hub_rtd2141b(void)
 }
 
 #define HAS_HDMI_CONN_HPD \
-			(BIT(MORPHIUS_DB_T_OPT1_USBC_HDMI))
+	(BIT(MORPHIUS_DB_T_OPT1_USBC_HDMI) | \
+	BIT(MORPHIUS_DB_PICASSO_AOZ1380))
 
 static inline bool ec_config_has_hdmi_conn_hpd(void)
 {
