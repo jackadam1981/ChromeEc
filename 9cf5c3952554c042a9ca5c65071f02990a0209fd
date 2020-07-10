@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7d0a141b_a2df2d78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-10T17:03:07Z",
+      "side": 1,
+      "message": "I tested with that dongle and power and video came back correct after triggering the new CC open path.",
+      "parentUuid": "75470b90_87a81b29",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 68
+      },
+      "revId": "9cf5c3952554c042a9ca5c65071f02990a0209fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44f7c3c7_5fa2b6cc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
