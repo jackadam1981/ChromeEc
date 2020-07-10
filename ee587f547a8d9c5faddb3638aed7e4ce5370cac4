@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c6c9568_1a54d8b8",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-10T17:10:54Z",
+      "side": 1,
+      "message": "This is based off of testing a bit. In the first few iterations of the loop, charging isn\u0027t stable/correct so making the calculation then leads to some strange values throwing off the loop even more. However, after those initial iterations it then begins to behave as expected. From there onwards, the resistance values aren\u0027t changing _too_ rapidly. I\u0027ve seen some relationship between current entering the pack and Rbatt.\n\nCurrently, these resistances are just updated periodically with no averaging. Once it\u0027s settled, I haven\u0027t seen large changes.",
+      "parentUuid": "6f5e6599_d8fcc079",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 9
+      },
+      "revId": "ee587f547a8d9c5faddb3638aed7e4ce5370cac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cacd97e_67b1d29c",
         "filename": "common/ocpc.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-10T15:53:48Z",
       "side": 1,
       "message": "Why do we not need to offset the min vsys target when the system resistance is known?",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 22
+      },
+      "revId": "ee587f547a8d9c5faddb3638aed7e4ce5370cac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "525c1df5_26f86fea",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-10T17:10:54Z",
+      "side": 1,
+      "message": "It seemed that we were compensating *twice* in that case. We\u0027d calculate our VSYS target (compensating for the losses), put in the resistances in the charger IC, and it would also compensate VSYS for losses on top of the VSYS value that wrote in. I believe this was leading to excessive current.",
+      "parentUuid": "2cacd97e_67b1d29c",
       "range": {
         "startLine": 217,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "75692cb5_bc04b3a1",
+        "filename": "include/ocpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-10T17:10:54Z",
+      "side": 1,
+      "message": "Ooh, yes they probably should. Rsys can be assumed to be 0 to start, but I\u0027ll initialize Rbatt.\n\n\u0026\u0026 Yes, that\u0027s correct. Once we calculate it, it\u0027s generally good enough while the EC is up.",
+      "parentUuid": "b390f3f6_e14526b3",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "ee587f547a8d9c5faddb3638aed7e4ce5370cac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1d283c7_78b879cd",
         "filename": "include/ocpc.h",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "ee587f547a8d9c5faddb3638aed7e4ce5370cac4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48664d3b_73a69fb3",
+        "filename": "include/ocpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-10T17:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1d283c7_78b879cd",
+      "range": {
+        "startLine": 29,
+        "startChar": 39,
+        "endLine": 29,
+        "endChar": 47
+      },
+      "revId": "ee587f547a8d9c5faddb3638aed7e4ce5370cac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
