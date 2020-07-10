@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6124ae74_ecc6ee78",
+        "filename": "board/servo_v4p1/board.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "Also initialize the pin assignment of the TUSB1064 to both USB SS and DP disconnected.",
+      "range": {
+        "startLine": 347,
+        "startChar": 30,
+        "endLine": 347,
+        "endChar": 31
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbf3a1a9_d6bcef7f",
+        "filename": "board/servo_v4p1/usb_pd_config.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "Use BIT(0).",
+      "range": {
+        "startLine": 59,
+        "startChar": 18,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15f4615e_0fae2340",
+        "filename": "board/servo_v4p1/usb_pd_config.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "Extra tab, not aligned.",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e8ae4fa_84231396",
+        "filename": "board/servo_v4p1/usb_pd_config.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "What does EMCA stand for?",
+      "range": {
+        "startLine": 65,
+        "startChar": 44,
+        "endLine": 65,
+        "endChar": 48
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d679ffe_17e179fa",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "Remove it.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 28
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b3b7239_6595ef78",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "This is legacy. Not used now.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de6b25a_91cca1aa",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "Have a bug for it?",
+      "range": {
+        "startLine": 459,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 5
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d7db966_cc7f8af3",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "Use an `if` statement.",
+      "range": {
+        "startLine": 527,
+        "startChar": 2,
+        "endLine": 527,
+        "endChar": 31
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17b58e21_cf54952d",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "Use an `if` statement.",
+      "range": {
+        "startLine": 617,
+        "startChar": 4,
+        "endLine": 617,
+        "endChar": 33
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9341dbb0_137d2dd6",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "TUSB1064 doesn\u0027t support the pin assignment E.",
+      "range": {
+        "startLine": 889,
+        "startChar": 61,
+        "endLine": 889,
+        "endChar": 62
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c969f70d_bb7478ba",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "TUSB1064",
+      "range": {
+        "startLine": 889,
+        "startChar": 20,
+        "endLine": 889,
+        "endChar": 26
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2f739f_334e2ba6",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "Remove the pin assignment E.",
+      "range": {
+        "startLine": 897,
+        "startChar": 35,
+        "endLine": 897,
+        "endChar": 51
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27ab652b_2c647ad3",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-10T20:48:32Z",
+      "side": 1,
+      "message": "The parameters are different from the definition in usb_pd.h.",
+      "range": {
+        "startLine": 1003,
+        "startChar": 16,
+        "endLine": 1003,
+        "endChar": 39
+      },
+      "revId": "ca7e77b8c348d1046dd70c82d56b3d476ddeca20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
