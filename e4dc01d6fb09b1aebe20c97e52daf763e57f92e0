@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d4cc997_396257df",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-10T18:16:47Z",
+      "side": 1,
+      "message": "The baseboard requires NPCX7_PWM1_SEL \u003d\u003d 1.  You need to move this to board/voxel/board.h and override the baseboard setting.\n    #undef NPCX7_PWM1_SEL\n    #define NPCX7_PWM1_SEL    0",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 63
+      },
+      "revId": "e4dc01d6fb09b1aebe20c97e52daf763e57f92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
