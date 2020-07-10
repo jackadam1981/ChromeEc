@@ -63,6 +63,23 @@
       "revId": "c36c0640e909fac2200ddd0a42aab4857a16d63b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1869a20_b47aaddd",
+        "filename": "board/puff/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2020-07-10T10:23:39Z",
+      "side": 1,
+      "message": "This isn\u0027t going to work as is. The user of this is charge_state_v2.c, which is enabled by CONFIG_CHARGER, which puff doesn\u0027t enable and probably shouldn\u0027t.\n\nFurther, it looks like coreboot would check this, and so probably wouldn\u0027t actually display an error to the user before turning off.",
+      "revId": "c36c0640e909fac2200ddd0a42aab4857a16d63b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
