@@ -22,6 +22,29 @@
       "revId": "e4dc01d6fb09b1aebe20c97e52daf763e57f92e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c34a5cc_be2f59f5",
+        "filename": "board/voxel/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-10T20:20:11Z",
+      "side": 1,
+      "message": "Implementations of this function use a weird convention that we should fix, where only one of the colors in the brightness array will be set. Callers should only set one of them.\n\nFor the time being, this function should avoid any weird surprises by ordering blue before amber, to match the enum ec_led_colors order.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 44
+      },
+      "revId": "e4dc01d6fb09b1aebe20c97e52daf763e57f92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
