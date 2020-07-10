@@ -16,6 +16,24 @@
       "revId": "48fb57b085eb6396674f2a7abdf990b6e73dbfd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bb4219a_92b801fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-10T22:57:20Z",
+      "side": 1,
+      "message": "The problem is it is not a PD device.  It is a Debug Accessory that we attach to with the DUT being DBG_ACC_ATTACHED.SNK.  Since it is not a PD device we do a three hard reset dance to make sure we gave the partner every chance to come to life and then the PE will go PE_SRC_DISCONNECT.  During the entire time, the SuzyQ will continue to apply 5V power on Vbus, like a good non-PD charger.  If we were talking to a PD device, they would go to Safe0V and then we would see it come back up.  Since we never left Safe5V, the disabling ADD and enabling ADD caused the TCPC to FAULT. This never turns out good and the state of the registers is up in the air.  So, not disabling/enabling AutoDischargeDisconnect removes this fault condition and SuzyQ is happy.  AutoDischargeDisconnect is defined for the TCPC being source or sink and the behavior is slightly different. Nuvoton suggested disabling ADD in order to avoid sensing the bus disconnect but we don\u0027t care because we have a flag but that will not allow us to exit the Attached_run loop.",
+      "parentUuid": "dee1ea2a_3fe6becb",
+      "revId": "48fb57b085eb6396674f2a7abdf990b6e73dbfd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
