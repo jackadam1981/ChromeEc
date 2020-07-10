@@ -271,7 +271,7 @@ endif
 
 $(out)/RW/common/rma_auth.o: $(out)/rma_key_from_blob.h
 
-$(out)/rma_key_from_blob.h: board/$(BOARD)/$(BLOB_FILE) util/bin2h.sh
+$(out)/rma_key_from_blob.h: $(BDIR)/$(BLOB_FILE) util/bin2h.sh
 	$(Q)util/bin2h.sh RMA_KEY_BLOB $< $@
 
 endif

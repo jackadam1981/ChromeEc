@@ -17,6 +17,21 @@ BOARD ?= bds
 
 # Directory where the board is configured (includes /$(BOARD) at the end)
 BDIR:=$(wildcard board/$(BOARD))
+# New organization - board projects nested under the baseboard program
+BDIR_NESTED:=$(wildcard baseboard/*/$(BOARD))
+
+# Prevent name collision between legacy board/$(BOARD) and baseboard/*/$(BOARD).
+ifneq (,$(BDIR))
+ifneq (,$(BDIR_NESTED))
+$(error Duplicate BOARD $(BOARD) found, $(BDIR) $(BDIR_NESTED))
+endif
+endif
+
+# Legacy board/$(BOARD) doesn't exist, use baseboard/*/$(BOARD).
+ifeq (,$(BDIR))
+BDIR:=$(BDIR_NESTED)
+endif
+
 # Private board directory
 PBDIR:=$(wildcard private-*/board/$(BOARD))
 

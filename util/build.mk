@@ -49,12 +49,12 @@ build-util-art+=$(BOARD)_vif.txt
 
 # usb_pd_policy.c can be in baseboard, or board, or both.
 genvif-pd-srcs=$(sort $(wildcard $(BASEDIR)/usb_pd_policy.c \
-			board/$(BOARD)/usb_pd_policy.c))
+			$(BDIR)/usb_pd_policy.c))
 genvif-pd-objs=$(genvif-pd-srcs:%.c=$(out)/util/%.o)
 genvif-pd-objs += $(out)/common/usb_common.o
 deps-$(CONFIG_USB_POWER_DELIVERY) += $(genvif-pd-objs:%.o=%.o.d)
 
-$(out)/util/genvif: $(genvif-pd-objs) board/$(BOARD)/board.h \
+$(out)/util/genvif: $(genvif-pd-objs) $(BDIR)/board.h \
 			include/usb_pd.h include/usb_pd_tcpm.h
 $(out)/util/genvif: BUILD_LDFLAGS+=$(genvif-pd-objs) -flto
 
@@ -79,7 +79,7 @@ endif # CONFIG_BOOTBLOCK
 ifneq ($(CONFIG_IPI),)
 build-util-bin += gen_ipi_table
 
-$(out)/util/gen_ipi_table: board/$(BOARD)/board.h
+$(out)/util/gen_ipi_table: $(BDIR)/board.h
 $(out)/ipi_table_gen.inc: $(out)/util/gen_ipi_table
 	$(call quiet,ipi_table,IPITBL )
 endif
