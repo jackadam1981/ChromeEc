@@ -128,6 +128,30 @@
       "revId": "49886389f8b709d9fab1aa9a7ec5a43f50fbe664",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b37f622_03e7163c",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-10T16:08:24Z",
+      "side": 1,
+      "message": "but not checking GPIO creates potential security hole. there should be some mechanism to explicitly require GPIO if it wasn\u0027t authenticated other way (PIN/password).",
+      "parentUuid": "53c2436e_22cf0c59",
+      "range": {
+        "startLine": 388,
+        "startChar": 22,
+        "endLine": 388,
+        "endChar": 44
+      },
+      "revId": "49886389f8b709d9fab1aa9a7ec5a43f50fbe664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
