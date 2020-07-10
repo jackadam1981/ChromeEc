@@ -69,6 +69,24 @@
       "revId": "ab022e1797d199832c0449a85215298b16067127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb524197_001abff0",
+        "filename": "baseboard/nucleo-f412zg/base-board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-07-10T16:21:49Z",
+      "side": 1,
+      "message": "I think both implementations should be tested, but that utils test that you mention in http://crrev/c/2242354 looks pretty specific to the classic shared_mem single-shot allocator. The shmalloc seems to be tested in https://github.com/coreboot/chrome-ec/blob/master/test/shmalloc.c and is enabled specifically in https://github.com/coreboot/chrome-ec/blob/master/test/test_config.h#L233 .\n\nYou can enable test specific configs in the following file, but again, I don\u0027t think you want to enable CONFIG_MALLOC for that util test:\nhttps://github.com/coreboot/chrome-ec/blob/master/test/test_config.h",
+      "parentUuid": "ec5cd9de_c36f9e0c",
+      "revId": "ab022e1797d199832c0449a85215298b16067127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
