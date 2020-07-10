@@ -22,6 +22,30 @@
       "revId": "23ec65ce7452b0c96e582bc504bea8a933f4f8e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f898df_aa461b2d",
+        "filename": "board/boten/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-07-10T07:47:52Z",
+      "side": 1,
+      "message": "According to the past experience, there may be a requirement for the maximum brightness of the LED. Set the maximum brightness with the PWM mode for the future requirement.",
+      "parentUuid": "da961f40_dcd1e353",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "23ec65ce7452b0c96e582bc504bea8a933f4f8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
