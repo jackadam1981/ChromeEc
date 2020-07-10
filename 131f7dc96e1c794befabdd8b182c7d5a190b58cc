@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "221e84bf_3a51dba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-10T18:19:32Z",
+      "side": 1,
+      "message": "\u003e Patch Set 6:\n\u003e \n\u003e (3 comments)\n\u003e \n\u003e \u003e Patch Set 6:\n\u003e \u003e \n\u003e \u003e (3 comments)\n\u003e \u003e \n\u003e \u003e I feel we might as well go back to a whiteboard and evaluate other solutions. I can think of at least two other solutions: fixing Cr50 (removing 2nd reset) and fixing TCPC reset (pd_partner_port_reset).\n\u003e \n\u003e I don\u0027t think that fixing the CR50 is an option for the existing platforms like Zork and Puff, since the designs are complete and the CR50 RO is fixed.\n\u003e I agree that fixing the TCP reset should fix the type-C issue (though I would like to see it in operation first to ensure that it works in all circumstances).\n\u003e Though the thought here I have is that the TCPC reset doesn\u0027t fix this root problem, so I would argue that even if pd_partner_port_reset was implemented, it is still useful to have this fix so that the correct state of the EC can be relied upon - there is no guarantee that other features won\u0027t expect to be able to distinguish between power-on and reset.\n\nFiled https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1104305.",
+      "revId": "131f7dc96e1c794befabdd8b182c7d5a190b58cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcc43f03_66ad74f7",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 6
