@@ -636,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "562aa5c2_b2e1ff22",
+        "filename": "include/usb_usb4_alt_mode.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-11T00:05:10Z",
+      "side": 1,
+      "message": "As I noted in another comment, I just remembered that the response to Enter USB is Accept or Reject, not ACK or NAK.",
+      "parentUuid": "a24e936a_74cde492",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "6cc9674fed25861dc9fab6724c923ac61149e856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a32eb271_84629e53",
         "filename": "include/usb_usb4_alt_mode.h",
         "patchSetId": 12

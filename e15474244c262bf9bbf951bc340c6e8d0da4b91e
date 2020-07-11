@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be4568bd_ae38d5bc",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-11T00:05:10Z",
+      "side": 1,
+      "message": "Can you also change this function and usb4_entry_failed to enter_usb_init and enter_usb_failed?",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 14
+      },
+      "revId": "e15474244c262bf9bbf951bc340c6e8d0da4b91e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b707c6a3_0017484c",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-11T00:05:10Z",
+      "side": 1,
+      "message": "These functions should be \"accepted\" and \"rejected\" instead of \"acked\" and \"naked,\" to correspond to the spec.",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "e15474244c262bf9bbf951bc340c6e8d0da4b91e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6411af1c_f232ca14",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-11T00:05:10Z",
+      "side": 1,
+      "message": "Is there a bug for this?",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 9
+      },
+      "revId": "e15474244c262bf9bbf951bc340c6e8d0da4b91e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d72089_720610f4",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-11T00:05:10Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why we have two states here. Assuming we  happen to call enter_usb_setup_next_msg twice before we get the Accept, do we need to do anything differently the second time? Would anything bad happen if we called usb_mux_set_safe_mode twice?",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 36
+      },
+      "revId": "e15474244c262bf9bbf951bc340c6e8d0da4b91e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "202ef9d5_4c96bd0c",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-11T00:05:10Z",
+      "side": 1,
+      "message": "While there is no direct Enter USB analog to Exit Mode, if we for some reason called this function again after successfully entering USB4, it would probably be good not to re-send Enter USB. Can this have an \"active\" state like TBT and DP? I guess in this function, it would return -1, and in the response handling functions, it wouldn\u0027t do anything.",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "e15474244c262bf9bbf951bc340c6e8d0da4b91e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
