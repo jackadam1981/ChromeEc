@@ -5777,7 +5777,7 @@ struct ec_params_set_cbi {
 #define EC_RESET_FLAG_OTHER       BIT(0)   /* Other known reason */
 #define EC_RESET_FLAG_RESET_PIN   BIT(1)   /* Reset pin asserted */
 #define EC_RESET_FLAG_BROWNOUT    BIT(2)   /* Brownout */
-#define EC_RESET_FLAG_POWER_ON    BIT(3)   /* Power-on reset */
+#define EC_RESET_FLAG_POWER_ON    BIT(3)   /* DON'T TRUST IT. Power-on reset */
 #define EC_RESET_FLAG_WATCHDOG    BIT(4)   /* Watchdog timer reset */
 #define EC_RESET_FLAG_SOFT        BIT(5)   /* Soft reset trigger by core */
 #define EC_RESET_FLAG_HIBERNATE   BIT(6)   /* Wake from hibernate */
@@ -5801,6 +5801,7 @@ struct ec_params_set_cbi {
 #define EC_RESET_FLAG_EFS         BIT(20)  /* Jumped to this image by EFS */
 #define EC_RESET_FLAG_AP_IDLE     BIT(21)  /* Leave alone AP */
 #define EC_RESET_FLAG_INITIAL_PWR BIT(22)  /* EC had power, then was reset */
+#define EC_RESET_FLAG_PD_MCU      BIT(23)  /* Reset PD MCU (TCPC) */
 
 struct ec_response_uptime_info {
 	/*

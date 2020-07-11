@@ -224,6 +224,11 @@ void system_encode_save_flags(int reset_flags, uint32_t *save_flags)
 		*save_flags |= EC_RESET_FLAG_SOFT;
 }
 
+uint32_t system_is_reset_flag_set(uint32_t flags)
+{
+	return reset_flags & flags;
+}
+
 uint32_t system_get_reset_flags(void)
 {
 	return reset_flags;

@@ -61,6 +61,14 @@ __test_only void system_common_reset_state(void);
 void system_encode_save_flags(int reset_flags, uint32_t *save_flags);
 
 /**
+ * Check if reset flag is set.
+ *
+ * @param flags
+ * @return Non-zero if any given flag is set. Zero otherwise.
+ */
+uint32_t system_is_reset_flag_set(uint32_t flags);
+
+/**
  * Get the reset flags.
  *
  * @return Reset flags (EC_RESET_FLAG_*), or 0 if the cause is unknown.
