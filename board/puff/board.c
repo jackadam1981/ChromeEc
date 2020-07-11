@@ -561,12 +561,15 @@ void board_reset_pd_mcu(void)
 {
 	int level = !!(tcpc_config[USB_PD_PORT_TCPC_0].flags &
 		       TCPC_FLAGS_RESET_ACTIVE_HIGH);
+	uint32_t reset_flags = chip_read_reset_flags();
 
+	chip_save_reset_flags(reset_flags | EC_RESET_FLAG_BROWNOUT);
 	gpio_set_level(GPIO_USB_C0_TCPC_RST, level);
 	msleep(BOARD_TCPC_C0_RESET_HOLD_DELAY);
 	gpio_set_level(GPIO_USB_C0_TCPC_RST, !level);
 	if (BOARD_TCPC_C0_RESET_POST_DELAY)
 		msleep(BOARD_TCPC_C0_RESET_POST_DELAY);
+	chip_save_reset_flags(reset_flags & ~EC_RESET_FLAG_BROWNOUT);
 }
 
 int board_set_active_charge_port(int port)
