@@ -45,6 +45,30 @@
       "revId": "382ad6d20f9997964ea8e60c4d501d4597bcf376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca805ce_0448b424",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-11T02:26:06Z",
+      "side": 1,
+      "message": "I understand that in practice (for now) it\u0027s either 0, 32 or sizeof(salt_kh).\nbut still feels like what we actual want to say here is \u003d\u003d 0.\nif we want to recognize only 32 and sizeof(salt_kh), and all other sizes considered garbage, then just say (drbg_entropy_size !\u003d 32) \u0026\u0026 (drbg_entropy_size !\u003d sizeof(salt_kh))",
+      "parentUuid": "63d9969d_76cacabc",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "382ad6d20f9997964ea8e60c4d501d4597bcf376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
