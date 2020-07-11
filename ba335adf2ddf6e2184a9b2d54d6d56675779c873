@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "531162ca_75395c01",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-11T01:28:58Z",
+      "side": 1,
+      "message": "This can all be removed. setup_mux() is already called from setup_fw_config() below.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 78
+      },
+      "revId": "ba335adf2ddf6e2184a9b2d54d6d56675779c873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
