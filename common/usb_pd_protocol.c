@@ -2526,6 +2526,7 @@ static void pd_partner_port_reset(int port)
 {
 	uint64_t timeout;
 	uint8_t flags;
+	uint32_t reset_flags;
 
 	/*
 	 * If there is no contract in place (or if we fail to read the BBRAM
@@ -2560,7 +2561,13 @@ static void pd_partner_port_reset(int port)
 	/* Provide Rp for 200 msec. or until we no longer have VBUS. */
 	CPRINTF("C%d Apply Rp!\n", port);
 	cflush();
+
+	/* Save a reset flag before setting Rp in case it causes brownout. */
+	reset_flags = chip_read_reset_flags();
+	chip_save_reset_flags(reset_flags | EC_RESET_FLAG_BROWNOUT);
 	tcpm_set_cc(port, TYPEC_CC_RP);
+	chip_save_reset_flags(reset_flags & ~EC_RESET_FLAG_BROWNOUT);
+
 	timeout = get_time().val + 200 * MSEC;
 
 	while (get_time().val < timeout && pd_is_vbus_present(port))
