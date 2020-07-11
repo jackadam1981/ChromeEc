@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1814c64_8cfd9971",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-11T00:12:44Z",
+      "side": 1,
+      "message": "I think this might break PD FAFT, is there a matching change to autotest?\n18:00:09 INFO | autoserv| TestFail: pd 0 state: \u0027pe_state\u0027 value not found\nb/160940817",
+      "revId": "eee4cafb1d92b99a75af43e267788a207dd1f756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
