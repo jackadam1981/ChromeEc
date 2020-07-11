@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a95fef89_24ce8906",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-11T00:30:55Z",
+      "side": 1,
+      "message": "I like where this CL is going a lot.",
+      "revId": "4c819d34a029d92dc0d6a3729ac4a3ba3de70bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "455e5cbe_91e6acb4",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-11T00:30:55Z",
+      "side": 1,
+      "message": "Reference b/159717794. We should actually be waiting until we get the ACK.",
+      "range": {
+        "startLine": 195,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 9
+      },
+      "revId": "4c819d34a029d92dc0d6a3729ac4a3ba3de70bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f1ab7e_d04e974b",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-11T00:30:55Z",
+      "side": 1,
+      "message": "Is the ! a typo?\n\nIf we were to fail setting up the VDM request for some reason, we would probably want to clear mode_exit_request, such that we don\u0027t come back in here again, similarly to the Enter Mode case.",
+      "range": {
+        "startLine": 203,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 41
+      },
+      "revId": "4c819d34a029d92dc0d6a3729ac4a3ba3de70bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25fd85db_3a669ec6",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-11T00:30:55Z",
+      "side": 1,
+      "message": "Nit: Exit Mode",
+      "range": {
+        "startLine": 30,
+        "startChar": 24,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "4c819d34a029d92dc0d6a3729ac4a3ba3de70bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
