@@ -1996,6 +1996,7 @@ static void tc_error_recovery_run(const int port)
 		set_state_tc(port, TC_UNATTACHED_SNK);
 		return;
 	}
+
 #ifdef CONFIG_USB_PD_TRY_SRC
 	/*
 	 * If try src support is active (e.g. in S0). Then try to become the
