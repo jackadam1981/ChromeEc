@@ -16,6 +16,24 @@
       "revId": "fb3e44cce54d77686acd3486b260f9752eeba730",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9607f951_abde89df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-12T18:45:12Z",
+      "side": 1,
+      "message": "It is related to when and how many times prl_run() needs to be called to advance the state machine. I think this test as a whole could be improved to make that less magic, maybe in the \"new\" version?",
+      "parentUuid": "b0446100_75641bff",
+      "revId": "fb3e44cce54d77686acd3486b260f9752eeba730",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
