@@ -80,6 +80,10 @@ static void baseboard_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
 
+void board_reset_pd_mcu(void)
+{
+
+}
 
 #ifdef SECTION_IS_RW
 void baseboard_trigger_hpd_irq(void)
