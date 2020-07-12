@@ -17,12 +17,12 @@
 /* USB Type C and USB PD defines */
 #define USB_PD_PORT_HOST   0
 #define USB_PD_PORT_DP   1
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_MUX_PS8822
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+
 /* #define BOARD_ALLOW_HIGH_VBUS */
 #undef TCPM_V2_ALT_MODE
-/* #undef CONFIG_USB_PD_INITIAL_DRP_STATE */
-/* #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SOURCE */
+
 
 /* USB Type A Features */
 
