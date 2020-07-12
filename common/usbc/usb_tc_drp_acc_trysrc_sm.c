@@ -1613,8 +1613,9 @@ void pd_send_hpd(int port, enum hpd_event hpd)
 		0, /* power low */
 		0x2);
 
-	pd_send_vdm(port, USB_SID_DISPLAYPORT,
-		VDO_OPOS(opos) | CMD_ATTENTION, data, 1);
+	if (IS_ENABLED(CONFIG_USB_PE_SM))
+		pd_send_vdm(port, USB_SID_DISPLAYPORT,
+			    VDO_OPOS(opos) | CMD_ATTENTION, data, 1);
 }
 #endif
 
