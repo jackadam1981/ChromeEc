@@ -1936,12 +1936,11 @@ static void tc_error_recovery_run(const int port)
 		set_state_tc(port, TC_UNATTACHED_SNK);
 		return;
 	}
-
+#ifdef CONFIG_USB_PD_TRY_SRC
 	/*
 	 * If try src support is active (e.g. in S0). Then try to become the
 	 * SRC, otherwise we should try to be the sink.
 	 */
-#ifdef CONFIG_USB_PD_TRY_SRC
 	restart_tc_sm(port, is_try_src_enabled(port) ? TC_UNATTACHED_SRC :
 						       TC_UNATTACHED_SNK);
 #else
