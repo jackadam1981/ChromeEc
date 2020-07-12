@@ -14,6 +14,68 @@
 /* TODO Define FLASH_PSTATE_LOCKED prior to building MP FW. */
 #undef CONFIG_FLASH_PSTATE_LOCKED
 
+/* Flash Lyaout */
+/*
+ * Flash layout: we redefine the sections offsets and sizes as we want to
+ * include a rollback region, and will use RO/RW regions of different sizes.
+ */
+#undef _IMAGE_SIZE
+#undef CONFIG_ROLLBACK_OFF
+#undef CONFIG_ROLLBACK_SIZE
+#undef CONFIG_FLASH_PSTATE
+#undef CONFIG_FW_PSTATE_SIZE
+#undef CONFIG_FW_PSTATE_OFF
+#undef CONFIG_SHAREDLIB_SIZE
+#undef CONFIG_RO_MEM_OFF
+#undef CONFIG_RO_STORAGE_OFF
+#undef CONFIG_RO_SIZE
+#undef CONFIG_RW_MEM_OFF
+#undef CONFIG_RW_STORAGE_OFF
+#undef CONFIG_RW_SIZE
+#undef CONFIG_EC_PROTECTED_STORAGE_OFF
+#undef CONFIG_EC_PROTECTED_STORAGE_SIZE
+#undef CONFIG_EC_WRITABLE_STORAGE_OFF
+#undef CONFIG_EC_WRITABLE_STORAGE_SIZE
+#undef CONFIG_WP_STORAGE_OFF
+#undef CONFIG_WP_STORAGE_SIZE
+
+#define CONFIG_FLASH_PSTATE
+/* Do not use a dedicated PSTATE bank */
+#undef CONFIG_FLASH_PSTATE_BANK
+
+#define CONFIG_SHAREDLIB_SIZE	0
+
+#define CONFIG_RO_MEM_OFF	0
+#define CONFIG_RO_STORAGE_OFF	0
+#define CONFIG_RO_SIZE		(38*1024)
+
+#define CONFIG_RW_MEM_OFF	(CONFIG_RO_SIZE + CONFIG_RO_MEM_OFF)
+#define CONFIG_RW_STORAGE_OFF	0
+#define CONFIG_RW_SIZE		(CONFIG_FLASH_SIZE - \
+				(CONFIG_RW_MEM_OFF - CONFIG_RO_MEM_OFF))
+
+#define CONFIG_EC_PROTECTED_STORAGE_OFF		CONFIG_RO_MEM_OFF
+#define CONFIG_EC_PROTECTED_STORAGE_SIZE	CONFIG_RO_SIZE
+#define CONFIG_EC_WRITABLE_STORAGE_OFF		CONFIG_RW_MEM_OFF
+#define CONFIG_EC_WRITABLE_STORAGE_SIZE		CONFIG_RW_SIZE
+
+#define CONFIG_WP_STORAGE_OFF		CONFIG_EC_PROTECTED_STORAGE_OFF
+#define CONFIG_WP_STORAGE_SIZE		CONFIG_EC_PROTECTED_STORAGE_SIZE
+
+/* Console commands to remove to save flash spaces */
+#undef CONFIG_CMD_CRASH
+#undef CONFIG_CMD_I2C_SCAN
+#undef CONFIG_CMD_IDLE_STATS
+#undef CONFIG_CMD_PWR_AVG
+#undef CONFIG_CMD_MD
+#undef CONFIG_CMD_WAITMS
+#undef CONFIG_CMD_SLEEPMASK
+#undef CONFIG_CMD_SLEEPMASK_SET
+
+/* Save more code space */
+#define CONFIG_COMMON_GPIO_SHORTNAMES
+#define CONFIG_LTO
+
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 #define CONFIG_STM_HWTIMER32
@@ -53,12 +115,10 @@
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL		0
 #define USB_EP_UPDATE		1
-#define USB_EP_CONSOLE		2
-#define USB_EP_COUNT		3
+#define USB_EP_COUNT		2
 
 #define USB_IFACE_UPDATE	0
-#define USB_IFACE_CONSOLE	1
-#define USB_IFACE_COUNT		2
+#define USB_IFACE_COUNT		1
 
 #ifndef __ASSEMBLER__
 /* USB string indexes */
@@ -68,14 +128,17 @@ enum usb_strings {
 	USB_STR_PRODUCT,
 	USB_STR_SERIALNO,
 	USB_STR_VERSION,
-	USB_STR_I2C_NAME,
+	/* USB_STR_I2C_NAME, */
 	USB_STR_UPDATE_NAME,
-#ifdef CONFIG_USB_ISOCHRONOUS
-	USB_STR_HEATMAP_NAME,
-#endif
 	USB_STR_COUNT
 };
 #endif
+
+/* No AP on any honeybuns variants */
+#undef CONFIG_USB_PD_HOST_CMD
+
+#ifdef SECTION_IS_RW
+/* RW Specific Config Options */
 
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_POWER_DELIVERY
@@ -94,7 +157,6 @@ enum usb_strings {
 #define CONFIG_USB_PD_TCPM_STM32GX
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_DECODE_SOP
-#define CONFIG_USB_PID 0x5048
 
 #define CONFIG_USB_PD_VBUS_DETECT_PPC
 #define CONFIG_USB_PD_DISCHARGE_PPC
@@ -110,7 +172,29 @@ enum usb_strings {
 #define CONFIG_USBC_VCONN_SWAP
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_SS_MUX_UFP_USB3
+#else
+/* RO Specific Config Options */
 
+/* No Type-C or USB-PD support */
+#undef CONFIG_USB_PRL_SM
+#undef CONFIG_USB_TYPEC_SM
+#undef CONFIG_USB_PE_SM
+#undef CONFIG_USB_PD_CONSOLE_CMD
+#undef CONFIG_CMD_PD
+
+/* RWSIG Config Options */
+/* Sign and switch to RW partition on boot. */
+#define CONFIG_RWSIG
+#define CONFIG_RSA
+#define CONFIG_SHA256_UNROLLED
+#endif /* SECTION_IS_RW */
+
+#define CONFIG_RWSIG_TYPE_RWSIG
+#define CONFIG_RSA_KEY_SIZE 3072
+#define CONFIG_RSA_EXPONENT_3
+#define CONFIG_SHA256
+
+#define CONFIG_USB_PID 0x5048
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
 #define CONFIG_USB_PD_IDENTITY_HW_VERS 1
 #define CONFIG_USB_PD_IDENTITY_SW_VERS 1
