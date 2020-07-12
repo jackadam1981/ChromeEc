@@ -29,6 +29,7 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#ifdef SECTION_IS_RW
 static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	PD_DRP_TOGGLE_ON,
 	PD_DRP_TOGGLE_ON,
@@ -49,19 +50,10 @@ static void ppc_interrupt(enum gpio_signal signal)
 	}
 }
 
-static void board_tcpc_debug(void)
-{
-	board_debug_gpio(TRIGGER_1, 0);
-	board_debug_gpio(TRIGGER_2, 0);
-}
-DECLARE_DEFERRED(board_tcpc_debug);
-
 static void tcpc_alert_event(enum gpio_signal s)
 {
 	int port = -1;
 
-	board_debug_gpio(TRIGGER_1, 1);
-	hook_call_deferred(&board_tcpc_debug_data, 1*MSEC);
 	switch (s) {
 	case GPIO_USBC_DP_MUX_ALERT_ODL:
 		board_debug_gpio(TRIGGER_2, 1);
@@ -70,7 +62,6 @@ static void tcpc_alert_event(enum gpio_signal s)
 	default:
 		return;
 	}
-
 	schedule_deferred_pd_interrupt(port);
 }
 
@@ -78,6 +69,7 @@ void hpd_interrupt(enum gpio_signal signal)
 {
 	usb_pd_hpd_edge_event(signal);
 }
+#endif
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -113,6 +105,7 @@ const struct power_seq board_power_seq[] = {
 
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
 
+#ifdef SECTION_IS_RW
 static void board_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
 {
 
@@ -188,6 +181,8 @@ enum pd_dual_role_states board_tc_get_initial_drp_mode(int port)
 {
 	return pd_dual_role_init[port];
 }
+#endif
+
 
 static void board_init(void)
 {
@@ -196,6 +191,7 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+#ifdef SECTION_IS_RW
 int ppc_get_alert_status(int port)
 {
 	if (port == USB_PD_PORT_HOST)
@@ -206,10 +202,26 @@ int ppc_get_alert_status(int port)
 	return 0;
 }
 
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+	int level;
+
+	if (!gpio_get_level(GPIO_USBC_DP_MUX_ALERT_ODL)) {
+		level = !!(tcpc_config[USB_PD_PORT_DP].flags &
+			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level)
+			status |= PD_STATUS_TCPC_ALERT_1;
+	}
+
+	return status;
+}
+
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* TODO(b/174825406): check correct operation for honeybuns */
 }
+#endif
 
 static void board_debug_gpio_1_pulse(void)
 {
@@ -244,17 +256,3 @@ void board_debug_gpio(int trigger, int enable, int pulse_usec)
 	}
 }
 
-uint16_t tcpc_get_alert_status(void)
-{
-	uint16_t status = 0;
-	int level;
-
-	if (!gpio_get_level(GPIO_USBC_DP_MUX_ALERT_ODL)) {
-		level = !!(tcpc_config[USB_PD_PORT_DP].flags &
-			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
-		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level)
-			status |= PD_STATUS_TCPC_ALERT_1;
-	}
-
-	return status;
-}
