@@ -16,28 +16,7 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
-/*
- * Define the strings used in our USB descriptors.
- */
-const void *const usb_strings[] = {
-	[USB_STR_DESC]         = usb_string_desc,
-	[USB_STR_VENDOR]       = USB_STRING_DESC("Google Inc."),
-	[USB_STR_PRODUCT]      = USB_STRING_DESC("Honeybuns"),
-	[USB_STR_SERIALNO]     = 0,
-	[USB_STR_VERSION]      = 0,
-	[USB_STR_I2C_NAME]     = USB_STRING_DESC("I2C"),
-	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
-#ifdef CONFIG_USB_ISOCHRONOUS
-	[USB_STR_HEATMAP_NAME] = USB_STRING_DESC("Heatmap"),
-#endif
-};
-BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
-
 /******************************************************************************/
-__overridable const struct power_seq board_power_seq[] = { };
-
-__overridable const size_t board_power_seq_count =
-	ARRAY_SIZE(board_power_seq);
 
 static void board_power_sequence(void)
 {
@@ -58,11 +37,6 @@ const struct i2c_port_t i2c_ports[] = {
 	{"i2c3",  I2C_PORT_I2C3,  400, GPIO_EC_I2C3_SCL, GPIO_EC_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
-
-void board_reset_pd_mcu(void)
-{
-
-}
 
 static void baseboard_init(void)
 {
