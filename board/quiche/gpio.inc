@@ -9,11 +9,12 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 
-
+#ifdef SECTION_IS_RW
 GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(D,  9),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
 GPIO_INT(USBC_DP_MUX_ALERT_ODL,  PIN(B,  1),      GPIO_INT_FALLING | GPIO_PULL_UP, tcpc_alert_event)
 GPIO_INT(USBC_DP_PPC_INT_ODL,    PIN(E,  7),      GPIO_INT_FALLING | GPIO_PULL_UP, ppc_interrupt)
 GPIO_INT(DDI_MST_IN_HPD,         PIN(F,  0),       GPIO_INT_BOTH, hpd_interrupt)
+#endif
 /*
  * USB-C Interrupts
  * TODO: Enable TCPC Interrupts
@@ -112,6 +113,7 @@ GPIO(EC_UART_TX,                    PIN(B, 11),      GPIO_INT_BOTH)
 GPIO(EC_UART_RX,                    PIN(B, 10),      GPIO_INT_BOTH)
 
 /* misc signals */
+GPIO(BOOT0,   PIN(B, 8), GPIO_INPUT)
 GPIO(EC_I2C1_SCL,                   PIN(A, 15),      GPIO_ODR_HIGH) /* I2C port 1 SCL */
 GPIO(EC_I2C1_SDA,                   PIN(B,  7),      GPIO_ODR_HIGH) /* I2C port 1 SDA */
 GPIO(EC_I2C2_SDA,                   PIN(A,  8),      GPIO_ODR_HIGH) /* I2C port 2 SDA */
