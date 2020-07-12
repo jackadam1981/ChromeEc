@@ -16,6 +16,7 @@
  * The minimum write size for STM32G4 is 8 bytes. Cros-EC does not support
  * PSTATE in single bank memories with a write size > 4 bytes.
  */
+
 /*
  * TODO(b/167462264): This is a temporary change to allow for platform bringup
  * without being constrained by flash space issue. Currently only using RO image
