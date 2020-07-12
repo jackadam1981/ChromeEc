@@ -26,11 +26,7 @@ const void *const usb_strings[] = {
 	[USB_STR_PRODUCT]      = USB_STRING_DESC("Honeybuns"),
 	[USB_STR_SERIALNO]     = 0,
 	[USB_STR_VERSION]      = 0,
-	[USB_STR_I2C_NAME]     = USB_STRING_DESC("I2C"),
 	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
-#ifdef CONFIG_USB_ISOCHRONOUS
-	[USB_STR_HEATMAP_NAME] = USB_STRING_DESC("Heatmap"),
-#endif
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
@@ -41,9 +37,10 @@ struct hpd_mark {
 	enum gpio_signal signal;
 };
 
+#ifdef SECTION_IS_RW
 static struct hpd_mark hpd_last_event;
-
 static int hpd_override;
+#endif
 /******************************************************************************/
 __overridable const struct power_seq board_power_seq[] = { };
 
@@ -84,7 +81,7 @@ static void baseboard_init(void)
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT);
 
 
-
+#ifdef SECTION_IS_RW
 void baseboard_trigger_hpd_irq(void)
 {
 	pd_send_hpd(0, hpd_irq);
@@ -173,3 +170,4 @@ static int command_hpd(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(hpd, command_hpd,
 			"[high|low|auto]",
 			"Turn on/off");
+#endif
