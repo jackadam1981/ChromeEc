@@ -29,6 +29,8 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+
+#ifdef SECTION_IS_RW
 static void tcpc_alert_event(enum gpio_signal s)
 {
 	int port = -1;
@@ -65,6 +67,7 @@ void hpd_interrupt(enum gpio_signal signal)
 {
 	baseboard_manage_hpd_event(signal);
 }
+#endif
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -101,6 +104,17 @@ const struct power_seq board_power_seq[] = {
 
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
 
+static void board_manage_led(void)
+{
+	static int counter;
+
+	gpio_set_level(GPIO_STATUS_LED1, counter & 1);
+	gpio_set_level(GPIO_STATUS_LED2, counter & 1);
+	counter++;
+}
+DECLARE_HOOK(HOOK_SECOND,board_manage_led, HOOK_PRIO_DEFAULT);
+
+#ifdef SECTION_IS_RW
 void board_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
 {
 
@@ -205,21 +219,6 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* TODO: b/ - check correct operation for honeybuns */
 }
 
-void board_debug_gpio(int trigger, int enable)
-{
-	switch (trigger) {
-	case TRIGGER_1:
-		gpio_set_level(GPIO_TRIGGER_1, enable);
-		break;
-	case TRIGGER_2:
-		gpio_set_level(GPIO_TRIGGER_2, enable);
-		break;
-	default:
-		CPRINTS("bad debug gpio selection");
-		break;
-	}
-}
-
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
@@ -233,4 +232,20 @@ uint16_t tcpc_get_alert_status(void)
 	}
 
 	return status;
+}
+#endif
+
+void board_debug_gpio(int trigger, int enable)
+{
+	switch (trigger) {
+	case TRIGGER_1:
+		gpio_set_level(GPIO_TRIGGER_1, enable);
+		break;
+	case TRIGGER_2:
+		gpio_set_level(GPIO_TRIGGER_2, enable);
+		break;
+	default:
+		CPRINTS("bad debug gpio selection");
+		break;
+	}
 }
