@@ -30,6 +30,7 @@
 /* only needed to build for now */
 struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 
+#ifdef SECTION_IS_RW
 static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	PD_DRP_TOGGLE_ON,
 	PD_DRP_FORCE_SINK,
@@ -50,19 +51,10 @@ static void ppc_interrupt(enum gpio_signal signal)
 	}
 }
 
-static void board_tcpc_debug(void)
-{
-	board_debug_gpio(TRIGGER_1, 0);
-	board_debug_gpio(TRIGGER_2, 0);
-}
-DECLARE_DEFERRED(board_tcpc_debug);
-
 static void tcpc_alert_event(enum gpio_signal s)
 {
 	int port = -1;
 
-	board_debug_gpio(TRIGGER_1, 1);
-	hook_call_deferred(&board_tcpc_debug_data, 1*MSEC);
 	switch (s) {
 	case GPIO_USBC_DP_MUX_ALERT_ODL:
 		board_debug_gpio(TRIGGER_2, 1);
@@ -71,7 +63,6 @@ static void tcpc_alert_event(enum gpio_signal s)
 	default:
 		return;
 	}
-
 	schedule_deferred_pd_interrupt(port);
 }
 
@@ -79,6 +70,7 @@ void hpd_interrupt(enum gpio_signal signal)
 {
 	baseboard_manage_hpd_event(signal);
 }
+#endif
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -114,6 +106,7 @@ const struct power_seq board_power_seq[] = {
 
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
 
+#ifdef SECTION_IS_RW
 static void board_hpd_update(const struct usb_mux *me, int hpd_lvl, int hpd_irq)
 {
 
@@ -197,6 +190,7 @@ static void board_select_drp_mode(void)
 	}
 }
 DECLARE_DEFERRED(board_select_drp_mode);
+#endif
 
 static void square_wave(void);
 DECLARE_DEFERRED(square_wave);
@@ -212,13 +206,15 @@ void square_wave(void)
 
 static void board_init(void)
 {
+#ifdef SECTION_IS_RW
 	board_select_drp_mode();
-	/* TODO */
 	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
 	hook_call_deferred(&square_wave_data, 50 * MSEC);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+#ifdef SECTION_IS_RW
 int ppc_get_alert_status(int port)
 {
 	if (port == USB_PD_PORT_HOST)
@@ -227,26 +223,6 @@ int ppc_get_alert_status(int port)
 		return gpio_get_level(GPIO_USBC_DP_PPC_INT_ODL) == 0;
 
 	return 0;
-}
-
-void board_overcurrent_event(int port, int is_overcurrented)
-{
-	/* TODO(b/174825406): check correct operation for honeybuns */
-}
-
-void board_debug_gpio(int trigger, int enable)
-{
-	switch (trigger) {
-	case TRIGGER_1:
-		gpio_set_level(GPIO_TRIGGER_1, enable);
-		break;
-	case TRIGGER_2:
-		gpio_set_level(GPIO_TRIGGER_2, enable);
-		break;
-	default:
-		CPRINTS("bad debug gpio selection");
-		break;
-	}
 }
 
 uint16_t tcpc_get_alert_status(void)
@@ -263,3 +239,25 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+void board_overcurrent_event(int port, int is_overcurrented)
+{
+	/* TODO(b/174825406): check correct operation for honeybuns */
+}
+#endif
+
+void board_debug_gpio(int trigger, int enable)
+{
+	switch (trigger) {
+	case TRIGGER_1:
+		gpio_set_level(GPIO_TRIGGER_1, enable);
+		break;
+	case TRIGGER_2:
+		gpio_set_level(GPIO_TRIGGER_2, enable);
+		break;
+	default:
+		CPRINTS("bad debug gpio selection");
+		break;
+	}
+}
+
