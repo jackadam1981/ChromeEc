@@ -401,6 +401,51 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 				       charge_mv);
 }
 
+int board_get_version(void)
+{
+	static int ver = -1;
+
+	if (ver != -1)
+		return ver;
+
+	ver = 0;
+
+	/* First 3 strappings are binary. */
+	if (gpio_get_level(GPIO_BOARD_VERSION1))
+		ver |= 0x01;
+	if (gpio_get_level(GPIO_BOARD_VERSION2))
+		ver |= 0x02;
+	if (gpio_get_level(GPIO_BOARD_VERSION3))
+		ver |= 0x04;
+
+	CPRINTS("Board ID = %d", ver);
+
+	return ver;
+}
+
+int board_get_sku_id(void)
+{
+	static int sku_id = -1;
+
+	if (sku_id != -1)
+		return sku_id;
+
+	sku_id = 0;
+
+	/* First 3 strappings are binary. */
+	if (gpio_get_level(GPIO_SKU_ID0))
+		sku_id |= 0x01;
+	if (gpio_get_level(GPIO_SKU_ID1))
+		sku_id |= 0x02;
+	if (gpio_get_level(GPIO_SKU_ID2))
+		sku_id |= 0x04;
+
+	CPRINTS("SKU ID = %d", sku_id);
+
+	return sku_id;
+
+}
+
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;

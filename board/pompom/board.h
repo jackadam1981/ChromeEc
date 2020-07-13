@@ -91,6 +91,9 @@ int board_vbus_sink_enable(int port, int enable);
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
+/* Board specific handlers */
+int board_get_version(void);
+int board_get_sku_id(void);
 
 #endif /* !defined(__ASSEMBLER__) */
 
