@@ -16,6 +16,69 @@
       "revId": "54c6d4b44de1c32315aa6a71f11df4c2e12aac78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57165e38_d6f4a4f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:59:13Z",
+      "side": 1,
+      "message": "What happens if we leave the interrupt on. I really don\u0027t think we should be enabling/disabled the CC disconnect interrupt. It seems too specific to this driver implementation. What happens if we don\u0027t disable the interrupt",
+      "revId": "54c6d4b44de1c32315aa6a71f11df4c2e12aac78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9448c5b_3b75c807",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1914,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:59:13Z",
+      "side": 1,
+      "message": "I don\u0027t think we shoudl disable this interrupt here. I think the interrupt should still fire but the TCPM V1 or V2 should ignore the CC disconnect/update",
+      "range": {
+        "startLine": 1908,
+        "startChar": 3,
+        "endLine": 1914,
+        "endChar": 42
+      },
+      "revId": "54c6d4b44de1c32315aa6a71f11df4c2e12aac78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc454772_cfb719fd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:59:13Z",
+      "side": 1,
+      "message": "same, we shouldn\u0027t be disabling interrupts at the TCPM level here. The disconnect event is still valid, but the TCPM should handle ignoring the CC update",
+      "range": {
+        "startLine": 1942,
+        "startChar": 3,
+        "endLine": 1949,
+        "endChar": 43
+      },
+      "revId": "54c6d4b44de1c32315aa6a71f11df4c2e12aac78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
