@@ -93,6 +93,30 @@
       "revId": "e4dc01d6fb09b1aebe20c97e52daf763e57f92e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d805efe7_c60984c9",
+        "filename": "board/voxel/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-13T23:08:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7dc5a8a7_658a8e73",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 44
+      },
+      "revId": "e4dc01d6fb09b1aebe20c97e52daf763e57f92e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
