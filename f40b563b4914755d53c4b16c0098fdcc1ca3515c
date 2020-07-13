@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2b33fbd_5f6bd4ae",
+        "filename": "board/boten/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-13T17:59:24Z",
+      "side": 1,
+      "message": "Don\u0027t see the 0-50 start charge range in the datasheet?",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "f40b563b4914755d53c4b16c0098fdcc1ca3515c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
