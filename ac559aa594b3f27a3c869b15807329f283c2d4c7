@@ -16,6 +16,24 @@
       "revId": "ac559aa594b3f27a3c869b15807329f283c2d4c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ad1023a_2995cb39",
+        "filename": "board/morphius/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-07-13T02:23:20Z",
+      "side": 1,
+      "message": "This 2 DB cbi is use to decide which retimer we need PS8802 or PS8818.",
+      "parentUuid": "dba819b5_a7b03918",
+      "revId": "ac559aa594b3f27a3c869b15807329f283c2d4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
