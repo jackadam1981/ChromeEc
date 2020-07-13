@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "926eed66_0b0fd465",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:44:26Z",
+      "side": 1,
+      "message": "Thank you for adding tests!",
+      "revId": "814decf12e4c4861d03343ffbdf769ed504f47cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34d4241c_52f12b49",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:44:26Z",
+      "side": 1,
+      "message": "should we specify the mock i2c port from host as well?",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "814decf12e4c4861d03343ffbdf769ed504f47cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd25763f_1a701c48",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:44:26Z",
+      "side": 1,
+      "message": "can you add comment of what situation we are trying to set up",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 15
+      },
+      "revId": "814decf12e4c4861d03343ffbdf769ed504f47cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b7d8d0b_fe7cec31",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:44:26Z",
+      "side": 1,
+      "message": "let\u0027s use before_test and reset the test every cycle (see the typec_drp test)",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 13
+      },
+      "revId": "814decf12e4c4861d03343ffbdf769ed504f47cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
