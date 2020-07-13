@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fe9fd548_0e3bbcea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-13T05:57:56Z",
+      "side": 1,
+      "message": "I think it\u0027s a good idea. Can we convert all boards to the nested structure (except for those without baseboard) or are you planning to?",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "4d3fea813ba2be5e7b898afa34bee2a115510169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02aa55af_c2d50017",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -16,6 +39,29 @@
       "revId": "4d3fea813ba2be5e7b898afa34bee2a115510169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c44c4d82_bf639e88",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-13T05:57:56Z",
+      "side": 1,
+      "message": "Do we even need to tell which one is a baseboard and which one is a board?\n\nCan we automatically use the lowest directory name as a target? For example, fizz doesn\u0027t have a baseboard. So, make BOARD\u003dfizz builds from board/fizz. volteer has volteer as a variant. So, we\u0027ll have\n\n  board/volteer/volteer\n\nbut make BOARD\u003dvolteer will build from board/volteer/volteer using board/volteer as a parent.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "4d3fea813ba2be5e7b898afa34bee2a115510169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
