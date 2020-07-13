@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f238f021_8ee62ab7",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-13T19:28:05Z",
+      "side": 0,
+      "message": "nit: consider splitting CONFIG_LED_PWM change out into its own CL",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "4223c72d3ba9ef5ca28feb4701f575444b702a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
