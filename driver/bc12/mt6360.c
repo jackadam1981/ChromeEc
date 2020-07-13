@@ -118,7 +118,7 @@ static void mt6360_update_charge_manager(int port)
 
 	mt6360_read8(MT6360_REG_DPDMIRQ, &reg);
 
-	if (pd_snk_is_vbus_provided(port) && (reg & MT6360_MASK_DPDMIRQ_ATTACH))
+	if (reg & MT6360_MASK_DPDMIRQ_ATTACH)
 		new_bc12_type = mt6360_get_bc12_device_type();
 
 	if (new_bc12_type != current_bc12_type) {
