@@ -16,6 +16,75 @@
       "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fe1eb0c_63f8a45a",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:54:30Z",
+      "side": 1,
+      "message": "what is bad about leaving this interrupt enabled. What state gets bad?\n\nDoes the interrupt keep firing even those we ack in below on line 75?",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f031c32_057b9177",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:54:30Z",
+      "side": 1,
+      "message": "nit: let\u0027s use enum tcpc_cc_voltage_status so we don\u0027t have to cast below",
+      "range": {
+        "startLine": 632,
+        "startChar": 1,
+        "endLine": 632,
+        "endChar": 4
+      },
+      "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5591d7fc_f4f7cc1a",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:54:30Z",
+      "side": 1,
+      "message": "thank you for well documented code!\n\nWhy can\u0027t we have both, monitoring Vbus and monitor CC lines? I believe both changes are called out in the spec for changing state to disconnect",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 651,
+        "endChar": 55
+      },
+      "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
