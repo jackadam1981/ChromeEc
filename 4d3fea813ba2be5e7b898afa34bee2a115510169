@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34b5d777_3a3e6e41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-13T16:56:20Z",
+      "side": 1,
+      "message": "Yes, I think all boards should move to the nested structure.  For boards under active development, the boards can be moved one at a time with no CQ dependencies\n\nFor baseboards that have branched, I think we could move all variants for a given baseboard with a single CL stack.",
+      "parentUuid": "fe9fd548_0e3bbcea",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "4d3fea813ba2be5e7b898afa34bee2a115510169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02aa55af_c2d50017",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -70,6 +94,30 @@
       "writtenOn": "2020-07-13T05:57:56Z",
       "side": 1,
       "message": "Do we even need to tell which one is a baseboard and which one is a board?\n\nCan we automatically use the lowest directory name as a target? For example, fizz doesn\u0027t have a baseboard. So, make BOARD\u003dfizz builds from board/fizz. volteer has volteer as a variant. So, we\u0027ll have\n\n  board/volteer/volteer\n\nbut make BOARD\u003dvolteer will build from board/volteer/volteer using board/volteer as a parent.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "4d3fea813ba2be5e7b898afa34bee2a115510169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e7d126d_75b221d7",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-13T16:56:20Z",
+      "side": 1,
+      "message": "With this change, the baseboard and board relationship is still only determined by the make variable \"baseboard:\u003d\u003cBASEBOARD\u003e\" in build.mk.\n\nThis was intentional, so that board/\u003cBOARD\u003e files can be moved to the nested \u003cBASEBOARD\u003e directory unmodified.  In theory you could nest a \u003cBOARD\u003e under the wrong \u003cBASEBOARD\u003e directory and it will still compile.\n\nI\u0027ll explore follow on changes that enforce the \u003cBOARD\u003e and \u003cBASEBOARD\u003e relationship explicitly based on the directory nesting.",
+      "parentUuid": "c44c4d82_bf639e88",
       "range": {
         "startLine": 20,
         "startChar": 0,
