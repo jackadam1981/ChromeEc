@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "38e5d328_f69323b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T17:05:29Z",
+      "side": 1,
+      "message": "I still don\u0027t understand how this will work neither since power_on or brownout flags will be set after the CR50 reset thus causing a boot loop.",
+      "revId": "5c6f07238b3cc50ce45f3b50cff0f9b4fe07cd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bae3ca5_68c9e11e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2525,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T17:05:29Z",
+      "side": 1,
+      "message": "also, puff is using TCPMv2 so you will need to make the changes there.",
+      "range": {
+        "startLine": 2525,
+        "startChar": 12,
+        "endLine": 2525,
+        "endChar": 33
+      },
+      "revId": "5c6f07238b3cc50ce45f3b50cff0f9b4fe07cd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "998e4386_136651d6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -37,6 +77,30 @@
       "side": 1,
       "message": "This is for Puff. If Chromebooks brownout here, IBBR should be set. Then, system_check_bbram_on_reset will pick it up and set EC_RESET_FLAG_BROWNOUT instead.",
       "parentUuid": "998e4386_136651d6",
+      "range": {
+        "startLine": 2567,
+        "startChar": 1,
+        "endLine": 2567,
+        "endChar": 59
+      },
+      "revId": "5c6f07238b3cc50ce45f3b50cff0f9b4fe07cd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "277359fa_897a12ee",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2567,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T17:05:29Z",
+      "side": 1,
+      "message": "I don\u0027t understand the point of adding this flag here there. It is either not use since we don\u0027t brown out and is immediately clear or it is not used because we brown out and IBBR sets it",
+      "parentUuid": "fbe6a4f0_1cda2f36",
       "range": {
         "startLine": 2567,
         "startChar": 1,
