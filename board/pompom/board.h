@@ -58,6 +58,10 @@
 #define GPIO_EC_RST_ODL GPIO_EC_RST_ODL_GPIO02
 #define GPIO_PM845_RESIN_L GPIO_PM7180_RESIN_D_L
 
+#define SKU_ID0	GPIO_SKU_ID0
+#define SKU_ID1	GPIO_SKU_ID1
+#define SKU_ID2	GPIO_SKU_ID2
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -91,6 +95,9 @@ int board_vbus_sink_enable(int port, int enable);
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
+/* Board specific handlers */
+int board_get_version(void);
+uint32_t board_get_sku_id(void);
 
 #endif /* !defined(__ASSEMBLER__) */
 
