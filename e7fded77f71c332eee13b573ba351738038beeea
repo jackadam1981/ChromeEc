@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da9ba383_07ceba4b",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-13T23:18:00Z",
+      "side": 1,
+      "message": "There should be an explicit case for USB4_ACTIVE that doesn\u0027t do anything. Otherwise, if we somehow made it in here with an Accept or Reject while USB4 was active, it would break.\n\nThere should also be an explicit check in enter_usb_rejected.",
+      "revId": "e7fded77f71c332eee13b573ba351738038beeea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
