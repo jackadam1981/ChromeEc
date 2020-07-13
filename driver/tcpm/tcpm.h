@@ -496,4 +496,19 @@ static inline void tcpm_dump_registers(int port)
 }
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
 
+/**
+ * Enable/Disable TCPC detect cc disconnection interrupt
+ * (only when we're source role)
+ *
+ * @param port Type-C port number
+ * @param true for enable, false for disable
+ */
+static inline void tcpm_cc_disconnect_int_enable(int port, int enable)
+{
+	const struct tcpm_drv *tcpc;
+
+	tcpc = tcpc_config[port].drv;
+	if (tcpc->cc_disconnect_int_enable)
+		tcpc->cc_disconnect_int_enable(port, enable);
+}
 #endif

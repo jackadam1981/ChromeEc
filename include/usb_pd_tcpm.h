@@ -425,6 +425,15 @@ struct tcpm_drv {
 	 */
 	 void (*dump_registers)(int port);
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
+
+	/**
+	 * Enable/Disable TCPC detect cc disconnection interrupt
+	 * (only when we're source)
+	 *
+	 * @param port Type-C port number
+	 * @param true for enable, false for disable
+	 */
+	 void (*cc_disconnect_int_enable)(int port, int enable);
 };
 
 /*

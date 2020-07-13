@@ -549,6 +549,14 @@ void tc_request_power_swap(int port)
 		 */
 		if (IS_ATTACHED_SNK(port))
 			tcpm_enable_auto_discharge_disconnect(port, 0);
+
+		/*
+		 * PR/FR_Swap from initial source to new sink:
+		 * Upon reception or prior to transmitting accept of PR/FR_Swap,
+		 * we should disable TCPC detect cc disconnection interrupt.
+		 */
+		if (IS_ATTACHED_SRC(port))
+			tcpm_cc_disconnect_int_enable(port, 0);
 	}
 }
 
@@ -2107,6 +2115,13 @@ static void tc_attached_snk_entry(const int port)
 	} else
 #endif
 	{
+		/*
+		 * Attached.SRC (enable detect cc disconnect INT)-> TryWait.SNK
+		 * -> Attached.SNK, need to disable detect cc disconnection INT.
+		 */
+		if (get_last_state_tc(port) == TC_TRY_WAIT_SNK)
+			tcpm_cc_disconnect_int_enable(port, 0);
+
 		/* Get connector orientation */
 		tcpm_get_cc(port, &cc1, &cc2);
 		tc[port].polarity = get_snk_polarity(cc1, cc2);
@@ -2521,12 +2536,25 @@ static void tc_attached_src_entry(const int port)
 		typec_update_cc(port);
 
 		/*
+		 * Now we're new source, then enable TCPC detect cc
+		 * disconnection interrupt.
+		 */
+		tcpm_cc_disconnect_int_enable(port, 1);
+
+		/*
 		 * Maintain VCONN supply state, whether ON or OFF, and its
 		 * data role / usb mux connections. Do not re-enable
 		 * AutoDischargeDisconnect until the swap is completed
 		 * and tc_pr_swap_complete is called.
 		 */
 	} else {
+		/*
+		 * AttachWait.SNK (disable detect cc disconnect INT) -> Try.SRC
+		 * -> Attached.SRC, need to enable detect cc disconnection INT.
+		 */
+		if (get_last_state_tc(port) == TC_TRY_SRC)
+			tcpm_cc_disconnect_int_enable(port, 1);
+
 		/* Get connector orientation */
 		tcpm_get_cc(port, &cc1, &cc2);
 		tc[port].polarity = get_src_polarity(cc1, cc2);
