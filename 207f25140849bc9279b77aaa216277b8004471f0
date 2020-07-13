@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ea30b86_47e66b0b",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-07-13T19:48:41Z",
+      "side": 1,
+      "message": "This is actually implementing something different from go/ocpc-internal, which does not use the primary charger Vsys.\n\nBasing Rbat off of `vsys_mv - battery-\u003evoltage` and Rsys off of `vsys_aux_mv - vsys_mv` makes two assumptions:\n\n1. System is in \u003c\u003dS5 (S3/S0ix is probably fine too; point is there\u0027s very little power consumed in the rest of the system).  This is easy to enforce.\n\n2. The power plane stars out at the point where the paths to the primary charger\u0027s Vsys, the battery FET, and the rest of the system regulators diverge.  This assumption breaks if (A) there\u0027s a high-power consumer located between the Vsys sense point of the primary charger and the battery fet.  It also breaks if (B) the Vsys measurement point (at no system load) is right at the battery fet, with the system regulators way upstream on the plane.\n\nThe common case where the battery charger is, plane-wise, on the far side of the battery compared to the sub-board risks breaking the second assumption in the (B) way.\n\nIf assumption in (2) breaks via (A), more resistance will be attributed to Rbat than to Rsys, and dynamic compensation by the charger won\u0027t be as effective.  This is safe.\n\nIf assumption in (2) breaks via (B), however, more resistance will be attributed to Rsys than to Rbat, and we could get overcompensation.\n\nThe only way to avoid (B) and only get (A) is if the primary Vsys measurement was right at the sub-board connector...but that may be a significant underestimation, and makes no sense from a layout point of view.\n\nWaddledee has most of the core regulators up north above the sub-board connector and a long path south to the battery and then to the primary regulator.  Afterwards you hit the 5V and 3.3V rails, the 1.05V rail, and the backlight.  It\u0027s hard to say whether this approach would over- or under-estimate Vsys on Waddledee, and it may do so differently depending on the load:  watching a movie from an external drive with max brightness may under-compensate, and browsing heavy webpages at min brightness may over-compensate.\n\nWaddledoo, on the other hand...has a circular VSYS that makes my brain hurt.  Might be a fun project for wda@ to simulate in PowerDC, but the end result is probably that some system loads will hardly affect Vsys while others will dramatically affect it.\n\nThe approach in the doc, while more complicated, is based on sampling during actual loads and should adapt Rsys based on the current load profile.  However, it\u0027s more complicated and requires either temporarily disabling or mathematically compensating for the built-in DVC features in order to get a reasonable resistance.  We also don\u0027t know how much better the estimation would actually be.\n\nThis is a long-winded way of saying that your approach here strikes an interesting balance in complexity and we should see how well it works :)\n\nIf this tradeoff is good enough then we need to update the OCPC whitepaper to reflect that recommendation.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 63
+      },
+      "revId": "207f25140849bc9279b77aaa216277b8004471f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
