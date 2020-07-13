@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b5095f03_da7519fe",
+        "filename": "chip/mt8192_scp/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-07-13T04:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53b05e60_de767d8b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 60
+      },
+      "revId": "9fb4aef376a28c1bcdeba8249a995587882b0b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61fd1c73_d080a4fa",
         "filename": "chip/mt8192_scp/ipi.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-06T02:39:07Z",
       "side": 1,
       "message": "This has to be volatile.",
+      "range": {
+        "startLine": 24,
+        "startChar": 36,
+        "endLine": 24,
+        "endChar": 48
+      },
+      "revId": "9fb4aef376a28c1bcdeba8249a995587882b0b7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d11714_00b5357f",
+        "filename": "chip/mt8192_scp/ipi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-07-13T04:23:12Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t need.\n\nThe `ipi_recv_buf` only used in the interrupt handler (ipi_handler).",
+      "parentUuid": "61fd1c73_d080a4fa",
       "range": {
         "startLine": 24,
         "startChar": 36,
