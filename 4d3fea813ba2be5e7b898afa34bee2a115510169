@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "cff1ee2e_651f7951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:25:28Z",
+      "side": 1,
+      "message": "Seems like a good direction to go as well. I think following up to this CL to move the existing child-boards would be great to. I have added Scott for his opinions since he was also part of the original baseboard concept",
+      "revId": "4d3fea813ba2be5e7b898afa34bee2a115510169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c44c4d82_bf639e88",
         "filename": "Makefile",
         "patchSetId": 1
