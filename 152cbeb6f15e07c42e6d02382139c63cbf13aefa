@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdac89f7_d4983a44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-13T23:27:28Z",
+      "side": 1,
+      "message": "Approved once you add the bug reference for the TODOs.",
+      "revId": "152cbeb6f15e07c42e6d02382139c63cbf13aefa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c22dd168_95eea51f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2088,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-13T23:27:28Z",
+      "side": 1,
+      "message": "Reference b/155890173. Same below.",
+      "range": {
+        "startLine": 2088,
+        "startChar": 5,
+        "endLine": 2088,
+        "endChar": 9
+      },
+      "revId": "152cbeb6f15e07c42e6d02382139c63cbf13aefa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
