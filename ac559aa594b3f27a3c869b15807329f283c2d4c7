@@ -34,6 +34,24 @@
       "revId": "ac559aa594b3f27a3c869b15807329f283c2d4c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae16a145_233a86f2",
+        "filename": "board/morphius/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-07-13T03:03:10Z",
+      "side": 1,
+      "message": "Hi Edward\nYes, we use IOEX_PPC_ID decide which ppc to use.\nI update some message in the issue.",
+      "parentUuid": "1ad1023a_2995cb39",
+      "revId": "ac559aa594b3f27a3c869b15807329f283c2d4c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
