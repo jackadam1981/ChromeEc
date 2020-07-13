@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ad93e61c_e82b679d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-13T16:48:16Z",
+      "side": 1,
+      "message": "We are preparing to roll out new guidance for unit tests that you create a bug in https://b.corp.google.com/hotlists/2534518 when you\u0027re adding unit tests, to avoid duplication of effort.",
+      "revId": "814decf12e4c4861d03343ffbdf769ed504f47cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "926eed66_0b0fd465",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
