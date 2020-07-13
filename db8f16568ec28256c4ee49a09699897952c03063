@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cd828a5_0a0269fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-13T18:07:55Z",
+      "side": 1,
+      "message": "I see only two places where the main EC checks EC_RESET_FLAG_POWER_ON: TCPM and flash_pre_init.\n\nI think both can be fixed by EC_RESET_FLAG_BROWNOUT (e.g. CL:2293284). So, I don\u0027t think we should fix POWER_ON in any fragile way. If we do, the code built on it will be a source of bugs.\n\nI think we should fix it properly: https://b.corp.google.com/issues/160781689.",
+      "revId": "db8f16568ec28256c4ee49a09699897952c03063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
