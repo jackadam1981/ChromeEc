@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "643acc07_db91fc7e",
+        "filename": "board/delbin/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-13T16:37:01Z",
+      "side": 1,
+      "message": "You need to override the NPCX7_PWM1_SEL setting from baseboard to configure GPIO C2 as a GPIO.\n\n    #undef NPCX7_PWM1_SEL\n    #define NPCX7_PWM1_SEL    0  /* GPIO C2 is not used as PWM1. */",
+      "revId": "b9532d40441c0703dc989d8e2eb283380b0d76c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
