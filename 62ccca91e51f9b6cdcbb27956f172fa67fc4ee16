@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c8c1d0fe_55d95f5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T15:45:36Z",
+      "side": 1,
+      "message": "Sorry it took so long for the review.",
+      "revId": "62ccca91e51f9b6cdcbb27956f172fa67fc4ee16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b758f57_be59f5ed",
         "filename": "power/common.c",
         "patchSetId": 2
@@ -37,6 +54,30 @@
       "side": 1,
       "message": "I\u0027m ok to remove it because I think the consistent behavior (between S5 and G3) is more important. That is, we give up PD charge in S5 for non-EFS2 boards. That\u0027s just my personal opinion. Here is the context: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1073960#c3.",
       "parentUuid": "4b758f57_be59f5ed",
+      "range": {
+        "startLine": 444,
+        "startChar": 17,
+        "endLine": 444,
+        "endChar": 34
+      },
+      "revId": "62ccca91e51f9b6cdcbb27956f172fa67fc4ee16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a435aa4_286207bc",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T15:45:36Z",
+      "side": 1,
+      "message": "I think it still makes sense from a customer perspective for older non-EFS2 boards to boot the AP so they can jump to RW to get a higher power contract.\n\nWith EFS2 we don\u0027t need it, so we are making the power-on behavior more consistent without any loss of functionality.\n\nI think the code is good the way it is in this CL. I think we should add a comment here to explain why EFS2 boards want to keep AP-idle while non-EFS2 boards do not.",
+      "parentUuid": "3e27cbfb_f0e7d9d3",
       "range": {
         "startLine": 444,
         "startChar": 17,
