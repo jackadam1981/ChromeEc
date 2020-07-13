@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "60f5f3b0_88c2fb77",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-13T16:16:10Z",
+      "side": 1,
+      "message": "this should be calculated once and re-used. We don\u0027t want noise on the gpio line to make the return value change here while we are initializing different parts\n\n---\n\n\nAlso, we don\u0027t want to call all of this code in an interrupt context.\n\n\n---\n\nInstead we have do this on board init and set a global variable cache that everything uses.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 11
+      },
+      "revId": "c35f66e19a98d0946924b91eac2384f1e9eb880d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d53767fb_f4395ee4",
         "filename": "board/fleex/gpio.inc",
         "patchSetId": 1
