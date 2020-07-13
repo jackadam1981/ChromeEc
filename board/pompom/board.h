@@ -58,6 +58,8 @@
 #define GPIO_EC_RST_ODL GPIO_EC_RST_ODL_GPIO02
 #define GPIO_PM845_RESIN_L GPIO_PM7180_RESIN_D_L
 
+#define CONFIG_BATTERY_FUEL_GAUGE
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -82,6 +84,11 @@ enum pwm_channel {
 	PWM_CH_KBLIGHT = 0,
 	PWM_CH_DISPLIGHT,
 	PWM_CH_COUNT
+};
+
+enum battery_type {
+	BATTERY_BYD,
+	BATTERY_TYPE_COUNT,
 };
 
 /* Custom function to indicate if sourcing VBUS */
