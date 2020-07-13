@@ -16,6 +16,23 @@
       "revId": "4de4c5b511c5ee2093518bc8e1b8a231741da084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e8db475_f0283d22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-13T22:07:40Z",
+      "side": 1,
+      "message": "i change key generation in g2f_individual_keypair() in FIPS mode, but it inserts proper serial no in certificate which is actually used.",
+      "revId": "4de4c5b511c5ee2093518bc8e1b8a231741da084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
