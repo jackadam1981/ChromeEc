@@ -22,6 +22,30 @@
       "revId": "5c6f07238b3cc50ce45f3b50cff0f9b4fe07cd0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbe6a4f0_1cda2f36",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2567,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-13T16:59:44Z",
+      "side": 1,
+      "message": "This is for Puff. If Chromebooks brownout here, IBBR should be set. Then, system_check_bbram_on_reset will pick it up and set EC_RESET_FLAG_BROWNOUT instead.",
+      "parentUuid": "998e4386_136651d6",
+      "range": {
+        "startLine": 2567,
+        "startChar": 1,
+        "endLine": 2567,
+        "endChar": 59
+      },
+      "revId": "5c6f07238b3cc50ce45f3b50cff0f9b4fe07cd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
