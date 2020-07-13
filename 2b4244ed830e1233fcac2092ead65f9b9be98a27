@@ -22,6 +22,30 @@
       "revId": "2b4244ed830e1233fcac2092ead65f9b9be98a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cee1902_abd2afe7",
+        "filename": "board/drawcia/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-13T19:29:18Z",
+      "side": 1,
+      "message": "Adding Marco for how FW_CONFIG will be available. \n\nWhy override for clamshell here?  I know bloog had an override, but it also had a different number of LEDs per-SKU.  Is that the case for draw* boards as well? Meep was able to use the common LED on/off code",
+      "parentUuid": "35ba605a_7c2ddf55",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "2b4244ed830e1233fcac2092ead65f9b9be98a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
