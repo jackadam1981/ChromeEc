@@ -33,6 +33,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f534333b_613bc250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-13T22:39:19Z",
+      "side": 1,
+      "message": "\u003e We\u0027re populating extpower_is_present() from the cached Vbus presence in the TCPC driver, so it\u0027s not going to fill in until TCPC init runs during the PD task.\n\nIt looks like we can partially initialize RAA489000 driver on HOOK_INIT (or even earlier). power_state is filled at the very beginning of tcpci_tcpm_init, which is called by raa489000_init after sending unlock sequence then reading DEV_ID.\n\nWhat do you think?",
+      "parentUuid": "d7cd8aa2_e3dfd0c2",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
