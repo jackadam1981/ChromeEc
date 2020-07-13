@@ -34,6 +34,24 @@
       "revId": "b547b6875fabdce238146cd7dc562308409e016a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c45b8495_4e0eda52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-13T06:01:41Z",
+      "side": 1,
+      "message": "For avoiding brownout caused by PD reset, I created https://crrev.com/c/2293284.",
+      "parentUuid": "c4ceb80b_c929c17b",
+      "revId": "b547b6875fabdce238146cd7dc562308409e016a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
