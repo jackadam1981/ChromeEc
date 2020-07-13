@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91d85c59_69e193ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-13T17:13:02Z",
+      "side": 1,
+      "message": "Actually, could you move this to board.h or the variant?  We need to check SM to see if it can support this feature",
+      "revId": "05327dd89c579e038a28780ab9671ceb00e9d564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
