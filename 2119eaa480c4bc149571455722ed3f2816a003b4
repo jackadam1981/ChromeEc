@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4723c265_e25fbff8",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-13T21:39:10Z",
+      "side": 1,
+      "message": "Here and above, can you add a link to the bug to get fixed parts, if there is one?",
+      "range": {
+        "startLine": 528,
+        "startChar": 5,
+        "endLine": 528,
+        "endChar": 9
+      },
+      "revId": "2119eaa480c4bc149571455722ed3f2816a003b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ea744e_6134ce59",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-13T21:39:10Z",
+      "side": 1,
+      "message": "Maybe I\u0027m reading this wrong, but is it backwards? It looks like it\u0027s disabling FRS detection when it would work (charging at 5V) and enabling it when it wouldn\u0027t work (VBUS out of VSafe5V range).",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 542,
+        "endChar": 3
+      },
+      "revId": "2119eaa480c4bc149571455722ed3f2816a003b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
