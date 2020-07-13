@@ -43,6 +43,10 @@ static void board_connect_c0_sbu(enum gpio_signal s);
 
 #include "gpio_list.h"
 
+static int board_id;
+static int sku_id;
+
+
 /* GPIO Interrupt Handlers */
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -242,6 +246,13 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+static void board_info_init(void)
+{
+	board_id = board_get_version();
+	sku_id = board_get_sku_id();
+}
+DECLARE_HOOK(HOOK_INIT, board_info_init, HOOK_PRIO_INIT_I2C + 1);
+
 void board_tcpc_init(void)
 {
 	/* Only reset TCPC if not sysjump */
@@ -399,6 +410,51 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	charge_set_input_current_limit(MAX(charge_ma,
 					   CONFIG_CHARGER_INPUT_CURRENT),
 				       charge_mv);
+}
+
+int board_get_version(void)
+{
+	static int ver = -1;
+
+	if (ver != -1)
+		return ver;
+
+	ver = 0;
+
+	/* First 3 strappings are binary. */
+	if (gpio_get_level(GPIO_BOARD_VERSION1))
+		ver |= 0x01;
+	if (gpio_get_level(GPIO_BOARD_VERSION2))
+		ver |= 0x02;
+	if (gpio_get_level(GPIO_BOARD_VERSION3))
+		ver |= 0x04;
+
+	CPRINTS("Board ID = %d", ver);
+
+	return ver;
+}
+
+int board_get_sku_id(void)
+{
+	static int sku_id = -1;
+
+	if (sku_id != -1)
+		return sku_id;
+
+	sku_id = 0;
+
+	/* First 3 strappings are binary. */
+	if (gpio_get_level(GPIO_SKU_ID0))
+		sku_id |= 0x01;
+	if (gpio_get_level(GPIO_SKU_ID1))
+		sku_id |= 0x02;
+	if (gpio_get_level(GPIO_SKU_ID2))
+		sku_id |= 0x04;
+
+	CPRINTS("SKU ID = %d", sku_id);
+
+	return sku_id;
+
 }
 
 uint16_t tcpc_get_alert_status(void)
