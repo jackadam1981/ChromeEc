@@ -19,6 +19,9 @@
 #define CONFIG_CMD_POWERINDEBUG
 #define CONFIG_I2C_DEBUG
 
+/* EC */
+#define CONFIG_BOARD_VERSION_CUSTOM
+
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE (512 * 1024)  /* 512KB internal spi flash */
 
@@ -91,6 +94,9 @@ int board_vbus_sink_enable(int port, int enable);
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
+/* Board specific handlers */
+int board_get_version(void);
+int board_get_sku_id(void);
 
 #endif /* !defined(__ASSEMBLER__) */
 
