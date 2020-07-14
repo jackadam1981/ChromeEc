@@ -16,6 +16,24 @@
       "revId": "93bf7aa58b611813e0b01fb6ca0827c90b73d4ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27bdd604_79de16f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-14T21:03:03Z",
+      "side": 1,
+      "message": "Note that Gerrit typically carries forward the Code-Review and Verified labels automatically on a commit message change or a rebase. So a separate review after changing the commit message isn\u0027t usually needed.",
+      "parentUuid": "c970447f_eb481952",
+      "revId": "93bf7aa58b611813e0b01fb6ca0827c90b73d4ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
