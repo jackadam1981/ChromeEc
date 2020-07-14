@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71bb21b2_5639353a",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-14T05:14:43Z",
+      "side": 1,
+      "message": "nit: just follow the order so would be 8705 first and same ordering for others.",
+      "revId": "9d06d44ec8a3ed9b5bc1c14d74c7137c317b0f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10677b65_9994806e",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-14T05:14:43Z",
+      "side": 1,
+      "message": "If this function is totally the same with the versioin of 8705 then we can just leverage it?",
+      "revId": "9d06d44ec8a3ed9b5bc1c14d74c7137c317b0f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
