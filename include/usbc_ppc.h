@@ -164,13 +164,19 @@ struct ppc_config_t {
 extern struct ppc_config_t ppc_chips[];
 extern unsigned int ppc_cnt;
 
+#ifndef TEST_BUILD
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 /**
  * Common CPRINTS implementation so that PPC driver messages are consistent.
  *
  * @param string: message string to display on the console.
  * @param port: The Type-C port number
  */
-int ppc_prints(const char *string, int port);
+static inline int ppc_prints(const char *string, int port)
+{
+	return CPRINTS("ppc p%d %s", port, string);
+}
 
 /**
  * Common CPRINTS for PPC drivers with an error code.
@@ -179,7 +185,16 @@ int ppc_prints(const char *string, int port);
  * @param port: The Type-C port number
  * @param error: The error code to display at the end of the message.
  */
-int ppc_err_prints(const char *string, int port, int error);
+static inline int ppc_err_prints(const char *string, int port, int error)
+{
+	return CPRINTS("ppc p%d %s (%d)", port, string, error);
+}
+#undef CPRINTF
+#undef CPRINTS
+#else
+#define ppc_prints(string, port)
+#define ppc_err_prints(string, port, error)
+#endif
 
 /**
  * Increment the overcurrent event counter.
