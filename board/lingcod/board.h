@@ -11,59 +11,36 @@
 /* Baseboard features */
 #include "baseboard.h"
 
-#ifdef BOARD_VOLTEER_TCPMV1
-/* Disable TCPMv2 configuration options */
-#undef CONFIG_USB_PD_TCPMV2
-
-/* Enable the required TCPMv1 options */
-#define CONFIG_USB_PD_TCPMV1
-#endif
-
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
-
-#define CONFIG_VBOOT_EFS2
 
 #define CONFIG_POWER_BUTTON
 
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
-/* Chipset features */
-#define CONFIG_POWER_PP5000_CONTROL
-
 /* LED defines */
-#define CONFIG_LED_PWM
-/* Although there are 2 LEDs, they are both controlled by the same lines. */
-#define CONFIG_LED_PWM_COUNT 1
+#define CONFIG_LED_POWER_LED
+#define CONFIG_LED_ONOFF_STATES
 
 /* Keyboard features */
 
 /* Sensors */
-/* BMA253 accelerometer in base */
-#define CONFIG_ACCEL_BMA255
-
-/* BMI260 accel/gyro in base */
-#define CONFIG_ACCELGYRO_BMI260
-#define CONFIG_ACCELGYRO_BMI160_COMPRESSED_CONFIG
-#define CONFIG_ACCELGYRO_BMI260_INT_EVENT \
-	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
-
-/* TCS3400 ALS */
-#define CONFIG_ALS
-#define ALS_COUNT		1
-#define CONFIG_ALS_TCS3400
-#define CONFIG_ALS_TCS3400_INT_EVENT \
-	TASK_EVENT_MOTION_SENSOR_INTERRUPT(CLEAR_ALS)
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+#define CONFIG_ACCEL_LIS2DE             /* Lid accel */
+#define CONFIG_ACCELGYRO_LSM6DSM        /* Base accel */
 
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK \
-	(BIT(LID_ACCEL) | BIT(CLEAR_ALS))
+	BIT(LID_ACCEL)
 
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_UPDATE
-#define CONFIG_LID_ANGLE_SENSOR_BASE		BASE_ACCEL
-#define CONFIG_LID_ANGLE_SENSOR_LID		LID_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 
 /* USB Type C and USB PD defines */
 /*
@@ -77,15 +54,7 @@
 #define USBC_PORT_1_USB2_NUM	4
 #define USBC_PORT_1_USB3_NUM	2
 
-/* Enabling Thunderbolt-compatible mode */
-#define CONFIG_USB_PD_TBT_COMPAT_MODE
-
-/* Enabling USB4 mode */
-#define CONFIG_USB_PD_USB4
-
 /* USB Type A Features */
-#define USB_PORT_COUNT			1
-#define CONFIG_USB_PORT_POWER_DUMB
 
 /* USBC PPC*/
 #define CONFIG_USBC_PPC_SN5S330		/* USBC port C0 */
@@ -109,14 +78,14 @@
 #define GPIO_ENTERING_RW		GPIO_EC_ENTERING_RW
 #define GPIO_LID_OPEN			GPIO_EC_LID_OPEN
 #define GPIO_KBD_KSO2			GPIO_EC_KSO_02_INV
-#define GPIO_PACKET_MODE_EN		GPIO_EC_H1_PACKET_MODE
 #define GPIO_PCH_WAKE_L			GPIO_EC_PCH_WAKE_ODL
 #define GPIO_PCH_PWRBTN_L		GPIO_EC_PCH_PWR_BTN_ODL
 #define GPIO_PCH_RSMRST_L		GPIO_EC_PCH_RSMRST_ODL
 #define GPIO_PCH_RTCRST			GPIO_EC_PCH_RTCRST
+#define GPIO_PCH_SYS_PWROK		GPIO_EC_PCH_SYS_PWROK
 #define GPIO_PCH_SLP_S0_L		GPIO_SLP_S0_L
 #define GPIO_PCH_SLP_S3_L		GPIO_SLP_S3_L
-#define GPIO_PCH_DSW_PWROK		GPIO_EC_PCH_DSW_PWROK
+#define GPIO_PG_EC_DSW_PWROK		GPIO_DSW_PWROK
 #define GPIO_POWER_BUTTON_L		GPIO_H1_EC_PWR_BTN_ODL
 #define GPIO_RSMRST_L_PGOOD		GPIO_PG_EC_RSMRST_ODL
 #define GPIO_CPU_PROCHOT		GPIO_EC_PROCHOT_ODL
@@ -129,7 +98,6 @@
 
 /* I2C Bus Configuration */
 #define CONFIG_I2C
-#define I2C_PORT_ACCEL		I2C_PORT_SENSOR
 #define I2C_PORT_SENSOR		NPCX_I2C_PORT0_0
 #define I2C_PORT_USB_C0		NPCX_I2C_PORT1_0
 #define I2C_PORT_USB_C1		NPCX_I2C_PORT2_0
@@ -150,15 +118,14 @@
 #include "registers.h"
 
 enum battery_type {
-	BATTERY_LGC011,
+	BATTERY_SMP,
+	BATTERY_LGC,
+	BATTERY_SUNWODA,
 	BATTERY_TYPE_COUNT,
 };
 
 enum pwm_channel {
-	PWM_CH_LED1_BLUE = 0,
-	PWM_CH_LED2_GREEN,
-	PWM_CH_LED3_RED,
-	PWM_CH_LED4_SIDESEL,
+	PWM_CH_LED4_SIDESEL = 0,
 	PWM_CH_FAN,
 	PWM_CH_KBLIGHT,
 	PWM_CH_COUNT
@@ -168,10 +135,11 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	BASE_ACCEL,
 	BASE_GYRO,
-	CLEAR_ALS,
-	RGB_ALS,
 	SENSOR_COUNT,
 };
+
+/* TODO: b/143375057 - Remove this code after power on. */
+void c10_gate_change(enum gpio_signal signal);
 
 void board_reset_pd_mcu(void);
 
