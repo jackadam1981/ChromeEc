@@ -16,6 +16,24 @@
       "revId": "0fc291209e60a0bf411f72fabed61938553598eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c62c35e7_dc487ea8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-07-14T16:52:29Z",
+      "side": 1,
+      "message": "Can you run `make tests BOARD\u003dampton` in EC repository?\n\nFor me it fails with following message:\nbuild/ampton/pingpong/RO/driver/ppc/sn5s330.o: In function `sn5s330_is_vbus_present\u0027:\nsn5s330.c:(.text.sn5s330_is_vbus_present+0x1a): undefined reference to `ppc_err_prints\u0027\nbuild/ampton/pingpong/RO/driver/ppc/sn5s330.o: In function `sn5s330_pp_fet_enable\u0027:\nsn5s330.c:(.text.sn5s330_pp_fet_enable+0x26): undefined reference to `ppc_prints\u0027\nbuild/ampton/pingpong/RO/driver/ppc/sn5s330.o: In function `sn5s330_init\u0027:\nsn5s330.c:(.text.sn5s330_init+0x32): undefined reference to `ppc_prints\u0027\nsn5s330.c:(.text.sn5s330_init+0x5e): undefined reference to `ppc_prints\u0027\nsn5s330.c:(.text.sn5s330_init+0x18a): undefined reference to `ppc_prints\u0027\nsn5s330.c:(.text.sn5s330_init+0x1b0): undefined reference to `ppc_prints\u0027\nbuild/ampton/pingpong/RO/driver/ppc/sn5s330.o: In function `sn5s330_enter_low_power_mode\u0027:\nsn5s330.c:(.text.sn5s330_enter_low_power_mode+0x1a): undefined reference to `ppc_err_prints\u0027\nbuild/ampton/pingpong/RO/driver/ppc/sn5s330.o: In function `sn5s330_irq_deferred\u0027:\nsn5s330.c:(.text.sn5s330_irq_deferred+0x46): undefined reference to `ppc_prints\u0027\n/opt/coreboot-sdk/lib/gcc/nds32le-elf/8.1.0/../../../../nds32le-elf/bin/ld: Dwarf Error: found dwarf version \u0027536\u0027, this reader only handles version 2, 3, 4 and 5 information.\nsn5s330.c:(.text.sn5s330_irq_deferred+0x9e): undefined reference to `ppc_prints\u0027\nsn5s330.c:(.text.sn5s330_irq_deferred+0xb0): undefined reference to `ppc_prints\u0027\ncollect2: error: ld returned 1 exit status\nmake[1]: *** [Makefile.rules:524: build/ampton/pingpong/RO/pingpong.RO.elf] Error 1\nmake[1]: *** Waiting for unfinished jobs....\nmake: *** [Makefile.rules:280: test-pingpong] Error 2\n\nI haven\u0027t created bug for this. This is just fix for build issue, not a big change.",
+      "parentUuid": "08327266_bd9c4656",
+      "revId": "0fc291209e60a0bf411f72fabed61938553598eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
