@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30cc3f26_3529288b",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-07-14T01:58:49Z",
+      "side": 1,
+      "message": "You don\u0027t need to define the CONFIG_BOARD_VERSION_CUSTOM, because we had defined the CONFIG_BOARD_VERSION_GPIO in the baseboard/trogdor.h.",
+      "revId": "02d5008378a816a5598357dbc3b7afde5f750468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
