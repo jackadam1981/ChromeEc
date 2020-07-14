@@ -110,6 +110,30 @@
       "revId": "5c6f07238b3cc50ce45f3b50cff0f9b4fe07cd0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a85c3645_0151d2bd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2567,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-14T22:23:24Z",
+      "side": 1,
+      "message": "This is for Chromeboxes. On Puff (assuming it\u0027s using TCPMv1), we may brownout here while a coincell battery still supplies power to BBRAM. IBBR won\u0027t be set.\n\nFor Chromebooks, it\u0027s no use. If we brownout, BBRAM contents are lost.",
+      "parentUuid": "277359fa_897a12ee",
+      "range": {
+        "startLine": 2567,
+        "startChar": 1,
+        "endLine": 2567,
+        "endChar": 59
+      },
+      "revId": "5c6f07238b3cc50ce45f3b50cff0f9b4fe07cd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
