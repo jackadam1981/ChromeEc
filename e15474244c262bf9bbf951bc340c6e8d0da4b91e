@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "6c2038af_3c1a1565",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-14T00:48:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd6682d_74fe1a80",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 146,
+        "endChar": 36
+      },
+      "revId": "e15474244c262bf9bbf951bc340c6e8d0da4b91e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "202ef9d5_4c96bd0c",
         "filename": "common/usbc/usb_mode.c",
         "patchSetId": 14
