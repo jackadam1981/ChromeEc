@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35fdaed8_b6dac42f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-07-14T01:18:25Z",
+      "side": 1,
+      "message": "Can you also ensure that you test this on Puff (or preferably one of the variants, since they have the BBRAM option that the puff initial units do not).\nWe have found that a Chromebox does behave differently to systems that have a battery, so it\u0027s important to get the test coverage for changes especially in the DP alt mode area, since it was an area we worked hard to ensure it worked well for Puff.\n",
+      "revId": "ef17d57d5c4bcc88a737481fbe39e093ac544075",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
