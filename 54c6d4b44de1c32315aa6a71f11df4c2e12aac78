@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "a5d4fbc8_a8aa8bfc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1914,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-14T10:20:43Z",
+      "side": 1,
+      "message": "If interrupt is always on, any signals on cc lines (ex. power nego...) would false trigger interrupt then wakeup the task. If this situation is allowed, then I can move out all the enable/disable interrupt in common code :)",
+      "parentUuid": "a9448c5b_3b75c807",
+      "range": {
+        "startLine": 1908,
+        "startChar": 3,
+        "endLine": 1914,
+        "endChar": 42
+      },
+      "revId": "54c6d4b44de1c32315aa6a71f11df4c2e12aac78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc454772_cfb719fd",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
@@ -79,6 +103,30 @@
       "revId": "54c6d4b44de1c32315aa6a71f11df4c2e12aac78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "375729ff_f0294069",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-14T10:20:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fc454772_cfb719fd",
+      "range": {
+        "startLine": 1942,
+        "startChar": 3,
+        "endLine": 1949,
+        "endChar": 43
+      },
+      "revId": "54c6d4b44de1c32315aa6a71f11df4c2e12aac78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
