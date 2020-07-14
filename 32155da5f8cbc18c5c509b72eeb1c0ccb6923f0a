@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bd6d7d7_d836f2de",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-14T22:48:35Z",
+      "side": 1,
+      "message": "Want to update this to the new write function as well?",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 30
+      },
+      "revId": "32155da5f8cbc18c5c509b72eeb1c0ccb6923f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b18bfde_c2bbdcca",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-14T22:48:35Z",
+      "side": 1,
+      "message": "Should we just cache this during init?  We wouldn\u0027t expect it to change during run time",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 51
+      },
+      "revId": "32155da5f8cbc18c5c509b72eeb1c0ccb6923f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38b6f4a2_e3b07eec",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-14T22:48:35Z",
+      "side": 1,
+      "message": "Should we push for explanation of the magic to commit here?",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 39
+      },
+      "revId": "32155da5f8cbc18c5c509b72eeb1c0ccb6923f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
