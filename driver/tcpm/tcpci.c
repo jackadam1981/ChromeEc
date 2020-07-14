@@ -670,7 +670,7 @@ int tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 	if (rv)
 		return rv;
 	//TODO move this board FRS configuration call to usb_common
-	return board_tcpc_fast_role_swap_enable(port, enable);
+	return rv;//board_tcpc_fast_role_swap_enable(port, enable);
 }
 #endif
 
