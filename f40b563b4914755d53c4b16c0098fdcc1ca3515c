@@ -22,6 +22,30 @@
       "revId": "f40b563b4914755d53c4b16c0098fdcc1ca3515c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b632f770_242677f0",
+        "filename": "board/boten/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-07-14T06:39:56Z",
+      "side": 1,
+      "message": "Hi Diana,\n\nPlease check page 6, item 17, High Temperature Charge Start Protection.",
+      "parentUuid": "b2b33fbd_5f6bd4ae",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "f40b563b4914755d53c4b16c0098fdcc1ca3515c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
