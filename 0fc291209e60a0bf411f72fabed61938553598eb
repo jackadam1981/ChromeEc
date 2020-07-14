@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08327266_bd9c4656",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-14T16:00:40Z",
+      "side": 1,
+      "message": "I can emerge-octopus chromeos-ec at ToT without error (synced this morning).\n\nIs there a bug for this? Where is the undefined reference when the build fails?",
+      "revId": "0fc291209e60a0bf411f72fabed61938553598eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
