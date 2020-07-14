@@ -69,6 +69,30 @@
       "revId": "2119eaa480c4bc149571455722ed3f2816a003b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9b3f422_af08e307",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-14T17:25:28Z",
+      "side": 1,
+      "message": "0 means enable?! What a register!",
+      "parentUuid": "afcb7058_29619247",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 542,
+        "endChar": 3
+      },
+      "revId": "2119eaa480c4bc149571455722ed3f2816a003b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
