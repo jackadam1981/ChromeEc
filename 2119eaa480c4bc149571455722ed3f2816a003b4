@@ -45,6 +45,30 @@
       "revId": "2119eaa480c4bc149571455722ed3f2816a003b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afcb7058_29619247",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-14T17:20:41Z",
+      "side": 1,
+      "message": "I think the logic is correct.  The CC_FRS bit, when set, disables FRS detection on the CC pin.\n\nCan you update the comment to be more explicit on the role of the CC lines here?  If I understand correctly, when CC polarity \u003d\u003d 1  CC2 is connected through to the TCPC and CC1 is used for FRS detection (and vice-versa if CC polarity \u003d\u003d 0).\n\nIt might be good to explicitly enable CCx_BPS for the signal that needs to be connected through to the TCPC in the Vsafe5V path.",
+      "parentUuid": "96ea744e_6134ce59",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 542,
+        "endChar": 3
+      },
+      "revId": "2119eaa480c4bc149571455722ed3f2816a003b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
