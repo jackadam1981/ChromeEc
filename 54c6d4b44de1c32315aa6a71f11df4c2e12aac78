@@ -83,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "cb8c340a_52457bb6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1914,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-14T21:32:19Z",
+      "side": 1,
+      "message": "I don\u0027t understand why all PD communication doesn\u0027t trigger the disconnection event then.\n\nWe might need to add a filter on the handling of the DISCONNECT event for the PD tasks to ignore it if we are transition states where \"disconnection\" is expected and not treated as a real disconnection.\n\nWhat are your empirical finds of what happens if you remove this enable/disable interrupt code?",
+      "parentUuid": "a5d4fbc8_a8aa8bfc",
+      "range": {
+        "startLine": 1908,
+        "startChar": 3,
+        "endLine": 1914,
+        "endChar": 42
+      },
+      "revId": "54c6d4b44de1c32315aa6a71f11df4c2e12aac78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc454772_cfb719fd",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
