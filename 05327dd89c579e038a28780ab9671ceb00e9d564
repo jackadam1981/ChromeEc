@@ -34,6 +34,24 @@
       "revId": "05327dd89c579e038a28780ab9671ceb00e9d564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ecf0845_f9d97bfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-14T04:51:53Z",
+      "side": 1,
+      "message": "SM is Silicon Mitus, the other charger IC being used on dedede boards. We\u0027ll have to check if it supports this feature as well.",
+      "parentUuid": "20a3f7ed_001ffc83",
+      "revId": "05327dd89c579e038a28780ab9671ceb00e9d564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
