@@ -17,7 +17,11 @@
 #include "util.h"
 
 #define BAT_LEVEL_PD_LIMIT 85
+#ifdef BOARD_KAKADU
+#define SYSTEM_PLT_MW 6500
+#else
 #define SYSTEM_PLT_MW 3500
+#endif
 /*
  * b/143318064: Prefer a voltage above 5V to force it picks a voltage
  * above 5V at first. If PREFER_MV is 5V, when desired power is around
