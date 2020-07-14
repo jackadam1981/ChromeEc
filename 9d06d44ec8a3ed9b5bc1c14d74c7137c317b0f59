@@ -51,6 +51,24 @@
       "revId": "9d06d44ec8a3ed9b5bc1c14d74c7137c317b0f59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d935499_f05855af",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-14T07:41:41Z",
+      "side": 1,
+      "message": "Looks like ps8805 didn\u0027t have PS8XXX_REG_I2C_DEBUGGING_ENABLE?",
+      "parentUuid": "370763e0_00c58d41",
+      "revId": "9d06d44ec8a3ed9b5bc1c14d74c7137c317b0f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
