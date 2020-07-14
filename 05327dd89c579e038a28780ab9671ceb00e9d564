@@ -16,6 +16,24 @@
       "revId": "05327dd89c579e038a28780ab9671ceb00e9d564",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20a3f7ed_001ffc83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-07-14T04:31:15Z",
+      "side": 1,
+      "message": "\u003e Actually, could you move this to board.h or the variant?  We need to check SM to see if it can support this feature\n\nHi Diana,\nOK, have moved to the variant boten. BTW, sorry, what about SM?",
+      "parentUuid": "91d85c59_69e193ee",
+      "revId": "05327dd89c579e038a28780ab9671ceb00e9d564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
