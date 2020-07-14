@@ -34,6 +34,47 @@
       "revId": "0fc291209e60a0bf411f72fabed61938553598eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3437f31f_e26d85c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-14T17:52:58Z",
+      "side": 1,
+      "message": "I confirmed \"make tests BOARD\u003dampton\" fails.  See the separate comment about image sizes.",
+      "parentUuid": "c62c35e7_dc487ea8",
+      "revId": "0fc291209e60a0bf411f72fabed61938553598eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fd500c3_c8b12334",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-14T17:52:58Z",
+      "side": 1,
+      "message": "This is the portion required to fix the build issue.  The original change was made to save flash space.  The inline designation may work counter to that goal.\n\nCan you check the image sizes before and after you change with the inline functions?  Use \"make savesizes\" and \"make newsizes\".",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "0fc291209e60a0bf411f72fabed61938553598eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
