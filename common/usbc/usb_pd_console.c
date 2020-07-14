@@ -111,6 +111,8 @@ test_export_static int command_pd(int argc, char **argv)
 				pe_dpm_request(port, DPM_REQUEST_VCONN_SWAP);
 			else
 				return EC_ERROR_PARAM3;
+		} else if (!strcasecmp(argv[2], "get")) {
+			pe_dpm_request(port, DPM_REQUEST_GET_SNK_CAPS);
 		} else if (!strcasecmp(argv[2], "dualrole")) {
 			if (argc < 4) {
 				ccprintf("dual-role toggling: ");
@@ -150,6 +152,8 @@ test_export_static int command_pd(int argc, char **argv)
 					return EC_ERROR_PARAM4;
 			}
 			return EC_SUCCESS;
+		} else if (!strcasecmp(argv[2], "srccap")) {
+			pe_dpm_request(port, DPM_REQUEST_SOURCE_CAP);
 		}
 	}
 
