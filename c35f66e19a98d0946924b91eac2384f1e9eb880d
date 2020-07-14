@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "5e12c486_84ee52aa",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-14T04:36:59Z",
+      "side": 1,
+      "message": "ODM team can refer to the example here - https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/board/meep/board.c#60 for the version of static variable to record the NXP/SYV selection.",
+      "parentUuid": "60f5f3b0_88c2fb77",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 11
+      },
+      "revId": "c35f66e19a98d0946924b91eac2384f1e9eb880d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d53767fb_f4395ee4",
         "filename": "board/fleex/gpio.inc",
         "patchSetId": 1
