@@ -93,7 +93,12 @@ void dpm_vdm_naked(int port, enum tcpm_transmit_type type, uint16_t svid,
 	}
 }
 
-void dpm_attempt_mode_entry(int port)
+/*
+ * The call to this function requests that the PE send one VDM, whichever is
+ * next in the mode entry sequence. This only happens if preconditions for mode
+ * entry are met.
+ */
+static void dpm_attempt_mode_entry(int port)
 {
 	int vdo_count = 0;
 	uint32_t vdm[VDO_MAX_SIZE];
@@ -172,7 +177,7 @@ void dpm_attempt_mode_entry(int port)
 	pe_dpm_request(port, DPM_REQUEST_VDM);
 }
 
-void dpm_attempt_mode_exit(int port)
+static void dpm_attempt_mode_exit(int port)
 {
 	int opos;
 	uint16_t svid;
@@ -213,4 +218,10 @@ void dpm_attempt_mode_exit(int port)
 
 		pe_dpm_request(port, DPM_REQUEST_VDM);
 	}
+}
+
+void dpm_attempt_mode_request(int port)
+{
+	dpm_attempt_mode_exit(port);
+	dpm_attempt_mode_entry(port);
 }
