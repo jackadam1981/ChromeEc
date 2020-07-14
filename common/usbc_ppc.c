@@ -319,6 +319,7 @@ int ppc_vbus_source_enable(int port, int enable)
 	ppc = &ppc_chips[port];
 	if (ppc->drv->vbus_source_enable)
 		rv = ppc->drv->vbus_source_enable(port, enable);
+	CPRINTS("== %s port:%d en:%d ret:%d ==", __func__, port, enable, rv);
 
 	return rv;
 }

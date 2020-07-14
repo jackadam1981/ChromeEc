@@ -124,6 +124,8 @@ static int syv682x_vbus_source_enable(int port, int enable)
 	rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval);
 	if (rv)
 		return rv;
+	CPRINTS("== read regval:0x%x flags:0x%x port:%d en:%d ==",
+		regval, flags[port], port, enable);
 
 	if (enable) {
 		/* Select 5V path and turn on channel */
@@ -144,6 +146,8 @@ static int syv682x_vbus_source_enable(int port, int enable)
 		 */
 		regval |= SYV682X_CONTROL_1_PWR_ENB;
 	}
+	CPRINTS("== write regval:0x%x flags:0x%x port:%d en:%d ==",
+		regval, flags[port], port, enable);
 
 	rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
 	if (rv)
@@ -190,8 +194,10 @@ static bool syv682x_interrupt_filter(int port, int regval, int regmask,
 static void syv682x_handle_status_interrupt(int port, int regval)
 {
 	/* These conditions automatically turn off VBUS sourcing */
-	if (regval & (SYV682X_STATUS_OVP | SYV682X_STATUS_TSD))
+	if (regval & (SYV682X_STATUS_OVP | SYV682X_STATUS_TSD)) {
 		flags[port] &= ~SYV682X_FLAGS_SOURCE_ENABLED;
+		CPRINTS("!!! %s clears source flag port:%d !!!", __func__, port);
+	}
 
 	/*
 	 * 5V OC is actually notifying that it is current limiting
@@ -271,6 +277,7 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 		regval &= ~(SYV682X_CONTROL_1_HV_DR |
 			    SYV682X_CONTROL_1_PWR_ENB);
 		flags[port] &= ~SYV682X_FLAGS_SOURCE_ENABLED;
+		CPRINTS("!!! %s clears source flag port:%d !!!", __func__, port);
 	} else {
 		/*
 		 * No need to change the voltage path or channel direction. But,
