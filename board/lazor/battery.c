@@ -6,7 +6,9 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "battery_smart.h"
 #include "common.h"
+#include "gpio.h"
 #include "util.h"
 
 /*
@@ -93,3 +95,20 @@ const struct board_batt_params board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_AP16L5J;
+
+/**
+ * Custom detection of battery.
+ */
+enum battery_present battery_is_present(void)
+{
+	int mode, rv;
+
+	/*
+	 * Besides using the GPIO, also check the BatteryMode() condition flag
+	 * which should be 0, indicating Battery OK.
+	 */
+	rv = battery_get_mode(&mode);
+	return (gpio_get_level(GPIO_EC_BATT_PRES_ODL) && !rv &&
+		!(mode & MODE_CONDITION_CYCLE))
+			? BP_NO : BP_YES;
+}
