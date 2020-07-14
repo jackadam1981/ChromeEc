@@ -378,9 +378,18 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 	if ((flags & U2F_AUTH_CHECK_ONLY) == U2F_AUTH_CHECK_ONLY)
 		return VENDOR_RC_SUCCESS;
 
-	/* Always enforce user presence, with optional consume. */
-	if (pop_check_presence(flags & G2F_CONSUME) != POP_TOUCH_YES)
-		return VENDOR_RC_NOT_ALLOWED;
+	if (pop_check_presence(flags & G2F_CONSUME) != POP_TOUCH_YES) {
+		/* If it's not Version 1, power button press is required. */
+		if (version != U2F_KH_VERSION_1)
+			return VENDOR_RC_NOT_ALLOWED;
+
+		/* U2F_AUTH_FLAG_TUP means power button press is required. */
+		if ((flags & U2F_AUTH_FLAG_TUP) != 0)
+			return VENDOR_RC_NOT_ALLOWED;
+
+		if (!(is_pp_asserted()))
+			return VENDOR_RC_NOT_ALLOWED;
+	}
 
 	/* Re-create origin-specific key. */
 	if (legacy_kh) {
