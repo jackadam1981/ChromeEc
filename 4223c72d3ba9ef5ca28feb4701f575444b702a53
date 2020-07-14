@@ -22,6 +22,30 @@
       "revId": "4223c72d3ba9ef5ca28feb4701f575444b702a53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ab56089_20cc0164",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1248535
+      },
+      "writtenOn": "2020-07-14T04:01:06Z",
+      "side": 0,
+      "message": "CL:2296544 has split CONFIG_LED_PWM change out into boards.",
+      "parentUuid": "f238f021_8ee62ab7",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "4223c72d3ba9ef5ca28feb4701f575444b702a53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
