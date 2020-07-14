@@ -16,21 +16,9 @@
 #ifndef TEST_BUILD
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
-
-int ppc_prints(const char *string, int port)
-{
-	return CPRINTS("ppc p%d %s", port, string);
-}
-
-int ppc_err_prints(const char *string, int port, int error)
-{
-	return CPRINTS("ppc p%d %s (%d)", port, string, error);
-}
 #else
 #define CPRINTF(args...)
 #define CPRINTS(args...)
-#define ppc_prints(string, port)
-#define ppc_err_prints(string, port, error)
 #endif
 
 /*
