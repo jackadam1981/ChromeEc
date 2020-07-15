@@ -63,16 +63,17 @@ enum usb_spi_error {
 };
 
 enum usb_spi_request {
-	USB_SPI_REQ_ENABLE          = 0x0000,
-	USB_SPI_REQ_DISABLE         = 0x0001,
-	USB_SPI_REQ_ENABLE_AP       = 0x0002,
-	USB_SPI_REQ_ENABLE_EC       = 0x0003,
-	USB_SPI_REQ_ENABLE_H1       = 0x0004,
-	USB_SPI_REQ_RESET           = 0x0005,
-	USB_SPI_REQ_BOOT_CFG        = 0x0006,
-	USB_SPI_REQ_SOCKET          = 0x0007,
-	USB_SPI_REQ_SIGNING_START   = 0x0008,
-	USB_SPI_REQ_SIGNING_SIGN    = 0x0009,
+	USB_SPI_REQ_ENABLE           = 0x0000,
+	USB_SPI_REQ_DISABLE          = 0x0001,
+	USB_SPI_REQ_ENABLE_AP        = 0x0002,
+	USB_SPI_REQ_ENABLE_EC        = 0x0003,
+	USB_SPI_REQ_ENABLE_H1        = 0x0004,
+	USB_SPI_REQ_RESET            = 0x0005,
+	USB_SPI_REQ_BOOT_CFG         = 0x0006,
+	USB_SPI_REQ_SOCKET           = 0x0007,
+	USB_SPI_REQ_SIGNING_START    = 0x0008,
+	USB_SPI_REQ_SIGNING_SIGN     = 0x0009,
+	USB_SPI_REQ_ENABLE_AP_CUSTOM = 0x000a,
 };
 
 /* USB SPI device bitmasks */
@@ -113,6 +114,11 @@ struct usb_spi_state {
 	 * callback.
 	 */
 	int enabled;
+	/*
+	 * Board usb_spi enable/disable should not touch the reset signals if
+	 * spi is enabled with custom_reset True.
+	 */
+	int custom_reset;
 };
 
 /*
@@ -240,7 +246,7 @@ int usb_spi_interface(struct usb_spi_config const *config,
  * usb_spi_board_enable should return EC_SUCCESS on success or an error
  * otherwise.
  */
-int usb_spi_board_enable(int host);
+int usb_spi_board_enable(int host, int custom_reset);
 void usb_spi_board_disable(void);
 
 #ifdef CONFIG_AP_RO_VERIFICATION
