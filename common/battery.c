@@ -184,7 +184,11 @@ static void print_battery_params(void)
 static void print_battery_info(void)
 {
 	int value;
-	int hour, minute;
+	int year, month, day, hour, minute;
+
+	print_item_name("Mfg date:");
+	if (check_print_error(battery_manufacture_date(&year, &month, &day)))
+		ccprintf("%02d/%02d/%04d\n", month, day, year);
 
 	print_item_name("Serial:");
 	if (check_print_error(battery_serial_number(&value)))
