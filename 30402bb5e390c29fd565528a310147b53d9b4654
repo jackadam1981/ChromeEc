@@ -52,6 +52,24 @@
       "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a50f337f_f14d895b",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-15T23:27:40Z",
+      "side": 1,
+      "message": "I guess I figured it was more important to get this test into place (since the CL it tests has already landed) and then go back and fix the need for magic numbers to run through the state machine.\n\nOh, I just realize how bad that sounds. \"I need to get this one thing done, so I\u0027ll copy and paste this code or continue this bad design practice, and I\u0027ll clean it up later. Really. I promise.\"\n\nBut in this case since I already have a bug assigned to me (and a P1 at that), the promise has more backing than your usual \"pinkie promise.\"",
+      "parentUuid": "5ae62772_4eb4e271",
+      "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
