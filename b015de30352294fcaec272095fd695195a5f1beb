@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5942fe5_0716fb49",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8001,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-15T13:32:41Z",
+      "side": 1,
+      "message": "I think what you want to do is to set p.flag \u003d CBI_SET_REMOVE here and change cbi_set_board_info in cbi.c to call cbi_remove_tag.",
+      "range": {
+        "startLine": 8001,
+        "startChar": 3,
+        "endLine": 8001,
+        "endChar": 35
+      },
+      "revId": "b015de30352294fcaec272095fd695195a5f1beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
