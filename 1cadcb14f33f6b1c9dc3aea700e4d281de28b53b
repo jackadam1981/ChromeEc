@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51769644_b86cab35",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-15T21:47:11Z",
+      "side": 1,
+      "message": "FYI: i2c is initialized in main (not in HOOK_INIT any more). So, cbi_fw_config_init can be called as early as HOOK_PRIO_FIRST. Volteer does so.",
+      "range": {
+        "startLine": 125,
+        "startChar": 34,
+        "endLine": 125,
+        "endChar": 67
+      },
+      "revId": "1cadcb14f33f6b1c9dc3aea700e4d281de28b53b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
