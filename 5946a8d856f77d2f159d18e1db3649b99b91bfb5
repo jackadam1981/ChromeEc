@@ -22,6 +22,30 @@
       "revId": "5946a8d856f77d2f159d18e1db3649b99b91bfb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83aafb15_802f5b60",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-15T19:49:51Z",
+      "side": 1,
+      "message": "Not as it stands. CPRINTS is defined to nothing in the test-build case, which produces a syntax error. I could define CPRINTS to 0, which probably wouldn\u0027t break anything in this file. I wouldn\u0027t need the IS_ENABLED in that scheme. But that strikes me as a somewhat surprising thing to do. It could eventually produce some annoying build errors if people come to rely on it, and I wouldn\u0027t really want the practice to spread.\n\nWDYT?",
+      "parentUuid": "5b005f1b_ee491444",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 7
+      },
+      "revId": "5946a8d856f77d2f159d18e1db3649b99b91bfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
