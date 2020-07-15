@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20462253_67759f21",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-15T23:03:29Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of this cycle_through_state_machine (b/161174072), anyone have thoughts on improving it?",
+      "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
