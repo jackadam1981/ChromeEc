@@ -70,6 +70,24 @@
       "revId": "b2f7c03b5aab6e7f69c4060dbb903c7f00aa8b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dabee824_dcbad8a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-15T22:10:34Z",
+      "side": 1,
+      "message": "Found a typo (should be \"manufacture\" with r, according to the Smart Battery Spec) and fixed some other bugs (in separated CLs).",
+      "parentUuid": "35cb42da_7d535e45",
+      "revId": "b2f7c03b5aab6e7f69c4060dbb903c7f00aa8b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
