@@ -154,6 +154,19 @@ void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+/*
+ * Init our TCPCs early to detect Vbus before EFS2 check for AC.
+ * Note this needs to run after CBI init, which is at I2C + 1
+ */
+static void board_tcpc_init(void)
+{
+	int port;
+
+	for (port = 0; port < board_get_usb_pd_port_count(); port++)
+		tcpm_init(port);
+}
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
+
 /* Enable HDMI any time the SoC is on */
 static void hdmi_enable(void)
 {
