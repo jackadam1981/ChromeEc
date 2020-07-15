@@ -218,6 +218,8 @@ enum usb_pe_state {
 	PE_SEND_SOFT_RESET,
 	PE_SOFT_RESET,
 	PE_SEND_NOT_SUPPORTED,
+	PE_SRC_CHUNK_RECEIVED,
+	PE_SNK_CHUNK_RECEIVED,
 	PE_SRC_PING,
 	PE_DRS_EVALUATE_SWAP,
 	PE_DRS_CHANGE,
@@ -255,13 +257,15 @@ enum usb_pe_state {
 	/* AMS Start parent - runs SenderResponseTimer */
 	PE_SENDER_RESPONSE,
 
+#ifdef CONFIG_USB_PD_REV30
 	/* PD3.0 only states below here*/
 	PE_FRS_SNK_SRC_START_AMS,
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	PE_GIVE_BATTERY_CAP,
 	PE_GIVE_BATTERY_STATUS,
 	PE_SEND_ALERT,
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
-#ifdef CONFIG_USB_PD_REV30
 	/* Super States */
 	PE_PRS_FRS_SHARED,
 #endif /* CONFIG_USB_PD_REV30 */
@@ -333,6 +337,8 @@ static const char * const pe_state_names[] = {
 	[PE_SEND_SOFT_RESET] = "PE_Send_Soft_Reset",
 	[PE_SOFT_RESET] = "PE_Soft_Reset",
 	[PE_SEND_NOT_SUPPORTED] = "PE_Send_Not_Supported",
+	[PE_SRC_CHUNK_RECEIVED] = "PE_SRC_Chunk_Received",
+	[PE_SNK_CHUNK_RECEIVED] = "PE_SNK_Chunk_Received",
 	[PE_SRC_PING] = "PE_SRC_Ping",
 	[PE_DRS_EVALUATE_SWAP] = "PE_DRS_Evaluate_Swap",
 	[PE_DRS_CHANGE] = "PE_DRS_Change",
@@ -373,9 +379,11 @@ static const char * const pe_state_names[] = {
 	/* PD3.0 only states below here*/
 #ifdef CONFIG_USB_PD_REV30
 	[PE_FRS_SNK_SRC_START_AMS] = "PE_FRS_SNK_SRC_Start_Ams",
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
 	[PE_SEND_ALERT] = "PE_Send_Alert",
+#endif
 
 	/* Super States */
 	[PE_PRS_FRS_SHARED] = "SS:PE_PRS_FRS_SHARED",
@@ -389,6 +397,10 @@ static const char * const pe_state_names[] = {
 extern const char **pe_state_names;
 #endif
 
+/*
+ * Ensure that invalid states don't link properly. This lets us use guard code
+ * with IS_ENABLED instead of ifdefs and still save flash space.
+ */
 #ifndef CONFIG_USBC_VCONN
 enum usb_pe_state PE_VCS_EVALUATE_SWAP_NOT_SUPPORTED;
 enum usb_pe_state PE_VCS_SEND_SWAP_NOT_SUPPORTED;
@@ -404,21 +416,22 @@ enum usb_pe_state PE_VCS_SEND_PS_RDY_SWAP_NOT_SUPPORTED;
 #define PE_VCS_SEND_PS_RDY_SWAP PE_VCS_SEND_PS_RDY_SWAP_NOT_SUPPORTED
 #endif /* CONFIG_USBC_VCONN */
 
-/*
- * Ensure that Invalid states don't link properly. This let's us use guard
- * code with IS_ENABLED instead of ifdefs and still save flash space
- */
 #ifndef CONFIG_USB_PD_REV30
 extern enum usb_pe_state PE_FRS_SNK_SRC_START_AMS_NOT_SUPPORTED;
-extern enum usb_pe_state PE_GIVE_BATTERY_CAP_NOT_SUPPORTED;
-extern enum usb_pe_state PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED;
 extern enum usb_pe_state PE_PRS_FRS_SHARE_NOT_SUPPORTED;
 #define PE_FRS_SNK_SRC_START_AMS PE_FRS_SNK_SRC_START_AMS_NOT_SUPPORTED
-#define PE_GIVE_BATTERY_CAP PE_GIVE_BATTERY_CAP_NOT_SUPPORTED
-#define PE_GIVE_BATTERY_STATUS PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED
 #define PE_PRS_FRS_SHARED PE_PRS_FRS_SHARED_NOT_SUPPORTED
 void pe_set_frs_enable(int port, int enable);
 #endif /* CONFIG_USB_PD_REV30 */
+
+#ifndef CONFIG_USB_PD_EXTENDED_MESSAGES
+extern enum usb_pe_state PE_GIVE_BATTERY_CAP_NOT_SUPPORTED;
+extern enum usb_pe_state PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED;
+extern enum usb_pe_state PE_SEND_ALERT_NOT_SUPPORTED;
+#define PE_GIVE_BATTERY_CAP PE_GIVE_BATTERY_CAP_NOT_SUPPORTED
+#define PE_GIVE_BATTERY_STATUS PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED
+#define PE_SEND_ALERT PE_SEND_ALERT_NOT_SUPPORTED
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 /*
  * This enum is used to implement a state machine consisting of at most
@@ -586,6 +599,17 @@ static struct policy_engine {
 	 * NOTE: This timer is not part of the TypeC/PD spec.
 	 */
 	uint64_t wait_and_add_jitter_timer;
+
+	/*
+	 * PD 3.0, version 2.0, section 6.6.18.1: The ChunkingNotSupportedTimer
+	 * is used by a Source or Sink which does not support multi-chunk
+	 * Chunking but has received a Message Chunk. The
+	 * ChunkingNotSupportedTimer Shall be started when the last bit of the
+	 * EOP of a Message Chunk of a multi-chunk Message is received. The
+	 * Policy Engine Shall Not send its Not_Supported Message before the
+	 * ChunkingNotSupportedTimer expires.
+	 */
+	uint64_t chunking_not_supported_timer;
 
 	/* Counters */
 
@@ -1105,7 +1129,7 @@ test_export_static enum usb_pe_state get_state_pe(const int port)
 
 static bool common_src_snk_dpm_requests(int port)
 {
-	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES) &&
 			PE_CHK_DPM_REQUEST(port, DPM_REQUEST_SEND_ALERT)) {
 		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_SEND_ALERT);
 		set_state_pe(port, PE_SEND_ALERT);
@@ -1906,11 +1930,6 @@ static void pe_src_ready_entry(int port)
 
 static void pe_src_ready_run(int port)
 {
-	uint32_t payload;
-	uint8_t type;
-	uint8_t cnt;
-	uint8_t ext;
-
 	/*
 	 * Don't delay handling a hard reset from the device policy manager.
 	 */
@@ -1925,24 +1944,32 @@ static void pe_src_ready_run(int port)
 	 * reset
 	 */
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+		uint8_t type = PD_HEADER_TYPE(rx_emsg[port].header);
+		uint8_t cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		uint8_t ext = PD_HEADER_EXT(rx_emsg[port].header);
+		uint32_t *payload = (uint32_t *)rx_emsg[port].buf;
+		bool ext_chunked =
+			!!PD_EXT_HEADER_CHUNKED(*(uint16_t *)payload);
 
-		type = PD_HEADER_TYPE(rx_emsg[port].header);
-		cnt = PD_HEADER_CNT(rx_emsg[port].header);
-		ext = PD_HEADER_EXT(rx_emsg[port].header);
-		payload = *(uint32_t *)rx_emsg[port].buf;
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/* Extended Message Requests */
 		if (ext > 0) {
+			if (!IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES) &&
+					ext_chunked) {
+				set_state_pe(port, PE_SRC_CHUNK_RECEIVED);
+				return;
+			}
+
 			switch (type) {
-#if defined(CONFIG_USB_PD_REV30) && defined(CONFIG_BATTERY)
+#if defined(CONFIG_USB_PD_EXTENDED_MESSAGES) && defined(CONFIG_BATTERY)
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
 				break;
 			case PD_EXT_GET_BATTERY_STATUS:
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
-#endif /* CONFIG_USB_PD_REV30 && CONFIG_BATTERY*/
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES && CONFIG_BATTERY*/
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -1959,7 +1986,7 @@ static void pe_src_ready_run(int port)
 			case PD_DATA_VENDOR_DEF:
 				if (PD_HEADER_TYPE(rx_emsg[port].header) ==
 							PD_DATA_VENDOR_DEF) {
-					if (PD_VDO_SVDM(payload)) {
+					if (PD_VDO_SVDM(*payload)) {
 						set_state_pe(port,
 							PE_VDM_RESPONSE);
 					} else
@@ -2670,14 +2697,14 @@ static void pe_snk_ready_run(int port)
 		/* Extended Message Request */
 		if (ext > 0) {
 			switch (type) {
-#if defined(CONFIG_USB_PD_REV30) && defined(CONFIG_BATTERY)
+#if defined(CONFIG_USB_PD_EXTENDED_MESSAGES) && defined(CONFIG_BATTERY)
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
 				break;
 			case PD_EXT_GET_BATTERY_STATUS:
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
-#endif /* CONFIG_USB_PD_REV30 && CONFIG_BATTERY */
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES && CONFIG_BATTERY */
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -3070,6 +3097,35 @@ static void pe_send_not_supported_run(int port)
 }
 
 /**
+ * PE_SRC_Chunk_Received and PE_SNK_Chunk_Received
+ *
+ * 6.11.2.1.1 Architecture of Device Including Chunking Layer (Revision 3.0,
+ * Version 2.0): If a PD Device or Cable Marker has no requirement to handle any
+ * message requiring more than one Chunk of any Extended Message, it May omit
+ * the Chunking Layer. In this case it Shall implement the
+ * ChunkingNotSupportedTimer to ensure compatible operation with partners which
+ * support Chunking.
+ *
+ * See also:
+ * 6.6.18.1 ChunkingNotSupportedTimer
+ * 8.3.3.6  Not Supported Message State Diagrams
+ */
+static void pe_chunk_received_entry(int port)
+{
+	print_current_state(port);
+	pe[port].chunking_not_supported_timer =
+		get_time().val + PD_T_CHUNKING_NOT_SUPPORTED;
+}
+
+static void pe_chunk_received_run(int port)
+{
+	if (get_time().val > pe[port].chunking_not_supported_timer) {
+		pe[port].chunking_not_supported_timer = TIMER_DISABLED;
+		set_state_pe(port, PE_SEND_NOT_SUPPORTED);
+	}
+}
+
+/**
  * PE_SRC_Ping
  */
 static void pe_src_ping_entry(int port)
@@ -3086,7 +3142,7 @@ static void pe_src_ping_run(int port)
 	}
 }
 
-#ifdef CONFIG_USB_PD_REV30
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 /**
  * PE_Give_Battery_Cap
  */
@@ -3277,7 +3333,7 @@ static void pe_send_alert_run(int port)
 		pe_set_ready_state(port);
 	}
 }
-#endif /* CONFIG_USB_PD_REV30 */
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 /**
  * PE_DRS_Evaluate_Swap
@@ -5530,11 +5586,19 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_send_not_supported_entry,
 		.run = pe_send_not_supported_run,
 	},
+	[PE_SRC_CHUNK_RECEIVED] = {
+		.entry = pe_chunk_received_entry,
+		.run   = pe_chunk_received_run,
+	},
+	[PE_SNK_CHUNK_RECEIVED] = {
+		.entry = pe_chunk_received_entry,
+		.run   = pe_chunk_received_run,
+	},
 	[PE_SRC_PING] = {
 		.entry = pe_src_ping_entry,
 		.run   = pe_src_ping_run,
 	},
-#ifdef CONFIG_USB_PD_REV30
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[PE_GIVE_BATTERY_CAP] = {
 		.entry = pe_give_battery_cap_entry,
 		.run   = pe_give_battery_cap_run,
@@ -5547,7 +5611,7 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_send_alert_entry,
 		.run   = pe_send_alert_run,
 	},
-#endif /* CONFIG_USB_PD_REV30 */
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 	[PE_DRS_EVALUATE_SWAP] = {
 		.entry = pe_drs_evaluate_swap_entry,
 		.run   = pe_drs_evaluate_swap_run,
