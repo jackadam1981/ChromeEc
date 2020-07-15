@@ -486,6 +486,75 @@ static void dump_cbi(void)
 	print_uint64_tag("REWORK_ID", cbi_get_rework_id(&lval), &lval);
 }
 
+#ifdef CONFIG_CMD_CBI_SET
+int cbi_init(void)
+{
+	memset(cbi, 0, sizeof(cbi));
+	memcpy(head->magic, cbi_magic, sizeof(cbi_magic));
+	head->total_size = sizeof(*head);
+	cached_read_result = EC_SUCCESS;
+
+	/* Whether we're modifying existing data or creating new one,
+	 * we take over the format. */
+	head->major_version = CBI_VERSION_MAJOR;
+	head->minor_version = CBI_VERSION_MINOR;
+	head->crc = cbi_crc8(head);
+
+	/* We already checked write protect failure case. */
+	if (write_board_info())
+		return EC_RES_ERROR;
+
+	return EC_SUCCESS;
+}
+
+static int cc_cbi_set(int argc, char **argv)
+{
+	char *e;
+	int val;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* If cbi is currently not programmed, then need to initialize */
+	if(do_read_board_info())
+		cbi_init();
+
+	if (!strcasecmp(argv[1], "board")) {
+		val = strtoi(argv[2], &e, 10) & 0xff;
+		val &= 0xff;
+		cbi_set_board_info(CBI_TAG_BOARD_VERSION,
+				   (uint8_t *)&val, sizeof(int));
+	} else if (!strcasecmp(argv[1], "oem_id")) {
+		val = strtoi(argv[2], &e, 10) & 0xff;
+		val &= 0xff;
+		cbi_set_board_info(CBI_TAG_OEM_ID,
+				   (uint8_t *)&val, sizeof(int));
+	} else if (!strcasecmp(argv[1], "sku")) {
+		val = strtoi(argv[2], &e, 10) & 0xff;
+		val &= 0xff;
+		cbi_set_board_info(CBI_TAG_SKU_ID,
+				   (uint8_t *)&val, sizeof(int));
+	} else if (!strcasecmp(argv[1], "oem_name")) {
+		cbi_set_board_info(CBI_TAG_OEM_NAME,
+				   argv[2], strlen(argv[2] + 1));
+	} else if (!strcasecmp(argv[1], "fw_config")) {
+		val = strtoi(argv[2], &e, 10) & 0xff;
+		cbi_set_board_info(CBI_TAG_FW_CONFIG,
+				   (uint8_t *)&val, sizeof(int));
+	}
+
+	head->crc = cbi_crc8(head);
+	if (write_board_info())
+		return EC_RES_ERROR;
+
+	dump_cbi();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(cbi_set, cc_cbi_set,
+			"board|oem_id|sku|oem_name|fw_config",
+			"Set CBI fields");
+#endif
+
 static int cc_cbi(int argc, char **argv)
 {
 	dump_cbi();
