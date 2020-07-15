@@ -1,0 +1,283 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecc7ae61_60a56d0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "Add unit tests. From https://source.corp.google.com/piper///depot/google3/experimental/users/afliu/imu/onoffbodystatus.py;rcl\u003d314426148;l\u003d220, Annabelle may have some .csv files with golden data of on_body/off_body you can use to check the result of your algorithm implementation against hers. ",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd7d89e1_2a02812d",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "Use consistent function naming: body_detect_...",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bda14c33_35f13a9a",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "Already defined in common/math_util.c, move it to math_util.h",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e2706fe_f4e92db8",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "enum body_states instead of int.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b432b562_5009abd8",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "Check first if sending an event is required: _init() could sent saveral ON_BODY in a row.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0a13f9c_381708de",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "\u003e \"chage\" is a possible misspelling of \"change\" or \"charge\".\n\nPlease fix.",
+      "parentUuid": "6fe5454e_a4358f0b",
+      "range": {
+        "startLine": 134,
+        "startChar": 10,
+        "endLine": 134,
+        "endChar": 15
+      },
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02030282_31378768",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "Use BIT() instead of 1.\nYou can calculate data_1g only when range or resolution changes.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6937034f_2b92e14e",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "Use a constant instead of a number.\nUse SQ(data_1g)\nWhy var_threshold_scaled is a static when data_1g is not?",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45e320ee_f621c68c",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "By default, odr is 10, 12.5Hz (depending on sensor capabilities). Do we need to set a different speed?",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20ec9485_ed3a2d68",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "Why would it happen?",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0591359c_d4d7dabe",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "You call 3 functions (get...) at every sensor interval, it is too much.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83d340aa_a209d3f0",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "Do we need this test. If you get called only when a sample is available.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e2b164_28b0fa94",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "Call this function only when CONFIG_BODY_DETECTION_SENSOR sensor has an event.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc79bc55_fa57b52c",
+        "filename": "include/body_detection.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "You can move this to the end of config.h: if not defined in board.h, use these default definition.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f698e78_debc17d0",
+        "filename": "include/body_detection.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "should it be lower, given you found at high odr, the natural noise bar was too high.\nWe can assume the device is in use close to the body if the accelerator ODR is \u003e 50Hz.\nAlso 200Hz is wrong, some EC goes up to 250Hz to match accelerometer capabilities.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29cee90c_d0f69b45",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2651,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-15T21:00:04Z",
+      "side": 1,
+      "message": "Use crrev.com/c/2229803 as a base.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
