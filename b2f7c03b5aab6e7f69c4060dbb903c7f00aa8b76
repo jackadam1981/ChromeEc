@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22f5ae0a_18c59ca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-15T18:16:06Z",
+      "side": 1,
+      "message": "NOTE: this is actually a bit nasty.  The kernel sees the error being returned when it tries to read the date as being a sign that the battery must have been disconnected.  Thus it re-read everything all over again and hits the same error, so it just spams the EC constantly unless we fix this.\n\nNOTE: if you think there\u0027s an actual reason we need to expose the date, I suppose we could try do to that too.",
+      "revId": "b2f7c03b5aab6e7f69c4060dbb903c7f00aa8b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
