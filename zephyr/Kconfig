@@ -200,6 +200,27 @@ config PLATFORM_EC_CBI
 
 	  https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md
 
+if PLATFORM_EC_CBI
+
+config PLATFORM_EC_CONFIG_CMD_CBI
+	bool "Console command: cbi"
+	default y
+	help
+	  Enables the console command for Chromium OS Board Info (CBI). This
+	  command is used to display the values of each of the CBI tags. In
+	  addition, it will display the full contents of the serial eeprom.
+
+config PLATFORM_EC_CMD_CBI_SET
+	bool "Console command: cbi_set"
+	depends on PLATFORM_EC_CONFIG_CMD_CBI
+	help
+	  Enables the EC to set parameters in Chromium OS Board Info (CBI)
+	  serial eeprom. The CBI is typically written during factory process,
+	  or via AP host commands. This config enables setting CBI fields from
+	  the EC console, which can be used on boards which don't have an AP.
+
+endif # PLATFORM_EC_CBI
+
 config PLATFORM_EC_CHIPSET_RESET_HOOK
 	bool "Provide a hook for when the AP resets"
 	default y
