@@ -47,14 +47,13 @@ GPIO_INT(TABLET_MODE_L,	PIN(K, 1), GPIO_INT_BOTH, gmr_tablet_switch_isr)
 /* DC Jack presence coming from +VADP_OUT */
 GPIO_INT(DC_JACK_PRESENT,	PIN(J, 2), GPIO_INT_BOTH, board_dc_jack_interrupt)
 
-
 /* Type-C interrupts */
-#ifdef BOARD_TGLRVPU_ITE
-GPIO_INT(USB_C0_VBUS_INT,	PIN(L, 5), GPIO_INT_BOTH, vbus0_evt)
-GPIO_INT(USB_C1_VBUS_INT,	PIN(D, 4), GPIO_INT_BOTH, vbus1_evt)
+#if defined (BOARD_TGLRVPU_ITE) || defined (BOARD_TGLRVPU_ITE_TCPVM1)
+GPIO_INT(USB_C0_VBUS_INT,	PIN(L, 5), GPIO_INT_BOTH, tcpc_alert_event)
+GPIO_INT(USB_C1_VBUS_INT,	PIN(D, 4), GPIO_INT_BOTH, tcpc_alert_event)
 #else /* BOARD_TGLRVPY_ITE */
-GPIO_INT(USB_C0_VBUS_INT,	PIN(D, 4), GPIO_INT_BOTH, vbus0_evt)
-GPIO_INT(USB_C1_VBUS_INT,	PIN(L, 5), GPIO_INT_BOTH, vbus1_evt)
+GPIO_INT(USB_C0_VBUS_INT,	PIN(D, 4), GPIO_INT_BOTH, tcpc_alert_event)
+GPIO_INT(USB_C1_VBUS_INT,	PIN(L, 5), GPIO_INT_BOTH, tcpc_alert_event)
 #endif /* BOARD_TGLRVPU_ITE */
 
 /* Power sequencing GPIOs */
