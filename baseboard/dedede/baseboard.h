@@ -98,6 +98,7 @@
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
+#define CONFIG_VBOOT_EFS2
 
 /* Battery */
 #define CONFIG_BATTERY_CUT_OFF
