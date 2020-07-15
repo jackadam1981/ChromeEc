@@ -46,6 +46,30 @@
       "revId": "18df5533b2f92aed07a2d1209a6ae5884a039721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "440a6c64_e18c9708",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2669,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-15T19:06:30Z",
+      "side": 1,
+      "message": "If we\u0027re changing it, are you okay with board_set_frs_enable() to match the rest of the frs enable functions?",
+      "parentUuid": "d3a80437_adcee8c5",
+      "range": {
+        "startLine": 2669,
+        "startChar": 21,
+        "endLine": 2669,
+        "endChar": 53
+      },
+      "revId": "18df5533b2f92aed07a2d1209a6ae5884a039721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
