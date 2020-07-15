@@ -255,13 +255,15 @@ enum usb_pe_state {
 	/* AMS Start parent - runs SenderResponseTimer */
 	PE_SENDER_RESPONSE,
 
+#ifdef CONFIG_USB_PD_REV30
 	/* PD3.0 only states below here*/
 	PE_FRS_SNK_SRC_START_AMS,
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	PE_GIVE_BATTERY_CAP,
 	PE_GIVE_BATTERY_STATUS,
 	PE_SEND_ALERT,
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
-#ifdef CONFIG_USB_PD_REV30
 	/* Super States */
 	PE_PRS_FRS_SHARED,
 #endif /* CONFIG_USB_PD_REV30 */
@@ -373,9 +375,11 @@ static const char * const pe_state_names[] = {
 	/* PD3.0 only states below here*/
 #ifdef CONFIG_USB_PD_REV30
 	[PE_FRS_SNK_SRC_START_AMS] = "PE_FRS_SNK_SRC_Start_Ams",
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[PE_GIVE_BATTERY_CAP] = "PE_Give_Battery_Cap",
 	[PE_GIVE_BATTERY_STATUS] = "PE_Give_Battery_Status",
 	[PE_SEND_ALERT] = "PE_Send_Alert",
+#endif
 
 	/* Super States */
 	[PE_PRS_FRS_SHARED] = "SS:PE_PRS_FRS_SHARED",
@@ -389,6 +393,10 @@ static const char * const pe_state_names[] = {
 extern const char **pe_state_names;
 #endif
 
+/*
+ * Ensure that invalid states don't link properly. This lets us use guard code
+ * with IS_ENABLED instead of ifdefs and still save flash space.
+ */
 #ifndef CONFIG_USBC_VCONN
 enum usb_pe_state PE_VCS_EVALUATE_SWAP_NOT_SUPPORTED;
 enum usb_pe_state PE_VCS_SEND_SWAP_NOT_SUPPORTED;
@@ -404,21 +412,22 @@ enum usb_pe_state PE_VCS_SEND_PS_RDY_SWAP_NOT_SUPPORTED;
 #define PE_VCS_SEND_PS_RDY_SWAP PE_VCS_SEND_PS_RDY_SWAP_NOT_SUPPORTED
 #endif /* CONFIG_USBC_VCONN */
 
-/*
- * Ensure that Invalid states don't link properly. This let's us use guard
- * code with IS_ENABLED instead of ifdefs and still save flash space
- */
 #ifndef CONFIG_USB_PD_REV30
 extern enum usb_pe_state PE_FRS_SNK_SRC_START_AMS_NOT_SUPPORTED;
-extern enum usb_pe_state PE_GIVE_BATTERY_CAP_NOT_SUPPORTED;
-extern enum usb_pe_state PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED;
 extern enum usb_pe_state PE_PRS_FRS_SHARE_NOT_SUPPORTED;
 #define PE_FRS_SNK_SRC_START_AMS PE_FRS_SNK_SRC_START_AMS_NOT_SUPPORTED
-#define PE_GIVE_BATTERY_CAP PE_GIVE_BATTERY_CAP_NOT_SUPPORTED
-#define PE_GIVE_BATTERY_STATUS PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED
 #define PE_PRS_FRS_SHARED PE_PRS_FRS_SHARED_NOT_SUPPORTED
 void pe_set_frs_enable(int port, int enable);
 #endif /* CONFIG_USB_PD_REV30 */
+
+#ifndef CONFIG_USB_PD_EXTENDED_MESSAGES
+extern enum usb_pe_state PE_GIVE_BATTERY_CAP_NOT_SUPPORTED;
+extern enum usb_pe_state PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED;
+extern enum usb_pe_state PE_SEND_ALERT_NOT_SUPPORTED;
+#define PE_GIVE_BATTERY_CAP PE_GIVE_BATTERY_CAP_NOT_SUPPORTED
+#define PE_GIVE_BATTERY_STATUS PE_GIVE_BATTERY_STATUS_NOT_SUPPORTED
+#define PE_SEND_ALERT PE_SEND_ALERT_NOT_SUPPORTED
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 /*
  * This enum is used to implement a state machine consisting of at most
@@ -1105,7 +1114,7 @@ test_export_static enum usb_pe_state get_state_pe(const int port)
 
 static bool common_src_snk_dpm_requests(int port)
 {
-	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES) &&
 			PE_CHK_DPM_REQUEST(port, DPM_REQUEST_SEND_ALERT)) {
 		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_SEND_ALERT);
 		set_state_pe(port, PE_SEND_ALERT);
@@ -1935,14 +1944,14 @@ static void pe_src_ready_run(int port)
 		/* Extended Message Requests */
 		if (ext > 0) {
 			switch (type) {
-#if defined(CONFIG_USB_PD_REV30) && defined(CONFIG_BATTERY)
+#if defined(CONFIG_USB_PD_EXTENDED_MESSAGES) && defined(CONFIG_BATTERY)
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
 				break;
 			case PD_EXT_GET_BATTERY_STATUS:
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
-#endif /* CONFIG_USB_PD_REV30 && CONFIG_BATTERY*/
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES && CONFIG_BATTERY*/
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -2670,14 +2679,14 @@ static void pe_snk_ready_run(int port)
 		/* Extended Message Request */
 		if (ext > 0) {
 			switch (type) {
-#if defined(CONFIG_USB_PD_REV30) && defined(CONFIG_BATTERY)
+#if defined(CONFIG_USB_PD_EXTENDED_MESSAGES) && defined(CONFIG_BATTERY)
 			case PD_EXT_GET_BATTERY_CAP:
 				set_state_pe(port, PE_GIVE_BATTERY_CAP);
 				break;
 			case PD_EXT_GET_BATTERY_STATUS:
 				set_state_pe(port, PE_GIVE_BATTERY_STATUS);
 				break;
-#endif /* CONFIG_USB_PD_REV30 && CONFIG_BATTERY */
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES && CONFIG_BATTERY */
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 			}
@@ -3086,7 +3095,7 @@ static void pe_src_ping_run(int port)
 	}
 }
 
-#ifdef CONFIG_USB_PD_REV30
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 /**
  * PE_Give_Battery_Cap
  */
@@ -3277,7 +3286,7 @@ static void pe_send_alert_run(int port)
 		pe_set_ready_state(port);
 	}
 }
-#endif /* CONFIG_USB_PD_REV30 */
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 
 /**
  * PE_DRS_Evaluate_Swap
@@ -5534,7 +5543,7 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_src_ping_entry,
 		.run   = pe_src_ping_run,
 	},
-#ifdef CONFIG_USB_PD_REV30
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
 	[PE_GIVE_BATTERY_CAP] = {
 		.entry = pe_give_battery_cap_entry,
 		.run   = pe_give_battery_cap_run,
@@ -5547,7 +5556,7 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_send_alert_entry,
 		.run   = pe_send_alert_run,
 	},
-#endif /* CONFIG_USB_PD_REV30 */
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
 	[PE_DRS_EVALUATE_SWAP] = {
 		.entry = pe_drs_evaluate_swap_entry,
 		.run   = pe_drs_evaluate_swap_run,

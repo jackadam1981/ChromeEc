@@ -71,6 +71,13 @@ enum usb_prl_hr_state prl_hr_get_state(const int port);
 enum usb_rch_state rch_get_state(const int port);
 enum usb_tch_state tch_get_state(const int port);
 
+#ifndef CONFIG_USB_PD_EXTENDED_MESSAGES
+enum usb_rch_state rch_get_state(const int port)
+{
+	return 0;
+}
+#endif
+
 
 static uint32_t test_data[] = {
 	0x00010203, 0x04050607, 0x08090a0b, 0x0c0d0e0f,
@@ -1049,6 +1056,9 @@ static int test_send_extended_data_msg(void)
 	int i;
 	int port = PORT0;
 
+	if (!IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES))
+		return EC_SUCCESS;
+
 	enable_prl(port, 1);
 
 	/*
@@ -1209,9 +1219,10 @@ static int test_receive_extended_data_msg(void)
 	TEST_EQ(rch_get_state(port),
 			RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER, "%u");
 
-	for (len = 29; len <= 260; len++)
+	for (len = 29; len <= 260; len++) {
 		TEST_NE(simulate_receive_extended_data(port,
 				PD_DATA_BATTERY_STATUS, len), 0, "%d");
+	}
 
 	enable_prl(port, 0);
 
@@ -1391,6 +1402,8 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_phy_execute_hard_reset_msg);
 
 	/* TODO(shurst): More PD 2.0 Tests */
+
+	ccprints("Starting PD 3.0 tests");
 
 	/* Test PD 3.0 Protocol */
 	init_port(PORT0, PD_REV30);

@@ -151,6 +151,10 @@ void pd_simulate_rx(int port)
 static int pd_test_tx_msg_verify(int port, uint8_t raw)
 {
 	int verified_idx = pd_phy[port].verified_idx++;
+#if 0
+	ccprints("kcode: 0x%02x, actual: 0x%02x", raw,
+			pd_phy[port].out_msg[verified_idx]);
+#endif
 	return pd_phy[port].out_msg[verified_idx] == raw;
 }
 
@@ -175,6 +179,7 @@ int pd_test_tx_msg_verify_sop_prime(int port)
 	       pd_test_tx_msg_verify_kcode(port, PD_SYNC1) &&
 	       pd_test_tx_msg_verify_kcode(port, PD_SYNC3) &&
 	       pd_test_tx_msg_verify_kcode(port, PD_SYNC3);
+	return 1;
 }
 
 int pd_test_tx_msg_verify_sop_prime_prime(int port)
