@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6ddd2217_e83951d6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-15T14:24:29Z",
+      "side": 1,
+      "message": "Some devices can enter into multiple alternate modes",
+      "parentUuid": "3921288a_0d8821b2",
+      "revId": "d442832f00e50cbff844afec3ffed4e5a3f042b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "489c2bda_dfcde2f1",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -86,6 +104,30 @@
       "revId": "d442832f00e50cbff844afec3ffed4e5a3f042b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee825436_cfab4d63",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-15T14:24:29Z",
+      "side": 1,
+      "message": "I have added a todo. Planning to add it as a separate patch set",
+      "parentUuid": "03e80946_7e7e1fce",
+      "range": {
+        "startLine": 1068,
+        "startChar": 30,
+        "endLine": 1068,
+        "endChar": 41
+      },
+      "revId": "d442832f00e50cbff844afec3ffed4e5a3f042b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
