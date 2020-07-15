@@ -180,7 +180,19 @@ static void print_battery_params(void)
 static void print_battery_info(void)
 {
 	int value;
-	int hour, minute;
+	int year, month, day, hour, minute;
+
+	print_item_name("Mfg date:");
+	if (check_print_error(battery_manufacture_date(&value))) {
+		/*
+		 * Battery date format:
+		 *   (year - 1980) * 512 + month * 32 + day
+		 */
+		year = (value >> 9) + 1980;
+		month = (value & 0x1ff) / 32;
+		day = (value & 0x1ff) % 32;
+		ccprintf("0x%04x (%02d/%02d/%04d)\n", value, month, day, year);
+	}
 
 	print_item_name("Serial:");
 	if (check_print_error(battery_serial_number(&value)))

@@ -282,23 +282,9 @@ test_mockable int battery_time_at_rate(int rate, int *minutes)
 	return EC_ERROR_TIMEOUT;
 }
 
-test_mockable int battery_manufacture_date(int *year, int *month, int *day)
+test_mockable int battery_manufacture_date(int *date)
 {
-	int rv;
-	int ymd;
-
-	rv = sb_read(SB_MANUFACTURER_DATE, &ymd);
-	if (rv)
-		return rv;
-
-	/* battery date format:
-	 * ymd = day + month * 32 + (year - 1980) * 512
-	 */
-	*year  = (ymd >> 9) + 1980;
-	*month = (ymd & 0x1ff) / 32;
-	*day   = (ymd & 0x1ff) % 32;
-
-	return EC_SUCCESS;
+	return sb_read(SB_MANUFACTURE_DATE, date);
 }
 
 int get_battery_manufacturer_name(char *dest, int size)
