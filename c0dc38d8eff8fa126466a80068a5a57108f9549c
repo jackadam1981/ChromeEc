@@ -69,6 +69,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41c43616_27af239d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-15T05:53:43Z",
+      "side": 1,
+      "message": "Can we call get_vbus_voltage of isl923x_drv? Charger drivers are initialized early (HOOK_PRIO_INIT_I2C+1) in HOOK_INIT.",
+      "parentUuid": "6b1cb274_ed142e88",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
