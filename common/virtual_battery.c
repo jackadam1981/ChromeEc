@@ -300,6 +300,11 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			return EC_ERROR_INVAL;
 		memcpy(dest, &val, bounded_read_len);
 		break;
+	case SB_MANUFACTURER_DATE:
+		/* We don't need to expose a date, so just return 0 */
+		val = 0;
+		memcpy(dest, &val, bounded_read_len);
+		break;
 	case SB_MANUFACTURER_ACCESS:
 		/* No manuf. access reg access allowed over VB interface */
 		return EC_ERROR_INVAL;
