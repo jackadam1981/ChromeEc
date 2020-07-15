@@ -36,6 +36,10 @@ static int tusb1064_init(const struct usb_mux *me)
 		return rv;
 	}
 
+	/* Disable DP channel Aux snooping */
+	tusb1064_write(me, TUSB1064_REG_DP_CONTROL,
+		       TUSB1064_REG_DP_AUX_SNOOP_DIS);
+
 	return EC_SUCCESS;
 }
 
