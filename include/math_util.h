@@ -22,6 +22,9 @@ typedef float fp_inter_t;
 /* Fixed-point to float, for unit tests */
 #define FP_TO_FLOAT(x) ((float)(x))
 
+#define FLT_MAX ((float)0x7F7FFFFF)
+#define FLT_MIN ((float)0xFF7FFFFF)
+
 #else
 /* Fixed-point type */
 typedef int32_t fp_t;
@@ -39,6 +42,10 @@ typedef int64_t fp_inter_t;
 #define FLOAT_TO_FP(x) ((fp_t)((x) * (float)(1<<FP_BITS)))
 /* Fixed-point to float, for unit tests */
 #define FP_TO_FLOAT(x) ((float)(x) / (float)(1<<FP_BITS))
+
+#define FLT_MAX INT32_MAX
+#define FLT_MIN INT32_MIN
+
 #endif
 
 /*
