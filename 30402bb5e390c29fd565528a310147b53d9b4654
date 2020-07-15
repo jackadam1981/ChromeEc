@@ -34,6 +34,24 @@
       "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae62772_4eb4e271",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-15T23:22:31Z",
+      "side": 1,
+      "message": "I guess I was hoping to avoid introducing it into the \"new\" test/usb_prl.c",
+      "parentUuid": "ae2188a7_4108c3b4",
+      "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
