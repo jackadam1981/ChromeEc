@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "b1b841ef_f1d6ac05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-15T20:40:22Z",
+      "side": 1,
+      "message": "I\u0027m in favor of Abe\u0027s solution as it preserves the flash savings of the original change.",
+      "parentUuid": "730cc5af_f2afce2b",
+      "revId": "0fc291209e60a0bf411f72fabed61938553598eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0fd500c3_c8b12334",
         "filename": "include/usbc_ppc.h",
         "patchSetId": 2
