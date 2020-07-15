@@ -51,6 +51,24 @@
       "revId": "89e7c15bca20faed55b7769b21abce93afdb0fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79986bd_d22fed50",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-15T15:20:15Z",
+      "side": 1,
+      "message": "In order to support SYV, the new board (board id - 6) is introduced for changes of schematic and layout so theoretically the board id should be bump natively.\n\nOn the other hand, the new board is not co-layout with NXP + SYV but just for SYV only. As a result, board version itself is enough.",
+      "parentUuid": "994adaab_35943807",
+      "revId": "89e7c15bca20faed55b7769b21abce93afdb0fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
