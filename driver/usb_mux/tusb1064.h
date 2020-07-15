@@ -23,7 +23,8 @@
 #define TUSB1064_MODE_ALT_DP_EN   BIT(1)
 #define TUSB1064_MODE_USB_EN      BIT(0)
 
-
+#define TUSB1064_REG_DP_CONTROL   0x13
+#define TUSB1064_REG_DP_AUX_SNOOP_DIS   BIT(7)
 
 int tusb1064_write(const struct usb_mux *me, uint8_t reg, uint8_t val);
 int tusb1064_read(const struct usb_mux *me, uint8_t reg, int *val);
