@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e60882bb_50d0b7f2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2669,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-15T15:30:05Z",
+      "side": 1,
+      "message": "Nit - this is better named just \"board_pd_fast_role_swap_enable()\".",
+      "range": {
+        "startLine": 2669,
+        "startChar": 21,
+        "endLine": 2669,
+        "endChar": 53
+      },
+      "revId": "18df5533b2f92aed07a2d1209a6ae5884a039721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
