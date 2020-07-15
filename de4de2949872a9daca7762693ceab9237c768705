@@ -16,6 +16,29 @@
       "revId": "de4de2949872a9daca7762693ceab9237c768705",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "974149aa_fdc8c662",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-15T23:23:53Z",
+      "side": 1,
+      "message": "Just note the MODE_DP_PIN_E needs to be removed. But a later CL will override it. Should be fine.",
+      "range": {
+        "startLine": 887,
+        "startChar": 35,
+        "endLine": 887,
+        "endChar": 51
+      },
+      "revId": "de4de2949872a9daca7762693ceab9237c768705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
