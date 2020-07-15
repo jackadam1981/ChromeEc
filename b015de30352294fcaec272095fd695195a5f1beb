@@ -22,6 +22,30 @@
       "revId": "b015de30352294fcaec272095fd695195a5f1beb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "889368b2_d63e4650",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8001,
+      "author": {
+        "id": 1244186
+      },
+      "writtenOn": "2020-07-15T15:30:12Z",
+      "side": 1,
+      "message": "Yeah that\u0027s what I\u0027m unsure of. Passing these flags when removing the field doesn\u0027t make sense.\nOn the other hand, according to the current implementation, setting size\u003d0 does exactly cbi_remove_tag (because cbi_set_data early returns when size\u003d0). It\u0027s just not very obvious. Do you prefer adding CBI_SET_REMOVE flag because it\u0027s more intuitive?",
+      "parentUuid": "e5942fe5_0716fb49",
+      "range": {
+        "startLine": 8001,
+        "startChar": 3,
+        "endLine": 8001,
+        "endChar": 35
+      },
+      "revId": "b015de30352294fcaec272095fd695195a5f1beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
