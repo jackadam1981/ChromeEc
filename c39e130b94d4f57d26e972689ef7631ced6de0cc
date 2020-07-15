@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "74d4fa62_bf446ea3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-15T23:50:08Z",
+      "side": 1,
+      "message": "How these board ID and SKU ID be used?\n\nYou don\u0027t need to define a custom board function for the board ID; the system_get_board_version() returns it, per the CONFIG_BOARD_VERSION_GPIO is defined.\n\nBut getting the SKU ID is a bit diverse.",
+      "revId": "c39e130b94d4f57d26e972689ef7631ced6de0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4eed8b9a_4c5bfa8c",
         "filename": "board/pompom/board.h",
         "patchSetId": 5
