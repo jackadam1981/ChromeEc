@@ -22,6 +22,30 @@
       "revId": "207f25140849bc9279b77aaa216277b8004471f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d2ec9ea_9b231e37",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-15T23:47:55Z",
+      "side": 1,
+      "message": "Yeah, these are the assumptions that I made. I assumed 2(A) was unlikely? I didn\u0027t consider 2(B) at all, so thanks for bringing that to my attention. For more test cases, we can try loading the external ports as that\u0027s something I also didn\u0027t consider; I was simply having the SoC draw the load. We shall see how it goes. 😊",
+      "parentUuid": "1ea30b86_47e66b0b",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 63
+      },
+      "revId": "207f25140849bc9279b77aaa216277b8004471f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

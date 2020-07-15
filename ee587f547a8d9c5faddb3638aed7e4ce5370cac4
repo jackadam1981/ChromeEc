@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "50dc515a_3b40a7fd",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-15T23:47:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "aaa9d77c_62dcd01e",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 9
+      },
+      "revId": "ee587f547a8d9c5faddb3638aed7e4ce5370cac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cacd97e_67b1d29c",
         "filename": "common/ocpc.c",
         "patchSetId": 1
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "This feels tied to the RAA\u0027s specific compensation path though, right?  Because it\u0027ll disable compensation when Rp1 is 0 (so in the beginning for us), but then enable when we have something to set for Rp1.  Do we anticipate this being the same for SM?",
       "parentUuid": "525c1df5_26f86fea",
+      "range": {
+        "startLine": 217,
+        "startChar": 2,
+        "endLine": 217,
+        "endChar": 22
+      },
+      "revId": "ee587f547a8d9c5faddb3638aed7e4ce5370cac4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e110fcc_cdfede9d",
+        "filename": "common/ocpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-15T23:47:55Z",
+      "side": 1,
+      "message": "I think the double compensation would still occur. In the SM case, it will occur immediately, so perhaps the default check here is insufficient and should be removed entirely.",
+      "parentUuid": "104a856e_1b499d03",
       "range": {
         "startLine": 217,
         "startChar": 2,
