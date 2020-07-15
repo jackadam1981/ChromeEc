@@ -33,6 +33,24 @@
       "revId": "89e7c15bca20faed55b7769b21abce93afdb0fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994adaab_35943807",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-15T05:27:29Z",
+      "side": 1,
+      "message": "BOARD_VERSION is supposed to represent the development phase. It\u0027s chronologically incremented and a greater value should indicate better and more bug fixes. \n\nCan you use MODEL_ID or SKU_ID instead?",
+      "parentUuid": "0496d7ef_ab99efd8",
+      "revId": "89e7c15bca20faed55b7769b21abce93afdb0fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
