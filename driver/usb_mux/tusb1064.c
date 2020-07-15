@@ -36,6 +36,10 @@ static int tusb1064_init(const struct usb_mux *me)
 		return rv;
 	}
 
+	/* Disable DP channel Aux snooping */
+	tusb1064_write(me, TUSB1064_REG_DP_CONTROL,
+		       TUSB1064_REG_DP_AUX_SNOOP_DIS);
+
 	return EC_SUCCESS;
 }
 
@@ -60,7 +64,6 @@ static int tusb1064_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		reg |= TUSB1064_MODE_FLIPSEL;
 
-	ccprintf("tusb1064: set_mux: = 0x%x\n", mux_state);
 	tusb1064_write(me, TUSB1064_REG_MODE, reg);
 
 	return EC_SUCCESS;
@@ -80,8 +83,6 @@ static int tusb1064_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 		*mux_state |= USB_PD_MUX_DP_ENABLED;
 	if (reg & TUSB1064_MODE_FLIPSEL)
 		*mux_state |= USB_PD_MUX_POLARITY_INVERTED;
-
-	ccprintf("tusb1064: get_mux: = 0x%x\n", *mux_state);
 
 	return EC_SUCCESS;
 }
