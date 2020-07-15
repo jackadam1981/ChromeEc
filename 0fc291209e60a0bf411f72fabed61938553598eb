@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "a37fe0e7_4e7668d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-07-15T19:09:49Z",
+      "side": 1,
+      "message": "Yes. I can confirm that CL you provided fixes issue.",
+      "parentUuid": "323b08d6_a45bb2a2",
+      "revId": "0fc291209e60a0bf411f72fabed61938553598eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fd500c3_c8b12334",
         "filename": "include/usbc_ppc.h",
         "patchSetId": 2
