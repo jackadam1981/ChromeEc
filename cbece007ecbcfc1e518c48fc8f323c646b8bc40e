@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6586e34b_4d126203",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-15T16:32:21Z",
+      "side": 1,
+      "message": "I missed this on the previous CL, but it doesn\u0027t make sense to run dpm_attempt_mode_entry if dpm_attempt_mode_exit just queued up a VDM. In theory, I think the checks of mode_entry_done and mode_exit_request should ensure that only one of them actually does anything, but it might be good to be explicit, either with a check in this function or by setting mode_entry_done when we set mode_exit_request.",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 30
+      },
+      "revId": "cbece007ecbcfc1e518c48fc8f323c646b8bc40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e8d76ec_7d0deb8c",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-15T16:32:21Z",
+      "side": 1,
+      "message": "How about just dpm_run?",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "cbece007ecbcfc1e518c48fc8f323c646b8bc40e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
