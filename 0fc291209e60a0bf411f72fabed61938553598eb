@@ -55,6 +55,41 @@
     },
     {
       "key": {
+        "uuid": "33d11c74_a55f7cae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-15T16:37:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3437f31f_e26d85c6",
+      "revId": "0fc291209e60a0bf411f72fabed61938553598eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "323b08d6_a45bb2a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-15T16:37:31Z",
+      "side": 1,
+      "message": "Patryk: Does https://crrev.com/c/2299417 fix this issue for you? It is flash-size-neutral (according to savesizes/newsizes) and avoids defining functions in a header.",
+      "revId": "0fc291209e60a0bf411f72fabed61938553598eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fd500c3_c8b12334",
         "filename": "include/usbc_ppc.h",
         "patchSetId": 2
