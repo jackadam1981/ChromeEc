@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bbc1cd26_37aaef36",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-15T19:05:34Z",
+      "side": 1,
+      "message": "There isn\u0027t, I will file one.",
+      "parentUuid": "4723c265_e25fbff8",
+      "range": {
+        "startLine": 528,
+        "startChar": 5,
+        "endLine": 528,
+        "endChar": 9
+      },
+      "revId": "2119eaa480c4bc149571455722ed3f2816a003b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96ea744e_6134ce59",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 4
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "0 means enable?! What a register!",
       "parentUuid": "afcb7058_29619247",
+      "range": {
+        "startLine": 530,
+        "startChar": 2,
+        "endLine": 542,
+        "endChar": 3
+      },
+      "revId": "2119eaa480c4bc149571455722ed3f2816a003b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e9e4c43_e301ceb1",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-15T19:05:34Z",
+      "side": 1,
+      "message": "Right, some (but not all) of the registers are just inverted for some reason. \n\nAnd Keith, thats not exactly right (which proves your point that I need a comment). The CC line is used for both FRS detection and passthrough to the TCPC. So, when cc_polarity is 1, cc2 is cc (and used for FRS), and cc1 is vconn (so here we are cutting it off from the TCPC).",
+      "parentUuid": "e9b3f422_af08e307",
       "range": {
         "startLine": 530,
         "startChar": 2,
