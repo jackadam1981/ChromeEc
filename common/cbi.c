@@ -271,6 +271,7 @@ static int write_board_info(void)
 	while (rest > 0) {
 		int size = MIN(EEPROM_PAGE_WRITE_SIZE, rest);
 		int rv;
+
 		rv = i2c_write_block(I2C_PORT_EEPROM, I2C_ADDR_EEPROM_FLAGS,
 				     p - cbi, p, size);
 		if (rv) {
@@ -466,8 +467,72 @@ static void dump_cbi(void)
 	print_tag("SSFC", cbi_get_ssfc(&val), &val);
 }
 
+#ifdef CONFIG_CBI_EC_CONTROL
+int cbi_init(void)
+{
+	memset(cbi, 0, sizeof(cbi));
+	memcpy(head->magic, cbi_magic, sizeof(cbi_magic));
+	head->total_size = sizeof(*head);
+	cached_read_result = EC_SUCCESS;
+
+	/* Whether we're modifying existing data or creating new one,
+	 * we take over the format. */
+	head->major_version = CBI_VERSION_MAJOR;
+	head->minor_version = CBI_VERSION_MINOR;
+	head->crc = cbi_crc8(head);
+
+	/* We already checked write protect failure case. */
+	if (write_board_info())
+		return EC_RES_ERROR;
+
+	return EC_SUCCESS;
+}
+#endif
+
 static int cc_cbi(int argc, char **argv)
 {
+#ifdef CONFIG_CBI_EC_CONTROL
+	char *e;
+	int val;
+
+	if (argc >= 2) {
+		if (!strcasecmp(argv[1], "init")) {
+			cbi_init();
+		} else if (!strcasecmp(argv[1], "fact")) {
+			if(do_read_board_info())
+				cbi_init();
+			if (argc < 4)
+				return EC_ERROR_PARAM_COUNT;
+			if (!strcasecmp(argv[2], "brd")) {
+				val = strtoi(argv[3], &e, 10);
+				val &= 0xff;
+				cbi_set_board_info(CBI_TAG_BOARD_VERSION,
+						   (uint8_t *)&val, sizeof(int));
+			} else if (!strcasecmp(argv[2], "oem_id")) {
+				val = strtoi(argv[3], &e, 10);
+				val &= 0xff;
+				cbi_set_board_info(CBI_TAG_OEM_ID,
+						   (uint8_t *)&val, sizeof(int));
+			} else if (!strcasecmp(argv[2], "sku")) {
+				val = strtoi(argv[3], &e, 10);
+				val &= 0xff;
+				cbi_set_board_info(CBI_TAG_SKU_ID,
+						   (uint8_t *)&val, sizeof(int));
+			} else if (!strcasecmp(argv[2], "oem_nm")) {
+				cbi_set_board_info(CBI_TAG_OEM_NAME,
+						   argv[3], strlen(argv[2] + 1));
+			}  else if (!strcasecmp(argv[2], "fw")) {
+				val = strtoi(argv[3], &e, 10);
+				cbi_set_board_info(CBI_TAG_FW_CONFIG,
+						   (uint8_t *)&val, sizeof(int));
+			}
+			/* We already checked write protect failure case. */
+			head->crc = cbi_crc8(head);
+			if (write_board_info())
+				return EC_RES_ERROR;
+		}
+	}
+#endif
 	dump_cbi();
 	dump_flash();
 	return EC_SUCCESS;
