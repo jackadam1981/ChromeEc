@@ -88,9 +88,6 @@
 #define USB_PORT0_BB_RETIMER_SHARED_NVM	BB_RETIMER_SHARED_NVM
 #define USB_PORT1_BB_RETIMER_SHARED_NVM	BB_RETIMER_SHARED_NVM
 
-/* Enabling SOP* communication */
-#define CONFIG_USB_PD_DECODE_SOP
-
 /* Enabling Thunderbolt-compatible mode */
 #define CONFIG_USB_PD_TBT_COMPAT_MODE
 
