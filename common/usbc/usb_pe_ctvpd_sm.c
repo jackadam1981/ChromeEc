@@ -132,6 +132,7 @@ static void pe_request_run(const int port)
 
 	if (pe[port].flags & PE_FLAGS_MSG_RECEIVED) {
 		pe[port].flags &= ~PE_FLAGS_MSG_RECEIVED;
+		ccprints("Received Discover Identity REQ.");
 
 		/*
 		 * Only support Structured VDM Discovery
@@ -207,6 +208,7 @@ static void pe_request_run(const int port)
 		/* Send the ACK */
 		prl_send_data_msg(port, TCPC_TX_SOP_PRIME,
 					PD_DATA_VENDOR_DEF);
+		ccprints("Sent Discover Identity ACK");
 	}
 }
 
