@@ -300,6 +300,12 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			return EC_ERROR_INVAL;
 		memcpy(dest, &val, bounded_read_len);
 		break;
+	case SB_MANUFACTURE_DATE:
+		/* This may cause an i2c transaction */
+		if (battery_manufacture_date(&val))
+			return EC_ERROR_INVAL;
+		memcpy(dest, &val, bounded_read_len);
+		break;
 	case SB_MANUFACTURER_ACCESS:
 		/* No manuf. access reg access allowed over VB interface */
 		return EC_ERROR_INVAL;
