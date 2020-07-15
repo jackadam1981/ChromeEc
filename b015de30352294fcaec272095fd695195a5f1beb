@@ -70,6 +70,30 @@
       "revId": "b015de30352294fcaec272095fd695195a5f1beb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fd15045_f07f6fc6",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8001,
+      "author": {
+        "id": 1244186
+      },
+      "writtenOn": "2020-07-15T20:00:29Z",
+      "side": 1,
+      "message": "Do you think we need the [set_flag] optional param for the remove command?\nYes, `ectool cbi set` can do the same thing, just that currently it has a 1\u003c\u003dsize\u003c\u003d4 check for non-string fields.",
+      "parentUuid": "42e490aa_9b455bf6",
+      "range": {
+        "startLine": 8001,
+        "startChar": 3,
+        "endLine": 8001,
+        "endChar": 35
+      },
+      "revId": "b015de30352294fcaec272095fd695195a5f1beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
