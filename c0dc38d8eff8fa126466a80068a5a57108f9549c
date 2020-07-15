@@ -141,6 +141,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa9c236_bfc6f85f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-15T21:43:36Z",
+      "side": 1,
+      "message": "I thought the power_button_x86.c set_initial_pwrbtn_state() code would catch the flag for this case though?  We\u0027d expect to see \"PB idle\" during boot if that\u0027s the case, I think.  I can\u0027t yet explain why waddledoo and waddledee aren\u0027t acting like trembyle when testing this change.",
+      "parentUuid": "cf23294d_4772d5e9",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
