@@ -87,6 +87,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07ffb750_cbf65647",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-15T20:08:11Z",
+      "side": 1,
+      "message": "Actually, I should change the priority of that init since we don\u0027t know what DB we have (and therefore how many charger chips we have) until CBI FW_CONFIG is retrieved also during I2C+1 priority.\n\nWe\u0027re trying to keep the time spend in extpower_is_present() short since it\u0027s called a lot.  We can switch to an i2c call-out if the proposed patch is unacceptable though.\n\nEven when we correctly detect that external power is present on boot, we still seem to be booting anyway.  I included an annotated EC log from a run here: https://paste.googleplex.com/5273387284824064\n\nAnd same behavior comes up on waddledee: https://paste.googleplex.com/5658493447045120",
+      "parentUuid": "41c43616_27af239d",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
