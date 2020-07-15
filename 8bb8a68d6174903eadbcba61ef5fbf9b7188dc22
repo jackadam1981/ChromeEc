@@ -16,6 +16,23 @@
       "revId": "8bb8a68d6174903eadbcba61ef5fbf9b7188dc22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5430a090_3d24a42e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-07-15T17:23:48Z",
+      "side": 1,
+      "message": "We only switch to v2 once we confirm that we don\u0027t have any major regression that will block other teams.",
+      "revId": "8bb8a68d6174903eadbcba61ef5fbf9b7188dc22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
