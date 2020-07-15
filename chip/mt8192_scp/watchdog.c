@@ -29,5 +29,7 @@ int watchdog_init(void)
 	/* reload watchdog */
 	watchdog_reload();
 
+	SCP_CORE0_WDT_CFG = 0;
+
 	return EC_SUCCESS;
 }
