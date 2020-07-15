@@ -22,6 +22,9 @@ typedef float fp_inter_t;
 /* Fixed-point to float, for unit tests */
 #define FP_TO_FLOAT(x) ((float)(x))
 
+#define FLT_MAX ((float)0x7F7FFFFF)
+#define FLT_MIN ((float)0xFF7FFFFF)
+
 #else
 /* Fixed-point type */
 typedef int32_t fp_t;
@@ -36,9 +39,13 @@ typedef int64_t fp_inter_t;
 #define INT_TO_FP(x) ((fp_t)(x) << FP_BITS)
 #define FP_TO_INT(x) ((int32_t)((x) >> FP_BITS))
 /* Float to fixed-point, only for compile-time constants and unit tests */
-#define FLOAT_TO_FP(x) ((fp_t)((x) * (float)(1<<FP_BITS)))
+#define FLOAT_TO_FP(x) ((fp_t)((x) * (float)(1 << FP_BITS)))
 /* Fixed-point to float, for unit tests */
-#define FP_TO_FLOAT(x) ((float)(x) / (float)(1<<FP_BITS))
+#define FP_TO_FLOAT(x) ((float)(x) / (float)(1 << FP_BITS))
+
+#define FLT_MAX 0x7FFFFFFF
+#define FLT_MIN 0xFFFFFFFF
+
 #endif
 
 /*
@@ -142,9 +149,7 @@ typedef fp_t mat33_fp_t[3][3];
 typedef int intv3_t[3];
 
 /* For vectors, define which coordinates are in which location. */
-enum {
-	X, Y, Z, W
-};
+enum { X, Y, Z, W };
 /*
  * Return absolute value of x.  Note that as a macro expansion, this may have
  * side effects if x includes function calls, which is why inline functions
@@ -177,7 +182,6 @@ void cross_product(const intv3_t v1, const intv3_t v2, intv3_t v);
  * Scale a vector by fixed point constant.
  */
 void vector_scale(intv3_t v, fp_t s);
-
 
 /**
  * Find the cosine of the angle between two vectors.
