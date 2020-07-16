@@ -94,6 +94,30 @@
       "revId": "18df5533b2f92aed07a2d1209a6ae5884a039721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1de430_738e87d0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2669,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-16T15:32:11Z",
+      "side": 1,
+      "message": "I sort of like the board_pd_set_frs_enable to indicate power delivery",
+      "parentUuid": "ad40d66b_37df5927",
+      "range": {
+        "startLine": 2669,
+        "startChar": 21,
+        "endLine": 2669,
+        "endChar": 53
+      },
+      "revId": "18df5533b2f92aed07a2d1209a6ae5884a039721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
