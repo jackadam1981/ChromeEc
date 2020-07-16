@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc57a0de_a21fb66e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-16T04:12:42Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t see those there. Yeah,  I can update that.",
+      "parentUuid": "4bd6d7d7_d836f2de",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 30
+      },
+      "revId": "32155da5f8cbc18c5c509b72eeb1c0ccb6923f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b18bfde_c2bbdcca",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "32155da5f8cbc18c5c509b72eeb1c0ccb6923f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0331e7d2_7c208c01",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-16T04:12:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b18bfde_c2bbdcca",
+      "range": {
+        "startLine": 463,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 51
+      },
+      "revId": "32155da5f8cbc18c5c509b72eeb1c0ccb6923f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -92,6 +140,30 @@
       "revId": "32155da5f8cbc18c5c509b72eeb1c0ccb6923f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72f315b1_3afa272b",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-16T04:12:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "528fb5b2_ba3c3096",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 39
+      },
+      "revId": "32155da5f8cbc18c5c509b72eeb1c0ccb6923f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
