@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab4e2e61_14582bdf",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-16T00:50:08Z",
+      "side": 1,
+      "message": "By changing this you\u0027re basically forcing all other battery types to return a format that\u0027s compatible with smart battery?  Seems like you should leave the API alone and fix the virtual battery driver to re-encode it...",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 53
+      },
+      "revId": "312cac749996e05045312f8b90dd2ee87b2ef095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
