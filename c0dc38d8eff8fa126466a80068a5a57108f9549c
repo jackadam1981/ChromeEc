@@ -249,6 +249,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cda51999_865ef4fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-16T16:22:37Z",
+      "side": 1,
+      "message": "Probably. In our Z-state, almost every power rail is turned off including the traditional \"G\" rails (this is where BBRAM power is supplied from). The Z-state only powers the circuitry required for pull ups for a power button press, a lid switch, and charger interrupts (for AC insertion).",
+      "parentUuid": "d9991a5d_704610b6",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
