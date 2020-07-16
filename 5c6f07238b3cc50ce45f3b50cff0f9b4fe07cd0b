@@ -134,6 +134,30 @@
       "revId": "5c6f07238b3cc50ce45f3b50cff0f9b4fe07cd0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "543bbc5a_8a8c18a2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2567,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-16T17:57:43Z",
+      "side": 1,
+      "message": "On my puff with a coincell, I am seeing that the BBRAM is cleared when I lose USB-C power.",
+      "parentUuid": "a85c3645_0151d2bd",
+      "range": {
+        "startLine": 2567,
+        "startChar": 1,
+        "endLine": 2567,
+        "endChar": 59
+      },
+      "revId": "5c6f07238b3cc50ce45f3b50cff0f9b4fe07cd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
