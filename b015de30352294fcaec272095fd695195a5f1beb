@@ -94,6 +94,30 @@
       "revId": "b015de30352294fcaec272095fd695195a5f1beb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a62b1ae_fc464fe0",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8001,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-16T05:30:13Z",
+      "side": 1,
+      "message": "Hmmm... I think it doesn\u0027t hurt. CBI_SET_NO_SYNC may be used.",
+      "parentUuid": "6fd15045_f07f6fc6",
+      "range": {
+        "startLine": 8001,
+        "startChar": 3,
+        "endLine": 8001,
+        "endChar": 35
+      },
+      "revId": "b015de30352294fcaec272095fd695195a5f1beb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
