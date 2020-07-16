@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cb44026_3d484e27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-16T22:50:37Z",
+      "side": 1,
+      "message": "The Trogdor battery.c is just a reference. The shipped board should have multiple battery packs supported. You need to define each of them, like the fuel gauge, the ship mode register, the discharge fet register, etc. I expect you will add them later.",
+      "revId": "1e04be8f7cf6584fa875f625d382a8aeaa66a22f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
