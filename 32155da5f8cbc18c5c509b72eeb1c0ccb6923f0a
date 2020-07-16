@@ -68,6 +68,30 @@
       "revId": "32155da5f8cbc18c5c509b72eeb1c0ccb6923f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "528fb5b2_ba3c3096",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-16T03:54:51Z",
+      "side": 1,
+      "message": "If the register clarification will take a while, it seems fine to commit this for now and have a follow-up CL say what the bits are actually doing :)",
+      "parentUuid": "38b6f4a2_e3b07eec",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 39
+      },
+      "revId": "32155da5f8cbc18c5c509b72eeb1c0ccb6923f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
