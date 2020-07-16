@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "be908b17_b8c0a72e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-16T18:41:52Z",
+      "side": 1,
+      "message": "That is true, but it will miss the case of a hot-plugged battery after init. (That is rare, but I\u0027ve personally done that somewhat often)",
+      "parentUuid": "9364b22f_2e3faf14",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 26
+      },
+      "revId": "2c63107978ad4a7266882224e5176d52fd74a140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40debbc8_d838e610",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-16T04:57:17Z",
       "side": 1,
       "message": "Is this a generally standard way to decide when to end pre-charge?  I didn\u0027t have much experience at all working with the battery packs/chargers before this project :)",
+      "range": {
+        "startLine": 415,
+        "startChar": 13,
+        "endLine": 415,
+        "endChar": 35
+      },
+      "revId": "2c63107978ad4a7266882224e5176d52fd74a140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5685f900_fdce7b63",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-16T18:41:52Z",
+      "side": 1,
+      "message": "caveat: I\u0027m no battery expert :) However, I tend to lump precharge/trickle charge together. I think the only difference is the proportion of the charging rate (trickle is less current than precharge). But given a certain battery and its datasheet, they\u0027ll specify a minimum discharge voltage. If the voltage is beneath that, you\u0027ll want to use a precharge current to get it to the minimum. At that point you can simply use the desired current retrieved from the fuel gauge (which tends to be the \"fast charge\" CC state).",
+      "parentUuid": "40debbc8_d838e610",
       "range": {
         "startLine": 415,
         "startChar": 13,
