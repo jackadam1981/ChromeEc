@@ -70,6 +70,30 @@
       "revId": "18df5533b2f92aed07a2d1209a6ae5884a039721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad40d66b_37df5927",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2669,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-16T15:06:45Z",
+      "side": 1,
+      "message": "Sure, either board_set_frs_enable() or board_pd_set_frs_enable().",
+      "parentUuid": "440a6c64_e18c9708",
+      "range": {
+        "startLine": 2669,
+        "startChar": 21,
+        "endLine": 2669,
+        "endChar": 53
+      },
+      "revId": "18df5533b2f92aed07a2d1209a6ae5884a039721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
