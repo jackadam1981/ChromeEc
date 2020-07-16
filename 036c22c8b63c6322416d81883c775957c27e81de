@@ -22,6 +22,138 @@
       "revId": "036c22c8b63c6322416d81883c775957c27e81de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2da0986_38ca9939",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-16T19:25:39Z",
+      "side": 1,
+      "message": "Overall, this is some really nice looking code. I just left some minor style comments.",
+      "revId": "036c22c8b63c6322416d81883c775957c27e81de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4f905d9_3b343f7a",
+        "filename": "common/gyro_cal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-16T19:25:39Z",
+      "side": 1,
+      "message": "Could move both the still and non-still cases to helper functions to improve readability? You make the call ;)",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 23
+      },
+      "revId": "036c22c8b63c6322416d81883c775957c27e81de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfd8389b_31ed93e4",
+        "filename": "common/gyro_cal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-16T19:25:39Z",
+      "side": 1,
+      "message": "these could just be separate functions, instead of using an enum to select the functionality.",
+      "range": {
+        "startLine": 449,
+        "startChar": 8,
+        "endLine": 449,
+        "endChar": 45
+      },
+      "revId": "036c22c8b63c6322416d81883c775957c27e81de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a5e5130_5b7f60ad",
+        "filename": "common/gyro_cal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-16T19:25:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 46
+      },
+      "revId": "036c22c8b63c6322416d81883c775957c27e81de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1261c0c_9bdd9a1c",
+        "filename": "common/gyro_still_det.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-16T19:25:39Z",
+      "side": 1,
+      "message": "This can be an else if to the above to keep ourselves off the right margin?",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 154,
+        "endChar": 56
+      },
+      "revId": "036c22c8b63c6322416d81883c775957c27e81de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee3eeb4_f7000c33",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-16T19:25:39Z",
+      "side": 1,
+      "message": "Linux kernel style allows you to go between 80-100 columns if it\u0027s required for readability. This might be adequate justification.\n\nhttps://www.kernel.org/doc/html/v5.6/process/coding-style.html#breaking-long-lines-and-strings\n\n\"Statements longer than 80 columns will be broken into sensible chunks, unless exceeding 80 columns significantly increases readability and does not hide information.\"\n\n... think this qualifies",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 18
+      },
+      "revId": "036c22c8b63c6322416d81883c775957c27e81de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
