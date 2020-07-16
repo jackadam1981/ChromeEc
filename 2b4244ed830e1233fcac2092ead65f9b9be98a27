@@ -46,6 +46,30 @@
       "revId": "2b4244ed830e1233fcac2092ead65f9b9be98a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5355d1a7_de916ebf",
+        "filename": "board/drawcia/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-07-16T11:45:25Z",
+      "side": 1,
+      "message": "Only x360 SKU have power led, so we don\u0027t need to override battery led to indicate system state. drawman and drawlet are both clamshell SKU. The common LED on/off code is not blinking white on suspend without charging. we hope can keep consistent led behavior with careena and kappa boards.",
+      "parentUuid": "0cee1902_abd2afe7",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "2b4244ed830e1233fcac2092ead65f9b9be98a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
