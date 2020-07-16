@@ -213,6 +213,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed90dd1d_dbaabb57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-16T05:25:49Z",
+      "side": 1,
+      "message": "Or it could be EC hibernated before saving AP_IDLE completes. Can you also try to read out reset flags after chip_save_reset_flags(reset_flags) but before system_hibernate(0, 0) in power_common_state?",
+      "parentUuid": "b035b8e8_c8a36002",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
