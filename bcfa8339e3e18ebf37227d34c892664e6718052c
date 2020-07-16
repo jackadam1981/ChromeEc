@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "edd9c47c_b674fe90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-16T21:54:32Z",
+      "side": 1,
+      "message": "Changed to operate the bits.",
+      "parentUuid": "c08fdfe4_2b65f7d4",
+      "revId": "bcfa8339e3e18ebf37227d34c892664e6718052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aeb3073a_81ae0bec",
         "filename": "driver/battery/smart.c",
         "patchSetId": 1
