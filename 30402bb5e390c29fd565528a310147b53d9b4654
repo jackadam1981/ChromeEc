@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1ecdd915_5e864da6",
+        "filename": "include/mock/tcpm_mock.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-16T18:17:07Z",
+      "side": 1,
+      "message": "I think this could use a method to set the field need to \"enqueue\" one element",
+      "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20462253_67759f21",
         "filename": "test/usb_prl.c",
         "patchSetId": 2
@@ -67,6 +84,116 @@
       "side": 1,
       "message": "I guess I figured it was more important to get this test into place (since the CL it tests has already landed) and then go back and fix the need for magic numbers to run through the state machine.\n\nOh, I just realize how bad that sounds. \"I need to get this one thing done, so I\u0027ll copy and paste this code or continue this bad design practice, and I\u0027ll clean it up later. Really. I promise.\"\n\nBut in this case since I already have a bug assigned to me (and a P1 at that), the promise has more backing than your usual \"pinkie promise.\"",
       "parentUuid": "5ae62772_4eb4e271",
+      "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ae1ad6b_ba00a519",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-16T18:17:07Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need it at all. Just wait in the unit test. The state machine will cycle for you.\n\nSince we are testing timings at the spec and interface level, just waiting should be okay. No need to force the statemachine to cycle",
+      "parentUuid": "a50f337f_f14d895b",
+      "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b2ed97e_82e9d04a",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-16T18:17:07Z",
+      "side": 1,
+      "message": "if we want prl enabled in every test, then we should just do it in before_test.\n\nIf we want to have a test for when prl is disable, that can disable it as as special case",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd32e747_2fac1970",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-16T18:17:07Z",
+      "side": 1,
+      "message": "should be a mock methods instead of setting separate fields",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7c80a94_46ed8188",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-16T18:17:07Z",
+      "side": 1,
+      "message": "should just wait 10 MSEC should be enough and is a reasonable thing to assert in the test\n\nWe have 16 Ms to respond to a message normal per the PD specification. It would be good to have a set that waited the 16Msec and ensured that we actually send a message after it was received.",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 28
+      },
+      "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04860b30_f16bd504",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-16T18:17:07Z",
+      "side": 1,
+      "message": "can we use the newly add reset TASK event instead and have that start of and clear everything instead?\n\nEach mock you have a reset mock function where the mock knows everything to reset.",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 18
+      },
       "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
