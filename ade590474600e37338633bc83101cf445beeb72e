@@ -51,6 +51,24 @@
       "revId": "ade590474600e37338633bc83101cf445beeb72e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2954de6e_38702f3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-07-16T01:45:52Z",
+      "side": 1,
+      "message": "Rajat can correct me if I got it wrong. But, I think all recent boards are being moved to Vivaldi so that the keyboard layout is exposed in ACPI tables for the kernel to consume. I think it would be good to keep the entire zork family consistent.",
+      "parentUuid": "1a3a05fe_0e04d05f",
+      "revId": "ade590474600e37338633bc83101cf445beeb72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
