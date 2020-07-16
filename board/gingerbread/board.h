@@ -14,6 +14,7 @@
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
+#define CONFIG_WP_ACTIVE_HIGH
 
 /* Console */
 #define CONFIG_UART_CONSOLE 3
@@ -36,7 +37,7 @@
 #define I2C_PORT_I2C3	2
 /* Required symbolic I2C port names */
 #define I2C_PORT_MP4245 I2C_PORT_I2C2
-#define I2C_PORT_EEPROM I2C_PORT_I2C3
+#define I2C_PORT_EEPROM I2C_PORT_I2C1
 #define MP4245_SLAVE_ADDR MP4245_I2C_ADDR_0_FLAGS
 
 /*
@@ -47,6 +48,7 @@
  */
 #define GPIO_ENTERING_RW	GPIO_EC_ENTERING_RW
 #define GPIO_WP_L		GPIO_EC_WP_L
+#define GPIO_WP		GPIO_EC_WP_L
 
 
 #ifndef __ASSEMBLER__
