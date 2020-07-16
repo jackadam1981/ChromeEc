@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c08fdfe4_2b65f7d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-16T00:46:35Z",
+      "side": 1,
+      "message": "Definitely seems like a fix, but not sure why this code thinks of it as math rather than a register with bitfields, which is much easier to understand...",
+      "revId": "bcfa8339e3e18ebf37227d34c892664e6718052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeb3073a_81ae0bec",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-16T00:46:35Z",
+      "side": 1,
+      "message": "Personally I would have written:\n\n  *month \u003d (ymd \u003e\u003e 5) \u0026 0xf",
+      "range": {
+        "startLine": 298,
+        "startChar": 1,
+        "endLine": 298,
+        "endChar": 29
+      },
+      "revId": "bcfa8339e3e18ebf37227d34c892664e6718052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5d72454_86d93340",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-16T00:46:35Z",
+      "side": 1,
+      "message": "This is a really odd way to write:\n\n  *day \u003d ymd % 0x1f",
+      "range": {
+        "startLine": 299,
+        "startChar": 1,
+        "endLine": 299,
+        "endChar": 29
+      },
+      "revId": "bcfa8339e3e18ebf37227d34c892664e6718052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
