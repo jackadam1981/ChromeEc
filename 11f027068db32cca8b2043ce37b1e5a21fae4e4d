@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf0c2971_ccba805e",
+        "filename": "chip/mt8192_scp/hostcmd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-16T01:39:35Z",
+      "side": 1,
+      "message": "Maybe not in this CL, could we share the macros and IPI IDs for mt8183_scp and mt8192_scp?",
+      "revId": "11f027068db32cca8b2043ce37b1e5a21fae4e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
