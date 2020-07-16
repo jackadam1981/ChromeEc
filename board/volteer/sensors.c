@@ -8,7 +8,7 @@
 #include "accelgyro.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
-#include "driver/accelgyro_bmi260.h"
+#include "driver/accelgyro_bmi160.h"
 #include "driver/als_tcs3400.h"
 #include "driver/sync.h"
 #include "keyboard_scan.h"
@@ -27,7 +27,7 @@ static struct mutex g_base_mutex;
 static struct accelgyro_saved_data_t g_bma253_data;
 
 /* BMI260 private data */
-static struct bmi_drv_data_t g_bmi260_data;
+static struct bmi_drv_data_t g_bmi160_data;
 
 /* TCS3400 private data */
 static struct als_drv_data_t g_tcs3400_data = {
@@ -129,11 +129,11 @@ struct motion_sensor_t motion_sensors[] = {
 		.chip = MOTIONSENSE_CHIP_BMI260,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &bmi260_drv,
+		.drv = &bmi160_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = &g_bmi260_data,
+		.drv_data = &g_bmi160_data,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
+		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 		.rot_standard_ref = &base_standard_ref,
 		.min_frequency = BMI_ACCEL_MIN_FREQ,
 		.max_frequency = BMI_ACCEL_MAX_FREQ,
@@ -158,9 +158,9 @@ struct motion_sensor_t motion_sensors[] = {
 		.chip = MOTIONSENSE_CHIP_BMI260,
 		.type = MOTIONSENSE_TYPE_GYRO,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &bmi260_drv,
+		.drv = &bmi160_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = &g_bmi260_data,
+		.drv_data = &g_bmi160_data,
 		.port = I2C_PORT_SENSOR,
 		.i2c_spi_addr_flags = BMI260_ADDR0_FLAGS,
 		.default_range = 1000, /* dps */

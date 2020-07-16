@@ -10,7 +10,7 @@
 #include "accelgyro.h"
 #include "cbi_ec_fw_config.h"
 #include "driver/accel_bma2x2.h"
-#include "driver/accelgyro_bmi260.h"
+#include "driver/accelgyro_bmi160.h"
 #include "driver/als_tcs3400.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/ppc/syv682x.h"
