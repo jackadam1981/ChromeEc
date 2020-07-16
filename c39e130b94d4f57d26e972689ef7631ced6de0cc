@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "ebf6d5a8_f5287be3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1436342
+      },
+      "writtenOn": "2020-07-16T05:23:21Z",
+      "side": 1,
+      "message": "It seems we don`t need to read BOARD ID and SKU ID by EC now. So we abandoned this patch.",
+      "revId": "c39e130b94d4f57d26e972689ef7631ced6de0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4eed8b9a_4c5bfa8c",
         "filename": "board/pompom/board.h",
         "patchSetId": 5
