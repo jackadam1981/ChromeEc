@@ -267,6 +267,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70364d62_a7e00dfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-16T17:38:49Z",
+      "side": 1,
+      "message": "Daisuke, will it be okay if Dedede boards are unable to have this feature?  Trying to carry over the hibernate information without BBRAM will be difficult.\n\nI could go either way for this patch: it\u0027s more flexible than before, but won\u0027t solve dedede\u0027s problem.",
+      "parentUuid": "cda51999_865ef4fe",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
