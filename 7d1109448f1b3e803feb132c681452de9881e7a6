@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02a59c0b_18a3416e",
+        "filename": "board/asurada_scp/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-16T01:22:17Z",
+      "side": 1,
+      "message": "Are these IPI ID decided? If no, we can start by keeping the basic IPI we need. e.g. host command, and init.",
+      "revId": "7d1109448f1b3e803feb132c681452de9881e7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
