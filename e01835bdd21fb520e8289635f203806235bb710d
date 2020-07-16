@@ -22,6 +22,29 @@
       "revId": "e01835bdd21fb520e8289635f203806235bb710d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe25d3a_5583364d",
+        "filename": "board/waddledoo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-16T15:25:51Z",
+      "side": 1,
+      "message": "Now we can make it as early as HOOK_PRIO_FIRST + 1.",
+      "range": {
+        "startLine": 168,
+        "startChar": 41,
+        "endLine": 168,
+        "endChar": 63
+      },
+      "revId": "e01835bdd21fb520e8289635f203806235bb710d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
