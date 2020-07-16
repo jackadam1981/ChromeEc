@@ -231,6 +231,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9991a5d_704610b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-16T16:05:49Z",
+      "side": 1,
+      "message": "Yup, the patch believes the board browned out: https://paste.googleplex.com/6267516353511424\n\nAseda, do you know if this would be related to our z-state?",
+      "parentUuid": "ed90dd1d_dbaabb57",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
