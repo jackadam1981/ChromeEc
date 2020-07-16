@@ -159,6 +159,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "175716f8_f25c8c3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-16T01:29:25Z",
+      "side": 1,
+      "message": "\u003e 20-07-15 13:02:47.065 [118.027602 Setting AP IDLE] \u003c- print added to power_common_state() right before saving AP_IDLE flag\n\nIf AP_IDLE is successfully saved, the low should show:\n\n\u003e [Reset cause: ... ap-idle ]\n\nbut it shows:\n\n\u003e 20-07-15 13:05:35.231 [Reset cause: power-on]\n\nIs your DUT connected to a battery?",
+      "parentUuid": "7aa9c236_bfc6f85f",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
