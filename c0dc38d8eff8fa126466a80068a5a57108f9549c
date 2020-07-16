@@ -195,6 +195,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b035b8e8_c8a36002",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-16T05:19:26Z",
+      "side": 1,
+      "message": "I\u0027m guessing BBRAM contents were lost because of power loss. Do you see \u0027brownout\u0027 if you apply this patch (and do the wake-up test)? https://crrev.com/c/2293284",
+      "parentUuid": "ea6c8377_7561d61b",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
