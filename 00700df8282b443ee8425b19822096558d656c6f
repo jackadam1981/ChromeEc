@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ab5ef4b_ece996a5",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-16T16:49:07Z",
+      "side": 1,
+      "message": "I would do:\n\n\u003e static uint8_t board_version;\n\u003e \n\u003e static bool is_syv_ppc_used(void)\n\u003e {\n\u003e  return (board_version \u003d\u003d 6);\n\u003e }\n\nAnd call is_syv_ppc_used() from wherever it needs to be checked.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 1
+      },
+      "revId": "00700df8282b443ee8425b19822096558d656c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de9394c_9d98c5ba",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-16T16:49:07Z",
+      "side": 1,
+      "message": "(continue from the comment above)\n\n\u0026board_version",
+      "range": {
+        "startLine": 251,
+        "startChar": 27,
+        "endLine": 251,
+        "endChar": 31
+      },
+      "revId": "00700df8282b443ee8425b19822096558d656c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc4850a_7e86e68e",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-16T16:49:07Z",
+      "side": 1,
+      "message": "Can you do this in board_init? It looks ppc won\u0027t be used until PD tasks start.",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 2
+      },
+      "revId": "00700df8282b443ee8425b19822096558d656c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

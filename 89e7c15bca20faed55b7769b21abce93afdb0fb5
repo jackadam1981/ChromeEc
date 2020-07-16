@@ -87,6 +87,24 @@
       "revId": "89e7c15bca20faed55b7769b21abce93afdb0fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67081c02_bb1dc58a",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-16T16:49:07Z",
+      "side": 1,
+      "message": "Just a reminder: as written in b:160139798#37, if we\u0027re going to maintain and update the NXP PPC design, using BOARD_VERSION to differentiate the SYV PPC design  is going to make the next version of the NXP PPC board look awkward.\n\nIf we don\u0027t have a clear plan and know this is a hack, it\u0027s probably ok.",
+      "parentUuid": "da9f4991_cfff0470",
+      "revId": "89e7c15bca20faed55b7769b21abce93afdb0fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
