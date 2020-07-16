@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a2808b56_f3cf143b",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-16T20:31:46Z",
+      "side": 1,
+      "message": "Depends on the connector in my opinion. If it\u0027s really easy to short pins, yeah definitely don\u0027t hot plug then. \n\n\u0026\u0026 Yes, I think it should be fine. Either the current will come from that default battery\u0027s precharge value, or from the fuel gauge. The precharge currents are low enough that I don\u0027t think it will be _that_ bad.",
+      "parentUuid": "729bf905_99529a49",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 26
+      },
+      "revId": "2c63107978ad4a7266882224e5176d52fd74a140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40debbc8_d838e610",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
