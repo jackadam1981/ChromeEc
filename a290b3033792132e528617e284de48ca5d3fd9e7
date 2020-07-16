@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "337b7d64_9fa12267",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-16T15:46:02Z",
+      "side": 1,
+      "message": "Is there more simple way to know that the odr, range or resolution change?\nWill they only be changed by motionsense command in normal case?",
+      "parentUuid": "0591359c_d4d7dabe",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83d340aa_a209d3f0",
         "filename": "common/body_detection.c",
         "patchSetId": 3
@@ -224,6 +242,24 @@
       "writtenOn": "2020-07-15T21:00:04Z",
       "side": 1,
       "message": "Call this function only when CONFIG_BODY_DETECTION_SENSOR sensor has an event.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4646556_90dd98c1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-16T15:46:02Z",
+      "side": 1,
+      "message": "Do you mean interrupt event? If so, do we assume the sensor need to use interrupt when using body detection?",
+      "parentUuid": "14e2b164_28b0fa94",
       "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
