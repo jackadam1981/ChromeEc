@@ -10,6 +10,7 @@
 #include "cryptoc/sha256.h"
 #include "dcrypto.h"
 #include "extension.h"
+#include "rsa.h"
 #include "system.h"
 #include "u2f_impl.h"
 #include "u2f.h"
@@ -116,7 +117,7 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 {
 	struct u2f_generate_req *req = buf;
 	uint8_t kh_version =
-		(req->flags & U2F_UV_ENABLED_KH) ? U2F_KH_VERSION_1 : 0;
+		(req->flags & U2F_UV_ENABLED_KH) ? U2F_KH_VERSION_2 : 0;
 
 	/* Origin keypair. Must be word aligned, otherwise TRNG will crash. */
 	uint8_t od_seed[P256_NBYTES] __aligned(4);
@@ -127,8 +128,17 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 		struct u2f_key_handle kh;
 		struct u2f_versioned_key_handle vkh;
 	} kh_buf;
+	/*
+	 * For versioned KH, the part used in generating keypairs does not
+	 * include anything after the hmac field.
+	 */
 	size_t kh_size = (kh_version == 0) ? sizeof(kh_buf.kh) :
-					     sizeof(kh_buf.vkh);
+					     U2F_VKH_LEN_FOR_KEYPAIR;
+
+	/* Authorization secret for versioned key handles. */
+	/* Generate the seed outside the keyhandle for alignment. */
+	uint8_t authorization_seed[P256_NBYTES] __aligned(4);
+	uint8_t authorization_secret[P256_NBYTES];
 
 	/* Whether key handle generation succeeded */
 	int generate_kh_rc;
@@ -161,14 +171,23 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 		if (!DCRYPTO_ladder_random(&od_seed))
 			return VENDOR_RC_INTERNAL_ERROR;
 
-		if (kh_version == 0)
+		if (kh_version == 0) {
 			generate_kh_rc = u2f_origin_user_keyhandle(
 				req->appId, req->userSecret, od_seed,
 				&kh_buf.kh);
-		else
+		} else {
+			if (!DCRYPTO_ladder_random(authorization_seed))
+				return VENDOR_RC_INTERNAL_ERROR;
+
+			if (u2f_authorization_secret(authorization_seed,
+						     authorization_secret) !=
+			    EC_SUCCESS)
+				return VENDOR_RC_INTERNAL_ERROR;
+
 			generate_kh_rc = u2f_origin_user_versioned_keyhandle(
 				req->appId, req->userSecret, od_seed,
 				kh_version, &kh_buf.vkh);
+		}
 
 		if (generate_kh_rc != EC_SUCCESS)
 			return VENDOR_RC_INTERNAL_ERROR;
@@ -188,6 +207,11 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 		copy_kh_pubkey_out(&opk_x, &opk_y, &kh_buf.kh, buf);
 		*response_size = sizeof(struct u2f_generate_resp);
 	} else {
+		memcpy(&kh_buf.vkh.authorization_seed, authorization_seed,
+		       P256_NBYTES);
+		yicheng_dumb_algo_encrypt(
+			req->auth_time_pubkey, authorization_secret,
+			kh_buf.vkh.encrypted_authorization_secret);
 		copy_versioned_kh_pubkey_out(&opk_x, &opk_y, &kh_buf.vkh, buf);
 		*response_size = sizeof(struct u2f_generate_versioned_resp);
 	}
@@ -264,7 +288,7 @@ verify_versioned_kh_owned(const uint8_t *user_secret, const uint8_t *app_id,
 
 	if (rc == EC_SUCCESS)
 		*owned = safe_memcmp(&recreated_kh, key_handle,
-				     sizeof(recreated_kh)) == 0;
+				     U2F_VKH_LEN_FOR_KEYPAIR) == 0;
 
 	return rc;
 }
@@ -288,6 +312,22 @@ static int verify_legacy_kh_owned(const uint8_t *app_id,
 	p256_from_bin(app_id, &app_id_p256);
 	p256_from_bin(kh_app_id, &kh_app_id_p256);
 	return p256_cmp(&app_id_p256, &kh_app_id_p256) == 0;
+}
+
+static int
+verify_authorization_secret(const uint8_t *given_secret,
+			    const struct u2f_versioned_key_handle *vkh)
+{
+	uint8_t reconstructed_secret[U2F_P256_SIZE];
+	int rc;
+
+	rc = u2f_authorization_secret(vkh->authorization_seed,
+				      reconstructed_secret);
+
+	if (rc != EC_SUCCESS)
+		return 0;
+
+	return memcmp(reconstructed_secret, given_secret, U2F_P256_SIZE) == 0;
 }
 
 /* Below, we depend on the response not being larger than than the request. */
@@ -342,7 +382,7 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 		key_handle = (uint8_t *)&req_versioned->keyHandle;
 		hash = req_versioned->hash;
 		flags = req_versioned->flags;
-		kh_size = sizeof(struct u2f_versioned_key_handle);
+		kh_size = U2F_VKH_LEN_FOR_KEYPAIR;
 		verify_owned_rc = verify_versioned_kh_owned(
 			req_versioned->userSecret, req_versioned->appId,
 			&req_versioned->keyHandle, &kh_owned);
@@ -378,9 +418,19 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 	if ((flags & U2F_AUTH_CHECK_ONLY) == U2F_AUTH_CHECK_ONLY)
 		return VENDOR_RC_SUCCESS;
 
-	/* Always enforce user presence, with optional consume. */
-	if (pop_check_presence(flags & G2F_CONSUME) != POP_TOUCH_YES)
-		return VENDOR_RC_NOT_ALLOWED;
+	/*
+	 * Enforce user presence or authorization secret, with optional
+	 * consume.
+	 */
+	if (pop_check_presence(flags & G2F_CONSUME) != POP_TOUCH_YES) {
+		if (version == 0)
+			return VENDOR_RC_NOT_ALLOWED;
+
+		if (!verify_authorization_secret(
+			    req_versioned->authorization_secret,
+			    &req_versioned->keyHandle))
+			return VENDOR_RC_NOT_ALLOWED;
+	}
 
 	/* Re-create origin-specific key. */
 	if (legacy_kh) {

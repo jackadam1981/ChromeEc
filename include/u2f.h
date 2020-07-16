@@ -52,6 +52,7 @@ struct u2f_ec_point {
 #define U2F_UV_ENABLED_KH 0x08
 
 #define U2F_KH_VERSION_1 0x01
+#define U2F_KH_VERSION_2 0x02
 
 struct u2f_key_handle {
 	uint8_t origin_seed[U2F_P256_SIZE];
@@ -62,7 +63,21 @@ struct u2f_versioned_key_handle {
 	uint8_t version;
 	uint8_t origin_seed[U2F_P256_SIZE];
 	uint8_t hmac[U2F_P256_SIZE];
+	/* Seed for authorization secret. */
+	uint8_t authorization_seed[U2F_P256_SIZE];
+	/*
+	 * At u2f_sign, u2fd may unwrap this authorization secret with the
+	 * auth-time private key, and send the secret to waive power button
+	 * press.
+	 */
+	uint8_t encrypted_authorization_secret[U2F_P256_SIZE];
 };
+
+/*
+ * The part of versioned KHs used to generate keypair is everything upto the
+ * hmac field.
+ */
+#define U2F_VKH_LEN_FOR_KEYPAIR 65
 
 /* TODO(louiscollard): Add Descriptions. */
 
@@ -70,6 +85,11 @@ struct u2f_generate_req {
 	uint8_t appId[U2F_APPID_SIZE]; /* Application id */
 	uint8_t userSecret[U2F_P256_SIZE];
 	uint8_t flags;
+	/*
+	 * If generating versioned KH, use this to encrypt the authorization
+	 * secret. Otherwise unused.
+	 */
+	uint8_t auth_time_pubkey[U2F_P256_SIZE];
 };
 
 struct u2f_generate_resp {
@@ -96,6 +116,7 @@ struct u2f_sign_versioned_req {
 	uint8_t hash[U2F_P256_SIZE];
 	uint8_t flags;
 	struct u2f_versioned_key_handle keyHandle;
+	uint8_t authorization_secret[U2F_P256_SIZE];
 };
 
 struct u2f_sign_resp {

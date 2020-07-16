@@ -63,6 +63,25 @@ int rsa_verify(const struct rsa_public_key *key,
 	       const uint8_t *sha,
 	       uint32_t *workbuf32);
 
+/*
+ * A dumb algorithm that would "encrypt" any 32-byte plaintext by
+ * adding it with the 32-byte pubkey bite-wise.
+ * The only goals are:
+ * 1. The ciphertext should be different from the plaintext.
+ * 2. The private key should be different from the public key.
+ * 3. Correct private key results in correct decryption.
+ * 4. Wrong private key results in decryption failure.
+ */
+int yicheng_dumb_algo_encrypt(const uint8_t *pubkey, const uint8_t *plaintext,
+			      uint8_t *ciphertext);
+
+/*
+ * "Decrypt" the 32-byte ciphertext by adding it bite-wise with the
+ * 32-byte privkey, which is the bite-wise negative of the pubkey.
+ */
+int yicheng_dumb_algo_decrypt(const uint8_t *privkey, const uint8_t *ciphertext,
+			      uint8_t *plaintext);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_RSA_H */

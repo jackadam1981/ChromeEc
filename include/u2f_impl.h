@@ -85,13 +85,19 @@ int u2f_origin_user_versioned_keyhandle(
 	uint8_t version, struct u2f_versioned_key_handle *key_handle);
 
 /**
+ * Generate an authorization secret from the given seed.
+ */
+int u2f_authorization_secret(const uint8_t *seed, uint8_t *secret);
+
+/**
  * Generate an origin and user-specific ECDSA keypair from the specified
  * key handle.
  *
  * If pk_x and pk_y are NULL, public key generation will be skipped.
  *
  * @param key_handle pointer to the key handle
- * @param key_handle_size size of the key handle in bytes
+ * @param key_handle_size size of the key handle in bytes, EXCLUDING
+ * anything after the hmac field.
  * @param d pointer to ECDSA private key
  * @param pk_x pointer to public key point
  * @param pk_y pointer to public key point

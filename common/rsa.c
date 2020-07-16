@@ -257,3 +257,25 @@ int rsa_verify(const struct rsa_public_key *key, const uint8_t *signature,
 
 	return 1;  /* All checked out OK. */
 }
+
+int yicheng_dumb_algo_encrypt(const uint8_t *pubkey, const uint8_t *plaintext,
+			      uint8_t *ciphertext)
+{
+	int i;
+
+	for (i = 0; i < 32; i++)
+		ciphertext[i] = plaintext[i] + pubkey[i];
+
+	return 1;
+}
+
+int yicheng_dumb_algo_decrypt(const uint8_t *privkey, const uint8_t *ciphertext,
+			      uint8_t *plaintext)
+{
+	int i;
+
+	for (i = 0; i < 32; i++)
+		plaintext[i] = ciphertext[i] + privkey[i];
+
+	return 1;
+}

@@ -89,6 +89,9 @@
 /* Also use the cr50 as a second factor authentication */
 #define CONFIG_U2F
 
+/* Hack: use Yicheng's dumb encryption functions */
+#define CONFIG_RSA
+
 #undef CONFIG_FIPS_RSA2048
 #undef CONFIG_FIPS_SW_HMAC_DRBG
 
