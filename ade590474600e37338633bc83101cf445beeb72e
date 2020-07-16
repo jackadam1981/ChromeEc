@@ -69,6 +69,24 @@
       "revId": "ade590474600e37338633bc83101cf445beeb72e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "356ca66f_fb922118",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2020-07-16T05:41:52Z",
+      "side": 1,
+      "message": "\u003e\u003e Is there a benefit to doing that for devices that don\u0027t physically have vivaldi keyboard? \n\n\u003e Rajat can correct me if I got it wrong. But, I think all recent boards are being moved to Vivaldi so that the keyboard layout is exposed in ACPI tables for the kernel to consume. I think it would be good to keep the entire zork family consistent.\n\nTo answer the question, there is no change in functionality (at least currently) from enabling vivaldi keyboard. However, behind the scenes there is a logical change. With vivaldi enabled, the keyboard now sends the \"action keys\" (forward, Back, refresh etc) instead of \"funcction keys\" (F1, F2, F3 etc). This is desired by everyone - kernel, chrome input team. Further, the other desirable change is that the kernel wants to receive a list if keys from firmware that it can aactually generate. All the Intel x86 boards are on board with this scheme, so it is highly desireable that this gets enabled for all.",
+      "parentUuid": "2954de6e_38702f3b",
+      "revId": "ade590474600e37338633bc83101cf445beeb72e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
