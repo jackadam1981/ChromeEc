@@ -22,6 +22,30 @@
       "revId": "99e539825b86aa2acd9998ee5cec3e692641e07a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3970cc86_be1eef8d",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-16T21:56:52Z",
+      "side": 1,
+      "message": "Fixed it.",
+      "parentUuid": "5d4c9bae_30d60be2",
+      "range": {
+        "startLine": 306,
+        "startChar": 3,
+        "endLine": 306,
+        "endChar": 25
+      },
+      "revId": "99e539825b86aa2acd9998ee5cec3e692641e07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
