@@ -16,6 +16,24 @@
       "revId": "7d1109448f1b3e803feb132c681452de9881e7a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea1972b6_4d65103b",
+        "filename": "board/asurada_scp/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-07-16T01:25:46Z",
+      "side": 1,
+      "message": "The ID table is fixed and merged in kernel.\n\nI am trying to keep it unchanged (as an API).",
+      "parentUuid": "02a59c0b_18a3416e",
+      "revId": "7d1109448f1b3e803feb132c681452de9881e7a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
