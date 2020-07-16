@@ -69,6 +69,24 @@
       "revId": "89e7c15bca20faed55b7769b21abce93afdb0fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da9f4991_cfff0470",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2020-07-16T08:21:15Z",
+      "side": 1,
+      "message": "Patch 4, only board version 6 is supported SYV at present.",
+      "parentUuid": "e79986bd_d22fed50",
+      "revId": "89e7c15bca20faed55b7769b21abce93afdb0fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
