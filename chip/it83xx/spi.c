@@ -294,8 +294,6 @@ static void spi_init(void)
 	/* Set FIFO data target count */
 	IT83XX_SPI_FTCB1R = (SPI_RX_MAX_FIFO_SIZE >> 8) & 0xff;
 	IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE & 0xff;
-	/* SPI slave controller enable */
-	IT83XX_SPI_SPISGCR = IT83XX_SPI_SPISCEN;
 #ifdef IT83XX_SPI_AUTO_RESET_RX_FIFO
 	/*
 	 * General control register2
@@ -320,6 +318,8 @@ static void spi_init(void)
 	spi_set_state(SPI_STATE_READY_TO_RECV);
 	/* Interrupt status register(write one to clear) */
 	IT83XX_SPI_ISR = 0xff;
+	/* SPI slave controller enable (after settings are ready) */
+	IT83XX_SPI_SPISGCR = IT83XX_SPI_SPISCEN;
 	/* Enable SPI slave interrupt */
 	task_clear_pending_irq(IT83XX_IRQ_SPI_SLAVE);
 	task_enable_irq(IT83XX_IRQ_SPI_SLAVE);
@@ -328,6 +328,27 @@ static void spi_init(void)
 	gpio_enable_interrupt(GPIO_SPI0_CS);
 }
 DECLARE_HOOK(HOOK_INIT, spi_init, HOOK_PRIO_INIT_SPI);
+
+/* Disable slave SPI */
+static void spi_disable(void)
+{
+	/*
+	 * Mask all interrupts of SPI module before sysjump. New FW images
+	 * (RO/RW) will enable interrupts what they want.
+	 */
+	IT83XX_SPI_IMR = 0xff;
+	/* Disable SPI slave controller */
+	IT83XX_SPI_SPISGCR &= ~IT83XX_SPI_SPISCEN;
+	/* Set SPI pins to input function */
+	gpio_config_module(MODULE_SPI, 0);
+	/* Disable SPI slave interrupt */
+	task_disable_irq(IT83XX_IRQ_SPI_SLAVE);
+	/* Disable CS_L interrupt */
+	gpio_disable_interrupt(GPIO_SPI0_CS);
+	/* Allow deep sleep */
+	enable_sleep(SLEEP_MASK_SPI);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, spi_disable, HOOK_PRIO_DEFAULT);
 
 /* Get protocol information */
 enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
