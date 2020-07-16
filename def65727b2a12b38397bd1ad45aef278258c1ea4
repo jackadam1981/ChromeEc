@@ -39,6 +39,30 @@
       "revId": "def65727b2a12b38397bd1ad45aef278258c1ea4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "287bb820_4d52e49a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-16T18:27:28Z",
+      "side": 1,
+      "message": "Can you run just `make run-usb_pe_drp` and get the logs from that. It appears that we need to adjust the unit test to make it pass. I don\u0027t think this CL is incorrect.",
+      "parentUuid": "5ab4d4fc_e315d527",
+      "range": {
+        "startLine": 816,
+        "startChar": 1,
+        "endLine": 816,
+        "endChar": 62
+      },
+      "revId": "def65727b2a12b38397bd1ad45aef278258c1ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
