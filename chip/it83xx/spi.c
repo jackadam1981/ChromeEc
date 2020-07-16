@@ -307,6 +307,11 @@ static void spi_init(void)
 				| IT83XX_SPI_RXFAR;
 #endif
 	/*
+	 * Mask all interrupts of SPI module at init and then let FW
+	 * images (RO/RW) enable interrupts what they want.
+	 */
+	IT83XX_SPI_IMR = 0xff;
+	/*
 	 * Interrupt mask register (0b:Enable, 1b:Mask)
 	 * bit5 : Rx byte reach interrupt mask
 	 * bit2 : SPI end detection interrupt mask
