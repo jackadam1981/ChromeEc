@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "63a46c28_fe06259d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1914,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-17T09:03:54Z",
+      "side": 1,
+      "message": "I answer it in CL:2294626 -\u003e driver/tcpm/it83xx .\n\nRemove enable/disable interrupt code: any messages on cc lines may cause a few interrupt firing, when we\u0027re SNK role.",
+      "parentUuid": "cb8c340a_52457bb6",
+      "range": {
+        "startLine": 1908,
+        "startChar": 3,
+        "endLine": 1914,
+        "endChar": 42
+      },
+      "revId": "54c6d4b44de1c32315aa6a71f11df4c2e12aac78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc454772_cfb719fd",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
