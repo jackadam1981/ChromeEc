@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82d529f2_641d61b2",
+        "filename": "board/malefor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-17T17:33:32Z",
+      "side": 1,
+      "message": "You need to also add the TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V flag here due to errata in the PS8185.  See b:158520242.",
+      "range": {
+        "startLine": 321,
+        "startChar": 10,
+        "endLine": 321,
+        "endChar": 33
+      },
+      "revId": "8e9c6eddb595a76305883b9cca5d71dce135242b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b372a0d4_318a135f",
+        "filename": "board/malefor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-17T17:33:32Z",
+      "side": 1,
+      "message": "Spelling: virtual_usb_mux_driver",
+      "range": {
+        "startLine": 328,
+        "startChar": 3,
+        "endLine": 328,
+        "endChar": 25
+      },
+      "revId": "8e9c6eddb595a76305883b9cca5d71dce135242b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a0a643f_92aa00b8",
+        "filename": "board/malefor/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-17T17:33:32Z",
+      "side": 1,
+      "message": "Remove the if () statement - malefor only has one SKU and USB DB option so you don\u0027t need to check the DB type from CBI here.",
+      "range": {
+        "startLine": 352,
+        "startChar": 1,
+        "endLine": 352,
+        "endChar": 44
+      },
+      "revId": "8e9c6eddb595a76305883b9cca5d71dce135242b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
