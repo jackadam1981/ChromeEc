@@ -29,6 +29,9 @@
  */
 #define CONFIG_USB_PD_RESET_MIN_BATT_SOC 2
 
+#define CONFIG_USB_PD_TCPM_PS8705 /* Second source of PS8751 */
+#define CONFIG_USB_PD_TCPM_MULTI_PS8XXX
+
 /* Sensors */
 #define CONFIG_ACCEL_KX022	/* Lid accel */
 #define CONFIG_ACCELGYRO_BMI160	/* Base accel */
