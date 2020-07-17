@@ -46,6 +46,30 @@
       "revId": "e9b54dd0a10e83891170cb90655261c9ac391f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21810d13_73f66d86",
+        "filename": "board/pompom/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-17T21:19:44Z",
+      "side": 1,
+      "message": "Right. I mixed it up with HOOK_SECOND.\n\nSince the minimal blinking interval is 1 second, why not use HOOK_SECOND?",
+      "parentUuid": "7cc1cfb6_22a98996",
+      "range": {
+        "startLine": 143,
+        "startChar": 18,
+        "endLine": 143,
+        "endChar": 32
+      },
+      "revId": "e9b54dd0a10e83891170cb90655261c9ac391f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
