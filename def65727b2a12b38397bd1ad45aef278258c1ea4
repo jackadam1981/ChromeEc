@@ -63,6 +63,30 @@
       "revId": "def65727b2a12b38397bd1ad45aef278258c1ea4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54d5c0c8_4743a3b7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-17T10:13:30Z",
+      "side": 1,
+      "message": "make run-usb_pe_drp\n  BUILD   host-usb_pe_drp\n  VERSION ec_version.h\n  CC      RO/board/host/board.o\n  CC      RO/board/host/usb_pd_config.o\n  CC      RO/board/host/usb_pd_policy.o\n  CC      RO/chip/host/clock.o\n  CC      RO/chip/host/flash.o\n  CC      RO/chip/host/gpio.o\n  CC      RO/chip/host/lpc.o\n  CC      RO/chip/host/reboot.o\n  CC      RO/chip/host/spi_master.o\n  CC      RO/chip/host/system.o\n  CC      RO/chip/host/trng.o\n  CC      RO/chip/host/uart.o\n  CC      RO/common/console.o\n  CC      RO/common/console_output.o\n  CC      RO/common/ec_features.o\n  CC      RO/common/extpower_common.o\n  CC      RO/common/extpower_gpio.o\n  CC      RO/common/flash.o\n  CC      RO/common/gpio.o\n  CC      RO/common/gpio_commands.o\n  CC      RO/common/hooks.o\n  CC      RO/common/host_command.o\n  CC      RO/common/host_event_commands.o\n  CC      RO/common/inductive_charging.o\n  CC      RO/common/lid_switch.o\n  CC      RO/common/main.o\n  CC      RO/common/memory_commands.o\n  CC      RO/common/peripheral.o\n  CC      RO/common/power_button.o\n  CC      RO/common/printf.o\n  CC      RO/common/queue.o\n  CC      RO/common/queue_policies.o\n  CC      RO/common/shared_mem.o\n  CC      RO/common/switch.o\n  CC      RO/common/system.o\n  CC      RO/common/test_util.o\n  CC      RO/common/uart_buffering.o\n  CC      RO/common/uptime.o\n  CC      RO/common/usb_common.o\n  CC      RO/common/usb_pd_alt_mode_dfp.o\n  CC      RO/common/usb_pd_console_cmd.o\n  CC      RO/common/usb_pd_dual_role.o\n  CC      RO/common/usbc/usb_pe_drp_sm.o\n  CC      RO/common/usbc/usb_sm.o\n  CC      RO/common/usbc/usbc_task.o\n  CC      RO/common/util.o\n  CC      RO/common/version.o\n  CC      RO/core/host/main.o\n  CC      RO/core/host/stack_trace.o\n  CC      RO/core/host/task.o\n  CC      RO/core/host/timer.o\n  CC      RO/driver/usb_mux/usb_mux.o\n  CC      RO/test/fake_battery.o\n  CC      RO/test/fake_prl.o\n  CC      RO/test/fake_usbc.o\n  CC      RO/test/usb_pe_drp.o\n  CC      RO/test/usb_sm_checks.o\n  MAKE    cryptoc/libcryptoc.a\n  EXE     usb_pe_drp.exe\n  TEST    run-usb_pe_drp\nNo flash storage found. Initializing to 0xff.\nNo RAM data found. Initializing to 0x00.\nusb_pe_drp terminated unexpectedly! (0.328 seconds)\n\u003d\u003d\u003d\u003d\u003d\u003d Emulator output \u003d\u003d\u003d\u003d\u003d\u003d\nConsole input initialized\n\n\n--- Emulator initialized after reboot ---\n[Reset cause: power-on]\n[0.000002 SW 0x04]\nRunning test_pe_frs...\n[0.000013 C0: PE_SNK_Startup]\n[0.000015 C0: PE_SNK_Ready]\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nmake: *** [Makefile.rules:305: run-usb_pe_drp] Error 1",
+      "parentUuid": "287bb820_4d52e49a",
+      "range": {
+        "startLine": 816,
+        "startChar": 1,
+        "endLine": 816,
+        "endChar": 62
+      },
+      "revId": "def65727b2a12b38397bd1ad45aef278258c1ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
