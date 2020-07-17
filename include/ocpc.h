@@ -10,6 +10,8 @@
 #ifndef __CROS_EC_OCPC_H_
 #define __CROS_EC_OCPC_H_
 
+#include "common.h"
+
 #define OCPC_UNINIT 0xdededede
 
 struct ocpc_data {
@@ -33,7 +35,12 @@ struct ocpc_data {
 	int last_error;
 	int integral;
 	int last_vsys;
+
+	uint32_t chg_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+	int i_step;
 };
+
+#define OCPC_NO_ISYS_MEAS_CAP	BIT(0)
 
 /** Set the VSYS target for the secondary charger IC.
  *
@@ -58,4 +65,6 @@ __overridable void ocpc_get_pid_constants(int *kp, int *kp_div,
 					  int *ki, int *ki_div,
 					  int *kd, int *kd_div);
 
+void ocpc_init(struct ocpc_data *ocpc);
+__overridable void board_ocpc_init(struct ocpc_data *ocpc);
 #endif /* __CROS_EC_OCPC_H */
