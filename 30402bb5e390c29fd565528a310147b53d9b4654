@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "e2dc6483_dedb143e",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-17T00:17:34Z",
+      "side": 1,
+      "message": "Much nicer, thanks!",
+      "parentUuid": "8ef8c7ad_1326ca22",
+      "revId": "30402bb5e390c29fd565528a310147b53d9b4654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b2ed97e_82e9d04a",
         "filename": "test/usb_prl.c",
         "patchSetId": 2

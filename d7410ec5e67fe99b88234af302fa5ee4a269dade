@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8f10860_eb3ad09a",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-17T00:17:34Z",
+      "side": 1,
+      "message": "Put this into mock_tc_port_reset()?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 34
+      },
+      "revId": "d7410ec5e67fe99b88234af302fa5ee4a269dade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70e52096_9fbc1312",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-17T00:17:34Z",
+      "side": 1,
+      "message": "Put this into mock_tc_port_reset()?",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 45
+      },
+      "revId": "d7410ec5e67fe99b88234af302fa5ee4a269dade",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
