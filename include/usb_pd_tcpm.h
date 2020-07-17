@@ -458,10 +458,12 @@ struct tcpc_config_t {
 	 */
 	uint8_t usb23;
 #endif
+	/* product id if the driver supports multiple chips */
+	uint16_t product_id;
 };
 
 #ifndef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
-extern const struct tcpc_config_t tcpc_config[];
+extern struct tcpc_config_t tcpc_config[];
 #else
 extern struct tcpc_config_t tcpc_config[];
 #endif
