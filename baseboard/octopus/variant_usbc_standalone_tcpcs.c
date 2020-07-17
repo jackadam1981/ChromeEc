@@ -26,7 +26,7 @@
 
 /******************************************************************************/
 /* USB-C TPCP Configuration */
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
 #if defined(VARIANT_OCTOPUS_TCPC_0_PS8751)
 		.bus_type = EC_BUS_TYPE_I2C,

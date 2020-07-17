@@ -1279,6 +1279,8 @@ int tcpci_get_chip_info(int port, int live,
 	if (error)
 		return error;
 	i->product_id = val;
+	CPRINTS("%s: product id %x", __func__,val);
+	tcpc_config[port].product_id = val;
 
 	error = tcpc_read16(port, TCPC_REG_BCD_DEV, &val);
 	if (error)
