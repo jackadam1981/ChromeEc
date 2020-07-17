@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74481a6e_c247a8c1",
+        "filename": "board/pompom/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-17T00:11:46Z",
+      "side": 1,
+      "message": "Multiplying LED_ONE_SEC is not necessary. This call is triggered every 1 second.",
+      "range": {
+        "startLine": 143,
+        "startChar": 18,
+        "endLine": 143,
+        "endChar": 32
+      },
+      "revId": "e9b54dd0a10e83891170cb90655261c9ac391f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
