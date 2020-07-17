@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "c1a64fdd_cbb72991",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-17T00:40:27Z",
+      "side": 1,
+      "message": "Oh hmm, I thought post init was called when we start charging, but it seems it\u0027s actually only called when AC becomes present. In that case, I don\u0027t think this works with hot plug then. I could move this to the init instead. What do you think?\n\nThe statements about the currents still stand though.",
+      "parentUuid": "aff8ff7f_ac9c5494",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 26
+      },
+      "revId": "2c63107978ad4a7266882224e5176d52fd74a140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40debbc8_d838e610",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
