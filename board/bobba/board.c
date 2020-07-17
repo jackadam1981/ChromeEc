@@ -450,3 +450,11 @@ static void board_setup_ppc(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_ppc, HOOK_PRIO_INIT_I2C + 2);
+
+uint16_t board_get_ps8xxx_chip_info(int port)
+{
+	/* Board supporting multiple chip sources in ps8xxx.c MUST override this
+	 * function to judge the real chip source for this board. For example,
+	 * SKU ID / strappings / provisioning in the factory can be the ways. */
+	return PS8755_PRODUCT_ID;
+}

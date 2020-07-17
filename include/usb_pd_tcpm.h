@@ -458,6 +458,8 @@ struct tcpc_config_t {
 	 */
 	uint8_t usb23;
 #endif
+	/* product id of the TCPC chip */
+	uint16_t product_id;
 };
 
 #ifndef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
