@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ae2151_249426be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-17T08:52:38Z",
+      "side": 1,
+      "message": "The first version is just for \"prove of concept\" and see what else factors / issues we need to consider.\n* the basic idea is to get product_id from chip during tcpci_tcpm_init and luckily that we don\u0027t need any quirk before tcpci_tcpm_init based on product_id.\n* then try to deal with the different function pointers and reg addr from product_ids.",
+      "revId": "c0a79119d5db8bea5aff8a43390a689e1b985b61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
