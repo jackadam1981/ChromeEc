@@ -26,6 +26,8 @@
 #error "Unsupported config options of IT83xx PD driver"
 #endif
 
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 /* Wait time for vconn power switch to turn off. */
 #ifndef PD_IT83XX_VCONN_TURN_OFF_DELAY_US
 #define PD_IT83XX_VCONN_TURN_OFF_DELAY_US 500
@@ -364,7 +366,7 @@ static void it83xx_init(enum usbpd_port port, int role)
 	/* enable tx done and reset detect interrupt */
 	IT83XX_USBPD_IMR(port) &= ~(USBPD_REG_MASK_MSG_TX_DONE |
 					USBPD_REG_MASK_HARD_RESET_DETECT);
-#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
+#ifdef IT83XX_INTC_PLUG_IN_OUT_SUPPORT
 	/*
 	 * when tcpc detect type-c plug in (cc lines voltage change), it will
 	 * interrupt fw to wake pd task, so task can react immediately.
@@ -625,17 +627,50 @@ static int it83xx_tcpm_get_chip_info(int port, int live,
 	return EC_SUCCESS;
 }
 
+void switch_plug_out_type(enum usbpd_port port)
+{
+	enum tcpc_cc_voltage_status cc1, cc2;
+
+	/* Check what do we and partner cc assert */
+	it83xx_tcpm_get_cc(port, &cc1, &cc2);
+
+	if ((cc1 == TYPEC_CC_VOLT_RD && cc2 == TYPEC_CC_VOLT_RD) ||
+	    (cc1 == TYPEC_CC_VOLT_RA && cc2 == TYPEC_CC_VOLT_RA))
+		/* We're source, switch to detect audio/debug plug out. */
+		IT83XX_USBPD_TCDCR(port) |= (USBPD_REG_PLUG_OUT_SELECT |
+				USBPD_REG_PLUG_OUT_DETECT_TYPE_SELECT);
+	else if (cc1 == TYPEC_CC_VOLT_RD || cc2 == TYPEC_CC_VOLT_RD)
+		/* We're source, switch to detect sink plug out. */
+		IT83XX_USBPD_TCDCR(port) = (IT83XX_USBPD_TCDCR(port) &
+				~USBPD_REG_PLUG_OUT_DETECT_TYPE_SELECT) |
+				USBPD_REG_PLUG_OUT_SELECT;
+	else if (cc1 >= TYPEC_CC_VOLT_RP_DEF || cc2 >= TYPEC_CC_VOLT_RP_DEF)
+		/*
+		 * We're sink, still detect plug in. Any messages on cc lines
+		 * may fire interrupt.
+		 * NOTE: Plug out is detected by TCPM polling Vbus.
+		 */
+		IT83XX_USBPD_TCDCR(port) &= ~USBPD_REG_PLUG_OUT_SELECT;
+	else
+		/*
+		 * If not above cases, plug in interrupt will fire again,
+		 * and call switch_plug_out_type() to set the right state.
+		 */
+		CPRINTS("p%d plug out type error: unhandled case", port);
+}
+
 static void it83xx_tcpm_sw_reset(void)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 
-#ifdef IT83XX_INTC_PLUG_IN_SUPPORT
-	/*
-	 * Enable detect type-c plug in interrupt, since the pd task has
-	 * detected a type-c physical disconnected.
-	 */
-	IT83XX_USBPD_TCDCR(port) &= ~USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE;
-#endif
+	if (IS_ENABLED(IT83XX_INTC_PLUG_IN_OUT_SUPPORT))
+		/*
+		 * Switch to detect plug in and enable detect plug in interrupt,
+		 * since pd task has detected a type-c physical disconnected.
+		 */
+		IT83XX_USBPD_TCDCR(port) &= ~(USBPD_REG_PLUG_OUT_SELECT |
+			USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE);
+
 	/* exit BIST test data mode */
 	USBPD_SW_RESET(port);
 }
