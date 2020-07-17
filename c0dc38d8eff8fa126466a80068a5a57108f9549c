@@ -303,6 +303,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2dcb328_9ffbe1c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-17T19:22:31Z",
+      "side": 1,
+      "message": "Yes, experiments would be good.  I\u0027m not certain the value of having waddledoo initialize TCPCs early anymore, so we may abandon that.  But we could get this and the EFS2 enablement for Dedede moving forward.",
+      "parentUuid": "a4680b31_679e49c8",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
