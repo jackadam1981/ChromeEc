@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12982ea0_0e70f4e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-17T12:58:59Z",
+      "side": 1,
+      "message": "Could be caused by this?\n\n chromeos-ec-0.0.2-r7761: /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: No room left in the flash\n chromeos-ec-0.0.2-r7761: collect2: error: ld returned 1 exit status\n chromeos-ec-0.0.2-r7761: make[2]: *** [Makefile.rules:524: build/kodama/RO/ec.RO.elf] Error 1\n chromeos-ec-0.0.2-r7761: make[1]: *** [Makefile.rules:244: proj-kodama] Error 2\n",
+      "revId": "4797de517611e94ed9c3b68d9ac1bc3c8e8708bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
