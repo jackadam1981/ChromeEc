@@ -47,7 +47,8 @@ static void chip_pd_irq(enum usbpd_port port)
 
 	if (IS_ENABLED(IT83XX_INTC_PLUG_IN_OUT_SUPPORT)) {
 		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
-			if (USBPD_IS_PLUG_IN(port))
+			if (USBPD_IS_PLUG_IN(port)) {
+				ccprints("p%d INT detect IN", port);
 				/*
 				 * When tcpc detect type-c plug in:
 				 * 1)If we are sink, still detect plug in. Any
@@ -56,14 +57,15 @@ static void chip_pd_irq(enum usbpd_port port)
 				 * detection.
 				 */
 				switch_plug_out_type(port);
-			else
+			} else {
+				ccprints("p%d INT detect OUT", port);
 				/*
 				 * When tcpc detect type-c plug out:
 				 * switch to detect plug in.
 				 */
 				IT83XX_USBPD_TCDCR(port) &=
 					~USBPD_REG_PLUG_OUT_SELECT;
-
+			}
 			/* clear type-c device plug in/out detect interrupt */
 			IT83XX_USBPD_TCDCR(port) |=
 				USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
