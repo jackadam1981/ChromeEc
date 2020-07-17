@@ -16,6 +16,23 @@
       "revId": "871715ca29ed139f16e27d208e46b2ca6dd81ed5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee4a40ae_e6ecbc44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-17T18:18:55Z",
+      "side": 1,
+      "message": "The CQ failure was caused by `No room left in flash` for building the kodama board. I built it manually; it still has 104 bytes left. Let\u0027s rebase and try again.",
+      "revId": "871715ca29ed139f16e27d208e46b2ca6dd81ed5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
