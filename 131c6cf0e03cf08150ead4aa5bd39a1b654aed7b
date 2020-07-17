@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "16fe8c13_a484f768",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T22:04:39Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "088913c7_56539400",
+      "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e928c696_f5d325bb",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 13
@@ -181,6 +199,30 @@
       "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14341df2_5459d3c6",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T22:04:39Z",
+      "side": 1,
+      "message": "I see. Added this case.",
+      "parentUuid": "c657adf9_0a308c17",
+      "range": {
+        "startLine": 339,
+        "startChar": 21,
+        "endLine": 339,
+        "endChar": 40
+      },
+      "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
