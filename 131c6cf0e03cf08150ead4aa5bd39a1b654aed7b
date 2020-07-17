@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3d8f0bd8_2890cc21",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T21:40:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e928c696_f5d325bb",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 232,
+        "endChar": 8
+      },
+      "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6da8ec62_d8bfafbb",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 13
@@ -45,6 +69,30 @@
       "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "430509fa_b57d5d9a",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T21:40:12Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6da8ec62_d8bfafbb",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 8
+      },
+      "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a3d66059_440a0fe9",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T21:40:12Z",
+      "side": 1,
+      "message": "I didn\u0027t add TBT_ENTER_SOP_PRIME in tbt_setup_next_vdm( ), the reasoning is:\nWhen entering tbt_setup_next_vdm( ), for active cable, the tbt state should be TBT_START for both 1st time Enter Mode and retry Enter Mode; TBT_ENTER_SOP_PRIME only for ack/nak functions.\n\nTBT_ENTER_SOP is here because active cable will go to this state after Enter Mode SOP\u0027\u0026SOP\u0027\u0027ACK.",
+      "parentUuid": "8dbe59f6_b6c52780",
+      "range": {
+        "startLine": 339,
+        "startChar": 21,
+        "endLine": 339,
+        "endChar": 40
+      },
+      "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2022e77_2059a822",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 13
@@ -85,6 +157,24 @@
       "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e4c96d8_8a4ef6a1",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T21:40:12Z",
+      "side": 1,
+      "message": "added *tx_type \u003d TCPC_TX_SOP; at the beginning of this function.",
+      "parentUuid": "b2022e77_2059a822",
+      "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
