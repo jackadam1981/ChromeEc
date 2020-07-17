@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "math_util.h"
 #include "ocpc.h"
+#include "sm5803.h"
 #include "util.h"
 
 /*
@@ -187,6 +188,9 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	/* Ensure our target is not negative. */
 	i_ma = MAX(i_ma, 0);
 
+	/* Convert desired mA to what the charger could actually regulate to. */
+	i_ma = (i_ma / CHARGE_I_STEP) * CHARGE_I_STEP;
+
 	/*
 	 * We'll use our current target and our combined Rsys+Rbatt to seed our
 	 * VSYS target.  However, we'll use a PID loop to correct the error and
@@ -197,7 +201,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	if (ocpc->last_vsys != OCPC_UNINIT) {
 		error = i_ma - batt.current;
 		/* Add some hysteresis. */
-		if (ABS(error) < 4)
+		if (ABS(error) < CHARGE_I_STEP)
 			error = 0;
 
 		derivative = error - ocpc->last_error;

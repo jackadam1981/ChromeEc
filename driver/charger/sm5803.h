@@ -148,6 +148,16 @@ enum sm5803_gpio0_modes {
 
 #define SM5803_REG_TINT_MEAS_MSB	0x4E
 
+/* IBUS levels - The IBUS levels increment in 7.32mA */
+#define SM5803_REG_IBUS_CHG_MEAS_MSB	0x46
+#define SM5803_REG_IBUS_CHG_MEAS_LSB	0x47
+#define SM5803_IBUS_CHG_MEAS_LSB	GENMASK(1, 0)
+
+/* VSYS levels - The VSYS levels increment in  23.4mV steps. */
+#define SM5803_REG_VSYS_MEAS_MSB	0x4C
+#define SM5803_REG_VSYS_MEAS_LSB	0x4D
+#define SM5803_VSYS_MEAS_LSB		GENMASK(1,0)
+
 /* Charger registers (address 0x32) */
 
 #define SM5803_REG_FLOW1		0x1C
@@ -237,6 +247,10 @@ enum sm5803_gpio0_modes {
  */
 #define SM5803_REG_FAST_CONF4		0x3C
 #define SM5803_CONF4_ICHG_FAST		GENMASK(5, 0)
+
+/* Fast charge Termination */
+#define SM5803_REG_FAST_CONF5		0x3D
+#define SM5803_CONF5_IBAT_EOC_TH	GENMASK(3, 0)
 
 #define CHARGER_NAME "sm5803"
 
