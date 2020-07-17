@@ -41,6 +41,8 @@
  * define the size of the global fifo, must be a power of 2.
  */
 #undef CONFIG_ACCEL_FIFO
+#undef CONFIG_ACCEL_FIFO_EN
+#undef CONFIG_ACCEL_FIFO_SIZE
 
 /* The amount of free entries that trigger an interrupt to the AP. */
 #undef CONFIG_ACCEL_FIFO_THRES
@@ -78,6 +80,7 @@
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM
+#undef CONFIG_ACCELGYRO_ICM426XX
 #undef CONFIG_MAG_LIS2MDL
 #undef CONFIG_SENSORHUB_LSM6DSM
 
@@ -221,6 +224,7 @@
 #undef CONFIG_ACCELGYRO_BMI160_INT_EVENT
 #undef CONFIG_ACCEL_LSM6DSM_INT_EVENT
 #undef CONFIG_ALS_SI114X_INT_EVENT
+#undef CONFIG_ACCELGYRO_ICM40608_INT_EVENT
 
 /*
  * Enable Si114x to operate in polling mode. This config is used in conjunction
@@ -2443,6 +2447,9 @@
 
 /* MKBP events are sent using host event */
 #undef CONFIG_MKBP_USE_HOST_EVENT
+
+/* MKBP events are sent using GPIO */
+#undef CONFIG_MKBP_USE_GPIO
 
 /*
  * With this option, we can define the MKBP wakeup events in this mask (as a
