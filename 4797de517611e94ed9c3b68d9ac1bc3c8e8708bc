@@ -16,6 +16,24 @@
       "revId": "4797de517611e94ed9c3b68d9ac1bc3c8e8708bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37d4325d_446e343e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-17T19:01:21Z",
+      "side": 1,
+      "message": "Yes, this is the cause. But I tried building the `kodama` board on my environment. Still have 104 bytes left. Maybe just rebase and try again. I did it on the first CL. Let\u0027s see the result.",
+      "parentUuid": "12982ea0_0e70f4e0",
+      "revId": "4797de517611e94ed9c3b68d9ac1bc3c8e8708bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
