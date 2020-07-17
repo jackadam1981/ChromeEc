@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5f85845_f1b72057",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-17T09:03:24Z",
+      "side": 1,
+      "message": "I have removed enable/disable interrupt in TCPM.\nAnd this become that any messages on cc lines may cause a few interrupt firing, only when we\u0027re SNK role.",
+      "revId": "7aa319621bb6a460f53a06b91a70f4c9aaec41ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

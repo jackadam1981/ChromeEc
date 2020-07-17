@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "55d17efa_3b207117",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-17T09:03:24Z",
+      "side": 1,
+      "message": "The interrupt doesn\u0027t keep firing, if the interrupt status (line 75) is 1.\nIf here we enable and switch to detect plug-in , and there is a SNK plug-in before TCPM call hook_notify() in unattached state, then the plug-in interrupt fire twice. I know the chance is very low, because the time from switch detect plug-in here to call hook_notify() is about few mili-seconds.",
+      "parentUuid": "4fe1eb0c_63f8a45a",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f031c32_057b9177",
         "filename": "driver/tcpm/it83xx.c",
         "patchSetId": 2
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "610dd2d0_1ee1c8b1",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-17T09:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f031c32_057b9177",
+      "range": {
+        "startLine": 632,
+        "startChar": 1,
+        "endLine": 632,
+        "endChar": 4
+      },
+      "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5591d7fc_f4f7cc1a",
         "filename": "driver/tcpm/it83xx.c",
         "patchSetId": 2
@@ -76,6 +124,30 @@
       "writtenOn": "2020-07-13T16:54:30Z",
       "side": 1,
       "message": "thank you for well documented code!\n\nWhy can\u0027t we have both, monitoring Vbus and monitor CC lines? I believe both changes are called out in the spec for changing state to disconnect",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 651,
+        "endChar": 55
+      },
+      "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dda65d21_bf19dd61",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-17T09:03:24Z",
+      "side": 1,
+      "message": "Because USB-TypeC spec defines that exiting from attached.SNK to unattached.SNK is by monitoring Vbus (see 4.5.2.2.5.2 exiting from attached.SNK state), but it doesn\u0027t refer to by monitoring CC lines.\n\nI think this is reasonable, because if we are SNK and monitoring CC lines ~0v for disconnection, any messages on cc lines may falls ~0v then the a few interrupt fire. And this is why I disable the interrupt in TCPM when we\u0027re SNK role.\n\nIf we\u0027re source, following the spec, we should monitoring CC lines ~3.3v for disconnection. All the messages on cc lines doesn\u0027t raise to ~3.3v, so the disconnection event can be always correctly triggered.",
+      "parentUuid": "5591d7fc_f4f7cc1a",
       "range": {
         "startLine": 650,
         "startChar": 5,
