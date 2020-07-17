@@ -75,6 +75,34 @@
 #undef CONFIG_ACCEL_LIS2DH
 #undef CONFIG_ACCEL_LIS2DE
 #undef CONFIG_ACCEL_LIS2D_COMMON
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+
+/*
+ * lis2dw12 and lis2dwl have almost the same register interface.
+ * lis2dw12 supports 4 low power modes but lis2dwl only supports one. lis2dwl
+ * only supports 12 bit resolution under low power mode. But lis2dw12 can
+ * support 12 bit or 14 bit resolution at different low power modes. In order
+ * to get 14 bit resolution, lis2dwl does not use low power mode and lis2dw12
+ * only uses 3 of 4 low power modes.
+ *
+ * Use the define for your correct chip and the CONFIG_ACCEL_LIS2DW_COMMON will
+ * automatically get defined.
+ */
+#undef CONFIG_ACCEL_LIS2DW12
+#undef CONFIG_ACCEL_LIS2DWL
+#undef CONFIG_ACCEL_LIS2DW_COMMON
+
+/* lis2dw driver support fifo and interrupt, but letting lid accel sensor work
+ * at polling mode is a common selection in current usage model. We need get a
+ * option to be able to select interrupt or polling (foced mode).
+ */
+#undef CONFIG_ACCEL_LIS2DW_AS_BASE
+
+#undef CONFIG_ACCELGYRO_BMI160
+#undef CONFIG_ACCELGYRO_BMI260
+#undef CONFIG_ACCELGYRO_ICM426XX
+>>>>>>> CHANGE (b5613d driver: add ICM-426xx driver support)
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM
@@ -219,6 +247,11 @@
  * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
  */
 #undef CONFIG_ACCELGYRO_BMI160_INT_EVENT
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+#undef CONFIG_ACCELGYRO_BMI260_INT_EVENT
+#undef CONFIG_ACCELGYRO_ICM426XX_INT_EVENT
+>>>>>>> CHANGE (b5613d driver: add ICM-426xx driver support)
 #undef CONFIG_ACCEL_LSM6DSM_INT_EVENT
 #undef CONFIG_ALS_SI114X_INT_EVENT
 

@@ -11,6 +11,11 @@ common-y+=version.o printf.o queue.o queue_policies.o
 
 common-$(CONFIG_ACCELGYRO_BMA255)+=math_util.o
 common-$(CONFIG_ACCELGYRO_BMI160)+=math_util.o
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+common-$(CONFIG_ACCELGYRO_BMI260)+=math_util.o
+common-$(CONFIG_ACCELGYRO_ICM426XX)+=math_util.o
+>>>>>>> CHANGE (b5613d driver: add ICM-426xx driver support)
 common-$(CONFIG_ACCELGYRO_LSM6DS0)+=math_util.o
 common-$(CONFIG_ACCELGYRO_LSM6DSM)+=math_util.o
 common-$(CONFIG_ACCEL_LIS2DH)+=math_util.o
