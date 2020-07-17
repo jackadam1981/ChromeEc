@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "2236b0e7_6f7b9485",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-17T15:37:49Z",
+      "side": 1,
+      "message": "I think init would make sense generally.  The default battery should be okay to use in that case I\u0027d think since they all have the same number of cells.",
+      "parentUuid": "c1a64fdd_cbb72991",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 26
+      },
+      "revId": "2c63107978ad4a7266882224e5176d52fd74a140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40debbc8_d838e610",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
