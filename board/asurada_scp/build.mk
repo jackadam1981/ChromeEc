@@ -4,7 +4,7 @@
 # found in the LICENSE file.
 #
 # Board specific files build
-#
+#develop tot
 
 CHIP:=mt8192_scp
 CHIP_VARIANT:=mt8192
