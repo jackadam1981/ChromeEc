@@ -28,6 +28,6 @@ int watchdog_init(void)
 	SCP_CORE0_WDT_CFG = WDT_EN | timeout;
 	/* reload watchdog */
 	watchdog_reload();
-
+	SCP_CORE0_WDT_CFG = 0;
 	return EC_SUCCESS;
 }
