@@ -129,6 +129,8 @@ struct motion_sensor_t {
 	 */
 	uint8_t in_spoof_mode;
 
+	uint8_t int_active_high;
+
 	const mat33_fp_t *rot_standard_ref;
 
 	/*
