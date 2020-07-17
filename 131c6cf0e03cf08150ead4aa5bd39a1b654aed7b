@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "088913c7_56539400",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-17T21:53:49Z",
+      "side": 1,
+      "message": "Remove this. As far as ToT is concerned, there never were \"sent\" states for TBT.",
+      "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e928c696_f5d325bb",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 13
@@ -131,6 +148,30 @@
       "side": 1,
       "message": "I didn\u0027t add TBT_ENTER_SOP_PRIME in tbt_setup_next_vdm( ), the reasoning is:\nWhen entering tbt_setup_next_vdm( ), for active cable, the tbt state should be TBT_START for both 1st time Enter Mode and retry Enter Mode; TBT_ENTER_SOP_PRIME only for ack/nak functions.\n\nTBT_ENTER_SOP is here because active cable will go to this state after Enter Mode SOP\u0027\u0026SOP\u0027\u0027ACK.",
       "parentUuid": "8dbe59f6_b6c52780",
+      "range": {
+        "startLine": 339,
+        "startChar": 21,
+        "endLine": 339,
+        "endChar": 40
+      },
+      "revId": "131c6cf0e03cf08150ead4aa5bd39a1b654aed7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c657adf9_0a308c17",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-17T21:53:49Z",
+      "side": 1,
+      "message": "If the SOP\u0027 Enter Mode AMS is interrupted, this function will be called again when we are in state TBT_ENTER_SOP_PRIME, and it needs to construct the same VDM again. This is the same reason that we got rid of \"sent\" states for DP.",
+      "parentUuid": "a3d66059_440a0fe9",
       "range": {
         "startLine": 339,
         "startChar": 21,
