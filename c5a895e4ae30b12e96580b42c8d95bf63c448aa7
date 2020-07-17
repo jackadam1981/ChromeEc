@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38567347_a1de1b5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-17T16:15:40Z",
+      "side": 1,
+      "message": "Are there any grunt devices that use this PPC?  The SYV682x driver was a work in progress at the time of this commit.  The register reset added in this CL was reverted later in CL:2201396.\n\nIf we want the SYV682x driver in the grun branch, then you should cherry pick all the SYV682x driver changes at the same time.  See the stack of changes starting at CL:2214878 as an example.",
+      "revId": "c5a895e4ae30b12e96580b42c8d95bf63c448aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
