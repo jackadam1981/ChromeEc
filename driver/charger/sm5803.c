@@ -448,6 +448,7 @@ void sm5803_handle_interrupt(int chgnum)
 			chgnum);
 		return;
 	}
+	CPRINTS("INT2(%d): 0x%0x", chgnum, int_reg);
 
 	if (int_reg & SM5803_INT2_TINT) {
 		rv = meas_read8(chgnum, SM5803_REG_TINT_MEAS_MSB, &meas_reg);
@@ -617,20 +618,19 @@ static enum ec_error_list sm5803_get_voltage(int chgnum, int *voltage)
 	int reg;
 	int volt_bits;
 
-	/* Note: Vsys should match Vbat voltage */
-	rv = chg_read8(chgnum, SM5803_REG_VSYS_PREREG_MSB, &reg);
+	rv = meas_read8(chgnum, SM5803_REG_VSYS_MEAS_MSB, &reg);
 	if (rv)
 		return rv;
+	volt_bits = reg << 2;
 
-	volt_bits = reg << 3;
-
-	rv = chg_read8(chgnum, SM5803_REG_VSYS_PREREG_LSB, &reg);
+	rv = meas_read8(chgnum, SM5803_REG_VSYS_MEAS_LSB, &reg);
 	if (rv)
 		return rv;
+	volt_bits |= reg & 0x3;
 
-	volt_bits |= (reg & 0x7);
+	/* The LSB is 23.4mV */
+	*voltage = volt_bits * 234 / 10;
 
-	*voltage = SM5803_REG_TO_VOLTAGE(volt_bits);
 	return EC_SUCCESS;
 }
 
@@ -690,12 +690,20 @@ static enum ec_error_list sm5803_get_input_current(int chgnum,
 {
 	enum ec_error_list rv;
 	int reg;
+	int curr;
 
-	rv = chg_read8(chgnum, SM5803_REG_CHG_ILIM, &reg);
+	rv = meas_read8(chgnum, SM5803_REG_IBUS_CHG_MEAS_MSB, &reg);
 	if (rv)
 		return rv;
+	curr = reg << 2;
 
-	*input_current = SM5803_REG_TO_CURRENT(reg & SM5803_CHG_ILIM_RAW);
+	rv = meas_read8(chgnum, SM5803_REG_IBUS_CHG_MEAS_LSB, &reg);
+	if (rv)
+		return rv;
+	curr |= reg & 0x3;
+
+	/* The LSB is 7.32mA */
+	*input_current = curr * 732 / 100;
 	return EC_SUCCESS;
 }
 
@@ -815,6 +823,54 @@ static int sm5803_is_sourcing_otg_power(int chgnum, int port)
 	return reg == (SM5803_FLOW1_CHG_EN | SM5803_FLOW1_VBUSIN_DISCHG_EN);
 }
 
+static enum ec_error_list sm5803_set_vsys_compensation(int chgnum,
+						       struct ocpc_data *ocpc,
+						       int current_ma,
+						       int voltage_mv)
+{
+
+	int rv;
+	int regval;
+	const struct battery_info *batt_info;
+	int ibat_eoc_ma;
+
+	/*
+	 * Enable linear, pre-charge, and linear fast charge for primary
+	 * charger.
+	 */
+	rv = chg_read8(CHARGER_PRIMARY, SM5803_REG_FLOW3, &regval);
+	regval |= BIT(6) | BIT(5) | BIT(4);
+	rv |= chg_write8(CHARGER_PRIMARY, SM5803_REG_FLOW3, regval);
+
+	/* Set end of fast charge threshold */
+	batt_info = battery_get_info();
+	ibat_eoc_ma = batt_info->precharge_current - 100;
+	ibat_eoc_ma /= 50;
+	ibat_eoc_ma = CLAMP(ibat_eoc_ma, 0, SM5803_CONF5_IBAT_EOC_TH);
+	rv |= chg_read8(CHARGER_PRIMARY, SM5803_REG_FAST_CONF5, &regval);
+	regval &= ~SM5803_CONF5_IBAT_EOC_TH;
+	regval |= ibat_eoc_ma;
+	rv |= chg_write8(CHARGER_PRIMARY, SM5803_REG_FAST_CONF5, regval);
+
+	/* Enable test address and do some magic.*/
+	rv |= main_write8(CHARGER_PRIMARY, 0x1F, 0x1);
+	rv |= test_write8(CHARGER_PRIMARY, 0x44, 0x20);
+	rv |= test_write8(CHARGER_PRIMARY, 0x48, 0x4);
+	rv |= main_write8(CHARGER_PRIMARY, 0x1F, 0x0);
+	rv |= chg_write8(CHARGER_PRIMARY, SM5803_REG_FLOW1,
+			 SM5803_FLOW1_USB_SUSP);
+
+	/* Start pre-regulation on auxiliary charger. */
+	rv |= chg_write8(chgnum, SM5803_REG_FLOW1, SM5803_FLOW1_CHG_EN);
+
+	/* Enable the IBAT_CHG adc in order to calculate system resistance. */
+
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
 const struct charger_drv sm5803_drv = {
 	.init = &sm5803_init,
 	.post_init = &sm5803_post_init,
@@ -834,4 +890,5 @@ const struct charger_drv sm5803_drv = {
 	.set_otg_current_voltage = &sm5803_set_otg_current_voltage,
 	.enable_otg_power = &sm5803_enable_otg_power,
 	.is_sourcing_otg_power = &sm5803_is_sourcing_otg_power,
+	.set_vsys_compensation = &sm5803_set_vsys_compensation,
 };
