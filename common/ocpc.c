@@ -56,7 +56,11 @@ enum phase {
 enum ec_error_list ocpc_calc_resistances(struct ocpc_data *ocpc,
 					 struct batt_params *battery)
 {
-	if ((battery->current <= 0) || (ocpc->isys_ma <= 0) ||
+	int act_chg = ocpc->active_chg_chip;
+
+	if ((battery->current <= 0) ||
+	    (!(ocpc->chg_flags[act_chg] & OCPC_NO_ISYS_MEAS_CAP) &&
+	     (ocpc->isys_ma <= 0)) ||
 	    (ocpc->vsys_aux_mv < ocpc->vsys_mv)) {
 		CPRINTS_DBG("Not charging... won't determine resistance");
 		CPRINTS_DBG("vsys_aux_mv: %dmV vsys_mv: %dmV",
@@ -68,14 +72,24 @@ enum ec_error_list ocpc_calc_resistances(struct ocpc_data *ocpc,
 	 * The combined system and battery resistance is the delta between Vsys
 	 * and Vbatt divided by Ibatt.
 	 */
-	ocpc->rsys_mo = ((ocpc->vsys_aux_mv - ocpc->vsys_mv) * 1000) /
-			 ocpc->isys_ma;
-	ocpc->rbatt_mo = ((ocpc->vsys_mv - battery->voltage) * 1000) /
-			 battery->current;
-	ocpc->combined_rsys_rbatt_mo = ocpc->rsys_mo + ocpc->rbatt_mo;
-	CPRINTS_DBG("Rsys: %dmOhm Rbatt: %dmOhm", ocpc->rsys_mo,
-		    ocpc->rbatt_mo);
-
+	if ((ocpc->chg_flags[act_chg] & OCPC_NO_ISYS_MEAS_CAP)) {
+		/*
+		 * There's no provision to measure Isys, so we cannot separate
+		 * out Rsys from Rbatt.
+		 */
+		ocpc->combined_rsys_rbatt_mo = ((ocpc->vsys_aux_mv -
+						 battery->voltage) * 1000) /
+						 battery->current;
+		CPRINTS_DBG("Rsys+Rbatt: %dmOhm", ocpc->combined_rsys_rbatt_mo);
+	} else {
+		ocpc->rsys_mo = ((ocpc->vsys_aux_mv - ocpc->vsys_mv) * 1000) /
+				 ocpc->isys_ma;
+		ocpc->rbatt_mo = ((ocpc->vsys_mv - battery->voltage) * 1000) /
+				 battery->current;
+		ocpc->combined_rsys_rbatt_mo = ocpc->rsys_mo + ocpc->rbatt_mo;
+		CPRINTS_DBG("Rsys: %dmOhm Rbatt: %dmOhm", ocpc->rsys_mo,
+			    ocpc->rbatt_mo);
+	}
 	return EC_SUCCESS;
 }
 
@@ -187,6 +201,9 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	/* Ensure our target is not negative. */
 	i_ma = MAX(i_ma, 0);
 
+	/* Convert desired mA to what the charger could actually regulate to. */
+	i_ma = (i_ma / ocpc->i_step) * ocpc->i_step;
+
 	/*
 	 * We'll use our current target and our combined Rsys+Rbatt to seed our
 	 * VSYS target.  However, we'll use a PID loop to correct the error and
@@ -197,7 +214,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	if (ocpc->last_vsys != OCPC_UNINIT) {
 		error = i_ma - batt.current;
 		/* Add some hysteresis. */
-		if (ABS(error) < 4)
+		if (ABS(error) < ocpc->i_step)
 			error = 0;
 
 		derivative = error - ocpc->last_error;
@@ -332,6 +349,19 @@ static void ocpc_set_pid_constants(void)
 	ocpc_get_pid_constants(&k_p, &k_p_div, &k_i, &k_i_div, &k_d, &k_d_div);
 }
 DECLARE_HOOK(HOOK_INIT, ocpc_set_pid_constants, HOOK_PRIO_DEFAULT);
+
+void ocpc_init(struct ocpc_data *ocpc)
+{
+	/*
+	 * We can start off assuming that the board resistance is 0 ohms
+	 * and later on, we can update this value if we charge the
+	 * system in suspend or off.
+	 */
+	ocpc->combined_rsys_rbatt_mo = CONFIG_OCPC_DEF_RBATT_MOHMS;
+	ocpc->rbatt_mo = CONFIG_OCPC_DEF_RBATT_MOHMS;
+
+	board_ocpc_init(ocpc);
+}
 
 static int command_ocpcdebug(int argc, char **argv)
 {
