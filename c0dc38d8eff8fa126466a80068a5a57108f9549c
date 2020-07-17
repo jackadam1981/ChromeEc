@@ -285,6 +285,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4680b31_679e49c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-17T16:27:36Z",
+      "side": 1,
+      "message": "Yeah, we can submit it for other projects. \n\nFor z-state projects, one option is to detect lid and power switch on reset. I\u0027m not sure how reliable it would be. So, we need to do some experiment.",
+      "parentUuid": "70364d62_a7e00dfc",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
