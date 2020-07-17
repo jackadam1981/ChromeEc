@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f067008d_ee689e95",
+        "filename": "board/pompom/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-17T23:41:33Z",
+      "side": 1,
+      "message": "Is this comment related? Grunt doesn\u0027t use this BYD battery.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "d449c6531a2f321466abd9a221ec0d1f87c6b923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46fab9cf_2348608a",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-17T23:41:33Z",
+      "side": 1,
+      "message": "Please also add:\n#define CONFIG_BATTERY_DEVICE_CHEMISTRY \"LION\"\n#define CONFIG_BATTERY_REVIVE_DISCONNECT\n\nThe CONFIG_BATTERY_REVIVE_DISCONNECT is to check the discharge FET status.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 7
+      },
+      "revId": "d449c6531a2f321466abd9a221ec0d1f87c6b923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
