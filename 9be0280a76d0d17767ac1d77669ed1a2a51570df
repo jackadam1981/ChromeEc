@@ -42,6 +42,47 @@
     },
     {
       "key": {
+        "uuid": "7aa730d5_f12e632c",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1da39186_3e3eebc2",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf8c620f_4bf140bc",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31098798_30553f4d",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 10
@@ -62,6 +103,30 @@
       "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbdff53f_fedd8ee6",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31098798_30553f4d",
+      "range": {
+        "startLine": 151,
+        "startChar": 3,
+        "endLine": 151,
+        "endChar": 55
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "21781610_4db9c947",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "No more fall-throught.\nRefer to line 345 change. \nNo more TBT_START in ack/nak functions. It\u0027s TBT_ENTER_SOP_PRIME for active cable and TBT_ENTER_SOP for passive cable.",
+      "parentUuid": "b6db205a_12040be0",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57e35fc2_c80dda2e",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 10
@@ -108,6 +197,30 @@
       "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48aa86fb_6ea0b32e",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "57e35fc2_c80dda2e",
+      "range": {
+        "startLine": 166,
+        "startChar": 6,
+        "endLine": 166,
+        "endChar": 31
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "e3755277_6059a776",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e06c539e_eed53a9d",
+      "range": {
+        "startLine": 179,
+        "startChar": 6,
+        "endLine": 180,
+        "endChar": 21
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94e33bd3_53d623c2",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 10
@@ -154,6 +291,30 @@
       "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc387a7d_20de74db",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94e33bd3_53d623c2",
+      "range": {
+        "startLine": 193,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 50
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "cb0d08a5_ff951834",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9dbe4b0_264097c3",
+      "range": {
+        "startLine": 200,
+        "startChar": 6,
+        "endLine": 200,
+        "endChar": 25
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c3f286a_872b2333",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 10
@@ -200,6 +385,30 @@
       "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c5cc11d_0ecf5752",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done. \nAdded two functions.",
+      "parentUuid": "5c3f286a_872b2333",
+      "range": {
+        "startLine": 216,
+        "startChar": 3,
+        "endLine": 223,
+        "endChar": 4
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "77080012_6cea6fff",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c8285dd1_b8500e85",
+      "range": {
+        "startLine": 308,
+        "startChar": 3,
+        "endLine": 310,
+        "endChar": 55
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0757e372_3c450bac",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 10
@@ -246,6 +479,30 @@
       "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4089997_79e67b36",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0757e372_3c450bac",
+      "range": {
+        "startLine": 312,
+        "startChar": 3,
+        "endLine": 313,
+        "endChar": 30
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -272,6 +529,30 @@
     },
     {
       "key": {
+        "uuid": "57b477fd_f028531e",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "I made following changes:\nif active cable, state changes from TBT_START to TBT_ENTER_SOP_PRIME after sending Enter Mode SOP\u0027; \nif passive cable, state changes from TBT_START to TBT_ENTER_SOP after sending Enter Mode SOP.\nNo state TBT_START in ack/nak functions.",
+      "parentUuid": "736124bf_bab15f6e",
+      "range": {
+        "startLine": 345,
+        "startChar": 6,
+        "endLine": 345,
+        "endChar": 15
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7351fa83_93537ebd",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 10
@@ -292,6 +573,30 @@
       "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10bb9d13_38027226",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7351fa83_93537ebd",
+      "range": {
+        "startLine": 350,
+        "startChar": 23,
+        "endLine": 350,
+        "endChar": 26
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -318,6 +623,30 @@
     },
     {
       "key": {
+        "uuid": "eed7ae6e_0f5a69eb",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "same as above changes for TBT_START.",
+      "parentUuid": "5e4f5a93_7f1b3a30",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 3
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd31f544_e4cde425",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 10
@@ -338,6 +667,30 @@
       "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9eae6f8_074d02bb",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "fd31f544_e4cde425",
+      "range": {
+        "startLine": 362,
+        "startChar": 1,
+        "endLine": 367,
+        "endChar": 8
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -364,6 +717,30 @@
     },
     {
       "key": {
+        "uuid": "ce1b93ff_2ee5ab60",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4052ee9_e2568c4c",
+      "range": {
+        "startLine": 368,
+        "startChar": 6,
+        "endLine": 368,
+        "endChar": 25
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e5596d6_881cd438",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 10
@@ -384,6 +761,30 @@
       "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ccdb3ec_ae5ccd77",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-07-17T07:52:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4e5596d6_881cd438",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 8
+      },
+      "revId": "9be0280a76d0d17767ac1d77669ed1a2a51570df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
