@@ -35,6 +35,9 @@
 #define CONFIG_DATA_RAM_SIZE (ICACHE_BASE - CONFIG_RAM_BASE)
 #define CONFIG_RO_MEM_OFF 0
 
+/* IPI ID should be in sync across kernel and EC. */
+#define IPI_SCP_INIT 0
+
 /* IPI configs */
 #define CONFIG_IPC_SHARED_OBJ_BUF_SIZE 288
 #define CONFIG_IPC_SHARED_OBJ_ADDR                                             \
@@ -48,6 +51,8 @@
 #define SCP_IPI_VDEC_VP9 3
 #define SCP_IPI_VENC_H264 4
 #define SCP_IPI_VENC_VP8 5
+#define IPI_VDEC_LAT 6
+#define IPI_VDEC_CORE 7
 #define SCP_IPI_HOST_COMMAND 13
 #define SCP_IPI_MAX 32
 #define IPI_COUNT SCP_IPI_MAX
