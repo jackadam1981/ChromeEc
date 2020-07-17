@@ -15,6 +15,7 @@
  */
 
 #include "common.h"
+#include "console.h"
 #include "ps8xxx.h"
 #include "tcpci.h"
 #include "tcpm.h"
@@ -47,11 +48,46 @@
 
 #endif /* CONFIG_USB_PD_TCPM_PS8751 */
 
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
+static uint16_t default_product_id[CONFIG_USB_PD_PORT_MAX_COUNT];
 /*
  * timestamp of the next possible toggle to ensure the 2-ms spacing
  * between IRQ_HPD.
  */
 static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+enum ps8xxx_variant_regs {
+	/* NOTE: The rev will read as 0x00 if the FW has malfunctioned. */
+	PS8XXX_FW_VER_REG = 0,
+};
+
+static const int ps8751_reg_map[] = {
+	0x90,
+};
+
+/* PS8705 / PS8755/ PS8815 shares the same reg mapping here. */
+static const int ps8805_reg_map[] = {
+	0x82,
+};
+
+static int get_reg_by_product(const uint16_t product_id,
+				const enum ps8xxx_variant_regs reg)
+{
+	const int *mapping = ps8751_reg_map;
+
+	if (product_id == PS8805_PRODUCT_ID ||
+	    product_id == PS8705_PRODUCT_ID ||
+	    product_id == PS8755_PRODUCT_ID ||
+	    product_id == PS8815_PRODUCT_ID)
+		mapping = ps8805_reg_map;
+	else if (product_id != PS8751_PRODUCT_ID)
+		CPRINTS("%s: not defined product_id - 0x%x.",
+			__func__, product_id);
+
+	return mapping[reg];
+}
 
 static int dp_set_hpd(const struct usb_mux *me, int enable)
 {
@@ -81,6 +117,16 @@ static int dp_set_irq(const struct usb_mux *me, int enable)
 	else
 		reg &= ~HPD_IRQ;
 	return mux_write(me, MUX_IN_HPD_ASSERTION_REG, reg);
+}
+
+__attribute__((weak))
+uint16_t board_get_ps8xxx_product_id(int port)
+{
+	/* Board supporting multiple chip sources in ps8xxx.c MUST override this
+	 * function to judge the real chip source for this board. For example,
+	 * SKU ID / strappings / provisioning in the factory can be the ways.
+	 */
+	return PS8XXX_PRODUCT_ID;
 }
 
 void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
@@ -138,8 +184,9 @@ static int ps8xxx_tcpm_release(int port)
 {
 	int version;
 	int status;
-
-	status = tcpc_read(port, FW_VER_REG, &version);
+	int reg = get_reg_by_product(default_product_id[port],
+					PS8XXX_FW_VER_REG);
+	status = tcpc_read(port, reg, &version);
 	if (status != 0) {
 		/* wait for chip to wake up */
 		msleep(10);
@@ -160,8 +207,8 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 	 * Detection if the partner already presents pull. Now starts with
 	 * the opposite pull. Check b/149570002.
 	 */
-	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8805) ||
-	    IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815)) {
+	if (default_product_id[port] == PS8805_PRODUCT_ID ||
+	    default_product_id[port] == PS8815_PRODUCT_ID) {
 		/* Check CC_STATUS for the current pull */
 		rv = tcpc_read(port, TCPC_REG_CC_STATUS, &status);
 		if (status & TCPC_REG_CC_STATUS_CONNECT_RESULT_MASK) {
@@ -226,27 +273,32 @@ static int ps8xxx_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 *chip_info)
 {
 	int val;
+	int reg;
 	int rv = tcpci_get_chip_info(port, live, chip_info);
 
 	if (rv != EC_SUCCESS)
 		return rv;
 
 	if (!live) {
+		default_product_id[port] = board_get_ps8xxx_product_id(port);
 		chip_info->vendor_id = PS8XXX_VENDOR_ID;
-		chip_info->product_id = PS8XXX_PRODUCT_ID;
+		chip_info->product_id = default_product_id[port];
 	}
 
 	if (chip_info->fw_version_number == 0 ||
 	    chip_info->fw_version_number == -1 || live) {
 #ifdef CONFIG_USB_PD_TCPM_PS8815_FORCE_DID
-		if (chip_info->device_id == 0x0001) {
+		if (chip_info->product_id == PS8815_PRODUCT_ID &&
+		    chip_info->device_id == 0x0001) {
 			rv = ps8815_make_device_id(port, &val);
 			if (rv != EC_SUCCESS)
 				return rv;
 			chip_info->device_id = val;
 		}
 #endif
-		rv = tcpc_read(port, FW_VER_REG, &val);
+		reg = get_reg_by_product(default_product_id[port],
+					 PS8XXX_FW_VER_REG);
+		rv = tcpc_read(port, reg, &val);
 		if (rv != EC_SUCCESS)
 			return rv;
 
@@ -254,11 +306,38 @@ static int ps8xxx_get_chip_info(int port, int live,
 	}
 
 	/* Treat unexpected values as error (FW not initiated from reset) */
-	if (live && (
-	    chip_info->vendor_id != PS8XXX_VENDOR_ID ||
-	    chip_info->product_id != PS8XXX_PRODUCT_ID ||
-	    chip_info->fw_version_number == 0))
-		return EC_ERROR_UNKNOWN;
+	if (live) {
+		int rv = 0;
+
+		if (chip_info->vendor_id != PS8XXX_VENDOR_ID ||
+		    chip_info->fw_version_number == 0)
+			return EC_ERROR_UNKNOWN;
+
+#ifndef CONFIG_USB_PD_TCPM_MULTI_PS8XXX
+		rv += chip_info->product_id == PS8XXX_PRODUCT_ID;
+#else
+
+#ifdef CONFIG_USB_PD_TCPM_PS8705
+		rv += chip_info->product_id == PS8705_PRODUCT_ID;
+#endif
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+		rv += chip_info->product_id == PS8751_PRODUCT_ID;
+#endif
+#ifdef CONFIG_USB_PD_TCPM_PS8755
+		rv += chip_info->product_id == PS8755_PRODUCT_ID;
+#endif
+#ifdef CONFIG_USB_PD_TCPM_PS8805
+		rv += chip_info->product_id == PS8805_PRODUCT_ID;
+#endif
+#ifdef CONFIG_USB_PD_TCPM_PS8815
+		rv += chip_info->product_id == PS8815_PRODUCT_ID;
+#endif
+
+#endif
+
+		if (!rv)
+			return EC_ERROR_UNKNOWN;
+	}
 
 #if defined(CONFIG_USB_PD_TCPM_PS8751) && \
 	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC)
@@ -318,7 +397,7 @@ static int ps8xxx_addr_dci_disable(int port, int i2c_addr, int i2c_reg)
 #if defined(CONFIG_USB_PD_TCPM_PS8705) || \
 	defined(CONFIG_USB_PD_TCPM_PS8755) || \
 	defined(CONFIG_USB_PD_TCPM_PS8805)
-static int ps8xxx_dci_disable(int port)
+static int ps8705_dci_disable(int port)
 {
 	int p1_addr;
 	int p3_addr;
@@ -349,7 +428,7 @@ static int ps8xxx_dci_disable(int port)
 #endif /* CONFIG_USB_PD_TCPM_PS8755 || CONFIG_USB_PD_TCPM_PS8[78]05 */
 
 #ifdef CONFIG_USB_PD_TCPM_PS8751
-static int ps8xxx_dci_disable(int port)
+static int ps8751_dci_disable(int port)
 {
 	int p3_addr;
 
@@ -360,16 +439,58 @@ static int ps8xxx_dci_disable(int port)
 #endif /* CONFIG_USB_PD_TCPM_PS8751 */
 
 #ifdef CONFIG_USB_PD_TCPM_PS8815
-static int ps8xxx_dci_disable(int port)
+static int ps8815_dci_disable(int port)
 {
 	/* DCI is disabled on the ps8815 */
 	return EC_SUCCESS;
 }
 #endif /* CONFIG_USB_PD_TCPM_PS8815 */
 
+struct dci_disable_ptr_map {
+	int product_id;
+	int (*dci_disable_ptr)(int port);
+};
+
+static struct dci_disable_ptr_map dci_disable_functions[] = {
+#ifdef CONFIG_USB_PD_TCPM_PS8705
+	{PS8705_PRODUCT_ID, ps8705_dci_disable},
+#endif
+#ifdef CONFIG_USB_PD_TCPM_PS8755
+/* Leverage PS8705 for PS8755. */
+	{PS8755_PRODUCT_ID, ps8705_dci_disable},
+#endif
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+	{PS8751_PRODUCT_ID, ps8751_dci_disable},
+#endif
+#ifdef CONFIG_USB_PD_TCPM_PS8805
+	{PS8805_PRODUCT_ID, ps8705_dci_disable},
+#endif
+#ifdef CONFIG_USB_PD_TCPM_PS8815
+	{PS8815_PRODUCT_ID, ps8815_dci_disable},
+#endif
+};
+
+static int ps8xxx_dci_disable(int port)
+{
+	int rv = EC_ERROR_INVAL;
+	int map_size =
+	    sizeof(dci_disable_functions) / sizeof(struct dci_disable_ptr_map);
+	for (int i = 0; i < map_size; i++) {
+		if (default_product_id[port] ==
+		      dci_disable_functions[i].product_id) {
+			return dci_disable_functions[i].dci_disable_ptr(port);
+		}
+	}
+
+	CPRINTS("%s: failed to get dci_disable function pointers.", __func__);
+	return rv;
+}
+
 static int ps8xxx_tcpm_init(int port)
 {
 	int status;
+
+	default_product_id[port] = board_get_ps8xxx_product_id(port);
 
 	status = tcpci_tcpm_init(port);
 	if (status != EC_SUCCESS)
@@ -411,14 +532,21 @@ static int ps8751_get_gcc(int port, enum tcpc_cc_voltage_status *cc1,
 }
 #endif
 
+static int ps8xxx_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
+			 enum tcpc_cc_voltage_status *cc2)
+{
+#ifdef CONFIG_USB_PD_TCPM_PS8751
+	if (default_product_id[port] == PS8751_PRODUCT_ID)
+		return ps8751_get_gcc(port, cc1, cc2);
+#endif
+
+	return tcpci_tcpm_get_cc(port, cc1, cc2);
+}
+
 const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.init			= &ps8xxx_tcpm_init,
 	.release		= &ps8xxx_tcpm_release,
-#ifdef CONFIG_USB_PD_TCPM_PS8751
-	.get_cc			= &ps8751_get_gcc,
-#else
-	.get_cc			= &tcpci_tcpm_get_cc,
-#endif
+	.get_cc			= &ps8xxx_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
 #endif
