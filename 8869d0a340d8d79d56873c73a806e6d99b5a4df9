@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "995447fc_0df54254",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-17T15:23:01Z",
+      "side": 1,
+      "message": "\u003e \"requried\" is a possible misspelling of \"required\".\n\nPlease fix.",
+      "parentUuid": "ae59dd70_b281ec7d",
+      "range": {
+        "startLine": 550,
+        "startChar": 59,
+        "endLine": 550,
+        "endChar": 67
+      },
+      "revId": "8869d0a340d8d79d56873c73a806e6d99b5a4df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12cf363c_ddb6df97",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-17T15:23:01Z",
+      "side": 1,
+      "message": "\u003e \"defintions\" is a possible misspelling of \"definitions\".\n\nPlease fix.",
+      "parentUuid": "565e09dc_1191b09b",
+      "range": {
+        "startLine": 1219,
+        "startChar": 24,
+        "endLine": 1219,
+        "endChar": 34
+      },
+      "revId": "8869d0a340d8d79d56873c73a806e6d99b5a4df9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
