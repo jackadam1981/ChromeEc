@@ -3298,13 +3298,47 @@
 #undef CONFIG_USB_PD_TCPM_ANX741X
 #undef CONFIG_USB_PD_TCPM_ANX7447
 #undef CONFIG_USB_PD_TCPM_ANX7688
+#undef CONFIG_USB_PD_TCPM_MT6370
+#undef CONFIG_USB_PD_TCPM_TUSB422
+
+/* PS8XXX series are all supported by a single driver with a build time config
+ * listed below (CONFIG_USB_PD_TCPM_PS*) defined to enable the specific product.
+ *
+ * If a board with the same EC FW is expected to support multiple products here
+ * then CONFIG_USB_PD_TCPM_MULTI_PS8XXX MUST be defined then we can enable more
+ * than one product config to support them in the runtime. In this case, board
+ * is responsible to override function of board_get_ps8xxx_product_id in order
+ * to provide the product id per port.
+ */
+#undef CONFIG_USB_PD_TCPM_MULTI_PS8XXX
 #undef CONFIG_USB_PD_TCPM_PS8751
 #undef CONFIG_USB_PD_TCPM_PS8755
 #undef CONFIG_USB_PD_TCPM_PS8705
 #undef CONFIG_USB_PD_TCPM_PS8805
 #undef CONFIG_USB_PD_TCPM_PS8815
-#undef CONFIG_USB_PD_TCPM_MT6370
-#undef CONFIG_USB_PD_TCPM_TUSB422
+
+/*
+ * Defined automatically by chip and depends on chip. This guards the onboard
+ * TCPM driver, but CONFIG_USB_PD_TCPM_ITE_ON_CHIP needs to be defined in
+ * board.h for either of these driver to actually be included in the final
+ * image.
+ */
+#undef CONFIG_USB_PD_TCPM_DRIVER_IT83XX
+#undef CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2
+
+/*
+ * Type-C retimer drivers to be used.
+ */
+#undef CONFIG_USBC_RETIMER_INTEL_BB
+#undef CONFIG_USBC_RETIMER_NB7V904M
+#undef CONFIG_USBC_RETIMER_PI3DPX1207
+#undef CONFIG_USBC_RETIMER_PI3HDX1204
+#undef CONFIG_USBC_RETIMER_PS8802
+#undef CONFIG_USBC_RETIMER_PS8818
+#undef CONFIG_USBC_RETIMER_TUSB544
+
+/* Allow run-time configuration of the Burnside Bridge driver structure */
+#undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
 
 /*
  * Adds an EC console command to erase the ANX7447 OCM flash.
@@ -4224,6 +4258,28 @@
 #if defined(CONFIG_DPTF_MULTI_PROFILE) && !defined(CONFIG_DPTF)
 #error "CONFIG_DPTF_MULTI_PROFILE can be set only when CONFIG_DPTF is set."
 #endif /* CONFIG_DPTF_MULTI_PROFILE && !CONFIG_DPTF */
+
+#if defined(CONFIG_USB_PD_TCPM_MULTI_PS8XXX)
+#if defined(CONFIG_USB_PD_TCPM_PS8705) + \
+	defined(CONFIG_USB_PD_TCPM_PS8751) + \
+	defined(CONFIG_USB_PD_TCPM_PS8755) + \
+	defined(CONFIG_USB_PD_TCPM_PS8805) + \
+	defined(CONFIG_USB_PD_TCPM_PS8815) < 2
+#error "Must select 2 CONFIG_USB_PD_TCPM_PS8* or above if " \
+	"CONFIG_USB_PD_TCPM_MULTI_PS8XXX is defined."
+#endif
+#endif /* CONFIG_USB_PD_TCPM_MULTI_PS8XXX  */
+
+#if defined(CONFIG_USB_PD_TCPM_PS8705) + \
+	defined(CONFIG_USB_PD_TCPM_PS8751) + \
+	defined(CONFIG_USB_PD_TCPM_PS8755) + \
+	defined(CONFIG_USB_PD_TCPM_PS8805) + \
+	defined(CONFIG_USB_PD_TCPM_PS8815) > 1
+#if !defined(CONFIG_USB_PD_TCPM_MULTI_PS8XXX)
+#error "CONFIG_USB_PD_TCPM_MULTI_PS8XXX MUST be defined if more than one " \
+	"CONFIG_USB_PD_TCPM_PS8* are intended to support in a board."
+#endif
+#endif /* defined(CONFIG_USB_PD_TCPM_PS8705) + ... */
 
 #endif  /* __CROS_EC_CONFIG_H */
 
