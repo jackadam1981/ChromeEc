@@ -42,6 +42,7 @@
 #include "gpio_list.h"
 
 static bool support_aoz_ppc;
+static enum gpio_signal gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
 
 #ifdef HAS_TASK_MOTIONSENSE
 
@@ -250,49 +251,6 @@ struct usb_mux usb_muxes[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
-
-/*****************************************************************************
- * Use FW_CONFIG to set correct configuration.
- */
-
-enum gpio_signal gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
-
-static void board_remap_gpio(void)
-{
-	uint32_t board_ver = 0;
-
-	cbi_get_board_version(&board_ver);
-
-	if (board_ver >= 3) {
-		gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
-		ccprintf("GPIO_EC_PS2_RESET_V1\n");
-	} else {
-		gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V0;
-		ccprintf("GPIO_EC_PS2_RESET_V0\n");
-	}
-
-	support_aoz_ppc = (board_ver == 3);
-	if (support_aoz_ppc) {
-		ccprintf("DB USBC PPC aoz1380\n");
-		ppc_chips[USBC_PORT_C1].drv = &aoz1380_drv;
-	}
-}
-
-void setup_fw_config(void)
-{
-	/* Enable Gyro interrupts */
-	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
-
-	/* Enable PS2 power interrupts */
-	gpio_enable_interrupt(GPIO_EN_PWR_TOUCHPAD_PS2);
-
-	ps2_enable_channel(NPCX_PS2_CH0, 1, send_aux_data_to_host);
-
-	setup_mux();
-
-	board_remap_gpio();
-}
-DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
 
 /*****************************************************************************
  * Fan
@@ -543,6 +501,10 @@ __override int board_aoz1380_set_vbus_source_current_limit(int port,
 	return rv;
 }
 
+/*****************************************************************************
+ * PS2
+ */
+
 static void trackpoint_reset_deferred(void)
 {
 	gpio_set_level(gpio_ec_ps2_reset, 1);
@@ -560,6 +522,25 @@ void send_aux_data_to_device(uint8_t data)
 void ps2_pwr_en_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&trackpoint_reset_deferred_data, MSEC);
+}
+
+static struct queue const ps2_rx_queue = QUEUE_NULL(16, uint8_t);
+
+static void ps2_rx_deferred(void)
+{
+	uint8_t data;
+
+	while (!queue_is_empty(&ps2_rx_queue)) {
+		queue_remove_unit(&ps2_rx_queue, &data);
+		send_aux_data_to_host(data);
+	}
+}
+DECLARE_DEFERRED(ps2_rx_deferred);
+
+static void ps2_rx_interrupt(uint8_t data)
+{
+	queue_add_unit(&ps2_rx_queue, &data);
+	hook_call_deferred(&ps2_rx_deferred_data, 0);
 }
 
 /*****************************************************************************
@@ -608,3 +589,43 @@ const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
 
+/*****************************************************************************
+ * Use FW_CONFIG to set correct configuration.
+ */
+
+static void board_remap_gpio(void)
+{
+	uint32_t board_ver = 0;
+
+	cbi_get_board_version(&board_ver);
+
+	if (board_ver >= 3) {
+		gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
+		ccprintf("GPIO_EC_PS2_RESET_V1\n");
+	} else {
+		gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V0;
+		ccprintf("GPIO_EC_PS2_RESET_V0\n");
+	}
+
+	support_aoz_ppc = (board_ver == 3);
+	if (support_aoz_ppc) {
+		ccprintf("DB USBC PPC aoz1380\n");
+		ppc_chips[USBC_PORT_C1].drv = &aoz1380_drv;
+	}
+}
+
+void setup_fw_config(void)
+{
+	/* Enable Gyro interrupts */
+	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
+
+	/* Enable PS2 power interrupts */
+	gpio_enable_interrupt(GPIO_EN_PWR_TOUCHPAD_PS2);
+
+	ps2_enable_channel(NPCX_PS2_CH0, 1, ps2_rx_interrupt);
+
+	setup_mux();
+
+	board_remap_gpio();
+}
+DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
