@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07a9924f_506ceffb",
+        "filename": "common/usbc/usb_pe_ctvpd_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-18T00:14:16Z",
+      "side": 1,
+      "message": "How are these ccprints calls different from the one in pd_test_tx_msg_verify (where it is #if 0\u0027ed out)? Are all of these function calls for printf-debugging?",
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1006b13_38a5e680",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-18T00:14:16Z",
+      "side": 1,
+      "message": "Does the TODO refer to changing the #ifdef? If so, it can be removed here (and in a few other places) since the code has been changed.",
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "103e0f65_171c6f49",
+        "filename": "test/usb_prl_old.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-18T00:14:16Z",
+      "side": 1,
+      "message": "Consider adding a ccprintf here to explain that the test is being skipped because CONFIG_USB_PD_EXTENDED_MESSAGES is not enabled.",
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
