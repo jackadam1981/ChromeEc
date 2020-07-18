@@ -622,6 +622,14 @@
  */
 #undef CONFIG_CHARGE_STATE_DEBUG
 
+/*
+ * If defined the "battery" command will not print headers.  This
+ * option will save a few hundred bytes of space at the expense of
+ * the command output being harder to understand and probably
+ * impossible for tools (like servo) to parse.
+ */
+#undef CONFIG_CMD_BATTERY_NO_HEADERS
+
 /* Include support for Bluetooth LE */
 #undef CONFIG_BLUETOOTH_LE
 

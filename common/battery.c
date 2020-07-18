@@ -70,10 +70,14 @@ static const char *get_error_text(int rv)
 		return "(error)";
 }
 
+#ifdef CONFIG_CMD_BATTERY_NO_HEADERS
+static inline void print_item_name(const char *name) { }
+#else
 static void print_item_name(const char *name)
 {
 	ccprintf("  %-11s", name);
 }
+#endif
 
 static int check_print_error(int rv)
 {
