@@ -524,6 +524,25 @@ void ps2_pwr_en_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&trackpoint_reset_deferred_data, MSEC);
 }
 
+static struct queue const ps2_rx_queue = QUEUE_NULL(16, uint8_t);
+
+static void ps2_rx_deferred(void)
+{
+	uint8_t data;
+
+	while (!queue_is_empty(&ps2_rx_queue)) {
+		queue_remove_unit(&ps2_rx_queue, &data);
+		send_aux_data_to_host(data);
+	}
+}
+DECLARE_DEFERRED(ps2_rx_deferred);
+
+static void ps2_rx_interrupt(uint8_t data)
+{
+	queue_add_unit(&ps2_rx_queue, &data);
+	hook_call_deferred(&ps2_rx_deferred_data, 0);
+}
+
 /*****************************************************************************
  * Power signals
  */
@@ -603,7 +622,7 @@ void setup_fw_config(void)
 	/* Enable PS2 power interrupts */
 	gpio_enable_interrupt(GPIO_EN_PWR_TOUCHPAD_PS2);
 
-	ps2_enable_channel(NPCX_PS2_CH0, 1, send_aux_data_to_host);
+	ps2_enable_channel(NPCX_PS2_CH0, 1, ps2_rx_interrupt);
 
 	setup_mux();
 
