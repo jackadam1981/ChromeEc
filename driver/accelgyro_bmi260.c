@@ -13,6 +13,7 @@
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_bmi260.h"
 #include "endian.h"
+#include "flash.h"
 #include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
@@ -379,6 +380,20 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 }
 #endif  /* CONFIG_ACCEL_INTERRUPTS */
 
+#if defined(CONFIG_ACCELGYRO_BMI160_COMPRESSED_CONFIG) || \
+	defined(CONFIG_CHIP_INIT_ROM_REGION)
+#define BMI_BUFFER_SIZE		256
+static uint8_t bmi_config_buffer[BMI_BUFFER_SIZE];
+static const int burst_write_len = BMI_BUFFER_SIZE;
+#else
+/*
+ * Due to i2c transaction timeout limit,
+ * burst_write_len should not be above 2048 to prevent timeout.
+ */
+static const int burst_write_len = 2048;
+static uint8_t *bmi_config_buffer;
+#endif
+
 /*
  * TODO(b/160330682): Eliminate or reduce size of BMI260 initialization file.
  * Remove this option once the BMI260 initialization file is moved to the
@@ -393,8 +408,6 @@ INCBIN(bmi260_config,
 	"third_party/bmi260/accelgyro_bmi260_config_compressed.bin");
 
 #define COMPRESS_KEY		0xE9EA
-#define BMI_BUFFER_SIZE		256
-static uint8_t bmi_buffer[BMI_BUFFER_SIZE];
 static int bmi_buffer_bytes;
 static int bmi_config_offset;
 
@@ -414,7 +427,7 @@ static int write_bmi_data(const struct motion_sensor_t *s)
 		return ret;
 
 	ret = bmi_write_n(s->port, s->i2c_spi_addr_flags,
-			  BMI260_INIT_DATA, bmi_buffer,
+			  BMI260_INIT_DATA, bmi_config_buffer,
 			  bmi_buffer_bytes);
 	if (ret)
 		return ret;
@@ -433,7 +446,7 @@ static int enqueue_bmi_data(const struct motion_sensor_t *s, uint32_t *data)
 {
 	int ret;
 
-	memcpy(&bmi_buffer[bmi_buffer_bytes], data, 4);
+	memcpy(&bmi_config_buffer[bmi_buffer_bytes], data, 4);
 	bmi_buffer_bytes += 4;
 
 	if (bmi_buffer_bytes >= BMI_BUFFER_SIZE) {
@@ -543,11 +556,6 @@ static int bmi_config_load(const struct motion_sensor_t *s)
 	int ret;
 	uint16_t i;
 
-	/*
-	 * Due to i2c transaction timeout limit,
-	 * burst_write_len should not be above 2048 to prevent timeout.
-	 */
-	const int burst_write_len = 2048;
 	/* We have to write the config even bytes of data every time */
 	BUILD_ASSERT((burst_write_len & 1) == 0);
 
@@ -562,9 +570,23 @@ static int bmi_config_load(const struct motion_sensor_t *s)
 				  BMI260_INIT_ADDR_0, addr, 2);
 		if (ret)
 			return ret;
-		ret = bmi_write_n(s->port, s->i2c_spi_addr_flags,
-				  BMI260_INIT_DATA, &g_bmi260_config_tbin[i],
-				  len);
+
+		if (IS_ENABLED(CONFIG_CHIP_INIT_ROM_REGION)) {
+			ret = flash_read((int)&g_bmi260_config_tbin[i], len,
+				bmi_config_buffer);
+			if (ret)
+				return ret;
+
+			ret = bmi_write_n(s->port, s->i2c_spi_addr_flags,
+					  BMI260_INIT_DATA, bmi_config_buffer,
+					  len);
+		} else {
+			ret = bmi_write_n(s->port, s->i2c_spi_addr_flags,
+					  BMI260_INIT_DATA,
+					  &g_bmi260_config_tbin[i],
+					  len);
+		}
+
 		if (ret)
 			return ret;
 ;
