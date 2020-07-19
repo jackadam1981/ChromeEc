@@ -148,6 +148,18 @@ SECTIONS
 
 		 . = ALIGN(4);
 		 KEEP(*(.rodata.*))
+
+#ifndef CONFIG_CHIP_INIT_ROM_REGION
+		/*
+		 * When a separate ROM resident section isn't enabled, ensure
+		 * the corresponding data objects are linked into the .rodata
+		 * section.
+		 */
+		. = ALIGN(4);
+		__init_rom_start = .;
+		*(.init.rom)
+		__init_rom_end = .;
+#endif /* CONFIG_CHIP_INIT_ROM_REGION */
 	}
 
 	/*
