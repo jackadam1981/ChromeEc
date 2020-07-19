@@ -6,6 +6,11 @@
 #include "config.h"
 #include "rwsig.h"
 
+#define CONCAT_STAGE_1(w, x, y, z) w ## x ## y ## z
+#define CONCAT2(w, x) CONCAT_STAGE_1(w, x, , )
+#define CONCAT3(w, x, y) CONCAT_STAGE_1(w, x, y, )
+#define CONCAT4(w, x, y, z) CONCAT_STAGE_1(w, x, y, z)
+
 #define STRINGIFY0(name) #name
 #define STRINGIFY(name) STRINGIFY0(name)
 
@@ -19,6 +24,29 @@
 
 #define FW_SIZE_(section) CONFIG_##section##_SIZE
 #define FW_SIZE(section) FW_SIZE_(section)
+
+/*
+ * Defines physical address of the ROM_RESIDENT region within the EC image.
+ * This is full 32-bit address starting from CONFIG_PROGRAM_MEMORY_BASE.
+ */
+#define ROM_RES_OFF(section) FW_OFF(CONCAT2(section, _ROM_RESIDENT))
+#define ROM_RES_SIZE(section) FW_SIZE(CONCAT2(section, _ROM_RESIDENT))
+
+/*
+ * Define the virtual address of the ROM_RESIDENT region.  This specifies
+ * an offset address within the flash memory. Objects linked into this
+ * section can pass the address of the object unmodified to the
+ * flash_read)() function.
+ */
+#ifdef SECTION_IS_RO
+#define ROM_RES_FLASH_OFF(section) \
+	FW_MEM_OFF(CONCAT2(section, _ROM_RESIDENT)) + \
+	CONFIG_EC_PROTECTED_STORAGE_OFF
+#else
+#define ROM_RES_FLASH_OFF(section) \
+	FW_MEM_OFF(CONCAT2(section, _ROM_RESIDENT)) + \
+	CONFIG_EC_WRITABLE_STORAGE_OFF
+#endif
 
 /* Indicates where .data LMA should reside. */
 #undef DATA_LMA_MEM_REGION
@@ -45,6 +73,15 @@ MEMORY
 #else
 	FLASH (rx) : ORIGIN = FW_OFF(SECTION), LENGTH = FW_SIZE(SECTION)
 #endif
+#ifdef CONFIG_CHIP_INIT_ROM_REGION
+	ROM_RESIDENT (r) : \
+		ORIGIN = ROM_RES_OFF(SECTION), \
+		LENGTH = ROM_RES_SIZE(SECTION)
+
+	ROM_RESIDENT_VA (r) : \
+		ORIGIN = ROM_RES_FLASH_OFF(SECTION), \
+		LENGTH = ROM_RES_SIZE(SECTION)
+#endif /* CONFIG_CHIP_INIT_ROM_REGION */
 #ifdef CONFIG_SHAREDLIB
 	SHARED_LIB (rx) : ORIGIN = FW_OFF(SHAREDLIB), \
 			  LENGTH = FW_SIZE(SHAREDLIB)
@@ -274,6 +311,18 @@ SECTIONS
 		. = ALIGN(4);
 		*(.rodata*)
 
+#ifndef CONFIG_CHIP_INIT_ROM_REGION
+		/*
+		 * When a separate ROM resident section isn't enabled, ensure
+		 * the corresponding data objects are linked into the .rodata
+		 * section.
+		 */
+		. = ALIGN(4);
+		__init_rom_start = .;
+		*(.init.rom)
+		__init_rom_end = .;
+#endif /* CONFIG_CHIP_INIT_ROM_REGION */
+
 #if defined(SECTION_IS_RO) && defined(CONFIG_FLASH)
 		. = ALIGN(64);
 		KEEP(*(.google))
@@ -418,7 +467,6 @@ SECTIONS
 	 * in hash calcuations.
 	 */
 	__flash_used = LOADADDR(.data) + SIZEOF(.data) - ORIGIN(FLASH);
-	__image_size = __flash_used;
 
 #ifdef CONFIG_FLASH
         /*
@@ -446,6 +494,55 @@ SECTIONS
 	       ) >= __flash_used,
 	       "No room left in the flash")
 
+#ifdef CONFIG_CHIP_INIT_ROM_REGION
+	/*
+	 * The layout assumes the ROM_RESIDENT region follows the FLASH
+	 * region.
+	 */
+	ASSERT((ORIGIN(FLASH) + LENGTH(FLASH)) == ORIGIN(ROM_RESIDENT),
+		".init_rom section must follow the flash section")
+
+	.init_rom : {
+		. = ALIGN(4);
+		__init_rom_start = .;
+		*(.init.rom)
+		__init_rom_end = .;
+	} > ROM_RESIDENT_VA AT > ROM_RESIDENT
+
+	/*
+	 * The ROM_RESIDENT section is assumed to be in the same physical
+	 * flash as the FLASH section. Fill the space between.
+	 */
+	.fill : {
+		. = LOADADDR(.data) + SIZEOF(.data);
+		. = ALIGN(4);
+		__fill_start = .;
+		FILL(0xFF);
+		. = ORIGIN(FLASH) + LENGTH(FLASH) - 1;
+		/* Need at least one byte so section is not omitted */
+		BYTE(0xFF);
+		__fill_end = .;
+	} > FLASH
+
+	/*
+	 * The end of the .fill region should also be the start of the
+	 * .init_rom region
+	 */
+	ASSERT(__fill_end == LOADADDR(.init_rom),
+		".fill region end not aligned to start of .init_rom")
+
+	/*
+	 * __image_size is used for hash calculation.  When
+	 * CONFIG_CHIP_INIT_ROM_REGION is enabled, this includes the entire
+	 * FLASH region and the bytes used in the .init_rom section.
+	 */
+	__image_size = LENGTH(FLASH) + SIZEOF(.init_rom);
+#else
+	/*
+	 * Typical build: __image_size is the same as __flash_used.
+	 */
+	__image_size = __flash_used;
+#endif /* CONFIG_CHIP_INIT_ROM_REGION */
 
 #ifdef CONFIG_CHIP_MEMORY_REGIONS
 #define REGION(name, attr, start, size) \
