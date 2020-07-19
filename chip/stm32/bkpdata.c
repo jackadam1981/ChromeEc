@@ -30,9 +30,11 @@ int bkpdata_write(enum bkpdata_index index, uint16_t value)
 
 	/*
 	 * Two entries share a single 32-bit register, lock mutex to prevent
-	 * read/mask/write races.
+	 * read/mask/write races. Must not call mutex_lock() before
+	 * task_start().
 	 */
-	mutex_lock(&bkpdata_write_mutex);
+	if (task_start_called())
+		mutex_lock(&bkpdata_write_mutex);
 	if (index & 1) {
 		uint32_t val = STM32_BKP_DATA(index >> 1);
 		val = (val & 0x0000FFFF) | (value << 16);
@@ -42,7 +44,8 @@ int bkpdata_write(enum bkpdata_index index, uint16_t value)
 		val = (val & 0xFFFF0000) | value;
 		STM32_BKP_DATA(index >> 1) = val;
 	}
-	mutex_unlock(&bkpdata_write_mutex);
+	if (task_start_called())
+		mutex_unlock(&bkpdata_write_mutex);
 
 	return EC_SUCCESS;
 }
