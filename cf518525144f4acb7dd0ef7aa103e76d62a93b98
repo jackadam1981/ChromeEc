@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78fda17f_553870b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-20T21:26:09Z",
+      "side": 1,
+      "message": "Do we have the battery spec upload for this in drive?\n\nAlso Diana added a config option that ensures we don\u0027t issued PD resets until we have a certain battery threshold. When the battery is waking from cut-off does it report the battery level? Would that help or just complicate things here?",
+      "revId": "cf518525144f4acb7dd0ef7aa103e76d62a93b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
