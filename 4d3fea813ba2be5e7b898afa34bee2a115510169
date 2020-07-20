@@ -127,6 +127,30 @@
       "revId": "4d3fea813ba2be5e7b898afa34bee2a115510169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3dd9ae6_d4b6a364",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-20T16:41:52Z",
+      "side": 1,
+      "message": "\u003e I\u0027ll explore follow on changes that enforce the \u003cBOARD\u003e and \u003cBASEBOARD\u003e relationship explicitly based on the directory nesting.\n\nsg(reat)tm. thank you,",
+      "parentUuid": "6e7d126d_75b221d7",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "4d3fea813ba2be5e7b898afa34bee2a115510169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
