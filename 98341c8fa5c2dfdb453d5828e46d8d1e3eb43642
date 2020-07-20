@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "ff049458_a15b7127",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-20T17:33:45Z",
+      "side": 1,
+      "message": "Looking good so far.  How much testing have you gotten to try out so far?  And how much will this help volteer? ",
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d25479c_c7b1c85b",
+        "filename": "chip/host/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-20T17:33:45Z",
+      "side": 1,
+      "message": "Never executes?",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 10
+      },
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07a9924f_506ceffb",
         "filename": "common/usbc/usb_pe_ctvpd_sm.c",
         "patchSetId": 1
@@ -13,6 +53,52 @@
       "writtenOn": "2020-07-18T00:14:16Z",
       "side": 1,
       "message": "How are these ccprints calls different from the one in pd_test_tx_msg_verify (where it is #if 0\u0027ed out)? Are all of these function calls for printf-debugging?",
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "663a1835_c108ef5c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-20T17:33:45Z",
+      "side": 1,
+      "message": "Total side note, but do you know if this technique actually works?  If you reference PE_GIVE_BATTERY_CAP in volteer code, does it fail to build?",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 61
+      },
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a3de4f4_a9303847",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3279,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-20T17:33:45Z",
+      "side": 1,
+      "message": "Looks like this one isn\u0027t an extended message?  Why exclude it?",
+      "range": {
+        "startLine": 3279,
+        "startChar": 1,
+        "endLine": 3279,
+        "endChar": 49
+      },
       "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
