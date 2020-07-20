@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "80a5495c_4dd06fca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-20T23:17:39Z",
+      "side": 1,
+      "message": "why limit the flexibility - yesterday we din not know there would be a board which would not work with EC reset asserted. Tomorrow another board could come along which requires both resets deasserted.\n\nIf we say Cr50 should be oblivious of the requirements - let\u0027s let the script using it in complete control.",
+      "parentUuid": "91cc7639_d61857ef",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "01d6f3a4e0233b79776c94ed3da6a7deac5fc246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4825d65_d094476a",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "The EC doesn\u0027t touch the reset signals",
       "parentUuid": "63e69d91_5835eb25",
+      "range": {
+        "startLine": 351,
+        "startChar": 32,
+        "endLine": 351,
+        "endChar": 65
+      },
+      "revId": "01d6f3a4e0233b79776c94ed3da6a7deac5fc246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8083484c_487958b0",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-20T23:17:39Z",
+      "side": 1,
+      "message": "I thought about this a bit more, I would rather avoid mixing up the enum and the bit flag.\n\nHow about adding a boolean field in the confg-\u003estate structure and call it \u0027no reset\u0027 or something like that.",
+      "parentUuid": "d04c1d6d_62c72579",
       "range": {
         "startLine": 351,
         "startChar": 32,
