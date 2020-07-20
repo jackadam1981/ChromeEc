@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfc9e691_b099856c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-07-20T04:45:52Z",
+      "side": 1,
+      "message": "Please document this config option in config.h.\n\nNote that this might break things that trying to parse the header (e.g. servo).\nProbably fine for Kodama though.",
+      "revId": "12b956e796f96df777c8c2691375e09eef15795c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
