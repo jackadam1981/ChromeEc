@@ -265,12 +265,14 @@ BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
 
 /******************************************************************************/
 /* USBC mux configuration - Tiger Lake includes internal mux */
+#if !defined(VARIANT_LINDAR)
 struct usb_mux usbc1_usb4_db_retimer = {
 	.usb_port = USBC_PORT_C1,
 	.driver = &bb_usb_retimer,
 	.i2c_port = I2C_PORT_USB_1_MIX,
 	.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
 };
+#endif
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
@@ -281,7 +283,9 @@ struct usb_mux usb_muxes[] = {
 		.usb_port = USBC_PORT_C1,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
+#if !defined(VARIANT_LINDAR)
 		.next_mux = &usbc1_usb4_db_retimer,
+#endif
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
