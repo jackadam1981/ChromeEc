@@ -321,6 +321,24 @@
       "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5efaf0a0_ecab35a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-20T23:32:23Z",
+      "side": 1,
+      "message": "Removed TCPC early init.  Jett, can you provide a CR+2 again and we\u0027ll need to work on the feature for not turning the AP out of hibernate for Dedede later.",
+      "parentUuid": "f2dcb328_9ffbe1c1",
+      "revId": "c0dc38d8eff8fa126466a80068a5a57108f9549c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
