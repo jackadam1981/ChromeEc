@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "267dc9a8_fac9f6cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-20T15:28:38Z",
+      "side": 1,
+      "message": "Patchset4:\n  * add weak board_get_ps8xxx_chip_info() for board level to override the judgement of real chip source on the board.",
+      "revId": "1867a91809cc4a73035a379e561d7436b09e195a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
