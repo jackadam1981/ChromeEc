@@ -56,6 +56,29 @@
       "revId": "2cec581de2ebdd749cc05324aef3f1bf8b157565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b1defe8_520e60aa",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-07-20T22:46:29Z",
+      "side": 1,
+      "message": "What is this state used for? I\u0027m worried that IN_SUSPEND will be toggling during suspend for modem paging or something like that and then we\u0027ll be sitting here thinking that we\u0027ve gone in and out of suspend many times.",
+      "range": {
+        "startLine": 785,
+        "startChar": 10,
+        "endLine": 785,
+        "endChar": 20
+      },
+      "revId": "2cec581de2ebdd749cc05324aef3f1bf8b157565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
