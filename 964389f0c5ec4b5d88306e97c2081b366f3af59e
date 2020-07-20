@@ -16,6 +16,69 @@
       "revId": "964389f0c5ec4b5d88306e97c2081b366f3af59e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22763091_e653ee26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-20T18:17:20Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "964389f0c5ec4b5d88306e97c2081b366f3af59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06f28bf4_2491c77a",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-20T18:17:20Z",
+      "side": 1,
+      "message": "good comments, thank you!",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 65
+      },
+      "revId": "964389f0c5ec4b5d88306e97c2081b366f3af59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc498446_9b0b414d",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-20T18:17:20Z",
+      "side": 1,
+      "message": "why do we need to disable prl after tests complete?",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "964389f0c5ec4b5d88306e97c2081b366f3af59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
