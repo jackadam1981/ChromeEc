@@ -16,6 +16,24 @@
       "revId": "cf518525144f4acb7dd0ef7aa103e76d62a93b98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e059680_1ef95f10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-20T21:56:58Z",
+      "side": 1,
+      "message": "The battery spec was attached in b/159319530#comment38. Just uploaded it to the drive.\n\nFrom what we saw, the battery reports a correct battery level and other battery params, even its discharge FET is not enabled yet (the FET takes 1.5s +/- 0.5s to be enabled). As the PD Try.SRC decision also checks the battery level and we saw Try.SRC was enabled without this CL.\n\nCould you point me the CONFIG for the PD reset? It may happen on this battery.",
+      "parentUuid": "78fda17f_553870b0",
+      "revId": "cf518525144f4acb7dd0ef7aa103e76d62a93b98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
