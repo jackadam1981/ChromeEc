@@ -16,6 +16,23 @@
       "revId": "7aa319621bb6a460f53a06b91a70f4c9aaec41ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bd767f8_8a870ecb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-20T15:59:05Z",
+      "side": 1,
+      "message": "I think PS3 looks much better without having the interrupt enabable/diabled code in comment PD task code. It is worth having an extra interrupt fire as long as it doesn\u0027t mess up the state (which is doesn\u0027t seem to)",
+      "revId": "7aa319621bb6a460f53a06b91a70f4c9aaec41ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
