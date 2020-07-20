@@ -859,6 +859,7 @@ void pe_got_hard_reset(int port)
  */
 void pd_got_frs_signal(int port)
 {
+	cprints(CC_CHARGER, "FRS SIGNALLED, flagging FRS on port %d", port);
 	PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
 	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE, 0);
 }
@@ -882,10 +883,13 @@ static void pe_set_frs_enable(int port, int enable)
 	if (IS_ENABLED(CONFIG_USB_PD_FRS)) {
 		int current = PE_CHK_FLAG(port,
 					  PE_FLAGS_FAST_ROLE_SWAP_ENABLED);
+		cprints(CC_CHARGER, "current FRS flag = %d, want = %d", current, enable);
 
 		/* Request an FRS change, only if the state has changed */
 		if (!!current != !!enable) {
+			cprints(CC_CHARGER, "requesting TCPM set FRS enable = %d", enable);
 			pd_set_frs_enable(port, enable);
+
 			if (enable)
 				PE_SET_FLAG(port,
 					    PE_FLAGS_FAST_ROLE_SWAP_ENABLED);
@@ -2539,6 +2543,7 @@ static void pe_snk_select_capability_run(int port)
 			pe[port].sender_response_timer =
 					get_time().val + PD_T_SENDER_RESPONSE;
 		} else {
+			// Wait for send to complete
 			return;
 		}
 	}
@@ -5411,18 +5416,21 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 				 * TODO(b/14191267): Make sure we can handle
 				 * the required current before we enable FRS.
 				 */
+				cprints(CC_CHARGER, "Test FRS capability rev=%d, payload=0x%08x", rev, payload);
 				if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
 					(rev > PD_REV20) &&
 					(payload & PDO_FIXED_DUAL_ROLE)) {
 					switch (payload &
 						PDO_FIXED_FRS_CURR_MASK) {
 					case PDO_FIXED_FRS_CURR_NOT_SUPPORTED:
+						cprints(CC_CHARGER, "Fixed FRS current not supported!");
 						break;
 					case PDO_FIXED_FRS_CURR_DFLT_USB_POWER:
 					case PDO_FIXED_FRS_CURR_1A5_AT_5V:
 					case PDO_FIXED_FRS_CURR_3A0_AT_5V:
 						typec_set_source_current_limit(
 							port, TYPEC_RP_3A0);
+						cprints(CC_CHARGER, "FRS IS GO, enable on port %d", port);
 						pe_set_frs_enable(port, 1);
 						break;
 					}
