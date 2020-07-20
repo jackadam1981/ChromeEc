@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef8e86d9_8d577112",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2020-07-20T02:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f48a6ff4_b6ff9f08",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 31
+      },
+      "revId": "e545ce8dff735ed43fd245660cb6c0bcbba44a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb9b4840_7d2fa41a",
         "filename": "board/delbin/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-17T17:06:25Z",
       "side": 1,
       "message": "Should be 0xF5 (keyscan 63 and 65 not used on Vivaldi).",
+      "range": {
+        "startLine": 388,
+        "startChar": 38,
+        "endLine": 388,
+        "endChar": 42
+      },
+      "revId": "e545ce8dff735ed43fd245660cb6c0bcbba44a2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64863a4f_52b91623",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2020-07-20T02:11:25Z",
+      "side": 1,
+      "message": "The keyboard maybe support JP keyboard in future.\nIt will use keyscan 63 and 65.",
+      "parentUuid": "fb9b4840_7d2fa41a",
       "range": {
         "startLine": 388,
         "startChar": 38,
