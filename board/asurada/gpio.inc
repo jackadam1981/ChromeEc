@@ -54,7 +54,7 @@ GPIO_INT(VOLUME_DOWN_L,      PIN(D, 6), GPIO_INT_BOTH | GPIO_PULL_UP,
          button_interrupt) /* EC_VOLDN_BTN_ODL */
 GPIO_INT(VOLUME_UP_L,        PIN(D, 5), GPIO_INT_BOTH | GPIO_PULL_UP,
          button_interrupt) /* EC_VOLUP_BTN_ODL */
-GPIO_INT(SPI0_CS,            PIN(M, 5), GPIO_INT_FALLING | GPIO_PULL_UP,
+GPIO_INT(SPI0_CS,            PIN(M, 5), GPIO_INT_FALLING,
          spi_event)        /* SPI slave Chip Select -- AP_SPI_EC_CS_L */
 GPIO_INT(X_EC_GPIO2,         PIN(B, 2), GPIO_ODR_HIGH, x_ec_interrupt)
 
