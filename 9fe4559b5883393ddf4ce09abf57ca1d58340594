@@ -94,6 +94,30 @@
       "revId": "9fe4559b5883393ddf4ce09abf57ca1d58340594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d9f79c6_caf292a7",
+        "filename": "common/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-20T17:51:24Z",
+      "side": 1,
+      "message": "Made the change.",
+      "parentUuid": "99418008_850e052d",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 49
+      },
+      "revId": "9fe4559b5883393ddf4ce09abf57ca1d58340594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
