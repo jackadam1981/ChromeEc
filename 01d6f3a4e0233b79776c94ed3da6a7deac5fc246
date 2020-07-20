@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bb7f6316_a5f3e86d",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-20T22:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4825d65_d094476a",
+      "range": {
+        "startLine": 271,
+        "startChar": 12,
+        "endLine": 271,
+        "endChar": 29
+      },
+      "revId": "01d6f3a4e0233b79776c94ed3da6a7deac5fc246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07ef58cb_0b3dfb79",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2020-07-20T21:50:58Z",
       "side": 1,
       "message": "can\u0027t the custom reset bit be set when programming the EC?",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 23
+      },
+      "revId": "01d6f3a4e0233b79776c94ed3da6a7deac5fc246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc9bc50c_cff35e3f",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-20T22:34:20Z",
+      "side": 1,
+      "message": "The enable_ec_spi doesn\u0027t touch the reset signals. It just sets EC and AP flash_select",
+      "parentUuid": "07ef58cb_0b3dfb79",
       "range": {
         "startLine": 310,
         "startChar": 5,
