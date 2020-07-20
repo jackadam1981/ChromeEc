@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a206cf0_f226ae01",
+        "filename": "board/pompom/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-07-20T01:56:06Z",
+      "side": 1,
+      "message": "\u003e Is this comment related? Grunt doesn\u0027t use this BYD battery.\n\nSorry, I had removed incorrect comment.",
+      "parentUuid": "f067008d_ee689e95",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "d449c6531a2f321466abd9a221ec0d1f87c6b923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46fab9cf_2348608a",
         "filename": "board/pompom/board.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "d449c6531a2f321466abd9a221ec0d1f87c6b923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fae8857_cf5d0f9a",
+        "filename": "board/pompom/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2020-07-20T01:56:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46fab9cf_2348608a",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 7
+      },
+      "revId": "d449c6531a2f321466abd9a221ec0d1f87c6b923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
