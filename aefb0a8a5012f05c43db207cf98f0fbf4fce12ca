@@ -16,6 +16,24 @@
       "revId": "aefb0a8a5012f05c43db207cf98f0fbf4fce12ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "152accf1_fedeae38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-20T17:33:40Z",
+      "side": 1,
+      "message": "Do those FAFT tests work with the things that are already disabled in the RO of this board?\n\n  #ifdef SECTION_IS_RO\n  #undef CONFIG_CMD_APTHROTTLE\n  #undef CONFIG_CMD_CRASH\n  #undef CONFIG_CMD_HCDEBUG\n  #undef CONFIG_CMD_MMAPINFO\n  #undef CONFIG_CMD_PWR_AVG\n  #undef CONFIG_CMD_REGULATOR\n  #undef CONFIG_CMD_RW\n  #undef CONFIG_CMD_SHMEM\n  #undef CONFIG_CMD_SLEEPMASK\n  #undef CONFIG_CMD_SLEEPMASK_SET\n  #undef CONFIG_CMD_SYSLOCK\n  #undef CONFIG_HOSTCMD_FLASHPD\n  #undef CONFIG_HOSTCMD_RWHASHPD\n  #undef CONFIG_CONSOLE_CMDHELP\n  #endif",
+      "parentUuid": "bf3035d8_75853cae",
+      "revId": "aefb0a8a5012f05c43db207cf98f0fbf4fce12ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
