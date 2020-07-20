@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "59141727_e0c6963c",
+        "filename": "board/drawcia/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-20T07:08:51Z",
+      "side": 1,
+      "message": "don\u0027t have power led",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 19
+      },
+      "revId": "160b6d40b92570d87859b480c94c837436b20114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57243d3e_dc987dd9",
         "filename": "board/drawcia/led.c",
         "patchSetId": 2
@@ -19,6 +42,23 @@
         "endLine": 96,
         "endChar": 27
       },
+      "revId": "160b6d40b92570d87859b480c94c837436b20114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02abd60b_52bd3c7f",
+        "filename": "board/drawcia/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-20T07:08:51Z",
+      "side": 1,
+      "message": "As I know, the tick for ITE is 500ms so for battery error - (0.5 sec on, 0.5 sec off), should be check by 0x1 instead of 0x2 (1 sec on, 1 sec off)?",
       "revId": "160b6d40b92570d87859b480c94c837436b20114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
