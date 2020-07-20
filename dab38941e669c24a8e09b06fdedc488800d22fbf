@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "151ba14c_b6e87237",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-20T18:03:03Z",
+      "side": 1,
+      "message": "Only some nits.",
+      "revId": "dab38941e669c24a8e09b06fdedc488800d22fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "097fed03_ee48a4d3",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-20T18:03:03Z",
+      "side": 1,
+      "message": "nit: extra tab.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "dab38941e669c24a8e09b06fdedc488800d22fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "184f31f9_6efbddf4",
         "filename": "board/fleex/board.c",
         "patchSetId": 7
@@ -13,6 +53,47 @@
       "writtenOn": "2020-07-20T14:37:22Z",
       "side": 1,
       "message": "It seems to me that ppc_syv682x_port[0|1] can be the local variables here not global ones because only this function needs them and will be called once in RO or RW?",
+      "revId": "dab38941e669c24a8e09b06fdedc488800d22fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956a9d7f_3e08928b",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-20T18:03:03Z",
+      "side": 1,
+      "message": "Technically that\u0027s right but listing them near the top of the file increases the visibility and readability. Other boards do similar.",
+      "parentUuid": "184f31f9_6efbddf4",
+      "revId": "dab38941e669c24a8e09b06fdedc488800d22fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fc79487_0759d086",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-20T18:03:03Z",
+      "side": 1,
+      "message": "nit: This is an init function for CBI. So, it\u0027s more coherent to call it from board_init.",
+      "range": {
+        "startLine": 279,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 35
+      },
       "revId": "dab38941e669c24a8e09b06fdedc488800d22fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
