@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f11e8141_b87ae383",
+        "filename": "common/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-20T17:13:22Z",
+      "side": 1,
+      "message": "Maybe we don\u0027t print this debug message? That way won\u0027t increase any code size and should pass the CQ.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 49
+      },
+      "revId": "9fe4559b5883393ddf4ce09abf57ca1d58340594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
