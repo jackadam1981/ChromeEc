@@ -79,6 +79,30 @@
       "revId": "964389f0c5ec4b5d88306e97c2081b366f3af59e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a31408_641f4a48",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-20T18:23:49Z",
+      "side": 1,
+      "message": "usb_prl_old did it, so I brought it over to the new test. It does serve the purpose of making sure that we\u0027ve put the state machine back the way we found it so the next test can set it up from scratch.",
+      "parentUuid": "fc498446_9b0b414d",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "964389f0c5ec4b5d88306e97c2081b366f3af59e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
