@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "798e0f60_d0a04ccd",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-20T23:14:09Z",
+      "side": 1,
+      "message": "Fixed it. It is the normal way to leave suspend.",
+      "parentUuid": "feb7c47a_e6bca1bd",
+      "range": {
+        "startLine": 783,
+        "startChar": 0,
+        "endLine": 783,
+        "endChar": 53
+      },
+      "revId": "2cec581de2ebdd749cc05324aef3f1bf8b157565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b1defe8_520e60aa",
         "filename": "power/sc7180.c",
         "patchSetId": 1
@@ -96,6 +120,30 @@
       "revId": "2cec581de2ebdd749cc05324aef3f1bf8b157565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1e0dcc8_7d473838",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-20T23:14:09Z",
+      "side": 1,
+      "message": "The use cases are like b/148149387#comment7.\n\nI added a TODO here. This requires enabling some driver on the AP side first that sets a host event before suspend and after resume.\n\nSo far, it may consume more power to resume and then shortly suspend for modem paging.",
+      "parentUuid": "8b1defe8_520e60aa",
+      "range": {
+        "startLine": 785,
+        "startChar": 10,
+        "endLine": 785,
+        "endChar": 20
+      },
+      "revId": "2cec581de2ebdd749cc05324aef3f1bf8b157565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
