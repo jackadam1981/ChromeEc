@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "2c7c351b_1d446699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-20T10:23:48Z",
+      "side": 1,
+      "message": "After Because tcpm_get_cc() report the cc line real volt, any cc message change tcpm_get_cc() return status (if we transmit cc messages and tcpm_get_cc() at the same time). I think it\u0027s better enable/disable interrupt to avoid false positive then wakeup pd task and tcpm_get_cc(). ",
+      "revId": "54c6d4b44de1c32315aa6a71f11df4c2e12aac78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9448c5b_3b75c807",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
