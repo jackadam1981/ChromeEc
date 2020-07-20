@@ -46,6 +46,30 @@
       "revId": "9fe4559b5883393ddf4ce09abf57ca1d58340594",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09144ac3_8256354a",
+        "filename": "common/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-20T17:29:55Z",
+      "side": 1,
+      "message": "The CL:2306290 requires changing some FAFT tests which parse the `battery` output. Maybe not printing this new message is simpler. We can still see the mfg date result through sysfs.",
+      "parentUuid": "9f4f2fca_d4f220f9",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 49
+      },
+      "revId": "9fe4559b5883393ddf4ce09abf57ca1d58340594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
