@@ -62,6 +62,24 @@
       "revId": "160b6d40b92570d87859b480c94c837436b20114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4118cd13_d3bd612d",
+        "filename": "board/drawcia/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-07-20T10:07:55Z",
+      "side": 1,
+      "message": "I think this is no problem, because we use % to operation.",
+      "parentUuid": "02abd60b_52bd3c7f",
+      "revId": "160b6d40b92570d87859b480c94c837436b20114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
