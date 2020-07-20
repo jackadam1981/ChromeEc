@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "4f46be39_111f8aa7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-07-20T22:48:43Z",
+      "side": 1,
+      "message": "\u003e I\u0027m worried that IN_SUSPEND will be toggling during suspend\n\nRight... weren\u0027t we going to use the host commands for entering and leaving? The GPIO was supposed to be a last resort of... we\u0027re not in proper suspend yet and we\u0027re stuck somewhere, go to S0 so we log it and higher level software can make better decisions (like shutting down).",
+      "revId": "2cec581de2ebdd749cc05324aef3f1bf8b157565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "feb7c47a_e6bca1bd",
         "filename": "power/sc7180.c",
         "patchSetId": 1
