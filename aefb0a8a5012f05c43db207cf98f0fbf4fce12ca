@@ -34,6 +34,24 @@
       "revId": "aefb0a8a5012f05c43db207cf98f0fbf4fce12ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eebec2fe_2e4d55fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-20T17:45:09Z",
+      "side": 1,
+      "message": "AFAIK, no FAFT test relies the above CONFIG\u0027s. They are OK to be disabled.",
+      "parentUuid": "152accf1_fedeae38",
+      "revId": "aefb0a8a5012f05c43db207cf98f0fbf4fce12ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
