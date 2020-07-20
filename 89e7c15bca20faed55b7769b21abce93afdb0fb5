@@ -105,6 +105,24 @@
       "revId": "89e7c15bca20faed55b7769b21abce93afdb0fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d93c448_35bb44c3",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-07-20T07:49:44Z",
+      "side": 1,
+      "message": "Lock board ID 6 for support SYV PPC, if the board id used by SYV needs to be upgraded, it will be added again, just as SKU ID supports convertible.",
+      "parentUuid": "67081c02_bb1dc58a",
+      "revId": "89e7c15bca20faed55b7769b21abce93afdb0fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
