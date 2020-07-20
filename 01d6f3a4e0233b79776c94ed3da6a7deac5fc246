@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29427c6e_260904f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-20T21:50:58Z",
+      "side": 1,
+      "message": "why is this condition important? Would would just not let user proceed even if non of the resets is asserted.",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "01d6f3a4e0233b79776c94ed3da6a7deac5fc246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4825d65_d094476a",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-20T21:50:58Z",
+      "side": 1,
+      "message": "this is confusing: is \u0027host\u0027 an enum or a bit mask?\n\na more robust check would be\n\nhost \u0026\u003d ~USB_SPI_CUSTOM_RESET; (in the beginning of the function)\n\nif (host \u003d\u003d USB_SPI_AP)",
+      "range": {
+        "startLine": 271,
+        "startChar": 12,
+        "endLine": 271,
+        "endChar": 29
+      },
+      "revId": "01d6f3a4e0233b79776c94ed3da6a7deac5fc246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07ef58cb_0b3dfb79",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-20T21:50:58Z",
+      "side": 1,
+      "message": "can\u0027t the custom reset bit be set when programming the EC?",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 23
+      },
+      "revId": "01d6f3a4e0233b79776c94ed3da6a7deac5fc246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63e69d91_5835eb25",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-20T21:50:58Z",
+      "side": 1,
+      "message": "why s custom reset possible only when programming the AP?",
+      "range": {
+        "startLine": 351,
+        "startChar": 32,
+        "endLine": 351,
+        "endChar": 65
+      },
+      "revId": "01d6f3a4e0233b79776c94ed3da6a7deac5fc246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
