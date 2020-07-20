@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b608a5a_0e5d1bb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-20T19:12:08Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "655e4206238348a6b6cace2dce9a775eb32c1bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d045c51f_08ccda43",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-20T19:12:08Z",
+      "side": 1,
+      "message": "Use REG_GENERAL_CTLSEL_2DP_AND_USB3 as it is defined for this config.",
+      "range": {
+        "startLine": 947,
+        "startChar": 11,
+        "endLine": 948,
+        "endChar": 28
+      },
+      "revId": "655e4206238348a6b6cace2dce9a775eb32c1bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
