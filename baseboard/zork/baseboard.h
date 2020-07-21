@@ -332,7 +332,7 @@ void bc12_interrupt(enum gpio_signal signal);
 void ppc_interrupt(enum gpio_signal signal);
 #endif
 
-void pi3hdx1204_retimer_power(void);
+// void pi3hdx1204_retimer_power(void);
 __override_proto int check_hdmi_hpd_status(void);
 int board_get_temp(int idx, int *temp_k);
 

@@ -384,7 +384,7 @@ static void hdmi_hpd_handler(void)
 
 	gpio_set_level(GPIO_DP1_HPD, hpd);
 	ccprints("HDMI HPD %d", hpd);
-	pi3hdx1204_retimer_power();
+	// pi3hdx1204_retimer_power();
 }
 DECLARE_DEFERRED(hdmi_hpd_handler);
 
