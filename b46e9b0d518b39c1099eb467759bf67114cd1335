@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8be95080_1d8c3962",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T17:47:15Z",
+      "side": 0,
+      "message": "Don\u0027t we still need this?",
+      "range": {
+        "startLine": 863,
+        "startChar": 8,
+        "endLine": 863,
+        "endChar": 29
+      },
+      "revId": "b46e9b0d518b39c1099eb467759bf67114cd1335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
