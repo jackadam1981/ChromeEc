@@ -16,6 +16,24 @@
       "revId": "6bea087bf0802d698aaa1723767baa4bff28f9a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dff8921_bb4c2fbb",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-21T17:51:31Z",
+      "side": 1,
+      "message": "No. It\u0027s set to 0 in usb_spi_board_disable, so we can disable the AP/EC spi without touching the reset signals.",
+      "parentUuid": "e2562c31_01b32548",
+      "revId": "6bea087bf0802d698aaa1723767baa4bff28f9a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
