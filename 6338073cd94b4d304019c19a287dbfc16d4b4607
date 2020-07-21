@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fecaf80f_46661779",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-21T18:51:09Z",
+      "side": 1,
+      "message": "Tried on a trembyle PCO device and normal charging and thumb drive connections seem fine. Tried to connect a USB-C to DP for my 4K display and it would not connect. As soon as I backed at this one functions changes things went back to working.",
+      "parentUuid": "1a570174_b9466bd0",
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65272721_8d4d7326",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
