@@ -181,4 +181,11 @@ void charge_reset_stable_current(void);
  */
 void charge_reset_stable_current_us(uint64_t us);
 
+/**
+ * Check if the battery charging current is stable by examing the timestamp.
+ *
+ * @return 1 if stable timestamp expired, 0 otherwise.
+ */
+int charge_is_current_stable(void);
+
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
