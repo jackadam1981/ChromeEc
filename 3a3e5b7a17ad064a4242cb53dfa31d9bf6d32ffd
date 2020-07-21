@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06b8a29d_fad4b735",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:23:27Z",
+      "side": 1,
+      "message": "Will these macros be all used and verified in the series?",
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b4cd285_59397244",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:23:27Z",
+      "side": 1,
+      "message": "ifdef",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6005c3a7_68d9ab8e",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:23:27Z",
+      "side": 1,
+      "message": "Can you use a macro for BASE+Offset? (e.g. STM32_PERIPH(0x00010000UL))",
+      "range": {
+        "startLine": 121,
+        "startChar": 37,
+        "endLine": 121,
+        "endChar": 69
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b09d492_2aee58f1",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:23:27Z",
+      "side": 1,
+      "message": "Can you remove?",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "705a81ed_779b25a5",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:23:27Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 126,
+        "startChar": 37,
+        "endLine": 126,
+        "endChar": 69
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c408d89c_41dd241f",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:23:27Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c05b00_34488abe",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:23:27Z",
+      "side": 1,
+      "message": "Can you scan the file to find these simple style violation?",
+      "range": {
+        "startLine": 155,
+        "startChar": 36,
+        "endLine": 155,
+        "endChar": 37
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
