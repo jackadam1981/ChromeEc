@@ -144,6 +144,30 @@
       "revId": "2cec581de2ebdd749cc05324aef3f1bf8b157565",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99edf506_823734a3",
+        "filename": "power/sc7180.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1112825
+      },
+      "writtenOn": "2020-07-21T01:16:32Z",
+      "side": 1,
+      "message": "Another reason we can\u0027t implement/activate the timer yet is that the ToT kernel doesn\u0027t toggle AP_SUSPEND yet in S3.",
+      "parentUuid": "b1e0dcc8_7d473838",
+      "range": {
+        "startLine": 785,
+        "startChar": 10,
+        "endLine": 785,
+        "endChar": 20
+      },
+      "revId": "2cec581de2ebdd749cc05324aef3f1bf8b157565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

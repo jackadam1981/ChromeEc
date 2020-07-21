@@ -16,6 +16,41 @@
       "revId": "2e9f02a1d1e8fe2da69f2e768798ef088a56648d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04b974a4_5629bad5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112825
+      },
+      "writtenOn": "2020-07-21T01:16:32Z",
+      "side": 1,
+      "message": "IIUC such a wakeup would be considered a \u0027dark resume\u0027 and \"powerd will start a timer for next suspend based on the registered Dark Resume suspend delays\" ( https://chromium.googlesource.com/chromiumos/platform2/+/refs/heads/master/power_manager/docs/dark_resume.md#powerd).",
+      "parentUuid": "5950ae29_d1530a1c",
+      "revId": "2e9f02a1d1e8fe2da69f2e768798ef088a56648d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e26060d_69801e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1112825
+      },
+      "writtenOn": "2020-07-21T01:16:32Z",
+      "side": 1,
+      "message": "LGTM w/ the TODO",
+      "revId": "2e9f02a1d1e8fe2da69f2e768798ef088a56648d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
