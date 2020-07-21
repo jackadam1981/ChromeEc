@@ -128,6 +128,24 @@
       "revId": "160b6d40b92570d87859b480c94c837436b20114",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31c3781_73939f75",
+        "filename": "board/drawcia/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-21T02:54:36Z",
+      "side": 1,
+      "message": "oh! yes, it is MOD not AND. My fault.",
+      "parentUuid": "4118cd13_d3bd612d",
+      "revId": "160b6d40b92570d87859b480c94c837436b20114",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
