@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e536a6d_94ec64de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-21T23:55:07Z",
+      "side": 1,
+      "message": "How much difference between fusb302 and fusb302b? Can you use the existing fusb302 driver, with some modification?\n\nWhy not use the TCPM stack? Can it support 3 ports  and set the dualrole of the alternative port to force-sink?",
+      "revId": "dbcab6344e3ca08d24a88ebe39128dd73cf7e331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
