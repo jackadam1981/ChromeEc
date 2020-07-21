@@ -17,6 +17,7 @@ test-list-y=\
        crc32 \
        flash_physical \
        flash_write_protect \
+       fpsensor_hw \
        mpu \
        mutex \
        pingpong \
