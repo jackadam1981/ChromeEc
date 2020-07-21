@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "02301c9b_1da54b8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-07-21T11:06:25Z",
+      "side": 1,
+      "message": "Understood, I will update patchset",
+      "parentUuid": "c2084b4a_5fc79487",
+      "revId": "9d06d44ec8a3ed9b5bc1c14d74c7137c317b0f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71bb21b2_5639353a",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 3
@@ -100,6 +118,30 @@
       "writtenOn": "2020-07-21T10:30:25Z",
       "side": 1,
       "message": "May I know where is the spec for this statement? Thanks.",
+      "range": {
+        "startLine": 85,
+        "startChar": 37,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "9d06d44ec8a3ed9b5bc1c14d74c7137c317b0f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c0a889_2f244304",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-07-21T11:06:25Z",
+      "side": 1,
+      "message": "I just copied from PS8705. I would like to confirm with Parade later.",
+      "parentUuid": "9249e7c4_b5463a36",
       "range": {
         "startLine": 85,
         "startChar": 37,
