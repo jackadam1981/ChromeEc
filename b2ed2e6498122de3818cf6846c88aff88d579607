@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b4f98dd_06d33850",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-21T01:14:35Z",
+      "side": 1,
+      "message": "Sorry I read the \"you already have a file scope variable for this - does it have to be a parameter also?\" without looking at the context and thought you meant I should remove the state variable and use the file scope variable instead.\n\nShould I go back?",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 27
+      },
+      "revId": "b2ed2e6498122de3818cf6846c88aff88d579607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
