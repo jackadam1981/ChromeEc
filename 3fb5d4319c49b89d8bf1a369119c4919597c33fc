@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "785f4f68_fd76bcfe",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-21T01:10:51Z",
+      "side": 1,
+      "message": "AP RO verification should not use the usb_spi setting",
+      "parentUuid": "8d01280c_64117495",
+      "range": {
+        "startLine": 151,
+        "startChar": 38,
+        "endLine": 151,
+        "endChar": 50
+      },
+      "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd8185f6_45c2771f",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4015380d_7dd16f33",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-21T01:10:51Z",
+      "side": 1,
+      "message": "This doesn\u0027t fallthrough anymore",
+      "parentUuid": "bd8185f6_45c2771f",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 34
+      },
+      "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -108,6 +156,30 @@
       "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a121d84_aa84e3d4",
+        "filename": "chip/g/usb_spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-21T01:10:51Z",
+      "side": 1,
+      "message": "filed a bug to track that b/161753762",
+      "parentUuid": "d18a6bdd_38b757a5",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 18
+      },
+      "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

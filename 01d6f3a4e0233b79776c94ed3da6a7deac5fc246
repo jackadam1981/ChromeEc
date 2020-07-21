@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "6a9cbbd0_7d8f5227",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-21T01:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4dde32a_ba9ee59d",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "01d6f3a4e0233b79776c94ed3da6a7deac5fc246",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4825d65_d094476a",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
