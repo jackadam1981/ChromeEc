@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0537000b_5f18bc8a",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-21T20:54:05Z",
+      "side": 1,
+      "message": "In this false alarm case, this return has no way to signal the task to escape the power_button_wait_for_release() loop. The below HOOK_POWER_BUTTON_CHANGE won\u0027t be called, which is supposed to wake the task and breaks the loop.\n\nThe b/161652942 happens to hit this bug.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 9
+      },
+      "revId": "6136b1fb09d44410dc8a591abf51d16e5eca3966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
