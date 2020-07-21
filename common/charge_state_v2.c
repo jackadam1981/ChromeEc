@@ -2399,6 +2399,11 @@ void charge_reset_stable_current_us(uint64_t us)
 	stable_current = CHARGE_CURRENT_UNINITIALIZED;
 }
 
+int charge_is_current_stable(void)
+{
+	return get_time().val >= stable_ts.val;
+}
+
 void charge_reset_stable_current(void)
 {
 	/* it takes 8 to 10 seconds to stabilize battery current in practice */

@@ -167,4 +167,6 @@ void charge_reset_stable_current(void);
  */
 void charge_reset_stable_current_us(uint64_t us);
 
+int charge_is_current_stable(void);
+
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
