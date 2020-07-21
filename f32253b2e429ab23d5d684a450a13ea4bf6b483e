@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5c8e1ae_bef6551f",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T20:21:27Z",
+      "side": 1,
+      "message": "? I think this has been muscle-copied from somewhere.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 42
+      },
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cc42ea8_be946c1b",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T20:21:27Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 20
+      },
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e4f8f1_dd9dfebb",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T20:21:27Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 20
+      },
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa84c2cd_5f10b574",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T20:21:27Z",
+      "side": 1,
+      "message": "nit: Readable if defined by KHZ and MHZ:\n\n#define KHZ(x)\t\t\t\t((x) * 1000)",
+      "range": {
+        "startLine": 30,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873ed009_41ba4a1c",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T20:21:27Z",
+      "side": 1,
+      "message": "clock-stm32f4 has the same routine. Can you merge them?",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdbf7e9e_5521033a",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T20:21:27Z",
+      "side": 1,
+      "message": "Not used.",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8559c844_ed7bdde6",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T20:21:27Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b325f7b_39605f47",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T20:21:27Z",
+      "side": 1,
+      "message": "new line",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 5
+      },
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c5fc2d_7ca19dd1",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T20:21:27Z",
+      "side": 1,
+      "message": "Print error or assert?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 5
+      },
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d65de9_48658fcf",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T20:21:27Z",
+      "side": 1,
+      "message": "} else {\n  /* assert or print error */\n}",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 2
+      },
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
