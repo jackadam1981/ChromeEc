@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "836337cf_2ccc61b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-21T00:34:13Z",
+      "side": 1,
+      "message": "One nit (CIL) and one question about names: If we are to add different types of custom reset behavior in the future, shall we prepare for that from the beginning and instead of \"custom_rst\u003dtrue\" use something like \"custom_rst\u003dno_rst\" (assuming it is \"custom_rst\u003dfalse\" if nothing is passed, and later we can add something like \"custom_rst\u003dsys_only\"). maybe not even custom_rst, but something like custom_prep since it may be more than operating just RST lines? or if we are talking about resets, then custom_rst\u003dtrue -\u003e reset\u003dfalse; custom_rst\u003dfalse -\u003e reset\u003ddefault.",
+      "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd8185f6_45c2771f",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-21T00:34:13Z",
+      "side": 1,
+      "message": "nit: add Fallthrough comment",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 34
+      },
+      "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
