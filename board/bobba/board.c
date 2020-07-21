@@ -441,6 +441,8 @@ const struct ppc_config_t ppc_syv682x_port1 = {
 static void board_setup_ppc(void)
 {
 	if (support_syv_ppc()) {
+		gpio_set_flags(GPIO_USB_PD_C0_INT_ODL, GPIO_INT_BOTH);
+		gpio_set_flags(GPIO_USB_PD_C1_INT_ODL, GPIO_INT_BOTH);
 		memcpy(&ppc_chips[USB_PD_PORT_TCPC_0],
 		       &ppc_syv682x_port0,
 		       sizeof(struct ppc_config_t));
