@@ -143,6 +143,7 @@ flash_physical-y=flash_physical.o
 flash_write_protect-y=flash_write_protect.o
 fpsensor-y=fpsensor.o
 fpsensor_crypto-y=fpsensor_crypto.o
+fpsensor_hw-y=fpsensor_hw.o
 fpsensor_state-y=fpsensor_state.o
 gyro_cal-y=gyro_cal.o
 hooks-y=hooks.o
