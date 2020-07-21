@@ -16,6 +16,13 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+static uint8_t vbus_en[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+int board_vbus_source_enabled(int port)
+{
+	return vbus_en[port];
+}
+
 int pd_check_vconn_swap(int port)
 {
 	/* Allow VCONN swaps if the AP is on */
@@ -29,6 +36,8 @@ void pd_power_supply_reset(int port)
 
 	/* Disable VBUS */
 	tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW);
+
+	vbus_en[port] = 0;
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 	/* Give back the current quota we are no longer using */
@@ -59,6 +68,8 @@ int pd_set_power_supply_ready(int port)
 	rv = tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_HIGH);
 	if (rv)
 		return rv;
+
+	vbus_en[port] = 1;
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 	/* Ensure we advertise the proper available current quota */
