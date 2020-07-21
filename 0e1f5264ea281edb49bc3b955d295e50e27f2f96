@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7d5c467_d1f0990c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:44:59Z",
+      "side": 1,
+      "message": "(Talking to myself) This is a pretty cluttered file. It\u0027s probably time to split them to system-stm32f4.c, system-stm32h7.c, etc. IMHO, the readability is sacrificed too much for code sharing (which doesn\u0027t look very effective).",
+      "revId": "0e1f5264ea281edb49bc3b955d295e50e27f2f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
