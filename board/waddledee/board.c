@@ -386,6 +386,9 @@ int board_set_active_charge_port(int port)
 		}
 	}
 
+	/* Wake the charger task so it knows there's something to charge from */
+	task_wake(TASK_ID_CHARGER);
+
 	return EC_SUCCESS;
 }
 
