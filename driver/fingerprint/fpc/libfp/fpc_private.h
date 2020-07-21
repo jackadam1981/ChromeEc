@@ -101,4 +101,8 @@ int fp_sensor_open(void *ctx, uint32_t ctx_size);
  */
 const char *fp_sensor_get_version(void);
 
+/* Read the HWID from the sensor. */
+int fpc_check_hwid(void);
+
 #endif /* __CROS_EC_FPC_PRIVATE_H */
+
