@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "057c61eb_c44ab8b4",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-07-21T11:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71bb21b2_5639353a",
+      "revId": "9d06d44ec8a3ed9b5bc1c14d74c7137c317b0f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10677b65_9994806e",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 3
@@ -142,6 +160,30 @@
       "side": 1,
       "message": "I just copied from PS8705. I would like to confirm with Parade later.",
       "parentUuid": "9249e7c4_b5463a36",
+      "range": {
+        "startLine": 85,
+        "startChar": 37,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "9d06d44ec8a3ed9b5bc1c14d74c7137c317b0f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "141f517d_babf503f",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-07-21T11:43:15Z",
+      "side": 1,
+      "message": "Confirmed with Parade, this is MTP code default value.",
+      "parentUuid": "52c0a889_2f244304",
       "range": {
         "startLine": 85,
         "startChar": 37,
