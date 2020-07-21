@@ -14,7 +14,7 @@
 /* PD Host command timeout */
 #define PD_HOST_COMMAND_TIMEOUT_US SECOND
 
-#ifdef CONFIG_USB_PD_PORT_COUNT
+#ifdef CONFIG_USB_PD_PORT_MAX_COUNT
 /*
  * Define PD_PORT_TO_TASK_ID() and TASK_ID_TO_PD_PORT() macros to
  * go between PD port number and task ID. Assume that TASK_ID_PD_C0 is the
@@ -27,7 +27,7 @@
 #define PD_PORT_TO_TASK_ID(port) -1 /* dummy task ID */
 #define TASK_ID_TO_PD_PORT(id) 0
 #endif /* CONFIG_COMMON_RUNTIME */
-#endif /* CONFIG_USB_PD_PORT_COUNT */
+#endif /* CONFIG_USB_PD_PORT_MAX_COUNT */
 
 enum pd_rx_errors {
 	PD_RX_ERR_INVAL = -1,           /* Invalid packet */
@@ -1894,8 +1894,8 @@ static inline int pd_vdm_get_log_entry(uint32_t *payload) { return 0; }
 
 /* DisplayPort Alternate Mode */
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-extern int dp_flags[CONFIG_USB_PD_PORT_COUNT];
-extern uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
+extern int dp_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+extern uint32_t dp_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 /**
  * Configure the pins used for DisplayPort Alternate Mode into safe state.

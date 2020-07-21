@@ -25,8 +25,8 @@ __override void pd_execute_data_swap(int port, int data_role)
 	/* Do nothing */
 }
 
-static uint8_t vbus_en[CONFIG_USB_PD_PORT_COUNT];
-static uint8_t vbus_rp[CONFIG_USB_PD_PORT_COUNT] = {TYPEC_RP_1A5, TYPEC_RP_1A5};
+static uint8_t vbus_en[CONFIG_USB_PD_PORT_MAX_COUNT];
+static uint8_t vbus_rp[CONFIG_USB_PD_PORT_MAX_COUNT] = {TYPEC_RP_1A5, TYPEC_RP_1A5};
 
 static void board_vbus_update_source_current(int port)
 {
@@ -118,7 +118,7 @@ int pd_snk_is_vbus_provided(int port)
 /* ----------------- Vendor Defined Messages ------------------ */
 
 
-extern uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
+extern uint32_t dp_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 __override int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);

@@ -146,7 +146,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, baseboard_chipset_shutdown,
 
 /******************************************************************************/
 /* USB-C TPCP Configuration */
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
 		.i2c_host_port = I2C_PORT_TCPC0,
 		.i2c_slave_addr = AN7447_TCPC0_I2C_ADDR,
@@ -165,7 +165,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 
 /******************************************************************************/
 /* USB-C PPC Configuration */
-struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
+struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
 		.i2c_port = I2C_PORT_PPC0,
 		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
@@ -180,7 +180,7 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
 		.driver = &anx7447_usb_mux_driver,
 		.hpd_update = &anx7447_tcpc_update_hpd_status,
@@ -295,7 +295,7 @@ void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
 int board_set_active_charge_port(int port)
 {
 	int is_valid_port = (port >= 0 &&
-			    port < CONFIG_USB_PD_PORT_COUNT);
+			    port < CONFIG_USB_PD_PORT_MAX_COUNT);
 	int i;
 
 	if (!is_valid_port && port != CHARGE_PORT_NONE)

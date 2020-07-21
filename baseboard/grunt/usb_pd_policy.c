@@ -141,7 +141,7 @@ __override int svdm_dp_config(int port, uint32_t *payload)
  * timestamp of the next possible toggle to ensure the 2-ms spacing
  * between IRQ_HPD.
  */
-static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_COUNT];
+static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
 __override void svdm_dp_post_config(int port)

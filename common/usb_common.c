@@ -269,8 +269,8 @@ __overridable const struct svdm_response svdm_rsp = {
 	.modes = NULL,
 };
 
-int dp_flags[CONFIG_USB_PD_PORT_COUNT];
-uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
+int dp_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+uint32_t dp_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 __overridable void svdm_safe_dp_mode(int port)
 {
@@ -380,9 +380,9 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
  * between IRQ_HPD.
  */
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
-static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_COUNT];
+static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 #else
-uint64_t hpd_deadline[CONFIG_USB_PD_PORT_COUNT];
+uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 #endif
 #ifndef PORT_TO_HPD
 #define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)

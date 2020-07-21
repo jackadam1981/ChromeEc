@@ -84,7 +84,7 @@ const struct power_signal_info power_signal_list[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
-const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -125,7 +125,7 @@ void tcpc_alert_event(enum gpio_signal signal)
 	schedule_deferred_pd_interrupt(port);
 }
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
 		.driver = &anx74xx_tcpm_usb_mux_driver,
 		.hpd_update = &anx74xx_tcpc_update_hpd_status,
@@ -161,7 +161,7 @@ int ppc_get_alert_status(int port)
 
 
 /* BC 1.2 chip Configuration */
-const struct max14637_config_t max14637_config[CONFIG_USB_PD_PORT_COUNT] = {
+const struct max14637_config_t max14637_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_ANX74XX] = {
 		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON_L,
 		.chg_det_pin = GPIO_USB_C0_BC12_CHG_DET,
