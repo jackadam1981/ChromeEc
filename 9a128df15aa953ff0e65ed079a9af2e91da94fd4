@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b97e04e8_343afe83",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:35:22Z",
+      "side": 1,
+      "message": "Can you add a comment about the difference between g4 and g41xb? Can you share the TRM?",
+      "range": {
+        "startLine": 6,
+        "startChar": 18,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fd23d3c_f0d6969a",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:35:22Z",
+      "side": 1,
+      "message": "Unused (at least in this patch). Can you remove them or move them to include/common.h?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e724f215_1db523e2",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:35:22Z",
+      "side": 1,
+      "message": "New line",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 3
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3be505a4_ac5855dc",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:35:22Z",
+      "side": 1,
+      "message": "Can you reword this?",
+      "range": {
+        "startLine": 25,
+        "startChar": 50,
+        "endLine": 25,
+        "endChar": 57
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4637d88b_b8ffab9f",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:35:22Z",
+      "side": 1,
+      "message": "nit: Please remove.",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 44
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8445dd7d_97ecbf7f",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:35:22Z",
+      "side": 1,
+      "message": ")",
+      "range": {
+        "startLine": 51,
+        "startChar": 70,
+        "endLine": 51,
+        "endChar": 71
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6600541c_1b7d036b",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-21T19:35:22Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
