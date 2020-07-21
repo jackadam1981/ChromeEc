@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "385d03dc_411deb42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-07-21T16:56:44Z",
+      "side": 1,
+      "message": "CONFIG_PPC_DEDICATED_INT can avoid some polling of the SYV682 registers, if you have a dedicated interrupt this should be defined.",
+      "revId": "0b6b1c268fa9af882bbecfe07a58e23cafdc6177",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
