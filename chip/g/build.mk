@@ -205,6 +205,22 @@ NODE_JSON :=  $(shell sed -i \
 endif  # CHIP_MK_INCLUDED_ONCE defined
 endif  # H1_DEVIDS defined
 
+# Modify the manifest tag field to match the board name. This is necessary for
+# perosnalization to succeed.
+#
+# Personalization infrastructure uses hslt_XXX board names with the underscore
+# replaced with a space and the part after undersore (if any), capitalized.
+# Edit the board name and express it in hex:
+HEX_NAME := $(shell echo $(BOARD) | /usr/bin/awk -F_ ' \
+	 {if (NF == 2) \
+	     { print($$1" "toupper($$2)) } \
+	   else \
+	     { print } \
+	  }' | xxd -ps)
+# This many zeros in the tag field need to be replaced.
+HEX_LEN  := $(shell printf $(HEX_NAME)| wc -c)
+$(shell sed -i "s/tag\": \"0\{$(HEX_LEN)\}/tag\": \"$(HEX_NAME)/" \
+       ${SIGNER_MANIFEST})
 
 # This file is included twice by the Makefile, once to determine the CHIP info
 # # and then again after defining all the CONFIG_ and HAS_TASK variables. We use
