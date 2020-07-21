@@ -134,8 +134,8 @@
  * The PS8815 TCPC in particular was measured to take 8-10 ms from low power
  * exit before the first update to CC_STATUS.
  */
-#define PD_LPM_EXIT_DEBOUNCE_US (25*MSEC)
 
+#define PD_LPM_EXIT_DEBOUNCE_US (25*MSEC)
 /*
  * The TypeC state machine uses this bit to disable/enable PD
  * This bit corresponds to bit-0 of pd_disabled_mask
@@ -2883,10 +2883,13 @@ static void tc_drp_auto_toggle_run(const int port)
 #endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE */
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int lpm_exit_delay = PD_LPM_EXIT_DEBOUNCE_US / MSEC;
+
 static void tc_low_power_mode_entry(const int port)
 {
 	print_current_state(port);
 	tc[port].low_power_time = get_time().val + PD_LPM_DEBOUNCE_US;
+	tc[port].low_power_exit_time = 0;
 }
 
 static void tc_low_power_mode_run(const int port)
@@ -2897,7 +2900,7 @@ static void tc_low_power_mode_run(const int port)
 		tc_start_event_loop(port);
 		if (tc[port].low_power_exit_time == 0) {
 			tc[port].low_power_exit_time = now
-				+ PD_LPM_EXIT_DEBOUNCE_US;
+				+ (lpm_exit_delay * MSEC);
 		} else if (now > tc[port].low_power_exit_time) {
 			CPRINTS("C%d: Exit Low Power Mode", port);
 			check_drp_connection(port);
@@ -2919,6 +2922,25 @@ static void tc_low_power_mode_run(const int port)
 		tc[port].low_power_exit_time = 0;
 	}
 }
+
+static int command_lpm(int argc, char **argv)
+{
+	int delay;
+	char *e;
+
+	if (argc > 1) {
+		delay = strtoi(argv[1], &e, 10);
+		if (*e)
+			return EC_ERROR_INVAL;
+
+		lpm_exit_delay = delay;
+	}
+
+	ccprintf("LPM exit delay = %d\n", lpm_exit_delay);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(lpm, command_lpm,
+	"[delay]", "Get/set the LPM exit delay");
 #endif /* CONFIG_USB_PD_TCPC_LOW_POWER */
 
 
