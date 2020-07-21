@@ -34,6 +34,24 @@
       "revId": "344c815877363277c71c7524355b474ae5049571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042a03e0_02a40adb",
+        "filename": "board/berknip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-21T05:54:01Z",
+      "side": 0,
+      "message": "Does it cause any problem to keep using thermal_thermistor settings for TEMP_SENSOR_CHARGER (and update later if needed)?",
+      "parentUuid": "67a32506_97539ab6",
+      "revId": "344c815877363277c71c7524355b474ae5049571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
