@@ -46,6 +46,30 @@
       "revId": "b2ed2e6498122de3818cf6846c88aff88d579607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bff09fb_2ff8fa75",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-21T01:27:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db41933b_3131b6e5",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 27
+      },
+      "revId": "b2ed2e6498122de3818cf6846c88aff88d579607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

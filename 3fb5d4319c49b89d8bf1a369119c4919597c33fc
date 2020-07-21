@@ -136,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "cd27bf69_a36d166e",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-21T01:27:07Z",
+      "side": 1,
+      "message": "I don\u0027t need to change this anymore, because we\u0027re using the file scope variable.",
+      "parentUuid": "29186668_5d69058e",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d18a6bdd_38b757a5",
         "filename": "chip/g/usb_spi.h",
         "patchSetId": 3
