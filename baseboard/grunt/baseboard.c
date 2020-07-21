@@ -324,7 +324,7 @@ struct ppc_config_t ppc_chips[] = {
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
-void ppc_interrupt(enum gpio_signal signal)
+__overridable void ppc_interrupt(enum gpio_signal signal)
 {
 	int port = (signal == GPIO_USB_C0_SWCTL_INT_ODL) ? 0 : 1;
 

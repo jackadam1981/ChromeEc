@@ -29,6 +29,9 @@
 #define CONFIG_BATTERY_MEASURE_IMBALANCE
 #define CONFIG_BATTERY_BQ4050
 
+/* Additional PPC second source */
+#define CONFIG_USBC_PPC_SYV682X
+
 #ifndef __ASSEMBLER__
 
 enum pwm_channel {

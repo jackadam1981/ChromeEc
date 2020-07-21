@@ -5,17 +5,26 @@
 
 /* Careena board-specific configuration */
 
+#include "adc.h"
 #include "button.h"
+#include "driver/ppc/sn5s330.h"
+#include "driver/ppc/syv682x.h"
 #include "extpower.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "stdbool.h"
 #include "switch.h"
+#include "usbc_ppc.h"
+#include "util.h"
 
 #include "gpio_list.h"
+
+static bool support_syv_ppc;
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,
@@ -62,3 +71,45 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+__override void ppc_interrupt(enum gpio_signal signal)
+{
+	int port = (signal == GPIO_USB_C0_SWCTL_INT_ODL) ? 0 : 1;
+
+	if (support_syv_ppc)
+		syv682x_interrupt(port);
+	else
+		sn5s330_interrupt(port);
+}
+
+static void board_is_support_syv_ppc(void)
+{
+	support_syv_ppc = ((board_get_version() >= 6)
+					  && gpio_get_level(GPIO_PPC_ID));
+}
+DECLARE_HOOK(HOOK_INIT, board_is_support_syv_ppc, HOOK_PRIO_INIT_ADC + 1);
+
+struct ppc_config_t ppc_syv682x_port0 = {
+		.i2c_port = I2C_PORT_TCPC0,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+};
+
+struct ppc_config_t ppc_syv682x_port1 = {
+		.i2c_port = I2C_PORT_TCPC1,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+};
+
+static void board_setup_ppc(void)
+{
+	if (support_syv_ppc) {
+		memcpy(&ppc_chips[0],
+		       &ppc_syv682x_port0,
+		       sizeof(struct ppc_config_t));
+		memcpy(&ppc_chips[1],
+		       &ppc_syv682x_port1,
+		       sizeof(struct ppc_config_t));
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_setup_ppc, HOOK_PRIO_INIT_I2C + 2);
