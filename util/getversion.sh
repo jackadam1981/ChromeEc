@@ -101,6 +101,13 @@ main() {
     (*_fp)
       dir_list+=( ./private )
       ;;
+    (*)
+      # The set of private-cr53 boards could change, let's detect all possible
+      # variants at run time.
+      if ls -d private-cr53/board/* | grep -wq ${BOARD}; then
+        dir_list+=( ./private-cr53 ../../third_party/cryptoc )
+      fi
+      ;;
   esac
 
   # Create a combined version string for all component directories.
