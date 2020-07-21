@@ -29,20 +29,6 @@ enum mock_connect_result {
 	MOCK_CC_WE_ARE_SNK = 1,
 };
 
-__maybe_unused static void mock_set_cc(enum mock_connect_result cr,
-	enum mock_cc_state cc1, enum mock_cc_state cc2)
-{
-	mock_tcpci_set_reg(TCPC_REG_CC_STATUS,
-		TCPC_REG_CC_STATUS_SET(cr, cc1, cc2));
-}
-
-__maybe_unused static void mock_set_role(int drp, enum tcpc_rp_value rp,
-	enum tcpc_cc_pull cc1, enum tcpc_cc_pull cc2)
-{
-	mock_tcpci_set_reg(TCPC_REG_ROLE_CTRL,
-		TCPC_REG_ROLE_CTRL_SET(drp, rp, cc1, cc2));
-}
-
 static int mock_alert_count;
 
 __maybe_unused static void mock_set_alert(int alert)
@@ -50,6 +36,21 @@ __maybe_unused static void mock_set_alert(int alert)
 	mock_tcpci_set_reg(TCPC_REG_ALERT, alert);
 	mock_alert_count = 1;
 	schedule_deferred_pd_interrupt(PORT0);
+}
+
+__maybe_unused static void mock_set_cc(enum mock_connect_result cr,
+	enum mock_cc_state cc1, enum mock_cc_state cc2)
+{
+	mock_tcpci_set_reg(TCPC_REG_CC_STATUS,
+		TCPC_REG_CC_STATUS_SET(cr, cc1, cc2));
+	mock_set_alert(TCPC_REG_ALERT_CC_STATUS);
+}
+
+__maybe_unused static void mock_set_role(int drp, enum tcpc_rp_value rp,
+	enum tcpc_cc_pull cc1, enum tcpc_cc_pull cc2)
+{
+	mock_tcpci_set_reg(TCPC_REG_ROLE_CTRL,
+		TCPC_REG_ROLE_CTRL_SET(drp, rp, cc1, cc2));
 }
 
 uint16_t tcpc_get_alert_status(void)
@@ -99,7 +100,6 @@ __maybe_unused static int test_connect_as_sink(void)
 
 	/* Simulate a non-PD power supply being plugged in. */
 	mock_set_cc(MOCK_CC_WE_ARE_SNK, MOCK_CC_SNK_OPEN, MOCK_CC_SNK_RP_3_0);
-	mock_set_alert(TCPC_REG_ALERT_CC_STATUS);
 
 	task_wait_event(50 * MSEC);
 
@@ -140,6 +140,13 @@ void before_test(void)
 {
 	mock_usb_mux_reset();
 	mock_tcpci_reset();
+
+	/*
+	 * TCPCI only reads CC_STATUS register following an ALERT.CCStatus.
+	 * Anytime the CC_STATUS register is changed, the ALERT.CCStatus must
+	 * also be triggered.
+	 */
+	mock_set_alert(TCPC_REG_ALERT_CC_STATUS);
 
 	/* Restart the PD task and let it settle */
 	task_set_event(TASK_ID_PD_C0, TASK_EVENT_RESET_DONE, 0);
