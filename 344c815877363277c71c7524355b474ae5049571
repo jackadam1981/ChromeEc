@@ -16,6 +16,24 @@
       "revId": "344c815877363277c71c7524355b474ae5049571",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67a32506_97539ab6",
+        "filename": "board/berknip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-07-21T02:51:32Z",
+      "side": 0,
+      "message": "Currently our thermal guy don\u0027t provide thermal setting for charger portion.\nThere might be another CL update for next phase.",
+      "parentUuid": "5868c2ab_daebd6f4",
+      "revId": "344c815877363277c71c7524355b474ae5049571",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
