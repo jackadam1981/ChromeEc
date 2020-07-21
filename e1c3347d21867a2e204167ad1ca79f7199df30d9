@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "514ba74d_eabb5696",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-21T12:09:37Z",
+      "side": 1,
+      "message": "* Generally looks good to me except for some comments so +1 first.\n* Remind that if we would like to do more works to merge the similar codes / functions then would suggest to do it out of this CL. So we focus on supporting PS8755 first.",
+      "revId": "e1c3347d21867a2e204167ad1ca79f7199df30d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4558b583_85aefdb2",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-21T12:09:37Z",
+      "side": 1,
+      "message": "Looks like this will not be defined in case of PS8755?",
+      "range": {
+        "startLine": 357,
+        "startChar": 9,
+        "endLine": 357,
+        "endChar": 38
+      },
+      "revId": "e1c3347d21867a2e204167ad1ca79f7199df30d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6017b7c_4b7e7fa4",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-21T12:09:37Z",
+      "side": 1,
+      "message": "Is this also for PS8755?",
+      "revId": "e1c3347d21867a2e204167ad1ca79f7199df30d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
