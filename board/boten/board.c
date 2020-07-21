@@ -190,7 +190,18 @@ uint16_t tcpc_get_alert_status(void)
 
 int extpower_is_present(void)
 {
-	return pd_check_vbus_level(0, VBUS_PRESENT);
+	/*
+	 * The charger will indicate VBUS presence if we're sourcing 5V,
+	 * so exclude such ports.
+	 */
+	int usb_c_extpower_present;
+
+	if (pd_get_power_role(0) == PD_ROLE_SOURCE)
+		usb_c_extpower_present = 0;
+	else
+		usb_c_extpower_present = pd_check_vbus_level(0, VBUS_PRESENT);
+
+	return usb_c_extpower_present;
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
