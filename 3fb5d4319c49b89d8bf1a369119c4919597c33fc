@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "8d01280c_64117495",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-21T00:38:46Z",
+      "side": 1,
+      "message": "you already have a file scope variable for this - does it have to be a parameter also?",
+      "range": {
+        "startLine": 151,
+        "startChar": 38,
+        "endLine": 151,
+        "endChar": 50
+      },
+      "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd8185f6_45c2771f",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 3
@@ -35,6 +58,52 @@
         "startChar": 2,
         "endLine": 345,
         "endChar": 34
+      },
+      "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29186668_5d69058e",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-21T00:38:46Z",
+      "side": 1,
+      "message": "what if the input was just a pointer to config-\u003estate, then usb_spi_board_enalbe() would have both enabled_host and custom_reset fields",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d18a6bdd_38b757a5",
+        "filename": "chip/g/usb_spi.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-21T00:38:46Z",
+      "side": 1,
+      "message": "maybe all these fields should be uint8_t just to save some space. Under a separate patch anyways.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 18
       },
       "revId": "3fb5d4319c49b89d8bf1a369119c4919597c33fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
