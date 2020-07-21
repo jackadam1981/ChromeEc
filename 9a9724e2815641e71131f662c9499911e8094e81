@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "491df77e_7b168796",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-21T04:25:27Z",
+      "side": 1,
+      "message": "here and in line 190: I thought we agreed that there is no need to pass this parameter as its value is the same as usb_spi_custom_reset?",
+      "range": {
+        "startLine": 151,
+        "startChar": 30,
+        "endLine": 151,
+        "endChar": 50
+      },
+      "revId": "9a9724e2815641e71131f662c9499911e8094e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
