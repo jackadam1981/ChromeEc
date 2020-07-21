@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "811cfd25_dba0f117",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-07-21T09:58:08Z",
+      "side": 1,
+      "message": "I have tried only add 413/414 and it already can serve interrupt immediately.(both rising and falling)\nDo we still need CONFIG_USBC_PPC_DEDICATED_INT?",
+      "range": {
+        "startLine": 414,
+        "startChar": 40,
+        "endLine": 414,
+        "endChar": 53
+      },
+      "revId": "6a570f093fcfe4147e922b131bafbe6970e81a6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
