@@ -82,6 +82,7 @@ main() {
   local gitdate
   local global_dirty
   local most_recent_file
+  local root
   local timestamp
   local tool_ver
   local values
@@ -100,6 +101,14 @@ main() {
       ;;
     (*_fp)
       dir_list+=( ./private )
+      ;;
+    (*)
+      # For private-crX boards add their git root and cryptoc.
+      for root in private-cr5*; do
+        if [[ -n ${BOARD} && -d "${root}/board/${BOARD}" ]]; then
+          dir_list+=( "${root}" ../../third_party/cryptoc )
+        fi
+      done
       ;;
   esac
 
