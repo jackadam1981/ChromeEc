@@ -118,6 +118,30 @@
       "revId": "2b4244ed830e1233fcac2092ead65f9b9be98a27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "581fc10a_ed5b34e5",
+        "filename": "board/drawcia/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-07-21T00:55:29Z",
+      "side": 1,
+      "message": "Due to we close to build, we need to merge this patch for drawlet and drawman first. I will update another patch for drawcia for power led.",
+      "parentUuid": "41b5d908_731b200b",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 2
+      },
+      "revId": "2b4244ed830e1233fcac2092ead65f9b9be98a27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
