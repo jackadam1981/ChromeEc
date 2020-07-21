@@ -82,7 +82,15 @@ int power_button_wait_for_release(int timeout_us)
 
 	while (!power_button_is_stable || power_button_is_pressed()) {
 		now = get_time();
-		if (timeout_us < 0) {
+		/*
+		 * If we are debouncing the power button, wait it finisih, but
+		 * don't wait too long in case of exceeding the timeout_us.
+		 */
+		if (!power_button_is_stable &&
+		    (timeout_us < 0 ||
+		     (deadline.val - now.val) > power_button.debounce_us)) {
+			task_wait_event(power_button.debounce_us);
+		} else if (timeout_us < 0) {
 			task_wait_event(-1);
 		} else if (timestamp_expired(deadline, &now) ||
 			(task_wait_event(deadline.val - now.val) ==
