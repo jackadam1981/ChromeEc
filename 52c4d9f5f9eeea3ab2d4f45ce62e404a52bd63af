@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0aa00be8_83711d14",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-22T22:20:49Z",
+      "side": 1,
+      "message": "we need to make some adjustments here.\n\nthis is reported back to the AP (software sync) as the\nflash size in flash_command_region_info().\n\nwe now try to flash 0x32000 bytes (with bmi260 init)\nwhich fails the sanity check in coreboot ec_update_image()\nand we end up in recovery.",
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36cec3f1_09fcc1bb",
         "filename": "chip/npcx/config_flash_layout.h",
         "patchSetId": 3
