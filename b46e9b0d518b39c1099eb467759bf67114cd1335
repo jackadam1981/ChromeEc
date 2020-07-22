@@ -22,6 +22,30 @@
       "revId": "b46e9b0d518b39c1099eb467759bf67114cd1335",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a52da47_5b6f711d",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-22T19:26:14Z",
+      "side": 0,
+      "message": "I don\u0027t think so, since task_get_current() doesn\u0027t return something that would be bit shifted to give TASK_ID_INVALID.",
+      "parentUuid": "8be95080_1d8c3962",
+      "range": {
+        "startLine": 863,
+        "startChar": 8,
+        "endLine": 863,
+        "endChar": 29
+      },
+      "revId": "b46e9b0d518b39c1099eb467759bf67114cd1335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
