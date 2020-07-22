@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36cec3f1_09fcc1bb",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-22T11:22:49Z",
+      "side": 1,
+      "message": "should this be CONFIG_EC_WRITABLE_STORAGE_SIZE?",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "374ed512_6e270af6",
+        "filename": "include/common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-22T11:22:49Z",
+      "side": 1,
+      "message": "i was surprised that .init.rom gets tacked on to the end of the\n.data segment for the other architectures without an updated\nlinker script. i was really expecting them to error out\nwith an invalid section.\n\nwe should update the other linker scripts to also\nput .init.rom into .rodata.",
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20c52ce4_2b2eed94",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5276,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-22T11:22:49Z",
+      "side": 1,
+      "message": "i think this will be clearer if you factor out all the\ndefined(CONFIG_CHIP_INIT_ROM_REGION)\ninto an outer\n#ifdef CONFIG_CHIP_INIT_ROM_REGION",
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
