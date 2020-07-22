@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c72ea06_eb95c37f",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-07-22T21:44:59Z",
+      "side": 1,
+      "message": "I think we can add the check for Virtual mux inside enter_low_power_mode and exit_low_power_mode. That way anyone using this function will be covered rather than adding a separate check in the code where the function is called.",
+      "revId": "574eacfcc0c82ad03fa3b60a194f4061ecbcec04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
