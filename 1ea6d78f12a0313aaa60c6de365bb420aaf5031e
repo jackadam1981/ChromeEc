@@ -34,6 +34,24 @@
       "revId": "1ea6d78f12a0313aaa60c6de365bb420aaf5031e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a29d1f_3a417967",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-22T23:49:59Z",
+      "side": 1,
+      "message": "it\u0027s a good question. It did proceed before this change, and it still prints the current tree\u0027s information, just without the board name.\n\nSo I decided not to change this default behavior.",
+      "parentUuid": "30d36f3f_403c93f5",
+      "revId": "1ea6d78f12a0313aaa60c6de365bb420aaf5031e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
