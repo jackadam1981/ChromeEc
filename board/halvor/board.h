@@ -88,7 +88,7 @@
 /* Fan features */
 
 /* charger defines */
-#define CONFIG_CHARGER_SENSE_RESISTOR		10
+#define CONFIG_CHARGER_SENSE_RESISTOR		5
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
 
 /*
@@ -120,7 +120,6 @@
 
 #undef CONFIG_FANS
 #undef CONFIG_VOLUME_BUTTONS
-
 /* I2C Bus Configuration */
 #define CONFIG_I2C
 #define I2C_PORT_SENSOR		NPCX_I2C_PORT0_0
