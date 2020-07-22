@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3a672c9_bdccbdb3",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-07-22T20:46:50Z",
+      "side": 1,
+      "message": "Aren\u0027t we duplicating this? Can we use the usb_muxes already provided by baseboard/board?",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 3
+      },
+      "revId": "0ba9f4131370210dcc9d48e418a1e97f4178cbce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2436b0d9_0f1cf76a",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-07-22T20:46:50Z",
+      "side": 1,
+      "message": "How was this delay determined?",
+      "range": {
+        "startLine": 321,
+        "startChar": 42,
+        "endLine": 321,
+        "endChar": 52
+      },
+      "revId": "0ba9f4131370210dcc9d48e418a1e97f4178cbce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf5cae9f_49d81a0e",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-07-22T20:46:50Z",
+      "side": 1,
+      "message": "Does it make sense to extend usb_mux_driver structure to include a .chipset_reset or .reset member that allows the MUX drivers to take action on chipset reset? Then we don\u0027t really need to duplicate usb_mux in baseboard/zork/baseboard.c. Also, the call to reset will happen from usb_mux driver. So, boards won\u0027t have to take any special action.",
+      "revId": "0ba9f4131370210dcc9d48e418a1e97f4178cbce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
