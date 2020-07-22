@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02566933_c051dea8",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-07-22T11:23:48Z",
+      "side": 1,
+      "message": "i wonder if we should add a thin initrom access API here\nand potentially take advantage of CONFIG_MAPPED_STORAGE\nin its implementation?",
+      "range": {
+        "startLine": 575,
+        "startChar": 9,
+        "endLine": 575,
+        "endChar": 19
+      },
+      "revId": "4045acedafbc0675e256c71c84e71501e5dcee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
