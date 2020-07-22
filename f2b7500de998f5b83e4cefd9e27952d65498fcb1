@@ -124,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "d79e422d_d9654530",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3123,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T20:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd46cd7_cc7ce0c7",
+      "range": {
+        "startLine": 3123,
+        "startChar": 11,
+        "endLine": 3123,
+        "endChar": 56
+      },
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7353716_14b233f6",
         "filename": "test/test_config.h",
         "patchSetId": 3
@@ -144,6 +168,30 @@
       "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "443beb21_e8c113f2",
+        "filename": "test/test_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T20:42:24Z",
+      "side": 1,
+      "message": "Yikes! Done.",
+      "parentUuid": "a7353716_14b233f6",
+      "range": {
+        "startLine": 321,
+        "startChar": 12,
+        "endLine": 321,
+        "endChar": 24
+      },
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -176,6 +224,24 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "ad2f5f19_d51ee22d",
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbcc03e3_ebc3e954",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T20:42:24Z",
+      "side": 1,
+      "message": "Done. Should I also remove my flag checks and subsequent state checks? In principle, could do this entirely based on timing and message traffic, although I might need some more state and hooks in fake_prl.c.",
+      "parentUuid": "d28448f3_d7ce3a36",
       "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
