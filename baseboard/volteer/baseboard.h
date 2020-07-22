@@ -258,13 +258,14 @@ enum temp_sensor_id {
 	TEMP_SENSOR_4_FAN,
 	TEMP_SENSOR_COUNT
 };
-
+#if defined(HALVOR_USBC_PORT)
+#else
 enum usbc_port {
 	USBC_PORT_C0 = 0,
 	USBC_PORT_C1,
 	USBC_PORT_COUNT
 };
-
+#endif
 /* Common definition for the USB PD interrupt handlers. */
 void ppc_interrupt(enum gpio_signal signal);
 void tcpc_alert_event(enum gpio_signal signal);
