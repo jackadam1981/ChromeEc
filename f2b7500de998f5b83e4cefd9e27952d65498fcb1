@@ -16,6 +16,86 @@
       "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31cac15d_5243b951",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-22T18:37:21Z",
+      "side": 1,
+      "message": "Woot! Thank you for adding tests too!\n\nWant to let\u0027s others take a look too.",
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebce2997_a18bd751",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-22T18:37:21Z",
+      "side": 1,
+      "message": "is there a #error anyone that ensures that Extended_message config cannot be enabled without first enabling REV30? (if not, we should add it)",
+      "range": {
+        "startLine": 1132,
+        "startChar": 16,
+        "endLine": 1132,
+        "endChar": 47
+      },
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cd46cd7_cc7ce0c7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3123,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-22T18:37:21Z",
+      "side": 1,
+      "message": "nit: no real need to set this to disabled right (since we are transitioning states)",
+      "range": {
+        "startLine": 3123,
+        "startChar": 11,
+        "endLine": 3123,
+        "endChar": 56
+      },
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad2f5f19_d51ee22d",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-22T18:37:21Z",
+      "side": 1,
+      "message": "can we remove this Test assert. You can add a comment saying we should be in this state, but if we change internal impementation then we shouldn\u0027t have to update this test.\n\nWe want to assert changes on API boundaries of depended modules (like TCPC, PRL, and TC layerS)",
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
