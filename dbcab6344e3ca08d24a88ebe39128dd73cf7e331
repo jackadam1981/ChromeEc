@@ -34,6 +34,24 @@
       "revId": "dbcab6344e3ca08d24a88ebe39128dd73cf7e331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5370662_70ba90f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-22T23:48:38Z",
+      "side": 1,
+      "message": "Implementing another TCPM stack in the board directory will introduce future maintenance cost, like any future fix to the TCPM stack needs to manually cherry-pick to this separated stack.\n\nBetter to spend time to get the fusb302 driver work together. The fusb302 driver requires the standard TCPM stack; but the stm32 TCPC is kind of integrated into the stack. One way is to wrap the stm32 TCPC to fit the existing TCPM driver model.",
+      "parentUuid": "a642ee17_ea2e471d",
+      "revId": "dbcab6344e3ca08d24a88ebe39128dd73cf7e331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
