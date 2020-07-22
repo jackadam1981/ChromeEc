@@ -393,7 +393,7 @@ enum ec_error_list charger_set_current(int chgnum, int current)
 		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
 		return EC_ERROR_INVAL;
 	}
-
+	current = current >> CONFIG_CHARGE_CHANGE_TIMES;
 	if (chg_chips[chgnum].drv->set_current)
 		rv = chg_chips[chgnum].drv->set_current(chgnum, current);
 
