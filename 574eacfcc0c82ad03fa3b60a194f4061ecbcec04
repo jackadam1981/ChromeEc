@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b0ee89e_3f098b0f",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-22T22:08:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "950539cb_8be3999a",
+      "range": {
+        "startLine": 235,
+        "startChar": 14,
+        "endLine": 235,
+        "endChar": 15
+      },
+      "revId": "574eacfcc0c82ad03fa3b60a194f4061ecbcec04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c72ea06_eb95c37f",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 3
@@ -57,6 +81,24 @@
       "revId": "574eacfcc0c82ad03fa3b60a194f4061ecbcec04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e516fc93_39db7bdf",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-22T22:08:06Z",
+      "side": 1,
+      "message": "We need to change the power mode when we are setting the mux. So I not sure if it\u0027s a good idea to add check in the enter and exit mode",
+      "parentUuid": "6c72ea06_eb95c37f",
+      "revId": "574eacfcc0c82ad03fa3b60a194f4061ecbcec04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +146,30 @@
       "revId": "574eacfcc0c82ad03fa3b60a194f4061ecbcec04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "484ec95a_ce05bb79",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-22T22:08:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec746b2_9751ec3f",
+      "range": {
+        "startLine": 238,
+        "startChar": 8,
+        "endLine": 238,
+        "endChar": 9
+      },
+      "revId": "574eacfcc0c82ad03fa3b60a194f4061ecbcec04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
