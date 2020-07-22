@@ -42,6 +42,75 @@
     },
     {
       "key": {
+        "uuid": "4452bb40_1a28c279",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T20:02:39Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 1096,
+        "startChar": 35,
+        "endLine": 1096,
+        "endChar": 37
+      },
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7592220_d5920192",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T20:02:39Z",
+      "side": 1,
+      "message": "\"in which the\"",
+      "range": {
+        "startLine": 1097,
+        "startChar": 3,
+        "endLine": 1097,
+        "endChar": 6
+      },
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0a289e_d51caf7e",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T20:02:39Z",
+      "side": 1,
+      "message": "Can you describe these a little more verbosely, a la CONFIG_RW_B_MEM_OFF?",
+      "range": {
+        "startLine": 1824,
+        "startChar": 1,
+        "endLine": 1826,
+        "endChar": 3
+      },
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20c52ce4_2b2eed94",
         "filename": "include/config.h",
         "patchSetId": 3
