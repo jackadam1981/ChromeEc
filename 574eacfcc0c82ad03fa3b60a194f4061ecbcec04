@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "950539cb_8be3999a",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-22T21:46:51Z",
+      "side": 1,
+      "message": "as its just returning the current EC mux state.",
+      "range": {
+        "startLine": 235,
+        "startChar": 14,
+        "endLine": 235,
+        "endChar": 15
+      },
+      "revId": "574eacfcc0c82ad03fa3b60a194f4061ecbcec04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c72ea06_eb95c37f",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 3
@@ -13,6 +36,29 @@
       "writtenOn": "2020-07-22T21:44:59Z",
       "side": 1,
       "message": "I think we can add the check for Virtual mux inside enter_low_power_mode and exit_low_power_mode. That way anyone using this function will be covered rather than adding a separate check in the code where the function is called.",
+      "revId": "574eacfcc0c82ad03fa3b60a194f4061ecbcec04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b542d8b5_d1034c53",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-22T21:46:51Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 238,
+        "startChar": 8,
+        "endLine": 238,
+        "endChar": 9
+      },
       "revId": "574eacfcc0c82ad03fa3b60a194f4061ecbcec04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
