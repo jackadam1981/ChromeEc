@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d890934_55e90fd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-22T21:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e63fb0a_d48175c9",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "518ce9b64a2e30ac9bc3a504e611e5c2c8a4b358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "846127c1_c934e5c2",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "518ce9b64a2e30ac9bc3a504e611e5c2c8a4b358",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5585a21_01aff26f",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-07-22T21:34:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "846127c1_c934e5c2",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 1
+      },
+      "revId": "518ce9b64a2e30ac9bc3a504e611e5c2c8a4b358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
