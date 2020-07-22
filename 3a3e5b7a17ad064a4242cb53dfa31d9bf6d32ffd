@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6564ff45_007082a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-22T17:57:33Z",
+      "side": 1,
+      "message": "It\u0027s better not to copy those which are not applicable to G4. They would sit in registers-stm32g4.h and be trusted. They may create obscure bugs.",
+      "parentUuid": "8904cf5f_7d387071",
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b4cd285_59397244",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 10
@@ -81,6 +99,30 @@
       "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f9b3b8c_8b30e3c7",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-22T17:57:33Z",
+      "side": 1,
+      "message": "I see your point. We\u0027ve been simply replacing \u0027#ifdef\u0027 with \u0027#if defined\u0027 if the condition is ever extended. So, I think it\u0027s not worth breaking the consistency.",
+      "parentUuid": "4dc516b1_84318d65",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -268,6 +310,30 @@
       "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3e2a863_7e00f05b",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-22T17:57:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25b63442_ccd5136c",
+      "range": {
+        "startLine": 155,
+        "startChar": 36,
+        "endLine": 155,
+        "endChar": 37
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
