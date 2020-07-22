@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "00d2bda9_1211befd",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-22T21:52:42Z",
+      "side": 1,
+      "message": "exit_low_power_mode is not needed only its get command , i think this logic looks okay",
+      "parentUuid": "6c72ea06_eb95c37f",
+      "revId": "574eacfcc0c82ad03fa3b60a194f4061ecbcec04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b542d8b5_d1034c53",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 3
