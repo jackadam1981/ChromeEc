@@ -124,6 +124,14 @@
 #include "gpio_signal.h"
 #include "registers.h"
 
+/*Power Parameters*/
+#undef PD_POWER_SUPPLY_TURN_OFF_DELAY
+#undef PD_MAX_POWER_MW
+#undef PD_MAX_CURRENT_MA
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY	250000 /* us */
+#define PD_MAX_POWER_MW		65000 /* mw */
+#define PD_MAX_CURRENT_MA	3250 /* ma */
+
 enum battery_type {
 	BATTERY_LGC011,
 	BATTERY_TYPE_COUNT,
