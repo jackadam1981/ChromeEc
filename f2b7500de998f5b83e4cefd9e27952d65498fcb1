@@ -124,6 +124,29 @@
     },
     {
       "key": {
+        "uuid": "a7353716_14b233f6",
+        "filename": "test/test_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-22T19:58:52Z",
+      "side": 1,
+      "message": "TEST_USB_PRL_OLD ?",
+      "range": {
+        "startLine": 321,
+        "startChar": 12,
+        "endLine": 321,
+        "endChar": 24
+      },
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad2f5f19_d51ee22d",
         "filename": "test/usb_pe_drp.c",
         "patchSetId": 3
@@ -135,6 +158,24 @@
       "writtenOn": "2020-07-22T18:37:21Z",
       "side": 1,
       "message": "can we remove this Test assert. You can add a comment saying we should be in this state, but if we change internal impementation then we shouldn\u0027t have to update this test.\n\nWe want to assert changes on API boundaries of depended modules (like TCPC, PRL, and TC layerS)",
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d28448f3_d7ce3a36",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-22T19:58:52Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "ad2f5f19_d51ee22d",
       "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
