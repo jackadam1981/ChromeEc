@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8904cf5f_7d387071",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:18Z",
+      "side": 1,
+      "message": "Most of them end up getting verified. But, there isn\u0027t 100% coverage given the chip features required for honeybuns. The F4 family registers file was used as the starting point and then I checked those against RM0440 (G4 TRM). The one module that\u0027s not been used is SPI bus.",
+      "parentUuid": "06b8a29d_fad4b735",
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b4cd285_59397244",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 10
@@ -30,6 +48,30 @@
       "writtenOn": "2020-07-21T19:23:27Z",
       "side": 1,
       "message": "ifdef",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 11
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc516b1_84318d65",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:18Z",
+      "side": 1,
+      "message": "I had done it this way to match what we have for other STM32 chip families and if some other g4 variant (i.e. different internal flash size gets added). But, there is only one variant at this point. I changed this to #ifdef.",
+      "parentUuid": "2b4cd285_59397244",
       "range": {
         "startLine": 109,
         "startChar": 1,
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "b2f57751_aca68cd0",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b09d492_2aee58f1",
+      "range": {
+        "startLine": 125,
+        "startChar": 2,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "705a81ed_779b25a5",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 10
@@ -108,6 +174,30 @@
       "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "507599a1_09cf8f1d",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705a81ed_779b25a5",
+      "range": {
+        "startLine": 126,
+        "startChar": 37,
+        "endLine": 126,
+        "endChar": 69
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +235,30 @@
       "writtenOn": "2020-07-21T19:23:27Z",
       "side": 1,
       "message": "Can you scan the file to find these simple style violation?",
+      "range": {
+        "startLine": 155,
+        "startChar": 36,
+        "endLine": 155,
+        "endChar": 37
+      },
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25b63442_ccd5136c",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:18Z",
+      "side": 1,
+      "message": "I did run the style checker on the CLs that I have marked for review. I thought i had got all of the issues other than it complains about #typedef which is not new, just new because they are being used for the G4 as well.",
+      "parentUuid": "58c05b00_34488abe",
       "range": {
         "startLine": 155,
         "startChar": 36,
