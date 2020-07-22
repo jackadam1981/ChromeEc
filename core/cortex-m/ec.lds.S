@@ -29,6 +29,17 @@
 #define ROM_RES_MEM_OFF(section) FW_MEM_OFF(CONCAT2(section, _ROM_RESIDENT))
 #define ROM_RES_SIZE(section) FW_SIZE(CONCAT2(section, _ROM_RESIDENT))
 
+/*
+ * When the initrom region is enabled, and flash supports memory mapped
+ * reads, locate the initialized .data section in the initrom region
+ * saving EC image space. The initialized data is copied directly from flash
+ * to RAM. No flash locking is needed in this case because the initialized
+ * data happens before any tasks are running.
+ */
+#if defined(CONFIG_CHIP_INIT_ROM_REGION) && defined(CONFIG_MAPPED_STORAGE)
+#define DATA_IN_ROM_RESIDENT
+#endif
+
 /* Indicates where .data LMA should reside. */
 #undef DATA_LMA_MEM_REGION
 
@@ -308,10 +319,22 @@ SECTIONS
 #define DATA_LMA_MEM_REGION FLASH
 #else
 	} > FLASH
-#define DATA_LMA_MEM_REGION FLASH
+#	ifdef DATA_IN_ROM_RESIDENT
+#	define DATA_LMA_MEM_REGION ROM_RESIDENT
+#	else
+#	define DATA_LMA_MEM_REGION FLASH
+#	endif
 #endif
 
+#ifdef DATA_IN_ROM_RESIDENT
+	/*
+	 * The data program address must be the full 32-bit memory mapped
+	 * flash address.
+	 */
+	__data_lma_start = CONFIG_MAPPED_STORAGE_BASE + ORIGIN(ROM_RESIDENT_VA);
+#else
 	__data_lma_start = .;
+#endif
 
 #ifdef CONFIG_PRESERVE_LOGS
 	.preserve_logs(NOLOAD) : {
@@ -424,6 +447,7 @@ SECTIONS
 
 		/* NOTHING MAY GO AFTER THIS! */
 	} > IRAM AT > DATA_LMA_MEM_REGION
+#endif
 
 	ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
 	       (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
@@ -433,6 +457,7 @@ SECTIONS
 		     (__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE);
 
 	/*
+	 * Track the end of the main EC image flash
 	 * The linker won't notice if the .data section is too big to fit,
 	 * apparently because we're sending it into IRAM, not FLASH.
 	 * The following symbol isn't used by the code, but running
@@ -440,7 +465,25 @@ SECTIONS
 	 * flash space we're actually using. The explicit ASSERT afterwards
 	 * will cause the linker to abort if we use too much.
 	 */
-	__hey_flash_used = LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION);
+#ifdef DATA_IN_ROM_RESIDENT
+	/*
+	 * .data is ROM resident, last section in the EC image is the .rodata
+	 * section.
+	 */
+	__flash_used_end = LOADADDR(.rodata) + SIZEOF(.rodata);
+#else
+	/*
+	 * The linker won't notice if the .data section is too big to fit,
+	 * apparently because we're sending it into IRAM, not FLASH.
+	 * The following symbol isn't used by the code, but running
+	 * "objdump -t *.elf | grep hey" will let us check how much
+	 * flash space we're actually using. The explicit ASSERT afterwards
+	 * will cause the linker to abort if we use too much.
+	 */
+	__flash_used_end = LOADADDR(.data) + SIZEOF(.data);
+#endif
+
+	__hey_flash_used = __flash_used_end - FW_OFF(SECTION);
 
 #ifdef CONFIG_FLASH
 	/*
@@ -461,8 +504,7 @@ SECTIONS
 #if defined(CONFIG_RWSIG) && defined(SECTION_IS_RW)
 	       - CONFIG_RW_SIG_SIZE
 #endif
-	       ) >= (LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION)),
-	       "No room left in the flash")
+	       ) >= __hey_flash_used, "No room left in the flash")
 #endif /* CONFIG_FLASH_PHYSICAL */
 
 #if defined(SECTION_IS_RO) && defined(NPCX_RO_HEADER)
@@ -491,7 +533,7 @@ SECTIONS
 	 * flash as the FLASH section. Fill the space between.
 	 */
 	.fill : {
-		. = LOADADDR(.data) + SIZEOF(.data);
+		. = LOADADDR(.rodata) + SIZEOF(.rodata);
 		. = ALIGN(4);
 		__fill_start = .;
 		FILL(0xFF);
@@ -505,7 +547,7 @@ SECTIONS
 	 * The end of the .fill region should also be the start of the
 	 * .init_rom region
 	 */
-	ASSERT(__fill_end == LOADADDR(.init_rom),
+	ASSERT(__fill_end == LOADADDR(.data),
 		".fill region end not aligned to start of .init_rom")
 #endif /* CONFIG_CHIP_INIT_ROM_REGION */
 
