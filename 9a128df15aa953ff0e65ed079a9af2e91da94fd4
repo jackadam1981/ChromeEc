@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bdea2f57_edfdab19",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b97e04e8_343afe83",
+      "range": {
+        "startLine": 6,
+        "startChar": 18,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fd23d3c_f0d6969a",
         "filename": "chip/stm32/config-stm32g41xb.h",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-21T19:35:22Z",
       "side": 1,
       "message": "Unused (at least in this patch). Can you remove them or move them to include/common.h?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "702f0d41_ff741ac2",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:34Z",
+      "side": 1,
+      "message": "I have removed them. They were connected to F4 flash routines and not applicable to the flash driver for G4",
+      "parentUuid": "7fd23d3c_f0d6969a",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0610ef0c_8bf09f42",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e724f215_1db523e2",
+      "range": {
+        "startLine": 20,
+        "startChar": 2,
+        "endLine": 20,
+        "endChar": 3
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3be505a4_ac5855dc",
         "filename": "chip/stm32/config-stm32g41xb.h",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "709eeccd_3728bca7",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3be505a4_ac5855dc",
+      "range": {
+        "startLine": 25,
+        "startChar": 50,
+        "endLine": 25,
+        "endChar": 57
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ddc35aae_40d3a22b",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4637d88b_b8ffab9f",
+      "range": {
+        "startLine": 41,
+        "startChar": 41,
+        "endLine": 41,
+        "endChar": 44
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8445dd7d_97ecbf7f",
         "filename": "chip/stm32/config-stm32g41xb.h",
         "patchSetId": 9
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "accbcd53_8452ef98",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8445dd7d_97ecbf7f",
+      "range": {
+        "startLine": 51,
+        "startChar": 70,
+        "endLine": 51,
+        "endChar": 71
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6600541c_1b7d036b",
         "filename": "chip/stm32/config-stm32g41xb.h",
         "patchSetId": 9
@@ -151,6 +295,30 @@
       "writtenOn": "2020-07-21T19:35:22Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a91be22_50b714c6",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-22T03:39:34Z",
+      "side": 1,
+      "message": "I have removed this. We aren\u0027t using OTP.",
+      "parentUuid": "6600541c_1b7d036b",
       "range": {
         "startLine": 58,
         "startChar": 0,
