@@ -16,6 +16,24 @@
       "revId": "1ea6d78f12a0313aaa60c6de365bb420aaf5031e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30d36f3f_403c93f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-07-22T23:39:10Z",
+      "side": 1,
+      "message": "If -n ${BOARD} is false, then does it still need to proceed, or should it terminate?",
+      "parentUuid": "1ed5f473_94f811d8",
+      "revId": "1ea6d78f12a0313aaa60c6de365bb420aaf5031e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
