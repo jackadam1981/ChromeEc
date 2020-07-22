@@ -16,6 +16,24 @@
       "revId": "c0a8e2c4a19e3774a6d8544c943a5d5ee6153f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c862aee7_d8c68ea0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T18:51:55Z",
+      "side": 1,
+      "message": "Should we stop doing the extern trick with IS_ENABLED?",
+      "parentUuid": "06f92c9f_b408566f",
+      "revId": "c0a8e2c4a19e3774a6d8544c943a5d5ee6153f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
