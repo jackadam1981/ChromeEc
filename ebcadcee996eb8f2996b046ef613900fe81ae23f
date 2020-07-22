@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae0bfda7_452471e7",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-22T17:58:41Z",
+      "side": 1,
+      "message": "Actually, this is a commonly used snippet (stm32l4, stm32h7). I think we should put it in clock-stm32.c (or stm32-common.c). Then, we don\u0027t have to touch clock-f.h and clock-c.c in this CL.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 1
+      },
+      "revId": "ebcadcee996eb8f2996b046ef613900fe81ae23f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
