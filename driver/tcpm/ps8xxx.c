@@ -313,15 +313,8 @@ static int ps8xxx_addr_dci_disable(int port, int i2c_addr, int i2c_reg)
 }
 #endif /* CONFIG_USB_PD_TCPM_PS875[15] || CONFIG_USB_PD_TCPM_PS8[78]05 */
 
-#ifdef CONFIG_USB_PD_TCPM_PS8815
-static int ps8xxx_dci_disable(int port)
-{
-	/* DCI is disabled on the ps8815 */
-	return EC_SUCCESS;
-}
-#endif /* CONFIG_USB_PD_TCPM_PS8815 */
-
-#ifdef CONFIG_USB_PD_TCPM_PS8805
+#if defined(CONFIG_USB_PD_TCPM_PS8705) || defined(CONFIG_USB_PD_TCPM_PS8755) \
+ || defined(CONFIG_USB_PD_TCPM_PS8805)
 static int ps8xxx_dci_disable(int port)
 {
 	int p1_addr;
@@ -345,43 +338,12 @@ static int ps8xxx_dci_disable(int port)
 				     PS8XXX_P1_REG_MUX_USB_DCI_CFG);
 
 	/*
-	 * PS8805 will automatically re-assert bit:0 on the
+	 * PS8705/PS8755/PS8805 will automatically re-assert bit:0 on the
 	 * PS8XXX_REG_I2C_DEBUGGING_ENABLE register.
 	 */
 	return rv;
 }
-#endif /* CONFIG_USB_PD_TCPM_PS8805 */
-
-#if defined(CONFIG_USB_PD_TCPM_PS8705) || defined(CONFIG_USB_PD_TCPM_PS8755)
-static int ps8xxx_dci_disable(int port)
-{
-	int p1_addr;
-	int p3_addr;
-	int regval;
-	int rv;
-
-	/* Enable access to debug pages. */
-	p3_addr = tcpc_config[port].i2c_info.addr_flags;
-	rv = tcpc_addr_read(port, p3_addr, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
-			    &regval);
-	if (rv)
-		return rv;
-
-	rv = tcpc_addr_write(port, p3_addr, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
-			     PS8XXX_REG_I2C_DEBUGGING_ENABLE_ON);
-
-	/* Disable Auto DCI */
-	p1_addr = PS8751_P3_TO_P1_FLAGS(p3_addr);
-	rv = ps8xxx_addr_dci_disable(port, p1_addr,
-				     PS8XXX_P1_REG_MUX_USB_DCI_CFG);
-
-	/* Turn off access to debug pages. */
-	rv |= tcpc_addr_write(port, p3_addr, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
-			      PS8XXX_REG_I2C_DEBUGGING_ENABLE_OFF);
-
-	return rv;
-}
-#endif /* CONFIG_USB_PD_TCPM_PS87[05]5 */
+#endif /* CONFIG_USB_PD_TCPM_PS8755 || CONFIG_USB_PD_TCPM_PS8[78]05 */
 
 #ifdef CONFIG_USB_PD_TCPM_PS8751
 static int ps8xxx_dci_disable(int port)
@@ -393,6 +355,14 @@ static int ps8xxx_dci_disable(int port)
 				       PS8751_REG_MUX_USB_DCI_CFG);
 }
 #endif /* CONFIG_USB_PD_TCPM_PS8751 */
+
+#ifdef CONFIG_USB_PD_TCPM_PS8815
+static int ps8xxx_dci_disable(int port)
+{
+	/* DCI is disabled on the ps8815 */
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_USB_PD_TCPM_PS8815 */
 
 static int ps8xxx_tcpm_init(int port)
 {
