@@ -223,17 +223,36 @@ void usb_mux_set(int port, mux_state_t mux_mode,
 mux_state_t usb_mux_get(int port)
 {
 	mux_state_t mux_state;
+	bool is_low_power_mode;
+	int rv;
 
 	if (port >= board_get_usb_pd_port_count()) {
 		return USB_PD_MUX_NONE;
 	}
 
+	/*
+	 * For getting the virtual mux mode, there is no need to exit the low
+	 * power mode as its just returning the current EC mux state.
+	 */
+	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL))
+		return configure_mux(port, USB_MUX_GET_MODE, &mux_state) ?
+			USB_PD_MUX_NONE : mux_state;
+
+	/* Store the status of LPM flag (low power mode) */
+	is_low_power_mode = flags[port] & USB_MUX_FLAG_IN_LPM;
+
 	exit_low_power_mode(port);
 
-	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state))
-		return USB_PD_MUX_NONE;
+	rv = configure_mux(port, USB_MUX_GET_MODE, &mux_state);
 
-	return mux_state;
+	/*
+	 * If the LPM flag was set prior to reading the mux state, re-enter the
+	 * low power mode.
+	 */
+	if (is_low_power_mode)
+		enter_low_power_mode(port);
+
+	return rv ? USB_PD_MUX_NONE : mux_state;
 }
 
 void usb_mux_flip(int port)
