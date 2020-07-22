@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_USB_MUX_AMD_FP5_H
 #define __CROS_EC_USB_MUX_AMD_FP5_H
 
+#include "usb_mux.h"
+
 #define AMD_FP5_MUX_I2C_ADDR_FLAGS	0x5C
 
 #define AMD_FP5_MUX_SAFE		0x00
@@ -17,5 +19,8 @@
 #define AMD_FP5_MUX_DOCK_INVERTED	0x19
 #define AMD_FP5_MUX_DP			0x0C
 #define AMD_FP5_MUX_DP_INVERTED		0x1C
+
+/* Restore the mux state to the cached value after AP reboot.  */
+int amd_fp5_restore_mux(const struct usb_mux *me);
 
 #endif /* __CROS_EC_USB_MUX_AMD_FP5_H */

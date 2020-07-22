@@ -293,3 +293,31 @@ void sbu_fault_interrupt(enum ioex_signal signal)
 
 	pd_handle_overcurrent(port);
 }
+
+static void ap_mux_restore(void)
+{
+	int port;
+	int rv;
+	struct usb_mux amd_fp5_usb_mux = {
+		.i2c_port = I2C_PORT_USB_AP_MUX,
+		.i2c_addr_flags = AMD_FP5_MUX_I2C_ADDR_FLAGS,
+	};
+
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port) {
+		amd_fp5_usb_mux.usb_port = port;
+		rv = amd_fp5_restore_mux(&amd_fp5_usb_mux);
+		if (rv)
+			ccprints("C%d restore mux rv:%d", port, rv);
+	}
+}
+DECLARE_DEFERRED(ap_mux_restore);
+
+static void board_chipset_reset(void)
+{
+	/*
+	 * The AP's internal USB-C mux is reset when AP resets, so wait for
+	 * it to be ready and then restore the previous setting.
+	 */
+	hook_call_deferred(&ap_mux_restore_data, 200 * MSEC);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESET, board_chipset_reset, HOOK_PRIO_DEFAULT);

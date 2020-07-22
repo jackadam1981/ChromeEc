@@ -11,6 +11,8 @@
 #include "i2c.h"
 #include "usb_mux.h"
 
+static mux_state_t saved_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 static inline int amd_fp5_mux_read(const struct usb_mux *me, uint8_t *val)
 {
 	uint8_t buf[3] = { 0 };
@@ -40,6 +42,8 @@ static int amd_fp5_init(const struct usb_mux *me)
 static int amd_fp5_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	uint8_t val = 0;
+
+	saved_mux_state[me->usb_port] = mux_state;
 
 	/*
 	 * This MUX is on the FP5 SoC.  If that device is not powered then
@@ -119,3 +123,8 @@ const struct usb_mux_driver amd_fp5_usb_mux_driver = {
 	.set = &amd_fp5_set_mux,
 	.get = &amd_fp5_get_mux,
 };
+
+int amd_fp5_restore_mux(const struct usb_mux *me)
+{
+	return amd_fp5_set_mux(me, saved_mux_state[me->usb_port]);
+}
