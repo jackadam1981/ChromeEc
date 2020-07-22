@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15515d34_aeca5550",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4134,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-07-22T21:57:27Z",
+      "side": 1,
+      "message": "May be we sound fix comment saying that Attention VDM is not expected during Discovery. Add even a reference to the spec.",
+      "revId": "788a79ebe8fe7ed6404c4a450b0ff067402ee322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
