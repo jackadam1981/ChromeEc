@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e63fb0a_d48175c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-22T20:50:25Z",
+      "side": 1,
+      "message": "s",
+      "range": {
+        "startLine": 14,
+        "startChar": 18,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "518ce9b64a2e30ac9bc3a504e611e5c2c8a4b358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846127c1_c934e5c2",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-07-22T20:50:25Z",
+      "side": 1,
+      "message": "if virtual mux we dont have to exit, how about IS_ENABLED(Virtial mux)",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 1
+      },
+      "revId": "518ce9b64a2e30ac9bc3a504e611e5c2c8a4b358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
