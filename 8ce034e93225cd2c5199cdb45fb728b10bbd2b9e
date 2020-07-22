@@ -22,6 +22,30 @@
       "revId": "8ce034e93225cd2c5199cdb45fb728b10bbd2b9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bcd99a6_ffa749e3",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-22T02:06:42Z",
+      "side": 1,
+      "message": "but the check if the next line will filter out anything but cr53. \n\nIf the rest CRs need this, separate checks need to be added. I just wasn\u0027t sure how actively those other boards were developed, and also their owners should assess if changing of the version string format is going to cause any trouble.",
+      "parentUuid": "3b78b192_b8c4c18e",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 6
+      },
+      "revId": "8ce034e93225cd2c5199cdb45fb728b10bbd2b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
