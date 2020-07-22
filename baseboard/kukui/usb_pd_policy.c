@@ -66,6 +66,14 @@ int pd_set_power_supply_ready(int port)
 	if (IS_ENABLED(CONFIG_CHARGER_OTG) && IS_ENABLED(CONFIG_CHARGER_ISL9238C))
 		charger_set_current(CHARGER_SOLO, 0);
 
+	/* When sink swap to source,
+	need to make sure charger supplier is cleared */
+#ifdef CHARGE_MANAGER_BC12
+	if (charge_manager_get_supplier() == CHARGE_SUPPLIER_BC12_CDP)
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
+			port, NULL);
+#endif
+
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 
