@@ -4129,6 +4129,12 @@ static enum vdm_response_result parse_vdm_response_common(int port)
 			memcpy(pe[port].vdm_rsp_body, rx_emsg[port].buf,
 					cnt * sizeof(pe[port].vdm_rsp_body[0]));
 			return VDM_RESULT_NO_ACTION;
+		} else if (PD_VDO_CMD(payload[0]) == CMD_ATTENTION) {
+			/*
+			 * In case there is unexpected attention VDM comes,
+			 * will ignore it and wait for next VDM
+			 */
+			return VDM_RESULT_WAITING;
 		}
 
 		/*
