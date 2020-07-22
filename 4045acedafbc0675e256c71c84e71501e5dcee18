@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01bdb683_4b85db85",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-22T20:19:42Z",
+      "side": 1,
+      "message": "flash_read() does check CONFIG_MAPPED_STORAGE and also validates the offset is within flash.\nI like the idea of initrom API, that would allow this function to lock the flash, and then start the I2C transfer using memory mapped flash as source data for the I2C transfer.  This would eliminate the need for the static buffer.\n\nI\u0027ll explore this option.",
+      "parentUuid": "02566933_c051dea8",
+      "range": {
+        "startLine": 575,
+        "startChar": 9,
+        "endLine": 575,
+        "endChar": 19
+      },
+      "revId": "4045acedafbc0675e256c71c84e71501e5dcee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5214a0b_4d2640e5",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-22T20:07:28Z",
       "side": 1,
       "message": "Did you try just passing a pointer into mapped flash to bmi_write_n? Would it be intolerably slow?",
+      "range": {
+        "startLine": 575,
+        "startChar": 3,
+        "endLine": 582,
+        "endChar": 12
+      },
+      "revId": "4045acedafbc0675e256c71c84e71501e5dcee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c049aaf7_1580362c",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-22T20:19:42Z",
+      "side": 1,
+      "message": "The flash memory should be plenty fast to keep up with I2C writes.  However, that flash extent should be locked while we\u0027re reading from it. This was the simplest implementation, but an initrom API (see above) may be workable.",
+      "parentUuid": "c5214a0b_4d2640e5",
       "range": {
         "startLine": 575,
         "startChar": 3,
