@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f80ad42_b9e93187",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T18:18:50Z",
+      "side": 1,
+      "message": "Diana, can you review the removal of chunking support?\nPaul, can you review the unit tests?\n\nI can split up the unit test changes into their own CL if desired. I included them here, because I don\u0027t have a good way to test this change IRL. Is anyone aware of real-world devices that will send or request chunked messages?",
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

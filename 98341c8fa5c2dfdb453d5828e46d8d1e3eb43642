@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "431fee7d_a17176ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T18:18:50Z",
+      "side": 1,
+      "message": "Testing: See new patchset.\nvolteer flash space: ~3 KB. See CL:2313778.",
+      "parentUuid": "ff049458_a15b7127",
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d25479c_c7b1c85b",
         "filename": "chip/host/usb_pd_phy.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4ef8a53c_af80ed0c",
+        "filename": "chip/host/usb_pd_phy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T18:18:50Z",
+      "side": 1,
+      "message": "This was left over from debugging.",
+      "parentUuid": "8d25479c_c7b1c85b",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 10
+      },
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07a9924f_506ceffb",
         "filename": "common/usbc/usb_pe_ctvpd_sm.c",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52713b6c_9c841723",
+        "filename": "common/usbc/usb_pe_ctvpd_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T18:18:50Z",
+      "side": 1,
+      "message": "This was a WIP CL. I left in various debugging things. I have now attempted to remove all my debugging stuff.",
+      "parentUuid": "07a9924f_506ceffb",
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "d54f9252_4efa68cb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T18:18:50Z",
+      "side": 1,
+      "message": "Yes, it works. Note that I had to add a presubmit filter to allow it.",
+      "parentUuid": "663a1835_c108ef5c",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 61
+      },
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a3de4f4_a9303847",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "92fb9cd8_46875bb6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3279,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T18:18:50Z",
+      "side": 1,
+      "message": "Because the responses it requests are extended messages.",
+      "parentUuid": "6a3de4f4_a9303847",
+      "range": {
+        "startLine": 3279,
+        "startChar": 1,
+        "endLine": 3279,
+        "endChar": 49
+      },
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1006b13_38a5e680",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "2e53cdf1_d6cca011",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T18:18:50Z",
+      "side": 1,
+      "message": "Done. This was a WIP CL.",
+      "parentUuid": "c1006b13_38a5e680",
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "103e0f65_171c6f49",
         "filename": "test/usb_prl_old.c",
         "patchSetId": 1
@@ -136,6 +262,24 @@
       "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "828f8708_27fa0e15",
+        "filename": "test/usb_prl_old.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-22T18:18:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103e0f65_171c6f49",
+      "revId": "98341c8fa5c2dfdb453d5828e46d8d1e3eb43642",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
