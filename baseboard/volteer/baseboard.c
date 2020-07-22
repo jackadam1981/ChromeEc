@@ -73,6 +73,7 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /******************************************************************************/
 /* BC1.2 charger detect configuration */
+#ifndef HALVOR_USBC_PORT
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	[USBC_PORT_C0] = {
 		.i2c_port = I2C_PORT_USB_C0,
@@ -84,7 +85,7 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
-
+#endif
 /******************************************************************************/
 /* Wake up pins */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -240,6 +241,7 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 /******************************************************************************/
 /* USBC TCPC configuration */
+#ifndef HALVOR_USBC_PORT
 struct tcpc_config_t tcpc_config[] = {
 	[USBC_PORT_C0] = {
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -343,7 +345,7 @@ int ppc_get_alert_status(int port)
 	else
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
-
+#endif
 void tcpc_alert_event(enum gpio_signal signal)
 {
 	/* TODO: b/140572591 - check correct operation for Volteer */
