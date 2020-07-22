@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a980fb5_34259b1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-22T01:27:00Z",
+      "side": 1,
+      "message": "I think the better way is that before bc12 detection, we should ensure they are not PD capable.\n\nA PD capable peripheral can\u0027t be a BC1.2 device, so we can fix the detection problem.",
+      "revId": "1de6c7d440bfbc84b16d755bb5019114bc05e8bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
