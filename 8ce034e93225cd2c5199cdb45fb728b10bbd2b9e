@@ -70,6 +70,30 @@
       "revId": "8ce034e93225cd2c5199cdb45fb728b10bbd2b9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed9fdd31_71f9f096",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-22T18:06:26Z",
+      "side": 1,
+      "message": "good idea, let me add this and cover private-cr52 as well",
+      "parentUuid": "c60ec2cb_10d69cac",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 6
+      },
+      "revId": "8ce034e93225cd2c5199cdb45fb728b10bbd2b9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
