@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "98784acc_b15fe804",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-22T19:08:15Z",
+      "side": 1,
+      "message": "Test in the same CL is appropriate.",
+      "parentUuid": "9f80ad42_b9e93187",
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebce2997_a18bd751",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
