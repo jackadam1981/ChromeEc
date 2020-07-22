@@ -22,6 +22,30 @@
       "revId": "1a8d20a946a74bc35b1650a6bb813183d1552498",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cad03c56_a10e5fe9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2500,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-22T01:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c540038a_4f0f8c12",
+      "range": {
+        "startLine": 2500,
+        "startChar": 0,
+        "endLine": 2500,
+        "endChar": 3
+      },
+      "revId": "1a8d20a946a74bc35b1650a6bb813183d1552498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
