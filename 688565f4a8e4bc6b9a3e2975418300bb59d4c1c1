@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b29ecd58_1381e630",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-23T18:49:48Z",
+      "side": 1,
+      "message": "Maybe better to use STM32_DMAMUX for consistency and versatility?\n\n#ifdef STM32_DMAMUX_CxCR\n...\n#elif defined(STM32_DMA_CSELR)\n...\n#endif",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "688565f4a8e4bc6b9a3e2975418300bb59d4c1c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01f4e0de_93b0f785",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-23T18:49:48Z",
+      "side": 1,
+      "message": "? This removes dma_select_channel from other families.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "688565f4a8e4bc6b9a3e2975418300bb59d4c1c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
