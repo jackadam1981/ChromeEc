@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "93910171_f8c381fa",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-07-23T06:57:56Z",
+      "side": 1,
+      "message": "The Vendor update specification again as revision. It\u0027s used reg_addr is 0x00 for battery cut-off.",
+      "parentUuid": "6ae6c826_136d6cd7",
+      "revId": "74be52cd84e0831f22fa6ada53717a2d8a9774ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71e3e8c6_220dcc8b",
         "filename": "board/fleex/battery.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "aa2d893f_dedf5a46",
+        "filename": "board/fleex/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-07-23T06:57:56Z",
+      "side": 1,
+      "message": "Please refer Renesas Gauge IC.pdf of b/110076440#comment17.",
+      "parentUuid": "71e3e8c6_220dcc8b",
+      "revId": "74be52cd84e0831f22fa6ada53717a2d8a9774ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ced99a2_edcef0c1",
         "filename": "board/fleex/board.h",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2020-07-22T08:52:48Z",
       "side": 1,
       "message": "nit: please put COS above the LS",
+      "revId": "74be52cd84e0831f22fa6ada53717a2d8a9774ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b70f119_468747ed",
+        "filename": "board/fleex/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-07-23T06:57:56Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5ced99a2_edcef0c1",
       "revId": "74be52cd84e0831f22fa6ada53717a2d8a9774ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
