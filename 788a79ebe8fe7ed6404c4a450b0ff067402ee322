@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "34489767_4dccc914",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4134,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-07-23T18:56:03Z",
+      "side": 1,
+      "message": "I was suggesting adding reference to the spec:\n6.4.4.3.6 Attention - The Attention Command May be used by the Initiator to notify the Responder that it requires service. The value in the Object Position field Shall indicate to which Mode in the Discover Modes Command the VDO refers (see Figure 6-20) and Shall have been used previously in an Enter Mode Command request for an Active Mode.\"\nSince we have not Entered any mode, ignore any Attention packets received at this stage. In addition we can check for value of 000b or 111b in object position field and then ignore it.",
+      "parentUuid": "6edd693f_6d1709bd",
+      "revId": "788a79ebe8fe7ed6404c4a450b0ff067402ee322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a750cc2_8bad2739",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -48,6 +66,30 @@
       "writtenOn": "2020-07-23T16:54:46Z",
       "side": 1,
       "message": "I think we should instead check for anything with command-type REQ and treat it like any other unexpected message, i.e. set PE_FLAGS_MSG_RECEIVED and return VDM_RESULT_NO_ACTION.",
+      "range": {
+        "startLine": 4132,
+        "startChar": 2,
+        "endLine": 4137,
+        "endChar": 29
+      },
+      "revId": "788a79ebe8fe7ed6404c4a450b0ff067402ee322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90250f02_969b4b17",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4137,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-07-23T18:56:03Z",
+      "side": 1,
+      "message": "Do you mean PD_VDO_CMDT(payload[0]) \u003d\u003d CMDT_INIT)? Do you think it will be too aggressive? Considering that previous check is really a violation in spec.",
+      "parentUuid": "7a750cc2_8bad2739",
       "range": {
         "startLine": 4132,
         "startChar": 2,
