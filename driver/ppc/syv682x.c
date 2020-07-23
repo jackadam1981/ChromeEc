@@ -521,7 +521,7 @@ static int syv682x_init(int port)
 		|| (status & SYV682X_STATUS_VSAFE_0V)) {
 		/*
 		 * Disable both power paths,
-		 * set HV_ILIM to 3.3A,
+		 * set HV_ILIM to 3.3A or custom value,
 		 * set 5V_ILIM to 3.3A,
 		 * set HV direction to sink,
 		 * select HV channel.
@@ -545,6 +545,20 @@ static int syv682x_init(int port)
 	} else {
 		/* Dead battery mode, or an existing PD contract is in place */
 		rv = syv682x_vbus_sink_enable(port, 1);
+		if (rv)
+			return rv;
+
+		/* set HV_ILIM to 3.3A or custom value. */
+		rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval);
+		if (rv)
+			return rv;
+#ifdef CONFIG_SYV682X_HV_ILIM_CUSTOM
+		regval |= (CONFIG_SYV682X_HV_ILIM_CUSTOM
+			<< SYV682X_HV_ILIM_BIT_SHIFT);
+#else
+		regval |= (SYV682X_HV_ILIM_3_30 << SYV682X_HV_ILIM_BIT_SHIFT);
+#endif
+		rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
 		if (rv)
 			return rv;
 	}
