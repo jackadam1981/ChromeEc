@@ -231,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "bcfe4731_0d01d092",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-23T17:41:40Z",
+      "side": 1,
+      "message": "resolution is never changed. range may be changed, but that\u0027s rare. ODR is changed depending on the application, so that will happen.\nFor ODR, there is an event sent by the host thread to the motion sensor thread, [see TASK_EVENT_MOTION_ODR_CHANGE event]. On that event, you can collect resolution and range.",
+      "parentUuid": "337b7d64_9fa12267",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83d340aa_a209d3f0",
         "filename": "common/body_detection.c",
         "patchSetId": 3
