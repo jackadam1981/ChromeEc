@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ea4e0ac_b989c6f6",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-23T20:36:03Z",
+      "side": 1,
+      "message": "Instead of relying on a variable external to the flash module, can we actually get the lock status directly from the module (STM32_FLASH_KEYR) or try to set the control register to learn it\u0027s locked?",
+      "range": {
+        "startLine": 379,
+        "startChar": 8,
+        "endLine": 379,
+        "endChar": 23
+      },
+      "revId": "680249351efb8aada4d1904f74eab5a234cbb250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
