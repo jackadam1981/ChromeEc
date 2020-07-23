@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "2f355ae9_165bc241",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-23T21:49:43Z",
+      "side": 1,
+      "message": "Noted in the config.h file.  The intention is to free up flash space for volteer while Keith works on moving an 8k init file out of it.  The config can be used for hubs and dongles in the codebase later though.",
+      "parentUuid": "e7d666f9_d194821d",
+      "revId": "94076486f5876b7a3085e6a01cea82f3371dde30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdb5c88e_548590ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 9
