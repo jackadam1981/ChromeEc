@@ -107,6 +107,46 @@
     },
     {
       "key": {
+        "uuid": "c7f13b37_7c21d596",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-23T16:53:36Z",
+      "side": 1,
+      "message": "This talks about CC_STATUS reads not being valid for sometime after ROLE_CONTROL updates, but I actually don\u0027t see any code changes here after that event?\n\nAlso, is there a bug you can attribute this change to for more context?",
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24f4ca0a_41658504",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-23T16:53:36Z",
+      "side": 1,
+      "message": "If this is the rationale, you should put it in the commit message.",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65272721_8d4d7326",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
