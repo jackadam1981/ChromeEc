@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdb5c88e_548590ad",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-23T20:55:48Z",
+      "side": 1,
+      "message": "Jett: This idiom avoids checkpatch.pl errors WRT to extern declarations, and I don\u0027t need to disable that check in PRESUBMIT.cfg. OTOH, this is verbose and probably kind of surprising to the reader. I guess the eventual end state would be that every identifier of this type has STATIC_IF. WDYT?",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 47
+      },
+      "revId": "94076486f5876b7a3085e6a01cea82f3371dde30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
