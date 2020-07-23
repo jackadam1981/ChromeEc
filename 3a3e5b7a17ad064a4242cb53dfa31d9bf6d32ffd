@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "313aa2bd_4fe916b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-23T05:01:13Z",
+      "side": 1,
+      "message": "Everything in the registers file is applicable to the G4. I\u0027ve didn\u0027t copy and leave alone any section of it. For clarification when you say applicable to G4, do you mean applicable to what\u0027s used in the G4 for honeybuns?",
+      "parentUuid": "6564ff45_007082a3",
+      "revId": "3a3e5b7a17ad064a4242cb53dfa31d9bf6d32ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b4cd285_59397244",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 10
