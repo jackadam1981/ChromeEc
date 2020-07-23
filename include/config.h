@@ -4129,6 +4129,9 @@
 #undef CONFIG_USBC_PPC_SN5S330
 #undef CONFIG_USBC_PPC_SYV682X
 
+/* Board can define SYV682X HV_ILIM setting value. */
+#undef CONFIG_SYV682X_HV_ILIM_CUSTOM
+
 /* PPC is capable of gating the SBU lines. */
 #undef CONFIG_USBC_PPC_SBU
 
