@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "aa73c1e3_a5a4a34a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-07-23T21:00:13Z",
+      "side": 1,
+      "message": "The commit message is misleading. Extended messages can always be sent and received. The only difference is if they are received, without chunking (260 bytes in one go), or with chunking (in 26 byte chunks).",
+      "revId": "94076486f5876b7a3085e6a01cea82f3371dde30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdb5c88e_548590ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 9
