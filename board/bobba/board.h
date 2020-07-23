@@ -69,6 +69,7 @@
 /* Additional PPC second source */
 #define CONFIG_USBC_PPC_SYV682X
 #define CONFIG_USBC_PPC_DEDICATED_INT
+#define CONFIG_SYV682X_HV_ILIM_CUSTOM SYV682X_HV_ILIM_5_50
 
 #ifndef __ASSEMBLER__
 
