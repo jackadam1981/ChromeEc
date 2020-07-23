@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2806a7a3_ac595f04",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-23T05:05:41Z",
+      "side": 1,
+      "message": "Also relevant to the TRM, this variant of G4 is a category 2 device",
+      "parentUuid": "93fe1766_3be0683d",
+      "range": {
+        "startLine": 6,
+        "startChar": 18,
+        "endLine": 6,
+        "endChar": 29
+      },
+      "revId": "9a128df15aa953ff0e65ed079a9af2e91da94fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7fd23d3c_f0d6969a",
         "filename": "chip/stm32/config-stm32g41xb.h",
         "patchSetId": 9
