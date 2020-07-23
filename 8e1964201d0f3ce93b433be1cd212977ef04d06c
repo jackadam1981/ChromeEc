@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae8cf2e5_6db8ed13",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-23T19:59:25Z",
+      "side": 1,
+      "message": "I think we should be able to IS_ENABLED this, right (might need to extern link the state enums though)",
+      "range": {
+        "startLine": 1958,
+        "startChar": 1,
+        "endLine": 1960,
+        "endChar": 0
+      },
+      "revId": "8e1964201d0f3ce93b433be1cd212977ef04d06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

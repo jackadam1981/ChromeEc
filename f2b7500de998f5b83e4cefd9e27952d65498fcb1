@@ -101,6 +101,30 @@
     },
     {
       "key": {
+        "uuid": "ac82024f_14007cac",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-23T19:59:25Z",
+      "side": 1,
+      "message": "I did see that eventually, I thought I removed this comment. That sounds good to me",
+      "parentUuid": "26661e7b_9f292bbe",
+      "range": {
+        "startLine": 1132,
+        "startChar": 16,
+        "endLine": 1132,
+        "endChar": 47
+      },
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cd46cd7_cc7ce0c7",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -248,6 +272,24 @@
     },
     {
       "key": {
+        "uuid": "f8c8b0f8_1a8cff3f",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-23T19:59:25Z",
+      "side": 1,
+      "message": "I would definitively prefer the test to be entire based on message traffic and timing. That is what we really care to assert.",
+      "parentUuid": "cbcc03e3_ebc3e954",
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b77b1065_e5ac424b",
         "filename": "test/usb_pe_drp.c",
         "patchSetId": 3
@@ -259,6 +301,24 @@
       "writtenOn": "2020-07-22T19:46:59Z",
       "side": 1,
       "message": "Jett: I am contemplating setting this up by driving the PE through a PR Swap. Adding a test hook in the PE to set its internal power_role field would be easier but dirtier and more brittle to implementation changes. Thoughts?",
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "146cac74_b29ae614",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-23T19:59:25Z",
+      "side": 1,
+      "message": "I think driving through a PR swap makes sense, although I think a separate test should use start the TC layer from SNK and then the PE layer would be in SNK was well (no PR swap needed)",
+      "parentUuid": "b77b1065_e5ac424b",
       "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
