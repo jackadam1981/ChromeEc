@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5c4c7a7_177233ab",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-23T16:16:27Z",
+      "side": 1,
+      "message": "PD 3.0 only states?",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 341,
+        "endChar": 51
+      },
+      "revId": "30edce9fda0465cdb0a11589862846ece8aee9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e01e36_37cc02e4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-23T16:16:27Z",
+      "side": 1,
+      "message": "Looks like this only checks the extended bit in the header.  Is that a sufficient condition to transition to chunk received, or do we need to know it\u0027s a multi-chunk extended message?",
+      "range": {
+        "startLine": 1952,
+        "startChar": 3,
+        "endLine": 1952,
+        "endChar": 49
+      },
+      "revId": "30edce9fda0465cdb0a11589862846ece8aee9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e59c0ec9_f24b7d89",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3883,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-23T16:16:27Z",
+      "side": 1,
+      "message": "Should probably add a note that a chromebook will be slightly out of compliance without extended messages, since they have batteries and therefore shall support extended battery messages.\n\nHaving said that, it certainly seems preferable for our reference to be slightly out of compliance versus completely out of flash space. And this will be a good option for docks and dongles to take advantage of.",
+      "range": {
+        "startLine": 3882,
+        "startChar": 0,
+        "endLine": 3883,
+        "endChar": 39
+      },
+      "revId": "30edce9fda0465cdb0a11589862846ece8aee9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
