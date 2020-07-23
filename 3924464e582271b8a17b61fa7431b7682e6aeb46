@@ -16,6 +16,92 @@
       "revId": "3924464e582271b8a17b61fa7431b7682e6aeb46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4f7e13c_9ce2546f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-07-23T22:11:26Z",
+      "side": 1,
+      "message": "Sorry about the delay in response.",
+      "revId": "3924464e582271b8a17b61fa7431b7682e6aeb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5355a88_67703d9a",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-07-23T22:11:26Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be `struct usb_mux *`?",
+      "range": {
+        "startLine": 125,
+        "startChar": 44,
+        "endLine": 125,
+        "endChar": 58
+      },
+      "revId": "3924464e582271b8a17b61fa7431b7682e6aeb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d83edacc_2b952cbb",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-07-23T22:11:26Z",
+      "side": 1,
+      "message": "... and \u0026me here? Do we really need to make a copy of entire usb_mux when saving to queue?",
+      "range": {
+        "startLine": 146,
+        "startChar": 38,
+        "endLine": 146,
+        "endChar": 40
+      },
+      "revId": "3924464e582271b8a17b61fa7431b7682e6aeb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b2a65e9_b51333c6",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-07-23T22:11:26Z",
+      "side": 1,
+      "message": "board_get_usb_pd_port_count()?",
+      "range": {
+        "startLine": 292,
+        "startChar": 23,
+        "endLine": 292,
+        "endChar": 51
+      },
+      "revId": "3924464e582271b8a17b61fa7431b7682e6aeb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
