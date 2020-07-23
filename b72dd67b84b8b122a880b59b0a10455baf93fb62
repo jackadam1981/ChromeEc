@@ -16,6 +16,24 @@
       "revId": "b72dd67b84b8b122a880b59b0a10455baf93fb62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab49287f_32a3cc71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-23T15:44:52Z",
+      "side": 1,
+      "message": "That makes sense.  We can add a new CL it to check for whether we\u0027re the one sourcing.  Note you\u0027ll also want this CL to source out reliably and it\u0027s still in the commit queue: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2310861",
+      "parentUuid": "73b868e5_35612c63",
+      "revId": "b72dd67b84b8b122a880b59b0a10455baf93fb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
