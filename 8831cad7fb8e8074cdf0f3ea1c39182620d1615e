@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "373b51b7_2a9d6d64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-07-23T10:00:39Z",
+      "side": 1,
+      "message": "The host command numbers conflicted with crrev.com/c/2216392 so I have to move them :(\nI\u0027ll also submit the corresponding kernel patch to upstream after this is merged.",
+      "revId": "8831cad7fb8e8074cdf0f3ea1c39182620d1615e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
