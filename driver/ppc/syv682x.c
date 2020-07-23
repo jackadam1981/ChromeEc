@@ -138,6 +138,8 @@ static int syv682x_vbus_source_enable(int port, int enable)
 			    SYV682X_CONTROL_1_PWR_ENB);
 		/* Disable HV Sink path */
 		regval |= SYV682X_CONTROL_1_HV_DR;
+		/* Set source current limit to 3.3A */
+		regval |= (SYV682X_HV_ILIM_3_30 << SYV682X_HV_ILIM_BIT_SHIFT);
 	} else if (flags[port] & SYV682X_FLAGS_SOURCE_ENABLED) {
 		/*
 		 * For the disable case, make sure that VBUS was being sourced
@@ -297,6 +299,13 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 		/* Select Sink mode and turn on the channel */
 		regval &= ~(SYV682X_CONTROL_1_HV_DR |
 			    SYV682X_CONTROL_1_PWR_ENB);
+		/* Set sink current limit to 3.3A or custom value */
+#ifdef CONFIG_SYV682X_HV_ILIM_CUSTOM
+		regval |= (CONFIG_SYV682X_HV_ILIM_CUSTOM
+			<< SYV682X_HV_ILIM_BIT_SHIFT);
+#else
+		regval |= (SYV682X_HV_ILIM_3_30 << SYV682X_HV_ILIM_BIT_SHIFT);
+#endif
 		flags[port] &= ~SYV682X_FLAGS_SOURCE_ENABLED;
 	} else {
 		/*
@@ -618,19 +627,10 @@ static int syv682x_init(int port)
 		 * set HV direction to sink,
 		 * select HV channel.
 		 */
-#ifdef CONFIG_SYV682X_HV_ILIM_CUSTOM
-		regval = SYV682X_CONTROL_1_PWR_ENB |
-			(CONFIG_SYV682X_HV_ILIM_CUSTOM
-			<< SYV682X_HV_ILIM_BIT_SHIFT) |
-			/* !SYV682X_CONTROL_1_HV_DR */
-			SYV682X_CONTROL_1_CH_SEL;
-
-#else
 		regval = SYV682X_CONTROL_1_PWR_ENB |
 			(SYV682X_HV_ILIM_3_30 << SYV682X_HV_ILIM_BIT_SHIFT) |
 			/* !SYV682X_CONTROL_1_HV_DR */
 			SYV682X_CONTROL_1_CH_SEL;
-#endif
 		rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
 		if (rv)
 			return rv;
