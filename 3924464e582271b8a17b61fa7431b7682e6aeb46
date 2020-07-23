@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "1cc54765_1cd732a8",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-23T22:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5355a88_67703d9a",
+      "range": {
+        "startLine": 125,
+        "startChar": 44,
+        "endLine": 125,
+        "endChar": 58
+      },
+      "revId": "3924464e582271b8a17b61fa7431b7682e6aeb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d83edacc_2b952cbb",
         "filename": "driver/usb_mux/amd_fp5.c",
         "patchSetId": 2
@@ -82,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "691d5cb9_6b63e78b",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-23T22:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d83edacc_2b952cbb",
+      "range": {
+        "startLine": 146,
+        "startChar": 38,
+        "endLine": 146,
+        "endChar": 40
+      },
+      "revId": "3924464e582271b8a17b61fa7431b7682e6aeb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b2a65e9_b51333c6",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 2
@@ -102,6 +150,30 @@
       "revId": "3924464e582271b8a17b61fa7431b7682e6aeb46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "932fde30_37cb7fb5",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-23T22:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b2a65e9_b51333c6",
+      "range": {
+        "startLine": 292,
+        "startChar": 23,
+        "endLine": 292,
+        "endChar": 51
+      },
+      "revId": "3924464e582271b8a17b61fa7431b7682e6aeb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
