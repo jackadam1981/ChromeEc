@@ -16,6 +16,23 @@
       "revId": "0334da773d8c56f96a51279429000964c5fe571f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c4e27b5_66722c6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-23T13:49:06Z",
+      "side": 1,
+      "message": "It falls to a known issue which randomly breaks the build (crbug.com/1106271) so not show the problem of this CL itself.",
+      "revId": "0334da773d8c56f96a51279429000964c5fe571f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
