@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "414ecea5_d98b92a9",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-23T14:13:49Z",
+      "side": 1,
+      "message": "Referring to register map, the HV_ILIM is described for source current limit only. But referring to Electrical Characteristics, ILIM_HV is pointed to source / sink current limit. Therefore could we double check with Vendor?",
+      "range": {
+        "startLine": 651,
+        "startChar": 37,
+        "endLine": 651,
+        "endChar": 62
+      },
+      "revId": "cdc65cef145dc3701bb8b85b48c1fb32cc32d7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bfce8f1_ed0bd334",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-23T14:13:49Z",
+      "side": 1,
+      "message": "If we really need it for source and current paths then we can just do it once out of this if-else?",
+      "range": {
+        "startLine": 653,
+        "startChar": 7,
+        "endLine": 653,
+        "endChar": 16
+      },
+      "revId": "cdc65cef145dc3701bb8b85b48c1fb32cc32d7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
