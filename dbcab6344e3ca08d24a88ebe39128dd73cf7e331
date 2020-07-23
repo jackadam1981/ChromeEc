@@ -52,6 +52,24 @@
       "revId": "dbcab6344e3ca08d24a88ebe39128dd73cf7e331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fb18216_ce9c7c71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-07-23T01:39:33Z",
+      "side": 1,
+      "message": "I spent over a month trying to get that to work and Mike said he needs the software to be completed before EVT. I could move the Sink state machine to common and we could work on the FUSB302 driver at a later date.",
+      "parentUuid": "b5370662_70ba90f7",
+      "revId": "dbcab6344e3ca08d24a88ebe39128dd73cf7e331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
