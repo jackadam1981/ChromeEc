@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9eaaa2e_1fee491f",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-23T18:29:59Z",
+      "side": 1,
+      "message": "This assumes that all ports have a virtual mux driver setup.  The configure_mux() also walks the the mux-\u003enext_mux list which could wake up the downstream mux, but won\u0027t but it back to sleep. In particular the Volteer USB3 DB, has tcpci_tcpm_usb_mux_driver setup downstream and the TCPCI driver auto-wakes on any register access.\n\nI think you should remove this optimization.  If we really wanted to do something like this, we would need to track which mux types support reading mux status while in low power mode and would have to coordinate this with the entire mux-\u003enext_mux list.",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 0
+      },
+      "revId": "41579d38f13e35cbe807f37072e19d1b96eec864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
