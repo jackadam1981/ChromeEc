@@ -16,6 +16,29 @@
       "revId": "7902bdc14f32bb881a775a167189e18a13a6c926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2e2405a_006c87a8",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-23T17:42:00Z",
+      "side": 1,
+      "message": "nit: does the styleguide suggest spaces on both sides of a pipe operator?",
+      "range": {
+        "startLine": 221,
+        "startChar": 38,
+        "endLine": 221,
+        "endChar": 40
+      },
+      "revId": "7902bdc14f32bb881a775a167189e18a13a6c926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
