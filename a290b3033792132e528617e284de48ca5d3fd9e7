@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "3c2d6a19_54c3ac7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-23T17:38:19Z",
+      "side": 1,
+      "message": "\u003e Patch Set 3:\n\u003e \n\u003e I put one example on-body and one example off-body data here. Please check. The example data and instructions are shown in this folder. https://drive.google.com/corp/drive/u/0/folders/1DiDi71fZ_lg6GAqhRYYlNyCujUn3h5qe\n\nThe On-body data is okay.\nBut, the OnOff data seems to be not right. I think it is the data of picking up a stationary device to on-body.\nCan you give me another on-body to off-body data?",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd7d89e1_2a02812d",
         "filename": "common/body_detection.c",
         "patchSetId": 3
