@@ -3377,6 +3377,18 @@
 #undef CONFIG_USBC_PPC_SN5S330
 #undef CONFIG_USBC_PPC_SYV682X
 
+<<<<<<< HEAD   (1ceeb4 casta : set a charging voltage limit)
+=======
+/*
+ * SYV682x PPC high voltage power path current limit.  Default limit is
+ * 3.3A.  See the syv682x header file for permissible values.
+ */
+#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_3_30
+
+/* PPC is capable of gating the SBU lines. */
+#undef CONFIG_USBC_PPC_SBU
+
+>>>>>>> CHANGE (4b197c syv682x: set CONFIG_SYV682X_HV_ILIM for set HV_ILIM)
 /* PPC is capable of providing VCONN */
 #undef CONFIG_USBC_PPC_VCONN
 
