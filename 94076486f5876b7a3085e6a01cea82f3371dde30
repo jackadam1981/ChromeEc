@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "860ca79c_5f5d6e93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-23T21:13:36Z",
+      "side": 1,
+      "message": "My intention was to actually Not Support any extended messages, although I may have missed something.\n\nNot Supporting extended messages entirely appears to be basically spec compliant (with the caveat that devices with batteries are required to support Get Battery Cap and Get Battery Status). If we support extended messages, we are required to support chunking.",
+      "parentUuid": "aa73c1e3_a5a4a34a",
+      "revId": "94076486f5876b7a3085e6a01cea82f3371dde30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdb5c88e_548590ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 9
