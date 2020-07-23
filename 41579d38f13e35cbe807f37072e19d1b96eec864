@@ -46,6 +46,30 @@
       "revId": "41579d38f13e35cbe807f37072e19d1b96eec864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca6e173_38630fac",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-07-23T19:16:56Z",
+      "side": 1,
+      "message": "IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) doesn\u0027t take port number into account. So does it mean if one port is configured as virtual and other one isn\u0027t then we will fail?\nIf yes. then does sound like we should remove the check for Virtual mux.",
+      "parentUuid": "70371528_155793d1",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 0
+      },
+      "revId": "41579d38f13e35cbe807f37072e19d1b96eec864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
