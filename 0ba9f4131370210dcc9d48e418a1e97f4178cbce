@@ -152,6 +152,24 @@
       "revId": "0ba9f4131370210dcc9d48e418a1e97f4178cbce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b03fa12e_32f77800",
+        "filename": "driver/usb_mux/amd_fp5.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-23T02:34:39Z",
+      "side": 1,
+      "message": "Done. Having to add a queue for the delay seems a shame though.",
+      "parentUuid": "ec1db7fa_045d12cd",
+      "revId": "0ba9f4131370210dcc9d48e418a1e97f4178cbce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
