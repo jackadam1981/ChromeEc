@@ -124,6 +124,23 @@
     },
     {
       "key": {
+        "uuid": "d7cd64dc_fa3cba55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-23T22:52:51Z",
+      "side": 1,
+      "message": "Did a basic smoke test on waddledoo and a sinking dongle, sourcing dongle, charger, and servo v4 connected fine.  I should check waddledee tomorrow (it only has one external TCPC, but due to the internal TCPC and how our configs work that means it doesn\u0027t use toggling or low power mode)",
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24f4ca0a_41658504",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -140,6 +157,29 @@
         "startChar": 2,
         "endLine": 118,
         "endChar": 3
+      },
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4dd40f6_9afb1ac7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-23T22:52:51Z",
+      "side": 1,
+      "message": "How does this get set the first time?  Is it invalid until we get a CC status alert?",
+      "range": {
+        "startLine": 119,
+        "startChar": 20,
+        "endLine": 119,
+        "endChar": 36
       },
       "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
