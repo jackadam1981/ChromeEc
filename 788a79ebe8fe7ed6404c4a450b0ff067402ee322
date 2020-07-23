@@ -16,6 +16,47 @@
       "revId": "788a79ebe8fe7ed6404c4a450b0ff067402ee322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6edd693f_6d1709bd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4134,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-23T16:54:46Z",
+      "side": 1,
+      "message": "To which comment are you referring?",
+      "parentUuid": "15515d34_aeca5550",
+      "revId": "788a79ebe8fe7ed6404c4a450b0ff067402ee322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a750cc2_8bad2739",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-23T16:54:46Z",
+      "side": 1,
+      "message": "I think we should instead check for anything with command-type REQ and treat it like any other unexpected message, i.e. set PE_FLAGS_MSG_RECEIVED and return VDM_RESULT_NO_ACTION.",
+      "range": {
+        "startLine": 4132,
+        "startChar": 2,
+        "endLine": 4137,
+        "endChar": 29
+      },
+      "revId": "788a79ebe8fe7ed6404c4a450b0ff067402ee322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
