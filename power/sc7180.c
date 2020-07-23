@@ -735,6 +735,62 @@ void chipset_reset(enum chipset_reset_reason reason)
 	}
 }
 
+
+static void suspend_hang_detected(void)
+{
+	CPRINTS("Warning: Detected sleep hang! Waking host up!");
+	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+}
+
+static void power_reset_host_sleep_state(void)
+{
+	power_set_host_sleep_state(HOST_SLEEP_EVENT_DEFAULT_RESET);
+	sleep_reset_tracking();
+	power_chipset_handle_host_sleep_event(HOST_SLEEP_EVENT_DEFAULT_RESET,
+					      NULL);
+}
+
+static void handle_chipset_reset(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_STANDBY)) {
+		CPRINTS("Chipset reset: exit s3");
+		power_reset_host_sleep_state();
+		task_wake(TASK_ID_CHIPSET);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
+
+__override void power_chipset_handle_host_sleep_event(
+		enum host_sleep_event state,
+		struct host_sleep_event_context *ctx)
+{
+	CPRINTS("Handle sleep: %d", state);
+
+	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
+		/*
+		 * Indicate to power state machine that a new host event for
+		 * S3 suspend has been received and so chipset suspend
+		 * notification needs to be sent to listeners.
+		 */
+		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
+		sleep_start_suspend(ctx, suspend_hang_detected);
+		power_signal_enable_interrupt(GPIO_AP_SUSPEND);
+
+	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
+		/*
+		 * Wake up chipset task and indicate to power state machine that
+		 * listeners need to be notified of chipset resume.
+		 */
+		sleep_set_notify(SLEEP_NOTIFY_RESUME);
+		task_wake(TASK_ID_CHIPSET);
+		power_signal_disable_interrupt(GPIO_AP_SUSPEND);
+		sleep_complete_resume(ctx);
+
+	} else if (state == HOST_SLEEP_EVENT_DEFAULT_RESET) {
+		power_signal_disable_interrupt(GPIO_AP_SUSPEND);
+	}
+}
+
 /**
  * Power handler for steady states
  *
@@ -794,6 +850,12 @@ enum power_state power_handle_state(enum power_state state)
 
 		/* Call hooks now that AP is running */
 		hook_notify(HOOK_CHIPSET_STARTUP);
+
+		/*
+		 * Clearing the sleep failure detection tracking on the path
+		 * to S0 to handle any reset conditions.
+		 */
+		power_reset_host_sleep_state();
 		return POWER_S3;
 
 	case POWER_S3:
@@ -822,14 +884,31 @@ enum power_state power_handle_state(enum power_state state)
 		break;
 
 	case POWER_S3S0:
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+		/*
+		 * Notify the resume init hooks, i.e. enabling SPI slave
+		 * to receive host commands/events. The resume hook will
+		 * be notified later, after receive a host resume event.
+		 */
+		hook_notify(HOOK_CHIPSET_RESUME_INIT);
+#else
 		hook_notify(HOOK_CHIPSET_RESUME);
+#endif
+		sleep_resume_transition();
 		return POWER_S0;
 
 	case POWER_S0:
 		shutdown_from_s0 = check_for_power_off_event();
-		if (shutdown_from_s0 ||
-		    power_get_signals() & IN_SUSPEND)
+		if (shutdown_from_s0) {
 			return POWER_S0S3;
+		} else if (power_get_host_sleep_state()
+					== HOST_SLEEP_EVENT_S3_SUSPEND &&
+				power_get_signals() & IN_SUSPEND) {
+			return POWER_S0S3;
+		} else {
+			sleep_notify_transition(SLEEP_NOTIFY_RESUME,
+						HOOK_CHIPSET_RESUME);
+		}
 		break;
 
 	case POWER_S0S3:
@@ -840,8 +919,23 @@ enum power_state power_handle_state(enum power_state state)
 		if (power_button_was_pressed)
 			timer_cancel(TASK_ID_CHIPSET);
 
-		/* Call hooks here since we don't know it prior to AP suspend */
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+		/*
+		 * Pair with the HOOK_CHIPSET_RESUME_INIT, i.e. disabling SPI
+		 * slave.
+		 */
+		hook_notify(HOOK_CHIPSET_SUSPEND_COMPLETE);
+#else
 		hook_notify(HOOK_CHIPSET_SUSPEND);
+#endif
+		/*
+		 * Call hooks only if we haven't notified listeners of S3
+		 * suspend.
+		 */
+		sleep_notify_transition(SLEEP_NOTIFY_SUSPEND,
+					HOOK_CHIPSET_SUSPEND);
+		sleep_suspend_transition();
+
 		return POWER_S3;
 
 	case POWER_S3S5:
