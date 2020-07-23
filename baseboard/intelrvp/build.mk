@@ -10,7 +10,13 @@
 baseboard-y=baseboard.o
 baseboard-$(CONFIG_LED_COMMON)+=led.o led_states.o
 baseboard-$(CONFIG_BATTERY_SMART)+=battery.o
-baseboard-$(CONFIG_USB_POWER_DELIVERY)+=chg_usb_pd.o usb_pd_policy.o
+
+ifeq ($(CONFIG_USB_POWER_DELIVERY),y)
+baseboard-y+=chg_usb_pd.o
+ifeq ($(CONFIG_INTEL_RVP_MECC_VERSION_0_9),y)
+baseboard-y+=chg_usb_pd_mecc_0_9.o usb_pd_policy_mecc_0_9.o
+endif
+endif
 
 #EC specific files
 baseboard-$(VARIANT_INTELRVP_EC_IT8320)+=ite_ec.o
