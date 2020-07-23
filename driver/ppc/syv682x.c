@@ -618,10 +618,19 @@ static int syv682x_init(int port)
 		 * set HV direction to sink,
 		 * select HV channel.
 		 */
+#ifdef CONFIG_SYV682X_HV_ILIM_CUSTOM
+		regval = SYV682X_CONTROL_1_PWR_ENB |
+			(CONFIG_SYV682X_HV_ILIM_CUSTOM
+			<< SYV682X_HV_ILIM_BIT_SHIFT) |
+			/* !SYV682X_CONTROL_1_HV_DR */
+			SYV682X_CONTROL_1_CH_SEL;
+
+#else
 		regval = SYV682X_CONTROL_1_PWR_ENB |
 			(SYV682X_HV_ILIM_3_30 << SYV682X_HV_ILIM_BIT_SHIFT) |
 			/* !SYV682X_CONTROL_1_HV_DR */
 			SYV682X_CONTROL_1_CH_SEL;
+#endif
 		rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
 		if (rv)
 			return rv;
