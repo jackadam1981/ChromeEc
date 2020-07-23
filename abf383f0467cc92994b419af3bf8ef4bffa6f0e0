@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ea963b3_a7834a84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-23T09:38:52Z",
+      "side": 1,
+      "message": "Hi all,\n\nThis is the version for gather your feedback first and if the direction is ok then I will re-fine it further for the formal review. Thanks.",
+      "revId": "abf383f0467cc92994b419af3bf8ef4bffa6f0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd3137b4_bdc4f91e",
+        "filename": "board/bobba/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-23T09:38:52Z",
+      "side": 1,
+      "message": "* This is just the example to test the case of 8755 in a board.\n* On the other hand, looks like the slave address of PS8XXXX can be the same so we can normally work on a single address to query the product_id in runtime.\n* But regarding EC_CMD_PD_CHIP_INFO in the depthcharge for firmware update, it set live as 0 so I suspect we want to deal with the situation where the FW is abnormal so product_id from chip might be wrong. In this case the function here is valid and important to recover them?",
+      "revId": "abf383f0467cc92994b419af3bf8ef4bffa6f0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e20bda9a_a904a2fd",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-07-23T09:38:52Z",
+      "side": 1,
+      "message": "I don\u0027t work on optimize or merge these functions together here and b/161202452 is ongoing to discuss this direction.",
+      "revId": "abf383f0467cc92994b419af3bf8ef4bffa6f0e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
