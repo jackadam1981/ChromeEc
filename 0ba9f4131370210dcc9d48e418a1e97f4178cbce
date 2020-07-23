@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c91c7986_bdbaa68d",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-07-23T00:29:06Z",
+      "side": 1,
+      "message": "I asked because we probably need to know when exactly AP is ready to accept the MUX configuration. Is it when SMU or some SoC component comes out of reset or if it requires FSP/AGESA to perform some initialization before it can accept the MUX configuration? If it is the former, then we this delay would probably work fine. If it is the latter, then the timing can change depending upon boot mode, serial console enabled BIOS v/s not, etc. So, that might have to be taken into account as well.\n\nHave we already checked with AMD about this? Or is this captured in some programming guide?",
+      "parentUuid": "8924d144_b4ba2495",
+      "range": {
+        "startLine": 321,
+        "startChar": 42,
+        "endLine": 321,
+        "endChar": 52
+      },
+      "revId": "0ba9f4131370210dcc9d48e418a1e97f4178cbce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf5cae9f_49d81a0e",
         "filename": "driver/usb_mux/amd_fp5.c",
         "patchSetId": 1
