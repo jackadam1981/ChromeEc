@@ -34,6 +34,24 @@
       "revId": "c0a8e2c4a19e3774a6d8544c943a5d5ee6153f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a2451d_751b68d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-23T19:34:02Z",
+      "side": 1,
+      "message": "I can\u0027t think of anything better to make IS_ENABLED work. I would rather on the few occassions that we needed to use externs, that the developer would ignore that presubmit (versus disabling it all the time)",
+      "parentUuid": "c862aee7_d8c68ea0",
+      "revId": "c0a8e2c4a19e3774a6d8544c943a5d5ee6153f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
