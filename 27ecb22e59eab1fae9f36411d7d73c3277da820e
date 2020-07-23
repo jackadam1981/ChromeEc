@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "116f0c43_ec02fa32",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-23T17:50:09Z",
+      "side": 1,
+      "message": "replaced echo and print with printf to prevent the addition of the trailing newline",
+      "range": {
+        "startLine": 214,
+        "startChar": 20,
+        "endLine": 214,
+        "endChar": 26
+      },
+      "revId": "27ecb22e59eab1fae9f36411d7d73c3277da820e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
