@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c84e943d_bd2f28e6",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-07-24T03:09:42Z",
+      "side": 1,
+      "message": "I think it depend on HV_DR for current limit on sink/source.\nOr we should always set different HV_ILIM in sink/source enable?",
+      "parentUuid": "414ecea5_d98b92a9",
+      "range": {
+        "startLine": 651,
+        "startChar": 37,
+        "endLine": 651,
+        "endChar": 62
+      },
+      "revId": "cdc65cef145dc3701bb8b85b48c1fb32cc32d7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bfce8f1_ed0bd334",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-23T14:13:49Z",
       "side": 1,
       "message": "If we really need it for source and current paths then we can just do it once out of this if-else?",
+      "range": {
+        "startLine": 653,
+        "startChar": 7,
+        "endLine": 653,
+        "endChar": 16
+      },
+      "revId": "cdc65cef145dc3701bb8b85b48c1fb32cc32d7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c328b7b_8cf2f83c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-07-24T03:09:42Z",
+      "side": 1,
+      "message": "I think we can move it to sink/source enable function to set current limit.",
+      "parentUuid": "4bfce8f1_ed0bd334",
       "range": {
         "startLine": 653,
         "startChar": 7,
