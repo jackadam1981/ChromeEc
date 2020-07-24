@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33e23b31_d0afa633",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-24T19:30:11Z",
+      "side": 1,
+      "message": "These are the same as config_std_internal_flash.h. It has CONFIG_SHAREDLIB_MEM_OFF but you\u0027re not using sharedlib. Can you use config_std_internal_flash.h?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 64
+      },
+      "revId": "b6699c682f3f98e01544a26ef0c3a9fe6d212d0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
