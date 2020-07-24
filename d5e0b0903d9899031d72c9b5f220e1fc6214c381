@@ -205,6 +205,30 @@
       "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62bdd7bc_06290e43",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-24T15:39:06Z",
+      "side": 1,
+      "message": "I do like the hook approach better. It decouples the driver and PD common code on existing API boundaries.\n\nMy only ask if if we could do it for TCPMv1 as well? What is the downside or harmful effect on TCPMv1? Could we either 1) use the connect hook in both or 2) comment why we cannot use the hook for TCPMv1 in the code",
+      "parentUuid": "f7dafeb4_bba530fb",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 651,
+        "endChar": 55
+      },
+      "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
