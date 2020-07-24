@@ -61,8 +61,14 @@ struct u2f_key_handle {
 struct u2f_versioned_key_handle {
 	uint8_t version;
 	uint8_t origin_seed[U2F_P256_SIZE];
-	uint8_t hmac[U2F_P256_SIZE];
+	uint8_t kh_hmac[U2F_P256_SIZE];
+	/* Optionally checked in u2f_sign. */
+	uint8_t authorization_seed[U2F_P256_SIZE];
+	uint8_t authorization_hmac[U2F_P256_SIZE];
 };
+
+/* Length of the part in versioned KHs used in keypair derivation. */
+#define U2F_VKH_KEYPAIR_INPUT_LEN 65
 
 /* TODO(louiscollard): Add Descriptions. */
 
@@ -70,6 +76,11 @@ struct u2f_generate_req {
 	uint8_t appId[U2F_APPID_SIZE]; /* Application id */
 	uint8_t userSecret[U2F_P256_SIZE];
 	uint8_t flags;
+	/*
+	 * If generating versioned KH, derive an hmac from it and append to
+	 * the key handle. Otherwise unused.
+	 */
+	uint8_t authTimeSecretHash[U2F_P256_SIZE];
 };
 
 struct u2f_generate_resp {
@@ -93,6 +104,7 @@ struct u2f_sign_req {
 struct u2f_sign_versioned_req {
 	uint8_t appId[U2F_APPID_SIZE]; /* Application id */
 	uint8_t userSecret[U2F_P256_SIZE];
+	uint8_t authTimeSecret[U2F_P256_SIZE];
 	uint8_t hash[U2F_P256_SIZE];
 	uint8_t flags;
 	struct u2f_versioned_key_handle keyHandle;

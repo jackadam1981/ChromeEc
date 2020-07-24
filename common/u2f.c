@@ -127,8 +127,14 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 		struct u2f_key_handle kh;
 		struct u2f_versioned_key_handle vkh;
 	} kh_buf;
-	size_t kh_size = (kh_version == 0) ? sizeof(kh_buf.kh) :
-					     sizeof(kh_buf.vkh);
+	size_t keypair_input_size = (kh_version == 0) ?
+					    sizeof(kh_buf.kh) :
+					    U2F_VKH_KEYPAIR_INPUT_LEN;
+
+	/* Authorization hmac for versioned key handles. */
+	/* Generate the seed outside the keyhandle for alignment. */
+	uint8_t authorization_seed[P256_NBYTES] __aligned(4);
+	uint8_t authorization_hmac[P256_NBYTES];
 
 	/* Whether key handle generation succeeded */
 	int generate_kh_rc;
@@ -161,20 +167,30 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 		if (!DCRYPTO_ladder_random(&od_seed))
 			return VENDOR_RC_INTERNAL_ERROR;
 
-		if (kh_version == 0)
+		if (kh_version == 0) {
 			generate_kh_rc = u2f_origin_user_keyhandle(
 				req->appId, req->userSecret, od_seed,
 				&kh_buf.kh);
-		else
+		} else {
+			if (!DCRYPTO_ladder_random(authorization_seed))
+				return VENDOR_RC_INTERNAL_ERROR;
+
+			if (u2f_authorization_hmac(
+				    authorization_seed, req->authTimeSecretHash,
+				    authorization_hmac) != EC_SUCCESS)
+				return VENDOR_RC_INTERNAL_ERROR;
+
 			generate_kh_rc = u2f_origin_user_versioned_keyhandle(
 				req->appId, req->userSecret, od_seed,
 				kh_version, &kh_buf.vkh);
+		}
 
 		if (generate_kh_rc != EC_SUCCESS)
 			return VENDOR_RC_INTERNAL_ERROR;
 
 		generate_keypair_rc = u2f_origin_user_keypair(
-			(uint8_t *)&kh_buf, kh_size, &od, &opk_x, &opk_y);
+			(uint8_t *)&kh_buf, keypair_input_size, &od, &opk_x,
+			&opk_y);
 	} while (generate_keypair_rc == EC_ERROR_TRY_AGAIN);
 
 	if (generate_keypair_rc != EC_SUCCESS)
@@ -188,6 +204,10 @@ static enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 		copy_kh_pubkey_out(&opk_x, &opk_y, &kh_buf.kh, buf);
 		*response_size = sizeof(struct u2f_generate_resp);
 	} else {
+		memcpy(&kh_buf.vkh.authorization_seed, authorization_seed,
+		       P256_NBYTES);
+		memcpy(&kh_buf.vkh.authorization_hmac, authorization_hmac,
+		       P256_NBYTES);
 		copy_versioned_kh_pubkey_out(&opk_x, &opk_y, &kh_buf.vkh, buf);
 		*response_size = sizeof(struct u2f_generate_versioned_resp);
 	}
@@ -264,7 +284,7 @@ verify_versioned_kh_owned(const uint8_t *user_secret, const uint8_t *app_id,
 
 	if (rc == EC_SUCCESS)
 		*owned = safe_memcmp(&recreated_kh, key_handle,
-				     sizeof(recreated_kh)) == 0;
+				     U2F_VKH_KEYPAIR_INPUT_LEN) == 0;
 
 	return rc;
 }
@@ -321,8 +341,8 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 	/* Version of KH; 0 if KH is not versioned. */
 	uint8_t version;
 
-	/* Size of KH in bytes. */
-	size_t kh_size;
+	/* Size of the part of KH used to derive keypair, in bytes. */
+	size_t keypair_input_size;
 
 	int verify_owned_rc;
 
@@ -334,7 +354,7 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 		key_handle = (uint8_t *)&req->keyHandle;
 		hash = req->hash;
 		flags = req->flags;
-		kh_size = sizeof(struct u2f_key_handle);
+		keypair_input_size = sizeof(struct u2f_key_handle);
 		verify_owned_rc = verify_kh_owned(req->userSecret, req->appId,
 						  &req->keyHandle, &kh_owned);
 	} else if (input_size == sizeof(struct u2f_sign_versioned_req)) {
@@ -342,7 +362,7 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 		key_handle = (uint8_t *)&req_versioned->keyHandle;
 		hash = req_versioned->hash;
 		flags = req_versioned->flags;
-		kh_size = sizeof(struct u2f_versioned_key_handle);
+		keypair_input_size = U2F_VKH_KEYPAIR_INPUT_LEN;
 		verify_owned_rc = verify_versioned_kh_owned(
 			req_versioned->userSecret, req_versioned->appId,
 			&req_versioned->keyHandle, &kh_owned);
@@ -378,17 +398,28 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 	if ((flags & U2F_AUTH_CHECK_ONLY) == U2F_AUTH_CHECK_ONLY)
 		return VENDOR_RC_SUCCESS;
 
-	/* Always enforce user presence, with optional consume. */
-	if (pop_check_presence(flags & G2F_CONSUME) != POP_TOUCH_YES)
-		return VENDOR_RC_NOT_ALLOWED;
+	/*
+	 * Enforce user presence for version 0 KHs, with optional consume.
+	 */
+	if (pop_check_presence(flags & G2F_CONSUME) != POP_TOUCH_YES) {
+		if (version != U2F_KH_VERSION_1)
+			return VENDOR_RC_NOT_ALLOWED;
+		if ((flags & U2F_AUTH_FLAG_TUP) != 0)
+			return VENDOR_RC_NOT_ALLOWED;
+		/*
+		 * TODO(yichengli): When auth-time secrets is ready, enforce
+		 * authorization hmac when no power button press.
+		 */
+	}
 
 	/* Re-create origin-specific key. */
 	if (legacy_kh) {
 		if (u2f_origin_key(legacy_origin_seed, &origin_d) != EC_SUCCESS)
 			return VENDOR_RC_INTERNAL_ERROR;
 	} else {
-		if (u2f_origin_user_keypair(key_handle, kh_size, &origin_d,
-					    NULL, NULL) != EC_SUCCESS)
+		if (u2f_origin_user_keypair(key_handle, keypair_input_size,
+					    &origin_d, NULL,
+					    NULL) != EC_SUCCESS)
 			return VENDOR_RC_INTERNAL_ERROR;
 	}
 

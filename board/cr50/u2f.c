@@ -218,7 +218,8 @@ int u2f_origin_user_versioned_keyhandle(
 	HASH_update(&ctx.hash, origin_seed, P256_NBYTES);
 	HASH_update(&ctx.hash, &version, sizeof(key_handle->version));
 
-	memcpy(key_handle->hmac, DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
+	memcpy(key_handle->kh_hmac, DCRYPTO_HMAC_final(&ctx),
+	       SHA256_DIGEST_SIZE);
 
 	return EC_SUCCESS;
 }
@@ -246,6 +247,24 @@ int u2f_origin_user_keypair(const uint8_t *key_handle, size_t key_handle_size,
 
 	if (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d, key_seed))
 		return EC_ERROR_TRY_AGAIN;
+
+	return EC_SUCCESS;
+}
+
+int u2f_authorization_hmac(const uint8_t *authorization_seed,
+			   const uint8_t *auth_time_secret_hash, uint8_t *hmac)
+{
+	LITE_HMAC_CTX ctx;
+	struct u2f_state *state = get_state();
+
+	if (!state)
+		return EC_ERROR_UNKNOWN;
+
+	DCRYPTO_HMAC_SHA256_init(&ctx, state->salt_kek, SHA256_DIGEST_SIZE);
+	HASH_update(&ctx.hash, authorization_seed, P256_NBYTES);
+	HASH_update(&ctx.hash, auth_time_secret_hash, P256_NBYTES);
+
+	memcpy(hmac, DCRYPTO_HMAC_final(&ctx), SHA256_DIGEST_SIZE);
 
 	return EC_SUCCESS;
 }
