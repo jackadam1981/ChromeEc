@@ -159,6 +159,42 @@
     },
     {
       "key": {
+        "uuid": "5e9ea5b6_14eb71b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-24T22:18:30Z",
+      "side": 1,
+      "message": "When you get a chance, can you turn on DEBUG_GET_CC in the tcpci driver and send me the log.  This debug option tracks when Alert.CCStatus interrupt happen and tracks all updates to the cached CC_STATUS.",
+      "parentUuid": "3d842103_4d07aa67",
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71edf692_1baae0fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-24T22:18:30Z",
+      "side": 1,
+      "message": "Added the bug with the PS8815 handling of CC_STATUS that led to this change.  But noted that this doesn\u0027t fix the problems identified with the PS8185.",
+      "parentUuid": "c7f13b37_7c21d596",
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24f4ca0a_41658504",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -182,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "581267b3_2703ea84",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-24T22:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24f4ca0a_41658504",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 3
+      },
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4dd40f6_9afb1ac7",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -202,6 +262,30 @@
       "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a3592cc_136d49ba",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-24T22:18:30Z",
+      "side": 1,
+      "message": "Good catch - during first boot up, it\u0027s initialized to zero and the TCPC should be guaranteed to generate an CC_STATUS change int.  However, during sysjump or reboot conditions, it\u0027s possible that the TCPC has not been reset. Added code to the tcpci_tcpm_init() to always read CC_STATUS.",
+      "parentUuid": "e4dd40f6_9afb1ac7",
+      "range": {
+        "startLine": 119,
+        "startChar": 20,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
