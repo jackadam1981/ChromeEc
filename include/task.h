@@ -80,6 +80,28 @@ void interrupt_disable(void);
 void interrupt_enable(void);
 
 /**
+ * Save current CPU interrupt bit and then disable it.
+ *
+ * As with interrupt_disable(), and return saved interrupt bit.
+ *
+ * NOTE:
+ * If core supports atomic instruction to access CPU register, we should use it
+ * first.
+ * eg. csrrc (read and clear bits in CSR register) instruction of riscv core.
+ *
+ * @return The saved interrupt bit.
+ */
+uint32_t interrupt_disable_arch(void);
+
+/**
+ * Enable CPU interrupt bit by parameter "interrupt_bit".
+ *
+ * @param interrupt_bit:
+ *        interrupt bit which saved by interrupt_disable_arch().
+ */
+void interrupt_enable_arch(uint32_t interrupt_bit);
+
+/**
  * Return true if we are in interrupt context.
  */
 int in_interrupt_context(void);

@@ -173,6 +173,17 @@ void interrupt_enable(void)
 	__asm__ __volatile__ ("sti");
 }
 
+uint32_t interrupt_disable_arch(void)
+{
+	/* TODO: implement me. */
+	return 0;
+}
+
+void interrupt_enable_arch(uint32_t interrupt_bit)
+{
+	/* TODO: implement me. */
+}
+
 inline int in_interrupt_context(void)
 {
 	return !!__in_isr;
