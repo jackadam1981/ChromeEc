@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "fcfdb5f9_91db8d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-24T15:25:43Z",
+      "side": 1,
+      "message": "Is is possible to handle the Extended Battery Cap message without using the chunking state machines (or at least handle the usual size of a Extended Battery Cap message)?",
+      "parentUuid": "2f355ae9_165bc241",
+      "revId": "94076486f5876b7a3085e6a01cea82f3371dde30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdb5c88e_548590ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 9

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "470e3422_3fffad74",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-24T15:25:43Z",
+      "side": 1,
+      "message": "this condition doesn\u0027t seem correct. Shouldn\u0027t it be the negation of the above if line?\n\nCan you try compiling this for REV2 permutations?\n\n\n-----\n\nAlso there are two more blocks of this right about, what do you think about converting those blocks as well to this paradigm?",
+      "range": {
+        "startLine": 443,
+        "startChar": 10,
+        "endLine": 443,
+        "endChar": 41
+      },
+      "revId": "a73196a6242f46c71183bfa94c9b32c03520fc65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
