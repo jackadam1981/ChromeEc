@@ -80,6 +80,25 @@ void interrupt_disable(void);
 void interrupt_enable(void);
 
 /**
+ * Get current CPU interrupt bit and then disable it.
+ *
+ * As with interrupt_disable(), and return previous interrupt bit.
+ *
+ * @return	The interrupt bit we got.
+ */
+uint32_t interrupt_get_and_disable(void);
+
+/**
+ * Restore interrupt bit from parameter int_bit
+ *
+ * So we can keep interrupt was disabled if interrupt_get_and_disable() and
+ * interrupt_restore() are invoked in interrupt disabled.
+ *
+ * @param int_bit	interrupt bit got by interrupt_get_and_disable()
+ */
+void interrupt_restore(uint32_t int_bit);
+
+/**
  * Return true if we are in interrupt context.
  */
 int in_interrupt_context(void);

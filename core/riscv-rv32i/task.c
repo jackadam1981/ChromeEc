@@ -199,6 +199,22 @@ void __ram_code interrupt_enable(void)
 	asm volatile ("csrs  mie, t0");
 }
 
+uint32_t __ram_code interrupt_get_and_disable(void)
+{
+	uint32_t mie, meie = BIT(11);
+
+	/* Read and clear MEIE bit of MIE register. */
+	asm volatile ("csrrc %0, mie, %1" : "=r"(mie) : "r"(meie));
+
+	return mie;
+}
+
+void __ram_code interrupt_restore(uint32_t int_bit)
+{
+	/* Set MIE register. */
+	asm volatile ("csrw mie, %0" : : "r"(int_bit));
+}
+
 inline int in_interrupt_context(void)
 {
 	return in_interrupt;
