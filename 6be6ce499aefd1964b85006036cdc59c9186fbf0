@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e755f028_3dc6b736",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T03:00:44Z",
+      "side": 1,
+      "message": "While testing this, I found what seems like a bug at ToT with TBT active cables. See b/148528713#comment49. I will try to make sure that at least DP works with an active cable with this CL.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 60
+      },
+      "revId": "6be6ce499aefd1964b85006036cdc59c9186fbf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
