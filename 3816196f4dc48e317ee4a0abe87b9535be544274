@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "029b14f9_41e89641",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4921,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T23:01:41Z",
+      "side": 1,
+      "message": "What about \"Transition to the PE_VCS_Reject_Swap state when: ...\"?",
+      "parentUuid": "6d4358cc_9f05dab4",
+      "range": {
+        "startLine": 4920,
+        "startChar": 4,
+        "endLine": 4921,
+        "endChar": 18
+      },
+      "revId": "3816196f4dc48e317ee4a0abe87b9535be544274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d0bb029_119cbf0f",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "3816196f4dc48e317ee4a0abe87b9535be544274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8e77d80_5361934b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4936,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T23:01:41Z",
+      "side": 1,
+      "message": "What is mean is, if we are already sourcing (tc_is_vconn_src \u003d\u003e 1), and thus don\u0027t want to swap away, does it matter whether we would be able to?\n\nIf tc_check_vconn_swap were removed here, the case where we couldn\u0027t swap if we wanted to but wouldn\u0027t want to anyway, because we are sourcing, would now produce a Reject instead of a Wait. In this scenario, will there ever be a point in the future when we might Accept the VCONN Swap Request? Will we ever give up VCONN?",
+      "parentUuid": "fb06a73b_ba5360b1",
+      "range": {
+        "startLine": 4936,
+        "startChar": 5,
+        "endLine": 4936,
+        "endChar": 34
+      },
+      "revId": "3816196f4dc48e317ee4a0abe87b9535be544274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

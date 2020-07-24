@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3ca063e_4c4459e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T23:01:41Z",
+      "side": 1,
+      "message": "PD 6.3.11 says that the VCONN source Shall Not send Wait or Reject. Is this making us noncompliant?",
+      "revId": "76dce588b6bb74c71892ddf6d422729a4efa22f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
