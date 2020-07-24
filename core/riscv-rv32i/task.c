@@ -199,6 +199,17 @@ void __ram_code interrupt_enable(void)
 	asm volatile ("csrs  mie, t0");
 }
 
+uint32_t interrupt_disable_arch(void)
+{
+	/* TODO: implement me. */
+	return 0;
+}
+
+void interrupt_enable_arch(uint32_t interrupt_bit)
+{
+	/* TODO: implement me. */
+}
+
 inline int in_interrupt_context(void)
 {
 	return in_interrupt;
