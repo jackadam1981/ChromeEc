@@ -22,6 +22,30 @@
       "revId": "6be6ce499aefd1964b85006036cdc59c9186fbf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ad1c6f_5cfc2770",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T17:29:01Z",
+      "side": 1,
+      "message": "When I revert CL:2277487 (on top of this CL or ToT), I see normal DP mode entry with the Startech dock and Apple cable. I believe the issue described above is unrelated to my change.",
+      "parentUuid": "e755f028_3dc6b736",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 60
+      },
+      "revId": "6be6ce499aefd1964b85006036cdc59c9186fbf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
