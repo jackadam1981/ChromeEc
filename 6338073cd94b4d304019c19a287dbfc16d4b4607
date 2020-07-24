@@ -312,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "dd0888f1_67231a08",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-24T22:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65272721_8d4d7326",
+      "range": {
+        "startLine": 1106,
+        "startChar": 1,
+        "endLine": 1106,
+        "endChar": 62
+      },
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b95659fe_53e38fcc",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -335,6 +359,30 @@
     },
     {
       "key": {
+        "uuid": "33deb698_c5c5212e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-24T22:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b95659fe_53e38fcc",
+      "range": {
+        "startLine": 1130,
+        "startChar": 6,
+        "endLine": 1131,
+        "endChar": 31
+      },
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25c46b1e_3c59f57c",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
@@ -355,6 +403,30 @@
       "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "916358a0_de400030",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-24T22:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25c46b1e_3c59f57c",
+      "range": {
+        "startLine": 1132,
+        "startChar": 16,
+        "endLine": 1132,
+        "endChar": 24
+      },
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
