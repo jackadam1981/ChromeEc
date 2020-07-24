@@ -80,6 +80,23 @@ void interrupt_disable(void);
 void interrupt_enable(void);
 
 /**
+ * Save current CPU interrupt bit and then disable it.
+ *
+ * As with interrupt_disable(), and return saved interrupt bit.
+ *
+ * @return The saved interrupt bit.
+ */
+__override_proto uint32_t interrupt_disable_after_save(void);
+
+/**
+ * Enable CPU interrupt bit by parameter "interrupt_bit".
+ *
+ * @param interrupt_bit:
+ *        interrupt bit which saved by interrupt_disable_after_save().
+ */
+__override_proto void interrupt_enable_by_saved_bit(uint32_t interrupt_bit);
+
+/**
  * Return true if we are in interrupt context.
  */
 int in_interrupt_context(void);
