@@ -4130,6 +4130,14 @@ static enum vdm_response_result parse_vdm_response_common(int port)
 			memcpy(pe[port].vdm_rsp_body, rx_emsg[port].buf,
 					cnt * sizeof(pe[port].vdm_rsp_body[0]));
 			return VDM_RESULT_NO_ACTION;
+		} else if (PD_VDO_CMDT(payload[0]) == CMDT_INIT) {
+			/* Unexpected VDM Request received
+			 * Ignore it
+			 */
+			pe[port].vdm_rsp_hdr = rx_emsg[port].header;
+			memcpy(pe[port].vdm_rsp_body, rx_emsg[port].buf,
+					cnt * sizeof(pe[port].vdm_rsp_body[0]));
+			return VDM_RESULT_NO_ACTION;
 		}
 
 		/*
