@@ -51,6 +51,24 @@
       "revId": "78a6522277662b5e409eb123dfc7b7de422d077d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c95b91b6_648754ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-24T17:23:18Z",
+      "side": 1,
+      "message": "True.  Should I note that, or assume it\u0027s unlikely another board is going to copy/paste this? \n\nIt does occur to me that I don\u0027t think we need pd_snk_is_vbus_provided() on the RAA849000 boards since we could use pd_is_vbus_present() which would already call through to the TCPCI cache.",
+      "parentUuid": "2cdc03ba_885f5307",
+      "revId": "78a6522277662b5e409eb123dfc7b7de422d077d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
