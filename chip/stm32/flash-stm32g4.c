@@ -246,7 +246,7 @@ int flash_physical_write(int offset, int size, const char *data)
 	int res = EC_SUCCESS;
 	int timeout = calculate_flash_timeout();
 	int i;
-	int unaligned = (uint32_t)data & (CONFIG_FLASH_WRITE_SIZE - 1);
+	int unaligned = (uint32_t)data & (G4_CONFIG_FLASH_WRITE_SIZE - 1);
 	uint32_t *data32 = (void *)data;
 
 	if (unlock(FLASH_CR_LOCK) != EC_SUCCESS)
@@ -258,7 +258,7 @@ int flash_physical_write(int offset, int size, const char *data)
 	/* set PG bit */
 	STM32_FLASH_CR |= FLASH_CR_PG;
 
-	for (; size > 0; size -= CONFIG_FLASH_WRITE_SIZE) {
+	for (; size > 0; size -= G4_CONFIG_FLASH_WRITE_SIZE) {
 		/*
 		 * Reload the watchdog timer to avoid watchdog reset when doing
 		 * long writing.
@@ -280,7 +280,7 @@ int flash_physical_write(int offset, int size, const char *data)
 				   | (data[2] << 16) | (data[3] << 24);
 			*address++ = (uint32_t)data[4] | (data[5] << 8)
 				   | (data[6] << 16) | (data[7] << 24);
-			data += CONFIG_FLASH_WRITE_SIZE;
+			data += G4_CONFIG_FLASH_WRITE_SIZE;
 		} else {
 			*address++ = *data32++;
 			*address++ = *data32++;
@@ -313,6 +313,23 @@ exit_wr:
 	lock();
 
 	return res;
+}
+
+#define G4_FLASH_MEM_BASE 0x8000000
+static void verify_erase(int offset, int size)
+{
+	uint32_t *rd_addr;
+	uintptr_t start_addr = G4_FLASH_MEM_BASE + offset;
+	int rd_count = size >> 2;
+	int i;
+	int erase_count = 0;
+
+	rd_addr = (uint32_t *)start_addr;
+	for (i = 0; i < rd_count; i++) {
+		if (rd_addr[i] == 0xffffffff)
+			erase_count++;
+	}
+
 }
 
 int flash_physical_erase(int offset, int size)
@@ -370,6 +387,8 @@ exit_er:
 	STM32_FLASH_CR &= ~(FLASH_CR_PER | FLASH_CR_PNB_MASK);
 
 	lock();
+
+	verify_erase(offset, size);
 
 	return res;
 }
