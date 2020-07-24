@@ -181,6 +181,30 @@
       "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7dafeb4_bba530fb",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-24T09:09:28Z",
+      "side": 1,
+      "message": "How about PS4? I add hook_connect() in ITE driver for TCPMv2 to handle Try.SRC case.",
+      "parentUuid": "a6100469_bb2a956e",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 651,
+        "endChar": 55
+      },
+      "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
