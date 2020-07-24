@@ -56,6 +56,9 @@
 /* Additional PPC second source */
 #define CONFIG_USBC_PPC_SYV682X
 
+#undef CONFIG_USB_PD_TCPM_PS8751
+#define CONFIG_USB_PD_TCPM_PS8755
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
