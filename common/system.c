@@ -1711,6 +1711,18 @@ void clock_enable_module(enum module_id module, int enable)
 	 */
 }
 
+/*
+ * NOTE:
+ * We can remove these two weak declarations once all cores support them.
+ */
+__overridable uint32_t interrupt_disable_after_save(void)
+{
+	return 0;
+}
+__overridable void interrupt_enable_by_saved_bit(uint32_t interrupt_bit)
+{
+}
+
 __test_only void system_common_reset_state(void)
 {
 	jdata = 0;
