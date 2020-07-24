@@ -34,6 +34,24 @@
       "revId": "b72dd67b84b8b122a880b59b0a10455baf93fb62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c09e223b_a73cf22c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-07-24T03:17:39Z",
+      "side": 1,
+      "message": "I cannot reproduce this issue with your patch: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2310861, It is strange.",
+      "parentUuid": "ab49287f_32a3cc71",
+      "revId": "b72dd67b84b8b122a880b59b0a10455baf93fb62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
