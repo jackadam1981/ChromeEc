@@ -523,7 +523,6 @@ static void power_off(void)
 #endif /* defined(CONFIG_POWER_PP5000_CONTROL) */
 
 	lid_opened = 0;
-	enable_sleep(SLEEP_MASK_AP_RUN);
 }
 
 /**
@@ -581,7 +580,6 @@ static int power_on(void)
 	}
 
 	CPRINTS("POWER_GOOD seen");
-	disable_sleep(SLEEP_MASK_AP_RUN);
 	return EC_SUCCESS;
 }
 
@@ -895,6 +893,7 @@ enum power_state power_handle_state(enum power_state state)
 		hook_notify(HOOK_CHIPSET_RESUME);
 #endif
 		sleep_resume_transition();
+		disable_sleep(SLEEP_MASK_AP_RUN);
 		return POWER_S0;
 
 	case POWER_S0:
@@ -935,7 +934,7 @@ enum power_state power_handle_state(enum power_state state)
 		sleep_notify_transition(SLEEP_NOTIFY_SUSPEND,
 					HOOK_CHIPSET_SUSPEND);
 		sleep_suspend_transition();
-
+		enable_sleep(SLEEP_MASK_AP_RUN);
 		return POWER_S3;
 
 	case POWER_S3S5:
