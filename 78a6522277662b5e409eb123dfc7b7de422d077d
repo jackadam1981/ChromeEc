@@ -34,6 +34,23 @@
       "revId": "78a6522277662b5e409eb123dfc7b7de422d077d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cdc03ba_885f5307",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-24T17:09:03Z",
+      "side": 1,
+      "message": "This will work for dedede as we don\u0027t have PPCs. If we did, we\u0027d need an ACOK meaning from the charger IC as  it could be possible for VBUS to be present, but the charge port FET to be open.",
+      "revId": "78a6522277662b5e409eb123dfc7b7de422d077d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
