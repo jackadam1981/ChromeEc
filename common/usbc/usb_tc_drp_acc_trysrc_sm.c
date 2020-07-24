@@ -3251,23 +3251,23 @@ static void tc_cc_rp_entry(const int port)
  */
 static void tc_cc_open_entry(const int port)
 {
+	/* We may brown out after applying CC open, so flush console first. */
+	CPRINTS("C%d: Applying CC Open!", port);
+	cflush();
+
+	/*
+	 * Disable AutoDischargeDisconnect. If we are running only by charger
+	 * we do not want to rapidly discharge Vbus.  If we are running by
+	 * battery as well, Vbus will dissipate naturally.
+	 */
+	tcpm_enable_auto_discharge_disconnect(port, 0);
+
 	/* Ensure we are not sourcing Vbus */
 	tc_src_power_off(port);
 
 	/* Disable VCONN */
 	if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON))
 		set_vconn(port, 0);
-
-	/*
-	 * Ensure we disable discharging before setting CC lines to open.
-	 * If we were sourcing above, then we already drained Vbus. If partner
-	 * is sourcing Vbus they will drain Vbus if they are PD-capable.
-	 */
-	tcpm_enable_auto_discharge_disconnect(port, 0);
-
-	/* We may brown out after applying CC open, so flush console first. */
-	CPRINTS("C%d: Applying CC Open!", port);
-	cflush();
 
 	/* Remove terminations from CC */
 	typec_select_pull(port, TYPEC_CC_OPEN);
