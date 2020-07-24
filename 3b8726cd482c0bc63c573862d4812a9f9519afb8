@@ -112,6 +112,52 @@
     },
     {
       "key": {
+        "uuid": "142397ec_46920573",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-24T19:49:20Z",
+      "side": 1,
+      "message": "Again, for migration to work, the auth_time_secret or webauthn_secret we encode in v1 KHs here must be unlockable by any of fingerprint/password/PIN when auth-time secrets is fully ready. Greg said that\u0027s achievable but would be nice to have him or someone on security team confirm this.",
+      "range": {
+        "startLine": 410,
+        "startChar": 5,
+        "endLine": 411,
+        "endChar": 51
+      },
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65555e60_34b390fb",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-24T19:49:20Z",
+      "side": 1,
+      "message": "Shorten this to 4 bytes? All it does is to make authorization_hmac different for different KHs of the same user.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 43
+      },
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "608f6ae0_fe601f38",
         "filename": "include/u2f.h",
         "patchSetId": 1
