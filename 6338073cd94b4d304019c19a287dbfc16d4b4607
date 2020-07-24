@@ -141,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "3d842103_4d07aa67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-24T19:29:55Z",
+      "side": 1,
+      "message": "Tested waddledee and I believe the ANX7447 driver will need to use a non-cached CC status.  We never seem to be getting an update on unplug and the port gets stuck as Attached.SRC forever.  Since waddledoo tested fine, this is likely just a quirk of the ANX TCPC.  \n\nWe have a different TCPC on draw* that I\u0027ll be curious to try when my board gets back from re-work.",
+      "parentUuid": "d7cd64dc_fa3cba55",
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24f4ca0a_41658504",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
