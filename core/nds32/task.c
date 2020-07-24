@@ -223,6 +223,17 @@ void __ram_code interrupt_enable(void)
 	asm volatile ("mtsr %0, $INT_MASK" : : "r"(val));
 }
 
+uint32_t interrupt_disable_arch(void)
+{
+	/* TODO: implement me. */
+	return 0;
+}
+
+void interrupt_enable_arch(uint32_t interrupt_bit)
+{
+	/* TODO: implement me. */
+}
+
 inline int in_interrupt_context(void)
 {
 	/* check INTL (Interrupt Stack Level) bits */
