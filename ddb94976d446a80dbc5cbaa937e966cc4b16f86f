@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a8a3cdb_cfb90c68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-07-24T08:13:09Z",
+      "side": 1,
+      "message": "With this change, My terminal are filled out these message:\n20-07-24 16:00:33.010 [144.506590 mux config:2, port:1, rv:1]\n20-07-24 16:00:33.052 [144.551520 C1: Failed disabling vconn]\n20-07-24 16:00:33.093 [144.587646 C1: Failed disabling vconn]\n...\nIs this because I am using sub board of HDMI?",
+      "revId": "ddb94976d446a80dbc5cbaa937e966cc4b16f86f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
