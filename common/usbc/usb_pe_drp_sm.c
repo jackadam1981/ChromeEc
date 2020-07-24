@@ -4916,12 +4916,6 @@ static void pe_vcs_evaluate_swap_entry(int port)
 	print_current_state(port);
 
 	/*
-	 * Request the DPM for an evaluation of the VCONN Swap request.
-	 * Note: Ports that are presently the VCONN Source must always
-	 * accept a VCONN
-	 */
-
-	/*
 	 * Transition to the PE_VCS_Accept_Swap state when:
 	 *  1) The Device Policy Manager indicates that a VCONN Swap is ok.
 	 *
@@ -4931,13 +4925,14 @@ static void pe_vcs_evaluate_swap_entry(int port)
 	 *  3) The DPM indicates that a VCONN Swap cannot be done at this time.
 	 */
 
-	/* DPM rejects a VCONN Swap and port is not a VCONN source*/
-	if (!tc_check_vconn_swap(port) && tc_is_vconn_src(port) < 1) {
+	/* TODO(b/159715784): Should be handled by policy */
+	/* Don't swap away if we're Vconn sourcing */
+	if (tc_check_vconn_swap(port) && tc_is_vconn_src(port)) {
 		/* NOTE: PE_VCS_Reject_Swap State embedded here */
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_REJECT);
 	}
 	/* Port is not ready to perform a VCONN swap */
-	else if (tc_is_vconn_src(port) < 0) {
+	else if (!tc_check_vconn_swap(port)) {
 		/* NOTE: PE_VCS_Reject_Swap State embedded here */
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_WAIT);
 	}
