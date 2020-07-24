@@ -89,10 +89,16 @@ static int __tx_char_raw(void *context, int c)
 	(void) tx_buf_new_tail;
 	uart_write_char(c);
 #else
+	uint32_t int_mask = get_int_mask();
+	/* critical section with interrupts off */
+	interrupt_disable();
 
 	tx_buf_next = TX_BUF_NEXT(tx_buf_head);
-	if (tx_buf_next == tx_buf_tail)
+	if (tx_buf_next == tx_buf_tail) {
+		/* restore interrupts */
+		set_int_mask(int_mask);
 		return 1;
+	}
 
 	/*
 	 * If we do a READ_RECENT, the buffer may have wrapped around, and
@@ -114,6 +120,9 @@ static int __tx_char_raw(void *context, int c)
 
 	if (IS_ENABLED(CONFIG_PRESERVE_LOGS))
 		tx_checksum = uart_buffer_calc_checksum();
+
+	/* restore interrupts */
+	set_int_mask(int_mask);
 #endif
 	return 0;
 }
