@@ -149,6 +149,11 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
+enum fw_config_keyboard_type {
+	US_UK_KB = 0,
+	JP_KB = 1,
+};
+
 int board_is_sourcing_vbus(int port);
 
 #endif /* !__ASSEMBLER__ */
