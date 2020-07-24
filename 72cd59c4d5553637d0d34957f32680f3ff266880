@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cce1c4f8_6f51ede3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4135,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T20:04:57Z",
+      "side": 1,
+      "message": "We don\u0027t necessarily want to ignore it. We just don\u0027t want to handle it here. Consequently, you should add PE_SET_FLAG(port, PE_FLAGS_MSG_RECEIVED) here, the same as we have for an unexpected non-VDM message.",
+      "revId": "72cd59c4d5553637d0d34957f32680f3ff266880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ea8e58f_f20cdfa3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4139,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T20:04:57Z",
+      "side": 1,
+      "message": "I have CL:2317053 out, which will make these copies unnecessary (and cause a merge conflict).\n\nThat CL will also slightly change the timing for handling VDM responses, so you will probably want to quickly retest after you rebase. I don\u0027t think it will cause any problems.",
+      "range": {
+        "startLine": 4137,
+        "startChar": 3,
+        "endLine": 4139,
+        "endChar": 45
+      },
+      "revId": "72cd59c4d5553637d0d34957f32680f3ff266880",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
