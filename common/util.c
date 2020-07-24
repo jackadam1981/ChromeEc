@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "timer.h"
 #include "util.h"
 
 __stdlib_compat size_t strlen(const char *s)
@@ -678,4 +679,16 @@ void hexdump(const uint8_t *data, int len)
 		}
 		ccprintf("|\n");
 	}
+}
+
+void wait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready)
+{
+	if (*reg & ready)
+		return;
+
+	/* Enable */
+	*reg |= enable;
+	/* Wait for ready */
+	while (!(*reg & ready))
+		;
 }
