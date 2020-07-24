@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "13f9d36c_4c88c70b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-24T17:03:18Z",
+      "side": 1,
+      "message": "Fair enough, then violating not having Battery Cap seems to be the best path.",
+      "parentUuid": "c97cf627_07c59467",
+      "revId": "94076486f5876b7a3085e6a01cea82f3371dde30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdb5c88e_548590ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 9
