@@ -94,6 +94,30 @@
       "revId": "41579d38f13e35cbe807f37072e19d1b96eec864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d66723d_63417805",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-24T16:10:36Z",
+      "side": 1,
+      "message": "There aren\u0027t any asserts or checks to enforce that all ports are virtual when CONFIG_USB_MUX_VIRTUAL is defined.\n\nNested muxes can still mean that a downstream mux is brought out of low power mode by the USB_MUX_GET_MODE request.  This code won\u0027t put the nested mux back into low-power mode.\n\nI\u0027m still in favor of removing this check (which matches the behavior of the previous code).  The rest of the CL looks good.",
+      "parentUuid": "eee95578_b423808c",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 0
+      },
+      "revId": "41579d38f13e35cbe807f37072e19d1b96eec864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
