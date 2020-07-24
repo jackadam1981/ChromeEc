@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aeb36e1a_581b2ea8",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-24T16:39:58Z",
+      "side": 0,
+      "message": "But 26 *is* a named constant for 0b11010. 😂",
+      "range": {
+        "startLine": 1017,
+        "startChar": 31,
+        "endLine": 1017,
+        "endChar": 33
+      },
+      "revId": "08b55a9d5747706ad998bf3f09d7aaacc747b674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
