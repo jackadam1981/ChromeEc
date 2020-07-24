@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "918ed3d6_ed8f5da2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4921,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T20:23:03Z",
+      "side": 1,
+      "message": "Do these comments need to be updated?",
+      "range": {
+        "startLine": 4920,
+        "startChar": 4,
+        "endLine": 4921,
+        "endChar": 18
+      },
+      "revId": "3816196f4dc48e317ee4a0abe87b9535be544274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0bb029_119cbf0f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4936,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T20:23:03Z",
+      "side": 1,
+      "message": "Is this redundant now?",
+      "range": {
+        "startLine": 4936,
+        "startChar": 5,
+        "endLine": 4936,
+        "endChar": 34
+      },
+      "revId": "3816196f4dc48e317ee4a0abe87b9535be544274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
