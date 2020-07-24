@@ -310,6 +310,30 @@ static int verify_legacy_kh_owned(const uint8_t *app_id,
 	return p256_cmp(&app_id_p256, &kh_app_id_p256) == 0;
 }
 
+/*
+ * Derives the authorization hmac from the given auth time secret and verifies
+ * it matches the authorization hmac in the versioned key handle.
+ * Returns 1 if the hmac matches, 0 otherwise.
+ */
+static int verify_authorization_hmac(const uint8_t *auth_time_secret,
+				     const struct u2f_versioned_key_handle *vkh)
+{
+	uint8_t auth_time_secret_hash[U2F_P256_SIZE];
+	uint8_t reconstructed_hmac[U2F_P256_SIZE];
+	int rc;
+
+	DCRYPTO_SHA256_hash(auth_time_secret, U2F_P256_SIZE,
+			    auth_time_secret_hash);
+	rc = u2f_authorization_hmac(vkh->authorization_seed,
+				    auth_time_secret_hash, reconstructed_hmac);
+
+	if (rc != EC_SUCCESS)
+		return 0;
+
+	return memcmp(reconstructed_hmac, vkh->authorization_hmac,
+		      U2F_P256_SIZE) == 0;
+}
+
 /* Below, we depend on the response not being larger than than the request. */
 BUILD_ASSERT(sizeof(struct u2f_sign_resp) <= sizeof(struct u2f_sign_req));
 
@@ -399,17 +423,15 @@ static enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 		return VENDOR_RC_SUCCESS;
 
 	/*
-	 * Enforce user presence for version 0 KHs, with optional consume.
+	 * Enforce user presence or authorization hmac, with optional consume.
 	 */
 	if (pop_check_presence(flags & G2F_CONSUME) != POP_TOUCH_YES) {
-		if (version != U2F_KH_VERSION_1)
+		if (version == 0)
 			return VENDOR_RC_NOT_ALLOWED;
-		if ((flags & U2F_AUTH_FLAG_TUP) != 0)
+
+		if (!verify_authorization_hmac(req_versioned->authTimeSecret,
+					       &req_versioned->keyHandle))
 			return VENDOR_RC_NOT_ALLOWED;
-		/*
-		 * TODO(yichengli): When auth-time secrets is ready, enforce
-		 * authorization hmac when no power button press.
-		 */
 	}
 
 	/* Re-create origin-specific key. */
