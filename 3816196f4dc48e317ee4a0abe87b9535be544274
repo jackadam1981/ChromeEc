@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d4358cc_9f05dab4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4921,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-24T21:12:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "918ed3d6_ed8f5da2",
+      "range": {
+        "startLine": 4920,
+        "startChar": 4,
+        "endLine": 4921,
+        "endChar": 18
+      },
+      "revId": "3816196f4dc48e317ee4a0abe87b9535be544274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d0bb029_119cbf0f",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3816196f4dc48e317ee4a0abe87b9535be544274",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb06a73b_ba5360b1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4936,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-24T21:12:06Z",
+      "side": 1,
+      "message": "The first checks whether we\u0027re allowed to Vconn source (not connected to a CTVPD, 5V rail on) and the other checks whether we\u0027re already sourcing.  tc_is_vconn_src() used to integrate the condition of being unable to source as a \u003c 0 return but doesn\u0027t anymore.",
+      "parentUuid": "8d0bb029_119cbf0f",
+      "range": {
+        "startLine": 4936,
+        "startChar": 5,
+        "endLine": 4936,
+        "endChar": 34
+      },
+      "revId": "3816196f4dc48e317ee4a0abe87b9535be544274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
