@@ -76,6 +76,24 @@
     },
     {
       "key": {
+        "uuid": "c00dd4d9_2f54a99a",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-24T19:40:00Z",
+      "side": 1,
+      "message": "In the current implementation, yes, only the first 3 fields are used in computing kh_hmac. We could also move the auth_seed and auth_hmac to right after origin_seed, and use everything to compute the kh_hmac; this would solve the other problem you mentioned - we wouldn\u0027t need a U2F_VKH_KEYPAIR_INPUT_LEN or a header struct. It just feels a little strange to use one hmac as the input of another hmac - I don\u0027t know",
+      "parentUuid": "2e96588d_6231f8ae",
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "608f6ae0_fe601f38",
         "filename": "include/u2f.h",
         "patchSetId": 1
