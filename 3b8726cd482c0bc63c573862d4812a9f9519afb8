@@ -33,6 +33,69 @@
       "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac2ed8da_bc3916f0",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-24T19:32:37Z",
+      "side": 1,
+      "message": "can we avoid allocating it on stack and generate directly inside kh_buf.vkh?\nstack size is an important limitation for cr50.\n\nand maybe it\u0027s time to just split u2f_generate into u2f_generate_v0 and u2f_generate_v1 based on kh_version at this point, rather than having multiple if-branches below",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 54
+      },
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e96588d_6231f8ae",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-24T19:32:37Z",
+      "side": 1,
+      "message": "does it mean the keyhandle doesn\u0027t include the auth_seed?\nkey_handle_size is 1*2*32, covers only the first 3 fields",
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "608f6ae0_fe601f38",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-24T19:32:37Z",
+      "side": 1,
+      "message": "sounds brittle. can we separate the first 3 fields into a substructure, e.g. u2f_versioned_key_handle_header, inside u2f_versioned_key_handle and have U2F_VKH_KEYPAIR_INPUT_LEN as sizeof(u2f_versioned_key_handle_header)?\nor, use field offsets?",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
