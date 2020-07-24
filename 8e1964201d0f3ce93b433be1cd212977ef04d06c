@@ -22,6 +22,30 @@
       "revId": "8e1964201d0f3ce93b433be1cd212977ef04d06c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c97797a_425dcf59",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T00:10:31Z",
+      "side": 1,
+      "message": "Done. I\u0027m always surprised by how much code has to move when I make an IS_ENABLED change.",
+      "parentUuid": "ae8cf2e5_6db8ed13",
+      "range": {
+        "startLine": 1958,
+        "startChar": 1,
+        "endLine": 1960,
+        "endChar": 0
+      },
+      "revId": "8e1964201d0f3ce93b433be1cd212977ef04d06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

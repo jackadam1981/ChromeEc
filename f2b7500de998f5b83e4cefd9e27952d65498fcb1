@@ -290,6 +290,24 @@
     },
     {
       "key": {
+        "uuid": "8b7716e0_de62caff",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T00:10:31Z",
+      "side": 1,
+      "message": "I believe I have now done that to the extend practical.\n\nI wasn\u0027t able to change the pe_set_flag calls to the appropriate PE API calls, because they check the task ID against the port, and they don\u0027t match. This may be an area for future TCPM testing improvements.\n\nI also retained the explicit transition to PE_SRC_Ready. Long term, I think it might be better to define functions in here that drive the PE through startup to one of the ready states and then use those functions as before functions for tests that are supposed to run as sink or source.",
+      "parentUuid": "f8c8b0f8_1a8cff3f",
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b77b1065_e5ac424b",
         "filename": "test/usb_pe_drp.c",
         "patchSetId": 3
@@ -322,6 +340,24 @@
       "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c8117c_b5ef2601",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T00:10:31Z",
+      "side": 1,
+      "message": "I think I have now done this. There might be a cleaner way.",
+      "parentUuid": "146cac74_b29ae614",
+      "revId": "f2b7500de998f5b83e4cefd9e27952d65498fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
