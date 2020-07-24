@@ -16,6 +16,24 @@
       "revId": "8c54e99314ff1765e5c664d6ada3445f60074358",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65a284f6_4b530373",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-24T16:08:41Z",
+      "side": 1,
+      "message": "I\u0027d strongly prefer to not silently fail an i2c read.  Currently failing in this function doesn\u0027t print until much later, and it would be preferable to know whether we\u0027re really having some i2c successes, or whether they\u0027re all failing. \n\nThere are a few options still open to free space on strago, the easiest probably being CONFIG_COMMON_GPIO_SHORTNAMES.",
+      "parentUuid": "c83c2253_36413d0b",
+      "revId": "8c54e99314ff1765e5c664d6ada3445f60074358",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
