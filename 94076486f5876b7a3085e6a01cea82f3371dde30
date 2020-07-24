@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "c97cf627_07c59467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-24T16:20:48Z",
+      "side": 1,
+      "message": "That would also violate a \"shall\" in the spec, specifically from 6.2.1.2.1\nChunked: \n\n\"When Extended Messages are supported Chunking Shall be supported.\"",
+      "parentUuid": "fcfdb5f9_91db8d96",
+      "revId": "94076486f5876b7a3085e6a01cea82f3371dde30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdb5c88e_548590ad",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 9
