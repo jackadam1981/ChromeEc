@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "754c30b6_f694b002",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4134,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T00:25:14Z",
+      "side": 1,
+      "message": "The Attention-handling code in PE_VDM_Response will already ignore an invalid Attention such as you describe. I don\u0027t think we should have special handling for it here. It might be helpful to future readers to add a comment to validate_mode_request mentioning that modes 000 and 111 are invalid, but I don\u0027t think we need to check anything we\u0027re not already checking.",
+      "parentUuid": "34489767_4dccc914",
+      "revId": "788a79ebe8fe7ed6404c4a450b0ff067402ee322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a750cc2_8bad2739",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "Do you mean PD_VDO_CMDT(payload[0]) \u003d\u003d CMDT_INIT)? Do you think it will be too aggressive? Considering that previous check is really a violation in spec.",
       "parentUuid": "7a750cc2_8bad2739",
+      "range": {
+        "startLine": 4132,
+        "startChar": 2,
+        "endLine": 4137,
+        "endChar": 29
+      },
+      "revId": "788a79ebe8fe7ed6404c4a450b0ff067402ee322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d421619_928eb49d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T00:25:14Z",
+      "side": 1,
+      "message": "I do mean PD_VDO_CMDT(payload[0]) \u003d\u003d CMDT_INIT. (I don\u0027t know why it\u0027s not called CMDT_REQ.)\n\nI guess what I\u0027m trying to say is that, in this state, it doesn\u0027t matter what the partner interrupted our AMS with. Unless we got an actual response to the REQ we previously sent, we should consider the AMS interrupted and respond to that interruption in the way that we normally would. In the case of an invalid and unexpected Attention, the normal response happens to be ignoring it. Having done so, we can resume discovery wherever we left off.\n\n\u003e Considering that previous check is really a violation in spec.\n\nTo which check are you referring?",
+      "parentUuid": "90250f02_969b4b17",
       "range": {
         "startLine": 4132,
         "startChar": 2,
