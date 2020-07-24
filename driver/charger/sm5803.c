@@ -99,10 +99,9 @@ static inline enum ec_error_list test_write8(int chgnum, int offset, int value)
 			 offset, value);
 }
 
-static inline enum ec_error_list test_update8(int chgnum,
-					      const int offset,
+static inline enum ec_error_list test_update8(int chgnum, const int offset,
 					      const uint8_t mask,
-					      const enum mask_update_action action)
+					const enum mask_update_action action)
 {
 	return i2c_update8(chg_chips[chgnum].i2c_port,
 			   SM5803_ADDR_TEST_FLAGS, offset, mask, action);
@@ -373,8 +372,8 @@ static void sm5803_init(int chgnum)
 			rv |= chg_write8(chgnum, 0x5C, 0x7A);
 		}
 
-		/* Disable Vbus PROCHOT comparator */
-		rv |= chg_write8(chgnum, 0x72, 0x27);
+		/* Disable Vbus and Ibus PROCHOT comparator */
+		rv |= chg_write8(chgnum, 0x72, 0x25);
 		rv |= chg_write8(chgnum, 0x73, 0x20);
 
 	}
