@@ -195,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "2a6d6511_462eda79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-24T22:51:18Z",
+      "side": 1,
+      "message": "Looks like we skip storing the CC status because Looking4Connection is set:\n\n20-07-24 16:44:14.143 [246.310861 C1: CC_STATUS interrupt, old 0x08 new 0x08]\n20-07-24 16:44:14.150 [246.314218 C1: PE_VDM_Response]\n20-07-24 16:44:14.153 [246.314838 C1 mux_state \u003d 0x17, mux_type \u003d 0x3]\n20-07-24 16:44:14.159 [246.317874 C1: PE_SRC_Ready]\n20-07-24 16:44:21.576 [253.786539 HC 0x121]\n20-07-24 16:44:21.579 +[264.082094 HC 0x121]\n20-07-24 16:44:31.815 +[266.205947 C1: CC_STATUS interrupt, old 0x08 new 0x20]\n20-07-24 16:44:33.930 [266.206733 C1: Looking4Connection set, skip CC_STATUS]\n20-07-24 16:44:42.053 [274.382563 HC 0x121]\n20-07-24 16:44:42.056 +[284.681088 HC 0x121]\n20-07-24 16:44:52.296 +[294.979717 HC 0x121]\n20-07-24 16:45:02.534 +[305.279318 HC 0x121]\n20-07-24 16:45:12.775 +[309.088248 Battery 65% (Display 0.0 %) / 4h:1 to empty]\n20-07-24 16:45:17.624 \n20-07-24 16:45:17.625 \u003e pd 1 state\n20-07-24 16:45:19.838 Port C1 CC2, Enable - Role: SRC-DFP-VC TC State: Attached.SRC, Flags: 0x108001 PE State: PE_SRC_Ready\n\n20-07-24 16:47:21.358 \u003e i2cxfer r 4 0x2c 0x1d\n20-07-24 16:47:26.902 0x20 [32]\n\nI\u0027m not sure how though since the TC isn\u0027t moving and we\u0027re not using CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE.",
+      "parentUuid": "5e9ea5b6_14eb71b2",
+      "revId": "6338073cd94b4d304019c19a287dbfc16d4b4607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24f4ca0a_41658504",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 1
