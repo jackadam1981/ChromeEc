@@ -22,6 +22,30 @@
       "revId": "08b55a9d5747706ad998bf3f09d7aaacc747b674",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e4fe741_97272247",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-24T18:03:21Z",
+      "side": 0,
+      "message": "Can you imagine implementing PD in assembly? 😮",
+      "parentUuid": "aeb36e1a_581b2ea8",
+      "range": {
+        "startLine": 1017,
+        "startChar": 31,
+        "endLine": 1017,
+        "endChar": 33
+      },
+      "revId": "08b55a9d5747706ad998bf3f09d7aaacc747b674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
