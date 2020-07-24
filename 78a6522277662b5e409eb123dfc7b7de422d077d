@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6176bb04_5fc9be51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-07-24T05:58:54Z",
+      "side": 1,
+      "message": "On Drawcia, I observed a symptom as following:\n1. Plug a USB device to C1 port via C to A dongle. Make sure USB works.\n2. Plug charger to C0 port and make sure battery is charging.\n3. Observed USB device on C1 port is malfunction. ",
+      "revId": "78a6522277662b5e409eb123dfc7b7de422d077d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
