@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e5067ef_6827dad8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-25T00:49:06Z",
+      "side": 1,
+      "message": "We used to be polling both ROLE_CTRL and CC_STATUS.\nIf we change to cache CC_STATUS, can we also cache ROLE_CTRL, or only read it when CC_STATUS changes?",
+      "revId": "ea6cfb70b52955be323cd127f9de716160206771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
