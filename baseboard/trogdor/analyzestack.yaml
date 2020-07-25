@@ -1,0 +1,44 @@
+add:
+  handle_command[common/console.c:248]:
+    - { name: __cmds, stride: 16, offset: 4 }
+  host_send_response[common/host_command.c:145]:
+    - shi_send_response_packet
+  host_packet_respond[common/host_command.c:232]:
+    - shi_send_response_packet
+  host_command_process[common/host_command.c:714]:
+    - { name: __hcmds, stride: 12, offset: 0 }
+  # Note: This assumes worse case, where all hook functions can be called from
+  # any hook_notify call
+  # Generate using `grep hooks_.*_end build/trogdor/R*/ec.R*.smap |
+  #   sed -e 's/.*\(__hooks.*\)_end/    - { name: \1, stride: 8, offset: 0 }/' |
+  #   sort -u`
+  hook_notify[common/hooks.c:127]:
+    - { name: __hooks_ac_change, stride: 8, offset: 0 }
+    - { name: __hooks_base_attached_change, stride: 8, offset: 0 }
+    - { name: __hooks_battery_soc_change, stride: 8, offset: 0 }
+    - { name: __hooks_chipset_pre_init, stride: 8, offset: 0 }
+    - { name: __hooks_chipset_reset, stride: 8, offset: 0 }
+    - { name: __hooks_chipset_resume, stride: 8, offset: 0 }
+    - { name: __hooks_chipset_shutdown_complete, stride: 8, offset: 0 }
+    - { name: __hooks_chipset_shutdown, stride: 8, offset: 0 }
+    - { name: __hooks_chipset_startup, stride: 8, offset: 0 }
+    - { name: __hooks_chipset_suspend, stride: 8, offset: 0 }
+    - { name: __hooks_freq_change, stride: 8, offset: 0 }
+    - { name: __hooks_init, stride: 8, offset: 0 }
+    - { name: __hooks_lid_change, stride: 8, offset: 0 }
+    - { name: __hooks_pre_freq_change, stride: 8, offset: 0 }
+    - { name: __hooks_pwrbtn_change, stride: 8, offset: 0 }
+    - { name: __hooks_second, stride: 8, offset: 0 }
+    - { name: __hooks_sysjump, stride: 8, offset: 0 }
+    - { name: __hooks_tablet_mode_change, stride: 8, offset: 0 }
+    - { name: __hooks_tick, stride: 8, offset: 0 }
+    - { name: __hooks_usb_pd_connect, stride: 8, offset: 0 }
+    - { name: __hooks_usb_pd_disconnect, stride: 8, offset: 0 }
+  hook_task[common/hooks.c:199]:
+    - { name: __deferred_funcs, stride: 4, offset: 0 }
+    - { name: __hooks_second, stride: 8, offset: 0 }
+    - { name: __hooks_tick, stride: 8, offset: 0 }
+  # TODO(waihong): Add the USB PD, motion sensor, charger
+remove:
+# Remove all callsites pointing to panic_assert_fail.
+- panic_assert_fail
