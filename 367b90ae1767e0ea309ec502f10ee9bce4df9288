@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c8ca309_fdcb0124",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-25T22:46:38Z",
+      "side": 1,
+      "message": "I don\u0027t have enough context so if you say that this is useful then feel free to submit it and either ignore my -1 or I can remove it.  ...but as per my testing (see my comments on CL:2318374) a basic analyzestack like this without all the special annotations that everyone else has seems like it\u0027s giving pretty incorrect results.  Checking it in feels like it\u0027s giving people a false sense of security.",
+      "revId": "367b90ae1767e0ea309ec502f10ee9bce4df9288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
