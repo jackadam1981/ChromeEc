@@ -16,6 +16,24 @@
       "revId": "28c848600d4e928c3c3c80f8beb48dd0aaedc259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b382ae_b8c5b483",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-25T01:11:01Z",
+      "side": 1,
+      "message": "In all other attempts to fix this, time was added between TCPC power enable and having the TCPC turn off Vbus power (which was not enabled) and the state machine state change (which would have sent us to ErrorRecovery).  ErrorRecovery would have called pd_power_supply_reset.\n\nIn this version of a fix, the disable of the already disabled vbus sourcing is removing time.  Since the PPC knows we are not sourcing Vbus, telling the TCPC to disable sourcing Vbus does not do a whole lot.\n\nIf the TCPC was not powered/initialized we could hit a possible confusion on the side of the TCPC.  I would have expected an NCT38xx fault indicating the chip was initialized but that seems to be missing before we started to command it to turn off Vbus sourcing.\n\nI could add a delay in the state machine for say 50ms before entering the pd_task loop but that would affect all products and this appears to be a problem between the NCT38xx and AOZ1380 and better dealt with within the confines of zork.",
+      "parentUuid": "a4fd453d_71d53a4e",
+      "revId": "28c848600d4e928c3c3c80f8beb48dd0aaedc259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
