@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2f46b9f_03603aed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-25T22:42:20Z",
+      "side": 1,
+      "message": "I don\u0027t have any history at all behind the \"analyzestack\" tool, but I see that a whole lot of the other users have massive amounts of annotations.  Perhaps without all these annotations it\u0027s just not terribly accurate / useful?  I tried the old fashioned way.  I just ran on the device with your patch and ran \"taskinfo\".  In ran \"chrome://system\" on the device.  I found:\n\n  \u003e taskinfo\n  Task Ready Name         Events      Time (s)  StkUsed\n     0 R \u003c\u003c idle \u003e\u003e       00000001  125.452931  112/672\n     1   HOOKS            00000000    0.383309  656/800\n     2   USB_CHG_P0       00000000    0.006680  448/672\n     3   USB_CHG_P1       00000000    0.000170  440/672\n     4   CHIPSET          00000000    0.002676  536/928\n     5   CHARGER          00000000    0.739787  560/928\n     6 R MOTIONSENSE      00100000    1.439874  696/928\n     7   HOSTCMD          00000000    0.928546  792/800\n     8 R CONSOLE          00000000    0.034183  376/800\n     9   KEYSCAN          00000000    0.000116  308/672\n    10   PD_C0            00000000    3.449750  600/928\n    11   PD_C1            00000000    0.040181  568/928\n    12   PD_INT_C0        00000000    0.026086  536/672\n    13   PD_INT_C1        00000000    0.003599  480/672\n\nThis implies:\n* As the crash reports imply, the HOSTCMD task is very close to overflowing.\n* At least in my case the tasks whose size is increased here were _not_ overflowing.\n\nIf you are convinced that we need to increase these tasks too then we can, but almost certainly we should increase the HOSTCMD stack.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 63
+      },
+      "revId": "114a14824b52006dc512514095393e94de3c7438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
