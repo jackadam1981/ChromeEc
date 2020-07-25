@@ -22,6 +22,30 @@
       "revId": "114a14824b52006dc512514095393e94de3c7438",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bc4fcaf_b5ddd3bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-25T23:17:02Z",
+      "side": 1,
+      "message": "How about CL:2318635 instead?  Also note that stack size grew recently from 736 bytes at:\n\n  1cdb7ae80f44 madoo: Initial EC image\n\nTo 792 bytes at:\n\n  d24fc3ea7a0a TCPM: Move dfp_discover_modes into usb_pd_policy.c\n\nSo someone just hogged a bunch of bytes.  I\u0027m about out of time, but let me see if I can bisect.",
+      "parentUuid": "e2f46b9f_03603aed",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 63
+      },
+      "revId": "114a14824b52006dc512514095393e94de3c7438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
