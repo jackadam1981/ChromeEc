@@ -178,6 +178,30 @@
       "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb3ae438_e57650f0",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-25T00:56:25Z",
+      "side": 1,
+      "message": "As mentioned in common/u2f.c, I could do:\n\nstruct u2f_versioned_key_handle {\n        uint8_t version;\n        uint8_t origin_seed[U2F_P256_SIZE];\n        uint8_t authorization_seed[U2F_P256_SIZE];\n        uint8_t authorization_hmac[U2F_P256_SIZE];\n        /* HMAC of everything before */\n        uint8_t kh_hmac[U2F_P256_SIZE];\n};\n\nThen we don\u0027t need U2F_VKH_KEYPAIR_INPUT_LEN or a header substruct. I guess it\u0027s okay to input one hmac into another hmac?",
+      "parentUuid": "608f6ae0_fe601f38",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
