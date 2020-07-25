@@ -202,6 +202,30 @@
       "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "934162b5_55205ebe",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-25T01:16:43Z",
+      "side": 1,
+      "message": "Or can I get rid of the authorization_seed and authorization_hmac and encode the authTimeSecretHash directly into kh_hmac? Like:\n\nu2f_generate: kh_hmac \u003d HMAC(other fields || authTimeSecretHash)\n\nu2f_sign: kh_hmac \u003d HMAC(other fields || SHA256(authTimeSecret)), compare with given KH.",
+      "parentUuid": "fb3ae438_e57650f0",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
