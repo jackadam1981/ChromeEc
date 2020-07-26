@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8475920_f601d221",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:48:38Z",
+      "side": 1,
+      "message": "Given tables are used at one or few places, consider using macros for conversion instead.\nFor range -\u003e reg: 4 - __fls(range)\n    reg -\u003e range 1 \u003c\u003c (4 - reg)",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abef065f_5a8213d0",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:48:38Z",
+      "side": 1,
+      "message": "Use constant naming scheme. Add icm426xx_ or icm_ for instance.",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72462ab4_34f86f0b",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:48:38Z",
+      "side": 1,
+      "message": "Does it mean we lost data? Add a print message: it should not happen, the EC is too slow for the ODR.",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b28f3282_527e9e76",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:48:38Z",
+      "side": 1,
+      "message": "Given we don\u0027t use temperature, timestamp, odr, remove it from code.",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0c5f981_9f6cafc3",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:48:38Z",
+      "side": 1,
+      "message": "While you are calibrating, the EC can not process other function. The EC is stuck for 1s, this is risky (keyboard strokes will be delayed). We can implement a calibration mode (enter calibration, sensor accumulate average offset), host read offsets after a while, then exit calibration.\nSince calibration is optional, put it in another CL.",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e679d155_f3b5f45a",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:48:38Z",
+      "side": 1,
+      "message": "Why not calling icm_write8?",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03274f80_983aebba",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:48:38Z",
+      "side": 1,
+      "message": "Use type for accel, gyro, temp, timestamp.",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
