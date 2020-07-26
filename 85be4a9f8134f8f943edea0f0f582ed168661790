@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bae16b4_ba5b3445",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "This is rather expensive. can we have an array of the gyroscopes build at compilation time?",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56452288_8306327e",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "Are sensor data valuable even when they are in a different plane (base vs lid)?",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c7bfe44_794eb188",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "Let\u0027s be consitent and call this function gyro_cal_init(). There is gyro_cal_initialization() as well.",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1fa81d4_b6204aef",
+        "filename": "include/gyro_cal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "Let\u0027s conform to other susbsytem (temp_sensor) use Kelvin (accel_cal.h use C as well, it may need to be changed).",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f365dd43_bacbc460",
+        "filename": "include/gyro_cal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "It looks like a constant.",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90fd7134_0c5317c0",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "Do you want to represent the largest float [ 3.4028235e+38 ] 0xFF7FFFFF is its hex representation. It will not convert to the largest float.",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe729773_47ae5f8a",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "INT32_MAX",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b87084_ffd21864",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "INT32_MIN?",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0122dada_2b5f7f19",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "Consider using test_ prefix.",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a9c2aa_f56323a0",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "Does it work for other sensors?",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6430c147_3ef1324e",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-07-26T04:14:10Z",
+      "side": 1,
+      "message": "Should window_time_duration_us express in function of min or max_still_duration_us?",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
