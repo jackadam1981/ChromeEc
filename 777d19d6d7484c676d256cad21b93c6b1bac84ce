@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3bb4cafd_32c165a8",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-27T23:14:23Z",
+      "side": 1,
+      "message": "FIPS tests are executed last during board init on power-on. On wake from deep sleep it only executes if there were errors previously as attempt to recover a working state. Status of tests is displayed in the console. This CCD command (fips on/tests) will be available at later stages.",
+      "parentUuid": "eaede751_b5f95380",
+      "range": {
+        "startLine": 758,
+        "startChar": 0,
+        "endLine": 762,
+        "endChar": 21
+      },
+      "revId": "777d19d6d7484c676d256cad21b93c6b1bac84ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da61d4ce_b4c448e8",
         "filename": "board/cr50/fips.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "777d19d6d7484c676d256cad21b93c6b1bac84ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87ef0240_7539ff6d",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-27T23:14:23Z",
+      "side": 1,
+      "message": "I considered different usage mode, but in fact it belongs to CR50_DEV to enable testing of behavior of userland code if errors took place.",
+      "parentUuid": "da61d4ce_b4c448e8",
+      "revId": "777d19d6d7484c676d256cad21b93c6b1bac84ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
