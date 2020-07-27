@@ -70,6 +70,30 @@
       "revId": "114a14824b52006dc512514095393e94de3c7438",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956cbbe8_10e88e10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-27T17:20:13Z",
+      "side": 1,
+      "message": "Will investigate why the \"analyzestack\" gets the result different from the reality for the HOSTCMD task.\n\nMost recent boards don\u0027t have any annotations. The old ones have massive of them but they seems to be resolved by code change. I only saw a few unresolved annotations on Trogdor, like\n  https://b.corp.google.com/issues/162039557#comment9",
+      "parentUuid": "38f04a6c_46d53236",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 63
+      },
+      "revId": "114a14824b52006dc512514095393e94de3c7438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
