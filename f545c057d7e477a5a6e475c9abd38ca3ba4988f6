@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ba37b38_daba9c8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-07-27T14:51:28Z",
+      "side": 1,
+      "message": "Some PD2.0 hiccups, PD3.0 observations.",
+      "revId": "f545c057d7e477a5a6e475c9abd38ca3ba4988f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd1dde6a_3cd4563d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2780,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-07-27T14:51:28Z",
+      "side": 1,
+      "message": "Flagging: SOFT_RESET on known (but unexpected) packet is one thing and good; SOFT_RESET on _unknown_ packet is dangerous and can lead to infinite loops. PD2.0 messed this up.\n\n\u003e [PD3.0 R2.0]\n\u003e [Unexpected Message]\n\u003e Message that a Port [[supports]] but has been received in an incorrect state.\n\u003e \n\u003e [8.3.3.4.2 SOP Sink Port Soft Reset and Protocol Error State Diagram]\n\u003e 2 An Unrecognized or Unsupported Message will result in a Not_Supported Message response being generated (see Section 6.3.16).\n\u003e \n\u003e [6.3.16 Not_Supported Message]\n\u003e The Not_Supported Message Shall be sent by a Port or Cable Plug in response to any Message it  does not support. Returning a Not_Supported Message is assumed in this specification and has not been called out explicitly except in Section 6.12 which defines cases where the  Not_Supported Message is returned.\n\nPD2.0 messed this up initially. In one place (leftover) it says send \"SOFT_RESET\" for everything. In another it says to send \"REJECT\" for unknown packets. Defer to state diagram text. Ergo PD2.0 devices with \"newer\" command sets may clash with \"older\" devices.\n\n\u003e [PD2.0 R1.3]\n\u003e [Table 8-2 Potential issues in Basic Message Flow]\n\u003e 1. Policy Engine receives a known Message that it was not expecting.\n\u003e 2. Policy Engine receives an unknown \u003c\u003cunrecognized\u003e\u003e Message.\n\u003e These cases are errors in the protocol which leads to the generation of a \u003c\u003cSoft_Reset\u003e\u003e Message.\n\u003e \n\u003e [8.3.3.4.1 Source Port Soft Reset and Protocol Error State Diagram]\n\u003e 2 An unrecognized or unsupported Message will result in a \u003c\u003cReject\u003e\u003e Message response being generated (see Section 6.7.1).\n\nFollowup:\n(1) We should go down the list of packets in [6.12 Message Applicability] and verify each one by one for this PD3.0 loop.\n(2) We should double-check PD2.0 uses REJECT in similar vein.\n(3) We should watch out for spec potholes like last bit. And someone should file a notice with USB-IF about typo in [Table 8-2 Potential issues in Basic Message Flow] I guess.",
+      "revId": "f545c057d7e477a5a6e475c9abd38ca3ba4988f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
