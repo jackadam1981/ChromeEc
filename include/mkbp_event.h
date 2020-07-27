@@ -29,6 +29,7 @@ extern uint32_t mkbp_last_event_time;
 int mkbp_send_event(uint8_t event_type);
 
 /*
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
  * Set MKBP active event status on the AP.
  *
  * This communicates to the AP whether an MKBP event is currently available
@@ -56,6 +57,13 @@ void mkbp_set_host_active_via_gpio(int active);
  * is defined in board.h.
  */
 void mkbp_set_host_active_via_event(int active);
+=======
+ * Communicate an MKBP event to the AP via custom method.
+ *
+ * This can be used if a board has a custom method.
+ */
+int mkbp_set_host_active_via_custom(int active, uint32_t *timestamp);
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 
 /*
  * The struct to store the event source definition.  The get_data routine is

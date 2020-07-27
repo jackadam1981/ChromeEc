@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 /* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -369,3 +370,5 @@ enum nvmem_users {
 #define CONFIG_CURVE25519
 #endif
 #endif /* __CROS_EC_BOARD_H */
+=======
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)

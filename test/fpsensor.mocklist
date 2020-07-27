@@ -4,5 +4,13 @@
  */
 
  #define CONFIG_TEST_MOCK_LIST \
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
         MOCK(FPSENSOR)	       \
+=======
+        MOCK(FP_SENSOR)        \
+        MOCK(FPSENSOR_DETECT)  \
+	MOCK(FPSENSOR_STATE)   \
+        MOCK(MKBP_EVENTS)      \
+        MOCK(ROLLBACK)         \
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 	MOCK(TIMER)

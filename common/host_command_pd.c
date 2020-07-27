@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -22,8 +22,8 @@
 
 #define CPRINTS(format, args...) cprints(CC_PD_HOST_CMD, format, ## args)
 
-#define TASK_EVENT_EXCHANGE_PD_STATUS  TASK_EVENT_CUSTOM(1)
-#define TASK_EVENT_HIBERNATING         TASK_EVENT_CUSTOM(2)
+#define TASK_EVENT_EXCHANGE_PD_STATUS  TASK_EVENT_CUSTOM_BIT(0)
+#define TASK_EVENT_HIBERNATING         TASK_EVENT_CUSTOM_BIT(1)
 
 /* Define local option for if we are a TCPM with an off chip TCPC */
 #if defined(CONFIG_USB_POWER_DELIVERY) && !defined(CONFIG_USB_PD_TCPM_STUB)
@@ -139,7 +139,7 @@ static void pd_service_tcpc_ports(uint16_t port_status)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 		if ((port_status & (PD_STATUS_TCPC_ALERT_0 << i)) &&
 		    pd_is_port_enabled(i))
 			tcpc_alert(i);
@@ -227,6 +227,7 @@ void pd_command_task(void *u)
 	}
 }
 
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 #if defined(USB_TCPM_WITH_OFF_CHIP_TCPC) && defined(CONFIG_HOSTCMD_EVENTS)
 /*
  * PD host event status for host command
@@ -261,3 +262,5 @@ void pd_send_host_event(int mask)
 	host_set_single_event(EC_HOST_EVENT_PD_MCU);
 }
 #endif
+=======
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)

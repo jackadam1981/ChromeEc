@@ -15,6 +15,7 @@
 #include "link_defs.h"
 #include "timer.h"
 
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 /* if no special memory regions are defined, fallback on regular SRAM */
 #ifndef FP_FRAME_SECTION
 #define FP_FRAME_SECTION
@@ -44,6 +45,27 @@
 /* Events for the FPSENSOR task */
 #define TASK_EVENT_SENSOR_IRQ     TASK_EVENT_CUSTOM(1)
 #define TASK_EVENT_UPDATE_CONFIG  TASK_EVENT_CUSTOM(2)
+=======
+#include "driver/fingerprint/fpsensor.h"
+
+/* if no special memory regions are defined, fallback on regular SRAM */
+#ifndef FP_FRAME_SECTION
+#define FP_FRAME_SECTION
+#endif
+#ifndef FP_TEMPLATE_SECTION
+#define FP_TEMPLATE_SECTION
+#endif
+
+#define SBP_ENC_KEY_LEN 16
+#define FP_ALGORITHM_ENCRYPTED_TEMPLATE_SIZE \
+	(FP_ALGORITHM_TEMPLATE_SIZE + \
+		FP_POSITIVE_MATCH_SALT_BYTES + \
+		sizeof(struct ec_fp_template_encryption_metadata))
+
+/* Events for the FPSENSOR task */
+#define TASK_EVENT_SENSOR_IRQ     TASK_EVENT_CUSTOM_BIT(0)
+#define TASK_EVENT_UPDATE_CONFIG  TASK_EVENT_CUSTOM_BIT(1)
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 
 #define FP_NO_SUCH_TEMPLATE -1
 

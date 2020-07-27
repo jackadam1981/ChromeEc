@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 /* Copyright 2017 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -159,3 +160,5 @@ void fps_event(enum gpio_signal signal);
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __BOARD_H */
+=======
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)

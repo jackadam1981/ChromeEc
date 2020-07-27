@@ -7,7 +7,13 @@
 
 #include "common.h"
 #include "console.h"
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 #include "cryptoc/util.h"
+=======
+#ifdef CONFIG_LIBCRYPTOC
+#include "cryptoc/util.h"
+#endif
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 #include "flash.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -15,6 +21,7 @@
 #include "mpu.h"
 #endif
 #include "rollback.h"
+#include "rollback_private.h"
 #include "sha256.h"
 #include "system.h"
 #include "task.h"
@@ -27,28 +34,38 @@
 /* Number of rollback regions */
 #define ROLLBACK_REGIONS 2
 
-/*
- * Note: Do not change this structure without also updating
- * common/firmware_image.S .image.ROLLBACK section.
- */
-struct rollback_data {
-	int32_t id; /* Incrementing number to indicate which region to use. */
-	int32_t rollback_min_version;
-#ifdef CONFIG_ROLLBACK_SECRET_SIZE
-	uint8_t secret[CONFIG_ROLLBACK_SECRET_SIZE];
-#endif
-	/* cookie must always be last, as it validates the rest of the data. */
-	uint32_t cookie;
-};
-
-/* We need at least 2 erasable blocks in the rollback region. */
-BUILD_ASSERT(CONFIG_ROLLBACK_SIZE >= ROLLBACK_REGIONS*CONFIG_FLASH_ERASE_SIZE);
-BUILD_ASSERT(sizeof(struct rollback_data) <= CONFIG_FLASH_ERASE_SIZE);
-
-static uintptr_t get_rollback_offset(int region)
+static int get_rollback_offset(int region)
 {
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+	int rv;
+	int rollback_start_bank = flash_bank_index(CONFIG_ROLLBACK_OFF);
+
+	rv = flash_bank_start_offset(rollback_start_bank + region);
+	ASSERT(rv >= 0);
+	return rv;
+#else
 	return CONFIG_ROLLBACK_OFF + region * CONFIG_FLASH_ERASE_SIZE;
+#endif
 }
+
+#ifdef SECTION_IS_RO
+static int get_rollback_erase_size_bytes(int region)
+{
+	int erase_size;
+
+#ifndef CONFIG_FLASH_MULTIPLE_REGION
+	erase_size = CONFIG_FLASH_ERASE_SIZE;
+#else
+	int rollback_start_bank = flash_bank_index(CONFIG_ROLLBACK_OFF);
+
+	erase_size = flash_bank_erase_size(rollback_start_bank + region);
+#endif
+	ASSERT(erase_size > 0);
+	ASSERT(ROLLBACK_REGIONS * erase_size <= CONFIG_ROLLBACK_SIZE);
+	ASSERT(sizeof(struct rollback_data) <= erase_size);
+	return erase_size;
+}
+#endif
 
 /*
  * When MPU is available, read rollback with interrupts disabled, to minimize
@@ -71,6 +88,7 @@ static void unlock_rollback(void)
 }
 
 static void clear_rollback(struct rollback_data *data)
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 {
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
 	always_memset(data->secret, 0, sizeof(data->secret));
@@ -78,8 +96,17 @@ static void clear_rollback(struct rollback_data *data)
 }
 
 static int read_rollback(int region, struct rollback_data *data)
+=======
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 {
-	uintptr_t offset;
+#ifdef CONFIG_ROLLBACK_SECRET_SIZE
+	always_memset(data->secret, 0, sizeof(data->secret));
+#endif
+}
+
+int read_rollback(int region, struct rollback_data *data)
+{
+	int offset;
 	int ret = EC_SUCCESS;
 
 	offset = get_rollback_offset(region);
@@ -168,6 +195,7 @@ test_mockable int rollback_get_secret(uint8_t *secret)
 	ret = EC_SUCCESS;
 failed:
 	clear_rollback(&data);
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 	return ret;
 }
 #endif
@@ -195,14 +223,17 @@ int rollback_lock(void)
 		system_reset(SYSTEM_RESET_HARD | SYSTEM_RESET_PRESERVE_FLAGS);
 	}
 
+=======
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 	return ret;
 }
+#endif
 
 #ifdef CONFIG_ROLLBACK_UPDATE
 
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
 static int add_entropy(uint8_t *dst, const uint8_t *src,
-			uint8_t *add, unsigned int add_len)
+		       const uint8_t *add, unsigned int add_len)
 {
 	int ret = 0;
 #ifdef CONFIG_SHA256
@@ -254,7 +285,7 @@ failed:
  * @return EC_SUCCESS on success, EC_ERROR_* on error.
  */
 static int rollback_update(int32_t next_min_version,
-			   uint8_t *entropy, unsigned int length)
+			   const uint8_t *entropy, unsigned int length)
 {
 	/*
 	 * When doing flash_write operation, the data needs to be in blocks
@@ -265,8 +296,12 @@ static int rollback_update(int32_t next_min_version,
 			CONFIG_FLASH_WRITE_SIZE)];
 	struct rollback_data *data = (struct rollback_data *)block;
 	BUILD_ASSERT(sizeof(block) >= sizeof(*data));
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 	uintptr_t offset;
 	int region, ret;
+=======
+	int erase_size, offset, region, ret;
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 
 	if (flash_get_protect() & EC_FLASH_PROTECT_ROLLBACK_NOW) {
 		ret = EC_ERROR_ACCESS_DENIED;
@@ -325,18 +360,39 @@ static int rollback_update(int32_t next_min_version,
 #endif
 	data->cookie = CROS_EC_ROLLBACK_COOKIE;
 
-	/* Offset should never be part of active image. */
-	if (system_unsafe_to_overwrite(offset, CONFIG_FLASH_ERASE_SIZE)) {
+	erase_size = get_rollback_erase_size_bytes(region);
+
+	if (erase_size < 0) {
 		ret = EC_ERROR_UNKNOWN;
 		goto out;
 	}
 
+	/* Offset should never be part of active image. */
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
+	if (system_unsafe_to_overwrite(offset, CONFIG_FLASH_ERASE_SIZE)) {
+=======
+	if (system_unsafe_to_overwrite(offset, erase_size)) {
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
+		ret = EC_ERROR_UNKNOWN;
+		goto out;
+	}
+
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 	if (flash_erase(offset, CONFIG_FLASH_ERASE_SIZE)) {
 		ret = EC_ERROR_UNKNOWN;
+=======
+	unlock_rollback();
+	if (flash_erase(offset, erase_size)) {
+		ret = EC_ERROR_UNKNOWN;
+		lock_rollback();
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 		goto out;
 	}
 
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 	unlock_rollback();
+=======
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 	ret = flash_write(offset, sizeof(block), block);
 	lock_rollback();
 
@@ -350,7 +406,7 @@ int rollback_update_version(int32_t next_min_version)
 	return rollback_update(next_min_version, NULL, 0);
 }
 
-int rollback_add_entropy(uint8_t *data, unsigned int len)
+int rollback_add_entropy(const uint8_t *data, unsigned int len)
 {
 	return rollback_update(-1, data, len);
 }
@@ -463,7 +519,7 @@ static int command_rollback_info(int argc, char **argv)
 	if (min_region < 0)
 		goto failed;
 
-	rw_rollback_version = system_get_rollback_version(SYSTEM_IMAGE_RW);
+	rw_rollback_version = system_get_rollback_version(EC_IMAGE_RW);
 
 	ccprintf("rollback minimum version: %d\n", data.rollback_min_version);
 	ccprintf("RW rollback version: %d\n", rw_rollback_version);
@@ -512,7 +568,11 @@ host_command_rollback_info(struct host_cmd_handler_args *args)
 
 	r->id = data.id;
 	r->rollback_min_version = data.rollback_min_version;
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 	r->rw_rollback_version = system_get_rollback_version(SYSTEM_IMAGE_RW);
+=======
+	r->rw_rollback_version = system_get_rollback_version(EC_IMAGE_RW);
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 
 	args->response_size = sizeof(*r);
 	ret = EC_RES_SUCCESS;

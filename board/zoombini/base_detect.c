@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 /* Copyright 2018 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -304,3 +305,5 @@ void base_force_state(int state)
 
 	hook_call_deferred(&base_detect_deferred_data, 0);
 }
+=======
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)

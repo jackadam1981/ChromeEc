@@ -4,8 +4,10 @@
  */
 /* Hammer board configuration */
 
+#include "charger.h"
 #include "clock.h"
 #include "common.h"
+#include "driver/charger/isl923x.h"
 #include "driver/led/lm3630a.h"
 #include "ec_version.h"
 #include "ec_ec_comm_slave.h"
@@ -72,19 +74,20 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
  */
 
 #ifdef SECTION_IS_RW
-#ifdef BOARD_WHISKERS
+#ifdef HAS_SPI_TOUCHPAD
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
 	[SPI_ST_TP_DEVICE_ID] = { CONFIG_SPI_TOUCHPAD_PORT, 2, GPIO_SPI1_NSS },
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 
-USB_SPI_CONFIG(usb_spi, USB_IFACE_I2C_SPI, USB_EP_I2C_SPI);
+USB_SPI_CONFIG(usb_spi, USB_IFACE_I2C_SPI, USB_EP_I2C_SPI, 0);
 /* SPI interface is always enabled, no need to do anything. */
 void usb_spi_board_enable(struct usb_spi_config const *config) {}
 void usb_spi_board_disable(struct usb_spi_config const *config) {}
-#endif  /* !BOARD_WHISKERS */
+#endif  /* !HAS_SPI_TOUCHPAD */
 
+#ifdef CONFIG_I2C
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"master", I2C_PORT_MASTER, 400,
@@ -95,18 +98,27 @@ const struct i2c_port_t i2c_ports[] = {
 #endif
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
-
-#ifdef BOARD_STAFF
-#define KBLIGHT_PWM_FREQ 100 /* Hz */
-#else
-#define KBLIGHT_PWM_FREQ 50000 /* Hz */
 #endif
 
+#ifdef CONFIG_CHARGER_ISL9238
+const struct charger_config_t chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
+		.drv = &isl923x_drv,
+	},
+};
+
+const unsigned int chg_cnt = ARRAY_SIZE(chg_chips);
+#endif
+
+#ifdef HAS_BACKLIGHT
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
 	{STM32_TIM(TIM_KBLIGHT), STM32_TIM_CH(1), 0, KBLIGHT_PWM_FREQ},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+#endif /* HAS_BACKLIGHT */
 
 int usb_i2c_board_is_enabled(void)
 {
@@ -186,29 +198,16 @@ static void board_burn_power(void)
  */
 static int has_keyboard_backlight;
 
+#ifdef SECTION_IS_RW
 static void board_init(void)
 {
+#ifdef HAS_BACKLIGHT
 	/* Detect keyboard backlight: pull-down means it is present. */
 	has_keyboard_backlight = !gpio_get_level(GPIO_KEYBOARD_BACKLIGHT);
 
 	CPRINTS("Backlight%s present", has_keyboard_backlight ? "" : " not");
+#endif /* HAS_BACKLIGHT */
 
-#ifdef BOARD_STAFF
-	if (!has_keyboard_backlight) {
-		/*
-		 * Earlier staff boards have both PU and PD stuffed, and end up
-		 * being detected as not have keyboard backlight. However, we
-		 * need to enable internal PD on the pin, otherwise backlight
-		 * will always be on.
-		 * TODO(b:67722756): Remove this hack when old boards are
-		 * deprecated.
-		 */
-		gpio_set_flags(GPIO_KEYBOARD_BACKLIGHT,
-			       GPIO_PULL_DOWN | GPIO_INPUT);
-	}
-#endif /* BOARD_STAFF */
-
-#ifdef SECTION_IS_RW
 #ifdef BOARD_WAND
 	/* USB to serial queues */
 	queue_init(&ec_ec_comm_slave_input);
@@ -218,8 +217,11 @@ static void board_init(void)
 	usart_init(&ec_ec_usart);
 #endif /* BOARD_WAND */
 
-#ifdef BOARD_WHISKERS
+#ifdef CONFIG_LED_DRIVER_LM3630A
 	lm3630a_poweron();
+#endif
+
+#ifdef HAS_SPI_TOUCHPAD
 	spi_enable(CONFIG_SPI_TOUCHPAD_PORT, 0);
 
 	/* Disable SPI passthrough when the system is locked */
@@ -240,18 +242,23 @@ static void board_init(void)
 	/* Enable SPI for touchpad */
 	gpio_config_module(MODULE_SPI_MASTER, 1);
 	spi_enable(CONFIG_SPI_TOUCHPAD_PORT, 1);
+<<<<<<< HEAD   (6f5daa driver/opt3100: Set min/max frequency that match the driver)
 
 	board_burn_power();
 #endif /* BOARD_WHISKERS */
 #endif /* SECTION_IS_RW */
+=======
+#endif /* HAS_SPI_TOUCHPAD */
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 }
 /* This needs to happen before PWM is initialized. */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_PWM - 1);
+#endif /* SECTION_IS_RW */
 
 void board_config_pre_init(void)
 {
 	/* enable SYSCFG clock */
-	STM32_RCC_APB2ENR |= 1 << 0;
+	STM32_RCC_APB2ENR |= BIT(0);
 
 	/* Remap USART DMA to match the USART driver */
 	/*
@@ -259,7 +266,7 @@ void board_config_pre_init(void)
 	 *  Chan 4 : USART1_TX
 	 *  Chan 5 : USART1_RX
 	 */
-	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10); /* Remap USART1 RX/TX DMA */
+	STM32_SYSCFG_CFGR1 |= BIT(9) | BIT(10); /* Remap USART1 RX/TX DMA */
 }
 
 int board_has_keyboard_backlight(void)
@@ -267,10 +274,11 @@ int board_has_keyboard_backlight(void)
 	return has_keyboard_backlight;
 }
 
+#ifndef HAS_NO_TOUCHPAD
 /* Reset the touchpad, mainly used to recover it from malfunction. */
 void board_touchpad_reset(void)
 {
-#ifdef BOARD_WHISKERS
+#ifdef HAS_EN_PP3300_TP_ACTIVE_HIGH
 	gpio_set_level(GPIO_EN_PP3300_TP, 0);
 	msleep(100);
 	gpio_set_level(GPIO_EN_PP3300_TP, 1);
@@ -282,6 +290,24 @@ void board_touchpad_reset(void)
 	msleep(10);
 #endif
 }
+#endif /* !HAS_NO_TOUCHPAD */
+
+#ifdef CONFIG_KEYBOARD_TABLET_MODE_SWITCH
+static void board_tablet_mode_change(void)
+{
+	/*
+	 * Turn off key scanning in tablet mode.
+	 */
+	if (tablet_get_mode())
+		keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+	else
+		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, board_tablet_mode_change,
+		HOOK_PRIO_DEFAULT);
+/* Run after tablet_mode_init. */
+DECLARE_HOOK(HOOK_INIT, board_tablet_mode_change, HOOK_PRIO_DEFAULT+1);
+#endif
 
 #if defined(BOARD_WHISKERS) && defined(SECTION_IS_RW)
 static void board_tablet_mode_change(void)
@@ -330,7 +356,7 @@ int board_get_entropy(void *buffer, int len)
 /*
  * Generate a USB serial number from unique chip ID.
  */
-const char *board_read_serial(void)
+__override const char *board_read_serial(void)
 {
 	static char str[CONFIG_SERIALNO_LEN];
 
@@ -349,7 +375,7 @@ const char *board_read_serial(void)
 	return str;
 }
 
-int board_write_serial(const char *serialno)
+__override int board_write_serial(const char *serialno)
 {
 	return 0;
 }
