@@ -229,6 +229,30 @@
       "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac37ba90_36a40bfc",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-27T07:36:51Z",
+      "side": 1,
+      "message": "In TCPMv1, Try.SRC is embedded in SRC_DISCONNECT, TryWait.SNK is embedded in SNK_DISCONNECT, and the SRC/SNK_DISCONNECT hook the HOOK_DISCONNECT. \nEverytime we go to Try.SRC/TryWait.SNK state, the plug in interrupt will be enabled and fire, then set correctly for the SRC detect plug out or the SNK disable detect, so TCPMv1 needn\u0027t hook connection.\n\nOK, I add comment why we needn\u0027t the hook for TCPMv1.",
+      "parentUuid": "62bdd7bc_06290e43",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 651,
+        "endChar": 55
+      },
+      "revId": "d5e0b0903d9899031d72c9b5f220e1fc6214c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
