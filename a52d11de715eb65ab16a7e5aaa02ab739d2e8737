@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2bd1521e_77b8be6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-07-27T08:42:12Z",
+      "side": 1,
+      "message": "Nothing at all on AP console? (no bootrom splat?)",
+      "parentUuid": "0f830a77_6858de44",
+      "range": {
+        "startLine": 15,
+        "startChar": 25,
+        "endLine": 15,
+        "endChar": 56
+      },
+      "revId": "a52d11de715eb65ab16a7e5aaa02ab739d2e8737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf5636aa_c858ebc2",
         "filename": "power/mt8183.c",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Yes, this is for RO-\u003eRW-\u003eRO case. I could amend the commit description, how about:\n\n\"On some testing scenario, we might want to boot AP after RO-\u003eRW-\u003eRO transition, and in such case, AP won\u0027t ...\"",
       "parentUuid": "cf5636aa_c858ebc2",
+      "range": {
+        "startLine": 395,
+        "startChar": 6,
+        "endLine": 395,
+        "endChar": 33
+      },
+      "revId": "a52d11de715eb65ab16a7e5aaa02ab739d2e8737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f97b122_4d1556f7",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-07-27T08:42:12Z",
+      "side": 1,
+      "message": "sg",
+      "parentUuid": "18ca56d7_b2157477",
       "range": {
         "startLine": 395,
         "startChar": 6,
