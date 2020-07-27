@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f830a77_6858de44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-27T08:36:10Z",
+      "side": 1,
+      "message": "I feel this is related to sequencing from S0 to S5 and thus AP doesn\u0027t fully turn off, but the rails look good to me. They are all in the correct off state in S5/G3.",
+      "parentUuid": "72322a70_9d772fcf",
+      "range": {
+        "startLine": 15,
+        "startChar": 25,
+        "endLine": 15,
+        "endChar": 56
+      },
+      "revId": "a52d11de715eb65ab16a7e5aaa02ab739d2e8737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf5636aa_c858ebc2",
         "filename": "power/mt8183.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-27T08:25:28Z",
       "side": 1,
       "message": "I don\u0027t understand how this helps. Does that mean that we jump RO-\u003eRW-\u003eRO, then hit this? Doesn\u0027t really match the commit description (that says we stay in RO?)",
+      "range": {
+        "startLine": 395,
+        "startChar": 6,
+        "endLine": 395,
+        "endChar": 33
+      },
+      "revId": "a52d11de715eb65ab16a7e5aaa02ab739d2e8737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ca56d7_b2157477",
+        "filename": "power/mt8183.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-27T08:36:10Z",
+      "side": 1,
+      "message": "Yes, this is for RO-\u003eRW-\u003eRO case. I could amend the commit description, how about:\n\n\"On some testing scenario, we might want to boot AP after RO-\u003eRW-\u003eRO transition, and in such case, AP won\u0027t ...\"",
+      "parentUuid": "cf5636aa_c858ebc2",
       "range": {
         "startLine": 395,
         "startChar": 6,
