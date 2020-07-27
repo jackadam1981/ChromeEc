@@ -29,6 +29,10 @@
 #define CONFIG_USB_MUX_TUSB1064
 #define CONFIG_USBC_PPC_STUB
 
+#define CONFIG_USB_PID 0x5049
+#define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
+#define CONFIG_USB_PD_IDENTITY_HW_VERS 1
+#define CONFIG_USB_PD_IDENTITY_SW_VERS 1
 /* USB Type A Features */
 
 /* I2C port names */
