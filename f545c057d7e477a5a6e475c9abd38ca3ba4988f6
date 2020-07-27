@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "b398b283_c07a1ad2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-27T16:01:29Z",
+      "side": 1,
+      "message": "This definitely looks like a good changes. Thanks for taking this on!\n\nI want to get some other eyes on it too.\n\n+2 for time delay (assuming comments are updated)",
+      "revId": "f545c057d7e477a5a6e475c9abd38ca3ba4988f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93b58cb6_2b8a60d2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2778,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-27T16:01:29Z",
+      "side": 1,
+      "message": "Since all of the cases do this same things, I would be easier to read if we just had the body once.\n\n----\n\nAlso, adding a comment saying that we soft reset on known PD messages that are unexpected is good, but we still want to say no supported for unknown PD messages to avoid infinite loops (reflecting Nathans\u0027s comment)",
+      "range": {
+        "startLine": 2767,
+        "startChar": 3,
+        "endLine": 2778,
+        "endChar": 11
+      },
+      "revId": "f545c057d7e477a5a6e475c9abd38ca3ba4988f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd1dde6a_3cd4563d",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
