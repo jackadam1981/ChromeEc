@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f7efe808_3e151982",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-07-27T08:46:33Z",
+      "side": 1,
+      "message": "Correct. No logs like:\n\n[DL] 00000000 00000000 010701\n\nF0: 102B 0000\nF3: 1006 0033 [0200]\nF3: 4001 00E0 [0200]\nF3: 0000 0000\nV0: 0000 0000 [0001]\n00: 1027 0002\n01: 0000 0000\nBP: 0C00 0251 [0000]\nG0: 1182 0000\nEC: 0004 0000 [0001]\nS7: 0000 0000 [0000]\nCC: 0000 0000 [0001]\nT0: 0000 00DB [000F]\nJump to BL",
+      "parentUuid": "2bd1521e_77b8be6c",
+      "range": {
+        "startLine": 15,
+        "startChar": 25,
+        "endLine": 15,
+        "endChar": 56
+      },
+      "revId": "a52d11de715eb65ab16a7e5aaa02ab739d2e8737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf5636aa_c858ebc2",
         "filename": "power/mt8183.c",
         "patchSetId": 1
