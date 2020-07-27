@@ -186,6 +186,8 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 	.drp_toggle		= &tcpci_tcpc_drp_toggle,
 #endif
 #ifdef CONFIG_USBC_PPC
+	.is_sinking		= &tcpci_tcpm_is_sinking,
+	.is_sourcing		= &tcpci_tcpm_is_sourcing,
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #endif

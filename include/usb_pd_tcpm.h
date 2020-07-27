@@ -361,6 +361,28 @@ struct tcpm_drv {
 
 #ifdef CONFIG_USBC_PPC
 	/**
+	 * Request current sinking state of the TCPC
+	 * NOTE: this is most useful for PPCs that can not tell on their own
+	 *
+	 * @param port Type-C port number
+	 * @param is_sinking true for sinking, false for not
+	 *
+	 * @return EC_SUCCESS, EC_ERROR_UNIMPLEMENTED or error
+	 */
+	int (*is_sinking)(int port, bool *sinking);
+
+	/**
+	 * Request current sourcing state of the TCPC
+	 * NOTE: this is most useful for PPCs that can not tell on their own
+	 *
+	 * @param port Type-C port number
+	 * @param is_sourcing true for sourcing, false for not
+	 *
+	 * @return EC_SUCCESS, EC_ERROR_UNIMPLEMENTED or error
+	 */
+	int (*is_sourcing)(int port, bool *sourcing);
+
+	/**
 	 * Send SinkVBUS or DisableSinkVBUS command
 	 *
 	 * @param port Type-C port number
