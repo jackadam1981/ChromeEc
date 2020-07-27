@@ -16,6 +16,24 @@
       "revId": "73745ba8e0ea7725fc40a60356b40f146ff9673b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdb83ad4_217568fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-27T22:58:40Z",
+      "side": 1,
+      "message": "We still have sysjumps occurring during run time when the EC SPI is flashed via the AP. PP3300_A is one of the required power sequencing rails.",
+      "parentUuid": "c11eb9bd_d6ca143c",
+      "revId": "73745ba8e0ea7725fc40a60356b40f146ff9673b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
