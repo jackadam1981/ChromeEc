@@ -74,7 +74,7 @@
 #undef CONFIG_CMD_SLEEPMASK_SET
 
 /* Save more code space */
-/* #define CONFIG_COMMON_GPIO_SHORTNAMES */
+#define CONFIG_COMMON_GPIO_SHORTNAMES
 #define CONFIG_LTO
 
 /*
