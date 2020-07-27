@@ -22,6 +22,30 @@
       "revId": "a73196a6242f46c71183bfa94c9b32c03520fc65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8ac1a8_d6a4827e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-27T21:00:05Z",
+      "side": 1,
+      "message": "This patchset compiles cleanly at REV2, with or without CONFIG_USB_PD_EXTENDED_MESSAGES \"enabled.\"\n\nSTATIC_IF only takes one config option. To make the STATIC_IF conditions make sense, I have now duplicated them for the \"no PD rev 3.0\" and \"rev 3.0 with extended messages\" cases. Those cases, as well as \"rev 3.0 without extended messages\" build cleanly for Volteer.\n\nWRT the other blocks, I have uploaded a follow-up CL.",
+      "parentUuid": "470e3422_3fffad74",
+      "range": {
+        "startLine": 443,
+        "startChar": 10,
+        "endLine": 443,
+        "endChar": 41
+      },
+      "revId": "a73196a6242f46c71183bfa94c9b32c03520fc65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
