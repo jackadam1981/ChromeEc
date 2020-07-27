@@ -16,6 +16,75 @@
       "revId": "2ca49317f53d76b06584458ab472c1de42595539",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6c451ed_be800288",
+        "filename": "board/asurada/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-07-27T08:10:10Z",
+      "side": 1,
+      "message": "disconnected",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "2ca49317f53d76b06584458ab472c1de42595539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e38bec90_12c077de",
+        "filename": "board/asurada/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-07-27T08:10:10Z",
+      "side": 1,
+      "message": "irq and lvl looks like booleans, use \u0026\u0026.",
+      "range": {
+        "startLine": 91,
+        "startChar": 9,
+        "endLine": 91,
+        "endChar": 10
+      },
+      "revId": "2ca49317f53d76b06584458ab472c1de42595539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c06d5109_e2047c16",
+        "filename": "board/asurada/usb_pd_policy.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-07-27T08:10:10Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 10
+      },
+      "revId": "2ca49317f53d76b06584458ab472c1de42595539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
