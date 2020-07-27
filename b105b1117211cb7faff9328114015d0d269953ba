@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9603f911_b02bf9c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-27T23:38:04Z",
+      "side": 1,
+      "message": "If power_button_is_stable \u003d\u003d 1 and debounced_power_pressed \u003d\u003d 0, after power_button_change_deferred runs (step 4 above), shouldn\u0027t that break out of the loop in power_button_wait_for_release?\n\nIf the waiting task is asleep at that time due to task_wait_event(-1), would it be simpler to wake the task on a false alarm?",
+      "parentUuid": "2b35120d_ec369089",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 64
+      },
+      "revId": "b105b1117211cb7faff9328114015d0d269953ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5439226c_9a51d876",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
