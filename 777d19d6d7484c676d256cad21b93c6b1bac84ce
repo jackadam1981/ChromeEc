@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "eaede751_b5f95380",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-27T22:21:02Z",
+      "side": 1,
+      "message": "Should these require that the console is open? Can running fips tests interfere with nvmem operations while the board is booting or anything like that?",
+      "range": {
+        "startLine": 758,
+        "startChar": 0,
+        "endLine": 762,
+        "endChar": 21
+      },
+      "revId": "777d19d6d7484c676d256cad21b93c6b1bac84ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da61d4ce_b4c448e8",
         "filename": "board/cr50/fips.c",
         "patchSetId": 1
