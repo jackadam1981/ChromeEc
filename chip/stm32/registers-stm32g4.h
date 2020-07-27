@@ -141,7 +141,7 @@
 #define STM32_I2C1_BASE             STM32_APB1PERIPH(0x5400UL)
 #define STM32_I2C2_BASE             STM32_APB1PERIPH(0x5800UL)
 /* USB_IP Peripheral Registers base address */
-#define STM32_USB_BASE              STM32_APB1PERIPH(0x5C00UL)
+#define STM32_USB_FS_BASE           STM32_APB1PERIPH(0x5C00UL)
 /* USB_IP Packet Memory Area base address */
 #define STM32_USB_PMAADDR           STM32_APB1PERIPH(0x6000UL)
 #define STM32_FDCAN1_BASE           STM32_APB1PERIPH(0x6400UL)
@@ -154,6 +154,7 @@
 #define STM32_I2C4_BASE             STM32_APB1PERIPH(0x8400UL)
 /* UART9 is used as link to LPUART in STM32 uart.c implementation */
 #define STM32_USART9_BASE           STM32_APB1PERIPH(0x8000UL)
+#define STM32_I2C4_BASE             STM32_APB1PERIPH(0x8400UL)
 #define STM32_UCPD1_BASE            STM32_APB1PERIPH(0xA000UL)
 #define STM32_SRAMCAN_BASE          STM32_APB1PERIPH(0xA400UL)
 
