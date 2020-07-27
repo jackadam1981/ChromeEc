@@ -1358,10 +1358,11 @@ __attribute__((weak)) uint8_t board_set_battery_level_shutdown(void)
 /* True if we know the charge is too low, or we know the voltage is too low. */
 static inline int battery_too_low(void)
 {
-	return ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
-		 curr.batt.state_of_charge < battery_level_shutdown) ||
-		(!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE) &&
-		 curr.batt.voltage <= batt_info->voltage_min));
+	return 0;
+// 	return ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
+// 		 curr.batt.state_of_charge < battery_level_shutdown) ||
+// 		(!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE) &&
+// 		 curr.batt.voltage <= batt_info->voltage_min));
 }
 
 __attribute__((weak))
@@ -2192,9 +2193,10 @@ wait_for_it:
 
 int charge_want_shutdown(void)
 {
-	return (curr.state == ST_DISCHARGE) &&
-		!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
-		(curr.batt.state_of_charge < battery_level_shutdown);
+	return 0;
+	// return (curr.state == ST_DISCHARGE) &&
+	// 	!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
+	// 	(curr.batt.state_of_charge < battery_level_shutdown);
 }
 
 int charge_prevent_power_on(int power_button_pressed)

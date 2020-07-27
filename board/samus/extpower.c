@@ -199,12 +199,12 @@ static void extpower_board_hacks(int extpower, int extpower_prev)
 		charger_disable(0);
 		hook_call_deferred(&allow_max_request_data, 500*MSEC);
 		set_pp5000_in_g3(PP5000_IN_G3_AC, 1);
-	} else if (extpower && extpower_prev) {
+	// } else if (extpower && extpower_prev) {
 		/*
 		 * Glitch on AC_PRESENT, attempt to recover from
 		 * backboost
 		 */
-		host_command_pd_send_status(PD_CHARGE_NONE);
+		// host_command_pd_send_status(PD_CHARGE_NONE);
 	} else {
 		/* AC disconnected */
 		if (!charge_is_disabled &&
@@ -406,7 +406,7 @@ void extpower_task(void)
 				check_charge_wedged();
 		} else {
 			/* Must have received power change interrupt */
-			extpower = extpower_is_present();
+			extpower = 1;//extpower_is_present();
 
 			/* Various board hacks to run on extpower change */
 			extpower_board_hacks(extpower, extpower_prev);
