@@ -31,6 +31,9 @@ struct emu_task_t {
 	uint32_t event;
 	timestamp_t wake_time;
 	uint8_t started;
+	volatile uint8_t canceled;
+	pthread_t canceled_by;
+	uint8_t retcode;
 };
 
 struct task_args {
@@ -215,6 +218,16 @@ uint32_t task_wait_event(int timeout_us)
 {
 	int tid = task_get_current();
 	int ret;
+
+	if (tasks[tid].canceled) {
+		cprintf(CC_SYSTEM, "tasks[tid].canceled is true\n");
+		tasks[tid].retcode = 0;
+		pthread_mutex_unlock(&run_lock);
+		pthread_cond_signal(&tasks[tasks[tid].canceled_by].resume);
+		cprintf(CC_SYSTEM, "pthread_exit\n");
+		pthread_exit(&tasks[tid].retcode);
+		cprintf(CC_SYSTEM, "pthread_exit has returned, wtf?\n");
+	}
 	pthread_mutex_lock(&interrupt_lock);
 	if (timeout_us > 0)
 		tasks[tid].wake_time.val = get_time().val + timeout_us;
@@ -497,6 +510,7 @@ int task_start(void)
 	tasks[i].event = TASK_EVENT_WAKE;
 	tasks[i].wake_time.val = ~0ull;
 	tasks[i].started = 0;
+	tasks[i].canceled = 0;
 	pthread_cond_init(&tasks[i].resume, NULL);
 	pthread_create(&tasks[i].thread, NULL, _task_start_impl,
 		       (void *)(uintptr_t)i);
@@ -529,33 +543,71 @@ int task_start(void)
 	return 0;
 }
 
+/* Implement the creation of a thread to run a task */
+static void _task_create_impl(int i)
+{
+	if (tasks[i].thread != (pthread_t)NULL)
+		return;
+
+	tasks[i].event = TASK_EVENT_WAKE;
+	tasks[i].wake_time.val = ~0ull;
+	tasks[i].started = 0;
+	tasks[i].canceled = 0;
+	pthread_cond_init(&tasks[i].resume, NULL);
+	pthread_create(&tasks[i].thread, NULL, _task_start_impl,
+		       (void *)(uintptr_t)i);
+	/*
+	 * Interrupt lock is grabbed by the task which just started.
+	 * Let's unlock it so the next task can be started.
+	 */
+	pthread_mutex_unlock(&interrupt_lock);
+	pthread_cond_wait(&scheduler_cond, &run_lock);
+}
+
 static void task_enable_all_tasks_callback(void)
 {
 	int i;
 
 	/* Initialize the remaning tasks. */
 	for (i = 0; i < TASK_ID_COUNT; ++i) {
-		if (tasks[i].thread != (pthread_t)NULL)
-			continue;
-
-		tasks[i].event = TASK_EVENT_WAKE;
-		tasks[i].wake_time.val = ~0ull;
-		tasks[i].started = 0;
-		pthread_cond_init(&tasks[i].resume, NULL);
-		pthread_create(&tasks[i].thread, NULL, _task_start_impl,
-			       (void *)(uintptr_t)i);
-		/*
-		 * Interrupt lock is grabbed by the task which just started.
-		 * Let's unlock it so the next task can be started.
-		 */
-		pthread_mutex_unlock(&interrupt_lock);
-		pthread_cond_wait(&scheduler_cond, &run_lock);
+		_task_create_impl(i);
 	}
-
 }
 
 void task_enable_all_tasks(void)
 {
 	/* Signal to the scheduler to enable the remaining tasks. */
 	pthread_cond_signal(&scheduler_cond);
+}
+
+int task_reset(task_id_t id, int wait)
+{
+	/* The 'wait' parameter is ignored on the host; we always wait. */
+	cprintf(CC_SYSTEM, "set tasks[id].canceled\n");
+	tasks[id].canceled_by = task_get_current();
+	tasks[id].canceled = 1;
+	cprintf(CC_SYSTEM, "pthread_cond_signal\n");
+	task_set_event(id, TASK_EVENT_WAKE, 0);
+
+	cprintf(CC_SYSTEM, "task_wait_event\n");
+	task_wait_event(SECOND);
+
+	/* Need a second wait event, and then it *usually* works. */
+	cprintf(CC_SYSTEM, "task_wait_event\n");
+	task_wait_event(MSEC);
+
+	cprintf(CC_SYSTEM, "calling pthread_join ...\n");
+	pthread_join(tasks[id].thread, NULL);
+	cprintf(CC_SYSTEM, "pthread_join done\n");
+
+	pthread_cond_destroy(&tasks[id].resume);
+
+	/* Create a new thread for the task */
+	cprintf(CC_SYSTEM, "_task_create_impl\n");
+	tasks[id].thread = (pthread_t)NULL;
+	_task_create_impl(id);
+	tasks[id].started = 1;
+
+	cprintf(CC_SYSTEM, "%s exit\n", __func__);
+	return EC_SUCCESS;
 }

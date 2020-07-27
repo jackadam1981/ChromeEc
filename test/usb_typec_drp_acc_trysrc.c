@@ -668,10 +668,7 @@ void before_test(void)
 {
 	mock_usb_mux_reset();
 	mock_tcpc_reset();
-
-	/* Restart the PD task and let it settle */
-	task_set_event(TASK_ID_PD_C0, TASK_EVENT_RESET_DONE, 0);
-	task_wait_event(SECOND);
+	task_reset(TASK_ID_PD_C0, 1);
 
 	/* Print out TCPC calls for easier debugging */
 	mock_tcpc.should_print_call = true;
