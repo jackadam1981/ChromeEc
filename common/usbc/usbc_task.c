@@ -223,6 +223,7 @@ void pd_task(void *u)
 		return;
 
 	while (1) {
+		CPRINTF("call pd_task_init\n");
 		pd_task_init(port);
 
 		/* As long as pd_task_loop returns true, keep running the loop.
@@ -231,6 +232,7 @@ void pd_task(void *u)
 		 * loop, the re-init code at the top of the outer while loop
 		 * will run.
 		 */
+		CPRINTF("start pd_task_loop\n");
 		while (pd_task_loop(port))
 			continue;
 	}
