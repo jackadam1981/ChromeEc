@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f79fd838_e1cd1a00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-27T23:58:35Z",
+      "side": 1,
+      "message": "The problem is how to wake the task up.\n\nIf the debounced_power_presssed changes, it notifies the HOOK_POWER_BUTTON_CHANGE hook. This hook registered in the power sequence will wake the task up and then break the loop.\n\nBut on this bug, the debounced_power_presssed doesn\u0027t change, so no hook will be notified. We can\u0027t notify HOOK_POWER_BUTTON_CHANGE, because technically, the power button does not change.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/common/power_button.c#145",
+      "parentUuid": "9603f911_b02bf9c0",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 64
+      },
+      "revId": "b105b1117211cb7faff9328114015d0d269953ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5439226c_9a51d876",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
