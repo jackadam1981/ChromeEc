@@ -18,6 +18,12 @@
 #include "util.h"
 #include "vboot_hash.h"
 
+#ifdef BOARD_VOLTEER
+#define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
+#else
+#define CPRINTS(format, args...)
+#endif
+
 /*
  * Contents of erased flash, as a 32-bit value.  Most platforms erase flash
  * bits to 1.
@@ -1246,6 +1252,8 @@ static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)
 	int banks_len;
 	int ideal_size;
 
+	CPRINTS("%s", __func__);
+
 	/*
 	 * Compute the ideal amount of data for the host to send us,
 	 * based on the maximum response size and the ideal write size.
@@ -1321,6 +1329,8 @@ static enum ec_status flash_command_read(struct host_cmd_handler_args *args)
 	const struct ec_params_flash_read *p = args->params;
 	uint32_t offset = p->offset + EC_FLASH_REGION_START;
 
+	CPRINTS("%s", __func__);
+
 	if (p->size > args->response_max)
 		return EC_RES_OVERFLOW;
 
@@ -1345,6 +1355,8 @@ static enum ec_status flash_command_write(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_write *p = args->params;
 	uint32_t offset = p->offset + EC_FLASH_REGION_START;
+
+	CPRINTS("%s", __func__);
 
 	if (flash_get_protect() & EC_FLASH_PROTECT_ALL_NOW)
 		return EC_RES_ACCESS_DENIED;
@@ -1373,6 +1385,8 @@ DECLARE_HOST_COMMAND(EC_CMD_FLASH_WRITE,
  */
 BUILD_ASSERT(CONFIG_RO_SIZE % CONFIG_FLASH_ERASE_SIZE == 0);
 BUILD_ASSERT(CONFIG_RW_SIZE % CONFIG_FLASH_ERASE_SIZE == 0);
+BUILD_ASSERT(CONFIG_EC_WRITABLE_STORAGE_SIZE % CONFIG_FLASH_ERASE_SIZE == 0)
+
 #endif
 
 static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
@@ -1390,6 +1404,8 @@ static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
 #endif
 	offset = p->offset + EC_FLASH_REGION_START;
 
+	CPRINTS("%s: offset 0x%08x size 0x%08x", __func__, p->offset, p->size);
+
 	if (flash_get_protect() & EC_FLASH_PROTECT_ALL_NOW)
 		return EC_RES_ACCESS_DENIED;
 
@@ -1404,8 +1420,10 @@ static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
 		args->result = EC_RES_IN_PROGRESS;
 		host_send_response(args);
 #endif
-		if (flash_erase(offset, p->size))
+		if (flash_erase(offset, p->size)) {
+			CPRINTS("%s: flash_erase failed", __func__);
 			return EC_RES_ERROR;
+		}
 
 		break;
 #ifdef CONFIG_FLASH_DEFERRED_ERASE
@@ -1433,6 +1451,9 @@ static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
 	default:
 		rc = EC_RES_INVALID_PARAM;
 	}
+
+	CPRINTS("%s: flash_erase failed, invalid cmd %d", __func__, cmd);
+
 	return rc;
 }
 
@@ -1448,6 +1469,8 @@ static enum ec_status flash_command_protect(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_protect *p = args->params;
 	struct ec_response_flash_protect *r = args->response;
+
+	CPRINTS("%s", __func__);
 
 	/*
 	 * Handle requesting new flags.  Note that we ignore the return code
@@ -1504,7 +1527,7 @@ flash_command_region_info(struct host_cmd_handler_args *args)
 	case EC_FLASH_REGION_ACTIVE:
 		r->offset = flash_get_rw_offset(system_get_active_copy()) -
 				EC_FLASH_REGION_START;
-		r->size = CONFIG_RW_SIZE;
+		r->size = CONFIG_EC_WRITABLE_STORAGE_SIZE;
 		break;
 	case EC_FLASH_REGION_WP_RO:
 		r->offset = CONFIG_WP_STORAGE_OFF -
@@ -1514,11 +1537,14 @@ flash_command_region_info(struct host_cmd_handler_args *args)
 	case EC_FLASH_REGION_UPDATE:
 		r->offset = flash_get_rw_offset(system_get_update_copy()) -
 				EC_FLASH_REGION_START;
-		r->size = CONFIG_RW_SIZE;
+		r->size = CONFIG_EC_WRITABLE_STORAGE_SIZE;
 		break;
 	default:
 		return EC_RES_INVALID_PARAM;
 	}
+
+	CPRINTS("%s, region offset 0x%08x, size 0x%08x", __func__,
+		r->offset, r->size);
 
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;

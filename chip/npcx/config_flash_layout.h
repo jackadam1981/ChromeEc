@@ -65,7 +65,6 @@
 #define CONFIG_RO_ROM_RESIDENT_MEM_OFF	CONFIG_RO_SIZE
 #define CONFIG_RO_ROM_RESIDENT_SIZE \
 	(CONFIG_EC_PROTECTED_STORAGE_SIZE - CONFIG_RO_SIZE)
-
 /*
  * RW firmware in program memory - Identical to RO, only one image loaded at
  * a time.
@@ -76,6 +75,9 @@
 #define CONFIG_RW_ROM_RESIDENT_MEM_OFF	CONFIG_RW_SIZE
 #define CONFIG_RW_ROM_RESIDENT_SIZE \
 	(CONFIG_EC_WRITABLE_STORAGE_SIZE - CONFIG_RW_SIZE)
+
+
+#define CONFIG_
 
 #if (CONFIG_RO_SIZE != CONFIG_RW_SIZE)
 #error "Unsupported.. FLASH_ERASE_SIZE assumes RO and RW size is same!"
