@@ -2006,6 +2006,23 @@ static void pe_src_ready_run(int port)
 			case PD_CTRL_VCONN_SWAP:
 				set_state_pe(port, PE_VCS_EVALUATE_SWAP);
 				return;
+			/*
+			 * USB PD 3.0 6.8.1:
+			 * Receiving an unexpected message shall be responded
+			 * to with a soft reset message.
+			 */
+			case PD_CTRL_ACCEPT:
+				set_state_pe(port, PE_SEND_SOFT_RESET);
+				return;
+			case PD_CTRL_REJECT:
+				set_state_pe(port, PE_SEND_SOFT_RESET);
+				return;
+			case PD_CTRL_WAIT:
+				set_state_pe(port, PE_SEND_SOFT_RESET);
+				return;
+			case PD_CTRL_PS_RDY:
+				set_state_pe(port, PE_SEND_SOFT_RESET);
+				return;
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 				return;
@@ -2742,6 +2759,23 @@ static void pe_snk_ready_run(int port)
 			case PD_CTRL_NOT_SUPPORTED:
 				/* Do nothing */
 				break;
+			/*
+			 * USB PD 3.0 6.8.1:
+			 * Receiving an unexpected message shall be responded
+			 * to with a soft reset message.
+			 */
+			case PD_CTRL_ACCEPT:
+				set_state_pe(port, PE_SEND_SOFT_RESET);
+				return;
+			case PD_CTRL_REJECT:
+				set_state_pe(port, PE_SEND_SOFT_RESET);
+				return;
+			case PD_CTRL_WAIT:
+				set_state_pe(port, PE_SEND_SOFT_RESET);
+				return;
+			case PD_CTRL_PS_RDY:
+				set_state_pe(port, PE_SEND_SOFT_RESET);
+				return;
 			default:
 				set_state_pe(port, PE_SEND_NOT_SUPPORTED);
 				return;
