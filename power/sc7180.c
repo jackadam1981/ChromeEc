@@ -767,6 +767,24 @@ DECLARE_CONSOLE_COMMAND(fakesuspend, command_fake_suspend,
 			"on/off/reset",
 			"Fake the AP_SUSPEND signal");
 
+__override void power_chipset_handle_host_sleep_event(
+		enum host_sleep_event state,
+		struct host_sleep_event_context *ctx)
+{
+	CPRINTS("Handle sleep: %d", state);
+
+	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
+		/* Fake the AP_SUSPEND assertion, to transit to S3 */
+		fake_suspend = 1;
+		task_wake(TASK_ID_CHIPSET);
+
+	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
+		/* Fake the AP_SUSPEND deassertion, to transit to S0 */
+		fake_suspend = 0;
+		task_wake(TASK_ID_CHIPSET);
+	}
+}
+
 /* Get system sleep state through GPIOs */
 static inline int chipset_get_sleep_signal(void)
 {
@@ -826,6 +844,7 @@ enum power_state power_handle_state(enum power_state state)
 
 		/* Initialize components to ready state before AP is up. */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
+		hook_notify(HOOK_CHIPSET_RESUME_INIT);
 
 		if (power_on() != EC_SUCCESS) {
 			power_off();
@@ -890,6 +909,7 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S3S5:
 		/* Call hooks before we drop power rails */
+		hook_notify(HOOK_CHIPSET_SUSPEND_COMPLETE);
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
 		power_off();
