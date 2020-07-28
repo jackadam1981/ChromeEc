@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f5ff0bd_a883a097",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2072,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-28T22:49:11Z",
+      "side": 1,
+      "message": "I am surprised this had to change. Can we instead put and if (IS_ENABLED(CONFIG_USB_VCONN) in the case statement?",
+      "range": {
+        "startLine": 2072,
+        "startChar": 1,
+        "endLine": 2072,
+        "endChar": 24
+      },
+      "revId": "4450afe39e8a5d6a406840c95615740f2069775a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
