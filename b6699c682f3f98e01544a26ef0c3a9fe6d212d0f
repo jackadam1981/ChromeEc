@@ -22,6 +22,30 @@
       "revId": "b6699c682f3f98e01544a26ef0c3a9fe6d212d0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c651e5d2_9128d5c0",
+        "filename": "chip/stm32/config-stm32g41xb.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-28T18:30:44Z",
+      "side": 1,
+      "message": "This is a good suggestion. I was just modeling what I\u0027d seen with the F4 version of this file. I have made the change as you suggested.",
+      "parentUuid": "33e23b31_d0afa633",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 64
+      },
+      "revId": "b6699c682f3f98e01544a26ef0c3a9fe6d212d0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
