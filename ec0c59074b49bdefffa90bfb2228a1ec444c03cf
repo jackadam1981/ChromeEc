@@ -16,6 +16,24 @@
       "revId": "ec0c59074b49bdefffa90bfb2228a1ec444c03cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97fdb768_ffc4cf91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-28T00:01:36Z",
+      "side": 1,
+      "message": "if the other platforms do not have an accurate method of getting the current power_state then making this change in their environment could cause things to break.",
+      "parentUuid": "47c256d2_09735041",
+      "revId": "ec0c59074b49bdefffa90bfb2228a1ec444c03cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
