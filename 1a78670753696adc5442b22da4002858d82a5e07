@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ffbbb67_45bfd90a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-07-28T23:03:22Z",
+      "side": 1,
+      "message": "I disagree with this sentence.\nWe should always use the host event for this, not just temporarly, no?\n\nSee b/148149387#comment31 for more context.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "1a78670753696adc5442b22da4002858d82a5e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52031f14_77b27424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2020-07-28T23:03:22Z",
+      "side": 1,
+      "message": "Why ",
+      "revId": "1a78670753696adc5442b22da4002858d82a5e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
