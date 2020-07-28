@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e0d41a8_639a2232",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-07-28T06:52:56Z",
+      "side": 1,
+      "message": "These two commits are cherry-picked due to failing PDResetHard caused by the sleep function in ppc driver (nx20p348x_vbus_source_enable).",
+      "revId": "5086be4ba6fc289b9800c8adf9b9d61d4d938645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
