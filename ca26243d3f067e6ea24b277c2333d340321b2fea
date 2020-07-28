@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e519680d_0ca2afd7",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-28T19:10:20Z",
+      "side": 1,
+      "message": "nit: can IS_ENABLED be used in this if tree?",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "ca26243d3f067e6ea24b277c2333d340321b2fea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
