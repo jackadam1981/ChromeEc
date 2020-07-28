@@ -200,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "cc799aa4_73c97520",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-28T19:10:56Z",
+      "side": 1,
+      "message": "Shortened to 16 bytes and renamed to authorization_salt since it\u0027s really just a salt.",
+      "parentUuid": "65555e60_34b390fb",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 43
+      },
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "608f6ae0_fe601f38",
         "filename": "include/u2f.h",
         "patchSetId": 1
