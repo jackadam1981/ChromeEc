@@ -509,6 +509,9 @@ From the DUT, flash the firmware you copied:
 ```bash
 (device) $ flash_fp_mcu /tmp/ec.bin
 ```
+## Commit-queue Prototype Environment
+
+![Dragonclaw in CQ Prototype Environment](../images/Dragonclaw_in_CQ_Prototype_Environment.jpg)
 
 ## Troubleshooting
 
