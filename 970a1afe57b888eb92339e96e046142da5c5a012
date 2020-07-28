@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa8fbb0b_2e6eae21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-28T16:25:14Z",
+      "side": 1,
+      "message": "I think you also need to cherry-pick CL:1340491 before this change.",
+      "revId": "970a1afe57b888eb92339e96e046142da5c5a012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
