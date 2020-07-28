@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be203822_c8808eeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-28T23:12:07Z",
+      "side": 1,
+      "message": "I think you may read a bit the history of CL:244590 and b/35545774 (comment #7). This CL will break what CL:244590 tried to fix and reintroduce the previous bug.",
+      "revId": "9c7d3d57fbdc84e404e77d1831047082f71dcb53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
