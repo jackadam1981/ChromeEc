@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f55a7c0_f83a5f62",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-28T22:26:40Z",
+      "side": 1,
+      "message": "Can you please rephrase the comments in plain English for me?",
+      "parentUuid": "e602c4be_e4fad1ec",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "c9fc4cb53a71976f885cb39b88fc93f4384b7a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f981d4b9_f67c06ff",
         "filename": "common/power_button.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8a39fe39_0df23f15",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-28T22:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f981d4b9_f67c06ff",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 36
+      },
+      "revId": "c9fc4cb53a71976f885cb39b88fc93f4384b7a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f542028d_26084339",
         "filename": "common/power_button.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-07-28T20:42:14Z",
       "side": 1,
       "message": "How to ensure the power_button_change_deferred() is executed before this check? They happen at the same time: the above usleep() is the same as the hook_call_deferred() scheduled time. And the deferred call is in on the HOOK context and has a lower priority then the CHIPSET task.",
+      "range": {
+        "startLine": 98,
+        "startChar": 6,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "c9fc4cb53a71976f885cb39b88fc93f4384b7a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab74dcb_aade8061",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-28T22:26:40Z",
+      "side": 1,
+      "message": "We sleep here slightly longer than necessary because now is sampled at the beginning of the function. So, when the chipset task wakes up, the deferred call will be already called.\n\nIf there is a back-to-back interrupt, that\u0027ll push back debounced_at. We may wake up earlier (before debounced_power_pressed is settled) and find the power button is still pressed (and return EC_ERROR_TIMEOUT), which is true to the situation.",
+      "parentUuid": "f542028d_26084339",
       "range": {
         "startLine": 98,
         "startChar": 6,
