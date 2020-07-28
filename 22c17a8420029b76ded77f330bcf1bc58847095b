@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c9c3aa5_e15c992b",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-28T21:54:15Z",
+      "side": 1,
+      "message": "thats fine, salt_kek should only be used as HMAC key, not for any other purpose",
+      "range": {
+        "startLine": 264,
+        "startChar": 32,
+        "endLine": 264,
+        "endChar": 47
+      },
+      "revId": "22c17a8420029b76ded77f330bcf1bc58847095b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb887f63_1a61f4d7",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-28T21:54:15Z",
+      "side": 1,
+      "message": "this would be better changed to fips_rand_bytes() as in https://crrev.com/c/2280485/2/board/cr50/u2f.c#11",
+      "range": {
+        "startLine": 199,
+        "startChar": 7,
+        "endLine": 199,
+        "endChar": 48
+      },
+      "revId": "22c17a8420029b76ded77f330bcf1bc58847095b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
