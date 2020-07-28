@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "8da24346_8f50416a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-28T19:00:58Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I think power_button_wait_for_release should return immediately if the button is not pressed. Also, we can predict when a debounce will done if power_button_wait_for_release is called during a debounce. I ended up rewriting power_button_wait_for_release and the debouncer to explain my thoughts:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2324072",
+      "parentUuid": "f79fd838_e1cd1a00",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 64
+      },
+      "revId": "b105b1117211cb7faff9328114015d0d269953ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5439226c_9a51d876",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
