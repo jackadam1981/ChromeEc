@@ -70,6 +70,24 @@
       "revId": "4ae126bee034f5f31a06f06e70933ab37f1bc3cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16bdf58c_0f5fa2d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-07-28T21:22:16Z",
+      "side": 1,
+      "message": "We are checking with retimer folks on this. But we need to make sure there are no implications doing this for MFD alt mode?\nFor example scenario below:\nFor DP in 4 lanes, we will be configuring first USB and then we dont have safe, and then all 4 lanes will be repurposed to DP, so USB lanes without entering safe will be connected to DP, can this cause issues?",
+      "parentUuid": "7731ea39_2084664b",
+      "revId": "4ae126bee034f5f31a06f06e70933ab37f1bc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
