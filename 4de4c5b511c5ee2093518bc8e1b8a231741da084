@@ -33,6 +33,52 @@
       "revId": "4de4c5b511c5ee2093518bc8e1b8a231741da084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1b80b95_32c250b8",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-28T01:35:21Z",
+      "side": 1,
+      "message": "if ( \n     (\n       (state-\u003edrbg_entropy_size !\u003d sizeof(state-\u003esalt_kh)) \u0026\u0026 \n       (state-\u003edrbg_entropy_size !\u003d 32)\n     ) ||\n     (read_tpm_nvmem_hidden(..) !\u003d TPM_READ_SUCCESS)\n   ) { ... }",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 55
+      },
+      "revId": "4de4c5b511c5ee2093518bc8e1b8a231741da084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa56565_8079cef4",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-28T01:35:21Z",
+      "side": 1,
+      "message": "... or it is corrupted",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 131,
+        "endChar": 34
+      },
+      "revId": "4de4c5b511c5ee2093518bc8e1b8a231741da084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
