@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee269492_f4ade951",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-28T23:53:04Z",
+      "side": 1,
+      "message": "The existing approach is: use the AP_SUSPEND signal to transit to S3.\n\nThis temporary hack is: use the host sleep event to transit to S3.\n\nThe final solution is: use the host sleep event + AP_SUSPEND signal to transit to S3. The host sleep event just sets a flag. The AP_SUSPEND is required too.",
+      "parentUuid": "4ffbbb67_45bfd90a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "1a78670753696adc5442b22da4002858d82a5e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52031f14_77b27424",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
