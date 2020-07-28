@@ -395,6 +395,30 @@
     },
     {
       "key": {
+        "uuid": "8e73120e_09ad8d35",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-28T18:32:33Z",
+      "side": 1,
+      "message": "I removed these and just kept the TODO with the assert() line.",
+      "parentUuid": "37d44563_37a76555",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 5
+      },
+      "revId": "f32253b2e429ab23d5d684a450a13ea4bf6b483e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1d65de9_48658fcf",
         "filename": "chip/stm32/clock-stm32g4.c",
         "patchSetId": 10

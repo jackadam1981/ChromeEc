@@ -46,6 +46,30 @@
       "revId": "ebcadcee996eb8f2996b046ef613900fe81ae23f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2621c78f_5d82ffc1",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-28T18:32:33Z",
+      "side": 1,
+      "message": "since you made this change in master, I have reverted back to calling \"wait_for_\" in the clock module now.",
+      "parentUuid": "93f33aa1_b4b4e52f",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 1
+      },
+      "revId": "ebcadcee996eb8f2996b046ef613900fe81ae23f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
