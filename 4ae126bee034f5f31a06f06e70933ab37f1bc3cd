@@ -52,6 +52,24 @@
       "revId": "4ae126bee034f5f31a06f06e70933ab37f1bc3cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7731ea39_2084664b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-07-28T20:53:45Z",
+      "side": 1,
+      "message": "what is the expected register data in safe mode? we need to check this one. here highlighting the working scenario",
+      "parentUuid": "3cfe42f2_07061fe8",
+      "revId": "4ae126bee034f5f31a06f06e70933ab37f1bc3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
