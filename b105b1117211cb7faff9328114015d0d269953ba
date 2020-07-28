@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "3580854f_bd25b889",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-28T20:42:32Z",
+      "side": 1,
+      "message": "There are several issues on your patch. I added the comments to it.\n\nI am not sure if the power sequence really cares about returning the function immediately. The power button debouce time is 30ms. The worst case of this CL adds an extra 30ms wait time. I checked some power sequence implementations. They are common to sleep like 30ms, 50ms, or even \u003e100ms for a rail. The worst case 30ms seems not a big deal.\n\nI can modify the wait time half, i.e. the mean of all chances, like modifying:\n  task_wait_event(power_button.debounce_us / 2);\n\nor use your idea of debounce_at if really care about time.",
+      "parentUuid": "8da24346_8f50416a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 64
+      },
+      "revId": "b105b1117211cb7faff9328114015d0d269953ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5439226c_9a51d876",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
