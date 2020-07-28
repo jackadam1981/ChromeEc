@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "c8c7219b_57d5889b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2778,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-07-28T01:25:49Z",
+      "side": 1,
+      "message": "Done. Since the other cases were handled separately, I followed that pattern, but my own preference is to group them.",
+      "parentUuid": "93b58cb6_2b8a60d2",
+      "range": {
+        "startLine": 2767,
+        "startChar": 3,
+        "endLine": 2778,
+        "endChar": 11
+      },
+      "revId": "f545c057d7e477a5a6e475c9abd38ca3ba4988f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd1dde6a_3cd4563d",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -73,6 +97,24 @@
       "revId": "f545c057d7e477a5a6e475c9abd38ca3ba4988f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cdd8658_95907270",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2780,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-07-28T01:25:49Z",
+      "side": 1,
+      "message": "Ack - are there any other messages that we should include in the list?\nThese to me were the obvious ones, but I am not sure if others should be added.",
+      "parentUuid": "bd1dde6a_3cd4563d",
+      "revId": "f545c057d7e477a5a6e475c9abd38ca3ba4988f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
