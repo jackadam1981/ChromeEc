@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "893d9a00_df586e5b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-07-28T16:34:04Z",
+      "side": 1,
+      "message": "This is a little tricky now because the name implies we call this in all sleep transitions, but on Intel we only call this on s0ix, not S3. Not sure if there\u0027s a good way to fix that. Probably at least a comment is deserved.",
+      "range": {
+        "startLine": 188,
+        "startChar": 12,
+        "endLine": 188,
+        "endChar": 35
+      },
+      "revId": "ce2b72fca4c035c9c46207aee4a7c88151a2bfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4967aa28_b6275b26",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-07-28T16:34:04Z",
+      "side": 1,
+      "message": "\"truly suspended\" might be more succinct. Also, more trickiness about this being called in S3 on Intel platforms.",
+      "range": {
+        "startLine": 257,
+        "startChar": 38,
+        "endLine": 257,
+        "endChar": 71
+      },
+      "revId": "ce2b72fca4c035c9c46207aee4a7c88151a2bfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
