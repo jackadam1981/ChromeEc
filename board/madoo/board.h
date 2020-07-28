@@ -116,6 +116,10 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO
 
+/* madoo only support up to 15V */
+#undef PD_MAX_VOLTAGE_MV
+#define PD_MAX_VOLTAGE_MV	15000
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
