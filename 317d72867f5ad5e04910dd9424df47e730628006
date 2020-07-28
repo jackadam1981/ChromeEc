@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "449ffc9c_261c41ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-07-28T16:36:16Z",
+      "side": 1,
+      "message": "Hi Tom, do you have an Intel system you can test this all out on? This logic was prone to tricky edge cases, and we\u0027re getting a lot of mileage out of this feature right now on dedede. I want to make sure we don\u0027t regress the detection.",
+      "revId": "317d72867f5ad5e04910dd9424df47e730628006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
