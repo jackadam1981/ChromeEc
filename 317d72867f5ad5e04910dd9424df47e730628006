@@ -34,6 +34,24 @@
       "revId": "317d72867f5ad5e04910dd9424df47e730628006",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0e0b349_d9daae5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-28T17:36:25Z",
+      "side": 1,
+      "message": "Checked the octopus firmware branch. It doesn\u0027t have the S0ix failure detection enabled.\n\nThe boards having this feature are hatch, volteer, and dedede. I don\u0027t have any one of them.\n\n+Aseda and Diana, could you help to verify this series of patches on dedede? They are the refactoring CLs of the S0ix failure detection.",
+      "parentUuid": "c154a04e_57ac7a88",
+      "revId": "317d72867f5ad5e04910dd9424df47e730628006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
