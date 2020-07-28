@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e602c4be_e4fad1ec",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-28T20:42:14Z",
+      "side": 1,
+      "message": "The power_button_is_stable was introduced to fix a bug, i.e.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/244590\n\nIt is like:\n (1) power button interrupt, release -\u003e press, but not debounced\n (2) this function is called -\u003e we should wait here until it is stable and released\n\nIf like this change, to check the !power_button_is_pressed() first, the function exits and doesn\u0027t wait.",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "c9fc4cb53a71976f885cb39b88fc93f4384b7a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f981d4b9_f67c06ff",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-28T20:42:14Z",
+      "side": 1,
+      "message": "The debounced_at has a race condition. The signal may be ripple during this sleep, meaning that the interrupt is triggered, the debounced_at is updated to a newer value, and the deferred function is delayed. The original infinite wait issue still happens.",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 36
+      },
+      "revId": "c9fc4cb53a71976f885cb39b88fc93f4384b7a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f542028d_26084339",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-28T20:42:14Z",
+      "side": 1,
+      "message": "How to ensure the power_button_change_deferred() is executed before this check? They happen at the same time: the above usleep() is the same as the hook_call_deferred() scheduled time. And the deferred call is in on the HOOK context and has a lower priority then the CHIPSET task.",
+      "range": {
+        "startLine": 98,
+        "startChar": 6,
+        "endLine": 98,
+        "endChar": 31
+      },
+      "revId": "c9fc4cb53a71976f885cb39b88fc93f4384b7a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
