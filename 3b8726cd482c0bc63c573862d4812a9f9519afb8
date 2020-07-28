@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "95e93bbf_3150475d",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-28T01:20:51Z",
+      "side": 1,
+      "message": "Can\u0027t generate directly in kh_buf.vkh because the layout is:\n\nversion -- 1 byte\norigin_seed -- 32 bytes\nkh_hmac -- 32 bytes\nauthorization_seed -- 32 bytes ---\u003e needs to be word-aligned for TRNG to work\nauthorization_hmac -- 32 bytes\n\nHowever I can reuse the od_seed array because the authorization_seed is not used in kh_hmac derivation.",
+      "parentUuid": "ac2ed8da_bc3916f0",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 54
+      },
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e96588d_6231f8ae",
         "filename": "common/u2f.c",
         "patchSetId": 1
@@ -109,6 +133,24 @@
       "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16ca065b_f07dc405",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-28T01:20:51Z",
+      "side": 1,
+      "message": "The \"hmac inside hmac\" approach doesn\u0027t make much sense because the authorization_hmac will be public, and it doesn\u0027t buy anything to encode it into kh_hmac just for formatting.\n\nI\u0027m calling the first 3 fields (version, origin_seed, kh_hmac) \"struct u2f_versioned_key_handle_header\" like you suggested.",
+      "parentUuid": "04917941_189c42ed",
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +268,30 @@
       "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5100c161_0066bd35",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-07-28T01:20:51Z",
+      "side": 1,
+      "message": "I am using your suggested way in patchset 2. The nested hmac doesn\u0027t make much sense because the authorization_hmac is already public, and it\u0027s for a different purpose, so it feels redundant to encode it into kh_hmac. Directly encoding authTimeSecretHash doesn\u0027t work because userspace may decide not to supply authTimeSecretHash (to enforce power button) and that would cause KH validation to fail.",
+      "parentUuid": "934162b5_55205ebe",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "3b8726cd482c0bc63c573862d4812a9f9519afb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
