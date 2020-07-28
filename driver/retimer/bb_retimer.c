@@ -320,7 +320,19 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
-
+	/*
+	 * TODO(b/161327513): Remove this once we have final fix for
+	 * the Type-C MFD degradation issue.
+	 * In alternate mode, the mux changes states as USB->Safe->DP Alt Mode.
+	 * The timing difference between retimer and mux entering safe mode
+	 * exposes USB 3.0 enumeration failure issue in the alternate mode.
+	 * This change will skip setting safe on ports with BB retimer helping
+	 * to remove the mismatch in timings. From the protocol analyser traces
+	 * the safe mode is still achieved with TCSS mux safe mode settings.
+	 */
+	if (mux_state & USB_PD_MUX_SAFE_MODE) {
+		return 0;
+	}
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
 	 * 0 - No connection present
