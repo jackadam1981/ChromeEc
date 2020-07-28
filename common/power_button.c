@@ -30,7 +30,7 @@
 
 static int debounced_power_pressed;	/* Debounced power button state */
 static int simulate_power_pressed;
-static volatile int power_button_is_stable = 1;
+static timestamp_t debounced_at;	/* Time debounce is (or will be) done */
 
 static const struct button_config power_button = {
 	.name = "power button",
@@ -78,21 +78,40 @@ int power_button_wait_for_release(int timeout_us)
 	timestamp_t deadline;
 	timestamp_t now = get_time();
 
-	deadline.val = now.val + timeout_us;
-
-	while (!power_button_is_stable || power_button_is_pressed()) {
-		now = get_time();
-		if (timeout_us < 0) {
-			task_wait_event(-1);
-		} else if (timestamp_expired(deadline, &now) ||
-			(task_wait_event(deadline.val - now.val) ==
-			TASK_EVENT_TIMER)) {
-			CPRINTS("%s not released in time", power_button.name);
-			return EC_ERROR_TIMEOUT;
-		}
+	if (!power_button_is_pressed()) {
+		/* Button is already released. */
+		CPRINTS("%s already released", power_button.name);
+		return EC_SUCCESS;
 	}
 
-	CPRINTS("%s released in time", power_button.name);
+	/* Buttons is pressed. HOOK_POWER_BUTTON_CHANGE means 'release'. */
+	deadline.val = now.val + timeout_us;
+
+	if (now.val > debounced_at.val) {
+		/* Not debouncing. Wait for HOOK_POWER_BUTTON_CHANGE. */
+		task_wait_event(timeout_us < 0 ? -1 : deadline.val);
+	} else if (timeout_us < 0 || debounced_at.val < deadline.val) {
+		/* Debounce will be done before timeout. Let debounce finish. */
+		usleep(debounced_at.val - now.val);
+
+		/* If still pressed, wait for HOOK_POWER_BUTTON_CHANGE. */
+		if (power_button_is_pressed())
+			task_wait_event(timeout_us < 0 ? -1 : deadline.val);
+	} else {
+		/*
+		 * We'll timeout before debounce is done. This usually shouldn't
+		 * happen because timeout_us >> power_button.debounce_us.
+		 */
+		return EC_ERROR_TIMEOUT;
+	}
+
+	/* Debounce is done or timeout. */
+	if (power_button_is_pressed()) {
+		CPRINTS("%s not released in time", power_button.name);
+		return EC_ERROR_TIMEOUT;
+	}
+
+	CPRINTS("%s released", power_button.name);
 	return EC_SUCCESS;
 }
 
@@ -151,13 +170,10 @@ static void power_button_change_deferred(void)
 		keyboard_scan_enable(1, KB_SCAN_DISABLE_POWER_BUTTON);
 
 	/* If power button hasn't changed state, nothing to do */
-	if (new_pressed == debounced_power_pressed) {
-		power_button_is_stable = 1;
+	if (new_pressed == debounced_power_pressed)
 		return;
-	}
 
 	debounced_power_pressed = new_pressed;
-	power_button_is_stable = 1;
 
 	CPRINTS("%s %s",
 		power_button.name, new_pressed ? "pressed" : "released");
@@ -182,7 +198,7 @@ void power_button_interrupt(enum gpio_signal signal)
 		keyboard_scan_enable(0, KB_SCAN_DISABLE_POWER_BUTTON);
 
 	/* Reset power button debounce time */
-	power_button_is_stable = 0;
+	debounced_at.val = get_time().val + power_button.debounce_us;
 	hook_call_deferred(&power_button_change_deferred_data,
 			   power_button.debounce_us);
 }
@@ -203,7 +219,7 @@ static int command_powerbtn(int argc, char **argv)
 
 	ccprintf("Simulating %d ms %s press.\n", ms, power_button.name);
 	simulate_power_pressed = 1;
-	power_button_is_stable = 0;
+	debounced_at.val = get_time().val;
 	hook_call_deferred(&power_button_change_deferred_data, 0);
 
 	if (ms > 0)
@@ -211,7 +227,7 @@ static int command_powerbtn(int argc, char **argv)
 
 	ccprintf("Simulating %s release.\n", power_button.name);
 	simulate_power_pressed = 0;
-	power_button_is_stable = 0;
+	debounced_at.val = get_time().val;
 	hook_call_deferred(&power_button_change_deferred_data, 0);
 
 	return EC_SUCCESS;
