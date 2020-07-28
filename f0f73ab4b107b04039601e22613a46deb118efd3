@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96048e5c_3fb6033b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-28T00:38:44Z",
+      "side": 1,
+      "message": "I think first is to file a bug to track making the STM PD phy implementation compatible on the TCPM framework. You will finally need to do it when switching to TCPMv2 as TCPMv2 currently doesn\u0027t support the STM PD phy.\n\nFor the immediate work, moving the SM to common is a good start, and try to make it close to the TCPM framework, like calling tcpm_get_cc(), instead of the board get_cc(), and defining the tcpc_config[] which just has the port 2 entity for the alternative charger port and leaves the port-0 and port-1 null.\n\nIf you can reuse the fusb302 TCPC driver, it\u0027d be great. If not, at lease to put the function pointers to the struct tcpm_drv, such that the tcpm_xxx() calls would work.",
+      "revId": "f0f73ab4b107b04039601e22613a46deb118efd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
