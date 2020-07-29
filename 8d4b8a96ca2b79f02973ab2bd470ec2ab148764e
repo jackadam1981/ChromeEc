@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd57e070_a1a6d835",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "Please use stdint types: \"uint16_t\", etc.",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 21
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a43d7819_3cd14fa5",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "Looks like a typo. Should be \"Execute\"?",
+      "range": {
+        "startLine": 61,
+        "startChar": 12,
+        "endLine": 61,
+        "endChar": 18
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9945526_e5f7d9a5",
+        "filename": "driver/fingerprint/elan/elan_private.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "nit: can you align like this:\n\n  \treturn elan_match(templ, templ_count, image, match_index,\n\t\t\t  update_bitmap);",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 6
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c3576f6_ec714d35",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "unnecessary cast (in all the functions in this file)",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70da4dc2_e68bfc40",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "Can be removed once tx_buf type is changed (see comment in header file). Same for rx_buf.",
+      "range": {
+        "startLine": 48,
+        "startChar": 40,
+        "endLine": 48,
+        "endChar": 48
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c81ad73_eab617ed",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "Please use lower-case with underscores for variable names. The EC codebase uses the Linux coding style: https://www.kernel.org/doc/html/v4.10/process/coding-style.html#naming\n\nFor example, this variable would probably be called \"write_regaddr\".\n\nSame for the other variables in this file.",
+      "range": {
+        "startLine": 103,
+        "startChar": 9,
+        "endLine": 103,
+        "endChar": 22
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a35a6f43_ff5674db",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "Renaming the label to \"exit\" is fine (goto exit;)",
+      "range": {
+        "startLine": 138,
+        "startChar": 7,
+        "endLine": 138,
+        "endChar": 22
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de15e0eb_852452b4",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "Prefer a while loop, such as:\n\n \tint retry_time \u003d 0;\n\tint ret \u003d 0;\n\n\twhile (retry_time \u003c _Rek_Times) {\n\t\telan_write_CMD(SRST);\n\t\telan_write_CMD(FUSE_LOAD);\n\t\tRegisterInitialization();\n\t\tElanFP_SENSINGMODE();\n\n\t\tret \u003d Calibration();\n\n\t\tif (ret \u003d\u003d 0) {\n\t\t\tbreak;\n\t\t}\n\n\t\tretry_time++;\n\t}\n\n\treturn ret;",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 0
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d4cb2b3_0d0d5a3a",
+        "filename": "driver/fingerprint/elan/elan_sensor_pal.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "change to \"uint8_t\" and you can eliminate the \"char*\" casting in elan_sensor_pal.c",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 20
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae0dd028_593af72e",
+        "filename": "driver/fingerprint/elan/elan_setting.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "Can you add comments for all these variables?\n\nFor example, it\u0027s not clear what \"_FingerOnTHD\" or \"_Rek_Times\" means.",
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12916e66_03e1b0e6",
+        "filename": "driver/fingerprint/elan/elan_setting.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "typo: \"raw_bytes\"",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10ed94fc_4377f18a",
+        "filename": "driver/fingerprint/elan/elan_setting.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T17:51:44Z",
+      "side": 1,
+      "message": "Looks like mix of spaces and tabs. Can you choose one or the other?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 64
+      },
+      "revId": "8d4b8a96ca2b79f02973ab2bd470ec2ab148764e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
