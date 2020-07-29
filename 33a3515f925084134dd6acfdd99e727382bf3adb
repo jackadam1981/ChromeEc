@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "275668e6_2e7340ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-07-29T21:25:38Z",
+      "side": 1,
+      "message": "Put the change under the macro CONFIG_ENABLE_H1_GLOBALSEC_USB, and let cr50 enable this, so that other cr5x BOARD won\u0027t be affected.",
+      "revId": "33a3515f925084134dd6acfdd99e727382bf3adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
