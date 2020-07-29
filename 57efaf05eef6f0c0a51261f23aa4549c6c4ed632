@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fec1d7f_820e69c5",
+        "filename": "common/power_button.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-29T20:31:09Z",
+      "side": 1,
+      "message": "These two statements are not true.\n\nThe debounced_at is the time the debounce function (power_button_change_deferred) is scheduled at. It is not the time the debounce function finishes at.\n\nFor example, some other task is running at the time of debounced and it makes the timers of both CHIPSET and HOOKS task expired. Then the next scheduled task is the CHIPSET task (higher priority) and this function is executed. However, the HOOKS task has not been scheduled yet and the debounce function has not been executed.\n\nSo the first statement is wrong. It enters the if clause but it is debouncing.\n\nAnd the second statement is wrong. The function returns but the debounce hasn\u0027t finished.\n\nI think you still needs the original power_button_is_stable flag. This flag explicitly indicates the debounce function has finished.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 27
+      },
+      "revId": "57efaf05eef6f0c0a51261f23aa4549c6c4ed632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
