@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "380438cd_ff0f094d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2081,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-29T21:57:27Z",
+      "side": 1,
+      "message": "This could be a follow-up, but the soft reset is supposed to be using the SOP* of the incoming message, correct?",
+      "range": {
+        "startLine": 2080,
+        "startChar": 0,
+        "endLine": 2081,
+        "endChar": 11
+      },
+      "revId": "a2c570baef5ebd735931a4cb0161400b76a4310e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
