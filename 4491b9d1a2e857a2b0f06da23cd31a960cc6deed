@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c62c873_89ebb578",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-29T21:42:16Z",
+      "side": 1,
+      "message": "I split the function abstraction change to another CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2327837\n\nThis CL just simply moves codes, no logic change.\n\nThat way may help the code review.",
+      "revId": "4491b9d1a2e857a2b0f06da23cd31a960cc6deed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
