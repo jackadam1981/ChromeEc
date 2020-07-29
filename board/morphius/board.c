@@ -327,7 +327,7 @@ const struct adc_t adc_channels[] = {
 		.shift = 0,
 	},
 	[ADC_TEMP_SENSOR_SOC] = {
-		.name = "SOC",
+		.name = "5V_REGULATOR",
 		.input_ch = NPCX_ADC_CH3,
 		.factor_mul = ADC_MAX_VOLT,
 		.factor_div = ADC_READ_MAX + 1,
@@ -344,7 +344,7 @@ const struct temp_sensor_t temp_sensors[] = {
 		.idx = TEMP_SENSOR_CHARGER,
 	},
 	[TEMP_SENSOR_SOC] = {
-		.name = "SOC",
+		.name = "5V_REGULATOR",
 		.type = TEMP_SENSOR_TYPE_BOARD,
 		.read = board_get_temp,
 		.idx = TEMP_SENSOR_SOC,
@@ -355,8 +355,8 @@ const struct temp_sensor_t temp_sensors[] = {
 		.read = sb_tsi_get_val,
 		.idx = 0,
 	},
-	[TEMP_SENSOR_5V_REGULATOR] = {
-		.name = "5V_REGULATOR",
+	[TEMP_SENSOR_SSD] = {
+		.name = "SSD",
 		.type = TEMP_SENSOR_TYPE_BOARD,
 		.read = tmp432_get_val,
 		.idx = TMP432_IDX_LOCAL,
