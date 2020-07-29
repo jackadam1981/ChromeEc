@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6d0cbc60_e7a669b2",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-07-29T22:48:49Z",
+      "side": 1,
+      "message": "Right, I was mostly pointing out that with the new name it looks like it gets called on both S0ix and S3 for Intel devices. This is a nit, a comment like /* Note: this does not get called in the S3 path on Intel devices. */ would be fine. This series will likely be in by the time I\u0027m back from leave, and generally looks fine to me. Thanks Tom!",
+      "parentUuid": "07cea9ad_ddffb7cd",
+      "range": {
+        "startLine": 188,
+        "startChar": 12,
+        "endLine": 188,
+        "endChar": 35
+      },
+      "revId": "ce2b72fca4c035c9c46207aee4a7c88151a2bfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4967aa28_b6275b26",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "ce2b72fca4c035c9c46207aee4a7c88151a2bfe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb4c0b7_5ee6397d",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-07-29T22:48:49Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "c82d141f_4accd2d7",
+      "range": {
+        "startLine": 257,
+        "startChar": 38,
+        "endLine": 257,
+        "endChar": 71
+      },
+      "revId": "ce2b72fca4c035c9c46207aee4a7c88151a2bfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
