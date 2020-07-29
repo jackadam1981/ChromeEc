@@ -434,15 +434,18 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 		else
 			last_v[X] = lux;
 		vector.flags = 0;
-		vector.data[X] = last_v[X];
+
+		vector.data[X] = ec_motion_sensor_clamp_u16(last_v[X]);
 		vector.data[Y] = 0;
 		vector.data[Z] = 0;
 
 #ifdef CONFIG_ACCEL_SPOOF_MODE
 		/* If in spoof mode, replace actual data with our fake data */
 		if (s->flags & MOTIONSENSE_FLAG_IN_SPOOF_MODE) {
-			for (i = 0; i < 3; i++)
-				vector.data[i] = last_v[i] = s->spoof_xyz[i];
+			for (i = 0; i < 3; i++) {
+				last_v[i] = s->spoof_xyz[i];
+				vector.data[i] = ec_motion_sensor_clamp_u16(s->spoof_xyz[i]);
+			}
 		}
 #endif /* CONFIG_ACCEL_SPOOF_MODE */
 
@@ -464,19 +467,24 @@ static int tcs3400_post_events(struct motion_sensor_t *s, uint32_t last_ts)
 		(raw_data[GREEN_CRGB_IDX] != TCS_SATURATION_LEVEL))) {
 		vector.flags = 0;
 		if (calibration_mode) {
-			memcpy(vector.data, &raw_data[RED_CRGB_IDX],
-			       sizeof(vector.data));
-			memcpy(rgb_s->raw_xyz, &raw_data[RED_CRGB_IDX],
-			       sizeof(vector.data));
+			vector.light_data[0] = raw_data[RED_CRGB_IDX];
+			vector.light_data[1] = raw_data[GREEN_CRGB_IDX];
+			vector.light_data[2] = raw_data[BLUE_CRGB_IDX];
+
+			rgb_s->raw_xyz[0] = raw_data[RED_CRGB_IDX];
+			rgb_s->raw_xyz[1] = raw_data[GREEN_CRGB_IDX];
+			rgb_s->raw_xyz[2] = raw_data[BLUE_CRGB_IDX];
 		} else {
-			for (i = 0; i < 3; i++)
-				vector.data[i] = last_v[i] = xyz_data[i];
+			for (i = 0; i < 3; i++) {
+				last_v[i] = xyz_data[i];
+				vector.data[i] = ec_motion_sensor_clamp_u16(last_v[i]);
+			}
 		}
 #ifdef CONFIG_ACCEL_SPOOF_MODE
 		if (rgb_s->flags & MOTIONSENSE_FLAG_IN_SPOOF_MODE) {
 			for (i = 0; i < 3; i++) {
-				vector.data[i] = last_v[i] =
-						rgb_s->spoof_xyz[i];
+				last_v[i] = rgb_s->spoof_xyz[i];
+				vector.data[i] = ec_motion_sensor_clamp_u16(last_v[i]);
 			}
 		}
 #endif /* CONFIG_ACCEL_SPOOF_MODE */
