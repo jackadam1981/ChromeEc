@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b82fe240_33c58a30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-29T07:18:54Z",
+      "side": 1,
+      "message": "Original flow: PPC should set Vconn off first, then ITE disable 5v tolerant and switch to cc analog module. \nBut this change disable 5v tolerant first, then turn off Vconn. I think this will cause 5v fed back into our Vcore and cc module.",
+      "revId": "44285c9e240b2462c4bbf76bb714fc40fc35309c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
