@@ -22,6 +22,30 @@
       "revId": "5e5fb01a281dbfc46202f96ecd3139944e1a8c8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "848c8d2d_b128bc10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-29T05:48:17Z",
+      "side": 1,
+      "message": "This is the expected use (still WIP):\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2321876\n\nThe temporary hack is just temporary.",
+      "parentUuid": "78068683_2d1b244e",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "5e5fb01a281dbfc46202f96ecd3139944e1a8c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
