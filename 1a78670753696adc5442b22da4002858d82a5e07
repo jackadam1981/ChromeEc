@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bd322806_de89131c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-07-29T01:31:34Z",
+      "side": 1,
+      "message": "What is the hysteresis of the final solution on AP_SUSPEND signal? It\u0027s 10 seconds deasserted before we bail out and say that suspend is over? Or the host sleep event has to be sent indicating S0 before we care what the AP_SUSPEND signal indicates?",
+      "parentUuid": "ee269492_f4ade951",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "1a78670753696adc5442b22da4002858d82a5e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52031f14_77b27424",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
