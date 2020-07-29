@@ -16,6 +16,24 @@
       "revId": "76dce588b6bb74c71892ddf6d422729a4efa22f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5feea074_aac35dcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-29T15:06:53Z",
+      "side": 1,
+      "message": "It seems like there\u0027s some spec contradiction here I might need to take to the WG.  You\u0027re definitely right that the PD spec specifically states the Vconn source can\u0027t reject.  \n\nHowever, when CTVPD support was added to the type-c spec, 4.5.2.2.27.1\nCTAttached.SNK Requirements says: \n\nThe port shall continue to supply V CONN .\nThe port shall reject a V CONN swap request.\n\nI\u0027ll table this change for now until I hear back from the WG.",
+      "parentUuid": "e3ca063e_4c4459e3",
+      "revId": "76dce588b6bb74c71892ddf6d422729a4efa22f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
