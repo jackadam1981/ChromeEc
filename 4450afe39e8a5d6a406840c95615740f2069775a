@@ -22,6 +22,30 @@
       "revId": "4450afe39e8a5d6a406840c95615740f2069775a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6dd17c_cc70e7cd",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2072,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-07-29T16:33:13Z",
+      "side": 1,
+      "message": "Yeah, although it\u0027s a little bit more verbose.",
+      "parentUuid": "8f5ff0bd_a883a097",
+      "range": {
+        "startLine": 2072,
+        "startChar": 1,
+        "endLine": 2072,
+        "endChar": 24
+      },
+      "revId": "4450afe39e8a5d6a406840c95615740f2069775a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
