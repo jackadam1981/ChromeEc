@@ -16,6 +16,24 @@
       "revId": "f0f73ab4b107b04039601e22613a46deb118efd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3575ae77_0f966d4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-07-29T20:01:34Z",
+      "side": 1,
+      "message": "For now, I think we should keep things as they are and figure out a way to convert the STM PD phy to a driver at a later date. From the ServoV4.1 meeting today, all code needs to be merged by July 30 for EVT build.\n\nAlso, moving the sink state machine to common/usbc won\u0027t work because the TCPMv1 is used for the regular Servo Ports and TCPMv2 is used for the alternate power port. The code in common/usbc deems TCPMv1 and TCPMv2 as mutually exclusive.",
+      "parentUuid": "96048e5c_3fb6033b",
+      "revId": "f0f73ab4b107b04039601e22613a46deb118efd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
