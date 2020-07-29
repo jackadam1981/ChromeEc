@@ -16,6 +16,24 @@
       "revId": "68bd12eb82d22f3359fc50ef9ba40a82a742d368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac0c9eb_ff9269a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-07-29T13:31:08Z",
+      "side": 1,
+      "message": "Based on discussed from b/160139798#comment57 and b/160139798#comment56, to use GPIO97 for EC switch PPC code. And follow CL:2309522 here.",
+      "parentUuid": "984dcb71_6c62c12c",
+      "revId": "68bd12eb82d22f3359fc50ef9ba40a82a742d368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
