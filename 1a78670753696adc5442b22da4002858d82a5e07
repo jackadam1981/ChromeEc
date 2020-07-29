@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "bc34f41d_30e6e164",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-29T18:20:16Z",
+      "side": 1,
+      "message": "The final solution is like:\n * The interrupt of AP_SUSPEND is originally disabled on S5-\u003eS3.\n * The host sleep event sets a flag, enable the AP_SUSPEND interrupt, and starts a 10s timer. EC still stays in S0.\n * In the S0 state of the FSM, if having the flag + AP_SUSPEND signal, transit into S3, cancel the timer, and notify the SUSPEND_HOOK.\n * If the timer is expired, it resets the flag, disables the AP_SUSPEND interrupt, and wakes AP up.\n\nNote that the above stuff, like the timer, is not in this CL. This CL is like below:\n * The host sleep event sets a flag (fake_suspend). EC still stays in S0.\n * In the S0 state of the FSM, if having the flag (fake_suspend), transit into S3, and notify the SUSPEND_HOOK (exclude the SPI disable).",
+      "parentUuid": "bd322806_de89131c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "1a78670753696adc5442b22da4002858d82a5e07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52031f14_77b27424",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
