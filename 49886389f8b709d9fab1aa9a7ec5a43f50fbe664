@@ -108,6 +108,23 @@
     },
     {
       "key": {
+        "uuid": "bda1a780_4f166969",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-07-29T01:48:10Z",
+      "side": 1,
+      "message": "We don\u0027t need this one anymore, right?",
+      "revId": "49886389f8b709d9fab1aa9a7ec5a43f50fbe664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53c2436e_22cf0c59",
         "filename": "common/u2f.c",
         "patchSetId": 1
