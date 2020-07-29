@@ -226,4 +226,15 @@ SECTIONS
 #ifdef CONFIG_ISH_PM_AONTASK
 	ish_persistent_data_aon = ABSOLUTE(CONFIG_AON_PERSISTENT_BASE);
 #endif
+#ifdef CONFIG_FLASH
+	/*
+	 * Temporary - for checking flash and image sizes
+	 */
+	__config_flash_size = CONFIG_FLASH_SIZE;
+	__config_ro_size = CONFIG_RO_SIZE;
+	__config_ec_protected_storage_size = CONFIG_EC_PROTECTED_STORAGE_SIZE;
+	__config_rw_size = CONFIG_RW_SIZE;
+	__config_ec_writable_storage_size = CONFIG_EC_WRITABLE_STORAGE_SIZE;
+#endif
+
 }
