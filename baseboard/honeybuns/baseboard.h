@@ -154,6 +154,7 @@ enum usb_strings {
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DYNAMIC_SRC_CAP
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
+#define CONFIG_USB_PD_DYNAMIC_SRC_CAP
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_PS8805
 #define CONFIG_USB_PD_TCPM_STM32GX
@@ -195,11 +196,6 @@ enum usb_strings {
 #define CONFIG_RSA_KEY_SIZE 3072
 #define CONFIG_RSA_EXPONENT_3
 #define CONFIG_SHA256
-
-#define CONFIG_USB_PID 0x5048
-#define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
-#define CONFIG_USB_PD_IDENTITY_HW_VERS 1
-#define CONFIG_USB_PD_IDENTITY_SW_VERS 1
 
 /* Define typical operating power and max power. */
 #define PD_MAX_VOLTAGE_MV     5000
