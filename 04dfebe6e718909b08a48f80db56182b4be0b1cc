@@ -16,6 +16,24 @@
       "revId": "04dfebe6e718909b08a48f80db56182b4be0b1cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f786640_82c20d8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-29T04:46:22Z",
+      "side": 1,
+      "message": "I think they have to cherry-pick this one first and then cherry-pick CL:2313056. That way won\u0027t result any merge conflict.",
+      "parentUuid": "3d4d9bd6_d71e8104",
+      "revId": "04dfebe6e718909b08a48f80db56182b4be0b1cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
