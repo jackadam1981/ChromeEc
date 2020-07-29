@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f34e285d_e7fb0c92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-07-29T06:37:07Z",
+      "side": 1,
+      "message": "retimer_set_state: \n  if (mux_state \u0026 USB_PD_MUX_USB_ENABLED)\n                set_retimer_con |\u003d BB_RETIMER_USB_3_CONNECTION;\nHere the safe mode condition check not there, I tried to add safe mode check. But what happened, the usb configuration and retimer configuration bits came same. It was working. but retimer can\u0027t differentiate which one is USB and Safe modes.",
+      "parentUuid": "6a6266fc_29a31644",
+      "revId": "c8697ff7e1625c71f2281e8e483baa24ebf36d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6afc8de_5339f64a",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 1
