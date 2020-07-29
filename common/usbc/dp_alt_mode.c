@@ -13,6 +13,7 @@
 #include <stdint.h>
 #include "assert.h"
 #include "usb_pd.h"
+#include "usb_common.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
@@ -198,6 +199,7 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 
 	switch (dp_state[port]) {
 	case DP_START:
+		set_usb_mux_with_current_data_role(port);
 	case DP_ENTER_RETRY:
 		/* Enter the first supported mode for DisplayPort. */
 		vdm[0] = pd_dfp_enter_mode(port, TCPC_TX_SOP,

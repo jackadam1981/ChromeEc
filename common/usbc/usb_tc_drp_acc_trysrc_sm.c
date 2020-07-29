@@ -1460,9 +1460,6 @@ void tc_set_data_role(int port, enum pd_data_role role)
 {
 	tc[port].data_role = role;
 
-	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
-		set_usb_mux_with_current_data_role(port);
-
 	/*
 	 * Run any board-specific code for role swap (e.g. setting OTG signals
 	 * to SoC).
@@ -3344,7 +3341,6 @@ static void pd_chipset_startup(void)
 	int i;
 
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-		set_usb_mux_with_current_data_role(i);
 		pd_set_dual_role_and_event(i,
 					   PD_DRP_TOGGLE_OFF,
 					   PD_EVENT_UPDATE_DUAL_ROLE
