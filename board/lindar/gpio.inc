@@ -26,11 +26,11 @@ GPIO_INT(SLP_S3_L,             PIN(A, 5), GPIO_INT_BOTH, power_signal_interrupt)
 #endif
 GPIO_INT(SLP_SUS_L,            PIN(D, 7), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(PG_EC_RSMRST_ODL,     PIN(E, 2), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(DSW_PWROK,            PIN(C, 7), GPIO_INT_BOTH, power_signal_interrupt)
+GPIO_INT(PG_EC_DSW_PWROK,      PIN(C, 7), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(PG_EC_ALL_SYS_PWRGD,  PIN(F, 4),  GPIO_INT_BOTH, power_signal_interrupt)
 
 /* Sensor Interrupts */
-GPIO_INT(EC_IMU_INT_L,         PIN(5, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V, lsm6dsm_interrupt)
+GPIO(EC_IMU_INT_L,         PIN(5, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V)
 GPIO_INT(TABLET_MODE_L,        PIN(9, 5), GPIO_INT_BOTH, gmr_tablet_switch_isr)
 
 /* USB-C interrupts */
@@ -45,26 +45,31 @@ GPIO_INT(USB_C1_MIX_INT_ODL,	PIN(0, 3), GPIO_INT_BOTH, bc12_interrupt)
 
 /* HDMI interrupts */
 
-/* Volume button interrupts */
-GPIO_INT(EC_VOLDN_BTN_ODL,		PIN(9, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
-GPIO_INT(EC_VOLUP_BTN_ODL,		PIN(9, 7), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
+/* Mute button interrupts */
+GPIO(EC_MIC_MUTE_BTN_ODL,		PIN(9, 3), GPIO_INT_BOTH)
+
+/* HW_ID PIN */
+GPIO(HW_ID,		PIN(D, 4), GPIO_INPUT)
 
 /* Power Sequencing Signals */
 GPIO(EN_PP3300_A,              PIN(A, 3), GPIO_OUT_LOW)
 GPIO(EN_PP5000_A,              PIN(A, 4), GPIO_OUT_LOW)
 GPIO(EN_PPVAR_VCCIN,           PIN(4, 3), GPIO_OUT_LOW) /* Enables VCCIN IMPV9 */
+
+
 /* The EC does not buffer this signal on Volteer. */
 UNIMPLEMENTED(PCH_DSW_PWROK)
 
 #ifdef VOLTEER_POWER_SEQUENCE
 /* Optional power sequencing signals that are not stuffed by default */
-GPIO(EN_DRAM_VDDQ,		PIN(F, 2), GPIO_OUT_LOW)
-GPIO(EN_PP1050_STG,		PIN(C, 0), GPIO_OUT_LOW)
+UNIMPLEMENTED(EN_DRAM_VDDQ)
+UNIMPLEMENTED(EN_PP1050_STG)
+GPIO(EC_PCH_DSW_PWROK,      PIN(C, 0), GPIO_OUT_LOW)
 GPIO(EN_PP5000_USB_AG,		PIN(A, 7), GPIO_OUT_LOW)
 GPIO(EN_PPVAR_VCCIN_AUX,	PIN(8, 1), GPIO_OUT_LOW)
-GPIO(EN_PP1050_ST_S0,		PIN(3, 4), GPIO_OUT_LOW)
+UNIMPLEMENTED(EN_PP1050_ST_S0)
 GPIO(EN_VNN_BYPASS,		PIN(B, 0), GPIO_OUT_LOW)
-GPIO(EN_DRAM_VDD1,		PIN(9, 6), GPIO_OUT_LOW)
+UNIMPLEMENTED(EN_DRAM_VDD1)
 #endif
 
 /* Other wake sources */
@@ -103,6 +108,14 @@ UNIMPLEMENTED(USB_C1_LS_EN)
 UNIMPLEMENTED(USB_C1_RT_FORCE_PWR)
 
 /* Misc Signals */
+GPIO(EC_H1_PACKET_MODE,		PIN(7, 5), GPIO_OUT_LOW)	/* H1 Packet Mode */
+
+/*
+ * Determine the polarity of these SSD signals and whether
+ * they are open-drain.
+ */
+GPIO(M2_SSD_PLN,		PIN(A, 0), GPIO_OUT_HIGH)	/* SSD power-loss notification */
+GPIO(M2_SSD_PLA,		PIN(7, 0), GPIO_INPUT)		/* SSD power-loss acknoledgement */
 
 /*
  * eDP backlight - both PCH and EC have enable pins that must be high
@@ -112,14 +125,12 @@ UNIMPLEMENTED(USB_C1_RT_FORCE_PWR)
 GPIO(EC_EDP_BL_EN,             PIN(D, 3), GPIO_OUT_HIGH)
 
 /* I2C pins - Alternate function below configures I2C module on these pins */
-GPIO(EC_I2C0_SENSOR_SCL,       PIN(B, 5), GPIO_INPUT | GPIO_SEL_1P8V)
-GPIO(EC_I2C0_SENSOR_SDA,       PIN(B, 4), GPIO_INPUT | GPIO_SEL_1P8V)
 GPIO(EC_I2C1_USB_C0_SCL,       PIN(9, 0), GPIO_INPUT)
 GPIO(EC_I2C1_USB_C0_SDA,       PIN(8, 7), GPIO_INPUT)
 GPIO(EC_I2C2_USB_C1_SCL,       PIN(9, 2), GPIO_INPUT)
 GPIO(EC_I2C2_USB_C1_SDA,       PIN(9, 1), GPIO_INPUT)
-GPIO(EC_I2C3_USB_1_MIX_SCL,    PIN(D, 1), GPIO_INPUT)
-GPIO(EC_I2C3_USB_1_MIX_SDA,    PIN(D, 0), GPIO_INPUT)
+GPIO(EC_I2C3_LIGHTBAR_SCL,     PIN(D, 1), GPIO_INPUT)
+GPIO(EC_I2C3_LIGHTBAR_SDA,     PIN(D, 0), GPIO_INPUT)
 GPIO(EC_I2C5_POWER_SCL,        PIN(3, 3), GPIO_INPUT)
 GPIO(EC_I2C5_POWER_SDA,        PIN(3, 6), GPIO_INPUT)
 GPIO(EC_I2C7_EEPROM_SCL,       PIN(B, 3), GPIO_INPUT)
@@ -129,8 +140,9 @@ GPIO(EC_I2C7_EEPROM_SDA,       PIN(B, 2), GPIO_INPUT)
 GPIO(EC_BATT_PRES_ODL, 		PIN(E, 1), GPIO_INPUT)
 
 /* Physical HPD pins are not needed on EC as these are configured by PMC */
-GPIO(USB_C0_DP_HPD,		PIN(F, 3), GPIO_INPUT)
-GPIO(USB_C1_DP_HPD,		PIN(7, 0), GPIO_INPUT)
+UNIMPLEMENTED(USB_C0_DP_HPD)
+UNIMPLEMENTED(USB_C1_DP_HPD)
+
 
 /* LED */
 GPIO(LED_1_L,	 PIN(C, 4), GPIO_OUT_HIGH)	/* Battery - Green LED */
@@ -138,7 +150,6 @@ GPIO(LED_2_L,	 PIN(C, 3), GPIO_OUT_HIGH)	/* Battery - Red LED */
 GPIO(LED_3_L,	 PIN(C, 2), GPIO_OUT_HIGH)	/* Power - White LED */
 
 /* Alternate functions GPIO definitions */
-ALTERNATE(PIN_MASK(B, BIT(5) | BIT(4)), 0, MODULE_I2C, (GPIO_INPUT | GPIO_SEL_1P8V)) /* I2C0 */
 ALTERNATE(PIN_MASK(9, BIT(0) | BIT(2) | BIT(1)), 0, MODULE_I2C, 0)                   /* I2C1 SCL / I2C2 */
 ALTERNATE(PIN_MASK(8, BIT(7)), 0, MODULE_I2C, 0)                                     /* I2C1 SDA */
 ALTERNATE(PIN_MASK(D, BIT(1) | BIT(0)), 0, MODULE_I2C, 0)                            /* I2C3 */
@@ -148,7 +159,7 @@ ALTERNATE(PIN_MASK(B, BIT(3) | BIT(2)), 0, MODULE_I2C, 0)                       
 /* This selects between an LED module on the motherboard and one on the daughter
  * board, to be controlled by LED_{1,2,3}_L. PWM allows driving both modules at
  * the same time. */
-ALTERNATE(PIN_MASK(6, BIT(0)), 0, MODULE_PWM, 0)                                     /* LED_SIDESEL_4_L */
+UNIMPLEMENTED(LED_SIDESEL_4_L)                                    /* LED_SIDESEL_4_L */
 
 /* Fan signals */
 GPIO(EN_PP5000_FAN,            PIN(6, 1), GPIO_OUT_LOW)
@@ -174,4 +185,16 @@ ALTERNATE(PIN_MASK(D, BIT(2)), 0, MODULE_PMU, 0)                    /* GPIOD2 = 
 ALTERNATE(PIN_MASK(0, BIT(0) | BIT(1) | BIT(2)), 0, MODULE_PMU, 0)  /* GPIO00 = ACOK_OD,
                                                                        GPIO01 = H1_EC_PWR_BTN_ODL
                                                                        GPIO02 = EC_RST_ODL */
+
+/* GPIO no used */
+UNUSED(PIN(8, 1))   /* L6  NC */
+UNUSED(PIN(B, 5))   /* F12 NC */
+UNUSED(PIN(B, 4))   /* G10 NC */
+UNUSED(PIN(9, 7))   /* J9  NC */
+UNUSED(PIN(6, 0))   /* G5  NC */
+UNUSED(PIN(3, 4))   /* B2  NC */
+UNUSED(PIN(9, 6))   /* M12 NC */
+UNUSED(PIN(F, 2))   /* E11 NC */
+UNUSED(PIN(F, 3))   /* F7  NC */
+
 
