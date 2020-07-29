@@ -16,6 +16,29 @@
       "revId": "ba6ef22af23b4784af6b36f6b2bb2e8c57e87f62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69bd3d7c_9abe8fe4",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-07-29T18:07:22Z",
+      "side": 1,
+      "message": "Thank you for adding this to the documentation. Since we will likely want to update this image over time, cab you provide a link to the original doc?\n\nHere\u0027s an example of how to do that: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/master:src/platform/ec/docs/fingerprint/fingerprint-dev-for-partners.md;l\u003d629;drc\u003d23748c2f49b52a279970e7e2f6862ba336726346",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 95
+      },
+      "revId": "ba6ef22af23b4784af6b36f6b2bb2e8c57e87f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
