@@ -25,13 +25,13 @@
 /* Voltage indexes for the PDOs */
 enum volt_idx {
 	PDO_IDX_5V   = 0,
-#ifdef BOARD_ALLOW_HIGH_VBUS
 	PDO_IDX_9V   = 1,
 	PDO_IDX_15V  = 2,
 	PDO_IDX_20V  = 3,
 	PDO_IDX_COUNT
 };
 
+/* PDOs */
 const uint32_t pd_src_host_pdo[] = {
 	[PDO_IDX_5V]  = PDO_FIXED(5000,   3000, PDO_FIXED_FLAGS),
 	[PDO_IDX_9V]  = PDO_FIXED(9000,   3000, 0),
@@ -40,9 +40,13 @@ const uint32_t pd_src_host_pdo[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pd_src_host_pdo) == PDO_IDX_COUNT);
 
-/* Honeybuns does not require any power from the port partner */
+/* PDOs */
+const uint32_t pd_src_user_pdo[] = {
+	[PDO_IDX_5V]  = PDO_FIXED(5000,   3000, PDO_FIXED_FLAGS),
+};
+
 const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000, 0, PDO_FIXED_FLAGS),
+	[PDO_IDX_5V]  = PDO_FIXED(5000,   0, PDO_FIXED_FLAGS),
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
