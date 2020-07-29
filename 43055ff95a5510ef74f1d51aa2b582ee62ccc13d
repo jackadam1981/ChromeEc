@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9e6f823_590d8ac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-29T18:59:46Z",
+      "side": 1,
+      "message": "Is this needed for all TCPMv2 implementations or only PS8815 TCPC code?  Hate to add delays for all if this is not an all problem",
+      "revId": "43055ff95a5510ef74f1d51aa2b582ee62ccc13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
