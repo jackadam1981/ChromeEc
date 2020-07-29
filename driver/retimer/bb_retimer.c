@@ -144,6 +144,7 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 		 */
 		if (is_usb2_cable_support(port))
 			*set_retimer_con |= BB_RETIMER_USB_2_CONNECTION;
+
 	}
 
 	/*
@@ -158,6 +159,11 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 	if (is_active_cable_element_retimer(port) &&
 	   (mux_state & BB_RETIMER_MUX_USB_DP_MODE))
 		*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+
+	/* Enable USB3.2 if other than USB4/TBT3/DP-Alt(4-lanes)/SOP'
+	 * discover ID header[29:27] is zero.
+	 */
+	*set_retimer_con |= BB_RETIMER_USB_3_CONNECTION;
 
 	/*
 	 * Bit 22: ACTIVE/PASSIVE
