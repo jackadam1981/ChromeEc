@@ -213,7 +213,7 @@ static int ps8xxx_dci_disable(int port)
 	int rv;
 
 	/* Enable access to debug pages. */
-	p3_addr = tcpc_config[port].i2c_info.addr_flags;
+	p3_addr = tcpc_config[port].i2c_info.addr;
 	rv = tcpc_addr_read(port, p3_addr, PS8XXX_REG_I2C_DEBUGGING_ENABLE,
 			    &regval);
 	if (rv)
