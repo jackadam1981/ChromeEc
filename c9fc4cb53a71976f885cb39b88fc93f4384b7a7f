@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f4e6f0a4_9b426bd7",
+        "filename": "common/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-07-29T17:07:02Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "7f55a7c0_f83a5f62",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "c9fc4cb53a71976f885cb39b88fc93f4384b7a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f981d4b9_f67c06ff",
         "filename": "common/power_button.c",
         "patchSetId": 2
