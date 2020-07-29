@@ -10,6 +10,7 @@
 #include "driver/tcpm/tcpci.h"
 #include "hooks.h"
 #include "mp4245.h"
+#include "task.h"
 #include "timer.h"
 #include "usb_common.h"
 #include "usb_mux.h"
@@ -28,29 +29,29 @@
 /* Voltage indexes for the PDOs */
 enum volt_idx {
 	PDO_IDX_5V   = 0,
-#ifdef BOARD_ALLOW_HIGH_VBUS
 	PDO_IDX_9V   = 1,
 	PDO_IDX_15V  = 2,
 	PDO_IDX_20V  = 3,
-#endif
 	/* TODO: add PPS support */
 	PDO_IDX_COUNT
 };
 
 /* PDOs */
-const uint32_t pd_src_pdo[] = {
+const uint32_t pd_src_host_pdo[] = {
 	[PDO_IDX_5V]  = PDO_FIXED(5000,   3000, PDO_FIXED_FLAGS),
-#ifdef BOARD_ALLOW_HIGH_VBUS
 	[PDO_IDX_9V]  = PDO_FIXED(9000,   3000, PDO_FIXED_FLAGS),
 	[PDO_IDX_15V]  = PDO_FIXED(15000, 3000, PDO_FIXED_FLAGS),
 	[PDO_IDX_20V]  = PDO_FIXED(20000, 3000, PDO_FIXED_FLAGS),
-#endif
 };
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
-BUILD_ASSERT(ARRAY_SIZE(pd_src_pdo) == PDO_IDX_COUNT);
+BUILD_ASSERT(ARRAY_SIZE(pd_src_host_pdo) == PDO_IDX_COUNT);
+
+/* PDOs */
+const uint32_t pd_src_user_pdo[] = {
+	[PDO_IDX_5V]  = PDO_FIXED(5000,   3000, PDO_FIXED_FLAGS),
+};
 
 const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
+	[PDO_IDX_5V]  = PDO_FIXED(5000,   3000, PDO_FIXED_FLAGS),
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
@@ -72,6 +73,24 @@ static void pd_check_vbus(void)
 	hook_call_deferred(&pd_check_vbus_data, 100);
 }
 
+int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
+{
+	int pdo_cnt = 0;
+
+	/*
+	 * If CHG is providing VBUS, then advertise what's available on the CHG
+	 * port, otherwise we provide no power.
+	 */
+	if (port == USB_PD_PORT_HOST) {
+		*src_pdo =  pd_src_host_pdo;
+		pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
+	} else {
+		*src_pdo =  pd_src_user_pdo;
+		pdo_cnt = ARRAY_SIZE(pd_src_user_pdo);
+	}
+
+	return pdo_cnt;
+}
 
 int pd_check_vconn_swap(int port)
 {
@@ -127,20 +146,24 @@ int pd_set_power_supply_ready(int port)
 
 void pd_transition_voltage(int idx)
 {
-	int mv;
-	int ma;
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	if (port == USB_PD_PORT_HOST) {
+		int mv;
+		int ma;
 
 	/*
 	 * Set the VBUS output voltage and current limit to the values specified
 	 * by the PDO requested by sink. Note that USB PD uses idx = 1 for 1st
 	 * PDO of SRC_CAP which must aways be 5V fixed supply.
 	 */
-	pd_extract_pdo_power(pd_src_pdo[idx - 1], &ma, &mv);
+		pd_extract_pdo_power(pd_src_host_pdo[idx - 1], &ma, &mv);
 
-	/* Set VBUS level to value specified in the requested PDO */
-	mp4245_set_voltage_out(mv);
-	/* Set VBUS current limit to value specfied in the requested PDO */
-	//mp4245_set_current_lim(ma);
+		/* Set VBUS level to value specified in the requested PDO */
+		mp4245_set_voltage_out(mv);
+		/* Set VBUS current limit to value specfied in the requested PDO */
+		//mp4245_set_current_lim(ma);
+	}
 }
 
 int pd_snk_is_vbus_provided(int port)
