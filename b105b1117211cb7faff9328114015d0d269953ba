@@ -240,6 +240,30 @@
       "revId": "b105b1117211cb7faff9328114015d0d269953ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9393fa47_78b45594",
+        "filename": "common/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-30T21:39:35Z",
+      "side": 1,
+      "message": "Modified the logic to the polling way in another CL:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2330577\n\nPTAL.",
+      "parentUuid": "4e27fea9_20dec43a",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "b105b1117211cb7faff9328114015d0d269953ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
