@@ -46,6 +46,30 @@
       "revId": "093dc24947efe13f0960f298aa3b93576b06ff1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2739f23_a7a644c2",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-30T23:59:38Z",
+      "side": 1,
+      "message": "Today I Learned about CL:1860474.",
+      "parentUuid": "70720c08_db220008",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 28
+      },
+      "revId": "093dc24947efe13f0960f298aa3b93576b06ff1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
