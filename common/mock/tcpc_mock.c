@@ -129,6 +129,7 @@ static int mock_get_message_raw(int port, uint32_t *payload, int *head)
 static int mock_transmit(int port, enum tcpm_transmit_type type,
 			 uint16_t header, const uint32_t *data)
 {
+	++mock_tcpc.num_calls_to_transmit;
 	return EC_SUCCESS;
 }
 

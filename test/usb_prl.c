@@ -95,6 +95,54 @@ static int test_send_control_msg(void)
 	return EC_SUCCESS;
 }
 
+static int test_send_control_msg_with_retry_and_fail(void)
+{
+	int port = PORT0;
+	int tx_count = 1;
+	int i;
+	uint64_t timeout;
+
+	/* Set up the message to be sent. */
+	prl_send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
+	timeout = get_time().val;
+
+	for (i = 0; i < N_RETRY_COUNT; i++) {
+		timeout += PD_T_TCPC_TX_TIMEOUT;
+
+		/* Check retry not too soon. */
+		while (get_time().val < timeout - (10*MSEC))
+			task_wait_event(10*MSEC);
+		TEST_EQ(mock_tcpc.num_calls_to_transmit, tx_count, "%d");
+
+		/* Check retry not too late. */
+		while (get_time().val < timeout + (10*MSEC))
+			task_wait_event(10*MSEC);
+		tx_count++;
+		TEST_EQ(mock_tcpc.num_calls_to_transmit, tx_count, "%d");
+	}
+
+	timeout += PD_T_TCPC_TX_TIMEOUT;
+
+	/* Check error not too soon. */
+	while (get_time().val < timeout - (10*MSEC))
+		task_wait_event(10*MSEC);
+	TEST_LE(mock_pe_port[port].mock_pe_error, 0, "%d");
+
+	/* Check error not too late. */
+	while (get_time().val < timeout + (10*MSEC))
+		task_wait_event(10*MSEC);
+	TEST_EQ(mock_pe_port[port].mock_pe_error, ERR_TCH_XMIT, "%d");
+
+	TEST_EQ(mock_tcpc.num_calls_to_transmit, tx_count, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_message_sent, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_message_discarded, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_got_soft_reset, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_got_hard_reset, 0, "%d");
+	TEST_EQ(mock_pe_port[port].mock_pe_hard_reset_sent, 0, "%d");
+
+	return EC_SUCCESS;
+}
+
 static int test_discard_queued_tx_when_rx_happens(void)
 {
 	int port = PORT0;
@@ -143,6 +191,7 @@ void before_test(void)
 	mock_tc_port[PORT0].data_role = PD_ROLE_DFP;
 
 	mock_tcpm_reset();
+	mock_tcpc_reset();
 	mock_pe_port_reset();
 
 	prl_reset(PORT0);
@@ -158,6 +207,7 @@ void run_test(int argc, char **argv)
 {
 	RUN_TEST(test_receive_control_msg);
 	RUN_TEST(test_send_control_msg);
+	RUN_TEST(test_send_control_msg_with_retry_and_fail);
 	RUN_TEST(test_discard_queued_tx_when_rx_happens);
 	/* TODO add tests here */
 

@@ -13,6 +13,7 @@ struct mock_tcpc_ctrl {
 	enum tcpc_cc_voltage_status cc2;
 	int vbus_level;
 	int num_calls_to_set_header;
+	int num_calls_to_transmit;
 	bool should_print_call;
 
 	/* Set to function pointer if callback is needed for test code */
