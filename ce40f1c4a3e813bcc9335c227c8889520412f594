@@ -1,0 +1,297 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a1ee66c_efb94bb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "If there is an updated schematic, please add it to the bug b:161089195.\nThe schematic I can see still shows shows sensors connected to I2C3.\n",
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c34445f2_b91f7378",
+        "filename": "board/lindar/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "Change to \"Sensors not supported\"",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f5f5fde_024c114e",
+        "filename": "board/lindar/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "Add #undef CONFIG_TABLET_MODE",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fdd2092_41d07360",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "If these signals are unused in the latest schematic, add these to the \"GPIO not use\" section at the end of the file.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 79
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505fb8bd_a46ef0f1",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "Please match name in the schematic \"EC_VOLDN_MUTE_BTN_ODL\".",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 24
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbfba6dc_b38bdce9",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "Delete these lines here, and also delete references to GPIO_EN_DRAM_VDDQ and GPIO_EN_PP1050_STG in lindar/power_sequence.c.\n\npower_sequence.c can probably be removed completely in a separate change.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 28
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4b7d240_854d6744",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "Delete this line here, and delete references to GPIO_EN_PPVAR_VCCIN_AUX in power_sequence.c",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a57c07_5855a4e3",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "Delete from here and from power_sequence.c",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 30
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee53dbdd_f09c50e3",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "GPIOB0 is shown as EC_PCH_INT_ODL in schematic.  This is used as output interrupt to the AP for sensor data.  GPIOB0 should be added to the unused section at the end  of the file.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 45
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be5b1129_c477d7ea",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "Delete from here and from power_sequence.c",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 27
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "999d0d77_77887a92",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "Delete these lines.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c67bb2_baf2afaa",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "Delete, this shouldn\u0027t be needed to compile.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 0
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23666be9_73c5a946",
+        "filename": "board/lindar/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-30T00:39:43Z",
+      "side": 1,
+      "message": "Configure unused pins as GPIO inputs with a pullup.  See the Volteer board for reference: https://chromium.googlesource.com/chromiumos/platform/ec/+/bcc2c00d/board/volteer/gpio.inc#117",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 0
+      },
+      "revId": "ce40f1c4a3e813bcc9335c227c8889520412f594",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
