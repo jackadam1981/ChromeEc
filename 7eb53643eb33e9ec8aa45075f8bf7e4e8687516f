@@ -34,6 +34,23 @@
       "revId": "7eb53643eb33e9ec8aa45075f8bf7e4e8687516f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06a4a68f_f07e38e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1204629
+      },
+      "writtenOn": "2020-07-30T16:57:19Z",
+      "side": 1,
+      "message": "With this patch, time between USB and Safe redcued to ~3ms and it is enumerating @SS for me with extcon\n\n20-07-30 09:40:45.319 [83.683288 BB 04 \u003c\u003d 0x031]\n20-07-30 09:40:45.336 [83.685871 BB 04 \u003c\u003d 0x001]  \u003d\u003d\u003e ~3ms\n20-07-30 09:40:45.380 [83.731167 BB 04 \u003c\u003d 0x531]\n",
+      "revId": "7eb53643eb33e9ec8aa45075f8bf7e4e8687516f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
