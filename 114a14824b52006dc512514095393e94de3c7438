@@ -166,6 +166,30 @@
       "revId": "114a14824b52006dc512514095393e94de3c7438",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20744c1c_1cfaf6b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-30T21:08:12Z",
+      "side": 1,
+      "message": "\u003e Every task adds a fixed 224-byte, which is noted as \"extra stack \n\u003e frame needed by exception content switch\". \n\nBasically if a task is context switched out due to an interrupt something\u0027s gotta save every last register that the task could be using.  In the very least, that\u0027s:\n* All 16 arm32 registers.\n* All 32 floating point registers.\n* FPSCR\nThat\u0027s 49 registers or 196 bytes.  Presumably there\u0027s something taking up the extra 28 bytes.  Looks like some extra padding, at least.\n\nSome details can be found in the comments of get_exception_frame_size().  Some other details can be found in \"switch.S\".\n\n---\n\nAs far as I can understand if a task never uses floating point at all the 228 bytes is an over-estimation.  Specifically it looks like all the places manage to avoid saving floating point registers if a task never used them.  That means we save at least 33 * 4 \u003d 132 bytes of stack.  Assuming this is right then tasks that don\u0027t use any floating point operations would only need 92 bytes reserved on their stack for exceptions.",
+      "parentUuid": "eb670ace_946f643e",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 63
+      },
+      "revId": "114a14824b52006dc512514095393e94de3c7438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
