@@ -97,7 +97,6 @@ enum pwm_channel {
 enum ioex_port {
 	IOEX_C0_NCT3807 = 0,
 	IOEX_C1_NCT3807,
-	IOEX_HDMI_PCAL6408,
 	IOEX_PORT_COUNT
 };
 
@@ -144,9 +143,9 @@ enum ec_cfg_usb_mb_type {
 };
 
 /**
- * DALBOZ_DB_D_OPT1_USBAC
+ * DIRINBOZ_DB_USBC
  *	USB-A1  Speed: 5 Gbps
- *		Retimer: TUSB522
+ *		Retimer: PS8719
  *	USB-C1  Speed: 5 Gbps
  *		Retimer: PS8740
  *		TCPC: NCT3807
@@ -155,23 +154,13 @@ enum ec_cfg_usb_mb_type {
  *	HDMI    Exists: no
  *		Retimer: none
  *		MST Hub: none
- *
- * DALBOZ_DB_D_OPT2_USBA_HDMI
- *	USB-A1  Speed: 5 Gbps
- *		Retimer: TUSB522
- *	USB-C1  none
- *		IOEX: PCAL6408
- *	HDMI    Exists: yes
- *		Retimer: PI3HDX1204
- *		MST Hub: none
  */
 enum ec_cfg_usb_db_type {
-	DALBOZ_DB_D_OPT1_USBAC = 0,
-	DALBOZ_DB_D_OPT2_USBA_HDMI = 1,
+	DIRINBOZ_DB_USBC = 0,
 };
 
 #define HAS_USBC1 \
-			(BIT(DALBOZ_DB_D_OPT1_USBAC))
+			(BIT(DIRINBOZ_DB_USBC))
 
 static inline bool ec_config_has_usbc1(void)
 {
@@ -180,7 +169,7 @@ static inline bool ec_config_has_usbc1(void)
 }
 
 #define HAS_USBC1_RETIMER_PS8740 \
-			(BIT(DALBOZ_DB_D_OPT1_USBAC))
+			(BIT(DIRINBOZ_DB_USBC))
 
 static inline bool ec_config_has_usbc1_retimer_ps8740(void)
 {
@@ -188,13 +177,9 @@ static inline bool ec_config_has_usbc1_retimer_ps8740(void)
 		  HAS_USBC1_RETIMER_PS8740);
 }
 
-#define HAS_HDMI_RETIMER_PI3HDX1204 \
-			(BIT(DALBOZ_DB_D_OPT2_USBA_HDMI))
-
 static inline bool ec_config_has_hdmi_retimer_pi3hdx1204(void)
 {
-	return !!(BIT(ec_config_get_usb_db()) &
-		  HAS_HDMI_RETIMER_PI3HDX1204);
+	return 0;
 }
 
 /* These IO expander GPIOs vary with DB option. */
