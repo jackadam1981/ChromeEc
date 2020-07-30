@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6d0fbebd_11f6642c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-07-30T04:49:36Z",
+      "side": 1,
+      "message": "\u003e Patch Set 3: Verified-1\n\u003e \n\u003e I need to do more digging here for retries. The TCPC actually need to perform the retry in hardware to meet spec timings\n\nYes, like it8320, it will auto retry 2 times message that partner doesn\u0027t respond GoodCRC (see register 0x64 BMCSR bit[4:6]).\n\nIf we do retry both in TCPM and TCPC, there are totally 9 times in the log:\nSRC_CAP - TCPM send\n SRC_CAP - TCPC auto retry first\n SRC_CAP - TCPC auto retry second\nSRC_CAP - TCPM retry first\n SRC_CAP - TCPC auto retry first\n SRC_CAP - TCPC auto retry second\nSRC_CAP - TCPM retry second\n SRC_CAP - TCPC auto retry first\n SRC_CAP - TCPC auto retry second",
+      "revId": "8cc78a650b9619c2538667e1f881a37b9d0a832f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61650c53_c7e3af7c",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 3
