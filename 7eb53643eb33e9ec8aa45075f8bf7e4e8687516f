@@ -16,6 +16,24 @@
       "revId": "7eb53643eb33e9ec8aa45075f8bf7e4e8687516f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7a17bb8_b22e0344",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-07-30T12:45:42Z",
+      "side": 1,
+      "message": "This patch is causing PMC error at kernel driver side. \n\nKernel logs:\n[  236.128995] usb 3-4: new high-speed USB device number 4 using xhci_hcd\n[  236.151111] extcon-tcss-cros-ec extcon-tcss-cros-ec: tbt\u003d0,usb4\u003d0 tbt_type\u003d0, optical_cable\u003d0, tbt_usb4_link\u003d0\n[  236.151116] extcon-tcss-cros-ec extcon-tcss-cros-ec: tbt_usb4_cable_speed\u003d0, tbt_usb4_cable_gen\u003d0\n[  236.175775] extcon-tcss-cros-ec extcon-tcss-cros-ec: tbt\u003d0,usb4\u003d0 tbt_type\u003d0, optical_cable\u003d0, tbt_usb4_link\u003d0\n[  236.175796] extcon-tcss-cros-ec extcon-tcss-cros-ec: tbt_usb4_cable_speed\u003d0, tbt_usb4_cable_gen\u003d0\n[  236.175911] extcon-tcss-cros-ec extcon-tcss-cros-ec: PMC TCSS failed port\u003d1, req\u003d0, tcss_res\u003d0x30420\n[  236.175912] extcon-tcss-cros-ec extcon-tcss-cros-ec: Error port\u003d1, error\u003d-5\n[  236.175913] extcon-tcss-cros-ec extcon-tcss-cros-ec: Port 1, Error detecting cable\n[  236.211132] extcon-tcss-cros-ec extcon-tcss-cros-ec: tbt\u003d0,usb4\u003d0 tbt_type\u003d0, optical_cable\u003d0, tbt_usb4_link\u003d0\n[  236.211136] extcon-tcss-cros-ec extcon-tcss-cros-ec: tbt_usb4_cable_speed\u003d0, tbt_usb4_cable_gen\u003d0\n[  236.270191] usb 3-4: New USB device found, idVendor\u003d0bda, idProduct\u003d5487, bcdDevice\u003d 1.33",
+      "parentUuid": "bc53fd8e_02cac224",
+      "revId": "7eb53643eb33e9ec8aa45075f8bf7e4e8687516f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
