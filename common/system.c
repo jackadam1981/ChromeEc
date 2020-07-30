@@ -864,6 +864,8 @@ int system_is_manual_recovery(void)
  */
 static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 {
+	int port;
+
 	switch (cmd) {
 	case EC_REBOOT_CANCEL:
 		return EC_SUCCESS;
@@ -872,31 +874,38 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_JUMP_RW:
 		return system_run_image_copy(system_get_active_copy());
 	case EC_REBOOT_COLD:
-		/*
-		 * Reboot the PD chip(s) as well, but first suspend the ports
-		 * if this board has PD tasks running so they don't query the
-		 * TCPCs while they reset.
-		 */
-		if (IS_ENABLED(HAS_TASK_PD_C0)) {
-			int port;
-
-			for (port = 0; port < board_get_usb_pd_port_count();
+		/* Reset power supply before reboot */
+		if (!IS_ENABLED(TEST_BUILD) &&
+		    IS_ENABLED(HAS_TASK_PD_C0)) {
+			for (port = 0;
+			     port < board_get_usb_pd_port_count();
 			     port++)
-				pd_set_suspend(port, 1);
-
-			/*
-			 * Give enough time to apply CC Open and brown out if
-			 * we are running with out a battery.
-			 */
-			msleep(20);
+				pd_power_supply_reset(port);
 		}
 
-		/* Reset external PD chips. */
-		if (IS_ENABLED(HAS_TASK_PDCMD) ||
-		    IS_ENABLED(HAS_TASK_PD_INT_C0) ||
-		    IS_ENABLED(HAS_TASK_PD_INT_C1) ||
-		    IS_ENABLED(HAS_TASK_PD_INT_C2))
-			board_reset_pd_mcu();
+		/* Reboot the PD chip(s) when running with a battery */
+		if (IS_ENABLED(CONFIG_BATTERY) &&
+		    battery_is_present() == BP_YES &&
+		    !battery_is_cut_off()) {
+			/*
+			 * Suspend the ports if this board has PD tasks
+			 * running so they don't query the TCPCs while they
+			 * reset.
+			 */
+			if (IS_ENABLED(HAS_TASK_PD_C0)) {
+				for (port = 0;
+				     port < board_get_usb_pd_port_count();
+				     port++)
+					pd_set_suspend(port, 1);
+			}
+
+			/* Reset external PD chips. */
+			if (IS_ENABLED(HAS_TASK_PDCMD) ||
+			    IS_ENABLED(HAS_TASK_PD_INT_C0) ||
+			    IS_ENABLED(HAS_TASK_PD_INT_C1) ||
+			    IS_ENABLED(HAS_TASK_PD_INT_C2))
+				board_reset_pd_mcu();
+		}
 
 		cflush();
 		system_reset(SYSTEM_RESET_HARD);
