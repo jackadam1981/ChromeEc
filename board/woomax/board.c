@@ -12,6 +12,7 @@
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
+#include "driver/charger/isl9241.h"
 #include "driver/retimer/pi3dpx1207.h"
 #include "driver/retimer/ps8811.h"
 #include "driver/temp_sensor/sb_tsi.h"
@@ -316,6 +317,9 @@ void setup_fw_config(void)
 	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
 
 	setup_mux();
+
+	i2c_write16(I2C_PORT_CHARGER_V1, ISL9241_ADDR_FLAGS,
+			ISL9241_REG_AC_PROCHOT, 0x1400);
 }
 DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
 
