@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ce015c5_4e7603cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2020-07-30T00:40:55Z",
+      "side": 1,
+      "message": "Cherry-picking to fix recovery mode boot. I grabbed the other changes so that it applies cleanly.",
+      "revId": "0d5278a8def192fae0944be2319b84256400c1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
