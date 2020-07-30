@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "1f8ad9f8_e062f53e",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd7d89e1_2a02812d",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bda14c33_35f13a9a",
         "filename": "common/body_detection.c",
         "patchSetId": 3
@@ -67,6 +85,24 @@
       "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "886cba86_1dd321b6",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bda14c33_35f13a9a",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "845cfd5d_602c9e14",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e2706fe_f4e92db8",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b432b562_5009abd8",
         "filename": "common/body_detection.c",
         "patchSetId": 3
@@ -101,6 +155,24 @@
       "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a5d47a_c6075903",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "This will send ON_BODY only once in Patchset 4.",
+      "parentUuid": "b432b562_5009abd8",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "b27de78e_27d2b425",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0a13f9c_381708de",
+      "range": {
+        "startLine": 134,
+        "startChar": 10,
+        "endLine": 134,
+        "endChar": 15
+      },
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02030282_31378768",
         "filename": "common/body_detection.c",
         "patchSetId": 3
@@ -142,6 +238,24 @@
       "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "484df01a_2c776cf8",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02030282_31378768",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "f6741627_823e2435",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "Done. data_1g is just used to calculate the var_threshold_scaled and  confidence_delta_scaled, I think we do not need to store it.",
+      "parentUuid": "6937034f_2b92e14e",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45e320ee_f621c68c",
         "filename": "common/body_detection.c",
         "patchSetId": 3
@@ -179,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "51fdfc5e_0a24fde2",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "We can still use body_detection correctly in 12.5Hz in my experience, but maybe not so accurate.",
+      "parentUuid": "45e320ee_f621c68c",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20ec9485_ed3a2d68",
         "filename": "common/body_detection.c",
         "patchSetId": 3
@@ -193,6 +343,24 @@
       "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6062ff98_8ae33f73",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "The parts of range and resolution should not happend, removed.\nThe odr may be 0 when the sensor is suspended or uninitialized. In patchset 4, we will not reset the body_detect in this case since the body_detect will not be called if odr is 0.",
+      "parentUuid": "20ec9485_ed3a2d68",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +417,24 @@
     },
     {
       "key": {
+        "uuid": "b36c9c33_98cb2dea",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "We can reset the body_detect in motion_sense_set_data_rate(). So that, whenever the odr is changed including sensor initialization, we can reset the body detection in correct odr. Will this be better?",
+      "parentUuid": "bcfe4731_0d01d092",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83d340aa_a209d3f0",
         "filename": "common/body_detection.c",
         "patchSetId": 3
@@ -263,6 +449,24 @@
       "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36426626_48549db2",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "83d340aa_a209d3f0",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -318,6 +522,24 @@
     },
     {
       "key": {
+        "uuid": "26e8d78b_ff3bbd14",
+        "filename": "include/body_detection.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc79bc55_fa57b52c",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f698e78_debc17d0",
         "filename": "include/body_detection.h",
         "patchSetId": 3
@@ -329,6 +551,24 @@
       "writtenOn": "2020-07-15T21:00:04Z",
       "side": 1,
       "message": "should it be lower, given you found at high odr, the natural noise bar was too high.\nWe can assume the device is in use close to the body if the accelerator ODR is \u003e 50Hz.\nAlso 200Hz is wrong, some EC goes up to 250Hz to match accelerometer capabilities.",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76af5233_b8417e7b",
+        "filename": "include/body_detection.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "This definition is moved to https://crrev.com/c/2329111/.\n\nI think the noise problem in high ODR can be solved by https://crrev.com/c/2329112/.\nSo high ODR should be acceptable. However, high ODR may use more memory due to larger CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE, 250 * 4Byte for 250Hz ODR, will this be a issue?",
+      "parentUuid": "3f698e78_debc17d0",
       "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -349,6 +589,24 @@
       "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c342056_456344c0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2651,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-07-30T21:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29cee90c_d0f69b45",
+      "revId": "a290b3033792132e528617e284de48ca5d3fd9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
