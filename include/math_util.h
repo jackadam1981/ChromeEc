@@ -41,6 +41,9 @@ typedef int64_t fp_inter_t;
 #define FP_TO_FLOAT(x) ((float)(x) / (float)(1<<FP_BITS))
 #endif
 
+/* Some useful math functions.  Use with integers only! */
+#define SQ(x) ((x) * (x))
+
 /*
  * Fixed-point addition and subtraction can be done directly, because they
  * work identically.

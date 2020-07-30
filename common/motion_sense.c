@@ -21,6 +21,7 @@
 #include "motion_sense.h"
 #include "motion_sense_fifo.h"
 #include "motion_lid.h"
+#include "body_detection.h"
 #include "online_calibration.h"
 #include "power.h"
 #include "queue.h"
@@ -187,6 +188,10 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 	sensor->next_collection = ts.le.lo + sensor->collection_rate;
 	sensor->oversampling = 0;
 	mutex_unlock(&g_sensor_mutex);
+#ifdef CONFIG_BODY_DETECTION
+	if (sensor - motion_sensors == CONFIG_BODY_DETECTION_SENSOR)
+		body_detect_reset();
+#endif
 	return 0;
 }
 
@@ -668,8 +673,12 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 	if ((*event & TASK_EVENT_MOTION_INTERRUPT_MASK || is_odr_pending) &&
 	    (sensor->drv->irq_handler != NULL)) {
 		ret = sensor->drv->irq_handler(sensor, event);
-	}
+#ifdef CONFIG_BODY_DETECTION
+		if (sensor - motion_sensors == CONFIG_BODY_DETECTION_SENSOR)
+			body_detect();
 #endif
+	}
+#endif /* CONFIG_ACCEL_INTERRUPTS */
 	if (motion_sensor_in_forced_mode(sensor)) {
 		if (motion_sensor_time_to_read(ts, sensor)) {
 			ret = motion_sense_read(sensor);
@@ -1166,8 +1175,8 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 				return EC_RES_INVALID_COMMAND;
 
 			if (sensor->drv->set_range(sensor,
-						in->sensor_range.data,
-						in->sensor_range.roundup)
+						   in->sensor_range.data,
+						   in->sensor_range.roundup)
 					!= EC_SUCCESS) {
 				return EC_RES_INVALID_PARAM;
 			}
@@ -1348,6 +1357,11 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 				out->list_activities.disabled |= disabled;
 			}
 		}
+#ifdef CONFIG_BODY_DETECTION
+		if (body_detect_get_enable())
+			out->list_activities.enabled |=
+				MOTIONSENSE_ACTIVITY_BODY_DETECTION;
+#endif
 		if (ret != EC_RES_SUCCESS)
 			return ret;
 		args->response_size = sizeof(out->list_activities);
@@ -1370,6 +1384,11 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 						in->set_activity.enable,
 						&in->set_activity);
 		}
+#ifdef CONFIG_BODY_DETECTION
+		if (in->set_activity.activity ==
+		    MOTIONSENSE_ACTIVITY_BODY_DETECTION)
+			body_detect_set_enable(in->set_activity.enable);
+#endif
 		if (ret != EC_RES_SUCCESS)
 			return ret;
 		args->response_size = 0;
