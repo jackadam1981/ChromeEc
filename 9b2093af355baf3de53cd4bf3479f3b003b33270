@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "341fe534_643be3a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-30T16:38:36Z",
+      "side": 1,
+      "message": "The TCPC chips have internal pull-up at 150k Ohm. Though I don\u0027t think this change is needed, there is no hurt. Let\u0027s discuss it on the bug.",
+      "revId": "9b2093af355baf3de53cd4bf3479f3b003b33270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
