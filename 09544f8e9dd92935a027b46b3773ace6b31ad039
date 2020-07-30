@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34243ad6_a03deaaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-30T01:25:12Z",
+      "side": 1,
+      "message": "Temporarily disable switch to FIPS-approved mode by default when no U2F keys are present as U2F key gen update in https://crrev.com/c/2280485 is not yet landed and will be changed to another storage method in AP RO page for FIPS-compliant keys.",
+      "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
