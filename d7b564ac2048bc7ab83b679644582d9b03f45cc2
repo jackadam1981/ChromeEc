@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20f15bcb_368142dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000107
+      },
+      "writtenOn": "2020-07-30T21:17:38Z",
+      "side": 1,
+      "message": "I like the idea of having more confidence in our maximum stack usage than just running for a while and checking how much we used, but I\u0027m really just not a fan of how this tool works.  It feels really brittle.  Someone adding just a single comment to one of the files will totally break everyone\u0027s yaml!  :(  You add that to the fact that boards running similar code all have to have their own copies of the annotations and it feels like it\u0027s more work than it\u0027s worth to maintain this.  Specifically without the annotations being correct (and they will always be breaking) you can still get a dangerous \"you have plenty of stack space!\" result that gives you a warm happy feeling even when things are broken.\n\nIt feels like annotations need to be moved inline to the code itself somehow.  This would make them less brittle and also allow everyone compiling the same code to get the same annotations.  Then if one board notices a bug and fixes it then everyone\u0027s annotations get better.\n\nIn any case, I know this isn\u0027t something you invented and that\u0027s just how this tool works.  I just still am not convinced of its value.\n\nIf you feel like this is really providing value to you, I won\u0027t stand in the way of you checking it in.  As I said, I\u0027m just not convinced it\u0027s worthwhile.\n\nI haven\u0027t personally gone and checked your annotations.  If you want to check this in and want someone to double-check your work I can.  Let me know.\n\nNOTE: see also my comments in the CL:2318374 about how the exception stack frame is probably over-estimating in most cases (we don\u0027t use floating point in most tasks).",
+      "revId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
