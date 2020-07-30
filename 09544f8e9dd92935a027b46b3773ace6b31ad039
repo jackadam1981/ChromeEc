@@ -16,6 +16,23 @@
       "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bf3223a_df6786f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-30T03:09:15Z",
+      "side": 1,
+      "message": "sorry, setting to -2 to prevent merging.\n\nLooks like patch description does not match the actual change: the change just disables compiling in some code, does not seem to have anything to do with keys being present.",
+      "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
