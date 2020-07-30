@@ -51,6 +51,41 @@
       "revId": "7eb53643eb33e9ec8aa45075f8bf7e4e8687516f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee474523_2566fcbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241068
+      },
+      "writtenOn": "2020-07-30T17:00:44Z",
+      "side": 1,
+      "message": "Hi Amara, PMC errors you are seeing are comming from this patch in extcon CHROMIUM: extcon: Handle HPD in Disconnect mode.",
+      "parentUuid": "c7a17bb8_b22e0344",
+      "revId": "7eb53643eb33e9ec8aa45075f8bf7e4e8687516f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3976487_b0831301",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241068
+      },
+      "writtenOn": "2020-07-30T17:00:44Z",
+      "side": 1,
+      "message": "I see device detected as SS with this patch using conenctor class. ",
+      "revId": "7eb53643eb33e9ec8aa45075f8bf7e4e8687516f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
