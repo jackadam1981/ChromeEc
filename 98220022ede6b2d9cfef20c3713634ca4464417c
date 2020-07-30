@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0a35ff6_6c59b086",
+        "filename": "test/fake_prl.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-30T20:13:47Z",
+      "side": 1,
+      "message": "would this be better faked by keeping a local variable that the test can set to indicate if the prl is running or not?  Then it will be more general purpose for possible future tests",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "98220022ede6b2d9cfef20c3713634ca4464417c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
