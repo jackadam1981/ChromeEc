@@ -51,6 +51,24 @@
       "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2e6045f_ec678b06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-30T05:15:23Z",
+      "side": 1,
+      "message": "shouldn\u0027t patch description mention this - it does not say anything about conditional compilation the patch is actually introducing?",
+      "parentUuid": "4d41a9bc_d7a6f116",
+      "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
