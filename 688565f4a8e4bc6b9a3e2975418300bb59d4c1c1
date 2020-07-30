@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e49ab9dd_e299d2a1",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-30T00:46:16Z",
+      "side": 1,
+      "message": "I made the change as you suggested since either there will be a DMA mux or a channel select register.",
+      "parentUuid": "b29ecd58_1381e630",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "688565f4a8e4bc6b9a3e2975418300bb59d4c1c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01f4e0de_93b0f785",
         "filename": "chip/stm32/dma.c",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-23T18:49:48Z",
       "side": 1,
       "message": "? This removes dma_select_channel from other families.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "688565f4a8e4bc6b9a3e2975418300bb59d4c1c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed6f935_305cff72",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-07-30T00:46:16Z",
+      "side": 1,
+      "message": "I don\u0027t follow this comment. The way I had it was one version of dma_channel_select for G4 and the other version for all others. It\u0027s the same idea now, just that STM32_DMAMUX_CxCR will be defined for G4 and STM32_DMA_CSELR may be defined for other chip families",
+      "parentUuid": "01f4e0de_93b0f785",
       "range": {
         "startLine": 88,
         "startChar": 0,
