@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "74a0fefd_5aaed2fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441437
+      },
+      "writtenOn": "2020-07-30T23:47:37Z",
+      "side": 1,
+      "message": "Thank you for the review, Will update files accordingly. Can you please share your view on my answers for 2 points.",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8475920_f601d221",
         "filename": "driver/accelgyro_icm426xx.c",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2020-07-26T04:48:38Z",
       "side": 1,
       "message": "Given tables are used at one or few places, consider using macros for conversion instead.\nFor range -\u003e reg: 4 - __fls(range)\n    reg -\u003e range 1 \u003c\u003c (4 - reg)",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84648168_0c105245",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1441437
+      },
+      "writtenOn": "2020-07-30T23:47:37Z",
+      "side": 1,
+      "message": "Do you mind if we keep the current implementation? This is to keep the same manner for accel and gyro.",
+      "parentUuid": "a8475920_f601d221",
       "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -36,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "0000fffa_bad15a83",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1441437
+      },
+      "writtenOn": "2020-07-30T23:47:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "abef065f_5a8213d0",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72462ab4_34f86f0b",
         "filename": "driver/accelgyro_icm426xx.c",
         "patchSetId": 1
@@ -50,6 +103,24 @@
       "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e070d5c_000dc585",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1441437
+      },
+      "writtenOn": "2020-07-30T23:47:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "72462ab4_34f86f0b",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "473c20f7_55de7ad2",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1441437
+      },
+      "writtenOn": "2020-07-30T23:47:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b28f3282_527e9e76",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0c5f981_9f6cafc3",
         "filename": "driver/accelgyro_icm426xx.c",
         "patchSetId": 1
@@ -84,6 +173,24 @@
       "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "252baee7_c12b0eda",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1441437
+      },
+      "writtenOn": "2020-07-30T23:47:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c0c5f981_9f6cafc3",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -104,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "b224f6be_a3ff6031",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1441437
+      },
+      "writtenOn": "2020-07-30T23:47:37Z",
+      "side": 1,
+      "message": "The function icm_bank_sel() is called from icm_write8(). In other words, this function is in a lower layer than icm_write8().",
+      "parentUuid": "e679d155_f3b5f45a",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03274f80_983aebba",
         "filename": "driver/accelgyro_icm_common.h",
         "patchSetId": 1
@@ -118,6 +243,24 @@
       "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "010f246f_05e12869",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1441437
+      },
+      "writtenOn": "2020-07-30T23:47:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03274f80_983aebba",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
