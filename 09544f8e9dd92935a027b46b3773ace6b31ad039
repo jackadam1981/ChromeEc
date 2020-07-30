@@ -33,6 +33,24 @@
       "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d41a9bc_d7a6f116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-30T04:12:28Z",
+      "side": 1,
+      "message": "Current behavior is that if no U2F keys are present, device will be considered in FIPS-approved mode by default. However, this is incorrect until U2F key gen is merged ( https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2262055), which is going to change due to need to change storage location of U2F keys to be AP RO. However, there is https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2327960  which use some functions from FIPS which won\u0027t work if FIPS power-up tests aren\u0027t completed as https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2262055 is not included to prod without 2262055. This patch disables logic to switch to FIPS-approved mode if no U2F keys on platform (always return FIPS-not-approved mode), but run power-up tests. This is a workaround to have prod build with newer webauthn code and at the same time test FIPS initialization code. Side-effect of cherry-picking CLs in prod.",
+      "parentUuid": "1bf3223a_df6786f3",
+      "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
