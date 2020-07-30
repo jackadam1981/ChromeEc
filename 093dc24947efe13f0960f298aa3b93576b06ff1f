@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8aa4882f_e72319a8",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-30T23:21:42Z",
+      "side": 1,
+      "message": "I get a little jumpy when I see actual timing in a unit test. If the test runner is heavily loaded, does this still work? If you stick a long delay before \"check retry not too late\" does the test still pass?\n\nIs there any way you can write the test without using get_time()? Or at least mock out get_time() so that the test can control it?",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 28
+      },
+      "revId": "093dc24947efe13f0960f298aa3b93576b06ff1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
