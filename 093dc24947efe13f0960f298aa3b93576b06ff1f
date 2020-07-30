@@ -22,6 +22,30 @@
       "revId": "093dc24947efe13f0960f298aa3b93576b06ff1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70720c08_db220008",
+        "filename": "test/usb_prl.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-30T23:47:19Z",
+      "side": 1,
+      "message": "I agree we want to test simulated time and not wall clock time.\nWe had spurious EC test failures in the past on CQ builders that were busy building packages.\nHopefully those issues have been fixed by Jett in CL:1860474\nget_time() should now be decoupled from wall clock time, and not depend on load.",
+      "parentUuid": "8aa4882f_e72319a8",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 28
+      },
+      "revId": "093dc24947efe13f0960f298aa3b93576b06ff1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
