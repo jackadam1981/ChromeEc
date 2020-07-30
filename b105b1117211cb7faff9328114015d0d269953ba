@@ -216,6 +216,30 @@
       "revId": "b105b1117211cb7faff9328114015d0d269953ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e27fea9_20dec43a",
+        "filename": "common/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-30T19:11:16Z",
+      "side": 1,
+      "message": "Did you mean change the entire logic to polling instead of interrupt?\n\nI think this is good. It makes the logic simple and theoretically less buggy. But not sure what is the best value for wait time, is 30ms too frequent, or ok?\n\nBTW, I prototyped Daisuke\u0027s idea of debounced_at. The implementation is more complicated and tricky. This is the tradeoff if we care the accurate timing. It gives a comparison.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2330290",
+      "parentUuid": "b494a7da_bcd2e1f4",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "b105b1117211cb7faff9328114015d0d269953ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
