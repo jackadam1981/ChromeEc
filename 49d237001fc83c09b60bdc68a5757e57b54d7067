@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "537d7bcd_1450f208",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-30T00:05:18Z",
+      "side": 1,
+      "message": "hmm, i doubt it will work in this combination due to fips_rand_bytes() not being properly initialized as fips init code is removed... Let me do temporarily FIPS patch to run power-up tests, but not activate FIPS mode to make it work",
+      "revId": "49d237001fc83c09b60bdc68a5757e57b54d7067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
