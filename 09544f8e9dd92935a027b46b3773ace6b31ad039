@@ -110,6 +110,30 @@
       "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa58daf_4ac51900",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-30T18:56:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23f16990_ed348bec",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 17
+      },
+      "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
