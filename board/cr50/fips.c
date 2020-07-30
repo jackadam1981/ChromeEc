@@ -24,6 +24,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
+/* FIPS mode is temporarily disabled. */
+#define FIPS_MODE_ENABLED 0
+
 /**
  * Combined FIPS status & global FIPS error.
  * default value is  = FIPS_UNINITIALIZED
@@ -61,6 +64,7 @@ bool fips_mode(void)
 	return (_fips_status & FIPS_MODE_ACTIVE);
 }
 
+#if FIPS_MODE_ENABLED
 static const uint8_t k_salt = NVMEM_VAR_G2F_SALT;
 
 /* Can't include TPM2 headers, so just define constant locally. */
@@ -76,6 +80,7 @@ static void u2f_zeroize(void)
 	/* Remove U2F keys and wipe all deleted objects. */
 	nvmem_erase_tpm_data_selective(u2fobjs);
 }
+#endif
 
 /**
  * Return current status for U2F keys:
@@ -84,6 +89,8 @@ static void u2f_zeroize(void)
  */
 static bool fips_u2f_compliant(void)
 {
+/* Until U2F key gen switch to new code, don't enable FIPS mode. */
+#if FIPS_MODE_ENABLED
 	uint8_t val_len = 0;
 	const struct tuple *t_salt;
 
@@ -108,7 +115,7 @@ static bool fips_u2f_compliant(void)
 		board_set_local_fips_policy(true);
 		return true;
 	}
-
+#endif
 	/* we still have old U2F keys, so not in FIPS until zeroized */
 	return false;
 }
@@ -718,12 +725,15 @@ void fips_set_policy(bool active)
 	/* Do nothing if there is no change. */
 	if (!(!active ^ !(_fips_status & FIPS_MODE_ACTIVE)))
 		return;
-
+/* Temporarily prevent switch to FIPS mode until U2F key gen is ready. */
+#if FIPS_MODE_ENABLED
 	/* Update local board FIPS flag. */
 	board_set_local_fips_policy(active);
 	CPRINTS("FIPS policy set to %d", active);
 	cflush();
 	u2f_zeroize();
+#endif
+
 #ifdef CR50_DEV
 	if (!active) {
 		uint8_t random[32];
