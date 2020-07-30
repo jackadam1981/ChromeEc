@@ -52,6 +52,24 @@
       "revId": "76dce588b6bb74c71892ddf6d422729a4efa22f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6339409b_de766475",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-30T16:56:18Z",
+      "side": 1,
+      "message": "Yeah, we could handle those better.  We currently just have a 0/1 return based on: \n- CTVPD detected (returns 0 based on above Type-C spec quote)\n- Board can source Vconn (returns 0 or 1 usually based on a 5V rail)\n\nThe first instance means we should be sourcing Vconn and should never change away.  The second means we can\u0027t source Vconn and should have swapped away from it before we lost our 5V rail (ex. if we\u0027re sinking from a hub in S5).\n\nNow that I think of it, could we even use a CTVPD in S5 then?\n\nAnd, of course, this will all depend on hearing back from the WG about how to reconcile those two spec requirements. :)",
+      "parentUuid": "5442b128_5df44d0d",
+      "revId": "76dce588b6bb74c71892ddf6d422729a4efa22f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
