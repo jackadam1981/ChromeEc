@@ -46,6 +46,30 @@
       "revId": "5f25f65952aaaf7b03ef767dc2cd2ef6615ed5ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a91626e_f7a99e16",
+        "filename": "board/lindar/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1418383
+      },
+      "writtenOn": "2020-07-30T06:05:34Z",
+      "side": 1,
+      "message": "hi,Keith and Zhuohao, sorry about that,because at first I just fulfill the 3 kind of battery information from empty file,I didn’t realize that information are total same with the board malefor and only the order is different\nI will abandon this change",
+      "parentUuid": "5829bff9_ac72a74a",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 3
+      },
+      "revId": "5f25f65952aaaf7b03ef767dc2cd2ef6615ed5ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
