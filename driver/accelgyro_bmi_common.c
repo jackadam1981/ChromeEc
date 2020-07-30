@@ -661,6 +661,33 @@ int bmi_get_offset(const struct motion_sensor_t *s,
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_BODY_DETECTION
+int bmi_get_rms_noise(const struct motion_sensor_t *s)
+{
+	int ret;
+	fp_t noise_100Hz, rate, sqrt_rate_ratio;
+
+	switch (s->type) {
+	case MOTIONSENSE_TYPE_ACCEL:
+		/* change unit of ODR to Hz to prevent INT_TO_FP() overflow */
+		rate = INT_TO_FP(bmi_get_data_rate(s) / 1000);
+		/*
+		 * Since the noise is proportional to sqrt(ODR) in BMI, and we
+		 * have rms noise in 100 Hz, we multiply it with the sqrt(ratio
+		 * of ODR to 100Hz) to get current noise.
+		 */
+		noise_100Hz = INT_TO_FP(BMI_ACCEL_RMS_NOISE_100HZ(V(s)));
+		sqrt_rate_ratio = fp_div(fp_sqrtf(rate), INT_TO_FP(10));
+		ret = FP_TO_INT(fp_mul(noise_100Hz, sqrt_rate_ratio));
+		break;
+	default:
+		CPRINTS("%s with gyro/mag is not implemented", __func__);
+		return 0;
+	}
+	return ret;
+}
+#endif
+
 int bmi_get_resolution(const struct motion_sensor_t *s)
 {
 	return BMI_RESOLUTION;
