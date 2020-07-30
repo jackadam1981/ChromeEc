@@ -173,6 +173,29 @@
 /* Support the orientation gesture */
 #undef CONFIG_GESTURE_ORIENTATION
 
+/* Support the body_detection */
+#undef CONFIG_BODY_DETECTION
+
+/* Which sensor body_detection use */
+#undef CONFIG_BODY_DETECTION_SENSOR
+
+/* Support custom setting of body_detection */
+#undef CONFIG_BODY_DETECTION_CUSTOM
+
+/* The max number of sampling data for 1 second */
+#undef CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE
+
+/* The threshold of acceleration variance */
+#undef CONFIG_BODY_DETECTION_VAR_THRESHOLD
+#undef CONFIG_BODY_DETECTION_CONFIDENCE_DELTA
+
+/* The confidence limit of on_body/off_body */
+#undef CONFIG_BODY_DETECTION_ON_BODY_CON
+#undef CONFIG_BODY_DETECTION_OFF_BODY_CON
+
+/* The threshold duration to change to off_body */
+#undef CONFIG_BODY_DETECTION_STATIONARY_DURATION
+
 /*
  * Use the old standard reference frame for accelerometers. The old
  * reference frame is:
@@ -4930,6 +4953,23 @@
 #endif
 #define CONFIG_ORIENTATION_SENSOR
 #endif
+
+/******************************************************************************/
+/* Check body detection setup */
+#if defined(CONFIG_BODY_DETECTION)
+#ifndef CONFIG_BODY_DETECTION_SENSOR
+#error CONFIG_BODY_DETECTION_SENSOR must be defined to use body detection
+#endif /* ifndef(CONFIG_BODY_DETECTION_SENSOR) */
+/* Use default setting if CONFIG_BODY_DETECTION_CUSTOM is not set. */
+#ifndef CONFIG_BODY_DETECTION_CUSTOM
+#define CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE     250 /* max sensor odr (Hz) */
+#define CONFIG_BODY_DETECTION_VAR_THRESHOLD       550 /* (mm/s^2)^2 */
+#define CONFIG_BODY_DETECTION_CONFIDENCE_DELTA    525 /* (mm/s^2)^2 */
+#define CONFIG_BODY_DETECTION_ON_BODY_CON         50  /* % */
+#define CONFIG_BODY_DETECTION_OFF_BODY_CON        10  /* % */
+#define CONFIG_BODY_DETECTION_STATIONARY_DURATION 15  /* second */
+#endif /* ifndef(CONFIG_BODY_DETECTION_CUSTOM) */
+#endif /* CONFIG_BODY_DETECTION */
 
 /*****************************************************************************/
 /* Define CONFIG_BATTERY if board has a battery. */
