@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8498709d_2b8c3c65",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-07-30T14:41:09Z",
+      "side": 1,
+      "message": "Do you want to move the two volume pins to here?\nAnd adding notes to indicate the mismatch to proto 0/1 schematics might be a good idea?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "e729bb010f958e9d6d7fb330491fb58088a15d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
