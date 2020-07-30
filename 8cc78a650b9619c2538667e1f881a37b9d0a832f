@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0a2bd95e_5b40fd76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-30T15:56:03Z",
+      "side": 1,
+      "message": "Jett can confirm, but I believe the plan is to remove the TCPM layer retries and move to just the TCPC layer when we confirm our TCPCs are all able to do this.",
+      "parentUuid": "6d0fbebd_11f6642c",
+      "revId": "8cc78a650b9619c2538667e1f881a37b9d0a832f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61650c53_c7e3af7c",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 3
