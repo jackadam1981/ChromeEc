@@ -69,6 +69,24 @@
       "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e92f937_b20b316f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-30T16:49:48Z",
+      "side": 1,
+      "message": "it\u0027s not actually a conditional compilation - just disabling logic temporarily to enable it once rest of U2F stuff will land. I don\u0027t expect any new flag - it will be on w/o any conditions.",
+      "parentUuid": "d2e6045f_ec678b06",
+      "revId": "09544f8e9dd92935a027b46b3773ace6b31ad039",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
