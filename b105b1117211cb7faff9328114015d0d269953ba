@@ -176,6 +176,23 @@
       "revId": "b105b1117211cb7faff9328114015d0d269953ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a43136b6_f0585693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-30T02:25:12Z",
+      "side": 1,
+      "message": "The fix has been put on hold for days. Need to get it in to unblock the wake-from-hibernate bug on Trogdor.\n\n+Jett for review or feedback on moving forward",
+      "revId": "b105b1117211cb7faff9328114015d0d269953ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
