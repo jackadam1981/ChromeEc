@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "e3750eb9_e0832f20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-30T16:32:31Z",
+      "side": 1,
+      "message": "This does indeed fix TD.PD.SRC3.E26 great working without having the GRL!\n\n(This does not fix TD.PD.SNK3.E12, but it doesn\u0027t claim to, just FYI)\n\nI do hope we can add a unit test confirming this fix before landing this change.",
+      "revId": "941f51a68864289951b8e78a581220923cd66394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a295a694_58e28488",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
