@@ -305,10 +305,10 @@ enum motionsensor_orientation motion_sense_remap_orientation(
 
 #if defined(CONFIG_GESTURE_HOST_DETECTION) || defined(CONFIG_ORIENTATION_SENSOR)
 /* Add an extra sensor. We may need to add more */
-#define MOTION_SENSE_ACTIVITY_SENSOR_ID (motion_sensor_count)
+#define MOTION_SENSE_ACTIVITY_SENSOR_ID (SENSOR_COUNT)
 #define ALL_MOTION_SENSORS (MOTION_SENSE_ACTIVITY_SENSOR_ID + 1)
 #else
-#define ALL_MOTION_SENSORS motion_sensor_count
+#define ALL_MOTION_SENSORS (SENSOR_COUNT)
 #endif
 
 #ifdef CONFIG_ALS_LIGHTBAR_DIMMING

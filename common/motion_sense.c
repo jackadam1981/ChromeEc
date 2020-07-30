@@ -1020,6 +1020,10 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	struct motion_sensor_t *sensor;
 	int i, ret = EC_RES_INVALID_PARAM, reported;
 
+	/* no sensor available */
+	if (motion_sensor_count == 0)
+		return EC_RES_ERROR;
+
 	switch (in->cmd) {
 	case MOTIONSENSE_CMD_DUMP:
 		out->dump.module_flags =
