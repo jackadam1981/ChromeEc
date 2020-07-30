@@ -193,6 +193,29 @@
       "revId": "b105b1117211cb7faff9328114015d0d269953ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b494a7da_bcd2e1f4",
+        "filename": "common/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-30T17:39:43Z",
+      "side": 1,
+      "message": "this is dangerous since we assume external (to this file) code will wake up this task when a hook is called. I agree that this need to change.\n\nWhat about just sleeping in a loop for MIN(power_button.debounce_us, deadline.val - now.val) so we never sleep infinitely and we only have only sleep condition.\n\nThoughts?\n\n(Definitely add comments saying that we expect the task to be woken up in most cases, but it isn\u0027t guanteed -- that is why we use task_wait_event intead of msleep).",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 18
+      },
+      "revId": "b105b1117211cb7faff9328114015d0d269953ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
