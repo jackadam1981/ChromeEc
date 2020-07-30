@@ -16,6 +16,46 @@
       "revId": "941f51a68864289951b8e78a581220923cd66394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aecc2aea_ea81ead9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-30T16:25:16Z",
+      "side": 1,
+      "message": "I will load this up on Trembyle and try it out. I will let you know when I gave that done.",
+      "revId": "941f51a68864289951b8e78a581220923cd66394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a295a694_58e28488",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-30T16:25:16Z",
+      "side": 1,
+      "message": "Could we add a unit test for this (pick a few case in each camp to ensure that we either went to discovery or soft reset -- it wouldn\u0027t be exhaustive)?",
+      "range": {
+        "startLine": 1750,
+        "startChar": 3,
+        "endLine": 1750,
+        "endChar": 21
+      },
+      "revId": "941f51a68864289951b8e78a581220923cd66394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
