@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc0050b1_526ae9e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-31T17:00:29Z",
+      "side": 1,
+      "message": "It does the same as bmi160. Not sure why it hasn\u0027t been added to bmi253 at the beginning.\n\nLGTM unless Gwendal or Alex has other comments.",
+      "revId": "62937027dbf074e479db7da3e76dce7d51db24ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
