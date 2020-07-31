@@ -409,6 +409,9 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	else
 		retimer_set_state_ufp(mux_state, &set_retimer_con);
 
+	ccprintf("Retimer: C%d Mux state:0x%x Register value:0x%x\n", port, mux_state,
+		 set_retimer_con);
+
 	/* Writing the register4 */
 	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);

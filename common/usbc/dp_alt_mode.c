@@ -209,7 +209,7 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
 		vdo_count_ret = 1;
 		if (dp_state[port] == DP_START)
-			CPRINTS("C%d: Attempting to enter DP mode", port);
+			CPRINTS("Port Partner: C%d: Attempting to enter DP mode", port);
 		break;
 	case DP_ENTER_ACKED:
 		if (!(modep && modep->opos))

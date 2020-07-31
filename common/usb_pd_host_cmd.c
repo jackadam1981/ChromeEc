@@ -377,6 +377,7 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 				r_v2->cable_gen =
 					get_tbt_rounded_support(p->port);
 			}
+		ccprintf("Host response: C%d Mux state:0x%x\n", p->port, mux_state);
 		}
 
 		if (args->version == 1)
