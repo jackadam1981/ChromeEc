@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17ed950d_c698dddc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-07-31T20:30:54Z",
+      "side": 1,
+      "message": "Amit, the old pending reboot function, when in batteryless mode, caused the CC lines to go open/open which allows the device to brown out and then we reboot. Everything that I tried with the ROLE_CTRL and sending COMMANDs to stop us from sinking on the NCT only caused us to lose power enough to stop execution but it didn\u0027t ever drop sinking and Vbus remains. This causes zork to hang on this reboot.\n\nAm I doing something wrong or is this the way the current NCT3807 would implement this? ",
+      "revId": "b4daeac3c4653ac4585bd606c81e76bf9fee26e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
