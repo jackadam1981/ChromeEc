@@ -68,6 +68,24 @@
       "revId": "e301fd79f6781d98ddab9de463d81f1880e5da4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b0e8af_9a66449e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-07-31T19:59:30Z",
+      "side": 1,
+      "message": "Maybe we should disable it entirely. We have other mechanisms for throttling the CPU and/or charging. I think perhaps we should let the AP decide this. I\u0027m not seeing the value in having the charger IC drive this...",
+      "parentUuid": "773bf976_5f064f9b",
+      "revId": "e301fd79f6781d98ddab9de463d81f1880e5da4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
