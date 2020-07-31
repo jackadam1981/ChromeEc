@@ -50,6 +50,24 @@
       "revId": "e301fd79f6781d98ddab9de463d81f1880e5da4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773bf976_5f064f9b",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-07-31T19:54:13Z",
+      "side": 1,
+      "message": "Yes, the new inits suggest to use the defaults of having all the comparators on.  \n\nI haven\u0027t tested to see if the default behavior is more consistent with and without a charger on boot (definitely if we write 0x27 without a charger, we only get 0x25 in the register and if we do have a charger we get 0x27).  If it\u0027s more consistent, then we can just raise the Ibus limit to something more appropriate (right now it\u0027s 2.0 A, which will obviously trigger with 45 W chargers)",
+      "parentUuid": "50623e7e_27b38f79",
+      "revId": "e301fd79f6781d98ddab9de463d81f1880e5da4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
