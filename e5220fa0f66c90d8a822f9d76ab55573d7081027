@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bfdc63ba_cf59b975",
+        "filename": "board/madoo/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2020-07-31T05:53:20Z",
+      "side": 1,
+      "message": "Adding more information in issue tracker.",
+      "parentUuid": "efc6f33f_48e37943",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 5
+      },
+      "revId": "e5220fa0f66c90d8a822f9d76ab55573d7081027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5e4c20c_bd7fea6a",
         "filename": "board/madoo/battery.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "782cf82e_bdc3ff91",
+        "filename": "board/madoo/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2020-07-31T05:53:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5e4c20c_bd7fea6a",
+      "range": {
+        "startLine": 88,
+        "startChar": 21,
+        "endLine": 88,
+        "endChar": 26
+      },
+      "revId": "e5220fa0f66c90d8a822f9d76ab55573d7081027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b10ffbee_f94b6bcc",
         "filename": "board/madoo/board.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-07-30T16:07:59Z",
       "side": 1,
       "message": "nit: also in the baseboard",
+      "range": {
+        "startLine": 121,
+        "startChar": 8,
+        "endLine": 121,
+        "endChar": 40
+      },
+      "revId": "e5220fa0f66c90d8a822f9d76ab55573d7081027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "222b2e02_c78406e6",
+        "filename": "board/madoo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2020-07-31T05:53:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b10ffbee_f94b6bcc",
       "range": {
         "startLine": 121,
         "startChar": 8,
