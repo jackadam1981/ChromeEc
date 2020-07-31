@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa28afc2_e94e4860",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-07-31T10:05:18Z",
+      "side": 1,
+      "message": "Should we implement this, eventually?\n\nDoes that even fix the problem?\n\nIf I understand the idea statement:\n 1. 2 interrupts fire (X and UART)\n 2. X is handled\n    a. cflush called, UART_IER(UARTN) \u0026\u003d ~UART_IER_THRI;\n 3. RV33 receives global VIC, UART_IER_THRI is not set so the handler crashes.\n\nI think I see how batch handling would solve that.\n\nBut now, this could still happen, right?\n\n 1. IRQ X fires\n 2. X is handled, and while handling:\n    a. UART IRQ fires.\n    b. cflush called, UART_IER(UARTN) \u0026\u003d ~UART_IER_THRI;\n 3. RV33 receives global VIC, UART_IER_THRI is not set so the handler crashes.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 56
+      },
+      "revId": "fce785a3588948c88a5daf128f200295604136a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a3707ee_701926e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-07-31T10:05:18Z",
+      "side": 1,
+      "message": "Looks ok, just trying to understand better now ,-P",
+      "revId": "fce785a3588948c88a5daf128f200295604136a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e3d8868_7ba320d9",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-07-31T10:05:18Z",
+      "side": 1,
+      "message": "The idea here is that this routine will get called again when the IRQ handler is called, right?",
+      "revId": "fce785a3588948c88a5daf128f200295604136a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5453896e_74b05045",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-07-31T10:05:18Z",
+      "side": 1,
+      "message": "Well, now this is self-documenting ,-P",
+      "range": {
+        "startLine": 122,
+        "startChar": 25,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "fce785a3588948c88a5daf128f200295604136a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
