@@ -16,6 +16,24 @@
       "revId": "940af6f1487919af55844d277479b6d33abef063",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfcd3341_ca597d8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-31T16:00:15Z",
+      "side": 1,
+      "message": "My mistake - that CL is for the voxel board, not the lindar board.  You can remove lindar/power_sequence.c following the model of CL:2330576 as a separate CL.",
+      "parentUuid": "2e4fd7d1_15a60453",
+      "revId": "940af6f1487919af55844d277479b6d33abef063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
