@@ -70,6 +70,23 @@
       "revId": "abbb357d0fa7f91336498e4874d496130843de0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e664e40c_8124b148",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2020-07-31T19:49:45Z",
+      "side": 1,
+      "message": "We\u0027re running out of bits in the long life scratch board properties register, so I think it\u0027s good that this frees one up and moves the info to a register that has the desired reset behavior.",
+      "revId": "abbb357d0fa7f91336498e4874d496130843de0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
