@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be6c050e_e0727985",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-31T23:22:30Z",
+      "side": 1,
+      "message": "The diagram in b/138954381#comment22 shows a pull-up on the board to \"host power rail\". I think we want a pull-up here because the board does not provide the pull-up.",
+      "range": {
+        "startLine": 114,
+        "startChar": 42,
+        "endLine": 114,
+        "endChar": 56
+      },
+      "revId": "d71ae81a27bc7a8dd0f52827d055faa05a53eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
