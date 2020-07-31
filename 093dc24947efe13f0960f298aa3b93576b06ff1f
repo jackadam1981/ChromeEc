@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1afa62cf_b2eb67cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-31T22:00:27Z",
+      "side": 1,
+      "message": "The thing is we should even be doing retries in the TPMC because the tRetry timer that we should use when we don\u0027t get a response is actually 195 usec, and we have no hope for TCPM in the loop on those retrys. I didn\u0027t realize this was in the spec.\n\nCheck out Section 6.6.1 in PD spec specifically tRetry.\n\nI think we completely made up the TCPC_TX_TIMEOUT time. I couldn\u0027t find that in the spec anywhere.",
+      "parentUuid": "fcc78c6f_81a9aea0",
+      "revId": "093dc24947efe13f0960f298aa3b93576b06ff1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8aa4882f_e72319a8",
         "filename": "test/usb_prl.c",
         "patchSetId": 1
