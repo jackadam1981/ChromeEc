@@ -190,6 +190,12 @@ void pd_task(void *u)
 {
 	/* DO NOTHING */
 }
+
+void pd_power_supply_reset(int port)
+{
+	/* DO NOTHING */
+}
+
 __override uint8_t board_get_usb_pd_port_count(void)
 {
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
