@@ -16,6 +16,24 @@
       "revId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f434ffd1_8e81c822",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-07-31T16:08:39Z",
+      "side": 1,
+      "message": "Agree. The tool is easy to be broken. One example is some code change may make the annotation invalid and lose the call path and result a smaller stack usage, that will mislead the users.\n\nAnd adding all the annotations takes time. Even they are all added, the result is correct just this build snapshot. In the following builds that have code change, the annotation will become out-of-dated and the result is no longer correct. This process does not scale. The time spent on it seems to be wasted.\n\nI think I will just keep this annotation file for my private use and not submit it, to prevent any misleading info.",
+      "parentUuid": "20f15bcb_368142dc",
+      "revId": "d7b564ac2048bc7ab83b679644582d9b03f45cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
