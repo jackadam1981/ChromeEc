@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c211f2c7_21752430",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-31T02:24:23Z",
+      "side": 1,
+      "message": "Technically speaking there is no need to store this bit in a register which does not survive reboot - you can always check the reset type like\n\nif (system_get_reset_flags() \u0026 EC_RESET_FLAG_POWER_ON)) {\n}",
+      "revId": "abbb357d0fa7f91336498e4874d496130843de0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
