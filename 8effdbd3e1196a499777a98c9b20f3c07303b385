@@ -16,6 +16,24 @@
       "revId": "8effdbd3e1196a499777a98c9b20f3c07303b385",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e959a406_f852d803",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-07-31T15:47:49Z",
+      "side": 1,
+      "message": "Usually a rebase will maintain the code-review votes.  If gerrit maintains the code-review vote, it is okay for you to submit to the commit-queue.",
+      "parentUuid": "252790c7_e2055ff8",
+      "revId": "8effdbd3e1196a499777a98c9b20f3c07303b385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
