@@ -34,6 +34,24 @@
       "revId": "abbb357d0fa7f91336498e4874d496130843de0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b0807a2_8aad3e58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-07-31T03:32:08Z",
+      "side": 1,
+      "message": "you can see the type of the most recent reset in the output of sysinfo command.\n\nit says \u0027power-on\u0027 on power on resets, \u0027hard\u0027 when rebooting due to firmware upgrade or any exception, and \u0027wake-pin\u0027 when coming out of deep sleep.",
+      "parentUuid": "b9851a96_df9e9976",
+      "revId": "abbb357d0fa7f91336498e4874d496130843de0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
