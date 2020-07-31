@@ -22,6 +22,30 @@
       "revId": "e729bb010f958e9d6d7fb330491fb58088a15d48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f56e84_7249e65a",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-07-31T03:37:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8498709d_2b8c3c65",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "e729bb010f958e9d6d7fb330491fb58088a15d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
