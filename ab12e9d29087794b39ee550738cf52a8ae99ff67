@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdeaae28_17f2e53a",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-07-31T08:30:54Z",
+      "side": 1,
+      "message": "unless we are in the",
+      "range": {
+        "startLine": 117,
+        "startChar": 30,
+        "endLine": 117,
+        "endChar": 43
+      },
+      "revId": "ab12e9d29087794b39ee550738cf52a8ae99ff67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16fed614_cb9b17fb",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-07-31T08:30:54Z",
+      "side": 1,
+      "message": "sorry, I\u0027m a bit annoying, but I wonder if you could put that value in a #define, and use it here and below.",
+      "range": {
+        "startLine": 123,
+        "startChar": 60,
+        "endLine": 123,
+        "endChar": 62
+      },
+      "revId": "ab12e9d29087794b39ee550738cf52a8ae99ff67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a2f4dd4_c3897d64",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-07-31T08:30:54Z",
+      "side": 1,
+      "message": "BTW, a more specific function name may be nice?\n\nuart_irq_handler?",
+      "range": {
+        "startLine": 138,
+        "startChar": 12,
+        "endLine": 138,
+        "endChar": 31
+      },
+      "revId": "ab12e9d29087794b39ee550738cf52a8ae99ff67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
