@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a906984a_707a8b45",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-31T23:41:35Z",
+      "side": 0,
+      "message": "Delete tcpc_tx_timeout?",
+      "range": {
+        "startLine": 257,
+        "startChar": 10,
+        "endLine": 257,
+        "endChar": 25
+      },
+      "revId": "5d59ef5be7e1c7d3f5ed1470fccfd3dbcda167f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b05873_b50255d4",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-31T23:41:35Z",
+      "side": 0,
+      "message": "Is this not needed?",
+      "range": {
+        "startLine": 1021,
+        "startChar": 2,
+        "endLine": 1024,
+        "endChar": 37
+      },
+      "revId": "5d59ef5be7e1c7d3f5ed1470fccfd3dbcda167f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "179fb936_545752ac",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-31T23:41:35Z",
+      "side": 0,
+      "message": "Delete definition of N_RETRY_COUNT?",
+      "range": {
+        "startLine": 1032,
+        "startChar": 35,
+        "endLine": 1032,
+        "endChar": 48
+      },
+      "revId": "5d59ef5be7e1c7d3f5ed1470fccfd3dbcda167f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

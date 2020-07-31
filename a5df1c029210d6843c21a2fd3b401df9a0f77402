@@ -16,6 +16,63 @@
       "revId": "a5df1c029210d6843c21a2fd3b401df9a0f77402",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5696f531_b5b8b102",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-31T23:41:35Z",
+      "side": 1,
+      "message": "is",
+      "range": {
+        "startLine": 975,
+        "startChar": 25,
+        "endLine": 975,
+        "endChar": 27
+      },
+      "revId": "a5df1c029210d6843c21a2fd3b401df9a0f77402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36e6a568_4814558b",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-31T23:41:35Z",
+      "side": 1,
+      "message": "Remove TCPC_REG_TRANSMIT_SET_WITHOUT_RETRY if nothing is using it now?",
+      "revId": "a5df1c029210d6843c21a2fd3b401df9a0f77402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d97a0a6_c611a84e",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-31T23:41:35Z",
+      "side": 1,
+      "message": "Remove PD_T_TCPC_TX_TIMEOUT?",
+      "revId": "a5df1c029210d6843c21a2fd3b401df9a0f77402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
