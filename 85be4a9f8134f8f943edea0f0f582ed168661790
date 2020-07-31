@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "67917a20_7dc7c303",
+        "filename": "common/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-31T22:52:34Z",
+      "side": 1,
+      "message": "\"two or more? use a for!\" 😄\n\nLooks like we can roll these 0, 1, and 2 cases into a loop",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 2
+      },
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bae16b4_ba5b3445",
         "filename": "common/online_calibration.c",
         "patchSetId": 3
@@ -13,6 +36,24 @@
       "writtenOn": "2020-07-26T04:14:10Z",
       "side": 1,
       "message": "This is rather expensive. can we have an array of the gyroscopes build at compilation time?",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16ee4669_290de354",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-31T22:52:34Z",
+      "side": 1,
+      "message": "SENSOR_COUNT is usually small enough and we are continuing the loop when s-\u003etype !\u003d MOTIONSENSE_TYPE_GYRO.  I think this is fine as is, personally.",
+      "parentUuid": "3bae16b4_ba5b3445",
       "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -138,6 +179,29 @@
     },
     {
       "key": {
+        "uuid": "1fd906c5_59b96a24",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-31T22:52:34Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 62
+      },
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0122dada_2b5f7f19",
         "filename": "test/gyro_cal.c",
         "patchSetId": 3
@@ -149,6 +213,29 @@
       "writtenOn": "2020-07-26T04:14:10Z",
       "side": 1,
       "message": "Consider using test_ prefix.",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd794a4_60e6277e",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-07-31T22:52:34Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 55
+      },
       "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
