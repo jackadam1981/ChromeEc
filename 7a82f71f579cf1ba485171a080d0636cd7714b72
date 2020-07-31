@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a5d10d9_bef3756f",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2020-07-31T04:17:02Z",
+      "side": 1,
+      "message": "We already have CLAMP defined in util.h at [1].\n\n[1] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/b7c6726e22181f57d92e0069c0fc3c4b12b9a773/include/util.h#57",
+      "range": {
+        "startLine": 326,
+        "startChar": 18,
+        "endLine": 326,
+        "endChar": 48
+      },
+      "revId": "7a82f71f579cf1ba485171a080d0636cd7714b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed4b94af_91d2c06a",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2020-07-31T04:17:02Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 338,
+        "startChar": 8,
+        "endLine": 338,
+        "endChar": 45
+      },
+      "revId": "7a82f71f579cf1ba485171a080d0636cd7714b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f629a3ff_301dcc79",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1350966
+      },
+      "writtenOn": "2020-07-31T04:17:02Z",
+      "side": 1,
+      "message": "const int32_t *v",
+      "range": {
+        "startLine": 357,
+        "startChar": 21,
+        "endLine": 357,
+        "endChar": 31
+      },
+      "revId": "7a82f71f579cf1ba485171a080d0636cd7714b72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
