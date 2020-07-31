@@ -318,6 +318,26 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
+	const struct bb_usb_control *control = &bb_controls[me->usb_port];
+	int gpiolevel;
+
+	/*
+	 * Mux configuration is happening after retimer configuration with some
+	 * delay. Because of this delay for connected MFD devices (DP_alt+USB),
+	 * when the Mux is in USB mode to Safe mode transition the retimer is
+	 * entering to Safe mode. If xHCI enumeration started in USB mode is
+	 * probably causing the retimer in to bad state and hence causing the
+	 * downgrade issue.
+	 * Solution: Reset the retimer in Safe mode and sleep for 50msec
+	 */
+	gpiolevel = gpio_get_level(control->retimer_rst_gpio);
+	if ((gpiolevel !=0) && (mux_state & USB_PD_MUX_SAFE_MODE)) {
+		bb_retimer_power_handle(me, 0);
+		msleep(50);
+		return 0;
+	} else if ((mux_state != 0) && (gpiolevel == 0)) {
+		bb_retimer_power_handle(me, 1);
+	}
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
