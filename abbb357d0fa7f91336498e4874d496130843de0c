@@ -52,6 +52,24 @@
       "revId": "abbb357d0fa7f91336498e4874d496130843de0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d51d94_4654b6f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-31T19:23:33Z",
+      "side": 1,
+      "message": "tried to change to system_get_reset_flags() and recalled why I had to use PMU regs - I need to force KAT tests on wake in case of failures as part of graceful recovery. Say, with probability 2^-50 TRNG may be falsely marked as faulty and reset indication of successful tests, but then on wake tests will run again and if it was a false alarm - it will recover operational state. Same with GLOBALSEC alerts (not yet handled) - they could be spontaneous and not really indicate a faulty device, but we don\u0027t know until we retest it. Still will need to use PMU reg for this.",
+      "parentUuid": "4b0807a2_8aad3e58",
+      "revId": "abbb357d0fa7f91336498e4874d496130843de0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
