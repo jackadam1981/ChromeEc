@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb01be1e_7016aefd",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-07-31T18:53:35Z",
+      "side": 1,
+      "message": "Instead of doing __override for board_get_temp which requires TEMP_SENSOR_SOC exists, I think it would be better to move board_get_temp out of baseboard (and copy it into all the zork board.c files), so that TEMP_SENSOR_SOC can be removed for morphius.",
+      "revId": "9230ba6e232a65f4a74b219457e055b74e65bdc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
