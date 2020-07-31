@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "794a199a_6f9da5a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-31T21:17:15Z",
+      "side": 1,
+      "message": "Sorry that I just realized this, but the retry timeout logic needs to all move out of the TCPM and into the TCPC. I originally thought the TCPM could do it, but it isn\u0027t fast enough. See the last bits of b/150617035\n\nSorry Ed, that I didn\u0027t catch this on the first CL you submitted, and sorry I dropped the ball on that fix. The threads just kept pulling on that one. I need to get back to it soon.\n\nWhat do you want to do with this CL in light of this new information?",
+      "revId": "093dc24947efe13f0960f298aa3b93576b06ff1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8aa4882f_e72319a8",
         "filename": "test/usb_prl.c",
         "patchSetId": 1
