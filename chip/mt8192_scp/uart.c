@@ -5,6 +5,7 @@
 
 /* SCP UART module */
 
+#include "csr.h"
 #include "system.h"
 #include "uart.h"
 #include "uart_regs.h"
@@ -111,6 +112,17 @@ void uart_tx_start(void)
 
 void uart_tx_stop(void)
 {
+	/*
+	 * Workaround for b/157541273.
+	 * Don't unset the THRI flag in other than UART ISR.
+	 *
+	 * Note:
+	 * MICAUSE denotes current INTC group number.
+	 * UART uses INTC group 12.
+	 */
+	if (in_interrupt_context() && read_csr(CSR_VIC_MICAUSE) != 12)
+		return;
+
 	tx_started = 0;
 	UART_IER(UARTN) &= ~UART_IER_THRI;
 	enable_sleep(SLEEP_MASK_UART);
