@@ -60,6 +60,11 @@ enum battery_present battery_is_present(void)
 	/* The GPIO is low when the battery is present */
 	return gpio_get_level(CONFIG_BATTERY_PRESENT_GPIO) ? BP_NO : BP_YES;
 }
+#else
+__overridable enum battery_present battery_is_present(void)
+{
+	return BP_YES;
+}
 #endif
 
 static const char *get_error_text(int rv)
