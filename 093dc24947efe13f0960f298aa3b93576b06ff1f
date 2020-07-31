@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d52a4f8e_519a03a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-07-31T00:00:03Z",
+      "side": 1,
+      "message": "Leaving the CR+2 for Jett.",
+      "revId": "093dc24947efe13f0960f298aa3b93576b06ff1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8aa4882f_e72319a8",
         "filename": "test/usb_prl.c",
         "patchSetId": 1
