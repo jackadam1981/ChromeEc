@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f29db0d0_b541c281",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-07-31T22:57:04Z",
+      "side": 1,
+      "message": "Alright this is ready for review again.\n\nI realized that we didn\u0027t need special case code for passing in different retry counts in different scenarios assuming we are an SOP partner (and not SOP\u0027). ",
+      "revId": "a5df1c029210d6843c21a2fd3b401df9a0f77402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
