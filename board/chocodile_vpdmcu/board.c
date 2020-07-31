@@ -68,3 +68,8 @@ void tcpc_alert_clear(int port)
 {
 	/* Do nothing */
 }
+
+void pd_power_supply_reset(int port)
+{
+	/* Do nothing */
+}
