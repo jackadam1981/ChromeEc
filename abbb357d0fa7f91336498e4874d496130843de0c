@@ -16,6 +16,24 @@
       "revId": "abbb357d0fa7f91336498e4874d496130843de0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9851a96_df9e9976",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-07-31T02:51:20Z",
+      "side": 1,
+      "message": "it was my first attempt long time ago, but I wasn\u0027t sure it actually works. Will it handle reboots due to fw upgrade too? Surely, it\u0027s better, but would need to move system_get_reset_flags() in the FIPS boundary.",
+      "parentUuid": "c211f2c7_21752430",
+      "revId": "abbb357d0fa7f91336498e4874d496130843de0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
