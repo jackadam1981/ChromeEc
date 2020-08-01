@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d1adb5a5_8cbe2b94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-08-01T04:13:41Z",
+      "side": 1,
+      "message": "\u003e The most suggested way...\nThis is what I saw in FreeRTOS sample code.  And actually, MTK suggests us not to use UART TX interrupt (they even didn\u0027t use it in FreeRTOS).  However, the UART log won\u0027t flush clear if without UART TX interrupt.  Unless, using a dedicated task to flush periodically.\n\n\n\u003e Should we implement this, eventually?\nNo.  We can implement it (with big changes in core/rv32i) but The following scenario won\u0027t happen.\n\n\n\u003e But now, this could still happen, right?\n\n 1. IRQ X fires\n 2. X is handled, and while handling:\n    a. UART IRQ fires.\n    b. cflush called, UART_IER(UARTN) \u0026\u003d ~UART_IER_THRI;\n 3. RV33 receives global VIC, UART_IER_THRI is not set so the handler crashes.\n\nNo.  The UART IRQ won\u0027t cache in GVIC in the scenario (unless RV33 writes MIEMS).\nWe writes to the corresponding MIEMS bit at the end of ISR of X.",
+      "parentUuid": "fa28afc2_e94e4860",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 56
+      },
+      "revId": "fce785a3588948c88a5daf128f200295604136a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a3707ee_701926e9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "ccd04014_eb783052",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-08-01T04:13:41Z",
+      "side": 1,
+      "message": "Yes, and irq handler for UART TX must happen until THRI unset.",
+      "parentUuid": "9e3d8868_7ba320d9",
+      "revId": "fce785a3588948c88a5daf128f200295604136a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5453896e_74b05045",
         "filename": "chip/mt8192_scp/uart.c",
         "patchSetId": 3
@@ -79,6 +121,30 @@
       "revId": "fce785a3588948c88a5daf128f200295604136a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0031eea0_ea127a76",
+        "filename": "chip/mt8192_scp/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-08-01T04:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5453896e_74b05045",
+      "range": {
+        "startLine": 122,
+        "startChar": 25,
+        "endLine": 122,
+        "endChar": 27
+      },
+      "revId": "fce785a3588948c88a5daf128f200295604136a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
