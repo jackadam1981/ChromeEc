@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "52a3c99e_d9047e44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-02T22:47:58Z",
+      "side": 1,
+      "message": "This is fixed in the latest patchset.  The -fwlen parameter is added to the ecst call.",
+      "parentUuid": "7f8eaad3_384c79a2",
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0aa00be8_83711d14",
         "filename": "chip/npcx/config_flash_layout.h",
         "patchSetId": 3
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "bded4591_1856ce3f",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-02T22:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36cec3f1_09fcc1bb",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "374ed512_6e270af6",
         "filename": "include/common.h",
         "patchSetId": 3
@@ -73,6 +115,24 @@
       "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5cc1640_99c057d0",
+        "filename": "include/common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-02T22:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "374ed512_6e270af6",
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "035a5965_fd5d59d9",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-02T22:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4452bb40_1a28c279",
+      "range": {
+        "startLine": 1096,
+        "startChar": 35,
+        "endLine": 1096,
+        "endChar": 37
+      },
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7592220_d5920192",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -119,6 +203,30 @@
       "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29732328_d644a277",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-02T22:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7592220_d5920192",
+      "range": {
+        "startLine": 1097,
+        "startChar": 3,
+        "endLine": 1097,
+        "endChar": 6
+      },
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -145,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "baccae7a_7ac47e2c",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-02T22:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e0a289e_d51caf7e",
+      "range": {
+        "startLine": 1824,
+        "startChar": 1,
+        "endLine": 1826,
+        "endChar": 3
+      },
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20c52ce4_2b2eed94",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -159,6 +291,24 @@
       "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "199fb8bc_a52d3ef8",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5276,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-02T22:47:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20c52ce4_2b2eed94",
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
