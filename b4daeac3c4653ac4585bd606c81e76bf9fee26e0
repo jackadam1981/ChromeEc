@@ -16,6 +16,24 @@
       "revId": "b4daeac3c4653ac4585bd606c81e76bf9fee26e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c5d6d37_94f816cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1249354
+      },
+      "writtenOn": "2020-08-02T15:58:31Z",
+      "side": 1,
+      "message": "Hi Denis\nI’ll try to give some suggestions although I’m not sure I fully understand the problem. Can you give some more background on this issue and what you are trying to do.\nRegarding things to try in order to force a disconnect, maybe you can try one of the following: \n- Try to change VBUS_SINK_DISCONNECT_THRESHOLD  to a value bigger than the current voltage.\n- Try to SW reset the TCPC , we have a vendor define command for that: write 0xA3 to 0xDE",
+      "parentUuid": "17ed950d_c698dddc",
+      "revId": "b4daeac3c4653ac4585bd606c81e76bf9fee26e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
