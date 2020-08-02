@@ -34,6 +34,24 @@
       "revId": "b4daeac3c4653ac4585bd606c81e76bf9fee26e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c1308bc_8738a7f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-02T17:00:02Z",
+      "side": 1,
+      "message": "Hi Amit,\nin the factory we flash the device before we attach a battery.  In this process we will be batteryless, powered only by USB-C and the flashing will do the equivalent of a cold reboot when the flashing process is done.  All of the other TCPCs will brown out and reboot when we go into this OPEN/OPEN condition.  NCT gets in a state of not dropping CC so Vbus continues to be active and we lock up more than reboot.  I was hoping to get the NCT to react like the other TCPCs so I didn\u0027t have to add special code for the basic reboot mechanism.\nThank you for the information.  I will give that a shot tomorrow.",
+      "parentUuid": "9c5d6d37_94f816cd",
+      "revId": "b4daeac3c4653ac4585bd606c81e76bf9fee26e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
