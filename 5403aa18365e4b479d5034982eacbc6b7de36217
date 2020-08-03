@@ -39,6 +39,30 @@
       "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8245b551_e62f8f1a",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-03T16:12:13Z",
+      "side": 1,
+      "message": "It needs to be set in init and cleared here.\n\nThis is the init code\n\t/*\n\t * Write to the CONTROL_OUT_EN register to enable:\n\t * [6] - CONNDIREN : Connector direction indication output enable\n\t * [2] - SNKEN     : VBUS sink enable output enable\n\t * [0] - SRCEN     : VBUS source voltage enable output enable\n\t */\n\treg \u003d NCT38XX_REG_CTRL_OUT_EN_SRCEN |\n\t      NCT38XX_REG_CTRL_OUT_EN_SNKEN |\n\t      NCT38XX_REG_CTRL_OUT_EN_CONNDIREN;\n\n\trv \u003d tcpc_write(port, NCT38XX_REG_CTRL_OUT_EN, reg);\n\tif (rv)\n\t\treturn rv;",
+      "parentUuid": "aa88049e_dad29172",
+      "range": {
+        "startLine": 132,
+        "startChar": 7,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
