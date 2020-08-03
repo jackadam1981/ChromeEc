@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "c5aa7d04_5f37ad86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-03T16:17:11Z",
+      "side": 1,
+      "message": "This does look better, but I still don\u0027t understand how \"ectool reboot_ec cold\" was working with 13310.0.0?",
+      "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e86f9c6_471d5532",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3277,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-03T16:17:11Z",
+      "side": 1,
+      "message": "I\u0027m worried we could still have some edge cases with this check.",
+      "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa88049e_dad29172",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 3
