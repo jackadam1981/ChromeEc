@@ -16,6 +16,23 @@
       "revId": "149f91c637022f7e613bbd68f714c43ae41c4f6e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26f24265_a4fc7231",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-08-03T07:17:23Z",
+      "side": 1,
+      "message": "During PD Policies testing, I\u0027ve noticed the firmware_PDResetHard test was failing, even with stock firmware. After debugging, it turned out there is an issue with sync between pd_task and pd_interrupt_handler_task. After receiving a hard reset command, pd_interrupt_handler_task calls pd_execute_hard_reset, which changes task_state and last_state, but due to the sleep in nx20p348x_vbus_source_enable the function is not executed completely, then pd_task is resumed with no notification that pd_execute_hard_reset is being executed.\nI\u0027ve checked how it is solved on master - the bug has just been fixed with these two commits CL:1389992 CL:2284504\n\n",
+      "revId": "149f91c637022f7e613bbd68f714c43ae41c4f6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
