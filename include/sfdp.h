@@ -32,7 +32,7 @@
 
 /******************************************************************************/
 /* SFDP Header, always located at SFDP offset 0x0. Note that the SFDP space is
- * always read in 3 Byte addressing mode with a single dummy cycle, where the
+ * always read in 3 Byte addressing mode with a single cycle, where the
  * expected SFDP address space layout looks like the following:
  *
  *  ------------------0x00

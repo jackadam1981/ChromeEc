@@ -348,7 +348,7 @@ enum smb_error i2c_master_transaction(int controller)
 	} else if (p_status->oper_state == SMB_READ_SUSPEND) {
 		if (!IS_ENABLED(NPCX_I2C_FIFO_SUPPORT)) {
 			/*
-			 * Do dummy read if read length is 1 and I2C_XFER_STOP
+			 * Do extra read if read length is 1 and I2C_XFER_STOP
 			 * is set simultaneously.
 			 */
 			if (p_status->sz_rxbuf == 1 &&
@@ -356,7 +356,7 @@ enum smb_error i2c_master_transaction(int controller)
 				/*
 				 * Since SCL is released after reading last
 				 * byte from previous transaction, adding a
-				 * dummy byte for next transaction which let
+				 * extra byte for next transaction which let
 				 * ec sets NACK bit in time is necessary.
 				 * Or i2c master cannot generate STOP
 				 * when the last byte is ACK during receiving.
@@ -475,7 +475,7 @@ void i2c_done(int controller)
 			NPCX_SMBFIF_CTS(controller) =
 						BIT(NPCX_SMBFIF_CTS_RXF_TXE);
 
-		/* Clear SDAST by writing dummy byte */
+		/* Clear SDAST by writing mock byte */
 		I2C_WRITE_BYTE(controller, 0xFF);
 	}
 
@@ -755,7 +755,7 @@ void i2c_master_int_handler (int controller)
 		CPUTS("-SP");
 		/* Clear BER Bit */
 		SET_BIT(NPCX_SMBST(controller), NPCX_SMBST_BER);
-		/* Mask sure slave doesn't hold bus by dummy reading */
+		/* Make sure slave doesn't hold bus by reading */
 		I2C_READ_BYTE(controller, data);
 
 		/* Set error code */
