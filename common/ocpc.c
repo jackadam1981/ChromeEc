@@ -347,6 +347,19 @@ static void ocpc_set_pid_constants(void)
 }
 DECLARE_HOOK(HOOK_INIT, ocpc_set_pid_constants, HOOK_PRIO_DEFAULT);
 
+void ocpc_init(struct ocpc_data *ocpc)
+{
+	/*
+	 * We can start off assuming that the board resistance is 0 ohms
+	 * and later on, we can update this value if we charge the
+	 * system in suspend or off.
+	 */
+	ocpc->combined_rsys_rbatt_mo = CONFIG_OCPC_DEF_RBATT_MOHMS;
+	ocpc->rbatt_mo = CONFIG_OCPC_DEF_RBATT_MOHMS;
+
+	board_ocpc_init(ocpc);
+}
+
 static int command_ocpcdebug(int argc, char **argv)
 {
 	if (argc < 2)
