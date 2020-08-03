@@ -19,6 +19,7 @@
 #define CONFIG_USB_PD_TCPMV1
 #endif
 
+#define CONFIG_USB_PD_TCPM_RT1715
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
 
