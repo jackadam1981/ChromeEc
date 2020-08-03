@@ -52,6 +52,24 @@
       "revId": "b4daeac3c4653ac4585bd606c81e76bf9fee26e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1c06dd3_5debfffd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1249354
+      },
+      "writtenOn": "2020-08-03T11:53:54Z",
+      "side": 1,
+      "message": "I think that now understand the issue, so here is how our TCPC behaves.\n1. You set CC lines to Open/Open. This is physically happening on the CC line.\n2. Since CC is now Open/Open, the internal TCPC HW state machine is no longer in Attached.Snk and therefore our TCPC HW automatically opens the sink switch (de-assert the VBSNK_EN pin)\n3. Since sink switch is open , the TCPC VCC voltage starts to drop.\n4. When TCPC VCC gets below ~2.7V the TCPC will reset and therefore it will present Rd/Rd on the CC lines. Also the VBSNK_EN pin after reset is Hi-Z , so the sink switch will get closed again.\n\nI assume that in your case the time between Open/Open and Rd/Rd is shorten then tPDDebounce (10ms to 20ms) and therefore the USBC Power supply does not consider this as a change in the CC status and therefore does not disconnect.\n\nPlease try the following bypass: \n1. First disable the VBSNK_EN pin output by setting bit 2 (SNKEN) in (our vendor define) register  CONTROL_OUT_EN (offset 0xD2) to 0 \n2. Only now set CC Open/Open , by writing to the role control.\nThis way the sink switch will stay close , TCPC voltage will not drop, and the Open/Open will be detected by the USBC Power supply",
+      "parentUuid": "6c1308bc_8738a7f3",
+      "revId": "b4daeac3c4653ac4585bd606c81e76bf9fee26e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
