@@ -47,6 +47,7 @@
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_DECODE_SOP
 #define CONFIG_VBOOT_HASH
+#define CONFIG_SYSTEM_UNLOCKED /* enable PD in RO for TCPMv2 */
 
 #ifndef __ASSEMBLER__
 
