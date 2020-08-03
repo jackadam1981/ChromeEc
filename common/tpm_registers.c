@@ -610,7 +610,7 @@ static void tpm_init(void)
 	 *
 	 * No harm in calling it twice in that case.
 	 */
-	_TPM_Init();
+	_TPM_Init(NULL);
 
 	if (!tpm_manufactured()) {
 		enum manufacturing_status endorse_result;
@@ -620,7 +620,7 @@ static void tpm_init(void)
 		 * every startup. It will wipe out NV RAM, among other things.
 		 */
 		TPM_Manufacture(1);
-		_TPM_Init();
+		_TPM_Init(NULL);
 		_plat__SetNvAvail();
 		endorse_result = tpm_endorse();
 
