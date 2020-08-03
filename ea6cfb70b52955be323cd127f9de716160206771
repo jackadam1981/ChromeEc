@@ -16,6 +16,29 @@
       "revId": "ea6cfb70b52955be323cd127f9de716160206771",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f40206_015f0873",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-03T16:38:10Z",
+      "side": 1,
+      "message": "just moving this to above 1110 should take care of the issue Diana is seeing.  Anything that changes in the CC_STATUS register should be cached to be accurate",
+      "range": {
+        "startLine": 1117,
+        "startChar": 0,
+        "endLine": 1117,
+        "endChar": 33
+      },
+      "revId": "ea6cfb70b52955be323cd127f9de716160206771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
