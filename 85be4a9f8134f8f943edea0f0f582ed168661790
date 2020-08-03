@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "f9696e5e_c2656223",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "I\u0027m open to suggestions here. I can\u0027t think of an easy way to compile a list of gyroscopes during compile time without requiring each board to define the array. Alternatively I can create an array of sensor pointers where all the pointers are null at first, then on the first pass fill these with the gyroscope sensors.",
+      "parentUuid": "16ee4669_290de354",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56452288_8306327e",
         "filename": "common/online_calibration.c",
         "patchSetId": 3
@@ -74,6 +92,24 @@
       "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3994dbb_7f0cc7eb",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "Yup, the accel/mag data is used to make sure the device is still. The more data the better in this case. The final bias calculation is only using the sensor itself.",
+      "parentUuid": "56452288_8306327e",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "7f07d105_308f20e2",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "I assume you meant init_gyro_cal? Updating it to that to match init_mag_cal. Renamed gyro_cal_initialization to gyro_cal_initialization_for_test",
+      "parentUuid": "0c7bfe44_794eb188",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1fa81d4_b6204aef",
         "filename": "include/gyro_cal.h",
         "patchSetId": 3
@@ -111,6 +165,24 @@
     },
     {
       "key": {
+        "uuid": "c46aa88a_863433c8",
+        "filename": "include/gyro_cal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "Done, the thinking here for C was to allow me to use int8 instead of int16 since I didn\u0027t think we needed the range.",
+      "parentUuid": "c1fa81d4_b6204aef",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f365dd43_bacbc460",
         "filename": "include/gyro_cal.h",
         "patchSetId": 3
@@ -122,6 +194,24 @@
       "writtenOn": "2020-07-26T04:14:10Z",
       "side": 1,
       "message": "It looks like a constant.",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aba589d_b350da04",
+        "filename": "include/gyro_cal.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "I\u0027m open to making this a CONFIG_ constant. I wasn\u0027t sure if we\u0027d ever run into multiple gyroscopes where different configurations are needed. I would say lets leave it now and convert to a CONFIG_ value later if we find that we need to.\n\nThoughts?",
+      "parentUuid": "f365dd43_bacbc460",
       "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -145,6 +235,24 @@
     },
     {
       "key": {
+        "uuid": "3eb769e3_0f28c210",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "I\u0027m sorry, I\u0027m not sure I follow. You\u0027re saying doing the hex -\u003e float cast won\u0027t work? So should I just have it as 3.4028235e+38?",
+      "parentUuid": "90fd7134_0c5317c0",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe729773_47ae5f8a",
         "filename": "include/math_util.h",
         "patchSetId": 3
@@ -162,6 +270,24 @@
     },
     {
       "key": {
+        "uuid": "47db6ec3_f2b81e71",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe729773_47ae5f8a",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67b87084_ffd21864",
         "filename": "include/math_util.h",
         "patchSetId": 3
@@ -176,6 +302,24 @@
       "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f15868b6_c5d616b7",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67b87084_ffd21864",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -199,6 +343,30 @@
       "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e52725d2_dc058d3d",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd906c5_59b96a24",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 62
+      },
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -242,6 +410,48 @@
     },
     {
       "key": {
+        "uuid": "2255b771_88eac8d7",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "I added for_test suffix since it\u0027s not a test by itself I thought that test_ might be confusing.",
+      "parentUuid": "0122dada_2b5f7f19",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7cb9624_aa13b98d",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cd794a4_60e6277e",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 55
+      },
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8a9c2aa_f56323a0",
         "filename": "test/gyro_cal.c",
         "patchSetId": 3
@@ -259,6 +469,24 @@
     },
     {
       "key": {
+        "uuid": "802d2924_b90576a2",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "Yes, just modeled after the statistics of the BMI160. Removed that part of the comment to make it less confusing.",
+      "parentUuid": "a8a9c2aa_f56323a0",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6430c147_3ef1324e",
         "filename": "test/gyro_cal.c",
         "patchSetId": 3
@@ -270,6 +498,24 @@
       "writtenOn": "2020-07-26T04:14:10Z",
       "side": 1,
       "message": "Should window_time_duration_us express in function of min or max_still_duration_us?",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215921e8_ad254c59",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-03T04:10:34Z",
+      "side": 1,
+      "message": "It\u0027s the minimum window duration needed for processing. Would min_window_time_duration_us work better?",
+      "parentUuid": "6430c147_3ef1324e",
       "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
