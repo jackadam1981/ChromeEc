@@ -45,9 +45,16 @@ GPIO_INT(USB_C2_MIX_INT_ODL,	PIN(6, 1), GPIO_INT_BOTH, halvor_bc12_interrupt)
 
 /* Volume button interrupts */
 
+/* Unused signals */
+GPIO(UNUSED_GPIOC0,		       PIN(C, 0), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(UNUSED_GPIO67,		       PIN(6, 7), GPIO_INPUT | GPIO_PULL_UP)
+
 /* Power Sequencing Signals */
+GPIO(EN_PP5000_USB_AG,		   PIN(A, 7), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(EN_PP1050_ST_S0,		   PIN(3, 4), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(EN_PP3300_A,              PIN(A, 3), GPIO_OUT_LOW)
 GPIO(EN_PPVAR_VCCIN,	       PIN(4, 3), GPIO_OUT_LOW)
+
 
 /* The EC does not buffer this signal on Halvor. */
 UNIMPLEMENTED(PCH_DSW_PWROK)
