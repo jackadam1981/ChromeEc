@@ -299,6 +299,12 @@ void vboot_main(void)
 		return;
 	}
 
+	if (system_jumped_to_this_image() &&
+	   (system_get_image_copy() == EC_IMAGE_RO)) {
+		CPRINTS("Stay in RO");
+		return;
+	}
+
 	verify_and_jump();
 
 	/*
