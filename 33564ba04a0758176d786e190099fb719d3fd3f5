@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f64cee8_bde6ebde",
+        "filename": "common/gyro_cal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-08-03T14:02:50Z",
+      "side": 1,
+      "message": "include stdbool.h for this",
+      "range": {
+        "startLine": 141,
+        "startChar": 36,
+        "endLine": 141,
+        "endChar": 41
+      },
+      "revId": "33564ba04a0758176d786e190099fb719d3fd3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c036f7fc_ebe6761e",
+        "filename": "common/gyro_cal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-08-03T14:02:50Z",
+      "side": 1,
+      "message": "\"watchdog\" may not be the best name here, as we are in the embedded domain, where this is generally referring to the timer that will reset the EC if we don\u0027t ping the timer frequently enough. .... just that this could easily get confused with the other stuff that happens in an EC\n\nSuggest just going with \"timeout\"?",
+      "range": {
+        "startLine": 448,
+        "startChar": 29,
+        "endLine": 448,
+        "endChar": 45
+      },
+      "revId": "33564ba04a0758176d786e190099fb719d3fd3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd82d979_d7d7f934",
+        "filename": "test/gyro_cal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-08-03T14:02:50Z",
+      "side": 1,
+      "message": "I am confused why we are adding 1 to both sides here?\n\nUsually the equation for a uniform 0-1 value is:\n\n  rand() / RAND_MAX",
+      "range": {
+        "startLine": 41,
+        "startChar": 25,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "33564ba04a0758176d786e190099fb719d3fd3f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
