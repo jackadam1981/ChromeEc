@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "cef5608e_b8de32c0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3277,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-03T21:10:10Z",
+      "side": 1,
+      "message": "And when the battery is connected, we have to disable auto discharge before applying CC open?",
+      "parentUuid": "25e347e4_a4c175d0",
+      "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa88049e_dad29172",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 3
