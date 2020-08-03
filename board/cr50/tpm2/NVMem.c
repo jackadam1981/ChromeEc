@@ -52,7 +52,8 @@ void _plat__NvErrors(BOOL recoverable, BOOL unrecoverable)
  *     >0                                if receive recoverable error
  *     <0                                if unrecoverable error
  */
-int _plat__NVEnable(void *platParameter)
+int _plat__NVEnable(void *platParameter,
+					const char *NVChipLocation)
 {
 	local_state.s_NV_unrecoverable = FALSE;
 	local_state.s_NV_recoverable = FALSE;
