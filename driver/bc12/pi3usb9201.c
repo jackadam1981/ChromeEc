@@ -140,6 +140,11 @@ static void bc12_update_supplier(enum charge_supplier supplier, int port,
 	 * charge manager table entry for that supplier type needs to be cleared
 	 * out.
 	 */
+
+	/* A PD capable peripheral can't be a BC1.2 device */
+	if (charge_manager_get_supplier() == CHARGE_SUPPLIER_PD)
+		return;
+
 	if (bc12_supplier[port] != CHARGE_SUPPLIER_NONE)
 		charge_manager_update_charge(bc12_supplier[port], port, NULL);
 	/* Now update the current supplier type */
