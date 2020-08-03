@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "63bd5848_d33b66eb",
+        "filename": "chip/npcx/config_flash_layout.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-03T20:11:53Z",
+      "side": 1,
+      "message": "This is resolved with the parent CL.",
+      "parentUuid": "0aa00be8_83711d14",
+      "revId": "52c4d9f5f9eeea3ab2d4f45ce62e404a52bd63af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36cec3f1_09fcc1bb",
         "filename": "chip/npcx/config_flash_layout.h",
         "patchSetId": 3
