@@ -36,6 +36,8 @@ struct ocpc_data {
 #ifdef HAS_TASK_PD_C1
 	uint32_t chg_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 #endif /* HAS_TASK_PD_C1 */
+	/* How finely can the charger IC regulate charge current to. (mA) */
+	int i_step;
 };
 
 #define OCPC_NO_ISYS_MEAS_CAP	BIT(0)
