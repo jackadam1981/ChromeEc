@@ -16,6 +16,24 @@
       "revId": "9b2093af355baf3de53cd4bf3479f3b003b33270",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea95f308_ae0285d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-08-03T03:15:33Z",
+      "side": 1,
+      "message": "USB_C0_PD_RST_L have an external pull down 100k, that cause RESET# can\u0027t reach High level. Please seen in b/162395077#comment6.",
+      "parentUuid": "341fe534_643be3a5",
+      "revId": "9b2093af355baf3de53cd4bf3479f3b003b33270",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
