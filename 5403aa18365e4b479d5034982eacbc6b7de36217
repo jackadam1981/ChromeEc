@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "82459483_2cb0996b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3277,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-03T21:12:18Z",
+      "side": 1,
+      "message": "yes to avoid TCPC faulting when we set the CC lines",
+      "parentUuid": "cef5608e_b8de32c0",
+      "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa88049e_dad29172",
         "filename": "driver/tcpm/nct38xx.c",
         "patchSetId": 3
