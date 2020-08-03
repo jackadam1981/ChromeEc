@@ -63,6 +63,30 @@
       "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9723aeb7_56b614dd",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-03T16:15:25Z",
+      "side": 1,
+      "message": "The paths that we do not brown out (battery present), we will go through restart_tc_sm to start back up and this will call init to set the value back to enabled and we will start as expected",
+      "parentUuid": "8245b551_e62f8f1a",
+      "range": {
+        "startLine": 132,
+        "startChar": 7,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
