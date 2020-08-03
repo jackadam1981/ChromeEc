@@ -266,7 +266,9 @@ static void pi3usb9201_usb_charger_task(const int port)
 			int rv;
 
 			rv = pi3usb9201_get_status(port, &client, NULL);
-			if (!rv && client)
+
+			/* A PD capable peripheral can't be a BC1.2 device */
+			if (!rv && client && !pd_capable(port))
 				/*
 				 * Any bit set in client status register
 				 * indicates that BC1.2 detection has
