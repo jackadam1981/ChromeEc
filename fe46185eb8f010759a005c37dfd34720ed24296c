@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80698884_5b56b76e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-08-03T21:01:34Z",
+      "side": 1,
+      "message": "Can you please create a separate bug for this?",
+      "revId": "fe46185eb8f010759a005c37dfd34720ed24296c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5d23c8_8ce5f43c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-08-03T21:01:34Z",
+      "side": 1,
+      "message": "Should this be \"grep -ir dummy *\"? Just in case there are some capitalized versions of this.",
+      "revId": "fe46185eb8f010759a005c37dfd34720ed24296c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6245a459_bac87e66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360051
+      },
+      "writtenOn": "2020-08-03T21:01:34Z",
+      "side": 1,
+      "message": "Quick run through looks good! Couple of general comments.",
+      "revId": "fe46185eb8f010759a005c37dfd34720ed24296c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
