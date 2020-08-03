@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54f2444c_37ef4a02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-03T16:08:33Z",
+      "side": 1,
+      "message": "This looks like a much better way to go",
+      "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa88049e_dad29172",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-03T16:08:33Z",
+      "side": 1,
+      "message": "should we set this always on tcpc init? If not, in the case where is doesn\u0027t brown out do we need to re-enable this?",
+      "range": {
+        "startLine": 132,
+        "startChar": 7,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
