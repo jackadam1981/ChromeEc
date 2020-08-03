@@ -22,6 +22,30 @@
       "revId": "9e9b1e1be7423181744d1a88468bddce4003a699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42532ff9_a258b87d",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1242905
+      },
+      "writtenOn": "2020-08-03T07:40:37Z",
+      "side": 1,
+      "message": "When issue happened, DUT act as SRC and SNK at same time.\n\nlocalhost ~ # ectool usbpdpower 0                                              \nPort 0: SNK DRP CDP 4620mV / 1424mA, max 5000mV / 1500mA / 7500mW              \nlocalhost ~ # ectool usbpd 0                                                   \nPort C0: enabled, connected  State:                                            \nRole:SRC UFP VCONN, Polarity:CC2                                               \nCC State:DFP attached                                                          \nCable type:Passive                                                             \nTBT Adapter type:Gen3                                                          \nOptical Cable:False                                                            \nLink LSRX Communication:Bi-directional                                         \nTBT Cable Speed:UNKNOWN                                                        \nRounded support: 3rd Gen rounded support                                       \nPD Partner Capabilities:                                                       \nDR power                                                                      \nDR data                                                                       \nUSB capable  \n\nMy original propose is EC need to clear CHARGE_SUPPLIER_BC12_CDP when switch to SRC.",
+      "parentUuid": "fa325ddd_5c0c3ae3",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 32
+      },
+      "revId": "9e9b1e1be7423181744d1a88468bddce4003a699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
