@@ -35,6 +35,7 @@ struct ocpc_data {
 	int last_vsys;
 
 	uint32_t chg_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+	int i_step;
 };
 
 #define OCPC_NO_ISYS_MEAS_CAP	BIT(0)
