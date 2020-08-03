@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49ce2be1_e86ca4ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-03T17:45:50Z",
+      "side": 1,
+      "message": "Terrador GPIO checked.  I don\u0027t have a Todor schematic to verify the Todor GPIO.",
+      "revId": "d310a091b3d5d274ce4ed9a92c622e9dd0f89a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e15dbaf_9988626a",
+        "filename": "board/todor/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-03T17:45:50Z",
+      "side": 1,
+      "message": "Can you provide a link to the schematic on the bug?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 72
+      },
+      "revId": "d310a091b3d5d274ce4ed9a92c622e9dd0f89a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
