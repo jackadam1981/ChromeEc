@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7c2a12f_8b69dac1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-03T20:20:51Z",
+      "side": 1,
+      "message": "Can you also specify what command line you ran to generate the VIF file.",
+      "range": {
+        "startLine": 15,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28eaadf6_c7e83123",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-03T20:20:51Z",
+      "side": 1,
+      "message": "This is looking good. I am thinking we are going to need a companion MD readme that instruction people how to generate the VIF and what CONFIG_ options (or fields in a config struct) need to be set correctly.\n\nOverall this is looking really good. Thank you!",
+      "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "226123ba_78c87091",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3985,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-03T20:20:51Z",
+      "side": 1,
+      "message": "Do we need to go through the boards and define this?\n\nActually, do you think we could just make an array of configuration objects in the vif file generator that specified all of this information for each project. I don\u0027t know what we will want to edit each board/baseboard\u0027s board.h to include this information.\n\nI think centralizing it all in one spot in the vif generation code will make it easier to find",
+      "range": {
+        "startLine": 3985,
+        "startChar": 7,
+        "endLine": 3985,
+        "endChar": 38
+      },
+      "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee981c89_4f2be8a9",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-03T20:20:51Z",
+      "side": 1,
+      "message": "Is this true of all boards?\n\nIf not, can you add a TODO comment here saying we need to account for this\n\nPlease add TODO comments anywhere you think would be appropriate to come back and make this generation more accurate/robust.",
+      "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a525d38_2644b924",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-03T20:20:51Z",
+      "side": 1,
+      "message": "we should add a comment for what value 0 means for PD_OCP_METHOD; alternatively your enum documentation strategy is good.",
+      "range": {
+        "startLine": 831,
+        "startChar": 6,
+        "endLine": 831,
+        "endChar": 39
+      },
+      "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
