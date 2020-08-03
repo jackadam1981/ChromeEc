@@ -16,6 +16,41 @@
       "revId": "d6573c1e17a1ef37ee8eeb6b15ea8e9e4be08ed4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec1f5078_c5cbf8ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-03T17:46:08Z",
+      "side": 1,
+      "message": "I hope CL:2334353 will fix the prochot problem, please check.",
+      "parentUuid": "8e12fed5_a49a8cf2",
+      "revId": "d6573c1e17a1ef37ee8eeb6b15ea8e9e4be08ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdb68a1c_4914344e",
+        "filename": "board/woomax/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-03T17:46:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we should set this: we want to use PD_MAX_CURRENT_MA \u003d 3.25A for Zork.",
+      "revId": "d6573c1e17a1ef37ee8eeb6b15ea8e9e4be08ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
