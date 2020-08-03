@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "09c9bf1f_455575e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-03T16:29:58Z",
+      "side": 1,
+      "message": "Quite a few TCPMv2 changes have gone in that change the order things are being processed. My theory is the AutoDischargeDisconnect was still being left enabled in 13310 and that would latch Vbus into continuing to provide power. This would allow us to get to the system_reset and we would look like we did the right thing when in fact we didn\u0027t brown out.",
+      "parentUuid": "c5aa7d04_5f37ad86",
+      "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e86f9c6_471d5532",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 3
@@ -50,6 +68,24 @@
       "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25e347e4_a4c175d0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3277,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-03T16:29:58Z",
+      "side": 1,
+      "message": "The NCT will stop sinking and we will lose power on the case of batteryless upon disabling AutoDischargeDisconnect.  We need to disable SNKEN from NCT CTRL_OUT in order to stop this clicking sound loop.  This happens after this disable of AutoDischargeDisconnect.  This is the only way I can find to get there.\n\n\t * 1. You set CC lines to Open/Open. This is physically happening on\n\t *    the CC line.\n\t * 2. Since CC is now Open/Open, the internal TCPC HW state machine\n\t *    is no longer in Attached.Snk and therefore our TCPC HW\n\t *    automatically opens the sink switch (de-assert the VBSNK_EN pin)\n\t * 3. Since sink switch is open, the TCPC VCC voltage starts to drop.\n\t * 4. When TCPC VCC gets below ~2.7V the TCPC will reset and therefore\n\t *    it will present Rd/Rd on the CC lines. Also the VBSNK_EN pin\n\t *    after reset is Hi-Z, so the sink switch will get closed again.",
+      "parentUuid": "9e86f9c6_471d5532",
+      "revId": "5403aa18365e4b479d5034982eacbc6b7de36217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
