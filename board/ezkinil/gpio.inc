@@ -79,6 +79,7 @@ IOEX(HDMI_DATA_EN_DB,		EXPIN(USBC_PORT_C1, 1, 4), GPIO_OUT_HIGH)	/* HDMI Retimer
 IOEX(USB_C1_DATA_EN,		EXPIN(USBC_PORT_C1, 1, 5), GPIO_OUT_HIGH)	/* C1 Retimer Enable */
 IOEX(EN_USB_A1_5V_DB,		EXPIN(USBC_PORT_C1, 1, 6), GPIO_OUT_LOW)	/* A1 5V Source Enable */
 IOEX(USB_A1_CHARGE_EN_DB_L,	EXPIN(USBC_PORT_C1, 1, 7), GPIO_OUT_HIGH)	/* A1 5V High Current Enable */
+IOEX(USB_C1_VBBLD_DISC,		EXPIN(USBC_PORT_C1, 0, 7), GPIO_OUT_HIGH)	/* C1 Bleed Discharge */
 
 /*
  * The NPCX LPC driver configures and controls SCI, so PCH_SCI_ODL [PIN(7, 6)]
