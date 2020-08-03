@@ -34,6 +34,24 @@
       "revId": "940af6f1487919af55844d277479b6d33abef063",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94b07bdc_2d20c50c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1418383
+      },
+      "writtenOn": "2020-08-03T07:51:27Z",
+      "side": 1,
+      "message": "OK,I have created new CL to remove lindar/power_sequence.c\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2334431",
+      "parentUuid": "dfcd3341_ca597d8a",
+      "revId": "940af6f1487919af55844d277479b6d33abef063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
