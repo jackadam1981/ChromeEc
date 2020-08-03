@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "dfeb0179_d0e98fa7",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-03T16:04:48Z",
+      "side": 0,
+      "message": "We\u0027d only need to worry if we start supporting unchunked extended messages, I believe.  We could add a note in case we decide to support unchunked extended messages at some point",
+      "parentUuid": "c0b05873_b50255d4",
+      "range": {
+        "startLine": 1021,
+        "startChar": 2,
+        "endLine": 1024,
+        "endChar": 37
+      },
+      "revId": "5d59ef5be7e1c7d3f5ed1470fccfd3dbcda167f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "179fb936_545752ac",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 5

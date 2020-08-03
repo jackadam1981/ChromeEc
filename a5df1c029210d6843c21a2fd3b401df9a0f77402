@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fb8225a7_7f18584c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-03T16:04:48Z",
+      "side": 1,
+      "message": "Also mention this changes the SOP\u0027 retries.  Does the GRL test SOP\u0027 retries?  I think we were mis-interpreting the spec before, but it is nice when the compliance test can validate things like this.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 60
+      },
+      "revId": "a5df1c029210d6843c21a2fd3b401df9a0f77402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f29db0d0_b541c281",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -53,6 +76,29 @@
       "writtenOn": "2020-07-31T23:41:35Z",
       "side": 1,
       "message": "Remove TCPC_REG_TRANSMIT_SET_WITHOUT_RETRY if nothing is using it now?",
+      "revId": "a5df1c029210d6843c21a2fd3b401df9a0f77402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b58dfb4_e1e1137a",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4765,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-03T16:04:48Z",
+      "side": 1,
+      "message": "Does this have to vary with our port partner revision (ex. retry 3 times when talking to a PD 2.0 partner)?  Or is it okay to only retry twice when we\u0027re talking to a lower revision partner?",
+      "range": {
+        "startLine": 4761,
+        "startChar": 0,
+        "endLine": 4765,
+        "endChar": 6
+      },
       "revId": "a5df1c029210d6843c21a2fd3b401df9a0f77402",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
