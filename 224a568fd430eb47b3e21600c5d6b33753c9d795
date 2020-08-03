@@ -22,6 +22,30 @@
       "revId": "224a568fd430eb47b3e21600c5d6b33753c9d795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da2577e8_f06f3831",
+        "filename": "board/asurada/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-08-03T03:22:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8885dad2_e1f052cc",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "224a568fd430eb47b3e21600c5d6b33753c9d795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
