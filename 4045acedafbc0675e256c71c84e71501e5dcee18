@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bf16e461_83c48ae5",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-03T21:43:33Z",
+      "side": 1,
+      "message": "Address with init_rom layer.",
+      "parentUuid": "01bdb683_4b85db85",
+      "range": {
+        "startLine": 575,
+        "startChar": 9,
+        "endLine": 575,
+        "endChar": 19
+      },
+      "revId": "4045acedafbc0675e256c71c84e71501e5dcee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5214a0b_4d2640e5",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 3
@@ -93,6 +117,30 @@
       "revId": "4045acedafbc0675e256c71c84e71501e5dcee18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448ea25d_acdbeb7d",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-03T21:43:33Z",
+      "side": 1,
+      "message": "Addressed with init_rom layer.",
+      "parentUuid": "c049aaf7_1580362c",
+      "range": {
+        "startLine": 575,
+        "startChar": 3,
+        "endLine": 582,
+        "endChar": 12
+      },
+      "revId": "4045acedafbc0675e256c71c84e71501e5dcee18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
