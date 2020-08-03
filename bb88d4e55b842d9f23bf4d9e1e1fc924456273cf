@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "11bcb11c_2396e1d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-08-03T03:23:03Z",
+      "side": 1,
+      "message": "Done. Tested on trogdor (NPCX EC).",
+      "parentUuid": "ee25e363_db22ef7c",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "bb88d4e55b842d9f23bf4d9e1e1fc924456273cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51da4572_ce64aeee",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
