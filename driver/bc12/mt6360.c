@@ -234,6 +234,28 @@ static const uint16_t MT6360_LDO5_VOSEL_TABLE[8] = {
 	[0x5] = 3300,
 };
 
+static const uint16_t MT6360_LDO6_VOSEL_TABLE[16] = {
+	[0x2] = 700,
+	[0x3] = 800,
+	[0x4] = 900,
+	[0x5] = 1000,
+	[0x6] = 1100,
+	[0x7] = 1200,
+	[0x8] = 1300,
+	[0x9] = 1400,
+	[0xA] = 1500,
+	[0xB] = 1600,
+	[0xC] = 1700,
+	[0xD] = 1800,
+	[0xE] = 1900,
+	[0xF] = 2000,
+};
+
+/* LDO7 VOSEL table is the same as LDO6's. */
+static const uint16_t *const MT6360_LDO7_VOSEL_TABLE = MT6360_LDO6_VOSEL_TABLE;
+static const uint16_t MT6360_LDO7_VOSEL_TABLE_SIZE =
+	ARRAY_SIZE(MT6360_LDO6_VOSEL_TABLE);
+
 static const
 struct mt6360_regulator_data regulator_data[MT6360_REGULATOR_COUNT] = {
 	[MT6360_LDO3] = {
@@ -255,6 +277,26 @@ struct mt6360_regulator_data regulator_data[MT6360_REGULATOR_COUNT] = {
 		.mask_vosel = MT6360_MASK_LDO5_VOSEL,
 		.shift_vosel = MT6360_MASK_LDO5_VOSEL_SHIFT,
 		.mask_vocal = MT6360_MASK_LDO5_VOCAL,
+	},
+	[MT6360_LDO6] = {
+		.name = "mt6360_ldo6",
+		.ldo_vosel_table = MT6360_LDO6_VOSEL_TABLE,
+		.ldo_vosel_table_len = ARRAY_SIZE(MT6360_LDO6_VOSEL_TABLE),
+		.reg_en_ctrl2 = MT6360_REG_LDO6_EN_CTRL2,
+		.reg_ctrl3 = MT6360_REG_LDO6_CTRL3,
+		.mask_vosel = MT6360_MASK_LDO6_VOSEL,
+		.shift_vosel = MT6360_MASK_LDO6_VOSEL_SHIFT,
+		.mask_vocal = MT6360_MASK_LDO6_VOCAL,
+	},
+	[MT6360_LDO7] = {
+		.name = "mt6360_ldo7",
+		.ldo_vosel_table = MT6360_LDO7_VOSEL_TABLE,
+		.ldo_vosel_table_len = MT6360_LDO7_VOSEL_TABLE_SIZE,
+		.reg_en_ctrl2 = MT6360_REG_LDO7_EN_CTRL2,
+		.reg_ctrl3 = MT6360_REG_LDO7_CTRL3,
+		.mask_vosel = MT6360_MASK_LDO7_VOSEL,
+		.shift_vosel = MT6360_MASK_LDO7_VOSEL_SHIFT,
+		.mask_vocal = MT6360_MASK_LDO7_VOCAL,
 	},
 };
 
