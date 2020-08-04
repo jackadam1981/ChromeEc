@@ -292,6 +292,12 @@ void setup_fw_config(void)
 	setup_mux();
 
 	board_remap_gpio();
+
+	if (ec_config_has_mst_hub_rtd2141b())
+		ioex_enable_interrupt(IOEX_MST_HPD_OUT);
+
+	if (ec_config_has_hdmi_conn_hpd())
+		ioex_enable_interrupt(IOEX_HDMI_CONN_HPD_3V3_DB);
 }
 DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
 
@@ -443,9 +449,6 @@ static void board_chipset_startup(void)
 {
 	/* Normal charge current */
 	sb_smart_charge_mode(SB_SMART_CHARGE_DISABLE);
-
-	/* hdmi retimer power on */
-	ioex_set_level(IOEX_HDMI_POWER_EN_DB, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -454,9 +457,6 @@ static void board_chipset_suspend(void)
 {
 	/* SMART charge current */
 	sb_smart_charge_mode(SB_SMART_CHARGE_ENABLE);
-
-	/* hdmi retimer power off */
-	ioex_set_level(IOEX_HDMI_POWER_EN_DB, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
@@ -487,14 +487,11 @@ __override void ppc_interrupt(enum gpio_signal signal)
 __override int board_aoz1380_set_vbus_source_current_limit(int port,
 						enum tcpc_rp_value rp)
 {
-	int rv;
+	int rv = 1;
 
 	/* Use the TCPC to set the current limit */
 	if (port == 0) {
 		rv = ioex_set_level(IOEX_USB_C0_PPC_ILIM_3A_EN,
-			    (rp == TYPEC_RP_3A0) ? 1 : 0);
-	} else {
-		rv = ioex_set_level(IOEX_USB_C1_PPC_ILIM_3A_EN,
 			    (rp == TYPEC_RP_3A0) ? 1 : 0);
 	}
 
@@ -566,3 +563,50 @@ const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
 
+/*****************************************************************************
+ * MST hub
+ */
+
+static void mst_hpd_handler(void)
+{
+	int hpd = 0;
+
+	/*
+	 * Ensure level on GPIO_DP1_HPD matches IOEX_MST_HPD_OUT, in case
+	 * we got out of sync.
+	 */
+	ioex_get_level(IOEX_MST_HPD_OUT, &hpd);
+	gpio_set_level(GPIO_DP1_HPD, hpd);
+	ccprints("MST HPD %d", hpd);
+}
+DECLARE_DEFERRED(mst_hpd_handler);
+
+void mst_hpd_interrupt(enum ioex_signal signal)
+{
+	/*
+	 * Goal is to pass HPD through from DB OPT3 MST hub to AP's DP1.
+	 * Immediately invert GPIO_DP1_HPD, to pass through the edge on
+	 * IOEX_MST_HPD_OUT. Then check level after 2 msec debounce.
+	 */
+	int hpd = !gpio_get_level(GPIO_DP1_HPD);
+
+	gpio_set_level(GPIO_DP1_HPD, hpd);
+	hook_call_deferred(&mst_hpd_handler_data, (2 * MSEC));
+}
+
+static void hdmi_hpd_handler(void)
+{
+	int hpd = 0;
+
+	/* Pass HPD through from DB OPT1 HDMI connector to AP's DP1. */
+	ioex_get_level(IOEX_HDMI_CONN_HPD_3V3_DB, &hpd);
+	gpio_set_level(GPIO_DP1_HPD, hpd);
+	ccprints("HDMI HPD %d", hpd);
+}
+DECLARE_DEFERRED(hdmi_hpd_handler);
+
+void hdmi_hpd_interrupt(enum ioex_signal signal)
+{
+	/* Debounce for 2 msec. */
+	hook_call_deferred(&hdmi_hpd_handler_data, (2 * MSEC));
+}
