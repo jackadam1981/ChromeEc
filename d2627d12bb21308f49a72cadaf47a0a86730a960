@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8c76972_b1b4705f",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-08-04T11:43:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be SHA256_DIGEST_SIZE?",
+      "range": {
+        "startLine": 266,
+        "startChar": 47,
+        "endLine": 266,
+        "endChar": 58
+      },
+      "revId": "d2627d12bb21308f49a72cadaf47a0a86730a960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fdad347_eaee2dd9",
+        "filename": "common/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-08-04T11:43:59Z",
+      "side": 1,
+      "message": "As commented on the doc, it\u0027s important to tie the authorization value to the key handle. Otherwise, an attacker can transplant authorization_salt and authorization_hmac from one keyhandle to another. Granted, this only matters if you\u0027re using different auth secrets for different credentials, but I believe we should do so (see doc comment).",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 35
+      },
+      "revId": "d2627d12bb21308f49a72cadaf47a0a86730a960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6d323ca_d83791df",
+        "filename": "include/u2f.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2020-08-04T11:43:59Z",
+      "side": 1,
+      "message": "HMACs are of size SHA256_DIGEST_SIZE, P256 is unrelated.",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "d2627d12bb21308f49a72cadaf47a0a86730a960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
