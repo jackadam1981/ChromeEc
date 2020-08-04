@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "87c7bf8b_b5b8e0b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-04T00:23:00Z",
+      "side": 1,
+      "message": "The VIF files are generated when the board is built. So, make -j BOARD\u003datlas will create build/atlas/atlas_vif.txt.\n\nA VIF can be generated manually after the board is built with\nbuild/\u003cboard\u003e/util/genvif -b \u003cboard name\u003e -o \u003cout directory\u003e\n\nI\u0027ll add this information to the commit message.",
+      "parentUuid": "f7c2a12f_8b69dac1",
+      "range": {
+        "startLine": 15,
+        "startChar": 2,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "28eaadf6_c7e83123",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -36,6 +60,23 @@
       "writtenOn": "2020-08-03T20:20:51Z",
       "side": 1,
       "message": "This is looking good. I am thinking we are going to need a companion MD readme that instruction people how to generate the VIF and what CONFIG_ options (or fields in a config struct) need to be set correctly.\n\nOverall this is looking really good. Thank you!",
+      "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab7ff393_6d06b8bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-04T00:23:00Z",
+      "side": 1,
+      "message": "The latest version is 3.01 and the format is XML. Much of the information is the same except for the addition of USB4 and PD3.0 fields. We should probably start converting things to the latest version after this CL lands.",
       "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -65,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "21fb6499_2e6421c2",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3985,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-04T00:23:00Z",
+      "side": 1,
+      "message": "We will define these macros when a board is submitted for compliance testing. After the board passes, that board is added to the USB-IF Integrator\u0027s list. So if someone wanted to verify that a board with a given MODEL_PART_NUMBER and PRODUCT_REVISION is compliance tested, it can be found on the USB-IF integrator\u0027s list.\n\nCurrently, no board will have these defined.\n\ngenvif extracts PD information from board.h and usb_pd_policy.c files in the board directories.",
+      "parentUuid": "226123ba_78c87091",
+      "range": {
+        "startLine": 3985,
+        "startChar": 7,
+        "endLine": 3985,
+        "endChar": 38
+      },
+      "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee981c89_4f2be8a9",
         "filename": "util/genvif.c",
         "patchSetId": 3
@@ -79,6 +144,24 @@
       "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9651510_3fb420d5",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-04T00:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee981c89_4f2be8a9",
+      "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -102,6 +185,30 @@
       "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e35fbde_03213d9f",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-04T00:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a525d38_2644b924",
+      "range": {
+        "startLine": 831,
+        "startChar": 6,
+        "endLine": 831,
+        "endChar": 39
+      },
+      "revId": "391dd2aa70ba901bf3f9754b4283187c52baefa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
