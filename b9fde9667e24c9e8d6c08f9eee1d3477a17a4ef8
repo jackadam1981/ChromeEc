@@ -46,6 +46,30 @@
       "revId": "b9fde9667e24c9e8d6c08f9eee1d3477a17a4ef8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae6baaa5_5d25b938",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-04T17:45:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8886566_7d7b0be2",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 58
+      },
+      "revId": "b9fde9667e24c9e8d6c08f9eee1d3477a17a4ef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
