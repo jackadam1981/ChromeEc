@@ -82,7 +82,8 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /* Wake-up pins for hibernate */
 const enum gpio_signal hibernate_wake_pins[] = {
-	GPIO_AC_PRESENT,
+	GPIO_EC_GPM2,
+	GPIO_EC_GPE5,
 	GPIO_LID_OPEN,
 	GPIO_POWER_BUTTON_L,
 };
@@ -565,6 +566,21 @@ void lid_angle_peripheral_enable(int enable)
 	}
 }
 #endif
+
+/* gpio */
+enum gpio_signal GPIO_AC_PRESENT = GPIO_EC_GPE5;
+
+static void ac_present_init(void)
+{
+	if (board_get_version() == 0) {
+		GPIO_AC_PRESENT = GPIO_EC_GPM2;
+
+		gpio_disable_interrupt(GPIO_EC_GPE5);
+		gpio_enable_interrupt(GPIO_AC_PRESENT);
+		extpower_interrupt(GPIO_AC_PRESENT);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, ac_present_init, HOOK_PRIO_INIT_ADC + 1);
 
 /* Sensor */
 
