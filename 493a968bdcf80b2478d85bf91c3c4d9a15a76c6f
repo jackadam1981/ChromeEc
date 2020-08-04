@@ -16,6 +16,52 @@
       "revId": "493a968bdcf80b2478d85bf91c3c4d9a15a76c6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c6d8c8d_46826a7b",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T19:59:39Z",
+      "side": 1,
+      "message": "do we need the compress config around still?",
+      "range": {
+        "startLine": 383,
+        "startChar": 12,
+        "endLine": 383,
+        "endChar": 53
+      },
+      "revId": "493a968bdcf80b2478d85bf91c3c4d9a15a76c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7455973_5772e1d3",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T19:59:39Z",
+      "side": 1,
+      "message": "when do we get to memory map this versus pull the data into ram manually? I thought we always has to pull it into ram",
+      "range": {
+        "startLine": 560,
+        "startChar": 15,
+        "endLine": 560,
+        "endChar": 32
+      },
+      "revId": "493a968bdcf80b2478d85bf91c3c4d9a15a76c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
