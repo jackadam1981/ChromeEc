@@ -33,6 +33,24 @@
       "revId": "75eaed6e345a3df1df62769f73ee5a3c08e4ebca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a0f6afd_899b1b9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-04T19:43:01Z",
+      "side": 1,
+      "message": "From what I remember, the GRL accepts both text and XML VIFs. But yes, I think we should switch to the latest version of the spec.",
+      "parentUuid": "9b7ff7ba_e2844e1d",
+      "revId": "75eaed6e345a3df1df62769f73ee5a3c08e4ebca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
