@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23bb67b6_d0bcbd13",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-04T22:59:59Z",
+      "side": 1,
+      "message": "Changes like this should be made at the board level. Please move this configuration from this file to the individual board.c files in a separate CL. Having done that, make another CL to change the values of tcpc_config, etc. from their Volteer values to the Halvor values.",
+      "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
