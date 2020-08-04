@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c84784f_b5584e3d",
+        "filename": "board/it8xxx2_pdevb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T18:42:45Z",
+      "side": 1,
+      "message": "nit: can you move this to the top of board.h (right under including baseboard.h)\n\nWe normally use mark this config as special since it is dangerous to release in normal boards (which this board isn\u0027t)\n\nAdd a comment saying that this is a development board only and will never be released on a chrome os device)",
+      "revId": "929088ed9fc632962066b6a38a0e6b92924fc440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d15998b4_da07c2fa",
+        "filename": "board/reef_it8320/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T18:42:45Z",
+      "side": 1,
+      "message": "same for placement (just near the top with a comment)",
+      "revId": "929088ed9fc632962066b6a38a0e6b92924fc440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
