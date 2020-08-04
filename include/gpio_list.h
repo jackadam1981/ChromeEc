@@ -100,7 +100,11 @@ const int gpio_ih_count = ARRAY_SIZE(gpio_irq_handlers);
 #define IOEX_INT(name, expin, flags, handler) {#name, IOEX_##expin, flags},
 
 /* IO expander signal list. */
+#ifdef CONFIG_IO_EXPANDER_DYNAMIC
+struct ioex_info ioex_list[] = {
+#else
 const struct ioex_info ioex_list[] = {
+#endif
 	#include "gpio.wrap"
 };
 BUILD_ASSERT(ARRAY_SIZE(ioex_list) == IOEX_COUNT);

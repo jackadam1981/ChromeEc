@@ -26,7 +26,12 @@ struct ioex_info {
 };
 
 /* Signal information from board.c.  Must match order from enum ioex_signal. */
+#ifdef CONFIG_IO_EXPANDER_DYNAMIC
+extern struct ioex_info ioex_list[];
+#else
 extern const struct ioex_info ioex_list[];
+#endif
+
 extern void (* const ioex_irq_handlers[])(enum ioex_signal signal);
 extern const int ioex_ih_count;
 

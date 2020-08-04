@@ -1383,6 +1383,11 @@
 #undef CONFIG_IO_EXPANDER
 
 /*
+ * IO Expander ioex_list has non-const configuration.
+ */
+#undef CONFIG_IO_EXPANDER_DYNAMIC
+
+/*
  * EC's supporting powering down GPIO pins.
  * Add flag GPIO_POWER_DOWN and additional API's.
  */
