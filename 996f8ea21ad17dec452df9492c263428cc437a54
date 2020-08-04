@@ -87,6 +87,29 @@
       "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cd128e1_df9ef9c5",
+        "filename": "test/usb_pe.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T16:02:26Z",
+      "side": 1,
+      "message": "Glad you fixed this, though I wonder if we should add some protections against this getting out of sync in the future (this could be a follow-up CL).  Jett or Sam, any thoughts there?",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 26
+      },
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
