@@ -988,6 +988,9 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 	if (IS_ENABLED(CONFIG_USB_PD_PREFER_MV))
 		charge_reset_stable_current();
 
+	if (charge_manager_get_supplier() == CHARGE_SUPPLIER_BC12_CDP)
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
+			port, NULL);
 	charge.current = max_ma;
 	charge.voltage = supply_voltage;
 	charge_manager_update_charge(CHARGE_SUPPLIER_PD, port, &charge);
