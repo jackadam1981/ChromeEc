@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "316362b2_87429c66",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T19:20:06Z",
+      "side": 1,
+      "message": "Can you add order of operation parenthesis please? like\n\n\t *\t     \u003d 100 * ((100 * remain / full) - shutdown_pct) /\n\t *\t\t     (full_factor - shutdown_pct)\n\t *\t     \u003d 100 * ((100 * remain) - (full * shutdown_pct)) /\n\t *\t\t     (full * (full_factor - shutdown_pct))\n\nalso can you add the () to the code as well?",
+      "range": {
+        "startLine": 602,
+        "startChar": 17,
+        "endLine": 609,
+        "endChar": 65
+      },
+      "revId": "875d8d0b8d79a88cba1b0e2f5d7fdca6fa3d972d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
