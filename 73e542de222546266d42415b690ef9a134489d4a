@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66c6fb90_802388aa",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-04T22:53:30Z",
+      "side": 1,
+      "message": "Instead of #undefing these here, please create another change that moves these #defines from baseboard.h to the individual board.h files for each board without changing them. Then follow that with this change to just change the values.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "73e542de222546266d42415b690ef9a134489d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
