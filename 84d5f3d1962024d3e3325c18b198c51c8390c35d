@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8a8a5f6_2a4192d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-04T23:14:52Z",
+      "side": 1,
+      "message": "halvor",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69677fe6_da3bf1cd",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-04T23:14:52Z",
+      "side": 1,
+      "message": "Nit: Line these up with the other PIN() macros.",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c99435cf_6295e7c2",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-04T23:14:52Z",
+      "side": 1,
+      "message": "Should these have UNUSED_ names?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cc260db_1b2e5587",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-04T23:14:52Z",
+      "side": 1,
+      "message": "What about this one?",
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a907811d_5647ace3",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-04T23:14:52Z",
+      "side": 1,
+      "message": "Should this have an UNUSED_ name?",
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
