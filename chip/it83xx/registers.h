@@ -164,6 +164,7 @@
 #define IT83XX_IRQ_WKO132         132
 #define IT83XX_IRQ_WKO133         133
 #define IT83XX_IRQ_WKO134         134
+#define IT83XX_IRQ_WKO135         135
 /* Group 17 */
 #define IT83XX_IRQ_WKO136         136
 #define IT83XX_IRQ_WKO137         137
@@ -407,6 +408,7 @@
 #define IT83XX_CPU_INT_IRQ_132     2
 #define IT83XX_CPU_INT_IRQ_133     2
 #define IT83XX_CPU_INT_IRQ_134     2
+#define IT83XX_CPU_INT_IRQ_135     2
 #define IT83XX_CPU_INT_IRQ_136     2
 #define IT83XX_CPU_INT_IRQ_137     2
 #define IT83XX_CPU_INT_IRQ_138     2

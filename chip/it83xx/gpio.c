@@ -185,6 +185,7 @@ static const struct {
 	[IT83XX_IRQ_WKO132] =   {GPIO_J, BIT(4),        14, BIT(4)},
 	[IT83XX_IRQ_WKO133] =   {GPIO_J, BIT(5),        14, BIT(5)},
 	[IT83XX_IRQ_WKO134] =   {GPIO_J, BIT(6),        14, BIT(6)},
+	[IT83XX_IRQ_WKO135] =   {GPIO_J, BIT(7),        14, BIT(7)},
 	[IT83XX_IRQ_WKO136] =   {GPIO_L, BIT(0),        15, BIT(0)},
 	[IT83XX_IRQ_WKO137] =   {GPIO_L, BIT(1),        15, BIT(1)},
 	[IT83XX_IRQ_WKO138] =   {GPIO_L, BIT(2),        15, BIT(2)},
