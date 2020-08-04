@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea5d8672_5b1542d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-04T07:26:55Z",
+      "side": 1,
+      "message": "please add b:162805450",
+      "revId": "eb26ab4e0885ed60d0eb58fbf8777b4849bff4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c831903_9155f80c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-04T07:26:55Z",
+      "side": 1,
+      "message": "Thanks for the fast response!",
+      "revId": "eb26ab4e0885ed60d0eb58fbf8777b4849bff4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d404e35_121ed410",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-04T07:26:55Z",
+      "side": 1,
+      "message": "Do we need to add the 1.8v selection register (GCR33?) here?",
+      "revId": "eb26ab4e0885ed60d0eb58fbf8777b4849bff4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
