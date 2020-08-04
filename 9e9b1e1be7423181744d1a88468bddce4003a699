@@ -46,6 +46,30 @@
       "revId": "9e9b1e1be7423181744d1a88468bddce4003a699",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f7cd6e7_c22bee84",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-08-04T05:08:42Z",
+      "side": 1,
+      "message": "Thanks. I see your point.\n\nCould you try function pd_capable()? I think should address your request.",
+      "parentUuid": "42532ff9_a258b87d",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 32
+      },
+      "revId": "9e9b1e1be7423181744d1a88468bddce4003a699",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
