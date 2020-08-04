@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71f68a72_54473e02",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T17:04:22Z",
+      "side": 1,
+      "message": "Ordering sensitive? This is listed as after changing REG_FLOW1 in the instructions",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 830,
+        "endChar": 14
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d45469e_76afa838",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T17:04:22Z",
+      "side": 1,
+      "message": "Probably also worth a separate CL, but is this obsolete now that we have the newest inits?",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 846,
+        "endChar": 49
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23343144_150e768b",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T17:04:22Z",
+      "side": 1,
+      "message": "Two questions:\n1. Is precharge current the correct one to use here?  That\u0027s typically 256 mA \n2. This equation differs between the slide deck given and the most recent datasheet we have.  It\u0027s either 50 mA + (IBAT_EOC_TH  * 100mA) or 50mA * (IBAT_EOC_TH + 100 mA).  I would guess the first would make the most sense given the units on the second would be mA^2",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 19
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2d443e1_3a1b4f1d",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T17:04:22Z",
+      "side": 1,
+      "message": "Would over-write OTG if we have a dongle plugged into C0 first, then plug a charger into C1.  Also, should probably lock the flow1 mutex since PD tasks also access flow 1?",
+      "range": {
+        "startLine": 927,
+        "startChar": 0,
+        "endLine": 928,
+        "endChar": 35
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7979113e_e0bdb4b6",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T17:04:22Z",
+      "side": 1,
+      "message": "nit: if we want to keep these in datasheet order, should ahve IBAT_CHG and IBUS_CHG before VBUS above",
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a61891b_65a8c241",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T17:04:22Z",
+      "side": 1,
+      "message": "nit: could also define a mask here",
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cca5cbc_00e46fb9",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T17:04:22Z",
+      "side": 1,
+      "message": "nit: We should update these bits to the new datasheet.  I can cover that in a separate CL if you\u0027d like",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 44
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4274b30a_1b75f4a5",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T17:04:22Z",
+      "side": 1,
+      "message": "nit: would go before PHOT1 in datasheet",
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
