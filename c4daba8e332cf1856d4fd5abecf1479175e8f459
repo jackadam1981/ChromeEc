@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee85dfcf_8689802d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T20:38:39Z",
+      "side": 1,
+      "message": "This is great! Thank you!",
+      "revId": "c4daba8e332cf1856d4fd5abecf1479175e8f459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6afeacb0_10d8868e",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T20:38:39Z",
+      "side": 1,
+      "message": "nit: TEST_EQ(mock_tcpic.., EC_SUCCESS, \"%d\"); will give you more debug output when this fails",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 12
+      },
+      "revId": "c4daba8e332cf1856d4fd5abecf1479175e8f459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
