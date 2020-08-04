@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b288c02_6c88164a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-08-04T05:44:12Z",
+      "side": 1,
+      "message": "Add a couple of other folks who are much more knowledgable than me about this.\nThe spec quoted is the 3.0 spec.\nMaybe you should check to see if it is the same for the 2.0 spec, and if not,\nuse the PD 3.0 #define to gate it.\n",
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20884472_bb0dc945",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-08-04T05:44:12Z",
+      "side": 1,
+      "message": "Maybe PE_DR_SNK_SEND_SOURCE_CAP to be consistent with other states.",
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
