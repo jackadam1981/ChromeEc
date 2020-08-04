@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9eebe9c4_2cc35fe8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-04T15:34:44Z",
+      "side": 1,
+      "message": "7m7wb size based on: https://chromium.googlesource.com/chromiumos/platform/ec/+/824ac750/chip/npcx/config_chip-npcx7.h#80\n7m7wc size based on: https://chromium.googlesource.com/chromiumos/platform/ec/+/824ac750/chip/npcx/config_chip-npcx7.h#95\n\nI didn\u0027t cross reference to the datasheets.",
+      "parentUuid": "b90b1ac0_761e18ed",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "37556a569b7de7f2edeee270bd4b1d8bf3110602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "768e50f9_408b687c",
         "filename": "baseboard/kalista/baseboard.h",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2020-08-03T23:27:47Z",
       "side": 1,
       "message": "did you mean to include this change with the common change?\nit\u0027s not obvious why this change should be included here.",
+      "revId": "37556a569b7de7f2edeee270bd4b1d8bf3110602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b35e92f9_6a6f3b7a",
+        "filename": "baseboard/kalista/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-04T15:34:44Z",
+      "side": 1,
+      "message": "kalista reduces CONFIG_RW_SIZE by half.  With this CL, the allowable flash region is now CONFIG_EC_WRITABLE_STORAGE_SIZE instead of CONFIG_RW_SIZE. If kalista doesn\u0027t adjust CONFIG_EC_WRITABLE_STORAGE_SIZE, then RW_A image could be programmed that corrupts the RW_B image.\n\nI\u0027ll make this a separate CL that is a parent to the current CL.",
+      "parentUuid": "768e50f9_408b687c",
       "revId": "37556a569b7de7f2edeee270bd4b1d8bf3110602",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
