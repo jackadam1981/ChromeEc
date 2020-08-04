@@ -45,6 +45,30 @@
       "revId": "db4eb53c069a74df7e993dabde229521a508c420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb99430_b40343bb",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-04T04:26:55Z",
+      "side": 1,
+      "message": "50 msec delay is required, without that TBT dock is not enumerated as TBT device.\nAnd there is a delay in programming Mux as compared to retimer.",
+      "parentUuid": "8e1daf8a_30e7fd75",
+      "range": {
+        "startLine": 336,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 13
+      },
+      "revId": "db4eb53c069a74df7e993dabde229521a508c420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
