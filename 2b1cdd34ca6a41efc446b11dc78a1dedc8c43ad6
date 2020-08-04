@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba689421_3cfdcd99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-04T17:33:34Z",
+      "side": 1,
+      "message": "(forgot to publish this)",
+      "revId": "2b1cdd34ca6a41efc446b11dc78a1dedc8c43ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d57e1623_27a10adb",
+        "filename": "include/ocpc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-04T17:33:34Z",
+      "side": 1,
+      "message": "grr, need to find a way around this...\n\n```\n  CC      RW/chip/stm32/host_command_common.o\nIn file included from include/charger.h:12,\n                 from board/masterball/board.c:7:\ninclude/ocpc.h:37:21: error: \u0027CONFIG_USB_PD_PORT_MAX_COUNT\u0027 undeclared here (not in a function); did you mean \u0027CONFIG_USB_PD_HOST_CMD\u0027?\n  uint32_t chg_flags[CONFIG_USB_PD_PORT_MAX_COUNT];\n                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~\n                     CONFIG_USB_PD_HOST_CMD\ncc1: error: unrecognized command line option \u0027-Wno-address-of-packed-member\u0027 [-Werror]\n```",
+      "revId": "2b1cdd34ca6a41efc446b11dc78a1dedc8c43ad6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
