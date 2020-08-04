@@ -130,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "0a6a07c3_9557d7b2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5469,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T21:24:46Z",
+      "side": 1,
+      "message": "We should check for discard and send a soft reset if the AMS is interrupted.  The Get Source Capabilities AMS is not interruptible.  I wouldn\u0027t expect this to happen a whole lot, but I suppose you never know what a port partner will do.",
+      "parentUuid": "0d8e2ce7_22b28eae",
+      "range": {
+        "startLine": 5468,
+        "startChar": 1,
+        "endLine": 5469,
+        "endChar": 42
+      },
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cd128e1_df9ef9c5",
         "filename": "test/usb_pe.h",
         "patchSetId": 1
@@ -165,6 +189,30 @@
       "side": 1,
       "message": "Paul is working on changing this test to no longer assert on internal state changes and instead only use observable boundary API changes e.g. PRL, TC, TCPC to verify these tests.\n\nTLDR; this enum list should go away soon-ish",
       "parentUuid": "3cd128e1_df9ef9c5",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 26
+      },
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5033ec5e_1257f9fb",
+        "filename": "test/usb_pe.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-04T21:24:46Z",
+      "side": 1,
+      "message": "Okay, that\u0027s good to know.  Duplicate enums and flags can get tricky fast.",
+      "parentUuid": "8afeeb18_22bca4e6",
       "range": {
         "startLine": 132,
         "startChar": 1,
