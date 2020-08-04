@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a557610b_4da3bd40",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T19:51:34Z",
+      "side": 1,
+      "message": "Since we aren\u0027t copying ROM_RESISDENT into RAM (via the linker script), shouldn\u0027t the virtual and load address be the same? Why would the be different?\n\n(fully disclosure that I am shaky on details about LMAs and VMAs)",
+      "range": {
+        "startLine": 510,
+        "startChar": 5,
+        "endLine": 510,
+        "endChar": 20
+      },
+      "revId": "f400b3f7edb00b008c87d8690bf51bab6c7bced5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
