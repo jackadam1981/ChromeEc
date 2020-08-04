@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bcab31c_fb228af3",
+        "filename": "board/it8xxx2_pdevb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T18:45:50Z",
+      "side": 1,
+      "message": "you don\u0027t need to undef TCPMv1, just omit the line",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "414300d78a2c37b1a87cd8a86e393049fc5f8e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "906c75db_fa259946",
+        "filename": "board/it8xxx2_pdevb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T18:45:50Z",
+      "side": 1,
+      "message": "this is Octopus\u0027s PID, can use use 0x1234 instead and say that this is a dev board and doesn\u0027t have a reserved PID",
+      "range": {
+        "startLine": 44,
+        "startChar": 23,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "414300d78a2c37b1a87cd8a86e393049fc5f8e87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
