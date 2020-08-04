@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d24ac192_5ba9a7a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-08-04T14:23:06Z",
+      "side": 1,
+      "message": "Add reviewer who are more familiar with the driver than me.",
+      "revId": "fdf5d0ecd3697ee0ff819d984ce87d4b0008b37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6f3a977_c203f4bb",
+        "filename": "driver/bc12/pi3usb9201.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-08-04T14:23:06Z",
+      "side": 1,
+      "message": "1. This function will disable bc12 detection, and I think no matter you are going to update the bc12 type or not, you should disable it.\n\n2. Just noticed that: pd_cacpable() uses the flag PD_FLAGS_PREVIOUS_PD_CONN, and it\u0027s updated while receiving SrcCap or the port partner replied Ack to SrcCap. There could be a gap between USB_CHG_EVENT_BC12 raised and the flag PD_FLAGS_PREVIOUS_PD_CONN update (that is, the evt is raised before the flag updated). I am not sure if this would be the best way to use pd_capable() here.",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 30
+      },
+      "revId": "fdf5d0ecd3697ee0ff819d984ce87d4b0008b37e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
