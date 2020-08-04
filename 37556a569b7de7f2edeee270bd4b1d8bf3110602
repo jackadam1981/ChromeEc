@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b90b1ac0_761e18ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-08-04T03:00:40Z",
+      "side": 1,
+      "message": "I think these should be swapped. i.e:\nnpcx7m7wb     256 KiB           512 KiB\nnpcx7m7wc     252 KiB           256 KiB",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "37556a569b7de7f2edeee270bd4b1d8bf3110602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "768e50f9_408b687c",
         "filename": "baseboard/kalista/baseboard.h",
         "patchSetId": 2
