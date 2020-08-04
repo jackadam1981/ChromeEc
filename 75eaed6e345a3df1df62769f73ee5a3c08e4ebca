@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bb4f2e7_ab0ed4a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-04T00:23:21Z",
+      "side": 1,
+      "message": "The latest version is 3.01 and the format is XML. Much of the information is the same except for the addition of USB4 and PD3.0 fields. We should probably start converting things to the latest version after this CL lands.",
+      "revId": "75eaed6e345a3df1df62769f73ee5a3c08e4ebca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
