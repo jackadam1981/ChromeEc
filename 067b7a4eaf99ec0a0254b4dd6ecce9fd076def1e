@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "9d6660aa_ec3228a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-04T16:50:52Z",
+      "side": 1,
+      "message": "Volteer",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "067b7a4eaf99ec0a0254b4dd6ecce9fd076def1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd3bed8_4c484cea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-04T16:50:52Z",
+      "side": 1,
+      "message": "battery charger tests like battery-cut off or hibernate on critical battery.",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "067b7a4eaf99ec0a0254b4dd6ecce9fd076def1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "efb674d8_221ee9a7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -42,6 +88,52 @@
         "startChar": 4,
         "endLine": 11,
         "endChar": 8
+      },
+      "revId": "067b7a4eaf99ec0a0254b4dd6ecce9fd076def1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c43cf50_329124d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-04T16:50:52Z",
+      "side": 1,
+      "message": "2",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "067b7a4eaf99ec0a0254b4dd6ecce9fd076def1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b64d08bd_c4793008",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-04T16:50:52Z",
+      "side": 1,
+      "message": "2, and DUT battery goes to cutoff state?",
+      "range": {
+        "startLine": 16,
+        "startChar": 28,
+        "endLine": 16,
+        "endChar": 31
       },
       "revId": "067b7a4eaf99ec0a0254b4dd6ecce9fd076def1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
