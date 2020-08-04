@@ -117,6 +117,30 @@
       "revId": "8cc78a650b9619c2538667e1f881a37b9d0a832f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831cc3a0_2bb390a7",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T23:01:41Z",
+      "side": 1,
+      "message": "This does pass both Retransmission tests for PD 2.0 and 3.0",
+      "parentUuid": "5e7540b3_9e8c4c0f",
+      "range": {
+        "startLine": 969,
+        "startChar": 40,
+        "endLine": 969,
+        "endChar": 57
+      },
+      "revId": "8cc78a650b9619c2538667e1f881a37b9d0a832f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
