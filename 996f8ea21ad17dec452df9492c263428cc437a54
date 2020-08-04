@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "ec8216da_31c79b14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T20:20:40Z",
+      "side": 1,
+      "message": "Thanks for fixing this Peter!\n\nI think there is an existing pot hole you might be hitting for a discard path that we don\u0027t necessarily handle correct in every case today (and hopefully we don\u0027t add more)",
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20884472_bb0dc945",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -90,6 +107,29 @@
     },
     {
       "key": {
+        "uuid": "0d8e2ce7_22b28eae",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5469,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T20:20:40Z",
+      "side": 1,
+      "message": "what about the discard path (When the outgoing TX message is discarded without notification up to PE)? Diana, any thoughts?\n\nI think we would stay in this state indefinitely in that case.\n\nShould we just use a timeout to be safe?",
+      "range": {
+        "startLine": 5468,
+        "startChar": 1,
+        "endLine": 5469,
+        "endChar": 42
+      },
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cd128e1_df9ef9c5",
         "filename": "test/usb_pe.h",
         "patchSetId": 1
@@ -110,6 +150,30 @@
       "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8afeeb18_22bca4e6",
+        "filename": "test/usb_pe.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-04T20:20:40Z",
+      "side": 1,
+      "message": "Paul is working on changing this test to no longer assert on internal state changes and instead only use observable boundary API changes e.g. PRL, TC, TCPC to verify these tests.\n\nTLDR; this enum list should go away soon-ish",
+      "parentUuid": "3cd128e1_df9ef9c5",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 26
+      },
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
