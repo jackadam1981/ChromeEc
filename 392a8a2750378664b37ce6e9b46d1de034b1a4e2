@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "6162e56b_8c766443",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "File one. or use one from the AVL qualification request.",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84eb7772_ad7bd2e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Add the CL you use to add the sensor to the nucleo board.",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93209f67_5efa4da2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Assuming you have an interrupt line between the nucleo board and the Pi, run \ntast run \u003cip of dut\u003e hardware.SensorRing\n\nto check the fast path is working.",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74a0fefd_5aaed2fb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -48,6 +99,24 @@
       "side": 1,
       "message": "Do you mind if we keep the current implementation? This is to keep the same manner for accel and gyro.",
       "parentUuid": "a8475920_f601d221",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae19684e_3abc9007",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "The tables for gyro are indeed more complicated but I think it is doable. We are usually space constraints in the EC, that why I would like the code to be as small as possible.",
+      "parentUuid": "84648168_0c105245",
       "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

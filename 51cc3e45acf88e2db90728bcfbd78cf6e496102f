@@ -1,0 +1,480 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b91c289c_5e6a19b2",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "If we use macros for fs and rates, we can remove that structure.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b2e6e3_4ee3733d",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93985dbe_6f80ac40",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fd30b78_20f96b6f",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46adda54_a66cd5c3",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628be803_5199cad1",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "682046a2_37819789",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ebb67e_36a510cf",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "574fca6b_3d812669",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "You can move this line in the case above and remove startup_time_ms, stop_time_ms fom the config structure.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a205d1a_41548a14",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f6a8aa6_f30c7df3",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27544cc4_4ab2a337",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ecd6e6_0bb902bf",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260b65a3_be14c949",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04c035d2_3688316d",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7289d526_79589961",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92f3994c_a80fd111",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "708fbc6c_54a58344",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f07559_3eafc081",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Given intf_config6 is used once, use #ifdef instead of a field in icm426xx_serial_bus.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df464fc6_48591eea",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Same for i3c_bus_mode",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87c58540_6a30cc7f",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Same for drive_config.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "489fb2e8_9a03897c",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Use constant naming scheme.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7860663_3da2be30",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Explain why. Do you need to do it before the whoami test?",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fcfeea5_2372041e",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "There is currenly one chip, remove supported_chips array.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7de399_7d7a9741",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Just put an index, no need of chip-\u003ename.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb653bd_2253b812",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "Isn\u0027t scale the same for all axis? If so replace array with single field.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc91074e_e20113bd",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "no need. static structure are set to 0.",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40dbdd51_2a870f74",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-04T06:00:25Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
