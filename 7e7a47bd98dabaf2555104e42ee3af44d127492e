@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c13c133_a213b600",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-08-04T05:53:06Z",
+      "side": 1,
+      "message": "Could you reorder the CL and push this chain again?",
+      "revId": "7e7a47bd98dabaf2555104e42ee3af44d127492e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b658406_7ec40f18",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-08-04T05:53:06Z",
+      "side": 1,
+      "message": "nit: add static.",
+      "revId": "7e7a47bd98dabaf2555104e42ee3af44d127492e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a34e7b_6f3fda15",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-08-04T05:53:06Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "7e7a47bd98dabaf2555104e42ee3af44d127492e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
