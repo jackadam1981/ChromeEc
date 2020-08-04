@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11765a3e_d29f86e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-08-04T06:06:11Z",
+      "side": 1,
+      "message": "The key sections of spec are below.\nPlease note REJECT in P2.0 becomes NOT_SUPPORTED in PD3.0.\n\nNote L5458 works because we\u0027re \"usb_pe_\u003e\u003edrp\u003c\u003c_sm.c\" and have a SRC_CAP.\nOther SM may not have support SRC_CAP, and should respond differently.\nR/NS response gated on version; but not applicable to DRP SM here.\n\nN  \u003d Normative.\nRJ \u003d Reject\nNS \u003d *PD3 Not_Supported\nNA \u003d Not Allowed\n\nPD2.0 R1.3 \nTable 8-39 Policy Engine States\nPE_DR_SNK_Give_Source_Cap\nTable 6-39 Applicability of Control Messages\n                  Source  Sink  DRP\nReceived Message\nGet_Source_Cap        N   RJ    N\nTransmitted Message\nSource_Capabilities   N   NA    N\n\nPD3.0 R2.0\nTable 8-71 Policy Engine States\nPE_DR_SNK_Give_Source_Cap\nTable 6-69 Applicability of Control Messages\n                 Source  Sink  DRP\nReceived Message\nGet_Source_Cap       N   NS    N\nTransmitted Message\nSource_Capabilities  N   NA    N",
+      "parentUuid": "4b288c02_6c88164a",
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20884472_bb0dc945",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2020-08-04T05:44:12Z",
       "side": 1,
       "message": "Maybe PE_DR_SNK_SEND_SOURCE_CAP to be consistent with other states.",
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165e4e19_e05933c6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-08-04T06:06:11Z",
+      "side": 1,
+      "message": "Per the PD spec, it is exactly: \"PE_DR_SNK_Give_Source_Cap\"\nThus I suggest leaving it as is for easier Ctrl+F comparison to spec.\n\n(This is different than PE_SEND_xxxx in that we don\u0027t expect a response back.)",
+      "parentUuid": "20884472_bb0dc945",
       "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
