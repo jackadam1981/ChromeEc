@@ -34,6 +34,23 @@
       "revId": "f593c3800130b3d0fd6fbfab5032db21ee0c7935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2860ae42_27efdc72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-08-04T23:08:43Z",
+      "side": 1,
+      "message": "Would you mind running the ./util/compare_build.sh script to make sure that the build output is the same?",
+      "revId": "f593c3800130b3d0fd6fbfab5032db21ee0c7935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
