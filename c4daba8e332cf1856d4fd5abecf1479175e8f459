@@ -39,6 +39,30 @@
       "revId": "c4daba8e332cf1856d4fd5abecf1479175e8f459",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e6f79b0_991057f4",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-04T21:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6afeacb0_10d8868e",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 12
+      },
+      "revId": "c4daba8e332cf1856d4fd5abecf1479175e8f459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
