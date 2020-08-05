@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "648542b5_d2a6bd44",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-05T17:00:38Z",
+      "side": 1,
+      "message": "They are still not aligned. You will need to use spaces instead of tabs.",
+      "parentUuid": "69677fe6_da3bf1cd",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c99435cf_6295e7c2",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 4
