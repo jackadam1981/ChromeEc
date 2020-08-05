@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7d70cde_619304e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-05T20:07:10Z",
+      "side": 1,
+      "message": "These are the tests Diana verified:\n\nThe normal cases:\n(1) Host suspend event -\u003e SYS_SLEEP_S0IX GPIO assertion -\u003e go to S3 -\u003e SUSPEND hook triggered\n(2) Continue (2), SYS_SLEEP_S0IX GPIO deassertion -\u003e go to S0, host resume event -\u003e RESUME hook triggered\n\nThe failure cases:\n(3) Host suspend event -\u003e no SYS_SLEEP_S0IX GPIO assertion -\u003e timeout -\u003e HANG_DETECT -\u003e wake AP up\n(4) Continue (2), already in S0ix state, SYS_SLEEP_S0IX deassertion -\u003e go to S0 -\u003e timeout waiting the host resume event -\u003e HANG_DETECT -\u003e wake AP up -\u003e RESUME hook triggered\n(5) Continue (2), already in S0ix state, SYS_SLEEP_S0IX GPIO deassertion -\u003e go to S0 -\u003e SYS_SLEEP_S0IX assertion -\u003e go to S3",
+      "revId": "63b02161694ca891faee574b0eff62e89c22fa4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
