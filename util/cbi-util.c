@@ -259,7 +259,7 @@ static int cmd_create(int argc, char **argv)
 		const char *dram_part_num;
 		const char *oem_name;
 	} bi;
-	struct cbi_header *h;
+	struct datablob_header *h;
 	int rv;
 	uint8_t *p;
 	const char *filename;
@@ -349,10 +349,10 @@ static int cmd_create(int argc, char **argv)
 	}
 	memset(cbi, erase, size);
 
-	h = (struct cbi_header *)cbi;
-	memcpy(h->magic, cbi_magic, sizeof(cbi_magic));
-	h->major_version = CBI_VERSION_MAJOR;
-	h->minor_version = CBI_VERSION_MINOR;
+	h = (struct datablob_header *)cbi;
+	memcpy(h->magic, datablob_magic, sizeof(datablob_magic));
+	h->major_version = DATABLOB_VERSION_MAJOR;
+	h->minor_version = DATABLOB_VERSION_MINOR;
 	p = h->data;
 	p = cbi_set_data(p, CBI_TAG_BOARD_VERSION, &bi.ver.val, bi.ver.size);
 	p = cbi_set_data(p, CBI_TAG_OEM_ID, &bi.oem.val, bi.oem.size);
@@ -383,7 +383,7 @@ static int cmd_create(int argc, char **argv)
 
 static void print_string(const uint8_t *buf, enum cbi_data_tag tag)
 {
-	struct cbi_data *d = cbi_find_tag(buf, tag);
+	struct datablob_item *d = cbi_find_tag(buf, tag);
 	const char *name;
 
 	if (!d)
@@ -398,7 +398,7 @@ static void print_string(const uint8_t *buf, enum cbi_data_tag tag)
 static void print_integer(const uint8_t *buf, enum cbi_data_tag tag)
 {
 	uint32_t v;
-	struct cbi_data *d = cbi_find_tag(buf, tag);
+	struct datablob_item *d = cbi_find_tag(buf, tag);
 	const char *name;
 
 	if (!d)
@@ -428,7 +428,7 @@ static int cmd_show(int argc, char **argv)
 {
 	uint8_t *buf;
 	uint32_t size;
-	struct cbi_header *h;
+	struct datablob_header *h;
 	uint32_t set_mask = 0;
 	const char *filename;
 	int show_all = 0;
@@ -464,10 +464,10 @@ static int cmd_show(int argc, char **argv)
 		return -1;
 	}
 
-	h = (struct cbi_header *)buf;
+	h = (struct datablob_header *)buf;
 	printf("CBI image: %s\n", filename);
 
-	if (memcmp(h->magic, cbi_magic, sizeof(cbi_magic))) {
+	if (memcmp(h->magic, datablob_magic, sizeof(datablob_magic))) {
 		fprintf(stderr, "Invalid Magic\n");
 		free(buf);
 		return -1;
