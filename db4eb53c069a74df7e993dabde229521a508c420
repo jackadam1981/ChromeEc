@@ -69,6 +69,30 @@
       "revId": "db4eb53c069a74df7e993dabde229521a508c420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f38eab4_dff7e745",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-08-05T21:45:36Z",
+      "side": 1,
+      "message": "Could we remove reset of retimer from this? Delaying retimer safe mode seems fine as it tries to be then in sync with SoC safe mode.",
+      "parentUuid": "acb99430_b40343bb",
+      "range": {
+        "startLine": 336,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 13
+      },
+      "revId": "db4eb53c069a74df7e993dabde229521a508c420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
