@@ -77,7 +77,7 @@ static int test_cbi(void)
 	/* Data not found */
 	reset_cbi();
 	size = 1;
-	TEST_ASSERT(cbi_get_board_info(tag, &d8, &size) == EC_ERROR_UNKNOWN);
+	TEST_ASSERT(cbi_get_board_info(tag, &d8, &size) == EC_ERROR_NOT_FOUND);
 
 	/* Data too large */
 	reset_cbi();
@@ -122,11 +122,11 @@ static int test_cbi(void)
 	d8 = 0xa5;
 	TEST_ASSERT(cbi_set_board_info(tag, &d8, sizeof(d8)) == EC_SUCCESS);
 	i2c_read8(I2C_PORT_EEPROM, I2C_ADDR_EEPROM_FLAGS,
-		   offsetof(struct cbi_header, crc), &out);
+		   offsetof(struct datablob_header, crc), &out);
 	i2c_write8(I2C_PORT_EEPROM, I2C_ADDR_EEPROM_FLAGS,
-		   offsetof(struct cbi_header, crc), ++out);
+		   offsetof(struct datablob_header, crc), ++out);
 	cbi_invalidate_cache();
-	TEST_ASSERT(cbi_get_board_info(tag, &d8, &size) == EC_ERROR_UNKNOWN);
+	TEST_ASSERT(cbi_get_board_info(tag, &d8, &size) == EC_ERROR_INVAL);
 
 	return EC_SUCCESS;
 }
