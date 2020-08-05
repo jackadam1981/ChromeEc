@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "3bb69524_748b9782",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T22:45:59Z",
+      "side": 1,
+      "message": "Thanks for catching that. I cleaned up the comments.",
+      "parentUuid": "14ee72dc_af519244",
+      "revId": "c46d49842f2bf46565a05b5332a6a6dffa1c6ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1296aa35_d365e8e0",
         "filename": "test/usb_tcpmv2_tcpci.c",
         "patchSetId": 6
@@ -73,6 +91,30 @@
       "revId": "c46d49842f2bf46565a05b5332a6a6dffa1c6ff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1ffd8b_14f7c2b1",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T22:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1296aa35_d365e8e0",
+      "range": {
+        "startLine": 271,
+        "startChar": 4,
+        "endLine": 271,
+        "endChar": 14
+      },
+      "revId": "c46d49842f2bf46565a05b5332a6a6dffa1c6ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
