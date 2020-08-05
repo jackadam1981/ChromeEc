@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d420f76_ab18c2ad",
+        "filename": "board/fleex/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T20:47:50Z",
+      "side": 1,
+      "message": "nit: maybe just incline this function in init otherwise someone might be tempted in the future to call this function in an interrupt handler and potentially get a difference result than was was used during initialization.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 1
+      },
+      "revId": "36cb31042fb92e64b330456f9ac021776365c87d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
