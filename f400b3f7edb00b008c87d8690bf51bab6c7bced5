@@ -22,6 +22,30 @@
       "revId": "f400b3f7edb00b008c87d8690bf51bab6c7bced5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "360d9c0e_eab77e01",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-05T17:17:09Z",
+      "side": 1,
+      "message": "I\u0027ve updated the comments in the file to help clarify.  \n\nIn general VMA \u003d ROM address, LMA \u003d RAM address. However, for NPCX the VMA is actually set to the code RAM address.  This is because on the NPCX on-chip ROM code is responsible for copying the EC image from ROM to RAM before the image is executed.  By the time our image runs, everything is already in code RAM.\n\nThe .text and .rodata sections set their LMA \u003d\u003d VMA, because the VMA already points to the code RAM address.\n\nThe .data section has a VMA in the code RAM, and the LMA is in the data RAM. At runtime, we copy .data from code RAM to data RAM.  I am also working on moving the .data section into the ROM_RESIDENT region, since it is just wasting space in the code RAM area.\n\n.bss doesn\u0027t really have a VMA, because it has the NOBITS attribute.  The LMA is in data RAM.\n\nThe .init_rom section also has the VMA setup for code RAM so that the EC image is constructed correctly.  The change to npcx/build.mk prevents this section from being copied ROM to RAM at startup.  The LMA for the .init_rom section is set to the offset within flash.",
+      "parentUuid": "a557610b_4da3bd40",
+      "range": {
+        "startLine": 510,
+        "startChar": 5,
+        "endLine": 510,
+        "endChar": 20
+      },
+      "revId": "f400b3f7edb00b008c87d8690bf51bab6c7bced5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
