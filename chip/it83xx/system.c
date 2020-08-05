@@ -131,6 +131,23 @@ void chip_pre_init(void)
 		 * an interrupt is pending.
 		 */
 		IT83XX_GCTRL_WMCR |= BIT(7);
+
+	if (IS_ENABLED(IT83XX_ENABLE_JTAG)) {
+		/* TCK */
+		IT83XX_GPIO_GPCRA0 = 0;
+		/* TDI */
+		IT83XX_GPIO_GPCRA1 = 0;
+		/* TDO */
+		IT83XX_GPIO_GPCRA4 = 0;
+		/* TMS */
+		IT83XX_GPIO_GPCRA5 = 0;
+		/* TRST */
+		IT83XX_GPIO_GPCRA6 = 0;
+		/* Disable 1.8V input of GPA4/GPA5 */
+		IT83XX_GPIO_GRC24 &= ~3;
+		/* */
+		IT83XX_GCTRL_JTAGR0 = 3;
+	}
 }
 
 #define BRAM_VALID_MAGIC        0x4252414D  /* "BRAM" */

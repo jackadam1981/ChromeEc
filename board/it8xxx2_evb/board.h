@@ -11,6 +11,8 @@
 /* Select Baseboard features */
 #include "baseboard.h"
 
+#define IT83XX_ENABLE_JTAG
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
