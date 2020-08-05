@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38b7d706_b9ed60ea",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2020-08-05T20:04:35Z",
+      "side": 1,
+      "message": "I haven\u0027t traced anything, but what calls this before task switching is done? I feel like that should be cleaned up if possible.\nWhat happens if:\n1) Call mutex_lock before task switching\n2) Task switching started\n3) Call mutex_unlock\n\n\nNot sure if that\u0027s a possibility.",
+      "range": {
+        "startLine": 868,
+        "startChar": 6,
+        "endLine": 868,
+        "endChar": 23
+      },
+      "revId": "1b60803df1d716a439b211c79b1dbc4852a0da1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
