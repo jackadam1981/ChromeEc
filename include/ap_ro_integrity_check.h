@@ -27,4 +27,10 @@ int validate_ap_ro(void);
  */
 void ap_ro_add_flash_event(enum ap_ro_verification_ev event);
 
+/* Save AP RO context in NVMEM. */
+int ap_ro_save_context(void);
+
+/* Restore AP RO context from NVMEM. */
+int ap_ro_restore_context(void);
+
 #endif /* ! __CR50_INCLUDE_AP_RO_INTEGRITY_CHECK_H */
