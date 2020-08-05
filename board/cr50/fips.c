@@ -10,6 +10,8 @@
 #include "extension.h"
 #include "fips.h"
 #include "fips_rand.h"
+#include "flash.h"
+#include "flash_info.h"
 #include "flash_log.h"
 #include "hooks.h"
 #include "new_nvmem.h"
@@ -22,10 +24,68 @@
 #include "tpm_nvmem_ops.h"
 #include "u2f_impl.h"
 
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+/**
+ * Vtable with external functions required by FIPS module, but
+ * not directly related with use and management of security
+ * parameters.
+ */
+static const struct fips_vtable *vtable;
+
+#define CPRINTS(format, args...) vtable->cprints(CC_SYSTEM, format, ## args)
 
 /* FIPS mode is temporarily disabled. */
 #define FIPS_MODE_ENABLED 0
+
+struct fips_u2f_state {
+	uint32_t *g2f_entropy; /* G2F DRBG entropy (= entropy in FIPS) */
+	uint32_t *hmac_key; /* HMAC key for key handle (ex salt_kek) */
+	uint32_t *entropy; /* DRBG entropy, 512 bits (ex salt_kh) */
+	uint32_t drbg_entropy_size;
+};
+
+struct fips_u2f_state_item {
+	uint32_t hmac_key[8]; /* HMAC SHA256 key for key handle's MAC */
+	uint32_t entropy[24]; /* DRBG entropy, 768 bits */
+};
+
+#define U2F_SETS \
+	((CONFIG_FLASH_BANK_SIZE / 2) / sizeof(struct fips_u2f_state_item))
+
+struct fips_u2f_state_storage {
+	struct fips_u2f_state_item item[U2F_SETS]; /* U2F partitions */
+};
+
+#define U2F_DATA_SPACE_ADDR \
+	(CONFIG_FLASH_LOG_BASE - sizeof(struct fips_u2f_state_storage))
+
+#define U2F_DATA_FLASH_PAGE_OFFSET                                \
+	((U2F_DATA_SPACE_ADDR & ~(CONFIG_FLASH_ERASE_SIZE - 1)) - \
+	 CONFIG_PROGRAM_MEMORY_BASE)
+
+/* Fixed pointer at the H1 flash page storing the AP RO check information. */
+static struct fips_u2f_state_storage *const u2f_storage =
+	(struct fips_u2f_state_storage *const)U2F_DATA_SPACE_ADDR;
+
+
+static bool u2f_state_loaded;
+static struct fips_u2f_state u2f_state;
+/**
+ * Return current status for U2F keys:
+ * false - U2F keys require zeroization.
+ * true - U2F keys are missing or created in FIPS mode.
+ */
+enum fips_state_flag_t {
+	FIPS_STATE_UNKNOWN = 0x00,
+	FIPS_STATE_NOT_APPROVED = 0xAA,
+	FIPS_STATE_APPROVED = 0xFF
+};
+/**
+ * fips_state is a tri-state flag:
+ *  0   - uninitialized
+ *  128 - initialized, not a FIPS mode
+ *  255 - initialized, FIPS mode
+ */
+static uint8_t fips_state;
 
 /**
  * Combined FIPS status & global FIPS error.
@@ -33,14 +93,326 @@
  */
 static enum fips_status _fips_status;
 
+/* Flag to simulate specific error condition in power-up tests. */
+uint8_t fips_break_cmd;
+
+#define FIPS_KAT_STACK_SIZE 2048
+
+/* Call function using provided stack. */
+static bool call_on_stack(void *new_stack, bool (*func)(void))
+{
+	bool result;
+	/* Call whilst switching stacks */
+	__asm__ volatile("mov r4, sp\n" /* save sp */
+			 "mov sp, %[new_stack]\n"
+			 "blx %[func]\n"
+			 "mov sp, r4\n" /* restore sp */
+			 "mov %[result], r0\n"
+			 : [result] "=r"(result)
+			 : [new_stack] "r"(new_stack),
+			   [func] "r"(func)
+			 : "r0", "r1", "r2", "r3", "r4",
+			   "lr" /* clobbers */
+	);
+	return result;
+}
+
+/* Allocate stack and call function on it. */
+static bool call(bool (*func)(void))
+{
+	bool result = false;
+	char *stack_buf;
+	void *stack;
+
+	if (vtable->shared_mem_acquire(FIPS_KAT_STACK_SIZE, &stack_buf) ==
+	    EC_SUCCESS) {
+		stack = stack_buf + FIPS_KAT_STACK_SIZE;
+		result = call_on_stack(stack, func);
+		vtable->shared_mem_release(stack_buf);
+	}
+	return result;
+}
+
+/**
+ * Check that given address is in same half of flash as FIPS code.
+ * This rejects addresses in SRAM and provides additional security.
+ */
+static bool is_flash_address(const void *ptr)
+{
+	uintptr_t my_addr =
+		(uintptr_t)is_flash_address - CONFIG_PROGRAM_MEMORY_BASE;
+	uintptr_t offset = (uintptr_t)ptr - CONFIG_PROGRAM_MEMORY_BASE;
+
+	if (my_addr >= CONFIG_RW_MEM_OFF &&
+	    my_addr < (CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE))
+		return (offset >= CONFIG_RW_MEM_OFF) &&
+		       (offset <= (CONFIG_RW_MEM_OFF + CONFIG_FLASH_SIZE));
+	if (my_addr >= CONFIG_RW_B_MEM_OFF &&
+		 my_addr < (CONFIG_RW_B_MEM_OFF + CONFIG_RW_SIZE))
+		return (offset >= CONFIG_RW_B_MEM_OFF) &&
+		       (offset <= (CONFIG_RW_B_MEM_OFF + CONFIG_FLASH_SIZE));
+
+	/* Otherwise, we don't know what's going on, don't accept it. */
+	return false;
+}
+
+/*
+ * Function to check if the passed in blob is all same value. This is
+ * used to find uninitialized (filled with 0xff) and cleared
+ * (filled with 0x00) regions in flash.
+ */
+static bool is_all_value(const void *ptr, size_t size, uint8_t value)
+{
+	size_t i;
+	const uint8_t *p = ptr;
+
+	for (i = 0; i < size; i++)
+		if (p[i] != value)
+			return false;
+
+	return true;
+}
+
+/**
+ * Set functions used to save data stored in shared flash pages which when
+ * flash page is erased, and restore it after. Perform sanity check that
+ * provided vtable and referenced functions are in active flash bank.
+ */
+void u2f_set_callbacks(const struct fips_vtable *p_vtable)
+{
+	if (is_flash_address(p_vtable) &&
+	    is_flash_address(p_vtable->ap_ro_save) &&
+	    is_flash_address(p_vtable->ap_ro_restore) &&
+	    is_flash_address(p_vtable->u2f_load) &&
+	    is_flash_address(p_vtable->u2f_zero) &&
+	    is_flash_address(p_vtable->cprints) &&
+	    is_flash_address(p_vtable->shared_mem_acquire) &&
+	    is_flash_address(p_vtable->shared_mem_release) &&
+	    is_flash_address(p_vtable->flash_log_add_event) &&
+	    is_flash_address(p_vtable->cflush)
+	    )
+		vtable = p_vtable;
+	else
+		vtable = NULL;
+}
+
+/**
+ * Erase page containing U2F keys, save and restore AP RO
+ * content which is also stored in this page.
+ */
+static bool erase_u2f(void)
+{
+	int rv;
+
+	/* Copy AP RO data preceding U2F state in page into NVMEM. */
+	rv = vtable->ap_ro_save();
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	flash_open_ro_window(U2F_DATA_FLASH_PAGE_OFFSET,
+			     CONFIG_FLASH_ERASE_SIZE);
+	rv = flash_physical_erase(U2F_DATA_FLASH_PAGE_OFFSET,
+				  CONFIG_FLASH_ERASE_SIZE);
+
+	/* Restore AP RO data from NVMEM. */
+	rv = vtable->ap_ro_restore();
+	flash_close_ro_window();
+	return rv == EC_SUCCESS;
+}
+
+/**
+ * Return state of U2F functionality.
+ * If non-FIPS U2F keys are present - we can't be in FIPS-approved mode.
+ * Until further  development on FIPS self-integrity, always return
+ * FIPS non-approved mode unless a development build.
+ */
+static bool fips_u2f_compliant(void)
+{
+	/* if we previously determined state, return it */
+	if (fips_state != FIPS_STATE_UNKNOWN)
+		return fips_state == FIPS_STATE_APPROVED;
+
+	/* if we successfully loaded non-FIPS keys, we aren't in FIPS mode. */
+	if (vtable->u2f_load(false, &u2f_state.g2f_entropy, &u2f_state.hmac_key,
+			     &u2f_state.entropy)) {
+		u2f_state.drbg_entropy_size = 32; /* old entropy size */
+		fips_state = FIPS_STATE_NOT_APPROVED;
+		return false;
+	}
+
+/* Until U2F key gen switch to new code, don't enable FIPS mode. */
+#ifdef CR50_DEV
+	fips_state = FIPS_STATE_APPROVED;
+	return true;
+#else
+	fips_state = FIPS_STATE_NOT_APPROVED;
+	/* we still have old U2F keys, so not in FIPS until zeroized */
+	return false;
+#endif
+}
+
+/**
+ * Zeroize all non-empty partitions with U2F keys. Even though there should be
+ * only one active partition by design, better be safe than sorry.
+ */
+bool u2f_fips_zeroize(void)
+{
+	size_t i;
+	uint32_t u2f_flash_offset;
+	struct fips_u2f_state_item item = {};
+	int rv;
+
+	/* Even if we fail, state will be inconsistent. */
+	u2f_state_loaded = false;
+
+	/* If we aren't in FIPS-approved mode, use callback. */
+	if (!fips_u2f_compliant()) {
+		bool result = call((bool (*)(void))vtable->u2f_zero);
+		return result; /* can't load and create non-FIPS keys. */
+	}
+
+	for (i = 0; i < U2F_SETS; i++) {
+#ifdef CR50_DEV
+		CPRINTS("Partition %u hmac_key=%ph", i,
+			HEX_BUF(&u2f_storage->item[i].hmac_key[0],
+				sizeof(u2f_storage->item[i].hmac_key)));
+		vtable->cflush();
+#endif
+		/* Skip partition if it wasn't used earlier. */
+		if (is_all_value(&u2f_storage->item[i],
+				 sizeof(u2f_storage->item[i]), 0xff))
+			continue;
+
+		/* Skip partition if it was already zeroized. */
+		if (is_all_value(&u2f_storage->item[i],
+				  sizeof(u2f_storage->item[i]), 0))
+			continue;
+
+		/* Otherwise, zeroize partition. */
+		u2f_flash_offset = (uintptr_t)&u2f_storage->item[i] -
+					    CONFIG_PROGRAM_MEMORY_BASE;
+
+		flash_open_ro_window(u2f_flash_offset, sizeof(item));
+		rv = flash_physical_write(u2f_flash_offset, sizeof(item),
+					  (char *)&item);
+		flash_close_ro_window();
+#ifdef CR50_DEV
+		CPRINTS("Zeroized partition %u", i);
+#endif
+		if (rv != EC_SUCCESS)
+			return false;
+	}
+	return true;
+}
+
+static bool u2f_load_old_wrapper(void)
+{
+	/* Load or create if needed non-FIPS U2F keys */
+	return vtable->u2f_load(true, &u2f_state.g2f_entropy,
+				&u2f_state.hmac_key, &u2f_state.entropy);
+}
+
+/**
+ * Load U2F keys from current active partition, or create new keys if no
+ * active position was found.
+ * @returns true, if successfully loaded U2F keys
+ */
+static bool u2f_fips_load_state(void)
+{
+	size_t i;
+
+	/* If we aren't in FIPS-approved mode, try to load/create old keys. */
+	if (!fips_u2f_compliant()) {
+		if (call(u2f_load_old_wrapper)) {
+			u2f_state.drbg_entropy_size = 32; /* old entropy size */
+			return true;
+		}
+		return false; /* can't load and create non-FIPS keys. */
+	}
+
+	for (i = 0; i < U2F_SETS; i++) {
+		if (is_all_value(&u2f_storage->item[i],
+				 sizeof(u2f_storage->item[i]), 0xff))
+			break;
+
+		if (is_all_value(&u2f_storage->item[i],
+				 sizeof(u2f_storage->item[i]), 0))
+			continue;
+		/**
+		 * We found initialized partition, which is not zeroized yet,
+		 * so load its content.
+		 */
+		u2f_state.hmac_key = &u2f_storage->item[i].hmac_key[0];
+		u2f_state.entropy = &u2f_storage->item[i].entropy[0];
+		u2f_state.g2f_entropy = u2f_state.entropy;
+		u2f_state.drbg_entropy_size =
+			sizeof(u2f_storage->item[i].entropy);
+#ifdef CR50_DEV
+		CPRINTS("Loaded keys from partition %u", i);
+		CPRINTS("U2F hmac =  %ph",
+			HEX_BUF(u2f_state.hmac_key,
+				sizeof(u2f_storage->item[i].hmac_key)));
+		CPRINTS("U2F drbg = %ph",
+			HEX_BUF(u2f_state.entropy,
+				sizeof(u2f_storage->item[i].entropy)));
+#endif
+		return true;
+	}
+	/* At this point i is index of U2F key partition to create. */
+	if (i >= U2F_SETS) {
+		if (!erase_u2f())
+			return false;
+		i = 0;
+	}
+	{
+		uint32_t u2f_flash_offset = (uintptr_t)&u2f_storage->item[i] -
+					    CONFIG_PROGRAM_MEMORY_BASE;
+		struct fips_u2f_state_item item;
+		int rv;
+
+		fips_rand_bytes(&item.hmac_key, sizeof(item.hmac_key));
+		/* load entropy for DRBG */
+		fips_trng_bytes(&item.entropy, sizeof(item.entropy));
+#ifdef CR50_DEV
+		CPRINTS("Created random key in partition %u", i);
+#endif
+		flash_open_ro_window(u2f_flash_offset, sizeof(item));
+		rv = flash_physical_write(u2f_flash_offset, sizeof(item),
+					  (char *)&item);
+		flash_close_ro_window();
+		if (rv != EC_SUCCESS)
+			return false;
+		u2f_state.hmac_key = &u2f_storage->item[i].hmac_key[0];
+		u2f_state.entropy = &u2f_storage->item[i].entropy[0];
+		u2f_state.g2f_entropy = u2f_state.entropy;
+		u2f_state.drbg_entropy_size =
+			sizeof(u2f_storage->item[i].entropy);
+#ifdef CR50_DEV
+		CPRINTS("U2F hmac =  %ph",
+			HEX_BUF(u2f_state.hmac_key,
+				sizeof(u2f_storage->item[i].hmac_key)));
+		CPRINTS("U2F drbg = %ph",
+			HEX_BUF(u2f_state.entropy,
+				sizeof(u2f_storage->item[i].entropy)));
+#endif
+	}
+	return true;
+}
+
+struct fips_u2f_state *u2f_fips_get_state(void)
+{
+	if (!u2f_state_loaded)
+		u2f_state_loaded = u2f_fips_load_state();
+
+	return u2f_state_loaded ? &u2f_state : NULL;
+}
+
 /* Return current FIPS status, but prevent direct modification of state. */
 enum fips_status fips_status(void)
 {
 	return _fips_status;
 }
 
-/* Flag to simulate specific error condition in power-up tests. */
-uint8_t fips_break_cmd;
 
 void fips_set_status(enum fips_status status)
 {
@@ -64,62 +436,6 @@ bool fips_mode(void)
 	return (_fips_status & FIPS_MODE_ACTIVE);
 }
 
-#if FIPS_MODE_ENABLED
-static const uint8_t k_salt = NVMEM_VAR_G2F_SALT;
-
-/* Can't include TPM2 headers, so just define constant locally. */
-#define HR_NV_INDEX (1U << 24)
-
-/* Wipe old U2F keys. */
-static void u2f_zeroize(void)
-{
-	const uint32_t u2fobjs[] = { TPM_HIDDEN_U2F_KEK | HR_NV_INDEX,
-				     TPM_HIDDEN_U2F_KH_SALT | HR_NV_INDEX, 0 };
-	/* Delete NVMEM_VAR_G2F_SALT. */
-	setvar(&k_salt, sizeof(k_salt), NULL, 0);
-	/* Remove U2F keys and wipe all deleted objects. */
-	nvmem_erase_tpm_data_selective(u2fobjs);
-}
-#endif
-
-/**
- * Return current status for U2F keys:
- * false - U2F keys require zeroization.
- * true - U2F keys are missing or created in FIPS mode.
- */
-static bool fips_u2f_compliant(void)
-{
-/* Until U2F key gen switch to new code, don't enable FIPS mode. */
-#if FIPS_MODE_ENABLED
-	uint8_t val_len = 0;
-	const struct tuple *t_salt;
-
-	/**
-	 * We are in FIPS mode if and only if:
-	 * 1) U2F keys were created in FIPS compliant way (board_fips_enforced)
-	 * 2) OR U2F keys weren't previously created
-	 */
-	if (board_fips_enforced())
-		return true;
-
-	/* FIPS mode wasn't enforced, so check presence of U2F keys */
-	t_salt = getvar(&k_salt, sizeof(k_salt));
-	if (t_salt) {
-		val_len = t_salt->val_len;
-		freevar(t_salt);
-	}
-	/* If none of keys is present - we are in FIPS mode. */
-	if (!val_len && !read_tpm_nvmem_size(TPM_HIDDEN_U2F_KEK) &&
-	    !read_tpm_nvmem_size(TPM_HIDDEN_U2F_KH_SALT)) {
-		/* Apparently, board FIPS mode wasn't set yet, so set it. */
-		board_set_local_fips_policy(true);
-		return true;
-	}
-#endif
-	/* we still have old U2F keys, so not in FIPS until zeroized */
-	return false;
-}
-
 /* Return true if crypto can be used (no failures detectd). */
 bool fips_crypto_allowed(void)
 {
@@ -138,8 +454,9 @@ void fips_throw_err(enum fips_status err)
 		return;
 	fips_set_status(err);
 	if (_fips_status & FIPS_ERROR_MASK) {
-		flash_log_add_event(FE_LOG_FIPS_FAILURE, sizeof(_fips_status),
-				    &_fips_status);
+		vtable->flash_log_add_event(FE_LOG_FIPS_FAILURE,
+					    sizeof(_fips_status),
+					    &_fips_status);
 	}
 }
 
@@ -557,24 +874,6 @@ static bool fips_rsa2048_verify_kat(void)
 }
 #endif
 
-/* Call function using provided stack. */
-static bool call_on_stack(void *new_stack, bool (*func)(void))
-{
-	bool result;
-	/* Call whilst switching stacks */
-	__asm__ volatile("mov r4, sp\n" /* save sp */
-			 "mov sp, %[new_stack]\n"
-			 "blx %[func]\n"
-			 "mov sp, r4\n" /* restore sp */
-			 "mov %[result], r0\n"
-			 : [result] "=r"(result)
-			 : [new_stack] "r"(new_stack),
-			   [func] "r"(func)
-			 : "r0", "r1", "r2", "r3", "r4",
-			   "lr" /* clobbers */
-	);
-	return result;
-}
 
 /**
  * FIPS Power-up known-answer tests.
@@ -584,7 +883,6 @@ static bool call_on_stack(void *new_stack, bool (*func)(void))
  * @return FIPS_POWERON_TEST_ERROR if memory allocation error took place
  */
 #define FIPS_POWERON_TEST_ERROR -2ULL
-#define FIPS_KAT_STACK_SIZE 2048
 static uint64_t fips_power_up_tests(void)
 {
 	char *stack_buf;
@@ -596,8 +894,8 @@ static uint64_t fips_power_up_tests(void)
 	 * Since we are very limited on stack and static RAM, acquire
 	 * shared memory for KAT tests temporary larger stack.
 	 */
-	if (EC_SUCCESS ==
-	    shared_mem_acquire(FIPS_KAT_STACK_SIZE, &stack_buf)) {
+	if (vtable->shared_mem_acquire(FIPS_KAT_STACK_SIZE, &stack_buf) ==
+	    EC_SUCCESS) {
 		stack = stack_buf + FIPS_KAT_STACK_SIZE;
 		if (!call_on_stack(stack, &fips_sha256_kat))
 			_fips_status |= FIPS_FATAL_SHA256;
@@ -640,7 +938,7 @@ static uint64_t fips_power_up_tests(void)
 			_fips_status |= FIPS_FATAL_HMAC_DRBG;
 #endif
 		dcrypto_release_sha_hw();
-		shared_mem_release(stack_buf);
+		vtable->shared_mem_release(stack_buf);
 
 		/* Second call to TRNG warm-up. */
 		fips_trng_startup(1);
@@ -648,7 +946,7 @@ static uint64_t fips_power_up_tests(void)
 		if (!(_fips_status & FIPS_ERROR_MASK))
 			board_set_fips_policy_test(true);
 		else /* write combined error to flash log */
-			flash_log_add_event(FE_LOG_FIPS_FAILURE,
+			vtable->flash_log_add_event(FE_LOG_FIPS_FAILURE,
 					    sizeof(_fips_status),
 					    &_fips_status);
 		/* Set the bit that power-up tests completed, even if failed. */
@@ -689,6 +987,7 @@ static void fips_power_on(void)
 	uint64_t testtime = -1ULL;
 	/* make sure on power-on / resume it's cleared */
 	_fips_status = FIPS_UNINITIALIZED;
+	fips_state = FIPS_STATE_UNKNOWN;
 
 	/**
 	 * If this was a power-on or power-up tests weren't executed
@@ -714,70 +1013,92 @@ static void fips_power_on(void)
 /* FIPS initialization is last init hook, HOOK_PRIO_FIPS > HOOK_PRIO_LAST */
 DECLARE_HOOK(HOOK_INIT, fips_power_on, HOOK_PRIO_FIPS);
 
-/* Switch FIPS status. */
-void fips_set_policy(bool active)
+#ifdef CR50_DEV
+/**
+ * Switch FIPS status, zeroize keys if needed. For Production it's a one way
+ * to 'FIPS on'. For development board it allows creation of non-FIPS keys.
+ */
+static void fips_set_policy(bool active)
 {
 #ifndef CR50_DEV
 	/* in Production mode never disable FIPS once enabled. */
 	if (!active)
 		return;
-#endif
 	/* Do nothing if there is no change. */
 	if (!(!active ^ !(_fips_status & FIPS_MODE_ACTIVE)))
 		return;
+#endif
+	/* U2F zeroize need more stack. */
+	if (active)
+		call((bool (*)(void))vtable->u2f_zero);
 /* Temporarily prevent switch to FIPS mode until U2F key gen is ready. */
-#if FIPS_MODE_ENABLED
-	/* Update local board FIPS flag. */
-	board_set_local_fips_policy(active);
-	CPRINTS("FIPS policy set to %d", active);
-	cflush();
-	u2f_zeroize();
 
-#ifdef CR50_DEV
+	CPRINTS("FIPS policy set to %d", active);
+	vtable->cflush();
 	if (!active) {
 		uint8_t random[32];
-		/* Create fake u2f keys old style */
+		static const uint8_t k_salt = NVMEM_VAR_G2F_SALT;
+
+		/* Create fake u2f keys old style, k_salt is enough */
 		fips_trng_bytes(random, sizeof(random));
 		setvar(&k_salt, sizeof(k_salt), random, sizeof(random));
-
-		fips_trng_bytes(random, sizeof(random));
-		write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK, sizeof(random),
-				       random, 1);
-		fips_trng_bytes(random, sizeof(random));
-		write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KH_SALT, sizeof(random),
-				       random, 1);
 	}
-#endif
-#endif
 	system_reset(EC_RESET_FLAG_SECURITY);
 }
+#endif
+
+#ifdef CR50_DEV
+static void u2f_print_state(void)
+{
+	CPRINTS("U2F DRBG entropy size %u", u2f_state.drbg_entropy_size);
+
+	if (u2f_state.g2f_entropy)
+		CPRINTS("U2F g2f(%pP) = %ph", u2f_state.g2f_entropy,
+			HEX_BUF(u2f_state.g2f_entropy,
+				u2f_state.drbg_entropy_size));
+	if (u2f_state.hmac_key)
+		CPRINTS("U2F hmac(%pP) = %ph", u2f_state.hmac_key,
+			HEX_BUF(u2f_state.hmac_key, 32));
+
+	if (u2f_state.entropy)
+		CPRINTS("U2F drbg(%pP) = %ph", u2f_state.entropy,
+			HEX_BUF(u2f_state.entropy,
+				u2f_state.drbg_entropy_size));
+}
+#endif
 
 /* Console command 'fips' to report and change status, run tests */
 static int cmd_fips_status(int argc, char **argv)
 {
 	fips_print_mode();
-	ccprints("FIPS crypto allowed: %u, u2f compliant: %u, "
-		 "board power up done: %u, board enforced: %u, fwmp : %u",
-		 fips_crypto_allowed(), fips_u2f_compliant(),
-		 board_fips_power_up_done(), board_fips_enforced(),
-		 board_fwmp_fips_mode_enabled());
+	CPRINTS("FIPS crypto allowed: %u, u2f compliant: %u, "
+		"board power up done: %u, u2f loaded %u",
+		fips_crypto_allowed(), fips_u2f_compliant(),
+		board_fips_power_up_done(), u2f_state_loaded);
 
-	cflush();
+	vtable->cflush();
 
 	if (argc == 2) {
-		if (!strncmp(argv[1], "on", 2))
-			fips_set_policy(true);
-		else if (!strncmp(argv[1], "test", 4)) {
+		if (!strncmp(argv[1], "test", 4)) {
 			fips_print_test_time(fips_power_up_tests());
 			fips_print_mode();
 		}
 #ifdef CR50_DEV
+		else if (!strncmp(argv[1], "on", 2))
+			fips_set_policy(true);
 		else if (!strncmp(argv[1], "off", 3))
 			fips_set_policy(false);
 		else if (!strncmp(argv[1], "trng", 4))
 			fips_break_cmd = FIPS_BREAK_TRNG;
 		else if (!strncmp(argv[1], "sha", 3))
 			fips_break_cmd = FIPS_BREAK_SHA256;
+		else if (!strncmp(argv[1], "zero", 4))
+			CPRINTS("Zeroize status: %u", u2f_fips_zeroize());
+		else if (!strncmp(argv[1], "load", 4))
+			CPRINTS("Load status: %u",
+				u2f_fips_load_state());
+		else if (!strncmp(argv[1], "print", 5))
+			u2f_print_state();
 #endif
 	}
 	return 0;
@@ -785,9 +1106,9 @@ static int cmd_fips_status(int argc, char **argv)
 
 DECLARE_SAFE_CONSOLE_COMMAND(fips, cmd_fips_status,
 #ifdef CR50_DEV
-	"[on | off | test | trng | sha]",
+	"[on | off | test | trng | sha | zero | load | print]",
 #else
-	"[on | test]",
+	"[test]",
 #endif
 	"Report or change FIPS status, run tests, simulate errors");
 
@@ -816,9 +1137,6 @@ static enum vendor_cmd_rc fips_cmd(enum vendor_cmd_cc code, void *buf,
 		memcpy(buf, &fips_reverse, sizeof(fips_reverse));
 		*response_size = sizeof(fips_reverse);
 		break;
-	case FIPS_CMD_ON:
-		fips_set_policy(true); /* we can reboot here... */
-		break;
 	case FIPS_CMD_TEST:
 		fips_power_up_tests();
 		fips_reverse = htobe32(_fips_status);
@@ -826,6 +1144,9 @@ static enum vendor_cmd_rc fips_cmd(enum vendor_cmd_cc code, void *buf,
 		*response_size = sizeof(fips_reverse);
 		break;
 #ifdef CR50_DEV
+	case FIPS_CMD_ON:
+		fips_set_policy(true); /* we can reboot here... */
+		break;
 	case FIPS_CMD_BREAK_TRNG:
 		fips_break_cmd = FIPS_BREAK_TRNG;
 		break;

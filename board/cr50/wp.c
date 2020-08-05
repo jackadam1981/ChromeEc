@@ -470,19 +470,6 @@ int board_fwmp_allows_unlock(void)
 #endif
 }
 
-int board_fwmp_fips_mode_enabled(void)
-{
-	struct RollbackSpaceFirmware fw;
-
-	if (TPM_READ_SUCCESS ==
-	    read_tpm_nvmem(FIRMWARE_NV_INDEX, sizeof(fw), &fw)) {
-		return !!(fw.flags & FWMP_DEV_FIPS_MODE);
-	}
-
-	/* If not found or other error, assume fips mode is disabled */
-	return 0;
-}
-
 int board_vboot_dev_mode_enabled(void)
 {
 	struct RollbackSpaceFirmware fw;

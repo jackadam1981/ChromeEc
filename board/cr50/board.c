@@ -2,6 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include "ap_ro_integrity_check.h"
 #include "board_id.h"
 #include "ccd_config.h"
 #include "clock.h"
@@ -13,6 +14,7 @@
 #include "ec_version.h"
 #include "endian.h"
 #include "extension.h"
+#include "fips.h"
 #include "flash.h"
 #include "flash_config.h"
 #include "gpio.h"
@@ -28,6 +30,7 @@
 #include "recovery_button.h"
 #include "registers.h"
 #include "scratch_reg1.h"
+#include "shared_mem.h"
 #include "signed_header.h"
 #include "spi.h"
 #include "system.h"
@@ -35,6 +38,7 @@
 #include "task.h"
 #include "tpm_registers.h"
 #include "trng.h"
+#include "u2f_impl.h"
 #include "uart_bitbang.h"
 #include "uartn.h"
 #include "usart.h"
@@ -801,6 +805,17 @@ static void board_init(void)
 	static enum ccd_state ccd_init_state = CCD_STATE_LOCKED;
 #endif
 
+	static const struct fips_vtable u2f_vtable = {
+		.ap_ro_save = ap_ro_save_context,
+		.ap_ro_restore = ap_ro_restore_context,
+		.u2f_load = u2f_load_old_state,
+		.u2f_zero = u2f_zeroize_old,
+		.cprints = cprints,
+		.shared_mem_acquire = shared_mem_acquire,
+		.shared_mem_release = shared_mem_release,
+		.flash_log_add_event = flash_log_add_event,
+		.cflush = cflush
+	};
 	/*
 	 * Deep sleep resets should be considered valid and should not impact
 	 * the rolling reboot count.
@@ -824,6 +839,9 @@ static void board_init(void)
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
 	nvmem_init();
+
+	/* Provide callbacks to FIPS module. */
+	u2f_set_callbacks(&u2f_vtable);
 
 	/*
 	 * If this was a low power wake and not a rollback, restore the ccd
@@ -1506,45 +1524,6 @@ static uint32_t get_properties(void)
 	CPRINTS("strap_cfg 0x%x has no table entry, prop = 0x%x",
 		config, properties);
 	return properties;
-}
-
-/**
- * NVMEM variable name for FIPS config. This is complementary for FWMP policy
- * and used primarily for lab testing where FWMP would be complicated.
- */
-static const uint8_t k_fips_config = NVMEM_VAR_FIPS_CONFIG;
-void board_set_local_fips_policy(bool asserted)
-{
-	setvar(&k_fips_config, sizeof(k_fips_config), (uint8_t *)&asserted,
-	       sizeof(asserted));
-}
-
-static bool board_get_local_fips_policy(void)
-{
-	const struct tuple *t;
-	bool fips;
-
-	t = getvar(&k_fips_config, sizeof(k_fips_config));
-	fips = (t) ? tuple_val(t)[0] : false;
-	freevar(t);
-
-	return fips;
-}
-
-bool board_fips_enforced(void)
-{
-	/**
-	 * combined flag which caches fips state and the fact it was cached
-	 * bit 7 is set when bit 0 contains fips status
-	 */
-	static uint8_t fips_state;
-
-	if (!(fips_state & 128)) {
-		fips_state = board_fwmp_fips_mode_enabled() ||
-			     board_get_local_fips_policy();
-		fips_state |= 128;
-	}
-	return !!(fips_state & 1);
 }
 
 static void init_board_properties(void)
