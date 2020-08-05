@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1f49226_17dd4022",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-08-05T17:30:38Z",
+      "side": 1,
+      "message": "The intended way to implement this is to set the CONFIG_CHARGER_SENSE_RESISTOR based on the battery current sense resistor value",
+      "revId": "ed10fc8e16f1593dd02df774dc13cd399f873852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
