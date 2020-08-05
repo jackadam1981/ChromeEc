@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "20e12a7b_d01ecc22",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-05T22:54:08Z",
+      "side": 0,
+      "message": "Yes, an excellent use of \"effect\" :)",
+      "parentUuid": "fa517f1e_644da235",
+      "range": {
+        "startLine": 257,
+        "startChar": 10,
+        "endLine": 257,
+        "endChar": 25
+      },
+      "revId": "5d59ef5be7e1c7d3f5ed1470fccfd3dbcda167f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0b05873_b50255d4",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 5
