@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "03121763_20bda4c8",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-05T17:18:22Z",
+      "side": 1,
+      "message": "I plan to remove it as a separate CL after this merges.  I\u0027ll leave the bug open until the compression support is removed.",
+      "parentUuid": "1c6d8c8d_46826a7b",
+      "range": {
+        "startLine": 383,
+        "startChar": 12,
+        "endLine": 383,
+        "endChar": 53
+      },
+      "revId": "493a968bdcf80b2478d85bf91c3c4d9a15a76c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7455973_5772e1d3",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 7
@@ -62,6 +86,30 @@
       "revId": "493a968bdcf80b2478d85bf91c3c4d9a15a76c6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a7763a1_65b91cc8",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-05T17:18:22Z",
+      "side": 1,
+      "message": "It\u0027s based on whether CONFIG_MAPPED_STORAGE is enabled.  When CONFIG_MAPPED_STORAGE is on, then you can read flash directly (after locking it).  I verified both paths work (CONFIG_MAPPED_STORAGE\u003dy and CONFIG_MAPPED_STORAGE\u003dn).\n\nCONFIG_MAPPED_STORAGE\u003dy completes the BMI260 initialization about 100ms faster.",
+      "parentUuid": "d7455973_5772e1d3",
+      "range": {
+        "startLine": 560,
+        "startChar": 15,
+        "endLine": 560,
+        "endChar": 32
+      },
+      "revId": "493a968bdcf80b2478d85bf91c3c4d9a15a76c6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
