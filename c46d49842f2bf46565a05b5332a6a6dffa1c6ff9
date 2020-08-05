@@ -33,6 +33,46 @@
       "revId": "c46d49842f2bf46565a05b5332a6a6dffa1c6ff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14ee72dc_af519244",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-05T18:53:57Z",
+      "side": 1,
+      "message": "Maybe better not to mention \"PROC.PD.E1\" here, since you aren\u0027t completing that procedure.",
+      "revId": "c46d49842f2bf46565a05b5332a6a6dffa1c6ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1296aa35_d365e8e0",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-05T18:53:57Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 271,
+        "startChar": 4,
+        "endLine": 271,
+        "endChar": 14
+      },
+      "revId": "c46d49842f2bf46565a05b5332a6a6dffa1c6ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
