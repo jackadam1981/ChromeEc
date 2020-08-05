@@ -1,0 +1,360 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89965454_6f3fa2a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "I do think it is looking good. Thank you for making this change!",
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b112f23_86605d0e",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "let\u0027s rename this to just product_id since it is more than just the default.\n\nLet\u0027s also add a comment that this should be set correct during the init function (and my call into board code to get the correct product id)",
+      "range": {
+        "startLine": 54,
+        "startChar": 16,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29602dfb_5036c796",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "nit: I you can drop the PS8XXXX_ prefix since for all of the enum values since this is local to this file only.\n\n----\nAlso, I think you can drop the \u003d 0 since we don\u0027t need to serialize the value and the value isn\u0027t super important (we just rely on the compiler to assign good values)",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ade331d_f6f2c566",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "Let\u0027s more comments to this array, say it is a lookup from enum ps8xxx_variant_regs to i2c register.\n\n\nAlso, let\u0027s set it like\nstatic const int ps8751_reg_map[] \u003d {\n\t[PS8XXX_FW_VER_REG] \u003d 0x90,\n};\n\nTo make it more clear what we are mapping and setting.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a9f5a6_6973930a",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "since we always pass in the default_product_id[port] as the first paraemter, I would instead recommend taking in the port as the first parameter and this function will do the correct lookup with default_product_id\n\n---\n\nAlso, I think we should rename default_product_id to just product_id since it is the true product_id instead of just the default (since it can be updated by the board to by better than the default)",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 29
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22c7b28_9e02db68",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "nit: let\u0027s us __overadable here\n\nand __overridable_proto in the header file",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 21
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "166649b3_3481693f",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "let\u0027s also put some of this text in the header file as well (when a board should over ride this function)",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 4
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a2b64d0_a706ac95",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "nit: we can probably convert this to if (IS_ENABLED(CONFIG..FORECE_DID) \u0026\u0026 ) style now",
+      "range": {
+        "startLine": 290,
+        "startChar": 7,
+        "endLine": 290,
+        "endChar": 42
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ad56de_63f74d31",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "don\u0027t we just want to check that the product_id match what board_get_product_it() returns?",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 6
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8cff0ba_e820af59",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "Can we combine all the configuration for each variant into one configuration struct instead of having separate ones (so combine this with the register mapping above as well)",
+      "range": {
+        "startLine": 454,
+        "startChar": 14,
+        "endLine": 454,
+        "endChar": 55
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61174477_f1ff64b1",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "nit: no need for this rv; just return EC_ERROR_INVAL below when exiting function",
+      "range": {
+        "startLine": 475,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 25
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cabaa3d_da1582d7",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "ARRAY_SIZE(dci_disable_functions)",
+      "range": {
+        "startLine": 477,
+        "startChar": 5,
+        "endLine": 477,
+        "endChar": 72
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda8f265_baecf6a1",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "let\u0027s use IS_ENABLE in the if statement\n\n---\n\nWe also may want to just pull in that logic into the if statement here ... I am okay either way, just a thought.",
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78256f26_cf855e98",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "let\u0027s not define it in this situation.\n\nAlso I think we may not need this, this logic here in the h file. I think this can go in the __overridable board_get_product_id function.",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0419b388_e6b2fed3",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "we should add __overridable_proto here (and documentation of when a board should override this)",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d6026af_396f5792",
+        "filename": "include/config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 4009,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T17:17:56Z",
+      "side": 1,
+      "message": "I think we need a little more explanation here. We expect that this would be defined along side multiple other PD_TCPM_PS* configs. We should probably break about the PS8 option to right below and explain their relationship to MULTI\n\nWe should also put a check near to bottom of config.h (where the other checks are) that issues an error if we define MULTI without defining at least two other PS8 options\n\ne.g.\n#ifdef MULTI\n#if defined(PS8751) + defined(PS8805) .... \u003c\u003d2\n#error Should define more than one PS8XXX chip support when using MULTI\n#endif\n#endif",
+      "range": {
+        "startLine": 4009,
+        "startChar": 7,
+        "endLine": 4009,
+        "endChar": 38
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
