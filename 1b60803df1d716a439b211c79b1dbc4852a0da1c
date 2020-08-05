@@ -22,6 +22,30 @@
       "revId": "1b60803df1d716a439b211c79b1dbc4852a0da1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9bf1a13_65c8ef51",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-05T20:42:18Z",
+      "side": 1,
+      "message": "Chain is: main \u003e vboot_main \u003e verify_and_jump \u003e system_run_image_copy \u003e system_is_locked \u003e flash_get_protect \u003e flash_physical_get_protect \u003e flash_check_prot_reg \u003e flash_get_status1 \u003e flash_execute_cmd.\n\nmain calls vboot_main before task_start.\n\nI can try moving the task_start_called check into chip/npcx/flash.c and then see if anyone else is calling mutex_lock before task_start.",
+      "parentUuid": "38b7d706_b9ed60ea",
+      "range": {
+        "startLine": 868,
+        "startChar": 6,
+        "endLine": 868,
+        "endChar": 23
+      },
+      "revId": "1b60803df1d716a439b211c79b1dbc4852a0da1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
