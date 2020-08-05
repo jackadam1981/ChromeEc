@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "de211895_ab306c7d",
+        "filename": "board/it8xxx2_pdevb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-08-05T06:05:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c84784f_b5584e3d",
+      "revId": "929088ed9fc632962066b6a38a0e6b92924fc440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d15998b4_da07c2fa",
         "filename": "board/reef_it8320/board.h",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "929088ed9fc632962066b6a38a0e6b92924fc440",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bad57ea_863436cb",
+        "filename": "board/reef_it8320/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-08-05T06:05:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d15998b4_da07c2fa",
+      "revId": "929088ed9fc632962066b6a38a0e6b92924fc440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
