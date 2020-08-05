@@ -106,4 +106,8 @@
 /* RW image resides at start of writable region */
 #define CONFIG_RW_STORAGE_OFF	0
 
+#define NVMEM_BLOCK_SIZE	0x1000
+#define NVMEM_FLASH_OFF		(0x80000 - 0x1000)
+#define NVMEM_RECORD_SIZE	256
+
 #endif /* __CROS_EC_CONFIG_FLASH_LAYOUT_H */
