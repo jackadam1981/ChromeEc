@@ -124,9 +124,19 @@ struct host_command {
 	enum ec_status (*handler)(struct host_cmd_handler_args *args);
 	/* Command code */
 	int command;
+#ifdef CONFIG_HOST_COMMAND_NAMES
+	/* Command name for console printing */
+	const char *command_name;
+#endif
 	/* Mask of supported versions */
 	int version_mask;
 };
+
+#ifdef CONFIG_HOST_COMMAND_NAMES
+#define HOST_COMMAND_FIELD_NAME(name) .command_name = name,
+#else
+#define HOST_COMMAND_FIELD_NAME(name)
+#endif
 
 #ifdef CONFIG_HOST_EVENT64
 typedef uint64_t host_event_t;
@@ -257,7 +267,9 @@ void host_packet_receive(struct host_packet *pkt);
 	const struct host_command __keep __no_sanitize_address		\
 	EXPAND(0x0000, command)						\
 	__attribute__((section(".rodata.hcmds."EXPANDSTR(0x0000, command)))) \
-		= {routine, command, version_mask}
+		= {routine, command,                                    \
+		   HOST_COMMAND_FIELD_NAME(#command)                    \
+		   version_mask}
 
 /*
  * Register a private host command handler with
@@ -269,6 +281,7 @@ void host_packet_receive(struct host_packet *pkt);
 	__attribute__((section(".rodata.hcmds."\
 	EXPANDSTR(EC_CMD_BOARD_SPECIFIC_BASE, command)))) \
 		= {routine, EC_PRIVATE_HOST_COMMAND_VALUE(command), \
+		   HOST_COMMAND_FIELD_NAME(#command) \
 		   version_mask}
 #else
 #define DECLARE_HOST_COMMAND(command, routine, version_mask)    \

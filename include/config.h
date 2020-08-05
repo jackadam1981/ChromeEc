@@ -2015,6 +2015,13 @@
 /* Config option to support 64-bit hostevents and wake-masks. */
 #define CONFIG_HOST_EVENT64
 
+/* 
+ * Print host command pretty names in the console.
+ * This option can consume much more flash space in order to hold
+ * the host command's common name.
+ */
+#undef CONFIG_HOST_COMMAND_NAMES
+
 /*
  * The host commands are sorted in the .rodata.hcmds section so use the binary
  * search algorithm to match a command to its handler
