@@ -930,6 +930,7 @@ void stm32gx_ucpd1_irq(void)
 }
 DECLARE_IRQ(STM32_IRQ_UCPD1, stm32gx_ucpd1_irq, 1);
 
+
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
 static char ctrl_names[][10] = {
 	"rsvd",
