@@ -145,4 +145,20 @@ int u2f_gen_kek_seed(int commit);
  */
 int g2f_attestation_cert(uint8_t *buf);
 
+/**
+ * Zeroize non-FIPS U2F keys.
+ * @return true if successful
+ */
+bool u2f_zeroize_old(void);
+
+/**
+ * Load non-FIPS U2F keys.
+ * @return false if non-FIPS keys are absent (so we can switch to FIPS mode)
+ * if it returns true, then
+ * p_salt, p_salt_kek and p_salt_kh are output parameters, which should
+ * point to a storage with static lifetime, containing corresponding keys.
+ */
+bool u2f_load_old_state(uint32_t **p_salt, uint32_t **p_salt_kek,
+			uint32_t **p_salt_kh);
+
 #endif /* __CROS_EC_U2F_IMPL_H */

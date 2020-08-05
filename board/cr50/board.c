@@ -2,6 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include "ap_ro_integrity_check.h"
 #include "board_id.h"
 #include "ccd_config.h"
 #include "clock.h"
@@ -13,6 +14,7 @@
 #include "ec_version.h"
 #include "endian.h"
 #include "extension.h"
+#include "fips.h"
 #include "flash.h"
 #include "flash_config.h"
 #include "gpio.h"
@@ -35,6 +37,7 @@
 #include "task.h"
 #include "tpm_registers.h"
 #include "trng.h"
+#include "u2f_impl.h"
 #include "uart_bitbang.h"
 #include "uartn.h"
 #include "usart.h"
@@ -824,6 +827,10 @@ static void board_init(void)
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
 	nvmem_init();
+
+	/* Provide callbacks to FIPS module. */
+	u2f_set_callbacks(&ap_ro_save_context, &ap_ro_restore_context,
+			  &u2f_load_old_state, &u2f_zeroize_old, &cprints);
 
 	/*
 	 * If this was a low power wake and not a rollback, restore the ccd

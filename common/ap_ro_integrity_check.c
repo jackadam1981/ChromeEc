@@ -307,3 +307,17 @@ DECLARE_SAFE_CONSOLE_COMMAND(ap_ro_info, ap_ro_info_cmd,
 			     "", "Display AP RO check space"
 #endif
 );
+
+/* Dummy functions for testing */
+int ap_ro_save_context(void)
+{
+	CPRINTS("AP RO context saved");
+	return EC_SUCCESS;
+}
+
+/* Dummy functions for testing */
+int ap_ro_restore_context(void)
+{
+	CPRINTS("AP RO context restored");
+	return EC_SUCCESS;
+}

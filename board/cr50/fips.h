@@ -89,6 +89,26 @@ void fips_throw_err(enum fips_status err);
  */
 void fips_set_policy(bool active);
 
+/* Callback types to save and restore AP context */
+typedef int (*ap_ro_save_t)(void);
+typedef int (*ap_ro_restore_t)(void);
+
+typedef bool (*u2f_load_t)(uint32_t **salt, uint32_t **salt_kek,
+			  uint32_t **salt_kh);
+
+typedef bool (*u2f_zero_t)(void);
+
+typedef int (*u2f_cprints_t)(enum console_channel channel, const char *format,
+			     ...);
+
+/**
+ * Set functions used to save data stored in shared flash pages which when
+ * flash page is erased, and restore it after, load old U2F state.
+ */
+void u2f_set_callbacks(ap_ro_save_t save, ap_ro_restore_t restore,
+		       u2f_load_t load_func, u2f_zero_t zero,
+		       u2f_cprints_t print);
+
 #ifdef __cplusplus
 }
 #endif

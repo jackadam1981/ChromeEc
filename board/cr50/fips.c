@@ -10,6 +10,8 @@
 #include "extension.h"
 #include "fips.h"
 #include "fips_rand.h"
+#include "flash.h"
+#include "flash_info.h"
 #include "flash_log.h"
 #include "hooks.h"
 #include "new_nvmem.h"
@@ -22,10 +24,259 @@
 #include "tpm_nvmem_ops.h"
 #include "u2f_impl.h"
 
-#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+#define CPRINTS(format, args...) u2f_cprints(CC_SYSTEM, format, ## args)
 
 /* FIPS mode is temporarily disabled. */
-#define FIPS_MODE_ENABLED 0
+#define FIPS_MODE_ENABLED 1
+
+struct fips_u2f_state {
+	uint32_t *g2f_entropy; /* G2F DRBG entropy (= entropy in FIPS) */
+	uint32_t *hmac_key; /* HMAC key for key handle (ex salt_kek) */
+	uint32_t *entropy; /* DRBG entropy, 512 bits (ex salt_kh) */
+	uint32_t drbg_entropy_size;
+};
+
+struct fips_u2f_state_item {
+	uint32_t hmac_key[8]; /* HMAC SHA256 key for key handle's MAC */
+	uint32_t entropy[24]; /* DRBG entropy, 768 bits */
+};
+
+#define U2F_SETS \
+	((CONFIG_FLASH_BANK_SIZE / 2) / sizeof(struct fips_u2f_state_item))
+
+struct fips_u2f_state_storage {
+	struct fips_u2f_state_item item[U2F_SETS]; /* U2F partitions */
+};
+
+#define U2F_DATA_SPACE_ADDR \
+	(CONFIG_FLASH_LOG_BASE - sizeof(struct fips_u2f_state_storage))
+
+/* Fixed pointer at the H1 flash page storing the AP RO check information. */
+static struct fips_u2f_state_storage *const u2f_storage =
+	(struct fips_u2f_state_storage *const)U2F_DATA_SPACE_ADDR;
+
+#define FIPS_KAT_STACK_SIZE 2048
+
+/* Call function using provided stack. */
+static bool call_on_stack(void *new_stack, bool (*func)(void))
+{
+	bool result;
+	/* Call whilst switching stacks */
+	__asm__ volatile("mov r4, sp\n" /* save sp */
+			 "mov sp, %[new_stack]\n"
+			 "blx %[func]\n"
+			 "mov sp, r4\n" /* restore sp */
+			 "mov %[result], r0\n"
+			 : [result] "=r"(result)
+			 : [new_stack] "r"(new_stack),
+			   [func] "r"(func)
+			 : "r0", "r1", "r2", "r3", "r4",
+			   "lr" /* clobbers */
+	);
+	return result;
+}
+
+static bool call(bool (*func)(void))
+{
+	bool result = false;
+	char *stack_buf;
+	void *stack;
+
+	if (shared_mem_acquire(FIPS_KAT_STACK_SIZE, &stack_buf) == EC_SUCCESS) {
+		stack = stack_buf + FIPS_KAT_STACK_SIZE;
+		result = call_on_stack(stack, func);
+		shared_mem_release(stack_buf);
+	}
+	return result;
+}
+
+/*
+ * Functions to check if the passed in blob is all zeros or all 0xff, in both
+ * cases would be considered an uninitialized value. This is used when
+ * marshaling certaing structures and PCRs.
+ */
+static bool is_all_value(const void *ptr, size_t size, uint8_t value)
+{
+	size_t i;
+	const uint8_t *p = ptr;
+
+	for (i = 0; i < size; i++)
+		if (p[i] != value)
+			return false;
+
+	return true;
+}
+
+/* Page offset for H1 flash operations. */
+static const uint32_t h1_flash_offset_ =
+	AP_RO_DATA_SPACE_ADDR - CONFIG_PROGRAM_MEMORY_BASE;
+
+#define AP_RO_DATA_SIZE (U2F_DATA_SPACE_ADDR - AP_RO_DATA_SPACE_ADDR)
+
+/* Vtable of helper functions defined outside FIPS boundary. */
+static ap_ro_save_t ap_ro_save;
+static ap_ro_restore_t ap_ro_restore;
+static u2f_load_t u2f_try_load_nonfips_key;
+static u2f_zero_t u2f_zeroize;
+static u2f_cprints_t u2f_cprints;
+
+/**
+ * Set functions used to save data stored in shared flash pages which when
+ * flash page is erased, and restore it after.
+ */
+void u2f_set_callbacks(ap_ro_save_t save, ap_ro_restore_t restore,
+		       u2f_load_t load_func, u2f_zero_t zero,
+		       u2f_cprints_t print)
+{
+	ap_ro_save = save;
+	ap_ro_restore = restore;
+	u2f_try_load_nonfips_key = load_func;
+	u2f_zeroize = zero;
+	u2f_cprints = print;
+}
+
+static bool erase_u2f(void)
+{
+	int rv;
+
+	/* Copy AP RO data preceding U2F state in page into NVMEM. */
+	rv = ap_ro_save();
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	flash_open_ro_window(h1_flash_offset_, AP_RO_DATA_SPACE_SIZE);
+	rv = flash_physical_erase(h1_flash_offset_, AP_RO_DATA_SPACE_SIZE);
+
+	/* Restore AP RO data from NVMEM. */
+	rv = ap_ro_restore();
+	flash_close_ro_window();
+	return rv == EC_SUCCESS;
+}
+
+bool u2f_fips_zeroize(void)
+{
+	size_t i;
+
+	for (i = 0; i < U2F_SETS; i++) {
+#ifdef CR50_DEV
+		CPRINTS("Partition %u hmac_key=%ph", i,
+			HEX_BUF(&u2f_storage->item[i].hmac_key[0],
+				sizeof(u2f_storage->item[i].hmac_key)));
+		cflush();
+#endif
+		if (is_all_value(&u2f_storage->item[i],
+				 sizeof(u2f_storage->item[i]), 0xff))
+			return true; /* nothing to zeroize */
+
+		if (!is_all_value(&u2f_storage->item[i],
+				  sizeof(u2f_storage->item[i]), 0))
+			break;
+	}
+	if (i >= U2F_SETS)
+		return true; /* all partitions are already empty */
+	{
+		uint32_t u2f_flash_offset = (uintptr_t)&u2f_storage->item[i] -
+					    CONFIG_PROGRAM_MEMORY_BASE;
+		struct fips_u2f_state_item item;
+		int rv;
+
+		memset(&item, 0, sizeof(item));
+		flash_open_ro_window(h1_flash_offset_, AP_RO_DATA_SPACE_SIZE);
+		rv = flash_physical_write(u2f_flash_offset, sizeof(item),
+					  (char *)&item);
+		flash_close_ro_window();
+#ifdef CR50_DEV
+		CPRINTS("Zeroized partition %u", i);
+#endif
+		if (rv != EC_SUCCESS)
+			return false;
+	}
+	return true;
+}
+
+static bool u2f_fips_load_state(struct fips_u2f_state *state)
+{
+	size_t i;
+
+	for (i = 0; i < U2F_SETS; i++) {
+		if (is_all_value(&u2f_storage->item[i],
+				 sizeof(u2f_storage->item[i]), 0xff))
+			break;
+
+		if (is_all_value(&u2f_storage->item[i],
+				 sizeof(u2f_storage->item[i]), 0))
+			continue;
+		/**
+		 * we found initiliazed partition, which is not zeroized yet,
+		 * so load it content.
+		 */
+		state->hmac_key = &u2f_storage->item[i].hmac_key[0];
+		state->entropy = &u2f_storage->item[i].entropy[0];
+		state->g2f_entropy = state->entropy;
+		state->drbg_entropy_size = sizeof(u2f_storage->item[i].entropy);
+#ifdef CR50_DEV
+		CPRINTS("Loaded keys from partition %u", i);
+		CPRINTS("U2F hmac =  %ph",
+			HEX_BUF(state->hmac_key,
+				sizeof(u2f_storage->item[i].hmac_key)));
+		CPRINTS("U2F drbg = %ph",
+			HEX_BUF(state->entropy,
+				sizeof(u2f_storage->item[i].entropy)));
+#endif
+		return true;
+	}
+	/* At this point i is index of U2F key partition to create. */
+	if (i >= U2F_SETS) {
+		if (!erase_u2f())
+			return false;
+		i = 0;
+	}
+	{
+		uint32_t u2f_flash_offset = (uintptr_t)&u2f_storage->item[i] -
+					    CONFIG_PROGRAM_MEMORY_BASE;
+		struct fips_u2f_state_item item;
+		int rv;
+
+		fips_rand_bytes(&item.hmac_key, sizeof(item.hmac_key));
+		/* load entropy for DRBG */
+		fips_trng_bytes(&item.entropy, sizeof(item.entropy));
+#ifdef CR50_DEV
+		CPRINTS("Created random key in partition %u", i);
+#endif
+		flash_open_ro_window(h1_flash_offset_, AP_RO_DATA_SPACE_SIZE);
+		rv = flash_physical_write(u2f_flash_offset, sizeof(item),
+					  (char *)&item);
+		flash_close_ro_window();
+		if (rv != EC_SUCCESS)
+			return false;
+		state->hmac_key = &u2f_storage->item[i].hmac_key[0];
+		state->entropy = &u2f_storage->item[i].entropy[0];
+		state->g2f_entropy = state->entropy;
+		state->drbg_entropy_size = sizeof(u2f_storage->item[i].entropy);
+#ifdef CR50_DEV
+		CPRINTS("U2F hmac =  %ph",
+			HEX_BUF(state->hmac_key,
+				sizeof(u2f_storage->item[i].hmac_key)));
+		CPRINTS("U2F drbg = %ph",
+			HEX_BUF(state->entropy,
+				sizeof(u2f_storage->item[i].entropy)));
+#endif
+
+	}
+	return true;
+}
+
+static bool u2f_state_loaded;
+static struct fips_u2f_state u2f_state;
+
+struct fips_u2f_state *u2f_fips_get_state(void)
+{
+	if (!u2f_state_loaded)
+		u2f_state_loaded = u2f_fips_load_state(&u2f_state);
+
+	return u2f_state_loaded ? &u2f_state : NULL;
+}
+
 
 /**
  * Combined FIPS status & global FIPS error.
@@ -64,60 +315,48 @@ bool fips_mode(void)
 	return (_fips_status & FIPS_MODE_ACTIVE);
 }
 
-#if FIPS_MODE_ENABLED
-static const uint8_t k_salt = NVMEM_VAR_G2F_SALT;
-
-/* Can't include TPM2 headers, so just define constant locally. */
-#define HR_NV_INDEX (1U << 24)
-
-/* Wipe old U2F keys. */
-static void u2f_zeroize(void)
-{
-	const uint32_t u2fobjs[] = { TPM_HIDDEN_U2F_KEK | HR_NV_INDEX,
-				     TPM_HIDDEN_U2F_KH_SALT | HR_NV_INDEX, 0 };
-	/* Delete NVMEM_VAR_G2F_SALT. */
-	setvar(&k_salt, sizeof(k_salt), NULL, 0);
-	/* Remove U2F keys and wipe all deleted objects. */
-	nvmem_erase_tpm_data_selective(u2fobjs);
-}
-#endif
-
 /**
  * Return current status for U2F keys:
  * false - U2F keys require zeroization.
  * true - U2F keys are missing or created in FIPS mode.
  */
+enum fips_state_flag_t {
+	FIPS_STATE_UNKNOWN = 0,
+	FIPS_STATE_NOT_APPROVED = 128,
+	FIPS_STATE_APPROVED = 255
+};
+/**
+ * fips_state is a tri-state flag:
+ *  0   - uninitialized
+ *  128 - initialized, not a FIPS mode
+ *  255 - initialized, FIPS mode
+ */
+static uint8_t fips_state;
+
 static bool fips_u2f_compliant(void)
 {
+	/* if we previously determined state, return it */
+	if (fips_state != FIPS_STATE_UNKNOWN)
+		return fips_state == FIPS_STATE_APPROVED;
+
+	/* if we successfully loaded non-FIPS keys, we aren't in FIPS mode. */
+	if (u2f_try_load_nonfips_key(&u2f_state.g2f_entropy,
+				     &u2f_state.hmac_key, &u2f_state.entropy)) {
+		u2f_state.drbg_entropy_size = 32; /* old entropy size */
+		u2f_state_loaded = true;
+		fips_state = FIPS_STATE_NOT_APPROVED;
+		return false;
+	}
+
 /* Until U2F key gen switch to new code, don't enable FIPS mode. */
 #if FIPS_MODE_ENABLED
-	uint8_t val_len = 0;
-	const struct tuple *t_salt;
-
-	/**
-	 * We are in FIPS mode if and only if:
-	 * 1) U2F keys were created in FIPS compliant way (board_fips_enforced)
-	 * 2) OR U2F keys weren't previously created
-	 */
-	if (board_fips_enforced())
-		return true;
-
-	/* FIPS mode wasn't enforced, so check presence of U2F keys */
-	t_salt = getvar(&k_salt, sizeof(k_salt));
-	if (t_salt) {
-		val_len = t_salt->val_len;
-		freevar(t_salt);
-	}
-	/* If none of keys is present - we are in FIPS mode. */
-	if (!val_len && !read_tpm_nvmem_size(TPM_HIDDEN_U2F_KEK) &&
-	    !read_tpm_nvmem_size(TPM_HIDDEN_U2F_KH_SALT)) {
-		/* Apparently, board FIPS mode wasn't set yet, so set it. */
-		board_set_local_fips_policy(true);
-		return true;
-	}
-#endif
+	fips_state = FIPS_STATE_APPROVED;
+	return true;
+#else
+	fips_state = FIPS_STATE_NOT_APPROVED;
 	/* we still have old U2F keys, so not in FIPS until zeroized */
 	return false;
+#endif
 }
 
 /* Return true if crypto can be used (no failures detectd). */
@@ -557,24 +796,6 @@ static bool fips_rsa2048_verify_kat(void)
 }
 #endif
 
-/* Call function using provided stack. */
-static bool call_on_stack(void *new_stack, bool (*func)(void))
-{
-	bool result;
-	/* Call whilst switching stacks */
-	__asm__ volatile("mov r4, sp\n" /* save sp */
-			 "mov sp, %[new_stack]\n"
-			 "blx %[func]\n"
-			 "mov sp, r4\n" /* restore sp */
-			 "mov %[result], r0\n"
-			 : [result] "=r"(result)
-			 : [new_stack] "r"(new_stack),
-			   [func] "r"(func)
-			 : "r0", "r1", "r2", "r3", "r4",
-			   "lr" /* clobbers */
-	);
-	return result;
-}
 
 /**
  * FIPS Power-up known-answer tests.
@@ -584,7 +805,6 @@ static bool call_on_stack(void *new_stack, bool (*func)(void))
  * @return FIPS_POWERON_TEST_ERROR if memory allocation error took place
  */
 #define FIPS_POWERON_TEST_ERROR -2ULL
-#define FIPS_KAT_STACK_SIZE 2048
 static uint64_t fips_power_up_tests(void)
 {
 	char *stack_buf;
@@ -689,6 +909,7 @@ static void fips_power_on(void)
 	uint64_t testtime = -1ULL;
 	/* make sure on power-on / resume it's cleared */
 	_fips_status = FIPS_UNINITIALIZED;
+	fips_state = FIPS_STATE_UNKNOWN;
 
 	/**
 	 * If this was a power-on or power-up tests weren't executed
@@ -727,25 +948,20 @@ void fips_set_policy(bool active)
 		return;
 /* Temporarily prevent switch to FIPS mode until U2F key gen is ready. */
 #if FIPS_MODE_ENABLED
-	/* Update local board FIPS flag. */
-	board_set_local_fips_policy(active);
+	u2f_state_loaded = false;
 	CPRINTS("FIPS policy set to %d", active);
 	cflush();
-	u2f_zeroize();
-
+	/* U2F zeroize need more stack. */
+	if (active)
+		call((bool (*)(void))u2f_zeroize());
 #ifdef CR50_DEV
 	if (!active) {
 		uint8_t random[32];
-		/* Create fake u2f keys old style */
+		static const uint8_t k_salt = NVMEM_VAR_G2F_SALT;
+
+		/* Create fake u2f keys old style, k_salt is enough */
 		fips_trng_bytes(random, sizeof(random));
 		setvar(&k_salt, sizeof(k_salt), random, sizeof(random));
-
-		fips_trng_bytes(random, sizeof(random));
-		write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KEK, sizeof(random),
-				       random, 1);
-		fips_trng_bytes(random, sizeof(random));
-		write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KH_SALT, sizeof(random),
-				       random, 1);
 	}
 #endif
 #endif
@@ -756,11 +972,10 @@ void fips_set_policy(bool active)
 static int cmd_fips_status(int argc, char **argv)
 {
 	fips_print_mode();
-	ccprints("FIPS crypto allowed: %u, u2f compliant: %u, "
-		 "board power up done: %u, board enforced: %u, fwmp : %u",
-		 fips_crypto_allowed(), fips_u2f_compliant(),
-		 board_fips_power_up_done(), board_fips_enforced(),
-		 board_fwmp_fips_mode_enabled());
+	CPRINTS("FIPS crypto allowed: %u, u2f compliant: %u, "
+		"board power up done: %u",
+		fips_crypto_allowed(), fips_u2f_compliant(),
+		board_fips_power_up_done());
 
 	cflush();
 
@@ -778,6 +993,11 @@ static int cmd_fips_status(int argc, char **argv)
 			fips_break_cmd = FIPS_BREAK_TRNG;
 		else if (!strncmp(argv[1], "sha", 3))
 			fips_break_cmd = FIPS_BREAK_SHA256;
+		else if (!strncmp(argv[1], "zero", 4))
+			CPRINTS("Zeroize status: %u", u2f_fips_zeroize());
+		else if (!strncmp(argv[1], "load", 4))
+			CPRINTS("Load status: %u",
+				u2f_fips_load_state(&u2f_state));
 #endif
 	}
 	return 0;
