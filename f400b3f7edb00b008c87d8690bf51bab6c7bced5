@@ -46,6 +46,30 @@
       "revId": "f400b3f7edb00b008c87d8690bf51bab6c7bced5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cddf328d_e567f717",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T20:56:47Z",
+      "side": 1,
+      "message": "Thank you! Those comments definitely help. I don\u0027t work with LMA and VMA enough to remember the nuances and I do have to say the documentation I can find if pretty sparse",
+      "parentUuid": "360d9c0e_eab77e01",
+      "range": {
+        "startLine": 510,
+        "startChar": 5,
+        "endLine": 510,
+        "endChar": 20
+      },
+      "revId": "f400b3f7edb00b008c87d8690bf51bab6c7bced5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
