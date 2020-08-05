@@ -242,3 +242,67 @@ static struct datablob_nvram nvram = {
 	.driver = &flash_drv,
 	.record_size = NVRAM_RECORD_SIZE,
 };
+
+#ifdef DEBUG_NVRAM
+static int cc_nvram(int argc, char **argv)
+{
+	char *e;
+	int tag;
+	uint8_t size;
+	uint8_t buf[NVRAM_RECORD_SIZE - sizeof(struct datablob_header)];
+	int rv = EC_SUCCESS;
+
+	if (argc < 2) {
+		ccprintf("block_size=%d\n", nvram_block_size);
+		ccprintf("flash_offset=0x%x\n", nvram_flash_offset);
+		ccprintf("next_offset=0x%x\n", next_offset);
+		ccprintf("cache_status=%d\n", nvram.cache_status);
+		hexdump(nvram.cache, nvram.record_size);
+		return EC_SUCCESS;
+	}
+
+	if (!strncasecmp(argv[1], "get", 3)) {
+		if (argc != 3)
+			return EC_ERROR_PARAM_COUNT;
+		tag = strtoi(argv[2], &e, 0);
+		size = sizeof(buf);
+		rv = nvram_get(tag, buf, &size);
+		if (rv)
+			return rv;
+		hexdump(buf, size);
+	} else if (!strncasecmp(argv[1], "set", 3)) {
+		if (argc != 5)
+			return EC_ERROR_PARAM_COUNT;
+		tag = strtoi(argv[2], &e, 0);
+		size = strtoi(argv[3], &e, 0);
+		rv = nvram_set(tag, argv[4], size);
+		if (rv)
+			return rv;
+	} else if (!strncasecmp(argv[1], "list", 4)) {
+		if (argc != 2)
+			return EC_ERROR_PARAM_COUNT;
+		for (tag = 0; tag < 0xff; tag++) {
+			size = sizeof(buf);
+			rv = nvram_get(tag, buf, &size);
+			if (rv == EC_SUCCESS) {
+				ccprintf("[%d]", tag);
+				hexdump(buf, size);
+			} else if (rv != EC_ERROR_NOT_FOUND) {
+				return rv;
+			}
+		}
+	} else if (!strncasecmp(argv[1], "write", 5)) {
+		return nvram_write();
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(nvram, cc_nvram,
+			"set <tag> <size> <data>\n"
+			"get <tag>\n"
+			"list\n"
+			"write\n",
+			"Set/Get NVRAM");
+#endif /* DEBUG_NVRAM */
