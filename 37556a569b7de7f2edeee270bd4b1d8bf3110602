@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0f93b864_744e8866",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-05T17:16:08Z",
+      "side": 1,
+      "message": "You\u0027re correct - thanks catching this.  Updated commit message.",
+      "parentUuid": "e9d3467e_29dccb03",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "37556a569b7de7f2edeee270bd4b1d8bf3110602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "768e50f9_408b687c",
         "filename": "baseboard/kalista/baseboard.h",
         "patchSetId": 2
@@ -105,6 +129,24 @@
       "revId": "37556a569b7de7f2edeee270bd4b1d8bf3110602",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd7a1f26_5c4820b5",
+        "filename": "baseboard/kalista/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-05T17:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b35e92f9_6a6f3b7a",
+      "revId": "37556a569b7de7f2edeee270bd4b1d8bf3110602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
