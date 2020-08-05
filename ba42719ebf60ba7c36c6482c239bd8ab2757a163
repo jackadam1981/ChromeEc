@@ -16,6 +16,23 @@
       "revId": "ba42719ebf60ba7c36c6482c239bd8ab2757a163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcebccb9_044c65e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-08-05T08:58:19Z",
+      "side": 1,
+      "message": "Please split this patch to multiple patches. Each patch should have a clear purpose in the commit message.\nFor example: 1. clone the initial setting from Jacuzzi 2. change the gpio setting 3. change led 4. change battery and so on.",
+      "revId": "ba42719ebf60ba7c36c6482c239bd8ab2757a163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
