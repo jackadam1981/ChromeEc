@@ -8,38 +8,10 @@
 #define __CROS_EC_CROS_BOARD_INFO_H
 
 #include "common.h"
+#include "datablob.h"
 #include "ec_commands.h"
 
-#define CBI_VERSION_MAJOR	0
-#define CBI_VERSION_MINOR	0
 #define CBI_EEPROM_SIZE		256
-static const uint8_t cbi_magic[] = { 0x43, 0x42, 0x49 };  /* 'C' 'B' 'I' */
-
-struct cbi_header {
-	uint8_t magic[3];
-	/* CRC of 'struct board_info' excluding magic and crc */
-	uint8_t crc;
-	/* Data format version. Parsers are expected to process data as long
-	 * as major version is equal or younger. */
-	union {
-		struct {
-			uint8_t minor_version;
-			uint8_t major_version;
-		};
-		uint16_t version;
-	};
-	/* Total size of data. It can be larger than sizeof(struct board_info)
-	 * if future versions add additional fields. */
-	uint16_t total_size;
-	/* List of data items (i.e. struct cbi_data[]) */
-	uint8_t data[];
-} __attribute__((packed));
-
-struct cbi_data {
-	uint8_t tag;		/* enum cbi_data_tag */
-	uint8_t size;		/* size of value[] */
-	uint8_t value[];	/* data value */
-} __attribute__((packed));
 
 /**
  * Board info accessors
@@ -86,7 +58,7 @@ int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size);
  * @param h	Pointer to CBI header
  * @return	CRC value
  */
-uint8_t cbi_crc8(const struct cbi_header *h);
+uint8_t cbi_crc8(const struct datablob_header *h);
 
 /**
  * Store data in memory in CBI data format
@@ -125,7 +97,7 @@ uint8_t *cbi_set_string(uint8_t *p, enum cbi_data_tag tag, const char *str);
  * @param tag	Tag of the data field to search
  * @return	Pointer to the data or NULL if not found.
  */
-struct cbi_data *cbi_find_tag(const void *cbi, enum cbi_data_tag tag);
+struct datablob_item *cbi_find_tag(const void *cbi, enum cbi_data_tag tag);
 
 /**
  * Callback implemented by board to manipulate data

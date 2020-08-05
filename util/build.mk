@@ -99,7 +99,7 @@ $(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += $(OPENSSL_LDFLAGS)
 deps-y += $(out)/util/gen_touchpad_hash.d
 endif # CONFIG_TOUCHPAD_VIRTUAL_OFF
 
-cbi-util-objs=../common/crc8.o ../common/cbi.o
+cbi-util-objs=../common/crc8.o ../common/cbi.o ../common/datablob.o
 
 $(out)/util/export_taskinfo.so: $(out)/util/export_taskinfo_ro.o \
 			$(out)/util/export_taskinfo_rw.o
