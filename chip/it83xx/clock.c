@@ -614,7 +614,9 @@ void __idle(void)
 		/* Disable interrupts */
 		interrupt_disable();
 		/* Check if the EC can enter deep doze mode or not */
-		if (DEEP_SLEEP_ALLOWED && clock_allow_low_power_idle()) {
+		if (DEEP_SLEEP_ALLOWED &&
+		    LOW_SPEED_DEEP_SLEEP_ALLOWED &&
+		    clock_allow_low_power_idle()) {
 			/* reset low power mode hw timer */
 			IT83XX_ETWD_ETXCTRL(LOW_POWER_EXT_TIMER) |= BIT(1);
 			sleep_mode_t0 = get_time();
