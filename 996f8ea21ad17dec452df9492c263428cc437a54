@@ -196,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "0f8b6cdd_9fece018",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5469,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-05T15:36:35Z",
+      "side": 1,
+      "message": "Patchset doesn\u0027t appear to have any updates?  \n\nIf you want more background for this clause you can checkout PD 3.0 sections 6.10 Message Discarding and Table 6-65 Response to an incoming Message (except VDM).  Basically, if we fail to send the source cap message because we had to discard, this means an unexpected message came in and we will need to soft reset.",
+      "parentUuid": "d92b2404_653db73c",
+      "range": {
+        "startLine": 5468,
+        "startChar": 1,
+        "endLine": 5469,
+        "endChar": 42
+      },
+      "revId": "996f8ea21ad17dec452df9492c263428cc437a54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cd128e1_df9ef9c5",
         "filename": "test/usb_pe.h",
         "patchSetId": 1
