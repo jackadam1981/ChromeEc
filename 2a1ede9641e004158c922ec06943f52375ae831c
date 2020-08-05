@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa548c33_e5b70329",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "AP RO Hash page",
+      "range": {
+        "startLine": 7,
+        "startChar": 41,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "741ddf38_e0280c0f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -16,6 +39,311 @@
       "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a893e31_4f2f89bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "Seems reasonable overall, (I don\u0027t claim to fully understand how this is supposed to work, but do have few nits/suggestions ;) \n\nIs there maybe a brief doc describing the requirements?\n\nA better patch description would also help.",
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bdd109c_768c40d9",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "please restore this file.",
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b10e97_bcd9ee9f",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "the description doesn\u0027t quite match - the function checks for any value, not just 0 or 0xff",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 43
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01b514eb_35ba56f4",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "why does this have to be defined here? All this module should care about is how big the u2f data is so that its location in the page can be calculated.",
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e98287ef_febf7885",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "should they all be in a structure? This way it would be easier to avoid typedefs - just one structure definition containing all callback prototypes.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 0
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b17f85d_327acc5f",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "should this function get the size of the U2F space as a parameter so that it knows how much to preserve?\n\nWe won\u0027t need it originally, but this might change in the future",
+      "range": {
+        "startLine": 143,
+        "startChar": 6,
+        "endLine": 143,
+        "endChar": 18
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cfdfe5c_559c8b3c",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "I think using CONFIG_FLASH_BANK_SIZE makes more sense here: no matter how big or small AP_RO_DATA_SPACE_SIZE is, you need to erase one page.",
+      "range": {
+        "startLine": 147,
+        "startChar": 40,
+        "endLine": 147,
+        "endChar": 61
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe22296_c5b4a5cc",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "you don\u0027t need to open the entire page - just enough space to write the item.",
+      "range": {
+        "startLine": 184,
+        "startChar": 23,
+        "endLine": 184,
+        "endChar": 62
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa3263ed_a053e214",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "this would zeroize just one \u0027item\u0027 - could more than one require wiping out at the same time?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06725469_48762cd2",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "\u003e \"initiliazed\" is a possible misspelling of \"initialized\".\n\nPlease fix.",
+      "parentUuid": "0c1ce3a0_ebccaa2f",
+      "range": {
+        "startLine": 210,
+        "startChar": 14,
+        "endLine": 210,
+        "endChar": 25
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adaa99d6_cfb43996",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "s/it/its/",
+      "range": {
+        "startLine": 211,
+        "startChar": 13,
+        "endLine": 211,
+        "endChar": 15
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec5c569_b09d8586",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "no need to open the entire page.\n\nAlso, this sequence \n\nopen window\nwrite block\nclose window\n\ncould be put in a separate helper function.",
+      "range": {
+        "startLine": 246,
+        "startChar": 41,
+        "endLine": 246,
+        "endChar": 63
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4215dd49_a3d34146",
+        "filename": "board/cr50/fips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "I know it\u0027s ugly, but EC codebase style does not allow typedefs - did repo preupload check not complaint?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 0
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57e4231_39f71e7b",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-05T16:57:11Z",
+      "side": 1,
+      "message": "*p_salt \u003d salt\n\nwould be the same",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 19
+      },
+      "revId": "2a1ede9641e004158c922ec06943f52375ae831c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
