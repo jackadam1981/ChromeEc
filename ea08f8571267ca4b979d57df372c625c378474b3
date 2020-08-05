@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9cadb06d_855488e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-08-05T20:52:15Z",
+      "side": 1,
+      "message": "Hah, no worries.",
+      "parentUuid": "df3af0aa_7332fc06",
+      "revId": "ea08f8571267ca4b979d57df372c625c378474b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b1f72ab_38d8a853",
         "filename": "util/ectool.c",
         "patchSetId": 8
@@ -39,6 +57,30 @@
       "revId": "ea08f8571267ca4b979d57df372c625c378474b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e157ec4c_6932cde3",
+        "filename": "util/ectool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-08-05T20:52:15Z",
+      "side": 1,
+      "message": "Ahh, you\u0027re right. There is a clear pattern in this file. I\u0027ll change.",
+      "parentUuid": "1b1f72ab_38d8a853",
+      "range": {
+        "startLine": 1621,
+        "startChar": 11,
+        "endLine": 1621,
+        "endChar": 16
+      },
+      "revId": "ea08f8571267ca4b979d57df372c625c378474b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
