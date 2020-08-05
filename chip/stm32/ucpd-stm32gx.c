@@ -956,6 +956,7 @@ void stm32gx_ucpd1_irq(void)
 DECLARE_IRQ(STM32_IRQ_UCPD1, stm32gx_ucpd1_irq, 1);
 
 
+#ifdef STM32G4_UCPD_CMD
 static char ctrl_names[][10] = {
 	"rsvd",
 	"GoodCRC",
@@ -1191,3 +1192,4 @@ static int command_ucpd(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(ucpd, command_ucpd,
 			"[rst|src|bist|amber",
 			"Turn on/off LED.");
+#endif
