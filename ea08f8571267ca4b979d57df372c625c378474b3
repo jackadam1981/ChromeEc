@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df3af0aa_7332fc06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-08-05T15:50:54Z",
+      "side": 1,
+      "message": "Thanks for fixing my silly bug. 😊",
+      "revId": "ea08f8571267ca4b979d57df372c625c378474b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b1f72ab_38d8a853",
+        "filename": "util/ectool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-08-05T15:50:54Z",
+      "side": 1,
+      "message": "I think I see \"%02x\" more often, but this should work too.",
+      "range": {
+        "startLine": 1621,
+        "startChar": 11,
+        "endLine": 1621,
+        "endChar": 16
+      },
+      "revId": "ea08f8571267ca4b979d57df372c625c378474b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
