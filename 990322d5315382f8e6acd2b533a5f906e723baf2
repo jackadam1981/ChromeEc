@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29b9ea1d_b75a7ed8",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1504,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-05T23:24:51Z",
+      "side": 1,
+      "message": "CONFIG_EC_PROTECTED_STORAGE_SIZE?\n\nthe only interesting reference i could find to this\nis in flashrom. see cros_ec_invalidate_copy().\nmy reading is that we\u0027ll want to update this as well.",
+      "range": {
+        "startLine": 1504,
+        "startChar": 12,
+        "endLine": 1504,
+        "endChar": 26
+      },
+      "revId": "990322d5315382f8e6acd2b533a5f906e723baf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
