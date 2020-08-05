@@ -376,10 +376,7 @@ void system_reset(int flags)
 		save_flags |= EC_RESET_FLAG_AP_WATCHDOG;
 #endif
 
-	ccprintf("sys: saving flags = 0x%08x\n", save_flags);
 	chip_save_reset_flags(save_flags);
-	ccprintf("sys: read flags = 0x%08x\n", chip_read_reset_flags());
-	cflush();
 
 	if (flags & SYSTEM_RESET_HARD) {
 #ifdef CONFIG_SOFTWARE_PANIC
