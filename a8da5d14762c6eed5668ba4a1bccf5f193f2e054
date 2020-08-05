@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "582f55dc_b6ee2e50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-05T18:04:42Z",
+      "side": 1,
+      "message": "Do we need to set this for waddledoo in the same CL to avoid the assert?  Also, could the charger_get_info() function help here? ",
+      "revId": "a8da5d14762c6eed5668ba4a1bccf5f193f2e054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
