@@ -6,6 +6,7 @@
 #define __EC_BOARD_CR50_FIPS_H__
 
 #include "common.h"
+#include "timer.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -83,11 +84,25 @@ void fips_set_status(enum fips_status status);
  */
 void fips_throw_err(enum fips_status err);
 
+struct fips_vtable {
+	int (*ap_ro_save)(void); /* Save AP RO context */
+	int (*ap_ro_restore)(void); /* Restore AP RO context */
+	bool (*u2f_load)(bool create, uint32_t **salt, uint32_t **salt_kek,
+			 uint32_t **salt_kh);
+	bool (*u2f_zero)(void); /* Zeroize old U2F keys */
+	int (*cprints)(enum console_channel channel, const char *format, ...);
+	int (*shared_mem_acquire)(int size, char **dest_ptr);
+	void (*shared_mem_release)(void *ptr);
+	void (*flash_log_add_event)(uint8_t type, uint8_t size, void *payload);
+	void (*cflush)(void);
+	timestamp_t (*get_time)(void);
+};
+
 /**
- * Switch FIPS status, zeroize keys if needed. For Production it's a one way
- * to 'FIPS on'. For development board it allows creation of non-FIPS keys.
+ * Set functions used to save data stored in shared flash pages which when
+ * flash page is erased, and restore it after, load old U2F state.
  */
-void fips_set_policy(bool active);
+void u2f_set_callbacks(const struct fips_vtable *vtable);
 
 #ifdef __cplusplus
 }
