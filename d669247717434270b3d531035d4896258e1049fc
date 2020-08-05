@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfd700af_213674d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-05T22:41:30Z",
+      "side": 1,
+      "message": "This is an interesting one since this is an example log output. I almost want to leave it since that is what users will see, but I also don\u0027t think this will confuse them either.\n\nSo I do lean towards submitting this.\n\nAlso can you add --hashtag inclusive-lang to this and all CLs like this please? (you can do it on command line with repo or in Gerrit UI)",
+      "revId": "d669247717434270b3d531035d4896258e1049fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
