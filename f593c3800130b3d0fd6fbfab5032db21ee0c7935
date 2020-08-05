@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "074eba57_1a6e976e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-05T02:02:06Z",
+      "side": 1,
+      "message": "No problem. Here are the last few lines of the output:\n\n# Comparing Files\n\n# Verdict: MATCH\n\n# Removing temp directory",
+      "parentUuid": "2860ae42_27efdc72",
+      "revId": "f593c3800130b3d0fd6fbfab5032db21ee0c7935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ede595fe_e79c5585",
         "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
         "patchSetId": 2
@@ -74,6 +92,30 @@
       "revId": "f593c3800130b3d0fd6fbfab5032db21ee0c7935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f798d35e_f87b2669",
+        "filename": "docs/fingerprint/fingerprint-dev-for-partners.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-05T02:02:06Z",
+      "side": 1,
+      "message": "Good catch. Here\u0027s the bug https://b.corp.google.com/issues/162896016 but I\u0027ve changed these back to ftdi_dummy. Removing \"dummy\" from the servo repo is a bit more involved. I\u0027ll include the ftdi_dummy change with the servo change.",
+      "parentUuid": "ede595fe_e79c5585",
+      "range": {
+        "startLine": 210,
+        "startChar": 70,
+        "endLine": 210,
+        "endChar": 79
+      },
+      "revId": "f593c3800130b3d0fd6fbfab5032db21ee0c7935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
