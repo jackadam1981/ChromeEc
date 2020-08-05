@@ -361,12 +361,6 @@ void board_reboot_ec_deferred(int usec_delay);
 void board_closed_loop_reset(void);
 int board_wipe_tpm(int reset_required);
 int board_is_first_factory_boot(void);
-int board_fwmp_fips_mode_enabled(void);
-
-/* set FIPS policy for board in NVRAM (independent of FWMP) */
-void board_set_local_fips_policy(bool asserted);
-/* return non zero if FIPS mode enforced in FWMP or NVRAM */
-bool board_fips_enforced(void);
 
 int usb_i2c_board_enable(void);
 void usb_i2c_board_disable(void);
