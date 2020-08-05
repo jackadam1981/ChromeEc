@@ -16,6 +16,24 @@
       "revId": "0707c10781aa9af9141f34d3177e0b073b5c754e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3774ccf2_f10703b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-08-05T13:11:47Z",
+      "side": 1,
+      "message": "I\u0027ve prepared EC firmware without this commit, and checked if \u0027crash watchdog\u0027 breaks kxcj9. It seems to be working, so I\u0027m going to remove this commit from patchset.\n\nAlso, I found that https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/536723 is similar change already merged into ToT",
+      "parentUuid": "675f4035_12a0bcf4",
+      "revId": "0707c10781aa9af9141f34d3177e0b073b5c754e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
