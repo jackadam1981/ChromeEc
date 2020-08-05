@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e9d3467e_29dccb03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-08-05T07:26:54Z",
+      "side": 1,
+      "message": "If I didn\u0027t misunderstand something, the link above should mention the allocation of the original size limit like this:\nnpcx7m7w\u0027b\u0027: 256 KiB    \nnpcx7m7w\u0027c\u0027: 252 KiB",
+      "parentUuid": "9eebe9c4_2cc35fe8",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "37556a569b7de7f2edeee270bd4b1d8bf3110602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "768e50f9_408b687c",
         "filename": "baseboard/kalista/baseboard.h",
         "patchSetId": 2
