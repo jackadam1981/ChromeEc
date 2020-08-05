@@ -195,6 +195,30 @@
     },
     {
       "key": {
+        "uuid": "8be73c0a_e1bb266c",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4765,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-05T17:51:32Z",
+      "side": 1,
+      "message": "If it\u0027s valid for either in terms of compliance, this approach certainly seems more straightforward.",
+      "parentUuid": "741c9223_359d3635",
+      "range": {
+        "startLine": 4761,
+        "startChar": 0,
+        "endLine": 4765,
+        "endChar": 6
+      },
+      "revId": "a5df1c029210d6843c21a2fd3b401df9a0f77402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d97a0a6_c611a84e",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 5

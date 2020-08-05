@@ -16,6 +16,23 @@
       "revId": "c46d49842f2bf46565a05b5332a6a6dffa1c6ff9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d184d226_ec035ba2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-05T17:51:32Z",
+      "side": 1,
+      "message": "I\u0027ll let Ed +2 as the TCPCI unit test expert :) \n\nNathan noticed recently that we\u0027ll need to update the ITE embedded TCPC retries.  There\u0027s a register for it, we\u0027re just not setting it and using the default. ",
+      "revId": "c46d49842f2bf46565a05b5332a6a6dffa1c6ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
