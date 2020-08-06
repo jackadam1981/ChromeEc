@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f2de899_e58e998d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-06T20:04:24Z",
+      "side": 1,
+      "message": "volteer: Support board-specific power parameters",
+      "revId": "35d91b859d8737688f0eb81e2be3d987b3ea43ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9cc4e33_ee593b1a",
+        "filename": "board/volteer/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-06T20:04:24Z",
+      "side": 1,
+      "message": "Please retain the TODO from baseboard.h here.",
+      "revId": "35d91b859d8737688f0eb81e2be3d987b3ea43ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
