@@ -93,6 +93,30 @@
       "revId": "db4eb53c069a74df7e993dabde229521a508c420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34a842df_20673071",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-06T06:38:16Z",
+      "side": 1,
+      "message": "the shared patch: reset + 50 msec + don\u0027t configure retimer in safe mode\nDivya, are u suggesting 50 msec + don\u0027t configure retimer in safe mode?",
+      "parentUuid": "5f38eab4_dff7e745",
+      "range": {
+        "startLine": 336,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 13
+      },
+      "revId": "db4eb53c069a74df7e993dabde229521a508c420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
