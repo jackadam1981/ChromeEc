@@ -33,6 +33,23 @@
       "revId": "63b02161694ca891faee574b0eff62e89c22fa4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bae64c23_103e75f8",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-06T04:44:00Z",
+      "side": 1,
+      "message": "use sleep_set_notify.",
+      "revId": "63b02161694ca891faee574b0eff62e89c22fa4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
