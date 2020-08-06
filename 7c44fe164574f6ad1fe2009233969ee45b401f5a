@@ -22,6 +22,30 @@
       "revId": "7c44fe164574f6ad1fe2009233969ee45b401f5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d137d4c3_337b97a1",
+        "filename": "board/halvor/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-06T08:57:22Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "87992b12_b913572e",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 60
+      },
+      "revId": "7c44fe164574f6ad1fe2009233969ee45b401f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
