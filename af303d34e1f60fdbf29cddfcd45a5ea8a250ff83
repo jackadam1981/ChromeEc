@@ -33,6 +33,29 @@
       "revId": "af303d34e1f60fdbf29cddfcd45a5ea8a250ff83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4a2375c_492f9b2e",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-06T04:55:37Z",
+      "side": 1,
+      "message": "Maybe not that important, do we need to clear this in sleep_reset_tracking()?",
+      "range": {
+        "startLine": 248,
+        "startChar": 14,
+        "endLine": 248,
+        "endChar": 36
+      },
+      "revId": "af303d34e1f60fdbf29cddfcd45a5ea8a250ff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
