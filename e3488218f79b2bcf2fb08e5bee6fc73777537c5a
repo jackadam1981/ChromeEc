@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be33da0d_0cb6c586",
+        "filename": "chip/npcx/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-06T01:01:20Z",
+      "side": 1,
+      "message": "suggest moving the shell call into the implementation\nof cmd_fwlen.\n\nit might be a bit simpler to parse .smap instead of .map.",
+      "range": {
+        "startLine": 71,
+        "startChar": 23,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "e3488218f79b2bcf2fb08e5bee6fc73777537c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0a9eb3a_d3b314ab",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-06T01:01:20Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be unconditional for all the cores\nthat don\u0027t implement INIT_ROM_REGION?",
+      "revId": "e3488218f79b2bcf2fb08e5bee6fc73777537c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
