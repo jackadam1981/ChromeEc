@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "1e95eb6a_997931bd",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-06T20:19:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "302e96f5_6e5e5dff",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c99435cf_6295e7c2",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 4
@@ -191,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "b3032b2e_de5aa71b",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-06T20:19:37Z",
+      "side": 1,
+      "message": "To clarify, we are no longer supporting power sequencing in the EC code for volteer and variants. These signals should no longer be actually used.\n\nTheir names should still match their names on the schematic. If the schematic hasn\u0027t changed, then the names here shouldn\u0027t change.\n\nIt looks like GPIOC0 is still EN_PP1050_STG on the schematic, and GPIO67 is still CPU_C10_GATE_L. If that is accurate, those GPIOs should retain those names in this file.",
+      "parentUuid": "851a62b9_4e7f1dc9",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cc260db_1b2e5587",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 4
@@ -226,6 +274,24 @@
     },
     {
       "key": {
+        "uuid": "8ab9aa2b_870f328a",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-06T20:19:37Z",
+      "side": 1,
+      "message": "Ack. See above.",
+      "parentUuid": "62b0690f_26be7e27",
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a907811d_5647ace3",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 4
@@ -258,6 +324,24 @@
       "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3c694e0_f13df8ef",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-06T20:19:37Z",
+      "side": 1,
+      "message": "Ack. See above.",
+      "parentUuid": "caa00045_023ff857",
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
