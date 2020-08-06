@@ -377,6 +377,9 @@ static void it83xx_init(enum usbpd_port port, int role)
 	/* reset and disable HW auto generate message header */
 	IT83XX_USBPD_GCR(port) = BIT(5);
 	USBPD_SW_RESET(port);
+	/* According PD version set HW auto retry count */
+	IT83XX_USBPD_BMCSR(port) = (IT83XX_USBPD_BMCSR(port) & ~0x70) |
+					(CONFIG_PD_RETRY_COUNT << 4);
 	/* set SOP: receive SOP message only.
 	 * bit[7]: SOP" support enable.
 	 * bit[6]: SOP' support enable.
