@@ -39,6 +39,24 @@
       "revId": "47bca60b2c6bda057d7bebc8cc6bef20e4610bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d87d486_a9687803",
+        "filename": "include/init_rom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-06T01:42:39Z",
+      "side": 1,
+      "message": "actually, if CHIP_INIT_ROM_REGION isn\u0027t defined,\nthe pointer will point to something in the .rodata\nsection, so we don\u0027t need to return NULL.",
+      "parentUuid": "e122306c_02171a7b",
+      "revId": "47bca60b2c6bda057d7bebc8cc6bef20e4610bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
