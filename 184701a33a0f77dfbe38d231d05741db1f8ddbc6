@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5785c25f_fe9ef5f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-08-06T16:44:18Z",
+      "side": 1,
+      "message": "\u003e Patch Set 2:\n\u003e \n\u003e FYI, this commit breaks the keyboard from working under Tianocore, as the PS2 keyboard controller expects 0xaa as the response for BAT success, and the lack thereof causes it to hang/loop repeatedly. Reverting the commit fixes the keyboard under Tianocore setup/systemdboot/grub.\n\u003e \n\u003e ref:\n\u003e https://github.com/tianocore/edk2/blob/master/MdeModulePkg/Bus/Isa/Ps2KeyboardDxe/Ps2KbdCtrller.c#L1710\n\nHi Matt, I apologize for having missed your comment earlier. This slipped through the cracks. I will look closely this week and provide an update on how we can handle this. Thanks!",
+      "revId": "184701a33a0f77dfbe38d231d05741db1f8ddbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
