@@ -54,6 +54,8 @@
 /* Additional PPC second source */
 #define CONFIG_USBC_PPC_SYV682X
 
+#define CONFIG_NVRAM
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
