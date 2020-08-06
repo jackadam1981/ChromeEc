@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "302e96f5_6e5e5dff",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-06T08:46:35Z",
+      "side": 1,
+      "message": "Update in Patchset 5",
+      "parentUuid": "5d36d4f0_6ebd70e2",
+      "range": {
+        "startLine": 49,
+        "startChar": 24,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c99435cf_6295e7c2",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 4
