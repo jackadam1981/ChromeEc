@@ -56,6 +56,30 @@
       "revId": "af303d34e1f60fdbf29cddfcd45a5ea8a250ff83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbaf185a_a213f8cb",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-06T17:48:47Z",
+      "side": 1,
+      "message": "Right. Clearing it is a good practice. Done.",
+      "parentUuid": "b4a2375c_492f9b2e",
+      "range": {
+        "startLine": 248,
+        "startChar": 14,
+        "endLine": 248,
+        "endChar": 36
+      },
+      "revId": "af303d34e1f60fdbf29cddfcd45a5ea8a250ff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
