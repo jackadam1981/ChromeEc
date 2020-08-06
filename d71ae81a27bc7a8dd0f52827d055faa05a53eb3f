@@ -22,6 +22,30 @@
       "revId": "d71ae81a27bc7a8dd0f52827d055faa05a53eb3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b64654b_26ea7a1e",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-06T19:50:50Z",
+      "side": 1,
+      "message": "Keith: Per comment #27, you are right. However, that comment also notes that there is a board pull-down.\n\nCatherine: Will enabling internal pull-up here cause a problem?",
+      "parentUuid": "be6c050e_e0727985",
+      "range": {
+        "startLine": 114,
+        "startChar": 42,
+        "endLine": 114,
+        "endChar": 56
+      },
+      "revId": "d71ae81a27bc7a8dd0f52827d055faa05a53eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
