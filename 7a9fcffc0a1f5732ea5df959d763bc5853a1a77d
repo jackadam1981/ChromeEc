@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "f82dbf48_03803c40",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0b112f23_86605d0e",
+      "range": {
+        "startLine": 54,
+        "startChar": 16,
+        "endLine": 54,
+        "endChar": 34
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29602dfb_5036c796",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 14
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "6621d134_928779ef",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29602dfb_5036c796",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ade331d_f6f2c566",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 14
@@ -76,6 +124,30 @@
       "writtenOn": "2020-08-05T17:17:56Z",
       "side": 1,
       "message": "Let\u0027s more comments to this array, say it is a lookup from enum ps8xxx_variant_regs to i2c register.\n\n\nAlso, let\u0027s set it like\nstatic const int ps8751_reg_map[] \u003d {\n\t[PS8XXX_FW_VER_REG] \u003d 0x90,\n};\n\nTo make it more clear what we are mapping and setting.",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9cf20f5_4fd2bb2e",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Yes, looks better.",
+      "parentUuid": "4ade331d_f6f2c566",
       "range": {
         "startLine": 67,
         "startChar": 1,
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "7ae982c0_56e71934",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e0a9f5a6_6973930a",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 29
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b22c7b28_9e02db68",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 14
@@ -131,6 +227,30 @@
       "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927b822a_ff062a46",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Done\n\nBy the way, looks like weak can fulfill the requirement here so what is the difference between weak and overridable? Thanks.",
+      "parentUuid": "b22c7b28_9e02db68",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 21
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "a472c77b_f5d8656c",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "166649b3_3481693f",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 4
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2b64d0_a706ac95",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 14
@@ -168,6 +312,30 @@
       "writtenOn": "2020-08-05T17:17:56Z",
       "side": 1,
       "message": "nit: we can probably convert this to if (IS_ENABLED(CONFIG..FORECE_DID) \u0026\u0026 ) style now",
+      "range": {
+        "startLine": 290,
+        "startChar": 7,
+        "endLine": 290,
+        "endChar": 42
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc7db792_f4350dd5",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "The issue is that ps8815_make_device_id is guarded by this config as well. And if we don\u0027t need this function, it might be better not to include that function so code space can be saved.",
+      "parentUuid": "8a2b64d0_a706ac95",
       "range": {
         "startLine": 290,
         "startChar": 7,
@@ -203,6 +371,30 @@
     },
     {
       "key": {
+        "uuid": "757afcd1_7c1380cf",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "I considered this question and the live variable here made me to write this codes. The reason is that since live indicates the real id from chip, it can be still legal if it is one of supported sources.\n\nFor example, what if board_get_product_id can be called after tcpci_tcpm_init then the judgement of expected product_id can be came from chip itself in run time and in the factory / RMA flow we can catch this result in SSFC for example. Finally we don\u0027t need any additional source of truth?\n\nI am still experiencing this plan.",
+      "parentUuid": "e2ad56de_63f74d31",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 6
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8cff0ba_e820af59",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 14
@@ -223,6 +415,30 @@
       "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a0c405_7816b8a4",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b8cff0ba_e820af59",
+      "range": {
+        "startLine": 454,
+        "startChar": 14,
+        "endLine": 454,
+        "endChar": 55
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +465,30 @@
     },
     {
       "key": {
+        "uuid": "06733324_12f7fdbb",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "61174477_f1ff64b1",
+      "range": {
+        "startLine": 475,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 25
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cabaa3d_da1582d7",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 14
@@ -272,6 +512,30 @@
     },
     {
       "key": {
+        "uuid": "1c23339c_0d0076a3",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2cabaa3d_da1582d7",
+      "range": {
+        "startLine": 477,
+        "startChar": 5,
+        "endLine": 477,
+        "endChar": 72
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eda8f265_baecf6a1",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 14
@@ -283,6 +547,24 @@
       "writtenOn": "2020-08-05T17:17:56Z",
       "side": 1,
       "message": "let\u0027s use IS_ENABLE in the if statement\n\n---\n\nWe also may want to just pull in that logic into the if statement here ... I am okay either way, just a thought.",
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f28e42bd_5b6159bf",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Do we want to save a little code if 8751 config is not defined?",
+      "parentUuid": "eda8f265_baecf6a1",
       "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -312,6 +594,30 @@
     },
     {
       "key": {
+        "uuid": "01996e7d_619a962f",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78256f26_cf855e98",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0419b388_e6b2fed3",
         "filename": "driver/tcpm/ps8xxx.h",
         "patchSetId": 14
@@ -335,6 +641,30 @@
     },
     {
       "key": {
+        "uuid": "a813ba49_9044a892",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0419b388_e6b2fed3",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d6026af_396f5792",
         "filename": "include/config.h",
         "patchSetId": 14
@@ -346,6 +676,30 @@
       "writtenOn": "2020-08-05T17:17:56Z",
       "side": 1,
       "message": "I think we need a little more explanation here. We expect that this would be defined along side multiple other PD_TCPM_PS* configs. We should probably break about the PS8 option to right below and explain their relationship to MULTI\n\nWe should also put a check near to bottom of config.h (where the other checks are) that issues an error if we define MULTI without defining at least two other PS8 options\n\ne.g.\n#ifdef MULTI\n#if defined(PS8751) + defined(PS8805) .... \u003c\u003d2\n#error Should define more than one PS8XXX chip support when using MULTI\n#endif\n#endif",
+      "range": {
+        "startLine": 4009,
+        "startChar": 7,
+        "endLine": 4009,
+        "endChar": 38
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc62460f_c87ac4e1",
+        "filename": "include/config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 4009,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-06T13:40:07Z",
+      "side": 1,
+      "message": "Regarding checking numbers of PS8 options, I learn from you about this way. Thanks.",
+      "parentUuid": "1d6026af_396f5792",
       "range": {
         "startLine": 4009,
         "startChar": 7,
