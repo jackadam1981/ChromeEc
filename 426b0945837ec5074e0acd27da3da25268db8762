@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5cbb034e_8d6e2def",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:21:39Z",
+      "side": 1,
+      "message": "Sorry, didn\u0027t see this until after it merged. I can force push history maybe?!?! (just kidding)",
+      "parentUuid": "15a32053_fe99ea55",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "426b0945837ec5074e0acd27da3da25268db8762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9abc9ad8_1e1925c1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
