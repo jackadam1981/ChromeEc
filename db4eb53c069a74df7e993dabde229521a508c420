@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "2aad0b3f_654a8084",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-06T17:33:19Z",
+      "side": 1,
+      "message": "(1). 50 msec case issue is observed in several runs\n(2). skip safe with out any delay is working\n(3). without 50msec, the TBT dock is not enumerated as TBT device",
+      "parentUuid": "e118e54d_aab9dd27",
+      "range": {
+        "startLine": 336,
+        "startChar": 2,
+        "endLine": 336,
+        "endChar": 13
+      },
+      "revId": "db4eb53c069a74df7e993dabde229521a508c420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7e08ce9_1030ffa6",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
