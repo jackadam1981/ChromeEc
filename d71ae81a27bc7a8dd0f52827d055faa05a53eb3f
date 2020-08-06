@@ -46,6 +46,30 @@
       "revId": "d71ae81a27bc7a8dd0f52827d055faa05a53eb3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf09dfca_fec72e5e",
+        "filename": "board/volteer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-08-06T23:19:49Z",
+      "side": 1,
+      "message": "The schematics are wrong, this should be a PU for what we have. currently there is an onboard pulldown (we should change to a pullup).\n\nFor now I wouldn\u0027t add a pullup in the EC since it will fight with the onboard pulldown on the EVT/proto2 boards.",
+      "parentUuid": "9b64654b_26ea7a1e",
+      "range": {
+        "startLine": 114,
+        "startChar": 42,
+        "endLine": 114,
+        "endChar": 56
+      },
+      "revId": "d71ae81a27bc7a8dd0f52827d055faa05a53eb3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
