@@ -255,12 +255,47 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
 /*****************************************************************************
  * Use FW_CONFIG to set correct configuration.
  */
-
-static uint32_t board_ver;
+enum gpio_signal gpio_usb_c1_hpd = GPIO_DP2_HPD;
 enum gpio_signal gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
+
+static uint32_t get_board_ver(void)
+{
+	static uint32_t board_ver = 0xFFFFFFFF;
+
+	if (board_ver == 0xFFFFFFFF) {
+		board_ver = 0;
+		cbi_get_board_version(&board_ver);
+
+		/*
+		 * Adjust based on USB-C1 options.
+		 * This would have been ec_config_has_usbc1_retimer_ps8802
+		 * on version_2 hardware but the result is the same and
+		 * this will be removed when version_2 hardware is retired.
+		 */
+		if (ec_config_has_mst_hub_rtd2141b()) {
+			gpio_usb_c1_hpd = (board_ver >= 3)
+						? GPIO_NO_HPD
+						: GPIO_EC_DP1_HPD;
+		}
+	}
+
+	return board_ver;
+}
+
+enum gpio_signal board_usbc_port_to_hpd_gpio(int port)
+{
+	if (port == 0)
+		return GPIO_USB_C0_HPD;
+
+	/* Make sure gpio_usb_c1_hpd is set */
+	(void)get_board_ver();
+	return gpio_usb_c1_hpd;
+}
 
 static void board_remap_gpio(void)
 {
+	uint32_t board_ver = get_board_ver();
+
 	if (board_ver >= 3) {
 		int rv;
 		struct ioex_info *g;
@@ -305,8 +340,6 @@ static void board_remap_gpio(void)
 
 void setup_fw_config(void)
 {
-	cbi_get_board_version(&board_ver);
-
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
 
@@ -467,6 +500,8 @@ static void sb_smart_charge_mode(int enable)
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_startup(void)
 {
+	uint32_t board_ver = get_board_ver();
+
 	/* Normal charge current */
 	sb_smart_charge_mode(SB_SMART_CHARGE_DISABLE);
 
@@ -479,6 +514,8 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_startup, HOOK_PRIO_DEFAULT);
 /* Called on AP S0 -> S3 transition */
 static void board_chipset_suspend(void)
 {
+	uint32_t board_ver = get_board_ver();
+
 	/* SMART charge current */
 	sb_smart_charge_mode(SB_SMART_CHARGE_ENABLE);
 
@@ -516,6 +553,7 @@ __override int board_aoz1380_set_vbus_source_current_limit(int port,
 						enum tcpc_rp_value rp)
 {
 	int rv;
+	uint32_t board_ver = get_board_ver();
 
 	/* Use the TCPC to set the current limit */
 	if (port == 0) {
