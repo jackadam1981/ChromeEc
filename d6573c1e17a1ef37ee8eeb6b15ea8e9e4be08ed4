@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "c6758073_b7b13041",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-06T19:53:49Z",
+      "side": 1,
+      "message": "CL:2334353 should solve the problem so this CL can be abandoned.",
+      "parentUuid": "8aeec046_f8ae68b6",
+      "revId": "d6573c1e17a1ef37ee8eeb6b15ea8e9e4be08ed4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdb68a1c_4914344e",
         "filename": "board/woomax/board.h",
         "patchSetId": 1
