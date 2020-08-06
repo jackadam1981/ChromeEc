@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7acb6f36_c04680c2",
+        "filename": "common/init_rom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-06T01:31:02Z",
+      "side": 1,
+      "message": "\"uintptr_t *\" doesn\u0027t really describe the data here.\n\ni\u0027m fine with jett\u0027s \"uint8_t *\" suggestion.",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "47bca60b2c6bda057d7bebc8cc6bef20e4610bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e122306c_02171a7b",
+        "filename": "include/init_rom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-06T01:31:02Z",
+      "side": 1,
+      "message": "i\u0027d like to propose a simplified API:\n\ninit_rom_map(...)\ninit_rom_unmap(..)\n\nmap is just get_addr + lock(1) combined\nunmap is just lock(0)\n\nwe could even avoid one level of conditional code in the\ncall sites by unconditionally implementing this to\nreturn NULL when CHIP_INIT_ROM_REGION is\nconfigured off or otherwise unavailable.\n\ntaken straight form the mmap(2) man page 😊",
+      "revId": "47bca60b2c6bda057d7bebc8cc6bef20e4610bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
