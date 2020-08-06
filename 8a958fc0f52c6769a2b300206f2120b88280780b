@@ -1,0 +1,160 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ec17a5c_27517e54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "Thank you for all of the work you\u0027ve put into this!",
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0ad5977_8b58e30f",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "nit: I think you should use 0 here instead so so it makes it clear you are expected a valid enum value. (This is just an opinion, so if you disagree, you can leave it)",
+      "range": {
+        "startLine": 216,
+        "startChar": 11,
+        "endLine": 216,
+        "endChar": 21
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc073372_8e6ade51",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "so here, just put\n\nif (IS_ENABLED(CONFIG..MULIT)) {\n  CPRINT\n  return 0;\n} else if (IS_ENABLED(CONFIG_..8751) {\n  return PS8751_PRODUCT_ID;\n} else if (IS_ENABLED(CONFIG_...8805) {\n  return PS8805_PRODUCT_ID;\n}\n\n\n---\n\nThe IS_ENABLE will save the flash space, the compiler realizes that the code path cannot happen so it opimizes it out (and we save the flash space still)",
+      "range": {
+        "startLine": 271,
+        "startChar": 8,
+        "endLine": 271,
+        "endChar": 25
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb0a46f_c365c38c",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "I really do think we should change to to checking chip_info-\u003eproduct_id against board_get_produ ct_id; that is our validity check.\n\nOtherwise I see the result from board_get_product_id not matching the product id of the device and that causing problems.\n\n(sorry I left two comment about this, I review the CL in two different ways)",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 0
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7506d372_add966bd",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "I really think this logic can now move into the board_get_product_id, so we don\u0027t have to worry about using the PS8XXXX_PRODUCT_ID define or not, we always just use board_get_product_id",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 54
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe79ee65_b17a8019",
+        "filename": "include/config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 4010,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "\u003e \"mutliple\" is a possible misspelling of \"multiple\".\n\nPlease fix.",
+      "parentUuid": "06db9cb8_95e42ac5",
+      "range": {
+        "startLine": 4010,
+        "startChar": 57,
+        "endLine": 4010,
+        "endChar": 65
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43698484_1aca6e30",
+        "filename": "include/config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 5509,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "This check is good, I am now thinking we should also have the inverse check:\n\nIf we define multiple PS8* options without also defining MULTI, then we should issue and error.",
+      "range": {
+        "startLine": 5500,
+        "startChar": 0,
+        "endLine": 5509,
+        "endChar": 45
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

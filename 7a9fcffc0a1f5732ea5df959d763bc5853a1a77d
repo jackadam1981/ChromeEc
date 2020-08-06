@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "a51d212d_bcee7903",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9cf20f5_4fd2bb2e",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 5
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0a9f5a6_6973930a",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 14
@@ -242,6 +266,30 @@
       "side": 1,
       "message": "Done\n\nBy the way, looks like weak can fulfill the requirement here so what is the difference between weak and overridable? Thanks.",
       "parentUuid": "b22c7b28_9e02db68",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 21
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1512d01f_4e2e1586",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "It actually maps to __weak, but gives us a little more meaning when reading the code. Ideally in the future we will be able to statically analyze the source code and ensure that anyone defining __override matches the names of a __override_proto (since C doesn\u0027t guarantee this). This will help up in the log run. For example, if someone renamed the function in the common code but forgot to rename all of the board files, it starts to silently fail to call the board functions.\n\nSee also https://source.corp.google.com/chromeos_public/src/platform/ec/include/common.h;l\u003d131?q\u003df:platform%2Fec%20overridable\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$)\u0026type\u003dcs",
+      "parentUuid": "927b822a_ff062a46",
       "range": {
         "startLine": 122,
         "startChar": 0,
@@ -348,6 +396,30 @@
     },
     {
       "key": {
+        "uuid": "79fac470_4735bf10",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "Ah, I see. I think you can solve this by just forward declaring the function (outside of the gaurd) and keeping the function definition in the guard to space.\n\nIf that doesn\u0027t work, then we don\u0027t have to do this. I agree we want to save the space. I think we can get both though :)",
+      "parentUuid": "bc7db792_f4350dd5",
+      "range": {
+        "startLine": 290,
+        "startChar": 7,
+        "endLine": 290,
+        "endChar": 42
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2ad56de_63f74d31",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 14
@@ -383,6 +455,30 @@
       "side": 1,
       "message": "I considered this question and the live variable here made me to write this codes. The reason is that since live indicates the real id from chip, it can be still legal if it is one of supported sources.\n\nFor example, what if board_get_product_id can be called after tcpci_tcpm_init then the judgement of expected product_id can be came from chip itself in run time and in the factory / RMA flow we can catch this result in SSFC for example. Finally we don\u0027t need any additional source of truth?\n\nI am still experiencing this plan.",
       "parentUuid": "e2ad56de_63f74d31",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 6
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7de794f_0f0ce372",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "If it is live, then we do ask the chip for its product id, but we need to verify that it is the same product id that we expect it to be (based on the value board_get_product_id gives us). We are depending on board_get_product_id matching what the chip says it is since we are use different register maps etc to talk with it.\n\n(honestly, I had to look at the old code for a really long time to figure out what and why it was there -- can I think I might have even written it!) We are trying to ensure that the value of product id that we are using matches in code the hardware.",
+      "parentUuid": "757afcd1_7c1380cf",
       "range": {
         "startLine": 316,
         "startChar": 0,
@@ -571,6 +667,24 @@
     },
     {
       "key": {
+        "uuid": "50dae1f6_91bfa055",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "I think we can get both if we forward declare ps8751_get_gcc outside of a guard at the top of the file",
+      "parentUuid": "f28e42bd_5b6159bf",
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78256f26_cf855e98",
         "filename": "driver/tcpm/ps8xxx.h",
         "patchSetId": 14
@@ -709,6 +823,30 @@
       "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe8ded5_a138d39c",
+        "filename": "include/config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 4009,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:58:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc62460f_c87ac4e1",
+      "range": {
+        "startLine": 4009,
+        "startChar": 7,
+        "endLine": 4009,
+        "endChar": 38
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
