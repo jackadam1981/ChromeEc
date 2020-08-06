@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02a71bfc_60e07386",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-06T16:26:34Z",
+      "side": 1,
+      "message": "we can make a new verify_tcpci_transmit_within(...., uint32_t timeout) right?\n\nand use use that timeout instead of 5 SECONDS and we should get want we want, right?",
+      "range": {
+        "startLine": 335,
+        "startChar": 4,
+        "endLine": 335,
+        "endChar": 48
+      },
+      "revId": "15c31961ee1ee186618244d42caf964a78b2b567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
