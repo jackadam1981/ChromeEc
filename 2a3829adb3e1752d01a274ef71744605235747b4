@@ -22,6 +22,30 @@
       "revId": "2a3829adb3e1752d01a274ef71744605235747b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "530cfc40_fce16251",
+        "filename": "board/rowan/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-08-06T07:00:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1104b02d_0379b0da",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 0
+      },
+      "revId": "2a3829adb3e1752d01a274ef71744605235747b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
