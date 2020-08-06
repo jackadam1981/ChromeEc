@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "095a586f_4e1044f8",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-08-06T23:25:41Z",
+      "side": 1,
+      "message": "\u003e \"Eventhough\" is a possible misspelling of \"Even though\".\n\nPlease fix.",
+      "parentUuid": "c7f68d40_ecfe462c",
+      "range": {
+        "startLine": 254,
+        "startChar": 51,
+        "endLine": 254,
+        "endChar": 61
+      },
+      "revId": "246e702d0c270e8acf3d2ece7116ab8fec34f3ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2be2d170_501160f8",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-08-06T23:25:41Z",
+      "side": 1,
+      "message": "\u003e \"successully\" is a possible misspelling of \"successfully\".\n\nPlease fix.",
+      "parentUuid": "120b46f4_1f38acc1",
+      "range": {
+        "startLine": 317,
+        "startChar": 21,
+        "endLine": 317,
+        "endChar": 32
+      },
+      "revId": "246e702d0c270e8acf3d2ece7116ab8fec34f3ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
