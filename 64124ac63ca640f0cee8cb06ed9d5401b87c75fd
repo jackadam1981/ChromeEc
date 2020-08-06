@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87094707_9ebddee3",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-06T16:46:26Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem quite right.\nFor port\u003d\u003d1 and ppc_id\u003d\u003d0, then there should be no call to ioex_set_level",
+      "range": {
+        "startLine": 390,
+        "startChar": 22,
+        "endLine": 390,
+        "endChar": 36
+      },
+      "revId": "64124ac63ca640f0cee8cb06ed9d5401b87c75fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb2abef_0041de25",
+        "filename": "board/ezkinil/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-06T16:46:26Z",
+      "side": 1,
+      "message": "Internal pull down is not available on NCT3807, has to be external.",
+      "revId": "64124ac63ca640f0cee8cb06ed9d5401b87c75fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
