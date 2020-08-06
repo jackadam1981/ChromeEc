@@ -259,6 +259,21 @@ BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
 static uint32_t board_ver;
 enum gpio_signal gpio_ec_ps2_reset = GPIO_EC_PS2_RESET_V1;
 
+enum gpio_signal board_usbc_port_to_hpd_gpio(int port)
+{
+	if (port == 0) {
+		return GPIO_USB_C0_HPD;
+	} else if (board_ver >= 3) {
+		return (ec_config_has_mst_hub_rtd2141b())
+				? GPIO_NO_HPD
+				: GPIO_DP2_HPD;
+	} else {
+		return (ec_config_has_usbc1_retimer_ps8802())
+				? GPIO_EC_DP1_HPD
+				: GPIO_DP2_HPD;
+	}
+}
+
 static void board_remap_gpio(void)
 {
 	if (board_ver >= 3) {
