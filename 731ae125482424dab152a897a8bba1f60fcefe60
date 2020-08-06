@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f65a5b8a_a86c00ad",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-06T16:49:33Z",
+      "side": 1,
+      "message": "I just saw similar CL:2253489, and it made me wonder if you can get away with just calling ioex_set_flags() here, and not need to do CONFIG_IO_EXPANDER_DYNAMIC.",
+      "revId": "731ae125482424dab152a897a8bba1f60fcefe60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
