@@ -13,6 +13,8 @@
 #error Must choose VARIANT_ZORK_TREMBYLE or VARIANT_ZORK_DALBOZ
 #endif
 
+#define CONFIG_I2C_DEBUG
+
 /* NPCX7 config */
 #define NPCX_UART_MODULE2 1  /* GPIO64/65 are used as UART pins. */
 #define NPCX_TACH_SEL2    0  /* No tach. */
