@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "303e980b_48396d1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:28:46Z",
+      "side": 1,
+      "message": "Is this directly related to motion sensor change?\n\nIf not, separating it into its own CL might make sense. At least mention it in its own sentence in the commit message.",
+      "range": {
+        "startLine": 9,
+        "startChar": 49,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "adb7f40381d3850dc8496316719a23ec8dbdf519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "905f2548_003a0a48",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:28:46Z",
+      "side": 1,
+      "message": "BIT(LID_ACCEL)?",
+      "range": {
+        "startLine": 51,
+        "startChar": 38,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "adb7f40381d3850dc8496316719a23ec8dbdf519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0fa54a1_da6a0db1",
+        "filename": "board/voxel/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:28:46Z",
+      "side": 1,
+      "message": "I think the correct channel for this file is CC_MOTION_SENSE.",
+      "range": {
+        "startLine": 20,
+        "startChar": 41,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "adb7f40381d3850dc8496316719a23ec8dbdf519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8fd6d8a_2cd03173",
+        "filename": "board/voxel/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:28:46Z",
+      "side": 1,
+      "message": "Out of scope: This should be \"board.\"",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "adb7f40381d3850dc8496316719a23ec8dbdf519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d7f5ae1_2b2650e1",
+        "filename": "board/voxel/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:28:46Z",
+      "side": 1,
+      "message": "Nit: Seems like this line is unnecessary.",
+      "revId": "adb7f40381d3850dc8496316719a23ec8dbdf519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
