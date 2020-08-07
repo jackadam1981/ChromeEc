@@ -25,6 +25,7 @@ struct mock_tcpc_ctrl {
 		enum tcpc_cc_pull cc;
 		enum tcpc_rp_value rp;
 		enum tcpc_cc_polarity polarity;
+		uint64_t call_to_enable_auto_toggle;
 	} last;
 
 };
