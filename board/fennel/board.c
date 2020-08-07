@@ -430,6 +430,7 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 static void board_chipset_startup(void)
 {
 	gpio_set_level(GPIO_EN_USBA_5V, 1);
+	ioex_set_level(IOEX_EN_USBA_5V_DB, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -437,6 +438,7 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 static void board_chipset_shutdown(void)
 {
 	gpio_set_level(GPIO_EN_USBA_5V, 0);
+	ioex_set_level(IOEX_EN_USBA_5V_DB, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
