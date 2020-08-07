@@ -121,7 +121,7 @@ static const int debug_level;
  * going to, but not so long that a "low power charger connected" notification
  * would be shown in the chrome OS UI.
  */
-#define SNK_READY_HOLD_OFF_US (200 * MSEC)
+#define SNK_READY_HOLD_OFF_US (739 * MSEC)
 /*
  * For the same purpose as SNK_READY_HOLD_OFF_US, but this delay can be longer
  * since the concern over "low power charger" is not relevant when connected as
@@ -129,7 +129,7 @@ static const int debug_level;
  * port sends a power role swap request close to when the VDM discover identity
  * message gets sent.
  */
-#define SRC_READY_HOLD_OFF_US (400 * MSEC)
+#define SRC_READY_HOLD_OFF_US (811 * MSEC)
 
 enum ams_seq {
 	AMS_START,
