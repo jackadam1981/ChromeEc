@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82a0a798_b0efd0a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-08-07T23:03:06Z",
+      "side": 1,
+      "message": "Here\u0027s the failure - out of flash space.\n\nchromeos-ec-0.0.2-r7925: /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/eldrid/RW/ec.RW.elf section `.data\u0027 will not fit in region `FLASH\u0027\nchromeos-ec-0.0.2-r7925: /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: No room left in the flash\nchromeos-ec-0.0.2-r7925: /opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: region `FLASH\u0027 overflowed by 616 bytes\nchromeos-ec-0.0.2-r7925:   CC      RO/common/charge_manager.o\nchromeos-ec-0.0.2-r7925:   CC      RO/common/chipset.o\nchromeos-ec-0.0.2-r7925: collect2: error: ld returned 1 exit status\nchromeos-ec-0.0.2-r7925: make[2]: *** [Makefile.rules:519: build/eldrid/RW/ec.RW.elf] Error 1\nchromeos-ec-0.0.2-r7925: make[1]: *** [Makefile.rules:244: proj-eldrid] Error 2",
+      "revId": "ab8faf9d6298bb278754f2c0afae20a34192b2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
