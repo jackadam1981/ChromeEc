@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78d27009_e2d88b01",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-07T16:02:38Z",
+      "side": 1,
+      "message": "you need a comment for why you are adding 1. I believe it is because the register holds the total number of attempts versus the number of retries; please call that out in the comments",
+      "range": {
+        "startLine": 380,
+        "startChar": 1,
+        "endLine": 383,
+        "endChar": 38
+      },
+      "revId": "286cf6c5c5b37c1b8846c14bb923d28bf0a34607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
