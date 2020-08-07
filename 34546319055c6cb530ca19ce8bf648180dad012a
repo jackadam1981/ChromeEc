@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "f926e0b3_f98f8ca7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-08-07T19:35:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b836c9ad_4023eaaa",
+      "range": {
+        "startLine": 809,
+        "startChar": 16,
+        "endLine": 809,
+        "endChar": 17
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cefc3e5_b78837de",
         "filename": "board/cr50/fips.c",
         "patchSetId": 4
@@ -85,6 +109,30 @@
       "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419b3ff3_1e4e2ee7",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-08-07T19:35:09Z",
+      "side": 1,
+      "message": "thanks! good point!",
+      "parentUuid": "4cefc3e5_b78837de",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "bea83f04_2805da10",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-08-07T19:35:09Z",
+      "side": 1,
+      "message": "I\u0027d say I\u0027d better change 0x80 to 0xAA - more bits of difference, harder to inject a fault to switch mode.",
+      "parentUuid": "33ae96ec_37a20e7b",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e79bb0b9_3b96fed3",
         "filename": "board/cr50/fips.c",
         "patchSetId": 4
@@ -134,6 +206,30 @@
     },
     {
       "key": {
+        "uuid": "0faeef0f_c0153997",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-08-07T19:35:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e79bb0b9_3b96fed3",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 6
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af52b51a_2a92ac94",
         "filename": "board/cr50/fips.c",
         "patchSetId": 4
@@ -154,6 +250,30 @@
       "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0542313e_bd09b6fa",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-08-07T19:35:09Z",
+      "side": 1,
+      "message": "i was thinking about this, but it creates other dependencies on loaded state. Will revert this..",
+      "parentUuid": "af52b51a_2a92ac94",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 650,
+        "endChar": 1
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
