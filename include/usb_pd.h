@@ -2123,6 +2123,10 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port);
 int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 			uint32_t *payload);
 
+int enter_dp_compat_mode(int port, enum tcpm_transmit_type sop,
+			uint32_t *payload);
+
+
 /**
  * Return maximum allowed speed for Thunderbolt-compatible mode
  *
