@@ -47,13 +47,6 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		/* Alert is active-low, push-pull */
 		.flags = 0,
 	},
-	[USB_PD_PORT_ITE_2] = {
-		.bus_type = EC_BUS_TYPE_EMBEDDED,
-		/* TCPC is embedded within EC so no i2c config needed */
-		.drv = &it83xx_tcpm_drv,
-		/* Alert is active-low, push-pull */
-		.flags = 0,
-	},
 };
 
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
