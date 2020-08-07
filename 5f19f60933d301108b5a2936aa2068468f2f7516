@@ -16,6 +16,24 @@
       "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01528817_708b1514",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-07T07:46:59Z",
+      "side": 1,
+      "message": "done.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2342183",
+      "parentUuid": "23bb67b6_d0bcbd13",
+      "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
