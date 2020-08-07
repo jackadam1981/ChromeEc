@@ -85,6 +85,19 @@ static inline enum ec_error_list raw_write16(int chgnum, int offset, int value)
 			   offset, value);
 }
 
+static inline enum ec_error_list raw_update16(int chgnum, int offset, int mask,
+					      int value)
+{
+	int reg;
+
+	RETURN_ERROR(raw_read16(chgnum, offset, &reg));
+	reg &= ~mask;
+	reg |= (mask & value);
+	RETURN_ERROR(raw_write16(chgnum, offset, reg));
+
+	return EC_SUCCESS;
+}
+
 static enum ec_error_list isl9237_set_current(int chgnum, uint16_t current)
 {
 	return raw_write16(chgnum, ISL923X_REG_CHG_CURRENT,
@@ -520,6 +533,10 @@ static void isl923x_init(int chgnum)
 			goto init_fail;
 	}
 
+	/* Revert all changes done by isl9238c_hibernate(). */
+	if (IS_ENABLED(CONFIG_CHARGER_ISL9238C) && isl9238c_resume(chgnum))
+		goto init_fail;
+
 	if (IS_ENABLED(CHARGER_ISL9238X) ||
 	    IS_ENABLED(CONFIG_CHARGER_RAA489000)) {
 		/*
@@ -678,6 +695,48 @@ void raa489000_hibernate(int chgnum)
 	cflush();
 }
 #endif /* CONFIG_CHARGER_RAA489000 */
+
+#ifdef CONFIG_CHARGER_ISL9238C
+int isl9238c_hibernate(int chgnum)
+{
+	/* Disable IMON */
+	RETURN_ERROR(raw_update16(chgnum, ISL923X_REG_CONTROL1,
+				ISL923X_C1_DISABLE_MON, 0xFFFF));
+
+	/* Disable PSYS */
+	RETURN_ERROR(raw_update16(chgnum, ISL923X_REG_CONTROL1,
+				ISL923X_C1_ENABLE_PSYS, 0));
+
+	/* Disable GP comparator */
+	RETURN_ERROR(raw_update16(chgnum, ISL923X_REG_CONTROL2,
+				ISL923X_C2_COMPARATOR, 0xFFFF));
+
+	/* Force BGATE off */
+	RETURN_ERROR(raw_update16(chgnum, ISL9238_REG_CONTROL3,
+				ISL9238_C3_BGATE_OFF, 0xFFFF));
+
+
+	return EC_SUCCESS;
+}
+
+int isl9238c_resume(int chgnum)
+{
+	/* Revert everything in isl9238c_hibernate() */
+	RETURN_ERROR(raw_update16(chgnum, ISL923X_REG_CONTROL1,
+				ISL923X_C1_DISABLE_MON, 0));
+
+	RETURN_ERROR(raw_update16(chgnum, ISL923X_REG_CONTROL1,
+				ISL923X_C1_ENABLE_PSYS, 0xFFFF));
+
+	RETURN_ERROR(raw_update16(chgnum, ISL923X_REG_CONTROL2,
+				ISL923X_C2_COMPARATOR, 0));
+
+	RETURN_ERROR(raw_update16(chgnum, ISL9238_REG_CONTROL3,
+				ISL9238_C3_BGATE_OFF, 0));
+
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_CHARGER_ISL9238C */
 
 /*****************************************************************************/
 /* Hardware current ramping */
