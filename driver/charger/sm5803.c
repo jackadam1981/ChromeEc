@@ -49,6 +49,7 @@ static struct mutex flow1_access_lock[CHARGER_NUM];
 static int charger_vbus[CHARGER_NUM];
 
 static int sm5803_is_sourcing_otg_power(int chgnum, int port);
+static enum ec_error_list sm5803_get_dev_id(int chgnum, int *id);
 
 static inline enum ec_error_list chg_read8(int chgnum, int offset, int *value)
 {
@@ -105,6 +106,49 @@ static inline enum ec_error_list test_update8(int chgnum, const int offset,
 {
 	return i2c_update8(chg_chips[chgnum].i2c_port,
 			   SM5803_ADDR_TEST_FLAGS, offset, mask, action);
+}
+
+static enum ec_error_list sm5803_flow1_update(int chgnum, const uint8_t mask,
+					const enum mask_update_action action)
+{
+	int reg, rv, dev_id;
+
+	/*
+	 * On Si rev 3, confirm that init value in 0x5C is intact before
+	 * enabling charging.
+	 */
+	rv = sm5803_get_dev_id(chgnum, &dev_id);
+	if (rv)
+		return rv;
+
+	if (dev_id == 0x03) {
+		rv = chg_read8(chgnum, 0x5C, &reg);
+		if (rv) {
+			CPRINTS("%s %d: Failed 0x5C read",
+				CHARGER_NAME, chgnum);
+			return rv;
+		}
+
+		if (reg != 0x7A) {
+			CPRINTS("%s %d: Unexpected 0x5C reg: 0x%02x. File bug",
+				CHARGER_NAME, chgnum, reg);
+
+			/* Fix it before enabling charging */
+			rv = chg_write8(chgnum, 0x5C, 0x7A);
+		}
+	}
+
+	/* Safety checks done, onto the actual register update */
+	mutex_lock(&flow1_access_lock[chgnum]);
+
+	rv = i2c_update8(chg_chips[chgnum].i2c_port,
+			 chg_chips[chgnum].i2c_addr_flags,
+			 SM5803_REG_FLOW1,
+			 mask, action);
+
+	mutex_unlock(&flow1_access_lock[chgnum]);
+
+	return rv;
 }
 
 int sm5803_is_vbus_present(int chgnum)
@@ -222,8 +266,7 @@ static void sm5803_init(int chgnum)
 			 * No charger connected, disable CHG_EN
 			 * (note other bits default to 0)
 			 */
-			rv = chg_write8(chgnum, SM5803_FLOW1_CHG_EN,
-					0);
+			rv = chg_write8(chgnum, SM5803_REG_FLOW1, 0);
 		} else if (!sm5803_is_sourcing_otg_power(chgnum, chgnum)) {
 			charger_vbus[chgnum] = 1;
 		}
@@ -547,7 +590,9 @@ static enum ec_error_list sm5803_get_status(int chgnum, int *status)
 	if (rv)
 		return rv;
 
-	if (!(reg & SM5803_FLOW1_CHG_EN))
+
+	if ((reg & SM5803_FLOW1_MODE) == CHARGER_MODE_DISABLED &&
+	    !(reg & SM5803_FLOW1_LINEAR_CHARGE_EN))
 		*status |= CHARGER_CHARGE_INHIBITED;
 
 	return EC_SUCCESS;
@@ -556,11 +601,10 @@ static enum ec_error_list sm5803_get_status(int chgnum, int *status)
 static enum ec_error_list sm5803_set_mode(int chgnum, int mode)
 {
 	enum ec_error_list rv;
-	int flow1_reg, flow2_reg;
+	int flow2_reg;
 	int dev_id;
 
 	rv = sm5803_get_dev_id(chgnum, &dev_id);
-	mutex_lock(&flow1_access_lock[chgnum]);
 
 	/* New silicon version requires a new procedure to start charging. */
 	if ((dev_id >= 3) && (!(mode & CHARGE_FLAG_INHIBIT_CHARGE))) {
@@ -574,11 +618,8 @@ static enum ec_error_list sm5803_set_mode(int chgnum, int mode)
 	}
 
 	rv |= chg_read8(chgnum, SM5803_REG_FLOW2, &flow2_reg);
-	rv |= chg_read8(chgnum, SM5803_REG_FLOW1, &flow1_reg);
-	if (rv) {
-		mutex_unlock(&flow1_access_lock[chgnum]);
+	if (rv)
 		return rv;
-	}
 
 	/*
 	 * Note: Charge may be enabled while OTG is enabled, but charge inhibit
@@ -586,18 +627,17 @@ static enum ec_error_list sm5803_set_mode(int chgnum, int mode)
 	 * when battery is present.
 	 */
 	if (mode & CHARGE_FLAG_INHIBIT_CHARGE) {
-		flow1_reg = 0;
+		rv |= sm5803_flow1_update(chgnum, 0xFF, MASK_CLR);
 		flow2_reg &= ~SM5803_FLOW2_AUTO_ENABLED;
 	} else {
-		flow1_reg |= SM5803_FLOW1_CHG_EN;
+		/* TODO: should likely move into a sink enable function */
+		rv |= sm5803_flow1_update(chgnum, CHARGER_MODE_SINK, MASK_SET);
 		if (battery_get_disconnect_state() == BATTERY_NOT_DISCONNECTED)
 			flow2_reg |= SM5803_FLOW2_AUTO_ENABLED;
 	}
 
-	rv = chg_write8(chgnum, SM5803_REG_FLOW1, flow1_reg);
 	rv |= chg_write8(chgnum, SM5803_REG_FLOW2, flow2_reg);
 
-	mutex_unlock(&flow1_access_lock[chgnum]);
 	return rv;
 }
 
@@ -741,8 +781,12 @@ static enum ec_error_list sm5803_set_option(int chgnum, int option)
 	enum ec_error_list rv;
 	int reg;
 
+	mutex_lock(&flow1_access_lock[chgnum]);
+
 	reg = option & 0xFF;
 	rv = chg_write8(chgnum, SM5803_REG_FLOW1, reg);
+
+	mutex_unlock(&flow1_access_lock[chgnum]);
 	if (rv)
 		return rv;
 
@@ -807,13 +851,6 @@ static enum ec_error_list sm5803_enable_otg_power(int chgnum, int enabled)
 		reg &= ~SM5803_PHOT1_VBUS_MON_EN;
 	rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
 
-	mutex_lock(&flow1_access_lock[chgnum]);
-	rv |= chg_read8(chgnum, SM5803_REG_FLOW1, &reg);
-	if (rv) {
-		mutex_unlock(&flow1_access_lock[chgnum]);
-		return rv;
-	}
-
 	/*
 	 * Enable: CHG_EN - turns on buck-boost
 	 *	   VBUSIN_DISCH_EN - enable discharge on Vbus
@@ -824,14 +861,18 @@ static enum ec_error_list sm5803_enable_otg_power(int chgnum, int enabled)
 	 *	    disabled through set_mode.
 	 */
 	if (enabled)
-		reg |= (SM5803_FLOW1_CHG_EN | SM5803_FLOW1_VBUSIN_DISCHG_EN |
-						SM5803_FLOW1_DIRECTCHG_SRC_EN);
+		rv = sm5803_flow1_update(chgnum, CHARGER_MODE_SOURCE |
+					 SM5803_FLOW1_DIRECTCHG_SRC_EN,
+					 MASK_SET);
 	else
-		reg &= ~(SM5803_FLOW1_VBUSIN_DISCHG_EN |
-						SM5803_FLOW1_DIRECTCHG_SRC_EN);
+		/*
+		 * TODO: can disable source mode entirely if guaranteed PD tasks
+		 * won't run power supply reset while sinking
+		 */
+		rv = sm5803_flow1_update(chgnum, BIT(1) |
+					 SM5803_FLOW1_DIRECTCHG_SRC_EN,
+					 MASK_CLR);
 
-	rv = chg_write8(chgnum, SM5803_REG_FLOW1, reg);
-	mutex_unlock(&flow1_access_lock[chgnum]);
 	return rv;
 }
 
@@ -844,8 +885,8 @@ static int sm5803_is_sourcing_otg_power(int chgnum, int port)
 	if (rv)
 		return 0;
 
-	reg &= (SM5803_FLOW1_CHG_EN | SM5803_FLOW1_VBUSIN_DISCHG_EN);
-	return reg == (SM5803_FLOW1_CHG_EN | SM5803_FLOW1_VBUSIN_DISCHG_EN);
+	reg &= SM5803_FLOW1_MODE;
+	return reg == CHARGER_MODE_SOURCE;
 }
 
 #ifdef CONFIG_CMD_CHARGER_DUMP
