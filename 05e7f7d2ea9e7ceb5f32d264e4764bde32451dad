@@ -16,6 +16,46 @@
       "revId": "05e7f7d2ea9e7ceb5f32d264e4764bde32451dad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ce2786a_693d4a83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-07T21:56:09Z",
+      "side": 1,
+      "message": "Change seems fine to me",
+      "revId": "05e7f7d2ea9e7ceb5f32d264e4764bde32451dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4422a998_da2353bc",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-07T21:56:09Z",
+      "side": 1,
+      "message": "when we we start sysjumping before task start, EFS2?\n\nI think we may need to audit more HOOK_SYSJUMPs then",
+      "range": {
+        "startLine": 1053,
+        "startChar": 1,
+        "endLine": 1054,
+        "endChar": 30
+      },
+      "revId": "05e7f7d2ea9e7ceb5f32d264e4764bde32451dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
