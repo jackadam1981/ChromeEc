@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae7c85a7_3b1e5009",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-07T16:07:56Z",
+      "side": 1,
+      "message": "Looks great!",
+      "revId": "7135a366049b4eb9906aabad603437571f526824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb951b10_23cb0da3",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-07T16:07:56Z",
+      "side": 1,
+      "message": "nit: you can not add it back to the above condition. (If you want to leave it though, I don\u0027t feel too strongly about it though)",
+      "range": {
+        "startLine": 469,
+        "startChar": 2,
+        "endLine": 470,
+        "endChar": 27
+      },
+      "revId": "7135a366049b4eb9906aabad603437571f526824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bb4378f_871be64a",
+        "filename": "include/config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 5500,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-07T16:07:56Z",
+      "side": 1,
+      "message": "nit: if you just have \"#if defined(X)\" that can be \"#ifdef X\"; same is true with ifndef for !defined().\n\nYou don\u0027t have to change this, more of a note in case you want to change it or for the future.",
+      "revId": "7135a366049b4eb9906aabad603437571f526824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
