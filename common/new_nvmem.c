@@ -2384,9 +2384,39 @@ test_export_static size_t init_object_offsets(uint16_t *offsets, size_t count)
 		obj_base = next_obj_base;
 		memcpy(&next_obj_base, obj_addr, sizeof(next_obj_base));
 	}
-
 	return num_objects;
 }
+
+#ifdef CR50_DEV
+/**
+ * Debug function to print content of NVMEM cache.
+ */
+void dump_nvcache(const char *str)
+{
+	uint16_t tpm_object_offsets[20];
+	size_t num_objs, i;
+	uint32_t cached_type;
+
+	uint8_t *evict_start;
+	void *pcache;
+
+	evict_start = (uint8_t *)nvmem_cache_base(NVMEM_TPM) + s_evictNvStart;
+
+	num_objs = init_object_offsets(tpm_object_offsets,
+				       ARRAY_SIZE(tpm_object_offsets));
+
+	ccprintf("%s: s_evictNvStart=%u, %u objects in cache:", str,
+		 s_evictNvStart, num_objs);
+	for (i = 0; i < num_objs; i++) {
+		/* Find TPM object in the NVMEM cache. */
+		pcache = evict_start + tpm_object_offsets[i];
+		memcpy(&cached_type, pcache, sizeof(cached_type));
+		ccprintf("[%x at %u] ", cached_type, tpm_object_offsets[i]);
+	}
+	ccprintf("\n");
+	cflush();
+}
+#endif
 
 static enum ec_error_list update_object(const struct access_tracker *at,
 					struct nn_container *ch,
@@ -3216,6 +3246,16 @@ test_export_static enum ec_error_list browse_flash_contents(int print)
 
 	return rv;
 }
+
+#ifdef CR50_DEV
+/* Debug function to print content of NVMEM */
+void dump_nvmem(const char *str)
+{
+	CPRINTS("%s", str);
+	browse_flash_contents(1);
+	cflush();
+}
+#endif
 
 static int command_dump_nvmem(int argc, char **argv)
 {

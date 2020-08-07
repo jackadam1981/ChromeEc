@@ -152,6 +152,10 @@ static inline int nvmem_erase_tpm_data(void)
 {
 	return nvmem_erase_tpm_data_selective(NULL);
 }
+#ifdef CR50_DEV
+void dump_nvmem(const char *str);
+void dump_nvcache(const char *str);
+#endif
 
 #if defined(TEST_BUILD) && !defined(TEST_FUZZ)
 #define NVMEM_TEST_BUILD
