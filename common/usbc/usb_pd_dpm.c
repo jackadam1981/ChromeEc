@@ -123,6 +123,22 @@ static void dpm_attempt_mode_entry(int port)
 	    pd_get_modes_discovery(port, TCPC_TX_SOP) != PD_DISC_COMPLETE)
 		return;
 
+	if (pd_get_svids_discovery(port, TCPC_TX_SOP_PRIME) == PD_DISC_NEEDED ||
+	    pd_get_modes_discovery(port, TCPC_TX_SOP_PRIME) == PD_DISC_NEEDED) {
+		CPRINTS("C%d: DPM attempt disc SOP'", port);
+	    pe_dpm_request(port, DPM_REQUEST_PORT_DISCOVERY);
+		return;
+	}
+
+/*
+	if (pd_get_svids_discovery(port, TCPC_TX_SOP_PRIME_PRIME) == PD_DISC_NEEDED ||
+	    pd_get_modes_discovery(port, TCPC_TX_SOP_PRIME_PRIME) == PD_DISC_NEEDED) {
+		CPRINTS("C%d: DPM attempt disc SOP''", port);
+	    pe_dpm_request(port, DPM_REQUEST_PORT_DISCOVERY);
+		return;
+	}
+*/
+
 	/* Check if the device and cable support USB4. */
 	if (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_is_capable(port)) {
 		pe_dpm_request(port, DPM_REQUEST_ENTER_USB);
@@ -135,11 +151,13 @@ static void dpm_attempt_mode_entry(int port)
 		vdo_count = tbt_setup_next_vdm(port,
 			ARRAY_SIZE(vdm), vdm, &tx_type);
 
+	// HACKHACKHACK
 	/* If not, check if they support DisplayPort alt mode. */
 	if (vdo_count == 0 && !dpm[port].mode_entry_done &&
 	    pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP,
 				USB_SID_DISPLAYPORT))
-		vdo_count = dp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+		vdo_count = dp_setup_next_vdm(port,
+			ARRAY_SIZE(vdm), vdm, &tx_type);
 
 	/*
 	 * If the PE didn't discover any supported alternate mode, just mark
@@ -151,12 +169,14 @@ static void dpm_attempt_mode_entry(int port)
 		return;
 	}
 
+	//HACKHACKHACK - -1 falls through here
 	if (vdo_count < 0) {
 		dpm_set_mode_entry_done(port);
 		CPRINTS("C%d: Couldn't construct alt mode VDM", port);
 		return;
 	}
 
+	//HACKHACKHACK - 0 or -1 falls through here
 	/*
 	 * TODO(b/155890173): Provide a host command to request that the PE send
 	 * an arbitrary VDM via this mechanism.

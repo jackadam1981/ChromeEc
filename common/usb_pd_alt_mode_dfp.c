@@ -229,8 +229,10 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
 	struct svdm_amode_data *modep;
 	uint32_t mode_caps;
 
-	if (mode_idx == -1)
+	if (mode_idx == -1){
+		CPRINTS("C%d: Invalid opos %d index -1 SVID %x", port, opos, svid);
 		return 0;
+	}
 	modep = &pd_get_partner_active_modes(port, type)->amodes[mode_idx];
 
 	if (!opos) {
@@ -244,8 +246,10 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
 	}
 
 	mode_caps = modep->data->mode_vdo[modep->opos - 1];
-	if (modep->fx->enter(port, mode_caps) == -1)
+	if (modep->fx->enter(port, mode_caps) == -1){
+		CPRINTS("C%d: Bad mode_caps opos %d index -1 SVID %x", port, opos, svid);
 		return 0;
+	}
 
 	/*
 	 * Strictly speaking, this should only happen when the request
@@ -852,6 +856,39 @@ int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 	return 2;
 }
 
+int enter_dp_compat_mode(int port, enum tcpm_transmit_type sop,
+			uint32_t *payload)
+{
+	enum tcpm_transmit_type enter_mode_sop =
+					sop == TCPC_TX_SOP_PRIME_PRIME ?
+						TCPC_TX_SOP_PRIME : sop;
+
+	/* DP Active Cable Enter Mode Command */
+	/*
+	 * The port doesn't query Discover SOP'' to the cable so, the port
+	 * doesn't have opos for SOP''. Hence, send Enter Mode SOP'' with same
+	 * opos and revision as SOP'.
+	 */
+	payload[0] = pd_dfp_enter_mode(port, enter_mode_sop, USB_SID_DISPLAYPORT, 0);
+
+	if (payload[0] == 0)
+		return -1;
+
+	payload[0] |= VDO_CMDT(CMDT_INIT) | VDO_SVDM_VERS(pd_get_vdo_ver(port, enter_mode_sop));
+
+	/* For DP Active Cable Enter Mode Command, number of Objects is 1 */
+	if ((sop == TCPC_TX_SOP_PRIME) ||
+	    (sop == TCPC_TX_SOP_PRIME_PRIME))
+		return 1;
+
+	//usb_mux_set_safe_mode(port);
+	// Already handled in svdm_enter_dp_mode() -> svdm_safe_dp_mode()
+
+	/* For DP Device Enter Mode Command, number of Objects are 1 */
+	return 1;
+}
+
+
 enum tbt_compat_rounded_support get_tbt_rounded_support(int port)
 {
 	union tbt_mode_resp_cable cable_mode_resp = {
@@ -993,7 +1030,8 @@ __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 		return -1;
 
 	/* Only enter mode if device is DFP_D capable */
-	if (mode_caps & MODE_DP_SNK) {
+	// HACKHACKHACK: TODO: Fix this to account for Cables (DP_SNK is 0)
+	if (mode_caps & MODE_DP_SNK || true ) {
 		svdm_safe_dp_mode(port);
 
 		if (IS_ENABLED(CONFIG_MKBP_EVENT) &&
@@ -1100,6 +1138,8 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
+
+	CPRINTS("C%d: consume_attn lvl %d irq %d", port, lvl, irq);
 #ifdef CONFIG_USB_PD_DP_HPD_GPIO
 	int cur_lvl = svdm_get_hpd_gpio(port);
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
@@ -1150,6 +1190,7 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
+	CPRINTS("C%d: usb_mux_hpd_update", port);
 	usb_mux_hpd_update(port, lvl, irq);
 
 #ifdef USB_PD_PORT_TCPC_MST
