@@ -34,6 +34,24 @@
       "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b948bbb5_19aceaef",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:12:36Z",
+      "side": 1,
+      "message": "Ack. I\u0027m assuming you\u0027ll rebase this change on top of that change or upload a new change to configure the third port on halvor.",
+      "parentUuid": "01528817_708b1514",
+      "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
