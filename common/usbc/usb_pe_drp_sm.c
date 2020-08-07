@@ -1456,8 +1456,47 @@ static bool pe_attempt_port_discovery(int port)
 	 * DONE set once modal entry is successful, discovery completes, or
 	 * discovery results in a NAK
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_SETUP_DONE))
+
+	//HACKHACKHACK:
+	//CPRINTS("C%d: pr_ATTEMPT_port_discovery", port);
+	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_SETUP_DONE)){
+		//HACKHACKHACK Spammy
+		//CPRINTS("C%d: ATTEMPT VDM setup done", port);
 		return false;
+	}
+
+	//HACKHACKHACK this is incomplete vv we don't need to be DFP just VCS
+	// This doesn't consider PD3 vs PD2
+		//PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
+		//PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+
+
+		// PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
+		// PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+
+		// if ((pe[port].tx_type == TCPC_TX_SOP_PRIME ||
+		 //     pe[port].tx_type == TCPC_TX_SOP_PRIME_PRIME) &&
+		 //     !tc_is_vconn_src(port)) {
+		// if (port_try_vconn_swap(port))
+		// 	return;
+
+		//if (port_try_vconn_swap(port)){
+		//}
+		//if(!pe_can_send_sop_prime(port)){
+		//	CPRINTS("C%d: DPM NOT vvfs (+ dfp PD2)'", port);
+		//}
+
+
+
+		if(!pe_can_send_sop_prime(port)){
+			CPRINTS("C%d: ATTEMPT NOT vcs (+ dfp PD2), fixing'", port);
+			//PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
+			PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+			//if (port_try_vconn_swap(port)){
+			//	CPRINTS("C%d: ATTEMPT true'", port);
+			//	return true;
+			//}
+		}
 
 	/*
 	 * TODO: POLICY decision: move policy functionality out to a separate
@@ -1466,6 +1505,7 @@ static bool pe_attempt_port_discovery(int port)
 	if (PE_CHK_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP)) {
 		PE_CLR_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
 
+		CPRINTS("C%d: ATTEMPT DR swap to DFP", port);
 		if (pe[port].data_role == PD_ROLE_UFP) {
 			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 			set_state_pe(port, PE_DRS_SEND_SWAP);
@@ -1477,6 +1517,8 @@ static bool pe_attempt_port_discovery(int port)
 			PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON)) {
 		PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
 
+		CPRINTS("C%d: ATTEMPT VC swap to SRC", port);
+		usleep(2000);
 		if (!tc_is_vconn_src(port)) {
 			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 			set_state_pe(port, PE_VCS_SEND_SWAP);
@@ -1484,11 +1526,13 @@ static bool pe_attempt_port_discovery(int port)
 		}
 	}
 
-	/* If mode entry was successful, disable the timer */
-	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_SETUP_DONE)) {
-		pe[port].discover_identity_timer = TIMER_DISABLED;
-		return false;
-	}
+	// /* If mode entry was successful, disable the timer */
+	// if (PE_CHK_FLAG(port, PE_FLAGS_VDM_SETUP_DONE)) {
+	// 	//HACKHACKHACK spammy
+	// 	CPRINTS("C%d: ATTEMPT vdm setup done", port);
+	// 	pe[port].discover_identity_timer = TIMER_DISABLED;
+	// 	return false;
+	// }
 
 	/*
 	 * Run discovery functions when the timer indicating either cable
@@ -1497,12 +1541,14 @@ static bool pe_attempt_port_discovery(int port)
 	if (get_time().val > pe[port].discover_identity_timer) {
 		if (pd_get_identity_discovery(port, TCPC_TX_SOP_PRIME) ==
 				PD_DISC_NEEDED && pe_can_send_sop_prime(port)) {
+			CPRINTS("C%d: PROBE sop' ident", port);
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 			return true;
 		} else if (pd_get_identity_discovery(port, TCPC_TX_SOP) ==
 				PD_DISC_NEEDED &&
 				pe_can_send_sop_vdm(port, CMD_DISCOVER_IDENT)) {
+			CPRINTS("C%d: PROBE sop ident", port);
 			pe[port].tx_type = TCPC_TX_SOP;
 			set_state_pe(port,
 				     PE_INIT_PORT_VDM_IDENTITY_REQUEST);
@@ -1510,30 +1556,35 @@ static bool pe_attempt_port_discovery(int port)
 		} else if (pd_get_svids_discovery(port, TCPC_TX_SOP) ==
 				PD_DISC_NEEDED &&
 				pe_can_send_sop_vdm(port, CMD_DISCOVER_SVID)) {
+			CPRINTS("C%d: PROBE sop svid", port);
 			pe[port].tx_type = TCPC_TX_SOP;
 			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
 			return true;
 		} else if (pd_get_modes_discovery(port, TCPC_TX_SOP) ==
 				PD_DISC_NEEDED &&
 				pe_can_send_sop_vdm(port, CMD_DISCOVER_MODES)) {
+			CPRINTS("C%d: PROBE sop modes", port);
 			pe[port].tx_type = TCPC_TX_SOP;
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
 			return true;
 		} else if (pd_get_svids_discovery(port, TCPC_TX_SOP_PRIME)
 				== PD_DISC_NEEDED &&
 				pe_can_send_sop_prime(port)) {
+			CPRINTS("C%d: PROBE sop' svid", port);
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
 			return true;
 		} else if (pd_get_modes_discovery(port, TCPC_TX_SOP_PRIME) ==
 				PD_DISC_NEEDED &&
 				pe_can_send_sop_prime(port)) {
+			CPRINTS("C%d: PROBE sop' modes", port);
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
 			return true;
 		}
 	}
 
+	CPRINTS("C%d: ATTEMPT bailout", port);
 	return false;
 }
 #endif
@@ -6021,7 +6072,9 @@ bool pd_discovery_access_validate(int port, enum tcpm_transmit_type type)
 
 struct pd_discovery *pd_get_am_discovery(int port, enum tcpm_transmit_type type)
 {
-	ASSERT(type < DISCOVERY_TYPE_COUNT);
+	//HACKHACKHACK this is wrong
+	//ASSERT(type < DISCOVERY_TYPE_COUNT);
+	ASSERT(type < AMODE_TYPE_COUNT);
 
 	atomic_or(&task_access[port][type], BIT(task_get_current()));
 	return &pe[port].discovery[type];
