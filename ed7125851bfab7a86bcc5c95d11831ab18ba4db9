@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea1188ba_0af5044a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-07T16:54:03Z",
+      "side": 1,
+      "message": "Thanks for the IS_ENABLED cleanup!",
+      "revId": "ed7125851bfab7a86bcc5c95d11831ab18ba4db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f925b3_68d97590",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-07T16:54:03Z",
+      "side": 1,
+      "message": "The \"STATIC_IF(X)\" inside \"#ifndef X\" confuses me since it is a \"if not X if X\".\nWhat is it trying to say?",
+      "revId": "ed7125851bfab7a86bcc5c95d11831ab18ba4db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
