@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "614766da_5591b79c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-07T02:49:11Z",
+      "side": 1,
+      "message": "* cc Cheng-Han for RMA concern about how to identify this factor in the RMA. And can be discussed in b/162016093.",
+      "revId": "8539fd17b7f0b004cbe4d841772f8f7d77bd046c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44a6f1ce_59b42a58",
         "filename": "board/madoo/board.c",
         "patchSetId": 1
