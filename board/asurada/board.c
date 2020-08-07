@@ -89,6 +89,19 @@ enum gpio_signal hibernate_wake_pins[] = {
 };
 int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
+__override void board_hibernate_late(void)
+{
+	isl9238c_hibernate(CHARGER_SOLO);
+
+	gpio_set_level(GPIO_EN_SLP_Z, 1);
+
+	/* should not reach here */
+	/*
+	 * TODO: add this line back after we have EN_SLP_Z fully implemented.
+	 * __builtin_unreachable();
+	*/
+}
+
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 	{GPIO_PMIC_EC_PWRGD, POWER_SIGNAL_ACTIVE_HIGH, "PMIC_PWR_GOOD"},
