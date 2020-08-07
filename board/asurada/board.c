@@ -72,8 +72,20 @@ const struct charger_config_t chg_chips[] = {
  * number of pwm channel greater than three.
  */
 const struct pwm_t pwm_channels[] = {
-	[PWM_CH_PWRLED] = {
+	[PWM_CH_LED1] = {
 		.channel = 0,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 500,
+		.pcfsr_sel = PWM_PRESCALER_C4
+	},
+	[PWM_CH_LED2] = {
+		.channel = 1,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 500,
+		.pcfsr_sel = PWM_PRESCALER_C4
+	},
+	[PWM_CH_LED3] = {
+		.channel = 2,
 		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
 		.freq_hz = 500,
 		.pcfsr_sel = PWM_PRESCALER_C4
@@ -108,9 +120,9 @@ static void board_init(void)
 	/* For Rev0 only. Set GPM0~6 1.8V input. */
 	IT83XX_GPIO_GCR30 |= BIT(4);
 
-	/* Set PWM of PWRLED to 5%. */
-	pwm_set_duty(PWM_CH_PWRLED, 5);
-	pwm_enable(PWM_CH_PWRLED, 1);
+	/* Set PWM of LED1 to 5%. */
+	pwm_set_duty(PWM_CH_LED1, 5);
+	pwm_enable(PWM_CH_LED1, 1);
 
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 
@@ -119,6 +131,19 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void board_rev_init(void)
+{
+	/* TODO(b/163098341): Move these to led_init() after rev0 deprecated. */
+	if (board_get_version() >= 1) {
+		/* Set PWM of LED2,3 to 5%. */
+		pwm_set_duty(PWM_CH_LED2, 5);
+		pwm_enable(PWM_CH_LED2, 1);
+		pwm_set_duty(PWM_CH_LED3, 5);
+		pwm_enable(PWM_CH_LED3, 1);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);
 
 static void board_tcpc_init(void)
 {

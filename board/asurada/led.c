@@ -66,7 +66,7 @@ void led_set_color_battery(enum ec_led_colors color)
 
 void led_set_color_power(enum ec_led_colors color)
 {
-	pwm_enable(PWM_CH_PWRLED, color == EC_LED_COLOR_WHITE);
+	pwm_enable(PWM_CH_LED1, color == EC_LED_COLOR_WHITE);
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
