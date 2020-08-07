@@ -140,6 +140,8 @@
 #define CONFIG_USB_PD_TCPMV2
 #define CONFIG_USB_DRP_ACC_TRYSRC
 #define CONFIG_USB_PD_REV30
+#define CONFIG_USB_PD_DEBUG_LEVEL 1
+
 
 /*
  * TODO(b/158572770): TCPMv2: Conserve flash space
