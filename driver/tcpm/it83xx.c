@@ -432,6 +432,7 @@ static void it83xx_init(enum usbpd_port port, int role)
 	*usbpd_ctrl_regs[port].cc2 = IT83XX_USBPD_CC_PIN_CONFIG;
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 	task_enable_irq(usbpd_ctrl_regs[port].irq);
+	REG8(0x00F01608) |= BIT(1);
 	USBPD_START(port);
 	/*
 	 * Disconnect CCs Rd_DB from GND
@@ -440,6 +441,7 @@ static void it83xx_init(enum usbpd_port port, int role)
 	 */
 	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_5_1K_CC2_DB |
 				     USBPD_REG_MASK_DISCONNECT_5_1K_CC1_DB);
+	REG8(0x00F01608) &= ~BIT(1);
 }
 
 static void it83xx_select_polarity(enum usbpd_port port,

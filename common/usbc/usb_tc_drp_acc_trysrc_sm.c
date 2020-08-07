@@ -597,7 +597,7 @@ static bool pd_comm_allowed_by_policy(void)
 	     usb_get_battery_soc() >= CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC))
 		return true;
 
-	return false;
+	return true;
 }
 
 static void tc_policy_pd_enable(int port, int en)
