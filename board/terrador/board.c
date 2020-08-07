@@ -54,32 +54,6 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
-__override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
-{
-	/* Routing length exceeds 205mm prior to connection to re-timer */
-	if (port == USBC_PORT_C1)
-		return TBT_SS_U32_GEN1_GEN2;
-
-	/*
-	 * Thunderbolt-compatible mode not supported
-	 *
-	 * TODO (b/147726366): All the USB-C ports need to support same speed.
-	 * Need to fix once USB-C feature set is known for Volteer.
-	 */
-	return TBT_SS_RES_0;
-}
-
-__override bool board_is_tbt_usb4_port(int port)
-{
-	/*
-	 * On Proto-1 only Port 1 supports TBT & USB4
-	 *
-	 * TODO (b/147732807): All the USB-C ports need to support same
-	 * features. Need to fix once USB-C feature set is known for Volteer.
-	 */
-	return port == USBC_PORT_C1;
-}
-
 /******************************************************************************/
 /* I2C port map configuration */
 const struct i2c_port_t i2c_ports[] = {
@@ -216,7 +190,7 @@ __override void board_cbi_init(void)
 	 */
 	setup_mux();
 	/* Reassign USB_C0_RT_RST_ODL */
-	bb_controls[USBC_PORT_C0].shared_nvm = false;
+	bb_controls[USBC_PORT_C0].shared_nvm = true;
 	bb_controls[USBC_PORT_C0].usb_ls_en_gpio = GPIO_USB_C0_LS_EN;
 	bb_controls[USBC_PORT_C0].retimer_rst_gpio = GPIO_USB_C0_RT_RST_ODL;
 	bb_controls[USBC_PORT_C0].force_power_gpio = GPIO_USB_C0_RT_FORCE_PWR;
