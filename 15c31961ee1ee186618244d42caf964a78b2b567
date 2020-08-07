@@ -118,6 +118,30 @@
       "revId": "15c31961ee1ee186618244d42caf964a78b2b567",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d605efe2_d91ac0cc",
+        "filename": "test/usb_tcpmv2_tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-07T21:48:01Z",
+      "side": 1,
+      "message": "Oh that that seems like the real code might be broken wrt the timing then? How long are we supposed to have to send the soft reset?",
+      "parentUuid": "45bb2b9c_1c51d736",
+      "range": {
+        "startLine": 335,
+        "startChar": 4,
+        "endLine": 335,
+        "endChar": 48
+      },
+      "revId": "15c31961ee1ee186618244d42caf964a78b2b567",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
