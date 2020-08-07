@@ -510,8 +510,13 @@ static void setup_fw_config(void)
 {
 	uint32_t board_version = 0;
 
-	if (cbi_get_board_version(&board_version) == EC_SUCCESS
-	    && board_version >= 2) {
+	if (cbi_get_board_version(&board_version) != EC_SUCCESS)
+		ccprints("Failed to get board version");
+
+	if (board_version == 1)
+		I2C_PORT_BATTERY = I2C_PORT_BATTERY_V0;
+
+	if (board_version >= 2) {
 		ccprints("PS8743 USB MUX");
 		usb_muxes[USBC_PORT_C1].i2c_addr_flags = PS8743_I2C_ADDR1_FLAG;
 		usb_muxes[USBC_PORT_C1].driver = &ps8743_usb_mux_driver;
@@ -570,7 +575,11 @@ static void setup_fw_config(void)
 		gpio_set_flags(GPIO_6AXIS_INT_L, GPIO_INPUT | GPIO_PULL_DOWN);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C + 2);
+/*
+ * Use HOOK_PRIO_INIT_I2C so we re-map I2C_PORT_BATTERY before
+ * init_battery_type() and charger_chips_init() want to talk to the battery.
+ */
+DECLARE_HOOK(HOOK_INIT, setup_fw_config, HOOK_PRIO_INIT_I2C);
 
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT] = {
@@ -618,20 +627,3 @@ static void usba_retimer_off(void)
 	ioex_set_level(IOEX_USB_A1_RETIMER_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, usba_retimer_off, HOOK_PRIO_DEFAULT);
-
-/*
- * If the battery is found on the V0 I2C port then re-map the battery port.
- * Use HOOK_PRIO_INIT_I2C so we re-map before init_battery_type() and
- * charger_chips_init() want to talk to the battery.
- */
-static void check_v0_battery(void)
-{
-	int status;
-
-	if (i2c_read16(I2C_PORT_BATTERY_V0, BATTERY_ADDR_FLAGS,
-			SB_BATTERY_STATUS, &status) == EC_SUCCESS) {
-		ccprints("V0 HW detected");
-		I2C_PORT_BATTERY = I2C_PORT_BATTERY_V0;
-	}
-}
-DECLARE_HOOK(HOOK_INIT, check_v0_battery, HOOK_PRIO_INIT_I2C);
