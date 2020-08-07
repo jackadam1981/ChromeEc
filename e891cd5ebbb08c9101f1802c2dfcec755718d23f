@@ -22,6 +22,30 @@
       "revId": "e891cd5ebbb08c9101f1802c2dfcec755718d23f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00e68f68_05e5d085",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2457,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-07T19:17:58Z",
+      "side": 0,
+      "message": "The charger gets set to the desired max after post init in the main loop.  Hence why our MB charger port was fine, but that init happened before the DB charger was selected as active at all. \n\nSo the early return was preventing the ceiling from being lowered later (something lowers to 500 mA during PD negotiation, though I\u0027m not sure what causes it off the top of my head).  Except we do want to lower it if (PD CONFIG MATH...) and in this case we want to raise it if we haven\u0027t set input current yet on this charger.  It\u0027s a massively specific set of clauses.",
+      "parentUuid": "5793ce0a_92c4155d",
+      "range": {
+        "startLine": 2455,
+        "startChar": 0,
+        "endLine": 2457,
+        "endChar": 20
+      },
+      "revId": "e891cd5ebbb08c9101f1802c2dfcec755718d23f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
