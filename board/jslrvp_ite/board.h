@@ -23,6 +23,9 @@
 
 #include "baseboard.h"
 
+/* MKBP event */
+#define CONFIG_MKBP_USE_HOST_EVENT
+
 /* Charger */
 #define CONFIG_CHARGER_ISL9238
 
