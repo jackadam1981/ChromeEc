@@ -660,6 +660,46 @@ __maybe_unused static int test_cc_rd_on_por_reset(void)
 	return EC_SUCCESS;
 }
 
+__maybe_unused static int test_auto_toggle_delay(void)
+{
+	uint64_t time;
+
+	/* Start with auto toggle disabled so we can time the transition */
+	pd_set_dual_role(PORT0, PD_DRP_TOGGLE_OFF);
+
+	/* Connect a SRC */
+	ccprints("[Test] Partner connects as SRC");
+	mock_tcpc.cc1 = TYPEC_CC_VOLT_OPEN;
+	mock_tcpc.cc2 = TYPEC_CC_VOLT_RP_3_0;
+	mock_tcpc.vbus_level = 1;
+	task_set_event(TASK_ID_PD_C0, PD_EVENT_CC, 0);
+	task_wait_event(SECOND);
+
+	/* Disconnect the port partner. We will not go into auto toggle yet. */
+	ccprints("[Test] Partner disconnects");
+	mock_tcpc.cc1 = TYPEC_CC_VOLT_OPEN;
+	mock_tcpc.cc2 = TYPEC_CC_VOLT_OPEN;
+	mock_tcpc.vbus_level = 0;
+	task_set_event(TASK_ID_PD_C0, PD_EVENT_CC, 0);
+	task_wait_event(SECOND);
+
+	/* Enabled auto toggle and start the timer for the transition */
+	pd_set_dual_role(PORT0, PD_DRP_TOGGLE_ON);
+	time = get_time().val;
+
+	/*
+	 * Ensure we do not transition to auto toggle from Rd or Rp in less time
+	 * than tDRP minimum (50 ms) * dcSRC.DRP minimum (30%) = 15 ms.
+	 * Otherwise we can confuse external partners with the first transition
+	 * to auto toggle.
+	 */
+	task_wait_event(SECOND);
+	TEST_GT(mock_tcpc.last.call_to_enable_auto_toggle - time,
+		15ul * MSEC, "%lu");
+
+	return EC_SUCCESS;
+}
+
 /* TODO(b/153071799): test as SNK monitor for Vbus disconnect (not CC line) */
 /* TODO(b/153071799): test as SRC monitor for CC line state change */
 
@@ -708,6 +748,7 @@ void run_test(int argc, char **argv)
 
 	RUN_TEST(test_cc_open_on_normal_reset);
 	RUN_TEST(test_cc_rd_on_por_reset);
+	RUN_TEST(test_auto_toggle_delay);
 
 	/* Do basic state machine validity checks last. */
 	RUN_TEST(test_tc_no_parent_cycles);
