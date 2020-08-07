@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21dc7adc_da0933ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T17:47:32Z",
+      "side": 1,
+      "message": "FRS",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "0e8bc75bef565e6405a38408b313e200f9500783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e2990f_f482f4fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T17:47:32Z",
+      "side": 1,
+      "message": "LGTM module commit message spelling. Note that, if you intend to leave these GPIOs unused long-term, you should configure them as inputs with internal pull-up to save power.",
+      "revId": "0e8bc75bef565e6405a38408b313e200f9500783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
