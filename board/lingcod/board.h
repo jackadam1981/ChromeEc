@@ -111,6 +111,9 @@
 #define I2C_ADDR_EEPROM_FLAGS	0x50
 #define CONFIG_I2C_MASTER
 
+#define CONFIG_USB_PD_PORT_MAX_COUNT			2
+/* Retimer */
+#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
 
 #ifndef __ASSEMBLER__
 
@@ -136,6 +139,12 @@ enum sensor_id {
 	BASE_ACCEL,
 	BASE_GYRO,
 	SENSOR_COUNT,
+};
+
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_C1,
+	USBC_PORT_COUNT
 };
 
 void board_reset_pd_mcu(void);

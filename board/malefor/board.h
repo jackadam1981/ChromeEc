@@ -138,6 +138,16 @@ enum sensor_id {
 	SENSOR_COUNT,
 };
 
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_C1,
+	USBC_PORT_COUNT
+};
+
+#define CONFIG_USB_PD_PORT_MAX_COUNT			2
+/* Retimer */
+#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
+
 void board_reset_pd_mcu(void);
 
 #endif /* !__ASSEMBLER__ */

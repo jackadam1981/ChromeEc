@@ -63,6 +63,8 @@
 
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
+#define CONFIG_USB_PD_PORT_MAX_COUNT			2
+#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
 
 /* USB Type A Features */
 
@@ -154,6 +156,12 @@ enum sensor_id {
 	CLEAR_ALS,
 	RGB_ALS,
 	SENSOR_COUNT,
+};
+
+enum usbc_port {
+	USBC_PORT_C0 = 0,
+	USBC_PORT_C1,
+	USBC_PORT_COUNT
 };
 
 void board_reset_pd_mcu(void);
