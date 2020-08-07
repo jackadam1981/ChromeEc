@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3eda8127_43bee720",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T17:51:10Z",
+      "side": 1,
+      "message": "Ack.\n\nIncidentally, please check the \"Resolved\" box when you reply to say you have addressed the concern raised in a comment, as is the case here. The \"Done\" and \"Ack\" buttons will do this automatically.",
+      "parentUuid": "39791526_85d1d726",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69677fe6_da3bf1cd",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 4
@@ -260,6 +284,30 @@
       "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9bc3be1_fbf24610",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T17:51:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5835c202_06b0b10e",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
