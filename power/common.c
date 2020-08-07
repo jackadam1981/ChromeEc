@@ -331,6 +331,8 @@ static void power_set_active_wake_mask(void) { }
  * cutoff or hibernation.
  */
 static struct smart_discharge_zone sdzone;
+static timestamp_t shutdown_time;
+static uint16_t capacity_delta;
 
 static enum ec_status hc_smart_discharge(struct host_cmd_handler_args *args)
 {
@@ -360,6 +362,7 @@ static enum ec_status hc_smart_discharge(struct host_cmd_handler_args *args)
 		sdzone.stayup = MIN(hours_to_zero * drate.hibern / 1000, cap);
 		sdzone.cutoff = MIN(hours_to_zero * drate.cutoff / 1000,
 				    sdzone.stayup);
+	} else {
 	}
 
 	/* Return the effective values. */
@@ -374,30 +377,88 @@ DECLARE_HOST_COMMAND(EC_CMD_SMART_DISCHARGE,
 		     hc_smart_discharge,
 		     EC_VER_MASK(0));
 
+static enum ec_status hc_get_power_event(struct host_cmd_handler_args *args)
+{
+	struct ec_response_power_event *r = args->response;
+	uint32_t duration;
+
+	if (nvram_get(NVRAM_TAG_SHUTDOWN_DURATION, &duration, sizeof(duration)))
+		r->power_off_duration = duration;
+
+	r->capacity_delta = capacity_delta;
+
+	/* TODO: Detect battery cutoff */
+	r->event_type = POWER_EVENT_EXIT_HIBERNATION;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_POWER_EVENT,
+		     hc_get_power_event,
+		     EC_VER_MASK(0));
+
 __overridable enum critical_shutdown board_system_is_idle(
 		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
 {
-	int remain;
+	int cap;
+	uint32_t duration;
 
 	if (now < *target)
 		return CRITICAL_SHUTDOWN_IGNORE;
 
-	if (battery_remaining_capacity(&remain)) {
-		CPRINTS("SDC Failed to get remaining capacity");
+	if (battery_remaining_capacity(&cap)) {
+		CPRINTS("SDS Failed to get battery capacity");
 		return CRITICAL_SHUTDOWN_HIBERNATE;
 	}
 
-	if (remain < sdzone.cutoff) {
-		CPRINTS("SDC Cutoff");
+	/* Save remaining battery capacity */
+	nvram_set(NVRAM_TAG_BATTERY_CAPACITY, &cap, sizeof(cap));
+
+	/* Save shutdown duration in seconds */
+	duration = (get_time().val - shutdown_time.val) / SECOND;
+	nvram_set(NVRAM_TAG_SHUTDOWN_DURATION, &duration, sizeof(duration));
+
+	if (cap < sdzone.cutoff) {
+		CPRINTS("SDS Cutoff");
 		return CRITICAL_SHUTDOWN_CUTOFF;
-	} else if (remain < sdzone.stayup) {
-		CPRINTS("SDC Stay-up");
+	} else if (cap < sdzone.stayup) {
+		CPRINTS("SDS Stay-up");
 		return CRITICAL_SHUTDOWN_IGNORE;
 	}
 
 	CPRINTS("SDC Safe");
 	return CRITICAL_SHUTDOWN_HIBERNATE;
 }
+
+static void init_smart_discharge(void)
+{
+	int cap1, cap2;
+
+	/*
+	 * Assume new boards support EFS2. Old boards can sample this only
+	 * in RW (since we can't change their RO).
+	 *
+	 * TODO: Check other cold resets (POR, Brownout, etc.) and return
+	 * on them.
+	 */
+	if (!system_is_in_rw())
+		return;
+
+	if (battery_remaining_capacity(&cap2)) {
+		CPRINTS("SDS Failed to get battery capacity");
+		return CRITICAL_SHUTDOWN_HIBERNATE;
+	}
+
+	nvmem_get(NVRAM_TAG_BATTERY_CAPACITY, &cap1, sizeof(cap1));
+
+	capacity_delta = cap2 - cap1;
+}
+DECLARE_HOOK(HOOK_INIT, init_smart_discharge, HOOK_PRIO_DEFAULT);
+
+static void hook_chipset_shutdown(void)
+{
+	shutdown_time = get_time();
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, hook_chipset_shutdown, HOOK_PRIO_DEFAULT);
 #else
 /* Default implementation for battery-less systems */
 __overridable enum critical_shutdown board_system_is_idle(

@@ -42,6 +42,17 @@
 #define NVRAM_RECORD_SIZE	256
 #endif
 
+/*
+ * Datablob Tags
+ */
+enum nvram_tag {
+	NVRAM_TAG_BATTERY_CAPACITY = 0,
+	NVRAM_TAG_SHUTDOWN_DURATION = 1,
+	NVRAM_TAG_COUNT = 255,
+	/* No more after this */
+};
+BUILD_ASSERT(NVRAM_TAG_COUNT <= UINT8_MAX);
+
 /**
  * Get data from NVRAM
  *

@@ -6180,6 +6180,22 @@ struct ec_response_smart_discharge {
 	struct smart_discharge_zone dzone;
 };
 
+#define EC_CMD_GET_POWER_EVENT 0x012C
+
+enum power_event_type {
+	POWER_EVENT_EXIT_HIBERNATION,
+	POWER_EVENT_EXIT_CUTOFF,
+	POWER_EVENT_COUNT,
+	/* Nothing after this */
+};
+BUILD_ASSERT(POWER_EVENT_COUNT <= UINT8_MAX);
+
+struct ec_response_power_event {
+	uint8_t event_type;
+	uint32_t power_off_duration;
+	uint16_t capacity_delta;
+};
+
 /*****************************************************************************/
 /* Voltage regulator controls */
 
