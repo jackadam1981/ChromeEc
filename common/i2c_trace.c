@@ -21,7 +21,10 @@ struct i2c_trace_range {
 	int slave_addr_hi; /* Inclusive */
 };
 
-static struct i2c_trace_range trace_entries[8];
+static struct i2c_trace_range trace_entries[8] = {
+	{ 1, 0, 0x5f, 0x5f },
+	{ 1, 1, 0x5f, 0x5f },
+};
 
 void i2c_trace_notify(int port, uint16_t slave_addr_flags,
 		      const uint8_t *out_data, size_t out_size,

@@ -40,6 +40,8 @@ struct bc12_status {
 /* Used to store last BC1.2 detection result */
 static enum charge_supplier bc12_supplier[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+static int pi3exp;
+
 /*
  * The USB Type-C specification limits the maximum amount of current from BC 1.2
  * suppliers to 1.5A.  Technically, proprietary methods are not allowed, but we
@@ -324,9 +326,22 @@ static void pi3usb9201_usb_charger_task(const int port)
 			bc12_power_up(port);
 			rv = pi3usb9201_get_mode(port, &mode);
 			if (!rv && (mode != PI3USB9201_CDP_HOST_MODE)) {
-				CPRINTS("pi3usb9201[p%d]: CDP_HOST mode", port);
-				pi3usb9201_set_mode(port,
-						    PI3USB9201_CDP_HOST_MODE);
+				if (pi3exp == 0) {
+					CPRINTS("pi3usb9201[p%d]: CDP_HOST mode", port);
+					pi3usb9201_set_mode(port,
+							    PI3USB9201_CDP_HOST_MODE);
+				} else if (pi3exp == 1) {
+					CPRINTS("pi3usb9201[p%d]: USB_PATH_ON", port);
+					pi3usb9201_set_mode(port,
+							    PI3USB9201_USB_PATH_ON);
+				} else {
+					CPRINTS("pi3usb9201[p%d]: CDP_HOST mode, disable AUTO_SW=1", port);
+					pi3usb9201_set_mode(port,
+							    PI3USB9201_CDP_HOST_MODE);
+					pi3usb9201_raw(port, PI3USB9201_REG_CTRL_2,
+						      PI3USB9201_REG_CTRL_2_AUTO_SW,
+						      PI3USB9201_REG_CTRL_2_AUTO_SW);
+				}
 			}
 		}
 
@@ -381,3 +396,21 @@ struct bc12_config bc12_ports[CHARGE_PORT_COUNT] = {
 	}
 };
 #endif /* CONFIG_BC12_SINGLE_DRIVER */
+
+static int command_pi3exp(int argc, char **argv)
+{
+	char *e;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	pi3exp = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(pi3exp,
+			command_pi3exp,
+			"<exp>",
+			"");
