@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "5835c202_06b0b10e",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-07T05:46:49Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b3032b2e_de5aa71b",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "84d5f3d1962024d3e3325c18b198c51c8390c35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cc260db_1b2e5587",
         "filename": "board/halvor/gpio.inc",
         "patchSetId": 4
