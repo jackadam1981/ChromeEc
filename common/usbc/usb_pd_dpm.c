@@ -135,11 +135,13 @@ static void dpm_attempt_mode_entry(int port)
 		vdo_count = tbt_setup_next_vdm(port,
 			ARRAY_SIZE(vdm), vdm, &tx_type);
 
+	// HACKHACKHACK
 	/* If not, check if they support DisplayPort alt mode. */
 	if (vdo_count == 0 && !dpm[port].mode_entry_done &&
 	    pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP,
 				USB_SID_DISPLAYPORT))
-		vdo_count = dp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+		vdo_count = dp_setup_next_vdm(port,
+			ARRAY_SIZE(vdm), vdm, &tx_type);
 
 	/*
 	 * If the PE didn't discover any supported alternate mode, just mark
@@ -151,12 +153,14 @@ static void dpm_attempt_mode_entry(int port)
 		return;
 	}
 
+	//HACKHACKHACK - -1 falls through here
 	if (vdo_count < 0) {
 		dpm_set_mode_entry_done(port);
 		CPRINTS("C%d: Couldn't construct alt mode VDM", port);
 		return;
 	}
 
+	//HACKHACKHACK - 0 or -1 falls through here
 	/*
 	 * TODO(b/155890173): Provide a host command to request that the PE send
 	 * an arbitrary VDM via this mechanism.
