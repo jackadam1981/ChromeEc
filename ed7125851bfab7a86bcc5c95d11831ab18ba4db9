@@ -51,6 +51,24 @@
       "revId": "ed7125851bfab7a86bcc5c95d11831ab18ba4db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abf1eedd_8fab4b20",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-07T22:14:29Z",
+      "side": 1,
+      "message": "So the STATIC_IF is here just to trick checkpatch?\nI think it would be nice to create a new macro specifically for removing unavailable states, so then this could look like:\nSTATE_NOT_SUPPORTED_IF(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE, TC_DRP_AUTO_TOGGLE)\nSTATE_NOT_SUPPORTED_IF(CONFIG_USB_PD_TCPC_LOW_POWER, TC_LOW_POWER_MODE)\nSTATE_NOT_SUPPORTED_IF(CONFIG_USB_PE_SM, TC_CT_UNATTACHED_SNK)\nSTATE_NOT_SUPPORTED_IF(CONFIG_USB_PE_SM, TC_CT_ATTACHED_SNK)",
+      "parentUuid": "e9240c2d_d49525a4",
+      "revId": "ed7125851bfab7a86bcc5c95d11831ab18ba4db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
