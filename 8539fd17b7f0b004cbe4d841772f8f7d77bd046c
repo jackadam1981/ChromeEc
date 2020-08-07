@@ -70,6 +70,30 @@
       "revId": "8539fd17b7f0b004cbe4d841772f8f7d77bd046c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d63be16_0698de9c",
+        "filename": "board/madoo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2020-08-07T02:32:45Z",
+      "side": 1,
+      "message": "Prepare for UK keyboard I upload this code, but we did not decide using which way to choose the KB option, I think we can discuss on track/162016093.",
+      "parentUuid": "6f7600bd_11fe9a8e",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 29
+      },
+      "revId": "8539fd17b7f0b004cbe4d841772f8f7d77bd046c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
