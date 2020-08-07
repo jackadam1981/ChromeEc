@@ -679,6 +679,28 @@ void raa489000_hibernate(int chgnum)
 }
 #endif /* CONFIG_CHARGER_RAA489000 */
 
+#ifdef CONFIG_CHARGER_ISL9238C
+void isl9238c_hibernate(int chgnum)
+{
+	int reg;
+
+	if (raw_read16(chgnum, ISL923X_REG_CONTROL1, &reg)) {
+		CPRINTS("%s: failed to read control1", __func__);
+		return;
+	}
+
+	/* Disable AMON/BMON */
+	reg |= ISL923X_C1_DISABLE_MON;
+	/* Disable PSYS */
+	reg &= ~ISL923X_C1_ENABLE_PSYS;
+
+	if (raw_write16(chgnum, ISL923X_REG_CONTROL1, reg)) {
+		CPRINTS("%s: failed to write control1", __func__);
+		return;
+	}
+}
+#endif /* CONFIG_CHARGER_ISL9238C */
+
 /*****************************************************************************/
 /* Hardware current ramping */
 

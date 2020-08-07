@@ -408,6 +408,7 @@ int isl923x_set_comparator_inversion(int chgnum, int invert);
  * @param chgnum index into chg_chips table.
  */
 void raa489000_hibernate(int chgnum);
+void isl9238c_hibernate(int chgnum);
 
 #define ISL923X_AC_PROCHOT_CURRENT_MAX	6400	/* mA */
 #define ISL923X_DC_PROCHOT_CURRENT_MAX	12800	/* mA */
