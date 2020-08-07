@@ -70,6 +70,7 @@ void dp_teardown(int port);
  *                  VDO_MAX_SIZE elements
  * @return          The number of VDOs written to VDM or -1 to indicate error
  */
-int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm);
+int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
+	enum tcpm_transmit_type *tx_type);
 
 #endif  /* __CROS_EC_USB_DP_ALT_MODE_H */
