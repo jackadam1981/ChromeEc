@@ -420,6 +420,30 @@
     },
     {
       "key": {
+        "uuid": "b146cf90_4464e677",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-07T10:22:35Z",
+      "side": 1,
+      "message": "Adding the forward declaration - \"static int ps8815_make_device_id(int port, int *id);\" outside of the guard will still cause compiler to complain about \"used but never defined\".",
+      "parentUuid": "79fac470_4735bf10",
+      "range": {
+        "startLine": 290,
+        "startChar": 7,
+        "endLine": 290,
+        "endChar": 42
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2ad56de_63f74d31",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 14
@@ -479,6 +503,30 @@
       "side": 1,
       "message": "If it is live, then we do ask the chip for its product id, but we need to verify that it is the same product id that we expect it to be (based on the value board_get_product_id gives us). We are depending on board_get_product_id matching what the chip says it is since we are use different register maps etc to talk with it.\n\n(honestly, I had to look at the old code for a really long time to figure out what and why it was there -- can I think I might have even written it!) We are trying to ensure that the value of product id that we are using matches in code the hardware.",
       "parentUuid": "757afcd1_7c1380cf",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 6
+      },
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54c53ab7_642a3b12",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-07T10:22:35Z",
+      "side": 1,
+      "message": "go for board_get_product_id first.",
+      "parentUuid": "f7de794f_0f0ce372",
       "range": {
         "startLine": 316,
         "startChar": 0,
@@ -679,6 +727,24 @@
       "side": 1,
       "message": "I think we can get both if we forward declare ps8751_get_gcc outside of a guard at the top of the file",
       "parentUuid": "f28e42bd_5b6159bf",
+      "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4af8c152_093003a8",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-07T10:22:35Z",
+      "side": 1,
+      "message": "Adding the forward declaration - \"static int ps8751_get_gcc(...);\" outside of the guard will still cause compiler to complain about \"used but never defined\".",
+      "parentUuid": "50dae1f6_91bfa055",
       "revId": "7a9fcffc0a1f5732ea5df959d763bc5853a1a77d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

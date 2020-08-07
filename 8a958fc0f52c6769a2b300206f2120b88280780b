@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "c10e0e70_09587037",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-07T10:22:35Z",
+      "side": 1,
+      "message": "redefine enum like\n\n    REG_FIRST_INDEX \u003d 0,\n    REG_FW_VER \u003d REG_FIRST_INDEX,\n    ...\n    REG_MAX_COUNT,\n\nThen it will be more clear as\n\n    if (reg \u003c REG_FIRST_INDEX || reg \u003e\u003d REG_MAX_COUNT)",
+      "parentUuid": "a0ad5977_8b58e30f",
+      "range": {
+        "startLine": 216,
+        "startChar": 11,
+        "endLine": 216,
+        "endChar": 21
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc073372_8e6ade51",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 15
@@ -62,6 +86,30 @@
       "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09fe2efd_9a3acbcb",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-07T10:22:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dc073372_8e6ade51",
+      "range": {
+        "startLine": 271,
+        "startChar": 8,
+        "endLine": 271,
+        "endChar": 25
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "6b90bc7c_d3329585",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-07T10:22:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4eb0a46f_c365c38c",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 0
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7506d372_add966bd",
         "filename": "driver/tcpm/ps8xxx.h",
         "patchSetId": 15
@@ -108,6 +180,30 @@
       "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b5e4baf_7def2b84",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-07T10:22:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7506d372_add966bd",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 54
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -135,6 +231,30 @@
     },
     {
       "key": {
+        "uuid": "159a703d_ab561a79",
+        "filename": "include/config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 4010,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-07T10:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe79ee65_b17a8019",
+      "range": {
+        "startLine": 4010,
+        "startChar": 57,
+        "endLine": 4010,
+        "endChar": 65
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43698484_1aca6e30",
         "filename": "include/config.h",
         "patchSetId": 15
@@ -155,6 +275,30 @@
       "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "959bc556_e67351df",
+        "filename": "include/config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 5509,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-07T10:22:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43698484_1aca6e30",
+      "range": {
+        "startLine": 5500,
+        "startChar": 0,
+        "endLine": 5509,
+        "endChar": 45
+      },
+      "revId": "8a958fc0f52c6769a2b300206f2120b88280780b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
