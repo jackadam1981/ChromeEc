@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fbabfa7_59e90440",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:10:03Z",
+      "side": 1,
+      "message": "make buildall. If \"halvor test\" describes a particular procedure, please elaborate.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "81b0f576e6fafd9ffc9b80ef55a7b58f625a0fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fb116ba_8940058f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:10:03Z",
+      "side": 1,
+      "message": "Comments on delbin generally apply to other board files as well.",
+      "revId": "81b0f576e6fafd9ffc9b80ef55a7b58f625a0fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e24485f8_03d5de7e",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:10:03Z",
+      "side": 1,
+      "message": "Put in alphabetical order.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "81b0f576e6fafd9ffc9b80ef55a7b58f625a0fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e824c6_663377f0",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:10:03Z",
+      "side": 1,
+      "message": "Put in alphabetical order.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "81b0f576e6fafd9ffc9b80ef55a7b58f625a0fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a47d6dc_09984089",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:10:03Z",
+      "side": 1,
+      "message": "Nit: There should be a line break before this line for consistency.",
+      "revId": "81b0f576e6fafd9ffc9b80ef55a7b58f625a0fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1839951c_330fa075",
+        "filename": "board/delbin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:10:03Z",
+      "side": 1,
+      "message": "board",
+      "range": {
+        "startLine": 482,
+        "startChar": 12,
+        "endLine": 482,
+        "endChar": 21
+      },
+      "revId": "81b0f576e6fafd9ffc9b80ef55a7b58f625a0fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "692bb9fb_359effe5",
+        "filename": "board/delbin/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:10:03Z",
+      "side": 1,
+      "message": "Get rid of the extra tab here to line up with 0x40.",
+      "range": {
+        "startLine": 72,
+        "startChar": 38,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "81b0f576e6fafd9ffc9b80ef55a7b58f625a0fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac9c070_81d4d9d0",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:10:03Z",
+      "side": 1,
+      "message": "This would be a good place for CONFIG_USB_PD_PORT_MAX_COUNT.",
+      "revId": "81b0f576e6fafd9ffc9b80ef55a7b58f625a0fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31abb4bf_a4da364a",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-07T18:10:03Z",
+      "side": 1,
+      "message": "This should go next to the other USB-C macros.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 40
+      },
+      "revId": "81b0f576e6fafd9ffc9b80ef55a7b58f625a0fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
