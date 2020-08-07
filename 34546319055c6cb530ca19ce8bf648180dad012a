@@ -16,6 +16,144 @@
       "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2087bd0_77611f9a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-07T03:38:22Z",
+      "side": 1,
+      "message": "using the same name for structure and variable makes code browsing more difficult, please use _st suffix for the structure or rename the variable.",
+      "range": {
+        "startLine": 808,
+        "startChar": 21,
+        "endLine": 808,
+        "endChar": 44
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b836c9ad_4023eaaa",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-07T03:38:22Z",
+      "side": 1,
+      "message": "you don\u0027t need the \u0026 when using function name as a pointer.",
+      "range": {
+        "startLine": 809,
+        "startChar": 16,
+        "endLine": 809,
+        "endChar": 17
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cefc3e5_b78837de",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-07T03:38:22Z",
+      "side": 1,
+      "message": "let\u0027s call this \n\nU2F_DATA_FLASH_PAGE_OFFSET\n\n\nAlso, if this is defined like this:\n\nU2F_DATA_SPACE_ADDR \u0026 ~(CONFIG_FLASH_ERASE_SIZE - 1) - \n    CONFIG_PROGRAM_MEMORY_BASE\n\nit will remain correct even if U2F_DATA_SPACE_ADDR changes.",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ae96ec_37a20e7b",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-07T03:38:22Z",
+      "side": 1,
+      "message": "just curious, why not 0, 1, 2?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 3
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79bb0b9_3b96fed3",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-07T03:38:22Z",
+      "side": 1,
+      "message": "This \u0027else\u0027 is not needed here",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 6
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af52b51a_2a92ac94",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-07T03:38:22Z",
+      "side": 1,
+      "message": "this is not related to moving fips data into the dedicated space, this should be in a separate patch.",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 650,
+        "endChar": 1
+      },
+      "revId": "34546319055c6cb530ca19ce8bf648180dad012a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
