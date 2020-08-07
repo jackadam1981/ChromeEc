@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38d5e9f5_591bfdcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-07T19:28:48Z",
+      "side": 1,
+      "message": "I could take or leave this change.  People may have to run a battery cutoff to clear the state of the previous PHOT1 register before this patch (our current init is read-modify-writing the register, so Vbus will continue to be disabled if it already was) ",
+      "revId": "40495b32635a67e93a5c9a359d82aaa794cb73cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
