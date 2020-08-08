@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf834788_35f0db7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-08T00:22:16Z",
+      "side": 1,
+      "message": "Just a nit. Thanks.",
+      "revId": "48e309b8e8a809d5ce244b2688fa5ce9b175ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d32ca5b5_2ea1826d",
+        "filename": "board/asurada/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-08T00:22:16Z",
+      "side": 1,
+      "message": "Err, do you still need this TODO?",
+      "revId": "48e309b8e8a809d5ce244b2688fa5ce9b175ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
