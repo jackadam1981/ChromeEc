@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "210f00f1_1f3f9ec3",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-08-08T01:03:28Z",
+      "side": 1,
+      "message": "The maximum supported output frequency is 324 Hz if we enable PWM_CONFIG_DSLEEP.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/chip/it83xx/pwm.c#225",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "48e309b8e8a809d5ce244b2688fa5ce9b175ed70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d32ca5b5_2ea1826d",
         "filename": "board/asurada/gpio.inc",
         "patchSetId": 3
