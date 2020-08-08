@@ -33,6 +33,24 @@
       "revId": "ab8faf9d6298bb278754f2c0afae20a34192b2d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca29cfae_7287a425",
+        "filename": "board/eldrid/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-08-08T00:08:00Z",
+      "side": 1,
+      "message": "Normally, we want new variants to be committed first as copies of the reference board, and then modified to add/remove features.\nHowever, if it is the BMI260 that\u0027s causing the Eldrid EC build to run out of flash memory, then I support removing it from this initial copy so that it can successfully build.",
+      "parentUuid": "0d1093f8_d17d9d9a",
+      "revId": "ab8faf9d6298bb278754f2c0afae20a34192b2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
