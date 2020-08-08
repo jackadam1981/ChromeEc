@@ -16,6 +16,23 @@
       "revId": "ab8faf9d6298bb278754f2c0afae20a34192b2d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d1093f8_d17d9d9a",
+        "filename": "board/eldrid/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-08T00:03:40Z",
+      "side": 1,
+      "message": "looks like you\u0027re using the BMI160 instead of the 260 based on schematics.\nif that is acurate,\nturning off BMI260 support will reduce the flash footprint\na lot. if the build failure really is due to running out\nof flash, this will be the quick fix for today.",
+      "revId": "ab8faf9d6298bb278754f2c0afae20a34192b2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
