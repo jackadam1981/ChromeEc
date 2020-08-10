@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0f8dc841_88a24ce3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-10T18:04:44Z",
+      "side": 1,
+      "message": "Ran this against Volteer - programmed into EC-RO onto the board and programmed EC-RW into CBFS.  Sysjump to RW was successful.\n\n\u003e ver\nChip:    Nuvoton NPCX796F C.02\nBoard:   1\nRO:      volteer_v2.0.5039-ceb2f07cc\nRW:      volteer_1.1.9999-ceb2f07\nBuild:   volteer_1.1.9999-ceb2f07  @mtbaldy\n\nFrom my workspace:\n[keithshort@mtbaldy ec (ec-tot)]$ git xl\n* ceb2f07cc - (HEAD -\u003e ec-tot) task: Fix mutex_lock() assert (reland) (15 minutes ago) \u003cEdward Hill\u003e",
+      "parentUuid": "89724468_101e9955",
+      "revId": "05e7f7d2ea9e7ceb5f32d264e4764bde32451dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4422a998_da2353bc",
         "filename": "power/common.c",
         "patchSetId": 1
