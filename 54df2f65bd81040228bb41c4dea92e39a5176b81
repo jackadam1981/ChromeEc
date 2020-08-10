@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "458ab78b_e811b969",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-10T15:42:05Z",
+      "side": 1,
+      "message": "For a future CL: Should probably be overriding board_get_charger_chip_count() and using that to decide if we interact with the secondary charger",
+      "range": {
+        "startLine": 402,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 65
+      },
+      "revId": "54df2f65bd81040228bb41c4dea92e39a5176b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
