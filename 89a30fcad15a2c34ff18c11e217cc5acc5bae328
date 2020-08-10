@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "107847f2_1b3dabc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-10T23:15:49Z",
+      "side": 1,
+      "message": "I still can\u0027t help it but feel that this patch is combining too many not necessarily related changes, I think it needs a second pair of eyes.",
+      "revId": "89a30fcad15a2c34ff18c11e217cc5acc5bae328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed7afc71_31326d17",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-10T23:15:49Z",
+      "side": 1,
+      "message": "this should be CFG_TOP_A_OFF",
+      "range": {
+        "startLine": 149,
+        "startChar": 20,
+        "endLine": 149,
+        "endChar": 59
+      },
+      "revId": "89a30fcad15a2c34ff18c11e217cc5acc5bae328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b792d66_11eba9ea",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-10T23:15:49Z",
+      "side": 1,
+      "message": "CFG_TOP_B_OFF",
+      "range": {
+        "startLine": 153,
+        "startChar": 21,
+        "endLine": 153,
+        "endChar": 60
+      },
+      "revId": "89a30fcad15a2c34ff18c11e217cc5acc5bae328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fac27dc_35448476",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 6
