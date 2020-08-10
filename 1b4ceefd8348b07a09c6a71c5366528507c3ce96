@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7777752f_b293363a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-10T23:01:58Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "b719094d_7657482b",
+      "revId": "1b4ceefd8348b07a09c6a71c5366528507c3ce96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "055bb7c0_d0e4402b",
         "filename": "chip/stm32/bkpdata.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2020-08-10T22:43:31Z",
       "side": 1,
       "message": "Should this be based on a local variable that\u0027s set only if mutex_lock() is called above? This way the unlock is tied directly to the lock instead of indirectly via task_start_called()?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "1b4ceefd8348b07a09c6a71c5366528507c3ce96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13d52fa9_4a4deaa5",
+        "filename": "chip/stm32/bkpdata.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-10T23:01:58Z",
+      "side": 1,
+      "message": "It seems ok to me to assume task_start_called() isn\u0027t going to change in between the lock and the unlock, so then unlock would only be called if lock was.\nBut if you think it would be clearer, I can add a local variable for the result of task_start_called().",
+      "parentUuid": "055bb7c0_d0e4402b",
       "range": {
         "startLine": 47,
         "startChar": 1,
