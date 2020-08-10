@@ -78,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "fe62da69_5063f434",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T21:22:36Z",
+      "side": 1,
+      "message": "If you just want to have different constant values than port 1, put them here.\n\nIf you want to change them at runtime based on CBI data, you can do that too. Example: https://chromium.git.corp.google.com/chromiumos/platform/ec/+/master/board/volteer/board.c#365.",
+      "parentUuid": "4f9dbf1b_cbec0e98",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 36
+      },
+      "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b456af00_bf494fe9",
         "filename": "board/halvor/board.c",
         "patchSetId": 4
@@ -98,6 +122,30 @@
       "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd902e3c_6e19635e",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T21:22:36Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "b456af00_bf494fe9",
+      "range": {
+        "startLine": 343,
+        "startChar": 2,
+        "endLine": 343,
+        "endChar": 35
+      },
+      "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
