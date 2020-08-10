@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "47d3b1ad_cd795734",
+        "filename": "common/init_rom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-10T21:39:04Z",
+      "side": 1,
+      "message": "I went with void* for both the argument and return.  It\u0027s really up to the caller what this data ultimately points at.",
+      "parentUuid": "7acb6f36_c04680c2",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "47bca60b2c6bda057d7bebc8cc6bef20e4610bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e122306c_02171a7b",
         "filename": "include/init_rom.h",
         "patchSetId": 2
@@ -57,6 +81,24 @@
       "revId": "47bca60b2c6bda057d7bebc8cc6bef20e4610bd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5fe0c1_4f185c9b",
+        "filename": "include/init_rom.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-10T21:39:04Z",
+      "side": 1,
+      "message": "This was an excellent suggestion. I really like the that users of __init_rom objects now just unconditionally use the init_rom layer to access the data.",
+      "parentUuid": "9d87d486_a9687803",
+      "revId": "47bca60b2c6bda057d7bebc8cc6bef20e4610bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
