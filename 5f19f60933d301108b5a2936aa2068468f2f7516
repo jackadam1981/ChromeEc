@@ -52,6 +52,52 @@
       "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f9dbf1b_cbec0e98",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-10T08:03:01Z",
+      "side": 1,
+      "message": "How do I modify the retimer code for port 0",
+      "range": {
+        "startLine": 334,
+        "startChar": 2,
+        "endLine": 334,
+        "endChar": 36
+      },
+      "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b456af00_bf494fe9",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-10T08:03:01Z",
+      "side": 1,
+      "message": "How do I modify the retimer code for port 2",
+      "range": {
+        "startLine": 343,
+        "startChar": 2,
+        "endLine": 343,
+        "endChar": 35
+      },
+      "revId": "5f19f60933d301108b5a2936aa2068468f2f7516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
