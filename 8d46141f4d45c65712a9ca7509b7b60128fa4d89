@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0210a316_66c72d67",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-10T02:18:37Z",
+      "side": 1,
+      "message": "This breaks all STM32 projects. I\u0027m still investigating, but at a minimum there is a mutex_lock being called in bkpdata_write() which is STM32 specific and is called via system_pre_init() before tasks are enabled.",
+      "revId": "8d46141f4d45c65712a9ca7509b7b60128fa4d89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
