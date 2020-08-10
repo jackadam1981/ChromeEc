@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "08449e1d_7ef5ff2d",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-10T03:48:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb951b10_23cb0da3",
+      "range": {
+        "startLine": 469,
+        "startChar": 2,
+        "endLine": 470,
+        "endChar": 27
+      },
+      "revId": "7135a366049b4eb9906aabad603437571f526824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bb4378f_871be64a",
         "filename": "include/config.h",
         "patchSetId": 16
@@ -53,6 +77,24 @@
       "writtenOn": "2020-08-07T16:07:56Z",
       "side": 1,
       "message": "nit: if you just have \"#if defined(X)\" that can be \"#ifdef X\"; same is true with ifndef for !defined().\n\nYou don\u0027t have to change this, more of a note in case you want to change it or for the future.",
+      "revId": "7135a366049b4eb9906aabad603437571f526824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32ef5aee_a9dec4ef",
+        "filename": "include/config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 5500,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-10T03:48:55Z",
+      "side": 1,
+      "message": "I had walk through this file and both stylus are all there therefore I just choose one of them in this CL which also is in ps8xxx.c . If #ifdef and #ifndef are the defined coding stylus then I will follow. Thanks.",
+      "parentUuid": "3bb4378f_871be64a",
       "revId": "7135a366049b4eb9906aabad603437571f526824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
