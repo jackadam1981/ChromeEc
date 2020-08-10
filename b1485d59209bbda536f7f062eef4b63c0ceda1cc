@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aee61837_9c4f4294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-10T03:03:40Z",
+      "side": 1,
+      "message": "The mutex_lock assertion also gets caught on STM32 boards because all STM32 boards call bkpdata_write() which has a mutex_lock and bkpdata_write() gets called in system_pre_init()",
+      "revId": "b1485d59209bbda536f7f062eef4b63c0ceda1cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
