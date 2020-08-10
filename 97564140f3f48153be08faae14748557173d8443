@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ff7312e_37446b5c",
+        "filename": "board/terrador/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T21:13:05Z",
+      "side": 1,
+      "message": "Where is this coming from, now that it has been removed from baseboard.h and not added into terrador/board.h?",
+      "range": {
+        "startLine": 309,
+        "startChar": 19,
+        "endLine": 309,
+        "endChar": 51
+      },
+      "revId": "97564140f3f48153be08faae14748557173d8443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01c415b7_11b3fc7f",
+        "filename": "board/todor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T21:13:05Z",
+      "side": 1,
+      "message": "Where is this coming from?",
+      "range": {
+        "startLine": 309,
+        "startChar": 19,
+        "endLine": 309,
+        "endChar": 51
+      },
+      "revId": "97564140f3f48153be08faae14748557173d8443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c22d646_58ac9ca7",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T21:13:05Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "97564140f3f48153be08faae14748557173d8443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
