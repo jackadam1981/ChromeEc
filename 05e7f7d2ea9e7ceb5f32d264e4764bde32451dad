@@ -72,6 +72,23 @@
     },
     {
       "key": {
+        "uuid": "f10cd757_9a8ee0df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-10T19:41:32Z",
+      "side": 1,
+      "message": "The bkpdata_write could be changed to just disable interrupts before/after and then not require a mutex lock. However, I didn\u0027t verify this was the only place that mutex_lock() was being called before tasks are started.",
+      "revId": "05e7f7d2ea9e7ceb5f32d264e4764bde32451dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4422a998_da2353bc",
         "filename": "power/common.c",
         "patchSetId": 1
