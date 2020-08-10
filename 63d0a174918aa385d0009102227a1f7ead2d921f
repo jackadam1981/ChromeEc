@@ -16,6 +16,23 @@
       "revId": "63d0a174918aa385d0009102227a1f7ead2d921f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2fe4a5a_dc3f87c6",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T23:22:27Z",
+      "side": 1,
+      "message": "What is this for? It seems like the configs that define it don\u0027t use it, but if they did, the loop in bmi_config_load would never terminate.",
+      "revId": "63d0a174918aa385d0009102227a1f7ead2d921f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
