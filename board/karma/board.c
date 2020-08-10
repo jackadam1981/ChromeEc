@@ -28,6 +28,14 @@ __override void oz554_board_init(void)
 		if (oz554_set_config(2, 0x55))
 			CPRINTS("oz554 config failed");
 		break;
+	case 0x06:
+		CPRINTS("PANEL_LM_SSM1");
+		/* Reigster 0x02: Setting LED current: 55(mA) */
+		if (oz554_set_config(2, 0x46))
+			CPRINTS("oz554 config failed");
+		/* Reigster 0x05: OVP setting: 50(V)*/
+		if (oz554_set_config(5, 0x87))
+			CPRINTS("oz554 config failed");
 	default:
 		CPRINTS("PANEL_UNKNOWN");
 		break;
