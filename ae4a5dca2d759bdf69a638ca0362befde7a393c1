@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0996036f_c8085e39",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T19:13:24Z",
+      "side": 1,
+      "message": "Nit: If there is going to be a blank line to break the accel/gyro stuff up, I think it should be between the base and the lid (line 43).",
+      "revId": "ae4a5dca2d759bdf69a638ca0362befde7a393c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a733a8e_41d03082",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T19:13:24Z",
+      "side": 1,
+      "message": "Nit: Delete tab to line up with above.",
+      "range": {
+        "startLine": 48,
+        "startChar": 36,
+        "endLine": 48,
+        "endChar": 37
+      },
+      "revId": "ae4a5dca2d759bdf69a638ca0362befde7a393c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc0e7631_de5b0c6f",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T19:13:24Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "revId": "ae4a5dca2d759bdf69a638ca0362befde7a393c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
