@@ -33,6 +33,24 @@
       "revId": "72a88736e9ba8166df114ebc866799232d25e71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c757616e_e0d47e73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-10T19:26:03Z",
+      "side": 1,
+      "message": "Thank you for the feedback Keith.\nJohn - can you pls comment? you mentioned it is needed for EC_SYNC_IRQ\nhttps://review.coreboot.org/c/coreboot/+/44103",
+      "parentUuid": "273b096c_18fbfcf7",
+      "revId": "72a88736e9ba8166df114ebc866799232d25e71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
