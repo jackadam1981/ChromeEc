@@ -6808,6 +6808,7 @@ int cmd_board_version(int argc, char *argv[])
 static void cmd_cbi_help(char *cmd)
 {
 	fprintf(stderr,
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
 		"  Usage: %s get <type> [get_flag]\n"
 		"  Usage: %s set <type> <value> <size> [set_flag]\n"
 		"    <type> is one of:\n"
@@ -6823,6 +6824,34 @@ static void cmd_cbi_help(char *cmd)
 		"    [set_flag] is combination of:\n"
 		"      01b: Skip write to EEPROM. Use for back-to-back writes\n"
 		"      10b: Set all fields to defaults first\n", cmd, cmd);
+=======
+	"  Usage: %s get <tag> [get_flag]\n"
+	"  Usage: %s set <tag> <value/string> <size> [set_flag]\n"
+	"  Usage: %s remove <tag> [set_flag]\n"
+	"    <tag> is one of:\n"
+	"      0: BOARD_VERSION\n"
+	"      1: OEM_ID\n"
+	"      2: SKU_ID\n"
+	"      3: DRAM_PART_NUM (string)\n"
+	"      4: OEM_NAME (string)\n"
+	"      5: MODEL_ID\n"
+	"      6: FW_CONFIG\n"
+	"      7: PCB_VENDOR\n"
+	"      8: SSFC\n"
+	"    <size> is the size of the data in byte. It should be zero for\n"
+	"      string types.\n"
+	"    <value/string> is an integer or a string to be set\n"
+	"    [get_flag] is combination of:\n"
+	"      01b: Invalidate cache and reload data from EEPROM\n"
+	"    [set_flag] is combination of:\n"
+	"      01b: Skip write to EEPROM. Use for back-to-back writes\n"
+	"      10b: Set all fields to defaults first\n", cmd, cmd, cmd);
+}
+
+static int cmd_cbi_is_string_field(enum cbi_data_tag tag)
+{
+	return tag == CBI_TAG_DRAM_PART_NUM || tag == CBI_TAG_OEM_NAME;
+>>>>>>> CHANGE (0212d4 cbi: add Second Source Factory Cache (SSFC) CBI field)
 }
 
 /*

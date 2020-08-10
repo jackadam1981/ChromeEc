@@ -37,6 +37,13 @@ enum {
 	OPT_SKU_ID,
 	OPT_DRAM_PART_NUM,
 	OPT_OEM_NAME,
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+	OPT_MODEL_ID,
+	OPT_FW_CONFIG,
+	OPT_PCB_SUPPLIER,
+	OPT_SSFC,
+>>>>>>> CHANGE (0212d4 cbi: add Second Source Factory Cache (SSFC) CBI field)
 	OPT_SIZE,
 	OPT_ERASE_BYTE,
 	OPT_SHOW_ALL,
@@ -50,6 +57,13 @@ static const struct option opts_create[] = {
 	{"sku_id", 1, 0, OPT_SKU_ID},
 	{"dram_part_num", 1, 0, OPT_DRAM_PART_NUM},
 	{"oem_name", 1, 0, OPT_OEM_NAME},
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+	{"model_id", 1, 0, OPT_MODEL_ID},
+	{"fw_config", 1, 0, OPT_FW_CONFIG},
+	{"pcb_supplier", 1, 0, OPT_PCB_SUPPLIER},
+	{"ssfc", 1, 0, OPT_SSFC},
+>>>>>>> CHANGE (0212d4 cbi: add Second Source Factory Cache (SSFC) CBI field)
 	{"size", 1, 0, OPT_SIZE},
 	{"erase_byte", 1, 0, OPT_ERASE_BYTE},
 	{NULL, 0, 0, 0}
@@ -67,7 +81,15 @@ static const char *field_name[] = {
 	"OEM_ID",
 	"SKU_ID",
 	"DRAM_PART_NUM",
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
 	"OEM_NAME"
+=======
+	"OEM_NAME",
+	"MODEL_ID",
+	"FW_CONFIG",
+	"PCB_SUPPLIER",
+	"SSFC",
+>>>>>>> CHANGE (0212d4 cbi: add Second Source Factory Cache (SSFC) CBI field)
 };
 BUILD_ASSERT(ARRAY_SIZE(field_name) == CBI_TAG_COUNT);
 
@@ -89,6 +111,18 @@ const char help_create[] =
 	"  --oem_name <value>	OEM NAME\n"
 	"  --erase_byte <uint8>       Byte used for empty space. Default:0xff\n"
 	"  --format_version <uint16>  Data format version\n"
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+	"  --model_id <value>         Model ID\n"
+	"  --fw_config <value>        Firmware configuration bit-field\n"
+	"  --pcb_supplier <value>     PCB supplier\n"
+	"  --ssfc <value>             Second Source Factory Cache bit-field\n"
+	"\n"
+	"<value> must be a positive integer <= 0XFFFFFFFF and field size can\n"
+	"    be optionally specified by <value:size> notation: e.g. 0xabcd:4.\n"
+	"<size> must be a positive integer <= 0XFFFF.\n"
+	"<string> is a string\n"
+>>>>>>> CHANGE (0212d4 cbi: add Second Source Factory Cache (SSFC) CBI field)
 	"\n";
 
 const char help_show[] =
@@ -240,6 +274,13 @@ static int cmd_create(int argc, char **argv)
 		struct integer_field ver;
 		struct integer_field oem;
 		struct integer_field sku;
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+		struct integer_field model;
+		struct integer_field fw_config;
+		struct integer_field pcb_supplier;
+		struct integer_field ssfc;
+>>>>>>> CHANGE (0212d4 cbi: add Second Source Factory Cache (SSFC) CBI field)
 		const char *dram_part_num;
 		const char *oem_name;
 	} bi;
@@ -305,6 +346,25 @@ static int cmd_create(int argc, char **argv)
 		case OPT_OEM_NAME:
 			bi.oem_name = optarg;
 			break;
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+		case OPT_MODEL_ID:
+			if (parse_integer_field(optarg, &bi.model))
+				return -1;
+			break;
+		case OPT_FW_CONFIG:
+			if (parse_integer_field(optarg, &bi.fw_config))
+				return -1;
+			break;
+		case OPT_PCB_SUPPLIER:
+			if (parse_integer_field(optarg, &bi.pcb_supplier))
+				return -1;
+			break;
+		case OPT_SSFC:
+			if (parse_integer_field(optarg, &bi.ssfc))
+				return -1;
+			break;
+>>>>>>> CHANGE (0212d4 cbi: add Second Source Factory Cache (SSFC) CBI field)
 		}
 	}
 
@@ -330,6 +390,7 @@ static int cmd_create(int argc, char **argv)
 	p = cbi_set_data(p, CBI_TAG_BOARD_VERSION, &bi.ver.val, bi.ver.size);
 	p = cbi_set_data(p, CBI_TAG_OEM_ID, &bi.oem.val, bi.oem.size);
 	p = cbi_set_data(p, CBI_TAG_SKU_ID, &bi.sku.val, bi.sku.size);
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
 	if (bi.dram_part_num != NULL) {
 		p = cbi_set_data(p, CBI_TAG_DRAM_PART_NUM, bi.dram_part_num,
 				strlen(bi.dram_part_num) + 1);
@@ -338,6 +399,16 @@ static int cmd_create(int argc, char **argv)
 		p = cbi_set_data(p, CBI_TAG_OEM_NAME, bi.oem_name,
 				strlen(bi.oem_name) + 1);
 	}
+=======
+	p = cbi_set_data(p, CBI_TAG_MODEL_ID, &bi.model.val, bi.model.size);
+	p = cbi_set_data(p, CBI_TAG_FW_CONFIG, &bi.fw_config.val,
+			 bi.fw_config.size);
+	p = cbi_set_data(p, CBI_TAG_PCB_SUPPLIER, &bi.pcb_supplier.val,
+			bi.pcb_supplier.size);
+	p = cbi_set_data(p, CBI_TAG_SSFC, &bi.ssfc.val, bi.ssfc.size);
+	p = cbi_set_string(p, CBI_TAG_DRAM_PART_NUM, bi.dram_part_num);
+	p = cbi_set_string(p, CBI_TAG_OEM_NAME, bi.oem_name);
+>>>>>>> CHANGE (0212d4 cbi: add Second Source Factory Cache (SSFC) CBI field)
 
 	h->total_size = p - cbi;
 	h->crc = cbi_crc8(h);
@@ -458,6 +529,13 @@ static int cmd_show(int argc, char **argv)
 	print_integer(buf, CBI_TAG_BOARD_VERSION);
 	print_integer(buf, CBI_TAG_OEM_ID);
 	print_integer(buf, CBI_TAG_SKU_ID);
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+	print_integer(buf, CBI_TAG_MODEL_ID);
+	print_integer(buf, CBI_TAG_FW_CONFIG);
+	print_integer(buf, CBI_TAG_PCB_SUPPLIER);
+	print_integer(buf, CBI_TAG_SSFC);
+>>>>>>> CHANGE (0212d4 cbi: add Second Source Factory Cache (SSFC) CBI field)
 	print_string(buf, CBI_TAG_DRAM_PART_NUM);
 	print_string(buf, CBI_TAG_OEM_NAME);
 
