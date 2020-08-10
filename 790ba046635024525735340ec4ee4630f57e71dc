@@ -16,6 +16,23 @@
       "revId": "790ba046635024525735340ec4ee4630f57e71dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb9dd351_74a48554",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-08-10T18:28:56Z",
+      "side": 1,
+      "message": "Verified+1. Data + scope shots in b/155202697.\nSuggest port to ServoV4.0 as well.\n\nVERIFY\u003dRevert WIP CL, CherryPick Vincent\u0027s CL.\nScope CC1/CC2/VBUS/VBUS_I + TotalPhase Trace\nLT Port Akemi ANX3447 (notoriously affected)\n\nNo abnormalities in \"negociate\" (PD C19).\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/usb_pd.h#805\ntStartDrive+1UI measured 3.900us.\n",
+      "revId": "790ba046635024525735340ec4ee4630f57e71dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
