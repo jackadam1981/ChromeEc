@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "654d0a40_478a33c4",
+        "filename": "chip/npcx/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-10T21:38:48Z",
+      "side": 1,
+      "message": "Moved the shell call, but I\u0027ve kept the parsing of .map to match how the free flash space is calculated in Makefile.rules.",
+      "parentUuid": "be33da0d_0cb6c586",
+      "range": {
+        "startLine": 71,
+        "startChar": 23,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "e3488218f79b2bcf2fb08e5bee6fc73777537c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0a9eb3a_d3b314ab",
         "filename": "core/cortex-m0/ec.lds.S",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "e3488218f79b2bcf2fb08e5bee6fc73777537c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18880fbe_5a3eac37",
+        "filename": "core/cortex-m0/ec.lds.S",
+        "patchSetId": 7
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-10T21:38:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0a9eb3a_d3b314ab",
+      "revId": "e3488218f79b2bcf2fb08e5bee6fc73777537c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
