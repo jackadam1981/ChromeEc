@@ -22,6 +22,30 @@
       "revId": "990322d5315382f8e6acd2b533a5f906e723baf2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "815cb428_41fbb92b",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1504,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-10T21:38:30Z",
+      "side": 1,
+      "message": "cros_ec_invalidate_copy() references EC_IMAGE_RO, which is only used by flashrom internally. However cros_ec_probe_size() does use EC_FLASH_REGION_RO.\n\nhttps://chromium.googlesource.com/chromiumos/third_party/flashrom/+/81072b8f/cros_ec.c#1177\n\nChanged from CONFIG_RO_SIZE to CONFIG_WP_STORAGE_SIZE.",
+      "parentUuid": "29b9ea1d_b75a7ed8",
+      "range": {
+        "startLine": 1504,
+        "startChar": 12,
+        "endLine": 1504,
+        "endChar": 26
+      },
+      "revId": "990322d5315382f8e6acd2b533a5f906e723baf2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
