@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "dd4dc9df_65e8f31b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-10T19:04:26Z",
+      "side": 1,
+      "message": "Thanks for verifying on Volteer Keith.\nScott pointed out bkpdata_write() on STM32 also broke, so I\u0027ll look at that next.",
+      "parentUuid": "0f8dc841_88a24ce3",
+      "revId": "05e7f7d2ea9e7ceb5f32d264e4764bde32451dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4422a998_da2353bc",
         "filename": "power/common.c",
         "patchSetId": 1
