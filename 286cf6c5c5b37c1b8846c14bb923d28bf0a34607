@@ -22,6 +22,30 @@
       "revId": "286cf6c5c5b37c1b8846c14bb923d28bf0a34607",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae04306_98b0fc54",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-08-10T03:27:05Z",
+      "side": 1,
+      "message": "Yes, in it8320, it\u0027s the total attempts. In it81202, it\u0027s the retry counts.",
+      "parentUuid": "78d27009_e2d88b01",
+      "range": {
+        "startLine": 380,
+        "startChar": 1,
+        "endLine": 383,
+        "endChar": 38
+      },
+      "revId": "286cf6c5c5b37c1b8846c14bb923d28bf0a34607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
