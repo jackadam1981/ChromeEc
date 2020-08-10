@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b76bc0eb_4a971f97",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2358,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-10T19:00:13Z",
+      "side": 1,
+      "message": "While you are at it can you please corrcect the comment.\n\nNVMEM cache",
+      "range": {
+        "startLine": 2358,
+        "startChar": 22,
+        "endLine": 2358,
+        "endChar": 35
+      },
+      "revId": "a8e31a62a9afb0e4575d8fe07ea16339e7eb2497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ae51cd_01c67cbf",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2387,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-10T19:00:13Z",
+      "side": 1,
+      "message": "please restore the whitespace change.",
+      "revId": "a8e31a62a9afb0e4575d8fe07ea16339e7eb2497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac44215_46907bf6",
+        "filename": "common/new_nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2392,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-08-10T19:00:13Z",
+      "side": 1,
+      "message": "the list of evictable objects found in the NVMEM cache.",
+      "range": {
+        "startLine": 2392,
+        "startChar": 27,
+        "endLine": 2392,
+        "endChar": 49
+      },
+      "revId": "a8e31a62a9afb0e4575d8fe07ea16339e7eb2497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
