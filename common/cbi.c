@@ -481,7 +481,10 @@ static void dump_cbi(void)
 	print_tag("FW_CONFIG", cbi_get_fw_config(&val), &val);
 	print_tag("PCB_SUPPLIER", cbi_get_pcb_supplier(&val), &val);
 	print_tag("SSFC", cbi_get_ssfc(&val), &val);
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 	print_uint64_tag("REWORK_ID", cbi_get_rework_id(&lval), &lval);
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 }
 
 static int cc_cbi(int argc, char **argv)

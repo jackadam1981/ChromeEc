@@ -44,8 +44,13 @@ struct cbi_data {
 /**
  * Board info accessors
  *
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
  * @param version/sku_id/oem_id/id/fw_config/pcb_supplier/ssfc/rework_id [OUT]
  *        Data_read from EEPROM.
+=======
+ * @param version/sku_id/oem_id/id/fw_config/pcb_supplier/ssfc [OUT] Data read
+ *        from EEPROM
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
  * @return EC_SUCCESS on success or EC_ERROR_* otherwise.
  *         EC_ERROR_BUSY to indicate data is not ready.
  */
@@ -56,7 +61,10 @@ int cbi_get_model_id(uint32_t *id);
 int cbi_get_fw_config(uint32_t *fw_config);
 int cbi_get_pcb_supplier(uint32_t *pcb_supplier);
 int cbi_get_ssfc(uint32_t *ssfc);
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 int cbi_get_rework_id(uint64_t *id);
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 
 /**
  * Get data from CBI store

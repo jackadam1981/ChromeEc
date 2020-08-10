@@ -40,7 +40,10 @@ enum {
 	OPT_FW_CONFIG,
 	OPT_PCB_SUPPLIER,
 	OPT_SSFC,
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 	OPT_REWORK_ID,
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 	OPT_SIZE,
 	OPT_ERASE_BYTE,
 	OPT_SHOW_ALL,
@@ -58,7 +61,10 @@ static const struct option opts_create[] = {
 	{"fw_config", 1, 0, OPT_FW_CONFIG},
 	{"pcb_supplier", 1, 0, OPT_PCB_SUPPLIER},
 	{"ssfc", 1, 0, OPT_SSFC},
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 	{"rework_id", 1, 0, OPT_REWORK_ID},
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 	{"size", 1, 0, OPT_SIZE},
 	{"erase_byte", 1, 0, OPT_ERASE_BYTE},
 	{NULL, 0, 0, 0}
@@ -81,7 +87,10 @@ static const char *field_name[] = {
 	"FW_CONFIG",
 	"PCB_SUPPLIER",
 	"SSFC",
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 	"REWORK_ID",
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 };
 BUILD_ASSERT(ARRAY_SIZE(field_name) == CBI_TAG_COUNT);
 
@@ -104,7 +113,10 @@ const char help_create[] =
 	"  --fw_config <value>        Firmware configuration bit-field\n"
 	"  --pcb_supplier <value>     PCB supplier\n"
 	"  --ssfc <value>             Second Source Factory Cache bit-field\n"
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 	"  --rework_id <lvalue>       REWORK_ID\n"
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 	"\n"
 	"<value> must be a positive integer <= 0XFFFFFFFF, <lvalue> must be a\n"
 	"  positive integer <= 0xFFFFFFFFFFFFFFFF and field size can be\n"
@@ -313,7 +325,10 @@ static int cmd_create(int argc, char **argv)
 		struct integer_field fw_config;
 		struct integer_field pcb_supplier;
 		struct integer_field ssfc;
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 		struct long_integer_field rework;
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 		const char *dram_part_num;
 		const char *oem_name;
 	} bi;
@@ -394,10 +409,13 @@ static int cmd_create(int argc, char **argv)
 			if (parse_integer_field(optarg, &bi.ssfc))
 				return -1;
 			break;
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 		case OPT_REWORK_ID:
 			if (parse_uint64_field(optarg, &bi.rework))
 				return -1;
 			break;
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 		}
 	}
 
@@ -429,7 +447,10 @@ static int cmd_create(int argc, char **argv)
 	p = cbi_set_data(p, CBI_TAG_PCB_SUPPLIER, &bi.pcb_supplier.val,
 			bi.pcb_supplier.size);
 	p = cbi_set_data(p, CBI_TAG_SSFC, &bi.ssfc.val, bi.ssfc.size);
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 	p = cbi_set_data(p, CBI_TAG_REWORK_ID, &bi.rework.val, bi.rework.size);
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 	p = cbi_set_string(p, CBI_TAG_DRAM_PART_NUM, bi.dram_part_num);
 	p = cbi_set_string(p, CBI_TAG_OEM_NAME, bi.oem_name);
 
@@ -563,7 +584,10 @@ static int cmd_show(int argc, char **argv)
 	print_integer(buf, CBI_TAG_FW_CONFIG);
 	print_integer(buf, CBI_TAG_PCB_SUPPLIER);
 	print_integer(buf, CBI_TAG_SSFC);
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 	print_integer(buf, CBI_TAG_REWORK_ID);
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 	print_string(buf, CBI_TAG_DRAM_PART_NUM);
 	print_string(buf, CBI_TAG_OEM_NAME);
 

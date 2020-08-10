@@ -8106,7 +8106,10 @@ static void cmd_cbi_help(char *cmd)
 	"      6: FW_CONFIG\n"
 	"      7: PCB_VENDOR\n"
 	"      8: SSFC\n"
+<<<<<<< HEAD   (a82fb1 Clear OWNERS for factory/firmware branch)
 	"      9: REWORK_ID\n"
+=======
+>>>>>>> CHANGE (bd8c0b cbi: add Second Source Factory Cache (SSFC) CBI field)
 	"    <size> is the size of the data in byte. It should be zero for\n"
 	"      string types.\n"
 	"    <value/string> is an integer or a string to be set\n"
