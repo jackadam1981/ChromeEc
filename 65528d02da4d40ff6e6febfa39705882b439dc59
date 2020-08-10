@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24888fad_37cedc23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-10T10:02:48Z",
+      "side": 1,
+      "message": "Note that HW team - Max / kuten had the meeting with Mark about allowing to increase HV_ILIM value and ask Max / kuten to confirm in the issue now.",
+      "revId": "65528d02da4d40ff6e6febfa39705882b439dc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c96de2_78377480",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-10T10:02:48Z",
+      "side": 1,
+      "message": "would need to be updated as well.",
+      "range": {
+        "startLine": 616,
+        "startChar": 20,
+        "endLine": 616,
+        "endChar": 24
+      },
+      "revId": "65528d02da4d40ff6e6febfa39705882b439dc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62566db_2dd8f95a",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-10T10:02:48Z",
+      "side": 1,
+      "message": "Maybe we can define SYV682X_HV_ILIM_3_30 to SYV682X_HV_ILIM_3_30 in default then allow board codes to override this value.",
+      "range": {
+        "startLine": 623,
+        "startChar": 4,
+        "endLine": 623,
+        "endChar": 33
+      },
+      "revId": "65528d02da4d40ff6e6febfa39705882b439dc59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
