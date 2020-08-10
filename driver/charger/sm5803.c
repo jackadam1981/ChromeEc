@@ -791,10 +791,33 @@ static enum ec_error_list sm5803_set_otg_current_voltage(int chgnum,
 	return rv;
 }
 
+static int starting_voltage = 4850;
+static int wait_time_us = 100;
+static int step_size = 100;
+
+static int command_otg_settings(int argc, char **argv)
+{
+	if (argc >= 4) {
+		starting_voltage = atoi(argv[1]);
+		wait_time_us = atoi(argv[2]);
+		step_size = atoi(argv[3]);
+	}
+
+	ccprints("Starting voltage: %d mV", starting_voltage);
+	ccprints("Waiting %d us before increase", wait_time_us);
+	ccprints("Increasing %d mV steps", step_size);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(otg_settings, command_otg_settings,
+			"[starting-mV wait-us]",
+			"Get or set OTG starting voltage and wait time");
+
 static enum ec_error_list sm5803_enable_otg_power(int chgnum, int enabled)
 {
 	enum ec_error_list rv;
 	int reg;
+	int current_current, current_voltage;
 
 	if (enabled) {
 		rv = chg_read8(chgnum, SM5803_REG_ANA_EN1, &reg);
@@ -805,6 +828,16 @@ static enum ec_error_list sm5803_enable_otg_power(int chgnum, int enabled)
 		reg &= ~SM5803_ANA_EN1_CLS_DISABLE;
 		rv = chg_write8(chgnum, SM5803_REG_ANA_EN1, reg);
 	}
+
+	/* TEST: lower Vbus to configured starting level */
+	rv = chg_read8(chgnum, SM5803_REG_DISCH_CONF5, &reg);
+	if (rv)
+		return rv;
+	current_current = (reg & SM5803_DISCH_CONF5_CLS_LIMIT) *
+							SM5803_CLS_CURRENT_STEP;
+
+	sm5803_set_otg_current_voltage(chgnum, current_current,
+							starting_voltage);
 
 	/*
 	 * Vbus monitor comparator must be enabled for sourcing out voltage, and
@@ -845,6 +878,21 @@ static enum ec_error_list sm5803_enable_otg_power(int chgnum, int enabled)
 
 	rv = chg_write8(chgnum, SM5803_REG_FLOW1, reg);
 	mutex_unlock(&flow1_access_lock[chgnum]);
+
+	/* Test: Wait configured time, raise Vbus in 100 mV increments */
+	usleep(wait_time_us);
+
+	current_voltage = starting_voltage;
+	while (current_voltage < 5000) {
+		current_voltage += step_size;
+		if (current_voltage > 5000)
+			current_voltage = 5000;
+
+		sm5803_set_otg_current_voltage(chgnum, current_current,
+							current_voltage);
+		usleep(100);
+	}
+
 	return rv;
 }
 
