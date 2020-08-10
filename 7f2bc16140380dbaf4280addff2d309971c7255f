@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3457c2d4_3cdcc14b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2020-08-10T17:27:39Z",
+      "side": 1,
+      "message": "have you profiled the LGC battery as well?",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "7f2bc16140380dbaf4280addff2d309971c7255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b10f0d87_e3d403c0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
