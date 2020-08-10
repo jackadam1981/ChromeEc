@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08df94e1_b1bf6afd",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-10T10:49:16Z",
+      "side": 1,
+      "message": "It loosk to me that CH_SEL 0 here is for 5V not HV path and as I know, we only provide 5V as the source VBus. As a result, do we really need to set HV_ILIM or 5V ILIM is just the one impact us in this path?",
+      "range": {
+        "startLine": 137,
+        "startChar": 14,
+        "endLine": 137,
+        "endChar": 38
+      },
+      "revId": "cd5c96da5cea6222abe537c86bdbf73c4fc2281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
