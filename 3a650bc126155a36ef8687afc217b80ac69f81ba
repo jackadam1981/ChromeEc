@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e4b2c09_fb76685d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T23:43:57Z",
+      "side": 1,
+      "message": "I realized after looking this over that you hadn\u0027t started the review yet, but it might be good to get the datasheet in a shared location anyway.",
+      "revId": "3a650bc126155a36ef8687afc217b80ac69f81ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11910baa_a2c6f90b",
+        "filename": "driver/tcpm/rt1715.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-10T23:43:57Z",
+      "side": 1,
+      "message": "I found a datasheet for this part, but these registers don\u0027t seem to have names. Is there a better datasheet that I should be using? Can you upload the one you\u0027ve been working off of to Drive and/or the bug?",
+      "revId": "3a650bc126155a36ef8687afc217b80ac69f81ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
