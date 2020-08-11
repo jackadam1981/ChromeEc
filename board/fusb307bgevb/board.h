@@ -25,11 +25,28 @@
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_HW_CRC
+#define CONFIG_I2C
+#define CONFIG_I2C_MASTER
+
+/* I2C master port connected to the TCPC */
+#define I2C_PORT_TCPC 1
+
+/* LCD Configuration */
+#define LCD_SLAVE_ADDR 0x27
 
 /* USB Configuration */
 #define CONFIG_USB
 #define CONFIG_USB_PID 0x500f
 #define CONFIG_USB_CONSOLE
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
+
+/* TCPC FUSB307B */
+#define PD_MAX_VOLTAGE_MV 6000
+#define PD_OPERATING_POWER_MW 30000
+#define PD_MAX_CURRENT_MA     2000
+#define PD_POWER_SUPPLY_TURN_ON_DELAY  160000  /* us */
 
 /* USB interface indexes (use define rather than enum to expand them) */
 #define USB_IFACE_STREAM  0
@@ -48,13 +65,6 @@
 
 /* Enable control of GPIOs over USB */
 #define CONFIG_USB_GPIO
-
-/* Enable control of SPI over USB */
-#define CONFIG_SPI_MASTER
-#define CONFIG_SPI_FLASH_PORT    0  /* First SPI master port */
-
-
-#define CONFIG_USB_SPI
 
 #undef CONFIG_WATCHDOG_HELP
 #undef CONFIG_LID_SWITCH

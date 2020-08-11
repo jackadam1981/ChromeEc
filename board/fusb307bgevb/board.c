@@ -2,37 +2,43 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
-/* STM32F072-discovery board configuration */
+/* FUSB307BGEVB configuration */
 
 #include "common.h"
+#include "driver/tcpm/fusb302.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "queue_policies.h"
 #include "registers.h"
-#include "spi.h"
 #include "task.h"
 #include "usart-stm32f0.h"
 #include "usart_tx_dma.h"
 #include "usart_rx_dma.h"
 #include "usb_gpio.h"
-#include "usb_spi.h"
 #include "usb-stream.h"
 #include "util.h"
+#include "usb_mux.h"
+#include "usb_charge.h"
+#include "usb_pd_tcpm.h"
+#include "i2c.h"
+#include "driver/tcpm/fusb302.h"
+#include "power.h"
+#include "power_button.h"
+
+static void tcpc_alert_event(enum gpio_signal signal)
+{
+	schedule_deferred_pd_interrupt(0 /* port */);
+}
 
 /******************************************************************************
  * Build GPIO tables and expose a subset of the GPIOs over USB.
  */
 void button_event(enum gpio_signal signal);
-
 #include "gpio_list.h"
 
 static enum gpio_signal const usb_gpio_list[] = {
 	GPIO_USER_BUTTON,
-	GPIO_LED_U,
-	GPIO_LED_D,
-	GPIO_LED_L,
-	GPIO_LED_R,
 };
 
 /*
@@ -112,14 +118,6 @@ USB_STREAM_CONFIG(forward_usb,
  */
 void button_event(enum gpio_signal signal)
 {
-	static int count;
-
-	gpio_set_level(GPIO_LED_U, (count & 0x03) == 0);
-	gpio_set_level(GPIO_LED_R, (count & 0x03) == 1);
-	gpio_set_level(GPIO_LED_D, (count & 0x03) == 2);
-	gpio_set_level(GPIO_LED_L, (count & 0x03) == 3);
-
-	count++;
 }
 
 void usb_gpio_tick(void)
@@ -145,58 +143,35 @@ const void *const usb_strings[] = {
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
+/******************************************************************************
+ * I2C interface.
+ */
+const struct i2c_port_t i2c_ports[] = {
+	{"tcpc", I2C_PORT_TCPC, 400 /* kHz */, GPIO_I2C2_SCL, GPIO_I2C2_SDA}
+};
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /******************************************************************************
- * Support SPI bridging over USB, this requires usb_spi_board_enable and
- * usb_spi_board_disable to be defined to enable and disable the SPI bridge.
- */
-
-/* SPI devices */
-const struct spi_device_t spi_devices[] = {
-	{ CONFIG_SPI_FLASH_PORT, 0, GPIO_SPI_CS},
-};
-const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
-
-void usb_spi_board_enable(struct usb_spi_config const *config)
-{
-	/* Remap SPI2 to DMA channels 6 and 7 */
-	STM32_SYSCFG_CFGR1 |= BIT(24);
-
-	/* Configure SPI GPIOs */
-	gpio_config_module(MODULE_SPI_FLASH, 1);
-
-	/* Set all four SPI pins to high speed */
-	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xff000000;
-
-	/* Enable clocks to SPI2 module */
-	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
-
-	/* Reset SPI2 */
-	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
-	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
-
-	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
-}
-
-void usb_spi_board_disable(struct usb_spi_config const *config)
-{
-	spi_enable(CONFIG_SPI_FLASH_PORT, 0);
-
-	/* Disable clocks to SPI2 module */
-	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
-
-	/* Release SPI GPIOs */
-	gpio_config_module(MODULE_SPI_FLASH, 0);
-}
-
-USB_SPI_CONFIG(usb_spi, USB_IFACE_SPI, USB_EP_SPI, 0);
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC,
+			.addr_flags = FUSB302_I2C_SLAVE_ADDR_FLAGS,
+		},
+		.drv = &fusb302_tcpm_drv,
+	},
+};*/
 
 /******************************************************************************
  * Initialize board.
  */
 static void board_init(void)
 {
+	/* Enable button interrupts */
 	gpio_enable_interrupt(GPIO_USER_BUTTON);
+	/* Enable TCPC alert interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 
 	queue_init(&loopback_queue);
 	queue_init(&usart_to_usb);
@@ -204,6 +179,5 @@ static void board_init(void)
 	usart_init(&loopback_usart);
 	usart_init(&forward_usart);
 
-	usb_spi_enable(&usb_spi, 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
