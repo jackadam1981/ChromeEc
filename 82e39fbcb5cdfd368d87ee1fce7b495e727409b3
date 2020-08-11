@@ -46,6 +46,30 @@
       "revId": "82e39fbcb5cdfd368d87ee1fce7b495e727409b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69711aff_39f0dd96",
+        "filename": "board/terrador/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T14:49:51Z",
+      "side": 0,
+      "message": "The default implementation of board_get_max_tbt_speed() just returns the speed of the cable found during PD discovery.  Removing the override is correct for Terrador because both ports have the burnside bridge retimer.",
+      "parentUuid": "02e46b79_bb09562b",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "82e39fbcb5cdfd368d87ee1fce7b495e727409b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

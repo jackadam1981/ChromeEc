@@ -16,6 +16,29 @@
       "revId": "0a3491d25bc38a1a0ba60ff0382222138c2523c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4b7cd1e_5c0c8d84",
+        "filename": "board/terrador/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T14:49:51Z",
+      "side": 1,
+      "message": "Is this correct?  Schematics show port C0 and port C1 each have a dedicated SPI flash connected to the Burnside Bridge.  Both Burnside Bridge also have the FLASH_SHARE_EN signal pulled low.",
+      "range": {
+        "startLine": 193,
+        "startChar": 40,
+        "endLine": 193,
+        "endChar": 44
+      },
+      "revId": "0a3491d25bc38a1a0ba60ff0382222138c2523c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
