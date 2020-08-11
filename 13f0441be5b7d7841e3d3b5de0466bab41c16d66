@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d628ada6_051cc6f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T17:50:41Z",
+      "side": 1,
+      "message": "This patchset corrects the usage of the terms VMA (virtual memory address) and LMA (load memory address).  From LD documentation section 3.1 Basic Linker Script Concepts:\n\n\"...In this case the ROM address would be the LMA, and the RAM address would be the VMA\"\n\n",
+      "revId": "13f0441be5b7d7841e3d3b5de0466bab41c16d66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
