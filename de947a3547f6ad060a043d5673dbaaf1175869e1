@@ -39,6 +39,30 @@
       "revId": "de947a3547f6ad060a043d5673dbaaf1175869e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54a15bea_7b37cda3",
+        "filename": "board/fennel/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1436312
+      },
+      "writtenOn": "2020-08-11T09:48:36Z",
+      "side": 1,
+      "message": "Customer require to increase a USB-A 2.0 Port, and it is used to control the USB port power enable/disable; Our HW\u0026PM have discussed the change with google. Whether do the change in MP depends on the test results in development stage.",
+      "parentUuid": "03070362_7689c306",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 56
+      },
+      "revId": "de947a3547f6ad060a043d5673dbaaf1175869e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
