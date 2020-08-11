@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "773c2d9a_7a06a028",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302605
+      },
+      "writtenOn": "2020-08-11T16:13:06Z",
+      "side": 1,
+      "message": "Enabling IPU LGTM. Is it worth adding support for the second part of the bug request (disabling IPU when in S3 and using HDMI)? Although its probably okay to put this off until we collect S3 HDMI results and see if any changes are needed.",
+      "revId": "5f062b11654843006e3f78e0876be1bb2da952a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
