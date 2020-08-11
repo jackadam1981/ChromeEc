@@ -334,6 +334,30 @@
       "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be4ae6d_9580c001",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2020-08-11T22:51:49Z",
+      "side": 1,
+      "message": "Technically speaking these recent changes don\u0027t have to include this platform as the requirements snapshot was released ( https://chromeos.google.com/partner/dlm/docs/reference-designs/trogdor/trogdor_clamshell.html ) but hope is that it will as we\u0027d like to introduce some additional functionality in the future thats enabled by these wakes.\n\nIf folks are agree-able to adding to trogdor it should also include EC_HOST_EVENT_AC_DISCONNECTED",
+      "parentUuid": "4730b4ce_38320cb9",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 48
+      },
+      "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
