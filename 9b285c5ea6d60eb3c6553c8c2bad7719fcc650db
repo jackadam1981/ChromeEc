@@ -358,6 +358,30 @@
       "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "686d9c2d_86e70c20",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2020-08-11T23:27:00Z",
+      "side": 1,
+      "message": "Is there a doc available with more info?  This is a pretty big change in behavior with user-visible impact.",
+      "parentUuid": "0be4ae6d_9580c001",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 48
+      },
+      "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
