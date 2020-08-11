@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b36947a2_3c9e6ab3",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-11T15:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dac411b_c79a32c5",
+      "range": {
+        "startLine": 633,
+        "startChar": 5,
+        "endLine": 633,
+        "endChar": 9
+      },
+      "revId": "07ff9023808bd30983a59c66f3780aab4d2b2ac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52d17d18_527d79ef",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "07ff9023808bd30983a59c66f3780aab4d2b2ac0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "221dfb36_cd3ddf54",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-11T15:12:28Z",
+      "side": 1,
+      "message": "I\u0027m cautiously optimistic.  Though we\u0027d have to depend on the PD stack to not cause us woe here unless we can think of a sufficient guard clause to use in the board code (like we have for not disabling OTG on charger port selection).",
+      "parentUuid": "52d17d18_527d79ef",
+      "revId": "07ff9023808bd30983a59c66f3780aab4d2b2ac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
