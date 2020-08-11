@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "93e66ccc_675cb5d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-11T16:59:26Z",
+      "side": 1,
+      "message": "nit: D4",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 13
+      },
+      "revId": "5f062b11654843006e3f78e0876be1bb2da952a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "314d434d_9994bc0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-11T16:59:26Z",
+      "side": 1,
+      "message": "nit: still an input, just adding pull up.",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "5f062b11654843006e3f78e0876be1bb2da952a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "773c2d9a_7a06a028",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -16,6 +62,52 @@
       "revId": "5f062b11654843006e3f78e0876be1bb2da952a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bfe7239_569f2bb6",
+        "filename": "board/dalboz/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-11T16:59:26Z",
+      "side": 1,
+      "message": "nit: align column",
+      "range": {
+        "startLine": 15,
+        "startChar": 73,
+        "endLine": 15,
+        "endChar": 89
+      },
+      "revId": "5f062b11654843006e3f78e0876be1bb2da952a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6571df70_04c82710",
+        "filename": "board/dirinboz/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-11T16:59:26Z",
+      "side": 1,
+      "message": "nit: align column",
+      "range": {
+        "startLine": 15,
+        "startChar": 73,
+        "endLine": 15,
+        "endChar": 89
+      },
+      "revId": "5f062b11654843006e3f78e0876be1bb2da952a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
