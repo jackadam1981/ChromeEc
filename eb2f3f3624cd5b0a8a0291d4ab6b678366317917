@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83aa3000_0246c941",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-11T10:23:31Z",
+      "side": 1,
+      "message": "please fix the copy paste typo before submitting 😊",
+      "revId": "eb2f3f3624cd5b0a8a0291d4ab6b678366317917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7a17c60_1ad0bd53",
+        "filename": "board/terrador/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-11T10:23:31Z",
+      "side": 1,
+      "message": "acknowledgment",
+      "range": {
+        "startLine": 106,
+        "startChar": 60,
+        "endLine": 106,
+        "endChar": 74
+      },
+      "revId": "eb2f3f3624cd5b0a8a0291d4ab6b678366317917",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
