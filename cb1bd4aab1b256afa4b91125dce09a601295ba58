@@ -16,6 +16,23 @@
       "revId": "cb1bd4aab1b256afa4b91125dce09a601295ba58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aee42f5e_62eed482",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-08-11T19:14:36Z",
+      "side": 1,
+      "message": "Verified +1. Data + scope shots in b/155202697#comment27 (ServoV4p0).\nData appears valid for both ServoV4.1 and ServoV4.0.\n\nVERIFY\u003dRevert WIP CL, CherryPick Vincent\u0027s CL.\nScope CC1/CC2/VBUS/VBUS_I + TotalPhase Trace\nLT Port Akemi ANX3446 (notoriously sensitive)\n\nNo abnormalities in \"negociate\" (PD C19).\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/usb_pd.h#805\n(grandma\u0027s ham typo that will break FAFT if we change it)\ntStartDrive+1UI measured 4.700us.",
+      "revId": "cb1bd4aab1b256afa4b91125dce09a601295ba58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
