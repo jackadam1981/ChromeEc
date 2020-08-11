@@ -142,6 +142,30 @@
       "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b646c0_08f20ecd",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2020-08-11T19:41:04Z",
+      "side": 1,
+      "message": "AC insertion only needs to wake the AP if the EC comes up in RO when it is attached, referred to in the doc as \"S5 with EC suspended\" which isn\u0027t very clear.\n\nThis is to allow the AP to do software sync and put the EC in RW.  (in case of vuln in RO, and to allow charging at \u003e5V)\n\nWaking the AP on AC insertion becomes unnecessary with CONFIG_VBOOT_EFS2 since the EC can jump to RW on its own, but I don\u0027t believe that is enabled on trogdor.",
+      "parentUuid": "fe3bb166_55169e51",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 48
+      },
+      "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
