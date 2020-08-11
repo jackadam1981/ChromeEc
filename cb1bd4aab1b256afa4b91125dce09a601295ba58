@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c172cd11_eba7eb9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2020-08-11T12:35:58Z",
+      "side": 1,
+      "message": "I have updated the servo_v4 code with the same fix as servo_v4p1 taking into account Nathan thorough investigations on the PD waveform timings",
+      "revId": "cb1bd4aab1b256afa4b91125dce09a601295ba58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
