@@ -33,6 +33,24 @@
       "revId": "63d0a174918aa385d0009102227a1f7ead2d921f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37de6215_0842a7d2",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T00:43:37Z",
+      "side": 1,
+      "message": "BMI_RAM_BUFFER_SIZE is referenced unconditionally at line 574.  You do bring up a good point that if init_rom_map() failed when CONFIG_CHIP_INIT_ROM_REGION is disabled, the loop would hang.\n\nI think the correct thing to do is change the assert at line 577 to also verify )burst_write_len !\u003d 0).",
+      "parentUuid": "d2fe4a5a_dc3f87c6",
+      "revId": "63d0a174918aa385d0009102227a1f7ead2d921f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
