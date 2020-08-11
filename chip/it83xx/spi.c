@@ -246,8 +246,10 @@ void spi_slv_int_handler(void)
 		/* Reset fifo and prepare to receive next transaction */
 		reset_rx_fifo();
 #endif
+#ifndef IT83XX_SPI_RX_VALID_INT
 		/* Enable Rx byte reach interrupt */
 		IT83XX_SPI_IMR &= ~IT83XX_SPI_RX_REACH;
+#endif
 		/* Ready to receive */
 		spi_set_state(SPI_STATE_READY_TO_RECV);
 		/*
@@ -269,11 +271,22 @@ void spi_slv_int_handler(void)
 	 * generate clock that is not the bytes sent from
 	 * the host.
 	 */
+#ifndef IT83XX_SPI_RX_VALID_INT
 	if (IT83XX_SPI_ISR & IT83XX_SPI_RX_REACH) {
 		/* Disable Rx byte reach interrupt */
 		IT83XX_SPI_IMR |= IT83XX_SPI_RX_REACH;
 		/* write clear slave status */
 		IT83XX_SPI_ISR = IT83XX_SPI_RX_REACH;
+#else
+	/*
+	 * The status of Rx valid length interrupt bit is set that indicates
+	 * reached target count(IT83XX_SPI_FTCB1R, IT83XX_SPI_FTCB0R) and the
+	 * length of length field of the host requested data.
+	 */
+	if (IT83XX_SPI_RX_VLISR & IT83XX_SPI_RVLI) {
+		/* write clear slave status */
+		IT83XX_SPI_RX_VLISR = IT83XX_SPI_RVLI;
+#endif
 		/* Parse header for version of spi-protocol */
 		spi_parse_header();
 	}
@@ -284,6 +297,18 @@ void spi_slv_int_handler(void)
 
 static void spi_init(void)
 {
+#ifdef IT83XX_SPI_RX_VALID_INT
+	struct ec_host_request cmd_head;
+	/*
+	 * Target count means the size of host request.
+	 * And plus extra 4 bytes because the CPU accesses FIFO base on word.
+	 * If host requested data length is one byte, we need to align the
+	 * data length to 4 bytes.
+	 */
+	int target_count = sizeof(cmd_head) + 4;
+	/* Offset of data_len member of host request. */
+	int offset = (char *)&cmd_head.data_len - (char *)&cmd_head;
+#endif
 	/* Set SPI pins to alternate function */
 	gpio_config_module(MODULE_SPI, 1);
 	/*
@@ -294,8 +319,20 @@ static void spi_init(void)
 	/* Set unused blocked byte */
 	IT83XX_SPI_HPR2 = 0x00;
 	/* Set FIFO data target count */
+#ifdef IT83XX_SPI_RX_VALID_INT
+	IT83XX_SPI_FTCB1R = (target_count >> 8) & 0xff;
+	IT83XX_SPI_FTCB0R = target_count & 0xff;
+	/* The register setting can capture the length field of host request. */
+	IT83XX_SPI_TCCB1 = (offset >> 8) & 0xff;
+	IT83XX_SPI_TCCB0 = offset & 0xff;
+#else
 	IT83XX_SPI_FTCB1R = (SPI_RX_MAX_FIFO_SIZE >> 8) & 0xff;
 	IT83XX_SPI_FTCB0R = SPI_RX_MAX_FIFO_SIZE & 0xff;
+#endif
+#ifdef IT83XX_SPI_RX_VALID_INT
+	/* Rx valid length interrupt enabled */
+	IT83XX_SPI_RX_VLISMR &= ~IT83XX_SPI_RVLIM;
+#endif
 #ifdef IT83XX_SPI_AUTO_RESET_RX_FIFO
 	/*
 	 * General control register2
@@ -314,8 +351,10 @@ static void spi_init(void)
 	IT83XX_SPI_IMR &= ~IT83XX_SPI_EDIM;
 	/* Reset fifo and prepare to for next transaction */
 	reset_rx_fifo();
+#ifndef IT83XX_SPI_RX_VALID_INT
 	/* Enable Rx byte reach interrupt */
 	IT83XX_SPI_IMR &= ~IT83XX_SPI_RX_REACH;
+#endif
 	/* Ready to receive */
 	spi_set_state(SPI_STATE_READY_TO_RECV);
 	/* Interrupt status register(write one to clear) */
