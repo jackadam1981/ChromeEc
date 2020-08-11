@@ -16,6 +16,46 @@
       "revId": "375134a31f8cda087cd7bf2171dccf5ad12dabf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08d32960_18a18020",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T22:23:10Z",
+      "side": 1,
+      "message": "Verified this fixes b:162753650.  I connected Volteer to a Gatkex board, rebooted 5 times and saw Volteer enter USB4 mode successfully and tunnel DP traffic.",
+      "revId": "375134a31f8cda087cd7bf2171dccf5ad12dabf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b85a401_f7bc0230",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3529,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T22:23:10Z",
+      "side": 1,
+      "message": "Can you create a macro for this combination? I think you can also use the same macro negated at line 4244.",
+      "range": {
+        "startLine": 3528,
+        "startChar": 5,
+        "endLine": 3529,
+        "endChar": 46
+      },
+      "revId": "375134a31f8cda087cd7bf2171dccf5ad12dabf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
