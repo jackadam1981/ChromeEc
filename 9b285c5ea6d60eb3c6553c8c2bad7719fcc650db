@@ -46,6 +46,30 @@
       "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d466d81_68c119f8",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1112825
+      },
+      "writtenOn": "2020-08-11T19:14:40Z",
+      "side": 1,
+      "message": "The matrix linked on https://sites.google.com/a/google.com/chromeos-partners/pages/tech-docs/hardware/chrome-os-hardware-requirements#TOC-Wake-Sources lists \u0027AC insert\u0027 as a wake source in S3, so I interpret this event should cause a transition to S0, like the other events in the list.",
+      "parentUuid": "a89e0b95_e4bbabc7",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 48
+      },
+      "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
