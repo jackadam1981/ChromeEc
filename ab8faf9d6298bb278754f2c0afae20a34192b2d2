@@ -87,6 +87,24 @@
       "revId": "ab8faf9d6298bb278754f2c0afae20a34192b2d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b01b2d48_ee121a1d",
+        "filename": "board/eldrid/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T16:52:31Z",
+      "side": 1,
+      "message": "Please try syncing to the latest EC and re-running the create_initial_ec_image.sh script.  The parent CL is from 3 weeks ago.\n\nThis CL:2313778 disables USB PD extended messages and saves 3000 bytes in the EC image size.  This should allow the eldrid image to build.\n\nOnce the initial EC eldrid image lands, then you can switch from the BMI260 to BM160 sensor and then you can re-enable USB PD extended messags.",
+      "parentUuid": "d40c6393_6ca2527a",
+      "revId": "ab8faf9d6298bb278754f2c0afae20a34192b2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
