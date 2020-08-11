@@ -118,6 +118,30 @@
       "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe3bb166_55169e51",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-11T19:34:43Z",
+      "side": 1,
+      "message": "The webpage is confusing. I used the pdf as reference, which states \"AC insert\" is a wake source of suspend. I will try to find more supporting materials.",
+      "parentUuid": "b85b79b6_5d8553b3",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 48
+      },
+      "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
