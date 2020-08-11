@@ -33,6 +33,23 @@
       "revId": "cb1bd4aab1b256afa4b91125dce09a601295ba58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dba9a71f_fab9aac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-11T19:22:51Z",
+      "side": 1,
+      "message": "This is a good way to optimize.\n\nThe current implementation of gpio_set_flags_by_mask() is quite cumbersome. If we do the similar optimization on it, maybe calling the gpio_set_flags_by_mask() can get the similar result as direct register access.",
+      "revId": "cb1bd4aab1b256afa4b91125dce09a601295ba58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
