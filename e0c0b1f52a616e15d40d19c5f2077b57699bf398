@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0094508_dfe5901d",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-08-11T22:28:55Z",
+      "side": 1,
+      "message": "Should we just rename this function as retimers_on() and the function below as retimers_off() and add the logic for controlling HDMI retimer power here?",
+      "range": {
+        "startLine": 628,
+        "startChar": 12,
+        "endLine": 628,
+        "endChar": 27
+      },
+      "revId": "e0c0b1f52a616e15d40d19c5f2077b57699bf398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb355187_33d47f46",
+        "filename": "board/dirinboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-08-11T22:28:55Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 628,
+        "startChar": 12,
+        "endLine": 628,
+        "endChar": 27
+      },
+      "revId": "e0c0b1f52a616e15d40d19c5f2077b57699bf398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
