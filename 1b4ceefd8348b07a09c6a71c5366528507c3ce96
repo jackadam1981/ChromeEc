@@ -81,6 +81,30 @@
       "revId": "1b4ceefd8348b07a09c6a71c5366528507c3ce96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee1fd94b_918557bb",
+        "filename": "chip/stm32/bkpdata.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-11T05:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13d52fa9_4a4deaa5",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "1b4ceefd8348b07a09c6a71c5366528507c3ce96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
