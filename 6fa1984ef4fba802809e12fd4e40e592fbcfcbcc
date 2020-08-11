@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff99866c_e93f5039",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T15:29:32Z",
+      "side": 1,
+      "message": "Nit - should be \"Voxel\"",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 43
+      },
+      "revId": "6fa1984ef4fba802809e12fd4e40e592fbcfcbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f3b539_b99fcba0",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T15:29:32Z",
+      "side": 1,
+      "message": "This should be GPIO_ODR_HIGH.  See CL:2333122",
+      "range": {
+        "startLine": 113,
+        "startChar": 29,
+        "endLine": 113,
+        "endChar": 42
+      },
+      "revId": "6fa1984ef4fba802809e12fd4e40e592fbcfcbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c269a9f5_67784cc8",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T15:29:32Z",
+      "side": 1,
+      "message": "Schematic name is EC_CAM_VSYN_SLP_S0IX.",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "6fa1984ef4fba802809e12fd4e40e592fbcfcbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a19783_842da828",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T15:29:32Z",
+      "side": 1,
+      "message": "This signal is an output only.  Delete this line.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "6fa1984ef4fba802809e12fd4e40e592fbcfcbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f14e229_63d4ba46",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T15:29:32Z",
+      "side": 1,
+      "message": "This signal is output only. Delete this line.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 58
+      },
+      "revId": "6fa1984ef4fba802809e12fd4e40e592fbcfcbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2476a949_5d01948d",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-11T15:29:32Z",
+      "side": 1,
+      "message": "You can also add GPIOC0 (EN_PP1050_STG) and GPIOA7 (EN_PP5000_USB_AG) to the unused signal list.",
+      "revId": "6fa1984ef4fba802809e12fd4e40e592fbcfcbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
