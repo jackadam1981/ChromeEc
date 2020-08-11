@@ -262,6 +262,30 @@
       "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "014487e9_57b1efc1",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-11T21:18:19Z",
+      "side": 1,
+      "message": "Thanks for giving the background.\n\nAfter digging into several old bugs and materials, the \"AC insert\" was not a wake source of S3, as Duncan said. And also highlighted \"AC insert must wake EC but not AP\" for the deep sleep mode (EC hibernate).\n\nBut a recent update adds a new rule on the CrOS hardware requirement that includes \"AC plug/unplug\" as a wake source of S3.\nhttps://chrome-internal-review.googlesource.com/c/chromeos/requirements/+/3192377/4/_data/system-performance-and-behavior/wake-table-conv.yml\n\nCrOS hardware requirement:\nhttps://chromeos.google.com/partner/dlm/docs/latest-requirements/convertible.html#wake-sources-and-battery-life\n\nThe update is very new i.e. Aug 7, and should be the source of truth. I will modify this CL to reflect the update.",
+      "parentUuid": "c81d4581_0727877e",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 48
+      },
+      "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
