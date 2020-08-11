@@ -94,6 +94,30 @@
       "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a29a3c_d26850ff",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1112825
+      },
+      "writtenOn": "2020-08-11T19:27:16Z",
+      "side": 1,
+      "message": "I agree, it\u0027s confusing, I also had to look at the matrix to clarify.\n\nI guess it is *additional* information or S5, since most of the other events are only applicable to S3.",
+      "parentUuid": "b85b79b6_5d8553b3",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 48
+      },
+      "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
