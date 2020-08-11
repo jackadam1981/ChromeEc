@@ -16,6 +16,29 @@
       "revId": "de947a3547f6ad060a043d5673dbaaf1175869e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03070362_7689c306",
+        "filename": "board/fennel/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-08-11T08:50:10Z",
+      "side": 1,
+      "message": "Why do we need this?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 56
+      },
+      "revId": "de947a3547f6ad060a043d5673dbaaf1175869e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
