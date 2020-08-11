@@ -214,6 +214,30 @@
       "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "082f2a2a_b6af4717",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-08-11T20:02:36Z",
+      "side": 1,
+      "message": "Is there a generic macro that can be used for this instead of having to make it per-board? Would be nice to have a chromebox macro, chromebook macro, and chromeslate or whatever macro that does the right thing most of the time.",
+      "parentUuid": "8b9e5b89_a6ff9649",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 48
+      },
+      "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
