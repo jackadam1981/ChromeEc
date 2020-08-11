@@ -666,6 +666,7 @@ static void hdmi_hpd_handler(void)
 
 	/* Pass HPD through from DB OPT1 HDMI connector to AP's DP1. */
 	ioex_get_level(IOEX_HDMI_CONN_HPD_3V3_DB, &hpd);
+	ioex_set_level(IOEX_HDMI_DATA_EN_DB, hpd);
 	gpio_set_level(GPIO_EC_DP1_HPD, hpd);
 	ccprints("HDMI HPD %d", hpd);
 }
