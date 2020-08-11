@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "1e8e9138_21da9160",
+        "filename": "common/online_calibration.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-11T05:23:00Z",
+      "side": 1,
+      "message": "Gwendal, would you be happy with something like this:\n\nstatic motion_sensor_t* gyroscopes[SENSOR_COUNT];\nstatic uint8_t gyroscope_count \u003d 0;\n\nThen for the loop if the gyroscope_count is 0 we\u0027ll iterate and fill the gyroscopes array, if we hit 255 we can just ignore them.",
+      "parentUuid": "f9696e5e_c2656223",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56452288_8306327e",
         "filename": "common/online_calibration.c",
         "patchSetId": 3
@@ -274,6 +292,24 @@
       "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d174f7e_3a9baeae",
+        "filename": "include/math_util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-11T05:23:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eb769e3_0f28c210",
+      "revId": "85be4a9f8134f8f943edea0f0f582ed168661790",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
