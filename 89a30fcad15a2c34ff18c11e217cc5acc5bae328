@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9d39c7bc_a9a427b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-08-11T18:26:56Z",
+      "side": 1,
+      "message": "I see change of detection of FIPS mode and use of callbacks which may seem unrelated. However, detection of FIPS mode earlier relied on size of the keys, which is now changed to presence of old-style keys. This also allows to remove couple functions like fwmp policy not needed anymore. Loading of keys is done in unified way, so that old-style and new style computations can be done with same code (real difference is in keygen and entropy size). \nCallbacks can be a separate change, though not sure it\u0027s worth to split it.",
+      "parentUuid": "107847f2_1b3dabc7",
+      "revId": "89a30fcad15a2c34ff18c11e217cc5acc5bae328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed7afc71_31326d17",
         "filename": "board/cr50/fips.c",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b8b47832_73d2400a",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-08-11T18:26:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed7afc71_31326d17",
+      "range": {
+        "startLine": 149,
+        "startChar": 20,
+        "endLine": 149,
+        "endChar": 59
+      },
+      "revId": "89a30fcad15a2c34ff18c11e217cc5acc5bae328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b792d66_11eba9ea",
         "filename": "board/cr50/fips.c",
         "patchSetId": 6
@@ -62,6 +104,30 @@
       "revId": "89a30fcad15a2c34ff18c11e217cc5acc5bae328",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be4e330_b36bf689",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2020-08-11T18:26:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b792d66_11eba9ea",
+      "range": {
+        "startLine": 153,
+        "startChar": 21,
+        "endLine": 153,
+        "endChar": 60
+      },
+      "revId": "89a30fcad15a2c34ff18c11e217cc5acc5bae328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
