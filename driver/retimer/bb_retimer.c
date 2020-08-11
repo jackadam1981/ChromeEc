@@ -13,6 +13,7 @@
 #include "timer.h"
 #include "usb_pd.h"
 #include "util.h"
+#include "hooks.h"
 
 #define BB_RETIMER_REG_SIZE	4
 #define BB_RETIMER_READ_SIZE	(BB_RETIMER_REG_SIZE + 1)
@@ -310,6 +311,26 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 	 */
 }
 
+static void delay_retimer(void);
+static int delay_retimer_done;
+static void delay_retimer(void)
+{
+	int res;
+	const struct usb_mux me = {
+		.i2c_port = I2C_PORT_USB_1_MIX,
+		.i2c_addr_flags = USBC_PORT_C1_BB_RETIMER_I2C_ADDR,
+	};
+
+	res = bb_retimer_write(&me, BB_RETIMER_REG_CONNECTION_STATE,
+			0x11);
+	if (!res) {
+		CPRINTS("Retimer safe state done now to 0x11");
+		delay_retimer_done = 1;
+	} else
+		CPRINTS("Retimer I2C error for safe transaction %d", res);
+}
+
+DECLARE_DEFERRED(delay_retimer);
 /**
  * Driver interface functions
  */
@@ -319,6 +340,30 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
 
+
+	if ((mux_state) & USB_PD_MUX_SAFE_MODE) {
+		CPRINTS("Retimer safe state requested");
+		delay_retimer_done = 0;
+		hook_call_deferred(&delay_retimer_data, 50 * MSEC);
+		return 0;
+	}
+
+	if (!delay_retimer_done) {
+		/*
+		 * Cancel previous scheduled safe mode defer function as
+		 * there is next retimer set state request.
+		 */
+		hook_call_deferred(&delay_retimer_data, -1);
+		CPRINTS("Retimer safe defer func cancelled");
+		/* Set safe mode now */
+		set_retimer_con |= BB_RETIMER_DATA_CONNECTION_PRESENT;
+		set_retimer_con |= BB_RETIMER_USB_2_CONNECTION;
+		bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+			set_retimer_con);
+		CPRINTS("Retimer safe state done now = 0x%x", set_retimer_con);
+		set_retimer_con = 0;
+		delay_retimer_done = 0;
+	}
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
 	 * 0 - No connection present
@@ -409,6 +454,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	else
 		retimer_set_state_ufp(mux_state, &set_retimer_con);
 
+	CPRINTS("Set retimer state to 0x%x", set_retimer_con);
 	/* Writing the register4 */
 	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);
