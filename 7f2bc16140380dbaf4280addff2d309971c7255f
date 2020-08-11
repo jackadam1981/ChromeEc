@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62424bac_53f8faf3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-08-11T11:21:04Z",
+      "side": 1,
+      "message": "LG under 1 second come back from cut off state",
+      "parentUuid": "3457c2d4_3cdcc14b",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "7f2bc16140380dbaf4280addff2d309971c7255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b10f0d87_e3d403c0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-10T17:24:24Z",
       "side": 1,
       "message": "From your measurement, how many seconds exactly is needed to wake up the batter?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "7f2bc16140380dbaf4280addff2d309971c7255f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc808a19_a7702525",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-08-11T11:21:04Z",
+      "side": 1,
+      "message": "https://partnerissuetracker.corp.google.com/issues/146914669#37\nabout within 1.2 second, could discharge,",
+      "parentUuid": "b10f0d87_e3d403c0",
       "range": {
         "startLine": 9,
         "startChar": 0,
