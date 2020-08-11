@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "48b6aa6c_5e2f7d7b",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-11T19:11:31Z",
+      "side": 1,
+      "message": "Per our discussion earlier, order seems to not matter.",
+      "parentUuid": "71f68a72_54473e02",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 830,
+        "endChar": 14
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d45469e_76afa838",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2a86ccaf_0a61116b",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-11T19:11:31Z",
+      "side": 1,
+      "message": "Yeah, I think we can remove this in a follow up CL.",
+      "parentUuid": "4d45469e_76afa838",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 846,
+        "endChar": 49
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23343144_150e768b",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-08-04T17:04:22Z",
       "side": 1,
       "message": "Two questions:\n1. Is precharge current the correct one to use here?  That\u0027s typically 256 mA \n2. This equation differs between the slide deck given and the most recent datasheet we have.  It\u0027s either 50 mA + (IBAT_EOC_TH  * 100mA) or 50mA * (IBAT_EOC_TH + 100 mA).  I would guess the first would make the most sense given the units on the second would be mA^2",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 19
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beec990b_2db8b6e6",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-11T19:11:31Z",
+      "side": 1,
+      "message": "In my past experience, the charge current at the end of the charge comes very close to the precharge current. I didn\u0027t see any such parameter in the battery datasheet.\n\nGood catch; I\u0027ll use the first.",
+      "parentUuid": "23343144_150e768b",
       "range": {
         "startLine": 911,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "965908dd_f3171936",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-11T19:11:31Z",
+      "side": 1,
+      "message": "Updated to use the flow1_reg function.",
+      "parentUuid": "d2d443e1_3a1b4f1d",
+      "range": {
+        "startLine": 927,
+        "startChar": 0,
+        "endLine": 928,
+        "endChar": 35
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7979113e_e0bdb4b6",
         "filename": "driver/charger/sm5803.h",
         "patchSetId": 1
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "d44511e4_404a6870",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-11T19:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7979113e_e0bdb4b6",
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a61891b_65a8c241",
         "filename": "driver/charger/sm5803.h",
         "patchSetId": 1
@@ -125,6 +239,24 @@
       "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86bab4c8_0ec5efdc",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-11T19:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a61891b_65a8c241",
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "fd11dc31_aa1b2c33",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-11T19:11:31Z",
+      "side": 1,
+      "message": "I believe you already have.",
+      "parentUuid": "9cca5cbc_00e46fb9",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 44
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4274b30a_1b75f4a5",
         "filename": "driver/charger/sm5803.h",
         "patchSetId": 1
@@ -165,6 +321,24 @@
       "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb83cc2_bb36a855",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-11T19:11:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4274b30a_1b75f4a5",
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
