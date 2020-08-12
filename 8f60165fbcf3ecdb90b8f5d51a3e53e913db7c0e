@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8b90383_2c575ece",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2607,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-12T18:21:59Z",
+      "side": 1,
+      "message": "too specific, other sensor could use unsigned data.",
+      "revId": "8f60165fbcf3ecdb90b8f5d51a3e53e913db7c0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
