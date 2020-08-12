@@ -103,7 +103,7 @@ test_export_static int command_pd(int argc, char **argv)
 				return EC_ERROR_PARAM_COUNT;
 
 			if (!strcasecmp(argv[3], "power"))
-				pe_dpm_request(port, DPM_REQUEST_PR_SWAP);
+				pd_request_power_swap(port);
 			else if (!strcasecmp(argv[3], "data"))
 				pe_dpm_request(port, DPM_REQUEST_DR_SWAP);
 			else if (IS_ENABLED(CONFIG_USBC_VCONN_SWAP) &&

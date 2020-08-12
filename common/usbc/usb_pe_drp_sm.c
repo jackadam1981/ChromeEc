@@ -1353,7 +1353,8 @@ static void pe_update_pdo_flags(int port, uint32_t pdo)
 
 void pd_request_power_swap(int port)
 {
-	pe_dpm_request(port, DPM_REQUEST_PR_SWAP);
+	if (pd_check_power_swap(port))
+		pe_dpm_request(port, DPM_REQUEST_PR_SWAP);
 }
 
 int pd_is_port_partner_dualrole(int port)
