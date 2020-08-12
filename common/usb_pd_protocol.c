@@ -617,12 +617,19 @@ static void exit_low_power_mode(int port)
 static int reset_device_and_notify(int port)
 {
 	const int rv = tcpm_init(port);
-
+	int rxdect;
+	
 	if (rv == EC_SUCCESS)
 		tcpc_prints("init ready", port);
 	else
 		tcpc_prints("init failed!", port);
-
+	
+	tcpc_read(port, TCPC_REG_TCPC_CTRL, &rxdect);
+	CPRINTS("Reg tcpc_ctrl: 0x%02X", rxdect);
+	tcpc_read(port, TCPC_REG_ROLE_CTRL, &rxdect);
+	CPRINTS("Reg role_ctrl: 0x%02X", rxdect);
+	tcpc_read(port, TCPC_REG_POWER_CTRL, &rxdect);
+	CPRINTS("Reg power_ctrl: 0x%02X", rxdect);
 	return rv;
 }
 
@@ -2810,6 +2817,7 @@ void pd_interrupt_handler_task(void *p)
 			       pd_is_port_enabled(port)) {
 				timestamp_t now;
 
+				CPRINTS("Handle interrupt!");
 				tcpc_alert(port);
 
 				now = get_time();
@@ -2949,8 +2957,17 @@ void pd_task(void *u)
 #endif
 
 	/* Initialize TCPM driver and wait for TCPC to be ready */
+	CPRINTS("Run reset device and notify");
+	tcpc_read(port, TCPC_REG_TCPC_CTRL, &res);
+	CPRINTS("Reg tcpc_ctrl: 0x%02X", res);
+	tcpc_read(port, TCPC_REG_ROLE_CTRL, &res);
+	CPRINTS("Reg role_ctrl: 0x%02X", res);
+	tcpc_read(port, TCPC_REG_POWER_CTRL, &res);
+	CPRINTS("Reg power_ctrl: 0x%02X", res);
+	
 	res = reset_device_and_notify(port);
 	invalidate_last_message_id(port);
+	CPRINTS("res= %d", res);
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	pd_partner_port_reset(port);
@@ -3235,6 +3252,7 @@ void pd_task(void *u)
 		/* process any potential incoming message */
 		incoming_packet = tcpm_has_pending_message(port);
 		if (incoming_packet) {
+			CPRINTS("Has incoming msg");
 			/* Dequeue and consume duplicate message ID. */
 			if (tcpm_dequeue_message(port, payload, &head) ==
 								EC_SUCCESS
@@ -3716,6 +3734,7 @@ void pd_task(void *u)
 
 			/* Check power role policy, which may trigger a swap */
 			if (pd[port].flags & PD_FLAGS_CHECK_PR_ROLE) {
+				CPRINTF("Check pr role");
 				pd_check_pr_role(port, PD_ROLE_SOURCE,
 						 pd[port].flags);
 				pd[port].flags &= ~PD_FLAGS_CHECK_PR_ROLE;
@@ -3724,6 +3743,7 @@ void pd_task(void *u)
 
 			/* Check data role policy, which may trigger a swap */
 			if (pd[port].flags & PD_FLAGS_CHECK_DR_ROLE) {
+				CPRINTF("Check dr role");
 				pd_check_dr_role(port, pd[port].data_role,
 						 pd[port].flags);
 				pd[port].flags &= ~PD_FLAGS_CHECK_DR_ROLE;
@@ -3740,6 +3760,7 @@ void pd_task(void *u)
 				 * initiate or receive a request an exchange
 				 * of VCONN Source.
 				 */
+				CPRINTF("Check vconn state");
 				pd_try_execute_vconn_swap(port,
 							  pd[port].flags);
 				pd[port].flags &= ~PD_FLAGS_CHECK_VCONN_STATE;
@@ -4176,6 +4197,15 @@ void pd_task(void *u)
 			if ((pd[port].last_state != pd[port].task_state)
 			    && pd_comm_is_enabled(port)) {
 #ifdef CONFIG_USB_PD_TCPM_TCPCI
+				
+				int rxdect;
+				tcpc_read(port, TCPC_REG_TCPC_CTRL, &rxdect);
+				CPRINTF("Reg tcpc_ctrl: 0x%02X", rxdect);
+				tcpc_read(port, TCPC_REG_ROLE_CTRL, &rxdect);
+				CPRINTF("Reg role_ctrl: 0x%02X", rxdect);
+				tcpc_read(port, TCPC_REG_POWER_CTRL, &rxdect);
+				CPRINTF("Reg power_ctrl: 0x%02X", rxdect);
+				CPRINTS("Polarity: %d", pd_get_polarity(port));
 				/*
 				 * If we come from hard reset recover state,
 				 * then we can process the source capabilities
@@ -4185,6 +4215,11 @@ void pd_task(void *u)
 				if (pd[port].last_state ==
 				    PD_STATE_SNK_HARD_RESET_RECOVER)
 					tcpm_set_rx_enable(port, 1);
+				tcpc_read(port, TCPC_REG_RX_DETECT, &rxdect);
+				CPRINTF("Reg rxdect: 0x%02X", rxdect);
+				tcpc_read(port, TCPC_REG_ALERT_MASK, &rxdect);
+				CPRINTF("Reg alert_mask: 0x%04X", rxdect);
+				CPRINTF("Flag: 0x%06X", pd[port].flags);
 #endif /* CONFIG_USB_PD_TCPM_TCPCI */
 #ifdef CONFIG_USB_PD_RESET_MIN_BATT_SOC
 				/*
@@ -4238,12 +4273,14 @@ void pd_task(void *u)
 				 */
 				} else if (hard_reset_count <
 						PD_HARD_RESET_COUNT) {
+					CPRINTF("set hardreset timeout");
 					set_state_timeout(port,
 						  get_time().val +
 						  PD_T_SINK_WAIT_CAP,
 						  PD_STATE_HARD_RESET_SEND);
 				} else if (pd_capable(port)) {
 					/* ErrorRecovery */
+					CPRINTF("set snk disconnected timeout");
 					set_state_timeout(port,
 						  get_time().val +
 						  PD_T_NO_RESPONSE,
