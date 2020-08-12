@@ -617,12 +617,19 @@ static void exit_low_power_mode(int port)
 static int reset_device_and_notify(int port)
 {
 	const int rv = tcpm_init(port);
-
+	int rxdect;
+	
 	if (rv == EC_SUCCESS)
 		tcpc_prints("init ready", port);
 	else
 		tcpc_prints("init failed!", port);
-
+	
+	tcpc_read(port, TCPC_REG_TCPC_CTRL, &rxdect);
+	CPRINTS("Reg tcpc_ctrl: 0x%02X", rxdect);
+	tcpc_read(port, TCPC_REG_ROLE_CTRL, &rxdect);
+	CPRINTS("Reg role_ctrl: 0x%02X", rxdect);
+	tcpc_read(port, TCPC_REG_POWER_CTRL, &rxdect);
+	CPRINTS("Reg power_ctrl: 0x%02X", rxdect);
 	return rv;
 }
 
@@ -695,6 +702,7 @@ static inline void set_state(int port, enum pd_states next_state)
 	int i;
 #endif
 	int not_auto_toggling = 1;
+	int rxdect;
 
 	set_state_timeout(port, 0, 0);
 	pd[port].task_state = next_state;
@@ -858,9 +866,40 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 
 #ifdef CONFIG_USB_PD_TCPMV1_DEBUG
-	if (debug_level > 0)
+	if (debug_level > 0) {
 		CPRINTF("C%d st%d %s\n", port, next_state,
 					 pd_state_names[next_state]);
+		tcpc_read(port, TCPC_REG_ALERT, &rxdect);
+		CPRINTF("Reg alert: 0x%04X\t", rxdect);
+		tcpc_read(port, TCPC_REG_ALERT_MASK, &rxdect);
+		CPRINTF("Reg alert_mask: 0x%04X\n", rxdect);
+
+		tcpc_read(port, TCPC_REG_RX_DETECT, &rxdect);
+		CPRINTF("Reg rxdect: 0x%02X\t", rxdect);
+		tcpc_read(port, TCPC_REG_RX_BYTE_CNT, &rxdect);
+		CPRINTF("Reg rx_bytecnt: 0x%02X\t", rxdect);
+		tcpc_read(port, TCPC_REG_RX_BUF_FRAME_TYPE, &rxdect);
+		CPRINTF("Reg rx_stat: 0x%02X\n", rxdect);
+		
+		tcpc_read(port, TCPC_REG_CC_STATUS, &rxdect);
+		CPRINTF("Reg cc_status: 0x%02X\t", rxdect);
+		tcpc_read(port, TCPC_REG_POWER_STATUS, &rxdect);
+		CPRINTF("Reg power_status: 0x%02X\t", rxdect);
+		tcpc_read(port, TCPC_REG_POWER_STATUS_MASK, &rxdect);
+		CPRINTF("Reg power_status_mask: 0x%02X\t", rxdect);
+		tcpc_read(port, TCPC_REG_FAULT_STATUS, &rxdect);
+		CPRINTF("Reg fault_status: 0x%02X\t", rxdect);
+		tcpc_read(port, TCPC_REG_FAULT_STATUS_MASK, &rxdect);
+		CPRINTF("Reg fault_status_mask: 0x%02X\n", rxdect);
+		
+		tcpc_read(port, TCPC_REG_TCPC_CTRL, &rxdect);
+		CPRINTF("Reg tcpc_ctrl: 0x%02X\t", rxdect);
+		tcpc_read(port, TCPC_REG_ROLE_CTRL, &rxdect);
+		CPRINTF("Reg role_ctrl: 0x%02X\t", rxdect);
+		tcpc_read(port, TCPC_REG_POWER_CTRL, &rxdect);
+		CPRINTF("Reg power_ctrl: 0x%02X\n", rxdect);
+		CPRINTF("Polarity: %d", pd_get_polarity(port));
+	}
 	else
 #endif
 		CPRINTF("C%d st%d\n", port, next_state);
@@ -2810,6 +2849,7 @@ void pd_interrupt_handler_task(void *p)
 			       pd_is_port_enabled(port)) {
 				timestamp_t now;
 
+				CPRINTS("Handle interrupt!");
 				tcpc_alert(port);
 
 				now = get_time();
@@ -2885,6 +2925,8 @@ static void pd_send_enter_usb(int port, int *timeout)
 
 void pd_task(void *u)
 {
+	
+	/* int rxdect; */
 	uint32_t head;
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
 	uint32_t payload[7];
@@ -2949,8 +2991,17 @@ void pd_task(void *u)
 #endif
 
 	/* Initialize TCPM driver and wait for TCPC to be ready */
+	CPRINTS("Run reset device and notify");
+	tcpc_read(port, TCPC_REG_TCPC_CTRL, &res);
+	CPRINTS("Reg tcpc_ctrl: 0x%02X", res);
+	tcpc_read(port, TCPC_REG_ROLE_CTRL, &res);
+	CPRINTS("Reg role_ctrl: 0x%02X", res);
+	tcpc_read(port, TCPC_REG_POWER_CTRL, &res);
+	CPRINTS("Reg power_ctrl: 0x%02X", res);
+	
 	res = reset_device_and_notify(port);
 	invalidate_last_message_id(port);
+	CPRINTS("res= %d", res);
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	pd_partner_port_reset(port);
@@ -3235,6 +3286,7 @@ void pd_task(void *u)
 		/* process any potential incoming message */
 		incoming_packet = tcpm_has_pending_message(port);
 		if (incoming_packet) {
+			CPRINTS("Has incoming msg");
 			/* Dequeue and consume duplicate message ID. */
 			if (tcpm_dequeue_message(port, payload, &head) ==
 								EC_SUCCESS
@@ -3716,6 +3768,7 @@ void pd_task(void *u)
 
 			/* Check power role policy, which may trigger a swap */
 			if (pd[port].flags & PD_FLAGS_CHECK_PR_ROLE) {
+				CPRINTF("Check pr role");
 				pd_check_pr_role(port, PD_ROLE_SOURCE,
 						 pd[port].flags);
 				pd[port].flags &= ~PD_FLAGS_CHECK_PR_ROLE;
@@ -3724,6 +3777,7 @@ void pd_task(void *u)
 
 			/* Check data role policy, which may trigger a swap */
 			if (pd[port].flags & PD_FLAGS_CHECK_DR_ROLE) {
+				CPRINTF("Check dr role");
 				pd_check_dr_role(port, pd[port].data_role,
 						 pd[port].flags);
 				pd[port].flags &= ~PD_FLAGS_CHECK_DR_ROLE;
@@ -3740,6 +3794,7 @@ void pd_task(void *u)
 				 * initiate or receive a request an exchange
 				 * of VCONN Source.
 				 */
+				CPRINTF("Check vconn state");
 				pd_try_execute_vconn_swap(port,
 							  pd[port].flags);
 				pd[port].flags &= ~PD_FLAGS_CHECK_VCONN_STATE;
@@ -4176,6 +4231,38 @@ void pd_task(void *u)
 			if ((pd[port].last_state != pd[port].task_state)
 			    && pd_comm_is_enabled(port)) {
 #ifdef CONFIG_USB_PD_TCPM_TCPCI
+				
+				/*int rxdect;
+				tcpc_read(port, TCPC_REG_ALERT, &rxdect);
+				CPRINTF("Reg alert: 0x%04X\t", rxdect);
+				tcpc_read(port, TCPC_REG_ALERT_MASK, &rxdect);
+				CPRINTF("Reg alert_mask: 0x%04X\n", rxdect);
+
+				tcpc_read(port, TCPC_REG_RX_DETECT, &rxdect);
+				CPRINTF("Reg rxdect: 0x%02X\t", rxdect);
+				tcpc_read(port, TCPC_REG_RX_BYTE_CNT, &rxdect);
+				CPRINTF("Reg rx_bytecnt: 0x%02X\t", rxdect);
+				tcpc_read(port, TCPC_REG_RX_BUF_FRAME_TYPE, &rxdect);
+				CPRINTF("Reg rx_stat: 0x%02X\n", rxdect);
+				
+				tcpc_read(port, TCPC_REG_CC_STATUS, &rxdect);
+				CPRINTF("Reg cc_status: 0x%02X\t", rxdect);
+				tcpc_read(port, TCPC_REG_POWER_STATUS, &rxdect);
+				CPRINTF("Reg power_status: 0x%02X\t", rxdect);
+				tcpc_read(port, TCPC_REG_POWER_STATUS_MASK, &rxdect);
+				CPRINTF("Reg power_status_mask: 0x%02X\t", rxdect);
+				tcpc_read(port, TCPC_REG_FAULT_STATUS, &rxdect);
+				CPRINTF("Reg fault_status: 0x%02X\t", rxdect);
+				tcpc_read(port, TCPC_REG_FAULT_STATUS_MASK, &rxdect);
+				CPRINTF("Reg fault_status_mask: 0x%02X\n", rxdect);
+				
+				tcpc_read(port, TCPC_REG_TCPC_CTRL, &rxdect);
+				CPRINTF("Reg tcpc_ctrl: 0x%02X\t", rxdect);
+				tcpc_read(port, TCPC_REG_ROLE_CTRL, &rxdect);
+				CPRINTF("Reg role_ctrl: 0x%02X\t", rxdect);
+				tcpc_read(port, TCPC_REG_POWER_CTRL, &rxdect);
+				CPRINTF("Reg power_ctrl: 0x%02X\n", rxdect);
+				CPRINTF("Polarity: %d", pd_get_polarity(port));*/
 				/*
 				 * If we come from hard reset recover state,
 				 * then we can process the source capabilities
@@ -4185,6 +4272,7 @@ void pd_task(void *u)
 				if (pd[port].last_state ==
 				    PD_STATE_SNK_HARD_RESET_RECOVER)
 					tcpm_set_rx_enable(port, 1);
+				CPRINTF("Flag: 0x%06X\n", pd[port].flags);
 #endif /* CONFIG_USB_PD_TCPM_TCPCI */
 #ifdef CONFIG_USB_PD_RESET_MIN_BATT_SOC
 				/*
@@ -4238,12 +4326,14 @@ void pd_task(void *u)
 				 */
 				} else if (hard_reset_count <
 						PD_HARD_RESET_COUNT) {
+					CPRINTF("set hardreset timeout");
 					set_state_timeout(port,
 						  get_time().val +
 						  PD_T_SINK_WAIT_CAP,
 						  PD_STATE_HARD_RESET_SEND);
 				} else if (pd_capable(port)) {
 					/* ErrorRecovery */
+					CPRINTF("set snk disconnected timeout");
 					set_state_timeout(port,
 						  get_time().val +
 						  PD_T_NO_RESPONSE,
@@ -4804,6 +4894,7 @@ void pd_task(void *u)
 		now = get_time();
 		if (pd[port].timeout) {
 			if (now.val >= pd[port].timeout) {
+				CPRINTS("Time Out!!!");
 				set_state(port, pd[port].timeout_state);
 				/* On a state timeout, run next state soon */
 				timeout = timeout < 10*MSEC ? timeout : 10*MSEC;

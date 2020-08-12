@@ -480,6 +480,19 @@ int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 		last_get_cc[port].cc_sts = status;
 		last_get_cc[port].role = role;
 	}
+	
+	/*if (*cc2) {
+		int role = TCPC_REG_ROLE_CTRL_SET(0, tcpci_get_cached_rp(port),
+						  TYPEC_CC_OPEN, TYPEC_CC_RD);
+		tcpc_write(port, TCPC_REG_ROLE_CTRL, role);
+	} else if (*cc1) {
+		int role = TCPC_REG_ROLE_CTRL_SET(0, tcpci_get_cached_rp(port),
+						  TYPEC_CC_RD, TYPEC_CC_OPEN);
+		tcpc_write(port, TCPC_REG_ROLE_CTRL, role);
+	} else {
+		tcpci_tcpm_set_cc(port, 0x2);
+	}*/
+
 	return rv;
 }
 
@@ -1042,6 +1055,7 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 
 		/* Determine reason for power status change */
 		tcpci_tcpm_get_power_status(port, &pwr_status);
+		CPRINTS("PWRSTATUS %02X", pwr_status);
 		if (pwr_status & TCPC_REG_POWER_STATUS_VBUS_PRES)
 			/* Safe0V=0 and Present=1 */
 			tcpc_vbus[port] = BIT(VBUS_PRESENT);
@@ -1085,9 +1099,11 @@ void tcpci_tcpc_alert(int port)
 	int alert_ext = 0;
 	int failed_attempts;
 	uint32_t pd_event = 0;
+	int tmp;
 
 	/* Read the Alert register from the TCPC */
 	tcpm_alert_status(port, &alert);
+	CPRINTS("Alert %04X", alert);
 
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)
@@ -1165,6 +1181,13 @@ void tcpci_tcpc_alert(int port)
 				pd_event |= PD_EVENT_CC;
 		} else {
 			/* CC status changed, wake task */
+			enum tcpc_cc_voltage_status cc1;
+                        enum tcpc_cc_voltage_status cc2;
+
+			tcpci_tcpm_get_cc(port, &cc1, &cc2);
+			CPRINTS("CC1 %d, CC2 %d", cc1, cc2);
+			tcpc_read(port, TCPC_REG_CC_STATUS, &tmp);
+			CPRINTS("CCSTATUS %02X", tmp);
 			pd_event |= PD_EVENT_CC;
 		}
 	}
@@ -1312,6 +1335,7 @@ int tcpci_tcpm_init(int port)
 
 	while (1) {
 		error = tcpci_tcpm_get_power_status(port, &power_status);
+		CPRINTS("error=%d, pwrstat=0x%02X", error, power_status);
 		/*
 		 * If read succeeds and the uninitialized bit is clear, then
 		 * initialization is complete, clear all alert bits and write
