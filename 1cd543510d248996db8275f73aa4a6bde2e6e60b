@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca53d3f5_e2eeb5d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-12T19:51:44Z",
+      "side": 1,
+      "message": "Adding Sam.  \n\nI\u0027m not clear on how the PD FAFT suite is supposed to be interacting with the console commands.  I could see how, as a developer, I might insist that any time I type \"pd 0 swap power\" the DUT obeys, regardless of whether it makes sense. I\u0027m not really certain what FAFT is expecting here. ",
+      "revId": "1cd543510d248996db8275f73aa4a6bde2e6e60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
