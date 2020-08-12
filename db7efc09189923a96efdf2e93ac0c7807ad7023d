@@ -22,6 +22,29 @@
       "revId": "db7efc09189923a96efdf2e93ac0c7807ad7023d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecd6df31_7b6e6caa",
+        "filename": "board/bobba/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-12T15:27:36Z",
+      "side": 1,
+      "message": "Once you set a default value in the parent CL, you will need to add #undef CONFiG_SYV682X_HV_ILIM to properly override the default setting.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 58
+      },
+      "revId": "db7efc09189923a96efdf2e93ac0c7807ad7023d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
