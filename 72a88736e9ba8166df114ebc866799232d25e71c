@@ -69,6 +69,24 @@
       "revId": "72a88736e9ba8166df114ebc866799232d25e71c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3257fbd9_e7ecf53e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-12T19:34:55Z",
+      "side": 1,
+      "message": "EC_PCH_INT_ODL on volteer is used for MKBP event.\n\nAs keith mentioned we have CONFIG_HOSTCMD_X86 for events.\n\nWe can abandon both EC \u0026 Coreboot CL.",
+      "parentUuid": "a7239b6f_45744ff1",
+      "revId": "72a88736e9ba8166df114ebc866799232d25e71c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
