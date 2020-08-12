@@ -9,11 +9,14 @@
 CHIP:=stm32
 CHIP_FAMILY:=stm32f0
 CHIP_VARIANT:=stm32f07x
+<<<<<<< HEAD   (185c89 nocturne: enable CONFIG_CMD_CHARGEN)
 
 # Use coreboot-sdk
 $(call set-option,CROSS_COMPILE_arm,\
 	$(CROSS_COMPILE_coreboot_sdk_arm),\
 	/opt/coreboot-sdk/bin/arm-eabi-)
+=======
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 
 # Not enough SRAM: Disable all tests
 test-list-y=

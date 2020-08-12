@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+<<<<<<< HEAD   (185c89 nocturne: enable CONFIG_CMD_CHARGEN)
 #include "common.h"
 #include "ec_commands.h"
 #include "fpsensor_crypto.h"
@@ -804,5 +805,12 @@ void run_test(void)
 	RUN_TEST(test_command_read_match_secret_timeout);
 	RUN_TEST(test_command_read_match_secret_unreadable);
 
+=======
+#include "test_util.h"
+
+void run_test(int argc, char **argv)
+{
+	/* No tests yet */
+>>>>>>> BRANCH (40d09f ectool: motionsense: add commands for fast/manual offset com)
 	test_print_result();
 }
