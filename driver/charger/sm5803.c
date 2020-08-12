@@ -311,6 +311,8 @@ static void sm5803_init(int chgnum)
 
 			rv |= chg_write8(chgnum, 0x22, 0xB3);
 
+			rv |= chg_write8(chgnum, 0x3E, 0x34);
+
 			rv |= chg_write8(chgnum, 0x4B, 0xA6);
 			rv |= chg_write8(chgnum, 0x4F, 0xBF);
 
@@ -347,6 +349,8 @@ static void sm5803_init(int chgnum)
 			rv |= chg_write8(chgnum, 0x1D, 0x40);
 
 			rv |= chg_write8(chgnum, 0x22, 0xB3);
+
+			rv |= chg_write8(chgnum, 0x3E, 0x34);
 
 			rv |= chg_write8(chgnum, 0x4F, 0xBF);
 
@@ -603,8 +607,7 @@ static enum ec_error_list sm5803_set_mode(int chgnum, int mode)
 		flow2_reg &= ~SM5803_FLOW2_AUTO_ENABLED;
 	} else {
 		flow1_reg |= SM5803_FLOW1_CHG_EN;
-		if (battery_get_disconnect_state() == BATTERY_NOT_DISCONNECTED)
-			flow2_reg |= SM5803_FLOW2_AUTO_ENABLED;
+		flow2_reg |= SM5803_FLOW2_AUTO_ENABLED;
 	}
 
 	rv = chg_write8(chgnum, SM5803_REG_FLOW1, flow1_reg);
