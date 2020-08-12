@@ -124,6 +124,9 @@
 /* Verified boot */
 #define CONFIG_SHA256_UNROLLED
 #define CONFIG_VBOOT_HASH
+#ifdef CONFIG_VBOOT_EFS2
+	#define CONFIG_CRC8
+#endif
 /*
  * Enable 1 slot of secure temporary storage to support
  * suspend/resume with read/write memory training.
