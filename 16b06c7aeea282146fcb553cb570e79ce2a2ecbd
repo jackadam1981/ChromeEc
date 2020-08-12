@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03d33b99_4bc223cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2020-08-12T16:26:20Z",
+      "side": 1,
+      "message": "This sounds like the clamp function is unrelated to the bug fix, but IIUC, this is the bug fix.\n\nPerhaps change to \"Apply clamp helper functions in tcs3400\u0027s reading 32bit sensor values to fix a bug on reading calibration mode xyz data.\" to be more clear.",
+      "range": {
+        "startLine": 9,
+        "startChar": 69,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
