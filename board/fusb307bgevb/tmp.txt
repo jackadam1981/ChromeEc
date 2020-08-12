@@ -1,0 +1,106 @@
+
+static int fusb307_tcpm_init(int port)
+{
+	int rv;
+	int error;
+	int power_status;
+	int tries = 30;
+	uint8_t mask;
+	int reg;
+	
+	CPRINTS("fusb307 init");
+	tcpc_write(port, TCPC_REG_RESET, TCPC_REG_RESET_SW_RESET);
+	
+	while (1) {
+		error = tcpc_read(port, TCPC_REG_POWER_STATUS, &power_status);
+		/*
+		 * If read succeeds and the uninitialized bit is clear, then
+		 * initialization is complete, clear all alert bits and write
+		 * the initial alert mask.
+		 */
+		if (!error && !(power_status & TCPC_REG_POWER_STATUS_UNINIT))
+			break;
+		if (--tries <= 0)
+			return error ? error : EC_ERROR_TIMEOUT;
+		msleep(10);
+	}
+
+	/* Clear power status alert */
+	rv = tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_POWER_STATUS);
+	
+	/* Set power status mask */
+#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+	mask = TCPC_REG_POWER_STATUS_VBUS_PRES;
+#else
+	mask = 0;
+#endif
+	rv = tcpc_write(port, TCPC_REG_POWER_STATUS_MASK , mask);
+	
+	/* Set alert mask */
+	mask = TCPC_REG_ALERT_TX_SUCCESS | TCPC_REG_ALERT_TX_FAILED |
+		TCPC_REG_ALERT_TX_DISCARDED | TCPC_REG_ALERT_RX_STATUS |
+		TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS
+#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+		| TCPC_REG_ALERT_POWER_STATUS
+#endif
+		;
+	rv = tcpc_write16(port, TCPC_REG_ALERT_MASK, mask);
+	
+	/* Set role ctrl */
+	rv = tcpc_write(port, TCPC_REG_ROLE_CTRL, TCPC_REG_ROLE_CTRL_SET(0, 0, 2, 2));
+	
+	/* Set power ctrl */
+	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
+	reg |= TCPC_REG_POWER_CTRL_SET(1);
+	rv = tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
+
+	/* Tcpci init */
+	rv = tcpci_tcpm_init(port);
+	
+	/* Set GPIO1 to 0 to enable FPF3695 */
+	tcpc_write(port, TCPC_REG_GPIO1_CFG, TCPC_REG_GPIO1_CFG_GPO1_EN);
+	/* Enable sink path */
+	/* tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SNK_CTRL_HIGH); */
+
+	return rv;
+}
+
+
+void fusb307_tcpc_alert(int port)
+{
+	int alert = 0;
+	int failed_attempts;
+	uint32_t head;
+	uint32_t paylaod[7];
+	int type;
+	int cnt;
+
+	if (tcpm_alert_status(port, &alert)) {
+		CPRINTS("C%d: Failed to read alert register", port);
+		return;
+	}
+
+	/* Pull all RX messages from TCPC into EC memory */
+	failed_attempts = 0;
+	while (alert & TCPC_REG_ALERT_RX_STATUS) {
+		if (tcpm_enqueue_message(port))
+			++failed_attempts;
+		if (tcpm_alert_status(port, &alert))
+			++failed_attempts;
+		/* Ensure we don't loop endlessly */
+		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
+			CPRINTS("C%d Cannot consume RX buffer after %d failed attempts!",
+				port, failed_attempts);
+			/*
+			 * The port is in a bad state, we don't want to consume
+			 * all EC resources so suspend the port for a little
+			 * while.
+			 */
+			pd_set_suspend(port, 1);
+			pd_deferred_resume(port);
+			return;
+		}
+	}
+
+	tcpci_tcpc_alert(port);
+}
