@@ -22,6 +22,57 @@
       "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3daff67b_30a7f115",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-12T18:52:56Z",
+      "side": 1,
+      "message": "use light_data here?",
+      "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0686795_10eb4a78",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-12T18:52:56Z",
+      "side": 1,
+      "message": "spoof is set by the caller for the test, we expect it to be valid.",
+      "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91136c1a_af5b749d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-12T18:52:56Z",
+      "side": 1,
+      "message": "why not use light_data here?",
+      "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
