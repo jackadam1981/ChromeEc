@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bdcdc65_fe0d265e",
+        "filename": "common/init_rom.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-12T17:33:31Z",
+      "side": 1,
+      "message": "Looking at the client code in bmi, we call this whether or not we return NULL above (in the !CONFIG_MAPPED_STORAGE case).\n\nThis will unbalance the mutexes. It seems like we should add a NULL check on the *data pointer here.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 31
+      },
+      "revId": "2b0413d3b84305c5c0093936e8d2aef90ba2fc29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
