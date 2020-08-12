@@ -8,8 +8,13 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define VARIANT_KUKUI_BATTERY_SMART
+#define VARIANT_KUKUI_CHARGER_ISL9238
+
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
+
+/* #include "baseboard.h" */
 
 /* Enable USART1,3,4 and USB streams */
 #define CONFIG_STREAM_USART
@@ -30,6 +35,7 @@
 
 /* I2C master port connected to the TCPC */
 #define I2C_PORT_TCPC 1
+#define I2C_PORT_CHARGER 0
 
 /* LCD Configuration */
 #define LCD_SLAVE_ADDR 0x27
@@ -38,14 +44,14 @@
 #define CONFIG_USB
 #define CONFIG_USB_PID 0x500f
 #define CONFIG_USB_CONSOLE
-#define CONFIG_USB_POWER_DELIVERY
+/* #define CONFIG_USB_POWER_DELIVERY */
 #define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 
+#define CONFIG_USB_PD_TCPM_FUSB302
+
 /* TCPC FUSB307B */
-#define PD_MAX_VOLTAGE_MV 6000
 #define PD_OPERATING_POWER_MW 30000
-#define PD_MAX_CURRENT_MA     2000
 #define PD_POWER_SUPPLY_TURN_ON_DELAY  160000  /* us */
 
 /* USB interface indexes (use define rather than enum to expand them) */
@@ -93,6 +99,8 @@ enum usb_strings {
 
 	USB_STR_COUNT
 };
+
+void board_reset_pd_mcu(void);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
