@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23cf0177_a92acf3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-08-12T21:20:08Z",
+      "side": 1,
+      "message": "Are there any weird dmesg logs on the host if you attach ServoV4 in the flipped orientation?  Seems like the USB hub would momentarily detect a broken low-speed device if the orientation is flipped; dunno if this would make the hub or the host kernel unhappy.",
+      "revId": "adbf228fad4b06fda5f4c672c32756cbcc916319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
