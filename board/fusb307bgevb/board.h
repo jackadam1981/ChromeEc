@@ -8,6 +8,10 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#include "common.h"
+#include "host_command.h"
+#include "ec_commands.h"
+
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
