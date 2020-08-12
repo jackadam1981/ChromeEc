@@ -16,6 +16,46 @@
       "revId": "458e623f701ff1be861b030fecfed737cb200b41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c70e49b_27a5e18f",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-12T21:02:58Z",
+      "side": 1,
+      "message": "Why the need to connect then disconnect? Don\u0027t we end up back where we started?",
+      "revId": "458e623f701ff1be861b030fecfed737cb200b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ce3855_875eb2d9",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-12T21:02:58Z",
+      "side": 1,
+      "message": "wrong comment?",
+      "range": {
+        "startLine": 686,
+        "startChar": 4,
+        "endLine": 686,
+        "endChar": 65
+      },
+      "revId": "458e623f701ff1be861b030fecfed737cb200b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
