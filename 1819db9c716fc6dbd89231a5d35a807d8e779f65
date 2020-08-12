@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5caf50ea_792707ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-12T23:00:56Z",
+      "side": 1,
+      "message": "Note: for fun I ran the discard in the middle of the test suite and it appears things were okay with the task hanging out halfway through a power role swap at the end of the testcase. ",
+      "revId": "1819db9c716fc6dbd89231a5d35a807d8e779f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
