@@ -13,8 +13,14 @@
 #define FP_SENSOR_NAME "FPC1025"
 
 /* Sensor pixel resolution */
+#ifndef FP_SENSOR_RES_X
 #define FP_SENSOR_RES_X     (160) /**< Sensor width                          */
+#endif
+
+#ifndef FP_SENSOR_RES_Y
 #define FP_SENSOR_RES_Y     (160) /**< Sensor height                         */
+#endif
+
 #define FP_SENSOR_RES_BPP   (8)   /**< Resolution bits per pixel             */
 
 /*
@@ -22,7 +28,10 @@
  *
  * Value from fpc_bep_image_get_buffer_size(): (160*160)+660
  */
+#ifndef FP_SENSOR_IMAGE_SIZE
 #define FP_SENSOR_IMAGE_SIZE        (26260)
+#endif
+
 #define FP_SENSOR_REAL_IMAGE_SIZE   (FP_SENSOR_RES_X * FP_SENSOR_RES_Y)
 /* Offset of image data in fp_buffer */
 #define FP_SENSOR_IMAGE_OFFSET      (400)
@@ -41,9 +50,13 @@
  *
  * Template size + alignment padding + size of template size variable
  */
+#ifndef FP_ALGORITHM_TEMPLATE_SIZE
 #define FP_ALGORITHM_TEMPLATE_SIZE      (5088 + 0 + 4)
+#endif
 
 /* Max number of templates stored / matched against */
+#ifndef FP_MAX_FINGER_COUNT
 #define FP_MAX_FINGER_COUNT     (5)
+#endif
 
 #endif /* __CROS_EC_FPC1025_PRIVATE_H */
