@@ -100,6 +100,7 @@ __override void board_hibernate_late(void)
 	 * TODO: add this line back after we have EN_SLP_Z fully implemented.
 	 * __builtin_unreachable();
 	*/
+	__builtin_unreachable();
 }
 
 /* power signal list.  Must match order of enum power_signal. */
@@ -285,6 +286,35 @@ static void ppc_interrupt(enum gpio_signal signal)
 }
 
 int debounced_hpd;
+
+/*
+ * Special hook for PP5000_A and PPC
+ * Turned off only when S5/G3 and no adapter.
+ */
+static void en_pp5000_a_hook(void)
+{
+	const int chipset_off = chipset_in_or_transitioning_to_state(
+			CHIPSET_STATE_HARD_OFF | CHIPSET_STATE_SOFT_OFF);
+
+	if (chipset_off && !extpower_is_present()) {
+		/*
+		 * Turn off EN_PP5000_A when we don't need PD.
+		 */
+		gpio_set_level(GPIO_EN_PP5000_A, 0);
+	} else if (!gpio_get_level(GPIO_EN_PP5000_A)) {
+		/*
+		 * Otherwise, if EN_PP5000_A is not already enabled,
+		 * turn it on and re-init ppc.
+		 */
+		gpio_set_level(GPIO_EN_PP5000_A, 1);
+
+		ppc_init(0);
+		ppc_init(1);
+	}
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, en_pp5000_a_hook, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, en_pp5000_a_hook, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, en_pp5000_a_hook, HOOK_PRIO_DEFAULT);
 
 /**
  * Handle PS185 HPD changing state.
