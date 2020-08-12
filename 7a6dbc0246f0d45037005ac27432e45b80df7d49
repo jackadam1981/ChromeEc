@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a1290cf_91dc86f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-08-12T19:14:58Z",
+      "side": 1,
+      "message": "doesn\u0027t seem to describe what the patch does",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "7a6dbc0246f0d45037005ac27432e45b80df7d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "288390ab_5493e1e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-08-12T19:14:58Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "7a6dbc0246f0d45037005ac27432e45b80df7d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaf6f50e_24d3c117",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-08-12T19:14:58Z",
+      "side": 1,
+      "message": "let\u0027s add Cq-depend on https://crrev.com/c/2332060 to indicate the dependencies",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 3
+      },
+      "revId": "7a6dbc0246f0d45037005ac27432e45b80df7d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f1c8b3_8264b7ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-08-12T19:14:58Z",
+      "side": 1,
+      "message": "Add",
+      "revId": "7a6dbc0246f0d45037005ac27432e45b80df7d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3e903b_c00f8b69",
+        "filename": "board/cr50/tpm2/NVMem.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-08-12T19:14:58Z",
+      "side": 1,
+      "message": "just put on the same line, seems to be under 80 chars anyways",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "7a6dbc0246f0d45037005ac27432e45b80df7d49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
