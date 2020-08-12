@@ -50,8 +50,8 @@
 #define LCD_BACKLIGHT 0x08
 #define LCD_NOBACKLIGHT 0x00
 
-#define En 0x04	      // Enable bit
-#define Rw B00000010  // Read/Write bit
-#define Rs B00000001  // Register select bit
+#define En 0x04	// Enable bit
+#define Rw 0x02	// Read/Write bit
+#define Rs 0x01	// Register select bit
 
 #endif /*__CROS_EC_I2C_H */

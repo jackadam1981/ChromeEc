@@ -14,7 +14,6 @@ struct lcd_state_info {
 	uint8_t displayfunction;
 	uint8_t displaycontrol;
 	uint8_t displaymode;
-	uint8_t numlines;
 	uint8_t cols;
 	uint8_t rows;
 	uint8_t backlightval;
@@ -73,7 +72,7 @@ void lcd_init(uint8_t cols, uint8_t rows, uint8_t dotsize) {
 	command(LCD_FUNCTIONSET | state.displayfunction);
 
 	// turn the display on with no cursor or blinking default
-	state.displaycontrol = LCD_DISPLAYON | LCD_CURSOROFF | LCD_BLINKOFF;
+	state.displaycontrol = LCD_DISPLAYON | LCD_CURSORON | LCD_BLINKOFF;
 	lcd_display();
 
 	// clear it off
@@ -102,6 +101,14 @@ void lcd_home(void){
 void lcd_setCursor(uint8_t col, uint8_t row){
 	int row_offsets[] = { 0x00, 0x40, 0x14, 0x54 };
 	command(LCD_SETDDRAMADDR | (col + row_offsets[row]));
+}
+
+void lcd_printChar(char data) {
+	send(data, Rs);
+}
+
+void lcd_printString(char *str) {
+	while (*str) lcd_printChar(*str++);
 }
 
 // Turn the display on/off (quickly)
@@ -155,4 +162,4 @@ void pulseEnable(uint8_t _data){
 
 	expanderWrite(_data & ~En);	// En low
 	usleep(50);	// commands need > 37us to settle
-
+}
