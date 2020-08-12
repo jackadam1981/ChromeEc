@@ -16,6 +16,24 @@
       "revId": "1cd543510d248996db8275f73aa4a6bde2e6e60b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33775ec9_ae8da30c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-12T19:58:02Z",
+      "side": 1,
+      "message": "FAFT test is expecting if the device is not in dual role and not source that we should \"reject\" the request... The best I can understand from the output is that we should ignore the request.  I don\u0027t think this is a valid test and we should not be sending \"pd 0 swap power\" like this and should instead put the DUT in a mode that should or should not allow a swap and then have the servo_v4 try to swap and see if it is performed successfully or rejected.",
+      "parentUuid": "ca53d3f5_e2eeb5d5",
+      "revId": "1cd543510d248996db8275f73aa4a6bde2e6e60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
