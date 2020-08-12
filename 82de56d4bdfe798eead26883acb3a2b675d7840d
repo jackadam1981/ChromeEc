@@ -16,6 +16,29 @@
       "revId": "82de56d4bdfe798eead26883acb3a2b675d7840d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79411353_14dd7c05",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-12T17:34:47Z",
+      "side": 1,
+      "message": "should only do this if (bmi_config), right?",
+      "range": {
+        "startLine": 618,
+        "startChar": 1,
+        "endLine": 618,
+        "endChar": 15
+      },
+      "revId": "82de56d4bdfe798eead26883acb3a2b675d7840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
