@@ -105,6 +105,24 @@
       "revId": "ab8faf9d6298bb278754f2c0afae20a34192b2d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63c9197_23da36a7",
+        "filename": "board/eldrid/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1191149
+      },
+      "writtenOn": "2020-08-12T01:56:11Z",
+      "side": 1,
+      "message": "I repo sync the latest EC and re-running the create_initial_ec_image.sh.\nThe Patchset3 is what\u0027s new be generated.",
+      "parentUuid": "b01b2d48_ee121a1d",
+      "revId": "ab8faf9d6298bb278754f2c0afae20a34192b2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
