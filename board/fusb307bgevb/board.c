@@ -25,6 +25,7 @@
 #include "driver/tcpm/fusb302.h"
 #include "power.h"
 #include "power_button.h"
+#include "lcd.h"
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -173,6 +174,7 @@ static void board_init(void)
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 
+	lcd_init(20, 4, 0);
 	queue_init(&loopback_queue);
 	queue_init(&usart_to_usb);
 	queue_init(&usb_to_usart);

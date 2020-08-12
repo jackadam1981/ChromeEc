@@ -3,7 +3,7 @@
 # found in the LICENSE file.
 #
 # Embedded Controller firmware build system
-#
+   #
 
 # Allow for masking of some targets based on the build architecture. When
 # building using a portage package (such as chromeos-ec), this variable will
