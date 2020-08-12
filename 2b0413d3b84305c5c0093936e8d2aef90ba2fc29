@@ -22,6 +22,47 @@
       "revId": "2b0413d3b84305c5c0093936e8d2aef90ba2fc29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79150e8a_cbbf5c20",
+        "filename": "common/init_rom.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-12T17:36:17Z",
+      "side": 1,
+      "message": "Nevermind, that is a different parameter. We need the caller to conditionally call unmap if the returned value is non-null from map",
+      "parentUuid": "7bdcdc65_fe0d265e",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 31
+      },
+      "revId": "2b0413d3b84305c5c0093936e8d2aef90ba2fc29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7a0ea59_b59ac2d6",
+        "filename": "include/init_rom.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-12T17:36:17Z",
+      "side": 1,
+      "message": "Add a comment about calling umap is return pointer is non-null",
+      "revId": "2b0413d3b84305c5c0093936e8d2aef90ba2fc29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
