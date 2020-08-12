@@ -377,6 +377,14 @@ int board_get_version(void)
 
 static void board_init(void)
 {
+	/*
+	 * During Servo Update, delay a short time before
+	 * running the RO code to prevent corruption of the
+	 * update process.
+	 */
+	usleep(MSEC);
+
+#ifdef SECTION_IS_RO
 	/* USB to serial queues */
 	queue_init(&usart3_to_usb);
 	queue_init(&usb_to_usart3);
@@ -402,7 +410,6 @@ static void board_init(void)
 	/* Bring atmel part out of reset */
 	atmel_reset_l(1);
 
-#ifdef SECTION_IS_RO
 	init_uservo_port();
 	init_pathsel();
 	init_ina231s();
