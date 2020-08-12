@@ -16,6 +16,23 @@
       "revId": "c443285c7f3c5eb000b288c977d157c10e988cc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1e6a59_b63b194e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-12T17:01:44Z",
+      "side": 1,
+      "message": "Thanks!\n\nCan you add a small unit test that ensure that discards works as expected as well?",
+      "revId": "c443285c7f3c5eb000b288c977d157c10e988cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
