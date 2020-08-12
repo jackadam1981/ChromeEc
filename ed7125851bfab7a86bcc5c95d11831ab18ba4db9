@@ -69,6 +69,24 @@
       "revId": "ed7125851bfab7a86bcc5c95d11831ab18ba4db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe05a69a_a88866b9",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-12T15:56:07Z",
+      "side": 1,
+      "message": "I can\u0027t quite do it all in a new define as you can\u0027t have nested defines. I can make a new define for the extern part, but I still need the #define line that maps the enum state to the extern not supported version",
+      "parentUuid": "abf1eedd_8fab4b20",
+      "revId": "ed7125851bfab7a86bcc5c95d11831ab18ba4db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
