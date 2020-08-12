@@ -49,6 +49,54 @@
     },
     {
       "key": {
+        "uuid": "d89e6603_747bc5fd",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-08-12T16:27:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9acc128f_4acf44f2",
+      "range": {
+        "startLine": 628,
+        "startChar": 12,
+        "endLine": 628,
+        "endChar": 27
+      },
+      "revId": "e0c0b1f52a616e15d40d19c5f2077b57699bf398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5364314c_9c449e2a",
+        "filename": "board/dalboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-08-12T16:27:16Z",
+      "side": 1,
+      "message": "Done:  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2352420",
+      "parentUuid": "9acc128f_4acf44f2",
+      "range": {
+        "startLine": 628,
+        "startChar": 12,
+        "endLine": 628,
+        "endChar": 27
+      },
+      "revId": "e0c0b1f52a616e15d40d19c5f2077b57699bf398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb355187_33d47f46",
         "filename": "board/dirinboz/board.c",
         "patchSetId": 1
@@ -69,6 +117,30 @@
       "revId": "e0c0b1f52a616e15d40d19c5f2077b57699bf398",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8822316_4c3d17bf",
+        "filename": "board/dirinboz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2020-08-12T16:27:16Z",
+      "side": 1,
+      "message": "Done: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2352420",
+      "parentUuid": "bb355187_33d47f46",
+      "range": {
+        "startLine": 628,
+        "startChar": 12,
+        "endLine": 628,
+        "endChar": 27
+      },
+      "revId": "e0c0b1f52a616e15d40d19c5f2077b57699bf398",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
