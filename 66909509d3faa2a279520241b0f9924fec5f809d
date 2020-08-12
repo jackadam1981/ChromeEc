@@ -16,6 +16,23 @@
       "revId": "66909509d3faa2a279520241b0f9924fec5f809d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab580ab0_e4daa6a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-12T15:32:26Z",
+      "side": 1,
+      "message": "Zick, I think you can abandon this CL with the following landed\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2338980\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2341098\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2341099",
+      "revId": "66909509d3faa2a279520241b0f9924fec5f809d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
