@@ -430,6 +430,30 @@
       "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42ea8bce_0d68a158",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-12T00:18:44Z",
+      "side": 1,
+      "message": "The latest patch added EC_HOST_EVENT_AC_DISCONNECTED to reflect the change.",
+      "parentUuid": "f38945e5_55de8698",
+      "range": {
+        "startLine": 188,
+        "startChar": 22,
+        "endLine": 188,
+        "endChar": 48
+      },
+      "revId": "9b285c5ea6d60eb3c6553c8c2bad7719fcc650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
