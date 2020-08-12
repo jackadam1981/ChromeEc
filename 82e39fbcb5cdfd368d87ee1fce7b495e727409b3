@@ -70,6 +70,30 @@
       "revId": "82e39fbcb5cdfd368d87ee1fce7b495e727409b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b169f9_0e928e98",
+        "filename": "board/terrador/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-08-12T01:26:31Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "69711aff_39f0dd96",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "82e39fbcb5cdfd368d87ee1fce7b495e727409b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
