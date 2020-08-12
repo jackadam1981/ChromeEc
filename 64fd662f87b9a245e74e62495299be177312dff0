@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b564ccda_e36761df",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-12T16:44:32Z",
+      "side": 1,
+      "message": "Nit - if you think future schematics will remove these signals, change the\nnames UNUSED_GPIOC0 and UNUSED_GPIOA7 for consistency with the other unused signals.\n\nI\u0027m okay with the change as is if you want to submit.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 61
+      },
+      "revId": "64fd662f87b9a245e74e62495299be177312dff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

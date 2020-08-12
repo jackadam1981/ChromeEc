@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "52eac76f_53d717c0",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-12T16:44:32Z",
+      "side": 1,
+      "message": "Latest Volteer schematics have changed name to EC_SLP_S0IX.  I recommend Voxel schematics make the same change.",
+      "parentUuid": "2e22a4df_5dc8dd62",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "6fa1984ef4fba802809e12fd4e40e592fbcfcbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59a19783_842da828",
         "filename": "board/voxel/gpio.inc",
         "patchSetId": 3
