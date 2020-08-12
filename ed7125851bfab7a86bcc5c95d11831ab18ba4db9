@@ -87,6 +87,24 @@
       "revId": "ed7125851bfab7a86bcc5c95d11831ab18ba4db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce644c8b_5aa23633",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-12T17:01:28Z",
+      "side": 1,
+      "message": "I think that would be nice.\nNo need to block this on that though.",
+      "parentUuid": "fe05a69a_a88866b9",
+      "revId": "ed7125851bfab7a86bcc5c95d11831ab18ba4db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
