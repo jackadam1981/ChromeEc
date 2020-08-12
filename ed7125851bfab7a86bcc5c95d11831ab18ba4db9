@@ -105,6 +105,24 @@
       "revId": "ed7125851bfab7a86bcc5c95d11831ab18ba4db9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f89264e_6ad8bd2b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-12T20:24:23Z",
+      "side": 1,
+      "message": "Will do that on a follow up CL shortly then.",
+      "parentUuid": "ce644c8b_5aa23633",
+      "revId": "ed7125851bfab7a86bcc5c95d11831ab18ba4db9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87d5a74e_8db53f4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-12T20:24:23Z",
+      "side": 1,
+      "message": "Carrying +2",
+      "revId": "e2ea9ac1ab84c5453310957c011d0b5b3ed0a1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9b86cb1_0bce880a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-12T20:24:23Z",
+      "side": 1,
+      "message": "Putting the super states at the top makes the SM checks easier in follow up CLs.",
+      "revId": "e2ea9ac1ab84c5453310957c011d0b5b3ed0a1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
