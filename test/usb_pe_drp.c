@@ -339,6 +339,64 @@ static int test_send_caps_error(void)
 	return EC_SUCCESS;
 }
 
+static int test_first_message_discard(void)
+{
+	/*
+	 * See 6.8.1 Soft Reset and Protocol Error
+	 *
+	 * Protocol Errors are any unexpected Message during an AMS.
+	 * If the first Message in an AMS has been passed to the Protocol Layer
+	 * by the Policy Engine but has not yet been sent (GoodCRC Message not
+	 * received) when the Protocol Error occurs, the Policy Engine Shall
+	 * Not issue a Soft Reset but Shall return to the PE_SNK_Ready or
+	 * PE_SRC_Ready state and then process the incoming Message.
+	 *
+	 */
+
+	/*
+	 * Discard may happen in either power state, but most often occurs while
+	 * sourcing due to tSinkTx wait
+	 */
+	setup_source();
+
+	/*
+	 * Scenario: First message is discarded due to incoming Get_Source_Cap
+	 */
+	fake_prl_clear_last_sent_ctrl_msg(PORT0);
+	set_state_pe(PORT0, PE_PRS_SRC_SNK_SEND_SWAP);
+	task_wait_event(10 * MSEC);
+
+	TEST_EQ(fake_prl_get_last_sent_ctrl_msg(PORT0), PD_CTRL_PR_SWAP, "%d");
+	rx_emsg[PORT0].header =
+		PD_HEADER(PD_CTRL_GET_SOURCE_CAP, 0, 0, 0, 0, 0, 0);
+	fake_prl_clear_last_sent_data_msg(PORT0);
+	pe_set_flag(PORT0, PE_FLAGS_MSG_RECEIVED);
+	pe_set_flag(PORT0, PE_FLAGS_MSG_DISCARDED);
+	task_wait_event(10 * MSEC);
+
+	/* PE saw the discard, returned to ready, and send the source cap */
+	TEST_EQ(fake_prl_get_last_sent_data_msg_type(PORT0),
+		PD_DATA_SOURCE_CAP, "%d");
+
+	/*
+	 * Scenario: First message is not discarded, a valid reply is received
+	 */
+	fake_prl_clear_last_sent_ctrl_msg(PORT0);
+	set_state_pe(PORT0, PE_PRS_SRC_SNK_SEND_SWAP);
+	task_wait_event(10 * MSEC);
+
+	TEST_EQ(fake_prl_get_last_sent_ctrl_msg(PORT0), PD_CTRL_PR_SWAP, "%d");
+	rx_emsg[PORT0].header =
+		PD_HEADER(PD_CTRL_ACCEPT, 0, 0, 0, 0, 0, 0);
+	pe_set_flag(PORT0, PE_FLAGS_MSG_RECEIVED);
+	task_wait_event(10 * MSEC);
+
+	/* PE processed Accept, and progressed down the power role swap path */
+	TEST_EQ(get_state_pe(PORT0), PE_PRS_SRC_SNK_TRANSITION_TO_OFF, "%d");
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, char **argv)
 {
 	test_reset();
@@ -351,6 +409,7 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_extended_message_not_supported_snk);
 #endif
 	RUN_TEST(test_send_caps_error);
+	RUN_TEST(test_first_message_discard);
 
 	/* Do basic state machine validity checks last. */
 	RUN_TEST(test_pe_no_parent_cycles);
