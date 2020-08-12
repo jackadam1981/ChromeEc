@@ -21,14 +21,21 @@
 #include "usb_mux.h"
 #include "usb_charge.h"
 #include "usb_pd_tcpm.h"
+#include "usb_pd.h"
+#include "charge_state.h"
+#include "tcpm.h"
 #include "i2c.h"
 #include "driver/tcpm/fusb302.h"
 #include "power.h"
 #include "power_button.h"
+#include "lcd.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
-	schedule_deferred_pd_interrupt(0 /* port */);
+	schedule_deferred_pd_interrupt(0);
 }
 
 /******************************************************************************
@@ -118,6 +125,7 @@ USB_STREAM_CONFIG(forward_usb,
  */
 void button_event(enum gpio_signal signal)
 {
+	lcd_setCursor(0, 1);
 }
 
 void usb_gpio_tick(void)
@@ -152,6 +160,8 @@ const struct i2c_port_t i2c_ports[] = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /******************************************************************************
+ * PD
+ */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -161,7 +171,61 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		},
 		.drv = &fusb302_tcpm_drv,
 	},
-};*/
+};
+
+void board_reset_pd_mcu(void)
+{
+}
+
+int pd_snk_is_vbus_provided(int port)
+{
+	/* TODO(b:138352732): read IT8801 GPIO EN_USBC_CHARGE_L */
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
+static int force_discharge;
+
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	charge_ma = (charge_ma * 95) / 100;
+	charge_set_input_current_limit(MAX(charge_ma,
+			       CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
+}
+
+
+int board_set_active_charge_port(int charge_port)
+{
+	CPRINTS("New chg p%d", charge_port);
+	/* ignore all request when discharge mode is on */
+	if (force_discharge && charge_port != CHARGE_PORT_NONE)
+		return EC_SUCCESS;
+	switch (charge_port) {
+	case CHARGE_PORT_USB_C:
+		/* Don't charge from a source port */
+		if (board_vbus_source_enabled(charge_port))
+			return -1;
+		break;
+	case CHARGE_PORT_NONE:
+		/*
+		 * To ensure the fuel gauge (max17055) is always powered
+		 * even when battery is disconnected, keep VBAT rail on but
+		 * set the charging current to minimum.
+		 */
+		charger_set_current(CHARGER_SOLO, 0);
+		break;
+	default:
+		panic("Invalid charge port\n");
+		break;
+	}
+	return EC_SUCCESS;
+}
+
+static uint8_t vbus_en;
+int board_vbus_source_enabled(int port)
+{
+	return vbus_en;
+}
 
 /******************************************************************************
  * Initialize board.
@@ -173,6 +237,9 @@ static void board_init(void)
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 
+	lcd_init(20, 4, 0);
+	lcd_setCursor(0, 0);
+	lcd_printString("Hi LCD test test");
 	queue_init(&loopback_queue);
 	queue_init(&usart_to_usb);
 	queue_init(&usb_to_usart);

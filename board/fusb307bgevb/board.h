@@ -8,8 +8,13 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define VARIANT_KUKUI_BATTERY_SMART
+#define VARIANT_KUKUI_CHARGER_ISL9238
+
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
+
+/* #include "baseboard.h" */
 
 /* Enable USART1,3,4 and USB streams */
 #define CONFIG_STREAM_USART
@@ -30,6 +35,7 @@
 
 /* I2C master port connected to the TCPC */
 #define I2C_PORT_TCPC 1
+#define I2C_PORT_CHARGER 0
 
 /* LCD Configuration */
 #define LCD_SLAVE_ADDR 0x27
@@ -42,11 +48,19 @@
 #define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 
+#define CONFIG_USB_PD_TCPM_FUSB302
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_CHARGE_MANAGER
+#define CONFIG_CHARGER_INPUT_CURRENT 512
+#define CONFIG_CHARGER
+
 /* TCPC FUSB307B */
-#define PD_MAX_VOLTAGE_MV 6000
 #define PD_OPERATING_POWER_MW 30000
-#define PD_MAX_CURRENT_MA     2000
 #define PD_POWER_SUPPLY_TURN_ON_DELAY  160000  /* us */
+#define PD_MAX_VOLTAGE_MV 12850
+#define PD_MAX_CURRENT_MA     2000
+#define PD_MAX_POWER_MW       ((PD_MAX_VOLTAGE_MV * PD_MAX_CURRENT_MA) / 1000)
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 
 /* USB interface indexes (use define rather than enum to expand them) */
 #define USB_IFACE_STREAM  0
@@ -77,6 +91,19 @@
 
 #ifndef __ASSEMBLER__
 
+enum adc_channel {
+	/* Real ADC channels begin here */
+	ADC_BOARD_ID = 0,
+	ADC_EC_SKU_ID,
+	ADC_BATT_ID,
+	ADC_POGO_ADC_INT_L,
+	ADC_CH_COUNT
+};
+
+enum charge_port {
+	CHARGE_PORT_USB_C,
+};
+
 /* Timer selection */
 #define TIM_CLOCK32 2
 
@@ -93,6 +120,8 @@ enum usb_strings {
 
 	USB_STR_COUNT
 };
+
+void board_reset_pd_mcu(void);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
