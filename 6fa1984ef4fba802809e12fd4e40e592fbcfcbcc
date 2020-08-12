@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "2e22a4df_5dc8dd62",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-08-12T06:18:14Z",
+      "side": 1,
+      "message": "Volteer define the same, I think keeping",
+      "parentUuid": "c269a9f5_67784cc8",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 16
+      },
+      "revId": "6fa1984ef4fba802809e12fd4e40e592fbcfcbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "59a19783_842da828",
         "filename": "board/voxel/gpio.inc",
         "patchSetId": 3
@@ -82,6 +106,30 @@
       "writtenOn": "2020-08-11T15:29:32Z",
       "side": 1,
       "message": "This signal is an output only.  Delete this line.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 58
+      },
+      "revId": "6fa1984ef4fba802809e12fd4e40e592fbcfcbcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a11508bd_a5d511d4",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-08-12T06:18:14Z",
+      "side": 1,
+      "message": "yes, that\u0027s right, thanks",
+      "parentUuid": "59a19783_842da828",
       "range": {
         "startLine": 120,
         "startChar": 0,
