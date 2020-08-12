@@ -407,7 +407,7 @@ static void ccd_measure_sbu(void)
 	 * If so, and it persists for 500ms, we'll enable the SuzyQ in that
 	 * orientation.
 	 */
-	if ((!mux_en) && (sbu1 > USB_HIGH_MV) && (sbu2 < GND_MAX_MV)) {
+	if ((!mux_en) && (sbu1 > USB_HIGH_MV) && (sbu2 < sbu1)) {
 		/* Check flip connection polarity. */
 		if (last != MODE_SBU_FLIP) {
 			last = MODE_SBU_FLIP;
@@ -416,7 +416,7 @@ static void ccd_measure_sbu(void)
 		} else {
 			count++;
 		}
-	} else if ((!mux_en) && (sbu2 > USB_HIGH_MV) && (sbu1 < GND_MAX_MV)) {
+	} else if ((!mux_en) && (sbu2 > USB_HIGH_MV) && (sbu1 < sbu2)) {
 		/* Check direct connection polarity. */
 		if (last != MODE_SBU_CONNECT) {
 			last = MODE_SBU_CONNECT;
