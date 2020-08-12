@@ -67,6 +67,24 @@
 #define PE_FLAGS_FAST_ROLE_SWAP_ENABLED      BIT(20)
 /* Flag to note TCPC passed on FRS signal from port partner */
 #define PE_FLAGS_FAST_ROLE_SWAP_SIGNALED     BIT(21)
+/* TODO: POLICY decision: Triggers a DR SWAP attempt from UFP to DFP */
+#define PE_FLAGS_DR_SWAP_TO_DFP              BIT(22)
+/* Flag to trigger a message resend after receiving a WAIT from port partner */
+#define PE_FLAGS_WAITING_DR_SWAP             BIT(23)
+/* FLAG to track if port partner is dualrole capable */
+#define PE_FLAGS_PORT_PARTNER_IS_DUALROLE    BIT(24)
+/* FLAG is set when an AMS is initiated locally. ie. AP requested a PR_SWAP */
+#define PE_FLAGS_LOCALLY_INITIATED_AMS       BIT(25)
+/* Flag to note the first message sent in PE_SRC_READY and PE_SNK_READY */
+#define PE_FLAGS_FIRST_MSG                   BIT(26)
+/* Flag to continue a VDM request if it was interrupted */
+#define PE_FLAGS_VDM_REQUEST_CONTINUE        BIT(27)
+/* TODO: POLICY decision: Triggers a Vconn SWAP attempt to on */
+#define PE_FLAGS_VCONN_SWAP_TO_ON	     BIT(28)
+/* FLAG to track that VDM request to port partner timed out */
+#define PE_FLAGS_VDM_REQUEST_TIMEOUT	     BIT(29)
+/* FLAG to note message was discarded due to incoming message */
+#define PE_FLAGS_MSG_DISCARDED		     BIT(30)
 
 /* List of all Policy Engine level states */
 enum usb_pe_state {
