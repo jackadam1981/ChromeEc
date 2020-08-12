@@ -33,6 +33,24 @@
       "revId": "adbf228fad4b06fda5f4c672c32756cbcc916319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e125fc14_006b2812",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-08-12T22:13:11Z",
+      "side": 1,
+      "message": "You\u0027re right. We do see a low-speed device in host dmesg:\n[10178.045037] usb 3-2.3.3.1.1.2: new low-speed USB device number 51 using xhci_hcd\n[10178.124978] usb 3-2.3.3.1.1.2: device descriptor read/64, error -32\n[10178.312979] usb 3-2.3.3.1.1.2: device descriptor read/64, error -32\n[10178.421216] usb 3-2.3.3.1.1-port2: attempt power cycle\n\nBut then it power cycles and loops through this a few times. Then it would get by it once servod connects it the right way. Overall this is still a net gain for stability from what I have seen.\n\nIf this is \u0027bad\u0027 then I had another idea to fix this. I don\u0027t know if we can actually apply a pulldown though (i tried on the sbu adc pins). I\u0027ll submit a WIP CL for that.",
+      "parentUuid": "23cf0177_a92acf3c",
+      "revId": "adbf228fad4b06fda5f4c672c32756cbcc916319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
