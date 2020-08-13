@@ -34,6 +34,24 @@
       "revId": "20154bd0a948e0f7828fea62e721fa4dd1a4da03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42f3738f_443e10a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-08-13T22:52:31Z",
+      "side": 1,
+      "message": "I checked this out on Volteer; its possible Intel USB2 is somehow different so doesn\u0027t see this issue.\n\nD- does float but I didn\u0027t see the issue where USB2 glitches. See b:163425237.",
+      "parentUuid": "693a1048_6314dc05",
+      "revId": "20154bd0a948e0f7828fea62e721fa4dd1a4da03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
