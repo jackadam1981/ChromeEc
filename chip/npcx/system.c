@@ -736,7 +736,8 @@ void system_pre_init(void)
 
 #if defined(CHIP_FAMILY_NPCX7)
 #if defined(CHIP_VARIANT_NPCX7M6FB) || defined(CHIP_VARIANT_NPCX7M6FC) || \
-	defined(CHIP_VARIANT_NPCX7M7WB) || defined(CHIP_VARIANT_NPCX7M7WC)
+	defined(CHIP_VARIANT_NPCX7M7FC) || defined(CHIP_VARIANT_NPCX7M7WB) || \
+	defined(CHIP_VARIANT_NPCX7M7WC)
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_7) = 0xE7;
 #else
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_7) = 0x07;
@@ -850,6 +851,9 @@ const char *system_get_chip_name(void)
 	case 0x21:
 	case 0x29:
 		return "NPCX796F";
+	case 0x20:
+	case 0x28:
+		return "NPCX797F";
 	case 0x24:
 	case 0x2C:
 		return "NPCX797W";
@@ -884,7 +888,7 @@ const char *system_get_chip_revision(void)
 		*p++ = 'A';
 		break;
 	case 0x07:
-		if (chip_id == 0x21 || chip_id == 0x24)
+		if (chip_id == 0x20 || chip_id == 0x21 || chip_id == 0x24)
 			*p++ = 'B';
 		else
 			*p++ = 'C';

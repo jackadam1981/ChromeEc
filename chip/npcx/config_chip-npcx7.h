@@ -20,15 +20,16 @@
 
 /* The optional hardware features depend on chip variant */
 #if defined(CHIP_VARIANT_NPCX7M6F) || defined(CHIP_VARIANT_NPCX7M6FB) || \
-	defined(CHIP_VARIANT_NPCX7M6FC) || defined(CHIP_VARIANT_NPCX7M7WB) || \
-	defined(CHIP_VARIANT_NPCX7M7WC)
+	defined(CHIP_VARIANT_NPCX7M6FC) || defined(CHIP_VARIANT_NPCX7M7FC) || \
+	defined(CHIP_VARIANT_NPCX7M7WB) || defined(CHIP_VARIANT_NPCX7M7WC)
 #define NPCX_INT_FLASH_SUPPORT /* Internal flash support */
 #define NPCX_PSL_MODE_SUPPORT /* Power switch logic mode for ultra-low power */
 #define NPCX_EXT32K_OSC_SUPPORT /* External 32KHz crytal osc. input support */
 #endif
 
 #if defined(CHIP_VARIANT_NPCX7M6FB) || defined(CHIP_VARIANT_NPCX7M6FC) || \
-	defined(CHIP_VARIANT_NPCX7M7WB) || defined(CHIP_VARIANT_NPCX7M7WC)
+	defined(CHIP_VARIANT_NPCX7M7FC) || defined(CHIP_VARIANT_NPCX7M7WB) || \
+	defined(CHIP_VARIANT_NPCX7M7WC)
 #define NPCX_UART_FIFO_SUPPORT
 /* Number of UART modules. */
 #define NPCX_SECOND_UART
@@ -72,6 +73,19 @@
 #	define NPCX_PROGRAM_MEMORY_SIZE (192 * 1024)
 	/* program memory base address for Code RAM (0x100C0000 - 192KB) */
 #	define CONFIG_PROGRAM_MEMORY_BASE 0x10090000
+#	define CONFIG_RAM_BASE    0x200C0000 /* memory address of data ram */
+	/* 62 KB data RAM + 2 KB BT RAM size */
+#	define CONFIG_DATA_RAM_SIZE    0x00010000
+#elif defined(CHIP_VARIANT_NPCX7M7FC)
+	/*
+	 * 320KB program RAM but only 512K of Flash. After the boot header
+	 * is added to the RO image, a 256K image will not fit in the RO
+	 * section of flash. Because other code assumes that image size
+	 * is a multiple of Flash erase granularity, sacrifice a whole sector.
+	 */
+#	define NPCX_PROGRAM_MEMORY_SIZE (256 * 1024 - 0x1000)
+	/* program memory base address for Code RAM (0x10070000 - 320KB) */
+#	define CONFIG_PROGRAM_MEMORY_BASE 0x10070000
 #	define CONFIG_RAM_BASE    0x200C0000 /* memory address of data ram */
 	/* 62 KB data RAM + 2 KB BT RAM size */
 #	define CONFIG_DATA_RAM_SIZE    0x00010000
