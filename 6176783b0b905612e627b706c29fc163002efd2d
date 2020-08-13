@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2df6fe1c_f85e34c9",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-13T17:52:54Z",
+      "side": 1,
+      "message": "Can do",
+      "parentUuid": "74efdb62_d0209e76",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 42
+      },
+      "revId": "6176783b0b905612e627b706c29fc163002efd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "953afbea_79e59dc5",
         "filename": "test/usb_pe_drp.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-13T17:28:41Z",
       "side": 1,
       "message": "can we validate not on internal states, but how the PE statemachine interacted with its dependencies.\n\nWe really want to remove the assertions on internal state names. If we decide to refactor internal states into more or less stuper states, we want the unit test to still pass since they are asserting functionality instead of internal state transitions",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 406,
+        "endChar": 70
+      },
+      "revId": "6176783b0b905612e627b706c29fc163002efd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8257b8e0_17dfca81",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-13T17:52:54Z",
+      "side": 1,
+      "message": "I\u0027m honestly uncertain how to validate we continued with the current framework, without using states.\n\nSo possible testing AMSes: \n- PR swap: would need mock TC to interact with and observe we progressed to try power role swapping.  There are PS_RDY messages to observe later, but only after TC interactions.\n- VDM request: if message was sent and reply received, we fill in discovery info and return to ready.  So the observable result would be parsing our discovery information? \n- DR swap: would need mock TC layer to check new data role\n- Vconn swap: would need mock TC to change Vconn role in, with possible PS_RDY to check depending on roles we set up\n\nThe most straightforward one I can think of here would be the VDM request?  What are your thoughts?",
+      "parentUuid": "953afbea_79e59dc5",
       "range": {
         "startLine": 405,
         "startChar": 1,
