@@ -19,6 +19,7 @@
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "ln9310.h"
 #include "pi3usb9201.h"
 #include "power.h"
 #include "power_button.h"
@@ -145,6 +146,12 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
+/* LN9310 switchcap */
+const struct ln9310_config_t ln9310_config = {
+	.i2c_port = I2C_PORT_POWER,
+	.i2c_addr_flags = LN9310_I2C_ADDR_0_FLAGS,
+};
+
 /* Power Path Controller */
 struct ppc_config_t ppc_chips[] = {
 	{
@@ -229,6 +236,9 @@ static void board_init(void)
 
 	/* Enable interrupt for BMI160 sensor */
 	gpio_enable_interrupt(GPIO_ACCEL_GYRO_INT_L);
+
+	/* Enable interrupt for LN9310 switchcap */
+	gpio_enable_interrupt(GPIO_LN9310_INT);
 
 	/*
 	 * The H1 SBU line for CCD are behind PPC chip. The PPC internal FETs

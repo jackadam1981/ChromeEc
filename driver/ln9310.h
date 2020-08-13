@@ -1,0 +1,107 @@
+/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * LION Semiconductor LN-9210 switched capacitor converter.
+ */
+
+#ifndef __CROS_EC_LN9310_H
+#define __CROS_EC_LN9310_H
+
+/* I2C address */
+#define LN9310_I2C_ADDR_0_FLAGS		0x72
+#define LN9310_I2C_ADDR_1_FLAGS		0x73
+#define LN9310_I2C_ADDR_2_FLAGS		0x53
+#define LN9310_I2C_ADDR_3_FLAGS		0x54
+
+/* Registers */
+#define LN9310_REG_CHIP_ID		0x00
+#define LN9310_REG_INT1			0x01
+#define LN9310_REG_INT1_MSK		0x02
+#define LN9310_INT1_TIMER		BIT(0)
+#define LN9310_INT1_INFET		BIT(1)
+#define LN9310_INT1_TEMP		BIT(2)
+#define LN9310_INT1_REV_CURR		BIT(3)
+#define LN9310_INT1_MODE		BIT(4)
+#define LN9310_INT1_ALARM		BIT(5)
+#define LN9310_INT1_OK			BIT(6)
+#define LN9310_INT1_FAULT		BIT(7)
+
+#define LN9310_REG_SYSGPIO_MSK		0x03
+
+#define LN9310_REG_SYS_STS		0x04
+#define LN9310_SYS_STANDBY		BIT(0)
+#define LN9310_SYS_SWITCHING21_ACTIVE	BIT(1)
+#define LN9310_SYS_SWITCHING31_ACTIVE	BIT(2)
+#define LN9310_SYS_BYPASS_ACTIVE	BIT(3)
+#define LN9310_SYS_INFET_OK		BIT(4)
+#define LN9310_SYS_SC_OUT_SWITCH_OK	BIT(5)
+#define LN9310_SYS_INFET_OUT_SWITCH_OK	BIT(6)
+
+#define LN9310_REG_SAFETY_STS		0x05
+#define LN9310_REG_FAULT1_STS		0x06
+#define LN9310_REG_FAULT2_STS		0x07
+
+#define LN9310_REG_PWR_CTRL		0x1d
+#define LN9310_PWR_OP_MODE0		BIT(0)
+#define LN9310_PWR_OP_MODE1		BIT(1)
+#define LN9310_PWR_INFET_EN		BIT(2)
+#define LN9310_PWR_INFET_AUTO_MODE	BIT(3)
+#define LN9310_PWR_REVERSE_MODE		BIT(4)
+#define LN9310_PWR_VIN_OV_IGNORE	BIT(5)
+#define LN9310_PWR_OP_MANUAL_UPDATE	BIT(6)
+#define LN9310_PWR_FORCE_INSNS_EN	BIT(7)
+#define LN9310_PWR_OP_MODE_MASK		0x03
+#define LN9310_PWR_OP_MODE_DISABLED	0x00
+#define LN9310_PWR_OP_MODE_BYPASS	0x01
+#define LN9310_PWR_OP_MODE_SWITCH21	0x02
+#define LN9310_PWR_OP_MODE_SWITCH31	0x03
+
+#define LN9310_REG_SYS_CTRL		0x1e
+#define LN9310_REG_STARTUP_CTRL		0x1f
+#define LN9310_REG_IIN_CTRL		0x20
+#define LN9310_REG_VIN_CTRL		0x21
+#define LN9310_REG_TRACK_CTRL		0x22
+#define LN9310_REG_OCP_CTRL		0x23
+#define LN9310_REG_TIMER_CTRL		0x24
+#define LN9310_REG_RECOVERY_CTRL	0x25
+#define LN9310_REG_LB_CTRL		0x26
+#define LN9310_REG_SC_OUT_OV_CTRL	0x29
+#define LN9310_REG_STS_CTRL		0x2d
+
+#define LN9310_REG_MODE_CHANGE_CFG	0x2e
+#define LN9310_MODE_TM_VIN_OV_CFG0		BIT(0)
+#define LN9310_MODE_TM_VIN_OV_CFG1		BIT(1)
+#define LN9310_MODE_TM_VIN_OV_CFG2		BIT(2)
+#define LN9310_MODE_TM_SC_OUT_PRECHG_CFG0	BIT(3)
+#define LN9310_MODE_TM_SC_OUT_PRECHG_CFG1	BIT(4)
+#define LN9310_MODE_TM_TRACK_CFG0		BIT(5)
+#define LN9310_MODE_TM_TRACK_CFG1		BIT(6)
+#define LN9310_MODE_FORCE_MODE_CFG		BIT(7)
+#define LN9310_MODE_TM_TRACK_MASK		0x60
+#define LN9310_MODE_TM_TRACK_BYPASS		0x00
+#define LN9310_MODE_TM_TRACK_SWITCH21		0x20
+#define LN9310_MODE_TM_TRACK_SWITCH31		0x60
+#define LN9310_MODE_TM_SC_OUT_PRECHG_MASK	0x18
+#define LN9310_MODE_TM_SC_OUT_PRECHG_BYPASS	0x0
+#define LN9310_MODE_TM_SC_OUT_PRECHG_SWITCH21	0x08
+#define LN9310_MODE_TM_SC_OUT_PRECHG_SWITCH31	0x18
+
+#define LN9310_REG_SC_DITHER_CTRL	0x2f
+
+/* Define configuration of LN9310 part */
+struct ln9310_config_t {
+	const int i2c_port;
+	const int i2c_addr_flags;
+};
+
+/* Configuration struct defined at board level */
+extern const struct ln9310_config_t ln9310_config;
+
+/* Interrupt handler */
+void ln9310_interrupt(enum gpio_signal signal);
+
+/* Return the POWER_GOOD status */
+int ln9310_power_good(void);
+
+#endif /* __CROS_EC_LN9310_H */
