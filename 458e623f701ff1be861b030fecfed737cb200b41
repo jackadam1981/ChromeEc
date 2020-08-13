@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "fdd41b58_148a4c3e",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T15:54:59Z",
+      "side": 1,
+      "message": "I want to ensure that the DRP_TOGGLE_OFF is valid for when we enter the disconnected state. Added comment.",
+      "parentUuid": "0c70e49b_27a5e18f",
+      "revId": "458e623f701ff1be861b030fecfed737cb200b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9ce3855_875eb2d9",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 2
@@ -91,6 +109,30 @@
       "revId": "458e623f701ff1be861b030fecfed737cb200b41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60195c14_ff4ec2c3",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T15:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9ce3855_875eb2d9",
+      "range": {
+        "startLine": 686,
+        "startChar": 4,
+        "endLine": 686,
+        "endChar": 65
+      },
+      "revId": "458e623f701ff1be861b030fecfed737cb200b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
