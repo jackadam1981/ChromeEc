@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f979bf5_09f8fd25",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-13T15:09:31Z",
+      "side": 1,
+      "message": "Sure.  I think most boards enable CONFIG_USB_CHARGER, but it doesn\u0027t hurt :)",
+      "parentUuid": "9e1aa022_6ad77863",
+      "revId": "b447d3204f9ea16119a6faa7842725cf7dc8af74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50c3038f_20e6c62e",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "b447d3204f9ea16119a6faa7842725cf7dc8af74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2574078_e571e3e9",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-13T15:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c3038f_20e6c62e",
+      "revId": "b447d3204f9ea16119a6faa7842725cf7dc8af74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
