@@ -87,6 +87,10 @@ __ec_intc:
 
 .align 2
 __irq_isr:
+        csrw mscratch, ra
+        jal irq_begin
+        csrr ra, mscratch
+
         /* save t2 to scratch register */
         csrw mscratch, t2
         /* save registers (sp, ra, t0, and t1) state at exception entry */
