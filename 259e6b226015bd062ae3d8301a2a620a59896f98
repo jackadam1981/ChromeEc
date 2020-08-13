@@ -33,6 +33,24 @@
       "revId": "259e6b226015bd062ae3d8301a2a620a59896f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af82941_3cf17783",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4227,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-13T23:00:50Z",
+      "side": 1,
+      "message": "See patchset #5 was closer to your suggestion.  One thing I didn\u0027t like about #undef CONFIG_SYV682X_HV_ILIM in config.h is that it\u0027s not obvious that this option needs to be set to a value, while most config options are booleans.\n\nHaving config.h explicitly pick a default makes is clearer what is expected in the board.h override.",
+      "parentUuid": "e2380e94_06e50209",
+      "revId": "259e6b226015bd062ae3d8301a2a620a59896f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
