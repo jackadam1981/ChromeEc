@@ -93,6 +93,30 @@
       "revId": "6176783b0b905612e627b706c29fc163002efd2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08ac183c_15b968ca",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T17:57:45Z",
+      "side": 1,
+      "message": "I think investing in the TC mock (src/platform/ec/common/mock/usb_tc_sm_mock.c) will be the most beneficial. Any of those methods sounds good to me for verification though.\n\nIf the TC mock was flesh out more, I think the PR/DR/Vconn swap would be pretty straight forward, but VDM request method works too. Up to you ;)",
+      "parentUuid": "8257b8e0_17dfca81",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 406,
+        "endChar": 70
+      },
+      "revId": "6176783b0b905612e627b706c29fc163002efd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
