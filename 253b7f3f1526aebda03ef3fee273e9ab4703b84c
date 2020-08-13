@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9f3b1ab_2b36c3f6",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-13T15:14:43Z",
+      "side": 1,
+      "message": "Add a TODO for b/163511546 to move this into a sink enable function",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 946,
+        "endChar": 4
+      },
+      "revId": "253b7f3f1526aebda03ef3fee273e9ab4703b84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79388953_e5c44a24",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-13T15:14:43Z",
+      "side": 1,
+      "message": "Removing the extra writes, sourcing out of the MB works for me :)",
+      "range": {
+        "startLine": 966,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 0
+      },
+      "revId": "253b7f3f1526aebda03ef3fee273e9ab4703b84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
