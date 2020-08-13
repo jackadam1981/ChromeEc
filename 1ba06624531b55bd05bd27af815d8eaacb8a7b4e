@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "220a29ce_1e505cbd",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-13T16:03:12Z",
+      "side": 1,
+      "message": "Hi Keith, may I know why we don\u0027t initialize this ILIM out of this IF-ELSE? It seems to me that no matter it is sink or source role now, we can just initialize the HV ILIM all the way?",
+      "range": {
+        "startLine": 624,
+        "startChar": 4,
+        "endLine": 624,
+        "endChar": 26
+      },
+      "revId": "1ba06624531b55bd05bd27af815d8eaacb8a7b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
