@@ -22,6 +22,30 @@
       "revId": "454b5f685849003b3dea31d36f9e821e6c54ce26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670a554d_b442ce08",
+        "filename": "extra/i2c_pseudo/i2c-pseudo.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-13T15:43:44Z",
+      "side": 0,
+      "message": "Yes.",
+      "parentUuid": "a6008953_108080ca",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 34
+      },
+      "revId": "454b5f685849003b3dea31d36f9e821e6c54ce26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
