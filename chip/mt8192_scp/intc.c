@@ -147,6 +147,70 @@ static struct {
 };
 BUILD_ASSERT(ARRAY_SIZE(irqs) == SCP_INTC_IRQ_COUNT);
 
+#include "console.h"
+#include "csr.h"
+#define READ_CSR_RAW(reg) ({ \
+		unsigned long __tmp; \
+		asm volatile ("csrr %0, " #reg : "=r"(__tmp)); \
+		__tmp; \
+		})
+
+uint32_t saved_csr_vic_micause;
+uint32_t saved_core0_intc_irq_raw_sta0;
+
+void dump_intc_and_gvic(void)
+{
+	unsigned int group;
+	int word;
+
+	ccprints("mie=%x", (unsigned int)READ_CSR_RAW(mie));
+	ccprints("mip=%x", (unsigned int)READ_CSR_RAW(mip));
+	ccprints("mcause=%x", (unsigned int)READ_CSR_RAW(mcause));
+	cflush();
+
+	ccprints("SCP_CORE0_R_GPR0=%x", SCP_CORE0_R_GPR0);
+	ccprints("SCP_CORE0_R_GPR1=%x", SCP_CORE0_R_GPR1);
+	ccprints("SCP_CORE0_R_GPR2=%x", SCP_CORE0_R_GPR2);
+	//ccprints("SCP_CORE0_R_GPR3=%x", SCP_CORE0_R_GPR3);
+	ccprints("saved_csr_vic_micause=%x", saved_csr_vic_micause);
+	ccprints("saved_core0_intc_irq_raw_sta0=%x", saved_core0_intc_irq_raw_sta0);
+	cflush();
+
+	ccprints("SCP_CORE0_INTC_IRQ_OUT=%x", SCP_CORE0_INTC_IRQ_OUT);
+	ccprints("CSR_VIC_MICAUSE=%x", read_csr(CSR_VIC_MICAUSE));
+	ccprints("CSR_VIC_MIPEND_G0=%x", read_csr(CSR_VIC_MIPEND_G0));
+	ccprints("CSR_VIC_MIMASK_G0=%x", read_csr(CSR_VIC_MIMASK_G0));
+	ccprints("CSR_VIC_MIEMASK_G0=%x", read_csr(CSR_VIC_MIEMASK_G0));
+	cflush();
+
+	ccprints("CORE0_INTC_IRQ_RAW_STA0=%x", REG32(0x70032000));
+	ccprints("CORE0_INTC_IRQ_RAW_STA1=%x", REG32(0x70032004));
+	ccprints("CORE0_INTC_IRQ_RAW_STA2=%x", REG32(0x70032008));
+	cflush();
+
+	for (group = 7; group <= 7; ++group) {
+		for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word)
+			ccprints("SCP_CORE0_INTC_IRQ_STA(%d)=%x",
+				 word, SCP_CORE0_INTC_IRQ_STA(word));
+
+		for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word)
+			ccprints("SCP_CORE0_INTC_IRQ_EN(%d)=%x",
+				 word, SCP_CORE0_INTC_IRQ_EN(word));
+		cflush();
+
+		for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word)
+			ccprints("SCP_CORE0_INTC_IRQ_GRP(%d, %d)=%x",
+				 group, word,
+				 SCP_CORE0_INTC_IRQ_GRP(group, word));
+
+		for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word)
+			ccprints("SCP_CORE0_INTC_IRQ_GRP_STA(%d, %d)=%x",
+				 group, word,
+				 SCP_CORE0_INTC_IRQ_GRP_STA(group, word));
+		cflush();
+	}
+}
+
 /*
  * Find current interrupt source.
  *
@@ -173,6 +237,7 @@ int chip_get_ec_int(void)
 	}
 
 error:
+	dump_intc_and_gvic();
 	/* unreachable, SCP crashes and dumps registers after returning */
 	return -1;
 }
@@ -182,6 +247,7 @@ int chip_get_intc_group(int irq)
 	return irqs[irq].group;
 }
 
+#include "task.h"
 void chip_enable_irq(int irq)
 {
 	unsigned int word, group, mask;
@@ -200,6 +266,8 @@ void chip_enable_irq(int irq)
 	SCP_CORE0_INTC_IRQ_EN(word) |= mask;
 }
 
+#include "csr.h"
+#include "timer.h"
 void chip_disable_irq(int irq)
 {
 	unsigned int word, group, mask;
@@ -208,12 +276,26 @@ void chip_disable_irq(int irq)
 	group = irqs[irq].group;
 	mask = BIT(SCP_INTC_BIT(irq));
 
+#if 1
+	clear_csr(CSR_MCTREN, CSR_MCTREN_VIC);
+#endif
+
 	/* disable interrupt */
 	SCP_CORE0_INTC_IRQ_EN(word) &= ~mask;
 	/* clear group setting */
 	SCP_CORE0_INTC_IRQ_GRP(group, word) &= ~mask;
 	/* clear wakeup source setting */
 	SCP_CORE0_INTC_SLP_WAKE_EN(word) &= ~mask;
+
+#if 1
+	asm volatile ("fence");
+	set_csr(CSR_MCTREN, CSR_MCTREN_VIC);
+
+	SCP_CORE0_INTC_IRQ_CLR_TRG = 0x7fff;
+	asm volatile ("fence");
+	SCP_CORE0_INTC_IRQ_CLR_TRG = 0;
+	asm volatile ("fence");
+#endif
 }
 
 void chip_clear_pending_irq(int irq)
@@ -236,6 +318,8 @@ void chip_init_irqs(void)
 {
 	unsigned int word, group;
 
+	//SCP_CORE0_R_GPR0 = REG32(0x70032000);
+
 	/* INTC init */
 	/* clear enable and wakeup settings */
 	for (word = 0; word < SCP_INTC_GRP_LEN; ++word) {
@@ -251,6 +335,8 @@ void chip_init_irqs(void)
 	SCP_CORE0_INTC_IRQ_POL(1) = SCP_INTC_IRQ_POL1;
 	SCP_CORE0_INTC_IRQ_POL(2) = SCP_INTC_IRQ_POL2;
 
+	//SCP_GIPC_IN_CLR = GIPC_IN(0);
+
 	/* GVIC init */
 	/* enable all groups as interrupt sources */
 	write_csr(CSR_VIC_MIMASK_G0, 0xffffffff);
@@ -259,6 +345,23 @@ void chip_init_irqs(void)
 	/* enable all groups as wakeup sources */
 	write_csr(CSR_VIC_MIWAKEUP_G0, 0xffffffff);
 
+	//asm volatile ("fence");
+
 	/* enable GVIC */
 	set_csr(CSR_MCTREN, CSR_MCTREN_VIC);
+}
+
+void irq_begin(void)
+{
+	asm volatile ("addi sp, sp, -4*2");
+	asm volatile ("sw a4, 0(sp)");
+	asm volatile ("sw a5, 1*4(sp)");
+
+	SCP_CORE0_R_GPR0 = REG32(0x70032000);
+	SCP_CORE0_R_GPR1 = read_csr(CSR_VIC_MICAUSE);
+	//ccprints("%s", __func__);
+
+	asm volatile ("lw a4, 0(sp)");
+	asm volatile ("lw a5, 1*4(sp)");
+	asm volatile ("addi sp, sp, 4*2");
 }

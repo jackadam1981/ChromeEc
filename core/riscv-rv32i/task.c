@@ -14,6 +14,8 @@
 #include "timer.h"
 #include "util.h"
 
+#include "registers.h"
+
 typedef struct {
 	/*
 	 * Note that sp must be the first element in the task struct
@@ -400,6 +402,10 @@ static uint32_t __ram_code __wait_evt(int timeout_us, task_id_t resched)
 	while (!(evt = atomic_read_clear(&tsk->events))) {
 		/* Remove ourself and get the next task in the scheduler */
 		__schedule(1, resched, 0);
+
+		//SCP_CORE0_R_GPR1 = REG32(0x70032000);
+		//asm volatile ("fence");
+
 		resched = TASK_ID_IDLE;
 	}
 	if (timeout_us > 0) {
@@ -517,6 +523,7 @@ void __ram_code task_disable_irq(int irq)
 
 	interrupt_disable();
 	chip_disable_irq(irq);
+	SCP_CORE0_R_GPR2 = REG32(0x70032000);
 	set_int_mask(int_mask);
 }
 

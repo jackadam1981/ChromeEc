@@ -14,6 +14,8 @@
 #include "task.h"
 #include "util.h"
 
+#include "csr.h"
+
 #define CPRINTF(format, args...) cprintf(CC_IPI, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
 
@@ -30,8 +32,13 @@ static uint32_t disable_irq_count;
 
 void ipi_disable_irq(void)
 {
-	if (atomic_inc(&disable_irq_count, 1) == 0)
+	if (atomic_inc(&disable_irq_count, 1) == 0) {
+#if 0
+		clear_csr(CSR_VIC_MIMASK_G0, BIT(7));
+#else
 		task_disable_irq(SCP_IRQ_GIPC_IN0);
+#endif
+	}
 }
 
 void ipi_enable_irq(void)
@@ -39,7 +46,11 @@ void ipi_enable_irq(void)
 	if (atomic_dec(&disable_irq_count, 1) == 1) {
 		int pending = SCP_GIPC_IN_SET;
 
+#if 0
+		set_csr(CSR_VIC_MIMASK_G0, BIT(7));
+#else
 		task_enable_irq(SCP_IRQ_GIPC_IN0);
+#endif
 
 		if (init_done && pending)
 			task_trigger_irq(SCP_IRQ_GIPC_IN0);
@@ -157,6 +168,7 @@ static void ipi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, ipi_init, HOOK_PRIO_DEFAULT);
 
+static int ipi_count;
 static void ipi_handler(void)
 {
 	if (ipi_recv_buf->id >= IPI_COUNT) {
@@ -164,7 +176,7 @@ static void ipi_handler(void)
 		return;
 	}
 
-	CPRINTS("IPI %d", ipi_recv_buf->id);
+	CPRINTS("IPI %d, ipi_count = %d", ipi_recv_buf->id, ipi_count);
 
 	ipi_handler_table[ipi_recv_buf->id](
 		ipi_recv_buf->id, ipi_recv_buf->buffer, ipi_recv_buf->len);
@@ -173,6 +185,8 @@ static void ipi_handler(void)
 static void irq_group7_handler(void)
 {
 	extern volatile int ec_int;
+
+	CPRINTS("ipi_count = %d", ++ipi_count);
 
 	if (SCP_GIPC_IN_SET & GIPC_IN(0)) {
 		ipi_handler();
