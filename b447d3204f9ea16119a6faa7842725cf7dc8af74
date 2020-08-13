@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e1aa022_6ad77863",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-13T04:10:49Z",
+      "side": 1,
+      "message": "Maybe we should guard this `if (IS_ENABLED(CONFIG_USB_CHARGER))`",
+      "revId": "b447d3204f9ea16119a6faa7842725cf7dc8af74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50c3038f_20e6c62e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-13T04:10:49Z",
+      "side": 1,
+      "message": "Here too",
+      "revId": "b447d3204f9ea16119a6faa7842725cf7dc8af74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
