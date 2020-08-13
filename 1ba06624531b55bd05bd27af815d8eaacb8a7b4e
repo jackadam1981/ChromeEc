@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "7cfb1d61_704a6fb7",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-13T23:00:26Z",
+      "side": 1,
+      "message": "the configured",
+      "range": {
+        "startLine": 300,
+        "startChar": 31,
+        "endLine": 300,
+        "endChar": 45
+      },
+      "revId": "1ba06624531b55bd05bd27af815d8eaacb8a7b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a626a9_778d7596",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-13T23:00:26Z",
+      "side": 1,
+      "message": "no (parens) needed here.",
+      "range": {
+        "startLine": 301,
+        "startChar": 12,
+        "endLine": 301,
+        "endChar": 65
+      },
+      "revId": "1ba06624531b55bd05bd27af815d8eaacb8a7b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "220a29ce_1e505cbd",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 6
