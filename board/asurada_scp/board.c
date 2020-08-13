@@ -49,17 +49,25 @@ DECLARE_IPI(10, x, 0);
 
 void x_task(void *u)
 {
+#if 0
 	struct q_msg qmsg;
 	size_t size;
+#endif
 
 	while (1) {
+#if 1
 		ipi_disable_irq();
-		size = queue_remove_unit(&q, &qmsg);
-		ipi_enable_irq();
+#else
+		interrupt_disable();
+#endif
 
-		if (!size)
-			task_wait_event(-1);
-		else
-			ipi_send(qmsg.ipi_id, 0, 0, 0);
+		udelay(100000);
+
+#if 1
+		ipi_enable_irq();
+#else
+		interrupt_enable();
+#endif
+		task_wait_event(100000);
 	}
 }

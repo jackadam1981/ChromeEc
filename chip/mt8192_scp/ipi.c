@@ -14,6 +14,8 @@
 #include "task.h"
 #include "util.h"
 
+#include "csr.h"
+
 #define CPRINTF(format, args...) cprintf(CC_IPI, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
 
@@ -26,23 +28,25 @@ static struct ipc_shared_obj *const ipi_recv_buf =
 	(struct ipc_shared_obj *)(CONFIG_IPC_SHARED_OBJ_ADDR +
 				  sizeof(struct ipc_shared_obj));
 
-static uint32_t disable_irq_count;
+static uint32_t disable_irq_count, saved_int_mask;
 
 void ipi_disable_irq(void)
 {
-	if (atomic_inc(&disable_irq_count, 1) == 0)
-		task_disable_irq(SCP_IRQ_GIPC_IN0);
+	if (atomic_inc(&disable_irq_count, 1) == 0) {
+		saved_int_mask = get_int_mask();
+		interrupt_disable();
+	}
 }
 
 void ipi_enable_irq(void)
 {
 	if (atomic_dec(&disable_irq_count, 1) == 1) {
-		int pending = SCP_GIPC_IN_SET;
+		//int pending = SCP_GIPC_IN_SET;
 
-		task_enable_irq(SCP_IRQ_GIPC_IN0);
+		set_int_mask(saved_int_mask);
 
-		if (init_done && pending)
-			task_trigger_irq(SCP_IRQ_GIPC_IN0);
+		//if (init_done && pending)
+		//	task_trigger_irq(SCP_IRQ_GIPC_IN0);
 	}
 }
 
@@ -79,7 +83,6 @@ int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
 		return EC_ERROR_INVAL;
 	}
 
-	ipi_disable_irq();
 	mutex_lock(&ipi_lock);
 
 	if (ipi_is_busy()) {
@@ -114,7 +117,6 @@ int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
 	ret = EC_SUCCESS;
 error:
 	mutex_unlock(&ipi_lock);
-	ipi_enable_irq();
 	return ret;
 }
 
@@ -143,6 +145,7 @@ static void ipi_enable_deferred(void)
 	hostcmd_init();
 #endif
 
+	SCP_GIPC_IN_CLR = GIPC_IN(0);
 	task_enable_irq(SCP_IRQ_GIPC_IN0);
 }
 DECLARE_DEFERRED(ipi_enable_deferred);
@@ -157,6 +160,7 @@ static void ipi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, ipi_init, HOOK_PRIO_DEFAULT);
 
+static int ipi_count;
 static void ipi_handler(void)
 {
 	if (ipi_recv_buf->id >= IPI_COUNT) {
@@ -164,7 +168,7 @@ static void ipi_handler(void)
 		return;
 	}
 
-	CPRINTS("IPI %d", ipi_recv_buf->id);
+	CPRINTS("IPI %d, ipi_count = %d", ipi_recv_buf->id, ipi_count);
 
 	ipi_handler_table[ipi_recv_buf->id](
 		ipi_recv_buf->id, ipi_recv_buf->buffer, ipi_recv_buf->len);
@@ -173,6 +177,8 @@ static void ipi_handler(void)
 static void irq_group7_handler(void)
 {
 	extern volatile int ec_int;
+
+	CPRINTS("ipi_count = %d", ++ipi_count);
 
 	if (SCP_GIPC_IN_SET & GIPC_IN(0)) {
 		ipi_handler();

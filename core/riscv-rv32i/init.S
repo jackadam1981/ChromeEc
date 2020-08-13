@@ -87,6 +87,25 @@ __ec_intc:
 
 .align 2
 __irq_isr:
+#if 0
+        jal irq_begin
+#else
+        sw t1, -1*4(sp)
+        sw t2, -2*4(sp)
+
+        lui t2, 0x70032
+        lw t1, 0(t2)	/* 0x10732000, CORE0_INTC_IRQ_RAW_STA0 */
+        la t2, saved_core0_intc_irq_raw_sta0
+        sw t1, 0(t2)
+
+        la t1, saved_csr_vic_micause
+        csrr t2, 0x5c0	/* CSR_VIC_MICAUSE */
+        sw t2, 0(t1)
+
+        lw t1, -1*4(sp)
+        lw t2, -2*4(sp)
+#endif
+
         /* save t2 to scratch register */
         csrw mscratch, t2
         /* save registers (sp, ra, t0, and t1) state at exception entry */
@@ -164,6 +183,7 @@ __irq_isr:
          */
         bltu sp, t0, __sp_16byte_aligned
         mv sp, t0
+
 __sp_16byte_aligned:
         /*
          * This ensures sp is 16-byte aligned. This only applies to when there
