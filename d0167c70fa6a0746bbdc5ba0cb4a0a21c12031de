@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9c39320_60fa853f",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-13T20:08:45Z",
+      "side": 1,
+      "message": "This signal is not connected on the schematic.\n\nChing-Kang, what is the recommended setting for the INT2 signal when it is not connected?  Should this be an input or an output?",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 43
+      },
+      "revId": "d0167c70fa6a0746bbdc5ba0cb4a0a21c12031de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b28c0434_88bd5770",
+        "filename": "board/voxel/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-13T20:08:45Z",
+      "side": 1,
+      "message": "BMI160",
+      "range": {
+        "startLine": 125,
+        "startChar": 29,
+        "endLine": 125,
+        "endChar": 35
+      },
+      "revId": "d0167c70fa6a0746bbdc5ba0cb4a0a21c12031de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
