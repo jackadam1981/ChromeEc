@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "e9667abd_86c379b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-08-13T13:09:03Z",
+      "side": 1,
+      "message": "There is a bug with TCPMv2+TCPMv2 connections.\n\nThis delay may be causing infinite flapping due to TCPMv2 response lagtime when PD is initiated.\n\nPlease see scope trace in associated bug.",
+      "revId": "458e623f701ff1be861b030fecfed737cb200b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c70e49b_27a5e18f",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 2
