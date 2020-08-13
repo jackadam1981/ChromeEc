@@ -28,6 +28,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "lid_switch.h"
+#include "ln9310.h"
 #include "power.h"
 #include "power_button.h"
 #include "system.h"
@@ -318,7 +319,7 @@ static int wait_switchcap_power_good(int enable)
 
 	poll_deadline = get_time();
 	poll_deadline.val += SWITCHCAP_PG_CHECK_TIMEOUT;
-	while (enable != gpio_get_level(GPIO_DA9313_GPIO0) &&
+	while (enable != ln9310_power_good() &&
 	       get_time().val < poll_deadline.val) {
 		usleep(SWITCHCAP_PG_CHECK_WAIT);
 	}
@@ -327,7 +328,7 @@ static int wait_switchcap_power_good(int enable)
 	 * Check the timeout case. Just show a message. More check later
 	 * will switch the power state.
 	 */
-	if (enable != gpio_get_level(GPIO_DA9313_GPIO0)) {
+	if (enable != ln9310_power_good()) {
 		if (enable)
 			CPRINTS("SWITCHCAP NO POWER GOOD!");
 		else
@@ -344,7 +345,7 @@ static int wait_switchcap_power_good(int enable)
  */
 static int is_system_powered(void)
 {
-	return gpio_get_level(GPIO_SWITCHCAP_ON);
+	return !gpio_get_level(GPIO_SWITCHCAP_ON);
 }
 
 /**
@@ -407,7 +408,7 @@ static int wait_pmic_pwron(int enable, unsigned int timeout)
  */
 static void set_system_power_no_check(int enable)
 {
-	gpio_set_level(GPIO_SWITCHCAP_ON, enable);
+	gpio_set_level(GPIO_SWITCHCAP_ON, !enable);
 }
 
 /**
