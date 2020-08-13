@@ -34,6 +34,24 @@
       "revId": "41dd1f0056e5f90f7ac648c72b51255c24f8dba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1f158c4_55bba002",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T18:20:13Z",
+      "side": 1,
+      "message": "So we should add some check in include/config.h that make sure there is activity sensor defined in the enum sensor_id in board.h when the CONFIG_GESTURE_HOST_DETECTION is present?",
+      "parentUuid": "d8c880da_0763a67e",
+      "revId": "41dd1f0056e5f90f7ac648c72b51255c24f8dba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
