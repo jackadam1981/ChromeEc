@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "cd1198e5_2f2899be",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T16:21:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ce31ccc_d70077a1",
+      "range": {
+        "startLine": 442,
+        "startChar": 29,
+        "endLine": 442,
+        "endChar": 30
+      },
+      "revId": "d87262f6ee133cb50cb5bafedb50f9f23848d470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bcf76b1_8d9d9958",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -62,6 +86,30 @@
       "revId": "d87262f6ee133cb50cb5bafedb50f9f23848d470",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ab0bbf9_da9533d1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T16:21:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bcf76b1_8d9d9958",
+      "range": {
+        "startLine": 444,
+        "startChar": 29,
+        "endLine": 444,
+        "endChar": 30
+      },
+      "revId": "d87262f6ee133cb50cb5bafedb50f9f23848d470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "4dd7a2c9_40f6c4a8",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T16:21:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a966e1cf_1a7478c8",
+      "range": {
+        "startLine": 108,
+        "startChar": 67,
+        "endLine": 108,
+        "endChar": 77
+      },
+      "revId": "d87262f6ee133cb50cb5bafedb50f9f23848d470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e214c7da_6624ad69",
         "filename": "include/usb_sm.h",
         "patchSetId": 1
@@ -108,6 +180,30 @@
       "revId": "d87262f6ee133cb50cb5bafedb50f9f23848d470",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37bb2de5_f17deeda",
+        "filename": "include/usb_sm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T16:21:32Z",
+      "side": 1,
+      "message": "I wanted the line length to match, but I don\u0027t think that helps with readability.\n\nI changed everything to GEN_NOT_SUPPORTED; if I could also re-define the state in this macro then I would want to call it STATE_NOT_SUPPORTED",
+      "parentUuid": "e214c7da_6624ad69",
+      "range": {
+        "startLine": 109,
+        "startChar": 8,
+        "endLine": 109,
+        "endChar": 15
+      },
+      "revId": "d87262f6ee133cb50cb5bafedb50f9f23848d470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
