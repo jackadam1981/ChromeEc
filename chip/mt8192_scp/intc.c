@@ -147,6 +147,80 @@ static struct {
 };
 BUILD_ASSERT(ARRAY_SIZE(irqs) == SCP_INTC_IRQ_COUNT);
 
+#include "console.h"
+#include "csr.h"
+#define READ_CSR_RAW(reg) ({ \
+		unsigned long __tmp; \
+		asm volatile ("csrr %0, " #reg : "=r"(__tmp)); \
+		__tmp; \
+		})
+
+uint32_t saved_csr_vic_micause;
+uint32_t saved_core0_intc_irq_raw_sta0;
+
+void irq_begin(void)
+{
+	asm volatile ("addi sp, sp, -4*2");
+	asm volatile ("sw a4, 0(sp)");
+	asm volatile ("sw a5, 1*4(sp)");
+
+	saved_core0_intc_irq_raw_sta0 = REG32(0x70032000);
+	saved_csr_vic_micause = read_csr(CSR_VIC_MICAUSE);
+
+	asm volatile ("lw a4, 0(sp)");
+	asm volatile ("lw a5, 1*4(sp)");
+	asm volatile ("addi sp, sp, 4*2");
+}
+
+void dump_intc_and_gvic(void)
+{
+	unsigned int group;
+	int word;
+
+	ccprints("mie=%x", (unsigned int)READ_CSR_RAW(mie));
+	ccprints("mip=%x", (unsigned int)READ_CSR_RAW(mip));
+	ccprints("mcause=%x", (unsigned int)READ_CSR_RAW(mcause));
+	cflush();
+
+	ccprints("saved_csr_vic_micause=%x", saved_csr_vic_micause);
+	ccprints("saved_core0_intc_irq_raw_sta0=%x", saved_core0_intc_irq_raw_sta0);
+	cflush();
+
+	ccprints("SCP_CORE0_INTC_IRQ_OUT=%x", SCP_CORE0_INTC_IRQ_OUT);
+	ccprints("CSR_VIC_MICAUSE=%x", read_csr(CSR_VIC_MICAUSE));
+	ccprints("CSR_VIC_MIPEND_G0=%x", read_csr(CSR_VIC_MIPEND_G0));
+	ccprints("CSR_VIC_MIMASK_G0=%x", read_csr(CSR_VIC_MIMASK_G0));
+	ccprints("CSR_VIC_MIEMASK_G0=%x", read_csr(CSR_VIC_MIEMASK_G0));
+	cflush();
+
+	ccprints("CORE0_INTC_IRQ_RAW_STA0=%x", REG32(0x70032000));
+	ccprints("CORE0_INTC_IRQ_RAW_STA1=%x", REG32(0x70032004));
+	ccprints("CORE0_INTC_IRQ_RAW_STA2=%x", REG32(0x70032008));
+	cflush();
+
+	for (group = 7; group <= 7; ++group) {
+		for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word)
+			ccprints("SCP_CORE0_INTC_IRQ_STA(%d)=%x",
+				 word, SCP_CORE0_INTC_IRQ_STA(word));
+
+		for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word)
+			ccprints("SCP_CORE0_INTC_IRQ_EN(%d)=%x",
+				 word, SCP_CORE0_INTC_IRQ_EN(word));
+		cflush();
+
+		for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word)
+			ccprints("SCP_CORE0_INTC_IRQ_GRP(%d, %d)=%x",
+				 group, word,
+				 SCP_CORE0_INTC_IRQ_GRP(group, word));
+
+		for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word)
+			ccprints("SCP_CORE0_INTC_IRQ_GRP_STA(%d, %d)=%x",
+				 group, word,
+				 SCP_CORE0_INTC_IRQ_GRP_STA(group, word));
+		cflush();
+	}
+}
+
 /*
  * Find current interrupt source.
  *
@@ -173,6 +247,7 @@ int chip_get_ec_int(void)
 	}
 
 error:
+	dump_intc_and_gvic();
 	/* unreachable, SCP crashes and dumps registers after returning */
 	return -1;
 }
