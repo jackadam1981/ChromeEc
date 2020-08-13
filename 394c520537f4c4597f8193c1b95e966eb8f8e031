@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69de9d3a_485c57a2",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-13T23:12:54Z",
+      "side": 1,
+      "message": "it\u0027s just a buffer... static is not a requirement.",
+      "range": {
+        "startLine": 384,
+        "startChar": 60,
+        "endLine": 384,
+        "endChar": 66
+      },
+      "revId": "394c520537f4c4597f8193c1b95e966eb8f8e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
