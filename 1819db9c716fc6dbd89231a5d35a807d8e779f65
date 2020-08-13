@@ -51,6 +51,24 @@
       "revId": "1819db9c716fc6dbd89231a5d35a807d8e779f65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b173c3f0_c848ccda",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-08-13T15:57:28Z",
+      "side": 1,
+      "message": "There isn\u0027t really a general rule; it\u0027s kind of subjective, so take this with an appropriately-sized grain of salt.\n\nIn this case, I see two scenarios documented in the comments, and a unit test should really only test one scenarios. Plus both of them start with the same three lines of code to get the port into a particular starting state. Testing a new scenario from the same starting state just feels like it should be its own test case.",
+      "parentUuid": "c201e4c6_209a9b08",
+      "revId": "1819db9c716fc6dbd89231a5d35a807d8e779f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
