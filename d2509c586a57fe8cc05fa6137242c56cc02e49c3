@@ -87,6 +87,24 @@
       "revId": "d2509c586a57fe8cc05fa6137242c56cc02e49c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e23d474_478e2f03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-13T13:13:06Z",
+      "side": 1,
+      "message": "Yes, updated the test/cbi.c and pass the `make runhosttests -j`",
+      "parentUuid": "3f019d08_0cc42fa8",
+      "revId": "d2509c586a57fe8cc05fa6137242c56cc02e49c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
