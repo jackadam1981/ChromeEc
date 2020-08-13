@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e4350ce_925e3dbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T17:21:57Z",
+      "side": 1,
+      "message": "Paul, we want to remove this file. When we re-tool the tests to assert on API boundaries, we won\u0027t need this copy of flags and internal state names.",
+      "revId": "f41f66ca523afa1aedbc9a7d7c1cb877ca9019cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
