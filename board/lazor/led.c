@@ -122,7 +122,8 @@ static void board_led_set_battery(void)
 		break;
 	}
 
-	led_set_color(color);
+	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
+		led_set_color(color);
 }
 
 /* Called by hook task every TICK */
