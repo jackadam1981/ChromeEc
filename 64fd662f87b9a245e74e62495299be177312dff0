@@ -22,6 +22,30 @@
       "revId": "64fd662f87b9a245e74e62495299be177312dff0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018d037c_a6de940b",
+        "filename": "board/voxel/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-08-13T03:06:43Z",
+      "side": 1,
+      "message": "ok, the proto board ,those pin will be unused, bute EVT will change one pin GPIOC0\nto EC_PCH_DSW_PWEROK",
+      "parentUuid": "b564ccda_e36761df",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 61
+      },
+      "revId": "64fd662f87b9a245e74e62495299be177312dff0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
