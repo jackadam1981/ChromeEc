@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4032951f_1ad6bbce",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05bce84d_98451e00",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caebca06_5cfc6a41",
         "filename": "common/body_detection.c",
         "patchSetId": 7
@@ -33,6 +51,24 @@
       "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f0a7309_8d330710",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caebca06_5cfc6a41",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "39c716f9_6868eec4",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99ae425e_f2b24986",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "181c1ac8_9ff2ecac",
         "filename": "common/body_detection.c",
         "patchSetId": 7
@@ -64,6 +118,24 @@
       "writtenOn": "2020-08-13T04:46:50Z",
       "side": 1,
       "message": "Do you meed to keep an history at all, or just the sum of past element?",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bda5bc5_2eec7b13",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "I am not quite sure what you mean.\nX0 is the oldest sensor data in histor, used just for computing next sum and variance.",
+      "parentUuid": "181c1ac8_9ff2ecac",
       "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "215ba0f4_c35dce18",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "498aa928_65cbd77d",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bfc2126_c8d76047",
         "filename": "common/body_detection.c",
         "patchSetId": 7
@@ -101,6 +191,24 @@
       "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcdf1373_3aa58308",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bfc2126_c8d76047",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "b5b87d63_ec9742b6",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a5f37c7_088f921e",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b1f1792_0cf85557",
         "filename": "common/body_detection.c",
         "patchSetId": 7
@@ -135,6 +261,24 @@
       "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d399fccf_2472613e",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1f1792_0cf85557",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "921c7489_f4171179",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31db3e6_3e2b391e",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "223f7d8a_697558d2",
         "filename": "common/motion_sense.c",
         "patchSetId": 7
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "18c85249_0a06f5aa",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "body_detect() is called when there was data read successfully.",
+      "parentUuid": "223f7d8a_697558d2",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1632f5f3_51e6095f",
         "filename": "common/motion_sense.c",
         "patchSetId": 7
@@ -186,6 +366,24 @@
       "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bf418a6_e4b47f56",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-13T19:51:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1632f5f3_51e6095f",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
