@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b6fd7a8d_85d26ab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-13T19:52:15Z",
+      "side": 1,
+      "message": "It would be nice rec_mode:on can also trigger sysrq but sysrq is intended to be used by the physical button(s). So, I don\u0027t think it\u0027s necessary.\n\nI also thought about disabling sysrq for the emulated button in recovery mode only but I\u0027m afraid that will create more confusion.\n\nIt\u0027s hard to distinguish a real recovery button press and an emulated recovery button press because the *power* button can be released any time. So, we can\u0027t use CHIPSET_POWER_STATE or task_start_called as alternative conditions.\n\nI think a right fix is to make H1 keep the EC in reset until the power button is released. It\u0027s not possible until D2 or later.\n\nIf you have an alternative fix, please upload a patch.",
+      "parentUuid": "b72128e7_ac9dc710",
+      "revId": "1723211215121a6491ad1ecf79049dbd73116620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d3eb7c4_ca0dc304",
         "filename": "common/button.c",
         "patchSetId": 1
