@@ -16,6 +16,23 @@
       "revId": "259e6b226015bd062ae3d8301a2a620a59896f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2380e94_06e50209",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4227,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-13T22:52:58Z",
+      "side": 1,
+      "message": "i\u0027d prefer to have less knowledge of syv682x.h\n(and the chip defaults) in config.h.\n\nsuggest:\n\nconfig.h:\n#undef CONFIG_SYV682X_HV_ILIM\n\nsyv682.c:\n#ifndef CONFIG_SYV682X_HV_ILIM\n#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_3_30\n(or something more elegant that uses the chip defaults\nwhen no override is configured)\n\nboard.h:\n\n#define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50",
+      "revId": "259e6b226015bd062ae3d8301a2a620a59896f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
