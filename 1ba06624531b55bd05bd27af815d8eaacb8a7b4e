@@ -22,6 +22,30 @@
       "revId": "1ba06624531b55bd05bd27af815d8eaacb8a7b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca66ca7_a37b58c8",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-13T20:30:30Z",
+      "side": 1,
+      "message": "The main thing is if the SYV682 is acting as a sink, we have to be very careful about changes to Control Register 1.  The failure we saw earlier in the Volteer project was a board brown-out because there was no battery connected and the EC was reset (either from a FW update, sysjump, or manual reset).\n\nI think this is a good change, so that syv682x_vbus_sink_enable() is responsible for setting HV_ILIM.",
+      "parentUuid": "220a29ce_1e505cbd",
+      "range": {
+        "startLine": 624,
+        "startChar": 4,
+        "endLine": 624,
+        "endChar": 26
+      },
+      "revId": "1ba06624531b55bd05bd27af815d8eaacb8a7b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
