@@ -16,6 +16,24 @@
       "revId": "3bc50a55c78704633d7fd167f42be76aeb9a0394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e5a896f_94b92d11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-13T18:27:32Z",
+      "side": 1,
+      "message": "I\u0027d prefer to leave the incbin library in place. It provides a very clean mechanism for adding binary files into an image and the license is unencumbered.",
+      "parentUuid": "46820f77_a5f6267c",
+      "revId": "3bc50a55c78704633d7fd167f42be76aeb9a0394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
