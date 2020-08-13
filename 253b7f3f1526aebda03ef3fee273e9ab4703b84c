@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d107a4a_1bb02568",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-13T19:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9f3b1ab_2b36c3f6",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 946,
+        "endChar": 4
+      },
+      "revId": "253b7f3f1526aebda03ef3fee273e9ab4703b84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79388953_e5c44a24",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "253b7f3f1526aebda03ef3fee273e9ab4703b84c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6da14e0_09d452ec",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-13T19:00:28Z",
+      "side": 1,
+      "message": "Hooray! Done",
+      "parentUuid": "79388953_e5c44a24",
+      "range": {
+        "startLine": 966,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 0
+      },
+      "revId": "253b7f3f1526aebda03ef3fee273e9ab4703b84c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
