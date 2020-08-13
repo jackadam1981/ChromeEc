@@ -216,7 +216,7 @@ static void verify_and_jump(void)
 		break;
 	case CR50_COMM_SUCCESS:
 		system_set_reset_flags(EC_RESET_FLAG_EFS);
-		rv = system_run_image_copy(EC_IMAGE_RW);
+		rv = system_run_image_copy(EC_IMAGE_RW, 0);
 		CPRINTS("Failed to jump (0x%x)", rv);
 		system_clear_reset_flags(EC_RESET_FLAG_EFS);
 		show_critical_error();

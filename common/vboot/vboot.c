@@ -148,7 +148,7 @@ static int verify_and_jump(void)
 	}
 
 	/* 3. Jump (and reboot) */
-	rv = system_run_image_copy(slot);
+	rv = system_run_image_copy(slot, 0);
 	CPRINTS("Failed to jump (%d)", rv);
 
 	return rv;

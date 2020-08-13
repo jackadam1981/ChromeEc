@@ -203,8 +203,10 @@ int system_get_image_used(enum ec_image copy);
 
 /**
  * Jump to the specified image copy.
+ *
+ * add_reset_flags: Any additional reset flags to set in BBRAM before jumping
  */
-int system_run_image_copy(enum ec_image copy);
+int system_run_image_copy(enum ec_image copy, uint32_t add_reset_flags);
 
 /**
  * Get the rollback version for an image
