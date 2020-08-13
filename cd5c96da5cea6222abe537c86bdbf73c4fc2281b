@@ -46,6 +46,30 @@
       "revId": "cd5c96da5cea6222abe537c86bdbf73c4fc2281b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f271cee_d4a81ef6",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-08-13T05:00:25Z",
+      "side": 1,
+      "message": "I agree that we can remove set HV_ILIM in source enable.\nBut we still need set HV_ILIM in sink enable.\nOtherwise HV_ILIM won\u0027t be set when first power on with AC.",
+      "parentUuid": "ce83f47a_acc86b56",
+      "range": {
+        "startLine": 137,
+        "startChar": 14,
+        "endLine": 137,
+        "endChar": 38
+      },
+      "revId": "cd5c96da5cea6222abe537c86bdbf73c4fc2281b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
