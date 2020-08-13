@@ -117,6 +117,30 @@
       "revId": "6176783b0b905612e627b706c29fc163002efd2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d1000ef_4f72aecd",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-13T19:32:13Z",
+      "side": 1,
+      "message": "Oooo, I hadn\u0027t noticed there was a real mock for the TC in progress (I\u0027d just noticed the fake_usbc.c file, which doesn\u0027t appear to do much).  I\u0027ll do my part and add some flesh to the mock then :)",
+      "parentUuid": "08ac183c_15b968ca",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 406,
+        "endChar": 70
+      },
+      "revId": "6176783b0b905612e627b706c29fc163002efd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
