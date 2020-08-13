@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "22695fe8_788fcc01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-08-13T15:07:40Z",
+      "side": 1,
+      "message": "Done (arcada)",
+      "parentUuid": "6dc3b5db_72566517",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "036c22c8b63c6322416d81883c775957c27e81de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2da0986_38ca9939",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
