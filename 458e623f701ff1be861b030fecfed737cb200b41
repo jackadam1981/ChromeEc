@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "91d58742_45687840",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T17:49:41Z",
+      "side": 1,
+      "message": "I guess we don\u0027t, I was just being paranoid. I was trying to to depend on setting toggle off to pull us out of auto toggle, but I guess that is a pretty well defined effect at this point.\n\nUpdated code.",
+      "parentUuid": "ab7dbaf5_4a1789d9",
+      "revId": "458e623f701ff1be861b030fecfed737cb200b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9ce3855_875eb2d9",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 2

@@ -16,6 +16,24 @@
       "revId": "a95a1ce87e5985df8698466906c7b05710c0f08c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "607caeb8_0dcb5ab2",
+        "filename": "common/mock/tcpc_mock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T17:49:41Z",
+      "side": 1,
+      "message": "Update variable name to first_call_to_enable_auto_toggle outside of last",
+      "parentUuid": "b2449c68_d580bd5b",
+      "revId": "a95a1ce87e5985df8698466906c7b05710c0f08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
