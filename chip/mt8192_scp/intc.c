@@ -147,6 +147,8 @@ static struct {
 };
 BUILD_ASSERT(ARRAY_SIZE(irqs) == SCP_INTC_IRQ_COUNT);
 
+#include "console.h"
+#include "csr.h"
 /*
  * Find current interrupt source.
  *
@@ -173,6 +175,21 @@ int chip_get_ec_int(void)
 	}
 
 error:
+	ccprints("SCP_CORE0_INTC_IRQ_OUT=%x", SCP_CORE0_INTC_IRQ_OUT);
+	ccprints("CSR_VIC_MICAUSE=%x", read_csr(CSR_VIC_MICAUSE));
+	ccprints("CSR_VIC_MIPEND_G0=%x", read_csr(CSR_VIC_MIPEND_G0));
+	ccprints("CSR_VIC_MIMASK_G0=%x", read_csr(CSR_VIC_MIMASK_G0));
+	ccprints("CSR_VIC_MIEMASK_G0=%x", read_csr(CSR_VIC_MIEMASK_G0));
+
+	for (group = 0; group <= 14; ++group) {
+		for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word) {
+			ccprints("SCP_CORE0_INTC_IRQ_GRP_STA(%d, %d)=%x",
+				 group, word,
+				 SCP_CORE0_INTC_IRQ_GRP_STA(group, word));
+			cflush();
+		}
+	}
+
 	/* unreachable, SCP crashes and dumps registers after returning */
 	return -1;
 }
