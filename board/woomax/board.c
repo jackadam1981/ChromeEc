@@ -455,14 +455,14 @@ static void board_chipset_resume(void)
 	/* HDMI retimer power on */
 	ioex_set_level(IOEX_HDMI_POWER_EN_DB, 1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT-1);
 
 static void board_chipset_suspend(void)
 {
 	/* HDMI retimer power off */
 	ioex_set_level(IOEX_HDMI_POWER_EN_DB, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT+1);
 
 static const struct ec_response_keybd_config woomax_kb = {
 	.num_top_row_keys = 10,
