@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c48deaba_73371761",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-13T14:56:16Z",
+      "side": 1,
+      "message": "Could this board use the common LED on off state code? ",
+      "revId": "985239ea991230716db91da0f7dc15b7586b0078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25a177a5_9bc3f752",
+        "filename": "board/madoo/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-13T14:56:16Z",
+      "side": 1,
+      "message": "If auto control is disabled, the battery LED shouldn\u0027t automatically be updated",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 60
+      },
+      "revId": "985239ea991230716db91da0f7dc15b7586b0078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
