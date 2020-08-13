@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ab7dbaf5_4a1789d9",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-13T16:50:02Z",
+      "side": 1,
+      "message": "Sorry, still not getting why the need to enter disconnected state. Is this to ensure we are in TC_UNATTACHED_SNK? I would think just the call to pd_set_dual_role(PORT0, PD_DRP_TOGGLE_OFF) would ensure that.",
+      "parentUuid": "fdd41b58_148a4c3e",
+      "revId": "458e623f701ff1be861b030fecfed737cb200b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9ce3855_875eb2d9",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 2
