@@ -303,8 +303,7 @@ static void pi3usb9201_usb_charger_task(const int port)
 		}
 
 		/*
-		 * TODO(b/124061702): For host mode, currently only setting it
-		 * to host CDP mode. However, there are 3 host status bits to
+		 * TODO(b/124061702): There are 3 host status bits to
 		 * know things such as an adapter connected, but no USB device
 		 * present, or bc1.2 activity detected.
 		 */
@@ -318,15 +317,17 @@ static void pi3usb9201_usb_charger_task(const int port)
 			 */
 			bc12_update_supplier(CHARGE_SUPPLIER_NONE, port, NULL);
 			/*
-			 * If the port is in DFP mode, then need to set mode to
-			 * CDP_HOST which will auto close D+/D- switches.
+			 * TODO(b/163947281): If the port is in DFP mode, then
+			 * set mode to USB_PATH_ON which will close D+/D-
+			 * switches. We'd like to use CDP_HOST_MODE to advertise
+			 * higher power, but that causes USB disconnect.
 			 */
 			bc12_power_up(port);
 			rv = pi3usb9201_get_mode(port, &mode);
-			if (!rv && (mode != PI3USB9201_CDP_HOST_MODE)) {
-				CPRINTS("pi3usb9201[p%d]: CDP_HOST mode", port);
+			if (!rv && (mode != PI3USB9201_USB_PATH_ON)) {
+				CPRINTS("pi3usb9201[p%d]: DFP USB mode", port);
 				pi3usb9201_set_mode(port,
-						    PI3USB9201_CDP_HOST_MODE);
+						    PI3USB9201_USB_PATH_ON);
 			}
 		}
 
