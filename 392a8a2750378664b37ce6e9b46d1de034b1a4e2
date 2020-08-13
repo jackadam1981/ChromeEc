@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "e298e2d7_14f91d22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T21:32:44Z",
+      "side": 1,
+      "message": "in the .dts file where you describe the nucleos board, add an interrupt, mapped to the a pin of the RPI. \nFor instance, in src/third_party/kernel/v4.19/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi\n\ncros_ec: ec@0 section has the \n\n    compatible \u003d \"google,cros-ec-spi\";\n    ...\n    interrupt-parent \u003d \u003c\u0026pio\u003e;\n    interrupts \u003d \u003c151 IRQ_TYPE_LEVEL_LOW\u003e;\n    pinctrl-names \u003d \"default\";\n    pinctrl-0 \u003d \u003c\u0026ec_ap_int_odl\u003e;\n    ...\n\nec_ap_int_odl point to a pin description.\n\nWhen the dts is set properly, the kernel driver cros-ec-spi (or cros-ec-i2c) will be presented an interrupt and will register an interupt handler.",
+      "parentUuid": "1be97e76_720c45ab",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74a0fefd_5aaed2fb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
