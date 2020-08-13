@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74efdb62_d0209e76",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T17:28:41Z",
+      "side": 1,
+      "message": "Ideally we should be calling into the pe_ API instead, like pe_message_received\n\nWe can drop the assert in that API call since it is doing an atomic operation.",
+      "range": {
+        "startLine": 373,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 42
+      },
+      "revId": "6176783b0b905612e627b706c29fc163002efd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "953afbea_79e59dc5",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-13T17:28:41Z",
+      "side": 1,
+      "message": "can we validate not on internal states, but how the PE statemachine interacted with its dependencies.\n\nWe really want to remove the assertions on internal state names. If we decide to refactor internal states into more or less stuper states, we want the unit test to still pass since they are asserting functionality instead of internal state transitions",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 406,
+        "endChar": 70
+      },
+      "revId": "6176783b0b905612e627b706c29fc163002efd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
