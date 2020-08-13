@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "62c37966_b805f102",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-13T16:37:41Z",
+      "side": 1,
+      "message": "The compressed file support is removed by the next CL.",
+      "parentUuid": "69ae27cb_099edc8a",
+      "range": {
+        "startLine": 440,
+        "startChar": 61,
+        "endLine": 440,
+        "endChar": 69
+      },
+      "revId": "82de56d4bdfe798eead26883acb3a2b675d7840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79411353_14dd7c05",
         "filename": "driver/accelgyro_bmi260.c",
         "patchSetId": 11
@@ -62,6 +86,30 @@
       "revId": "82de56d4bdfe798eead26883acb3a2b675d7840d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0627cdc4_07f5e822",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-13T16:37:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79411353_14dd7c05",
+      "range": {
+        "startLine": 618,
+        "startChar": 1,
+        "endLine": 618,
+        "endChar": 15
+      },
+      "revId": "82de56d4bdfe798eead26883acb3a2b675d7840d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
