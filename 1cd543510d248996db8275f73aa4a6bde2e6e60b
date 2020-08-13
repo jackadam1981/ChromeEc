@@ -69,6 +69,24 @@
       "revId": "1cd543510d248996db8275f73aa4a6bde2e6e60b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "345c6854_b9cd80e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-13T22:33:57Z",
+      "side": 1,
+      "message": "I replied to the bug. The test failure was caused by a different reason: AP not in S3.",
+      "parentUuid": "33775ec9_ae8da30c",
+      "revId": "1cd543510d248996db8275f73aa4a6bde2e6e60b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
