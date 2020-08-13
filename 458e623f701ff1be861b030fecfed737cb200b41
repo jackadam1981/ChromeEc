@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "3eca542e_72e0b4de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-08-13T14:14:40Z",
+      "side": 1,
+      "message": "Bug appears related, but not causative.\n\nRemoving -1 Verified, and filed a new bug at b/164066211 with data.\n\nWould appreciate your review + comments.",
+      "parentUuid": "e9667abd_86c379b1",
+      "revId": "458e623f701ff1be861b030fecfed737cb200b41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c70e49b_27a5e18f",
         "filename": "test/usb_typec_drp_acc_trysrc.c",
         "patchSetId": 2
