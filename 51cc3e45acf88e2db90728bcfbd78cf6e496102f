@@ -824,6 +824,24 @@
     },
     {
       "key": {
+        "uuid": "7d5a9c55_d27ab5aa",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2020-08-13T13:47:53Z",
+      "side": 1,
+      "message": "Hello,\nif there is a reset of EC with no power-cycling, we can be in a state where register bank is not 0. In this case whoami reading will not work.",
+      "parentUuid": "d584cb0a_5442caaf",
+      "revId": "51cc3e45acf88e2db90728bcfbd78cf6e496102f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fcfeea5_2372041e",
         "filename": "driver/accelgyro_icm426xx.c",
         "patchSetId": 2
