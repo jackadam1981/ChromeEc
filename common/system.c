@@ -563,10 +563,12 @@ int system_is_in_rw(void)
 	return is_rw_image(system_get_image_copy());
 }
 
-test_mockable int system_run_image_copy(enum ec_image copy)
+test_mockable int system_run_image_copy(enum ec_image copy,
+					uint32_t add_reset_flags)
 {
 	uintptr_t base;
 	uintptr_t init_addr;
+	uint32_t prev_reset_flags;
 
 	/* If system is already running the requested image, done */
 	if (system_get_image_copy() == copy)
@@ -615,6 +617,13 @@ test_mockable int system_run_image_copy(enum ec_image copy)
 		    (init_addr < base || init_addr >= base + get_size(copy)))
 			return EC_ERROR_UNKNOWN;
 	}
+
+	if (add_reset_flags != 0) {
+		prev_reset_flags = system_get_reset_flags();
+		prev_reset_flags |= add_reset_flags;
+		system_set_reset_flags(prev_reset_flags);
+	}
+
 
 	CPRINTS("Jumping to image %s", ec_image_to_string(copy));
 
@@ -868,9 +877,10 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_CANCEL:
 		return EC_SUCCESS;
 	case EC_REBOOT_JUMP_RO:
-		return system_run_image_copy(EC_IMAGE_RO);
+		return system_run_image_copy(EC_IMAGE_RO,
+					     EC_RESET_FLAG_STAY_IN_RO);
 	case EC_REBOOT_JUMP_RW:
-		return system_run_image_copy(system_get_active_copy());
+		return system_run_image_copy(system_get_active_copy(), 0);
 	case EC_REBOOT_COLD:
 		/*
 		 * Reboot the PD chip(s) as well, but first suspend the ports
@@ -1201,12 +1211,13 @@ static int command_sysjump(int argc, char **argv)
 
 	/* Handle named images */
 	if (!strcasecmp(argv[1], "RO"))
-		return system_run_image_copy(EC_IMAGE_RO);
+		return system_run_image_copy(EC_IMAGE_RO,
+					     EC_RESET_FLAG_STAY_IN_RO);
 	else if (!strcasecmp(argv[1], "RW") || !strcasecmp(argv[1], "A"))
-		return system_run_image_copy(EC_IMAGE_RW);
+		return system_run_image_copy(EC_IMAGE_RW, 0);
 	else if (!strcasecmp(argv[1], "B")) {
 #ifdef CONFIG_RW_B
-		return system_run_image_copy(EC_IMAGE_RW_B);
+		return system_run_image_copy(EC_IMAGE_RW_B, 0);
 #else
 		return EC_ERROR_PARAM1;
 #endif

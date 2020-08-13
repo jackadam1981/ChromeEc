@@ -177,7 +177,7 @@ test_mockable int system_is_locked(void)
 
 #ifdef TEST_FUZZ
 /* When fuzzing, do not allow sysjumps. */
-int system_run_image_copy(enum ec_image copy)
+int system_run_image_copy(enum ec_image copy, uint32_t add_reset_flags)
 {
 	ccprints("Emulator would sysjump here. Fuzzing: doing nothing.");
 	return EC_ERROR_UNKNOWN;
