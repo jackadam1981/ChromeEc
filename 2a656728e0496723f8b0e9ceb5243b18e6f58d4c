@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05bce84d_98451e00",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "sensor name too generic. body_sensor? (same error in gesture.c).",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caebca06_5cfc6a41",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "bool",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ae425e_f2b24986",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "bool. Why enabled by default?",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "181c1ac8_9ff2ecac",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "Do you meed to keep an history at all, or just the sum of past element?",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498aa928_65cbd77d",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "used only once.",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bfc2126_c8d76047",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "used only once.",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a5f37c7_088f921e",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "Can not happen.",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1f1792_0cf85557",
+        "filename": "common/body_detection.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "Always return success, make it void.",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c31db3e6_3e2b391e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "No need to call body_detect on error.",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "223f7d8a_697558d2",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "Theoritically. body_dectect() could be called with a forced mode sensor. Put at the end of the funcion.",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1632f5f3_51e6095f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-13T04:46:50Z",
+      "side": 1,
+      "message": "Your code reveal an error in gesture_tap_for_battery() as the gesture sensor is checked even when there was no event for it.\nWe should move the code where you call body_detect().",
+      "revId": "2a656728e0496723f8b0e9ceb5243b18e6f58d4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
