@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c63a9a5_12b2c060",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-13T14:54:05Z",
+      "side": 1,
+      "message": "i think orientation bit also need to set",
+      "range": {
+        "startLine": 325,
+        "startChar": 3,
+        "endLine": 325,
+        "endChar": 7
+      },
+      "revId": "a4343ae4054feefec6460ca9b2eb6919d81e9e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de166e5e_c88c9e73",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-13T14:54:05Z",
+      "side": 1,
+      "message": "i think orientation bit also need to set",
+      "range": {
+        "startLine": 360,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 18
+      },
+      "revId": "a4343ae4054feefec6460ca9b2eb6919d81e9e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
