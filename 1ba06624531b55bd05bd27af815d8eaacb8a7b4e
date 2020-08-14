@@ -116,6 +116,30 @@
       "revId": "1ba06624531b55bd05bd27af815d8eaacb8a7b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2c6c983_387bc062",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-14T22:02:16Z",
+      "side": 1,
+      "message": "Setting HV_ILIM in the sink enable routine does make the setting here during init() not strictly needed.  Especially because the code here is turning off all the power paths.  I think it\u0027s useful to have the HV_ILIM set here for debug purposes as it makes it easier to verify the setting prior to connected an external SRC.",
+      "parentUuid": "ae224e7a_2270c416",
+      "range": {
+        "startLine": 624,
+        "startChar": 4,
+        "endLine": 624,
+        "endChar": 26
+      },
+      "revId": "1ba06624531b55bd05bd27af815d8eaacb8a7b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
