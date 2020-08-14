@@ -14,7 +14,7 @@
 #else
 #error "Sensor type not defined!"
 #endif
-#include "fpc_sensor.h"
+#include "fpc_common.h"
 
 int fpc_fp_maintenance(uint16_t *error_state)
 {

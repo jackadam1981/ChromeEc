@@ -20,5 +20,5 @@ ifeq ($(CONFIG_FP_SENSOR),rw)
 dirs-y+="$(_fpc_cur_dir)"
 
 # Only build these objects for the RW image
-all-obj-rw+=$(_fpc_cur_dir)fpc_sensor.o
+all-obj-rw+=$(_fpc_cur_dir)fpc_common.o
 endif
