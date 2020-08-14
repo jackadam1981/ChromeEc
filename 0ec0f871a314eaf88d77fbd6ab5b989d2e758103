@@ -56,6 +56,30 @@
       "revId": "0ec0f871a314eaf88d77fbd6ab5b989d2e758103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89f5e80e_31c7c6d5",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-14T21:21:42Z",
+      "side": 1,
+      "message": "Yes, that was my initial approach. I changed it here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2335738/1..2\nI could change it back and we can assume any early callers will be responsible for unlocking before task start.",
+      "parentUuid": "f89bf7ca_59e806a7",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 9
+      },
+      "revId": "0ec0f871a314eaf88d77fbd6ab5b989d2e758103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
