@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "202bb627_bc65894c",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-14T16:06:42Z",
+      "side": 1,
+      "message": "I think you could do\n\nrename today\u0027s system_run_image_copy(copy) to system_run_image_copy_with_flags(copy, flags) and add flag parameter\n\nthen make a new system_run_image_copy(copy) that call system_run_image_copy_with_flags(copy, 0);\n\nand keep all of the logic single sourced.",
+      "parentUuid": "f347fd2f_2c781985",
+      "range": {
+        "startLine": 566,
+        "startChar": 18,
+        "endLine": 566,
+        "endChar": 39
+      },
+      "revId": "98647101236d2f97ce54d07ca516b314be2b2668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bfaea21_2122a40d",
         "filename": "common/system.c",
         "patchSetId": 2
