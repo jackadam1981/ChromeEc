@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e750bae_f8b11512",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-14T06:21:46Z",
+      "side": 1,
+      "message": "Please rearrange this block to:\n\n#ifndef IT83XX_SPI_RX_VALID_INT\n  if (IT83XX_SPI_ISR \u0026 IT83XX_SPI_RX_REACH) {\n    ...\n  }\n#else\n  if (IT83XX_SPI_RX_VLISR \u0026 IT83XX_SPI_RVLI) {\n    ...\n  }\n#endif",
+      "revId": "8a68130bdfa7ea0cc14ae0eb15d1c52928908b79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
