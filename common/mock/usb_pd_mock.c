@@ -47,6 +47,8 @@ bool pd_is_disconnected(int port)
 }
 #endif /* !CONFIG_USB_DRP_ACC_TRYSRC && !CONFIG_USB_CTVPD */
 
+/* usb_pe_drp_sm.c defines these functions; no mock needed. */
+#if !defined(TEST_USB_PE_DRP) && !defined(TEST_USB_PE_DRP_NOEXTENDED)
 const uint32_t * const pd_get_src_caps(int port)
 {
 	return NULL;
@@ -60,6 +62,7 @@ uint8_t pd_get_src_cap_cnt(int port)
 void pd_set_src_caps(int port, int cnt, uint32_t *src_caps)
 {
 }
+#endif /* !TEST_USB_PE_DRP && !TEST_USB_PE_DRP_NOEXTENDED */
 
 bool pd_get_partner_usb_comm_capable(int port)
 {
@@ -75,3 +78,21 @@ void pd_set_suspend(int port, int suspend)
 {
 }
 
+__overridable enum tcpc_cc_polarity pd_get_polarity(int port)
+{
+	return POLARITY_CC1;
+}
+
+__overridable void pd_request_data_swap(int port)
+{}
+
+void pd_request_vconn_swap_off(int port)
+{}
+
+void pd_request_vconn_swap_on(int port)
+{}
+
+bool pd_alt_mode_capable(int port)
+{
+	return false;
+}
