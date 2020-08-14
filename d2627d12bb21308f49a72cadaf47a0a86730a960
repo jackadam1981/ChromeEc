@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "48f50dd3_246c97d3",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-08-14T18:12:45Z",
+      "side": 1,
+      "message": "Fixed in the reland https://chromium-review.googlesource.com/2355177",
+      "parentUuid": "b8c76972_b1b4705f",
+      "range": {
+        "startLine": 266,
+        "startChar": 47,
+        "endLine": 266,
+        "endChar": 58
+      },
+      "revId": "d2627d12bb21308f49a72cadaf47a0a86730a960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fdad347_eaee2dd9",
         "filename": "common/u2f.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4b11d4b3_73b9ac17",
+        "filename": "common/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-08-14T18:12:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fdad347_eaee2dd9",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 35
+      },
+      "revId": "d2627d12bb21308f49a72cadaf47a0a86730a960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6d323ca_d83791df",
         "filename": "include/u2f.h",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "d2627d12bb21308f49a72cadaf47a0a86730a960",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0344bb2_a9af1072",
+        "filename": "include/u2f.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-08-14T18:12:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6d323ca_d83791df",
+      "range": {
+        "startLine": 73,
+        "startChar": 28,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "d2627d12bb21308f49a72cadaf47a0a86730a960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
