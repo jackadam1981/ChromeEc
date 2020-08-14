@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "44eb4dd8_c5f0a69c",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-14T22:33:41Z",
+      "side": 1,
+      "message": "Okay, we\u0027ll go with it until anything says otherwise :)",
+      "parentUuid": "beec990b_2db8b6e6",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 19
+      },
+      "revId": "9c01e413dfb6869c0fd5822a690a2686d0576d9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2d443e1_3a1b4f1d",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
