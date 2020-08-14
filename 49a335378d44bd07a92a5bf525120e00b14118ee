@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc12dd99_6b58111e",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-14T16:01:39Z",
+      "side": 1,
+      "message": "please use if (IS_ENABLED()) style code",
+      "range": {
+        "startLine": 249,
+        "startChar": 8,
+        "endLine": 249,
+        "endChar": 31
+      },
+      "revId": "49a335378d44bd07a92a5bf525120e00b14118ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
