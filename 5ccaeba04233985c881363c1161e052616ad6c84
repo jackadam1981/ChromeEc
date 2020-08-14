@@ -34,6 +34,24 @@
       "revId": "5ccaeba04233985c881363c1161e052616ad6c84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a53e6a1a_6ab0f172",
+        "filename": "board/madoo/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2020-08-14T01:38:40Z",
+      "side": 1,
+      "message": "If I want to delete that code I think I will need to change the base code on Dedede variant_ec_npcx796fc.c, so for the common base I will keep this enum, or you have another suggestion about this enum?",
+      "parentUuid": "10772ce1_d28f9e37",
+      "revId": "5ccaeba04233985c881363c1161e052616ad6c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
