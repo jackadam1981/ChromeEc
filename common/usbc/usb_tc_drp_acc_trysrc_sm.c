@@ -1386,6 +1386,8 @@ static void set_state_tc(const int port, const enum usb_tc_state new_state)
 {
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
+	task_wake(PD_PORT_TO_TASK_ID(port));
+
 	set_state(port, &tc[port].ctx, &tc_states[new_state]);
 }
 

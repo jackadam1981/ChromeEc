@@ -353,6 +353,7 @@ GEN_NOT_SUPPORTED(TCH_REPORT_ERROR);
 static void set_state_prl_tx(const int port,
 			     const enum usb_prl_tx_state new_state)
 {
+	task_wake(PD_PORT_TO_TASK_ID(port));
 	set_state(port, &prl_tx[port].ctx, &prl_tx_states[new_state]);
 }
 
@@ -374,6 +375,7 @@ static void print_current_prl_tx_state(const int port)
 static void set_state_prl_hr(const int port,
 			     const enum usb_prl_hr_state new_state)
 {
+	task_wake(PD_PORT_TO_TASK_ID(port));
 	set_state(port, &prl_hr[port].ctx, &prl_hr_states[new_state]);
 }
 
@@ -395,6 +397,7 @@ static void print_current_prl_hr_state(const int port)
 static void set_state_rch(const int port, const enum usb_rch_state new_state)
 {
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
+	task_wake(PD_PORT_TO_TASK_ID(port));
 	set_state(port, &rch[port].ctx, &rch_states[new_state]);
 #endif /* CONFIG_USB_PD_REV30 */
 }
@@ -419,6 +422,7 @@ static void print_current_rch_state(const int port)
 static void set_state_tch(const int port, const enum usb_tch_state new_state)
 {
 #ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
+	task_wake(PD_PORT_TO_TASK_ID(port));
 	set_state(port, &tch[port].ctx, &tch_states[new_state]);
 #endif /* CONFIG_USB_PD_REV30 */
 }

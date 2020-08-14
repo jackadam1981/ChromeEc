@@ -1134,6 +1134,8 @@ DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, pe_handle_detach, HOOK_PRIO_DEFAULT);
 test_export_static void set_state_pe(const int port,
 				     const enum usb_pe_state new_state)
 {
+	task_wake(PD_PORT_TO_TASK_ID(port));
+
 	set_state(port, &pe[port].ctx, &pe_states[new_state]);
 }
 

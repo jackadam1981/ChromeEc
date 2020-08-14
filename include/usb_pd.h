@@ -75,8 +75,7 @@ enum pd_rx_errors {
 #define PD_EXIT_LOW_POWER_EVENT_MASK \
 	(PD_EVENT_CC | \
 	 PD_EVENT_UPDATE_DUAL_ROLE | \
-	 PD_EVENT_POWER_STATE_CHANGE | \
-	 TASK_EVENT_WAKE)
+	 PD_EVENT_POWER_STATE_CHANGE)
 
 /* --- PD data message helpers --- */
 #define PDO_MAX_OBJECTS   7
