@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "613c15ae_0470faac",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-14T22:23:15Z",
+      "side": 1,
+      "message": "The task_get_current() is some invalid number before task_start(). Better to move the assignment after the below check.",
+      "range": {
+        "startLine": 861,
+        "startChar": 12,
+        "endLine": 861,
+        "endChar": 38
+      },
+      "revId": "14faa76632b2ed16f144c34100551089391b8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd54a964_5b735b0b",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-14T22:23:15Z",
+      "side": 1,
+      "message": "This assertion is after the task_start_called check. It allows using the mutex_lock() in the interrupt context before task_start(). We should always forbid it, by moving it before the task_start_called check.",
+      "range": {
+        "startLine": 871,
+        "startChar": 0,
+        "endLine": 875,
+        "endChar": 33
+      },
+      "revId": "14faa76632b2ed16f144c34100551089391b8495",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
