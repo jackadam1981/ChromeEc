@@ -13,6 +13,16 @@
 
 struct mock_pd_port_t mock_pd_port[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+void mock_pd_reset(void)
+{
+	int port;
+
+	for (port = 0 ; port < CONFIG_USB_PD_PORT_MAX_COUNT ; ++port) {
+		mock_pd_port[port].data_role = PD_ROLE_DISCONNECTED;
+		mock_pd_port[port].power_role = PD_ROLE_DISCONNECTED;
+	}
+}
+
 enum pd_dual_role_states pd_get_dual_role(int port)
 {
 	return PD_DRP_TOGGLE_ON;
@@ -33,9 +43,6 @@ enum pd_cc_states pd_get_task_cc_state(int port)
 	return PD_CC_NONE;
 }
 
-/* TODO remove when usbc_fake is cleaned up */
-#if !defined(CONFIG_USB_DRP_ACC_TRYSRC) && \
-	!defined(CONFIG_USB_CTVPD)
 int pd_is_connected(int port)
 {
 	return 1;
@@ -45,19 +52,18 @@ bool pd_is_disconnected(int port)
 {
 	return false;
 }
-#endif /* !CONFIG_USB_DRP_ACC_TRYSRC && !CONFIG_USB_CTVPD */
 
-const uint32_t * const pd_get_src_caps(int port)
+__overridable const uint32_t * const pd_get_src_caps(int port)
 {
 	return NULL;
 }
 
-uint8_t pd_get_src_cap_cnt(int port)
+__overridable uint8_t pd_get_src_cap_cnt(int port)
 {
 	return 0;
 }
 
-void pd_set_src_caps(int port, int cnt, uint32_t *src_caps)
+__overridable void pd_set_src_caps(int port, int cnt, uint32_t *src_caps)
 {
 }
 
@@ -75,3 +81,21 @@ void pd_set_suspend(int port, int suspend)
 {
 }
 
+enum tcpc_cc_polarity pd_get_polarity(int port)
+{
+	return POLARITY_CC1;
+}
+
+void pd_request_data_swap(int port)
+{}
+
+void pd_request_vconn_swap_off(int port)
+{}
+
+void pd_request_vconn_swap_on(int port)
+{}
+
+bool pd_alt_mode_capable(int port)
+{
+	return false;
+}

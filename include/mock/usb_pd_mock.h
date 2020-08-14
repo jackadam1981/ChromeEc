@@ -17,4 +17,6 @@ struct mock_pd_port_t {
 
 extern struct mock_pd_port_t mock_pd_port[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+void mock_pd_reset(void);
+
 #endif /* __MOCK_USB_PD_MOCK_H */

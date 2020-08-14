@@ -4,12 +4,28 @@
  *
  * Fake Protocol Layer module.
  */
+#include <string.h>
 #include "common.h"
 #include "usb_emsg.h"
 #include "usb_prl_sm.h"
+#include "mock/usb_prl_mock.h"
 
 struct extended_msg rx_emsg[CONFIG_USB_PD_PORT_MAX_COUNT];
 struct extended_msg tx_emsg[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+void mock_prl_reset(void)
+{
+	int port;
+
+	for (port = 0 ; port < CONFIG_USB_PD_PORT_MAX_COUNT ; ++port) {
+		rx_emsg[port].header = 0;
+		rx_emsg[port].len = 0;
+		memset(rx_emsg[port].buf, 0, EXTENDED_BUFFER_SIZE);
+		tx_emsg[port].header = 0;
+		tx_emsg[port].len = 0;
+		memset(tx_emsg[port].buf, 0, EXTENDED_BUFFER_SIZE);
+	}
+}
 
 void prl_end_ams(int port)
 {}
@@ -28,6 +44,11 @@ void prl_hard_reset_complete(int port)
 int prl_is_running(int port)
 {
 	return 1;
+}
+
+__overridable bool prl_is_busy(int port)
+{
+	return false;
 }
 
 void prl_reset(int port)
