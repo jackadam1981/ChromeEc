@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "8095a87b_0afbf9b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2020-08-14T08:41:04Z",
+      "side": 1,
+      "message": "Currently we are not using cros-ec driver but directly ectool using an i2c device file. We have been doing that since Nucleo F411RE is configured with I2C support only.\n\nI will switch to use SPI for communicating with host and use the cros-ec driver.\n\nThanks for your help.",
+      "parentUuid": "e298e2d7_14f91d22",
+      "revId": "392a8a2750378664b37ce6e9b46d1de034b1a4e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74a0fefd_5aaed2fb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
