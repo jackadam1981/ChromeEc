@@ -51,6 +51,24 @@
       "revId": "259e6b226015bd062ae3d8301a2a620a59896f98",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "337a5933_a0cceb06",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4227,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-14T03:39:42Z",
+      "side": 1,
+      "message": "In this case, I would +1 for Keith which was my preference as well in comment of patch 5. And thanks for caveh feedback as well.",
+      "parentUuid": "0af82941_3cf17783",
+      "revId": "259e6b226015bd062ae3d8301a2a620a59896f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
