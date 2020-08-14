@@ -56,6 +56,30 @@
       "revId": "8d9643112763ee357185185b4765cc6c6ff17165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc3028f_e009df9f",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2020-08-14T18:30:21Z",
+      "side": 1,
+      "message": "I\u0027ll fix this in my next change to keep this cherry-pick clean.",
+      "parentUuid": "c3dad009_c24eff73",
+      "range": {
+        "startLine": 46,
+        "startChar": 31,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "8d9643112763ee357185185b4765cc6c6ff17165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
