@@ -92,6 +92,30 @@
       "revId": "1ba06624531b55bd05bd27af815d8eaacb8a7b4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae224e7a_2270c416",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-14T01:58:10Z",
+      "side": 1,
+      "message": "If we move the setting of HV_ILIM into syv682x_vbus_sink_enable then it turns out that no matter codes go to IF or ELSE, HV_ILIM will always be configured in the init function?\n\nWill it hit the problem you mentioned?",
+      "parentUuid": "cca66ca7_a37b58c8",
+      "range": {
+        "startLine": 624,
+        "startChar": 4,
+        "endLine": 624,
+        "endChar": 26
+      },
+      "revId": "1ba06624531b55bd05bd27af815d8eaacb8a7b4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
