@@ -520,6 +520,16 @@ static void prl_init(int port)
 	set_state_prl_hr(port, PRL_HR_WAIT_FOR_REQUEST);
 }
 
+#ifdef CONFIG_USB_PD_EXTENDED_MESSAGES
+bool prl_is_busy(int port)
+{
+	return !((rch_get_state(port) ==
+			RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER) &&
+		(tch_get_state(port) ==
+			TCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE));
+}
+#endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+
 void prl_set_debug_level(enum debug_level debug_level)
 {
 #ifndef CONFIG_USB_PD_DEBUG_LEVEL
