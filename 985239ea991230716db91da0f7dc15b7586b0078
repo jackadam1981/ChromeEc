@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "51177081_9ec2b470",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-14T15:40:57Z",
+      "side": 1,
+      "message": "Any comment on whether the common code could meet your board\u0027s needs for LED behavior?",
+      "parentUuid": "c48deaba_73371761",
+      "revId": "985239ea991230716db91da0f7dc15b7586b0078",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25a177a5_9bc3f752",
         "filename": "board/madoo/led.c",
         "patchSetId": 3
