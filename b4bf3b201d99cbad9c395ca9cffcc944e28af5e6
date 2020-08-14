@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ea70dcc_101c0dfe",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-14T20:00:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "637eaf07_ad6efe66",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 20
+      },
+      "revId": "b4bf3b201d99cbad9c395ca9cffcc944e28af5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "189649b5_be4aac36",
         "filename": "board/tglrvpu_ite/ec.tasklist",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "b4bf3b201d99cbad9c395ca9cffcc944e28af5e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc8794e_d75e1b1f",
+        "filename": "board/tglrvpu_ite/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-14T20:00:22Z",
+      "side": 1,
+      "message": "Done\nthanks for correcting, its a Chipset task that needs big space",
+      "parentUuid": "189649b5_be4aac36",
+      "range": {
+        "startLine": 14,
+        "startChar": 42,
+        "endLine": 14,
+        "endChar": 63
+      },
+      "revId": "b4bf3b201d99cbad9c395ca9cffcc944e28af5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
