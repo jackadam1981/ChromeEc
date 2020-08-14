@@ -22,6 +22,30 @@
       "revId": "1d63ed5a620b931996aa51b2f66cb05c4383530a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86107088_3f913173",
+        "filename": "chip/stm32/flash-stm32g4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-14T19:40:03Z",
+      "side": 1,
+      "message": "I assume you\u0027re only highlighting 2 of the renaming, but your comment is applicable to all of them. I do like having the code use page instead of bank in the driver code. There is one key difference between the two files. \n\nBased on my understanding from RM0440, the WRP ranges are  0 -\u003e N-1 to protect N pages. the L4 driver appears to have this as 0 -\u003e N. I don\u0027t know how much use or testing the L4 driver got. I understand it\u0027s not used in any of our shipping products.",
+      "parentUuid": "e7fda938_b953b43d",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "1d63ed5a620b931996aa51b2f66cb05c4383530a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
