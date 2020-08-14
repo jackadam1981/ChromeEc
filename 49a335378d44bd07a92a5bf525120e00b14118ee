@@ -22,6 +22,30 @@
       "revId": "49a335378d44bd07a92a5bf525120e00b14118ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb18a12c_f6c9fc74",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-08-14T17:01:41Z",
+      "side": 1,
+      "message": "@Tim2 can you create a follow up change to use the recommended style?",
+      "parentUuid": "dc12dd99_6b58111e",
+      "range": {
+        "startLine": 249,
+        "startChar": 8,
+        "endLine": 249,
+        "endChar": 31
+      },
+      "revId": "49a335378d44bd07a92a5bf525120e00b14118ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
