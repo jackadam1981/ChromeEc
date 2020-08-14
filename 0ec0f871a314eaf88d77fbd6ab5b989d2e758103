@@ -33,6 +33,29 @@
       "revId": "0ec0f871a314eaf88d77fbd6ab5b989d2e758103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f89bf7ca_59e806a7",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-14T21:09:15Z",
+      "side": 1,
+      "message": "How about doing this in the API level, i.e. inside the mutex_lock(), after the !is_interrupt_context() assertion?\n\nBefore task_start(), EC runs in a single thread and we block locking mutex in interrupt context. Should have no contention.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 9
+      },
+      "revId": "0ec0f871a314eaf88d77fbd6ab5b989d2e758103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
