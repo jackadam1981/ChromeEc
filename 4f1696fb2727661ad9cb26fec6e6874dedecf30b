@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4cfb0921_c8dbe7e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-14T23:28:33Z",
+      "side": 1,
+      "message": "Yes the DP setup flow works. I tested it with a dock with hdmi.",
+      "parentUuid": "8e36598f_b2811b2a",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "4f1696fb2727661ad9cb26fec6e6874dedecf30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85f44fb0_0ddb1237",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2020-08-14T22:40:41Z",
       "side": 1,
       "message": "Overall looks good",
+      "revId": "4f1696fb2727661ad9cb26fec6e6874dedecf30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85aa5d2c_05248957",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-14T23:28:33Z",
+      "side": 1,
+      "message": "Thank you",
+      "parentUuid": "85f44fb0_0ddb1237",
       "revId": "4f1696fb2727661ad9cb26fec6e6874dedecf30b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -62,6 +104,30 @@
       "revId": "4f1696fb2727661ad9cb26fec6e6874dedecf30b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4ed1bfc_236733ce",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-14T23:28:33Z",
+      "side": 1,
+      "message": "Yeah, that would be a serious bug that should be easy to find and fix.",
+      "parentUuid": "d0b0aecf_185e1ddf",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 42
+      },
+      "revId": "4f1696fb2727661ad9cb26fec6e6874dedecf30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
