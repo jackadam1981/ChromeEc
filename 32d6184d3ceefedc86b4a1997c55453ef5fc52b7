@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba8c34df_c6687a57",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3128,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-14T18:35:54Z",
+      "side": 0,
+      "message": "Why remove TASK_EVENT_WAKE from the mask and then add it back here?",
+      "revId": "32d6184d3ceefedc86b4a1997c55453ef5fc52b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
