@@ -98,6 +98,7 @@ int pd_check_vconn_swap(int port)
 	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
 }
 
+#if 0 /* using usb_pd_policy.c(common) declares */
 /* ----------------- Vendor Defined Messages ------------------ */
 /*
  * We don't have mux on pd evb and not define CONFIG_USBC_SS_MUX,
@@ -138,3 +139,4 @@ __override int svdm_dp_config(int port, uint32_t *payload)
 	/* Return length 0, means nothing needn't tx */
 	return 0;
 };
+#endif
