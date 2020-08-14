@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "840cd999_d7ac9cd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-14T21:00:35Z",
+      "side": 1,
+      "message": "Thanks.  I\u0027ll make my changes dependent on your change.",
+      "parentUuid": "277530d2_1df63db0",
+      "revId": "ec0921765dba611f49fde4d616f5ae698e85633f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96a69ea8_6c66d5ca",
         "filename": "chip/npcx/config_chip-npcx7.h",
         "patchSetId": 1
@@ -47,6 +65,30 @@
       "writtenOn": "2020-08-14T03:37:09Z",
       "side": 1,
       "message": "IMHO, this could just follow the same configuration as CHIP_VARIANT_NPCX7M7WC",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 43
+      },
+      "revId": "ec0921765dba611f49fde4d616f5ae698e85633f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6c9b90c_1cd146e6",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-14T21:00:35Z",
+      "side": 1,
+      "message": "The data ram base addresses are different for the NPCX797FC (0x200C0000) and NPCX797WC (0x200B0000). So I believe separate configs are needed.",
+      "parentUuid": "96a69ea8_6c66d5ca",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -79,6 +121,30 @@
       "revId": "ec0921765dba611f49fde4d616f5ae698e85633f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "630cc0bc_68416143",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-14T21:00:35Z",
+      "side": 1,
+      "message": "Ack - I\u0027ll update in the next patchset.",
+      "parentUuid": "d60abe79_8d545378",
+      "range": {
+        "startLine": 891,
+        "startChar": 0,
+        "endLine": 891,
+        "endChar": 60
+      },
+      "revId": "ec0921765dba611f49fde4d616f5ae698e85633f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
