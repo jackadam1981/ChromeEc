@@ -68,6 +68,18 @@ struct mkbp_state {
 static struct mkbp_state state;
 uint32_t mkbp_last_event_time;
 
+static void lock_mkbp_state(int lock)
+{
+	/* Must not call mutex_lock() before task_start(). */
+	if (!task_start_called())
+		return;
+
+	if (lock)
+		mutex_lock(&state.lock);
+	else
+		mutex_unlock(&state.lock);
+}
+
 #ifdef CONFIG_MKBP_EVENT_WAKEUP_MASK
 static uint32_t mkbp_event_wake_mask = CONFIG_MKBP_EVENT_WAKEUP_MASK;
 #endif /* CONFIG_MKBP_EVENT_WAKEUP_MASK */
@@ -215,7 +227,7 @@ static void activate_mkbp_with_events(uint32_t events_to_add)
 			!(events_to_add & mkbp_event_wake_mask);
 #endif /* CONFIG_MKBP_EVENT_WAKEUP_MASK */
 
-	mutex_lock(&state.lock);
+	lock_mkbp_state(1);
 	state.events |= events_to_add;
 
 	/* To skip the interrupt, we cannot have the EC_MKBP_EVENT_KEY_MATRIX */
@@ -227,7 +239,7 @@ static void activate_mkbp_with_events(uint32_t events_to_add)
 		state.interrupt = INTERRUPT_INACTIVE_TO_ACTIVE;
 		interrupt_id = ++state.interrupt_id;
 	}
-	mutex_unlock(&state.lock);
+	lock_mkbp_state(0);
 
 	/* If we don't need to send an interrupt we are done */
 	if (interrupt_id < 0)
@@ -240,14 +252,14 @@ static void activate_mkbp_with_events(uint32_t events_to_add)
 	 * If this was the last interrupt to the AP, update state;
 	 * otherwise the latest interrupt should update state.
 	 */
-	mutex_lock(&state.lock);
+	lock_mkbp_state(1);
 	if (state.interrupt == INTERRUPT_INACTIVE_TO_ACTIVE &&
 	    interrupt_id == state.interrupt_id) {
 		schedule_deferred = 1;
 		state.interrupt = rv == EC_SUCCESS ? INTERRUPT_ACTIVE
 						   : INTERRUPT_INACTIVE;
 	}
-	mutex_unlock(&state.lock);
+	lock_mkbp_state(0);
 
 	if (schedule_deferred) {
 		hook_call_deferred(&force_mkbp_if_events_data, SECOND);
@@ -265,14 +277,14 @@ static void force_mkbp_if_events(void)
 {
 	int toggled = 0;
 
-	mutex_lock(&state.lock);
+	lock_mkbp_state(1);
 	if (state.interrupt == INTERRUPT_ACTIVE) {
 		if (++state.failed_attempts < 3) {
 			state.interrupt = INTERRUPT_INACTIVE;
 			toggled = 1;
 		}
 	}
-	mutex_unlock(&state.lock);
+	lock_mkbp_state(0);
 
 	if (toggled)
 		CPRINTS("MKBP not cleared within threshold, toggling.");
@@ -291,7 +303,7 @@ static int set_inactive_if_no_events(void)
 {
 	int interrupt_cleared;
 
-	mutex_lock(&state.lock);
+	lock_mkbp_state(1);
 	interrupt_cleared = !state.events;
 	if (interrupt_cleared) {
 		state.interrupt = INTERRUPT_INACTIVE;
@@ -299,7 +311,7 @@ static int set_inactive_if_no_events(void)
 		/* Only simple tasks (i.e. gpio set or no-op) allowed here */
 		mkbp_set_host_active(0, NULL);
 	}
-	mutex_unlock(&state.lock);
+	lock_mkbp_state(0);
 
 	/* Cancel our safety net since the events were cleared. */
 	if (interrupt_cleared)
@@ -333,11 +345,11 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 		 * Find the next event to service.  We do this in a round-robin
 		 * way to make sure no event gets starved.
 		 */
-		mutex_lock(&state.lock);
+		lock_mkbp_state(1);
 		for (i = 0; i < EC_MKBP_EVENT_COUNT; ++i)
 			if (take_event_if_set((last + i) % EC_MKBP_EVENT_COUNT))
 				break;
-		mutex_unlock(&state.lock);
+		lock_mkbp_state(0);
 
 		if (i == EC_MKBP_EVENT_COUNT) {
 			if (set_inactive_if_no_events())
@@ -368,9 +380,9 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 		 */
 		data_size = src->get_data(resp + 1);
 		if (data_size == -EC_ERROR_BUSY) {
-			mutex_lock(&state.lock);
+			lock_mkbp_state(1);
 			state.events |= BIT(evt);
-			mutex_unlock(&state.lock);
+			lock_mkbp_state(0);
 		}
 	} while (data_size == -EC_ERROR_BUSY);
 
