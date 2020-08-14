@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "f347fd2f_2c781985",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-14T16:04:20Z",
+      "side": 1,
+      "message": "The overload would need to contain all the same checks as this copy, to ensure we aren\u0027t performing an illegal jump.  I only want to start messing with the reset flags once we know we have a bonafide request that\u0027s come in, and the fact that this function never exits makes it tricky to call from somewhere else.  So it seems like potential redundant code, unless we created a separate helper function to do the actual sysjump validation? Good idea or awkward idea?",
+      "parentUuid": "0777eb5a_7e82693c",
+      "range": {
+        "startLine": 566,
+        "startChar": 18,
+        "endLine": 566,
+        "endChar": 39
+      },
+      "revId": "98647101236d2f97ce54d07ca516b314be2b2668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bfaea21_2122a40d",
         "filename": "common/system.c",
         "patchSetId": 2
