@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ae0fa97_6971298e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-14T22:40:41Z",
+      "side": 0,
+      "message": "Seems like we might still want to interrupt a chunk if we have a desire to hard reset?",
+      "range": {
+        "startLine": 1979,
+        "startChar": 0,
+        "endLine": 1986,
+        "endChar": 2
+      },
+      "revId": "2debc2805c7ca8acd48540b3fdd49c90df06c13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

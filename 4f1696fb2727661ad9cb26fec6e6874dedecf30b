@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e36598f_b2811b2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-14T22:40:41Z",
+      "side": 1,
+      "message": "I\u0027m assuming that the DP setup flow was still able to run under normal circumstances though?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "4f1696fb2727661ad9cb26fec6e6874dedecf30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85f44fb0_0ddb1237",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-14T22:40:41Z",
+      "side": 1,
+      "message": "Overall looks good",
+      "revId": "4f1696fb2727661ad9cb26fec6e6874dedecf30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b0aecf_185e1ddf",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-14T22:40:41Z",
+      "side": 1,
+      "message": "I worry slightly about about what happens if we have a bug that causes the state machines to get stuck, but I suppose in that case we probably can\u0027t/shouldn\u0027t transmit anyway?",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 42
+      },
+      "revId": "4f1696fb2727661ad9cb26fec6e6874dedecf30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
