@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "44a0e458_64c6c05d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-14T22:50:32Z",
+      "side": 1,
+      "message": "Remove as that\u0027s no longer the case :)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 33
+      },
+      "revId": "cf9bde8df7099c19d4ab9bc3d13bdea36432d661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "403e7713_bd774219",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-14T22:50:32Z",
+      "side": 1,
+      "message": "Oh so close to CR+2 \n\nI ran just one more charge cycle on waddledee and drawlat and don\u0027t see any issues :) ",
+      "revId": "cf9bde8df7099c19d4ab9bc3d13bdea36432d661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a051a429_7f201428",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 6
