@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1d4235a_e83038e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-14T21:51:33Z",
+      "side": 1,
+      "message": "Needs BUG and BRANCH specifiers.  This should be caught by the pre-submit checks.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/README.md#Submitting-changes",
+      "revId": "1820dbf92afee010cadd0012af8772fa520f861d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
