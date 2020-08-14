@@ -39,6 +39,30 @@
       "revId": "ffac0aa8ace1b9945c2f4f39f6b0169d92648029",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aada758_8093d0b6",
+        "filename": "board/lazor/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2020-08-14T03:00:16Z",
+      "side": 1,
+      "message": "I was thinking of making everyone respects auto control when calling board_led_set_battery.\nBut I agree here is more intuitive and it probably only get called here.",
+      "parentUuid": "2b311aba_a9be73b4",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 25
+      },
+      "revId": "ffac0aa8ace1b9945c2f4f39f6b0169d92648029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
