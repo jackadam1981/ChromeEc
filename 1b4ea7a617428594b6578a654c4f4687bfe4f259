@@ -34,6 +34,24 @@
       "revId": "1b4ea7a617428594b6578a654c4f4687bfe4f259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa4bb993_65a1688b",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-14T17:50:32Z",
+      "side": 1,
+      "message": "I read sqr instead of sqrt. \nTo make the code more readable, I would do:\n\n#define BMI_ACCEL_100HZ 100\n\nsqrt_rate_ratio \u003d fp_div(fp_sqrtf(rate), fp_sqrtf(INT_TO_FP(BMI_ACCEL_100HZ)));\n\n[The compiler will calculate the constant at compilation time, hopefully]",
+      "parentUuid": "7ab47b62_6dc02b41",
+      "revId": "1b4ea7a617428594b6578a654c4f4687bfe4f259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
