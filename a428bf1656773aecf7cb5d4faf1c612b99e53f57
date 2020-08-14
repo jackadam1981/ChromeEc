@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28442370_18698f49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-14T16:37:58Z",
+      "side": 1,
+      "message": "l4 and g4 flash drivers look almost identical. I have a strong feeling that unifying them (putting the differences in config-stm32*.h) would be better in the long run. What do you think?",
+      "revId": "a428bf1656773aecf7cb5d4faf1c612b99e53f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
