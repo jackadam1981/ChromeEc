@@ -861,11 +861,18 @@ void mutex_lock(struct mutex *mtx)
 	uint32_t id = 1 << task_get_current();
 
 	/*
-	 * mutex_lock() must not be used in interrupt context (because we wait
-	 * if there is contention). Task ID is not valid before task_start()
-	 * (since current_task is scratchpad).
+	 * Task ID is not valid before task_start() (since current_task is
+	 * scratchpad), and no need for mutex locking before task switching has
+	 * begun.
 	 */
-	ASSERT(!in_interrupt_context() && task_start_called());
+	if (!task_start_called())
+		return;
+
+	/*
+	 * mutex_lock() must not be used in interrupt context (because we wait
+	 * if there is contention).
+	 */
+	ASSERT(!in_interrupt_context());
 
 	atomic_or(&mtx->waiters, id);
 
