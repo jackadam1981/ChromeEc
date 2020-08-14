@@ -16,6 +16,24 @@
       "revId": "660d68af60fa02cac7eaa21c75f2f6ed70c62eb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d595b0d9_20c65498",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-08-14T05:55:59Z",
+      "side": 1,
+      "message": "1.System can power on to OS without battery(both port OK).\n2.system keep power on when sysjump RO/RW in console(both port OK).",
+      "parentUuid": "666febe6_477b603a",
+      "revId": "660d68af60fa02cac7eaa21c75f2f6ed70c62eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
