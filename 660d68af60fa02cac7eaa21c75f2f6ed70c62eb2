@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "666febe6_477b603a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-14T03:45:06Z",
+      "side": 1,
+      "message": "Hi David, could you verify these CL chain in test case of DUT without battery and\n* boot the DUT\n* sysjump to RO or RW from VT2 console\n\nThanks.",
+      "revId": "660d68af60fa02cac7eaa21c75f2f6ed70c62eb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
