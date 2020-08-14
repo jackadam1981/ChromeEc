@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b41804ae_d867ba5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-08-14T02:58:00Z",
+      "side": 1,
+      "message": "We built two coreboot/ec versions with this patch and run flashrom to update coreboot and ec. The system is remain to S0. Also run sysjump RW/RO with ec console and check system is not shutdown. Mark as verified + 1, thanks Diana.",
+      "revId": "98647101236d2f97ce54d07ca516b314be2b2668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
