@@ -104,6 +104,30 @@
       "revId": "0ec0f871a314eaf88d77fbd6ab5b989d2e758103",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93abdb49_187ed4ca",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-14T22:08:32Z",
+      "side": 1,
+      "message": "I was thinking about the case the CL mentioned, i.e.\n1) Call mutex_lock before task switching\n2) Task switching started\n3) Call mutex_unlock\n\nUsually, the mutex_lock and mutex_unlock are paired to protect a small piece of code. In this above case, the mutex_look may be in some HOOK_INIT call, and the mutex_unlock has to be in some task context. This open end usage is problematic and considered to be a bad practice.",
+      "parentUuid": "0b38327d_106d33aa",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 9
+      },
+      "revId": "0ec0f871a314eaf88d77fbd6ab5b989d2e758103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
