@@ -51,6 +51,8 @@ DEFINE_integer 'jobs' "-1" 'Number of jobs to pass to make' 'j'
 # refs at the same time. Use the -o flag.
 DEFINE_boolean 'oneref' "${FLAGS_FALSE}" \
                'Build only one set of boards at a time. This limits mem.' 'o'
+DEFINE_boolean 'private' "${FLAGS_FALSE}" \
+               'Link the private repo/dir into test build source tree.' 'p'
 
 # Usage: assoc-add-keys <associate_array_name> [item1 [item2...]]
 assoc-add-keys() {
@@ -204,14 +206,20 @@ ORIGIN ?= $(realpath .)
 CRYPTOC_DIR ?= $(realpath ../../third_party/cryptoc)
 BOARDS ?= ${BOARDS[*]}
 
+LINKS ?= private
+
 .PHONY: all
 all: build-${OLD_REF} build-${NEW_REF}
 
 ec-%:
 	git clone --quiet --no-checkout \$(ORIGIN) \$@
+	# [ -d \$(ORIGIN)/private ] && ln -s \$(ORIGIN)/private \$@/private
 	git -C \$@ checkout --quiet \$(@:ec-%=%)
 
-build-%: ec-%
+\$(addprefix ec-%/,\$(LINKS)): ec-%
+	ln -s "\$(ORIGIN)/\$(notdir \$@)" "\$@"
+
+build-%: ec-% \$(addprefix ec-%/,\$(LINKS))
 	\$(MAKE) --no-print-directory -C \$(@:build-%=ec-%)                   \\
 		STATIC_VERSION=1                                              \\
 		CRYPTOCLIB=\$(CRYPTOC_DIR)                                    \\
