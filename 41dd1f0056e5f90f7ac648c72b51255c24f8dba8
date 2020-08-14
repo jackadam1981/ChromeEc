@@ -52,6 +52,24 @@
       "revId": "41dd1f0056e5f90f7ac648c72b51255c24f8dba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1933c8_b491480d",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-08-14T08:06:41Z",
+      "side": 1,
+      "message": "No. Some devices such as eve use DOUBLE_TAP event and define CONFIG_GESTURE_HOST_DETECTION. But the device doesn\u0027t use activity sensor. It controls LED via EC directly.",
+      "parentUuid": "b1f158c4_55bba002",
+      "revId": "41dd1f0056e5f90f7ac648c72b51255c24f8dba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
