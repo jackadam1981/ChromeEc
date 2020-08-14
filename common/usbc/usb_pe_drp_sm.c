@@ -2099,7 +2099,16 @@ static void pe_src_ready_run(int port)
 				return;
 			}
 		}
-	} else if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE)) {
+	}
+
+	/*
+	 * Make sure the PRL layer isn't busy with receiving or transmitting
+	 * chunked messages before attempting to transmit a new message.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES) && prl_is_busy(port))
+		return;
+
+	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE);
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return;
@@ -2851,7 +2860,16 @@ static void pe_snk_ready_run(int port)
 				return;
 			}
 		}
-	} else if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE)) {
+	}
+
+	/*
+	 * Make sure the PRL layer isn't busy with receiving or transmitting
+	 * chunked messages before attempting to transmit a new message.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES) && prl_is_busy(port))
+		return;
+
+	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE);
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return;
