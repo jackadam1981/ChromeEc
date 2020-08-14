@@ -16,6 +16,52 @@
       "revId": "e2d46fe22f5dfc4647b6ea381c7dae3ff4997ffd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83cf6d2e_946ced4a",
+        "filename": "board/terrador/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-14T18:17:42Z",
+      "side": 1,
+      "message": "Terrador needs both USBC_PORT_C0_BB_RETIMER_I2C_ADDR and USBC_PORT_C1_BB_RETIMER_I2C_ADDR defined.\n\nThis patchset causes a compile error on terrador.  Please make sure you run the pre-submit checks.\n\nSee https://chromium.googlesource.com/chromiumos/platform/ec/+/master/README.md#submitting-changes",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 40
+      },
+      "revId": "e2d46fe22f5dfc4647b6ea381c7dae3ff4997ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11d13934_95b57076",
+        "filename": "board/todor/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-14T18:17:42Z",
+      "side": 1,
+      "message": "Todor also needs both USBC_PORT_C0_BB_RETIMER_I2C_ADDR and USBC_PORT_C1_BB_RETIMER_I2C_ADDR defined.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "e2d46fe22f5dfc4647b6ea381c7dae3ff4997ffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
