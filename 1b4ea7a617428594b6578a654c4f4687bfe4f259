@@ -16,6 +16,24 @@
       "revId": "1b4ea7a617428594b6578a654c4f4687bfe4f259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab47b62_6dc02b41",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-14T07:18:49Z",
+      "side": 1,
+      "message": "Actually, it is sqrt(s/1000)/10, same with sqrt((s/1000) / 100).\nBut, yes, sqrt_rate_ratio will be 1 if rate is 100Hz.\nAnd this function will return the 1 * BMI_ACCEL_RMS_NOISE_100Hz (rms noise when rate is 100Hz).",
+      "parentUuid": "d52a1795_f12f4be4",
+      "revId": "1b4ea7a617428594b6578a654c4f4687bfe4f259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
