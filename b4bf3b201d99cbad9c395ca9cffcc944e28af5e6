@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "637eaf07_ad6efe66",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-14T18:58:22Z",
+      "side": 1,
+      "message": "If space isn\u0027t an issue on intelrvp boards, I would recommend just unconditionally enabling CONFIG_CRC8.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 20
+      },
+      "revId": "b4bf3b201d99cbad9c395ca9cffcc944e28af5e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
