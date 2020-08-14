@@ -16,6 +16,52 @@
       "revId": "98647101236d2f97ce54d07ca516b314be2b2668",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0777eb5a_7e82693c",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-14T15:54:15Z",
+      "side": 1,
+      "message": "do you think it is worth making an \"overload\" system_run_image_copy_with_flags so we don\u0027t have to change all of the callsites? The floating 0 in all of the calls is suspect (I would like to see a comment or a define for NO_FLAGS). Thoughts?",
+      "range": {
+        "startLine": 566,
+        "startChar": 18,
+        "endLine": 566,
+        "endChar": 39
+      },
+      "revId": "98647101236d2f97ce54d07ca516b314be2b2668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bfaea21_2122a40d",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-14T15:54:15Z",
+      "side": 1,
+      "message": "nit: you can always call this without the if check since add no flags has the same affect as no doing anything.",
+      "range": {
+        "startLine": 620,
+        "startChar": 1,
+        "endLine": 621,
+        "endChar": 24
+      },
+      "revId": "98647101236d2f97ce54d07ca516b314be2b2668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
