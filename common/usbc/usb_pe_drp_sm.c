@@ -3230,7 +3230,7 @@ static void pe_src_ping_run(int port)
  */
 static void pe_give_battery_cap_entry(int port)
 {
-	uint32_t payload = *(uint32_t *)(&rx_emsg[port].buf);
+	uint8_t *payload = rx_emsg[port].buf;
 	uint16_t *msg = (uint16_t *)tx_emsg[port].buf;
 
 	if (!IS_ENABLED(CONFIG_BATTERY))
@@ -3249,12 +3249,14 @@ static void pe_give_battery_cap_entry(int port)
 		/*
 		 * We only have one fixed battery,
 		 * so make sure batt cap ref is 0.
+		 * This value is the first byte after the headers.
 		 */
-		if (BATT_CAP_REF(payload) != 0) {
+		if (payload[4] != 0) {
 			/* Invalid battery reference */
 			msg[3] = 0;
 			msg[4] = 0;
-			msg[5] = 1;
+			/* Set invalid battery bit in response byte 8 */
+			msg[5] = 1 << 8;
 		} else {
 			uint32_t v;
 			uint32_t c;
@@ -3300,6 +3302,12 @@ static void pe_give_battery_cap_entry(int port)
 				}
 			}
 		}
+	} else {
+		/* Invalid battery reference */
+		msg[3] = 0;
+		msg[4] = 0;
+		/* Set invalid battery bit in response byte 8 */
+		msg[5] = 1 << 8;
 	}
 
 	/* Extended Battery Cap data is 9 bytes */
@@ -3321,7 +3329,7 @@ static void pe_give_battery_cap_run(int port)
  */
 static void pe_give_battery_status_entry(int port)
 {
-	uint32_t payload = *(uint32_t *)(&rx_emsg[port].buf);
+	uint8_t *payload = rx_emsg[port].buf;
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
 
 	if (!IS_ENABLED(CONFIG_BATTERY))
@@ -3332,10 +3340,11 @@ static void pe_give_battery_status_entry(int port)
 		/*
 		 * We only have one fixed battery,
 		 * so make sure batt cap ref is 0.
+		 * This value is the first byte after the headers.
 		 */
-		if (BATT_CAP_REF(payload) != 0) {
+		if (payload[4] != 0) {
 			/* Invalid battery reference */
-			*msg |= BSDO_INVALID;
+			*msg = BSDO_INVALID;
 		} else {
 			uint32_t v;
 			uint32_t c;
