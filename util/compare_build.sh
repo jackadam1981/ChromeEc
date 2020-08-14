@@ -209,6 +209,7 @@ all: build-${OLD_REF} build-${NEW_REF}
 
 ec-%:
 	git clone --quiet --no-checkout \$(ORIGIN) \$@
+	[ -d \$(ORIGIN)/private ] && ln -s \$(ORIGIN)/private \$@/private
 	git -C \$@ checkout --quiet \$(@:ec-%=%)
 
 build-%: ec-%
