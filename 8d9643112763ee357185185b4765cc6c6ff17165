@@ -16,6 +16,46 @@
       "revId": "8d9643112763ee357185185b4765cc6c6ff17165",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f61fc152_6af14c69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-14T15:56:52Z",
+      "side": 1,
+      "message": "Feel free to carry +2 after making nit change (or not)",
+      "revId": "8d9643112763ee357185185b4765cc6c6ff17165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3dad009_c24eff73",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-14T15:56:52Z",
+      "side": 1,
+      "message": "nit: you can use \n\n#define LTC4291_RESET_DELAY_US (20 * MSEC)\n\nto make is a little easier to read",
+      "range": {
+        "startLine": 46,
+        "startChar": 31,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "8d9643112763ee357185185b4765cc6c6ff17165",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
