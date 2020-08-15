@@ -16,6 +16,40 @@
       "revId": "b4b289277836aab266a0f946b12e2ba7691e1abb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ea5472b_d4746ead",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2020-08-15T05:59:39Z",
+      "side": 1,
+      "message": "Joe: I had this comment/question but forgot to publish it. Thoughts?",
+      "revId": "b4b289277836aab266a0f946b12e2ba7691e1abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84eba579_ab5e9a06",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2020-08-15T05:59:39Z",
+      "side": 1,
+      "message": "Let me know what you think about port numbering. For the console command I used 1-4 since that\u0027s how the datasheet numbers them but here I have 0-3. Not sure which is better but I probably ought to make them consistent.",
+      "revId": "b4b289277836aab266a0f946b12e2ba7691e1abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
