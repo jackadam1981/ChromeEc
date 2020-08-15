@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d890cb1_b9b4c1d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-08-15T07:03:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c04429be_316372e3",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "2b604ffb7da4f4cedb344bcb3b9f8ce6f4bc62cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c68b68ee_3d254835",
         "filename": "chip/npcx/config_chip-npcx7.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-14T21:44:35Z",
       "side": 1,
       "message": "This needs to be 0x200C0000 for the NPCX797FC.",
+      "range": {
+        "startLine": 99,
+        "startChar": 28,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "2b604ffb7da4f4cedb344bcb3b9f8ce6f4bc62cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa03b41_b6ec717f",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-08-15T07:03:44Z",
+      "side": 1,
+      "message": "There are total 384KB RAM (code RAM + data RAM) in both npcx797fc and npcx797wc.\nAlthough the datasheet documents the code/data RAM size is 320/62 KB, I reallocated it to 256/126 KB because the code RAM size is also limited by the flash size (i.e. 512KB/2 \u003d 256 KB.)",
+      "parentUuid": "c68b68ee_3d254835",
       "range": {
         "startLine": 99,
         "startChar": 28,
