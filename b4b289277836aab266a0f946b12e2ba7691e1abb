@@ -50,6 +50,24 @@
       "revId": "b4b289277836aab266a0f946b12e2ba7691e1abb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "713eb453_910b7130",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2020-08-15T15:53:40Z",
+      "side": 1,
+      "message": "Good point and thanks for raising the question. Assuming it doesn\u0027t break anything, I vote for switching to 0-based indexing for the console command. Let the hardware-specific details live close to the i2c call sights (as you do) and follow a familiar and consistent C lang pattern elsewhere.",
+      "parentUuid": "84eba579_ab5e9a06",
+      "revId": "b4b289277836aab266a0f946b12e2ba7691e1abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
