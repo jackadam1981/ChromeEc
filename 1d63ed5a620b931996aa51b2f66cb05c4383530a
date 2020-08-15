@@ -46,6 +46,30 @@
       "revId": "1d63ed5a620b931996aa51b2f66cb05c4383530a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6855ee06_68c0fff8",
+        "filename": "chip/stm32/flash-stm32g4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-15T00:24:26Z",
+      "side": 1,
+      "message": "Can you point me to the code where you think the l4 driver does 0-\u003eN?",
+      "parentUuid": "86107088_3f913173",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "1d63ed5a620b931996aa51b2f66cb05c4383530a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
