@@ -11,19 +11,25 @@
 # or special board group listed below. Items added to the list can be prefixed
 # with a + or - to enforce that it is added or removed from the active set of
 # boards. Boards are added or removed in the order in which they appear.
-# * all       - All boards that are built by the "buildall" target
-# * fp        - All relevant boards for fingerprint
-# * stm32     - All boards that use an STM32 chip
-# * stm32f4   - All boards that use an STM32F4 family of chip
-# * stm32h7   - All boards that use an STM32H7 family of chip
-# * npcx      - "
-# * mchp      - "
-# * ish       - "
-# * it83xx    - "
-# * lm4       - "
-# * mec1322   - "
-# * max32660  - "
-# * mt_scp    - "
+# * all         - All boards that are built by the "buildall" target
+# * fp          - All relevant boards for fingerprint
+# * stm32       - All boards that use an STM32 chip
+# * stm32f4     - All boards that use an STM32F4 family of chip
+# * stm32h7     - All boards that use an STM32H7 family of chip
+# * npcx        - "
+# * mchp        - "
+# * ish         - "
+# * it83xx      - "
+# * lm4         - "
+# * mec1322     - "
+# * max32660    - "
+# * mt_scp      - "
+# * cortex-m    - All boards that use an ARM Cortex-M core
+# * cortex-m0   - All boards that use an ARM Cortex-M0 core
+# * host        - All boards that use the "host" core
+# * minute-ia   - All boards that use an Intel Minute-IA core
+# * nds32       - All boards that use an Andes nds32 core
+# * riscv-rv32i - All boards that use an RISC-V RV32i core
 #
 # Example: --boards "+all -stm32"
 
@@ -42,6 +48,8 @@ DEFINE_string 'boards' "nocturne_fp" 'Boards to build (all, fp, stm32, hatch)' \
               'b'
 DEFINE_string 'ref1' "HEAD" 'Git reference (commit, branch, etc)'
 DEFINE_string 'ref2' "HEAD^" 'Git reference (commit, branch, etc)'
+DEFINE_boolean 'dry_run' "${FLAGS_FALSE}" \
+               'Print the board selection only without running the builds.' 'd'
 DEFINE_boolean 'keep' "${FLAGS_FALSE}" \
                'Remove the temp directory after comparison.' 'k'
 # Integer type can still be passed blank ("")
@@ -93,6 +101,17 @@ boards-with() {
   done
 }
 
+# Usage: boards-with-core CORE
+boards-with-core() {
+  local pattern="CORE=${1}\$"
+
+  # Invoke "make BOARD=<board> print-make-vars" for every available board.
+  # Run in parallel, or this takes a long time.
+  for b in $(make-print-boards); do
+    make BOARD="${b}" print-make-vars | grep -E -q "${pattern}" && echo "${b}" &
+  done
+}
+
 # Usage: parse-boards <associate_array_name> [board-grp1 [board-grp2...]]
 parse-boards() {
   # shellcheck disable=SC2034
@@ -121,10 +140,23 @@ parse-boards() {
     [mt_scp]="$(boards-with 'CHIP[[:space:]:=]*mt_scp')"
   )
 
+  # CORE types are not expanded automatically because boards-with-core() runs
+  # make on every board type and it takes a while. The CORE types are expanded
+  # on demand.
+  local -a CORE_GROUPS=(
+    "cortex-m"
+    "cortex-m0"
+    "host"
+    "minute-ia"
+    "nds32"
+    "riscv-rv32i"
+  )
+
   local -a BOARDS_VALID_RAW=( )
   mapfile -t BOARDS_VALID_RAW < <(basename -a board/*)
   local -A BOARDS_VALID=( )
   assoc-add-keys BOARDS_VALID "${!BOARD_GROUPS[@]}" "${BOARDS_VALID_RAW[@]}"
+  assoc-add-keys BOARDS_VALID "${CORE_GROUPS[@]}" "${CORE_GROUPS[@]}"
 
   # Parse boards selection
   local b name name_arr=( )
@@ -139,6 +171,9 @@ parse-boards() {
     # Check for expansion target
     if [[ -n "${BOARD_GROUPS[${name}]}" ]]; then
       name="${BOARD_GROUPS[${name}]}"
+    # Check for CORE expansion target
+    elif [[ "${CORE_GROUPS[*]}" == *"${name}"* ]]; then
+      name="$(boards-with-core "${name}")"
     fi
     read -d "" -r -a name_arr <<< "${name}"
     # Process addition or deletion
@@ -189,6 +224,10 @@ if [[ ${#BOARDS[@]} -eq 0 ]]; then
 fi
 echo "# Board Selection:"
 printf "%s\n" "${BOARDS[@]}" | sort | column
+
+if [[ "${FLAGS_dry_run}" == "${FLAGS_TRUE}" ]]; then
+  exit 0
+fi
 
 ##########################################################################
 # Runtime                                                                #
@@ -247,6 +286,7 @@ fi
 if [[ ${result} -ne 0 ]]; then
   echo >&2
   echo "# Failed to make one or more of the refs." >&2
+  echo "# ${TMP_DIR}"
   exit 1
 fi
 echo
