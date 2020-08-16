@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11f25a96_7247d549",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-16T17:49:55Z",
+      "side": 1,
+      "message": "This change seems to be required now that the parent CL is merged.  Without this change I see failures on bloonchipper and hatch_fp boards when running the compare_build.sh script.",
+      "revId": "a01b04d0d3395ac6f87404cba0bb71518d3a2168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
