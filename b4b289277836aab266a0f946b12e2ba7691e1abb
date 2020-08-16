@@ -36,6 +36,47 @@
     },
     {
       "key": {
+        "uuid": "f2440c70_486ab748",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-16T17:19:36Z",
+      "side": 1,
+      "message": "hi :)",
+      "parentUuid": "37e7461b_cf8a68ec",
+      "revId": "b4b289277836aab266a0f946b12e2ba7691e1abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e747d4_755c4442",
+        "filename": "board/endeavour/pse.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-16T17:19:36Z",
+      "side": 1,
+      "message": "nit: give these flags a name.\n\nSomething like\n#define LTC4291_FLAG_DETPB_FOO(port) (0x11 \u003c\u003c (port))",
+      "range": {
+        "startLine": 93,
+        "startChar": 29,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "b4b289277836aab266a0f946b12e2ba7691e1abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84eba579_ab5e9a06",
         "filename": "board/endeavour/pse.c",
         "patchSetId": 2
@@ -65,6 +106,29 @@
       "side": 1,
       "message": "Good point and thanks for raising the question. Assuming it doesn\u0027t break anything, I vote for switching to 0-based indexing for the console command. Let the hardware-specific details live close to the i2c call sights (as you do) and follow a familiar and consistent C lang pattern elsewhere.",
       "parentUuid": "84eba579_ab5e9a06",
+      "revId": "b4b289277836aab266a0f946b12e2ba7691e1abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d7f3769_9d71ddae",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5159,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-16T17:19:36Z",
+      "side": 1,
+      "message": "Is 4-byte align intended?",
+      "range": {
+        "startLine": 5159,
+        "startChar": 7,
+        "endLine": 5159,
+        "endChar": 18
+      },
       "revId": "b4b289277836aab266a0f946b12e2ba7691e1abb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
