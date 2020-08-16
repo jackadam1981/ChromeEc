@@ -16,6 +16,24 @@
       "revId": "a01b04d0d3395ac6f87404cba0bb71518d3a2168",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d2469a2_d8e506f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-16T21:01:13Z",
+      "side": 1,
+      "message": "Disregard - I thought my local checkout was sync\u0027ed past the parent CL, but it was not.  Once my local checkout includes the parent CL, compare_build.sh passes against bloonchipper and hatch_fp.",
+      "parentUuid": "11f25a96_7247d549",
+      "revId": "a01b04d0d3395ac6f87404cba0bb71518d3a2168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
