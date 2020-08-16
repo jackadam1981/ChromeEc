@@ -11,19 +11,25 @@
 # or special board group listed below. Items added to the list can be prefixed
 # with a + or - to enforce that it is added or removed from the active set of
 # boards. Boards are added or removed in the order in which they appear.
-# * all       - All boards that are built by the "buildall" target
-# * fp        - All relevant boards for fingerprint
-# * stm32     - All boards that use an STM32 chip
-# * stm32f4   - All boards that use an STM32F4 family of chip
-# * stm32h7   - All boards that use an STM32H7 family of chip
-# * npcx      - "
-# * mchp      - "
-# * ish       - "
-# * it83xx    - "
-# * lm4       - "
-# * mec1322   - "
-# * max32660  - "
-# * mt_scp    - "
+# * all         - All boards that are built by the "buildall" target
+# * fp          - All relevant boards for fingerprint
+# * stm32       - All boards that use an STM32 chip
+# * stm32f4     - All boards that use an STM32F4 family of chip
+# * stm32h7     - All boards that use an STM32H7 family of chip
+# * npcx        - "
+# * mchp        - "
+# * ish         - "
+# * it83xx      - "
+# * lm4         - "
+# * mec1322     - "
+# * max32660    - "
+# * mt_scp      - "
+# * cortex-m    - All boards that use an ARM Cortex-M core
+# * cortex-m0   - All boards that use an ARM Cortex-M0 core
+# * host        - All boards that use the "host" core
+# * minute-ia   - All boards that use an Intel Minute-IA core
+# * nds32       - All boards that use an Andes nds32 core
+# * riscv-rv32i - All boards that use an RISC-V RV32i core
 #
 # Example: --boards "+all -stm32"
 
@@ -42,6 +48,8 @@ DEFINE_string 'boards' "nocturne_fp" 'Boards to build (all, fp, stm32, hatch)' \
               'b'
 DEFINE_string 'ref1' "HEAD" 'Git reference (commit, branch, etc)'
 DEFINE_string 'ref2' "HEAD^" 'Git reference (commit, branch, etc)'
+DEFINE_boolean 'dry_run' "${FLAGS_FALSE}" \
+               'Print the board selection only without running the builds.' 'd'
 DEFINE_boolean 'keep' "${FLAGS_FALSE}" \
                'Remove the temp directory after comparison.' 'k'
 # Integer type can still be passed blank ("")
@@ -54,21 +62,23 @@ DEFINE_boolean 'oneref' "${FLAGS_FALSE}" \
 
 # Usage: assoc-add-keys <associate_array_name> [item1 [item2...]]
 assoc-add-keys() {
-  local -n arr="${1}"
+  local -n arr_add="${1}"
   shift
 
   for key in "${@}"; do
-    arr["${key}"]="${key}"
+    # shellcheck disable=SC2034
+    arr_add["${key}"]="${key}"
   done
 }
 
 # Usage: assoc-rm-keys <associate_array_name> [item1 [item2...]
 assoc-rm-keys() {
-  local -n arr="${1}"
+  # shellcheck disable=SC2034
+  local -n arr_rm="${1}"
   shift
 
   for key in "${@}"; do
-    unset arr["${key}"]
+    unset arr_rm["${key}"]
   done
 }
 
@@ -84,19 +94,49 @@ make-print-boards() {
   cat "${file}"
 }
 
-# Usage: boards-with CHIP
-boards-with() {
-  local pattern="${1}"
+# Usage: make-print-boards-vars <associate_array_name>
+make-print-make-vars() {
+  local -n arr_make_board_vars="$1"
+  local board_vars_dir="${TMP_DIR}/board-vars"
+  local file
 
+  if [[ ! -f "${board_vars_dir}" ]]; then
+    mkdir -p "${board_vars_dir}"
+  fi
+
+  # Run "make BOARD=<board> print-make-vars" for every board type
+  # saving the output to a file so it can be run in parallel.
+  # Associative array stores the name of the file containing the make output.
   for b in $(make-print-boards); do
-    grep -E -q "${pattern}" "board/${b}/build.mk" && echo "${b}"
+    file="${board_vars_dir}/${b}-vars"
+    make BOARD="${b}" print-make-vars >"${file}" &
+    # shellcheck disable=SC2034
+    arr_make_board_vars["${b}"]="${file}"
+  done
+
+  # Wait for sub-processes to write all the files
+  wait
+}
+
+# Usage: boards-with <associate_array_name> PATTERN
+boards-with() {
+  local -n arr_find_board_vars="$1"
+  local pattern="${2}"
+
+  for b in "${!arr_find_board_vars[@]}"; do
+    grep -E -q "${pattern}" "${arr_find_board_vars[${b}]}" && echo "${b}"
   done
 }
 
-# Usage: parse-boards <associate_array_name> [board-grp1 [board-grp2...]]
+# Usage: parse-boards <board_associate_array_name>
+#                     <board_vars_associate_array_name>
+#                     [board-grp1 [board-grp2...]]
 parse-boards() {
-  # shellcheck disable=SC2034
+  # shellcheck disable=SC2034 # boards used indirectly
   local -n boards="$1"
+  # shellcheck disable=SC2034 # board_vars used indirectly
+  local -n board_vars="$2"
+  shift
   shift
 
   # Board groups
@@ -108,17 +148,24 @@ parse-boards() {
     # make-print-boards already filters out the skipped boards
     [all]="$(make-print-boards)"
     [fp]="dartmonkey bloonchipper nucleo-dartmonkey nucleo-h743zi"
-    [stm32]="$(boards-with 'CHIP[[:space:]:=]*stm32')"
-    [stm32f4]="$(boards-with 'CHIP_VARIANT[[:space:]:=]*stm32f4')"
-    [stm32h7]="$(boards-with 'CHIP_VARIANT[[:space:]:=]*stm32h7')"
-    [npcx]="$(boards-with 'CHIP[[:space:]:=]*npcx')"
-    [mchp]="$(boards-with 'CHIP[[:space:]:=]*mchp')"
-    [ish]="$(boards-with 'CHIP[[:space:]:=]*ish')"
-    [it83xx]="$(boards-with 'CHIP[[:space:]:=]*it83xx')"
-    [lm4]="$(boards-with 'CHIP[[:space:]:=]*lm4')"
-    [mec1322]="$(boards-with 'CHIP[[:space:]:=]*mec1322')"
-    [max32660]="$(boards-with 'CHIP[[:space:]:=]*max32660')"
-    [mt_scp]="$(boards-with 'CHIP[[:space:]:=]*mt_scp')"
+    [stm32]="$(boards-with board_vars 'CHIP[[:space:]=]*stm32')"
+    [stm32f4]="$(boards-with board_vars 'CHIP_VARIANT[[:space:]=]*stm32f4')"
+    [stm32h7]="$(boards-with board_vars 'CHIP_VARIANT[[:space:]=]*stm32h7')"
+    [npcx]="$(boards-with board_vars 'CHIP[[:space:]=]*npcx')"
+    [mchp]="$(boards-with board_vars 'CHIP[[:space:]=]*mchp')"
+    [ish]="$(boards-with board_vars 'CHIP[[:space:]=]*ish')"
+    [it83xx]="$(boards-with board_vars 'CHIP[[:space:]=]*it83xx')"
+    [lm4]="$(boards-with board_vars 'CHIP[[:space:]:=]*lm4')"
+    [mec1322]="$(boards-with board_vars 'CHIP[[:space:]=]*mec1322')"
+    [max32660]="$(boards-with board_vars 'CHIP[[:space:]=]*max32660')"
+    [mt_scp]="$(boards-with board_vars 'CHIP[[:space:]=]*mt_scp')"
+    # CORE types
+    [cortex-m]="$(boards-with board_vars 'CORE[[:space:]=]*cortex-m$')"
+    [cortex-m0]="$(boards-with board_vars 'CORE[[:space:]=]*cortex-m0$')"
+    [host]="$(boards-with board_vars 'CORE[[:space:]=]*host$')"
+    [minute-ia]="$(boards-with board_vars 'CORE[[:space:]=]*minute-ia$')"
+    [nds32]="$(boards-with board_vars 'CORE[[:space:]=]*nds32')"
+    [riscv-rv32i]="$(boards-with board_vars 'CORE[[:space:]=]*riscv-rv32i')"
   )
 
   local -a BOARDS_VALID_RAW=( )
@@ -180,8 +227,13 @@ else
 fi
 
 declare -A BOARDS=( )
+# shellcheck disable=SC2034 # BOARD_VARS only used indireclty.
+declare -A BOARD_VARS=( )
+
+make-print-make-vars BOARD_VARS
+
 read -r -a FLAGS_boards <<< "${FLAGS_boards}"
-parse-boards BOARDS "${FLAGS_boards[@]}" || exit $?
+parse-boards BOARDS BOARD_VARS "${FLAGS_boards[@]}" || exit $?
 
 if [[ ${#BOARDS[@]} -eq 0 ]]; then
   echo "# Error - No boards selected" >&2
@@ -189,6 +241,12 @@ if [[ ${#BOARDS[@]} -eq 0 ]]; then
 fi
 echo "# Board Selection:"
 printf "%s\n" "${BOARDS[@]}" | sort | column
+
+if [[ "${FLAGS_dry_run}" == "${FLAGS_TRUE}" ]]; then
+  echo "# Removing temp directory"
+  rm -rf "${TMP_DIR}"
+  exit 0
+fi
 
 ##########################################################################
 # Runtime                                                                #
@@ -247,6 +305,7 @@ fi
 if [[ ${result} -ne 0 ]]; then
   echo >&2
   echo "# Failed to make one or more of the refs." >&2
+  echo "# ${TMP_DIR}"
   exit 1
 fi
 echo
