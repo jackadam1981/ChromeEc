@@ -31,6 +31,9 @@
 #define CONFIG_CHARGER_OTG
 #undef  CONFIG_CHARGER_SINGLE_CHIP
 
+/* PWM */
+#define CONFIG_PWM
+
 /* Sensors */
 #define CONFIG_ACCEL_BMA255		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
