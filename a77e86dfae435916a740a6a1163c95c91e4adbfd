@@ -22,6 +22,30 @@
       "revId": "a77e86dfae435916a740a6a1163c95c91e4adbfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd323606_feb7bd01",
+        "filename": "board/terrador/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-08-17T01:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1e65fd6_95274323",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "a77e86dfae435916a740a6a1163c95c91e4adbfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
