@@ -446,6 +446,9 @@ static void sm5803_init(int chgnum)
 
 	/* Configure charger insertion interrupts */
 	rv |= main_write8(chgnum, SM5803_REG_INT1_EN, SM5803_INT1_CHG);
+	/* Enable end of charge interrupts for logging */
+	rv |= main_write8(chgnum, SM5803_REG_INT4_EN, SM5803_INT4_CHG_FAIL |
+						      SM5803_INT4_CHG_DONE);
 
 	/* Set TINT interrupts for 360 K and 330 K */
 	rv |= meas_write8(chgnum, SM5803_REG_TINT_HIGH_TH,
@@ -504,6 +507,7 @@ void sm5803_handle_interrupt(int chgnum)
 	enum ec_error_list rv;
 	int int_reg, meas_reg;
 	static bool throttled;
+	int int_reg4;
 
 	/* Note: Interrupt registers are clear on read */
 	rv = main_read8(chgnum, SM5803_REG_INT1_REQ, &int_reg);
@@ -512,6 +516,20 @@ void sm5803_handle_interrupt(int chgnum)
 			chgnum);
 		return;
 	}
+
+	rv = main_read8(chgnum, SM5803_REG_INT4_REQ, &int_reg4);
+	if (rv) {
+		CPRINTS("%s %d: Failed to read int4 register", CHARGER_NAME,
+			chgnum);
+		return;
+	}
+
+	if (int_reg4 & SM5803_INT4_CHG_FAIL)
+		CPRINTS("%s %d: CHG_FAIL_INT fired!!!", CHARGER_NAME, chgnum);
+
+	if (int_reg4 & SM5803_INT4_CHG_DONE)
+		CPRINTS("%s %d: CHG_DONE_INT fired!!!", CHARGER_NAME, chgnum);
+
 
 	if (int_reg & SM5803_INT1_CHG) {
 		rv = main_read8(chgnum, SM5803_REG_STATUS1, &meas_reg);
