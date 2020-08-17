@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8aa2b5c9_937297c9",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-08-17T00:15:16Z",
+      "side": 1,
+      "message": "Do we need to enable below Flags?\n\nCONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG\u003dy\nCONFIG_USB_MUX_RUNTIME_CONFIG\u003dy\nCONFIG_USB_PD_DEBUG_LEVEL\u003dy\nCONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE\u003dy",
+      "revId": "3e403b3bf71e2084759a6803807ca2cdf73f2abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
