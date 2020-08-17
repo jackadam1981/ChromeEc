@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ba65e60_9f585658",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-08-17T21:19:35Z",
+      "side": 1,
+      "message": "Something like \"Add chip data location parameter to _plat__NVEnable\".\nTPM2 spec doesn\u0027t prescribe us what to do in this case.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "3788e278b82d0038d6f3b9f5d2f65d5387a33c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b234c0_c1d70424",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2020-08-17T21:19:35Z",
+      "side": 1,
+      "message": "how exactly? to make sure that the right invocation was used.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "3788e278b82d0038d6f3b9f5d2f65d5387a33c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
