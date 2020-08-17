@@ -34,6 +34,24 @@
       "revId": "ef539f1b13ad713bee4a14122ab9eedb0c8df093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3981db8f_d881b78c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-17T23:15:11Z",
+      "side": 1,
+      "message": "BTW, another parameter BATTERY_LEVEL_SHUTDOWN is 3%. EC will enter hibernation at the battery \u003c\u003d 3%. The current default CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC 1% doesn\u0027t have any meaning.",
+      "parentUuid": "dec4e948_7322df1c",
+      "revId": "ef539f1b13ad713bee4a14122ab9eedb0c8df093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
