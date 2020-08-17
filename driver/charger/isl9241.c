@@ -131,13 +131,20 @@ static enum ec_error_list isl9241_get_option(int chgnum, int *option)
 	int rv;
 	uint32_t controls;
 	int reg;
+	int i;
 
 	rv = isl9241_read(chgnum, ISL9241_REG_CONTROL0, &reg);
 	if (rv)
 		return rv;
 
 	controls = reg;
-	rv = isl9241_read(chgnum, ISL9241_REG_CONTROL1, &reg);
+
+	for (i = 0; i < 10; i++) {
+		rv = isl9241_read(chgnum, ISL9241_REG_CONTROL1, &reg);
+		ccprintf("a3C=%x/%d/%d\n", reg, i, rv);
+		if (rv == EC_SUCCESS && reg != 0xff03)
+			break;
+	}
 	if (rv)
 		return rv;
 
@@ -307,8 +314,17 @@ static enum ec_error_list isl9241_post_init(int chgnum)
 static enum ec_error_list isl9241_discharge_on_ac(int chgnum, int enable)
 {
 	int rv;
+	int i;
+	int reg;
 
 	mutex_lock(&control1_mutex);
+
+	for (i = 0; i < 10; i++) {
+		rv = isl9241_read(chgnum, ISL9241_REG_CONTROL1, &reg);
+		ccprintf("b3C=%x/%d/%d\n", reg, i, rv);
+		if (rv == EC_SUCCESS && reg != 0xff03)
+			break;
+	}
 
 	rv = isl9241_update(chgnum, ISL9241_REG_CONTROL1,
 			    ISL9241_CONTROL1_LEARN_MODE,
