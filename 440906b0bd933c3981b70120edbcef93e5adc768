@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11feae07_8936c829",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-17T22:21:05Z",
+      "side": 1,
+      "message": "What was the measurable difference?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 43
+      },
+      "revId": "440906b0bd933c3981b70120edbcef93e5adc768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8aa7d2f_08c28efb",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-17T22:21:05Z",
+      "side": 1,
+      "message": "nit: mismatch with the code.  Out of curiosity, is either pull better for the power consumption?",
+      "range": {
+        "startLine": 130,
+        "startChar": 19,
+        "endLine": 130,
+        "endChar": 37
+      },
+      "revId": "440906b0bd933c3981b70120edbcef93e5adc768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b1040de_a0f124fc",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-17T22:21:05Z",
+      "side": 1,
+      "message": "Would GPIO85 also be one of the disconnected?",
+      "revId": "440906b0bd933c3981b70120edbcef93e5adc768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
