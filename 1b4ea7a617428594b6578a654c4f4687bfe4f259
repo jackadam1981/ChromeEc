@@ -52,6 +52,24 @@
       "revId": "1b4ea7a617428594b6578a654c4f4687bfe4f259",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "790342d0_dba17cc0",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-17T17:37:55Z",
+      "side": 1,
+      "message": "I think fp_sqrtf(fp_div(rate, INT_TO_FP(BMI_ACCEL_100Hz))) is better for the readability.",
+      "parentUuid": "aa4bb993_65a1688b",
+      "revId": "1b4ea7a617428594b6578a654c4f4687bfe4f259",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
