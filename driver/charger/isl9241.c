@@ -131,15 +131,22 @@ static enum ec_error_list isl9241_get_option(int chgnum, int *option)
 	int rv;
 	uint32_t controls;
 	int reg;
+	int i;
 
 	rv = isl9241_read(chgnum, ISL9241_REG_CONTROL0, &reg);
 	if (rv)
 		return rv;
 
 	controls = reg;
-	rv = isl9241_read(chgnum, ISL9241_REG_CONTROL1, &reg);
-	if (rv)
-		return rv;
+
+	for (i = 0; i < 10; i++) {
+		rv = isl9241_read(chgnum, ISL9241_REG_CONTROL1, &reg);
+		ccprintf("3C=%x/%d/%d\n", reg, i, rv);
+		if (rv)
+			return rv;
+		if (reg != 0xff03)
+			break;
+	}
 
 	controls |= reg << 16;
 	*option = controls;
