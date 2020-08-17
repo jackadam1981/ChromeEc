@@ -16,6 +16,52 @@
       "revId": "ae2d86ea81cc0646f89d578b4fa44122bc92b70d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "985c5b7a_5e1880a4",
+        "filename": "board/terrador/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-17T17:42:06Z",
+      "side": 1,
+      "message": "This should be I2C address 0x40. The Burnside Bridge I2C address always defaults to 0x40, unless a shared NVM configuration is used (bb_usb_control.shared_nvm \u003d true).",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 45
+      },
+      "revId": "ae2d86ea81cc0646f89d578b4fa44122bc92b70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23976fe5_12caf80d",
+        "filename": "board/todor/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-17T17:42:06Z",
+      "side": 1,
+      "message": "This also should be I2C address 0x40.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 45
+      },
+      "revId": "ae2d86ea81cc0646f89d578b4fa44122bc92b70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
