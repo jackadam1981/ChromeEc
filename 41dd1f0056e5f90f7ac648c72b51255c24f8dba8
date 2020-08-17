@@ -70,6 +70,24 @@
       "revId": "41dd1f0056e5f90f7ac648c72b51255c24f8dba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c244175_c6c478ad",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-17T08:32:17Z",
+      "side": 1,
+      "message": "So, we will need the board.h to define like:\nenum sensor_id {\n    LID_ACCEL \u003d 0,\n    ...\n#ifdef CONFIG_GESUTRE_HOST_SENSOR\n    ACTIVITY_SENSOR,\n#endif\n    SENSOR_COUNT\n}\nand, check if ACTIVITY_SENSOR is present when the CONFIG_BODY_DETECTION is defined?\n\nThe motion_sense.h has also defined the ALL_MOTION_SENSORS to handle extra activity or orientation sensor present in motion_sense.c. This is only used for MOTIONSENSE_CMD_DUMP. Shall we eliminate ALL_MOTION_SENSORS?",
+      "parentUuid": "fd1933c8_b491480d",
+      "revId": "41dd1f0056e5f90f7ac648c72b51255c24f8dba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
