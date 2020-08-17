@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e8c0de4d_bd69b71d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-08-17T22:28:55Z",
+      "side": 1,
+      "message": "Table 41. USB-C Port Connection State Definition from retimer spec 1.26 mentions to set the USB 2.0 bit irrespective of mux state.\n\nAlso according to retimer spec 1.43, it doesn\u0027t mention to set this bit in case of specific mux state unlike the other bits.",
+      "parentUuid": "fc379096_97f36e1f",
+      "revId": "42d38234c3847c6c5c369eef8c2a492635b79795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "649ca018_fd5d861c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "42d38234c3847c6c5c369eef8c2a492635b79795",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b2ede39_fd1313be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-08-17T22:28:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "649ca018_fd5d861c",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "42d38234c3847c6c5c369eef8c2a492635b79795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
