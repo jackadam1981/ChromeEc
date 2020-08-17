@@ -865,10 +865,11 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 
 #ifdef CONFIG_USB_PD_TCPMV1_DEBUG
-	if (debug_level > 0)
+	if (debug_level > 0) {
 		CPRINTF("C%d st%d %s\n", port, next_state,
 					 pd_state_names[next_state]);
-	else
+		cflush();
+	} else
 #endif
 		CPRINTF("C%d st%d\n", port, next_state);
 }
@@ -2787,8 +2788,8 @@ void schedule_deferred_pd_interrupt(const int port)
  */
 void pd_interrupt_handler_task(void *p)
 {
-	const int port = (int) ((intptr_t) p);
-	const int port_mask = (PD_STATUS_TCPC_ALERT_0 << port);
+	const int port = (int) ((intptr_t) p); /* port index start from BIT(0) */
+	const int port_mask = (PD_STATUS_TCPC_ALERT_0 << port); /* port index start from BIT(3) */
 	struct {
 		int count;
 		timestamp_t time;
@@ -2798,10 +2799,14 @@ void pd_interrupt_handler_task(void *p)
 
 	pd_int_task_id[port] = task_get_current();
 
+	ccprints("p%d In TCPC INT task", port);
+	cflush();
 	while (1) {
 		const int evt = task_wait_event(-1);
 
 		if (evt & PD_PROCESS_INTERRUPT) {
+			ccprints("p%d PD_PROCESS_INTERRUPT evt", port);
+			cflush();
 			/*
 			 * While the interrupt signal is asserted; we have more
 			 * work to do. This effectively makes the interrupt a

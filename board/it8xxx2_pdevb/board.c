@@ -11,7 +11,9 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "timer.h"
-#include "usb_pd_tcpm.h"
+#include "tcpm.h"
+#include "tcpci.h"
+#include "usb_pd.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
@@ -47,6 +49,15 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		/* Alert is active-low, push-pull */
 		.flags = 0,
 	},
+	[USB_PD_PORT_ITE_2] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = IT83XX_I2C_CH_E,
+			.addr_flags = 0x52, /* AD0 and AD1 both high, I2C driver auto shift this value */
+		},
+		.drv = &tcpci_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
+	},
 };
 
 void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
@@ -64,10 +75,8 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 	} else if (port == USBPD_PORT_B) {
 		gpio_set_level(GPIO_USBPD_PORTB_CC2_VCONN, cc2_enabled);
 		gpio_set_level(GPIO_USBPD_PORTB_CC1_VCONN, cc1_enabled);
-	} else if (port == USBPD_PORT_C) {
-		gpio_set_level(GPIO_USBPD_PORTC_CC2_VCONN, cc2_enabled);
-		gpio_set_level(GPIO_USBPD_PORTC_CC1_VCONN, cc1_enabled);
 	}
+	/* NOTE: Control TCPC port C,D Vconn En/Dis by tcpci_tcpm_drv */
 
 	CPRINTS("p%d Vconn cc1 %d, cc2 %d (On/Off)", port, cc1_enabled,
 		cc2_enabled);
@@ -75,6 +84,8 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 
 void board_pd_vbus_ctrl(int port, int enabled)
 {
+	int rv;
+
 	CPRINTS("p%d Vbus %d(En/Dis)", port, enabled);
 
 	if (port == USBPD_PORT_A) {
@@ -94,13 +105,24 @@ void board_pd_vbus_ctrl(int port, int enabled)
 		}
 		gpio_set_level(GPIO_USBPD_PORTB_VBUS_DROP, 0);
 	} else if (port == USBPD_PORT_C) {
-		gpio_set_level(GPIO_USBPD_PORTC_VBUS_INPUT, !enabled);
-		gpio_set_level(GPIO_USBPD_PORTC_VBUS_OUTPUT, enabled);
-		if (!enabled) {
-			gpio_set_level(GPIO_USBPD_PORTC_VBUS_DROP, 1);
-			udelay(10*MSEC); /* 10ms is a try and error value */
+		/* Control TCPC En/Dis Vbus */
+		if (enabled) {
+			/* Disable sink Vbus */
+			rv = tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SNK_CTRL_LOW);
+			if (rv)
+				CPRINTS("Disable TCPC sink Vbus fail");
+			tcpc_discharge_vbus(port, 0);
+			/* Provide Vbus */
+			rv = tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_HIGH);
+			if (rv)
+				CPRINTS("TCPC Provide Vbus fail");
+		} else {
+			/* Disable source Vbus */
+			rv = tcpc_write(port, TCPC_REG_COMMAND, TCPC_REG_COMMAND_SRC_CTRL_LOW);
+			tcpc_discharge_vbus(port, 1); /* wired, keep discharge ? if we're snk ?  */
+			if (rv)
+				CPRINTS("Disable TCPC source Vbus fail");
 		}
-		gpio_set_level(GPIO_USBPD_PORTC_VBUS_DROP, 0);
 	}
 
 	if (enabled)
@@ -111,6 +133,47 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
 	CPRINTS("p%d %s", port, __func__);
+}
+
+void usb_c2_interrupt(enum gpio_signal s)
+{
+	CPRINTS("detect TCPC alert signal");
+	/*
+	 * The interrupt line is only for the TCPC port2.
+	 * Schedule INT task of port2 to check alert status.
+	 */
+	schedule_deferred_pd_interrupt(2);
+}
+
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+	int regval;
+
+	/* If not alert, then return */
+	if (gpio_get_level(GPIO_USB_C2_INT_ODL)) {
+		CPRINTS("Alert pin not Low, return");
+		cflush();
+		return status;
+	}
+
+	/*
+	 * The interrupt line is only for the TCPC port2.
+	 * Therefore, INT task read port2 alert status and report.
+	 */
+	if (!tcpc_read16(2, TCPC_REG_ALERT, &regval)) {
+		/* The TCPCI Rev 1.0 spec says to ignore bits 14:12. */
+		if (!(tcpc_config[0].flags & TCPC_FLAGS_TCPCI_REV2_0))
+			regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
+
+		if (regval)
+			status |= PD_STATUS_TCPC_ALERT_2;
+
+		CPRINTS("port_mask 0x%x(Bit5) change alert status", status);
+		cflush();
+	}
+
+	return status;
 }
 
 /*

@@ -60,9 +60,6 @@ int pd_snk_is_vbus_provided(int port)
 	case USBPD_PORT_B:
 		mv = adc_read_channel(ADC_VBUSSB);
 		break;
-	case USBPD_PORT_C:
-		mv = adc_read_channel(ADC_VBUSSC);
-		break;
 	}
 
 	return mv > PD_VBUS_PROVIDED_THRESHOLD;
@@ -72,8 +69,11 @@ int pd_set_power_supply_ready(int port)
 {
 	/* Provide VBUS */
 	board_pd_vbus_ctrl(port, 1);
-	/* Vbus provided or not */
-	return !pd_snk_is_vbus_provided(port);
+	/*
+	 * Vbus provided or not
+	 * NOTE:Not sure if port C,D need to check Vbus provided or not.
+	 */
+	return ((port == USBPD_PORT_A || port == USBPD_PORT_B) ? !pd_snk_is_vbus_provided(port) : EC_SUCCESS);
 }
 
 void pd_power_supply_reset(int port)
