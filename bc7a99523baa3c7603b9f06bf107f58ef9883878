@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62b9a51e_92c5e0a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-17T17:32:44Z",
+      "side": 1,
+      "message": "I cherry-picked this CL and ran \"util/compare_board.sh -b npcx\".  This confirmed that output binaries are not change by this CL. ",
+      "revId": "bc7a99523baa3c7603b9f06bf107f58ef9883878",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
