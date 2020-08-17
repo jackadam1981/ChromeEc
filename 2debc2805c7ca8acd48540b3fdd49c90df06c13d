@@ -46,6 +46,30 @@
       "revId": "2debc2805c7ca8acd48540b3fdd49c90df06c13d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91dab79_1a788b68",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-17T21:03:07Z",
+      "side": 0,
+      "message": "I thought the k-codes would allow a hard reset to be easily detectable during the sequence?  I haven\u0027t worked with the chunked messages much though, so I could be wrong there.",
+      "parentUuid": "7092dabd_b96cbba3",
+      "range": {
+        "startLine": 1979,
+        "startChar": 0,
+        "endLine": 1986,
+        "endChar": 2
+      },
+      "revId": "2debc2805c7ca8acd48540b3fdd49c90df06c13d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

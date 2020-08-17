@@ -84,6 +84,23 @@
     },
     {
       "key": {
+        "uuid": "53a190e1_a12a3c05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-17T21:03:07Z",
+      "side": 1,
+      "message": "Looks good for the PE.  Jett, want to weigh in on the PRL portion as the PRL owner? ",
+      "revId": "4f1696fb2727661ad9cb26fec6e6874dedecf30b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0b0aecf_185e1ddf",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 2
