@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "5300005a_e9ce5367",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-08-17T23:18:53Z",
+      "side": 1,
+      "message": "Hi Daisuke, can you advice on how to maintain the comment together?\n\nPreviously this was written as\n\n  if (IS_ENABLED(...))\n      /* comment here */\n      one-line here;\n\nAnd I think that\u0027s not a good idea and suggested adding { }.\n\nOr are you suggesting to move comment before the if-block? e.g.,\n\n  /* comment here, although it\u0027s only valid when the if is true */\n  if (IS_ENABLED(...))\n       one-line here;",
+      "parentUuid": "7d0f2591_5bbf671a",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 2
+      },
+      "revId": "4586a8331bc151e7b220564ff4a7a5d476ba08eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93e0edd2_1a83da37",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 4
