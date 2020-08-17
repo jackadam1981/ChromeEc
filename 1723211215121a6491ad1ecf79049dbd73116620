@@ -81,6 +81,30 @@
       "revId": "1723211215121a6491ad1ecf79049dbd73116620",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c14774bd_ea9c18d2",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-08-17T02:07:30Z",
+      "side": 1,
+      "message": "Yes, sorry, I meant IS_ENABLED.\nAh, you\u0027re right, the BUTTON_RECOVERY is dependent on that #fidef.\nAnd agree with you about the issue of enums with #ifdefs in them...",
+      "parentUuid": "81a8ff4c_18a4e1d8",
+      "range": {
+        "startLine": 299,
+        "startChar": 8,
+        "endLine": 299,
+        "endChar": 9
+      },
+      "revId": "1723211215121a6491ad1ecf79049dbd73116620",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
