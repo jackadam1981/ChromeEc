@@ -16,6 +16,23 @@
       "revId": "a9f970688da6d3368bb54b7f1ec5d64e38fb25c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7f5be9_ce8d90f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-17T18:10:04Z",
+      "side": 1,
+      "message": "Waiting to commit this change until Volteer uprevs firmware to at least v13406 (which contains the support for programming larger EC images).",
+      "revId": "a9f970688da6d3368bb54b7f1ec5d64e38fb25c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
