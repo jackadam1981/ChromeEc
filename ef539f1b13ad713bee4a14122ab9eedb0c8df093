@@ -16,6 +16,24 @@
       "revId": "ef539f1b13ad713bee4a14122ab9eedb0c8df093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec4e948_7322df1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-17T23:09:36Z",
+      "side": 1,
+      "message": "Right, the BATTERY_LEVEL_CRITICAL is also 5%. EC will send battery-critical host event at battery \u003c\u003d 5%. It makes sense to align them to 5%. Will make the change.",
+      "parentUuid": "52bb10a6_c0280440",
+      "revId": "ef539f1b13ad713bee4a14122ab9eedb0c8df093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
