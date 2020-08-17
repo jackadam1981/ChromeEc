@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c812b39_c761476d",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-08-17T20:38:33Z",
+      "side": 1,
+      "message": "maybe flip get rid of the negation and flip the then/else block?",
+      "revId": "c062afbecdb983f2436c088dbffe02146a8a34a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
