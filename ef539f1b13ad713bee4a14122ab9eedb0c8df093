@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52bb10a6_c0280440",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-17T22:39:54Z",
+      "side": 1,
+      "message": "Can we make this the default? Try.SRC should only be use when we intend to be a source. CrOS will shutdown much higher than 1%. I\u0027ve been meaning to change it to 5% for all boards.",
+      "revId": "ef539f1b13ad713bee4a14122ab9eedb0c8df093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
