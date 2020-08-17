@@ -53,6 +53,52 @@
     },
     {
       "key": {
+        "uuid": "355fac92_31a74baf",
+        "filename": "test/motion_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-08-17T06:21:16Z",
+      "side": 1,
+      "message": "Does it assume that we also use BMI160?\nIf so, how about include accelgyro_bmi_common.h and use BMI_RESOLUTION?",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "5465f503bf741d6f167867a302ec294aa5f74e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc08fb9_ee6d07b6",
+        "filename": "test/motion_common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-08-17T06:21:16Z",
+      "side": 1,
+      "message": "noise_100hz to keep naming convention",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 17
+      },
+      "revId": "5465f503bf741d6f167867a302ec294aa5f74e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf9c36a5_6cd09c74",
         "filename": "test/test_config.h",
         "patchSetId": 5
