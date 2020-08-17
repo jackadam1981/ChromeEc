@@ -88,6 +88,24 @@
       "revId": "5ccaeba04233985c881363c1161e052616ad6c84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b991b38c_718dd9b1",
+        "filename": "board/madoo/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-17T17:54:30Z",
+      "side": 1,
+      "message": "CL you can base on posted here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2358899\n\nYou can cherry-pick the change to be the base for your LED change patch",
+      "parentUuid": "b704bb0f_5e2e300e",
+      "revId": "5ccaeba04233985c881363c1161e052616ad6c84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
