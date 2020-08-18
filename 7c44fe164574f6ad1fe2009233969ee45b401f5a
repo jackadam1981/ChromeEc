@@ -247,6 +247,30 @@
       "revId": "7c44fe164574f6ad1fe2009233969ee45b401f5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccc188b0_d3e63066",
+        "filename": "board/halvor/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-18T18:21:20Z",
+      "side": 1,
+      "message": "Where are you getting reg_mask and disconnect_val?",
+      "parentUuid": "cbb8d3de_be9c0179",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "7c44fe164574f6ad1fe2009233969ee45b401f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
