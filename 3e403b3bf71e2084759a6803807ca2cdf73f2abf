@@ -16,6 +16,24 @@
       "revId": "3e403b3bf71e2084759a6803807ca2cdf73f2abf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8559fc7d_ff210a28",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-18T05:47:21Z",
+      "side": 1,
+      "message": "yes good pint Tanu,\n*runtime* can be ignored as these are static.\nneed CONFIG_USB_PD_DEBUG_LEVEL this for getting more logs\n*auto_toggle* NA for ITE EC",
+      "parentUuid": "8aa2b5c9_937297c9",
+      "revId": "3e403b3bf71e2084759a6803807ca2cdf73f2abf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
