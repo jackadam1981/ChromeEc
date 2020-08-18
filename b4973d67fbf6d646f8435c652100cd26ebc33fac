@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "882fb725_8bcce776",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-08-18T18:41:55Z",
+      "side": 1,
+      "message": "Thanks Diana!\n\nQuick q: Will the AP be notified of \"discovery complete\" via GOOG0003 (ACPI) notifier / EC_HOST_EVENT_PD_MCU (for non-ACPI), coupled with EC_CMD_PD_HOST_EVENT_STATUS?\n\nThat is what we currently use to send EC notifications to the Type C kernel driver, so it would be great if we can continue to use that (with possibly a new PD_EVENT for \"discovery complete\") ?",
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
