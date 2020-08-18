@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93c5654d_c7f784e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-18T03:29:21Z",
+      "side": 1,
+      "message": "Some notes about code reviews.  You mark Verified+1 when the change is ready for review and you have run the tests indicated in the commit message.  You should not mark your own change as Code-Review+1.  People in the review list will mark Code-Review+1 or Code-Review+2. If possible please have someone in Compal review the changes first before assigning to Google for review.\n\nMore details about code review guidelines:\nhttps://chromium.googlesource.com/chromiumos/docs/+/master/firmware_code_reviews.md",
+      "revId": "c980c96eb8b3e437c51d4109902ecf5351592aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
