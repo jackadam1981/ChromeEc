@@ -117,6 +117,30 @@
       "revId": "2b604ffb7da4f4cedb344bcb3b9f8ce6f4bc62cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af33577f_ae6bcb28",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-08-18T02:18:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6e8190c_82e30e49",
+      "range": {
+        "startLine": 99,
+        "startChar": 28,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "2b604ffb7da4f4cedb344bcb3b9f8ce6f4bc62cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
