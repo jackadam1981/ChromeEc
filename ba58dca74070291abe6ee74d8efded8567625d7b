@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a2a296b_38b8bae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-18T19:38:47Z",
+      "side": 1,
+      "message": "Any comment about whether you anticipate the LED code could use the common LED on/off states?  A lot of boards find this reduces the code in the board led.c and makes an easily readable table of expected LED behavior.",
+      "revId": "ba58dca74070291abe6ee74d8efded8567625d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "739c90e5_42e164fb",
+        "filename": "board/madoo/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-18T19:38:47Z",
+      "side": 1,
+      "message": "Update comment",
+      "range": {
+        "startLine": 38,
+        "startChar": 31,
+        "endLine": 38,
+        "endChar": 56
+      },
+      "revId": "ba58dca74070291abe6ee74d8efded8567625d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
