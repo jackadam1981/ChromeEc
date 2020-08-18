@@ -271,6 +271,30 @@
       "revId": "7c44fe164574f6ad1fe2009233969ee45b401f5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff316a0_949d3486",
+        "filename": "board/halvor/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-18T19:40:46Z",
+      "side": 1,
+      "message": "ManufacturerAccess 0x00 returns the lower 16-bits of OperationStatus().  Mask 0x2000 is the XDSG bit \"Discharge Disabled\".  This looks correct - this bit is set during various error conditions when the discharge FET gets turned off.  This is what battery_get_disconnect_state() cares about - if the discharge FET is off, then the AP can\u0027t be powered on until a sufficient charger is connected.",
+      "parentUuid": "ccc188b0_d3e63066",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "7c44fe164574f6ad1fe2009233969ee45b401f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
