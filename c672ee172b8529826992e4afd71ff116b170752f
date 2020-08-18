@@ -16,6 +16,52 @@
       "revId": "c672ee172b8529826992e4afd71ff116b170752f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "461b8c57_7c5e3de9",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-18T10:57:09Z",
+      "side": 1,
+      "message": "that\u0027s a bit of a confusing function name. This is for evt \u0026 USB_CHG_EVENT_BC12 only, right?\n\nCall this mt6360_handle_bc12_irq?",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 29
+      },
+      "revId": "c672ee172b8529826992e4afd71ff116b170752f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ed0fd26_7e9774eb",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-18T10:57:09Z",
+      "side": 1,
+      "message": "Can you avoid the timing issue you talk about above if you handle BC12 _before_ VBUS events?",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "c672ee172b8529826992e4afd71ff116b170752f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
