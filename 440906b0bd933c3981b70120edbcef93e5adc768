@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30f569c7_69630636",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-08-18T09:14:54Z",
+      "side": 1,
+      "message": "Sweetberry shows about a 1.6mW delta",
+      "parentUuid": "11feae07_8936c829",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 43
+      },
+      "revId": "440906b0bd933c3981b70120edbcef93e5adc768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8aa7d2f_08c28efb",
         "filename": "board/waddledoo/gpio.inc",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1dcdeb1f_741dad79",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-08-18T09:14:54Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll fix this:\n\nMost references I have found indicate that High-Z pull-up and pull-down are near identical, sweetberry results didn\u0027t show any difference. (GPIO_INPUT | GPIO_PULL_UP). I picked PULL_UP because it was more common in the EC codebase.\n\nAn unconnected GPIO\u0027s consumption comes from 2 areas mostly: We want to avoid current flowing though the pull-up or pull-down resistors and avoid the input circuit from toggling or otherwise left floating between high and low. Enabling either direction achieves that goal because once the input is at a given voltage, current stops flowing though the pull resistor apart from the internal leakage.",
+      "parentUuid": "a8aa7d2f_08c28efb",
+      "range": {
+        "startLine": 130,
+        "startChar": 19,
+        "endLine": 130,
+        "endChar": 37
+      },
+      "revId": "440906b0bd933c3981b70120edbcef93e5adc768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b1040de_a0f124fc",
         "filename": "board/waddledoo/gpio.inc",
         "patchSetId": 1
@@ -59,6 +107,24 @@
       "writtenOn": "2020-08-17T22:21:05Z",
       "side": 1,
       "message": "Would GPIO85 also be one of the disconnected?",
+      "revId": "440906b0bd933c3981b70120edbcef93e5adc768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc67948b_5ee89b1c",
+        "filename": "board/waddledoo/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-08-18T09:14:54Z",
+      "side": 1,
+      "message": "This concerns me, I don\u0027t know enough about this chip to identify if this is an issue, it looks like it expects to be in an operating mode, \u0027Power switch logic mode for ultra-low power\u0027 that doesn\u0027t have the GPIO\u0027s 84 or 85 configured, I don\u0027t see GPIO84, the VSBY configured on the layouts so I\u0027m assuming it\u0027s floating NC as well:\n\nI attempted to disable that pin but found that it is configured based on the NPCX_PSL_MODE_SUPPORT status which appears to be enabled due to our chip variant but doesn\u0027t appear to be used.\n\n\nFrom config_chip-npcx7.h:\n\n#if defined(CHIP_VARIANT_NPCX7M6F) || defined(CHIP_VARIANT_NPCX7M6FB) || \\\n\tdefined(CHIP_VARIANT_NPCX7M6FC) || defined(CHIP_VARIANT_NPCX7M7WB) || \\\n\tdefined(CHIP_VARIANT_NPCX7M7WC)\n#define NPCX_INT_FLASH_SUPPORT /* Internal flash support */\n#define NPCX_PSL_MODE_SUPPORT /* Power switch logic mode for ultra-low power */\n#define NPCX_EXT32K_OSC_SUPPORT /* External 32KHz crytal osc. input support */\n#endif\n\nFrom gpio_chip-npcx7.h\"\n\n#ifndef NPCX_PSL_MODE_SUPPORT\n#define NPCX_WUI_GPIO_8_4 WUI(0, MIWU_GROUP_1, 4) /* Used as VSBY in PSL */\n#define NPCX_WUI_GPIO_8_5 WUI(0, MIWU_GROUP_1, 5) /* Used as PSL_OUT in PSL */\n#endif",
+      "parentUuid": "4b1040de_a0f124fc",
       "revId": "440906b0bd933c3981b70120edbcef93e5adc768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
