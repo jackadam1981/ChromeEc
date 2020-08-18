@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "4ae3c9cd_8787667e",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-18T15:36:53Z",
+      "side": 1,
+      "message": "\u003ePreviously this was written as\n\u003e\n\u003e  if (IS_ENABLED(...))\n\u003e      /* comment here */\n\u003e      one-line here;\n\nIf it\u0027s a multiple-line comment, I think braces are preferred but we\u0027ve been using this brace-less if-clause containing a single-line comment. Personally I don\u0027t see a problem.",
+      "parentUuid": "597233dc_170150c7",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 2
+      },
+      "revId": "4586a8331bc151e7b220564ff4a7a5d476ba08eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93e0edd2_1a83da37",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 4
