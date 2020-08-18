@@ -121,6 +121,20 @@ void chip_pre_init(void)
 	/* bit4, enable debug mode through SMBus */
 	IT83XX_SMB_SLVISELR &= ~BIT(4);
 
+	/* bit0, EC received the special waveform from iteflash */
+	if (IT83XX_GCTRL_DBGROS & BIT(0)) {
+		/*
+		 * Wait ~200ms, so iteflash will have enough time to let
+		 * EC enter follow mode. And once EC goes into follow mode, EC
+		 * will be stayed here (no following sequences, eg:
+		 * enable watchdog/write protect/power-on sequence...) until
+		 * we reset it.
+		 */
+		for (int i = 0; i < (200 * MSEC / 15); i++)
+			/* delay ~15.25us */
+			IT83XX_GCTRL_WNCKR = 0;
+	}
+
 	if (IS_ENABLED(IT83XX_ETWD_HW_RESET_SUPPORT))
 		/* System triggers a soft reset by default (command: reboot). */
 		IT83XX_GCTRL_ETWDUARTCR &= ~ETWD_HW_RST_EN;

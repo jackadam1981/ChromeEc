@@ -688,6 +688,24 @@ static int dbgr_reset(struct common_hnd *chnd, unsigned char val)
 	return 0;
 }
 
+/* Exit DBGR mode */
+static int exit_dbgr_mode(struct common_hnd *chnd)
+{
+	int ret = 0;
+
+	printf("Exit DBGR mode...\n");
+	if (chnd->dbgr_addr_3bytes)
+		ret |= i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x1c);
+	ret |= i2c_write_byte(chnd, 0x2e, 0x08);
+	ret |= i2c_write_byte(chnd, 0x30, BIT(4));
+
+	if (ret < 0)
+		fprintf(stderr, "EXIT DBGR MODE FAILED\n");
+
+	return 0;
+}
+
 /* disable watchdog */
 static int dbgr_disable_watchdog(struct common_hnd *chnd)
 {
@@ -2286,6 +2304,15 @@ int main(int argc, char **argv)
 		}
 	}
 
+	/*
+	 * Send DBGR reset command to EC in DBGR mode, so EC can check DBGR flag
+	 * at initialization and stay there if needed.
+	 */
+	if (dbgr_reset(&chnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST) < 0) {
+		fprintf(stderr, "RESET EC IN DBGR MODE FAILED!\n");
+		goto return_after_init;
+	}
+
 	check_flashid(&chnd);
 
 	ret = post_waveform_work(&chnd);
@@ -2355,8 +2382,12 @@ int main(int argc, char **argv)
 	ret = 0;
 
  return_after_init:
-	/* Enable EC Host Global Reset to reset EC resource and EC domain. */
-	dbgr_reset(&chnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
+	/*
+	 * Exit DBGR mode. This ensures EC won't hold clock/data pins of I2C.
+	 * And We let Servo board/C2D2 to reset EC later. This will avoid reset
+	 * EC twice after flash sequence.
+	 */
+	exit_dbgr_mode(&chnd);
 
 	if (chnd.conf.i2c_mux) {
 		printf("configuring I2C MUX to none.\n");
