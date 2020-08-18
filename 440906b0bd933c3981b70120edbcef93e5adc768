@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "fcf2844c_b6b2af1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-08-18T20:08:01Z",
+      "side": 1,
+      "message": "Yup, not quite there yet.",
+      "parentUuid": "ab9d8cd9_72e732ba",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 43
+      },
+      "revId": "440906b0bd933c3981b70120edbcef93e5adc768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8aa7d2f_08c28efb",
         "filename": "board/waddledoo/gpio.inc",
         "patchSetId": 1
