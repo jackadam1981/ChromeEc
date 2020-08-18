@@ -34,6 +34,24 @@
       "revId": "a3cfd606ecffd36c0ad4cc58cab714f68c81c2bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ae72b2f_559f2536",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-18T03:50:56Z",
+      "side": 1,
+      "message": "Numerical order after INT 2?  Unless we need to process it more urgently.  But it\u0027s also a nit, to feel free to leave it as-is",
+      "parentUuid": "7c9b2aae_d7aae957",
+      "revId": "a3cfd606ecffd36c0ad4cc58cab714f68c81c2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
