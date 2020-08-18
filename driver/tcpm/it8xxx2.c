@@ -18,11 +18,20 @@
 #include "usb_pd_tcpm.h"
 #include "hooks.h"
 
+#ifdef CONFIG_USB_PD_TCPMV1
 #if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) || \
 	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || \
 	defined(CONFIG_USB_PD_TCPC_LOW_POWER) || \
 	defined(CONFIG_USB_PD_DISCHARGE_TCPC)
 #error "Unsupported config options of IT83xx PD driver"
+#endif
+#endif
+
+#ifdef CONFIG_USB_PD_TCPMV2
+#if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || \
+	defined(CONFIG_USB_PD_DISCHARGE_TCPC)
+#error "Unsupported config options of IT83xx PD driver"
+#endif
 #endif
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -585,6 +594,17 @@ static int it83xx_tcpm_get_chip_info(int port, int live,
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int it83xx_tcpm_enter_low_power_mode(int port)
+{
+	/*
+	 * We do low power mode in idle_task(), when all ITE ports are
+	 * Rx disabled, or let TCPMv2 handle? need to revisit
+	 */
+	return EC_SUCCESS;
+}
+#endif
+
 #ifdef CONFIG_USB_PD_FRS_TCPC
 static int it83xx_tcpm_set_frs_enable(int port, int enable)
 {
@@ -793,6 +813,9 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.drp_toggle		= NULL,
 #endif
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	.enter_low_power_mode	= &it83xx_tcpm_enter_low_power_mode,
+#endif
 #ifdef CONFIG_USB_PD_FRS_TCPC
 	.set_frs_enable		= &it83xx_tcpm_set_frs_enable,
 #endif

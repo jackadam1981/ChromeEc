@@ -19,11 +19,20 @@
 #include "usb_pd_tcpm.h"
 #include "hooks.h"
 
+#ifdef CONFIG_USB_PD_TCPMV1
 #if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) || \
 	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || \
 	defined(CONFIG_USB_PD_TCPC_LOW_POWER) || \
 	defined(CONFIG_USB_PD_DISCHARGE_TCPC)
 #error "Unsupported config options of IT83xx PD driver"
+#endif
+#endif
+
+#ifdef CONFIG_USB_PD_TCPMV2
+#if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || \
+	defined(CONFIG_USB_PD_DISCHARGE_TCPC)
+#error "Unsupported config options of IT83xx PD driver"
+#endif
 #endif
 
 /* Wait time for vconn power switch to turn off. */
@@ -592,8 +601,6 @@ static int it83xx_tcpm_set_msg_header(int port, int power_role, int data_role)
 
 static int it83xx_tcpm_set_rx_enable(int port, int enable)
 {
-	int i;
-
 	if (enable) {
 		IT83XX_USBPD_IMR(port) &= ~USBPD_REG_MASK_MSG_RX_DONE;
 		USBPD_ENABLE_BMC_PHY(port);
@@ -601,9 +608,9 @@ static int it83xx_tcpm_set_rx_enable(int port, int enable)
 		IT83XX_USBPD_IMR(port) |= USBPD_REG_MASK_MSG_RX_DONE;
 		USBPD_DISABLE_BMC_PHY(port);
 	}
-
+#ifdef CONFIG_USB_PD_TCPMV1
 	/* If any PD port Rx is enabled, then disable deep sleep */
-	for (i = 0; i < board_get_usb_pd_port_count(); ++i) {
+	for (int i = 0; i < board_get_usb_pd_port_count(); ++i) {
 		if (IT83XX_USBPD_GCR(i) & USBPD_REG_MASK_BMC_PHY)
 			break;
 	}
@@ -612,7 +619,7 @@ static int it83xx_tcpm_set_rx_enable(int port, int enable)
 		enable_sleep(SLEEP_MASK_USB_PD);
 	else
 		disable_sleep(SLEEP_MASK_USB_PD);
-
+#endif
 	return EC_SUCCESS;
 }
 
@@ -662,6 +669,17 @@ static int it83xx_tcpm_get_chip_info(int port, int live,
 
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int it83xx_tcpm_enter_low_power_mode(int port)
+{
+	/*
+	 * We do low power mode in idle_task(), when all ITE ports are
+	 * Rx disabled, or let TCPMv2 handle? need to revisit
+	 */
+	return EC_SUCCESS;
+}
+#endif
 
 static void it83xx_tcpm_switch_plug_out_type(int port)
 {
@@ -764,6 +782,9 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.drp_toggle		= NULL,
 #endif
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	.enter_low_power_mode	= &it83xx_tcpm_enter_low_power_mode,
+#endif
 #ifdef CONFIG_USB_PD_FRS_TCPC
 	.set_frs_enable		= &it83xx_tcpm_set_frs_enable,
 #endif
