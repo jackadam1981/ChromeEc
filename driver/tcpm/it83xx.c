@@ -21,7 +21,6 @@
 
 #if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) || \
 	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) || \
-	defined(CONFIG_USB_PD_TCPC_LOW_POWER) || \
 	defined(CONFIG_USB_PD_DISCHARGE_TCPC)
 #error "Unsupported config options of IT83xx PD driver"
 #endif
@@ -663,6 +662,13 @@ static int it83xx_tcpm_get_chip_info(int port, int live,
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+static int it83xx_tcpm_enter_low_power_mode(int port)
+{
+	return EC_SUCCESS;
+}
+#endif
+
 static void it83xx_tcpm_switch_plug_out_type(int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
@@ -761,6 +767,9 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 	.get_message_raw	= &it83xx_tcpm_get_message_raw,
 	.transmit		= &it83xx_tcpm_transmit,
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	.enter_low_power_mode	= &it83xx_tcpm_enter_low_power_mode,
+#endif
 #ifdef CONFIG_USB_PD_FRS_TCPC
 	.set_frs_enable		= &it83xx_tcpm_set_frs_enable,
 #endif
