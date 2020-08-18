@@ -505,7 +505,7 @@ static void board_chipset_startup(void)
 	if (board_ver >= 3)
 		ioex_set_level(IOEX_HDMI_POWER_EN_DB, 1);
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_startup, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_startup, HOOK_PRIO_DEFAULT-1);
 
 /* Called on AP S0 -> S3 transition */
 static void board_chipset_suspend(void)
@@ -517,7 +517,7 @@ static void board_chipset_suspend(void)
 	if (board_ver >= 3)
 		ioex_set_level(IOEX_HDMI_POWER_EN_DB, 0);
 }
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT+1);
 
 __override void ppc_interrupt(enum gpio_signal signal)
 {
