@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "561eb0c4_8e7c86a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-08-18T18:08:59Z",
+      "side": 1,
+      "message": "Seems fine to me, I don\u0027t have time to test this though for compatibility with existing devices.  I\u0027ll CR+1 after the comment change.",
+      "revId": "cdb2fa5e175da525ff8ba8a89d0454b5647765f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89471b49_b74b2bd4",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2388,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-08-18T18:08:59Z",
+      "side": 1,
+      "message": "Change these two lines to:\n\nAvoid resetting EC here because flash_ec will after iteflash exits.\nThis avoids double reset after flash sequence.",
+      "range": {
+        "startLine": 2387,
+        "startChar": 0,
+        "endLine": 2388,
+        "endChar": 34
+      },
+      "revId": "cdb2fa5e175da525ff8ba8a89d0454b5647765f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
