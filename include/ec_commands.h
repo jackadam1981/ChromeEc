@@ -6265,6 +6265,42 @@ struct ec_response_regulator_get_voltage {
 	uint32_t voltage_mv;
 } __ec_align4;
 
+/*
+ * Gather all discovery information for the given port and partner type.
+ *
+ * Note that if discovery has not yet completed, only the currently completed
+ * responses will be filled in.
+ *
+ * VDO field sizes are set to the maximum possible number of VDOs a VDM may
+ * contain, while the number of SVIDs here is selected to fit within the PROTO2
+ * maximum parameter size.
+ */
+#define EC_CMD_TYPEC_DISCOVERY 0x0131
+
+enum typec_partner_type {
+	TYPEC_PARTNER_SOP,
+	TYPEC_PARTNER_SOP_PRIME,
+	TYPEC_PARTNER_COUNT,
+};
+
+struct ec_params_typec_discovery {
+	uint32_t port;
+	uint32_t partner_type;
+} __ec_align4;
+
+struct svid_mode_info {
+	uint16_t svid;
+	uint16_t mode_count;
+	uint32_t mode_vdo[6];
+};
+
+struct ec_response_typec_discovery {
+	uint8_t identity_count;
+	uint32_t discovery_vdo[6];
+	uint8_t svid_count;
+	struct svid_mode_info svids[7];
+} __ec_align1;
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
