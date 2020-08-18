@@ -6354,6 +6354,8 @@ struct ec_params_fp_passthru {
 #define FP_MODE_MATCH          BIT(6)
 /* Reset and re-initialize the sensor. */
 #define FP_MODE_RESET_SENSOR   BIT(7)
+/* Sensor maintenance for dead pixels. */
+#define FP_MODE_SENSOR_MAINTENANCE BIT(8)
 /* special value: don't change anything just read back current mode */
 #define FP_MODE_DONT_CHANGE    BIT(31)
 
@@ -6365,6 +6367,7 @@ struct ec_params_fp_passthru {
 			FP_MODE_ENROLL_IMAGE   | \
 			FP_MODE_MATCH          | \
 			FP_MODE_RESET_SENSOR   | \
+			FP_MODE_SENSOR_MAINTENANCE | \
 			FP_MODE_DONT_CHANGE)
 
 /* Capture types defined in bits [30..28] */
