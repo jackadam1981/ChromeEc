@@ -335,6 +335,12 @@ enum pd_drp_next_states drp_auto_toggle_next_state(
 		case PD_DRP_FORCE_SOURCE:
 			return DRP_TC_UNATTACHED_SRC;
 		case PD_DRP_TOGGLE_ON:
+			if (!IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {
+				if (power_role == PD_ROLE_SINK)
+					return DRP_TC_UNATTACHED_SNK;
+				else
+					return DRP_TC_UNATTACHED_SRC;
+			}
 		default:
 			return DRP_TC_DRP_AUTO_TOGGLE;
 		}
@@ -375,6 +381,13 @@ enum pd_drp_next_states drp_auto_toggle_next_state(
 		}
 	} else {
 		/* Anything else, keep toggling */
+		if (!IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {
+			if (power_role == PD_ROLE_SINK)
+				return DRP_TC_UNATTACHED_SNK;
+			else
+				return DRP_TC_UNATTACHED_SRC;
+		}
+
 		return DRP_TC_DRP_AUTO_TOGGLE;
 	}
 }
