@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dc605b1_41133bd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2020-08-18T23:29:48Z",
+      "side": 1,
+      "message": "So, I am not entirely sure this works, I can immediately trigger failures by modifying the files in repohooks, but no matter what flags I put in the PRESUBMIT.cfg file here nothing appears to change.\n\nI may have some syntax problem here... but even simple cases don\u0027t seem to have an effect.\n\nI am wondering if this is expected, does the PRESUBMIT.cfg somehow always pull a ToT version of itself as part of this check (e.g. maybe it must land to work)? Or am I doing something else wrong here?",
+      "revId": "ffddbd12dc3be6022ac1f100b8d7463df1595fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
