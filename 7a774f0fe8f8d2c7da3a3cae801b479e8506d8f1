@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfe44ec0_d92f1605",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-18T19:40:15Z",
+      "side": 1,
+      "message": "This seems good to me too. Let\u0027s as a PE unit test to ensure that it won\u0027t try to send VDPM messages while the PRL is saying that is it busy as well",
+      "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d90d50ac_24b08417",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-18T19:40:15Z",
+      "side": 1,
+      "message": "let\u0027s export this from PRL layer either way. If we don\u0027t have extended message support in PRL layer, then it can just always return not busy",
+      "range": {
+        "startLine": 446,
+        "startChar": 8,
+        "endLine": 446,
+        "endChar": 27
+      },
+      "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "052d76f8_b4895ebb",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-18T19:40:15Z",
+      "side": 1,
+      "message": "related to other comment, let\u0027s always define this and just return false in the non extended case",
+      "range": {
+        "startLine": 523,
+        "startChar": 7,
+        "endLine": 523,
+        "endChar": 38
+      },
+      "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11b083ef_4578b661",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-18T19:40:15Z",
+      "side": 1,
+      "message": "nit: can use DeMorgan law to rewrite it to drop a level of () nesting\n\n!(A \u0026\u0026 B) -\u003e !A || !B",
+      "range": {
+        "startLine": 526,
+        "startChar": 8,
+        "endLine": 529,
+        "endChar": 42
+      },
+      "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cbaa074_df3286d1",
+        "filename": "test/usb_pe_drp_old.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-18T19:40:15Z",
+      "side": 1,
+      "message": "nit: return false instead of 0 since this a bool",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
