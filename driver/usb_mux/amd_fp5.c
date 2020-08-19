@@ -124,6 +124,9 @@ static int amd_fp5_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 static struct queue const chipset_reset_queue
 	= QUEUE_NULL(CONFIG_USB_PD_PORT_MAX_COUNT, struct usb_mux *);
 
+static void amd_fp5_chipset_reset_delay(void);
+DECLARE_DEFERRED(amd_fp5_chipset_reset_delay);
+
 static void amd_fp5_chipset_reset_delay(void)
 {
 	struct usb_mux *me;
@@ -131,11 +134,13 @@ static void amd_fp5_chipset_reset_delay(void)
 
 	while (queue_remove_unit(&chipset_reset_queue, &me)) {
 		rv = amd_fp5_set_mux(me, saved_mux_state[me->usb_port]);
-		if (rv)
-			ccprints("C%d restore mux rv:%d", me->usb_port, rv);
+		ccprints("C%d restore mux rv:%d", me->usb_port, rv);
+		if (rv) {
+			queue_add_unit(&chipset_reset_queue, &me);
+			hook_call_deferred(&amd_fp5_chipset_reset_delay_data, 10 * MSEC);
+		}
 	}
 }
-DECLARE_DEFERRED(amd_fp5_chipset_reset_delay);
 
 /*
  * The AP's internal USB-C mux is reset when AP resets, so wait for
@@ -144,7 +149,7 @@ DECLARE_DEFERRED(amd_fp5_chipset_reset_delay);
 static int amd_fp5_chipset_reset(const struct usb_mux *me)
 {
 	queue_add_unit(&chipset_reset_queue, &me);
-	hook_call_deferred(&amd_fp5_chipset_reset_delay_data, 200 * MSEC);
+	hook_call_deferred(&amd_fp5_chipset_reset_delay_data, 10 * MSEC);
 	return EC_SUCCESS;
 }
 
