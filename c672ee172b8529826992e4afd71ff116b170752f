@@ -158,6 +158,30 @@
       "revId": "c672ee172b8529826992e4afd71ff116b170752f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6409377_26ce3188",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-19T07:59:34Z",
+      "side": 1,
+      "message": "Oh I see. Sounds a bit unlikely to me that the charger would keep the BC1.2 detection running _after_ unplug, but, fine.",
+      "parentUuid": "e44d2b39_a5b726a6",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "c672ee172b8529826992e4afd71ff116b170752f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
