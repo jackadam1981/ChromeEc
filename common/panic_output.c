@@ -148,7 +148,16 @@ void panic(const char *msg)
 struct panic_data *panic_get_data(void)
 {
 	BUILD_ASSERT(sizeof(struct panic_data) <= CONFIG_PANIC_DATA_SIZE);
-	return pdata_ptr->magic == PANIC_DATA_MAGIC ? pdata_ptr : NULL;
+
+	if (pdata_ptr->magic != PANIC_DATA_MAGIC)
+		return NULL;
+
+	if (pdata_ptr->struct_size == CONFIG_PANIC_DATA_SIZE)
+		return pdata_ptr;
+
+	return (struct panic_data *)(CONFIG_PANIC_DATA_BASE
+				     + CONFIG_PANIC_DATA_SIZE
+				     - pdata_ptr->struct_size);
 }
 
 static void panic_init(void)
