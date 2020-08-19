@@ -16,6 +16,41 @@
       "revId": "ffddbd12dc3be6022ac1f100b8d7463df1595fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab6ef005_e8043992",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-19T05:00:32Z",
+      "side": 1,
+      "message": "repohooks operates on PRESUBMIT.cfg as it exists in the checkout.  so you could modify it and not make any commits to influence the behavior.\n\nthe underlying bug should be fixed by: https://crrev.com/c/2363878",
+      "parentUuid": "3dc605b1_41133bd7",
+      "revId": "ffddbd12dc3be6022ac1f100b8d7463df1595fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165d84c6_5bf0894b",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-19T05:00:32Z",
+      "side": 1,
+      "message": "this splits into multiple arguments.  you should replace the spaces with |.",
+      "revId": "ffddbd12dc3be6022ac1f100b8d7463df1595fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
