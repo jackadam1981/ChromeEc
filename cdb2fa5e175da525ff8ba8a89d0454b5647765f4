@@ -39,6 +39,30 @@
       "revId": "cdb2fa5e175da525ff8ba8a89d0454b5647765f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a79904f7_d67da5f4",
+        "filename": "util/iteflash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 2388,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-08-19T02:35:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89471b49_b74b2bd4",
+      "range": {
+        "startLine": 2387,
+        "startChar": 0,
+        "endLine": 2388,
+        "endChar": 34
+      },
+      "revId": "cdb2fa5e175da525ff8ba8a89d0454b5647765f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
