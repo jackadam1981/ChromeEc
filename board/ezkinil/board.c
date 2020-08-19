@@ -11,6 +11,7 @@
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
+#include "driver/charger/isl9241.h"
 #include "driver/ppc/aoz1380.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/retimer/tusb544.h"
@@ -688,4 +689,36 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 	charge_set_input_current_limit(MAX(charge_ma,
 				CONFIG_CHARGER_INPUT_CURRENT),
 				charge_mv);
+}
+
+/*
+ * b/163076059: Sometimes CONTROL1 was read 0xFF03 for unknown reason
+ * when the state change from S0 to S3. The bit11 set (enable OTG function)
+ * would make the system not charge although the ACOK is good.
+ */
+__override int isl9241_update_learn_mode(int chgnum, int enable)
+{
+	int rv;
+	int reg;
+
+	rv = isl9241_read(chgnum, ISL9241_REG_CONTROL1, &reg);
+	if (rv) {
+		ccprintf("Read isl9241 CONTROL1 failed.");
+		return rv;
+	}
+
+	/* If read the wrong value (0xFF) from the higher byte,
+	 * re-write the default value (0x01).
+	 */
+	if ((reg & 0xFF00) == 0xFF00) {
+		ccprints("Read strange CONTROL1=%x\n", reg);
+		reg = (reg & 0x00FF) | 0x0100;
+	}
+
+	if (enable)
+		reg |= ISL9241_CONTROL1_LEARN_MODE;
+	else
+		reg &= ~ISL9241_CONTROL1_LEARN_MODE;
+
+	return isl9241_write(chgnum, ISL9241_REG_CONTROL1, reg);
 }
