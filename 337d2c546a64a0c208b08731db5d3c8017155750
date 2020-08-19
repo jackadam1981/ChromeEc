@@ -34,6 +34,24 @@
       "revId": "337d2c546a64a0c208b08731db5d3c8017155750",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21f84c62_0e2fc786",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-19T17:11:38Z",
+      "side": 1,
+      "message": "Ok, thanks for testing. I will add a sleep or retry into pi3hdx1204_enable() to allow time to power up.",
+      "parentUuid": "67df0251_3e9e8816",
+      "revId": "337d2c546a64a0c208b08731db5d3c8017155750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
