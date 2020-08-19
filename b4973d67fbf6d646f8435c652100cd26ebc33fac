@@ -173,6 +173,30 @@
     },
     {
       "key": {
+        "uuid": "9e86c212_3ddd7799",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-19T21:34:47Z",
+      "side": 1,
+      "message": "Google C++ style does, but the Linux style guide doesn\u0027t. Hence, only a nit. Do as you will.",
+      "parentUuid": "877233a8_bb169714",
+      "range": {
+        "startLine": 62,
+        "startChar": 43,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "468ee2ae_97b63ac0",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
