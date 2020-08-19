@@ -334,9 +334,6 @@ void bc12_interrupt(enum gpio_signal signal);
 __override_proto void ppc_interrupt(enum gpio_signal signal);
 #endif
 
-void pi3hdx1204_retimer_power(void);
-__override_proto int check_hdmi_hpd_status(void);
-
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BASEBOARD_H */
