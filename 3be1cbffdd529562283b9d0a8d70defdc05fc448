@@ -16,6 +16,23 @@
       "revId": "3be1cbffdd529562283b9d0a8d70defdc05fc448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28b2f60d_a92a9fd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-08-19T14:37:45Z",
+      "side": 1,
+      "message": "What is the change compared with the master branch? Please describe in the commit message. BTW, i think you can just cherry-pick the master branch CL, change it and then describe the change in the CL.",
+      "revId": "3be1cbffdd529562283b9d0a8d70defdc05fc448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
