@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aaf2e43_ed2576f2",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-19T19:06:45Z",
+      "side": 1,
+      "message": "Would overridable make sense for these?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "9167f3082f9a242b22e83df3fa95f7f2603b21c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f527f1e_97fcc0fe",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-19T19:06:45Z",
+      "side": 1,
+      "message": "How should this interact with the PD mock for data and power role?  Should pd_get_data_role() reference this TC role, or should it be referencing something in the PD mock?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "9167f3082f9a242b22e83df3fa95f7f2603b21c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
