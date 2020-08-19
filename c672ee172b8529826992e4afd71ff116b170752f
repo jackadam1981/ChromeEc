@@ -86,6 +86,30 @@
       "revId": "c672ee172b8529826992e4afd71ff116b170752f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd6507fb_57ab4432",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-19T07:02:14Z",
+      "side": 1,
+      "message": "So what timing issue is \"/* Check vbus again to avoid timing issue */\" supposed to help with?",
+      "parentUuid": "7b7d26a5_c468d50a",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "c672ee172b8529826992e4afd71ff116b170752f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
