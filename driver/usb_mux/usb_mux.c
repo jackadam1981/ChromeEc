@@ -9,6 +9,9 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "task.h"
+#include "task_id.h"
+#include "timer.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -20,6 +23,8 @@
 #define CPRINTS(format, args...)
 #define CPRINTF(format, args...)
 #endif
+
+#define MSEC         1000
 
 static int enable_debug_prints;
 
@@ -46,6 +51,7 @@ static int configure_mux(int port,
 {
 	int rv = EC_SUCCESS;
 	const struct usb_mux *mux_ptr;
+	bool mux_done = false;
 
 	if (config == USB_MUX_SET_MODE ||
 	    config == USB_MUX_GET_MODE) {
@@ -103,6 +109,11 @@ static int configure_mux(int port,
 				rv = drv->set(mux_ptr, lcl_state);
 				if (rv)
 					break;
+			}
+
+			if (!mux_done) {
+				mux_done = true;
+				task_wait_event_mask(TASK_EVENT_MUX_DONE, 50*MSEC);
 			}
 
 			/* Apply board specific setting */
@@ -369,6 +380,14 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 
 	if (port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
+
+	if (p->subcmd == USB_PD_MUX_RESPONSE) {
+		CPRINTS("C%d Received ACK from host\n", port);
+		task_set_event(PD_PORT_TO_TASK_ID(p->port), TASK_EVENT_MUX_DONE,
+				0);
+		args->response_size = sizeof(*r);
+	        return EC_RES_SUCCESS;
+	}
 
 	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state))
 		return EC_RES_ERROR;
