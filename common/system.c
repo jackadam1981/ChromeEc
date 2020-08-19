@@ -778,6 +778,64 @@ const char *system_get_build_info(void)
 	return build_info;
 }
 
+void system_update_panic_data(void)
+{
+	/*
+	 * Pointer to panic_data structure. It may not point to
+	 * the beginning of structure, but accessing struct_size
+	 * and magic is safe because it is always placed at the
+	 * end of RAM.
+	 */
+	struct panic_data *pdata_ptr = PANIC_DATA_PTR;
+	const struct jump_data *jdata_ptr;
+	void * data_begin;
+	int delta;
+
+	/* Return if it is not panic_data structure. */
+	if (pdata_ptr->magic != PANIC_DATA_MAGIC)
+		return;
+
+	delta = CONFIG_PANIC_DATA_SIZE - pdata_ptr->struct_size;
+	/* If delta is 0, there is no need to move anything */
+	if (delta == 0)
+		return;
+
+	/*
+	 * Expecting panic_get_data() will return valid pointer to
+	 * the beginning of panic_data structure, or NULL if no panic_data
+	 * structure exists
+	 */
+	data_begin = (void *)panic_get_data();
+	if (data_begin == NULL)
+		return;
+
+	jdata_ptr = (struct jump_data *)(data_begin - sizeof(struct jump_data));
+
+	if (jdata_ptr->magic != JUMP_DATA_MAGIC ||
+	    jdata_ptr->version < 1 || jdata_ptr->version > 3)
+		return;
+
+	if (jdata_ptr->version == 1)
+		data_begin -= JUMP_DATA_SIZE_V1;
+	else if (jdata_ptr->version == 2)
+		data_begin -= JUMP_DATA_SIZE_V2 + jdata_ptr->jump_tag_total;
+	else
+		data_begin -= jdata_ptr->struct_size + jdata_ptr->jump_tag_total;
+
+	/*
+	 * Move jump_tags, jump_data and
+	 * panic_data (except struct_size and magic)
+	 */
+	memmove(data_begin - delta, data_begin,
+	   (void *)&pdata_ptr->struct_size - data_begin);
+
+	/*
+	 * Beginning of panic_data was moved - update
+	 * panic_data structure size
+	 */
+	pdata_ptr->struct_size = CONFIG_PANIC_DATA_SIZE;
+}
+
 void system_common_pre_init(void)
 {
 	uintptr_t addr;

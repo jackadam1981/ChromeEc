@@ -90,6 +90,12 @@ test_mockable __keep int main(void)
 	task_pre_init();
 
 	/*
+	 * Update panic_data structure provided by RO to match
+	 * current layout
+	 */
+	system_update_panic_data();
+
+	/*
 	 * Initialize the system module.  This enables the hibernate clock
 	 * source we need to calibrate the internal oscillator.
 	 */
