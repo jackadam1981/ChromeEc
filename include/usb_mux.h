@@ -18,6 +18,9 @@
 #define USB_MUX_FLAG_NOT_TCPC BIT(0) /* TCPC/MUX device used only as MUX */
 #define USB_MUX_FLAG_SET_WITHOUT_FLIP BIT(1) /* SET should not flip */
 
+#if (IS_ENABLED(CONFIG_USBC_RETIMER_INTEL_BB))
+#define TASK_EVENT_MUX_DONE TASK_EVENT_CUSTOM_BIT(1)
+#endif
 /*
  * USB-C mux state
  *

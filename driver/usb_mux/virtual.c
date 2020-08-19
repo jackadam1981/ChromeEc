@@ -8,6 +8,8 @@
 #include "common.h"
 #include "console.h"
 #include "host_command.h"
+#include "task.h"
+#include "timer.h"
 #include "usb_mux.h"
 #include "util.h"
 
@@ -26,9 +28,29 @@ static mux_state_t virtual_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 {
+	static int wait_for_ack;
 	virtual_mux_state[port] = mux_state;
 
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
+#if (IS_ENABLED(CONFIG_USBC_RETIMER_INTEL_BB))
+/*
+ * Wait for TCSS mux configuration done ACK from SoC
+ * TCSS Mux.
+ * This is implemented for safe and the mux mode following
+ * it. Today ACK is only being used for this purpose
+ * to remove timing senstivity around safe mode time
+ * synchronization between retimer and TCSS Mux.
+ */
+	if (mux_state & USB_PD_MUX_SAFE_MODE)
+		wait_for_ack = 2;
+
+	if (wait_for_ack > 0) {
+		wait_for_ack--;
+		task_wait_event_mask(TASK_EVENT_MUX_DONE,
+						100*MSEC);
+		usleep(12.5 * MSEC);
+	}
+#endif
 }
 
 static int virtual_init(const struct usb_mux *me)
