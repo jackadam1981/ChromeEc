@@ -16,6 +16,46 @@
       "revId": "baeab12377bd1f6ecec967aafe5dce4c6ccbc56f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d247a6a_8f3251ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-19T22:15:14Z",
+      "side": 1,
+      "message": "Thanks for looking at this. I made a suggestion, and I believe that will be the only code change you will need for this CL (everything else can be reverted).",
+      "revId": "baeab12377bd1f6ecec967aafe5dce4c6ccbc56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdd0a869_d1dba6f6",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-19T22:15:14Z",
+      "side": 1,
+      "message": "Try this instead\n\n\t\tif (PRL_TX_CHK_FLAG(port,\n\t\t\t\tPRL_FLAGS_SINK_NG | PRL_FLAGS_WAIT_SINK_OK)) {\n\t\t\t/* Fall through *\n\t\t} else if (pd_get_power_role(port) \u003d\u003d PD_ROLE_SOURCE) {\n\t\t\t/*\n\t\t\t * Start of SRC AMS notification received from\n\t\t\t * Policy Engine\n\t\t\t */\n\t\t\tPRL_TX_SET_FLAG(port, PRL_FLAGS_SINK_NG);\n\t\t\tset_state_prl_tx(port, PRL_TX_SRC_SOURCE_TX);\n\t\t\treturn;\n\t\t} else {\n\t\t\t/*\n\t\t\t * Start of SNK AMS notification received from\n\t\t\t * Policy Engine\n\t\t\t */\n\t\t\tPRL_TX_SET_FLAG(port, PRL_FLAGS_WAIT_SINK_OK);\n\t\t\tset_state_prl_tx(port, PRL_TX_SNK_START_AMS);\n\t\t\treturn;\n\t\t}",
+      "range": {
+        "startLine": 799,
+        "startChar": 2,
+        "endLine": 834,
+        "endChar": 3
+      },
+      "revId": "baeab12377bd1f6ecec967aafe5dce4c6ccbc56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
