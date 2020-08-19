@@ -56,6 +56,30 @@
       "revId": "baeab12377bd1f6ecec967aafe5dce4c6ccbc56f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32b70dac_cfaa5539",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-19T22:39:23Z",
+      "side": 1,
+      "message": "Changed this portion and took the TC changes and put them in a different CL. Thanks",
+      "parentUuid": "bdd0a869_d1dba6f6",
+      "range": {
+        "startLine": 799,
+        "startChar": 2,
+        "endLine": 834,
+        "endChar": 3
+      },
+      "revId": "baeab12377bd1f6ecec967aafe5dce4c6ccbc56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
