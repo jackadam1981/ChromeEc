@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f13d97f8_388f556b",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2020-08-19T23:46:30Z",
+      "side": 1,
+      "message": "This now includes all terms except for master, slave, as those are still a bit common in the EC codebase.\n\nThe downside of this mechanism is that this is really just one, big, regex. As such the error messages the presubmit script generates dump this out on any line that matches, which functions but is a bit less suave than when we step through them one at a time in the presubmit script directly. Not sure if there is a better way...\n\nVerified manually using a CL with a few of these terms.\n\nAlso, if there is a better way to line wrap here please let me know, I am not sure what format these cfg files technically are, not quite shell or python.",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 307
+      },
+      "revId": "d70c9cf1dfd90e361b662ec34bde127bb8b753ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
