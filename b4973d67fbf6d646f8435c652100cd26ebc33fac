@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "51c0dba4_a75533dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-08-19T21:26:04Z",
+      "side": 1,
+      "message": "\u003e Re: the notificaitons, can/should these be made port-specific?  It seems like it\u0027ll be a pain for the AP if it always needs to double-request information trying to figure out which port has events going on.\n\nCan this be done in a facile fashion? Individual notifications for each port might start to get unwieldy as the number of ports increases.\n\nPerhaps another host command which returns a u8 bit mask for which ports the discovery is complete for (I guess two commands, one each for SOP and SOP\u0027)? Would this be moot if the limiting factor is IPC round trip time for each Host command?\nOpen to suggestions here..",
+      "parentUuid": "f0437c2a_00d4d1e6",
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b7b854d_7a7bf9b8",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 1
