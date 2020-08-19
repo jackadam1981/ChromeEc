@@ -16,6 +16,24 @@
       "revId": "337d2c546a64a0c208b08731db5d3c8017155750",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67df0251_3e9e8816",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-08-19T04:06:26Z",
+      "side": 1,
+      "message": "add msleep(2) between ioex_set_level(IOEX_HDMI_POWER_EN_DB, 1) and\npi3hdx1204_enable(I2C_PORT_TCPC1,PI3HDX1204_I2C_ADDR_FLAGS,1) could get proper setting from retimer.",
+      "parentUuid": "d440574a_3a6c1097",
+      "revId": "337d2c546a64a0c208b08731db5d3c8017155750",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
