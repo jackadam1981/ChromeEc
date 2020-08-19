@@ -9,6 +9,9 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "task.h"
+#include "task_id.h"
+#include "timer.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -20,6 +23,8 @@
 #define CPRINTS(format, args...)
 #define CPRINTF(format, args...)
 #endif
+
+#define MSEC         1000
 
 static int enable_debug_prints;
 
@@ -372,6 +377,13 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 
 	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state))
 		return EC_RES_ERROR;
+
+	if (p->subcmd == USB_PD_MUX_RESPONSE) {
+		task_set_event(PD_PORT_TO_TASK_ID(p->port), TASK_EVENT_MUX_DONE,
+				0);
+		args->response_size = sizeof(*r);
+		return EC_RES_SUCCESS;
+	}
 
 	r->flags = mux_state;
 
