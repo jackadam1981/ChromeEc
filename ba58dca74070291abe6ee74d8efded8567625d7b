@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "60f31911_98b89c15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-19T19:29:53Z",
+      "side": 1,
+      "message": "Yes.  A lot of boards define CONFIG_LED_ONOFF_STATES and then define an led_bat_state_table and led_pwr_state_table in their led.c files.  You can see what the tables look like in a number of the octopus boards (meep, fleex, bobba). \n\nThe board can also create its own LED hooks, there could just be updates needed to the board-specific implementation later if, for example a new charge_get_state() return is added.",
+      "parentUuid": "6f0095e8_68b64646",
+      "revId": "ba58dca74070291abe6ee74d8efded8567625d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "739c90e5_42e164fb",
         "filename": "board/madoo/board.h",
         "patchSetId": 5
