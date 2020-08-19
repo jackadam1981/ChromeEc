@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "806185e1_a40cd488",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-08-19T17:21:04Z",
+      "side": 1,
+      "message": "Hi Chiran,\n\n Could you please post your improved patch on this, which also takes care of orientation and retimer / mux sequence.",
+      "revId": "a4343ae4054feefec6460ca9b2eb6919d81e9e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c63a9a5_12b2c060",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 3
@@ -22,6 +39,30 @@
       "revId": "a4343ae4054feefec6460ca9b2eb6919d81e9e1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f58aef5f_5b6289be",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-08-19T17:21:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1c63a9a5_12b2c060",
+      "range": {
+        "startLine": 325,
+        "startChar": 3,
+        "endLine": 325,
+        "endChar": 7
+      },
+      "revId": "a4343ae4054feefec6460ca9b2eb6919d81e9e1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
