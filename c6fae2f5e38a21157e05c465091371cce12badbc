@@ -33,6 +33,52 @@
       "revId": "c6fae2f5e38a21157e05c465091371cce12badbc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cef4a41_846efd4c",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-19T15:56:21Z",
+      "side": 1,
+      "message": "Move this under the unused signals and configure as an input with a pullup.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 48
+      },
+      "revId": "c6fae2f5e38a21157e05c465091371cce12badbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ee11598_146b7e84",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-19T15:56:21Z",
+      "side": 1,
+      "message": "This is an output only signal.  You can delete this entry.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 45
+      },
+      "revId": "c6fae2f5e38a21157e05c465091371cce12badbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
