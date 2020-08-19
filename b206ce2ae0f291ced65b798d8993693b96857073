@@ -33,6 +33,24 @@
       "revId": "b206ce2ae0f291ced65b798d8993693b96857073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a85b7800_367c2547",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-19T17:16:15Z",
+      "side": 1,
+      "message": "I uploaded a child CL that removes the PD_EVENT_SM event since it really is the same as the task_event_wake; no need to have two different ways to do something.\n\nI also move the task_wake to the general state machine framework",
+      "parentUuid": "2a082c87_686c6e1a",
+      "revId": "b206ce2ae0f291ced65b798d8993693b96857073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

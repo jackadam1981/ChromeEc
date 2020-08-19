@@ -16,6 +16,24 @@
       "revId": "32d6184d3ceefedc86b4a1997c55453ef5fc52b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "670481fa_d6602e40",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3128,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-19T17:16:15Z",
+      "side": 0,
+      "message": "I wanted to leave TCPMv1 the same. I don\u0027t remember the details exactly about why we needed to exit low power mode when we woke the task up, but it does seem okay since the other events are PD event and this is a general event.\n\nIt was all about minimizing risk for TCPMv1\n\n\n---\n\nAh, TVPMv2 uses the same mask to check the CC lines. If we are waking up the task",
+      "parentUuid": "ba8c34df_c6687a57",
+      "revId": "32d6184d3ceefedc86b4a1997c55453ef5fc52b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
