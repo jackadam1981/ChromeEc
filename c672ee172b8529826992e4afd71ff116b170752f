@@ -110,6 +110,30 @@
       "revId": "c672ee172b8529826992e4afd71ff116b170752f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e44d2b39_a5b726a6",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-19T07:30:13Z",
+      "side": 1,
+      "message": "Something like this:\n\n1. adapter attached, received USB_CHG_EVENT_VBUS\n   - start bc12 detection \n2. received USB_CHG_EVENT_VBUS because adapter removed.\n   - update charge_manager with CHARGE_SUPPLIER_NONE\n3. mt6360 bc12 detection done, received USB_CHG_EVENT_BC12,\n   - mt6360 returns the type of previously existed charger,\n   - and we incorrectly update charge_manager with the out-dated info.\n\nthe block around line 143 is an additional check in step 3.",
+      "parentUuid": "fd6507fb_57ab4432",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 3
+      },
+      "revId": "c672ee172b8529826992e4afd71ff116b170752f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
