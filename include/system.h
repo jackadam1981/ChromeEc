@@ -29,6 +29,12 @@ uint32_t chip_read_reset_flags(void);
 int system_is_in_rw(void);
 
 /**
+ * Updates panic_data structure that resides in memory if structure
+ * size differs from version of structure that is used in this EC
+ */
+void system_update_panic_data(void);
+
+/**
  * Pre-initializes the module.  This occurs before clocks or tasks are
  * set up.
  */

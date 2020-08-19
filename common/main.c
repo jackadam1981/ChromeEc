@@ -89,6 +89,7 @@ test_mockable __keep int main(void)
 	 */
 	task_pre_init();
 
+	system_update_panic_data();
 	/*
 	 * Initialize the system module.  This enables the hibernate clock
 	 * source we need to calibrate the internal oscillator.
