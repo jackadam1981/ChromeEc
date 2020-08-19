@@ -10,6 +10,9 @@
 #include "host_command.h"
 #include "usb_mux.h"
 #include "util.h"
+#include "task.h"
+#include "timer.h"
+#include "task_id.h"
 
 /*
  * USB PD protocol configures the USB & DP mux state and USB PD policy
@@ -22,13 +25,27 @@
 			USB_PD_MUX_SAFE_MODE | USB_PD_MUX_TBT_COMPAT_ENABLED | \
 			USB_PD_MUX_USB4_ENABLED)
 
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
 static mux_state_t virtual_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 {
+	static int wait_count;
 	virtual_mux_state[port] = mux_state;
 
 	host_set_single_event(EC_HOST_EVENT_USB_MUX);
+	if (mux_state & USB_PD_MUX_SAFE_MODE)
+		wait_count = 2;
+
+	if (wait_count > 0) {
+		wait_count--;
+		task_wait_event_mask(TASK_EVENT_MUX_DONE,
+						100*MSEC);
+
+		usleep(12.5 * MSEC);
+	}
 }
 
 static int virtual_init(const struct usb_mux *me)
