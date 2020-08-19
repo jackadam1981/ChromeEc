@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "c76aa57a_64ff895c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-08-19T22:20:08Z",
+      "side": 1,
+      "message": "Fair point.\n\n(Spitballing here):\n\nHow about extending the bitmask proposal to all notifications? I.e when the host receives an EC_CMD_PD_HOST_EVENT_STATUS bit field (e.g SOP_DISCOVERY_COMPLETE, or HARD_RESET), it sends an EC command (e.g EC_CMD_PD_NOTIFICATION_PORT_STATUS), in which the notification type (SOP_DISCOVERY_COMPLETE, HARD_RESET etc) can be the request argument, and what is returned is a bit mask for each port the notification applies to.\n\nOf course, I\u0027m only looking at this from the client/AP perspective, so I don\u0027t know how complex it is to implement on the EC side, but this makes it extendable to sizeof(bitmask) ports.\n\nI don\u0027t want to hijack this review CL any further, so we can continue the discussion in the notifications doc (https://docs.google.com/document/d/1-GojIqx-bsyeg4CCUkvdS6RUWC-aTAjxyyBKo8c96q4/edit) if you prefer.",
+      "parentUuid": "c45d680a_d7bc1eca",
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b7b854d_7a7bf9b8",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 1
