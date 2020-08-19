@@ -168,7 +168,7 @@ const struct i2c_port_t i2c_ports[] = {
 	{
 		.name = "battery",
 		.port = I2C_PORT_BATTERY,
-		.kbps = 100,
+		.kbps = 400,
 		.scl = GPIO_I2C_C_SCL,
 		.sda = GPIO_I2C_C_SDA,
 	},
@@ -192,6 +192,13 @@ const struct i2c_port_t i2c_ports[] = {
 		.kbps = 100,
 		.scl = GPIO_I2C_E_SCL,
 		.sda = GPIO_I2C_E_SDA,
+	},
+	{
+		.name = "evb-ch-d",
+		.port = IT83XX_I2C_CH_D,
+		.kbps = 400,
+		.scl = GPIO_I2C_D_SCL,
+		.sda = GPIO_I2C_D_SDA,
 	},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
