@@ -51,6 +51,24 @@
       "revId": "ffddbd12dc3be6022ac1f100b8d7463df1595fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c20323d9_c7b1c0b0",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-08-19T15:27:19Z",
+      "side": 1,
+      "message": "Is this the entire list of what we\u0027re checking? Because whitelist/blacklist was the larger set of changes in the EC repo.",
+      "parentUuid": "165d84c6_5bf0894b",
+      "revId": "ffddbd12dc3be6022ac1f100b8d7463df1595fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
