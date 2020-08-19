@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "415f378f_50b4b58f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2020-08-19T23:30:42Z",
+      "side": 1,
+      "message": "Nice, thanks for the fix!",
+      "parentUuid": "ab6ef005_e8043992",
+      "revId": "ffddbd12dc3be6022ac1f100b8d7463df1595fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "165d84c6_5bf0894b",
         "filename": "PRESUBMIT.cfg",
         "patchSetId": 2
@@ -69,6 +87,24 @@
       "revId": "ffddbd12dc3be6022ac1f100b8d7463df1595fa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946bc631_bafea06e",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2020-08-19T23:30:42Z",
+      "side": 1,
+      "message": "Thanks, will split by |. Is there guidance on line wrapping with this type of file, or is it ok to let it flow over 80 characters?\n\nThis is just a start, we can put in a much longer list, but I wanted to see it work at least once first. I also reran analytics and the EC repo is looking very clean for everything except master, slave, and native, so I think we can try out the whole thing.\n\nUnfortunately the CL we need for this to work is being reverted at the moment (it appears to have enabled all presubmit checks for all repos inadvertently). https://chromium-review.googlesource.com/c/chromiumos/repohooks/+/2363878 Once we get that relanded we can make this work.",
+      "parentUuid": "c20323d9_c7b1c0b0",
+      "revId": "ffddbd12dc3be6022ac1f100b8d7463df1595fa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
