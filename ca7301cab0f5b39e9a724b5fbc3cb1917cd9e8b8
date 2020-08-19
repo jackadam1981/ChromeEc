@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b794292f_43843bad",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-19T21:13:45Z",
+      "side": 1,
+      "message": "Is there an external reference for I2C? Are we adopting the SPI terminology for I2C?",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f114d9d_60959dc9",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-19T21:13:45Z",
+      "side": 1,
+      "message": "Nit: Remove",
+      "range": {
+        "startLine": 195,
+        "startChar": 24,
+        "endLine": 195,
+        "endChar": 25
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ea50d2e_54f24e6d",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-19T21:13:45Z",
+      "side": 1,
+      "message": "None of the following are contents of a SPI frame. \"All communication involves the following sequence,\" or, \"Frames are transmitted as follows\"?",
+      "range": {
+        "startLine": 196,
+        "startChar": 42,
+        "endLine": 196,
+        "endChar": 64
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a6e805_4991755b",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-19T21:13:45Z",
+      "side": 1,
+      "message": "Nit: Remove, here and below",
+      "range": {
+        "startLine": 200,
+        "startChar": 49,
+        "endLine": 200,
+        "endChar": 50
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d65808_732f986e",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-19T21:13:45Z",
+      "side": 1,
+      "message": "Nit: Period for consistency",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 34
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
