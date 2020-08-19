@@ -16,6 +16,23 @@
       "revId": "56d7e0aa68da769c4f2585ed1b9f75681adfdce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f44613f9_0a5ff9e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-19T20:10:00Z",
+      "side": 1,
+      "message": "This change has a make error on the \"eldrid\" board.  Please make sure you are running the pre-submit checks before uploading your patches.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/README.md#Submitting-changes",
+      "revId": "56d7e0aa68da769c4f2585ed1b9f75681adfdce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
