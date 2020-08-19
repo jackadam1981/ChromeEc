@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6f0095e8_68b64646",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2020-08-19T03:01:04Z",
+      "side": 1,
+      "message": "Sorry, forget to reply to this comment, I didn\u0027t reference common led on/off states.c because I based on the Common code led_policy_std.c do LED.c coding maybe I can use it when I compare the behavior is same.\n\nby the way, about you say common led on/off states is led_onoff_states.c, right?",
+      "parentUuid": "0a2a296b_38b8bae3",
+      "revId": "ba58dca74070291abe6ee74d8efded8567625d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "739c90e5_42e164fb",
         "filename": "board/madoo/board.h",
         "patchSetId": 5
