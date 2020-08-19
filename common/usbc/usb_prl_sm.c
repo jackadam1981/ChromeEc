@@ -786,30 +786,25 @@ static void prl_tx_wait_for_message_request_run(const int port)
 	 */
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) && is_sop_rev30(port) &&
 	    pe_in_local_ams(port)) {
-		if (pd_get_power_role(port) == PD_ROLE_SOURCE) {
+		if (PRL_TX_CHK_FLAG(port,
+				PRL_FLAGS_SINK_NG | PRL_FLAGS_WAIT_SINK_OK)) {
+			/* Fall through */
+		} else if (pd_get_power_role(port) == PD_ROLE_SOURCE) {
 			/*
 			 * Start of SRC AMS notification received from
 			 * Policy Engine
 			 */
-			if (!PRL_TX_CHK_FLAG(port, PRL_FLAGS_SINK_NG)) {
-				PRL_TX_SET_FLAG(port, PRL_FLAGS_SINK_NG);
-				set_state_prl_tx(port, PRL_TX_SRC_SOURCE_TX);
-				return;
-			}
+			PRL_TX_SET_FLAG(port, PRL_FLAGS_SINK_NG);
+			set_state_prl_tx(port, PRL_TX_SRC_SOURCE_TX);
+			return;
 		} else {
 			/*
 			 * Start of SNK AMS notification received from
 			 * Policy Engine
 			 */
-			if (!PRL_TX_CHK_FLAG(port, PRL_FLAGS_WAIT_SINK_OK)) {
-				PRL_TX_SET_FLAG(port, PRL_FLAGS_WAIT_SINK_OK);
-				/*
-				 * First Message in AMS notification
-				 * received from Policy Engine.
-				 */
-				set_state_prl_tx(port, PRL_TX_SNK_START_AMS);
-				return;
-			}
+			PRL_TX_SET_FLAG(port, PRL_FLAGS_WAIT_SINK_OK);
+			set_state_prl_tx(port, PRL_TX_SNK_START_AMS);
+			return;
 		}
 	}
 
