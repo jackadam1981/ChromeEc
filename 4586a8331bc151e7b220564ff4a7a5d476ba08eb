@@ -161,6 +161,30 @@
     },
     {
       "key": {
+        "uuid": "2f85d906_888d04d7",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2020-08-19T02:34:12Z",
+      "side": 1,
+      "message": "Thanks for your explanation!",
+      "parentUuid": "4ae3c9cd_8787667e",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 2
+      },
+      "revId": "4586a8331bc151e7b220564ff4a7a5d476ba08eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93e0edd2_1a83da37",
         "filename": "chip/it83xx/spi.c",
         "patchSetId": 4
