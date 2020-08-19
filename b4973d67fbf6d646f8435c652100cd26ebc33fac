@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "638ec9d3_5b6e78e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-08-19T20:54:35Z",
+      "side": 1,
+      "message": "We anticipate to call this command upon receiving a {SOP|SOP_PRIME}_DISCOVERY_DONE notification. For each port, do we expect the contents of the data structure to change once that notification is sent (of course, disconnects notwithstanding)? If not, then I think it should be fine.\n\nOne thing I noted was that the *_DISCOVERY_DONE will not tell us which port the discovery is completed for. AP will issue the EC_CMD_TYPEC_DISCOVERY for each port, so we will need some flag in the returned data structure to tell us that discovery is not complete for this port.",
+      "parentUuid": "224bf25c_3be5d8de",
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b7b854d_7a7bf9b8",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 1
