@@ -91,6 +91,8 @@
 #define PRL_FLAGS_ABORT                   BIT(9)
 /* Flag to note current TX message uses chunking */
 #define PRL_FLAGS_CHUNKING                BIT(10)
+/* Flag to note current PR_Swap enable state */
+#define PRL_FLAGS_PRSWAP_IN_PROGRESS      BIT(11)
 
 /* PD counter definitions */
 #define PD_MESSAGE_ID_COUNT 7
@@ -470,6 +472,14 @@ void prl_execute_hard_reset(int port)
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 }
 
+void pd_power_role_swap_in_progress(int port, bool inProgress)
+{
+	if (inProgress)
+		PRL_TX_SET_FLAG(port, PRL_FLAGS_PRSWAP_IN_PROGRESS);
+	else
+		PRL_TX_CLR_FLAG(port, PRL_FLAGS_PRSWAP_IN_PROGRESS);
+}
+
 int prl_is_running(int port)
 {
 	return local_state[port] == SM_RUN;
@@ -793,6 +803,17 @@ static void prl_tx_wait_for_message_request_run(const int port)
 			 */
 			if (!PRL_TX_CHK_FLAG(port, PRL_FLAGS_SINK_NG)) {
 				PRL_TX_SET_FLAG(port, PRL_FLAGS_SINK_NG);
+				set_state_prl_tx(port, PRL_TX_SRC_SOURCE_TX);
+				return;
+			}
+		} else if (pd_get_power_role(port) == PD_ROLE_SINK &&
+			   PRL_TX_CHK_FLAG(port,
+					   PRL_FLAGS_PRSWAP_IN_PROGRESS)) {
+			/*
+			 * Continue with SNK side of AMS message received from
+			 * Policy Engine
+			 */
+			if (PRL_TX_CHK_FLAG(port, PRL_FLAGS_SINK_NG)) {
 				set_state_prl_tx(port, PRL_TX_SRC_SOURCE_TX);
 				return;
 			}

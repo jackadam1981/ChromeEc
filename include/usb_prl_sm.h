@@ -114,6 +114,15 @@ void prl_hard_reset_complete(int port);
  */
 void prl_execute_hard_reset(int port);
 
+/**
+ * Track when we are power role swapping to continue sending existing AMS
+ * as the other role until the swap is complete.
+ *
+ * @param port USB-C port number
+ * @param inProgress true if this is currently PR Swapping
+ */
+void pd_power_role_swap_in_progress(int port, bool inProgress);
+
 #ifdef TEST_BUILD
 /**
  * Fake to track the last sent control message

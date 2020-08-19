@@ -28,6 +28,9 @@
 __overridable void pd_request_power_swap(int port)
 {}
 
+__overridable void pd_power_role_swap_in_progress(int port, bool inProgress)
+{}
+
 uint8_t pd_get_src_cap_cnt(int port)
 {
 	return 0;
