@@ -786,16 +786,27 @@ static void prl_tx_wait_for_message_request_run(const int port)
 	 */
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) && is_sop_rev30(port) &&
 	    pe_in_local_ams(port)) {
-		if (pd_get_power_role(port) == PD_ROLE_SOURCE) {
+		if (PRL_TX_CHK_FLAG(port, PRL_FLAGS_SINK_NG)) {
+			/*
+			 * We set PRL_FLAGS_SINK_NG when we are a SRC and it
+			 * is mostly used when we are a SRC, but when we
+			 * perform a SRC->SNK PR_Swap there is one message in
+			 * this AMS that is sent in a Standby SRC which can be
+			 * either a SNK or SRC to pd_get_power_role, depending
+			 * on where we land in the TC state machine.  So allow
+			 * an existing AMS to continue no matter what state we
+			 * are in.
+			 *
+			 * Fall through
+			 */
+		} else if (pd_get_power_role(port) == PD_ROLE_SOURCE) {
 			/*
 			 * Start of SRC AMS notification received from
 			 * Policy Engine
 			 */
-			if (!PRL_TX_CHK_FLAG(port, PRL_FLAGS_SINK_NG)) {
-				PRL_TX_SET_FLAG(port, PRL_FLAGS_SINK_NG);
-				set_state_prl_tx(port, PRL_TX_SRC_SOURCE_TX);
-				return;
-			}
+			PRL_TX_SET_FLAG(port, PRL_FLAGS_SINK_NG);
+			set_state_prl_tx(port, PRL_TX_SRC_SOURCE_TX);
+			return;
 		} else {
 			/*
 			 * Start of SNK AMS notification received from
