@@ -88,6 +88,24 @@
       "revId": "41dd1f0056e5f90f7ac648c72b51255c24f8dba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09ad5070_0ac05fbf",
+        "filename": "common/motion_sense_fifo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-08-19T18:16:42Z",
+      "side": 1,
+      "message": "After another offline chat with henry, we think we should just modify ALL_MOTION_SENSORS from motion_sensor_count( + 1) to SENSOR_COUNT( + 1).",
+      "parentUuid": "4c244175_c6c478ad",
+      "revId": "41dd1f0056e5f90f7ac648c72b51255c24f8dba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
