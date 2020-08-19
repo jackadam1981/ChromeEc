@@ -162,6 +162,24 @@
     },
     {
       "key": {
+        "uuid": "79a7080a_ab14da32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-19T22:32:05Z",
+      "side": 1,
+      "message": "Yup, we\u0027ll discuss that on the doc.\n\nBack to synchronization, we should synchronize here.  Jett confirmed that if an interrupt comes in, we could end up interrupted mid-memcpy and then task execution would go to the highest priority task (PD) before coming back to the host command task.",
+      "parentUuid": "c76aa57a_64ff895c",
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b7b854d_7a7bf9b8",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 1
