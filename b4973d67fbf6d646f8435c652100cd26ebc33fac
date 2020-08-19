@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "f0437c2a_00d4d1e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-19T21:17:59Z",
+      "side": 1,
+      "message": "Re: the notificaitons, can/should these be made port-specific?  It seems like it\u0027ll be a pain for the AP if it always needs to double-request information trying to figure out which port has events going on.\n\nRe: synchronization, Jett might be able to speak of the risk to copying data here mid-transition.  I always have to double-check myself with regard to which actions in a task can be preempted by other tasks.",
+      "parentUuid": "4b0e9066_3dbeff26",
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b7b854d_7a7bf9b8",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 1
@@ -113,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "877233a8_bb169714",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-19T21:17:59Z",
+      "side": 1,
+      "message": "Do we have a style guide for this, or just personal preference?  If the pre-submit hooks don\u0027t scold me, I generally assume the patch follows our enforced style",
+      "parentUuid": "0b7b854d_7a7bf9b8",
+      "range": {
+        "startLine": 62,
+        "startChar": 43,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "468ee2ae_97b63ac0",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -124,6 +166,30 @@
       "writtenOn": "2020-08-19T20:19:19Z",
       "side": 1,
       "message": "PDO_MODES?",
+      "range": {
+        "startLine": 6299,
+        "startChar": 24,
+        "endLine": 6299,
+        "endChar": 25
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8efabfd4_cfb10885",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6299,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-19T21:17:59Z",
+      "side": 1,
+      "message": "Ideally, yes.  But I don\u0027t think we can include EC headers in this file since it gets exported out to the kernel.  Jett, would that be right?",
+      "parentUuid": "468ee2ae_97b63ac0",
       "range": {
         "startLine": 6299,
         "startChar": 24,
