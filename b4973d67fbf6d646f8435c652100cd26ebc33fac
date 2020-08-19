@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "c45d680a_d7bc1eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-19T22:06:49Z",
+      "side": 1,
+      "message": "I don\u0027t think the issue with notifications not being port-specific will be limited to discovery though, will it?  \n\nThings like soft resets, hard resets, initial connections, new source caps... all of these will be happening to just one port.  And detecting, for example, which port hard reset might be difficult after the fact unless we started tracking it somewhere for the AP to retrieve (ex. changing the current EC_CMD_PD_HOST_EVENT_STATUS to something stored by-port)",
+      "parentUuid": "51c0dba4_a75533dc",
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b7b854d_7a7bf9b8",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 1
