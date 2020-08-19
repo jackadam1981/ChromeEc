@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "4b0e9066_3dbeff26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-19T21:01:48Z",
+      "side": 1,
+      "message": "WRT synchronization,the only thing I can think of that would change the data structure while the command was running is if the port was detached or hard reset. I think we would also generate notifications for those, and the AP would eventually have a complete picture of the situation, but it could be a little messy.",
+      "parentUuid": "638ec9d3_5b6e78e9",
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b7b854d_7a7bf9b8",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 1
