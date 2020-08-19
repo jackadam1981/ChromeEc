@@ -9,6 +9,9 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "task.h"
+#include "task_id.h"
+#include "timer.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -20,6 +23,8 @@
 #define CPRINTS(format, args...)
 #define CPRINTF(format, args...)
 #endif
+
+#define MSEC         1000
 
 static int enable_debug_prints;
 
@@ -46,6 +51,7 @@ static int configure_mux(int port,
 {
 	int rv = EC_SUCCESS;
 	const struct usb_mux *mux_ptr;
+	bool mux_done = false;
 
 	if (config == USB_MUX_SET_MODE ||
 	    config == USB_MUX_GET_MODE) {
@@ -105,6 +111,14 @@ static int configure_mux(int port,
 					break;
 			}
 
+			if (!mux_done && (lcl_state & USB_PD_MUX_SAFE_MODE ||
+			lcl_state & USB_PD_MUX_DP_ENABLED)) {
+				CPRINTS("C%d Mux state: 0x%x: Waiting for ACK from host\n", port, lcl_state);
+				mux_done = true;
+				task_wait_event_mask(TASK_EVENT_MUX_DONE,
+						     50*MSEC);
+			}
+
 			/* Apply board specific setting */
 			if (mux_ptr->board_set)
 				rv = mux_ptr->board_set(mux_ptr, lcl_state);
@@ -126,6 +140,12 @@ static int configure_mux(int port,
 			}
 			break;
 		}
+	}
+
+	if (config == USB_MUX_SET_MODE && (*mux_state & USB_PD_MUX_SAFE_MODE ||
+	    *mux_state & USB_PD_MUX_DP_ENABLED)) {
+		CPRINTS("C%d Mux State: 0x%x: Sleeping for 12.5 msec\n", port, *mux_state);
+		usleep(12.5 * MSEC);
 	}
 
 	if (rv)
@@ -373,7 +393,19 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	if (configure_mux(port, USB_MUX_GET_MODE, &mux_state))
 		return EC_RES_ERROR;
 
+	if (p->subcmd == USB_PD_MUX_RESPONSE) {
+		if ((mux_state & USB_PD_MUX_SAFE_MODE) || (mux_state & USB_PD_MUX_DP_ENABLED))
+			CPRINTS("C%d Mux state: 0x%x: Received ACK from host\n", port, mux_state);
+
+		task_set_event(PD_PORT_TO_TASK_ID(p->port), TASK_EVENT_MUX_DONE,
+				0);
+		args->response_size = sizeof(*r);
+		return EC_RES_SUCCESS;
+	}
+
 	r->flags = mux_state;
+
+	CPRINTS("C%d Mux state: 0x%x: Sending info to the host\n", port, mux_state);
 
 	/* Clear HPD IRQ event since we're about to inform host of it. */
 	if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
