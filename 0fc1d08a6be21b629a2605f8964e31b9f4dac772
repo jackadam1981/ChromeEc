@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55302b25_c8ad2029",
+        "filename": "board/morphius/thermal.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-19T23:55:28Z",
+      "side": 1,
+      "message": "if new_rpm \u003d\u003d fan_get... is there a reason to set it again?",
+      "range": {
+        "startLine": 486,
+        "startChar": 2,
+        "endLine": 492,
+        "endChar": 42
+      },
+      "revId": "0fc1d08a6be21b629a2605f8964e31b9f4dac772",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
