@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "722c35b7_c045421e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-19T00:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d90d50ac_24b08417",
+      "range": {
+        "startLine": 446,
+        "startChar": 8,
+        "endLine": 446,
+        "endChar": 27
+      },
+      "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "052d76f8_b4895ebb",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9da1157_3086bb03",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-19T00:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "052d76f8_b4895ebb",
+      "range": {
+        "startLine": 523,
+        "startChar": 7,
+        "endLine": 523,
+        "endChar": 38
+      },
+      "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "768a2822_fd02a489",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-19T00:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b083ef_4578b661",
+      "range": {
+        "startLine": 526,
+        "startChar": 8,
+        "endLine": 529,
+        "endChar": 42
+      },
+      "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cbaa074_df3286d1",
         "filename": "test/usb_pe_drp_old.c",
         "patchSetId": 3
@@ -108,6 +180,30 @@
       "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd2fc94a_74754e0b",
+        "filename": "test/usb_pe_drp_old.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2020-08-19T00:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cbaa074_df3286d1",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
