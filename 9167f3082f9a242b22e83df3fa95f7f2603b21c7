@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "3991b4f3_e93bdce5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-19T19:55:32Z",
+      "side": 1,
+      "message": "This doesn\u0027t port over the functional tests of the PE yet, right?",
+      "revId": "9167f3082f9a242b22e83df3fa95f7f2603b21c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fe5e4b8_f1fe7c85",
+        "filename": "common/mock/usb_dp_alt_mode_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-19T19:55:32Z",
+      "side": 1,
+      "message": "Do you need all this stuff?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "9167f3082f9a242b22e83df3fa95f7f2603b21c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1aaf2e43_ed2576f2",
         "filename": "common/mock/usb_pd_mock.c",
         "patchSetId": 1
