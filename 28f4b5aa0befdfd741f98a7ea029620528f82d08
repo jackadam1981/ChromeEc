@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "941f5e2c_25414018",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-08-20T00:54:29Z",
+      "side": 1,
+      "message": "I don\u0027t see any external pull-ups. _ODL should cause confusion.",
+      "parentUuid": "070c3502_b5b4ddf9",
+      "range": {
+        "startLine": 143,
+        "startChar": 33,
+        "endLine": 143,
+        "endChar": 45
+      },
+      "revId": "28f4b5aa0befdfd741f98a7ea029620528f82d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b223fbd4_985a490c",
         "filename": "board/drawcia/board.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2020-08-19T17:59:07Z",
       "side": 1,
       "message": "Let\u0027s only turn this on when the chipset is on or in suspend.",
+      "revId": "28f4b5aa0befdfd741f98a7ea029620528f82d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c16cbf4e_e75228ce",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-08-20T00:54:29Z",
+      "side": 1,
+      "message": "I want to double confirm the https://chromeos.google.com/partner/dlm/docs/hardware-specs/stylusspecs.html was showing may charging on S5/G3. Can we just enabling charging on S0/S0ix?",
+      "parentUuid": "b223fbd4_985a490c",
       "revId": "28f4b5aa0befdfd741f98a7ea029620528f82d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
