@@ -22,6 +22,30 @@
       "revId": "cb3f63c80e92d58034226a01b24746dc68d72f9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113b9a9c_40467f8c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-20T19:14:44Z",
+      "side": 1,
+      "message": "I suppose you could also note we may no longer be the source, in the case of a power role swap, in case future generations wonder why this it separate from the role checks",
+      "parentUuid": "25f08ab5_2bc7e958",
+      "range": {
+        "startLine": 791,
+        "startChar": 0,
+        "endLine": 800,
+        "endChar": 18
+      },
+      "revId": "cb3f63c80e92d58034226a01b24746dc68d72f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
