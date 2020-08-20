@@ -148,6 +148,7 @@ static void mp4245_dump_reg(void)
 	}
 }
 
+#ifdef CONFIG_MP4245_CMD
 void mp4245_get_status(void)
 {
 	int status;
@@ -227,4 +228,4 @@ static int command_mp4245(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(mp4245, command_mp4245,
 			"<info|dump|vbus|ilim>",
 			"Turn on/off|set vbus.");
-
+#endif
