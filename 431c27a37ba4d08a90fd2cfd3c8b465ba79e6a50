@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39758d05_ec3f0150",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447572
+      },
+      "writtenOn": "2020-08-20T23:44:20Z",
+      "side": 1,
+      "message": "TBT/USB4 does not work consistently with this change.\nEC stuck in safemode if USB4 is connected. ",
+      "revId": "431c27a37ba4d08a90fd2cfd3c8b465ba79e6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
