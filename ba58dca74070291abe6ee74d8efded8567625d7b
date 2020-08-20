@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "82cdaf66_a15068d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2020-08-20T08:27:54Z",
+      "side": 1,
+      "message": "Good news, the LED ONOFF STATUS can work on Madoo,\nalso, it\u0027s more simple and visibly, thank for you suggest.",
+      "parentUuid": "60f31911_98b89c15",
+      "revId": "ba58dca74070291abe6ee74d8efded8567625d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "739c90e5_42e164fb",
         "filename": "board/madoo/board.h",
         "patchSetId": 5
