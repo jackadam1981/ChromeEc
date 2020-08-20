@@ -16,6 +16,24 @@
       "revId": "0289a2164b01cf18e542be09d1cda92b1a914bfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296c4400_fbdb215d",
+        "filename": "board/drawcia/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-08-20T03:20:11Z",
+      "side": 1,
+      "message": "Do you mean this one \"int pen_detect \u003d !gpio_get_level(GPIO_PEN_DET_ODL);\" ?",
+      "parentUuid": "1419d7ca_ddccdbde",
+      "revId": "0289a2164b01cf18e542be09d1cda92b1a914bfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
