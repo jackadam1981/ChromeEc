@@ -16,6 +16,24 @@
       "revId": "5a855a62d652b3c6df741c0824c7c51eb7d5b780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc772ac_b134feec",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-20T18:14:04Z",
+      "side": 1,
+      "message": "I\u0027ve heard that hw team is going to rework newly-received devices...?\n(Ayo \u0026 Parker, correct me if I\u0027m wrong lol)\n\nAlso I want to enable ULP if possible to find bugs earlier.\n\nSo I\u0027m planning something like:\nadd a isl9238c_resume() after gpio_set_level(), and comment out __builtin_unreachable() for the non-reworked devices.\n\nAnd this change will be a HACK CL push to Asurada ToT.",
+      "parentUuid": "f1282f71_d645d950",
+      "revId": "5a855a62d652b3c6df741c0824c7c51eb7d5b780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
