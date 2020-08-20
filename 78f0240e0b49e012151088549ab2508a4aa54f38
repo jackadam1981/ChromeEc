@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f90f023_84079f5e",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-20T20:05:47Z",
+      "side": 1,
+      "message": "Does \"2\" have a meaning that maybe a define or even a comment would make this more clear?",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 468,
+        "endChar": 11
+      },
+      "revId": "78f0240e0b49e012151088549ab2508a4aa54f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
