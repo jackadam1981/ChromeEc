@@ -397,9 +397,6 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 		/* TODO(b/): When we have usb support, put this back in? */
 		/* usb_disconnect(); */
 
-	CPRINTS("svdm_enter[%d]: svid = %x, ret = %d", port,
-		PD_VDO_VID(payload[0]), rv);
-
 	return rv;
 }
 
