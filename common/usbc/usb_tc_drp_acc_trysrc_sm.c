@@ -2864,6 +2864,12 @@ static __maybe_unused void check_drp_connection(const int port)
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	case DRP_TC_DRP_AUTO_TOGGLE:
+		if (!tcpm_auto_toggle_supported(port)) {
+			if (tc[port].power_role == PD_ROLE_SINK)
+				set_state_tc(port, TC_UNATTACHED_SNK);
+			else
+				set_state_tc(port, TC_UNATTACHED_SRC);
+		}
 		set_state_tc(port, TC_DRP_AUTO_TOGGLE);
 		break;
 #endif
