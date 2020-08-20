@@ -29,6 +29,8 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#define QUICHE_PD_DEBUG_LVL 1
+
 #ifdef SECTION_IS_RW
 #define CROS_EC_SECTION "RW"
 #else
@@ -41,7 +43,7 @@ struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 #ifdef SECTION_IS_RW
 static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	PD_DRP_TOGGLE_ON,
-	PD_DRP_FORCE_SINK,
+	PD_DRP_FORCE_SOURCE,
 };
 
 static void ppc_interrupt(enum gpio_signal signal)
@@ -211,6 +213,9 @@ static void board_select_drp_mode(void)
 		CPRINTS("quiche[p%d]: drp_state = %d", port,
 			pd_get_dual_role(port));
 	}
+	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
 }
 DECLARE_DEFERRED(board_select_drp_mode);
 #endif
