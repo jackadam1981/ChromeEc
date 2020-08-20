@@ -343,6 +343,30 @@
       "revId": "7c44fe164574f6ad1fe2009233969ee45b401f5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4079f23_e4e2f83c",
+        "filename": "board/halvor/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-20T17:54:59Z",
+      "side": 1,
+      "message": "Checking for both XDSG and XCHG seems like a potential issue. In the dead battery case, XDSG is expected to be set and XCHG clear.  By checking setting mask/disconnect_val to 0x60000, battery_get_disconnect_state() would return BATTERY_NOT_DISCONNECTED, and the EC could attempt to power on the AP when a non-PD charger is connected.\n\nVolteer is setting it this way, I\u0027ll try to test it.",
+      "parentUuid": "a82fb6cd_8bd9ea0b",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 4
+      },
+      "revId": "7c44fe164574f6ad1fe2009233969ee45b401f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
