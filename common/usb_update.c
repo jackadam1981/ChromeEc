@@ -261,19 +261,22 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 #endif
 			break;
 		case UPDATE_EXTRA_CMD_STAY_IN_RO:
-			CPRINTS("update: stay in ro!");
 #ifdef CONFIG_RWSIG
 			rwsig_abort();
 #endif
-			/* system_set_reset_flags(SYSTEM_RESET_STAY_IN_RO); */
-			/* CPRINTS("Rebooting!"); */
-			/* CPRINTF("\n\n"); */
-			/* cflush(); */
-			/* system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED | */
-			/* 	SYSTEM_RESET_STAY_IN_RO); */
-			/* /\* Unreachable, unless something bad happens. *\/ */
-			/* response = EC_RES_ERROR; */
+			CPRINTS("update: stay in ro!");
+#ifdef HONEYBUNS_USB_UPDATER2
+			system_set_reset_flags(SYSTEM_RESET_STAY_IN_RO);
+			CPRINTS("Rebooting!");
+			CPRINTF("\n\n");
+			cflush();
+			system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED |
+				SYSTEM_RESET_STAY_IN_RO);
+			/* Unreachable, unless something bad happens. */
+			response = EC_RES_ERROR;
+#else
 			response = EC_RES_SUCCESS;
+#endif
 			break;
 		case UPDATE_EXTRA_CMD_UNLOCK_RW:
 			flash_set_protect(EC_FLASH_PROTECT_RW_AT_BOOT, 0);
