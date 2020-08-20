@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a26638ce_74548a09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-08-20T20:20:36Z",
+      "side": 1,
+      "message": "Not yet, no. This is just the empty shell for new tests to be written, and tests from usb_pe_drp_old to migrate when appropriate.",
+      "parentUuid": "3991b4f3_e93bdce5",
+      "revId": "9167f3082f9a242b22e83df3fa95f7f2603b21c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fe5e4b8_f1fe7c85",
         "filename": "common/mock/usb_dp_alt_mode_mock.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ce8ea156_e3dd662a",
+        "filename": "common/mock/usb_dp_alt_mode_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-08-20T20:20:36Z",
+      "side": 1,
+      "message": "Copy/pasted from dp_alt_mode.c, and no, not all of it is needed.",
+      "parentUuid": "7fe5e4b8_f1fe7c85",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "9167f3082f9a242b22e83df3fa95f7f2603b21c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aaf2e43_ed2576f2",
         "filename": "common/mock/usb_pd_mock.c",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "9167f3082f9a242b22e83df3fa95f7f2603b21c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452f0692_e01d6a92",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-08-20T20:20:36Z",
+      "side": 1,
+      "message": "For some reason, it didn\u0027t work when I tried it at first, but now it does. Never underestimate the power a `make clobber`, I guess.\nThis also allowed me to clean up the #if around pd_is_connected and pd_is_disconnected.",
+      "parentUuid": "1aaf2e43_ed2576f2",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 48
+      },
+      "revId": "9167f3082f9a242b22e83df3fa95f7f2603b21c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
