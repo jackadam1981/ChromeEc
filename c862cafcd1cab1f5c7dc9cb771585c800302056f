@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "06918975_6e05d9f3",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-20T22:19:35Z",
+      "side": 1,
+      "message": "I know the polarity doesn\u0027t matter. But from a software perspective, \"init before use\" is a good practice.\n\nThe SBU_FLIP_SEL, i.e. ioexpander(0, 2) hasn\u0027t been initialized yet at this point. Better to call write_ioexpander(0, 2, 0) in some init function, like the init_ioexpander() in the line 369.",
+      "parentUuid": "8b1915af_6c1b0e1e",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 36
+      },
+      "revId": "c862cafcd1cab1f5c7dc9cb771585c800302056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55b968af_0575ffe2",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 2
