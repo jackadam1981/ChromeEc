@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6065e61_990a3cb4",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-20T16:31:13Z",
+      "side": 1,
+      "message": "I think when we are actually doing a PR_Swap SRC-\u003eSNK that this is working correctly. I think that when we are doing other messages and VDM requests come in that we should not be doing this. I will add some of the code back in to only do this sort of bypass when in PR_Swap SRC-\u003eSNK and see if that fixes this the rest of the way.",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 0
+      },
+      "revId": "280531199b28ee7824bbfc637b326a805d141a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
