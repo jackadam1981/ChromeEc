@@ -20,6 +20,7 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -39,6 +40,35 @@
 
 #include "gpio_list.h" /* Must come after other header files. */
 
+/* Initialize the keyboard on halvor */
+static const uint8_t actual_key_mask[KEYBOARD_COLS_MAX] = {
+		0x14, 0xff, 0xff, 0xff, 0xff, 0xf4, 0xff,
+		0xa0, 0xff, 0xfe, 0x41, 0xfa, 0xc0, 0x02,
+		0x08  /* full set */
+};
+
+static const struct ec_response_keybd_config halvor_kb = {
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
+};
+
+__override const struct ec_response_keybd_config
+*board_vivaldi_keybd_config(void)
+{
+	return &halvor_kb;
+}
 /*
  * FW_CONFIG defaults for Halvor if the CBI data is not initialized.
  */
@@ -49,6 +79,11 @@ union volteer_cbi_fw_config fw_config_defaults = {
 
 static void board_init(void)
 {
+	int i;
+
+	/* override the keyscan key mask */
+	for (i = 0; i < KEYBOARD_COLS_MAX; ++i)
+		keyscan_config.actual_key_mask[i] = actual_key_mask[i];
 	/* Illuminate motherboard and daughter board LEDs equally to start. */
 	pwm_enable(PWM_CH_LED4_SIDESEL, 1);
 	pwm_set_duty(PWM_CH_LED4_SIDESEL, 50);
