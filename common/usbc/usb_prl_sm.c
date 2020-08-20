@@ -522,9 +522,12 @@ void pd_transmit_complete(int port, int status)
 void pd_execute_hard_reset(int port)
 {
 	/* Only allow async. function calls when state machine is running */
-	if (!prl_is_running(port))
+	if (!prl_is_running(port)) {
+		CPRINTS("prl[%d]: hr -> prl off escape", port);
 		return;
+	}
 
+	CPRINTS("prl[%d]: partner HR req ack!", port);
 	PRL_HR_SET_FLAG(port, PRL_FLAGS_PORT_PARTNER_HARD_RESET);
 	set_state_prl_hr(port, PRL_HR_RESET_LAYER);
 	task_wake(PD_PORT_TO_TASK_ID(port));
@@ -725,8 +728,14 @@ void prl_run(int port, int evt, int en)
 			break;
 		}
 
-		/* Run Protocol Layer Message Reception */
-		prl_rx_wait_for_phy_message(port, evt);
+		/* Run Protocol Layer Hard Reset state machine */
+		run_state(port, &prl_hr[port].ctx);
+
+		if (prl_hr_get_state(port) == PRL_HR_WAIT_FOR_REQUEST) {
+
+			/* Run Protocol Layer Message Reception */
+			prl_rx_wait_for_phy_message(port, evt);
+
 
 		if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
 			/*
@@ -754,9 +763,7 @@ void prl_run(int port, int evt, int en)
 			 * to PE in a single iteration.
 			 */
 			run_state(port, &tch[port].ctx);
-
-		/* Run Protocol Layer Hard Reset state machine */
-		run_state(port, &prl_hr[port].ctx);
+		}
 		break;
 	}
 }
@@ -1012,6 +1019,7 @@ static void prl_tx_layer_reset_for_transmit_run(const int port)
 {
 	/* NOTE: PRL_Tx_Construct_Message State embedded here */
 	prl_tx_construct_message(port);
+	CPRINTS("prl_tx: go wait_phy_resp 2");
 	set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 }
 
@@ -1114,6 +1122,9 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 		 * here.
 		 */
 
+		CPRINTS("prl[%d]: timeout, status = %x, type = %d", port,
+			prl_tx[port].xmit_status, prl_tx[port].last_xmit_type);
+
 		if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
 			/*
 			 * State tch_wait_for_transmission_complete will
@@ -1171,6 +1182,7 @@ static void prl_tx_src_pending_run(const int port)
 		 */
 		else {
 			prl_tx_construct_message(port);
+			CPRINTS("prl_tx: go wait_phy_resp 3");
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 		}
 
@@ -1212,6 +1224,7 @@ static void prl_tx_snk_pending_run(const int port)
 		 * Rp = SinkTxOk
 		 */
 		else {
+			CPRINTS("prl_tx: go wait_phy_resp 4");
 			prl_tx_construct_message(port);
 			set_state_prl_tx(port, PRL_TX_WAIT_FOR_PHY_RESPONSE);
 		}
@@ -1251,6 +1264,7 @@ static void prl_hr_reset_layer_entry(const int port)
 	 * Protocol Layer message transmission transitions to
 	 * PRL_Tx_Wait_For_Message_Request state.
 	 */
+	CPRINTS("prl_tx[%d]: wait for msg req", port);
 	set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
 
 	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
@@ -1270,8 +1284,10 @@ static void prl_hr_reset_layer_entry(const int port)
 	if (IS_ENABLED(CONFIG_USB_CTVPD) ||
 	    IS_ENABLED(CONFIG_USB_VPD))
 		vpd_rx_enable(0);
-	else
+	else {
+		CPRINTS("prl[%d]: disable pd message", port);
 		tcpm_set_rx_enable(port, 0);
+	}
 
 	return;
 }
@@ -1292,6 +1308,7 @@ static void prl_hr_reset_layer_run(const int port)
 	 * Hard Reset was initiated by Port Partner
 	 */
 	else {
+		CPRINTS("prl_hr[%d]: informing pe of hard_reset", port);
 		/* Inform Policy Engine of the Hard Reset */
 		pe_got_hard_reset(port);
 		set_state_prl_hr(port, PRL_HR_WAIT_FOR_PE_HARD_RESET_COMPLETE);
@@ -1649,6 +1666,8 @@ static void rch_report_error_entry(const int port)
 {
 	print_current_rch_state(port);
 
+	CPRINTS("prl[%d]: rch error", port);
+
 	/*
 	 * If the state was entered because a message was received,
 	 * this message is passed to the Policy Engine.
@@ -1996,6 +2015,8 @@ static void tch_message_sent_entry(const int port)
 static void tch_report_error_entry(const int port)
 {
 	print_current_tch_state(port);
+
+	CPRINTS("prl[%d]: tch error", port);
 
 	/* Report Error To Policy Engine */
 	pe_report_error(port, tch[port].error, prl_tx[port].last_xmit_type);
