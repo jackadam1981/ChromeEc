@@ -231,3 +231,17 @@ void ppc_interrupt(enum gpio_signal signal)
 		break;
 	}
 }
+
+/* Called on AP S0ix -> S0 transition */
+static void board_chipset_resume(void)
+{
+	gpio_set_level(GPIO_EC_KB_BL_EN, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S0ix transition */
+static void board_chipset_suspend(void)
+{
+	gpio_set_level(GPIO_EC_KB_BL_EN, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);

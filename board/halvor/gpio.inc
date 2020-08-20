@@ -104,6 +104,7 @@ GPIO(EC_I2CBUFFER_EN,		PIN(9, 3), GPIO_OUT_LOW)
 GPIO(UART2_EC_RX,		PIN(7, 5), GPIO_OUT_LOW)
 
 /* Misc Signals */
+GPIO(EC_KB_BL_EN,		PIN(8, 0), GPIO_OUT_LOW)	/* Keyboard backlight */
 
 /*
  * eDP backlight - both PCH and EC have enable pins that must be high
@@ -162,7 +163,6 @@ GPIO(EC_KSO_02_INV, PIN(1, 7),                        GPIO_OUT_LOW)  /* KSO_02 *
 ALTERNATE(PIN_MASK(1, 0x7F), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH) /* KSO_03-09 */
 ALTERNATE(PIN_MASK(0, 0xF0), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH) /* KSO_10-13 */
 ALTERNATE(PIN_MASK(8, 0x0C), 0, MODULE_KEYBOARD_SCAN, GPIO_ODR_HIGH) /* KSO_14-15 */
-ALTERNATE(PIN_MASK(8, BIT(0)), 0, MODULE_PWM, 0)                     /* EC_KB_BL_PWM */
 
 /* UART */
 ALTERNATE(PIN_MASK(6, BIT(5) | BIT(4)), 0, MODULE_UART, 0)                           /* UART from EC to Servo */
