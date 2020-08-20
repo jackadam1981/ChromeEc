@@ -16,6 +16,52 @@
       "revId": "c862cafcd1cab1f5c7dc9cb771585c800302056f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69a42c8b_697ebd30",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-20T00:17:03Z",
+      "side": 1,
+      "message": "Has it set one of the polarity? Like set either SBU_FLIP or SBU_DIRECT using write_ioexpander(0, 2, polarity). Otherwise, the polarity is unclear initially.",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 36
+      },
+      "revId": "c862cafcd1cab1f5c7dc9cb771585c800302056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55b968af_0575ffe2",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-20T00:17:03Z",
+      "side": 1,
+      "message": "Don\u0027t need this sleep. The below line just prints something.",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 14
+      },
+      "revId": "c862cafcd1cab1f5c7dc9cb771585c800302056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
