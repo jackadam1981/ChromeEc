@@ -207,6 +207,7 @@ static void board_select_drp_mode(void)
 {
 
 	pd_set_dual_role(0, PD_DRP_TOGGLE_ON);
+	pd_set_dual_role(1, PD_DRP_TOGGLE_ON);
 	CPRINTS("ucpd: drp_state = %d", pd_get_dual_role(0));
 }
 DECLARE_DEFERRED(board_select_drp_mode);
