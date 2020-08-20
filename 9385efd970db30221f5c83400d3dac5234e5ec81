@@ -16,6 +16,75 @@
       "revId": "9385efd970db30221f5c83400d3dac5234e5ec81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dbe93db_ccca2fa2",
+        "filename": "board/terrador/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-20T14:28:33Z",
+      "side": 1,
+      "message": "This should be deleted as it causes a build failure on the terrador board.  \n\nThe pre-upload.py script verifies that you have run and passed \"make buildall\".  Are you running this script?  You should not upload your patch if this script reports any errors.",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 47
+      },
+      "revId": "9385efd970db30221f5c83400d3dac5234e5ec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86a864b0_0c38461e",
+        "filename": "board/todor/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-20T14:28:33Z",
+      "side": 1,
+      "message": "This also causes a build failure.",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 47
+      },
+      "revId": "9385efd970db30221f5c83400d3dac5234e5ec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4817610c_5da7c52d",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-20T14:28:33Z",
+      "side": 1,
+      "message": "Delete - this causes a build failure.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 47
+      },
+      "revId": "9385efd970db30221f5c83400d3dac5234e5ec81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
