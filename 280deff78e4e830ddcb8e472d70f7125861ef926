@@ -16,6 +16,24 @@
       "revId": "280deff78e4e830ddcb8e472d70f7125861ef926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b26cf65_ecaf25a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-20T21:22:29Z",
+      "side": 1,
+      "message": "Oh, thank you :) I\u0027ll move it over to common/temp_sensor.c, figure out how best to merge it with the existing temps command there.",
+      "parentUuid": "120273a4_a1cd8f8a",
+      "revId": "280deff78e4e830ddcb8e472d70f7125861ef926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
