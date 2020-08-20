@@ -22,7 +22,7 @@ fi
 # Verify that all targets were built and all tests passed after the latest
 # source code modification.
 if [[ ! -e .tests-passed ]]; then
-  echo 'Unit tests have not passed. Please run "make buildall -j".'
+  echo 'Unit tests have not passed. Please run "make buildall -j 100".'
   exit 1
 fi
 
@@ -51,7 +51,7 @@ changed=$(echo "${changed}" | grep -v docs/)
 if [[ -n "${changed}" ]]; then
   echo "Files have changed since last time unit tests passed:"
   echo "${changed}" | sed -e 's/^/  /'
-  echo 'Please run "make buildall -j".'
+  echo 'Please run "make buildall -j 100".'
   exit 1
 fi
 
