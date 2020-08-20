@@ -16,6 +16,23 @@
       "revId": "44454c6c1e159eb0f19685ee2284f0fa3ef7798d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b4ed76b_3f06939c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-20T20:09:33Z",
+      "side": 1,
+      "message": "nit: I don\u0027t really like the magic numbers for retry count or error value... but this is a very specific issue.",
+      "revId": "44454c6c1e159eb0f19685ee2284f0fa3ef7798d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
