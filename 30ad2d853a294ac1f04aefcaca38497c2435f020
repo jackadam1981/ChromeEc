@@ -34,6 +34,24 @@
       "revId": "30ad2d853a294ac1f04aefcaca38497c2435f020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "742b10ec_e1ee6c03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-20T19:42:40Z",
+      "side": 1,
+      "message": "Have you proved this is a problem specific to sending GetSinkCaps after a swap, or is this a general issue that could occur as soon as we try sending other messages?  \n\nIf the issue is definitely specific to GetSinkCaps and nothing else, then note it in the commit comment so people understand this was removed because of buggy behavior and we need to fix it.  Also open up a bug to track said issue.",
+      "parentUuid": "cc5a5e67_b02e78e0",
+      "revId": "30ad2d853a294ac1f04aefcaca38497c2435f020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
