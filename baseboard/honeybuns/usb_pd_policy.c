@@ -150,6 +150,8 @@ void pd_transition_voltage(int idx)
 	if (port == USB_PD_PORT_HOST) {
 		int mv;
 		int ma;
+		int vbus_thresh;
+		int i;
 
 	/*
 	 * Set the VBUS output voltage and current limit to the values specified
@@ -160,8 +162,19 @@ void pd_transition_voltage(int idx)
 
 		/* Set VBUS level to value specified in the requested PDO */
 		mp4245_set_voltage_out(mv);
-		/* Set VBUS current limit to value specfied in the requested PDO */
-		//mp4245_set_current_lim(ma);
+		/* Wait for vbus to be with 95% of its target value */
+		vbus_thresh = mv - (mv >> 4);
+		CPRINTS("mp4245: vbus = %d mV, threshold = %d mV", mv, vbus_thresh);
+		for (i = 0; i < 20; i++) {
+			int rv;
+
+			rv =  mp3245_get_vbus(&mv, &ma);
+			//CPRINTS("mp4245: vbus = %d mV, %d iterations", mv, i+1);
+			if ((rv == EC_SUCCESS) && (mv >= vbus_thresh)) {
+				//return;
+			}
+			msleep(2);
+		}
 	}
 }
 
@@ -392,9 +405,6 @@ static int svdm_enter_mode(int port, uint32_t *payload)
 		 */
 		/* TODO(b/): When we have usb support, put this back in? */
 		/* usb_disconnect(); */
-
-	CPRINTS("svdm_enter[%d]: svid = %x, ret = %d", port,
-		PD_VDO_VID(payload[0]), rv);
 
 	return rv;
 }

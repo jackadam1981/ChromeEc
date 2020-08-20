@@ -174,6 +174,8 @@ enum usb_strings {
 #define CONFIG_USBC_VCONN_SWAP
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_SS_MUX_UFP_USB3
+
+/* #define STM32G4_UCPD_CMD */
 #else
 /* RO Specific Config Options */
 
@@ -189,6 +191,9 @@ enum usb_strings {
 #define CONFIG_RWSIG
 #define CONFIG_RSA
 #define CONFIG_SHA256_UNROLLED
+#undef CONFIG_RWSIG_JUMP_TIMEOUT
+#define CONFIG_RWSIG_JUMP_TIMEOUT (2500 * MSEC)
+#define HONEYBUNS_USB_UPDATER2
 #endif /* SECTION_IS_RW */
 
 #define CONFIG_RWSIG_TYPE_RWSIG
