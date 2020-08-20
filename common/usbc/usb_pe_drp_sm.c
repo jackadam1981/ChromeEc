@@ -2211,9 +2211,11 @@ static void pe_src_negotiate_capability_entry(int port)
 	 *
 	 */
 	if (pd_check_requested_voltage(payload, port) != EC_SUCCESS) {
+		CPRINTS("pe[%d]: request can't be met!", port);
 		set_state_pe(port, PE_SRC_CAPABILITY_RESPONSE);
 	} else {
 		PE_SET_FLAG(port, PE_FLAGS_ACCEPT);
+		CPRINTS("pe[%d]: got to vbus_trans", port);
 		pe[port].requested_idx = RDO_POS(payload);
 		set_state_pe(port, PE_SRC_TRANSITION_SUPPLY);
 	}
@@ -2226,17 +2228,16 @@ static void pe_src_transition_supply_entry(int port)
 {
 	print_current_state(port);
 
-	/* Transition Power Supply */
-	pd_transition_voltage(pe[port].requested_idx);
+	//pd_transition_voltage(pe[port].requested_idx);
 
 	/* Send a GotoMin Message or otherwise an Accept Message */
 	if (PE_CHK_FLAG(port, PE_FLAGS_ACCEPT)) {
 		PE_CLR_FLAG(port, PE_FLAGS_ACCEPT);
+		CPRINTS("pe[%d]: sending accept message", port);
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
 	} else {
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_GOTO_MIN);
 	}
-
 }
 
 static void pe_src_transition_supply_run(int port)
@@ -2290,6 +2291,8 @@ static void pe_src_transition_supply_run(int port)
 		} else {
 			/* NOTE: First pass through this code block */
 			/* Send PS_RDY message */
+			/* Transition Power Supply */
+			pd_transition_voltage(pe[port].requested_idx);
 			send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
 			PE_SET_FLAG(port, PE_FLAGS_PS_READY);
 		}
@@ -2463,6 +2466,7 @@ static void pe_src_ready_run(int port)
 			case PD_CTRL_REJECT:
 			case PD_CTRL_WAIT:
 			case PD_CTRL_PS_RDY:
+				CPRINTS("pe[%d]: sending soft reset", port);
 				pe_send_soft_reset(port,
 				  PD_HEADER_GET_SOP(rx_emsg[port].header));
 				return;
@@ -2740,6 +2744,7 @@ static void pe_src_transition_to_default_run(int port)
 	 */
 	if (PE_CHK_FLAG(port, PE_FLAGS_PS_RESET_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PS_RESET_COMPLETE);
+		CPRINTS("pe[%d]: hard reset complete!", port);
 		/* Inform the Protocol Layer that the Hard Reset is complete */
 		prl_hard_reset_complete(port);
 		set_state_pe(port, PE_SRC_STARTUP);
@@ -3024,6 +3029,7 @@ static void pe_snk_select_capability_run(int port)
 			 * Unexpected Control Message Received
 			 */
 			else {
+				CPRINTS("pe: unexpected ctrl");
 				/* Send Soft Reset */
 				pe_send_soft_reset(port, sop);
 				return;
@@ -3033,6 +3039,7 @@ static void pe_snk_select_capability_run(int port)
 		 * Unexpected Data Message
 		 */
 		else {
+			CPRINTS("pe: unexpected data");
 			/* Send Soft Reset */
 			pe_send_soft_reset(port, sop);
 			return;
@@ -5714,7 +5721,6 @@ static void pe_vdm_response_entry(int port)
 	 */
 	/* Pass received message to svdm_response function */
 	memcpy(tx_payload, rx_payload, PD_HEADER_CNT(rx_emsg[port].header) * 4);
-	CPRINTS("pe[%d]: svdm_resp copy %d bytes", port, PD_HEADER_CNT(rx_emsg[port].header) * 4);
 
 	if (func) {
 		/*
