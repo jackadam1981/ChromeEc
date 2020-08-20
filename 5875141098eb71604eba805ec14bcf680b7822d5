@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1566c13b_f114d94b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-08-20T22:24:36Z",
+      "side": 1,
+      "message": "No need to do this now, but I wonder if we should detect if the \"private\" directory is present and default to using it if it does.",
+      "revId": "5875141098eb71604eba805ec14bcf680b7822d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63513b99_0186c215",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-08-20T22:24:36Z",
+      "side": 1,
+      "message": "nit: quotes around variables",
+      "range": {
+        "startLine": 197,
+        "startChar": 6,
+        "endLine": 197,
+        "endChar": 39
+      },
+      "revId": "5875141098eb71604eba805ec14bcf680b7822d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
