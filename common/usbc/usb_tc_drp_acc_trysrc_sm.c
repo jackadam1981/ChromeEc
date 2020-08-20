@@ -1160,6 +1160,7 @@ static bool tc_perform_src_hard_reset(int port)
 
 		tc[port].ps_reset_state = PS_STATE1;
 		tc[port].timeout = get_time().val + PD_T_SRC_RECOVER;
+		CPRINTS("tc[%d]: hard rst 0", port);
 		return false;
 	case PS_STATE1:
 		/* Enable VBUS */
@@ -1174,12 +1175,14 @@ static bool tc_perform_src_hard_reset(int port)
 		tc[port].ps_reset_state = PS_STATE2;
 		tc[port].timeout = get_time().val +
 				PD_POWER_SUPPLY_TURN_ON_DELAY;
+		CPRINTS("tc[%d]: hard rst 1", port);
 		return false;
 	case PS_STATE2:
 		/* Tell Policy Engine Hard Reset is complete */
 		pe_ps_reset_complete(port);
 
 		tc[port].ps_reset_state = PS_STATE0;
+		CPRINTS("tc[%d]: hard rst 2", port);
 		return true;
 	}
 
@@ -2732,6 +2735,7 @@ static void tc_attached_src_run(const int port)
 		if (get_time().val < tc[port].timeout)
 			return;
 
+		CPRINTS("tc[%d]: perform_hard_reset", port);
 		if (tc_perform_src_hard_reset(port))
 			TC_CLR_FLAG(port, TC_FLAGS_HARD_RESET_REQUESTED);
 
