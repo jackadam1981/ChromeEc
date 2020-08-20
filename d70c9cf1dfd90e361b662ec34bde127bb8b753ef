@@ -70,6 +70,30 @@
       "revId": "d70c9cf1dfd90e361b662ec34bde127bb8b753ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c905f999_1e80bb6e",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000868
+      },
+      "writtenOn": "2020-08-20T23:13:25Z",
+      "side": 1,
+      "message": "I like the idea, I commented on the CL already (didn\u0027t realize you had commented here already), I defer to vapier@ on the philosophical use of a file like that, and I have a couple suggestions to make that viable.",
+      "parentUuid": "fb29ad09_09f774d2",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 307
+      },
+      "revId": "d70c9cf1dfd90e361b662ec34bde127bb8b753ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
