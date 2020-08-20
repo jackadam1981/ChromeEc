@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25f08ab5_2bc7e958",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-20T19:03:40Z",
+      "side": 1,
+      "message": "Maybe \"Source-initiated AMS already in progress, fall through\"? This clause is also doubling to ensure we aren\u0027t re-setting NG in the middle of a multi-message AMS",
+      "range": {
+        "startLine": 791,
+        "startChar": 0,
+        "endLine": 800,
+        "endChar": 18
+      },
+      "revId": "cb3f63c80e92d58034226a01b24746dc68d72f9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
