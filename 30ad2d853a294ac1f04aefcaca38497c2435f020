@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6886d21_bedfb3ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-20T18:53:23Z",
+      "side": 1,
+      "message": "I\u0027d like to suggest the exact opposite of this: always asking for sink caps!  Even when we\u0027re the source. The fixed capability has some very valuable information such as whether the port partner has unconstrained power (and therefore we should probably swap to have them source).  ",
+      "revId": "30ad2d853a294ac1f04aefcaca38497c2435f020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
