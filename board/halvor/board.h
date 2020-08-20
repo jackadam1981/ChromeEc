@@ -25,6 +25,7 @@
 #define CONFIG_LED_PWM_COUNT 1
 
 /* Keyboard features */
+#define CONFIG_BOARD_PRE_INIT
 
 /* Sensors */
 /* BMA253 accelerometer in base */
