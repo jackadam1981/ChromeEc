@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1100337a_d67ce674",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-20T05:37:02Z",
+      "side": 1,
+      "message": "you can use `getconf _NPROCESSORS_ONLN` to see how many are online so you wouldn\u0027t overload the dev\u0027s system too much\n\n ncpu\u003d$(getconf _NPROCESSORS_ONLN || echo 2)",
+      "revId": "d2fd83c655c39041ccb35b56384325bd21d572af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
