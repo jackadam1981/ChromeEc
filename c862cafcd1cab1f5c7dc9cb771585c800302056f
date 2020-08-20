@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "8b1915af_6c1b0e1e",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-08-20T19:11:26Z",
+      "side": 1,
+      "message": "Polarity of the mux doesn\u0027t matter until we know the orientation of the connection. we use the ADCs to detect polarity, and then set it below.",
+      "parentUuid": "69a42c8b_697ebd30",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 36
+      },
+      "revId": "c862cafcd1cab1f5c7dc9cb771585c800302056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55b968af_0575ffe2",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "c862cafcd1cab1f5c7dc9cb771585c800302056f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "911a7efa_735c8805",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-08-20T19:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55b968af_0575ffe2",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 14
+      },
+      "revId": "c862cafcd1cab1f5c7dc9cb771585c800302056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
