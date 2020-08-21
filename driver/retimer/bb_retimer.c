@@ -312,6 +312,29 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 	 */
 }
 
+#define TRY_LOOP 10
+static void bb_handle_safe_mode(void)
+{
+	int i;
+
+	/* wait for 1xTRY_LOOP ms to clear pending event */
+	for (i = 0; i < TRY_LOOP; i++) {
+		if (!host_is_event_set(EC_HOST_EVENT_USB_MUX))
+			break;
+		msleep(1);
+	}
+
+	/* Send info about safe mode */
+	host_set_single_event(EC_HOST_EVENT_USB_MUX);
+
+	/* wait for 10xTRY_LOOP ms to clear pending event */
+	for (i = 0; i < TRY_LOOP; i++) {
+		msleep(10);
+		if (!host_is_event_set(EC_HOST_EVENT_USB_MUX))
+			break;
+	}
+}
+
 /**
  * Driver interface functions
  */
@@ -320,6 +343,13 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
+
+	if (mux_state == USB_PD_MUX_SAFE_MODE &&
+		chipset_in_state(CHIPSET_STATE_ON)) {
+		bb_handle_safe_mode();
+		/* wait for SOC to settle safe mode */
+		msleep(20);
+	}
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
