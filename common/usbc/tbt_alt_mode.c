@@ -113,6 +113,13 @@ bool tbt_is_active(int port)
 	return tbt_state[port] == TBT_ACTIVE;
 }
 
+void enter_mode_tbt_failed(int port)
+{
+	tbt_state[port] = TBT_INACTIVE;
+	usb_mux_set(port, USB_PD_MUX_USB_ENABLED, USB_SWITCH_CONNECT,
+		    pd_get_polarity(port));
+}
+
 void tbt_teardown(int port)
 {
 	 tbt_prints("teardown", port);
@@ -419,7 +426,7 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 		break;
 	case TBT_INACTIVE:
 		/* Thunderbolt mode is inactive */
-		return -1;
+		return 0;
 	default:
 		 CPRINTF("%s called with invalid state %d\n",
 				__func__, tbt_state[port]);

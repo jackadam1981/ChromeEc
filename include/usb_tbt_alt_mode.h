@@ -32,6 +32,14 @@ void tbt_init(int port);
 bool tbt_is_active(int port);
 
 /*
+ * Resets thunderbolt state and mux state on vconn swap failure for SOP'/SOP''
+ * messages.
+ *
+ * @param port      USB-C port number
+ */
+void enter_mode_tbt_failed(int port);
+
+/*
  * Handles received Thunderbolt VDM ACKs.
  *
  * @param port      USB-C port number

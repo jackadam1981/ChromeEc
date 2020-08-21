@@ -176,6 +176,15 @@
  * discovery.
  */
 #define N_DISCOVER_IDENTITY_COUNT 6
+
+/*
+ * Only vconn source can communicate with the cable plug. Hence to avoid race
+ * condition, try vconn swap 3 times before giving up the cable discovery.
+ *
+ * Note: This is not a part of power delivery specification
+ */
+#define N_VCONN_SWAP_COUNT 3
+
 /*
  * ChromeOS policy:
  *   For PD2.0, We must be DFP before sending Discover Identity message
@@ -608,6 +617,12 @@ static struct policy_engine {
 	 * This timer is used during a VCONN Swap.
 	 */
 	uint64_t vconn_on_timer;
+
+	/*
+	 * This counter is used to request for a vconn swap to avoid race
+	 * condition for sending the SOP'/SOP'' messages.
+	 */
+	uint8_t vconn_swap_counter;
 
 	/*
 	 * For PD2.0, this timer is used to wait 400ms and add some
@@ -4333,6 +4348,25 @@ static void pe_vdm_send_request_entry(int port)
 		return;
 	}
 
+	/*
+	 * For commmunication with the cable, make sure the port is the
+	 * vconn source. If not, request for a vconn swap.
+	 */
+	if (!tc_is_vconn_src(port) &&
+	   (pe[port].tx_type == TCPC_TX_SOP_PRIME ||
+	    pe[port].tx_type == TCPC_TX_SOP_PRIME_PRIME)) {
+		if (pe[port].vconn_swap_counter == N_VCONN_SWAP_COUNT) {
+			if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
+				enter_mode_tbt_failed(port);
+			if (IS_ENABLED(CONFIG_USB_PD_USB4))
+				enter_usb_failed(port);
+		} else {
+			pe[port].vconn_swap_counter++;
+			PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+		}
+		return;
+	}
+
 	/* All VDM sequences are Interruptible */
 	PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS |
 			PE_FLAGS_INTERRUPTIBLE_AMS);
@@ -5208,6 +5242,7 @@ static void pe_vcs_send_swap_run(int port)
 			 *   2) The Port is not presently the VCONN Source.
 			 */
 			if (type == PD_CTRL_ACCEPT) {
+				pe[port].vconn_swap_counter = 0;
 				if (tc_is_vconn_src(port))
 					set_state_pe(port,
 						PE_VCS_WAIT_FOR_VCONN_SWAP);
