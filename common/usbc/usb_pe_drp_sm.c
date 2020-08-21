@@ -4891,7 +4891,7 @@ static void pe_vdm_request_dpm_exit(int port)
  */
 static void pe_vdm_response_entry(int port)
 {
-	int ret = 0;
+	int response_size_bytes = 0;
 	uint32_t *rx_payload;
 	uint32_t *tx_payload;
 	uint8_t vdo_cmd;
@@ -4955,8 +4955,22 @@ static void pe_vdm_response_entry(int port)
 	tx_payload = (uint32_t *)tx_emsg[port].buf;
 
 	if (func) {
-		ret = func(port, rx_payload);
-		if (ret)
+		/*
+		 * Designed in TCPMv1, svdm_response functions use same
+		 * buffer to take received data and overwrite with response
+		 * data. To work with this interface, here copy rx data to
+		 * tx buffer and pass tx_payload to func.
+		 * TODO(b/166455363): change the interface to pass both rx
+		 * and tx buffer
+		 */
+		memcpy(tx_payload, rx_payload, rx_emsg[port].len);
+		/*
+		 * Return value of func is the data objects count in payload.
+		 * return 1 means only VDM header, no VDO.
+		 */
+		response_size_bytes =
+				func(port, tx_payload) * sizeof(*tx_payload);
+		if (response_size_bytes > 0)
 			/* ACK */
 			tx_payload[0] = VDO(
 				USB_VID_GOOGLE,
@@ -4964,7 +4978,7 @@ static void pe_vdm_response_entry(int port)
 				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
 				| VDO_CMDT(CMDT_RSP_ACK) |
 				vdo_cmd);
-		else if (!ret)
+		else if (response_size_bytes == 0)
 			/* NAK */
 			tx_payload[0] = VDO(
 				USB_VID_GOOGLE,
@@ -4981,8 +4995,8 @@ static void pe_vdm_response_entry(int port)
 				| VDO_CMDT(CMDT_RSP_BUSY) |
 				vdo_cmd);
 
-		if (ret <= 0)
-			ret = 4;
+		if (response_size_bytes <= 0)
+			response_size_bytes = 4;
 	} else {
 		/* not supported : NACK it */
 		tx_payload[0] = VDO(
@@ -4991,11 +5005,11 @@ static void pe_vdm_response_entry(int port)
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP)) |
 			VDO_CMDT(CMDT_RSP_NAK) |
 			vdo_cmd);
-		ret = 4;
+		response_size_bytes = 4;
 	}
 
 	/* Send ACK, NAK, or BUSY */
-	tx_emsg[port].len = ret;
+	tx_emsg[port].len = response_size_bytes;
 	send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
 }
 
