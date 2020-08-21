@@ -1363,6 +1363,11 @@ static void tc_ct_attached_vpd_entry(const int port)
 	 */
 	vpd_vbus_pass_en(1);
 
+	/*
+	 * For Chocodile_C, enable Accessory port VBUS
+	 */
+	vpd_ufp_en(1);
+
 	tc[port].cc_state = PD_CC_UNSET;
 }
 
@@ -1405,6 +1410,11 @@ static void tc_ct_attached_vpd_run(const int port)
 	 */
 	if (tc[port].cc_state == PD_CC_NONE && !vpd_is_ct_vbus_present())
 		set_state_tc(port, TC_CT_UNATTACHED_VPD);
+}
+
+static void tc_ct_attached_vpd_exit(const int port)
+{
+	vpd_ufp_en(1);
 }
 
 /**
@@ -1694,6 +1704,7 @@ static const struct usb_state tc_states[] = {
 	[TC_CT_ATTACHED_VPD] = {
 		.entry  = tc_ct_attached_vpd_entry,
 		.run    = tc_ct_attached_vpd_run,
+		.exit   = tc_ct_attached_vpd_exit,
 	},
 	[TC_CT_ATTACH_WAIT_VPD] = {
 		.entry  = tc_ct_attach_wait_vpd_entry,

@@ -244,12 +244,24 @@ void vpd_vbus_pass_en(int en);
 
 /**
  * Preset Billboard device
+ * NOTE: Only used in Chocodile_VPDMCU
  *
  * @param bb  BB_NONE no billboard presented,
  *            BB_SRC source connected but not in charge-through
  *            BB_SNK sink connected
  */
 void vpd_present_billboard(enum vpd_billboard bb);
+
+/**
+ * Enables VBUS to USB-C Accessory port
+ * NOTE: Only used in Chocodile_C
+ * Limitations:
+ *   1) Accessory will only see RPUSB Pull-Up in one orientation
+ *   2) 100ma max
+ *
+ * @param en 1  Enable VBUS, else disable VBUS
+ */
+void vpd_ufp_en(int en);
 
 /**
  * Enables the MCU to host cc communication
