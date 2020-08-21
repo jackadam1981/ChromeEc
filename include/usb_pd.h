@@ -511,7 +511,7 @@ struct partner_active_modes {
 #define VDO_INDEX_AMA            4
 #define VDO_INDEX_PTYPE_UFP1_VDO 4
 #define VDO_INDEX_PTYPE_CABLE1   4
-#define VDO_INDEX_PTYPE_UFP2_VDO 4
+#define VDO_INDEX_PTYPE_UFP2_VDO 5
 #define VDO_INDEX_PTYPE_CABLE2   5
 #define VDO_INDEX_PTYPE_DFP_VDO  6
 #define VDO_I(name) VDO_INDEX_##name
