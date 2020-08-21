@@ -198,6 +198,29 @@
     },
     {
       "key": {
+        "uuid": "ab629214_a55719c8",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:42:04Z",
+      "side": 1,
+      "message": "Do we see any issues if we call this for all modes including hpd?",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 31
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b89812e_6cfeb2d6",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 4
@@ -283,6 +306,29 @@
         "startChar": 2,
         "endLine": 453,
         "endChar": 20
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b2880f2_cd290c6d",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:42:04Z",
+      "side": 1,
+      "message": "please repalce mux -\u003e Virtual Mux",
+      "range": {
+        "startLine": 55,
+        "startChar": 25,
+        "endLine": 55,
+        "endChar": 28
       },
       "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
