@@ -16,6 +16,24 @@
       "revId": "9bda83004f444641aaaeafb3a8b9524c347ca387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4489d81_3b9aca27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-08-21T20:35:29Z",
+      "side": 1,
+      "message": "I was using checkpatch to flag blocked terms as misspelled. After talking to a few people, I decided it was too broad and would impact a lot of other projects that weren\u0027t ready for these changes, so that effort has been cancelled in favor of this one.",
+      "parentUuid": "6e6a2214_031d3ee6",
+      "revId": "9bda83004f444641aaaeafb3a8b9524c347ca387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
