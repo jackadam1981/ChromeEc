@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "333c86c8_58908277",
+        "filename": "common/mock/dp_alt_mode_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T20:24:25Z",
+      "side": 1,
+      "message": "I don\u0027t think that we these enum  definitions. It makes me think we need to keep them in sync, which we don\u0027t really need to add that maintenance burden",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 61
+      },
+      "revId": "f3b3dc947f13432edc61cc8e435012355420a3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b29f4f8e_299fc247",
+        "filename": "common/mock/usb_pd_dpm_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T20:24:25Z",
+      "side": 1,
+      "message": "for these new mocks, I think it would be helpful to make the include file for these mocks that includes the mock_reset function and a place where you can control the bahavior of the mock itself",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "f3b3dc947f13432edc61cc8e435012355420a3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a1b96f_b953c53c",
+        "filename": "common/mock/usb_pd_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T20:24:25Z",
+      "side": 1,
+      "message": "why is this overridable? I think think we want to all tests to provide their own, they should be using the mocks version",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "f3b3dc947f13432edc61cc8e435012355420a3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09d517e8_2d329aeb",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T20:24:25Z",
+      "side": 1,
+      "message": "same, we don\u0027t want these to be overridden in tests",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 13
+      },
+      "revId": "f3b3dc947f13432edc61cc8e435012355420a3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6d15238_a1870bcb",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T20:24:25Z",
+      "side": 1,
+      "message": "let\u0027s call the reset function on every mock we are using in the before_test function please\n\nAnd there should be a reset for every mock too ;)",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 16
+      },
+      "revId": "f3b3dc947f13432edc61cc8e435012355420a3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
