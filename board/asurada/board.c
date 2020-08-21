@@ -101,15 +101,18 @@ __override void board_hibernate_late(void)
 	 * GPIO_EN_SLP_Z not implemented in rev0/1,
 	 * fallback to usual hibernate process.
 	 */
-	if (board_get_version() <= 1)
+	if (board_get_version() <= 0)
 		return;
 
 	isl9238c_hibernate(CHARGER_SOLO);
 
 	gpio_set_level(GPIO_EN_SLP_Z, 1);
 
-	/* should not reach here */
-	__builtin_unreachable();
+	/*
+	 * HACK: if GPIO_EN_SLP_Z doesn't work,
+	 * resume the charger and fallback like rev0.
+	 */
+	isl9238c_resume(CHARGER_SOLO);
 }
 
 /* power signal list.  Must match order of enum power_signal. */
