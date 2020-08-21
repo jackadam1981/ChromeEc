@@ -64,6 +64,7 @@ enum vpd_gpo mock_get_cc_rpusb_odh(void);
 enum vpd_gpo mock_get_cc_db_en_od(void);
 enum vpd_cc moch_get_ct_cl_sel(void);
 int mock_get_mcu_cc_en(void);
+int mock_get_ufp_en(void);
 enum vpd_billboard mock_get_present_billboard(void);
 int mock_get_red_led(void);
 int mock_get_green_led(void);
@@ -307,6 +308,17 @@ void vpd_vbus_pass_en(int en);
  *            BB_SNK sink connected
  */
 void vpd_present_billboard(enum vpd_billboard bb);
+
+/**
+ * Enables VBUS to USB-C Accessory port
+ * NOTE: Only used in Chocodile_C
+ * Limitations:
+ *   1) Accessory will only see RPUSB Pull-Up in one orientation
+ *   2) 100ma max
+ *
+ * @param en 1  Enable VBUS, else disable VBUS
+ */
+void vpd_ufp_en(int en);
 
 /**
  * Enables the MCU to host cc communication

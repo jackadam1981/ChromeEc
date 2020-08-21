@@ -63,6 +63,7 @@ static enum vpd_gpo mock_cc_db_en_od;
 static enum vpd_gpo mock_cc_rpusb_odh;
 static enum vpd_cc mock_ct_cl_sel;
 static int mock_mcu_cc_en;
+static int mock_ufp_en;
 static enum vpd_billboard mock_present_billboard;
 static int mock_red_led;
 static int mock_green_led;
@@ -134,6 +135,11 @@ enum vpd_cc moch_get_ct_cl_sel(void)
 int mock_get_mcu_cc_en(void)
 {
 	return mock_mcu_cc_en;
+}
+
+int mock_get_ufp_en(void)
+{
+	return mock_ufp_en;
 }
 
 enum vpd_billboard mock_get_present_billboard(void)
@@ -547,6 +553,11 @@ void vpd_green_led(int on)
 void vpd_vbus_pass_en(int en)
 {
 	mock_vbus_pass_en = en ? 1 : 0;
+}
+
+void vpd_ufp_en(int en)
+{
+	mock_ufp_en = en ? 1 : 0;
 }
 
 void vpd_present_billboard(enum vpd_billboard bb)

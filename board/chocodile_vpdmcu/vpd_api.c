@@ -435,12 +435,23 @@ inline int vpd_read_rdconnect_ref(void)
 
 void vpd_red_led(int on)
 {
+#ifdef BOARD_CHOCODILE_VPDMCU
 	gpio_set_level(GPIO_DEBUG_LED_R_L, (on) ? 0 : 1);
+#endif
 }
 
 void vpd_green_led(int on)
 {
+#ifdef BOARD_CHOCODILE_VPDMCU
 	gpio_set_level(GPIO_DEBUG_LED_G_L, (on) ? 0 : 1);
+#endif
+}
+
+void vpd_ufp_en(int en)
+{
+#ifdef BOARD_CHOCODILE_C
+	gpio_set_level(GPIO_UFP_EN, (en) ? 0 : 1);
+#endif
 }
 
 void vpd_vbus_pass_en(int en)
@@ -450,6 +461,7 @@ void vpd_vbus_pass_en(int en)
 
 void vpd_present_billboard(enum vpd_billboard bb)
 {
+#ifdef BOARD_CHOCODILE_VPDMCU
 	switch (bb) {
 	case BB_NONE:
 		gpio_set_level(GPIO_PRESENT_BILLBOARD, 0);
@@ -465,6 +477,7 @@ void vpd_present_billboard(enum vpd_billboard bb)
 		gpio_set_flags(GPIO_PRESENT_BILLBOARD, GPIO_OUTPUT);
 		break;
 	}
+#endif
 }
 
 void vpd_mcu_cc_en(int en)
