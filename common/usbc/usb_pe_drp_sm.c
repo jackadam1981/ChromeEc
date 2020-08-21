@@ -176,6 +176,15 @@
  * discovery.
  */
 #define N_DISCOVER_IDENTITY_COUNT 6
+
+/*
+ * Only VCONN source can communicate with the cable plug. Hence, try vconn swap
+ * 3 times before giving up.
+ *
+ * Note: This is not a part of power delivery specification
+ */
+#define N_VCONN_SWAP_COUNT 3
+
 /*
  * ChromeOS policy:
  *   For PD2.0, We must be DFP before sending Discover Identity message
@@ -656,6 +665,13 @@ static struct policy_engine {
 	 */
 	uint32_t dr_swap_attempt_counter;
 
+	/*
+	 * This counter maintains a count of VCONN swap requests. If VCONN swap
+	 * isn't successful after nVCONNSwapCount, the port shall send
+	 * dpm_vdm_naked().
+	 */
+	uint8_t vconn_swap_counter;
+
 	/* Last received source cap */
 	uint32_t src_caps[PDO_MAX_OBJECTS];
 	int src_cap_cnt;
@@ -705,6 +721,43 @@ static inline void send_data_msg(int port, enum tcpm_transmit_type type,
 	/* Clear any previous TX status before sending a new message */
 	PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 	prl_send_data_msg(port, type, msg);
+}
+
+static bool port_is_vconn_src(int port, int vdm_cmd)
+{
+	struct svid_mode_data *mode_data;
+
+	if (tc_is_vconn_src(port))
+		return true;
+
+	if (pe[port].vconn_swap_counter >= N_VCONN_SWAP_COUNT) {
+		switch (vdm_cmd) {
+		case CMD_DISCOVER_IDENT:
+			pd_set_identity_discovery(port, pe[port].tx_type,
+						  PD_DISC_FAIL);
+			break;
+		case CMD_DISCOVER_SVID:
+			pd_set_svids_discovery(port, pe[port].tx_type,
+					       PD_DISC_FAIL);
+			break;
+		case CMD_DISCOVER_MODES:
+			mode_data = pd_get_next_mode(port, pe[port].tx_type);
+			pd_set_modes_discovery(port, pe[port].tx_type,
+					       mode_data->svid, PD_DISC_FAIL);
+			break;
+		case CMD_ENTER_MODE:
+			dpm_vdm_naked(port, pe[port].tx_type,
+				      PD_VDO_VID(pe[port].vdm_data[0]),
+				      PD_VDO_CMD(pe[port].vdm_data[0]));
+			break;
+		default:
+			break;
+		}
+	} else {
+		pe[port].vconn_swap_counter++;
+		PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+	}
+	return false;
 }
 
 static __maybe_unused inline void send_ext_data_msg(
@@ -1583,6 +1636,9 @@ static void pe_src_startup_entry(int port)
 
 		/* Reset dr swap attempt counter */
 		pe[port].dr_swap_attempt_counter = 0;
+
+		/* Reset VCONN swap counter */
+		pe[port].vconn_swap_counter = 0;
 	}
 }
 
@@ -2390,6 +2446,8 @@ static void pe_snk_startup_entry(int port)
 		/* Reset dr swap attempt counter */
 		pe[port].dr_swap_attempt_counter = 0;
 
+		/* Reset VCONN swap counter */
+		pe[port].vconn_swap_counter = 0;
 		/*
 		 * TODO: POLICY decision:
 		 * Mark that we'd like to try being Vconn source and DFP
@@ -4333,6 +4391,11 @@ static void pe_vdm_send_request_entry(int port)
 		return;
 	}
 
+	if (!port_is_vconn_src(port, CMD_ENTER_MODE) &&
+	   (pe[port].tx_type == TCPC_TX_SOP_PRIME ||
+	    pe[port].tx_type == TCPC_TX_SOP_PRIME_PRIME))
+		return;
+
 	/* All VDM sequences are Interruptible */
 	PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS |
 			PE_FLAGS_INTERRUPTIBLE_AMS);
@@ -4403,6 +4466,9 @@ static void pe_vdm_identity_request_cbl_entry(int port)
 	uint32_t *msg = (uint32_t *)tx_emsg[port].buf;
 
 	print_current_state(port);
+
+	if (!port_is_vconn_src(port, CMD_DISCOVER_IDENT))
+		return;
 
 	msg[0] = VDO(USB_SID_PD, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
@@ -4643,6 +4709,10 @@ static void pe_init_vdm_svids_request_entry(int port)
 
 	print_current_state(port);
 
+	if (pe[port].tx_type == TCPC_TX_SOP_PRIME &&
+	    !port_is_vconn_src(port, CMD_DISCOVER_SVID))
+		return;
+
 	msg[0] = VDO(USB_SID_PD, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
 			CMD_DISCOVER_SVID);
@@ -4727,6 +4797,10 @@ static void pe_init_vdm_modes_request_entry(int port)
 	svid = mode_data->svid;
 
 	print_current_state(port);
+
+	if (pe[port].tx_type == TCPC_TX_SOP_PRIME &&
+	    !port_is_vconn_src(port, CMD_DISCOVER_MODES))
+		return;
 
 	msg[0] = VDO((uint16_t) svid, 1,
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, pe[port].tx_type)) |
@@ -5043,6 +5117,10 @@ static void pe_enter_usb_entry(int port)
 		return;
 	}
 
+	/*
+	 * TODO: b/156749387 In case of Enter USB SOP'/SOP'', check if the port
+	 * is the VCONN source, if not, request for a VCONN swap.
+	 */
 	tx_emsg[port].len = sizeof(usb4_payload);
 
 	memcpy(tx_emsg[port].buf, &usb4_payload, tx_emsg[port].len);
@@ -5208,6 +5286,7 @@ static void pe_vcs_send_swap_run(int port)
 			 *   2) The Port is not presently the VCONN Source.
 			 */
 			if (type == PD_CTRL_ACCEPT) {
+				pe[port].vconn_swap_counter = 0;
 				if (tc_is_vconn_src(port))
 					set_state_pe(port,
 						PE_VCS_WAIT_FOR_VCONN_SWAP);
