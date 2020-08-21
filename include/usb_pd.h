@@ -517,7 +517,7 @@ struct partner_active_modes {
 #define VDO_INDEX_AMA            4
 #define VDO_INDEX_PTYPE_UFP1_VDO 4
 #define VDO_INDEX_PTYPE_CABLE1   4
-#define VDO_INDEX_PTYPE_UFP2_VDO 4
+#define VDO_INDEX_PTYPE_UFP2_VDO 5
 #define VDO_INDEX_PTYPE_CABLE2   5
 #define VDO_INDEX_PTYPE_DFP_VDO  6
 #define VDO_I(name) VDO_INDEX_##name
@@ -1630,7 +1630,7 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
  * @param port     USB-C port number
  * @return enter mode data received from the DFP
  */
-__overridable union tbt_dev_mode_enter_cmd pd_dfp_get_enter_mode(int port);
+__override_proto union tbt_dev_mode_enter_cmd pd_dfp_get_enter_mode(int port);
 
 /**
  *  Get DisplayPort pin mode for DFP to request from UFP's capabilities.

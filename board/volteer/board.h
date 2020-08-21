@@ -101,6 +101,8 @@
 
 /* Enabling Thunderbolt-compatible mode */
 #define CONFIG_USB_PD_TBT_COMPAT_MODE
+#define CONFIG_USB_PD_TBT_UFP
+#define CONFIG_USB_PD_TBT_UFP_DEFAULT_VDO
 
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4

@@ -4006,6 +4006,11 @@
  */
 #undef CONFIG_USB_PD_TBT_COMPAT_MODE
 
+/* Capable of TBT UFP role */
+#undef CONFIG_USB_PD_TBT_UFP
+/* TBT VDM discover response use default VDO values */
+#undef CONFIG_USB_PD_TBT_UFP_DEFAULT_VDO
+
 /* Enable to enter into USB4 mode between two port partners */
 #undef CONFIG_USB_PD_USB4
 

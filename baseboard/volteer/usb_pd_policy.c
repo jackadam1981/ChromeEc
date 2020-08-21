@@ -15,8 +15,6 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-union tbt_dev_mode_enter_cmd dfp_enter_mode[CONFIG_USB_PD_PORT_MAX_COUNT];
-
 int pd_check_vconn_swap(int port)
 {
 	/* Only allow vconn swap if pp5000_A rail is enabled */
@@ -80,9 +78,4 @@ int pd_snk_is_vbus_provided(int port)
 int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
-}
-
-__overridable union tbt_dev_mode_enter_cmd pd_dfp_get_enter_mode(int port)
-{
-	return dfp_enter_mode[port];
 }
