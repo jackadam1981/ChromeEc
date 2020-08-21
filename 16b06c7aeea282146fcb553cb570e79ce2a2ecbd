@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca6fce10_62890852",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-08-21T11:22:35Z",
+      "side": 1,
+      "message": "Ack, thanks!",
+      "parentUuid": "03d33b99_4bc223cb",
+      "range": {
+        "startLine": 9,
+        "startChar": 69,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3daff67b_30a7f115",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 2
