@@ -94,6 +94,30 @@
       "revId": "d70c9cf1dfd90e361b662ec34bde127bb8b753ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25bc5886_e3594b1e",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2020-08-21T09:17:16Z",
+      "side": 1,
+      "message": "i don\u0027t feel strongly about it.  if the issue is about line wrapping, that can be done now.\n\n [Hook Overrides Options]\n keyword_check:\n   --block\u003dwhite.?list|black.?list|gr[ae]y.?list\n   --block\u003ddummy|sane|sanity|crazy|insane|cripple\n...",
+      "parentUuid": "c905f999_1e80bb6e",
+      "range": {
+        "startLine": 14,
+        "startChar": 23,
+        "endLine": 14,
+        "endChar": 307
+      },
+      "revId": "d70c9cf1dfd90e361b662ec34bde127bb8b753ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
