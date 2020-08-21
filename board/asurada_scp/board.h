@@ -18,7 +18,7 @@
  * RW only, no flash
  * +-------------------- 0x0
  * | ROM vectortable, .text, .rodata, .data LMA
- * +-------------------- 0x58000
+ * +-------------------- 0x50000
  * | RAM .bss, .data
  * +-------------------- 0x7BDB0
  * | IPI shared buffer with AP (288 + 8) * 2
@@ -30,7 +30,7 @@
  */
 #define ICACHE_BASE 0x7C000
 #define CONFIG_ROM_BASE 0x0
-#define CONFIG_RAM_BASE 0x58000
+#define CONFIG_RAM_BASE 0x50000
 #define CONFIG_ROM_SIZE (CONFIG_RAM_BASE - CONFIG_ROM_BASE)
 #define CONFIG_RAM_SIZE (CONFIG_IPC_SHARED_OBJ_ADDR - CONFIG_RAM_BASE)
 #define CONFIG_CODE_RAM_SIZE CONFIG_RAM_BASE
