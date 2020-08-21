@@ -106,6 +106,75 @@
     },
     {
       "key": {
+        "uuid": "338bfec3_e3c4f2db",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:32:43Z",
+      "side": 1,
+      "message": "if possible, please rename as safe_mode_cfg_val",
+      "range": {
+        "startLine": 314,
+        "startChar": 16,
+        "endLine": 314,
+        "endChar": 36
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb36710_eb34af6e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:32:43Z",
+      "side": 1,
+      "message": "if possible, is there any naming convention for bools?",
+      "range": {
+        "startLine": 315,
+        "startChar": 16,
+        "endLine": 315,
+        "endChar": 34
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa02c7f_d11bf921",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:32:43Z",
+      "side": 1,
+      "message": "if possible, please rename as safe_mode_deferred_at",
+      "range": {
+        "startLine": 316,
+        "startChar": 16,
+        "endLine": 316,
+        "endChar": 30
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "444b34e2_fdb46373",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 4
@@ -122,6 +191,29 @@
         "startChar": 1,
         "endLine": 317,
         "endChar": 8
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b89812e_6cfeb2d6",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:32:43Z",
+      "side": 1,
+      "message": "this change is board level change. Now it may be TGL port 1 may be correct. for other platforms this may not be valid. call api and get the port may resolve all other platforms also.",
+      "range": {
+        "startLine": 321,
+        "startChar": 3,
+        "endLine": 321,
+        "endChar": 11
       },
       "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
