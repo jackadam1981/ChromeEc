@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "353a8985_7988213e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:42:49Z",
+      "side": 1,
+      "message": "is it 50msec or 60 msec?",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80661634_db6d618d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
