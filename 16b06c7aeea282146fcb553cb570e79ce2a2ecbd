@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "9427abfc_8a7f158d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-08-21T10:52:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3daff67b_30a7f115",
+      "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0686795_10eb4a78",
         "filename": "driver/als_tcs3400.c",
         "patchSetId": 2
@@ -53,6 +71,24 @@
       "writtenOn": "2020-08-12T18:52:56Z",
       "side": 1,
       "message": "spoof is set by the caller for the test, we expect it to be valid.",
+      "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32a1300a_e1ffaa48",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-08-21T10:52:40Z",
+      "side": 1,
+      "message": "Got it, but I think clamping doesnt hurt the data.",
+      "parentUuid": "f0686795_10eb4a78",
       "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -73,6 +109,41 @@
       "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3658229_3500b11c",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-08-21T10:52:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "91136c1a_af5b749d",
+      "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5a3a099_437060b3",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1359554
+      },
+      "writtenOn": "2020-08-21T10:52:40Z",
+      "side": 1,
+      "message": "And here also..",
+      "revId": "16b06c7aeea282146fcb553cb570e79ce2a2ecbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
