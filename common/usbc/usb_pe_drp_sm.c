@@ -5081,12 +5081,7 @@ static void pe_vdm_response_entry(int port)
 				func(port, tx_payload) * sizeof(*tx_payload);
 		if (response_size_bytes > 0)
 			/* ACK */
-			tx_payload[0] = VDO(
-				vdo_vdm_svid,
-				1, /* Structured VDM */
-				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
-				| VDO_CMDT(CMDT_RSP_ACK) |
-				vdo_cmd);
+			tx_payload[0] |= VDO_CMDT(CMDT_RSP_ACK);
 		else if (response_size_bytes == 0)
 			/* NAK */
 			tx_payload[0] = VDO(
