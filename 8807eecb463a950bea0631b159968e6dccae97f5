@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a871c002_85289ae1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T22:26:35Z",
+      "side": 1,
+      "message": "Per discussion, we can keep the test as is.\n\nPlease fix comment, the carry +2",
+      "revId": "8807eecb463a950bea0631b159968e6dccae97f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ebceb62_e50f626e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2108,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T22:26:35Z",
+      "side": 1,
+      "message": "let\u0027s remove this IS_ENABLED clause since the prl_is_busy function always exists",
+      "range": {
+        "startLine": 2108,
+        "startChar": 5,
+        "endLine": 2108,
+        "endChar": 48
+      },
+      "revId": "8807eecb463a950bea0631b159968e6dccae97f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
