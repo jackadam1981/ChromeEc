@@ -88,6 +88,24 @@
       "revId": "5a855a62d652b3c6df741c0824c7c51eb7d5b780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db21691_66364275",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-21T04:56:12Z",
+      "side": 1,
+      "message": "Got it, then I\u0027ll set legacy hibernate path as default for P1, and enable z-state in the HACK CL.",
+      "parentUuid": "eb7a5dc2_bdc6bfdb",
+      "revId": "5a855a62d652b3c6df741c0824c7c51eb7d5b780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
