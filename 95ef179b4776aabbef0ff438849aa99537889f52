@@ -16,6 +16,24 @@
       "revId": "95ef179b4776aabbef0ff438849aa99537889f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fe87beb_23f864f6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2252,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-21T20:11:04Z",
+      "side": 1,
+      "message": "It didn\u0027t handle this condition prior to this CL and not really related to this CL, but it does make sense. You should add that",
+      "parentUuid": "58057837_5d62e8c8",
+      "revId": "95ef179b4776aabbef0ff438849aa99537889f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
