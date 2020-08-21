@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b0a8c08_43e6d6d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T16:59:47Z",
+      "side": 1,
+      "message": "CL stacks looks okay to me. The one thing we have to be very careful of it that ToT (master) has 7-bit i2c address and octopus branch has 8-bit address. When we pull support over from ToT, we need to take very special care for this. I didn\u0027t see any obvious mistakes, but this is a very subtle thing to check for.\n\nMarco should be final approver",
+      "revId": "421716809dd1ffe606450abc6df920f0b11be41b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
