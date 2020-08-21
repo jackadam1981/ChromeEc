@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "f0c86aa6_dbdd17eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-21T23:50:00Z",
+      "side": 1,
+      "message": "Jett: It looks like the interface to svdm_response is a bit weird. Are you aware of any gotchas in changing it to something like this?\n\nint (*identity)(int port, const uint32_t *rx_payload, uint32_t *tx_payload)\n\nI\u0027d also be in favor of having each implementation construct the VDM header, instead of producing a partially constructed payload that the caller needs to edit, but that\u0027s secondary.",
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91f849b2_1f98ba22",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4940,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-21T23:50:00Z",
+      "side": 1,
+      "message": "It looks like these functions were designed to take the Rx buffer as an argument. In particular, all the implementations of svdm_response_modes read the request SVID from *payload. Although none of those boards use TCPMv2, this should continue to be rx_payload as long as we keep using that interface.\n\nI am not the biggest fan of that interface. I don\u0027t like the idea of having the function overwrite the Rx buffer with what will end up in the Tx buffer. With only 8 existing implementations, it\u0027s probably worth changing the interface before we add any more.\n\nAs you have noted, the code below does not correspond to this line. If we received a Discover Modes REQ, I guess we would just send the VDM header with the old code, and we would NAK with the new code.\n\nThe least surprising way to make this function work with the existing interface is probably to copy rx_payload into tx_payload before calling func, then call func with tx_payload. That would definitely deserve a comment, and it should probably have a TODO with a bug link for fixing the interface.",
+      "range": {
+        "startLine": 4940,
+        "startChar": 19,
+        "endLine": 4940,
+        "endChar": 29
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ab9a6f8_1fab36c8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4940,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-21T23:50:00Z",
+      "side": 1,
+      "message": "As part of this change, would you update the comment for the definition of struct svdm_response in usb_pd.h to describe the parameters and return value conventions of the functions in the usual style?",
+      "range": {
+        "startLine": 4940,
+        "startChar": 8,
+        "endLine": 4940,
+        "endChar": 12
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c63cf26_e1d6b491",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4940,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-21T23:50:00Z",
+      "side": 1,
+      "message": "One source of the inconsistent usage of this variable may have been its suboptimal name. I would suggest\n1) changing the name to response_size and\n2) changing all of its usages to be in terms of bytes. That would mean that the first assignment would become\n/* Return value is the response VDO count. */\nresponse_size \u003d func(port, tx_payload) * sizeof(*tx_emsg[port].buf),\nand all the other references would stay as they were before this CL.",
+      "range": {
+        "startLine": 4940,
+        "startChar": 2,
+        "endLine": 4940,
+        "endChar": 5
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ba3b57_deba5e66",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4964,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-21T23:50:00Z",
+      "side": 1,
+      "message": "FWIW, none of our implementations actually do this. However, if we are stipulating that returning \u003c 0 means BUSY, we should do so in the comments for struct svdm_response.",
+      "range": {
+        "startLine": 4957,
+        "startChar": 0,
+        "endLine": 4964,
+        "endChar": 13
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "836e30f2_60219117",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -94,6 +203,30 @@
       "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e7b3a1e_0f720679",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4980,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-21T23:50:00Z",
+      "side": 1,
+      "message": "I almost always prefer sizeofs in copies to reference the actual destination object, which is guaranteed to be correct, as opposed to the named type of that object, which merely *should* be correct.",
+      "parentUuid": "dcac4963_abe8cffd",
+      "range": {
+        "startLine": 4980,
+        "startChar": 34,
+        "endLine": 4980,
+        "endChar": 42
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
