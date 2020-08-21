@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "836e30f2_60219117",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4980,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-21T20:53:19Z",
+      "side": 1,
+      "message": "NIT \nsizeof(*tx_payload)",
+      "range": {
+        "startLine": 4980,
+        "startChar": 34,
+        "endLine": 4980,
+        "endChar": 42
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
