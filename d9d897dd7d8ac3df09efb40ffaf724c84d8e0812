@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17eb42c9_e9f17a81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-21T16:28:55Z",
+      "side": 1,
+      "message": "With this change, does the port report that it goes into low power state in TCPMv2?  Or will it just continue to use the appropriate Unattached.SRC/SNK states? ",
+      "revId": "d9d897dd7d8ac3df09efb40ffaf724c84d8e0812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
