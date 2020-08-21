@@ -19,6 +19,7 @@
 #include "usb_pd_tbt.h"
 #include "usb_pe_sm.h"
 #include "usb_tbt_alt_mode.h"
+#include "usb_tc_sm.h"
 
 /*
  * Enter/Exit TBT mode with active cable
@@ -334,7 +335,9 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 
 	switch (tbt_state[port]) {
 	case TBT_START:
-		if (!tbt_mode_is_supported(port, vdo_count))
+		if (!tbt_mode_is_supported(port, vdo_count) ||
+		   ((get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) &&
+		     tc_is_vconn_src(port) < 1))
 			return 0;
 
 		if (!retry_done)
