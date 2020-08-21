@@ -180,6 +180,69 @@
     },
     {
       "key": {
+        "uuid": "3e7a2944_2d91ba94",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "See comment in ec_command.h -- I would prefer to remove this COUNT from the API interface as the numeric value of 2 may change semantic meanings. Let\u0027s just use SOP\u0027 enum value here instead (and change \u003e\u003d to \u003e) since we would have to change this implementation anyway when we are adding support for the new type",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1bae45f_4fb8f76e",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "would should add a BUILD_ASSERT(sizeof(r-\u003ediscovery_vdo) \u003d\u003d sizeof(union disc_ident_ack))",
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3576cea5_0f097ff7",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "I would recommend removing all of these line and start with\n\nargs-\u003eresponse_size +\u003d sizeof(*r);\n\nand then keep the one below this for the variable length svid count",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b7b854d_7a7bf9b8",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 1
@@ -251,6 +314,144 @@
     },
     {
       "key": {
+        "uuid": "5a9aef44_a8ff5743",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "I had an idea for synchronization since our API for discovery is sooo open (not const and sharing a buffer to anyone that wants it!!!)\n\n\nin pd_get_am_discovery\n\nadd\n\natmoic_or(\u0026task_access, BIT(task_get_current_id());\n\n\nand then add\n\npd_discovery_access_clear() {\n   atomic_clear(\u0026task_access);\n}\n\nand then here at the end of the function, validate that \n\nbool pd_discovery_access_validate(int port) {\n   atmoic_or(\u0026task_access, BIT(task_get_current_id()); // for compiler fence\n   return task_access \u0026 ~BIT(task_get_current());\n}\n\n\n--\n\nIf we don\u0027t validate then set response size to 0 and return a BUSY error code (or something else that makes sense)",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c6efaf_0c0b1f0e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6278,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "let\u0027s also specify that a return code of BUSY means that the data change in the middle of processing the response.\n\nBasically let\u0027s document here what all of \"unique\" (i.e. not handled by host command framework) returns codes are for this command.",
+      "range": {
+        "startLine": 6278,
+        "startChar": 8,
+        "endLine": 6278,
+        "endChar": 30
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7c89694_d82fc4d9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6281,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "this this is serialized, we should ad the \u003d \\d for every member field",
+      "range": {
+        "startLine": 6281,
+        "startChar": 1,
+        "endLine": 6281,
+        "endChar": 18
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9904280_404b7369",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6283,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "the count is a little suspect here as there is a \"possibility\" of the value of 2 getting re-purposed in the future and then that would be confusing for new hosts with old EC code. Can we remove the count in this enum ( I haven\u0027t looked at the rest of the code yet -- I am starting here)",
+      "range": {
+        "startLine": 6283,
+        "startChar": 1,
+        "endLine": 6283,
+        "endChar": 20
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fb8a846_abaaffa9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6288,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "should be a comment saying that is the enum typec_partner_type (even though it is pretty obvious)\n\nAlso, should we just use uint8_t for both port and partner_type and then align1 to (being space conscientious)",
+      "range": {
+        "startLine": 6288,
+        "startChar": 10,
+        "endLine": 6288,
+        "endChar": 22
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572a07fa_8d084766",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6294,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "comment why 6 please. (this one can\u0027t be [0] since it is used as a nested struct)\n\nAlso if mode_count apply to this field, add comments to that effect please",
+      "range": {
+        "startLine": 6294,
+        "startChar": 10,
+        "endLine": 6294,
+        "endChar": 18
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "468ee2ae_97b63ac0",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -291,6 +492,53 @@
         "startChar": 24,
         "endLine": 6299,
         "endChar": 25
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafb2131_f8fd3ecc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6299,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "That is correct, we have to include all dependeies in this file. You could potentially move PDO_MODES define here, but I think a comment would sufice here as well (since it is well defined in an external spec, right?)",
+      "parentUuid": "8efabfd4_cfb10885",
+      "range": {
+        "startLine": 6299,
+        "startChar": 24,
+        "endLine": 6299,
+        "endChar": 25
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e26b95f0_38487d46",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6302,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:10:14Z",
+      "side": 1,
+      "message": "I would reorder this to\n\nstruct ec_response_typec_discovery {\n\tuint8_t discovery_count;\n\tuint8_t svid_count;\n\tuint16_t reserved;\n\tuint32_t discovery_vdo[6];\n\tstruct svid_mode_info svids[0]; // make this 0\n} __ec_align1;\n\n\nAlso comment where each of the counts apply to what other fields. Be very explicit about what the API contract is, please.",
+      "range": {
+        "startLine": 6297,
+        "startChar": 0,
+        "endLine": 6302,
+        "endChar": 14
       },
       "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
