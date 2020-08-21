@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a878a8b2_3a0adda3",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-08-21T16:07:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4cc7b4d_e6e59a90",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 1
+      },
+      "revId": "7a55629a1b4b5c987738ed0a8427566ebb2944d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "481c65ab_5907752c",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "7a55629a1b4b5c987738ed0a8427566ebb2944d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed9e00bc_4d9ab5a4",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-08-21T16:07:16Z",
+      "side": 1,
+      "message": "Ah, this is my mistake, the C autoformatter really wants this to be indented and I\u0027ve been manually un-indenting. Neither version fails presubmit.\nDone.",
+      "parentUuid": "481c65ab_5907752c",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 2
+      },
+      "revId": "7a55629a1b4b5c987738ed0a8427566ebb2944d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
