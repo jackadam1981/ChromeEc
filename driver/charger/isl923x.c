@@ -440,7 +440,7 @@ enum ec_error_list isl9238c_hibernate(int chgnum)
 	return EC_SUCCESS;
 }
 
-static enum ec_error_list isl9238c_resume(int chgnum)
+enum ec_error_list isl9238c_resume(int chgnum)
 {
 	/* Revert everything in isl9238c_hibernate() */
 	RETURN_ERROR(raw_update16(chgnum, ISL923X_REG_CONTROL1,

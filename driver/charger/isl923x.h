@@ -412,6 +412,7 @@ int isl923x_set_comparator_inversion(int chgnum, int invert);
  */
 void raa489000_hibernate(int chgnum);
 enum ec_error_list isl9238c_hibernate(int chgnum);
+enum ec_error_list isl9238c_resume(int chgnum);
 
 #define ISL923X_AC_PROCHOT_CURRENT_MAX	6400	/* mA */
 #define ISL923X_DC_PROCHOT_CURRENT_MAX	12800	/* mA */

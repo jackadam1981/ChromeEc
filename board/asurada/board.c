@@ -102,8 +102,11 @@ __override void board_hibernate_late(void)
 
 	gpio_set_level(GPIO_EN_SLP_Z, 1);
 
-	/* should not reach here */
-	__builtin_unreachable();
+	/*
+	 * HACK: if GPIO_EN_SLP_Z doesn't work,
+	 * resume the charger and fallback like rev0.
+	 */
+	isl9238c_resume(CHARGER_SOLO);
 }
 
 /* power signal list.  Must match order of enum power_signal. */
