@@ -72,7 +72,24 @@ struct product_vdo {
  *           011b = USB4 Gen3
  *           100b…111b = Reserved, Shall Not be used
  */
+#define VDO_UFP1(cap, alt, speed) \
+	(((cap) & 0xf) << 24 | ((alt) & 0x7) << 3 | ((speed) & 0x7))
 #define PD_PRODUCT_IS_USB4(vdo) ((vdo) >> 27 & 0x1)
+
+/*****************************************************************************/
+/*
+ * Table 6-37 DFP VDO
+ * -------------------------------------------------------------
+ * <31:29> : DFP VDO version
+ * <28:27> : Reserved
+ * <26:24> : Host Capability
+ *           001b = USB2.0 host capable
+ *           010b = USB3.2 host capable
+ *           100b = USB4 host capable
+ * <23:5>  : Reserved
+ * <4:0>   : Port number
+ */
+#define VDO_DFP(cap, port) (((cap) & 0x7) << 24 | ((port) & 0x1f))
 
 /*****************************************************************************/
 /*
