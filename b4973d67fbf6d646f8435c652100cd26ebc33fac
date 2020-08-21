@@ -337,6 +337,30 @@
     },
     {
       "key": {
+        "uuid": "f170fe4d_043919ae",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-21T19:58:29Z",
+      "side": 1,
+      "message": "I sent you a Jamboard share if you want to try whiteboarding :) It\u0027s not as easy to draw ideas with as I thought, but a step up from chat still\n\nWould this only detect if the access is going on interleaved with the host command?  What if the access from the PD task started and completed before the HC task finished processing?",
+      "parentUuid": "5a9aef44_a8ff5743",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8c6efaf_0c0b1f0e",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
