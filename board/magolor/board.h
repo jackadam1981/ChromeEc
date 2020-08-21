@@ -17,6 +17,10 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
+/* Battery */
+#define CONFIG_BATTERY_FUEL_GAUGE
+#define CONFIG_BATTERY_HW_PRESENT_CUSTOM
+
 /* Charger */
 #define CONFIG_CHARGER_RAA489000
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
@@ -153,6 +157,12 @@ enum pwm_channel {
 	PWM_CH_LED1_AMBER,
 	PWM_CH_LED2_WHITE,
 	PWM_CH_COUNT,
+};
+
+enum battery_type {
+	BATTERY_LGC_AP18C8K,
+	BATTERY_MURATA_AP18C4K,
+	BATTERY_TYPE_COUNT,
 };
 
 int board_is_sourcing_vbus(int port);
