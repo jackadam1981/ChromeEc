@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5b944f6e_37697c24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T17:18:17Z",
+      "side": 1,
+      "message": "let\u0027s add \"--hashtag inclusive-lang\" to this (either through repo upload or through gerrit UI)\n\n+2 after Abe\u0027s comments",
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b794292f_43843bad",
         "filename": "docs/ec_terms.md",
         "patchSetId": 3
@@ -13,6 +30,30 @@
       "writtenOn": "2020-08-19T21:13:45Z",
       "side": 1,
       "message": "Is there an external reference for I2C? Are we adopting the SPI terminology for I2C?",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71cb607b_7310560f",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T17:18:17Z",
+      "side": 1,
+      "message": "I don\u0027t think there has been any \"ruling\" on i2c yet. I am okay using the SPI\u0027s recommendation of controller and peripheral; I think it is pretty clear what each role means.",
+      "parentUuid": "b794292f_43843bad",
       "range": {
         "startLine": 112,
         "startChar": 8,
