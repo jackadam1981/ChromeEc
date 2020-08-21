@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58057837_5d62e8c8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2252,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T20:06:17Z",
+      "side": 1,
+      "message": "I think we should have a guard here to prevent DPM-request command from processing while we are still in the middle of a PRS.\n\nif (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS) {\n  return;\n}\n\nright?\n\n\n--\n\nwe should probably do this for both SRC and SNK sides",
+      "revId": "95ef179b4776aabbef0ff438849aa99537889f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
