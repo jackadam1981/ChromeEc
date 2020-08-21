@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d38cdd53_7a01caee",
+        "filename": "test/usb_pe_drp_old.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T17:09:18Z",
+      "side": 1,
+      "message": "Let\u0027s use the usb_pe_drp test instead.\n\nWe will need to augemnt the PRL mock to include the prl_is_busy function call.\n\nIn the new style unit tests, we should not verify internal states (like PD_SRC_READY). We should only verify the inputs and outputs of the PE layer\u0027s API. So we should simulate that the PE wants to send VMD messages, but the PRL is reporting busy so it waits.\n\nWe could also have a new-style PRL unit test that ensure that the PRL\u0027s API report busy as long as we are processing incoming chunked messages too.\n\n\nWith both of those unit tests we are pretty confidence when we put both of those systems together",
+      "range": {
+        "startLine": 325,
+        "startChar": 13,
+        "endLine": 325,
+        "endChar": 49
+      },
+      "revId": "740becec4dbe21e10b95f0323d13595b3bcecd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

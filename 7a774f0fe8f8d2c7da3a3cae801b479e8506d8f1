@@ -160,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "2ae14a4a_a6ec8af5",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T17:09:18Z",
+      "side": 1,
+      "message": "Well, this is what I was hoping for:\n\nreturn rch_get_state(port) !\u003d\n\t\t\tRCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER) ||\n\t\ttch_get_state(port) !\u003d\n\t\t\tTCH_WAIT_FOR_MESSAGE_REQUEST_FROM_PE;",
+      "parentUuid": "768a2822_fd02a489",
+      "range": {
+        "startLine": 526,
+        "startChar": 8,
+        "endLine": 529,
+        "endChar": 42
+      },
+      "revId": "7a774f0fe8f8d2c7da3a3cae801b479e8506d8f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cbaa074_df3286d1",
         "filename": "test/usb_pe_drp_old.c",
         "patchSetId": 3
