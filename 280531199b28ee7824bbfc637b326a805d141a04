@@ -22,6 +22,30 @@
       "revId": "280531199b28ee7824bbfc637b326a805d141a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9cba1d_3c3ff7d3",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T20:00:59Z",
+      "side": 1,
+      "message": "I don\u0027t understand how we would be doing it correctly in PS3 for PR_SWAP SRC-\u003eSNK\n\nWouldn\u0027t we still want to continue the AMS without waiting for the SRC to lower the resistors to SNK_TX_OK since we are in the same AMS? What was going wrong?",
+      "parentUuid": "c6065e61_990a3cb4",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 0
+      },
+      "revId": "280531199b28ee7824bbfc637b326a805d141a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
