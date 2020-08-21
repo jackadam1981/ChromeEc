@@ -16,6 +16,52 @@
       "revId": "431c27a37ba4d08a90fd2cfd3c8b465ba79e6a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a43957ba_ec707012",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T14:19:52Z",
+      "side": 1,
+      "message": "I think by doing this way we are blocking the PD task 50 msec for each Mux mode configuration.\nkeeping the task in wait state several times may lead to PD issues, display and other compliance timing issues. Here we are waiting for the HPD also. if the ack takes more than 50 msec then task wait timeout happens. in that case what is the use of having ack?",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 24
+      },
+      "revId": "431c27a37ba4d08a90fd2cfd3c8b465ba79e6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b2c55fe_34962164",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T14:19:52Z",
+      "side": 1,
+      "message": "the comment says 15 msec, but actual delay was used 12.5",
+      "range": {
+        "startLine": 144,
+        "startChar": 15,
+        "endLine": 144,
+        "endChar": 24
+      },
+      "revId": "431c27a37ba4d08a90fd2cfd3c8b465ba79e6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
