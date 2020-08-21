@@ -28,6 +28,7 @@
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
 STATIC_IF(CONFIG_ACCEL_FIFO) volatile uint32_t last_interrupt_timestamp;
+STATIC_IF(CONFIG_ACCEL_FIFO) volatile uint32_t intcount = 0;
 
 static int wakeup_time[] = {
 	[MOTIONSENSE_TYPE_ACCEL] = 4,
@@ -380,7 +381,7 @@ void bmi160_interrupt(enum gpio_signal signal)
 {
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
 		last_interrupt_timestamp = __hw_clock_source_read();
-
+	intcount++;
 	task_set_event(TASK_ID_MOTIONSENSE,
 		       CONFIG_ACCELGYRO_BMI160_INT_EVENT, 0);
 }
@@ -535,9 +536,15 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 			(!(*event & CONFIG_ACCELGYRO_BMI160_INT_EVENT)))
 		return EC_ERROR_NOT_HANDLED;
 
+	if (intcount > 1) {
+		CPRINTS("b hw int: %u - %d", last_interrupt_timestamp, intcount);
+	}
 	do {
-		rv = bmi_read32(s->port, s->i2c_spi_addr_flags,
+		rv = bmi_read16(s->port, s->i2c_spi_addr_flags,
 				BMI160_INT_STATUS_0, &interrupt);
+		if (intcount > 1) {
+			CPRINTS("a hw int: %u - %d 0x%08X", last_interrupt_timestamp, intcount, interrupt);
+		}
 		/*
 		 * Bail out of this loop there was an error reading the register
 		 */
@@ -568,6 +575,7 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO) && has_read_fifo)
 		motion_sense_fifo_commit_data();
+	intcount = 0;
 
 	return EC_SUCCESS;
 }
@@ -721,9 +729,17 @@ static int init(const struct motion_sensor_t *s)
 	bmi_set_range(s, s->default_range, 0);
 
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
+#define L (0x7b-0x40)
+		uint32_t data[L / sizeof(uint32_t)];
+		int i;
 #ifdef CONFIG_ACCEL_INTERRUPTS
 		ret = config_interrupt(s);
 #endif
+
+		bmi_read_n(s->port, s->i2c_spi_addr_flags, 0x40, (uint8_t*)data, 0x7b-0x40);
+		for (i = 0 ; i < L / sizeof(uint32_t); i++) {
+			CPRINTS("%02x: %08x", i * 4 + 0x40, data[i]);
+		}
 	}
 
 	return sensor_init_done(s);
