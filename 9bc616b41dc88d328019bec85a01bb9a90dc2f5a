@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32c4d1f6_61bf0624",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:52:38Z",
+      "side": 1,
+      "message": "How about this approach: instead of PANIC_DATA_PTR being a global define anyone can you, we make all consumers of PANIC_DATA_PTR instead call a function to get the address instead.  This function can determine if there is an existing panic and jump section, and move the jump data if needed, then set the panic magic and size.\n\nWe should also add build asserts to ensure that CONFIG_PANIC_DATA_SIZE is what we expect for lines like the following (local BUILD_ASSERT(CONFIG_PANIC_DATA_SIZE \u003d\u003d sizeof(*d)); )\nd-\u003estruct_size \u003d sizeof(*d);",
+      "revId": "9bc616b41dc88d328019bec85a01bb9a90dc2f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec4ddd49_0b1be67a",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:52:38Z",
+      "side": 1,
+      "message": "The means that panic data is complete garbage now. We should memset to 0 at least.",
+      "range": {
+        "startLine": 836,
+        "startChar": 1,
+        "endLine": 836,
+        "endChar": 48
+      },
+      "revId": "9bc616b41dc88d328019bec85a01bb9a90dc2f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
