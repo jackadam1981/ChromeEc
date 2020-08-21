@@ -85,6 +85,24 @@
       "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffc41412_7eccc173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1204629
+      },
+      "writtenOn": "2020-08-21T02:39:36Z",
+      "side": 1,
+      "message": "xHCI enumerated at SS right after USB mode. A lot of data transfer happens on SS at this time. After Safe-mode, xHCI sees as USB disconnect. After DP-Alt xHCI sees the SS data. I added some markers below for USB and Safe mode transitions. This is with Moshi type-C dock.\n\n1597976908166 [   30.738532] usb 3-4: new high-speed USB device number 10 using xhci_hcd  \u003d\u003d\u003eSoC mux enters into USB mode\n1597976919149 [   30.856631] usb 2-2: new SuperSpeed Gen 1 USB device number 8 using xhci_hcd\n1597976919270 [   30.866858] usb 3-4: New USB device found, idVendor\u003d282b, idProduct\u003d0023, bcdDevice\u003d 1.00\n1597976919282 [   30.866860] usb 3-4: New USB device strings: Mfr\u003d1, Product\u003d2, SerialNumber\u003d0\n1597976919295 [   30.866861] usb 3-4: Product: USB2.0 HUB\n1597976919295 [   30.866862] usb 3-4: Manufacturer: Aevoe Corp.\n1597976919307 [   30.868215] hub 3-4:1.0: USB hub found\n1597976919307 [   30.868258] hub 3-4:1.0: 5 ports detected\n1597976919320 [   30.868868] usb 2-2: New USB device found, idVendor\u003d282b, idProduct\u003d0022, bcdDevice\u003d 1.00\n1597976919332 [   30.868872] usb 2-2: New USB device strings: Mfr\u003d1, Product\u003d2, SerialNumber\u003d0\n1597976919345 [   30.868873] usb 2-2: Product: USB3.0 HUB\n1597976919345 [   30.868875] usb 2-2: Manufacturer: Aevoe Corp.\n1597976919357 [   30.869533] hub 2-2:1.0: USB hub found\n1597976919357 [   30.869670] hub 2-2:1.0: 4 ports detected\n1597976919363 [   31.197226] usb 2-2: USB disconnect, device number 8   \u003d\u003d\u003e This is where safe-mode configuration happens.\n1597976919604 [   31.406556] usb 3-4.3: new full-speed USB device number 11 using xhci_hcd\n1597976919818 [   31.497857] usb 3-4.3: New USB device found, idVendor\u003d10c4, idProduct\u003deac1, bcdDevice\u003d 1.00\n1597976919911 [   31.497862] usb 3-4.3: New USB device strings: Mfr\u003d1, Product\u003d2, SerialNumber\u003d3\n1597976919923 [   31.497863] usb 3-4.3: Product: HID Bootload Listener\n1597976919928 [   31.497865] usb 3-4.3: Manufacturer: Silicon Labs\n1597976919941 [   31.497866] usb 3-4.3: SerialNumber: 0123456789ABCDEF\n1597976919941 [   31.503599] usb 2-2: new SuperSpeed Gen 1 USB device number 9 using xhci_hcd\n1597976919954 [   31.505208] hid-generic 0003:10C4:EAC1.0003: hiddev96,hidraw2: USB HID v1.11 Device [Silicon Labs HID Bootload Listener] on usb-0000:00:14.0-4.3/input0\n1597976919979 [   31.516904] usb 2-2: New USB device found, idVendor\u003d282b, idProduct\u003d0022, bcdDevice\u003d 1.00\n1597976919979 [   31.516907] usb 2-2: New USB device strings: Mfr\u003d1, Product\u003d2, SerialNumber\u003d0\n1597976919989 [   31.516908] usb 2-2: Product: USB3.0 HUB\n1597976919995 [   31.516909] usb 2-2: Manufacturer: Aevoe Corp.\n1597976920000 [   31.517651] hub 2-2:1.0: USB hub found\n1597976920013 [   31.517671] hub 2-2:1.0: 4 ports detected\n1597976920013 [   31.581532] usb 3-4.5: new high-speed USB device number 12 using xhci_hcd\n1597976920023 [   31.670880] usb 3-4.5: New USB device found, idVendor\u003d282b, idProduct\u003d0014, bcdDevice\u003d 1.00\n1597976920084 [   31.670883] usb 3-4.5: New USB device strings: Mfr\u003d1, Product\u003d2, SerialNumber\u003d0\n1597976920096 [   31.670884] usb 3-4.5: Product: Symbus\n1597976920106 [   31.670886] usb 3-4.5: Manufacturer: Aevoe Corp.\n1597976920106 [   31.938624] usb 2-2.4: new SuperSpeed Gen 1 USB device number 10 using xhci_hcd\n1597976920352 [   31.951263] usb 2-2.4: New USB device found, idVendor\u003d0bda, idProduct\u003d8153, bcdDevice\u003d31.00\n1597976920365 [   31.951265] usb 2-2.4: New USB device strings: Mfr\u003d1, Product\u003d2, SerialNumber\u003d6\n1597976920377 [   31.951267] usb 2-2.4: Product: USB 10/100/1000 LAN\n1597976920390 [   31.951268] usb 2-2.4: Manufacturer: Realtek\n1597976920390 [   31.951269] usb 2-2.4: SerialNumber: 001000001\n1597976920401 [   31.971332] usbcore: registered new interface driver r8152\n1597976920402 [   31.971805] usbcore: registered new interface driver cdc_ether\n1597976920409 [   32.036883] usb 2-2.4: reset SuperSpeed Gen 1 USB device number 10 using xhci_hcd\n1597976920448 [   32.067721] r8152 2-2.4:1.0: load rtl8153b-2 v1 10/23/19 successfully\n1597976920478 [   32.094691] r8152 2-2.4:1.0 eth1: v1.11.11",
+      "parentUuid": "3300c557_46a61a0f",
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
