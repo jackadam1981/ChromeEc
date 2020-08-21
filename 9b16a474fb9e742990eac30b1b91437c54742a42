@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e49cd38f_4981ea4f",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-21T03:48:00Z",
+      "side": 1,
+      "message": "This comes from rt946x driver,  anyway, I found a i2c_update16 in i2c.h, will use that instead.",
+      "parentUuid": "08043316_a6224a6a",
+      "range": {
+        "startLine": 88,
+        "startChar": 70,
+        "endLine": 89,
+        "endChar": 21
+      },
+      "revId": "9b16a474fb9e742990eac30b1b91437c54742a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d858d95_3c3e629a",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "9b16a474fb9e742990eac30b1b91437c54742a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4895afc9_0d1cc33a",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-21T03:48:00Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "5d858d95_3c3e629a",
+      "revId": "9b16a474fb9e742990eac30b1b91437c54742a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "9b16a474fb9e742990eac30b1b91437c54742a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "225dae5f_153900df",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-21T03:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "762f0c12_595b789f",
+      "range": {
+        "startLine": 700,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 3
+      },
+      "revId": "9b16a474fb9e742990eac30b1b91437c54742a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
