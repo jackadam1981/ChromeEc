@@ -94,6 +94,30 @@
       "revId": "280531199b28ee7824bbfc637b326a805d141a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "951aabf5_b48cf2f2",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T21:04:11Z",
+      "side": 1,
+      "message": "Sorry, I meant the SNK-\u003eSRC PRS that we initiated \n\nWe will wait an extra 15ms before sending out PS_READY as the SRC while we are waiting on the SINK_NG CC line.\n\nWe should add the PRL_FLAGS_WAIT_SINK_OK flag back into the condition check for fallthrouh",
+      "parentUuid": "ed2bfb77_fa3ce68d",
+      "range": {
+        "startLine": 789,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 0
+      },
+      "revId": "280531199b28ee7824bbfc637b326a805d141a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
