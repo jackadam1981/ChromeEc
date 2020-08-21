@@ -70,6 +70,24 @@
       "revId": "5a855a62d652b3c6df741c0824c7c51eb7d5b780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb7a5dc2_bdc6bfdb",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2020-08-21T04:50:32Z",
+      "side": 1,
+      "message": "Nicolas is right we won\u0027t rework all the P1 devices for ulp/z state.",
+      "parentUuid": "cda26680_f876b4c2",
+      "revId": "5a855a62d652b3c6df741c0824c7c51eb7d5b780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
