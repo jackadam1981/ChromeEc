@@ -103,6 +103,98 @@
       "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "444b34e2_fdb46373",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:12:55Z",
+      "side": 1,
+      "message": "is the 60 msec making sure Mux configured first the safe mode?",
+      "range": {
+        "startLine": 317,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 8
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5d6a156_e4a6cc07",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:12:55Z",
+      "side": 1,
+      "message": "is this change targeting for all non MFD devices also?",
+      "range": {
+        "startLine": 434,
+        "startChar": 5,
+        "endLine": 434,
+        "endChar": 23
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d37127df_d9f3ca32",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:12:55Z",
+      "side": 1,
+      "message": "why it is required 1msec? is it not required for other modes?",
+      "range": {
+        "startLine": 448,
+        "startChar": 2,
+        "endLine": 448,
+        "endChar": 8
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09be2210_d2c5cd23",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-21T05:12:55Z",
+      "side": 1,
+      "message": "replace 50*msec with MIN_DEFER_SAFE_US",
+      "range": {
+        "startLine": 453,
+        "startChar": 2,
+        "endLine": 453,
+        "endChar": 20
+      },
+      "revId": "0342c60bb83b7b4530740ccf61323287db3738cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
