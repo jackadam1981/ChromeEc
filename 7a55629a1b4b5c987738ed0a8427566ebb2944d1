@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4cc7b4d_e6e59a90",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-21T02:33:14Z",
+      "side": 1,
+      "message": "Nit: add a comment before this line, like:\n/* Write SBU_FLIP_SEL */",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 1
+      },
+      "revId": "7a55629a1b4b5c987738ed0a8427566ebb2944d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "481c65ab_5907752c",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-21T02:33:14Z",
+      "side": 1,
+      "message": "Nit: better not add this tab. Does the original comment fail some presubmit check? This is the comment of the below if condition. Adding one more tab makes it the comment of this if clause.",
+      "range": {
+        "startLine": 432,
+        "startChar": 1,
+        "endLine": 432,
+        "endChar": 2
+      },
+      "revId": "7a55629a1b4b5c987738ed0a8427566ebb2944d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

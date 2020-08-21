@@ -114,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "30ec247c_70cae25f",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-08-21T02:33:14Z",
+      "side": 1,
+      "message": "Just a nit, checked servo_v4p1 sets the SBU_FLIP_SEL initial value to 1. Better to be consistent with servo_v4, which sets it to 0.",
+      "parentUuid": "400486ef_9249cf19",
+      "range": {
+        "startLine": 405,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 36
+      },
+      "revId": "c862cafcd1cab1f5c7dc9cb771585c800302056f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55b968af_0575ffe2",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 2
