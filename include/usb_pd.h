@@ -517,7 +517,7 @@ struct partner_active_modes {
 #define VDO_INDEX_AMA            4
 #define VDO_INDEX_PTYPE_UFP1_VDO 4
 #define VDO_INDEX_PTYPE_CABLE1   4
-#define VDO_INDEX_PTYPE_UFP2_VDO 4
+#define VDO_INDEX_PTYPE_UFP2_VDO 5
 #define VDO_INDEX_PTYPE_CABLE2   5
 #define VDO_INDEX_PTYPE_DFP_VDO  6
 #define VDO_I(name) VDO_INDEX_##name
@@ -2968,6 +2968,49 @@ __override_proto int svdm_tbt_compat_config(int port, uint32_t *payload);
  * @return 0 on success else -1
  */
 __override_proto int svdm_tbt_compat_attention(int port, uint32_t *payload);
+
+/**
+ * SVDM response of Discover Identity Command
+ * @param port    USB-C Port number
+ * @param payload buffer used to pass input data and store output data
+ * @return        number of data objects in payload; <0 means BUSY;
+ * =0 means NAK.
+ */
+__override_proto int svdm_tbt_compat_response_identity(
+	int port, uint32_t *payload);
+
+/**
+ * SVDM response of Discover SVID Command.
+ *
+ * @param port    USB-C Port number
+ * @param payload buffer used to pass input data and store output data
+ * @return        number of data objects in payload; <0 means BUSY;
+ * =0 means NAK.
+ */
+__override_proto int svdm_tbt_compat_response_svids(
+	int port, uint32_t *payload);
+
+/**
+ * SVDM response of Discover Modes Command
+ *
+ * @param port    USB-C Port number
+ * @param payload buffer used to pass input data and store output data
+ * @return        number of data objects in payload; <0 means BUSY;
+ * =0 means NAK.
+ */
+__override_proto int svdm_tbt_compat_response_modes(
+	int port, uint32_t *payload);
+
+/**
+ * SVDM response of Enter Mode Command
+ *
+ * @param port    USB-C Port number
+ * @param payload buffer used to pass input data and store output data
+ * @return        number of data objects in payload; <0 means BUSY;
+ * =0 means NAK.
+ */
+__override_proto int svdm_tbt_compat_response_enter_mode(
+	int port, uint32_t *payload);
 
 /* Miscellaneous */
 
