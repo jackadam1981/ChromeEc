@@ -4937,7 +4937,7 @@ static void pe_vdm_response_entry(int port)
 	tx_payload = (uint32_t *)tx_emsg[port].buf;
 
 	if (func) {
-		ret = func(port, rx_payload);
+		ret = func(port, tx_payload);
 		if (ret)
 			/* ACK */
 			tx_payload[0] = VDO(
@@ -4964,7 +4964,7 @@ static void pe_vdm_response_entry(int port)
 				vdo_cmd);
 
 		if (ret <= 0)
-			ret = 4;
+			ret = 1;
 	} else {
 		/* not supported : NACK it */
 		tx_payload[0] = VDO(
@@ -4973,11 +4973,11 @@ static void pe_vdm_response_entry(int port)
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP)) |
 			VDO_CMDT(CMDT_RSP_NAK) |
 			vdo_cmd);
-		ret = 4;
+		ret = 1;
 	}
 
 	/* Send ACK, NAK, or BUSY */
-	tx_emsg[port].len = ret;
+	tx_emsg[port].len = ret * sizeof(uint32_t); /* VDO count to bytes */
 	send_data_msg(port, TCPC_TX_SOP, PD_DATA_VENDOR_DEF);
 }
 
