@@ -256,6 +256,13 @@ struct amode_fx {
 };
 
 /* function table for alternate mode capable responders */
+/**
+ * Get VDM response messages
+ *
+ * @param port    USB-C Port number
+ * @param payload payload data
+ * @return number of data objects in payload; if <0, means BUSY
+ */
 struct svdm_response {
 	int (*identity)(int port, uint32_t *payload);
 	int (*svids)(int port, uint32_t *payload);
