@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "3c1e3060_a000ec36",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-21T20:42:06Z",
+      "side": 1,
+      "message": "The Open Source Hardware Association hasn\u0027t yet recommended changes for I2C, but I felt it was better to match the SPI terminology at least in the short term.",
+      "parentUuid": "71cb607b_7310560f",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 11
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f114d9d_60959dc9",
         "filename": "docs/ec_terms.md",
         "patchSetId": 3
@@ -86,6 +110,30 @@
       "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e79821b_10edc31a",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-21T20:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f114d9d_60959dc9",
+      "range": {
+        "startLine": 195,
+        "startChar": 24,
+        "endLine": 195,
+        "endChar": 25
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "92387480_23fb2c11",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-21T20:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ea50d2e_54f24e6d",
+      "range": {
+        "startLine": 196,
+        "startChar": 42,
+        "endLine": 196,
+        "endChar": 64
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5a6e805_4991755b",
         "filename": "docs/ec_terms.md",
         "patchSetId": 3
@@ -135,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "93501279_2ddae6d9",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-21T20:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5a6e805_4991755b",
+      "range": {
+        "startLine": 200,
+        "startChar": 49,
+        "endLine": 200,
+        "endChar": 50
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5d65808_732f986e",
         "filename": "docs/ec_terms.md",
         "patchSetId": 3
@@ -155,6 +251,30 @@
       "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b66fd9d_865dd45d",
+        "filename": "docs/ec_terms.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-21T20:42:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d65808_732f986e",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 34
+      },
+      "revId": "ca7301cab0f5b39e9a724b5fbc3cb1917cd9e8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
