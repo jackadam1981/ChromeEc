@@ -16,6 +16,24 @@
       "revId": "51394e3add3982a9fe6046d95be9e50bc427a4ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3b202da_b8802bb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-08-21T16:28:47Z",
+      "side": 1,
+      "message": "It actually seems pretty stable so far, we have some reworked Volteer boards with it. \n\nYou reminded me that I forgot to remove the TODO since the 10ms seems good.",
+      "parentUuid": "5f04ac01_388a0017",
+      "revId": "51394e3add3982a9fe6046d95be9e50bc427a4ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
