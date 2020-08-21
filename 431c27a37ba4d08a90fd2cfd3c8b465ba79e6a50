@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "354f28e0_0fbdc2e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-08-21T18:12:32Z",
+      "side": 1,
+      "message": "The task waits for kernel ACK or it should timeout at 50ms?",
+      "parentUuid": "39758d05_ec3f0150",
+      "revId": "431c27a37ba4d08a90fd2cfd3c8b465ba79e6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a43957ba_ec707012",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2020-08-21T14:19:52Z",
       "side": 1,
       "message": "I think by doing this way we are blocking the PD task 50 msec for each Mux mode configuration.\nkeeping the task in wait state several times may lead to PD issues, display and other compliance timing issues. Here we are waiting for the HPD also. if the ack takes more than 50 msec then task wait timeout happens. in that case what is the use of having ack?",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 24
+      },
+      "revId": "431c27a37ba4d08a90fd2cfd3c8b465ba79e6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "067a9a35_7d29a83a",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-08-21T18:12:32Z",
+      "side": 1,
+      "message": "The point here is to not proceed in PD negotiation until the SoC and Retimer enter a given state. For Dock connected it should be just one entity (Retimer + SoC mux), so after making sure that both are in same state then PD negotiation proceeds. The delay ideally after both are configure is suggested to be 12.5 ms. This wait here makes sure the ack is received from Kernel to remove the need of tuned delay values for synchronization.",
+      "parentUuid": "a43957ba_ec707012",
       "range": {
         "startLine": 116,
         "startChar": 4,
