@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d8fa0da_5697fe29",
+        "filename": "common/panic_output.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-21T19:18:12Z",
+      "side": 1,
+      "message": "this doesn\u0027t return a valid pointer to panic_data, i.e. panic_data-\u003emagic will not equal PANIC_DATA_MAGIC.\n\nWe should return null in this case. We should however add a new function \n\nuintptr_t get_panic_data_start(void);\n\nthat includes this logic, but it wouldnt\u0027 necessary be valid to parse this panic_data",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 0
+      },
+      "revId": "ca2aed8850495a876bc9dc3161f74b6051206d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
