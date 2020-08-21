@@ -16,6 +16,24 @@
       "revId": "9e3d97288d5113dd1d20e5553e7df4c2498da1ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "714558e5_ed14028a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-08-21T12:17:48Z",
+      "side": 1,
+      "message": "I test of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2354804,\nThe CHIP_VARIANT dont set to npcx7m7fc.",
+      "parentUuid": "6e6c138e_2b2544f7",
+      "revId": "9e3d97288d5113dd1d20e5553e7df4c2498da1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
