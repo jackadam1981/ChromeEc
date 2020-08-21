@@ -85,6 +85,30 @@
       "revId": "9b16a474fb9e742990eac30b1b91437c54742a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca597ce_5939c6fd",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-21T00:15:37Z",
+      "side": 1,
+      "message": "You\u0027ll need it for your HACK for non-reworked P1, but then maybe you can carry it in the HACK instead.",
+      "parentUuid": "d51ff128_2771fd3e",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 32
+      },
+      "revId": "9b16a474fb9e742990eac30b1b91437c54742a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
