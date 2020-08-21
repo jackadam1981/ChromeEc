@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "72bf5d18_143e9e61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-08-21T03:28:33Z",
+      "side": 1,
+      "message": "I agree",
+      "parentUuid": "1566c13b_f114d94b",
+      "revId": "5875141098eb71604eba805ec14bcf680b7822d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63513b99_0186c215",
         "filename": "util/compare_build.sh",
         "patchSetId": 7
@@ -39,6 +57,30 @@
       "revId": "5875141098eb71604eba805ec14bcf680b7822d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "909ce2d2_74675277",
+        "filename": "util/compare_build.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-08-21T03:28:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63513b99_0186c215",
+      "range": {
+        "startLine": 197,
+        "startChar": 6,
+        "endLine": 197,
+        "endChar": 39
+      },
+      "revId": "5875141098eb71604eba805ec14bcf680b7822d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
