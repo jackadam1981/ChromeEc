@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3305887d_6ad18191",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-21T15:13:39Z",
+      "side": 1,
+      "message": "it looks like the code is assuming LSB will be the 0x03 as expected but what if it is not? Would this test be better to check for the MSB to be 0xFF?  That is, unless 0xFF is a valid MSB in some situations?\n\n    if (rv \u003d\u003d EC_SUCCESS \u0026\u0026 ((reg \u003e\u003e 8) !\u003d 0xFF))",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 0
+      },
+      "revId": "4142ffa8e900dae958bcbbcec147897b84aa96b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
