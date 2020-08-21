@@ -104,6 +104,11 @@ enum vendor_specific_support {
 	VENDOR_SPECIFIC_SUPPORTED,
 };
 
+#define VDO_MODE_TBT_DEV(vb1, vb0, ib0, adapter, tbt_alt)	\
+	(((vb1) & 0x1) << 31 | ((vb0) & 0x1) << 30		\
+	 | ((ib0) & 0x1) << 26 | ((adapter) & 0x1) << 16	\
+	 | ((tbt_alt) & 0xFFFF))
+
 /* TBT Alternate Mode */
 #define TBT_ALTERNATE_MODE 0x0001
 #define PD_VDO_RESP_MODE_INTEL_TBT(x)	(((x) & 0xff) == TBT_ALTERNATE_MODE)
