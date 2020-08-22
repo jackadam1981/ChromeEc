@@ -84,10 +84,10 @@ void ln9310_interrupt(enum gpio_signal signal)
 
 void ln9310_init(void)
 {
-	int status, val, batt3s;
+	int status, val, vin_too_high;
 
-	/* Check if Input is 2S or 3S battery*/
-	CPRINTS("LN9310 Checking input Voltage (2S/3S) (threshold=10V)");
+	/* Check if Input is too high*/
+	CPRINTS("LN9310 Checking input Voltage (threshold=10V)");
   
   	/* Turn on INFET_OUT_SWITCH_OK comparator */
   	/*         Configure INFET_OUT_SWITCH_OK to 10V   */
@@ -105,10 +105,10 @@ void ln9310_init(void)
 	}
 	CPRINTS("LN9310 BC_STS_B: 0x%x", val);
 
-	/* If INFET_OUT_SWITCH_OK=0, VIN < 10V --> 2S battery
-	   If INFET_OUT_SWITCH_OK=1, VIN > 10V --> 3S battery */
-	batt3s = !!(val & LN9310_BC_STS_B_INFET_OUT_SWITCH_OK);
-	CPRINTS("LN9310 3S Battery Detection: 0x%x", batt3s);
+	/* If INFET_OUT_SWITCH_OK=0, VIN < 10V --> Valid range for 2:1 op
+	   If INFET_OUT_SWITCH_OK=1, VIN > 10V --> Too high */
+	vin_too_high = !!(val & LN9310_BC_STS_B_INFET_OUT_SWITCH_OK);
+	CPRINTS("LN9310 3S Battery Detection: 0x%x", vin_too_high);
 
 	/* Turn off INFET_OUT_SWITCH_OK comparator */
   	field_update8(LN9310_REG_TRACK_CTRL,
@@ -116,27 +116,8 @@ void ln9310_init(void)
 		      LN9310_TRACK_INFET_OUT_SWITCH_OK_EN_OFF);
   	CPRINTS("LN9310 INFET_OUT_SWITCH_OK Comparator turned off");
 
-	if(batt3s) {
-		CPRINTS("LN9310 init (3:1 operation)");
-	  
-		/* Enable track protection and SC_OUT configs for 3:1 switching  */	
-		field_update8(LN9310_REG_MODE_CHANGE_CFG,
-			      LN9310_MODE_TM_TRACK_MASK |
-					LN9310_MODE_TM_SC_OUT_PRECHG_MASK |
-	                      			LN9310_MODE_TM_VIN_OV_CFG_MASK,
-			      LN9310_MODE_TM_TRACK_SWITCH31 |
-					LN9310_MODE_TM_SC_OUT_PRECHG_SWITCH31 |
-	                     			LN9310_MODE_TM_VIN_OV_CFG_3S);
-
-		/* Enable 3:1 operation mode */
-		field_update8(LN9310_REG_PWR_CTRL,
-			      LN9310_PWR_OP_MODE_MASK,
-			      LN9310_PWR_OP_MODE_SWITCH31);
-
-	  	/* 3S Lower bounde Delta configurations */
-		field_update8(LN9310_REG_SYS_CTRL,
-			      LN9310_SYS_CTRL_LB_DELTA_MASK,
-			      LN9310_SYS_CTRL_LB_DELTA_3S);
+	if(vin_too_high) {
+		CPRINTS("LN9310 init stopped. Input voltage is too high");
 	}
 	else {
 		CPRINTS("LN9310 init (2:1 operation)");
