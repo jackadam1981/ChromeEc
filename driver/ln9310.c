@@ -5,6 +5,8 @@
  * LION Semiconductor LN-9310 switched capacitor converter.
  */
 
+/* Sean test */
+
 #include "common.h"
 #include "console.h"
 #include "ln9310.h"
@@ -103,7 +105,7 @@ void ln9310_init(void)
 				LN9310_MODE_TM_SC_OUT_PRECHG_SWITCH31 |
                      			LN9310_MODE_TM_VIN_OV_CFG_3S);
         
-  
+	/* test  2 */ 
 	/* Enable 2:1 operation mode */
 	/*
 	field_update8(LN9310_REG_PWR_CTRL,
