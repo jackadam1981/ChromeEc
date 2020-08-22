@@ -3382,9 +3382,17 @@ void tc_run(const int port)
 	 * be suspended then we need to go directly to
 	 * DISABLED
 	 */
-	if (TC_CHK_FLAG(port, TC_FLAGS_SUSPEND)) {
+	if (TC_CHK_FLAG(port, TC_FLAGS_SUSPEND) &&
+		(get_state_tc(port) != TC_DISABLED)) {
 		/* Invalidate a contract, if there is one */
 		pe_invalidate_explicit_contract(port);
+
+		/*
+		 * Put the USB mux into safe mode. This has the desired side
+		 * effect of also taking the USB mux out of low power mode
+		 * allowing firmware updates for mux/retimers while suspended.
+		 */
+		usb_mux_set_safe_mode(port);
 
 		set_state_tc(port, TC_DISABLED);
 	}
