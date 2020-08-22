@@ -22,6 +22,30 @@
       "revId": "78f0240e0b49e012151088549ab2508a4aa54f38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81eaf37e_74e657a0",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-22T02:59:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f90f023_84079f5e",
+      "range": {
+        "startLine": 468,
+        "startChar": 2,
+        "endLine": 468,
+        "endChar": 11
+      },
+      "revId": "78f0240e0b49e012151088549ab2508a4aa54f38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
