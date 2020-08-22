@@ -579,6 +579,11 @@ void tc_request_power_swap(int port)
 	}
 }
 
+bool tc_power_swap_in_progress(int port)
+{
+	return TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
+}
+
 static bool pd_comm_allowed_by_policy(void)
 {
 	return IS_ENABLED(CONFIG_SYSTEM_UNLOCKED) || system_is_in_rw() ||

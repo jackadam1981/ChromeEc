@@ -181,6 +181,15 @@ void tc_request_power_swap(int port);
 void tc_pr_swap_complete(int port, bool success);
 
 /**
+ * Provide PR_Swap in progress status.
+ * This function is called from the Protocol Layer.
+ *
+ * @param port USB_C port number
+ * @return true if PR_Swap is in progress, otherwise false
+ */
+bool tc_power_swap_in_progress(int port);
+
+/**
  * Informs the Type-C State Machine that a Discover Identity is in progress.
  * This function is called from the Policy Engine.
  *
