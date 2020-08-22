@@ -52,3 +52,19 @@ int typec_update_cc(int port)
 {
 	return EC_SUCCESS;
 }
+
+static bool pr_swap_in_progress;
+__overridable void pd_request_power_swap(int port)
+{
+	pr_swap_in_progress = true;
+}
+
+void tc_pr_swap_complete(int port, bool success)
+{
+	pr_swap_in_progress = false;
+}
+
+bool tc_power_swap_in_progress(int port)
+{
+	return pr_swap_in_progress;
+}
