@@ -16,9 +16,6 @@ __overridable int pd_is_vbus_present(int port)
 __overridable void pd_request_data_swap(int port)
 {}
 
-__overridable void pd_request_power_swap(int port)
-{}
-
 void pd_request_vconn_swap_off(int port)
 {}
 
@@ -105,8 +102,21 @@ void tc_partner_usb_comm(int port, int en)
 void tc_pd_connection(int port, int en)
 {}
 
+static bool pr_swap_in_progress;
+__overridable void pd_request_power_swap(int port)
+{
+	pr_swap_in_progress = true;
+}
+
 void tc_pr_swap_complete(int port, bool success)
-{}
+{
+	pr_swap_in_progress = false;
+}
+
+bool tc_power_swap_in_progress(int port)
+{
+	return pr_swap_in_progress;
+}
 
 void tc_prs_snk_src_assert_rp(int port)
 {
