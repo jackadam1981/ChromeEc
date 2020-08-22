@@ -45,7 +45,7 @@ static inline int field_update8(int offset, int mask, int value)
 
 static void ln9310_irq_deferred(void)
 {
-	int status, val;
+	int status, val, power_good_2to1, power_good_3to1;
 
 	/* Check if the device is active in 2:1 switching mode */
 	status = raw_read8(LN9310_REG_INT1, &val);
@@ -68,11 +68,12 @@ static void ln9310_irq_deferred(void)
 	CPRINTS("LN9310 system status: 0x%x", val);
   
 	// 2:1 PGOOD
-	/*
-	power_good = !!(val & LN9310_SYS_SWITCHING21_ACTIVE);
-        */
+	power_good_2to1 = !!(val & LN9310_SYS_SWITCHING21_ACTIVE);
 	// 3:1 PGOOD
-	power_good = !!(val & LN9310_SYS_SWITCHING31_ACTIVE);
+	power_good_3to1 = !!(val & LN9310_SYS_SWITCHING31_ACTIVE);
+
+	power_good = power_good_2to1 || power_good_3to1;
+	
 }
 DECLARE_DEFERRED(ln9310_irq_deferred);
 
@@ -83,51 +84,87 @@ void ln9310_interrupt(enum gpio_signal signal)
 
 void ln9310_init(void)
 {
-	int status, val;
+	int status, val, batt3s;
 
-	CPRINTS("LN9310 init (3:1 operation)");
+	/* Check if Input is 2S or 3S battery*/
+	CPRINTS("LN9310 Checking input Voltage (2S/3S) (threshold=10V)");
   
-	/* Enable track protection and SC_OUT configs for 2:1 switching  */
-  	/*
-	field_update8(LN9310_REG_MODE_CHANGE_CFG,
-		      LN9310_MODE_TM_TRACK_MASK |
-				LN9310_MODE_TM_SC_OUT_PRECHG_MASK,
-		      LN9310_MODE_TM_TRACK_SWITCH21 |
-				LN9310_MODE_TM_SC_OUT_PRECHG_SWITCH21);
-        */
+  	/* Turn on INFET_OUT_SWITCH_OK comparator */
+  	/*         Configure INFET_OUT_SWITCH_OK to 10V   */
+  	field_update8(LN9310_REG_TRACK_CTRL,
+		      LN9310_TRACK_INFET_OUT_SWITCH_OK_EN_MASK |
+                      		LN9310_TRACK_INFET_OUT_SWITCH_OK_CFG_MASK,
+		      LN9310_TRACK_INFET_OUT_SWITCH_OK_EN_ON |
+                     		LN9310_TRACK_INFET_OUT_SWITCH_OK_CFG_10V);
   
-	/* Enable track protection and SC_OUT configs for 3:1 switching  */	
-	field_update8(LN9310_REG_MODE_CHANGE_CFG,
-		      LN9310_MODE_TM_TRACK_MASK |
-				LN9310_MODE_TM_SC_OUT_PRECHG_MASK |
-                      			LN9310_MODE_TM_VIN_OV_CFG_MASK,
-		      LN9310_MODE_TM_TRACK_SWITCH31 |
-				LN9310_MODE_TM_SC_OUT_PRECHG_SWITCH31 |
-                     			LN9310_MODE_TM_VIN_OV_CFG_3S);
-        
-	/* test  2 */ 
-	/* Enable 2:1 operation mode */
-	/*
-	field_update8(LN9310_REG_PWR_CTRL,
-		      LN9310_PWR_OP_MODE_MASK,
-		      LN9310_PWR_OP_MODE_SWITCH21);
-	*/
-  
-	/* Enable 3:1 operation mode */
-	field_update8(LN9310_REG_PWR_CTRL,
-		      LN9310_PWR_OP_MODE_MASK,
-		      LN9310_PWR_OP_MODE_SWITCH31);
-	
-  	/* 3S Lower bounde Delta configurations */
-	field_update8(LN9310_REG_SYS_CTRL,
-		      LN9310_SYS_CTRL_LB_DELTA_MASK,
-		      LN9310_SYS_CTRL_LB_DELTA_3S);
-  
+	/* Read INFET_OUT_SWITCH_OK comparator */
+	status = raw_read8(LN9310_REG_BC_STS_B, &val);
+	if (status) {
+		CPRINTS("LN9310 reading BC_STS_B failed");
+		return;
+	}
+	CPRINTS("LN9310 BC_STS_B: 0x%x", val);
+
+	/* If INFET_OUT_SWITCH_OK=0, VIN < 10V --> 2S battery
+	   If INFET_OUT_SWITCH_OK=1, VIN > 10V --> 3S battery */
+	batt3s = !!(val & LN9310_BC_STS_B_INFET_OUT_SWITCH_OK);
+	CPRINTS("LN9310 3S Battery Detection: 0x%x", batt3s);
+
+	/* Turn off INFET_OUT_SWITCH_OK comparator */
+  	field_update8(LN9310_REG_TRACK_CTRL,
+		      LN9310_TRACK_INFET_OUT_SWITCH_OK_EN_MASK,
+		      LN9310_TRACK_INFET_OUT_SWITCH_OK_EN_OFF);
+  	CPRINTS("LN9310 INFET_OUT_SWITCH_OK Comparator turned off");
+
+	if(batt3s) {
+		CPRINTS("LN9310 init (3:1 operation)");
+	  
+		/* Enable track protection and SC_OUT configs for 3:1 switching  */	
+		field_update8(LN9310_REG_MODE_CHANGE_CFG,
+			      LN9310_MODE_TM_TRACK_MASK |
+					LN9310_MODE_TM_SC_OUT_PRECHG_MASK |
+	                      			LN9310_MODE_TM_VIN_OV_CFG_MASK,
+			      LN9310_MODE_TM_TRACK_SWITCH31 |
+					LN9310_MODE_TM_SC_OUT_PRECHG_SWITCH31 |
+	                     			LN9310_MODE_TM_VIN_OV_CFG_3S);
+
+		/* Enable 3:1 operation mode */
+		field_update8(LN9310_REG_PWR_CTRL,
+			      LN9310_PWR_OP_MODE_MASK,
+			      LN9310_PWR_OP_MODE_SWITCH31);
+
+	  	/* 3S Lower bounde Delta configurations */
+		field_update8(LN9310_REG_SYS_CTRL,
+			      LN9310_SYS_CTRL_LB_DELTA_MASK,
+			      LN9310_SYS_CTRL_LB_DELTA_3S);
+	}
+	else {
+		CPRINTS("LN9310 init (2:1 operation)");
+
+		/* Enable track protection and SC_OUT configs for 2:1 switching  */
+		field_update8(LN9310_REG_MODE_CHANGE_CFG,
+			      LN9310_MODE_TM_TRACK_MASK |
+					LN9310_MODE_TM_SC_OUT_PRECHG_MASK,
+			      LN9310_MODE_TM_TRACK_SWITCH21 |
+					LN9310_MODE_TM_SC_OUT_PRECHG_SWITCH21);
+	  
+		/* Enable 2:1 operation mode */
+		field_update8(LN9310_REG_PWR_CTRL,
+			      LN9310_PWR_OP_MODE_MASK,
+			      LN9310_PWR_OP_MODE_SWITCH21);
+		
+	  	/* 2S Lower bounde Delta configurations */
+		field_update8(LN9310_REG_SYS_CTRL,
+			      LN9310_SYS_CTRL_LB_DELTA_MASK,
+			      LN9310_SYS_CTRL_LB_DELTA_2S);
+	  
+	}
+
 	/* Unmask the MODE change interrupt */
 	field_update8(LN9310_REG_INT1_MSK,
-		      LN9310_INT1_MODE,
-		      0);
-  
+			      LN9310_INT1_MODE,
+			      0);
+	  
 	/* Dummy Clear all interrupts */
 	status = raw_read8(LN9310_REG_INT1, &val);
 	if (status) {
