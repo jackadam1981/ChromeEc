@@ -546,9 +546,10 @@ static void board_init(void)
 	gpio_set_flags(GPIO_DUT_HUB_USB_RESET_L, GPIO_OUT_HIGH);
 
 	/*
-	 * Disable USB3 mode in PS8742 USB/DP Mux.
+	 * Enable USB3 mode in PS8742 USB/DP Mux.
 	 */
-	i2c_write8(I2C_PORT_MASTER, PS8740_I2C_ADDR0_FLAG, PS8740_REG_MODE, 0);
+	i2c_write8(I2C_PORT_MASTER, PS8740_I2C_ADDR0_FLAG, PS8740_REG_MODE,
+		PS8740_MODE_USB_ENABLED);
 
 	/* Enable uservo USB by default. */
 	init_ioexpander();
