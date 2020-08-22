@@ -4,7 +4,7 @@
  *
  * LION Semiconductor LN-9310 switched capacitor converter.
  */
-
+/* test */
 #ifndef __CROS_EC_LN9310_H
 #define __CROS_EC_LN9310_H
 
