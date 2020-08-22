@@ -1692,27 +1692,46 @@ static void pe_src_send_capabilities_entry(int port)
 static void pe_src_send_capabilities_run(int port)
 {
 	/*
-	 * If a GoodCRC Message is received then the Policy Engine Shall:
-	 *  1) Stop the NoResponseTimer.
-	 *  2) Reset the HardResetCounter and CapsCounter to zero.
-	 *  3) Initialize and run the SenderResponseTimer.
+	 * If the sender_response_timer is DISABLED then we are still waiting
+	 * to see if the PD_DATA_SOURCE_CAP message was sent.
 	 */
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE) &&
-		pe[port].sender_response_timer == TIMER_DISABLED) {
-		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+	if (pe[port].sender_response_timer == TIMER_DISABLED) {
+		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+			/*
+			 * We have a Discarded Message.
+			 *	PE_SNK/SRC_READY if explicit contract
+			 *	PE_SEND_SOFT_RESET otherwise
+			 */
+			if (PE_CHK_FLAG(port, PE_FLAGS_EXPLICIT_CONTRACT))
+				pe_set_ready_state(port);
+			else
+				pe_send_soft_reset(port, TCPC_TX_SOP);
+			return;
+		}
 
-		/* Stop the NoResponseTimer */
-		pe[port].no_response_timer = TIMER_DISABLED;
+		/*
+		 * If a GoodCRC Message is received then the Policy Engine
+		 * Shall:
+		 *  1) Stop the NoResponseTimer.
+		 *  2) Reset the HardResetCounter and CapsCounter to zero.
+		 *  3) Initialize and run the SenderResponseTimer.
+		 */
+		else if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
-		/* Reset the HardResetCounter to zero */
-		pe[port].hard_reset_counter = 0;
+			/* Stop the NoResponseTimer */
+			pe[port].no_response_timer = TIMER_DISABLED;
 
-		/* Reset the CapsCounter to zero */
-		pe[port].caps_counter = 0;
+			/* Reset the HardResetCounter to zero */
+			pe[port].hard_reset_counter = 0;
 
-		/* Initialize and run the SenderResponseTimer */
-		pe[port].sender_response_timer = get_time().val +
+			/* Reset the CapsCounter to zero */
+			pe[port].caps_counter = 0;
+
+			/* Initialize and run the SenderResponseTimer */
+			pe[port].sender_response_timer = get_time().val +
 							PD_T_SENDER_RESPONSE;
+		}
 	}
 
 	/*
@@ -2583,17 +2602,8 @@ static void pe_snk_select_capability_run(int port)
 				/*
 				 * Setup to get Device Policy Manager to
 				 * request Sink Capabilities for possible FRS
-				 *
-				 * TODO(b:165822172) This should be called for
-				 * FRS and non-FRS but there is a problem
-				 * currently with the GetSnkCap functionality
-				 * that is stopping PRS from working.  The
-				 * bug mentioned is to fix this path and
-				 * re-enable for all.
 				 */
-				if (IS_ENABLED(CONFIG_USB_PD_FRS))
-					pe_dpm_request(port,
-						DPM_REQUEST_GET_SNK_CAPS);
+				pe_dpm_request(port, DPM_REQUEST_GET_SNK_CAPS);
 				return;
 			}
 			/*
