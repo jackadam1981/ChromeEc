@@ -88,6 +88,78 @@
     },
     {
       "key": {
+        "uuid": "133a0c66_94f35e3f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4940,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-08-22T06:12:57Z",
+      "side": 1,
+      "message": "In v1 stack, a local variable in pd_task() is used to take the cache rx messages, pass down all the way to svdm_response functions, and be overwritten with response messages. It acts like a holder, not in a clear concept of rx/tx. \nIn v2, since there are rx buf and tx buf, it is confusing to pass rx buf to svdm_response functions and overwritten with tx messages. I support the least surprising way, copy rx payload to tx buf before calling func, with a TODO for future interface change.",
+      "parentUuid": "91f849b2_1f98ba22",
+      "range": {
+        "startLine": 4940,
+        "startChar": 19,
+        "endLine": 4940,
+        "endChar": 29
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fcc64df_3273e74b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4940,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-08-22T06:12:57Z",
+      "side": 1,
+      "message": "In the format of this? Put one general comment on top of struct svdm_response, not each function?\n/**\n * function description\n *\n * @param\n * @param\n * @return\n */",
+      "parentUuid": "6ab9a6f8_1fab36c8",
+      "range": {
+        "startLine": 4940,
+        "startChar": 8,
+        "endLine": 4940,
+        "endChar": 12
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c283a175_f01fb6a8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4940,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-08-22T06:12:57Z",
+      "side": 1,
+      "message": "OK. Will change in this way.",
+      "parentUuid": "6c63cf26_e1d6b491",
+      "range": {
+        "startLine": 4940,
+        "startChar": 2,
+        "endLine": 4940,
+        "endChar": 5
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "13ba3b57_deba5e66",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -218,6 +290,30 @@
       "side": 1,
       "message": "I almost always prefer sizeofs in copies to reference the actual destination object, which is guaranteed to be correct, as opposed to the named type of that object, which merely *should* be correct.",
       "parentUuid": "dcac4963_abe8cffd",
+      "range": {
+        "startLine": 4980,
+        "startChar": 34,
+        "endLine": 4980,
+        "endChar": 42
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96cc1fd_47b3625e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4980,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-08-22T06:12:57Z",
+      "side": 1,
+      "message": "Will address this in the place calling func.",
+      "parentUuid": "9e7b3a1e_0f720679",
       "range": {
         "startLine": 4980,
         "startChar": 34,
