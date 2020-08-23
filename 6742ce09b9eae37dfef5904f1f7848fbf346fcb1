@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c10091aa_345a6534",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-23T01:43:48Z",
+      "side": 1,
+      "message": "I know others wanted prl_tx_wait_for_message_request_run to just check if TxSinkNG was set but I really like the idea of guarding my true intentions and only allowing the special bypass, beyond what the original code was doing, to be because of PR_Swap.",
+      "revId": "6742ce09b9eae37dfef5904f1f7848fbf346fcb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
