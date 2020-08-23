@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c910f2b_4f600eeb",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-23T15:08:49Z",
+      "side": 1,
+      "message": "Any reason why this change is required. The base code sends message first to virtual mux after that retimer call is happening. But here retimer configuration is called first followed by Mux.",
+      "range": {
+        "startLine": 284,
+        "startChar": 3,
+        "endLine": 284,
+        "endChar": 11
+      },
+      "revId": "1c1fe4bd014024fe981bc5e085d2e1d1e2b17016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9225c0e_f62ca767",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-23T15:08:49Z",
+      "side": 1,
+      "message": "MIN_DEFER_SAFE_US is in micro seconds, no need of multiplying with MSEC again",
+      "range": {
+        "startLine": 451,
+        "startChar": 24,
+        "endLine": 451,
+        "endChar": 28
+      },
+      "revId": "1c1fe4bd014024fe981bc5e085d2e1d1e2b17016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
