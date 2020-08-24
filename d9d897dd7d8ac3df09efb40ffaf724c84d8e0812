@@ -16,6 +16,24 @@
       "revId": "d9d897dd7d8ac3df09efb40ffaf724c84d8e0812",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a6a0f66_179121eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-08-24T10:12:21Z",
+      "side": 1,
+      "message": "With this change, in S0, I see the ITE port exit low power mode and continue to use the appropriate Unattached.SRC/SNK states.",
+      "parentUuid": "17eb42c9_e9f17a81",
+      "revId": "d9d897dd7d8ac3df09efb40ffaf724c84d8e0812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
