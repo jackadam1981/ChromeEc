@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cf79b24_a35b8f1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2020-08-24T15:50:13Z",
+      "side": 1,
+      "message": "Hello,\n\nhere is a new patchset including all required modifications (using macros instead of tables, ...).\n\nWe are now using a Nucleo F411RE board connected with SPI + interrupt to a Raspberry Pi 4 running Chromium OS and using CROS EC kernel drivers.\n\ntast run hardware.SensorRing is running perfectly.\n\nThanks for your review.\n\nBest regards,\nJB",
+      "revId": "0710c774b85b82b525093bfaf7d0f67bbc80c1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
