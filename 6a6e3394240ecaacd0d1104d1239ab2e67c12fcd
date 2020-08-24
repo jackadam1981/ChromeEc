@@ -16,6 +16,24 @@
       "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6194fb8_98bf2057",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-24T20:26:03Z",
+      "side": 1,
+      "message": "Works for me. Error for single and double tap was the same: the upper 16 bits of the interrupt register forced EC to be stuck in bmi160 irq_handler()\n\n[I added 2 printf when processing double tap, some printf in irq_handler]:\n\n[235076.658515 start with dd]\n[235076.659212 done with dd]\n[235077.301448 start with dd]\n[235077.302154 done with dd]\n[235077.874652 start with dd]\n[235077.875346 done with dd]\n[235078.856456 start with dd]\n[235078.857150 done with dd]\n[235079.499240 start with dd]\n[235079.499936 done with dd]\n[235080.057487 start with dd]\n[235080.058271 done with dd]\n[235080.655792 a hw int: 3152421703 - 2 0x00000000] \u003c\u003c here we have a FIFO interrupt at the same time as the double tap.\n[235080.656592 start with dd]\n[235080.657276 done with dd]\n[235081.183648 start with dd]\n[235081.184343 done with dd]\n[235081.777336 start with dd]\n[235081.778232 done with dd]\n[235082.352146 Battery 62% (Display 62.8 %) / 7h:24 to empty]\n[235082.499436 start with dd]\n[235082.500132 done with dd]\n[235083.561072 start with dd]\n[235083.561754 done with dd]\n[235084.264362 a hw int: 3156030152 - 2 0x00000000]\n[235084.265324 start with dd]\n[235084.266009 done with dd]",
+      "parentUuid": "27d87602_a2b5035e",
+      "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
