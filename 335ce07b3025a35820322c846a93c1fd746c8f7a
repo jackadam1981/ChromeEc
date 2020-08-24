@@ -70,6 +70,24 @@
       "revId": "335ce07b3025a35820322c846a93c1fd746c8f7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44366447_89d9647e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-08-24T23:49:54Z",
+      "side": 1,
+      "message": "By \"test\" I mean plug into Servo to already-booted labstation, and reboot labstation with servo plugged in.  Not sure what more testing would be worthwhile.\n\nBefore bothering, you could first ask xianuowang@ what testing (manual or automated) Labstation updates currently get.  If it would cover the above, *and* you\u0027ve tested the same things on whatever device you have handy, then IMO this is low-risk and no need to manually build \u0026 test Labstation images.",
+      "parentUuid": "3654142e_be04a965",
+      "revId": "335ce07b3025a35820322c846a93c1fd746c8f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
