@@ -3025,6 +3025,9 @@ static void pe_snk_transition_to_default_entry(int port)
 {
 	print_current_state(port);
 
+	/* Modal Operations should not persist through Hard Reset */
+	pe[port].flags &= ~(PE_FLAGS_MODAL_OPERATION);
+
 	/* Inform the TC Layer of Hard Reset */
 	tc_hard_reset_request(port);
 }
