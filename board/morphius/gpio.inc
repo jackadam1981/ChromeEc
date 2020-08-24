@@ -79,7 +79,8 @@ IOEX(USB_A0_CHARGE_EN_L,	EXPIN(USBC_PORT_C0, 1, 6), GPIO_OUT_HIGH)	/* A0 5V High
 
 IOEX(USB_A1_RETIMER_EN,		EXPIN(USBC_PORT_C1, 0, 0), GPIO_OUT_LOW)	/* A1 Retimer Enable */
 IOEX(PPC_ID,			EXPIN(USBC_PORT_C1, 0, 1), GPIO_INPUT)		/* PPC ID */
-IOEX(USB_C1_HPD_IN_DB,		EXPIN(USBC_PORT_C1, 0, 2), GPIO_OUT_LOW)	/* C1 HPD */
+IOEX(USB_C1_HPD_IN_DB,         EXPIN(USBC_PORT_C1, 0, 2), GPIO_OUT_LOW)        /* C1 HPD */
+GPIO(USB_C1_HPD_IN_DB_V1,         PIN(B, 1), GPIO_OUT_LOW)        /* C1 HPD V1 */
 
 /*
  * TODO(dbrockus@): remove code when older version_2 of hardware is
