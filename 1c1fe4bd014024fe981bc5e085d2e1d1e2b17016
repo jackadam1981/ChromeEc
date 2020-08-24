@@ -141,6 +141,29 @@
     },
     {
       "key": {
+        "uuid": "09d1a8fd_12d946de",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-24T17:56:23Z",
+      "side": 1,
+      "message": "#fdef HAS_TASK_PD0\nderreded_retimer_p0\n{\ndelay_retimer(0)\n}\n#el def HAS_TASK_PD1\nderreded_retimer_p1\n{\ndelay_retimer(1)\n}",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 32
+      },
+      "revId": "1c1fe4bd014024fe981bc5e085d2e1d1e2b17016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9225c0e_f62ca767",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 5
