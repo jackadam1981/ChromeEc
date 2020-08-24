@@ -52,6 +52,24 @@
       "revId": "335ce07b3025a35820322c846a93c1fd746c8f7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3654142e_be04a965",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-08-24T23:10:07Z",
+      "side": 1,
+      "message": "I can\u0027t actually represent the lab.  On my first CrOS team I was getting closely involved in lab and servo things before a reorg hit.  Two CrOS subteams later I\u0027m still following and poking at more lab stuff than I should be at this point. :-)\n\nI don\u0027t foresee issues, but if you have fizz and guado available you could put Labstation image on to test \u0026 make sure.  Unfortunately AFAIK labstation rollout (which includes servo FW embedded in it) is still a big fast flip, not much automatic canarying / slow rollout (https://crbug.com/893968), though there may be manual testing done first.",
+      "parentUuid": "3c5c05d1_7e69b763",
+      "revId": "335ce07b3025a35820322c846a93c1fd746c8f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
