@@ -16,6 +16,52 @@
       "revId": "7b8c1b83e5fe746f937cc01ce1ce61d91188653a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e893e4b8_e2f9f91d",
+        "filename": "board/tglrvpu_ite/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-24T15:04:02Z",
+      "side": 1,
+      "message": "add for tcpmv1 here also\n\nupdate the board.h too",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "7b8c1b83e5fe746f937cc01ce1ce61d91188653a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ca5324_06c94152",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-24T15:04:02Z",
+      "side": 1,
+      "message": "add tglrvpu tcpmv1",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "7b8c1b83e5fe746f937cc01ce1ce61d91188653a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
