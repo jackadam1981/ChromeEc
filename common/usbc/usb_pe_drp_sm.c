@@ -3025,6 +3025,9 @@ static void pe_snk_transition_to_default_entry(int port)
 {
 	print_current_state(port);
 
+	/* Modal Operations should not persist through Hard Reset */
+	PE_CLR_FLAG(port, PE_FLAGS_MODAL_OPERATION);
+
 	/* Inform the TC Layer of Hard Reset */
 	tc_hard_reset_request(port);
 }
@@ -5601,6 +5604,8 @@ uint8_t pd_get_src_cap_cnt(int port)
 
 void pd_dfp_discovery_init(int port)
 {
+	PE_CLR_FLAG(port, PE_FLAGS_MODAL_OPERATION);
+
 	memset(pe[port].discovery, 0, sizeof(pe[port].discovery));
 	memset(pe[port].partner_amodes, 0, sizeof(pe[port].partner_amodes));
 
