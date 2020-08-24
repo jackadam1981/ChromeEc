@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a40e3b92_48260179",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-08-24T14:39:33Z",
+      "side": 1,
+      "message": "Could you explain why approach described by you is better than mine? If I understand correctly this is what I did, but on demand - during first access to panic data (which can take place in system_pre_init())",
+      "parentUuid": "32c4d1f6_61bf0624",
+      "revId": "9bc616b41dc88d328019bec85a01bb9a90dc2f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec4ddd49_0b1be67a",
         "filename": "common/system.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2020-08-21T19:52:38Z",
       "side": 1,
       "message": "The means that panic data is complete garbage now. We should memset to 0 at least.",
+      "range": {
+        "startLine": 836,
+        "startChar": 1,
+        "endLine": 836,
+        "endChar": 48
+      },
+      "revId": "9bc616b41dc88d328019bec85a01bb9a90dc2f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "509d2323_6d8527e2",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-08-24T14:39:33Z",
+      "side": 1,
+      "message": "I think it\u0027s not a garbage. Could you explain why you think that panic_data is corrupted? This function just makes more space for core specific panic data (which is bigger in newer EC) to avoid issues when working with this structure. Struct_size is updated here because after memmove, size of panic_data structure increased actually.",
+      "parentUuid": "ec4ddd49_0b1be67a",
       "range": {
         "startLine": 836,
         "startChar": 1,
