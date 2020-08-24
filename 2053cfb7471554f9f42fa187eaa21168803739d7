@@ -33,6 +33,42 @@
       "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f0f39aa_73b6bf85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-08-24T10:07:20Z",
+      "side": 1,
+      "message": "On drawcia, with this CL chain and https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2349284, I find that if dongle is connecting and reboot (by console CMD \"reboot\"), then the pd state is loop in attachwait.SRC, because the charger always returns Vbus is not 0v.",
+      "parentUuid": "64faafd2_eb2aac7f",
+      "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "815a44d5_015ca032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-08-24T10:07:20Z",
+      "side": 1,
+      "message": "Ok, WIP is removed.\n\nYes, I saw that error then the pd state was stuck in \"LowPowerMode\" in S0 when the port was open.",
+      "parentUuid": "eee7ebec_96a91ca4",
+      "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
