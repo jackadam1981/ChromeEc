@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df627447_7e853ef1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-24T15:56:19Z",
+      "side": 1,
+      "message": "Looks good, minor nits",
+      "revId": "c575b399cb6c82b7ebe10ff54e2626bc28b6dc9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1334ee7f_4970765f",
+        "filename": "board/tglrvpu_ite/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-24T15:56:19Z",
+      "side": 1,
+      "message": "remove space on all.\n\ncheck if \"repo upload . \" throws error.",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "c575b399cb6c82b7ebe10ff54e2626bc28b6dc9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
