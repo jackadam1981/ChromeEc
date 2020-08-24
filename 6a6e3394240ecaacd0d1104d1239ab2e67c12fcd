@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27d87602_a2b5035e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-08-24T07:29:17Z",
+      "side": 1,
+      "message": "Hi,\n\nI\u0027ve run EC with this patch included and this fixes only single tap scenario (Lid Accel Missed message doesn\u0027t show on single tap), but when I double tap I\u0027m still getting following\n\n[194.310602 Lid Accel Missed 3 data collections at 194065824 - rate: 80000]\n[194.312225 unexpected large FIFO: 491]\n[194.317856 unexpected large FIFO: 442]\n[194.323740 unexpected large FIFO: 386]\n[194.329152 unexpected large FIFO: 330]\n[194.334384 unexpected large FIFO: 274]\n[194.339769 unexpected large FIFO: 218]\n[194.345101 unexpected large FIFO: 162]\n[194.350475 unexpected large FIFO: 106]\n",
+      "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
