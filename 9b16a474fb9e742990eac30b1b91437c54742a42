@@ -193,6 +193,30 @@
       "revId": "9b16a474fb9e742990eac30b1b91437c54742a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "198dca0b_9e0a59ce",
+        "filename": "driver/charger/isl923x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-24T08:08:09Z",
+      "side": 1,
+      "message": "changed back to public function because other boards need the declaration at the line \nif (IS_ENABLED(CONFIG_CHARGER_ISL9238C) \u0026\u0026 isl9238c_resume(chgnum))",
+      "parentUuid": "aca597ce_5939c6fd",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 32
+      },
+      "revId": "9b16a474fb9e742990eac30b1b91437c54742a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
