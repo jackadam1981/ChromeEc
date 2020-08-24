@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9706b207_a53a1b7f",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-24T22:12:56Z",
+      "side": 1,
+      "message": "I would guess this returns 1 if this mask and value aren\u0027t defined as well?  (reg \u0026 0) \u003d\u003d 0\n\nIs this the desired behavior?  Is this expected to always be filled in, or optional?",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 78
+      },
+      "revId": "97e46c4b892fd9f9ce685a4954745ee544a0a483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
