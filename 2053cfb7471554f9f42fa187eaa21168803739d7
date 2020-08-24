@@ -69,6 +69,24 @@
       "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2c5fa23_400aec4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-24T17:25:45Z",
+      "side": 1,
+      "message": "Does the charger have Vbus outputting at the time?  And is the issue only present with this toggle/low power CL, or does it happen on ToT too?  If it happens on ToT, then I can work on investigating and debugging it.",
+      "parentUuid": "1f0f39aa_73b6bf85",
+      "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
