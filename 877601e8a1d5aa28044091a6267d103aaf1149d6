@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf70c5c6_e02f239b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-24T22:26:37Z",
+      "side": 1,
+      "message": "Looks good.  Do we care about the MB charging case, or is it safe to assume the charger chip has that handled well enough?  I see the CHG_DONE interrupts charging from C0 in this range, but I don\u0027t know if they\u0027re really causing any harm. ",
+      "revId": "877601e8a1d5aa28044091a6267d103aaf1149d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
