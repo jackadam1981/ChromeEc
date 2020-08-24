@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c189217_c6658706",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-24T11:17:00Z",
+      "side": 1,
+      "message": "super nit: in case board_hibernate_... No \"of\"",
+      "range": {
+        "startLine": 493,
+        "startChar": 20,
+        "endLine": 493,
+        "endChar": 30
+      },
+      "revId": "811553f016f26f68b582458cad5e28af07040f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20945a10_4a4c1b1a",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-24T11:17:00Z",
+      "side": 1,
+      "message": "fine because",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "811553f016f26f68b582458cad5e28af07040f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7d12f4b_96233f48",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-24T11:17:00Z",
+      "side": 1,
+      "message": "Right, but don\u0027t you risk keeping flags for 1 reboot too many?\n\nScenario intended:\n\n1. Set flags \u003d X \u003d\u003e z-state\n2. Power on 1: Read flag \u003d X; Set flags \u003d X | EC_RESET_FLAG_INITIAL_PWR\n3. Power on 2: Read flag \u003d X | EC_RESET_FLAG_INITIAL_PWR; Set flags \u003d 0\n4. Next boot: Read flag \u003d 0\n\nScenario that appears to be broken:\n\n1. Set flags \u003d X \u003d\u003e z-state\n2. Power on 1: No time to read/set flags.\n3. Power on 2: Read flag \u003d X; Set flags \u003d X | EC_RESET_FLAG_INITIAL_PWR\n4. Next boot: Read flag \u003d X | EC_RESET_FLAG_INITIAL_PWR\n\nIs there anything we can do to protect against that second scenario?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "811553f016f26f68b582458cad5e28af07040f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
