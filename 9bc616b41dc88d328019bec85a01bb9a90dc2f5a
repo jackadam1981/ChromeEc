@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "40e5a54b_ac9a3999",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-24T20:33:24Z",
+      "side": 1,
+      "message": "When we are accessing PANIC_DATA_PTR, we would be writing data to it so we don\u0027t have to worry about the current panic_info memory being valid or invalid (we would still need to move jump data if necessary though).\n\nWe also know that the panic_info is about to be valid and written to. We should leave any valid RO panic_info alone until we need to write a valid RW panic_info.",
+      "parentUuid": "a40e3b92_48260179",
+      "revId": "9bc616b41dc88d328019bec85a01bb9a90dc2f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec4ddd49_0b1be67a",
         "filename": "common/system.c",
         "patchSetId": 2
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "I think it\u0027s not a garbage. Could you explain why you think that panic_data is corrupted? This function just makes more space for core specific panic data (which is bigger in newer EC) to avoid issues when working with this structure. Struct_size is updated here because after memmove, size of panic_data structure increased actually.",
       "parentUuid": "ec4ddd49_0b1be67a",
+      "range": {
+        "startLine": 836,
+        "startChar": 1,
+        "endLine": 836,
+        "endChar": 48
+      },
+      "revId": "9bc616b41dc88d328019bec85a01bb9a90dc2f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28a2076d_eab423a1",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-24T20:33:24Z",
+      "side": 1,
+      "message": "This assumes that the structure size was increased in a compatible way. We have not such guarantees or rules when updating the panic_info struct right now.\n\nThe struct may be larger because some other struct in the union was increased, or it may have increased because we added another field at the beginning of the arch structure.\n\nBasically trying to reinterpret these bytes in the new structures is undefined since the RW does not know what the format was in RO.\n\nIf the struct size in memory doesn\u0027t match CONFIG_PANIC_DATA_SIZE, then we should not try to parse it. We should instead just display it in hex on the console or something like that. It is already included in feedback reports as binary data, so we can parse that binary data with the tool build from either RO or RW code.",
+      "parentUuid": "509d2323_6d8527e2",
       "range": {
         "startLine": 836,
         "startChar": 1,
