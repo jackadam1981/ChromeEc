@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f446175_1b2bdcaa",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1710,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-24T16:07:35Z",
+      "side": 1,
+      "message": "On the right track, but this might be a little more tricky than this flag check.  Looking at Table 6-65 for guidance here,.... \n\nThis state is used in a lot of places, and our reaction to discard will be different for each.  Specifically, for:\n- entry because of DPM request: return to ready to process message [0] \n- entry because of Get Source Cap from partner: soft reset with SOP of incoming message [1]\n- entry due to startup: soft reset? I don\u0027t think we\u0027d count as \"power transitioning\" here.  Let me know what your thoughts are, after spec spelunking. \n\n\n[0] \"Protocol Errors are any unexpected Message during an AMS. If the first Message in an AMS has been passed to the\nProtocol Layer by the Policy Engine but has not yet been sent (GoodCRC Message not received) when the Protocol\nError occurs, the Policy Engine Shall Not issue a Soft Reset but Shall return to the PE_SNK_Ready or PE_SRC_Ready\nstate and then process the incoming Message.\"\n[1] \"If the Protocol Error occurs during a Non-interruptible\nAMS this Shall lead to a Soft Reset in order to re-synchronize the Policy Engine state machines \"",
+      "range": {
+        "startLine": 1705,
+        "startChar": 0,
+        "endLine": 1710,
+        "endChar": 3
+      },
+      "revId": "6b0c9baeb6a0e927d1497df73fd8ffa90ab00a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ebd90d_c6f19c2f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-24T16:07:35Z",
+      "side": 1,
+      "message": "Looking at the spec, I think this should always be a soft reset with the SOP of the incoming message.  If the partner GoodCRC\u0027d us, it makes sense to treat this as an error in a non-interruptible AMS.",
+      "range": {
+        "startLine": 1778,
+        "startChar": 0,
+        "endLine": 1787,
+        "endChar": 0
+      },
+      "revId": "6b0c9baeb6a0e927d1497df73fd8ffa90ab00a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
