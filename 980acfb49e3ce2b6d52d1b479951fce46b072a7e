@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5475f312_cee83230",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-24T19:53:04Z",
+      "side": 1,
+      "message": "I assume this was this tested on the tglrvpu_ite board?  Can you indicate that here?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 68
+      },
+      "revId": "980acfb49e3ce2b6d52d1b479951fce46b072a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8801ec7_89fffc01",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -51,6 +74,46 @@
       "revId": "980acfb49e3ce2b6d52d1b479951fce46b072a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9d77e93_d612ab07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-24T19:53:04Z",
+      "side": 1,
+      "message": "Looks good, pending commit message update.",
+      "revId": "980acfb49e3ce2b6d52d1b479951fce46b072a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe0d1c49_a5beebf4",
+        "filename": "board/tglrvpu_ite/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-24T19:53:04Z",
+      "side": 1,
+      "message": "As a follow on CL, can you change this function to board_bb_retimer_power(port, on_off), keeping the highlighted portion.\n\nLines 173-205 are shared with the common implementation in bb_retimer.c so no need to duplicate here.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "980acfb49e3ce2b6d52d1b479951fce46b072a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
