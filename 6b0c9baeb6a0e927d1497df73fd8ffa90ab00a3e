@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b805f5d_079b06e7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1710,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-25T14:57:52Z",
+      "side": 1,
+      "message": "I created a framework to track the current dpm_request. All DPM requests will transition from dpm_request to being dpm_curr_request.  This will allow a message handler to requeue a DPM request on discard. I did not propagate the code for handling. I didn\u0027t want the code base to grow unless there was an issue to be solved.\n\nI am considering making a generic path for all of the send messages to handle discard, sort of like you did for the few states using the parent state for handling the initial setup and common run code.  Didn\u0027t want to add that code to this CL.",
+      "parentUuid": "0f446175_1b2bdcaa",
+      "range": {
+        "startLine": 1705,
+        "startChar": 0,
+        "endLine": 1710,
+        "endChar": 3
+      },
+      "revId": "6b0c9baeb6a0e927d1497df73fd8ffa90ab00a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5ebd90d_c6f19c2f",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "6b0c9baeb6a0e927d1497df73fd8ffa90ab00a3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8130e19_1e7cc8f9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1787,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-25T14:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5ebd90d_c6f19c2f",
+      "range": {
+        "startLine": 1778,
+        "startChar": 0,
+        "endLine": 1787,
+        "endChar": 0
+      },
+      "revId": "6b0c9baeb6a0e927d1497df73fd8ffa90ab00a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
