@@ -5288,7 +5288,7 @@
 #undef CONFIG_HOSTCMD_PD
 #endif
 
-#if defined(HAS_TASK_PDCMD) && defined(HAS_TASK_PD_C0_INT)
+#if defined(HAS_TASK_PDCMD) && defined(HAS_TASK_PD_INT_C0)
 #error Should not use PDCMD task with PD INT tasks
 #endif
 
