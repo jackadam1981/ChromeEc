@@ -105,6 +105,24 @@
       "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "852346f1_8aba94bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-25T15:46:41Z",
+      "side": 1,
+      "message": "Interesting.  Is the PD state looping or stuck? \n\nI\u0027d think that with Vbus that low the charger would report CHG_DET as 0 (which would allow AttachWait.SRC to pass its vSafe0V check). If you file a bug with EC logs and a capture of \"charger_dump 0\" when the issue occurs, I can take a closer look and include the charger vendor if needed.",
+      "parentUuid": "0e2a6a07_4f623047",
+      "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
