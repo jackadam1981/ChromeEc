@@ -137,6 +137,7 @@ static void ipi_enable_deferred(void)
 	hostcmd_init();
 #endif
 
+	SCP_GIPC_IN_CLR = GIPC_IN(0);
 	task_enable_irq(SCP_IRQ_GIPC_IN0);
 }
 DECLARE_DEFERRED(ipi_enable_deferred);
