@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bbaf638_c1684c57",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3029,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-25T16:18:21Z",
+      "side": 1,
+      "message": "Would it make more sense for this to go in pd_dfp_discovery_init()?  I believe we\u0027ll be running that to clear out our discovery state and any time we clear the discovery data we should be clearing this flag.",
+      "range": {
+        "startLine": 3028,
+        "startChar": 0,
+        "endLine": 3029,
+        "endChar": 45
+      },
+      "revId": "a266423e4a454f7793d67538c9f2d7a156d42bff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
