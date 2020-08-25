@@ -1017,7 +1017,8 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 	 *       requirement.
 	 */
 
-	if (prl_tx[port].xmit_status == TCPC_TX_COMPLETE_SUCCESS) {
+	if (get_time().val > prl_tx[port].tcpc_tx_timeout ||
+		   prl_tx[port].xmit_status == TCPC_TX_COMPLETE_SUCCESS) {
 		/* NOTE: PRL_TX_Message_Sent State embedded here. */
 		/* Increment messageId counter */
 		increment_msgid_counter(port);
@@ -1034,8 +1035,7 @@ static void prl_tx_wait_for_phy_response_run(const int port)
 		 */
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SM, 0);
 		set_state_prl_tx(port, PRL_TX_WAIT_FOR_MESSAGE_REQUEST);
-	} else if (get_time().val > prl_tx[port].tcpc_tx_timeout ||
-		   prl_tx[port].xmit_status == TCPC_TX_COMPLETE_FAILED ||
+	} else if (prl_tx[port].xmit_status == TCPC_TX_COMPLETE_FAILED ||
 		   prl_tx[port].xmit_status == TCPC_TX_COMPLETE_DISCARDED) {
 		/*
 		 * NOTE: PRL_Tx_Transmission_Error State embedded
