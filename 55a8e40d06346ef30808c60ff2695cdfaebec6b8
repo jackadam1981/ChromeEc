@@ -34,6 +34,24 @@
       "revId": "55a8e40d06346ef30808c60ff2695cdfaebec6b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1b49f6_bb452753",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-25T06:37:04Z",
+      "side": 1,
+      "message": "This is my personal opinion based on every CL merged should be compiled correctly at least. And I sent a mail to internal firmware group to check the common guideline just now.",
+      "parentUuid": "c21bd5ea_f098b3ab",
+      "revId": "55a8e40d06346ef30808c60ff2695cdfaebec6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
