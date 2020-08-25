@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6dd9ca8_1595ab37",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-25T20:37:40Z",
+      "side": 1,
+      "message": "You can use CONFIG_LED_ONOFF_STATES and CONFIG_LED_POWER_LED. This will simplify the code needed in board.c.",
+      "revId": "67e527ebe49722349c1b7cb6e09428f3fcf2cdc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42183c4e_ed51b244",
+        "filename": "board/halvor/led.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-25T20:37:40Z",
+      "side": 1,
+      "message": "If you use the CONFIG_LED_ONOFF_STATES and CONFIG_LED_POWER_LED options, all of this code can be removed.\n\nYou will need to define led_bat_state_table[] and led_pwr_state_table[] lookup tables.  See board/delbin/led.c for example usage.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "67e527ebe49722349c1b7cb6e09428f3fcf2cdc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
