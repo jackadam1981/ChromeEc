@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "028c6b6a_423f4707",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3029,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-25T14:33:02Z",
+      "side": 1,
+      "message": "Should this be mirrored in pe_src_transition_to_default_entry?\n\nAnd will this cause the PE to change its behavior? I don\u0027t see any instances of us doing something based on this flag *not* being set.",
+      "revId": "49b2885f2a74fe378c1ac55c6ef28bc82579818d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
