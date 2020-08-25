@@ -6,12 +6,17 @@
  */
 
 /* Interrupts */
+GPIO_INT(SPI1_NSS,        PIN(A,  4), GPIO_INPUT, spi_event)
 GPIO_INT(USER_BUTTON_L,   PIN(C, 13), GPIO_INT_BOTH, user_button_evt)
+GPIO_INT(ICM426XX_INT1_L, PIN(C, 10), GPIO_INT_FALLING, icm426xx_interrupt)
 
 /* User LED */
+GPIO(EC_INT_L,            PIN(A,  1), GPIO_OUT_HIGH)
 GPIO(USER_LED,            PIN(A,  5), GPIO_OUT_LOW)
 
-GPIO(BMI160_INT2_L,       PIN(C, 10), GPIO_OUT_LOW)
+/* SPI sensors */
+GPIO(SPI_ACCEL_CS_L,      PIN(B, 12), GPIO_OUT_HIGH)
+
 /*
  * I2C pins should be configured as inputs until I2C module is
  * initialized. This will avoid driving the lines unintentionally.
@@ -29,3 +34,5 @@ ALTERNATE(PIN_MASK(B, 0x0400), GPIO_ALT_I2C,    MODULE_I2C,  0) /* I2C MASTER:PB
 ALTERNATE(PIN_MASK(B, 0x0008), GPIO_ALT_I2C_23, MODULE_I2C,  0) /* I2C MASTER:PB3 */
 ALTERNATE(PIN_MASK(B, 0x0200), GPIO_ALT_I2C,    MODULE_I2C,  0) /* I2C SLAVE:PB9 */
 ALTERNATE(PIN_MASK(B, 0x0100), GPIO_ALT_I2C,    MODULE_I2C,  0) /* I2C SLAVE:PB8 */
+ALTERNATE(PIN_MASK(A, 0x00F0), GPIO_ALT_SPI,    MODULE_SPI,  0) /* SPI SLAVE: PA4/PA5/PA6/PA7 */
+ALTERNATE(PIN_MASK(B, 0xF000), GPIO_ALT_SPI,    MODULE_SPI_MASTER, 0)  /* SPI MASTER: PB12/13/14/15 */
