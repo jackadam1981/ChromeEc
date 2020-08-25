@@ -16,6 +16,24 @@
       "revId": "49b2885f2a74fe378c1ac55c6ef28bc82579818d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e262a9b_ae7bf626",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3029,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-25T14:50:54Z",
+      "side": 1,
+      "message": "The existing pe_src_transition_to_default_entry uses the big hammer as it did before this change.  That will make sure this bit is cleared along with all of the other flags and dpm_requests\n\nThere are a number of connection discovery choices made based on this flag. The dock that I am using gets lost when it does not take the path of clean rediscovery for modes. The modal operation and all alternate modes should be exited for any Hard Reset.",
+      "parentUuid": "028c6b6a_423f4707",
+      "revId": "49b2885f2a74fe378c1ac55c6ef28bc82579818d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
