@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c7fd321_cc963b56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-25T18:23:42Z",
+      "side": 1,
+      "message": "Can we split this up into a few CLs? The changes themselves look good.\n\n* common\n* charger/sm5803.c\n\nAlso, maybe let\u0027s just enable discharge on AC in the baseboard.h.",
+      "revId": "5cbc0396950500165bd7a64a1076b89c8d5ecc3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
