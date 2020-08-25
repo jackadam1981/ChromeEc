@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c78efc18_3e81a2aa",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-25T17:40:30Z",
+      "side": 1,
+      "message": "Oh of course. Thanks. (Note to self: try not to do code reviews so late at night)",
+      "parentUuid": "ddac76f7_d2d1cc7a",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 4
+      },
+      "revId": "80e39e10b809186299ef5f518ff26ee3f46de747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bfec93a_785dc0be",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Okay, I\u0027ll move it there.  Would you think the end of fast charge setting should move to the init process as well?",
       "parentUuid": "9bfec93a_785dc0be",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 3
+      },
+      "revId": "80e39e10b809186299ef5f518ff26ee3f46de747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e763ac_8c25744b",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-25T17:40:30Z",
+      "side": 1,
+      "message": "I suppose it could. I was little worried about it being called without having the battery been identified yet, but it seems like we\u0027ll just use the default battery in that case.",
+      "parentUuid": "d1bd6c84_cde2494d",
       "range": {
         "startLine": 327,
         "startChar": 0,
