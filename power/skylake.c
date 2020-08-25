@@ -82,6 +82,11 @@ __attribute__((weak)) void chipset_set_pmic_slp_sus_l(int level)
 	gpio_set_level(GPIO_PMIC_SLP_SUS_L, level);
 }
 
+__overridable int chipset_can_disable_pmic_slp_sus_l(enum power_state state)
+{
+	return 1;
+}
+
 enum power_state chipset_force_g3(void)
 {
 	CPRINTS("Forcing fake G3.");
@@ -93,12 +98,20 @@ enum power_state chipset_force_g3(void)
 
 static void handle_slp_sus(enum power_state state)
 {
+	int next_level;
+
 	/* If we're down or going down don't do anythin with SLP_SUS_L. */
 	if (state == POWER_G3 || state == POWER_S5G3)
 		return;
 
+	next_level = gpio_get_level(GPIO_PCH_SLP_SUS_L);
+
+	/* Check if we are allowed to disable PMIC_SLP_SUS_L */
+	if (!next_level && !chipset_can_disable_pmic_slp_sus_l(state))
+		return;
+
 	/* Always mimic PCH SLP_SUS request for all other states. */
-	chipset_set_pmic_slp_sus_l(gpio_get_level(GPIO_PCH_SLP_SUS_L));
+	chipset_set_pmic_slp_sus_l(next_level);
 }
 
 void chipset_handle_espi_reset_assert(void)
