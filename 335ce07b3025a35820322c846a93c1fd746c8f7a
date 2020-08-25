@@ -88,6 +88,41 @@
       "revId": "335ce07b3025a35820322c846a93c1fd746c8f7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b6b040d_e5bff6e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-08-25T01:00:19Z",
+      "side": 1,
+      "message": "unclear why my reply didn\u0027t send earlier, sorry.",
+      "revId": "335ce07b3025a35820322c846a93c1fd746c8f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bc48d81_eb3dbc51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-08-25T01:00:19Z",
+      "side": 1,
+      "message": "I think it\u0027s fine to have this in here for now. We don\u0027t test rebooting a labstation, but we can easily do that too. Our testing right now just goes through the same testing as a labstation image would (testing for firmware) so that means\n- checking enumeration\n- usb muxes\n- usb image download\n- some basic servod controls to the dut\n\nwe\u0027re in the process of expanding that, but as long as ccd enumerates on usb properly, this shouldn\u0027t cause any issues",
+      "parentUuid": "3654142e_be04a965",
+      "revId": "335ce07b3025a35820322c846a93c1fd746c8f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
