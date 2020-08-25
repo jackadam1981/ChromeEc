@@ -16,6 +16,23 @@
       "revId": "d785aa268a8b3c4e3a02e4612122835e226f24dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea6b4a19_5e374fe6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-25T17:26:01Z",
+      "side": 1,
+      "message": "I don\u0027t think SLP_SUS_L is asserted when entering S3? My understanding is that it\u0027s deasserted when transitioning up and out of S5 and remains deasserted. It would then be asserted when entering S5.",
+      "revId": "d785aa268a8b3c4e3a02e4612122835e226f24dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
