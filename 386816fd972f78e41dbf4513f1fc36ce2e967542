@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cb7e9e8_c047c6c8",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-25T15:39:55Z",
+      "side": 1,
+      "message": "Note that change CL:2368223 deletes this parameter. If that change merges first, you will have to rebase your change.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 45
+      },
+      "revId": "386816fd972f78e41dbf4513f1fc36ce2e967542",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
