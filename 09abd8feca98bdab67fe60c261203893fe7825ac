@@ -160,6 +160,54 @@
     },
     {
       "key": {
+        "uuid": "b95667a0_a6b30da2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4940,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-08-25T00:52:47Z",
+      "side": 1,
+      "message": "Done with copy rx to tx, and pass tx as parameter to responder functions.\nI did a close check with TCPMv1 implementation code, if response message is VDM header only, func will return 1, they return the count of data object(including VDM header), not count of VDO.",
+      "parentUuid": "133a0c66_94f35e3f",
+      "range": {
+        "startLine": 4940,
+        "startChar": 19,
+        "endLine": 4940,
+        "endChar": 29
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0433bad1_3c4feb9d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4940,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-08-25T00:52:47Z",
+      "side": 1,
+      "message": "tx_emsg[port].buf is uint8_t array. so I changed to sizeof(*tx_payload) which returns 4 bytes.",
+      "parentUuid": "c283a175_f01fb6a8",
+      "range": {
+        "startLine": 4940,
+        "startChar": 2,
+        "endLine": 4940,
+        "endChar": 5
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13ba3b57_deba5e66",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3
@@ -180,6 +228,30 @@
       "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc10207_4bbd7253",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4964,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-08-25T00:52:47Z",
+      "side": 1,
+      "message": "Done. commented on svdm_response.",
+      "parentUuid": "13ba3b57_deba5e66",
+      "range": {
+        "startLine": 4957,
+        "startChar": 0,
+        "endLine": 4964,
+        "endChar": 13
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -323,6 +395,30 @@
       "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad7b84c4_2d35f7b5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4980,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-08-25T00:52:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d96cc1fd_47b3625e",
+      "range": {
+        "startLine": 4980,
+        "startChar": 34,
+        "endLine": 4980,
+        "endChar": 42
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
