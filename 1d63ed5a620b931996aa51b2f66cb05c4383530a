@@ -70,6 +70,30 @@
       "revId": "1d63ed5a620b931996aa51b2f66cb05c4383530a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1b7e46_5e6f0f70",
+        "filename": "chip/stm32/flash-stm32g4.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-25T18:59:27Z",
+      "side": 1,
+      "message": "int flash_physical_protect_at_boot(uint32_t new_flags)\n{\n\tuint32_t ro_range \u003d FLASH_WRP_RANGE_DISABLED;\n\tuint32_t rb_rw_range \u003d FLASH_WRP_RANGE_DISABLED;\n\t/*\n\t * WRP1AR is storing the write-protection range for the RO region.\n\t * WRP1BR is storing the write-protection range for the\n\t * rollback and RW regions.\n\t */\n\tif (new_flags \u0026 (EC_FLASH_PROTECT_ALL_AT_BOOT |\n\t\t\t EC_FLASH_PROTECT_RO_AT_BOOT))\n\t\tro_range \u003d FLASH_WRP_RANGE(WP_BANK_OFFSET,\n\t\t\t\t\t   WP_BANK_OFFSET + WP_BANK_COUNT);\n\nthis is an example. WP_BANK_OFFSET would be 0 and WP_BANK_COUNT is the number of pages in RO.",
+      "parentUuid": "6855ee06_68c0fff8",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "1d63ed5a620b931996aa51b2f66cb05c4383530a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
