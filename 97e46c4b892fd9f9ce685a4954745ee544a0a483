@@ -22,6 +22,30 @@
       "revId": "97e46c4b892fd9f9ce685a4954745ee544a0a483",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9aa1bef_4cf48fb5",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-25T21:35:19Z",
+      "side": 1,
+      "message": "I\u0027d like for this field to be filled in. I can change it to if it\u0027s not defined, assume it\u0027s not disabled.",
+      "parentUuid": "9706b207_a53a1b7f",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 78
+      },
+      "revId": "97e46c4b892fd9f9ce685a4954745ee544a0a483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
