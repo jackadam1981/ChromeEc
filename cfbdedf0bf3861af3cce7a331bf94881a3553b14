@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bd460db_291e34fe",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-25T05:20:10Z",
+      "side": 1,
+      "message": "looks like this can\u0027t compile successfully and let us follow the naming convention in this version first?",
+      "revId": "cfbdedf0bf3861af3cce7a331bf94881a3553b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d22e0b1_1398f6c4",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-25T05:20:10Z",
+      "side": 1,
+      "message": "Just PS8751_I2C_ADDR1_P1?",
+      "revId": "cfbdedf0bf3861af3cce7a331bf94881a3553b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
