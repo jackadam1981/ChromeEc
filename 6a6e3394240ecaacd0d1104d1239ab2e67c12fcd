@@ -34,6 +34,24 @@
       "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35aa0c7e_8aec4926",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-25T05:00:46Z",
+      "side": 1,
+      "message": "Patryk,\n\nI uploaded my patch for testing: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2373866, I use it on top of the eve rebase [crrev.com/c/2320267]\nCan you check on your device if you still see the EC being stuck and upload the error message?\nThanks.",
+      "parentUuid": "c6194fb8_98bf2057",
+      "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
