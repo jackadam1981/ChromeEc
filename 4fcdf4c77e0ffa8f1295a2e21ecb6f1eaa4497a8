@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a65ac60_fad53b47",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1701,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-25T20:48:45Z",
+      "side": 1,
+      "message": "Clear discarded after using it.  Shouldn\u0027t matter for the return to ready since that path will clear itself, but could matter for the soft reset transition",
+      "range": {
+        "startLine": 1701,
+        "startChar": 5,
+        "endLine": 1701,
+        "endChar": 48
+      },
+      "revId": "4fcdf4c77e0ffa8f1295a2e21ecb6f1eaa4497a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24bd9ab7_3b711ee4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1792,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-25T20:48:45Z",
+      "side": 1,
+      "message": "Grab the SOP of the unexpected message and set here\n\n(Note: for the discard case, assuming SOP is fine since spec only dictates discarding our outgoing message when the incoming is SOP)",
+      "range": {
+        "startLine": 1792,
+        "startChar": 2,
+        "endLine": 1792,
+        "endChar": 40
+      },
+      "revId": "4fcdf4c77e0ffa8f1295a2e21ecb6f1eaa4497a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
