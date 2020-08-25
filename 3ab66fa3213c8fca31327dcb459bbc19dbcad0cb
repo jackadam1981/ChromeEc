@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03022ef2_306dabf6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-25T19:59:35Z",
+      "side": 1,
+      "message": "can you add more info ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "3ab66fa3213c8fca31327dcb459bbc19dbcad0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b23e8d7b_f7eb372f",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-25T19:59:35Z",
+      "side": 1,
+      "message": "is usage in follow on CL?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 61
+      },
+      "revId": "3ab66fa3213c8fca31327dcb459bbc19dbcad0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
