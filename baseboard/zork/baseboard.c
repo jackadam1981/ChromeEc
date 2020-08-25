@@ -257,7 +257,8 @@ void sbu_fault_interrupt(enum ioex_signal signal)
 {
 	int port = (signal == IOEX_USB_C0_SBU_FAULT_ODL) ? 0 : 1;
 
-	pd_handle_overcurrent(port);
+	if (board_vbus_source_enabled(port))
+		pd_handle_overcurrent(port);
 }
 
 static void set_ac_prochot(void)
