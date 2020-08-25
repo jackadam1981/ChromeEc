@@ -52,6 +52,24 @@
       "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5007bad7_8b6abb0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-08-25T08:46:14Z",
+      "side": 1,
+      "message": "Maybe it will sound a bit strange, but without TCPMv2 double tap issue can be observed only once\n\n[446.008416 start with dd]\n[446.273127 done with dd]\n[446.274345 Lid Accel Missed 1 data collections at 446151805 - rate: 80000]\n[446.276144 unexpected large FIFO: 379]\n[446.281660 unexpected large FIFO: 323]\n[446.287336 unexpected large FIFO: 267]\n[446.292987 unexpected large FIFO: 211]\n[446.298215 unexpected large FIFO: 155]\n[446.303194 unexpected large FIFO: 99]\n[446.310465 a hw int: 446310136 - 2 0x00004000]\n[446.312524 a hw int: 446310136 - 2 0x00000000]\n[447.374740 start with dd]\n[447.375281 done with dd]\n[448.495188 start with dd]\n[448.495761 done with dd]\n[449.218639 start with dd]\n[449.219181 done with dd]\n\nWith TCPMv2 enabled, issue can be reproduced every time\n[124.073893 start with dd]\n[124.349838 done with dd]\n[124.351066 Lid Accel Missed 1 data collections at 124223255 - rate: 80000]\n[124.352860 unexpected large FIFO: 393]\n[124.358564 unexpected large FIFO: 337]\n[124.364132 unexpected large FIFO: 281]\n[124.369553 unexpected large FIFO: 225]\n[124.374686 unexpected large FIFO: 169]\n[124.379762 unexpected large FIFO: 113]\n[124.389931 a hw int: 124389870 - 2 0x00000000]\n[125.266958 start with dd]\n[125.505002 done with dd]\n[125.506232 Lid Accel Missed 1 data collections at 125393280 - rate: 80000]\n[125.507997 unexpected large FIFO: 337]\n[125.513572 unexpected large FIFO: 288]\n[125.519763 unexpected large FIFO: 232]\n[125.525276 unexpected large FIFO: 176]\n[125.530489 unexpected large FIFO: 120]\n[127.728363 start with dd]\n[128.245471 done with dd]\n[128.247826 Lid Accel Missed 5 data collections at 127828444 - rate: 80000]\n[128.250255 unexpected large FIFO: 729]\n[128.256096 unexpected large FIFO: 680]\n[128.261723 unexpected large FIFO: 624]\n[128.266991 unexpected large FIFO: 568]\n[128.272314 unexpected large FIFO: 512]\n[128.277559 unexpected large FIFO: 456]\n[128.282790 unexpected large FIFO: 400]\n[128.288102 unexpected large FIFO: 344]\n[128.293389 unexpected large FIFO: 288]\n[128.298629 unexpected large FIFO: 232]\n[128.304068 unexpected large FIFO: 176]\n[128.309425 unexpected large FIFO: 120]\n[131.047941 start with dd]\n[131.410780 done with dd]\n[131.411907 Lid Accel Missed 3 data collections at 131130203 - rate: 80000]\n[131.414137 unexpected large FIFO: 512]\n[131.420246 unexpected large FIFO: 463]\n[131.426234 unexpected large FIFO: 407]\n[131.431479 unexpected large FIFO: 351]\n[131.436844 unexpected large FIFO: 295]\n[131.442150 unexpected large FIFO: 239]\n[131.447253 unexpected large FIFO: 183]\n[131.452532 unexpected large FIFO: 127]\n[131.457732 unexpected large FIFO: 71]\n[136.847243 start with dd]\n[136.964777 done with dd]\n[136.966067 Lid Accel Missed 0 data collections at 136934222 - rate: 80000]\n[136.967853 unexpected large FIFO: 169]\n[136.973485 unexpected large FIFO: 120]\n[136.983100 a hw int: 136983051 - 2 0x00000000]\n\nI uploaded minimal changes that enables TCPMv2, enough for double tap testing https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2374645\nWhen rebasing on top of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2320267/2 you will get one trivial conflict in board/eve/board.h (because #define CONFIG_USB_PD_COMM_LOCKED was added)",
+      "parentUuid": "35aa0c7e_8aec4926",
+      "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
