@@ -206,7 +206,6 @@ typedef int (*svdm_rsp_func)(int port, uint32_t *payload);
 enum usb_pe_state {
 	/* Super States */
 	PE_PRS_FRS_SHARED,
-	PE_SENDER_RESPONSE, /* AMS Start parent - runs SenderResponseTimer */
 	PE_VDM_SEND_REQUEST,
 
 	/* Normal States */
@@ -385,8 +384,6 @@ static const char * const pe_state_names[] = {
 	[PE_DEU_SEND_ENTER_USB]  = "PE_DEU_Send_Enter_USB",
 	[PE_DR_SNK_GET_SINK_CAP] = "PE_DR_SNK_Get_Sink_Cap",
 	[PE_DR_SNK_GIVE_SOURCE_CAP] = "PE_DR_SNK_Give_Source_Cap",
-
-	[PE_SENDER_RESPONSE] = "PE_SENDER_RESPONSE",
 
 	/* PD3.0 only states below here*/
 #ifdef CONFIG_USB_PD_REV30
@@ -1138,6 +1135,59 @@ static void pe_set_dpm_curr_request(const int port,
 	pe[port].dpm_curr_request = request;
 }
 
+/* Common message send checking */
+enum pe_msg_check {
+	PE_MSG_SEND_PENDING	= BIT(0),
+	PE_MSG_SENT		= BIT(1),
+	PE_MSG_DISCARDED	= BIT(2),
+
+	PE_MSG_SEND_COMPLETED	= BIT(3) | PE_MSG_SENT,
+	PE_MSG_DPM_DISCARDED	= BIT(4) | PE_MSG_DISCARDED,
+};
+static void pe_send_msg_timer_init(const int port)
+{
+	/* Stop sender response timer */
+	pe[port].sender_response_timer = TIMER_DISABLED;
+}
+static enum pe_msg_check pe_send_msg_check(const int port)
+{
+	if (pe[port].sender_response_timer == TIMER_DISABLED) {
+		/*
+		 * Check for Discard only if the initial message has
+		 * not already been sent
+		 */
+		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
+			/* ready states will clear the discard flag */
+			int dpm_request = pe[port].dpm_curr_request;
+
+			/* Restore the DPM Request */
+			if (dpm_request != 0) {
+				PE_SET_DPM_REQUEST(port, dpm_request);
+				return PE_MSG_DPM_DISCARDED;
+			}
+			return PE_MSG_DISCARDED;
+		}
+
+		/*
+		 * If a GoodCRC Message is received then the Policy Engine
+		 * Shall:
+		 *  1) Stop the NoResponseTimer.
+		 *  2) Reset the HardResetCounter and CapsCounter to zero.
+		 *  3) Initialize and run the SenderResponseTimer.
+		 */
+		if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
+			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+
+			/* Initialize and run the SenderResponseTimer */
+			pe[port].sender_response_timer = get_time().val +
+							PD_T_SENDER_RESPONSE;
+			return PE_MSG_SEND_COMPLETED;
+		}
+		return PE_MSG_SEND_PENDING;
+	}
+	return PE_MSG_SENT;
+}
+
 /* Set the TypeC state machine to a new state. */
 test_export_static void set_state_pe(const int port,
 				     const enum usb_pe_state new_state)
@@ -1683,42 +1733,38 @@ static void pe_src_send_capabilities_entry(int port)
 
 	/* Send PD Capabilities message */
 	send_source_cap(port);
+	pe_send_msg_timer_init(port);
 
 	/* Increment CapsCounter */
 	pe[port].caps_counter++;
-
-	/* Stop sender response timer */
-	pe[port].sender_response_timer = TIMER_DISABLED;
 }
 
 static void pe_src_send_capabilities_run(int port)
 {
-	/*
-	 * If the sender_response_timer is DISABLED then we are still waiting
-	 * to see if the PD_DATA_SOURCE_CAP message was sent.
-	 */
-	if (pe[port].sender_response_timer == TIMER_DISABLED) {
-		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
-			/*
-			 * We have a Discarded Message.
-			 *	PE_SNK/SRC_READY if DPM_REQUEST_SRC_CAP_CHANGE
-			 *	PE_SEND_SOFT_RESET otherwise
-			 */
-			if (pe[port].dpm_curr_request ==
-						DPM_REQUEST_SRC_CAP_CHANGE) {
-				/*
-				 * Restore the DPM Request before going back
-				 * to READY
-				 */
-				PE_SET_DPM_REQUEST(port,
-						DPM_REQUEST_SRC_CAP_CHANGE);
-				pe_set_ready_state(port);
-			} else {
-				pe_send_soft_reset(port, TCPC_TX_SOP);
-			}
-			return;
-		}
+	enum pe_msg_check msg_check;
 
+	/*
+	 * Check the state of the message sent
+	 */
+	msg_check = pe_send_msg_check(port);
+
+	/*
+	 * Handle Discarded message
+	 *	PE_SNK/SRC_READY if DPM_REQUEST_SRC_CAP_CHANGE
+	 *	PE_SEND_SOFT_RESET otherwise
+	 */
+	if (msg_check == PE_MSG_DPM_DISCARDED) {
+		pe_set_ready_state(port);
+		return;
+	} else if (msg_check == PE_MSG_DISCARDED) {
+		pe_send_soft_reset(port, TCPC_TX_SOP);
+		return;
+	}
+
+	/*
+	 * Handle message that was just sent
+	 */
+	if (msg_check == PE_MSG_SEND_COMPLETED) {
 		/*
 		 * If a GoodCRC Message is received then the Policy Engine
 		 * Shall:
@@ -1726,30 +1772,22 @@ static void pe_src_send_capabilities_run(int port)
 		 *  2) Reset the HardResetCounter and CapsCounter to zero.
 		 *  3) Initialize and run the SenderResponseTimer.
 		 */
-		if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
-			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
+		/* Stop the NoResponseTimer */
+		pe[port].no_response_timer = TIMER_DISABLED;
 
-			/* Stop the NoResponseTimer */
-			pe[port].no_response_timer = TIMER_DISABLED;
+		/* Reset the HardResetCounter to zero */
+		pe[port].hard_reset_counter = 0;
 
-			/* Reset the HardResetCounter to zero */
-			pe[port].hard_reset_counter = 0;
-
-			/* Reset the CapsCounter to zero */
-			pe[port].caps_counter = 0;
-
-			/* Initialize and run the SenderResponseTimer */
-			pe[port].sender_response_timer = get_time().val +
-							PD_T_SENDER_RESPONSE;
-		}
+		/* Reset the CapsCounter to zero */
+		pe[port].caps_counter = 0;
 	}
 
 	/*
 	 * Transition to the PE_SRC_Negotiate_Capability state when:
 	 *  1) A Request Message is received from the Sink
 	 */
-	if (pe[port].sender_response_timer != TIMER_DISABLED &&
-			PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	if ((msg_check & PE_MSG_SENT) != 0 &&
+	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		/*
@@ -2552,11 +2590,11 @@ static void pe_snk_select_capability_entry(int port)
 
 	/* Send Request */
 	pe_send_request_msg(port);
+	pe_send_msg_timer_init(port);
 
 	/* We are PD Connected */
 	PE_SET_FLAG(port, PE_FLAGS_PD_CONNECTION);
 	tc_pd_connection(port, 1);
-	pe[port].sender_response_timer = TIMER_DISABLED;
 }
 
 static void pe_snk_select_capability_run(int port)
@@ -2564,20 +2602,23 @@ static void pe_snk_select_capability_run(int port)
 	uint8_t type;
 	uint8_t cnt;
 	enum tcpm_transmit_type sop;
+	enum pe_msg_check msg_check;
 
-	/* Wait until message is sent */
-	if (pe[port].sender_response_timer == TIMER_DISABLED) {
-		if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
-			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-			/* Initialize and run SenderResponseTimer */
-			pe[port].sender_response_timer =
-					get_time().val + PD_T_SENDER_RESPONSE;
-		} else {
-			return;
-		}
+	/*
+	 * Check the state of the message sent
+	 */
+	msg_check = pe_send_msg_check(port);
+
+	/*
+	 * Handle discarded message
+	 */
+	if ((msg_check & PE_MSG_DISCARDED) != 0) {
+		pe_set_ready_state(port);
+		return;
 	}
 
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+	if ((msg_check & PE_MSG_SENT) != 0 &&
+	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
 		cnt = PD_HEADER_CNT(rx_emsg[port].header);
@@ -3557,6 +3598,7 @@ static void pe_drs_send_swap_entry(int port)
 	 */
 	/* Request the Protocol Layer to send a DR_Swap Message */
 	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_DR_SWAP);
+	pe_send_msg_timer_init(port);
 }
 
 static void pe_drs_send_swap_run(int port)
@@ -3564,6 +3606,20 @@ static void pe_drs_send_swap_run(int port)
 	int type;
 	int cnt;
 	int ext;
+	enum pe_msg_check msg_check;
+
+	/*
+	 * Check the state of the message sent
+	 */
+	msg_check = pe_send_msg_check(port);
+
+	/*
+	 * Handle discarded message
+	 */
+	if ((msg_check & PE_MSG_DISCARDED) != 0) {
+		pe_set_ready_state(port);
+		return;
+	}
 
 	/*
 	 * Transition to PE_DRS_Change when:
@@ -3573,7 +3629,8 @@ static void pe_drs_send_swap_run(int port)
 	 *   1) A Reject Message is received.
 	 *   2) Or a Wait Message is received.
 	 */
-	if (PE_CHK_REPLY(port)) {
+	if ((msg_check & PE_MSG_SENT) != 0 &&
+	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
@@ -3763,6 +3820,7 @@ static void pe_prs_src_snk_send_swap_entry(int port)
 
 	/* Request the Protocol Layer to send a PR_Swap Message. */
 	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PR_SWAP);
+	pe_send_msg_timer_init(port);
 }
 
 static void pe_prs_src_snk_send_swap_run(int port)
@@ -3770,13 +3828,18 @@ static void pe_prs_src_snk_send_swap_run(int port)
 	int type;
 	int cnt;
 	int ext;
+	enum pe_msg_check msg_check;
 
 	/*
-	 * Transition to PE_SRC_Ready state when:
-	 *   1) Or the SenderResponseTimer times out.
+	 * Check the state of the message sent
 	 */
-	if (get_time().val > pe[port].sender_response_timer) {
-		set_state_pe(port, PE_SRC_READY);
+	msg_check = pe_send_msg_check(port);
+
+	/*
+	 * Handle discarded message
+	 */
+	if ((msg_check & PE_MSG_DISCARDED) != 0) {
+		pe_set_ready_state(port);
 		return;
 	}
 
@@ -3788,7 +3851,8 @@ static void pe_prs_src_snk_send_swap_run(int port)
 	 *   1) A Reject Message is received.
 	 *   2) Or a Wait Message is received.
 	 */
-	if (PE_CHK_REPLY(port)) {
+	if ((msg_check & PE_MSG_SENT) != 0 &&
+	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
@@ -3803,7 +3867,17 @@ static void pe_prs_src_snk_send_swap_run(int port)
 			} else if ((type == PD_CTRL_REJECT) ||
 						(type == PD_CTRL_WAIT))
 				set_state_pe(port, PE_SRC_READY);
+			return;
 		}
+	}
+
+	/*
+	 * Transition to PE_SRC_Ready state when:
+	 *   1) Or the SenderResponseTimer times out.
+	 */
+	if (get_time().val > pe[port].sender_response_timer) {
+		set_state_pe(port, PE_SRC_READY);
+		return;
 	}
 }
 
@@ -5211,6 +5285,7 @@ static void pe_vcs_send_swap_entry(int port)
 
 	/* Send a VCONN_Swap Message */
 	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_VCONN_SWAP);
+	pe_send_msg_timer_init(port);
 }
 
 static void pe_vcs_send_swap_run(int port)
@@ -5218,8 +5293,23 @@ static void pe_vcs_send_swap_run(int port)
 	uint8_t type;
 	uint8_t cnt;
 	enum tcpm_transmit_type sop;
+	enum pe_msg_check msg_check;
 
-	if (PE_CHK_REPLY(port)) {
+	/*
+	 * Check the state of the message sent
+	 */
+	msg_check = pe_send_msg_check(port);
+
+	/*
+	 * Handle discarded message
+	 */
+	if ((msg_check & PE_MSG_DISCARDED) != 0) {
+		pe_set_ready_state(port);
+		return;
+	}
+
+	if ((msg_check & PE_MSG_SENT) != 0 &&
+	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
@@ -5469,6 +5559,7 @@ static void pe_dr_snk_get_sink_cap_entry(int port)
 
 	/* Send a Get Sink Cap Message */
 	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_GET_SINK_CAP);
+	pe_send_msg_timer_init(port);
 }
 
 static void pe_dr_snk_get_sink_cap_run(int port)
@@ -5477,6 +5568,20 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 	int cnt;
 	int ext;
 	int rev;
+	enum pe_msg_check msg_check;
+
+	/*
+	 * Check the state of the message sent
+	 */
+	msg_check = pe_send_msg_check(port);
+
+	/*
+	 * Handle discarded message
+	 */
+	if ((msg_check & PE_MSG_DISCARDED) != 0) {
+		pe_set_ready_state(port);
+		return;
+	}
 
 	/*
 	 * Determine if FRS is possible based on the returned Sink Caps
@@ -5489,7 +5594,8 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 	 * Transition to PE_SEND_SOFT_RESET state when:
 	 *   1) An unexpected message is received
 	 */
-	if (PE_CHK_REPLY(port)) {
+	if ((msg_check & PE_MSG_SENT) != 0 &&
+	    PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 
 		type = PD_HEADER_TYPE(rx_emsg[port].header);
@@ -5574,39 +5680,6 @@ static void pe_dr_snk_give_source_cap_run(int port)
 	} else if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
 		pe_send_soft_reset(port, TCPC_TX_SOP);
 	}
-}
-
-/*
- * PE_SENDER_RESPONSE
- *
- * Parent state to run first message in an AMS and start SenderResponseTimer
- * appropriately.
- */
-static void pe_sender_response_entry(int port)
-{
-	pe[port].sender_response_timer = TIMER_DISABLED;
-}
-
-static void pe_sender_response_run(int port)
-{
-	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
-		/*
-		 * Go back to ready on first AMS message discard
-		 * (ready states will clear the discard flag)
-		 */
-		pe_set_ready_state(port);
-		return;
-	}
-
-	if (pe[port].sender_response_timer == TIMER_DISABLED &&
-			PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
-		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
-		/* Initialize and run SenderResponseTimer */
-		pe[port].sender_response_timer =
-			get_time().val + PD_T_SENDER_RESPONSE;
-	}
-
-	/* Note: child must check timer, as response to a timeout varies */
 }
 
 const uint32_t * const pd_get_src_caps(int port)
@@ -5696,10 +5769,6 @@ static const struct usb_state pe_states[] = {
 		.entry = pe_vdm_send_request_entry,
 		.run   = pe_vdm_send_request_run,
 		.exit  = pe_vdm_send_request_exit,
-	},
-	[PE_SENDER_RESPONSE] = {
-		.entry = pe_sender_response_entry,
-		.run   = pe_sender_response_run,
 	},
 
 	/* Normal States */
@@ -5816,7 +5885,6 @@ static const struct usb_state pe_states[] = {
 	[PE_DRS_SEND_SWAP] = {
 		.entry = pe_drs_send_swap_entry,
 		.run   = pe_drs_send_swap_run,
-		.parent = &pe_states[PE_SENDER_RESPONSE],
 	},
 	[PE_PRS_SRC_SNK_EVALUATE_SWAP] = {
 		.entry = pe_prs_src_snk_evaluate_swap_entry,
@@ -5838,7 +5906,6 @@ static const struct usb_state pe_states[] = {
 	[PE_PRS_SRC_SNK_SEND_SWAP] = {
 		.entry = pe_prs_src_snk_send_swap_entry,
 		.run   = pe_prs_src_snk_send_swap_run,
-		.parent = &pe_states[PE_SENDER_RESPONSE],
 	},
 	[PE_PRS_SNK_SRC_EVALUATE_SWAP] = {
 		.entry = pe_prs_snk_src_evaluate_swap_entry,
@@ -5889,7 +5956,6 @@ static const struct usb_state pe_states[] = {
 	[PE_VCS_SEND_SWAP] = {
 		.entry = pe_vcs_send_swap_entry,
 		.run   = pe_vcs_send_swap_run,
-		.parent = &pe_states[PE_SENDER_RESPONSE],
 	},
 	[PE_VCS_WAIT_FOR_VCONN_SWAP] = {
 		.entry = pe_vcs_wait_for_vconn_swap_entry,
@@ -5966,7 +6032,6 @@ static const struct usb_state pe_states[] = {
 	[PE_DR_SNK_GET_SINK_CAP] = {
 		.entry = pe_dr_snk_get_sink_cap_entry,
 		.run   = pe_dr_snk_get_sink_cap_run,
-		.parent = &pe_states[PE_SENDER_RESPONSE],
 	},
 	[PE_DR_SNK_GIVE_SOURCE_CAP] = {
 		.entry = pe_dr_snk_give_source_cap_entry,
