@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ddac76f7_d2d1cc7a",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-25T15:41:03Z",
+      "side": 1,
+      "message": "Because we\u0027re following the steps to enable the linear charge process.  This was previously being periodically called from sm5803_set_vsys_compensation(), but will now just be called once from the sink enable.",
+      "parentUuid": "39fe5011_4cf39beb",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 4
+      },
+      "revId": "80e39e10b809186299ef5f518ff26ee3f46de747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9bfec93a_785dc0be",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-25T04:18:13Z",
       "side": 1,
       "message": "I think we might be able to get away with doing this at init time for only the non-primary charger.",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 3
+      },
+      "revId": "80e39e10b809186299ef5f518ff26ee3f46de747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1bd6c84_cde2494d",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-25T15:41:03Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll move it there.  Would you think the end of fast charge setting should move to the init process as well?",
+      "parentUuid": "9bfec93a_785dc0be",
       "range": {
         "startLine": 327,
         "startChar": 0,
