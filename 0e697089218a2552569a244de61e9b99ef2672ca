@@ -34,6 +34,24 @@
       "revId": "0e697089218a2552569a244de61e9b99ef2672ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1117e898_5389f502",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-25T06:38:26Z",
+      "side": 1,
+      "message": "I am not sure whether we should keep cherry-picked version the same or should adapt it into corresponding FW branch. Especially for some cases of this CL chain where a CL can\u0027t be compiled correctly. Personally, I would like to fix these issue here directly.",
+      "parentUuid": "e2fa753c_a336064c",
+      "revId": "0e697089218a2552569a244de61e9b99ef2672ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
