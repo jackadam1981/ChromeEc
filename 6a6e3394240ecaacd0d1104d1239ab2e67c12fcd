@@ -70,6 +70,24 @@
       "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baf95d4b_23b7b8d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-25T18:58:20Z",
+      "side": 1,
+      "message": "The fix is helping, we should commit it.\nWhat you are observing is another issue: As I said in https://b.corp.google.com/issues/164974014#comment2, if we return right away in sensor_board_proc_double_tap instead of calling led_register_double_tap. Does the problem still happen?\n\nLooking at the log:\n[127.728363 start with dd]\n[128.245471 done with dd]\nGiven pd tasks are very high priority,the double tap may invoke them, preventing other tasks from running in time: the motion sensor task is interrupted for .5s, which is consistent with missing 5 events at a 80ms period.",
+      "parentUuid": "5007bad7_8b6abb0c",
+      "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
