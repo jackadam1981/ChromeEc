@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4e26fae_89dd4290",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3033,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-25T14:24:36Z",
+      "side": 1,
+      "message": "I am going to change this to be a smaller hammer.  The DPM requests take care of themselves in this path and some of the flags were needed to remain. So I will just remove MODAL_OPERATION because that should not persist over Hard Reset and just clearing that one bit allows my dock to stop looping on PR_Swap",
+      "range": {
+        "startLine": 3028,
+        "startChar": 0,
+        "endLine": 3033,
+        "endChar": 0
+      },
+      "revId": "da1da8ee61b686e7d45266ab154d16e0b06045b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
