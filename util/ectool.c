@@ -4339,6 +4339,39 @@ static int cmd_motionsense(int argc, char **argv)
 		case MOTIONSENSE_CHIP_LIS2DE:
 			printf("lis2de\n");
 			break;
+<<<<<<< HEAD   (6dbd10 chgramp: Don't ramp DTS suppliers above advertisement)
+=======
+		case MOTIONSENSE_CHIP_LIS2MDL:
+			printf("lis2mdl\n");
+			break;
+		case MOTIONSENSE_CHIP_LSM6DS3:
+			printf("lsm6ds3\n");
+			break;
+		case MOTIONSENSE_CHIP_LSM6DSO:
+			printf("lsm6dso\n");
+			break;
+		case MOTIONSENSE_CHIP_LNG2DM:
+			printf("lng2dm\n");
+			break;
+		case MOTIONSENSE_CHIP_TCS3400:
+			printf("tcs3400\n");
+			break;
+		case MOTIONSENSE_CHIP_LIS2DW12:
+			printf("lis2dw12\n");
+			break;
+		case MOTIONSENSE_CHIP_LIS2DWL:
+			printf("lis2dwl\n");
+			break;
+		case MOTIONSENSE_CHIP_LIS2DS:
+			printf("lis2ds\n");
+			break;
+		case MOTIONSENSE_CHIP_BMI260:
+			printf("bmi260\n");
+			break;
+		case MOTIONSENSE_CHIP_ICM426XX:
+			printf("icm426xx\n");
+			break;
+>>>>>>> CHANGE (deed6c driver: add icm426xx chip type define)
 		default:
 			printf("unknown\n");
 		}
