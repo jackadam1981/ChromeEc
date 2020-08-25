@@ -75,7 +75,6 @@ int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
 		return EC_ERROR_INVAL;
 	}
 
-	ipi_disable_irq();
 	mutex_lock(&ipi_lock);
 
 	if (ipi_is_busy()) {
@@ -110,7 +109,6 @@ int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
 	ret = EC_SUCCESS;
 error:
 	mutex_unlock(&ipi_lock);
-	ipi_enable_irq();
 	return ret;
 }
 
