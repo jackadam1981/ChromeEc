@@ -87,6 +87,24 @@
       "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e2a6a07_4f623047",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-08-25T05:43:16Z",
+      "side": 1,
+      "message": "No, charger doesn\u0027t output Vbus, Vbus is about 0.075v when the pd state loop in attachwait.SRC.\nIt happens on ToT and needs with this toggle/low power CL chain.",
+      "parentUuid": "c2c5fa23_400aec4b",
+      "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
