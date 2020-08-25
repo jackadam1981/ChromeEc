@@ -14,6 +14,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "power.h"
 #include "registers.h"
 #include "system.h"
 #include "task.h"
@@ -72,6 +73,23 @@ static void board_vbus_update_source_current(int port)
 	}
 }
 
+__override int chipset_can_disable_pmic_slp_sus_l(enum power_state state)
+{
+	int port;
+
+	/*
+	 * Don't disable voltage on PP5000_A in S3 state (or when going
+	 * to S3 state) when we act as source of VBUS on USB-C ports.
+	 * PP5000_A rail is controlled by PMIC_SLP_SUS_L.
+	 */
+	if (state == POWER_S3 || state == POWER_S0S3)
+		for (port = 0; port < board_get_usb_pd_port_count(); port++)
+			if (board_vbus_source_enabled(port))
+				return 0;
+
+	return 1;
+}
+
 void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 {
 	vbus_rp[port] = rp;
@@ -118,6 +136,14 @@ void pd_power_supply_reset(int port)
 
 	/* Give back the current quota we are no longer using */
 	charge_manager_source_port(port, 0);
+
+#ifndef TEST_BUILD
+	/*
+	 * Give chipset task opportunity to change
+	 * state of GPIO_PMIC_SLP_SUS_L
+	 */
+	task_wake(TASK_ID_CHIPSET);
+#endif
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
