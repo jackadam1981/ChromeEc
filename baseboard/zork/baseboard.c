@@ -257,7 +257,11 @@ void sbu_fault_interrupt(enum ioex_signal signal)
 {
 	int port = (signal == IOEX_USB_C0_SBU_FAULT_ODL) ? 0 : 1;
 
-	pd_handle_overcurrent(port);
+	if (pd_is_connected(port))
+		pd_handle_overcurrent(port);
+	else
+		/* No action to take if disconnected, just log. */
+		ccprints("SBU fault while disconnected");
 }
 
 static void set_ac_prochot(void)
