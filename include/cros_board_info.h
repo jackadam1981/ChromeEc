@@ -151,8 +151,15 @@ int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size);
  * Test only declarations. Firmware shouldn't need them.
  */
 int cbi_create(void);
-int cbi_write(void);
 void cbi_invalidate_cache(void);
+#endif
+
+#if defined(TEST_BUILD) || defined(CONFIG_FACTORY_SSFC_PROBE)
+/**
+ * Test only declarations or Firmware build for probing SSFC value in the
+ * factory..
+ */
+int cbi_write(void);
 #endif
 
 #endif /* __CROS_EC_CROS_BOARD_INFO_H */

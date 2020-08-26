@@ -1621,6 +1621,9 @@
 /* Default debounce time for external power signal */
 #define CONFIG_EXTPOWER_DEBOUNCE_MS 30
 
+/* Enable probing codes for updating SSFC of CBI in the factory */
+#undef CONFIG_FACTORY_SSFC_PROBE
+
 /*****************************************************************************/
 /* Number of cooling fans. Undef if none. */
 #undef CONFIG_FANS

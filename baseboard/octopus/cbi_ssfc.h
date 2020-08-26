@@ -5,10 +5,11 @@
 
 #ifndef _OCTOPUS_CBI_SSFC__H_
 #define _OCTOPUS_CBI_SSFC__H_
-
 /****************************************************************************
  * Octopus CBI Second Source Factory Cache
  */
+
+#include "driver/tcpm/ps8xxx.h"
 
 /*
  * TCPC Port 1 (Bits 0-2)
@@ -22,5 +23,9 @@ enum ssfc_tcpc_p1 {
 #define SSFC_TCPC_P1_MASK		GENMASK(2, 0)
 
 enum ssfc_tcpc_p1 get_cbi_ssfc_tcpc_p1(void);
+
+#if defined CONFIG_FACTORY_SSFC_PROBE
+void set_cbi_ssfc_tcpc_p1_ps8xxx(uint16_t product_id);
+#endif
 
 #endif /* _OCTOPUS_CBI_SSFC__H_ */

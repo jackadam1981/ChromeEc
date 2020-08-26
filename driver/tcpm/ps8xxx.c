@@ -14,6 +14,7 @@
  * - PS8815
  */
 
+#include "cbi_ssfc.h"
 #include "common.h"
 #include "console.h"
 #include "ps8xxx.h"
@@ -508,12 +509,20 @@ static int ps8xxx_dci_disable(int port)
 static int ps8xxx_tcpm_init(int port)
 {
 	int status;
+#if defined CONFIG_FACTORY_SSFC_PROBE
+	struct ec_response_pd_chip_info_v1 info;
+#endif
 
 	product_id[port] = board_get_ps8xxx_product_id(port);
 
 	status = tcpci_tcpm_init(port);
 	if (status != EC_SUCCESS)
 		return status;
+
+#if defined CONFIG_FACTORY_SSFC_PROBE
+	if (tcpm_get_chip_info(port, 1, &info) == EC_SUCCESS)
+		set_cbi_ssfc_tcpc_p1_ps8xxx(info.product_id);
+#endif
 
 	return ps8xxx_dci_disable(port);
 }
