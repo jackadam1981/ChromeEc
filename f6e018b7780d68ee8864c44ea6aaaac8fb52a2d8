@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1661bc2_feed5ad7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T20:31:15Z",
+      "side": 1,
+      "message": "Looks good, just one question.",
+      "revId": "f6e018b7780d68ee8864c44ea6aaaac8fb52a2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcaf2349_d3c7ca3c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T20:31:15Z",
+      "side": 1,
+      "message": "can/should we make this more general or is that incorrect?\n\nif (pe[port].dpm_curr_request) {\n    PE_SET_DPM_REQUEST(port, pe[port].dpm_curr_request);\n    pe_set_ready_state(port);\n} ...\n\n\nIf we interrupt any DPM, shouldn\u0027t we just queue it back up? I don\u0027t know of any that would go through this path now, but if there were, I would want to queue those back too, right?",
+      "range": {
+        "startLine": 1708,
+        "startChar": 3,
+        "endLine": 1715,
+        "endChar": 34
+      },
+      "revId": "f6e018b7780d68ee8864c44ea6aaaac8fb52a2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
