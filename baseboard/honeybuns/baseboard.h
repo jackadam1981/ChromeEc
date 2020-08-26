@@ -47,7 +47,7 @@
 
 #define CONFIG_RO_MEM_OFF	0
 #define CONFIG_RO_STORAGE_OFF	0
-#define CONFIG_RO_SIZE		(38*1024)
+#define CONFIG_RO_SIZE		(40*1024)
 
 #define CONFIG_RW_MEM_OFF	(CONFIG_RO_SIZE + CONFIG_RO_MEM_OFF)
 #define CONFIG_RW_STORAGE_OFF	0
@@ -73,7 +73,7 @@
 #undef CONFIG_CMD_SLEEPMASK_SET
 
 /* Save more code space */
-#define CONFIG_COMMON_GPIO_SHORTNAMES
+/* #define CONFIG_COMMON_GPIO_SHORTNAMES */
 #define CONFIG_LTO
 
 /* 48 MHz SYSCLK clock frequency */

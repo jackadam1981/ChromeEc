@@ -33,6 +33,7 @@
 #define BDCR_ENABLE_MASK (BDCR_ENABLE_VALUE | BDCR_RTCSEL_MASK | \
 			STM32_RCC_BDCR_BDRST)
 
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT <= 3);
 #endif
@@ -280,6 +281,13 @@ void system_pre_init(void)
 	/* Wait for LSI to be ready */
 	while (!(STM32_RCC_CSR & BIT(1)))
 		;
+
+#if defined(CHIP_FAMILY_STM32G4)
+	/* Make sure PWR clock is enabled */
+	STM32_RCC_APB1ENR1 |= STM32_RCC_APB1ENR1_PWREN;
+	/* Enable access to backup domain registers */
+	STM32_PWR_CR1 |= STM32_PWR_CR1_DBP;
+#endif
 	/* re-configure RTC if needed */
 #ifdef CHIP_FAMILY_STM32L
 	if ((STM32_RCC_CSR & 0x00C30000) != 0x00420000) {
@@ -295,6 +303,8 @@ void system_pre_init(void)
 		/* The RTC settings are bad, we need to reset it */
 		STM32_RCC_BDCR |= STM32_RCC_BDCR_BDRST;
 		STM32_RCC_BDCR = STM32_RCC_BDCR & ~BDCR_ENABLE_MASK;
+		ccprintf("bdcr_1 = %x, mask 0x%08x\n", STM32_RCC_BDCR,
+			~BDCR_ENABLE_MASK);
 #ifdef CONFIG_STM32_CLOCK_LSE
 		/* Turn on LSE */
 		STM32_RCC_BDCR |= STM32_RCC_BDCR_LSEON;
@@ -304,10 +314,13 @@ void system_pre_init(void)
 #endif
 		/* Select clock source and enable RTC */
 		STM32_RCC_BDCR |= BDCR_RTCSEL(BDCR_SRC) | STM32_RCC_BDCR_RTCEN;
+		ccprintf("bdcr_2 = %x, en = %x\n", STM32_RCC_BDCR,
+			BDCR_RTCSEL(BDCR_SRC) | STM32_RCC_BDCR_RTCEN);
 	}
 #else
 #error "Unsupported chip family"
 #endif
+	cflush();
 
 	check_reset_cause();
 
@@ -363,7 +376,10 @@ void system_reset(int flags)
 		save_flags |= EC_RESET_FLAG_AP_WATCHDOG;
 #endif
 
+	ccprintf("sys: saving flags = 0x%08x\n", save_flags);
 	chip_save_reset_flags(save_flags);
+	ccprintf("sys: read flags = 0x%08x\n", chip_read_reset_flags());
+	cflush();
 
 	if (flags & SYSTEM_RESET_HARD) {
 #ifdef CONFIG_SOFTWARE_PANIC
@@ -396,7 +412,7 @@ void system_reset(int flags)
 		 * use this for hard reset.
 		 */
 		STM32_FLASH_CR |= FLASH_CR_OBL_LAUNCH;
-#elif defined(CHIP_FAMILY_STM32L4)
+#elif defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32G4)
 		STM32_FLASH_KEYR = FLASH_KEYR_KEY1;
 		STM32_FLASH_KEYR = FLASH_KEYR_KEY2;
 		STM32_FLASH_OPTKEYR = FLASH_OPTKEYR_KEY1;
