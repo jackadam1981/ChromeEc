@@ -16,6 +16,23 @@
       "revId": "0ce0a16efa1423ac2ffcf4f68a18d3e184de3a95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0787c4f9_416424a9",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T18:29:32Z",
+      "side": 1,
+      "message": "From board_config.h, which should be included if you\u0027re going to use this: \"Note that this is in general a hacky place to do configuration.... Think very hard before putting code here.\"\n\nI think this configuration should be done just by defining struct keyboard_scan_config keyscan_config in this file. See baseboard/zork/baseboard.c.",
+      "revId": "0ce0a16efa1423ac2ffcf4f68a18d3e184de3a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
