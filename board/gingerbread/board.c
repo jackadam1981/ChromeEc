@@ -148,7 +148,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
-			.port = I2C_PORT_EEPROM,
+			.port = I2C_PORT_I2C3,
 			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
@@ -158,12 +158,14 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.usb_port = USB_PD_PORT_HOST,
+		.i2c_port = I2C_PORT_I2C1,
 		.i2c_addr_flags = TUSB1064_I2C_ADDR0_FLAG,
 		.driver = &tusb1064_usb_mux_driver,
 		.hpd_update = &board_hpd_update,
 	},
 	[USB_PD_PORT_DP] = {
 		.usb_port = USB_PD_PORT_DP,
+		.i2c_port = I2C_PORT_I2C3,
 		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
@@ -228,6 +230,12 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* TODO: b/ - check correct operation for honeybuns */
 }
 
+static void board_tcpc_deferred(void)
+{
+	board_debug_gpio(TRIGGER_2, 0);
+}
+DECLARE_DEFERRED(board_tcpc_deferred);
+
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
@@ -236,8 +244,11 @@ uint16_t tcpc_get_alert_status(void)
 	if (!gpio_get_level(GPIO_USBC_DP_MUX_ALERT_ODL)) {
 		level = !!(tcpc_config[USB_PD_PORT_DP].flags &
 			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
-		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level)
+		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level) {
+			board_debug_gpio(TRIGGER_2, 1);
+			hook_call_deferred(&board_tcpc_deferred_data, 100);
 			status |= PD_STATUS_TCPC_ALERT_1;
+		}
 	}
 
 	return status;
