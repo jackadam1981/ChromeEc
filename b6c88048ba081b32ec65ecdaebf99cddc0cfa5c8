@@ -50,6 +50,23 @@
       "revId": "b6c88048ba081b32ec65ecdaebf99cddc0cfa5c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d709dbb_2d28a80b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248412
+      },
+      "writtenOn": "2020-08-26T05:37:40Z",
+      "side": 1,
+      "message": "Hi. I\u0027ve added you as CC on the issue above.\nSome USB2 devices don\u0027t enumerate on USB ports with max14637.\nLike the android phone on the issue or some keyboards I have tried.\nThese two CLs would fix it.",
+      "revId": "b6c88048ba081b32ec65ecdaebf99cddc0cfa5c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
