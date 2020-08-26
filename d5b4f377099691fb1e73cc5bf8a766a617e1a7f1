@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ece124e_92ef7098",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-26T20:49:16Z",
+      "side": 1,
+      "message": "Should be \"TCPC\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 32,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "d5b4f377099691fb1e73cc5bf8a766a617e1a7f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49560a34_d220f48f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-26T20:49:16Z",
+      "side": 1,
+      "message": "Also add a note \"This change also sets the default daughter board type to USB3 active.\"",
+      "revId": "d5b4f377099691fb1e73cc5bf8a766a617e1a7f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d035f607_7c8474a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-26T20:49:16Z",
+      "side": 1,
+      "message": "Looks good after the commit message update.\n\nFor other CLs, please complete a review internally at Wistron before assigning Google reviewers.  See https://chromium.googlesource.com/chromiumos/docs/+/master/firmware_code_reviews.md#guidelines-for-partner-code-reviews.",
+      "revId": "d5b4f377099691fb1e73cc5bf8a766a617e1a7f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
