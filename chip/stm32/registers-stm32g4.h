@@ -793,6 +793,8 @@
 #define STM32_PWR_RESET_CAUSE_CLR STM32_PWR_SCR
 #define  RESET_CAUSE_SBF_CLR            STM32_PWR_SCR_CSBF
 
+#define STM32_PWR_CR1_DBP               BIT(8)
+
 #define STM32_PWR_CR3_UCPD1_STDBY       BIT(13)
 #define STM32_PWR_CR3_UCPD1_DBDIS       BIT(14)
 
@@ -845,7 +847,7 @@
 /* --- Tamper and Backup --- */
 #define STM32_TAMP_BKPxR(n)         REG32(STM32_TAMP_BASE + 0x100 + 4 * (n))
 #define STM32_BKP_DATA(n)           STM32_TAMP_BKPxR(n)
-#define STM32_BKP_BYTES             128
+#define STM32_BKP_BYTES             64
 
 
 /* --- SPI --- */
