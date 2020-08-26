@@ -34,6 +34,24 @@
       "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf2a7345_daca3cdf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5711,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T21:51:55Z",
+      "side": 0,
+      "message": "Maybe moving both flags clear here makes sense? If we do that let\u0027s just add a comment as to why this is wanted and okay.\n\nI think it makes sense to keep the flag clearing of PE_FLAGS_MODAL_OPERATION and PE_FLAGS_VDM_SETUP_DONE together.\n\nAbe, thoughts?",
+      "parentUuid": "be96972f_099cb94f",
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
