@@ -88,6 +88,24 @@
       "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cde83619_26b65072",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-08-26T04:54:17Z",
+      "side": 1,
+      "message": "Yes. When I return from sensor_board_proc_double_tap the problem still happens.\nThis fixed problem on single tap, so it should be commited, but I can only give you CR+1, because my account is limited.",
+      "parentUuid": "baf95d4b_23b7b8d4",
+      "revId": "6a6e3394240ecaacd0d1104d1239ab2e67c12fcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
