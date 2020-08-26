@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d3d1ec3_56a93ad1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-08-26T07:03:00Z",
+      "side": 1,
+      "message": "How about chip_enable_irq, do we still need that?\n\nAnd can we remove the whole function to prevent people call it accidentally?",
+      "revId": "76df802ed4e1e585e09817b7676418ac786bc07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
