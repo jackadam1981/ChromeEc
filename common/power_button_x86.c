@@ -179,6 +179,7 @@ void power_button_pch_pulse(void)
 	CPRINTS("PB PCH pulse");
 
 	chipset_exit_hard_off();
+	board_power_button_exit_hard_off();
 	set_pwrbtn_to_pch(0, 0);
 	pwrbtn_state = PWRBTN_STATE_LID_OPEN;
 	tnext_state = get_time().val + PWRBTN_INITIAL_US;
@@ -290,6 +291,7 @@ static void state_machine(uint64_t tnow)
 			 * hard off state.
 			 */
 			chipset_exit_hard_off();
+			board_power_button_exit_hard_off();
 			tnext_state = tnow + PWRBTN_INITIAL_US;
 			pwrbtn_state = PWRBTN_STATE_WAS_OFF;
 			set_pwrbtn_to_pch(0, 0);
@@ -360,6 +362,7 @@ static void state_machine(uint64_t tnow)
 		 * battery is handled inside set_pwrbtn_to_pch().
 		 */
 		chipset_exit_hard_off();
+		board_power_button_exit_hard_off();
 #ifdef CONFIG_DELAY_DSW_PWROK_TO_PWRBTN
 		/* Check if power button is ready. If not, we'll come back. */
 		if (get_time().val - get_time_dsw_pwrok() <
@@ -570,3 +573,11 @@ static void power_button_pulse_setting_preserve_state(void)
 }
 DECLARE_HOOK(HOOK_SYSJUMP, power_button_pulse_setting_preserve_state,
 	     HOOK_PRIO_DEFAULT);
+
+/**
+ * Allow board to take action between chipset_exit_hard_off() and asserting
+ * the power button signal to the PCH.
+ */
+__overridable void board_power_button_exit_hard_off(void)
+{
+}

@@ -62,4 +62,10 @@ void power_button_pch_pulse(void);
  */
 int64_t get_time_dsw_pwrok(void);
 
+/**
+ * Allow board to take action between chipset_exit_hard_off() and asserting
+ * the power button signal to the PCH.
+ */
+__override_proto void board_power_button_exit_hard_off(void);
+
 #endif  /* __CROS_EC_POWER_BUTTON_H */
