@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "03bb5a33_76024f21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-26T21:14:12Z",
+      "side": 1,
+      "message": "The follow up CL is even nicer 😊\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2376386",
+      "parentUuid": "d1661bc2_feed5ad7",
+      "revId": "f6e018b7780d68ee8864c44ea6aaaac8fb52a2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcaf2349_d3c7ca3c",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 10
