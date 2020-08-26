@@ -27,6 +27,7 @@ static struct hpd_mark hpd_last_event;
 static int hpd_override;
 #endif
 /******************************************************************************/
+
 __overridable const struct power_seq board_power_seq[] = { };
 
 __overridable const size_t board_power_seq_count =
