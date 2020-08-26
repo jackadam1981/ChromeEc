@@ -16,6 +16,24 @@
       "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be96972f_099cb94f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5711,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-26T19:44:36Z",
+      "side": 0,
+      "message": "The flag is already clear before the other entrances to this function. Since we specifically are clearing PE_FLAGS_VDM_SETUP_DONE before the call to pd_dfp_discovery_init it seemed fitting to just clear both mode bits at the same time.\n\nAbe, if you say this is the wrong way to do it, then I can either change it back or do it a different way.",
+      "parentUuid": "20b6774f_cf1fff4c",
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
