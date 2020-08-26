@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a73d4d4_46cb7dc9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3578,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T21:48:38Z",
+      "side": 0,
+      "message": "can you remove this macro now?",
+      "range": {
+        "startLine": 3578,
+        "startChar": 5,
+        "endLine": 3578,
+        "endChar": 17
+      },
+      "revId": "f6e018b7780d68ee8864c44ea6aaaac8fb52a2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

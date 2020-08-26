@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "824973a7_2a755bb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T21:48:38Z",
+      "side": 1,
+      "message": "Seems like a good way to go. I didn\u0027t audit the discard paths (either ready or soft_reset) against the spec. How confident are you that you pick the correct path based on the spec?",
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "051046c5_3cd2962a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T21:48:38Z",
+      "side": 1,
+      "message": "We need comments around each of these values. It would also be nice to see what the normal progression is\n\nPE_MSG_SEND_PENDING -\u003e PE_MSG_SEND_COMPLETED -\u003e PE_MSG_SENT\n\nor\n\nPE_MSG_SEND_PENDING -\u003e PE_MSG_DISCARDED/PE_MSG_DPM_DISCARDED\n\nAlso note that PE_MSG_SEND_COMPLETED is only returned once upon completion",
+      "range": {
+        "startLine": 1137,
+        "startChar": 0,
+        "endLine": 1139,
+        "endChar": 19
+      },
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ce57900_a71d9b7e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T21:48:38Z",
+      "side": 1,
+      "message": "we need \\n and comments\n\nsince this pairs with pe_send_msg_check, what do you think about naming this pd_send_msg_init?",
+      "range": {
+        "startLine": 1147,
+        "startChar": 2,
+        "endLine": 1147,
+        "endChar": 7
+      },
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c0b4369_91c18471",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T21:48:38Z",
+      "side": 1,
+      "message": "we should specify that it is invalid to call this again if PE_MSG_DISCARDED/PE_MSG_DPM_DISCARDED is returned (where as the others are okay)",
+      "range": {
+        "startLine": 1152,
+        "startChar": 25,
+        "endLine": 1152,
+        "endChar": 42
+      },
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aff686d_677eae4d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1753,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T21:48:38Z",
+      "side": 1,
+      "message": "nit, this is any DPM (just update comment)",
+      "range": {
+        "startLine": 1753,
+        "startChar": 24,
+        "endLine": 1753,
+        "endChar": 50
+      },
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "973ad0dd_36f7e407",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T21:48:38Z",
+      "side": 1,
+      "message": "nit: can drop the !\u003d (if you feel strongly to keep that is okay too)",
+      "range": {
+        "startLine": 1789,
+        "startChar": 31,
+        "endLine": 1789,
+        "endChar": 35
+      },
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
