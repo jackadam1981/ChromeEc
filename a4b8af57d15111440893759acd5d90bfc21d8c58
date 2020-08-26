@@ -16,6 +16,24 @@
       "revId": "a4b8af57d15111440893759acd5d90bfc21d8c58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26db8c83_eaad39aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2020-08-26T07:59:07Z",
+      "side": 1,
+      "message": "If you are using an Evaluation Board (EVB) for our chip you can use this wiring. EVBs pins are always the same. Normally, you should have printed on the board the meaning of each pin (I2C SDA \u0026 SCL, INT, VDD, VDDIO, ...).\n\nBeware that this guide is for Discovery board and not for Nucleo. For Nucleo F411RE, you have to use PB3 and PB9 for I2C, and PB10 for interrupt. You can use 3V3 from Nucleo for VDD and VDDIO.",
+      "parentUuid": "dbe2a003_ee967cef",
+      "revId": "a4b8af57d15111440893759acd5d90bfc21d8c58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
