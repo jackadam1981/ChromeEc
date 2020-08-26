@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "285c4af4_6ad29909",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-26T16:26:05Z",
+      "side": 1,
+      "message": "Ack - I see that is listed in the supporting text for TBT3 Cable Enter Mode Command, but not shown in the flow diagram.",
+      "parentUuid": "805e9560_f2013748",
+      "range": {
+        "startLine": 339,
+        "startChar": 7,
+        "endLine": 339,
+        "endChar": 54
+      },
+      "revId": "42b95a98a5d1131afb81298280d21221b0f7e101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9bb44b1_4e6cd345",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 1
