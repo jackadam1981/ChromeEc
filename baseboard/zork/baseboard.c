@@ -328,3 +328,26 @@ __override int isl9241_update_learn_mode(int chgnum, int enable)
 
 	return isl9241_write(chgnum, ISL9241_REG_CONTROL1, reg);
 }
+
+/*
+ * b/164921478: On G3->S5, wait for GPIO_EC_FCH_RSMRST_L to be deasserted before
+ * asserting GPIO_EC_FCH_PWR_BTN_L.
+ */
+__override void board_power_button_exit_hard_off(void)
+{
+	/*
+	 * If GPIO_S5_PGOOD is already high, then we are not exiting G3, and no
+	 * need to delay.
+	 */
+	if (gpio_get_level(GPIO_S5_PGOOD))
+		return;
+
+	/*
+	 * From measurement, wait 80 ms for GPIO_EC_FCH_RSMRST_L to rise after
+	 * GPIO_S5_PGOOD.
+	 */
+	msleep(80);
+
+	if (!gpio_get_level(GPIO_S5_PGOOD))
+		ccprints("Expected S5_PGOOD");
+}
