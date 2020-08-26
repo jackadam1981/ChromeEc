@@ -52,6 +52,24 @@
       "revId": "0e697089218a2552569a244de61e9b99ef2672ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b51a2a9_e6724b9e",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-08-26T02:56:13Z",
+      "side": 1,
+      "message": "Let us make sure every CL merged can be compiled correctly. Thanks.",
+      "parentUuid": "1117e898_5389f502",
+      "revId": "0e697089218a2552569a244de61e9b99ef2672ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
