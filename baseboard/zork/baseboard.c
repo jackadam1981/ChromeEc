@@ -321,6 +321,10 @@ __override int isl9241_update_learn_mode(int chgnum, int enable)
 			return rv;
 	}
 
+	/* If still read bad HI byte 0xFF, force write defaut 0x01 */
+	if ((reg >> 8) == 0xFF)
+		reg = (reg & 0x00FF) | 0x0100;
+
 	if (enable)
 		reg |= ISL9241_CONTROL1_LEARN_MODE;
 	else
