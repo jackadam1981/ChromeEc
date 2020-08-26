@@ -1627,7 +1627,8 @@ static void pe_src_startup_entry(int port)
 		pe[port].discover_identity_timer = get_time().val;
 
 		/* Clear port discovery flags */
-		PE_CLR_FLAG(port, PE_FLAGS_VDM_SETUP_DONE);
+		PE_CLR_FLAG(port, PE_FLAGS_VDM_SETUP_DONE |
+				  PE_FLAGS_MODAL_OPERATION);
 		pd_dfp_discovery_init(port);
 		pe[port].ama_vdo = PD_VDO_INVALID;
 		pe[port].vpd_vdo = PD_VDO_INVALID;
@@ -2454,7 +2455,8 @@ static void pe_snk_startup_entry(int port)
 		pe[port].discover_identity_timer = get_time().val;
 
 		/* Clear port discovery flags */
-		PE_CLR_FLAG(port, PE_FLAGS_VDM_SETUP_DONE);
+		PE_CLR_FLAG(port, PE_FLAGS_VDM_SETUP_DONE |
+				  PE_FLAGS_MODAL_OPERATION);
 		pd_dfp_discovery_init(port);
 		pe[port].discover_identity_counter = 0;
 
@@ -5705,8 +5707,6 @@ uint8_t pd_get_src_cap_cnt(int port)
 
 void pd_dfp_discovery_init(int port)
 {
-	PE_CLR_FLAG(port, PE_FLAGS_MODAL_OPERATION);
-
 	memset(pe[port].discovery, 0, sizeof(pe[port].discovery));
 	memset(pe[port].partner_amodes, 0, sizeof(pe[port].partner_amodes));
 
