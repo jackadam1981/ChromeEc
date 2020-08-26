@@ -39,6 +39,30 @@
       "revId": "f6e018b7780d68ee8864c44ea6aaaac8fb52a2d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2b66c89_48f87350",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1715,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-26T21:13:27Z",
+      "side": 1,
+      "message": "This works for this issue, which is specific to GetSnkCap being discarded. There will not be any other value in this routine for dpm_curr_request other than DPM_REQUEST_SRC_CAP_CHANGE\n\n😊 the follow up CL that is right behind this cleans this all up, adds more discard checking and does it right but did not want to make this CL huge or include things that were not specific to the problem it was solving.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2376386",
+      "parentUuid": "dcaf2349_d3c7ca3c",
+      "range": {
+        "startLine": 1708,
+        "startChar": 3,
+        "endLine": 1715,
+        "endChar": 34
+      },
+      "revId": "f6e018b7780d68ee8864c44ea6aaaac8fb52a2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
