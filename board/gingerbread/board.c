@@ -31,6 +31,8 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#define QUICHE_PD_DEBUG_LVL 1
+
 #ifdef SECTION_IS_RW
 #define CROS_EC_SECTION "RW"
 #else
@@ -38,20 +40,11 @@
 #endif
 
 #ifdef SECTION_IS_RW
-static void tcpc_alert_event(enum gpio_signal s)
-{
-	int port = -1;
-
-	switch (s) {
-	case GPIO_USBC_DP_MUX_ALERT_ODL:
-		port = USB_PD_PORT_DP;
-		break;
-	default:
-		return;
-	}
-
-	schedule_deferred_pd_interrupt(port);
-}
+static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	PD_DRP_TOGGLE_ON,
+	PD_DRP_TOGGLE_ON,
+	//PD_DRP_FORCE_SOURCE,
+};
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -65,9 +58,19 @@ static void ppc_interrupt(enum gpio_signal signal)
 	}
 }
 
-static void mp4245_interrupt(enum gpio_signal signal)
+static void tcpc_alert_event(enum gpio_signal s)
 {
-	mp4245_alert_handler();
+	int port = -1;
+
+	switch (s) {
+	case GPIO_USBC_DP_MUX_ALERT_ODL:
+		port = USB_PD_PORT_DP;
+		break;
+	default:
+		return;
+	}
+
+	schedule_deferred_pd_interrupt(port);
 }
 
 void hpd_interrupt(enum gpio_signal signal)
@@ -154,8 +157,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
-			.port = I2C_PORT_EEPROM,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.port = I2C_PORT_I2C3,
+			.addr_flags = PS8751_I2C_ADDR2_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -164,13 +167,15 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_HOST] = {
 		.usb_port = USB_PD_PORT_HOST,
+		.i2c_port = I2C_PORT_I2C1,
 		.i2c_addr_flags = TUSB1064_I2C_ADDR0_FLAG,
 		.driver = &tusb1064_usb_mux_driver,
 		.hpd_update = &board_hpd_update,
 	},
 	[USB_PD_PORT_DP] = {
 		.usb_port = USB_PD_PORT_DP,
-		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,
+		.i2c_port = I2C_PORT_I2C3,
+		.i2c_addr_flags = PS8751_I2C_ADDR2_FLAGS,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
@@ -205,26 +210,26 @@ DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
 static void board_select_drp_mode(void)
 {
+	int port;
 
-	pd_set_dual_role(0, PD_DRP_TOGGLE_ON);
-	pd_set_dual_role(1, PD_DRP_TOGGLE_ON);
-	CPRINTS("ucpd: drp_state = %d", pd_get_dual_role(0));
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		pd_set_dual_role(port, pd_dual_role_init[port]);
+		CPRINTS("quiche[p%d]: drp_state = %d", port,
+			pd_get_dual_role(port));
+	}
+	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
 }
 DECLARE_DEFERRED(board_select_drp_mode);
 
-static void board_manage_led(void)
-{
-	static int counter;
-
-	gpio_set_level(GPIO_STATUS_LED1, counter & 1);
-	gpio_set_level(GPIO_STATUS_LED2, counter & 1);
-	counter++;
-}
-DECLARE_HOOK(HOOK_SECOND,board_manage_led, HOOK_PRIO_DEFAULT);
-
 static void board_init(void)
 {
+#ifdef SECTION_IS_RW
+	board_select_drp_mode();
+	/* TODO */
 	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -236,11 +241,6 @@ int ppc_get_alert_status(int port)
 	return 0;
 }
 
-void board_overcurrent_event(int port, int is_overcurrented)
-{
-	/* TODO: b/ - check correct operation for honeybuns */
-}
-
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
@@ -249,12 +249,19 @@ uint16_t tcpc_get_alert_status(void)
 	if (!gpio_get_level(GPIO_USBC_DP_MUX_ALERT_ODL)) {
 		level = !!(tcpc_config[USB_PD_PORT_DP].flags &
 			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
-		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level)
+		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level) {
 			status |= PD_STATUS_TCPC_ALERT_1;
+		}
 	}
 
 	return status;
 }
+
+void board_overcurrent_event(int port, int is_overcurrented)
+{
+	/* TODO: b/ - check correct operation for honeybuns */
+}
+
 #endif
 
 void board_debug_gpio(int trigger, int enable)
