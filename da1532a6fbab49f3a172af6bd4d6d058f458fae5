@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5d4e60c_734f0631",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-26T17:20:09Z",
+      "side": 0,
+      "message": "Does this need to depend on TCPM versions?  Or should it be okay for boards to run with this option on TCPMv1?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "da1532a6fbab49f3a172af6bd4d6d058f458fae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
