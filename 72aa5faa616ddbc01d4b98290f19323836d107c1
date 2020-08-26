@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "011de6e1_b716e80c",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T17:45:28Z",
+      "side": 0,
+      "message": "if you just change this to (PRL_FLAGS_SINK_NG | PRL_FLAGS_WAIT_SINK_OK), does it have the same effect as your change?",
+      "range": {
+        "startLine": 801,
+        "startChar": 28,
+        "endLine": 801,
+        "endChar": 45
+      },
+      "revId": "72aa5faa616ddbc01d4b98290f19323836d107c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
