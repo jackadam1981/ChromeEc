@@ -46,6 +46,30 @@
       "revId": "404263f3f82eb463722b029c3630d1614e7ff1a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3f9cd0_dbca4022",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2020-08-26T20:01:19Z",
+      "side": 1,
+      "message": "This is in fact not working because CONFIG_BOARD_I2C_SLAVE_ADDR_FLAGS has to be defined to the I2C address value of the board specific handler. And IS_ENABLED only work with blank define.\n\ninclude/common.h:396:5: error: call to \u0027IS_ENABLED_BAD_ARGS\u0027 declared with attribute error: CONFIG_BOARD_I2C_SLAVE_ADDR_FLAGS must be \u003cblank\u003e, or not defined.\n     IS_ENABLED_BAD_ARGS();         \\",
+      "parentUuid": "581c8101_5ae16d2b",
+      "range": {
+        "startLine": 888,
+        "startChar": 7,
+        "endLine": 888,
+        "endChar": 40
+      },
+      "revId": "404263f3f82eb463722b029c3630d1614e7ff1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
