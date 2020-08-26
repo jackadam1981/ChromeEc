@@ -63,8 +63,18 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 	 * port, otherwise we provide no power.
 	 */
 	if (port == USB_PD_PORT_HOST) {
+		int rv;
+		int fw_config;
+		int vbus_lim = 0;
+
 		*src_pdo =  pd_src_host_pdo;
 		pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
+
+		rv = cbi_get_fw_config(&fw_config);
+		if (!rv)
+			vbus_lim = !!(fw_config & 2);
+		if (vbus_lim)
+			pdo_cnt = 2;
 	} else {
 		*src_pdo =  pd_src_user_pdo;
 		pdo_cnt = ARRAY_SIZE(pd_src_user_pdo);

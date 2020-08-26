@@ -77,6 +77,7 @@ int mp3245_get_vbus(int *mv, int *ma)
 	return rv;
 }
 
+#ifdef CONFIG_MP4245_CMD
 struct mp4245_info {
 	uint8_t cmd;
 	uint8_t len;
@@ -132,7 +133,6 @@ static void mp4245_dump_reg(void)
 	}
 }
 
-#ifdef CONFIG_MP4245_CMD
 void mp4245_get_status(void)
 {
 	int status;
