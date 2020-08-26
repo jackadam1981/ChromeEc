@@ -114,7 +114,7 @@ test_mockable __keep int main(void)
 
 	/* Set the CPU clocks / PLLs.  System is now running at full speed. */
 	clock_init();
-
+	CPRINTF("main_1: bdcr = 0x%08x\n", STM32_RCC_BDCR);
 	/*
 	 * Initialize timer.  Everything after this can be benchmarked.
 	 * get_time() and udelay() may now be used.  usleep() requires task
@@ -134,6 +134,8 @@ test_mockable __keep int main(void)
 
 	/* Initialize UART.  Console output functions may now be used. */
 	uart_init();
+
+	CPRINTF("main_2: bdcr = 0x%08x\n", STM32_RCC_BDCR);
 
 	/* We wait to report the failure until here where we have console. */
 	if (mpu_pre_init_rv != EC_SUCCESS)
