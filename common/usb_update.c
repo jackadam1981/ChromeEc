@@ -176,16 +176,20 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 	int rv = 0;
 
 	/* Validate count (too short, or too long). */
-	if (count < sizeof(*cmd_buffer) || count > sizeof(buffer))
+	if (count < sizeof(*cmd_buffer) || count > sizeof(buffer)) {
+		CPRINTS("up: count is bad");
 		return 0;
+	}
 
 	/*
 	 * Let's copy off the queue the update frame header, to see if this
 	 * is a channeled vendor command.
 	 */
 	queue_peek_units(consumer->queue, cmd_buffer, 0, sizeof(*cmd_buffer));
-	if (be32toh(cmd_buffer->cmd.block_base) != UPDATE_EXTRA_CMD)
+	if (be32toh(cmd_buffer->cmd.block_base) != UPDATE_EXTRA_CMD) {
+		CPRINTS("up: not vend cmd");
 		return 0;
+	}
 
 	if (be32toh(cmd_buffer->block_size) != count) {
 		CPRINTS("%s: problem: block size and count mismatch (%d != %d)",
@@ -220,6 +224,7 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 		header_size = sizeof(*cmd_buffer) + sizeof(uint16_t);
 		data_count = count - header_size;
 
+		CPRINTS("update: subcommand = %d", subcommand);
 		switch (subcommand) {
 		case UPDATE_EXTRA_CMD_IMMEDIATE_RESET:
 			CPRINTS("Rebooting!");
@@ -255,12 +260,21 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 			system_run_image_copy(EC_IMAGE_RW);
 #endif
 			break;
-#ifdef CONFIG_RWSIG
 		case UPDATE_EXTRA_CMD_STAY_IN_RO:
+			CPRINTS("update: stay in ro!");
+#ifdef CONFIG_RWSIG
 			rwsig_abort();
-			response = EC_RES_SUCCESS;
-			break;
 #endif
+			system_set_reset_flags(SYSTEM_RESET_STAY_IN_RO);
+			CPRINTS("Rebooting!");
+			CPRINTF("\n\n");
+			cflush();
+			system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED |
+				SYSTEM_RESET_STAY_IN_RO);
+			/* Unreachable, unless something bad happens. */
+			response = EC_RES_ERROR;
+			//response = EC_RES_SUCCESS;
+			break;
 		case UPDATE_EXTRA_CMD_UNLOCK_RW:
 			flash_set_protect(EC_FLASH_PROTECT_RW_AT_BOOT, 0);
 			response = EC_RES_SUCCESS;
@@ -450,8 +464,10 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 		} u;
 
 		/* Check is this is a channeled TPM extension command. */
-		if (try_vendor_command(consumer, count))
+		CPRINTS("update: try vendor %d", count);
+		if (try_vendor_command(consumer, count)) {
 			return;
+		}
 
 		/*
 		 * An update start PDU is a command without any payload, with
