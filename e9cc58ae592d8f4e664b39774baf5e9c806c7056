@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f0b634d_fb48d40f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T17:06:40Z",
+      "side": 1,
+      "message": "How does this affect power consumption? (as a note). We only really suspend when we are updating the FW so power consumption should really be that big of an issue",
+      "revId": "e9cc58ae592d8f4e664b39774baf5e9c806c7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a50dc38_5ffddc40",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3395,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T17:06:40Z",
+      "side": 1,
+      "message": "this almost seems like this should move to TC_DISABLED_entry method, thoughts?\n\n\nThen you wouldn\u0027t need the check for !\u003d TC_DISABLED state as well.",
+      "range": {
+        "startLine": 3387,
+        "startChar": 2,
+        "endLine": 3395,
+        "endChar": 30
+      },
+      "revId": "e9cc58ae592d8f4e664b39774baf5e9c806c7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
