@@ -54,11 +54,11 @@
 #define GPIO_WP_L		GPIO_EC_WP_L
 #define GPIO_WP		GPIO_EC_WP_L
 
-#define BOARD_NUM_POWER_GPIOS 23
+/* #define BOARD_NUM_POWER_GPIOS 23 */
 
 #ifndef __ASSEMBLER__
 
-#include "gpio_signal.h"
+/* #include "gpio_signal.h" */
 #include "registers.h"
 
 #define GPIO_TRIGGER_1 GPIO_USB3_A1_CDP_EN
