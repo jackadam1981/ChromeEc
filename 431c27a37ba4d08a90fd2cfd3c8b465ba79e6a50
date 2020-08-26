@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "9cdd4580_e58fe0f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-26T18:37:50Z",
+      "side": 1,
+      "message": "We might hit timing constraints with this approach.\nIf we are planning for a workaround, can you try resetting the USB3 data path in Kernel itself and revert once we have a proper fix.",
+      "revId": "431c27a37ba4d08a90fd2cfd3c8b465ba79e6a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a43957ba_ec707012",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 7
