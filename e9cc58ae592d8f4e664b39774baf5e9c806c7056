@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "9ac270a9_a26b3ad3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-26T18:41:29Z",
+      "side": 1,
+      "message": "Turns out this is incomplete for enabling firmware update.  The EC needs to put the Burnside Bridge into USB mode to enable firmware updates over the LSx interface.",
+      "revId": "e9cc58ae592d8f4e664b39774baf5e9c806c7056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a50dc38_5ffddc40",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
