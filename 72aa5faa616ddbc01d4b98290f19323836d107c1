@@ -22,6 +22,30 @@
       "revId": "72aa5faa616ddbc01d4b98290f19323836d107c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d77ab073_c9f641b4",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-26T19:19:46Z",
+      "side": 0,
+      "message": "I did that to start with, as it was what you requested. It did not work over PR_Swap when I tested it.\n\nI tried it again with the other changes I have added and see it now works.",
+      "parentUuid": "011de6e1_b716e80c",
+      "range": {
+        "startLine": 801,
+        "startChar": 28,
+        "endLine": 801,
+        "endChar": 45
+      },
+      "revId": "72aa5faa616ddbc01d4b98290f19323836d107c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
