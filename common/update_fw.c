@@ -80,6 +80,8 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 		 * be erased.
 		 */
 		if (block_offset == base) {
+			CPRINTF("flash: erase base = 0x%x, size = 0x%x\n",
+				base, size);
 			if (flash_physical_erase(base, size) != EC_SUCCESS) {
 				CPRINTF("%s:%d erase failure of 0x%x..+0x%x\n",
 					__func__, __LINE__, base, size);
@@ -175,8 +177,7 @@ void fw_update_start(struct first_response_pdu *rpdu)
 		update_section.base_offset = CONFIG_RW_MEM_OFF;
 		update_section.top_offset = CONFIG_RW_MEM_OFF + CONFIG_RW_SIZE;
 		ccprintf("fw: start update\n");
-		version = system_get_version(EC_IMAGE_RO);
-		//version = 0;
+		version = system_get_version(EC_IMAGE_RW);
 		break;
 	case EC_IMAGE_RW:
 		/* RW running, so update RO */
