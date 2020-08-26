@@ -2633,8 +2633,12 @@ static void tc_attach_wait_src_run(const int port)
 	}
 
 	/* Wait for CC debounce */
-	if (get_time().val < tc[port].cc_debounce)
+	if (get_time().val < tc[port].cc_debounce) {
+		CPRINTS("tc[%d] wait_src debounce: cc1 = %d cc2 = %d!", port,
+			cc1, cc2);
+		cflush();
 		return;
+	}
 
 	/*
 	 * The port shall transition to Attached.SRC when VBUS is at vSafe0V
@@ -2646,6 +2650,9 @@ static void tc_attach_wait_src_run(const int port)
 	 * state is detected on both the CC1 and CC2 pins for at least
 	 * tCCDebounce.
 	 */
+	CPRINTS("tc[%d] going to check vbus, cc1 = %d cc2 = %d!", port,
+		cc1, cc2);
+	cflush();
 	if (pd_check_vbus_level(port, VBUS_SAFE0V)) {
 		if (new_cc_state == PD_CC_UFP_ATTACHED) {
 			set_state_tc(port, TC_ATTACHED_SRC);
@@ -2845,6 +2852,8 @@ static void tc_attached_src_run(const int port)
 #ifdef CONFIG_USB_PD_TRY_SRC
 		set_state_tc(port, tryWait ?
 					TC_TRY_WAIT_SNK : TC_UNATTACHED_SNK);
+#else
+		set_state_tc(port, TC_UNATTACHED_SNK);
 #endif
 		return;
 	}
