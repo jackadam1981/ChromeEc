@@ -22,6 +22,30 @@
       "revId": "eaa4d4ba2010c0ba366302865d2ddf5e9e17abc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2fff1d_366dceda",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-26T16:03:12Z",
+      "side": 1,
+      "message": "The PROG pin is the only side effect initialization adjustment that appears to be made in this register.  It is currently hard coded to 0 in the work around. If this can be assumed (or a correct answer can be either known or CONFIG set) then caching may avoid this retry/override problem.\n\nISL9241_REG_CONTROL1 bit\u003c9:7\u003e\nConfigures the switching frequency and overrides the default switching frequency set by the PROG pin.\n  000 \u003d 1420kHz\n  001 \u003d 1180kHz\n  010 \u003d 1020kHz\n  011 \u003d 890kHz\n  100 \u003d 808kHz\n  101 \u003d 724kHz\n  110 \u003d 656kHz\n  111 \u003d 600kHz\nTo keep the switching frequency set by the PROG pin resistor, leave Bit\u003c9:7\u003e as it is read.",
+      "parentUuid": "c414ce6d_db48978d",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 0
+      },
+      "revId": "eaa4d4ba2010c0ba366302865d2ddf5e9e17abc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
