@@ -51,6 +51,24 @@
       "revId": "cfbdedf0bf3861af3cce7a331bf94881a3553b14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5252560f_9d8c8bd6",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-08-26T12:09:02Z",
+      "side": 1,
+      "message": "Yes, I should remove *_FLAGS for octopus branch.",
+      "parentUuid": "2d22e0b1_1398f6c4",
+      "revId": "cfbdedf0bf3861af3cce7a331bf94881a3553b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
