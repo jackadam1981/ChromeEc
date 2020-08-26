@@ -123,6 +123,24 @@
       "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e54e71b8_eed6a634",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-08-26T05:31:35Z",
+      "side": 1,
+      "message": "PD state is looping in attachwait.SRC state.\nThis will happen when the dongle is connecting then command \"reboot\" by EC console. If the port is open and reboot, then plug-in dongle, it won\u0027t happen looping and can go to ready state.\n\u003cp.s\u003e I test on ITE port C0.\n\nI rebase again this toggle/low power CL chain to main trunk. The EC console log exceeds the character size, so I e-mail to: dzigterman@chromium.org",
+      "parentUuid": "852346f1_8aba94bd",
+      "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
