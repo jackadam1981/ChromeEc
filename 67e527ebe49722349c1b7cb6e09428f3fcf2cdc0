@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d0bad0a1_58946b99",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-26T06:31:34Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b6dd9ca8_1595ab37",
+      "revId": "67e527ebe49722349c1b7cb6e09428f3fcf2cdc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42183c4e_ed51b244",
         "filename": "board/halvor/led.c",
         "patchSetId": 9
@@ -39,6 +57,30 @@
       "revId": "67e527ebe49722349c1b7cb6e09428f3fcf2cdc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69896cc4_c4ab453a",
+        "filename": "board/halvor/led.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-26T06:31:34Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "42183c4e_ed51b244",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "67e527ebe49722349c1b7cb6e09428f3fcf2cdc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
