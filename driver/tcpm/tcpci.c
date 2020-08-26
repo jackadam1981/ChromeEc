@@ -643,6 +643,8 @@ int tcpci_tcpm_set_vconn(int port, int enable)
 {
 	int reg, rv;
 
+	ASSERT(!in_interrupt_context());
+
 	rv = tcpc_read(port, TCPC_REG_POWER_CTRL, &reg);
 	if (rv)
 		return rv;
@@ -720,7 +722,6 @@ int tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 }
 #endif
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level)
 {
 	if (level == VBUS_SAFE0V)
@@ -730,7 +731,6 @@ bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level)
 	else
 		return !(tcpc_vbus[port] & BIT(VBUS_PRESENT));
 }
-#endif
 
 struct cached_tcpm_message {
 	uint32_t header;
@@ -1148,6 +1148,8 @@ void tcpci_tcpc_alert(int port)
 		return;
 	}
 
+	
+
 	/* Get Extended Alert register if needed */
 	if (alert & TCPC_REG_ALERT_ALERT_EXT)
 		tcpm_alert_ext_status(port, &alert_ext);
@@ -1206,10 +1208,12 @@ void tcpci_tcpc_alert(int port)
 		tcpc_write16(port, TCPC_REG_ALERT, alert);
 
 	if (alert & TCPC_REG_ALERT_CC_STATUS) {
-		if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {
-			enum tcpc_cc_voltage_status cc1;
-			enum tcpc_cc_voltage_status cc2;
+		enum tcpc_cc_voltage_status cc1;
+		enum tcpc_cc_voltage_status cc2;
 
+		tcpci_tcpm_get_cc(port, &cc1, &cc2);
+
+		if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE)) {
 			/*
 			 * Some TCPCs generate CC Alerts when
 			 * drp auto toggle is active and nothing
@@ -1217,12 +1221,13 @@ void tcpci_tcpc_alert(int port)
 			 * CC line status and only generate a
 			 * PD_EVENT_CC if something is connected.
 			 */
-			tcpci_tcpm_get_cc(port, &cc1, &cc2);
 			if (cc1 != TYPEC_CC_VOLT_OPEN ||
 			    cc2 != TYPEC_CC_VOLT_OPEN)
 				/* CC status cchanged, wake task */
 				pd_event |= PD_EVENT_CC;
 		} else {
+			CPRINTS("tcpc[%d]: alert = 0x%04x, cc1 = %d, cc2 = %d",
+				port, alert, cc1, cc2);
 			/* CC status changed, wake task */
 			pd_event |= PD_EVENT_CC;
 		}
@@ -1752,9 +1757,7 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 	.init			= &tcpci_tcpm_init,
 	.release		= &tcpci_tcpm_release,
 	.get_cc			= &tcpci_tcpm_get_cc,
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
-#endif
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,
