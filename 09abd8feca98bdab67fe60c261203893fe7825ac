@@ -256,6 +256,30 @@
     },
     {
       "key": {
+        "uuid": "d8928e5a_60963b9f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 4940,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T16:30:19Z",
+      "side": 1,
+      "message": "Yes, this is the format I was thinking of. Normally, I would want a comment for each function, but in this case they all have the same signature, and it seems redundant. I think it will be obvious from the names which VDMs they refer to.",
+      "parentUuid": "4faf53e3_bd7b579a",
+      "range": {
+        "startLine": 4940,
+        "startChar": 8,
+        "endLine": 4940,
+        "endChar": 12
+      },
+      "revId": "09abd8feca98bdab67fe60c261203893fe7825ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13ba3b57_deba5e66",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 3

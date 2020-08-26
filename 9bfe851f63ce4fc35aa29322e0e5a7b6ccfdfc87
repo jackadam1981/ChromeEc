@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "778c5f29_61602ecb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4894,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T16:30:19Z",
+      "side": 1,
+      "message": "What if you just called it response_bytes or response_size_bytes?\n\nIn this context and in general, I\u0027m OK with a \"_size\" variable implicitly having units of bytes, but I certainly don\u0027t want to keep you from being explicit.",
+      "revId": "9bfe851f63ce4fc35aa29322e0e5a7b6ccfdfc87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c46f345_105d9205",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4963,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T16:30:19Z",
+      "side": 1,
+      "message": "TODO(b/166455363)",
+      "range": {
+        "startLine": 4963,
+        "startChar": 5,
+        "endLine": 4963,
+        "endChar": 9
+      },
+      "revId": "9bfe851f63ce4fc35aa29322e0e5a7b6ccfdfc87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70e6e650_0ef054d4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4994,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T16:30:19Z",
+      "side": 1,
+      "message": "Looking at this again, I don\u0027t think this code is even reachable, we would send an ACK in the busy case. The above checks should be for \u003e\u003d 0 and \u003d\u003d 0.",
+      "range": {
+        "startLine": 4987,
+        "startChar": 0,
+        "endLine": 4994,
+        "endChar": 13
+      },
+      "revId": "9bfe851f63ce4fc35aa29322e0e5a7b6ccfdfc87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c25e9336_70bfd91a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T16:30:19Z",
+      "side": 1,
+      "message": "Nit: Gets a VDM response message",
+      "revId": "9bfe851f63ce4fc35aa29322e0e5a7b6ccfdfc87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb467f78_7dfa80d2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T16:30:19Z",
+      "side": 1,
+      "message": "Mention that it is used as an input and an output.",
+      "revId": "9bfe851f63ce4fc35aa29322e0e5a7b6ccfdfc87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa3b7e0_4d1e9b16",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T16:30:19Z",
+      "side": 1,
+      "message": "You should also note that 0 means NAK.",
+      "revId": "9bfe851f63ce4fc35aa29322e0e5a7b6ccfdfc87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5107f7b8_1626bc69",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T16:30:19Z",
+      "side": 1,
+      "message": "Nit: move this inside the struct, above identity.",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 3
+      },
+      "revId": "9bfe851f63ce4fc35aa29322e0e5a7b6ccfdfc87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
