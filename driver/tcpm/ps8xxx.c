@@ -566,9 +566,9 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.init			= &ps8xxx_tcpm_init,
 	.release		= &ps8xxx_tcpm_release,
 	.get_cc			= &ps8xxx_tcpm_get_cc,
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+//#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.check_vbus_level	= &tcpci_tcpm_check_vbus_level,
-#endif
+//#endif
 	.select_rp_value	= &tcpci_tcpm_select_rp_value,
 	.set_cc			= &tcpci_tcpm_set_cc,
 	.set_polarity		= &tcpci_tcpm_set_polarity,
