@@ -33,6 +33,23 @@
       "revId": "6564f8a5aad8ad35a1349473e3db8a5229bbf654",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c278144e_3bc8f8b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-08-26T23:24:36Z",
+      "side": 1,
+      "message": "This is causing enough noise on postsubmit and snapshot builders that I\u0027d like to put it through CQ.\n\nThe kukui team is on this CL, so please revert if you feel this is incorrect.",
+      "revId": "6564f8a5aad8ad35a1349473e3db8a5229bbf654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
