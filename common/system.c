@@ -1305,7 +1305,7 @@ static int command_reboot(int argc, char **argv)
 	if (flags & SYSTEM_RESET_WAIT_EXT)
 		ccputs("Waiting for ext reset!\n\n\n");
 	else
-		ccputs("Rebooting!\n\n\n");
+		ccputs("Rebooting! \n\n\n");
 	cflush();
 
 	system_reset(flags);

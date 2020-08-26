@@ -80,6 +80,8 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 		 * be erased.
 		 */
 		if (block_offset == base) {
+			CPRINTF("flash: erase base = 0x%x, size = 0x%x\n",
+				base, size);
 			if (flash_physical_erase(base, size) != EC_SUCCESS) {
 				CPRINTF("%s:%d erase failure of 0x%x..+0x%x\n",
 					__func__, __LINE__, base, size);
