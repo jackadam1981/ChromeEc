@@ -141,6 +141,24 @@
       "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fc6f45b_67566e41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-26T17:19:11Z",
+      "side": 1,
+      "message": "This issue might be specific to your dongle.  I\u0027ve tried a few chargers, 3 dongles, and a debug accessory with this CL stack and so far it\u0027s testing very well on EC reboots. I don\u0027t think this issue should hold up the CL.\n\nWhat kind of dongle is it?  I can see if I have one in my dongle pile and investigate further.",
+      "parentUuid": "e54e71b8_eed6a634",
+      "revId": "2053cfb7471554f9f42fa187eaa21168803739d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
