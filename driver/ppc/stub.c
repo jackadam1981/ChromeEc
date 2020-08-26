@@ -52,6 +52,8 @@ static int ppc_stub_is_vbus_present(int port)
 {
 	int vbus;
 
+	CPRINTS("ppc[%d]: check vbus level start", port);
+	cflush();
 	vbus = tcpm_check_vbus_level(port, VBUS_PRESENT);
 	CPRINTS("ppc_stub: vbus = %d", vbus);
 
@@ -61,7 +63,13 @@ static int ppc_stub_is_vbus_present(int port)
 
 static int ppc_stub_vbus_source_enable(int port, int enable)
 {
-	return EC_SUCCESS;
+	int addr = 0x1A;
+	int offset = 0x21;
+
+	/* GPIO1 of PS8805 is used to turn on/off vbus for C1 */
+
+	return i2c_write8(tcpc_config[port].i2c_info.port, addr,
+			  offset, enable ? 0x20 : 0);
 }
 
 static int ppc_stub_set_vbus_src_current_limit(int port,
