@@ -391,6 +391,9 @@ static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 			return EC_RES_ERROR;
 	}
 
+	if (args->params_size < sizeof(*p) + p->size)
+		return EC_RES_OVERFLOW;
+
 	if (cbi_set_board_info(p->tag, p->data, p->size))
 		return EC_RES_INVALID_PARAM;
 
