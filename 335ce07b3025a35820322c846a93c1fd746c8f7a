@@ -159,6 +159,24 @@
       "revId": "335ce07b3025a35820322c846a93c1fd746c8f7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "791a840b_88fc6821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-08-26T01:24:43Z",
+      "side": 1,
+      "message": "okay on v4 on both fizz and guado this doesn\u0027t seem to cause any issues with servod startup, or turning on/off dts mode. I do see it on both orientations, the LS failure and power-cycle attempt, but other than that, it looks fine.",
+      "parentUuid": "97e8c692_081ce479",
+      "revId": "335ce07b3025a35820322c846a93c1fd746c8f7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
