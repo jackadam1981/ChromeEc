@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "716ac460_5df323ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T17:10:09Z",
+      "side": 1,
+      "message": "The code has this as amber. Should this be updated?",
+      "range": {
+        "startLine": 19,
+        "startChar": 30,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "ac177db5020e58686a42677ccd6ca7b9bd28d094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98df8224_3207a550",
+        "filename": "board/halvor/gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T17:10:09Z",
+      "side": 1,
+      "message": "Please match these names to the names on the schematic (LED_1_L and LED_2_L). If you want to indicate the purpose or color the LEDs, do it with comments or with aliases in LED code.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "ac177db5020e58686a42677ccd6ca7b9bd28d094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50e2a35_58ef6ed9",
+        "filename": "board/halvor/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-26T17:10:09Z",
+      "side": 1,
+      "message": "Nit: If you\u0027re going to line up the spacing for these arrays, do it consistently for every line.",
+      "range": {
+        "startLine": 24,
+        "startChar": 42,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "ac177db5020e58686a42677ccd6ca7b9bd28d094",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
