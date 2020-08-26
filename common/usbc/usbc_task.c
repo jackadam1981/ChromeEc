@@ -141,6 +141,8 @@ void pd_interrupt_handler_task(void *p)
 					storm_tracker[port].count = 1;
 				} else if (++storm_tracker[port].count >
 							ALERT_STORM_MAX_COUNT) {
+
+					board_debug_gpio(TRIGGER_1, 1);
 					CPRINTS("C%d: Interrupt storm detected."
 						" Disabling port temporarily",
 						port);
