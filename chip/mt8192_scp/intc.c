@@ -202,18 +202,9 @@ void chip_enable_irq(int irq)
 
 void chip_disable_irq(int irq)
 {
-	unsigned int word, group, mask;
-
-	word = SCP_INTC_WORD(irq);
-	group = irqs[irq].group;
-	mask = BIT(SCP_INTC_BIT(irq));
-
-	/* disable interrupt */
-	SCP_CORE0_INTC_IRQ_EN(word) &= ~mask;
-	/* clear group setting */
-	SCP_CORE0_INTC_IRQ_GRP(group, word) &= ~mask;
-	/* clear wakeup source setting */
-	SCP_CORE0_INTC_SLP_WAKE_EN(word) &= ~mask;
+	/* Intentionally to be blank because disabling INTC IRQ in runtime
+	 * is unstable in MT8192 SCP.  See b/163682416#comment17.
+	 */
 }
 
 void chip_clear_pending_irq(int irq)
