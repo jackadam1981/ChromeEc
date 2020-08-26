@@ -32,3 +32,41 @@ enum ssfc_tcpc_p1 get_cbi_ssfc_tcpc_p1(void)
 {
 	return ((cached_ssfc & SSFC_TCPC_P1_MASK) >> SSFC_TCPC_P1_OFFSET);
 }
+
+#if defined CONFIG_FACTORY_SSFC_PROBE
+void set_cbi_ssfc_tcpc_p1_ps8xxx(uint16_t product_id)
+{
+	int changed = 1;
+	int tcpc_p1;
+	int res;
+
+	switch (product_id) {
+	case PS8755_PRODUCT_ID:
+		tcpc_p1 = TCPC_P1_PS8751;
+		break;
+	case PS8751_PRODUCT_ID:
+		tcpc_p1 = TCPC_P1_PS8755;
+		break;
+	default:
+		changed = 0;
+		break;
+	}
+
+	if (!changed)
+		return;
+
+	cached_ssfc &= ~SSFC_TCPC_P1_MASK;
+	cached_ssfc |= tcpc_p1 << SSFC_TCPC_P1_OFFSET;
+
+	res = cbi_set_board_info(CBI_TAG_SSFC, (const uint8_t *)&cached_ssfc,
+				 sizeof(cached_ssfc));
+
+	if (res != EC_SUCCESS) {
+		CPRINTS("CBI SSFC: new value 0x%04X can't be updated to CBI.",
+			cached_ssfc);
+		return;
+	}
+
+	cbi_write();
+}
+#endif
