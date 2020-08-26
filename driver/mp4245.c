@@ -83,15 +83,8 @@ static void mp4245_alert_callback(void)
 }
 DECLARE_DEFERRED(mp4245_alert_callback);
 
-void mp4245_alert_handler(void)
-{
-	//board_debug_gpio(GPIO_TRIGGER_1, 1);
 
-	i2c_read16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
-	 	   MP4245_CMD_STATUS_WORD, &mp4245_status);
-	hook_call_deferred(&mp4245_alert_callback_data, 0);
-}
-
+#ifdef CONFIG_MP4245_CMD
 struct mp4245_info {
 	uint8_t cmd;
 	uint8_t len;
@@ -128,7 +121,6 @@ static struct mp4245_info  mp4245_cmds[] = {
 };
 
 static void mp4245_dump_reg(void)
-
 {
 	int i;
 	int val;
@@ -148,7 +140,6 @@ static void mp4245_dump_reg(void)
 	}
 }
 
-#ifdef CONFIG_MP4245_CMD
 void mp4245_get_status(void)
 {
 	int status;
