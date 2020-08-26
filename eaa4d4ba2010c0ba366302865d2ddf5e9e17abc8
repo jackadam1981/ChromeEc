@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c414ce6d_db48978d",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-26T14:38:54Z",
+      "side": 1,
+      "message": "I am really concerned with this. If we are going to do this then why bother reading 16 bits from ISL9241_REG_CONTROL1 or looping.  We could just read the first 8 bits and hardcode 0x01 in the MSB.... but both approaches feel so wrong.\n\nIs this register supposed to change, other than by the driver (i.e. does the hardware itself have side effects that change the value)?  If it is just the value the driver sets it to, I would be happier with caching the value and not bothering to read it at all.",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 0
+      },
+      "revId": "eaa4d4ba2010c0ba366302865d2ddf5e9e17abc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
