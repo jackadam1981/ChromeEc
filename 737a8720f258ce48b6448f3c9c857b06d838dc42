@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a880b1a_44baba9f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 5604,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-26T17:37:59Z",
+      "side": 1,
+      "message": "this isnt\u0027 immediately clear to me why we are clearing this flag, can you add a comment that explains why we should be clearing the flag here",
+      "range": {
+        "startLine": 5604,
+        "startChar": 0,
+        "endLine": 5604,
+        "endChar": 45
+      },
+      "revId": "737a8720f258ce48b6448f3c9c857b06d838dc42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
