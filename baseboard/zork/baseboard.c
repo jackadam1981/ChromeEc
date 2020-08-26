@@ -321,6 +321,12 @@ __override int isl9241_update_learn_mode(int chgnum, int enable)
 			return rv;
 	}
 
+	/* If still read bad HI byte 0xFF, do not upload learn mode status */
+	if ((reg >> 8) == 0xFF) {
+		ccprints("Bad CONTROL1 read. Don't upload learn mode.");
+		return EC_ERROR_UNKNOWN;
+	}
+
 	if (enable)
 		reg |= ISL9241_CONTROL1_LEARN_MODE;
 	else
