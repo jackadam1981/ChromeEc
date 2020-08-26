@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "249d6b1f_80378d25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-08-26T03:44:08Z",
+      "side": 1,
+      "message": "Ok, I will remove them. I just follow https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1767512 to do, they are not remove them.",
+      "parentUuid": "fcfafcb6_0f3d1bb7",
+      "revId": "224e276d538e79728a36bb774afae5c919c051cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51479b4a_30d17894",
         "filename": "baseboard/hatch/baseboard.c",
         "patchSetId": 1
