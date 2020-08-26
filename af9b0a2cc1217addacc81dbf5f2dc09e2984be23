@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20b6774f_cf1fff4c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5711,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-26T19:38:24Z",
+      "side": 0,
+      "message": "I would say Abe is probably a good final voice here, but if we\u0027re clearing out all of our partner alternate mode information, it seems like it would make sense to clear all flags related to said modes in a central location.",
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
