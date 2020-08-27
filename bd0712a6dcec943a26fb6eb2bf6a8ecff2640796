@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5df8362b_477aa831",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-27T07:38:06Z",
+      "side": 1,
+      "message": "all these variables should be per port basis. If port 0 also has retimer, then this will cause the problem. please check. I feel per port basis these variables has to be defined",
+      "range": {
+        "startLine": 318,
+        "startChar": 16,
+        "endLine": 318,
+        "endChar": 37
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470565b1_ca68f904",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-27T07:38:06Z",
+      "side": 1,
+      "message": "where this one is defined?",
+      "range": {
+        "startLine": 337,
+        "startChar": 7,
+        "endLine": 337,
+        "endChar": 21
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6de3e3b_be284901",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-27T07:38:06Z",
+      "side": 1,
+      "message": "where this one is defined?",
+      "range": {
+        "startLine": 345,
+        "startChar": 7,
+        "endLine": 345,
+        "endChar": 21
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0711d4ff_20e9a244",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1344536
+      },
+      "writtenOn": "2020-08-27T07:38:06Z",
+      "side": 1,
+      "message": "here we have to consider the instruction \"if\" execution time also. So time_elapsed has to be replaced with (time_elapsed + 50usec or 100usec (or if + 3 instructions execution time))",
+      "range": {
+        "startLine": 468,
+        "startChar": 14,
+        "endLine": 468,
+        "endChar": 15
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
