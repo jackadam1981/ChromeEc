@@ -16,6 +16,138 @@
       "revId": "6d5ff88288766b2270106316792675b5134f2693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07980cd7_0daa2817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:38:59Z",
+      "side": 1,
+      "message": "I very much like this CL.  Just a few comment comments and one functional issue",
+      "revId": "6d5ff88288766b2270106316792675b5134f2693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7089ebf4_9353ef3d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:38:59Z",
+      "side": 1,
+      "message": "nit: as a personal preference, I prefer no \"I\" statements in the code comments.  Just confidently assert and explain what\u0027s being implemented. \n\n\"This is setup like a pseudo state machine parent state.  It centralizes the SenderRespnseTimer for the calling states, as well as checking message send status.\"  Boom.  Done.  Mic drop.",
+      "range": {
+        "startLine": 1575,
+        "startChar": 0,
+        "endLine": 1577,
+        "endChar": 45
+      },
+      "revId": "6d5ff88288766b2270106316792675b5134f2693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25f17c5a_bb666bc5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1581,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:38:59Z",
+      "side": 1,
+      "message": "nit: initialization for sender response timer",
+      "range": {
+        "startLine": 1581,
+        "startChar": 23,
+        "endLine": 1581,
+        "endChar": 58
+      },
+      "revId": "6d5ff88288766b2270106316792675b5134f2693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd191e57_bdd58770",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1593,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:38:59Z",
+      "side": 1,
+      "message": "nit: So technically any messages \"can\" be discarded.  I\u0027d say this is handling the sender response timer and processing common message send flags?",
+      "range": {
+        "startLine": 1593,
+        "startChar": 2,
+        "endLine": 1593,
+        "endChar": 45
+      },
+      "revId": "6d5ff88288766b2270106316792675b5134f2693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2fe7436_b15a31e8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:38:59Z",
+      "side": 1,
+      "message": "Not applicable to most states, and also doesn\u0027t reflect the code behavior below",
+      "range": {
+        "startLine": 1629,
+        "startChar": 0,
+        "endLine": 1634,
+        "endChar": 52
+      },
+      "revId": "6d5ff88288766b2270106316792675b5134f2693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8da0cc2_3c9c91c0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2682,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:38:59Z",
+      "side": 1,
+      "message": "Soft reset.  This is mid-AMS always",
+      "range": {
+        "startLine": 2679,
+        "startChar": 0,
+        "endLine": 2682,
+        "endChar": 2
+      },
+      "revId": "6d5ff88288766b2270106316792675b5134f2693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
