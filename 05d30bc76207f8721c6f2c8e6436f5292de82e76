@@ -46,6 +46,30 @@
       "revId": "05d30bc76207f8721c6f2c8e6436f5292de82e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1ee9e0_2af2fb95",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T15:05:32Z",
+      "side": 1,
+      "message": "Would the deep sleep mode mean CONFIG_LOW_POWER_S0 is invalid to use with the ITE driver (allows EC to deep sleep while AP is in S0 and no peripherals are connected, when we would normally be toggling)?",
+      "parentUuid": "142d6c93_4c3da92f",
+      "range": {
+        "startLine": 668,
+        "startChar": 1,
+        "endLine": 671,
+        "endChar": 4
+      },
+      "revId": "05d30bc76207f8721c6f2c8e6436f5292de82e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
