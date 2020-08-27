@@ -1385,7 +1385,7 @@ static int is_battery_critical(void)
 	 * TODO(crosbug.com/p/27642): The thermal loop should watch the battery
 	 * temp, so it can turn fans on.
 	 */
-	if (battery_too_hot(batt_temp_c)) {
+	if (!curr.ac && battery_too_hot(batt_temp_c)) {
 		CPRINTS("Batt too hot: %dC", batt_temp_c);
 		return 1;
 	}
