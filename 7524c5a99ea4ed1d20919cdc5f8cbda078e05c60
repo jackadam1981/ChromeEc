@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c01cdcc9_a8b50d37",
+        "filename": "chip/stm32/flash-stm32g4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-27T15:28:20Z",
+      "side": 1,
+      "message": "I think we should name it flash-stm32g4-l4.c or something similar. I\u0027m concerned somebody will modify it without knowing it\u0027s affecting l4 (or vice versa). The two IP blocks happen to be the same, I think.",
+      "revId": "7524c5a99ea4ed1d20919cdc5f8cbda078e05c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3cb1bc3_827a7525",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-27T15:28:20Z",
+      "side": 1,
+      "message": "I still prefer not repeating this:\n\n#define STM32_FLASH_REG(off)    REG32(STM32_FLASH_REGS_BASE + (off))\n#define STM32_FLASH_ACR         STM32_FLASH_REG(0x00)\n...\n\nThese look more readable and easier to edit.",
+      "range": {
+        "startLine": 737,
+        "startChar": 42,
+        "endLine": 737,
+        "endChar": 63
+      },
+      "revId": "7524c5a99ea4ed1d20919cdc5f8cbda078e05c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
