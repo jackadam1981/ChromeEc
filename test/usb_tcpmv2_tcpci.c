@@ -229,6 +229,16 @@ __maybe_unused static int test_connect_as_pd3_source(void)
 	TEST_EQ(TCPC_REG_ROLE_CTRL_RP(mock_tcpci_get_reg(TCPC_REG_ROLE_CTRL)),
 		SINK_TX_OK, "%d");
 
+	/*
+	 * DPM_Request SRC Get Source Caps
+	 *
+	 * TODO(dbrockus@): Need to not actually perform the DRP sequence
+	 *
+	 * Ed, how do I fix this to complete the actual SRC_GetSourceCaps
+	 * sequence and verify it did what it was supposed to do?
+	 */
+	mock_tcpci_set_reg(TCPC_REG_TRANSMIT, 0);
+
 	task_wait_event(10 * SECOND);
 	return EC_SUCCESS;
 }
