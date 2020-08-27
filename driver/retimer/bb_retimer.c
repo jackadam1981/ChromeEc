@@ -14,6 +14,7 @@
 #include "timer.h"
 #include "usb_pd.h"
 #include "util.h"
+#include "hooks.h"
 
 #define BB_RETIMER_REG_SIZE	4
 #define BB_RETIMER_READ_SIZE	(BB_RETIMER_REG_SIZE + 1)
@@ -312,14 +313,63 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 	 */
 }
 
+static uint32_t safe_mode_cfg_val;
+static bool safe_mode_deferred;
+static uint64_t safe_mode_deferred_at;
+#define MIN_DEFER_SAFE_US (60 * 1000)
+static void delay_retimer(int port)
+{
+	const struct usb_mux *mux = &usb_muxes[port];
+
+	while (mux) {
+		if (mux->driver == &bb_usb_retimer)
+			break;
+		mux = mux->next_mux;
+	}
+	if (!mux)
+		return;
+
+	safe_mode_deferred = 0;
+	bb_retimer_write(mux, BB_RETIMER_REG_CONNECTION_STATE,
+			safe_mode_cfg_val);
+}
+
+#ifdef HAS_TASK_PD_C0
+void deferred_retimer_p0(void)
+{
+	delay_retimer(TYPEC_PORT_0);
+}
+DECLARE_DEFERRED(deferred_retimer_p0);
+#endif
+
+#ifdef HAS_TASK_PD_C1
+void deferred_retimer_p1(void)
+{
+	delay_retimer(TYPEC_PORT_1);
+}
+DECLARE_DEFERRED(deferred_retimer_p1);
+#endif
+
+void retimer_deferred_hook(int port, int usec)
+{
+	if (port == TYPEC_PORT_0)
+		hook_call_deferred(&deferred_retimer_p0_data, usec);
+	else if (port == TYPEC_PORT_1)
+		hook_call_deferred(&deferred_retimer_p1_data, usec);
+}
+
 /**
  * Driver interface functions
  */
 static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 {
+	uint64_t time_now;
+	uint64_t time_elapsed;
 	uint32_t set_retimer_con = 0;
 	uint8_t dp_pin_mode;
 	int port = me->usb_port;
+	int rc;
+
 
 	/*
 	 * Bit 0: DATA_CONNECTION_PRESENT
@@ -411,6 +461,32 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	else
 		retimer_set_state_ufp(mux_state, &set_retimer_con);
 
+	if (safe_mode_deferred) {
+		retimer_deferred_hook(port, -1);
+		safe_mode_deferred = 0;
+		time_now = get_time().val;
+		time_elapsed = time_now - safe_mode_deferred_at;
+		if (time_elapsed < MIN_DEFER_SAFE_US)
+			usleep(MIN_DEFER_SAFE_US - time_elapsed);
+
+		rc = bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
+			safe_mode_cfg_val);
+		if (rc)
+			return rc;
+
+		/* Stay in safe mode at least 1ms */
+		msleep(1);
+	}
+
+	if (mux_state & USB_PD_MUX_SAFE_MODE) {
+		safe_mode_cfg_val = set_retimer_con;
+		retimer_deferred_hook(port, MIN_DEFER_SAFE_US);
+		safe_mode_deferred_at = get_time().val;
+		safe_mode_deferred = 1;
+		return 0;
+	}
+
+	CPRINTS("Set retimer state to 0x%x", set_retimer_con);
 	/* Writing the register4 */
 	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
 			set_retimer_con);
