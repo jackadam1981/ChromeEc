@@ -22,6 +22,30 @@
       "revId": "05d30bc76207f8721c6f2c8e6436f5292de82e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "142d6c93_4c3da92f",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-08-27T10:29:22Z",
+      "side": 1,
+      "message": "In doze mode, EC can still change CC terminations.\nIn deep sleep mode (at this time, ITE pd ports must are Rx disabled), pd module clock is disabled, so CC terminiations wouldn\u0027t be changed. \n\nAbout low power, we discussed with TCPMv1 in CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1990935",
+      "parentUuid": "bd4075d2_72448831",
+      "range": {
+        "startLine": 668,
+        "startChar": 1,
+        "endLine": 671,
+        "endChar": 4
+      },
+      "revId": "05d30bc76207f8721c6f2c8e6436f5292de82e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
