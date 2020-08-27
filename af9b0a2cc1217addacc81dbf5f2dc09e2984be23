@@ -88,6 +88,24 @@
       "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9ee49f5_5c5f889c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5711,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-27T16:08:47Z",
+      "side": 0,
+      "message": "On the dock that I am using we have the following execution path\n    DUT is SRC, dock is SNK\n    DUT sends PR_SWAP\n    dock ACCEPTS\n    DUT, new SNK, sends PS_RDY\n    dock ACCEPTS\n    dock, new SRC, sends PS_RDY\n    DUT ACCEPTS\n    dock, instead of presenting Vbus, sends HARD_RESET\n\nThis all happened after we did initial connection discovery and we are getting ready to try again with all modes exited... but PE_FLAGS_MODAL_OPERATION is set. So when we get to messages like DR_Swap, we will send a Hard Reset instead of evaluating the swap. This gets us into a loop.",
+      "parentUuid": "8421213d_9991f659",
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
