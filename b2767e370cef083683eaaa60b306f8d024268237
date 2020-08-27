@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4aefd9b5_5e7d55d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-27T17:12:48Z",
+      "side": 1,
+      "message": "I guess this is a workaround, but why would we be sourcing VBUS in S5? We ought to be a sink only. I would expect when the system turns on again, we\u0027d become a source and `pd_set_power_supply_ready()` would get called.",
+      "revId": "b2767e370cef083683eaaa60b306f8d024268237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
