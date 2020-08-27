@@ -69,6 +69,29 @@
       "revId": "a8ec9798afe8c0172d14240f82640a6ce06c1e77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de822c3c_e6df90cf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3805,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-27T15:41:58Z",
+      "side": 1,
+      "message": "can we say why in this commment? Is this from the spec or empirically determined? What happens if we don\u0027t debounce here?",
+      "range": {
+        "startLine": 3805,
+        "startChar": 4,
+        "endLine": 3805,
+        "endChar": 57
+      },
+      "revId": "a8ec9798afe8c0172d14240f82640a6ce06c1e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
