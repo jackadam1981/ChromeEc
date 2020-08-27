@@ -52,6 +52,24 @@
       "revId": "76df802ed4e1e585e09817b7676418ac786bc07a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d656c25f_c01b42a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-08-27T01:19:19Z",
+      "side": 1,
+      "message": "task_disable_irq() in core/riscv-rv32i/task.c calls chip_disable_irq().\n\nAny boards of chip/mt8192_scp shouldn\u0027t call this function because it is unstable (i.e. chip/mt8192_scp doesn\u0027t support this feature).\n\nI was trying to let developers know: we shouldn\u0027t call this function.\nIf removing the function, when developers accidentally call the function, compiler will complaints about the symbol not found (which is not a good enough clue I think).\n\nWe are thinking to print something via ccprints().  But, I am still considering to print something in chip level??",
+      "parentUuid": "dda2371f_edcc2ffd",
+      "revId": "76df802ed4e1e585e09817b7676418ac786bc07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
