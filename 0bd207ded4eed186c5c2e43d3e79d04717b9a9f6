@@ -68,6 +68,30 @@
       "revId": "0bd207ded4eed186c5c2e43d3e79d04717b9a9f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b8de5d_3fe06a6c",
+        "filename": "board/magolor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-27T18:28:55Z",
+      "side": 1,
+      "message": "I hope not. The battery presence pin always tells us if the battery is present. Whether or not the discharge FET is enabled should be handled in `battery_get_disconnect_state()`.",
+      "parentUuid": "ee57d528_e6145395",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 66
+      },
+      "revId": "0bd207ded4eed186c5c2e43d3e79d04717b9a9f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
