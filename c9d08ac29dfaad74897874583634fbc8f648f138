@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38c882d0_7432d0cc",
+        "filename": "board/magolor/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:53:10Z",
+      "side": 1,
+      "message": "Magolor",
+      "range": {
+        "startLine": 5,
+        "startChar": 37,
+        "endLine": 5,
+        "endChar": 44
+      },
+      "revId": "c9d08ac29dfaad74897874583634fbc8f648f138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f1a67ac_99f14c75",
+        "filename": "board/magolor/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:53:10Z",
+      "side": 1,
+      "message": "nit: seems like this would be red?  Unless the LED GPIO name is misleading me?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "c9d08ac29dfaad74897874583634fbc8f648f138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19674155_3140b179",
+        "filename": "board/magolor/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:53:10Z",
+      "side": 1,
+      "message": "Is the green LED unused?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 8
+      },
+      "revId": "c9d08ac29dfaad74897874583634fbc8f648f138",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
