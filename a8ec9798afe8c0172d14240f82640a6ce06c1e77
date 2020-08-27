@@ -51,6 +51,24 @@
       "revId": "a8ec9798afe8c0172d14240f82640a6ce06c1e77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdb0f720_36a4c8da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-27T03:15:10Z",
+      "side": 1,
+      "message": "The debounce was only added for SRC-\u003eSNK swap and we don\u0027t implement SRC-\u003eSNK FRS",
+      "parentUuid": "a446fcfd_f948cb32",
+      "revId": "a8ec9798afe8c0172d14240f82640a6ce06c1e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
