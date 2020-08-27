@@ -70,6 +70,24 @@
       "revId": "76df802ed4e1e585e09817b7676418ac786bc07a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5efd7a_ee7da854",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-08-27T02:50:29Z",
+      "side": 1,
+      "message": "$ grep -R print chip/\nFound that it is not uncommon to print something in chip level.",
+      "parentUuid": "d656c25f_c01b42a6",
+      "revId": "76df802ed4e1e585e09817b7676418ac786bc07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
