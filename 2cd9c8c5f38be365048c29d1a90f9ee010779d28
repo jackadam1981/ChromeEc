@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "0b216fb7_e148e4f2",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-27T16:13:09Z",
+      "side": 1,
+      "message": "If power button task is woken up, I would have thought it better to leave the G3 exit to the power button task instead of doing it in power_up_inhibited_cb(), but maybe there is some extra complexity I\u0027m missing there.",
+      "parentUuid": "90998a2e_8e484e6e",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 22
+      },
+      "revId": "2cd9c8c5f38be365048c29d1a90f9ee010779d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0503a985_b687ac40",
         "filename": "common/power_button_x86.c",
         "patchSetId": 1
