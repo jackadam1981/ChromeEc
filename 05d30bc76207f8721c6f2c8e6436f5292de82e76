@@ -70,6 +70,30 @@
       "revId": "05d30bc76207f8721c6f2c8e6436f5292de82e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f043745_145c7db1",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-08-27T15:54:23Z",
+      "side": 1,
+      "message": "Let\u0027s add to this comment here that Lower power mode in idle_task means we are not receiving PD messages but we can still toggle the CC lines. (just to help future developers know what this low power mode means).\n\nIf the PD task checks every 5ms, will we enter Deep Doze state (I could only find a reference to a 250us window before next timer event to prevent sleep)? If we do, then we will wake up, power the PD module and change the CC lines termination when we are auto-toggling, right?",
+      "parentUuid": "ce1ee9e0_2af2fb95",
+      "range": {
+        "startLine": 668,
+        "startChar": 1,
+        "endLine": 671,
+        "endChar": 4
+      },
+      "revId": "05d30bc76207f8721c6f2c8e6436f5292de82e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
