@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "05065a08_1c37ea4f",
+        "filename": "chip/stm32/flash-stm32g4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-08-27T18:40:53Z",
+      "side": 1,
+      "message": "I agree with the concern.\n\nIf we want to remove the sym links (similar for the f4), we will need to add some logic to the build.mk https://github.com/coreboot/chrome-ec/blob/master/chip/stm32/build.mk#L65 .\n\nIf you rename the file, might want to include the f4 also.",
+      "parentUuid": "c01cdcc9_a8b50d37",
+      "revId": "7524c5a99ea4ed1d20919cdc5f8cbda078e05c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3cb1bc3_827a7525",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 17
