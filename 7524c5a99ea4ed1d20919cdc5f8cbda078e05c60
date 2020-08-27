@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1832472d_3cbe7835",
+        "filename": "chip/stm32/flash-stm32g4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-27T19:08:24Z",
+      "side": 1,
+      "message": "The 2 IP blocks are the same. That\u0027s the whole reason I am reusing the same driver. I can rename the file. But, then that complicates the makefile as Craig points out. More busy work for no real gain.",
+      "parentUuid": "05065a08_1c37ea4f",
+      "revId": "7524c5a99ea4ed1d20919cdc5f8cbda078e05c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3cb1bc3_827a7525",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 17
