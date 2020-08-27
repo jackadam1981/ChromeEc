@@ -3797,13 +3797,19 @@ static void pe_prs_src_snk_assert_rd_entry(int port)
 
 	/* Tell TypeC to swap from Attached.SRC to Attached.SNK */
 	tc_prs_src_snk_assert_rd(port);
+	pe[port].ps_source_timer = TIMER_DISABLED;
 }
 
 static void pe_prs_src_snk_assert_rd_run(int port)
 {
-	/* Wait until Rd is asserted */
-	if (tc_is_attached_snk(port))
+	/* Wait tCC_DEBOUNCE after the TC enters ATTACHED.SNK */
+	if (pe[port].ps_source_timer == TIMER_DISABLED) {
+		if (tc_is_attached_snk(port))
+			pe[port].ps_source_timer =
+				get_time().val + PD_T_CC_DEBOUNCE;
+	} else if (get_time().val > pe[port].ps_source_timer) {
 		set_state_pe(port, PE_PRS_SRC_SNK_WAIT_SOURCE_ON);
+	}
 }
 
 /**
