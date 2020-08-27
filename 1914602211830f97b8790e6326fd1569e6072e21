@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87a51447_5ef00237",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T16:32:54Z",
+      "side": 1,
+      "message": "Aseda, should the rv \u003d\u003d success clause be removed here?  Seems like we want to make sure we stop on failure as well?",
+      "revId": "1914602211830f97b8790e6326fd1569e6072e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
