@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "90998a2e_8e484e6e",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-08-27T02:19:55Z",
+      "side": 1,
+      "message": "My bad. Ignore my question about power_up_inhibited_cb(). As you said, it is within intel_x86.c and hence not applicable to zork. W.r.t. your point about G3 exit without power button - I don\u0027t think that would work. At least on Intel platforms, I have seen that the power button is used by the PMC to determine whether to transition out of S5 state. I think there is some path that gets triggered which results in power button task being woken up. Will have to trace the call chain.",
+      "parentUuid": "7c6cfe83_03b59c7b",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 22
+      },
+      "revId": "2cd9c8c5f38be365048c29d1a90f9ee010779d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0503a985_b687ac40",
         "filename": "common/power_button_x86.c",
         "patchSetId": 1
