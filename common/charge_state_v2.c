@@ -1338,7 +1338,7 @@ static int set_chg_ctrl_mode(enum ec_charge_control_mode mode)
 	return EC_SUCCESS;
 }
 
-static inline int battery_too_hot(int batt_temp_c)
+static inline int battery_too_hot_for_discharge(int batt_temp_c)
 {
 	return (!(curr.batt.flags & BATT_FLAG_BAD_TEMPERATURE) &&
 		(batt_temp_c > batt_info->discharging_max_c));
@@ -1385,7 +1385,7 @@ static int is_battery_critical(void)
 	 * TODO(crosbug.com/p/27642): The thermal loop should watch the battery
 	 * temp, so it can turn fans on.
 	 */
-	if (battery_too_hot(batt_temp_c)) {
+	if (!curr.ac && battery_too_hot_for_discharge(batt_temp_c)) {
 		CPRINTS("Batt too hot: %dC", batt_temp_c);
 		return 1;
 	}

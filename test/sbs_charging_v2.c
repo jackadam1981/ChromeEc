@@ -329,11 +329,27 @@ static int test_low_battery(void)
 	return EC_SUCCESS;
 }
 
-static int test_high_temp_battery(void)
+static int test_high_temp_battery_with_ac(void)
 {
 	test_setup(1);
 
-	ccprintf("[CHARGING TEST] High battery temperature shutdown\n");
+	ccprintf("[CHARGING TEST] High battery temperature no shutdown \
+			 with AC\n");
+	ev_clear(EC_HOST_EVENT_BATTERY_SHUTDOWN);
+	sb_write(SB_TEMPERATURE, CELSIUS_TO_DECI_KELVIN(90));
+	wait_charging_state();
+	sleep(CONFIG_BATTERY_CRITICAL_SHUTDOWN_TIMEOUT);
+	TEST_ASSERT(!is_shutdown);
+
+	return EC_SUCCESS;
+}
+
+static int test_high_temp_battery_no_ac(void)
+{
+	test_setup(0);
+
+	ccprintf("[CHARGING TEST] High battery temperature shutdown \
+			 when discharging\n");
 	ev_clear(EC_HOST_EVENT_BATTERY_SHUTDOWN);
 	sb_write(SB_TEMPERATURE, CELSIUS_TO_DECI_KELVIN(90));
 	wait_charging_state();
@@ -717,7 +733,8 @@ void run_test(int argc, char **argv)
 {
 	RUN_TEST(test_charge_state);
 	RUN_TEST(test_low_battery);
-	RUN_TEST(test_high_temp_battery);
+	RUN_TEST(test_high_temp_battery_with_ac);
+	RUN_TEST(test_high_temp_battery_no_ac);
 	RUN_TEST(test_cold_battery_with_ac);
 	RUN_TEST(test_cold_battery_no_ac);
 	RUN_TEST(test_external_funcs);
