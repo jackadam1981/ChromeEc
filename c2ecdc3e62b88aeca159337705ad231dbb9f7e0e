@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdb80585_9aad1946",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:54:44Z",
+      "side": 0,
+      "message": "Put this back in.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 0
+      },
+      "revId": "c2ecdc3e62b88aeca159337705ad231dbb9f7e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2142f159_73d1c461",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:54:44Z",
+      "side": 0,
+      "message": "Put this blank line back in.",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 0
+      },
+      "revId": "c2ecdc3e62b88aeca159337705ad231dbb9f7e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fc4d8a2_a3055b59",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:54:44Z",
+      "side": 0,
+      "message": "Keep this. It looks like \"charger defines\" and \"macros for GPIO signals\" got stuck in the middle of the \"fan features\" section. You can rejoin \"fan features\" here or in a followup CL.",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "c2ecdc3e62b88aeca159337705ad231dbb9f7e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

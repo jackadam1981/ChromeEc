@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f474d579_a6e63906",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:54:44Z",
+      "side": 1,
+      "message": "Initializing this is unnecessary, because the path where it doesn\u0027t get a new value will never use this variable. If schedule_deferred_pd_interrupt were called with port \u003d\u003d -1, it would cause an out-of-bounds array access. If you want to protect against calling schedule_deferred_pd_interrupt with an invalid port, then check (assert) for port \u003d\u003d -1 before you call. That\u0027s optional, though, for the reason described above.",
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ad28c22_54c8aafc",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:54:44Z",
+      "side": 1,
+      "message": "You can delete these now.",
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17006bb4_5d1b3662",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:54:44Z",
+      "side": 1,
+      "message": "From the schematic, it looks like these are each on their own I2C port.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 2
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "930f38de_9e961e04",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:54:44Z",
+      "side": 1,
+      "message": "This should start with \"baseboard_\", and it should be named to reflect that it\u0027s not just about the TCPC.",
+      "range": {
+        "startLine": 381,
+        "startChar": 12,
+        "endLine": 381,
+        "endChar": 31
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cfe5c00_46787100",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:54:44Z",
+      "side": 1,
+      "message": "This function still needs to return a bit for each port that is alerting. Remove the elses.",
+      "range": {
+        "startLine": 421,
+        "startChar": 1,
+        "endLine": 421,
+        "endChar": 5
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae2f8874_66770a64",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:54:44Z",
+      "side": 1,
+      "message": "The schematic shows all of these as 0x40.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 45
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
