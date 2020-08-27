@@ -91,6 +91,9 @@ int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 __override void board_hibernate_late(void)
 {
+	/* Turn off PP5000_A. Required for devices without Z-state. */
+	gpio_set_level(GPIO_EN_PP5000_A, 0);
+
 	/*
 	 * GPIO_EN_SLP_Z not implemented in rev0/1,
 	 * fallback to usual hibernate process.
