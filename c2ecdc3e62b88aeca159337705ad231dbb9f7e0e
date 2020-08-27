@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad2a8804_9774953a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4018,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:42:44Z",
+      "side": 0,
+      "message": "If you\u0027re feeling ambitious, you could also use your new function here.  On discard the FR_Swap path would need to hard reset (per note 1 about power transitioning states in Table 6-65)",
+      "range": {
+        "startLine": 4006,
+        "startChar": 0,
+        "endLine": 4018,
+        "endChar": 40
+      },
+      "revId": "c2ecdc3e62b88aeca159337705ad231dbb9f7e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
