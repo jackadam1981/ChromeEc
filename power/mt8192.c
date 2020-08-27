@@ -287,7 +287,6 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_G3S5:
 		forcing_shutdown = 0;
 
-		GPIO_SET_LEVEL(GPIO_EN_PP5000_A, 1);
 		/* Power up to next state */
 		return POWER_S5;
 
