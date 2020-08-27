@@ -33,6 +33,24 @@
       "revId": "a8ec9798afe8c0172d14240f82640a6ce06c1e77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a446fcfd_f948cb32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-08-27T03:08:05Z",
+      "side": 1,
+      "message": "Also noting this is not applicable to FRS, where we need to get in or get out ASAP and any dwell is highly undesireable.\n\nFRS also uses a different PE_* state, so unless we accidentally copy+paste CrOS code we shouldn\u0027t run into problems.\n\n* Figure 8-119: Dual-role Port in Sink to Source Fast Role Swap State Diagram\n* PE_FRS_SNK_SRC_Assert_Rp\n* PE_FRS_SNK_SRC_Source_on",
+      "parentUuid": "aa2074d1_41bcd00b",
+      "revId": "a8ec9798afe8c0172d14240f82640a6ce06c1e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
