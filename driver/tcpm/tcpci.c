@@ -735,7 +735,11 @@ static int tcpci_rev2_0_tcpm_get_message_raw(int port, uint32_t *payload,
 
 	/* READABLE_BYTE_COUNT includes 3 bytes for frame type and header */
 	cnt -= 3;
-	if (cnt > member_size(struct cached_tcpm_message, payload)) {
+	if ((cnt < 0) ||
+	    (cnt > member_size(struct cached_tcpm_message, payload))) {
+		/* Stop transfer in progress */
+		tcpc_xfer_unlocked(port, NULL, 0, (uint8_t *)payload, cnt,
+				   I2C_XFER_STOP);
 		rv = EC_ERROR_UNKNOWN;
 		goto clear;
 	}
