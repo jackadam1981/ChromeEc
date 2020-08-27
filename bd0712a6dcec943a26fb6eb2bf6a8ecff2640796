@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "42593a55_dcc13688",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-08-27T21:24:11Z",
+      "side": 1,
+      "message": "Makes sense, will update it.",
+      "parentUuid": "5df8362b_477aa831",
+      "range": {
+        "startLine": 318,
+        "startChar": 16,
+        "endLine": 318,
+        "endChar": 37
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "470565b1_ca68f904",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 9
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "75af596e_25575224",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-08-27T21:24:11Z",
+      "side": 1,
+      "message": "This is config defined per board.",
+      "parentUuid": "470565b1_ca68f904",
+      "range": {
+        "startLine": 337,
+        "startChar": 7,
+        "endLine": 337,
+        "endChar": 21
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6de3e3b_be284901",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 9
@@ -82,6 +130,30 @@
       "writtenOn": "2020-08-27T07:38:06Z",
       "side": 1,
       "message": "where this one is defined?",
+      "range": {
+        "startLine": 345,
+        "startChar": 7,
+        "endLine": 345,
+        "endChar": 21
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e579dc4f_1bd960bb",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-08-27T21:24:11Z",
+      "side": 1,
+      "message": "This is config defined per board.",
+      "parentUuid": "d6de3e3b_be284901",
       "range": {
         "startLine": 345,
         "startChar": 7,
@@ -138,6 +210,30 @@
       "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "243a3400_584abb04",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-08-27T21:24:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "876e3a32_1a474ba2",
+      "range": {
+        "startLine": 468,
+        "startChar": 14,
+        "endLine": 468,
+        "endChar": 15
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
