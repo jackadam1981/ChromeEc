@@ -199,6 +199,30 @@
       "revId": "9167f3082f9a242b22e83df3fa95f7f2603b21c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26196981_7b253c27",
+        "filename": "common/mock/usb_tc_sm_mock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-08-27T22:24:15Z",
+      "side": 1,
+      "message": "That\u0027s going to be a refactoring effort for another CL.",
+      "parentUuid": "f7134480_d9d0b2ea",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "9167f3082f9a242b22e83df3fa95f7f2603b21c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
