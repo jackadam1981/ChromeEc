@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "3b558040_b2715dea",
+        "filename": "chip/stm32/flash-stm32g4.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-27T20:43:13Z",
+      "side": 1,
+      "message": "I have renamed the file and updated the makefile so there is now a stm32g4-l4.c driver.",
+      "parentUuid": "1832472d_3cbe7835",
+      "revId": "7524c5a99ea4ed1d20919cdc5f8cbda078e05c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3cb1bc3_827a7525",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 17
@@ -75,6 +93,30 @@
       "revId": "7524c5a99ea4ed1d20919cdc5f8cbda078e05c60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfdff3f1_bafe5519",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-27T20:43:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3cb1bc3_827a7525",
+      "range": {
+        "startLine": 737,
+        "startChar": 42,
+        "endLine": 737,
+        "endChar": 63
+      },
+      "revId": "7524c5a99ea4ed1d20919cdc5f8cbda078e05c60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
