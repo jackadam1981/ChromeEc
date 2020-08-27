@@ -16,6 +16,23 @@
       "revId": "a8ec9798afe8c0172d14240f82640a6ce06c1e77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa2074d1_41bcd00b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-08-27T02:48:04Z",
+      "side": 1,
+      "message": "Clarifying for time travelers, I think we do check the [EC-TCPC] I2C write went through successfully -- but we don\u0027t wait for an external confirmation [TCPC-Wire] to verify. We just sort of have to trust it happens quickly (per TCPCI spec limits).\n\nAlso clarifying this CL strictly isn\u0027t necessary since we now \"set Rd prior to PS_RDY\". The dwell period at Rd+Rd 0v CC is infinitesimally small and requires a scope to see. The results of this CL/longer delay is threefold:\n\n(1) We now give all partners (fast and slow ADC) sufficient time to understand an Rd has been applied.\n(2) Rd+Rd vOpen line state is now visible/debuggable without a scope (we can\u0027t accidentally shoot to Rp+Rp vOpen for a nanosecond like before)\n(3) We will expose bad DUT that don\u0027t honor the exception in (4.5.2.2.5.2 Exiting from Attached.SNK State) for PR_SWAP + FR_SWAP in \"A port that is monitoring the CC voltage for disconnect\" \n(4) We will expose bad DUT that bank on an instantly-fast PR_SWAP as a \"PD2.0 Last Gasp PR_SWAP\" on PSU unplug, instead of properly implementing FR_SWAP or holdup-caps to stay alive\n(5) We narrow our own remaining time window for tPsSourceOff (759-920ms) to discharge VBUS by (-100 ms). (Slow/Passive-only VBUS discharge CB beware.)\n\n* Items (1+3) may actually be bad things, since they will mean more flake with buggy DUTs that may otherwise work. But as originating bug\u0027s DUT shows, you can\u0027t please all buggy DUT all the time because -- they\u0027re buggy.\n* Item (4) is the one I\u0027m more curious about, since it will cause us to diverge a bit from the ecosystem. There is a bit of safety in \"herd immunity\".\n* Item (5) is something we have to be cautious about, and enforce better behavior on TCPC AVL. But offset by ease of bringup/debugging caused by (1).\n\nThe main thing is we apply Rd before PS_RDY. As long as we have that, this timing tweak is an optional \"nice to have\" in my book\n\nSee: crrev/c/365532",
+      "revId": "a8ec9798afe8c0172d14240f82640a6ce06c1e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
