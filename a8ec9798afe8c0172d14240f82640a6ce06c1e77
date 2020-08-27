@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c6f2751_62a3d054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-27T02:15:58Z",
+      "side": 1,
+      "message": "Nathan suggested adding a DEBOUNCE timer to make sure Rd assertion has plenty of time to be present and stable.  The old check only looked to see that TC had moved into ATTACHED.SNK which does not require more than negligible time and has nothing to do with the actual Rd line being present or not.",
+      "revId": "a8ec9798afe8c0172d14240f82640a6ce06c1e77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
