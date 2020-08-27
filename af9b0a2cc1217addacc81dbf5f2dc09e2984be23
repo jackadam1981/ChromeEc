@@ -124,6 +124,24 @@
       "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fad0797b_ca5d5bc2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5711,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-27T17:09:51Z",
+      "side": 0,
+      "message": "they should be the same. There were three calls into pd_dfp_discovery_init and the startup covered two... the third is in a path that verifies PE_FLAGS_MODAL_OPERATION is already clear, so would be a NOP for that path",
+      "parentUuid": "8ef4611a_7dd4bd54",
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
