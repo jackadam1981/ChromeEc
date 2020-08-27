@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5e07765_5ddf73c5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:18:17Z",
+      "side": 1,
+      "message": "You missed this one.",
+      "range": {
+        "startLine": 181,
+        "startChar": 69,
+        "endLine": 181,
+        "endChar": 74
+      },
+      "revId": "306a1f95783ed26f8a92b32bd2eaee8f37d3679a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ba9146_501c9e1e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:18:17Z",
+      "side": 1,
+      "message": "Since this isn\u0027t referencing a spec, this should just be formatted the same way as the macro it references.",
+      "range": {
+        "startLine": 670,
+        "startChar": 27,
+        "endLine": 670,
+        "endChar": 42
+      },
+      "revId": "306a1f95783ed26f8a92b32bd2eaee8f37d3679a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef78e940_ce078cee",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:18:17Z",
+      "side": 1,
+      "message": "Nit: call",
+      "range": {
+        "startLine": 670,
+        "startChar": 59,
+        "endLine": 670,
+        "endChar": 63
+      },
+      "revId": "306a1f95783ed26f8a92b32bd2eaee8f37d3679a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1fed438_8a67d5e0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:18:17Z",
+      "side": 1,
+      "message": "Nit: will; shall has spec connotations.",
+      "range": {
+        "startLine": 670,
+        "startChar": 53,
+        "endLine": 670,
+        "endChar": 58
+      },
+      "revId": "306a1f95783ed26f8a92b32bd2eaee8f37d3679a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43359aaa_1640cf86",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:18:17Z",
+      "side": 1,
+      "message": "This function does a lot of semi-related things. It checks a condition, maybe sets context-specific failure indicators, and maybe sets a flag affecting future state machine operation. It\u0027s hard to describe concisely.\n\nI would prefer that it be separated. VDM-specific actions should be in VDM-specific states. It looks to me like there are 3 cases that a VDM entry function has to deal with uniquely: already VCONN Source, not VCONN Source and able to request swap, and not VCONN Source and not able to request swap. The latter two require a state change. How about something like this?\n\n/* pe_vdm_send_request_entry */\nif (!tc_is_vconn_src(port)) {\n    if (try_become_vconn_src(port)) {\n        return;\n    }\n}\n\n/* VDM child state entry functions */\nif (!tc_is_vconn_src(port)) {\n    /* VDM-specific failure call */\n    set_state_pe(port, previous state);\n    return;\n}\n\n/* This should have a better name */\nvoid try_become_vconn_src(port) {\n    if (vconn_swap_counter \u003c N_VCONN_SWAP_COUNT) {\n        ++vconn_swap_counter;\n        PE_SET_FLAG(VCONN_SWAP_TO_ON);\n        set_state_pe(port, previous_state);\n        /* Returns true if state changed, false otherwise */\n        return true;\n    }\n    return false;\n}",
+      "revId": "306a1f95783ed26f8a92b32bd2eaee8f37d3679a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53724afd_39348e0b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4397,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:18:17Z",
+      "side": 1,
+      "message": "Currently, this is redundant with the new code in the VDM child states. See above comment about organization.",
+      "range": {
+        "startLine": 4394,
+        "startChar": 1,
+        "endLine": 4397,
+        "endChar": 0
+      },
+      "revId": "306a1f95783ed26f8a92b32bd2eaee8f37d3679a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c6ba6a_733fc055",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 4471,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T16:18:17Z",
+      "side": 1,
+      "message": "In cases like this, we have to set the state back to the previous state. See above comment.",
+      "revId": "306a1f95783ed26f8a92b32bd2eaee8f37d3679a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
