@@ -70,6 +70,24 @@
       "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8421213d_9991f659",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5711,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T15:44:02Z",
+      "side": 0,
+      "message": "The only place I see that this would make a difference is in handling DPM_REQUEST_PORT_DISCOVERY. That request is only made in pd_chipset_startup, so we probably should be clearing DPM requests as well as modal operation. I think keeping the clears together is OK.\n\nThere might be room in here for a function to collect various reset actions for the PE that always happen together, but I don\u0027t think that needs to happen now.",
+      "parentUuid": "3f7f9869_8d4d2c6b",
+      "revId": "af9b0a2cc1217addacc81dbf5f2dc09e2984be23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
