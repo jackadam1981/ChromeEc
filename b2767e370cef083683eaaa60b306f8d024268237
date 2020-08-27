@@ -16,6 +16,24 @@
       "revId": "b2767e370cef083683eaaa60b306f8d024268237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c97da7_9ec522ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:20:33Z",
+      "side": 1,
+      "message": "We have an exception to source out to debug partners in S5.  Tom found the bug and CL for why we do this in the e-mail thread.  The other proposed fix for this issue was to remove that special-casing.",
+      "parentUuid": "4aefd9b5_5e7d55d0",
+      "revId": "b2767e370cef083683eaaa60b306f8d024268237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
