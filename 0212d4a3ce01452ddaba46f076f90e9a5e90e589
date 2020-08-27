@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc4144d0_cd9063aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-08-27T08:11:39Z",
+      "side": 1,
+      "message": "To avoid conflict. Should we cherry-pick cbi relation patches to octopus branch? Because we don\u0027t have FW_CONFIG and PCB_VENDOR on octopus branch. or only cherry-pick SSFC to branch?",
+      "revId": "0212d4a3ce01452ddaba46f076f90e9a5e90e589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
