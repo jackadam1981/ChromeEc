@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f842033_45904ffb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:47:44Z",
+      "side": 1,
+      "message": "Where are datasheets available to review the CL?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "0bd207ded4eed186c5c2e43d3e79d04717b9a9f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c54d2b_9e002065",
+        "filename": "board/magolor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:47:44Z",
+      "side": 1,
+      "message": "Please add the new cfet fields as well, if you have data for them.  They are used in the OCPC algorithm",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 29
+      },
+      "revId": "0bd207ded4eed186c5c2e43d3e79d04717b9a9f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee57d528_e6145395",
+        "filename": "board/magolor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T17:47:44Z",
+      "side": 1,
+      "message": "Will this board be using CONFIG_BATTERY_HW_PRESENT_CUSTOM?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 66
+      },
+      "revId": "0bd207ded4eed186c5c2e43d3e79d04717b9a9f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
