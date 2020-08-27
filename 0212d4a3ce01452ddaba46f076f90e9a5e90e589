@@ -16,6 +16,24 @@
       "revId": "0212d4a3ce01452ddaba46f076f90e9a5e90e589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d033d728_f0ff13f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2020-08-27T11:57:39Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to cherry pick SSFC related CLs to octopus since octopus will not use it. \nDiffer to Marco to have other ideas. Thanks!",
+      "parentUuid": "fc4144d0_cd9063aa",
+      "revId": "0212d4a3ce01452ddaba46f076f90e9a5e90e589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
