@@ -16,6 +16,24 @@
       "revId": "1914602211830f97b8790e6326fd1569e6072e21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c51ebbb_642542df",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-08-27T18:07:48Z",
+      "side": 1,
+      "message": "Yeah, I think that should be fine.",
+      "parentUuid": "87a51447_5ef00237",
+      "revId": "1914602211830f97b8790e6326fd1569e6072e21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
