@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c6fbdeb_9f5c86ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-27T15:41:09Z",
+      "side": 1,
+      "message": "Looks good. As discussed OOB, either fix the Google VID in this CL or in a CL preceding this one, so that we don\u0027t regress.",
+      "revId": "42b342974f1dbd352553a4fd6c806cee22073674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
