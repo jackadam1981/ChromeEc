@@ -22,6 +22,30 @@
       "revId": "f6e018b7780d68ee8864c44ea6aaaac8fb52a2d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e410670b_6ad2d9a4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3578,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-27T02:10:00Z",
+      "side": 0,
+      "message": "It is still used in one place... Maybe a future cleanup will add that to the list of messages handled with the new mechanism.",
+      "parentUuid": "2a73d4d4_46cb7dc9",
+      "range": {
+        "startLine": 3578,
+        "startChar": 5,
+        "endLine": 3578,
+        "endChar": 17
+      },
+      "revId": "f6e018b7780d68ee8864c44ea6aaaac8fb52a2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
