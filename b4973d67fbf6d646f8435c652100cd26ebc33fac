@@ -203,6 +203,30 @@
     },
     {
       "key": {
+        "uuid": "6ba7ba72_51a0f734",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e7a2944_2d91ba94",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1bae45f_4fb8f76e",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 1
@@ -217,6 +241,24 @@
       "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0502fc6_daaf56d8",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done!  After first correcting our union disc_ident_ack, of course",
+      "parentUuid": "b1bae45f_4fb8f76e",
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -240,6 +282,30 @@
       "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1692d098_8c272444",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3576cea5_0f097ff7",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 46
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -314,6 +380,30 @@
     },
     {
       "key": {
+        "uuid": "f1263739_95e964f1",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e86c212_3ddd7799",
+      "range": {
+        "startLine": 62,
+        "startChar": 43,
+        "endLine": 62,
+        "endChar": 51
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a9aef44_a8ff5743",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 1
@@ -361,6 +451,30 @@
     },
     {
       "key": {
+        "uuid": "191f6032_ab06982d",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done.  Theoretically.  I ran a lot of \"ectool typecdiscovery 0 0\" while loops during hard resets but I can\u0027t seem to capture an instant with BUSY (or with bad/incomplete data).",
+      "parentUuid": "f170fe4d_043919ae",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8c6efaf_0c0b1f0e",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -381,6 +495,30 @@
       "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571942f2_2b11ba08",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6278,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8c6efaf_0c0b1f0e",
+      "range": {
+        "startLine": 6278,
+        "startChar": 8,
+        "endLine": 6278,
+        "endChar": 30
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -407,6 +545,30 @@
     },
     {
       "key": {
+        "uuid": "08f1ee75_fc251751",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6281,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7c89694_d82fc4d9",
+      "range": {
+        "startLine": 6281,
+        "startChar": 1,
+        "endLine": 6281,
+        "endChar": 18
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9904280_404b7369",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -427,6 +589,30 @@
       "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "460e3657_91ed7886",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6283,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9904280_404b7369",
+      "range": {
+        "startLine": 6283,
+        "startChar": 1,
+        "endLine": 6283,
+        "endChar": 20
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -453,6 +639,30 @@
     },
     {
       "key": {
+        "uuid": "f4c2e9fc_981f1ece",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6288,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fb8a846_abaaffa9",
+      "range": {
+        "startLine": 6288,
+        "startChar": 10,
+        "endLine": 6288,
+        "endChar": 22
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "572a07fa_8d084766",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -473,6 +683,30 @@
       "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf24fa0e_8a956a50",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6294,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "572a07fa_8d084766",
+      "range": {
+        "startLine": 6294,
+        "startChar": 10,
+        "endLine": 6294,
+        "endChar": 18
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -547,6 +781,30 @@
     },
     {
       "key": {
+        "uuid": "a11149f1_adffdfaf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6299,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Yup, comes from the PD spec",
+      "parentUuid": "aafb2131_f8fd3ecc",
+      "range": {
+        "startLine": 6299,
+        "startChar": 24,
+        "endLine": 6299,
+        "endChar": 25
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e26b95f0_38487d46",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -570,6 +828,30 @@
     },
     {
       "key": {
+        "uuid": "c328c68f_a0e73e5e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6302,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e26b95f0_38487d46",
+      "range": {
+        "startLine": 6297,
+        "startChar": 0,
+        "endLine": 6302,
+        "endChar": 14
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0437e443_dfc84f1c",
         "filename": "util/ectool.c",
         "patchSetId": 1
@@ -590,6 +872,30 @@
       "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a36541a5_9bfc81a1",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 9354,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-27T22:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0437e443_dfc84f1c",
+      "range": {
+        "startLine": 9350,
+        "startChar": 0,
+        "endLine": 9354,
+        "endChar": 37
+      },
+      "revId": "b4973d67fbf6d646f8435c652100cd26ebc33fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
