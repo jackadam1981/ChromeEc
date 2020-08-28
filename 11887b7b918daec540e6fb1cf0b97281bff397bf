@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ea13693e_03072c81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-28T22:42:31Z",
+      "side": 1,
+      "message": "Works for me.",
+      "parentUuid": "24c07d32_da7b5081",
+      "revId": "11887b7b918daec540e6fb1cf0b97281bff397bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fb97792_56693718",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 2
