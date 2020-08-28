@@ -10,6 +10,7 @@
 #include "button.h"
 #include "cbi_ec_fw_config.h"
 #include "charge_manager.h"
+#include "charge_ramp.h"
 #include "charge_state.h"
 #include "charge_state_v2.h"
 #include "common.h"
@@ -45,6 +46,13 @@
 #include "util.h"
 
 #define SAFE_RESET_VBUS_MV 5000
+
+/*
+ * For legacy BC1.2 charging with CONFIG_CHARGE_RAMP_SW, ramp up input current
+ * until voltage drops to 4.5V. Don't go lower than this to be kind to the
+ * charger (see b/67964166).
+ */
+#define BC12_MIN_VOLTAGE 4500
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,
@@ -327,4 +335,18 @@ __override int isl9241_update_learn_mode(int chgnum, int enable)
 		reg &= ~ISL9241_CONTROL1_LEARN_MODE;
 
 	return isl9241_write(chgnum, ISL9241_REG_CONTROL1, reg);
+}
+
+/**
+ * Return if VBUS is sagging too low
+ */
+int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
+{
+	int voltage;
+
+	if (charger_get_vbus_voltage(port, &voltage))
+		voltage = 0;
+	ccprints("vbus %d", voltage);
+
+	return voltage < BC12_MIN_VOLTAGE;
 }
