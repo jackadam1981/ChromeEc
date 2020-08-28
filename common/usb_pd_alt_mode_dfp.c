@@ -869,6 +869,14 @@ __overridable enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 
 	return cable_mode_resp.tbt_cable_speed;
 }
+
+/* Return port partner's enter mode message */
+__overridable union tbt_dev_mode_enter_cmd pd_dfp_get_enter_mode(int port)
+{
+	union tbt_dev_mode_enter_cmd dfp_enter_mode = {.raw_value = 0};
+	return dfp_enter_mode;
+}
+
 /*
  * ############################################################################
  *

@@ -260,9 +260,11 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 	}
 }
 
-static void retimer_set_state_ufp(mux_state_t mux_state,
+static void retimer_set_state_ufp(int port, mux_state_t mux_state,
 				  uint32_t *set_retimer_con)
 {
+	union tbt_dev_mode_enter_cmd dfp_enter_mode;
+
 	if (mux_state & USB_PD_MUX_USB_ENABLED) {
 		/*
 		 * Bit 4: USB2_CONNECTION (ignored if BIT5=0).
@@ -288,28 +290,68 @@ static void retimer_set_state_ufp(mux_state_t mux_state,
 	  * For UFP, TBT_TYPE = 0
 	  */
 
-	/*
-	 * TODO: b/157163664: Add the following bits:
-	 *
-	 * Bit 2: RE_TIMER_DRIVER:
-	 * Set according to b20:19 of enter USB.
-	 *
-	 * Bit 18: CABLE_TYPE:
-	 * For Thunderbolt-compat mode, set according to bit 21 of enter mode.
-	 * For USB/DP/USB4, set according to bits 20:19 of enter mode.
-	 *
-	 * Bit 20: TBT_ACTIVE_LINK_TRAINING:
-	 * For Thunderbolt-compat mode, set according to bit 23 of enter mode.
-	 * For USB, set to 0.
-	 *
-	 * Bit 22: ACTIVE/PASSIVE
-	 * For USB4, set according to bits 20:19 of enter USB SOP.
-	 * For thubderbolt-compat mode, set according to bit 24 of enter mode.
-	 *
-	 * Bits 29-28: TBT_GEN_SUPPORT
-	 * For Thunderbolt-compat mode, set according to bits 20:19 of enter
-	 * mode.
-	 */
+	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
+		dfp_enter_mode = pd_dfp_get_enter_mode(port);
+		/*
+		 * Bit 2: RE_TIMER_DRIVER
+		 * 0 - Re-driver
+		 * 1 - Re-timer
+		 *
+		 * Set according to b22 of enter USB.
+		 */
+		if (dfp_enter_mode.retimer_type)
+			*set_retimer_con |= BB_RETIMER_RE_TIMER_DRIVER;
+
+		/*
+		 * Bit 18: CABLE_TYPE
+		 * 0 - Electrical cable
+		 * 1 - Optical cable
+		 *
+		 * Set according to bit 21 of enter mode.
+		 */
+		if (dfp_enter_mode.tbt_cable)
+			*set_retimer_con |= BB_RETIMER_TBT_CABLE_TYPE;
+
+		/*
+		 * Bit 20: TBT_ACTIVE_LINK_TRAINING
+		 * 0 - Active with bi-directional LSRX communication
+		 * 1 - Active with uni-directional LSRX communication
+		 *
+		 * Set according to bit 23 of enter mode. For USB, set to 0.
+		 */
+		if (dfp_enter_mode.lsrx_comm)
+			*set_retimer_con |= BB_RETIMER_TBT_ACTIVE_LINK_TRAINING;
+
+		/*
+		 * Bit 22: ACTIVE/PASSIVE
+		 * 0 - Passive cable
+		 * 1 - Active cable
+		 *
+		 * Set according to bit 24 of enter mode.
+		 */
+		if (dfp_enter_mode.cable)
+			*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
+
+		/*
+		 * Bit 27-25: TBT Cable speed
+		 * 000b - No functionality
+		 * 001b - USB3.1 Gen1 Cable
+		 * 010b - 10Gb/s
+		 * 011b - 10Gb/s and 20Gb/s
+		 * 10..11b - Reserved
+		 */
+		*set_retimer_con |= BB_RETIMER_USB4_TBT_CABLE_SPEED_SUPPORT(
+					dfp_enter_mode.tbt_cable_speed);
+		/*
+		 * Bits 29-28: TBT_GEN_SUPPORT
+		 * 00b - 3rd generation TBT (10.3125 and 20.625Gb/s)
+		 * 01b - 4th generation TBT (10.00005Gb/s, 10.3125Gb/s,
+		 *                           20.0625Gb/s, 20.000Gb/s)
+		 * 10..11b - Reserved
+		 */
+		*set_retimer_con |= BB_RETIMER_TBT_CABLE_GENERATION(
+				       dfp_enter_mode.tbt_rounded);
+	}
 }
 
 /**
@@ -409,7 +451,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 	if (pd_get_data_role(port) == PD_ROLE_DFP)
 		retimer_set_state_dfp(port, mux_state, &set_retimer_con);
 	else
-		retimer_set_state_ufp(mux_state, &set_retimer_con);
+		retimer_set_state_ufp(port, mux_state, &set_retimer_con);
 
 	/* Writing the register4 */
 	return bb_retimer_write(me, BB_RETIMER_REG_CONNECTION_STATE,
