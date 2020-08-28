@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5327d948_b842df90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-28T17:50:21Z",
+      "side": 1,
+      "message": "It looks like this is setting up something like a weak reader lock, where the writer acquires the lock unilaterally and does what it wants, and the reader acquires the lock speculatively and checks whether its operation was valid after it completes. The actual usage is not immediately obvious from the function declarations in usb_pd.h. (The writer might with some difficulty be written to defer to other accesses.) I think it would be helpful to spell out the synchronization scheme in more detail in comments somewhere.",
+      "revId": "11887b7b918daec540e6fb1cf0b97281bff397bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fb97792_56693718",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-28T17:50:21Z",
+      "side": 1,
+      "message": "Nit: Extra line",
+      "revId": "11887b7b918daec540e6fb1cf0b97281bff397bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
