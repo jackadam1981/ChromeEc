@@ -3840,6 +3840,9 @@
 /* Support for USB PD alternate mode of Downward Facing Port */
 #undef CONFIG_USB_PD_ALT_MODE_DFP
 
+/* Support for USB PD alternate mode of Upward Facing Port */
+#undef CONFIG_USB_PD_ALT_MODE_UFP
+
 /* HPD is sent to the GPU from the EC via a GPIO */
 #undef CONFIG_USB_PD_DP_HPD_GPIO
 
@@ -4854,6 +4857,16 @@
 # if !defined(CONFIG_USB_PD_ALT_MODE_DFP)
 #error CONFIG_USB_PD_ALT_MODE_DFP must be enabled for USB4 mode support
 #endif
+#endif
+
+/******************************************************************************/
+/*
+ * If CONFIG_USBC_SS_MUX_DFP_ONLY is enabled, make sure
+ * CONFIG_USB_PD_ALT_MODE_UFP is not enabled
+ */
+#ifdef CONFIG_USBC_SS_MUX_DFP_ONLY
+#if defined(CONFIG_USB_PD_ALT_MODE_UFP)
+#error port cannot be UFP when CONFIG_USBC_SS_MUX_DFP_ONLY is enabled
 #endif
 
 /******************************************************************************/
