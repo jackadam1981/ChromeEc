@@ -131,6 +131,11 @@ static const uint32_t vdo_dfp = VDO_DFP(
 				 USB_TYPEC_RECEPTACLE,
 				 1  /* Port 1 */);
 
+__override union tbt_dev_mode_enter_cmd pd_ufp_get_enter_mode(int port)
+{
+	return ufp_enter_mode[port];
+}
+
 static int svdm_tbt_compat_response_identity(int port, uint32_t *payload)
 {
 	/* TODO(b/154962766): Get an XID */
