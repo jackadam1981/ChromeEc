@@ -225,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "29a44b81_d30a5cbe",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-28T18:01:37Z",
+      "side": 1,
+      "message": "All of the VDM request states have PE_VDM_SEND_REQUEST as their parent, so they will all do the \"3 tries\" logic. The failure logic won\u0027t be executed unless the 3 tries have already been exhausted.",
+      "parentUuid": "b0a3b5ee_e20b964b",
+      "revId": "306a1f95783ed26f8a92b32bd2eaee8f37d3679a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53724afd_39348e0b",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 4

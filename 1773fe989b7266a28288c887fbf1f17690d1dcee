@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "350d9a4a_d2f91c71",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-28T18:01:37Z",
+      "side": 1,
+      "message": "Comment that it returns true if it changed the PE state.",
+      "revId": "1773fe989b7266a28288c887fbf1f17690d1dcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "909ccc10_93ec8a2b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 4408,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-28T18:01:37Z",
+      "side": 1,
+      "message": "This failure reporting mechanism is specific to DPM-directed VDM requests. It should be in pe_vdm_request_dpm_entry with logic similar to that in the discovery request entry functions.",
+      "range": {
+        "startLine": 4406,
+        "startChar": 0,
+        "endLine": 4408,
+        "endChar": 43
+      },
+      "revId": "1773fe989b7266a28288c887fbf1f17690d1dcee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
