@@ -113,6 +113,11 @@ const uint32_t vdo_ufp1 = VDO_UFP1(0x5, /* USB2.0, USB3.2 device capable */
 const uint32_t vdo_dfp = VDO_DFP(7, /* USB2.0, USB3.2 and USB4 host capable */
 				 1  /* Port 1 */);
 
+__overridable union tbt_dev_mode_enter_cmd pd_ufp_get_enter_mode(int port)
+{
+	return ufp_enter_mode[port];
+}
+
 static int svdm_tbt_compat_response_identity(int port, uint32_t *payload)
 {
 	payload[VDO_I(IDH)] = vdo_idh;
