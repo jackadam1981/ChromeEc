@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc70e92c_66cf9572",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-28T19:50:48Z",
+      "side": 1,
+      "message": "\u003e \"indicies\" is a possible misspelling of \"indices\".\n\nPlease fix.",
+      "parentUuid": "3526d405_6b02709b",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "e8dc6477bafcc5b48bb44257f6ef22e1d7058264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "923f7f6b_3c80b427",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-28T19:50:48Z",
+      "side": 1,
+      "message": "\u003e \"Mininum\" is a possible misspelling of \"Minimum\".\n\nPlease fix.",
+      "parentUuid": "db4f197f_a56584b5",
+      "range": {
+        "startLine": 642,
+        "startChar": 3,
+        "endLine": 642,
+        "endChar": 10
+      },
+      "revId": "e8dc6477bafcc5b48bb44257f6ef22e1d7058264",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
