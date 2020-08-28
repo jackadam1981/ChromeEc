@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51536f06_4b13eb53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-28T16:28:59Z",
+      "side": 1,
+      "message": "This is a WIP pretty much because the unit test hack that I used to get around adding the new messages. The other code worked fine for me and I actually added a DRP Request in the code based on the partner being unconstrained and it swapped as I expected.  Since testing expects the roles to be what they ask for in PR_Swap testing, I did not keep that part of the code in place.",
+      "revId": "f8ff20f93fe9b06eab28ea52324ba09cacb28346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
