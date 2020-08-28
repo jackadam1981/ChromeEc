@@ -354,7 +354,9 @@ DECLARE_CONSOLE_COMMAND(crash, command_crash,
 
 static int command_panicinfo(int argc, char **argv)
 {
-	if (pdata_ptr->magic == PANIC_DATA_MAGIC) {
+	struct panic_data * const pdata_ptr = panic_get_data();
+
+	if (pdata_ptr) {
 		ccprintf("Saved panic data:%s\n",
 			 (pdata_ptr->flags & PANIC_DATA_FLAG_OLD_CONSOLE ?
 			  "" : " (NEW)"));
@@ -364,7 +366,8 @@ static int command_panicinfo(int argc, char **argv)
 		/* Data has now been printed */
 		pdata_ptr->flags |= PANIC_DATA_FLAG_OLD_CONSOLE;
 	} else {
-		ccprintf("No saved panic data available.\n");
+		ccprintf("No saved panic data available "
+		    "or panic data can't be safely interpreted.\n");
 	}
 	return EC_SUCCESS;
 }
@@ -377,13 +380,20 @@ DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo,
 
 enum ec_status host_command_panic_info(struct host_cmd_handler_args *args)
 {
-	if (pdata_ptr->magic == PANIC_DATA_MAGIC) {
-		ASSERT(pdata_ptr->struct_size <= args->response_max);
-		memcpy(args->response, pdata_ptr, pdata_ptr->struct_size);
-		args->response_size = pdata_ptr->struct_size;
+	uint32_t pdata_size = get_panic_data_size();
+	uintptr_t pdata = get_panic_data_start();
+	struct panic_data * pdata_str;
 
-		/* Data has now been returned */
-		pdata_ptr->flags |= PANIC_DATA_FLAG_OLD_HOSTCMD;
+	if (pdata && pdata_size > 0) {
+		ASSERT(pdata_size <= args->response_max);
+		memcpy(args->response, (void *)pdata, pdata_size);
+		args->response_size = pdata_size;
+
+		pdata_str = panic_get_data();
+		if (pdata_str) {
+			/* Data has now been returned */
+			pdata_str->flags |= PANIC_DATA_FLAG_OLD_HOSTCMD;
+		}
 	}
 
 	return EC_RES_SUCCESS;
