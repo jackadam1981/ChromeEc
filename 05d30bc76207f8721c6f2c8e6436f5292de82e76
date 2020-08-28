@@ -94,6 +94,30 @@
       "revId": "05d30bc76207f8721c6f2c8e6436f5292de82e76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "398c0927_b93023f5",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-08-28T10:37:00Z",
+      "side": 1,
+      "message": "Q.Would the deep sleep mode mean CONFIG_LOW_POWER_S0 is invalid to use with the ITE driver (allows EC to deep sleep while AP is in S0 and no peripherals are connected, when we would normally be toggling)?\nA.On reef_it8320, base on this CL, I also add CONFIG_LOW_POWER_S0 with and without both low power/auto toggle, then connect to adapter/dongle, pd state can go to SNK/SRC_Ready without any error. \nBut if we need to enable CONFIG_LOW_POWER_S0, then ESPI wakeup interrupt need to be verified more.\n\u003cp.s\u003e reef_it8320 is LPC interface, and it was verified.\n \n\nQ.Let\u0027s add to this comment here that Lower power mode in idle_task means we are not receiving PD messages but we can still toggle the CC lines. (just to help future developers know what this low power mode means).\nA.OK, I may let TCPMv2 to handle SLEEP_MASK_USB_PD, after verify, I will re-visit here. \n\n\nQ.If the PD task checks every 5ms, will we enter Deep Doze state (I could only find a reference to a 250us window before next timer event to prevent sleep)? If we do, then we will wake up, power the PD module and change the CC lines termination when we are auto-toggling, right?\nA.Yes, you\u0027re right.\nIn S0 state without CONFIG_LOW_POWER_S0: \nThe SLEEP_MASK_AP_RUN is always set, so we won\u0027t enter deep sleep state.\n\nIn S0 state with CONFIG_LOW_POWER_S0: \nThe SLEEP_MASK_AP_RUN is always ignored, so we will enter deep sleep state, then timer wakeup PD task every 5ms and PD task change the CC lines termination.",
+      "parentUuid": "5f043745_145c7db1",
+      "range": {
+        "startLine": 668,
+        "startChar": 1,
+        "endLine": 671,
+        "endChar": 4
+      },
+      "revId": "05d30bc76207f8721c6f2c8e6436f5292de82e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
