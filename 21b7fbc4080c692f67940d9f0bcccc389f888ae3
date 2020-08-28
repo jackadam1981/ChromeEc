@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a1edbb0a_0c44d13d",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-28T17:44:11Z",
+      "side": 1,
+      "message": "I consistently see this done for gpio.inc files in all other projects. I thinking folding them to keep the 80 char limit messes up readability way too much for this file.",
+      "parentUuid": "e8b82c79_2baae7af",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 87
+      },
+      "revId": "21b7fbc4080c692f67940d9f0bcccc389f888ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e758cd6_afb7f0e3",
         "filename": "board/quiche/gpio.inc",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2020-08-15T00:35:45Z",
       "side": 1,
       "message": "80+. You can fold them by \u0027\\\u0027.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 88
+      },
+      "revId": "21b7fbc4080c692f67940d9f0bcccc389f888ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82d8ec2d_520dbcd6",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-28T17:44:11Z",
+      "side": 1,
+      "message": "I consistently see this done for gpio.inc files in all other projects. I thinking folding them to keep the 80 char limit messes up readability way too much for this file.",
+      "parentUuid": "3e758cd6_afb7f0e3",
       "range": {
         "startLine": 124,
         "startChar": 0,
