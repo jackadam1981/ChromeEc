@@ -869,6 +869,7 @@ __overridable enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 
 	return cable_mode_resp.tbt_cable_speed;
 }
+
 /*
  * ############################################################################
  *
