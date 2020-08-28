@@ -34,6 +34,24 @@
       "revId": "0212d4a3ce01452ddaba46f076f90e9a5e90e589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a51565a_ec60013b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-08-28T01:10:46Z",
+      "side": 1,
+      "message": "If we want to support SSFC to octopus. we should cherry-pick FW_CONFIG and PCB_VENDOR into octopus. or CBI_TAG_COUNT will get wrong. How do you think Macro?",
+      "parentUuid": "d033d728_f0ff13f4",
+      "revId": "0212d4a3ce01452ddaba46f076f90e9a5e90e589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
