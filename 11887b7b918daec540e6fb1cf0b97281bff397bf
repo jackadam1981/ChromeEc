@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "24c07d32_da7b5081",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-28T22:39:13Z",
+      "side": 1,
+      "message": "See what you think of the comment changes",
+      "parentUuid": "5327d948_b842df90",
+      "revId": "11887b7b918daec540e6fb1cf0b97281bff397bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fb97792_56693718",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "11887b7b918daec540e6fb1cf0b97281bff397bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6fdefc3_7ae9c529",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-08-28T22:39:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb97792_56693718",
+      "revId": "11887b7b918daec540e6fb1cf0b97281bff397bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
