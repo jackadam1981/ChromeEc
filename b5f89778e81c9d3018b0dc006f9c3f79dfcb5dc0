@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ddd82374_7948eeab",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-28T19:25:09Z",
+      "side": 1,
+      "message": "The TRM (RM0440) section 4.4 has an inconsistency in the documentation. The key is that there are 2 WRP areas, which they refer to as WRP1A and WRP1B. In the box below that heading they have WRP2A_start and WRP1B_end listed. I went with WRP1B since that also matches how the shadow registers are named as well. Note that the option bytes lives both in 0x1FFF7800 (flash space) and via flash register address in AHB1 address space. The driver uses the AHB1 registers to read/write the option bytes.",
+      "parentUuid": "5a4184bc_b204ed20",
+      "range": {
+        "startLine": 804,
+        "startChar": 8,
+        "endLine": 804,
+        "endChar": 25
+      },
+      "revId": "b5f89778e81c9d3018b0dc006f9c3f79dfcb5dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "464cc492_ade8ccc3",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 18
@@ -45,6 +69,30 @@
       "revId": "b5f89778e81c9d3018b0dc006f9c3f79dfcb5dc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569d7ead_2b06c043",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-28T19:25:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "464cc492_ade8ccc3",
+      "range": {
+        "startLine": 807,
+        "startChar": 32,
+        "endLine": 807,
+        "endChar": 77
+      },
+      "revId": "b5f89778e81c9d3018b0dc006f9c3f79dfcb5dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
