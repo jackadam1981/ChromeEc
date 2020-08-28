@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "755bfb79_c8e13c2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-08-28T15:02:27Z",
+      "side": 1,
+      "message": "I uploaded version 2 of fix https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2381714/1",
+      "revId": "ca2aed8850495a876bc9dc3161f74b6051206d64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d8fa0da_5697fe29",
         "filename": "common/panic_output.c",
         "patchSetId": 2
