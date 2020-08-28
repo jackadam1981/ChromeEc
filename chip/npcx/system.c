@@ -278,7 +278,7 @@ void chip_panic_data_backup(void)
 
 static void chip_panic_data_restore(void)
 {
-	struct panic_data *d = PANIC_DATA_PTR;
+	struct panic_data *d;
 
 	/* Ensure BBRAM is valid. */
 	if (!bbram_valid(BKUP_CFSR, 4))
@@ -289,9 +289,13 @@ static void chip_panic_data_restore(void)
 	      BKUP_PANIC_DATA_VALID))
 		return;
 
-	memset(d, 0, sizeof(*d));
+	d = get_panic_data_write();
+
+	ASSERT(d == PANIC_DATA_PTR);
+
+	memset(d, 0, CONFIG_PANIC_DATA_SIZE);
 	d->magic = PANIC_DATA_MAGIC;
-	d->struct_size = sizeof(*d);
+	d->struct_size = CONFIG_PANIC_DATA_SIZE;
 	d->struct_version = 2;
 	d->arch = PANIC_ARCH_CORTEX_M;
 
