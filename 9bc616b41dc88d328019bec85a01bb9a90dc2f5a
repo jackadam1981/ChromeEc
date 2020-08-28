@@ -73,6 +73,23 @@
     },
     {
       "key": {
+        "uuid": "8c3b7193_badf722d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-08-28T15:01:53Z",
+      "side": 1,
+      "message": "I uploaded version 2 of fix https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2381714/1",
+      "revId": "9bc616b41dc88d328019bec85a01bb9a90dc2f5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec4ddd49_0b1be67a",
         "filename": "common/system.c",
         "patchSetId": 2
