@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "27c66215_7c788b28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-08-28T19:38:01Z",
+      "side": 1,
+      "message": "Note public unit test building seems to be broken before this change. b/166807240",
+      "revId": "138556f18a3e5d812dd2b4e5d094d525447eaa6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a03ab132_9e4f27bd",
         "filename": "include/mock/fp_sensor_mock.h",
         "patchSetId": 1
