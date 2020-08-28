@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77b64bbd_b5dc341f",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-28T01:16:05Z",
+      "side": 0,
+      "message": "done",
+      "parentUuid": "7b4d3b92_8cf7f681",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 0
+      },
+      "revId": "c2ecdc3e62b88aeca159337705ad231dbb9f7e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75a340ab_402404c8",
         "filename": "common/charger.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "c2ecdc3e62b88aeca159337705ad231dbb9f7e0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "892e9de7_b8d92472",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-28T01:16:05Z",
+      "side": 0,
+      "message": "done",
+      "parentUuid": "75a340ab_402404c8",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 0
+      },
+      "revId": "c2ecdc3e62b88aeca159337705ad231dbb9f7e0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
