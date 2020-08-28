@@ -509,6 +509,9 @@ static struct policy_engine {
 	/* Active alternate modes */
 	struct partner_active_modes partner_amodes[AMODE_TYPE_COUNT];
 
+	/* Port partner's enter mode information */
+	union tbt_dev_mode_enter_cmd dfp_enter_mode;
+
 	/* Partner type to send */
 	enum tcpm_transmit_type tx_type;
 
@@ -5671,6 +5674,11 @@ void pd_set_dfp_enter_mode_flag(int port, bool set)
 		PE_CLR_FLAG(port, PE_FLAGS_MODAL_OPERATION);
 }
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+
+union tbt_dev_mode_enter_cmd pd_dfp_get_enter_mode(int port)
+{
+	return pe[port].dfp_enter_mode;
+}
 
 const char *pe_get_current_state(int port)
 {

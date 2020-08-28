@@ -118,6 +118,12 @@ enum pd_rev_type get_usb_pd_cable_revision(int port)
 	return cable[port].rev;
 }
 
+union tbt_dev_mode_enter_cmd pd_dfp_get_enter_mode(int port)
+{
+	union tbt_dev_mode_enter_cmd dfp_enter_mode = {.raw_value = 0};
+	return dfp_enter_mode;
+}
+
 bool consume_sop_prime_repeat_msg(int port, uint8_t msg_id)
 {
 
