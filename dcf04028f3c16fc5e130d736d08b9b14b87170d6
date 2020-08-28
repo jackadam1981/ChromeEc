@@ -22,6 +22,30 @@
       "revId": "dcf04028f3c16fc5e130d736d08b9b14b87170d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52aa3c13_230e367a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5007,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-08-28T03:54:33Z",
+      "side": 1,
+      "message": "Construct new VDM header with requester\u0027s SVID.\nDone.",
+      "parentUuid": "dde23be0_ba5a6c53",
+      "range": {
+        "startLine": 5007,
+        "startChar": 3,
+        "endLine": 5007,
+        "endChar": 42
+      },
+      "revId": "dcf04028f3c16fc5e130d736d08b9b14b87170d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
