@@ -1635,6 +1635,14 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
 		uint16_t svid, int opos);
 
 /**
+ * Return Enter mode command data received from the port partner
+ *
+ * @param port     USB-C port number
+ * @return enter mode data requested to the UFP
+ */
+__overridable union tbt_dev_mode_enter_cmd pd_ufp_get_enter_mode(int port);
+
+/**
  *  Get DisplayPort pin mode for DFP to request from UFP's capabilities.
  *
  * @param port     USB-C port number.
