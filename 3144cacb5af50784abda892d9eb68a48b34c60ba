@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "742b751a_f6855da3",
+        "filename": "board/morphius/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-28T19:15:24Z",
+      "side": 1,
+      "message": "nit: appears more complicated than maybe it needs to look.  I think either of these would read better.\n\n\t\treturn (board_ver \u003e\u003d 4)\n\t\t\t\t? GPIO_USB_C1_HPD_IN_DB_V1\n\t\t\t\t: (board_ver \u003d\u003d 3)\n\t\t\t\t\t? IOEX_USB_C1_HPD_IN_DB\n\t\t\t\t\t: GPIO_EC_DP1_HPD;\n\nor\n\n\t\t{\n\t\t\tif (board_ver \u003e\u003d 4)\n\t\t\t\treturn GPIO_USB_C1_IN_DB_V1;\n\t\t\telse if (board_ver \u003d\u003d 3)\n\t\t\t\treturn IOEX_USB_C1_HPD_IN_DB;\n\t\t\telse\n\t\t\t\treturn GPIO_EC_DP1_HPD;\n\t\t}",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 0
+      },
+      "revId": "3144cacb5af50784abda892d9eb68a48b34c60ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
