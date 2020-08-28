@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "167d491c_9aee3e4a",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-28T03:41:58Z",
+      "side": 1,
+      "message": "The tcpc_alert_event() has the same approach, See baseboard/volteer/baseboard.c for example usage.",
+      "parentUuid": "f474d579_a6e63906",
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ad28c22_54c8aafc",
         "filename": "board/halvor/board.c",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "652cf439_31419b4a",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-28T03:41:58Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "9ad28c22_54c8aafc",
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "220ce54c_9259ac7a",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-28T03:41:58Z",
+      "side": 1,
+      "message": "They use the same I2C port 3.\nSee https://partnerissuetracker.corp.google.com/issues/150358736#comment31",
+      "parentUuid": "17006bb4_5d1b3662",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 2
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "930f38de_9e961e04",
         "filename": "board/halvor/board.c",
         "patchSetId": 6
@@ -79,6 +139,30 @@
       "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ba4bd1a_bcefe793",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-28T03:41:58Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "930f38de_9e961e04",
+      "range": {
+        "startLine": 381,
+        "startChar": 12,
+        "endLine": 381,
+        "endChar": 31
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "8ef1c8df_fdd2c111",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-28T03:41:58Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "8cfe5c00_46787100",
+      "range": {
+        "startLine": 421,
+        "startChar": 1,
+        "endLine": 421,
+        "endChar": 5
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae2f8874_66770a64",
         "filename": "board/halvor/board.h",
         "patchSetId": 6
@@ -125,6 +233,30 @@
       "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d52f962_b9fa5fcb",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-28T03:41:58Z",
+      "side": 1,
+      "message": "They are not the same.\nSee https://partnerissuetracker.corp.google.com/issues/150309672#comment12",
+      "parentUuid": "ae2f8874_66770a64",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 45
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
