@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "938721f4_bd47a3e2",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-28T04:37:36Z",
+      "side": 1,
+      "message": "off",
+      "range": {
+        "startLine": 94,
+        "startChar": 9,
+        "endLine": 94,
+        "endChar": 11
+      },
+      "revId": "4644a650c3734f06943bde71c0f36646111ded0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04674850_45742821",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2020-08-28T04:37:36Z",
+      "side": 1,
+      "message": "I don\u0027t understand, you actually turn this off if the device supports Z-state too, right?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 60
+      },
+      "revId": "4644a650c3734f06943bde71c0f36646111ded0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
