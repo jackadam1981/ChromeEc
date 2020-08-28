@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "cca7a31b_22d8b585",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-28T18:34:29Z",
+      "side": 1,
+      "message": "I believe the approach would be improved by an ASSERT(port !\u003d -1) before the call to schedule_deferred_pd_interrupt.",
+      "parentUuid": "167d491c_9aee3e4a",
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ad28c22_54c8aafc",
         "filename": "board/halvor/board.c",
         "patchSetId": 6
@@ -119,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "bcee4ee3_3b97c315",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-28T18:34:29Z",
+      "side": 1,
+      "message": "See questions in http://b/153705222#comment7.",
+      "parentUuid": "220ce54c_9259ac7a",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 2
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "930f38de_9e961e04",
         "filename": "board/halvor/board.c",
         "patchSetId": 6
@@ -163,6 +205,30 @@
       "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f1c0c3c_8b5c64d0",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-28T18:34:29Z",
+      "side": 1,
+      "message": "It still has \"tcpc\" in the name. Can you call it board_usb_chip_init or something?",
+      "parentUuid": "7ba4bd1a_bcefe793",
+      "range": {
+        "startLine": 381,
+        "startChar": 12,
+        "endLine": 381,
+        "endChar": 31
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -257,6 +323,30 @@
       "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0abdd05c_b338ad80",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-28T18:34:29Z",
+      "side": 1,
+      "message": "See questions in http://b/153705222#comment7.",
+      "parentUuid": "8d52f962_b9fa5fcb",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 45
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
