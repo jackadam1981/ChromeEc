@@ -46,6 +46,30 @@
       "revId": "eaa4d4ba2010c0ba366302865d2ddf5e9e17abc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96abb10c_884d534e",
+        "filename": "baseboard/zork/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2020-08-28T08:05:00Z",
+      "side": 1,
+      "message": "Or we should block writing CONTROL1 after reading bad high byte value 0xFF?",
+      "parentUuid": "6b2fff1d_366dceda",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 0
+      },
+      "revId": "eaa4d4ba2010c0ba366302865d2ddf5e9e17abc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
