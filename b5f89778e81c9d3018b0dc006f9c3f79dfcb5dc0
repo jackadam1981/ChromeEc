@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a4184bc_b204ed20",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-28T17:40:01Z",
+      "side": 1,
+      "message": "This looks different from the datasheet I\u0027m looking at. It\u0027s \"WRP2 Area A address option bytes\". Any comment?",
+      "range": {
+        "startLine": 804,
+        "startChar": 8,
+        "endLine": 804,
+        "endChar": 25
+      },
+      "revId": "b5f89778e81c9d3018b0dc006f9c3f79dfcb5dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "464cc492_ade8ccc3",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-28T17:40:01Z",
+      "side": 1,
+      "message": "nit: STM32_FLASH_REG(0x20 + (n*4))",
+      "range": {
+        "startLine": 807,
+        "startChar": 32,
+        "endLine": 807,
+        "endChar": 77
+      },
+      "revId": "b5f89778e81c9d3018b0dc006f9c3f79dfcb5dc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
