@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c4273bd8_a9fbe218",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-28T18:52:10Z",
+      "side": 1,
+      "message": "Please add a note on the flash impact.  See CL:2381031 for the size impact.",
+      "revId": "f174f26bc925174e5510b64ec2223b3f04743a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9e9fe95_ff5b8da7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -30,6 +47,23 @@
       "writtenOn": "2020-08-28T18:03:59Z",
       "side": 1,
       "message": "I don\u0027t have a problem with this. Keith?",
+      "revId": "f174f26bc925174e5510b64ec2223b3f04743a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62ae3610_5adec525",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-28T18:52:10Z",
+      "side": 1,
+      "message": "I also posted CL:2381031 to do the same thing.  I\u0027ll abandon that CL.",
       "revId": "f174f26bc925174e5510b64ec2223b3f04743a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
