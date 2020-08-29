@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5639f06_b97f1a09",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-29T01:48:45Z",
+      "side": 1,
+      "message": "is it necessary? Won\u0027t sensor be NULL: see host_sensor_id_to_real_sensor line 989.\nBeside, kernel can send DUMP command unconditionally, let\u0027s reply without error there are no sensors.",
+      "revId": "33bdef14b732a74143d06ca26cdbe1ef6097fa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1045fed_b0109e33",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-29T01:48:45Z",
+      "side": 1,
+      "message": "To solve the problem, let\u0027s introduce a new variable:\nMAX_MOTION_SENSORS. \nIf MOTION_SENSE_ACTIVITY_SENSOR_ID is defined\n#define MAX_MOTION_SENSORS (SENSOR_COUNT + 1)\nelse\n#define MAX_MOTION_SENSORS (SENSOR_COUNT)\n\nAnd use that in the fifo code.",
+      "revId": "33bdef14b732a74143d06ca26cdbe1ef6097fa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d2987b_65a02384",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-29T01:48:45Z",
+      "side": 1,
+      "message": "This has to stay if motion_sensor_count is altered.\nWe assume there are not gap in sensor id, and motion_sensor_count is the right number of sensors.",
+      "revId": "33bdef14b732a74143d06ca26cdbe1ef6097fa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9763e6ac_ef8e5136",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-29T01:48:45Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "33bdef14b732a74143d06ca26cdbe1ef6097fa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
