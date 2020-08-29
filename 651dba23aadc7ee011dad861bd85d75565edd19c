@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c28220ba_0ef122fe",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-29T00:57:01Z",
+      "side": 1,
+      "message": "not your fix, but it should be:\n#ifdef CONFIG_ACCEL_SPOOF_MODE\nif (s-\u003eflags \u0026 MOTIONSENSE_FLAG_IN_SPOOF_MODE)\n   last_v[X] \u003d s-\u003espoof_xyz[X];\n#endif\n \nThen\nvector.flags \u003d 0;\nvector.udata[X] \u003d ec_motion_sensor_clamp_u16(last_v[X]);\nvector.udata[Y] \u003d 0;\nvector.udata[Z] \u003d 0;",
+      "revId": "651dba23aadc7ee011dad861bd85d75565edd19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a174b061_b90d341d",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-29T00:57:01Z",
+      "side": 1,
+      "message": "not your bug: replace rgb_s\u003eraw_xyz with last_v",
+      "revId": "651dba23aadc7ee011dad861bd85d75565edd19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8808a525_efad183b",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-29T00:57:01Z",
+      "side": 1,
+      "message": "since last_v and xyz_data are 32 bits (could xyz_data be int as well?),\nuse memcpy()",
+      "revId": "651dba23aadc7ee011dad861bd85d75565edd19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "974c7814_ca52da5f",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-29T00:57:01Z",
+      "side": 1,
+      "message": "Call memcpy(last_v, rgb_s-\u003espoof_xyz)",
+      "revId": "651dba23aadc7ee011dad861bd85d75565edd19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afac9c7b_673d874a",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2020-08-29T00:57:01Z",
+      "side": 1,
+      "message": "I think we can factorize the code and use ec_motion_sensor_clamp_u16s(vector.udata, last_v);",
+      "revId": "651dba23aadc7ee011dad861bd85d75565edd19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
