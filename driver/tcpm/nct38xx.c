@@ -113,8 +113,7 @@ int nct38xx_tcpm_set_cc(int port, int pull)
 {
 	/*
 	 * Setting the CC lines to open/open requires that the NCT CTRL_OUT
-	 * register has sink disabled. Otherwise the following happens, as
-	 * described by Nuvoton:
+	 * register has sink disabled. Otherwise, when no battery is connected:
 	 *
 	 * 1. You set CC lines to Open/Open. This is physically happening on
 	 *    the CC line.
@@ -128,14 +127,28 @@ int nct38xx_tcpm_set_cc(int port, int pull)
 	 */
 	if (pull == TYPEC_CC_OPEN) {
 		int rv;
+		bool is_sinking;
 
-		/* Disable SNKEN, it will be re-enabled in tcpm_init path */
-		rv = tcpc_update8(port,
-				  NCT38XX_REG_CTRL_OUT_EN,
-				  NCT38XX_REG_CTRL_OUT_EN_SNKEN,
-				  MASK_CLR);
+		rv = tcpm_get_snk_ctrl(port, &is_sinking);
 		if (rv)
 			return rv;
+
+		/*
+		 * Disabling SNKEN makes the VBSNK_EN pin Hi-Z, so
+		 * USB_Cx_TCPC_VBSNK_EN_L will be asserted by external
+		 * pull-down, so only do so if already sinking, otherwise
+		 * both source and sink switches can be closed, which should
+		 * never happen (b/166850036).
+		 */
+		if (is_sinking) {
+			rv = tcpc_update8(port,
+					  NCT38XX_REG_CTRL_OUT_EN,
+					  NCT38XX_REG_CTRL_OUT_EN_SNKEN,
+					  MASK_CLR);
+			if (rv)
+				return rv;
+			/* SNKEN will be re-enabled in tcpm_init path */
+		}
 	}
 
 	return tcpci_tcpm_set_cc(port, pull);
