@@ -370,3 +370,21 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 
 	return voltage < BC12_MIN_VOLTAGE;
 }
+
+void read_temp(void);
+DECLARE_DEFERRED(read_temp);
+DECLARE_HOOK(HOOK_INIT, read_temp, HOOK_PRIO_DEFAULT);
+
+#include "sb_tsi.h"
+
+void read_temp(void)
+{
+	int rv;
+	int reg;
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		rv = i2c_read8(I2C_PORT_THERMAL_AP, SB_TSI_I2C_ADDR_FLAGS, SB_TSI_TEMP_H, &reg);
+		if (rv)
+			ccprints("sbtsi rv %d", rv);
+	}
+	hook_call_deferred(&read_temp_data, MSEC);
+}
