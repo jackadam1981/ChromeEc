@@ -941,6 +941,9 @@ int chip_i2c_xfer(const int port,
 
 	CPRINTS("-Err:0x%02x", p_status->err_code);
 
+	if (p_status->err_code != SMB_OK)
+		ccprints("i2c %d 0x%x err %d", port, slave_addr_flags, p_status->err_code);
+
 	return (p_status->err_code == SMB_OK) ? EC_SUCCESS : EC_ERROR_UNKNOWN;
 }
 
