@@ -93,6 +93,30 @@
       "revId": "21b7fbc4080c692f67940d9f0bcccc389f888ae3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "263650d1_57586df9",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-08-30T04:19:45Z",
+      "side": 1,
+      "message": "I know we exceed 80 chars in gpio.inc but I think we shouldn\u0027t do it. I think most people set column width to 80 for Gerrit and their editors because most other files follow the 80 column rule. It\u0027s difficult to read and review.\n\n\u003e I thinking folding them to keep the 80 char limit messes up readability way too much for this file.\n\nI see most of the 80+ lines are due to redundant spaces and inline comments. So, I think we can make them fit without losing the readability.",
+      "parentUuid": "82d8ec2d_520dbcd6",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 88
+      },
+      "revId": "21b7fbc4080c692f67940d9f0bcccc389f888ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
