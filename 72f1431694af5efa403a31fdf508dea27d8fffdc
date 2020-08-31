@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "563a54c9_f2e083f5",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-08-31T19:17:51Z",
+      "side": 1,
+      "message": "how about making these part of common code?\nlet overridable functions handle changes in board files",
+      "revId": "72f1431694af5efa403a31fdf508dea27d8fffdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
