@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ff421df_3a15485c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-08-31T02:57:15Z",
+      "side": 1,
+      "message": "I think we should make sure to set SNKEN again as soon as we stop being (CC_OPEN \u0026\u0026 SINK), instead of waiting for it to happen via tcpm_init.",
+      "revId": "98eb67e283b06d00d239c322f23006ad4d48a07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
