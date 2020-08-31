@@ -16,6 +16,24 @@
       "revId": "b71c0ab3f72f0207e03649a9c27bc8a0b4bb04da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e024ae1f_13d4cabc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4926,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-08-31T23:18:28Z",
+      "side": 1,
+      "message": "Hi Scott, Will the new code compose VDM header in response functions? The SVDM response VDM header is composed here as in \"tx_payload[0] \u003d VDO(....)\", It doesn\u0027t specifically set the value for \"object position\". so the value is 0. I just found out the enter_mode response need to set those bits with entered mode. Your refactoring code will address this?",
+      "parentUuid": "3c7a81d1_c27e9382",
+      "revId": "b71c0ab3f72f0207e03649a9c27bc8a0b4bb04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
