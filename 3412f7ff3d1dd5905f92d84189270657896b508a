@@ -46,6 +46,30 @@
       "revId": "3412f7ff3d1dd5905f92d84189270657896b508a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46269cd9_97b61113",
+        "filename": "common/usb_port_power_dumb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-08-31T21:04:07Z",
+      "side": 0,
+      "message": "Alright it seems like we never would want to turn it off in S3 then. Unless the hub is in reset or something. Should we send a message to EC to tell it that no USB-HID is connected? Does turning it off in S3 save any power?",
+      "parentUuid": "8228e120_3319d047",
+      "range": {
+        "startLine": 151,
+        "startChar": 13,
+        "endLine": 151,
+        "endChar": 32
+      },
+      "revId": "3412f7ff3d1dd5905f92d84189270657896b508a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
