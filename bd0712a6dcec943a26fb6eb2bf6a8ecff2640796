@@ -72,6 +72,53 @@
     },
     {
       "key": {
+        "uuid": "8718e342_f771fbc0",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "Create a struct for these values and you need an array of CONFIG_USB_PD_PORT_MAX_COUNT elements.\n\nI suggest\n\nstatic struct struct safe_mode {\n    uint32_t connection_state;\n    bool deferred;\n    uint64_t deferred_at;\n} bb_safe_mode[CONFIG_USB_PD_PORT_MAX_COUNT];",
+      "parentUuid": "42593a55_dcc13688",
+      "range": {
+        "startLine": 318,
+        "startChar": 16,
+        "endLine": 318,
+        "endChar": 37
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90a92460_6437202e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "Change to \"false\".",
+      "range": {
+        "startLine": 332,
+        "startChar": 22,
+        "endLine": 332,
+        "endChar": 23
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "470565b1_ca68f904",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 9
@@ -119,6 +166,29 @@
     },
     {
       "key": {
+        "uuid": "99392ca8_305a312f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "change to \"__maybe_unused static void\" and then you can delete the #ifdef HAS_TASK_PD_C0.\nOnce you add the guard clauses to retimer_deferred_hook(), this should compile.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 4
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d6de3e3b_be284901",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 9
@@ -159,6 +229,138 @@
         "startChar": 7,
         "endLine": 345,
         "endChar": 21
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de7733a3_8949d560",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "Same here, change to \"__maybe_unused static void\" and delete the surrounding #ifdef.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 4
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "882020c1_fe72af6b",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "You need to support up to 3 ports with this change.",
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3d8b70a_0d613888",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "This needs an IS_ENABLED(HAS_TASK_PD_C0) guard.",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 26
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01da0ef1_bac3dab9",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "Add IS_ENABLED(HAS_TASK_PD_C1) guard.",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 31
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "045bc17a_7e6bddf5",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "What\u0027s the scenario where this is called while the deferred action is active?\n\nIf the code is always going through this path, what is gained by adding in the deferred call instead of using just blocking with usleep() when USB_PD_MUX_SAFE_MODE?",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 26
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9c19a45_6dd1d4fb",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "change to \"false\".",
+      "range": {
+        "startLine": 466,
+        "startChar": 23,
+        "endLine": 466,
+        "endChar": 24
       },
       "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -234,6 +436,52 @@
       "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9503291d_889818d8",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "change to \"true\"",
+      "range": {
+        "startLine": 485,
+        "startChar": 23,
+        "endLine": 485,
+        "endChar": 24
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe9f87cc_2e13db4f",
+        "filename": "driver/retimer/bb_retimer.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-08-31T21:56:44Z",
+      "side": 1,
+      "message": "Move to bb_retimer.c.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "bd0712a6dcec943a26fb6eb2bf6a8ecff2640796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
