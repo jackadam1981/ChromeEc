@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "14e4facd_50598a81",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002686
+      },
+      "writtenOn": "2020-08-31T02:54:44Z",
+      "side": 1,
+      "message": "I think we need to add comments to explain\nSENSOR_COUNT, MAX_MOTION_SENSORS, ALL_MOTION_SENSORS, and motion_sensor_count at once.\nIt is confusing that we have four sensor count variables for different purposes.",
+      "parentUuid": "d1045fed_b0109e33",
+      "revId": "33bdef14b732a74143d06ca26cdbe1ef6097fa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3d2987b_65a02384",
         "filename": "include/motion_sense.h",
         "patchSetId": 5
