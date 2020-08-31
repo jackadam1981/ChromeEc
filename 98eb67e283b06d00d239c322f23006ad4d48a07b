@@ -16,6 +16,24 @@
       "revId": "98eb67e283b06d00d239c322f23006ad4d48a07b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "230feac6_d6ba9a22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-08-31T15:31:05Z",
+      "side": 1,
+      "message": "IIRC disabling SNKEN was added for batteryless so we brownout when we want and not earlier. Make sure that enabling again before tcpm_init does not cause an issue for this.",
+      "parentUuid": "8ff421df_3a15485c",
+      "revId": "98eb67e283b06d00d239c322f23006ad4d48a07b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
