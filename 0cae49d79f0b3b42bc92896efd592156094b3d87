@@ -22,6 +22,30 @@
       "revId": "0cae49d79f0b3b42bc92896efd592156094b3d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed61976e_7c1edfc4",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-08-31T18:18:07Z",
+      "side": 1,
+      "message": "Li will be adding it in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2370045",
+      "parentUuid": "9bfd5296_ffe2994f",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "0cae49d79f0b3b42bc92896efd592156094b3d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
