@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c7a81d1_c27e9382",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4926,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-08-31T21:46:41Z",
+      "side": 1,
+      "message": "FYI, I have a CL in a large stack that I\u0027m working on landing that also fixed this particular function. I planned to redo this interface as a larger refactoring effort for SVDM responses.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2268138",
+      "revId": "b71c0ab3f72f0207e03649a9c27bc8a0b4bb04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
