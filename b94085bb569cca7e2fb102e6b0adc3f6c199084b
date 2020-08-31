@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "5dd466ae_b98ca26d",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-31T02:35:05Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "cca7a31b_22d8b585",
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ad28c22_54c8aafc",
         "filename": "board/halvor/board.c",
         "patchSetId": 6
@@ -161,6 +179,30 @@
     },
     {
       "key": {
+        "uuid": "865f5e05_342d76fc",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-31T02:35:05Z",
+      "side": 1,
+      "message": "See questions in http://b/153705222#comment8.",
+      "parentUuid": "bcee4ee3_3b97c315",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 2
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "930f38de_9e961e04",
         "filename": "board/halvor/board.c",
         "patchSetId": 6
@@ -229,6 +271,30 @@
       "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c80bb2e_1aee410a",
+        "filename": "board/halvor/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-31T02:35:05Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "8f1c0c3c_8b5c64d0",
+      "range": {
+        "startLine": 381,
+        "startChar": 12,
+        "endLine": 381,
+        "endChar": 31
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +413,30 @@
       "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdeda32c_e9eff5a6",
+        "filename": "board/halvor/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1275580
+      },
+      "writtenOn": "2020-08-31T02:35:05Z",
+      "side": 1,
+      "message": "See questions in http://b/153705222#comment8.",
+      "parentUuid": "0abdd05c_b338ad80",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 45
+      },
+      "revId": "b94085bb569cca7e2fb102e6b0adc3f6c199084b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
