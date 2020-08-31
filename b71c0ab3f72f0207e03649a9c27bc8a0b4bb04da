@@ -34,6 +34,24 @@
       "revId": "b71c0ab3f72f0207e03649a9c27bc8a0b4bb04da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "067daecd_272c5565",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 4926,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-08-31T23:27:41Z",
+      "side": 1,
+      "message": "Li and Scott: I\u0027m going to move this discussion to my open bug for fixing the SVDM response API, because I suspect that it may be redundant with what Scott is working on, and it\u0027s probably a better forum for that kind of discussion than this already-submitted CL.",
+      "parentUuid": "e024ae1f_13d4cabc",
+      "revId": "b71c0ab3f72f0207e03649a9c27bc8a0b4bb04da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
