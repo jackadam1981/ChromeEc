@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7bd114b_12b9fbaf",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-01T00:29:29Z",
+      "side": 1,
+      "message": "arrange alphabetically",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "91944d862d03016d002be314762a0d89b68b2c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb1eb50_00b66015",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-01T00:29:29Z",
+      "side": 1,
+      "message": "RVP may have up to 4 ports",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "91944d862d03016d002be314762a0d89b68b2c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a53fd5_26a48ea4",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-01T00:29:29Z",
+      "side": 1,
+      "message": "#ifdef HAS_TASK_PD_C1\n\nfor other functions too",
+      "revId": "91944d862d03016d002be314762a0d89b68b2c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9d724cb_7defb78b",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-01T00:29:29Z",
+      "side": 1,
+      "message": "how about having array of functions ? easy to index and also BUILD_ASSERT with CONFIG_USB_PD_PORT_MAX_COUNT can ensure all ports are addressed",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 54
+      },
+      "revId": "91944d862d03016d002be314762a0d89b68b2c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
