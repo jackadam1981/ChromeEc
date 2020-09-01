@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cf73bca_4c3f7688",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-01T22:34:16Z",
+      "side": 1,
+      "message": "you are clearing the data twice. Should you just let get_pnaic_data_write do it for you?",
+      "range": {
+        "startLine": 296,
+        "startChar": 1,
+        "endLine": 296,
+        "endChar": 36
+      },
+      "revId": "4b3ed6cab3206432724cc6d7bb8ee0b9f781c319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
