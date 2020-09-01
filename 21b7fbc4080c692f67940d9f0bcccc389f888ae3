@@ -117,6 +117,30 @@
       "revId": "21b7fbc4080c692f67940d9f0bcccc389f888ae3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b84d96_55a8f6d2",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-01T22:55:34Z",
+      "side": 1,
+      "message": "I eliminated excess spaces while keeping the columns aligned. I removed a couple comments which weren\u0027t needed. Then I interleaved the alt-function entries. so now it\u0027s all \u003c 80 chars",
+      "parentUuid": "263650d1_57586df9",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 88
+      },
+      "revId": "21b7fbc4080c692f67940d9f0bcccc389f888ae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
