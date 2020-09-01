@@ -5191,7 +5191,6 @@ static void pe_vdm_response_entry(int port)
 	int vdo_len = 0;
 	uint32_t *rx_payload;
 	uint32_t *tx_payload;
-	uint16_t vdo_vdm_svid;
 	uint8_t vdo_cmd;
 	int cmd_type;
 	svdm_rsp_func func = NULL;
@@ -5204,7 +5203,6 @@ static void pe_vdm_response_entry(int port)
 	/* Get the message */
 	rx_payload = (uint32_t *)rx_emsg[port].buf;
 
-	vdo_vdm_svid = PD_VDO_VID(rx_payload[0]);
 	vdo_cmd = PD_VDO_CMD(rx_payload[0]);
 	cmd_type = PD_VDO_CMDT(rx_payload[0]);
 	rx_payload[0] &= ~VDO_CMDT_MASK;
