@@ -118,6 +118,30 @@
       "revId": "3412f7ff3d1dd5905f92d84189270657896b508a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67045435_ec20aecd",
+        "filename": "common/usb_port_power_dumb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-09-01T21:18:56Z",
+      "side": 0,
+      "message": "Alright, thanks! I\u0027ve copied this info into b/120563698",
+      "parentUuid": "d9e87787_2302d1da",
+      "range": {
+        "startLine": 151,
+        "startChar": 13,
+        "endLine": 151,
+        "endChar": 32
+      },
+      "revId": "3412f7ff3d1dd5905f92d84189270657896b508a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
