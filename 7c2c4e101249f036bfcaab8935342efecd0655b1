@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb3e31ad_5abbca9a",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-09-01T06:30:28Z",
+      "side": 1,
+      "message": "Should we confirm the CHIP_ID matches something that we\u0027re expecting?",
+      "range": {
+        "startLine": 248,
+        "startChar": 2,
+        "endLine": 248,
+        "endChar": 26
+      },
+      "revId": "7c2c4e101249f036bfcaab8935342efecd0655b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
