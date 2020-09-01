@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "0bdb439d_64d21356",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-09-01T15:57:50Z",
+      "side": 1,
+      "message": "CL was already reviewed by Ayushee. This is when I notified Keith to start the review. I made a wrong assumption that Vijay has already reviewed since CL was in Verified state for more than a day.",
+      "revId": "91944d862d03016d002be314762a0d89b68b2c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7bd114b_12b9fbaf",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 11
