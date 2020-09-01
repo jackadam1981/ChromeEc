@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "084d6c8e_5f92d6f0",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-01T22:33:18Z",
+      "side": 1,
+      "message": "nit: maybe rename pdata -\u003e pdata_start\nand pdata_str -\u003e pdata",
+      "range": {
+        "startLine": 384,
+        "startChar": 1,
+        "endLine": 385,
+        "endChar": 31
+      },
+      "revId": "21bc29daa0107a431a61c1e82893fb1e464b941e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
