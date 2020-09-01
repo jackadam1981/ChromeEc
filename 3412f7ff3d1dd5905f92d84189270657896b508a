@@ -94,6 +94,30 @@
       "revId": "3412f7ff3d1dd5905f92d84189270657896b508a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9e87787_2302d1da",
+        "filename": "common/usb_port_power_dumb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-01T21:14:06Z",
+      "side": 0,
+      "message": "This feature was done in b/130767435.\n\nWe can enable it by:\n * on EC side, modify the board to switch to use the \"usb_port_power_smart\" instead of \"usb_port_power_dumb\".\n * on AP side, add the udev rules that flags EC to turn off the port in suspend, per the examples in the bug.\n\nWe may save a bit more power in S3.",
+      "parentUuid": "88e27886_73629733",
+      "range": {
+        "startLine": 151,
+        "startChar": 13,
+        "endLine": 151,
+        "endChar": 32
+      },
+      "revId": "3412f7ff3d1dd5905f92d84189270657896b508a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
