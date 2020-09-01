@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ca512679_7b98c02c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-01T17:26:25Z",
+      "side": 1,
+      "message": "I think Diana possibly meant, can you base this off of the outstanding patches to enable low power mode for the ITE EC?\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2362372",
+      "parentUuid": "4c0eec75_8ce37b51",
+      "revId": "3774e4f14ae5567971d6ecc1c1138f7402e6b967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2728526_8880747f",
         "filename": "board/drawcia/board.h",
         "patchSetId": 1
