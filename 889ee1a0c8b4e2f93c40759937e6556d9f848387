@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07e4e3ee_863a1576",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-09-01T06:18:41Z",
+      "side": 1,
+      "message": "Why not true/false or LN9310 %s battery, batt3s ? \"3S\" : \"2S\" or something? Printing hex value of !! is not super useful.",
+      "range": {
+        "startLine": 107,
+        "startChar": 29,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "889ee1a0c8b4e2f93c40759937e6556d9f848387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
