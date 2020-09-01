@@ -9,6 +9,7 @@
 #define __CROS_EC_USB_PD_TCPM_TCPM_H
 
 #include "common.h"
+#include "console.h"
 #include "ec_commands.h"
 #include "gpio.h"
 #include "i2c.h"
@@ -170,12 +171,18 @@ static inline int tcpm_release(int port)
 static inline int tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2)
 {
-	return tcpc_config[port].drv->get_cc(port, cc1, cc2);
+	int i = tcpc_config[port].drv->get_cc(port, cc1, cc2);
+    if (port == 1)
+        cprints(CC_COMMAND, "CC1 %d CC2 %d", *cc1, *cc2);
+    return i;
 }
 
 static inline bool tcpm_check_vbus_level(int port, enum vbus_level level)
 {
-	return tcpc_config[port].drv->check_vbus_level(port, level);
+	bool result = tcpc_config[port].drv->check_vbus_level(port, level);
+    if (port == 1)
+        cprints(CC_COMMAND, "VBUS %s %d", result ? "==" : "!=", level);
+    return result;
 }
 
 static inline int tcpm_select_rp_value(int port, int rp)
@@ -185,6 +192,8 @@ static inline int tcpm_select_rp_value(int port, int rp)
 
 static inline int tcpm_set_cc(int port, int pull)
 {
+	if (port == 1)
+        cprints(CC_COMMAND, "Set CC: %d", pull);
 	return tcpc_config[port].drv->set_cc(port, pull);
 }
 

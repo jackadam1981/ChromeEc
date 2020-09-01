@@ -928,6 +928,8 @@ void tc_snk_power_off(int port)
 
 int tc_src_power_on(int port)
 {
+	if (port == 1)
+		CPRINTS("Turn VBUS on");
 	if (IS_ATTACHED_SRC(port))
 		return pd_set_power_supply_ready(port);
 
@@ -936,12 +938,18 @@ int tc_src_power_on(int port)
 
 void tc_src_power_off(int port)
 {
+	if (port == 1)
+		CPRINTS("Turn VBUS off");
 	/* Remove VBUS */
+	CPRINTS("%s: power supply reset", __func__);
 	pd_power_supply_reset(port);
 
-	if (IS_ENABLED(CONFIG_CHARGE_MANAGER))
+	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
+		CPRINTS("%s: Set charge ceiling", __func__);
 		charge_manager_set_ceil(port, CEIL_REQUESTOR_PD,
 					CHARGE_CEIL_NONE);
+	}
+	CPRINTS("%s: done", __func__);
 }
 
 /*
@@ -2010,6 +2018,7 @@ static void tc_unattached_snk_run(const int port)
 	 */
 	if (cc_is_rp(cc1) || cc_is_rp(cc2)) {
 		/* Connection Detected */
+		CPRINTS("Source detected");
 		set_state_tc(port, TC_ATTACH_WAIT_SNK);
 	} else if (get_time().val > tc[port].next_role_swap &&
 		   drp_state[port] == PD_DRP_TOGGLE_ON) {
@@ -2047,8 +2056,10 @@ static void tc_attach_wait_snk_run(const int port)
 
 	if (cc_is_rp(cc1) && cc_is_rp(cc2))
 		new_cc_state = PD_CC_DFP_DEBUG_ACC;
-	else if (cc_is_rp(cc1) || cc_is_rp(cc2))
+	else if (cc_is_rp(cc1) || cc_is_rp(cc2)) {
+		CPRINTS("Rp detected");
 		new_cc_state = PD_CC_DFP_ATTACHED;
+	}
 	else
 		new_cc_state = PD_CC_NONE;
 
@@ -2105,8 +2116,10 @@ static void tc_attach_wait_snk_run(const int port)
 	 */
 	if (pd_is_vbus_present(port)) {
 		if (new_cc_state == PD_CC_DFP_ATTACHED) {
-			if (is_try_src_enabled(port))
+			CPRINTS("Rp for tCCDebounce");
+			if (is_try_src_enabled(port)) {
 				set_state_tc(port, TC_TRY_SRC);
+			}
 			else
 				set_state_tc(port, TC_ATTACHED_SNK);
 		} else {
@@ -2557,6 +2570,7 @@ static void tc_attach_wait_src_run(const int port)
 	 */
 	if (pd_check_vbus_level(port, VBUS_SAFE0V)) {
 		if (new_cc_state == PD_CC_UFP_ATTACHED) {
+			CPRINTS("Detected Rd for tCCDebounce");
 			set_state_tc(port, TC_ATTACHED_SRC);
 			return;
 		} else if (new_cc_state == PD_CC_UFP_DEBUG_ACC) {
@@ -2647,6 +2661,7 @@ static void tc_attached_src_entry(const int port)
 		tcpm_enable_auto_discharge_disconnect(port, 1);
 
 		/* Apply Rp */
+		CPRINTS("Setting Rp");
 		typec_update_cc(port);
 
 		tc_enable_pd(port, 0);
@@ -2733,9 +2748,10 @@ static void tc_attached_src_run(const int port)
 	if (tc[port].cc_state == PD_CC_NONE &&
 			!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS) &&
 			!TC_CHK_FLAG(port, TC_FLAGS_DISC_IDENT_IN_PROGRESS)) {
-
 		const bool tryWait = is_try_src_enabled(port) &&
 				!TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
+
+		CPRINTS("Detected CC open");
 
 		if (IS_ENABLED(CONFIG_USB_PE_SM))
 			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
@@ -2861,17 +2877,22 @@ static void tc_attached_src_exit(const int port)
 	 */
 	tc_src_power_off(port);
 
+	CPRINTS("Finished tc_src_power_off");
 	if (!TC_CHK_FLAG(port, TC_FLAGS_REQUEST_PR_SWAP)) {
 		/* Attached.SRC exit - disable AutoDischargeDisconnect */
 		tcpm_enable_auto_discharge_disconnect(port, 0);
+		CPRINTS("Enabled ADD");
 
 		/* Disable VCONN if not power role swapping */
-		if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON))
+		if (TC_CHK_FLAG(port, TC_FLAGS_VCONN_ON)) {
 			set_vconn(port, 0);
+			CPRINTS("Disabled VCONN");
+		}
 	}
 
 	/* Clear PR swap flag after checking for Vconn */
 	TC_CLR_FLAG(port, TC_FLAGS_REQUEST_PR_SWAP);
+	CPRINTS("Finished with Attach.SRC exit");
 }
 
 static __maybe_unused void check_drp_connection(const int port)
@@ -3030,6 +3051,7 @@ static void tc_try_src_entry(const int port)
 	typec_select_src_current_limit_rp(port, CONFIG_USB_PD_PULLUP);
 
 	/* Apply Rp */
+	CPRINTS("Setting Rp");
 	typec_update_cc(port);
 }
 
@@ -3042,8 +3064,10 @@ static void tc_try_src_run(const int port)
 	tcpm_get_cc(port, &cc1, &cc2);
 
 	if ((cc1 == TYPEC_CC_VOLT_RD && cc2 != TYPEC_CC_VOLT_RD) ||
-	     (cc1 != TYPEC_CC_VOLT_RD && cc2 == TYPEC_CC_VOLT_RD))
+	     (cc1 != TYPEC_CC_VOLT_RD && cc2 == TYPEC_CC_VOLT_RD)) {
+		CPRINTS("Rd detected");
 		new_cc_state = PD_CC_UFP_ATTACHED;
+	}
 	else
 		new_cc_state = PD_CC_NONE;
 
@@ -3059,8 +3083,10 @@ static void tc_try_src_run(const int port)
 	 * tTryCCDebounce.
 	 */
 	if (get_time().val > tc[port].cc_debounce &&
-	    new_cc_state == PD_CC_UFP_ATTACHED)
+	    new_cc_state == PD_CC_UFP_ATTACHED) {
+		CPRINTS("Rd for tTryCCDebounce");
 		set_state_tc(port, TC_ATTACHED_SRC);
+	}
 
 	/*
 	 * The port shall transition to TryWait.SNK after tDRPTry and the
@@ -3071,6 +3097,10 @@ static void tc_try_src_run(const int port)
 		if ((get_time().val > tc[port].try_wait_debounce &&
 		     pd_check_vbus_level(port, VBUS_SAFE0V)) ||
 		    get_time().val > tc[port].timeout) {
+			if (get_time().val > tc[port].timeout)
+				CPRINTS("Reached tTryTimeout");
+			else
+				CPRINTS("Reached tDRPTry");
 			set_state_tc(port, TC_TRY_WAIT_SNK);
 		}
 	}
@@ -3103,6 +3133,7 @@ static void tc_try_wait_snk_entry(const int port)
 	typec_select_pull(port, TYPEC_CC_RD);
 
 	/* Apply Rd */
+	CPRINTS("Setting Rd");
 	typec_update_cc(port);
 }
 
@@ -3115,8 +3146,10 @@ static void tc_try_wait_snk_run(const int port)
 	tcpm_get_cc(port, &cc1, &cc2);
 
 	/* We only care about CCs being open */
-	if (cc1 == TYPEC_CC_VOLT_OPEN && cc2 == TYPEC_CC_VOLT_OPEN)
+	if (cc1 == TYPEC_CC_VOLT_OPEN && cc2 == TYPEC_CC_VOLT_OPEN) {
+		CPRINTS("Detected CC open");
 		new_cc_state = PD_CC_NONE;
+	}
 	else
 		new_cc_state = PD_CC_UNSET;
 
@@ -3132,6 +3165,7 @@ static void tc_try_wait_snk_run(const int port)
 	 */
 	if ((get_time().val > tc[port].pd_debounce) &&
 						(new_cc_state == PD_CC_NONE)) {
+		CPRINTS("CC open for tPDDebounce");
 		set_state_tc(port, TC_UNATTACHED_SNK);
 		return;
 	}
@@ -3141,8 +3175,10 @@ static void tc_try_wait_snk_run(const int port)
 	 * when VBUS is detected.
 	 */
 	if (get_time().val > tc[port].try_wait_debounce &&
-	    pd_is_vbus_present(port))
+	    pd_is_vbus_present(port)) {
+		CPRINTS("VBUS present after tCCDebounce");
 		set_state_tc(port, TC_ATTACHED_SNK);
+	}
 }
 
 #endif
