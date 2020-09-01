@@ -46,6 +46,30 @@
       "revId": "889ee1a0c8b4e2f93c40759937e6556d9f848387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44752fe2_b50a824d",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-09-01T20:26:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ef4e0697_d53b0fb7",
+      "range": {
+        "startLine": 107,
+        "startChar": 29,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "889ee1a0c8b4e2f93c40759937e6556d9f848387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
