@@ -2576,6 +2576,9 @@ static void pe_snk_evaluate_capability_entry(int port)
 
 	/* Device Policy Response Received */
 	set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+
+	/* Update the mux setting according to the SNK capabilities */
+	set_usb_mux_with_current_data_role(port);
 }
 
 /**
