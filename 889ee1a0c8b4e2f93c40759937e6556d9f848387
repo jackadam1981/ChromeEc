@@ -22,6 +22,30 @@
       "revId": "889ee1a0c8b4e2f93c40759937e6556d9f848387",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef4e0697_d53b0fb7",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-01T20:21:55Z",
+      "side": 1,
+      "message": "It makes sense. I modified it. This line of code was implemented by Lionsemi.",
+      "parentUuid": "07e4e3ee_863a1576",
+      "range": {
+        "startLine": 107,
+        "startChar": 29,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "889ee1a0c8b4e2f93c40759937e6556d9f848387",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
