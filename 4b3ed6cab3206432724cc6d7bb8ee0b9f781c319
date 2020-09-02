@@ -46,6 +46,30 @@
       "revId": "4b3ed6cab3206432724cc6d7bb8ee0b9f781c319",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c987655_cb785c51",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-02T20:39:22Z",
+      "side": 1,
+      "message": "Alright, there are scenarios where we will clear it twice, but I guess it doesn\u0027t really hurt and ensures we don\u0027t have randmon data with the correct magic. sounds good.",
+      "parentUuid": "5bb4e719_e8ae7741",
+      "range": {
+        "startLine": 296,
+        "startChar": 1,
+        "endLine": 296,
+        "endChar": 36
+      },
+      "revId": "4b3ed6cab3206432724cc6d7bb8ee0b9f781c319",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
