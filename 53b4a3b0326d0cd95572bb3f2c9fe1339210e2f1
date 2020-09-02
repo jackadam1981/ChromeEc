@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03227890_096fd78c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-02T18:15:16Z",
+      "side": 1,
+      "message": "cleanup: Consolidate multi PD INTR task config to single config",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "53b4a3b0326d0cd95572bb3f2c9fe1339210e2f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11f8dbf0_b3e6a6c9",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3746,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-02T18:15:16Z",
+      "side": 1,
+      "message": "add a new line, and add comment about this config",
+      "revId": "53b4a3b0326d0cd95572bb3f2c9fe1339210e2f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
