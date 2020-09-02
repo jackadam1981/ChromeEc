@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c19831ac_3de85f6b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-02T15:07:48Z",
+      "side": 1,
+      "message": "Let\u0027s add the state here as a GEN_NOT_SUPPORTED so we don\u0027t use it when we aren\u0027t supposed to",
+      "revId": "c93756749ec8dcce359c2a26ca33a43d1b154dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
