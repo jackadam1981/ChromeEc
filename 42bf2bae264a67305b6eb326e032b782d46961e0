@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac83aa33_6a20cda9",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-02T20:24:26Z",
+      "side": 1,
+      "message": "I think you should change this to explicitly check RT1715 address and check for RT1715 VID.  If either of those checks fail, default to TUSB422.  This will limit this function to a single I2C xfer so you won\u0027t need the lock.",
+      "range": {
+        "startLine": 379,
+        "startChar": 12,
+        "endLine": 379,
+        "endChar": 37
+      },
+      "revId": "42bf2bae264a67305b6eb326e032b782d46961e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2a99196_9d00576b",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-02T20:24:26Z",
+      "side": 1,
+      "message": "Check return value against EC_SUCCESS.",
+      "range": {
+        "startLine": 397,
+        "startChar": 12,
+        "endLine": 397,
+        "endChar": 30
+      },
+      "revId": "42bf2bae264a67305b6eb326e032b782d46961e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab82a1ac_b50dc1da",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-02T20:24:26Z",
+      "side": 1,
+      "message": "Use TCPC_REG_VENDOR_ID.",
+      "range": {
+        "startLine": 397,
+        "startChar": 70,
+        "endLine": 397,
+        "endChar": 71
+      },
+      "revId": "42bf2bae264a67305b6eb326e032b782d46961e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
