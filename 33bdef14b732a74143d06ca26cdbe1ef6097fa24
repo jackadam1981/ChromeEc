@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cdd90c29_74f91a75",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1024,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-09-02T11:17:51Z",
+      "side": 1,
+      "message": "If we use SENSOR_COUNT in ALL_MOTION_SENSORS and the motion_sensor_count is 0, the DUMP will show many sensors that do not exist. And the other command will also have problems under this circumstance.\n\nBut since we have another solution, we will not need this. So, I removed it.",
+      "parentUuid": "d5639f06_b97f1a09",
+      "revId": "33bdef14b732a74143d06ca26cdbe1ef6097fa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1045fed_b0109e33",
         "filename": "include/motion_sense.h",
         "patchSetId": 5
@@ -51,6 +69,42 @@
       "revId": "33bdef14b732a74143d06ca26cdbe1ef6097fa24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d2c7fa0_af4e27f2",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-09-02T11:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14e4facd_50598a81",
+      "revId": "33bdef14b732a74143d06ca26cdbe1ef6097fa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cc007f8_72046548",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-09-02T11:17:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14e4facd_50598a81",
+      "revId": "33bdef14b732a74143d06ca26cdbe1ef6097fa24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
