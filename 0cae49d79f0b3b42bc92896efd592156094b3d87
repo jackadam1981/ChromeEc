@@ -70,6 +70,30 @@
       "revId": "0cae49d79f0b3b42bc92896efd592156094b3d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92bbbba2_a9a3fd5c",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-02T17:26:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "731cd1c8_84f57897",
+      "range": {
+        "startLine": 87,
+        "startChar": 8,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "0cae49d79f0b3b42bc92896efd592156094b3d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
