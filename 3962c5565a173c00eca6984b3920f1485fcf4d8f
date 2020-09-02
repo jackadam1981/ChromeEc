@@ -22,6 +22,30 @@
       "revId": "3962c5565a173c00eca6984b3920f1485fcf4d8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "497a2ffa_0a0fa292",
+        "filename": "core/nds32/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-09-02T09:27:23Z",
+      "side": 1,
+      "message": "We are just getting pointer here, regs is used below to dump some information.\n\nMaybe you were thinking about nds_n8.ipc? It is valid to take this value because get_panic_data_write() is not clearing memory when panic_data structure is correct. We are sure that it is correct because get_panic_data_write() was called earlier in watchdog_warning_irq() (chip/it83xx/watchdog.c)",
+      "parentUuid": "7e5c4e11_6a65c9c8",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 26
+      },
+      "revId": "3962c5565a173c00eca6984b3920f1485fcf4d8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
