@@ -1,0 +1,97 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fda015b0_2c06cf30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-02T05:58:30Z",
+      "side": 1,
+      "message": "Can you explain this change?",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "8cb049061d474e4111ae2343007ae2f418c6e817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b24d80_18714837",
+        "filename": "board/nucleo-g431rb/board.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-02T05:58:30Z",
+      "side": 1,
+      "message": "Is this used?",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "8cb049061d474e4111ae2343007ae2f418c6e817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9979e60a_177c1592",
+        "filename": "board/nucleo-g431rb/board.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-02T05:58:30Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 12,
+        "startChar": 10,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "8cb049061d474e4111ae2343007ae2f418c6e817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ba123d_fe278306",
+        "filename": "board/nucleo-g431rb/board.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-02T05:58:30Z",
+      "side": 1,
+      "message": "\u003e \"resuse\" is a possible misspelling of \"reuse\".\n\nPlease fix.",
+      "parentUuid": "9ed1d7c4_ef279fef",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "8cb049061d474e4111ae2343007ae2f418c6e817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
