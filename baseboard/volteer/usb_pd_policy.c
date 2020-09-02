@@ -181,11 +181,22 @@ static int svdm_tbt_compat_response_enter_mode(
 	return 0; /* NAK */
 }
 
+static int svdm_exit_mode(int port, uint32_t *payload)
+{
+	if ((PD_VDO_VID(payload[0]) == USB_VID_INTEL) &&
+		(PD_VDO_OPOS(payload[0]) == OPOS_TBT)) {
+		usb_mux_set(port, USB_PD_MUX_USB_ENABLED,
+			USB_SWITCH_CONNECT, pd_get_polarity(port));
+		return 1;
+	}
+	return 0;
+}
+
 const struct svdm_response svdm_rsp = {
 	.identity = &svdm_tbt_compat_response_identity,
 	.svids = &svdm_tbt_compat_response_svids,
 	.modes = &svdm_tbt_compat_response_modes,
 	.enter_mode = &svdm_tbt_compat_response_enter_mode,
 	.amode = NULL,
-	.exit_mode = NULL,
+	.exit_mode = &svdm_exit_mode,
 };
