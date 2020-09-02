@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "1fd9a3b4_9e2c3f6f",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3745,
+      "author": {
+        "id": 1443462
+      },
+      "writtenOn": "2020-09-02T15:20:39Z",
+      "side": 1,
+      "message": "If it is true that Embedded TCPC doesn\u0027t require PD_INT Task, then agree the need for this.",
+      "parentUuid": "c6f851c6_03a66102",
+      "range": {
+        "startLine": 3745,
+        "startChar": 0,
+        "endLine": 3745,
+        "endChar": 0
+      },
+      "revId": "01dcdbdfb580dbd9f440330e5627feef570d1ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a004c2c1_6bff0b75",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -70,6 +94,30 @@
       "writtenOn": "2020-09-02T01:47:50Z",
       "side": 1,
       "message": "How about\n#if defined(HAS_TASK_PD_INT_C0) || defined(HAS_TASK_PD_INT_C1) || \\\n\tdefined(HAS_TASK_PD_INT_C2) || defined(HAS_TASK_PD_INT_C3)\n#define CONFIG_HAS_TASK_PD_INT\n#endif\n\n#if defined(HAS_TASK_PDCMD) \u0026\u0026 defined(CONFIG_HAS_TASK_PD_INT)",
+      "range": {
+        "startLine": 5291,
+        "startChar": 0,
+        "endLine": 5291,
+        "endChar": 58
+      },
+      "revId": "01dcdbdfb580dbd9f440330e5627feef570d1ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b44943b_ebe6343a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5291,
+      "author": {
+        "id": 1443462
+      },
+      "writtenOn": "2020-09-02T15:20:39Z",
+      "side": 1,
+      "message": "AS of now Embedded TCPC used by P0 only right?\nIn that case, condition check required only for INT_C0 or INT_C1 only , as rest will be true ,since lower ids will be defined?\n\n#if defined(HAS_TASK_PD_INT_C0) || defined(HAS_TASK_PD_INT_C1)\n#define CONFIG_HAS_TASK_PD_INT\n#endif\n\nor do you think, better to add all interrupt tasks here , so that any port can be privilaged as  Embedded TCPC ?",
+      "parentUuid": "a004c2c1_6bff0b75",
       "range": {
         "startLine": 5291,
         "startChar": 0,
