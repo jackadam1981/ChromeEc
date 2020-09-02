@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "02a8f5a1_5883fe6c",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-09-02T08:39:15Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "b09b12e8_bc14bd1a",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 30
+      },
+      "revId": "57d48d814165baa7a1369a64ddd6da01eec57c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7ce42209_3c3b4116",
         "filename": "common/panic_output.c",
         "patchSetId": 1
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "e264af05_62be05cd",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-09-02T08:39:15Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "7ce42209_3c3b4116",
+      "range": {
+        "startLine": 238,
+        "startChar": 2,
+        "endLine": 238,
+        "endChar": 8
+      },
+      "revId": "57d48d814165baa7a1369a64ddd6da01eec57c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92341b98_9d67709a",
         "filename": "common/panic_output.c",
         "patchSetId": 1
@@ -76,6 +124,30 @@
       "writtenOn": "2020-09-01T22:28:52Z",
       "side": 1,
       "message": "let\u0027s make this else if ( ... \u003d\u003d3) and the else can be an error comment setting move_size to 0.\n\n(this is for when/if we add version 4 to the mix)",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 5
+      },
+      "revId": "57d48d814165baa7a1369a64ddd6da01eec57c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7489219_23aa1f84",
+        "filename": "common/panic_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-09-02T08:39:15Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "92341b98_9d67709a",
       "range": {
         "startLine": 249,
         "startChar": 1,
