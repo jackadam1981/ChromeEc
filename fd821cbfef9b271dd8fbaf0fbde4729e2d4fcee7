@@ -22,6 +22,30 @@
       "revId": "fd821cbfef9b271dd8fbaf0fbde4729e2d4fcee7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c1da337_8789c6b4",
+        "filename": "core/cortex-m0/panic.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-02T20:41:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "71f1fe7e_e0147d3d",
+      "range": {
+        "startLine": 191,
+        "startChar": 18,
+        "endLine": 191,
+        "endChar": 40
+      },
+      "revId": "fd821cbfef9b271dd8fbaf0fbde4729e2d4fcee7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
