@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "8a7d35f2_e19b3138",
+        "filename": "board/magolor/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-02T06:10:01Z",
+      "side": 1,
+      "message": "Modify it , Thanks",
+      "parentUuid": "de27899e_d73808d4",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "04fe3ff19902019e5f97c9c4cf0e46f8bf565267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80cbe6d0_6b124d33",
         "filename": "board/magolor/battery.c",
         "patchSetId": 3
@@ -148,6 +172,24 @@
       "writtenOn": "2020-09-01T18:02:35Z",
       "side": 1,
       "message": "This isn\u0027t needed because we\u0027re not using CONFIG_BATTERY_HW_PRESENT_CUSTOM.",
+      "revId": "04fe3ff19902019e5f97c9c4cf0e46f8bf565267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c29fbf3_75ae763a",
+        "filename": "board/magolor/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-02T06:10:01Z",
+      "side": 1,
+      "message": "yes, I add to board.h,\nthanks",
+      "parentUuid": "cf4d167f_f751e8dc",
       "revId": "04fe3ff19902019e5f97c9c4cf0e46f8bf565267",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
