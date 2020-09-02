@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f606a5fb_f475a125",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-02T08:30:47Z",
+      "side": 1,
+      "message": "Initial code development just assume a honeybuns reference design. But there is no \"honeybuns\" reference board. The g431rb nucleo board was used to develop and test some of stm32g4 peripheral blocks, but this was done as /board/honeybuns.\n\nSince I had a project that builds and runs on this board, I opted to just convert /board/honeybuns to /board/nucleo_ quiche and gingerbread are the 2 honeybuns reference platforms.",
+      "parentUuid": "fda015b0_2c06cf30",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "8cb049061d474e4111ae2343007ae2f418c6e817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69b24d80_18714837",
         "filename": "board/nucleo-g431rb/board.c",
         "patchSetId": 23
