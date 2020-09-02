@@ -69,6 +69,24 @@
       "revId": "aecb3298853165540bcbfae2b231b4a0745bdc49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3d5181_6d721d29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-02T04:58:02Z",
+      "side": 1,
+      "message": "That certainly works. In general, if you want to, you can rebase locally on top of changes that haven\u0027t merged yet and re-upload. In some cases, that might allow reviews to progress that would otherwise be blocked. It\u0027s up to you.",
+      "parentUuid": "d56e2e8b_6b0acc1b",
+      "revId": "aecb3298853165540bcbfae2b231b4a0745bdc49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
