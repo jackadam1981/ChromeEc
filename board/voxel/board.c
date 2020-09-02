@@ -9,6 +9,7 @@
 #include "common.h"
 #include "accelgyro.h"
 #include "cbi_ec_fw_config.h"
+#include "cros_board_info.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/als_tcs3400.h"
@@ -16,6 +17,7 @@
 #include "driver/ppc/syv682x.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tusb422.h"
+#include "driver/tcpm/rt1715.h"
 #include "driver/retimer/bb_retimer.h"
 #include "driver/sync.h"
 #include "extpower.h"
@@ -211,15 +213,16 @@ struct usb_mux usbc0_usb4_db_retimer = {
 /*****************************************************************************
  * USB-C MUX/Retimer dynamic configuration.
  */
-
 static void setup_mux(void)
 {
 	CPRINTS("C0 supports bb-retimer");
 
 	/* USB-C port 0 have a retimer */
 	usb_muxes[USBC_PORT_C0].next_mux = &usbc0_usb4_db_retimer;
+	/* Reassign USB_C0_RT_RST_ODL */
+	bb_controls[USBC_PORT_C0].usb_ls_en_gpio = GPIO_USB_C0_LS_EN;
+	bb_controls[USBC_PORT_C0].retimer_rst_gpio = GPIO_USB_C0_RT_RST_ODL;
 }
-
 
 void board_reset_pd_mcu(void)
 {
@@ -233,10 +236,6 @@ __override void board_cbi_init(void)
 {
 	/* TODO(b/159025739): Voxel: check FW_CONFIG fields for USB DB type */
 	setup_mux();
-
-	/* Reassign USB_C0_RT_RST_ODL */
-	bb_controls[USBC_PORT_C0].usb_ls_en_gpio = GPIO_USB_C0_LS_EN;
-	bb_controls[USBC_PORT_C0].retimer_rst_gpio = GPIO_USB_C0_RT_RST_ODL;
 }
 
 /******************************************************************************/
@@ -299,18 +298,18 @@ struct tcpc_config_t tcpc_config[] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C0,
-			.addr_flags = TUSB422_I2C_ADDR_FLAGS,
+			.addr_flags = RT1715_I2C_ADDR_FLAGS,
 		},
-		.drv = &tusb422_tcpm_drv,
+		.drv = &rt1715_tcpm_drv,
 		.usb23 = USBC_PORT_0_USB2_NUM | (USBC_PORT_0_USB3_NUM << 4),
 	},
 	[USBC_PORT_C1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C1,
-			.addr_flags = TUSB422_I2C_ADDR_FLAGS,
+			.addr_flags = RT1715_I2C_ADDR_FLAGS,
 		},
-		.drv = &tusb422_tcpm_drv,
+		.drv = &rt1715_tcpm_drv,
 		.usb23 = USBC_PORT_1_USB2_NUM | (USBC_PORT_1_USB3_NUM << 4),
 	},
 };
@@ -350,6 +349,33 @@ struct bb_usb_control bb_controls[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(bb_controls) == USBC_PORT_COUNT);
+
+/* Check board version to decide which TCPC is used. */
+static bool support_rt1715_tcpc(void)
+{
+	uint32_t board_version = 0;
+
+	if (cbi_get_board_version(&board_version) != EC_SUCCESS)
+		CPRINTS("Get board version failed.");
+
+	if (board_version >= 1)
+		return true;
+
+	return false;
+}
+
+static void board_setup_tcpc(void)
+{
+	if (support_rt1715_tcpc())
+		return;
+	/* config typec C0 port TUSB422 TCPC */
+	tcpc_config[USBC_PORT_C0].i2c_info.addr_flags = TUSB422_I2C_ADDR_FLAGS;
+	tcpc_config[USBC_PORT_C0].drv = &tusb422_tcpm_drv;
+	/* config typec C1 port TUSB422 TCPC */
+	tcpc_config[USBC_PORT_C1].i2c_info.addr_flags = TUSB422_I2C_ADDR_FLAGS;
+	tcpc_config[USBC_PORT_C1].drv = &tusb422_tcpm_drv;
+}
+DECLARE_HOOK(HOOK_INIT, board_setup_tcpc, HOOK_PRIO_INIT_I2C + 2);
 
 static void board_tcpc_init(void)
 {
