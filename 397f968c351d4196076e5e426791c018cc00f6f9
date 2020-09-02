@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca0989ba_46a86e81",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-02T20:35:23Z",
+      "side": 1,
+      "message": "Just \"TCPC\"",
+      "range": {
+        "startLine": 213,
+        "startChar": 39,
+        "endLine": 213,
+        "endChar": 47
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "086928e8_967aa69c",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-02T20:35:23Z",
+      "side": 1,
+      "message": "Out of scope here, but this stuff doesn\u0027t look like it depends on CBI, and it could just be set in the relevant structs statically.",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 69
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "656eb5bc_380de767",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-02T20:35:23Z",
+      "side": 1,
+      "message": "The control flow here isn\u0027t as obvious as it could be. Also note that, at this point, cbi_init has already stored the board version.How about something like this?\n\nuint8_t board_id \u003d get_board_id();\nif (board_id \u003d\u003d 0) {\n  tcpc_config \u003d tusb422_tcpc_config;\n  /* Or just update the address and driver fields like you\u0027re doing now. I don\u0027t have a strong preference. */\n}\n/* Update with more cases to support new boards. */",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 51
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31dff1fc_6d49c696",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-02T20:35:23Z",
+      "side": 1,
+      "message": "Nit: TCPC",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
