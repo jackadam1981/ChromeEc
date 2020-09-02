@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdee7aa9_41cf2ad1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2668,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-02T20:36:34Z",
+      "side": 1,
+      "message": "Move above the state change.  Per our best practices for TCPMv2, we should return directly after running a \"set_state\" without executing any more calls.  After the \"set_state\" executes, we\u0027re no longer considered to be running in the old state.",
+      "range": {
+        "startLine": 2668,
+        "startChar": 1,
+        "endLine": 2668,
+        "endChar": 42
+      },
+      "revId": "f98d122d8d11217b60fe4ce7b1c83cd14b48e1e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
