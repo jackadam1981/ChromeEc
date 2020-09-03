@@ -126,6 +126,30 @@
       "revId": "71f6228aaa766922809e75fe7ef2d1899232b632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4656227c_58211fac",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T21:44:15Z",
+      "side": 1,
+      "message": "There is no enough support material for this change. I reverted it. You can change it back later when you confirm it.",
+      "parentUuid": "6bdf3205_3836070c",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "71f6228aaa766922809e75fe7ef2d1899232b632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
