@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7832e585_f0009049",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-09-03T23:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45ada31d_f53c8535",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "ff790a42f03754f818d0b169d64b1fb1195b86cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b5860e0_941fe119",
         "filename": "board/berknip/gpio.inc",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "ff790a42f03754f818d0b169d64b1fb1195b86cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e94ebd_165bc83d",
+        "filename": "board/berknip/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-09-03T23:08:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b5860e0_941fe119",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 5
+      },
+      "revId": "ff790a42f03754f818d0b169d64b1fb1195b86cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
