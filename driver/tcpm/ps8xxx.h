@@ -19,6 +19,8 @@
 
 #define PS8751_P3_TO_P1_FLAGS(p3_flags)	((p3_flags) - 2)
 
+#define PS8805_I2C_ADDR1_FLAGS    0x28
+
 /* Minimum Delay for reset assertion */
 #define PS8XXX_RESET_DELAY_MS 1
 
