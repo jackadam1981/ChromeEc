@@ -102,6 +102,30 @@
       "revId": "71f6228aaa766922809e75fe7ef2d1899232b632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdf3205_3836070c",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1436342
+      },
+      "writtenOn": "2020-09-03T07:15:19Z",
+      "side": 1,
+      "message": "We confirm with Google HW Jim, the Slave address is 0x28. Please reference to b/167476139.",
+      "parentUuid": "99fab44e_1888cda5",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "71f6228aaa766922809e75fe7ef2d1899232b632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
