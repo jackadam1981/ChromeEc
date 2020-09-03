@@ -82,6 +82,40 @@
     },
     {
       "key": {
+        "uuid": "9155c536_1f99fedf",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T00:40:01Z",
+      "side": 1,
+      "message": "add some info",
+      "revId": "91944d862d03016d002be314762a0d89b68b2c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abed545f_c687cd98",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T00:40:01Z",
+      "side": 1,
+      "message": "bring to line 42 and add some info",
+      "revId": "91944d862d03016d002be314762a0d89b68b2c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93a53fd5_26a48ea4",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 11
@@ -110,6 +144,30 @@
       "writtenOn": "2020-09-01T00:29:29Z",
       "side": 1,
       "message": "how about having array of functions ? easy to index and also BUILD_ASSERT with CONFIG_USB_PD_PORT_MAX_COUNT can ensure all ports are addressed",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 54
+      },
+      "revId": "91944d862d03016d002be314762a0d89b68b2c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5ceec5_6f12f755",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T00:40:01Z",
+      "side": 1,
+      "message": "const struct deferred_data *retimer_def_func[] \u003d {\n       \u0026deferred_retimer_p0_data,\n#ifdef HAS_TASK_PD_C1\n       \u0026deferred_retimer_p1_data,\n#endif\n#ifdef HAS_TASK_PD_C2\n       \u0026deferred_retimer_p2_data,\n#endif\n#ifdef HAS_TASK_PD_C3\n       \u0026deferred_retimer_p3_data,\n#endif\n};\nBUILD_ASSERT(ARRAY_SIZE(retimer_def_func) \u003d\u003d USBC_PORT_COUNT);\n\n\nvoid retimer_deferred_hook(int port, int usec)\n{\n       hook_call_deferred(retimer_def_func[port], usec);\n}",
+      "parentUuid": "a9d724cb_7defb78b",
       "range": {
         "startLine": 366,
         "startChar": 0,
