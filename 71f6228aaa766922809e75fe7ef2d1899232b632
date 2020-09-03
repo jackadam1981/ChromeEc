@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "941c276b_642275bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2020-09-03T04:24:16Z",
+      "side": 1,
+      "message": "Please do not share the build status in the CL description.\nUse board rev# instead if you really have to.",
+      "range": {
+        "startLine": 7,
+        "startChar": 46,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "71f6228aaa766922809e75fe7ef2d1899232b632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "490d9583_1ef08a08",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
