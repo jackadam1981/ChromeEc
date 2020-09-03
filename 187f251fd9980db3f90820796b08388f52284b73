@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc718263_3255ca6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-03T17:06:16Z",
+      "side": 1,
+      "message": "Can you test whether the board is able to enter G3 from S5?  We hit an issue with this on the waddledoo reference after enabling temperature sensors and I would be curious to know if that issue is specific to only that board.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "187f251fd9980db3f90820796b08388f52284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
