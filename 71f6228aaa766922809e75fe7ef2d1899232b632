@@ -56,6 +56,29 @@
       "revId": "71f6228aaa766922809e75fe7ef2d1899232b632",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99fab44e_1888cda5",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T03:48:35Z",
+      "side": 1,
+      "message": "Can you confirm it is the right slave address (7-bit)?\n\nTrogdor uses PS8805 and the slave address is the above 0x0B.",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 38
+      },
+      "revId": "71f6228aaa766922809e75fe7ef2d1899232b632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
