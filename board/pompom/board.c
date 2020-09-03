@@ -149,7 +149,11 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
+#if POMPOM_REV_LAST == POMPOM_REV1
+			.addr_flags = PS8805_I2C_ADDR1_FLAGS,
+#else
 			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+#endif
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
