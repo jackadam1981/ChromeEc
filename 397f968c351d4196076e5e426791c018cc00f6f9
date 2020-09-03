@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1df0cd05_ed58f971",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-03T22:02:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33b02837_4408ec5c",
+      "range": {
+        "startLine": 213,
+        "startChar": 39,
+        "endLine": 213,
+        "endChar": 47
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "086928e8_967aa69c",
         "filename": "board/voxel/board.c",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c29759b1_a364e190",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-03T22:02:27Z",
+      "side": 1,
+      "message": "I actually meant that you didn\u0027t have to change it now if you didn\u0027t want to, because you hadn\u0027t actually touched that code in this CL yet. (It was \"out of scope\" for this code review.)\n\nNow that you *have* touched it, I\u0027ll continue my comments at the new location. If you want, you can just put it back the way it was for now.",
+      "parentUuid": "af184ddc_6b5863a7",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 69
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "8926089f_a5dbb31e",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-03T22:02:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2d900524_b9f17627",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 51
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31dff1fc_6d49c696",
         "filename": "board/voxel/board.h",
         "patchSetId": 1
@@ -187,6 +259,30 @@
       "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2031500_2fc49ead",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-03T22:02:27Z",
+      "side": 1,
+      "message": "FYI, you can mark comments as \"resolved\" after fully addressing them.",
+      "parentUuid": "3e649b58_81ffc09d",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

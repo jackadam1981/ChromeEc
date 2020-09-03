@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef7a8a28_349f0ddb",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-03T22:02:27Z",
+      "side": 1,
+      "message": "This function is called unconditionally, and it assigns constant values to structures that are defined in this file. Instead of having this function, you could just change the value of usb_muxes[USBC_PORT_C0] (line 349) to have\n.next_mux \u003d \u0026usbc0_usb4_db_retimer\nand the value of bb_controls[USBC_PORT_C0] (line 365) to have the usb_ls_en_gpio and retimer_rst_gpio values this function is setting.",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 0
+      },
+      "revId": "51b9f32d1307d83b03146a09004f9c1cf9298268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cb00f55_e5e379c7",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-03T22:02:27Z",
+      "side": 1,
+      "message": "There is no reason to read this from CBI here when  it has already been read by baseboard code. Just use get_board_id().",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 39
+      },
+      "revId": "51b9f32d1307d83b03146a09004f9c1cf9298268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1813d6ba_4ef8a621",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-03T22:02:27Z",
+      "side": 1,
+      "message": "Nit: I\u0027m assuming that more board versions are expected, which is why I suggested an\nif (version \u003d\u003d 0) {...}\nelse if (version \u003d\u003d 1) {...} etc. formulation earlier. That way, you could just add an else if clause when you add support for a new board version later.\n\nThe way this is written currently, setting stuff for board version 0 and doing nothing for other values, you\u0027ll have to change the structure when you add board version 1. It\u0027s up to you.",
+      "revId": "51b9f32d1307d83b03146a09004f9c1cf9298268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
