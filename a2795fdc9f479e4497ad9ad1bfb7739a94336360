@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "48196dfb_90a110e0",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T19:59:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3bf020_bf95f6cc",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "a2795fdc9f479e4497ad9ad1bfb7739a94336360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ab58a65_15c28f0d",
         "filename": "common/usbc_intr_task.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-02T13:54:22Z",
       "side": 1,
       "message": "In usb_pd_protocol.c- \" Disabling port for 5 seconds\".\nSo better to keep - \"Disabling port temporarily for 5 sec\" ?",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "a2795fdc9f479e4497ad9ad1bfb7739a94336360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dda506b_4cbd33e1",
+        "filename": "common/usbc_intr_task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T19:59:07Z",
+      "side": 1,
+      "message": "generic statement as in TCPMv2 looks okay, any thought?",
+      "parentUuid": "3ab58a65_15c28f0d",
       "range": {
         "startLine": 96,
         "startChar": 8,
