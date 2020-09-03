@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f04d54a3_6a362d84",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-03T22:27:47Z",
+      "side": 1,
+      "message": "I think this should be a constant in the RT1715 driver header.",
+      "range": {
+        "startLine": 392,
+        "startChar": 16,
+        "endLine": 392,
+        "endChar": 22
+      },
+      "revId": "974bfdf50311857cca79af16886608e2901346f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1a5ea1_ab5ed06f",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-03T22:27:47Z",
+      "side": 1,
+      "message": "I get the logic of having this here next to the port 1 configurations, but it doesn\u0027t depend on CBI data, and I think it would be better for it to be at the beginning of board_tcpc_init or in board_init.",
+      "revId": "974bfdf50311857cca79af16886608e2901346f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
