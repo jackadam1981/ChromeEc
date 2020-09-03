@@ -62,6 +62,24 @@
       "revId": "51b9f32d1307d83b03146a09004f9c1cf9298268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e194ddf_ac6a99ae",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2020-09-03T22:11:07Z",
+      "side": 1,
+      "message": "Just curious if the construct of\n\nswitch(board_version) {\n    case 0: ...\n            break;\n    ...\n    default: ...\n             break;\n}\n\ncan be used as well (which may be better optimized)? Thanks.",
+      "parentUuid": "1813d6ba_4ef8a621",
+      "revId": "51b9f32d1307d83b03146a09004f9c1cf9298268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
