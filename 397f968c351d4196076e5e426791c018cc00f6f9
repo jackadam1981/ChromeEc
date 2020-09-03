@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33b02837_4408ec5c",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-03T02:25:39Z",
+      "side": 1,
+      "message": "modify it at set3. Thanks",
+      "parentUuid": "ca0989ba_46a86e81",
+      "range": {
+        "startLine": 213,
+        "startChar": 39,
+        "endLine": 213,
+        "endChar": 47
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "086928e8_967aa69c",
         "filename": "board/voxel/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-02T20:35:23Z",
       "side": 1,
       "message": "Out of scope here, but this stuff doesn\u0027t look like it depends on CBI, and it could just be set in the relevant structs statically.",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 69
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af184ddc_6b5863a7",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-03T02:25:39Z",
+      "side": 1,
+      "message": "ok, I move it to set_mux scope, is ok?",
+      "parentUuid": "086928e8_967aa69c",
       "range": {
         "startLine": 249,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2d900524_b9f17627",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-03T02:25:39Z",
+      "side": 1,
+      "message": "I create the Hook function to bind switch setup_tcpc function.",
+      "parentUuid": "656eb5bc_380de767",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 51
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31dff1fc_6d49c696",
         "filename": "board/voxel/board.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-09-02T20:35:23Z",
       "side": 1,
       "message": "Nit: TCPC",
+      "range": {
+        "startLine": 100,
+        "startChar": 3,
+        "endLine": 100,
+        "endChar": 7
+      },
+      "revId": "397f968c351d4196076e5e426791c018cc00f6f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e649b58_81ffc09d",
+        "filename": "board/voxel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-03T02:25:39Z",
+      "side": 1,
+      "message": "fix it , thanks",
+      "parentUuid": "31dff1fc_6d49c696",
       "range": {
         "startLine": 100,
         "startChar": 3,
