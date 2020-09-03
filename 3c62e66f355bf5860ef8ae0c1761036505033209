@@ -16,6 +16,115 @@
       "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95d8672c_13ec55d5",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T18:45:29Z",
+      "side": 1,
+      "message": "how about adding it in tbt_alt_mode.c itself?",
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48c72a71_1df2ecef",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T18:45:29Z",
+      "side": 1,
+      "message": "is it different than this macro PD_VDO_RESP_MODE_INTEL_TBT ?",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 17
+      },
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a87afc56_bab8baa0",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T18:45:29Z",
+      "side": 1,
+      "message": "looks like only these things can be board specific, if needed we can add macros in future.\n\nany reason for keeping them as variable?\nthese macros can be directly assigned (except vdo_tbt_modes but it can be local variable)",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19422018_f1f89046",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T18:45:29Z",
+      "side": 1,
+      "message": "more of a no TBT VDO present?",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 62
+      },
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84697007_7e8fab50",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T18:45:29Z",
+      "side": 1,
+      "message": "doesn\u0027t seam like overridable functions needed now.\nhow about making them static for time being?",
+      "range": {
+        "startLine": 2971,
+        "startChar": 0,
+        "endLine": 3013,
+        "endChar": 30
+      },
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
