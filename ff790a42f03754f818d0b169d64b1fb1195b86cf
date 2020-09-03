@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45ada31d_f53c8535",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-03T15:53:22Z",
+      "side": 1,
+      "message": "nit: function",
+      "range": {
+        "startLine": 9,
+        "startChar": 19,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "ff790a42f03754f818d0b169d64b1fb1195b86cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b5860e0_941fe119",
+        "filename": "board/berknip/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-03T15:53:22Z",
+      "side": 1,
+      "message": "I understand why this is, but others will not know the change is temporary and will go back to what is in the #if 0 portion when the older hardware is retired. Please add a comment with a TODO, you can put my email as on the morphius change",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 5
+      },
+      "revId": "ff790a42f03754f818d0b169d64b1fb1195b86cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
