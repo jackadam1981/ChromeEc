@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "490d9583_1ef08a08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T03:32:50Z",
+      "side": 1,
+      "message": "Please re",
+      "revId": "71f6228aaa766922809e75fe7ef2d1899232b632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ce9b5ec_d7ffc565",
+        "filename": "board/pompom/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T03:32:50Z",
+      "side": 1,
+      "message": "You should make PS8751 as an exception case, as the future revs won\u0027t go back to use PS8751, like\n\n#if BOARD_REV \u003d\u003d POMPOM_REV0\n    .addr_flags \u003d PS8751_I2C_ADDR1_FLAGS,\n#else\n    .addr_flags \u003d PS8805_I2C_ADDR1_FLAGS,\n#endif",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 40
+      },
+      "revId": "71f6228aaa766922809e75fe7ef2d1899232b632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd5e1b1_d5edc32e",
+        "filename": "board/pompom/board_revs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T03:32:50Z",
+      "side": 1,
+      "message": "Please refer board/trogdor/board_revs.h that people can use EXTRA_CLFAGS option of make to define the hardware rev.",
+      "revId": "71f6228aaa766922809e75fe7ef2d1899232b632",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
