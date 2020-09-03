@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9885c76a_7a2acd0b",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-09-03T22:29:40Z",
+      "side": 1,
+      "message": "I guess it\u0027s not uint8_t because it\u0027s a local variable?",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 370,
+        "endChar": 9
+      },
+      "revId": "238a157dbdc411637ac215eefb67edfd1b1d42b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8bc030_58fa7986",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2020-09-03T22:29:40Z",
+      "side": 1,
+      "message": "u for unsigned?",
+      "range": {
+        "startLine": 380,
+        "startChar": 16,
+        "endLine": 380,
+        "endChar": 17
+      },
+      "revId": "238a157dbdc411637ac215eefb67edfd1b1d42b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
