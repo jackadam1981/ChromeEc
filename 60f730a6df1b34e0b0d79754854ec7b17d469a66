@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a94a9b3b_84d9d0c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T22:20:50Z",
+      "side": 1,
+      "message": "Sean, please upload a separated patch for the OP_MODE_SELF_SYNC_EN and describe it a bit. Mixing it in this CL is not good, as it is not related to this CL description.",
+      "revId": "60f730a6df1b34e0b0d79754854ec7b17d469a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
