@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "stdbool.h"
+#include "system.h"
 #include "task.h"
 #include "tcpm.h"
 #include "util.h"
@@ -2600,11 +2601,19 @@ static void pe_snk_discovery_entry(int port)
 
 static void pe_snk_discovery_run(int port)
 {
+	/* When system jump to RW, PE does not issue soft reset
+	 * it will case PE wait source cap time out and issue
+	 * hard reset protocol.
+	 * So, make a workround to issue soft reset when system
+	 * jump to RW.
+	 */
+	if (system_is_in_rw())
+		pe_send_soft_reset(port, TCPC_TX_SOP);
 	/*
 	 * Transition to the PE_SNK_Wait_for_Capabilities state when:
 	 *   1) VBUS has been detected
 	 */
-	if (pd_is_vbus_present(port))
+	else if (pd_is_vbus_present(port))
 		set_state_pe(port, PE_SNK_WAIT_FOR_CAPABILITIES);
 }
 
