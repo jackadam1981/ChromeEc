@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0d50a84_e919c6d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-03T06:54:05Z",
+      "side": 1,
+      "message": "I need to remove change made in usb_pe_drp_sm.c. that is temporary fix for VDM header object position issue.",
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
