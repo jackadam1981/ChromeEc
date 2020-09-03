@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e9c2bb2_bbb19d06",
+        "filename": "baseboard/trogdor/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T01:52:07Z",
+      "side": 1,
+      "message": "Move this CONFIG from the baseboard.h to the board.h such that each board can have different value.",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 36
+      },
+      "revId": "c811b1738504daed6f29ed9a169ff7b0b25f7685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc8d27fb_32492abf",
+        "filename": "baseboard/trogdor/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T01:52:07Z",
+      "side": 1,
+      "message": "Check the value of CONFIG_USB_PD_PORT_MAX_COUNT, like\n#if CONFIG_USB_PD_PORT_MAX_COUNT \u003d\u003d 1",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "c811b1738504daed6f29ed9a169ff7b0b25f7685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb805b42_23286c29",
+        "filename": "board/pompom/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T01:52:07Z",
+      "side": 1,
+      "message": "There are multiple GPIOs for C1, like this. Should remove too.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 111
+      },
+      "revId": "c811b1738504daed6f29ed9a169ff7b0b25f7685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
