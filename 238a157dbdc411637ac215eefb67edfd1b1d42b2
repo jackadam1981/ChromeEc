@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a38c6bfe_c8642133",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T22:40:43Z",
+      "side": 1,
+      "message": "I thought it is easy to be extended to CBI, which is an uint32_t. As it is now used as uint8_t, changed it to uint8_t.",
+      "parentUuid": "9885c76a_7a2acd0b",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 370,
+        "endChar": 9
+      },
+      "revId": "238a157dbdc411637ac215eefb67edfd1b1d42b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc8bc030_58fa7986",
         "filename": "board/lazor/board.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "238a157dbdc411637ac215eefb67edfd1b1d42b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cecbb245_5261870e",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T22:40:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc8bc030_58fa7986",
+      "range": {
+        "startLine": 380,
+        "startChar": 16,
+        "endLine": 380,
+        "endChar": 17
+      },
+      "revId": "238a157dbdc411637ac215eefb67edfd1b1d42b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
