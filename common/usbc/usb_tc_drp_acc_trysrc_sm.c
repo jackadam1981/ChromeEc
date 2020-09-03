@@ -117,6 +117,12 @@
 #define TC_FLAGS_CHECK_CONNECTION       BIT(20)
 /* Flag to note pd_set_suspend SUSPEND state */
 #define TC_FLAGS_SUSPEND                BIT(21)
+/*
+ * Flag to note TC_ATTACHED_SNK is coming from a warm start through
+ * tc_state_init and the default data role should not be changed from
+ * what is currently set
+ */
+#define TC_FLAGS_TC_WARM_ATTACHED_SNK   BIT(22)
 
 /*
  * Clear all flags except TC_FLAGS_LPM_ENGAGED and TC_FLAGS_SUSPEND.
@@ -439,6 +445,8 @@ enum pd_dual_role_states drp_state[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[0 ... (CONFIG_USB_PD_PORT_MAX_COUNT - 1)] =
 		CONFIG_USB_PD_INITIAL_DRP_STATE};
 
+static uint8_t saved_flgs[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 static void set_vconn(int port, int enable);
 
 /* Forward declare common, private functions */
@@ -620,6 +628,7 @@ static void tc_detached(int port)
 	hook_notify(HOOK_USB_PD_DISCONNECT);
 	tc_pd_connection(port, 0);
 	tcpm_debug_accessory(port, 0);
+	pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 0);
 }
 
 static inline void pd_set_dual_role_and_event(int port,
@@ -1330,6 +1339,59 @@ void tc_state_init(int port)
 		return;
 	}
 
+	/* Default to not jumping warm to ATTACHED_SNK */
+	TC_CLR_FLAG(port, TC_FLAGS_TC_WARM_ATTACHED_SNK);
+
+	/*
+	 * In order to prevent brownout and reboot loop, restore the previous
+	 * contract, like data and power roles. Do this when all the following
+	 * conditions are true.
+	 *  1. EFS2 is not enable; if EFS2 is used, let it brownout.
+	 *  2. PD comm is enabled.
+	 *  3. There is an explicit contract in place.
+	 *  4. Previous contract is a sink, which may be brownout if the
+	 *     battery is dead.
+	 */
+	if (!IS_ENABLED(CONFIG_VBOOT_EFS2) &&
+	    pd_comm_is_enabled(port) &&
+	    (pd_get_saved_port_flags(port, &saved_flgs[port]) == EC_SUCCESS) &&
+	    (saved_flgs[port] & PD_BBRMFLG_EXPLICIT_CONTRACT) &&
+	    ((saved_flgs[port] & PD_BBRMFLG_POWER_ROLE) == PD_ROLE_SINK)) {
+		tc[port].power_role =
+			(saved_flgs[port] & PD_BBRMFLG_POWER_ROLE)
+				? PD_ROLE_SOURCE
+				: PD_ROLE_SINK;
+		tc[port].data_role =
+			(saved_flgs[port] & PD_BBRMFLG_DATA_ROLE)
+				? PD_ROLE_DFP
+				: PD_ROLE_UFP;
+#ifdef CONFIG_USBC_VCONN
+		set_vconn(port,
+			(saved_flgs[port] & PD_BBRMFLG_VCONN_ROLE)
+				? PD_ROLE_VCONN_ON
+				: PD_ROLE_VCONN_OFF);
+#endif /* CONFIG_USBC_VCONN */
+		if (IS_ENABLED(CONFIG_USB_PE_SM))
+			pe_set_sysjump();
+
+		/*
+		 * We are jumping warm to ATTACHED_SNK, so don't
+		 * change the data role when we get to the state.
+		 */
+		TC_SET_FLAG(port, TC_FLAGS_TC_WARM_ATTACHED_SNK);
+		if (saved_flgs[port] & PD_BBRMFLG_DBGACC_ROLE)
+			TC_SET_FLAG(port, TC_FLAGS_TS_DTS_PARTNER);
+		set_state_tc(port, TC_ATTACHED_SNK);
+
+		/*
+		 * Set the TCPC reset event such that we can set our CC
+		 * terminations, determine polarity, and enable RX so we
+		 * can hear back from our port partner if maintaining our old
+		 * connection.
+		 */
+		task_set_event(task_get_current(), PD_EVENT_TCPC_RESET, 0);
+	}
+
 	/* Allow system to set try src enable */
 	tc_try_src_override(TRY_SRC_NO_OVERRIDE);
 
@@ -1345,6 +1407,10 @@ void tc_state_init(int port)
 		pd_set_dual_role_and_event(port, PD_DRP_TOGGLE_OFF, 0);
 	else /* CHIPSET_STATE_ON */
 		pd_set_dual_role_and_event(port, PD_DRP_TOGGLE_ON, 0);
+
+	/* If jumping warm that the previous contract is stored, done. */
+	if (TC_CHK_FLAG(port, TC_FLAGS_TC_WARM_ATTACHED_SNK))
+		return;
 
 	/*
 	 * If we just lost power, don't apply CC open. Otherwise we would boot
@@ -1396,6 +1462,7 @@ bool pd_alt_mode_capable(int port)
 void tc_set_power_role(int port, enum pd_power_role role)
 {
 	tc[port].power_role = role;
+	pd_update_saved_port_flags(port, PD_BBRMFLG_POWER_ROLE, role);
 }
 
 /*
@@ -1501,6 +1568,8 @@ void tc_set_data_role(int port, enum pd_data_role role)
 {
 	tc[port].data_role = role;
 
+	pd_update_saved_port_flags(port, PD_BBRMFLG_DATA_ROLE, role);
+
 	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
 		set_usb_mux_with_current_data_role(port);
 
@@ -1547,6 +1616,8 @@ static void set_vconn(int port, int enable)
 		TC_SET_FLAG(port, TC_FLAGS_VCONN_ON);
 	else
 		TC_CLR_FLAG(port, TC_FLAGS_VCONN_ON);
+
+	pd_update_saved_port_flags(port, PD_BBRMFLG_VCONN_ROLE, enable);
 
 	/*
 	 * Disable PPC Vconn first then TCPC in case the voltage feeds back
@@ -2170,7 +2241,17 @@ static void tc_attached_snk_entry(const int port)
 		tc[port].polarity = get_snk_polarity(cc1, cc2);
 		pd_set_polarity(port, tc[port].polarity);
 
-		tc_set_data_role(port, PD_ROLE_UFP);
+		/*
+		 * Initial data role for sink is UFP unless this is a warm
+		 * attach.  If it is a warm attach, the data role will be
+		 * restored to the current connect role and will already
+		 * have called tc_set_data_role with the appropriate role.
+		 * This also sets the usb mux
+		 */
+		if (TC_CHK_FLAG(port, TC_FLAGS_TC_WARM_ATTACHED_SNK))
+			TC_CLR_FLAG(port, TC_FLAGS_TC_WARM_ATTACHED_SNK);
+		else
+			tc_set_data_role(port, PD_ROLE_UFP);
 
 		hook_notify(HOOK_USB_PD_CONNECT);
 
@@ -2198,8 +2279,11 @@ static void tc_attached_snk_entry(const int port)
 	if (IS_ENABLED(CONFIG_USB_PE_SM))
 		tc_enable_pd(port, 1);
 
-	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER))
+	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER)) {
 		tcpm_debug_accessory(port, 1);
+		/* Save our current connection is a DEBUG ACCESSORY */
+		pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
+	}
 }
 
 static void tc_attached_snk_run(const int port)
@@ -2706,8 +2790,11 @@ static void tc_attached_src_entry(const int port)
 		hook_notify(HOOK_USB_PD_CONNECT);
 	}
 
-	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER))
+	if (TC_CHK_FLAG(port, TC_FLAGS_TS_DTS_PARTNER)) {
 		tcpm_debug_accessory(port, 1);
+		/* Save our current connection is a DEBUG ACCESSORY */
+		pd_update_saved_port_flags(port, PD_BBRMFLG_DBGACC_ROLE, 1);
+	}
 }
 
 static void tc_attached_src_run(const int port)
