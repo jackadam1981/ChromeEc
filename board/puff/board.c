@@ -368,7 +368,7 @@ const struct fan_rpm fan_rpm_0 = {
 	.rpm_max = 4300,
 };
 
-const struct fan_t fans[] = {
+struct fan_t fans[] = {
 	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
@@ -435,6 +435,20 @@ static void cbi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
+static void setup_thermal(void)
+{
+	sku_id &= SKU_ID_MASK;
+	/* Configure Fan */
+	switch (sku_id) {
+	case SKU_KAISA:
+	case SKU_DUFFY:
+	case SKU_FAFFY:
+	default:
+		fans[FAN_CH_0].rpm = &fan_rpm_0;
+		thermal_params[TEMP_SENSOR_CORE] = thermal_a;
+	}
+}
+
 static void board_init(void)
 {
 	uint8_t *memmap_batt_flags;
@@ -469,6 +483,7 @@ static void board_init(void)
 	if (board_version < 2)
 		button_disable_gpio(GPIO_EC_RECOVERY_BTN_ODL);
 
+	setup_thermal();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
