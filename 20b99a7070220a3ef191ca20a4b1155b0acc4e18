@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30d2b90f_1f769685",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T19:53:56Z",
+      "side": 1,
+      "message": "I moved the decision of 2S/3S to board customization, which checks the SKU ID now. It can be extended later.\n\nThe 10V comparator check is added to the 2:1 switching mode case, to avoid any damage when attaching a 3S battery to a 2S-SKU board.\n\nCheck the patch:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2391210",
+      "parentUuid": "2e25c1d9_30f475f9",
+      "revId": "20b99a7070220a3ef191ca20a4b1155b0acc4e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40ea55da_8b68db82",
         "filename": "driver/ln9310.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "20b99a7070220a3ef191ca20a4b1155b0acc4e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ef6bb01_fc34654a",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T19:53:56Z",
+      "side": 1,
+      "message": "I made the change.",
+      "parentUuid": "40ea55da_8b68db82",
+      "revId": "20b99a7070220a3ef191ca20a4b1155b0acc4e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -64,6 +100,30 @@
       "writtenOn": "2020-09-03T17:59:32Z",
       "side": 1,
       "message": "Before init_3to1 / init_2to1, we need to set OP_SELF_SYNC_EN register. I have created a changelist (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2370203) that includes this change.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 21
+      },
+      "revId": "20b99a7070220a3ef191ca20a4b1155b0acc4e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9174298f_456afe50",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T19:53:56Z",
+      "side": 1,
+      "message": "What is this OP_SELF_SYNC_EN for? Could you submit a patch using the ToT code?",
+      "parentUuid": "73fa78fb_28045087",
       "range": {
         "startLine": 170,
         "startChar": 0,
