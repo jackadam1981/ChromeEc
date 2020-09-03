@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e25c1d9_30f475f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2020-09-03T17:37:32Z",
+      "side": 1,
+      "message": "I don\u0027t think the 10 V comparator can be used to definitively determine whether the battery is 2S or 3S.  For example, if a 3S battery that has very low charge (9.9 V) was attached, then with this code the 9310 would go into 2TO1 mode and VOUT would be 9.9/2 \u003d 4.95 V.  If the battery was then charged up to 12V, VOUT would go to 6 V which would be a problem.  \n\nThe 10 V comparator output should only be used to prevent entering 2TO1 if VIN \u003e 10V.  It can\u0027t be used to determine whether the battery is 2S or 3S.  I can think of two possibilities to resolve this:\n\n1) There could be a macro defined stating whether the build is targeting 2S or 3S batteries. The LN9310 code should only check the 10 V comparator output in the case where the build is targeting 2S batteries and would prevent starting the 9310 if the voltage is greater than 10 V.  For builds targeting 3S batteries the comparator doesn\u0027t give us clear information so it irrelevant.\n \n2) If it is possible to detect which battery model is connected, then it might be possible to definitively determine on the fly whether the battery is 2S or 3S from that information rather than requiring a macro definition.  In that case the 10 V comparator threshold could just serve as a double-check before entering 2S mode.",
+      "revId": "20b99a7070220a3ef191ca20a4b1155b0acc4e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40ea55da_8b68db82",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2020-09-03T17:37:32Z",
+      "side": 1,
+      "message": "This function might be more accurately named \"is_battery_gt_10V\" or something similar since it doesn\u0027t definitively identify a battery (e.g. \u003e 10 V could be a 3S or 4S battery and \u003c 10 V could be a 1S, 2S, or 3S battery).",
+      "revId": "20b99a7070220a3ef191ca20a4b1155b0acc4e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71f91f7c_aeaedae9",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2020-09-03T17:37:32Z",
+      "side": 1,
+      "message": "This is the conditional where we might incorrectly enter 2TO1 switching with a nearly discharged 3S battery which could then lead to excessive VOUT voltage when the battery is charged up again.",
+      "revId": "20b99a7070220a3ef191ca20a4b1155b0acc4e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
