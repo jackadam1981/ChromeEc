@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f5171ca_1d38f4c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T23:13:16Z",
+      "side": 1,
+      "message": "Add a newline here to break the one-line subject and the detailed description.\n\nThe max columns of the description is 70 characters. Please break the lines manually.",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "49ec6050e49c76f98d8d26189a2ab541d68e957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0b7d7d9_9d5e2283",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T23:13:16Z",
+      "side": 1,
+      "message": "Add the tags like:\n\nBRANCH\u003dNone\nBUG\u003db:163867792\nTEST\u003dBuilt successfully.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "49ec6050e49c76f98d8d26189a2ab541d68e957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16638289_a1eb502f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T23:13:16Z",
+      "side": 1,
+      "message": "Add the \"Signed-off-by\" tag, like using the \"git commit --amend -s\" command.",
+      "revId": "49ec6050e49c76f98d8d26189a2ab541d68e957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6d96489_a7710773",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T23:13:16Z",
+      "side": 1,
+      "message": "Remove the tailing space.",
+      "range": {
+        "startLine": 178,
+        "startChar": 36,
+        "endLine": 178,
+        "endChar": 37
+      },
+      "revId": "49ec6050e49c76f98d8d26189a2ab541d68e957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43411966_eae4c1c0",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T23:13:16Z",
+      "side": 1,
+      "message": "Use the following format for multi-line comments:\n\n/*\n * LINE1\n * LINE2\n */",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 4
+      },
+      "revId": "49ec6050e49c76f98d8d26189a2ab541d68e957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12c9cf8a_93f45d86",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T23:13:16Z",
+      "side": 1,
+      "message": "Remove the extra speaces. Just use tabs. Same as the below lines.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "49ec6050e49c76f98d8d26189a2ab541d68e957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e856ea81_dffef7af",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T23:13:16Z",
+      "side": 1,
+      "message": "I expect the following values are for LN9310_REG_PWR_CTRL, not LN9310_REG_TRACK_CTRL.",
+      "range": {
+        "startLine": 181,
+        "startChar": 17,
+        "endLine": 181,
+        "endChar": 38
+      },
+      "revId": "49ec6050e49c76f98d8d26189a2ab541d68e957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b9862e3_94744aab",
+        "filename": "driver/ln9310.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T23:13:16Z",
+      "side": 1,
+      "message": "Don\u0027t need () for a single constant.",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 30
+      },
+      "revId": "49ec6050e49c76f98d8d26189a2ab541d68e957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
