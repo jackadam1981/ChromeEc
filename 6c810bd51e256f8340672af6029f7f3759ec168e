@@ -22,6 +22,30 @@
       "revId": "6c810bd51e256f8340672af6029f7f3759ec168e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78022936_05d306df",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-03T17:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82a437bc_4139a1ab",
+      "range": {
+        "startLine": 767,
+        "startChar": 1,
+        "endLine": 767,
+        "endChar": 10
+      },
+      "revId": "6c810bd51e256f8340672af6029f7f3759ec168e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
