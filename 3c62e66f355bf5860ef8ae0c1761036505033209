@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "cecae9f7_f44eb91c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T19:05:18Z",
+      "side": 1,
+      "message": "yes but looks like BB retimer depends on this CL. so push it on top of this CL",
+      "parentUuid": "a229a49b_0ae2d23a",
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95d8672c_13ec55d5",
         "filename": "common/usbc/tbt_alt_mode_ufp.c",
         "patchSetId": 8
@@ -158,6 +176,30 @@
       "side": 1,
       "message": "You got me confused. Are those all not be overridable? Those are originally in baseboard as local functions. our last discussion to make it in common file. We need to decide which should be in common, which are not.",
       "parentUuid": "84697007_7e8fab50",
+      "range": {
+        "startLine": 2971,
+        "startChar": 0,
+        "endLine": 3013,
+        "endChar": 30
+      },
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1449f78_3ef5ec33",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-03T19:05:18Z",
+      "side": 1,
+      "message": "these can be static as these are not board specific, only macros (defined as variables in the code) are board specific",
+      "parentUuid": "89eabe60_4eead078",
       "range": {
         "startLine": 2971,
         "startChar": 0,
