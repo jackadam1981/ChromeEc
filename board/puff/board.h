@@ -118,6 +118,7 @@
 
 /* Fan and temp. */
 #define CONFIG_FANS 1
+#define CONFIG_FAN_DYNAMIC
 #undef CONFIG_FAN_INIT_SPEED
 #define CONFIG_FAN_INIT_SPEED 0
 #define CONFIG_TEMP_SENSOR
@@ -179,7 +180,6 @@
 #define I2C_ADDR_EEPROM_FLAGS	0x50
 
 #define PP5000_PGOOD_POWER_SIGNAL_MASK POWER_SIGNAL_MASK(PP5000_A_PGOOD)
-
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -225,6 +225,10 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
+enum theraml_param_config {
+	THERMAL_TABLE_A,
+	THERMAL_TABLE_COUNT
+};
 
 /* Board specific handlers */
 void board_reset_pd_mcu(void);
