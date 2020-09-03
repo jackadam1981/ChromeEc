@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e96a55d_76de940f",
+        "filename": "board/puff/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-09-03T10:02:02Z",
+      "side": 1,
+      "message": "So the use of SKU IDs to define configuration is deprecated, and instead the fw_config fields are to be used instead, similar to how it was done with the barrel-jack.\nThe idea is to define a field in the fw_config that provides a value that can be used to identify which thermal table should be used.\nThe default value of 0 should represent what the existing platforms expect.\nThe size of the field should be enough to cater for future values.\nSo it appears as though at least a 1 bit field should be used.\nI would allocate at least 2-3 bits for future expansion (4-8 possible thermal tables).",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 17
+      },
+      "revId": "d94a57b96b4a4989cc920ffedefa82713136568d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
