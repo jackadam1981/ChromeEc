@@ -98,6 +98,24 @@
       "revId": "51b9f32d1307d83b03146a09004f9c1cf9298268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8fbe6f2_ba8f5148",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2020-09-03T23:18:02Z",
+      "side": 1,
+      "message": "Thanks for the comment/pointer. Jump table is exactly I was thinking about. For run-once codes yes it doesn\u0027t matter much.",
+      "parentUuid": "f8bcf5a6_b630ebc2",
+      "revId": "51b9f32d1307d83b03146a09004f9c1cf9298268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
