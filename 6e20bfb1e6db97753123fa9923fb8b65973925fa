@@ -46,6 +46,30 @@
       "revId": "6e20bfb1e6db97753123fa9923fb8b65973925fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d1d286_824cc434",
+        "filename": "chip/it83xx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-09-03T06:05:45Z",
+      "side": 1,
+      "message": "Marking as resolved",
+      "parentUuid": "2c893ff5_40d8f1f9",
+      "range": {
+        "startLine": 41,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "6e20bfb1e6db97753123fa9923fb8b65973925fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
