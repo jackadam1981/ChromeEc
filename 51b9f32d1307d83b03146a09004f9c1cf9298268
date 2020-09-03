@@ -80,6 +80,24 @@
       "revId": "51b9f32d1307d83b03146a09004f9c1cf9298268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8bcf5a6_b630ebc2",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-03T22:41:38Z",
+      "side": 1,
+      "message": "It could. I was going to offer that up as an option but didn\u0027t want to make my comment too elaborate. A switch statement might be a little easier to scan for a human, but it would probably be a few more lines of code overall. I don\u0027t have a strong preference between them.\n\nIf you\u0027re referring to optimization by the compiler, I expect that the resulting code size or execution time would be negligibly different, especially considering that this only runs once during startup.\n\nSome quick Googling suggests that Clang could optimize an if/else into a jump table in 2013: http://lazarenko.me/switch/ Maybe GCC can do it now.",
+      "parentUuid": "9e194ddf_ac6a99ae",
+      "revId": "51b9f32d1307d83b03146a09004f9c1cf9298268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
