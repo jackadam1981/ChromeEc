@@ -52,6 +52,8 @@
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
 
+static void setup_thermal(void);
+
 static void ppc_interrupt(enum gpio_signal signal)
 {
 	if (signal == GPIO_USB_C0_TCPPC_INT_ODL)
@@ -368,7 +370,7 @@ const struct fan_rpm fan_rpm_0 = {
 	.rpm_max = 4300,
 };
 
-const struct fan_t fans[] = {
+struct fan_t fans[] = {
 	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
@@ -469,6 +471,7 @@ static void board_init(void)
 	if (board_version < 2)
 		button_disable_gpio(GPIO_EC_RECOVERY_BTN_ODL);
 
+	setup_thermal();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -670,6 +673,19 @@ int ec_config_get_usb4_present(void)
 unsigned int ec_config_get_thermal_solution(void)
 {
 	return (fw_config & EC_CFG_THERMAL_MASK) >> EC_CFG_THERMAL_L;
+}
+
+static void setup_thermal(void)
+{
+	unsigned int table = ec_config_get_thermal_solution();
+	/* Configure Fan */
+	switch (table) {
+	case THERMAL_TABLE_A:
+	default:
+		fans[FAN_CH_0].rpm = &fan_rpm_0;
+		thermal_params[TEMP_SENSOR_CORE] = thermal_a;
+		break;
+	}
 }
 
 /*
