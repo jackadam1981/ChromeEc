@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8fa735c_7f077b8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T00:05:19Z",
+      "side": 1,
+      "message": "Limozeen will use the same firmware as Lazor.\n\nI address the Limozeen difference in\n  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2391203\nwhich disables the accel/gyro sensor.\n\nFor the volumn buttons, leave it unchanged, as the hardware line are NC.\n\nFor the keyboard backlight, it is default off and AP configures it according to the SKU.\n\nPlease check any other difference from Lazor.",
+      "revId": "3cd41f015e4fb82313c3994b4fd4f70086daa2e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
