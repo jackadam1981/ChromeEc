@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4ac8360_fa7baded",
+        "filename": "board/pompom/board_revs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-03T14:09:40Z",
+      "side": 1,
+      "message": "If not defined, should fall back to \"default\". This is the meaning of \"default\". So assign it to POMPOM_REV_DEFAULT. And change POMPOM_REV_DEFAULT to POMPOM_REV1.\n\nOn the Trogdor case, as most of the people still use rev0 (rev1+ is not popular), it sets default to rev0. But I don\u0027t think Pompom is this case.",
+      "range": {
+        "startLine": 15,
+        "startChar": 18,
+        "endLine": 15,
+        "endChar": 29
+      },
+      "revId": "7ec64f0bdfdae65c2eea8baf57b28b46f91222d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
