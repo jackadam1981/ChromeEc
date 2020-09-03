@@ -16,6 +16,24 @@
       "revId": "e231392c51fe667fbdf5f9a698789f6119d0248c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "685af5d3_bd13081b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-03T15:21:10Z",
+      "side": 1,
+      "message": "I think the TCPC burst is okay.  That\u0027s an expected spacing from the nRetryCount logic (note that nRetryCount doesn\u0027t apply for cable plugs, but I believe it does apply to us talking to a cable plug).",
+      "parentUuid": "4c6145ff_0a9cc2ef",
+      "revId": "e231392c51fe667fbdf5f9a698789f6119d0248c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
