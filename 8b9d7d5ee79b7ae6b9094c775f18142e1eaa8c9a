@@ -16,6 +16,138 @@
       "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2e5e227_50b84eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-03T15:33:10Z",
+      "side": 1,
+      "message": "I think the common file shouldn\u0027t have any board specific changes. It should be like usb_pd_alt_dfp (but in usbc i guess) file. And should be compiled irrespective of what modes we are supporting.\n\nThis way, we can add all the ufp related changes there - I am planning to move the retimer related function in here as well. We can further add USB4 changes in there instead of having a separate file.",
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc1ff2cb_ffdc3c14",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-03T15:33:10Z",
+      "side": 1,
+      "message": "Do we still need this?",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "570e3b5d_52095ef1",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-03T15:33:10Z",
+      "side": 1,
+      "message": "These are board specific. Shouldn\u0027t it be in board.c file?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6d9ca15_9ac79197",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-03T15:33:10Z",
+      "side": 1,
+      "message": "You can return 0 here, and add a overridable function in the board.c file",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 1
+      },
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de021cae_cea49033",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-03T15:33:10Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 1
+      },
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b439d794_c2825617",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-03T15:33:10Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
