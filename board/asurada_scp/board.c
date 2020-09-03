@@ -66,3 +66,13 @@ void N##_task(void *u) \
 }
 
 Q(x, 10);
+
+void z_task(void *u)
+{
+	while (1) {
+		ccprints("%s", __func__);
+		cflush();
+
+		task_wait_event(1000000);
+	}
+}
