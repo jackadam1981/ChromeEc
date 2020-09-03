@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bd2e3d4_52438529",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-03T16:18:01Z",
+      "side": 1,
+      "message": "WIP, but this does seem to fix b:166687000.  I need to do some more analysis of the failing and passing test cases to confirm that an early read of CC_STATUS was causing b:166687000. \n\nThis also breaks one of the test cases that I will fix. ",
+      "revId": "21d5b20d9f27d2cb9690798e3baffea69103dd7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
