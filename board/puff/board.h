@@ -118,6 +118,7 @@
 
 /* Fan and temp. */
 #define CONFIG_FANS 1
+#define CONFIG_FAN_DYNAMIC
 #undef CONFIG_FAN_INIT_SPEED
 #define CONFIG_FAN_INIT_SPEED 0
 #define CONFIG_TEMP_SENSOR
