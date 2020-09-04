@@ -22,6 +22,30 @@
       "revId": "187f251fd9980db3f90820796b08388f52284b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5db8ca7b_a9fcf84a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-09-04T07:11:58Z",
+      "side": 1,
+      "message": "I use apshutdown and it can directly enter G3 from S5.",
+      "parentUuid": "dc718263_3255ca6c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 46
+      },
+      "revId": "187f251fd9980db3f90820796b08388f52284b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
