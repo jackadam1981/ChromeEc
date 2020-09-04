@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ec7e4842_b821b939",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-04T20:41:38Z",
+      "side": 1,
+      "message": "I think we can move faster if you move these GPIOs to the CLs where they\u0027re actually used. I spotted some of these are fixed in the later CLs (e.g. MST_RST_L, USBC_DP_PD_RST_L, EC_HUB2_RESET_L, EN_PP3300_ALW). If they\u0027re added when they\u0027re used, I won\u0027t need to look at them twice.",
+      "revId": "536dbaa1ed04acfadbad8d2c80a9230af05a37c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "054a9a13_df5a4886",
         "filename": "board/quiche/gpio.inc",
         "patchSetId": 22
