@@ -64,7 +64,7 @@
 
 /* Console commands to remove to save flash spaces */
 #undef CONFIG_CMD_CRASH
-#undef CONFIG_CMD_I2C_SCAN
+/* #undef CONFIG_CMD_I2C_SCAN */
 #undef CONFIG_CMD_IDLE_STATS
 #undef CONFIG_CMD_PWR_AVG
 #undef CONFIG_CMD_MD
