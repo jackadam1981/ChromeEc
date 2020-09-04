@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69c194b2_812f2ddb",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-04T20:06:58Z",
+      "side": 1,
+      "message": "The casts don\u0027t make sense to me. You want to test int32_t with int16_t in the domain of int32_t.  So it feels more natural to cast the int16_t values to be int32_t.  Does the following work? This works on gcc on gLinux but then the original gave the right answer there as well with your example of value \u003d -15000.\n\n  return MIN(MAX(value, (int32_t)INT16_MIN),\n\t     (int32_t)INT16_MAX);",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 55
+      },
+      "revId": "5270ecb8dd4ffed2fc19bced633e1ebba7a9ae14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
