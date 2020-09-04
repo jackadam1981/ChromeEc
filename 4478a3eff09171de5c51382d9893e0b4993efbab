@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a02e9ab_bf555855",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2020-09-04T03:02:35Z",
+      "side": 1,
+      "message": "Tested on Pompom without battery attached. EC issues soft reset when sysjump to RW and won\u0027t cause power lost.",
+      "revId": "4478a3eff09171de5c51382d9893e0b4993efbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
