@@ -39,6 +39,30 @@
       "revId": "536dbaa1ed04acfadbad8d2c80a9230af05a37c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60fdbc62_501c5ca4",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 22
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-04T20:58:16Z",
+      "side": 1,
+      "message": "Yes, ALW means always, so this was mislabeled and it gets corrected when it\u0027s used for bringing up the power rails.",
+      "parentUuid": "054a9a13_df5a4886",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "536dbaa1ed04acfadbad8d2c80a9230af05a37c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
