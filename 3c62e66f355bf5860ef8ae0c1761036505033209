@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "32973bdd_79f448c3",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-04T21:46:16Z",
+      "side": 1,
+      "message": "This is the offset of mode can be entered, it\u0027s 3 bits used in VDM header in response.\nmacro PD_VDO_RESP_MODE_INTEL_TBT used to check enter mode request VOD1, if bits[15:0] are set to TBT mode.",
+      "parentUuid": "48c72a71_1df2ecef",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 17
+      },
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a87afc56_bab8baa0",
         "filename": "common/usbc/tbt_alt_mode_ufp.c",
         "patchSetId": 8
@@ -138,6 +162,30 @@
       "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19ad74f3_4b452dcc",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-04T21:46:16Z",
+      "side": 1,
+      "message": "It NAK here if requested SVID/mode are not correct, or if it\u0027s not in USB mode or safe mode.",
+      "parentUuid": "19422018_f1f89046",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 62
+      },
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
