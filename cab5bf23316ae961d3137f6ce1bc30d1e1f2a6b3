@@ -22,6 +22,30 @@
       "revId": "cab5bf23316ae961d3137f6ce1bc30d1e1f2a6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f563837_b4fbfb6d",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-09-04T21:59:27Z",
+      "side": 1,
+      "message": "Yeah, I had not added any cast to UINT16_MAX since it was not needed. But, I can update it for consistency.",
+      "parentUuid": "5e3a4d85_c7e6ecca",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 58
+      },
+      "revId": "cab5bf23316ae961d3137f6ce1bc30d1e1f2a6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
