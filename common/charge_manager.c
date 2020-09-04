@@ -101,6 +101,9 @@ static int charge_voltage;
 static int charge_supplier = CHARGE_SUPPLIER_NONE;
 static int override_port = OVERRIDE_OFF;
 
+#define BEST_CHARGE_PORT_PENDING -2
+static int best_charge_port = CHARGE_PORT_NONE;
+
 static int delayed_override_port = OVERRIDE_OFF;
 static timestamp_t delayed_override_deadline;
 
@@ -688,6 +691,7 @@ static void charge_manager_refresh(void)
 	/* Hunt for an acceptable charge port */
 	while (1) {
 		charge_manager_get_best_charge_port(&new_port, &new_supplier);
+		best_charge_port = new_port;
 
 		if (!left_safe_mode && new_port == CHARGE_PORT_NONE)
 			return;
@@ -983,6 +987,7 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
+	int supplier;
 	struct charge_port_info charge;
 
 	if (IS_ENABLED(CONFIG_USB_PD_PREFER_MV))
@@ -991,6 +996,16 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 	charge.current = max_ma;
 	charge.voltage = supply_voltage;
 	charge_manager_update_charge(CHARGE_SUPPLIER_PD, port, &charge);
+
+	/*
+	 * Don't wait for delayed refresh to determine if the best charge
+	 * port has changed.  If we wait, then the USB-C Policy Engine
+	 * may revert to lowest power request from the charger when there
+	 * is a second, lower power, charger marked as the active
+	 * charge_port
+	 */
+	best_charge_port = BEST_CHARGE_PORT_PENDING;
+	charge_manager_get_best_charge_port(&best_charge_port, &supplier);
 }
 
 void typec_set_input_current_limit(int port, typec_current_t max_ma,
@@ -1160,6 +1175,14 @@ int charge_manager_get_override(void)
 
 int charge_manager_get_active_charge_port(void)
 {
+	/*
+	 * Override the active charge_port with the soon to be active
+	 * charge_port in the case the change is already in progress
+	 * but may not have finished the delayed refresh.
+	 */
+	if (best_charge_port != BEST_CHARGE_PORT_PENDING)
+		return best_charge_port;
+
 	return charge_port;
 }
 
