@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "8eaac238_47066c02",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 20
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-04T19:08:42Z",
+      "side": 1,
+      "message": "(I forgot to add \u0027Please\u0027 in my last comment. I\u0027m not trying to violate code of conduct any way.)",
+      "parentUuid": "0a3ca2f0_54724577",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "b3d4378695c29fc1c685fa281c5b785be0e56827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e28dc6e_fdac7340",
         "filename": "board/quiche/gpio.inc",
         "patchSetId": 20
