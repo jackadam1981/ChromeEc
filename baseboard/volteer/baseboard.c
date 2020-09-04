@@ -159,7 +159,11 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 const static struct ec_thermal_config thermal_cpu = {
 	.temp_host = {
 		[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
+#ifdef BOARD_ELDRID
+		[EC_TEMP_THRESH_HALT] = C_TO_K(85),
+#else
 		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
+#endif
 	},
 	.temp_host_release = {
 		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
