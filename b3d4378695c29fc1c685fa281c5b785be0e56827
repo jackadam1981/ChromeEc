@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0a3ca2f0_54724577",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 20
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-04T18:36:18Z",
+      "side": 1,
+      "message": "The macros are added when they get used. There is a change that will be clearly marked. What happens is that they get deleted from the block they are currently in, then they get added above that. There is a clear change.",
+      "parentUuid": "798dd723_85b0c91e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "b3d4378695c29fc1c685fa281c5b785be0e56827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e28dc6e_fdac7340",
         "filename": "board/quiche/gpio.inc",
         "patchSetId": 20
