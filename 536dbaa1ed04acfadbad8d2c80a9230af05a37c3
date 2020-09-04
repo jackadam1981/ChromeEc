@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c6b28114_f3380f85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-04T22:26:08Z",
+      "side": 1,
+      "message": "I just removed all the entries except for ones required to compile and I left the EC console alt_function in.",
+      "parentUuid": "b44cab22_9de5a042",
+      "revId": "536dbaa1ed04acfadbad8d2c80a9230af05a37c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "054a9a13_df5a4886",
         "filename": "board/quiche/gpio.inc",
         "patchSetId": 22
