@@ -16,6 +16,24 @@
       "revId": "fd877724a4a679be387d9e12e450e0aa189921b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "478278cd_48998736",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-09-04T17:31:26Z",
+      "side": 1,
+      "message": "\u003e I didn\u0027t quite follow this. clamp_i16 uses INT16_MAX, not UINT16_MAX.\n\nYou are right. It should be INT16_MAX here in the commit message.\n\n\u003e Would you mind putting the type of the intermediate results to make the explanation clearer?\n\nOkay, I can try to add the expanded form of the macro.",
+      "parentUuid": "7588d9ac_7b250e72",
+      "revId": "fd877724a4a679be387d9e12e450e0aa189921b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
