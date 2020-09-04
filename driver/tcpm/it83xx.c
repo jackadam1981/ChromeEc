@@ -584,10 +584,12 @@ static int it83xx_tcpm_set_vconn(int port, int enable)
 					 USBPD_REG_MASK_SOPPP_ENABLE);
 		}
 
+#ifndef CONFIG_USBC_PPC_VCONN
 		/* Turn on/off vconn power switch. */
 		board_pd_vconn_ctrl(port,
 			USBPD_GET_PULL_CC_SELECTION(port) ?
 				USBPD_CC_PIN_2 : USBPD_CC_PIN_1, enable);
+#endif
 
 		if (!enable) {
 			/* Disable tcpc receive SOP' and SOP'' packet */
