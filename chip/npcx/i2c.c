@@ -713,7 +713,8 @@ static void i2c_handle_sda_irq(int controller)
 				 * before writing address byte
 				 */
 				if (p_status->sz_rxbuf == 1 &&
-					(p_status->flags & I2C_XFER_STOP)) {
+					(p_status->flags & I2C_XFER_STOP) &&
+					!IS_ENABLED(NPCX_I2C_FIFO_SUPPORT)) {
 					I2C_NACK(controller);
 					CPUTS("-GNA");
 				}
@@ -807,8 +808,10 @@ void i2c_master_int_handler (int controller)
 		 * Otherwise we have a one-byte transaction, so nack after
 		 * receiving next byte, if requested.
 		 */
-		else if (p_status->flags & I2C_XFER_STOP)
-			I2C_NACK(controller);
+		else if (p_status->flags & I2C_XFER_STOP) {
+			if (!IS_ENABLED(NPCX_I2C_FIFO_SUPPORT))
+				I2C_NACK(controller);
+		}
 
 		/* Clear STASTR to release SCL after setting NACK/STOP bits */
 		SET_BIT(NPCX_SMBST(controller), NPCX_SMBST_STASTR);
