@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eae4108c_a01a62bc",
+        "filename": "board/nucleo-g431rb/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-04T19:10:43Z",
+      "side": 1,
+      "message": "Then, can you use UNIMPLEMENTED?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 53
+      },
+      "revId": "c46af28f7876e1f5d5a314b45621af7fb89132c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
