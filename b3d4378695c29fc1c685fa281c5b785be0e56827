@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "798dd723_85b0c91e",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 20
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-04T16:11:53Z",
+      "side": 1,
+      "message": "Move these to the CLs where they first appear in the code (so that you don\u0027t need to dig up on the schematics). Adding macros as they are used helps review process. I think it\u0027s a good \u0026 common practice in general. When you revert such a patch, relevant GPIOs will be gone as well.\n\nThe only exception I can think of is a header file listing register macros. I think we want to define macros for unused bits \u0026 registers for completeness.",
+      "parentUuid": "ea32afd8_6974abac",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 3
+      },
+      "revId": "b3d4378695c29fc1c685fa281c5b785be0e56827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e28dc6e_fdac7340",
         "filename": "board/quiche/gpio.inc",
         "patchSetId": 20
