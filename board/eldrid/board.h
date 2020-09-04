@@ -115,6 +115,7 @@
 /* Volume Button feature */
 
 /* Fan features */
+#define CONFIG_CUSTOM_FAN_CONTROL
 
 /* charger defines */
 #define CONFIG_CHARGER_SENSE_RESISTOR		10
