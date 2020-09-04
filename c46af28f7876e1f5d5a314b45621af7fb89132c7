@@ -22,6 +22,30 @@
       "revId": "c46af28f7876e1f5d5a314b45621af7fb89132c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a110680_9c10eafb",
+        "filename": "board/nucleo-g431rb/gpio.inc",
+        "patchSetId": 26
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-04T19:30:52Z",
+      "side": 1,
+      "message": "Yes, that\u0027s must better, I forgot to consider that option.",
+      "parentUuid": "eae4108c_a01a62bc",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 53
+      },
+      "revId": "c46af28f7876e1f5d5a314b45621af7fb89132c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
