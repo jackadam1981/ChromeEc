@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a682555_2445c916",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-04T00:04:04Z",
+      "side": 1,
+      "message": "I think a fault should always call pd_handle_overcurrent().\nThen it should get re-enabled a second later.\nMaybe a different fix is needed for the re-enable not working?",
+      "revId": "465eb437d2a7904074c8f2cd98f042d5390c34b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
