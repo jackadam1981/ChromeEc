@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07fa4b5d_ee419e92",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-05T07:14:00Z",
+      "side": 1,
+      "message": "Seems this need to be defined as  __override_proto.\nIf the function is implemented in places which is NOT board or baseboard level. The __override function is not guaranteed to be called. I did see wrong one is called in my test.",
+      "range": {
+        "startLine": 1633,
+        "startChar": 0,
+        "endLine": 1633,
+        "endChar": 13
+      },
+      "revId": "646cc4b5c5acfd01bff85b2c056540df966b641a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
