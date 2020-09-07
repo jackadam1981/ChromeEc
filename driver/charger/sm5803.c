@@ -341,6 +341,71 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 
 }
 
+static enum ec_error_list sm5803_enable_otg_power(int chgnum, int enabled)
+{
+	enum ec_error_list rv;
+	int reg;
+
+	if (enabled) {
+		rv = chg_read8(chgnum, SM5803_REG_ANA_EN1, &reg);
+		if (rv)
+			return rv;
+
+		/* Enable current limit */
+		reg &= ~SM5803_ANA_EN1_CLS_DISABLE;
+		rv = chg_write8(chgnum, SM5803_REG_ANA_EN1, reg);
+	}
+
+	if (IS_ENABLED(CONFIG_OCPC) &&
+	    (chgnum == CHARGER_PRIMARY) &&
+	    (charge_get_active_chg_chip() != -1)) {
+		/* In linear mode, the sequence is a little different. */
+		if (enabled) {
+			rv = chg_read8(chgnum, SM5803_REG_FLOW3, &reg);
+			if (rv)
+				return rv;
+			reg &= ~SM5803_FLOW3_SWITCH_BCK_BST;
+			rv = chg_write8(chgnum, SM5803_REG_FLOW3, reg);
+			if (rv)
+				return rv;
+
+			rv = chg_read8(chgnum, SM5803_REG_SWITCHER_CONF, &reg);
+			if (rv)
+				return rv;
+			reg &= ~SM5803_SW_BCK_BST_CONF_AUTO;
+			rv = chg_write8(chgnum, SM5803_REG_SWITCHER_CONF, reg);
+			if (rv)
+				return rv;
+		} else {
+			rv = chg_read8(chgnum, SM5803_REG_SWITCHER_CONF, &reg);
+			if (rv)
+				return rv;
+			reg |= SM5803_SW_BCK_BST_CONF_AUTO;
+			rv = chg_write8(chgnum, SM5803_REG_SWITCHER_CONF, reg);
+			if (rv)
+				return rv;
+		}
+	}
+
+	/*
+	 * Enable: SOURCE_MODE - enable sourcing out
+	 *	   DIRECTCHG_SOURCE_EN - enable current loop (for designs with
+	 *	   no external Vbus FET)
+	 *
+	 * Disable: disable bits above
+	 */
+	if (enabled)
+		rv = sm5803_flow1_update(chgnum, CHARGER_MODE_SOURCE |
+					 SM5803_FLOW1_DIRECTCHG_SRC_EN,
+					 MASK_SET);
+	else
+		rv = sm5803_flow1_update(chgnum, CHARGER_MODE_SOURCE |
+					 SM5803_FLOW1_DIRECTCHG_SRC_EN,
+					 MASK_CLR);
+
+	return rv;
+}
+
 static void sm5803_init(int chgnum)
 {
 	enum ec_error_list rv;
@@ -354,6 +419,8 @@ static void sm5803_init(int chgnum)
 	 * If a charger is not currently present, disable switching per OCPC
 	 * requirements
 	 */
+	sm5803_enable_otg_power(chgnum, 0);
+
 	rv = charger_get_vbus_voltage(chgnum, &vbus_mv);
 	if (rv == EC_SUCCESS) {
 		if (vbus_mv < 4000) {
@@ -1010,71 +1077,6 @@ static enum ec_error_list sm5803_set_otg_current_voltage(int chgnum,
 	rv = chg_write8(chgnum, SM5803_REG_VPWR_MSB, (reg >> 3));
 	rv |= chg_write8(chgnum, SM5803_REG_DISCH_CONF2,
 					reg & SM5803_DISCH_CONF5_VPWR_LSB);
-
-	return rv;
-}
-
-static enum ec_error_list sm5803_enable_otg_power(int chgnum, int enabled)
-{
-	enum ec_error_list rv;
-	int reg;
-
-	if (enabled) {
-		rv = chg_read8(chgnum, SM5803_REG_ANA_EN1, &reg);
-		if (rv)
-			return rv;
-
-		/* Enable current limit */
-		reg &= ~SM5803_ANA_EN1_CLS_DISABLE;
-		rv = chg_write8(chgnum, SM5803_REG_ANA_EN1, reg);
-	}
-
-	if (IS_ENABLED(CONFIG_OCPC) &&
-	    (chgnum == CHARGER_PRIMARY) &&
-	    (charge_get_active_chg_chip() != -1)) {
-		/* In linear mode, the sequence is a little different. */
-		if (enabled) {
-			rv = chg_read8(chgnum, SM5803_REG_FLOW3, &reg);
-			if (rv)
-				return rv;
-			reg &= ~SM5803_FLOW3_SWITCH_BCK_BST;
-			rv = chg_write8(chgnum, SM5803_REG_FLOW3, reg);
-			if (rv)
-				return rv;
-
-			rv = chg_read8(chgnum, SM5803_REG_SWITCHER_CONF, &reg);
-			if (rv)
-				return rv;
-			reg &= ~SM5803_SW_BCK_BST_CONF_AUTO;
-			rv = chg_write8(chgnum, SM5803_REG_SWITCHER_CONF, reg);
-			if (rv)
-				return rv;
-		} else {
-			rv = chg_read8(chgnum, SM5803_REG_SWITCHER_CONF, &reg);
-			if (rv)
-				return rv;
-			reg |= SM5803_SW_BCK_BST_CONF_AUTO;
-			rv = chg_write8(chgnum, SM5803_REG_SWITCHER_CONF, reg);
-			if (rv)
-				return rv;
-		}
-	}
-
-	/*
-	 * Enable: SOURCE_MODE - enable sourcing out
-	 *	   DIRECTCHG_SOURCE_EN - enable current loop (for designs with
-	 *	   no external Vbus FET)
-	 *
-	 * Disable: disable bits above
-	 */
-	if (enabled)
-		rv = sm5803_flow1_update(chgnum, CHARGER_MODE_SOURCE |
-					 SM5803_FLOW1_DIRECTCHG_SRC_EN,
-					 MASK_SET);
-	else
-		rv = sm5803_flow1_update(chgnum, CHARGER_MODE_SOURCE |
-					 SM5803_FLOW1_DIRECTCHG_SRC_EN,
-					 MASK_CLR);
 
 	return rv;
 }
