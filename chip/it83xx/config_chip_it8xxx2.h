@@ -43,8 +43,6 @@
 
 /* Embedded flash is KGD */
 #define IT83XX_CHIP_FLASH_IS_KGD
-/* Don't let internal flash go into deep power down mode. */
-#define IT83XX_CHIP_FLASH_NO_DEEP_POWER_DOWN
 /* chip id is 3 bytes */
 #define IT83XX_CHIP_ID_3BYTES
 /*
@@ -76,6 +74,13 @@
 #define IT83XX_INTC_PLUG_IN_OUT_SUPPORT
 /* Chip IT83202BX actually has TCPC physical port count. */
 #define IT83XX_USBPD_PHY_PORT_COUNT    3
+
+/* TEST-ONLY */
+/* Pins of group K and L are set as internal pull-down at initialization. */
+#define IT83XX_GPIO_GROUP_K_L_DEFAULT_PULL_DOWN
+/* GPIOH7 is set as output low at initialization. */
+#define IT83XX_GPIO_H7_DEFAULT_OUTPUT_LOW
+
 #elif defined(CHIP_VARIANT_IT81302AX_1024) \
 || defined(CHIP_VARIANT_IT81202AX_1024)
 #define CONFIG_FLASH_SIZE           0x00100000
