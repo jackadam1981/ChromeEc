@@ -52,6 +52,7 @@ static struct mutex flow2_access_lock[CHARGER_NUM];
 static int charger_vbus[CHARGER_NUM];
 
 static int sm5803_is_sourcing_otg_power(int chgnum, int port);
+static enum ec_error_list sm5803_enable_otg_power(int chgnum, int enabled);
 static enum ec_error_list sm5803_get_dev_id(int chgnum, int *id);
 
 static inline enum ec_error_list chg_read8(int chgnum, int offset, int *value)
@@ -354,6 +355,8 @@ static void sm5803_init(int chgnum)
 	 * If a charger is not currently present, disable switching per OCPC
 	 * requirements
 	 */
+	sm5803_enable_otg_power(chgnum, 0);
+
 	rv = charger_get_vbus_voltage(chgnum, &vbus_mv);
 	if (rv == EC_SUCCESS) {
 		if (vbus_mv < 4000) {
