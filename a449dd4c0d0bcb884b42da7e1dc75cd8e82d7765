@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63d69c56_77767f4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-07T18:50:24Z",
+      "side": 1,
+      "message": "Haven\u0027t dug into the details yet, but at first glance I think I\u0027d prefer to leave the delay as is, and instead find a way for charge_manager_refresh to stick to the choice of 65W over 45W, even if it is not yet the active charge port.",
+      "revId": "a449dd4c0d0bcb884b42da7e1dc75cd8e82d7765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
