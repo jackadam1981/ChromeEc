@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "561dfc06_316b7e16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-07T18:01:40Z",
+      "side": 1,
+      "message": "This fix makes sense to me, thanks. I haven\u0027t tested it yet, I can do that tomorrow.",
+      "revId": "4b60f16f1aba55102169e6bc73aa59afb3547229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c93a10c8_0165c100",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-07T18:01:40Z",
+      "side": 1,
+      "message": "Please add something to the comment here for why not set nack for FIFO mode.",
+      "revId": "4b60f16f1aba55102169e6bc73aa59afb3547229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b45bf96_2b9423d8",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-07T18:01:40Z",
+      "side": 1,
+      "message": "Merge into single if condition?\nAnd please also add something about FIFO mode to comment.",
+      "revId": "4b60f16f1aba55102169e6bc73aa59afb3547229",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
