@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9c94047_458725bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-09-07T08:37:53Z",
+      "side": 1,
+      "message": "Hi Diana,\n\nThe charger issue that we talked in CL : 2362371 still happen on my drawcia board. I find this is because Vbus doesn\u0027t go to low, after power on reset or console command \"reboot\", but the issue didn\u0027t happen on your side, so I\u0027m not sure if we need this CL. ",
+      "revId": "8893377aa7828258c795abffe96ef0016bcca973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
