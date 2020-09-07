@@ -19,7 +19,7 @@
 #include "driver/sync.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
-#include "driver/tcpm/tusb422.h"
+#include "driver/tcpm/rt1715.h"
 #include "extpower.h"
 #include "fan.h"
 #include "fan_chip.h"
@@ -448,18 +448,18 @@ struct tcpc_config_t tcpc_config[] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C0,
-			.addr_flags = TUSB422_I2C_ADDR_FLAGS,
+			.addr_flags = RT1715_I2C_ADDR_FLAGS,
 		},
-		.drv = &tusb422_tcpm_drv,
+		.drv = &rt1715_tcpm_drv,
 		.usb23 = USBC_PORT_0_USB2_NUM | (USBC_PORT_0_USB3_NUM << 4),
 	},
 	[USBC_PORT_C1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C1,
-			.addr_flags = TUSB422_I2C_ADDR_FLAGS,
+			.addr_flags = RT1715_I2C_ADDR_FLAGS,
 		},
-		.drv = &tusb422_tcpm_drv,
+		.drv = &rt1715_tcpm_drv,
 		.usb23 = USBC_PORT_1_USB2_NUM | (USBC_PORT_1_USB3_NUM << 4),
 	},
 };
