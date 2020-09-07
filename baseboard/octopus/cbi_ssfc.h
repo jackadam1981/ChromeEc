@@ -25,9 +25,9 @@ enum ssfc_tcpc_p1 {
  * PPC Port 1 (Bits 3-5)
  */
 enum ssfc_ppc_p1 {
-	PPC_P1_DEFAULT,
-	PPC_P1_NX20P348X,
-	PPC_P1_SYV682X,
+	SSFC_PPC_P1_DEFAULT,
+	SSFC_PPC_P1_NX20P348X,
+	SSFC_PPC_P1_SYV682X,
 };
 #define SSFC_PPC_P1_OFFSET		3
 #define SSFC_PPC_P1_MASK		GENMASK(5, 3)
