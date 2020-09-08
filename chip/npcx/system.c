@@ -31,7 +31,13 @@
 #define MTC_WUI_MASK       MASK_PIN7
 
 /* ROM address of chip revision */
-#define CHIP_REV_ADDR 0x00007FFC
+#if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
+#define CHIP_REV_ADDR        0x0000FFFC
+#define CHIP_REV_STR_SIZE    12
+#else
+#define CHIP_REV_ADDR        0x00007FFC
+#define CHIP_REV_STR_SIZE    6
+#endif
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
@@ -856,6 +862,11 @@ const char *system_get_chip_name(void)
 	case 0x24:
 	case 0x2C:
 		return "NPCX797W";
+#elif defined(CHIP_FAMILY_NPCX9)
+	case 0x21:
+		return "NPCX996F";
+	case 0x25:
+		return "NPCX993F";
 #endif
 	default:
 		*p       = system_to_hex((chip_id & 0xF0) >> 4);
@@ -867,12 +878,17 @@ const char *system_get_chip_name(void)
 
 const char *system_get_chip_revision(void)
 {
-	static char rev[6];
+	static char rev[CHIP_REV_STR_SIZE];
 	char *p = rev;
 	/* Read chip generation from SRID_CR */
 	uint8_t chip_gen = NPCX_SRID_CR;
 	/* Read ROM data for chip revision directly */
+#if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
+	uint32_t rev_num = *((uint32_t *)CHIP_REV_ADDR);
+#else
 	uint8_t rev_num = *((uint8_t *)CHIP_REV_ADDR);
+#endif
+
 #ifdef CHIP_FAMILY_NPCX7
 	uint8_t chip_id = NPCX_DEVICE_ID_CR;
 #endif
@@ -892,6 +908,10 @@ const char *system_get_chip_revision(void)
 		else
 			*p++ = 'C';
 		break;
+#elif defined(CHIP_FAMILY_NPCX9)
+	case 0x09:
+		*p++ = 'A';
+		break;
 #endif
 	default:
 		*p++ = system_to_hex((chip_gen & 0xF0) >> 4);
@@ -900,8 +920,16 @@ const char *system_get_chip_revision(void)
 	}
 
 	*p++ = '.';
-	*p++ = system_to_hex((rev_num & 0xF0) >> 4);
-	*p++ = system_to_hex(rev_num & 0x0F);
+	/*
+	 * For npcx5/npcx7, the revision number is 1 byte.
+	 * For NPCX9 and latter chips, the revision number is 4 bytes.
+	 */
+	for (int s = sizeof(rev_num) - 1; s >= 0; s--) {
+		uint8_t rev = rev_num >> (s * 8);
+
+		*p++ = system_to_hex((rev & 0xF0) >> 4);
+		*p++ = system_to_hex(rev & 0x0F);
+	}
 	*p++ = '\0';
 
 	return rev;
