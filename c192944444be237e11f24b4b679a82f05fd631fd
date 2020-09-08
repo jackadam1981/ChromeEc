@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51c414b9_be81900c",
+        "filename": "board/meep/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-08T15:08:41Z",
+      "side": 1,
+      "message": "If board_version is less than 6 then will NXP be the only case? And in the old board, can GPIO_PPC_ID be used to identify them?",
+      "revId": "c192944444be237e11f24b4b679a82f05fd631fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8485adf7_9219d2a0",
+        "filename": "board/meep/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-08T15:08:41Z",
+      "side": 1,
+      "message": "Could we continue to leverage enum ssfc_ppc_p1 so no necessary to introduce them?",
+      "revId": "c192944444be237e11f24b4b679a82f05fd631fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
