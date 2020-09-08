@@ -50,6 +50,98 @@
       "revId": "8c1db5961291c7f42bbce4205d197ad84de89b08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66abbb85_11652fb7",
+        "filename": "board/eldrid/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-08T17:59:52Z",
+      "side": 1,
+      "message": "This should be LED_1_L to match schematic.",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 16
+      },
+      "revId": "8c1db5961291c7f42bbce4205d197ad84de89b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb86ad7c_4c9ee581",
+        "filename": "board/eldrid/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-08T17:59:52Z",
+      "side": 1,
+      "message": "This should be LED_2_L to match schematic.",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 16
+      },
+      "revId": "8c1db5961291c7f42bbce4205d197ad84de89b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ae2db2_14e66290",
+        "filename": "board/eldrid/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-08T17:59:52Z",
+      "side": 1,
+      "message": "This should be POWER_LED_GATE to match schematic.",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 20
+      },
+      "revId": "8c1db5961291c7f42bbce4205d197ad84de89b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "664aeb0a_abc907a4",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-08T17:59:52Z",
+      "side": 1,
+      "message": "Please add CONFIG_LED_ONOFF_STATES and CONFIG_LED_POWER_LED to your board.h file.  You can then define battery LED and power LED state tables.\n\nSee Delbin board for an example.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/0f5b9651/board/delbin/led.c#",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 0
+      },
+      "revId": "8c1db5961291c7f42bbce4205d197ad84de89b08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
