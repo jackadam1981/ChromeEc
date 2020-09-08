@@ -50,6 +50,42 @@
       "revId": "4478a3eff09171de5c51382d9893e0b4993efbab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "076b6215_8e97ea41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-08T16:45:25Z",
+      "side": 1,
+      "message": "Pompom and other Trogdor variants don\u0027t use EFS2.\n\nI think we also want to port TCPMv2 to legacy devices, that don\u0027t use EFS2. Can it support both EFS2 and non-EFS2? like check the CONFIG_VBOOT_EFS2?",
+      "parentUuid": "c702ed69_39fd7c34",
+      "revId": "4478a3eff09171de5c51382d9893e0b4993efbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb3cc05_f1307f0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-08T16:45:25Z",
+      "side": 1,
+      "message": "Looks like the BBRAM logic also need to be added back.",
+      "parentUuid": "88a09043_efb85875",
+      "revId": "4478a3eff09171de5c51382d9893e0b4993efbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
