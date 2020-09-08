@@ -29,6 +29,8 @@
 /****************************************************************************/
 /* Chip IT8320 is used with IT83XX TCPM driver */
 #define CONFIG_USB_PD_TCPM_DRIVER_IT83XX
+/* Pins of group K and L are set as internal pull-down at initialization. */
+#define IT83XX_GPIO_GROUP_K_L_DEFAULT_PULL_DOWN
 
 #if defined(CHIP_VARIANT_IT8320BX)
 /* This is the physical size of the flash on the chip. We'll reserve one bank
