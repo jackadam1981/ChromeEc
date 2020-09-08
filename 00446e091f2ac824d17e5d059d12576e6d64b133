@@ -34,6 +34,24 @@
       "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "619fb374_e699a6cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-08T19:14:26Z",
+      "side": 1,
+      "message": "Just thinking off of the top of my head here, but once charge manager\u0027s table has been filled, I reckon that should be the trigger to build the request.\n\n\"[charge manager] says that the higher charger that was downgraded is no longer the best option and it stays with the lesser charger.\"\n\nThis bit I\u0027m confused with; a pointer would be useful. Charge manager should be aware of the max PDO that satisfies the board\u0027s capabilities. That ought not to change until the charger tells us differently or it is removed.\n\nUnfortunately, I don\u0027t really have the bandwidth to come up with a CL. (100% dedede these days... 😕)",
+      "parentUuid": "db4fb815_40365cb7",
+      "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
