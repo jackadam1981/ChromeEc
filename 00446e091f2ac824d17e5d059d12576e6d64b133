@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bbbcf01_9f908847",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-08T18:52:56Z",
+      "side": 1,
+      "message": "This fix seems narrow and a bit hacky to me? I would have expected more refresh calls. We should have all the data once we know about the available charge. Triggering from build request seems a bit strange, but also calling `get_best_charge_port()` directly would seem to short cut a significant amount of housekeeping.\n\nAlso, I was going to mention if you could add b:153682691, but it appears I\u0027m too slow...",
+      "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
