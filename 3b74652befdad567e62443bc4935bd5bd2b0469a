@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96f45a65_8d04cdfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-08T18:18:49Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "3b74652befdad567e62443bc4935bd5bd2b0469a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cba78c21_ad5c91f6",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-08T18:18:49Z",
+      "side": 1,
+      "message": "Nit: The first line of comments is empty, like\n\n        /*\n         * Set OPERATION_MODE update method",
+      "range": {
+        "startLine": 178,
+        "startChar": 3,
+        "endLine": 178,
+        "endChar": 4
+      },
+      "revId": "3b74652befdad567e62443bc4935bd5bd2b0469a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
