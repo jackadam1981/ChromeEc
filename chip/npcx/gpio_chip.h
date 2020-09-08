@@ -54,6 +54,8 @@ void npcx_gpio2uart(void);
 /* Set input buffer of all 1.8v i2c ports. */
 void gpio_enable_1p8v_i2c_wake_up_input(int enable);
 
+void gpio_interrupt(struct npcx_wui wui_int);
+
 /*
  * Include the MIWU, alternative and low-Voltage macro functions for GPIOs
  * depends on Nuvoton chip series.
@@ -62,6 +64,8 @@ void gpio_enable_1p8v_i2c_wake_up_input(int enable);
 #include "gpio_chip-npcx5.h"
 #elif defined(CHIP_FAMILY_NPCX7)
 #include "gpio_chip-npcx7.h"
+#elif defined(CHIP_FAMILY_NPCX9)
+#include "gpio_chip-npcx9.h"
 #else
 #error "Unsupported chip family"
 #endif
