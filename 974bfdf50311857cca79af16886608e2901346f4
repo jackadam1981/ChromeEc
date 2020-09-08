@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "39151fe9_6ce5b3c8",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-08T17:17:55Z",
+      "side": 1,
+      "message": "Nit - add a CPRINTS for the else path that the TUSB422 part is used. It\u0027s good to have confirmation that this function was called.",
+      "revId": "974bfdf50311857cca79af16886608e2901346f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc1a5ea1_ab5ed06f",
         "filename": "board/volteer/board.c",
         "patchSetId": 4
