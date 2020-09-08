@@ -10,6 +10,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "lid_switch.h"
+#include "timer.h"
 
 
 /**
@@ -38,6 +39,10 @@ static void update_backlight(void)
 	 * Enable backlight if lid is open; this is AND'd with the request from
 	 * the AP in hardware.
 	 */
+#ifdef BOARD_ELDRID
+	if (lid_is_open() == 1)
+		msleep(660);
+#endif
 	enable_backlight(lid_is_open());
 #endif
 }
