@@ -16,6 +16,24 @@
       "revId": "a449dd4c0d0bcb884b42da7e1dc75cd8e82d7765",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f753c2e3_6b27713c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-08T14:40:16Z",
+      "side": 1,
+      "message": "I am fine with the delay but there is a window where the available_charge clearly points to C1 but the refresh updated variable charge_port is C0. The natural flow of the asynchronous state machines causes PE_SNK_Transition_Sink to send a sink power request and since this port is not the active charge port it downgrades to 15W. Once this is accepted the PE_SNK_Transition_Sink_exit will reset the charge manager available_charge value for this charger to be 15W.  After this happens the deferred refresh function actually happens. The best charger is no longer C1 because of the downgrade. So we end up staying with C0.\n\nThis change just tracks what should be the current \"best\" charge port, instead of the current \"active\" charge port.  Any suggestions would be helpful",
+      "parentUuid": "63d69c56_77767f4f",
+      "revId": "a449dd4c0d0bcb884b42da7e1dc75cd8e82d7765",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
