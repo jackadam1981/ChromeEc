@@ -5399,11 +5399,15 @@ static void pe_vcs_evaluate_swap_entry(int port)
 	 *  1)  Port is not presently the VCONN Source and
 	 *  2) The DPM indicates that a VCONN Swap is not ok or
 	 *  3) The DPM indicates that a VCONN Swap cannot be done at this time.
+	 *  4) Port is DFP and VCONN source
 	 */
 
 	/* DPM rejects a VCONN Swap and port is not a VCONN source*/
-	if (!tc_check_vconn_swap(port) && tc_is_vconn_src(port) < 1) {
+	if ((!tc_check_vconn_swap(port) && tc_is_vconn_src(port) < 1) ||
+		(tc_is_vconn_src(port) &&
+		pd_get_data_role(port) == PD_ROLE_DFP)) {
 		/* NOTE: PE_VCS_Reject_Swap State embedded here */
+		CPRINTS("-------------------------reject VCONN swap");
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_REJECT);
 	}
 	/* Port is not ready to perform a VCONN swap */
