@@ -668,6 +668,22 @@ void gpio_pre_init(void)
 
 	IT83XX_GPIO_GCR = 0x06;
 
+#if !defined(CONFIG_IT83XX_VCC_1P8V) && !defined(CONFIG_IT83XX_VCC_3P3V)
+#error Please select voltage level of VCC for EC.
+#endif
+
+#if defined(CONFIG_IT83XX_VCC_1P8V) && defined(CONFIG_IT83XX_VCC_3P3V)
+#error Must select only one voltage level of VCC for EC.
+#endif
+
+	/* The power level (VCC) of GPM0~6 is 1.8V */
+	if (IS_ENABLED(CONFIG_IT83XX_VCC_1P8V))
+		IT83XX_GPIO_GCR30 |= BIT(4);
+
+	/* The power level (VCC) of GPM0~6 is 3.3V */
+	if (IS_ENABLED(CONFIG_IT83XX_VCC_3P3V))
+		IT83XX_GPIO_GCR30 &= ~BIT(4);
+
 #if IT83XX_USBPD_PHY_PORT_COUNT < CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT
 #error "ITE pd active port count should be less than physical port count !"
 #endif
@@ -738,6 +754,9 @@ void gpio_pre_init(void)
 		IT83XX_GPIO_CTRL(GPIO_H, 7) = GPCR_PORT_PIN_MODE_OUTPUT;
 		IT83XX_GPIO_DATA(GPIO_H) &= ~BIT(7);
 	}
+
+	/* The power level of GPM6 follows VCC */
+	IT83XX_GPIO_GCR29 |= BIT(0);
 
 	for (i = 0; i < GPIO_COUNT; i++, g++) {
 		flags = g->flags;
