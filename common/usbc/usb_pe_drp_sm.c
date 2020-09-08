@@ -4766,9 +4766,15 @@ static void pe_vdm_identity_request_cbl_exit(int port)
 	 * desired here
 	 */
 	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_NEEDED
-			   && pe[port].discover_identity_timer < get_time().val)
-		pe[port].discover_identity_timer = get_time().val +
-							PD_T_DISCOVER_IDENTITY;
+	    && pe[port].discover_identity_timer < get_time().val) {
+		uint64_t timer;
+		if (pe_is_explicit_contract(port))
+			timer = PD_T_DISCOVER_IDENTITY;
+		else
+			timer = 200 * MSEC;
+
+		pe[port].discover_identity_timer = get_time().val + timer;
+	}
 
 	/* Do not attempt further discovery if identity discovery failed. */
 	if (pd_get_identity_discovery(port, pe[port].tx_type) == PD_DISC_FAIL)
