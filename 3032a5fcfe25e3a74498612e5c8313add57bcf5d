@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f166f04_6da990e1",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-08T16:10:51Z",
+      "side": 1,
+      "message": "Can you please add (brief) description to each fields? e.g. \n/* enum gpio_signal */\n/* polarity */\n/* millisecond */",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "3032a5fcfe25e3a74498612e5c8313add57bcf5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
