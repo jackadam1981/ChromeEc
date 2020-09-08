@@ -52,6 +52,24 @@
       "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4937a71_738e86b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-08T19:36:59Z",
+      "side": 1,
+      "message": "PE updates the table and the request to deferred refresh is made. After this refresh is queued, we build the request, which asks for the charge port (used to be the active port and now is the selected port).  If the port that just attached is not the charge_port returned, then it does not request the highest amount of power on the request and sticks with a minimal 15W request.\n\nThe charge manager keeps track of the current amount of power that can be transferred with the negotiated values and this is not always the maximum that could come across the wire (as is the case of two chargers).\n\nI understand the bandwidth problem and if this issue did not cross Zork as an issue with connecting to a dock I would not have had the time to go after the initial change.",
+      "parentUuid": "619fb374_e699a6cf",
+      "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
