@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "373cf237_3131b8d5",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-08T19:42:09Z",
+      "side": 1,
+      "message": "Swap the order of these two lines.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "d6de2f1ed810e87c71fa0f50283c7201ec8ccc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af38f90_80885073",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-08T19:42:09Z",
+      "side": 1,
+      "message": "Use enum ec_cfg_keyboard_backlight_type.",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "d6de2f1ed810e87c71fa0f50283c7201ec8ccc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "894ebd09_7ead48b3",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-08T19:42:09Z",
+      "side": 1,
+      "message": "Use enum ec_cfg_numeric_pad_type",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "d6de2f1ed810e87c71fa0f50283c7201ec8ccc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
