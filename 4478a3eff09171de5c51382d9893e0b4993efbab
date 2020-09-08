@@ -33,6 +33,23 @@
       "revId": "4478a3eff09171de5c51382d9893e0b4993efbab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88a09043_efb85875",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-08T16:07:59Z",
+      "side": 1,
+      "message": "Oh, the other thing I was going to mention is that simply sending a SoftReset without saving any of the criteria will only work in one instance. The power and data roles need be preserved. ",
+      "revId": "4478a3eff09171de5c51382d9893e0b4993efbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
