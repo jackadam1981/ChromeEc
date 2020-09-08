@@ -276,7 +276,13 @@ static int sn5s330_init(int port)
 		ppc_prints("Failed to set FUNC_SET9!", port);
 		return status;
 	}
-
+	status = clr_flags(port, SN5S330_FUNC_SET9,
+		       SN5S330_FORCE_OVP_EN_SBU | SN5S330_FORCE_ON_VBUS_OVP |
+			       SN5S330_FORCE_ON_VBUS_UVP);
+	if (status) {
+		ppc_err_prints("Could not disable OVP circuit", port, status);
+		return status;
+	}
 	/*
 	 * Set analog current limit delay to 200 us for PP1,
 	 * set 1000 us for PP2 for compatibility.
