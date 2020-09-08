@@ -16,6 +16,29 @@
       "revId": "048d0533666b37121e1de8b99ba8751ce7816a07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6600d774_39ed5fc5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1580,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-08T19:01:07Z",
+      "side": 1,
+      "message": "nit: let\u0027s call it pd_get_drp_state_in_suspend or pd_get_drp_suspend_state",
+      "range": {
+        "startLine": 1580,
+        "startChar": 42,
+        "endLine": 1580,
+        "endChar": 66
+      },
+      "revId": "048d0533666b37121e1de8b99ba8751ce7816a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
