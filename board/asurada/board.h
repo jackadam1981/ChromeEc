@@ -19,6 +19,8 @@
 #define CONFIG_SYSTEM_UNLOCKED
 #define CONFIG_BOARD_VERSION_CUSTOM
 #define CONFIG_EXTPOWER_GPIO
+/* For Rev0 only */
+#define CONFIG_IT83XX_VCC_1P8V
 /*
  * TODO: Remove this option once the VBAT no longer keeps high when
  * system's power isn't presented.
