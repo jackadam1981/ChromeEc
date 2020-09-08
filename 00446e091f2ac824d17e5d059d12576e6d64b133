@@ -16,6 +16,24 @@
       "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db4fb815_40365cb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-08T19:02:04Z",
+      "side": 1,
+      "message": "The refresh call is queued as soon as the data changes but the delayed start time is not deterministic and we build the request before it actually runs. This causes us to make a request for a non-charging port, but it should be the charging port ASAP. When that request is accepted we leave SNK_Transition_Sink and this sets the power to what we just negotiated in the request. So it drops down and then the refresh delayed start happens and that says that the higher charger that was downgraded is no longer the best option and it stays with the lesser charger.\n\nIf you can find a better way to make this work that is not narrow and hacky, please let me know or even create a CL and let\u0027s do it the right way.",
+      "parentUuid": "6bbbcf01_9f908847",
+      "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
