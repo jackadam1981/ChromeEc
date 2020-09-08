@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4db6641_7fc0eb5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-08T16:19:02Z",
+      "side": 1,
+      "message": "TEST? It looks this CL isn\u0027t ready for review.",
+      "revId": "53867390c0ef61412d437af370533e2d7913930a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09a651b_d081c371",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-08T16:19:02Z",
+      "side": 1,
+      "message": "New line please.",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 3
+      },
+      "revId": "53867390c0ef61412d437af370533e2d7913930a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aafcee9e_12952d2d",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-08T16:19:02Z",
+      "side": 1,
+      "message": "Can you add it when SPI is enabled?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "53867390c0ef61412d437af370533e2d7913930a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
