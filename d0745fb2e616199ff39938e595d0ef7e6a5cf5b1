@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "134d6baa_acc80bfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-08T15:48:48Z",
+      "side": 1,
+      "message": "This looks basically fine. Please clean up the couple remaining things.",
+      "revId": "d0745fb2e616199ff39938e595d0ef7e6a5cf5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32d58fc4_df48f32b",
+        "filename": "board/voxel/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-08T15:48:48Z",
+      "side": 1,
+      "message": "Nit: This can be one line.",
+      "range": {
+        "startLine": 215,
+        "startChar": 20,
+        "endLine": 217,
+        "endChar": 9
+      },
+      "revId": "d0745fb2e616199ff39938e595d0ef7e6a5cf5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
