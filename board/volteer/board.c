@@ -25,6 +25,7 @@
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -77,6 +78,9 @@ static void board_init(void)
 	/* Illuminate motherboard and daughter board LEDs equally to start. */
 	pwm_enable(PWM_CH_LED4_SIDESEL, 1);
 	pwm_set_duty(PWM_CH_LED4_SIDESEL, 50);
+
+	if (!IS_ENABLED(TEST_BUILD) && !ec_cfg_has_numeric_pad())
+		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
