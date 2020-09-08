@@ -16,6 +16,23 @@
       "revId": "4478a3eff09171de5c51382d9893e0b4993efbab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c702ed69_39fd7c34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-08T16:06:04Z",
+      "side": 1,
+      "message": "I\u0027ll let Jett chime in, but I thought this was an intended change. I think the assumption is that all boards using TCPMv2 will use EFS2 and therefore PD is only done in RW.\n\nIs pompom using EFS2?",
+      "revId": "4478a3eff09171de5c51382d9893e0b4993efbab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
