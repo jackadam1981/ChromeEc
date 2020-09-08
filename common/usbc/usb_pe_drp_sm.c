@@ -5146,6 +5146,7 @@ static void pe_vdm_response_entry(int port)
 	uint32_t *tx_payload;
 	uint16_t vdo_vdm_svid;
 	uint8_t vdo_cmd;
+	uint8_t vdo_opos;
 	int cmd_type;
 	svdm_rsp_func func = NULL;
 
@@ -5159,6 +5160,7 @@ static void pe_vdm_response_entry(int port)
 
 	vdo_vdm_svid = PD_VDO_VID(rx_payload[0]);
 	vdo_cmd = PD_VDO_CMD(rx_payload[0]);
+	vdo_opos = PD_VDO_OPOS(rx_payload[0]);
 	cmd_type = PD_VDO_CMDT(rx_payload[0]);
 	rx_payload[0] &= ~VDO_CMDT_MASK;
 
@@ -5230,6 +5232,7 @@ static void pe_vdm_response_entry(int port)
 				1, /* Structured VDM */
 				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
 				| VDO_CMDT(CMDT_RSP_ACK) |
+				VDO_OPOS(vdo_opos) |
 				vdo_cmd);
 		else if (response_size_bytes == 0)
 			/* NAK */
@@ -5238,6 +5241,7 @@ static void pe_vdm_response_entry(int port)
 				1, /* Structured VDM */
 				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
 				| VDO_CMDT(CMDT_RSP_NAK) |
+				VDO_OPOS(vdo_opos) |
 				vdo_cmd);
 		else
 			/* BUSY */
@@ -5246,6 +5250,7 @@ static void pe_vdm_response_entry(int port)
 				1, /* Structured VDM */
 				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
 				| VDO_CMDT(CMDT_RSP_BUSY) |
+				VDO_OPOS(vdo_opos) |
 				vdo_cmd);
 
 		if (response_size_bytes <= 0)
@@ -5257,6 +5262,7 @@ static void pe_vdm_response_entry(int port)
 			1, /* Structured VDM */
 			VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP)) |
 			VDO_CMDT(CMDT_RSP_NAK) |
+			VDO_OPOS(vdo_opos) |
 			vdo_cmd);
 		response_size_bytes = 4;
 	}
