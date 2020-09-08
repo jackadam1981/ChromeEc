@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acdfc61e_da2db6dd",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-08T17:28:03Z",
+      "side": 1,
+      "message": "This looks right, but for the FPC 1025 sensor (square sensor that you should have with dragonclaw), you\u0027ll want to do this in the \"bep/fpc_private.c\" file too (this file is for the FPC 1145 (rectangular) sensor).",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 24
+      },
+      "revId": "192d98e0a093df885864e648f4146dcd3ac68b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
