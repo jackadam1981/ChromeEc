@@ -87,6 +87,30 @@
       "revId": "a3ec7a9464ef50bc75807df8b49b75fe847809fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "793dfee6_eb8d8e06",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2724,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-09T20:27:37Z",
+      "side": 1,
+      "message": "Yes, I believe so.  Plus when we\u0027re presenting Rp, I think we\u0027re relatively safe from erroneous open detection since V Open \u003e V Rd and messaging will, in general, be causing the CC voltage to go periodically lower than V Rd (as opposed to higher).",
+      "parentUuid": "a93d2ea4_8702cdcc",
+      "range": {
+        "startLine": 2724,
+        "startChar": 5,
+        "endLine": 2724,
+        "endChar": 32
+      },
+      "revId": "a3ec7a9464ef50bc75807df8b49b75fe847809fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
