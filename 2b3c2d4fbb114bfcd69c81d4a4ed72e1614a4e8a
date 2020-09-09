@@ -34,6 +34,24 @@
       "revId": "2b3c2d4fbb114bfcd69c81d4a4ed72e1614a4e8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75dc8225_f02eeb23",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-09-09T10:54:36Z",
+      "side": 1,
+      "message": "I cannot use IS_ENABLED(). For some boards board_tcpc_init() is defined as static, so this becomes undefined reference, even when we are not going to call it. Reverted to patchset 1. Sorry for the mess.",
+      "parentUuid": "ac60d264_44bdd31a",
+      "revId": "2b3c2d4fbb114bfcd69c81d4a4ed72e1614a4e8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
