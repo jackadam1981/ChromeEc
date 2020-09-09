@@ -19,6 +19,69 @@
     },
     {
       "key": {
+        "uuid": "2968f399_79364d17",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-09T18:30:37Z",
+      "side": 1,
+      "message": "This change always drives LED_SIDESEL_4_L low.  So only the LEDs on the daughter board are turned on by ",
+      "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48086e4f_c4c4b501",
+        "filename": "board/eldrid/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-09T18:30:37Z",
+      "side": 1,
+      "message": "Nit - line up column with previous line.",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "005e5f80_c7b2999e",
+        "filename": "board/eldrid/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-09T18:30:37Z",
+      "side": 1,
+      "message": "Nit - same here, line up columns.",
+      "range": {
+        "startLine": 101,
+        "startChar": 15,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c366b000_7c896bea",
         "filename": "board/eldrid/led.c",
         "patchSetId": 7
