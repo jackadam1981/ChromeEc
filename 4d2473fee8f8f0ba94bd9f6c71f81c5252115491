@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19cb6698_09ccb19c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-09T17:48:19Z",
+      "side": 1,
+      "message": "push BB retimer change on top of this",
+      "revId": "4d2473fee8f8f0ba94bd9f6c71f81c5252115491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02dacad9_56189a58",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4011,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-09T17:48:19Z",
+      "side": 1,
+      "message": "add info what need to be done if default VDO isn\u0027t used",
+      "revId": "4d2473fee8f8f0ba94bd9f6c71f81c5252115491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
