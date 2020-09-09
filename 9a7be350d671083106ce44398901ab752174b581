@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e215ce11_ff4bc3cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-09T18:02:15Z",
+      "side": 1,
+      "message": "I see this is marked WIP, so I won\u0027t review in detail yet, but note that you\u0027ll need to make these changes in eldrid board code, not volteer baseboard code. If what you need to do conflicts with what is defined in volteer baseboard, you\u0027ll need to\n1) make a CL to move this code into the individual board files without changing behavior\n2) make a CL to just change the behavior for eldrid.",
+      "revId": "9a7be350d671083106ce44398901ab752174b581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
