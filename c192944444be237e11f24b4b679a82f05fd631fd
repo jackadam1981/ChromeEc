@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ff4c1172_fab6d838",
+        "filename": "board/meep/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-09-09T03:55:13Z",
+      "side": 1,
+      "message": "Ok. We should align them and both ports. I will upload that.",
+      "parentUuid": "349829b2_7b71c883",
+      "revId": "c192944444be237e11f24b4b679a82f05fd631fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8485adf7_9219d2a0",
         "filename": "board/meep/board.h",
         "patchSetId": 3
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "If so, could we change \"enum ssfc_ppc_p1\" to \"enum ssfc_ppc\" since the sources of P0 and P1 are the same? Then we don\u0027t need this new enum.",
       "parentUuid": "7a74cfbe_1c66b98c",
+      "revId": "c192944444be237e11f24b4b679a82f05fd631fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c40fc87_be7d03f2",
+        "filename": "board/meep/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-09-09T03:55:13Z",
+      "side": 1,
+      "message": "The C0 port is not use ssfc. Is it ok we apply to ssfc_ppc?",
+      "parentUuid": "7b7faf12_7d9efffd",
       "revId": "c192944444be237e11f24b4b679a82f05fd631fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
