@@ -65,6 +65,11 @@ static int simulated_button_pressed(const struct button_config *button)
 }
 #endif
 
+static int button_is_volume_keys(enum gpio_signal gpio)
+{
+	return (gpio == GPIO_VOLUME_UP_L || gpio == GPIO_VOLUME_DOWN_L);
+}
+
 /*
  * Whether a button is currently pressed.
  */
@@ -73,8 +78,14 @@ static int raw_button_pressed(const struct button_config *button)
 	int physical_value = 0;
 	int simulated_value = 0;
 	if (!(button->flags & BUTTON_FLAG_DISABLED)) {
-		physical_value = (!!gpio_get_level(button->gpio) ==
+		if (IS_ENABLED(CONFIG_USE_ADC_DETECT_VOL_KEYS) &&
+			button_is_volume_keys(button->gpio)) {
+			physical_value =
+				adc_vol_key_physical_value(button->gpio);
+		} else {
+			physical_value = (!!gpio_get_level(button->gpio) ==
 				!!(button->flags & BUTTON_FLAG_ACTIVE_HIGH));
+		}
 #ifdef CONFIG_SIMULATED_BUTTON
 		simulated_value = simulated_button_pressed(button);
 #endif
