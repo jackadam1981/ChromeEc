@@ -39,6 +39,30 @@
       "revId": "a3ec7a9464ef50bc75807df8b49b75fe847809fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04159303_f16e6ca3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2724,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-09T18:02:22Z",
+      "side": 1,
+      "message": "There\u0027s no spec requirement to debounce open here; there\u0027s a max time we can take and we\u0027re supposed to react as quickly as we can. \n\nI\u0027ve gone back and forth about whether we\u0027d need to debounce when presenting Rp.  We shouldn\u0027t be susceptible to the same issue of detecting open during PD packets as when we\u0027re presenting Rd, right?",
+      "parentUuid": "597f6f4b_823cc621",
+      "range": {
+        "startLine": 2724,
+        "startChar": 5,
+        "endLine": 2724,
+        "endChar": 32
+      },
+      "revId": "a3ec7a9464ef50bc75807df8b49b75fe847809fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
