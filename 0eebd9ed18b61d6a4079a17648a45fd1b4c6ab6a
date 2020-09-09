@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "35e5ac9a_4286798a",
+        "filename": "core/minute-ia/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2020-09-09T13:39:33Z",
+      "side": 1,
+      "message": "I\u0027ve added this assert for other architectures. Should I remove it too? get_panic_data_write() always returns pdata_ptr (PANIC_DATA_PTR), so this assert should be never triggered.",
+      "parentUuid": "0c46c185_b964016d",
+      "revId": "0eebd9ed18b61d6a4079a17648a45fd1b4c6ab6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c2cc45c_537fce27",
         "filename": "core/minute-ia/panic.c",
         "patchSetId": 2
