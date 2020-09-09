@@ -4,7 +4,8 @@
  */
 
 /* Waddledoo board-specific configuration */
-
+#include "adc.h"
+#include "atomic.h"
 #include "adc_chip.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -42,6 +43,9 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+
+#include "registers.h"
+
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -558,3 +562,62 @@ void lid_angle_peripheral_enable(int enable)
 	}
 }
 #endif
+
+uint32_t ch2_volumn;
+
+void volpress(void)
+{
+	atomic_or(&ch2_volumn, 1);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 0);
+}
+
+const struct npcx_adc_thresh_t adc_volpress = {
+	.adc_ch = ADC_SUB_ANALOG,
+	.adc_thresh_cb = volpress,
+	.lower_or_higher = 1,
+	.thresh_assert = 2700,
+	.thresh_deassert = -1,
+};
+
+static void set_up_adccvol_irqs(void)
+{
+	/* Set interrupt thresholds for the ADC. */
+	npcx_adc_register_thresh_irq(NPCX_ADC_THRESH3,
+				     &adc_volpress);
+	npcx_set_adc_repetitive(adc_channels[ADC_SUB_ANALOG].input_ch, 1);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+	CPRINTS("set_up_adc_volpress_irqs init");
+}
+DECLARE_HOOK(HOOK_INIT, set_up_adccvol_irqs, HOOK_PRIO_INIT_ADC+1);
+
+int command_jc(int argc, char **argv)
+{
+	atomic_clear(&ch2_volumn, 1);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+	npcx_set_adc_repetitive(adc_channels[ADC_SUB_ANALOG].input_ch, 1);
+	CPRINTS("command re init");
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(cla, command_jc, "", "test re-initial_ADC");
+
+/* Called by hook task every hook tick (200 msec) */
+static void adc2_update(void)
+{
+	int mv;
+
+	if (ch2_volumn == 0)
+		return;
+	/* Enable THR3 */
+	mv = adc_read_channel(ADC_SUB_ANALOG);
+	/* voldown press voltage */
+	if (mv > 2600  && mv < 2690)
+		CPRINTS("Volumn down");
+	/* volup press voltage */
+	else if (mv > 2400  && mv < 2490)
+		CPRINTS("Volumn up");
+	else {
+		atomic_clear(&ch2_volumn, 1);
+		npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+	}
+}
+DECLARE_HOOK(HOOK_TICK, adc2_update, HOOK_PRIO_DEFAULT);
