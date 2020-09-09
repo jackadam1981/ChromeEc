@@ -4,7 +4,8 @@
  */
 
 /* Waddledoo board-specific configuration */
-
+#include "adc.h"
+#include "atomic.h"
 #include "adc_chip.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -42,6 +43,9 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+
+#include "registers.h"
+
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -530,6 +534,59 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+static void check_adcvol_deferred(void);
+DECLARE_DEFERRED(check_adcvol_deferred);
+
+uint32_t adc_volumn;
+/* Called by hook task every hook tick (200 msec) */
+static void check_adcvol_deferred(void)
+{
+	int mv;
+
+	if (adc_volumn == 0)
+		return;
+
+	mv = adc_read_channel(ADC_SUB_ANALOG);
+
+	if (mv > 2600  && mv < 2690) {
+		CPRINTS("Volumn down");
+		atomic_clear(&adc_volumn, 1);
+		npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+	} else if (mv > 2400  && mv < 2490) {
+		CPRINTS("Volumn up");
+		atomic_clear(&adc_volumn, 1);
+		npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+	} else {
+		atomic_clear(&adc_volumn, 1);
+		npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+	}
+}
+
+void volpress(void)
+{
+	atomic_or(&adc_volumn, 1);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 0);
+	hook_call_deferred(&check_adcvol_deferred_data, 30 * MSEC);
+}
+
+const struct npcx_adc_thresh_t adc_volpress = {
+	.adc_ch = ADC_SUB_ANALOG,
+	.adc_thresh_cb = volpress,
+	.lower_or_higher = 1,
+	.thresh_assert = 2700,
+	.thresh_deassert = -1,
+};
+
+static void set_up_adccvol_irqs(void)
+{
+	/* Set interrupt thresholds for the ADC. */
+	npcx_adc_register_thresh_irq(NPCX_ADC_THRESH3,
+				     &adc_volpress);
+	npcx_set_adc_repetitive(adc_channels[ADC_SUB_ANALOG].input_ch, 1);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+}
+DECLARE_HOOK(HOOK_INIT, set_up_adccvol_irqs, HOOK_PRIO_INIT_ADC+1);
 
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
