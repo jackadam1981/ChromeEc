@@ -14,7 +14,6 @@ from __future__ import print_function
 
 import argparse
 import binascii
-import copy
 import ctypes
 from datetime import datetime
 # pylint: disable=cros-logging-import
@@ -183,7 +182,7 @@ class Console(object):
     self.timestamp_enabled = True
     self.look_buffer = ''
     self.raw_debug = False
-    self.output_line_log_buffer = ''
+    self.output_line_log_buffer = []
 
   def __str__(self):
     """Show internal state of Console object as a string."""
@@ -209,19 +208,42 @@ class Console(object):
   def LogConsoleOutput(self, data):
     """Log to debug user MCU output to master_pty when line is filled.
 
+    The logging also combines Cr50 spinner output onto fewer lines.
+    10|...10/...10-...10\...10|...10/...10-...10\...10|...10/...10-...10\...
+
     Args:
       data: string received from MCU
     """
-    output_data = '%s%s' % (self.output_line_log_buffer, data)
-    ends_in_nl = output_data[-1] == '\n'
-    data_lines = output_data.splitlines()
-    for line in data_lines[:-1]:
-      self.logger.debug(line)
-    if ends_in_nl:
-      self.logger.debug(data_lines[-1])
-      self.output_line_log_buffer = ''
-    else:
-      self.output_line_log_buffer = data_lines[-1]
+    remaining = list(data)
+
+    # This is a list of already filtered characters (or placeholders).
+    line = self.output_line_log_buffer
+
+    symbols = {
+            '\n': u'\\n',
+            '\r': u'\\r',
+            '\t': u'\\t'
+    }
+    # self.logger.debug(u'%s + %r', u''.join(line), data)
+    while remaining:
+      byte = remaining.pop(0)
+      if byte == '\n':
+        line.append(symbols[byte])
+        if line:
+          self.logger.debug(u'%s', ''.join(line))
+        line = []
+      elif byte == '\b':
+        # Backsplace: count how many, then apply to buffer
+        if line:
+          line.pop(-1)
+      elif byte in symbols:
+        line.append(symbols[byte])
+      elif byte < ' ' or byte > '~':
+        # turn nulls and the like into angle-bracketed hex
+        line.append(u'\\x%02x' % ord(byte))
+      else:
+        line.append(u'%s' % byte)
+    self.output_line_log_buffer = line
 
   def PrintHistory(self):
     """Print the history of entered commands."""
