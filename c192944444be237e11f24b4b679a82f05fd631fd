@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "349829b2_7b71c883",
+        "filename": "board/meep/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-09T03:20:07Z",
+      "side": 1,
+      "message": "If so, why do we need to check board_version in case of Port 0? I just think we should align them and checking board version is more explicit.",
+      "parentUuid": "d1557b6e_cd081250",
+      "revId": "c192944444be237e11f24b4b679a82f05fd631fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8485adf7_9219d2a0",
         "filename": "board/meep/board.h",
         "patchSetId": 3
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "This for both C0 and C1 port. To avoid confuse. I suggest using this.",
       "parentUuid": "8485adf7_9219d2a0",
+      "revId": "c192944444be237e11f24b4b679a82f05fd631fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7faf12_7d9efffd",
+        "filename": "board/meep/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-09T03:20:07Z",
+      "side": 1,
+      "message": "If so, could we change \"enum ssfc_ppc_p1\" to \"enum ssfc_ppc\" since the sources of P0 and P1 are the same? Then we don\u0027t need this new enum.",
+      "parentUuid": "7a74cfbe_1c66b98c",
       "revId": "c192944444be237e11f24b4b679a82f05fd631fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
