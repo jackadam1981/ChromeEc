@@ -1,4 +1,5 @@
 /* Copyright 2013 The Chromium OS Authors. All rights reserved.
+
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -11,6 +12,7 @@
 #include "panic.h"
 #include "persistence.h"
 #include "reboot.h"
+#include "sysjump.h"
 #include "system.h"
 #include "timer.h"
 #include "util.h"
@@ -135,6 +137,12 @@ static int load_time(timestamp_t *t)
 test_mockable struct panic_data *panic_get_data(void)
 {
 	return (struct panic_data *)
+		(__ram_data + RAM_DATA_SIZE - sizeof(struct panic_data));
+}
+
+test_mockable uintptr_t get_panic_data_start()
+{
+	return (uintptr_t)
 		(__ram_data + RAM_DATA_SIZE - sizeof(struct panic_data));
 }
 
