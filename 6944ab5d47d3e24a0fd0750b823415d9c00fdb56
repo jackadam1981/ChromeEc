@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9beebcef_69c6f770",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-09T22:24:58Z",
+      "side": 1,
+      "message": "Discussing on bug. Hopefully we can add a gaurd for non-EFS2 and battery less than 2% (or something similar) would just disabled pd and keep the typeC state machine in attached SNK (until the battery reached 2%, then let it go do a hard reset)",
+      "revId": "6944ab5d47d3e24a0fd0750b823415d9c00fdb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
