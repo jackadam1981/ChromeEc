@@ -22,6 +22,30 @@
       "revId": "c6126bd093a74ddbb6a163bc8e40dc103116df76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6754797d_7660420c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 2686,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-09T20:33:36Z",
+      "side": 1,
+      "message": "Yes, it could make sense to set it from the PDO flag parsing since it\u0027s the one determining USB capability.  It might also make sense to set in the TC itself in tc_partner_usb_comm() unless there are corner cases I\u0027m not thinking of.",
+      "parentUuid": "abbf3fae_98bf6012",
+      "range": {
+        "startLine": 2684,
+        "startChar": 0,
+        "endLine": 2686,
+        "endChar": 0
+      },
+      "revId": "c6126bd093a74ddbb6a163bc8e40dc103116df76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
