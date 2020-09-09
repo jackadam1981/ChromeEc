@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bb543cb_42c7e316",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-09T14:22:04Z",
+      "side": 1,
+      "message": "Generally looks good to me, thanks.",
+      "revId": "4c5e24ba79ec1cda37a06bafe7d27d218da202bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edd00125_974ea97e",
+        "filename": "board/meep/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-09T14:22:04Z",
+      "side": 1,
+      "message": "Could we mapping true / false to enum ppc_type explicitly instead of the mapping implictly?",
+      "revId": "4c5e24ba79ec1cda37a06bafe7d27d218da202bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -141,6 +141,24 @@
       "revId": "c192944444be237e11f24b4b679a82f05fd631fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cacdae0_d65a9e91",
+        "filename": "board/meep/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-09T14:22:04Z",
+      "side": 1,
+      "message": "My original intention is to leverage enum definition only but no strong preference here.",
+      "parentUuid": "4c40fc87_be7d03f2",
+      "revId": "c192944444be237e11f24b4b679a82f05fd631fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
