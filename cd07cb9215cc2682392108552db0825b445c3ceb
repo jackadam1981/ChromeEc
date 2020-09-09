@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39f00002_2bbc0d87",
+        "filename": "board/puff/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-09-09T02:27:12Z",
+      "side": 1,
+      "message": "HOOK_PRIO_DEFAULT (missing T)",
+      "range": {
+        "startLine": 704,
+        "startChar": 52,
+        "endLine": 704,
+        "endChar": 68
+      },
+      "revId": "cd07cb9215cc2682392108552db0825b445c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
