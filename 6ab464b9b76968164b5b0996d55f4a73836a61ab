@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf05a9d9_ce92d615",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-09T11:47:05Z",
+      "side": 1,
+      "message": "not used?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "6ab464b9b76968164b5b0996d55f4a73836a61ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f3c9841_907ac707",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-09T11:47:05Z",
+      "side": 1,
+      "message": "no need for parens here.",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "6ab464b9b76968164b5b0996d55f4a73836a61ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
