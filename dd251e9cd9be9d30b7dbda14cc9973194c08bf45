@@ -22,6 +22,30 @@
       "revId": "dd251e9cd9be9d30b7dbda14cc9973194c08bf45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7ceaa10_48e166df",
+        "filename": "baseboard/octopus/cbi_ssfc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2020-09-09T14:39:52Z",
+      "side": 1,
+      "message": "Oh, yes, I need to move CL:2396097 ssfc relation function to here. thank you.",
+      "parentUuid": "c726b1c0_e8df1573",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "dd251e9cd9be9d30b7dbda14cc9973194c08bf45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
