@@ -467,9 +467,12 @@ static void sink_stop_drawing_current(int port);
 
 static bool is_try_src_enabled(int port)
 {
+#if 0
 	return IS_ENABLED(CONFIG_USB_PD_TRY_SRC) &&
 		((pd_try_src_override == TRY_SRC_OVERRIDE_ON) ||
 		(pd_try_src_override == TRY_SRC_NO_OVERRIDE && pd_try_src));
+#endif
+	return false;
 }
 
 /*
