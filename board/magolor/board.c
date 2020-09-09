@@ -4,7 +4,8 @@
  */
 
 /* Waddledoo board-specific configuration */
-
+#include "adc.h"
+#include "atomic.h"
 #include "adc_chip.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -42,6 +43,9 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+
+#include "registers.h"
+
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -558,3 +562,62 @@ void lid_angle_peripheral_enable(int enable)
 	}
 }
 #endif
+
+/*
+	[ADC_SUB_ANALOG] = {
+		.name = "SUB_ANALOG",
+		.input_ch = NPCX_ADC_CH2,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+	[ADC_VSNS_PP3300_A] = {
+		.name = "PP3300_A_PGOOD",
+		.input_ch = NPCX_ADC_CH9,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+
+*/
+uint32_t ch2_volumn;
+void ch2_high(void)
+{
+	atomic_or(&ch2_volumn, 1);
+	/* Disable this interrupt while it's asserted. */
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 0);
+	/* Enable the voltage low interrupt. */
+	//npcx_adc_thresh_int_enable(NPCX_ADC_THRESH2, 1);
+	CPRINTS("777777777 ch2_high");
+}
+
+const struct npcx_adc_thresh_t adc_ch2_high = {
+	.adc_ch = ADC_SUB_ANALOG,
+	.adc_thresh_cb = ch2_high,
+	.lower_or_higher = 1,
+	.thresh_assert = 2634,
+	.thresh_deassert = 2813,
+};
+
+static void set_up_adcch2_irqs(void)
+{
+	/* Set interrupt thresholds for the ADC. */
+	npcx_adc_register_thresh_irq(NPCX_ADC_THRESH3,
+				     &adc_ch2_high);
+	//npcx_adc_register_thresh_irq(NPCX_ADC_THRESH2, &adc_pp3300_a_pgood_low);
+	npcx_set_adc_repetitive(adc_channels[ADC_SUB_ANALOG].input_ch, 1);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+	//npcx_adc_thresh_int_enable(NPCX_ADC_THRESH2, 1);
+	CPRINTS("set_up_adcch2_irqs init");
+}
+DECLARE_HOOK(HOOK_INIT, set_up_adcch2_irqs, HOOK_PRIO_INIT_I2C+1);
+//DECLARE_HOOK(HOOK_INIT, set_up_adcch2_irqs, HOOK_PRIO_INIT_ADC+1);
+
+
+int command_jc(int argc, char **argv)
+{
+	atomic_clear(&ch2_volumn, 1);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bj4, command_jc, "", "mt6370 junction temp");
