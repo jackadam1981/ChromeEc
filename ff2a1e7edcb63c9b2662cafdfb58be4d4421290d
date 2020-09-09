@@ -34,6 +34,23 @@
       "revId": "ff2a1e7edcb63c9b2662cafdfb58be4d4421290d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90554fe3_20932a62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-09T18:14:57Z",
+      "side": 1,
+      "message": "Seems fine to me. The maximum slew rate is 30V/msec (so we are good).\n\nCan the discharge path, set it and forget it and not wait the 50ms somehow. I don\u0027t remembering waiting on other PPCs until discharge is complete; we expect it to get done asychronously",
+      "revId": "ff2a1e7edcb63c9b2662cafdfb58be4d4421290d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
