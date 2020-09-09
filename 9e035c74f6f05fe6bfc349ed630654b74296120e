@@ -63,6 +63,24 @@
       "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c82ec5_c880286f",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-09T20:52:38Z",
+      "side": 1,
+      "message": "For octopus and dedede, I believe we have M6 not connected. So those boards would not have the GPIO_SEL_1P8V flag but look like they need the CONFIG_IT83XX_VCC_1P8V",
+      "parentUuid": "7fabeff9_af6d63dc",
+      "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
