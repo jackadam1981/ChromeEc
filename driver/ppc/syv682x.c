@@ -117,13 +117,27 @@ static int syv682x_discharge_vbus(int port, int enable)
 	/*
 	 * Smart discharge mode is enabled, nothing to do
 	 */
-	return EC_SUCCESS;
+	int rv;
+	int control2;
+
+	rv = read_reg(port, SYV682X_CONTROL_2_REG, &control2);
+	if (rv)
+		return rv;
+
+	rv = write_reg(port, SYV682X_CONTROL_2_REG,
+			enable ?
+			control2 | SYV682X_CONTROL_2_FDSG :
+			control2 & ~SYV682X_CONTROL_2_FDSG);
+
+	CPRINTS("%s: Done", __func__);
+	return rv;
 }
 
 static int syv682x_vbus_source_enable(int port, int enable)
 {
 	int regval;
 	int rv;
+
 	/*
 	 * For source mode need to make sure 5V power path is connected
 	 * and source mode is selected.
@@ -135,7 +149,7 @@ static int syv682x_vbus_source_enable(int port, int enable)
 	if (enable) {
 		/* Select 5V path and turn on channel */
 		regval &= ~(SYV682X_CONTROL_1_CH_SEL |
-			    SYV682X_CONTROL_1_PWR_ENB);
+				SYV682X_CONTROL_1_PWR_ENB);
 		/* Disable HV Sink path */
 		regval |= SYV682X_CONTROL_1_HV_DR;
 	} else if (flags[port] & SYV682X_FLAGS_SOURCE_ENABLED) {
@@ -296,7 +310,7 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 		regval |= SYV682X_CONTROL_1_CH_SEL;
 		/* Select Sink mode and turn on the channel */
 		regval &= ~(SYV682X_CONTROL_1_HV_DR |
-			    SYV682X_CONTROL_1_PWR_ENB);
+				SYV682X_CONTROL_1_PWR_ENB);
 		/* Set sink current limit to the configured value */
 		regval |= CONFIG_SYV682X_HV_ILIM << SYV682X_HV_ILIM_BIT_SHIFT;
 		flags[port] &= ~SYV682X_FLAGS_SOURCE_ENABLED;
@@ -652,7 +666,7 @@ static int syv682x_init(int port)
 	regval = (SYV682X_OC_DELAY_10MS << SYV682X_OC_DELAY_SHIFT)
 		| (SYV682X_DSG_TIME_50MS << SYV682X_DSG_TIME_SHIFT)
 		| (SYV682X_DSG_RON_200_OHM << SYV682X_DSG_RON_SHIFT)
-		| SYV682X_CONTROL_2_SDSG;
+		/*| SYV682X_CONTROL_2_SDSG*/;
 	rv = write_reg(port, SYV682X_CONTROL_2_REG, regval);
 	if (rv)
 		return rv;
