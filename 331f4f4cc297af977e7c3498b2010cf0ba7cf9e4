@@ -16,6 +16,23 @@
       "revId": "331f4f4cc297af977e7c3498b2010cf0ba7cf9e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f34cf41_b8c4e6df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-09T21:23:10Z",
+      "side": 1,
+      "message": "Overcurrent shouldn\u0027t happen if there\u0027s nothing connected. If there\u0027s nothing connected, there shouldn\u0027t be VBUS present.\n\nThe test talks about this being related to an ESD test? I guess that caused an event that the PPC determined to be an overcurrent?\n\nAnyways, should we not consider it an overcurrent if there\u0027s nothing connected? Maybe still log in in the console though, but don\u0027t actually adjust the OC table?",
+      "revId": "331f4f4cc297af977e7c3498b2010cf0ba7cf9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
