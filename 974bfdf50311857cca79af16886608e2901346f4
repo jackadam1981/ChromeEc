@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "85b18520_55bbc3e7",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-09T19:40:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f04d54a3_6a362d84",
+      "range": {
+        "startLine": 392,
+        "startChar": 16,
+        "endLine": 392,
+        "endChar": 22
+      },
+      "revId": "974bfdf50311857cca79af16886608e2901346f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39151fe9_6ce5b3c8",
         "filename": "board/volteer/board.c",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "f2caf093_3de07637",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-09T19:40:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39151fe9_6ce5b3c8",
+      "revId": "974bfdf50311857cca79af16886608e2901346f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc1a5ea1_ab5ed06f",
         "filename": "board/volteer/board.c",
         "patchSetId": 4
@@ -53,6 +95,24 @@
       "writtenOn": "2020-09-03T22:27:47Z",
       "side": 1,
       "message": "I get the logic of having this here next to the port 1 configurations, but it doesn\u0027t depend on CBI data, and I think it would be better for it to be at the beginning of board_tcpc_init or in board_init.",
+      "revId": "974bfdf50311857cca79af16886608e2901346f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25656f02_62b8c71c",
+        "filename": "board/volteer/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-09T19:40:31Z",
+      "side": 1,
+      "message": "I moved it but moved it back, those functions are called at different times which makes the boot print log messier.\n\nThis isn\u0027t a change we want to trickle to partners anyway, this is only for our ease in development. I would like to keep this as self-contained as possible.",
+      "parentUuid": "dc1a5ea1_ab5ed06f",
       "revId": "974bfdf50311857cca79af16886608e2901346f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
