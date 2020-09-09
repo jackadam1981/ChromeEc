@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42c9dc63_076d3505",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-09T17:37:14Z",
+      "side": 1,
+      "message": "With this change, we go from spending 200 ms in Attached.SRC after detecting CC open to spending 50 ms in Attached.SRC after detecting CC open. With one board in this configuration, I observed this reduced delay, and we ended up in a stable attached state. With two boards, I think I disturbed the overall timing to the extent that I haven\u0027t yet seen one of them have to bail out of Attached.SRC.\n\nEric: What are the electrical implications of discharging VBUS in 50 ms instead of 200 ms?\n\nNathan: What are the spec implications of taking 50 ms to transition from Attached.SRC to TryWait.SNK? (I think we already know the implications of taking 200 ms.) It looks like, with this part, we won\u0027t be able to do better than that unless we skip or delay steps in the transition that use the PPC, e.g. lowering the current limit to USB default.",
+      "revId": "ff2a1e7edcb63c9b2662cafdfb58be4d4421290d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
