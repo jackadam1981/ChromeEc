@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "707299f4_554f5f3b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-09T21:12:53Z",
+      "side": 1,
+      "message": "nit: I think this would read better as return EC_SUCCESS at this point (since that is the only code path now)",
+      "range": {
+        "startLine": 770,
+        "startChar": 8,
+        "endLine": 770,
+        "endChar": 10
+      },
+      "revId": "67e626738e40a94c4f9682591920922c3044f221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
