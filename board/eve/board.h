@@ -148,7 +148,7 @@
 /* Enable sensor fifo, must also define the _SIZE and _THRES */
 #define CONFIG_ACCEL_FIFO
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO_SIZE 512
+#define CONFIG_ACCEL_FIFO_SIZE 256
 /* Depends on how fast the AP boots and typical ODRs */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 
@@ -161,6 +161,10 @@
 #define CONFIG_GESTURE_TAP_MAX_INTERSTICE_T 500
 #define CONFIG_GESTURE_DETECTION_MASK \
 	 BIT(CONFIG_GESTURE_SENSOR_DOUBLE_TAP)
+
+/* For body detection testing */
+#define CONFIG_BODY_DETECTION
+#define CONFIG_BODY_DETECTION_SENSOR BASE_ACCEL
 
 /* USB */
 #define CONFIG_USB_CHARGER
