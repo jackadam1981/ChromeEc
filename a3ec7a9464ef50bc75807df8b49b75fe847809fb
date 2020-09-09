@@ -16,6 +16,29 @@
       "revId": "a3ec7a9464ef50bc75807df8b49b75fe847809fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "597f6f4b_823cc621",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2724,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-09T17:55:38Z",
+      "side": 1,
+      "message": "if PD is enabled, shouldn\u0027t we denounce this open still?",
+      "range": {
+        "startLine": 2724,
+        "startChar": 5,
+        "endLine": 2724,
+        "endChar": 32
+      },
+      "revId": "a3ec7a9464ef50bc75807df8b49b75fe847809fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
