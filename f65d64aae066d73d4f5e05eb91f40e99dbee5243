@@ -16,6 +16,23 @@
       "revId": "f65d64aae066d73d4f5e05eb91f40e99dbee5243",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4ade36f_1f27867c",
+        "filename": "board/puff/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1116026
+      },
+      "writtenOn": "2020-09-09T01:23:54Z",
+      "side": 1,
+      "message": "Since we don\u0027t need to change the fan config, I think we can leave this out; fan_set_count() should be sufficient.",
+      "revId": "f65d64aae066d73d4f5e05eb91f40e99dbee5243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
