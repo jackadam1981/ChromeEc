@@ -81,6 +81,24 @@
       "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2178920_9aff488b",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-09T21:03:50Z",
+      "side": 1,
+      "message": "how about explicitly defining them as input in gpio.inc with GPIO_SEL_1P8V?\nor add logic if M6 not present make 1.8V?",
+      "parentUuid": "65c82ec5_c880286f",
+      "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
