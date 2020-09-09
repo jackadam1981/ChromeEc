@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c726b1c0_e8df1573",
+        "filename": "baseboard/octopus/cbi_ssfc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-09T14:31:25Z",
+      "side": 1,
+      "message": "Should we have the implementation of this function in cbi_ssfc.c and in this CL?",
+      "range": {
+        "startLine": 36,
+        "startChar": 17,
+        "endLine": 36,
+        "endChar": 36
+      },
+      "revId": "dd251e9cd9be9d30b7dbda14cc9973194c08bf45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
