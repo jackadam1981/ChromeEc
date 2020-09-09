@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c5b851c_cae47278",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-09T23:57:23Z",
+      "side": 1,
+      "message": "I wasn\u0027t clear on when I could clear the force-discharge bit, so right now I\u0027m doing it before I enable the source or sink paths. It seems like I could probably just wait for 2 ms and then clear it in the discharge function, but I didn\u0027t see in the datasheet that it was guaranteed to be done after any particular amount of time.",
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
