@@ -70,6 +70,46 @@
       "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc9e6262_793be83a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-09T15:46:11Z",
+      "side": 1,
+      "message": "I think the pe_snk_select_capability_run reject path needs to reset pd_set_input_current_limit to 0, since we didn\u0027t actually get that power. (Related to this change, but not necessarily caused by this change)\n\nWe also should not make the active port the USB-C port until we have fully negotiated the power contract (we typically don\u0027t have charges reject PDOs, but I don\u0027t know that we would handle that well)",
+      "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c10e7dc_87d0aa87",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-09T15:46:11Z",
+      "side": 1,
+      "message": "I think we need to detect if this this port is the active_ or selected_ charge port. In either of those cases, we want to ensure we are getting the best PDO we can, so we can select it.",
+      "range": {
+        "startLine": 203,
+        "startChar": 17,
+        "endLine": 203,
+        "endChar": 56
+      },
+      "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
