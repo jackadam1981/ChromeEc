@@ -111,6 +111,30 @@
       "revId": "a3ec7a9464ef50bc75807df8b49b75fe847809fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd6759a_81c373b0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2724,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-09-09T21:06:35Z",
+      "side": 1,
+      "message": "Per TCPCI spec tSetReg (4.4.6.1 CC_STATUS (Normative))  tCcStatusDelay + tTCPCFilter + tCcTCPCSampleRate (max) (Table 4-21. Debounce requirements) is /supposed/ to be how they debounce.\n\nHowever as Diana cites there are many that (a) send false/spurious/phantom #ALERT reads (b) debounce far longer/shorter than this.\n\nAlso there are some partners that (inappropriately) send PS_RDY#1 before setting Rd. Like many older TCPMv1 Chromebooks with no more flash space. Or patches pending such as Eve.\n\nSuggest running (older CB/Eve SRC-to-SNK) PR_SWAP and scoping the CC line, and see how stack reacts. Unless we don\u0027t monitor CC line state for vOpen mid-PR_SWAP (which might also be bad).",
+      "parentUuid": "793dfee6_eb8d8e06",
+      "range": {
+        "startLine": 2724,
+        "startChar": 5,
+        "endLine": 2724,
+        "endChar": 32
+      },
+      "revId": "a3ec7a9464ef50bc75807df8b49b75fe847809fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
