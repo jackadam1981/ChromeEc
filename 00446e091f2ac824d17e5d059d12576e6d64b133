@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "658bf7dc_ccd7308c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-09T17:35:25Z",
+      "side": 1,
+      "message": "The active port allows us to correctly set the request for negotiation. If we don\u0027t do that it will see we are not the charging port and will downgrade to 15W and that will cause the exit from PE_SNK_Transition_Sink to set the limits to what we just negotiated.\n\nThis was sort of why select was added",
+      "parentUuid": "fc9e6262_793be83a",
+      "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c10e7dc_87d0aa87",
         "filename": "common/usb_pd_dual_role.c",
         "patchSetId": 3
@@ -101,6 +119,30 @@
       "writtenOn": "2020-09-09T15:46:11Z",
       "side": 1,
       "message": "I think we need to detect if this this port is the active_ or selected_ charge port. In either of those cases, we want to ensure we are getting the best PDO we can, so we can select it.",
+      "range": {
+        "startLine": 203,
+        "startChar": 17,
+        "endLine": 203,
+        "endChar": 56
+      },
+      "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49f99cce_fa61d1f2",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-09T17:35:25Z",
+      "side": 1,
+      "message": "If we are moving to C1 and C0 is the current active charger, then this will tell both that they are the charging port. That will have both of them negotiate for highest power which is not what this routine has been doing. Are you sure you want to have both negotiated to max?",
+      "parentUuid": "1c10e7dc_87d0aa87",
       "range": {
         "startLine": 203,
         "startChar": 17,
