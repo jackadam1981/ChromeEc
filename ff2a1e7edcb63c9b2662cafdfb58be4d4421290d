@@ -51,6 +51,24 @@
       "revId": "ff2a1e7edcb63c9b2662cafdfb58be4d4421290d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e568db43_4d7b6778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-09T18:58:41Z",
+      "side": 1,
+      "message": "I think the issue is that we start discharge with the PPC and return immediately.  However, when the code comes back in to disable the port the PPC itself is still busy doing the discharge and ignores all register writes.",
+      "parentUuid": "90554fe3_20932a62",
+      "revId": "ff2a1e7edcb63c9b2662cafdfb58be4d4421290d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
