@@ -796,6 +796,8 @@ function claim_pty() {
 	done
 }
 
+# Returns the serialnumber of the specified servo.
+# If error occurs, returns "unknown" or "Uninitialized".
 function get_serial() {
 	if [[ "${SERVO_TYPE}" =~ "servo_v4_with_servo_micro" ]]; then
 		if [[ -z "${BOARD}" ]]; then
@@ -893,7 +895,12 @@ function flash_flashrom() {
 
 	if ! on_servov3; then
 		SERIALNAME=$(get_serial)
-		if [[ "$SERIALNAME" != "" ]] ; then
+		# Do not specify serialnumber if not found. Let flashrom decide.
+		# This might happen if you flash a symlinked board
+		# (e.g. asurada <- hayato), and uses the original target as servod
+		# invoking board name.
+		if [[ "$SERIALNAME" != "" && "$SERIALNAME" != "Uninitialized" &&
+			"$SERIALNAME" != "unknown" ]] ; then
 			FLASHROM_ARGS+="serial=${SERIALNAME}"
 		fi
 	fi
