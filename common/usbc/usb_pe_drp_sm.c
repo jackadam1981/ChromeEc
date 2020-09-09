@@ -5211,8 +5211,10 @@ static void pe_vcs_send_swap_entry(int port)
 {
 	print_current_state(port);
 
-	/* Send a VCONN_Swap Message */
-	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_VCONN_SWAP);
+	if (pd_get_data_role(port) == PD_ROLE_DFP) {
+		/* Send a VCONN_Swap Message */
+		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_VCONN_SWAP);
+	}
 }
 
 static void pe_vcs_send_swap_run(int port)
