@@ -8,6 +8,10 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_VOLUME_BUTTONS
+#define CONFIG_CMD_BUTTON
+#define CONFIG_USE_ADC_DETECT_VOL_KEYS /* ADC switch volumn button*/
+
 #define VARIANT_DEDEDE_EC_NPCX796FC
 #include "baseboard.h"
 
@@ -155,6 +159,6 @@ enum battery_type {
 };
 
 int board_is_sourcing_vbus(int port);
-
+int adc_vol_key_physical_value(enum gpio_signal gpio);
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */

@@ -4,7 +4,8 @@
  */
 
 /* Waddledoo board-specific configuration */
-
+#include "adc.h"
+#include "atomic.h"
 #include "adc_chip.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -42,6 +43,15 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+
+#include "registers.h"
+
+#define ADC_VOL_UP_MASK     BIT(0)
+#define ADC_VOL_DOWN_MASK   BIT(1)
+
+uint32_t new_adc_key_state;
+uint32_t old_adc_key_state;
+uint32_t adc_key_state_change;
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -530,6 +540,89 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+int adc_vol_key_physical_value(enum gpio_signal gpio)
+{
+	if (gpio == GPIO_VOLUP_BTN_ODL)
+		return !!(new_adc_key_state & ADC_VOL_UP_MASK);
+	else if (gpio == GPIO_VOLDN_BTN_ODL)
+		return !!(new_adc_key_state & ADC_VOL_DOWN_MASK);
+
+	CPRINTS("Not a volume up or down key");
+	return 0;
+}
+
+static void check_adcvol_deferred(void);
+DECLARE_DEFERRED(check_adcvol_deferred);
+
+uint32_t adc_volumn;
+/* Called by hook task every hook tick (200 msec) */
+static void check_adcvol_deferred(void)
+{
+	int mv;
+
+	mv = adc_read_channel(ADC_SUB_ANALOG);
+
+	if (mv > 2600  && mv < 2690) {
+		/* volume-down is pressed */
+		atomic_clear(&adc_volumn, 1);
+		npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+		new_adc_key_state = ADC_VOL_DOWN_MASK;
+	} else if (mv > 2400  && mv < 2490) {
+		/* volume-up is pressed */
+		atomic_clear(&adc_volumn, 1);
+		npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+		new_adc_key_state = ADC_VOL_UP_MASK;
+	} else if (mv < 2290) {
+		/* both volumn-up and volume-down are pressed */
+		atomic_clear(&adc_volumn, 1);
+		npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+		new_adc_key_state = ADC_VOL_UP_MASK | ADC_VOL_DOWN_MASK;
+	} else if (mv > 2700)	{
+		/* both volumn-up and volume-down are released */
+		atomic_clear(&adc_volumn, 1);
+		npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+		new_adc_key_state = 0;
+	}
+
+	if (new_adc_key_state != old_adc_key_state) {
+		adc_key_state_change = old_adc_key_state ^ new_adc_key_state;
+		if (adc_key_state_change && ADC_VOL_UP_MASK)
+			button_interrupt(GPIO_VOLUP_BTN_ODL);
+		if (adc_key_state_change && ADC_VOL_DOWN_MASK)
+			button_interrupt(GPIO_VOLDN_BTN_ODL);
+		old_adc_key_state = new_adc_key_state;
+	} else if (new_adc_key_state == 0) {
+		new_adc_key_state = 0;
+		old_adc_key_state = 0;
+		adc_key_state_change = 0;
+	}
+}
+
+void volpress(void)
+{
+	atomic_or(&adc_volumn, 1);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 0);
+	hook_call_deferred(&check_adcvol_deferred_data, 100 * MSEC);
+}
+
+const struct npcx_adc_thresh_t adc_volpress = {
+	.adc_ch = ADC_SUB_ANALOG,
+	.adc_thresh_cb = volpress,
+	.lower_or_higher = 1,
+	.thresh_assert = 2700,
+	.thresh_deassert = -1,
+};
+
+static void set_up_adccvol_irqs(void)
+{
+	/* Set interrupt thresholds for the ADC. */
+	npcx_adc_register_thresh_irq(NPCX_ADC_THRESH3,
+				     &adc_volpress);
+	npcx_set_adc_repetitive(adc_channels[ADC_SUB_ANALOG].input_ch, 1);
+	npcx_adc_thresh_int_enable(NPCX_ADC_THRESH3, 1);
+}
+DECLARE_HOOK(HOOK_INIT, set_up_adccvol_irqs, HOOK_PRIO_INIT_ADC+1);
 
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */

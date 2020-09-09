@@ -30,8 +30,19 @@ GPIO_INT(SUB_USB_C1_INT_ODL,	 PIN(F, 5), GPIO_INT_FALLING | GPIO_PULL_UP, sub_us
 
 /* Button interrupts */
 GPIO_INT(H1_EC_PWR_BTN_ODL,	 PIN(0, 1), GPIO_INT_BOTH | GPIO_PULL_UP, power_button_interrupt)
+
+#ifndef CONFIG_USE_ADC_DETECT_VOL_KEYS
 GPIO_INT(VOLDN_BTN_ODL,		 PIN(4, 0), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 GPIO_INT(VOLUP_BTN_ODL,		 PIN(7, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
+#else
+/*
+ * button.c need the GPIO_VOLUME_UP_L and GPIO_VOLUME_DOWN_L to be defined.
+ * We declare them to unimplemented here in order to leverage the button.c
+ * driver
+ */
+UNIMPLEMENTED(VOLDN_BTN_ODL)
+UNIMPLEMENTED(VOLUP_BTN_ODL)
+#endif
 
 /* Other interrupts */
 GPIO_INT(LID_OPEN,		 PIN(D, 2), GPIO_INT_BOTH, lid_interrupt)
