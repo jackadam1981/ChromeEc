@@ -36,6 +36,42 @@
     },
     {
       "key": {
+        "uuid": "fbd47a8d_43880ddc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-09T23:06:39Z",
+      "side": 1,
+      "message": "Thank you Abe, is this patchset meet your request?",
+      "parentUuid": "a36637dd_59077f6c",
+      "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25e06a25_e9090829",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-09T23:06:39Z",
+      "side": 1,
+      "message": "Do you mean I need to set LED_SIDESEL_4_L to default high?\nI have added port \u003d charge_manager_get_active_charge_port(); to select which LED need to be turned on.",
+      "parentUuid": "2968f399_79364d17",
+      "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48086e4f_c4c4b501",
         "filename": "board/eldrid/gpio.inc",
         "patchSetId": 7
@@ -56,6 +92,30 @@
       "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2888a43f_9e4791e1",
+        "filename": "board/eldrid/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-09T23:06:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48086e4f_c4c4b501",
+      "range": {
+        "startLine": 100,
+        "startChar": 15,
+        "endLine": 100,
+        "endChar": 18
+      },
+      "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "e65c81a4_ba66d906",
+        "filename": "board/eldrid/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-09T23:06:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "005e5f80_c7b2999e",
+      "range": {
+        "startLine": 101,
+        "startChar": 15,
+        "endLine": 101,
+        "endChar": 18
+      },
+      "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c366b000_7c896bea",
         "filename": "board/eldrid/led.c",
         "patchSetId": 7
@@ -96,6 +180,24 @@
       "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa1a7f5_7e5bd1c3",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-09T23:06:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c366b000_7c896bea",
+      "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
