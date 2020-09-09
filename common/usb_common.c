@@ -482,7 +482,16 @@ static void re_enable_ports(void)
 		 */
 		board_overcurrent_event(port, 0);
 
-		pd_send_hard_reset(port);
+		/*
+		 * If disconnected, re-enable PPC here. If connected, try
+		 * hard reset first (if that fails, physical disconnect will
+		 * re-enable PPC).
+		 */
+		if (pd_is_disconnected(port))
+			ppc_clear_oc_event_counter(port);
+		else
+			pd_send_hard_reset(port);
+
 		/*
 		 * TODO(b/117854867): PD3.0 to send an alert message
 		 * indicating OCP after explicit contract.
