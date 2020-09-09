@@ -22,6 +22,47 @@
       "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b222b648_c0881fb0",
+        "filename": "baseboard/intelrvp/ite_ec.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-09T20:07:41Z",
+      "side": 1,
+      "message": "please ignore, misread it.",
+      "parentUuid": "2565dcd4_252a3e90",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 30
+      },
+      "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fabeff9_af6d63dc",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-09T20:07:41Z",
+      "side": 1,
+      "message": "Looks like M0 to M6 are eSPI or LPC related. Only M6 is optional with number of eSPI lines.\nhow about handling it with CONFIG_HOSTCMD_ESPI config?\nand M6 can be handled with GPIO_SEL_1P8V flag?",
+      "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
