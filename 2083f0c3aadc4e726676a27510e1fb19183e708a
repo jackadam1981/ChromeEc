@@ -46,6 +46,47 @@
       "revId": "2083f0c3aadc4e726676a27510e1fb19183e708a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07daffa7_c2030f5f",
+        "filename": "board/puff/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-09-09T02:06:17Z",
+      "side": 1,
+      "message": "Removing them should be fine - setting the fan count to zero will likely mean they are ignored.",
+      "parentUuid": "a456b659_11971eb5",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 1
+      },
+      "revId": "2083f0c3aadc4e726676a27510e1fb19183e708a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaf45a67_958fc022",
+        "filename": "board/puff/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-09-09T02:06:17Z",
+      "side": 1,
+      "message": "In fan_set_count, it says \"It should be set only before HOOK_INIT/HOOK_PRIO_DEFAULT\",\nso the order of the init is important here.\nI suggest to have a separate line:\n\nDECLARE_HOOK(HOOK_INIT, setup_thermal, HOOK_PRIO_DEFAULT-1);\n\nPut this after setup_thermal, and remove the call to setup_thermal from board_init()\nAlso add a comment to setup_thermal explaining that fan_set_count should be called before HOOK_INIT/HOOK_PRIO_DEFAULT.",
+      "revId": "2083f0c3aadc4e726676a27510e1fb19183e708a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
