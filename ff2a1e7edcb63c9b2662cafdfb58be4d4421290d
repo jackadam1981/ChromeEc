@@ -16,6 +16,24 @@
       "revId": "ff2a1e7edcb63c9b2662cafdfb58be4d4421290d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3e2bf88_6d04e9ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-09T17:49:46Z",
+      "side": 1,
+      "message": "Should be fine from the HW side.\n\nFor the time, I think it can be reduced further by using force discharge. We disabled that because it caused other issues early in bringup, but we might need to re-enable it when FRS is enabled anyway.",
+      "parentUuid": "42c9dc63_076d3505",
+      "revId": "ff2a1e7edcb63c9b2662cafdfb58be4d4421290d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
