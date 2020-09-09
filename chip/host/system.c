@@ -1,4 +1,5 @@
 /* Copyright 2013 The Chromium OS Authors. All rights reserved.
+
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -11,6 +12,7 @@
 #include "panic.h"
 #include "persistence.h"
 #include "reboot.h"
+#include "sysjump.h"
 #include "system.h"
 #include "timer.h"
 #include "util.h"
@@ -134,8 +136,109 @@ static int load_time(timestamp_t *t)
 
 test_mockable struct panic_data *panic_get_data(void)
 {
-	return (struct panic_data *)
-		(__ram_data + RAM_DATA_SIZE - sizeof(struct panic_data));
+	struct panic_data *pdata_ptr = (struct panic_data *)(__ram_data +
+	    RAM_DATA_SIZE - sizeof(struct panic_data));
+
+	if (pdata_ptr->magic != PANIC_DATA_MAGIC ||
+	    pdata_ptr->struct_size != sizeof(struct panic_data))
+		return NULL;
+
+	return pdata_ptr;
+}
+
+test_mockable uintptr_t get_panic_data_start()
+{
+	struct panic_data *pdata_ptr = (struct panic_data *)(__ram_data +
+	    RAM_DATA_SIZE - sizeof(struct panic_data));
+
+	if (pdata_ptr->magic != PANIC_DATA_MAGIC)
+		return 0;
+
+	return (uintptr_t)(__ram_data + RAM_DATA_SIZE - pdata_ptr->struct_size);
+}
+
+test_mockable struct panic_data *get_panic_data_write(void)
+{
+	/*
+	 * Pointer to panic_data structure. It may not point to
+	 * the beginning of structure, but accessing struct_size
+	 * and magic is safe because it is always placed at the
+	 * end of RAM.
+	 */
+	struct panic_data * const pdata_ptr = (struct panic_data *)
+	    (__ram_data + RAM_DATA_SIZE - sizeof(struct panic_data));
+	const struct jump_data *jdata_ptr;
+	uintptr_t data_begin;
+	size_t move_size;
+	int delta;
+
+	/*
+	 * If panic data exists, jump data and jump tags should be moved
+	 * about difference between size of panic_data structure and size of
+	 * structure that is present in memory.
+	 *
+	 * If panic data doesn't exist, lets create place for a one
+	 */
+	if (pdata_ptr->magic == PANIC_DATA_MAGIC)
+		delta = sizeof(struct panic_data) - pdata_ptr->struct_size;
+	else
+		delta = sizeof(struct panic_data);
+
+	/* If delta is 0, there is no need to move anything */
+	if (delta == 0)
+		return pdata_ptr;
+
+	/*
+	 * Expecting get_panic_data_start() will return a pointer to
+	 * the beginning of panic data, or NULL if no panic data available
+	 */
+	data_begin = get_panic_data_start();
+	if (!data_begin)
+		data_begin = (uintptr_t)(__ram_data + RAM_DATA_SIZE);
+
+	jdata_ptr = (struct jump_data *)(data_begin - sizeof(struct jump_data));
+
+	/*
+	 * If we don't have valid jump_data structure we don't need to move
+	 * anything and can just return pdata_ptr (clear memory, set magic
+	 * and struct_size first).
+	 */
+	if (jdata_ptr->magic != JUMP_DATA_MAGIC ||
+	    jdata_ptr->version < 1 || jdata_ptr->version > 3) {
+		memset(pdata_ptr, 0, sizeof(struct panic_data));
+		pdata_ptr->magic = PANIC_DATA_MAGIC;
+		pdata_ptr->struct_size = sizeof(struct panic_data);
+
+		return pdata_ptr;
+	}
+
+	if (jdata_ptr->version == 1)
+		move_size = JUMP_DATA_SIZE_V1;
+	else if (jdata_ptr->version == 2)
+		move_size = JUMP_DATA_SIZE_V2 + jdata_ptr->jump_tag_total;
+	else if (jdata_ptr->version == 3)
+		move_size = jdata_ptr->struct_size + jdata_ptr->jump_tag_total;
+	else {
+		/* Unknown jump data version - set move size to 0 */
+		move_size = 0;
+	}
+
+	data_begin -= move_size;
+
+	if (move_size != 0) {
+		/* Move jump_tags and jump_data */
+		memmove((void *)(data_begin - delta), (void *)data_begin, move_size);
+	}
+
+	/*
+	 * Now we are sure that there is enough space for current
+	 * panic_data structure.
+	 */
+	memset(pdata_ptr, 0, sizeof(struct panic_data));
+	pdata_ptr->magic = PANIC_DATA_MAGIC;
+	pdata_ptr->struct_size = sizeof(struct panic_data);
+
+	return pdata_ptr;
 }
 
 test_mockable void system_reset(int flags)
