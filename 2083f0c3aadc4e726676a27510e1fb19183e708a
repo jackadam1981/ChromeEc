@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a456b659_11971eb5",
+        "filename": "board/puff/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2020-09-09T01:44:45Z",
+      "side": 1,
+      "message": "Should I remove .temp_fan_off, .temp_fan_max, or I have keep these?",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 1
+      },
+      "revId": "2083f0c3aadc4e726676a27510e1fb19183e708a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
