@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "9f0faccb_e95f5616",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-09-10T09:37:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b4d8357b_c7944a9d",
+      "revId": "8893377aa7828258c795abffe96ef0016bcca973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3012ffb9_f30be6c3",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 2
@@ -50,6 +68,24 @@
       "revId": "8893377aa7828258c795abffe96ef0016bcca973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f938f1b_a857d093",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-09-10T09:37:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3012ffb9_f30be6c3",
+      "revId": "8893377aa7828258c795abffe96ef0016bcca973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +109,30 @@
       "revId": "8893377aa7828258c795abffe96ef0016bcca973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "569a1679_2f345759",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-09-10T09:37:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4a06f135_69efa8f9",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 36
+      },
+      "revId": "8893377aa7828258c795abffe96ef0016bcca973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
