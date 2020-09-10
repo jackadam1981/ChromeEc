@@ -39,6 +39,30 @@
       "revId": "500d8c3a739f3cc64d87b806b6ca2b4318039aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e7c760_7cd399be",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-10T19:21:06Z",
+      "side": 1,
+      "message": "Setting the config to 0 is a valuable use case. I changed it to \u003e\u003d. There are several other places which need to be modified for this use case. I will do it in a followup CL.",
+      "parentUuid": "62b61420_456e92c0",
+      "range": {
+        "startLine": 597,
+        "startChar": 6,
+        "endLine": 597,
+        "endChar": 64
+      },
+      "revId": "500d8c3a739f3cc64d87b806b6ca2b4318039aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
