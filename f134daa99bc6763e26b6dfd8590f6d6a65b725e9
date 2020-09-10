@@ -16,6 +16,29 @@
       "revId": "f134daa99bc6763e26b6dfd8590f6d6a65b725e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb02f84e_69ded653",
+        "filename": "board/asurada/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-10T02:43:35Z",
+      "side": 1,
+      "message": "Why are the default duties different by their location?",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 40
+      },
+      "revId": "f134daa99bc6763e26b6dfd8590f6d6a65b725e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
