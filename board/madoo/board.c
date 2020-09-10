@@ -540,6 +540,14 @@ uint16_t tcpc_get_alert_status(void)
 	return status;
 }
 
+static uint32_t cached_fw_config;
+
+enum fw_config_keyboard_type get_cbi_fw_config_keyboard(void)
+{
+	return ((cached_fw_config & FW_CONFIG_KB_LAYOUT_MASK)
+			>> FW_CONFIG_KB_LAYOUT_OFFSET);
+}
+
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
 void lid_angle_peripheral_enable(int enable)
