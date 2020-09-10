@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "39bbc212_63d63348",
+        "filename": "board/eldrid/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-10T16:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b665b02_b972186e",
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41fc6059_d338bdee",
         "filename": "board/eldrid/led.c",
         "patchSetId": 11
@@ -65,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "0ee0ed3d_1a87ce62",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-10T16:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41fc6059_d338bdee",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b39b244_16b6da84",
         "filename": "board/eldrid/led.c",
         "patchSetId": 11
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "6e89b506_74416054",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-10T16:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b39b244_16b6da84",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f211e96_54baf58a",
         "filename": "board/eldrid/led.c",
         "patchSetId": 11
@@ -99,6 +165,24 @@
       "writtenOn": "2020-09-10T15:44:46Z",
       "side": 1,
       "message": "Note that, the way this is ordered, if the right side is amber (for instance), and the charger is unplugged, causing the LEDs to turn off (for instance), the left (unplugged) side will momentarily be amber before turning off. I haven\u0027t found a very elegant way to deal with this, although there is probably a scheme where you could turn the color lines off while making any change to the select line.",
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1db5b5_a0f3e522",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-10T16:21:15Z",
+      "side": 1,
+      "message": "Can we having a initial LED support first for SMT and then fix this issue after?",
+      "parentUuid": "4f211e96_54baf58a",
       "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -142,6 +226,48 @@
       "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d1970d7_0ad76edf",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-10T16:21:15Z",
+      "side": 1,
+      "message": "The reason that I change to PWM is Volteer using `ectool pwmsetduty` it at factory(https://chromium-review.googlesource.com/c/chromiumos/platform/factory/+/2336555/).\nSo I think if we use PWM, we can use it without change python code.",
+      "parentUuid": "0de3c72d_414569c9",
+      "range": {
+        "startLine": 71,
+        "startChar": 36,
+        "endLine": 71,
+        "endChar": 74
+      },
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "446f0264_142d21c2",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-10T16:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "930c9d17_c0db28e2",
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
