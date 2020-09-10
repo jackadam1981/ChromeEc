@@ -11,6 +11,10 @@
 #define VARIANT_DEDEDE_EC_NPCX796FC
 #include "baseboard.h"
 
+/* BUTTON */
+#define CONFIG_SIMULATED_BUTTON
+#define CONFIG_CMD_BUTTON
+
 /*
  * Keep the system unlocked in early development.
  * TODO(b/151264302): Make sure to remove this before production!
@@ -169,6 +173,7 @@ enum battery_type {
 };
 
 int board_is_sourcing_vbus(int port);
+extern void simulate_button(uint32_t button_mask, int press_ms);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */

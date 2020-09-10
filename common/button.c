@@ -390,7 +390,7 @@ static void simulate_button_release_deferred(void)
 }
 DECLARE_DEFERRED(simulate_button_release_deferred);
 
-static void simulate_button(uint32_t button_mask, int press_ms)
+void simulate_button(uint32_t button_mask, int press_ms)
 {
 	int button_idx;
 

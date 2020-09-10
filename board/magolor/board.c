@@ -29,6 +29,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "keyboard_protocol.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "motion_sense.h"
@@ -545,6 +546,19 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+/* Called by hook task every hook tick (200 msec) */
+static void adc2_update(void)
+{
+	int mv = adc_read_channel(ADC_SUB_ANALOG);
+	/* voldown press voltage */
+	if (mv > 2600  && mv < 2690)
+		simulate_button(BIT(KEYBOARD_BUTTON_VOLUME_DOWN), 80);
+	/* volup press voltage */
+	else if (mv > 2400  && mv < 2490)
+		simulate_button(BIT(0), 80);
+}
+DECLARE_HOOK(HOOK_TICK, adc2_update, HOOK_PRIO_DEFAULT);
 
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
