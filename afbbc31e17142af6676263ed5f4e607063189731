@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e59ebdf_5244d8fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:26:41Z",
+      "side": 1,
+      "message": "custom",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5c929ef_707b903d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:26:41Z",
+      "side": 1,
+      "message": "It looks like you might be able to accomplish what you\u0027re doing here by just defining struct ec_thermal_config thermal_params for this board. However, I gather that you expect to add more complexity here over time. If that\u0027s true, please add a TODO (or more than one as appropriate) referencing the bug and briefly describing the features you plan to add later.",
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31118f09_0f613f7b",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:26:41Z",
+      "side": 1,
+      "message": "Are you including this because you expect to add support for changing fan speeds based on mode later? I\u0027d prefer that you leave it out for now and add it when you use it.",
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f629aa_62766bb6",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:26:41Z",
+      "side": 1,
+      "message": "I would prefer it if this were just a const int defined inside fan_table_to_rpm (and named accordingly).",
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1bc525a_037ccb1f",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:26:41Z",
+      "side": 1,
+      "message": "Nit: If you\u0027re going to abbreviate temperature, please only do it one way.",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afbd444e_61cfde0f",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:26:41Z",
+      "side": 1,
+      "message": "Can you comment these variables? It was a little hard deriving their meaning from tracing the code.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fd06be6_779cd93a",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:26:41Z",
+      "side": 1,
+      "message": "Why is this static?",
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adb033b3_3c38e478",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:26:41Z",
+      "side": 1,
+      "message": "Why do this?",
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
