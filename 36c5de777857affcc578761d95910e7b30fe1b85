@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42091a27_cdf5bccc",
+        "filename": "baseboard/dedede/cbi_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-10T19:11:03Z",
+      "side": 1,
+      "message": "Looks like this field is two bits in program.star.  Is this config going to be shared between all dedede boards, or will values here be specific by board family?",
+      "range": {
+        "startLine": 54,
+        "startChar": 31,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "36c5de777857affcc578761d95910e7b30fe1b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
