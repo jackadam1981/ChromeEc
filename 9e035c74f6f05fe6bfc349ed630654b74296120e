@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f9fccf7d_91ddb388",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-09-10T07:44:23Z",
+      "side": 1,
+      "message": "Comment added.",
+      "parentUuid": "f21b7d60_c85b2f8f",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7fabeff9_af6d63dc",
         "filename": "chip/it83xx/gpio.c",
         "patchSetId": 2
@@ -119,6 +143,24 @@
       "side": 1,
       "message": "how about explicitly defining them as input in gpio.inc with GPIO_SEL_1P8V?\nor add logic if M6 not present make 1.8V?",
       "parentUuid": "65c82ec5_c880286f",
+      "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2694e42_0c818115",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-09-10T07:44:23Z",
+      "side": 1,
+      "message": "GPM0~6 cannot select 1.8v or 3.3v individually, and usually developers don\u0027t add GPIO_SEL_1P8V flag for a NC pin. So this change is also to make sure level setting won’t overwrite by a NC declaration. And to remind developers to pick up the correct level according to EC\u0027s VCC.",
+      "parentUuid": "b2178920_9aff488b",
       "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
