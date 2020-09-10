@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a5b4c33_a46bf078",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:56:59Z",
+      "side": 1,
+      "message": "comma for disambiguation",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "56754464bba8550830740ad9fd48ca691688dd51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cc1ac4b_fdbef2bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:56:59Z",
+      "side": 1,
+      "message": "Super-nit: comma here",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "56754464bba8550830740ad9fd48ca691688dd51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cbb35f9_706c14a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:56:59Z",
+      "side": 1,
+      "message": "Nit: comma here as well",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "56754464bba8550830740ad9fd48ca691688dd51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2a75b2d_e7c08a8c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2247,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T16:56:59Z",
+      "side": 1,
+      "message": "If VBUS is not present at this point, should we do something more than not enable ADD?",
+      "revId": "56754464bba8550830740ad9fd48ca691688dd51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
