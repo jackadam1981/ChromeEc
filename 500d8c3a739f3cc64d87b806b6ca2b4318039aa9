@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ed9feaf_6ce85a1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-10T18:28:04Z",
+      "side": 1,
+      "message": "I like this idea. I do think we need to clean up the CONFIG_ options though\n\nCONFIG_USB_PD_RESET_MIN_BATT_SOC and CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC specifically\n\nThe CONFIG_USB_PD_RESET_MIN_BATT_SOC seems more of an appropriate name, but only a very few boards define this. It also come with extra behavior (but I think we could apply that behavior more broadly, and it is only TCPMv1 behavior)\n\nI would be okay with submitting this now to unblock, and then have a followup CL to clean up config options.",
+      "revId": "500d8c3a739f3cc64d87b806b6ca2b4318039aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
