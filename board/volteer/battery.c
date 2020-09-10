@@ -38,7 +38,7 @@ const struct board_batt_params board_battery_info[] = {
 	 */
 	[BATTERY_LGC011] = {
 		.fuel_gauge = {
-			.manuf_name = "LGC",
+			.manuf_name = "333-1D-11-A",
 			.ship_mode = {
 				.reg_addr = 0x00,
 				.reg_data = { 0x10, 0x10 },
