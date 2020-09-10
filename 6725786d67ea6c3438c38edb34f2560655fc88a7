@@ -87,6 +87,54 @@
       "revId": "6725786d67ea6c3438c38edb34f2560655fc88a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28d2568a_1a74e01c",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-09-10T00:42:19Z",
+      "side": 1,
+      "message": "\u003e error: Double quote array expansions to avoid re-splitting elements.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2068\n\nPlease fix.",
+      "parentUuid": "67d17820_cb8c3261",
+      "range": {
+        "startLine": 176,
+        "startChar": 30,
+        "endLine": 176,
+        "endChar": 48
+      },
+      "revId": "6725786d67ea6c3438c38edb34f2560655fc88a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2a654c5_07597820",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-09-10T00:42:19Z",
+      "side": 1,
+      "message": "\u003e error: Double quote array expansions to avoid re-splitting elements.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2068\n\nPlease fix.",
+      "parentUuid": "9938e9ec_be377398",
+      "range": {
+        "startLine": 185,
+        "startChar": 21,
+        "endLine": 185,
+        "endChar": 35
+      },
+      "revId": "6725786d67ea6c3438c38edb34f2560655fc88a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
