@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "f21b7d60_c85b2f8f",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-10T02:59:15Z",
+      "side": 1,
+      "message": "Just heads up: Actually the VCC is fed 3.3v on asurada rev1. We move all the 1.8v pins away from GPM. We can do this in another patch.\n\nPlease add a comment: /* For Rev0 only */",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "9e035c74f6f05fe6bfc349ed630654b74296120e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7fabeff9_af6d63dc",
         "filename": "chip/it83xx/gpio.c",
         "patchSetId": 2
