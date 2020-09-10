@@ -22,6 +22,30 @@
       "revId": "9f50fab480e56a820514d5e743b50f085e354fdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d8bc2a_ae0bad05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-10T16:57:52Z",
+      "side": 1,
+      "message": "Or \"TCPMv2\" to denote this affects all TCPMv2 board behaviors",
+      "parentUuid": "7e431995_cfb9f11a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "9f50fab480e56a820514d5e743b50f085e354fdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
