@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "aa1fdc4e_62a94632",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-10T22:31:22Z",
+      "side": 1,
+      "message": "It appears to me that we would just be incrementing and clearing the fault table for no good reason if we don\u0027t actually take any action on it.",
+      "parentUuid": "5e043b6c_369fe30e",
+      "revId": "331f4f4cc297af977e7c3498b2010cf0ba7cf9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d12ccd31_cb8285df",
         "filename": "common/usb_common.c",
         "patchSetId": 1
@@ -65,6 +83,30 @@
       "writtenOn": "2020-09-09T22:57:16Z",
       "side": 1,
       "message": "I thought this just cleared the event counters, does it re-enable the PPC?",
+      "range": {
+        "startLine": 491,
+        "startChar": 3,
+        "endLine": 491,
+        "endChar": 29
+      },
+      "revId": "331f4f4cc297af977e7c3498b2010cf0ba7cf9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7faea001_fb324c18",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-10T22:31:22Z",
+      "side": 1,
+      "message": "It should just clear it. Although, looking briefly thru the code, does overcurrent cycling actually work in TCPMv2? (Detect, turn off VBUS, wait, turn on VBUS, max of 3x times)",
+      "parentUuid": "d12ccd31_cb8285df",
       "range": {
         "startLine": 491,
         "startChar": 3,
