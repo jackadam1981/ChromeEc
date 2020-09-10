@@ -34,6 +34,24 @@
       "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad50002b_77e66960",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-10T20:16:09Z",
+      "side": 1,
+      "message": "I think having an interface that allows the policy to adjust and include AP input sounds like a great path for the future.\n\nI am concerned about moving the unconstrained power decision to swap logic to SRC_READY as this would happen at any time we are idle and some of our testing may want to push us to being SRC or SNK specifically for that test and making it at that level could defeat the attempt of the test.\n\nThis is a DPM_REQUEST. The swap should happen within READY and if we have a discard due to timing we should just queue it right back up and pick it up next time we are back in the READY state.",
+      "parentUuid": "1b6c3ce8_84f70bd8",
+      "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
