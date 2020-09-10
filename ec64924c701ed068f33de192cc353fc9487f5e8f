@@ -16,6 +16,162 @@
       "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0128dce_34cd4e1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-10T17:08:04Z",
+      "side": 1,
+      "message": "I know this is WIP, but:\n\nWe need to test this thoroughly before making this change, we had a lot of issues with force discharge before, which is why we switched to smart discharge early in bringup. \n\nOverall I think we could get this to work, I don\u0027t think disabling discharge only when the sink is enabled will work though. We need to disable discharge once we reach vsafe0V. That is the problem we had before. It will be more complicated, but I think we need to make a deferred check to the status register to disable it once we have discharged. \n\nFor your reference, this CL is basically a revert of commit 4f748cf760dcc57b628f08ef705701235cb6c842, that has the bug #s where we had issues caused by force discharge.",
+      "parentUuid": "3c5b851c_cae47278",
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca709d3d_a3c553a2",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-10T17:08:04Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be based on enable?",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 38
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26afc251_438ee246",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-10T17:08:04Z",
+      "side": 1,
+      "message": "return rv;",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 19
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b33c750e_9b84e039",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-10T17:08:04Z",
+      "side": 1,
+      "message": "Replace with call to syv682x_discharge_vbus.",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a15aed8_6b880b4c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-10T17:08:04Z",
+      "side": 1,
+      "message": "Will require testing, but you might need to discharge explicitly here. That is the issue we had before.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 38
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "121abc38_b74c13f4",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-10T17:08:04Z",
+      "side": 1,
+      "message": "Replace with call to syv682x_discharge_vbus.\n\nOne issue I see here is that we will be discharging when the new source is connected. Does that cause issues? We will be drawing current before vSafe5V. If there are multiple sources, we don\u0027t enable the sink on one of them so we will have a similar issue.\n\nThat dissipated power is significant.",
+      "range": {
+        "startLine": 300,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 0
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0176557_8fcec177",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-10T17:08:04Z",
+      "side": 1,
+      "message": "Will require testing, but you might need to discharge explicitly here. That is the issue we had before.",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 38
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
