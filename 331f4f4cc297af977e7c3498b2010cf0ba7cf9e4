@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "5e043b6c_369fe30e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-10T04:45:31Z",
+      "side": 1,
+      "message": "It seems safer to me to delay before clearing the fault, even if nothing is connected: better to wait for whatever caused the fault to go away.",
+      "parentUuid": "5f34cf41_b8c4e6df",
+      "revId": "331f4f4cc297af977e7c3498b2010cf0ba7cf9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d12ccd31_cb8285df",
         "filename": "common/usb_common.c",
         "patchSetId": 1
