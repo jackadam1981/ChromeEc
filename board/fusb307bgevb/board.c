@@ -30,12 +30,14 @@
 #include "printf.h"
 #include "timer.h"
 #include "lcd.h"
+#include "fusb307.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
+	schedule_deferred_pd_interrupt(0);
 }
 
 /******************************************************************************
@@ -159,6 +161,80 @@ const struct i2c_port_t i2c_ports[] = {
 	{"tcpc", I2C_PORT_TCPC, 400 /* kHz */, GPIO_I2C2_SCL, GPIO_I2C2_SDA}
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/******************************************************************************
+ * PD
+ */
+const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC,
+			.addr_flags = FUSB307_I2C_SLAVE_ADDR_FLAGS,
+		},
+		.drv = &fusb307_tcpm_drv,
+	},
+};
+
+
+uint16_t tcpc_get_alert_status(void)
+{
+	uint16_t status = 0;
+
+	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL))
+		status |= PD_STATUS_TCPC_ALERT_0;
+
+	return status;
+}
+
+void board_reset_pd_mcu(void)
+{
+}
+
+int pd_snk_is_vbus_provided(int port)
+{
+	/* TODO(b:138352732): read IT8801 GPIO EN_USBC_CHARGE_L */
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
+void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+}
+
+
+int board_set_active_charge_port(int charge_port)
+{
+	return EC_SUCCESS;
+}
+
+static uint8_t vbus_en;
+int board_vbus_source_enabled(int port)
+{
+	return vbus_en;
+}
+
+void pd_set_input_current_limit(int port, uint32_t max_ma,
+				uint32_t supply_voltage)
+{
+	/* No battery, nothing to do */
+}
+
+void pd_power_supply_reset(int port)
+{
+	/* Disable VBUS */
+	fusb307_power_supply_reset(port);
+}
+
+int pd_set_power_supply_ready(int port)
+{
+	return EC_SUCCESS;
+}
+
+int pd_board_checks(void)
+{
+	return EC_SUCCESS;
+}
 
 /******************************************************************************
  * Initialize board.
