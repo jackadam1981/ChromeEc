@@ -6,7 +6,13 @@
 #
 # Generate version information for the EC binary
 
+: "${BOARD:=}"
+: "${CR50_DEV:=}"
+: "${CR50_SQA:=}"
+: "${CRYPTO_TEST:=}"
 : "${REPRODUCIBLE_BUILD:=}"
+: "${STATIC_VERSION:=}"
+: "${VCSID:=}"
 
 # Use this symbol as a separator to be able to reliably concatenate strings of
 # text.
