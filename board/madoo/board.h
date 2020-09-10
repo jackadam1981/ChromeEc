@@ -107,6 +107,8 @@
 #define CONFIG_BATTERY_DEVICE_CHEMISTRY "LION"
 #define CONFIG_BATTERY_FUEL_GAUGE
 
+#define FW_CONFIG_KB_LAYOUT_OFFSET		12
+#define FW_CONFIG_KB_LAYOUT_MASK		GENMASK(13, 12)
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -149,7 +151,16 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
+/*
+ * UK2 Keyboard (1 bit)
+ */
+enum fw_config_keyboard_type {
+	KB_Normal_Keyboard = 0,
+	KB_UK2_Keyboard = 1,
+};
+
 int board_is_sourcing_vbus(int port);
+enum fw_config_keyboard_type get_cbi_fw_config_keyboard(void);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
