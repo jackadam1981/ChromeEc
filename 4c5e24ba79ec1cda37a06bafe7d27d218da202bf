@@ -51,6 +51,24 @@
       "revId": "4c5e24ba79ec1cda37a06bafe7d27d218da202bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20086827_60c9efa0",
+        "filename": "board/meep/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-10T02:10:59Z",
+      "side": 1,
+      "message": "The return value of get_ppc_port_config() will be seen as the enum ppc_type instead boolean value. As a result, there is no explicitly mapping about False to PPC_NX20P348X and True to PPC_SYV682X. I would expect something like \n\nif ((board_version \u003e\u003d 6) \u0026\u0026 gpio_get_level(GPIO_PPC_ID))\n    return PPC_SYV682X;\nelse\n    return PPC_NX20P348X;",
+      "parentUuid": "d73797fd_fac073c4",
+      "revId": "4c5e24ba79ec1cda37a06bafe7d27d218da202bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
