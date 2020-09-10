@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de545425_cca9d051",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-10T20:40:40Z",
+      "side": 1,
+      "message": "how about MIN(get_tbt_cable_speed(port), board_get_max_tbt_speed(port));\nit will ensure we are not exceeding board speed",
+      "range": {
+        "startLine": 892,
+        "startChar": 41,
+        "endLine": 892,
+        "endChar": 66
+      },
+      "revId": "74355a5324ef355c74143d4508c753acad797fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
