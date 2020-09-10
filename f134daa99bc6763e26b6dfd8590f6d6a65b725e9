@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "781a1805_9ef480fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-10T05:32:10Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "e671c36f_28cbf8dc",
+      "revId": "f134daa99bc6763e26b6dfd8590f6d6a65b725e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb02f84e_69ded653",
         "filename": "board/asurada/led.c",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-09-10T02:43:35Z",
       "side": 1,
       "message": "Why are the default duties different by their location?",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 40
+      },
+      "revId": "f134daa99bc6763e26b6dfd8590f6d6a65b725e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6a2393a_428f7a25",
+        "filename": "board/asurada/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-10T05:32:10Z",
+      "side": 1,
+      "message": "to make the leds has the same brightness.",
+      "parentUuid": "bb02f84e_69ded653",
       "range": {
         "startLine": 148,
         "startChar": 12,
