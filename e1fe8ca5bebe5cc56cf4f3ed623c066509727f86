@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33987b7a_a74b1af9",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T17:08:10Z",
+      "side": 1,
+      "message": "Now this line is over 80 columns.\n\nI think you are skipping pre-upload checks. Can you show me the exact command you are running to upload patchsets?",
+      "revId": "e1fe8ca5bebe5cc56cf4f3ed623c066509727f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f3d6c61_b05cbdf1",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T17:08:10Z",
+      "side": 1,
+      "message": "Nit: Remove trailing whitespace.",
+      "range": {
+        "startLine": 71,
+        "startChar": 35,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "e1fe8ca5bebe5cc56cf4f3ed623c066509727f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
