@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6e5afbf_66bdc6f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2020-09-10T19:04:21Z",
+      "side": 1,
+      "message": "I don\u0027t want to hold this CL hostage, but I think we need to satisfy the last shellcheck warning at some point, since it will keep annoying future CLs.\n\nWe need to either satisfy shellcheck OR add `# shellcheck disable\u003dSC2012` before the usage.",
+      "revId": "01b4062c7557e9406ffe12da8fd4c5fcabf5a312",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
