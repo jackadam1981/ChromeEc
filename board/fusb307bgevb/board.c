@@ -29,6 +29,7 @@
 #include "power_button.h"
 #include "printf.h"
 #include "timer.h"
+#include "lcd.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -171,6 +172,11 @@ static void board_init(void)
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 
+	lcd_init(20, 4, 0);
+	lcd_setCursor(0, 0);
+	lcd_printString("USB-C");
+	lcd_setCursor(0, 1);
+	lcd_printString("Sink Advertiser");
 	queue_init(&loopback_queue);
 	queue_init(&usart_to_usb);
 	queue_init(&usb_to_usart);
