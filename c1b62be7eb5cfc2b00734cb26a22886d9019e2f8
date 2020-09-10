@@ -88,6 +88,24 @@
       "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e4ac8fc_b9ca2e26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-10T21:09:10Z",
+      "side": 1,
+      "message": "By the time the AP is ready to drive PDO selection, I imagine we\u0027ll be removing this case from the EC so I\u0027m not concerned about a race condition happening here.\n\nI also suspect that any expansion on a charging \"allow-list\" would be best left for when the AP is in charge, so we don\u0027t have baked-in device lists releasing in our EC code.",
+      "parentUuid": "c080faa0_defd849f",
+      "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
