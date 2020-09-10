@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdb9dd5c_7c3c0e91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273086
+      },
+      "writtenOn": "2020-09-10T20:00:11Z",
+      "side": 1,
+      "message": "Overlays set up and build.\nNot yet modified with respect to coachz vs. lazor hw diffs.\nchromeos-firmware-strongbad dependency disabled untils binaries checked in.\n\nBuild Command:\n(cr) ((ed84755...)) moragues@moragues-cloud ~/trunk/src/scripts $ cd ~/trunk/src/scripts \u0026\u0026 ./build_packages --board strongbad \u0026\u0026 ./build_image --board strongbad --noenable_rootfs_verification test",
+      "revId": "09279afff5a6b7f53ed30832d54eafa741d06a87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
