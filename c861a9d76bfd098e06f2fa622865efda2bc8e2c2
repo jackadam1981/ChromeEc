@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28983b1a_afcb9a04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-10T06:18:48Z",
+      "side": 1,
+      "message": "I found that the max brightness of right led is 0x64, but for right is only 0xf. Is it by design ?\nlocalhost ~ # ectool led left query\nBrightness range for LED 3:\n        red     : 0x0\n        green   : 0x0\n        blue    : 0x0\n        yellow  : 0x0\n        white   : 0xf\n        amber   : 0xf\nlocalhost ~ # ectool led right query\nBrightness range for LED 4:\n        red     : 0x0\n        green   : 0x0\n        blue    : 0x0\n        yellow  : 0x0\n        white   : 0x64\n        amber   : 0x64",
+      "revId": "c861a9d76bfd098e06f2fa622865efda2bc8e2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
