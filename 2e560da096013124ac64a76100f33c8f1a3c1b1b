@@ -198,6 +198,24 @@
       "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10486856_2654a820",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T00:05:59Z",
+      "side": 1,
+      "message": "To clarify, all lines must be 80 columns or fewer.\n\nAre you running presubmit tests before uploading?",
+      "parentUuid": "afa1a7f5_7e5bd1c3",
+      "revId": "2e560da096013124ac64a76100f33c8f1a3c1b1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
