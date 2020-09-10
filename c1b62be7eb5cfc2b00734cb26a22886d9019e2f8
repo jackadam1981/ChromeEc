@@ -70,6 +70,24 @@
       "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c080faa0_defd849f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-10T21:00:47Z",
+      "side": 1,
+      "message": "...and making the decision on doing the PR_Swap in DPM, based on unconstrained power being available or any other policy, would always allow us to override what a test may have had in mind if they explicitly request a PR_Swap.\n\nThe code, as it stands, will do the decoupling and will also limit the swap to initial attach of being a SRC going into PE_DR_SRC_GET_SOURCE_CAP (also decoupled through a DPM request) when we don\u0027t already have the src_caps of our partner.",
+      "parentUuid": "a85a4616_1fabf9ae",
+      "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
