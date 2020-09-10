@@ -22,6 +22,30 @@
       "revId": "e09ef0fdb5445b8994298cdee4c991b2dd0bbbac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc3be203_de9aa7dd",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-09-10T19:25:18Z",
+      "side": 0,
+      "message": "right, and this is definitely not the case where \u0027find\u0027 is more appropriate. But I can add the disable statement.",
+      "parentUuid": "55741d2f_31c3c867",
+      "range": {
+        "startLine": 170,
+        "startChar": 21,
+        "endLine": 170,
+        "endChar": 26
+      },
+      "revId": "e09ef0fdb5445b8994298cdee4c991b2dd0bbbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
