@@ -93,6 +93,30 @@
       "revId": "6ab464b9b76968164b5b0996d55f4a73836a61ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13333c65_faadb6bc",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-10T01:57:23Z",
+      "side": 1,
+      "message": "sorry, what i meant was that you could simplify the\noriginal expression to:\n\nside_select \u003d port \u003d\u003d RIGHT_PORT ? 1 : 0;\n\ni think the 0 and 1 magic numbers could benefit from\n#defines since it\u0027s not clear what 0 and 1 means.\n\nmaybe add 2 defines:\n\nLED_SIDESEL_LEFT_LVL\nLED_SIDESEL_RIGHT_LVL\n\nsimilar to what you did for BAT_LED_*_LVL",
+      "parentUuid": "ff6b37a8_bf1d87bd",
+      "range": {
+        "startLine": 64,
+        "startChar": 15,
+        "endLine": 64,
+        "endChar": 43
+      },
+      "revId": "6ab464b9b76968164b5b0996d55f4a73836a61ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
