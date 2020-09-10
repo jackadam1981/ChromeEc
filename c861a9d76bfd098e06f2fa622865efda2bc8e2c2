@@ -16,6 +16,24 @@
       "revId": "c861a9d76bfd098e06f2fa622865efda2bc8e2c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a094433c_f3cb0f60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-10T06:32:08Z",
+      "side": 1,
+      "message": "yes, led on main board and sub-board are controlled by different pwm modules.\nLeft led (and the hidden battery led) only have 16 levels by design.\nBut we can normalize these to [0-100] if you need.",
+      "parentUuid": "28983b1a_afcb9a04",
+      "revId": "c861a9d76bfd098e06f2fa622865efda2bc8e2c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
