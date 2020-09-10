@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b665b02_b972186e",
+        "filename": "board/eldrid/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T15:44:46Z",
+      "side": 1,
+      "message": "Remove extra line break.",
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41fc6059_d338bdee",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T15:44:46Z",
+      "side": 1,
+      "message": "Nit: Line this up with the line above it (inner \"{\" and \"1\" should line up with above line).",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f994e4_fdf91f49",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T15:44:46Z",
+      "side": 1,
+      "message": "If you want to remove these extra spaces at the end to avoid adding a line break, that\u0027s fine with me.",
+      "range": {
+        "startLine": 49,
+        "startChar": 36,
+        "endLine": 49,
+        "endChar": 37
+      },
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b39b244_16b6da84",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T15:44:46Z",
+      "side": 1,
+      "message": "Nit: Space.\n\nAlso, this comment may now be better placed above the LED_SIDESEL_*_LVL macro definitions.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f211e96_54baf58a",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T15:44:46Z",
+      "side": 1,
+      "message": "Note that, the way this is ordered, if the right side is amber (for instance), and the charger is unplugged, causing the LEDs to turn off (for instance), the left (unplugged) side will momentarily be amber before turning off. I haven\u0027t found a very elegant way to deal with this, although there is probably a scheme where you could turn the color lines off while making any change to the select line.",
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0de3c72d_414569c9",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T15:44:46Z",
+      "side": 1,
+      "message": "I see that you changed this output back to PWM from GPIO. Are you planning on using PWM values other than 0% or 100% here in the future?",
+      "range": {
+        "startLine": 71,
+        "startChar": 36,
+        "endLine": 71,
+        "endChar": 74
+      },
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "930c9d17_c0db28e2",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T15:44:46Z",
+      "side": 1,
+      "message": "This line is now over 80 columns.\n\nYou should be running presubmits every time you upload.",
+      "revId": "c481576f2d14e0232e25438aaad3a25e2a8c824f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
