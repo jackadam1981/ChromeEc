@@ -16,6 +16,24 @@
       "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b6c3ce8_84f70bd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-09-10T19:05:59Z",
+      "side": 1,
+      "message": "Also noting: may this be better located in the \"SRC_READY\"-\u003e\"dpm_run()\" function, gated in such a manner that AP control may override it?\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/usbc/usb_pd_dpm.c#210\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/usbc/usb_pe_drp_sm.c#2369\n\nThis is a policy decision; ergo I\u0027m worried about a race condition (packet collision) by triggering it autonomically in the \"receive_src_cap()\" function.",
+      "parentUuid": "0b01f55a_d3270d3c",
+      "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
