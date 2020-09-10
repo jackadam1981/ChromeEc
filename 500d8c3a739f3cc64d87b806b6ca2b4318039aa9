@@ -16,6 +16,29 @@
       "revId": "500d8c3a739f3cc64d87b806b6ca2b4318039aa9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62b61420_456e92c0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-10T18:31:27Z",
+      "side": 1,
+      "message": "Oh, I meant to comment: let\u0027s make this \u003e\u003d so it will be easy for developer to set the config option to 0 in board.h to enable PD in RO again for local developer testing.",
+      "range": {
+        "startLine": 597,
+        "startChar": 6,
+        "endLine": 597,
+        "endChar": 64
+      },
+      "revId": "500d8c3a739f3cc64d87b806b6ca2b4318039aa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
