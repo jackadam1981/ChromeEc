@@ -36,6 +36,7 @@ void pd_power_supply_reset(int port)
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 	/* Give back the current quota we are no longer using */
+	CPRINTS("%s: charge manager source port off", __func__);
 	charge_manager_source_port(port, 0);
 #endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
 

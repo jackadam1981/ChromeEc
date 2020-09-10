@@ -97,10 +97,12 @@ static int write_reg(uint8_t port, int reg, int regval)
 {
 	int rv;
 
+	CPRINTS("%s: wait", __func__);
 	rv = syv682x_wait_for_ready(port);
 	if (rv)
 		return rv;
 
+	CPRINTS("%s: write", __func__);
 	return i2c_write8(ppc_chips[port].i2c_port,
 			  ppc_chips[port].i2c_addr_flags,
 			  reg,
@@ -120,6 +122,7 @@ static int syv682x_discharge_vbus(int port, int enable)
 	int rv;
 	int control2;
 
+	CPRINTS("%s: %s", __func__, enable ? "enable" : "disable");
 	rv = read_reg(port, SYV682X_CONTROL_2_REG, &control2);
 	if (rv)
 		return rv;
@@ -368,10 +371,12 @@ static int syv682x_set_vbus_source_current_limit(int port,
 	int limit;
 	int regval;
 
+	CPRINTS("%s: read", __func__);
 	rv = read_reg(port, SYV682X_CONTROL_1_REG, &regval);
 	if (rv)
 		return rv;
 
+	CPRINTS("%s: choose limit", __func__);
 	/* We need buffer room for all current values. */
 	switch (rp) {
 	case TYPEC_RP_3A0:
@@ -391,7 +396,10 @@ static int syv682x_set_vbus_source_current_limit(int port,
 
 	regval &= ~SYV682X_5V_ILIM_MASK;
 	regval |= (limit << SYV682X_5V_ILIM_BIT_SHIFT);
-	return write_reg(port, SYV682X_CONTROL_1_REG, regval);
+	CPRINTS("%s: write", __func__);
+	rv = write_reg(port, SYV682X_CONTROL_1_REG, regval);
+	CPRINTS("%s: done", __func__);
+	return rv;
 }
 
 #ifdef CONFIG_USBC_PPC_POLARITY

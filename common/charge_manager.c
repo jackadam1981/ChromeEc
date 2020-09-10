@@ -1247,32 +1247,42 @@ void charge_manager_source_port(int port, int enable)
 	uint32_t prev_bitmap = source_port_bitmap;
 	int p, rp;
 
+	CPRINTS("%s: atomic", __func__);
 	if (enable)
 		atomic_or(&source_port_bitmap, 1 << port);
 	else
 		atomic_clear(&source_port_bitmap, 1 << port);
 
 	/* No change, exit early. */
-	if (prev_bitmap == source_port_bitmap)
+	if (prev_bitmap == source_port_bitmap) {
+		CPRINTS("%s: exit early", __func__);
 		return;
+	}
 
 	/* Set port limit according to policy */
 	for (p = 0; p < board_get_usb_pd_port_count(); p++) {
+		CPRINTS("%s: can supply", __func__);
 		rp = can_supply_max_current(p) ?
 				CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT :
 				CONFIG_USB_PD_PULLUP;
 		source_port_rp[p] = rp;
 
 #ifdef CONFIG_USB_PD_LOGGING
-		if (is_connected(p) && !is_sink(p))
+		CPRINTS("%s: is con", __func__);
+		if (is_connected(p) && !is_sink(p)) {
+			CPRINTS("%s: save", __func__);
 			charge_manager_save_log(p);
+		}
 #endif
 
+		CPRINTS("%s: cur lim", __func__);
 		typec_set_source_current_limit(p, rp);
+		CPRINTS("%s: set rp", __func__);
 		if (IS_ENABLED(CONFIG_USB_PD_TCPMV2))
 			typec_select_src_current_limit_rp(p, rp);
 		else
 			tcpm_select_rp_value(p, rp);
+		CPRINTS("%s: update contract", __func__);
 		pd_update_contract(p);
 	}
 }
