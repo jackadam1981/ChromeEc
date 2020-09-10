@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b01f55a_d3270d3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-09-10T18:55:30Z",
+      "side": 1,
+      "message": "Suggest another CL adding \"pd_charge_from_device()\" logic as well.\nPD3.0 allows DiscID as UFP. This our \"Allow List\" mechanic, I believe.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/usb_pd_protocol.c#1523\nhttps://chromium.git.corp.google.com/chromiumos/platform/ec/+/master/common/usb_pd_dual_role.c#336\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2051217/3/common/usb_pd_policy.c\n\nCurrently contains only 2 Apple VID/PIDs for \"Apple Charge-Through Accessory\".\n(Likely needs to be rewritten at some point, per inline comments.)",
+      "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
