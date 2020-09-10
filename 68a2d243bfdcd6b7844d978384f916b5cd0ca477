@@ -22,6 +22,30 @@
       "revId": "68a2d243bfdcd6b7844d978384f916b5cd0ca477",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d614d75c_9630ebae",
+        "filename": "board/eve/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-10T15:37:31Z",
+      "side": 1,
+      "message": "Ah, nevermind the S5, G3 comment. We have other hooks and states for that.\n\nJust replace the if with chipset_in_or_transitioning_to_state(CHIPSET_STATE_SUSPEND) now.",
+      "parentUuid": "a689a052_a060881f",
+      "range": {
+        "startLine": 542,
+        "startChar": 5,
+        "endLine": 542,
+        "endChar": 68
+      },
+      "revId": "68a2d243bfdcd6b7844d978384f916b5cd0ca477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
