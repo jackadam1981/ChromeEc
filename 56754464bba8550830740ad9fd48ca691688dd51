@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c4a0e55_1444aa93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-10T18:12:30Z",
+      "side": 1,
+      "message": "The commit message was not well worded. Thanks for pointing me back to fix it.",
+      "parentUuid": "4a5b4c33_a46bf078",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "56754464bba8550830740ad9fd48ca691688dd51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cc1ac4b_fdbef2bd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "56754464bba8550830740ad9fd48ca691688dd51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8ec9b88_075d64e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-10T18:12:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3cc1ac4b_fdbef2bd",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "56754464bba8550830740ad9fd48ca691688dd51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "35315a41_5b59558c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-10T18:12:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6cbb35f9_706c14a7",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "56754464bba8550830740ad9fd48ca691688dd51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2a75b2d_e7c08a8c",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 1
@@ -85,6 +157,24 @@
       "revId": "56754464bba8550830740ad9fd48ca691688dd51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ffdcdd0_97c19d66",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2247,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-10T18:12:30Z",
+      "side": 1,
+      "message": "I don\u0027t think there is a need to. The code should progress to the next condition and see we are disconnected and that will make sure everything is clean",
+      "parentUuid": "d2a75b2d_e7c08a8c",
+      "revId": "56754464bba8550830740ad9fd48ca691688dd51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
