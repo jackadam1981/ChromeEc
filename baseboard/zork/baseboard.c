@@ -53,6 +53,7 @@
  * charger (see b/67964166).
  */
 #define BC12_MIN_VOLTAGE 4500
+static int keyboard_enable;
 
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,
@@ -84,6 +85,9 @@ static void baseboard_chipset_suspend(void)
 	/* Disable display and keyboard backlights. */
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 1);
 	ioex_set_level(IOEX_KB_BL_EN, 0);
+
+	if (!keyboard_enable)
+		keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, baseboard_chipset_suspend,
 	     HOOK_PRIO_DEFAULT);
@@ -161,6 +165,8 @@ void lid_angle_peripheral_enable(int enable)
 {
 	if (ec_config_has_lid_angle_tablet_mode()) {
 		int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
+
+		keyboard_enable = enable;
 
 		if (enable) {
 			keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
