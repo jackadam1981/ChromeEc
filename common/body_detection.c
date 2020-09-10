@@ -30,6 +30,8 @@ static enum body_detect_states motion_state = BODY_DETECTION_OFF_BODY;
 static bool history_initialized;
 static bool body_detect_enable;
 
+static int var_multiplier, var_divisor;
+
 static struct body_detect_motion_data
 {
 	int history[CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE]; /* acceleration */
@@ -145,16 +147,16 @@ static void determine_threshold_scale(int range, int resolution, int rms_noise)
 	 * var_noise:          mm^2/s^4
 	 */
 	const int data_1g = BIT(resolution - 1) / range;
-	const int multiplier = POW2(data_1g);
-	const int divisor = POW2(9800);
 	const int var_noise = POW2((int64_t)rms_noise) * POW2(98) / POW2(10000);
+	var_multiplier = POW2(data_1g);
+	var_divisor = POW2(9800);
 
 	var_threshold_scaled = (uint64_t)
 		(CONFIG_BODY_DETECTION_VAR_THRESHOLD + var_noise) *
-		multiplier / divisor;
+		var_multiplier / var_divisor;
 	confidence_delta_scaled = (uint64_t)
 		CONFIG_BODY_DETECTION_CONFIDENCE_DELTA *
-		multiplier / divisor;
+		var_multiplier / var_divisor;
 }
 
 void body_detect_reset(void)
@@ -211,6 +213,13 @@ void body_detect(void)
 		    CONFIG_BODY_DETECTION_STATIONARY_DURATION * window_size)
 			body_detect_change_state(BODY_DETECTION_OFF_BODY);
 		break;
+	}
+	/* log information every one second */
+	if (history_idx == 0) {
+		CPRINTS("[%s BODY] var: %llu (%d%% confidence)",
+			motion_state == BODY_DETECTION_ON_BODY ? "ON" : "OFF",
+			motion_var * var_divisor / var_multiplier,
+			motion_confidence);
 	}
 }
 
