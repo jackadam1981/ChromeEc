@@ -52,6 +52,24 @@
       "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a85a4616_1fabf9ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-10T20:48:42Z",
+      "side": 1,
+      "message": "To elaborate a little on what Denis said, if this decision moved to the DPM, the DPM would just be setting a DPM_REQUEST flag. The PE would then check it and carry it out at a suitable time (from a Ready state). The decision and the action would be decoupled.",
+      "parentUuid": "ad50002b_77e66960",
+      "revId": "c1b62be7eb5cfc2b00734cb26a22886d9019e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
