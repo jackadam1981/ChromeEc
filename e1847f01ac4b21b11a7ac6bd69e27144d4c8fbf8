@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a807010d_bc169a30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-09-10T09:37:42Z",
+      "side": 1,
+      "message": "Please submit another patch for fixing the 2s1p battery setting.",
+      "revId": "e1847f01ac4b21b11a7ac6bd69e27144d4c8fbf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ea0c72f_f56158fd",
         "filename": "board/willow/battery.c",
         "patchSetId": 1
