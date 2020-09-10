@@ -152,6 +152,30 @@
       "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f3faa87_e68cd8b0",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-10T21:17:39Z",
+      "side": 1,
+      "message": "I think we would need both negotiated to max while we are transitioning from one to the other. If we downgrade one before the other is up, then we might brown out, if battery isn\u0027t enough to keep us alive.",
+      "parentUuid": "49f99cce_fa61d1f2",
+      "range": {
+        "startLine": 203,
+        "startChar": 17,
+        "endLine": 203,
+        "endChar": 56
+      },
+      "revId": "00446e091f2ac824d17e5d059d12576e6d64b133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
