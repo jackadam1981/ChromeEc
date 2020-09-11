@@ -1642,6 +1642,20 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
  */
 __overridable union tbt_dev_mode_enter_cmd pd_ufp_get_enter_mode(int port);
 
+/*
+ * Clear port's alternate mode flags
+ *
+ * @param port     USB-C port number
+ */
+__overridable void ufp_clear_alt_mode(int port);
+
+/*
+ * Set the mux into alternate mode
+ *
+ * @param port     USB-C port number
+ */
+__overridable void ufp_mux_set_alt_mode(int port);
+
 /**
  *  Get DisplayPort pin mode for DFP to request from UFP's capabilities.
  *

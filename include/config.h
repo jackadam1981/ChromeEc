@@ -4864,9 +4864,8 @@
  * If CONFIG_USBC_SS_MUX_DFP_ONLY is enabled, make sure
  * CONFIG_USB_PD_ALT_MODE_UFP is not enabled
  */
-#ifdef CONFIG_USBC_SS_MUX_DFP_ONLY
-#if defined(CONFIG_USB_PD_ALT_MODE_UFP)
-#error port cannot be UFP when CONFIG_USBC_SS_MUX_DFP_ONLY is enabled
+#if defined(CONFIG_USBC_SS_MUX_DFP_ONLY) && defined(CONFIG_USB_PD_ALT_MODE_UFP)
+#error DUT cannot be UFP when CONFIG_USBC_SS_MUX_DFP_ONLY is enabled
 #endif
 
 /******************************************************************************/
