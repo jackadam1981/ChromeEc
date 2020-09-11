@@ -46,6 +46,30 @@
       "revId": "36c5de777857affcc578761d95910e7b30fe1b85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1e7f0f4_31510459",
+        "filename": "baseboard/dedede/cbi_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2020-09-11T06:58:27Z",
+      "side": 1,
+      "message": "According to https://chrome-internal.googlesource.com/chromeos/program/dedede/+/refs/heads/master/program.star#67   \nThe KB_LAYOUT value can be defined per project, and each project (FW) can have up to 4 different KB_LAYOUTs for now. \nBased on this, I\u0027d suggest we can move this KB_LAYOUT define to board.c then each board can play with their own KB define. \n\nIf we put the KB define here especially with a specific name (UK2 here for eg). it may be conflict with other projects define. \n\nThanks!",
+      "parentUuid": "3e25e973_01d55cc9",
+      "range": {
+        "startLine": 54,
+        "startChar": 31,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "36c5de777857affcc578761d95910e7b30fe1b85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
