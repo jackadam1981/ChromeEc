@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "075a6551_904dfd37",
+        "filename": "board/fusb307bgevb/lcd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T09:03:56Z",
+      "side": 1,
+      "message": "these three are write-only / one time use, remove them",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 14
+      },
+      "revId": "316e023ed0611d43747472178f2c9ed76f906c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d23e4ec7_bf7b416d",
+        "filename": "board/fusb307bgevb/lcd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T09:03:56Z",
+      "side": 1,
+      "message": "highnib | mode\nlownib | mode",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "316e023ed0611d43747472178f2c9ed76f906c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c7d8a6_fc324f60",
+        "filename": "board/fusb307bgevb/lcd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T09:03:56Z",
+      "side": 1,
+      "message": "Why this function takes 2ms but setCursor don\u0027t.\n\nCan we just call setCursor(0, 0) instead?",
+      "revId": "316e023ed0611d43747472178f2c9ed76f906c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1298eb0d_6d12ad70",
+        "filename": "board/fusb307bgevb/lcd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T09:03:56Z",
+      "side": 1,
+      "message": "const char *",
+      "range": {
+        "startLine": 91,
+        "startChar": 21,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "316e023ed0611d43747472178f2c9ed76f906c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b330759_c0415d46",
+        "filename": "board/fusb307bgevb/lcd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T09:03:56Z",
+      "side": 1,
+      "message": "things here are all bit flags",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "316e023ed0611d43747472178f2c9ed76f906c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
