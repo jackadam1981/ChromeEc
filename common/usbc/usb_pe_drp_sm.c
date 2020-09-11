@@ -1705,6 +1705,9 @@ static void pe_src_startup_entry(int port)
 	/* Clear explicit contract. */
 	pe_invalidate_explicit_contract(port);
 
+	/* Clear port's alternate mode flags */
+	ufp_clear_alt_mode(port);
+
 	if (PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE);
 
@@ -2558,6 +2561,9 @@ static void pe_snk_startup_entry(int port)
 
 	/* Invalidate explicit contract */
 	pe_invalidate_explicit_contract(port);
+
+	/* Clear port's alternate mode flags */
+	ufp_clear_alt_mode(port);
 
 	if (PE_CHK_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PR_SWAP_COMPLETE);
@@ -5032,6 +5038,16 @@ static void pe_init_vdm_modes_request_run(int port)
 
 		/* PE_INIT_VDM_Modes_ACKed embedded here */
 		dfp_consume_modes(port, sop, cnt, payload);
+
+		/*
+		 * On chipset transition, the retimer is set to disconnect and
+		 * the alternate mode is re-entered. But in case of UFP, since
+		 * the port doesn't receive enter mode message again, set the
+		 * retimer state to previously enabled alternate mode (if any)
+		 */
+		if (pe[port].data_role == PD_ROLE_UFP)
+			ufp_mux_set_alt_mode(port);
+
 		break;
 		}
 	case VDM_RESULT_NAK:
