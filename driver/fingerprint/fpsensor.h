@@ -18,9 +18,4 @@
 #define FP_MAX_FINGER_COUNT 5
 #endif
 
-#ifdef TEST_BUILD
-/* This represents the mock of the private */
-#define HAVE_FP_PRIVATE_DRIVER
-#endif
-
 #endif /* __CROS_EC_DRIVER_FINGERPRINT_FPSENSOR_H_ */

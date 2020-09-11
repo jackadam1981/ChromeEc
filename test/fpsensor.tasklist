@@ -9,3 +9,10 @@
 #define CONFIG_TEST_TASK_LIST \
         TASK_TEST(FPSENSOR, fp_task_simulate, NULL, TASK_STACK_SIZE)
 
+/**
+ * For this particular unittest, enable driver-related code in common/fpsensor/
+ * so that they can be tested (with fp_sensor_mock).
+ */
+#ifdef HAVE_PRIVATE
+#define HAVE_FP_PRIVATE_DRIVER
+#endif
