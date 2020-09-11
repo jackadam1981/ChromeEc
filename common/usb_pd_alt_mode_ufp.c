@@ -13,3 +13,13 @@ __overridable union tbt_dev_mode_enter_cmd pd_ufp_get_enter_mode(int port)
 	union tbt_dev_mode_enter_cmd ufp_enter_mode = {.raw_value = 0};
 	return ufp_enter_mode;
 }
+
+/* Clear alternate mode flag */
+__overridable void ufp_clear_alt_mode(int port)
+{
+}
+
+/* Set retimer into alternate mode */
+__overridable void ufp_mux_set_alt_mode(int port)
+{
+}
