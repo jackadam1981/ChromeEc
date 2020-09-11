@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8d8516b_ff880de5",
+        "filename": "baseboard/honeybuns/baseboard.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-11T10:47:22Z",
+      "side": 1,
+      "message": "I removed this. I think in the beginning I was thinking there might be some check to know that power rails are up correctly and that would be why there would be a return value. But, we aren\u0027t checking anything, so that\u0027s not being used.",
+      "parentUuid": "3cd02aec_211786c4",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "f104a33c2b16a5404248864b8daf0947e22c14ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f772909_e2072dca",
         "filename": "baseboard/honeybuns/baseboard.h",
         "patchSetId": 21
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-11T00:51:00Z",
       "side": 1,
       "message": "Shouldn\u0027t this be enum gpio_signal?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 4
+      },
+      "revId": "f104a33c2b16a5404248864b8daf0947e22c14ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddfec408_4e625a3a",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-11T10:47:22Z",
+      "side": 1,
+      "message": "Yes, I had it as \u0027int\u0027 because it was getting build errors. But, if I include gpio_signal.h in baseboard.h then I can use the enum",
+      "parentUuid": "3f772909_e2072dca",
       "range": {
         "startLine": 54,
         "startChar": 1,
@@ -68,6 +116,30 @@
       "revId": "f104a33c2b16a5404248864b8daf0947e22c14ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da4f51b2_ee7d7803",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-11T10:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3134730_1795ed3b",
+      "range": {
+        "startLine": 55,
+        "startChar": 16,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "f104a33c2b16a5404248864b8daf0947e22c14ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "90486bf3_b1adda12",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-11T10:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "527c9e64_bb4aa48b",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "f104a33c2b16a5404248864b8daf0947e22c14ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ca07932_85e66e9d",
         "filename": "board/quiche/board.c",
         "patchSetId": 21
@@ -137,6 +233,30 @@
       "revId": "f104a33c2b16a5404248864b8daf0947e22c14ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d9165bd_9240e091",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-11T10:47:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca07932_85e66e9d",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 3
+      },
+      "revId": "f104a33c2b16a5404248864b8daf0947e22c14ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "28bc1051_daa23a1a",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-11T10:47:22Z",
+      "side": 1,
+      "message": "I think they should be ODR_LOW, but I\u0027ve asked Uday to weigh in. I had changed these from this initial CL, but after I had remove all of the gpio entries from a previous CL, I might have erased that change accidentally in subsequent merges.",
+      "parentUuid": "14bcb10a_60e18550",
+      "range": {
+        "startLine": 24,
+        "startChar": 48,
+        "endLine": 24,
+        "endChar": 61
+      },
+      "revId": "f104a33c2b16a5404248864b8daf0947e22c14ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12b01d79_ad64bfdc",
         "filename": "board/quiche/gpio.inc",
         "patchSetId": 21
@@ -174,6 +318,30 @@
       "writtenOn": "2020-09-11T00:51:00Z",
       "side": 1,
       "message": "Same for these two signals.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "f104a33c2b16a5404248864b8daf0947e22c14ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bf1c966_ad67934f",
+        "filename": "board/quiche/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-11T10:47:22Z",
+      "side": 1,
+      "message": "same comment as above",
+      "parentUuid": "12b01d79_ad64bfdc",
       "range": {
         "startLine": 30,
         "startChar": 0,
