@@ -396,6 +396,9 @@ static void isl9241_init(int chgnum)
 			   MASK_SET))
 		goto init_fail;
 #endif
+	if (isl9241_write(chgnum, ISL9241_REG_CONTROL0,
+			  ISL9241_CONTROL0_BGATE_FORCE_ON))
+		goto init_fail;
 
 	/*
 	 * No need to proceed with the rest of init if we sysjump'd to this

@@ -36,6 +36,8 @@
 
 /* Configures various charger options */
 #define ISL9241_REG_CONTROL0		0x39
+
+#define ISL9241_CONTROL0_BGATE_FORCE_ON 	BIT(10)
 /* 2: Input Voltage Regulation (0 = Enable (default), 1 = Disable) */
 #define ISL9241_CONTROL0_INPUT_VTG_REGULATION	BIT(2)
 
