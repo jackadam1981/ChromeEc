@@ -1616,6 +1616,7 @@ static bool pe_attempt_port_discovery(int port)
 		}
 	}
 
+
 	CPRINTS("C%d: ATTEMPT bailout", port);
 	return false;
 }
