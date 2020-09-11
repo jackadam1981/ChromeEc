@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95102cf0_7d6b5fcf",
+        "filename": "board/drawcia/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-11T22:55:32Z",
+      "side": 1,
+      "message": "does it make sense to add this to the common pd_check_vbus_level after the specific case for TCPC detected and before the generic and use IS_ENABLED(CONFIG_CHARGER) to guard it?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "e6e15df132f17a0b7de2390b6665dd8a34e0d2f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
