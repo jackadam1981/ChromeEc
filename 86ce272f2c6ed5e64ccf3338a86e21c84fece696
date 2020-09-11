@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9640372d_c5c2d495",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-09-11T21:24:42Z",
+      "side": 1,
+      "message": "Fixed VCONN_SOURCE (+DFP PD2) issue if Discovery was interrupted. Misc stack bugs.",
+      "revId": "86ce272f2c6ed5e64ccf3338a86e21c84fece696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
