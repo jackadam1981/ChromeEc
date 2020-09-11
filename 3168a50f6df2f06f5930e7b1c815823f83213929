@@ -16,6 +16,178 @@
       "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9dbf2e9e_2bf82d85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:38:11Z",
+      "side": 1,
+      "message": "I know this is mostly copied from sample code, please help fix the coding style, thanks!",
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07a46629_87ec7199",
+        "filename": "board/fusb307bgevb/lcd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:38:11Z",
+      "side": 1,
+      "message": "Do we really need to cache the state?\nIf the state is readable from LCD, what we usually do is:\n  i2c_read from LCD -\u003e update some bits -\u003e i2c_write back to LCD",
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e77d46_38da792a",
+        "filename": "board/fusb307bgevb/lcd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:38:11Z",
+      "side": 1,
+      "message": "remove the leading underscore",
+      "range": {
+        "startLine": 30,
+        "startChar": 27,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3bbb17_2dd9fcba",
+        "filename": "board/fusb307bgevb/lcd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:38:11Z",
+      "side": 1,
+      "message": "add static to all private functions",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5a6109_07728029",
+        "filename": "board/fusb307bgevb/lcd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:38:11Z",
+      "side": 1,
+      "message": "whitespace around operators, e.g.\n  value \u0026 0xf0\n  (value \u003c\u003c 4) \u0026 0xf0",
+      "range": {
+        "startLine": 53,
+        "startChar": 19,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47aa4b83_dfaddf53",
+        "filename": "board/fusb307bgevb/lcd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:38:11Z",
+      "side": 1,
+      "message": "rename to lcd_disable_display / lcd_enable_display\n\nand same for backlight",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 18
+      },
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "295a02ec_f3c65088",
+        "filename": "board/fusb307bgevb/lcd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:38:11Z",
+      "side": 1,
+      "message": "For things that\u0027s a bit flag not a number, please use BIT(x)",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae301666_08717baf",
+        "filename": "board/fusb307bgevb/lcd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:38:11Z",
+      "side": 1,
+      "message": "give these a longer name to avoid conflict with other macros",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 41
+      },
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
