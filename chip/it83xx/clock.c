@@ -474,6 +474,22 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	int i;
 
+
+	if (IS_ENABLED(CONFIG_USB_PD_TCPM_ITE_ON_CHIP)) {
+		/*
+		 * Disable active pd modules in hibernate for
+		 * better power consumption.
+		 */
+		for (i = 0; i < CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT; i++)
+			it83xx_disable_pd_module(i);
+	}
+
+	for (i = 0; i < 2; ++i) {
+		ccprintf("CCCSR(%d) = 0x%x\n", i, IT83XX_USBPD_CCCSR(i));
+		ccprintf("CCPSR(%d) = 0x%x\n", i, IT83XX_USBPD_CCPSR(i));
+	}
+
+	cflush();
 	/* disable all interrupts */
 	interrupt_disable();
 	for (i = 0; i < IT83XX_IRQ_COUNT; i++) {
@@ -511,15 +527,6 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 		IT83XX_ETWD_ETXCNTLR(FREE_EXT_TIMER_H) = (c >> 24) & 0xffffffff;
 		ext_timer_start(FREE_EXT_TIMER_H, 1);
 		ext_timer_start(FREE_EXT_TIMER_L, 0);
-	}
-
-	if (IS_ENABLED(CONFIG_USB_PD_TCPM_ITE_ON_CHIP)) {
-		/*
-		 * Disable active pd modules in hibernate for
-		 * better power consumption.
-		 */
-		for (i = 0; i < CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT; i++)
-			it83xx_disable_pd_module(i);
 	}
 
 	if (IS_ENABLED(CONFIG_ADC_VOLTAGE_COMPARATOR)) {

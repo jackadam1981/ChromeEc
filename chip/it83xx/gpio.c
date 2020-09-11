@@ -7,6 +7,7 @@
 
 #include "clock.h"
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "intc.h"
@@ -18,6 +19,8 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 /**
  * Convert wake-up controller (WUC) group to the corresponding wake-up edge
@@ -640,23 +643,24 @@ int gpio_clear_pending_interrupt(enum gpio_signal signal)
 void it83xx_disable_cc_module(int port)
 {
 	/* Power down all CC, and disable CC voltage detector */
-	IT83XX_USBPD_CCGCR(port) |= USBPD_REG_MASK_DISABLE_CC;
+	/* IT83XX_USBPD_CCGCR(port) |= USBPD_REG_MASK_DISABLE_CC; */
 #if defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX)
 	IT83XX_USBPD_CCCSR(port) |= USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR;
 #elif defined(CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2)
-	IT83XX_USBPD_CCGCR(port) |= USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR;
+	/* IT83XX_USBPD_CCGCR(port) |= USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR; */
 #endif
 	/*
 	 * Disconnect CC analog module (ex.UP/RD/DET/TX/RX), and
 	 * disconnect CC 5.1K to GND
 	 */
-	IT83XX_USBPD_CCCSR(port) |= (USBPD_REG_MASK_CC2_DISCONNECT |
-				     USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND |
-				     USBPD_REG_MASK_CC1_DISCONNECT |
-				     USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND);
+	IT83XX_USBPD_CCCSR(port) |= (0 /* USBPD_REG_MASK_CC2_DISCONNECT */ |
+				     /* USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND | */
+				     0 /* USBPD_REG_MASK_CC1_DISCONNECT */ |
+				     0 /* USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND */);
 	/* Disconnect CC 5V tolerant */
-	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
-				     USBPD_REG_MASK_DISCONNECT_POWER_CC1);
+	/* IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
+	 *                              USBPD_REG_MASK_DISCONNECT_POWER_CC1); */
+	CPRINTS("Keep CC1 CC2 5.1K and 5V tolerant");
 }
 
 void gpio_pre_init(void)
