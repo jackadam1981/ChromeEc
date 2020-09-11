@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "66957b99_5704061a",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-11T21:06:48Z",
+      "side": 1,
+      "message": "Yes. I somehow missed the significance of this parameter, which is why I picked weird, other places to deliberately disable discharge.",
+      "parentUuid": "ca709d3d_a3c553a2",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 38
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26afc251_438ee246",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 1
@@ -80,6 +104,30 @@
       "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b30347a6_4a8cdc1d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-11T21:06:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26afc251_438ee246",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 19
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -106,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "8cda86f1_1e53505a",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-11T21:06:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b33c750e_9b84e039",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a15aed8_6b880b4c",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 1
@@ -117,6 +189,30 @@
       "writtenOn": "2020-09-10T17:08:04Z",
       "side": 1,
       "message": "Will require testing, but you might need to discharge explicitly here. That is the issue we had before.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 38
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e78ec02_03bfa93c",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-11T21:06:48Z",
+      "side": 1,
+      "message": "With this patchset, I see a slow, exponential discharge on detach. Is that what you\u0027re referring to?",
+      "parentUuid": "3a15aed8_6b880b4c",
       "range": {
         "startLine": 173,
         "startChar": 1,
@@ -152,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "f0ef958c_ec9125f2",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-11T21:06:48Z",
+      "side": 1,
+      "message": "I didn\u0027t realize that the rest of the code was treating VBUS discharge as something that can be turned on and off. I thought it was expected to be a set-and-forget mechanic and that I had to take other measures (like this).\n\nVBUS drops down to 0 and then comes back up on connect, although I think it\u0027s from not adjusting my register write based on enable in syv682x_discharge_vbus. This code disables VBUS discharge, which I don\u0027t think should have an effect here. I can\u0027t confirm that it caused issues, but I did see a hard reset that I didn\u0027t attempt to attribute.\n\nIn any case, I think the other VBUS operations can assume that discharge was set appropriately, and I\u0027ll remove the discharge changes here.",
+      "parentUuid": "121abc38_b74c13f4",
+      "range": {
+        "startLine": 300,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 0
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0176557_8fcec177",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 1
@@ -172,6 +292,30 @@
       "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87b8a365_113dfd3d",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-11T21:06:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a0176557_8fcec177",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 38
+      },
+      "revId": "ec64924c701ed068f33de192cc353fc9487f5e8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
