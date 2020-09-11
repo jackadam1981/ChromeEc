@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "46cb8584_5e2744c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-11T00:17:33Z",
+      "side": 1,
+      "message": "Yes, on second thought, I agree this isn\u0027t gaining us anything (thanks!).",
+      "parentUuid": "aa1fdc4e_62a94632",
+      "revId": "331f4f4cc297af977e7c3498b2010cf0ba7cf9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d12ccd31_cb8285df",
         "filename": "common/usb_common.c",
         "patchSetId": 1
