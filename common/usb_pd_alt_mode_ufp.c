@@ -8,8 +8,18 @@
 #include "usb_tbt_alt_mode.h"
 
 /* Return port partner's enter mode message */
-__overridable union tbt_dev_mode_enter_cmd pd_ufp_get_enter_mode(int port)
+__override union tbt_dev_mode_enter_cmd pd_ufp_get_enter_mode(int port)
 {
 	union tbt_dev_mode_enter_cmd ufp_enter_mode = {.raw_value = 0};
 	return ufp_enter_mode;
+}
+
+/* Clear alternate mode flag */
+__override void ufp_clear_alt_mode(int port)
+{
+}
+
+/* Set the mux into alternate mode */
+__override void ufp_mux_set_alt_mode(int port)
+{
 }
