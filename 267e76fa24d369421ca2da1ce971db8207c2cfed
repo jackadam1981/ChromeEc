@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da2e7679_f175314b",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-11T17:19:33Z",
+      "side": 1,
+      "message": "Nit - you are now using this to compare against a port number.  A better name would be \"LED_SISESEL_MB_PORT\".",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "267e76fa24d369421ca2da1ce971db8207c2cfed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
