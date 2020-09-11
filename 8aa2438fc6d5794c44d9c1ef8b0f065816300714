@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d1c2fd1_de9ea00c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-11T20:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "320d7e61_78731af3",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "8aa2438fc6d5794c44d9c1ef8b0f065816300714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1291cff2_9d3062ab",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 8
@@ -39,6 +63,24 @@
       "revId": "8aa2438fc6d5794c44d9c1ef8b0f065816300714",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a258e349_89127e74",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-11T20:05:35Z",
+      "side": 1,
+      "message": "Added changes in the https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2370045 CL",
+      "parentUuid": "1291cff2_9d3062ab",
+      "revId": "8aa2438fc6d5794c44d9c1ef8b0f065816300714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
