@@ -68,9 +68,10 @@ void it83xx_disable_pd_module(int port)
 		/* Disable CC module */
 		it83xx_disable_cc_module(port);
 		/* Connect 5.1K dead battery resistor to CC */
-		IT83XX_USBPD_CCPSR(port) &=
-				~(USBPD_REG_MASK_DISCONNECT_5_1K_CC2_DB |
-				  USBPD_REG_MASK_DISCONNECT_5_1K_CC1_DB);
+		/* IT83XX_USBPD_CCPSR(port) &=
+		 *                 ~(USBPD_REG_MASK_DISCONNECT_5_1K_CC2_DB |
+		 *                   USBPD_REG_MASK_DISCONNECT_5_1K_CC1_DB); */
+		CPRINTS("disconnects CC1 CC2 5.1K DB");
 	}
 }
 
