@@ -51,6 +51,24 @@
       "revId": "6944ab5d47d3e24a0fd0750b823415d9c00fdb56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbfd2ac2_a88440d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-11T18:04:18Z",
+      "side": 1,
+      "message": "Could you please upload the EC console log to the bug 166307654? We can move the discussion to the bug.\n\nAnd this CL is expected to be abandoned later.",
+      "parentUuid": "2939c449_42cca158",
+      "revId": "6944ab5d47d3e24a0fd0750b823415d9c00fdb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
