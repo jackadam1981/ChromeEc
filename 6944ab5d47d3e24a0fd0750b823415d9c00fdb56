@@ -34,6 +34,23 @@
       "revId": "6944ab5d47d3e24a0fd0750b823415d9c00fdb56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2939c449_42cca158",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1436342
+      },
+      "writtenOn": "2020-09-11T03:07:46Z",
+      "side": 1,
+      "message": "Hi,\nWe try the latest code on ToT. It includes the CL:2402150, but it still issued a hard reset in RW. Do we also need to merge the current CL:2392015 in EC code?",
+      "revId": "6944ab5d47d3e24a0fd0750b823415d9c00fdb56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
