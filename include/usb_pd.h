@@ -314,6 +314,8 @@ extern const struct svdm_response svdm_rsp;
 extern const struct svdm_amode_fx supported_modes[];
 extern const int supported_modes_cnt;
 
+#define UFP_FLAG_ALT_MODE_TBT	BIT(0)
+
 /* 4 entry rw_hash table of type-C devices that AP has firmware updates for. */
 #ifdef CONFIG_COMMON_RUNTIME
 #define RW_HASH_ENTRIES 4
@@ -1641,6 +1643,20 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
  * @return enter mode data requested to the UFP
  */
 __overridable union tbt_dev_mode_enter_cmd pd_ufp_get_enter_mode(int port);
+
+/*
+ * Clear port's alternate mode flags
+ *
+ * @param port     USB-C port number
+ */
+__overridable void ufp_clear_alt_mode(int port);
+
+/*
+ * Set the mux into alternate mode
+ *
+ * @param port     USB-C port number
+ */
+__overridable void ufp_mux_set_alt_mode(int port);
 
 /**
  *  Get DisplayPort pin mode for DFP to request from UFP's capabilities.
