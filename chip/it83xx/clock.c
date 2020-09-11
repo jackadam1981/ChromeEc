@@ -522,6 +522,11 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 			it83xx_disable_pd_module(i);
 	}
 
+	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; ++i) {
+		CPRINTS("CCCSR(%d) = 0x%x", i, IT83XX_USBPD_CCCSR(i));
+		CPRINTS("CCPSR(%d) = 0x%x", i, IT83XX_USBPD_CCPSR(i));
+	}
+
 	if (IS_ENABLED(CONFIG_ADC_VOLTAGE_COMPARATOR)) {
 		/*
 		 * Disable all voltage comparator modules in hibernate
