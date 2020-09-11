@@ -7,6 +7,7 @@
 
 #include "clock.h"
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "intc.h"
@@ -18,6 +19,8 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 /**
  * Convert wake-up controller (WUC) group to the corresponding wake-up edge
@@ -651,12 +654,13 @@ void it83xx_disable_cc_module(int port)
 	 * disconnect CC 5.1K to GND
 	 */
 	IT83XX_USBPD_CCCSR(port) |= (USBPD_REG_MASK_CC2_DISCONNECT |
-				     USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND |
+				     /* USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND | */
 				     USBPD_REG_MASK_CC1_DISCONNECT |
-				     USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND);
+				     0 /* USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND */);
 	/* Disconnect CC 5V tolerant */
-	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
-				     USBPD_REG_MASK_DISCONNECT_POWER_CC1);
+	/* IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
+	 *                              USBPD_REG_MASK_DISCONNECT_POWER_CC1); */
+	CPRINTS("Keep CC1 CC2 5.1K and 5V tolerant");
 }
 
 void gpio_pre_init(void)
