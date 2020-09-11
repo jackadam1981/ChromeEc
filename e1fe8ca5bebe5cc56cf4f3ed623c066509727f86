@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "02d471fb_66d7c60f",
+        "filename": "board/eldrid/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-11T17:09:49Z",
+      "side": 1,
+      "message": "You should be branching and uploading using the \"repo\" command, e.g. \"repo start\" and \"repo upload.\" This way, pre-upload hooks will run automatically, and you won\u0027t need to mess around with branch configuration.\n\nSee https://chromium.googlesource.com/chromiumos/docs/+/master/contributing.md#Upload-changes.",
+      "parentUuid": "cc54991b_8513b4c3",
+      "revId": "e1fe8ca5bebe5cc56cf4f3ed623c066509727f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f3d6c61_b05cbdf1",
         "filename": "board/eldrid/led.c",
         "patchSetId": 12
