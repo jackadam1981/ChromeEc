@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "320d7e61_78731af3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-11T19:42:52Z",
+      "side": 1,
+      "message": "how about\nSet UFP mode of BB retimer?",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "8aa2438fc6d5794c44d9c1ef8b0f065816300714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1291cff2_9d3062ab",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-11T19:42:52Z",
+      "side": 1,
+      "message": "dfp_enter_mode[port] \u003d 0\n\nif this was a failure ?",
+      "revId": "8aa2438fc6d5794c44d9c1ef8b0f065816300714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
