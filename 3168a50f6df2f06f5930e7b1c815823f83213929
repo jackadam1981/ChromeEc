@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "88bce443_cdbff870",
+        "filename": "board/fusb307bgevb/lcd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1442002
+      },
+      "writtenOn": "2020-09-11T06:22:00Z",
+      "side": 1,
+      "message": "Need to cache it, LCD2004A doesn\u0027t store values in registers\nControl it through command.\nDatasheet \u003e\u003e http://academy.cba.mit.edu/classes/output_devices/44780.pdf",
+      "parentUuid": "07a46629_87ec7199",
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80e77d46_38da792a",
         "filename": "board/fusb307bgevb/lcd.c",
         "patchSetId": 2
