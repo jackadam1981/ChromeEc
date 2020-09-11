@@ -34,6 +34,24 @@
       "revId": "465eb437d2a7904074c8f2cd98f042d5390c34b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdec8fec_33fdb439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-11T01:23:52Z",
+      "side": 1,
+      "message": "After discussion on CL:2402139 ignoring the fault while disconnected seems like the best solution.",
+      "parentUuid": "a922b7c6_7a8d0d2b",
+      "revId": "465eb437d2a7904074c8f2cd98f042d5390c34b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
