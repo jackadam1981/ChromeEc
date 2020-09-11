@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bb8f4d1_9351b4e8",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:54:07Z",
+      "side": 1,
+      "message": "sort headers",
+      "revId": "00b416667e525e9e4ccccf6e5e1e3796a1376760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "778bddd1_c2f3481d",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:54:07Z",
+      "side": 1,
+      "message": "this board does not enable CONFIG_CHARGE_MANAGER, so maybe board_set_charge_limit / board_set_active_charge_port / board_vbus_source_enabled can be removed?",
+      "revId": "00b416667e525e9e4ccccf6e5e1e3796a1376760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb62b97_1e503c9a",
+        "filename": "board/fusb307bgevb/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:54:07Z",
+      "side": 1,
+      "message": "use ULTRA_TASK_STACK_SIZE\n(please check chip/stm32/config_chip.h for the stack size macros)",
+      "range": {
+        "startLine": 13,
+        "startChar": 54,
+        "endLine": 13,
+        "endChar": 58
+      },
+      "revId": "00b416667e525e9e4ccccf6e5e1e3796a1376760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47baf3cd_23ef6fc0",
+        "filename": "board/fusb307bgevb/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:54:07Z",
+      "side": 1,
+      "message": "vertically align these",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "00b416667e525e9e4ccccf6e5e1e3796a1376760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a05811a_81f9190f",
+        "filename": "board/fusb307bgevb/fusb307.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:54:07Z",
+      "side": 1,
+      "message": "remove unused header files",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "00b416667e525e9e4ccccf6e5e1e3796a1376760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1056d7ed_902d3fe2",
+        "filename": "board/fusb307bgevb/fusb307.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:54:07Z",
+      "side": 1,
+      "message": "please move fusb307.* to driver/tcpm/, and add a CONFIG_USB_PD_TCPM_FUSB307 switch in include/config.h and driver/build.mk.",
+      "revId": "00b416667e525e9e4ccccf6e5e1e3796a1376760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d3108d2_98c220b0",
+        "filename": "board/fusb307bgevb/fusb307.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:54:07Z",
+      "side": 1,
+      "message": "typo: 307",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "00b416667e525e9e4ccccf6e5e1e3796a1376760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe293cb_b6e3dcd9",
+        "filename": "board/fusb307bgevb/fusb307.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:54:07Z",
+      "side": 1,
+      "message": "Since you are not using this anywhere, move this to your next CLs\n(and I believe there\u0027s a better way to avoid exposing variables)",
+      "revId": "00b416667e525e9e4ccccf6e5e1e3796a1376760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
