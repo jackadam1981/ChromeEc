@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db6601f9_398c824d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-11T04:14:36Z",
+      "side": 1,
+      "message": "Please change the variable naming:\nUPPER_CASE_WITH_UNDER_SCORE for macros / constants, lower_case_with_underscore for variables / struct members / functions.",
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
