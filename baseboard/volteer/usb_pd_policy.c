@@ -4,6 +4,7 @@
  */
 /* Shared USB-C policy for Volteer boards */
 #include "charge_manager.h"
+#include "chipset.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "gpio.h"
@@ -85,6 +86,7 @@ int board_vbus_source_enabled(int port)
 #define OPOS_TBT 1
 
 union tbt_dev_mode_enter_cmd ufp_enter_mode[CONFIG_USB_PD_PORT_MAX_COUNT];
+static uint8_t ufp_alt_mode_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 const uint32_t vdo_tbt_modes[1] = {
 	VDO_MODE_TBT_DEV(0,      /* no vendor specific B1 supported */
@@ -117,8 +119,35 @@ __overridable union tbt_dev_mode_enter_cmd pd_ufp_get_enter_mode(int port)
 	return ufp_enter_mode[port];
 }
 
+__overridable void ufp_clear_alt_mode(int port)
+{
+	ufp_alt_mode_flags[port] = 0;
+}
+
+__overridable void ufp_mux_set_alt_mode(int port)
+{
+	if (ufp_alt_mode_flags[port] & UFP_FLAG_ALT_MODE_TBT)
+		set_tbt_compat_mode_ready(port);
+}
+
+static bool is_port_ready_to_respond(int port)
+{
+	/*
+	 * To enter any alternate mode successfully, the Burnside Bridge needs
+	 * to be set correctly. So, respond BUSY till the main AP rail isn't
+	 * powered as, Burnside Bridge is powered by main AP rail.
+	 */
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return false;
+
+	return true;
+}
+
 static int svdm_tbt_compat_response_identity(int port, uint32_t *payload)
 {
+	if (!is_port_ready_to_respond(port))
+		return -1;
+
 	payload[VDO_I(IDH)] = vdo_idh;
 	payload[VDO_I(CSTAT)] = VDO_CSTAT(0);
 	payload[VDO_I(PRODUCT)] = vdo_product;
@@ -130,12 +159,18 @@ static int svdm_tbt_compat_response_identity(int port, uint32_t *payload)
 
 static int svdm_tbt_compat_response_svids(int port, uint32_t *payload)
 {
+	if (!is_port_ready_to_respond(port))
+		return -1;
+
 	payload[1] = VDO_SVID(USB_VID_INTEL, 0);
 	return 2;
 }
 
 static int svdm_tbt_compat_response_modes(int port, uint32_t *payload)
 {
+	if (!is_port_ready_to_respond(port))
+		return -1;
+
 	if (PD_VDO_VID(payload[0]) == USB_VID_INTEL) {
 		memcpy(payload + 1, vdo_tbt_modes, sizeof(vdo_tbt_modes));
 		return ARRAY_SIZE(vdo_tbt_modes) + 1;
@@ -172,11 +207,14 @@ static int svdm_tbt_compat_response_enter_mode(
 			 * message buffer.
 			 */
 			set_tbt_compat_mode_ready(port);
+			ufp_alt_mode_flags[port] |= UFP_FLAG_ALT_MODE_TBT;
+
 			CPRINTS("UFP Enter TBT mode");
 			return 1;
 		}
 	}
 
+	ufp_alt_mode_flags[port] &= ~UFP_FLAG_ALT_MODE_TBT;
 	CPRINTS("UFP failed to enter TBT mode(mux=0x%x)", mux_state);
 	return 0; /* NAK */
 }
