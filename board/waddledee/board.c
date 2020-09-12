@@ -385,8 +385,8 @@ __override void ocpc_get_pid_constants(int *kp, int *kp_div,
 	*kp = 1;
 	*kp_div = 6;
 
-	*ki = 0;
-	*ki_div = 1;
+	*ki = 3;
+	*ki_div = 500;
 
 	*kd = 0;
 	*kd_div = 1;
