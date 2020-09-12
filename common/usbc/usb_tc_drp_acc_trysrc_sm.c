@@ -770,7 +770,9 @@ void tc_partner_usb_comm(int port, int en)
 	 * Update the mux setting according to the port partner's
 	 * USB communication capability.
 	 */
-	set_usb_mux_with_current_data_role(port);
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX) &&
+	    usb_mux_get(port) == USB_PD_MUX_NONE)
+		set_usb_mux_with_current_data_role(port);
 }
 
 void tc_partner_dr_data(int port, int en)
