@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "lcd.h"
+#include "printf.h"
 #include "queue_policies.h"
 #include "registers.h"
 #include "task.h"
@@ -20,6 +21,7 @@
 #include "usart_rx_dma.h"
 #include "usb_gpio.h"
 #include "usb-stream.h"
+#include "usb_common.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -38,7 +40,7 @@ void button_event(enum gpio_signal signal);
 
 static enum gpio_signal const usb_gpio_list[] = {
 	GPIO_USER_BUTTON_ENTER,
-	GPIO_USER_BUTTON_UP,
+	GPIO_USER_BUTTON_REFRESH,
 	GPIO_USER_BUTTON_DOWN,
 };
 
@@ -117,10 +119,64 @@ USB_STREAM_CONFIG(forward_usb,
  * Handle button presses by cycling the LEDs on the board.  Also run a tick
  * handler to cycle them when they are not actively under USB control.
  */
+static int count;
 static enum gpio_signal button_signal;
 
 static void button_event_deferred(void)
 {
+	int i;
+	uint32_t ma, mv;
+	char c[20];
+
+	/* Set count */
+	switch (button_signal) {
+	case GPIO_USER_BUTTON_ENTER:
+		CPRINTS("Button enter event");
+		pd_extract_pdo_power(source_caps[0][count], &ma, &mv);
+		pd_request_source_voltage(0, mv);
+		break;
+	case GPIO_USER_BUTTON_REFRESH:
+		CPRINTS("Button refresh event");
+		count = 0;
+		break;
+	case GPIO_USER_BUTTON_DOWN:
+		CPRINTS("Button down event");
+		count++;
+		break;
+	default:
+		break;
+	}
+
+	count = count %  pd_get_src_cap_cnt(0);
+
+	/* Display all supply voltage, count will never be greater than 7 */
+	if (count ==  0) {
+		lcd_clear();
+		for (i = 0; i < MIN(pd_get_src_cap_cnt(0), 4); i++) {
+			pd_extract_pdo_power(source_caps[0][i], &ma, &mv);
+			snprintf(c, 20, "[%d] %dmV %dmA", i, mv, ma);
+			lcd_setCursor(0, i);
+			lcd_printString(c);
+		}
+	}
+	if (count ==  4) {
+		lcd_clear();
+		for (i = 4; i < pd_get_src_cap_cnt(0); i++) {
+			pd_extract_pdo_power(source_caps[0][i], &ma, &mv);
+			snprintf(c, 20, "[%d] %dmV %dmA", i, mv, ma);
+			lcd_setCursor(0, i-4);
+			lcd_printString(c);
+		}
+	}
+
+	/* Clear last col on LCD */
+	for (i = 0; i < 4; i++) {
+		lcd_setCursor(19, i);
+		lcd_printString(" ");
+	}
+	/* Display selector */
+	lcd_setCursor(19, count % 4);
+	lcd_printString("V");
 }
 DECLARE_DEFERRED(button_event_deferred);
 
@@ -215,7 +271,7 @@ static void board_init(void)
 {
 	/* Enable button interrupts */
 	gpio_enable_interrupt(GPIO_USER_BUTTON_ENTER);
-	gpio_enable_interrupt(GPIO_USER_BUTTON_UP);
+	gpio_enable_interrupt(GPIO_USER_BUTTON_REFRESH);
 	gpio_enable_interrupt(GPIO_USER_BUTTON_DOWN);
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);

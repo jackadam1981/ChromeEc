@@ -31,4 +31,6 @@ int fusb307_power_supply_reset(int port);
 
 extern const struct tcpm_drv fusb307_tcpm_drv;
 
+extern uint32_t source_caps[CONFIG_USB_PD_PORT_MAX_COUNT][PDO_MAX_OBJECTS];
+
 #endif /* __CROS_EC_FUSB307_H */
