@@ -64,6 +64,29 @@ int fusb307_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 	return rv;
 }
 
+uint32_t source_caps[CONFIG_USB_PD_PORT_MAX_COUNT][PDO_MAX_OBJECTS];
+int fusb307_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
+{
+	int rv;
+	int type;
+	int cnt;
+	int i;
+
+
+	rv = tcpci_tcpm_get_message_raw(port, payload, head);
+
+	type = PD_HEADER_TYPE(*head);
+	if (type == PD_DATA_SOURCE_CAP) {
+		cnt = PD_HEADER_CNT(*head);
+		pd_process_source_cap(port, cnt, payload);
+
+		for (i = 0; i < cnt; i++)
+			source_caps[port][i] = *payload++;
+	}
+
+	return rv;
+}
+
 const struct tcpm_drv fusb307_tcpm_drv = {
 	.init			= &fusb307_tcpm_init,
 	.release		= &tcpci_tcpm_release,
@@ -77,7 +100,7 @@ const struct tcpm_drv fusb307_tcpm_drv = {
 	.set_vconn		= &tcpci_tcpm_set_vconn,
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
-	.get_message_raw	= &tcpci_tcpm_get_message_raw,
+	.get_message_raw	= &fusb307_tcpm_get_message_raw,
 	.transmit		= &tcpci_tcpm_transmit,
 	.tcpc_alert		= &tcpci_tcpc_alert,
 	.tcpc_enable_auto_discharge_disconnect =
