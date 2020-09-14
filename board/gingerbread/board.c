@@ -65,11 +65,6 @@ static void ppc_interrupt(enum gpio_signal signal)
 	}
 }
 
-static void mp4245_interrupt(enum gpio_signal signal)
-{
-	mp4245_alert_handler();
-}
-
 void hpd_interrupt(enum gpio_signal signal)
 {
 	baseboard_manage_hpd_event(signal);
@@ -256,7 +251,6 @@ uint16_t tcpc_get_alert_status(void)
 		level = !!(tcpc_config[USB_PD_PORT_DP].flags &
 			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
 		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level) {
-			board_debug_gpio(TRIGGER_2, 1);
 			hook_call_deferred(&board_tcpc_deferred_data, 100);
 			status |= PD_STATUS_TCPC_ALERT_1;
 		}
