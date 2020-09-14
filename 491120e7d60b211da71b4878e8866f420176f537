@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b00cd1b5_b4693bc2",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-14T17:29:56Z",
+      "side": 1,
+      "message": "Per kernel style, there should be a line break here. I thought we had a pre-upload check for this.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "491120e7d60b211da71b4878e8866f420176f537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
