@@ -34,6 +34,29 @@
       "revId": "65653c5ce4cf644266c9c8d231303e8e2e5d00a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e16dc6e_9ff3b338",
+        "filename": "board/madoo/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2020-09-14T15:32:24Z",
+      "side": 1,
+      "message": "According to https://chrome-internal.googlesource.com/chromeos/project/dedede/madoo/+/refs/heads/master/config.star#59 \n\nUS_UK KB is \"0\" \nJP KB is \"1\" \n\nIt is not aligned here. are you going to change the config.star or change the define here? \n\nThanks!",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "65653c5ce4cf644266c9c8d231303e8e2e5d00a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
