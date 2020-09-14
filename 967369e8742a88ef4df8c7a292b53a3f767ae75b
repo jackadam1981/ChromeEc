@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11e72e35_4ad060e4",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-14T20:36:33Z",
+      "side": 1,
+      "message": "instead of making these __override_proto, can you add them as placeholders in each of the core files?\n\nAlso, do you have any plans to implement this for all of the different cores? We could probably make something pretty generic.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "967369e8742a88ef4df8c7a292b53a3f767ae75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
