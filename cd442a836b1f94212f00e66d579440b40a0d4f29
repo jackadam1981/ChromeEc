@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feb7c19d_0341dccf",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-09-14T20:05:44Z",
+      "side": 1,
+      "message": "using a format here seems unnecessary",
+      "range": {
+        "startLine": 366,
+        "startChar": 14,
+        "endLine": 366,
+        "endChar": 18
+      },
+      "revId": "cd442a836b1f94212f00e66d579440b40a0d4f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee262b0c_8d8719c0",
+        "filename": "common/ocpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-09-14T20:05:44Z",
+      "side": 1,
+      "message": "note the 5% of target scale here?",
+      "range": {
+        "startLine": 456,
+        "startChar": 38,
+        "endLine": 456,
+        "endChar": 47
+      },
+      "revId": "cd442a836b1f94212f00e66d579440b40a0d4f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
