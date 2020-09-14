@@ -22,6 +22,30 @@
       "revId": "491120e7d60b211da71b4878e8866f420176f537",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "044352ff_f71318ff",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-14T23:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b00cd1b5_b4693bc2",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "491120e7d60b211da71b4878e8866f420176f537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
