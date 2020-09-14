@@ -714,6 +714,10 @@ struct pd_cable {
 #define PD_VDO_DPSTS_HPD_LVL(x) (((x) >> 7) & 1)
 #define PD_VDO_DPSTS_MF_PREF(x) (((x) >> 4) & 1)
 
+#define VDO_PD_DPSTS_HPD_IRQ(x) (((x) & 1) << 8)
+#define VDO_PD_DPSTS_HPD_LVL(x) (((x) & 1) << 7)
+#define VDO_PD_DPSTS_MF_PREF(x) (((x) & 1) << 4)
+
 /* Per DisplayPort Spec v1.3 Section 3.3 */
 #define HPD_USTREAM_DEBOUNCE_LVL (2*MSEC)
 #define HPD_USTREAM_DEBOUNCE_IRQ (250)

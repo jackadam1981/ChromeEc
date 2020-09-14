@@ -69,6 +69,9 @@
 #endif
 	
 static bool retry_done;
+//static int irq_cache;
+//static int lvl_cache;
+static uint32_t status_cache[2];
 
 static int dp_prints(const char *string, int port)
 {
@@ -229,6 +232,9 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		//dpm_set_mode_entry_done(port);
 		//TODO: No, not done yet with "Mode" Entry. Misnomer
 
+		//irq_cache=-1;
+		//lvl_cache=-1;
+
 		/* Active cable send Status SOP' first */
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
 			dp_state[port] = DP_STATUS_SOP_PRIME;
@@ -253,6 +259,17 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		break;
 	case DP_STATUS_SOP:
 		/* DP status response & UFP's DP attention have same payload. */
+
+		//HACKHACKHACK: TODO: This is wrong and violates (3.9.2.2 USB PD-to-HPD Timing)
+		//lvl_cache = PD_VDO_DPSTS_HPD_LVL(vdm[1]);
+		//irq_cache = PD_VDO_DPSTS_HPD_IRQ(vdm[1]);
+		status_cache[0] = vdm[0];
+		status_cache[1] = vdm[1];
+
+		vdm[1] &= ~VDO_PD_DPSTS_HPD_LVL(1);
+		vdm[1] &= ~VDO_PD_DPSTS_HPD_IRQ(vdm[1]);
+
+		CPRINTS("C%d: caching STATUS", port);
 		dfp_consume_attention(port, vdm);
 		//dp_state[port] = DP_CONFIG_SOP;
 
@@ -287,6 +304,12 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		dp_state[port] = DP_ACTIVE;
 		retry_done = true;
 		//TODO: Yes, we're done.
+
+
+		if(PD_VDO_DPSTS_HPD_LVL(status_cache[1])) {
+			CPRINTS("C%d: Executing cached STATUS", port);
+			dfp_consume_attention(port, status_cache);
+		}
 		CPRINTS("C%d: Entered DP mode", port);
 		break;
 	case DP_ACTIVE:
@@ -298,6 +321,19 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		dp_state[port] = DP_INACTIVE;
 		break;
 	case DP_EXIT_SOP:
+		//irq_cache=-1;
+		//lvl_cache=-1;
+
+
+		vdm[0] = status_cache[0];
+		vdm[1] = status_cache[1];
+
+		vdm[1] &= ~VDO_PD_DPSTS_HPD_LVL(1);
+		vdm[1] &= ~VDO_PD_DPSTS_HPD_IRQ(vdm[1]);
+
+		CPRINTS("C%d: Executing force-low STATUS", port);
+		dfp_consume_attention(port, vdm);
+
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
 			dp_active_cable_exit_mode(port);
 		else {
