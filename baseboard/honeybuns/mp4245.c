@@ -19,36 +19,6 @@ struct mp4245_info {
 	uint8_t len;
 };
 
-static struct mp4245_info  mp4245_cmds[] = {
-	{MP4245_CMD_OPERATION,          1},
-	{MP4245_CMD_CLEAR_FAULTS,       1},
-	{MP4245_CMD_WRITE_PROTECT,      1},
-	{MP4245_CMD_STORE_USER_ALL,     1},
-	{MP4245_CMD_RESTORE_USER_ALL,   1},
-	{MP4245_CMD_VOUT_MODE,          1},
-	{MP4245_CMD_VOUT_COMMAND,       2},
-	{MP4245_CMD_VOUT_SCALE_LOOP,    2},
-	{MP4245_CMD_STATUS_BYTE,        1},
-	{MP4245_CMD_STATUS_WORD,        2},
-	{MP4245_CMD_STATUS_VOUT,        1},
-	{MP4245_CMD_STATUS_INPUT,       1},
-	{MP4245_CMD_STATUS_TEMP,        1},
-	{MP4245_CMD_STATUS_CML,         1},
-	{MP4245_CMD_READ_VIN,           2},
-	{MP4245_CMD_READ_VOUT,          2},
-	{MP4245_CMD_READ_IOUT,          2},
-	{MP4245_CMD_READ_TEMP,          2},
-	{MP4245_CMD_MFR_MODE_CTRL,      1},
-	{MP4245_CMD_MFR_CURRENT_LIM,    1},
-	{MP4245_CMD_MFR_LINE_DROP,      1},
-	{MP4245_CMD_MFR_OT_FAULT_LIM,   1},
-	{MP4245_CMD_MFR_OT_WARN_LIM,    1},
-	{MP4245_CMD_MFR_CRC_ERROR,      1},
-	{MP4245_CMD_MFF_MTP_CFG_CODE,   1},
-	{MP4245_CMD_MFR_MTP_REV_NUM,    1},
-	{MP4245_CMD_MFR_STATUS_MASK,    1},
-};
-
 static int mp4245_reg16_write(int offset, int data)
 {
 	return i2c_write16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR, offset,
@@ -83,45 +53,6 @@ int mp4245_votlage_out_enable(int enable)
 			MP4245_CMD_OPERATION, cmd_val);
 }
 
-static int mp4245_status;
-static void mp4245_alert_callback(void)
-{
-	//ccprintf("mp4245: alert: status = %x\n", mp4245_status);
-	//board_debug_gpio(GPIO_TRIGGER_1, 1);
-}
-DECLARE_DEFERRED(mp4245_alert_callback);
-
-void mp4245_alert_handler(void)
-{
-	//board_debug_gpio(GPIO_TRIGGER_1, 1);
-
-	i2c_read16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
-	 	   MP4245_CMD_STATUS_WORD, &mp4245_status);
-	hook_call_deferred(&mp4245_alert_callback_data, 0);
-}
-
-void mp4245_dump_reg(void)
-{
-	int i;
-	int val;
-	int rv;
-
-	for (i = 0; i < ARRAY_SIZE(mp4245_cmds); i++) {
-		if (mp4245_cmds[i].len == 1) {
-			rv = i2c_read8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
-				       mp4245_cmds[i].cmd, &val);
-		} else {
-			rv = i2c_read16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
-				       mp4245_cmds[i].cmd, &val);
-		}
-
-		if (rv)
-			val = 0xffff;
-		CPRINTS("[%02x]:\t%04x", mp4245_cmds[i].cmd, val);
-	}
-
-}
-
 #define MP4245_VOUT_TO_MV(v) ((v * 1000) / (1 << 10))
 #define MP4245_IOUT_TO_MA(i) (((i & 0x7ff) * 1000) / (1 << 6))
 
@@ -147,6 +78,57 @@ int mp3245_get_vbus(int *mv, int *ma)
 }
 
 #ifdef CONFIG_MP4245_CMD
+static struct mp4245_info  mp4245_cmds[] = {
+	{MP4245_CMD_OPERATION,          1},
+	{MP4245_CMD_CLEAR_FAULTS,       1},
+	{MP4245_CMD_WRITE_PROTECT,      1},
+	{MP4245_CMD_STORE_USER_ALL,     1},
+	{MP4245_CMD_RESTORE_USER_ALL,   1},
+	{MP4245_CMD_VOUT_MODE,          1},
+	{MP4245_CMD_VOUT_COMMAND,       2},
+	{MP4245_CMD_VOUT_SCALE_LOOP,    2},
+	{MP4245_CMD_STATUS_BYTE,        1},
+	{MP4245_CMD_STATUS_WORD,        2},
+	{MP4245_CMD_STATUS_VOUT,        1},
+	{MP4245_CMD_STATUS_INPUT,       1},
+	{MP4245_CMD_STATUS_TEMP,        1},
+	{MP4245_CMD_STATUS_CML,         1},
+	{MP4245_CMD_READ_VIN,           2},
+	{MP4245_CMD_READ_VOUT,          2},
+	{MP4245_CMD_READ_IOUT,          2},
+	{MP4245_CMD_READ_TEMP,          2},
+	{MP4245_CMD_MFR_MODE_CTRL,      1},
+	{MP4245_CMD_MFR_CURRENT_LIM,    1},
+	{MP4245_CMD_MFR_LINE_DROP,      1},
+	{MP4245_CMD_MFR_OT_FAULT_LIM,   1},
+	{MP4245_CMD_MFR_OT_WARN_LIM,    1},
+	{MP4245_CMD_MFR_CRC_ERROR,      1},
+	{MP4245_CMD_MFF_MTP_CFG_CODE,   1},
+	{MP4245_CMD_MFR_MTP_REV_NUM,    1},
+	{MP4245_CMD_MFR_STATUS_MASK,    1},
+};
+
+void mp4245_dump_reg(void)
+{
+	int i;
+	int val;
+	int rv;
+
+	for (i = 0; i < ARRAY_SIZE(mp4245_cmds); i++) {
+		if (mp4245_cmds[i].len == 1) {
+			rv = i2c_read8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+				       mp4245_cmds[i].cmd, &val);
+		} else {
+			rv = i2c_read16(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
+				       mp4245_cmds[i].cmd, &val);
+		}
+
+		if (rv)
+			val = 0xffff;
+		CPRINTS("[%02x]:\t%04x", mp4245_cmds[i].cmd, val);
+	}
+}
+
 void mp4245_get_status(void)
 {
 	int status;
