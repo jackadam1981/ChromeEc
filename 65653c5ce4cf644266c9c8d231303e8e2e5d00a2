@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "aa3d0795_55c2dc38",
+        "filename": "board/madoo/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-14T19:47:56Z",
+      "side": 1,
+      "message": "Since the field offset and size will always be the same for all board variants, I think it could make sense to have get_cbi_fw_config_keyboard() in the baseboard return those bits as an int, and then the board.c code would be in charge of the corresponding enum to translate those bits into the meaningful definition for the board. \n\nThat way we\u0027re not double-caching the FW config value, but we\u0027re also not assuming the bit meanings from the baseboard.",
+      "parentUuid": "54b1de8b_fe872bde",
+      "revId": "65653c5ce4cf644266c9c8d231303e8e2e5d00a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8e16dc6e_9ff3b338",
         "filename": "board/madoo/board.h",
         "patchSetId": 3
