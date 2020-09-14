@@ -63,6 +63,7 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	timestamp_t until;
 	int i, timeout = 0;
 	struct cr50_comm_response res = {};
+	uint32_t irq_lock_key;
 
 	/* This will wake up (if it's sleeping) and interrupt Cr50. */
 	enable_packet_mode(true);
@@ -78,9 +79,9 @@ static enum cr50_comm_err send_to_cr50(const uint8_t *data, size_t size)
 	 * Disable interrupts so that the data frame will be stored in the Tx
 	 * buffer in one piece.
 	 */
-	interrupt_disable();
+	irq_lock_key = irq_lock();
 	uart_put_raw(data, size);
-	interrupt_enable();
+	irq_unlock(irq_lock_key);
 
 	uart_flush_output();
 
