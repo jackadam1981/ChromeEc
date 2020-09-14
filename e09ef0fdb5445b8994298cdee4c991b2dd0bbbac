@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e4caf10f_2310f078",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-14T07:59:30Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "47146322_1faaaf3c",
+      "range": {
+        "startLine": 643,
+        "startChar": 1,
+        "endLine": 643,
+        "endChar": 55
+      },
+      "revId": "e09ef0fdb5445b8994298cdee4c991b2dd0bbbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b63a26aa_f35b963c",
         "filename": "chip/it83xx/gpio.c",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "e09ef0fdb5445b8994298cdee4c991b2dd0bbbac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da22cef7_b4f43fd3",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-14T07:59:30Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "b63a26aa_f35b963c",
+      "range": {
+        "startLine": 647,
+        "startChar": 1,
+        "endLine": 647,
+        "endChar": 68
+      },
+      "revId": "e09ef0fdb5445b8994298cdee4c991b2dd0bbbac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
