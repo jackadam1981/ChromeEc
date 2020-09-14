@@ -2192,6 +2192,9 @@
 /* Host command to control USB-PD chip */
 #undef CONFIG_HOSTCMD_PD_CONTROL
 
+/* Host commands to query Type-C port and drive behavior. */
+#define CONFIG_HOSTCMD_TYPEC
+
 /* Set entry in PD MCU's device rw_hash table */
 #define CONFIG_HOSTCMD_RWHASHPD
 
