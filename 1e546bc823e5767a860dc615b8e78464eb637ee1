@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "86fa8be5_e30aa180",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-14T08:05:37Z",
+      "side": 1,
+      "message": "EN_PP3300_U is NC in rev0, so it won\u0027t affect the system. Let\u0027s move this into gpio.inc.",
+      "parentUuid": "f7194db3_f5e3bfdc",
+      "range": {
+        "startLine": 645,
+        "startChar": 4,
+        "endLine": 645,
+        "endChar": 35
+      },
+      "revId": "1e546bc823e5767a860dc615b8e78464eb637ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c546ad2_854ca230",
         "filename": "board/asurada/it5205_sbu.c",
         "patchSetId": 4
