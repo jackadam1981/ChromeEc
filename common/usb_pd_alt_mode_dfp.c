@@ -176,6 +176,10 @@ void pd_prepare_sysjump(void)
  */
 int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 {
+
+	// HACKHACKHACK: THIS IS THE PROBLEM.
+	// Doesn't take into account PinCaps
+
 	struct svdm_amode_data *modep =
 		pd_get_amode_data(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
 	uint32_t mode_caps;
@@ -1096,6 +1100,7 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 	if (!pin_mode)
 		return 0;
 
+// ================================================
 	/*
 	 * Multi-function operation is only allowed if that pin config is
 	 * supported.
@@ -1103,11 +1108,40 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 	mux_mode = ((pin_mode & MODE_DP_PIN_MF_MASK) && mf_pref) ?
 		USB_PD_MUX_DOCK : USB_PD_MUX_DP_ENABLED;
 	CPRINTS("pin_mode: %x, mf: %d, mux: %d", pin_mode, mf_pref, mux_mode);
+	CPRINTS("==== DEFERRING config until after ACK! ====");
 
 	/* Connect the SBU and USB lines to the connector. */
-	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
-		ppc_set_sbu(port, 1);
-	usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT, pd_get_polarity(port));
+//>	 if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+//>	 	ppc_set_sbu(port, 0); // 1); Turn it off, not on!
+    //usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT, pd_get_polarity(port));
+
+	//usb_mux_set_safe_mode(port);
+	// Already handled in svdm_enter_dp_mode() -> svdm_safe_dp_mode()
+
+/*	
+	 if (mux_mode & USB_PD_MUX_DP_ENABLED) {
+	 	if(mux_mode & USB_PD_MUX_USB_ENABLED) {
+	 		usb_mux_set(port, (mux_mode & ~USB_PD_MUX_DP_ENABLED) |
+	 			USB_PD_MUX_SAFE_MODE,
+	 			usb_mux_get(port), pd_get_polarity(port));
+	 	}
+	 	else
+	 		usb_mux_set(port, (mux_mode & ~USB_PD_MUX_DOCK) |
+	 			USB_PD_MUX_SAFE_MODE,
+	 			usb_mux_get(port), pd_get_polarity(port));
+
+	// TODO:
+	// Fix the USB2.0 lines based on commcap + status message.
+*/
+
+/*	 
+	// Nuke it from orbit
+	usb_mux_set(port, USB_PD_MUX_NONE, USB_PD_MUX_NONE,
+		pd_get_polarity(port));
+*/
+	 // The EC Protects
+//>	usb_mux_set_safe_mode(port);
+// ========================================================
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));
@@ -1132,6 +1166,42 @@ int svdm_get_hpd_gpio(int port)
 
 __overridable void svdm_dp_post_config(int port)
 {
+// ============================================
+	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
+	uint8_t pin_mode = get_dp_pin_mode(port);
+	mux_state_t mux_mode;
+
+	if (!pin_mode)
+		return;
+
+	/*
+	 * Multi-function operation is only allowed if that pin config is
+	 * supported.
+	 */
+	mux_mode = ((pin_mode & MODE_DP_PIN_MF_MASK) && mf_pref) ?
+		USB_PD_MUX_DOCK : USB_PD_MUX_DP_ENABLED;
+
+	CPRINTS("==== DEFERRED config is now after ACK! ====");
+	CPRINTS("pin_mode: %x, mf: %d, mux: %d", pin_mode, mf_pref, mux_mode);
+
+	/* Connect the SBU and USB lines to the connector. */
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+	  ppc_set_sbu(port, 1);
+	usb_mux_set(port, mux_mode, USB_SWITCH_CONNECT, pd_get_polarity(port));
+
+#ifdef CONFIG_USB_PD_DP_HPD_GPIO
+	svdm_set_hpd_gpio(port, 0);
+#endif /* CONFIG_USB_PD_DP_HPD_GPIO */
+	usb_mux_hpd_update(port, 0, 0);
+	usleep(3000);
+	//Sleep 3ms minimum for HPD replaying per spec
+// ============================================
+	
+	 CPRINTS("C%d: Adding 6000ms delay post-config, PRE-HPD",port);
+	 usleep(600000);
+	 // This stabilizes the AUX lines
+
+
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
@@ -1143,6 +1213,7 @@ __overridable void svdm_dp_post_config(int port)
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
+	CPRINTS("C%d: Unbuffering an HPD (lvl [1] irq [0])", port);
 	usb_mux_hpd_update(port, 1, 0);
 
 #ifdef USB_PD_PORT_TCPC_MST
@@ -1174,8 +1245,11 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 
 	/* Its initial DP status message prior to config */
 	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
+		CPRINTS("C%d: Buffering an HPD (lvl %d irq %d)", port, lvl, irq);
 		if (lvl)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
+		else
+			dp_flags[port] &= ~DP_FLAGS_HPD_HI_PENDING;
 		return 1;
 	}
 
@@ -1207,7 +1281,7 @@ __overridable int svdm_dp_attention(int port, uint32_t *payload)
 	svdm_hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 
-	CPRINTS("C%d: usb_mux_hpd_update", port);
+	CPRINTS("C%d: usb_mux_hpd_update (lvl %d irq %d)", port, lvl, irq);
 	usb_mux_hpd_update(port, lvl, irq);
 
 #ifdef USB_PD_PORT_TCPC_MST

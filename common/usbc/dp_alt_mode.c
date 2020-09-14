@@ -230,6 +230,7 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		//dpm_set_mode_entry_done(port);
 		//TODO: No, not done yet with "Mode" Entry. Misnomer
 
+
 		/* Active cable send Status SOP' first */
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
 			dp_state[port] = DP_STATUS_SOP_PRIME;
@@ -254,6 +255,9 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		break;
 	case DP_STATUS_SOP:
 		/* DP status response & UFP's DP attention have same payload. */
+
+		CPRINTS("C%d: caching STATUS with lvl %d irq %d", port,
+			PD_VDO_DPSTS_HPD_LVL(vdm[1]), PD_VDO_DPSTS_HPD_IRQ(vdm[1]) );
 		dfp_consume_attention(port, vdm);
 		//dp_state[port] = DP_CONFIG_SOP;
 
@@ -280,6 +284,10 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 	case DP_CONFIG_SOP:
 		modep = pd_get_amode_data(port,
 						TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+
+		// CPRINTS("C%d: Adding 300ms delay post-config",port);
+		// usleep(300000);
+		// Not here either... needs to be post-mux
 
 		if (modep && modep->opos && modep->fx->post_config)
 			modep->fx->post_config(port);
@@ -693,14 +701,24 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 		dp_prints("attempt to config SOP''", port);
 		break;
 	case DP_CONFIG_SOP:
-		dp_prints("Inserting CONFIG SOP delay'", port);
-		usleep(200000);
+		// dp_prints("Inserting CONFIG SOP delay'", port);
+		// usleep(200000);
+	//SBU hasn't been muxed yet... try another approach.
 		modep = pd_get_amode_data(port,
 						TCPC_TX_SOP, USB_SID_DISPLAYPORT);
 		if (!(modep && modep->opos))
 			return -1;
 
-		vdo_count_ret = modep->fx->config(port, vdm);
+		vdo_count_ret = modep->fx->config(port, vdm);  //<== = THIS! BUG!
+
+/*
+A DFP_U may transmit a DisplayPort Configure Command at any time while in DisplayPort Alt Mode.
+Before issuing the command, the DFP_U shall place the USB-C pins that are to be reconfigured to
+DisplayPort Configuration into the Safe state, as specified in USB-C (i.e., ensure that there is no
+USB on these pins). The UFP_U may enable DisplayPort Alt Mode immediately after receiving
+this command. The UFP_U shall respond to this command with a Responder ACK response after
+*/
+
 		if (vdo_count_ret == 0)
 			return -1;
 		vdm[0] |= VDO_CMDT(CMDT_INIT);
