@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0f2ba369_745101fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442002
+      },
+      "writtenOn": "2020-09-14T13:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03ecd7c2_a9120a2c",
+      "revId": "3168a50f6df2f06f5930e7b1c815823f83213929",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b489bd2f_41eb3337",
         "filename": "board/fusb307bgevb/board.c",
         "patchSetId": 2
