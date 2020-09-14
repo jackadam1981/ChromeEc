@@ -20,6 +20,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "memory_commands.h"
 
 /* Console output macros. */
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
@@ -470,9 +471,87 @@ void clock_cpu_standby(void)
 	}
 }
 
+void it83xx_disable_pd_module(int port)
+{
+	int a, b;
+	/* In gpio_pre_init: tcpc init */
+	a = IT83XX_GPIO_GPCRF4;
+	b = IT83XX_GPIO_GPCRF5;
+	ccprints("GPCRF4 = 0x%x, GPCRF5 = 0x%x", a, b);
+
+#if 1
+	//Rd(5.1k): power consumption 97.5uA
+	//it81202
+	/* Disable PD Tx and Rx PHY */
+	IT83XX_USBPD_PDGCR(port) &= ~USBPD_REG_MASK_BMC_PHY;
+	/* Disable CCs voltage detector */
+#if defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX)
+	IT83XX_USBPD_CCCSR(port) |= USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR;
+#elif defined(CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2)
+	IT83XX_USBPD_CCGCR(port) |= USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR;
+#endif
+	/*
+	 * Connect CCs analog module (ex.UP/RD/DET/TX/RX), and
+	 * connect CCs 5.1K to GND, and
+	 * CCs assert Rd
+	 */
+	IT83XX_USBPD_CCCSR(port) &= ~(USBPD_REG_MASK_CC2_DISCONNECT |
+				     USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND |
+				     USBPD_REG_MASK_CC1_DISCONNECT |
+				     USBPD_REG_MASK_CC1_DISCONNECT_5_1K_TO_GND |
+				     USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT);
+	/* Select Rp reserved value for not current leakage */
+	IT83XX_USBPD_CCGCR(port) |= USBPD_REG_MASK_CC_SELECT_RP_RESERVED;
+	/* Disconnect CCs 5V tolerant */
+	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
+				     USBPD_REG_MASK_DISCONNECT_POWER_CC1);
+	/* Enable CCs analog module */
+	IT83XX_USBPD_CCGCR(port) &= ~USBPD_REG_MASK_DISABLE_CC;
+
+#else
+	//DB: power consumption 96uA
+	/* Disable PD Tx and Rx BMC PHY */
+	IT83XX_USBPD_PDGCR(port) &= ~USBPD_REG_MASK_BMC_PHY;
+	/* Connect 5.1K dead battery resistor to CC */
+	IT83XX_USBPD_CCPSR(port) &=
+			~(USBPD_REG_MASK_DISCONNECT_5_1K_CC2_DB |
+			  USBPD_REG_MASK_DISCONNECT_5_1K_CC1_DB);
+	/* Disable CC module */
+	//it83xx_disable_cc_module(port);
+	/* Power down all CC, and disable CC voltage detector */
+	IT83XX_USBPD_CCGCR(port) |= USBPD_REG_MASK_DISABLE_CC;
+#if defined(CONFIG_USB_PD_TCPM_DRIVER_IT83XX)
+	IT83XX_USBPD_CCCSR(port) |= USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR;
+#elif defined(CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2)
+	IT83XX_USBPD_CCGCR(port) |= USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR;
+#endif
+	/*
+	 * Disconnect CC analog module (ex.UP/RD/DET/TX/RX), and
+	 * disconnect CC 5.1K to GND
+	 */
+	IT83XX_USBPD_CCCSR(port) |= (USBPD_REG_MASK_CC2_DISCONNECT |
+				     USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND |
+				     USBPD_REG_MASK_CC1_DISCONNECT |
+				     USBPD_REG_MASK_CC1_DISCONNECT_5_1K_TO_GND);
+	/* Disconnect CC 5V tolerant */
+	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
+				     USBPD_REG_MASK_DISCONNECT_POWER_CC1);
+#endif //Rd_5.1k or Rd_DB
+
+	a = IT83XX_USBPD_CCCSR(port);
+	b = IT83XX_USBPD_CCPSR(port);
+	ccprints("Rd 5.1k B2B6 = 0x%x, dead battery B2B6 = 0x%x ", a, b);
+}
+
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	int i;
+	char *pS[4] = {"md", ".b", "0xf03700", "256"};
+
+	/* Test power consumption */
+	command_mem_dump(4, &pS[0]);
+	it83xx_disable_pd_module(0);
+	command_mem_dump(4, &pS[0]);
 
 	/* disable all interrupts */
 	interrupt_disable();

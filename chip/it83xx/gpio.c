@@ -653,7 +653,7 @@ void it83xx_disable_cc_module(int port)
 	IT83XX_USBPD_CCCSR(port) |= (USBPD_REG_MASK_CC2_DISCONNECT |
 				     USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND |
 				     USBPD_REG_MASK_CC1_DISCONNECT |
-				     USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND);
+				     USBPD_REG_MASK_CC1_DISCONNECT_5_1K_TO_GND);
 	/* Disconnect CC 5V tolerant */
 	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
 				     USBPD_REG_MASK_DISCONNECT_POWER_CC1);
@@ -665,6 +665,7 @@ void gpio_pre_init(void)
 	int is_warm = system_is_reboot_warm();
 	int flags;
 	int i;
+	uint8_t rp;
 
 	IT83XX_GPIO_GCR = 0x06;
 
@@ -675,7 +676,94 @@ void gpio_pre_init(void)
 	 * To prevent cc pins leakage and cc pins can be used as gpio,
 	 * disable board not active ITE TCPC port cc modules.
 	 */
-	for (i = CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT;
+	//tcpc port0 init
+	/* Reset and disable HW auto generate message header */
+	IT83XX_USBPD_PDMSR(0) &= ~USBPD_REG_MASK_DISABLE_AUTO_GEN_TX_HEADER;
+	USBPD_SW_RESET(0);
+	/* According PD version set HW auto retry count */
+	IT83XX_USBPD_PDCSR0(0) = (IT83XX_USBPD_PDCSR0(0) & ~0xC0) |
+					(CONFIG_PD_RETRY_COUNT << 6);
+	/* Enable rx decode SOP type packet and hard reset signal */
+	IT83XX_USBPD_PDCSR1(0) = (USBPD_REG_MASK_HARD_RESET_RX_ENABLE |
+				     USBPD_REG_MASK_SOP_RX_ENABLE); //?
+	/* Disable all interrupts */
+	IT83XX_USBPD_IMR(0) = 0xff;
+	/* W/C status */
+	IT83XX_USBPD_ISR(0) = 0xff;
+	/* Enable cc voltage detector */
+	IT83XX_USBPD_CCGCR(0) &= ~USBPD_REG_MASK_DISABLE_CC_VOL_DETECTOR;
+	/* Select Rp value USB-DEFAULT (Rd value default connect with 5.1k) */
+	//it83xx_tcpm_select_rp_value(0, TYPEC_RP_USB);
+	/*
+	 * Bit[3-1]: CC output current (effective when Rp assert in 05h Bit[1])
+	 *       111: reserved
+	 *       010: 330uA outpt (3.0A)
+	 *       100: 180uA outpt (1.5A)
+	 *       110: 80uA outpt  (USB default)
+	 */
+		rp = USBPD_REG_MASK_CC_SELECT_RP_DEF;
+	IT83XX_USBPD_CCGCR(0) = (IT83XX_USBPD_CCGCR(0) & ~(7 << 1)) | rp;
+
+	/* Which cc pin connect in attached state. Default to cc1  */
+	//it83xx_select_polarity(0, USBPD_CC_PIN_1);
+		IT83XX_USBPD_CCGCR(0) |= USBPD_REG_MASK_CC1_CC2_SELECTION;
+
+	/* Change data role as the same power role */
+	//it83xx_set_data_role(0, PD_ROLE_SINK);
+	/* 0: PD_ROLE_UFP 1: PD_ROLE_DFP */
+		/* Bit5: UFP */
+		IT83XX_USBPD_MHSR0(0) &= ~USBPD_REG_MASK_SOP_PORT_DATA_ROLE;
+
+	/* Set default power role and assert Rp/Rd */
+	//it83xx_set_power_role(0, PD_ROLE_SINK);
+	/* 0: PD_ROLE_SINK, 1: PD_ROLE_SOURCE */
+		/*
+		 * Bit[0:6] BMC Rx threshold setting
+		 * 000 1000b: power neutral
+		 * 010 0000b: sinking power =>
+		 *      High to low Y3Rx threshold = 0.38,
+		 *      Low to high Y3Rx threshold = 0.54.
+		 * 000 0010b: sourcing power =>
+		 *      High to low Y3Rx threshold = 0.64,
+		 *      Low to high Y3Rx threshold = 0.79.
+		 */
+		IT83XX_USBPD_BMCDR0(0) = USBPD_REG_MASK_BMC_RX_THRESHOLD_SNK;
+		/* Bit0: sink */
+		IT83XX_USBPD_MHSR1(0) &= ~USBPD_REG_MASK_SOP_PORT_POWER_ROLE;
+		/* Bit1: CC1 and CC2 select Rd */
+		IT83XX_USBPD_CCCSR(0) &=
+			~USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT;
+
+	/* Disable vconn: connect cc analog module, disable cc 5v tolerant */
+	//it83xx_enable_vconn(0, 0);
+		/* Connect cc analog module (ex.UP/RD/DET/TX/RX) */
+		IT83XX_USBPD_CCCSR(0) &= ~(USBPD_REG_MASK_CC2_DISCONNECT |
+					      USBPD_REG_MASK_CC1_DISCONNECT);
+		/* Disable cc 5v tolerant */
+		IT83XX_USBPD_CCPSR(0) |=
+			(USBPD_REG_MASK_DISCONNECT_POWER_CC1 |
+			USBPD_REG_MASK_DISCONNECT_POWER_CC2);
+
+	/* Disconnect CC with 5.1K DB resister to GND */
+	IT83XX_USBPD_CCPSR(0) |= (USBPD_REG_MASK_DISCONNECT_5_1K_CC2_DB |
+				     USBPD_REG_MASK_DISCONNECT_5_1K_CC1_DB);
+	/* Enable tx done and hard reset detect interrupt */
+	IT83XX_USBPD_IMR(0) &= ~(USBPD_REG_MASK_MSG_TX_DONE |
+				    USBPD_REG_MASK_HARD_RESET_DETECT);
+	 /* W/C status and enable type-c plug-in detect interrupt.*/
+	IT83XX_USBPD_TCDCR(0) = (IT83XX_USBPD_TCDCR(0) &
+				    ~(USBPD_REG_PLUG_IN_OUT_DETECT_DISABLE |
+				      USBPD_REG_PLUG_OUT_SELECT)) |
+				    USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+	/* Set cc1/cc2 pins alternate mode */
+	IT83XX_GPIO_GPCRF4 = 0x86;
+	IT83XX_GPIO_GPCRF5 = 0x86;
+	task_clear_pending_irq(IT83XX_IRQ_USBPD0 /*usbpd_ctrl_regs[0].irq*/);
+	task_enable_irq(IT83XX_IRQ_USBPD0 /*usbpd_ctrl_regs[0].irq*/);
+	USBPD_START(0);
+
+	//pd port1 disable
+	for (i = 1 /*CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT*/;
 	     i < IT83XX_USBPD_PHY_PORT_COUNT; i++) {
 		it83xx_disable_cc_module(i);
 		/* Dis-connect 5.1K dead battery resistor to CC */
