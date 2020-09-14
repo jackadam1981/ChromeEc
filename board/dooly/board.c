@@ -121,34 +121,15 @@ static int32_t base_5v_power;
  */
 static void update_5v_usage(void)
 {
-	int front_ports = 0;
 	/*
 	 * Recalculate the 5V load, assuming no throttling.
 	 */
 	base_5v_power = PWR_BASE_LOAD;
-	if (!gpio_get_level(GPIO_USB_A0_OC_ODL)) {
-		front_ports++;
-		base_5v_power += PWR_FRONT_LOW;
-	}
-	if (!gpio_get_level(GPIO_USB_A1_OC_ODL)) {
-		front_ports++;
-		base_5v_power += PWR_FRONT_LOW;
-	}
-	/*
-	 * Only 1 front port can run higher power at a time.
-	 */
-	if (front_ports > 0)
-		base_5v_power += PWR_FRONT_HIGH - PWR_FRONT_LOW;
+
 	if (!gpio_get_level(GPIO_USB_A2_OC_ODL))
 		base_5v_power += PWR_REAR;
 	if (!gpio_get_level(GPIO_USB_A3_OC_ODL))
 		base_5v_power += PWR_REAR;
-	if (ec_config_get_usb4_present() && !gpio_get_level(GPIO_USB_A4_OC_ODL))
-		base_5v_power += PWR_REAR;
-	if (!gpio_get_level(GPIO_HDMI_CONN0_OC_ODL))
-		base_5v_power += PWR_HDMI;
-	if (!gpio_get_level(GPIO_HDMI_CONN1_OC_ODL))
-		base_5v_power += PWR_HDMI;
 	if (usbc_overcurrent)
 		base_5v_power += PWR_C_HIGH;
 	/*
@@ -518,23 +499,8 @@ static void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_TCPPC_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
 	/* Enable other overcurrent interrupts */
-	gpio_enable_interrupt(GPIO_HDMI_CONN0_OC_ODL);
-	gpio_enable_interrupt(GPIO_HDMI_CONN1_OC_ODL);
-	gpio_enable_interrupt(GPIO_USB_A0_OC_ODL);
-	gpio_enable_interrupt(GPIO_USB_A1_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A2_OC_ODL);
 	gpio_enable_interrupt(GPIO_USB_A3_OC_ODL);
-	if (ec_config_get_usb4_present()) {
-		/*
-		 * By default configured as output low.
-		 */
-		gpio_set_flags(GPIO_USB_A4_OC_ODL,
-			       GPIO_INPUT | GPIO_INT_BOTH);
-		gpio_enable_interrupt(GPIO_USB_A4_OC_ODL);
-	} else {
-		/* Ensure no interrupts from pin */
-		gpio_disable_interrupt(GPIO_USB_A4_OC_ODL);
-	}
 
 }
 /* Make sure this is called after fw_config is initialised */
@@ -648,8 +614,6 @@ int board_is_c10_gate_enabled(void)
 
 void board_enable_s0_rails(int enable)
 {
-	/* This output isn't connected on protos; safe to set anyway. */
-	gpio_set_level(GPIO_EN_PP5000_HDMI, enable);
 }
 
 unsigned int ec_config_get_bj_power(void)
