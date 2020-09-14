@@ -138,6 +138,14 @@ uint32_t get_feature_flags1(void)
 #ifdef CHIP_ISH
 		| EC_FEATURE_MASK_1(EC_FEATURE_ISH)
 #endif
+#ifdef CONFIG_HOSTCMD_TYPEC
+		/*
+		 * TODO(b/168030639): Add EC_FEATURE_TYPEC_COMMANDS when the
+		 * commands are sufficiently complete for kernel to support
+		 * them. Add EC_FEATURE_REQUIRE_AP_MODE_ENTRY when stable kernel
+		 * fully supports handling this.
+		 */
+#endif
 		;
 	return board_override_feature_flags1(result);
 }
