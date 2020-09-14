@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b6ea274_e81e3e00",
+        "filename": "driver/tcpm/fusb307.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-14T08:36:05Z",
+      "side": 1,
+      "message": "DEBUG_ROLE_CTRL_UPDATE\"S\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "524f4c617f237833e9452694517eab49abe29249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1caa9af1_e6960b60",
+        "filename": "driver/tcpm/fusb307.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-14T08:36:05Z",
+      "side": 1,
+      "message": "Move these to board.h",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "524f4c617f237833e9452694517eab49abe29249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aebd139_958ba534",
+        "filename": "driver/tcpm/fusb307.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-14T08:36:05Z",
+      "side": 1,
+      "message": "why do we need this?",
+      "revId": "524f4c617f237833e9452694517eab49abe29249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
