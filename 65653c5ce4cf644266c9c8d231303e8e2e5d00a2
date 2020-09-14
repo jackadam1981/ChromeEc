@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd856bd0_7b80f109",
+        "filename": "board/madoo/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1316237
+      },
+      "writtenOn": "2020-09-14T13:00:08Z",
+      "side": 1,
+      "message": "Should I move the cbi_fw_config_init() to board.c?\nor I need to create a new Cbi_fw_config on madoo board layer?",
+      "revId": "65653c5ce4cf644266c9c8d231303e8e2e5d00a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
