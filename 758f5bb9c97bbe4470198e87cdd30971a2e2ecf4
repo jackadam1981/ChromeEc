@@ -34,6 +34,24 @@
       "revId": "758f5bb9c97bbe4470198e87cdd30971a2e2ecf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "529d8a4c_a1f5bcc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-14T16:52:12Z",
+      "side": 1,
+      "message": "That is not expected to me. Please try to determine why it\u0027s not running. Otherwise, the alternative problem exists: if you suspend in tablet mode, and you convert it back to clamshell mode, pressing a key on the keyboard would not wake the system, when it should.",
+      "parentUuid": "09df5364_9f06013f",
+      "revId": "758f5bb9c97bbe4470198e87cdd30971a2e2ecf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
