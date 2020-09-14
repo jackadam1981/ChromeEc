@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d27fca3_49df539e",
+        "filename": "driver/fingerprint/fpsensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-14T20:09:09Z",
+      "side": 0,
+      "message": "Would it work if we kept this, but change it to:\n\n #if defined(HAVE_PRIVATE) \u0026\u0026 defined(TEST_BUILD)\n\nThen we could still use the mocks in any test without having to add the HAVE_FP_PRIVATE_DRIVER in the tasklist for each test that we want to use it in?",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "568185bbf61c6b55701c638a3c41e0a022ec2554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
