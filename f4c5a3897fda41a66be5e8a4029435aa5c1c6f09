@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c59a9fba_8ed1cfcd",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-14T20:21:41Z",
+      "side": 1,
+      "message": "please use the header file with this information and add __override_proto to it please",
+      "range": {
+        "startLine": 765,
+        "startChar": 0,
+        "endLine": 765,
+        "endChar": 38
+      },
+      "revId": "f4c5a3897fda41a66be5e8a4029435aa5c1c6f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
