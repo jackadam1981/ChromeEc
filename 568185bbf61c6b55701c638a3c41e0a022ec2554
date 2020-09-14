@@ -22,6 +22,30 @@
       "revId": "568185bbf61c6b55701c638a3c41e0a022ec2554",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e9b3a3_84cd3ab9",
+        "filename": "driver/fingerprint/fpsensor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-09-14T20:26:54Z",
+      "side": 0,
+      "message": "Yes that also works. Done.",
+      "parentUuid": "8d27fca3_49df539e",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "568185bbf61c6b55701c638a3c41e0a022ec2554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
