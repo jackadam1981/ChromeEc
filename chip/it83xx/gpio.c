@@ -653,7 +653,7 @@ void it83xx_disable_cc_module(int port)
 	IT83XX_USBPD_CCCSR(port) |= (USBPD_REG_MASK_CC2_DISCONNECT |
 				     USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND |
 				     USBPD_REG_MASK_CC1_DISCONNECT |
-				     USBPD_REG_MASK_CC2_DISCONNECT_5_1K_TO_GND);
+				     USBPD_REG_MASK_CC1_DISCONNECT_5_1K_TO_GND);
 	/* Disconnect CC 5V tolerant */
 	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
 				     USBPD_REG_MASK_DISCONNECT_POWER_CC1);
@@ -675,7 +675,74 @@ void gpio_pre_init(void)
 	 * To prevent cc pins leakage and cc pins can be used as gpio,
 	 * disable board not active ITE TCPC port cc modules.
 	 */
-	for (i = CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT;
+	//TCPC port0 init
+	/* reset and disable HW auto generate message header */
+	IT83XX_USBPD_GCR(0) = BIT(5);
+	USBPD_SW_RESET(0);
+	/*
+	 * According PD version set the total number of HW attempts
+	 * (= retry count + 1)
+	 */
+	IT83XX_USBPD_BMCSR(0) = (IT83XX_USBPD_BMCSR(0) & ~0x70) |
+					((CONFIG_PD_RETRY_COUNT + 1) << 4);
+	/* set SOP: receive SOP message only.
+	 * bit[7]: SOP" support enable.
+	 * bit[6]: SOP' support enable.
+	 * bit[5]: SOP  support enable.
+	 */
+	IT83XX_USBPD_PDMSR(0) = USBPD_REG_MASK_SOP_ENABLE;
+	/* W/C status */
+	IT83XX_USBPD_ISR(0) = 0xff;
+	/* enable cc, select cc1 and Rd. */
+	IT83XX_USBPD_CCGCR(0) = 0xd;
+	/* change data role as the same power role */
+	//it83xx_set_data_role(port, role);
+		/* 0: PD_ROLE_UFP 1: PD_ROLE_DFP */
+		IT83XX_USBPD_PDMSR(0) =
+			(IT83XX_USBPD_PDMSR(0) & ~0xc) | ((0 & 0x1) << 2);
+	/* set power role */
+	//it83xx_set_power_role(port, role);
+		IT83XX_USBPD_CCADCR(0) = 0x04;
+		/* bit0: sink */
+		CLEAR_MASK(IT83XX_USBPD_PDMSR(0), BIT(0));
+		/* bit1: CC1 select Rd */
+		CLEAR_MASK(IT83XX_USBPD_CCGCR(0), BIT(1));
+		/* bit3: CC2 select Rd */
+		CLEAR_MASK(IT83XX_USBPD_BMCSR(0), BIT(3));
+	/* disable all interrupts */
+	IT83XX_USBPD_IMR(0) = 0xff;
+	/* enable tx done and reset detect interrupt */
+	IT83XX_USBPD_IMR(0) &= ~(USBPD_REG_MASK_MSG_TX_DONE |
+					USBPD_REG_MASK_HARD_RESET_DETECT);
+	/*
+	 * when tcpc detect type-c plug in (cc lines voltage change), it will
+	 * interrupt fw to wake pd task, so task can react immediately.
+	 *
+	 * w/c status and unmask TCDCR (detect type-c plug in interrupt default
+	 * is enable).
+	 */
+	IT83XX_USBPD_TCDCR(0) = USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+	IT83XX_USBPD_CCPSR(0) = 0xff; //include dis-connect DB
+	/* cc connect */
+	IT83XX_USBPD_CCCSR(0) = 0;
+	/* disable vconn */
+	//it83xx_enable_vconn(0, 0);
+		/* Enable cc1 and cc2 */
+		IT83XX_USBPD_CCCSR(0) &= ~0xaa;
+		IT83XX_USBPD_CCPSR(0) |=
+			(USBPD_REG_MASK_DISCONNECT_POWER_CC1 |
+			USBPD_REG_MASK_DISCONNECT_POWER_CC2);
+	/* TX start from high */
+	IT83XX_USBPD_CCADCR(0) |= BIT(6);
+	/* enable cc1/cc2 */
+	IT83XX_GPIO_GPCRF4 = 0x86;
+	IT83XX_GPIO_GPCRF5 = 0x86;
+	task_clear_pending_irq(IT83XX_IRQ_USBPD0);
+	task_enable_irq(IT83XX_IRQ_USBPD0);
+	USBPD_START(0);
+
+	//disable port1
+	for (i = 1 /*CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT*/;
 	     i < IT83XX_USBPD_PHY_PORT_COUNT; i++) {
 		it83xx_disable_cc_module(i);
 		/* Dis-connect 5.1K dead battery resistor to CC */

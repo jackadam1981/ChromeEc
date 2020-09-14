@@ -20,6 +20,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "memory_commands.h"
 
 /* Console output macros. */
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
@@ -470,9 +471,59 @@ void clock_cpu_standby(void)
 	}
 }
 
+void it83xx_disable_pd_module(int port)
+{
+	int a, b;
+	/* In gpio_pre_init: init tcpc */
+	a = IT83XX_GPIO_GPCRF4;
+	b = IT83XX_GPIO_GPCRF5;
+	ccprints("GPCRF4 = 0x%x, GPCRF5 = 0x%x", a, b);
+
+#if 1
+	//Rd(5.1k): power consumption 164.1uA
+	//it8320
+	/* Disable PD PHY */
+	IT83XX_USBPD_GCR(port) &= ~(BIT(0) | BIT(4));
+	/* Select Rp reserved value for not current leakage */
+	CLEAR_MASK(IT83XX_USBPD_CCGCR(port), (BIT(2) | BIT(3)));
+	/*
+	 * Disable CCs voltage detector,
+	 * connect CCs analog module (ex.UP/RD/DET/TX/RX), and
+	 * connect CCs 5.1K to GND
+	 */
+	IT83XX_USBPD_CCCSR(port) = 0x22;
+	/* Disconnect CCs 5V tolerant */
+	IT83XX_USBPD_CCPSR(port) |= (USBPD_REG_MASK_DISCONNECT_POWER_CC2 |
+				     USBPD_REG_MASK_DISCONNECT_POWER_CC1);
+	/* CCs assert Rd, and Enable CCs analog module  */
+	IT83XX_USBPD_BMCSR(port) &= ~0x08;
+	IT83XX_USBPD_CCGCR(port) &= ~0x12; //~0x1f;
+#else
+	//DB: power consumption 163.3uA
+	/* Disable PD PHY */
+	IT83XX_USBPD_GCR(port) &= ~(BIT(0) | BIT(4));
+	/* Power down CC1/CC2 */
+	IT83XX_USBPD_CCGCR(port) |= 0x1f;
+	/* Disable CC1/CC2 voltage detector */
+	IT83XX_USBPD_CCCSR(port) = 0xff;
+	/* Connect 5.1K resistor to CC1/CC2 for dead battery. */
+	IT83XX_USBPD_CCPSR(port) = 0x33;
+#endif // Rd_5.1k or Rd_DB
+
+	a = IT83XX_USBPD_CCCSR(port);
+	b = IT83XX_USBPD_CCPSR(port);
+	ccprints("Rd 5.1k B2B6 = 0x%x, dead battery B2B6 = 0x%x ", a, b);
+}
+
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	int i;
+	char *pS[4] = {"md", ".b", "0xf03700", "256"};
+
+	/* Test power consumption */
+	command_mem_dump(4, &pS[0]);
+	it83xx_disable_pd_module(0);
+	command_mem_dump(4, &pS[0]);
 
 	/* disable all interrupts */
 	interrupt_disable();

@@ -12,5 +12,6 @@
 
 /* Initializes the module. */
 int memory_commands_init(void);
+int command_mem_dump(int argc, char **argv);
 
 #endif  /* __CROS_EC_MEMORY_COMMANDS_H */
