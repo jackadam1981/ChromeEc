@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b95195ee_a19a0304",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-14T04:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e59ebdf_5244d8fc",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5c929ef_707b903d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 11
@@ -36,6 +60,24 @@
       "writtenOn": "2020-09-10T16:26:41Z",
       "side": 1,
       "message": "It looks like you might be able to accomplish what you\u0027re doing here by just defining struct ec_thermal_config thermal_params for this board. However, I gather that you expect to add more complexity here over time. If that\u0027s true, please add a TODO (or more than one as appropriate) referencing the bug and briefly describing the features you plan to add later.",
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b71c2fe0_59f20c4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-14T04:09:19Z",
+      "side": 1,
+      "message": "Got it. Done.",
+      "parentUuid": "f5c929ef_707b903d",
       "revId": "afbbc31e17142af6676263ed5f4e607063189731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "1593d5cb_5ed4f54b",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-14T04:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31118f09_0f613f7b",
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0f629aa_62766bb6",
         "filename": "board/eldrid/thermal.c",
         "patchSetId": 11
@@ -73,6 +133,24 @@
       "revId": "afbbc31e17142af6676263ed5f4e607063189731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "762ecdbb_0ae2dc38",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-14T04:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f629aa_62766bb6",
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "9ec3f1a5_7b0bc815",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-14T04:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1bc525a_037ccb1f",
+      "range": {
+        "startLine": 96,
+        "startChar": 17,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fd06be6_779cd93a",
         "filename": "board/eldrid/thermal.c",
         "patchSetId": 11
@@ -139,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "982d8f75_333275a4",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-14T04:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fd06be6_779cd93a",
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "adb033b3_3c38e478",
         "filename": "board/eldrid/thermal.c",
         "patchSetId": 11
@@ -153,6 +273,24 @@
       "revId": "afbbc31e17142af6676263ed5f4e607063189731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03be66c_ca06ca70",
+        "filename": "board/eldrid/thermal.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-14T04:09:19Z",
+      "side": 1,
+      "message": "Already remove it. Done",
+      "parentUuid": "adb033b3_3c38e478",
+      "revId": "afbbc31e17142af6676263ed5f4e607063189731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
