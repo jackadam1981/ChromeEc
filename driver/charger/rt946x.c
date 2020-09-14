@@ -26,6 +26,19 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
 /* Charger parameters */
+#define CHARGER_NAME    RT946X_CHARGER_NAME
+#define CHARGE_V_MAX    4710
+#define CHARGE_V_MIN    3900
+#define CHARGE_V_STEP   10
+#define CHARGE_I_MAX    5000
+#define CHARGE_I_MIN    100
+#define CHARGE_I_OFF    0
+#define CHARGE_I_STEP   100
+#define INPUT_I_MAX     3250
+#define INPUT_I_MIN     100
+#define INPUT_I_STEP    50
+
+/* Charger parameters */
 static const struct charger_info rt946x_charger_info = {
 	.name         = CHARGER_NAME,
 	.voltage_max  = CHARGE_V_MAX,
@@ -1308,6 +1321,19 @@ int rt946x_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val)
 
 	/* Read ADC data */
 	rv = rt946x_read8(CHARGER_SOLO, RT946X_REG_ADCDATAH, &adc_data_h);
+/* Charger parameters */
+#define CHARGER_NAME    RT946X_CHARGER_NAME
+#define CHARGE_V_MAX    4710
+#define CHARGE_V_MIN    3900
+#define CHARGE_V_STEP   10
+#define CHARGE_I_MAX    5000
+#define CHARGE_I_MIN    100
+#define CHARGE_I_OFF    0
+#define CHARGE_I_STEP   100
+#define INPUT_I_MAX     3250
+#define INPUT_I_MIN     100
+#define INPUT_I_STEP    50
+
 	rv = rt946x_read8(CHARGER_SOLO, RT946X_REG_ADCDATAL, &adc_data_l);
 	if (rv)
 		goto out;
@@ -1529,6 +1555,19 @@ int rt946x_enable_charger_boost(int en)
 
 /*
  * rt946x reports VBUS ready after VBUS is up for ~500ms.
+/* Charger parameters */
+#define CHARGER_NAME    RT946X_CHARGER_NAME
+#define CHARGE_V_MAX    4710
+#define CHARGE_V_MIN    3900
+#define CHARGE_V_STEP   10
+#define CHARGE_I_MAX    5000
+#define CHARGE_I_MIN    100
+#define CHARGE_I_OFF    0
+#define CHARGE_I_STEP   100
+#define INPUT_I_MAX     3250
+#define INPUT_I_MIN     100
+#define INPUT_I_STEP    50
+
  * Check if this works for the use case before calling this function.
  */
 int rt946x_is_vbus_ready(void)
