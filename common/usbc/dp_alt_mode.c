@@ -728,6 +728,8 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 		dp_prints("attempt to config SOP''", port);
 		break;
 	case DP_CONFIG_SOP:
+		dp_prints("Inserting CONFIG SOP delay'", port);
+		usleep(200000);
 		modep = pd_get_amode_data(port,
 						TCPC_TX_SOP, USB_SID_DISPLAYPORT);
 		if (!(modep && modep->opos))
