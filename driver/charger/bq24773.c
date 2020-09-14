@@ -28,6 +28,54 @@
 #define REG8_TO_CURRENT(REG, RS) ((REG) * DEFAULT_SENSE_RESISTOR / (RS) * R8)
 #define CURRENT_TO_REG8(CUR, RS) ((CUR) * (RS) / DEFAULT_SENSE_RESISTOR / R8)
 
+/* ChargeCurrent Register - 0x14 (mA) */
+#define CHARGE_I_OFF                    0
+#define CHARGE_I_MIN                    128
+#define CHARGE_I_MAX                    8128
+#define CHARGE_I_STEP                   64
+
+/* MaxChargeVoltage Register - 0x15 (mV) */
+#define CHARGE_V_MIN                    1024
+#define CHARGE_V_MAX                    19200
+#define CHARGE_V_STEP                   16
+
+/* InputCurrent Register - 0x3f (mA) */
+#define INPUT_I_MIN                    128
+#define INPUT_I_MAX                    8128
+#define INPUT_I_STEP                   64
+
+#ifdef CONFIG_CHARGER_BQ24770
+        #define CHARGER_NAME            "bq24770"
+        #define I2C_ADDR_CHARGER        BQ24770_ADDR
+
+        #define REG_CHARGE_OPTION0      BQ24770_CHARGE_OPTION0
+        #define REG_CHARGE_OPTION1      BQ24770_CHARGE_OPTION1
+        #define REG_CHARGE_OPTION2      BQ24770_CHARGE_OPTION2
+        #define REG_PROCHOT_OPTION0     BQ24770_PROCHOT_OPTION0
+        #define REG_PROCHOT_OPTION1     BQ24770_PROCHOT_OPTION1
+        #define REG_CHARGE_CURRENT      BQ24770_CHARGE_CURRENT
+        #define REG_MAX_CHARGE_VOLTAGE  BQ24770_MAX_CHARGE_VOLTAGE
+        #define REG_MIN_SYSTEM_VOLTAGE  BQ24770_MIN_SYSTEM_VOLTAGE
+        #define REG_INPUT_CURRENT       BQ24770_INPUT_CURRENT
+        #define REG_MANUFACTURE_ID      BQ24770_MANUFACTURE_ID
+        #define REG_DEVICE_ADDRESS      BQ24770_DEVICE_ADDRESS
+
+#elif defined(CONFIG_CHARGER_BQ24773)
+        #define CHARGER_NAME            "bq24773"
+        #define I2C_ADDR_CHARGER        BQ24773_ADDR
+
+        #define REG_CHARGE_OPTION0      BQ24773_CHARGE_OPTION0
+        #define REG_CHARGE_OPTION1      BQ24773_CHARGE_OPTION1
+        #define REG_CHARGE_OPTION2      BQ24773_CHARGE_OPTION2
+        #define REG_PROCHOT_OPTION0     BQ24773_PROCHOT_OPTION0
+        #define REG_PROCHOT_OPTION1     BQ24773_PROCHOT_OPTION1
+        #define REG_CHARGE_CURRENT      BQ24773_CHARGE_CURRENT
+        #define REG_MAX_CHARGE_VOLTAGE  BQ24773_MAX_CHARGE_VOLTAGE
+        #define REG_MIN_SYSTEM_VOLTAGE  BQ24773_MIN_SYSTEM_VOLTAGE
+        #define REG_INPUT_CURRENT       BQ24773_INPUT_CURRENT
+        #define REG_DEVICE_ADDRESS      BQ24773_DEVICE_ADDRESS
+#endif
+
 /* Charger parameters */
 static const struct charger_info bq2477x_charger_info = {
 	.name         = CHARGER_NAME,
