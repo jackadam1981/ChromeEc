@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ac21d0f_f1922369",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-14T20:45:14Z",
+      "side": 1,
+      "message": "could we instead use an atomic counter to correctly mask or set interrupts counters? We wouldn\u0027t have to pass out the context from interrupt_disable_after_save. This would also correct all callsites without a massive refactor, right?\n\nFor example:\n\ninterrupt_disable(void){\n   if (atomic_inc(\u0026counter) \u003d\u003d 1) {\n\n    //normal disable stuff\n  }\n}\n\ninterrupt_enable(void) {\n   if (atomic_dec(\u0026counter) \u003d\u003d 0) {\n\n    //normal enable stuff\n  }\n}",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 38
+      },
+      "revId": "471ec9c7725dbe16f4359b9148aada1db9ece5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
