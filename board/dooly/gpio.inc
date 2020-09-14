@@ -40,6 +40,9 @@ GPIO_INT(IMVP8_VRRDY_OD,       PIN(1, 6), GPIO_INT_BOTH, power_signal_interrupt)
 /* Other interrupts */
 GPIO_INT(USB_C0_TCPPC_INT_ODL, PIN(E, 0), GPIO_INT_FALLING, ppc_interrupt)
 GPIO_INT(USB_C0_TCPC_INT_ODL,  PIN(6, 2), GPIO_INT_FALLING, tcpc_alert_event)
+GPIO_INT(USB_C1_TCPPC_INT_ODL, PIN(D, 6), GPIO_INT_FALLING, ppc_interrupt)
+GPIO_INT(USB_C1_TCPC_INT_ODL,  PIN(3, 2), GPIO_INT_FALLING, tcpc_alert_event)
+
 /*
  * Directly connected recovery button (not available on some boards).
  */
@@ -86,6 +89,7 @@ GPIO(USB_A3_STATUS_L,          PIN(C, 7), GPIO_INPUT)
 
 /* USB type C */
 GPIO(USB_C0_TCPC_RST,          PIN(9, 7), GPIO_OUT_LOW)
+GPIO(USB_C1_TCPC_RST,          PIN(D, 2), GPIO_OUT_LOW)
 
 /* Misc. */
 GPIO(M2_SSD_PLN,               PIN(A, 0), GPIO_INPUT)
@@ -145,11 +149,8 @@ UNUSED(PIN(C, 6))						/* B11 NC */
 UNUSED(PIN(E, 2))						/* B8  NC */
 UNUSED(PIN(8, 5))						/* L7  NC */
 UNUSED(PIN(0, 0))						/* D11 NC */
-UNUSED(PIN(3, 2))						/* E5  NC */
-UNUSED(PIN(D, 6))						/* F6  NC */
 UNUSED(PIN(3, 5))						/* F5  NC */
 UNUSED(PIN(5, 6))						/* M2  NC */
-UNUSED(PIN(D, 2))						/* C11 NC */
 UNUSED(PIN(8, 6))						/* J8  NC */
 UNUSED(PIN(9, 3))						/* M11 NC */
 UNUSED(PIN(7, 2))						/* H6  NC */

@@ -67,6 +67,9 @@ static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if (signal == GPIO_USB_C0_TCPC_INT_ODL)
 		schedule_deferred_pd_interrupt(0);
+
+	if (signal == GPIO_USB_C1_TCPC_INT_ODL)
+		schedule_deferred_pd_interrupt(1);
 }
 
 uint16_t tcpc_get_alert_status(void)
@@ -83,6 +86,13 @@ uint16_t tcpc_get_alert_status(void)
 			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
 		if (gpio_get_level(GPIO_USB_C0_TCPC_RST) != level)
 			status |= PD_STATUS_TCPC_ALERT_0;
+	}
+
+	if (!gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL)) {
+		level = !!(tcpc_config[USB_PD_PORT_TCPC_1].flags &
+			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
+		if (gpio_get_level(GPIO_USB_C1_TCPC_RST) != level)
+			status |= PD_STATUS_TCPC_ALERT_1;
 	}
 
 	return status;
@@ -258,10 +268,24 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.drv = &anx7447_tcpm_drv,
 		.flags = TCPC_FLAGS_RESET_ACTIVE_HIGH,
 	},
+	[USB_PD_PORT_TCPC_1] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC1,
+			.addr_flags = AN7447_TCPC0_I2C_ADDR_FLAGS,
+		},
+		.drv = &anx7447_tcpm_drv,
+		.flags = TCPC_FLAGS_RESET_ACTIVE_HIGH,
+	},
 };
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
 		.usb_port = USB_PD_PORT_TCPC_0,
+		.driver = &anx7447_usb_mux_driver,
+		.hpd_update = &anx7447_tcpc_update_hpd_status,
+	},
+	[USB_PD_PORT_TCPC_1] = {
+		.usb_port = USB_PD_PORT_TCPC_1,
 		.driver = &anx7447_usb_mux_driver,
 		.hpd_update = &anx7447_tcpc_update_hpd_status,
 	},
@@ -272,7 +296,9 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 const struct i2c_port_t i2c_ports[] = {
 	{"ina",     I2C_PORT_INA,     400, GPIO_I2C0_SCL, GPIO_I2C0_SDA},
 	{"ppc0",    I2C_PORT_PPC0,    400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
+	{"ppc1",    I2C_PORT_PPC1,    400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 	{"tcpc0",   I2C_PORT_TCPC0,   400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
+	{"tcpc1",   I2C_PORT_TCPC1,   400, GPIO_I2C4_SCL, GPIO_I2C4_SDA},
 	{"power",   I2C_PORT_POWER,   400, GPIO_I2C5_SCL, GPIO_I2C5_SDA},
 	{"eeprom",  I2C_PORT_EEPROM,  400, GPIO_I2C7_SCL, GPIO_I2C7_SDA},
 };
@@ -477,6 +503,11 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
 		.drv = &sn5s330_drv
 	},
+	[USB_PD_PORT_TCPC_1] = {
+		.i2c_port = I2C_PORT_PPC0,
+		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
+		.drv = &sn5s330_drv
+	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
@@ -512,6 +543,8 @@ int64_t get_time_dsw_pwrok(void)
 	return -20 * MSEC;
 }
 
+
+
 void board_reset_pd_mcu(void)
 {
 	int level = !!(tcpc_config[USB_PD_PORT_TCPC_0].flags &
@@ -522,6 +555,12 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(GPIO_USB_C0_TCPC_RST, !level);
 	if (BOARD_TCPC_C0_RESET_POST_DELAY)
 		msleep(BOARD_TCPC_C0_RESET_POST_DELAY);
+
+	gpio_set_level(GPIO_USB_C1_TCPC_RST, level);
+	msleep(BOARD_TCPC_C1_RESET_HOLD_DELAY);
+	gpio_set_level(GPIO_USB_C1_TCPC_RST, !level);
+	if (BOARD_TCPC_C1_RESET_POST_DELAY)
+		msleep(BOARD_TCPC_C1_RESET_POST_DELAY);
 }
 
 int board_set_active_charge_port(int port)
