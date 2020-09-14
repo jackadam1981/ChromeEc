@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7194db3_f5e3bfdc",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-14T07:55:45Z",
+      "side": 1,
+      "message": "this pin was PP3300_U in rev0, so I think we shouldn\u0027t enable pull up on it by default?",
+      "parentUuid": "beab78ee_bf50fc40",
+      "range": {
+        "startLine": 645,
+        "startChar": 4,
+        "endLine": 645,
+        "endChar": 35
+      },
+      "revId": "1e546bc823e5767a860dc615b8e78464eb637ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c546ad2_854ca230",
         "filename": "board/asurada/it5205_sbu.c",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "1e546bc823e5767a860dc615b8e78464eb637ee1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26bb479e_8b751967",
+        "filename": "board/asurada/it5205_sbu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-14T07:55:45Z",
+      "side": 1,
+      "message": "No, the reg value is used later.\nBut we do need to check if the board has it5205h or not.\n\nComment updated.",
+      "parentUuid": "6c546ad2_854ca230",
+      "revId": "1e546bc823e5767a860dc615b8e78464eb637ee1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
