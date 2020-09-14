@@ -16,6 +16,24 @@
       "revId": "758f5bb9c97bbe4470198e87cdd30971a2e2ecf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09df5364_9f06013f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2020-09-14T02:52:29Z",
+      "side": 1,
+      "message": "\u0027lid_angle_peripheral_enable()\u0027 not work when turn DUT to tablet/tent mode in S0,then enter S3.",
+      "parentUuid": "6a73417d_ce337fda",
+      "revId": "758f5bb9c97bbe4470198e87cdd30971a2e2ecf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
