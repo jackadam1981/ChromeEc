@@ -46,6 +46,30 @@
       "revId": "e6e15df132f17a0b7de2390b6665dd8a34e0d2f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "010ebd83_54ff5edc",
+        "filename": "board/drawcia/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-14T17:11:30Z",
+      "side": 1,
+      "message": "Not all boards have the capability to measure VBUS. Also, I\u0027m a little wary of changing the behaviour of those boards without verifying that the new path works as expected.",
+      "parentUuid": "1dfc758d_4cd652a9",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 0
+      },
+      "revId": "e6e15df132f17a0b7de2390b6665dd8a34e0d2f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
