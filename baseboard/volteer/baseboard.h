@@ -172,6 +172,7 @@
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_HOSTCMD_PD_CONTROL		/* Needed for TCPC FW update */
 #define CONFIG_CMD_USB_PD_PE
+#define CONFIG_HOSTCMD_TYPEC_CONTROL
 
 /*
  * Because of the CSE Lite, an extra cold AP reset is needed, and older cr50
