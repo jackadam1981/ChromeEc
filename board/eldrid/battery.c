@@ -6,6 +6,7 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "battery_smart.h"
 #include "common.h"
 #include "util.h"
 
@@ -92,3 +93,13 @@ const struct board_batt_params board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SIMPLO_HIGHPOWER;
+
+__override int board_battery_get_disconnect_state(void)
+{
+	int batt_disconnect_status;
+	int batt_status;
+
+	batt_disconnect_status = (battery_status(&batt_status) ? false :
+		!!(batt_status & STATUS_INITIALIZED));
+	return batt_disconnect_status;
+}

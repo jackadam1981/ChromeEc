@@ -273,6 +273,11 @@ unsigned char get_board_id(void);
  */
 __override_proto void board_cbi_init(void);
 
+/*
+ * Check battery disconnect state
+ */
+__override_proto int board_battery_get_disconnect_state(void);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BASEBOARD_H */
