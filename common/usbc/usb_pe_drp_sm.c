@@ -1476,7 +1476,21 @@ static bool port_try_vconn_swap(int port)
 {
 	if (pe[port].vconn_swap_counter < N_VCONN_SWAP_COUNT) {
 		pe[port].vconn_swap_counter++;
+		//PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
 		PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+		set_state_pe(port, get_last_state_pe(port));
+		return true;
+	}
+	return false;
+}
+
+/* The function returns true if there is a PE state change, false otherwise */
+static bool port_try_dr_swap(int port)
+{
+	if (pe[port].dr_swap_attempt_counter < N_DR_SWAP_ATTEMPT_COUNT) {
+		pe[port].dr_swap_attempt_counter++;
+		//PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+		//set_state_pe(port, PE_DRS_SEND_SWAP);
 		set_state_pe(port, get_last_state_pe(port));
 		return true;
 	}
@@ -1529,9 +1543,11 @@ static bool pe_attempt_port_discovery(int port)
 
 
 
-		if(!pe_can_send_sop_prime(port)){
+		if(!pe_can_send_sop_prime(port) && 
+				pe[port].vconn_swap_counter < N_VCONN_SWAP_COUNT &&
+				pe[port].dr_swap_attempt_counter < N_DR_SWAP_ATTEMPT_COUNT ){
 			CPRINTS("C%d: ATTEMPT NOT vcs (+ dfp PD2), fixing'", port);
-			//PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
+			PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
 			PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
 			//if (port_try_vconn_swap(port)){
 			//	CPRINTS("C%d: ATTEMPT true'", port);
@@ -1548,9 +1564,17 @@ static bool pe_attempt_port_discovery(int port)
 
 		CPRINTS("C%d: ATTEMPT DR swap to DFP", port);
 		if (pe[port].data_role == PD_ROLE_UFP) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-			set_state_pe(port, PE_DRS_SEND_SWAP);
-			return true;
+			//PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+			//set_state_pe(port, PE_DRS_SEND_SWAP);
+			if (port_try_dr_swap(port) == true) {
+				CPRINTS("C%d: ATTEMPT DR swap to DFP [state change]", port);
+				PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+				set_state_pe(port, PE_DRS_SEND_SWAP);
+				return true;
+			}
+			else {
+				CPRINTS("C%d: ATTEMPT DR swap to DFP [FAILED!]", port);
+			}
 		}
 	}
 
@@ -1559,11 +1583,20 @@ static bool pe_attempt_port_discovery(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
 
 		CPRINTS("C%d: ATTEMPT VC swap to SRC", port);
-		usleep(2000);
+		//usleep(2000);
 		if (!tc_is_vconn_src(port)) {
-			PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
-			set_state_pe(port, PE_VCS_SEND_SWAP);
-			return true;
+			//PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);
+			//set_state_pe(port, PE_VCS_SEND_SWAP);
+			//return true;
+			if (port_try_vconn_swap(port) == true) {
+				CPRINTS("C%d: ATTEMPT VC swap to SRC [state change]", port);
+				PE_SET_FLAG(port, PE_FLAGS_LOCALLY_INITIATED_AMS);				
+				set_state_pe(port, PE_VCS_SEND_SWAP);
+				return true;
+			}
+			else {
+				CPRINTS("C%d: ATTEMPT VC swap to SRC [FAILED!]", port);
+			}
 		}
 	}
 
@@ -1625,7 +1658,8 @@ static bool pe_attempt_port_discovery(int port)
 		}
 	}
 
-	CPRINTS("C%d: ATTEMPT bailout", port);
+	//CPRINTS("C%d: ATTEMPT bailout", port);
+	//Spammy
 	return false;
 }
 #endif
