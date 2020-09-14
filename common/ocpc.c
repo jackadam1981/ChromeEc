@@ -31,6 +31,11 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+#define CPRINT_VIZ(format, args...) \
+do {							\
+	if (viz_output)				\
+		cprintf(CC_CHARGER, format, ## args);	\
+} while (0)
 #define CPRINTS_DBG(format, args...) \
 do {							\
 	if (debug_output)				\
@@ -47,6 +52,7 @@ static int k_p_div = KP_DIV;
 static int k_i_div = KI_DIV;
 static int k_d_div = KD_DIV;
 static int debug_output;
+static int viz_output;
 
 enum phase {
 	PHASE_UNKNOWN = -1,
@@ -120,6 +126,7 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 	static int iterations;
 	int i_step;
 	static timestamp_t delay;
+	int i, step, loc;
 
 	/*
 	 * There's nothing to do if we're not using this charger.  Should
@@ -331,6 +338,27 @@ set_vsys:
 	charger_set_voltage(CHARGER_SECONDARY, vsys_target);
 	ocpc->last_vsys = vsys_target;
 
+	/*
+	 * Print a visualization graph of the actual current vs. the target.
+	 * Each position represents 5% of the target current.
+	 */
+	if (i_ma != 0) {
+		step = 5 * i_ma / 100;
+		loc = error / step;
+		loc = CLAMP(loc, -10, 10);
+		CPRINT_VIZ("[");
+		for (i = -10; i <= 10; i++) {
+			if ((i == 0) && (loc == 0))
+				CPRINT_VIZ("#");
+			else if (i == 0)
+				CPRINT_VIZ("|");
+			else
+				CPRINT_VIZ(i == loc ? "o" : "-");
+		}
+		CPRINT_VIZ("] (actual)%dmA (desired)%dmA\n", batt.current,
+			   batt.desired_current);
+	}
+
 	return rv;
 }
 
@@ -408,11 +436,16 @@ static int command_ocpcdebug(int argc, char **argv)
 	if (!parse_bool(argv[1], &debug_output))
 		return EC_ERROR_PARAM1;
 
+	if ((argc == 3 ) && (!parse_bool(argv[2], &viz_output)))
+		return EC_ERROR_PARAM2;
+
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(ocpcdebug, command_ocpcdebug,
-			     "<enable/disable>",
-			     "enable/disable debug prints for OCPC data");
+			     "<enable/disable> <enable/disable>",
+			     "Enable/disable debug prints for OCPC data. "
+			     "1st setting is debug, 2nd is viz graph. "
+			     "Each segment is 5% of current target.");
 
 static int command_ocpcpid(int argc, char **argv)
 {
