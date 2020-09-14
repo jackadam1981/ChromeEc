@@ -17,20 +17,15 @@
 #include "usb_gpio.h"
 #include "usb-stream.h"
 #include "util.h"
-#include "usb_mux.h"
-#include "usb_charge.h"
 #include "usb_common.h"
-#include "usb_pd_tcpm.h"
-#include "usb_pd.h"
-#include "charge_state.h"
-#include "tcpm.h"
 #include "i2c.h"
-#include "power.h"
-#include "power_button.h"
 #include "lcd.h"
 #include "fusb307.h"
 #include "printf.h"
 #include "timer.h"
+#include "pi3usb9201.h"
+#include "usb_charge.h"
+#include "tcpci.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -227,6 +222,29 @@ const struct i2c_port_t i2c_ports[] = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /******************************************************************************
+ * USB-Charger
+ */
+const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
+	{
+		.i2c_port = I2C_PORT_BC12,
+		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
+		.flags = PI3USB9201_ALWAYS_POWERED,
+	},
+};
+
+void bc12_interrupt(enum gpio_signal signal)
+{
+	/* task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0); */
+}
+
+int board_is_sourcing_vbus(int port)
+{
+	int regval;
+	tcpc_read(port, TCPC_REG_POWER_STATUS, &regval);
+	return !!(regval & TCPC_REG_POWER_STATUS_SOURCING_VBUS);
+}
+
+/******************************************************************************
  * PD
  */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
@@ -278,12 +296,12 @@ int board_vbus_source_enabled(int port)
 	return vbus_en;
 }
 
-void pd_set_input_current_limit(int port, uint32_t max_ma,
+/*void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
-	/* No battery, nothing to do */
+	 No battery, nothing to do
 	return;
-}
+}*/
 
 void pd_power_supply_reset(int port)
 {
@@ -324,6 +342,8 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USER_BUTTON_DOWN);
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
+	/* Enable BC12 interrupt */
+	gpio_enable_interrupt(GPIO_BC12_EC_INT_ODL);
 
 	lcd_init(20, 4, 0);
 	lcd_setCursor(0, 0);

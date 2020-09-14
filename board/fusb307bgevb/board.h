@@ -62,8 +62,16 @@
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY 160000  /* us */
 
+/* USB Charger configuration */
+#define CONFIG_BC12_DETECT_PI3USB9201
+#define CONFIG_USB_CHARGER
+#define CONFIG_USB_PD_5V_EN_CUSTOM
+#define CONFIG_CHARGE_MANAGER
+#define CONFIG_USB_PD_VBUS_MEASURE_TCPC
+
 /* I2C master port connected to the TCPC */
-#define I2C_PORT_TCPC 1
+#define I2C_PORT_TCPC	1
+#define I2C_PORT_BC12	1
 #define I2C_PORT_CHARGER 0
 
 /* LCD Configuration */
@@ -98,16 +106,15 @@
 
 #ifndef __ASSEMBLER__
 
-/*enum adc_channel {
-	Real ADC channels begin here 
+enum adc_channel {
+	/* Real ADC channels begin here */
 	ADC_BOARD_ID = 0,
 	ADC_EC_SKU_ID,
 	ADC_BATT_ID,
-	ADC_POGO_ADC_INT_L,
 	ADC_CH_COUNT
 };
 
-enum charge_port {
+/* enum charge_port {
 	CHARGE_PORT_USB_C,
 };*/
 
@@ -129,6 +136,8 @@ enum usb_strings {
 };
 
 void board_reset_pd_mcu(void);
+void bc12_interrupt(enum gpio_signal signal);
+int board_is_sourcing_vbus(int port);
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
