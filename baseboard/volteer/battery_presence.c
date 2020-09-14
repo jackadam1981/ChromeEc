@@ -31,7 +31,7 @@ static bool battery_init(void)
 /*
  * Physical detection of battery.
  */
-static enum battery_present battery_check_present_status(void)
+__overridable enum battery_present battery_check_present_status(void)
 {
 	enum battery_present batt_pres;
 
