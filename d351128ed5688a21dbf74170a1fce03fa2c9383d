@@ -16,6 +16,24 @@
       "revId": "d351128ed5688a21dbf74170a1fce03fa2c9383d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74039e61_38659bf6",
+        "filename": "common/usb_pd_alt_mode_ufp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-15T05:14:04Z",
+      "side": 1,
+      "message": "All __overridable functions are usually defined in the board files",
+      "parentUuid": "dc6cf09a_0a6684db",
+      "revId": "d351128ed5688a21dbf74170a1fce03fa2c9383d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
