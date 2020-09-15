@@ -1115,6 +1115,174 @@ int cmd_reboot_ap_on_g3(int argc, char *argv[])
 	return (rv < 0 ? rv : 0);
 }
 
+int cmd_regulator_info(int argc, char *argv[])
+{
+	struct ec_params_regulator_get_info p;
+	struct ec_response_regulator_get_info r;
+	char *e;
+	int rv;
+	int i;
+
+	if (argc < 2) {
+		fprintf(stderr, "Invalid num param %d.\n", argc);
+		return -1;
+	}
+
+	p.index = strtol(argv[1], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid index argument\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_REGULATOR_GET_INFO, 0, &p, sizeof(p), &r,
+			sizeof(r));
+
+	if (rv < 0)
+		return rv;
+
+	printf("regulator(%d) %s, total %d voltages:\n", p.index, r.name,
+	       r.num_voltages);
+	for (i = 0; i < r.num_voltages; i++)
+		printf("%2d: %umV\n", i, r.voltages_mv[i]);
+
+	return 0;
+}
+
+int cmd_regulator_get(int argc, char *argv[])
+{
+	struct ec_params_regulator_get_voltage p;
+	struct ec_response_regulator_get_voltage r;
+	char *e;
+	int rv;
+
+	if (argc < 2) {
+		fprintf(stderr, "Invalid num param %d.\n", argc);
+		return -1;
+	}
+
+	p.index = strtol(argv[1], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid index argument\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_REGULATOR_GET_VOLTAGE, 0, &p, sizeof(p), &r,
+			sizeof(r));
+
+	if (rv < 0) {
+		fprintf(stderr, "Get regulator voltage failed.\n");
+		return rv;
+	}
+
+	printf("%umV\n", r.voltage_mv);
+
+	return 0;
+}
+
+int cmd_regulator_set(int argc, char *argv[])
+{
+	struct ec_params_regulator_set_voltage p;
+	char *e;
+	int rv;
+
+	if (argc < 4) {
+		fprintf(stderr, "Invalid num param %d.\n", argc);
+		return -1;
+	}
+
+	p.index = strtol(argv[1], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid index argument\n");
+		return -1;
+	}
+
+	p.min_mv = strtol(argv[2], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid index argument\n");
+		return -1;
+	}
+
+	p.max_mv = strtol(argv[3], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid index argument\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_REGULATOR_SET_VOLTAGE, 0, &p, sizeof(p), NULL,
+			0);
+
+	if (rv < 0) {
+		fprintf(stderr, "Set regulator voltage failed.\n");
+		return rv;
+	}
+
+	return 0;
+}
+
+int cmd_regulator_enable(int argc, char *argv[])
+{
+	struct ec_params_regulator_enable p;
+	char *e;
+	int rv;
+
+	if (argc < 3) {
+		fprintf(stderr, "Invalid num param %d.\n", argc);
+		return -1;
+	}
+
+	p.index = strtol(argv[1], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid index argument\n");
+		return -1;
+	}
+
+	p.enable = strtol(argv[2], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid index argument\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_REGULATOR_ENABLE, 0, &p, sizeof(p), NULL, 0);
+
+	if (rv < 0) {
+		fprintf(stderr, "Enable/disable regulator failed.\n");
+		return rv;
+	}
+
+	return 0;
+}
+
+int cmd_regulator_is_enabled(int argc, char *argv[])
+{
+	struct ec_params_regulator_is_enabled p;
+	struct ec_response_regulator_is_enabled r;
+	char *e;
+	int rv;
+
+	if (argc < 2) {
+		fprintf(stderr, "Invalid num param %d.\n", argc);
+		return -1;
+	}
+
+	p.index = strtol(argv[1], &e, 0);
+	if ((e && *e) || (errno == ERANGE)) {
+		fprintf(stderr, "Invalid index argument\n");
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_REGULATOR_IS_ENABLED, 0, &p, sizeof(p), &r,
+			sizeof(r));
+
+	if (rv < 0) {
+		fprintf(stderr, "Get regulator enabled failed.\n");
+		return rv;
+	}
+
+	printf("%d\n", r.enabled);
+
+	return 0;
+}
+
 int cmd_button(int argc, char *argv[])
 {
 	struct ec_params_button p;
@@ -9878,6 +10046,11 @@ const struct command commands[] = {
 	{"rand", cmd_rand},
 	{"readtest", cmd_read_test},
 	{"reboot_ec", cmd_reboot_ec},
+	{"regulatorinfo", cmd_regulator_info},
+	{"regulatorget", cmd_regulator_get},
+	{"regulatorset", cmd_regulator_set},
+	{"regulatoren", cmd_regulator_enable},
+	{"regulatorisen", cmd_regulator_is_enabled},
 	{"rollbackinfo", cmd_rollback_info},
 	{"rtcget", cmd_rtc_get},
 	{"rtcgetalarm", cmd_rtc_get_alarm},
