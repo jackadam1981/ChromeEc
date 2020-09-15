@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfd04a4d_82d37f03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-09-15T16:06:19Z",
+      "side": 1,
+      "message": "This isn\u0027t a clean revert. You should first revert 7766098000110567b5e551a05b5d91ef85b29f3c, then this reverts cleanly.",
+      "revId": "498a75548bc4c0bd2bb9e8f5235251829eed146b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
