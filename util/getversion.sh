@@ -148,6 +148,9 @@ main() {
       if [[ "${git_dir}" == "." ]]; then
         # Truncate to 31 chars to leave room for terminating NUL that is
         # automatically added to constant C strings.
+        if [[ "${ver:0:31}" != "${ver}" ]]; then
+          echo "# Error getversion.sh: version string is being truncated from '${ver}' to '${ver:0:31}'!" >&2
+        fi
         ver_32="${ver:0:31}"
         ver="${ver_32}"
       fi
