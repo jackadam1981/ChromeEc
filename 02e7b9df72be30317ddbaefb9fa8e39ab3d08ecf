@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0e0323ba_ddf64103",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T11:40:48Z",
+      "side": 1,
+      "message": "ya, the actual \"tabify\" is an emacs function. i was just referring\nany utility that\u0027ll convert indentation using spaces to tabs. most\nof the EC code uses tabs.",
+      "parentUuid": "6d75a0f5_2423f760",
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9aacca96_33b51639",
         "filename": "chip/npcx/registers-npcx5.h",
         "patchSetId": 2
