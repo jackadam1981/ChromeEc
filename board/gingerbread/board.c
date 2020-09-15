@@ -50,7 +50,9 @@ static void tcpc_alert_event(enum gpio_signal s)
 		return;
 	}
 
+	board_debug_gpio(TRIGGER_1, 1);
 	schedule_deferred_pd_interrupt(port);
+	board_debug_gpio(TRIGGER_1, 0);
 }
 
 static void ppc_interrupt(enum gpio_signal signal)
@@ -207,16 +209,6 @@ static void board_select_drp_mode(void)
 }
 DECLARE_DEFERRED(board_select_drp_mode);
 
-static void board_manage_led(void)
-{
-	static int counter;
-
-	gpio_set_level(GPIO_STATUS_LED1, counter & 1);
-	gpio_set_level(GPIO_STATUS_LED2, counter & 1);
-	counter++;
-}
-DECLARE_HOOK(HOOK_SECOND,board_manage_led, HOOK_PRIO_DEFAULT);
-
 static void board_init(void)
 {
 	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
@@ -236,12 +228,6 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	/* TODO: b/ - check correct operation for honeybuns */
 }
 
-static void board_tcpc_deferred(void)
-{
-	board_debug_gpio(TRIGGER_2, 0);
-}
-DECLARE_DEFERRED(board_tcpc_deferred);
-
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
@@ -251,7 +237,6 @@ uint16_t tcpc_get_alert_status(void)
 		level = !!(tcpc_config[USB_PD_PORT_DP].flags &
 			   TCPC_FLAGS_RESET_ACTIVE_HIGH);
 		if (gpio_get_level(GPIO_USBC_DP_PD_RST_L) != level) {
-			hook_call_deferred(&board_tcpc_deferred_data, 100);
 			status |= PD_STATUS_TCPC_ALERT_1;
 		}
 	}
