@@ -16,6 +16,69 @@
       "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bdfd8f1_3d87912d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-15T22:01:28Z",
+      "side": 1,
+      "message": "General comments",
+      "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2b62f37_e59be475",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-15T22:01:28Z",
+      "side": 1,
+      "message": "Based on the reply from SM, the only things we should do on suspend with anything plugged in would be disabling the PSYS DAC or PROCHOT comparators.",
+      "range": {
+        "startLine": 741,
+        "startChar": 0,
+        "endLine": 741,
+        "endChar": 31
+      },
+      "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b65adcd5_ed03018b",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-15T22:01:28Z",
+      "side": 1,
+      "message": "Slowing the clock, disabling the ADC SD, and disabling the ADCs can happen with nothing attached.\n\nThe simplest way to achieve this may be through the source/sink enable/disable path, though Aseda may have better ideas there.",
+      "range": {
+        "startLine": 762,
+        "startChar": 0,
+        "endLine": 765,
+        "endChar": 54
+      },
+      "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
