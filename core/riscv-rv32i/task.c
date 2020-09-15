@@ -199,17 +199,6 @@ void __ram_code interrupt_enable(void)
 	asm volatile ("csrs  mie, t0");
 }
 
-uint32_t interrupt_disable_arch(void)
-{
-	/* TODO: implement me. */
-	return 0;
-}
-
-void interrupt_enable_arch(uint32_t interrupt_bit)
-{
-	/* TODO: implement me. */
-}
-
 inline int in_interrupt_context(void)
 {
 	return in_interrupt;
@@ -492,6 +481,16 @@ uint32_t __ram_code read_clear_int_mask(void)
 void __ram_code set_int_mask(uint32_t val)
 {
 	asm volatile ("csrw mie, %0" : : "r"(val));
+}
+
+uint32_t __ram_code interrupt_disable_arch(void)
+{
+	return read_clear_int_mask();
+}
+
+void __ram_code interrupt_enable_arch(uint32_t interrupt_bit)
+{
+	set_int_mask(interrupt_bit);
 }
 
 void task_enable_all_tasks(void)
