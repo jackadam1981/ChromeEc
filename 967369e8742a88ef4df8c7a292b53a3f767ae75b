@@ -22,6 +22,30 @@
       "revId": "967369e8742a88ef4df8c7a292b53a3f767ae75b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946eba18_69e3d023",
+        "filename": "include/task.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-09-15T09:51:12Z",
+      "side": 1,
+      "message": "Done.\n\nYes, all cores should support this, so these two routines can be called recursively. And we can replace interrupt_disable() and interrupt_enable() once all cores support this.",
+      "parentUuid": "11e72e35_4ad060e4",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "967369e8742a88ef4df8c7a292b53a3f767ae75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
