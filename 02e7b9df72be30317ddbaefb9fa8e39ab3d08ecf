@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "bb5c7da0_275f3316",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:59:05Z",
+      "side": 1,
+      "message": "We use spaces as indentation because we just follow the format of the register.h  in chip/lm4/, chip/stm/, chip/mecc1322 when we started to add our EC driver long time ago. If you think it is better to change it from space to tab, I will follow and modify it.",
+      "parentUuid": "0e0323ba_ddf64103",
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9aacca96_33b51639",
         "filename": "chip/npcx/registers-npcx5.h",
         "patchSetId": 2
