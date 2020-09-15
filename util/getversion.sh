@@ -143,16 +143,16 @@ main() {
       ver+=" ${component}:"
       fi
       ver+="${vbase}"
-      tool_ver+="${vbase}"
 
       if [[ "${git_dir}" == "." ]]; then
+        # Tool version only tracks main EC repo.
+        tool_ver+="${vbase}"
         # Truncate to 31 chars to leave room for terminating NUL that is
         # automatically added to constant C strings.
         ver_32="${ver:0:31}"
         if [[ "${ver_32}" != "${ver}" ]]; then
           echo "# Error getversion.sh: version string is being truncated from '${ver}' to '${ver:0:31}'!" >&2
         fi
-        ver="${ver_32}"
       fi
 
       popd > /dev/null || exit 1
