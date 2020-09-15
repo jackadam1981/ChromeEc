@@ -54,6 +54,23 @@
     },
     {
       "key": {
+        "uuid": "b6ce075a_fabce0ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-09-15T16:13:11Z",
+      "side": 1,
+      "message": "Aseda/Diana: Is the overall approach is correct to proceed further? Otherwise each charger is consuming ~24mW in S0ix state and it is more than the SoC power. ",
+      "revId": "38625d891b44a4c4c5929cd47087f15109c99b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f36f3197_ec346f38",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 2
