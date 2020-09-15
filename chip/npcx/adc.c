@@ -40,6 +40,8 @@ enum npcx_adc_conversion_mode {
 /* Global variables */
 static volatile task_id_t task_waiting;
 
+struct mutex adc_lock;
+
 /**
  * Preset ADC operation clock.
  *
@@ -78,6 +80,9 @@ static int start_single_and_wait(enum npcx_adc_input_channel input_ch
 
 	task_waiting = task_get_current();
 
+	/* Stop ADC conversion first */
+	SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_STOP);
+
 	/* Set ADC conversion code to SW conversion mode */
 	SET_FIELD(NPCX_ADCCNF, NPCX_ADCCNF_ADCMD_FIELD,
 			ADC_CHN_CONVERSION_MODE);
@@ -109,6 +114,11 @@ static int start_single_and_wait(enum npcx_adc_input_channel input_ch
 static uint16_t repetitive_enabled;
 void npcx_set_adc_repetitive(enum npcx_adc_input_channel input_ch, int enable)
 {
+	mutex_lock(&adc_lock);
+
+	/* Stop ADC conversion */
+	SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_STOP);
+
 	if (enable) {
 		/* Forbid EC enter deep sleep during conversion. */
 		disable_sleep(SLEEP_MASK_ADC);
@@ -126,21 +136,45 @@ void npcx_set_adc_repetitive(enum npcx_adc_input_channel input_ch, int enable)
 		/* Start conversion */
 		SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_START);
 	} else {
-		CLEAR_BIT(NPCX_ADCCNF, NPCX_ADCCNF_ADCRPTC);
 		CLEAR_BIT(NPCX_ADCCS, input_ch);
 		repetitive_enabled &= ~BIT(input_ch);
 
 		if (!repetitive_enabled) {
 			/* Turn off ADC */
 			CLEAR_BIT(NPCX_ADCCNF, NPCX_ADCCNF_ADCEN);
+			/* Set ADC to one-shot mode */
+			CLEAR_BIT(NPCX_ADCCNF, NPCX_ADCCNF_ADCRPTC);
 			/* Allow ec enter deep sleep */
 			enable_sleep(SLEEP_MASK_ADC);
+		} else {
+			/* Start conversion again */
+			SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_START);
 		}
 	}
+
+	mutex_unlock(&adc_lock);
 }
 
 /**
- * ADC read specific channel.
+ * Return the ADC value from CHNDAT register directly.
+ *
+ * @param   input_ch    channel number
+ * @return  ADC data
+ */
+int adc_read_data(enum npcx_adc_input_channel input_ch)
+{
+	const struct adc_t *adc = adc_channels + input_ch;
+	int value;
+	uint16_t chn_data;
+
+	chn_data = NPCX_CHNDAT(adc->input_ch);
+	value = GET_FIELD(chn_data, NPCX_CHNDAT_CHDAT_FIELD) *
+		 adc->factor_mul / adc->factor_div + adc->shift;
+	return value;
+}
+
+/**
+ * Start a single conversion and return the result
  *
  * @param   ch    operation channel
  * @return  ADC converted voltage or error message
@@ -148,7 +182,6 @@ void npcx_set_adc_repetitive(enum npcx_adc_input_channel input_ch, int enable)
 int adc_read_channel(enum adc_channel ch)
 {
 	const struct adc_t *adc = adc_channels + ch;
-	static struct mutex adc_lock;
 	int value;
 	uint16_t chn_data;
 
@@ -156,6 +189,7 @@ int adc_read_channel(enum adc_channel ch)
 
 	/* Forbid ec enter deep sleep during ADC conversion is proceeding. */
 	disable_sleep(SLEEP_MASK_ADC);
+
 	/* Turn on ADC */
 	SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_ADCEN);
 
@@ -179,6 +213,14 @@ int adc_read_channel(enum adc_channel ch)
 		CLEAR_BIT(NPCX_ADCCNF, NPCX_ADCCNF_ADCEN);
 		/* Allow ec enter deep sleep */
 		enable_sleep(SLEEP_MASK_ADC);
+	} else {
+		/* Set ADC conversion code to SW conversion mode */
+		SET_FIELD(NPCX_ADCCNF, NPCX_ADCCNF_ADCMD_FIELD,
+		  ADC_SCAN_CONVERSION_MODE);
+		/* Set conversion type to repetitive (runs continuously) */
+		SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_ADCRPTC);
+		/* Start conversion */
+		SET_BIT(NPCX_ADCCNF, NPCX_ADCCNF_START);
 	}
 
 	mutex_unlock(&adc_lock);
