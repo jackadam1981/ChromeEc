@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce401dc7_2e61c836",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:42:35Z",
+      "side": 1,
+      "message": "i\u0027d suggest running this whole file through tabify\nfor consistency.",
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aacca96_33b51639",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:42:35Z",
+      "side": 1,
+      "message": "this should line up",
+      "range": {
+        "startLine": 92,
+        "startChar": 39,
+        "endLine": 92,
+        "endChar": 41
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb399dc_19967a1a",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:42:35Z",
+      "side": 1,
+      "message": "i\u0027d suggest not mixing tabs vs. spaces indentation style in a file.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 5
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70dcb46_15c0588e",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:42:35Z",
+      "side": 1,
+      "message": "indentation?",
+      "range": {
+        "startLine": 196,
+        "startChar": 41,
+        "endLine": 196,
+        "endChar": 42
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8fe2743_21d55893",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:42:35Z",
+      "side": 1,
+      "message": "indentation?",
+      "range": {
+        "startLine": 264,
+        "startChar": 40,
+        "endLine": 264,
+        "endChar": 41
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87509366_64050bff",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:42:35Z",
+      "side": 1,
+      "message": "indentation in this section",
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5617f0_693c392e",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:42:35Z",
+      "side": 1,
+      "message": "(offset)",
+      "range": {
+        "startLine": 292,
+        "startChar": 73,
+        "endLine": 292,
+        "endChar": 79
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05cf9527_671f3b55",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:42:35Z",
+      "side": 1,
+      "message": "((e) \u003c\u003c 2)",
+      "range": {
+        "startLine": 460,
+        "startChar": 38,
+        "endLine": 460,
+        "endChar": 45
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b65ae290_a32522b0",
+        "filename": "chip/npcx/registers-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:42:35Z",
+      "side": 1,
+      "message": "(offset)",
+      "range": {
+        "startLine": 283,
+        "startChar": 73,
+        "endLine": 283,
+        "endChar": 79
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db31f6cd_262a0225",
+        "filename": "chip/npcx/registers-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:42:35Z",
+      "side": 1,
+      "message": "((e) \u003c\u003c 20)",
+      "range": {
+        "startLine": 419,
+        "startChar": 38,
+        "endLine": 419,
+        "endChar": 45
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
