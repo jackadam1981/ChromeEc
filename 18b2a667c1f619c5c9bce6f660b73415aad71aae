@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd2bf8d9_cb08e8cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-09-15T21:55:35Z",
+      "side": 1,
+      "message": "Aseda/Diana,\n\nfollowing use cases are verified on both MB/SB\n1. Enter S0ix state w/o any charger connected\n  - Connect charger - verified charging \n  - Multiple hot plug - verified charging\n  - Resume and check charger - verified charging\n2. Enter S0ix state w/ charger connected\n  - Charging continue to work\n  - Multiple hot plug - verified charging\n  - Resume and check charger - verified charging\n\nPending\n1. Power measurement with latest change\n2. Sourcing during suspend/resume\n3. USB device and DP display functionality during suspend/resume",
+      "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
