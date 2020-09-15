@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d75a0f5_2423f760",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:28:57Z",
+      "side": 1,
+      "message": "Could you guide me about what tabify is? Is it a kind of automatic tool for indentation?\nAnyway, I reviewed register-npcx5.h, register-npcx7.h, and register-npcx9.h and modified the indentation manually as consistent as possible.",
+      "parentUuid": "ce401dc7_2e61c836",
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9aacca96_33b51639",
         "filename": "chip/npcx/registers-npcx5.h",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "de0511b3_490fd70d",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9aacca96_33b51639",
+      "range": {
+        "startLine": 92,
+        "startChar": 39,
+        "endLine": 92,
+        "endChar": 41
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edb399dc_19967a1a",
         "filename": "chip/npcx/registers-npcx5.h",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2020-09-15T07:42:35Z",
       "side": 1,
       "message": "i\u0027d suggest not mixing tabs vs. spaces indentation style in a file.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 5
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f53fb5e_2489e062",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:28:57Z",
+      "side": 1,
+      "message": "If I changed the tab here to space, the checkpatch.pl script complains with the error message:\n\"ERROR: code indent should use tabs where possible\"",
+      "parentUuid": "edb399dc_19967a1a",
       "range": {
         "startLine": 93,
         "startChar": 0,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "68864c6d_3208cd01",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c70dcb46_15c0588e",
+      "range": {
+        "startLine": 196,
+        "startChar": 41,
+        "endLine": 196,
+        "endChar": 42
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8fe2743_21d55893",
         "filename": "chip/npcx/registers-npcx5.h",
         "patchSetId": 2
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c51eb69a_856a3f69",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8fe2743_21d55893",
+      "range": {
+        "startLine": 264,
+        "startChar": 40,
+        "endLine": 264,
+        "endChar": 41
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87509366_64050bff",
         "filename": "chip/npcx/registers-npcx5.h",
         "patchSetId": 2
@@ -125,6 +239,24 @@
       "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6168508a_0b8d4818",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "87509366_64050bff",
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "97a06c60_0021c2d7",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3b5617f0_693c392e",
+      "range": {
+        "startLine": 292,
+        "startChar": 73,
+        "endLine": 292,
+        "endChar": 79
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05cf9527_671f3b55",
         "filename": "chip/npcx/registers-npcx7.h",
         "patchSetId": 2
@@ -171,6 +327,30 @@
       "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eae4091_2543680f",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "05cf9527_671f3b55",
+      "range": {
+        "startLine": 460,
+        "startChar": 38,
+        "endLine": 460,
+        "endChar": 45
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "8d560693_6f7e30d1",
+        "filename": "chip/npcx/registers-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b65ae290_a32522b0",
+      "range": {
+        "startLine": 283,
+        "startChar": 73,
+        "endLine": 283,
+        "endChar": 79
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db31f6cd_262a0225",
         "filename": "chip/npcx/registers-npcx9.h",
         "patchSetId": 2
@@ -217,6 +421,30 @@
       "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ff81c8_d7bb67b3",
+        "filename": "chip/npcx/registers-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db31f6cd_262a0225",
+      "range": {
+        "startLine": 419,
+        "startChar": 38,
+        "endLine": 419,
+        "endChar": 45
+      },
+      "revId": "02e7b9df72be30317ddbaefb9fa8e39ab3d08ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
