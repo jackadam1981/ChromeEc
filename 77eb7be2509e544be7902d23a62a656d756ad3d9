@@ -22,6 +22,30 @@
       "revId": "77eb7be2509e544be7902d23a62a656d756ad3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2059ee5_2378a52c",
+        "filename": "board/coachz/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-15T17:18:02Z",
+      "side": 1,
+      "message": "I don\u0027t know the plan. These definitions are based on the schematic \"V1_20200903\". There are small words \"ns\" next to the series resistors on the I2C bus.\n\nWill do the corresponding change when the hardware is updated.",
+      "parentUuid": "6e779ca9_4d1fc037",
+      "range": {
+        "startLine": 124,
+        "startChar": 71,
+        "endLine": 124,
+        "endChar": 77
+      },
+      "revId": "77eb7be2509e544be7902d23a62a656d756ad3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
