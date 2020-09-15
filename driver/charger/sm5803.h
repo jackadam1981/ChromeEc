@@ -335,6 +335,9 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable);
 void sm5803_hibernate(int chgnum);
 void sm5803_interrupt(int chgnum);
 
+void sm5803_resume(int chgnum);
+void sm5803_suspend(int chgnum);
+
 extern const struct charger_drv sm5803_drv;
 
 #endif
