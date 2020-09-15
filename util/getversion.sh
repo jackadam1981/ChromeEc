@@ -153,7 +153,6 @@ main() {
         if [[ "${ver_32}" != "${ver}" ]]; then
           echo "# Error getversion.sh: version string is being truncated from '${ver}' to '${ver:0:31}'!" >&2
         fi
-        ver="${ver_32}"
       fi
 
       popd > /dev/null || exit 1
