@@ -16,6 +16,24 @@
       "revId": "b320dda0d08ecf509acf24827fdc82fa36e3b266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efb10a0_db74cc98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-15T11:58:39Z",
+      "side": 1,
+      "message": "Does this abnormal behavior happen only after applying these patch-sets?\nI tested on yorp (NPCX796fb without EFS) and I cannot see the symptom.\nCould you check the other platforms?",
+      "parentUuid": "44a7ff37_6df5d58b",
+      "revId": "b320dda0d08ecf509acf24827fdc82fa36e3b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
