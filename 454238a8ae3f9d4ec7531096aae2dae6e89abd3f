@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4372f66c_6a04d476",
+        "filename": "chip/npcx/gpio-npcx5.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:43:14Z",
+      "side": 1,
+      "message": "i think most of the simple uses of \"#ifdef CONFIG_...\" can be\nwritten using \"IS_ENABLED(CONFIG_...)\" as a term\nin the conditionals. the compiler should just\noptimize out the cases that can\u0027t be reached.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "454238a8ae3f9d4ec7531096aae2dae6e89abd3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f5ac83_ddd3ad19",
+        "filename": "chip/npcx/gpio_chip-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:43:14Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "454238a8ae3f9d4ec7531096aae2dae6e89abd3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "420dc8c4_84270b86",
+        "filename": "chip/npcx/gpio_chip-npcx9.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T07:43:14Z",
+      "side": 1,
+      "message": "does NPCX7_... naming still make sense here?",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 9
+      },
+      "revId": "454238a8ae3f9d4ec7531096aae2dae6e89abd3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
