@@ -16,6 +16,24 @@
       "revId": "72cfb665368c5303448c5ed61b477afb240603cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "182e27d9_00caec70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-15T03:14:34Z",
+      "side": 1,
+      "message": "\"a few months ago\", actually a few years ago :)\nI abandoned CL:1058432 after CR-1 from Randall and Vincent, so see their comments.\nI currently use CL:1940783 for my local builds when I want reliable console output.",
+      "parentUuid": "e994d2da_e195fae4",
+      "revId": "72cfb665368c5303448c5ed61b477afb240603cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
