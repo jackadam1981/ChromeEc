@@ -79,6 +79,30 @@
       "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b72968a_ad6562c5",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-15T23:28:19Z",
+      "side": 1,
+      "message": "Perhaps we could use the HOOK_USB_PD_DISCONNECT/CONNECT hooks?",
+      "parentUuid": "b65adcd5_ed03018b",
+      "range": {
+        "startLine": 762,
+        "startChar": 0,
+        "endLine": 765,
+        "endChar": 54
+      },
+      "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
