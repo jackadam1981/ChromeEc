@@ -61,6 +61,7 @@ void pd_interrupt_handler_task(void *p)
 		const int evt = task_wait_event(-1);
 
 		if (evt & PD_PROCESS_INTERRUPT) {
+			CPRINTS("usbc[%d]: interrupt", port);
 			/*
 			 * While the interrupt signal is asserted; we have more
 			 * work to do. This effectively makes the interrupt a
