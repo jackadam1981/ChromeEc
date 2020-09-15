@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2b08a83_6ef21fe9",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-15T17:34:21Z",
+      "side": 1,
+      "message": "Disable. Though should this be necessary if we\u0027re not setting it anywhere?",
+      "range": {
+        "startLine": 297,
+        "startChar": 7,
+        "endLine": 297,
+        "endChar": 13
+      },
+      "revId": "1eeffcb87b609efa48fb845b67930815031d42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a096122d_0deb1ed0",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-15T17:34:21Z",
+      "side": 1,
+      "message": "Is this necessary on init, or necessary because we may have old register contents sitting around?",
+      "range": {
+        "startLine": 645,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 58
+      },
+      "revId": "1eeffcb87b609efa48fb845b67930815031d42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
