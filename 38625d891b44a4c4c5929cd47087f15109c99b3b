@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "ad6f0075_08e84a70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-15T16:24:09Z",
+      "side": 1,
+      "message": "We\u0027ll start a conversation with SM about what\u0027s safe to do here, and under what timing.  I\u0027ll add it to b/166648029",
+      "parentUuid": "b6ce075a_fabce0ed",
+      "revId": "38625d891b44a4c4c5929cd47087f15109c99b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f36f3197_ec346f38",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 2
