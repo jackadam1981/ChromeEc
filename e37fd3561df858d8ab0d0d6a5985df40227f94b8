@@ -22,6 +22,76 @@
       "revId": "e37fd3561df858d8ab0d0d6a5985df40227f94b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a942369_ad97a08e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-09-15T20:06:29Z",
+      "side": 1,
+      "message": "single parameter, disable/viz/enable/all?",
+      "parentUuid": "c5bcf3f8_7a5916cf",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "e37fd3561df858d8ab0d0d6a5985df40227f94b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1331a996_67de21dc",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-09-15T20:06:29Z",
+      "side": 1,
+      "message": "seems like these could be combined into a single i\u003d\u003d0 case, similar to the else case",
+      "range": {
+        "startLine": 351,
+        "startChar": 3,
+        "endLine": 354,
+        "endChar": 20
+      },
+      "revId": "e37fd3561df858d8ab0d0d6a5985df40227f94b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a5e3b8_28cd7a8a",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2020-09-15T20:06:29Z",
+      "side": 1,
+      "message": "nit: remove space",
+      "range": {
+        "startLine": 439,
+        "startChar": 15,
+        "endLine": 439,
+        "endChar": 17
+      },
+      "revId": "e37fd3561df858d8ab0d0d6a5985df40227f94b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
