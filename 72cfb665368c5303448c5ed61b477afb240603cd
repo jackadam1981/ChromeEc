@@ -34,6 +34,24 @@
       "revId": "72cfb665368c5303448c5ed61b477afb240603cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28c8ea8c_3111ea64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-09-15T10:02:37Z",
+      "side": 1,
+      "message": "RISCV core has an atomic instruction \"csrrc\" to read and clear bits in CSR register. So on RISCV core, there is no race condition between read int_mask and interrupt disable.\n\nOn NDS32, I knew we have race condition in the sequence, so we have only two int_mask settings (interrupt enable/disable).\nTwo situation to be considered:\n- The sequence is invoked in interrupt disabled, no race condition here.\n- EC hits the race condition, this means EC saved int_mask as interrupt enable (because interrupt not yet disabled, interrupt still can be fired).\nSo EC can restore interrupt after critical section.",
+      "parentUuid": "182e27d9_00caec70",
+      "revId": "72cfb665368c5303448c5ed61b477afb240603cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
