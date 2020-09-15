@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44a7ff37_6df5d58b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-15T11:10:44Z",
+      "side": 1,
+      "message": "i\u0027ve been testing this patchset on volteer (NPCX796F C.02).\none anomaly i\u0027ve noticed is that the EC will no longer accept console\ninput after sysjump. output works fine.\nwe have EFS2 enabled, so sysjump happens\nvery early (under 400ms from EC boot). the only way to recover\nfrom this is to restart servod (using servo v2 board).\nthis is strange, i\u0027m not sure if restarting servod actually\naffects anything on the EC. maybe the EC is toggling something\non RX/TX that\u0027s confusing servod? maybe sending a break signal?",
+      "revId": "b320dda0d08ecf509acf24827fdc82fa36e3b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
