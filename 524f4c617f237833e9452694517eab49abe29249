@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "cbfc5422_b4e5f225",
+        "filename": "driver/tcpm/fusb307.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1442002
+      },
+      "writtenOn": "2020-09-15T02:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1caa9af1_e6960b60",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "524f4c617f237833e9452694517eab49abe29249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f56ff48_01b07dd8",
+        "filename": "driver/tcpm/fusb307.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1442002
+      },
+      "writtenOn": "2020-09-15T02:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b6ea274_e81e3e00",
+      "range": {
+        "startLine": 14,
+        "startChar": 24,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "524f4c617f237833e9452694517eab49abe29249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aebd139_958ba534",
         "filename": "driver/tcpm/fusb307.h",
         "patchSetId": 5
@@ -62,6 +110,24 @@
       "revId": "524f4c617f237833e9452694517eab49abe29249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a020bc47_aab960d9",
+        "filename": "driver/tcpm/fusb307.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1442002
+      },
+      "writtenOn": "2020-09-15T02:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aebd139_958ba534",
+      "revId": "524f4c617f237833e9452694517eab49abe29249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

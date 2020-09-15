@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f25d8f41_8d82e437",
+        "filename": "board/fusb307bgevb/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1442002
+      },
+      "writtenOn": "2020-09-15T02:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47baf3cd_23ef6fc0",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "00b416667e525e9e4ccccf6e5e1e3796a1376760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a05811a_81f9190f",
         "filename": "board/fusb307bgevb/fusb307.c",
         "patchSetId": 2
