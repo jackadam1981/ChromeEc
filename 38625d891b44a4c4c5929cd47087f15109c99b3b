@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0b3783ef_a766e70f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-09-15T16:07:11Z",
+      "side": 1,
+      "message": "Aseda: will check again all the functionality and come back.",
+      "parentUuid": "736341a7_6a1fee6e",
+      "revId": "38625d891b44a4c4c5929cd47087f15109c99b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f36f3197_ec346f38",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 2
@@ -59,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "68e0937a_e4a6639f",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-09-15T16:07:11Z",
+      "side": 1,
+      "message": "Diana: sure will check this.",
+      "parentUuid": "f36f3197_ec346f38",
+      "range": {
+        "startLine": 755,
+        "startChar": 0,
+        "endLine": 758,
+        "endChar": 54
+      },
+      "revId": "38625d891b44a4c4c5929cd47087f15109c99b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dad5720_80eea501",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 2
@@ -70,6 +112,30 @@
       "writtenOn": "2020-09-15T15:58:55Z",
       "side": 1,
       "message": "SM warned that two of these bits should never be cleared while we could have a charger plugged in or the chip could be damaged:\n#define SM5803_GPADCC1_VCHGPWR_EN       BIT(5)  /* NOTE: DO NOT CLEAR */\n#define SM5803_GPADCC1_VSYS_EN          BIT(6)  /* NOTE: DO NOT CLEAR */\n\nSo unless SM clears a use-case or timeline to add this back on plug-in I would strongly advise against this.",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 762,
+        "endChar": 56
+      },
+      "revId": "38625d891b44a4c4c5929cd47087f15109c99b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0340bdf4_7df6d0ec",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-09-15T16:07:11Z",
+      "side": 1,
+      "message": "We did not have a charger connected while enter S0ix for the power measurement purpose.\nAck, will remove this.",
+      "parentUuid": "2dad5720_80eea501",
       "range": {
         "startLine": 760,
         "startChar": 0,
