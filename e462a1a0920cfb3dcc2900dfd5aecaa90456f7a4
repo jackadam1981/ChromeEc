@@ -34,6 +34,24 @@
       "revId": "e462a1a0920cfb3dcc2900dfd5aecaa90456f7a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb30c034_fcf4f3c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-15T15:28:44Z",
+      "side": 1,
+      "message": "It looks like this feature is just enough to overflow our flash space.  \n\nOn ToT, it looks like we\u0027re running pretty short on flash space:\n  *** 1344 bytes in flash and 29536 bytes in RAM still available on magolor RO ****\n  *** 1344 bytes in flash and 29536 bytes in RAM still available on magolor RW ****\n\nWe\u0027ll need to figure out some places in the code to trim flash space here.  A couple of the easiest places would probably be removing the charger dump and TCPCI dump commands from magolor\u0027s board.h file.  I\u0027ll file a bug to take a closer look at where our flash space is going since this will only buy us so much time before we run out again.",
+      "parentUuid": "73d13c64_98e7b83a",
+      "revId": "e462a1a0920cfb3dcc2900dfd5aecaa90456f7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
