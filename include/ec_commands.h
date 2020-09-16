@@ -6351,6 +6351,18 @@ struct ec_response_typec_discovery {
 	struct svid_mode_info svids[0];
 } __ec_align1;
 
+/* USB Type-C commands for AP-controlled device policy. */
+#define EC_CMD_TYPEC_CONTROL 0x0132
+
+enum typec_control_command {
+	TYPEC_CONTROL_COMMAND_EXIT_MODES,
+};
+
+struct ec_params_typec_control {
+	uint8_t port;
+	enum typec_control_command command;
+} __ec_align1;
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
