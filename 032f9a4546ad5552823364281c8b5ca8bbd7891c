@@ -34,6 +34,24 @@
       "revId": "032f9a4546ad5552823364281c8b5ca8bbd7891c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1c03030_270b5ced",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2020-09-16T07:06:58Z",
+      "side": 1,
+      "message": "To clarify, with the I2C_FLAG_PEC flags, i2c_write8 would calculate CRC as expected.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/i2c_master.c#304",
+      "parentUuid": "6a6d3027_01cca526",
+      "revId": "032f9a4546ad5552823364281c8b5ca8bbd7891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
