@@ -70,6 +70,30 @@
       "revId": "77eb7be2509e544be7902d23a62a656d756ad3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75be7e1c_d6f6d3bd",
+        "filename": "board/coachz/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-16T17:43:09Z",
+      "side": 1,
+      "message": "Found it. Made the corresponding change.",
+      "parentUuid": "8c15e660_39721c11",
+      "range": {
+        "startLine": 124,
+        "startChar": 71,
+        "endLine": 124,
+        "endChar": 77
+      },
+      "revId": "77eb7be2509e544be7902d23a62a656d756ad3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
