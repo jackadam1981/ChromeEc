@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c0e140e_b4f30317",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-16T16:05:59Z",
+      "side": 1,
+      "message": "This check needs to be guarded with (en \u003d\u003d 1).  If the PE is disabling USB communication, we want the mux to transition to USB_PD_MUX_NONE.",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 42
+      },
+      "revId": "d3a2978bfca4519bd5df04d0e79c84cee5c74e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
