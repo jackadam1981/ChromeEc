@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67277132_ac08ce3a",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-09-16T16:51:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "373cf237_3131b8d5",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 31
+      },
+      "revId": "d6de2f1ed810e87c71fa0f50283c7201ec8ccc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1af38f90_80885073",
         "filename": "baseboard/volteer/cbi_ec_fw_config.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "621eed4e_9ae76d7d",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-09-16T16:51:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af38f90_80885073",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "d6de2f1ed810e87c71fa0f50283c7201ec8ccc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "894ebd09_7ead48b3",
         "filename": "baseboard/volteer/cbi_ec_fw_config.h",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "d6de2f1ed810e87c71fa0f50283c7201ec8ccc41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb5d0f96_99363653",
+        "filename": "baseboard/volteer/cbi_ec_fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-09-16T16:51:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "894ebd09_7ead48b3",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "d6de2f1ed810e87c71fa0f50283c7201ec8ccc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
