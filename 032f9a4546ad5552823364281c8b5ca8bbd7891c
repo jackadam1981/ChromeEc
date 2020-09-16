@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62f5f909_dba82115",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1345749
+      },
+      "writtenOn": "2020-09-16T06:47:02Z",
+      "side": 1,
+      "message": "LDO \u0026 PMIC modules are different I2C slave addresses.\nLDO:  0x64, it includes ldo1, ldo2, ldo3, and ldo5.\nPMIC: 0x1A, it includes buck1, buck2, ldo6, and ldo7.\n\nmt6360_regulator_write also needs to apply crc.\nhere is the sample code.\nstatic int mt6360_regulator_write8(int reg, int val)\n{\n\tuint8_t crc;\n\tuint8_t addr \u003d MT6360_LDO_SLAVE_ADDR_FLAGS;\n\tuint8_t out[3] \u003d {addr \u003c\u003c 1, reg, val};\n\tint wirte_val;\n\t\n\tcrc \u003d crc8(out, ARRAY_SIZE(out));\n\tif (crc !\u003d real_crc)\n\t\treturn EC_ERROR_CRC;\n\t\t\n\twrite_val \u003d (crc \u003c\u003c 8) | (val \u0026 0xff);\n\t/*\n\t * Note: The checksum from I2C_FLAG_PEC happens to be correct because\n\t * length \u003d\u003d 1 -\u003e the high 3 bits of the offset byte is 0.\n\t */\n\treturn i2c_write16(mt6360_config.i2c_port,\n\t\t\t  MT6360_LDO_SLAVE_ADDR_FLAGS | I2C_FLAG_PEC, reg, write_val);\n}",
+      "revId": "032f9a4546ad5552823364281c8b5ca8bbd7891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
