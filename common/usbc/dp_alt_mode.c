@@ -61,12 +61,6 @@ void dp_init(int port)
 	dp_state[port] = DP_START;
 }
 
-void dp_teardown(int port)
-{
-	CPRINTS("C%d: DP teardown", port);
-	dp_state[port] = DP_INACTIVE;
-}
-
 static void dp_entry_failed(int port)
 {
 	CPRINTS("C%d: DP alt mode protocol failed!", port);
@@ -101,6 +95,7 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 	const struct svdm_amode_data *modep =
 		pd_get_amode_data(port, type, USB_SID_DISPLAYPORT);
 	const uint8_t vdm_cmd = PD_VDO_CMD(vdm[0]);
+	int opos;
 
 	if (!dp_response_valid(port, type, "ACK", vdm_cmd))
 		return;
@@ -131,6 +126,11 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		 */
 		CPRINTS("C%d: Exited DP mode", port);
 		dp_state[port] = DP_INACTIVE;
+		opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+
+		/* Clear DisplayPort related signals */
+		pd_dfp_exit_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT,
+				     opos);
 		break;
 	case DP_ENTER_NAKED:
 		/*

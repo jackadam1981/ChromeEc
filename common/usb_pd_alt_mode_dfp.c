@@ -1189,9 +1189,6 @@ __overridable void svdm_exit_dp_mode(int port)
 	if (port == USB_PD_PORT_TCPC_MST)
 		baseboard_mst_enable_control(port, 0);
 #endif
-#ifdef CONFIG_USB_PD_TCPMV2
-	dp_teardown(port);
-#endif
 }
 
 __overridable int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
@@ -1232,10 +1229,6 @@ __overridable int svdm_tbt_compat_enter_mode(int port, uint32_t mode_caps)
 
 __overridable void svdm_tbt_compat_exit_mode(int port)
 {
-	if (IS_ENABLED(CONFIG_USB_PD_TCPMV2)) {
-		usb_mux_set_safe_mode(port);
-		tbt_teardown(port);
-	}
 }
 
 __overridable int svdm_tbt_compat_status(int port, uint32_t *payload)
