@@ -108,9 +108,9 @@ void tbt_init(int port)
 	retry_done = false;
 }
 
-bool tbt_is_active(int port)
+bool tbt_is_inactive(int port)
 {
-	return tbt_state[port] == TBT_ACTIVE;
+	return tbt_state[port] == TBT_INACTIVE;
 }
 
 void tbt_teardown(int port)
@@ -173,6 +173,7 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 {
 	struct pd_discovery *disc;
 	const uint8_t vdm_cmd = PD_VDO_CMD(vdm[0]);
+	int opos_sop, opos_sopp;
 
 	if (!tbt_response_valid(port, type, "ACK", vdm_cmd))
 		return;
@@ -197,15 +198,20 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		tbt_prints("enter mode SOP", port);
 		break;
 	case TBT_ACTIVE:
+		tbt_prints("exit mode SOP", port);
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
 			tbt_active_cable_exit_mode(port);
 		else {
 			/*
 			 * Exit Mode process is complete; go to inactive state.
 			 */
-			tbt_prints("exit mode SOP", port);
-			tbt_state[port] = TBT_INACTIVE;
 			retry_done = false;
+			opos_sop = pd_alt_mode(port, TCPC_TX_SOP,
+						USB_VID_INTEL);
+			/* Clear Thunderbolt related signals */
+			if (pd_dfp_exit_mode(port, TCPC_TX_SOP, USB_VID_INTEL,
+						opos_sop))
+				dpm_clear_mode_exit_request(port);
 		}
 		break;
 	case TBT_EXIT_SOP:
@@ -220,18 +226,32 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		}
 		break;
 	case TBT_EXIT_SOP_PRIME_PRIME:
+		tbt_prints("exit mode SOP''", port);
 		tbt_state[port] = TBT_EXIT_SOP_PRIME;
 		break;
 	case TBT_EXIT_SOP_PRIME:
-		if (retry_done) {
-			/*
-			 * Exit mode process is complete; go to inactive state.
-			 */
-			tbt_prints("exit mode SOP'", port);
-			tbt_entry_failed(port);
-		} else {
-			tbt_retry_enter_mode(port);
+		tbt_prints("exit mode SOP'", port);
+		if (!dpm_get_mode_exit_request(port)) {
+			if (retry_done) {
+				/*
+				 * Exit mode process is complete; go to inactive
+				 * state.
+				 */
+				tbt_entry_failed(port);
+			} else {
+				tbt_retry_enter_mode(port);
+			}
 		}
+		opos_sop = pd_alt_mode(port, TCPC_TX_SOP, USB_VID_INTEL);
+		opos_sopp = pd_alt_mode(port, TCPC_TX_SOP_PRIME, USB_VID_INTEL);
+
+		/* Clear Thunderbolt related signals */
+		if (pd_dfp_exit_mode(port, TCPC_TX_SOP, USB_VID_INTEL,
+				     opos_sop) &&
+		    pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, USB_VID_INTEL,
+				     opos_sopp))
+			dpm_clear_mode_exit_request(port);
+
 		break;
 	case TBT_INACTIVE:
 		/*

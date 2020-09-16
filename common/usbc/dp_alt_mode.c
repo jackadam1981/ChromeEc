@@ -101,6 +101,7 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 	const struct svdm_amode_data *modep =
 		pd_get_amode_data(port, type, USB_SID_DISPLAYPORT);
 	const uint8_t vdm_cmd = PD_VDO_CMD(vdm[0]);
+	int opos;
 
 	if (!dp_response_valid(port, type, "ACK", vdm_cmd))
 		return;
@@ -130,7 +131,13 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		 * inactive state.
 		 */
 		CPRINTS("C%d: Exited DP mode", port);
-		dp_state[port] = DP_INACTIVE;
+		opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
+
+		/* Clear DisplayPort related signals */
+		if (pd_dfp_exit_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT,
+				     opos))
+			dpm_clear_mode_exit_request(port);
+
 		break;
 	case DP_ENTER_NAKED:
 		/*
