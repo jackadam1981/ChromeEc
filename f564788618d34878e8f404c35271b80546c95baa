@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3ae8b6_7bbe2c9c",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:42:26Z",
+      "side": 1,
+      "message": "is this still true?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 3
+      },
+      "revId": "f564788618d34878e8f404c35271b80546c95baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d316a09c_9a718fe0",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:42:26Z",
+      "side": 1,
+      "message": "count \u003d (count + 1) % pd_get_src_cap_cnt(0), and remove line 150.\n\n(note that the pd_get_src_cap_cnt(0) might not match your cached source_caps)",
+      "revId": "f564788618d34878e8f404c35271b80546c95baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f1dfb7_d380f29f",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:42:26Z",
+      "side": 1,
+      "message": "remove one whitespace",
+      "range": {
+        "startLine": 150,
+        "startChar": 17,
+        "endLine": 150,
+        "endChar": 18
+      },
+      "revId": "f564788618d34878e8f404c35271b80546c95baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0353a3aa_d2fce3dc",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:42:26Z",
+      "side": 1,
+      "message": "remove one whitespace",
+      "range": {
+        "startLine": 153,
+        "startChar": 14,
+        "endLine": 153,
+        "endChar": 15
+      },
+      "revId": "f564788618d34878e8f404c35271b80546c95baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6313c5e5_db8622ff",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:42:26Z",
+      "side": 1,
+      "message": "ARRAY_SIZE(c)",
+      "range": {
+        "startLine": 157,
+        "startChar": 15,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "f564788618d34878e8f404c35271b80546c95baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e74478cc_370d65ab",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:42:26Z",
+      "side": 1,
+      "message": "remove one whitespace",
+      "range": {
+        "startLine": 162,
+        "startChar": 14,
+        "endLine": 162,
+        "endChar": 15
+      },
+      "revId": "f564788618d34878e8f404c35271b80546c95baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee61e91b_ad32c2b4",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:42:26Z",
+      "side": 1,
+      "message": "space between operators: i - 4",
+      "range": {
+        "startLine": 167,
+        "startChar": 21,
+        "endLine": 167,
+        "endChar": 24
+      },
+      "revId": "f564788618d34878e8f404c35271b80546c95baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1293a4fc_433ae119",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:42:26Z",
+      "side": 1,
+      "message": "This can\u0027t handle two buttons pressed at the same time.\n\nLet\u0027s split this into 3 different functions, one for each button, and remove the global button_signal variable.",
+      "revId": "f564788618d34878e8f404c35271b80546c95baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a09c3416_8d4caf97",
+        "filename": "driver/tcpm/fusb307.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:42:26Z",
+      "side": 1,
+      "message": "I forgot what happened before...\nbut we should try to make pd_get_src_caps / pd_get_src_cap_cnt work.",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 32
+      },
+      "revId": "f564788618d34878e8f404c35271b80546c95baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
