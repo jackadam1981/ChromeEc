@@ -120,6 +120,20 @@ __override bool board_is_tbt_usb4_port(int port)
 		&& ((usb_db == DB_USB4_GEN2) || (usb_db == DB_USB4_GEN3)));
 }
 
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	/*
+	 * Limit the input current to 95% negotiated limit,
+	 * to account for the charger chip margin.
+	 */
+	charge_ma = charge_ma * 95 / 100;
+	
+	charge_set_input_current_limit(MAX(charge_ma,
+					CONFIG_CHARGER_INPUT_CURRENT),
+					charge_mv);
+}
+
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
 
