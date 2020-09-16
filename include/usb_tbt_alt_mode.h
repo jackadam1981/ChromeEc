@@ -23,10 +23,15 @@
 void tbt_init(int port);
 
 /*
- * Returns True if Thunderbolt mode is in active state
+ * Sets exit_mode and retry_done bits to true
+ */
+void tbt_exit_mode_request(void);
+
+/*
+ * Returns True if Thunderbolt mode is not in inactive state
  *
  * @param port      USB-C port number
- * @return          True if Thunderbolt mode is in active state
+ * @return          True if Thunderbolt mode is not in inactive state
  *                  False otherwise
  */
 bool tbt_is_active(int port);
