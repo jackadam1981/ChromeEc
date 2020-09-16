@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "298b6fd3_c7f5d139",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-16T22:25:47Z",
+      "side": 1,
+      "message": "Sounds good",
+      "parentUuid": "5ecd42c2_9612c1d5",
+      "range": {
+        "startLine": 297,
+        "startChar": 7,
+        "endLine": 297,
+        "endChar": 13
+      },
+      "revId": "1eeffcb87b609efa48fb845b67930815031d42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a096122d_0deb1ed0",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "1eeffcb87b609efa48fb845b67930815031d42c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85dfdefc_5ffa9b60",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-16T22:25:47Z",
+      "side": 1,
+      "message": "Ah, I see it in the state diagram now.  Makes sense.",
+      "parentUuid": "8fec82e7_8e7ec5da",
+      "range": {
+        "startLine": 645,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 58
+      },
+      "revId": "1eeffcb87b609efa48fb845b67930815031d42c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
