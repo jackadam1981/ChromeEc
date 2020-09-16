@@ -294,6 +294,9 @@ enum power_state power_handle_state(enum power_state state)
 
 			CPRINTS("Enter SOC G3");
 
+			/* Call hooks before we enter G3 */
+			hook_notify(HOOK_CHIPSET_OFF);
+
 			return POWER_G3;
 		}
 
@@ -313,6 +316,9 @@ enum power_state power_handle_state(enum power_state state)
 			gpio_set_level(GPIO_SUSPWRDNACK_SOC_EC, 1);
 #endif
 			CPRINTS("Enter SOC G3");
+
+			/* Call hooks before we enter G3 */
+			hook_notify(HOOK_CHIPSET_OFF);
 
 			return POWER_G3;
 		} else {

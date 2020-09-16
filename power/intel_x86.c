@@ -476,6 +476,9 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5G3:
+		/* Call hooks before we enter G3 */
+		hook_notify(HOOK_CHIPSET_OFF);
+
 		return chipset_force_g3();
 
 	default:

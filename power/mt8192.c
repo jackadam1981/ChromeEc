@@ -413,6 +413,9 @@ enum power_state power_handle_state(enum power_state state)
 		if (forcing_shutdown)
 			GPIO_SET_LEVEL(GPIO_EC_PMIC_EN_ODL, 1);
 
+		/* Call hooks before we enter G3 */
+		hook_notify(HOOK_CHIPSET_OFF);
+
 		return POWER_G3;
 	}
 
