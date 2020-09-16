@@ -34,6 +34,22 @@ void dpm_set_mode_entry_done(int port);
 void dpm_set_mode_exit_request(int port);
 
 /*
+ * Informs the DPM that Exit Mode request is cleared
+ *
+ * @param port USB-C port number
+ */
+void dpm_clear_mode_exit_request(int port);
+
+/*
+ * Returns true if  Exit Mode request has been received
+ *
+ * @param port USB-C port number
+ * @return True if exit mode request has been received
+ *         False otherwise
+ */
+bool dpm_get_mode_exit_request(int port);
+
+/*
  * Informs the DPM that a VDM ACK was received.
  *
  * @param port      USB-C port number
