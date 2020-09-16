@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09253e4a_61d21804",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-09-16T17:16:49Z",
+      "side": 0,
+      "message": "Their values were incorrectly swapped per the register description.\nhttps://android-io.teams.x20web.corp.google.com/specs/haven/revB2/submod/xo/XO_CLK_TIMER_SLOW_CALIB_CTRL0.html",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "1e0753b2ad142d1de9a03b1b667cadcdc13b9d13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
