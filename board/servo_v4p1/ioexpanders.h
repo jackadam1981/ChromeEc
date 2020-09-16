@@ -11,6 +11,7 @@ enum uservo_fastboot_mux_sel_t {
 	MUX_SEL_FASTBOOT = 1
 };
 
+
 /*
  * Initialize Ioexpanders
  */
@@ -127,6 +128,8 @@ int usb3_a1_mux_sel(int en);
  * @return version ID
  */
 int board_id_det(void);
+
+int board_id_cached(void);
 
 /**
  * USBC 4:6 redriver enable

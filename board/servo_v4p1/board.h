@@ -189,10 +189,22 @@
 #define CONFIG_USB_PD_PULLUP TYPEC_RP_USB
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_ALT_MODE
+#if 0
+#define CONFIG_USB_PD_RESET_MIN_BATT_SOC 100
+/* This fixes boot-time crash with CB with no PSU */
+/* TODO: WHY DOES SENDING HARD_RESET ON C1 TAKE OUT HOST PORT? */
+#endif
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USB_PD_DEBUG_LEVEL 3
+/* This is a hack */
+#if 0
+#define CONFIG_USB_MUX_TUSB1064 /*C0*/
+#endif
 
 /* Don't automatically change roles */
 #undef CONFIG_USB_PD_INITIAL_DRP_STATE
 #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SINK
+#define SERVO_DEFAULT_CONFIG (CC_ALLOW_SRC | CC_EMCA_SERVO)
 
 /* Variable-current Rp no connect and Ra attach macros */
 #define CC_NC(port, cc, sel)  (pd_tcpc_cc_nc(port, cc, sel))
@@ -264,6 +276,14 @@ enum adc_channel {
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
+
+/* ServoV4p1 Board ID mappings */
+enum uservo_board_id {
+	BOARD_ID_UNSET = -1,
+	BOARD_ID_REV0 = 0,
+	BOARD_ID_REV1 = 1,
+};
+
 
 /**
  * Compare cc_voltage to disconnect threshold
