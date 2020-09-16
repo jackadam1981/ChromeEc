@@ -483,6 +483,10 @@ enum power_state power_handle_state(enum power_state state)
 
 		/* Disable 3.3V DSW */
 		gpio_set_level(GPIO_PP3300_DSW_EN, 0);
+
+		/* Call hooks before we enter G3 */
+		hook_notify(HOOK_CHIPSET_OFF);
+
 		return POWER_G3;
 	}
 

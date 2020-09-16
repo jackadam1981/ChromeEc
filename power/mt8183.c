@@ -517,6 +517,9 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_S5G3;
 		}
 
+		/* Call hooks before we enter G3 */
+		hook_notify(HOOK_CHIPSET_OFF);
+
 		return POWER_G3;
 	}
 
