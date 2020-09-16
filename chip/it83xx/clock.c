@@ -20,6 +20,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "memory_commands.h"
 
 /* Console output macros. */
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
@@ -473,6 +474,21 @@ void clock_cpu_standby(void)
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	int i;
+	char *pS[4] = {"md", ".b", "0xf03700", "256"};
+
+	//md .b addr len
+	command_mem_dump(4, &pS[0]);
+
+	if (IS_ENABLED(CONFIG_USB_PD_TCPM_ITE_ON_CHIP)) {
+		/*
+		 * Disable active cc and pd modules and only left Rd_5.1k (Not
+		 * DeadBattery) alive in hibernate for better power consumption.
+		 */
+		for (i = 0; i < CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT; i++)
+			it83xx_Rd_5_1K_only_for_hibernate(i);
+	}
+	//md .b addr len
+	command_mem_dump(4, &pS[0]);
 
 	/* disable all interrupts */
 	interrupt_disable();
