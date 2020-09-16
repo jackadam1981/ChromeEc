@@ -9,6 +9,7 @@
 #include "common.h"
 #include "accelgyro.h"
 #include "cbi_ec_fw_config.h"
+#include "charge_state_v2.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi260.h"
 #include "driver/als_tcs3400.h"
@@ -118,6 +119,20 @@ __override bool board_is_tbt_usb4_port(int port)
 	 */
 	return ((port == USBC_PORT_C1)
 		&& ((usb_db == DB_USB4_GEN2) || (usb_db == DB_USB4_GEN3)));
+}
+
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	/*
+	 * Limit the input current to 90% negotiated limit,
+	 * to account for the charger chip margin.
+	 */
+	charge_ma = charge_ma * 90 / 100;
+
+	charge_set_input_current_limit(MAX(charge_ma,
+					CONFIG_CHARGER_INPUT_CURRENT),
+					charge_mv);
 }
 
 /******************************************************************************/
