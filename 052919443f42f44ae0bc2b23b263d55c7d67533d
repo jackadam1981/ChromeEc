@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e952c027_4b23ed51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-09-16T14:21:05Z",
+      "side": 1,
+      "message": "Aseda/Diana,\n\nFollowing use cases are verified on both MB/SB\n1. Charging in suspend state and across suspend/resume path\n2. Sourcing in suspend state and across suspend/resume path\n4. USB device and DP display functionality during suspend/resume\n5. S0ix power number meeting the milestone target\n\nTotal saving ~8mW per charger.",
+      "revId": "052919443f42f44ae0bc2b23b263d55c7d67533d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

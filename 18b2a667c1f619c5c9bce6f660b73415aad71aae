@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f1a86ded_455ead0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-09-16T14:21:05Z",
+      "side": 1,
+      "message": "In the latest implementation, we are disabling only PSYS DAC PROCHOT comparators in suspend path.",
+      "parentUuid": "b62ff3e9_218aaf93",
+      "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2b62f37_e59be475",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 4
@@ -74,6 +92,30 @@
       "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b67138b2_e9875ea5",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-09-16T14:21:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b2b62f37_e59be475",
+      "range": {
+        "startLine": 741,
+        "startChar": 0,
+        "endLine": 741,
+        "endChar": 31
+      },
+      "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +163,30 @@
       "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9325d16_253d11a6",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2020-09-16T14:21:05Z",
+      "side": 1,
+      "message": "Thanks for the pointer.",
+      "parentUuid": "8b72968a_ad6562c5",
+      "range": {
+        "startLine": 762,
+        "startChar": 0,
+        "endLine": 765,
+        "endChar": 54
+      },
+      "revId": "18b2a667c1f619c5c9bce6f660b73415aad71aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
