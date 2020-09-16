@@ -22,6 +22,30 @@
       "revId": "471ec9c7725dbe16f4359b9148aada1db9ece5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90220d75_f91cb40b",
+        "filename": "core/riscv-rv32i/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2020-09-16T09:50:42Z",
+      "side": 1,
+      "message": "Yes, that would worked. And we also need to consider when interrupt_disable and interrupt_enable are not paired.  \n\nI plan to remove these tow chip-specific functions ( get_int_mask and set_int_mask) from the codebase, but must under the circumstance that we are able to pass out the context form interrupt_disable_arch().",
+      "parentUuid": "8ac21d0f_f1922369",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 195,
+        "endChar": 38
+      },
+      "revId": "471ec9c7725dbe16f4359b9148aada1db9ece5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
