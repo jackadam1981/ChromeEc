@@ -917,46 +917,55 @@ static int svdm_response_modes(int port, uint32_t *payload)
 
 static int is_typec_dp_muxed(void)
 {
-	int value;
+	int reg;
+	int val;
 
-	value = tusb1064_read_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL);
-	if (value < 0 || value & REG_GENERAL_CTLSEL_4DP_LANES)
+	val = tusb1064_read_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL, &reg);
+	if (val)
 		return 0;
 
-	return 1;
+	if (reg & REG_GENERAL_CTLSEL_ANYDP)
+		val=1;
+	else
+		val=0;
+
+	return val;
 }
 
 static void set_typec_mux(int pin_cfg)
 {
-	int value;
+	int val, reg;
 
-	value = tusb1064_read_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL);
-	if (value < 0)
+	val = tusb1064_read_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL, &reg);
+	if (val)
 		return;
 
-	value &= ~(REG_GENERAL_CTLSEL_4DP_LANES | REG_GENERAL_CTLSEL_USB3);
+	reg &= ~REG_GENERAL_CTLSEL_MASK;
 	switch (pin_cfg) {
 	case 0:
 		CPRINTS("PinCfg:off");
+		reg |= REG_GENERAL_CTLSEL_DISABLE;
 		break;
 	case MODE_DP_PIN_C:
-		value |= REG_GENERAL_CTLSEL_4DP_LANES;
+		reg |= REG_GENERAL_CTLSEL_4DP_LANES;
 		CPRINTS("PinCfg:C");
 		break;
 	case MODE_DP_PIN_D:
-		value |= REG_GENERAL_CTLSEL_2DP_AND_USB3;
+		reg |= REG_GENERAL_CTLSEL_2DP_AND_USB3;
 		CPRINTS("PinCfg:D");
 		break;
 	default:
 		CPRINTS("PinCfg not supported: %d", pin_cfg);
 		return;
+		break;
 	}
-	if (value && cc_config & CC_POLARITY)
-		value |= REG_GENERAL_FLIPSEL;
+	if (reg && (cc_config & CC_POLARITY))
+		reg |= REG_GENERAL_FLIPSEL;
 	else
-		value &= ~REG_GENERAL_FLIPSEL;
+		reg &= ~REG_GENERAL_FLIPSEL;
 
-	tusb1064_write_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL, value);
+	val = tusb1064_write_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL, reg);
+	return;
 }
 
 static int get_hpd_level(void)

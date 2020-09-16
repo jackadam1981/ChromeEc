@@ -190,6 +190,10 @@
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_ALT_MODE
 
+#define CONFIG_USBC_SS_MUX
+/* This is a hack */
+#undef CONFIG_USB_MUX_TUSB1064 /*C0*/
+
 /* Don't automatically change roles */
 #undef CONFIG_USB_PD_INITIAL_DRP_STATE
 #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SINK
@@ -264,6 +268,14 @@ enum adc_channel {
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
+
+/* ServoV4p1 Board ID mappings */
+enum uservo_board_id {
+	BOARD_ID_UNSET = -1,
+	BOARD_ID_PROTO1 = 0,
+	BOARD_ID_EVT1 = 1,
+};
+
 
 /**
  * Compare cc_voltage to disconnect threshold
