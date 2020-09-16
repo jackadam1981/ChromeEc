@@ -328,9 +328,6 @@ void hook_shutdown(void)
 	verify_and_jump();
 }
 /*
- * There can be hooks which are needed to set external chips to a certain state
- * in S5. If the initial state (i.e. AP_OFF state) is different from what those
- * hooks realize, they need to be considered. This hook runs last (i.e.
- * HOOK_PRIO_LAST) to make our landing on S5 as mild as possible.
+ * Wait until the last possible second (G3 entry) to jump EC to RW
  */
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN_COMPLETE, hook_shutdown, HOOK_PRIO_LAST);
+DECLARE_HOOK(HOOK_CHIPSET_OFF, hook_shutdown, HOOK_PRIO_LAST);
