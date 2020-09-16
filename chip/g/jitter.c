@@ -93,8 +93,8 @@ void init_sof_clock(void)
 	unsigned targetCnt = PCLK_FREQ / 1000;
 
 	/* The possible operations of a particular calibration bucket */
-	unsigned binaryDnOp = 0x1 | 0x1 << 4;
-	unsigned binaryUpOp = 0x1 | 0x0 << 4;
+	unsigned binaryDnOp = 0x1 | 0x0 << 4;
+	unsigned binaryUpOp = 0x1 | 0x1 << 4;
 	unsigned subOp      = 0x3 | 0x1 << 4;
 	unsigned addOp      = 0x2 | 0x1 << 4;
 	unsigned nop        = 0;
@@ -110,24 +110,22 @@ void init_sof_clock(void)
 	GREG32(XO, DXO_INT_ENABLE) = 0xC;
 
 	/* Setup SOF calibration buckets and associated operations */
-	GREG32(XO, CLK_TIMER_SLOW_CALIB0) = targetCnt * 70 / 100;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB1) = targetCnt * 80 / 100;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB2) = targetCnt * 90 / 100;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB3) =
-		targetCnt * (1000000 - 1250) / 1000000;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB4) = targetCnt;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB5) =
-		targetCnt * (1000000 + 1250) / 1000000;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB6) = targetCnt * 110 / 100;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB7) = targetCnt * 120 / 100;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB0) = targetCnt *  9900 / 10000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB1) = targetCnt *  9950 / 10000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB2) = targetCnt *  9975 / 10000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB3) = targetCnt *  9990 / 10000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB4) = targetCnt * 10010 / 10000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB5) = targetCnt * 10025 / 10000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB6) = targetCnt * 10050 / 10000;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB7) = targetCnt * 10100 / 10000;
 
 	/* This is a work-around for the screwy SOF */
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL0) = nop;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL0) = binaryDnOp;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL1) = binaryDnOp;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL2) = binaryDnOp;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL2) = subOp;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL3) = subOp;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL4) = nop;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL5) = nop;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL5) = addOp;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL6) = addOp;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL7) = binaryUpOp;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL8) = binaryUpOp;
