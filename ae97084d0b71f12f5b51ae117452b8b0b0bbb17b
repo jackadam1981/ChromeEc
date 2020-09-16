@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d43d6e8f_5f93d7db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-16T23:16:53Z",
+      "side": 1,
+      "message": "PD and EC traces confirm entry into USB4.  However, the AP image (13743) is generating errors from the Thunderbolt driver, so I can\u0027t confirm that USB4 tunneling is working.\n\nAyushee or Li, can you cherry pick this CL and verify USB4 tunneling?",
+      "revId": "ae97084d0b71f12f5b51ae117452b8b0b0bbb17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
