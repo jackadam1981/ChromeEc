@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad27b81e_411a53b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-16T20:51:05Z",
+      "side": 1,
+      "message": "re-iterate",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "251f7f4500b9b03704940163236282d66a2ce52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4acaffee_676cd77b",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-16T20:51:05Z",
+      "side": 1,
+      "message": "how about removing reference of BB retimer.\nMention data transmission/role is applicable only when AP is on",
+      "range": {
+        "startLine": 138,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 4
+      },
+      "revId": "251f7f4500b9b03704940163236282d66a2ce52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c23dae52_708a05e9",
+        "filename": "common/usb_pd_alt_mode_ufp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-16T20:51:05Z",
+      "side": 1,
+      "message": "mux?",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "251f7f4500b9b03704940163236282d66a2ce52a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
