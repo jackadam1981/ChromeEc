@@ -95,6 +95,7 @@ struct it8801_pwm_t {
 };
 
 extern const struct it8801_pwm_t it8801_pwm_channels[];
+extern const struct kblight_drv kblight_it8801;
 
 /* standard pwm interface as defined in pwm.h */
 void it8801_pwm_enable(enum pwm_channel ch, int enabled);
@@ -104,6 +105,7 @@ uint16_t it8801_pwm_get_raw_duty(enum pwm_channel ch);
 void it8801_pwm_set_duty(enum pwm_channel ch, int percent);
 int it8801_pwm_get_duty(enum pwm_channel ch);
 
+#define IT8801_REG_PWNODDSR                            0x5F
 #define IT8801_REG_PWMMCR(n)            (0x60 + ((n) - 1) * 8)
 #define IT8801_REG_PWMDCR(n)            (0x64 + ((n) - 1) * 8)
 #define IT8801_REG_PWMPRSL(n)           (0x66 + ((n) - 1) * 8)
