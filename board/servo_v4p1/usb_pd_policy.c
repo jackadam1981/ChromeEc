@@ -48,8 +48,8 @@
 				CC_DISABLE_DTS | CC_SNK_WITH_PD, \
 				CC_ALLOW_SRC | CC_ENABLE_DRP)
 #define CONF_DRP(c) CONF_SET_CLEAR(c, \
-				CC_DISABLE_DTS | CC_ALLOW_SRC | CC_ENABLE_DRP, \
-				CC_SNK_WITH_PD)
+				CC_DISABLE_DTS | CC_ALLOW_SRC | CC_ENABLE_DRP | CC_SNK_WITH_PD, \
+				0)
 #define CONF_SRCDTS(c) CONF_SET_CLEAR(c, \
 				CC_ALLOW_SRC, \
 				CC_ENABLE_DRP | CC_DISABLE_DTS | CC_SNK_WITH_PD)
@@ -110,15 +110,52 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
+/*
+enum gpio_pulls {
+	RA=0,
+	RD=1,
+	RPUSB=2,
+	RP1A5=3,
+	RP3A0=4,
+	TX_DATA=5,
+	PULL_COUNT=6,
+};
+
+struct gpio_drive {
+	uint8_t output : 1;
+	uint8_t drive  : 1;
+};
+*/
+
+//static const uint8_t dut_gpio[PULL_COUNT /* Pulls */][2 /* Polarity */] = {
+//	{ GPIO_USB_DUT_CC1_RA, GPIO_USB_DUT_CC2_RA },
+//	{ GPIO_USB_DUT_CC1_RD, GPIO_USB_DUT_CC2_RD },
+//	{ GPIO_USB_DUT_CC1_RPUSB, GPIO_USB_DUT_CC2_RPUSB },
+//	{ GPIO_USB_DUT_CC1_RP1A5, GPIO_USB_DUT_CC2_RP1A5 },
+//	{ GPIO_USB_DUT_CC1_RP3A0, GPIO_USB_DUT_CC2_RP3A0 },
+//	{ GPIO_USB_DUT_CC1_TX_DATA, GPIO_USB_DUT_CC2_TX_DATA },
+//};
+
+//static struct gpio_drive dut_pulls[PULL_COUNT /* Pulls */][2 /* Polarity */];
+
 struct vbus_prop {
 	int mv;
 	int ma;
 };
+
 static struct vbus_prop vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 static int active_charge_port = CHARGE_PORT_NONE;
 static enum charge_supplier active_charge_supplier;
-static uint8_t vbus_rp = TYPEC_RP_RESERVED;
 
+/*
+ * Make sure the below matches CC_EMCA_SERVO
+ * otherwise you'll have a bad time.
+ */
+static int cc_pull_stored = TYPEC_CC_RD;
+/* Shadow what would be in TCPC register state. */
+static int rp_value_stored = TYPEC_RP_USB;
+
+static uint8_t vbus_rp = TYPEC_RP_RESERVED;
 static int cc_config = CC_ALLOW_SRC | CC_EMCA_SERVO;
 
 /* Voltage thresholds for no connect in DTS mode */
@@ -149,13 +186,6 @@ static int pd_src_rd_threshold[TYPEC_RP_RESERVED] = {
 /* Saved value for the duration of faking PD disconnect */
 static int fake_pd_disconnect_duration_us;
 
-/* Shadow what would be in TCPC register state. */
-static int rp_value_stored = TYPEC_RP_USB;
-/*
- * Make sure the below matches CC_EMCA_SERVO
- * otherwise you'll have a bad time.
- */
-static int cc_pull_stored = TYPEC_CC_RD;
 
 static int user_limited_max_mv = 20000;
 
@@ -166,12 +196,19 @@ static uint32_t max_supported_voltage(void)
 
 static int charge_port_is_active(void)
 {
-	return active_charge_port == CHG && vbus[CHG].mv > 0;
+	int result=0;
+	result = (active_charge_port == CHG) && (vbus[CHG].mv > 0);
+
+	CPRINTS("CHG_PORT_IS_ACTIVE: active_chg_port %d CHG %d voltage %d PD_MIN_V %d", active_charge_port, CHG, vbus[CHG].mv, PD_MIN_MV);
+
+	CPRINTS("CHG_PORT_IS_ACTIVE: result %d", result);
+
+	return result;
 }
 
 static int is_charge_through_allowed(void)
 {
-	return charge_port_is_active() && cc_config & CC_ALLOW_SRC;
+	return charge_port_is_active() && (cc_config & CC_ALLOW_SRC);
 }
 
 static int get_dual_role_of_src(void)
@@ -301,11 +338,21 @@ static void update_ports(void)
 
 				snk_index = pdo_index;
 				pd_extract_pdo_power(pdo, &max_ma, &max_mv);
-				pd_src_chg_pdo[src_index++] =
+
+				//pd_src_chg_pdo[src_index++] =
+				pd_src_chg_pdo[src_index] =
 					PDO_FIXED_VOLT(max_mv) |
-					PDO_FIXED_CURR(max_ma) |
-					DUT_PDO_FIXED_FLAGS |
-					PDO_FIXED_UNCONSTRAINED;
+					PDO_FIXED_CURR(max_ma) ; // |
+					//DUT_PDO_FIXED_FLAGS |	
+					// PDO_FIXED_UNCONSTRAINED;
+					// This is the servo bug!!
+					
+				if (src_index == 0) {
+					// TODO: 1st PDO *should* always be 5V PDO
+					// but not always. Should re-index and re-map.
+					pd_src_chg_pdo[src_index] |= DUT_PDO_FIXED_FLAGS | PDO_FIXED_UNCONSTRAINED;
+				}
+				src_index++;
 			}
 			chg_pdo_cnt = src_index;
 		} else {
@@ -380,7 +427,7 @@ int pd_tcpc_cc_nc(int port, int cc_volt, int cc_sel)
 	 */
 	if (rp_index >= TYPEC_RP_RESERVED)
 		return 1;
-
+	
 	/* Select the correct voltage threshold for current Rp and DTS mode */
 	if (cc_config & CC_DISABLE_DTS)
 		nc = cc_volt >= pd_src_vnc[rp_index];
@@ -487,12 +534,27 @@ static int board_set_rp(int rp)
 		 */
 		switch (rp) {
 		case TYPEC_RP_USB:
+			DUT_ACTIVE_CC_OPEN(RP1A5);
+			DUT_ACTIVE_CC_OPEN(RP3A0);
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
+
 			DUT_ACTIVE_CC_PU(RPUSB);
 			break;
 		case TYPEC_RP_1A5:
+			DUT_ACTIVE_CC_OPEN(RPUSB);		
+			DUT_ACTIVE_CC_OPEN(RP3A0);
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
+
 			DUT_ACTIVE_CC_PU(RP1A5);
 			break;
 		case TYPEC_RP_3A0:
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_ACTIVE_CC_OPEN(RP1A5);
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
+
 			DUT_ACTIVE_CC_PU(RP3A0);
 			break;
 		case TYPEC_RP_RESERVED:
@@ -501,16 +563,32 @@ static int board_set_rp(int rp)
 			 * all values are set to inputs above. Nothing else to
 			 * set.
 			 */
+			DUT_ACTIVE_CC_OPEN(RP3A0);
+			DUT_ACTIVE_CC_OPEN(RP1A5);
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
 			break;
 		default:
 			return EC_ERROR_INVAL;
 		}
 
 		/* TODO: Verify this (CC_EMCA_SERVO) statement works */
-		if (cc_config & CC_EMCA_SERVO)
+		if (cc_config & CC_EMCA_SERVO) {
 			DUT_INACTIVE_CC_PD(RA);
-		else
+
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RP1A5);
+			DUT_INACTIVE_CC_OPEN(RPUSB);
+			DUT_INACTIVE_CC_OPEN(RD);
+		}	
+		else {
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RP1A5);
+			DUT_INACTIVE_CC_OPEN(RPUSB);
 			DUT_INACTIVE_CC_OPEN(RA);
+			DUT_INACTIVE_CC_OPEN(RD);
+		}
 	} else {
 		/* DTS mode is enabled. The rp parameter is used to select the
 		 * Type C current limit to advertise. The combinations of Rp on
@@ -528,14 +606,44 @@ static int board_set_rp(int rp)
 		case TYPEC_RP_USB:
 			DUT_ACTIVE_CC_PU(RP3A0);
 			DUT_INACTIVE_CC_PU(RP1A5);
+
+			DUT_ACTIVE_CC_OPEN(RP1A5);
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
+
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RPUSB);
+			DUT_INACTIVE_CC_OPEN(RA);
+			DUT_INACTIVE_CC_OPEN(RD);
 			break;
 		case TYPEC_RP_1A5:
 			DUT_ACTIVE_CC_PU(RP1A5);
 			DUT_INACTIVE_CC_PU(RPUSB);
+
+			DUT_ACTIVE_CC_OPEN(RP3A0);
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
+
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RP1A5);
+			DUT_INACTIVE_CC_OPEN(RA);
+			DUT_INACTIVE_CC_OPEN(RD);
 			break;
 		case TYPEC_RP_3A0:
 			DUT_ACTIVE_CC_PU(RP3A0);
 			DUT_INACTIVE_CC_PU(RPUSB);
+
+			DUT_ACTIVE_CC_OPEN(RP1A5);
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
+
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RP1A5);
+			DUT_INACTIVE_CC_OPEN(RA);
+			DUT_INACTIVE_CC_OPEN(RD);
 			break;
 		case TYPEC_RP_RESERVED:
 			/*
@@ -543,6 +651,17 @@ static int board_set_rp(int rp)
 			 * all values are set to inputs above. Nothing else to
 			 * set.
 			 */
+			DUT_ACTIVE_CC_OPEN(RP3A0);
+			DUT_ACTIVE_CC_OPEN(RP1A5);
+			DUT_ACTIVE_CC_OPEN(RPUSB);
+			DUT_ACTIVE_CC_OPEN(RA);
+			DUT_ACTIVE_CC_OPEN(RD);
+
+			DUT_INACTIVE_CC_OPEN(RP3A0);
+			DUT_INACTIVE_CC_OPEN(RP1A5);
+			DUT_INACTIVE_CC_OPEN(RPUSB);
+			DUT_INACTIVE_CC_OPEN(RA);
+			DUT_INACTIVE_CC_OPEN(RD);
 			break;
 		default:
 			return EC_ERROR_INVAL;
@@ -557,15 +676,24 @@ static int board_set_rp(int rp)
 int pd_set_rp_rd(int port, int cc_pull, int rp_value)
 {
 	int rv = EC_SUCCESS;
+//	int pin,pol;
+	//struct gpio_drive pulls_local[PULL_COUNT /* Pulls */][2 /* Polarity */]={0};
 
 	if (port != DUT)
 		return EC_ERROR_UNIMPLEMENTED;
 
-	/* CC is disabled for emulating detach. Don't change Rd/Rp. */
-	if (cc_config & CC_DETACH)
-		return EC_SUCCESS;
-
 	/* By default disconnect all Rp/Rd resistors from both CC lines */
+/*
+	for(pin=0; pin < PULL_COUNT; pin++) {
+		for(pol=0; pol < 2; pol++){
+			dut_pulls[pin][pol].output = 0;
+			dut_pulls[pin][pol].drive = 0;
+			gpio_set_flags(dut_gpio[pin][pol],GPIO_INPUT);
+		}
+	}
+*/
+
+
 	/* Set Rd for CC1/CC2 to High-Z. */
 	DUT_BOTH_CC_OPEN(RD);
 	/* Set Ra for CC1/CC2 to High-Z. */
@@ -575,9 +703,22 @@ int pd_set_rp_rd(int port, int cc_pull, int rp_value)
 	DUT_BOTH_CC_OPEN(RP1A5);
 	DUT_BOTH_CC_OPEN(RPUSB);
 	/* Set TX Hi-Z */
-	DUT_BOTH_CC_OPEN(TX_DATA);
+	//DUT_BOTH_CC_OPEN(TX_DATA);
 
-	if (cc_pull == TYPEC_CC_RP) {
+	/* CC is disabled for emulating detach. Don't change Rd/Rp. */
+	if (cc_config & CC_DETACH)
+	//	return EC_SUCCESS;
+	{
+		// TODO: This is wrong. EMCA-mode means "fake Ra cable"
+
+		//if (cc_config && CC_EMCA_SERVO)
+		//	DUT_INACTIVE_CC_PD(RA);
+		//	gpio_set_flags(dut_gpio[RA][!(cc_config & CC_POLARITY)],GPIO_OUT_LOW);
+
+		rp_value = TYPEC_CC_RP;
+		cc_pull = TYPEC_RP_RESERVED;
+		rv = EC_SUCCESS;
+	} else if (cc_pull == TYPEC_CC_RP) {
 		rv = board_set_rp(rp_value);
 	} else if ((cc_pull == TYPEC_CC_RD) || (cc_pull == TYPEC_CC_RA_RD) ||
 				(cc_pull == TYPEC_CC_RA)) {
@@ -591,37 +732,52 @@ int pd_set_rp_rd(int port, int cc_pull, int rp_value)
 		 * ... or are applying RA+RA....can't make assumptions with
 		 * test equipment!
 		 */
-		if (cc_config & CC_DISABLE_DTS) {
-			if (cc_pull == TYPEC_CC_RD) {
+		 if (cc_config & CC_DISABLE_DTS){
+			switch(cc_pull) {
+			case TYPEC_CC_RD:
 				DUT_ACTIVE_CC_PD(RD);
-				/*
-				 * TODO: Verify this (CC_EMCA_SERVO)
-				 * statement works
-				 */
-				if (cc_config & CC_EMCA_SERVO)
-					DUT_INACTIVE_CC_PD(RA);
-				else
-					DUT_INACTIVE_CC_OPEN(RA);
-			} else if (cc_pull == TYPEC_CC_RA) {
-				DUT_ACTIVE_CC_PD(RA);
-				/*
-				 * TODO: Verify this (CC_EMCA_SERVO)
-				 * statement works
-				 */
-				if (cc_config & CC_EMCA_SERVO)
-					DUT_INACTIVE_CC_PD(RA);
-				else
-					DUT_INACTIVE_CC_OPEN(RA);
-			} else if (cc_pull == TYPEC_CC_RA_RD) {
+				break;
+			case TYPEC_CC_RA_RD:
 				/*
 				 * TODO: Verify this silly (TYPEC_CC_RA_RD)
-				 * from TCPMv  works
-				 */
+				 * from TCPMvX  works
+				*/
 				DUT_ACTIVE_CC_PD(RD);
 				DUT_INACTIVE_CC_PD(RA);
+				break;
+			case TYPEC_CC_RA:
+				/*
+				 * TODO: Verify this audio (TYPEC_CC_RA)
+				 * statement works
+				 */
+				DUT_ACTIVE_CC_PD(RA);
+				break;
+			default:
+				return EC_ERROR_UNIMPLEMENTED;
 			}
-		} else
-			DUT_BOTH_CC_PD(RD);
+
+			if ((cc_config & CC_EMCA_SERVO))
+				DUT_INACTIVE_CC_PD(RA);
+
+		}
+		else {
+			// If DTS is supported
+			switch(cc_pull) {
+			case TYPEC_CC_RD:
+				// WARNING! DO NOT EMCA THIS!
+				DUT_BOTH_CC_PD(RD);
+				break;
+			case TYPEC_CC_RA_RD:
+				// This becomes a NOOP (DTS)
+				DUT_BOTH_CC_PD(RD);
+				break;
+			case TYPEC_CC_RA:
+				DUT_BOTH_CC_PD(RD);
+				break;
+			default:
+				return EC_ERROR_UNIMPLEMENTED;
+			}
+		}
 
 		rv = EC_SUCCESS;
 	} else
@@ -917,46 +1073,55 @@ static int svdm_response_modes(int port, uint32_t *payload)
 
 static int is_typec_dp_muxed(void)
 {
-	int value;
+	int reg;
+	int val;
 
-	value = tusb1064_read_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL);
-	if (value < 0 || value & REG_GENERAL_CTLSEL_4DP_LANES)
+	val = tusb1064_read_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL, &reg);
+	if (val)
 		return 0;
 
-	return 1;
+	if (reg & REG_GENERAL_CTLSEL_ANYDP)
+		val=1;
+	else
+		val=0;
+
+	return val;
 }
 
 static void set_typec_mux(int pin_cfg)
 {
-	int value;
+	int val, reg;
 
-	value = tusb1064_read_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL);
-	if (value < 0)
+	val = tusb1064_read_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL, &reg);
+	if (val)
 		return;
 
-	value &= ~(REG_GENERAL_CTLSEL_4DP_LANES | REG_GENERAL_CTLSEL_USB3);
+	reg &= ~REG_GENERAL_CTLSEL_MASK;
 	switch (pin_cfg) {
 	case 0:
 		CPRINTS("PinCfg:off");
+		reg |= REG_GENERAL_CTLSEL_DISABLE;
 		break;
 	case MODE_DP_PIN_C:
-		value |= REG_GENERAL_CTLSEL_4DP_LANES;
+		reg |= REG_GENERAL_CTLSEL_4DP_LANES;
 		CPRINTS("PinCfg:C");
 		break;
 	case MODE_DP_PIN_D:
-		value |= REG_GENERAL_CTLSEL_2DP_AND_USB3;
+		reg |= REG_GENERAL_CTLSEL_2DP_AND_USB3;
 		CPRINTS("PinCfg:D");
 		break;
 	default:
 		CPRINTS("PinCfg not supported: %d", pin_cfg);
 		return;
+		break;
 	}
-	if (value && cc_config & CC_POLARITY)
-		value |= REG_GENERAL_FLIPSEL;
+	if (reg && (cc_config & CC_POLARITY))
+		reg |= REG_GENERAL_FLIPSEL;
 	else
-		value &= ~REG_GENERAL_FLIPSEL;
+		reg &= ~REG_GENERAL_FLIPSEL;
 
-	tusb1064_write_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL, value);
+	val = tusb1064_write_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL, reg);
+	return;
 }
 
 static int get_hpd_level(void)
@@ -1094,13 +1259,17 @@ static void do_cc(int cc_config_new)
 	int dualrole;
 
 	if (cc_config_new != cc_config) {
+
+		/* Run if CC not previously detatch */
 		if (!(cc_config & CC_DETACH)) {
 			/* Force detach */
 			pd_power_supply_reset(DUT);
+
 			/* Always set to 0 here so both CC lines are changed */
 			cc_config &= ~(CC_DISABLE_DTS & CC_ALLOW_SRC);
 
 			/* Remove Rp/Rd on both CC lines */
+			/* ROLE_CONTROL  Open (Disconnect or don’t care) */
 			pd_comm_enable(DUT, 0);
 			pd_set_rp_rd(DUT, TYPEC_CC_RP, TYPEC_RP_RESERVED);
 
