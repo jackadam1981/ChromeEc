@@ -30,6 +30,7 @@
 #include "i2c_bitbang.h"
 #include "it8801.h"
 #include "keyboard_scan.h"
+#include "keyboard_backlight.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -418,6 +419,11 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+void board_kblight_init(void)
+{
+	kblight_register(&kblight_it8801);
+}
 
 #endif /* !VARIANT_KUKUI_NO_SENSORS */
 
