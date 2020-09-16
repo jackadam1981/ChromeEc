@@ -224,15 +224,23 @@ void __ram_code interrupt_enable(void)
 	asm volatile ("mtsr %0, $INT_MASK" : : "r"(val));
 }
 
-uint32_t interrupt_disable_arch(void)
+uint32_t __ram_code interrupt_disable_arch(void)
 {
-	/* TODO: implement me. */
-	return 0;
+	uint32_t int_mask, dis = BIT(30);
+
+	asm volatile(
+		"mfsr %0, $INT_MASK \n\t"
+		"mtsr %1, $INT_MASK \n\t"
+		"dsb \n\t"
+		: "=&r"(int_mask)
+		: "r"(dis));
+
+	return int_mask;
 }
 
-void interrupt_enable_arch(uint32_t interrupt_bit)
+void __ram_code interrupt_enable_arch(uint32_t interrupt_bit)
 {
-	/* TODO: implement me. */
+	asm volatile ("mtsr %0, $INT_MASK" : : "r"(interrupt_bit));
 }
 
 inline int in_interrupt_context(void)
