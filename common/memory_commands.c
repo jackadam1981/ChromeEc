@@ -56,7 +56,7 @@ static void show_val(uint32_t address, uint32_t index, enum format fmt)
 	cflush();
 }
 
-static int command_mem_dump(int argc, char **argv)
+int command_mem_dump(int argc, char **argv)
 {
 	uint32_t address, i, num = 1;
 	char *e;
