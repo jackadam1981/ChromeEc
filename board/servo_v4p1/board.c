@@ -37,6 +37,7 @@
 #include "usb_spi.h"
 #include "usb-stream.h"
 #include "util.h"
+#include "usb_mux.h"
 
 #ifdef SECTION_IS_RO
 #define CROS_EC_SECTION "RO"
@@ -364,6 +365,22 @@ const struct i2c_port_t i2c_ports[] = {
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 int usb_i2c_board_is_enabled(void) { return 1; }
+
+/******************************************************************************
+ * Support USB/DP crosspoint switch mux
+ */
+
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.usb_port = 0,
+		.i2c_port = I2C_PORT_MASTER,
+		.i2c_addr_flags = TUSB1064_ADDR_FLAGS,
+		.driver = &tusb1064_usb_mux_driver,
+	},
+	{
+		.usb_port = 1,
+	},
+};
 
 
 /******************************************************************************
