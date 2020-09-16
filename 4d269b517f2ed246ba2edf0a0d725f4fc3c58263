@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ca3722d_58b6fcb4",
+        "filename": "driver/tcpm/fusb307.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:26:04Z",
+      "side": 1,
+      "message": "Add a TODO that PD_ROLE_SOURCE is not implemented yet.\n\nAnd maybe a compile time check for it.",
+      "revId": "4d269b517f2ed246ba2edf0a0d725f4fc3c58263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10cf3584_a695c71d",
+        "filename": "driver/tcpm/fusb307.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-16T15:26:04Z",
+      "side": 1,
+      "message": "TYPEC_CC_RD",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "4d269b517f2ed246ba2edf0a0d725f4fc3c58263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
