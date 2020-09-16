@@ -22,6 +22,30 @@
       "revId": "d3a2978bfca4519bd5df04d0e79c84cee5c74e79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237accb6_3ce1c90c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-16T17:07:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0e140e_b4f30317",
+      "range": {
+        "startLine": 774,
+        "startChar": 0,
+        "endLine": 774,
+        "endChar": 42
+      },
+      "revId": "d3a2978bfca4519bd5df04d0e79c84cee5c74e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
