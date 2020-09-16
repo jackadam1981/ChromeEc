@@ -365,6 +365,22 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 int usb_i2c_board_is_enabled(void) { return 1; }
 
+/******************************************************************************
+ * Support USB/DP crosspoint switch mux
+ */
+
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.usb_port = 0,
+		.i2c_port = I2C_PORT_MASTER,
+		.i2c_addr_flags = TUSB1064_ADDR_FLAGS,
+		.driver = &tusb1064_usb_mux_driver,
+	},
+	{
+		.usb_port = 1,
+	},
+};
+
 
 /******************************************************************************
  * Initialize board.

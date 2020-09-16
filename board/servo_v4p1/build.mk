@@ -17,6 +17,7 @@ test-list-y=
 board-y=board.o tca6416a.o tca6424a.o
 board-y+=ioexpanders.o
 board-y+=dacs.o
+# TODO: This needs to go away
 board-y+=tusb1064.o
 board-y+=pi3usb9201.o
 

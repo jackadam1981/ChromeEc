@@ -14,6 +14,7 @@
  */
 
 static int dut_chg_en_state;
+static enum uservo_board_id board_id_val=BOARD_ID_UNSET;
 
 /* Enable all ioexpander outputs. */
 int init_ioexpanders(void)
@@ -235,8 +236,24 @@ inline int board_id_det(void)
 	return (id >> 3) & 0x7;
 }
 
+int board_id_cached(void)
+{
+	int id;
+
+	if (board_id_val == BOARD_ID_UNSET || board_id_val < 0){
+		id = board_id_det();
+	}
+	else {
+		id = board_id_val;
+	}
+	return id;
+}
+
 inline int cmux_en(int en)
 {
+	//TODO: ASSERT PROTO1 board_id_det() check
+	if (board_id_cached() != BOARD_ID_PROTO1)
+		return -1;
 	return tca6416a_write_bit(1, TCA6416A_OUT_PORT_1, 6, en);
 }
 
@@ -298,6 +315,7 @@ inline int read_faults(void)
 
 inline int vbus_dischrg_en(int en)
 {
+	// TODO if (board_id_cached() != BOARD_ID_PROTO1)
 	return tca6424a_write_bit(1, TCA6424A_OUT_PORT_2, 0, en);
 }
 
