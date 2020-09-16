@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d9cebf6_ba04f2a0",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-16T09:01:52Z",
+      "side": 1,
+      "message": "column 80 rule is not mandatory, but we should conform it if we could",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 80
+      },
+      "revId": "8881c2a3a97c094a57c882594741696f73ecf6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3783eba4_28c1a960",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-16T09:01:52Z",
+      "side": 1,
+      "message": "use tab instead of space",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 24
+      },
+      "revId": "8881c2a3a97c094a57c882594741696f73ecf6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dce2b78f_cf395e57",
+        "filename": "chip/mt8192_scp/clock_chip.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-16T09:01:52Z",
+      "side": 1,
+      "message": "No other usage.  Move to mt8192_scp/clock.c.\n\nDeclare and define it immediately:\n\nstatic struct opp_ulposc_cfg {\n   ...\n} opp[] \u003d {\n   ...\n};",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "8881c2a3a97c094a57c882594741696f73ecf6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85be7aea_db054981",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-16T09:01:52Z",
+      "side": 1,
+      "message": "rename to SCP_CLK_ENABLE",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "8881c2a3a97c094a57c882594741696f73ecf6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e7b996f_23d93235",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-16T09:01:52Z",
+      "side": 1,
+      "message": "rename to CLK_HIGH_EN",
+      "range": {
+        "startLine": 27,
+        "startChar": 10,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "8881c2a3a97c094a57c882594741696f73ecf6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2daba29_72986a4f",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-16T09:01:52Z",
+      "side": 1,
+      "message": "rename to CLK_HIGH_CG",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 21
+      },
+      "revId": "8881c2a3a97c094a57c882594741696f73ecf6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f7463d_cfab3356",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-16T09:01:52Z",
+      "side": 1,
+      "message": "rename to SCP_CLK_HIGH_CORE_CG",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 25
+      },
+      "revId": "8881c2a3a97c094a57c882594741696f73ecf6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "262b7180_af1766c5",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-16T09:01:52Z",
+      "side": 1,
+      "message": "rename to HIGH_CORE_CG",
+      "range": {
+        "startLine": 123,
+        "startChar": 10,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "8881c2a3a97c094a57c882594741696f73ecf6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b73956_0fc8134d",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-16T09:01:52Z",
+      "side": 1,
+      "message": "move this block after line 242\n\n(they are slightly sorted by the address)",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 3
+      },
+      "revId": "8881c2a3a97c094a57c882594741696f73ecf6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a765c4cf_f5a1fa48",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-16T09:01:52Z",
+      "side": 1,
+      "message": "insert this block before line 237\n\n(they are slightly sorted by the address)",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 50
+      },
+      "revId": "8881c2a3a97c094a57c882594741696f73ecf6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
