@@ -245,16 +245,14 @@ static enum ec2i_message ec2i_read_pnpcfg(enum ec2i_access sel)
 enum ec2i_message ec2i_read(enum host_pnpcfg_index index)
 {
 	enum ec2i_message ret = EC2I_READ_ERROR;
-	uint32_t int_mask = get_int_mask();
+	uint32_t int_mask = interrupt_disable_arch();
 
-	/* critical section with interrupts off */
-	interrupt_disable();
 	/* Set index */
 	if (ec2i_write_pnpcfg(EC2I_ACCESS_INDEX, index) == EC2I_WRITE_SUCCESS)
 		/* read data port */
 		ret = ec2i_read_pnpcfg(EC2I_ACCESS_DATA);
 	/* restore interrupts */
-	set_int_mask(int_mask);
+	interrupt_enable_arch(int_mask);
 
 	return ret;
 }
@@ -263,16 +261,14 @@ enum ec2i_message ec2i_read(enum host_pnpcfg_index index)
 enum ec2i_message ec2i_write(enum host_pnpcfg_index index, uint8_t data)
 {
 	enum ec2i_message ret = EC2I_WRITE_ERROR;
-	uint32_t int_mask = get_int_mask();
+	uint32_t int_mask = interrupt_disable_arch();
 
-	/* critical section with interrupts off */
-	interrupt_disable();
 	/* Set index */
 	if (ec2i_write_pnpcfg(EC2I_ACCESS_INDEX, index) == EC2I_WRITE_SUCCESS)
 		/* Set data */
 		ret = ec2i_write_pnpcfg(EC2I_ACCESS_DATA, data);
 	/* restore interrupts */
-	set_int_mask(int_mask);
+	interrupt_enable_arch(int_mask);
 
 	return ret;
 }

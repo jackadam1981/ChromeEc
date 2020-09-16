@@ -484,19 +484,6 @@ uint32_t __ram_code task_wait_event_mask(uint32_t event_mask, int timeout_us)
 	return events & event_mask;
 }
 
-uint32_t __ram_code get_int_mask(void)
-{
-	uint32_t ret;
-
-	asm volatile ("csrr %0, mie" : "=r"(ret));
-	return ret;
-}
-
-void __ram_code set_int_mask(uint32_t val)
-{
-	asm volatile ("csrw mie, %0" : : "r"(val));
-}
-
 void task_enable_all_tasks(void)
 {
 	/* Mark all tasks as ready and able to run. */
@@ -520,20 +507,18 @@ void task_disable_task(task_id_t tskid)
 
 void __ram_code task_enable_irq(int irq)
 {
-	uint32_t int_mask = get_int_mask();
+	uint32_t int_mask = interrupt_disable_arch();
 
-	interrupt_disable();
 	chip_enable_irq(irq);
-	set_int_mask(int_mask);
+	interrupt_enable_arch(int_mask);
 }
 
 void __ram_code task_disable_irq(int irq)
 {
-	uint32_t int_mask = get_int_mask();
+	uint32_t int_mask = interrupt_disable_arch();
 
-	interrupt_disable();
 	chip_disable_irq(irq);
-	set_int_mask(int_mask);
+	interrupt_enable_arch(int_mask);
 }
 
 void __ram_code task_clear_pending_irq(int irq)
