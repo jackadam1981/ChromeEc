@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ddad526_57f10a75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-16T15:49:52Z",
+      "side": 1,
+      "message": "field",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "b875b0a9d34c2c358360a875542e3a066aa07209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5f9b786_90a1a8e3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5251,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-16T15:49:52Z",
+      "side": 1,
+      "message": "Per PD 6.4.4.2.4, this should also happen for Exit Mode. For responses to all other commands, it should be 0, even if it was (incorrectly) non-zero in the request. I would suggest setting it to 0 by default and then setting it to the Object Position from the request in the Enter and Exit clauses of the switch statement above.",
+      "range": {
+        "startLine": 5249,
+        "startChar": 3,
+        "endLine": 5251,
+        "endChar": 42
+      },
+      "revId": "b875b0a9d34c2c358360a875542e3a066aa07209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
