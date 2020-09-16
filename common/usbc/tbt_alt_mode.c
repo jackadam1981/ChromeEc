@@ -69,6 +69,7 @@
  * logic is unneeded.
  */
 static bool retry_done;
+static bool exit_request;
 
 static int tbt_prints(const char *string, int port)
 {
@@ -110,22 +111,35 @@ void tbt_init(int port)
 
 bool tbt_is_active(int port)
 {
-	return tbt_state[port] == TBT_ACTIVE;
+	return tbt_state[port] != TBT_INACTIVE &&
+	       tbt_state[port] != TBT_START;
 }
 
 void tbt_teardown(int port)
 {
-	 tbt_prints("teardown", port);
-	 tbt_state[port] = TBT_INACTIVE;
-	 retry_done = false;
+	tbt_prints("teardown", port);
+	tbt_state[port] = TBT_INACTIVE;
+	retry_done = false;
 }
 
 static void tbt_entry_failed(int port)
 {
-	tbt_prints("alt mode protocol failed!", port);
 	tbt_state[port] = TBT_INACTIVE;
+
+	if (exit_request) {
+		tbt_prints("Exited alternate mode", port);
+		return;
+	}
+
 	retry_done = false;
+	tbt_prints("alt mode protocol failed!", port);
 	dpm_set_mode_entry_done(port);
+}
+
+void tbt_exit_mode_request(void)
+{
+	retry_done = true;
+	exit_request = true;
 }
 
 static bool tbt_response_valid(int port, enum tcpm_transmit_type type,
@@ -173,6 +187,7 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 {
 	struct pd_discovery *disc;
 	const uint8_t vdm_cmd = PD_VDO_CMD(vdm[0]);
+	int opos_sop, opos_sop_prime;
 
 	if (!tbt_response_valid(port, type, "ACK", vdm_cmd))
 		return;
@@ -197,15 +212,19 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		tbt_prints("enter mode SOP", port);
 		break;
 	case TBT_ACTIVE:
+		tbt_prints("exit mode SOP", port);
 		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
 			tbt_active_cable_exit_mode(port);
 		else {
 			/*
 			 * Exit Mode process is complete; go to inactive state.
 			 */
-			tbt_prints("exit mode SOP", port);
-			tbt_state[port] = TBT_INACTIVE;
 			retry_done = false;
+			opos_sop = pd_alt_mode(port, TCPC_TX_SOP,
+						USB_VID_INTEL);
+			/* Clear Thunderbolt related signals */
+			pd_dfp_exit_mode(port, TCPC_TX_SOP, USB_VID_INTEL,
+						opos_sop);
 		}
 		break;
 	case TBT_EXIT_SOP:
@@ -220,15 +239,28 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		}
 		break;
 	case TBT_EXIT_SOP_PRIME_PRIME:
+		tbt_prints("exit mode SOP''", port);
 		tbt_state[port] = TBT_EXIT_SOP_PRIME;
 		break;
 	case TBT_EXIT_SOP_PRIME:
+		tbt_prints("exit mode SOP'", port);
 		if (retry_done) {
 			/*
 			 * Exit mode process is complete; go to inactive state.
 			 */
-			tbt_prints("exit mode SOP'", port);
 			tbt_entry_failed(port);
+			opos_sop =
+				pd_alt_mode(port, TCPC_TX_SOP, USB_VID_INTEL);
+			opos_sop_prime =
+				pd_alt_mode(port, TCPC_TX_SOP_PRIME,
+					    USB_VID_INTEL);
+
+			/* Clear Thunderbolt related signals */
+			pd_dfp_exit_mode(port, TCPC_TX_SOP, USB_VID_INTEL,
+				     opos_sop);
+			pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, USB_VID_INTEL,
+				     opos_sop_prime);
+
 		} else {
 			tbt_retry_enter_mode(port);
 		}
