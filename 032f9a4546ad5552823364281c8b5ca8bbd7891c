@@ -16,6 +16,24 @@
       "revId": "032f9a4546ad5552823364281c8b5ca8bbd7891c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a6d3027_01cca526",
+        "filename": "driver/bc12/mt6360.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-16T06:52:22Z",
+      "side": 1,
+      "message": "Thanks Allen.\n\nThe sub addr is added in https://crrev.com/c/2337860/23/driver/bc12/mt6360.c, and also according  to the comment, we don\u0027t need CRC here IMO?",
+      "parentUuid": "62f5f909_dba82115",
+      "revId": "032f9a4546ad5552823364281c8b5ca8bbd7891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
