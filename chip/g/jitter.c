@@ -83,21 +83,22 @@ void init_jittery_clock(int highsec)
 	init_jittery_clock_locking_optional(highsec, 1, 1);
 }
 
+#define subOp(x)	(0x03 | (x) << 4)
+#define addOp(x)	(0x02 | (x) << 4)
+
 void init_sof_clock(void)
 {
 	/* Copy fuse value into software registers, both coarse and fine */
-	unsigned coarseTrimVal = GR_FUSE(RC_TIMER_OSC48_CC_TRIM);
-	unsigned fineTrimVal = GR_FUSE(RC_TIMER_OSC48_FC_TRIM);
+	uint32_t coarseTrimVal = GR_FUSE(RC_TIMER_OSC48_CC_TRIM);
+	uint32_t fineTrimVal = GR_FUSE(RC_TIMER_OSC48_FC_TRIM);
 
 	/* We think SOF toggle happens once every mS, or ~24000 clock ticks */
-	unsigned targetCnt = PCLK_FREQ / 1000;
+	uint32_t targetCnt = PCLK_FREQ / 1000;
 
 	/* The possible operations of a particular calibration bucket */
-	unsigned binaryDnOp = 0x1 | 0x1 << 4;
-	unsigned binaryUpOp = 0x1 | 0x0 << 4;
-	unsigned subOp      = 0x3 | 0x1 << 4;
-	unsigned addOp      = 0x2 | 0x1 << 4;
-	unsigned nop        = 0;
+	uint32_t binaryDnOp = 0x1 | 0x0 << 4;
+	uint32_t binaryUpOp = 0x1 | 0x1 << 4;
+	uint32_t nop        = 0;
 
 	GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM) = coarseTrimVal;
 	GREG32(XO, CLK_TIMER_RC_FINE_ATE_TRIM) = fineTrimVal;
@@ -114,22 +115,22 @@ void init_sof_clock(void)
 	GREG32(XO, CLK_TIMER_SLOW_CALIB1) = targetCnt * 80 / 100;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB2) = targetCnt * 90 / 100;
 	GREG32(XO, CLK_TIMER_SLOW_CALIB3) =
-		targetCnt * (1000000 - 1250) / 1000000;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB4) = targetCnt;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB5) =
-		targetCnt * (1000000 + 1250) / 1000000;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB6) = targetCnt * 110 / 100;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB7) = targetCnt * 120 / 100;
+		(uint32_t)((uint64_t)targetCnt * (1000000 - 1250) / 1000000);
+	GREG32(XO, CLK_TIMER_SLOW_CALIB4) =
+		(uint32_t)((uint64_t)targetCnt * (1000000 + 1250) / 1000000);
+	GREG32(XO, CLK_TIMER_SLOW_CALIB5) = targetCnt * 110 / 100;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB6) = targetCnt * 120 / 100;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB7) = targetCnt * 130 / 100;
 
 	/* This is a work-around for the screwy SOF */
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL0) = nop;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL1) = binaryDnOp;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL2) = binaryDnOp;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL3) = subOp;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL0) = binaryDnOp;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL1) = subOp(5);
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL2) = subOp(3);
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL3) = subOp(1);
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL4) = nop;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL5) = nop;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL6) = addOp;
-	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL7) = binaryUpOp;
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL5) = addOp(1);
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL6) = addOp(3);
+	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL7) = addOp(5);
 	GREG32(XO, CLK_TIMER_SLOW_CALIB_CTRL8) = binaryUpOp;
 
 	/* Set the calibration mode */
@@ -162,7 +163,7 @@ void init_sof_clock(void)
  * software must reduce the coarse trim code by 1 */
 static void timer_sof_calibration_underrun_int(void)
 {
-	unsigned coarseTrimValue = GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM);
+	uint32_t coarseTrimValue = GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM);
 
 	if (coarseTrimValue > 0x00) {
 		CPRINTS("%s: 0x%02x", __func__, coarseTrimValue);
@@ -171,6 +172,9 @@ static void timer_sof_calibration_underrun_int(void)
 
 	GREG32(XO, DXO_INT_STATE) =
 		GC_XO_DXO_INT_STATE_SLOW_CALIB_UNDERRUN_MASK;
+
+	/* Sync everything! */
+	GREG32(XO, CLK_TIMER_SYNC_CONTENTS) = 1;
 }
 DECLARE_IRQ(GC_IRQNUM_XO0_SLOW_CALIB_UNDERRUN_INT,
 	    timer_sof_calibration_underrun_int, 1);
@@ -180,7 +184,7 @@ DECLARE_IRQ(GC_IRQNUM_XO0_SLOW_CALIB_UNDERRUN_INT,
  * software must increase the coarse trim code by 1 */
 static void timer_sof_calibration_overflow_int(void)
 {
-	unsigned coarseTrimValue = GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM);
+	uint32_t coarseTrimValue = GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM);
 
 	/* Coarse trim range is 0..0xff. */
 	if (coarseTrimValue < 0xff) {
@@ -190,6 +194,9 @@ static void timer_sof_calibration_overflow_int(void)
 
 	GREG32(XO, DXO_INT_STATE) =
 		GC_XO_DXO_INT_STATE_SLOW_CALIB_OVERFLOW_MASK;
+
+	/* Sync everything! */
+	GREG32(XO, CLK_TIMER_SYNC_CONTENTS) = 1;
 }
 DECLARE_IRQ(GC_IRQNUM_XO0_SLOW_CALIB_OVERFLOW_INT,
 	    timer_sof_calibration_overflow_int, 1);
@@ -206,6 +213,9 @@ static int command_sof(int argc, char **argv)
 		 GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM));
 	ccprintf("CLK_TIMER_RC_FINE_ATE_TRIM   0x%08x\n",
 		 GREG32(XO, CLK_TIMER_RC_FINE_ATE_TRIM));
+
+	ccprintf("CLK_TIMER_CURRENT:           0x%08x\n",
+		GREG32(XO, CLK_TIMER_CURRENT));
 
 	ccprintf("CLK_TIMER_TRIM_CTRL          0x%08x\n",
 		 GREG32(XO, CLK_TIMER_TRIM_CTRL));
