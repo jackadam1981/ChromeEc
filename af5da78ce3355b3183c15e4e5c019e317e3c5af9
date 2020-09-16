@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d69e39e1_6278fa02",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-16T16:18:59Z",
+      "side": 1,
+      "message": "I\u0027m assuming the current code builds cleanly. I\u0027d recommend putting a declaration for this in baseboard.h anyway. I think the way this CL is currently written, the call to this function on line 68 and the definition board/eldrid/battery.c are technically compiling against different declarations.",
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ffc4f17_99ef9400",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-16T16:18:59Z",
+      "side": 1,
+      "message": "I don\u0027t think this function is needed. The logic here could just be placed directly in the if condition on line 109 with equal clarity.",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9962f23e_c29a1a0e",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-16T16:18:59Z",
+      "side": 1,
+      "message": "false",
+      "range": {
+        "startLine": 103,
+        "startChar": 39,
+        "endLine": 103,
+        "endChar": 40
+      },
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbf635d5_cbe0f402",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-16T16:18:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure we need this function either. It just adds a layer of enum translation between battery_status and battery_present.",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "245f4040_0f14ef81",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-16T16:18:59Z",
+      "side": 1,
+      "message": "If you retain a separate battery_check_disconnect function (see above comment), then move this comment to above that function.",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 60
+      },
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6119d02_ad35fedf",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-16T16:18:59Z",
+      "side": 1,
+      "message": "Nit: This is the only part of this function that needs to change for this board. I would prefer that baseboard define an board_battery_get_disconnect_state that battery_check_present_status in baseboard then calls. But it\u0027s a mild preference.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
