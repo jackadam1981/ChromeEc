@@ -85,6 +85,23 @@
       "revId": "5165c0136c0120aaa5b78a9ab17352340c231dfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f583d12a_9ff5e3fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2020-09-16T18:06:22Z",
+      "side": 1,
+      "message": "Namyoon, this change will affect all H1 USB users, it should not be taken lightly.\n\nThe test does not really prove this patch: there were no problems before this change either. Ideally there should be a test which triggers a problem and demonstrates that the changed code fixes it.",
+      "revId": "5165c0136c0120aaa5b78a9ab17352340c231dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
