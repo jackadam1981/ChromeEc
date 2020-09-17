@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb9ea1e8_84be98c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-09-17T03:05:13Z",
+      "side": 1,
+      "message": "Overall, in favor of AC\u003e\u003d50W and BAT increases. ",
+      "revId": "b62e42d2903d59e17404d663c41c9eda5baf6e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72fe05a6_8f06e513",
+        "filename": "baseboard/zork/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1380689
+      },
+      "writtenOn": "2020-09-17T03:05:13Z",
+      "side": 1,
+      "message": "This part ((BAT \u003e\u003d 1% \u0026\u0026 AC \u003e\u003d 15W) seems susceptible to potential user problems:\n1) If we don\u0027t have enough power to boot to depthcharge, it enters a weird fan-ap-on-boot-loop.\n2) If we increase boot clock frequency on the AP for faster boot times, pulls more power - might not be sufficient\n\nand \n3) takes more brainpower to think about the final condition. Why is it really there? (to boot to depthcharge for an icon).\n\nin discussing with Ed, we were wondering if a prochot signal might be the better choice for all of these.",
+      "revId": "b62e42d2903d59e17404d663c41c9eda5baf6e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
