@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e9e7cef9_46239588",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-17T04:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "941ec67c_f4e3db0e",
+      "range": {
+        "startLine": 1319,
+        "startChar": 15,
+        "endLine": 1319,
+        "endChar": 22
+      },
+      "revId": "615e688058782b646dc6283694170257df58eb5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29992e9e_15946fb5",
         "filename": "util/flash_ec",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "615e688058782b646dc6283694170257df58eb5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0fe7ba0_2ee77cac",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-17T04:39:59Z",
+      "side": 1,
+      "message": "\u003d~ performs a partial match, so v4_with_servo_micro falls into the if-clause.",
+      "parentUuid": "29992e9e_15946fb5",
+      "range": {
+        "startLine": 1320,
+        "startChar": 0,
+        "endLine": 1325,
+        "endChar": 3
+      },
+      "revId": "615e688058782b646dc6283694170257df58eb5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
