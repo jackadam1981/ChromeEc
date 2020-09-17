@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "10241fc8_156a0159",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-17T05:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d69e39e1_6278fa02",
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ffc4f17_99ef9400",
         "filename": "board/eldrid/battery.c",
         "patchSetId": 7
@@ -39,6 +57,30 @@
       "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc7eeb2_608e9f43",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-17T05:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ffc4f17_99ef9400",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 24
+      },
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "527d57d5_503e582d",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-17T05:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9962f23e_c29a1a0e",
+      "range": {
+        "startLine": 103,
+        "startChar": 39,
+        "endLine": 103,
+        "endChar": 40
+      },
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbf635d5_cbe0f402",
         "filename": "board/eldrid/battery.c",
         "patchSetId": 7
@@ -85,6 +151,30 @@
       "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72eda6eb_13509d8e",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-17T05:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbf635d5_cbe0f402",
+      "range": {
+        "startLine": 107,
+        "startChar": 11,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "89a17503_e21c8d41",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-17T05:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "245f4040_0f14ef81",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 145,
+        "endChar": 60
+      },
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6119d02_ad35fedf",
         "filename": "board/eldrid/battery.c",
         "patchSetId": 7
@@ -131,6 +245,30 @@
       "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6b77116_c97e28f8",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-17T05:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6119d02_ad35fedf",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 21
+      },
+      "revId": "af5da78ce3355b3183c15e4e5c019e317e3c5af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
