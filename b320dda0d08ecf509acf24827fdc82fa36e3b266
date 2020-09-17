@@ -34,6 +34,24 @@
       "revId": "b320dda0d08ecf509acf24827fdc82fa36e3b266",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10110d40_75780fd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-17T11:46:30Z",
+      "side": 1,
+      "message": "something strange is going on but i no longer believe it\u0027s related\nto this patch set. it might be as obscure as certain patterns of\nthe binary data being sent out right after \"VB Verifying hash\"\nconfusing servod. if you run servod with \"-d\",\nyou can see that the keyboard input thread\ndoesn\u0027t even respond when this happens.",
+      "parentUuid": "9efb10a0_db74cc98",
+      "revId": "b320dda0d08ecf509acf24827fdc82fa36e3b266",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
