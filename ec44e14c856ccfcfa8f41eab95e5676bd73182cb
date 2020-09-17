@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "e4f998f9_1daf4293",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-17T21:15:41Z",
+      "side": 1,
+      "message": "Also, nice work! There definitely seems to be some friction here. Hopefully we can reshape platform/ec code to reduce friction (instead of ifdefing everything everywhere)",
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84a45bc3_e2d81ec2",
         "filename": "common/timer.c",
         "patchSetId": 1
