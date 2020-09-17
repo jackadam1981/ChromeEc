@@ -142,12 +142,26 @@ static void determine_threshold_scale(int range, int resolution, int rms_noise)
 	 * (data_1g / 9800)^2: (LSB^2)/(mm^2/s^4), which number of
 	 *                     var(sensor data) will represents 1 (mm^2/s^4)
 	 * rms_noise:          ug
+	 * ms_noise:           ug^2
 	 * var_noise:          mm^2/s^4
 	 */
 	const int data_1g = BIT(resolution - 1) / range;
 	const int multiplier = POW2(data_1g);
 	const int divisor = POW2(9800);
-	const int var_noise = POW2((int64_t)rms_noise) * POW2(98) / POW2(10000);
+	const int ms_noise = POW2((int64_t)rms_noise);
+	/*
+	 * We are measuring the var(X) + var(Y), so theoretically, the
+	 * var(noise) should be 2 * ms_noise. However, in most case, on a very
+	 * stationary plane, the average of var(data in 1 second) are only 1.2 *
+	 * ms_noise.
+	 * The standard deviation of var(data) is about 1.6 * rms_noise.
+	 * (= sqrt(2 * rms_noise ^ 4 / window_size))
+	 * (see "chi-square distribution").
+	 * To avoid some relative high var(data) make the state not enter
+	 * off body state, We will need to set var_noise to the following.
+	 */
+	const int var_noise = (ms_noise * 12 / 10 + rms_noise * 16 / 10) *
+			      POW2(98) / POW2(10000);
 
 	var_threshold_scaled = (uint64_t)
 		(CONFIG_BODY_DETECTION_VAR_THRESHOLD + var_noise) *
