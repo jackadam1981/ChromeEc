@@ -8,6 +8,7 @@
 #ifndef __CROS_EC_CONSOLE_H
 #define __CROS_EC_CONSOLE_H
 
+#include "config.h"
 #include "common.h"
 
 /*
@@ -84,7 +85,7 @@ static inline int console_is_restricted(void)
 /* Console channels */
 enum console_channel {
 	#define CONSOLE_CHANNEL(enumeration, string) enumeration,
-	#include "include/console_channel.inc"
+	#include "console_channel.inc"
 	#undef CONSOLE_CHANNEL
 
 	/* Channel count; not itself a channel */
@@ -163,14 +164,14 @@ void console_has_input(void);
  * @param help          String with one-line description of command, or NULL.
  * @param flags         Per-command flags, if needed.
  */
-#ifndef HAS_TASK_CONSOLE
+#if !defined(HAS_TASK_CONSOLE) && !defined(CONFIG_ZEPHYR)
 #define DECLARE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP)		\
 	int (ROUTINE)(int argc, char **argv) __attribute__((unused))
 #define DECLARE_SAFE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP)	\
 	int (ROUTINE)(int argc, char **argv) __attribute__((unused))
 #define DECLARE_CONSOLE_COMMAND_FLAGS(NAME, ROUTINE, ARGDESC, HELP, FLAGS) \
 	int (ROUTINE)(int argc, char **argv) __attribute__((unused))
-#else
+#elif defined(HAS_TASK_CONSOLE)
 
 /* We always provde help args, but we may discard them to save space. */
 #if defined(CONFIG_CONSOLE_CMDHELP)
@@ -226,5 +227,57 @@ void console_has_input(void);
 			  ~CMD_FLAG_RESTRICTED))
 
 #endif	/* HAS_TASK_CONSOLE */
+
+#ifdef CONFIG_ZEPHYR
+
+#include <shell/shell.h>
+
+/**
+ * zshim_run_ec_console_command() - Dispatch an CrOS EC console
+ * console command using Zephyr's shell
+ *
+ * @handler:		A CrOS EC shell command handler.
+ * @shell:		The Zephyr shell to run on.
+ * @argc:		The number of command line arguments.
+ * @argv:		The NULL-terminated list of arguments.
+ * @help_str:		The help string to display when "-h" is passed.
+ * @argdesc:		The string describing the arguments to the command.
+ *
+ * Return: the return value from the handler.
+ */
+int zshim_run_ec_console_command(int (*handler)(int argc, char **argv),
+				 const struct shell *shell, size_t argc,
+				 char **argv, const char *help_str,
+				 const char *argdesc);
+
+/* Internal wrappers for DECLARE_CONSOLE_COMMAND_* macros. */
+#define _ZEPHYR_SHELL_COMMAND_SHIM_2(NAME, ROUTINE_ID, ARGDESC, HELP,        \
+				     WRAPPER_ID)                             \
+	static int WRAPPER_ID(const struct shell *shell, size_t argc,        \
+			      char **argv)                                   \
+	{                                                                    \
+		return zshim_run_ec_console_command(ROUTINE_ID, shell, argc, \
+						    argv, HELP, ARGDESC);    \
+	}                                                                    \
+	SHELL_CMD_ARG_REGISTER(NAME, NULL, HELP, WRAPPER_ID, 0,              \
+			       SHELL_OPT_ARG_MAX)
+
+#define _ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE_ID, ARGDESC, HELP)   \
+	_ZEPHYR_SHELL_COMMAND_SHIM_2(NAME, ROUTINE_ID, ARGDESC, HELP, \
+				     UTIL_CAT(zshim_wrapper_, ROUTINE_ID))
+
+/* These macros mirror the macros provided by the CrOS EC. */
+#define DECLARE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP) \
+	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP)
+
+/*
+ * TODO(jrosenth): implement flags and restricted commands?  We just
+ * discard this in the shim layer for now.
+ */
+#define DECLARE_CONSOLE_COMMAND_FLAGS(NAME, ROUTINE, ARGDESC, HELP, FLAGS) \
+	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP)
+#define DECLARE_SAFE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP) \
+	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP)
+#endif /* CONFIG_ZEPHYR */
 
 #endif  /* __CROS_EC_CONSOLE_H */

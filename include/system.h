@@ -495,6 +495,7 @@ extern uint32_t sleep_mask;
 #endif
 #define LOW_SPEED_DEEP_SLEEP_ALLOWED (!(sleep_mask & 0xffff0000))
 
+#ifndef CONFIG_ZEPHYR
 /**
  * Enable low power sleep mask. For low power sleep to take affect, all masks
  * in the sleep mask enum above must be enabled.
@@ -516,6 +517,7 @@ static inline void disable_sleep(uint32_t mask)
 {
 	atomic_or(&sleep_mask, mask);
 }
+#endif  /* CONFIG_ZEPHYR */
 
 #ifdef CONFIG_LOW_POWER_IDLE_LIMITED
 /*

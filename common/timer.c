@@ -30,6 +30,12 @@ static uint32_t next_deadline = 0xffffffff;
 /* Hardware timer routine IRQ number */
 static int timer_irq;
 
+/*
+ * TODO(jrosenth): getting this code compiling under zephyr was more
+ * pain than it was worth.  Punt it under an ifdef for now and we'll
+ * figure out what to do with it later.
+ */
+#ifndef CONFIG_ZEPHYR
 static void expire_timer(task_id_t tskid)
 {
 	/* we are done with this timer */
@@ -173,6 +179,7 @@ void usleep(unsigned us)
 		atomic_or(task_get_event_bitmap(task_get_current()),
 			  evt & ~TASK_EVENT_TIMER);
 }
+#endif  /* CONFIG_ZEPHYR */
 
 timestamp_t get_time(void)
 {
