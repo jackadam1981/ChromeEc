@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "199beed3_3c4476ba",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T20:43:47Z",
+      "side": 1,
+      "message": "Would you mind adding a TODO: POLICY decision here? This will need to be moved into EC default policy once we create it.",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "bb623c7b657c8baf7a3a7cf4504a858417c66fbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
