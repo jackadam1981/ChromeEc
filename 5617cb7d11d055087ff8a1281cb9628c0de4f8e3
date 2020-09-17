@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "fb0a629c_aaac696a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6364,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T19:23:28Z",
+      "side": 1,
+      "message": "Definitely.  Though the max packet size may depend on platform, so it\u0027s worth a quick double check that it\u0027s within the bounds for everyone",
+      "parentUuid": "e8df5de6_761f42df",
+      "range": {
+        "startLine": 6361,
+        "startChar": 0,
+        "endLine": 6364,
+        "endChar": 14
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1707e820_cb41b7f2",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "Unrelated but:\n\u003e I think \"usbpd\" ties to the command we plan to deprecate.  \n\nDo you mean \u0027ectool usbpd \u003cport\u003e\u0027 ?\n\nIf so, We *just* had a change (CL:2405662) submitted to debugd to use that instead of reading kernel debugfs to get PD control info for a port.\n\nWill there be an equivalent to usbpd which pretty-prints the port PD info?",
       "parentUuid": "ce49c841_b970aa2d",
+      "range": {
+        "startLine": 212,
+        "startChar": 30,
+        "endLine": 212,
+        "endChar": 40
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e004a76b_07643a42",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T19:23:28Z",
+      "side": 1,
+      "message": "Abe:\nSounds fair enough, so just move it to the \"usbpd\" command help\n\nPrashant:\nYes. The plan will be for the typec status host command to retrieve the PD info for us, and for typec control to handle any changes being requested by the AP.  We\u0027re planning to only implement the new typec commands for TCPMv2 at the moment though but we could look at implementing status for v1 as well if the inconsistency would be an issue for existing boards.\n\nCurrently \"usbpd\" combines status and control in a strange way, such that it\u0027ll start a data role swap request but then also retrieve the data role for you which is in the process of being swapped.",
+      "parentUuid": "4fbe2701_6fa7c4e8",
       "range": {
         "startLine": 212,
         "startChar": 30,
