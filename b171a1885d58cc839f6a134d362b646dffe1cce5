@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d5338f12_bd1f0d5a",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-17T20:05:19Z",
+      "side": 1,
+      "message": "Do you mean note those response specifically for Volteer?",
+      "parentUuid": "f71fcca6_d1a5ed8d",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3db7127_8f2ec552",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -76,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "479819a1_425a2c85",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-17T20:05:19Z",
+      "side": 1,
+      "message": "This field(bits[25:23] \"product type as DFP\" is in PD 3.0 Rev3.0, while Rev 2.0 have those as reserved bits. Macro VDO_IDH defined in usb_pd.h doesn\u0027t have this field. Either we can update this macro to include this field(I think it needs a separate CL since it\u0027s used by multiple files); or I added a new macro like VDO_IDH_REV3 in usb_pd_vdo.h.",
+      "parentUuid": "8db0d123_0db42758",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c423488_ade6824e",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -87,6 +129,24 @@
       "writtenOn": "2020-09-17T17:51:14Z",
       "side": 1,
       "message": "volteer/board.h should define CONFIG_USB_BCD_DEV, and that should be used here.\n\nRelatedly, CONFIG_USB_PID should also be moved out of baseboard.h and into the variant board.h files (and set by each manufacturer). I\u0027ll put up a change for that.",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1aa3311_60a6be7b",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-17T20:05:19Z",
+      "side": 1,
+      "message": "Which value for  CONFIG_USB_BCD_DEV? How about 0x0001?",
+      "parentUuid": "2c423488_ade6824e",
       "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -162,6 +222,30 @@
     },
     {
       "key": {
+        "uuid": "c5d11520_7123987e",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-17T20:05:19Z",
+      "side": 1,
+      "message": "I don\u0027t see there is XID defined. I searched places VDO_CSTAT get called, all use 0. This XID is assigned by USB-IF to product. Does Volteer has this? Or should from Intel?",
+      "parentUuid": "3a73bfdf_48ed9294",
+      "range": {
+        "startLine": 119,
+        "startChar": 35,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "edd45ec1_1ca7dac5",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -173,6 +257,24 @@
       "writtenOn": "2020-09-17T17:51:14Z",
       "side": 1,
       "message": "Should this have a TODO referencing the USB4 bug? Or are we saying we don\u0027t need any power, because we can function as a USB4 UFP under its own power?",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9463c19b_e30d309e",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-17T20:05:19Z",
+      "side": 1,
+      "message": "I checked my Windows PC and Linux PC, none of them provide product VDOs. Are those VDOs needed? Which USB4 bug do you refer, this one https://partnerissuetracker.corp.google.com/issues/168453520?",
+      "parentUuid": "edd45ec1_1ca7dac5",
       "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
