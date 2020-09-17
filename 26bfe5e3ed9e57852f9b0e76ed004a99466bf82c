@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf86e8e7_2338b3e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-17T19:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2989c13_6125f444",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "26bfe5e3ed9e57852f9b0e76ed004a99466bf82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "035e9b7a_86eb72aa",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -53,6 +77,24 @@
       "writtenOn": "2020-09-17T19:16:29Z",
       "side": 1,
       "message": "I think it would be good to document the behavior/expectations for partners so that they know how this impacts boot, factory as well as RMA.",
+      "revId": "26bfe5e3ed9e57852f9b0e76ed004a99466bf82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a31ee7d_f20400b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-17T19:32:19Z",
+      "side": 1,
+      "message": "What are you thinking? Errata bug, or something else?",
+      "parentUuid": "c0545252_64351f58",
       "revId": "26bfe5e3ed9e57852f9b0e76ed004a99466bf82c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
