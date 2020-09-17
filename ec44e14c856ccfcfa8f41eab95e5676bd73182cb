@@ -42,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "bc59d2ac_2038e43c",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-17T21:14:48Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need both styles right? We should only need to check Z_IS_ENABLED1(option) right?\n\nI would think that all of the config options would come from Zephyr. I don\u0027t imagine us pulling over a board from from platform/ec (which would define all of the platform/ec CONFIG_ options) into Zephyr",
+      "range": {
+        "startLine": 439,
+        "startChar": 27,
+        "endLine": 439,
+        "endChar": 46
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65479a03_95097797",
         "filename": "include/console.h",
         "patchSetId": 1
@@ -58,6 +81,75 @@
         "startChar": 45,
         "endLine": 237,
         "endChar": 18
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89a9a17_30f102db",
+        "filename": "include/console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-17T21:14:48Z",
+      "side": 1,
+      "message": "Can we move this the zephyr/shim in this repo instead?",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 0
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66f58421_6307192e",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-17T21:14:48Z",
+      "side": 1,
+      "message": "Hmm, this is something we are going to need to address. We definitely need to buffer for other purposes (e.g. host command pulling console data).\n\nAlso seems better to not make current task/thread wait on IO",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 30
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53145f62_17abee07",
+        "filename": "zephyr/shim/src/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-17T21:14:48Z",
+      "side": 1,
+      "message": "hopefully we won\u0027t compile anything that needs this function. It should get optimized out since we wouldn\u0027t be using anything that needed this in it callstack",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 51
       },
       "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
