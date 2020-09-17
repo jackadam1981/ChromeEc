@@ -57,6 +57,30 @@
       "revId": "37e025d303380516a4474e9c0b6361e114458098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "503210cc_30e7b49b",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-17T21:58:41Z",
+      "side": 1,
+      "message": "Abe told me that returning the fail was one of the uses of this function. I changed the meaning so it would show success if any SVIDs were good and nothing is needing discovery\n\nMy theory is to have the following functionality for this... With the order being pertinent.\n\nIf there are no entries then it is successful.\nIf there is an entry that needs to be discovered, then return the first one so it can be discovered.\nIf everything discovered properly in the list, then it is successful.\nIf it discovered some properly and some failed, then it is successful.\nIf it fails everything then it should return an entry that fails.\n\n\nI don\u0027t know if the fail entry should be the first one located or not... Right now the change will return the last one, but that can be changed if the first is better.",
+      "parentUuid": "aeb7d9e6_2af4e7b8",
+      "range": {
+        "startLine": 613,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 26
+      },
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
