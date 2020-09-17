@@ -22,6 +22,30 @@
       "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88e1f60a_496b6933",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-17T18:06:15Z",
+      "side": 1,
+      "message": "For active cables states:\nTBT_ACTIVE: send exit SOP\nTBT_EXIT_SOP_PRIME: send exit SOP\u0027\nTBT_EXIT_SOP_PPRIME_PRIME: Send exit SOP\u0027\u0027\n\nSince we need to send all the exit messages, we can\u0027t just check if TBT is in Active state.",
+      "parentUuid": "5814dc42_b49759af",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 29
+      },
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
