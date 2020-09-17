@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5aa503a_c6c7f2ce",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T16:09:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86fda3ba_1171e29d",
+      "range": {
+        "startLine": 177,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 8
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3824cb9_e84f82c2",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1afd190_11d3dd19",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T16:09:51Z",
+      "side": 1,
+      "message": "I think Ayushee is working on this now. I linked to the main TBT-in-TCPMv2 bug.",
+      "parentUuid": "a3824cb9_e84f82c2",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e8df5de6_761f42df",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6364,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T16:09:51Z",
+      "side": 1,
+      "message": "Sounds reasonable. Is 256 bytes \"a good-sized data section\"?",
+      "parentUuid": "7879c199_3597cc6b",
+      "range": {
+        "startLine": 6361,
+        "startChar": 0,
+        "endLine": 6364,
+        "endChar": 14
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1707e820_cb41b7f2",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-09-17T04:18:02Z",
       "side": 1,
       "message": "Trickily enough, I think \"usbpd\" ties to the command we plan to deprecate.  This one is for the TCPC FW update process but is named very, very similarly.  I suppose we should also wait on the victory \"deprecated\" for when we have equivalent functionality?",
+      "range": {
+        "startLine": 212,
+        "startChar": 30,
+        "endLine": 212,
+        "endChar": 40
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce49c841_b970aa2d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T16:09:51Z",
+      "side": 1,
+      "message": "I think all the definitions of \"deprecated\" I\u0027ve seen are compatible with the idea that deprecation is a process, not an outcome, and things can be deprecated even though they don\u0027t have full replacements yet. (Note that various specs define \"deprecated\" and \"obsolete\" as distinct concepts.) The definition I like the best, which I can\u0027t find right now, is something to the effect of, \"Deprecation is an expression of the wish of the standards committee that the referenced feature would go away.\" Based on your comment, I think my usage here is also consistent with the traditional Google dichotomy of deprecated vs. not ready yet. 😊\n\nI\u0027m comfortable removing this, but I\u0027m also comfortable leaving it here for the duration of the development of the new command API. WDYT?",
+      "parentUuid": "1707e820_cb41b7f2",
       "range": {
         "startLine": 212,
         "startChar": 30,
