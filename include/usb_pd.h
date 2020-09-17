@@ -1788,14 +1788,17 @@ int pd_get_mode_vdo_for_svid(int port, enum tcpm_transmit_type type,
 		uint16_t svid, uint32_t *vdo_out);
 
 /**
- * Get a pointer to mode data for the next SVID with undiscovered modes. This
- * data may indicate that discovery failed.
+ * Get a pointer to mode data for the next SVID that needs to be discovered.
+ * This data may indicate that discovery failed.
  *
  * @param port USB-C port number
  * @param type SOP* type to retrieve
- * @return     Pointer to the first SVID-mode structure with undiscovered mode;
- *             discovery may be needed or failed; returns NULL if all SVIDs have
- *             discovered modes
+ * @return     In order of precedence:
+ *             Pointer to the first SVID-mode structure with needs discovered
+ *             mode, if any exist;
+ *             Pointer to the first SVID-mode structure with discovery failed
+ *             mode, if any exist and no modes succeeded in discovery;
+ *             NULL, otherwise
  */
 struct svid_mode_data *pd_get_next_mode(int port, enum tcpm_transmit_type type);
 
