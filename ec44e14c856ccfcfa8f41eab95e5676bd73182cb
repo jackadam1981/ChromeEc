@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29b83604_613521cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-09-17T05:47:47Z",
+      "side": 1,
+      "message": "Really nice work",
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84a45bc3_e2d81ec2",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-09-17T05:47:47Z",
+      "side": 1,
+      "message": "Just a suggestion, feel free to ignore.\nFor when you split this up into different CLs, since this is ~150 lines blocked by the ifndef it\u0027s a bit hard to read. Can we break this up into timer.c and timer_zephyr.c and have timer.c #include timer_zephyr.c or have the build.mk bring both in where timer.c is?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65479a03_95097797",
+        "filename": "include/console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2020-09-17T05:47:47Z",
+      "side": 1,
+      "message": "nit: \u0027a CroOS EC console command\u0027",
+      "range": {
+        "startLine": 236,
+        "startChar": 45,
+        "endLine": 237,
+        "endChar": 18
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
