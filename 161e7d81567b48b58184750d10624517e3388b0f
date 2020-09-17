@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ec4aa2b_8aa8521e",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-17T12:00:20Z",
+      "side": 1,
+      "message": "does packed actually do anything here?\ni imagine you would need it on gpio_alt_map instead?\n\nmaybe add:\n\nBUILD_ASSERT(sizeof(struct npcx_gpio) \u003d\u003d ...)\n\nfor both of these versions?",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "161e7d81567b48b58184750d10624517e3388b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
