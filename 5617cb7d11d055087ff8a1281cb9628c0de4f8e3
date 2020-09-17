@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86fda3ba_1171e29d",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T04:18:02Z",
+      "side": 1,
+      "message": "Add a bug to track this with Intel",
+      "range": {
+        "startLine": 177,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 8
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3824cb9_e84f82c2",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T04:18:02Z",
+      "side": 1,
+      "message": "Planning to do this yourself on this bug, or on a future bug?",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7879c199_3597cc6b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6364,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T04:18:02Z",
+      "side": 1,
+      "message": "In terms of host command structure, I was thinking we\u0027ll try to future-plan by reserving ourselves a good sized data section that the sub-commands can use.  The contents of the data section would be interpreted based on the sub-command and we should hopefully be able to get away without having to version the host command much as we add new sub-commands (versioning would probably be necessary if we end up changing one of the sub-command\u0027s data structures though, I\u0027d imagine).  \n\nWhat do you think?",
+      "range": {
+        "startLine": 6361,
+        "startChar": 0,
+        "endLine": 6364,
+        "endChar": 14
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1707e820_cb41b7f2",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T04:18:02Z",
+      "side": 1,
+      "message": "Trickily enough, I think \"usbpd\" ties to the command we plan to deprecate.  This one is for the TCPC FW update process but is named very, very similarly.  I suppose we should also wait on the victory \"deprecated\" for when we have equivalent functionality?",
+      "range": {
+        "startLine": 212,
+        "startChar": 30,
+        "endLine": 212,
+        "endChar": 40
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
