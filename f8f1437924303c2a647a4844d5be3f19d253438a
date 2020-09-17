@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c11cc336_62ef11ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-17T23:51:44Z",
+      "side": 1,
+      "message": "is it a final fix or a workaround?\n\nif workaround: Add TODO with crsbug\nif final fix: add info on implications and how retimer handles it",
+      "revId": "f8f1437924303c2a647a4844d5be3f19d253438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99285543_404ecc42",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
@@ -19,6 +36,23 @@
         "endLine": 322,
         "endChar": 40
       },
+      "revId": "f8f1437924303c2a647a4844d5be3f19d253438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3cafe4a_6bcc8f65",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-17T23:51:44Z",
+      "side": 1,
+      "message": "nit: add details",
       "revId": "f8f1437924303c2a647a4844d5be3f19d253438a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
