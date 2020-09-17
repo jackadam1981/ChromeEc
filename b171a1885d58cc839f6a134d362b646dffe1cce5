@@ -1,0 +1,352 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44664023_4c8fdce5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "Benson: Can you look over the responses?\n\nScott: I know that you were working on some changes to this API. What is their current status?\n\nIt seems like almost all of the stuff in board code could be in some sort of generic module for any board that supports TBT as a UFP. Right now, the code isn\u0027t structured to take advantage of common features in that way. This is fine for now, but as this API moves forward, and we have more devices with UFP features, it\u0027s probably worth thinking about how we can reuse code.",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f71fcca6_d1a5ed8d",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "I would probably note here that these are specifically responses.",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3db7127_8f2ec552",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "Shouldn\u0027t all these structures be static?",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8db0d123_0db42758",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "This should be in the arguments to VDO_IDH.",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c423488_ade6824e",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "volteer/board.h should define CONFIG_USB_BCD_DEV, and that should be used here.\n\nRelatedly, CONFIG_USB_PID should also be moved out of baseboard.h and into the variant board.h files (and set by each manufacturer). I\u0027ll put up a change for that.",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af0223fa_0b94e5ad",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "Reference a bug.",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 7
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d6e0d81_1af2cd12",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "Define constants for these fields in the VDO header file.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 29
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a73bfdf_48ed9294",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "I think there should be a TODO here to get an XID, if we don\u0027t have one already.",
+      "range": {
+        "startLine": 119,
+        "startChar": 35,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edd45ec1_1ca7dac5",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "Should this have a TODO referencing the USB4 bug? Or are we saying we don\u0027t need any power, because we can function as a USB4 UFP under its own power?",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ada96c85_c88da924",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 158,
+        "startChar": 7,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b917a87f_6f9b0ae9",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "What do we do with this?",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e35e6218_6a5256ac",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "Didn\u0027t we already validate this?",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 173,
+        "endChar": 6
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e255e53_6232a12d",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "We could have gotten here because of an invalid SVID or opos. I would distinguish between that and an invalid mux state in error reporting.\n\nI think this might end up being easier to follow with guard clauses instead of nested if statements.",
+      "range": {
+        "startLine": 180,
+        "startChar": 10,
+        "endLine": 180,
+        "endChar": 48
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4796bed3_ec23c173",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "Do we need this in addition to the below bit field union?",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1db3596e_a396b8b4",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "The connector type field is in here.",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb0476b_d6af03be",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "It seems like this should also specify the version and connector type fields, even if they are always the same.",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3373939c_94944ebb",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "The connector type field is in here.",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ffb7e6_18638733",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T17:51:14Z",
+      "side": 1,
+      "message": "Also specify the version and connector type.",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
