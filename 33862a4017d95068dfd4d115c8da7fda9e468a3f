@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75534668_78fa5d2c",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-17T23:19:16Z",
+      "side": 1,
+      "message": "I\u0027d prefer if there were macros/enums created for the variant IDs.  Especially because they are referenced here an in system_get_chip_revision().",
+      "range": {
+        "startLine": 848,
+        "startChar": 6,
+        "endLine": 848,
+        "endChar": 10
+      },
+      "revId": "33862a4017d95068dfd4d115c8da7fda9e468a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
