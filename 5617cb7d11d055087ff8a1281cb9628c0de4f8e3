@@ -187,6 +187,30 @@
       "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fbe2701_6fa7c4e8",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-09-17T16:51:35Z",
+      "side": 1,
+      "message": "Unrelated but:\n\u003e I think \"usbpd\" ties to the command we plan to deprecate.  \n\nDo you mean \u0027ectool usbpd \u003cport\u003e\u0027 ?\n\nIf so, We *just* had a change (CL:2405662) submitted to debugd to use that instead of reading kernel debugfs to get PD control info for a port.\n\nWill there be an equivalent to usbpd which pretty-prints the port PD info?",
+      "parentUuid": "ce49c841_b970aa2d",
+      "range": {
+        "startLine": 212,
+        "startChar": 30,
+        "endLine": 212,
+        "endChar": 40
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
