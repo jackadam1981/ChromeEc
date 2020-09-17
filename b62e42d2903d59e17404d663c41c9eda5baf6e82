@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4a07905e_21f976b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-17T04:13:55Z",
+      "side": 1,
+      "message": "What\u0027s the theoretical max power consumption (AP, Display, backlight, RAM, Wifi, EC, Cr50, FPMCU, Fan, USB ports, etc.)? What\u0027s the bundled AC adapter rating?",
+      "range": {
+        "startLine": 14,
+        "startChar": 22,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "b62e42d2903d59e17404d663c41c9eda5baf6e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb9ea1e8_84be98c8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
