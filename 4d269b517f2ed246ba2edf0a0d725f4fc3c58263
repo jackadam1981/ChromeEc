@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6db50d34_86872a61",
+        "filename": "driver/tcpm/fusb307.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1442002
+      },
+      "writtenOn": "2020-09-17T15:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ca3722d_58b6fcb4",
+      "revId": "4d269b517f2ed246ba2edf0a0d725f4fc3c58263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10cf3584_a695c71d",
         "filename": "driver/tcpm/fusb307.c",
         "patchSetId": 7
@@ -39,6 +57,30 @@
       "revId": "4d269b517f2ed246ba2edf0a0d725f4fc3c58263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd881953_022bfc19",
+        "filename": "driver/tcpm/fusb307.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1442002
+      },
+      "writtenOn": "2020-09-17T15:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10cf3584_a695c71d",
+      "range": {
+        "startLine": 61,
+        "startChar": 27,
+        "endLine": 61,
+        "endChar": 30
+      },
+      "revId": "4d269b517f2ed246ba2edf0a0d725f4fc3c58263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
