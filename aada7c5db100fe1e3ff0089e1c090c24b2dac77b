@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d901acb_853dd6b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-17T20:59:37Z",
+      "side": 1,
+      "message": "Great time savings!",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "aada7c5db100fe1e3ff0089e1c090c24b2dac77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c3270f0_1e2d1f3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-17T20:59:37Z",
+      "side": 1,
+      "message": "what kind of stress test or repeated test have you done for this CL? I just want to ensure we don\u0027t introduce any flaky flash behavior.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "aada7c5db100fe1e3ff0089e1c090c24b2dac77b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
