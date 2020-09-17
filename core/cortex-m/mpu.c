@@ -121,10 +121,35 @@ int mpu_config_region(uint8_t region, uint32_t addr, uint32_t size,
 	if (size_bit < 5)
 		return -EC_ERROR_INVAL;
 
-	/* If size is a power of 2 then represent it with a single MPU region */
-	if (POWER_OF_TWO(size))
-		return mpu_update_region(region, addr, size_bit, attr, enable,
-					 0);
+	if (POWER_OF_TWO(size)) {
+		/*
+		 * If size is a power of 2 and addr is naturally aligned
+		 * then represent it with a single MPU region.
+		 */
+		if (is_aligned(addr, size))
+			return mpu_update_region(region, addr, size_bit, attr,
+						 enable, 0);
+		/*
+		 * addr is not aligned to size, but we may be able to salvage
+		 * the situation by configuring two regions with half the size
+		 * each in order to satisfy addr alignment.
+		 *
+		 * The non-power-of-two case only works if addr is more aligned
+		 * (has more trailing zeroes) than size and unifying that with
+		 * the less-aligned case here represents a significant increase
+		 * in complexity, so only this limited support is currently
+		 * implemented.
+		 */
+		if (is_aligned(addr, size / 2)) {
+			rv = mpu_update_region(region, addr, size_bit - 1,
+				attr, enable, 0);
+			if (rv != EC_SUCCESS)
+				return rv;
+			return mpu_update_region(region + 1,
+						addr + (size / 2), size_bit - 1,
+						attr, enable, 0);
+		}
+	}
 
 	/* Sub-regions are not supported for region <= 128 bytes */
 	if (size_bit < 7)
