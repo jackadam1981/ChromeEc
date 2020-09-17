@@ -16,6 +16,121 @@
       "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf0ffdd3_a821a0dc",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-17T23:14:47Z",
+      "side": 1,
+      "message": "This is never defined for NPCX5.",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 21
+      },
+      "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24484f2_60e5dd10",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-17T23:14:47Z",
+      "side": 1,
+      "message": "Can you use the helper macros defined in config_chip-npcx7.h throughout this file? \n\nThis includes NPCX_WOV_SUPPORT, NPCX_SECOND_UART, NPCX_UART_FIFO_SUPPORT, and NPCX_PSL_MODE_SUPPORT.  These names easier for the reader to parse intent.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 70
+      },
+      "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ad1bc2_e169d882",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-17T23:14:47Z",
+      "side": 1,
+      "message": "You should create a NPCX_ITIM64_SUPPORT for this combination.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a1c04b2_e06efef2",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-17T23:14:47Z",
+      "side": 1,
+      "message": "NPCX_PSL_MODE_SUPPORT",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 67
+      },
+      "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ddaba5_f2bc4501",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-17T23:14:47Z",
+      "side": 1,
+      "message": "NPCX_ITIM64_SUPPORT",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 32
+      },
+      "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
