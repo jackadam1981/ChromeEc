@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2703f8e1_0bc044d1",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-17T08:48:57Z",
+      "side": 1,
+      "message": "press vol- on DB board, ec log could fetch debug message.\ncurrently which function call could notify system evetn?",
+      "revId": "ee2b767f85e1aa15640bad8d75e2b71f640935e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326b0364_1ed487ce",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-17T08:48:57Z",
+      "side": 1,
+      "message": "press vol+ on DB board, ec log could fetch debug message.\ncurrently which function call could notify system event ?",
+      "revId": "ee2b767f85e1aa15640bad8d75e2b71f640935e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
