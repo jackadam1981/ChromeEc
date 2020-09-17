@@ -16,6 +16,47 @@
       "revId": "37e025d303380516a4474e9c0b6361e114458098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dd2921b_0726b12d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T21:37:47Z",
+      "side": 1,
+      "message": "I\u0027d be curious to see a TCPMv1 trace.  At the time I worked with it, a NAK at any step would usually de-rail the entire process entirely.  Though I suppose that might be specific to the v1 behavior of octopus timeframe.",
+      "parentUuid": "3f0597c5_7dd02790",
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeb7d9e6_2af4e7b8",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T21:37:47Z",
+      "side": 1,
+      "message": "Perhaps it should return NULL here?  We don\u0027t need to re-discover the failed mode most likely, so it\u0027s not really a next one to discover. \n\nAbe would know best, but I would guess perhaps the existing \"if\" check should just be \"if !\u003d NEEDED\" and then we need to hope users of said modes check their discovery status correctly.",
+      "range": {
+        "startLine": 613,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 26
+      },
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
