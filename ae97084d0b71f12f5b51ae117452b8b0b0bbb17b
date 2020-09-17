@@ -16,6 +16,52 @@
       "revId": "ae97084d0b71f12f5b51ae117452b8b0b0bbb17b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c13f798c_7c503388",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5342,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T17:31:09Z",
+      "side": 1,
+      "message": "Also use pe_sender_response_msg_entry() since it pairs with the msg_run()",
+      "range": {
+        "startLine": 5342,
+        "startChar": 1,
+        "endLine": 5342,
+        "endChar": 49
+      },
+      "revId": "ae97084d0b71f12f5b51ae117452b8b0b0bbb17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "981704f0_e0e25d91",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5369,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-17T17:31:09Z",
+      "side": 1,
+      "message": "Why this case?  Isn\u0027t this message always the beginning of an AMS, so discard would always be back to ready?",
+      "range": {
+        "startLine": 5367,
+        "startChar": 0,
+        "endLine": 5369,
+        "endChar": 9
+      },
+      "revId": "ae97084d0b71f12f5b51ae117452b8b0b0bbb17b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
