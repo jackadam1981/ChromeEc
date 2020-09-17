@@ -16,6 +16,69 @@
       "revId": "052919443f42f44ae0bc2b23b263d55c7d67533d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "462b56cb_e7b8c869",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-17T22:51:10Z",
+      "side": 1,
+      "message": "I\u0027m not a huge fan of the naming, but I can\u0027t think of a somewhat descriptive name that describes what this function does.",
+      "range": {
+        "startLine": 705,
+        "startChar": 12,
+        "endLine": 705,
+        "endChar": 32
+      },
+      "revId": "052919443f42f44ae0bc2b23b263d55c7d67533d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "252a3dd6_eda421c4",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-17T22:51:10Z",
+      "side": 1,
+      "message": "Similarly for these.",
+      "range": {
+        "startLine": 763,
+        "startChar": 5,
+        "endLine": 763,
+        "endChar": 18
+      },
+      "revId": "052919443f42f44ae0bc2b23b263d55c7d67533d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ad65433_ef37aece",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-17T22:51:10Z",
+      "side": 1,
+      "message": "nit: Could you add some documentation here to the prototype?",
+      "revId": "052919443f42f44ae0bc2b23b263d55c7d67533d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
