@@ -161,6 +161,8 @@ enum sn5s330_pp_idx {
  */
 #define SN5S330_VBUS_GOOD_MASK BIT(0)
 
+#define SN5S330_VBUS_OVP_MASK  BIT(1)
+
 extern const struct ppc_drv sn5s330_drv;
 
 /**

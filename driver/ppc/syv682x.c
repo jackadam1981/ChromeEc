@@ -251,6 +251,7 @@ static void syv682x_handle_status_interrupt(int port, int regval)
 	if (syv682x_interrupt_filter(port, regval, SYV682X_STATUS_OVP,
 				     SYV682X_FLAGS_OVP)) {
 		ppc_prints("VBUS OVP!", port);
+		pd_execute_hard_reset(port);
 	}
 	if (syv682x_interrupt_filter(port, regval, SYV682X_STATUS_RVS,
 				     SYV682X_FLAGS_RVS)) {

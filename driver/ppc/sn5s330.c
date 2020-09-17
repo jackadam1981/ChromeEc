@@ -705,7 +705,11 @@ static void sn5s330_handle_interrupt(int port)
 		write_reg(port, SN5S330_INT_TRIP_RISE_REG3, rise);
 		write_reg(port, SN5S330_INT_TRIP_FALL_REG3, fall);
 #endif  /* CONFIG_USB_PD_VBUS_DETECT_PPC && CONFIG_USB_CHARGER */
+		
+		read_reg(port, SN5S330_INT_TRIP_RISE_REG3, &rise);
 
+		if (rise & SN5S330_VBUS_OVP_MASK)
+			pd_execute_hard_reset(port);
 	}
 }
 
