@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75b75424_f5264679",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-17T06:20:48Z",
+      "side": 1,
+      "message": "Weiyi,\n\nPlease take a look on review comments of chip/mt8192_scp/clock.c.\n\nFor clock_init(), please advise:\ne.g. something in the #if 0 ... #endif is needed\ne.g. some operations are not necessary\ne.g. something in the // if needed",
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d445ece_11a66811",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-17T06:20:48Z",
+      "side": 1,
+      "message": "25ms?  Which one should we change: comment vs. udelay?",
+      "range": {
+        "startLine": 225,
+        "startChar": 11,
+        "endLine": 225,
+        "endChar": 15
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "170e178e_28d87e40",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-17T06:20:48Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 232,
+        "startChar": 11,
+        "endLine": 232,
+        "endChar": 15
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c70edce_cd52f4fd",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-17T06:20:48Z",
+      "side": 1,
+      "message": "any (un)necessary operations?",
+      "range": {
+        "startLine": 294,
+        "startChar": 5,
+        "endLine": 294,
+        "endChar": 15
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f3325d7_7e683cd5",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-17T06:20:48Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 75
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "755c9355_b80ab84d",
+        "filename": "chip/mt8192_scp/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-17T06:20:48Z",
+      "side": 1,
+      "message": "Per doc (https://docs.google.com/document/d/1uxalhF4waPzgRoowqEKtpQNdTicGnfF4_ZKDSnlpsyg/edit#), this operation should take on kernel.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
