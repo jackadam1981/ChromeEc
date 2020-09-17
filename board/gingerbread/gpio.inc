@@ -14,6 +14,7 @@
 GPIO_INT(HOST_USBC_PPC_INT_ODL,  PIN(B, 0),       GPIO_INT_FALLING | GPIO_PULL_UP,  ppc_interrupt)
 GPIO_INT(USBC_DP_MUX_ALERT_ODL,  PIN(D, 1),       GPIO_INT_FALLING | GPIO_PULL_UP,   tcpc_alert_event)
 GPIO_INT(DDI_MST_IN_HPD,         PIN(C, 14),      GPIO_INT_BOTH, hpd_interrupt)
+#endif
 
 /* Power sequencing signals */
 GPIO(PWR_BTN,                       PIN(A, 0),  GPIO_INPUT)
@@ -87,7 +88,6 @@ GPIO(EC_I2C3_SCL,                   PIN(C,  8),  GPIO_ODR_HIGH)
 GPIO(EC_I2C3_SDA,                   PIN(C,  9),  GPIO_ODR_HIGH)
 
 UNIMPLEMENTED(EC_ENTERING_RW)
-UNIMPLEMENTED(EC_WP_L)
 
 
 ALTERNATE(PIN_MASK(C, 0x0C00), GPIO_ALT_USART,   MODULE_UART,     GPIO_PULL_UP) /* GPIOC 10-11:USART3_TX/RX */
