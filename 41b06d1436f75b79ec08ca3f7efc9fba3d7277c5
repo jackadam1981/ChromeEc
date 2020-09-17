@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5008912d_27bbf9c9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3757,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-17T20:07:34Z",
+      "side": 0,
+      "message": "It looks like this didn\u0027t actually do anything before. It would probably still be good to mention in the commit message that you\u0027re deleting it. It looks like this *should* work the same way as this CL makes PR Swap work.",
+      "range": {
+        "startLine": 3755,
+        "startChar": 0,
+        "endLine": 3757,
+        "endChar": 32
+      },
+      "revId": "41b06d1436f75b79ec08ca3f7efc9fba3d7277c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
