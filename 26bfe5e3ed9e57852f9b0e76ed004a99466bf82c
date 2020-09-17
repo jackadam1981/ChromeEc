@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "035e9b7a_86eb72aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-17T18:32:06Z",
+      "side": 1,
+      "message": "Updated to simpler + more cautious option: 4% battery or 50W AC required to boot to OS.\nOnce we have more data, can consider adding back a layover in Depthcharge.",
+      "revId": "26bfe5e3ed9e57852f9b0e76ed004a99466bf82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
