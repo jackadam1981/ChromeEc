@@ -31,6 +31,8 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#define QUICHE_PD_DEBUG_LVL 1
+
 #ifdef SECTION_IS_RW
 #define CROS_EC_SECTION "RW"
 #else
@@ -38,6 +40,24 @@
 #endif
 
 #ifdef SECTION_IS_RW
+static int pd_dual_role_init[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	PD_DRP_TOGGLE_ON,
+	PD_DRP_TOGGLE_ON,
+	//PD_DRP_FORCE_SOURCE,
+};
+
+static void ppc_interrupt(enum gpio_signal signal)
+{
+	switch (signal) {
+	case GPIO_HOST_USBC_PPC_INT_ODL:
+		sn5s330_interrupt(USB_PD_PORT_HOST);
+		break;
+
+	default:
+		break;
+	}
+}
+
 static void tcpc_alert_event(enum gpio_signal s)
 {
 	int port = -1;
@@ -50,21 +70,7 @@ static void tcpc_alert_event(enum gpio_signal s)
 		return;
 	}
 
-	board_debug_gpio(TRIGGER_1, 1);
 	schedule_deferred_pd_interrupt(port);
-	board_debug_gpio(TRIGGER_1, 0);
-}
-
-static void ppc_interrupt(enum gpio_signal signal)
-{
-	switch (signal) {
-	case GPIO_HOST_USBC_PPC_INT_ODL:
-		sn5s330_interrupt(USB_PD_PORT_HOST);
-		break;
-
-	default:
-		break;
-	}
 }
 
 void hpd_interrupt(enum gpio_signal signal)
@@ -202,16 +208,26 @@ DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
 static void board_select_drp_mode(void)
 {
+	int port;
 
-	pd_set_dual_role(0, PD_DRP_TOGGLE_ON);
-	pd_set_dual_role(1, PD_DRP_TOGGLE_ON);
-	CPRINTS("ucpd: drp_state = %d", pd_get_dual_role(0));
+	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+		pd_set_dual_role(port, pd_dual_role_init[port]);
+		CPRINTS("quiche[p%d]: drp_state = %d", port,
+			pd_get_dual_role(port));
+	}
+	prl_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	pe_set_debug_level(QUICHE_PD_DEBUG_LVL);
+	tc_set_debug_level(QUICHE_PD_DEBUG_LVL);
 }
 DECLARE_DEFERRED(board_select_drp_mode);
 
 static void board_init(void)
 {
+#ifdef SECTION_IS_RW
+	board_select_drp_mode();
+	/* TODO */
 	hook_call_deferred(&board_select_drp_mode_data, 25 * MSEC);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -221,11 +237,6 @@ int ppc_get_alert_status(int port)
 		return gpio_get_level(GPIO_HOST_USBC_PPC_INT_ODL) == 0;
 
 	return EC_ERROR_UNIMPLEMENTED;
-}
-
-void board_overcurrent_event(int port, int is_overcurrented)
-{
-	/* TODO: b/ - check correct operation for honeybuns */
 }
 
 uint16_t tcpc_get_alert_status(void)
@@ -243,6 +254,12 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+void board_overcurrent_event(int port, int is_overcurrented)
+{
+	/* TODO: b/ - check correct operation for honeybuns */
+}
+
 #endif
 
 void board_debug_gpio(int trigger, int enable)
