@@ -5703,7 +5703,7 @@
 /* Use default setting if CONFIG_BODY_DETECTION_CUSTOM is not set. */
 #ifndef CONFIG_BODY_DETECTION_CUSTOM
 #define CONFIG_BODY_DETECTION_MAX_WINDOW_SIZE     250 /* max sensor odr (Hz) */
-#define CONFIG_BODY_DETECTION_VAR_THRESHOLD       550 /* (mm/s^2)^2 */
+#define CONFIG_BODY_DETECTION_VAR_THRESHOLD       525 /* (mm/s^2)^2 */
 #define CONFIG_BODY_DETECTION_CONFIDENCE_DELTA    525 /* (mm/s^2)^2 */
 #define CONFIG_BODY_DETECTION_ON_BODY_CON         50  /* % */
 #define CONFIG_BODY_DETECTION_OFF_BODY_CON        10  /* % */
