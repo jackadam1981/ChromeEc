@@ -259,6 +259,30 @@
       "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76ce6277_a5422c0c",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2020-09-17T19:34:49Z",
+      "side": 1,
+      "message": "\u003e  We\u0027re planning to only implement the new typec commands for TCPMv2 at the moment though but we could look at implementing status for v1 as well if the inconsistency would be an issue for existing boards.\n\nThanks for the context. Yes, it would help to have typec status print out the state for v1 too (so that we can smoothly transition debugd to using ectool typec status) if doing so is straightforward.\n\nKindly LMK when this functionality is moved from usbpd to typec status so that we can update debugd accordingly.",
+      "parentUuid": "e004a76b_07643a42",
+      "range": {
+        "startLine": 212,
+        "startChar": 30,
+        "endLine": 212,
+        "endChar": 40
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
