@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffc90483_ef03523d",
+        "filename": "board/coachz/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-18T19:23:28Z",
+      "side": 1,
+      "message": "Could you confirm this is the manufacturer name the smart battery returns? The datasheet states the manufacturer name is \"333-AC-13-A\".",
+      "range": {
+        "startLine": 39,
+        "startChar": 18,
+        "endLine": 39,
+        "endChar": 23
+      },
+      "revId": "a617d77eff851b9c834746182c13ee59a74a23d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
