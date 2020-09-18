@@ -2,6 +2,171 @@
   "comments": [
     {
       "key": {
+        "uuid": "f5b3075f_f9b3fd0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "What is the state flow when this happens?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68a465d1_cfc08054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "Broadly, I like this, but I see some significant issues, for which I\u0027ve suggested some alternatives:\n\n1. This patchset complicates the interface between the DPM and the alt mode modules in ways that seem unnecessary.\n\n2. I don\u0027t think this patchset will handle the case where the DPM requests exit mode during mode entry.\n\n3. This patchset doesn\u0027t leave the alt mode machines in INACTIVE state after finishing the exit mode process.",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a516a90_b9146d13",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the state now change to DP_INACTIVE? (The state machines may need to be modified to support re-entering after reaching *_INACTIVE states.)",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e860cc9_4a1fc355",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "Nit: I\u0027d prefer opos_sop_prime for clarity.",
+      "range": {
+        "startLine": 176,
+        "startChar": 15,
+        "endLine": 176,
+        "endChar": 24
+      },
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a935a6fb_ddcd7e05",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "Do we need to call pd_dfp_exit_mode here as well?",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d049222_1c4205b5",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "As I mention elsewhere, I\u0027m not fond of the alt mode code peeking at the DPM state in this way. I think it might be better for the alt mode modules to expose to the DPM a function to indicate that exit is being requested. In this case, that function could\n1) set retry_done so that we don\u0027t try to enter again,\n2) set a flag that tbt_entry_failed (perhaps with a different name) could use to print out happy messages instead of error messages, and\n3) change the behavior of tbt_setup_next_vdm to allow starting the exit process if we\u0027re in the middle of the enter process.",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74ba4cd7_921c5a65",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "This already happened in TBT_ACTIVE.",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87f0018d_722b2aae",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary. See my other comments.\n\nBut if it is necessary, I think it should be done unconditionally. If we failed to actually exit the mode (in practice, only because pd_dfp_exit_mode was called incorrectly), then it wouldn\u0027t be appropriate to send another Exit Mode REQ. Even if we did, we probably wouldn\u0027t get another Exit Mode ACK. The way the DPM code works, I don\u0027t think we would even try. So this will be our last chance to do whatever we think we should do here.",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18cb2da3_e5b1c212",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we now enter INACTIVE state?",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5814dc42_b49759af",
         "filename": "common/usbc/usb_pd_dpm.c",
         "patchSetId": 3
@@ -46,6 +211,53 @@
       "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4489a158_d02997d8",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "I get the distinction, but I\u0027m not fond of a function that returns true for inactive and false for active, and I\u0027m especially not fond of diverging the APIs for TBT and DP. How about defining the *_is_active functions to return true if the underlying alt mode is in any state other than *_INACTIVE?\n\n(That might make the TBT state machine behave oddly if we trigger an exit while we\u0027re still entering, but I think that would have happened anyway.)",
+      "parentUuid": "88e1f60a_496b6933",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 29
+      },
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4079b164_299e9f24",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:31:26Z",
+      "side": 1,
+      "message": "These create another way for alt mode code to peek and poke the DPM internal state, and I\u0027d prefer to keep that to a minimum.\n\nAfter the mode-specific exit process is complete, the alt mode modules should be in the *_INACTIVE state (but see other comments), which should mean that dpm_attempt_mode_exit will clear the exit request itself.\n\n(I\u0027m aware that dpm_set_mode_entry_done is an exception to the preference that I stated above. I have a thought about how we might be able to get rid of it, but that\u0027s out of scope here.)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
