@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41aa37ba_151e2b56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T18:37:03Z",
+      "side": 1,
+      "message": "Note that if you change the name of the function as requested, you\u0027ll also need to update this.",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9820113_3cbef134",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T18:37:03Z",
+      "side": 1,
+      "message": "Does the CL still do this?",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a608ed_eda9c81f",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T18:37:03Z",
+      "side": 1,
+      "message": "I think I now have better understanding of what this function is doing. I think \"get_disconnect_state\" is misleading. It should be called something like board_battery_is_initialized.",
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78d7027d_f7a4be5a",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T18:37:03Z",
+      "side": 1,
+      "message": "initialization",
+      "range": {
+        "startLine": 65,
+        "startChar": 18,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e2a3d0_5937ef1a",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T18:37:03Z",
+      "side": 1,
+      "message": "\"If the battery is not initialized\"",
+      "range": {
+        "startLine": 65,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 21
+      },
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de19ba7_74989a65",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T18:37:03Z",
+      "side": 1,
+      "message": "Also #include \"battery.h\" for battery_status.",
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f85a22d_41f26e37",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T18:37:03Z",
+      "side": 1,
+      "message": "This should now be a bool and probably have a different name. See comment in header file.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 4
+      },
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
