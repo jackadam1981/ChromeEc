@@ -33,6 +33,24 @@
       "revId": "8fba7369d74dd90c88833b65b679ed2360e4bb74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13778152_03571532",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T21:41:01Z",
+      "side": 1,
+      "message": "Honestly, this is outside my area of expertise. I\u0027m only vaguely familiar with how PR Swaps work or how/when muxes need to be configured.\n\nMy sense is that the PE should be making this decision, because it seems like a recipe for trouble if the TC is deciding to ignore directions from the PE based on its internal logic.",
+      "parentUuid": "5231aa65_02642433",
+      "revId": "8fba7369d74dd90c88833b65b679ed2360e4bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
