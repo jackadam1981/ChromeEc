@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cc4db4d_b667a841",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-18T21:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41aa37ba_151e2b56",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9820113_3cbef134",
         "filename": "/COMMIT_MSG",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1f7b5f01_bdfd4184",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-18T21:49:54Z",
+      "side": 1,
+      "message": "Yes, the main propose is we don\u0027t want to return BP_NO in battery_check_present_status.",
+      "parentUuid": "d9820113_3cbef134",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76a608ed_eda9c81f",
         "filename": "baseboard/volteer/baseboard.h",
         "patchSetId": 10
@@ -62,6 +110,24 @@
       "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c55933_7cc22a93",
+        "filename": "baseboard/volteer/baseboard.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-18T21:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76a608ed_eda9c81f",
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "dd0fd5db_af717690",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-18T21:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d7027d_f7a4be5a",
+      "range": {
+        "startLine": 65,
+        "startChar": 18,
+        "endLine": 65,
+        "endChar": 35
+      },
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01e2a3d0_5937ef1a",
         "filename": "baseboard/volteer/battery_presence.c",
         "patchSetId": 10
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "2448960a_c113e746",
+        "filename": "baseboard/volteer/battery_presence.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-18T21:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01e2a3d0_5937ef1a",
+      "range": {
+        "startLine": 65,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 21
+      },
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8de19ba7_74989a65",
         "filename": "board/eldrid/battery.c",
         "patchSetId": 10
@@ -125,6 +239,24 @@
       "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9397a59_52c556c6",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-18T21:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de19ba7_74989a65",
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -148,6 +280,30 @@
       "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873c8611_e16be736",
+        "filename": "board/eldrid/battery.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-18T21:49:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f85a22d_41f26e37",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 4
+      },
+      "revId": "3b7bf9eb73ae4dc1c23f46ca2a6a87f76300c055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
