@@ -103,14 +103,18 @@
 #	define NPCX_PROGRAM_MEMORY_SIZE (256 * 1024 - 0x1000)
 	/* program memory base address for Code RAM (0x100B0000 - 256KB) */
 #	define CONFIG_PROGRAM_MEMORY_BASE 0x10070000
+	/*
+	 * Code RAM is normally assumed to be same as image size, but since
+	 * we've excluded 4k from the image need to explicitly configure it.
+	 */
+#	define CONFIG_CODE_RAM_SIZE (NPCX_PROGRAM_MEMORY_SIZE + 0x1000)
 #	define CONFIG_RAM_BASE    0x200B0000 /* memory address of data ram */
 	/* 126 KB data RAM + 2 KB BT RAM size */
 #	define CONFIG_DATA_RAM_SIZE    0x00020000
 
-	/* Override default NPCX_RAM_SIZE because we're excluding a block. */
+	/* Override default NPCX_RAM_SIZE because program memory is munged. */
 #	undef NPCX_RAM_SIZE
-#	define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + \
-			      NPCX_PROGRAM_MEMORY_SIZE + 0x1000)
+#	define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + CONFIG_CODE_RAM_SIZE)
 #else
 #	error "Unsupported chip variant"
 #endif
