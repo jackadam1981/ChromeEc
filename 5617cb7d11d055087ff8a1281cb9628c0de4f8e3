@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "a6ab7f86_e487efe4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6364,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-18T23:02:00Z",
+      "side": 1,
+      "message": "Yes, I believe that\u0027ll fit in the I2C HC size.",
+      "parentUuid": "04b36a18_37d5f177",
+      "range": {
+        "startLine": 6361,
+        "startChar": 0,
+        "endLine": 6364,
+        "endChar": 14
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1707e820_cb41b7f2",
         "filename": "util/ectool.c",
         "patchSetId": 2
