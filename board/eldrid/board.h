@@ -98,9 +98,6 @@
 #define CONFIG_USB_PD_USB4
 #define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
 
-/* Disabled PD extended message support to save flash space. */
-#undef CONFIG_USB_PD_EXTENDED_MESSAGES
-
 /* USB Type A Features */
 #define USB_PORT_COUNT			1
 #define CONFIG_USB_PORT_POWER_DUMB
