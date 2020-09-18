@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8fe3e714_2b0d6643",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1418383
+      },
+      "writtenOn": "2020-09-18T03:18:32Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "42b70b05_f5d9404c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "55f97489354c76ead3f6ae40b39742d551ae6aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b63cf13_f66ef4cd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-09-18T01:50:38Z",
       "side": 1,
       "message": "Just check compiling status might not be enough? Could you support to at least make sure when DUT is in sink and source role, the functions like charging and USB storage are all good? Thank you.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "55f97489354c76ead3f6ae40b39742d551ae6aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bec71afa_3e9d01c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1418383
+      },
+      "writtenOn": "2020-09-18T03:18:32Z",
+      "side": 1,
+      "message": "hi,Marco,yes,we also think it need to verify the USB related function,but in issue b:160940803 #33,Vineeth need us checkin this EC change yesterday,but we didn\u0027t get the new DUT to verify USB function, so maybe we can wait for our testing finish and modify the commit message ?",
+      "parentUuid": "8b63cf13_f66ef4cd",
       "range": {
         "startLine": 13,
         "startChar": 5,
@@ -79,6 +127,24 @@
       "revId": "55f97489354c76ead3f6ae40b39742d551ae6aa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be1c86e3_88dd257f",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1418383
+      },
+      "writtenOn": "2020-09-18T03:18:32Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "5265fbf4_83304bfd",
+      "revId": "55f97489354c76ead3f6ae40b39742d551ae6aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
