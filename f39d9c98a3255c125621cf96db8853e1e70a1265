@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "685169ff_09641144",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T19:33:29Z",
+      "side": 1,
+      "message": "Nit: No longer what this code is doing.",
+      "range": {
+        "startLine": 605,
+        "startChar": 34,
+        "endLine": 605,
+        "endChar": 53
+      },
+      "revId": "f39d9c98a3255c125621cf96db8853e1e70a1265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6683e01_0b35b7d0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1770,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T19:33:29Z",
+      "side": 1,
+      "message": "This also needs to be updated.",
+      "range": {
+        "startLine": 1763,
+        "startChar": 1,
+        "endLine": 1770,
+        "endChar": 60
+      },
+      "revId": "f39d9c98a3255c125621cf96db8853e1e70a1265",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
