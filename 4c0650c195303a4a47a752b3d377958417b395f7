@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9043a30_9c1ec84e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-09-18T02:35:55Z",
+      "side": 1,
+      "message": "Single patch in series, but up for comments and review.\n\nI noticed TCPMv1 calls the mux functions \"exactly backwards\".\nEnables the SSUSB mux as DFP/SRC, and disables it as a UFP/SNK.\n\nLooking into how Hoho accomplished this right now.",
+      "revId": "4c0650c195303a4a47a752b3d377958417b395f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
