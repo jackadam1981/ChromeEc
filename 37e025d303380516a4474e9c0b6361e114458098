@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "2e2d35e5_e5d27e39",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-18T17:18:55Z",
+      "side": 1,
+      "message": "Typo: Discovery",
+      "range": {
+        "startLine": 601,
+        "startChar": 5,
+        "endLine": 601,
+        "endChar": 15
+      },
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aeb7d9e6_2af4e7b8",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 1
@@ -96,6 +119,30 @@
       "side": 1,
       "message": "struct svid_mode_data *pd_get_next_mode(int port,\n\t\tenum tcpm_transmit_type type)\n{\n\tstruct pd_discovery *disc \u003d pd_get_am_discovery(port, type);\n\tstruct svid_mode_data *failed_mode_data \u003d NULL;\n\tint svid_good_discovery \u003d 0;\n\tint svid_idx;\n\n\t/* Walk through all of the discovery mode entries */\n\tfor (svid_idx \u003d 0; svid_idx \u003c disc-\u003esvid_cnt; ++svid_idx) {\n\t\tstruct svid_mode_data *mode_data \u003d \u0026disc-\u003esvids[svid_idx];\n\n\t\t/* Disconvery is needed, so send this one back now */\n\t\tif (mode_data-\u003ediscovery \u003d\u003d PD_DISC_NEEDED)\n\t\t\treturn mode_data;\n\n\t\t/* Discovery already succeeded, bump the good count */\n\t\tif (mode_data-\u003ediscovery \u003d\u003d PD_DISC_COMPLETE)\n\t\t\tsvid_good_discovery++;\n\t\t/*** change this to get the first fail instead of last ***/\n\t\t/* Discovery already failed, save first fail entry found */\n\t\telse if (!failed_mode_data)\n\t\t\tfailed_mode_data \u003d mode_data;\n\t}\n\n\t/* If no good entries were located, then return last failed */\n\tif (svid_good_discovery \u003d\u003d 0)\n\t\treturn failed_mode_data;\n\n\t/* Everything in the discovery array has been handled */\n\treturn NULL;\n}",
       "parentUuid": "503210cc_30e7b49b",
+      "range": {
+        "startLine": 613,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 26
+      },
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf02da6_577a1a03",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-18T17:18:55Z",
+      "side": 1,
+      "message": "If we\u0027re going to retry failed entries, then returning the first failed probably makes more sense than last.  I defer to Abe on the need or desire for retries.",
+      "parentUuid": "052ace3d_78adf27e",
       "range": {
         "startLine": 613,
         "startChar": 0,
