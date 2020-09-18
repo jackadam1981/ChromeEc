@@ -117,6 +117,8 @@
 #define TC_FLAGS_CHECK_CONNECTION       BIT(20)
 /* Flag to note pd_set_suspend SUSPEND state */
 #define TC_FLAGS_SUSPEND                BIT(21)
+/* Flag to note we should leave the MUX as original power state */
+#define TC_FLAGS_PR_SWAP_ORIGINAL_MUX   BIT(22)
 
 /*
  * Clear all flags except TC_FLAGS_LPM_ENGAGED and TC_FLAGS_SUSPEND.
@@ -560,6 +562,7 @@ void tc_request_power_swap(int port)
 		 */
 		if (IS_ATTACHED_SRC(port) || IS_ATTACHED_SNK(port)) {
 			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS);
+			TC_SET_FLAG(port, TC_FLAGS_PR_SWAP_ORIGINAL_MUX);
 
 			/* Let tc_pr_swap_complete start the Vbus debounce */
 			tc[port].vbus_debounce_time = TIMER_DISABLED;
@@ -765,6 +768,16 @@ void tc_partner_usb_comm(int port, int en)
 		TC_SET_FLAG(port, TC_FLAGS_PARTNER_USB_COMM);
 	else
 		TC_CLR_FLAG(port, TC_FLAGS_PARTNER_USB_COMM);
+
+	/*
+	 * Don't clear the mux if PR_Swap just completed, it should stay
+	 * as it was in the previous power role.
+	 */
+	if (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_ORIGINAL_MUX)) {
+		TC_CLR_FLAG(port, TC_FLAGS_PR_SWAP_ORIGINAL_MUX);
+		if (!en)
+			return;
+	}
 
 	/*
 	 * If PE disables the USB communication capability, update the mux
