@@ -323,6 +323,38 @@ static void update_ports(void)
 	board_manage_dut_port();
 }
 
+/*============== Hook functions ============*/
+
+#ifdef CONFIG_USB_PD_TCPMV1
+static void tusb1064_tcpm_hook_connect(void)
+{
+	int port = TASK_ID_TO_PD_PORT(task_get_current());
+	int reg;
+
+	CPRINTS("I'M HOOKED ON A FEELING on port (%d)!",port);
+	//mux_state_t muxptr* = &usb_muxes[port];
+
+	/* TODO: Leave gratuitous warning in until HOOK method is deprecated. */
+	/* Investigate proper solution rearchitecting TCPMv1 */
+	reg = REG_GENERAL_CTLSEL_USB3 | \
+		((cc_config & CC_POLARITY)?  REG_GENERAL_FLIPSEL : 0);
+	tusb1064_write_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL, reg);
+	return;
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, tusb1064_tcpm_hook_connect, HOOK_PRIO_DEFAULT);
+
+
+static void tusb1064_tcpm_sw_reset(void)
+{
+	/* TODO: Re-init muc properly until HOOK method is deprecated */
+	/* Investigate proper solution rearchitecting TCPMv1 */
+	init_tusb1064(1);
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, tusb1064_tcpm_sw_reset, HOOK_PRIO_DEFAULT);
+#endif
+
+/*============== End hooks =============*/
+
 int board_set_active_charge_port(int charge_port)
 {
 	if (charge_port == DUT)
