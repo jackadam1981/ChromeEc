@@ -16,6 +16,24 @@
       "revId": "f0e2faff829b68dace727e63c95c6e30d455611e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0746bc55_c45dc7db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-18T22:00:16Z",
+      "side": 1,
+      "message": "We could try.  The chipset_task is pretty minimal, but it seems like we could do this with something like if (new_state \u003d\u003d POWER_G3) in the new_state !\u003d state clause.  \n\nI like that naming, so I\u0027ll go with it.",
+      "parentUuid": "06e0daad_8be48728",
+      "revId": "f0e2faff829b68dace727e63c95c6e30d455611e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
