@@ -4712,6 +4712,9 @@
 /* Support the Parade PS8743 Type-C Redriving Switch */
 #undef CONFIG_USB_MUX_PS8743
 
+/* Support the Texas Instrument TUSB1064 Type-C Redriving Switch (UFP) */
+#undef CONFIG_USB_MUX_TUSB1064
+
 /* 'Virtual' USB mux under host (not EC) control */
 #undef CONFIG_USB_MUX_VIRTUAL
 
