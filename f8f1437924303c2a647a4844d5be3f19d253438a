@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a998f778_6d52cf6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-09-18T16:34:03Z",
+      "side": 1,
+      "message": "Hi Vijay, this is still workaround, I will add TODO.",
+      "parentUuid": "c11cc336_62ef11ff",
+      "revId": "f8f1437924303c2a647a4844d5be3f19d253438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99285543_404ecc42",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
@@ -56,6 +74,48 @@
       "revId": "f8f1437924303c2a647a4844d5be3f19d253438a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de3a2c27_ec58b366",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-09-18T16:34:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c3cafe4a_6bcc8f65",
+      "revId": "f8f1437924303c2a647a4844d5be3f19d253438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c223a311_824e3143",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2020-09-18T16:34:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "99285543_404ecc42",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 40
+      },
+      "revId": "f8f1437924303c2a647a4844d5be3f19d253438a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
