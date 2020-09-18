@@ -11,6 +11,7 @@ enum uservo_fastboot_mux_sel_t {
 	MUX_SEL_FASTBOOT = 1
 };
 
+
 /*
  * Initialize Ioexpanders
  */
@@ -124,7 +125,7 @@ int usb3_a1_mux_sel(int en);
 /**
  * Reads the 3-bit Servo V4.1 version ID
  *
- * @return version ID
+ * @return (cached at init) version ID
  */
 int board_id_det(void);
 

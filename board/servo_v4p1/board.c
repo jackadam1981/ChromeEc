@@ -37,6 +37,7 @@
 #include "usb_spi.h"
 #include "usb-stream.h"
 #include "util.h"
+#include "usb_mux.h"
 
 #ifdef SECTION_IS_RO
 #define CROS_EC_SECTION "RO"
@@ -365,6 +366,27 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 int usb_i2c_board_is_enabled(void) { return 1; }
 
+/******************************************************************************
+ * Support USB/DP crosspoint switch mux
+ */
+
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		/* DUT Charge port */
+		.usb_port = 0,
+	},
+	{
+		/* CAUTION: This is an UFP/RX/SINK redriver mux */
+		/* Functions may be called backwards/DFP in TCPMv1 */
+
+		/* DUT Pigtail port */
+		.usb_port = 1,
+		.i2c_port = I2C_PORT_MASTER,
+		.i2c_addr_flags = TUSB1064_ADDR_FLAGS,
+		.driver = &tusb1064_usb_mux_driver,
+		/* board_init */
+	},
+};
 
 /******************************************************************************
  * Initialize board.
@@ -401,6 +423,20 @@ static void board_init(void)
 
 	/* Bring atmel part out of reset */
 	atmel_reset_l(1);
+
+	/* Read ioexpanders for board ID */
+	switch(board_id_det()){
+	case BOARD_ID_REV0:
+		/* Enable the TUSB1064 redriver */
+		/* (NOOP since I2C_EN is PP3300 on REV0) */
+		cmux_en(1);
+		break;
+	case BOARD_ID_REV1:
+		break;
+	default:
+		break;
+	}
+	vbus_dischrg_en(0);
 
 #ifdef SECTION_IS_RO
 	init_uservo_port();
