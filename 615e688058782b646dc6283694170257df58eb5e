@@ -141,6 +141,30 @@
       "revId": "615e688058782b646dc6283694170257df58eb5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bf8e463_bd900692",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-18T00:23:47Z",
+      "side": 1,
+      "message": "We could check this by \u003d~ ccd.\n\nIf flash over servo_v4, I think that would show \"servo_v4_with_ccd\"",
+      "parentUuid": "978245aa_5c81ee2f",
+      "range": {
+        "startLine": 1320,
+        "startChar": 0,
+        "endLine": 1325,
+        "endChar": 3
+      },
+      "revId": "615e688058782b646dc6283694170257df58eb5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
