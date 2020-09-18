@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "8b63cf13_f66ef4cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-18T01:50:38Z",
+      "side": 1,
+      "message": "Just check compiling status might not be enough? Could you support to at least make sure when DUT is in sink and source role, the functions like charging and USB storage are all good? Thank you.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "55f97489354c76ead3f6ae40b39742d551ae6aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aed0ccff_734787a4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
