@@ -51,6 +51,24 @@
       "revId": "8fba7369d74dd90c88833b65b679ed2360e4bb74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b860119_ac83e6a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-18T21:49:19Z",
+      "side": 1,
+      "message": "PR Swap should happen after we entered alt-mode and there is no reason that we would leave, like a hard reset or unattach. So it makes sense to remain in the mode and leave the MUX as it was when it was in the other power role",
+      "parentUuid": "13778152_03571532",
+      "revId": "8fba7369d74dd90c88833b65b679ed2360e4bb74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
