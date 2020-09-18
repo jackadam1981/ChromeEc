@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b374ad24_d15b74f2",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-18T18:34:23Z",
+      "side": 1,
+      "message": "how about?\n\nIn alternate mode, the mux changes states as USB-\u003eSafe-\u003eDP Alt Mode.\nAnd in safe mode high speed data path is terminated. As EC (retimer)\nenters safe mode independent of Virtual mux, by the time high speed\nlines are available to IOM the PCH enumerates USB3 devices as USB2 devices. By removing the Safe mode in retimer, high speed lines are made \navailable to IOM all the time. From the protocol analyzer traces\nthe safe mode is still achieved with virtual mux safe mode settings.",
+      "range": {
+        "startLine": 326,
+        "startChar": 4,
+        "endLine": 332,
+        "endChar": 4
+      },
+      "revId": "6c966dd5efddc52b29b88180c4d9106146056f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92130605_59170726",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-18T18:34:23Z",
+      "side": 1,
+      "message": "nit remove { }",
+      "range": {
+        "startLine": 333,
+        "startChar": 39,
+        "endLine": 333,
+        "endChar": 40
+      },
+      "revId": "6c966dd5efddc52b29b88180c4d9106146056f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
