@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "04b36a18_37d5f177",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6364,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T22:43:51Z",
+      "side": 1,
+      "message": "Version 2 has a max packet size of 256 with a max parameter size of 252. I couldn\u0027t find anything about version 1. Does 128 seem safe?",
+      "parentUuid": "fb0a629c_aaac696a",
+      "range": {
+        "startLine": 6361,
+        "startChar": 0,
+        "endLine": 6364,
+        "endChar": 14
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1707e820_cb41b7f2",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -283,6 +307,30 @@
       "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4101dca_897e5ad0",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T22:43:51Z",
+      "side": 1,
+      "message": "Diana: done.\n\nPrashant: CCed you on b/168931402.",
+      "parentUuid": "76ce6277_a5422c0c",
+      "range": {
+        "startLine": 212,
+        "startChar": 30,
+        "endLine": 212,
+        "endChar": 40
+      },
+      "revId": "5617cb7d11d055087ff8a1281cb9628c0de4f8e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
