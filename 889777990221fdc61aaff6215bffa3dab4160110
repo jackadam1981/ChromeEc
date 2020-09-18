@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "955b3abb_7219b606",
+        "filename": "board/eldrid/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:57:20Z",
+      "side": 1,
+      "message": "I don\u0027t think this include gets used in this file. Can you just delete it?",
+      "revId": "889777990221fdc61aaff6215bffa3dab4160110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e69487e_dfac88ec",
+        "filename": "board/eldrid/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:57:20Z",
+      "side": 1,
+      "message": "Do you want to remove this as well?",
+      "revId": "889777990221fdc61aaff6215bffa3dab4160110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7b69129_ba8b48ea",
+        "filename": "board/eldrid/sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T20:57:20Z",
+      "side": 1,
+      "message": "Make a bug for this if there isn\u0027t one and reference that bug here.",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "889777990221fdc61aaff6215bffa3dab4160110",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
