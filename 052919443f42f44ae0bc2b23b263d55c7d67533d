@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "8a372b8a_8a92654f",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-18T17:03:52Z",
+      "side": 1,
+      "message": "Sure, I think that\u0027s a better name.",
+      "parentUuid": "14c3a2ef_7328da04",
+      "range": {
+        "startLine": 705,
+        "startChar": 12,
+        "endLine": 705,
+        "endChar": 32
+      },
+      "revId": "052919443f42f44ae0bc2b23b263d55c7d67533d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "252a3dd6_eda421c4",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 5
@@ -101,6 +125,30 @@
       "side": 1,
       "message": "Aseda, can we call as disable_low_power_mode/enable_low_power_mode so that we can add more functionality to this later.",
       "parentUuid": "252a3dd6_eda421c4",
+      "range": {
+        "startLine": 763,
+        "startChar": 5,
+        "endLine": 763,
+        "endChar": 18
+      },
+      "revId": "052919443f42f44ae0bc2b23b263d55c7d67533d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed6db80f_37150fe7",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-18T17:03:52Z",
+      "side": 1,
+      "message": "Yep, those seem like better names in my opinion.",
+      "parentUuid": "5a1c532b_784b38e5",
       "range": {
         "startLine": 763,
         "startChar": 5,
