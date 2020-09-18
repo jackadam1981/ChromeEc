@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4a1d39c_8088577a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-18T18:53:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a34c6a_f552ce2f",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8dbc72e_55e0ed0b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2020-09-18T18:06:45Z",
       "side": 1,
       "message": "nvm. Nintendo on the brain.",
+      "parentUuid": "c8dbc72e_55e0ed0b",
+      "range": {
+        "startLine": 23,
+        "startChar": 43,
+        "endLine": 23,
+        "endChar": 49
+      },
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cf0eb9_b934b421",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-18T18:53:27Z",
+      "side": 1,
+      "message": "ikling is the correct spelling",
       "parentUuid": "c8dbc72e_55e0ed0b",
       "range": {
         "startLine": 23,
@@ -124,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "9425323a_30aa9ef2",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-18T18:53:27Z",
+      "side": 1,
+      "message": "I agree with the change of coherent and complete but the function would never have returned an entry that was deemed PD_DISC_COMPLETE. It always passed those over and would return discovery failed entry, discovery needed entry or NULL.\nI will adjust the header file description.",
+      "parentUuid": "2640e9cd_2cb840e6",
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e2d35e5_e5d27e39",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 1
@@ -147,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "69ce4681_52a81669",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-18T18:53:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e2d35e5_e5d27e39",
+      "range": {
+        "startLine": 601,
+        "startChar": 5,
+        "endLine": 601,
+        "endChar": 15
+      },
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "578c030a_9f67bdc8",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 1
@@ -161,6 +251,24 @@
       "revId": "37e025d303380516a4474e9c0b6361e114458098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc577d75_3c1b5cdf",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-18T18:53:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "578c030a_9f67bdc8",
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -283,6 +391,30 @@
     },
     {
       "key": {
+        "uuid": "3587f85f_1b4992b6",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-18T18:53:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddf02da6_577a1a03",
+      "range": {
+        "startLine": 613,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 26
+      },
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a941e3fa_7aa807dc",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 1
@@ -297,6 +429,24 @@
       "revId": "37e025d303380516a4474e9c0b6361e114458098",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6f332a_2c70d452",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-18T18:53:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a941e3fa_7aa807dc",
+      "revId": "37e025d303380516a4474e9c0b6361e114458098",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
