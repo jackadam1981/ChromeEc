@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42b70b05_f5d9404c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-18T01:48:51Z",
+      "side": 1,
+      "message": "BRANCH\u003dfirmware-octopus-11297.B",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "55f97489354c76ead3f6ae40b39742d551ae6aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed0ccff_734787a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-18T01:48:51Z",
+      "side": 1,
+      "message": "Generally it is great but I would like to understand more from the issue first about the strategy of phasing in SYV like what will be the combination in the both ports? will check in the issue, thanks.",
+      "revId": "55f97489354c76ead3f6ae40b39742d551ae6aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5265fbf4_83304bfd",
+        "filename": "board/phaser/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2020-09-18T01:48:51Z",
+      "side": 1,
+      "message": "Please refer to the example in [1] for managing this checking by a static variable which would be judged in once instead of querying each detail every time. Thanks.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/ec/+/7209c81795193151d99b2f9bd50a9668b036e0c2/board/meep/board.c#256",
+      "revId": "55f97489354c76ead3f6ae40b39742d551ae6aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
