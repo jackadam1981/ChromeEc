@@ -193,6 +193,17 @@
 /* Don't automatically change roles */
 #undef CONFIG_USB_PD_INITIAL_DRP_STATE
 #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SINK
+/* This is the proper way to include a generic Driver */
+#if 0
+#define CONFIG_USB_MUX_TUSB1064 /*C0*/
+#endif
+/* Enable SSUSB Mux Driver */
+#define CONFIG_USBC_SS_MUX
+#define SERVO_DEFAULT_CONFIG (~CC_DETACH | ~CC_DISABLE_DTS | \
+		CC_ALLOW_SRC | ~CC_ENABLE_DRP | CC_SNK_WITH_PD | \
+		CC_POLARITY | CC_EMCA_SERVO)
+
+
 
 /* Variable-current Rp no connect and Ra attach macros */
 #define CC_NC(port, cc, sel)  (pd_tcpc_cc_nc(port, cc, sel))
@@ -203,8 +214,10 @@
  * and the delay will need to be relative to the circuitry that allows VBUS to
  * be supplied to the DUT port from the CHG port.
  */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY  50000  /* us */
-#define PD_POWER_SUPPLY_TURN_OFF_DELAY 50000 /* us */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY  (PD_T_PS_SOURCE_ON/2) /* us */
+// Formerly 100000
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY (PD_T_PS_SOURCE_OFF/2) /* us */
+// Formerly 50000 /* us */
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
@@ -233,7 +246,6 @@
 #define TIM_CLOCK32 2
 #define TIM_ADC     3
 
-
 #include "gpio_signal.h"
 
 /* USB string indexes */
@@ -251,7 +263,6 @@ enum usb_strings {
 	USB_STR_COUNT
 };
 
-
 /* ADC signal */
 enum adc_channel {
 	ADC_CHG_CC1_PD,
@@ -263,6 +274,13 @@ enum adc_channel {
 	ADC_SUB_C_REF,
 	/* Number of ADC channels */
 	ADC_CH_COUNT
+};
+
+/* ServoV4p1 Board ID mappings */
+enum uservo_board_id {
+	BOARD_ID_UNSET = -1,
+	BOARD_ID_REV0 = 0,
+	BOARD_ID_REV1 = 1,
 };
 
 /**
