@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2585425e_5cdd8a16",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1316197
+      },
+      "writtenOn": "2020-09-18T22:06:19Z",
+      "side": 1,
+      "message": "It was useful when debugging this method, but is too noisy to leave in at DEBUG level.  This log message shows the line buffer and the new characters as they come in.\n\nSee the example below, where the last line is the full message, logged on line 233.\n\n    console.py:984:StartLoop - /dev/pts/12 - Input from interface: gpioset UART3_TX_SERVO_JTAG_TCK ALT, locked:True\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e  + \u0027g\u0027\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e g + \u0027pio\u0027\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e gpio + \u0027set U\u0027\n    pty_driver.py:203:_issue_cmd_get_results - Sent cmds: gpioset UART3_TX_SERVO_JTAG_TCK ALT\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e gpioset U + \u0027AR\u0027\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e gpioset UAR + \u0027T3\u0027\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e gpioset UART3 + \u0027_\u0027\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e gpioset UART3_ + \u0027TX_\u0027\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e gpioset UART3_TX_ + \u0027SER\u0027\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e gpioset UART3_TX_SER + \u0027VO_\u0027\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e gpioset UART3_TX_SERVO_ + \u0027JTAG_T\u0027\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e gpioset UART3_TX_SERVO_JTAG_T + \u0027CK AL\u0027\n    console.py:227:LogConsoleOutput - /dev/pts/12 - \u003e gpioset UART3_TX_SERVO_JTAG_TCK AL + \u0027T\\r\\n\u003e \u0027\n    console.py:233:LogConsoleOutput - /dev/pts/12 - \u003e gpioset UART3_TX_SERVO_JTAG_TCK ALT\\r\\n\n\n(The timestamp difference between first and last is 49 milliseconds.)\n\nAnother example, from the spinner:\n\n    LogConsoleOutput - /dev/pts/16 - \u003e  + \u0027 \u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e   + \u00271\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  1 + \u00270 \u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10  + \u0027\\x08\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10 + \u0027\\x08\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  1 + \u0027\\x0810/\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10/ + \u0027\\x08\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10 + \u0027\\x08\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  1 + \u0027\\x0810-\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10- + \u0027\\x08\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10 + \u0027\\x08\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  1 + \u0027\\x0810\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10 + \u0027\\\\\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10\\ + \u0027\\x08\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10 + \u0027\\x08\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  1 + \u0027\\x0810|\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10| + \u0027\\x08\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10 + \u0027\\x08\\x08\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e   + \u002710/\u0027\n    LogConsoleOutput - /dev/pts/16 - \u003e  10/ + \u0027\\x08\u0027",
+      "parentUuid": "e8b7a002_736f772a",
+      "range": {
+        "startLine": 227,
+        "startChar": 4,
+        "endLine": 227,
+        "endChar": 57
+      },
+      "revId": "4ae17947db4c0b0c943f6a2c8809feed75ed8cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c16be0a5_41ef5d99",
         "filename": "util/ec3po/console.py",
         "patchSetId": 4
