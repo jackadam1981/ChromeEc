@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "764aae46_7a5a330c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-18T04:16:10Z",
+      "side": 1,
+      "message": "again this mega-CL is getting some splitting work... just sharing what the initial thing looked like",
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84a45bc3_e2d81ec2",
         "filename": "common/timer.c",
         "patchSetId": 1
@@ -59,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "d6da363a_dc47ce13",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-18T04:16:10Z",
+      "side": 1,
+      "message": "Ultimately, I hope that our shim layer will grow to the point that we can compile this code, and that the barrier here by the ifdef will start to shrink, and eventually go away.\n\nI don\u0027t think we want to #include .c files.",
+      "parentUuid": "84a45bc3_e2d81ec2",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 3
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc59d2ac_2038e43c",
         "filename": "include/common.h",
         "patchSetId": 1
@@ -70,6 +111,30 @@
       "writtenOn": "2020-09-17T21:14:48Z",
       "side": 1,
       "message": "We shouldn\u0027t need both styles right? We should only need to check Z_IS_ENABLED1(option) right?\n\nI would think that all of the config options would come from Zephyr. I don\u0027t imagine us pulling over a board from from platform/ec (which would define all of the platform/ec CONFIG_ options) into Zephyr",
+      "range": {
+        "startLine": 439,
+        "startChar": 27,
+        "endLine": 439,
+        "endChar": 46
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f45618fd_6f916f7d",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-18T04:16:10Z",
+      "side": 1,
+      "message": "We need to support both styles, as this needs to operate in both Zephyr headers and platform/ec code.\n\nWe remain compatible with the existing platform/ec \"#defines\", so zephyr config options need translated from kconfig to platform/ec config.  See config.h.",
+      "parentUuid": "bc59d2ac_2038e43c",
       "range": {
         "startLine": 439,
         "startChar": 27,
@@ -128,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "57aeb164_cf10929a",
+        "filename": "include/console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-18T04:16:10Z",
+      "side": 1,
+      "message": "Would need to #include from this file... yeah, maybe.\n\nworking on splitting this monster and I bet it\u0027ll end up in it\u0027s own file.",
+      "parentUuid": "e89a9a17_30f102db",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 0
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66f58421_6307192e",
         "filename": "zephyr/shim/src/console.c",
         "patchSetId": 1
@@ -139,6 +228,30 @@
       "writtenOn": "2020-09-17T21:14:48Z",
       "side": 1,
       "message": "Hmm, this is something we are going to need to address. We definitely need to buffer for other purposes (e.g. host command pulling console data).\n\nAlso seems better to not make current task/thread wait on IO",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 30
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bc9a69b_4f0c7f9d",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-18T04:16:10Z",
+      "side": 1,
+      "message": "Yep.... I think we will maybe switch to Zephyr\u0027s logging module instead of printk.\n\nBut I did this to make it as simple as possible for now... would need to translate from channels to Zephyr\u0027s zephyr\u0027s \"log module\" declarations which looked like it was going to take some macro trickery.",
+      "parentUuid": "66f58421_6307192e",
       "range": {
         "startLine": 63,
         "startChar": 4,
@@ -171,6 +284,30 @@
       "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0a48a46_0bb3984b",
+        "filename": "zephyr/shim/src/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-18T04:16:10Z",
+      "side": 1,
+      "message": "Yep, but timerinfo depends on it.",
+      "parentUuid": "53145f62_17abee07",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "ec44e14c856ccfcfa8f41eab95e5676bd73182cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
