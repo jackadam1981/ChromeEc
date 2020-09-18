@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4507b0b0_b3e2fe1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-18T20:18:31Z",
+      "side": 1,
+      "message": "This had been approved, but without the previous CL, caused a build issue for board/honeybuns and gingerbread since they did not have power sequencing tables. I have corrected these issues now and verified that \"make buildall\" succeeds.",
+      "revId": "e03adbd90bad7850042a4ae61de12efbca72a249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
