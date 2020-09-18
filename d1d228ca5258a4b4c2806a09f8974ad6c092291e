@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24d1ffde_1e6e5ab4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-09-18T19:42:47Z",
+      "side": 1,
+      "message": "As discussed, we will cherrypick the reland https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2355177 instead of this change itself",
+      "revId": "d1d228ca5258a4b4c2806a09f8974ad6c092291e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
