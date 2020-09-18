@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87f6eb78_7d9f4e2b",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-18T20:13:48Z",
+      "side": 1,
+      "message": "Would it make more sense for the PE to not call this function if we\u0027re in an alternate mode?",
+      "range": {
+        "startLine": 765,
+        "startChar": 0,
+        "endLine": 765,
+        "endChar": 24
+      },
+      "revId": "ec812fa61339bebe93c8107987027e8ca01c683d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
