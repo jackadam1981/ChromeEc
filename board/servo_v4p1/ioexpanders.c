@@ -14,6 +14,7 @@
  */
 
 static int dut_chg_en_state;
+static enum uservo_board_id board_id_val=BOARD_ID_UNSET;
 
 /* Enable all ioexpander outputs. */
 int init_ioexpanders(void)
@@ -226,17 +227,23 @@ inline int usb3_a1_mux_sel(int en)
 inline int board_id_det(void)
 {
 	int id;
-
-	id = tca6416a_read_byte(1, TCA6416A_IN_PORT_1);
-	if (id < 0)
-		return id;
+	/* Make board ID cached at init (suggested by EC team) */
+	if (board_id_val == BOARD_ID_UNSET || board_id_val < 0){
+		id = tca6416a_read_byte(1, TCA6416A_IN_PORT_1);
+		if (id < 0)
+			return id;
+		board_id_val=id;
+	}
 
 	/* Board ID consists of bits 5, 4, and 3 */
-	return (id >> 3) & 0x7;
+	return (board_id_val >> 3) & 0x7;
 }
 
 inline int cmux_en(int en)
 {
+	/* REV1 and up may not have this GPIO */
+	if (board_id_det() != BOARD_ID_REV0)
+		return EC_ERROR_INVAL;
 	return tca6416a_write_bit(1, TCA6416A_OUT_PORT_1, 6, en);
 }
 
@@ -298,7 +305,20 @@ inline int read_faults(void)
 
 inline int vbus_dischrg_en(int en)
 {
-	return tca6424a_write_bit(1, TCA6424A_OUT_PORT_2, 0, en);
+	int val;
+
+	switch(board_id_det()){
+	case BOARD_ID_REV0:
+		val=tca6424a_write_bit(1, TCA6424A_OUT_PORT_2, 0, en);
+		break;
+	case BOARD_ID_REV1:
+		val=tca6416a_write_bit(1, TCA6416A_OUT_PORT_1, 6, en);
+		break;
+	default:
+		val = EC_ERROR_UNIMPLEMENTED;
+		break;
+	}
+	return val;
 }
 
 inline int usbh_pwrdn_l(int en)
