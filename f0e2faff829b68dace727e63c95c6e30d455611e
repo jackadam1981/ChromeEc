@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06e0daad_8be48728",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-18T21:50:51Z",
+      "side": 1,
+      "message": "Instead of touching all the chipset drivers, can we just put this in the chipset task?\n\nAlso, nit: but can we name this HOOK_CHIPSET_HARD_OFF? Just \"off\" is ambiguous, but hard off indicates entry to G3.",
+      "revId": "f0e2faff829b68dace727e63c95c6e30d455611e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
