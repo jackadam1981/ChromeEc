@@ -237,7 +237,7 @@ static inline void pd_set_host_mode(int port, int enable)
 	 * present as a SNK device. If port != DUT (port == 1), then nothing to
 	 * do in this function.
 	 */
-	if (!port)
+	if (port != DUT)
 		return;
 
 	if (enable) {
@@ -252,13 +252,14 @@ static inline void pd_set_host_mode(int port, int enable)
 		 * can be supported, then the Rp value will get adjusted when
 		 * VBUS is enabled.
 		 */
-		pd_set_rp_rd(port, TYPEC_CC_RP, TYPEC_RP_USB);
+		pd_set_rp_rd(port, TYPEC_CC_RP, CONFIG_USB_PD_PULLUP);
 
 		gpio_set_flags(GPIO_USB_DUT_CC1_TX_DATA, GPIO_INPUT);
 		gpio_set_flags(GPIO_USB_DUT_CC2_TX_DATA, GPIO_INPUT);
 	} else {
 		/* Select Rd, the Rp value is a don't care */
-		pd_set_rp_rd(port, TYPEC_CC_RD, TYPEC_RP_RESERVED);
+		// THE ABOVE IS FALSE. Reserved breaks things.
+		pd_set_rp_rd(port, TYPEC_CC_RD, CONFIG_USB_PD_PULLUP);
 	}
 }
 
