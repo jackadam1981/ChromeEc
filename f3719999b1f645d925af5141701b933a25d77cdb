@@ -16,6 +16,24 @@
       "revId": "f3719999b1f645d925af5141701b933a25d77cdb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "314c5409_8dc2c5af",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-18T21:47:30Z",
+      "side": 1,
+      "message": "Setting at the time PR_Swap is requested by PE. Cleared when the call for processing source capabilities sets/clears the usb_comm.  I like patchset 4 if it is true that we should not change usb_comm or mux values when in an alt-mode.",
+      "parentUuid": "ea48f657_789273e3",
+      "revId": "f3719999b1f645d925af5141701b933a25d77cdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
