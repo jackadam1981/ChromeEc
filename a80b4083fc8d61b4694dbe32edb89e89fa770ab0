@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8db8140_bc90c113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-18T18:04:34Z",
+      "side": 1,
+      "message": "I think this change should be safe for the rest of the code that accesses the modes structures. Based on OOB discussion of the behavior of this device, there might be something else that we need to do as well, but it would suit another CL, so I\u0027ll move discussion to the bug.",
+      "revId": "a80b4083fc8d61b4694dbe32edb89e89fa770ab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
