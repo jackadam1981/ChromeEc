@@ -91,13 +91,6 @@
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
 
-/* Enabling Thunderbolt-compatible mode */
-#define CONFIG_USB_PD_TBT_COMPAT_MODE
-
-/* Enabling USB4 mode */
-#define CONFIG_USB_PD_USB4
-#define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
-
 /* Disabled PD extended message support to save flash space. */
 #undef CONFIG_USB_PD_EXTENDED_MESSAGES
 
@@ -156,7 +149,6 @@
 #define I2C_PORT_SENSOR		NPCX_I2C_PORT0_0
 #define I2C_PORT_USB_C0		NPCX_I2C_PORT1_0
 #define I2C_PORT_USB_C1		NPCX_I2C_PORT2_0
-#define I2C_PORT_USB_1_MIX	NPCX_I2C_PORT3_0
 #define I2C_PORT_POWER		NPCX_I2C_PORT5_0
 #define I2C_PORT_EEPROM		NPCX_I2C_PORT7_0
 

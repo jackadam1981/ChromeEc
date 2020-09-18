@@ -221,10 +221,6 @@
  */
 #define CONFIG_USB_PID 0x503E
 
-/* Retimer */
-#define CONFIG_USBC_RETIMER_INTEL_BB
-#define CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
-
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

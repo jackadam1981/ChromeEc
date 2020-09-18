@@ -59,6 +59,10 @@
 /* Enabling USB4 mode */
 #define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
 
+/* Retimer */
+#define CONFIG_USBC_RETIMER_INTEL_BB
+#define CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+
 /* USB Type A Features */
 
 /* USBC PPC*/
