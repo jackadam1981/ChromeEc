@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "f5972cc5_7854a00a",
+        "filename": "chip/npcx/registers-npcx5.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-18T06:18:20Z",
+      "side": 1,
+      "message": "This definition actually doesn\u0027t define which UART \"controller\" to be used. Instead, it defines which pin-outs (GPIO10/11 or GPIO64/65) are connected to \"UART 1\" controller. This function is supported in all npcx chips including npcx5.\nI understand the name may confusing. However, we don\u0027t decides to change it because of the historic burden (Every board/baseboard uses this definition in the whole EC repository.)",
+      "parentUuid": "bf0ffdd3_a821a0dc",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 21
+      },
+      "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e24484f2_60e5dd10",
         "filename": "chip/npcx/registers-npcx7.h",
         "patchSetId": 4
@@ -62,6 +86,30 @@
       "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "177351e1_284ca936",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-18T06:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e24484f2_60e5dd10",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 70
+      },
+      "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "2b086253_71a4617b",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-18T06:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61ad1bc2_e169d882",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a1c04b2_e06efef2",
         "filename": "chip/npcx/registers-npcx7.h",
         "patchSetId": 4
@@ -111,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "f7af327d_d272ccb2",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-18T06:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a1c04b2_e06efef2",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 67
+      },
+      "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24ddaba5_f2bc4501",
         "filename": "chip/npcx/registers-npcx7.h",
         "patchSetId": 4
@@ -131,6 +227,30 @@
       "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9602cae9_04e75f82",
+        "filename": "chip/npcx/registers-npcx7.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-18T06:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24ddaba5_f2bc4501",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 32
+      },
+      "revId": "87af7b0a6bcff6b95e42790b0fbb167d0737deb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
