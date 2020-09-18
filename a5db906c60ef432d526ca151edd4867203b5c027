@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "11facfc0_f6233b10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-18T00:53:26Z",
+      "side": 1,
+      "message": "Weiyi, except the 150us, could you also take a look on clock_init() and suggest.",
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d445ece_11a66811",
         "filename": "chip/mt8192_scp/clock.c",
         "patchSetId": 18
@@ -129,6 +146,29 @@
         "startChar": 5,
         "endLine": 294,
         "endChar": 15
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52df8407_8623a616",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-18T00:53:26Z",
+      "side": 1,
+      "message": "do we really need to calibrate 4 times  (1 osc0 and 3 osc1)",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 34
       },
       "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
