@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7907ed6e_f564deb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-18T20:15:41Z",
+      "side": 1,
+      "message": "I had started with /board/honeybuns, but there was no associated board. I then opted to modify this to support the nucleo64 board that I used to verify some of the stm32g4 chip drivers. What used to be /board/honeybuns is not related at all to /board/nucleo-g431rb",
+      "revId": "cb6a48cf5e0aeb3ccfefbc57894dea3d81d10049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
