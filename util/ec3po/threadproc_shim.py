@@ -21,7 +21,7 @@ pairs with select/poll/epoll alongside other file descriptors.  A drop-in
 replacement would be non-trivial and add undesirable complexity.  The correct
 solution will be to split off the polling of the pipes/queues from this module
 into separate threads, so that they can be transitioned to another form of
-cross-thread synchronization, e.g. directly waiting on Queue.Queue.get() or a
+cross-thread synchronization, e.g. directly waiting on queue.Queue.get() or a
 lower-level thread synchronization primitive.
 
 TODO(b/79684405): After this library has been updated to contain
@@ -33,7 +33,7 @@ wait until after completing the TODO above to stop using multiprocessing.Pipe!
 """
 
 # Imports to bring objects into this namespace for users of this module.
-from Queue import Queue
+from queue import Queue
 from multiprocessing import Pipe
 from threading import Thread as ThreadOrProcess
 
