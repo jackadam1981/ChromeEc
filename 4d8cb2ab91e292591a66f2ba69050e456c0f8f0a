@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "891278d2_2f4775aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-19T18:49:45Z",
+      "side": 1,
+      "message": "Can you also add https://bugs.chromium.org/p/chromium/issues/detail?id\u003d1045209?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7fb28ee_089c0b86",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
