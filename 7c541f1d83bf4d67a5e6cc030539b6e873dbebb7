@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16007355_d022e8a4",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-19T18:54:53Z",
+      "side": 1,
+      "message": "This is intentionally redundant (argc !\u003d 3) for the \u0027set\u0027 command, which takes one more argument.",
+      "range": {
+        "startLine": 582,
+        "startChar": 5,
+        "endLine": 582,
+        "endChar": 25
+      },
+      "revId": "7c541f1d83bf4d67a5e6cc030539b6e873dbebb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
