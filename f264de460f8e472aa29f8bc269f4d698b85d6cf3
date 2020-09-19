@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27d7a959_374a792f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-09-19T22:43:34Z",
+      "side": 1,
+      "message": "I have an inkling suspicion your hub is noncompliant and misprogrammed the SRC_CAP\u003c-\u003eREQUEST fields. \"Jeckyll/Hyde\" behavior.\n\n6.4.2.4 USB Communications Capable\n\nThis should be a static field like \"DRD\" and \"DRP\". It\u0027s practical purpose is informing if USB Suspend Supported needs to be honored. Secondary is muxing the USB2.0 (maybe SSUSB3) lines. CommCap field is supposed to be fixed across (a) SRC_CAP (b) REQUEST (c) SNK_CAP.\n\nHowever many chipset vendors misinterpreted this to mean \"in the current orientation\". Thus bifurcated their responses. With these bad hubs:\n* If CB latches as SRC/DFP: CommCap is \"1\" in hub (SNK/UFP)REQUEST.\n* If CB latches as SNK/UFP: CommCap is \"0\" in hub (SRC/DFP)SRC_CAP.\n\nQuick test is using an Apple iPad Pro and USB headphones. If audio works when hub latches as SNK first, but doesn\u0027t work if hub latches as (PSU inserted) SRC first, the DUT is noncompliant.\n\nI\u0027m leaning to siding with Apple\u0027s approach. Don\u0027t mux USB2.0 data lines to noncompliant products. Similar behavior has been observed with Jeckyll/Hyde \"DRD\" and \"DRP\" flags by hubs trying to \"force\" partners in one direction.",
+      "revId": "f264de460f8e472aa29f8bc269f4d698b85d6cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
