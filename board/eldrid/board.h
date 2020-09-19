@@ -64,6 +64,9 @@
 #define CONFIG_LID_ANGLE_SENSOR_LID		LID_ACCEL
 
 /* USB Type C and USB PD defines */
+/* TODO(b/168826914): Don't use Volteer PID. */
+#define CONFIG_USB_PID 0x503E
+#define CONFIG_USB_BCD_DEV 0x0000
 #define CONFIG_USB_PD_PORT_MAX_COUNT			2
 
 /* TODO: b/144165680 - measure and check these values on Volteer */
