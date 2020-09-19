@@ -115,8 +115,8 @@ static const uint32_t vdo_idh_rev30 = VDO_IDH_REV30(
 				 USB_TYPEC_RECEPTACLE,
 				 USB_VID_GOOGLE);
 
-/* TODO: Version number of product will be added by CL:2420469 */
-static const uint32_t vdo_product = VDO_PRODUCT(CONFIG_USB_PID, 0);
+static const uint32_t vdo_product = VDO_PRODUCT(
+				CONFIG_USB_PID, CONFIG_USB_BCD_DEV);
 
 /* TODO(b/168890624): add USB4 to capability once USB4 response implemented */
 static const uint32_t vdo_ufp1 = VDO_UFP1(
