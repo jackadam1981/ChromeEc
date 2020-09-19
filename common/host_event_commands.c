@@ -639,6 +639,9 @@ static enum ec_status host_event_action_get(struct host_cmd_handler_args *args)
 	memset(r, 0, sizeof(*r));
 
 	switch (p->mask_type) {
+	case EC_HOST_EVENT_MAIN:
+		result = EC_RES_ACCESS_DENIED;
+		break;
 	case EC_HOST_EVENT_B:
 		r->value = events_copy_b;
 		break;
@@ -683,6 +686,10 @@ static enum ec_status host_event_action_set(struct host_cmd_handler_args *args)
 	host_event_t mask_value __unused = (host_event_t)(p->value);
 
 	switch (p->mask_type) {
+	case EC_HOST_EVENT_MAIN:
+	case EC_HOST_EVENT_B:
+		result = EC_RES_ACCESS_DENIED;
+		break;
 #ifdef CONFIG_HOSTCMD_X86
 	case EC_HOST_EVENT_SCI_MASK:
 		lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, mask_value);
