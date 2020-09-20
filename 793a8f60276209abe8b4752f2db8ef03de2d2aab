@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54b90258_2c245d8b",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-09-20T06:46:46Z",
+      "side": 1,
+      "message": "I don\u0027t think we should allow the host to set host_event_b. This is supposed to be set only by the EC. HOST_EVENT_B is used to identify things like whether recovery was triggered. Allowing host to set HOST_EVENT_B would be a security issue.\n\nWe already have check in EC to allow only get operation for EC_HOST_EVENT_B. I think it would be good to make it clear in the help text here and also add a check for the same in cmd_hostevent() below.",
+      "range": {
+        "startLine": 564,
+        "startChar": 11,
+        "endLine": 564,
+        "endChar": 26
+      },
+      "revId": "793a8f60276209abe8b4752f2db8ef03de2d2aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
