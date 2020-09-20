@@ -16,6 +16,24 @@
       "revId": "f264de460f8e472aa29f8bc269f4d698b85d6cf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ed2a1ee_c48ec089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-20T18:51:49Z",
+      "side": 1,
+      "message": "I presume the hub is non-compliant as well (advertising a mode and then not allowing this mode) but the problem is we are dealing with on this bug is we are in an alt-mode and a PR_Swap is causing us to clear the MUX, to the best of my knowledge we should not drop out of alt-mode due to the swap.\n\nMaybe, to be safe and all, I should expense a new iPad Pro and do some checks 😄",
+      "parentUuid": "27d7a959_374a792f",
+      "revId": "f264de460f8e472aa29f8bc269f4d698b85d6cf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
