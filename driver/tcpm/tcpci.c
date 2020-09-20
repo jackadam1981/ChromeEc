@@ -792,8 +792,9 @@ static int tcpci_rev2_0_tcpm_get_message_raw(int port, uint32_t *payload,
 
 clear:
 	tcpc_lock(port, 0);
-	/* Read complete, clear RX status alert bit */
-	tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_RX_STATUS);
+	/* Read complete, clear RX status alert bit and overflow bit */
+	tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_RX_STATUS |
+				TCPC_REG_ALERT_RX_BUF_OVF);
 
 	if (rv)
 		return EC_ERROR_UNKNOWN;
@@ -841,8 +842,9 @@ static int tcpci_rev1_0_tcpm_get_message_raw(int port, uint32_t *payload,
 	}
 
 clear:
-	/* Read complete, clear RX status alert bit */
-	tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_RX_STATUS);
+	/* Read complete, clear RX status alert bit and overflow bit*/
+	tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_RX_STATUS |
+				TCPC_REG_ALERT_RX_BUF_OVF);
 
 	return rv;
 }
@@ -1165,8 +1167,16 @@ void tcpci_tcpc_alert(int port)
 	int alert_ext = 0;
 	int failed_attempts;
 	uint32_t pd_event = 0;
+	int retval = 0;
+	bool nonatomic_rx = false;
 
 	/* Read the Alert register from the TCPC */
+
+	/*
+	 * TODO: This implicitly signals TCPC I2C failure. We should
+	 * separate failure handling to be explicit on every individual
+	 * TCPC I2C Read/Write attempt.
+	 */
 	if (tcpm_alert_status(port, &alert)) {
 		CPRINTS("C%d: Failed to read alert register", port);
 		return;
@@ -1197,13 +1207,54 @@ void tcpci_tcpc_alert(int port)
 					   TCPC_TX_COMPLETE_SUCCESS :
 					   TCPC_TX_COMPLETE_FAILED);
 
+	/*
+	 * Flag TCPC RX buffer overflow event.
+	 *
+	 * Per TCPCI R2 V1.2, overflow results in the GoodCRC responder
+	 * being automatically disabled until RX buffer space is freed.
+	 *
+	 * Writing 1 to this register acknowledges the overflow. The overflow
+	 * is cleared by writing to ALERT.ReceiveSOP*MessageStatus.
+
+	 * The TCPM should always clear the Rx Buffer Overflow and
+	 * Message Received bits at the same time. Otherwise there could
+	 * be a scenario where the Rx Buffer Overflow bit remains set
+	 * even though the TCPM has just cleared one of the messages in
+	 * the buffer.
+	 */
+	if (alert & TCPC_REG_ALERT_RX_BUF_OVF) {
+		CPRINTS("C%d: TCPC RX overflow! GoodCRC disabled.", port);
+
+		/*
+		 * Clear OVF with dual-write only if there is no pending RX.
+		 * This guards against a single large RX triggering OVF only.
+		 */
+		if (!(alert & TCPC_REG_ALERT_RX_STATUS))
+			tcpc_write16(port, TCPC_REG_ALERT,
+					TCPC_REG_ALERT_RX_STATUS |
+					TCPC_REG_ALERT_RX_BUF_OVF);
+	}
+
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
 	while (alert & TCPC_REG_ALERT_RX_STATUS) {
-		if (tcpm_enqueue_message(port))
+		retval = tcpm_enqueue_message(port);
+		if (retval)
 			++failed_attempts;
-		if (tcpm_alert_status(port, &alert))
-			++failed_attempts;
+
+		/*
+		 * EC RX FIFO is full. Deassert ALERT# line to exit interrupt
+		 * handler by discarding pending message from TCPC RX FIFO.
+		 */
+		if (retval == EC_ERROR_OVERFLOW) {
+			CPRINTS("C%d: PD OVERFLOW! Message abandoned.", port);
+
+			/* Clear pending RX alert bits */
+			if (alert & TCPC_REG_ALERT_RX_STATUS)
+				tcpc_write16(port, TCPC_REG_ALERT,
+					TCPC_REG_ALERT_RX_STATUS |
+					TCPC_REG_ALERT_RX_BUF_OVF);
+		}
 
 		/* Ensure we don't loop endlessly */
 		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
@@ -1218,6 +1269,36 @@ void tcpci_tcpc_alert(int port)
 			pd_deferred_resume(port);
 			return;
 		}
+
+		if (tcpm_alert_status(port, &alert)) {
+			CPRINTS("C%d: Failed to read alert register", port);
+			++failed_attempts;
+		} else if (alert & (TCPC_REG_ALERT_RX_STATUS |
+				TCPC_REG_ALERT_RX_BUF_OVF |
+				TCPC_REG_ALERT_TX_COMPLETE |
+				TCPC_REG_ALERT_FAULT |
+				TCPC_REG_ALERT_ALERT_EXT)) {
+			/*
+			 * We re-read ALERT register. Any ALERT bits processed
+			 * before this RX loop must be handled from the top of
+			 * the handler in their original order of importance.
+			 */
+			nonatomic_rx = true;
+		}
+	}
+
+	/*
+	 * We have a non-atomic RX event (either iterating multiple loops, or a
+	 * singleton RX with higher-order ALERT bits set during/after RX event.
+	 *
+	 * Schedule a deferred interrupt call to handle these bits, in order to
+	 * accommodate both edge-trigged and level-triggered interrupt handlers.
+	 *
+	 * For example: TCPC_REG_ALERT_ALERT_EXT requires populating alert_ext.
+	 */
+	if (nonatomic_rx) {
+		schedule_deferred_pd_interrupt(port);
+		return;
 	}
 
 	/*
