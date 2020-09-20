@@ -16,6 +16,24 @@
       "revId": "166e34f1e832767651318cfb3e1c54dd7d4157ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "314da2b1_aa090a9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-09-20T10:06:08Z",
+      "side": 1,
+      "message": "The reasons I put this another CL are 1. make an example for our partner reference 2. revert this patch if needed (for example, find a new solution or this patch is unnecessary anymore).",
+      "parentUuid": "8d541ca1_2e682044",
+      "revId": "166e34f1e832767651318cfb3e1c54dd7d4157ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
