@@ -1137,6 +1137,7 @@ void tcpci_tcpc_alert(int port)
 	int alert_ext = 0;
 	int failed_attempts;
 	uint32_t pd_event = 0;
+	int retval;
 
 	/* Read the Alert register from the TCPC */
 	if (tcpm_alert_status(port, &alert)) {
@@ -1172,10 +1173,29 @@ void tcpci_tcpc_alert(int port)
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
 	while (alert & TCPC_REG_ALERT_RX_STATUS) {
-		if (tcpm_enqueue_message(port))
+		retval = tcpm_enqueue_message(port);
+		if (retval)
 			++failed_attempts;
 		if (tcpm_alert_status(port, &alert))
 			++failed_attempts;
+
+		/*
+		 * EC RX FIFO is full. Deassert ALERT# line to exit interrupt
+		 * handler by discarding pending message from TCPC RX FIFO.
+		 *
+		 * The TCPM should always clear the Rx Buffer Overflow and
+		 * Message Received bits at the same time. Otherwise there could
+		 * be a scenario where the Rx Buffer Overflow bit remains set
+		 * even though the TCPM has just cleared one of the messages in
+		 * the buffer.
+		 */
+		if (retval == EC_ERROR_OVERFLOW) {
+			CPRINTS("C%d: PD OVERFLOW! Message abandoned.", port);
+
+			/* Clear all pending alert bits */
+			if (alert)
+				tcpc_write16(port, TCPC_REG_ALERT, alert);
+		}
 
 		/* Ensure we don't loop endlessly */
 		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
