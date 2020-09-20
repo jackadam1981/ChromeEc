@@ -1282,11 +1282,20 @@ enum pd_msg_type {
 void schedule_deferred_pd_interrupt(int port);
 
 /**
+ * Get current PD Revision
+ *
+ * @param port USB-C port number
+ * @param type USB-C port partner
+ * @return 0 for PD_REV1.0, 1 for PD_REV2.0, 2 for PD_REV3.0
+ */
+int pd_get_rev(int port, enum tcpm_transmit_type type);
+
+/**
  * Get current PD VDO Version
  *
  * @param port USB-C port number
  * @param type USB-C port partner
- * @return 0 for PD_REV1.0, 1 for PD_REV2.0
+ * @return 0 for VDM_VER1.0, 1 for VDM_VER2.0
  */
 int pd_get_vdo_ver(int port, enum tcpm_transmit_type type);
 
