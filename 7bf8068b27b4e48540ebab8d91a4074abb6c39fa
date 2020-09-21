@@ -85,6 +85,30 @@
       "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17118e42_bcd349b2",
+        "filename": "extra/stack_analyzer/run_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-21T17:52:09Z",
+      "side": 1,
+      "message": "\u003e info: Use ./*glob* or -- *glob* so names with dashes won\u0027t become options.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2035\n\nPlease fix.",
+      "parentUuid": "49d9a0d0_097d44b5",
+      "range": {
+        "startLine": 8,
+        "startChar": 59,
+        "endLine": 8,
+        "endChar": 60
+      },
+      "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
