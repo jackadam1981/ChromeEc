@@ -23,9 +23,21 @@
 void tbt_init(int port);
 
 /*
- * Sets exit_mode and retry_done bits to true
+ * Sets the TBT_FLAG_RETRY_DONE flag to avoid re-entering into Thunderbolt
+ * alternate mode and clears the TBT_FLAG_EXIT_DONE flag
+ *
+ * @param port USB-C port number
  */
-void tbt_exit_mode_request(void);
+void tbt_exit_mode_request(int port);
+
+/*
+ * Checks if the entry into Thunderbolt alternate mode is done
+ *
+ * @param port      USB-C port number
+ * @return          True if TBT_FLAG_ENTRY_DONE is set
+ *                  False otherwise
+ */
+bool tbt_entry_is_done(int port);
 
 /*
  * Returns True if Thunderbolt mode is not in inactive state
