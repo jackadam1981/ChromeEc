@@ -23,9 +23,22 @@
 void tbt_init(int port);
 
 /*
- * Sets exit_mode and retry_done bits to true
+ * Informs the DPM that the mode exit sequence for Thunderbolt alternate mode
+ * is done for a port.
+ *
+ * @param port USB-C port number
  */
-void tbt_exit_mode_request(void);
+void tbt_exit_mode_request(int port);
+
+/*
+ * Informs the DPM that the mode entry sequence for Thunderbolt alternate mode
+ * is done for a port.
+ *
+ * @param port      USB-C port number
+ * @return          True if entry sequence for Thunderbolt mode is completed
+ *                  False otherwise
+ */
+bool tbt_entry_is_done(int port);
 
 /*
  * Returns True if Thunderbolt mode is not in inactive state
