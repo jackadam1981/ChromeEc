@@ -65,7 +65,6 @@ static void tcpc_alert_event(enum gpio_signal s)
 
 	switch (s) {
 	case GPIO_USBC_DP_MUX_ALERT_ODL:
-		board_debug_gpio(TRIGGER_2, 1);
 		port = USB_PD_PORT_DP;
 		break;
 	default:
@@ -104,16 +103,16 @@ static void board_uf_manage_vbus_interrupt(enum gpio_signal signal)
 const struct power_seq board_power_seq[] = {
 	{GPIO_EN_AC_JACK,               1, 20},
 	{GPIO_EN_PP5000_A,              1, 31},
-	{GPIO_EN_PP3300_B,              1, 100},
+	{GPIO_MST_LP_CTL_L,             1, 0},
+	{GPIO_EN_PP3300_B,              1, 1},
+	{GPIO_EN_PP1100_A,              1, 100+30},
 	{GPIO_EN_BB,                    1, 30},
-	{GPIO_EN_PP1100_A,              1, 30},
 	{GPIO_EN_PP1050_A,              1, 30},
 	{GPIO_EN_PP1200_A,              1, 20},
 	{GPIO_EN_PP5000_C,              1, 20},
 	{GPIO_EN_PP5000_HSPORT,         1, 31},
 	{GPIO_EN_DP_SINK,               1, 80},
-	{GPIO_MST_LP_CTL_L,             1, 41},
-	{GPIO_MST_RST_L,                1, 20},
+	{GPIO_MST_RST_L,                1, 61},
 	{GPIO_EC_HUB2_RESET_L,          1, 41},
 	{GPIO_EC_HUB3_RESET_L,          1, 33},
 	{GPIO_DP_SINK_RESET,            1, 100},
@@ -125,7 +124,6 @@ const struct power_seq board_power_seq[] = {
 	{GPIO_DEMUX_DUAL_DP_MODE,       1, 10},
 	{GPIO_DEMUX_DP_HDMI_MODE,       1, 5},
 };
-
 const size_t board_power_seq_count = ARRAY_SIZE(board_power_seq);
 
 /*
