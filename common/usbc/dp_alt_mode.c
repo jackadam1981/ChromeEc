@@ -14,7 +14,6 @@
 #include "assert.h"
 #include "usb_pd.h"
 #include "usb_dp_alt_mode.h"
-#include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -24,6 +23,8 @@
 #define CPRINTF(format, args...)
 #define CPRINTS(format, args...)
 #endif
+
+static bool dp_entry_done[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /* The state of the DP negotiation */
 enum dp_states {
@@ -53,25 +54,32 @@ static const uint8_t state_vdm_cmd[DP_STATE_COUNT] = {
 
 bool dp_is_active(int port)
 {
-	return dp_state[port] == DP_ACTIVE;
+	return dp_entry_done[port];
 }
 
 void dp_init(int port)
 {
 	dp_state[port] = DP_START;
+	dp_entry_done[port] = false;
 }
 
 void dp_teardown(int port)
 {
 	CPRINTS("C%d: DP teardown", port);
 	dp_state[port] = DP_INACTIVE;
+	dp_entry_done[port] = false;
+}
+
+bool dp_entry_is_done(int port)
+{
+	return dp_entry_done[port];
 }
 
 static void dp_entry_failed(int port)
 {
 	CPRINTS("C%d: DP alt mode protocol failed!", port);
 	dp_state[port] = DP_INACTIVE;
-	dpm_set_mode_entry_done(port);
+	dp_entry_done[port] = true;
 }
 
 static bool dp_response_valid(int port, enum tcpm_transmit_type type,
@@ -121,9 +129,9 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 	case DP_STATUS_ACKED:
 		if (modep && modep->opos && modep->fx->post_config)
 			modep->fx->post_config(port);
-		dpm_set_mode_entry_done(port);
 		dp_state[port] = DP_ACTIVE;
 		CPRINTS("C%d: Entered DP mode", port);
+		dp_entry_done[port] = true;
 		break;
 	case DP_ACTIVE:
 		/*
