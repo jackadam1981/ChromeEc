@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "327dc823_1a7f7adf",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-21T20:59:27Z",
+      "side": 1,
+      "message": "This is unused in the EC code and by this CL chain.  What is the intended use?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "701550d0a2dedc2a190d04ae5bab443e030f223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c885a268_dfc43c4e",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-21T20:59:27Z",
+      "side": 1,
+      "message": "Where is this address defined in the datasheet?",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "701550d0a2dedc2a190d04ae5bab443e030f223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
