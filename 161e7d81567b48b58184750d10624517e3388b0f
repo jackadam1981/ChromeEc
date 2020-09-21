@@ -22,6 +22,30 @@
       "revId": "161e7d81567b48b58184750d10624517e3388b0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d7a3d38_0e0d06be",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-21T09:02:08Z",
+      "side": 1,
+      "message": "Without the \"__packed\" attribute here will cause build assertion in line 75 below.\nHowever, it should make more sense to move the attribute to the \"struct gpio_alt_map\" but the \"struct npcx_alt\" \nChange it in the patch set 6.",
+      "parentUuid": "9ec4aa2b_8aa8521e",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "161e7d81567b48b58184750d10624517e3388b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
