@@ -99,6 +99,24 @@
       "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3788042f_bb9e7ac3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-21T17:21:52Z",
+      "side": 1,
+      "message": "What code would make the EC jump on the power button press in S5 for a chromebox? \n\nFor the specific case of sysjumping with no battery, I\u0027m working on a CL right now to just disable the PE layer if we reach the point of wanting to send a hard reset on our active charge port with no battery.  We can continue to sink power, but wouldn\u0027t need to try maintaining all of our previous role information.\n\nI can keep trying to debug why we lose our power signals when we sysjump from S5, and ultimately it would be good to why this is happening on our dedede boards.",
+      "parentUuid": "3432a310_374926aa",
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
