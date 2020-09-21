@@ -16,6 +16,24 @@
       "revId": "72f1431694af5efa403a31fdf508dea27d8fffdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd732d6d_f511b061",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T16:00:24Z",
+      "side": 1,
+      "message": "Let\u0027s see if we need to make this change.",
+      "parentUuid": "563a54c9_f2e083f5",
+      "revId": "72f1431694af5efa403a31fdf508dea27d8fffdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
