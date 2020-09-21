@@ -81,6 +81,24 @@
       "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3432a310_374926aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-21T16:43:17Z",
+      "side": 1,
+      "message": "If the power button is pressed between s5 and g3, Chromebox EC will jump to RW with a PD contract while AP is running. If soft reset in pd_init is ignored, hard reset will follow and cause power loss then brownout. \n\nThe same story applies to battery-less chromebooks. When batteries are removed, chromebooks have already made a PD contract on recovery shutdown.\n\nSo, I think we need to jump on S5 for Chromeboxes and better do so for Chromebooks as well. Only Waddledee will take this change as a workaround and we will fix the root cause.\n\nThoughts?",
+      "parentUuid": "79d29c27_46f4b17a",
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
