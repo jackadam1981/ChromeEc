@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caabf1bc_6fe2282f",
+        "filename": "board/fennel/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-21T10:04:56Z",
+      "side": 1,
+      "message": "We don\u0027t have the API designed for ioexpander pwm yet, so let\u0027s follow the common pwm code structure:\n\n(in board.h)\n#define IT8801_PWM_CH_KBLIGHT 0\n\n(in board.c)\nconst struct it8801_pwm_t it8801_pwm_channels[] \u003d {\n  [0] \u003d {.index \u003d 4},\n}\n\n(in it8801.c)\nuse it8801_pwm_set_duty(IT8801_PWM_CH_KBLIGHT, percent), etc.",
+      "revId": "50da822c5b14de9db47a7325949634c981522630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdf0bf44_b6c26f53",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-21T10:04:56Z",
+      "side": 1,
+      "message": "call it8801_pwm_enable(..., 0) here, and move IOEX_KB_BL_EN control to board.c\n\nplease check the GPIO_EC_KB_BL_EN usage in baseboard/hatch/baseboard.c",
+      "revId": "50da822c5b14de9db47a7325949634c981522630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a62fc674_c66c31f6",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-21T10:04:56Z",
+      "side": 1,
+      "message": "rename to\n\nit8801_kblight_init\nit8801_kblight_set/get_brightness\nit8801_kblight_enable",
+      "revId": "50da822c5b14de9db47a7325949634c981522630",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
