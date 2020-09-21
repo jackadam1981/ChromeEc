@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91adf400_1cef65db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-09-21T17:10:21Z",
+      "side": 1,
+      "message": "The CL description is written as if CL:2402441 is rolled out already, which it\u0027s not.  I\u0027ll wait for that CL to be merged and live on Labstations for a week before sending this to CQ.\n\nThe actual testing in TEST\u003d is done, this seems to work fine.",
+      "revId": "2fabce8b317d07fdbe8c94bb91037fc6216e9cb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
