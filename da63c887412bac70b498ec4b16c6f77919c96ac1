@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5206b23_b04e4f6a",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4870,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T18:35:39Z",
+      "side": 1,
+      "message": "Missed one more #endif.",
+      "range": {
+        "startLine": 4867,
+        "startChar": 0,
+        "endLine": 4870,
+        "endChar": 6
+      },
+      "revId": "da63c887412bac70b498ec4b16c6f77919c96ac1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
