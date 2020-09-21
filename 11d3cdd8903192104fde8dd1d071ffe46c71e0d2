@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "211f4b89_95643ca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-21T17:19:57Z",
+      "side": 1,
+      "message": "The code looks OK, but please explain in more detail why this is necessary/desirable.",
+      "revId": "11d3cdd8903192104fde8dd1d071ffe46c71e0d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40b36cd5_3f4dbb50",
+        "filename": "board/eldrid/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-21T17:19:57Z",
+      "side": 1,
+      "message": "For a quirk like this, let\u0027s leave a reference to b/169025944 in this comment, so we can understand why the code is the way that it is in the future.\n\nI\u0027d also like to see more explanation on the bug and in the comments here of what\u0027s going on with this charger chip and why this is a desirable workaround.",
+      "revId": "11d3cdd8903192104fde8dd1d071ffe46c71e0d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
