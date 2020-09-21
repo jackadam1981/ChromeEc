@@ -62,10 +62,14 @@ void dpm_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 	switch (svid) {
 	case USB_SID_DISPLAYPORT:
 		dp_vdm_acked(port, type, vdo_count, vdm);
+		if (dp_is_active(port))
+			dpm_set_mode_entry_done(port);
 		break;
 	case USB_VID_INTEL:
 		if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)) {
 			intel_vdm_acked(port, type, vdo_count, vdm);
+			if (tbt_is_active(port))
+				dpm_set_mode_entry_done(port);
 			break;
 		}
 	default:
@@ -80,10 +84,14 @@ void dpm_vdm_naked(int port, enum tcpm_transmit_type type, uint16_t svid,
 	switch (svid) {
 	case USB_SID_DISPLAYPORT:
 		dp_vdm_naked(port, type, vdm_cmd);
+		if (!dp_is_active(port))
+			dpm_set_mode_entry_done(port);
 		break;
 	case USB_VID_INTEL:
 		if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE)) {
 			intel_vdm_naked(port, type, vdm_cmd);
+			if (!tbt_is_active(port))
+				dpm_set_mode_entry_done(port);
 			break;
 		}
 	default:
@@ -178,7 +186,7 @@ static void dpm_attempt_mode_exit(int port)
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
 	    tbt_is_active(port)) {
 		CPRINTS("C%d: TBT teardown", port);
-		tbt_exit_mode_request();
+		tbt_exit_mode_request(port);
 		vdo_count = tbt_setup_next_vdm(port, VDO_MAX_SIZE, &vdm,
 					&tx_type);
 	} else if (dp_is_active(port)) {
