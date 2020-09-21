@@ -135,6 +135,24 @@
       "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8f6244_081cd90a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-21T20:32:36Z",
+      "side": 1,
+      "message": "Is the current code\u0027s assumption that the board wouldn\u0027t brown out after hard resetting if the AP is off?  It seems like regardless of the timing for the sysjump, we could end up in a possible brown out if we have no battery and we want to head into RW.  Though I suppose browning out in S5 might be less customer visible? \n\nGenerally, does the EC get reset after recovery?  Or does it depend on whether the EC RW image changed? \n\nWhen the PE layer determined it reached the state of needing to hard reset (usually because we haven\u0027t gotten source caps), I would propose we move the PE into disabled state if we have no battery and this port is our active one.  For chromebooks at least, this should only be developer/factory case and our primary goal would just be to avoid unnecessary brown outs (ex. while flashing an ITE EC with no battery).  The developer could see the PE state is disabled and reset the EC to get back into a consistent state.  I\u0027ll need to think more about the chromebox use-cases and re-read the EFS2 doc to make sure I understand our expected customer transitions here.",
+      "parentUuid": "6d52075a_fb5d90e8",
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
