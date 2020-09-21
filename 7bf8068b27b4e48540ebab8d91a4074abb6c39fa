@@ -88,6 +88,23 @@
     },
     {
       "key": {
+        "uuid": "8349f353_8b160575",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-21T18:00:33Z",
+      "side": 1,
+      "message": "looks good. minor stuff",
+      "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17118e42_bcd349b2",
         "filename": "extra/stack_analyzer/run_tests.sh",
         "patchSetId": 1
@@ -105,6 +122,121 @@
         "startChar": 59,
         "endLine": 8,
         "endChar": 60
+      },
+      "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f52dd99_d9ef978c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-21T18:00:33Z",
+      "side": 1,
+      "message": "we don\u0027t define __repr__ or __str__ for this object? so this is just essentially id(self) then?\n\nwould be better to account all of the parameters so that a \u003d\u003d b implies hash(a) \u003d\u003d hash(b)",
+      "range": {
+        "startLine": 250,
+        "startChar": 16,
+        "endLine": 250,
+        "endChar": 26
+      },
+      "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b7ed563_ad7f2185",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-21T18:00:33Z",
+      "side": 1,
+      "message": "prefer \"in\" operator to using find for this purpose",
+      "range": {
+        "startLine": 662,
+        "startChar": 8,
+        "endLine": 662,
+        "endChar": 42
+      },
+      "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9728655_5bd2856c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-21T18:00:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 664,
+        "startChar": 9,
+        "endLine": 664,
+        "endChar": 45
+      },
+      "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2271b4f6_e228333d",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-21T18:00:33Z",
+      "side": 1,
+      "message": "add spacing around operators",
+      "range": {
+        "startLine": 946,
+        "startChar": 51,
+        "endLine": 946,
+        "endChar": 53
+      },
+      "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b931199_8165b867",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-21T18:00:33Z",
+      "side": 1,
+      "message": "since we are switching to python3, you can optionally change this to subprocess.run with check\u003dTrue",
+      "range": {
+        "startLine": 1464,
+        "startChar": 31,
+        "endLine": 1464,
+        "endChar": 43
       },
       "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
