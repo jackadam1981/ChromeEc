@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f3437a85_60eeb734",
+        "filename": "driver/tcpm/fusb307.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-21T07:39:30Z",
+      "side": 1,
+      "message": "Please add the following block after #include lines\n\n#ifdef CONFIG_USB_PD_DUAL_ROLE\n#error dual role not implemented\n#endif",
+      "parentUuid": "6db50d34_86872a61",
+      "revId": "4d269b517f2ed246ba2edf0a0d725f4fc3c58263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10cf3584_a695c71d",
         "filename": "driver/tcpm/fusb307.c",
         "patchSetId": 7
