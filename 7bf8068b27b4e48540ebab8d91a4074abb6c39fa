@@ -50,6 +50,41 @@
       "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91e85a62_cbe4048c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-21T10:28:52Z",
+      "side": 1,
+      "message": "I think this CL is ready for review, thanks.",
+      "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3959fd5_eaed002d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-21T10:28:52Z",
+      "side": 1,
+      "message": "After debugging / reading the code, I think it\u0027s normal in my case. I found it entered a loop when finding SCC, so the stack usage may not be accurate. (Depends on when we enter and indicate it\u0027s a loop)",
+      "parentUuid": "8d0abcd7_a2114040",
+      "revId": "7bf8068b27b4e48540ebab8d91a4074abb6c39fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
