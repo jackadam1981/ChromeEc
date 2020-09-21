@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "181025b3_d43be10e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-21T15:28:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "891278d2_2f4775aa",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7fb28ee_089c0b86",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2020-09-18T21:57:39Z",
       "side": 1,
       "message": "Does a chromebox (Puff in particular) actually enter G3 (our pseudo G3 here) on its own?",
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79d29c27_46f4b17a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-21T15:28:47Z",
+      "side": 1,
+      "message": "I haven\u0027t seen any CONFIG options which would cause a board to not enter pseudo G3, but I\u0027ll defer to the puff experts here.",
+      "parentUuid": "d7fb28ee_089c0b86",
       "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
