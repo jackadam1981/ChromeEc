@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e4868d4_d16d8dcf",
+        "filename": "chip/mt8192_scp/ipi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-21T17:55:27Z",
+      "side": 0,
+      "message": "Why did we remove the interrupt disable here?",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 19
+      },
+      "revId": "f0c3332979bfa2585a02a125da967e731870bee3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
