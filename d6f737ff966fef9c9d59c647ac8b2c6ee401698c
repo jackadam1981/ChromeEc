@@ -33,6 +33,24 @@
       "revId": "d6f737ff966fef9c9d59c647ac8b2c6ee401698c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71903f57_dc634c2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-09-21T03:42:29Z",
+      "side": 1,
+      "message": "No, it wouldn\u0027t. \nit83xx_disable_cc_module() function is used for\n1.Disable cc analog module in boot, then the cc pins don\u0027t have Type-C functions.\n2.Disable the cc and pd modules for EC hibernate mode, the USBPD_REG_MASK_CC1_DISCONNECT_5_1K_TO_GND bit will back to HW default connection setting after reset or call tcpc_init().",
+      "parentUuid": "cc40611f_630fc3ea",
+      "revId": "d6f737ff966fef9c9d59c647ac8b2c6ee401698c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

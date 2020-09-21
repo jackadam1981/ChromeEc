@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e24e0c7_e86ebc01",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-09-21T03:42:29Z",
+      "side": 0,
+      "message": "We have turned CCs analog functions power off, so in line 656 setting USBPD_REG_MASK_CC1_DISCONNECT_5_1K_TO_GND is not effective (just in case for current leakage).",
+      "range": {
+        "startLine": 643,
+        "startChar": 1,
+        "endLine": 643,
+        "endChar": 55
+      },
+      "revId": "8db1cf02395cb38b44fea2ffb9c3660624e227a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
