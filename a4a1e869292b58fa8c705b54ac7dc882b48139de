@@ -69,6 +69,24 @@
       "revId": "a4a1e869292b58fa8c705b54ac7dc882b48139de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5a516eb_d27b3152",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-21T22:31:33Z",
+      "side": 1,
+      "message": "default directly assign 0 in  CL:2370045 and add a TODO\npublish this CL on top of it so that it looks like its being used",
+      "parentUuid": "6de756ec_e319d43b",
+      "revId": "a4a1e869292b58fa8c705b54ac7dc882b48139de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
