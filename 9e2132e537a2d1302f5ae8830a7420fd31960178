@@ -16,6 +16,24 @@
       "revId": "9e2132e537a2d1302f5ae8830a7420fd31960178",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd4d9ad_f419fcb2",
+        "filename": "PRESUBMIT.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-21T15:30:22Z",
+      "side": 1,
+      "message": "No, this just tells the license check presubmit to ignore the fact that these files have a different license. All of the third_party code should actually have this because otherwise the presubmit checks will warn about the license not matching if you touch one of the files in the directory.",
+      "parentUuid": "0624ee42_70618325",
+      "revId": "9e2132e537a2d1302f5ae8830a7420fd31960178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
