@@ -231,7 +231,6 @@ uint32_t __ram_code ext_observation_reg_read(enum ext_timer_sel ext_timer)
 	uint32_t prev_mask = get_int_mask();
 	uint32_t val;
 
-	interrupt_disable();
 	asm volatile(
 		/* read observation register for the first time */
 		"lwi %0,[%1]\n\t"

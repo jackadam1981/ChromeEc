@@ -338,7 +338,7 @@ void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 void lpc_keyboard_clear_buffer(void)
 {
 	uint32_t int_mask = get_int_mask();
-	interrupt_disable();
+
 	/* bit6, write-1 clear OBF */
 	IT83XX_KBC_KBHICR |= BIT(6);
 	IT83XX_KBC_KBHICR &= ~BIT(6);
