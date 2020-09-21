@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2b9e4b6_0f96b3cd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-21T21:12:23Z",
+      "side": 1,
+      "message": "does it store cable rev too?\nif not how about a note saying always returns SOP rev?",
+      "revId": "cc829d76a1308d5d42a4d722c27c4f1f4914bcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
