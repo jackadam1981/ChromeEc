@@ -22,6 +22,30 @@
       "revId": "ed888a67a7a612a2d5d76fca779918b5d18a15d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d82ed3_5b132bfe",
+        "filename": "board/coachz/base_detect.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-21T23:22:23Z",
+      "side": 1,
+      "message": "The base is an USB device, with an extra pin for detection. I think it was the reason to dump to CC_USB. But the printing messages are mostly related to the extra detection pin. It makes more sense to use CC_SYSTEM.",
+      "parentUuid": "6eacb4ae_5cdcf394",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "ed888a67a7a612a2d5d76fca779918b5d18a15d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
