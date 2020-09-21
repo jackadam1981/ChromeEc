@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "29ccd0da_1747df03",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-21T20:56:41Z",
+      "side": 1,
+      "message": "What about the other ones in this file?",
+      "parentUuid": "771c2915_1ce94dab",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8db0d123_0db42758",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -668,6 +686,24 @@
     },
     {
       "key": {
+        "uuid": "cf763123_2a5266df",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-21T20:56:41Z",
+      "side": 1,
+      "message": "Please add a TODO with a bug reference.",
+      "parentUuid": "04be285b_1374ef77",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e35e6218_6a5256ac",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -867,6 +903,24 @@
     },
     {
       "key": {
+        "uuid": "85ac067f_9098c2ff",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-21T20:56:41Z",
+      "side": 1,
+      "message": "I would just hardcode the VDO version here. We can bump it when we update the macro for whatever the next version is.",
+      "parentUuid": "61ab17cd_bafe4d54",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3373939c_94944ebb",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 16
@@ -934,6 +988,24 @@
       "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11db4d15_17824922",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-21T20:56:41Z",
+      "side": 1,
+      "message": "As above, I think we can just hardcode version.",
+      "parentUuid": "791189cb_f3ec87ac",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
