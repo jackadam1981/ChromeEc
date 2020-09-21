@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#undef QUICHE_BOARD_P1
+
 /* Baseboard features */
 #include "baseboard.h"
 
@@ -40,7 +42,11 @@
 #define I2C_PORT_I2C2		1
 #define I2C_PORT_I2C3	2
 /* Required symbolic I2C port names */
+#ifdef QUICHE_BOARD_P1
+#define I2C_PORT_MP4245 I2C_PORT_I2C3
+#else
 #define I2C_PORT_MP4245 I2C_PORT_I2C2
+#endif
 #define I2C_PORT_EEPROM I2C_PORT_I2C3
 #define MP4245_SLAVE_ADDR MP4245_I2C_ADDR_0_FLAGS
 
@@ -48,8 +54,13 @@
 
 #include "registers.h"
 
+#ifdef QUICHE_BOARD_P1
+#define GPIO_TRIGGER_1 GPIO_TP73
+#define GPIO_TRIGGER_2 GPIO_USB3_A5_CDP_EN
+#else
 #define GPIO_TRIGGER_1 GPIO_USB3_A3_CDP_EN
 #define GPIO_TRIGGER_2 GPIO_USB3_A4_CDP_EN
+#endif
 #define GPIO_DP_HPD GPIO_DDI_MST_IN_HPD
 
 enum  debug_gpio {
