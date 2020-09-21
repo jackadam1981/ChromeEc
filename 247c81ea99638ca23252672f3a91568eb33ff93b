@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "066d165c_24daebf3",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-21T07:45:59Z",
+      "side": 1,
+      "message": "please check if `count` is between [0, pd_get_src_cap_cnt(0))",
+      "revId": "247c81ea99638ca23252672f3a91568eb33ff93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f640b62_a53fdd0a",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-21T07:45:59Z",
+      "side": 1,
+      "message": "Check if pd_get_src_cap_cnt(0) is greater than zero.",
+      "revId": "247c81ea99638ca23252672f3a91568eb33ff93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
