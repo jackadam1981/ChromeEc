@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6842677_19f596a8",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-09-21T23:01:41Z",
+      "side": 1,
+      "message": "Just for my understanding: EC_RES_INVALID_PARAM would be returned basically when the mask_type is something that the EC does not know about. For all other types which the EC knows about but doesn\u0027t want to support here would be returned as EC_RES_ACCESS_DENIED. Does that match your understanding?",
+      "range": {
+        "startLine": 720,
+        "startChar": 1,
+        "endLine": 720,
+        "endChar": 8
+      },
+      "revId": "b46c9034957121d7d39ffdea69986ffb849807ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beaba1b3_db44ba89",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2020-09-21T23:01:41Z",
+      "side": 1,
+      "message": "Should we add all other mask types as ACCESS_DENIED here?",
+      "revId": "b46c9034957121d7d39ffdea69986ffb849807ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
