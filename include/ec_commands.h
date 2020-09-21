@@ -5302,7 +5302,11 @@ struct ec_response_host_event_status {
 	uint32_t status;      /* PD MCU host event status */
 } __ec_align4;
 
-/* Set USB type-C port role and muxes */
+/*
+ * Set USB type-C port role and muxes
+ *
+ * Deprecated in favor of TYPEC_STATUS and TYPEC_CONTROL commands.
+ */
 #define EC_CMD_USB_PD_CONTROL 0x0101
 
 enum usb_pd_control_role {
@@ -6373,6 +6377,99 @@ struct ec_params_typec_control {
 	union {
 		uint8_t placeholder[128];
 	};
+} __ec_align1;
+
+/*
+ * Gather all status information for a port.
+ *
+ * Note: this covers many of the return fields from the deprecated
+ * EC_CMD_USB_PD_CONTROL command, except those that are redundant with the
+ * discovery data.  The enum pd_cc_states is defined with EC_CMD_USB_PD_CONTROL,
+ * and the first 3 PD_STATUS_ENABLED bits are designed to match that command's
+ * bits as well for ease of consumer backwards compatibility.
+ *
+ * This also combines in the EC_CMD_USB_PD_MUX_INFO flags.
+ */
+#define EC_CMD_TYPEC_STATUS 0x0133
+
+#define PD_STATUS_ENABLED_COMMS      BIT(0) /* Communication enabled */
+#define PD_STATUS_ENABLED_CONNECTED  BIT(1) /* Device connected */
+#define PD_STATUS_ENABLED_PD_CAPABLE BIT(2) /* Partner is PD capable */
+
+/*
+ * Power role. See 6.2.1.1.4 Port Power Role. Only applies to SOP packets.
+ * Replaced by pd_cable_plug for SOP' and SOP" packets.
+ */
+enum pd_power_role {
+	PD_ROLE_SINK = 0,
+	PD_ROLE_SOURCE = 1
+};
+
+/*
+ * Data role. See 6.2.1.1.6 Port Data Role. Only applies to SOP.
+ * Replaced by reserved field for SOP' and SOP" packets.
+ */
+enum pd_data_role {
+	PD_ROLE_UFP = 0,
+	PD_ROLE_DFP = 1,
+	PD_ROLE_DISCONNECTED = 2,
+};
+
+enum pd_vconn_role {
+	PD_ROLE_VCONN_OFF = 0,
+	PD_ROLE_VCONN_SRC = 1,
+};
+
+enum tcpc_cc_polarity {
+	/*
+	 * _CCx: is used to indicate the polarity while not connected to
+	 * a Debug Accessory.  Only one CC line will assert a resistor and
+	 * the other will be open.
+	 */
+	POLARITY_CC1 = 0,
+	POLARITY_CC2 = 1,
+
+	/*
+	 * CCx_DTS is used to indicate the polarity while connected to a
+	 * SRC Debug Accessory.  Assert resistors on both lines.
+	 */
+	POLARITY_CC1_DTS = 2,
+	POLARITY_CC2_DTS = 3,
+
+	/*
+	 * The current TCPC code relies on these specific POLARITY values.
+	 * Adding in a check to verify if the list grows for any reason
+	 * that this will give a hint that other places need to be
+	 * adjusted.
+	 */
+	POLARITY_COUNT
+};
+
+#define MODE_DP_PIN_A 0x01
+#define MODE_DP_PIN_B 0x02
+#define MODE_DP_PIN_C 0x04
+#define MODE_DP_PIN_D 0x08
+#define MODE_DP_PIN_E 0x10
+#define MODE_DP_PIN_F 0x20
+
+struct ec_params_typec_status {
+	uint8_t port;
+} __ec_align1;
+
+struct ec_response_typec_status {
+	uint8_t enabled;	/* PD_STATUS_ENABLED bitmask */
+	uint8_t power_role;	/* enum pd_power_role */
+	uint8_t data_role;	/* enum pd_data_role */
+	uint8_t vconn_role;	/* enum pd_vconn_role */
+
+	uint8_t polarity;	/* enum tcpc_cc_polarity */
+	uint8_t cc_state;	/* enum pd_cc_states */
+	uint8_t dp_pin;		/* DP pin mode (MODE_DP_IN_[A-E]) */
+	uint8_t mux_state;	/* USB_PD_MUX* - encoded USB mux state */
+
+	char tc_state[32];	/* TC state name */
+
+	/* TODO(b/167700356): Add events, revisions, and source cap PDOs */
 } __ec_align1;
 
 /*****************************************************************************/
