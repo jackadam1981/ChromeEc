@@ -51,6 +51,24 @@
       "revId": "a4a1e869292b58fa8c705b54ac7dc882b48139de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6de756ec_e319d43b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T22:27:24Z",
+      "side": 1,
+      "message": "This needs to be applied before CL:2370045, which uses the constant for product VDO.",
+      "parentUuid": "d74c6878_46f652b2",
+      "revId": "a4a1e869292b58fa8c705b54ac7dc882b48139de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
