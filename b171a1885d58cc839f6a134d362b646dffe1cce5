@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "92e0c610_40224290",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ae20eff7_066048e6",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3db7127_8f2ec552",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -86,6 +104,24 @@
       "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "771c2915_1ce94dab",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Added static",
+      "parentUuid": "b3db7127_8f2ec552",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -160,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "0887eb37_eee8c9cd",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "I added a Rev3.0 macro to create a const for Rev3.0, and select proper VDO based on port PD Rev. I don\u0027t see a common function between TCPMv1\u0026v2 to get PD revision on a port.  pd_get_rev() is the one in TCPMv1 and prl_get_rev() is the one in TCPMv2. I uploaded CL:2420468 to address this.",
+      "parentUuid": "93933db2_7fb3911f",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c423488_ade6824e",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -213,6 +273,24 @@
     },
     {
       "key": {
+        "uuid": "0e296d81_320aa153",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "I uploaded CL:2420469 to add CONFIG_USB_BCD_DEV in board.h to all variants of volteer.",
+      "parentUuid": "5bf674f4_d0a53a1f",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af0223fa_0b94e5ad",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -236,6 +314,30 @@
     },
     {
       "key": {
+        "uuid": "f6dae260_d423170b",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Crosbug added.",
+      "parentUuid": "af0223fa_0b94e5ad",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 107,
+        "endChar": 7
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d6e0d81_1af2cd12",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -256,6 +358,30 @@
       "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8b6145_57b876a0",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8d6e0d81_1af2cd12",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 29
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -330,6 +456,30 @@
     },
     {
       "key": {
+        "uuid": "82dd46da_3d87c79e",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Added reference to crosbug.",
+      "parentUuid": "616b52df_d2a10c3f",
+      "range": {
+        "startLine": 119,
+        "startChar": 35,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edd45ec1_1ca7dac5",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -383,6 +533,24 @@
     },
     {
       "key": {
+        "uuid": "6e2e1dbf_e7c143c4",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Ref to crosbug added.",
+      "parentUuid": "6bbb34f8_9a443c13",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5325fc94_ebb696eb",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -423,6 +591,30 @@
     },
     {
       "key": {
+        "uuid": "baaf49a0_f9e35a1c",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "ada96c85_c88da924",
+      "range": {
+        "startLine": 158,
+        "startChar": 7,
+        "endLine": 158,
+        "endChar": 9
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b917a87f_6f9b0ae9",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -437,6 +629,24 @@
       "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04be285b_1374ef77",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Retimer config for UFP need this information. It will be used by another CL for retimer config.",
+      "parentUuid": "b917a87f_6f9b0ae9",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -463,6 +673,30 @@
     },
     {
       "key": {
+        "uuid": "97b8a413_8a7fefba",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Removed this comments since it\u0027s out of date.",
+      "parentUuid": "e35e6218_6a5256ac",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 173,
+        "endChar": 6
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e255e53_6232a12d",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 16
@@ -486,6 +720,30 @@
     },
     {
       "key": {
+        "uuid": "b4012278_382eef33",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Added guard clauses.",
+      "parentUuid": "6e255e53_6232a12d",
+      "range": {
+        "startLine": 180,
+        "startChar": 10,
+        "endLine": 180,
+        "endChar": 48
+      },
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4796bed3_ec23c173",
         "filename": "include/usb_pd_tbt.h",
         "patchSetId": 16
@@ -500,6 +758,24 @@
       "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "badb68e0_3b24ea63",
+        "filename": "include/usb_pd_tbt.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Removed this. use union instead.",
+      "parentUuid": "4796bed3_ec23c173",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -520,6 +796,24 @@
     },
     {
       "key": {
+        "uuid": "e5088767_5045905c",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "1db3596e_a396b8b4",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cb0476b_d6af03be",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 16
@@ -534,6 +828,24 @@
       "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ab17cd_bafe4d54",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "1cb0476b_d6af03be",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -554,6 +866,24 @@
     },
     {
       "key": {
+        "uuid": "60f0f9a3_99db9b05",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3373939c_94944ebb",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5ffb7e6_18638733",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 16
@@ -568,6 +898,24 @@
       "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "791189cb_f3ec87ac",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d5ffb7e6_18638733",
+      "revId": "b171a1885d58cc839f6a134d362b646dffe1cce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

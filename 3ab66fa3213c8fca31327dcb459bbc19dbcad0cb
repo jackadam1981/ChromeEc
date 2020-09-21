@@ -45,6 +45,30 @@
       "revId": "3ab66fa3213c8fca31327dcb459bbc19dbcad0cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da2f4633_4af8b932",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Updated.",
+      "parentUuid": "b23e8d7b_f7eb372f",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 61
+      },
+      "revId": "3ab66fa3213c8fca31327dcb459bbc19dbcad0cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

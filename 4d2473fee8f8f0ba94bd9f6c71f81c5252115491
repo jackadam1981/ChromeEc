@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6a62c1fb_84c0866c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "19cb6698_09ccb19c",
+      "revId": "4d2473fee8f8f0ba94bd9f6c71f81c5252115491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02dacad9_56189a58",
         "filename": "include/config.h",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "4d2473fee8f8f0ba94bd9f6c71f81c5252115491",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20a8607c_d5aecf96",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4011,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Moved to baseboard specific.",
+      "parentUuid": "02dacad9_56189a58",
+      "revId": "4d2473fee8f8f0ba94bd9f6c71f81c5252115491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "87f383da_7503df88",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc1ff2cb_ffdc3c14",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "570e3b5d_52095ef1",
         "filename": "common/usbc/tbt_alt_mode_ufp.c",
         "patchSetId": 7
@@ -79,6 +103,30 @@
       "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd8cc82_19f87d25",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "570e3b5d_52095ef1",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "ad5b0479_ba4d808e",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Moved to baseboard.",
+      "parentUuid": "a6d9ca15_9ac79197",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 1
+      },
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de021cae_cea49033",
         "filename": "common/usbc/tbt_alt_mode_ufp.c",
         "patchSetId": 7
@@ -128,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "b068ad03_f893eeab",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Moved to baseboard.",
+      "parentUuid": "de021cae_cea49033",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 1
+      },
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b439d794_c2825617",
         "filename": "common/usbc/tbt_alt_mode_ufp.c",
         "patchSetId": 7
@@ -148,6 +244,30 @@
       "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32039992_84bcb057",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Moved to baseboard.",
+      "parentUuid": "b439d794_c2825617",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "8b9d7d5ee79b7ae6b9094c775f18142e1eaa8c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

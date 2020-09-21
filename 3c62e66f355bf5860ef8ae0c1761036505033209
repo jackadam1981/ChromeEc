@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "6d4ae965_b6a80eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "cecae9f7_f44eb91c",
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95d8672c_13ec55d5",
         "filename": "common/usbc/tbt_alt_mode_ufp.c",
         "patchSetId": 8
@@ -69,6 +87,24 @@
       "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0562aac8_f3fae563",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Removed this file. response are in baseboard.",
+      "parentUuid": "95d8672c_13ec55d5",
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +175,30 @@
       "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f7f2f51_98373947",
+        "filename": "common/usbc/tbt_alt_mode_ufp.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Moved to baseboard",
+      "parentUuid": "a87afc56_bab8baa0",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 22
+      },
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -257,6 +317,30 @@
       "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c9d82a_61b34537",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 3013,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-21T15:58:24Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "c1449f78_3ef5ec33",
+      "range": {
+        "startLine": 2971,
+        "startChar": 0,
+        "endLine": 3013,
+        "endChar": 30
+      },
+      "revId": "3c62e66f355bf5860ef8ae0c1761036505033209",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
