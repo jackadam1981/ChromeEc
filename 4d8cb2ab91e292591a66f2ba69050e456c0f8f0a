@@ -117,6 +117,24 @@
       "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d52075a_fb5d90e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-21T18:27:39Z",
+      "side": 1,
+      "message": "\u003e What code would make the EC jump on the power button press in S5 for a chromebox?\n\n1. Recovery screen.\n2. PB press to shutdown.\n3. Enters S5. EC is in RO with a PD contract.\n4. PB press.\n5. AP boots and send sysjump to EC.\n6. EC jumps to RW with a PD contract.\n7. soft reset, hard reset, brownout, ...\n\n\u003e I\u0027m working on a CL right now to just disable the PE layer if we reach the point of wanting to send a hard reset on our active charge port with no battery.\n\nWhat do you mean by \u0027disable the PE layer\u0027? Maybe we\u0027re making things unnecessarily complex and creating more corner cases?",
+      "parentUuid": "3788042f_bb9e7ac3",
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
