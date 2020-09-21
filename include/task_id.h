@@ -8,9 +8,11 @@
 #ifndef __CROS_EC_TASK_ID_H
 #define __CROS_EC_TASK_ID_H
 
+#include "config.h"
 #include "task_filter.h"
 
 /* define the name of the header containing the list of tasks */
+#ifndef CONFIG_ZEPHYR
 #define STRINGIFY0(name)  #name
 #define STRINGIFY(name)  STRINGIFY0(name)
 #define CTS_TASK_LIST STRINGIFY(CTS_TASKFILE)
@@ -24,6 +26,7 @@
 #ifdef TEST_BUILD
 #include TEST_TASK_LIST
 #endif
+#endif /* CONFIG_ZEPHYR */
 
 /* Task identifier (8 bits) */
 typedef uint8_t task_id_t;
@@ -38,6 +41,7 @@ typedef uint8_t task_id_t;
 #define TASK(n, ...) TASK_ID_##n,
 enum {
 	TASK_ID_IDLE,
+#ifndef CONFIG_ZEPHYR
 	/* CONFIG_TASK_LIST is a macro coming from the BOARD_TASK_LIST file */
 	CONFIG_TASK_LIST
 	/* CONFIG_TEST_TASK_LIST is a macro from the TEST_TASK_LIST file */
@@ -47,6 +51,7 @@ enum {
 #ifdef EMU_BUILD
 	TASK_ID_TEST_RUNNER,
 #endif
+#endif  /* CONFIG_ZEPHYR */
 	/* Number of tasks */
 	TASK_ID_COUNT,
 	/* Special task identifiers */
