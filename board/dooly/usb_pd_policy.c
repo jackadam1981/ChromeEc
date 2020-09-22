@@ -29,6 +29,14 @@ int pd_check_vconn_swap(int port)
 	return gpio_get_level(GPIO_EN_PP5000_A);
 }
 
+int pd_check_power_swap(int port)
+{
+	/*
+	 * Never allow power swap.
+	 */
+	return 0;
+}
+
 void pd_power_supply_reset(int port)
 {
 	int prev_en;
