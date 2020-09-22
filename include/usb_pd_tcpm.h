@@ -107,7 +107,8 @@ enum tcpc_transmit_complete {
 /* USB-C PD Vbus levels */
 enum vbus_level {
 	VBUS_SAFE0V,
-	VBUS_PRESENT,
+	VBUS_SAFE5V,
+	VBUS_SINK_DISCONNECT,
 };
 
 /**

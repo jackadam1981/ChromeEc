@@ -182,7 +182,7 @@ static bool anx7688_tcpm_check_vbus_level(int port, enum vbus_level level)
 	 */
 	i2c_read8(I2C_PORT_TCPC, 0x28, 0x40, &reg);
 
-	if (level == VBUS_PRESENT)
+	if (level == VBUS_SAFE5V || level == VBUS_SINK_DISCONNECT)
 		return ((reg & 0x10) ? 1 : 0);
 	else
 		return ((reg & 0x10) ? 0 : 1);
