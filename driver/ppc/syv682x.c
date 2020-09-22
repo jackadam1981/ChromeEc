@@ -114,10 +114,20 @@ static int syv682x_is_sourcing_vbus(int port)
 
 static int syv682x_discharge_vbus(int port, int enable)
 {
-	/*
-	 * Smart discharge mode is enabled, nothing to do
-	 */
-	return EC_SUCCESS;
+	int regval;
+	int rv;
+
+	rv = read_reg(port, SYV682X_CONTROL_2_REG, &regval);
+	if (rv)
+		return rv;
+
+	if (enable)
+		regval |= SYV682X_CONTROL_2_FDSG;
+	else
+		regval &= ~SYV682X_CONTROL_2_FDSG;
+
+	return write_reg(port, SYV682X_CONTROL_2_REG, regval);
+
 }
 
 static int syv682x_vbus_source_enable(int port, int enable)
@@ -281,6 +291,13 @@ static int syv682x_vbus_sink_enable(int port, int enable)
 		 * We're currently a source, so nothing more to do
 		 */
 		return EC_SUCCESS;
+	}
+
+	/* Force Discharge mode must be off in sink mode */
+	if (enable) {
+		rv = syv682x_discharge_vbus(port, 0);
+		if (rv)
+			return rv;
 	}
 
 	/*
@@ -644,15 +661,16 @@ static int syv682x_init(int port)
 		return rv;
 
 	/*
-	 * Set Control Reg 2 to defaults, plus enable smart discharge mode.
-	 * The SYV682 automatically discharges under the following conditions:
-	 * UVLO (under voltage lockout), channel shutdown, over current, over
-	 * voltage, and thermal shutdown
+	 * Set Control Reg 2 to defaults, and set discharge time to 50ms.
+	 * Note: do not enable smart discharge since it would block
+	 * i2c transactions for 50ms (discharge time) and this prevents
+	 * us from disabling Vconn when stop sourcing Vbus and has tVconnOff
+	 * (35ms) timeout.
 	 */
 	regval = (SYV682X_OC_DELAY_10MS << SYV682X_OC_DELAY_SHIFT)
 		| (SYV682X_DSG_TIME_50MS << SYV682X_DSG_TIME_SHIFT)
-		| (SYV682X_DSG_RON_200_OHM << SYV682X_DSG_RON_SHIFT)
-		| SYV682X_CONTROL_2_SDSG;
+		| (SYV682X_DSG_RON_200_OHM << SYV682X_DSG_RON_SHIFT);
+
 	rv = write_reg(port, SYV682X_CONTROL_2_REG, regval);
 	if (rv)
 		return rv;
