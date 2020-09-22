@@ -771,7 +771,7 @@ __overridable bool pd_check_vbus_level(int port, enum vbus_level level)
 {
 	if (IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_TCPC))
 		return tcpm_check_vbus_level(port, level);
-	else if (level == VBUS_PRESENT)
+	else if (level == VBUS_SAFE5V || level == VBUS_SINK_DISCONNECT)
 		return pd_snk_is_vbus_provided(port);
 	else
 		return !pd_snk_is_vbus_provided(port);
@@ -779,7 +779,7 @@ __overridable bool pd_check_vbus_level(int port, enum vbus_level level)
 
 int pd_is_vbus_present(int port)
 {
-	return pd_check_vbus_level(port, VBUS_PRESENT);
+	return pd_check_vbus_level(port, VBUS_SAFE5V);
 }
 
 #ifdef CONFIG_USB_PD_FRS
