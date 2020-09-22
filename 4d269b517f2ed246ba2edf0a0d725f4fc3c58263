@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0d5cb667_36bd7a9c",
+        "filename": "driver/tcpm/fusb307.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1442002
+      },
+      "writtenOn": "2020-09-22T08:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3437a85_60eeb734",
+      "revId": "4d269b517f2ed246ba2edf0a0d725f4fc3c58263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10cf3584_a695c71d",
         "filename": "driver/tcpm/fusb307.c",
         "patchSetId": 7
