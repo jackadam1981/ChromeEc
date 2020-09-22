@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f1bb6cfe_9afba060",
+        "filename": "board/coachz/base_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-22T20:14:17Z",
+      "side": 1,
+      "message": "This is copied from Poppy reference code. The double debounce time was a fix to the bug b/77828249.",
+      "parentUuid": "7e3c8b8c_8ed3d1f7",
+      "revId": "ff575cfdf19cedc7abb4ff457a595db673b1bc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17100d88_e4e4ad59",
         "filename": "board/coachz/board.c",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "ff575cfdf19cedc7abb4ff457a595db673b1bc8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b778923_24d262ad",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-22T20:14:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17100d88_e4e4ad59",
+      "range": {
+        "startLine": 161,
+        "startChar": 14,
+        "endLine": 161,
+        "endChar": 15
+      },
+      "revId": "ff575cfdf19cedc7abb4ff457a595db673b1bc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
