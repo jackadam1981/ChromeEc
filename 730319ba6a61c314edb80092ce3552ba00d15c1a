@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "461236e7_82cf7be3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T17:19:15Z",
+      "side": 1,
+      "message": "Can you add a reference to b:163143427 for visibility? (and closure, if this gets submitted)",
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e0b972f_65daa2e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T17:19:15Z",
+      "side": 1,
+      "message": "eherrmann: Do these meet the extended testing requirements for re-enabling force discharge that you alluded to in b/163143427?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dcca399_8a312b85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T17:19:15Z",
+      "side": 1,
+      "message": "In principle, I don\u0027t have a problem with this change.\n\nHowever, force discharge has previously been problematic on Volteer. Note, for instance, discussion ending at http://b/163143427#comment49. As described there by eherrmann, if we do this, we would like to do it carefully.",
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1b4910c_1aa73bd4",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T17:19:15Z",
+      "side": 1,
+      "message": "The datasheet doesn\u0027t specify, but I don\u0027t think this has any effect if we\u0027re using force discharge instead of smart discharge.\n\neherrmann, have you also observed that force discharge isn\u0027t affected by this field?",
+      "range": {
+        "startLine": 664,
+        "startChar": 33,
+        "endLine": 664,
+        "endChar": 66
+      },
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
