@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1da0093_98a9d0ad",
+        "filename": "board/eldrid/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2020-09-22T05:24:32Z",
+      "side": 1,
+      "message": "We still need this for bmi160_interrupt.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "82eedb9534d7159a1174cef56d73a4b2062ab9d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
