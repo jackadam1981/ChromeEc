@@ -33,6 +33,24 @@
       "revId": "cb6a48cf5e0aeb3ccfefbc57894dea3d81d10049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e1676eb_81455f75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T05:28:07Z",
+      "side": 1,
+      "message": "I could do this and Daisuke had the same request. However, in this instance I don\u0027t think that the deltas from that CL are helpful for what /board/nucleo-g4 represents. The original CL was merely an EC project skeleton. This CL basically undoes that and adds a new board project for nucleo-g4. All this board project does is expose the EC console, flash the LED, and output the system clock to a gpio pin. /board/honeybuns as I used it initially was merged into board/quiche\n\nSince I know that it builds and can be loaded on the STM32 nucleo-g4 dev board, I thought it was worth keeping as I see other nucleo boards exist. Stated another way, this CL is if I had deleted board/honeybuns and then added board/nucleo-g431rb in a subsequent CL.",
+      "parentUuid": "073dd9c7_2da1e756",
+      "revId": "cb6a48cf5e0aeb3ccfefbc57894dea3d81d10049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
