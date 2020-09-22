@@ -367,9 +367,6 @@
 /* Define which ALS sensor is used for dimming the lightbar when dark */
 #undef CONFIG_ALS_LIGHTBAR_DIMMING
 
-/* Link against third_party/cryptoc. */
-#undef CONFIG_LIBCRYPTOC
-
 /* Support AP hang detection host command and state machine */
 #undef CONFIG_AP_HANG_DETECT
 
@@ -5218,15 +5215,6 @@
 /* Define derived config options for BC1.2 detection */
 #ifdef CONFIG_BC12_DETECT_PI3USB9201
 #define CONFIG_BC12_DETECT_DATA_ROLE_TRIGGER
-#endif
-
-/*****************************************************************************/
-/*
- * Define CONFIG_LIBCRYPTOC if a board needs to read secret data from the
- * anti-rollback block.
- */
-#ifdef CONFIG_ROLLBACK_SECRET_SIZE
-#define CONFIG_LIBCRYPTOC
 #endif
 
 /*****************************************************************************/
