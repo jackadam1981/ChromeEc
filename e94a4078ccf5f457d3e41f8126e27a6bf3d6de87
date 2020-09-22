@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1bb35622_ac5f4b70",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "I just looked again and the datasheet is slightly inconsistent. The register descriptions include the \u0027R\u0027 as you noted, but the register map summary 45.7.15 does not include that \u0027R\u0027 in this register name and the others. The register macros were mostly following the register description (not summary) notation, so I have changed these 2 entries so they are consistent with the other registers.",
+      "parentUuid": "151509ab_5b4e2b33",
+      "range": {
+        "startLine": 271,
+        "startChar": 22,
+        "endLine": 271,
+        "endChar": 28
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3d1264e_d7ada36c",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 26
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "21e34faa_aa74e582",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3d1264e_d7ada36c",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17466760_4953ab0c",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 26
@@ -53,6 +95,30 @@
       "writtenOn": "2020-09-22T04:43:25Z",
       "side": 1,
       "message": "BIT(20)\n\nSide question, any consumers of this planning to implement FRS send or receive?",
+      "range": {
+        "startLine": 380,
+        "startChar": 44,
+        "endLine": 380,
+        "endChar": 51
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac474297_0556e7f2",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "I assume we want to support FRS. But, I haven\u0027t focused on this feature yet.",
+      "parentUuid": "17466760_4953ab0c",
       "range": {
         "startLine": 380,
         "startChar": 44,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "fc07fe39_f8d3454e",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "I did not know about GENMASK in the EC code. I have fixed this mask value.",
+      "parentUuid": "549db1c6_306c4228",
+      "range": {
+        "startLine": 402,
+        "startChar": 47,
+        "endLine": 402,
+        "endChar": 52
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3928e378_492eabac",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 26
@@ -99,6 +189,24 @@
       "writtenOn": "2020-09-22T04:43:25Z",
       "side": 1,
       "message": "Any idea whether the standby mode from bit 13 will be of use as well?",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0caed775_c8d9a054",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "It\u0027s not needed for honeybuns as that doesn\u0027t require use of any power saving modes on the EC. But, I did add the macro now for the sake of completeness",
+      "parentUuid": "3928e378_492eabac",
       "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -145,6 +253,30 @@
     },
     {
       "key": {
+        "uuid": "b838e859_42db54c8",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94182dab_5cd898d0",
+      "range": {
+        "startLine": 58,
+        "startChar": 47,
+        "endLine": 58,
+        "endChar": 55
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65ffa51b_e1f674d8",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 26
@@ -162,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "dfe81d02_ef6f4e26",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "Disabling the port seemed like the only part that would be relevant here.",
+      "parentUuid": "65ffa51b_e1f674d8",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ceeca0af_a99a5beb",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 26
@@ -173,6 +323,30 @@
       "writtenOn": "2020-09-22T04:43:25Z",
       "side": 1,
       "message": "I\u0027m reading table 415 and I\u0027m not totally certain I see how this works here.  Let\u0027s say we\u0027re source and CC1 is Rd.  Looks like that will read 01 for vstate_cc1.  So then we have:\n(1 + 1) % 2 -\u003e 0 -\u003e TYPEC_CC_VOLT_OPEN\n\nShould it be %3 instead?  Also, do we need to worry about the disabled ANASUBMODE? \n\nSink-side, I don\u0027t know that the values make sense either.  0 needs to translate to vRa which would be 1, and vRd-30 would read as 0b11 from the register but need to change into 7 for the enum.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997b5acf_b0f05e03",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "Yes this was version is incorrect. I had fixed this, further along in my CL stack and thought I had moved those fixes back to this CL. Looks like I had missed saving all of the changes prior to adding them to the CL. The latest patchset does have the correct version.",
+      "parentUuid": "ceeca0af_a99a5beb",
       "range": {
         "startLine": 166,
         "startChar": 2,
@@ -231,6 +405,30 @@
     },
     {
       "key": {
+        "uuid": "c69a2356_3496e4b7",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "Yes, this comment was incorrect. I have fixed the comment.",
+      "parentUuid": "00f90760_90af0702",
+      "range": {
+        "startLine": 210,
+        "startChar": 12,
+        "endLine": 210,
+        "endChar": 34
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0977e332_02286bc8",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 26
@@ -242,6 +440,30 @@
       "writtenOn": "2020-09-22T04:43:25Z",
       "side": 1,
       "message": "Why should tye type-c detector be enabled for a sink, but not for a source?",
+      "range": {
+        "startLine": 240,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 59
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92b18a38_366b3bd2",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "Please look at the latest patchset for this function. Initially I had misunderstood when I needed to enable or disable the type-c voltage change detector.",
+      "parentUuid": "0977e332_02286bc8",
       "range": {
         "startLine": 240,
         "startChar": 2,
@@ -271,6 +493,24 @@
     },
     {
       "key": {
+        "uuid": "24e50967_ae0a7781",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "ANASUBMODE is always set in this function independent of Rp or Rd pull type. It\u0027s at the beginning of this function.\n\n\t/*\n\t * Always set ANASUBMODE to match desired Rp. TCPM layer has a valid\n\t * range of 0, 1, or 2. This range maps to 1, 2, or 3 in ucpd for\n\t * ANASUBMODE.\n\t */\n\tcr \u0026\u003d ~STM32_UCPD_CR_ANASUBMODE_MASK;\n\tcr |\u003d STM32_UCPD_CR_ANASUBMODE_VAL(UCPD_RP_TO_ANASUB(rp));",
+      "parentUuid": "c1be9493_830f1aa6",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50f62e25_db2cd5ed",
         "filename": "chip/stm32/ucpd-stm32gx.h",
         "patchSetId": 26
@@ -282,6 +522,24 @@
       "writtenOn": "2020-09-22T04:43:25Z",
       "side": 1,
       "message": "nit: could be worth noting for future readers that these are PD spec ordered sets from chapter 5\n\nAlso, I may be getting ahead of myself here, but it looks like STM32_UCPD_RXORDSETR takes care of translating the k-codes already?",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43304bae_80fd147a",
+        "filename": "chip/stm32/ucpd-stm32gx.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:44Z",
+      "side": 1,
+      "message": "I added a comment noting where this info can be found in both the usb-pd spec and the stm32g4 RM0440 document.\n\nThe RXORDSETR is used to determine which type of usb-pd messages will be detected by the ucpd block. But for tx, the ordered set needs to be written before each tx packet (or assumed to be correct from the last time a message was sent). These values aren\u0027t used in this CL as it\u0027s only adding type-c support (as a way to add logical pieces of the driver).",
+      "parentUuid": "50f62e25_db2cd5ed",
       "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
