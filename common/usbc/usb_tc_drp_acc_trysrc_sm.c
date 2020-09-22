@@ -2263,6 +2263,19 @@ static void tc_attached_snk_run(const int port)
 	}
 
 	/*
+	 * From 4.5.2.2.5.2 Exiting from Attached.SNK State:
+	 *
+	 * "A port that is not a Vconn-Powered USB Device and is not in the
+	 * process of a USB PD PR_Swap or a USB PD Hard Reset or a USB PD
+	 * FR_Swap shall transition to Unattached.SNK within tSinkDisconnect
+	 * when Vbus falls below vSinkDisconnect for Vbus operating at or
+	 * below 5 V or below vSinkDisconnectPD when negotiated by USB PD
+	 * to operate above 5 V."
+	 *
+	 * TODO(b/149530538): Use vSinkDisconnectPD when above 5V
+	 */
+
+	/*
 	 * Debounce Vbus before we drop that we are doing a PR_Swap
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS) &&
@@ -2276,7 +2289,7 @@ static void tc_attached_snk_run(const int port)
 		 * with the swap and should have Vbus, so re-enable
 		 * AutoDischargeDisconnect.
 		 */
-		if (pd_is_vbus_present(port))
+		if (!pd_check_vbus_level(port, VBUS_REMOVED))
 			tcpm_enable_auto_discharge_disconnect(port, 1);
 	}
 
@@ -2289,7 +2302,7 @@ static void tc_attached_snk_run(const int port)
 		/*
 		 * Detach detection
 		 */
-		if (!pd_is_vbus_present(port)) {
+		if (pd_check_vbus_level(port, VBUS_REMOVED)) {
 			if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 				pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
 				pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
@@ -2388,7 +2401,7 @@ static void tc_attached_snk_run(const int port)
 #else /* CONFIG_USB_PE_SM */
 
 	/* Detach detection */
-	if (!pd_is_vbus_present(port)) {
+	if (pd_check_vbus_level(port, VBUS_REMOVED)) {
 		set_state_tc(port, TC_UNATTACHED_SNK);
 		return;
 	}
@@ -3323,7 +3336,7 @@ static void tc_ct_attached_snk_run(int port)
 	 * transition to CTUnattached.SNK within tSinkDisconnect when VBUS
 	 * falls below vSinkDisconnect
 	 */
-	if (!pd_is_vbus_present(port)) {
+	if (pd_check_vbus_level(port, VBUS_REMOVED)) {
 		set_state_tc(port, TC_CT_UNATTACHED_SNK);
 		return;
 	}
