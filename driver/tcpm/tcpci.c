@@ -100,7 +100,14 @@ STATIC_IF(DEBUG_GET_CC)
  * Last reported VBus Level
  *
  * BIT(VBUS_SAFE0V) will indicate if in SAFE0V
- * BIT(VBUS_PRESENT) will indicate if in PRESENT
+ * BIT(VBUS_SAFE5V) will indicate if in PRESENT in the TCPCI POWER_STATUS
+ *
+ * Note that VBUS_SINK_DISCONNECT cannot be distinguished from VBUS_SAFE5V with
+ * this interface, but the trigger thresholds for Vbus Present should allow the
+ * same bit to be used safely for both.
+ *
+ * TODO(b/149530538): Some TCPCs may be able to implement
+ * VBUS_SINK_DISCONNECT_THRESHOLD to support vSinkDisconnectPD
  */
 static int tcpc_vbus[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -719,7 +726,8 @@ bool tcpci_tcpm_check_vbus_level(int port, enum vbus_level level)
 	if (level == VBUS_SAFE0V)
 		return !!(tcpc_vbus[port] & BIT(VBUS_SAFE0V));
 	else
-		return !!(tcpc_vbus[port] & BIT(VBUS_PRESENT));
+		/* Note: Both vSafe5V and vSinkDisconnect may use this bit */
+		return !!(tcpc_vbus[port] & BIT(VBUS_SAFE5V));
 }
 #endif
 
@@ -1091,10 +1099,10 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 		tcpci_tcpm_get_power_status(port, &pwr_status);
 		if (pwr_status & TCPC_REG_POWER_STATUS_VBUS_PRES)
 			/* Safe0V=0 and Present=1 */
-			tcpc_vbus[port] = BIT(VBUS_PRESENT);
+			tcpc_vbus[port] = BIT(VBUS_SAFE5V);
 		else if (TCPC_FLAGS_VSAFE0V(tcpc_config[port].flags))
 			/* TCPCI Rev2 detects Safe0V, so Present=0 */
-			tcpc_vbus[port] &= ~BIT(VBUS_PRESENT);
+			tcpc_vbus[port] &= ~BIT(VBUS_SAFE5V);
 		else {
 			/*
 			 * TCPCI Rev1 can not detect Safe0V, so treat this
@@ -1109,7 +1117,7 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 		    IS_ENABLED(CONFIG_USB_CHARGER)) {
 			/* Update charge manager with new VBUS state */
 			usb_charger_vbus_change(port,
-				!!(tcpc_vbus[port] & BIT(VBUS_PRESENT)));
+				!!(tcpc_vbus[port] & BIT(VBUS_SAFE5V)));
 
 			if (pd_event)
 				*pd_event |= TASK_EVENT_WAKE;
@@ -1408,7 +1416,7 @@ int tcpci_tcpm_init(int port)
 		tcpm_ext_status(port, &ext_status);
 		/* Initial level, set appropriately */
 		if (power_status & TCPC_REG_POWER_STATUS_VBUS_PRES)
-			tcpc_vbus[port] = BIT(VBUS_PRESENT);
+			tcpc_vbus[port] = BIT(VBUS_SAFE5V);
 		else if (ext_status & TCPC_REG_EXT_STATUS_SAFE0V)
 			tcpc_vbus[port] = BIT(VBUS_SAFE0V);
 		else
@@ -1417,7 +1425,7 @@ int tcpci_tcpm_init(int port)
 		/* Initial level, set appropriately */
 		tcpc_vbus[port] = (power_status &
 				   TCPC_REG_POWER_STATUS_VBUS_PRES)
-					? BIT(VBUS_PRESENT)
+					? BIT(VBUS_SAFE5V)
 					: BIT(VBUS_SAFE0V);
 	}
 

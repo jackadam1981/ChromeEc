@@ -910,7 +910,7 @@ static bool fusb302_tcpm_check_vbus_level(int port, enum vbus_level level)
 	/* Read status register */
 	tcpc_read(port, TCPC_REG_STATUS0, &reg);
 
-	if (level == VBUS_PRESENT)
+	if (level == VBUS_SAFE5V || level == VBUS_SINK_DISCONNECT)
 		return (reg & TCPC_REG_STATUS0_VBUSOK) ? 1 : 0;
 	else
 		return (reg & TCPC_REG_STATUS0_VBUSOK) ? 0 : 1;
@@ -953,9 +953,9 @@ void fusb302_tcpc_alert(int port)
 #ifdef CONFIG_USB_CHARGER
 		usb_charger_vbus_change(port,
 					fusb302_tcpm_check_vbus_level(port,
-							VBUS_PRESENT));
+							VBUS_SAFE5V));
 #else
-		if (!fusb302_tcpm_check_vbus_level(port, VBUS_PRESENT))
+		if (!fusb302_tcpm_check_vbus_level(port, VBUS_SAFE5V))
 			pd_vbus_low(port);
 #endif
 		task_wake(PD_PORT_TO_TASK_ID(port));

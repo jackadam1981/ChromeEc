@@ -419,7 +419,7 @@ __override void ocpc_get_pid_constants(int *kp, int *kp_div,
 
 int pd_snk_is_vbus_provided(int port)
 {
-	return pd_check_vbus_level(port, VBUS_PRESENT);
+	return pd_check_vbus_level(port, VBUS_SAFE5V);
 }
 
 const struct charger_config_t chg_chips[] = {

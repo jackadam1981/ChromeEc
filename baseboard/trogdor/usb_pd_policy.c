@@ -92,7 +92,7 @@ __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 
 int pd_snk_is_vbus_provided(int port)
 {
-	return tcpm_check_vbus_level(port, VBUS_PRESENT);
+	return tcpm_check_vbus_level(port, VBUS_SAFE5V);
 }
 
 /* ----------------- Vendor Defined Messages ------------------ */

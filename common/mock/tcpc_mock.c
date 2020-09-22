@@ -49,7 +49,7 @@ static int mock_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 
 static bool mock_check_vbus_level(int port, enum vbus_level level)
 {
-	if (level == VBUS_PRESENT)
+	if (level == VBUS_SAFE5V || level == VBUS_SINK_DISCONNECT)
 		return mock_tcpc.vbus_level;
 	else
 		return !mock_tcpc.vbus_level;
