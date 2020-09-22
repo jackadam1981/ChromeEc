@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82fd9da6_a1ddff6d",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-22T06:30:21Z",
+      "side": 1,
+      "message": "This is used for some enhanced feature of PSL we added in NPCX9.\nRemove it from this CL and will add it back in the coming future patchset.",
+      "parentUuid": "327dc823_1a7f7adf",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "701550d0a2dedc2a190d04ae5bab443e030f223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c885a268_dfc43c4e",
         "filename": "chip/npcx/config_chip-npcx9.h",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "701550d0a2dedc2a190d04ae5bab443e030f223a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9b74c0f_b75cc2a9",
+        "filename": "chip/npcx/config_chip-npcx9.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-22T06:30:21Z",
+      "side": 1,
+      "message": "This is used in a coming future CL which workarounds the booter\u0027s download_from_flash API (for system jump to move EC firmware from flash to code RAM)  issue. \nIt is similar to the workaround in this CL:https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/381779\n\nRemove it from this CL and will add it back in the coming patchset.",
+      "parentUuid": "c885a268_dfc43c4e",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "701550d0a2dedc2a190d04ae5bab443e030f223a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
