@@ -86,6 +86,10 @@
 /* Dedicated barreljack charger port */
 #undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
+/*
+ * Dedicated charge port must be greater than the number of
+ * type-C PD ports, even if they are not being used for PD sink.
+ */
 #define DEDICATED_CHARGE_PORT 2
 
 #define CONFIG_VOLUME_BUTTONS
@@ -189,6 +193,11 @@
 #include "registers.h"
 
 enum charge_port {
+	/*
+	 * The 2 type-C ports have to be included in the list of
+	 * ports that can be used to charge from, but they are not
+	 * actually used for charging, only the barreljack.
+	 */
 	CHARGE_PORT_TYPEC0,
 	CHARGE_PORT_TYPEC1,
 	CHARGE_PORT_BARRELJACK,
