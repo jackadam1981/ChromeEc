@@ -51,8 +51,11 @@ static bool mock_check_vbus_level(int port, enum vbus_level level)
 {
 	if (level == VBUS_PRESENT)
 		return mock_tcpc.vbus_level;
-	else
+	else if (level == VBUS_SAFE0V || level == VBUS_REMOVED)
 		return !mock_tcpc.vbus_level;
+
+	ccprints("[TCPC] Unhandled Vbus check %d", level);
+	return !mock_tcpc.vbus_level;
 }
 
 static int mock_select_rp_value(int port, int rp)
