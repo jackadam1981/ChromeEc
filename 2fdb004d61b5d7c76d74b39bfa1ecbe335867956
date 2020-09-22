@@ -63,6 +63,30 @@
       "revId": "2fdb004d61b5d7c76d74b39bfa1ecbe335867956",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e5206c1_72cd2939",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-09-22T02:44:55Z",
+      "side": 1,
+      "message": "Yes, like Eric says.\n\nOk, I reword it.",
+      "parentUuid": "601b20d8_d460a9ee",
+      "range": {
+        "startLine": 518,
+        "startChar": 61,
+        "endLine": 519,
+        "endChar": 17
+      },
+      "revId": "2fdb004d61b5d7c76d74b39bfa1ecbe335867956",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
