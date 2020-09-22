@@ -13,6 +13,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
@@ -135,6 +136,7 @@ int adc_read_channel(enum adc_channel ch)
 
 	mutex_lock(&adc_lock);
 
+	disable_sleep(SLEEP_MASK_ADC);
 	task_waiting = task_get_current();
 	adc_ch = adc_channels[ch].channel;
 	adc_enable_channel(adc_ch);
@@ -161,8 +163,12 @@ int adc_read_channel(enum adc_channel ch)
 				adc_channels[ch].shift;
 			valid = 1;
 		}
+	} else {
+		ccprintf("\n!!!%s evt:%x valid:%x!!!\n\n", __func__, events,
+							adc_data_valid(adc_ch));
 	}
 	adc_disable_channel(adc_ch);
+	enable_sleep(SLEEP_MASK_ADC);
 
 	mutex_unlock(&adc_lock);
 

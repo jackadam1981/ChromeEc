@@ -92,6 +92,9 @@
 #define USB_PORT_COUNT 1
 #define CONFIG_USB_PORT_POWER_DUMB
 
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 4096
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

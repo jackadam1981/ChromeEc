@@ -29,8 +29,10 @@
 #define SLEEP_SET_HTIMER_DELAY_USEC 250
 #define SLEEP_FTIMER_SKIP_USEC      (HOOK_TICK_INTERVAL * 2)
 
+#if 0
 #ifdef CONFIG_ADC
 BUILD_ASSERT(ADC_TIMEOUT_US < SLEEP_SET_HTIMER_DELAY_USEC);
+#endif
 #endif
 
 static timestamp_t sleep_mode_t0;

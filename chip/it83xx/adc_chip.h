@@ -17,7 +17,7 @@
  * or adding a sleep mask to prevent going in to deep sleep while ADC
  * converting.
  */
-#define ADC_TIMEOUT_US 248
+#define ADC_TIMEOUT_US MSEC
 
 /* Minimum and maximum values returned by adc_read_channel(). */
 #define ADC_READ_MIN 0

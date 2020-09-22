@@ -54,6 +54,7 @@ static void update_mapped_memory(void)
 			break;
 		default:
 			*mptr = EC_TEMP_SENSOR_ERROR;
+			ccprintf("\n!!!temp sensor read error id:%d!!!\n\n", i);
 		}
 	}
 }

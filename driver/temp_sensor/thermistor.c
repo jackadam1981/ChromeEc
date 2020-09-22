@@ -82,8 +82,10 @@ static int thermistor_get_temperature(int idx_adc, int *temp_ptr,
 		return EC_ERROR_NOT_POWERED;
 #endif /* CONFIG_TEMP_SENSOR_POWER_GPIO */
 	mv = adc_read_channel(idx_adc);
-	if (mv < 0)
+	if (mv < 0) {
+		ccprintf("\n!!!%s error mv:%d!!!\n\n", __func__, mv);
 		return EC_ERROR_UNKNOWN;
+	}
 
 	*temp_ptr = thermistor_linear_interpolate(mv, info);
 	*temp_ptr = C_TO_K(*temp_ptr);
