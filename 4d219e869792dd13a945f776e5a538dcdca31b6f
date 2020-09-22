@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3a31d8e_e4d3b8d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 28
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:55:02Z",
+      "side": 1,
+      "message": "builds?  Or works in certain situations with the CL stack?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "4d219e869792dd13a945f776e5a538dcdca31b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f403e295_cd7a3271",
+        "filename": "driver/tcpm/stm32gx.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:55:02Z",
+      "side": 1,
+      "message": "For auto toggle, you can define the drp_toggle field and set to NULL to indicate no support for that feature now.",
+      "revId": "4d219e869792dd13a945f776e5a538dcdca31b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "913d57ab_5d8645b9",
+        "filename": "driver/tcpm/stm32gx.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:55:02Z",
+      "side": 1,
+      "message": "Is it possible to get errors reading from the on-chip registers?",
+      "revId": "4d219e869792dd13a945f776e5a538dcdca31b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
