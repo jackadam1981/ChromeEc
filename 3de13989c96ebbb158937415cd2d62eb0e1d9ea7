@@ -46,6 +46,30 @@
       "revId": "3de13989c96ebbb158937415cd2d62eb0e1d9ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dda517f_954815e5",
+        "filename": "util/inject-keys.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-22T09:01:50Z",
+      "side": 1,
+      "message": "but there is a \u0027,\u0027 after that (for next key in for-loop).\n\n print \u0027%3s\u0027 % \u0027aaa\u0027, \u0027b\u0027\n\n aaa b",
+      "parentUuid": "09c443e7_d72bfa70",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "3de13989c96ebbb158937415cd2d62eb0e1d9ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
