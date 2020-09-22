@@ -22,6 +22,30 @@
       "revId": "a9a1769ccc810742f3f7ac41a0c013728d4456aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6132cf7_6d46dfac",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-22T01:56:05Z",
+      "side": 1,
+      "message": "I would suggest not to change the name for now (until we come out with a better idea).\n\nReason:\n- There are interrupt_disable() and interrupt_enable().  disable_int() is confusing (in the whole context).\n- get_int_mask() and set_int_mask() are pair-existing.  If get_int_mask() changes to disable_int(); then set_int_mask() should change to something similar to \"enable_int()\".  However, it is not.  set_int_mask() is restoring the mie (and not necessarily enable interrupt).\n- The get_ and set_ concept here is more closed to get_ and put_ in kernel.\n\nI would suggest leave it as is.  We can refactor them when we get a better shape of it.",
+      "parentUuid": "456e3bec_43349105",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 21
+      },
+      "revId": "a9a1769ccc810742f3f7ac41a0c013728d4456aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
