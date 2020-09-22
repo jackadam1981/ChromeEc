@@ -157,5 +157,8 @@ void board_override_fan_control(int fan, int *temp)
 		/* Stop fan when enter S0ix */
 		fan_set_rpm_mode(FAN_CH(fan), 1);
 		fan_set_rpm_target(FAN_CH(fan), 0);
+	} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		if (gpio_get_level(GPIO_EN_PP5000_FAN) == 1)
+			gpio_set_level(fans[fan].conf->enable_gpio, 0);
 	}
 }
