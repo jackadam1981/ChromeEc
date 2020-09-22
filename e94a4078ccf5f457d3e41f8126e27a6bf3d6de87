@@ -1,0 +1,290 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "151509ab_5b4e2b33",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "nit: Looks like the datasheet names these with an \"R\" before the numbers",
+      "range": {
+        "startLine": 271,
+        "startChar": 22,
+        "endLine": 271,
+        "endChar": 28
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d1264e_d7ada36c",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "nit: only register bit definitions that go from highest-\u003elowest in this header",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17466760_4953ab0c",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "BIT(20)\n\nSide question, any consumers of this planning to implement FRS send or receive?",
+      "range": {
+        "startLine": 380,
+        "startChar": 44,
+        "endLine": 380,
+        "endChar": 51
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "549db1c6_306c4228",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "FFFFF?  Looks like it\u0027s bits 19:0.  I find it handy to use GENMASK for fields like this",
+      "range": {
+        "startLine": 402,
+        "startChar": 47,
+        "endLine": 402,
+        "endChar": 52
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3928e378_492eabac",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "Any idea whether the standby mode from bit 13 will be of use as well?",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c837ccd3_95c287e0",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "Awesome diagram and comment block for posterity :)",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94182dab_5cd898d0",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "Based on usage, should this be enum usbpd_cc_pin?",
+      "range": {
+        "startLine": 58,
+        "startChar": 47,
+        "endLine": 58,
+        "endChar": 55
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65ffa51b_e1f674d8",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure this is strictly similar to the tcpm_release for other chips where they clear interrupt registers, but on the other hand I think only TCPMv1 called that function",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceeca0af_a99a5beb",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "I\u0027m reading table 415 and I\u0027m not totally certain I see how this works here.  Let\u0027s say we\u0027re source and CC1 is Rd.  Looks like that will read 01 for vstate_cc1.  So then we have:\n(1 + 1) % 2 -\u003e 0 -\u003e TYPEC_CC_VOLT_OPEN\n\nShould it be %3 instead?  Also, do we need to worry about the disabled ANASUBMODE? \n\nSink-side, I don\u0027t know that the values make sense either.  0 needs to translate to vRa which would be 1, and vRd-30 would read as 0b11 from the register but need to change into 7 for the enum.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9459987e_4a3344a2",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "Is this always true?  What if the partner is presenting Ra?",
+      "range": {
+        "startLine": 209,
+        "startChar": 6,
+        "endLine": 209,
+        "endChar": 42
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00f90760_90af0702",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "-1, right?  That would match with the macro and make sense with the enum",
+      "range": {
+        "startLine": 210,
+        "startChar": 12,
+        "endLine": 210,
+        "endChar": 34
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0977e332_02286bc8",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "Why should tye type-c detector be enabled for a sink, but not for a source?",
+      "range": {
+        "startLine": 240,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 59
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1be9493_830f1aa6",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "Does ANASUBMODE need set here based on rp?",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f62e25_db2cd5ed",
+        "filename": "chip/stm32/ucpd-stm32gx.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:43:25Z",
+      "side": 1,
+      "message": "nit: could be worth noting for future readers that these are PD spec ordered sets from chapter 5\n\nAlso, I may be getting ahead of myself here, but it looks like STM32_UCPD_RXORDSETR takes care of translating the k-codes already?",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
