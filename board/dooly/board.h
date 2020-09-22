@@ -86,7 +86,6 @@
 /* Dedicated barreljack charger port */
 #undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
-#define DEDICATED_CHARGE_PORT 2
 
 #define CONFIG_VOLUME_BUTTONS
 
@@ -156,6 +155,12 @@
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
+/*
+ * Dedicated charge port must be greater than the number of
+ * type-C PD ports, even if they are not being used for PD sink.
+ * Use the port number after the last PD port number.
+ */
+#define DEDICATED_CHARGE_PORT CONFIG_USB_PD_PORT_MAX_COUNT
 
 #define USB_PD_PORT_TCPC_0	0
 #define BOARD_TCPC_C0_RESET_HOLD_DELAY ANX74XX_RESET_HOLD_MS
@@ -189,6 +194,11 @@
 #include "registers.h"
 
 enum charge_port {
+	/*
+	 * The 2 type-C ports have to be included in the list of
+	 * ports that can be used to charge from, but they are not
+	 * actually used for charging, only the barreljack.
+	 */
 	CHARGE_PORT_TYPEC0,
 	CHARGE_PORT_TYPEC1,
 	CHARGE_PORT_BARRELJACK,
