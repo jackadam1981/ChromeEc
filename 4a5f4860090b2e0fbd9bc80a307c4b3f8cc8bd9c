@@ -103,6 +103,24 @@
       "revId": "4a5f4860090b2e0fbd9bc80a307c4b3f8cc8bd9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8c19fad_8ff7b25f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-22T21:32:05Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/ec/+/master/docs/ec-3po-design.md\n\nFor testing:\n\n`cros_workon --host start hdctools ec-devutils`\n`sudo emerge hdctools ec-devutils`\n\n# Start servod for a board and connect to it\n`sudo servod -b $BOARD`\n\n# Open up the EC console and verify that it works ok.\n`dut-control ec_uart_pty`\n\nFor testing enhanced console functionality, enable `CONFIG_EXPERIMENTAL_CONSOLE` in the board\u0027s board.h file. Build and flash the EC. Check the EC console that it\u0027s still working okay. Try sending commands, editing text, etc.",
+      "parentUuid": "dd207526_5da6e125",
+      "revId": "4a5f4860090b2e0fbd9bc80a307c4b3f8cc8bd9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
