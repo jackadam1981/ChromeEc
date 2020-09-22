@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc24fe23_ab1866d0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T17:05:36Z",
+      "side": 1,
+      "message": "Nit (out of scope): As long as you\u0027re making changes here, I would prefer single definitions formulated as\nif (!IS_ENABLED(CONFIG_USB_PD_REV30))\n  return PD_REV20; /* or VDM_VER10 */\n\n/* Rev 3.0 logic */",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 6
+      },
+      "revId": "9cbc92b802b495e80736fd974874db135c3fd8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a53aa63_4c290a6a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T17:05:36Z",
+      "side": 1,
+      "message": "Specify return values in terms of named constants.",
+      "range": {
+        "startLine": 1289,
+        "startChar": 0,
+        "endLine": 1289,
+        "endChar": 60
+      },
+      "revId": "9cbc92b802b495e80736fd974874db135c3fd8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b658a19_97fccf88",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T17:05:36Z",
+      "side": 1,
+      "message": "Here also",
+      "revId": "9cbc92b802b495e80736fd974874db135c3fd8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
