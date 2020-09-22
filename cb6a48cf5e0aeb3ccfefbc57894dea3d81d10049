@@ -16,6 +16,23 @@
       "revId": "cb6a48cf5e0aeb3ccfefbc57894dea3d81d10049",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "073dd9c7_2da1e756",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-22T04:45:00Z",
+      "side": 1,
+      "message": "Would it be possible to split this into one rename-only commit, and then one commit which is changing functionality?  It makes reviewing the changes to the files a little easier in cases like this",
+      "revId": "cb6a48cf5e0aeb3ccfefbc57894dea3d81d10049",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
