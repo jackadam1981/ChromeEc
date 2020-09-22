@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "f13e1039_7feb6883",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-22T19:14:19Z",
+      "side": 1,
+      "message": "#3 doesn\u0027t really address the issue, no. I think we solved some of the issues with the the register reset on init, but I think there will still be some issues which this won\u0027t expose (see other comment).",
+      "parentUuid": "6e0b972f_65daa2e8",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0dcca399_8a312b85",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -59,6 +83,47 @@
     },
     {
       "key": {
+        "uuid": "24e010bb_165b7ec0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-22T19:14:19Z",
+      "side": 1,
+      "message": "Yeah, the core issue we need to solve (I think) is that force discharge doesn\u0027t automatically disable itself like other PPCs do, so we need to make sure we account for that.",
+      "parentUuid": "0dcca399_8a312b85",
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af92cc3a_197e9bdd",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-22T19:14:19Z",
+      "side": 1,
+      "message": "Discharging should be off before this. We don\u0027t necessarily enable the sink path when we become a SNK device (what if 2 chargers are connected?). If this is necessary we should either stop discharge on Rp detect or something, or disable vbus after vsafe0v after disabling sourcing.\n\nI don\u0027t believe this is addressed now because I think PPCs are expected to disable their own discharge.",
+      "range": {
+        "startLine": 296,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 2
+      },
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1b4910c_1aa73bd4",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 3
@@ -70,6 +135,30 @@
       "writtenOn": "2020-09-22T17:19:15Z",
       "side": 1,
       "message": "The datasheet doesn\u0027t specify, but I don\u0027t think this has any effect if we\u0027re using force discharge instead of smart discharge.\n\neherrmann, have you also observed that force discharge isn\u0027t affected by this field?",
+      "range": {
+        "startLine": 664,
+        "startChar": 33,
+        "endLine": 664,
+        "endChar": 66
+      },
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dda59441_ddbdf815",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-22T19:14:19Z",
+      "side": 1,
+      "message": "Yeah this shouldn\u0027t matter, we can remove this if we want.",
+      "parentUuid": "b1b4910c_1aa73bd4",
       "range": {
         "startLine": 664,
         "startChar": 33,
