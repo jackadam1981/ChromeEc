@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fc9de21a_1619e45c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-22T22:00:57Z",
+      "side": 1,
+      "message": "thanks for the quick review Jack!",
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8340d956_e66710db",
         "filename": "buildall.py",
         "patchSetId": 1
@@ -48,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "43942342_060c38b6",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-22T22:00:57Z",
+      "side": 1,
+      "message": "I like the idea of passing in the list of changed files. Hopefully that is something we can do.  If so, then I will add that to the documentation",
+      "parentUuid": "d1dca9d8_d982a98c",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51fba30a_809be1e4",
         "filename": "buildall.py",
         "patchSetId": 1
@@ -59,6 +100,30 @@
       "writtenOn": "2020-09-22T21:17:37Z",
       "side": 1,
       "message": "Should we be providing a reasonable -j value? If I don\u0027t specify one, it tends to overload my CPU and start taking down other processes.\n\n-j32 seems to work fine on my desktop? Would the CI builders want the same value?",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "340d05a7_c565cf3c",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-22T22:00:57Z",
+      "side": 1,
+      "message": "I would think that CI would want to pass in the parallelism request actually.\n\nChris or Conor, so you have an opinion here?",
+      "parentUuid": "51fba30a_809be1e4",
       "range": {
         "startLine": 19,
         "startChar": 29,
@@ -94,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "85cf4b92_a753fd34",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-22T22:00:57Z",
+      "side": 1,
+      "message": "Sure, I just reverse engineered what I should pass in to make cors_build_lib.run do what I want. It determines if the parameters can be cast to an int, if so then it passes stdout through: https://source.corp.google.com/chromeos_public/chromite/lib/cros_build_lib.py;l\u003d750?q\u003dcros_build_lib\u0026ct\u003dos\u0026sq\u003dpackage:(%5Echromeos_internal$%7C%5Echromeos_public$).\n\n(I hate python btw)",
+      "parentUuid": "0873c713_f3783b12",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "124c7f1e_19dfb241",
         "filename": "buildall.py",
         "patchSetId": 1
@@ -105,6 +194,30 @@
       "writtenOn": "2020-09-22T21:17:37Z",
       "side": 1,
       "message": "do we need to set the cwd to platform/ec? or will we always be called from that directory?",
+      "range": {
+        "startLine": 22,
+        "startChar": 18,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0035e1cd_fa809246",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-22T22:00:57Z",
+      "side": 1,
+      "message": "I am fine either way, will let infra weigh in in this",
+      "parentUuid": "124c7f1e_19dfb241",
       "range": {
         "startLine": 22,
         "startChar": 18,
