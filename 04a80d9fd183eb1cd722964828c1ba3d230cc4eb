@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8340d956_e66710db",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-22T21:17:37Z",
+      "side": 1,
+      "message": "imo, if this is only what we are using chromite for, may as well just use subprocess library since cros_build_lib.run is only a lightweight wrapper on subprocess.run\n\nmaybe cjmcdonald can answer from a chromite maintenance perspective (vapier is OOO)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1dca9d8_d982a98c",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-22T21:17:37Z",
+      "side": 1,
+      "message": "we get a chance to declare the API here!\n\nperhaps it would be useful to pass (as command line arguments) the list of files changed, that way we have the opportunity to be a little more smart about which tests we run in the future.",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51fba30a_809be1e4",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-22T21:17:37Z",
+      "side": 1,
+      "message": "Should we be providing a reasonable -j value? If I don\u0027t specify one, it tends to overload my CPU and start taking down other processes.\n\n-j32 seems to work fine on my desktop? Would the CI builders want the same value?",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0873c713_f3783b12",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-22T21:17:37Z",
+      "side": 1,
+      "message": "use the subprocess.* constants for this.\n\nI think the pass-thru is the default anyway.",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124c7f1e_19dfb241",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-22T21:17:37Z",
+      "side": 1,
+      "message": "do we need to set the cwd to platform/ec? or will we always be called from that directory?",
+      "range": {
+        "startLine": 22,
+        "startChar": 18,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eb3e1c9_8af60616",
+        "filename": "util/presubmit_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-22T21:17:37Z",
+      "side": 1,
+      "message": "we should just get rid of this script. I think it dates back to not wanting to tank a legacy CQ run if we have failing tests, but now that legacy CQ has been turned down (and the EC CQ will get a lot more lightweight) it\u0027s probably worthless.\n\nlet\u0027s kill it in a follow up CL",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 50
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
