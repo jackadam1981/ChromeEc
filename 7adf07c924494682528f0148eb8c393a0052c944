@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f93757f4_e23306fc",
+        "filename": "board/fusb307bgevb/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-22T09:10:11Z",
+      "side": 1,
+      "message": "ASSERT() is mostly for non-recoverable failures, it crashes the EC. We can just ignore out-of-range access here (and maybe trigger refresh_event or print some error message here)",
+      "revId": "7adf07c924494682528f0148eb8c393a0052c944",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
