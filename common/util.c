@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "cryptoc/util.h"
 #include "util.h"
 
 __stdlib_compat size_t strlen(const char *s)
@@ -265,21 +266,7 @@ __stdlib_compat int memcmp(const void *s1, const void *s2, size_t len)
 /* Constant-time memory comparison */
 int safe_memcmp(const void *s1, const void *s2, size_t size)
 {
-	const uint8_t *us1 = s1;
-	const uint8_t *us2 = s2;
-	int result = 0;
-
-	if (size == 0)
-		return 0;
-
-	/*
-	 * Code snippet without data-dependent branch due to Nate Lawson
-	 * (nate@root.org) of Root Labs.
-	 */
-	while (size--)
-		result |= *us1++ ^ *us2++;
-
-	return result != 0;
+	return ct_memeq(s1, s2, size);
 }
 
 #if !(__has_feature(address_sanitizer) || __has_feature(memory_sanitizer))
