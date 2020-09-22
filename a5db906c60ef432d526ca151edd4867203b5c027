@@ -284,6 +284,30 @@
       "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "815a404d_0b71c0d3",
+        "filename": "chip/mt8192_scp/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-22T05:43:23Z",
+      "side": 1,
+      "message": "Weiyi,\nI will remove this anyway.  The operation needs to be in kernel (before releasing reset button).\n\nYou don\u0027t need to review this comment.",
+      "parentUuid": "10a34aff_b43b4a55",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
