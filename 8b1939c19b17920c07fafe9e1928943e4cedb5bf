@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7d7e80f_c6af085f",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-22T14:42:16Z",
+      "side": 1,
+      "message": "why was \"list\" necessary here?",
+      "range": {
+        "startLine": 637,
+        "startChar": 15,
+        "endLine": 637,
+        "endChar": 19
+      },
+      "revId": "8b1939c19b17920c07fafe9e1928943e4cedb5bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
