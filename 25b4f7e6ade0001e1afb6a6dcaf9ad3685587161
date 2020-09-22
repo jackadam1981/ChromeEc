@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26456c18_19e1a460",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T05:50:40Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "0de62fbf_3e0b0bb8",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 23
+      },
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "654d832d_200a9c1a",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 17
@@ -39,6 +63,24 @@
       "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d30451_369c6d09",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T05:50:40Z",
+      "side": 1,
+      "message": "Removed those fields.",
+      "parentUuid": "654d832d_200a9c1a",
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "5b9b0bc6_87cc4ca2",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T05:50:40Z",
+      "side": 1,
+      "message": "Changed name of Connector Type.",
+      "parentUuid": "aeaa5e07_960b730e",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 21
+      },
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da1035a3_a79f70a8",
         "filename": "include/usb_pd.h",
         "patchSetId": 17
@@ -85,6 +151,30 @@
       "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca6eda1_905ffdbf",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T05:50:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da1035a3_a79f70a8",
+      "range": {
+        "startLine": 538,
+        "startChar": 73,
+        "endLine": 538,
+        "endChar": 74
+      },
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "787b8b87_90efe2cd",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T05:50:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1201803_ff288c60",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 44
+      },
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5788e5d_ce17b5b6",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 17
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "20eb611e_02f7a447",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T05:50:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5788e5d_ce17b5b6",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "493eb1a8_503c480c",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 17
@@ -148,6 +286,24 @@
       "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8318568_0763cef5",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T05:50:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "493eb1a8_503c480c",
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +324,24 @@
     },
     {
       "key": {
+        "uuid": "22f046ba_f06c07f3",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T05:50:40Z",
+      "side": 1,
+      "message": "I removed this and hard coded the version field when compose VDO_UFP1 or VDO_DFP.",
+      "parentUuid": "9dd9acab_099ceb6b",
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7828e79_349580db",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 17
@@ -179,6 +353,24 @@
       "writtenOn": "2020-09-21T20:56:41Z",
       "side": 1,
       "message": "These names (and the comment) should indicate that they reference a specific field in UFP VDO 1.\n\nI\u0027d prefer an enum to macros.",
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1166dc10_f17af9db",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T05:50:40Z",
+      "side": 1,
+      "message": "Initially I was thinking to use enum; but each of the values only sets one bit, they are not continuous numbers, I then think macros are easy to show we can do binary OR those values.",
+      "parentUuid": "f7828e79_349580db",
       "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -199,6 +391,24 @@
       "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c85618_211ae479",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T05:50:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab5c15d_8455694f",
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
