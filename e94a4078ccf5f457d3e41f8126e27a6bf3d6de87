@@ -382,6 +382,30 @@
     },
     {
       "key": {
+        "uuid": "f568e8b3_86ac288e",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:27:27Z",
+      "side": 1,
+      "message": "Please see the latest patchset. I have updated this function with corrections.\n\nI just looked at this comment again. since this function is to report what the pull type is current set to, it can never be Ra (since ucpd doesn\u0027t support this) so ucpd can only present Rd or Rp or be Open.",
+      "parentUuid": "9459987e_4a3344a2",
+      "range": {
+        "startLine": 209,
+        "startChar": 6,
+        "endLine": 209,
+        "endChar": 42
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00f90760_90af0702",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 26
