@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "75909704_a1974dc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T19:25:23Z",
+      "side": 1,
+      "message": "What drives the reentry? The TBT module won\u0027t construct any more VDMs from INACTIVE state. Do we call tbt_init again?",
+      "parentUuid": "cf9217c8_93c1b856",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68a465d1_cfc08054",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -250,6 +274,24 @@
       "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "716f6846_620b53a5",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T19:25:23Z",
+      "side": 1,
+      "message": "Per the AMS sequence diagrams in the spec (Figures 8-61 and 8-63), we should be entering USB operation WRT each partner, i.e. calling exit function for an entered mode, i.e. calling pd_dfp_exit_mode, as soon as we receive the Exit Mode ACK from that partner.\n\nTwo things seem odd to me:\n\n1) The alt mode implementations, while managing their own state, are calling the alt mode exit functions (located outside the alt mode implementations for historical reasons), which call back into the alt mode implementation and mess with their state.\n\n2) The alt mode exit functions and the teardown functions don\u0027t take a partner as a parameter, so we\u0027re doing the same thing when we exit from each partner. That\u0027s at least redundant.\n\nI think, when I added the teardown call (or whatever it was called then) to the DP exit code, the DP implementation was a lot simpler than it is now, and the exit code had to poke it to get it into the right state. Also, because we were calling pd_dfp_exit_mode at the wrong time, the alt mode implementations weren\u0027t directing it and needed to be made aware of it.\n\nThe way the alt mode implementations work as of this CL, it probably makes sense to not have the exit mode implementations call back into the alt mode implementations. At that point in time, the alt mode state that called the exit function already knows what\u0027s going on and can manage its own state transitions.\n\nDiana: Can you check my ordering here?",
+      "parentUuid": "39f84696_1e300bae",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce4ac5dc_699505d5",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T19:25:23Z",
+      "side": 1,
+      "message": "Nit: It might make sense to rename this to something like tbt_exit_done, because entry hasn\u0027t necessarily failed at this point.",
+      "range": {
+        "startLine": 251,
+        "startChar": 3,
+        "endLine": 251,
+        "endChar": 19
+      },
+      "revId": "9fea0ae312481c5860b24967ff9b1a7771f2098f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
