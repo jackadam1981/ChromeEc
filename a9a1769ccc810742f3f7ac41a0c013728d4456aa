@@ -46,6 +46,30 @@
       "revId": "a9a1769ccc810742f3f7ac41a0c013728d4456aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "619b5eff_915020e4",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-22T19:47:33Z",
+      "side": 1,
+      "message": "I agree that disable_int isn\u0027t a great name since it is confusing with the existing disable_interrupt.\n\nget_int_mask does not imply that interrupt will be disabled. I would not expect interrupts to be disabled when calling get_ function. get_ function normally do not mutate the state of the system. We need a difference name other than get_int_mask if we are going to disable interrupts in the function",
+      "parentUuid": "d6132cf7_6d46dfac",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 21
+      },
+      "revId": "a9a1769ccc810742f3f7ac41a0c013728d4456aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
