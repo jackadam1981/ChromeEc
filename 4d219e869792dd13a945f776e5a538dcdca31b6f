@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "10ce703f_461f37ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 28
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:23Z",
+      "side": 1,
+      "message": "Should be the same test as the preceding ucpd driver CL. I have updated this field.",
+      "parentUuid": "c3a31d8e_e4d3b8d2",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "4d219e869792dd13a945f776e5a538dcdca31b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f403e295_cd7a3271",
         "filename": "driver/tcpm/stm32gx.c",
         "patchSetId": 28
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "9c032f1c_9efaf4b8",
+        "filename": "driver/tcpm/stm32gx.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:23Z",
+      "side": 1,
+      "message": "I removed this config option from this error check.",
+      "parentUuid": "f403e295_cd7a3271",
+      "revId": "4d219e869792dd13a945f776e5a538dcdca31b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "913d57ab_5d8645b9",
         "filename": "driver/tcpm/stm32gx.c",
         "patchSetId": 28
@@ -53,6 +95,24 @@
       "writtenOn": "2020-09-22T04:55:02Z",
       "side": 1,
       "message": "Is it possible to get errors reading from the on-chip registers?",
+      "revId": "4d219e869792dd13a945f776e5a538dcdca31b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61d8203_b96757b2",
+        "filename": "driver/tcpm/stm32gx.c",
+        "patchSetId": 28
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-22T20:11:23Z",
+      "side": 1,
+      "message": "No, I had inherited this from the tcpci driver. I removed both the comment and pre-setting the values as the ucpd function will always return what the CC state is.",
+      "parentUuid": "913d57ab_5d8645b9",
       "revId": "4d219e869792dd13a945f776e5a538dcdca31b6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
