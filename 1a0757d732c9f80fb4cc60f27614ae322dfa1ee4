@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fff0012a_a4c1d73e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T16:53:49Z",
+      "side": 1,
+      "message": "I have some more naming quibbles, but otherwise, this looks fine.\n\nBenson, can you look over the responses?",
+      "revId": "1a0757d732c9f80fb4cc60f27614ae322dfa1ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6eab0f4_7d9d15e7",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T16:53:49Z",
+      "side": 1,
+      "message": "Nit: This is the kind of thing that could possibly change between now and when you submit the change. I\u0027d just reference the bug. But I don\u0027t think it\u0027s a big deal here.",
+      "range": {
+        "startLine": 118,
+        "startChar": 52,
+        "endLine": 118,
+        "endChar": 62
+      },
+      "revId": "1a0757d732c9f80fb4cc60f27614ae322dfa1ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52f78efd_a793ccb0",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T16:53:49Z",
+      "side": 1,
+      "message": "How about VDO_UFP1_ALT_MODE_{TBT3,RECONFIGURE,NO_RECONFIGURE}?\n\nThese are being defined in header files and will be used in code where the context won\u0027t be obvious to a reader not intimately familiar with PD. I\u0027m comfortable with them being verbose.\n\nIn particular, I don\u0027t think bit 1 should have TBT in the name, since the definition specifically excludes it, and I think it\u0027s worth spelling out \"reconfigure.\"",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 37
+      },
+      "revId": "1a0757d732c9f80fb4cc60f27614ae322dfa1ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cc3f8f5_b26eee68",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T16:53:49Z",
+      "side": 1,
+      "message": "Similarly, how about VDO_UFP1_CAPABILITY_USB{20,20_BILLBOARD,32,4}?\n\nI\u0027m probably OK abbreviating \"capability\" as \"cap\" here, if you want to be a little less verbose. That word gets used pretty widely in TCPM code with that abbreviation.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "1a0757d732c9f80fb4cc60f27614ae322dfa1ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feadb92f_e8d3f875",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T16:53:49Z",
+      "side": 1,
+      "message": "Similarly, how about VDO_DFP_HOST_CAPABILITY_USB{20,32,4}?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 0
+      },
+      "revId": "1a0757d732c9f80fb4cc60f27614ae322dfa1ee4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

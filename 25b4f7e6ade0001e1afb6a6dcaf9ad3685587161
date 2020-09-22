@@ -377,6 +377,24 @@
     },
     {
       "key": {
+        "uuid": "5438e43d_08b854f9",
+        "filename": "include/usb_pd_vdo.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-22T16:53:49Z",
+      "side": 1,
+      "message": "Personally, I\u0027m comfortable with the idea of non-consecutive enums, but it\u0027s not super important to me that they be enums.\n\nI would suggest using the BIT(n) macro instead of specifying the shifts directly.",
+      "parentUuid": "1166dc10_f17af9db",
+      "revId": "25b4f7e6ade0001e1afb6a6dcaf9ad3685587161",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eab5c15d_8455694f",
         "filename": "include/usb_pd_vdo.h",
         "patchSetId": 17
