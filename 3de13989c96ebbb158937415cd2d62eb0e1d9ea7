@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c45cd585_aaced15c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-22T15:27:49Z",
+      "side": 1,
+      "message": "I was hoping we could move this functionality directly to ectool in the future (and dump the python script), as it actually belongs there I think.\n\nBut good for now. Better Python 3 than 2!",
+      "revId": "3de13989c96ebbb158937415cd2d62eb0e1d9ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "983384e6_76a84e49",
         "filename": "util/inject-keys.py",
         "patchSetId": 1
