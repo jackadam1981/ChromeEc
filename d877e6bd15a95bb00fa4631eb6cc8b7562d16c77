@@ -22,6 +22,30 @@
       "revId": "d877e6bd15a95bb00fa4631eb6cc8b7562d16c77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb5f328_f1ca12b2",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-22T20:48:48Z",
+      "side": 1,
+      "message": "I haven\u0027t checked the assembly yet, but cryptoc code is coming from internal source (search with cs/).",
+      "parentUuid": "48072f84_54ad45c6",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 269,
+        "endChar": 16
+      },
+      "revId": "d877e6bd15a95bb00fa4631eb6cc8b7562d16c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
