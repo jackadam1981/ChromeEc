@@ -281,7 +281,6 @@ $(out)/rma_key_from_blob.h: board/$(BOARD)/$(BLOB_FILE) util/bin2h.sh
 endif
 
 # Build and link against libcryptoc.
-ifeq ($(CONFIG_LIBCRYPTOC),y)
 CRYPTOCLIB := $(realpath ../../third_party/cryptoc)
 ifneq ($(BOARD),host)
 CPPFLAGS += -I$(abspath ./builtin)
@@ -307,7 +306,6 @@ test-targets=$(foreach test,$(test-list-y),\
 	$(out)/RW/$(test).RW.elf $(out)/RO/$(test).RO.elf)
 $(test-targets): LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(test-targets): $(out)/cryptoc/libcryptoc.a
-endif
 
 include $(_common_dir)fpsensor/build.mk
 include $(_common_dir)usbc/build.mk
