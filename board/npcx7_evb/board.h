@@ -8,6 +8,10 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_VOLUME_BUTTONS
+#define CONFIG_CMD_BUTTON
+#define CONFIG_USE_ADC_DETECT_VOL_KEYS
+
 /*
  * npcx7 EVB version:
  * 1 - EVB version 1 supports: npcx7m6g
@@ -143,6 +147,7 @@ enum mft_channel {
 
 #include "gpio_signal.h"
 
+int adc_vol_key_physical_value(enum gpio_signal gpio);
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */

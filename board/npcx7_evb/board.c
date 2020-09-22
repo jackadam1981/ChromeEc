@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "backlight.h"
+#include "button.h"
 #include "chipset.h"
 #include "common.h"
 #include "driver/temp_sensor/tmp006.h"
@@ -15,6 +16,7 @@
 #include "fan.h"
 #include "fan_chip.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
@@ -33,6 +35,19 @@
 #include "util.h"
 
 #include "gpio_list.h"
+
+#if 1
+#define DEBUG_PRINT(...)
+#else
+#define DEBUG_PRINT(format, args...) ccprintf(format, ## args)
+#endif
+
+#define ADC_VOL_UP_MASK     BIT(0)
+#define ADC_VOL_DOWN_MASK   BIT(1)
+
+uint32_t new_adc_key_state;
+uint32_t old_adc_key_state;
+uint32_t adc_key_state_change;
 
 /******************************************************************************/
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
@@ -121,3 +136,60 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xf6, 0x55, 0xfa, 0xc8  /* full set */
 	},
 };
+
+int adc_vol_key_physical_value(enum gpio_signal gpio)
+{
+	if (gpio == GPIO_VOLUME_UP_L)
+		return !!(new_adc_key_state & ADC_VOL_UP_MASK);
+	else if (gpio == GPIO_VOLUME_DOWN_L)
+		return !!(new_adc_key_state & ADC_VOL_DOWN_MASK);
+
+	DEBUG_PRINT("Not a volume up or down key");
+	return 0;
+}
+static void adc_vol_key_press_check(void)
+{
+	int volt = adc_read_channel(ADC_CH_0);
+
+	DEBUG_PRINT("volt=%d\n", volt);
+
+	if (volt > 2400 && volt < 2490) {
+		/* volume-up is pressed */
+		new_adc_key_state = ADC_VOL_UP_MASK;
+		DEBUG_PRINT("ST: VU\n");
+
+	} else if (volt > 2600 && volt < 2690) {
+		/* volume-down is pressed */
+		new_adc_key_state = ADC_VOL_DOWN_MASK;
+		DEBUG_PRINT("ST: VD\n");
+	} else if (volt < 2290) {
+		/* both volumn-up and volume-down are pressed */
+		new_adc_key_state = ADC_VOL_UP_MASK | ADC_VOL_DOWN_MASK;
+		DEBUG_PRINT("ST: VU+VD\n");
+
+	} else if (volt > 2700) {
+		/* both volumn-up and volume-down are released */
+		new_adc_key_state = 0;
+		DEBUG_PRINT("ST: Rel all\n");
+
+	}
+	DEBUG_PRINT("new:0x%02x\n", new_adc_key_state);
+	DEBUG_PRINT("old:0x%02x\n", old_adc_key_state);
+	if (new_adc_key_state != old_adc_key_state) {
+		adc_key_state_change = old_adc_key_state ^ new_adc_key_state;
+		DEBUG_PRINT("changed st:0x%02x\n", adc_key_state_change);
+		if (adc_key_state_change && ADC_VOL_UP_MASK)
+			button_interrupt(GPIO_VOLUME_UP_L);
+		if (adc_key_state_change && ADC_VOL_DOWN_MASK)
+			button_interrupt(GPIO_VOLUME_DOWN_L);
+
+		old_adc_key_state = new_adc_key_state;
+	} else if (new_adc_key_state == 0) {
+		new_adc_key_state = 0;
+		old_adc_key_state = 0;
+		adc_key_state_change = 0;
+	}
+
+}
+
+DECLARE_HOOK(HOOK_TICK, adc_vol_key_press_check, HOOK_PRIO_DEFAULT);

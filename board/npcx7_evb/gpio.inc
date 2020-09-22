@@ -28,6 +28,11 @@ GPIO_INT(POWER_BUTTON_L,   PIN(7, 5), GPIO_INT_BOTH | GPIO_PULL_UP,   power_butt
 GPIO_INT(LID_OPEN,         PIN(A, 6), GPIO_INT_BOTH | GPIO_PULL_DOWN, lid_interrupt)
 #endif
 
+#ifndef CONFIG_USE_ADC_DETECT_VOL_KEYS
+GPIO_INT(VOLUME_UP_L,      PIN(6, 7), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
+GPIO_INT(VOLUME_DOWN_L,    PIN(6, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
+#endif
+
 /* Pins for SPI/FAN/LPC modules testing */
 GPIO(ENTERING_RW,          PIN(3, 6), GPIO_OUT_LOW )
 GPIO(PCH_WAKE_L,           PIN(5, 0), GPIO_OUT_HIGH)
@@ -50,6 +55,16 @@ GPIO(I2C7_SCL0,            PIN(B, 3), GPIO_ODR_HIGH)
 GPIO(BOARD_VERSION1,       PIN(6, 4), GPIO_INPUT)
 GPIO(BOARD_VERSION2,       PIN(6, 5), GPIO_INPUT)
 GPIO(BOARD_VERSION3,       PIN(6, 6), GPIO_INPUT)
+
+#ifdef CONFIG_USE_ADC_DETECT_VOL_KEYS
+/*
+ * button.c need the GPIO_VOLUME_UP_L and GPIO_VOLUME_DOWN_L to be defined.
+ * We declare them to unimplemented here in order to leverage the button.c 
+ * driver 
+ */
+UNIMPLEMENTED(VOLUME_UP_L)
+UNIMPLEMENTED(VOLUME_DOWN_L)
+#endif
 
 /*********************** Alternate pins for npcx7 series **********************/
 #if (CONFIG_CONSOLE_UART == 0)
