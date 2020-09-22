@@ -100,6 +100,30 @@
     },
     {
       "key": {
+        "uuid": "cbe7f492_23442b32",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-22T06:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b99b268d_9d970b00",
+      "range": {
+        "startLine": 225,
+        "startChar": 11,
+        "endLine": 225,
+        "endChar": 15
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "170e178e_28d87e40",
         "filename": "chip/mt8192_scp/clock.c",
         "patchSetId": 18
@@ -144,6 +168,30 @@
       "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec0a22d_a33b6b20",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-22T06:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "493778a5_0fbfc70e",
+      "range": {
+        "startLine": 232,
+        "startChar": 11,
+        "endLine": 232,
+        "endChar": 15
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -217,6 +265,30 @@
     },
     {
       "key": {
+        "uuid": "fddd2fbb_073f45a2",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-22T06:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d157b8d5_ed911c56",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 34
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f3325d7_7e683cd5",
         "filename": "chip/mt8192_scp/registers.h",
         "patchSetId": 18
@@ -237,6 +309,30 @@
       "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6099af02_e68e831b",
+        "filename": "chip/mt8192_scp/registers.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-22T06:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f3325d7_7e683cd5",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 75
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -308,6 +404,30 @@
       "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e637ee50_dbfdf1d5",
+        "filename": "chip/mt8192_scp/system.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-22T06:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "815a404d_0b71c0d3",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 0
+      },
+      "revId": "a5db906c60ef432d526ca151edd4867203b5c027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
