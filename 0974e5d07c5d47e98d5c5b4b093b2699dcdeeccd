@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a222fd3d_4f497ad5",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-22T15:31:14Z",
+      "side": 1,
+      "message": "there\u0027s something funky going on here....\n\nself.history should probably be changed to store utf-8 decoded strings, not bytes, now that we are python3\n\nThen that would mean we could represent simply as repr(self.history) instead",
+      "range": {
+        "startLine": 200,
+        "startChar": 29,
+        "endLine": 200,
+        "endChar": 76
+      },
+      "revId": "0974e5d07c5d47e98d5c5b4b093b2699dcdeeccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
