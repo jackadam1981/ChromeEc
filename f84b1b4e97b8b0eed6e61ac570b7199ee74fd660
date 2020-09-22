@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16b24438_2ab0118d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-22T03:18:31Z",
+      "side": 1,
+      "message": "I\u0027m confused, ",
+      "revId": "f84b1b4e97b8b0eed6e61ac570b7199ee74fd660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a11f990_d8591ea9",
+        "filename": "board/dooly/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-22T03:18:31Z",
+      "side": 1,
+      "message": "Can\u0027t this be 0 instead?",
+      "range": {
+        "startLine": 93,
+        "startChar": 30,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "f84b1b4e97b8b0eed6e61ac570b7199ee74fd660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d8295a_9a67ae3f",
+        "filename": "board/dooly/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-22T03:18:31Z",
+      "side": 1,
+      "message": "I\u0027m confused. Why do these have to be included?",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 20
+      },
+      "revId": "f84b1b4e97b8b0eed6e61ac570b7199ee74fd660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
