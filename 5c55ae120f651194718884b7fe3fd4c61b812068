@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf9217c8_93c1b856",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-22T01:17:17Z",
+      "side": 1,
+      "message": "For active cable:\nPE_VDM_Request_DPM]\nTBT exit mode SOP]\nPE_SNK_Ready]\nPE_VDM_Request_DPM]\nTBT exit mode SOP\u0027\u0027]\nPE_SNK_Ready]\nPE_VDM_Request_DPM]\nTBT exit mode SOP\u0027.\nTBT_teardown\nTBT_INACTIVE\nThen it re-enter TBT\n\nFor passive cable:\nPE_VDM_Request_DPM]\nTBT exit mode SOP]\nTBT_teardown\nTBT_INACTIVE\nThen it re-enter TBT",
+      "parentUuid": "f5b3075f_f9b3fd0f",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68a465d1_cfc08054",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "9308950b_b428c5d3",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-22T01:17:17Z",
+      "side": 1,
+      "message": "I am calling tbt_teardown/dp_teardown which changes the state to inactive. Though marking the state as INACTIVE in case pd_dfp_exit_mode returns -1",
+      "parentUuid": "0a516a90_b9146d13",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e860cc9_4a1fc355",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "79864fef_5777e2b7",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-22T01:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e860cc9_4a1fc355",
+      "range": {
+        "startLine": 176,
+        "startChar": 15,
+        "endLine": 176,
+        "endChar": 24
+      },
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a935a6fb_ddcd7e05",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
@@ -96,6 +162,24 @@
       "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5cece3e_c6f2dea9",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-22T01:17:17Z",
+      "side": 1,
+      "message": "Since we do not query SOP\u0027\u0027, we do not need to call pd_dfp_exit_mode() here",
+      "parentUuid": "a935a6fb_ddcd7e05",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +200,24 @@
     },
     {
       "key": {
+        "uuid": "ade2ebe1_b4adbb50",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-22T01:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d049222_1c4205b5",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74ba4cd7_921c5a65",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
@@ -130,6 +232,24 @@
       "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f84696_1e300bae",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-22T01:17:17Z",
+      "side": 1,
+      "message": "It is happening only in case of passive cables.\n\nIf we do it for active cables as well, the pd_dfp_exit_mode() will already set the tbt_state to INACTIVE and we won\u0027t be able to exit the modes further",
+      "parentUuid": "74ba4cd7_921c5a65",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -150,6 +270,24 @@
     },
     {
       "key": {
+        "uuid": "65dcd826_84dc1104",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-22T01:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87f0018d_722b2aae",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18cb2da3_e5b1c212",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
@@ -164,6 +302,24 @@
       "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4ac5a83_5bc9e745",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-22T01:17:17Z",
+      "side": 1,
+      "message": "pd_dfp_exit_mode calls dp_exit/tbt_exit functions in usb_pd_alt_mode_dfp.c file. Those functions set the alt mode state to INACTIVE",
+      "parentUuid": "18cb2da3_e5b1c212",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -238,6 +394,30 @@
     },
     {
       "key": {
+        "uuid": "3aa2aa69_4053f140",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-22T01:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4489a158_d02997d8",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 29
+      },
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4079b164_299e9f24",
         "filename": "include/usb_pd_dpm.h",
         "patchSetId": 3
@@ -258,6 +438,30 @@
       "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c11a39da_f947b7da",
+        "filename": "include/usb_pd_dpm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-22T01:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4079b164_299e9f24",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
