@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "8303f49c_6466b16b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-22T09:11:42Z",
+      "side": 1,
+      "message": "LGTM, will +2 if zhuohao has no other comments.",
+      "revId": "9194eb06367659ebd4f8e091f06229ad045cc433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8edcb36_fc375523",
         "filename": "board/fennel/board.c",
         "patchSetId": 4
@@ -51,6 +68,24 @@
       "revId": "9194eb06367659ebd4f8e091f06229ad045cc433",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ea6a9eb_d9306bf1",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2020-09-22T09:11:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a7d1fce_64f3bbdd",
+      "revId": "9194eb06367659ebd4f8e091f06229ad045cc433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
