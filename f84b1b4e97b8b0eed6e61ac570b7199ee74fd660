@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "df0ccd93_ab09b3eb",
+        "filename": "board/dooly/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-09-22T03:48:54Z",
+      "side": 1,
+      "message": "See below.",
+      "parentUuid": "6a11f990_d8591ea9",
+      "range": {
+        "startLine": 93,
+        "startChar": 30,
+        "endLine": 93,
+        "endChar": 31
+      },
+      "revId": "f84b1b4e97b8b0eed6e61ac570b7199ee74fd660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33d8295a_9a67ae3f",
         "filename": "board/dooly/board.h",
         "patchSetId": 1
@@ -53,6 +77,30 @@
       "writtenOn": "2020-09-22T03:18:31Z",
       "side": 1,
       "message": "I\u0027m confused. Why do these have to be included?",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 20
+      },
+      "revId": "f84b1b4e97b8b0eed6e61ac570b7199ee74fd660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb51aeb0_b176b75a",
+        "filename": "board/dooly/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-09-22T03:48:54Z",
+      "side": 1,
+      "message": "Because of the requirement in include/charge_manager.h line 136:\n\n */\n#if !defined(DEDICATED_CHARGE_PORT)\n#error \"DEDICATED_CHARGE_PORT must be defined\"\n#elif DEDICATED_CHARGE_PORT \u003c CONFIG_USB_PD_PORT_MAX_COUNT\n#error \"DEDICATED_CHARGE_PORT must larger than pd port numbers\"\n#endif /* !defined(DEDICATED_CHARGE_PORT) */\n\nThe dedicated charge port index must include the type-C ports as well.",
+      "parentUuid": "33d8295a_9a67ae3f",
       "range": {
         "startLine": 201,
         "startChar": 0,
