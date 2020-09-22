@@ -16,6 +16,24 @@
       "revId": "cc829d76a1308d5d42a4d722c27c4f1f4914bcd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38c71796_6f50bb8a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-22T04:52:31Z",
+      "side": 1,
+      "message": "Added to get cable revision in pd_get_rev().",
+      "parentUuid": "e2b9e4b6_0f96b3cd",
+      "revId": "cc829d76a1308d5d42a4d722c27c4f1f4914bcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
