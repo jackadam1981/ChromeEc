@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "785096d1_4f6c7f3e",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-09-22T22:17:01Z",
+      "side": 1,
+      "message": "Yes, just use `subprocess.run`. I would recommend avoiding importing chromite if you can.",
+      "parentUuid": "8340d956_e66710db",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1dca9d8_d982a98c",
         "filename": "buildall.py",
         "patchSetId": 1
@@ -77,6 +101,30 @@
       "side": 1,
       "message": "I like the idea of passing in the list of changed files. Hopefully that is something we can do.  If so, then I will add that to the documentation",
       "parentUuid": "d1dca9d8_d982a98c",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 10
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd1c4534_a7bef75f",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-09-22T22:17:01Z",
+      "side": 1,
+      "message": "It\u0027s definitely worth writing a little commandline interface with `argparse`. Then it\u0027s easy to add arguments/features in the future.",
+      "parentUuid": "43942342_060c38b6",
       "range": {
         "startLine": 16,
         "startChar": 8,
@@ -136,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "49d8e1a7_78c3e90d",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-09-22T22:17:01Z",
+      "side": 1,
+      "message": "Take an optional argument (in your `argparse` parser 😊) for -j and fall back to `multiprocessing.cpu_count()` as a default.",
+      "parentUuid": "340d05a7_c565cf3c",
+      "range": {
+        "startLine": 19,
+        "startChar": 29,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0873c713_f3783b12",
         "filename": "buildall.py",
         "patchSetId": 1
@@ -183,6 +255,30 @@
     },
     {
       "key": {
+        "uuid": "b320bc5a_4dec773c",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-09-22T22:17:01Z",
+      "side": 1,
+      "message": "Yes, definitely use the subprocess constants for this: https://docs.python.org/3/library/subprocess.html#subprocess.STDOUT\n\nsubprocess.STDOUT and friends are better than just integers for readability.",
+      "parentUuid": "85cf4b92_a753fd34",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "124c7f1e_19dfb241",
         "filename": "buildall.py",
         "patchSetId": 1
@@ -218,6 +314,30 @@
       "side": 1,
       "message": "I am fine either way, will let infra weigh in in this",
       "parentUuid": "124c7f1e_19dfb241",
+      "range": {
+        "startLine": 22,
+        "startChar": 18,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "04a80d9fd183eb1cd722964828c1ba3d230cc4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9369ef_beb0dedc",
+        "filename": "buildall.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2020-09-22T22:17:01Z",
+      "side": 1,
+      "message": "This is one of the few times I think utilizing the location of the script itself is good practice. Changing the CWD to the root of the ec repo (or wherever) on invocation just means one fewer way to use the script wrong.",
+      "parentUuid": "0035e1cd_fa809246",
       "range": {
         "startLine": 22,
         "startChar": 18,
