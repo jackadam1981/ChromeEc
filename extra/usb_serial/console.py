@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Copyright 2016 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -6,7 +6,6 @@
 """Allow creation of uart/console interface via usb google serial endpoint."""
 import argparse
 import array
-import exceptions
 import os
 import sys
 import termios
@@ -17,11 +16,11 @@ import tty
 try:
   import usb
 except:
-  print "import usb failed"
-  print "try running these commands:"
-  print " sudo apt-get install python-pip"
-  print " sudo pip install --pre pyusb"
-  print ""
+  print("import usb failed")
+  print("try running these commands:")
+  print(" sudo apt-get install python-pip")
+  print(" sudo pip install --pre pyusb")
+  print()
   sys.exit(-1)
 
 
@@ -177,14 +176,14 @@ class Suart():
           try:
             r = self._susb._read_ep.read(64, self._susb.TIMEOUT_MS)
             if r:
-              sys.stdout.write(r.tostring())
-              sys.stdout.flush()
+              sys.stdout.buffer.write(r.tostring())
+              sys.stdout.buffer.flush()
 
           except Exception as e:
             # If we miss some characters on pty disconnect, that's fine.
             # ep.read() also throws USBError on timeout, which we discard.
-            if not isinstance(e, (exceptions.OSError, usb.core.USBError)):
-              print "rx %s" % (e,)
+            if not isinstance(e, (OSError, usb.core.USBError)):
+              print("rx %s" % e)
     finally:
       self._done.set()
 
@@ -192,14 +191,14 @@ class Suart():
     try:
       while True:
           try:
-            r = sys.stdin.read(1)
+            r = sys.stdin.buffer.read(1)
             if not r or r == b"\x03":
               break
             if r:
-              self._susb._write_ep.write(array.array(b"B", r),
+              self._susb._write_ep.write(array.array('B', r),
                                          self._susb.TIMEOUT_MS)
           except Exception as e:
-            print "tx %s" % (e,)
+            print("tx %s" % e)
     finally:
       self._done.set()
 
@@ -276,7 +275,7 @@ def main():
       os.system("stty echo")
     # Avoid having the user's shell prompt start mid-line after the final output
     # from this program.
-    print
+    print()
 
 
 if __name__ == '__main__':
