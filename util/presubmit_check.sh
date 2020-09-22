@@ -49,6 +49,8 @@ changed=$(echo "${changed}" | grep -v OWNERS)
 changed=$(echo "${changed}" | grep -v README.md)
 # Filter out the navbar.md file.
 changed=$(echo "${changed}" | grep -v navbar.md)
+# Filter out the buildall.py file.
+changed=$(echo "${changed}" | grep -v buildall.py)
 # Filter out markdown docs/ directory
 changed=$(echo "${changed}" | grep -v docs/)
 if [[ -n "${changed}" ]]; then
