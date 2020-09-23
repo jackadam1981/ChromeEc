@@ -570,7 +570,6 @@ int stm32gx_ucpd_vconn_disc_rp(int port, int enable)
 		/* Disconnect cc line that is not being used for PD messaging */
 		cc_disable_mask = 1 << (STM32_UCPD_CR_CCENABLE_SHIFT + !pol);
 		cr &= ~cc_disable_mask;
-		CPRINTS("ucpd: vconn disable Rp, pol = %d, cr = %x", pol, cr);
 	} else {
 		/* make sure Rp/Rd is connected */
 		cr |= STM32_UCPD_CR_CCENABLE_MASK;
