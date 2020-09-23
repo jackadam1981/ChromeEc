@@ -18,10 +18,16 @@
 #include "uart.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+#include "usb_pe_sm.h"
+#include "usb_prl_sm.h"
+#include "usb_tc_sm.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
+/* only needed to build for now */
+struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -112,7 +118,7 @@ static void board_select_drp_mode(void)
 	 * as the default role of sink only.
 	 */
 	pd_set_dual_role(USB_PD_PORT_HOST, PD_DRP_TOGGLE_ON);
-	CPRINTS("ucpd: set drp toggle on");
+	CPRINTS("ucpd: drp_state = %d", pd_get_dual_role(0));
 }
 DECLARE_DEFERRED(board_select_drp_mode);
 
@@ -133,4 +139,12 @@ int ppc_get_alert_status(int port)
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* TODO(b/174825406): check correct operation for honeybuns */
+}
+
+void board_debug_gpio(int trigger, int enable)
+{
+	enum gpio_signal signal = (trigger == TRIGGER_1) ?
+		GPIO_TRIGGER_1 : GPIO_TRIGGER_2;
+
+	gpio_set_level(signal, enable);
 }
