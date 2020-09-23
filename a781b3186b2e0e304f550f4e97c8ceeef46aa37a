@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e056a30_46853e33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T22:19:29Z",
+      "side": 1,
+      "message": "How do we know that this file will get picked up instead of src/platform/ec/builtin/assert.h\n\nShould we include this file at the end of src/platform/ec/builtin/assert.h just in case?",
+      "revId": "a781b3186b2e0e304f550f4e97c8ceeef46aa37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1ee3d9b_e781640a",
         "filename": "zephyr/shim/include/builtin/assert.h",
         "patchSetId": 1
