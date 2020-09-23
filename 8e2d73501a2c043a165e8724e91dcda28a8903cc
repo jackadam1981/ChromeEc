@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b3b4ff9_3436fceb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-23T10:42:18Z",
+      "side": 1,
+      "message": "i think this warrants a more elaborate description to\ninforming the casual reader.\n\nmention that this moves the initialization\ndata for the .data section into INIT_ROM. the runtime\n(or should we call this programmer visible)\n.data section is in RAM as before.",
+      "revId": "8e2d73501a2c043a165e8724e91dcda28a8903cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdeaa53f_7325147c",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-23T10:42:18Z",
+      "side": 1,
+      "message": "code ram",
+      "range": {
+        "startLine": 554,
+        "startChar": 67,
+        "endLine": 554,
+        "endChar": 71
+      },
+      "revId": "8e2d73501a2c043a165e8724e91dcda28a8903cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
