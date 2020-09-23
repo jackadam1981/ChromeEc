@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c6dabe3_3c46b308",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-23T11:55:27Z",
+      "side": 1,
+      "message": "remaining question: when does SCP receive IRQ_CLOCK?",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 6
+      },
+      "revId": "3055b75ea94fe4c767f6ceccee95c58bfa2c2807",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
