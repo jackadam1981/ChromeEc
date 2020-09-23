@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f3d754a5_953ab186",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-23T21:31:10Z",
+      "side": 1,
+      "message": "We set dpm_done even when we have dp_entry_failed. In this case, we cannot say that DP is active.\n\nSince we only exit active modes, we will need to have 2 separate functions.\n\nWe can though eliminate the use of the new variable",
+      "parentUuid": "1c5d1d11_95b83a7a",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "001ecd57_22f0390d",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3702c5b2_dea1f758",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-23T21:31:10Z",
+      "side": 1,
+      "message": "atomic operations use uint32_t",
+      "parentUuid": "001ecd57_22f0390d",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "285747e8_6590e8a4",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
@@ -59,6 +107,24 @@
       "writtenOn": "2020-09-23T17:21:52Z",
       "side": 1,
       "message": "tbt_state[]\ncan this be used efficiently instead of new variable?",
+      "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a785495_9adecfa3",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-23T21:31:10Z",
+      "side": 1,
+      "message": "same as DP",
+      "parentUuid": "285747e8_6590e8a4",
       "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
