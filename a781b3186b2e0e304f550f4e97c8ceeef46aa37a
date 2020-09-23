@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "92f31e09_044ecfe7",
+        "filename": "zephyr/shim/include/builtin/assert.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-23T19:39:36Z",
+      "side": 1,
+      "message": "Yeah, depending on the order of includes here ASSERT may already be defined.  undef\u0027ing it first is the safe way (re-defining generates a warning)",
+      "parentUuid": "d1ee3d9b_e781640a",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 13
+      },
+      "revId": "a781b3186b2e0e304f550f4e97c8ceeef46aa37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13da1d28_66af8fcd",
         "filename": "zephyr/shim/include/builtin/assert.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "a781b3186b2e0e304f550f4e97c8ceeef46aa37a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bf4a076_5d7e604c",
+        "filename": "zephyr/shim/include/builtin/assert.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-23T19:39:36Z",
+      "side": 1,
+      "message": "mas o menos... don\u0027t think this matters too much!",
+      "parentUuid": "13da1d28_66af8fcd",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "a781b3186b2e0e304f550f4e97c8ceeef46aa37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
