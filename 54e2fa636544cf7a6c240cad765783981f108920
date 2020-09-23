@@ -81,6 +81,24 @@
       "revId": "54e2fa636544cf7a6c240cad765783981f108920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a37c572_3302fb57",
+        "filename": "Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T22:26:47Z",
+      "side": 1,
+      "message": "I think the Kconfig stuff only applies to Zephyr so we want to isolate it to the shim.\n\nOther Zephyr module are able to make do without adding Kconfig and CmakeLists.txt to their non-zephyr folders I believe. I am hoping we can do the same",
+      "parentUuid": "7b0b7853_02b997fb",
+      "revId": "54e2fa636544cf7a6c240cad765783981f108920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
