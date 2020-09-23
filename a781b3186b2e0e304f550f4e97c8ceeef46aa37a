@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "23d789df_d4974ccf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-23T22:21:00Z",
+      "side": 1,
+      "message": "we don\u0027t add \"builtin/\" to our includes path in the CMakeLists.txt, so none of the files under builtin/ will be included during a zephyr build.",
+      "parentUuid": "9e056a30_46853e33",
+      "revId": "a781b3186b2e0e304f550f4e97c8ceeef46aa37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1ee3d9b_e781640a",
         "filename": "zephyr/shim/include/builtin/assert.h",
         "patchSetId": 1
