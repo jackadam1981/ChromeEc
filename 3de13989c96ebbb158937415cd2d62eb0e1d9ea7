@@ -111,6 +111,30 @@
       "revId": "3de13989c96ebbb158937415cd2d62eb0e1d9ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d4be35_bc4497f1",
+        "filename": "util/inject-keys.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-23T01:59:27Z",
+      "side": 1,
+      "message": "Yes I know that, but \u0027,\u0027 will also add one space for each print in pthon 2.\n\npython2:\n\n for i in range(3):\n   print \u0027%3s\u0027 % \u0027aaa\u0027,\n # aaa aaa aaa\n\npython3:\n\n for i in range(3):\n   print(\u0027%3s\u0027 % \u0027aaa\u0027, end\u003d\u0027\u0027)\n # aaaaaaaaa",
+      "parentUuid": "15728b36_d382c27e",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "3de13989c96ebbb158937415cd2d62eb0e1d9ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
