@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd45ec71_89273f01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T21:54:03Z",
+      "side": 1,
+      "message": "I would also ping chromeos-ec@ list saying you are submitting this. This is a decent change that we should announce.\n\nOtherwise, we should go for it",
+      "revId": "2f9e8c8bb7ff7018ed54b2abc2393685792d9b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2bf194a_1166a27e",
+        "filename": "core/cortex-m0/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T21:54:03Z",
+      "side": 1,
+      "message": "we should add comments here (and other header files) of why these are deprecated (also point back to bug)",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "2f9e8c8bb7ff7018ed54b2abc2393685792d9b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
