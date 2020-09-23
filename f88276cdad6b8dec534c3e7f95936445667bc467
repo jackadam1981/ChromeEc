@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d1ad5ca4_9b05535d",
+        "filename": "include/task_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-23T22:04:54Z",
+      "side": 1,
+      "message": "config.h is not needed in this file until we start using CONFIG_ZEPHYR",
+      "parentUuid": "76de2b36_903a41f6",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "f88276cdad6b8dec534c3e7f95936445667bc467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8276bc41_08ef4ee9",
         "filename": "include/task_id.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "f88276cdad6b8dec534c3e7f95936445667bc467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5c47f93_61554fb5",
+        "filename": "include/task_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-23T22:04:54Z",
+      "side": 1,
+      "message": "IIRC, the constant is used in enough places we would either need to define this or start ifdef\u0027ing a bunch of stuff.",
+      "parentUuid": "8276bc41_08ef4ee9",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "f88276cdad6b8dec534c3e7f95936445667bc467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
