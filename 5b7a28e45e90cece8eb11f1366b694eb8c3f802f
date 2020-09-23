@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c5d1d11_95b83a7a",
+        "filename": "common/usbc/dp_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-23T17:21:52Z",
+      "side": 1,
+      "message": "how about using same variable and add additional conditions like?\n\ndp_state[port] \u003d\u003d DP_STATUS_ACKED || \ndp_state[port] \u003d\u003d DP_ACTIVE;",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 28
+      },
+      "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "001ecd57_22f0390d",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-23T17:21:52Z",
+      "side": 1,
+      "message": "how about using macros\nalso use atomic_or, atomic_clear",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "285747e8_6590e8a4",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-23T17:21:52Z",
+      "side": 1,
+      "message": "tbt_state[]\ncan this be used efficiently instead of new variable?",
+      "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
