@@ -22,6 +22,30 @@
       "revId": "b38679851777a8d0ec2fcd147164c682fb27e7ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97cf2123_ad312b14",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1139965
+      },
+      "writtenOn": "2020-09-23T06:49:17Z",
+      "side": 1,
+      "message": "Should be SCP_SEC_CTRL \u0026\u003d ~VREQ_SECURE_DIS;",
+      "parentUuid": "8b828e72_1eeaffc1",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 44
+      },
+      "revId": "b38679851777a8d0ec2fcd147164c682fb27e7ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
