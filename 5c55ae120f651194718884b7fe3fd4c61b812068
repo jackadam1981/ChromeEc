@@ -373,6 +373,24 @@
     },
     {
       "key": {
+        "uuid": "8cee05c6_fcf4732e",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-23T21:47:49Z",
+      "side": 1,
+      "message": "Yes, this would be for TCPMv2.  TCPMv1 can be maintained in whatever form you need it for testing.  As more boards on ToT are converted to TCPMv2, we\u0027re hoping to be able to eventually delete TCPMv1 entirely.",
+      "parentUuid": "4206cdb0_9459bf19",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87f0018d_722b2aae",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
