@@ -46,6 +46,30 @@
       "revId": "d877e6bd15a95bb00fa4631eb6cc8b7562d16c77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e54ea2e0_b29dcbb5",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-23T04:04:04Z",
+      "side": 1,
+      "message": "I hope the assembly the same or it\u0027s not much slower. safe_memcmp impacts boot speed.",
+      "parentUuid": "3cb5f328_f1ca12b2",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 269,
+        "endChar": 16
+      },
+      "revId": "d877e6bd15a95bb00fa4631eb6cc8b7562d16c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
