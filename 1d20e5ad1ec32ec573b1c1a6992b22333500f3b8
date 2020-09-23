@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36266b8a_99147778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-23T15:49:28Z",
+      "side": 1,
+      "message": "I believe I found the spot in the PD stack where we needed to add Vbus turn off: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2424703/2",
+      "revId": "1d20e5ad1ec32ec573b1c1a6992b22333500f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
