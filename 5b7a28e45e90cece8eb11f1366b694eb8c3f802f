@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b5766496_999287f7",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-23T21:49:43Z",
+      "side": 1,
+      "message": "code looks good. but, generally macros are used for bit operations.\nyou can typecast the variable",
+      "parentUuid": "3702c5b2_dea1f758",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "5b7a28e45e90cece8eb11f1366b694eb8c3f802f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "285747e8_6590e8a4",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
