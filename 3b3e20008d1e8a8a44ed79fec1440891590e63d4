@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "f05a4d24_f1c6a7f7",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-23T21:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e74b9344_02e6aae2",
+      "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e9a76e9_439e8453",
         "filename": "driver/ln9310.c",
         "patchSetId": 1
@@ -50,6 +68,24 @@
       "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "360ad026_91301878",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-23T21:29:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7e9a76e9_439e8453",
+      "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "a07f59c1_611520a5",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-23T21:29:37Z",
+      "side": 1,
+      "message": "Updated the ln9310.h to correct the bitmask.",
+      "parentUuid": "c593203a_bb264d2f",
+      "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d06d17e3_6210d286",
         "filename": "driver/ln9310.c",
         "patchSetId": 1
@@ -84,6 +138,24 @@
       "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d77923e9_9ca061ee",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-23T21:29:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d06d17e3_6210d286",
+      "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
