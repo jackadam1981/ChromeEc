@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90d5a21f_95b27a80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-23T20:35:09Z",
+      "side": 1,
+      "message": "Does it make any sense to stay with the common method of defining PORT_TO_HPD to do the right thing for each port?  In another CL there was a change to have this call a C function that could be declared in variants and possibly overridden in specifics to eliminate the need of a global variable. If not, then I will CR+2",
+      "revId": "da52df9b7d168e8c8b97e97d089020d4c23a2314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
