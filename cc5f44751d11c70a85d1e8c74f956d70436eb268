@@ -39,6 +39,30 @@
       "revId": "cc5f44751d11c70a85d1e8c74f956d70436eb268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f29b5501_6f8e4887",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-23T17:39:18Z",
+      "side": 1,
+      "message": "In PD Rev3.0 spec, it says for a given SVID there can be multiple modes supported. So I use an array in case there are more modes. Though currently we only have one TBT mode.",
+      "parentUuid": "cce732f4_6ac34ce7",
+      "range": {
+        "startLine": 92,
+        "startChar": 40,
+        "endLine": 92,
+        "endChar": 56
+      },
+      "revId": "cc5f44751d11c70a85d1e8c74f956d70436eb268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
