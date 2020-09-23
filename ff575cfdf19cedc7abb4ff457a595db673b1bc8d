@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "11b50307_dfb1ed51",
+        "filename": "board/coachz/base_detect.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2020-09-23T16:41:06Z",
+      "side": 1,
+      "message": "BTW, the reversed detection will be removed later to simplify the logic as the reversed plug is impossible.",
+      "parentUuid": "9655be39_0fb4de54",
+      "revId": "ff575cfdf19cedc7abb4ff457a595db673b1bc8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17100d88_e4e4ad59",
         "filename": "board/coachz/board.c",
         "patchSetId": 5
