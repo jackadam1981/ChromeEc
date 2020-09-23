@@ -5,7 +5,10 @@
 
 #include "common.h"
 #include "console.h"
+#include "chip/stm32/ucpd-stm32gx.h"
 #include "driver/tcpm/tcpci.h"
+#include "mp4245.h"
+#include "timer.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
 
@@ -39,12 +42,24 @@ void pd_power_supply_reset(int port)
 	/* Enable discharge if we were previously sourcing 5V */
 	if (prev_en)
 		pd_set_vbus_discharge(port, 1);
+
+	/* Turn off voltage output from buck-boost */
+	mp4245_votlage_out_enable(0);
 }
 
 int pd_set_power_supply_ready(int port)
 {
 	int rv;
 
+	//ucpd_info(port);
+
+	CPRINTS("pd: power supply ready");
+
+	/* Ensure buck-boost is enabled and Vout is on */
+	mp4245_set_voltage_out(5000);
+	mp4245_votlage_out_enable(1);
+	msleep(2);
+	//ucpd_info(port);
 	/*
 	 * Default operation of buck-boost is 5v/3.6A.
 	 * Turn on the PPC Provide Vbus.
@@ -52,6 +67,8 @@ int pd_set_power_supply_ready(int port)
 	rv = ppc_vbus_source_enable(port, 1);
 	if (rv)
 		return rv;
+
+	CPRINTS("pd: vbus source enabled");
 
 	return EC_SUCCESS;
 }
