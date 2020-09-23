@@ -22,6 +22,30 @@
       "revId": "0974e5d07c5d47e98d5c5b4b093b2699dcdeeccd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9de770f1_10c017cb",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-23T01:17:11Z",
+      "side": 1,
+      "message": "yeah, what I considered here is that all the cmds should be sent by `bytes`. So I change them into `bytes`. As a result, the history of cmds is bytes now.\n\nBut repr() is a good idea, thanks!",
+      "parentUuid": "a222fd3d_4f497ad5",
+      "range": {
+        "startLine": 200,
+        "startChar": 29,
+        "endLine": 200,
+        "endChar": 76
+      },
+      "revId": "0974e5d07c5d47e98d5c5b4b093b2699dcdeeccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
