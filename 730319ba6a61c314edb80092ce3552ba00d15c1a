@@ -101,6 +101,23 @@
     },
     {
       "key": {
+        "uuid": "73f5bdc5_1a07f1ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-23T04:05:27Z",
+      "side": 1,
+      "message": "Another viable ways that keeps SDSG is that we could swap the sequence of Vconn off and VBus off.\n\nWe could move the discussion to: b/160548079#comment19",
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af92cc3a_197e9bdd",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 3
