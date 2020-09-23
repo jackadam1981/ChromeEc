@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "2de652d9_ec5464fb",
+        "filename": "build_and_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T18:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecdb83a2_6f52118a",
+      "range": {
+        "startLine": 23,
+        "startChar": 48,
+        "endLine": 23,
+        "endChar": 59
+      },
+      "revId": "34ef3d55e17073040206844da7c18abb23318d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6e62684_082aee09",
         "filename": "build_and_test.py",
         "patchSetId": 3
@@ -62,6 +86,30 @@
       "revId": "34ef3d55e17073040206844da7c18abb23318d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d5f55e1_00040951",
+        "filename": "build_and_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T18:30:37Z",
+      "side": 1,
+      "message": "I just copied this from some other cros python file ;)\n\nUpdated.",
+      "parentUuid": "e6e62684_082aee09",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "34ef3d55e17073040206844da7c18abb23318d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
