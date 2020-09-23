@@ -1366,7 +1366,7 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	pe[port].vdm_cnt = count + 1;
 
 	pe[port].tx_type = TCPC_TX_SOP;
-	pe_dpm_request(port, DPM_REQUEST_VDM);
+	pd_dpm_request(port, DPM_REQUEST_VDM);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
@@ -5652,7 +5652,6 @@ static void pe_vdm_response_entry(int port)
 	uint32_t *rx_payload;
 	uint32_t *tx_payload;
 	uint8_t vdo_cmd;
-	uint8_t vdo_opos = 0;
 	int cmd_type;
 	svdm_rsp_func func = NULL;
 
@@ -5686,7 +5685,6 @@ static void pe_vdm_response_entry(int port)
 		func = svdm_rsp.modes;
 		break;
 	case CMD_ENTER_MODE:
-		vdo_opos = PD_VDO_OPOS(rx_payload[0]);
 		func = svdm_rsp.enter_mode;
 		break;
 	case CMD_DP_STATUS:
@@ -5698,7 +5696,6 @@ static void pe_vdm_response_entry(int port)
 			func = svdm_rsp.amode->config;
 		break;
 	case CMD_EXIT_MODE:
-		vdo_opos = PD_VDO_OPOS(rx_payload[0]);
 		func = svdm_rsp.exit_mode;
 		break;
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
