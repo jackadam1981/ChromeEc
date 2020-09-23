@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Copyright 2016 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -237,7 +237,8 @@ def find_available_version(boardname, binfile):
     the version string.
   """
   rawstrings = subprocess.check_output(
-      ['cbfstool', binfile, 'read', '-r', 'RO_FRID', '-f', '/dev/stdout'])
+      ['cbfstool', binfile, 'read', '-r', 'RO_FRID', '-f', '/dev/stdout'],
+      encoding='utf-8')
   m = re.match(r'%s_v\S+' % boardname, rawstrings)
   if m:
     newvers = m.group(0).strip(' \t\r\n\0')
