@@ -16,6 +16,24 @@
       "revId": "387ae2cf39c976646b7e773b228cf5797d97f93c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66df4145_ecb7429f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-23T22:12:49Z",
+      "side": 1,
+      "message": "If we can get that to land before this one, we might have to transform this CL to one which simply adds prototypes for the deprecated_atomic_* functions (without implementations), that way we simply get linker errors if we actually use the functions.",
+      "parentUuid": "a12430c8_fe92779d",
+      "revId": "387ae2cf39c976646b7e773b228cf5797d97f93c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
