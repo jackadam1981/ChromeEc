@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7fdc3dd_5a16b1a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-23T07:08:10Z",
+      "side": 1,
+      "message": "The full output of my test, I think it\u0027s correct. Is there any other test can I run for this file ?\n\n```\n$ sudo python3 ./extra/usb_updater/servo_updater.py -b servo_v4 --force\nusb_updater2 -d 18d1:501b -n /usr/share/servo_updater/firmware/servo_v4.bin\nread 131072(0x20000) bytes from /usr/share/servo_updater/firmware/servo_v4.bin\nFound device.\nfound interface 4 endpoint 6, chunk_len 64\nREADY\n-------\nstart\ntarget running protocol version 6 (type 1)\nmaximum PDU size: 1024\nFlash protection status: 0008\nversion:       servo_v4_v2.4.35-f1113c92b\nkey_version: 0\nmin_rollback: -1\noffset: writable at 0x10000\nsending 0xe760 bytes to 0x10000\n-------\nupdate complete\nimage updated\nusb_updater2 -d 18d1:501b -n /usr/share/servo_updater/firmware/servo_v4.bin\nread 131072(0x20000) bytes from /usr/share/servo_updater/firmware/servo_v4.bin\nFound device.\nfound interface 4 endpoint 6, chunk_len 64\nREADY\n-------\nstart\ntarget running protocol version 6 (type 1)\nmaximum PDU size: 1024\nFlash protection status: 0008\nversion:       servo_v4_v2.4.35-f1113c92b\nkey_version: 0\nmin_rollback: -1\noffset: writable at 0\nsending 0xe8d4 bytes to 0\n-------\nupdate complete\nimage updated\n\n```",
+      "revId": "9690d6d966296b8b6e36c1cdf9c45833e5cbca1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
