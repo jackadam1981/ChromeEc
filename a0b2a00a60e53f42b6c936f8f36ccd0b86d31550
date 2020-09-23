@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16f326eb_dc62daaa",
+        "filename": "include/compile_time_macros.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T22:01:04Z",
+      "side": 1,
+      "message": "nit no need for /* CONFIG_ZEPHYR */ here since it is only one line\n\n--\n\nif you decide to keep it, let\u0027s make it consistent through this file then",
+      "revId": "a0b2a00a60e53f42b6c936f8f36ccd0b86d31550",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
