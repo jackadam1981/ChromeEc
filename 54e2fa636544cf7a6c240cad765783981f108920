@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79b65df0_63a1d4c5",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-23T22:01:13Z",
+      "side": 1,
+      "message": "I don\u0027t want \"..\" in the add_subdirectory lines.",
+      "parentUuid": "66498aea_2f2d41dd",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "54e2fa636544cf7a6c240cad765783981f108920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06f5ee5e_babbfe77",
         "filename": "Kconfig",
         "patchSetId": 1
