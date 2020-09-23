@@ -55,24 +55,6 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
-static void pd_check_vbus(void);
-DECLARE_DEFERRED(pd_check_vbus);
-
-static void pd_check_vbus(void)
-{
-	int mv, ma;
-	int vout_en;
-
-	/* Get Operation register */
-	i2c_read8(I2C_PORT_MP4245, MP4245_SLAVE_ADDR,
-		  MP4245_CMD_OPERATION, &vout_en);
-	vout_en >>= 7;
-
-	mp3245_get_vbus(&mv, &ma);
-
-	hook_call_deferred(&pd_check_vbus_data, 100);
-}
-
 int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 {
 	int pdo_cnt = 0;
@@ -120,6 +102,7 @@ void pd_power_supply_reset(int port)
 		/* Reset VBUS voltage to default value (fixed 5V SRC_CAP) */
 		pd_transition_voltage(1);
 	}
+
 }
 
 int pd_set_power_supply_ready(int port)
@@ -164,15 +147,13 @@ void pd_transition_voltage(int idx)
 		mp4245_set_voltage_out(mv);
 		/* Wait for vbus to be with 95% of its target value */
 		vbus_thresh = mv - (mv >> 4);
-		CPRINTS("mp4245: vbus = %d mV, threshold = %d mV", mv, vbus_thresh);
+
 		for (i = 0; i < 20; i++) {
 			int rv;
 
 			rv =  mp3245_get_vbus(&mv, &ma);
-			//CPRINTS("mp4245: vbus = %d mV, %d iterations", mv, i+1);
-			if ((rv == EC_SUCCESS) && (mv >= vbus_thresh)) {
-				//return;
-			}
+			if ((rv == EC_SUCCESS) && (mv >= vbus_thresh))
+				return;
 			msleep(2);
 		}
 	}
