@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acb2b0bc_d7caa978",
+        "filename": "test/utils.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-23T17:53:51Z",
+      "side": 1,
+      "message": "I hope gcc won\u0027t optimize this as str1 (because of const). Maybe we should use volatile or remove const.",
+      "range": {
+        "startLine": 457,
+        "startChar": 8,
+        "endLine": 457,
+        "endChar": 13
+      },
+      "revId": "d225a0ee03b6eaedd420d1239331a7eea050b203",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
