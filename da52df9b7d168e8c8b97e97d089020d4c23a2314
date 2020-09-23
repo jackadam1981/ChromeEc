@@ -34,6 +34,24 @@
       "revId": "da52df9b7d168e8c8b97e97d089020d4c23a2314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "262683d5_1c9092db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-23T21:25:34Z",
+      "side": 1,
+      "message": "I saw the change in variant trembyle and thought that it was the same.\n\n\t\tgpio_or_ioex_set_level(PORT_TO_HPD(1), 1);\n\t} else {\n\t\t/* Disable IN_HPD on the DB */\n\t\tgpio_or_ioex_set_level(PORT_TO_HPD(1), 0);",
+      "parentUuid": "6365e613_c5a84c29",
+      "revId": "da52df9b7d168e8c8b97e97d089020d4c23a2314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
