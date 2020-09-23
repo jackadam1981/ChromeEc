@@ -19,6 +19,9 @@
 #define USB_PD_PORT_UF   1
 #define USB_PD_PORT_DP   2
 
+#undef CONFIG_USB_PD_INITIAL_DRP_STATE
+#define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SOURCE
+
 /* USB Type A Features */
 
 /* BC 1.2 */
@@ -30,6 +33,14 @@
 
 #define GPIO_TRIGGER_1 GPIO_USB3_A3_CDP_EN
 #define GPIO_TRIGGER_2 GPIO_USB3_A4_CDP_EN
+
+
+enum  debug_gpio {
+	TRIGGER_1 = 0,
+	TRIGGER_2,
+};
+
+void board_debug_gpio(int trigger, int enable);
 
 #endif /* !__ASSEMBLER__ */
 
