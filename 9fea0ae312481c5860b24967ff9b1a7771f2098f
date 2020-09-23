@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8e8fbad8_334e09af",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-23T16:38:01Z",
+      "side": 1,
+      "message": "Don\u0027t we still need to do this here? And shouldn\u0027t it happen regardless of TCPM version?",
+      "revId": "9fea0ae312481c5860b24967ff9b1a7771f2098f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce4ac5dc_699505d5",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 5
