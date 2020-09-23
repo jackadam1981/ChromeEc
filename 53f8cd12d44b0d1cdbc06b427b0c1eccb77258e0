@@ -135,6 +135,30 @@
     },
     {
       "key": {
+        "uuid": "145141a7_9a3e1228",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2020-09-23T13:23:35Z",
+      "side": 1,
+      "message": "Done, I have modified this place",
+      "parentUuid": "d5c2245e_6fbdc8fc",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 20
+      },
+      "revId": "53f8cd12d44b0d1cdbc06b427b0c1eccb77258e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21ae99a2_30cadfdc",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 1
