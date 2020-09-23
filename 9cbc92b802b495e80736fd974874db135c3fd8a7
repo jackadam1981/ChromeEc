@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c09d459_accb31f1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-23T01:20:20Z",
+      "side": 1,
+      "message": "There is build error with this way, because vdo_ver[] and pd[].rev are defined only when CONFIG_USB_PD_REV30 is set. I combined the functions to one, but still have to add check of CONFIG_USB_PD_REV30 to ensure vdo_ver[] and pd[].rev only included when it\u0027s defined.",
+      "parentUuid": "fc24fe23_ab1866d0",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 6
+      },
+      "revId": "9cbc92b802b495e80736fd974874db135c3fd8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a53aa63_4c290a6a",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4299e57b_13163464",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-23T01:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a53aa63_4c290a6a",
+      "range": {
+        "startLine": 1289,
+        "startChar": 0,
+        "endLine": 1289,
+        "endChar": 60
+      },
+      "revId": "9cbc92b802b495e80736fd974874db135c3fd8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b658a19_97fccf88",
         "filename": "include/usb_pd.h",
         "patchSetId": 3
@@ -62,6 +110,24 @@
       "revId": "9cbc92b802b495e80736fd974874db135c3fd8a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5482865f_a677c808",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2020-09-23T01:20:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b658a19_97fccf88",
+      "revId": "9cbc92b802b495e80736fd974874db135c3fd8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
