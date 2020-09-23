@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76de2b36_903a41f6",
+        "filename": "include/task_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T22:02:29Z",
+      "side": 1,
+      "message": "should this change go in your early CL that tweaks including header files correctly?",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "f88276cdad6b8dec534c3e7f95936445667bc467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8276bc41_08ef4ee9",
+        "filename": "include/task_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T22:02:29Z",
+      "side": 1,
+      "message": "why do we see need IDLE task for Zephyr?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "f88276cdad6b8dec534c3e7f95936445667bc467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
