@@ -22,6 +22,30 @@
       "revId": "48d5d43997070fa45446027be26525c6696b743e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "949e8a34_3bdf8a32",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1436312
+      },
+      "writtenOn": "2020-09-23T02:59:37Z",
+      "side": 1,
+      "message": "If remove tab, need I remove space at the same time in BASE_ACCEL\u0026BASE_GYRO?\nOr I should follow the old code style, using space instead tab?",
+      "parentUuid": "45939b5d_07ca1d52",
+      "range": {
+        "startLine": 355,
+        "startChar": 1,
+        "endLine": 355,
+        "endChar": 2
+      },
+      "revId": "48d5d43997070fa45446027be26525c6696b743e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
