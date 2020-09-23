@@ -16,6 +16,24 @@
       "revId": "189fd732683232c1bc7b775633ebee40b50796c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a26c8b3_db2ba6af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2020-09-23T20:07:10Z",
+      "side": 1,
+      "message": "This was a test script to check if SPI via servo_micro or CCD was functional. I think it was only ever used by me, and not since 2016. Feel free to delete.",
+      "parentUuid": "be7168af_0d2c2405",
+      "revId": "189fd732683232c1bc7b775633ebee40b50796c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
