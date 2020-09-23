@@ -121,6 +121,24 @@
       "revId": "4a5f4860090b2e0fbd9bc80a307c4b3f8cc8bd9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4661765_561517be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-23T05:30:20Z",
+      "side": 1,
+      "message": "I tried it and it works. I update my test steps in CL msg. please take a look if there is sth weird.\nOne thing that I want to highlight here : `servod` is still py2, who will migrate it ?\nAnd because servod is py2, I tried to make this CL py2/3 compatible.",
+      "parentUuid": "d8c19fad_8ff7b25f",
+      "revId": "4a5f4860090b2e0fbd9bc80a307c4b3f8cc8bd9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
