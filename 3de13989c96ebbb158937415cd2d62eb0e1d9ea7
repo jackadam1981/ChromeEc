@@ -135,6 +135,30 @@
       "revId": "3de13989c96ebbb158937415cd2d62eb0e1d9ea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c27fa5eb_6c59877e",
+        "filename": "util/inject-keys.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-23T03:33:22Z",
+      "side": 1,
+      "message": "I didn\u0027t notice that!\nBut I think in this case it\u0027s fine, the strings\u0027 length are short. The output of \u0027--help\u0027 is nice.",
+      "parentUuid": "a2d4be35_bc4497f1",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "3de13989c96ebbb158937415cd2d62eb0e1d9ea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
