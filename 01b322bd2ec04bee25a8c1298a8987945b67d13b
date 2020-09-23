@@ -1,0 +1,51 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22066d1c_018d758e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T22:07:17Z",
+      "side": 1,
+      "message": "\u003e \"definitons\" is a possible misspelling of \"definitions\".\n\nPlease fix.",
+      "parentUuid": "5e38ed8a_984ccd69",
+      "range": {
+        "startLine": 10,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "01b322bd2ec04bee25a8c1298a8987945b67d13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4df5621_27b711f3",
+        "filename": "include/common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T22:07:17Z",
+      "side": 1,
+      "message": "I would think we don\u0027t need this since we already have an ifndef guard, why doesn\u0027t that protect us here?\n\nCan we include the zephyr header file at the top instead of having this guard here?",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "01b322bd2ec04bee25a8c1298a8987945b67d13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
