@@ -355,6 +355,24 @@
     },
     {
       "key": {
+        "uuid": "4206cdb0_9459bf19",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-23T20:28:40Z",
+      "side": 1,
+      "message": "I can add a TODO for now and add a new CL for this\n\nAlso, Diana correct me if I am wrong, but we should do this only for TCPMv2 correct since we do not have a DPM module for TCPMv1? - For TCPMv1, we can either let it be in common code and add a #define or move it to usb_pd_policy.c file",
+      "parentUuid": "a1ab8e2a_81151df0",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87f0018d_722b2aae",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
