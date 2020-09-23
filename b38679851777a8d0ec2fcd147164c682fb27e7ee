@@ -164,6 +164,30 @@
       "revId": "b38679851777a8d0ec2fcd147164c682fb27e7ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4a77c28_3ac11b73",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1139965
+      },
+      "writtenOn": "2020-09-23T09:38:42Z",
+      "side": 1,
+      "message": "These settings are about sleep/wakeup. If SCP won\u0027t sleep on MT8192, in my understanding, we might be able to discard these settings.",
+      "parentUuid": "bedf5aa6_07936832",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 49
+      },
+      "revId": "b38679851777a8d0ec2fcd147164c682fb27e7ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
