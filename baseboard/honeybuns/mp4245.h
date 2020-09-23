@@ -47,7 +47,7 @@
 
 /*
  * For a desired voltage output Vdes, Vout = Vdes * 1024. In other words, there
- * are 10fractional and 6 integer bits. Vdes is stored in in mV so this scaling
+ * are 10 fractional and 6 integer bits. Vdes is stored in mV so this scaling
  * to mV must also be accounted for.
  *
  * VOUT_COMMAND = (Vdes (mV) * 1024 / 1000) / 1024
@@ -55,6 +55,8 @@
 #define MP4245_VOUT_ONE_VOLT         BIT(10)
 #define MP4245_VOUT_FROM_MV          (MP4245_VOUT_ONE_VOLT * MP4245_VOUT_ONE_VOLT / 1000)
 #define MP4245_ILIM_STEP_MA          50
+
+#define MP4245_VOUT_5V_DELAY_MS      4
 
 
 #define MP4245_MFR_STATUS_MASK_VOUT        BIT(7)
