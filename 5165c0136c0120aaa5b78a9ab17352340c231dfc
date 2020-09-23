@@ -102,6 +102,24 @@
       "revId": "5165c0136c0120aaa5b78a9ab17352340c231dfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8341302_d1780f19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-09-23T21:38:22Z",
+      "side": 1,
+      "message": "At this point, I am rather using this patch to check my understanding on USB calibration logic, than eager to push this for landing.",
+      "parentUuid": "f583d12a_9ff5e3fa",
+      "revId": "5165c0136c0120aaa5b78a9ab17352340c231dfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

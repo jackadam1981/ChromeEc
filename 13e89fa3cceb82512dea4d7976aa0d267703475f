@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24621d30_a5d1618b",
+        "filename": "chip/g/jitter.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2020-09-23T21:38:22Z",
+      "side": 1,
+      "message": "It should execute \"GREG32(XO, CLK_TIMER_SYNC_CONTENTS) \u003d 1;\" at the end.\nWithout this, the change on CLK_TIMER_RC_COARSE_ATE_TRIM in line 167 never gets reflected to GREG32(XO, CLK_TIMER_CURRENT).\n\nFor a test, I\u0027ve modified line 102. For example,\n\"GREG32(XO, CLK_TIMER_RC_COARSE_ATE_TRIM) \u003d coarseTrimVal - 10\" \nexpecting that CLK_TIMER_RC_COARSE_ATE_TRIM eventually would sautrated to the desired value. Initially, there was an overflow interrupt storm. Without the sync content write, the coarse trim value got increased upto 0xff, but the interrupt never stopped. With the sync content write, it stopped once the trim value reached to the desired value (which was identical to the value from GR_FUSE(RC_TIMER_OSC48_CC_TRIM)).",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 41
+      },
+      "revId": "13e89fa3cceb82512dea4d7976aa0d267703475f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
