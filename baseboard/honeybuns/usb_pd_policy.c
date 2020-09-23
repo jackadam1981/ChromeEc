@@ -122,6 +122,7 @@ int pd_set_power_supply_ready(int port)
 	if (port == USB_PD_PORT_HOST) {
 		/* Ensure buck-boost is enabled and Vout is on */
 		mp4245_votlage_out_enable(1);
+		msleep(MP4245_VOUT_5V_DELAY_MS);
 	}
 
 	/*
