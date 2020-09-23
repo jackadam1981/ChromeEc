@@ -337,6 +337,24 @@
     },
     {
       "key": {
+        "uuid": "a1ab8e2a_81151df0",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-23T17:37:09Z",
+      "side": 1,
+      "message": "I believe we should be setting USB safe state on sending Exit Mode, and then setting USB mode after exit is complete for each phase, though I don\u0027t see a lot of value in entering USB operation momentarily between exit phases with the active cable.\n\nIf we can, I think we should move away from the common/usb_pd_alt_mode_dfp.c functions for mode entry/exit/configuration.  The supported_modes[] array was initially made to work with generic mode code like usb_pd_policy.c.  Now that we have SVID modules, it seems like it would make a lot more sense to place that kind of code straight in our modules.  The common code would then mostly be for maintaining our shared structures (ex. discovery information) unless we\u0027d want the DPM managing that.",
+      "parentUuid": "f179fec3_32cf6a4a",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87f0018d_722b2aae",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
