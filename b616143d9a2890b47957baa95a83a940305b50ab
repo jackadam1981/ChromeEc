@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c24fea8_959d0c25",
+        "filename": "chip/npcx/lpc_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-23T11:03:29Z",
+      "side": 1,
+      "message": "the original #ifdef in this block seemed reasonable.\ndid you mean to remove it?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "b616143d9a2890b47957baa95a83a940305b50ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
