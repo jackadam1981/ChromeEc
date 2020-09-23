@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "23c4ebf3_9df93ee7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T22:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b3b4ff9_3436fceb",
+      "revId": "8e2d73501a2c043a165e8724e91dcda28a8903cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdeaa53f_7325147c",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "8e2d73501a2c043a165e8724e91dcda28a8903cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57d51f61_f426e075",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T22:42:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdeaa53f_7325147c",
+      "range": {
+        "startLine": 554,
+        "startChar": 67,
+        "endLine": 554,
+        "endChar": 71
+      },
+      "revId": "8e2d73501a2c043a165e8724e91dcda28a8903cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
