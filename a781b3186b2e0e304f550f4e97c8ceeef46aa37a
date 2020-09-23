@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "68cff106_cd9eee53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-23T22:32:01Z",
+      "side": 1,
+      "message": "Let\u0027s fix these cases when we hit them.  I think we should stop referencing them as builtin/ anyway.\n\nThe zephyr module won\u0027t find the include path, as we don\u0027t put the platform/ec directory in the include path.",
+      "parentUuid": "4c09dcdd_e93a5c04",
+      "revId": "a781b3186b2e0e304f550f4e97c8ceeef46aa37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1ee3d9b_e781640a",
         "filename": "zephyr/shim/include/builtin/assert.h",
         "patchSetId": 1
