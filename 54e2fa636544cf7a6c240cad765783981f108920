@@ -39,6 +39,24 @@
       "revId": "54e2fa636544cf7a6c240cad765783981f108920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b0b7853_02b997fb",
+        "filename": "Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-23T21:59:22Z",
+      "side": 1,
+      "message": "Doing that would limit us to never sourcing any Kconfig files outside of the Zephyr folder, as we are limited to using only \"rsource\" inside of zephyr modules (and don\u0027t want to rsource \"..\").\n\nThoughts?",
+      "parentUuid": "06f5ee5e_babbfe77",
+      "revId": "54e2fa636544cf7a6c240cad765783981f108920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
