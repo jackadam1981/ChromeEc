@@ -30,6 +30,11 @@ static uint32_t next_deadline = 0xffffffff;
 /* Hardware timer routine IRQ number */
 static int timer_irq;
 
+/*
+ * TODO(b:169151160): usage of atomic_* functions in Zephyr code needs
+ * guarded away until we get the functions renamed.
+ */
+#ifndef CONFIG_ZEPHYR
 static void expire_timer(task_id_t tskid)
 {
 	/* we are done with this timer */
@@ -173,6 +178,7 @@ void usleep(unsigned us)
 		atomic_or(task_get_event_bitmap(task_get_current()),
 			  evt & ~TASK_EVENT_TIMER);
 }
+#endif  /* CONFIG_ZEPHYR */
 
 timestamp_t get_time(void)
 {
