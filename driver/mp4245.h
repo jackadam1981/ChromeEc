@@ -50,6 +50,7 @@
 #define MP4245_VOUT_TO_MV(v)         ((v * 1000) / MP4245_VOUT_1V)
 #define MP4245_IOUT_TO_MA(i)         (((i & 0x7ff) * 1000) / BIT(6))
 #define MP4245_ILIM_STEP_MA          50
+#define MP4245_VOUT_5V_DELAY_MS      10
 
 /**
  * MP4245 set output voltage level
