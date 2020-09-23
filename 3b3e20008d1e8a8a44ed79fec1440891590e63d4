@@ -16,6 +16,74 @@
       "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e74b9344_02e6aae2",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2020-09-23T19:00:43Z",
+      "side": 1,
+      "message": "Similar to the comment for line 176, LN9310_SYS_CTRL_LB_DELTA_3S is incorrectly set to 0x04 in ln9310.h rather than 0x20 (i.e. it wasn\u0027t shifted to align with the mask).",
+      "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9a76e9_439e8453",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2020-09-23T19:00:43Z",
+      "side": 1,
+      "message": "I agree that this should be removed for the production version (it would cause trouble if we later decide to enable one of these bits in OTP).  It was useful while we were debugging because we needed to clear the REV_IIN_DET bit in REG_SYS_CTRL which had previously been set accidentally.  Once the accidental set of this bit is fixed, there is no need to actively clear it.",
+      "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c593203a_bb264d2f",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2020-09-23T19:00:43Z",
+      "side": 1,
+      "message": "LN9310_SYS_CTRL_LB_DELTA_2S is incorrectly set to 0x04 in ln9310.h rather than 0x20 (i.e. it wasn\u0027t shifted to align with the mask).  This explains why during the initial bringup we saw REG_SYS_CTRL being set to 0x04 (incorrectly enabling REV_IIN_DET) even though the mask (LN9310_SYS_CTRL_LB_DELTA_MASK) was set to 0x38.",
+      "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d06d17e3_6210d286",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2020-09-23T19:00:43Z",
+      "side": 1,
+      "message": "Comment at line #145 also applies here",
+      "revId": "3b3e20008d1e8a8a44ed79fec1440891590e63d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
