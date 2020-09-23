@@ -6011,7 +6011,7 @@ struct ec_params_locate_chip {
 
 struct ec_response_locate_chip {
 	uint8_t bus_type;	/* enum ec_bus_type */
-	uint8_t reserved;	/* Aligning the following union to 2 bytes */
+	uint8_t _reserved;	/* Aligning the following union to 2 bytes */
 	union {
 		struct ec_i2c_info i2c_info;
 	};
