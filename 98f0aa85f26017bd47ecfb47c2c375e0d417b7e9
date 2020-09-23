@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d658b34f_e5593186",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T22:17:31Z",
+      "side": 1,
+      "message": "I think it would be helpful in the file to denote with a comment which are Zephyr and which are platform/ec CONFIG options",
+      "revId": "98f0aa85f26017bd47ecfb47c2c375e0d417b7e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
