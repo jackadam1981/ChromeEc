@@ -70,6 +70,30 @@
       "revId": "d877e6bd15a95bb00fa4631eb6cc8b7562d16c77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dceabe5_33298ec2",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-23T21:20:04Z",
+      "side": 1,
+      "message": "It\u0027s not exactly the same assembly; the cryptoc version is two instructions shorter (15 vs 17):\n\n 0810b866 \u003cct_memeq\u003e:\n 810b866:       b530            push    {r4, r5, lr}\n 810b868:       3801            subs    r0, #1\n 810b86a:       440a            add     r2, r1\n 810b86c:       2300            movs    r3, #0\n 810b86e:       4291            cmp     r1, r2\n 810b870:       d103            bne.n   810b87a \u003cct_memeq+0x14\u003e\n 810b872:       1c18            adds    r0, r3, #0\n 810b874:       bf18            it      ne\n 810b876:       2001            movne   r0, #1\n 810b878:       bd30            pop     {r4, r5, pc}\n 810b87a:       f810 4f01       ldrb.w  r4, [r0, #1]!\n 810b87e:       f811 5b01       ldrb.w  r5, [r1], #1\n 810b882:       406c            eors    r4, r5\n 810b884:       4323            orrs    r3, r4\n 810b886:       e7f2            b.n     810b86e \u003cct_memeq+0x8\u003e\n\n 08108f5c \u003csafe_memcmp\u003e:\n 8108f5c:       b530            push    {r4, r5, lr}\n 8108f5e:       b172            cbz     r2, 8108f7e \u003csafe_memcmp+0x22\u003e\n 8108f60:       1884            adds    r4, r0, r2\n 8108f62:       2200            movs    r2, #0\n 8108f64:       42a0            cmp     r0, r4\n 8108f66:       d103            bne.n   8108f70 \u003csafe_memcmp+0x14\u003e\n 8108f68:       1c10            adds    r0, r2, #0\n 8108f6a:       bf18            it      ne\n 8108f6c:       2001            movne   r0, #1\n 8108f6e:       bd30            pop     {r4, r5, pc}\n 8108f70:       f810 3b01       ldrb.w  r3, [r0], #1\n 8108f74:       f811 5b01       ldrb.w  r5, [r1], #1\n 8108f78:       406b            eors    r3, r5\n 8108f7a:       431a            orrs    r2, r3\n 8108f7c:       e7f2            b.n     8108f64 \u003csafe_memcmp+0x8\u003e\n 8108f7e:       4610            mov     r0, r2\n 8108f80:       e7f5            b.n     8108f6e \u003csafe_memcmp+0x12\u003e\n\n\nWith source:\n\n /* Constant-time memory comparison */\nint safe_memcmp(const void *s1, const void *s2, size_t size)\n{\n 8108f5c:\tb530      \tpush\t{r4, r5, lr}\n\tconst uint8_t *us1 \u003d s1;\n\tconst uint8_t *us2 \u003d s2;\n\tint result \u003d 0;\n\n\tif (size \u003d\u003d 0)\n 8108f5e:\tb172      \tcbz\tr2, 8108f7e \u003csafe_memcmp+0x22\u003e\n 8108f60:\t1884      \tadds\tr4, r0, r2\n\tint result \u003d 0;\n 8108f62:\t2200      \tmovs\tr2, #0\n\n\t/*\n\t * Code snippet without data-dependent branch due to Nate Lawson\n\t * (nate@root.org) of Root Labs.\n\t */\n\twhile (size--)\n 8108f64:\t42a0      \tcmp\tr0, r4\n 8108f66:\td103      \tbne.n\t8108f70 \u003csafe_memcmp+0x14\u003e\n\t\tresult |\u003d *us1++ ^ *us2++;\n\n\treturn result !\u003d 0;\n 8108f68:\t1c10      \tadds\tr0, r2, #0\n 8108f6a:\tbf18      \tit\tne\n 8108f6c:\t2001      \tmovne\tr0, #1\n}\n 8108f6e:\tbd30      \tpop\t{r4, r5, pc}\n\t\tresult |\u003d *us1++ ^ *us2++;\n 8108f70:\tf810 3b01 \tldrb.w\tr3, [r0], #1\n 8108f74:\tf811 5b01 \tldrb.w\tr5, [r1], #1\n 8108f78:\t406b      \teors\tr3, r5\n 8108f7a:\t431a      \torrs\tr2, r3\n 8108f7c:\te7f2      \tb.n\t8108f64 \u003csafe_memcmp+0x8\u003e\n\t\treturn 0;\n 8108f7e:\t4610      \tmov\tr0, r2\n 8108f80:\te7f5      \tb.n\t8108f6e \u003csafe_memcmp+0x12\u003e\n\n\n 0810b866 \u003cct_memeq\u003e:\n\n int ct_memeq(const void* s1, const void* s2, size_t n) {\n 810b866:\tb530      \tpush\t{r4, r5, lr}\n  uint8_t diff \u003d 0;\n  const uint8_t* ps1 \u003d s1;\n  const uint8_t* ps2 \u003d s2;\n\n  while (n--) {\n 810b868:\t3801      \tsubs\tr0, #1\n 810b86a:\t440a      \tadd\tr2, r1\n  uint8_t diff \u003d 0;\n 810b86c:\t2300      \tmovs\tr3, #0\n  while (n--) {\n 810b86e:\t4291      \tcmp\tr1, r2\n 810b870:\td103      \tbne.n\t810b87a \u003cct_memeq+0x14\u003e\n  }\n\n  // Counter-intuitive, but we can\u0027t just return diff because we don\u0027t want to\n  // leak the xor of non-equal bytes\n  return 0 !\u003d diff;\n }\n 810b872:\t1c18      \tadds\tr0, r3, #0\n 810b874:\tbf18      \tit\tne\n 810b876:\t2001      \tmovne\tr0, #1\n 810b878:\tbd30      \tpop\t{r4, r5, pc}\n    diff |\u003d *ps1 ^ *ps2;\n 810b87a:\tf810 4f01 \tldrb.w\tr4, [r0, #1]!\n 810b87e:\tf811 5b01 \tldrb.w\tr5, [r1], #1\n 810b882:\t406c      \teors\tr4, r5\n 810b884:\t4323      \torrs\tr3, r4\n    ps2++;\n 810b886:\te7f2      \tb.n\t810b86e \u003cct_memeq+0x8\u003e",
+      "parentUuid": "e54ea2e0_b29dcbb5",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 269,
+        "endChar": 16
+      },
+      "revId": "d877e6bd15a95bb00fa4631eb6cc8b7562d16c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
