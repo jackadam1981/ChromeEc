@@ -93,6 +93,30 @@
       "revId": "f88276cdad6b8dec534c3e7f95936445667bc467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3475b795_6082baf7",
+        "filename": "include/task_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-23T22:24:22Z",
+      "side": 1,
+      "message": "We should add a comment then. We aren\u0027t using it in Zephyr but it is prolific, so we leave it defined as 0",
+      "parentUuid": "b5c47f93_61554fb5",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "f88276cdad6b8dec534c3e7f95936445667bc467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
