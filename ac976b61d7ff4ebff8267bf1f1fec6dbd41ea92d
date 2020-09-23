@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5d5737e_eb70faeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-23T10:00:55Z",
+      "side": 1,
+      "message": "@Jack,\n\nIf we want to test this file by `sudo ./servo_updater.py -b servo_v4 -f /usr/share/servo_updater/firmware/servo_v4.bin --force`, we need an super old servo version, then it\u0027ll use fw_update to load/upload/... to update the firmware. Check the comment I added in this CL.\n\nI guess no one needs this anymore ?",
+      "revId": "ac976b61d7ff4ebff8267bf1f1fec6dbd41ea92d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
