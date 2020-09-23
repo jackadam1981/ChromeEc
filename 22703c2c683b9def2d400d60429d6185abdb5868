@@ -1,0 +1,233 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d457c7a3_78dd2470",
+        "filename": "baseboard/volteer/usb_pd_policy.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "Should be __override.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 13
+      },
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e4daaf4_0e634fd5",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "Delete",
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70b62ba9_1beabc47",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "Nit - I suggest putting \"tbt\" in the name. The function will eventually be expanded to support USB3/USB4 UFP operation. It will be easier to follow if the names are clearly marked ufp_tbt_enter_mode and ufp_usb4_enter_mode.\n\nAlso, you can move this inside the if block at line 293.",
+      "range": {
+        "startLine": 266,
+        "startChar": 30,
+        "endLine": 266,
+        "endChar": 44
+      },
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9a4ec68_a8dfb6b1",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "Nit - change the language to line up better with BB spec:\n\"Set according to TBT3 Enter Mode bit 22.\"",
+      "range": {
+        "startLine": 300,
+        "startChar": 5,
+        "endLine": 300,
+        "endChar": 38
+      },
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9503c1c4_a13cd18e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "Set according to TBT3 Enter Mode bit 21.",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 42
+      },
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a777e338_f2061d62",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "Bit 19: vPro_Dock_detected?\nBB spec says \"If TBT3 enter mode bit 31 or bit 26: set to 1\"",
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dece07bc_f29aba24",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "\"Set according to TBT3 Enter Mode bit 23.\"\n\nDon\u0027t need to mention USB mode here, since this path is explicitly TBT mode.",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 62
+      },
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ef2a6ea_d5cf70e1",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "Set according to TBT3 Enter Mode bit 24.",
+      "range": {
+        "startLine": 330,
+        "startChar": 5,
+        "endLine": 330,
+        "endChar": 42
+      },
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "076bc24c_237cb4bf",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "Add a comment: Copy from TBT3 Enter Mode bits 18:16.",
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f40f49f7_b850f754",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "Add comment: Copy from TBT3 Enter Mode bits 20:19.",
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b195c2d6_73c46211",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1663,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-23T16:36:47Z",
+      "side": 1,
+      "message": "Should be __override_proto",
+      "range": {
+        "startLine": 1663,
+        "startChar": 0,
+        "endLine": 1663,
+        "endChar": 13
+      },
+      "revId": "22703c2c683b9def2d400d60429d6185abdb5868",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
