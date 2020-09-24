@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d847686e_46546dc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2020-09-24T13:58:38Z",
+      "side": 1,
+      "message": "One of the use case is Thunderbolt Networking which is part of TBT4 branding.",
+      "parentUuid": "358eeddf_2254537f",
+      "revId": "cc5f44751d11c70a85d1e8c74f956d70436eb268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cce732f4_6ac34ce7",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 19
