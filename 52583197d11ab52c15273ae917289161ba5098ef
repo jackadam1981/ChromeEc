@@ -16,6 +16,23 @@
       "revId": "52583197d11ab52c15273ae917289161ba5098ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93e695e5_b10f8bc5",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-24T01:16:18Z",
+      "side": 1,
+      "message": "Can you add some comment there indicating this file is 2/3 compatible, especially there\u0027s no \u0027import six\u0027 as a signature for those?",
+      "revId": "52583197d11ab52c15273ae917289161ba5098ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
