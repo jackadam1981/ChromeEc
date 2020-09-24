@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d593273f_1a78aa7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-24T04:19:04Z",
+      "side": 1,
+      "message": "It\u0027s used by CQ bot, I think we don\u0027t need to make it py2/3 compatible and can merge directly, right ?",
+      "revId": "cd52ad77cd73a6915a6c2072a39f5627c1ae4958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
