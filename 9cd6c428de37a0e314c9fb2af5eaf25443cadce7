@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9960933_47584db3",
+        "filename": "board/fennel/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-09-24T01:58:38Z",
+      "side": 1,
+      "message": "Why do you need to undef and define?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "9cd6c428de37a0e314c9fb2af5eaf25443cadce7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
