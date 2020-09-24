@@ -34,11 +34,6 @@ static void board_power_sequence(void)
 /* I2C port map configuration */
 const struct i2c_port_t i2c_ports[] = {
 	{"i2c1",  I2C_PORT_I2C1,  400, GPIO_EC_I2C1_SCL, GPIO_EC_I2C1_SDA},
-#ifndef QUICHE_BOARD_P1
-#ifndef GINGERBREAD_BOARD_P1
-	{"i2c2",  I2C_PORT_I2C2,  400, GPIO_EC_I2C2_SCL, GPIO_EC_I2C2_SDA},
-#endif
-#endif
 	{"i2c3",  I2C_PORT_I2C3,  400, GPIO_EC_I2C3_SCL, GPIO_EC_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -56,9 +51,8 @@ static void baseboard_set_usbc_sink_mode(void)
 	STM32_RCC_APB1ENR2 |= STM32_RCC_APB1ENR2_UPCD1EN;
 	/* enable the peripheral */
 	STM32_UCPD_CFGR1(0) |= STM32_UCPD_CFGR1_UCPDEN;
-
-	cr = STM32_UCPD_CR(0);
 	/* Apply Rd to both CC lines */
+	cr = STM32_UCPD_CR(0);
 	cr |= STM32_UCPD_CR_ANAMODE | STM32_UCPD_CR_CCENABLE_MASK;
 	STM32_UCPD_CR(0) = cr;
 
@@ -74,6 +68,7 @@ static void baseboard_init(void)
 
 #ifdef SECTION_IS_RW
 	system_clear_reset_flags(EC_RESET_FLAG_POWER_ON);
+	system_set_reset_flags(EC_RESET_FLAG_EFS);
 #else
 	baseboard_set_usbc_sink_mode();
 #endif
