@@ -10,7 +10,7 @@
 #include "registers.h"
 #include "rsa.h"
 #include "rwsig.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "system.h"
 #include "task.h"
 #include "usb_pd.h"
@@ -50,7 +50,7 @@ int is_ro_mode(void)
 	return (uint32_t)&jump_to_rw < (uint32_t)rw_rst;
 }
 
-static int check_rw_valid(void *rw_hash)
+static int check_rw_valid(const uint8_t *rw_hash)
 {
 	int good;
 
@@ -74,7 +74,7 @@ extern void pd_task(void *u);
 
 int main(void)
 {
-	void *rw_hash;
+	const uint8_t *rw_hash;
 
 	hardware_init();
 	debug_printf("%s started\n",

@@ -8,7 +8,7 @@
 #include "console.h"
 #include "host_command.h"
 #include "hotword_dsp_api.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "system.h"
 #include "task.h"
 #include "util.h"
@@ -67,10 +67,10 @@ static uint8_t speech_lib_loaded;
 static int check_lang_buf(uint8_t *data, uint32_t len, const uint8_t *hash)
 {
 	/*
-	 * Note: sizeof(struct sha256_ctx) = 200 bytes
+	 * Note: sizeof(LITE_SHA256_CTX) = 200 bytes
 	 * should put into .bss, or stack is likely to overflow (~640 bytes)
 	 */
-	static struct sha256_ctx ctx;
+	static LITE_SHA256_CTX ctx;
 	uint8_t *digest;
 	int i;
 	uint8_t *p = (uint8_t *)audio_codec_wov_lang_buf_addr;

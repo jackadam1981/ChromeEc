@@ -9,7 +9,7 @@
 #include "common.h"
 #include "vb21_struct.h"
 #include "rsa.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "stdbool.h"
 #include "timer.h"
 
