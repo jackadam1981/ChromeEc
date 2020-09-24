@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75d93c92_f7911f15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-24T23:20:45Z",
+      "side": 1,
+      "message": "(Removing non-dedede folks)\n\nLet\u0027s split this up into 2 CLs: One for the common/button changes and then one for enabling it on magolor.\n\n",
+      "revId": "839ba93b77aaef41a399367b3206723d5099030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2def542_cd0c4028",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-24T23:20:45Z",
+      "side": 1,
+      "message": "I\u0027d replace all the \u0027key\u0027 with \u0027button\u0027",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 30
+      },
+      "revId": "839ba93b77aaef41a399367b3206723d5099030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6c48a74_8f7d2af3",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-24T23:20:45Z",
+      "side": 1,
+      "message": "Perhaps print out the badly called GPIO using gpio_list[].name.",
+      "revId": "839ba93b77aaef41a399367b3206723d5099030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eeb77fd_7cdcc2f7",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-24T23:20:45Z",
+      "side": 1,
+      "message": "We should make the board define this function.",
+      "revId": "839ba93b77aaef41a399367b3206723d5099030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6560e9de_481e48e5",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-24T23:20:45Z",
+      "side": 1,
+      "message": "Maybe rename to `button_is_adc_detected`.",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "839ba93b77aaef41a399367b3206723d5099030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00f0b33_3a496031",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-24T23:20:45Z",
+      "side": 1,
+      "message": "Rename to `adc_to_physical_value`",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 30
+      },
+      "revId": "839ba93b77aaef41a399367b3206723d5099030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb5c93d_33c2465d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-24T23:20:45Z",
+      "side": 1,
+      "message": "Let\u0027s make this generic. I suggest a CONFIG_* option of CONFIG_ADC_BUTTONS.",
+      "range": {
+        "startLine": 771,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 37
+      },
+      "revId": "839ba93b77aaef41a399367b3206723d5099030a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
