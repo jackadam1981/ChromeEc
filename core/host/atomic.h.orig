@@ -10,14 +10,19 @@
 
 #include "common.h"
 
+<<<<<<< HEAD
 /*
  * The atomic_* functions are marked as deprecated as a part of the process of
  * transaction to Zephyr compatible atomic functions. These prefixes will be
  * removed in the following patches. Please see b:169151160 for more details.
  */
 
+static inline void deprecated_atomic_clear(uint32_t volatile *addr,
+					   uint32_t bits)
+=======
 static inline void deprecated_atomic_clear_bit(uint32_t volatile *addr,
 					       uint32_t bits)
+>>>>>>> 410e5b051... core: rename atomic_clear to atomic_clear_bit
 {
 	__sync_and_and_fetch(addr, ~bits);
 }
