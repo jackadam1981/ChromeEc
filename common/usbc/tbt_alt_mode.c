@@ -15,6 +15,7 @@
 #include "console.h"
 #include "tcpm.h"
 #include "usb_common.h"
+#include "usb_mode.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tbt.h"
@@ -69,8 +70,9 @@
  * with a partner. It may be fixed in b/159495742, in which case this
  * logic is unneeded.
  */
-#define TBT_FLAG_RETRY_DONE BIT(0)
-#define TBT_FLAG_EXIT_DONE  BIT(1)
+#define TBT_FLAG_RETRY_DONE       BIT(0)
+#define TBT_FLAG_EXIT_DONE        BIT(1)
+#define TBT_FLAG_CABLE_ENTRY_DONE BIT(2)
 
 static uint8_t tbt_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -114,6 +116,7 @@ void tbt_init(int port)
 {
 	tbt_state[port] = TBT_START;
 	TBT_CLR_FLAG(port, TBT_FLAG_RETRY_DONE);
+	TBT_CLR_FLAG(port, TBT_FLAG_CABLE_ENTRY_DONE);
 	TBT_SET_FLAG(port, TBT_FLAG_EXIT_DONE);
 }
 
@@ -129,10 +132,19 @@ bool tbt_entry_is_done(int port)
 		tbt_state[port] == TBT_INACTIVE;
 }
 
+bool tbt_cable_entry_is_done(int port)
+{
+	return TBT_CHK_FLAG(port, TBT_FLAG_CABLE_ENTRY_DONE);
+}
+
 static void tbt_exit_done(int port)
 {
 	tbt_state[port] = TBT_INACTIVE;
 	TBT_CLR_FLAG(port, TBT_FLAG_RETRY_DONE);
+	TBT_CLR_FLAG(port, TBT_FLAG_CABLE_ENTRY_DONE);
+
+	if (enter_usb_is_active(port))
+		return;
 
 	if (!TBT_CHK_FLAG(port, TBT_FLAG_EXIT_DONE)) {
 		TBT_SET_FLAG(port, TBT_FLAG_EXIT_DONE);
@@ -203,12 +215,15 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 
 	switch (tbt_state[port]) {
 	case TBT_ENTER_SOP_PRIME:
-		if (disc->identity.product_t1.a_rev20.sop_p_p)
+		if (disc->identity.product_t1.a_rev20.sop_p_p) {
 			tbt_state[port] = TBT_ENTER_SOP_PRIME_PRIME;
-		else
+		} else {
+			TBT_SET_FLAG(port, TBT_FLAG_CABLE_ENTRY_DONE);
 			tbt_state[port] = TBT_ENTER_SOP;
+		}
 		break;
 	case TBT_ENTER_SOP_PRIME_PRIME:
+		TBT_SET_FLAG(port, TBT_FLAG_CABLE_ENTRY_DONE);
 		tbt_state[port] = TBT_ENTER_SOP;
 		break;
 	case TBT_ENTER_SOP:
@@ -386,6 +401,17 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 
 	if (vdo_count < VDO_MAX_SIZE)
 		return -1;
+
+	/*
+	 * If we have entered Thunderbolt mode SOP' and SOP'' for USB4 mode,
+	 * exit Thunderbolt mode SOP' and SOP''.
+	 */
+	if (enter_usb_is_active(port)) {
+		if (tbt_state[port] == TBT_EXIT_SOP_PRIME)
+			tbt_state[port] = TBT_EXIT_SOP_PRIME;
+		else
+			tbt_state[port] = TBT_EXIT_SOP_PRIME_PRIME;
+	}
 
 	switch (tbt_state[port]) {
 	case TBT_START:
