@@ -12,9 +12,17 @@
 #include "util.h"
 
 #ifdef TEST_RSA3
+#if CONFIG_RSA_KEY_SIZE == 3072
+#include "rsa3072-3.h"
+#else
 #include "rsa2048-3.h"
+#endif
+#else
+#if CONFIG_RSA_KEY_SIZE == 3072
+#include "rsa3072-F4.h"
 #else
 #include "rsa2048-F4.h"
+#endif
 #endif
 
 static uint32_t rsa_workbuf[3 * RSANUMBYTES/4];
