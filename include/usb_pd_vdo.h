@@ -243,6 +243,17 @@ union passive_cable_vdo_rev30 {
  *           011b = [USB4] Gen3
  *           100b..111b = Reserved, Shall Not be used
  */
+enum active_cbl_vdo_version {
+	RESERVED_0,
+	RESERVED_1,
+	RESERVED_2,
+	VERSION_1_3,
+	RESERVED_4,
+	RESERVED_5,
+	RESERVED_6,
+	RESERVED_7,
+};
+
 union active_cable_vdo1_rev30 {
 	struct {
 		enum usb_rev30_ss ss: 3;
@@ -257,7 +268,7 @@ union active_cable_vdo1_rev30 {
 		uint32_t reserved0 : 1;
 		uint32_t connector : 2;
 		uint32_t reserved1 : 1;
-		uint32_t vdo_version : 3;
+		enum active_cbl_vdo_version vdo_version : 3;
 		uint32_t fw_version : 4;
 		uint32_t hw_version : 4;
 	};

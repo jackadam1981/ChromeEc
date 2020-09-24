@@ -67,8 +67,9 @@
  * with a partner. It may be fixed in b/159495742, in which case this
  * logic is unneeded.
  */
-#define TBT_FLAG_RETRY_DONE BIT(0)
-#define TBT_FLAG_EXIT_DONE  BIT(1)
+#define TBT_FLAG_RETRY_DONE       BIT(0)
+#define TBT_FLAG_EXIT_DONE        BIT(1)
+#define TBT_FLAG_CABLE_ENTRY_DONE BIT(2)
 
 static uint8_t tbt_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
@@ -123,6 +124,7 @@ void tbt_init(int port)
 {
 	tbt_state[port] = TBT_START;
 	tbt_clr_flag(port, TBT_FLAG_RETRY_DONE);
+	tbt_clr_flag(port, TBT_FLAG_CABLE_ENTRY_DONE);
 	tbt_set_flag(port, TBT_FLAG_EXIT_DONE);
 }
 
@@ -138,10 +140,16 @@ bool tbt_entry_is_done(int port)
 		tbt_state[port] == TBT_INACTIVE;
 }
 
+bool tbt_cable_entry_is_done(int port)
+{
+	return tbt_chk_flag(port, TBT_FLAG_CABLE_ENTRY_DONE);
+}
+
 static void tbt_exit_done(int port)
 {
 	tbt_state[port] = TBT_INACTIVE;
 	tbt_clr_flag(port, TBT_FLAG_RETRY_DONE);
+	tbt_clr_flag(port, TBT_FLAG_CABLE_ENTRY_DONE);
 
 	if (!tbt_chk_flag(port, TBT_FLAG_EXIT_DONE)) {
 		tbt_set_flag(port, TBT_FLAG_EXIT_DONE);
@@ -212,12 +220,15 @@ void intel_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 
 	switch (tbt_state[port]) {
 	case TBT_ENTER_SOP_PRIME:
-		if (disc->identity.product_t1.a_rev20.sop_p_p)
+		if (disc->identity.product_t1.a_rev20.sop_p_p) {
 			tbt_state[port] = TBT_ENTER_SOP_PRIME_PRIME;
-		else
+		} else {
+			tbt_set_flag(port, TBT_FLAG_CABLE_ENTRY_DONE);
 			tbt_state[port] = TBT_ENTER_SOP;
+		}
 		break;
 	case TBT_ENTER_SOP_PRIME_PRIME:
+		tbt_set_flag(port, TBT_FLAG_CABLE_ENTRY_DONE);
 		tbt_state[port] = TBT_ENTER_SOP;
 		break;
 	case TBT_ENTER_SOP:
