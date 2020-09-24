@@ -13,7 +13,8 @@
 #include "host_command.h"
 #include "rollback.h"
 #include "rwsig.h"
-#include "sha256.h"
+#include "cryptoc/hmac.h"
+#include "cryptoc/sha256.h"
 #include "system.h"
 #include "uart.h"
 #include "update_fw.h"
@@ -84,6 +85,19 @@ static uint32_t block_index;
 #ifdef CONFIG_USB_PAIRING
 #define KEY_CONTEXT "device-identity"
 
+/* TODO(tomhughes): move to cryptoc */
+static void hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,
+			const uint8_t *message, const int message_len)
+{
+	const uint8_t *hmac;
+	LITE_HMAC_CTX ctx;
+
+	HMAC_SHA256_init(&ctx, key, key_len);
+	HMAC_update(&ctx, message, message_len);
+	hmac = HMAC_final(&ctx);
+	memcpy(output, hmac, HMAC_size(&ctx));
+}
+
 static int pair_challenge(struct pair_challenge *challenge)
 {
 	uint8_t response;
@@ -117,8 +131,8 @@ static int pair_challenge(struct pair_challenge *challenge)
 	 * tmp2 = device_private
 	 *      = HMAC_SHA256(device_secret, "device-identity")
 	 */
-	hmac_SHA256(tmp2, tmp, CONFIG_ROLLBACK_SECRET_SIZE,
-		    KEY_CONTEXT, sizeof(KEY_CONTEXT) - 1);
+	hmac_SHA256(tmp2, tmp, CONFIG_ROLLBACK_SECRET_SIZE, KEY_CONTEXT,
+		    sizeof(KEY_CONTEXT) - 1);
 
 	/* tmp = device_public = x25519(device_private, x25519_base_point) */
 	X25519_public_from_private(tmp, tmp2);
@@ -128,10 +142,11 @@ static int pair_challenge(struct pair_challenge *challenge)
 	X25519(tmp, tmp2, challenge->host_public);
 
 	/* tmp2 = authenticator = HMAC_SHA256(shared_secret, nonce) */
-	hmac_SHA256(tmp2, tmp, sizeof(tmp),
-		    challenge->nonce, sizeof(challenge->nonce));
+	hmac_SHA256(tmp2, tmp, sizeof(tmp), challenge->nonce,
+		    sizeof(challenge->nonce));
 	QUEUE_ADD_UNITS(&update_to_usb, tmp2,
-		member_size(struct pair_challenge_response, authenticator));
+			member_size(struct pair_challenge_response,
+				    authenticator));
 	return 1;
 }
 #endif

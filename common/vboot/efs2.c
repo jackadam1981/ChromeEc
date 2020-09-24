@@ -17,7 +17,7 @@
 #include "crc8.h"
 #include "flash.h"
 #include "hooks.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "system.h"
 #include "task.h"
 #include "usb_pd.h"

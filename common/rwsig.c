@@ -15,7 +15,7 @@
 #include "rollback.h"
 #include "rsa.h"
 #include "rwsig.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "shared_mem.h"
 #include "system.h"
 #include "task.h"
@@ -93,11 +93,11 @@ static int check_padding(const uint8_t *data,
 
 int rwsig_check_signature(void)
 {
-	struct sha256_ctx ctx;
+	LITE_SHA256_CTX ctx;
 	int res;
 	const struct rsa_public_key *key;
 	const uint8_t *sig;
-	uint8_t *hash;
+	const uint8_t *hash;
 	uint32_t *rsa_workbuf = NULL;
 	const uint8_t *rwdata = (uint8_t *)CONFIG_PROGRAM_MEMORY_BASE
 					+ CONFIG_RW_MEM_OFF;
