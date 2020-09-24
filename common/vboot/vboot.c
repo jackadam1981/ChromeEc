@@ -18,7 +18,7 @@
 #include "rsa.h"
 #include "rwsig.h"
 #include "stdbool.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "shared_mem.h"
 #include "system.h"
 #include "usb_pd.h"
