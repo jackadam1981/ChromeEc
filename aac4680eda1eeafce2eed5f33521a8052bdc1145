@@ -16,6 +16,24 @@
       "revId": "aac4680eda1eeafce2eed5f33521a8052bdc1145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84de48f0_e4fe5c95",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-24T16:31:30Z",
+      "side": 1,
+      "message": "And reference the b/169151160 for future reference?",
+      "parentUuid": "ccba2557_eb95337a",
+      "revId": "aac4680eda1eeafce2eed5f33521a8052bdc1145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
