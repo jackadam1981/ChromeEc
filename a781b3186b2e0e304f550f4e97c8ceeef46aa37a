@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "14e33952_7dbd07f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-24T20:03:04Z",
+      "side": 1,
+      "message": "Can you make a CL to go fix those two instances now just so we don\u0027t run into any issues later.",
+      "parentUuid": "68cff106_cd9eee53",
+      "revId": "a781b3186b2e0e304f550f4e97c8ceeef46aa37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1ee3d9b_e781640a",
         "filename": "zephyr/shim/include/builtin/assert.h",
         "patchSetId": 1
