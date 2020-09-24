@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "e115ef71_60f10fc6",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-24T11:29:28Z",
+      "side": 1,
+      "message": "if you change uint16_t to uint8_t, then you won\u0027t\nneed a bitfield for \u0027group\u0027 and the __packed\nwon\u0027t be needed on gpio_alt_map.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "b616143d9a2890b47957baa95a83a940305b50ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ca48ca_d481b73b",
+        "filename": "chip/npcx/gpio_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-24T11:29:28Z",
+      "side": 1,
+      "message": "similar to preceding lines, i think we should assign\nto the struct members explicitly instead of by position:\n\n{ .gpio \u003d NPCX_GPIO(port, index), .alt \u003d (_alt) }",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "b616143d9a2890b47957baa95a83a940305b50ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c24fea8_959d0c25",
         "filename": "chip/npcx/lpc_chip.h",
         "patchSetId": 7
