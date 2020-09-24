@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccba2557_eb95337a",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-24T16:29:58Z",
+      "side": 1,
+      "message": "Since there is not yet a non-deprecated alternative, can you add some docs here so that people aren\u0027t confused about what they\u0027re supposed to be using before Phase 2 completes fully?",
+      "revId": "aac4680eda1eeafce2eed5f33521a8052bdc1145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
