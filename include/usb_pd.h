@@ -2079,8 +2079,9 @@ enum usb_rev30_ss get_usb4_cable_speed(int port);
  * Return enter USB message payload
  *
  * @param port	USB-C port number
+ * @param type  Transmit type (SOP, SOP') for VDM
  */
-uint32_t get_enter_usb_msg_payload(int port);
+uint32_t get_enter_usb_msg_payload(int port, enum tcpm_transmit_type type);
 
 /**
  * Enter USB4 mode

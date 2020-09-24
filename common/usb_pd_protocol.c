@@ -2783,7 +2783,7 @@ static void pd_send_enter_usb(int port, int *timeout)
 	    !IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 		return;
 
-	usb4_payload = get_enter_usb_msg_payload(port);
+	usb4_payload = get_enter_usb_msg_payload(port, TCPC_TX_SOP);
 
 	header = PD_HEADER(PD_DATA_ENTER_USB,
 		pd[port].power_role,
