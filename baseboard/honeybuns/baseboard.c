@@ -69,9 +69,8 @@ static void baseboard_set_usbc_sink_mode(void)
 	STM32_RCC_APB1ENR2 |= STM32_RCC_APB1ENR2_UPCD1EN;
 	/* enable the peripheral */
 	STM32_UCPD_CFGR1(0) |= STM32_UCPD_CFGR1_UCPDEN;
-
-	cr = STM32_UCPD_CR(0);
 	/* Apply Rd to both CC lines */
+	cr = STM32_UCPD_CR(0);
 	cr |= STM32_UCPD_CR_ANAMODE | STM32_UCPD_CR_CCENABLE_MASK;
 	STM32_UCPD_CR(0) = cr;
 
