@@ -381,8 +381,9 @@ static void simulate_button_release_deferred(void)
 		/* Check state for button pressed */
 		if (sim_button_state & BIT(buttons[button_idx].type)) {
 			/* Set state of the button as released */
-			deprecated_atomic_clear(&sim_button_state,
-						BIT(buttons[button_idx].type));
+			deprecated_atomic_clear_bit(
+				&sim_button_state,
+				BIT(buttons[button_idx].type));
 
 			button_interrupt_simulate(button_idx);
 		}
