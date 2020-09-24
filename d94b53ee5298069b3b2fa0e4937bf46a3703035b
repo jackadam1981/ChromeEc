@@ -22,6 +22,30 @@
       "revId": "d94b53ee5298069b3b2fa0e4937bf46a3703035b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff206785_661bdc80",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-24T09:29:57Z",
+      "side": 1,
+      "message": "You are correct! I fix it in https://crrev.com/c/2428345, please help review it, thanks!",
+      "parentUuid": "bd9a98d0_654ca99d",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "d94b53ee5298069b3b2fa0e4937bf46a3703035b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
