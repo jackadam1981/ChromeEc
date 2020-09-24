@@ -55,7 +55,7 @@
  * of flash data.
  */
 #define USART_MAX_REQUEST_SIZE 0x220
-#define USART_MAX_RESPONSE_SIZE 0x220
+#define USART_MAX_RESPONSE_SIZE 0x100
 
 /*
  * FIFO size for USART DMA. Should be big enough to handle worst case
