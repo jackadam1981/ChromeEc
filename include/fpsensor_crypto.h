@@ -10,7 +10,7 @@
 
 #include <stddef.h>
 
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 
 #define HKDF_MAX_INFO_SIZE 128
 #define HKDF_SHA256_MAX_BLOCK_COUNT 255

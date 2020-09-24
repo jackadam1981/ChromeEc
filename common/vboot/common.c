@@ -6,7 +6,7 @@
 #include "common.h"
 #include "console.h"
 #include "rsa.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "shared_mem.h"
 #include "vboot.h"
 
@@ -35,8 +35,8 @@ int vboot_is_padding_valid(const uint8_t *data, uint32_t start, uint32_t end)
 int vboot_verify(const uint8_t *data, int len, const struct rsa_public_key *key,
 		 const uint8_t *sig)
 {
-	struct sha256_ctx ctx;
-	uint8_t *hash;
+	LITE_SHA256_CTX ctx;
+	const uint8_t *hash;
 	uint32_t *workbuf;
 	int err = EC_SUCCESS;
 

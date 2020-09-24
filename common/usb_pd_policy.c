@@ -17,7 +17,7 @@
 #include "mkbp_event.h"
 #include "registers.h"
 #include "rsa.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "system.h"
 #include "task.h"
 #include "tcpm/tcpm.h"
@@ -410,9 +410,9 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 	(CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF + \
 	 CONFIG_RW_SIZE)
 
-uint8_t *flash_hash_rw(void)
+const uint8_t *flash_hash_rw(void)
 {
-	static struct sha256_ctx ctx;
+	static LITE_SHA256_CTX ctx;
 
 	/* re-calculate RW hash when changed as its time consuming */
 	if (rw_flash_changed) {
@@ -430,7 +430,7 @@ uint8_t *flash_hash_rw(void)
 
 void pd_get_info(uint32_t *info_data)
 {
-	void *rw_hash = flash_hash_rw();
+	const uint8_t *rw_hash = flash_hash_rw();
 
 	/* copy first 20 bytes of RW hash */
 	memcpy(info_data, rw_hash, 5 * sizeof(uint32_t));

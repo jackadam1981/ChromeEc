@@ -13,7 +13,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "printf.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "shared_mem.h"
 #include "stdbool.h"
 #include "stdint.h"
@@ -48,7 +48,7 @@ static int in_progress;
 #define VBOOT_HASH_DEFERRED true
 #define VBOOT_HASH_BLOCKING false
 
-static struct sha256_ctx ctx;
+static LITE_SHA256_CTX ctx;
 
 int vboot_hash_in_progress(void)
 {

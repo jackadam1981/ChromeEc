@@ -21,7 +21,7 @@
 
 #include "rma_auth.h"
 #include "curve25519.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "base32.h"
 
 #define EC_COORDINATE_SZ 32

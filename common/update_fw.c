@@ -10,7 +10,7 @@
 #include "include/compile_time_macros.h"
 #include "rollback.h"
 #include "rwsig.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "system.h"
 #include "uart.h"
 #include "update_fw.h"
@@ -119,8 +119,8 @@ static int contents_allowed(uint32_t block_offset, size_t body_size,
 {
 #if defined(CONFIG_TOUCHPAD_VIRTUAL_OFF) && defined(CONFIG_TOUCHPAD_HASH_FW)
 	if (is_touchpad_block(block_offset, body_size)) {
-		struct sha256_ctx ctx;
-		uint8_t *tmp;
+		LITE_SHA256_CTX ctx;
+		const uint8_t *tmp;
 		uint32_t fw_offset = block_offset - CONFIG_TOUCHPAD_VIRTUAL_OFF;
 		unsigned int chunk = fw_offset / CONFIG_UPDATE_PDU_SIZE;
 		int good = 0;

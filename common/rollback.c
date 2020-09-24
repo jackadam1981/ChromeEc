@@ -17,7 +17,7 @@
 #endif
 #include "rollback.h"
 #include "rollback_private.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "system.h"
 #include "task.h"
 #include "trng.h"
@@ -193,8 +193,8 @@ static int add_entropy(uint8_t *dst, const uint8_t *src, const uint8_t *add,
 	int ret = 0;
 #ifdef CONFIG_SHA256
 	BUILD_ASSERT(SHA256_DIGEST_SIZE == CONFIG_ROLLBACK_SECRET_SIZE);
-	struct sha256_ctx ctx;
-	uint8_t *hash;
+	LITE_SHA256_CTX ctx;
+	const uint8_t *hash;
 #ifdef CONFIG_ROLLBACK_SECRET_LOCAL_ENTROPY_SIZE
 	uint8_t extra;
 	int i;

@@ -123,7 +123,7 @@ int flash_erase_rw(void);
 int flash_write_rw(int offset, int size, const char *data);
 void flash_physical_permanent_protect(void);
 int flash_physical_is_permanently_protected(void);
-uint8_t *flash_hash_rw(void);
+const uint8_t *flash_hash_rw(void);
 int is_ro_mode(void);
 
 void __enter_hibernate(uint32_t seconds, uint32_t microseconds);

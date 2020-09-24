@@ -13,7 +13,8 @@
 #include "host_command.h"
 #include "rollback.h"
 #include "rwsig.h"
-#include "sha256.h"
+#include "cryptoc/hmac.h"
+#include "cryptoc/sha256.h"
 #include "system.h"
 #include "uart.h"
 #include "update_fw.h"
@@ -73,6 +74,19 @@ static uint32_t block_index;
 
 #ifdef CONFIG_USB_PAIRING
 #define KEY_CONTEXT "device-identity"
+
+/* TODO(tomhughes): move to cryptoc */
+static void hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,
+			const uint8_t *message, const int message_len)
+{
+	const uint8_t *hmac;
+	LITE_HMAC_CTX ctx;
+
+	HMAC_SHA256_init(&ctx, key, key_len);
+	HMAC_update(&ctx, message, message_len);
+	hmac = HMAC_final(&ctx);
+	memcpy(output, hmac, HMAC_size(&ctx));
+}
 
 static int pair_challenge(struct pair_challenge *challenge)
 {

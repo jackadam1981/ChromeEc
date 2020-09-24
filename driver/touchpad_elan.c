@@ -11,7 +11,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "math_util.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "shared_mem.h"
 #include "task.h"
 #include "tablet_mode.h"
@@ -666,8 +666,8 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 	 * param[5-49] is verified using SHA-256 hash.
 	 */
 	if (param[0] == 0xff && param_size == TOUCHPAD_ELAN_DEBUG_CMD_LENGTH) {
-		struct sha256_ctx ctx;
-		uint8_t *command_hash;
+		LITE_SHA256_CTX ctx;
+		const uint8_t *command_hash;
 		unsigned int offset = param[1];
 		unsigned int write_length = param[2];
 		unsigned int read_length = ((unsigned int)param[3] << 8) |

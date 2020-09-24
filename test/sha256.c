@@ -7,7 +7,8 @@
 
 #include "console.h"
 #include "common.h"
-#include "sha256.h"
+#include "cryptoc/hmac.h"
+#include "cryptoc/sha256.h"
 #include "test_util.h"
 #include "util.h"
 
@@ -125,8 +126,8 @@ static const uint8_t hmac_medium_output[] = {
 static int test_sha256(const uint8_t *input, int input_len,
 		       const uint8_t *output)
 {
-	struct sha256_ctx ctx;
-	uint8_t *tmp;
+	LITE_SHA256_CTX ctx;
+	const uint8_t *tmp;
 	int i;
 
 	/* Basic test */
@@ -151,6 +152,19 @@ static int test_sha256(const uint8_t *input, int input_len,
 	}
 
 	return 1;
+}
+
+/* TODO(tomhughes): move to cryptoc */
+static void hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,
+			const uint8_t *message, const int message_len)
+{
+	const uint8_t *hmac;
+	LITE_HMAC_CTX ctx;
+
+	HMAC_SHA256_init(&ctx, key, key_len);
+	HMAC_update(&ctx, message, message_len);
+	hmac = HMAC_final(&ctx);
+	memcpy(output, hmac, HMAC_size(&ctx));
 }
 
 static int test_hmac(const uint8_t *key, int key_len, const uint8_t *input,
