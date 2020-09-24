@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd9a98d0_654ca99d",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2020-09-24T07:16:56Z",
+      "side": 1,
+      "message": "lmap?\n\n from future.utils import lmap",
+      "range": {
+        "startLine": 84,
+        "startChar": 17,
+        "endLine": 84,
+        "endChar": 20
+      },
+      "revId": "d94b53ee5298069b3b2fa0e4937bf46a3703035b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
