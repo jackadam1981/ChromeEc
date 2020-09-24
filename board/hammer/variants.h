@@ -13,7 +13,10 @@
 #define __CROS_EC_VARIANTS_H
 
 /* USB ID */
-#ifdef BOARD_HAMMER
+#if defined(BOARD_CRUX)
+/* TODO: update PID */
+#define CONFIG_USB_PID 0x5022
+#elif defined(BOARD_HAMMER)
 #define CONFIG_USB_PID 0x5022
 #elif defined(BOARD_MAGNEMITE)
 #define CONFIG_USB_PID 0x503d
@@ -34,7 +37,16 @@
 #ifdef SECTION_IS_RW
 
 /* Touchpad interface, firmware size and physical dimension. */
-#if defined(BOARD_HAMMER) || defined(BOARD_WAND)
+#if defined(BOARD_CRUX)
+#define HAS_I2C_TOUCHPAD
+#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3207
+#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1783
+#define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_PRESSURE 511
+#define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 1018 /* tenth of mm */
+#define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 566 /* tenth of mm */
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE (48*1024)
+/* TODO: update correct parameters */
+#elif defined(BOARD_HAMMER) || defined(BOARD_WAND)
 #define HAS_I2C_TOUCHPAD
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3207
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1783
