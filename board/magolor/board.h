@@ -11,7 +11,7 @@
 #define VARIANT_DEDEDE_EC_NPCX796FC
 #include "baseboard.h"
 
-#define CONFIG_USB_PD_DEBUG_LEVEL 2
+#define CONFIG_USB_PD_DEBUG_LEVEL 0
 /* this change saves 1656 bytes of RW flash space */
 #define CONFIG_CHIP_INIT_ROM_REGION
 
@@ -33,6 +33,7 @@
 #undef  CONFIG_CHARGER_SINGLE_CHIP
 
 /* EC console commands */
+#define CONFIG_CMD_BUTTON
 #define CONFIG_CMD_TCPC_DUMP
 #define CONFIG_CMD_CHARGER_DUMP
 
@@ -127,6 +128,12 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO
 
+/* Volume Button feature */
+#define CONFIG_ADC_BUTTONS
+#define CONFIG_VOLUME_BUTTONS
+#define GPIO_VOLUME_UP_L GPIO_VOLUP_BTN_ODL
+#define GPIO_VOLUME_DOWN_L GPIO_VOLDN_BTN_ODL
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -171,6 +178,5 @@ enum battery_type {
 };
 
 int board_is_sourcing_vbus(int port);
-
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
