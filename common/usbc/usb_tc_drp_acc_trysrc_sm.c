@@ -68,11 +68,12 @@ void print_flag(int set_or_clear, int flag);
 #define TC_CLR_FLAG(port, flag)                                   \
 	do {                                                      \
 		print_flag(0, flag);                              \
-		deprecated_atomic_clear(&tc[port].flags, (flag)); \
+		deprecated_atomic_clear_bit(&tc[port].flags, (flag)); \
 	} while (0)
 #else
 #define TC_SET_FLAG(port, flag) deprecated_atomic_or(&tc[port].flags, (flag))
-#define TC_CLR_FLAG(port, flag) deprecated_atomic_clear(&tc[port].flags, (flag))
+#define TC_CLR_FLAG(port, flag) \
+	deprecated_atomic_clear_bit(&tc[port].flags, (flag))
 #endif
 #define TC_CHK_FLAG(port, flag) (tc[port].flags & (flag))
 
@@ -607,7 +608,7 @@ static bool pd_comm_allowed_by_policy(void)
 static void tc_policy_pd_enable(int port, int en)
 {
 	if (en)
-		deprecated_atomic_clear(&tc[port].pd_disabled_mask,
+		deprecated_atomic_clear_bit(&tc[port].pd_disabled_mask,
 					PD_DISABLED_BY_POLICY);
 	else
 		deprecated_atomic_or(&tc[port].pd_disabled_mask,
@@ -619,7 +620,7 @@ static void tc_policy_pd_enable(int port, int en)
 static void tc_enable_pd(int port, int en)
 {
 	if (en)
-		deprecated_atomic_clear(&tc[port].pd_disabled_mask,
+		deprecated_atomic_clear_bit(&tc[port].pd_disabled_mask,
 					PD_DISABLED_NO_CONNECTION);
 	else
 		deprecated_atomic_or(&tc[port].pd_disabled_mask,
@@ -631,7 +632,7 @@ static void tc_enable_try_src(int en)
 	if (en)
 		deprecated_atomic_or(&pd_try_src, 1);
 	else
-		deprecated_atomic_clear(&pd_try_src, 1);
+		deprecated_atomic_clear_bit(&pd_try_src, 1);
 }
 
 static void tc_detached(int port)
@@ -1743,7 +1744,7 @@ static __maybe_unused int reset_device_and_notify(int port)
 	 * waking the TCPC, but it has also set PD_EVENT_TCPC_RESET again, which
 	 * would result in a second, unnecessary init.
 	 */
-	deprecated_atomic_clear(task_get_event_bitmap(task_get_current()),
+	deprecated_atomic_clear_bit(task_get_event_bitmap(task_get_current()),
 				PD_EVENT_TCPC_RESET);
 
 	waiting_tasks =
@@ -1814,7 +1815,7 @@ void pd_prevent_low_power_mode(int port, int prevent)
 		deprecated_atomic_or(&tc[port].tasks_preventing_lpm,
 				     current_task_mask);
 	else
-		deprecated_atomic_clear(&tc[port].tasks_preventing_lpm,
+		deprecated_atomic_clear_bit(&tc[port].tasks_preventing_lpm,
 					current_task_mask);
 }
 #endif /* CONFIG_USB_PD_TCPC_LOW_POWER */

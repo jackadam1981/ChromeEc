@@ -22,7 +22,7 @@
 	tmp;                                   \
 })
 
-static inline void deprecated_atomic_clear(volatile uint32_t *addr,
+static inline void deprecated_atomic_clear_bit(volatile uint32_t *addr,
 					   uint32_t bits)
 {
 	ATOMIC_OP(and, ~bits, addr);

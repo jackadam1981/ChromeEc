@@ -12,7 +12,7 @@
 #include "cpu.h"
 #include "task.h"
 
-static inline void deprecated_atomic_clear(uint32_t volatile *addr,
+static inline void deprecated_atomic_clear_bit(uint32_t volatile *addr,
 					   uint32_t bits)
 {
 	uint32_t int_mask = read_clear_int_mask();

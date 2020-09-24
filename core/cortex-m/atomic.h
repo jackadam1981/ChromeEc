@@ -30,7 +30,7 @@
 			     : "r" (a), "r" (v) : "cc");        \
 } while (0)
 
-static inline void deprecated_atomic_clear(uint32_t volatile *addr,
+static inline void deprecated_atomic_clear_bit(uint32_t volatile *addr,
 					   uint32_t bits)
 {
 	ATOMIC_OP(bic, addr, bits);
