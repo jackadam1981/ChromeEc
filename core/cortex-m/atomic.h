@@ -42,9 +42,19 @@ static inline void deprecated_atomic_clear_bit(uint32_t volatile *addr,
 	ATOMIC_OP(bic, addr, bits);
 }
 
+static inline void atomic_clear_bit(int *addr, int bits)
+{
+	ATOMIC_OP(bic, addr, bits);
+}
+
 static inline void deprecated_atomic_or(uint32_t volatile *addr, uint32_t bits)
 {
 	ATOMIC_OP(orr, addr, bits);
+}
+
+static inline int atomic_or(int *addr, int bits)
+{
+	return __atomic_fetch_or(addr, bits, __ATOMIC_SEQ_CST);
 }
 
 static inline void deprecated_atomic_add(uint32_t volatile *addr,
@@ -53,10 +63,20 @@ static inline void deprecated_atomic_add(uint32_t volatile *addr,
 	ATOMIC_OP(add, addr, value);
 }
 
+static inline int atomic_add(int *addr, int value)
+{
+	return __atomic_fetch_add(addr, value, __ATOMIC_SEQ_CST);
+}
+
 static inline void deprecated_atomic_sub(uint32_t volatile *addr,
 					 uint32_t value)
 {
 	ATOMIC_OP(sub, addr, value);
+}
+
+static inline int atomic_sub(int *addr, int value)
+{
+	return __atomic_fetch_sub(addr, value, __ATOMIC_SEQ_CST);
 }
 
 static inline uint32_t deprecated_atomic_read_clear(uint32_t volatile *addr)
