@@ -16,9 +16,23 @@ static inline void deprecated_atomic_clear_bit(uint32_t volatile *addr,
 	__sync_and_and_fetch(addr, ~bits);
 }
 
+static inline void atomic_clear_bit(int *addr, int bits)
+{
+	__sync_and_and_fetch(addr, ~bits);
+}
+
 static inline void deprecated_atomic_or(uint32_t volatile *addr, uint32_t bits)
 {
 	__sync_or_and_fetch(addr, bits);
+}
+
+static inline int atomic_or(int *addr, int bits)
+{
+	__sync_or_and_fetch(addr, bits);
+	 /* Since EC code does not use the return value,
+	  * just return 0 not to perform unnecessary operations
+	  */
+	return 0;
 }
 
 static inline void deprecated_atomic_add(uint32_t volatile *addr,
@@ -27,10 +41,28 @@ static inline void deprecated_atomic_add(uint32_t volatile *addr,
 	__sync_add_and_fetch(addr, value);
 }
 
+static inline int atomic_add(int *addr, int value)
+{
+	__sync_add_and_fetch(addr, value);
+	 /* Since EC code does not use the return value just return 0
+	  * to be compatible with other atomic_add implementations
+	  */
+	return 0;
+}
+
 static inline void deprecated_atomic_sub(uint32_t volatile *addr,
 					 uint32_t value)
 {
 	__sync_sub_and_fetch(addr, value);
+}
+
+static inline int atomic_sub(int *addr, int value)
+{
+	__sync_sub_and_fetch(addr, value);
+	 /* Since EC code does not use the return value just return 0
+	  * to be compatible with other atomic_sub implementations
+	  */
+	return 0;
 }
 
 static inline uint32_t deprecated_atomic_read_clear(uint32_t volatile *addr)

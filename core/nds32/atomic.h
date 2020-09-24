@@ -21,12 +21,34 @@ static inline void deprecated_atomic_clear_bit(uint32_t volatile *addr,
 	set_int_mask(int_mask);
 }
 
+static inline void atomic_clear_bit(int *addr, int bits)
+{
+	volatile int *target = addr;
+	uint32_t int_mask = read_clear_int_mask();
+
+	*target &= ~bits;
+	set_int_mask(int_mask);
+}
+
 static inline void deprecated_atomic_or(uint32_t volatile *addr, uint32_t bits)
 {
 	uint32_t int_mask = read_clear_int_mask();
 
 	*addr |= bits;
 	set_int_mask(int_mask);
+}
+
+static inline int atomic_or(int *addr, int bits)
+{
+	volatile int *target = addr;
+	uint32_t int_mask = read_clear_int_mask();
+
+	*target |= bits;
+	set_int_mask(int_mask);
+	 /* Since EC code does not use the return value,
+	  * just return 0 not to perform unnecessary operations
+	  */
+	return 0;
 }
 
 static inline void deprecated_atomic_add(uint32_t volatile *addr,
@@ -38,6 +60,18 @@ static inline void deprecated_atomic_add(uint32_t volatile *addr,
 	set_int_mask(int_mask);
 }
 
+static inline int atomic_add(int *addr, int value)
+{
+	volatile int *target = addr;
+	uint32_t int_mask = read_clear_int_mask();
+	*target += value;
+	set_int_mask(int_mask);
+	 /* Since EC code does not use the return value,
+	  * just return 0 not to perform unnecessary operations
+	  */
+	return 0;
+}
+
 static inline void deprecated_atomic_sub(uint32_t volatile *addr,
 					 uint32_t value)
 {
@@ -45,6 +79,18 @@ static inline void deprecated_atomic_sub(uint32_t volatile *addr,
 
 	*addr -= value;
 	set_int_mask(int_mask);
+}
+
+static inline int atomic_sub(int *addr, int value)
+{
+	volatile int *target = addr;
+	uint32_t int_mask = read_clear_int_mask();
+	*target -= value;
+	set_int_mask(int_mask);
+	 /* Since EC code does not use the return value,
+	  * just return 0 not to perform unnecessary operations
+	  */
+	return 0;
 }
 
 static inline uint32_t deprecated_atomic_read_clear(uint32_t volatile *addr)

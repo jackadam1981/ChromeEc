@@ -28,9 +28,23 @@ static inline void deprecated_atomic_clear_bit(volatile uint32_t *addr,
 	ATOMIC_OP(and, ~bits, addr);
 }
 
+static inline void atomic_clear_bit(int *addr, int bits)
+{
+	ATOMIC_OP(and, ~bits, addr);
+}
+
 static inline void deprecated_atomic_or(volatile uint32_t *addr, uint32_t bits)
 {
 	ATOMIC_OP(or, bits, addr);
+}
+
+static inline int atomic_or(int *addr, int bits)
+{
+	ATOMIC_OP(or, bits, addr);
+	 /* Since EC code does not use the return value,
+	  * just return 0 not to perform unnecessary operations
+	  */
+	return 0;
 }
 
 static inline void deprecated_atomic_add(volatile uint32_t *addr,
@@ -39,10 +53,28 @@ static inline void deprecated_atomic_add(volatile uint32_t *addr,
 	ATOMIC_OP(add, value, addr);
 }
 
+static inline int atomic_add(int *addr, int value)
+{
+	ATOMIC_OP(add, value, addr);
+	 /* Since EC code does not use the return value,
+	  * just return 0 not to perform unnecessary operations
+	  */
+	return 0;
+}
+
 static inline void deprecated_atomic_sub(volatile uint32_t *addr,
 					 uint32_t value)
 {
 	ATOMIC_OP(add, -value, addr);
+}
+
+static inline int atomic_sub(int *addr, int value)
+{
+	ATOMIC_OP(add, -value, addr);
+	 /* Since EC code does not use the return value,
+	  * just return 0 not to perform unnecessary operations
+	  */
+	return 0;
 }
 
 static inline uint32_t deprecated_atomic_read_clear(volatile uint32_t *addr)
