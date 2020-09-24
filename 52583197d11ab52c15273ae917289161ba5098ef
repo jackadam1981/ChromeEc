@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca1158f0_1cd81029",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-24T01:07:26Z",
+      "side": 1,
+      "message": "@stimim,\n\nIt\u0027s py2/3 compatible, so I change the shebang to \"python\", and we can merge this CL first.",
+      "revId": "52583197d11ab52c15273ae917289161ba5098ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
