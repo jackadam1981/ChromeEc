@@ -16,6 +16,29 @@
       "revId": "c43ccc1920ffaa67426c988169d177e268ed468f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26be007f_38bdc35c",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-24T20:08:25Z",
+      "side": 1,
+      "message": "I think we should actually support returning the real value, espeically if we use this instead of atomic_inc.",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "c43ccc1920ffaa67426c988169d177e268ed468f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
