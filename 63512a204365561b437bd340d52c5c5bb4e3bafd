@@ -33,6 +33,24 @@
       "revId": "63512a204365561b437bd340d52c5c5bb4e3bafd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e252321_0f655732",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-24T22:47:06Z",
+      "side": 1,
+      "message": "That was my thought.  The Vbus output looks awful if we don\u0027t get it re-enabled beforehand, so I\u0027m aiming to reduce risk of hitting that.  \n\nSound like time to get this CL train a-movin\u0027.  Woo woo",
+      "parentUuid": "a58a3853_f956e9d9",
+      "revId": "63512a204365561b437bd340d52c5c5bb4e3bafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
