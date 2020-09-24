@@ -289,7 +289,13 @@ static void dpm_attempt_mode_exit(int port)
 	/* TODO(b/156749387): Support Data Reset for exiting USB4. */
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
 	    tbt_is_active(port)) {
-		CPRINTS("C%d: TBT teardown", port);
+		/*
+		 * When the port is in USB4 mode and receives an exit request,
+		 * it leaves USB4 SOP in active state.
+		 * TODO(b/156749387): Support Data Reset for exiting USB4 SOP.
+		 */
+		if (!enter_usb_is_active(port))
+			CPRINTS("C%d: TBT teardown", port);
 		tbt_exit_mode_request(port);
 		vdo_count = tbt_setup_next_vdm(port, VDO_MAX_SIZE, &vdm,
 					&tx_type);

@@ -21,6 +21,7 @@
 #include "usb_pd_dpm.h"
 #include "usb_pd_tbt.h"
 #include "usb_pe_sm.h"
+#include "usb_tbt_alt_mode.h"
 #include "usbc_ppc.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -37,11 +38,63 @@ enum usb4_mode_status {
 };
 
 enum usb4_states {
+	USB4_START,
 	USB4_ENTER_SOP,
+	USB4_ENTER_SOP_PRIME,
+	USB4_ENTER_SOP_PRIME_PRIME,
 	USB4_ACTIVE,
 	USB4_INACTIVE,
 	USB4_STATE_COUNT,
 };
+
+/*
+ * USB4 flow for Active cable
+ *
+ * Structured
+ * VDM version
+ * (cable revision)-- <2.0 -------->|
+ *     |                            |
+ *     >=2.0                        |
+ *     |                            |
+ * VDO version---- <1.3 -------> Modal op? -- N --|
+ * (B21:23 of                       |             |
+ *  Discover ID SOP'-               y             |
+ *  Active cable VDO1)              |             |
+ *     |                         TBT SVID? -- N --|
+ *     >=1.3                        |             |
+ *     |                            y             |
+ * Cable USB4 support? - N          |             |
+ *     |                 |      Gen4 cable? - N - Skip USB4 mode entry
+ *     y           Skip USB4        |
+ *     |           mode entry       |
+ * Enter USB4                       y
+ * (SOP',SOP'',SOP)                 |
+ *                                  |
+ *         |<---- NAK ----- Enter mode TBT SOP'<---|
+ *         |                     |                 |
+ *         |                    ACK                |
+ *         |                     |                 |
+ *         |<---- NAK ----- Enter mode TBT SOP''   |
+ *         |                     |                 |
+ * Exit TBT mode SOP            ACK                |
+ *         |                     |                 |
+ *      ACK/NAK            Enter USB4 mode         |
+ *         |                     SOP               |
+ * Exit TBT mode SOP''                             |
+ *         |                                       |
+ *      ACK/NAK                                    |
+ *         |                                       |
+ * Exit TBT mode SOP'                              |
+ *         |                                       |
+ *      ACK/NAK                                    |
+ *         |                                       |
+ *         |--------Retry done? ---- N ------------|
+ *                     |
+ *                     y
+ *                     |
+ *               Skip USB4 mode entry
+ */
+
 static enum usb4_states usb4_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static void usb4_debug_prints(int port, enum usb4_mode_status usb4_status)
@@ -58,7 +111,13 @@ bool enter_usb_entry_is_done(int port)
 
 void enter_usb_init(int port)
 {
-	usb4_state[port] = USB4_ENTER_SOP;
+	usb4_state[port] = USB4_START;
+}
+
+bool enter_usb_is_active(int port)
+{
+	return usb4_state[port] != USB4_START ||
+	       usb4_state[port] != USB4_INACTIVE;
 }
 
 void enter_usb_failed(int port)
@@ -87,30 +146,81 @@ static bool enter_usb_response_valid(int port, enum tcpm_transmit_type type)
 	return true;
 }
 
+static bool enter_usb_cable_is_capable(struct pd_discovery *disc_sop_prime)
+{
+	return disc_sop_prime->identity.product_t2.a2_rev30.usb_40_support ==
+				USB4_SUPPORTED;
+}
+
 bool enter_usb_is_capable(int port)
 {
 	const struct pd_discovery *disc =
 			pd_get_am_discovery(port, TCPC_TX_SOP);
-	/*
-	 * TODO: b/156749387 Add support for entering the USB4 mode with an
-	 * active cable.
-	 */
+
+	/* TODO: b/156749387 Add support for LRD cable */
+
 	if (!IS_ENABLED(CONFIG_USB_PD_USB4) ||
 	    !PD_PRODUCT_IS_USB4(disc->identity.product_t1.raw_value) ||
-	    get_usb4_cable_speed(port) < USB_R30_SS_U32_U40_GEN1 ||
 	    usb4_state[port] == USB4_INACTIVE ||
-	    get_usb_pd_cable_type(port) != IDH_PTYPE_PCABLE)
+	    (get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE &&
+	     get_usb4_cable_speed(port) < USB_R30_SS_U32_U40_GEN1))
 		return false;
 
+	if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE) {
+		struct pd_discovery *disc_sop_prime =
+			pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+		union tbt_mode_resp_cable cable_mode_resp = {
+			.raw_value =
+				pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME) };
+
+		if (pd_get_vdo_ver(port, TCPC_TX_SOP_PRIME) >= VDM_VER20 &&
+		    disc_sop_prime->identity.product_t1.a_rev30.vdo_ver >=
+							VDO_VERSION_1_3) {
+			/*
+			 * For VDM version >= 2.0 and VD0 version is >= 1.3,
+			 * do not enter USB4 mode if the cable isn't USB4
+			 * capable.
+			 */
+			if (!enter_usb_cable_is_capable(disc_sop_prime))
+				return false;
+		/*
+		 * For VDM version < 2.0 or VD0 version < 1.3, do not enter USB4
+		 * mode if the cable -
+		 * doesn't support modal operation or
+		 * doesn't support Intel SVID or
+		 * doesn't have rounded support or
+		 * hasn't entered Thunderbolt mode.
+		 */
+		} else if (!disc->identity.idh.modal_support ||
+			   !pd_is_mode_discovered_for_svid(port,
+					TCPC_TX_SOP_PRIME, USB_VID_INTEL) ||
+			    cable_mode_resp.tbt_rounded !=
+					TBT_GEN3_GEN4_ROUNDED_NON_ROUNDED ||
+			   !tbt_cable_entry_is_done(port)) {
+			return false;
+		}
+	}
 	return true;
 }
 
 void enter_usb_accepted(int port, enum tcpm_transmit_type type)
 {
+	struct pd_discovery *disc;
+
 	if (!enter_usb_response_valid(port, type))
 		return;
 
 	switch (usb4_state[port]) {
+	case USB4_ENTER_SOP_PRIME:
+		disc = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
+		if (disc->identity.product_t1.a_rev20.sop_p_p)
+			usb4_state[port] = USB4_ENTER_SOP_PRIME_PRIME;
+		else
+			usb4_state[port] = USB4_ENTER_SOP;
+		break;
+	case USB4_ENTER_SOP_PRIME_PRIME:
+		usb4_state[port] = USB4_ENTER_SOP;
+		break;
 	case USB4_ENTER_SOP:
 		/* Connect the SBU and USB lines to the connector */
 		if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
@@ -140,24 +250,45 @@ void enter_usb_rejected(int port, enum tcpm_transmit_type type)
 	enter_usb_failed(port);
 }
 
-uint32_t enter_usb_setup_next_msg(int port)
+uint32_t enter_usb_setup_next_msg(int port, enum tcpm_transmit_type *type)
 {
 	switch (usb4_state[port]) {
+	case USB4_START:
+		if (tbt_cable_entry_is_done(port) ||
+		    get_usb_pd_cable_type(port) == IDH_PTYPE_PCABLE) {
+			*type = TCPC_TX_SOP;
+			usb4_state[port] = USB4_ENTER_SOP;
+			/*
+			 * Set the USB mux to safe state to avoid damaging the
+			 * mux pins, since they are being re-purposed for USB4.
+			 */
+			usb_mux_set_safe_mode(port);
+		} else {
+			usb4_state[port] = USB4_ENTER_SOP_PRIME;
+			*type = TCPC_TX_SOP_PRIME;
+		}
+		break;
+	case USB4_ENTER_SOP_PRIME:
+		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
+			*type = TCPC_TX_SOP_PRIME;
+		break;
+	case USB4_ENTER_SOP_PRIME_PRIME:
+		if (get_usb_pd_cable_type(port) == IDH_PTYPE_ACABLE)
+			*type = TCPC_TX_SOP_PRIME_PRIME;
+		break;
 	case USB4_ENTER_SOP:
+		usb4_state[port] = USB4_ENTER_SOP;
+		*type = TCPC_TX_SOP;
 		/*
-		 * Set the USB mux to safe state to avoid damaging the mux pins
-		 * since, they are being re-purposed for USB4.
-		 *
-		 * TODO: b/141363146 Remove once data reset feature is in place
+		 * Set the USB mux to safe state to avoid damaging the mux pins,
+		 * since they are being re-purposed for USB4.
 		 */
 		usb_mux_set_safe_mode(port);
-
-		usb4_state[port] = USB4_ENTER_SOP;
-		return get_enter_usb_msg_payload(port);
+		break;
 	case USB4_ACTIVE:
 		return -1;
 	default:
-		break;
+		return 0;
 	}
-	return 0;
+	return get_enter_usb_msg_payload(port);
 }
