@@ -13,6 +13,7 @@
 #include "task.h"
 #include "timer.h"
 #include "usb_pd.h"
+#include "usb_tbt_alt_mode.h"
 #include "util.h"
 
 #define BB_RETIMER_REG_SIZE	4
@@ -173,7 +174,11 @@ static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 	    (cable_type == IDH_PTYPE_ACABLE))
 		*set_retimer_con |= BB_RETIMER_ACTIVE_PASSIVE;
 
-	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
+	if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED ||
+	   (IS_ENABLED(CONFIG_USB_PD_TCPMV2) &&
+	    IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
+	    IS_ENABLED(CONFIG_USB_PD_USB4) &&
+	    tbt_cable_entry_is_done(port))) {
 		cable_resp.raw_value =
 			pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
 		dev_resp.raw_value = pd_get_tbt_mode_vdo(port, TCPC_TX_SOP);

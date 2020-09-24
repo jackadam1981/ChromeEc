@@ -17,6 +17,7 @@
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd.h"
+#include "usb_tbt_alt_mode.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 /*
@@ -371,7 +372,12 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 			if (mux_state & USB_PD_MUX_USB4_ENABLED) {
 				r_v2->cable_speed =
 					get_usb4_cable_speed(p->port);
-			} else if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED) {
+			}
+			if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED ||
+			   (IS_ENABLED(CONFIG_USB_PD_TCPMV2) &&
+			    IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
+			    IS_ENABLED(CONFIG_USB_PD_USB4) &&
+			    tbt_cable_entry_is_done(p->port))) {
 				r_v2->cable_speed =
 					get_tbt_cable_speed(p->port);
 				r_v2->cable_gen =
