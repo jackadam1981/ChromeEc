@@ -122,6 +122,13 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO
 
+/* Volume Button feature */
+#define CONFIG_CMD_BUTTON
+#define CONFIG_VOLUME_BUTTONS
+#define GPIO_VOLUME_UP_L GPIO_VOLUP_BTN_ODL
+#define GPIO_VOLUME_DOWN_L GPIO_VOLDN_BTN_ODL
+#define CONFIG_USE_ADC_DETECT_VOL_KEYS
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -166,6 +173,6 @@ enum battery_type {
 };
 
 int board_is_sourcing_vbus(int port);
-
+int adc_vol_key_physical_value(enum gpio_signal gpio);
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
