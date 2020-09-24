@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f761c26_9e2e35a4",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-24T03:53:28Z",
+      "side": 1,
+      "message": "Any reason we need this volatile?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4a40c6_46437bf4",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-24T03:53:28Z",
+      "side": 1,
+      "message": "This part seems redundant.\n\nYou could:\n\n unsigned int val \u003d 0;",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14f3cade_1e32ee81",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-24T03:53:28Z",
+      "side": 1,
+      "message": "You could use:\n\nval \u003d opp-\u003emod \u003c\u003c OSC_MOD_SHIFT;",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 40
+      },
+      "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e7ce2d_fa8efdad",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-24T03:53:28Z",
+      "side": 1,
+      "message": "You could use:\n\n/* bias\u003d64 */\nAP_ULPOSC_CON2(opp-\u003eosc) \u003d 64;",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2c5f404_b88b1140",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-24T03:53:28Z",
+      "side": 1,
+      "message": "Let\u0027s use a more conformant statement:\n\n  cnt \u003e 0",
+      "range": {
+        "startLine": 140,
+        "startChar": 17,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe5ac5a_e6527601",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-24T03:53:28Z",
+      "side": 1,
+      "message": "They will be assigned before used. They do not need a init value.\n\n uint32_t diff_by_min, diff_by_max, cal_result;",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 24
+      },
+      "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d57d1e_6826ab2b",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-24T03:53:28Z",
+      "side": 1,
+      "message": "So the ULPOSC was enabled by default. Could we document this?",
+      "range": {
+        "startLine": 264,
+        "startChar": 17,
+        "endLine": 264,
+        "endChar": 18
+      },
+      "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
