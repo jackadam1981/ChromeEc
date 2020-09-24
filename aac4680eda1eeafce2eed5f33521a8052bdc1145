@@ -52,6 +52,24 @@
       "revId": "aac4680eda1eeafce2eed5f33521a8052bdc1145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a015614_0db51f4d",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2020-09-24T16:40:21Z",
+      "side": 1,
+      "message": "Ah I see your comments now, sorry for the noise :)",
+      "parentUuid": "9b3e15ca_326b8cc6",
+      "revId": "aac4680eda1eeafce2eed5f33521a8052bdc1145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
