@@ -787,6 +787,13 @@ void sm5803_disable_low_power_mode(int chgnum)
 	reg &= ~SM5803_PHOT1_IBUS_PHOT_COMP_EN;
 	rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
 
+	/* TEST ONLY: Disable LDO with nothing connected */
+	if (pd_is_disconnected(chgnum) && chgnum == CHARGER_SECONDARY) {
+		rv = main_read8(chgnum, SM5803_REG_REFERENCE, &reg);
+		reg |= (BIT(0) | BIT(1));
+		rv |= main_write8(chgnum, SM5803_REG_REFERENCE, reg);
+	}
+
 	if (rv)
 		CPRINTS("%s %d: Failed to set in disable low power mode",
 			CHARGER_NAME, chgnum);
@@ -813,6 +820,12 @@ void sm5803_enable_low_power_mode(int chgnum)
 	rv |= chg_read8(chgnum, SM5803_REG_PHOT1, &reg);
 	reg &= ~SM5803_PHOT1_COMPARATOR_EN;
 	rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
+
+	if (chgnum == CHARGER_SECONDARY) {
+		rv |= main_read8(chgnum, SM5803_REG_REFERENCE, &reg);
+		reg &= ~(BIT(0) | BIT(1));
+		rv |= main_write8(chgnum, SM5803_REG_REFERENCE, reg);
+	}
 
 	if (rv)
 		CPRINTS("%s %d: Failed to set in enable low power mode",
