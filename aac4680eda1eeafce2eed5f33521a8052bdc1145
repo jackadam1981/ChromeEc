@@ -34,6 +34,24 @@
       "revId": "aac4680eda1eeafce2eed5f33521a8052bdc1145",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b3e15ca_326b8cc6",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-24T16:38:42Z",
+      "side": 1,
+      "message": "+1 :) I made the same comment in another one of the (5) atomic header files",
+      "parentUuid": "84de48f0_e4fe5c95",
+      "revId": "aac4680eda1eeafce2eed5f33521a8052bdc1145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
