@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7362cf1_943db831",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-09-24T07:11:08Z",
+      "side": 1,
+      "message": "Please rebase this change. It is merged conflict now. Besides, please make sure your code is build-able and workable.",
+      "revId": "0dbb2b5b6071527bf28d308ae108e3ab1be209fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d89177_7789e9ea",
+        "filename": "board/fennel/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2020-09-24T07:11:08Z",
+      "side": 1,
+      "message": "Already defined in the baseboard.h",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "0dbb2b5b6071527bf28d308ae108e3ab1be209fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
