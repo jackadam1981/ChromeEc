@@ -881,6 +881,7 @@ def IsPrintable(byte):
   """
   return byte >= ord(' ') and byte <= ord('~')
 
+
 def StartLoop(console, command_active, shutdown_pipe=None):
   """Starts the infinite loop of console processing.
 
@@ -1043,10 +1044,6 @@ def StartLoop(console, command_active, shutdown_pipe=None):
 
   except KeyboardInterrupt:
     pass
-
-  # TODO(crbug.com/894870): Stop suppressing all exceptions.
-  except:
-    traceback.print_exc()
 
   finally:
     ep.unregister(console.master_pty)
