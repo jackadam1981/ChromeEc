@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "358eeddf_2254537f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-24T05:38:03Z",
+      "side": 1,
+      "message": "Can you clarify what the intended use-case is for TBT UFP?  Is this for testing, or is it intended for customers to use? ",
+      "revId": "cc5f44751d11c70a85d1e8c74f956d70436eb268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cce732f4_6ac34ce7",
         "filename": "baseboard/volteer/usb_pd_policy.c",
         "patchSetId": 19
