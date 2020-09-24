@@ -31,10 +31,7 @@
 #define CONFIG_OCPC_DEF_RBATT_MOHMS 22 /* R_DS(on) 11.6mOhm + 10mOhm sns rstr */
 #define CONFIG_OCPC
 #undef  CONFIG_CHARGER_SINGLE_CHIP
-
-/* EC console commands */
-#define CONFIG_CMD_TCPC_DUMP
-#define CONFIG_CMD_CHARGER_DUMP
+#undef CONFIG_CMD_CHARGER_DUMP
 
 /* GPIO for C1 interrupts, for baseboard use */
 #define GPIO_USB_C1_INT_ODL GPIO_SUB_USB_C1_INT_ODL
@@ -127,6 +124,12 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_GPIO
 
+/* Volume Button feature */
+#define CONFIG_ADC_BUTTONS
+#define CONFIG_VOLUME_BUTTONS
+#define GPIO_VOLUME_UP_L GPIO_VOLUP_BTN_ODL
+#define GPIO_VOLUME_DOWN_L GPIO_VOLDN_BTN_ODL
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -171,6 +174,5 @@ enum battery_type {
 };
 
 int board_is_sourcing_vbus(int port);
-
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
