@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbd2df38_d9567e39",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-24T03:25:39Z",
+      "side": 1,
+      "message": "i\u0027m going to hold off on these changes until we get the go-ahead\nfrom the kernel team. the kernel was the only consumer of this\ndata but no longer consumes it even though the code still exists.",
+      "revId": "f531d01ae66bbaebdec4a020030de312f0eade88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
