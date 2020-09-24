@@ -218,8 +218,10 @@ static void dpm_attempt_mode_entry(int port)
 	}
 
 	/* Check if the device and cable support USB4. */
-	if (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_is_capable(port) &&
-			dpm_mode_entry_requested(port, TYPEC_MODE_USB4)) {
+	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
+	    enter_usb_port_partner_is_capable(port) &&
+	    enter_usb_cable_is_capable(port) &&
+	    dpm_mode_entry_requested(port, TYPEC_MODE_USB4)) {
 		pd_dpm_request(port, DPM_REQUEST_ENTER_USB);
 		return;
 	}
@@ -286,9 +288,13 @@ static void dpm_attempt_mode_exit(int port)
 	int vdo_count = 0;
 	enum tcpm_transmit_type tx_type = TCPC_TX_SOP;
 
-	/* TODO(b/156749387): Support Data Reset for exiting USB4. */
 	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
 	    tbt_is_active(port)) {
+		/*
+		 * When the port is in USB4 mode and receives an exit request,
+		 * it leaves USB4 SOP in active state.
+		 * TODO(b/156749387): Support Data Reset for exiting USB4 SOP.
+		 */
 		CPRINTS("C%d: TBT teardown", port);
 		tbt_exit_mode_request(port);
 		vdo_count = tbt_setup_next_vdm(port, VDO_MAX_SIZE, &vdm,
