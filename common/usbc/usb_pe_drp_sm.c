@@ -5455,6 +5455,7 @@ static void pe_vdm_response_exit(int port)
 static void pe_enter_usb_entry(int port)
 {
 	uint32_t usb4_payload;
+	enum tcpm_transmit_type tx_type = TCPC_TX_SOP;
 
 	print_current_state(port);
 
@@ -5463,7 +5464,7 @@ static void pe_enter_usb_entry(int port)
 		return;
 	}
 
-	usb4_payload = enter_usb_setup_next_msg(port);
+	usb4_payload = enter_usb_setup_next_msg(port, &tx_type);
 
 	/* Port is already in USB4 mode, do not send enter USB message again */
 	if (usb4_payload < 0) {
@@ -5484,7 +5485,7 @@ static void pe_enter_usb_entry(int port)
 	tx_emsg[port].len = sizeof(usb4_payload);
 
 	memcpy(tx_emsg[port].buf, &usb4_payload, tx_emsg[port].len);
-	send_data_msg(port, TCPC_TX_SOP, PD_DATA_ENTER_USB);
+	send_data_msg(port, tx_type, PD_DATA_ENTER_USB);
 	pe_sender_response_msg_entry(port);
 }
 

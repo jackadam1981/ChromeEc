@@ -68,7 +68,8 @@ void enter_usb_rejected(int port, enum tcpm_transmit_type type);
  * Constructs the next USB4 EUDO that should be sent.
  *
  * @param port    USB-C port number
+ * @param type    Transmit type (SOP, SOP', SOP'') for request
  */
-uint32_t enter_usb_setup_next_msg(int port);
+uint32_t enter_usb_setup_next_msg(int port, enum tcpm_transmit_type *type);
 
 #endif
