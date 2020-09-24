@@ -2120,6 +2120,15 @@ void disable_enter_usb4_mode(int port);
 bool should_enter_usb4_mode(int port);
 
 /**
+ * Returns true if Thunderbolt mode entry for cable is done
+ *
+ * @param port USB-C port number
+ * @return True if Thunderbolt mode entry for cable is done,
+ *         false otherwise
+ */
+bool is_tbt_cable_entry_done(int port);
+
+/**
  * Return Thunderbolt rounded support
  * Rounded support indicates if the cable can support rounding the
  * frequency depending upon the cable generation.

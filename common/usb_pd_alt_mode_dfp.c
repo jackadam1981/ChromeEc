@@ -751,6 +751,16 @@ void set_tbt_compat_mode_ready(int port)
 	}
 }
 
+bool is_tbt_cable_entry_done(int port)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_TCPMV2) &&
+	    IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE) &&
+	    IS_ENABLED(CONFIG_USB_PD_USB4))
+		return tbt_cable_entry_is_done(port);
+
+	return false;
+}
+
 /*
  * Ref: USB Type-C Cable and Connector Specification
  * Figure F-1 TBT3 Discovery Flow
