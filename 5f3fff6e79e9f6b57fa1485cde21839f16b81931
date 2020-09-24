@@ -39,6 +39,30 @@
       "revId": "5f3fff6e79e9f6b57fa1485cde21839f16b81931",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cabb30c0_3f7f0260",
+        "filename": "util/inject-keys.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-24T09:34:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84735791_ee5dc7ae",
+      "range": {
+        "startLine": 76,
+        "startChar": 61,
+        "endLine": 76,
+        "endChar": 63
+      },
+      "revId": "5f3fff6e79e9f6b57fa1485cde21839f16b81931",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
