@@ -9,7 +9,7 @@
  */
 
 #include "rsa.h"
-#include "sha256.h"
+#include "cryptoc/sha256.h"
 #include "util.h"
 
 /**

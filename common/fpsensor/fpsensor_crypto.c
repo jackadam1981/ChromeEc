@@ -6,6 +6,7 @@
 
 #include "aes.h"
 #include "aes-gcm.h"
+#include "cryptoc/hmac.h"
 #include "cryptoc/util.h"
 #include "fpsensor_crypto.h"
 #include "fpsensor_private.h"
@@ -42,6 +43,19 @@ static int get_ikm(uint8_t *ikm)
 	memcpy(ikm + CONFIG_ROLLBACK_SECRET_SIZE, tpm_seed, sizeof(tpm_seed));
 
 	return EC_SUCCESS;
+}
+
+/* TODO(tomhughes): move to cryptoc */
+static void hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,
+			const uint8_t *message, const int message_len)
+{
+	const uint8_t *hmac;
+	LITE_HMAC_CTX ctx;
+
+	HMAC_SHA256_init(&ctx, key, key_len);
+	HMAC_update(&ctx, message, message_len);
+	hmac = HMAC_final(&ctx);
+	memcpy(output, hmac, HMAC_size(&ctx));
 }
 
 static void hkdf_extract(uint8_t *prk, const uint8_t *salt, size_t salt_size,
