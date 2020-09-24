@@ -592,11 +592,15 @@ static bool pd_comm_allowed_by_policy(void)
 	 * when sysjump to RW that makes the device brownout on the dead-battery
 	 * case. Disable PD for this special case as a workaround.
 	 */
-	if (IS_ENABLED(CONFIG_SYSTEM_UNLOCKED) &&
+	if ( IS_ENABLED(CONFIG_SYSTEM_UNLOCKED) &&
 	    (IS_ENABLED(CONFIG_VBOOT_EFS2) ||
 	     usb_get_battery_soc() >= CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC))
 		return true;
 
+	CPRINTS("C<ALL>: PD comm allowed NO: usb_get_battery_soc [%d]", usb_get_battery_soc());
+	CPRINTS("C<ALL>: Overriding TRUE as HACK.");
+		return true;
+		
 	return false;
 }
 
