@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387a871d_85e15372",
+        "filename": "test/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-09-24T17:55:28Z",
+      "side": 1,
+      "message": "I will figure out the conditional compilation later",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "880a5d4e4a6e45df554a0195ed7988984e352c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0a4656_3531d4c8",
+        "filename": "test/rsa3072-F4.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1345639
+      },
+      "writtenOn": "2020-09-24T17:55:28Z",
+      "side": 1,
+      "message": "The problem is here. We can\u0027t use futility to generate the signature because 3072-byte F4 exponent algorithm isn\u0027t supported in futility: https://source.corp.google.com/chromeos_public/src/platform/vboot_reference/host/lib21/host_key.c;l\u003d517",
+      "revId": "880a5d4e4a6e45df554a0195ed7988984e352c8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
