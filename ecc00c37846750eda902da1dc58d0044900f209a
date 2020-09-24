@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a73e123_71c7948b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "just formatting adjustments need made.\n\nif you use \"clang_format_patch.py\", it can correct most of these for you",
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d22d7886_2010d529",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "indentation needs updated",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 385,
+        "endChar": 37
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76db0326_c1fd6d37",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "480307db_6a05ec11",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "indentation needs updated",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 25
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d371797a_21835855",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 615,
+        "startChar": 0,
+        "endLine": 615,
+        "endChar": 24
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d0dad09_4ca6e053",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "need to add more spaces before \"\\\" so they align above now\n\nclang-format can do this for you",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 53
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "054fd016_5f6daa8d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "indentation needs updated",
+      "range": {
+        "startLine": 612,
+        "startChar": 0,
+        "endLine": 612,
+        "endChar": 28
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae5327d0_2b320de4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 624,
+        "startChar": 0,
+        "endLine": 624,
+        "endChar": 32
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a707df32_ffd5a646",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1748,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1748,
+        "startChar": 0,
+        "endLine": 1748,
+        "endChar": 25
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2bb110_dc70b43e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1819,
+        "startChar": 0,
+        "endLine": 1819,
+        "endChar": 24
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a840265e_23881b86",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 22
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f0d092c_bb4a2a96",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 583,
+        "endChar": 20
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dcce3ee_3027bbec",
+        "filename": "core/cortex-m0/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2dde34b_72d1b2c2",
+        "filename": "core/host/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871c0369_383f68f5",
+        "filename": "core/minute-ia/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f60203_e236b93a",
+        "filename": "core/nds32/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "251425cb_0f203045",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-24T15:19:33Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "ecc00c37846750eda902da1dc58d0044900f209a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
