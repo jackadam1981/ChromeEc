@@ -809,10 +809,17 @@ void sm5803_enable_low_power_mode(int chgnum)
 	reg &= ~SM5803_PSYS1_DAC_EN;
 	rv |= meas_write8(chgnum, SM5803_REG_PSYS1, reg);
 
-	/* Disable PROCHOT comparators */
-	rv |= chg_read8(chgnum, SM5803_REG_PHOT1, &reg);
-	reg &= ~SM5803_PHOT1_COMPARATOR_EN;
-	rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
+	if (pd_is_disconnected(chgnum)) {
+		/*
+		 * Disable PROCHOT comparators only if port is inactive.  Vbus
+		 * sourcing requires that the Vbus comparator be enabled, and it
+		 * cannot be enabled from HOOK_USB_PD_CONNECT since that is
+		 * called after Vbus has turned on.
+		 */
+		rv |= chg_read8(chgnum, SM5803_REG_PHOT1, &reg);
+		reg &= ~SM5803_PHOT1_COMPARATOR_EN;
+		rv |= chg_write8(chgnum, SM5803_REG_PHOT1, reg);
+	}
 
 	if (rv)
 		CPRINTS("%s %d: Failed to set in enable low power mode",
