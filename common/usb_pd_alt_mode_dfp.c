@@ -921,7 +921,7 @@ enum usb_rev30_ss get_usb4_cable_speed(int port)
 	return max_usb4_speed;
 }
 
-uint32_t get_enter_usb_msg_payload(int port)
+uint32_t get_enter_usb_msg_payload(int port, enum tcpm_transmit_type type)
 {
 	/*
 	 * Ref: USB Power Delivery Specification Revision 3.0, Version 2.0
@@ -929,9 +929,19 @@ uint32_t get_enter_usb_msg_payload(int port)
 	 */
 	union enter_usb_data_obj eudo;
 	struct pd_discovery *disc;
+	union tbt_mode_resp_cable cable_mode_resp;
 
 	if (!IS_ENABLED(CONFIG_USB_PD_USB4))
 		return 0;
+
+	/*
+	 * Set the USB mux to safe state to avoid damaging the mux pins
+	 * since, they are being re-purposed for USB4.
+	 *
+	 * TODO: b/141363146 Remove once data reset feature is in place
+	 */
+	if (type == TCPC_TX_SOP)
+		usb_mux_set_safe_mode(port);
 
 	disc = pd_get_am_discovery(port, TCPC_TX_SOP_PRIME);
 	eudo.mode = USB_PD_40;
@@ -939,13 +949,21 @@ uint32_t get_enter_usb_msg_payload(int port)
 	eudo.usb3_drd_cap = IS_ENABLED(CONFIG_USB_PD_USB32_DRD);
 	eudo.cable_speed = get_usb4_cable_speed(port);
 
-	if (is_rev3_vdo(port, TCPC_TX_SOP_PRIME) &&
-	    (disc->identity.idh.product_type == IDH_PTYPE_ACABLE)) {
-		eudo.cable_type =
-			(disc->identity.product_t2.a2_rev30.active_elem ==
-			ACTIVE_RETIMER) ? CABLE_TYPE_ACTIVE_RETIMER :
-			CABLE_TYPE_ACTIVE_REDRIVER;
-	/* TODO: Add eudo.cable_type for Revisiosn 2 active cables */
+	if (disc->identity.idh.product_type == IDH_PTYPE_ACABLE) {
+		if (is_rev3_vdo(port, TCPC_TX_SOP_PRIME)) {
+			eudo.cable_type =
+			       disc->identity.product_t2.a2_rev30.active_elem ==
+				ACTIVE_RETIMER ? CABLE_TYPE_ACTIVE_RETIMER :
+				CABLE_TYPE_ACTIVE_REDRIVER;
+		} else {
+			cable_mode_resp.raw_value =
+			pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
+
+			eudo.cable_type =
+				cable_mode_resp.retimer_type  == USB_RETIMER ?
+				CABLE_TYPE_ACTIVE_RETIMER :
+				CABLE_TYPE_ACTIVE_REDRIVER;
+		}
 	} else {
 		eudo.cable_type = CABLE_TYPE_PASSIVE;
 	}
