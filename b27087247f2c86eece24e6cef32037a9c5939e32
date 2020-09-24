@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "08ccd3df_f2ca1874",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-09-24T06:40:57Z",
+      "side": 1,
+      "message": "In fact, since we are using var(X) + var(Y) for the variance, theoretically, we should use the 200% rms_noise^2. Howerver, the actual rms_noise in BMI160 is a little less then the spec. In result, the var(X) + var(Y) is roughtly 120% rms_nose^2.\nI have some varaince data set on ampton, see https://docs.google.com/spreadsheets/d/1zv4057YZnaur3f2SdKwrZVSxDSfAuX_PDaXvaF5WNSU/edit",
+      "parentUuid": "a1fda694_d03407fc",
+      "revId": "b27087247f2c86eece24e6cef32037a9c5939e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b25bc90_e969ec14",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "b27087247f2c86eece24e6cef32037a9c5939e32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f6e893f_b4c31512",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-09-24T06:40:57Z",
+      "side": 1,
+      "message": "ampton",
+      "parentUuid": "2b25bc90_e969ec14",
+      "revId": "b27087247f2c86eece24e6cef32037a9c5939e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ce04fc69_1341712d",
+        "filename": "common/body_detection.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-09-24T06:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01d55c95_e7f1b9d8",
+      "revId": "b27087247f2c86eece24e6cef32037a9c5939e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93ff1360_2dc8520b",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "b27087247f2c86eece24e6cef32037a9c5939e32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5635b7_87adc453",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5708,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-09-24T06:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93ff1360_2dc8520b",
+      "revId": "b27087247f2c86eece24e6cef32037a9c5939e32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
