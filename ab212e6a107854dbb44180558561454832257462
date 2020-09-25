@@ -16,6 +16,24 @@
       "revId": "ab212e6a107854dbb44180558561454832257462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c313d69f_fda13b20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2020-09-25T18:41:13Z",
+      "side": 1,
+      "message": "I think there are currently two things going on in the lab wrt ccd\n- grunt is super broken\n- there\u0027s anecdotal evidence that servod can fail to come up with ccd, though that might be fixable through cc line toggling (I guess cr50 is asleep?)\n\nso this might be impacting both or neither (reverting this did not fix grunt for example), so we\u0027ll want to revert for now, and then make sure we can attribute the other two before landing it again",
+      "parentUuid": "17da77fc_7342df07",
+      "revId": "ab212e6a107854dbb44180558561454832257462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
