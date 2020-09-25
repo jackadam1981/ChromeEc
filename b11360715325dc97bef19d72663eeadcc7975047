@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9b57c3d_dbe19b36",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-25T03:43:50Z",
+      "side": 1,
+      "message": "What about\n\n args \u003d {}\n if six.PY3:\n   args[\u0027encoding\u0027] \u003d \u0027utf-8\u0027\n\n rawstrings \u003d subprocess....([...], **args)",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 76
+      },
+      "revId": "b11360715325dc97bef19d72663eeadcc7975047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
