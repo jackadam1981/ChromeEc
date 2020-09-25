@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7128aa95_0e2f473e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-09-25T21:02:10Z",
+      "side": 1,
+      "message": "Can you add the build commands here?",
+      "revId": "54e2fa636544cf7a6c240cad765783981f108920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66498aea_2f2d41dd",
         "filename": "CMakeLists.txt",
         "patchSetId": 1
@@ -46,6 +63,47 @@
       "revId": "54e2fa636544cf7a6c240cad765783981f108920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17c32ab3_e2ce6b72",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-09-25T21:02:10Z",
+      "side": 1,
+      "message": "It would only be for this one file though, right? Does the .. spill over into other places?",
+      "parentUuid": "79b65df0_63a1d4c5",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 0
+      },
+      "revId": "54e2fa636544cf7a6c240cad765783981f108920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0795cd6d_bd1678aa",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-09-25T21:02:10Z",
+      "side": 1,
+      "message": "I suppose this should move into the code base soon so that others can contribute",
+      "revId": "54e2fa636544cf7a6c240cad765783981f108920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -96,6 +154,24 @@
       "side": 1,
       "message": "I think the Kconfig stuff only applies to Zephyr so we want to isolate it to the shim.\n\nOther Zephyr module are able to make do without adding Kconfig and CmakeLists.txt to their non-zephyr folders I believe. I am hoping we can do the same",
       "parentUuid": "7b0b7853_02b997fb",
+      "revId": "54e2fa636544cf7a6c240cad765783981f108920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f37ba559_355ac3a6",
+        "filename": "Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-09-25T21:02:10Z",
+      "side": 1,
+      "message": "Can we use source instead of rsource for those cases?\n\nI\u0027m just not sure about putting Kconfig files else where. I worry that they will be confusing for people.\n\nIt means that we\u0027ll have some strange cmake and Kconfig files though - setting up options for things that are in other directories.",
+      "parentUuid": "4a37c572_3302fb57",
       "revId": "54e2fa636544cf7a6c240cad765783981f108920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
