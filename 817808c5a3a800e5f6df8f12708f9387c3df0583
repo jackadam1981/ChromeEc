@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5cb0c65_85a0fc2e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-25T21:34:09Z",
+      "side": 1,
+      "message": "Do we run into this case if we boot without a battery from C1?  And if so, how does it do in testing?",
+      "revId": "817808c5a3a800e5f6df8f12708f9387c3df0583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e12e7464_b2b3c7eb",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-25T21:34:09Z",
+      "side": 1,
+      "message": "nit: necessary when we\u0027re coming out of cutoff?  Would these bits default to 0 then?",
+      "revId": "817808c5a3a800e5f6df8f12708f9387c3df0583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
