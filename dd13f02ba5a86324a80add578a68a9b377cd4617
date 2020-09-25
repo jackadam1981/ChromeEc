@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d53dde6b_9ec85855",
+        "filename": "common/keyboard_8042.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2020-09-25T15:50:49Z",
+      "side": 1,
+      "message": "Probably want to guard this with \"if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))\" to prevent the event from triggering the SCI handler at runtime.",
+      "range": {
+        "startLine": 961,
+        "startChar": 1,
+        "endLine": 961,
+        "endChar": 51
+      },
+      "revId": "dd13f02ba5a86324a80add578a68a9b377cd4617",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
