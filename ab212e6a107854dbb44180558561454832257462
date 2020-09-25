@@ -34,6 +34,24 @@
       "revId": "ab212e6a107854dbb44180558561454832257462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7c155f3_839b711c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-09-25T21:19:41Z",
+      "side": 1,
+      "message": "Eric Has commented in https://b.corp.google.com/issues/168548776#14\n\nThere\u0027s a few other issues that appear to have cropped up with this CL in addition to some devices being super broken. The origional CCD detection logic wasn\u0027t designed around the idea of the MUX being enabled when it detects so it wasn\u0027t expecting a lower voltage range or for the data lines to be transmitting packets. We\u0027ll deploy a fix like this again but with a few other adjustments to account for those issues and it\u0027ll need more testing next time. We know of at least a few platforms where it simply wont work in it\u0027s current form even with the constants adjusted.",
+      "parentUuid": "c313d69f_fda13b20",
+      "revId": "ab212e6a107854dbb44180558561454832257462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
