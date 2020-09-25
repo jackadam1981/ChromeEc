@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4e84534_0f9b7a56",
+        "filename": "util/ec3po/interpreter_unittest.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-25T03:39:45Z",
+      "side": 1,
+      "message": "I think this is not really needed given you have \u0027import six\u0027, but fine to keep it here.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 40
+      },
+      "revId": "24d445374df437db3981fea23dd655fb399e5b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2654daf6_d3600968",
+        "filename": "util/ec3po/interpreter_unittest.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-25T03:39:45Z",
+      "side": 1,
+      "message": "move this to a function?\n\n def GetBuiltins():\n  if six.PY2:\n       patch_func \u003d \u0027__builtin__.open\u0027\n  else:\n       patch_func \u003d \u0027builtins.open\u0027",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "24d445374df437db3981fea23dd655fb399e5b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
