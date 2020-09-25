@@ -16,6 +16,98 @@
       "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5231eff3_6c45d5db",
+        "filename": "firmware_builder.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-25T20:24:20Z",
+      "side": 1,
+      "message": "no reason to prefix with _",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90744966_7e7258e2",
+        "filename": "firmware_builder.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-25T20:24:20Z",
+      "side": 1,
+      "message": "for both of these as well",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83b40a4d_e7a12533",
+        "filename": "firmware_builder.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-25T20:24:20Z",
+      "side": 1,
+      "message": "won\u0027t metrics depend on the output of the build? do we need to buildall twice, or is there some mechanism of passing the build output back to this subcommand again",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cabb10f1_fe585641",
+        "filename": "firmware_builder.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-25T20:24:20Z",
+      "side": 1,
+      "message": "instead of this complex if/else logic, you can set action\u003d\"store_const\", const\u003d_build (etc.) on each of the add_parser invocations below, and just invoke as opts.sub(opts).",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
