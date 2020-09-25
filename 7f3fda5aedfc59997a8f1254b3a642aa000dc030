@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "952ccfcf_a72f36f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-25T01:29:26Z",
+      "side": 1,
+      "message": "How to check free flash ?",
+      "parentUuid": "b3692ae6_e92825bc",
+      "revId": "7f3fda5aedfc59997a8f1254b3a642aa000dc030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "506d45ee_6d7ec5c3",
         "filename": "board/magolor/board.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "afa62d29_7e9fbb18",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-25T01:29:26Z",
+      "side": 1,
+      "message": "No, I will delete it ,",
+      "parentUuid": "506d45ee_6d7ec5c3",
+      "revId": "7f3fda5aedfc59997a8f1254b3a642aa000dc030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "71b1a445_54eb47ea",
         "filename": "board/magolor/board.h",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2020-09-24T22:17:43Z",
       "side": 1,
       "message": "Should probably be a separate CL, but at a minimum add a comment that this is to free flash space in the CL description",
+      "revId": "7f3fda5aedfc59997a8f1254b3a642aa000dc030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "004ae78e_a9ad9b20",
+        "filename": "board/magolor/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-25T01:29:26Z",
+      "side": 1,
+      "message": "ok, I will create other Cls",
+      "parentUuid": "71b1a445_54eb47ea",
       "revId": "7f3fda5aedfc59997a8f1254b3a642aa000dc030",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
