@@ -768,6 +768,11 @@
 #undef CONFIG_VOLUME_BUTTONS
 
 /*
+ * The board has volume up and volume down buttons. Use ADC module to distinct.
+ */
+#undef CONFIG_VOLUME_ADC_BUTTONS
+
+/*
  * Allow runtime configuration of the buttons[] array
  */
 #undef CONFIG_BUTTONS_RUNTIME_CONFIG
