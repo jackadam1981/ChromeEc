@@ -255,7 +255,7 @@ const char help_str[] =
 	"  readtest <patternoffset> <size>\n"
 	"      Reads a pattern from the EC via LPC\n"
 	"  reboot_ec <RO|RW|cold|hibernate|hibernate-clear-ap-off|disable-jump>"
-			" [at-shutdown|switch-slot]\n"
+			" [at-shutdown|switch-slot|leave-ap-off]\n"
 	"      Reboot EC to RO or RW\n"
 	"  reboot_ap_on_g3\n"
 	"      Requests that the EC will automatically reboot the AP the next time\n"
@@ -1097,6 +1097,8 @@ int cmd_reboot_ec(int argc, char *argv[])
 			p.flags |= EC_REBOOT_FLAG_ON_AP_SHUTDOWN;
 		} else if (!strcmp(argv[i], "switch-slot")) {
 			p.flags |= EC_REBOOT_FLAG_SWITCH_RW_SLOT;
+    } else if (!strcmp(argv[i], "leave-ap-off")) {
+      p.flags |= EC_REBOOT_FLAG_LEAVE_AP_OFF;
 		} else {
 			fprintf(stderr, "Unknown flag: %s\n", argv[i]);
 			return -1;

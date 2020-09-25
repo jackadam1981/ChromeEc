@@ -63,6 +63,8 @@ static int jumped_to_image;
 static int disable_jump;  /* Disable ALL jumps if system is locked */
 static int force_locked;  /* Force system locked even if WP isn't enabled */
 static enum ec_reboot_cmd reboot_at_shutdown;
+/* TODO(pihsun): Use a flag for this? */
+static bool leave_ap_off;
 
 STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_seconds;
 STATIC_IF(CONFIG_HIBERNATE) uint32_t hibernate_microseconds;
@@ -916,7 +918,10 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 			board_reset_pd_mcu();
 
 		cflush();
-		system_reset(SYSTEM_RESET_HARD);
+		if (leave_ap_off)
+			system_reset(SYSTEM_RESET_HARD | SYSTEM_RESET_LEAVE_AP_OFF);
+		else
+			system_reset(SYSTEM_RESET_HARD);
 		/* That shouldn't return... */
 		return EC_ERROR_UNKNOWN;
 	case EC_REBOOT_DISABLE_JUMP:
@@ -1593,6 +1598,9 @@ enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 #else
 		return EC_RES_INVALID_PARAM;
 #endif
+	}
+	if (p.flags & EC_REBOOT_FLAG_LEAVE_AP_OFF) {
+		leave_ap_off = true;
 	}
 	if (p.flags & EC_REBOOT_FLAG_ON_AP_SHUTDOWN) {
 		/* Store request for processing at chipset shutdown */
