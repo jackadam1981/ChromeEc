@@ -128,6 +128,30 @@
       "revId": "2f9e8c8bb7ff7018ed54b2abc2393685792d9b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4942da_5fc0c512",
+        "filename": "core/cortex-m0/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-09-25T12:47:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f016fc8_34eb6a34",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "2f9e8c8bb7ff7018ed54b2abc2393685792d9b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
