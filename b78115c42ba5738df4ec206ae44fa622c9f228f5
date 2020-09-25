@@ -22,6 +22,30 @@
       "revId": "b78115c42ba5738df4ec206ae44fa622c9f228f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52fe3ff1_0e04145d",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-25T14:47:00Z",
+      "side": 1,
+      "message": "Sure.\n\nThe target string is read from dbg_pipe, which is a socket.socket or multiprocessing.Connection. Hence the string would be a \"bytes\" in python3. This is the main reason I use \"br\" here.\n\nThe other reason is a little passive. I have no idea whether every string we read from dbg_pipe can be decode to \"str\" or not.\n\nSo finally, I choose to use \"bytes\" here.",
+      "parentUuid": "03045e88_17c4c158",
+      "range": {
+        "startLine": 47,
+        "startChar": 31,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "b78115c42ba5738df4ec206ae44fa622c9f228f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
