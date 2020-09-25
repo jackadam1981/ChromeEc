@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0a48666_669d62f3",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-25T08:04:03Z",
+      "side": 1,
+      "message": "Let\u0027s just use `six.int2byte` to prevent improper encoding.",
+      "parentUuid": "c1645896_67561768",
+      "range": {
+        "startLine": 555,
+        "startChar": 31,
+        "endLine": 555,
+        "endChar": 56
+      },
+      "revId": "5d253c193a788f313f3a3a25dad46f6d87c574d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72ad3b34_d98c2595",
         "filename": "util/ec3po/console_unittest.py",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5f0f8fc0_fc5ee036",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-25T08:04:03Z",
+      "side": 1,
+      "message": "hmm, I choose to delete it. It\u0027s not important here in unittest. 😄",
+      "parentUuid": "72ad3b34_d98c2595",
+      "range": {
+        "startLine": 178,
+        "startChar": 54,
+        "endLine": 180,
+        "endChar": 52
+      },
+      "revId": "5d253c193a788f313f3a3a25dad46f6d87c574d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d5f8a61_499cce1b",
         "filename": "util/ec3po/console_unittest.py",
         "patchSetId": 13
@@ -59,6 +107,30 @@
       "writtenOn": "2020-09-25T05:53:23Z",
       "side": 1,
       "message": "six.int2byte ?",
+      "range": {
+        "startLine": 1230,
+        "startChar": 40,
+        "endLine": 1230,
+        "endChar": 54
+      },
+      "revId": "5d253c193a788f313f3a3a25dad46f6d87c574d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf7bee7_1d3966f2",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 1230,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-25T08:04:03Z",
+      "side": 1,
+      "message": "Yes, but we can only use this in python3. In py2, when we iterate a string, we get character. But in py3, we get bytes which is a number.\nSo it seems that we still need to separate these two cases.",
+      "parentUuid": "4d5f8a61_499cce1b",
       "range": {
         "startLine": 1230,
         "startChar": 40,
