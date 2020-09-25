@@ -82,7 +82,9 @@ static int tusb544_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 		return rv;
 
 	reg &= ~TUSB544_GEN6_DIR_SEL;
-	if (pd_get_power_role(me->usb_port) == PD_ROLE_SOURCE)
+	if (pd_get_power_role(me->usb_port) == PD_ROLE_SOURCE
+		|| (mux_state & USB_PD_MUX_DP_ENABLED
+		&& pd_get_data_role(me->usb_port) == PD_ROLE_DFP))
 		reg |= TUSB544_DIR_SEL_USB_DP_SRC;
 	else
 		reg |= TUSB544_DIR_SEL_USB_DP_SNK;
