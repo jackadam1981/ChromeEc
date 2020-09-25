@@ -9,6 +9,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -76,6 +77,8 @@ enum power_button_state {
 	PWRBTN_STATE_HELD,
 	/* Force pulse due to lid-open event */
 	PWRBTN_STATE_LID_OPEN,
+	/* Force pulse due to ac event */
+	PWRBTN_STATE_AC,
 	/* Button released; debouncing done */
 	PWRBTN_STATE_RELEASED,
 	/* Ignore next button release */
@@ -184,6 +187,17 @@ void power_button_pch_pulse(void)
 	chipset_exit_hard_off();
 	set_pwrbtn_to_pch(0, 0);
 	pwrbtn_state = PWRBTN_STATE_LID_OPEN;
+	tnext_state = get_time().val + PWRBTN_INITIAL_US;
+	task_wake(TASK_ID_POWERBTN);
+}
+
+void power_button_pch_pulse_ac(void)
+{
+	CPRINTS("PB PCH pulse");
+
+	chipset_exit_hard_off();
+	set_pwrbtn_to_pch(0, 0);
+	pwrbtn_state = PWRBTN_STATE_AC;
 	tnext_state = get_time().val + PWRBTN_INITIAL_US;
 	task_wake(TASK_ID_POWERBTN);
 }
@@ -327,6 +341,7 @@ static void state_machine(uint64_t tnow)
 		break;
 	case PWRBTN_STATE_RELEASED:
 	case PWRBTN_STATE_LID_OPEN:
+	case PWRBTN_STATE_AC:
 		set_pwrbtn_to_pch(1, 0);
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 		break;
@@ -472,6 +487,18 @@ static void powerbtn_x86_lid_change(void)
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, powerbtn_x86_lid_change, HOOK_PRIO_DEFAULT);
 #endif
+
+/**
+ * Handle switch changes based on lid event.
+ */
+static void powerbtn_x86_ac_change(void)
+{
+	/* If chipset is off, pulse the power button on ac in to wake it. */
+	if (extpower_is_present() && chipset_in_state(CHIPSET_STATE_ANY_OFF)
+	    && pwrbtn_state != PWRBTN_STATE_INIT_ON)
+		power_button_pch_pulse_ac();
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, powerbtn_x86_ac_change, HOOK_PRIO_DEFAULT);
 
 /**
  * Handle debounced power button changing state.

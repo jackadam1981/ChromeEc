@@ -523,3 +523,13 @@ int ppc_get_alert_status(int port)
 	else
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
 }
+
+static void boot_ac_change(void)
+{
+  if (extpower_is_present() &&
+      chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+    CPRINTS("AC plugged : booting ...");
+    task_wake(TASK_ID_CHIPSET);
+  }
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, boot_ac_change, HOOK_PRIO_DEFAULT);

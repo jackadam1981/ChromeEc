@@ -55,6 +55,11 @@ void power_button_pch_release(void);
 void power_button_pch_pulse(void);
 
 /**
+ * For x86 systems, force a pulse of the power button signal to the PCH.
+ */
+void power_button_pch_pulse_ac(void);
+
+/**
  * Returns the time when DSW_PWROK was asserted. It should be customized
  * by each board. See CONFIG_DELAY_DSW_PWROK_TO_PWRBTN for details.
  *
