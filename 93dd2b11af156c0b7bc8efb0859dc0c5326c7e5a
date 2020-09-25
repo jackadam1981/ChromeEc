@@ -22,6 +22,30 @@
       "revId": "93dd2b11af156c0b7bc8efb0859dc0c5326c7e5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e39305db_442570c6",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-25T08:04:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18d13000_76f7de85",
+      "range": {
+        "startLine": 158,
+        "startChar": 54,
+        "endLine": 158,
+        "endChar": 60
+      },
+      "revId": "93dd2b11af156c0b7bc8efb0859dc0c5326c7e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
