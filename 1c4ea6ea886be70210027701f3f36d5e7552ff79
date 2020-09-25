@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f930135_5ca654df",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-25T21:45:08Z",
+      "side": 1,
+      "message": "Not needed anymore?",
+      "revId": "1c4ea6ea886be70210027701f3f36d5e7552ff79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad24e18_d070da00",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-25T21:45:08Z",
+      "side": 1,
+      "message": "Why the precharge current if we\u0027re in constant voltage region?",
+      "range": {
+        "startLine": 327,
+        "startChar": 6,
+        "endLine": 327,
+        "endChar": 34
+      },
+      "revId": "1c4ea6ea886be70210027701f3f36d5e7552ff79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
