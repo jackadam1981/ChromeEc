@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b11e2160_1afc678b",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-25T09:56:30Z",
+      "side": 1,
+      "message": "fix and check the built images is the same as previous patch set with ./compare_build.sh tool.",
+      "parentUuid": "e115ef71_60f10fc6",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "b616143d9a2890b47957baa95a83a940305b50ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46ca48ca_d481b73b",
         "filename": "chip/npcx/gpio_chip.h",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "b616143d9a2890b47957baa95a83a940305b50ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5cdc559_772f338e",
+        "filename": "chip/npcx/gpio_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-25T09:56:30Z",
+      "side": 1,
+      "message": "fix and check the built images is the same as previous patch set with ./compare_build.sh tool.",
+      "parentUuid": "46ca48ca_d481b73b",
+      "range": {
+        "startLine": 32,
+        "startChar": 32,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "b616143d9a2890b47957baa95a83a940305b50ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
