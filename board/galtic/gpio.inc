@@ -9,14 +9,14 @@
  * Note: Those with interrupt handlers must be declared first. */
 
 /* Power State interrupts */
-GPIO_INT(SLP_S4_L,		PIN(I, 5), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(SLP_S3_L,		PIN(H, 3), GPIO_INT_BOTH, baseboard_all_sys_pgood_interrupt)
-GPIO_INT(SLP_S0_L,		PIN(E, 4), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(SLP_SUS_L,		PIN(G, 2), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(VCCIN_AUX_VID0,	PIN(D, 0), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(RSMRST_PWRGD_L,	PIN(E, 1), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(CPU_C10_GATE_L,	PIN(G, 1), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(PG_DRAM_OD,		PIN(D, 3), GPIO_INT_BOTH, baseboard_all_sys_pgood_interrupt)
+	GPIO_INT(SLP_S4_L,		PIN(I, 5), GPIO_INT_BOTH, power_signal_interrupt)
+	GPIO_INT(SLP_S3_L,		PIN(H, 3), GPIO_INT_BOTH, baseboard_all_sys_pgood_interrupt)
+	GPIO_INT(SLP_S0_L,		PIN(E, 4), GPIO_INT_BOTH, power_signal_interrupt)
+	GPIO_INT(SLP_SUS_L,		PIN(G, 2), GPIO_INT_BOTH, power_signal_interrupt)
+	GPIO_INT(VCCIN_AUX_VID0,	PIN(D, 0), GPIO_INT_BOTH, power_signal_interrupt)
+	GPIO_INT(RSMRST_PWRGD_L,	PIN(E, 1), GPIO_INT_BOTH, power_signal_interrupt)
+	GPIO_INT(CPU_C10_GATE_L,	PIN(G, 1), GPIO_INT_BOTH, power_signal_interrupt)
+	GPIO_INT(PG_DRAM_OD,		PIN(D, 3), GPIO_INT_BOTH, baseboard_all_sys_pgood_interrupt)
 GPIO_INT(PG_PP1050_ST_OD,	PIN(L, 1), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(VCCIN_AUX_VID1,	PIN(K, 1), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(PG_VCCIO_EXT_OD,	PIN(D, 7), GPIO_INT_BOTH, baseboard_all_sys_pgood_interrupt)
@@ -30,8 +30,7 @@ GPIO_INT(UART1_RX,	 PIN(B, 0), GPIO_INT_BOTH, uart_deepsleep_interrupt)	/* UART_
 
 /* USB-C interrupts */
 GPIO_INT(USB_C0_INT_ODL,	PIN(K, 0), GPIO_INT_FALLING | GPIO_PULL_UP, usb_c0_interrupt) /* BC12 and charger */
-GPIO_INT(USB_C1_INT_V0_ODL,	PIN(B, 5), GPIO_INT_FALLING | GPIO_PULL_UP, usb_c1_interrupt) /* TCPC, charger, BC12  - board version 0 */
-GPIO_INT(USB_C1_INT_V1_ODL,	PIN(E, 6), GPIO_INT_FALLING | GPIO_PULL_UP, usb_c1_interrupt) /* TCPC, charger, BC12  - board version 1 */
+GPIO_INT(SUB_USB_C1_INT_ODL,	PIN(E, 6), GPIO_INT_FALLING | GPIO_PULL_UP, usb_c1_interrupt) /* TCPC, charger, BC12  - board version 1 */
 GPIO_INT(USB_C0_CCSBU_OVP_ODL,	PIN(K, 6), GPIO_INT_FALLING | GPIO_PULL_UP, c0_ccsbu_ovp_interrupt) /* Fault protection */
 
 /* Other interrupts */
@@ -102,11 +101,11 @@ GPIO(EN_BL_OD,			PIN(K, 4), GPIO_ODR_LOW)
 GPIO(EC_ENTERING_RW,		PIN(G, 0), GPIO_OUT_LOW)
 GPIO(CCD_MODE_ODL,		PIN(H, 5), GPIO_INPUT)
 GPIO(EC_BATTERY_PRES_ODL,	PIN(I, 4), GPIO_INPUT)
-GPIO(PEN_DET_ODL,		PIN(J, 1), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(EN_KB_BL,			PIN(J, 3), GPIO_OUT_LOW) /* Currently unused */
 GPIO(ECH1_PACKET_MODE,		PIN(H, 1), GPIO_OUT_LOW)
 
 /* NC pins, enable internal pull-down to avoid floating state. */
+GPIO(GPIOB5_NC, PIN(B, 5), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(GPIOC0_NC, PIN(C, 0), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(GPIOC3_NC, PIN(C, 3), GPIO_INPUT | GPIO_PULL_DOWN)
 GPIO(GPIOG3_NC, PIN(G, 3), GPIO_INPUT | GPIO_PULL_DOWN)
