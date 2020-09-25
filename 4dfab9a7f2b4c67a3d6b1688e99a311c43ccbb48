@@ -16,6 +16,23 @@
       "revId": "4dfab9a7f2b4c67a3d6b1688e99a311c43ccbb48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "298a2ad5_ca6d09e3",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-25T21:24:33Z",
+      "side": 1,
+      "message": "nit: can be combined now that the middle chunk is gone",
+      "revId": "4dfab9a7f2b4c67a3d6b1688e99a311c43ccbb48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
