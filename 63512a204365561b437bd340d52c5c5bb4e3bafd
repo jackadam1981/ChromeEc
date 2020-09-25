@@ -68,6 +68,24 @@
       "revId": "63512a204365561b437bd340d52c5c5bb4e3bafd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6eb27b21_d0f1ce5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-25T22:47:35Z",
+      "side": 1,
+      "message": "The CQ failure gave a change of heart.  I narrowed down that we only need Vbus comparator to not bork the port.",
+      "parentUuid": "9372e1ff_5b026be7",
+      "revId": "63512a204365561b437bd340d52c5c5bb4e3bafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
