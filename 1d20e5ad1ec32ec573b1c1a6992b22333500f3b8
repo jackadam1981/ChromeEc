@@ -52,6 +52,24 @@
       "revId": "1d20e5ad1ec32ec573b1c1a6992b22333500f3b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93e0d364_336692ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-09-25T08:38:40Z",
+      "side": 1,
+      "message": "\u003e Thank you, Diana. With your CL, Vbus status and charger_vbus are synchronous and won\u0027t loop in attachwait.src on my drawcia.\n\nPlease ignore this, not test yet.",
+      "parentUuid": "e483f5d2_ef203db2",
+      "revId": "1d20e5ad1ec32ec573b1c1a6992b22333500f3b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
