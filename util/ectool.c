@@ -9651,6 +9651,8 @@ int cmd_typec_status(int argc, char *argv[])
 		printf("\n");
 	}
 
+	printf("Port events: 0x%08x\n", r->events);
+
 	return 0;
 }
 
