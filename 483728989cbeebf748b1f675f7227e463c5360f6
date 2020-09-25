@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97d8e39a_0dbea435",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-25T16:22:50Z",
+      "side": 1,
+      "message": "Per YH, Octopus variants used the baseboard PID. If Volteer is to do the same, then the PID should just be specified in the baseboard.",
+      "revId": "483728989cbeebf748b1f675f7227e463c5360f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
