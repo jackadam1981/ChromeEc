@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62c4ae5b_319b576c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-09-25T13:06:55Z",
+      "side": 1,
+      "message": "I\u0027m going to send separate CLs for every core. This one is for cortex-m.\n\nIf we want to support returning value from some atomic operations, just as I wrote in the commit message, I think it is better to use builtin functions(as it is done in Zephyr) rather than changing ATOMIC_OP macro. Maybe there was a reason not to use those functions at the beginning of the project, please let me know.\n\nI also not sure if it is better not to change atomic_clear_bit, when return value is not needed so ATOMIC_OP can be used or to be consistent use the builtin here as well.\n\nI would like to know your opinion on this.",
+      "revId": "7613a6c157aa82df80571a55476862e2a36fdcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

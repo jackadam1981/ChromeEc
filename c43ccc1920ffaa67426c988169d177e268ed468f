@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3725c3fa_6a2131a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-09-25T13:06:55Z",
+      "side": 1,
+      "message": "atomic_t is just int in Zephyr. IMHO, since the EC code base does not use \"atomic_t\", it is not needed to introduce a new type.",
+      "parentUuid": "7f1a361c_77cf49ab",
+      "revId": "c43ccc1920ffaa67426c988169d177e268ed468f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26be007f_38bdc35c",
         "filename": "core/cortex-m/atomic.h",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "c43ccc1920ffaa67426c988169d177e268ed468f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2bee15_574a699d",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-09-25T13:06:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26be007f_38bdc35c",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "c43ccc1920ffaa67426c988169d177e268ed468f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
