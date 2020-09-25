@@ -16,6 +16,24 @@
       "revId": "936639dfee7bded4d1769eb95a00fdecfa9039e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47327df0_79ec5995",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-25T22:51:35Z",
+      "side": 1,
+      "message": "The default voltage derived from the strapping resistor should be sufficient. The following sets to set the voltage would be derived from batt_info or the fuel gauge.\n\nAlthough, thinking about this some more, I\u0027m not sure if it\u0027s needed at all anymore. The OCPC code should set the initial VSYS to the battery voltage (or if it\u0027s unavailable, the minimum voltage from batt_info).",
+      "parentUuid": "269f2b78_d3e2b58a",
+      "revId": "936639dfee7bded4d1769eb95a00fdecfa9039e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
