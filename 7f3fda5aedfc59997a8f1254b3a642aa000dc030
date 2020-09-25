@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5df596a0_ec9bb861",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-25T15:06:44Z",
+      "side": 1,
+      "message": "It\u0027ll be at the bottom of your \"make -j BOARD\u003dmagolor\" output.  Ex.\n\n  *** 752 bytes in flash and 29504 bytes in RAM still available on magolor RO ****\n  *** 788 bytes in flash and 29504 bytes in RAM still available on magolor RW ****",
+      "parentUuid": "952ccfcf_a72f36f6",
+      "revId": "7f3fda5aedfc59997a8f1254b3a642aa000dc030",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "506d45ee_6d7ec5c3",
         "filename": "board/magolor/board.c",
         "patchSetId": 2
