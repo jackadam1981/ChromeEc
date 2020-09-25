@@ -655,7 +655,12 @@ static void sm5803_init(int chgnum)
 		 * adapter insertion.
 		 */
 		battery_get_params(&batt_params);
-		rv |= charger_set_voltage(chgnum, batt_params.voltage);
+		if (!(batt_params.flags & BATT_FLAG_BAD_VOLTAGE)) {
+			CPRINTS("%s %d: Initializing VSYS to %dmV",
+				CHARGER_NAME, chgnum, batt_params.voltage);
+
+			rv |= charger_set_voltage(chgnum, batt_params.voltage);
+		}
 	}
 
 	if (rv)
