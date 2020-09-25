@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3333c134_b3cebda5",
+        "filename": "util/ec3po/interpreter.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-25T05:48:57Z",
+      "side": 1,
+      "message": "is this six.byte2int?",
+      "range": {
+        "startLine": 383,
+        "startChar": 3,
+        "endLine": 386,
+        "endChar": 24
+      },
+      "revId": "24d445374df437db3981fea23dd655fb399e5b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4e84534_0f9b7a56",
         "filename": "util/ec3po/interpreter_unittest.py",
         "patchSetId": 11
