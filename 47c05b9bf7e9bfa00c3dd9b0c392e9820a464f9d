@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91f0574e_c8760c08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-25T20:16:07Z",
+      "side": 1,
+      "message": "I have broken this python entry point into 3 sub commands. Each sub command will correspond to 2 build_api entry point.",
+      "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
