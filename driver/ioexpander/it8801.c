@@ -519,7 +519,7 @@ int it8801_pwm_get_duty(enum pwm_channel ch)
 	return 100 - it8801_pwm_get_raw_duty(ch) * 100 / 255;
 }
 
-#if defined(SECTION_IS_RW) && defined(CONFIG_KEYBOARD_BACKLIGHT)
+#ifdef CONFIG_KEYBOARD_BACKLIGHT
 const enum pwm_channel it8801_kblight_pwm_ch = IT8801_PWM_CH_KBLIGHT;
 
 static int it8801_kblight_enable(int enable)
