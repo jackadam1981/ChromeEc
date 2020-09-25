@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee483dac_476dfcf1",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-25T08:04:30Z",
+      "side": 1,
+      "message": "It\u0027s elegant! thanks!",
+      "parentUuid": "e319c4df_4705f9f6",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 34
+      },
+      "revId": "a70388cf79fa677cbc2afad10eee1a08cb0334f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6c8c8fa_25c872e3",
         "filename": "extra/usb_serial/console.py",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "a70388cf79fa677cbc2afad10eee1a08cb0334f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91996925_eff193e8",
+        "filename": "extra/usb_serial/console.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-25T08:04:30Z",
+      "side": 1,
+      "message": "Yes, thanks for catching this.",
+      "parentUuid": "c6c8c8fa_25c872e3",
+      "range": {
+        "startLine": 204,
+        "startChar": 26,
+        "endLine": 204,
+        "endChar": 32
+      },
+      "revId": "a70388cf79fa677cbc2afad10eee1a08cb0334f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
