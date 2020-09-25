@@ -45,6 +45,29 @@
       "revId": "5d253c193a788f313f3a3a25dad46f6d87c574d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d5f8a61_499cce1b",
+        "filename": "util/ec3po/console_unittest.py",
+        "patchSetId": 13
+      },
+      "lineNbr": 1230,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2020-09-25T05:53:23Z",
+      "side": 1,
+      "message": "six.int2byte ?",
+      "range": {
+        "startLine": 1230,
+        "startChar": 40,
+        "endLine": 1230,
+        "endChar": 54
+      },
+      "revId": "5d253c193a788f313f3a3a25dad46f6d87c574d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
