@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f204ffb_d3c3bbb1",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2020-09-25T22:06:10Z",
+      "side": 1,
+      "message": "nit, moving this up w/in the the if clause\n  if (batt-\u003eflags \u0026 BATT_FLAG_BAD_FULL_CAPACITY) {\n    batt-\u003eflags \u0026\u003d ~BATT_FLAG_BAD_REMAINING_CAPACITY;\n    battery_design_capacity(\u0026full);\n  } else ...\n\n\nwould save executing unconditionally at the expense of readability perhaps.  I don\u0027t feel strongly about the request though feel free to nack.",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 50
+      },
+      "revId": "b13b2e43c5c59c9097f7dd7151f47a79549bfcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
