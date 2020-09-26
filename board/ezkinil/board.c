@@ -289,6 +289,8 @@ static int board_tusb544_mux_set(const struct usb_mux *me,
 				mux_state_t mux_state)
 {
 	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		/* Always be display port source */
+		tusb544_set_dir_sel(me, TUSB544_DIR_SEL_USB_DP_SRC);
 		/* Enable IN_HPD on the DB */
 		ioex_set_level(IOEX_USB_C1_HPD_IN_DB, 1);
 	} else {

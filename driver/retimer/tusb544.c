@@ -44,6 +44,21 @@ static int tusb544_init(const struct usb_mux *me)
 	return EC_SUCCESS;
 }
 
+int tusb544_set_dir_sel(const struct usb_mux *me, int dir_sel)
+{
+	int reg;
+	int rv;
+
+	rv = tusb544_read(me, TUSB544_REG_GENERAL6, &reg);
+	if (rv)
+		return rv;
+
+	reg &= ~TUSB544_GEN6_DIR_SEL;
+	reg |= dir_sel;
+
+	return tusb544_write(me, TUSB544_REG_GENERAL6, reg);
+}
+
 static int tusb544_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int reg;

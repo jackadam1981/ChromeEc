@@ -4,6 +4,7 @@
  *
  * TI TUSB544 USB Type-C Multi-Protocol Linear Redriver
  */
+#include "usb_mux.h"
 
 #ifndef __CROS_EC_USB_REDRIVER_TUSB544_H
 #define __CROS_EC_USB_REDRIVER_TUSB544_H
@@ -46,6 +47,7 @@ enum tusb544_dir_sel {
 #define TUSB544_DP4_AUX_SBU_OVR		GENMASK(5, 4)
 #define TUSB544_DP4_AUX_SNOOP_DISABLE	BIT(7)
 
+int tusb544_set_dir_sel(const struct usb_mux *me, int dir_sel);
 extern const struct usb_mux_driver tusb544_drv;
 
 #endif
