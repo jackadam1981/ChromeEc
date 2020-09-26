@@ -16,6 +16,24 @@
       "revId": "a234e27e1f13d202073ab7143f2bfdb5fd8b5b9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05bddcc9_1c936949",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-26T06:54:10Z",
+      "side": 1,
+      "message": "lowercase function name : Done\nCan we simply use a global variable? I tend to use function, but no reason... Actually this will be removed when we are fully py3.",
+      "parentUuid": "ad0b8151_6b74aa01",
+      "revId": "a234e27e1f13d202073ab7143f2bfdb5fd8b5b9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
