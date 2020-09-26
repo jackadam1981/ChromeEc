@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3e8d5d80_8add17f8",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-26T00:11:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2f930135_5ca654df",
+      "revId": "1c4ea6ea886be70210027701f3f36d5e7552ff79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ad24e18_d070da00",
         "filename": "common/ocpc.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2020-09-25T21:45:08Z",
       "side": 1,
       "message": "Why the precharge current if we\u0027re in constant voltage region?",
+      "range": {
+        "startLine": 327,
+        "startChar": 6,
+        "endLine": 327,
+        "endChar": 34
+      },
+      "revId": "1c4ea6ea886be70210027701f3f36d5e7552ff79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "993f1b87_46caab50",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-26T00:11:45Z",
+      "side": 1,
+      "message": "My CV implementation is quite basic as all I do is keep the voltage fixed and allow the battery to asymptotically rise to the target. The current entering the pack falls as well (inversely linearly related to Vbat) until at some point the fuel gauge decides that the battery is full. Generally this \"taper\" current is quite small and is similar in magnitude to the precharge current before the fuel gauge decides the battery is full. I decided to make this assumption. By assuming that the end of charge rate will occur around the precharge current rate, I then offset the CV VSYS target with this current times the system and battery resistance to account for the losses.\n\nYes, ideally, we\u0027d actually attempt to regulate to the specified CV level, but the PID loop regulates for battery current, not the voltage. It\u0027d almost most likely require a different set of constants as well. The downsides that I thought of were a slightly slower charge time in this region, and potentially not as *high* of a voltage level at the end of charge. However, the other assumption I made was that the fuel gauge wouldn\u0027t say it was full unless it deemed it actually was. (e.g. it is a coulomb counter and not just looking at some specified voltage level) Essentially, I thought this would all be \"good enough\" which also simplifies the implementation.\n\nSorry for the long winded explanation. 😄",
+      "parentUuid": "2ad24e18_d070da00",
       "range": {
         "startLine": 327,
         "startChar": 6,
