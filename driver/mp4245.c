@@ -75,7 +75,6 @@ int mp3245_get_vbus(int *mv, int *ma)
 	return EC_SUCCESS;
 }
 
-static int mp4245_status;
 static void mp4245_alert_callback(void)
 {
 	//ccprintf("mp4245: alert: status = %x\n", mp4245_status);
