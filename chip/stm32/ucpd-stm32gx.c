@@ -49,9 +49,7 @@
 #define UCPD_TRANSWIN_CNT 8
 #define UCPD_IFRGAP_CNT 17
 
-#define UCPD_BUF_LEN 30
 #define UCPD_BUF_LEN 64
-
 #define TX_MSG_LOG_LEN 25
 
 #define UCPD_ANASUB_TO_RP(r) ((r - 1) & 0x3)
@@ -80,9 +78,6 @@ struct msg_info {
 static int msg_log_cnt;
 static int msg_log_idx;
 static struct msg_info msg_log[MSG_LOG_LEN];
-
-static int psc_div = UCPD_PSC_DIV;
-static int hbit_div = UCPD_HBIT_DIV;
 
 struct msg_header_info {
 	uint8_t pr;
@@ -266,18 +261,6 @@ static void ucpd_log_mark_crc(void)
 		if (msg_log_idx >= 2)
 			msg_log[msg_log_idx -2].crc = 1;
 	}
-}
-
-static int ucpd_msg_is_good_crc(uint16_t header)
-{
-	int rv = 0;
-
-	if ((PD_HEADER_CNT(header) == 0) && (PD_HEADER_TYPE(header) ==
-					  PD_CTRL_GOOD_CRC)) {
-		rv = 1;
-	}
-
-	return rv;
 }
 
 static void ucpd_hard_reset_rx_log(void)
