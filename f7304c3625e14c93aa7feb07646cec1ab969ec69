@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a67b7812_9078bc5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-26T06:28:44Z",
+      "side": 1,
+      "message": "Correct verification steps:\n1. Checkout https://crrev.com/c/2425786\n2. Checkout https://crrev.com/c/2423650\n3. cros_workon --host start ec-devutils\n4. sudo emerge ec-devutils\n5. Change the shabang of cts.py to python2 and everything should be fine\n6. Change the shabang of cts.py to python3 and everything should be fine",
+      "parentUuid": "ece36c4d_07e13e44",
+      "revId": "f7304c3625e14c93aa7feb07646cec1ab969ec69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68bf3578_359356fc",
         "filename": "cts/common/board.py",
         "patchSetId": 1
