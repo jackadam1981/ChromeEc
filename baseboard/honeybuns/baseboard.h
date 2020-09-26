@@ -175,6 +175,8 @@ enum usb_strings {
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_SS_MUX_UFP_USB3
 
+#define CONFIG_MP4245
+
 /* #define STM32G4_UCPD_CMD */
 #else
 /* RO Specific Config Options */
