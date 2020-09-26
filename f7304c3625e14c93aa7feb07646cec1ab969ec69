@@ -16,6 +16,23 @@
       "revId": "f7304c3625e14c93aa7feb07646cec1ab969ec69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68bf3578_359356fc",
+        "filename": "cts/common/board.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-26T06:00:28Z",
+      "side": 1,
+      "message": "hi Daisuke,\n\nBy checking the code, I think we can decode the string we read to \"str\" type. But I don\u0027t have confidence because I\u0027m not familiar with the behavior of this console.\nps : If we don\u0027t decode it to \"str\", `c` is \"bytes\" type in python3, and then we need to modifies more codes. \n\nQuestion from me: Do you have any concern that we decode the bytes in utf-8 encoding ?",
+      "revId": "f7304c3625e14c93aa7feb07646cec1ab969ec69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
