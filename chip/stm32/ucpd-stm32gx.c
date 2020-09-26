@@ -268,18 +268,6 @@ static void ucpd_log_mark_crc(void)
 	}
 }
 
-static int ucpd_msg_is_good_crc(uint16_t header)
-{
-	int rv = 0;
-
-	if ((PD_HEADER_CNT(header) == 0) && (PD_HEADER_TYPE(header) ==
-					  PD_CTRL_GOOD_CRC)) {
-		rv = 1;
-	}
-
-	return rv;
-}
-
 static void ucpd_hard_reset_rx_log(void)
 {
 	CPRINTS("ucpd: hard reset recieved");
