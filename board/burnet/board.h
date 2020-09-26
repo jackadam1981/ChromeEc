@@ -147,6 +147,8 @@ int board_is_sourcing_vbus(int port);
 /* returns the i2c port number of charger */
 int board_get_charger_i2c(void);
 
+int board_is_convertible(void);
+
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
