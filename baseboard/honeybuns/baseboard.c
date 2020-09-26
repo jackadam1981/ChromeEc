@@ -29,10 +29,6 @@ const void *const usb_strings[] = {
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
 /******************************************************************************/
-__overridable const struct power_seq board_power_seq[] = { };
-
-__overridable const size_t board_power_seq_count =
-	ARRAY_SIZE(board_power_seq);
 
 static void board_power_sequence(void)
 {
