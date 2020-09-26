@@ -7,6 +7,7 @@
 #include "console.h"
 #include "chip/stm32/ucpd-stm32gx.h"
 #include "cros_board_info.h"
+#include "driver/mp4245.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/mp4245.h"
 #include "task.h"

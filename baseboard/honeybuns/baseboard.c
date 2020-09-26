@@ -28,11 +28,6 @@ static int hpd_override;
 #endif
 /******************************************************************************/
 
-__overridable const struct power_seq board_power_seq[] = { };
-
-__overridable const size_t board_power_seq_count =
-	ARRAY_SIZE(board_power_seq);
-
 static void board_power_sequence(void)
 {
 	int i;
