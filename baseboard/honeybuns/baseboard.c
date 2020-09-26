@@ -27,10 +27,6 @@ static struct hpd_mark hpd_last_event;
 static int hpd_override;
 #endif
 /******************************************************************************/
-__overridable const struct power_seq board_power_seq[] = { };
-
-__overridable const size_t board_power_seq_count =
-	ARRAY_SIZE(board_power_seq);
 
 static void board_power_sequence(void)
 {
@@ -69,6 +65,7 @@ void board_reset_pd_mcu(void)
 void baseboard_trigger_hpd_irq(void)
 {
 	pd_send_hpd(0, hpd_irq);
+	CPRINTS("hpd: irq detected");
 }
 DECLARE_DEFERRED(baseboard_trigger_hpd_irq);
 
@@ -82,6 +79,8 @@ void baseboard_trigger_hpd_chg(void)
 
 	if (!hpd_override)
 		pd_send_hpd(0, (level) ? hpd_high : hpd_low);
+
+	CPRINTS("hpd: new level = %d", level);
 }
 DECLARE_DEFERRED(baseboard_trigger_hpd_chg);
 
