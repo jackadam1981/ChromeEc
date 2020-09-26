@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfff6923_fdcf7f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2020-09-26T06:33:33Z",
+      "side": 1,
+      "message": "hi Daisuke,\n\nCould you help to verify this patch ?\n\nVerification steps:\n1. Checkout https://crrev.com/c/2425786\n2. Checkout https://crrev.com/c/2423650\n3. cros_workon --host start ec-devutils\n4. sudo emerge ec-devutils\n5. Change the shabang of tigertool.py to python2 and everything should be fine\n6. Change the shabang of tigertool.py to python3 and everything should be fine",
+      "revId": "0a4e4b04d47fd2910bb3c6633d29b2ea908dcb15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
