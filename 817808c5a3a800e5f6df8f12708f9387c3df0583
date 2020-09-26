@@ -69,6 +69,24 @@
       "revId": "817808c5a3a800e5f6df8f12708f9387c3df0583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ddf9bd8_63ff17c0",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-26T00:10:59Z",
+      "side": 1,
+      "message": "PS3 assumes they\u0027re 0 by default. I tested and it seems to work as well.",
+      "parentUuid": "785839ca_a4c1b629",
+      "revId": "817808c5a3a800e5f6df8f12708f9387c3df0583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
