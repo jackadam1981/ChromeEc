@@ -190,6 +190,8 @@
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 #define CONFIG_USB_PD_ALT_MODE
 
+#define CONFIG_USB_PD_DEBUG_LEVEL 3
+
 /* Don't automatically change roles */
 #undef CONFIG_USB_PD_INITIAL_DRP_STATE
 #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SINK
@@ -199,9 +201,9 @@
 #endif
 /* Enable SSUSB Mux Driver */
 #define CONFIG_USBC_SS_MUX
-#define SERVO_DEFAULT_CONFIG (~CC_DETACH | ~CC_DISABLE_DTS | \
-		CC_ALLOW_SRC | ~CC_ENABLE_DRP | CC_SNK_WITH_PD | \
-		CC_POLARITY | CC_EMCA_SERVO)
+#define SERVO_DEFAULT_CONFIG CONF_SET_CLEAR(0, \
+		CC_ALLOW_SRC | CC_POLARITY | CC_DISABLE_DTS | CC_EMCA_SERVO | CC_SNK_WITH_PD | CC_SRC_WITH_PD, \
+		CC_DETACH  )
 
 
 
@@ -214,10 +216,10 @@
  * and the delay will need to be relative to the circuitry that allows VBUS to
  * be supplied to the DUT port from the CHG port.
  */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY  (PD_T_PS_SOURCE_ON/2) /* us */
-// Formerly 100000
-#define PD_POWER_SUPPLY_TURN_OFF_DELAY (PD_T_PS_SOURCE_OFF/2) /* us */
-// Formerly 50000 /* us */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY 100*MSEC /* us */
+/* Select: 100000 (PD_T_PS_SOURCE_ON/2) */ /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 50*MSEC /* us */
+/* Select 50000  (PD_T_PS_SOURCE_OFF/2) */ /* us */
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
