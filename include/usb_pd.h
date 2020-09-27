@@ -935,6 +935,9 @@ enum pd_dual_role_states {
 	PD_DRP_FORCE_SINK,
 	/* Switch to source */
 	PD_DRP_FORCE_SOURCE,
+	//TODO: Add "PD_DRP_FORCE_LOCK -- FREEZE but permanent"
+	//TODO: Add "PD_DRP_TOGGLE_TO_SRC"
+	//TODO: Rename PD_DRP_TOGGLE_OFF to PD_DRP_TOGGLE_TO_SNK
 };
 
 /*
