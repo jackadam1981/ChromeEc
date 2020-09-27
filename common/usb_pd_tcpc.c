@@ -902,6 +902,7 @@ int tcpc_run(int port, int evt)
 		if (evt & PD_EVENT_CC)
 			usleep(MSEC);
 
+		// THIS IS WHERE ANALOG CONVERSION HAPPENS
 		/* check CC lines */
 		for (i = 0; i < 2; i++) {
 			/* read CC voltage */

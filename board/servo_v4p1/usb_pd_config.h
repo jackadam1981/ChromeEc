@@ -55,17 +55,19 @@
 /* use the hardware accelerator for CRC */
 #define CONFIG_HW_CRC
 
-/* Servo v4 CC configuration */
-#define CC_DETACH	BIT(0)   /* Emulate detach: both CC open */
-#define CC_DISABLE_DTS	BIT(1)   /* Apply resistors to single or both CC? */
-#define CC_ALLOW_SRC	BIT(2)   /* Allow charge through by policy? */
-#define CC_ENABLE_DRP	BIT(3)   /* Enable dual-role port */
-#define CC_SNK_WITH_PD	BIT(4)   /* Force enabling PD comm for sink role */
-#define CC_POLARITY	BIT(5)   /* CC polarity */
+/* Servo v4p1 CC configuration */
+#define CC_DETACH		BIT(0)	/* Emulate detach: both CC open */
+#define CC_DISABLE_DTS	BIT(1)	/* Apply resistors to single or both CC? */
+#define CC_ALLOW_SRC	BIT(2)	/* Allow charge through by policy? */
+#define CC_ENABLE_DRP	BIT(3)	/* Enable dual-role port */
+#define CC_SNK_WITH_PD	BIT(4)	/* Force enabling PD comm for sink role */
+								// TODO: Change this to DTS_SINK_PD
+#define CC_POLARITY		BIT(5)	/* CC polarity */
 #define CC_EMCA_SERVO	BIT(6)   /*
 				  * Emulate Electronically Marked Cable Assembly
 				  * (EMCA) servo (or non-EMCA)
 				  */
+#define CC_SRC_WITH_PD 	BIT(7)	/* Allow DUT PD comms as SRC*/
 
 /* Servo v4 DP alt-mode configuration */
 #define ALT_DP_ENABLE		BIT(0)   /* Enable DP alt-mode or not */
@@ -242,24 +244,33 @@ static inline void pd_set_host_mode(int port, int enable)
 
 	if (enable) {
 		/*
-		 * Servo_v4 in SRC mode acts as a DTS (debug test
-		 * accessory) and needs to present Rp on both CC
-		 * lines. In order to support orientation detection, and
-		 * advertise the correct TypeC current level, the
-		 * values of Rp1/Rp2 need to asymmetric with Rp1 > Rp2. This
-		 * function is called without a specified Rp value so assume the
-		 * servo_v4 default of USB level current. If a higher current
-		 * can be supported, then the Rp value will get adjusted when
-		 * VBUS is enabled.
+		 * Servo_v4p1 (by default) acts as a DTS (debug test accessory)
+		 * and needs to present Rp on both CC lines.
+		 *
+		 * In order to support orientation detection, and advertise the
+		 * correct TypeC current level, the values of Rp1/Rp2 need to
+		 * be asymmetric with Rp1 > Rp2.
+		 * 
+		 * This function is called without a specified Rp value so assume
+		 * the default from Servo_V4p1\board.h. If a higher current can
+		 * be supported, then the Rp value will get adjusted when VBUS
+		 * is enabled.
 		 */
 		pd_set_rp_rd(port, TYPEC_CC_RP, CONFIG_USB_PD_PULLUP);
 
-		gpio_set_flags(GPIO_USB_DUT_CC1_TX_DATA, GPIO_INPUT);
-		gpio_set_flags(GPIO_USB_DUT_CC2_TX_DATA, GPIO_INPUT);
+		// HACKHACKHACK: The below is redundant AND dangerous
+		// (Except it fudges with ADC!)
+		//gpio_set_flags(GPIO_USB_DUT_CC1_TX_DATA, GPIO_INPUT);
+		//gpio_set_flags(GPIO_USB_DUT_CC2_TX_DATA, GPIO_INPUT);
+		
 	} else {
 		/* Select Rd, the Rp value is a don't care */
 		// THE ABOVE IS FALSE. Reserved breaks things.
 		pd_set_rp_rd(port, TYPEC_CC_RD, CONFIG_USB_PD_PULLUP);
+
+		//THIS FUDGES WITH ADC
+		//gpio_set_flags(GPIO_USB_DUT_CC1_TX_DATA, GPIO_INPUT);
+		//gpio_set_flags(GPIO_USB_DUT_CC2_TX_DATA, GPIO_INPUT);
 	}
 }
 
