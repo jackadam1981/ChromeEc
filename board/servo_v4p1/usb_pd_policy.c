@@ -207,23 +207,141 @@ static int is_charge_through_allowed(void)
 	return charge_port_is_active() && (cc_config & CC_ALLOW_SRC);
 }
 
-static int get_dual_role_of_src(void)
+static int is_charge_through_enabled(void)
 {
-	return cc_config & CC_ENABLE_DRP ? PD_DRP_TOGGLE_ON :
-					   PD_DRP_FORCE_SOURCE;
+
+	if(	pd_get_dual_role(DUT) == PD_DRP_FORCE_SOURCE ||
+		pd_get_dual_role(DUT) == PD_DRP_TOGGLE_ON ||
+		(pd_get_dual_role(DUT) == PD_DRP_FREEZE &&
+			pd_get_power_role(DUT) == PD_ROLE_SOURCE)){
+		return 1;
+	}
+	else
+		// ON OFF FREEZE SINK SRC
+		return 0;
 }
 
-static void dut_allow_charge(void)
+static int is_pd_allowed(void)
 {
+
+	//TODO: HACKHACKHACK fix this
+	int allow_pd=0;
+	enum pd_dual_role_states current_drp;
+
+	//This is dangerous (and not accurate)
+	//Should use "either possible end state" in response
+	//enum pd_power_role current_role;
+
+	current_drp = pd_get_dual_role(DUT);
+	//current_role = pd_get_power_role(DUT);
+
+	switch(current_drp){
+	case PD_DRP_FORCE_SINK:
+		// If DTS and PD-as-SNK, enable PD
+		if (!(cc_config & CC_DISABLE_DTS)
+				&& (cc_config & CC_SNK_WITH_PD)
+				)
+			allow_pd = 1;
+		
+		// If DTS is disabled [[and PD-as-SNK]] enable PD
+		if ((cc_config & CC_DISABLE_DTS)
+				//&& (cc_config & CC_SNK_WITH_PD)
+				)
+			allow_pd = 1;
+	break;
+	case PD_DRP_FORCE_SOURCE:
+		if(cc_config && CC_SRC_WITH_PD)
+			allow_pd = 1;
+	break;
+	case PD_DRP_TOGGLE_ON:
+	case PD_DRP_TOGGLE_OFF:
+	case PD_DRP_FREEZE:
+		if( cc_config & CC_SNK_WITH_PD &&
+				cc_config & CC_SRC_WITH_PD)
+			allow_pd = 1;
+	break;
+	}
+
+	return allow_pd;
+}
+
+
+static int get_dual_role_of_src(void)
+{
+
+	enum pd_dual_role_states state;
+	
+	// This is to fix broken SNK->SRC PR_SWAP as SRCDTS
+	// old code was intended for ServoV4, not V4p1.
+	// ServoV4p1 has no "always on" VBUS source.
+	// FORCE_SOURCE is inappropriate.
+	
+
+	/* While disconnected, toggle between src and sink */
+	//PD_DRP_TOGGLE_ON,
+
+	/* Stay in src until disconnect, then stay in sink forever */
+	//PD_DRP_TOGGLE_OFF,
+
+	/* Stay in current power role, don't switch. No auto-toggle support */
+	//PD_DRP_FREEZE,
+
+	/* Switch to sink */
+	//PD_DRP_FORCE_SINK,
+
+	/* Switch to source */
+	//PD_DRP_FORCE_SOURCE,
+
+	if (cc_config & CC_ENABLE_DRP)
+	 	 	state = PD_DRP_TOGGLE_ON;
+	else if (cc_config & CC_ALLOW_SRC)
+	 	 	state = PD_DRP_FREEZE;
+	 	 	//state = PD_DRP_TOGGLE_OFF;
+	/*
+	else if (charge_port_is_active())
+	 	 	state = PD_DRP_FORCE_SOURCE; 	// This could be argued.
+	 	 	state = PD_DRP_FREEZE;
+	*/
+	else 
+			// NOOP -- should be force sink here
+			// Treat this as "No VBUS SuzyQ"
+	 	 	state = PD_DRP_FORCE_SOURCE;
+			//state = PD_DRP_FORCE_SINK;
+	
+	return state;
+}
+
+static void dut_activate_charge(void)
+{
+	int allow_pd=0;
 	/*
 	 * Update to charge enable if charger still present and not
 	 * already charging.
 	 */
+
+	// TODO: fix is_charge_through_enabled() detection/logic
 	if (is_charge_through_allowed() &&
-	    pd_get_dual_role(DUT) != PD_DRP_FORCE_SOURCE &&
-	    pd_get_dual_role(DUT) != PD_DRP_TOGGLE_ON) {
-		CPRINTS("Enable DUT charge through");
+			!is_charge_through_enabled()) {
+
+		CPRINTS("Enable DUT charge through: desired Role %d", get_dual_role_of_src());
+
+
+		// This initial call MUST be DRP_FORCE_SOURCE to trigger clean state transition.
+		//pd_set_dual_role(DUT, get_dual_role_of_src());
+		pd_set_dual_role(DUT, PD_DRP_FORCE_SOURCE);
 		pd_set_dual_role(DUT, get_dual_role_of_src());
+
+
+		// task_set_event(PD_PORT_TO_TASK_ID(DUT),
+		//        PD_EVENT_POWER_STATE_CHANGE |
+		// 	       PD_EVENT_UPDATE_DUAL_ROLE,
+		//        0);
+
+		//hook_call_deferred(&fix_role_state_data, 200 * MSEC);
+		//usleep(2000);
+
+		//pd_set_dual_role(DUT, get_dual_role_of_src());
+		//pd_update_contract(DUT);
 
 		/*
 		 * If DRP role, don't set any CC pull resistor, the PD
@@ -237,17 +355,32 @@ static void dut_allow_charge(void)
 		 * Enable PD comm. The PD comm may be disabled during
 		 * the power charge-through was detached.
 		 */
-		pd_comm_enable(DUT, 1);
+
+		// TODO: We need a more graceful transition here.
+		// PR_SWAP if PD-capable, FORCE_DETACH if not PD-capable
+		// allow_pd
+
+		/*
+		if (cc_config & CC_SRC_WITH_PD)
+			pd_comm_enable(DUT, 1);
+		else
+			pd_comm_enable(DUT, 0);
+		*/
+
+		allow_pd=is_pd_allowed();
+		CPRINTS("dut_activate_charge: ALLOW PD IS %d",allow_pd);
+		pd_comm_enable(DUT,allow_pd);
 
 		pd_update_contract(DUT);
 	}
 }
-DECLARE_DEFERRED(dut_allow_charge);
+DECLARE_DEFERRED(dut_activate_charge);
 
 static void board_manage_dut_port(void)
 {
-	enum pd_dual_role_states allowed_role;
+	enum pd_dual_role_states preferred_role;
 	enum pd_dual_role_states current_role;
+	int allow_pd=0;
 
 	/*
 	 * This function is called by the CHG port whenever there has been a
@@ -257,17 +390,18 @@ static void board_manage_dut_port(void)
 	 */
 
 	/* Assume the default value of Rd */
-	allowed_role = PD_DRP_FORCE_SINK;
+	preferred_role = PD_DRP_FORCE_SINK;
+	// TODO: This should be handled in get_dual_role_of_src()
 
 	/* If VBUS charge through is available, mark as such. */
 	if (is_charge_through_allowed())
-		allowed_role = get_dual_role_of_src();
+		preferred_role = get_dual_role_of_src();
 
 	current_role = pd_get_dual_role(DUT);
 
-	if (current_role != allowed_role) {
+	if (current_role != preferred_role) {
 		/* Update role. */
-		if (allowed_role == PD_DRP_FORCE_SINK) {
+		if (preferred_role == PD_DRP_FORCE_SINK) {
 			/* We've lost charge through. Disable VBUS. */
 			chg_power_select(CHG_POWER_OFF);
 			dut_chg_en(0);
@@ -284,10 +418,36 @@ static void board_manage_dut_port(void)
 			 * There is an exception that servo v4 is explicitly set
 			 * to have PD, like the "pnsnk" mode.
 			 */
-			pd_comm_enable(DUT, (cc_config & CC_SNK_WITH_PD) ? 1 : 0);
+			// The above is incorrect. Depends on CC_DISABLE_DTS.
+			// Does not match my user expectation.
+			
+			// Should check for PR_SWAP, if we swapped from PDSRCDTS
+			// Treat this as an abrupt shutoff.
+
+			/*
+			if (!(cc_config & CC_DISABLE_DTS)
+					&& (cc_config & CC_SNK_WITH_PD)
+					)
+				allow_pd = 1;
+		
+			// If DTS is disabled [[and PD-as-SNK]] enable PD
+			if ((cc_config & CC_DISABLE_DTS)
+					//&& (cc_config & CC_SNK_WITH_PD)
+					)
+				allow_pd = 1;
+			*/
+
+			allow_pd=is_pd_allowed();
+			//chg_power_select(CHG_POWER_PP5000);
+			CPRINTS("board_manage_dut_port: ALLOW PD IS %d",allow_pd);
+			pd_comm_enable(DUT, allow_pd);
+
+			//pd_comm_enable(DUT, (cc_config & CC_SNK_WITH_PD) ? 1 : 0);
 		} else {
 			/* Allow charge through after PD negotiate. */
-			hook_call_deferred(&dut_allow_charge_data, 2000 * MSEC);
+			/* Cancel any pending function calls */
+			hook_call_deferred(&dut_activate_charge_data, -1);
+			hook_call_deferred(&dut_activate_charge_data, 2000 * MSEC);
 		}
 	}
 
@@ -310,6 +470,14 @@ static void update_ports(void)
 	if (!charge_port_is_active()) {
 		/* CHG Vbus has dropped, so become SNK. */
 		chg_pdo_cnt = 0;
+
+		// TODO: This is a workaround to prevent infinite HARD_RESETs
+		// when booting ServoV4p1 with no PSU (disable PD on FORCE_SNK)
+		if(!is_charge_through_allowed() && !(cc_config & CC_SNK_WITH_PD)){
+			CPRINTS("WORKAROUND TURNING OFF PD");
+			pd_comm_enable(DUT, 0);
+		}
+
 	} else {
 		/* Advertise the 'best' PDOs at various discrete voltages */
 		if (active_charge_supplier == CHARGE_SUPPLIER_PD) {
@@ -367,7 +535,7 @@ static void update_ports(void)
 }
 
 /*============== Hook functions ============*/
-
+#if 1
 #ifdef CONFIG_USB_PD_TCPMV1
 static void tusb1064_tcpm_hook_connect(void)
 {
@@ -382,6 +550,8 @@ static void tusb1064_tcpm_hook_connect(void)
 	reg = REG_GENERAL_CTLSEL_USB3 | \
 		((cc_config & CC_POLARITY)?  REG_GENERAL_FLIPSEL : 0);
 	tusb1064_write_byte(I2C_PORT_MASTER, TUSB1064_REG_GENERAL, reg);
+
+	// TODO: Add is_pd_allowed() call here to properly handle policy
 	return;
 }
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, tusb1064_tcpm_hook_connect, HOOK_PRIO_DEFAULT);
@@ -395,7 +565,7 @@ static void tusb1064_tcpm_sw_reset(void)
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, tusb1064_tcpm_sw_reset, HOOK_PRIO_DEFAULT);
 #endif
-
+#endif
 /*============== End hooks =============*/
 
 int board_set_active_charge_port(int charge_port)
@@ -444,24 +614,63 @@ int pd_tcpc_cc_nc(int port, int cc_volt, int cc_sel)
 	int rp_index;
 	int nc;
 
-	/* Can never be called from CHG port as it's sink only */
-	if (port == CHG)
-		return 0;
-
+	//TODO: This needs to be rewritten to use dynamic rp_value_stored
+	// per port in question. Not hardcoded single one.
 	rp_index = rp_value_stored;
-	/*
-	 * If rp_index > 2, then always return not connected. This case should
-	 * only happen when all Rp GPIO controls are tri-stated.
-	 */
-	if (rp_index >= TYPEC_RP_RESERVED)
-		return 1;
 
-	/* Select the correct voltage threshold for current Rp and DTS mode */
-	if (cc_config & CC_DISABLE_DTS)
-		nc = cc_volt >= pd_src_vnc[rp_index];
-	else
-		nc = cc_volt >= pd_src_vnc_dts[rp_index][
-				cc_config & CC_POLARITY ? !cc_sel : cc_sel];
+	/* Can never be called from CHG port as it's sink only */
+	// TODO: Above statement is not true. SNK can still be NC.
+	// PD_SNK_VA_MV (250mV) indicates vRd-Connect(min)
+	// Use PD_SRC_DEF_RD_THRESH_MV (200mV) to be "easy in, hard out"
+	if (port == CHG){
+		if (cc_volt < PD_SRC_DEF_RD_THRESH_MV)
+		//if (cc_volt < PD_SNK_VA_MV)
+			return 1;
+		else
+			return 0;
+	}	
+
+	//TODO: this should be hypothetical "cc_pull_applied()"
+	// Use ACTUAL non-atomic state, rather than atomic variable
+	switch(cc_pull_stored){
+	case TYPEC_CC_OPEN:
+		/*
+		 * If cc_pull_stored is "OPEN", then always return not connected. This
+		 * case should ONLY be called after all Rp GPIO controls are Hi-Z'ed.
+		 */
+		nc = 1;
+		break;
+	case TYPEC_CC_RP:
+		/*
+		* If DTS & RD, use special override mappings in pd_set_rp_rd
+		* In this case, DTS SRC has 3x polarity-dependent states.
+		*/
+		if(!(cc_config & CC_DISABLE_DTS))
+			nc = cc_volt >= pd_src_vnc_dts[rp_index][
+			cc_config & CC_POLARITY ? !cc_sel : cc_sel];
+		else
+			nc = cc_volt >= pd_src_vnc[rp_index];
+
+			//TODO: This logic is confusing.
+			// Basically, if POLARITY, invert selected CC.
+		break;
+	case TYPEC_CC_RD:
+	case TYPEC_CC_RA:
+	case TYPEC_CC_RA_RD:	
+		// TODO: This is messy and needs cleanup	
+		/*
+		* If DTS & RD, use special override mappings in pd_set_rp_rd
+		* In this case, DTS SNK forces Rd+Rd state.
+		*/
+		// TODO: WARNING this may break PR_SWAPs
+		// TODO: Check this for Ra.
+		nc = cc_volt < PD_SRC_DEF_RD_THRESH_MV;
+		break;
+	default:
+		CPRINTS("C%d: cc_nc invalid pull [%d]",port,cc_pull_stored);
+		nc = 0;
+		break;
+	}
 
 	return nc;
 }
@@ -471,69 +680,73 @@ int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel)
 	int rp_index;
 	int ra;
 
-	/* Can never be called from CHG port as it's sink only */
-	if (port == CHG)
-		return 0;
-
+	//TODO: This needs to be rewritten to use dynamic rp_value_stored
+	// per port in question. Not hardcoded single one.
 	rp_index = rp_value_stored;
-	/*
-	 * If rp_index > 2, then can't be Ra. This case should
-	 * only happen when all Rp GPIO controls are tri-stated.
-	 */
-	if (rp_index >= TYPEC_RP_RESERVED)
-		return 0;
 
-	/* Select the correct voltage threshold for current Rp and DTS mode */
-	if (cc_config & CC_DISABLE_DTS)
-		ra = cc_volt < pd_src_rd_threshold[rp_index];
-	else
-		ra = cc_volt < pd_src_rd_threshold_dts[rp_index][
-				cc_config & CC_POLARITY ? !cc_sel : cc_sel];
+	/* Can never be called from CHG port as it's sink only */
+	// TODO: Above statement is not true. SNK can still be NC.
+	// PD_SRC_DEF_RD_THRESH_MV indicates Ra threshold (SNK)
+	if (port == CHG){
+		if (cc_volt < PD_SRC_DEF_RD_THRESH_MV)
+			return 1;
+		else
+			return 0;
+	}
+
+	switch(cc_pull_stored){
+	case TYPEC_CC_OPEN:
+		/*
+		 * If cc_pull_stored is "OPEN", then always return not Ra. This
+		 * case should only happen after all Rp GPIO controls are tri-stated.
+		 */
+		ra = 0;
+		break;
+	case TYPEC_CC_RP:
+		/*
+		* If DTS & RD, use special override mappings in pd_set_rp_rd
+		* In this case, DTS SRC has three polarity-dependent states.
+		*/
+		if(!(cc_config & CC_DISABLE_DTS))
+			ra = cc_volt < pd_src_rd_threshold_dts[rp_index][
+					cc_config & CC_POLARITY ? !cc_sel : cc_sel];
+		else
+			ra = cc_volt < pd_src_rd_threshold[rp_index];
+		break;
+	case TYPEC_CC_RD:
+	case TYPEC_CC_RA:
+	case TYPEC_CC_RA_RD:
+		/*
+		* If DTS & RD, use special override mappings in pd_set_rp_rd
+		* In this case, DTS SNK forces Rd+Rd state.
+		*/
+		ra = cc_volt < PD_SRC_DEF_RD_THRESH_MV;
+		// SINKs always show vRa if nothing is connected.
+		// This is normal. Just deal with it.
+		break;
+	default:
+		ra = 0;
+		break;
+	}
 
 	return ra;
 }
 
 int pd_adc_read(int port, int cc)
 {
-	int mv = -1;
+	int mv = -2;
+	bool secondary;
+	// TODO: This needs to be rewritten to use dynamic
+	// per port in question. Not hardcoded single one.
 
-	if (port == CHG)
+
+	if (port == CHG) {
 		mv = adc_read_channel(cc ? ADC_CHG_CC2_PD : ADC_CHG_CC1_PD);
-	else if (!(cc_config & CC_DETACH)) {
-		/*
-		 * In servo v4 hardware logic, both CC lines are wired directly
-		 * to DUT. When servo v4 as a snk, DUT may source Vconn to CC2
-		 * (CC1 if polarity flip) and make the voltage high as vRd-3.0,
-		 * which makes the PD state mess up. As the PD state machine
-		 * doesn't handle this case. It assumes that CC2 (CC1 if
-		 * polarity flip) is separated by a Type-C cable, resulting a
-		 * voltage lower than the max of vRa.
-		 *
-		 * It fakes the voltage within vRa.
-		 */
+		CPRINTS("ADC port CHG [%d] cc [%d] mv [%d]",port,cc,mv);
+		return mv;
+	}
 
-		/*
-		 * TODO(b/161260559): Fix this logic because of leakage
-		 * "phantom detects" Or flat-out mis-detects..... talking on
-		 * leaking CC2 line. And Vconn-swap case... and Ra on second
-		 * line (SERVO_EMCA)...
-		 *
-		 * This is basically a hack faking "vOpen" from TCPCI spec.
-		 */
-		if ((cc_config & CC_DISABLE_DTS) &&
-		    port == DUT &&
-		    cc == ((cc_config & CC_POLARITY) ? 0 : 1)) {
-
-			if ((cc_pull_stored == TYPEC_CC_RD)  ||
-				(cc_pull_stored == TYPEC_CC_RA) ||
-				(cc_pull_stored == TYPEC_CC_RA_RD))
-				mv = -1;
-			else if (cc_pull_stored == TYPEC_CC_RP)
-				mv = 3301;
-		} else
-			mv = adc_read_channel(cc ? ADC_DUT_CC2_PD :
-						   ADC_DUT_CC1_PD);
-	} else {
+	if (cc_config & CC_DETACH) {
 		/*
 		 * When emulating detach, fake the voltage on CC to 0 to avoid
 		 * triggering some debounce logic.
@@ -543,14 +756,87 @@ int pd_adc_read(int port, int cc)
 		 * unexpected range and triggers the PD state machine switching
 		 * between SNK_DISCONNECTED and SNK_DISCONNECTED_DEBOUNCE.
 		 */
-		mv = -1;
+		switch(cc_pull_stored){
+		case TYPEC_CC_OPEN:
+		case TYPEC_CC_RA_RD:
+		case TYPEC_CC_RD:
+		case TYPEC_CC_RA:
+			mv=-1;
+			break;
+		case TYPEC_CC_RP:
+			mv=3301;
+			break;
+		default:
+			mv=-2;
+			break;
+		}
+		return mv;
 	}
 
+	// If [Inverted=1] and [CC1=0] xor [Inverted=0] and [CC2=1]
+	// i.e. If "secondary CC" line
+
+	/*
+	*  inverted (=cc_config & polarity)
+	*         0     1
+	*      ---------------
+	* cc 0 |  pri   s    |
+	*    1 |  s     pri  |
+	*      ---------------
+	*/
+
+	if( !!(cc_config & CC_POLARITY) ^ !!(cc) ) 
+		secondary = true;
+	else
+		secondary = false;
+
+	// WARNINGWARNINGWARNING HACKHACKHACK
+	// It seems CC1 and CC2 are reading high?
+
+	mv = adc_read_channel(cc ? ADC_DUT_CC2_PD : ADC_DUT_CC1_PD);
+
+	// Override values as necessary to not break FSM
+	// AND don't fake DTS SRC/SNK readings
+	if (cc_config & CC_DISABLE_DTS) {	
+		switch(cc_pull_stored){
+		case TYPEC_CC_OPEN:
+			mv=-1;
+			break;
+		case TYPEC_CC_RD:
+		case TYPEC_CC_RA_RD:
+			if(secondary)
+				mv=-1;
+			break;			
+		case TYPEC_CC_RA:
+			// This is audio accessory
+			// We may not want to fake this.
+			break;
+		case TYPEC_CC_RP:
+			if(secondary){
+				if(cc_config & CC_EMCA_SERVO)
+					mv=pd_src_rd_threshold[rp_value_stored]/2;
+					//Roughly simulate eMarker vRa @ rp_value
+				else
+					mv=3301;
+			}	
+			break;
+		default:
+			mv=-2;
+			break;
+		}
+	}
+	
+	CPRINTS("ADC port DUT [%d] cc [%d] mv [%d]",port,cc,mv);
 	return mv;
 }
 
 static int board_set_rp(int rp)
 {
+
+	if (cc_config & CC_DETACH) {
+		rp_value_stored = rp;
+		return EC_SUCCESS;
+	}
 
 	if (cc_config & CC_DISABLE_DTS) {
 		/*
@@ -677,8 +963,9 @@ static int board_set_rp(int rp)
 			// The above comment is mistaken.
 			// TYPEC_CC_OPEN = OPEN (with any pull).
 			// TYPEC_RP_RESERVED = Invalid and shall not be used.
-			break;
+
 		default:
+			CPRINTS("ERR: set_rp called with invalid value [%d]", rp);
 			return EC_ERROR_INVAL;
 		}
 	}
@@ -705,13 +992,13 @@ int pd_set_rp_rd(int port, int cc_pull, int rp_value)
 	DUT_BOTH_CC_OPEN(RP1A5);
 	DUT_BOTH_CC_OPEN(RPUSB);
 	/* Set TX Hi-Z */
-	// DUT_BOTH_CC_OPEN(TX_DATA);
+	DUT_BOTH_CC_OPEN(TX_DATA);
+	// TODO: This may kill PD comms inadvertently
 
 	/* CC is disabled for emulating detach. Don't change Rd/Rp. */
 	if (cc_config & CC_DETACH)
 	{
-		rp_value = rp_value_stored;
-		cc_pull = TYPEC_CC_OPEN;
+		//NOOP, let Rp fall through.
 		rv = EC_SUCCESS;
 	} else if (cc_pull == TYPEC_CC_RP) {
 		rv = board_set_rp(rp_value);
@@ -907,6 +1194,7 @@ int pd_snk_is_vbus_provided(int port)
 
 __override int pd_check_power_swap(int port)
 {
+	// TODO: Fix this for ServoV4p1
 	/*
 	 * When only host VBUS is available, then servo_v4 is not setting
 	 * PDO_FIXED_UNCONSTRAINED in the src_pdo sent to the DUT. When this bit
@@ -915,14 +1203,41 @@ __override int pd_check_power_swap(int port)
 	 * rejecting power swap requests from the DUT.
 	 */
 
+	int ret=0;
+
 	/* Port 0 can never provide vbus. */
 	if (port == CHG)
 		return 0;
 
-	if (pd_snk_is_vbus_provided(CHG))
-		return allow_pr_swap;
+	// TODO: BUG!
+	// This conflicts with get_dual_role_of_src()
+	// PD_DRP_FORCE_SOURCE breaks PR_SWAP at last step
 
-	return 0;
+
+	switch(pd_get_power_role(port)){
+	case PD_ROLE_SOURCE:
+		if (pd_get_dual_role(port) != PD_DRP_FORCE_SOURCE)
+			ret=1;
+	break;
+	case PD_ROLE_SINK:
+		// TODO: Fix this to match which VBUS provider
+		// (HOST or CHG) based on (HOST_OR_CHG_CTL) GPIO
+
+		// charge_port_is_active() ?
+		// No, that checks active_charge_port
+		// This should probably check port state is SNK_RDY
+		if (pd_snk_is_vbus_provided(CHG) &&
+				(cc_config & CC_ALLOW_SRC) &&
+				pd_get_dual_role(port) != PD_DRP_FORCE_SINK)
+			ret=1;
+	break;
+	default:
+		CPRINTS("C%d: check PR_SWAP invalid",port);
+		ret=0;
+	break;
+	}
+
+	return ret;
 }
 
 __override int pd_check_data_swap(int port,
@@ -1240,17 +1555,19 @@ __override const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 static void print_cc_mode(void)
 {
 	/* Get current CCD status */
-	ccprintf("cc: %s\n", cc_config & CC_DETACH ? "off" : "on");
-	ccprintf("dts mode: %s\n", cc_config & CC_DISABLE_DTS ? "off" : "on");
-	ccprintf("chg mode: %s\n",
-		 get_dut_chg_en() ? "on" : "off");
-	ccprintf("chg allowed: %s\n", cc_config & CC_ALLOW_SRC ? "on" : "off");
-	ccprintf("drp enabled: %s\n", cc_config & CC_ENABLE_DRP ? "on" : "off");
-	ccprintf("cc polarity: %s\n", cc_config & CC_POLARITY ? "cc2" :
-								"cc1");
-	ccprintf("pd enabled: %s\n", pd_comm_is_enabled(DUT) ? "on" : "off");
-	ccprintf("emca: %s\n", cc_config & CC_EMCA_SERVO ?
-					"emarked" : "non-emarked");
+	ccprintf("Policy flags:\n");
+	ccprintf("    cc:          %s\n", cc_config & CC_DETACH ? "off" : "on");
+	ccprintf("    polarity:    %s\n", cc_config & CC_POLARITY ? "cc2" : "cc1");
+	ccprintf("    dts mode:    %s\n", cc_config & CC_DISABLE_DTS ? "off" : "on");
+	ccprintf("    drp enabled: %s\n", cc_config & CC_ENABLE_DRP ? "on" : "off");
+	ccprintf("    chg allowed: %s\n", cc_config & CC_ALLOW_SRC ? "on" : "off");
+	ccprintf("    emca:        %s\n", cc_config & CC_EMCA_SERVO ? "emarked" : "non-emarked");
+	ccprintf("    pd-as-src:   %s\n", cc_config & CC_SRC_WITH_PD ? "on" : "off");
+	ccprintf("    pd-as-snk:   %s\n", cc_config & CC_SNK_WITH_PD  ? "on" : "off");
+	ccprintf("State:\n");
+	ccprintf("    pd enabled:  %s\n", pd_comm_is_enabled(DUT) ? "on" : "off");
+	ccprintf("    chg mode:    %s\n", get_dut_chg_en() ? "on" : "off");
+
 }
 
 
@@ -1258,6 +1575,11 @@ static void do_cc(int cc_config_new)
 {
 	int chargeable;
 	int dualrole;
+	int allow_pd;
+
+	//TODO: This is clunky and calls itself
+	// Clean this up to callback itself or something
+	// HACKHACKHACK
 
 	if (cc_config_new != cc_config) {
 
@@ -1266,13 +1588,13 @@ static void do_cc(int cc_config_new)
 			/* Force detach */
 			pd_power_supply_reset(DUT);
 
-			/* Always set to 0 here so both CC lines are changed */
-			cc_config &= ~(CC_DISABLE_DTS & CC_ALLOW_SRC);
+	//		/* Always set to 0 here so both CC lines are changed */
+	//		cc_config &= ~(CC_DISABLE_DTS | CC_ALLOW_SRC);
+	//Typo and logic?
 
 			/* Remove Rp/Rd on both CC lines */
 			/* ROLE_CONTROL  Open (Disconnect or don’t care) */
-			/* WARNING use CC_OPEN enum or things will break */
-			pd_comm_enable(DUT, 0);
+			pd_comm_enable(DUT, 0);			
 			pd_set_rp_rd(DUT, TYPEC_CC_OPEN, rp_value_stored);
 
 			/*
@@ -1303,6 +1625,9 @@ static void do_cc(int cc_config_new)
 			dualrole = chargeable ? get_dual_role_of_src() :
 						PD_DRP_FORCE_SINK;
 			pd_set_dual_role(DUT, dualrole);
+			//usleep(200000);	//Give PD task time to tick
+
+
 			/*
 			 * If force_source or force_sink role, explicitly set
 			 * the Rp or Rd resistors on CC lines.
@@ -1320,10 +1645,12 @@ static void do_cc(int cc_config_new)
 			 * need to validate some PD behavior, so a flag
 			 * CC_SNK_WITH_PD to force enabling PD comm.
 			 */
-			if (cc_config & CC_SNK_WITH_PD)
-				pd_comm_enable(DUT, 1);
-			else
-				pd_comm_enable(DUT, chargeable);
+
+			//TODO: This is wrong, we need "is_pd_allowed()" function
+			//allow_pd = (cc_config & CC_SNK_WITH_PD) || CC_DISABLE_DTS || chargeable;
+			allow_pd = is_pd_allowed();
+			CPRINTS("do_cc: ALLOW PD IS %d",allow_pd);
+			pd_comm_enable(DUT, allow_pd);
 		}
 	}
 }
