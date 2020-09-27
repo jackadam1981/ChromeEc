@@ -3963,6 +3963,10 @@ void pd_task(void *u)
 		case PD_STATE_SNK_DISCONNECTED_DEBOUNCE:
 			tcpm_get_cc(port, &cc1, &cc2);
 
+			// HACKHACKHACK: Debug print
+			//if(port==0)
+			//	CPRINTS("C%d: ADC read cc1 [%d] cc2 [%d]",port,cc1,cc2);
+
 			if (cc_is_rp(cc1) && cc_is_rp(cc2)) {
 				/* Debug accessory */
 				new_cc_state = PD_CC_DFP_DEBUG_ACC;
