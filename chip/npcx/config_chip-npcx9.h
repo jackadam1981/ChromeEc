@@ -55,6 +55,8 @@
 
 /*****************************************************************************/
 /* Memory mapping */
+#define CONFIG_LPRAM_BASE	0x40001400 /* memory address of lpwr ram */
+#define CONFIG_LPRAM_SIZE	0x00000620 /* 1568B low power ram */
 
 #define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + NPCX_PROGRAM_MEMORY_SIZE)
 
