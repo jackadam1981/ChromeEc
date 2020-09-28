@@ -33,7 +33,7 @@ AR=$(CROSS_COMPILE)ar
 CC=$(CCACHE) $(CROSS_COMPILE)$(cc-name)
 CPP=$(CC) -E
 CXX=$(CROSS_COMPILE)clang++
-LD=$(CROSS_COMPILE)ld
+LD=$(CROSS_COMPILE)ld.lld
 NM=$(CROSS_COMPILE)nm
 OBJCOPY=$(CROSS_COMPILE)objcopy
 OBJDUMP=$(CROSS_COMPILE)objdump
@@ -142,7 +142,6 @@ LDFLAGS=-nostdlib -g -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
 BUILD_LDFLAGS=$(LIBFTDIUSB_LDLIBS)
 HOST_LDFLAGS=$(LIBFTDIUSB_LDLIBS)
 HOST_TEST_LDFLAGS=-Wl,-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
-		  -fuse-ld=bfd \
 		  $(if $(TEST_COVERAGE), --coverage,) \
 		  $(if $(TEST_ASAN), -fsanitize=address) \
 		  $(if $(TEST_MSAN), -fsanitize=memory) \
