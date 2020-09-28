@@ -52,6 +52,24 @@
       "revId": "ab212e6a107854dbb44180558561454832257462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "442a7299_b9dc5866",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-28T18:56:15Z",
+      "side": 1,
+      "message": "Yeah I think revert now is the correct approach.\n\nWe need to do more testing around this; I\u0027m happy to be a part of that or not but I don\u0027t have access to the systems which this fails on.\n\nReverting this will break CCD for some proto devices, none of which are lab-deployed to my knowledge. We can work with local builds for development for now but it would be good to fix it for good.",
+      "parentUuid": "c7c155f3_839b711c",
+      "revId": "ab212e6a107854dbb44180558561454832257462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
