@@ -79,7 +79,6 @@ static int raw_button_pressed(const struct button_config *button)
 		simulated_value = simulated_button_pressed(button);
 #endif
 	}
-
 	return (simulated_value || physical_value);
 }
 

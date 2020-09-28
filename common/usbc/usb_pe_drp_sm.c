@@ -37,6 +37,13 @@
  * the USB Power Delivery Specification.
  */
 
+int hp_event;
+int hp_monitor_power_button;
+int hp_keep_power_button_timer;
+
+//#define CPRINTF2(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTF1(format, args...)
+
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -728,6 +735,23 @@ static inline void send_ctrl_msg(int port, enum tcpm_transmit_type type,
 #define prl_send_ext_data_msg DO_NOT_USE
 #define prl_send_ctrl_msg DO_NOT_USE
 
+int hp_monitor_power_button_status (void)
+{
+    return hp_monitor_power_button;
+}
+void hp_monitor_power_button_clear (void)
+{
+    hp_monitor_power_button = 0;
+}
+int hp_power_button_timer (void)
+{
+    return hp_keep_power_button_timer;
+}
+void hp_decrease_power_button_timer (void)
+{
+    hp_keep_power_button_timer--;
+}
+
 static void pe_init(int port)
 {
 	pe[port].flags = 0;
@@ -1202,6 +1226,7 @@ static bool common_src_snk_dpm_requests(int port)
 		}
 		return true;
 	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_VDM)) {
+//		CPRINTF(" ===== common_src_snk_dpm_requests");
 		PE_CLR_DPM_REQUEST(port, DPM_REQUEST_VDM);
 
 		/* Send previously set up SVDM. */
@@ -1225,6 +1250,8 @@ static enum usb_pe_state get_last_state_pe(const int port)
 static void print_current_state(const int port)
 {
 	const char *mode = "";
+
+//    CPRINTS(" ====== ");
 
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
 			PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH))
@@ -2100,6 +2127,7 @@ static void pe_src_ready_run(int port)
 			}
 		}
 	} else if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE)) {
+//		CPRINTF(" ===== pe_src_ready_run");
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE);
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return;
@@ -2458,6 +2486,12 @@ static void pe_snk_wait_for_capabilities_run(int port)
 	/* When the SinkWaitCapTimer times out, perform a Hard Reset. */
 	if (get_time().val > pe[port].timeout) {
 		PE_SET_FLAG(port, PE_FLAGS_SNK_WAIT_CAP_TIMEOUT);
+		if ((port == 0) && (!battery_is_present())){
+			hp_event = 5;
+			//set_state_pe(port, PE_SNK_GET_SOURCE_CAP);
+			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+		return;
+	}
 		set_state_pe(port, PE_SNK_HARD_RESET);
 	}
 }
@@ -2663,6 +2697,10 @@ static void pe_snk_transition_sink_run(int port)
 			PE_SET_FLAG(port, PE_FLAGS_FIRST_MSG);
 
 			set_state_pe(port, PE_SNK_READY);
+			//if(hp_event == 6) {
+			//	hp_event = 7;
+			//	CPRINTF1(" ==== 1hp_event = %d",hp_event);
+			//}
 			return;
 		}
 
@@ -2735,6 +2773,43 @@ static void pe_snk_ready_run(int port)
 		set_state_pe(port, PE_SNK_HARD_RESET);
 		return;
 	}
+
+if(hp_event == 1) {
+set_state_pe(port,PE_VDM_RESPONSE);
+return;
+} else if (hp_event == 5) {
+	hp_event = 6;
+	CPRINTF1(" ==== 2hp_event = %d",hp_event);
+	//set_state_pe(port, PE_INIT_PORT_VDM_IDENTITY_REQUEST);
+	//set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+	set_state_pe(port, PE_SNK_GET_SOURCE_CAP);
+	return;
+} else if (hp_event == 7) {
+	CPRINTF1(" ==== 3hp_event = %d",hp_event);
+	hp_event = 8;
+	pe[port].tx_type = TCPC_TX_SOP;
+	set_state_pe(port, PE_INIT_PORT_VDM_IDENTITY_REQUEST);
+	return;
+} else if (hp_event == 8) {
+	CPRINTF1(" ==== 3hp_event = %d",hp_event);
+	hp_event = 9;
+	pe[port].tx_type = TCPC_TX_SOP;
+	set_state_pe(port, PE_INIT_VDM_SVIDS_REQUEST);
+	return;
+} else if (hp_event == 9) {
+	CPRINTF1(" ==== 3hp_event = %d",hp_event);
+	hp_event = 10;
+	pe[port].tx_type = TCPC_TX_SOP;
+	set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
+	return;
+}else if (hp_event == 10) {
+	CPRINTF1(" ==== 3hp_event = %d",hp_event);
+	hp_event = 0;
+	pe[port].tx_type = TCPC_TX_SOP;
+	set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
+	return;
+}
+
 
 	/*
 	 * Handle incoming messages before discovery and DPMs other than hard
@@ -2842,6 +2917,9 @@ static void pe_snk_ready_run(int port)
 				pe_send_soft_reset(port,
 				  PD_HEADER_GET_SOP(rx_emsg[port].header));
 				return;
+			case PD_CTRL_GET_HP_STATUS:
+			    CPRINTF(" ===== PD_CTRL_GET_HP_STATUS");
+				break;
 			/*
 			 * Receiving an unknown or unsupported message
 			 * shall be responded to with a not supported message.
@@ -2852,6 +2930,7 @@ static void pe_snk_ready_run(int port)
 			}
 		}
 	} else if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE)) {
+//		CPRINTF(" ===== pe_snk_ready_run");
 		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE);
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
 		return;
@@ -4855,8 +4934,9 @@ static void pe_vdm_request_dpm_exit(int port)
 	 * Force Tx type to be reset before reentering a VDM state, unless the
 	 * current VDM request will be resumed.
 	 */
-	if (!PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE))
+	if (!PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE)){
 		pe[port].tx_type = TCPC_TX_INVALID;
+	}
 }
 
 /**
@@ -4869,6 +4949,8 @@ static void pe_vdm_response_entry(int port)
 	uint32_t *tx_payload;
 	uint8_t vdo_cmd;
 	int cmd_type;
+//	int hp_event;
+
 	svdm_rsp_func func = NULL;
 
 	print_current_state(port);
@@ -4882,13 +4964,28 @@ static void pe_vdm_response_entry(int port)
 	cmd_type = PD_VDO_CMDT(rx_payload[0]);
 	rx_payload[0] &= ~VDO_CMDT_MASK;
 
+if(hp_event == 1) {
+hp_event = 2;
+}
+
+CPRINTF1(" ===== CMDT:%d:%d\n", cmd_type, vdo_cmd);
+CPRINTF1(" ===== hp_event = %d\n", hp_event);
+
 	if (cmd_type != CMDT_INIT) {
 		CPRINTF("ERR:CMDT:%d:%d\n", cmd_type, vdo_cmd);
 
 		pe_set_ready_state(port);
+		if (vdo_cmd == CMD_HP_GET_STATUS) {
+			if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+			    hp_monitor_power_button = 1;
+	            hp_keep_power_button_timer = 2;
+	            CPRINTF(" ===== hp_keep_power_button = %d\n", hp_keep_power_button_timer);
+            }
+         }
 		return;
 	}
 
+//hp_event = 0;
 	switch (vdo_cmd) {
 	case CMD_DISCOVER_IDENT:
 		func = svdm_rsp.identity;
@@ -4921,6 +5018,15 @@ static void pe_vdm_response_entry(int port)
 		pe_set_ready_state(port);
 		return;
 #endif
+	case CMD_HP_ATTENTION:
+	   if (hp_event == 0) {
+		   hp_event = 1;   
+	   }
+		break;
+	case CMD_HP_GET_STATUS:
+	    hp_monitor_power_button = 1;
+	    hp_keep_power_button_timer = 2;
+	    break;	
 	default:
 		CPRINTF("VDO ERR:CMD:%d\n", vdo_cmd);
 	}
@@ -4956,6 +5062,21 @@ static void pe_vdm_response_entry(int port)
 
 		if (ret <= 0)
 			ret = 4;
+	} else if (hp_event == 2) {
+           			tx_payload[0] = VDO(
+				USB_VID_HP,
+				1, /* Structured VDM */
+				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
+				| VDO_CMDT(CMDT_INIT) |
+				CMD_HP_GET_STATUS);
+           			//tx_payload[0] = 0x0502A016;
+           			tx_payload[1] = 0;
+           			tx_payload[2] = 0;
+           			ret = 4; 
+           			CPRINTF(" ===== send hp 0x16 \n");
+		hp_event = 0;
+	} else if (hp_event == 3) {
+                ;
 	} else {
 		/* not supported : NACK it */
 		tx_payload[0] = VDO(
@@ -5420,7 +5541,9 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 	int cnt;
 	int ext;
 	int rev;
-
+				if(hp_event==6){
+					hp_event = 7;
+				}
 	/*
 	 * Determine if FRS is possible based on the returned Sink Caps
 	 *
@@ -5475,6 +5598,7 @@ static void pe_dr_snk_get_sink_cap_run(int port)
 			} else if (type == PD_CTRL_REJECT ||
 				   type == PD_CTRL_NOT_SUPPORTED) {
 				set_state_pe(port, PE_SNK_READY);
+
 			} else {
 				set_state_pe(port, PE_SEND_SOFT_RESET);
 			}

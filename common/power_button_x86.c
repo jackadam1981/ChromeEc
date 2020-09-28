@@ -141,7 +141,7 @@ static void set_pwrbtn_to_pch(int high, int init)
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF) && !high &&
 	   (charge_want_shutdown() || charge_prevent_power_on(!init))) {
 		CPRINTS("PB PCH pwrbtn ignored due to battery level");
-		high = 1;
+	//	high = 1;
 	}
 #endif
 	CPRINTS("PB PCH pwrbtn=%s", high ? "HIGH" : "LOW");

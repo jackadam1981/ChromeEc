@@ -462,6 +462,9 @@ struct partner_active_modes {
 #define CMD_DP_STATUS      16
 #define CMD_DP_CONFIG      17
 
+#define CMD_HP_ATTENTION       0x15
+#define CMD_HP_GET_STATUS       0x16
+
 #define VDO_CMD_VENDOR(x)    (((10 + (x)) & 0x1f))
 
 /* ChromeOS specific commands */
@@ -776,6 +779,7 @@ struct pd_cable {
 #define USB_PID1_APPLE 0x1012
 #define USB_PID2_APPLE 0x1013
 #define USB_VID_INTEL  0x8087
+#define USB_VID_HP  0x0502
 
 /* Timeout for message receive in microseconds */
 #define USB_PD_RX_TMOUT_US 1800
@@ -1044,6 +1048,7 @@ enum pd_ctrl_msg_type {
 	PD_CTRL_FR_SWAP = 19,
 	PD_CTRL_GET_PPS_STATUS = 20,
 	PD_CTRL_GET_COUNTRY_CODES = 21,
+	PD_CTRL_GET_HP_STATUS = 21,
 	/* 22-31 Reserved */
 };
 

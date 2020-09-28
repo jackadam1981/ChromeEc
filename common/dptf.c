@@ -14,8 +14,8 @@
 #include "util.h"
 
 /* Console output macros */
-#define CPUTS(outstr) cputs(CC_DPTF, outstr)
-#define CPRINTS(format, args...) cprints(CC_DPTF, format, ## args)
+#define CPUTS(outstr) //cputs(CC_DPTF, outstr)
+#define CPRINTS(format, args...) //cprints(CC_DPTF, format, ## args)
 
 /*****************************************************************************/
 /* DPTF temperature thresholds */

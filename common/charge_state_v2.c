@@ -31,6 +31,7 @@
 #include "usb_pd.h"
 #include "util.h"
 
+#define CPRINTF1(format, args...) cprintf(CC_CHARGER, format, ## args)
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
@@ -2158,8 +2159,10 @@ wait_for_it:
 			    prev_plt_and_desired_mw !=
 				    charge_get_plt_plus_bat_desired_mw())
 				pd_set_new_power_request(port);
-		}
 
+			CPRINTF1(" ===== is_pd_supply = %d", is_pd_supply);
+		}
+ 
 		/* Adjust for time spent in this loop */
 		sleep_usec -= (int)(get_time().val - curr.ts.val);
 		if (sleep_usec < CHARGE_MIN_SLEEP_USEC)

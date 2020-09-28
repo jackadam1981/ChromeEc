@@ -1942,7 +1942,7 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 	uint8_t type;
 	uint8_t cnt;
 	int8_t msid;
-
+int p;
 	/*
 	 * If PD3, wait for the RX chunk SM to copy the pdmsg into the extended
 	 * buffer before overwriting pdmsg.
@@ -1967,15 +1967,15 @@ static void prl_rx_wait_for_phy_message(const int port, int evt)
 		cnt = CHK_BUF_SIZE;
 
 	/* dump received packet content (only dump ping at debug level MAX) */
-	if ((prl_debug_level >= DEBUG_LEVEL_2 && type != PD_CTRL_PING) ||
-		prl_debug_level >= DEBUG_LEVEL_3) {
-		int p;
+	//if ((prl_debug_level >= DEBUG_LEVEL_2 && type != PD_CTRL_PING) ||
+	//	prl_debug_level >= DEBUG_LEVEL_3) {
+		//int p;
 
-		ccprintf("C%d: RECV %04x/%d ", port, header, cnt);
+		ccprintf(" ===== C%d: RECV %04x/%d ", port, header, cnt);
 		for (p = 0; p < cnt; p++)
 			ccprintf("[%d]%08x ", p, pdmsg[port].rx_chk_buf[p]);
 		ccprintf("\n");
-	}
+	//}
 
 	/*
 	 * Ignore messages sent to the cable from our

@@ -139,6 +139,8 @@ enum ceil_requestor {
 
 #endif /* CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0 */
 
+int get_battery_status(void);
+
 /**
  * Update charge ceiling for a given port. The ceiling can be set independently
  * for several requestors, and the min. ceil will be enforced.
