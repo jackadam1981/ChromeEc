@@ -34,6 +34,24 @@
       "revId": "c8538b839be219af45d534b12b8d899fd74e4af0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f511fda_834a94d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2020-09-28T17:47:07Z",
+      "side": 1,
+      "message": "imo, we should remove incremental linking. Does it buy us anything?",
+      "parentUuid": "5c3a68da_2718c90b",
+      "revId": "c8538b839be219af45d534b12b8d899fd74e4af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
