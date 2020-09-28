@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "440ab54a_3f956ea0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-28T05:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "461236e7_82cf7be3",
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e0b972f_65daa2e8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -54,6 +72,30 @@
       "side": 1,
       "message": "#3 doesn\u0027t really address the issue, no. I think we solved some of the issues with the the register reset on init, but I think there will still be some issues which this won\u0027t expose (see other comment).",
       "parentUuid": "6e0b972f_65daa2e8",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ccb1552_ae527e47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-28T05:58:15Z",
+      "side": 1,
+      "message": "Disable dischage FET on a sink connected is fixed with https://crrev.com/c/2434590/1",
+      "parentUuid": "f13e1039_7feb6883",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -141,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "c06e1d33_6d224983",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-28T05:58:15Z",
+      "side": 1,
+      "message": "This is fixed together with https://crrev.com/c/2434590/1. We can drop this now.",
+      "parentUuid": "af92cc3a_197e9bdd",
+      "range": {
+        "startLine": 296,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 2
+      },
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1b4910c_1aa73bd4",
         "filename": "driver/ppc/syv682x.c",
         "patchSetId": 3
@@ -185,6 +251,30 @@
       "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b1122c_28527b7b",
+        "filename": "driver/ppc/syv682x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-28T05:58:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dda59441_ddbdf815",
+      "range": {
+        "startLine": 664,
+        "startChar": 33,
+        "endLine": 664,
+        "endChar": 66
+      },
+      "revId": "730319ba6a61c314edb80092ce3552ba00d15c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
