@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7b0b44f2_8b27c714",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-28T21:10:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7128aa95_0e2f473e",
+      "revId": "54e2fa636544cf7a6c240cad765783981f108920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66498aea_2f2d41dd",
         "filename": "CMakeLists.txt",
         "patchSetId": 1
@@ -107,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "ffb844d5_d5751078",
+        "filename": "CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-28T21:10:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0795cd6d_bd1678aa",
+      "revId": "54e2fa636544cf7a6c240cad765783981f108920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06f5ee5e_babbfe77",
         "filename": "Kconfig",
         "patchSetId": 1
@@ -175,6 +211,24 @@
       "revId": "54e2fa636544cf7a6c240cad765783981f108920",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49b39969_962c586a",
+        "filename": "Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-28T21:10:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37ba559_355ac3a6",
+      "revId": "54e2fa636544cf7a6c240cad765783981f108920",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
