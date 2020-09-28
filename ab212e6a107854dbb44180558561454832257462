@@ -70,6 +70,24 @@
       "revId": "ab212e6a107854dbb44180558561454832257462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cb3ff4a_96010809",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2020-09-28T19:18:00Z",
+      "side": 1,
+      "message": "Thanks Eric, I\u0027ve assigned the b:151487379 back to me for now, I have a setup for testing this and multiple DUT\u0027s that fair in their own unique ways with the new flow. I\u0027ll need some help testing the changes with the DUT\u0027s that this was intended to fix. There where 3 bugs linked form the original CL: One was Waddledoo which isn\u0027t actually broken with the old CCD logic and half breaks with the change, the Terrador platform, and b:151487379.\n\nFrom what I can tell, the Terrador platform is the only set of devices actually (significantly*) broken under the existing flow. Is this the set of proto devices that you\u0027re referring to?\n\n*Grunt has it\u0027s own set of issues, at least 2/3\u0027s are just related to hysteresis and constants needing minor adjustments.",
+      "parentUuid": "442a7299_b9dc5866",
+      "revId": "ab212e6a107854dbb44180558561454832257462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
