@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e167c0e8_a7e4d0e7",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-28T17:24:51Z",
+      "side": 1,
+      "message": "Now that pd_dfp_exit_mode isn\u0027t poking the state machine here, can/should the SOP exit be done after the SOP Exit Mode ACK?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 25
+      },
+      "revId": "5ffa7c0cac5da0f18e483df3728718c1e00031b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f6f532c_aa0531ac",
+        "filename": "include/usb_tbt_alt_mode.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-28T17:24:51Z",
+      "side": 1,
+      "message": "I think this comment should specify the behavior at a slightly higher level, e.g. \"Instructs the TBT state machine to exit its active mode.\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 45
+      },
+      "revId": "5ffa7c0cac5da0f18e483df3728718c1e00031b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

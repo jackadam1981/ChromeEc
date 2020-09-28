@@ -409,6 +409,24 @@
     },
     {
       "key": {
+        "uuid": "6086d89a_79884103",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-28T17:24:51Z",
+      "side": 1,
+      "message": "Re: How and when to set the mux, it looks like, as of this CL, we\u0027re not doing anything on sending the REQ and entering safe mode on receiving the ACK. Does this need to be changed?",
+      "parentUuid": "f1919739_2b1d1cf2",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87f0018d_722b2aae",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
