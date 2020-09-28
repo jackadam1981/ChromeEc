@@ -106,11 +106,15 @@
 #	define CONFIG_RAM_BASE    0x200B0000 /* memory address of data ram */
 	/* 126 KB data RAM + 2 KB BT RAM size */
 #	define CONFIG_DATA_RAM_SIZE    0x00020000
+	/* PROGRAM_MEMORY_SIZE is shrunk, but code RAM is the full size. */
+#	define CONFIG_CODE_RAM_SIZE    (NPCX_PROGRAM_MEMORY_SIZE + 0x1000)
 
-	/* Override default NPCX_RAM_SIZE because we're excluding a block. */
+	/*
+	 * Override default NPCX_RAM_SIZE because PROGRAM_MEMORY_SIZE is
+	 * modified.
+	 */
 #	undef NPCX_RAM_SIZE
-#	define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + \
-			      NPCX_PROGRAM_MEMORY_SIZE + 0x1000)
+#	define NPCX_RAM_SIZE (CONFIG_DATA_RAM_SIZE + CONFIG_CODE_RAM_SIZE)
 #else
 #	error "Unsupported chip variant"
 #endif
