@@ -18,6 +18,10 @@
 #include "usb_tbt_alt_mode.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "system.h"
+
+
+#define CPRINTS1(format, args...) cprints(CC_USBPD, format, ## args)
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -76,7 +80,8 @@ static int pd_allocate_mode(int port, enum tcpm_transmit_type type,
 	struct partner_active_modes *active =
 		pd_get_partner_active_modes(port, type);
 	assert(active);
-
+//CPRINTF(" ==== pd_allocate_mode \n");
+//	CPRINTS1(" ===== 2");
 	if (mode_idx != -1)
 		return mode_idx;
 
@@ -99,9 +104,11 @@ static int pd_allocate_mode(int port, enum tcpm_transmit_type type,
 			 * TODO(b/155890173): Support AP-directed mode entry
 			 * where the mode is unknown to the TCPM.
 			 */
+
 			if ((svidp->svid != supported_modes[i].svid) ||
-			    (svid && (svidp->svid != svid)))
+			    (svid && (svidp->svid != svid))){
 				continue;
+		    }
 
 			modep = &active->amodes[active->amode_idx];
 			modep->fx = &supported_modes[i];
@@ -110,6 +117,7 @@ static int pd_allocate_mode(int port, enum tcpm_transmit_type type,
 			return active->amode_idx - 1;
 		}
 	}
+	
 	return -1;
 }
 
@@ -227,10 +235,14 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
 	int mode_idx = pd_allocate_mode(port, type, svid);
 	struct svdm_amode_data *modep;
 	uint32_t mode_caps;
-
-	if (mode_idx == -1)
+  
+	if (mode_idx == -1){
+//		CPRINTS(" ===== 1");
 		return 0;
+	}
 	modep = &pd_get_partner_active_modes(port, type)->amodes[mode_idx];
+
+    //CPRINTS(" ===== pd_dfp_enter_mode");
 
 	if (!opos) {
 		/* choose the lowest as default */
@@ -994,6 +1006,7 @@ __overridable void svdm_safe_dp_mode(int port)
 
 __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 {
+	//uint32_t reset_flags = system_get_reset_flags();
 	/*
 	 * Don't enter the mode if the SoC is off.
 	 *
@@ -1006,15 +1019,21 @@ __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 	 * when the SoC is off as opposed to suspend where adding a display
 	 * could cause a wake up.)
 	 */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		return -1;
-
+	//CPRINTS(" ==== 1system_get_reset_flags = 0x%x",reset_flags);
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)){// &&  ((reset_flags & EC_RESET_FLAG_RESET_PIN))) {
+	//	CPRINTS(" ==== 1system_get_reset_flags = 0x%x",reset_flags);
+	    svdm_safe_dp_mode(port);
+		pd_notify_dp_alt_mode_entry();
+		return 0;
+	}
+	//CPRINTS1(" ==== 1system_get_reset_flags = 0x%x",reset_flags);
+    //CPRINTS(" ==== 2enter svdm_enter_dp_mode ");
 	/* Only enter mode if device is DFP_D capable */
 	if (mode_caps & MODE_DP_SNK) {
 		svdm_safe_dp_mode(port);
 
-		if (IS_ENABLED(CONFIG_MKBP_EVENT) &&
-		    chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
+		//if (IS_ENABLED(CONFIG_MKBP_EVENT) &&
+		//    chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
 			/*
 			 * Wake the system up since we're entering DP AltMode.
 			 */
@@ -1210,7 +1229,7 @@ __overridable int svdm_gfu_status(int port, uint32_t *payload)
 	 * This is called after enter mode is successful, send unstructured
 	 * VDM to read info.
 	 */
-	pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_READ_INFO, NULL, 0);
+	//pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_READ_INFO, NULL, 0);
 	return 0;
 }
 
@@ -1267,6 +1286,15 @@ const struct svdm_amode_fx supported_modes[] = {
 
 	{
 		.svid = USB_VID_GOOGLE,
+		.enter = &svdm_enter_gfu_mode,
+		.status = &svdm_gfu_status,
+		.config = &svdm_gfu_config,
+		.attention = &svdm_gfu_attention,
+		.exit = &svdm_exit_gfu_mode,
+	},
+
+	{
+		.svid = USB_VID_HP,
 		.enter = &svdm_enter_gfu_mode,
 		.status = &svdm_gfu_status,
 		.config = &svdm_gfu_config,

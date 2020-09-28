@@ -18,6 +18,9 @@
 #include "usb_pe_sm.h"
 #include "usb_tbt_alt_mode.h"
 #include "tcpm.h"
+#include "system.h"
+
+#define CPRINTS1(format, args...) cprints(CC_USBPD, format, ## args)
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -26,6 +29,8 @@
 #define CPRINTF(format, args...)
 #define CPRINTS(format, args...)
 #endif
+
+int hp_device_discover;
 
 static struct {
 	bool mode_entry_done;
@@ -69,6 +74,9 @@ void dpm_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 			intel_vdm_acked(port, type, vdo_count, vdm);
 			break;
 		}
+	case USB_VID_HP:
+		hp_vdm_acked(port, type, vdo_count, vdm);
+			break;	
 	default:
 		CPRINTS("C%d: Received unexpected VDM ACK for SVID %d", port,
 				svid);
@@ -104,8 +112,10 @@ static void dpm_attempt_mode_entry(int port)
 	uint32_t vdm[VDO_MAX_SIZE];
 	enum tcpm_transmit_type tx_type = TCPC_TX_SOP;
 
-	if (pd_get_data_role(port) != PD_ROLE_DFP)
+	if (pd_get_data_role(port) != PD_ROLE_DFP) {
+		if (!(chipset_in_state(CHIPSET_STATE_ANY_OFF)))
 		return;
+	}
 	/*
 	 * Do not try to enter mode while CPU is off.
 	 * CPU transitions (e.g b/158634281) can occur during the discovery
@@ -113,15 +123,17 @@ static void dpm_attempt_mode_entry(int port)
 	 * of the modes can get out of sync, causing the attempt to
 	 * enter the mode to fail prematurely.
 	 */
-	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
-		return;
+	//if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF) && (!(system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN))) 
+	//	return;
 	/*
 	 * If discovery has not occurred for modes, do not attempt to switch
 	 * to alt mode.
 	 */
 	if (pd_get_svids_discovery(port, TCPC_TX_SOP) != PD_DISC_COMPLETE ||
-	    pd_get_modes_discovery(port, TCPC_TX_SOP) != PD_DISC_COMPLETE)
+	    pd_get_modes_discovery(port, TCPC_TX_SOP) != PD_DISC_COMPLETE) {
+		if (!(chipset_in_state(CHIPSET_STATE_ANY_OFF)))
 		return;
+	}
 
 	/* Check if the device and cable support USB4. */
 	if (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_is_capable(port)) {
@@ -138,8 +150,17 @@ static void dpm_attempt_mode_entry(int port)
 	/* If not, check if they support DisplayPort alt mode. */
 	if (vdo_count == 0 && !dpm[port].mode_entry_done &&
 	    pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP,
-				USB_SID_DISPLAYPORT))
+				USB_SID_DISPLAYPORT)) {
 		vdo_count = dp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+	CPRINTS1(" ===== USB_SID_DISPLAYPORT enter= %d", vdo_count);
+	hp_device_discover = 1;
+    } else if (pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP,
+				USB_VID_HP)) {
+		
+		vdo_count = hp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+	CPRINTS1(" ===== USB_VID_HP enter= %d", vdo_count);
+	hp_device_discover = 0;
+    }
 
 	/*
 	 * If the PE didn't discover any supported alternate mode, just mark
@@ -211,6 +232,7 @@ void dpm_run(int port)
 {
 	if (dpm[port].mode_exit_request)
 		dpm_attempt_mode_exit(port);
-	else if (!dpm[port].mode_entry_done)
+//	else if ((!dpm[port].mode_entry_done) || get_hp_discover())
+	else if ((!dpm[port].mode_entry_done) || hp_device_discover)
 		dpm_attempt_mode_entry(port);
 }

@@ -22,6 +22,7 @@
 #include "usbc_ppc.h"
 #include "vboot.h"
 
+#define CPRINTF1(format, args...) cprintf(CC_USBPD, format, ## args)
 /*
  * USB Type-C DRP with Accessory and Try.SRC module
  *   See Figure 4-16 in Release 1.4 of USB Type-C Spec.
@@ -1218,6 +1219,7 @@ static bool tc_perform_snk_hard_reset(int port)
 		 * If Vbus isn't back after wait + tSrcTurnOn, go unattached
 		 */
 		if (get_time().val > tc[port].timeout) {
+			CPRINTF1(" ==== tc_perform_snk_hard_reset");
 			tc[port].ps_reset_state = PS_STATE0;
 			set_state_tc(port, TC_UNATTACHED_SNK);
 			return true;
@@ -1311,12 +1313,12 @@ void tc_state_init(int port)
 
 	/* Allow system to set try src enable */
 	tc_try_src_override(TRY_SRC_NO_OVERRIDE);
-
+CPRINTF1(" ==== tc_try_src_override");
 	/*
 	 * Set initial PD communication policy.
 	 */
 	tc_policy_pd_enable(port, pd_comm_allowed_by_policy());
-
+CPRINTF1(" ==== tc_policy_pd_enable");
 	/* Set dual-role state based on chipset power state */
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		pd_set_dual_role_and_event(port, PD_DRP_FORCE_SINK, 0);
@@ -1331,9 +1333,10 @@ void tc_state_init(int port)
 	 * stale PD state as well.
 	 */
 	if (system_get_reset_flags() &
-	    (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON))
+	    (EC_RESET_FLAG_BROWNOUT | EC_RESET_FLAG_POWER_ON)){
+		CPRINTF1(" ==== tc_state_init");
 		first_state = TC_UNATTACHED_SNK;
-	else
+	}else
 		first_state = TC_ERROR_RECOVERY;
 
 	/*
@@ -1560,6 +1563,7 @@ static void pd_update_dual_role_config(int port)
 		 * or debug accessory toggle only and we are in the source
 		 * disconnected state).
 		 */
+		CPRINTF1(" ==== pd_update_dual_role_config");
 		set_state_tc(port, TC_UNATTACHED_SNK);
 	} else if (tc[port].power_role == PD_ROLE_SINK &&
 			drp_state[port] == PD_DRP_FORCE_SOURCE) {
@@ -1819,8 +1823,10 @@ static void tc_disabled_run(const int port)
 	 * no longer be suspended then we need to exit
 	 * our current state and go UNATTACHED_SNK
 	 */
-	if (!TC_CHK_FLAG(port, TC_FLAGS_SUSPEND))
+	if (!TC_CHK_FLAG(port, TC_FLAGS_SUSPEND)) {// && (get_battery_status() != BATTERY_TYPE_COUNT)) {
+		CPRINTF1(" ==== tc_disabled_run");
 		set_state_tc(port, TC_UNATTACHED_SNK);
+	}
 
 	task_wait_event(-1);
 }
@@ -3288,6 +3294,8 @@ static void tc_cc_rp_entry(const int port)
  */
 static void tc_cc_open_entry(const int port)
 {
+	if ((port == 0) && (!battery_is_present()))
+		return;
 	/* Ensure we are not sourcing Vbus */
 	tc_src_power_off(port);
 
@@ -3305,15 +3313,19 @@ static void tc_cc_open_entry(const int port)
 	 * sure the TCPC has managed its internal states for disconnecting
 	 * the only source of power it has.
 	 */
-	if (battery_is_present())
+	if (battery_is_present()) {
 		tcpm_enable_auto_discharge_disconnect(port, 0);
+	} else {
+		CPRINTS(" ==== battery is not present");
+	}
 
 	/* We may brown out after applying CC open, so flush console first. */
 	CPRINTS("C%d: Applying CC Open!", port);
 	cflush();
 
 	/* Remove terminations from CC */
-	typec_select_pull(port, TYPEC_CC_OPEN);
+	    typec_select_pull(port, TYPEC_CC_OPEN);
+
 	typec_update_cc(port);
 
 	if (IS_ENABLED(CONFIG_USBC_PPC)) {

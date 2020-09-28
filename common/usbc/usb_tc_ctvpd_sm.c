@@ -13,6 +13,7 @@
 #include "vpd_api.h"
 
 /* USB Type-C CTVPD module */
+#define CPRINTS1(format, args...) cprints(CC_USBPD, format, ## args)
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -314,8 +315,9 @@ static void tc_error_recovery_entry(const int port)
 
 static void tc_error_recovery_run(const int port)
 {
-	if (get_time().val > tc[port].cc_debounce)
+	if (get_time().val > tc[port].cc_debounce) {
 		set_state_tc(port, TC_UNATTACHED_SNK);
+	}
 }
 
 /**

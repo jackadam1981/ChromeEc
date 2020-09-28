@@ -21,6 +21,8 @@
 #include "util.h"
 #include "vboot.h"
 #include "wireless.h"
+#include "usb_pe.h"
+#include "tcpci.h"
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
@@ -268,6 +270,8 @@ enum power_state power_chipset_init(void)
 
 enum power_state common_intel_x86_power_handle_state(enum power_state state)
 {
+	int status;
+	int rv;
 	switch (state) {
 	case POWER_G3:
 		break;
@@ -338,11 +342,12 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 #endif
 
 	case POWER_G3S5:
-		if (intel_x86_wait_power_up_ok() != EC_SUCCESS) {
+		/* Scott: Don't prevent power on if no battery */
+		/*if (intel_x86_wait_power_up_ok() != EC_SUCCESS) {
 			chipset_force_shutdown(
 				CHIPSET_SHUTDOWN_BATTERY_INHIBIT);
 			return POWER_G3;
-		}
+		}*/
 #ifdef CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK
 		/*
 		 * Callback to do pre-initialization within the context of
@@ -355,7 +360,41 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 			chipset_force_shutdown(CHIPSET_SHUTDOWN_WAIT);
 			return POWER_G3;
 		}
+        
+        CPRINTS(" @@@@@@@ system_get_reset_flags = %d",system_get_reset_flags());
 
+		if (system_get_reset_flags() & EC_RESET_FLAG_RESET_PIN) {
+		    if (power_button_is_pressed()) {
+			    //chipset_force_shutdown(CHIPSET_SHUTDOWN_WAIT);
+			    //power_s5_up = 0;
+		//	    CPRINTS(" @@@@@@@ 1 press button ");
+        //        power_s5_up = 1;
+		//return POWER_S5;
+             //   system_reset(SYSTEM_RESET_HARD);
+		    }
+		    if (hp_monitor_power_button_status()) {
+		//	    CPRINTS(" @@@@@@@ 2 press button ");
+           //    system_reset(SYSTEM_RESET_HARD);
+                power_s5_up = 1;
+		return POWER_S5;
+		    }
+
+		/* Scott: If use barrel adapter(only VBUS), we can check CC status
+		 * if LOOK4CONNECTION=1, means no CC communication
+		 */
+		rv = tcpc_read(0, TCPC_REG_CC_STATUS, &status);
+		if (rv)
+			return rv;
+		if (status & TCPC_REG_CC_STATUS_LOOK4CONNECTION_MASK)
+		{
+			power_s5_up = 1;
+			return POWER_S5;
+		}
+		    chipset_force_shutdown(CHIPSET_SHUTDOWN_WAIT);
+			power_s5_up = 0;
+		//	CPRINTS(" @@@@@@@  NOT press button ");
+		    return POWER_S5;    
+	   }
 		power_s5_up = 1;
 		return POWER_S5;
 

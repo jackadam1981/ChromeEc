@@ -53,6 +53,9 @@
 					   PD_FLAGS_SNK_WAITING_BATT | \
 					   PD_FLAGS_CHECK_VCONN_STATE)
 
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -2032,13 +2035,13 @@ static void handle_request(int port, uint32_t head,
 	int p;
 
 	/* dump received packet content (only dump ping at debug level 3) */
-	if ((debug_level == 2 && PD_HEADER_TYPE(head) != PD_CTRL_PING) ||
-	    debug_level >= 3) {
-		CPRINTF("C%d RECV %04x/%d ", port, head, cnt);
+	//if ((debug_level == 2 && PD_HEADER_TYPE(head) != PD_CTRL_PING) ||
+	//    debug_level >= 3) {
+		CPRINTF(" ===== C%d RECV %04x/%d ", port, head, cnt);
 		for (p = 0; p < cnt; p++)
 			CPRINTF("[%d]%08x ", p, payload[p]);
 		CPRINTF("\n");
-	}
+	//}
 
 	/*
 	 * If we are in disconnected state, we shouldn't get a request. Do
