@@ -16,6 +16,24 @@
       "revId": "c8538b839be219af45d534b12b8d899fd74e4af0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c3a68da_2718c90b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2020-09-28T16:35:05Z",
+      "side": 1,
+      "message": "Just using LLD for linking fuzzer binary alone does not help as the root cause is incremental linking. BFD seems to be messing up the incremental linking. Unfortunately, I do not understand enough about EC build system to limit this change just for fuzzer targets.\n\nSo there are two options that EC can explore:\n1. Remove or fix need for incremental linking. \n2. Use LLD (potentially limiting to fuzzer targets).",
+      "parentUuid": "b6aa7876_33022fc4",
+      "revId": "c8538b839be219af45d534b12b8d899fd74e4af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
