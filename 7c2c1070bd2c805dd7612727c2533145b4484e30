@@ -16,6 +16,24 @@
       "revId": "7c2c1070bd2c805dd7612727c2533145b4484e30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72066254_e05387f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2020-09-28T18:11:04Z",
+      "side": 1,
+      "message": "The intention was that other boards would fully switch to the RT1715, the runtime detection would only be used on Volteer to support a mix of the TUSB422 and RT1715.",
+      "parentUuid": "a92b99bb_f348fb51",
+      "revId": "7c2c1070bd2c805dd7612727c2533145b4484e30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
