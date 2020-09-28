@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47245f19_ffd14d8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-28T23:16:16Z",
+      "side": 1,
+      "message": "I am not sure I agree with the Safe5V, which is clearly defined in PD, as being a line that everything above it is noted as being Safe5V instead of being the tight range that is defined by the spec.",
+      "revId": "e84676db6ad7c4101c3eb5a5c315588797c17187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44dfe1c1_eff557e1",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-28T23:16:16Z",
+      "side": 1,
+      "message": "Can you add a magic decoder to what these mean?\n\nSafe0V is the range 0 to 0.8V\nSafe5V is the range 4.75 to 5.5V\nSink_Disconnect is....????\n\nSafe5V was the original name and it was determined this is not the range of 4.75 to 5.5V but rather it is \u003e\u003d 4.75V and was renamed as PRESENT to represent the line instead of the range.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "e84676db6ad7c4101c3eb5a5c315588797c17187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
