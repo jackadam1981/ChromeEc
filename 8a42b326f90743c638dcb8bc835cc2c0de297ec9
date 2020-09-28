@@ -97,6 +97,30 @@
       "revId": "8a42b326f90743c638dcb8bc835cc2c0de297ec9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5c5427d_f02b3863",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-28T21:45:41Z",
+      "side": 1,
+      "message": "Did you forget to upload a new patchset?",
+      "parentUuid": "887b6f29_9f594844",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "8a42b326f90743c638dcb8bc835cc2c0de297ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
