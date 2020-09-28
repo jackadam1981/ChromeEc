@@ -16,6 +16,24 @@
       "revId": "424ca6d7b31e2f627adb83629ec07467d871b421",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0e594ca_ba4a9a58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-28T15:48:09Z",
+      "side": 1,
+      "message": "I was worried that we\u0027d end up excluding something that we shouldn\u0027t (i.e., if it has the same license as EC we would still want to check it). I wanted to err on the sign of noisily complaining about licenses rather than accidentally allowing something that shouldn\u0027t be added because of an incompatible license.",
+      "parentUuid": "468e4e89_284c9d54",
+      "revId": "424ca6d7b31e2f627adb83629ec07467d871b421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
