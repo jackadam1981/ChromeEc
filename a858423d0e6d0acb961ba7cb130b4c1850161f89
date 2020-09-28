@@ -16,6 +16,23 @@
       "revId": "a858423d0e6d0acb961ba7cb130b4c1850161f89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a51d9cf_67836afd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2020-09-28T21:51:26Z",
+      "side": 1,
+      "message": "This applies just fine locally after a repo sync; I\u0027m not sure why gerrit is reporting a merge conflict.",
+      "revId": "a858423d0e6d0acb961ba7cb130b4c1850161f89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
