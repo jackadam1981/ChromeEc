@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "cf85e8ca_16b844fc",
+        "filename": "firmware_builder.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-28T22:05:08Z",
+      "side": 1,
+      "message": "I thought it meant it was private to the file. I have removed it here and everywhere",
+      "parentUuid": "5231eff3_6c45d5db",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90744966_7e7258e2",
         "filename": "firmware_builder.py",
         "patchSetId": 7
@@ -62,6 +86,30 @@
       "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b211d68_5de43c34",
+        "filename": "firmware_builder.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-28T22:05:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90744966_7e7258e2",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "058c5d60_d734ce0d",
+        "filename": "firmware_builder.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-28T22:05:08Z",
+      "side": 1,
+      "message": "The state is left over between runs (I verified with build team). Either way I decide it was better to upload the metrics for the build or test step in the response themselves, so there isn\u0027t a separate metric collection endpoint/step anymore.",
+      "parentUuid": "83b40a4d_e7a12533",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cabb10f1_fe585641",
         "filename": "firmware_builder.py",
         "patchSetId": 7
@@ -108,6 +180,30 @@
       "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a2066eb_545b35a5",
+        "filename": "firmware_builder.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-28T22:05:08Z",
+      "side": 1,
+      "message": "I like that much better. Done.\n\n(I had to use set_default, but otherwise it is the same principle)",
+      "parentUuid": "cabb10f1_fe585641",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "47c05b9bf7e9bfa00c3dd9b0c392e9820a464f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
