@@ -16,6 +16,29 @@
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9991473f_3b9988a1",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-28T16:38:25Z",
+      "side": 1,
+      "message": "This should probably go in https://chromium.googlesource.com/chromiumos/platform/ec/+/424ca6d7b31e2f627adb83629ec07467d871b421/include/util.h. Unit tests can go in corresponding test file: https://chromium.googlesource.com/chromiumos/platform/ec/+/424ca6d7b31e2f627adb83629ec07467d871b421/test/utils.c.",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 1
+      },
+      "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
