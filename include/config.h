@@ -4222,6 +4222,9 @@
 #undef CONFIG_USBC_RETIMER_PS8818
 #undef CONFIG_USBC_RETIMER_TUSB544
 
+/* Allow config time tuning of PS8818 RX Input Termination */
+#undef CONFIG_PS8818_RX_INPUT_TERM
+
 /* Allow run-time configuration of the Burnside Bridge driver structure */
 #undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
 
