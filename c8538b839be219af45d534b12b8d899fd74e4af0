@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6aa7876_33022fc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2020-09-28T16:06:28Z",
+      "side": 1,
+      "message": "Isn\u0027t this the exact opposite of what we want? We want the cross-compiler to continue to use bfd, but when building for the host (which includes the fuzzer) we want to override that and use lld?",
+      "revId": "c8538b839be219af45d534b12b8d899fd74e4af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
