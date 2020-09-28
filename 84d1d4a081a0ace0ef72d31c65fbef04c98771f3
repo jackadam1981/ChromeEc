@@ -16,6 +16,24 @@
       "revId": "84d1d4a081a0ace0ef72d31c65fbef04c98771f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87ce1ffb_bae27896",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-28T19:55:34Z",
+      "side": 1,
+      "message": "IMO in cases like this where there is no testing suites available, it\u0027s OK to break it. If people are still using this code, they will fix it and learn to write some tests next time.",
+      "parentUuid": "2dae55f2_03ad47ff",
+      "revId": "84d1d4a081a0ace0ef72d31c65fbef04c98771f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
