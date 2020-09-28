@@ -424,6 +424,30 @@
       "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca33fda9_058c982d",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1139965
+      },
+      "writtenOn": "2020-09-28T11:46:54Z",
+      "side": 1,
+      "message": "In fact, ULPOSC1(osc\u003d0) is already enabled in coreboot and used by pmic wrapper driver during the system life cycle(of cause, pmic wrapper driver will do the ULPOSC1 calibration). So you could see here, we check the accuracy of ULPOSC1 first instead of calibrate it directly.",
+      "parentUuid": "457a6b01_edf319f5",
+      "range": {
+        "startLine": 264,
+        "startChar": 17,
+        "endLine": 264,
+        "endChar": 18
+      },
+      "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
