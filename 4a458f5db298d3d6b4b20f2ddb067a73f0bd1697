@@ -33,6 +33,24 @@
       "revId": "4a458f5db298d3d6b4b20f2ddb067a73f0bd1697",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd0cffc4_cfa3e862",
+        "filename": "util/presubmit_check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-28T23:43:04Z",
+      "side": 1,
+      "message": "Yeah, I think we need to kill that too. Done.",
+      "parentUuid": "9af5b4f5_9815bc54",
+      "revId": "4a458f5db298d3d6b4b20f2ddb067a73f0bd1697",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
