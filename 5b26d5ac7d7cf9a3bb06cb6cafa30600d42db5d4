@@ -22,6 +22,30 @@
       "revId": "5b26d5ac7d7cf9a3bb06cb6cafa30600d42db5d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61388120_c1d435bf",
+        "filename": "Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2020-09-28T21:08:53Z",
+      "side": 1,
+      "message": "They both depended on eachother so just squashed them as no better option.",
+      "parentUuid": "76b427ff_bb89d4c5",
+      "range": {
+        "startLine": 39,
+        "startChar": 7,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "5b26d5ac7d7cf9a3bb06cb6cafa30600d42db5d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
