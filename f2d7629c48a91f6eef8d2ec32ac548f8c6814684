@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "46464077_235c445a",
+        "filename": "baseboard/intelrvp/usb_pd_policy_mecc_1_0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-09-28T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "960d79d2_f866111d",
+      "range": {
+        "startLine": 69,
+        "startChar": 23,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "f2d7629c48a91f6eef8d2ec32ac548f8c6814684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "756e2b14_9ff896d3",
         "filename": "board/adlrvpp_ite/board.h",
         "patchSetId": 1
@@ -39,6 +63,42 @@
       "revId": "f2d7629c48a91f6eef8d2ec32ac548f8c6814684",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15384e04_dd8c3c66",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-09-28T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "756e2b14_9ff896d3",
+      "revId": "f2d7629c48a91f6eef8d2ec32ac548f8c6814684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2270b3c3_b21c75f8",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-09-28T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "756e2b14_9ff896d3",
+      "revId": "f2d7629c48a91f6eef8d2ec32ac548f8c6814684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +122,30 @@
       "revId": "f2d7629c48a91f6eef8d2ec32ac548f8c6814684",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42235708_dbda71a0",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2020-09-28T18:00:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbf1d42a_c1a3a803",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "f2d7629c48a91f6eef8d2ec32ac548f8c6814684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
