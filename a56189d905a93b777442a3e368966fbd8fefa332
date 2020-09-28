@@ -16,6 +16,69 @@
       "revId": "a56189d905a93b777442a3e368966fbd8fefa332",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f525b9d_ab7c2a42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-28T18:54:24Z",
+      "side": 1,
+      "message": "Nearly there.",
+      "revId": "a56189d905a93b777442a3e368966fbd8fefa332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf0e10de_81008294",
+        "filename": "include/button.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-28T18:54:24Z",
+      "side": 1,
+      "message": "Please add documentation to these prototypes.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 49
+      },
+      "revId": "a56189d905a93b777442a3e368966fbd8fefa332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b35147_30c7a45f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-28T18:54:24Z",
+      "side": 1,
+      "message": "nit: please make this generic. `CONFIG_ADC_BUTTONS`. A board has buttons that are connected to ADC pins which pressed and released values are determined by the analog voltage.",
+      "range": {
+        "startLine": 771,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 32
+      },
+      "revId": "a56189d905a93b777442a3e368966fbd8fefa332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
