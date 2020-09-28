@@ -433,7 +433,7 @@ static int board_ps8802_mux_set(const struct usb_mux *me,
  * PS8818 set mux board tuning.
  * Adds in board specific gain and DP lane count configuration
  */
-static int board_ps8818_mux_set(const struct usb_mux *me,
+__overridable int board_ps8818_mux_set(const struct usb_mux *me,
 				mux_state_t mux_state)
 {
 	int rv = EC_SUCCESS;
@@ -470,6 +470,14 @@ static int board_ps8818_mux_set(const struct usb_mux *me,
 					PS8818_REG1_APTX2EQ_5G_LEVEL,
 					PS8818_EQ_LEVEL_UP_MASK,
 					PS8818_EQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_RX_PHY,
+					PS8818_RX_INPUT_TERM_MASK,
+					PS8818_RX_INPUT_TERM_112_OHM);
 		if (rv)
 			return rv;
 	}
