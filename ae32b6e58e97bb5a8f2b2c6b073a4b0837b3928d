@@ -16,6 +16,24 @@
       "revId": "ae32b6e58e97bb5a8f2b2c6b073a4b0837b3928d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d227cba3_b8c5dd5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-28T17:15:27Z",
+      "side": 1,
+      "message": "Looks like you\u0027ll need to free up more flash space for this feature.  There are some suggestions on b/168608382 for features you can disable.  I\u0027d suggest starting with ones that only affect debugging.\n\nOne I forgot to list there would be removing the PRL debug state strings with \"#define CONFIG_USB_PD_DEBUG_LEVEL 1\".  That would free up about 1k of space it looks like.",
+      "parentUuid": "8bc6db4d_351f31d4",
+      "revId": "ae32b6e58e97bb5a8f2b2c6b073a4b0837b3928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
