@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b16f7a9b_721bad65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-28T21:32:10Z",
+      "side": 1,
+      "message": "Besides 2 extra files, this looks good to me",
+      "revId": "9b36370bd6ff142e646e0a8f0d0074ab11a1209f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9026a8d4_bb263d03",
+        "filename": "core/nds32/atomic.h.orig",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-28T21:32:10Z",
+      "side": 1,
+      "message": "this file accidentally made it into the CL, can you remove it please",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "9b36370bd6ff142e646e0a8f0d0074ab11a1209f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c877b8ea_d7c37e82",
+        "filename": "core/riscv-rv32i/atomic.h.orig",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-28T21:32:10Z",
+      "side": 1,
+      "message": "same, please remove",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 0
+      },
+      "revId": "9b36370bd6ff142e646e0a8f0d0074ab11a1209f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
