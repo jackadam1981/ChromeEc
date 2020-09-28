@@ -32,32 +32,6 @@ fi
 # Directories that need to be tested by separate unit tests.
 unittest_dirs="util/ec3po/ extra/stack_analyzer/"
 
-changed=$(find ${PRESUBMIT_FILES} -newer .tests-passed)
-# Filter out unittest_dirs files from changed files. They're handled separately.
-for dir in $unittest_dirs; do
-    changed=$(echo "${changed}" | grep -v "${dir}")
-done
-# Filter out flash_ec since it's not part of any unit tests.
-changed=$(echo "${changed}" | grep -v util/flash_ec)
-# Filter out uart_stress_tester
-changed=$(echo "${changed}" | grep -v util/uart_stress_tester.py)
-# Filter out this file itself.
-changed=$(echo "${changed}" | grep -v util/presubmit_check.sh)
-# Filter out the OWNERS file.
-changed=$(echo "${changed}" | grep -v OWNERS)
-# Filter out the README.md file.
-changed=$(echo "${changed}" | grep -v README.md)
-# Filter out the navbar.md file.
-changed=$(echo "${changed}" | grep -v navbar.md)
-# Filter out markdown docs/ directory
-changed=$(echo "${changed}" | grep -v docs/)
-if [[ -n "${changed}" ]]; then
-  echo "Files have changed since last time unit tests passed:"
-  echo "${changed}" | sed -e 's/^/  /'
-  echo "Please run \"make buildall -j ${ncpu}\"."
-  exit 1
-fi
-
 for dir in $unittest_dirs; do
     dir_files=$(echo "${PRESUBMIT_FILES}" | grep "${dir}")
     if [[ -z "${dir_files}" ]]; then
