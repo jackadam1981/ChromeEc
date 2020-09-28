@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1917455d_b958a916",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003039
+      },
+      "writtenOn": "2020-09-28T21:22:15Z",
+      "side": 1,
+      "message": "Adding Aashay from security.\n\nThis wasn\u0027t originally in scope when we considered the security aspect of supporting TBT.\n\nIn this scenario, the port partner (for example, a Windows device) acts as the DFP TBT host, and we, as the UFP, are supposed to just enter TBT3 on command.\n\nI\u0027m not sure this is something we are ready for, to be honest...",
+      "revId": "ccd6b5354ae666e7afac19a6700641ddc0acfa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
