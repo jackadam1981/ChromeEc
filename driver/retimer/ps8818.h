@@ -78,6 +78,13 @@
 #define PS8818_STATUS_NORMAL_OPERATION		BIT(7)
 #define PS8818_STATUS_10_GBPS			BIT(5)
 
+#define PS8818_RX_PHY_REGISTER	0x6D
+#define PS8818_RX_PHY_112_ohm	0x00
+#define PS8818_RX_PHY_104_ohm	0x40
+#define PS8818_RX_PHY_96_ohm	0x80
+#define PS8818_RX_PHY_85_ohm	0xC0
+#define PS8818_RX_PHY_REGISTER_UP_MASK		0xF0
+
 extern const struct usb_mux_driver ps8818_usb_retimer_driver;
 
 int ps8818_i2c_read(const struct usb_mux *me,
