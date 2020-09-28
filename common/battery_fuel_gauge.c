@@ -64,6 +64,9 @@ static int get_battery_type(void)
 	return battery_type;
 }
 
+int get_battery_status(void) {
+	return get_battery_type();
+}
 /*
  * Initialize the battery type for the board.
  *

@@ -17,6 +17,9 @@
 #include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
 
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -24,6 +27,8 @@
 #define CPRINTF(format, args...)
 #define CPRINTS(format, args...)
 #endif
+//int hp_device_discover;
+
 
 /* The state of the DP negotiation */
 enum dp_states {
@@ -50,6 +55,11 @@ static const uint8_t state_vdm_cmd[DP_STATE_COUNT] = {
 	[DP_ENTER_NAKED] = CMD_EXIT_MODE,
 	[DP_ENTER_RETRY] = CMD_ENTER_MODE,
 };
+
+//bool get_hp_discover(void)
+//{
+//	return hp_device_discover;
+//}
 
 bool dp_is_active(int port)
 {
@@ -122,7 +132,8 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 			modep->fx->post_config(port);
 		dpm_set_mode_entry_done(port);
 		dp_state[port] = DP_ACTIVE;
-		CPRINTS("C%d: Entered DP mode", port);
+		CPRINTS("C%d: Enter DP mode", port);
+//		hp_device_discover = 1;
 		break;
 	case DP_ACTIVE:
 		/*
@@ -155,6 +166,14 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 	}
 }
 
+void hp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
+		uint32_t *vdm)
+{
+		dpm_set_mode_entry_done(port);
+		CPRINTS("C%d: Entered HP mode", port);
+//		hp_device_discover = 0;
+}
+
 void dp_vdm_naked(int port, enum tcpm_transmit_type type, uint8_t vdm_cmd)
 {
 	if (!dp_response_valid(port, type, "NAK", vdm_cmd))
@@ -185,6 +204,22 @@ void dp_vdm_naked(int port, enum tcpm_transmit_type type, uint8_t vdm_cmd)
 		dp_entry_failed(port);
 		break;
 	}
+}
+
+int hp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
+{
+	int vdo_count_ret;
+
+		vdm[0] = pd_dfp_enter_mode(port, TCPC_TX_SOP,
+				USB_VID_HP, 0);
+		if (vdm[0] == 0)
+			return -1;
+		/* CMDT_INIT is 0, so this is a no-op */
+		vdm[0] |= VDO_CMDT(CMDT_INIT);
+		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
+		vdo_count_ret = 1;
+
+	return vdo_count_ret;
 }
 
 int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)

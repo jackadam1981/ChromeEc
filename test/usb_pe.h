@@ -153,4 +153,9 @@ int pe_chk_flag(int port, int flag);
 int pe_get_all_flags(int port);
 void pe_set_all_flags(int port, int flags);
 
+int hp_monitor_power_button_status (void);
+void hp_monitor_power_button_clear (void);
+int hp_power_button_timer (void);
+void hp_decrease_power_button_timer (void);
+
 #endif /* __CROS_TEST_USB_PE_H */
