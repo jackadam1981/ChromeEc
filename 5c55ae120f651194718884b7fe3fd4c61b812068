@@ -445,6 +445,24 @@
     },
     {
       "key": {
+        "uuid": "9a517f30_c3dc7aa3",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-28T18:28:15Z",
+      "side": 1,
+      "message": "Ayushee: This CL already relocates the safe mode setting. Let\u0027s put it in its final position in this CL to avoid churn/confusion. I guess that also means that the current safe mode setting should change to a USB mode setting in this CL.\n\nDiana: Have we been inappropriately leaving alt modes with the mux in safe state instead of USB state this whole time?",
+      "parentUuid": "c8212041_734609f2",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87f0018d_722b2aae",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
