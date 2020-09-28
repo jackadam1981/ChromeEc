@@ -464,6 +464,16 @@ test_static int test_safe_memcmp(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_alignment_log2(void)
+{
+	TEST_EQ(alignment_log2(1), 0, "%d");
+	TEST_EQ(alignment_log2(2), 1, "%d");
+	TEST_EQ(alignment_log2(5), 0, "%d");
+	TEST_EQ(alignment_log2(0x10070000), 16, "%d");
+	TEST_EQ(alignment_log2(0x80000000), 31, "%d");
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, char **argv)
 {
 	test_reset();
@@ -484,6 +494,7 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_bytes_are_trivial);
 	RUN_TEST(test_is_aligned);
 	RUN_TEST(test_safe_memcmp);
+	RUN_TEST(test_alignment_log2);
 
 	test_print_result();
 }
