@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64142bf8_6133cbd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-28T16:33:07Z",
+      "side": 1,
+      "message": "Can you add a unit test for this? See https://chromium.googlesource.com/chromiumos/platform/ec/+/424ca6d7b31e2f627adb83629ec07467d871b421/test/mpu.c for what we did for the FPMCU.\n\nWe\u0027ll need to run the FPMCU unit tests for the MPU to make sure they still pass (above link).\n\nYou could do this yourself with a dragonclaw dev board and servo micro (http://go/cros-fingerprint-dev-boards). We\u0027re working on automating these in the lab, but it\u0027s not done yet: http://b/158580909.",
+      "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
