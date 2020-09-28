@@ -39,13 +39,15 @@ static int test_main(void)
 	task_register_tracedump();
 
 	register_test_end_hook();
-
+//CPRINTS(" ===== flash_pre_init");
 	flash_pre_init();
+//	CPRINTS(" ===== system_pre_init");
 	system_pre_init();
+//	CPRINTS(" ===== system_common_pre_init");
 	system_common_pre_init();
-
+//CPRINTS(" ===== test_init");
 	test_init();
-
+//CPRINTS(" ===== timer_init");
 	timer_init();
 #ifdef HAS_TASK_KEYSCAN
 	keyboard_scan_init();

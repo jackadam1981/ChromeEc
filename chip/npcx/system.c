@@ -331,8 +331,12 @@ static void check_reset_cause(void)
 	 * on S5->S3 transition.
 	 */
 	chip_flags &= EC_RESET_FLAG_AP_IDLE;
+	ccprintf(" +++++ 5566flags = %d\n",flags);
 #else
 	chip_flags = 0;
+	//if(flags > 100)
+	//flags = 0;
+	ccprintf(" +++++ 5577flags = %d\n",flags);
 #endif
 	/* Clear saved hibernate wake flag in bbram , too */
 	bbram_data_write(BBRM_DATA_INDEX_WAKE, 0);
@@ -354,11 +358,14 @@ static void check_reset_cause(void)
 		 * reset the EC at power up.
 		 */
 		if (IS_ENABLED(CONFIG_BOARD_RESET_AFTER_POWER_ON)) {
+			ccprintf(" +++++ ENABLED(CONFIG_BOARD_RESET_AFTER_POWER_ON\n");
 			/*
 			 * Reset pin restart rather than power-on, so check
 			 * for any flag set from a previous power-on.
 			 */
 			if (reset) {
+				ccprintf(" +++++ reset ON\n");
+				ccprintf(" +++++ flags = %d\n",flags);
 				if (flags & EC_RESET_FLAG_INITIAL_PWR)
 					/*
 					 * The previous restart was a power-on
@@ -366,9 +373,12 @@ static void check_reset_cause(void)
 					 * clear the flag so later code will
 					 * not wait for the second reset.
 					 */
-					flags =
-					  (flags & ~EC_RESET_FLAG_INITIAL_PWR)
-					   | EC_RESET_FLAG_POWER_ON;
+					//flags =
+					  //(flags & ~EC_RESET_FLAG_INITIAL_PWR)
+					   //| EC_RESET_FLAG_POWER_ON;
+					   flags = 
+					   (flags & ~EC_RESET_FLAG_INITIAL_PWR)
+					   | EC_RESET_FLAG_RESET_PIN;
 				else
 					/*
 					 * No previous power-on flag,
@@ -377,7 +387,9 @@ static void check_reset_cause(void)
 					 * second restart caused by the H1.
 					 */
 					flags |= EC_RESET_FLAG_RESET_PIN;
+				ccprintf(" +++++ flags = %d\n",flags);
 			} else {
+				ccprintf(" +++++ reset OFF\n");
 				/*
 				 * Power-on restart, so set a flag and save it
 				 * for the next imminent reset. Later code
@@ -395,6 +407,7 @@ static void check_reset_cause(void)
 			 */
 			flags |= reset ? EC_RESET_FLAG_RESET_PIN
 				       : EC_RESET_FLAG_POWER_ON;
+		ccprintf(" +++++ not ENABLED(CONFIG_BOARD_RESET_AFTER_POWER_ONN\n");		       
 #endif
 	}
 	chip_save_reset_flags(chip_flags);

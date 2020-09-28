@@ -141,7 +141,7 @@ static void set_pwrbtn_to_pch(int high, int init)
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF) && !high &&
 	   (charge_want_shutdown() || charge_prevent_power_on(!init))) {
 		CPRINTS("PB PCH pwrbtn ignored due to battery level");
-		high = 1;
+	//	high = 1;
 	}
 #endif
 	CPRINTS("PB PCH pwrbtn=%s", high ? "HIGH" : "LOW");
@@ -340,8 +340,9 @@ static void state_machine(uint64_t tnow)
 		 * case where the tasks could start as late as 30 seconds
 		 * after EC reset.
 		 */
-
-		if (!IS_ENABLED(CONFIG_CHARGER) || charge_prevent_power_on(0)) {
+		
+		/* Scott: Don't prevent power on when no battery */
+		if (!IS_ENABLED(CONFIG_CHARGER) || !charge_prevent_power_on(0)) {
 			if (tnow >
 				(tpb_task_start +
 				 CONFIG_POWER_BUTTON_INIT_TIMEOUT * SECOND)) {
