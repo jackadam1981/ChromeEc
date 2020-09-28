@@ -22,6 +22,30 @@
       "revId": "473f2f411093980a5d3f02eb4234655f14e165e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe1ecbb5_81d5e18a",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-28T16:11:51Z",
+      "side": 1,
+      "message": "You\u0027re right, I got the bit sets/clears swapped around.  Should be fixed now, and I also rebased on the most recent charger driver.",
+      "parentUuid": "4d7d48ee_c06129f3",
+      "range": {
+        "startLine": 790,
+        "startChar": 1,
+        "endLine": 795,
+        "endChar": 2
+      },
+      "revId": "473f2f411093980a5d3f02eb4234655f14e165e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
