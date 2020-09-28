@@ -33,6 +33,46 @@
       "revId": "8a42b326f90743c638dcb8bc835cc2c0de297ec9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deb55c98_0c07c4bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-28T21:17:18Z",
+      "side": 1,
+      "message": "Sorry for the delay.  I was OOO Thursday and Friday and forgot to update gerrit status.",
+      "revId": "8a42b326f90743c638dcb8bc835cc2c0de297ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebb80cdf_4a4dbd4b",
+        "filename": "board/samus_pd/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-28T21:17:18Z",
+      "side": 1,
+      "message": "This is used by the firmware_ECWatchdog test.\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/3be40ae1/server/site_tests/firmware_ECWatchdog/firmware_ECWatchdog.py#36\n\nBetter to keep it in if possible.",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "8a42b326f90743c638dcb8bc835cc2c0de297ec9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
