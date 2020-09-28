@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86fbf8f4_ce244700",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-28T18:11:52Z",
+      "side": 1,
+      "message": "I don\u0027t think this needs to be a bit field. It seems like the only thing that\u0027s being used for is to allow checking for sink connect and disconnect with this line of code in usbc_ppc.c:\nif (dev \u0026 PPC_DEV_SNK)\n\nHowever, I think this can be replaced with something like\nif (dev \u003d\u003d PPC_DEV_SNK) for the connected case and an unconditional clear for the disconnected case. (Clearing the sink-connected bit when a source is disconnected is a no-op.)\n\nWith the semantics I describe, I think a better name for the third enum value would be \"PPC_DEV_DISCONNECTED.\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 2
+      },
+      "revId": "dd7d3c35fde471c3a182ec3a25c0d3e6fb65f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c6de11_9ab80f68",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-28T18:11:52Z",
+      "side": 1,
+      "message": "I\u0027d prefer bool.",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "dd7d3c35fde471c3a182ec3a25c0d3e6fb65f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80863e01_f99854fb",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-28T18:11:52Z",
+      "side": 1,
+      "message": "This should be moved to follow the line that preceded it.",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 22
+      },
+      "revId": "dd7d3c35fde471c3a182ec3a25c0d3e6fb65f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
