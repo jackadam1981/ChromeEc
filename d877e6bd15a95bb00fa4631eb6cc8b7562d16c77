@@ -94,6 +94,30 @@
       "revId": "d877e6bd15a95bb00fa4631eb6cc8b7562d16c77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5be9a42_d43db361",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-28T21:35:47Z",
+      "side": 1,
+      "message": "The differences look ok to me. Here\u0027s an annotated version: https://docs.google.com/document/d/1_XKM4rSvmRESFtGKi37RGm89gah9jjHEz0vi6RMFjTU/edit?usp\u003dsharing",
+      "parentUuid": "4dceabe5_33298ec2",
+      "range": {
+        "startLine": 269,
+        "startChar": 8,
+        "endLine": 269,
+        "endChar": 16
+      },
+      "revId": "d877e6bd15a95bb00fa4631eb6cc8b7562d16c77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
