@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "468e4e89_284c9d54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-28T15:36:19Z",
+      "side": 1,
+      "message": "As it stands, this seems like something to trip over when a developer adds a new directory to third_party and also a place to leave cruft when directories are removed. Could we just have one line?\n\n--exclude_regex\u003d^third_party/",
+      "revId": "424ca6d7b31e2f627adb83629ec07467d871b421",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
