@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce72e772_efa623db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T23:12:12Z",
+      "side": 1,
+      "message": "This looks fine, but there is a lack of symmetry in where ",
+      "revId": "1dd0a469e15231082403ae9d6a31a8b180a5f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea283e14_6f195b69",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5033,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T23:12:12Z",
+      "side": 1,
+      "message": "Nit: Everything here looks fine, but there is a lack of symmetry in the conditions and locations for sending the events that I find slightly troubling. What if this logic were moved inside the pd_set_*_discovery functions? That way, the PE wouldn\u0027t need to add an extra timeout behavior for SVIDs or an exit function for modes.",
+      "revId": "1dd0a469e15231082403ae9d6a31a8b180a5f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
