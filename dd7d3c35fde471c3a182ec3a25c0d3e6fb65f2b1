@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "72421b40_8b9cec67",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-29T02:10:55Z",
+      "side": 1,
+      "message": "SG. Done.",
+      "parentUuid": "86fbf8f4_ce244700",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 2
+      },
+      "revId": "dd7d3c35fde471c3a182ec3a25c0d3e6fb65f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37c6de11_9ab80f68",
         "filename": "include/usbc_ppc.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "dd7d3c35fde471c3a182ec3a25c0d3e6fb65f2b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f398abff_58da9114",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2020-09-29T02:10:55Z",
+      "side": 1,
+      "message": "Dropped. Use enum instead.",
+      "parentUuid": "37c6de11_9ab80f68",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 7
+      },
+      "revId": "dd7d3c35fde471c3a182ec3a25c0d3e6fb65f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
