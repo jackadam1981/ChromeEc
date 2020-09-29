@@ -8,6 +8,7 @@
 #include "button.h"
 #include "cbi_ec_fw_config.h"
 #include "charge_manager.h"
+#include "charge_ramp.h"
 #include "charge_state.h"
 #include "cros_board_info.h"
 #include "driver/charger/isl9241.h"
@@ -29,6 +30,12 @@
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+/*
+ * For legacy BC1.2 charging with CONFIG_CHARGE_RAMP_SW, ramp up input current
+ * until voltage drops to 4.096V.
+ */
+#define BC12_MIN_VOLTAGE 4096
 
 /******************************************************************************/
 /* ADC configuration */
@@ -357,3 +364,17 @@ static void cbi_init(void)
 	board_cbi_init();
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_FIRST);
+
+/**
+ * Return if VBUS is too low
+ */
+int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
+{
+	int voltage;
+
+	if (charger_get_vbus_voltage(port, &voltage))
+		voltage = 0;
+
+	return voltage < BC12_MIN_VOLTAGE;
+}
+
