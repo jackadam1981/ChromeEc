@@ -463,6 +463,24 @@
     },
     {
       "key": {
+        "uuid": "5bdded8a_579aada6",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:34:33Z",
+      "side": 1,
+      "message": "Correct. It didn\u0027t matter functionally when our mode exit and USB mux state were tied to the AP shutting down, but now that we\u0027re allowing exit modes to come from the AP while we\u0027re up it will matter.",
+      "parentUuid": "9a517f30_c3dc7aa3",
+      "revId": "5c55ae120f651194718884b7fe3fd4c61b812068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87f0018d_722b2aae",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 3
