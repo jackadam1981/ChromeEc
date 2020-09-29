@@ -87,6 +87,30 @@
       "revId": "7613a6c157aa82df80571a55476862e2a36fdcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcda8a67_19e8e1ee",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-09-29T13:42:48Z",
+      "side": 1,
+      "message": "I will fix it with the that rework.",
+      "parentUuid": "3f7faaee_f0be4ff9",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "7613a6c157aa82df80571a55476862e2a36fdcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
