@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63108248_f26bdb8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2020-09-29T16:09:23Z",
+      "side": 1,
+      "message": "Change itself looks good.\nIn the commit message, \"BRANCH\u003d\" is used to indicate which firmware branch this should be cherry-picked to, so please use \"BRANCH\u003dzork\".\nAlso, please check that \"TEST\u003dcheck power consumption\" succeeds, then set Verified\u003d+1 to mark the test as passing.",
+      "revId": "31e13aa49492843af1c03b04f05fd074da82a8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
