@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0d993dd0_bbcc5dc0",
+        "filename": "include/console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T19:51:39Z",
+      "side": 1,
+      "message": "Fair enough, that does make is pretty subtle (versus explicit) now that I think about it again",
+      "parentUuid": "81336239_bcc1682c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "4f637a45fdb21fe4483a9ec13152a2e9a363263d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "efa6f319_69621a42",
         "filename": "zephyr/shim/include/zephyr_console_shim.h",
         "patchSetId": 1
