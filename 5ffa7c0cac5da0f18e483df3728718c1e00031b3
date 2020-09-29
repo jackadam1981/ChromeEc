@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7618c345_30a9fca4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-29T16:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d292ec_9b0802f3",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "5ffa7c0cac5da0f18e483df3728718c1e00031b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e167c0e8_a7e4d0e7",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "5ffa7c0cac5da0f18e483df3728718c1e00031b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0294d320_9dc7b2d5",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2020-09-29T16:23:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e167c0e8_a7e4d0e7",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 25
+      },
+      "revId": "5ffa7c0cac5da0f18e483df3728718c1e00031b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
