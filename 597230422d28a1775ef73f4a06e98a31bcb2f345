@@ -39,6 +39,23 @@
       "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceaf729c_095f0027",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-09-29T04:29:28Z",
+      "side": 1,
+      "message": "could be:\n\n   uint8_t natural_alignment \u003d MIN(alignment_log2(addr), alignment_log2(size));\n\nNot sure if natural_alignment is the best name; min_alignment may be better, but I\u0027m not too fussed.",
+      "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
