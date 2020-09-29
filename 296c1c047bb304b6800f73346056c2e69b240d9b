@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa55cbc9_de25f895",
+        "filename": "baseboard/intelrvp/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-29T19:29:23Z",
+      "side": 1,
+      "message": "Rewrite as the following to track the convention used in other makefiles:\n\n    ifneq ($(CONFIG_USB_POWER_DELIVERY),)\n    baseboard-$(CONFIG_USB_POWER_DELIVERY)+\u003dchg_usb_pd.o\n    baseboard-$(CONFIG_INTEL_RVP_MECC_VERSION_0_9)+\u003dchg_usb_pd_mecc_0_9.o \\\n            usb_pd_policy_mecc_0_9.o\n    endif",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "296c1c047bb304b6800f73346056c2e69b240d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
