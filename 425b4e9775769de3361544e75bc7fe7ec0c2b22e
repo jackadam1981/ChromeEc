@@ -34,6 +34,24 @@
       "revId": "425b4e9775769de3361544e75bc7fe7ec0c2b22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "094fba94_74ac84cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-29T21:17:11Z",
+      "side": 1,
+      "message": "I really prefer hooking the driver into ioexpander_drv now and not adding technical debt.  As implemented, the use of the pca9675_update_pins() in CL:2435177 is hard to follow.  The ioexpander API is much easier to follow. For instance \n\n    pca9675_update_pins(i2c_port, I2C_ADDR_PCA9675_TCPC_AIC_IOEX,\n\t\tTCPC_AIC_IOE_BB_RETIMER_LS_EN, 0);\n\nbecomes\n\n    ioex_set_level(IOEX_TCPC_AIC_IOE_BB_RETIMER_LS_EN, 1);\n\n\nLooking at CL:2435177, only the USB_MUX_CONTROL lines are set/cleared simultaneously.  Is this a HW requirement, or can these signals be set one at time?\n\nIf the HW requires updating both pins simultaneously, then you could keep pca9675_update_pins() as a temporary solution but still hook into ioexpander_drv for all the other pins. We would need a bug to track expanding the ioexpander module API to support the functionality provided by pca9675_update_pins().",
+      "parentUuid": "b3ea5b86_c67b98a0",
+      "revId": "425b4e9775769de3361544e75bc7fe7ec0c2b22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
