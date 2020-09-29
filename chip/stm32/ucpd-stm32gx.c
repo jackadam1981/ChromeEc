@@ -113,18 +113,6 @@ static int ucpd_txorderset[] = {
 };
 
 //static struct mutex ucpd_tx_mutex;
-enum  debug_gpio {
-	TRIGGER_1 = 0,
-	TRIGGER_2,
-};
-
-static inline void ucpd_debug_gpio(int trigger, int enable)
-{
-	enum gpio_signal signal = (trigger == TRIGGER_1) ?
-		GPIO_TRIGGER_1 : GPIO_TRIGGER_2;
-
-	gpio_set_level(signal, enable);
-}
 
 static void ucpd_add_rxmsg(uint32_t sr, uint16_t header)
 {
@@ -157,7 +145,6 @@ static void ucpd_send_good_crc(int port, uint16_t rx_header)
 	 */
 	if (!PD_HEADER_CNT(rx_header) && PD_HEADER_TYPE(rx_header) ==
 	    PD_CTRL_GOOD_CRC) {
-		ucpd_debug_gpio(TRIGGER_2, 0);
 		return;
 	}
 
@@ -177,7 +164,6 @@ static void ucpd_send_good_crc(int port, uint16_t rx_header)
 	tx_header = PD_HEADER(PD_CTRL_GOOD_CRC, msg_header.pr, msg_header.dr,
 			      msg_id, 0, rev_id, 0);
 
-	ucpd_debug_gpio(TRIGGER_2, 0);
 	/* Initiate sending the good CRC control message */
 	stm32gx_ucpd_transmit(port, TCPC_TX_SOP, tx_header, &data);
 }
@@ -274,7 +260,6 @@ void stm32gx_ucpd1_irq(void)
 	if (sr & tx_mask) {
 		sr_hard_reset = sr;
 		hook_call_deferred(&ucpd_hard_reset_tx_log_data, 0);
-		ucpd_debug_gpio(TRIGGER_2, 0);
 	}
 
 	/* Check for Tx events */
@@ -307,7 +292,6 @@ void stm32gx_ucpd1_irq(void)
 	if (sr & STM32_UCPD_SR_RXORDDET) {
 		ucpd_rx_byte_count = 0;
 		ucpd_rxdr_idx = 0;
-		ucpd_debug_gpio(TRIGGER_1, 1);
 	}
 	/* Check for byte received */
 	if (sr & STM32_UCPD_SR_RXNE) {
@@ -315,13 +299,12 @@ void stm32gx_ucpd1_irq(void)
 	}
 	/* Check for end of message */
 	if (sr & STM32_UCPD_SR_RXMSGEND) {
-		ucpd_debug_gpio(TRIGGER_1, 0);
+
 		/* Check for errors */
 		if (!(sr & STM32_UCPD_SR_RXERR)) {
 			uint16_t *rx_header = (uint16_t *)ucpd_rxdr;
 			//uint16_t *rx_header = (uint16_t *)ucpd_rx_buffer;
 
-			ucpd_debug_gpio(TRIGGER_2, 1);
 			ucpd_add_rxmsg(sr, *rx_header);
 			/* TODO - Add error checking here */
 			tcpm_enqueue_message(port);
