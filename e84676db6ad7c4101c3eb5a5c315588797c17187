@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1c25b4bf_876767dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:51:49Z",
+      "side": 1,
+      "message": "I agree that \"VBUS_PRESENT\" covered the case we\u0027re using the enum value for better.  I wasn\u0027t certain that keeping VBUS_PRESENT would match with the new specific sink disconnect level check though.  Jett, thoughts?",
+      "parentUuid": "47245f19_ffd14d8f",
+      "revId": "e84676db6ad7c4101c3eb5a5c315588797c17187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44dfe1c1_eff557e1",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "e84676db6ad7c4101c3eb5a5c315588797c17187",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79eb3a89_b9b70ae7",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:51:49Z",
+      "side": 1,
+      "message": "Added decoder ring, and we can get feedback on naming from Jett and Aseda.",
+      "parentUuid": "44dfe1c1_eff557e1",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 2
+      },
+      "revId": "e84676db6ad7c4101c3eb5a5c315588797c17187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
