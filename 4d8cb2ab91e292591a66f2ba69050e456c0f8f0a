@@ -171,6 +171,24 @@
       "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4869caa6_38c13e36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2020-09-29T22:55:16Z",
+      "side": 1,
+      "message": "My suggestion is we apply this change to Waddledee only. Does it have a firmware branch? This patch will be creating a slightly different version of EFS2. The tests would need to handle two versions. For future debugging, we would need to know which board has which version, etc...\n\n\u003e I\u0027ve been poking at the GPIOs on my waddledee to try making the sysjump in S5 work\n\nHave you tried to get Intel\u0027s opinion? I still believe there is a way to make our JSL design behave like other Intel designs.\n\nSo far I haven\u0027t seen detailed reports about the root cause analysis. So, I can\u0027t tell how close (and serious) we\u0027re about fixing this right. I\u0027m concerned this is going to be  permanently changing the EFS2 behavior.",
+      "parentUuid": "54d6f26f_f856302e",
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
