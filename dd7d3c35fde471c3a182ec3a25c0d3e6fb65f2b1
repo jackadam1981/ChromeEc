@@ -116,6 +116,30 @@
       "revId": "dd7d3c35fde471c3a182ec3a25c0d3e6fb65f2b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e1ba519_c11efc65",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T23:29:09Z",
+      "side": 1,
+      "message": "Deleting it also works for me.",
+      "parentUuid": "80863e01_f99854fb",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 22
+      },
+      "revId": "dd7d3c35fde471c3a182ec3a25c0d3e6fb65f2b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
