@@ -37,6 +37,11 @@
  * the USB Power Delivery Specification.
  */
 
+int hp_event;
+int hp_monitor_power_button;
+int hp_keep_power_button_timer;
+
+
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -829,6 +834,24 @@ static inline void send_ctrl_msg(int port, enum tcpm_transmit_type type,
 #define prl_send_data_msg DO_NOT_USE
 #define prl_send_ext_data_msg DO_NOT_USE
 #define prl_send_ctrl_msg DO_NOT_USE
+
+int hp_monitor_power_button_status (void)
+{
+	CPRINTS("====== hp_monitor_power_button11=%d", hp_monitor_power_button);
+    return hp_monitor_power_button;
+}
+void hp_monitor_power_button_clear (void)
+{
+    hp_monitor_power_button = 0;
+}
+int hp_power_button_timer (void)
+{
+    return hp_keep_power_button_timer;
+}
+void hp_decrease_power_button_timer (void)
+{
+    hp_keep_power_button_timer--;
+}
 
 static void pe_init(int port)
 {
@@ -2984,6 +3007,11 @@ static void pe_snk_ready_run(int port)
 		return;
 	}
 
+	if(hp_event == 1) {
+		set_state_pe(port, PE_VDM_RESPONSE);
+		CPRINTS("========hp_event == 1");
+		return;
+	}
 	/*
 	 * Handle incoming messages before discovery and DPMs other than hard
 	 * reset
@@ -5256,11 +5284,27 @@ static void pe_vdm_response_entry(int port)
 	vdo_cmd = PD_VDO_CMD(rx_payload[0]);
 	cmd_type = PD_VDO_CMDT(rx_payload[0]);
 	rx_payload[0] &= ~VDO_CMDT_MASK;
+	
+	if(hp_event == 1) {
+		CPRINTS("===== hp_event = 2");
+		hp_event = 2;
+	}
+
+	CPRINTS(" ===== CMDT:%d:%d\n", cmd_type, vdo_cmd);
+	CPRINTS(" ===== hp_event = %d\n", hp_event);
 
 	if (cmd_type != CMDT_INIT) {
 		CPRINTF("ERR:CMDT:%d:%d\n", cmd_type, vdo_cmd);
 
 		pe_set_ready_state(port);
+
+		if (vdo_cmd == CMD_HP_GET_STATUS) {
+			if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+			    hp_monitor_power_button = 1;
+	            hp_keep_power_button_timer = 2;
+	            CPRINTF(" ===== hp_keep_power_button\n");
+            }
+         }
 		return;
 	}
 
@@ -5298,12 +5342,23 @@ static void pe_vdm_response_entry(int port)
 		pe_set_ready_state(port);
 		return;
 #endif
+	case CMD_HP_ATTENTION:
+	   if (hp_event == 0) {
+		   hp_event = 1;
+		   CPRINTS("======hp_event = 1;");  
+		}
+		break;
+	case CMD_HP_GET_STATUS:
+		CPRINTS("CMD_HP_GET_STATUS"); 
+	    hp_monitor_power_button = 1;
+	    hp_keep_power_button_timer = 2;
+	    break;
 	default:
 		CPRINTF("VDO ERR:CMD:%d\n", vdo_cmd);
 	}
 
 	tx_payload = (uint32_t *)tx_emsg[port].buf;
-
+	CPRINTS("===== before func");
 	if (func) {
 		/*
 		 * Designed in TCPMv1, svdm_response functions use same
@@ -5313,6 +5368,7 @@ static void pe_vdm_response_entry(int port)
 		 * TODO(b/166455363): change the interface to pass both rx
 		 * and tx buffer
 		 */
+		CPRINTS("===== in func");
 		memcpy(tx_payload, rx_payload, rx_emsg[port].len);
 		/*
 		 * Return value of func is the data objects count in payload.
@@ -5350,6 +5406,20 @@ static void pe_vdm_response_entry(int port)
 
 		if (response_size_bytes <= 0)
 			response_size_bytes = 4;
+	} else if (hp_event == 2) {
+			CPRINTS("===== hp_event == 2");
+           	tx_payload[0] = VDO(
+				USB_VID_HP,
+				1, /* Structured VDM */
+				VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP))
+				| VDO_CMDT(CMDT_INIT) |
+				CMD_HP_GET_STATUS);
+           			//tx_payload[0] = 0x0502A016;
+           	//tx_payload[1] = 0;
+           	//tx_payload[2] = 0;
+           	response_size_bytes = 4; 
+           	CPRINTF(" ===== send hp 0x16 \n");
+			hp_event = 0;
 	} else {
 		/* not supported : NAK it */
 		tx_payload[0] = VDO(

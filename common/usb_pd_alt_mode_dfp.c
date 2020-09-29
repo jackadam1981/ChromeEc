@@ -1006,8 +1006,12 @@ __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 	 * when the SoC is off as opposed to suspend where adding a display
 	 * could cause a wake up.)
 	 */
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-		return -1;
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)){
+		CPRINTS(" ==== svdm_enter_dp_mode");
+	    svdm_safe_dp_mode(port);
+		pd_notify_dp_alt_mode_entry();
+		return 0;
+	}
 
 	/* Only enter mode if device is DFP_D capable */
 	if (mode_caps & MODE_DP_SNK) {
@@ -1273,6 +1277,16 @@ const struct svdm_amode_fx supported_modes[] = {
 		.attention = &svdm_gfu_attention,
 		.exit = &svdm_exit_gfu_mode,
 	},
+
+	{
+		.svid = USB_VID_HP,
+		.enter = &svdm_enter_gfu_mode,
+		.status = &svdm_gfu_status,
+		.config = &svdm_gfu_config,
+		.attention = &svdm_gfu_attention,
+		.exit = &svdm_exit_gfu_mode,
+	},
+	
 #ifdef CONFIG_USB_PD_TBT_COMPAT_MODE
 	{
 		.svid = USB_VID_INTEL,

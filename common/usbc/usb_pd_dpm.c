@@ -26,6 +26,8 @@
 #define CPRINTS(format, args...)
 #endif
 
+int hp_device_discover;
+
 static struct {
 	bool mode_entry_done;
 	bool mode_exit_request;
@@ -68,6 +70,9 @@ void dpm_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 			intel_vdm_acked(port, type, vdo_count, vdm);
 			break;
 		}
+	case USB_VID_HP:
+		hp_vdm_acked(port, type, vdo_count, vdm);
+			break;
 	default:
 		CPRINTS("C%d: Received unexpected VDM ACK for SVID %d", port,
 				svid);
@@ -103,8 +108,10 @@ static void dpm_attempt_mode_entry(int port)
 	uint32_t vdm[VDO_MAX_SIZE];
 	enum tcpm_transmit_type tx_type = TCPC_TX_SOP;
 
-	if (pd_get_data_role(port) != PD_ROLE_DFP)
+	if (pd_get_data_role(port) != PD_ROLE_DFP) {
+		if (!(chipset_in_state(CHIPSET_STATE_ANY_OFF)))
 		return;
+	}
 	/*
 	 * Do not try to enter mode while CPU is off.
 	 * CPU transitions (e.g b/158634281) can occur during the discovery
@@ -137,8 +144,17 @@ static void dpm_attempt_mode_entry(int port)
 	/* If not, check if they support DisplayPort alt mode. */
 	if (vdo_count == 0 && !dpm[port].mode_entry_done &&
 	    pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP,
-				USB_SID_DISPLAYPORT))
-		vdo_count = dp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+				USB_SID_DISPLAYPORT)) {
+					vdo_count = dp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+					CPRINTS(" ===== USB_SID_DISPLAYPORT enter= %d", vdo_count);
+					hp_device_discover = 1;
+	} else if (pd_is_mode_discovered_for_svid(port, TCPC_TX_SOP,
+			USB_VID_HP)) {
+					vdo_count = hp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+					CPRINTS(" ===== USB_VID_HP enter= %d", vdo_count);
+					hp_device_discover = 0;
+    }
+		
 
 	/*
 	 * If the PE didn't discover any supported alternate mode, just mark
@@ -215,6 +231,6 @@ void dpm_run(int port)
 {
 	if (dpm[port].mode_exit_request)
 		dpm_attempt_mode_exit(port);
-	else if (!dpm[port].mode_entry_done)
+	else if (!dpm[port].mode_entry_done || hp_device_discover)
 		dpm_attempt_mode_entry(port);
 }

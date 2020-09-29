@@ -166,5 +166,10 @@ const char *pe_get_current_state(int port);
  */
 uint32_t pe_get_flags(int port);
 
+int hp_monitor_power_button_status (void);
+void hp_monitor_power_button_clear (void);
+int hp_power_button_timer (void);
+void hp_decrease_power_button_timer (void);
+
 #endif /* __CROS_EC_USB_PE_H */
 

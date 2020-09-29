@@ -474,6 +474,9 @@ struct partner_active_modes {
 #define CMD_ATTENTION       6
 #define CMD_DP_STATUS      16
 #define CMD_DP_CONFIG      17
+#define CMD_HP_ATTENTION   0x15
+#define CMD_HP_GET_STATUS  0x16
+
 
 #define VDO_CMD_VENDOR(x)    (((10 + (x)) & 0x1f))
 
@@ -789,6 +792,8 @@ struct pd_cable {
 #define USB_PID1_APPLE 0x1012
 #define USB_PID2_APPLE 0x1013
 #define USB_VID_INTEL  0x8087
+#define USB_VID_HP     0x0502
+
 
 /* Timeout for message receive in microseconds */
 #define USB_PD_RX_TMOUT_US 1800

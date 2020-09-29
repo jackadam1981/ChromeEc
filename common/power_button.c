@@ -18,6 +18,8 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "usb_pe_sm.h"
+#include "chipset.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SWITCH, outstr)
@@ -68,9 +70,30 @@ static int raw_power_button_pressed(void)
 	return power_button_signal_asserted();
 }
 
+static void power_button_from_monitor(void)
+{
+	if (hp_monitor_power_button_status()) {
+		hook_notify(HOOK_POWER_BUTTON_CHANGE);
+		CPRINTS(" ===== hook_notify(HOOK_POWER_BUTTON_CHANGE)");	
+		hp_decrease_power_button_timer();
+		if(hp_power_button_timer()==0){
+		    hp_monitor_power_button_clear();	
+		}
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, power_button_from_monitor, HOOK_PRIO_DEFAULT);
+
+
 int power_button_is_pressed(void)
 {
-	return debounced_power_pressed;
+	if (hp_monitor_power_button_status() && (hp_power_button_timer()) && chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+		//CPRINTS(" ===== hp_monitor_power_button = %d", hp_power_button_timer());
+		CPRINTS(" ===== power_button_is_pressed");
+		power_button_is_stable = 1;
+		debounced_power_pressed = 1;
+		return 1;
+	} else
+	    return debounced_power_pressed;
 }
 
 int power_button_wait_for_release(int timeout_us)

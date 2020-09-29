@@ -18,6 +18,7 @@
 #include "power_button.h"
 #include "system.h"
 #include "task.h"
+#include "usb_pe_sm.h"
 #include "util.h"
 #include "vboot.h"
 #include "wireless.h"
@@ -356,6 +357,26 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 			return POWER_G3;
 		}
 
+#ifdef BOARD_VOLTEER1
+		/* 
+		 * If battery present, 
+		 * need to check if power button is pressed.
+		 */
+		//if (battery_hw_present() == BP_YES) {
+		    if (power_button_is_pressed()) {
+				CPRINTS(" @@@@@@@ 1 press button ");
+				break;
+		    }
+		    if (hp_monitor_power_button_status()) {
+                power_s5_up = 1;
+				CPRINTS(" @@@@@@@ 2 press button ");
+				return POWER_S5;
+		    }
+		    chipset_force_shutdown(CHIPSET_SHUTDOWN_WAIT);
+			CPRINTS(" @@@@@@@  NOT press button ");
+		    return POWER_G3;    
+		//}
+#endif
 		power_s5_up = 1;
 		return POWER_S5;
 
