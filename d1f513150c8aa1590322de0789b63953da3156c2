@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d1adb2_77a93f7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-29T18:44:57Z",
+      "side": 1,
+      "message": "You also need to delete baseboard/intelrvp/retimer.c, which is no longer used.",
+      "revId": "d1f513150c8aa1590322de0789b63953da3156c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "117bf7f2_0fa6d9cc",
+        "filename": "board/tglrvpu_ite/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-29T18:44:57Z",
+      "side": 1,
+      "message": "Need to guard with #ifdef CONFIG_INTEL_VIRTUAL_MUX.  The .usb23 field will be removed (CL:2427440), but this CL will probably merge first.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 66
+      },
+      "revId": "d1f513150c8aa1590322de0789b63953da3156c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05cfb1a8_af8b59cd",
+        "filename": "board/tglrvpu_ite/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-29T18:44:57Z",
+      "side": 1,
+      "message": "Need to guard with #ifdef CONFIG_INTEL_VIRTUAL_MUX.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 66
+      },
+      "revId": "d1f513150c8aa1590322de0789b63953da3156c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
