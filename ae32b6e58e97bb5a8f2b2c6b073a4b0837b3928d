@@ -52,6 +52,24 @@
       "revId": "ae32b6e58e97bb5a8f2b2c6b073a4b0837b3928d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97002f34_b9174c36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-29T05:41:15Z",
+      "side": 1,
+      "message": "#define CONFIG_USB_PD_DEBUG_LEVEL 2\n*** 672 bytes in flash and 29664 bytes in RAM still available on magolor RO ****\n  *** 688 bytes in flash and 29664 bytes in RAM still available on magolor RW ****",
+      "parentUuid": "6ff968d4_ca4bf456",
+      "revId": "ae32b6e58e97bb5a8f2b2c6b073a4b0837b3928d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
