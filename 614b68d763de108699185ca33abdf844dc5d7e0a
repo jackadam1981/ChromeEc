@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2057bafd_353b9907",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T19:32:47Z",
+      "side": 0,
+      "message": "What other bits was this setting that we are no longer setting? (e.g. USBPD_REG_MASK_DISCONNECT_POWER_CC2) Is that okay to change the behavior here?",
+      "range": {
+        "startLine": 423,
+        "startChar": 6,
+        "endLine": 424,
+        "endChar": 32
+      },
+      "revId": "614b68d763de108699185ca33abdf844dc5d7e0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -16,6 +16,29 @@
       "revId": "e8a4e43f4621c5ff481675be98165555ecc42c18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "350d82f8_218a01d5",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T19:32:47Z",
+      "side": 1,
+      "message": "nit: s/to/from/\n\nDisconnect CC RD-CD resistor from GND\n\nconnect -\u003e to\ndisconnect -\u003e from",
+      "range": {
+        "startLine": 437,
+        "startChar": 34,
+        "endLine": 437,
+        "endChar": 36
+      },
+      "revId": "e8a4e43f4621c5ff481675be98165555ecc42c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
