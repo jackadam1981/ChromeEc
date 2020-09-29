@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69a0e0f3_2900c9ca",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-29T19:16:28Z",
+      "side": 1,
+      "message": "Yeah, that define was getting added in a later CL. At this stage, can\u0027t build because the /board changes to pull in the driver come later. I have pulled this define in to the registers file.",
+      "parentUuid": "680c4950_aa0efecd",
+      "range": {
+        "startLine": 164,
+        "startChar": 20,
+        "endLine": 164,
+        "endChar": 43
+      },
+      "revId": "4f5038f02b490480a43812e9f5257c67dd80c0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f0b2ff7_b23eb7c8",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 29
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cc321173_6f776292",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-29T19:16:28Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if this isn\u0027t a documentation issue or not. When presenting Rd, the other side can be either open or be presenting Open, Rp_usb, Rp_1.5, or Rp_3.0. so VSTATE_CCx must allow for this differentiation:\n\nVSTATE_CCx |  CCx\n-----------|---------------------\n     0     |   0 -\u003e CC_VOLT_OPEN\n     1     |   5 -\u003e CC_VOLT_RP_DEF\n     2     |   6 -\u003e CC_VOLT_RP_1_5\n     3     |   7 -\u003e CC_VOLT_RP_3_0\n\nSo this is why I check for STM32_UCPD_SR_VSTATE_RA so that 0 maps to 0, then add 4 for the other 3 results.\n\nThe other thing to note is that UCPD can\u0027t present Ra on the line so if ANMAMODE \u003d 1, then ucpd is presenting Rd.",
+      "parentUuid": "0f0b2ff7_b23eb7c8",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 13
+      },
+      "revId": "4f5038f02b490480a43812e9f5257c67dd80c0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02d00615_c57b7397",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 29
@@ -59,6 +107,30 @@
       "writtenOn": "2020-09-29T14:22:37Z",
       "side": 1,
       "message": "Vstate Open will return as cc_volt_Rd here.  Seems like it would be corrected by removing the if !open",
+      "range": {
+        "startLine": 170,
+        "startChar": 16,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "4f5038f02b490480a43812e9f5257c67dd80c0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "442d28de_2c90feba",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2020-09-29T19:16:28Z",
+      "side": 1,
+      "message": "Unfortunately, it\u0027s been long enough that I can\u0027t remember this 100% clearly now, but I have been looking at table 415 in RM0440 again today, and I think what I have is correct. I found that table to be very confusing, but I felt by the end, I understood how to decode this.\n\nVSTATE_CCx can only return 0, 1, 2, or 3\nwhen presenting Rp (anamode \u003d\u003d 0 or the else case), VSTATE_CCX \u003d\u003d 3 means N/A and this maps most closely to TYPEC_CC_VOLT_OPEN and so if vstate_ccx \u003d\u003d 3, then ccx \u003d 0. This is what that \"if\" check is for.\n\nif VSTATE_CCX !\u003d 3, then the following mapping applies:\n\nVSTATE_CCx | CCx               |  Equation\n-----------------------------------------------------------\n     0     |  1 \u003d CC_VOLT_RA   |  (0 + 1) % 3 \u003d 1\n     1     |  2 \u003d CC_VOLT_RD   |  (1 + 1) % 3 \u003d 2\n     2     |  0 \u003d CC_VOLT_OPEN |  (2 + 1) % 3 \u003d 0",
+      "parentUuid": "02d00615_c57b7397",
       "range": {
         "startLine": 170,
         "startChar": 16,
