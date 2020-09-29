@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6290d398_2a097404",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-29T23:13:07Z",
+      "side": 1,
+      "message": "could you add a config option to enable this workaround\nso that it is clear what the workaround code path\nis vs. the normal path?\n\nis it worth checking the chip rev at runtime instead of\ndoing so at compile time? one thing to consider is how\nlong we need to support \"old\" npcx9 chips if we don\u0027t\nwant to run the workaround on \"new\" chips.",
+      "revId": "2ff15f4495ef2351058ab0ef84ef5451e5f946b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
