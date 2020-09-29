@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbc0f479_b9e9b61d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-29T19:10:50Z",
+      "side": 1,
+      "message": "In this usage, I prefer `PRESENT` over `vSafe5V`. But also, to me I think the naming of the function should be changed slightly. `check_level` sounds to me like you are checking if the voltage is AT the specified enum level. However, it appears to be used as \"is VBUS in this particular range?\".\n\nMaybe vbus_in_range(...) ? \n\nThen I reckon you can have all the ranges and use them when appropriate: vSafe0V, vSafe5V, vSinkDisconnect, VBUSPresent, SnkValid, etc.",
+      "revId": "fe8ddf97b0d4580e351211c7a6f2a9cdd2f3dd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
