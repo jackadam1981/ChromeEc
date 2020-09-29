@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6644b650_0a3caa8b",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "Delete?",
+      "range": {
+        "startLine": 143,
+        "startChar": 15,
+        "endLine": 143,
+        "endChar": 16
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad44509_1a0d41f0",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "pd_get_task_state_name looks like it will always return a string pointer. Its documentation, although sparse, doesn\u0027t admit that it could return NULL. (Maybe the @return comment should be made stronger.) Is this superfluous?",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 19
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad677f1a_2003f8a3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5308,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "Might be good to make a low-priority bug to officially remove this and link to the bug here.",
+      "range": {
+        "startLine": 5308,
+        "startChar": 3,
+        "endLine": 5308,
+        "endChar": 66
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70a7d774_365fbcf3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6388,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "And only? Will there be more?",
+      "range": {
+        "startLine": 6388,
+        "startChar": 11,
+        "endLine": 6388,
+        "endChar": 16
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f9cbc82_ac71f749",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6389,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "How important is this backwards compatibility? Using a bit field for these saves a couple bytes in the response, but we then need extra code on the EC side to translate from bools to bit fields and extra code on the host side to translate back to a bools with the same meaning.",
+      "range": {
+        "startLine": 6388,
+        "startChar": 42,
+        "endLine": 6389,
+        "endChar": 61
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8292d05b_0165bcd9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6400,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "Since this isn\u0027t a PD header, it would probably be good to say what document you\u0027re referring to.",
+      "range": {
+        "startLine": 6400,
+        "startChar": 19,
+        "endLine": 6400,
+        "endChar": 28
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebd199d9_e2787605",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6401,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "Should that move into this file too?",
+      "range": {
+        "startLine": 6401,
+        "startChar": 15,
+        "endLine": 6401,
+        "endChar": 28
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1cddd5_6944b741",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6433,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "Nit: Leading underscore for consistency.",
+      "range": {
+        "startLine": 6433,
+        "startChar": 4,
+        "endLine": 6433,
+        "endChar": 5
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "835be077_99b5f101",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6453,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "Nit: As long as you\u0027re moving these, they could be an enum.",
+      "range": {
+        "startLine": 6448,
+        "startChar": 0,
+        "endLine": 6453,
+        "endChar": 26
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daf0800b_bee420ea",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9601,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "Reading this, I was wondering how polarity was defined. Reading the definition of tcpc_cc_polarity, I was wondering why the enum values were made explicit. If they are intended to be used in this way, a comment at the enum definition would be helpful.",
+      "range": {
+        "startLine": 9601,
+        "startChar": 6,
+        "endLine": 9601,
+        "endChar": 14
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2fe8157_ad7010b9",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9618,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "Nit: I might prefer a switch statement despite in the increased line count for the breaks. I also might prefer fewer printf calls, e.g.\n\nchar *cc_state;\nswitch (r-\u003ecc_state) {\ncase PD_CC_NONE:\n  cc_state \u003d \"None\";\n  break;\n// ...\n}\nprintf(\"CC State: %s\\n\", cc_state);",
+      "range": {
+        "startLine": 9603,
+        "startChar": 1,
+        "endLine": 9618,
+        "endChar": 14
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5879a0f7_8fad7d57",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9636,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "Nit: I might also prefer a switch and/or a single printf call here.",
+      "range": {
+        "startLine": 9621,
+        "startChar": 1,
+        "endLine": 9636,
+        "endChar": 15
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c3b8ba5_964f22fb",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9651,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:13:17Z",
+      "side": 1,
+      "message": "I see the benefits to readability of multiple printfs here. It seems like it might be a bit much for one line of output, but it\u0027s hard to tell. I\u0027m curious what motivated the decision for several printfs/a long output line here vs 1 printf/short output lines on line 9589.",
+      "range": {
+        "startLine": 9640,
+        "startChar": 1,
+        "endLine": 9651,
+        "endChar": 15
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
