@@ -40,12 +40,13 @@
  * tInterFrameGap = 1.625 uS * 17 = 27.625 uS
  */
 #define UCPD_PSC_DIV 1
-#define UCPD_HBIT_DIV 26
-#define UCPD_TRANSWIN_HBIT_CNT 8
-#define UCPD_IFRGAP_HBIT_CNT 17
+#define UCPD_HBIT_DIV 27
+#define UCPD_TRANSWIN_CNT 8
+#define UCPD_IFRGAP_CNT 17
 
 #define UCPD_ANASUB_TO_RP(r) ((r - 1) & 0x3)
 #define UCPD_RP_TO_ANASUB(r) ((r + 1) & 0x3)
+
 
 static void ucpd_port_enable(int port, int enable)
 {
@@ -72,6 +73,7 @@ void stm32gx_ucpd1_irq(void)
 	if (sr & (STM32_UCPD_SR_TYPECEVT1 | STM32_UCPD_SR_TYPECEVT2)) {
 		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
 	}
+
 	/* Clear interrupts now that PD events have been set */
 	STM32_UCPD_ICR(port) = sr;
 }
@@ -101,7 +103,7 @@ int stm32gx_ucpd_init(int port)
 	cfgr1_reg = STM32_UCPD_CFGR1_PSC_CLK_VAL(UCPD_PSC_DIV - 1) |
 		STM32_UCPD_CFGR1_TRANSWIN_VAL(UCPD_TRANSWIN_CNT - 1) |
 		STM32_UCPD_CFGR1_IFRGAP_VAL(UCPD_IFRGAP_CNT - 1) |
-		STM32_UCPD_CFGR1_HBITCLKD_VAL(UCPD_HBIT_DIV - 1);
+		STM32_UCPD_CFGR1_HBITCLKD_VAL(UCPD_HBIT_DIV -1);
 	STM32_UCPD_CFGR1(port) = cfgr1_reg;
 
 	/* Enable ucpd  */
