@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "831881d4_6b012ed2",
+        "filename": "include/button.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-29T05:09:49Z",
+      "side": 1,
+      "message": "update to set2, thanks",
+      "parentUuid": "bf0e10de_81008294",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 49
+      },
+      "revId": "a56189d905a93b777442a3e368966fbd8fefa332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10b35147_30c7a45f",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -70,6 +94,30 @@
       "writtenOn": "2020-09-28T18:54:24Z",
       "side": 1,
       "message": "nit: please make this generic. `CONFIG_ADC_BUTTONS`. A board has buttons that are connected to ADC pins which pressed and released values are determined by the analog voltage.",
+      "range": {
+        "startLine": 771,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 32
+      },
+      "revId": "a56189d905a93b777442a3e368966fbd8fefa332",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88a47268_cb3e003b",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2020-09-29T05:09:49Z",
+      "side": 1,
+      "message": "update to set2, thanks",
+      "parentUuid": "10b35147_30c7a45f",
       "range": {
         "startLine": 771,
         "startChar": 0,
