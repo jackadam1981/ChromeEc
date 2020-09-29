@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "c9d41ce1_1fd6ba48",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T20:11:31Z",
+      "side": 1,
+      "message": "Should add that these are of the form PD_STATUS_EVENT_*",
+      "revId": "3c95c24c1e019b3b3716e677e944c02d7b251324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2968f878_2d7b5222",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
