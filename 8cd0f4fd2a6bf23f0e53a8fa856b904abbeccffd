@@ -34,6 +34,29 @@
       "revId": "8cd0f4fd2a6bf23f0e53a8fa856b904abbeccffd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e918a981_366b2297",
+        "filename": "baseboard/intelrvp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2020-09-29T21:16:48Z",
+      "side": 1,
+      "message": "Note - this could be changed to read the XCHG and XDSG bits in the OperationStatus register using:\n  .reg_addr \u003d 0,\n  .reg_mask \u003d 0x6000,\n  .disconnect_val \u003d 0x6000,\n\nXCHG and XDSG in OperationStatus are more direct indicators of the FET status than the INITIALIZED bit in the BatteryStatus register.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "8cd0f4fd2a6bf23f0e53a8fa856b904abbeccffd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
