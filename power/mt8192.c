@@ -24,6 +24,7 @@
 #include "battery.h"
 #include "chipset.h"
 #include "common.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -172,6 +173,8 @@ void chipset_reset(enum chipset_reset_reason reason)
 
 enum power_state power_chipset_init(void)
 {
+	int exit_hard_off = 1;
+
 	/* Enable reboot / sleep control inputs from AP */
 	gpio_enable_interrupt(GPIO_AP_EC_WARM_RST_REQ);
 	gpio_enable_interrupt(GPIO_AP_IN_SLEEP_L);
@@ -184,11 +187,14 @@ enum power_state power_chipset_init(void)
 			return POWER_S0;
 		}
 	} else if (system_get_reset_flags() & EC_RESET_FLAG_AP_OFF) {
-		/* Force shutdown from S5 if the PMIC is already up. */
-		if (power_get_signals() & IN_PGOOD_PMIC) {
-			forcing_shutdown = 1;
-			return POWER_S5;
-		}
+		exit_hard_off = 0;
+	} else if ((system_get_reset_flags() & EC_RESET_FLAG_HIBERNATE) &&
+			gpio_get_level(GPIO_AC_PRESENT)) {
+		/* Wake-up by AC intert, boot EC only.
+		 * This function is called before extpower init, we can't
+		 * use extpower_is_present() here.
+		 */
+		exit_hard_off = 0;
 	}
 
 	if (battery_is_present() == BP_YES)
@@ -199,13 +205,17 @@ enum power_state power_chipset_init(void)
 		 */
 		battery_wait_for_stable();
 
-	if (!(system_get_reset_flags() & EC_RESET_FLAG_AP_OFF))
+	if (exit_hard_off)
 		/* Auto-power on */
 		chipset_exit_hard_off();
 
 	/* Start from S5 if the PMIC is already up. */
-	if (power_get_signals() & IN_PGOOD_PMIC)
+	if (power_get_signals() & IN_PGOOD_PMIC) {
+		/* Force shutdown from S5 if the PMIC is already up. */
+		if (!exit_hard_off)
+			forcing_shutdown = 1;
 		return POWER_S5;
+	}
 
 	return POWER_G3;
 }
