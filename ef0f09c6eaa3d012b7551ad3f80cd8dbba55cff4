@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba63af95_03014652",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-09-29T21:53:48Z",
+      "side": 1,
+      "message": "See data in b/169453974 .\n\nBattery percent properly detected now in EC debug prints.\nAt a later point, can clean up logic in `pd_comm_allowed_by_policy()` function\n\nVerified +1.",
+      "revId": "ef0f09c6eaa3d012b7551ad3f80cd8dbba55cff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
