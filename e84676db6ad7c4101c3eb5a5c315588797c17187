@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8ae8da9b_d1b6a44b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-29T15:03:47Z",
+      "side": 1,
+      "message": "Maybe having Safe0V (0-0.8V), Present (\u003e4.75V) and Connected (\u003evSinkDisconnectPD) would make sense in the enumeration for purposes of checking levels.",
+      "parentUuid": "1c25b4bf_876767dc",
+      "revId": "e84676db6ad7c4101c3eb5a5c315588797c17187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44dfe1c1_eff557e1",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 2
