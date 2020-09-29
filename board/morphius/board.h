@@ -23,6 +23,13 @@
 #undef CONFIG_LED_ONOFF_STATES
 #define CONFIG_BATTERY_LEVEL_NEAR_FULL 91
 
+/*
+ * Morphius's battery takes several seconds to come back out of its disconnect
+ * state (~1.5 seconds, but give it 2 for margin).
+ */
+#undef  CONFIG_POWER_BUTTON_INIT_TIMEOUT
+#define CONFIG_POWER_BUTTON_INIT_TIMEOUT 2
+
 /* Motion sensing drivers */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
