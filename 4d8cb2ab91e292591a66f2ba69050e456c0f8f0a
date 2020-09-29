@@ -153,6 +153,24 @@
       "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54d6f26f_f856302e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T20:05:17Z",
+      "side": 1,
+      "message": "Daisuke, would you be able to elaborate on the brown out concerns, and how behavior will differ for chromeboxes with this change versus what\u0027s currently in the code tree? \n\nI\u0027ve been poking at the GPIOs on my waddledee to try making the sysjump in S5 work, but so far haven\u0027t had any luck.  I can try to get some probe wires set up, but it would be good to get this in for us to use for FAFT testing.",
+      "parentUuid": "ed8f6244_081cd90a",
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
