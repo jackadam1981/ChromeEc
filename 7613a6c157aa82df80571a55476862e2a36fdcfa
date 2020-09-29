@@ -63,6 +63,30 @@
       "revId": "7613a6c157aa82df80571a55476862e2a36fdcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f7faaee_f0be4ff9",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-09-29T13:42:04Z",
+      "side": 1,
+      "message": "I\u0027m not sure if these builtins weren\u0027t available in the past, but currently there is no issue with that.\n\nI\u0027ve compare the assembly code,there are a few differences, e.g. atomic_sub:\nour custom:\nldrex\tr2, [r4]\nsub.w\tr2, r2, r3\nstrex\tr1, r2, [r4]\nteq\tr1, #0\nbne.n\t1008fc58 \u003ccommand_atomic_sub+0x9c\u003e\n\nbuiltin:\ndmb\tish\nldrex\tr7, [r4]\nsubs\tr3, r7, #2\nstrex\tr2, r3, [r4]\ncmp\tr2, #0\nbne.n\t1008fbe0 \u003ccommand_atomic_sub+0x24\u003e\ndmb\tish\n\nThe biggest one is that builtins use memory barriers before and after transaction. The other ones are minor e.g. builtin store the result of operation in a new register to return later on the original value.\n\nFYI:\nDuring many test, I\u0027ve also noticed that there is a bug in our custom solution. Since atomic functions are inline, the asm statement is inlined. We should inform the compiler with \"memory\" clobber that memory pointed by the input parameter can be changed by the statement (https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html#Clobbers-and-Scratch-Registers \"The \"memory\" clobber tells the compiler that the assembly code performs memory reads or writes to items other than those listed in the input and output operands (for example, accessing the memory pointed to by one of the input parameters).)\nWithout that I\u0027ve encountered a situation that the compiler is not aware of the change and uses old value stored in the register: (for cortex-m0):\nfor:\nuint32_t a, b;\na \u003d 4; //r4 \u003d a, r7\u003d\u0026a in asm \nb \u003d 0; //r6 \u003d b  \nb \u003d atomic_sub(\u0026a, 2);\n\n0802c4b8 \u003ccommand_atomic_sub\u003e:\n 802c4b8:\tb5f0      \tpush\t{r4, r5, r6, r7, lr}\n 802c4ba:\tb085      \tsub\tsp, #20\n 802c4bc:\t2404      \tmovs\tr4, #4\n 802c4be:\taf03      \tadd\tr7, sp, #12\n 802c4c0:\t9403      \tstr\tr4, [sp, #12]\n 802c4c2:\t2602      \tmovs\tr6, #2\n 802c4c4:\tb672      \tcpsid\ti\n 802c4c6:\t683b      \tldr\tr3, [r7, #0]\n 802c4c8:\t1c1a      \tadds\tr2, r3, #0\n 802c4ca:\t1b9b      \tsubs\tr3, r3, r6\n 802c4cc:\t603b      \tstr\tr3, [r7, #0]\n 802c4ce:\tb662      \tcpsie\ti\n 802c4d0:\t4d24      \tldr\tr5, [pc, #144]\t; (802c564 \u003ccommand_atomic_sub+0xac\u003e)\n 802c4d2:\t9201      \tstr\tr2, [sp, #4]\n 802c4d4:\t1c29      \tadds\tr1, r5, #0\n 802c4d6:\t1c22      \tadds\tr2, r4, #0\n\nAfter inlined part (802c4c4 - 802c4ce), the code uses r4(802c4d2) although the value in the memory([sp, #12]) is changed (r2 is used later on for printing \"a\" - the value before atomic_sub is displayed).",
+      "parentUuid": "44f1e8f8_5c630c01",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "7613a6c157aa82df80571a55476862e2a36fdcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
