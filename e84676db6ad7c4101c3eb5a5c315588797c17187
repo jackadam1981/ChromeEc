@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "1facd6a4_68db887a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T22:31:48Z",
+      "side": 1,
+      "message": "I\u0027m taking inspiration from the Type-C spec here.  Transitions out of Attached.SNK in the diagram are labeled \"Vbus Removed\" so I think I\u0027ll go with that here.",
+      "parentUuid": "a1fb05f3_c1028a3e",
+      "revId": "e84676db6ad7c4101c3eb5a5c315588797c17187",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44dfe1c1_eff557e1",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 2
