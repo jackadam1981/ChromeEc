@@ -111,6 +111,30 @@
       "revId": "7613a6c157aa82df80571a55476862e2a36fdcfa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1da552b0_b8afac79",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T18:36:13Z",
+      "side": 1,
+      "message": "Thank you for the detailed analysis. Can you add this information to the BUG for reference later, please?",
+      "parentUuid": "dcda8a67_19e8e1ee",
+      "range": {
+        "startLine": 57,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "7613a6c157aa82df80571a55476862e2a36fdcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

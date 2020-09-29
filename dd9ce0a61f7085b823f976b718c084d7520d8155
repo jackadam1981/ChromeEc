@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "543fb598_8f530ee1",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T18:36:13Z",
+      "side": 1,
+      "message": "would it be better to implement this with gcc builtin now and just ignore the return value?\n\nLike __atomic_fetch_and(addr, ~bits, __ATOMIC_SEQ_CST);\n\nsince we know the hand written assemble has issues (per your research)",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "dd9ce0a61f7085b823f976b718c084d7520d8155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
