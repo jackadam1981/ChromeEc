@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "298e3fb6_666a8729",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb35622_ac5f4b70",
+      "range": {
+        "startLine": 271,
+        "startChar": 22,
+        "endLine": 271,
+        "endChar": 28
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3d1264e_d7ada36c",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 26
@@ -131,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "219c0849_ea35a860",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Cool.  Still should be BIT(20), or else it overlaps with the CC2 field",
+      "parentUuid": "ac474297_0556e7f2",
+      "range": {
+        "startLine": 380,
+        "startChar": 44,
+        "endLine": 380,
+        "endChar": 51
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "549db1c6_306c4228",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 26
@@ -178,6 +226,30 @@
     },
     {
       "key": {
+        "uuid": "42ef0614_798faa0a",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc07fe39_f8d3454e",
+      "range": {
+        "startLine": 402,
+        "startChar": 47,
+        "endLine": 402,
+        "endChar": 52
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3928e378_492eabac",
         "filename": "chip/stm32/registers-stm32g4.h",
         "patchSetId": 26
@@ -210,6 +282,24 @@
       "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee42e52_2b59e3a2",
+        "filename": "chip/stm32/registers-stm32g4.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0caed775_c8d9a054",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -312,6 +402,24 @@
     },
     {
       "key": {
+        "uuid": "27d2cccb_e302234f",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dfe81d02_ef6f4e26",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ceeca0af_a99a5beb",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 26
@@ -347,6 +455,30 @@
       "side": 1,
       "message": "Yes this was version is incorrect. I had fixed this, further along in my CL stack and thought I had moved those fixes back to this CL. Looks like I had missed saving all of the changes prior to adding them to the CL. The latest patchset does have the correct version.",
       "parentUuid": "ceeca0af_a99a5beb",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1cd1b87_1458561d",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Okay, much better overall, just a couple of new comments.",
+      "parentUuid": "997b5acf_b0f05e03",
       "range": {
         "startLine": 166,
         "startChar": 2,
@@ -406,6 +538,30 @@
     },
     {
       "key": {
+        "uuid": "06c3aac2_b3544363",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f568e8b3_86ac288e",
+      "range": {
+        "startLine": 209,
+        "startChar": 6,
+        "endLine": 209,
+        "endChar": 42
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00f90760_90af0702",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 26
@@ -450,6 +606,30 @@
       "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5df707af_b58fa32e",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c69a2356_3496e4b7",
+      "range": {
+        "startLine": 210,
+        "startChar": 12,
+        "endLine": 210,
+        "endChar": 34
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -500,6 +680,30 @@
     },
     {
       "key": {
+        "uuid": "56ea57f3_a637d803",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92b18a38_366b3bd2",
+      "range": {
+        "startLine": 240,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 59
+      },
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1be9493_830f1aa6",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 26
@@ -535,6 +739,24 @@
     },
     {
       "key": {
+        "uuid": "203c21ae_8ec01e38",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24e50967_ae0a7781",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50f62e25_db2cd5ed",
         "filename": "chip/stm32/ucpd-stm32gx.h",
         "patchSetId": 26
@@ -567,6 +789,24 @@
       "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7786f73c_0b3ad6f5",
+        "filename": "chip/stm32/ucpd-stm32gx.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T14:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43304bae_80fd147a",
+      "revId": "e94a4078ccf5f457d3e41f8126e27a6bf3d6de87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
