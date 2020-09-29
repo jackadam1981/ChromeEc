@@ -34,6 +34,98 @@
       "revId": "c6057f19fa2493eaddbb1af5b606fa6bb92b0c3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce50a532_82ee8e17",
+        "filename": "core/cortex-m0/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-29T16:23:42Z",
+      "side": 1,
+      "message": "nit: did you mean \"transition\"?",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "c6057f19fa2493eaddbb1af5b606fa6bb92b0c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f7ce94a_85cd85d9",
+        "filename": "core/minute-ia/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-29T16:23:42Z",
+      "side": 1,
+      "message": "same question here",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "c6057f19fa2493eaddbb1af5b606fa6bb92b0c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0db2e74a_e31ffed5",
+        "filename": "core/nds32/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-29T16:23:42Z",
+      "side": 1,
+      "message": "same question here",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "c6057f19fa2493eaddbb1af5b606fa6bb92b0c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b383dbbd_cac82b65",
+        "filename": "core/riscv-rv32i/atomic.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-29T16:23:42Z",
+      "side": 1,
+      "message": "same question here",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 14
+      },
+      "revId": "c6057f19fa2493eaddbb1af5b606fa6bb92b0c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
