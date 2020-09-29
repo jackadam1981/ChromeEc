@@ -490,19 +490,22 @@ int FLASH_DMA_CODE flash_physical_erase(int offset, int size)
 	 * EC-indirect follow mode to access flash, interrupts need to be
 	 * disabled.
 	 */
-	interrupt_disable();
+	//interrupt_disable();
 
 	/* Always use sector erase command (1K or 4K bytes) */
 	for (; size > 0; size -= FLASH_SECTOR_ERASE_SIZE) {
+		interrupt_disable();
 		dma_flash_erase(offset, FLASH_CMD_SECTOR_ERASE);
 		offset += FLASH_SECTOR_ERASE_SIZE;
+		watchdog_reload();
+		interrupt_enable();
 	}
 	dma_reset_immu((v_addr + v_size) >= IMMU_TAG_INDEX_BY_DEFAULT);
 	/* get the ILM address of a flash offset. */
 	v_addr |= CONFIG_MAPPED_STORAGE_BASE;
 	ret = dma_flash_verify(v_addr, v_size, NULL);
 
-	interrupt_enable();
+	//interrupt_enable();
 
 	return ret;
 }
