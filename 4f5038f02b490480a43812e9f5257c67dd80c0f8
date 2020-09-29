@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b47e129e_01fb0449",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T19:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69a0e0f3_2900c9ca",
+      "range": {
+        "startLine": 164,
+        "startChar": 20,
+        "endLine": 164,
+        "endChar": 43
+      },
+      "revId": "4f5038f02b490480a43812e9f5257c67dd80c0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f0b2ff7_b23eb7c8",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 29
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "f57e8c3f_74e7da44",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T19:40:34Z",
+      "side": 1,
+      "message": "I see what you mean.  I think you\u0027re right here.",
+      "parentUuid": "cc321173_6f776292",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 13
+      },
+      "revId": "4f5038f02b490480a43812e9f5257c67dd80c0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02d00615_c57b7397",
         "filename": "chip/stm32/ucpd-stm32gx.c",
         "patchSetId": 29
@@ -140,6 +188,30 @@
       "revId": "4f5038f02b490480a43812e9f5257c67dd80c0f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0cb4ae4_1592e72c",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 29
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-29T19:40:34Z",
+      "side": 1,
+      "message": "Okay, I see now.  I hadn\u0027t noticed that VSTATE_OPEN correlated to 3 instead of 2 (vOPEN in table 415).",
+      "parentUuid": "442d28de_2c90feba",
+      "range": {
+        "startLine": 170,
+        "startChar": 16,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "4f5038f02b490480a43812e9f5257c67dd80c0f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
