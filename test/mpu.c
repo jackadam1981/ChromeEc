@@ -38,6 +38,15 @@ struct mpu_rw_regions expected_rw_regions = { .num_regions = 1,
 					      .addr = { 0x08100000,
 							0x08200000 },
 					      .size = { 0x100000, 0 } };
+#elif defined(CHIP_VARIANT_NPCX7M7FC) || defined(CHIP_VARIANT_NPCX7M7WC)
+struct mpu_info mpu_info = {
+	.has_mpu = true,
+	.num_mpu_regions = 8,
+	.mpu_is_unified = true
+};
+
+/* No RW regions; chip uses external storage */
+struct mpu_rw_regions expected_rw_regions = {};
 #else
 #error "MPU info not defined for this chip. Please add it."
 #endif
@@ -123,6 +132,7 @@ test_static int test_mpu_update_region_invalid_alignment(void)
 	return EC_SUCCESS;
 }
 
+#ifndef CONFIG_EXTERNAL_STORAGE
 test_static int test_mpu_lock_ro_flash(void)
 {
 	int rv;
@@ -142,6 +152,17 @@ test_static int test_mpu_lock_rw_flash(void)
 
 	return EC_SUCCESS;
 }
+
+test_static int test_mpu_get_rw_regions(void)
+{
+	struct mpu_rw_regions rw_regions = mpu_get_rw_regions();
+	int rv = memcmp(&rw_regions, &expected_rw_regions,
+			sizeof(expected_rw_regions));
+
+	TEST_EQ(rv, 0, "%d");
+	return EC_SUCCESS;
+}
+#endif
 
 test_static int test_mpu_protect_data_ram(void)
 {
@@ -166,19 +187,11 @@ test_static int test_mpu_protect_code_ram(void)
 	return EC_SUCCESS;
 }
 
-test_static int test_mpu_get_rw_regions(void)
-{
-	struct mpu_rw_regions rw_regions = mpu_get_rw_regions();
-	int rv = memcmp(&rw_regions, &expected_rw_regions,
-			sizeof(expected_rw_regions));
-
-	TEST_EQ(rv, 0, "%d");
-	return EC_SUCCESS;
-}
-
 void run_test(int argc, char **argv)
 {
+#ifndef CONFIG_EXTERNAL_STORAGE
 	enum ec_image cur_image = system_get_image_copy();
+#endif
 
 	ccprintf("Running MPU test\n");
 
@@ -190,6 +203,7 @@ void run_test(int argc, char **argv)
 	 * read/write/execute (depending on the configuration).
 	 */
 
+#ifndef CONFIG_EXTERNAL_STORAGE
 	/*
 	 * Since locking prevents code execution, we can only lock the region
 	 * that is not running or the test will hang.
@@ -205,6 +219,10 @@ void run_test(int argc, char **argv)
 	}
 
 	RUN_TEST(reset_mpu);
+	RUN_TEST(test_mpu_get_rw_regions);
+#endif
+
+	RUN_TEST(reset_mpu);
 	RUN_TEST(test_mpu_update_region_invalid_region);
 	RUN_TEST(reset_mpu);
 	RUN_TEST(test_mpu_update_region_invalid_alignment);
@@ -212,8 +230,6 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_mpu_protect_code_ram);
 	RUN_TEST(reset_mpu);
 	RUN_TEST(test_mpu_protect_data_ram);
-	RUN_TEST(reset_mpu);
-	RUN_TEST(test_mpu_get_rw_regions);
 	RUN_TEST(reset_mpu);
 	/* This test must be last because it generates a panic */
 	RUN_TEST(test_mpu_update_region_valid_region);

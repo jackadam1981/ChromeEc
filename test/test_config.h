@@ -15,7 +15,9 @@
 #define CONFIG_HOSTCMD_SECTION_SORTED
 
 /* Don't compile features unless specifically testing for them */
+#ifndef CONFIG_VBOOT_EFS2 /* EFS2 requires vboot_hash */
 #undef CONFIG_VBOOT_HASH
+#endif
 #undef CONFIG_USB_PD_LOGGING
 
 #ifdef TEST_AES
