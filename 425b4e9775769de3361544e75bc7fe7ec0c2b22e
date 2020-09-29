@@ -16,6 +16,24 @@
       "revId": "425b4e9775769de3361544e75bc7fe7ec0c2b22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3ea5b86_c67b98a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-29T18:35:15Z",
+      "side": 1,
+      "message": "pca9675 has only one register for both set \u0026 get of the I/O levels.\nsome of the pins need to be modified together (ex: set 01 same time)\nhence we kept it independent of struct ioexpander_drv.\n\nIs it okay to submit a follow on CL to change the driver to fit ioexpander_drv ?\nwe will add comments in driver and mention pca9675_update_pins() does both set \u0026 get.",
+      "parentUuid": "2773e804_72db3151",
+      "revId": "425b4e9775769de3361544e75bc7fe7ec0c2b22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
