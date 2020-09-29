@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3aabec5_d8e98ad4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-29T10:53:51Z",
+      "side": 1,
+      "message": "i\u0027m getting\n\n\u003e hibernate 10\nHibernating for 10.000000 s\n\n\n--- UART initialized after reboot ---\n[Image: RO, npcx9_evb_v2.0.5618-abb146caa0 2020-09-29 01:00:34 caveh@caveh]\n[Reset cause: power-on hibernate wake-pin]\n\n\nhere and there is no 10 second delay. the hibernate\ncommand pretty much forces an immediate reboot.\nhibernate without an argument also reboots immediately.\n\nis this something i can test on my evb or do you have\na special setup?",
+      "revId": "86b2eb0353c31c119ccef04f0055c0f7d22db748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
