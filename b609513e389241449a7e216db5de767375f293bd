@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "f96ab5ef_95ec4622",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T20:08:36Z",
+      "side": 1,
+      "message": "Overall HC looks good",
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d239927_5b1723cc",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T20:08:36Z",
+      "side": 1,
+      "message": "let\u0027s also add a check that the input args says we have enough room for this buffer (otherwise we should early return with an error).",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6644b650_0a3caa8b",
         "filename": "common/usbc/usb_pd_host.c",
         "patchSetId": 2
@@ -59,6 +99,30 @@
       "writtenOn": "2020-09-29T18:13:17Z",
       "side": 1,
       "message": "Might be good to make a low-priority bug to officially remove this and link to the bug here.",
+      "range": {
+        "startLine": 5308,
+        "startChar": 3,
+        "endLine": 5308,
+        "endChar": 66
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03514db1_07b2bdb4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5308,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T20:08:36Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "ad677f1a_2003f8a3",
       "range": {
         "startLine": 5308,
         "startChar": 3,
@@ -202,6 +266,76 @@
         "startChar": 0,
         "endLine": 6453,
         "endChar": 26
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb0450d_43791df0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6453,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T20:08:36Z",
+      "side": 1,
+      "message": "more opinions: I would define them with BIT(0,1,2,3,4) as well 😊\n\n(I am okay with defines or enums too) We never do a bit-wise or of these fields right? (if we do, then I don\u0027t like enum as much)",
+      "parentUuid": "835be077_99b5f101",
+      "range": {
+        "startLine": 6448,
+        "startChar": 0,
+        "endLine": 6453,
+        "endChar": 26
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2ba7e6_7e994e53",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6460,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T20:08:36Z",
+      "side": 1,
+      "message": "if we are going to keep the bit field (which I am okay with), this needs a better name like enabled_mask or something that let\u0027s me know if it is more than 1 bit of information",
+      "range": {
+        "startLine": 6460,
+        "startChar": 9,
+        "endLine": 6460,
+        "endChar": 49
+      },
+      "revId": "b609513e389241449a7e216db5de767375f293bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4a4fdb6_6fc4a26c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T20:08:36Z",
+      "side": 1,
+      "message": "should we move this as well, seems left out now ;)",
+      "range": {
+        "startLine": 652,
+        "startChar": 8,
+        "endLine": 652,
+        "endChar": 23
       },
       "revId": "b609513e389241449a7e216db5de767375f293bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
