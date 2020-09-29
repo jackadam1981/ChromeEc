@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95407e45_9a7d4e3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T23:51:13Z",
+      "side": 1,
+      "message": "entry",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "6017689ed59b904bc0f711d9a77b91a5941448b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e86935b8_30e08a5a",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T23:51:13Z",
+      "side": 1,
+      "message": "I don\u0027t have any strong objections to making these atomic ops, but is there a specific need for it? Will there be asynchronous operations on these flags?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 59
+      },
+      "revId": "6017689ed59b904bc0f711d9a77b91a5941448b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71e06844_d262eec4",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T23:51:13Z",
+      "side": 1,
+      "message": "With these changes, this doesn\u0027t need to be part of the DPM\u0027s public API anymore, which I think was the intent.",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "6017689ed59b904bc0f711d9a77b91a5941448b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52f6a619_90feb288",
+        "filename": "include/usb_dp_alt_mode.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T23:51:13Z",
+      "side": 1,
+      "message": "This should specify what \"done\" means to the caller, not implementation details.",
+      "range": {
+        "startLine": 39,
+        "startChar": 28,
+        "endLine": 39,
+        "endChar": 53
+      },
+      "revId": "6017689ed59b904bc0f711d9a77b91a5941448b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "374e2991_2af1df0b",
+        "filename": "include/usb_tbt_alt_mode.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T23:51:13Z",
+      "side": 1,
+      "message": "Specify the behavior of this function in terms of what it means to the caller, not implementation details.",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 27,
+        "endChar": 56
+      },
+      "revId": "6017689ed59b904bc0f711d9a77b91a5941448b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
