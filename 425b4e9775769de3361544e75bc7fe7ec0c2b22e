@@ -52,6 +52,24 @@
       "revId": "425b4e9775769de3361544e75bc7fe7ec0c2b22e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3b58da_d916865c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2020-09-29T21:52:57Z",
+      "side": 1,
+      "message": "sure Keith we will file a bug and plan to add to ioexpander_drv.\nIts the hardware requirement to set these line simultaneously. \n\nwe can plan to add one more function in the structure \nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/master/include/ioexpander.h#43\nint (*update_io_pins)(int ioex, int port, int setpins, int clearpins)",
+      "parentUuid": "094fba94_74ac84cd",
+      "revId": "425b4e9775769de3361544e75bc7fe7ec0c2b22e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
