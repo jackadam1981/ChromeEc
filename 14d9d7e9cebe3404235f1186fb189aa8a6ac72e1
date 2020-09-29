@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e8e3e123_70f27e50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2020-09-29T02:26:03Z",
+      "side": 1,
+      "message": "Thanks for your review. I create CL in master branch.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2437573",
+      "parentUuid": "5cdee30f_403a2cfc",
+      "revId": "14d9d7e9cebe3404235f1186fb189aa8a6ac72e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcc2c1cd_aa57bf42",
         "filename": "board/woomax/board.c",
         "patchSetId": 1
