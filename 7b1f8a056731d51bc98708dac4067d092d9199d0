@@ -472,6 +472,30 @@
       "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d005546_09650792",
+        "filename": "chip/mt8192_scp/clock.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2020-09-29T01:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35a8fd05_02692a8c",
+      "range": {
+        "startLine": 264,
+        "startChar": 17,
+        "endLine": 264,
+        "endChar": 18
+      },
+      "revId": "7b1f8a056731d51bc98708dac4067d092d9199d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
