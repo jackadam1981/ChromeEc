@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7ec0800_94bea1b7",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-09-29T19:45:15Z",
+      "side": 1,
+      "message": "should we use zephyr_include_directories_ifdef on CONFIG_PLATFORM_EC as well?\n\nOr should we not even worry about CONFIG_PLATFORM_EC here and below since that is really the only valid way to compile this module?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "2ade952d23b738c469eb6d2edee6d2c776c00821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
