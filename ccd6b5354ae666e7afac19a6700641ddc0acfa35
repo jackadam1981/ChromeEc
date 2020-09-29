@@ -16,6 +16,24 @@
       "revId": "ccd6b5354ae666e7afac19a6700641ddc0acfa35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0fe82a4_2b9b5a08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409791
+      },
+      "writtenOn": "2020-09-29T00:32:38Z",
+      "side": 1,
+      "message": "Thanks for adding me here. I\u0027m not super familiar with this so let me ask a few basic questions:\n\n- What powers does the DFP have in this case over the UFP?\n  Can it issue (R)DMA to UFP\u0027s system memory?\n  Can it persistently affect UFP\u0027s host controller in any way (e.g modify loaded firmware)?\n  Can it interact with the UFP\u0027s OS via something other than thunderbolt-net?\n  Can it somehow masquerade as a PCIe endpoint for the UFP?\n\n- What\u0027s the mechanism that causes the UFP\u0027s host controller to return to its previous state once the P2P session is finished?",
+      "parentUuid": "1917455d_b958a916",
+      "revId": "ccd6b5354ae666e7afac19a6700641ddc0acfa35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
