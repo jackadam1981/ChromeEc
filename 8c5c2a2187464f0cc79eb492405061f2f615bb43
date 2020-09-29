@@ -22,6 +22,30 @@
       "revId": "8c5c2a2187464f0cc79eb492405061f2f615bb43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42e54175_607c08f5",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5711,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2020-09-29T04:13:25Z",
+      "side": 1,
+      "message": "I have tried some other boards. Although their noise is a little higher than ampton(roughly 125% rms_noise^2), the body detection works fine with 120% noise. But, in some case, the 120% is not working, we can change the value. Any concern?",
+      "parentUuid": "9695144a_73cee8a6",
+      "range": {
+        "startLine": 5711,
+        "startChar": 0,
+        "endLine": 5711,
+        "endChar": 54
+      },
+      "revId": "8c5c2a2187464f0cc79eb492405061f2f615bb43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
