@@ -631,9 +631,9 @@ void __ram_code mutex_unlock(struct mutex *mtx)
 	uint32_t waiters;
 	task_ *tsk = current_task;
 
-	waiters = mtx->waiters;
 	/* give back the lock */
 	mtx->lock = 0;
+	waiters = mtx->waiters;
 
 	while (waiters) {
 		task_id_t id = __fls(waiters);
