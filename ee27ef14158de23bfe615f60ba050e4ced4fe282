@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d75d9c6f_76ea8f14",
+        "filename": "board/npcx9_evb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-29T23:26:10Z",
+      "side": 1,
+      "message": "can this section go into \nchip/npcx/config_chip-npcx9.h\nas this isn\u0027t \"board\" specific?\n\nnot sure if external flash is an option on the npcx9.\nif so, maybe boards that actually need external flash\ncan override this as it\u0027ll surely be a rare case.",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 68
+      },
+      "revId": "ee27ef14158de23bfe615f60ba050e4ced4fe282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
