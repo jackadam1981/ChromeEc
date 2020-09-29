@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a9afe14_7c2bc5aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:32:10Z",
+      "side": 1,
+      "message": "Seems reasonable. Is there a particular reason for these objects and functions to live in the PE? It seems like, at least in theory, other layers could generate events for the host. Would this be better placed in the DPM?",
+      "revId": "3c95c24c1e019b3b3716e677e944c02d7b251324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2968f878_2d7b5222",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:32:10Z",
+      "side": 1,
+      "message": "s",
+      "range": {
+        "startLine": 2294,
+        "startChar": 62,
+        "endLine": 2294,
+        "endChar": 63
+      },
+      "revId": "3c95c24c1e019b3b3716e677e944c02d7b251324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3efbf883_4754d25c",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2296,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2020-09-29T18:32:10Z",
+      "side": 1,
+      "message": "Nit: The use of future tense is odd here. Once this is merged, these statements will apply to the present.",
+      "range": {
+        "startLine": 2294,
+        "startChar": 0,
+        "endLine": 2296,
+        "endChar": 58
+      },
+      "revId": "3c95c24c1e019b3b3716e677e944c02d7b251324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
