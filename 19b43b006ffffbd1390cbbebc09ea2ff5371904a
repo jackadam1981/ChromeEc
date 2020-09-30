@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e500453_677205d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-09-30T11:29:25Z",
+      "side": 1,
+      "message": "I was wrong - atomic_clear_bit from zephyr clears only one selected bit, but we want to clear many bits hence I\u0027ve changed the name atomic_clear to atomic_clear_bits, not atomic_clear_bit.",
+      "revId": "19b43b006ffffbd1390cbbebc09ea2ff5371904a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
