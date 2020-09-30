@@ -34,6 +34,24 @@
       "revId": "19837abdb88140d40a1007c789548944fb991604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ea8e452_b4c22b9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2020-09-30T21:33:39Z",
+      "side": 1,
+      "message": "Sure. I\u0027m getting this:\n```\n2020-09-30 14:30:04,036 - Controls - ERROR - (NameError) Failed getting servo_v4_with_ccd_cr50_i2c_pseudo_adapter_num: No control named servo_v4_with_ccd_cr50_i2c_pseudo_adapter_num. All controls:\n```\n\nMy hdctools is sitting here:\n```\n826e620 (HEAD) servod: Add i2c_pseudo driver for reading I2C pseudo controller properties.\nf2b9f11 servo: i2c_base: Add pseudo_adap property.\n```\n\nI emerged it with: sudo emerge hdctools\nAnd launch servod via: sudo servod --board\u003ddedede --port\u003d9997 --serial\u003dC1903140033\n\n```\n$ sudo servod --version\nservod v0.9999.0.dev\n```\n\nDid I miss a step?",
+      "parentUuid": "dffc865f_7d36c19f",
+      "revId": "19837abdb88140d40a1007c789548944fb991604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
