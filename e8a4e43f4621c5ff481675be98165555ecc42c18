@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2e82351_368a948d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-09-30T03:32:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2b107a9_a562c170",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "e8a4e43f4621c5ff481675be98165555ecc42c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a23f0726_9bd75bd8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -62,6 +86,30 @@
       "revId": "e8a4e43f4621c5ff481675be98165555ecc42c18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "307d21dd_a4184191",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2020-09-30T03:32:15Z",
+      "side": 1,
+      "message": "Ack, done.",
+      "parentUuid": "350d82f8_218a01d5",
+      "range": {
+        "startLine": 437,
+        "startChar": 34,
+        "endLine": 437,
+        "endChar": 36
+      },
+      "revId": "e8a4e43f4621c5ff481675be98165555ecc42c18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
