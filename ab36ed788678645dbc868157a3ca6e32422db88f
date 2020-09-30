@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9f15678e_d7aee6ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T23:07:34Z",
+      "side": 1,
+      "message": "Currently, the kernel is using \"ectool usbpd\" to collect pretty prints of the port information.  Prashant can verify, but I was guessing they\u0027d prefer to be able to run the same command regardless of TCPM version.  If that\u0027s not a desired use, I can abandon this CL.  \n\nPrashant, thoughts here?",
+      "parentUuid": "752e4e61_63526e37",
+      "revId": "ab36ed788678645dbc868157a3ca6e32422db88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46f3714d_5031cb87",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "ab36ed788678645dbc868157a3ca6e32422db88f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b86c4f_98b13523",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9602,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T23:07:34Z",
+      "side": 1,
+      "message": "Yes, in that they both take a port.  I set up the !\u003d2 above to avoid passing through anything beyond some number which we assume to be the port.  We\u0027d need to change argc to the old command if we find ourselves longing for an additional TYPEC_STATUS argument.",
+      "parentUuid": "46f3714d_5031cb87",
+      "range": {
+        "startLine": 9602,
+        "startChar": 2,
+        "endLine": 9602,
+        "endChar": 32
+      },
+      "revId": "ab36ed788678645dbc868157a3ca6e32422db88f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
