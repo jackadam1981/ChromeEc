@@ -1185,6 +1185,14 @@ void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
 	 * Error during an Interruptible AMS.
 	 */
 	else {
+		if (get_state_pe(port) == PE_PRS_SNK_SRC_EVALUATE_SWAP)
+			/*
+			 * Protocol Error occurs while PR swap, this may
+			 * brown out if the port-parnter can't hold VBUS
+			 * for tSrcTransition. Notify TC that we end the PR
+			 * swap and start to watch VBUS.
+			 */
+			tc_pr_swap_complete(port, 0);
 		pe_set_ready_state(port);
 	}
 }
