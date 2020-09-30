@@ -22,6 +22,30 @@
       "revId": "b632746191bb2e6a4ecec2e9ee6becc31fec2b14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff687f9_7099cb35",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5301,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T23:05:12Z",
+      "side": 1,
+      "message": "If this were an enum, would we have to worry about callers comparing a bitmask versus the enum values?",
+      "parentUuid": "a2bb9f5d_eaca69a6",
+      "range": {
+        "startLine": 5297,
+        "startChar": 0,
+        "endLine": 5301,
+        "endChar": 31
+      },
+      "revId": "b632746191bb2e6a4ecec2e9ee6becc31fec2b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
