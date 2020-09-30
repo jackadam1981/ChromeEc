@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7b330a1e_a3592482",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T23:05:27Z",
+      "side": 1,
+      "message": "To start with, I put it in the PE since it\u0027ll be generating most of the events we\u0027ve charted out.  Long-run, I\u0027m not sure if it makes sense in the DPM since the events aren\u0027t driving policy decisions? \n\nI do wonder if we should have a PD module, which would exist solely as the repository of setting/getting PD information.  It would cut back on the things like having data_role in both the TC and PE.  Though I don\u0027t know what the module\u0027s prefixes would be for the setters if they\u0027re not allowed outside the PD task, since we\u0027re aiming to have \"pd_\" indicate an outside API.",
+      "parentUuid": "6a9afe14_7c2bc5aa",
+      "revId": "3c95c24c1e019b3b3716e677e944c02d7b251324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9d41ce1_1fd6ba48",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "3c95c24c1e019b3b3716e677e944c02d7b251324",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c389d996_fa49670b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T23:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9d41ce1_1fd6ba48",
+      "revId": "3c95c24c1e019b3b3716e677e944c02d7b251324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "4c08e541_81aa515b",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T23:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2968f878_2d7b5222",
+      "range": {
+        "startLine": 2294,
+        "startChar": 62,
+        "endLine": 2294,
+        "endChar": 63
+      },
+      "revId": "3c95c24c1e019b3b3716e677e944c02d7b251324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3efbf883_4754d25c",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -79,6 +139,30 @@
       "revId": "3c95c24c1e019b3b3716e677e944c02d7b251324",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8752a2b_da06d0a6",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2296,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T23:05:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3efbf883_4754d25c",
+      "range": {
+        "startLine": 2294,
+        "startChar": 0,
+        "endLine": 2296,
+        "endChar": 58
+      },
+      "revId": "3c95c24c1e019b3b3716e677e944c02d7b251324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
