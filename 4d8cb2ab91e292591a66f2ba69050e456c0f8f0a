@@ -189,6 +189,24 @@
       "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea74f0e3_90dbf5c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T18:15:43Z",
+      "side": 1,
+      "message": "We don\u0027t have a FW branch currently to merge to.  Are you opposed to merging this to ToT ever then?  Is there a FAFT test besides firmware_ECPowerButton you\u0027re worried about?  I\u0027ve tried Evan\u0027s change on ToT with the current sysjump timing, and the test should be completely fine with S5 triggering the sysjump since it just waits longer to validate RW before continuing on.  \n\nCan you elaborate on the difference you expect to see for chromeboxes on brownout when the sysjump happens in S5 versus G3 (or when the customer presses the power button from S5)? \n\nI\u0027m getting probe lines set up on my waddledee to collect scope shots of this issue and should hopefully have them done by the end of the week.  That will enable more debugging with Intel now that I\u0027m reasonably certain our EC GPIO flags aren\u0027t causing the issue.",
+      "parentUuid": "4869caa6_38c13e36",
+      "revId": "4d8cb2ab91e292591a66f2ba69050e456c0f8f0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
