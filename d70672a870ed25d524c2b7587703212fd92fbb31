@@ -22,6 +22,30 @@
       "revId": "d70672a870ed25d524c2b7587703212fd92fbb31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca0db91_c3eb8943",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T23:07:00Z",
+      "side": 1,
+      "message": "Based on my testing, yes.  Jett would probably know best, but if we don\u0027t align on 32-bit boundaries the command definitely doesn\u0027t come through correctly.",
+      "parentUuid": "95326929_5795b8eb",
+      "range": {
+        "startLine": 10,
+        "startChar": 45,
+        "endLine": 11,
+        "endChar": 50
+      },
+      "revId": "d70672a870ed25d524c2b7587703212fd92fbb31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
