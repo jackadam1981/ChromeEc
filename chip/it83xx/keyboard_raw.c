@@ -31,7 +31,14 @@ void keyboard_raw_init(void)
 
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 	/* KSO[2] is high, others are low. */
+<<<<<<< HEAD   (1221cc Battery: Apply faked state of charge to remaining capacity)
 	IT83XX_KBS_KSOL = (1 << 2);
+=======
+	IT83XX_KBS_KSOL = BIT(2);
+	/* Enable KSO2's push-pull */
+	IT83XX_KBS_KSOLGCTRL |= BIT(2);
+	IT83XX_KBS_KSOLGOEN |= BIT(2);
+>>>>>>> CHANGE (2f1616 it83xx/keyboard: enable push-pull for KSO2)
 #else
 	/* KSO[7:0] pins low. */
 	IT83XX_KBS_KSOL = 0x00;
