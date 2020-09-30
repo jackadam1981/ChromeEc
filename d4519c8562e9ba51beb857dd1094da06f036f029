@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dde3443b_abe450b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-30T11:28:30Z",
+      "side": 1,
+      "message": "i have a follow-up patch in the works to enable the fan.\nalso, let me go back to an npcx7 chromebook to make we\u0027re\nstill in good shape with these changes.\n",
+      "revId": "d4519c8562e9ba51beb857dd1094da06f036f029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a08ccceb_f31c9bf1",
+        "filename": "board/npcx9_evb/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-30T11:28:30Z",
+      "side": 1,
+      "message": "remove this line?\nthe tmp006 registers don\u0027t seem to match the tmp100\nsensor on this board. i have a follow-up patch to\nenable the temp sensor using the tmp112 driver which\nseems to work fine for the tmp100.",
+      "revId": "d4519c8562e9ba51beb857dd1094da06f036f029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf3b96b_bcfe324a",
+        "filename": "board/npcx9_evb/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2020-09-30T11:28:30Z",
+      "side": 1,
+      "message": "remove, i got a PWM fan going. i only have 12v PWM\nfans lying around, but it worked well enough for testing.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "d4519c8562e9ba51beb857dd1094da06f036f029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
