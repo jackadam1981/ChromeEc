@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "89618e75_8aa027ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2020-09-30T12:14:28Z",
+      "side": 1,
+      "message": "As part of Docking/DisplayPort \"quickfix\" CL:2411185 I\u0027m revisiting this.\n\nThe pros/cons of this have been discussed and quantified thoroughly.\nWould like to sync with Vincent to go over pragmatic limitations and alternatives.\n\nSee b:167602250#comment35 deck.\n",
+      "revId": "6b00c11d1c3cd29149460000f6686b937edf75b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "655432c9_b634994d",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 3
