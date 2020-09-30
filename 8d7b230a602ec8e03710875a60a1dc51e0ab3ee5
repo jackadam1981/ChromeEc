@@ -16,6 +16,29 @@
       "revId": "8d7b230a602ec8e03710875a60a1dc51e0ab3ee5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28201ee8_0017a268",
+        "filename": "baseboard/volteer/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2020-09-30T17:40:05Z",
+      "side": 1,
+      "message": "there is an update to this that just went in for Zork to deal with false 0 volt readings. May be worth checking as well.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2438934",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 0
+      },
+      "revId": "8d7b230a602ec8e03710875a60a1dc51e0ab3ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
