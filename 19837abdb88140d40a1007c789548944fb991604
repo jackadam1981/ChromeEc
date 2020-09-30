@@ -88,6 +88,24 @@
       "revId": "19837abdb88140d40a1007c789548944fb991604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6584c43b_35184ae0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-09-30T23:26:20Z",
+      "side": 1,
+      "message": "Okay, now try with patchset 4+.\n\nI found an Apel DVT with a servo header among my WFH DUT collection, I\u0027m now been able to verify this myself using it, but I\u0027d still very much appreciate if you could verify this works in your setup too.",
+      "parentUuid": "9cf053f1_a618c9c0",
+      "revId": "19837abdb88140d40a1007c789548944fb991604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
