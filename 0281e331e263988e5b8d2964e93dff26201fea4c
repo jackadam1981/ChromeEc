@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "778684eb_d717a0ca",
+        "filename": "board/drawcia/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T00:59:19Z",
+      "side": 1,
+      "message": "Should we make this exhaustive using a switch statement? Just in case someone adds a level without checking all the definitions? Or maybe they will?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 1
+      },
+      "revId": "0281e331e263988e5b8d2964e93dff26201fea4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
