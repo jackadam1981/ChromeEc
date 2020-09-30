@@ -22,6 +22,30 @@
       "revId": "ee27ef14158de23bfe615f60ba050e4ced4fe282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13141d78_91e6134f",
+        "filename": "board/npcx9_evb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-30T08:49:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d75d9c6f_76ea8f14",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 68
+      },
+      "revId": "ee27ef14158de23bfe615f60ba050e4ced4fe282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
