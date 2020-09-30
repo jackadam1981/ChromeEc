@@ -16,6 +16,24 @@
       "revId": "2ff15f4495ef2351058ab0ef84ef5451e5f946b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6bfcc5a_bb0e7c4f",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-30T08:49:09Z",
+      "side": 1,
+      "message": "I have add the config option CONFIG_WORKAROUND_FLASH_DOWNLOAD_API for this workaround.\n\nIMHO, A1 chip is just for early engineering testing and development. It won\u0027t be in production and used in a real platform. I seems not necessary to check the chip rev for this.",
+      "parentUuid": "6290d398_2a097404",
+      "revId": "2ff15f4495ef2351058ab0ef84ef5451e5f946b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
