@@ -33,6 +33,24 @@
       "revId": "1dd0a469e15231082403ae9d6a31a8b180a5f519",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27db2541_00ecca98",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5033,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T23:06:39Z",
+      "side": 1,
+      "message": "I do think that would be a more foolproof location to send the notification, but since the pd_set_*_discovery() functions are shared with TCPMv1 it feels a little wrong to call into any pe_* interfaces from there. What are your thoughts on consolidating these into one exit statement?",
+      "parentUuid": "ea283e14_6f195b69",
+      "revId": "1dd0a469e15231082403ae9d6a31a8b180a5f519",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
