@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bae0c194_84be8a8f",
+        "filename": "test/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-30T00:15:52Z",
+      "side": 1,
+      "message": "Can you replace with this style:\n\n  if (!IS_ENABLED(CONFIG_EXTERNAL_STORAGE)\n\n(below too)",
+      "range": {
+        "startLine": 192,
+        "startChar": 8,
+        "endLine": 192,
+        "endChar": 31
+      },
+      "revId": "4cd56a2ffd89970df023f35f6e64cbe4bbe2737b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
