@@ -1063,6 +1063,7 @@ uint8_t pd_get_snk_cap_cnt(int port)
 	return pe[port].snk_cap_cnt;
 }
 
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 /*
  * Evaluate a sink PDO for reported FRS support on the given port.
  *
@@ -1136,7 +1137,9 @@ static bool pe_can_send_sop_prime(int port)
 		return false;
 	}
 }
+#endif
 
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 /*
  * Determine if this port may send the given VDM type
  *
@@ -1170,6 +1173,7 @@ static bool pe_can_send_sop_vdm(int port, int vdm_cmd)
 
 	return false;
 }
+#endif
 
 static void pe_send_soft_reset(const int port, enum tcpm_transmit_type type)
 {
@@ -1993,6 +1997,7 @@ static void pe_src_discovery_run(int port)
 		}
 	}
 
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	/*
 	 * Note: While the DiscoverIdentityTimer is only required in an explicit
 	 * contract, we use it here to ensure we space any potential BUSY
@@ -2007,7 +2012,7 @@ static void pe_src_discovery_run(int port)
 		set_state_pe(port, PE_VDM_IDENTITY_REQUEST_CBL);
 		return;
 	}
-
+#endif
 	/*
 	 * Transition to the PE_SRC_Disabled state when:
 	 *   1) The Port Partners have not been PD Connected.
@@ -2501,13 +2506,14 @@ static void pe_src_ready_run(int port)
 		PE_CLR_FLAG(port, PE_FLAGS_FIRST_MSG);
 		pe[port].wait_and_add_jitter_timer = TIMER_DISABLED;
 
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		/*
 		 * Attempt discovery if possible, and return if state was
 		 * changed for that discovery.
 		 */
 		if (pe_attempt_port_discovery(port))
 			return;
-
+#endif
 		/*
 		 * Handle Device Policy Manager Requests
 		 */
@@ -3340,14 +3346,14 @@ static void pe_snk_ready_run(int port)
 			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
 			return;
 		}
-
+#ifdef CONFIG_USB_PD_ALT_MODE_DFP
 		/*
 		 * Attempt discovery if possible, and return if state was
 		 * changed for that discovery.
 		 */
 		if (pe_attempt_port_discovery(port))
 			return;
-
+#endif
 		/*
 		 * Handle Device Policy Manager Requests
 		 */
