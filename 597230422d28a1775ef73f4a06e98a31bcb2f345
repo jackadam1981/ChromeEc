@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "edd5e4a1_cd77d8ba",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2020-09-30T00:21:27Z",
+      "side": 1,
+      "message": "I think there\u0027s value in giving a more readable name to __builtin_ctz and checking for misuse since it\u0027s not entirely obvious. If, in the future, there\u0027s a better way to implement it (e.g., custom assembly), then it\u0027s easy to update and test in a single place. This is effectively the same reason for having the other one-liners that exist in util.h.\n\nEven if the unit tests don\u0027t run on device, they can still run on the host (which the tests in utils.c do), which is better than nothing.",
+      "parentUuid": "749532d2_375700e5",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 1
+      },
+      "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ceaf729c_095f0027",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 3
