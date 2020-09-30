@@ -16,6 +16,24 @@
       "revId": "86b2eb0353c31c119ccef04f0055c0f7d22db748",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4626e8_0706c84a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2020-09-30T08:47:03Z",
+      "side": 1,
+      "message": "The CL enabled the VCC1_RST pin to be one of the PSL wakeup source (line 873~881 in the system.c). However, it needs the pin to be connected to the VSBY supply via an external pull-up resistor (The pin should be still pulled up to VCC on the EVB you got).\nI updated this CL to make it a option. With this option disabled, you can test the rest of the PSL function expect the VCC1_RST one.\n\nMichal is checking the rework options to support this for Gamla with the EVB.\nI am sorry that I don\u0027t notice it because I am testing this on a board which already pull up the pin to VSBY.",
+      "parentUuid": "b3aabec5_d8e98ad4",
+      "revId": "86b2eb0353c31c119ccef04f0055c0f7d22db748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
