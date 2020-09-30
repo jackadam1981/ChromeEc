@@ -303,10 +303,15 @@ static uint32_t dp_status[CONFIG_USB_PD_PORT_COUNT];
 static void svdm_safe_dp_mode(int port)
 {
 	/* make DP interface safe until configure */
+	const struct usb_mux *mux = &usb_muxes[port];
 	dp_flags[port] = 0;
 	dp_status[port] = 0;
-	usb_mux_set(port, TYPEC_MUX_NONE,
-		USB_SWITCH_CONNECT, pd_get_polarity(port));
+
+	mux->hpd_update(port, 0, 0);
+
+	/* Spec dicates this be handled in DP Configure */
+	//usb_mux_set(port, TYPEC_MUX_NONE,
+	//	USB_SWITCH_CONNECT, pd_get_polarity(port));
 }
 
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
@@ -348,14 +353,16 @@ static int svdm_dp_status(int port, uint32_t *payload)
 static int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
-	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
+	//int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
 	int pin_mode = pd_dfp_dp_get_pin_mode(port, dp_status[port]);
+	int mf_sel = !!(pin_mode & MODE_DP_PIN_MF_MASK);
 
 	if (!pin_mode)
 		return 0;
 
-	usb_mux_set(port, mf_pref ? TYPEC_MUX_DOCK : TYPEC_MUX_DP,
-		    USB_SWITCH_CONNECT, pd_get_polarity(port));
+	/* Place only "pins to be reconfigured" in Safe State */
+	usb_mux_set(port, mf_sel ? TYPEC_MUX_USB : TYPEC_MUX_NONE,
+		USB_SWITCH_CONNECT, pd_get_polarity(port));
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
 			 CMD_DP_CONFIG | VDO_OPOS(opos));
@@ -368,11 +375,17 @@ static int svdm_dp_config(int port, uint32_t *payload)
 static void svdm_dp_post_config(int port)
 {
 	const struct usb_mux *mux = &usb_muxes[port];
+	int hpd_cached=!!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING);
+	//int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
+	int pin_mode = pd_dfp_dp_get_pin_mode(port, dp_status[port]);
+	int mf_sel= !!(pin_mode & MODE_DP_PIN_MF_MASK);
+
+	/* Place only "pins to be reconfigured" in DP State */
+	usb_mux_set(port, mf_sel ? TYPEC_MUX_DOCK : TYPEC_MUX_DP,
+		USB_SWITCH_CONNECT, pd_get_polarity(port));
 
 	dp_flags[port] |= DP_FLAGS_DP_ON;
-	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
-		return;
-	mux->hpd_update(port, 1, 0);
+	mux->hpd_update(port, hpd_cached, 0);
 }
 
 static int svdm_dp_attention(int port, uint32_t *payload)
@@ -405,6 +418,10 @@ static void svdm_exit_dp_mode(int port)
 
 	svdm_safe_dp_mode(port);
 	mux->hpd_update(port, 0, 0);
+
+	/* Return to Type-C SSUSB function */
+	usb_mux_set(port, TYPEC_MUX_USB,
+		USB_SWITCH_CONNECT, pd_get_polarity(port));
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
