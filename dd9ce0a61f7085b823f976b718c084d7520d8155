@@ -22,6 +22,30 @@
       "revId": "dd9ce0a61f7085b823f976b718c084d7520d8155",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68022734_22a8407d",
+        "filename": "core/cortex-m/atomic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2020-09-30T05:57:53Z",
+      "side": 1,
+      "message": "IMHO yes, I will go for it.",
+      "parentUuid": "543fb598_8f530ee1",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 10
+      },
+      "revId": "dd9ce0a61f7085b823f976b718c084d7520d8155",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
