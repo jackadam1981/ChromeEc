@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f01e3c45_6f5d0aeb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2020-09-30T16:14:46Z",
+      "side": 1,
+      "message": "Our current methodology of dealing with special protocol error scenarios is to add the states to the big \"if\" on line 1128, and then pass the PE_FLAGS_PROTOCOL_ERROR flag to that state to handle itself.  \n\nWe should also be starting the soft reset process for not getting a GoodCRC.  This reminds me I have a P2 bug to correct this \"if\" statement (b/155181980)",
+      "revId": "851b5a6c28b1d9e8251f33d0e7a026e19de2b022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
