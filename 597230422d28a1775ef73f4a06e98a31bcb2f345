@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "17a465aa_091ffd22",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2020-09-30T00:30:00Z",
+      "side": 1,
+      "message": "I think I agree with Tom here - putting these helper functions in a more obvious place does tend to mean they get used rather than have copies of them around the place.",
+      "parentUuid": "edd5e4a1_cd77d8ba",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 1
+      },
+      "revId": "597230422d28a1775ef73f4a06e98a31bcb2f345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ceaf729c_095f0027",
         "filename": "core/cortex-m/mpu.c",
         "patchSetId": 3
