@@ -1,0 +1,244 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35b30bcc_be5fa6f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "Also, your commit is missing a signed-off-by line. You can add this by running `git commit --amend -s`.",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c43d8ba_4581f184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "Mostly cosmetic nits, but some other questions as well. Please split this up into two CLs: one for the eve fix and one for the analogix driver.\n\nLastly, I don\u0027t think you need to have a \"HOTFIX\" tag in the subject.",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f0bc226_dc01a29e",
+        "filename": "board/eve/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "Please take a look at the cleaned up versions of these functions on ToT in usb_pd_alt_mode_dfp.c. If you\u0027ll be modifying these functions, we might as well bring the latest and greatest versions over.",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "424f1ced_7ada9d2b",
+        "filename": "board/eve/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "Why is MF preferred being ignored? I\u0027d recommend using our updated implementation of these functions in the ToT version of usb_pd_alt_mode_dfp.c.\n\nAlso, don\u0027t leave in commented code; just delete them.",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b282fa_2b71dabb",
+        "filename": "board/eve/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "nit: add spaces around",
+      "range": {
+        "startLine": 378,
+        "startChar": 15,
+        "endLine": 378,
+        "endChar": 16
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d833da_6d34e50a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "Please keep in alphabetical order.",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18719610_ae3acb24",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "/*\n * Multi-line comments should be flanked with a\n * blank line above and below.\n */",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 38
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14b7206c_c1b165fd",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "What\u0027s this delay for?",
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fc8965f_95b66b7d",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "Need a space before that \u0027(\u0027.",
+      "range": {
+        "startLine": 201,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 5
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cc7c520_7c75e6e9",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "Remove this space.",
+      "range": {
+        "startLine": 201,
+        "startChar": 53,
+        "endLine": 201,
+        "endChar": 54
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20326f8a_4f1f2e44",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "recommend \u0027HPD lvl:%d irq:%d\u0027, just to save a few bytes",
+      "range": {
+        "startLine": 210,
+        "startChar": 15,
+        "endLine": 210,
+        "endChar": 36
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a04fea6f_5919f084",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2020-09-30T18:37:52Z",
+      "side": 1,
+      "message": "Combine comments.",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 58
+      },
+      "revId": "f0e2ba120baa41398f6db95140aeb8bbc5386200",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
