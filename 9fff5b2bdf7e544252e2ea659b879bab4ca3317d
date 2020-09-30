@@ -16,6 +16,69 @@
       "revId": "9fff5b2bdf7e544252e2ea659b879bab4ca3317d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d438cb0_9d1b6dd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-09-30T18:45:45Z",
+      "side": 1,
+      "message": "two nits",
+      "revId": "9fff5b2bdf7e544252e2ea659b879bab4ca3317d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9559260f_73bde8a4",
+        "filename": "docs/zephyr_shim.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-09-30T18:45:45Z",
+      "side": 1,
+      "message": "Odd this is not clickable. Does it need http?",
+      "range": {
+        "startLine": 13,
+        "startChar": 61,
+        "endLine": 13,
+        "endChar": 76
+      },
+      "revId": "9fff5b2bdf7e544252e2ea659b879bab4ca3317d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5640bdd8_21ad8764",
+        "filename": "docs/zephyr_shim.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2020-09-30T18:45:45Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 14,
+        "startChar": 44,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "9fff5b2bdf7e544252e2ea659b879bab4ca3317d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
