@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b78de825_99810153",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2020-09-30T19:10:50Z",
+      "side": 1,
+      "message": "Evan, do you have time to test this?\n\n1) Make sure your servod start order repeats the failure.\n2) Stop all servod.\n3) Bring in CL:2439779 full chain\n4) $ cros_workon --host start dev-util/hdctools\n5) $ ~/trunk/src/scripts/update_chroot\n6) Restart all servod in the same order as before.\n7) Try flash_ec again, see if it finds the right i2c-dev device this time.\n\nIf this works for you, mark V+1 and I\u0027ll add you in Tested-by: .",
+      "revId": "19837abdb88140d40a1007c789548944fb991604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
