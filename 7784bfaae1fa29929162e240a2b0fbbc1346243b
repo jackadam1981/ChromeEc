@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4087e665_0281a0df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2020-10-01T23:05:29Z",
+      "side": 1,
+      "message": "FYI, these are the changes that I had to make to make Volteer build with our current EC shim (CONFIG_PLATFORM_EC\u003dy). Some paths didn\u0027t seem correct.\n\nThe Shell isn\u0027t working right now on NPCX with Zephyr, so I couldn\u0027t verify that it actually worked (but I did verify that it built and flashed). I have a separate thread with NPCX and Vijay to work out shell support (I will create a bug if it more than just a simple fix).",
+      "revId": "7784bfaae1fa29929162e240a2b0fbbc1346243b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
